@@ -1,0 +1,80 @@
+{
+  "workflow": "FE34-SOURCE2-202611040640Z",
+  "results": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs run --config src/features/settings/runtime-adoption/__tests__/vitest.config.ts --configLoader runner src/features/settings/runtime-adoption/__tests__ src/features/me/__tests__/controller.test.ts src/features/theme/__tests__/controller.test.tsx",
+      "cwd": "/Users/lhs/.codex/worktrees/d68a/mcr/frontend",
+      "exit": 0,
+      "stop": null,
+      "log": "/private/tmp/mcr-fe34-runtime-source/check-0.log"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.json --incremental false",
+      "cwd": "/Users/lhs/.codex/worktrees/d68a/mcr/frontend",
+      "exit": 2,
+      "stop": null,
+      "log": "/private/tmp/mcr-fe34-runtime-source/check-1.log"
+    },
+    {
+      "command": "node node_modules/oxlint/bin/oxlint src/features/settings/runtime-adoption",
+      "cwd": "/Users/lhs/.codex/worktrees/d68a/mcr/frontend",
+      "exit": 0,
+      "stop": null,
+      "log": "/private/tmp/mcr-fe34-runtime-source/check-2.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": "/Users/lhs/.codex/worktrees/d68a/mcr",
+      "exit": 0,
+      "stop": null,
+      "log": "/private/tmp/mcr-fe34-runtime-source/check-3.log"
+    },
+    {
+      "command": "git diff --check",
+      "cwd": "/Users/lhs/.codex/worktrees/d68a/mcr",
+      "exit": 0,
+      "stop": null,
+      "log": "/private/tmp/mcr-fe34-runtime-source/check-4.log"
+    }
+  ],
+  "peak_temporary_bytes": 13005648,
+  "final_temporary_bytes": 1365820,
+  "elapsed_seconds": 10.46,
+  "owned_source_sha256": {
+    "frontend/src/features/settings/runtime-adoption/useRuntimePreferences.ts": "dff13b18c6667c6e6b38f348efc73e8d293c2041bf6d0fd319c95d3d67bad83a",
+    "frontend/src/features/settings/runtime-adoption/index.ts": "7b57406a644b47d2598b382e024168d75a06aa8170720ada352effe9e6bf5712",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.html": "10d7dc1cee370ca8ba22060f93d49d21a32c4f32063a5142890b63eb4d5d56f1",
+    "frontend/src/features/settings/runtime-adoption/__tests__/settings.test.tsx": "db14ffb01cbfed54b1f20d9cfb13c3be8933046b01a6baab0b6047a1b50d4c83",
+    "frontend/src/features/settings/runtime-adoption/__tests__/binding.test.tsx": "f62de22a81a56b158ff3fcd9c344aeed0be1086d7c173dab7e0e49eada1ca0c6",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.tsx": "0f549a1c6b9620a3561fb8ccd65afd74a54e8ea295786c267c052c5dc5575fe0",
+    "frontend/src/features/settings/runtime-adoption/__tests__/adapter.test.ts": "ec776117f62c4e8d4d8c54221bb910f7f281845b7d57f3331f121021f6a0c216",
+    "frontend/src/features/settings/runtime-adoption/__tests__/native.mjs": "fb8a1951bae28c3c8ec557fd05c8011360ffc96d9acc958a01e6203ba4063e63",
+    "frontend/src/features/settings/runtime-adoption/__tests__/vitest.config.ts": "bf3242696beab929911aa5ae09f5d00616b1f3d9d3bd7275960cffe3a9f35086",
+    "frontend/src/features/settings/runtime-adoption/__tests__/fixture.ts": "56c4d8f483d97586f3042ec47e348c01240333f2fb4a1a5fa0a3ee51cd7ef4c7"
+  },
+  "typing_fix_checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.json --incremental false",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "command": "node node_modules/oxlint/bin/oxlint src/features/settings/runtime-adoption",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "typing_fix_elapsed_seconds": 6.48,
+  "final_owned_source_sha256": {
+    "frontend/src/features/settings/runtime-adoption/useRuntimePreferences.ts": "dff13b18c6667c6e6b38f348efc73e8d293c2041bf6d0fd319c95d3d67bad83a",
+    "frontend/src/features/settings/runtime-adoption/index.ts": "7b57406a644b47d2598b382e024168d75a06aa8170720ada352effe9e6bf5712",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.html": "10d7dc1cee370ca8ba22060f93d49d21a32c4f32063a5142890b63eb4d5d56f1",
+    "frontend/src/features/settings/runtime-adoption/__tests__/settings.test.tsx": "b884ba3c43e8cbc34bbdc5695c4676e5119aebf3596a177b5a022f9f95bce040",
+    "frontend/src/features/settings/runtime-adoption/__tests__/binding.test.tsx": "f62de22a81a56b158ff3fcd9c344aeed0be1086d7c173dab7e0e49eada1ca0c6",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.tsx": "0f549a1c6b9620a3561fb8ccd65afd74a54e8ea295786c267c052c5dc5575fe0",
+    "frontend/src/features/settings/runtime-adoption/__tests__/adapter.test.ts": "e539f67627ac68c79feb1bcd92f512aa2e10d50e05568afabd101c905ac26ec2",
+    "frontend/src/features/settings/runtime-adoption/__tests__/native.mjs": "fb8a1951bae28c3c8ec557fd05c8011360ffc96d9acc958a01e6203ba4063e63",
+    "frontend/src/features/settings/runtime-adoption/__tests__/vitest.config.ts": "bf3242696beab929911aa5ae09f5d00616b1f3d9d3bd7275960cffe3a9f35086",
+    "frontend/src/features/settings/runtime-adoption/__tests__/fixture.ts": "56c4d8f483d97586f3042ec47e348c01240333f2fb4a1a5fa0a3ee51cd7ef4c7"
+  }
+}
