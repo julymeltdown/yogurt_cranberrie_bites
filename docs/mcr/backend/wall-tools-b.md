@@ -208,7 +208,7 @@ incremental off. The exact accepted target, deadlines, byte allowance, free-spac
 floor and guardian become part of evidence before any Cargo start. Relevant
 commands target domain Wall unit cases, application command regressions,
 Concert library/startup compilation, `--test mural_tools_b` (one pure case and
-six ignored canonical native cases), and Gateway Concert product route tests.
+seven ignored canonical native cases), and Gateway Concert product route tests.
 The executable, source manifest (including the contract oracle), checksums,
 commands/exits and failures must be frozen outside the target before unconditional
 build-resource release and a separate accepted native PG16 round. No native
@@ -234,3 +234,14 @@ was not yet reflected in BE15's `concert_command_operations` table. Migration
 otherwise the receipt foreign key would reject every new action. Existing
 canonical Fill/Erase/Undo native cases exercise that actual FK path when run.
 No historical migration or unrelated operation registry entry is changed.
+
+
+The expiry/retention candidate uses a private five-second receipt TTL fixture at
+INSERT, then removes that fixture and preserves actual immutable correlation.
+The action still goes through the actual canonical producer. It checks clipped
+undo expiry, waits past that original expiry, rejects undo without side effects,
+runs the actual BE15 expiry retirement, deletes only the expired private action,
+and verifies the charge cannot be deleted during its live window. Capabilities
+must retain the consumed 256 cells; a second 256-cell action reaches 512 and the
+next one-cell edit is denied. This covers receipt/history retirement without a
+synthetic clock or fabricated authority. It remains NOT_RUN until allocated PG.

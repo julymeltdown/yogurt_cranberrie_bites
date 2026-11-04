@@ -666,3 +666,114 @@ async fn canonical_actor_budget_and_private_recovery_are_isolated() -> anyhow::R
     assert_eq!(caps["undo"], Value::Null);
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "owned allocated PG16 and actual mTLS owner services required"]
+async fn canonical_receipt_expiry_and_history_retirement_never_refund_budget() -> anyhow::Result<()>
+{
+    let f = setup(256).await?;
+    let r = runtime(&f);
+    // Private expiry fixture changes receipt TTL at INSERT, preserving immutable
+    // correlation thereafter. Every action still uses actual canonical authorities.
+    sqlx::raw_sql("create function wall_b_fixture_short_receipt() returns trigger language plpgsql as $$ begin new.expires_at:=new.created_at+interval '5 seconds'; return new; end $$; create trigger wall_b_fixture_short_receipt before insert on concert_command_receipts for each row execute function wall_b_fixture_short_receipt();").execute(&f.concert).await?;
+    let (status, action) = call(
+        &f,
+        &r,
+        "fillConcertMuralRegion",
+        raw(
+            &f,
+            "POST",
+            "mural/fill",
+            json!({"expected_revision":1,"x":0,"y":0,"color_index":2}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 200, "{action}");
+    sqlx::raw_sql("drop trigger wall_b_fixture_short_receipt on concert_command_receipts; drop function wall_b_fixture_short_receipt();").execute(&f.concert).await?;
+    let committed = chrono::DateTime::parse_from_rfc3339(action["committed_at"].as_str().unwrap())?;
+    let expires =
+        chrono::DateTime::parse_from_rfc3339(action["undo_expires_at"].as_str().unwrap())?;
+    assert!(expires > committed && expires <= committed + chrono::Duration::seconds(5));
+    tokio::time::sleep(std::time::Duration::from_secs(6)).await;
+    let baseline = state(&f).await?;
+    let (status, error) = call(
+        &f,
+        &r,
+        "undoConcertMuralAction",
+        raw(
+            &f,
+            "POST",
+            "mural/undo",
+            json!({"expected_revision":2,"target_action_id":action["action_id"]}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 409, "{error}");
+    assert_eq!(error["details"]["reason"], "MURAL_UNDO_EXPIRED");
+    assert_eq!(state(&f).await?, baseline);
+    let retired = concert_service::adapters::out::repository::receipt::PgCommandRepository::new(
+        f.concert.clone(),
+    )
+    .retire_expired(100)
+    .await?;
+    assert_eq!(retired, 1);
+    let action_id = Uuid::parse_str(action["action_id"].as_str().unwrap())?;
+    let removed = sqlx::query("delete from concert_mural_tool_actions where action_id=$1")
+        .bind(action_id)
+        .execute(&f.concert)
+        .await?;
+    assert_eq!(removed.rows_affected(), 1);
+    assert!(
+        sqlx::query("delete from concert_mural_tool_charges where action_id=$1")
+            .bind(action_id)
+            .execute(&f.concert)
+            .await
+            .is_err()
+    );
+    let (status, caps) = call(
+        &f,
+        &r,
+        "getConcertMuralTools",
+        raw(&f, "GET", "mural/tools", Value::Null, None),
+    )
+    .await?;
+    assert_eq!(status, 200, "{caps}");
+    assert_eq!(caps["remaining_cells"], 256);
+    assert_eq!(caps["latest_action"], Value::Null);
+    assert_eq!(caps["undo"], Value::Null);
+    let (status, action) = call(
+        &f,
+        &r,
+        "fillConcertMuralRegion",
+        raw(
+            &f,
+            "POST",
+            "mural/fill",
+            json!({"expected_revision":2,"x":0,"y":0,"color_index":3}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 200, "{action}");
+    assert_eq!(state(&f).await?["charges"], 512);
+    let baseline = state(&f).await?;
+    let (status, error) = call(
+        &f,
+        &r,
+        "eraseConcertMuralPixel",
+        raw(
+            &f,
+            "POST",
+            "mural/erase",
+            json!({"expected_revision":3,"x":0,"y":0}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 429, "{error}");
+    assert_eq!(error["details"]["reason"], "MURAL_BUDGET_EXCEEDED");
+    assert_eq!(state(&f).await?, baseline);
+    Ok(())
+}
