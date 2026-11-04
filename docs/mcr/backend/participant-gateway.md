@@ -297,3 +297,59 @@ The pre-fix evidence remains unchanged. Root owns serial integration and remote
 master publication; those delivery checks remain required before completing the
 assigned persistent goal. This handoff changes only this document and its new
 passing evidence JSON; no Cargo/PG or shared-file writes are performed here.
+
+## C03-CANCEL01: interrupted producer work (2026-11-04)
+
+This is a new regression assignment after the prior C03 delivery goal completed.
+Its implementation baseline is Root `a0730a4e1cadd288a2137bf2e16bbb0bb7857aef`.
+Status is IN_PROGRESS; the previously recorded normal-response qualification
+does not certify cancellation. The two private Root incident reports show one
+published `getConcertParticipant` scope still ACTIVE and unserialized, with no
+tracked transaction or child intent, and one expired SEALED lease in each owner.
+Two prepared owner transactions remained, and a subsequent Auth login timed out.
+The old runtime's normal shutdown is cleanup, not cancellation recovery evidence.
+
+The Participant handler installs Canonical CR08 `OwnerGuardScope::run_owned`
+immediately after successful acquisition, before another suspension point. It
+moves the verified context, current Auth observation, service clone and exact
+scope into the owned future. All subsequent checks, authority construction,
+durable delivery publication, local/Profile work, final checks and response
+construction run there. Successful responses keep the existing retained body
+lifetime. The Participant patch adds no global lifecycle, Drop release, TTL
+release, synthetic EOF or DeliveryCompleted path.
+
+CR08 owns the supervisor and migration 0048. Caller interruption only signals
+that supervisor. Actual destruction of its owned work future, closed admission,
+and drained callbacks precede durable `response_abandoned_at`; actual owner and
+child settlement precedes `cancellation_settled_at`. Neither is HTTP delivery:
+`serialized_at` and `delivery_completed_at` remain NULL. Unknown callbacks or
+native outcomes retain exclusions and capacity rather than obtaining a receipt.
+
+Dedicated tests are `tests/participant_cancellation.rs` and
+`tests/participant_cancellation_support/{host.rs,native.py}` under Concert.
+The host composes the actual canonical core, Participant handler, native resolver,
+Bootstrap handler, settlement and delivery services. A deterministic publisher
+fixture calls the real durable publisher, then pauses before handing its token
+to serialization. The controller uses actual Auth signup, private email delivery,
+verification, login, Profile update and public Bootstrap. It resets an actual
+public Gateway C03 TCP connection after publication, checks root/owner state and
+prepared transactions, then performs a new real Auth login. Separate admitted
+callback and registered-native-COMMIT-without-witness fixtures must stay held.
+The latter deliberately violates the producer witness contract to test refusal;
+it is not a product write path or an invented positive native receipt.
+
+The new controller reuses the audited local helpers from the baseline:
+`backend/scripts/mcr/{dev_stack,migration_smoke,runtime_smoke,world_in01_prepare,
+world_in01_live,participant_live_join_smoke}.py`. It preserves their owned
+directory, marker/inode, PostgreSQL identity, mTLS, real principal, PID/port and
+shutdown checks. Build receipts pin the controller dependencies and all Rust,
+manifest, proto and migration inputs. The selected product release still uses
+the source-bound constructor and supplied source pack. No source artwork,
+`docs/source/`, shared contract, manifest, router or production composition is
+changed by this patch.
+
+Validation so far: Python driver AST parse and Rust 1.88.0 formatting pass;
+`python3 scripts/mcr/check-plan.py` exits 0 for planning/provenance only. Cargo
+compilation, native cancellation/login qualification and committed handoff remain
+NOT_RUN pending the CR08 dependency and named resource allocation. Root owns
+production composition, serial master publication and the browser IN01 rerun.

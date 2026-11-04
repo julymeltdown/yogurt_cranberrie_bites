@@ -116,13 +116,30 @@ impl GuardedParticipantService {
             context.deadline(),
         )?;
         let scope = self.fence.acquire(binding).await?;
+        // Install the owner supervisor before the next suspension point. It
+        // owns every post-acquisition future, including delivery publication;
+        // caller cancellation is a signal, never a terminal-work proof.
+        let service = self.clone();
+        let context = context.clone();
+        let owned = scope.clone();
+        scope
+            .run_owned(async move { service.respond_owned(&context, auth, owned).await })
+            .await
+    }
+    async fn respond_owned(
+        &self,
+        context: &VerifiedParticipantRequest,
+        auth: CurrentAuth,
+        scope: Arc<OwnerGuardScope>,
+    ) -> Result<Response<proto::ParticipantResponse>, Status> {
         context.check()?;
         let authority = Arc::new(
             BoundParticipantAuthority::new(scope.clone(), context, self.journal.clone())
                 .map_err(status)?,
         );
-        // An error/cancellation after acquisition retains the registered scope
-        // for independent native settlement; no handler cleanup releases it.
+        // The supervisor can prove abandonment only after actual owned work
+        // stops and registered work settles. Unknown remote/native work keeps
+        // the registered scope quarantined without inventing response EOF.
         let producer = scope.producer_scope();
         let binding_digest = scope.binding().digest();
         let (delivery, token) = self.delivery.publish(scope.clone()).await?;
@@ -148,7 +165,7 @@ impl GuardedParticipantService {
         }
         .await;
         // Only completed work still inside the original deadline can carry an
-        // error envelope. Cancellation/timeout before this point remains unknown.
+        // error envelope. Otherwise run_owned supervises no-disclosure recovery.
         context.check()?;
         let (bytes, failure) = match outcome {
             Ok(bytes) => (bytes, None),
