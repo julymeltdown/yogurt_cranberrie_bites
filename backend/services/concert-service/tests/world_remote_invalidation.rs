@@ -108,10 +108,13 @@ fn world_opt_in_requires_and_verifies_actual_source_bound_map4_release() {
         .to_string()
         .contains("CONCERT_WORLD_SOURCE_BINDING_FILE"));
     values.insert("CONCERT_WORLD_SOURCE_BINDING_FILE", binding);
+    let settings = WorldRuntimeSettings::settings(|n| Ok(values.get(n).cloned()))
+        .unwrap()
+        .unwrap();
+    let release = settings.validated_release();
     assert!(
-        WorldRuntimeSettings::settings(|n| Ok(values.get(n).cloned()))
-            .unwrap()
-            .is_some()
+        std::sync::Arc::ptr_eq(&release, &settings.validated_release()),
+        "C03 must reuse the exact validated World release rather than rebuild feature defaults"
     );
     values.insert(
         "CONCERT_WORLD_SOURCE_BINDING_FILE",

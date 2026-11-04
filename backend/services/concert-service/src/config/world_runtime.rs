@@ -188,12 +188,36 @@ impl WorldRuntimeSettings {
             release,
         }))
     }
+    /// Reuse the exact World-featured release for C03, including its source digest.
+    pub fn validated_release(
+        &self,
+    ) -> Arc<concert_application::bootstrap::ValidatedProductRelease> {
+        self.release.clone()
+    }
     /// Composes the actual DB bridge, 20Hz owner and socket server with supplied
     /// qualified live owner ports. Absence is rejected before binding a listener.
     pub async fn serve(
         self,
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(pool, ports, None).await
+    }
+    /// Startup barrier for a supervised C03 listener. Failure drops the sender;
+    /// success is not a persistent authority grant or an ongoing health signal.
+    pub async fn serve_with_ready(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(pool, ports, Some(ready)).await
+    }
+    async fn serve_inner(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: Option<tokio::sync::oneshot::Sender<()>>,
     ) -> anyhow::Result<()> {
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
@@ -275,7 +299,6 @@ impl WorldRuntimeSettings {
             .bootstrap()
             .await
             .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
-        tokio::time::timeout(Duration::from_secs(2), bridge.claim_rooms()).await??;
         let transport = SocketTransport::default();
         let runtime = WorldRuntime::new(
             self.event,
@@ -288,6 +311,9 @@ impl WorldRuntimeSettings {
         )
         .map_err(|_| anyhow::anyhow!("World owner construction failed"))?;
         let (clock, origin_ms) = runtime.clock_origin();
+        // Claim only after geometry/runtime construction, so startup's owning
+        // lease is fresh when the native owner and public barrier become ready.
+        tokio::time::timeout(Duration::from_secs(2), bridge.claim_rooms()).await??;
         let listener = tokio::net::TcpListener::bind(self.address).await?;
         let (handle, owner_task) = runtime.spawn();
         let handle = Arc::new(handle);
@@ -309,10 +335,46 @@ impl WorldRuntimeSettings {
         };
         let server = axum::serve(listener, world_ws::router(state))
             .with_graceful_shutdown(platform::shutdown::global().cancelled());
-        let result = tokio::select! {
-            result=async { server.await }=>result.map_err(anyhow::Error::from),
-            result=authority=>result,
-            result=remote.run()=>result.map_err(|_|anyhow::anyhow!("World replay readiness lost")),
+        let startup = tokio::time::timeout(Duration::from_secs(2), async {
+            handle
+                .ready()
+                .await
+                .map_err(|_| anyhow::anyhow!("World owner startup unavailable"))?;
+            // Room claims/binding/owner startup may outlast the initial replay
+            // freshness window. Both actual journals must be caught up again.
+            while !remote
+                .poll()
+                .await
+                .map_err(|_| anyhow::anyhow!("World startup replay unavailable"))?
+            {
+                tokio::task::yield_now().await;
+            }
+            bridge
+                .startup_ready()
+                .map_err(|_| anyhow::anyhow!("World startup authority unavailable"))?;
+            anyhow::ensure!(
+                !owner_task.is_finished() && !platform::shutdown::global().is_requested(),
+                "World stopped during startup"
+            );
+            if let Some(ready) = ready {
+                ready
+                    .send(())
+                    .map_err(|_| anyhow::anyhow!("World startup receiver closed"))?;
+            }
+            Ok::<(), anyhow::Error>(())
+        })
+        .await
+        .map_err(|_| anyhow::anyhow!("World startup readiness timed out"))
+        .and_then(|result| result);
+        // Startup failure after spawn follows the same explicit native/SQL
+        // cleanup path as later server, authority or replay failure.
+        let result = match startup {
+            Ok(()) => tokio::select! {
+                result=async { server.await }=>result.map_err(anyhow::Error::from),
+                result=authority=>result,
+                result=remote.run()=>result.map_err(|_|anyhow::anyhow!("World replay readiness lost")),
+            },
+            Err(error) => Err(error),
         };
         let remote_cleanup = remote.shutdown().await;
         // Dropping all listener states closes sockets and the final handle stops

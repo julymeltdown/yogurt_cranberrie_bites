@@ -303,7 +303,13 @@ async fn native_pair_block_unblock_deletion_fences_two_real_sockets() -> anyhow:
     let unrelated = s.add_user().await?;
     let servers = tls::Servers::new(&s).await?;
     let mut remote = servers.runtime(&s)?;
+    assert!(
+        s.bridge.startup_ready().is_err(),
+        "unbootstrapped replay is not ready"
+    );
     remote.bootstrap().await?;
+    while !remote.poll().await? {}
+    s.bridge.startup_ready()?;
     let pump = Pump::new(remote);
     let mut native = Native::with_capacity(&s, 3).await?;
     let (a, ba, _) = native

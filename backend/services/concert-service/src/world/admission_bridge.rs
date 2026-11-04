@@ -360,6 +360,20 @@ impl AdmissionBridge {
             .map(|state| state.snapshot().ok_or(WorldError::Unavailable))
             .transpose()
     }
+    /// Startup observation only: never creates a membership or publication permit.
+    pub(crate) fn startup_ready(&self) -> Result<(), WorldError> {
+        let _f = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        if self.remote_generation()?.is_none()
+            || *self
+                .owner_until
+                .lock()
+                .map_err(|_| WorldError::Unavailable)?
+                <= Utc::now()
+        {
+            return Err(WorldError::Unavailable);
+        }
+        Ok(())
+    }
     #[cfg(test)]
     pub(crate) fn native_view_state(&self, b: &Binding, now: u64) -> String {
         let Ok(views) = self.views.lock() else {
