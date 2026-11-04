@@ -58,7 +58,7 @@ async function verify(receipt, expected) {
   for (const c of report.commands) assert.equal(digest(await readFile(join(folder, c.log))), c.report_hash, `Command log changed: ${c.id}`)
   for (const [path, pin] of Object.entries({ ...report.source_pins, ...report.contract_pins })) {
     assert.ok(safePath(path)); assert.equal(git('rev-parse', `${expected}:${path}`), pin.git_blob, `Source pin differs from candidate: ${path}`)
-    assert.equal(digest(execFileSync('git', ['show', `${expected}:${path}`], { cwd: root })), pin.sha256, `Source digest differs from candidate: ${path}`)
+    assert.equal(digest(execFileSync('git', ['show', `${expected}:${path}`], { cwd: root, maxBuffer: 64 * 1024 ** 2 })), pin.sha256, `Source digest differs from candidate: ${path}`)
   }
   console.log(JSON.stringify({ schema: SCHEMA, candidate: expected, status: report.status, frontend_checks: checks,
     whole_QA10: 'BLOCKED', note: 'This validates the named historical candidate, not current HEAD or live acceptance.' }))
