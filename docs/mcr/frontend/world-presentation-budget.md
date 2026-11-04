@@ -62,9 +62,9 @@ No camera formula, server feet, fixture roster, geometry or image is changed.
 
 ## Qualification plan and current evidence
 
-Initial meaningful regressions pass 71 tests across six suites, including seven
-new disclosure/route/focus/same-world cases. Full application types and broader
-shell checks are recorded separately. Runtime evidence is still NOT_RUN.
+Meaningful regressions pass 110 tests across seven suites, including seven new
+disclosure/route/focus/same-world cases and all 39 retained shell checks. Full
+application types and targeted lint exit 0. Runtime evidence is still NOT_RUN.
 
 The new native driver reuses the read-only published actual Root/default Phaser
 fixture. Its baseline loads the exact two pre-change files from `d1a5deaa` through
@@ -80,6 +80,9 @@ failure/retry, privacy withdrawal and game/socket/blob cleanup. An observed
 fixture Socket constructor is used only to deliver the existing synthetic
 server-close event; no normal admission or authoritative position is bypassed.
 All fixture and browser limitations must remain explicit in the final report.
+The optimized actual application build follows browser closure sequentially,
+using retained React/Tailwind configuration and `copyPublicDir:false`; it shares
+the same bounded workflow and removes its own temporary output.
 
 The unaccepted `FE26E-WORLD-PRESENTATION-20261104T0429Z` offer was returned
 without launch for the time-sensitive IN01 run. A new named sequential slot,

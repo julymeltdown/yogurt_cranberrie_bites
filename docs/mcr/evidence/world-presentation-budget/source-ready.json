@@ -62,7 +62,8 @@
     "baseline": "6 cases PARADE at360/390/430x554/844",
     "candidate": "18 cases three eras at360/390/430x554/844",
     "focused": "44px/four tools+Back focus/six routes/skip/keyboard/reduced viewport/reconnect/resource retry/privacy/cleanup",
-    "reference": "Unchanged supplied source with proportional crop, before/after exact-aspect comparison"
+    "reference": "Unchanged supplied source with proportional crop, before/after exact-aspect comparison",
+    "application_build": "Optimized actual index.html/main.tsx after browser close, retained React/Tailwind config, public-copy disabled, same workflow cap"
   },
   "workflow_limits": {
     "temporary_peak_GiB": 0.2,

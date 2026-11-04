@@ -6,7 +6,7 @@ import { mkdir, mkdtemp, readFile, readdir, rm, stat, statfs, writeFile } from '
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { chromium, expect } from '@playwright/test'
-import { createServer } from 'vite'
+import { build, createServer } from 'vite'
 
 const root = resolve(import.meta.dirname, '../../../../..'), frontend = resolve(root, 'frontend')
 const base = 'd1a5deaae0f6b79b365cb4c451d921711573ab8c'
@@ -218,6 +218,16 @@ try {
       await retry.click(); await expect.poll(async () => (await readState(page)).phase, { timeout: 30000 }).toBe('live')
       report.interactions.push({ name: 'actual resource failure and retry', ...await assertSingle(page), metrics: await measure(page) })
       await dispose(page)
+      const denied = await context.newPage(); await denied.setViewportSize({ width: 390, height: 554 })
+      await denied.goto(`${origin}${fixture}?era=PARADE&mode=production-denied`)
+      await expect.poll(async () => denied.evaluate(() => Boolean(window.__SCENE_V5_ROOT__)), { timeout: 30000 }).toBe(true)
+      await denied.waitForTimeout(300)
+      const denial = await readState(denied)
+      assert.equal(denial.canvases, 0); assert.equal(denial.activeSockets, 0)
+      assert.equal(denial.productionAdmitted, false)
+      report.interactions.push({ name: 'unchanged production release rejection', state: denial })
+      await denied.screenshot({ path: resolve(output, 'production-denied-390-h554.png') })
+      await dispose(denied)
     }
     await server.close(); server = null
     await rm(resolve(temporary, 'vite-cache'), { recursive: true, force: true })
@@ -234,6 +244,13 @@ try {
   await comparison.goto(pathToFileURL(resolve(output, 'comparison.html')).href)
   await comparison.evaluate(() => Promise.all(Array.from(document.images, image => image.decode())))
   await comparison.screenshot({ path: resolve(output, 'comparison.png'), fullPage: true }); await comparison.close()
+  await budget()
+  await context.close(); context = null
+  await rm(profile, { recursive: true, force: true })
+  const bundle = await build({ root: frontend, configLoader: 'runner', cacheDir: resolve(temporary, 'build-cache'), logLevel: 'error',
+    build: { target: 'es2022', outDir: resolve(temporary, 'application'), copyPublicDir: false } })
+  report.applicationBuild = { result: 'PASS', actualEntry: 'frontend/index.html and src/main.tsx', copyPublicDir: false,
+    outputs: Array.isArray(bundle) ? bundle.length : 1, plugins: 'retained frontend/vite.config.ts React/Tailwind', sequentialAfterBrowser: true }
   await budget()
   assert.deepEqual(errors, [], 'No browser exceptions')
   report.peakMeasuredWorkflowBytes = peakBytes
