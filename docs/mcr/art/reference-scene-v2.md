@@ -514,3 +514,45 @@ Native04 evidence qualifies the earlier input only. Actual new-wing visibility,
 massing, mobile captures, landscape density and full original fidelity remain
 open. The same original goal remains metadata BLOCKED; no new artist browser,
 export, resource job, manager review or false completion is introduced.
+
+## Human service-label correction
+
+The newly attached1280×853 ten-screen JPEG was actually viewed and retained
+byte for byte as `map-service-labels-v1/original-target.jpg`:482,737B, SHA
+`2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
+It is source/reference evidence only, never a product texture. The earlier
+reference, supplied originals, character packs and9a441859 wing inputs remain
+unchanged. The human correction supersedes literal service names: FOOD becomes
+FEED with a post/message glyph, MERCH becomes WALL with a mural-grid glyph,
+MEETUP ZONE becomes MEET and GIVEAWAY BOOTH becomes GIFTS.
+
+Additive `map-service-labels-v1/label-presentation.json` preserves all six panel
+rectangles/anchors, palette, exact font bytes and stage/people/gift polygons.
+Two new hand-authored filled vector glyphs replace utensils/shopping imagery in
+this annotation layer. Four single-word feature labels use closed
+`navigation_intent` values feed/wall/meet/gifts. All six annotation
+`interaction_id` and `place_id` fields are null. MAIN STAGE and PLAZA are
+`VIRTUAL_SCENERY_ONLY`; four features are `VIRTUAL_FEATURE_NAVIGATION_ONLY`.
+The old display string survives as `source_label` lineage, not a canonical ID.
+No arbitrary action URL, canonical-place remapping or physical arrival claim
+is introduced. Genuine reviewed-place/catalog safety remains a separate
+consumer responsibility.
+
+The actual completed source bundle is label/glyph-only, per the final freeze
+implemented in this checkout. Its top-level required_base_labels/landscape/
+architecture/massing pins close the exact old lineage. It creates no new paired
+landscape/wing derivative or display replacement; all old49 art objects remain
+exact. Existing two wings require explicit consumer adoption. Grocery/stall
+imagery remains a known separate visual concern, so the new labels alone do
+not certify complete semantic-art or target fidelity.
+
+`build.py --verify` and independent read-only `verify.py` exit0: source/image/
+font/lineage hashes, six retained rectangles/anchors, four closed intents,
+six null canonical bindings, glyph bounds and actual font advances fit the
+available panel widths. Handoff closes six payloads. No new PNG/font, browser,
+export or consumer runtime edit occurs. Actual glyph/native typography,44px
+action targets, real feature routes, separate reviewed-place safety, combined
+wing visibility, mobile density/framing and full attached-target fidelity remain
+**NOT_RUN/OPEN**. Root owns those checks under an exact recorded consumer lease;
+no King/SL review gate applies. The same original ART goal remains metadata
+**BLOCKED**, reused without reset, new goal or false completion.

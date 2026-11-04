@@ -1,0 +1,87 @@
+{
+  "status": "SOURCE_STRUCTURAL_CHECKS_PASS_RENDER_ACTION_CHECKS_NOT_RUN",
+  "reference": {
+    "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/original-target.jpg",
+    "bytes": 482737,
+    "sha256": "sha256:2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "reference_dimensions": [
+    1280,
+    853
+  ],
+  "reference_comparison": "Attached original actually viewed. Preserve its six-panel composition while applying human feature semantics; source-only vectors do not prove native typography, service actions, density, framing or full target fidelity.",
+  "changed_strings": {
+    "MERCH": "WALL",
+    "FOOD": "FEED",
+    "MEETUP ZONE": "MEET",
+    "GIVEAWAY BOOTH": "GIFTS"
+  },
+  "changed_glyphs": [
+    "feed",
+    "wall"
+  ],
+  "preserved_glyphs": [
+    "stage",
+    "people",
+    "gift"
+  ],
+  "null_canonical_annotation_bindings": 6,
+  "closed_feature_intents": 4,
+  "style_font_anchors_rectangles_exact": true,
+  "text_metrics": [
+    {
+      "source_label": "MAIN STAGE",
+      "label": "MAIN STAGE",
+      "advance_px": 209.94140625,
+      "available_text_width_px": 214,
+      "line_count": 1,
+      "rectangle_height": 78
+    },
+    {
+      "source_label": "PLAZA",
+      "label": "PLAZA",
+      "advance_px": 111.42578125,
+      "available_text_width_px": 115,
+      "line_count": 1,
+      "rectangle_height": 78
+    },
+    {
+      "source_label": "MERCH",
+      "label": "WALL",
+      "advance_px": 92.20703125,
+      "available_text_width_px": 123,
+      "line_count": 1,
+      "rectangle_height": 78
+    },
+    {
+      "source_label": "FOOD",
+      "label": "FEED",
+      "advance_px": 80.703125,
+      "available_text_width_px": 94,
+      "line_count": 1,
+      "rectangle_height": 78
+    },
+    {
+      "source_label": "MEETUP ZONE",
+      "label": "MEET",
+      "advance_px": 91.42578125,
+      "available_text_width_px": 142,
+      "line_count": 1,
+      "rectangle_height": 108
+    },
+    {
+      "source_label": "GIVEAWAY BOOTH",
+      "label": "GIFTS",
+      "advance_px": 97.3046875,
+      "available_text_width_px": 182,
+      "line_count": 1,
+      "rectangle_height": 108
+    }
+  ],
+  "no_new_runtime_rasters_fonts": true,
+  "consumer_native": "NOT_RUN",
+  "actual_navigation_actions": "NOT_RUN",
+  "reviewed_place_path_safety": "CONSUMER_OWNED_NOT_RUN",
+  "original_target_fidelity": "IN_PROGRESS_NOT_ACCEPTED",
+  "production": "NOT_ADMITTED"
+}
