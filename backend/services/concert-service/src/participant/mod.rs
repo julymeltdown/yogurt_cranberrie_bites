@@ -10,7 +10,7 @@ use serde_json::{json, Value};
 use std::sync::{Arc, OnceLock};
 use tonic::{Request, Response, Status};
 pub mod proto {
-    tonic::include_proto!("concert.participant.v1");
+    include!(concat!(env!("OUT_DIR"), "/participant/concert.participant.v1.rs"));
 }
 pub const POLICY: MethodPolicy = MethodPolicy {
     service: "concert.participant.v1.ConcertParticipantService",

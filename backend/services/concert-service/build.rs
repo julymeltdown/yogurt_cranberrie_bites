@@ -52,9 +52,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("cargo:rerun-if-changed={}", relationship.display());
     println!("cargo:rerun-if-changed={}", profile.display());
     let participant_proto = contracts_build::proto_root().join("concert/v1/participant.proto");
+    let participant_output =
+        std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("participant");
+    std::fs::create_dir_all(&participant_output)?;
     tonic_prost_build::configure()
         .build_server(true)
         .build_client(true)
+        .out_dir(&participant_output)
         .extern_path(".concert.product.v1", "crate::product_rpc::proto")
         .extern_path(
             ".authority.lease.v1",
