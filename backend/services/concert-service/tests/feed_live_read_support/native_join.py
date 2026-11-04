@@ -28,6 +28,8 @@ CASES = (
     "feed::native_join::read_cases::actual_private_author_is_filtered_after_real_post_scan",
     "feed::native_join::read_cases::actual_post_outage_cannot_become_an_empty_page",
     "feed::native_join::read_cases::actual_sealed_root_cannot_authorize_a_later_read",
+    "feed::native_join::read_cases::actual_lost_actor_admission_fails_before_post_read",
+    "feed::native_join::read_cases::actual_scan_cursor_rejects_changed_limit_before_another_post_read",
 )
 
 def pki(cluster):

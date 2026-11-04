@@ -130,6 +130,15 @@ async fn actual_comments_read_current_parent_and_public_author() -> anyhow::Resu
     assert_eq!(body["items"][0]["post_id"], post.to_string());
     assert_eq!(body["items"][0]["text"], "Actual stored comment");
     assert_author(&body["items"][0]["author"], f.subject);
+    let before = f.tracking_count().await?;
+    // The original signed comment route binds this parent. A distinct post
+    // cannot reuse it even when the Concert workload signs the entire envelope.
+    assert_eq!(
+        feed.comments(context, Uuid::new_v4(), CommentsQuery::default())
+            .await,
+        Err(FeedError::ResourceUnavailable),
+    );
+    assert_eq!(f.tracking_count().await?, before);
     f.assert_exclusions_held().await?;
     f.finish().await
 }
@@ -200,4 +209,74 @@ async fn actual_sealed_root_cannot_authorize_a_later_read() -> anyhow::Result<()
     );
     assert_eq!(f.tracking_count().await?, 0);
     f.assert_clean().await
+}
+
+#[tokio::test]
+#[ignore = "requires frozen owned five-database PG16/mTLS Feed join controller"]
+async fn actual_lost_actor_admission_fails_before_post_read() -> anyhow::Result<()> {
+    let f = Fixture::new(capture::Route::Feed).await?;
+    f.seed_post(Uuid::new_v4()).await?;
+    sqlx::query("delete from concert_event_admissions where event_id=$1 and user_id=$2")
+        .bind(f.scope.binding().event())
+        .bind(f.scope.binding().actor())
+        .execute(&f.concert)
+        .await?;
+    let context = f.context()?;
+    let feed = f.feed(&f.post_url)?;
+    assert_eq!(
+        feed.page(context, FeedQuery::default()).await,
+        Err(FeedError::DependencyUnavailable)
+    );
+    assert_eq!(
+        f.tracking_count().await?,
+        0,
+        "Actor admission must precede protected Post work"
+    );
+    f.finish().await
+}
+
+#[tokio::test]
+#[ignore = "requires frozen owned five-database PG16/mTLS Feed join controller"]
+async fn actual_scan_cursor_rejects_changed_limit_before_another_post_read() -> anyhow::Result<()> {
+    let f = Fixture::new(capture::Route::FeedLimit(1)).await?;
+    f.seed_post(Uuid::new_v4()).await?;
+    f.seed_post(Uuid::new_v4()).await?;
+    let context = f.context()?;
+    let feed = f.feed(&f.post_url)?;
+    let body = feed
+        .page(
+            context,
+            FeedQuery {
+                limit: Some(1),
+                ..Default::default()
+            },
+        )
+        .await
+        .map_err(|e| anyhow::anyhow!("native actual cursor: {e:?}"))?;
+    assert_eq!(body["items"].as_array().unwrap().len(), 1);
+    let cursor = body["next_cursor"]
+        .as_str()
+        .expect("Actual lookahead must produce an opaque cursor")
+        .to_owned();
+    let before = f.tracking_count().await?;
+    assert!(before > 0);
+    assert_eq!(
+        feed.page(
+            context,
+            FeedQuery {
+                limit: Some(2),
+                cursor: Some(cursor),
+                ..Default::default()
+            }
+        )
+        .await,
+        Err(FeedError::InvalidInput)
+    );
+    assert_eq!(
+        f.tracking_count().await?,
+        before,
+        "Cursor scope rejection must precede another Post transaction"
+    );
+    f.assert_exclusions_held().await?;
+    f.finish().await
 }

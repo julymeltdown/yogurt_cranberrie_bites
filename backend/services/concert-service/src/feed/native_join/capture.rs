@@ -44,6 +44,7 @@ impl proto::product_service_server::ProductService for Capture {
 
 pub(super) enum Route {
     Feed,
+    FeedLimit(u16),
     Detail(Uuid),
     Comments(Uuid),
 }
@@ -59,6 +60,10 @@ pub(super) async fn binding(
         Route::Feed => (
             "listConcertFeed",
             format!("/api/concert/events/{event}/feed"),
+        ),
+        Route::FeedLimit(limit) => (
+            "listConcertFeed",
+            format!("/api/concert/events/{event}/feed?limit={limit}"),
         ),
         Route::Detail(post) => (
             "getConcertPost",
