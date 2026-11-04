@@ -6,7 +6,7 @@
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use sha2::{Digest, Sha256};
-use sqlx::{PgPool, Postgres, Row, Transaction};
+use sqlx::{PgConnection, PgPool, Postgres, Row, Transaction};
 use std::sync::Arc;
 use tokio::time::Instant;
 use uuid::Uuid;
@@ -144,8 +144,13 @@ impl TicketDeletion {
 /// must take it FIRST; it covers one Auth user across every event. Hash collisions
 /// only serialize unrelated users and cannot allow a missed deletion fence.
 pub async fn lock_user(tx: &mut Transaction<'_, Postgres>, user: Uuid) -> Result<(), sqlx::Error> {
+    lock_user_in(&mut **tx, user).await
+}
+/// Connection form for existing transaction-owned producer hooks. The caller
+/// must already have begun a transaction; never use an autocommit connection.
+pub async fn lock_user_in(connection: &mut PgConnection, user: Uuid) -> Result<(), sqlx::Error> {
     sqlx::query("select pg_advisory_xact_lock(hashtextextended('mcr-world-account-deletion:' || $1::uuid::text,0))")
-        .bind(user).execute(&mut **tx).await?;
+        .bind(user).execute(connection).await?;
     Ok(())
 }
 
