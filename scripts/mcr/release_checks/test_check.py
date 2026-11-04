@@ -181,9 +181,11 @@ class ReleaseChecks(unittest.TestCase):
         self.assert_rule("tests.not-dispatched")
 
     def test_mock_module_rejected_even_with_rehashed_build_report(self):
-        self.production["modules"].append("frontend/src/world/network/mock.ts")
-        self.repin_production()
-        self.assert_rule("production.mock-module")
+        for path in ["frontend/src/world/network/mock.ts", "frontend/src/world/network/MockWorldTransport.ts"]:
+            with self.subTest(path=path):
+                self.production["modules"] = ["frontend/src/main.ts", path]
+                self.repin_production()
+                self.assert_rule("production.mock-module")
 
     def repin_production(self):
         report = {"candidate": self.candidate, "command": self.build["command"], "status": "PASS",
@@ -193,6 +195,7 @@ class ReleaseChecks(unittest.TestCase):
     def test_synthetic_secret_marker_is_rejected_without_value_disclosure(self):
         for marker, rule in [(b"-----BEGIN PRIVATE KEY-----", "production.private-key"),
                              (b"client_secret='synthetic-not-a-real-secret'", "production.credential-literal"),
+                             (b'{"client_secret":"synthetic-not-a-real-secret"}', "production.credential-literal"),
                              (b"eyJ1234567890.abcdefghijk.abcdefghijk", "production.jwt-literal"),
                              (b"new MockWorldTransport()", "production.mock-marker")]:
             with self.subTest(rule=rule):

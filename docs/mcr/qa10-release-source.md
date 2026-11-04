@@ -201,9 +201,11 @@ Frozen source `24fa26b7a9f4934bf8f02e59c1cdd6d3cc039a02` completed30
 regressions in6.622s. Its actual CLI returned exit2/INCOMPLETE without a manifest
 and exit1/candidate.mismatch for the historical frontend envelope. These are
 recorded at [source-01 validation](../../scripts/mcr/release_checks/evidence/source-01/validation.json),
-with exact command logs and both compatibility outcomes. The later archive-bound
-correction and its new negative regression receive a new frozen-source record;
-no earlier result is overwritten.
+with exact command logs and both compatibility outcomes. The archive-bound correction then passed31 regressions at frozen source
+`36124b76e8ebf5e460bc1de8aea55ed5cf4d6e84` in6.642s, with CLI outcomes2/1
+and shell syntax0 retained under `evidence/source-02/`. The final coverage also
+checks quoted JSON credential keys and named MockWorldTransport modules.
+The final frozen-source record is linked below; no earlier result is overwritten.
 
 The new Python consumer is authored for this scope. Its frontend compatibility
 semantics use the read-only published `frontend/e2e/release/qa10/model.mjs` and

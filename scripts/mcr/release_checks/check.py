@@ -231,12 +231,12 @@ def production_findings(modules, assets):
     findings = []
     for path in modules:
         require(isinstance(path, str), "production.module-shape")
-        if re.search(r"(?:^|[/\\])(?:__tests__|fixtures?|e2e|mocks?|msw)(?:[/\\.]|$)", path, re.I):
+        if re.search(r"(?:^|[/\\])(?:__tests__|fixtures?|e2e|mocks?|msw|MockWorldTransport|mockServiceWorker)(?:[/\\.]|$)", path, re.I):
             findings.append("production.mock-module")
     patterns = {
         "production.private-key": rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
         "production.jwt-literal": rb"eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}",
-        "production.credential-literal": rb"(?i)\b(?:access_?token|refresh_?token|password|client_secret|api_?key)\s*[:=]\s*[\"'][^\"'\r\n]{12,}[\"']",
+        "production.credential-literal": rb"(?i)\b(?:access_?token|refresh_?token|password|client_secret|api_?key)[\"']?\s*[:=]\s*[\"'][^\"'\r\n]{12,}[\"']",
         "production.mock-marker": rb"\b(?:MockWorldTransport|setupWorker|mockServiceWorker)\b",
     }
     for data in assets:
