@@ -385,3 +385,42 @@ the later Python-only packet does not imply a new native run. Quality-v7 remains
 a future source handoff and is not silently adopted. The component handoff is
 INTEGRATED; actual operator configuration/admission, fidelity/user acceptance and
 real multiuser qualification remain open. Readiness remains **NOT_ADMITTED**.
+
+## Quality-v8 producer assignment and revision allocation
+
+The separate avatar witness goal completed after independently verified master
+publication `4d5c044fa1b09cfd794a519d963bcd63d22c26d8`. A new unbudgeted
+spatial-v8 goal is active in the same isolated owned checkout on
+`codex/mcr-be-spatial-v8`, actual base
+`0779101878071e89a533f7e47c2dfdef1d1c82b1`.
+
+At that immutable published base the tracked backend releases for map ID
+`mcr_reference_scene_r3` contain only revisions3 and4. After this fresh source
+collision check, this producer allocates **new server map revision5** to the
+new quality-v8 candidate. This is a source identity reservation, not publication
+to any database or Product admission. Revision4, geometry899, spatial-v3 and
+quality-v6 remain byte for byte frozen; source proposal revision4 is not server
+revision4. The future native test must also exercise actual immutable-store
+collision handling and adoption from revision4.
+
+Frozen inputs are artist `492160b15465818eca172f4017f3816d58c989a9` and frontend
+`cf48c0fe`: normalized geometry
+`sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f`
+was recomputed from the actual source JSON. Exact frontend-owned Tiled resource
+`world/reference-scene-v2/runtime/spatial-v4/canonical-map.json` is24058 bytes,
+SHA256 `c589b9b01c3e9f7162ccf7443782363bc9c132dd807b5fe15557686df584cf6f`.
+The backend consumes those bytes; it does not author another serializer. The
+frontend-owned 34-object WORLD and 39-object MAP composition/resource descriptors
+remain exact source inputs. At this base the new runtime files exist only in
+the frontend handoff commit, so complete current-checkout binding is not yet
+qualified. Their publication/materialization must be coordinated without this
+worker writing frontend paths.
+
+Exact writable scope: new `backend/releases/reference-scene-v2/quality-v8/**`,
+`backend/scripts/mcr/{build_spatial_release.py,test_spatial_release.py}`, spatial
+portions of `backend/services/concert-service/src/bootstrap/{spatial,mod}.rs`,
+spatial cases in `backend/services/concert-service/tests/{bootstrap,bootstrap_runtime_config}.rs`,
+and this document. Root release/schema/registry/composition paths, frontend,
+source originals, manifests, lockfiles, migrations, motion C06 families and
+selected avatars are excluded. Validation and native publication are NOT_RUN
+for this new goal. No build target or database is held.
