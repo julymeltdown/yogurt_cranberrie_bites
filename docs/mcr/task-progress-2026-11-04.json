@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-11-04T10:34:05+09:00",
-  "published_snapshot": "a1f70c8aad14ac049d61c5072d67447d80e095c2",
+  "updated_at": "2026-11-04T10:52:38+09:00",
+  "published_snapshot": "18b6155081fbd7529cbd32d49eb12fd5d7606353",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 69,
+    "IMPLEMENTATION_EVIDENCED": 68,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 17,
+    "TASK_CRITERIA_SATISFIED": 18,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 29,
+  "recorded_task_criteria_outcomes": 30,
   "implementation_percentage": null,
   "limitations": [
-    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance; 10 additional task-local SATISFIED dispositions comprise the previous nine frontend records plus original BE25. No new king/SL technical acceptance is asserted.",
-    "75 denotes evidence of work, not 75 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
-    "10 unreconciled task statuses are not assumed NOT_STARTED.",
+    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 18 original-task criteria closures preserve the owners' exact dispositions, including FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
+    "68 denotes other evidence-bearing tasks, not 68 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "9 unreconciled task statuses are not assumed NOT_STARTED.",
     "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
     "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
   ],
@@ -828,12 +828,17 @@
       "id": "FE15",
       "title": "Mobile movement, camera, and interactions",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "INTEGRATED",
       "evidence": [
-        "docs/mcr/frontend/world-controls-layout.md"
+        "docs/mcr/frontend/world-controls-layout.md",
+        "docs/mcr/frontend/fe15-application-input.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "Implementation owner explicitly closes the original FE15 client/application remainder at INTEGRATED: actual application routes, WorldShell, production ports, composition, input controller and default Phaser engine are exercised together. No FE15-owned behavior remains open. The accounting bucket records original-criterion closure and does not relabel the owner disposition as SATISFIED or ACCEPTED.",
+      "known_followup": "IN01/IN05, physical-device, accessibility and release obligations retain their separate owners and criteria. FE07 scroll support does not close whole FE07.",
+      "published_integration_commits": [
+        "a84885f26b973a5cd49afbb29c86888563265924"
+      ]
     },
     {
       "id": "FE16",
@@ -1401,6 +1406,13 @@
       "owner_chat": "01a1a153-1227-7e72-801f-a2a6b91981e1",
       "receipt_commit": "62b4bf80dc24d72984d16f0db4e03fce44e3f750",
       "disposition": "SATISFIED, original frontend task criteria; production caller delivered, actual goal complete and clean STOP; combined live journey separate"
+    },
+    {
+      "recorded_at": "2026-11-04T10:52:38+09:00",
+      "task": "FE15",
+      "owner_chat": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+      "receipt_commit": "a84885f26b973a5cd49afbb29c86888563265924",
+      "disposition": "INTEGRATED; implementation owner explicitly closes original FE15 client/application remainder, no FE15-owned behavior remains; actual goal complete, null/clean STOP and leases returned. Separate live/device/QA/IN criteria are not added to this task."
     }
   ]
 }
