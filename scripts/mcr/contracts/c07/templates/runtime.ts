@@ -7,6 +7,22 @@ type Rule = boolean | Record<string, any>
 const doc: any = document
 const uri = new RegExp(uriPattern)
 const object = (v: unknown): v is Record<string, any> => v !== null && typeof v === 'object' && !Array.isArray(v)
+const patterns = new Map<string, RegExp>()
+function patternAccepts(source: string, value: string): boolean {
+  let compiled = patterns.get(source)
+  if (!compiled) {
+    let expression = '', escaped = false, inside = false
+    for (const char of source) {
+      if (escaped) { expression += char; escaped = false; continue }
+      if (char === '\\') { expression += char; escaped = true; continue }
+      if (char === '[') inside = true
+      if (char === ']') inside = false
+      expression += char === '$' && !inside ? '(?=\\n?(?![\\s\\S]))' : char
+    }
+    compiled = new RegExp(expression, 'u'); patterns.set(source, compiled)
+  }
+  return compiled.test(value)
+}
 function canonical(v: any): string {
   if (Array.isArray(v)) return `[${v.map(canonical).join(',')}]`
   if (object(v)) return `{${Object.keys(v).sort().map(k => `${JSON.stringify(k)}:${canonical(v[k])}`).join(',')}}`
@@ -65,7 +81,7 @@ function matches(s: Rule, v: any, depth: number, budget: { left: number }): bool
   if (typeof v === 'number' && ((s.minimum !== undefined && v < s.minimum) || (s.maximum !== undefined && v > s.maximum))) return false
   if (typeof v === 'string') {
     const length = Array.from(v).length
-    if ((s.minLength !== undefined && length < s.minLength) || (s.maxLength !== undefined && length > s.maxLength) || (s.pattern && !new RegExp(s.pattern, 'u').test(v)) || (s.format && !format(s.format, v))) return false
+    if ((s.minLength !== undefined && length < s.minLength) || (s.maxLength !== undefined && length > s.maxLength) || (s.pattern && !patternAccepts(s.pattern, v)) || (s.format && !format(s.format, v))) return false
     if (s['x-mcr-utf8-bytes'] !== undefined) {
       if (/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/u.test(v)) return false
       const bytes = new TextEncoder().encode(v).length, bounds = s['x-mcr-utf8-bytes']

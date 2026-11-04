@@ -48,9 +48,13 @@ operation delta: only additive `getConcertIntro`, with no removed or changed
 route identities. Motion candidate evidence remains candidate-only; none of
 this pin accounting grants art, runtime, privacy, service or release acceptance.
 
-The active pins are not yet changed. Fresh validation of the complete temporary
-candidate must pass before replacing them. Legacy QA01 also needs explicit
-coverage for the 62 newly published motion config fixtures and four v2 schemas.
+The active pins now name the audited canonical candidate
+`6dd22ede377df1bf2c1d1de55275f80277af839a`, after the full temporary-candidate
+preflight passed on admitted source `daa26b3d3282ae42015155e7c7a1f360ed27921b`.
+The exact record is
+`archive/forward-baseline-6dd22ede377df1bf2c1d1de55275f80277af839a.json`.
+The 62 published motion config fixtures and four v2 schemas have explicit
+coverage before the unchanged exhaustive fixture comparison.
 The Social policy fixtures use the retained trace/wire-rejection dispatch.
 Silently ignoring files or repinning around a failure is prohibited. After an
 audited forward update, the ordinary public positive command, all original
@@ -62,10 +66,16 @@ is `42a542e8f4b045a1afe426c1f6bdd56ba2c2b842`. Its consumption and refreshed
 audit are recorded in
 `archive/forward-baseline-2b390c234665252d03793779c3cc38ee00026cad.json`.
 The initial audit remains a historical snapshot, not a passing baseline. The
-corrected candidate still requires a fresh complete validation round before
-active pins change.
+corrected candidate next exposed the independently published transport metadata
+header drift. Its single-file repair is
+`efc1f56b19d3cd33d64a0aff6a960f0b772277bf`. The coherent three-projection
+candidate subsequently passed the full preflight: 229 source definitions,
+185 fixture outcomes, 135 operations and 1,528 responses. Only then were active
+pins replaced. The ordinary QA01 CLI and all 11 regressions, including the
+unchanged 12 negative probes, passed with exit 0. Historical failed receipts are
+retained separately; no negative setup or generator gate was weakened.
 
-There is no mutation of CI composition in this assignment. These commands can be
-invoked by a separately owned CI entrypoint. Coverage establishes offline QA01
+The separately granted C07 workflow invokes these complete public commands.
+Coverage establishes offline QA01
 criteria only, without promoting C07, production routes, art, live services,
 devices or IN gates. See the evidence README for the task disposition and pins.

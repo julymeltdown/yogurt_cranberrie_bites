@@ -1,7 +1,8 @@
 # C07 generated client and deterministic contract harness
 
-Status: IN_PROGRESS. C07 source qualification passed; full QA01 is blocked by
-historical pin drift. Combined CI and publication are pending.
+Status: INTEGRATED locally. Full QA01, its original negative probes, and all
+eight C07 checks pass after audited forward-baseline reconciliation. Publication
+is pending with the named publishing owner. GitHub Actions has not been run.
 
 The generator consumes the canonical `contracts/generated/mcr-domain.openapi.json`
 and the existing contract/fixture corpus without changing those inputs. It emits
@@ -32,8 +33,9 @@ The Zod adapter uses the public `z.custom<T>` API documented at
 
 Root's narrow follow-up grant permits only QA01 input namespace selection and
 fixture discovery changes plus exact regressions. Commit `970cc4e6` separates
-these two C07 prefixes from legacy QA01 discovery. The legacy pin file and
-existing fixture/schema/generator/output bytes remain frozen. Outside these exact
+these two C07 prefixes from legacy QA01 discovery. The historical pin file is
+preserved byte for byte; the later forward grant and three published projection
+prerequisites are recorded below. Outside these exact
 prefixes, new canonical inputs still reach the unchanged pin comparison and
 unclassified non-JSON fixtures still fail. CI invokes full QA01 and C07 together.
 
@@ -247,3 +249,60 @@ license, copyright Nicolas Aimetti 2019, is preserved exactly in
 notice. All formatted canonical leaf schemas gain independent Python decisions
 for year zero, leap days, URI control/unicode/path syntax and IPv6 boundaries.
 These source additions remain NOT_RUN until the next bounded full round.
+
+## Coherent baseline and final local qualification
+
+The later single-file published transport prerequisite is
+`efc1f56b19d3cd33d64a0aff6a960f0b772277bf`, consumed with provenance as
+`449fac5b`. It changes only the generated transport metadata header; its existing
+109 C04 metadata operations are distinct from the full 135-operation HTTP API.
+Together with published mirror repair `42a542e8`, it resolves the two preserved
+preflight failures without importing private Wall work or rewriting canonical
+inputs. The refreshed exact 84-delta audit is
+`archive/forward-baseline-6dd22ede377df1bf2c1d1de55275f80277af839a.json`.
+All earlier NOT_RUN, blocked and unchanged-pin statements above describe their
+historical rounds; this section records their subsequent resolution.
+
+`C07-COHERENT-SOURCE-B-202611041642Z` admitted clean source
+`daa26b3d3282ae42015155e7c7a1f360ed27921b` at 16:42:49 UTC on November 4.
+The canonical candidate remains `6dd22ede377df1bf2c1d1de55275f80277af839a`;
+all 230 candidate input hashes matched at admission. The complete temporary
+preflight exited 0 before any active-pin change, with 229 source definitions,
+185 fixture outcomes, 135 operations and 1,528 response outcomes. The archived
+historical pin bytes remain exact. The active candidate pin SHA-256 is
+`9e132bc28102bbda6c3060d662eb5154c40a4fd23242ba46eba656ec3bb3491a`.
+
+The final generator emits 18 inventoried files: both public client mirrors,
+format data and license notices, manifest, and deterministic fixture catalogs.
+The coherent document has 245 named schemas, 135 HTTP operations and 1,528
+operation/status/media witnesses. The expanded independent corpus contains
+36,897 Python compatibility decisions, including 6,388 accepts. Format leaf
+coverage includes operation parameters as well as components, plus canonical
+pattern boundaries. The runtime ports Python end-anchor semantics explicitly;
+it does not silently substitute browser URL or calendar behavior.
+
+Actual commands and exits, using the reproduction commands above:
+
+- Complete temporary candidate preflight: 0; active pins then applied conditionally.
+- Initial expanded-format generation: 1, because a property named `format` held
+  a dictionary. A type guard fixed the scan; subsequent generation: 0.
+- Public QA01 CLI: 0, PASS, with all counts above.
+- Complete QA01 unittest suite: 0, 11 tests, including all 12 original public
+  negative probes with exit 1 and their exact expected diagnostics.
+- First expanded C07 harness: 1 at runtime on a Python-versus-JavaScript `Z$`
+  terminal-newline mismatch. Earlier seven checks passed. The owner fixed the
+  pattern port and added independent pattern leaf boundary cases.
+- Final generator: 0; final complete C07 harness: 0, eight checks PASS.
+  Drift exits 0; all three deliberate mismatch probes exit 1 with the required
+  drift diagnostic; inventory and motion regressions exit 0; strict TypeScript
+  exits 0; all five Node runtime tests exit 0.
+
+The local evidence directory is `mcr-tools/c07-coherent-baseline-20261104T1634Z`:
+`baseline.json`, `canonical-snapshot.json`, `preflight.json`, both generation
+failure/fix logs, `qa01.log`, `qa01-regressions.log`, the failed `checks/` receipt,
+the passing `checks-fixed/` receipt/logs, and `qualification-summary.json`.
+No evidence is overwritten to conceal an earlier failure. The existing pinned
+Python/Node/Zod/TypeScript dependencies are used without local installation.
+These results establish generated contract and offline transport compatibility;
+they do not establish live multiuser, browser, art, backend, load, release or
+GitHub-hosted CI acceptance. Application adoption remains a separate FE task.

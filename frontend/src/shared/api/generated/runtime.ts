@@ -1,10 +1,28 @@
 // Generated public C07 runtime. No storage, application imports, or server authority.
 import { z } from 'zod'
 import { document } from './document.js'
+import { uriPattern } from './formats.js'
 import type { Schemas, Operations } from './types.js'
 type Rule = boolean | Record<string, any>
 const doc: any = document
+const uri = new RegExp(uriPattern)
 const object = (v: unknown): v is Record<string, any> => v !== null && typeof v === 'object' && !Array.isArray(v)
+const patterns = new Map<string, RegExp>()
+function patternAccepts(source: string, value: string): boolean {
+  let compiled = patterns.get(source)
+  if (!compiled) {
+    let expression = '', escaped = false, inside = false
+    for (const char of source) {
+      if (escaped) { expression += char; escaped = false; continue }
+      if (char === '\\') { expression += char; escaped = true; continue }
+      if (char === '[') inside = true
+      if (char === ']') inside = false
+      expression += char === '$' && !inside ? '(?=\\n?(?![\\s\\S]))' : char
+    }
+    compiled = new RegExp(expression, 'u'); patterns.set(source, compiled)
+  }
+  return compiled.test(value)
+}
 function canonical(v: any): string {
   if (Array.isArray(v)) return `[${v.map(canonical).join(',')}]`
   if (object(v)) return `{${Object.keys(v).sort().map(k => `${JSON.stringify(k)}:${canonical(v[k])}`).join(',')}}`
@@ -22,23 +40,24 @@ function resolve(ref: string): Rule {
 }
 function date(value: string): boolean {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
-  if (!m) return false
+  if (!m || m[0] !== value) return false
   const y = Number(m[1]), month = Number(m[2]), day = Number(m[3])
+  if (y < 1) return false
   const d = new Date(0); d.setUTCFullYear(y, month - 1, day)
   return d.getUTCFullYear() === y && d.getUTCMonth() === month - 1 && d.getUTCDate() === day
 }
 function format(kind: string, value: string): boolean {
-  if (kind === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
+  if (kind === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\s\S])/i.test(value)
   if (kind === 'date') return date(value)
   if (kind === 'date-time') {
-    const m = /^(\d{4}-\d{2}-\d{2})[Tt](\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:[Zz]|([+-])(\d{2}):(\d{2}))$/.exec(value)
-    return !!m && date(m[1]!) && Number(m[2]) < 24 && Number(m[3]) < 60 && Number(m[4]) < 60 && Number(m[6] ?? 0) < 24 && Number(m[7] ?? 0) < 60
+    const input = value.endsWith('\n') ? value.slice(0, -1) : value
+    const m = /^(\d{4}-\d{2}-\d{2})[Tt](\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:[Zz]|([+-])(\d{2}):(\d{2}))$/.exec(input)
+    return !!m && m[0] === input && date(m[1]!) && Number(m[2]) < 24 && Number(m[3]) < 60 && Number(m[4]) < 60 && Number(m[6] ?? 0) < 24 && Number(m[7] ?? 0) < 60
   }
   // Match the retained Python JSON Schema email annotation. Product policy is separate.
   if (kind === 'email') return value.includes('@')
   if (kind === 'uri') {
-    if (!/^[a-z][a-z0-9+.-]*:/i.test(value) || /[\s<>"{}|\\^`]|%(?![0-9a-f]{2})/i.test(value)) return false
-    try { new URL(value); return true } catch { return false }
+    return uri.test(value)
   }
   return kind === 'password' || kind === 'int64' || kind === 'binary'
 }
@@ -57,12 +76,12 @@ function matches(s: Rule, v: any, depth: number, budget: { left: number }): bool
   if (s.enum && !s.enum.some((x: unknown) => canonical(x) === canonical(v))) return false
   if (s.type) {
     const kinds = Array.isArray(s.type) ? s.type : [s.type]
-    if (!kinds.some((t: string) => t === 'null' ? v === null : t === 'object' ? object(v) : t === 'array' ? Array.isArray(v) : t === 'integer' ? Number.isSafeInteger(v) : t === 'number' ? typeof v === 'number' && Number.isFinite(v) : typeof v === t)) return false
+    if (!kinds.some((t: string) => t === 'null' ? v === null : t === 'object' ? object(v) : t === 'array' ? Array.isArray(v) : t === 'integer' ? Number.isInteger(v) : t === 'number' ? typeof v === 'number' && Number.isFinite(v) : typeof v === t)) return false
   }
   if (typeof v === 'number' && ((s.minimum !== undefined && v < s.minimum) || (s.maximum !== undefined && v > s.maximum))) return false
   if (typeof v === 'string') {
     const length = Array.from(v).length
-    if ((s.minLength !== undefined && length < s.minLength) || (s.maxLength !== undefined && length > s.maxLength) || (s.pattern && !new RegExp(s.pattern, 'u').test(v)) || (s.format && !format(s.format, v))) return false
+    if ((s.minLength !== undefined && length < s.minLength) || (s.maxLength !== undefined && length > s.maxLength) || (s.pattern && !patternAccepts(s.pattern, v)) || (s.format && !format(s.format, v))) return false
     if (s['x-mcr-utf8-bytes'] !== undefined) {
       if (/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/u.test(v)) return false
       const bytes = new TextEncoder().encode(v).length, bounds = s['x-mcr-utf8-bytes']

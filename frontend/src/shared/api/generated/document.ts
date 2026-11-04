@@ -8161,6 +8161,92 @@ export const document = {
         ],
         "type": "object"
       },
+      "Realtime_world_PolicyBaseline": {
+        "additionalProperties": false,
+        "properties": {
+          "eventId": {
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "policyRevision": {
+            "maximum": 9007199254740991,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "protocolVersion": {
+            "const": "1.0.0"
+          },
+          "scope": {
+            "const": "SOCIAL"
+          },
+          "streamId": {
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "type": {
+            "const": "policy.baseline"
+          }
+        },
+        "required": [
+          "protocolVersion",
+          "type",
+          "streamId",
+          "eventId",
+          "scope",
+          "policyRevision"
+        ],
+        "type": "object"
+      },
+      "Realtime_world_PolicyInvalidated": {
+        "additionalProperties": false,
+        "properties": {
+          "eventId": {
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "policyRevision": {
+            "maximum": 9007199254740991,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "protocolVersion": {
+            "const": "1.0.0"
+          },
+          "reason": {
+            "enum": [
+              "SOURCE_CHANGED",
+              "CONSENT_CHANGED",
+              "BLOCK_CHANGED",
+              "EXPIRED",
+              "CANONICAL_POLICY_CHANGED"
+            ]
+          },
+          "scope": {
+            "const": "SOCIAL"
+          },
+          "streamId": {
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "type": {
+            "const": "policy.invalidate"
+          }
+        },
+        "required": [
+          "protocolVersion",
+          "type",
+          "streamId",
+          "eventId",
+          "scope",
+          "policyRevision",
+          "reason"
+        ],
+        "type": "object"
+      },
       "Realtime_world_Resync": {
         "additionalProperties": false,
         "properties": {
@@ -8293,6 +8379,12 @@ export const document = {
           },
           {
             "$ref": "#/components/schemas/Realtime_world_ServerPing"
+          },
+          {
+            "$ref": "#/components/schemas/Realtime_world_PolicyBaseline"
+          },
+          {
+            "$ref": "#/components/schemas/Realtime_world_PolicyInvalidated"
           }
         ]
       },

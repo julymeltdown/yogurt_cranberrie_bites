@@ -190,7 +190,10 @@ def render(include_fixtures=True, probe=None):
             'uri':['http://','urn:example:item','custom:','https://한글.example/','https://example.test/é','https://example.test/[x]','https://example.test/%C3%A9','http://[::1]/','https://example.test/\n','https://example.test/\x01'],
         }
         for node in nodes(source):
-            if isinstance(node,dict) and node.get('format') in formats:differential(node,formats[node['format']])
+            if isinstance(node,dict) and isinstance(node.get('format'),str) and node['format'] in formats:differential(node,formats[node['format']])
+            if isinstance(node,dict) and isinstance(node.get('pattern'),str):
+                value=witnesses.make(node)
+                if isinstance(value,str):differential(node,[value+'\n',value+'\r\n','\n'+value,value+'\n\n'])
         for identity,op in doc['operations'].items():
             request={}
             for location,name in [('path','path'),('query','query'),('header','headers')]:
