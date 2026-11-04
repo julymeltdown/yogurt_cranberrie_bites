@@ -1,0 +1,4422 @@
+{
+  "format": "MCR_FACADE_COMPOSED_SOURCE_V3",
+  "version": "map-facade-derived-v3",
+  "sourceCommit": "da33467cd084ecba071244a1939b6217f4b0de02",
+  "sourcePublication": "efa9d95653de7595273c903741fb283bcfe3d90f",
+  "baselinePins": [
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/README.md",
+      "bytes": 2162,
+      "sha256": "sha256:5994b8074a7c201b001bb0ebe04bec6b39deb4826f5790c41b04fb83c4684311"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/build.py",
+      "bytes": 17643,
+      "sha256": "sha256:4c192b13a967bb490a1318f5a6cce0944e5d52ee91e33f1bdc233432b0ae1314"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/danger-scene.png",
+      "bytes": 716634,
+      "sha256": "sha256:b4dbf3f41e392e2f37ce78f907336055938c4b6611925c79ad13f41b15d2e931"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/danger-scene.svg",
+      "bytes": 2037405,
+      "sha256": "sha256:995d576574c0221d61599db395061f26b8a0208db97cc97775e01e764ce1c513"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/layout.json",
+      "bytes": 157579,
+      "sha256": "sha256:d9e401f6254df05530174b04b16655aa5f89fed68fa02c90f6a653e6a8010e91"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/parade-scene.png",
+      "bytes": 727171,
+      "sha256": "sha256:d820853d14efe04f84cd8b8f08da5bc8c67850f3b19c43170b237207583a93c2"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/parade-scene.svg",
+      "bytes": 2067641,
+      "sha256": "sha256:956f6a6aab8ceec3756d4ad60a45aeed9b1b67a99ebd31fcf5f08f8b867dbcc3"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/revenge-scene.png",
+      "bytes": 709817,
+      "sha256": "sha256:5669a7861851a1b95bd1f2ad48e222f2e73dcd471622405f48000a33419f1606"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/revenge-scene.svg",
+      "bytes": 2035193,
+      "sha256": "sha256:6c1d91478f8131e347f96b0a8a5c186618196d282fac366afe861e6080ce8e8b"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/source-provenance.json",
+      "bytes": 186313,
+      "sha256": "sha256:259a407d711e520e4abc5c0d8c3259cf118d3511d9effd9198521a5b7d996990"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+      "bytes": 1201118,
+      "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+      "bytes": 1176781,
+      "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "bytes": 1178440,
+      "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "bytes": 32665,
+      "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+      "bytes": 16615,
+      "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
+      "bytes": 14186,
+      "sha256": "sha256:b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "bytes": 47336,
+      "sha256": "sha256:847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/source-binding.json",
+      "bytes": 11519,
+      "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+    },
+    {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    }
+  ],
+  "originalCropPins": [
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "canopyRgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "west_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:c8638a36864ee081f8a5b11aabf8feff5019ad22a399c42abce1f0b6096bbab6",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 774,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:cc386ed83d28b0b84cebb650baa857b11e7e9137e38473d57e9429080c668efd",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_dark",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "canopyRgbaSha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_yellow",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:baa9b22ea4d6b6bb0f78c08af09db453a2ff8e0237461808d0bffbf08215547e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "north_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:bbefa9f2e33075be1bd6aa7a2c5b974ef31f4fa3d4e0c5477914e7ab698f178e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 518,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:d214b484e3a064bd627a89270064a15e8c3e6bbf645767363cbcc291b0f82bb8",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "giveaway_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:34e958c1b8afa6763beb790be4b70536a0038c886ae7e2e7df3142c23123f4e3",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 262,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:98e9a7232d2e1171ed658bea3e7b994522c0703d0468a981270f2735e615a00d",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "meeting_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:e26a699d3d251ce364f12e670403a1004314ff3247231623f58fcce766be696d",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 6,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:11ee01e381215365fe2f3cce482dcd9b5d25a72e776bf1f82c416ece01801c48",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_red",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:711c1a0b9ea2810685e5e4d94ef12b715d1c739d5b6a08dca74d3ff192271e1e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "white_food_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:23c10f40880c32074173bebec1496f823bb17b315408dae0d8fc8ad364c2dcca",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "plaza_furniture",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 268,
+        "y": 815,
+        "width": 231,
+        "height": 161
+      },
+      "rgbaSha256": "sha256:b63e47ce5e6b440c32540c827a6f1a8dbeb3e2bf550e6494eafe045d3467c37f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "white_merch_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 273,
+        "y": 16,
+        "width": 222,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:fe8ccfaa8b18a727b65c803c3e78e63a016263dad256782115de7118db530536",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "canopyRgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "west_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:9790228e378f1595affa5d57911c589c526894beee39ca5854fb85989a499716",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 774,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:7faacfdd69f0f63e1ccfb745605e22e6945be7134313d59022e566c5016aaf09",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_dark",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "canopyRgbaSha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_yellow",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:272672f92436a2a481e1f74dd1154fe0004fbda62ae3a6d083129131bd75a21b",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "north_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:594ded455f5925f95d61063dc087826c0d690370b3534e9fc7c1bb695841c65f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 518,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:37a46aae78a005703e08883be08b29ced9dea3d3783468656e46dd914caab82b",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "giveaway_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:fdfc59a56069d300890ad6ad92ad824f0eacb40d1e9cdb0b0c946ad3cc858418",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 262,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:c6cb6209ae565a133b9f5bda4a8b8901e0f5d85b5a1b4443a7a57676b0443130",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "meeting_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:5367400ec9518305373c114b43d00ee86e4cf4e8a8a910b19e07b40b9860ec23",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 6,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:a4a776138cf1fe86373eff91f11944fcc24717a90c0895e29553853840e8b6cc",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_red",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:635fe197e906e1eca7c7a669e45370a2f53c5caca1b5823373c863e59a5ecfb1",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "white_food_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:dfb76e1b0ccc57846919ba8f501188d2fe899afb0de3b57b45dfdf33f20ee899",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "plaza_furniture",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 268,
+        "y": 815,
+        "width": 231,
+        "height": 161
+      },
+      "rgbaSha256": "sha256:3e969812a402cb3f8e8199159a8307c52d51cfa5c9d802771aba565cdd97288a",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "white_merch_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 274,
+        "y": 16,
+        "width": 220,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:2a04d91132e8e16ef29ad2cbc35c613bab542f3acf4e9c3c43ca1b8cbd462a24",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "canopyRgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "west_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:35f149026e0d49352b50451e3b07337ef3c37719cb526d80f084e3b02060152f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 774,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:fb92e998bd4df9d3f66362e6e4f9d79decb60287c8bd8e9635ef29f928642d1b",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_dark",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "canopyRgbaSha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_yellow",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:62a9d99553dc31dd0645ded88048f7fefd98c465a649fab789d2c594e3f6ccc8",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "north_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:6f606a6d7759c0ef46b4f5f61f07e6d1fb43dd9a9092ab178aa48ecf7058c78b",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 518,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:9d35c48a1b85b56de55fa0999573ba3d41cade5c2fedce01d315731f4a0f2809",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "giveaway_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:2da47bd423a32fb4a4fc77c43b1cf2f0f752c4c826b8d64d04692b94894787e7",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 262,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:9028b7a049c429f9454c9ba6c7b9f87d7e5aa11c27923d855dd6846d07b9704f",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "meeting_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:9709709a299238f1246bf5366723b379a96615f6670dce3fdb18bb995116abbd",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 6,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:b0c2eb3e0b3a18dce5826317dd58971fce07686a21687b5ebbbdb2afa950dcf8",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_red",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:3d153d5963b10d39670ef733106e3c6a33dd145a7388e36219e283d5e1a145a6",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "white_food_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 528,
+        "y": 17,
+        "width": 224,
+        "height": 221
+      },
+      "rgbaSha256": "sha256:2209fc308e88ff452b43fe98785a8e831e1cd6ffe8e9d13b9467439aa61aa7bc",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "plaza_furniture",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 269,
+        "y": 815,
+        "width": 229,
+        "height": 161
+      },
+      "rgbaSha256": "sha256:84afa3a865f100e11ef2872b5de3d5b03a8134e9e8cf2daa462709bfaf595942",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "white_merch_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 275,
+        "y": 16,
+        "width": 218,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:b32695b7e05beecc890e857c847b5f1a642732df67eb15e32750ea5f22cd69a4",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    }
+  ],
+  "additionCropPins": [
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_green",
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_dark",
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_yellow",
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:baa9b22ea4d6b6bb0f78c08af09db453a2ff8e0237461808d0bffbf08215547e",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "shrub_bed",
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_green",
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_dark",
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_yellow",
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:272672f92436a2a481e1f74dd1154fe0004fbda62ae3a6d083129131bd75a21b",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "shrub_bed",
+      "sourceRect": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_green",
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_dark",
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_yellow",
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:62a9d99553dc31dd0645ded88048f7fefd98c465a649fab789d2c594e3f6ccc8",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "shrub_bed",
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "alphaPolicy": "EXACT_WHOLE_SOURCE_RGBA_NO_RETOUCH"
+    }
+  ],
+  "helperPin": {
+    "path": "frontend/public/world/map-reference-composition-v1/build.py",
+    "bytes": 42327,
+    "sha256": "sha256:6bf696b7c3edd5adf35e0b5995ca9cd33f915e87898de0e9266f2923cffc0433"
+  },
+  "groundBinding": {
+    "path": "frontend/public/world/map-lawns-derived-v3/interface.json",
+    "bytes": 409817,
+    "sha256": "510cb384d58a8007f33f9a009b823a2acc296748074e12fc4116db54e70c5c31"
+  },
+  "allowedBounds": {
+    "map_only_stage_west_wing": [
+      159,
+      361,
+      164,
+      33
+    ],
+    "map_only_stage_central_hall": [
+      307,
+      361,
+      199,
+      41
+    ],
+    "map_only_stage_east_wing": [
+      456,
+      362,
+      161,
+      33
+    ]
+  },
+  "componentsByTheme": {
+    "REVENGE": {
+      "map_only_stage_west_wing": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                205,
+                365,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                274,
+                365,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            176,
+            367,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                367,
+                24,
+                23
+              ],
+              "rgba": [
+                236,
+                212,
+                187,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                387,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                179,
+                370,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                181,
+                372,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                187,
+                371,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                178,
+                384,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                177,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                197,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_recessed_bay_3",
+          "role": "recessed_bay",
+          "rect": [
+            225,
+            367,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                367,
+                24,
+                23
+              ],
+              "rgba": [
+                236,
+                212,
+                187,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                387,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                228,
+                370,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                230,
+                372,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                236,
+                371,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                227,
+                384,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                226,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                246,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                229,
+                386,
+                16,
+                2
+              ],
+              "rgba": [
+                180,
+                189,
+                151,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                231,
+                384,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                239,
+                384,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            }
+          ]
+        }
+      ],
+      "map_only_stage_east_wing": [
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                501,
+                366,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                569,
+                366,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            520,
+            368,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                368,
+                24,
+                23
+              ],
+              "rgba": [
+                229,
+                217,
+                190,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                368,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                523,
+                371,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                525,
+                373,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                531,
+                372,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                522,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                521,
+                371,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                541,
+                371,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                524,
+                387,
+                16,
+                2
+              ],
+              "rgba": [
+                180,
+                189,
+                151,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                526,
+                385,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                534,
+                385,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            }
+          ]
+        }
+      ],
+      "map_only_stage_central_hall": [
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                357,
+                365,
+                6,
+                33
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                452,
+                365,
+                6,
+                18
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            327,
+            367,
+            24,
+            24
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                367,
+                24,
+                24
+              ],
+              "rgba": [
+                237,
+                224,
+                191,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                330,
+                370,
+                18,
+                16
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                332,
+                372,
+                14,
+                12
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                338,
+                371,
+                2,
+                14
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                329,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                328,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                348,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_recessed_bay_3",
+          "role": "recessed_bay",
+          "rect": [
+            458,
+            367,
+            24,
+            24
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                367,
+                24,
+                24
+              ],
+              "rgba": [
+                237,
+                224,
+                191,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                461,
+                370,
+                18,
+                16
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                463,
+                372,
+                14,
+                12
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                469,
+                371,
+                2,
+                14
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                460,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                459,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                479,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "PARADE": {
+      "map_only_stage_west_wing": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                205,
+                365,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                274,
+                365,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            176,
+            367,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                367,
+                24,
+                23
+              ],
+              "rgba": [
+                236,
+                212,
+                187,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                387,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                179,
+                370,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                181,
+                372,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                187,
+                371,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                178,
+                384,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                177,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                197,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_recessed_bay_3",
+          "role": "recessed_bay",
+          "rect": [
+            225,
+            367,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                367,
+                24,
+                23
+              ],
+              "rgba": [
+                236,
+                212,
+                187,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                387,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                228,
+                370,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                230,
+                372,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                236,
+                371,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                227,
+                384,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                226,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                246,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                229,
+                386,
+                16,
+                2
+              ],
+              "rgba": [
+                180,
+                189,
+                151,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                231,
+                384,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                239,
+                384,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            }
+          ]
+        }
+      ],
+      "map_only_stage_east_wing": [
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                501,
+                366,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                569,
+                366,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            520,
+            368,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                368,
+                24,
+                23
+              ],
+              "rgba": [
+                229,
+                217,
+                190,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                368,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                523,
+                371,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                525,
+                373,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                531,
+                372,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                522,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                521,
+                371,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                541,
+                371,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                524,
+                387,
+                16,
+                2
+              ],
+              "rgba": [
+                180,
+                189,
+                151,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                526,
+                385,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                534,
+                385,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            }
+          ]
+        }
+      ],
+      "map_only_stage_central_hall": [
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                357,
+                365,
+                6,
+                33
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                452,
+                365,
+                6,
+                18
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            327,
+            367,
+            24,
+            24
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                367,
+                24,
+                24
+              ],
+              "rgba": [
+                237,
+                224,
+                191,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                330,
+                370,
+                18,
+                16
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                332,
+                372,
+                14,
+                12
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                338,
+                371,
+                2,
+                14
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                329,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                328,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                348,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_recessed_bay_3",
+          "role": "recessed_bay",
+          "rect": [
+            458,
+            367,
+            24,
+            24
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                367,
+                24,
+                24
+              ],
+              "rgba": [
+                237,
+                224,
+                191,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                461,
+                370,
+                18,
+                16
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                463,
+                372,
+                14,
+                12
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                469,
+                371,
+                2,
+                14
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                460,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                459,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                479,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "DANGER": {
+      "map_only_stage_west_wing": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                205,
+                365,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                274,
+                365,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            176,
+            367,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                367,
+                24,
+                23
+              ],
+              "rgba": [
+                236,
+                212,
+                187,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                176,
+                387,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                179,
+                370,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                181,
+                372,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                187,
+                371,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                178,
+                384,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                177,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                197,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing_recessed_bay_3",
+          "role": "recessed_bay",
+          "rect": [
+            225,
+            367,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                367,
+                24,
+                23
+              ],
+              "rgba": [
+                236,
+                212,
+                187,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                225,
+                387,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                228,
+                370,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                230,
+                372,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                236,
+                371,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                227,
+                384,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                226,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                246,
+                370,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                229,
+                386,
+                16,
+                2
+              ],
+              "rgba": [
+                180,
+                189,
+                151,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                231,
+                384,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                239,
+                384,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            }
+          ]
+        }
+      ],
+      "map_only_stage_east_wing": [
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                501,
+                366,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                569,
+                366,
+                6,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            520,
+            368,
+            24,
+            23
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                368,
+                24,
+                23
+              ],
+              "rgba": [
+                229,
+                217,
+                190,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                368,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                520,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                523,
+                371,
+                18,
+                15
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                525,
+                373,
+                14,
+                11
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                531,
+                372,
+                2,
+                13
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                522,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                521,
+                371,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                541,
+                371,
+                2,
+                17
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                524,
+                387,
+                16,
+                2
+              ],
+              "rgba": [
+                180,
+                189,
+                151,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                526,
+                385,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                534,
+                385,
+                3,
+                2
+              ],
+              "rgba": [
+                230,
+                181,
+                172,
+                255
+              ]
+            }
+          ]
+        }
+      ],
+      "map_only_stage_central_hall": [
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "role": "negative_gap",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                357,
+                365,
+                6,
+                33
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "role": "negative_gap",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "operations": [
+            {
+              "kind": "clear",
+              "rect": [
+                452,
+                365,
+                6,
+                18
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_recessed_bay_2",
+          "role": "recessed_bay",
+          "rect": [
+            327,
+            367,
+            24,
+            24
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                367,
+                24,
+                24
+              ],
+              "rgba": [
+                237,
+                224,
+                191,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                327,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                330,
+                370,
+                18,
+                16
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                332,
+                372,
+                14,
+                12
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                338,
+                371,
+                2,
+                14
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                329,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                328,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                348,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall_recessed_bay_3",
+          "role": "recessed_bay",
+          "rect": [
+            458,
+            367,
+            24,
+            24
+          ],
+          "operations": [
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                367,
+                24,
+                24
+              ],
+              "rgba": [
+                237,
+                224,
+                191,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                367,
+                24,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                458,
+                388,
+                24,
+                3
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                461,
+                370,
+                18,
+                16
+              ],
+              "rgba": [
+                108,
+                97,
+                102,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                463,
+                372,
+                14,
+                12
+              ],
+              "rgba": [
+                247,
+                222,
+                176,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                469,
+                371,
+                2,
+                14
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                460,
+                385,
+                20,
+                2
+              ],
+              "rgba": [
+                138,
+                109,
+                104,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                459,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            },
+            {
+              "kind": "rect",
+              "rect": [
+                479,
+                370,
+                2,
+                18
+              ],
+              "rgba": [
+                192,
+                163,
+                139,
+                255
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "facadeMaskPins": {
+    "REVENGE": {
+      "map_only_stage_central_hall": {
+        "bytes": 995328,
+        "sha256": "sha256:b352dc6b4bf7ec00e221fa629c0ea66f84e27afaae0e5844cbea693558907f82",
+        "pixels": 3729
+      },
+      "map_only_stage_east_wing": {
+        "bytes": 995328,
+        "sha256": "sha256:7c3104d59477f4f13eb15f8dc3223439e9dd105dbb280130905af30dd7fff61c",
+        "pixels": 3236
+      },
+      "map_only_stage_west_wing": {
+        "bytes": 995328,
+        "sha256": "sha256:0fb7321e4bd0ce1f8c75653741fc2b94bd6438a3b740e2280b300f37178d121b",
+        "pixels": 4553
+      }
+    },
+    "PARADE": {
+      "map_only_stage_central_hall": {
+        "bytes": 995328,
+        "sha256": "sha256:b352dc6b4bf7ec00e221fa629c0ea66f84e27afaae0e5844cbea693558907f82",
+        "pixels": 3729
+      },
+      "map_only_stage_east_wing": {
+        "bytes": 995328,
+        "sha256": "sha256:7c3104d59477f4f13eb15f8dc3223439e9dd105dbb280130905af30dd7fff61c",
+        "pixels": 3236
+      },
+      "map_only_stage_west_wing": {
+        "bytes": 995328,
+        "sha256": "sha256:0fb7321e4bd0ce1f8c75653741fc2b94bd6438a3b740e2280b300f37178d121b",
+        "pixels": 4553
+      }
+    },
+    "DANGER": {
+      "map_only_stage_central_hall": {
+        "bytes": 995328,
+        "sha256": "sha256:b352dc6b4bf7ec00e221fa629c0ea66f84e27afaae0e5844cbea693558907f82",
+        "pixels": 3729
+      },
+      "map_only_stage_east_wing": {
+        "bytes": 995328,
+        "sha256": "sha256:7c3104d59477f4f13eb15f8dc3223439e9dd105dbb280130905af30dd7fff61c",
+        "pixels": 3236
+      },
+      "map_only_stage_west_wing": {
+        "bytes": 995328,
+        "sha256": "sha256:0fb7321e4bd0ce1f8c75653741fc2b94bd6438a3b740e2280b300f37178d121b",
+        "pixels": 4553
+      }
+    }
+  },
+  "groundMaskPins": {
+    "REVENGE": {
+      "sha256": "sha256:ad196d0d87da2cfb883abf3975b27d51c8185202e5e00303fe878c2ed2a7aef0",
+      "pixels": 12749
+    },
+    "PARADE": {
+      "sha256": "sha256:fd4f67fbabc20ed3916ff5cd838987e64781609536794af379409296238c40eb",
+      "pixels": 12749
+    },
+    "DANGER": {
+      "sha256": "sha256:ca97d3f83c07d5d243dcc4d8f8b5ffd0cba692c255354a4cebf30523c44ed383",
+      "pixels": 12730
+    }
+  },
+  "actualByTheme": {
+    "REVENGE": {
+      "changedPixels": 6659,
+      "facadeChangedPixels": 3714,
+      "groundChangedPixels": 2945,
+      "trueGaps": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:70d2c753cffabdba8a1a00adacda6cbbf7da37a5682e54cec3640e340f78926d"
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:6f5a467c73b71313f250fef62a81222b5c9a753ddf68af979261374d8be06ff0"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:f4de83241590db43af7f76aecc85a9ba3dd45a570360e367820268c43d31e10b"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:ca295d8c818f1386305b8a0f761aa3824aee775671cb10f8b976290a846ea83b"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "underlyingRgbSha256": "sha256:e02fed17da3788f930ce59330173ab4e871762343b8cbf2a173d53cab559e0f6"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "underlyingRgbSha256": "sha256:eceab401d1f5b9da42fcc6fe4ef7401cbc40342d5dce152d372b0b03b89021d3"
+        }
+      ]
+    },
+    "PARADE": {
+      "changedPixels": 6659,
+      "facadeChangedPixels": 3714,
+      "groundChangedPixels": 2945,
+      "trueGaps": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:c1bd21be2d4f90befe13d030e8b896d69c8684f7d13a9339df998652961fa6e1"
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:58a7b7d5e45a59d0970df9dd28f441576b171c9c90de9566e6bce6a456075ae0"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:156fda25f840634eae86c869c4e5969b6d3f992472987ba0c3fef1f74e73bda6"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:5cbe886eba958da1a4f42f2872c91b8213ad07a163b84e3abaa97dbace4a7df7"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "underlyingRgbSha256": "sha256:29e32e992fe58e49e9340513c5a121f088de9109da77416e98eed5d90c4c6ea8"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "underlyingRgbSha256": "sha256:8386c2313c15a8bdaf5e6b9fe91595bf4b64aa8c54701535f7dd1602e5ae3f1e"
+        }
+      ]
+    },
+    "DANGER": {
+      "changedPixels": 6666,
+      "facadeChangedPixels": 3714,
+      "groundChangedPixels": 2952,
+      "trueGaps": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:fc6f6791809348890e79ceb314c3d2b61946c4fc66f570ba214665a07c6e439c"
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:93016f4da62a744eedd28402fb870aaa162129eb168cadaa4b27019ac044faba"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:4d262ebf6578be7ac3edcd1e4e493e32b9833e72fcfdf7902561db6219fc4a33"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:7cec58fc836d4c7ea53e05c6154584face163fb2f095680966129e5875ffb0ab"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "underlyingRgbSha256": "sha256:dbf8a3f9b3d8c0c3f69b239d2c345f01f4bb68065fa3e858082db711fafd90c8"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "underlyingRgbSha256": "sha256:5b51f01ec9042618884df223915b98740504e77b944e62fbaf5dc18bc8f0f744"
+        }
+      ]
+    }
+  },
+  "incumbentDecorationsExact": 285,
+  "protectedLabelRectanglesExact": 18,
+  "frozenV2RecompositionExactEras": 3,
+  "policy": "NEW_AUTHORED_FACADE_ONLY_IN_ROOT_ALPHA_SUPPORT_MASK_AND_QUALIFIED_DISJOINT_GROUND",
+  "originalSourcePolicy": "ALL_ORIGINAL_BYTES_UNCHANGED; THREE_PROJECTED_FACADES_ONLY_HAVE_EXPLICIT_NEW_DERIVATIVE_EXCEPTION",
+  "recipe": {
+    "path": "frontend/public/world/map-facade-derived-v3/build.py",
+    "bytes": 26872,
+    "sha256": "sha256:cc68e8fa4d6a6e9680935e781b9116031dde4deb83a9099440739620e8c753c3"
+  },
+  "outputs": [
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/revenge-scene.png",
+      "bytes": 706846,
+      "sha256": "sha256:621719f6374cd0e0add66597f666d3b6908bbc33d84d866cef02ef77a04476bf"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/revenge-scene.svg",
+      "bytes": 2111713,
+      "sha256": "sha256:77ae39820a8e271380186a0c879464793698d213cc029d255531eda8a629ef93"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/parade-scene.png",
+      "bytes": 723812,
+      "sha256": "sha256:b995dba074fa869a8541fe762c8bbb97ae9ec06d15e9fe3de1aa9bb44f0d6a92"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/parade-scene.svg",
+      "bytes": 2144161,
+      "sha256": "sha256:010c483305748051ed8904bea10dd09e026511396bb3c3d5e723ee410187b19c"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/danger-scene.png",
+      "bytes": 713561,
+      "sha256": "sha256:f1f231ec9ef46be8d72f2981484833c1001b6f395b7d8c0c0dd555a41d7e2bb6"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/danger-scene.svg",
+      "bytes": 2114079,
+      "sha256": "sha256:3ebb7d5cf6df657402e8fe81709814cfe72090f5444cee23dc71ec94977c193a"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/layout.json",
+      "bytes": 222360,
+      "sha256": "sha256:fa1fa1ca49d21648bf3bf753c451be1538a5290cf850473df3f9204af6aa9545"
+    }
+  ],
+  "license": {
+    "newVectors": "Original project-authored masonry, recessed bays and true facade gaps; no external assets or fonts",
+    "inherited": {
+      "newVectors": "Original project-authored roof and paving vectors; no external asset/font dependency",
+      "inheritedSources": "Immutable cozy scenery generated-source/prompt and originalCropPins; no relicensing or human review claim",
+      "sourceRecord": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+      "inputPins": [
+        {
+          "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+          "bytes": 5364,
+          "sha256": "sha256:1453f533b9a18c3554fcefeddcc08e684e00f5e2ff87fb89bba47180116b041e"
+        },
+        {
+          "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/prompt.txt",
+          "bytes": 3426,
+          "sha256": "sha256:f6e3fe63e363b7323476c8c96ed4455867e83c7b34938ed32ba301ba6cc57ac4"
+        },
+        {
+          "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-original.png",
+          "bytes": 2120690,
+          "sha256": "sha256:db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514"
+        }
+      ]
+    },
+    "ground": {
+      "path": "frontend/public/world/map-lawns-derived-v3/interface.json",
+      "bytes": 409817,
+      "sha256": "510cb384d58a8007f33f9a009b823a2acc296748074e12fc4116db54e70c5c31"
+    }
+  },
+  "notRun": [
+    "consumer/App adoption",
+    "SVG-engine parity",
+    "authoritative World/operator release",
+    "device/live/physical",
+    "whole reference acceptance"
+  ]
+}

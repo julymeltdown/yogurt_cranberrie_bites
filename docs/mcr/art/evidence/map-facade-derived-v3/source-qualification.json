@@ -1,0 +1,474 @@
+{
+  "format": "MCR_FACADE_SOURCE_QUALIFICATION_V1",
+  "status": "PASS",
+  "sourceImplementationCommit": "c80ddb2a3cedc04b7e2d097bd088cc1e8340bbbd",
+  "canonicalInputBase": "11473eaadce225a59770cb9bb599d5aab8947da7",
+  "offer": "ART-MAP-V3-FOUNDATION-FINAL-20261104T2327Z",
+  "receipt": {
+    "path": "docs/mcr/art/evidence/map-facade-derived-v3/ART-MAP-V3-FOUNDATION-FINAL-20261104T2327Z.jsonl",
+    "bytes": 79231,
+    "sha256": "d5542c6199d7feebbb1f67ebab44151a581cad962bbc7d1d7905b9957d1b3866"
+  },
+  "independentGuardianReceipt": {
+    "path": "docs/mcr/art/evidence/map-facade-derived-v3/ART-MAP-V3-FOUNDATION-FINAL-20261104T2327Z-independent-guardian.jsonl",
+    "bytes": 628,
+    "sha256": "6fd93e5584bb4decb19761b14f25b42dd15b4dbbc0c5e0bd35831b1597a973fa"
+  },
+  "accept": "2026-11-04T23:26:43.919846+00:00",
+  "full": {
+    "event": "FULL",
+    "at": "2026-11-04T23:27:36.688380+00:00",
+    "status": "PASS",
+    "tempAbsent": true,
+    "guardian": 60001,
+    "workerPids": [
+      60288,
+      60780,
+      60902,
+      61747,
+      62540,
+      62917
+    ],
+    "allChildrenExited": true,
+    "resourceGuardianPid": 60132,
+    "resourceGuardianExited": true,
+    "peak": {
+      "whole": 3852783762,
+      "new": 64072409,
+      "tmp": 2208822,
+      "rss": 399622144,
+      "processes": 4
+    },
+    "minimumFree": 17360220160,
+    "finalFree": 17361629184,
+    "samples": 54,
+    "sampledPidCount": 114
+  },
+  "commands": [
+    {
+      "name": "facade-foundation",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/map-facade-derived-v3/foundation.py",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-facade-rczo9cvh/previews"
+      ],
+      "exit": 0,
+      "seconds": 2.782
+    },
+    {
+      "name": "independent-foundation-tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/world/reference-scene/map-facade-derived-v3/foundation.test.ts",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-facade-rczo9cvh/previews"
+      ],
+      "exit": 0,
+      "seconds": 0.942
+    },
+    {
+      "name": "build",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/map-facade-derived-v3/build.py"
+      ],
+      "exit": 0,
+      "seconds": 3.847
+    },
+    {
+      "name": "verify",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/map-facade-derived-v3/build.py",
+        "--verify"
+      ],
+      "exit": 0,
+      "seconds": 3.757
+    },
+    {
+      "name": "pure-qualifier-tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/world/reference-scene/map-facade-derived-v3/qualifier.test.ts"
+      ],
+      "exit": 0,
+      "seconds": 1.848
+    },
+    {
+      "name": "source-previews",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/map-facade-derived-v3/previews.py",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-facade-rczo9cvh/previews",
+        "ART-MAP-V3-FOUNDATION-FINAL-20261104T2327Z",
+        "1"
+      ],
+      "exit": 0,
+      "seconds": 0.92
+    }
+  ],
+  "foundationNodeCases": 7,
+  "combinedNodeCases": 14,
+  "attempts": 1,
+  "sourceOrControlRepairs": 0,
+  "outputs": [
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/revenge-scene.png",
+      "bytes": 706846,
+      "sha256": "621719f6374cd0e0add66597f666d3b6908bbc33d84d866cef02ef77a04476bf"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/revenge-scene.svg",
+      "bytes": 2111713,
+      "sha256": "77ae39820a8e271380186a0c879464793698d213cc029d255531eda8a629ef93"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/parade-scene.png",
+      "bytes": 723812,
+      "sha256": "b995dba074fa869a8541fe762c8bbb97ae9ec06d15e9fe3de1aa9bb44f0d6a92"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/parade-scene.svg",
+      "bytes": 2144161,
+      "sha256": "010c483305748051ed8904bea10dd09e026511396bb3c3d5e723ee410187b19c"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/danger-scene.png",
+      "bytes": 713561,
+      "sha256": "f1f231ec9ef46be8d72f2981484833c1001b6f395b7d8c0c0dd555a41d7e2bb6"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/danger-scene.svg",
+      "bytes": 2114079,
+      "sha256": "3ebb7d5cf6df657402e8fe81709814cfe72090f5444cee23dc71ec94977c193a"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/layout.json",
+      "bytes": 222360,
+      "sha256": "fa1fa1ca49d21648bf3bf753c451be1538a5290cf850473df3f9204af6aa9545"
+    },
+    {
+      "path": "frontend/public/world/map-facade-derived-v3/source-provenance.json",
+      "bytes": 109356,
+      "sha256": "0309f57144090ecbe756973fd2113d6aa83d69ce96d48846680ecd6a84b268e8"
+    }
+  ],
+  "actualByTheme": {
+    "REVENGE": {
+      "changedPixels": 6659,
+      "facadeChangedPixels": 3714,
+      "groundChangedPixels": 2945,
+      "trueGaps": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:70d2c753cffabdba8a1a00adacda6cbbf7da37a5682e54cec3640e340f78926d"
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:6f5a467c73b71313f250fef62a81222b5c9a753ddf68af979261374d8be06ff0"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:f4de83241590db43af7f76aecc85a9ba3dd45a570360e367820268c43d31e10b"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:ca295d8c818f1386305b8a0f761aa3824aee775671cb10f8b976290a846ea83b"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "underlyingRgbSha256": "sha256:e02fed17da3788f930ce59330173ab4e871762343b8cbf2a173d53cab559e0f6"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "underlyingRgbSha256": "sha256:eceab401d1f5b9da42fcc6fe4ef7401cbc40342d5dce152d372b0b03b89021d3"
+        }
+      ]
+    },
+    "PARADE": {
+      "changedPixels": 6659,
+      "facadeChangedPixels": 3714,
+      "groundChangedPixels": 2945,
+      "trueGaps": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:c1bd21be2d4f90befe13d030e8b896d69c8684f7d13a9339df998652961fa6e1"
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:58a7b7d5e45a59d0970df9dd28f441576b171c9c90de9566e6bce6a456075ae0"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:156fda25f840634eae86c869c4e5969b6d3f992472987ba0c3fef1f74e73bda6"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:5cbe886eba958da1a4f42f2872c91b8213ad07a163b84e3abaa97dbace4a7df7"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "underlyingRgbSha256": "sha256:29e32e992fe58e49e9340513c5a121f088de9109da77416e98eed5d90c4c6ea8"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "underlyingRgbSha256": "sha256:8386c2313c15a8bdaf5e6b9fe91595bf4b64aa8c54701535f7dd1602e5ae3f1e"
+        }
+      ]
+    },
+    "DANGER": {
+      "changedPixels": 6666,
+      "facadeChangedPixels": 3714,
+      "groundChangedPixels": 2952,
+      "trueGaps": [
+        {
+          "id": "map_only_stage_west_wing_negative_gap_0",
+          "rect": [
+            205,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:fc6f6791809348890e79ceb314c3d2b61946c4fc66f570ba214665a07c6e439c"
+        },
+        {
+          "id": "map_only_stage_west_wing_negative_gap_1",
+          "rect": [
+            274,
+            365,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:93016f4da62a744eedd28402fb870aaa162129eb168cadaa4b27019ac044faba"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_0",
+          "rect": [
+            501,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:4d262ebf6578be7ac3edcd1e4e493e32b9833e72fcfdf7902561db6219fc4a33"
+        },
+        {
+          "id": "map_only_stage_east_wing_negative_gap_1",
+          "rect": [
+            569,
+            366,
+            6,
+            25
+          ],
+          "underlyingRgbSha256": "sha256:7cec58fc836d4c7ea53e05c6154584face163fb2f095680966129e5875ffb0ab"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_0",
+          "rect": [
+            357,
+            365,
+            6,
+            33
+          ],
+          "underlyingRgbSha256": "sha256:dbf8a3f9b3d8c0c3f69b239d2c345f01f4bb68065fa3e858082db711fafd90c8"
+        },
+        {
+          "id": "map_only_stage_central_hall_negative_gap_1",
+          "rect": [
+            452,
+            365,
+            6,
+            18
+          ],
+          "underlyingRgbSha256": "sha256:5b51f01ec9042618884df223915b98740504e77b944e62fbaf5dc18bc8f0f744"
+        }
+      ]
+    }
+  },
+  "imageAssessment": {
+    "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+    "status": "SOURCE_ACCEPTED_WITH_REMAINDERS",
+    "fullScenes": [
+      {
+        "path": "frontend/public/world/map-facade-derived-v3/revenge-scene.png",
+        "bytes": 706846,
+        "sha256": "sha256:621719f6374cd0e0add66597f666d3b6908bbc33d84d866cef02ef77a04476bf"
+      },
+      {
+        "path": "frontend/public/world/map-facade-derived-v3/parade-scene.png",
+        "bytes": 723812,
+        "sha256": "sha256:b995dba074fa869a8541fe762c8bbb97ae9ec06d15e9fe3de1aa9bb44f0d6a92"
+      },
+      {
+        "path": "frontend/public/world/map-facade-derived-v3/danger-scene.png",
+        "bytes": 713561,
+        "sha256": "sha256:f1f231ec9ef46be8d72f2981484833c1001b6f395b7d8c0c0dd555a41d7e2bb6"
+      }
+    ],
+    "scaledInspected": [
+      {
+        "file": "revenge-360.png",
+        "width": 360,
+        "height": 608,
+        "bytes": 191408,
+        "sha256": "d414d56b01abab9466cb21591f18fbf05b24466040b14343e923fd63b2a6f52f"
+      },
+      {
+        "file": "revenge-390.png",
+        "width": 390,
+        "height": 658,
+        "bytes": 218527,
+        "sha256": "fe2c71597d1f59899730d557cc410b2631b571ec61c814f281f84645ab1f77e3"
+      },
+      {
+        "file": "revenge-430.png",
+        "width": 430,
+        "height": 726,
+        "bytes": 260741,
+        "sha256": "00bad6ed92bf6e58d4ec1cdb5da326c4e2572e2d4830aacff61a2f1dffc4e8f4"
+      },
+      {
+        "file": "parade-360.png",
+        "width": 360,
+        "height": 608,
+        "bytes": 194734,
+        "sha256": "bc426a3029d2b053e221822dbb1f5f02a872353ccf83916d4458aad549d9229e"
+      },
+      {
+        "file": "parade-390.png",
+        "width": 390,
+        "height": 658,
+        "bytes": 222551,
+        "sha256": "b8ccdf088ccfe5fad3d3488e6bf75e201508b53477121e7ebf420f999aa8dbd5"
+      },
+      {
+        "file": "parade-430.png",
+        "width": 430,
+        "height": 726,
+        "bytes": 265601,
+        "sha256": "13bbe31629da85ed0c29fdefb363ff13c40fe42988f9b3cc9eb8a6a04291f795"
+      },
+      {
+        "file": "danger-360.png",
+        "width": 360,
+        "height": 608,
+        "bytes": 192780,
+        "sha256": "18d462317a8965f7a745df8e47a73c52ad46235fc469ce5042aef46059e266e2"
+      },
+      {
+        "file": "danger-390.png",
+        "width": 390,
+        "height": 658,
+        "bytes": 220041,
+        "sha256": "4f6c7e3e76e42a078ecdf32ead5acaf4d6c3016d55e1f830ea214c644eebc870"
+      },
+      {
+        "file": "danger-430.png",
+        "width": 430,
+        "height": 726,
+        "bytes": 262719,
+        "sha256": "e63760b28f0747e7e1b1e2e63e956f53aeb4a56b203969f2fde99af509f69797"
+      }
+    ],
+    "retainedPreview": {
+      "path": "docs/mcr/art/evidence/map-facade-derived-v3/ART-MAP-V3-FOUNDATION-FINAL-20261104T2327Z-attempt-1-parade-390-source-preview.png",
+      "bytes": 222551,
+      "sha256": "b8ccdf088ccfe5fad3d3488e6bf75e201508b53477121e7ebf420f999aa8dbd5"
+    },
+    "inspectedBeforeFull": "2026-11-04T23:27:36.688380+00:00",
+    "reference": {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    "frozenComparison": {
+      "path": "frontend/public/world/map-roof-street-derived-v2/parade-scene.png",
+      "bytes": 727171,
+      "sha256": "d820853d14efe04f84cd8b8f08da5bc8c67850f3b19c43170b237207583a93c2"
+    }
+  },
+  "notRun": [
+    "App/consumer uptake",
+    "new Parade Ink plan acceptance",
+    "SVG-engine raster parity",
+    "authoritative World admission",
+    "physical iOS/Android",
+    "whole reference/product acceptance"
+  ]
+}
