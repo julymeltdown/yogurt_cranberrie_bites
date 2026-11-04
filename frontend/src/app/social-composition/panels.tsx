@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useSyncExternalStore } from 'react'
 import { useLocation } from 'react-router-dom'
-import { EventFeed, EventNotice } from '../../features/event-feed'
+import { EventFeed, EventNotice, type RenderPostAuthor } from '../../features/event-feed'
 import { RootPostImage } from '../media-entry/RootMediaView'
 import { FeedThread, PostComposer } from '../../features/feed-thread'
 import { Inbox } from '../../features/inbox'
@@ -48,13 +48,14 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
   }, [owner, path, thread.selectedId, thread.detail, thread.draft])
   if (!route || !service || !owner.available(service)) return <Unavailable />
   const media = (id: string, post: { event_id: string }) => <RootPostImage auth={owner.auth} scope={owner.scope} createPreview={owner.media?.createPreview} mediaId={id} eventId={post.event_id} alt="Post attachment" />
+  const renderAuthor: RenderPostAuthor | undefined = runtime ? author => author.avatar.config.contract_version === '1.1.0'
+    ? <WholeCharacterView runtime={runtime} config={author.avatar.config} label={`${author.display_name}'s avatar`} size={64} />
+    : <span className="feed-initial" role="img" aria-label={`${author.display_name}: avatar unavailable`}>{Array.from(author.display_name.trim())[0]?.toLocaleUpperCase() ?? '?'}</span> : undefined
   switch (route.kind) {
     case 'feed': return <EventFeed controller={owner.feed} onPost={id => owner.navigate(`/feed/${id}`)} onCompose={() => owner.navigate('/feed/new')} onLink={link => { void owner.openResource(link) }} renderMedia={media}
-      renderAuthor={runtime ? author => author.avatar.config.contract_version === '1.1.0'
-        ? <WholeCharacterView runtime={runtime} config={author.avatar.config} label={`${author.display_name}'s avatar`} size={64} />
-        : <span className="feed-initial" role="img" aria-label={`${author.display_name}: avatar unavailable`}>{Array.from(author.display_name.trim())[0]?.toLocaleUpperCase() ?? '?'}</span> : undefined} />
+      renderAuthor={renderAuthor} />
     case 'compose': return <PostComposer controller={owner.thread} onPost={id => owner.navigate(`/feed/${id}`)} />
-    case 'thread': return <FeedThread controller={owner.threadPanel} onLink={link => { void owner.openResource(link) }} onEditPost={() => owner.navigate(`/feed/${route.id}/edit`)} onReport={target => owner.navigate(`/report?targetType=${target.target_type}&targetId=${target.target_id}`)} renderMedia={media} />
+    case 'thread': return <FeedThread controller={owner.threadPanel} onLink={link => { void owner.openResource(link) }} onEditPost={() => owner.navigate(`/feed/${route.id}/edit`)} onReport={target => owner.navigate(`/report?targetType=${target.target_type}&targetId=${target.target_id}`)} renderMedia={media} renderAuthor={renderAuthor} />
     case 'edit': return thread.draft.edit?.id === route.id ? <PostComposer controller={owner.thread} onPost={id => owner.navigate(`/feed/${id}`)} /> : <div role="status"><p>{thread.detail.phase === 'ready' ? 'Editing has ended or is unavailable for this post.' : 'Reading the current authorized post before editing. Editing is unavailable until ownership and write access are confirmed.'}</p><button type="button" onClick={() => owner.navigate(`/feed/${route.id}`)}>Back to post</button></div>
     case 'notice': return <EventNotice controller={owner.feed} retry={() => { void owner.feed.selectNotice(route.id) }} />
     case 'people': return <People controller={owner.people} avatars={owner.avatars} />

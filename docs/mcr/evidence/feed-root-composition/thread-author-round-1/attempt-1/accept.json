@@ -1,0 +1,44 @@
+{
+  "allocation": "THREAD-AUTHOR-FOCUSED-BROWSER2-202611041615Z",
+  "acceptedUTC": "2026-11-04T16:16:23.694862+00:00",
+  "workCutoffUTC": "2026-11-04T16:21:23.694862+00:00",
+  "hardCleanupUTC": "2026-11-04T16:22:23.694862+00:00",
+  "source": "7cb886031d2b8018db697154ca5380bc40e24e55",
+  "files": 852,
+  "bytes": 10948304,
+  "freeBytes": 17984217088,
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "ownerInputs": [
+    {
+      "revision": "5447e338f7b1cf70cc10f6e1628ae61dec0f10b7",
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "sha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce"
+    },
+    {
+      "revision": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a"
+    },
+    {
+      "revision": "1e07321cede694b66aae06184fd05c624a5a0ccb",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "sha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777"
+    },
+    {
+      "revision": "375c73dfebf778a8949403001662b33bada4345e",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    }
+  ],
+  "bind5279": "PASS",
+  "caps": {
+    "wholeFiles": 1400,
+    "wholeBytes": 134217728,
+    "tmpBytes": 104857600,
+    "durableGrowthBytes": 8388608,
+    "processes": 24,
+    "rssBytes": 4294967296,
+    "guardMs": 250
+  }
+}

@@ -1,0 +1,62 @@
+/* ART-SCREEN-COM01. Background paint only; closed artist packs are pinned in
+   docs/mcr/evidence/art-screen-com01/asset-fit-fix.json.
+   Root permits :root only to preserve these rules across lazy feature CSS. */
+:root .feed-browse .feed-post {
+  background-color: #f5d9df;
+  background-image: url('/backgrounds/cute-community-v1/feed-backdrop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+:root .feed-browse .feed-footer {
+  background-color: #f5d9df;
+  background-image: url('/backgrounds/cute-community-v1/feed-backdrop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+:root .party-browse {
+  background-color: #f5dccd;
+  background-image: url('/backgrounds/cute-community-v1/meet-backdrop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+:root .gifts-reference .gift-reference-row {
+  background-color: #e9dfee;
+  background-image: url('/backgrounds/cute-community-v1/gifts-backdrop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Exact list routes only: include the existing blank surrounding paper without
+   giving detail, authoring or pickup screens a new background. */
+:root .shell-panel[data-mcr-panel='feed'] > .shell-panel-body {
+  background-color: #f5d9df;
+  background-image: url('/backgrounds/cute-community-v1/feed-backdrop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+:root .shell-panel[data-mcr-panel='gifts'] > .shell-panel-body {
+  background-color: #e9dfee;
+  background-image: url('/backgrounds/cute-community-v1/gifts-backdrop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Reserved until Root adds the existing main's semantic Wall route attribute.
+   This never targets the mural editor, canvas, palette or pixel data. */
+:root .shell-panel[data-mcr-panel='wall'] > .shell-panel-body {
+  background-color: #fff0de;
+  background-image: url('/backgrounds/cute-wall-me-v1/wall-stationery.svg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}

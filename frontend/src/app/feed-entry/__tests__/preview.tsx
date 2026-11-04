@@ -8,7 +8,7 @@ import '../../../shared/styles/base.css'
 import '../../shell.css'
 
 const modeInput = new URLSearchParams(location.search).get('mode') ?? 'loaded'
-if (!['loaded', 'no-readiness', 'denied-media', 'thread', 'notice'].includes(modeInput)) throw new Error('Unknown synthetic Feed mode')
+if (!['loaded', 'no-readiness', 'denied-media', 'thread', 'thread-legacy', 'notice'].includes(modeInput)) throw new Error('Unknown synthetic Feed mode')
 const fixture = await createFeedFixture(modeInput as FixtureMode)
 // Exactly the default route composition and Root registry/media providers. No panel override.
 const ports = createProductionPorts(fixture.auth, {}, fixture.social, fixture.eventId)

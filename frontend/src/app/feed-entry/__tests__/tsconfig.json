@@ -1,6 +1,6 @@
 {
   "extends": "../../../../tsconfig.json",
   "compilerOptions": { "incremental": false, "allowImportingTsExtensions": true },
-  "include": ["./*.ts", "./*.tsx", "../production.ts"],
+  "include": ["./*.ts", "./*.tsx", "../production.ts", "../../../features/event-feed/__tests__/thread-author/*.ts", "../../../features/event-feed/__tests__/thread-author/*.tsx"],
   "exclude": []
 }

@@ -12,6 +12,7 @@ const browser = await chromium.launch({ channel: 'chrome', headless: true })
 const results = [], errors = []
 const remaining = process.env.MCR_FEED_REMAINING === '1'
 const postOnly = process.env.MCR_FEED_POST_ONLY === '1'
+const threadAuthorOnly = process.env.MCR_FEED_THREAD_AUTHOR_ONLY === '1'
 async function open(mode, width, height) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' })
   const page = await context.newPage()
@@ -95,7 +96,7 @@ function assertPostSurface(surface) {
   assert.equal(surface.fontSize, '15px'); assert(surface.fontFamily.includes('Verdana'))
 }
 try {
-  for (const [width, height] of remaining ? [[390, 480]] : [[360, 843], [390, 843], [430, 843], [390, 480]]) {
+  for (const [width, height] of threadAuthorOnly ? [] : remaining ? [[390, 480]] : [[360, 843], [390, 843], [430, 843], [390, 480]]) {
     const { context, page } = await open('loaded', width, height)
     try {
       await page.locator('.feed-posts > li').last().scrollIntoViewIfNeeded()
@@ -155,7 +156,7 @@ try {
       throw error
     } finally { await context.close() }
   }
-  for (const mode of ['no-readiness', 'denied-media']) {
+  for (const mode of threadAuthorOnly ? [] : ['no-readiness', 'denied-media']) {
     const { context, page } = await open(mode, 390, 843)
     try {
       if (mode === 'no-readiness') {
@@ -176,17 +177,19 @@ try {
       results.push({ mode, ...observed, invalidationWithdrawal: true })
     } finally { await context.close() }
   }
-  if (process.env.MCR_FEED_POST_SHAPES === '1') for (const mode of ['thread', 'notice']) {
+  if (threadAuthorOnly || process.env.MCR_FEED_POST_SHAPES === '1') for (const mode of threadAuthorOnly ? ['thread', 'thread-legacy'] : ['thread', 'notice']) {
     const { context, page } = await open(mode, 390, 843)
     try {
-      const selector = mode === 'thread' ? '.event-feed[aria-label="Post thread"] > article' : '.feed-notice-detail'
+      const isThread = mode.startsWith('thread')
+      const selector = isThread ? '.event-feed[aria-label="Post thread"] > article' : '.feed-notice-detail'
       const article = page.locator(selector)
       await article.waitFor()
       let scrolling = null
-      if (mode === 'thread') {
+      if (isThread) {
         await page.getByText('A test reply', { exact: true }).waitFor()
         await article.scrollIntoViewIfNeeded()
         await page.waitForFunction(() => document.querySelector('.feed-image')?.naturalWidth === 197)
+        if (threadAuthorOnly && mode === 'thread') await page.waitForFunction(() => document.querySelector('.feed-portrait [data-whole-character-state="ready"]'))
       } else {
         assert.equal(await article.locator('h2').innerText(), 'Fixture notice')
         assert.equal(await article.getByRole('link', { name: 'Source', exact: true }).getAttribute('href'), 'https://example.com/notice')
@@ -194,12 +197,24 @@ try {
       const observed = await metrics(page)
       assert.equal(observed.horizontalOverflow, false)
       observed.postSurfaces.forEach(assertPostSurface)
-      if (mode === 'thread') {
+      if (threadAuthorOnly) {
+        assert.equal(observed.authors.length, 1)
+        if (mode === 'thread') {
+          assert.equal(observed.authors[0].ready, 'ready'); assert(observed.authors[0].paintedPixels > 0)
+          assert.equal(observed.characters?.decodedAtlases, 1)
+          assert.equal(await article.locator('.feed-initial').count(), 0)
+        } else {
+          assert.equal(observed.authors[0].canvas, null)
+          assert.equal(await article.getByRole('img', { name: 'Encore fan: avatar unavailable' }).innerText(), 'E')
+        }
+        await article.locator('.feed-portrait').screenshot({ path: join(output, `${mode}-author-390x843.png`) })
+      }
+      if (isThread) {
         const comment = page.locator('section[aria-label="Comments"] > .feed-list > li')
         assert.equal(await comment.count(), 1)
         const style = await comment.evaluate(element => ({ background: getComputedStyle(element).backgroundColor, fontSize: getComputedStyle(element).fontSize, fontFamily: getComputedStyle(element).fontFamily }))
         assertPostSurface(style)
-        await comment.screenshot({ path: join(output, 'thread-comment-390x843.png') })
+        await comment.screenshot({ path: join(output, `${mode}-comment-390x843.png`) })
       }
       await article.screenshot({ path: join(output, `${mode}-article-390x843.png`) })
       await page.locator('.shell-panel-body').evaluate(element => { element.scrollTop = 0 })
@@ -207,7 +222,7 @@ try {
       const targets = await article.locator('button, a').evaluateAll(elements => elements.map(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })))
       assert(targets.length > 0 && targets.every(target => target.width >= 44 && target.height >= 44))
       const focus = await keyboardFocus(page, article.locator('button, a').first())
-      if (mode === 'thread') scrolling = await scrollProbe(page, 'thread-390x843', selector)
+      if (isThread) scrolling = await scrollProbe(page, `${mode}-390x843`, selector)
       else {
         await page.evaluate(() => window.__FEED_SHELL__.navigate('/feed'))
         await page.getByRole('tab', { name: /^NOTICE$/i }).click()
@@ -226,5 +241,5 @@ try {
   assert.deepEqual(results.filter(result => result.scrolling && (!result.scrolling.geometryPreservedOnExit || !result.scrolling.geometryRestoredOnReturn)).map(result => result.name), [], 'Offscreen media withdrawal changed Feed geometry')
 } finally {
   await browser.close()
-  await writeFile(join(output, 'native.json'), JSON.stringify({ synthetic: true, postOnly, remainingCasesOnly: remaining, browser: browser.version(), liveIN03: 'NOT_RUN', results, errors }, null, 2) + '\n')
+  await writeFile(join(output, 'native.json'), JSON.stringify({ synthetic: true, postOnly, threadAuthorOnly, remainingCasesOnly: remaining, browser: browser.version(), liveIN03: 'NOT_RUN', results, errors }, null, 2) + '\n')
 }

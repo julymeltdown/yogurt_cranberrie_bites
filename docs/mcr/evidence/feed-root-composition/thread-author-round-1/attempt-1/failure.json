@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-04T16:17:53.339966+00:00",
+  "source": "7cb886031d2b8018db697154ca5380bc40e24e55",
+  "status": "FAILED",
+  "reason": "250ms usage sampler hit ENOENT while Vitest removed a temporary directory; supervisor uncaught exception, no native launched",
+  "coupledTypeExit": 0,
+  "terminatedOwned": [],
+  "linkRemoved": true,
+  "cacheTMPRemoved": true,
+  "retryClock": "Original accepted16:21:23.694862Z work cutoff remains binding"
+}

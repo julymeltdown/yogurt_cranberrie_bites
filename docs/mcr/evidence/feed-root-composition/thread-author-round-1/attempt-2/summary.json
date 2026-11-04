@@ -1,0 +1,139 @@
+{
+  "allocation": "THREAD-AUTHOR-FOCUSED-BROWSER2-202611041615Z",
+  "run": "thread-author2",
+  "source": "d97b4693dd5cf7cb22f61ad73795870bc05825bf",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 868,
+    "bytes": 11003991,
+    "temporaryBytes": 0,
+    "freeBytes": 17386807296
+  },
+  "jobs": [
+    {
+      "name": "thread-author-unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/features/event-feed/__tests__/thread-author/vitest.config.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:18:51.619Z",
+      "milliseconds": 1278
+    },
+    {
+      "name": "thread-author-lint",
+      "args": [
+        "node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/features/feed-thread/FeedThread.tsx",
+        "src/features/event-feed/__tests__/thread-author"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:18:52.923Z",
+      "milliseconds": 66
+    },
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:18:53.015Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:18:53.068Z",
+      "milliseconds": 32
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:18:53.411Z",
+      "milliseconds": 3887
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T16:18:53.126Z",
+      "milliseconds": 4199
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "SYNTHETIC_NATIVE_PASSED",
+  "cssInputs": [
+    {
+      "revision": "1e07321cede694b66aae06184fd05c624a5a0ccb",
+      "sha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "file": "$CARRY/feed-thread-author2-feed-owner.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "375c73dfebf778a8949403001662b33bada4345e",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "file": "$CARRY/feed-thread-author2-root-owner.css",
+      "readonlyBorrow": true
+    }
+  ],
+  "moduleInputs": [
+    {
+      "revision": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "file": "$CARRY/feed-thread-author2-root-owner.tsx",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "5447e338f7b1cf70cc10f6e1628ae61dec0f10b7",
+      "sha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce",
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "file": "$CARRY/feed-thread-author2-social-owner.tsx",
+      "readonlyBorrow": true
+    }
+  ],
+  "final": {
+    "files": 887,
+    "bytes": 11374763,
+    "temporaryBytes": 0,
+    "freeBytes": 17396420608
+  },
+  "releasedUTC": "2026-11-04T16:18:57.330Z",
+  "linkRemoved": true,
+  "peakProcesses": 11,
+  "peakRssBytes": 2554626048
+}

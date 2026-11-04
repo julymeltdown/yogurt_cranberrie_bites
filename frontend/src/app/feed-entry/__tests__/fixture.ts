@@ -6,7 +6,7 @@ import { createSessionController } from '../../../features/auth/model/session'
 import { parse, type Comment, type Notice, type Post } from '../../../features/event-feed/contract'
 import { createFeedSocialPorts } from '../production'
 
-export type FixtureMode = 'loaded' | 'no-readiness' | 'denied-media' | 'thread' | 'notice'
+export type FixtureMode = 'loaded' | 'no-readiness' | 'denied-media' | 'thread' | 'thread-legacy' | 'notice'
 export const inputRevision = 'eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da'
 export const fixedNow = Date.parse('2026-11-04T12:00:00Z')
 export const selectedPin = Object.freeze({ manifest_id: selected.manifest_id, manifest_version: selected.manifest_version, content_hash: selected.content_hash })
@@ -31,7 +31,7 @@ export const reply = parse<Comment>('Domain_feed_CommentPublic', { comment_id: i
 export const notice = parse<Notice>('Domain_feed_PublishedNotice', { notice_id: id(60), event_id: eventId,
   title: 'Fixture notice', text: 'Test-only published notice.', source_uri: 'https://example.com/notice',
   confirmed_at: '2026-11-01T01:00:00Z', created_at: '2026-11-01T01:00:00Z', state: 'PUBLISHED', revision: 1 })
-export const fixtureRoute = (mode: FixtureMode) => mode === 'thread' ? `/feed/${rows[0]!.post_id}` : mode === 'notice' ? `/notices/${notice.notice_id}` : '/feed'
+export const fixtureRoute = (mode: FixtureMode) => mode.startsWith('thread') ? `/feed/${rows[0]!.post_id}` : mode === 'notice' ? `/notices/${notice.notice_id}` : '/feed'
 
 async function sha(value: BufferSource) {
   return [...new Uint8Array(await crypto.subtle.digest('SHA-256', value))].map(byte => byte.toString(16).padStart(2, '0')).join('')
@@ -73,7 +73,8 @@ export async function createFeedFixture(mode: FixtureMode) {
       return done(Response.json({ items: !filter || ['ALL', 'WITH_MEDIA'].includes(filter) ? rows : [], next_cursor: null }))
     }
     const post = rows.find(row => path === `${base}/posts/${row.post_id}`)
-    if (post) return done(Response.json({ post, comments: mode === 'thread' && post.post_id === reply.post_id ? [reply] : [], next_cursor: null }))
+    if (post) return done(Response.json({ post: mode === 'thread-legacy' ? { ...post, author: { ...post.author, avatar: postInput.author.avatar } } : post,
+      comments: mode.startsWith('thread') && post.post_id === reply.post_id ? [reply] : [], next_cursor: null }))
     if (mode === 'notice' && path === `${base}/notices/${notice.notice_id}`) return done(Response.json(notice))
     if (path === `${base}/notices`) return done(Response.json({ items: mode === 'notice' ? [notice] : [], next_cursor: null }))
     const match = /^\/media\/([^/]+)(\/content)?$/.exec(path.slice(base.length))

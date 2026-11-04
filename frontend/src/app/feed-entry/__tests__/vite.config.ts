@@ -8,6 +8,7 @@ const inputs = [
   { suffix: '/src/features/event-feed/feed.css', file: process.env.MCR_FEED_CSS_FILE, hash: process.env.MCR_FEED_CSS_SHA256 },
   { suffix: '/src/shared/styles/cozy-community-backgrounds-v1.css', file: process.env.MCR_FEED_ROOT_CSS_FILE, hash: process.env.MCR_FEED_ROOT_CSS_SHA256 },
   { suffix: '/src/app/media-entry/RootMediaView.tsx', file: process.env.MCR_FEED_ROOT_MEDIA_FILE, hash: process.env.MCR_FEED_ROOT_MEDIA_SHA256 },
+  { suffix: '/src/app/social-composition/panels.tsx', file: process.env.MCR_FEED_ROOT_SOCIAL_FILE, hash: process.env.MCR_FEED_ROOT_SOCIAL_SHA256 },
 ].flatMap(input => {
   if (Boolean(input.file) !== Boolean(input.hash)) throw Error('Supply both immutable owner input pins')
   if (!input.file) return []

@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 $WORKTREE/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  01:16:56
+   Duration  1.19s (transform 327ms, setup 0ms, import 563ms, tests 88ms, environment 453ms)
+

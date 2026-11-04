@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-04T16:19:33.282581+00:00",
+  "ownedProcesses": [],
+  "listener5279": "",
+  "bind5279": "PASS",
+  "dependencyLinkPresent": false,
+  "cacheTMPPresent": [],
+  "freeBytes": 17351692288,
+  "lastAttemptPeakProcesses": 11,
+  "lastAttemptPeakRssBytes": 2554626048,
+  "summaryStatus": "SYNTHETIC_NATIVE_PASSED",
+  "cases": 2,
+  "errors": [],
+  "firstAttemptPeakAccounting": "Unavailable because the original supervisor crashed; no retroactive peak claim"
+}
