@@ -517,6 +517,17 @@ async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exac
         changed_signal.is_err(),
         "exact sealed deletion source is immutable"
     );
+    assert!(sqlx::query("truncate public.concert_social_policy_signals")
+        .execute(&f.pool)
+        .await
+        .is_err());
+    assert!(
+        sqlx::query("delete from concert_social_bindings where event_id=$1")
+            .bind(f.events[0])
+            .execute(&f.pool)
+            .await
+            .is_err()
+    );
     // Even a normal still-live storage guard cannot recreate deleted material.
     let mut tx = f.pool.begin().await?;
     sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '4 seconds')::text,true)").execute(&mut *tx).await?;
@@ -526,7 +537,7 @@ async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exac
     tx.rollback().await?;
     f.publisher.fail.store(false, Ordering::SeqCst);
     let ack = f.finish(&command).await?;
-    assert_eq!(ack.command, command);
+    assert!(ack.command == command);
     assert_eq!(ack.fence_revision, 1);
     let counts:(i64,i64,i64)=sqlx::query_as("select (select count(*) from concert_social_handles where user_id=$1 and ciphertext is not null),(select count(*) from concert_social_requests where $1 in(requester_id,recipient_id) and state in('PENDING','APPROVED')),(select count(*) from concert_social_grants where $1 in(owner_id,viewer_id) and state='ACTIVE')")
         .bind(f.user).fetch_one(&f.pool).await?;
@@ -552,7 +563,7 @@ async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exac
         .values()
         .all(Option::is_some));
     let views = f.publisher.calls.load(Ordering::SeqCst);
-    assert_eq!(f.finish(&command).await?.command, command);
+    assert!(f.finish(&command).await?.command == command);
     assert_eq!(f.publisher.calls.load(Ordering::SeqCst), views);
     let ordinary_after:(i64,i64)=sqlx::query_as("select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox)")
         .fetch_one(&f.pool).await?;
@@ -585,7 +596,7 @@ async fn native_cancellation_keeps_source_pending_and_does_not_ack_empty_registr
     let pending:i64=sqlx::query_scalar("select count(*) from concert_social_deletion_audience where saga_id=$1 and published_at is null")
         .bind(command.saga_id).fetch_one(&f.pool).await?;
     assert!(pending > 0);
-    assert_eq!(f.finish(&command).await?.command, command);
+    assert!(f.finish(&command).await?.command == command);
     Ok(())
 }
 #[tokio::test]
@@ -628,6 +639,26 @@ async fn native_actual_auth_source_rejects_wrong_subject_retention_and_undeleted
         .apply(wrong, deadline())
         .await
         .is_err());
+    // Auth source loss at the pre-commit recheck must roll the entire first
+    // round back, including the common fence and leaf progress.
+    let mut disappearing = AuthRepositoryTestTransport::new(f.auth.clone());
+    disappearing.reject_after = Some(1);
+    let disappearing = SharingDeletion::new(
+        f.pool.clone(),
+        Arc::new(disappearing),
+        SocialInvalidationSink::new(f.pool.clone(), f.publisher.clone()),
+    );
+    assert_eq!(
+        disappearing.apply(command.clone(), deadline()).await.err(),
+        Some(DeletionFailure::Unavailable)
+    );
+    let remaining: i64 = sqlx::query_scalar(
+        "select count(*) from concert_world_account_deletion_fences where user_id=$1",
+    )
+    .bind(f.user)
+    .fetch_one(&f.pool)
+    .await?;
+    assert_eq!(remaining, 0);
     f.finish(&command).await?;
     Ok(())
 }
@@ -692,7 +723,7 @@ async fn native_replay_after_external_physical_postmaster_restart() -> Result<()
             .apply(command.clone(), deadline())
             .await
             .map_err(|_| anyhow::anyhow!("durable replay failed"))?;
-        assert_eq!(ack.command, command);
+        assert!(ack.command == command);
         assert_eq!(no_views.calls.load(Ordering::SeqCst), 0);
     }
     Ok(())
