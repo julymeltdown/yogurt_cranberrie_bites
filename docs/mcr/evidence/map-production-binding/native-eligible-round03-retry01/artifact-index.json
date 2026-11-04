@@ -1,0 +1,137 @@
+{
+  "candidate": "be3fd627c248b9ed2ad34bf2a8641d18dc05f46d",
+  "rawReportStatus": "PASS",
+  "qualification": "EXPLICIT_CONTRACT_FIXTURE_ELIGIBLE_ATTENDEE_ACTUAL_DEFAULT_CLIENT_ONLY",
+  "files": [
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-danger-360.png",
+      "bytes": 322576,
+      "sha256": "07fd1cd813f2bd2a3dc05207ebb7f864e7a2505f27ed48a47d523c5de1513b23"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-danger-390.png",
+      "bytes": 370711,
+      "sha256": "4bacac54f2e85202280f85bdfdad421406e8282f842e751970982b0842a2ace0"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-danger-430.png",
+      "bytes": 430366,
+      "sha256": "928cdca36cc1ac2fdbfb42075943f843b5751115c618fcd166db18e7711b3fd6"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-parade-360.png",
+      "bytes": 322702,
+      "sha256": "7d654a394f9fc263f5059b6683f93150e27db514eaaee0e98389bd21aa9abc88"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-parade-390-short.png",
+      "bytes": 140457,
+      "sha256": "1f7d58133352d880455a2830bf3e4ce1654cd0a2cc8481274d13f388ec3fcc1e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-parade-390.png",
+      "bytes": 370833,
+      "sha256": "7904605a06e7d3a3665c538188d78a9fc2a7ebc2dd7c149329a8f340e015c241"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-parade-430.png",
+      "bytes": 430476,
+      "sha256": "ad419612cf4ee0a066c63c7fdd2198a718fff16199f74c3669525f07be57d8d7"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-revenge-360.png",
+      "bytes": 319961,
+      "sha256": "2ce49b5dfa9dca2ff8213e07ef02d8d125564b567d380d45a2931e2c5cda2153"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-revenge-390.png",
+      "bytes": 367838,
+      "sha256": "9d95bbba2921685a49fb6428b98123a4dbf362abb55a701c567767b6042b2fdf"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/after-revenge-430.png",
+      "bytes": 426802,
+      "sha256": "c7d5277c51146ff6e4e233ce64162e0003ff6386a5217d397b8d8f4c8e843eaf"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-danger-360.png",
+      "bytes": 407418,
+      "sha256": "ab4f1889b628e72a74f536943d48bbc41a2de14789e7f3780363744dc04dd78f"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-danger-390.png",
+      "bytes": 449220,
+      "sha256": "e1f202ba1fffc0f02b40cbcb94702bb0757a81f0285811930df7112016df884b"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-danger-430.png",
+      "bytes": 504390,
+      "sha256": "5afb3b3218907a9f413040c6c5fc97e5b10169b29223ca101a3ae7c3885dc1b1"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-parade-360.png",
+      "bytes": 405624,
+      "sha256": "03c41100e18b0d0fee4a55a013a892b183100309b64d097adc0f0af266ef30ac"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-parade-390.png",
+      "bytes": 447305,
+      "sha256": "f4af5febca9fa7ad9985fd1c563fa7be5731ac754bf26de4bac2ce46a5283eb2"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-parade-430.png",
+      "bytes": 502008,
+      "sha256": "3e03ba1907f2fb000e57fee9f5c526eb53684f6a4c3d4e8689c3f7b36861b47a"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-revenge-360.png",
+      "bytes": 403740,
+      "sha256": "64fec9a81a585567968e68e4500634adf72b5994c846e8e461f7d6b46c34b0b9"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-revenge-390.png",
+      "bytes": 445124,
+      "sha256": "5ff3ee428d5b258821d8750575e0d4ed20be647f93b940eb1a8895db2897c038"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/before-revenge-430.png",
+      "bytes": 499432,
+      "sha256": "22317dea7da8b6384af76913076802a39a45afc350d88c6d5b70ae3c71f206a5"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/carry-inventory.json",
+      "bytes": 104429,
+      "sha256": "febb38d84fd22ee80b97b449cbd6b23c18e27b1ae8bf4327152c7dfe10b3afc2"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/report.json",
+      "bytes": 913364,
+      "sha256": "36374fe3bb205760fda990436275458bffe70cca7d5424892e07aaeef2a86ac7"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/retry-preflight.json",
+      "bytes": 798,
+      "sha256": "e50cffbf85809746e55ae41014c5d2c22aa32dac8c11293f9319c398e0b89d04"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/supervisor.json",
+      "bytes": 1332,
+      "sha256": "0bc6bf82fcabcc81bcf585bda2f184b722b97bb42a3ff90f8b4896060690c543"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/supervisor.py",
+      "bytes": 4983,
+      "sha256": "3509afb19f50f9abb2330b59e96869fb6f1fdb8420ba78efa911b8ddc89f7763"
+    }
+  ]
+}

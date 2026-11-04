@@ -1,0 +1,42 @@
+{
+  "lease": "FE19-MAP-SOURCE03-202611041223Z",
+  "status": "FULLRELEASE_PASS_SOURCE_ONLY",
+  "releasedAt": "2026-11-04T12:26:03.052979+00:00",
+  "receivingCommit": "84c622efaf0676428e6507a1b05fea0747b718cf",
+  "qualifiedCommit": "43b80c915eea35a5eb46ec6dcc95dd677abae57b",
+  "tests": 115,
+  "testFiles": 17,
+  "finalExits": {
+    "tests": 0,
+    "types": 0,
+    "lint": 0
+  },
+  "failedTypeAttemptsRetained": [
+    "types-01.log",
+    "types-02.log"
+  ],
+  "sourcePinCount": 52,
+  "sourcePinsSHA256": "621167c13038b1f73ec5567d6f720580c1d09785c8ec87d1ca6519a135564a19",
+  "allOwnedChildPids": [
+    37026,
+    37365,
+    37373,
+    38797,
+    39107,
+    39727,
+    43323,
+    43641,
+    43649
+  ],
+  "remainingOwnedProcesses": [],
+  "ownedLinkAbsent": true,
+  "privateTmpCacheAbsent": true,
+  "serverBrowserNativeJobs": 0,
+  "additionalPeakBytes": 11739270,
+  "wholePeakBytes": 13458517,
+  "retainedWholeBytesBeforeReceipt": 1751885,
+  "retainedOutputBytesBeforeReceipt": 32638,
+  "freeBytes": 17921519616,
+  "productionActivation": false,
+  "finalArtworkPinsRegistered": false
+}

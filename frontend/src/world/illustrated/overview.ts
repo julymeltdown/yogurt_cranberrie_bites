@@ -13,6 +13,9 @@ export interface SceneryOverview {
   readonly themeId: string
   readonly themeRevision: number
   readonly themeHash: string
+  /** Separate Map-only pixels/annotations; never changes the authoritative release identity. */
+  readonly presentationVersion?: string
+  readonly presentationHash?: string
 }
 export interface SceneryOverviewPort {
   read(): SceneryOverview | null

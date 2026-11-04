@@ -1,0 +1,18 @@
+{
+  "lease": "FE19-FIXTURE-SOURCE-202611041055Z",
+  "acceptedAt": "2026-11-04T10:57:55Z",
+  "deadline": "2026-11-04T11:03:55.000Z",
+  "activeCutoff": "2026-11-04T11:02:55.000Z",
+  "receivingCommit": "3aca2225f4eb6eea1a2dffc864575532ed366f22",
+  "freeBytes": 17238159360,
+  "carryBytes": 1617619,
+  "carryFiles": 60,
+  "additionalCapBytes": 33554432,
+  "wholeCapBytes": 67108864,
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend",
+  "argv": [
+    "python3",
+    "../docs/mcr/evidence/map-production-binding/source-round02/supervisor.py"
+  ],
+  "qualification": "SOURCE_ONLY_EXPLICIT_CONTRACT_FIXTURE_NOT_NATIVE_OR_LIVE_ADMISSION"
+}

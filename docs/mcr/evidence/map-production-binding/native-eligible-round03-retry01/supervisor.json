@@ -1,0 +1,40 @@
+{
+  "job": "ROOT-MAP4-ELIGIBLE-NATIVE03-202611041200Z",
+  "candidate": "be3fd627c248b9ed2ad34bf2a8641d18dc05f46d",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/world-entry/__tests__/map-presentation-v1/native.mjs"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T12:03:15.483841+00:00",
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/world-entry/__tests__/map-presentation-v1/native.mjs"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T12:03:15.748625+00:00",
+      "log": "2.log"
+    }
+  ],
+  "failure": null,
+  "started_at": "2026-11-04T12:03:15.429591+00:00",
+  "finished_at": "2026-11-04T12:04:07.736525+00:00",
+  "elapsed_seconds": 52.30711470899405,
+  "peaks": {
+    "whole": 118484586,
+    "temp": 29978624,
+    "durable": 8798208
+  },
+  "carry_bytes": 79801962,
+  "stage_retained_durable": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/map-production-binding/native-eligible-round03",
+  "minimum_free_bytes": 19342028800,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "driver_sha256": "ebacc3f841648364ecaa98fadf0d95114f5cf4fc5249566e08754188c7579513"
+}

@@ -1,0 +1,11 @@
+{
+  "revision": "mcr_map4_local_intent_r1_20261104",
+  "reviewedBy": "MCR Root integration engineering review 2026-11-04",
+  "movementPolicy": {
+    "speedPxPerSecond": 96,
+    "footWidthPx": 8,
+    "footHeightPx": 4,
+    "interactionRadiusPx": 32
+  },
+  "zoom": 1
+}

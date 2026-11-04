@@ -1,0 +1,119 @@
+{
+  "job": "ROOT-MAP4-ELIGIBLE-NATIVE03-202611041200Z",
+  "status": "PASS_BOUNDED_FIXTURE_FULLRELEASE",
+  "acceptedAt": "2026-11-04T12:00:56.889948+00:00",
+  "releasedAt": "2026-11-04T12:05:05.929783+00:00",
+  "candidate": "be3fd627c248b9ed2ad34bf2a8641d18dc05f46d",
+  "rawReportSha256": "36374fe3bb205760fda990436275458bffe70cca7d5424892e07aaeef2a86ac7",
+  "sourceQualification": "EXPLICIT_CONTRACT_FIXTURE_ELIGIBLE_ATTENDEE_ACTUAL_DEFAULT_CLIENT_ONLY",
+  "productionAdmitted": false,
+  "completedContexts": 19,
+  "pngs": 19,
+  "virtualActions": 40,
+  "worldPairs": [
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "worldRgba": "sha256:cbb7b4926aa3559bfdd2943f7271eef6b8bb76b2a5abf3c63624906f4cd023c1",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "worldRgba": "sha256:d04da6e0cfcb91ef2ea3ff2e6601b0d7d7e4090108496a5ad29d74fb131fd0b5",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "worldRgba": "sha256:d6f94d3a03cba49bb5659f4fb03e3dc2478bbf8f3ca1b545de800bb770b831a7",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "worldRgba": "sha256:2c547e09c3a7b9478b23e21c57abba20da0f65aeaac1a4e93d3061ec35995c8d",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "worldRgba": "sha256:1bcd5d6ab5ebe886ca6c75f1af15a27e4b321460abeb96932e75069c43809eba",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "worldRgba": "sha256:d57728cc9f162393331acded925334340bf8c2d06b694305e1765bbf40737f66",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "worldRgba": "sha256:ae4c7a74293df814ced6000a3eee8989468a4c035ae48d170542f970ae1fb113",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "worldRgba": "sha256:6e675b7807408a83d55909d38fe6b4878638aaddec07b1b63114e408f7e924fd",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "worldRgba": "sha256:a680809acdf5676e443658debce495e07f8b44a0e3f36fd50d049e8dda5f25f2",
+      "worldObjects": 29,
+      "worldCameraEqual": true,
+      "mapHostCameraEqual": true,
+      "mapIdentityEqual": true
+    }
+  ],
+  "routeActiveSocketCounts": [
+    1
+  ],
+  "wholePeakBytes": 118484586,
+  "temporaryPeakBytes": 29978624,
+  "durablePeakBytes": 8798208,
+  "finalRetainedStageBytes": 8814592,
+  "carryBytes": 79801962,
+  "wholeCapBytes": 193273528,
+  "temporaryCapBytes": 83886080,
+  "durableCapBytes": 50331648,
+  "minimumFreeBytes": 19342028800,
+  "lastNativeFinishedAt": "2026-11-04T12:04:07.736525+00:00",
+  "ownProcesses": [],
+  "port5298Bindable": true,
+  "ownLinkAbsent": true,
+  "ownTempCacheProfileAndReceiptTreesAbsent": true,
+  "initialFailure": "Camera probe used outer shell host instead of actual nested render mount. Raw failed report retained, zero PNGs; selector-only correction, no assertion removal.",
+  "limits": [
+    "Controlled eligible-attendee contract fixture through actual default app/guards, not live or production admission.",
+    "Full reference composition, all-screen fidelity, actual enabled backend journeys and physical devices remain open.",
+    "Fresh source type/lint of Map4 caption TSX remains queued with implementation owner."
+  ]
+}

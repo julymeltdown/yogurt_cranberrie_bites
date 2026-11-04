@@ -1,0 +1,1779 @@
+{
+  "candidate": "c026f36c886753ef312da3f91c21bbb02b9d1d4e",
+  "roots": {
+    "docs/mcr/evidence/cozy-backgrounds-v1": 16001887,
+    "docs/mcr/evidence/reference-scene-v5/map-cozy-v1": 20881825,
+    "docs/mcr/evidence/reference-frame-footer": 2741261,
+    "docs/mcr/evidence/art-customize-background-02": 7882,
+    "docs/mcr/evidence/map-production-binding": 221015,
+    "frontend/public/world/map-firstview-cozy-v1": 1237659,
+    "frontend/public/backgrounds/cute-entry-v1": 33563,
+    "docs/mcr/evidence/social-policy-wire": 8056
+  },
+  "files": [
+    {
+      "path": "docs/mcr/evidence/art-customize-background-02/source-round.json",
+      "bytes": 632,
+      "blob": "4e629030e92b70c906657a76934e1e618ed7a875"
+    },
+    {
+      "path": "docs/mcr/evidence/art-customize-background-02/source-validation.json",
+      "bytes": 1861,
+      "blob": "dfcfebc98ebff860f7fd18a49cac51163e8de6e0"
+    },
+    {
+      "path": "docs/mcr/evidence/art-customize-background-02/verify-source.py",
+      "bytes": 5389,
+      "blob": "c58f9073c92910000e6dee2293c2e3f00065a70d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/1.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/2.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/3.log",
+      "bytes": 1452,
+      "blob": "dd660019c76c62912290eadfb8a352a45ff21d87"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/baseline-customize-360.png",
+      "bytes": 47083,
+      "blob": "950d565d39641accf83afeaa01c128103e8961f3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/baseline-customize-390.png",
+      "bytes": 47706,
+      "blob": "3666c5ea5de672b6eccdd3955fa0bb780dff2896"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/baseline-customize-430.png",
+      "bytes": 48397,
+      "blob": "cd32140f141ce6c4bc9ad348cfcfa2b0bc898ad1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/candidate-customize-360.png",
+      "bytes": 51246,
+      "blob": "51ba4c8feb42bf66ec603409c879e3409bbad382"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/candidate-customize-390.png",
+      "bytes": 52327,
+      "blob": "27a88304a34fd1ed8d937c0b9de13581302abb2b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/candidate-customize-430.png",
+      "bytes": 52983,
+      "blob": "32a214f5751423bef713c81e77cb5d9c80703e76"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/driver.mjs.txt",
+      "bytes": 14927,
+      "blob": "258bd641e7c1dae43530a6001367ffbb6f67e255"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/guard.json",
+      "bytes": 1525,
+      "blob": "78f5d5f7ea314139c90efac44a2c76d672da930a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/guard.py.snapshot",
+      "bytes": 4778,
+      "blob": "38cafcdedcd36fdef7aa2ab4e90583e1d586416a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/index.json",
+      "bytes": 164827,
+      "blob": "26857c6d7c3979d3625d3796afd8e743fe32b7bb"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/qualification.json",
+      "bytes": 2591,
+      "blob": "a96cb3fc4e9a78527a86fa4cc0ab09d17016e53f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/release.json",
+      "bytes": 751,
+      "blob": "8895d2af51b95fccd1a7b6b30bc2a574d09f0bd5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/report.json",
+      "bytes": 279853,
+      "blob": "90c34ca6c7b712a8bd7f9dafc0f9a35de478c53a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/customize-05/vitest.config.mjs",
+      "bytes": 231,
+      "blob": "1d0fb131f75cd1fc524067cb788058252d7b53c7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/artifacts.json",
+      "bytes": 8091,
+      "blob": "14be98215a657c59e27b893aa413c0e3d8e2d5f0"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-focused-360.png",
+      "bytes": 162155,
+      "blob": "3d3411005990679e68c0e6741d1d630abf26f6f3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-focused-390.png",
+      "bytes": 169816,
+      "blob": "c0c67bdf96bee68f0516f90b5d4d897699d90768"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-focused-430.png",
+      "bytes": 181600,
+      "blob": "c7433330b6afbd6ba0ce94130ebfeb139b201914"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-forced-390.png",
+      "bytes": 150564,
+      "blob": "6a0172d38ffb5fddcb2030ae193f4c9a36202678"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-title-unfocused-360.png",
+      "bytes": 162252,
+      "blob": "43336f0ab3179d9f7aa7cd4bcc46b37e3f3c88e5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-title-unfocused-390.png",
+      "bytes": 169910,
+      "blob": "44936cf70fce2cd4181f9bf4b7615d22d992a6a7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-map-title-unfocused-430.png",
+      "bytes": 181689,
+      "blob": "f90a84de2001d069a0ccbfdf1075283a588353c3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-focused-360.png",
+      "bytes": 58735,
+      "blob": "98bcf9e674b6d4e3dde918bd2936c403a7a54b8d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-focused-390.png",
+      "bytes": 62073,
+      "blob": "33bdacd7f6858e55e48beba19cd7b34c5e36bea1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-focused-430.png",
+      "bytes": 65867,
+      "blob": "c0dc06443fd1fee7681525963bebecd5dbb0524d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-forced-390.png",
+      "bytes": 49055,
+      "blob": "81e399938af9c24b0ea5a77a5a42d0eec0bdcf3b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-title-unfocused-360.png",
+      "bytes": 59168,
+      "blob": "8b708165cc0c04ac7b389b56a47c1b3e431bba20"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-title-unfocused-390.png",
+      "bytes": 62530,
+      "blob": "a980d567377d943cdf5c9498695d1c2a238db143"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-me-title-unfocused-430.png",
+      "bytes": 66279,
+      "blob": "fce8af12f629a37f79c9bd7d5bdf19c3c6665f5a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-meet-focused-360.png",
+      "bytes": 69979,
+      "blob": "ce1f12bfdae18ce9ecbc1b947deb7ab0850d9a29"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-meet-focused-390.png",
+      "bytes": 72153,
+      "blob": "9002d51c66a0350fe2c383c844371a946b69f131"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-meet-focused-430.png",
+      "bytes": 74049,
+      "blob": "9b49b4e8c899660d50f44c247a1997fbede1c5e6"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/baseline-meet-forced-390.png",
+      "bytes": 55038,
+      "blob": "5ffe1046c17ac9cc9eeae52955c20cc2e24a9989"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-focused-360.png",
+      "bytes": 162172,
+      "blob": "3df5e32c3f51df51fdeea9725d4acb43d461da64"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-focused-390-backing-probe.png",
+      "bytes": 169844,
+      "blob": "a6506503291fa2f251160a00baf0c663990fb810"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-focused-390.png",
+      "bytes": 169798,
+      "blob": "8980611cbfa6b87be26c97b9adbed968f416b6e0"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-focused-430.png",
+      "bytes": 181628,
+      "blob": "e36f53b59563fc832d4a541abc67e9d639b57d68"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-forced-390-backing-probe.png",
+      "bytes": 150479,
+      "blob": "4215645522d3456398c55b990668aa04bde5ae2a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-forced-390.png",
+      "bytes": 150539,
+      "blob": "0ce2ca2cc8440d050a1600817de9fea5598ac51c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-title-unfocused-360.png",
+      "bytes": 162252,
+      "blob": "43336f0ab3179d9f7aa7cd4bcc46b37e3f3c88e5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-title-unfocused-390.png",
+      "bytes": 169871,
+      "blob": "d817f63d186447a65f20ba42aeeed2fffa0a9ec2"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-map-title-unfocused-430.png",
+      "bytes": 181702,
+      "blob": "8db7a307800d2e504d5254dfeb09839b0bef0a49"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-focused-360.png",
+      "bytes": 58751,
+      "blob": "806c97ae15f956a084e6f75adf8dc3ca4adaca54"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-focused-390-backing-probe.png",
+      "bytes": 62111,
+      "blob": "4ecb4de2b751d56b312463810ef6522cd328a204"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-focused-390.png",
+      "bytes": 62087,
+      "blob": "5a3e29f71abefc56e2ab50e17f2d8e737fdfa086"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-focused-430.png",
+      "bytes": 65885,
+      "blob": "0d705d770881880f8a165a248fa67c39f3099dfc"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-forced-390-backing-probe.png",
+      "bytes": 48989,
+      "blob": "45568ea4ceb02cfbad8fad2a143ab121b6899ef3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-forced-390.png",
+      "bytes": 49055,
+      "blob": "81e399938af9c24b0ea5a77a5a42d0eec0bdcf3b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-title-unfocused-360.png",
+      "bytes": 59168,
+      "blob": "8b708165cc0c04ac7b389b56a47c1b3e431bba20"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-title-unfocused-390-backing-probe.png",
+      "bytes": 62106,
+      "blob": "2b92bafc1846c2efd98b8a19022b1be3336ee325"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-title-unfocused-390.png",
+      "bytes": 62530,
+      "blob": "a980d567377d943cdf5c9498695d1c2a238db143"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-me-title-unfocused-430.png",
+      "bytes": 66279,
+      "blob": "fce8af12f629a37f79c9bd7d5bdf19c3c6665f5a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-meet-focused-360.png",
+      "bytes": 69988,
+      "blob": "adabf7f0f9548d5725a463fd040ae02b15a1c31e"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-meet-focused-390-backing-probe.png",
+      "bytes": 72113,
+      "blob": "1018d78c8a1c350ef21faefe79b928294b23b1f4"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-meet-focused-390.png",
+      "bytes": 72147,
+      "blob": "3e8f180b7251112de866d59538924069b2223837"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-meet-focused-430.png",
+      "bytes": 74041,
+      "blob": "d6e7d861d20a8567f11a567b0a0d26644ef93914"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-meet-forced-390-backing-probe.png",
+      "bytes": 54989,
+      "blob": "02b4d826e35c5c97ff0aa6ba2c2ca4ca835f01fa"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/candidate-meet-forced-390.png",
+      "bytes": 55064,
+      "blob": "cab85c8ea6911ebd5d567edf76241282c8c95ee9"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/capture-packet.json",
+      "bytes": 24394,
+      "blob": "4f68e1ea3ee1d3c01ae5d6f3dcca7e546c929b12"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/report.json",
+      "bytes": 659058,
+      "blob": "3a43db2d2b3ca168f68393abb6820a964a6a54fe"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/1.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/2.log.gz",
+      "bytes": 207,
+      "blob": "3204dc5b1e36d94e37f3455794f796ae910db947"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/3.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/4.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/5.log.gz",
+      "bytes": 245,
+      "blob": "997ad8ddace532006fc33125e6aa16b1d30923e7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/guard.json",
+      "bytes": 2602,
+      "blob": "3a91f1f1d37ff758502c7a13296100b0aff5c08c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/guard.py.snapshot",
+      "bytes": 5120,
+      "blob": "2a258a02051556c58a5dfcc648ec5a1d382c025b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/resource/vitest.config.mjs",
+      "bytes": 227,
+      "blob": "216337a6aa3e2372d2154f43e0c44ec0be6188cc"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/mcr-cozy-panels-lint.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/mcr-cozy-panels-native01-launch.log.gz",
+      "bytes": 310,
+      "blob": "83f915631a69d216021bf853ed9e627ff388e07d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/mcr-cozy-panels-native01.log.gz",
+      "bytes": 346,
+      "blob": "af40a0093d4e89a358e1093a2c000e42eaf1f250"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/mcr-cozy-panels-source-tests.log.gz",
+      "bytes": 208,
+      "blob": "4ac65e2162272bae41b4295317be4aa388a2676c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/mcr-cozy-panels-types.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-customize-390.png",
+      "bytes": 62382,
+      "blob": "1a33b268c676494c4c87bda5bcb6d60a40abce82"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-feed-390.png",
+      "bytes": 63839,
+      "blob": "56abaecdf2b350b1c31088e3d4477962ec155f7f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-gifts-390.png",
+      "bytes": 98202,
+      "blob": "7547ebd9095e9f12c272061893e89801ba4183ce"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-landing-390.png",
+      "bytes": 248289,
+      "blob": "90707b90b127db152e2073f49804d1887759e864"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-login-390.png",
+      "bytes": 363464,
+      "blob": "8a79ad4f15826593b1c4200cefda565643321cf1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-me-390.png",
+      "bytes": 66609,
+      "blob": "c9bda471cae493a3c187ca5fc329925edbaaa7ff"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-meet-390.png",
+      "bytes": 100776,
+      "blob": "8cddcdfacfbf056970e846aa8b03a10d9c4f4211"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-wall-390.png",
+      "bytes": 61924,
+      "blob": "dec5fd6607ce1160f03fbeececa4ccdb03961ed3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-customize-390.png",
+      "bytes": 58007,
+      "blob": "53020ad762fc735059d8d322336fa9fbbf99f8b1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-feed-390.png",
+      "bytes": 59392,
+      "blob": "94d4dd9ce11b3999a5cf8df9e3651724d0cd0bf0"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-gifts-390.png",
+      "bytes": 81454,
+      "blob": "1dcbb0395a514fb5988841f0d9880d89cf56008e"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-landing-390.png",
+      "bytes": 221267,
+      "blob": "8fd1a70f3972359c753834617ec504b7cc796d98"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-login-390.png",
+      "bytes": 60783,
+      "blob": "72451aee6305577860b2a19f6763d46d771a824d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-me-390.png",
+      "bytes": 77576,
+      "blob": "f43eb3164ddc885ab044ca5a5382ee2d4bfc51b5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-meet-390.png",
+      "bytes": 64736,
+      "blob": "41dc0105348a2f42db2f76ad348c1d469b62a9cb"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-wall-390.png",
+      "bytes": 23249,
+      "blob": "fb518122f34f541403caa5b45df90aee15c91f18"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/report.json",
+      "bytes": 334548,
+      "blob": "940595a5a156fc00f357578c18d3e60086b98167"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-customize-360.png",
+      "bytes": 60358,
+      "blob": "2873fbb9076591920d668dd8f462d80282d270fe"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-customize-390.png",
+      "bytes": 62382,
+      "blob": "1a33b268c676494c4c87bda5bcb6d60a40abce82"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-customize-430.png",
+      "bytes": 64452,
+      "blob": "17a6609b0c1a521638b32db6bae6f447f323744d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-360.png",
+      "bytes": 59769,
+      "blob": "d3f334da2226d6433561f0fb1671b69f6844cc91"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-390.png",
+      "bytes": 63839,
+      "blob": "56abaecdf2b350b1c31088e3d4477962ec155f7f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-430.png",
+      "bytes": 67083,
+      "blob": "60b911a422c42927b7b62f513afa15e540bd4ed7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-360.png",
+      "bytes": 93070,
+      "blob": "ea49cdb2c2f426d33848c9a195d2419d618786be"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-390.png",
+      "bytes": 98202,
+      "blob": "7547ebd9095e9f12c272061893e89801ba4183ce"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-430.png",
+      "bytes": 103738,
+      "blob": "caac9bb607dc73a2547e40d66574d1cc245eaaaa"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-landing-360.png",
+      "bytes": 221689,
+      "blob": "c948c450a6ac6f4d0e911e5696c6f88271911461"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-landing-390.png",
+      "bytes": 248289,
+      "blob": "90707b90b127db152e2073f49804d1887759e864"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-landing-430.png",
+      "bytes": 280961,
+      "blob": "57f0c721029505049a742fa1ae02d37697c8a333"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-login-360.png",
+      "bytes": 323964,
+      "blob": "54f30085f90546098e23551369677382f79ffe92"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-login-390.png",
+      "bytes": 363464,
+      "blob": "8a79ad4f15826593b1c4200cefda565643321cf1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-login-430.png",
+      "bytes": 422440,
+      "blob": "48b22f7c7b51c8d53997da74a8e12ed7d941737a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-360.png",
+      "bytes": 63978,
+      "blob": "499b86f9ddbb0a096f4f9a41f1dd42542a4141bb"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-390.png",
+      "bytes": 66609,
+      "blob": "c9bda471cae493a3c187ca5fc329925edbaaa7ff"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-430.png",
+      "bytes": 69092,
+      "blob": "259e3f40aa5adc2d9c5552a7f3b779c016cfb386"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-0-390.png",
+      "bytes": 66998,
+      "blob": "eeebe6c3eef133d1bac7b9e2afeba8ad0eea6a2d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-1-390.png",
+      "bytes": 66999,
+      "blob": "7f297ecda3b600abe274954faaffcd211ae1d238"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-2-390.png",
+      "bytes": 66999,
+      "blob": "e8b9af03c1854697d033232d6079be62dea7045b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-3-390.png",
+      "bytes": 66997,
+      "blob": "e105913c689fe0cd949f6f90c150604be5d4d25e"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-360.png",
+      "bytes": 95977,
+      "blob": "784974855ac56573acc0edc0c3c39555464531b4"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-390.png",
+      "bytes": 100776,
+      "blob": "8cddcdfacfbf056970e846aa8b03a10d9c4f4211"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-430.png",
+      "bytes": 106005,
+      "blob": "38a35426e101c9a60c56a0e865185a9794da00fd"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-360.png",
+      "bytes": 57799,
+      "blob": "f02f65e667052e09bf36f42f05f5321e85080cbd"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-390.png",
+      "bytes": 61924,
+      "blob": "dec5fd6607ce1160f03fbeececa4ccdb03961ed3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-430.png",
+      "bytes": 66021,
+      "blob": "b793799db3e7bfeb11f3828fbd5b331bb91d6045"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-customize-360.png",
+      "bytes": 47066,
+      "blob": "85df541c7fab46c864199213d4b35ee592013041"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-customize-390.png",
+      "bytes": 47688,
+      "blob": "f9da793e351d7beee2882c34beac1a941ca837bb"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-customize-430.png",
+      "bytes": 48380,
+      "blob": "a63a420277a0a32f44adc1e27abae4a9eb4fd37d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-360.png",
+      "bytes": 28764,
+      "blob": "0613d190f3012c62d41495ac74e4ae8633135d12"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-390.png",
+      "bytes": 29604,
+      "blob": "4521b6d50dd6fb5889b0d7f6d488c5a1fced4cae"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-430.png",
+      "bytes": 29982,
+      "blob": "4c13bf7cb9fbc224815eb853f8b98b3fb0ea6e08"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-360.png",
+      "bytes": 62356,
+      "blob": "722a72551b1a7b15795f9d4fa304abfab7163f79"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-390.png",
+      "bytes": 65005,
+      "blob": "e237416164b8919857caf505378ea7759b625365"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-430.png",
+      "bytes": 67596,
+      "blob": "01bfb19a3bfe85deb0d8853f899b4e222bbb646d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-landing-360.png",
+      "bytes": 198836,
+      "blob": "d7d9024e286d18c332e0132fe081dda62da49494"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-landing-390.png",
+      "bytes": 221267,
+      "blob": "8fd1a70f3972359c753834617ec504b7cc796d98"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-landing-430.png",
+      "bytes": 251059,
+      "blob": "3586a623380965bfb6ab1bf9461f124900055ca8"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-360.png",
+      "bytes": 58983,
+      "blob": "2dc109f3c9e726f4397d22f8a1471ec22853b63b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-390.png",
+      "bytes": 60783,
+      "blob": "72451aee6305577860b2a19f6763d46d771a824d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-430.png",
+      "bytes": 63875,
+      "blob": "d27e19cad39230b04dde8917910133de10aeb8fc"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-error-390.png",
+      "bytes": 67230,
+      "blob": "eeee672c119248628cb99dd2528794fc42147bc2"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-options-unavailable-390.png",
+      "bytes": 60123,
+      "blob": "778ad7e59a4ea829bcad78de45537f67aa86357b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-pending-390.png",
+      "bytes": 56781,
+      "blob": "9b48e00111462bfeb0f712aa2f8914b7eb5a284a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-360.png",
+      "bytes": 58735,
+      "blob": "98bcf9e674b6d4e3dde918bd2936c403a7a54b8d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-390.png",
+      "bytes": 62073,
+      "blob": "33bdacd7f6858e55e48beba19cd7b34c5e36bea1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-430.png",
+      "bytes": 65867,
+      "blob": "c0dc06443fd1fee7681525963bebecd5dbb0524d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-0-390.png",
+      "bytes": 62530,
+      "blob": "a980d567377d943cdf5c9498695d1c2a238db143"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-1-390.png",
+      "bytes": 62535,
+      "blob": "46bcb16ddcdd72fa11af11df49896e72c4478423"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-2-390.png",
+      "bytes": 62521,
+      "blob": "3e1e28450915d57e738ca013bfdb82ba3c79333c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-3-390.png",
+      "bytes": 62502,
+      "blob": "4028f12706730933076b5272ad7963c74aff5739"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-forced-colors-390.png",
+      "bytes": 49444,
+      "blob": "36744b5894f6a6d79214277051684595cda84a1e"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-360.png",
+      "bytes": 69874,
+      "blob": "856a6f10a64aaa058cd2409d37eccd1c5d60ad7b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-390.png",
+      "bytes": 72061,
+      "blob": "e4d7e801ac658e954302f46ce4a56ff30cad6cd1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-430.png",
+      "bytes": 73949,
+      "blob": "acce6d73093c3fd49ae28044015915a17d7b3e52"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-360.png",
+      "bytes": 29640,
+      "blob": "b9b8911f7dbf7c964fdee5fadfcfea22d404eb1f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-390.png",
+      "bytes": 30461,
+      "blob": "9a786425d051da03f8032601e72bf26196cc062f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-430.png",
+      "bytes": 31645,
+      "blob": "8791c414aeef9dcbe8af6ec7948973b099404057"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/capture-packet.json",
+      "bytes": 14271,
+      "blob": "fdbe6ed5dbf169a17a10bbaed55ca699bc73d3e0"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/driver.mjs.snapshot",
+      "bytes": 17619,
+      "blob": "c97328b22fabe7553f7378aa4760321df6455bd7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/guard.json",
+      "bytes": 648,
+      "blob": "4c3164b7c8429f2c17a56581ab2174e48421bfa9"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/guard.py.snapshot",
+      "bytes": 2861,
+      "blob": "ac9ffa0029faed051380287c7d3a6ba2df21d322"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/native.log.gz",
+      "bytes": 591,
+      "blob": "019519638bfdc6d834260331ab1c7fa11e52dca7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/nested-css-attestation.json",
+      "bytes": 1038,
+      "blob": "8d28fe0409c663bea16a710217664b5191e83913"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/qualification.md",
+      "bytes": 3269,
+      "blob": "c582ead75c8b78e4e93a2ebc311e4aad7208d01b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/report.json",
+      "bytes": 726512,
+      "blob": "6b5290842d7fe3df495078668ee6a4366e44793a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/qualification.md",
+      "bytes": 1794,
+      "blob": "843fca899a7c6339038f656ba023d86b3058aaca"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-360.png",
+      "bytes": 29640,
+      "blob": "b9b8911f7dbf7c964fdee5fadfcfea22d404eb1f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-390.png",
+      "bytes": 30461,
+      "blob": "9a786425d051da03f8032601e72bf26196cc062f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-430.png",
+      "bytes": 31645,
+      "blob": "8791c414aeef9dcbe8af6ec7948973b099404057"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-390.png",
+      "bytes": 29604,
+      "blob": "4521b6d50dd6fb5889b0d7f6d488c5a1fced4cae"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-focus-forced-390.png",
+      "bytes": 20559,
+      "blob": "cbc7d9e68e46afa40cadfd6ddb5f127d20dba9e1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-focus-normal-390.png",
+      "bytes": 30018,
+      "blob": "1c2c9a7bc59dfcd53a88ee085e18e7032ae61e84"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-text-backing-forced-390.png",
+      "bytes": 20559,
+      "blob": "cbc7d9e68e46afa40cadfd6ddb5f127d20dba9e1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-text-backing-normal-390.png",
+      "bytes": 27573,
+      "blob": "26ce5ddc0048bb49619df46720df76ab8a887945"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-390.png",
+      "bytes": 65005,
+      "blob": "e237416164b8919857caf505378ea7759b625365"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-focus-forced-390.png",
+      "bytes": 51419,
+      "blob": "796e3ec0adf27141f7d957c881e5efbadf734587"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-focus-normal-390.png",
+      "bytes": 65278,
+      "blob": "8c7f374cd289b93efd9daa76c95f0a1e87dd2cfd"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-text-backing-forced-390.png",
+      "bytes": 51419,
+      "blob": "796e3ec0adf27141f7d957c881e5efbadf734587"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-text-backing-normal-390.png",
+      "bytes": 60583,
+      "blob": "c5d048942af3e9e0e3e34fbac873c960f2a288f8"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-390.png",
+      "bytes": 72061,
+      "blob": "e4d7e801ac658e954302f46ce4a56ff30cad6cd1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-focus-forced-390.png",
+      "bytes": 55034,
+      "blob": "1e4a8708e84d4c78a3b572638d3934fa6e99009b"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-focus-normal-390.png",
+      "bytes": 72153,
+      "blob": "9002d51c66a0350fe2c383c844371a946b69f131"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-text-backing-forced-390.png",
+      "bytes": 55038,
+      "blob": "5ffe1046c17ac9cc9eeae52955c20cc2e24a9989"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-text-backing-normal-390.png",
+      "bytes": 66821,
+      "blob": "1fccc09f15860242e9c1d662c02d01f49c2599c1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-360.png",
+      "bytes": 42703,
+      "blob": "c3018223679121025faed0f26214baf841e74689"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-390.png",
+      "bytes": 42172,
+      "blob": "fbf59c1fdc0267513f98a69123a839e997a8979a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-430.png",
+      "bytes": 40881,
+      "blob": "cb96013dbea279dcbf0492466971928346118b77"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-focus-forced-390.png",
+      "bytes": 26344,
+      "blob": "f1b6ddef6a37e3cb778856e513f2ad472a4b20d9"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-focus-normal-390.png",
+      "bytes": 42343,
+      "blob": "79990915a4eec23d514b913324afdd25979b0c04"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-text-backing-forced-390.png",
+      "bytes": 26344,
+      "blob": "f1b6ddef6a37e3cb778856e513f2ad472a4b20d9"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-text-backing-normal-390.png",
+      "bytes": 34020,
+      "blob": "89ca0fc12460ef2aebbe3e96ca11e606e1c11050"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/capture-packet.json",
+      "bytes": 7391,
+      "blob": "a397a0d6ecca324e79acca2b01efbd331b045765"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/driver.mjs.snapshot",
+      "bytes": 18427,
+      "blob": "bc7683dec6ec719992bb53dc1ae3aac643778406"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/guard.json",
+      "bytes": 716,
+      "blob": "b69a54cc4b0dd9b3bd25c065d3acf7ff502e0dc5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/guard.py.snapshot",
+      "bytes": 3207,
+      "blob": "8a2fb729332d067b2384b901d8a371477cf28e8c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/native.log.gz",
+      "bytes": 777,
+      "blob": "8b1d23f6d269c3088c5951664d25c3b706657ffd"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/qualification.json",
+      "bytes": 20157,
+      "blob": "cee34e2c010427634e4f3f20fa6537e26c084b02"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/report.json",
+      "bytes": 459261,
+      "blob": "2cc3c58847c98a1a8374ac283934dbf045029a24"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/syntax.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/canonical-native-release01.json",
+      "bytes": 1134,
+      "blob": "d400fb66c0d6aaff6d9bb0518e5474194889c5ee"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/input-readiness01.md",
+      "bytes": 6528,
+      "blob": "64fb9eb57fa9613d700c4b9dfb864fef927c42e5"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round01/1.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round01/2.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round01/carry-inventory.json",
+      "bytes": 58362,
+      "blob": "ff77a2ea2a554856473332f72e7111d3a743397e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round01/report.json",
+      "bytes": 2658,
+      "blob": "581b84e8512d6d83382e442e7fb42c68bbd14a0e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round01/supervisor.json",
+      "bytes": 1188,
+      "blob": "99efb968f51c16cac4508604562529753280dbe5"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round01/supervisor.py",
+      "bytes": 4776,
+      "blob": "c623c99907431b8ab3abab4f7e80fec9c96f3413"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round02/1.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round02/2.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round02/carry-inventory.json",
+      "bytes": 58362,
+      "blob": "ff77a2ea2a554856473332f72e7111d3a743397e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round02/report.json",
+      "bytes": 22030,
+      "blob": "1e7d8ee59214090c2407bce42b185d94f759604e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round02/supervisor.json",
+      "bytes": 1189,
+      "blob": "d611d1a028be271503d2e8d53060699ddcf12278"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-round02/supervisor.py",
+      "bytes": 4776,
+      "blob": "c623c99907431b8ab3abab4f7e80fec9c96f3413"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/attempts.jsonl",
+      "bytes": 7259,
+      "blob": "abc93ad169c2cb1c9aebb37193b1c3449d11e730"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/follow-up.md",
+      "bytes": 1379,
+      "blob": "b5308aaddf9d6ee33d6f556bf0486cca3d498ccb"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/lint-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/lint-02.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/native-syntax-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/native-syntax-02.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/pins-01.log",
+      "bytes": 189,
+      "blob": "b33b8d5833006ae94bbe98ce8e70ff961514479d"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/pins-syntax-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/receipt.json",
+      "bytes": 7420,
+      "blob": "f670871a303209382d408dd1018347d54c827bcb"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/runtime-01.log",
+      "bytes": 111,
+      "blob": "07fe6d77e1c89ec5fb9b589007e45e5ce773e999"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/supervisor.py",
+      "bytes": 4661,
+      "blob": "004216ce16b8bd12c2784ce3fdd6408e7b10c80c"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/tests-01.log",
+      "bytes": 9695,
+      "blob": "d2b54704b12788af465ddb75a4c93cd0d972b520"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/tests-02.log",
+      "bytes": 254,
+      "blob": "4177d2c3904aea86b1a16fabed915d99a2978712"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/types-01.log",
+      "bytes": 733,
+      "blob": "442affce67317a4fe9e4e83b96f068569249e696"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round01/types-02.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/acceptance.json",
+      "bytes": 657,
+      "blob": "0e0e32976fb4eff7eae417a04c77e9cfe4413b32"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/attempts.jsonl",
+      "bytes": 8897,
+      "blob": "3f503d243ef670f507e38ff0f6adbbe9b510df7f"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/cleanup.jsonl",
+      "bytes": 897,
+      "blob": "45018e55cec2ea87fe4bbd46f40ae40cb031885b"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/eligible-attendee-syntax-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/input-readiness-syntax-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/lint-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/lint-02.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/preflight-fixture-01.log",
+      "bytes": 1613,
+      "blob": "29fb1ff7aaa499621712a1bd659c186d04f107e4"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/preflight-negative-01.log",
+      "bytes": 637,
+      "blob": "b4df2fd725ec5eade91f45bd7e5eb70e68fde97d"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/preflight-rejected-path-01.log",
+      "bytes": 94,
+      "blob": "d9fceb6ced11e6bd45fb4c09315654e93c7459e7"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/preflight-syntax-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/receipt.json",
+      "bytes": 7492,
+      "blob": "8d1804e3da80d6660af0b3b6bf928719e97780e6"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/supervisor.py",
+      "bytes": 6338,
+      "blob": "ec4d754b6b74784080d7acfee8c6d0996548056b"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/tests-01.log",
+      "bytes": 1432,
+      "blob": "80cf08437f22eeeacae4a8b6e04d23f9a77f1c5f"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/tests-02.log",
+      "bytes": 254,
+      "blob": "501b1cd219b76d98ac9aec5fd209cd4c8798f2af"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/types-01.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round02/types-02.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/background-review-c8a731e5/owner-review.json",
+      "bytes": 13031,
+      "blob": "5d2601cbfac92e475b294a3133e0ad0db3c9838d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/background-review-c8a731e5/report.json",
+      "bytes": 334548,
+      "blob": "940595a5a156fc00f357578c18d3e60086b98167"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/corrected-panel-review-8972b0b6.json",
+      "bytes": 18227,
+      "blob": "67c7ec3f2ed26126033cbb162e4805a7a9d75f7a"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/publication-49ac314e.json",
+      "bytes": 2242,
+      "blob": "4ac6bd103f6a937936e28ff68beff902842f516f"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reference-human.jpg",
+      "bytes": 482737,
+      "blob": "a162c0db658ace9f69a92c2aafe6148811b4a0c0"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/action-feed-390.png",
+      "bytes": 61470,
+      "blob": "89510976db23a587ca7b8362cb0057fa9c4d2096"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/action-gifts-390.png",
+      "bytes": 64246,
+      "blob": "9f2423f88f3b37b63c1bdae86bc050ffe3689635"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/action-meet-390.png",
+      "bytes": 73400,
+      "blob": "9f0b95e0540eef9605a678184796fdfd3466e67d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/action-wall-390.png",
+      "bytes": 62077,
+      "blob": "0e4b00b3538953336436f9816ba658b591cd0333"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/frame-footer-reuse.json",
+      "bytes": 8341,
+      "blob": "a9c4b1c79c654a47aa15ae707f7abe7bfd697db7"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/map-parade-360.png",
+      "bytes": 361118,
+      "blob": "ce608cf806a783240f92c439cf35e793287d5768"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/map-parade-390.png",
+      "bytes": 410326,
+      "blob": "f2f54b7b306fc8772a66b061fafdc4bf0a64d3da"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/reused/map-parade-430.png",
+      "bytes": 483148,
+      "blob": "9ff16bd62e762adef150622d5a3f27620622cb96"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/source-review-8972b0b6/1.log.gz",
+      "bytes": 211,
+      "blob": "6bbe837c82e24d530938e60608011342e02d6a01"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/source-review-8972b0b6/2.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/source-review-8972b0b6/3.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/source-review-8972b0b6/owner-review.json",
+      "bytes": 4277,
+      "blob": "4203f39fbcfe9ede46da4833d88c33041160ade7"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/source-review-8972b0b6/report.json",
+      "bytes": 2594,
+      "blob": "0150f110e4142f53f0dfd48782850a5a830f208b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/wall-community-review-cc20832a.json",
+      "bytes": 8462,
+      "blob": "cd0d73a1486b09b473cf8dc66ed4030e4bfa8c6a"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/world-map-review-4e491a45/owner-review.json",
+      "bytes": 7854,
+      "blob": "bc4c66e506147f03bd62988a3e15e3c34ef1ff0b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-frame-footer/world-map-review-4e491a45/report.json",
+      "bytes": 342952,
+      "blob": "c27d6d8ab4a0d90c2c900287e612723ad66e367d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/capture-packet.json",
+      "bytes": 4575,
+      "blob": "b07a3a013e50fc818360b8fff4fbd9c8a93e0c28"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-01/driver.log.gz",
+      "bytes": 260,
+      "blob": "a74ed2a9eb4ed1467f60002dedb4e125869bfcef"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-01/report.json",
+      "bytes": 258243,
+      "blob": "382f777b6bd0c811878dd294c31c5d21c5b5617c"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-map-parade-390.png",
+      "bytes": 410326,
+      "blob": "f2f54b7b306fc8772a66b061fafdc4bf0a64d3da"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-world-parade-390.png",
+      "bytes": 481182,
+      "blob": "dea74f46080395b29e2f3829edd142d54c0d6af8"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-360.png",
+      "bytes": 341441,
+      "blob": "4da667de6b451aab0d2771e6af7731607fa28a14"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-390.png",
+      "bytes": 386020,
+      "blob": "6ac379066e67c3fc9ff587f71103e63a12b5d9ab"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-430.png",
+      "bytes": 450543,
+      "blob": "1b433884f079e599d10d4c30c53da0f26032629b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-360.png",
+      "bytes": 427242,
+      "blob": "f0dcabab5aee27927c194e6bd6b7ee30b8803e4a"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-390.png",
+      "bytes": 449001,
+      "blob": "6c4a4ca21aa7c12acaf86eabb114a1dce39fdf71"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-430.png",
+      "bytes": 496509,
+      "blob": "f67cdaa145e373547677eaebac7978d509f8e03e"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/driver.log.gz",
+      "bytes": 730,
+      "blob": "f692cb98a42096dbd69f37d4b8b542bc65e8b939"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/report.json",
+      "bytes": 342952,
+      "blob": "c27d6d8ab4a0d90c2c900287e612723ad66e367d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-danger-360.png",
+      "bytes": 361268,
+      "blob": "ccb0257c5680c42a866ee9e8e10c9f961f0e5472"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-danger-390.png",
+      "bytes": 410308,
+      "blob": "3085a44706c517d0829b0a6fa2d94b5e8127f3ff"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-danger-430.png",
+      "bytes": 482478,
+      "blob": "7dccd4ee2b682717270ef0bae6bf77f699fb423d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-parade-360.png",
+      "bytes": 361118,
+      "blob": "ce608cf806a783240f92c439cf35e793287d5768"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-parade-390.png",
+      "bytes": 410326,
+      "blob": "f2f54b7b306fc8772a66b061fafdc4bf0a64d3da"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-parade-430.png",
+      "bytes": 483148,
+      "blob": "9ff16bd62e762adef150622d5a3f27620622cb96"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-revenge-360.png",
+      "bytes": 360466,
+      "blob": "3825287a7d349469a82ec8c6db57a5cedab44ad1"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-revenge-390.png",
+      "bytes": 409286,
+      "blob": "620ef824838f7d3a84417434bea62e226a9d17e3"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-revenge-430.png",
+      "bytes": 481970,
+      "blob": "000d0a16aa1e333c3cc53f5c2362c213ca2cb88a"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-danger-360.png",
+      "bytes": 459654,
+      "blob": "d9b28a88bbbefebdf474afb393bedd7109ae2ce0"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-danger-390.png",
+      "bytes": 482145,
+      "blob": "f847fb54ebb5f32e2b128f5d86c3d3914ab0d09b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-danger-430.png",
+      "bytes": 532772,
+      "blob": "7b503012cdebc03683d1a568ccfa133da7701252"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-parade-360.png",
+      "bytes": 458677,
+      "blob": "bd755c774548a5fd649d01f01f9e74851381ceee"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-parade-390.png",
+      "bytes": 481199,
+      "blob": "a82419d5509ea521905a18ea80afcea366627f1b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-parade-430.png",
+      "bytes": 531418,
+      "blob": "533837c732a6bebd5d32ee16cec7e4a2918c7020"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-revenge-360.png",
+      "bytes": 459591,
+      "blob": "a37a3b41db58b8578cdc160a5001b738a594c321"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-revenge-390.png",
+      "bytes": 481752,
+      "blob": "33f1fbb1da185df51824dd8fa1bc508ac69aaef0"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-revenge-430.png",
+      "bytes": 532781,
+      "blob": "23ea6b2a561a9f35aa36b8127cdb8456fbad97a5"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-danger-360.png",
+      "bytes": 337621,
+      "blob": "14f2dfbfebcc95f707835e354d7fe7b020812ec1"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-danger-390.png",
+      "bytes": 381665,
+      "blob": "b07fa4c26f373999ae3c5013ef5c64dc8bf1882f"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-danger-430.png",
+      "bytes": 445088,
+      "blob": "0dafe61f60ddac1eeb0de60202777d1180ed467e"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-parade-360.png",
+      "bytes": 341497,
+      "blob": "900baf8a5262f1f659c4bf2ef55a2164bfe80352"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-parade-390.png",
+      "bytes": 386087,
+      "blob": "ec091ee515cbd6b179275e7959a2cd85855a1dc3"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-parade-430.png",
+      "bytes": 450601,
+      "blob": "220edb95c34769a0497444da691be6e754609c88"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-360.png",
+      "bytes": 335612,
+      "blob": "84d74d3c410cc5a6f470b7002e2df3fd13f78224"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-390.png",
+      "bytes": 379545,
+      "blob": "05c5ac43b65403451d8fd2c8e01674df39622dac"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-430.png",
+      "bytes": 442183,
+      "blob": "a091b289ca4fec262deab140a99aedb63dd43305"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-danger-360.png",
+      "bytes": 424444,
+      "blob": "9cf69b6a842c05b4760811ab24d41c830d06d99a"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-danger-390.png",
+      "bytes": 446157,
+      "blob": "f3902d6ad0f0a813a23a2fb2d8cbf06f3c22f0fa"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-danger-430.png",
+      "bytes": 493333,
+      "blob": "d17141bf9eade97cd0fe3217b066f1fa681acf2c"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-parade-360.png",
+      "bytes": 427242,
+      "blob": "f0dcabab5aee27927c194e6bd6b7ee30b8803e4a"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-parade-390.png",
+      "bytes": 449001,
+      "blob": "6c4a4ca21aa7c12acaf86eabb114a1dce39fdf71"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-parade-430.png",
+      "bytes": 496509,
+      "blob": "f67cdaa145e373547677eaebac7978d509f8e03e"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-revenge-360.png",
+      "bytes": 423261,
+      "blob": "373b808de3f22c103ad4c36ba8cf3f9ad8713472"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-revenge-390.png",
+      "bytes": 445301,
+      "blob": "6a15202a0b916d18b353e293882e9bd1f8af78d0"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-revenge-430.png",
+      "bytes": 492305,
+      "blob": "fcbd22bcfb4e6da56e52878a5835a4ce4a3290f1"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/capture-packet.json",
+      "bytes": 9914,
+      "blob": "85f8448660adea6efab06e22282360e7e02d561b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/driver.mjs.snapshot",
+      "bytes": 10065,
+      "blob": "686645904d244bdff7337ed33e0b573433a9d73f"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/guard.json",
+      "bytes": 714,
+      "blob": "8f5eed17a7891b1e2663d4e2884e1090fc258cdd"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/guard.py.snapshot",
+      "bytes": 2938,
+      "blob": "8f3b25c0677a036b10fc91cb11402d9aebf169fd"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/native.log.gz",
+      "bytes": 2255,
+      "blob": "bc805cec9e7f46c7ea3fa2f44b9427d772179b87"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/report.json",
+      "bytes": 1019913,
+      "blob": "0a7242b3fb61b8080050f60e76bdab8f181e02ea"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/ground-export.log.gz",
+      "bytes": 370,
+      "blob": "76b838a5d4ebf0ae98eedadb3a37aa6fb2e29c17"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/lint.log.gz",
+      "bytes": 172,
+      "blob": "0983e73be831b14b476262b7a5b34dc46da5a3a2"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/report.json.gz",
+      "bytes": 514,
+      "blob": "5e71ab7cc626dfb54f24db789f55d7b78af16748"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/tests.log.gz",
+      "bytes": 201,
+      "blob": "1da5e8660d1cb2c182f96f981f2f86897c211614"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/types.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-02/1.log.gz",
+      "bytes": 165,
+      "blob": "5274db3d213de31e8d2ad2f27d917cc560519ae2"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-02/2.log.gz",
+      "bytes": 207,
+      "blob": "0fe30c2ed16941ced89c9fd7b7f340f5e4ecbd14"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-02/3.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-02/4.log.gz",
+      "bytes": 20,
+      "blob": "86e43ea3218b5890302b754bbf8927f94e79f7ee"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-02/guard.py.snapshot",
+      "bytes": 4626,
+      "blob": "2bbfe1bda09aebe5d424d7740167c05eb177d4c9"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-02/report.json",
+      "bytes": 2878,
+      "blob": "6dfa1cdb3f3ffa4163446228991c96eb147d429a"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/drift.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/generate.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/lint.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/release.json",
+      "bytes": 2705,
+      "blob": "af1b4464db8fee2258df28032f7c5ed55585038d"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/supervisor.py",
+      "bytes": 5102,
+      "blob": "3521d13ee7241749f12809f80bf727b6c03f12bf"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/tests.log",
+      "bytes": 249,
+      "blob": "1953cc07698d2d1f5b4784e023c8b599806dd33b"
+    },
+    {
+      "path": "docs/mcr/evidence/social-policy-wire/source-01/types.log",
+      "bytes": 0,
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/author.py",
+      "bytes": 8437,
+      "blob": "823c1fd8f68c125cab309ee98c5b4b237832fdef"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/customize-paper.svg",
+      "bytes": 2386,
+      "blob": "d2e5fe45f5f1745e245457085ac23889bc624c13"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/customize-playful-lower.svg",
+      "bytes": 3683,
+      "blob": "e4ae3ad3a4b2a28d69ae05c7c89006097ff83ba1"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/landing-garden-night.svg",
+      "bytes": 3820,
+      "blob": "4ddf916c27d14f723a6693d969243b1a559e3856"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/manifest.json",
+      "bytes": 2598,
+      "blob": "b8dc7576d9689dddcbb89d8f0f42a51aab0ad077"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-clouds-top.svg",
+      "bytes": 2609,
+      "blob": "b61347c3c42202944291de2e88a9dc218107b2a7"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg",
+      "bytes": 2887,
+      "blob": "ed0e7d2d9e92f8a14439107b431b47d20fc7e648"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-paper.svg",
+      "bytes": 2115,
+      "blob": "3a3b4390c5d10f376d0661fdeed2be4586adae46"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/static-validation.json",
+      "bytes": 1809,
+      "blob": "5948ca6045f8d96e6f9a0128f4b4d2e4cd419fa7"
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/verify.py",
+      "bytes": 3219,
+      "blob": "996527a7213ba72bf8e0ded66d5b03f3e3d344e8"
+    },
+    {
+      "path": "frontend/public/world/map-firstview-cozy-v1/paint.py",
+      "bytes": 13887,
+      "blob": "3994e843a680d4f2892e60526510df3ae17b6987"
+    },
+    {
+      "path": "frontend/public/world/map-firstview-cozy-v1/parade-ground.png",
+      "bytes": 469046,
+      "blob": "5eab49db8ed1ccc494f87167f654d8c427e17a27"
+    },
+    {
+      "path": "frontend/public/world/map-firstview-cozy-v1/parade-ground.svg",
+      "bytes": 747407,
+      "blob": "926fde190cd94b354125049ec714d0d8a8335ecb"
+    },
+    {
+      "path": "frontend/public/world/map-firstview-cozy-v1/source-provenance.json",
+      "bytes": 7319,
+      "blob": "3ea00a96726287e311bd669458bdc2da6d805937"
+    }
+  ],
+  "bytes": 41133148,
+  "conservativeAdditionalHistoricalReserve": 10537017,
+  "preparationAndFailedAttemptReserve": 1048576,
+  "carryChargedBytes": 52718741
+}

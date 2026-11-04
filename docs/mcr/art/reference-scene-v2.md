@@ -892,3 +892,255 @@ not close human final acceptance, all-ten-screen acceptance, parent-goal,
 functional/live/device/public-flow obligations or physical venue evidence.
 Controlled synthetic C03/C05 map7005 fixtures remain `NOT_ADMITTED`; no live
 authority or physical-device acceptance follows from these captures.
+
+### Map4 first-view ground: source handoff
+
+Root granted the four new files under
+`frontend/public/world/map-firstview-cozy-v1/` and this document only. The
+earlier conditional courtyard proposal is withdrawn. Artist reused the existing
+checkout, preserved `codex/mcr-art-map-cozy-v1` at
+`9187962f29f008956b58ce61a1c87ddc572ffb0d`, and created
+`codex/mcr-art-map4-firstview` at freshly fetched and independently advertised
+master `20682b5736838a4acbdc79e000350834cc553961`. The new branch and prefix
+were absent before authoring. The original aligned goal remains `blocked`.
+
+The supported App chooses its map from the validated authenticated bootstrap;
+it does not choose the richer DEV scene automatically. Retained IN01 evidence
+uses `mcr_reference_scene_r3` revision 4, geometry
+`899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f`,
+768x1296, with quality-v6 ground and its original era atlases. The QA06 default
+App courtyard fixture is a different 1152x896 revision-1 release. Native-03 is
+the separate DEV v5 geometry with fixture revision 7005 and `NOT_ADMITTED`
+status. Neither fixture substitutes for actual default Map4 qualification.
+The completed read-only binding/label diagnosis was handed directly to Root,
+World and implementation owner 26e; no art-label source repair was needed.
+
+This source derives solely from the original Map4 ground, 531480 bytes, SHA256
+`e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795`.
+The original RGB pixels are retained inside the editable SVG, without scaling,
+warping or changed alpha. An explicit integer RGB transfer warms olive lawn
+to soft mint and stone to cream/peach. Sixty-one small flat flower/leaf groups
+provide sparse lawn-edge detail. They introduce no props, silhouettes, labels,
+navigation or obstacles, and are clipped outside the original paving and plaza.
+The exact five immutable source pins and integer recipe are recorded in the
+new provenance. The source SVG records editable filters and individual ellipses;
+`paint.py` is the exact PNG raster authority because SVG engines may round
+filter and ellipse pixels differently.
+
+Map4 has 47 original paving polygons, not the later v5 set of 43. All 47
+polygon coordinates and the six-point plaza parcel remain exact. The consumer
+receives only ground pixels and plaza fill `#9fba96`; its existing plaza points,
+stroke `#b4a27d`, width 6, draw order, original props and their positions remain
+unchanged. No World resource, character source, atlas, signage, collision,
+camera, foreground CSS or component was edited in this source handoff.
+
+The pinned Map4 source binding contains three scene resource lists. Their first
+resource descriptors are byte-for-byte equal: the same original ground path,
+531480-byte hash above, 768x1296 dimensions for REVENGE, PARADE and DANGER.
+The builder asserts that equality against the immutable binding hash. Root's
+explicit shared-ground extension therefore permits the one PARADE-authored
+derivative to be reused by 26e under each exact original theme tuple. Its granted
+filename remains `parade-ground.png`; no separate era exports or era-specific
+prop redraws are implied. Each adopted era still requires native qualification.
+
+Source files delivered:
+
+| File | Bytes | SHA256 |
+| --- | ---: | --- |
+| paint.py | 13887 | 7a891a26893bd7cd0b1017857e77edd328683f3aa40d07517b76cafde23f3928 |
+| parade-ground.svg | 747407 | a486652423d88870b06d3e050eeb00ae54c4e2734c1dc569663f5b245ab7638d |
+| parade-ground.png | 469046 | ee2a1990788dc8e2d3f8e0897391fd0e95f1f29448baef58415001159ae9436d |
+| source-provenance.json | 7319 | ad001c4a5b91cc6da2cc8d100281fb01395dd722e27f44dd9e34e90db7f0440d |
+
+The new ground remains 768x1296 RGB. Its public path is
+`world/map-firstview-cozy-v1/parade-ground.png`. Source checks and deterministic
+reproduction passed. An independent checker verified embedded original bytes,
+all 47 paving plus plaza SVG coordinates, the shared original ground in all
+three scene lists, and no tracked modifications to old scenery, avatars or
+application sources. Source image inspection confirms the intended warmer
+surface and small flowers; it does not qualify an actual App view.
+
+Resource21d offered and Artist explicitly accepted
+`MAP4-FIRSTVIEW-PARADE-ART-202611040944Z` at 2026-11-04T09:45:09.085974Z,
+with 18171756544 free bytes, 13126 carried recipe bytes and no other outputs.
+The existing absolute Python 3.14.3 interpreter and Pillow 12.2.0 were checked;
+no installation occurred. Actual sequential commands were the absolute Python
+interpreter with `-B frontend/public/world/map-firstview-cozy-v1/paint.py`, then
+the same command with `--verify`, each exit 0. One permitted within-round recipe
+revision added the shared-era proof and removed a Pillow deprecation warning;
+both commands again exited 0 and the PNG remained byte-identical. The separate
+read-only geometry/input checker also exited 0. Final checks ended at elapsed
+121.64 seconds, leaving cleanup time inside the 180-second round.
+
+Full release was sent at 2026-11-04T09:47:40Z: four durable source files total
+1237659 bytes, zero temporary bytes, exited owned Python children, no remaining
+job/browser/server/dependency link, minimum observed free 18161160192 bytes.
+No output resources remain held. Root and 26e own the separate actual default
+App Map4 before/after captures and World-RGBA invariance job; Artist owns direct
+inspection of their retained images and any concrete source findings. No extra
+Artist native job or screenshot custody is acquired.
+
+This ground alone does not close the original task. Actual default Map4 at
+360/390/430, each adopted era, live feature links, canonical-place safety,
+World/character invariance, human/reference acceptance and production mapping
+remain explicit gates. The six-label Map4 component work belongs to 26e's
+separate grant, reusing immutable glyph/font/style with its own Map4 anchors.
+No FOOD/MERCH destination is introduced. Source status remains
+`SOURCE_VALIDATED_NATIVE_NOT_RUN` until new actual consumer evidence exists.
+
+### Renewed Map4 reference composition: active source iteration
+
+The preliminary eligible default-App REVENGE390 image was inspected in Root's
+custody, without copying or recapturing it:
+`docs/mcr/evidence/map-production-binding/native-eligible-round01/after-revenge-390.png`,
+SHA256 `9d95bbba2921685a49fb6428b98123a4dbf362abb55a701c567767b6042b2fdf`.
+Its bytes were independently checked. This is an interrupted, unsealed packet;
+it establishes neither the complete nineteen-context proof nor visual acceptance.
+The new ground is visible and the six plaques are readable, but a palette-only
+change leaves the architecture, isolated large props, broad paths, sparse gardens
+and portrait composition short of the exact ten-screen reference. That finding
+keeps the original visual task active; the earlier source freeze was temporary.
+
+Root renewed this Artist's exclusive scope in the same checkout and branch:
+`frontend/public/world/map-reference-composition-v1/` with exactly `build.py`,
+`layout.json`, `source-provenance.json`, `{revenge,parade,danger}-scene.svg`,
+matching three PNGs, and `README.md`, plus this document append. Earlier source
+files stay unchanged. No second checkout, worker, native job, browser, character,
+World, CSS, authority or release-manifest work is acquired.
+
+The new complete Map illustration addresses the reference's fourth panel:
+an overhead hall complex, compact flanking architecture, dense small trees and
+planted edges, central/lower garden parcels and narrow diagonal path crossings.
+The third WORLD panel's truss is a different depiction and remains unchanged.
+The later human warmer/cuter instruction is retained through the existing warm
+era atlases; the target's dark color equality is not a renewed requirement.
+The reference is inspected directly, never sampled into runtime artwork.
+
+The consumer contract is `map4-reference-composition-v1`, 768x1296, with one
+selected-era complete raster painted once, then mutually pinned runtime labels
+and actual selection markers. The incumbent plaza and prop pass is skipped in
+this explicit mode. All three original Map4 tuples, original source pins,
+per-era output descriptors, six semantic anchors with 112px-high exclusions,
+and four separately mapped canonical display anchors are explicit in the new
+layout. These display coordinates do not mutate World cells, UUIDs or authority.
+Service labels carry no canonical identity. Consumer26e owns fixed semantics,
+font/icons, four feature links, selection, hit areas and atomic version/failure
+behavior in its newly granted v2 prefixes. The original v1 native candidate
+remains independently frozen.
+
+At authoring time only the editable builder and README exist; generated output
+and source checks require a fresh accepted Resource21d slot. Actual App captures,
+reference convergence, all-era/native behavior and World invariance remain open.
+
+### Direct owner inspection: eligible Map4 native round02 retry01
+
+Artist directly opened all nine retained AFTER images (REVENGE/PARADE/DANGER
+at360/390/430) and the separate PARADE390x420 short image in Root custody.
+No image was copied, cropped, rewritten or recaptured. Candidate is
+`4fa9b84b1ffe20c0f4793e73ab72247e77830649`, with Root seal `4cfd4199`.
+The packet remains **FAIL**, not a passed native release: its final cross-pair
+camera assertion sampled differing resize phases, including heights663/791
+and corresponding scrollY92.5/28.5. Root's subsequent driver-only stabilization
+is a new pending proof; it does not retroactively pass these retained results.
+
+The inspected images are under
+`docs/mcr/evidence/map-production-binding/native-eligible-round02-retry01/`:
+
+| Actual image | SHA256 |
+| --- | --- |
+| after-revenge-360.png | 2ce49b5dfa9dca2ff8213e07ef02d8d125564b567d380d45a2931e2c5cda2153 |
+| after-revenge-390.png | 9d95bbba2921685a49fb6428b98123a4dbf362abb55a701c567767b6042b2fdf |
+| after-revenge-430.png | c7d5277c51146ff6e4e233ce64162e0003ff6386a5217d397b8d8f4c8e843eaf |
+| after-parade-360.png | 7d654a394f9fc263f5059b6683f93150e27db514eaaee0e98389bd21aa9abc88 |
+| after-parade-390.png | 7904605a06e7d3a3665c538188d78a9fc2a7ebc2dd7c149329a8f340e015c241 |
+| after-parade-430.png | ad419612cf4ee0a066c63c7fdd2198a718fff16199f74c3669525f07be57d8d7 |
+| after-danger-360.png | 07fd1cd813f2bd2a3dc05207ebb7f864e7a2505f27ed48a47d523c5de1513b23 |
+| after-danger-390.png | 4bacac54f2e85202280f85bdfdad421406e8282f842e751970982b0842a2ace0 |
+| after-danger-430.png | 928cdca36cc1ac2fdbfb42075943f843b5751115c618fcd166db18e7711b3fd6 |
+| after-parade-390-short.png | 1f7d58133352d880455a2830bf3e4ce1654cd0a2cc8481274d13f388ec3fcc1e |
+
+Independent read-only SHA checks also pin `report.json` to
+`bbce6085418f4fe9398022bc991e202591c16274d986ad3afb3758508223c721`
+and Root's `canonical-native-eligible-release02.json` to
+`671d7266bc77c17e25f4348eb11690610daf405016338bf582b2e380dec618f9`.
+Its qualification is an explicitly eligible attendee contract fixture exercising
+the actual default client; `productionAdmitted` remains false. This is not an
+actual operator response, live admission, backend availability or device claim.
+
+The visual disposition is a bounded rendering improvement, with overall
+reference convergence still **IN_PROGRESS**. Warm mint lawn, cream/peach paving
+and small lawn flowers are visible consistently. All six plaques are readable
+and within the full-height viewport at all nine era/width combinations; no
+obvious missing source texture is visible. Distinct original era building,
+banner and counter colors remain visible. These images show no new source
+corruption requiring a repair to the frozen first-view ground.
+
+They also confirm the remaining source/composition findings: standalone broad
+buildings and large separated canopies do not create the reference's denser
+overhead architecture and planted boundaries; Plaza and lower lawns remain
+sparse; broad angular paving and large open areas lack the reference's garden
+rings and narrow diagonal crossings. Empty flat mint bands above/below the
+scene vary with viewport width and are especially large at360px. Those bands
+need an explicitly revised Map framing/fit behavior in the consumer, rather
+than scenery pixels pretending to be interface or viewport fill. The new
+full-composition source iteration remains necessary and is not accepted by
+this historical packet.
+
+The390x420 image visibly retains the two-line virtual-map/no-physical-arrival
+caption and bottom controls. Some labels are outside that saved short view;
+the image alone does not show all six simultaneously. Independently reading
+the report finds ten AFTER contexts, each with four virtual actions, successful
+keyboard/Back focus, minimum target height44px and width66.359375px. Those are
+retained driver observations, separate from visual inspection and the failed
+overall camera gate. All nineteen contexts record disposed state, zero active
+sockets and zero canvases after cleanup.
+
+Independent pairing of the nine matching full-height BEFORE/AFTER report rows
+confirms non-null and equal actual World RGBA hashes, World object arrays and
+original map identities in every pair. It does not resolve the camera sampling
+failure. The full-release receipt records no owned process/link/temp tree left
+at2026-11-04T11:40:18.062057Z. Artist held no output/capture resource for this
+inspection. Parent goal, complete visual convergence and the new source's
+actual App qualification remain open; no King/SL gate is introduced.
+
+### Eligible V1 round03 retry01: bounded proof passes, visual work continues
+
+Root's separate corrected packet now records raw **PASS**, candidate
+`be3fd627c248b9ed2ad34bf2a8641d18dc05f46d`, seal `48539248`, under
+`docs/mcr/evidence/map-production-binding/native-eligible-round03-retry01/`.
+Independent SHA checks match `report.json`
+`36374fe3bb205760fda990436275458bffe70cca7d5424892e07aaeef2a86ac7`
+and `artifact-index.json`
+`71ac304d7b4f3d66bff367965d11adde7d162427309c070d02b0175dbed571bb`.
+The first round03 probe's failed render-mount selector is retained separately;
+the new passing run does not relabel earlier failed packets.
+
+Artist directly reopened all nine actual saved AFTER era/width images and the
+short PARADE390x420 image, plus `before-parade-390.png` SHA256
+`f4af5febca9fa7ad9985fd1c563fa7be5731ac754bf26de4bac2ce46a5283eb2`.
+All ten AFTER PNG SHA values independently equal the ten round02 retry01 pins
+listed above. Visual appearance and the previously recorded source/composition
+findings therefore remain unchanged. The visible before/after confirms the warm
+ground/flower and semantic-label change; it does not turn the sparse original
+architecture, broad paths, incomplete planting or viewport bands into a match
+for the reference. All six labels remain readable in full-height captures.
+The short image retains caption and controls, with some labels outside its
+current view. No screenshot was copied or regenerated for this assessment.
+
+Independent JSON pairing finds nine non-null matching World RGBA hashes,
+identical29-object arrays, original map identities, settled World cameras and
+settled Map-host cameras. The report contains nineteen contexts and forty
+actions across ten AFTER cases. All forty record44px minimum target height,
+minimum width66.359375px, successful keyboard/Back focus and exactly one active
+socket, one constructed socket and one canvas with the same camera at the
+destination. Every context records disposed state and zero canvases/active
+sockets after teardown. These are bounded retained driver observations; Artist
+did not run a second browser or independently replay those routes.
+
+Root fully released this packet at2026-11-04T12:05:05.929783Z. The qualified
+scenario remains an explicitly eligible attendee contract fixture exercising
+the actual default client, with `productionAdmitted:false`. Source checks for
+the exact short-caption hunk remain Consumer26e's separately queued workflow.
+Bounded V1 client/resource/invariance proof is now complete; the new complete
+Map composition, reference convergence, live authority, physical devices and
+human final acceptance remain open. The original goal is not reset or closed.

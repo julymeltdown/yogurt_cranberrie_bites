@@ -7,17 +7,27 @@ import { createSpatialV4Labels } from './spatial-v4/map-labels'
 import { isSpatialV5ReferenceClaim } from './spatial-v5/model'
 import { createSpatialV5Labels } from './spatial-v5/map-labels'
 
+export interface ReferenceMapPaint {
+  readonly ground: HTMLImageElement
+  readonly plazaFill: string
+  readonly presentationVersion?: string
+  readonly presentationHash?: string
+  drawLabels?(context: CanvasRenderingContext2D): void
+  dispose(): void
+}
+export type ReferenceMapPaintProvider = (map: LoadedMap, signal: AbortSignal) => Promise<ReferenceMapPaint | null>
+
 /** MAP-only semantic projection; never mutates the shared WORLD collision or actor canvas. */
-export function drawReferenceOverview(context: CanvasRenderingContext2D, binding: ReferenceSceneBinding) {
+export function drawReferenceOverview(context: CanvasRenderingContext2D, binding: ReferenceSceneBinding, paint?: ReferenceMapPaint | null) {
   const { loaded, overview, plaza } = binding
   const images = new Map(loaded.assets.map(a => [a.descriptor.id, a.image]))
   context.imageSmoothingEnabled = false
-  context.drawImage(images.get(loaded.manifest.ground.id)!, 0, 0)
+  context.drawImage(paint?.ground ?? images.get(loaded.manifest.ground.id)!, 0, 0)
   context.save()
   try {
     context.beginPath()
     plaza.forEach(([x, y], i) => { if (i === 0) context.moveTo(x, y); else context.lineTo(x, y) })
-    context.closePath(); context.fillStyle = '#7a8742'; context.fill()
+    context.closePath(); context.fillStyle = paint?.plazaFill ?? '#7a8742'; context.fill()
     context.strokeStyle = '#b4a27d'; context.lineWidth = 6; context.stroke()
   } finally { context.restore() }
   // The destination canvas clips cropped edge illustrations. Only WORLD prop footprints are solid.
@@ -28,15 +38,17 @@ export function drawReferenceOverview(context: CanvasRenderingContext2D, binding
 }
 
 /** Same public pixel/identity port as the incumbent overview. Root owns release and privacy binding. */
-export function createReferenceSceneOverview() {
+export function createReferenceSceneOverview(options: { paint?: ReferenceMapPaintProvider } = {}) {
   let labels = createSpatialV4Labels(), labelsVersion = 4
   type Raster = { canvas: HTMLCanvasElement; ticket: number; pins: Omit<SceneryOverview, 'imageUrl'> }
   let disposed = false, generation = 0, encoding = false, active: Raster | null = null, pending: Raster | null = null
   let snapshot: SceneryOverview | null = null
+  let preparation: AbortController | null = null
   const listeners = new Set<() => void>()
   const clear = (raster: Raster | null) => { if (raster) raster.canvas.width = raster.canvas.height = 0 }
   const notify = () => { for (const listener of Array.from(listeners)) { try { listener() } catch { /* Independent consumers. */ } } }
   function withdraw() {
+    preparation?.abort(); preparation = null
     generation++; clear(pending); pending = null; clear(active)
     const old = snapshot; snapshot = null
     notify() // Withdraw identity before revoking the previous pixel capability.
@@ -67,24 +79,39 @@ export function createReferenceSceneOverview() {
     if (version && labelsVersion !== version) {
       labels.dispose(); labels = version === 5 ? createSpatialV5Labels() : createSpatialV4Labels(); labelsVersion = version
     }
-    const render = () => {
-     if (disposed || generation !== expected) return
+    const render = (paint: ReferenceMapPaint | null = null) => {
+     if (disposed || generation !== expected) { paint?.dispose(); return }
      let canvas: HTMLCanvasElement | null = null
      try {
       const binding = requireReferenceScene(map), ticket = generation
       canvas = document.createElement('canvas'); canvas.width = map.widthPx; canvas.height = map.heightPx
       const context = canvas.getContext('2d'); if (!context) throw new Error('Reference overview unavailable')
-      drawReferenceOverview(context, binding)
+      drawReferenceOverview(context, binding, paint)
+      paint?.drawLabels?.(context)
       if (version) labels.draw(context)
       if (disposed || generation !== ticket) { canvas.width = canvas.height = 0; return }
       const raster = { canvas, ticket, pins: { width: map.widthPx, height: map.heightPx,
         mapId: map.map.map_id, mapRevision: map.map.map_revision, mapHash: map.map.content_hash, geometryHash: map.map.geometry_hash,
-        themeId: map.theme.theme_id, themeRevision: map.theme.theme_revision, themeHash: map.theme.content_hash } }
+        themeId: map.theme.theme_id, themeRevision: map.theme.theme_revision, themeHash: map.theme.content_hash,
+        ...(paint?.presentationVersion && paint.presentationHash ? { presentationVersion: paint.presentationVersion, presentationHash: paint.presentationHash } : {}) } }
       if (encoding) pending = raster
       else encode(raster)
      } catch { if (canvas) canvas.width = canvas.height = 0 }
+     finally { paint?.dispose() }
     }
-    if (version) void labels.prepare().then(render, () => { /* Exact font unavailable: retain schematic/list fallback. */ })
+    if (options.paint) {
+      const controller = new AbortController(); preparation = controller
+      void Promise.resolve().then(async () => {
+        requireReferenceScene(map)
+        const paint = await options.paint!(map, controller.signal)
+        try { if (version) await labels.prepare(); return paint }
+        catch (error) { paint?.dispose(); throw error }
+      }).then(paint => {
+        if (controller.signal.aborted || disposed || generation !== expected) paint?.dispose()
+        else render(paint)
+      }, () => { controller.abort() /* Failed exact paint stays withdrawn: retain schematic/list fallback. */ })
+    }
+    else if (version) void labels.prepare().then(() => render(), () => { /* Exact font unavailable: retain schematic/list fallback. */ })
     else render()
   }
   return { read: () => snapshot,

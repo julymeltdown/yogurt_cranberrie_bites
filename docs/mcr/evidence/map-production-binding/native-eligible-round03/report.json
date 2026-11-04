@@ -1,0 +1,747 @@
+{
+  "status": "FAIL",
+  "qualification": "EXPLICIT_CONTRACT_FIXTURE_ELIGIBLE_ATTENDEE_ACTUAL_DEFAULT_CLIENT_ONLY",
+  "scenario": "eligible-attendee-contract-fixture",
+  "lease": "ROOT-MAP4-ELIGIBLE-NATIVE03-202611041200Z",
+  "candidate": "ce21d2e6b285246485e16ffcf5ab319480c06782",
+  "baseline": {
+    "commit": "a5c6cad52e630d61aa4ce581e7230c13cc5feb25",
+    "module": "frontend/src/app/world-entry/reference-scene-overview.ts",
+    "sha256": "sha256:098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "method": "BEFORE only: Vite serves exact historical factory module; actual production loader/resolver and all World sources remain current."
+  },
+  "sourcePins": {
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "sha256:ac82bd3614d2907740f4c2156602e664a93d96339bdab5a9f0328534dba6dbbd",
+    "frontend/src/world/reference-scene/overview.ts": "sha256:fac250597de73cd2c0ba30c2fc0f8ba111a5fae1ba23eaeea0eb28f197f957aa",
+    "frontend/src/world/scenes/MapScene.ts": "sha256:91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258",
+    "frontend/src/world/runtime.ts": "sha256:47fc58ab147702a4e90cf9a28aa101a999177b9af86f6bc0815ecbe36424776f",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json": "sha256:11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/local-input.json": "sha256:89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/eligible-attendee-scenario.json": "sha256:af6266c4210d7f18c6e3376683c500c61242969c7325ebec619c1d35e0f9599f",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/eligible-attendee.mjs": "sha256:37a5cfe98bad3bc32f99034bc4b7889ef9315f5c494c06fee9f45223448df35e",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/input-readiness.mjs": "sha256:15e4c4731ce2b52710e496b4c6561c6bca88bbc2beeb9e66813c20058c585fd5",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/preview.tsx": "sha256:e928238e0a39e742a7686a81009d767e99b252251a21035873f929fd56f4d57b",
+    "frontend/public/world/map-firstview-cozy-v1/parade-ground.png": "sha256:ee2a1990788dc8e2d3f8e0897391fd0e95f1f29448baef58415001159ae9436d",
+    "frontend/src/world/reference-scene/map4-service-v1/style-source.json": "sha256:246562200c1379f901e08183bde53e57e03a5152eb0a03c62c4268319e890e62",
+    "frontend/src/world/reference-scene/map4-service-v1/annotations.ts": "sha256:0df32577bcb7f797511546ac6912407ec74eac58631a8e6273f126ed443eb725",
+    "frontend/src/app/world-entry/map-presentation-v1/descriptor.ts": "sha256:df8b39affbe728c607fd67565ce916fabced13dd59164096f866470fd03be899"
+  },
+  "assetPins": {
+    "frontend/public/world/avatars/derived-v1/static-release.json": {
+      "sha256": "sha256:cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898,
+      "commit": "ce21d2e6b285246485e16ffcf5ab319480c06782"
+    },
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "sha256:e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030,
+      "commit": "ce21d2e6b285246485e16ffcf5ab319480c06782"
+    },
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json": {
+      "sha256": "sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9",
+      "bytes": 24058,
+      "commit": "ce21d2e6b285246485e16ffcf5ab319480c06782"
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/ground.png": {
+      "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+      "bytes": 531480,
+      "commit": "ce21d2e6b285246485e16ffcf5ab319480c06782"
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/revenge/atlas.png": {
+      "sha256": "sha256:210f82ccce180d5b5502f5c865b9505097c8960b2d4c82a7fb74411149df7185",
+      "bytes": 1176082,
+      "commit": "ce21d2e6b285246485e16ffcf5ab319480c06782"
+    }
+  },
+  "checks": [],
+  "limits": [
+    "Explicit eligible-attendee contract fixture via controlled HTTP/C05; original Map4 map/theme/avatar manifest DTOs and hashes preserved. Participant era selected per context.",
+    "Fixture eligibility is not a public operator admission receipt. The actual default client, decoder, loader, resolver, renderer and production guards remain in use.",
+    "Not current default-production availability, real-cohort acceptance, live-server admission, human fidelity, physical devices, or ten-screen acceptance."
+  ],
+  "browser": "156.0.8078.80",
+  "servers": [
+    {
+      "phase": "before",
+      "address": "http://127.0.0.1:5298/",
+      "port": 5298
+    }
+  ],
+  "current": {
+    "phase": "before",
+    "era": "REVENGE",
+    "width": 360,
+    "height": 844,
+    "errors": [],
+    "requests": [
+      "/src/app/world-entry/__tests__/map-presentation-v1/preview.html",
+      "/@vite/client",
+      "/src/app/world-entry/__tests__/map-presentation-v1/preview.tsx",
+      "/@react-refresh",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/react-dom_client.js",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/react-router-dom.js",
+      "/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json",
+      "/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/local-input.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/fixtures/realtime/rooms.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/fixtures/realtime/movement-heartbeat.json",
+      "/src/app/router.tsx",
+      "/src/app/ports.ts",
+      "/src/features/auth/model/session.ts",
+      "/src/features/auth/__tests__/fixtures/data.ts",
+      "/src/world/network/mock.ts",
+      "/src/world/network/transport/contract.ts",
+      "/src/world/map/json.ts",
+      "/src/app/world-entry/__tests__/map-presentation-v1/input-readiness.mjs",
+      "/src/app/world-entry/__tests__/map-presentation-v1/eligible-attendee.mjs",
+      "/src/shared/styles/base.css",
+      "/src/app/shell.css",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/react_jsx-dev-runtime.js",
+      "/src/app/world-entry/production.ts",
+      "/src/shared/api/http.ts",
+      "/src/app/character-entry/runtime.ts",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/@tanstack_react-query.js",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/react.js",
+      "/src/shared/ui/index.ts",
+      "/src/app/world-panels/ownership.tsx",
+      "/src/app/access.tsx",
+      "/src/app/account-deletion-entry/context.tsx",
+      "/src/app/routes.ts",
+      "/src/app/WorldShell.tsx",
+      "/src/shared/api/errors.ts",
+      "/src/shared/query/privacy.ts",
+      "/src/features/auth/model/contract.ts",
+      "/src/features/auth/model/bootstrap.ts",
+      "/src/features/auth/model/cookie-policy.ts",
+      "/src/features/auth/model/recovery.ts",
+      "/src/features/auth/model/enrollment.ts",
+      "/src/features/auth/model/account-deletion.ts",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/fixtures/core/auth-success.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/fixtures/core/auth-capabilities-disabled.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/fixtures/core/bootstrap-open.json",
+      "/src/world/network/transport/engine.ts",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/zod.js",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/realtime/v1/world.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/core/v1/core.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v1/avatar-config.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v1/common.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v2/reviewed/avatar-config.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v2/reviewed/avatar-manifest.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/realtime/v1/policy.json",
+      "/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/eligible-attendee-scenario.json",
+      "/@fs/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs",
+      "/src/entities/avatar/whole-character/index.ts",
+      "/src/app/character-entry/registry.ts",
+      "/src/app/world-entry/configuration.ts",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/ky.js",
+      "/src/shared/api/domain.ts",
+      "/src/shared/ui/controls.tsx",
+      "/src/shared/ui/Dialog.tsx",
+      "/src/shared/ui/Tabs.tsx",
+      "/src/shared/ui/feedback.tsx",
+      "/src/app/capabilities.ts",
+      "/src/app/account-deletion-entry/owner.ts",
+      "/src/app/navigation.tsx",
+      "/src/app/WorldHost.tsx",
+      "/src/app/shell-chrome/index.tsx",
+      "/src/app/shell-chrome/parade-footer.tsx",
+      "/src/shared/ui/concert-window/index.tsx",
+      "/src/app/world-presentation/WorldTools.tsx",
+      "/src/shared/api/domain-operations.generated.ts",
+      "/src/shared/query/keys.ts",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/generated/mcr-core.openapi.json",
+      "/src/entities/avatar/whole-admission/index.ts",
+      "/src/features/auth/model/recovery-contract.ts",
+      "/src/features/auth/model/enrollment-contract.ts",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/realtime/v1/operations.json",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/rolldown-runtime-B-1-B7_t.js",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/react_jsx-runtime.js",
+      "/src/entities/avatar/whole-character/contract.ts",
+      "/src/entities/avatar/whole-character/runtime.ts",
+      "/src/entities/avatar/whole-character/view.tsx",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/react-dom.js",
+      "/src/shared/ui/modal-focus.ts",
+      "/src/features/account/controller.ts",
+      "/src/features/theme/model/preferences.ts",
+      "/src/app/shell-chrome/shell-chrome.css",
+      "/src/shared/ui/concert-window/concert-window.css",
+      "/src/world/entities/replicated.ts",
+      "/src/entities/avatar/runtime/contract.ts",
+      "/src/entities/avatar/runtime/schema.ts",
+      "/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts",
+      "/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts",
+      "/src/features/safety/contract.ts",
+      "/src/features/account/contract.ts",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v1/avatar-manifest.schema.json",
+      "/src/world/map/resources.ts",
+      "/src/entities/avatar/selected-static/release.ts",
+      "/src/world/map/formats.ts",
+      "/src/entities/avatar/runtime/motion-adoption/art.ts",
+      "/src/entities/avatar/runtime/motion-adoption/v2.ts",
+      "/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts",
+      "/src/entities/avatar/source-catalog.ts",
+      "/src/world/map/manifest.ts",
+      "/src/world/map/tiled.ts",
+      "/src/world/illustrated/model.ts",
+      "/src/entities/avatar/character-source-pack.json",
+      "/src/world/map/schema.ts",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v1/map-manifest.schema.json",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/assets/v1/theme-manifest.schema.json",
+      "/src/app/character-entry/provider.tsx",
+      "/src/app/media-entry/provider.tsx",
+      "/src/app/media-entry/index.ts",
+      "/src/shared/media/contract.ts",
+      "/src/shared/media/image-policy.ts",
+      "/src/shared/media/read-media.ts",
+      "/src/shared/media/preview.ts",
+      "/src/app/CommunityFeatures.tsx",
+      "/src/features/gift-discovery/index.ts",
+      "/src/features/my-gifts/index.ts",
+      "/src/features/party-discovery/index.ts",
+      "/src/app/media-entry/RootMediaView.tsx",
+      "/src/features/party-discovery/model/controller.ts",
+      "/src/features/party-discovery/ui/PartyDiscovery.tsx",
+      "/src/app/media-entry/root-media.css",
+      "/src/features/gift-discovery/model/controller.ts",
+      "/src/features/gift-discovery/ui/Gifts.tsx",
+      "/src/features/my-gifts/MyGifts.tsx",
+      "/src/features/gift-discovery/ui/reference-presentation.tsx",
+      "/src/features/gift-discovery/ui/gifts.css",
+      "/src/features/gift-discovery/ui/reference-gifts.css",
+      "/src/features/party-discovery/model/contract.ts",
+      "/src/features/gift-discovery/model/contract.ts",
+      "/src/features/party-discovery/ui/party-discovery.css",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/generated/mcr-domain.openapi.json",
+      "/src/app/world-entry/root-features.tsx",
+      "/src/app/world-panels/index.tsx",
+      "/src/features/world-rooms/index.ts",
+      "/src/features/world-nearby/index.ts",
+      "/src/app/world-entry/bridge.ts",
+      "/src/features/world-rooms/model/controller.ts",
+      "/src/features/world-rooms/ui/WorldRooms.tsx",
+      "/src/app/places-entry/index.ts",
+      "/src/app/mural-entry/index.ts",
+      "/src/app/world-panels/presentation.css",
+      "/src/features/world-nearby/WorldNearby.tsx",
+      "/src/app/world-entry/authority.ts",
+      "/src/app/places-entry/owner.ts",
+      "/src/app/places-entry/provider.tsx",
+      "/src/features/world-nearby/projection.ts",
+      "/src/features/world-rooms/model/contract.ts",
+      "/src/app/mural-entry/owner.ts",
+      "/src/app/mural-entry/provider.tsx",
+      "/src/features/world-rooms/ui/world-access.css",
+      "/src/features/places/index.ts",
+      "/src/features/mural/sync/index.ts",
+      "/src/features/mural/sync/contract.ts",
+      "/src/world/mural/index.ts",
+      "/src/features/places/model/controller.ts",
+      "/src/features/places/ui/Places.tsx",
+      "/src/features/mural/sync/controller.ts",
+      "/src/features/mural/sync/MuralSyncPanel.tsx",
+      "/src/features/mural/sync/http.ts",
+      "/src/world/mural/authority.ts",
+      "/src/world/mural/sink.ts",
+      "/src/world/mural/phaser.ts",
+      "/src/features/mural/editor/contract.ts",
+      "/src/features/places/model/contract.ts",
+      "/src/features/places/ui/IllustratedMap.tsx",
+      "/src/features/places/ui/places.css",
+      "/src/features/mural/editor/controller.ts",
+      "/src/features/mural/sync/projection.ts",
+      "/src/features/mural/editor/MuralEditor.tsx",
+      "/src/world/reference-scene/index.ts",
+      "/src/world/reference-scene/spatial-v5/model.ts",
+      "/src/features/places/ui/reference-scene/viewport.ts",
+      "/src/features/places/ui/reference-scene/annotations.ts",
+      "/src/features/places/ui/reference-scene/map-service-links.tsx",
+      "/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts",
+      "/src/features/places/ui/reference-scene/spatial-v4-label-obstacles.ts",
+      "/src/world/reference-scene/map4-service-v1/annotations.ts",
+      "/src/world/reference-scene/map4-service-v1/layout.ts",
+      "/src/features/mural/editor/input.ts",
+      "/src/features/mural/editor/editor.css",
+      "/src/world/reference-scene/spatial-v5/map-service.ts",
+      "/src/world/reference-scene/spatial-v5/source-inputs.json",
+      "/src/world/reference-scene/spatial-v5/map-landscape-source.json",
+      "/src/world/reference-scene/spatial-v5/map-labels-source.json",
+      "/src/world/reference-scene/spatial-v5/map-labels-pins.json",
+      "/src/world/reference-scene/spatial-v5/map-landscape-pin.json",
+      "/src/world/reference-scene/spatial-v5/tile-pin.json",
+      "/src/world/reference-scene/spatial-v5/architecture.ts",
+      "/src/world/reference-scene/spatial-v5/map-cozy.ts",
+      "/src/world/reference-scene/spatial-v4/map-labels-source.json",
+      "/src/world/reference-scene/spatial-v4/model.ts",
+      "/src/world/reference-scene/map4-service-v1/identity.ts",
+      "/src/world/reference-scene/map4-service-v1/pins.ts",
+      "/src/world/reference-scene/metadata.ts",
+      "/src/world/reference-scene/model.ts",
+      "/src/world/reference-scene/loader.ts",
+      "/src/world/reference-scene/overview.ts",
+      "/src/world/reference-scene/spatial-v3/model.ts",
+      "/src/world/reference-scene/spatial-v5/map-cozy-source.json",
+      "/src/world/reference-scene/spatial-v5/map-cozy-pins.json",
+      "/src/world/reference-scene/spatial-v5/architecture-source.json",
+      "/src/world/reference-scene/spatial-v5/architecture-pin.json",
+      "/src/world/reference-scene/spatial-v5/map-service-source.json",
+      "/src/world/reference-scene/spatial-v5/map-service-pins.json",
+      "/src/world/reference-scene/spatial-v4/source-inputs.json",
+      "/src/world/reference-scene/spatial-v4/tile-pin.json",
+      "/src/world/reference-scene/source-inputs.json",
+      "/src/world/reference-scene/spatial-v4/map-labels.ts",
+      "/src/world/reference-scene/spatial-v5/map-labels.ts",
+      "/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "/src/world/reference-scene/spatial-v3/tile-pin.json",
+      "/src/app/account-entry/provider.tsx",
+      "/src/app/account-entry/owner.ts",
+      "/src/entities/avatar/runtime/index.ts",
+      "/src/features/avatar/index.ts",
+      "/src/features/me/index.ts",
+      "/src/app/account-entry/assets.ts",
+      "/src/features/avatar/whole-character/controller.ts",
+      "/src/entities/avatar/runtime/compositor.ts",
+      "/src/entities/avatar/runtime/resources.ts",
+      "/src/entities/avatar/runtime/atlas-lease.ts",
+      "/src/features/avatar/AvatarEditor.tsx",
+      "/src/features/avatar/controller.ts",
+      "/src/features/avatar/preview.ts",
+      "/src/features/me/model/controller.ts",
+      "/src/features/me/ui/MePages.tsx",
+      "/src/features/me/ui/AvatarThumbnail.tsx",
+      "/src/features/avatar/whole-character/model.ts",
+      "/src/features/avatar/contract.ts",
+      "/src/features/avatar/OptionStrip.tsx",
+      "/src/features/avatar/reference-presentation/CategoryRail.tsx",
+      "/src/features/avatar/reference-presentation/actions.ts",
+      "/src/features/avatar/reference-presentation/TonePalette.tsx",
+      "/src/features/avatar/avatar-editor.css",
+      "/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+      "/src/features/profile/reference-presentation/ProfileIcon.tsx",
+      "/src/features/me/ui/me.css",
+      "/src/features/me/model/contract.ts",
+      "/src/features/profile/reference-presentation/activity.css",
+      "/src/features/event-feed/contract.ts",
+      "/src/app/meeting-entry/index.ts",
+      "/src/app/meeting-entry/bridge.ts",
+      "/src/app/meeting-entry/routes.tsx",
+      "/src/features/meet-beacon/index.ts",
+      "/src/features/meet-beacon/model/controller.ts",
+      "/src/features/meet-beacon/model/contract.ts",
+      "/src/features/meet-beacon/ui/MeetingBeacon.tsx",
+      "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx",
+      "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/contracts/domain/v1/common.schema.json",
+      "/src/features/meet-beacon/model/photo-client.ts",
+      "/src/features/meet-beacon/ui/meeting-beacon.css",
+      "/src/features/media/model/upload-controller.ts",
+      "/src/features/meet-beacon/model/photo-scope.ts",
+      "/src/shared/media/prepare-image.ts",
+      "/src/shared/media/transport.ts",
+      "/src/app/world-panels/social.tsx",
+      "/src/app/social-composition/index.ts",
+      "/src/app/social-composition/sharing.tsx",
+      "/src/app/world-panels/social.css",
+      "/src/app/social-composition/provider.tsx",
+      "/src/app/social-composition/panels.tsx",
+      "/src/app/social-composition/owner.ts",
+      "/src/app/social-composition/routes.ts",
+      "/src/app/social-composition/navigation.tsx",
+      "/src/features/social-sharing/index.ts",
+      "/src/features/event-feed/index.ts",
+      "/src/features/feed-thread/index.ts",
+      "/src/features/inbox/index.ts",
+      "/src/features/inbox/model/targets.ts",
+      "/src/features/people/index.ts",
+      "/src/features/intro/index.ts",
+      "/src/features/intro/contract.ts",
+      "/src/features/age-status/index.ts",
+      "/src/app/social-composition/ports.ts",
+      "/src/features/profile/index.ts",
+      "/src/features/profile/Avatar.tsx",
+      "/src/app/character-entry/activity.ts",
+      "/src/app/social-composition/composition.css",
+      "/src/features/social-sharing/model/controller.ts",
+      "/src/features/social-sharing/ui/SocialSharing.tsx",
+      "/src/features/feed-thread/controller.ts",
+      "/src/features/feed-thread/FeedThread.tsx",
+      "/src/features/inbox/model/controller.ts",
+      "/src/features/inbox/ui/Inbox.tsx",
+      "/src/features/inbox/model/contract.ts",
+      "/src/features/event-feed/controller.ts",
+      "/src/features/event-feed/EventFeed.tsx",
+      "/src/features/event-feed/FeedImage.tsx",
+      "/src/features/people/People.tsx",
+      "/src/features/people/controller.ts",
+      "/src/features/intro/IntroEditor.tsx",
+      "/src/features/intro/controller.ts",
+      "/src/shared/validation/text.ts",
+      "/src/features/people/contract.ts",
+      "/src/features/age-status/AgeStatus.tsx",
+      "/src/features/age-status/controller.ts",
+      "/src/features/profile/PublicProfile.tsx",
+      "/src/features/social-sharing/model/runtime.ts",
+      "/src/features/social-sharing/model/contract.ts",
+      "/src/features/social-sharing/ui/sharing.css",
+      "/src/features/event-feed/runtime.ts",
+      "/src/features/event-feed/feed.css",
+      "/src/features/inbox/ui/inbox.css",
+      "/src/features/event-feed/FeedGlyph.tsx",
+      "/src/features/event-feed/presentation.ts",
+      "/src/features/people/runtime.ts",
+      "/src/features/people/people.css",
+      "/src/features/intro/command.ts",
+      "/src/features/profile/profile.css",
+      "/src/app/shell-chrome/identity.tsx",
+      "/src/world/composition/index.ts",
+      "/src/app/world-entry/resolver.ts",
+      "/src/world/avatar/whole-character.ts",
+      "/src/app/world-entry/reference-scene-overview.ts",
+      "/world/avatars/derived-v1/static-release.json",
+      "/src/world/illustrated/overview.ts",
+      "/src/world/input/simulation.ts",
+      "/src/world/map/resource-cache.ts",
+      "/src/world/input/controller.ts",
+      "/src/world/runtime.ts",
+      "/src/world/network/replication.ts",
+      "/src/world/network/websocket.ts",
+      "/src/world/composition/ticket.ts",
+      "/src/world/composition/release.ts",
+      "/src/features/theme/model/controller.ts",
+      "/src/world/theme/loader.ts",
+      "/src/world/mural-entry-lifecycle/source.ts",
+      "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "/src/world/camera/port.ts",
+      "/src/world/input/model.ts",
+      "/src/world/input/controls.css",
+      "/src/world/preferences/runtime.ts",
+      "/src/world/theme/compatibility.ts",
+      "http://127.0.0.1:5298/bde167f0-1d6b-47f6-a908-fd6453733584",
+      "/src/world/network/WorldTransport.ts",
+      "/src/world/mural-entry-lifecycle/index.ts",
+      "/src/world/interaction/selection.ts",
+      "/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+      "/world/reference-scene-v2/quality-v6/ground.png",
+      "http://127.0.0.1:5298/d71a52b3-9859-4ac5-8f40-a73ee6970efa",
+      "http://127.0.0.1:5298/e6dd98ff-6219-435e-8b32-01b00c474492",
+      "/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+      "http://127.0.0.1:5298/436a7662-05fb-43e6-a219-9daef8bc862b",
+      "/src/world/scenes/MapScene.ts",
+      "/src/world/preferences/engine.ts",
+      "/src/world/illustrated/phaser.ts",
+      "/src/world/reference-scene/spatial-v5/camera.ts",
+      "/src/world/reference-scene/phaser.ts",
+      "/@fs/private/tmp/mcr-root-map4-eligible03-202611041200z/vite-before/deps/phaser.js",
+      "http://127.0.0.1:5298/173f3a1c-12d1-4cde-8417-913d31382557"
+    ]
+  },
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+  "failureState": {
+    "qualification": "WORLD_POSITIVE_CONTRACT_FIXTURE_DEFAULT_PRODUCTION_GUARDS",
+    "productionAdmitted": false,
+    "scenario": "eligible-attendee-contract-fixture",
+    "inputScenario": {
+      "scenario": "eligible-attendee-contract-fixture",
+      "qualification": "WORLD_POSITIVE_CONTRACT_FIXTURE_NOT_OPERATOR_OR_LIVE_ADMISSION",
+      "source_revision": "a5c6cad52e630d61aa4ce581e7230c13cc5feb25",
+      "sources": {
+        "contracts/core/v1/core.schema.json": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+        "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
+        "backend/releases/operator-bundle/quality-v6/bootstrap.json": "11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42"
+      },
+      "projection": {
+        "capabilities.world": {
+          "available": true,
+          "reason": null
+        }
+      },
+      "limits": [
+        "Only a controlled eligible-attendee capability scenario; not an actual operator response or admission receipt.",
+        "Original map, theme, avatar and geometry manifests remain unmodified.",
+        "All other capabilities retain the disabled operator-source values; linked feature routes may be guarded/unavailable.",
+        "Actual production contract, content-hash, privacy, release and resource guards still apply."
+      ]
+    },
+    "inputReadiness": {
+      "status": "INPUT_CANDIDATE",
+      "productionAdmitted": false,
+      "reasons": [],
+      "worldReason": null,
+      "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+    },
+    "capabilities": {
+      "feed": {
+        "available": false,
+        "reason": "FEATURE_DISABLED"
+      },
+      "gifts": {
+        "available": false,
+        "reason": "FEATURE_DISABLED"
+      },
+      "meet": {
+        "available": false,
+        "reason": "FEATURE_DISABLED"
+      },
+      "mutations": {
+        "available": false,
+        "reason": "FEATURE_DISABLED"
+      },
+      "social_sharing": {
+        "available": false,
+        "reason": "FEATURE_DISABLED"
+      },
+      "wall": {
+        "available": false,
+        "reason": "FEATURE_DISABLED"
+      },
+      "world": {
+        "available": true,
+        "reason": null
+      }
+    },
+    "path": "/world/map",
+    "requests": [
+      {
+        "path": "/api/auth/capabilities",
+        "method": "GET"
+      },
+      {
+        "path": "/api/auth/login",
+        "method": "POST"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+        "method": "POST"
+      }
+    ],
+    "map": {
+      "mapId": "mcr_reference_scene_r3",
+      "revision": 4,
+      "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+      "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+    },
+    "overview": {
+      "width": 768,
+      "height": 1296,
+      "mapId": "mcr_reference_scene_r3",
+      "mapRevision": 4,
+      "mapHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+      "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+      "themeId": "REVENGE",
+      "themeRevision": 1,
+      "themeHash": "sha256:2c456a8cb4b601a66c07577fa105136e11b1d4e4d9c401eb7e3181fed706e04f",
+      "imageUrl": "blob:http://127.0.0.1:5298/173f3a1c-12d1-4cde-8417-913d31382557"
+    },
+    "camera": {
+      "following": true,
+      "camera": {
+        "zoom": 1,
+        "scrollX": 298,
+        "scrollY": 28.5,
+        "width": 348,
+        "height": 791
+      }
+    },
+    "sameCamera": true,
+    "canvases": 1,
+    "sockets": 1,
+    "activeSockets": 1,
+    "entities": [
+      {
+        "player": {
+          "userId": "00000000-0000-4000-8000-000000000901",
+          "displayName": "Controlled visitor 2",
+          "position": {
+            "x": 488,
+            "y": 424
+          },
+          "facing": "down",
+          "moving": false,
+          "avatar": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_02",
+              "representation": "whole_character"
+            }
+          }
+        },
+        "position": {
+          "x": 488,
+          "y": 424
+        },
+        "self": false
+      },
+      {
+        "player": {
+          "userId": "00000000-0000-4000-8000-000000000902",
+          "displayName": "Controlled visitor 3",
+          "position": {
+            "x": 504,
+            "y": 424
+          },
+          "facing": "down",
+          "moving": false,
+          "avatar": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_03",
+              "representation": "whole_character"
+            }
+          }
+        },
+        "position": {
+          "x": 504,
+          "y": 424
+        },
+        "self": false
+      },
+      {
+        "player": {
+          "userId": "00000000-0000-4000-8000-000000000903",
+          "displayName": "Controlled visitor 4",
+          "position": {
+            "x": 520,
+            "y": 424
+          },
+          "facing": "down",
+          "moving": false,
+          "avatar": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_04",
+              "representation": "whole_character"
+            }
+          }
+        },
+        "position": {
+          "x": 520,
+          "y": 424
+        },
+        "self": false
+      },
+      {
+        "player": {
+          "userId": "00000000-0000-4000-8000-000000000904",
+          "displayName": "Controlled visitor 5",
+          "position": {
+            "x": 536,
+            "y": 424
+          },
+          "facing": "down",
+          "moving": false,
+          "avatar": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_05",
+              "representation": "whole_character"
+            }
+          }
+        },
+        "position": {
+          "x": 536,
+          "y": 424
+        },
+        "self": false
+      },
+      {
+        "player": {
+          "userId": "00000000-0000-4000-8000-000000000905",
+          "displayName": "Controlled visitor 6",
+          "position": {
+            "x": 552,
+            "y": 424
+          },
+          "facing": "down",
+          "moving": false,
+          "avatar": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_06",
+              "representation": "whole_character"
+            }
+          }
+        },
+        "position": {
+          "x": 552,
+          "y": 424
+        },
+        "self": false
+      },
+      {
+        "player": {
+          "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+          "displayName": "Validation participant",
+          "position": {
+            "x": 472,
+            "y": 424
+          },
+          "facing": "down",
+          "moving": false,
+          "avatar": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            }
+          }
+        },
+        "position": {
+          "x": 472,
+          "y": 424
+        },
+        "self": true
+      }
+    ],
+    "urls": {
+      "created": [
+        "blob:http://127.0.0.1:5298/bde167f0-1d6b-47f6-a908-fd6453733584",
+        "blob:http://127.0.0.1:5298/d71a52b3-9859-4ac5-8f40-a73ee6970efa",
+        "blob:http://127.0.0.1:5298/e6dd98ff-6219-435e-8b32-01b00c474492",
+        "blob:http://127.0.0.1:5298/436a7662-05fb-43e6-a219-9daef8bc862b",
+        "blob:http://127.0.0.1:5298/173f3a1c-12d1-4cde-8417-913d31382557"
+      ],
+      "revoked": []
+    },
+    "disposed": false
+  },
+  "finishedAt": "2026-11-04T12:01:27.304Z",
+  "cleanup": {
+    "contextClosed": true,
+    "browserClosed": true,
+    "serverClosed": true,
+    "viteCachesRemoved": true
+  }
+}
