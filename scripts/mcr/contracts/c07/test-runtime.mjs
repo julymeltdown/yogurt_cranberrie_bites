@@ -74,6 +74,7 @@ test('conditionals, exclusive branches, sibling assertions, UTF-8 bytes and JSON
     [{ type: 'string', format: 'date-time' }, '2026-02-30T00:00:00Z', false],
     [{ type: 'string', format: 'date' }, '0000-01-01', false],
     [{ type: 'string', format: 'date' }, '0001-01-01', true],
+    [{ type: 'string', format: 'uuid' }, '00000000-0000-0000-0000-000000000000\n', false],
     [{ type: 'string', format: 'uri' }, 'http://', true],
     [{ type: 'string', format: 'uri' }, 'https://한글.example/', false],
     [{ type: 'string', format: 'uri' }, 'https://example.test/[x]', false],

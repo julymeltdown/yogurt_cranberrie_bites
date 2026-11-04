@@ -184,11 +184,12 @@ def render(include_fixtures=True, probe=None):
             for mutated in mutations:compatibility.append({'schema':rule,'value':mutated,'accept':validator(rule).is_valid(mutated)})
         for name in sorted(source['components']['schemas']):differential({'$ref':'#/components/schemas/'+name})
         formats={
+            'uuid':['00000000-0000-0000-0000-000000000000','AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA','00000000-0000-0000-0000-000000000000\n','00000000-0000-0000-0000-000000000000\r\n','00000000000000000000000000000000','{00000000-0000-0000-0000-000000000000}'],
             'date':['0000-01-01','0001-01-01','1900-02-29','2000-02-29','2026-11-07\n'],
             'date-time':['0000-01-01T00:00:00Z','0001-01-01T00:00:00Z','2026-11-07T23:59:60Z','2026-11-07T07:00:00Z\n','2026-11-07T07:00:00Z\r\n'],
             'uri':['http://','urn:example:item','custom:','https://한글.example/','https://example.test/é','https://example.test/[x]','https://example.test/%C3%A9','http://[::1]/','https://example.test/\n','https://example.test/\x01'],
         }
-        for node in nodes(source['components']['schemas']):
+        for node in nodes(source):
             if isinstance(node,dict) and node.get('format') in formats:differential(node,formats[node['format']])
         for identity,op in doc['operations'].items():
             request={}

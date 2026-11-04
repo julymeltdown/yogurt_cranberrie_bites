@@ -31,7 +31,7 @@ function date(value: string): boolean {
   return d.getUTCFullYear() === y && d.getUTCMonth() === month - 1 && d.getUTCDate() === day
 }
 function format(kind: string, value: string): boolean {
-  if (kind === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
+  if (kind === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\s\S])/i.test(value)
   if (kind === 'date') return date(value)
   if (kind === 'date-time') {
     const input = value.endsWith('\n') ? value.slice(0, -1) : value
