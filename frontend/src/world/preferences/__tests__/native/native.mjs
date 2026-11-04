@@ -99,15 +99,18 @@ try {
  if (await reduce.count()) await reduce.click()
  const initial = await page.evaluate(() => window.__WORLD_PREFERENCES_ROOT__.beginProbe())
  assert(initial.normalMethods); assert.equal(initial.tweenScale, 1); assert(initial.noAudio); assert.equal(initial.cssProbeTransition, '0.12s')
+ report.checks.initial = initial; report.checks.initialWorld = await single(page)
  const save = () => page.getByRole('button', { name: 'Save preferences', exact: true }).click()
  const apply = () => page.getByRole('button', { name: 'Apply saved preferences in this session', exact: true }).click()
  const saved = () => expect(page.getByText('Preferences saved. Sound only starts after you explicitly apply it in this session.', { exact: true })).toBeVisible()
  const applied = () => expect(page.getByText('Saved preferences applied in this session.', { exact: true })).toBeVisible()
  await expect(page.getByLabel('Enable sound', { exact: true })).not.toBeChecked()
  // Make saved preference match the genuinely available incumbent era; saving alone cannot affect the engine.
- await page.getByLabel('Preferred era', { exact: true }).selectOption('PARADE')
+ const era = page.getByRole('combobox', { name: /^Preferred era/ })
+ await era.selectOption('PARADE'); await expect(era).toHaveValue('PARADE')
  await page.getByLabel('Low power', { exact: true }).check(); await save(); await saved()
- report.checks.savedOnly = { engine: await engine(page), state: await single(page) }
+ const stored = await state(page); assert(stored.preferenceWrites >= 1); assert.equal(stored.savedPreferences.low_power, true); assert.equal(stored.savedPreferences.theme, 'PARADE')
+ report.checks.savedOnly = { engine: await engine(page), state: await single(page), preferences: stored.savedPreferences, writes: stored.preferenceWrites }
  assert(report.checks.savedOnly.engine.normalMethods); assert.equal(report.checks.savedOnly.engine.tweenScale, 1)
  report.checks.normal = await measure(page, 800)
  assert(report.checks.normal.pre >= 4); assert.equal(report.checks.normal.pre, report.checks.normal.post)

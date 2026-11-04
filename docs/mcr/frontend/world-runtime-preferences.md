@@ -191,3 +191,21 @@ source/contract formats, with the complete committed tree still identified by
 HEAD. An initial budget sample now precedes pinning, and minimum available disk
 is retained. No product code, fixture behavior, assertion or acceptance threshold
 was weakened. The corrected native attempt requires a fresh allocation.
+
+
+The second named attempt passed scoped helper lint and reached the actual live
+world with six sprites, Settings in half-panel mode and the initial actual
+renderer/tween/audio/CSS probe. It then timed out on the authored exact-label
+query for Preferred era: the wrapping label includes its option text. Original
+`native-02` report/output and a qualification note remain retained; there were
+zero captures and no application build. Its actual measured peak was 77,893,830
+bytes and minimum free space 36,572,729,344 bytes. Browser, server, profile, cache
+and temporary tree closed; the dependency link was removed at 08:20:57.742 UTC,
+within the allocation's 180-second deadline.
+
+The fixture-only fix selects the unique combobox by its anchored Preferred era
+accessible-name prefix, asserts its PARADE value, and retains the original
+timeout and all behavior checks. Initial probe results are now retained before
+later actions, and the saved-only check also verifies the controlled server's
+actual preference value and PATCH count. No production UI or application code
+was changed. A fresh native allocation is required again.
