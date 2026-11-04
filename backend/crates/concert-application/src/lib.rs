@@ -193,3 +193,5 @@ pub mod mural;
 
 pub mod age_verification;
 pub mod notification;
+
+pub mod event_cleanup;

@@ -48,3 +48,20 @@ not rerun or relabeled those checks. Current Root source passes the three native
 harness refusal tests, planning and whitespace validation. Coherent Rust compile,
 actual canonical owner RPC, real target fencing, and the four public inbox flows
 remain NOT_RUN. Missing providers stay unavailable; no product route was enabled.
+
+## BE41 cleanup engine
+
+The qualified engine packet from base `3471190d` through `eef18d5b` (tested
+implementation `1f71e915`) was integrated over exactly 15 assigned paths. All
+11 feature/test/script/migration postimages are exact worker bytes. Three shared
+files retain all Root exports and add only their event-cleanup module; the worker
+document substitutes portable artifact prefixes with original blob/hash recorded.
+The copied native and freeze receipts independently match the reported hashes.
+
+The worker's 14 passing tests and PostgreSQL restart qualify the durable batch
+engine with explicit synthetic authorities/owners. They do not qualify actual
+operator/system authority, reviewed retention, Mural freeze, consent expiry,
+Post/media/archive privacy or World/community convergence. Full BE41 remains
+BLOCKED. Root Python syntax and whitespace checks pass; coherent compilation and
+actual production composition remain open. No main, public route, manifests or
+existing owner lifecycle files were changed by this intake.
