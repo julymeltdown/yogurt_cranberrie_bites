@@ -126,9 +126,10 @@ def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
         assert sp.check_output([str(NODE),'--version'],env=env,text=True).strip()=='v24.22.2'
         cmds=[[str(NODE),str(DEPS/'vitest/vitest.mjs'),'run','--config',PREFIX+'/vitest.config.ts'],
               [str(NODE),str(DEPS/'typescript/bin/tsc'),'--noEmit','--incremental','false','--allowImportingTsExtensions','--pretty','false'],
-              [str(DEPS/'.bin/oxlint'),'--deny-warnings','src/app/admin-entry/mural-closure','src/features/admin/mural/transport.ts'],
+              [str(DEPS/'.bin/oxlint'),'--deny-warnings','src/app/admin-entry/mural-closure','src/features/admin/mural/transport.ts','src/features/admin/mural/owner.ts'],
               [str(NODE),'--check',PREFIX+'/native.mjs']] if kind=='source' else [[str(NODE),PREFIX+'/native.mjs']]
         if kind=='source' and os.environ.get('FE39_SOURCE_STAGE')=='remaining': cmds=cmds[1:]
+        if kind=='source' and os.environ.get('FE39_SOURCE_STAGE')=='terminal': cmds[0]+=['-t','replacement disposes both controllers']
         for i,cmd in enumerate(cmds):
             with (prefix/f'{i+1}.log').open('wb') as log:
                 child=sp.Popen(cmd,cwd=FRONT,env=env,stdout=log,stderr=sp.STDOUT,start_new_session=True)

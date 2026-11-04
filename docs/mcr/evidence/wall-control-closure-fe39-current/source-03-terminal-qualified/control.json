@@ -1,0 +1,62 @@
+{
+  "offer": "FE39-PRIVACY-FIX-SOURCE-A-20261104T180955Z",
+  "kind": "source",
+  "pin": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+  "accepted_at": "2026-11-04T18:10:08.221703+00:00",
+  "port": 57423,
+  "work_end": 1793815928.221703,
+  "hard_end": 1793815988.221703,
+  "preflight": {
+    "at": "2026-11-04T18:10:08.325131+00:00",
+    "pin": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+    "clean": true,
+    "source_bytes": 1394450432,
+    "deps_bytes": 789164032,
+    "git_bytes": 2878985,
+    "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+    "git_dir_bytes": 1945600,
+    "free_bytes": 19128332288
+  },
+  "limits": {
+    "pids": 8,
+    "rss": 3221225472,
+    "whole": 2684354560,
+    "temporary": 83886080,
+    "durable": 25165824,
+    "other": 16777216,
+    "new_total": 134217728
+  },
+  "admission": {
+    "at": "2026-11-04T18:10:07.625885+00:00",
+    "pin": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+    "clean": true,
+    "source_bytes": 1394450432,
+    "deps_bytes": 789164032,
+    "git_bytes": 2878985,
+    "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+    "git_dir_bytes": 1945600,
+    "free_bytes": 19129475072,
+    "offer": "FE39-PRIVACY-FIX-SOURCE-A-20261104T180955Z",
+    "accepted_at": "2026-11-04T18:10:08.221703+00:00",
+    "other_reserved_bytes": 2952790016,
+    "own_new_bytes": 134217728,
+    "remaining_after_all_growth_bytes": 16042467328,
+    "retained_new_offset_bytes": 1968733,
+    "node_sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "work_deadline": "2026-11-04T18:12:08.221703+00:00",
+    "hard_deadline": "2026-11-04T18:13:08.221703+00:00",
+    "source_stage": "terminal_3_only_plus_types_lint_syntax"
+  },
+  "readset_sha256": {
+    "frontend/src/app/admin-entry/mural-closure/MuralClosurePanel.tsx": "93c69e4ebcced9f7f8446023d2f0fb07f56088ad1524739522dafb7c0db58dbf",
+    "frontend/src/app/admin-entry/mural-closure/index.ts": "a28b03a9fece882620b5aeebc7fad1075377b5c2454f21a0b304cc43cbebe3ef",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/preview.html": "7a377d466da8f7f051cda59391efc8c2872de85f4942087b514c470d5ec97a7c",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/preview.tsx": "e6a11b6931fddb003b1eb13688863f8b2c24ff6ccb6de2cd8b6c5437b6450ac2",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "94664a2a35852263ccbce2a59ae9481807fb8f42e53541c4ee1b21883a79a708",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/round.py": "1432ab6f7fa89a134c427875a9e85145738d3afe320f48eaec3237b529f36df4",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/native.mjs": "94de51c3a4fe011f5bd5846cb5dd5369973ea932e916adb3a8ea836f577564a1",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/vitest.config.ts": "0756e9ac7bf312bd7fe1a37b023e69da01fc77f099c75fd7c0c25e71bf934925",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/fixture.ts": "c48f669585ab62f4e363f969aca73f3dd46845c94e1572bbec366ffc00e1d7a4"
+  }
+}

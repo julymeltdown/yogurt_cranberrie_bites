@@ -31,7 +31,7 @@ export function createAdminOwner(privacy: PrivacyPort, context: OperatorContextP
       if (ended || started) return
       started = true; observed = capture()
       stopContext = context.subscribe(update)
-      stopPrivacy = privacy.registerCleanup(() => { observed = null; cancel(); ended = true; changed(true); stopContext() })
+      stopPrivacy = privacy.registerCleanup(() => { if (ended) return; observed = null; cancel(); ended = true; changed(true); stopContext() })
     },
     dispose() { if (ended) { stopPrivacy(); return }; ended = true; cancel(); stopContext(); stopPrivacy() },
   }

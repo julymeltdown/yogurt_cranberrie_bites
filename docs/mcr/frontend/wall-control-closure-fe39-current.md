@@ -6,7 +6,11 @@ full frontend TypeScript, scoped lint, native syntax, three native phone context
 and all 12 individually inspected captures passed.** This is canonical frontend
 code against explicitly synthetic authority/HTTP facts. Actual production admin
 entry, public admin HTTP and live cleanup effects remain open with named owners.
-Root's normal canonical publication receipt establishes delivery of this packet;
+The original 55-path packet was published at
+`a9c04eb256e7b50e6efc99bfd076eca9a8293100` with exact scoped modes/blobs.
+A final owner callback fix also passes three targeted regressions/full types/lint
+and syntax; its follow-up publication is pending. Root's normal canonical
+publication receipt establishes delivery of each packet;
 no manager review, acknowledgment or proof-only successor commit is required.
 
 ## Source custody and original criteria
@@ -58,11 +62,12 @@ copy, polling, socket, QueryClient, role endpoint or bootstrap grant is created.
 Unknown-command progress is the last verified job, shown beneath the explicit
 unresolved banner; another mutation stays unavailable until verified recovery.
 
-The only existing admin feature change narrows AdminTransport's dependency from
+AdminTransport's dependency narrows from
 `HttpClient` to `Pick<HttpClient, 'request'>`. It never used refresh. The new leaf
 can forward canonical SessionController.request without exposing a raw client
 or bypassing canonical cookie/401/request policy. Runtime command/receipt
-behavior and frozen bodies are unchanged.
+behavior and frozen bodies are unchanged. The final existing-owner fix below
+keeps disposal terminal when canonical privacy cleanup has already been scheduled.
 
 ## Owner validation and bounded cleanup
 
@@ -70,6 +75,7 @@ behavior and frozen bodies are unchanged.
 | --- | --- |
 | New composition regressions | `72af0d043855877c2eefa333054cb3c78c7ad3d6`: 11 PASS; actual SessionController login/canonical protected HTTP, lazy start, retained command, named restore, partial resume/recovery, full-scope withdrawal, denial, disposal/late bytes and later explicit boundary. |
 | Remaining source checks | `1a16e13b6d211078bc32412e4b11d30e3d2e165d`: whole frontend `tsc --noEmit --incremental false --allowImportingTsExtensions`, scoped oxlint and native MJS syntax all exit zero. No 11-test replay. |
+| Terminal owner regression | `e0be061fc66c20b7a4e5e3927eda098da3babdbe`: only the three actor/event/policy replacement cases run; all PASS, eight unchanged cases skipped. Full frontend types, scoped lint including owner.ts and native MJS syntax also PASS. |
 | Changed-adapter native | `db917d13abac5a22a946ed068edefb32b2a1da9d`: Chrome 156.0.8078.80, 360/390/430 ×844, all three contexts PASS, no page errors, 12 full-page PNGs. |
 | Visual assessment | Every new capture individually viewed; snapshot identity/revision, seven steps, retained unknown state and withdrawal are legible. Minimum 44px targets, keyboard confirmation/focus and no horizontal overflow passed. Full-page images include scrollable content below the initial viewport. |
 
@@ -105,6 +111,39 @@ native round. Including its actual 1.5GiB reservation and both frontend
 reservations still leaves 18,306,998,272 bytes at admission and 18,243,203,072
 bytes at the guard minimum, above the 9GiB reserve. The inventory update preserves
 the original acceptance/FULL clocks; it does not relabel a job or rerun it.
+
+## Terminal callback fix and publication boundary
+
+Canonical privacy advance snapshots cleanup callbacks. The new parent disposes
+both controllers first, but a child callback already present in that snapshot
+previously published `unavailable` after `disposed`. Private data remained null.
+The owner now returns immediately if already ended. All three existing
+actor/event/policy replacement cases assert both terminal phases and cleared data.
+The source-only round directly exercises this callback order. Native journeys
+previously exercised role-context withdrawal followed by explicit disposal;
+they did not enter this already-ended callback branch. Their original three
+contexts and 12 viewed images remain pinned to the original native source;
+`owner.ts` now differs, so they are not represented as native proof of this fix.
+No rendering, command body, authority, route or frozen contract changed.
+
+The targeted round accepted 2026-11-04T18:10:08.221703Z and returned FULL at
+18:10:19.082852Z. Four commands exited zero. Peaks were four processes,
+1,848,229,888 bytes RSS, 2,187,886,089 whole charged bytes and 3,361,373 new bytes,
+including 1,968,733 retained bytes. Minimum free space was 19,084,664,832 bytes.
+Fresh admission reserved 2,952,790,016 other-workflow bytes plus 134,217,728 own
+bytes, leaving 16,042,467,328 bytes after worst-case growth. Exact identities,
+TMP/cache and dependency link were absent; port 57423 had no listener and passed
+bind/listen reuse. Capacity was returned before evidence/documentation.
+Raw proof is `source-03-terminal-qualified`; the private temporary prefix was
+removed after retention. `terminal-fix-qualification.json` records exact hashes.
+
+The original source packet `d762018bfbdab43af08f8fea29dc4c3b5fa932c9` is delivered
+as `a9c04eb256e7b50e6efc99bfd076eca9a8293100`: the normal Root receipt verifies
+all 55 scoped modes/blobs and preservation of Root's private checkout. This does
+not establish publication of the later owner fix. `publication-status.json`
+records the original receipt and the pending follow-up, which must have its own
+normal canonical receipt before this bounded frontend goal can complete.
+No consumer remote readback or proof-only successor commit is needed.
 
 ## Concrete remaining production owners
 
