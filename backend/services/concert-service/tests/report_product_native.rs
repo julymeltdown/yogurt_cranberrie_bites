@@ -491,17 +491,43 @@ async fn foreign_parent_and_rebound_body_never_create_report_effects() -> anyhow
 }
 #[tokio::test]
 #[ignore = "frozen owned PG16 three-database report-product controller only"]
-async fn revoked_target_and_unsupported_routes_are_denied_without_effects() -> anyhow::Result<()> {
-    let f = Fixture::new(false).await?;
+async fn safety_target_policy_and_unsupported_routes_preserve_original_guards() -> anyhow::Result<()>
+{
+    // Published canonical SafetyInteraction intentionally permits safety reports
+    // about an ineligible subject; actor/session eligibility still applies.
+    let suspended = Fixture::new(false).await?;
     sqlx::query("update users set status='SUSPENDED' where id=$1")
+        .bind(suspended.subject)
+        .execute(&suspended.auth)
+        .await?;
+    let (code, output) = suspended
+        .call(&suspended.input(Uuid::new_v4()), false)
+        .await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    suspended.finish(output.delivery.clone().unwrap()).await?;
+    assert_eq!(output.status, 202);
+    let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
+    assert_eq!(receipt["state"], "SUCCEEDED");
+    let reports: i64 = sqlx::query_scalar("select count(*) from concert_reports where event_id=$1")
+        .bind(suspended.event)
+        .fetch_one(&suspended.concert)
+        .await?;
+    assert_eq!(reports, 1);
+
+    // The built-in evidence owner still requires an actual event target. No
+    // admission or substitute/recent-target evidence is invented by this leaf.
+    let f = Fixture::new(false).await?;
+    sqlx::query("delete from concert_event_admissions where event_id=$1 and user_id=$2")
+        .bind(f.event)
         .bind(f.subject)
-        .execute(&f.auth)
+        .execute(&f.concert)
         .await?;
     let (code, output) = f.call(&f.input(Uuid::new_v4()), false).await?;
     assert_eq!(code, Code::Ok);
     let output = output.unwrap();
+    f.finish(output.delivery.clone().unwrap()).await?;
     assert_eq!(output.status, 403);
-    f.finish(output.delivery.unwrap()).await?;
     f.no_effects().await?;
     let scopes = f.scopes.lock().unwrap().len();
     for suffix in ["admin/reports", "me/reports", "admin/settings"] {
