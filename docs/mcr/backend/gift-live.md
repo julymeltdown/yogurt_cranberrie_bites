@@ -146,3 +146,11 @@ operation after feature shutdown. This adapter is not yet runtime-qualified.
 Root temporary single-line module-export grant was returned after source checkpoint
 `92821595`; the registered export and actual module were subsequently compiled at
 `2590d998`. No further lib.rs changes are owned or planned by this worker.
+
+Publication reconciliation incorporates peers’ later Avatar/Bootstrap/participant-
+proto changes, plus their published SELF artifacts. The native proof remains
+explicitly pinned to `2590d998`; no final-whole-tree rebuild is claimed after those
+peer merges. Gift source, retained Gift/domain/receipt/relationship code, Concert
+migrations, canonical SDK, media adapter and frozen contracts are checked unchanged
+against the frozen hashes. The next producer/runtime qualification must build its
+actual reconciled dependency tree. This checkpoint enables no route or flag.
