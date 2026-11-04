@@ -259,6 +259,17 @@ Root `1fc` retains `scripts/mcr/release-check.sh`, decision publication and
 shared harness composition. Known node:test collection files
 `metrics.test.mjs` and `whole/data.test.mjs` remain read-only until root records
 their exact file/hunk transfer; no implicit rename/config/manifest rights.
+Subsequent owner-reported incumbent `1fc` transfer grants `26e` ONLY insertion
+of `configLoader: 'runner'` in existing `createServer` options at the corrected
+actual path `frontend/e2e/reference-integrated/whole/data.test.mjs`. All other
+bytes/semantics remain unchanged; before/after blobs are recorded by the
+developer. No metrics edit, rename, other existing-test or configuration right
+is transferred. The developer notified Community before editing and confirmed
+Root `153` as publisher, with no self-push. Technical receipt schema agreed
+directly with `1fc`: `mcr.qa10.frontend.v1`, PARTIAL/FAIL, candidate/tool/source/
+contract pins, actual commands/count inventory and explicit unsupported scope.
+This is a reported interface/ownership handoff, not an SL technical review or
+QA10 result.
 Direct canonical command/source/harness handoff was requested from root to the
 developer, not an SL audit or review. Same exact temporary dependency-link
 exception applies with read-only retained target and own-link removal before
