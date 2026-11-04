@@ -40,7 +40,7 @@ IN_PROGRESS; absent, malformed or mismatched proof is UNKNOWN. Committed work
 requires the immutable witness and, for commands, its current actual receipt.
 COMMITTED describes the transaction; FAILED and PENDING receipts are not
 business success. Private correlation evidence exposes the actual receipt state
-at resolution, not a fabricated success flag or immutable historical receipt
+at resolution, including later RETIRED metadata, not a fabricated success flag or immutable historical receipt
 snapshot. No raw request body or owner registration secrets are returned.
 
 Root retains config/native resolver routing, runtime/main, actual Profile and
@@ -81,7 +81,9 @@ Fixture Auth users/families are seeded; signup is not exercised. A deliberately
 receipt-only producer always returns a business failure. It grants no Party
 policy or resource authority and creates no successful Party aggregate. Actual
 BE15 fingerprinting, failure receipt, exact replay and changed-body conflict
-paths are exercised. Synthetic invalid receipt metadata is used only for
+paths are exercised. Direct retirement of an actual fixture receipt tests old
+commit resolution after business-outcome fields are cleared; this is not an
+elapsed 24-hour expiry-worker test. Synthetic invalid receipt metadata is used only for
 negative READ/LOOKUP effect cases, never positive product acceptance.
 
 Planned native coverage includes all eight real native commits, failed command

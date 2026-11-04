@@ -303,7 +303,7 @@ impl NativeTransactionResolver for PartyNativeResolver {
                 && !receipt.as_ref().is_some_and(|r| {
                     matches!(
                         r["state"].as_str(),
-                        Some("PENDING" | "SUCCEEDED" | "FAILED")
+                        Some("PENDING" | "SUCCEEDED" | "FAILED" | "RETIRED")
                     )
                 }))
         {

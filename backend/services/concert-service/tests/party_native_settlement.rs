@@ -715,6 +715,24 @@ async fn native_party_failed_receipt_replay_and_changed_body_remain_truthful() -
             proto::TransactionStatus::Aborted
         );
     }
+    // Retained receipt retirement clears business outcome fields, not the actual
+    // earlier native commit. Exercise this metadata lifecycle directly; this is
+    // not a claim that a 24-hour expiry worker elapsed in the fixture.
+    sqlx::query("update concert_command_receipts set state='RETIRED',failure_reason=null where receipt_id=$1")
+        .bind(receipt_id.unwrap()).execute(&f.concert).await?;
+    let committed = sqlx::query("select binding,identity from concert_party_native_witnesses where instance_id=$1 and native_role='COMMAND'")
+        .bind(f.instance).fetch_all(&f.concert).await?;
+    assert_eq!(committed.len(), 2);
+    for row in committed {
+        let owner: OwnerBinding = serde_json::from_value(row.try_get("binding")?)?;
+        let identity: ProducerTransaction = serde_json::from_value(row.try_get("identity")?)?;
+        let proof = f.resolver().resolve(&owner, &identity).await?;
+        assert_eq!(proof.status, proto::TransactionStatus::Committed);
+        let value: Value = serde_json::from_slice(&proof.receipt_evidence)?;
+        assert_eq!(value["receipt"]["state"], "RETIRED");
+        assert!(value.get("success").is_none());
+    }
+
     Ok(())
 }
 
