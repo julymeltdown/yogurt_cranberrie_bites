@@ -482,3 +482,28 @@ SDK3 and its three-line unsupported-Gift handoff `56f18703` are preserved on
 this published SDK2 component. Root's published mapper and SDK subject-status
 normalization are consumed as source. Actual final callback/Post/Gateway HTTP
 acceptance and joined restart cleanup remain separate open obligations.
+
+
+### Bounded actual subject-denial evidence
+
+The authority owner's native report at compiled clean source
+`e5f922ddc1a57aa7b461ae74c5415c12a860fcdb` records five individual PG16.14
+phases passing with exit 0: held source writers, 100 subjects/callback permit
+drain, registered actual transaction with distinct scope/effect digests and
+native-abort proof, cancelled unexposed acquisition recovery, and reserved
+subject NotFound versus wrong-binding/sealed whole-scope failures. The latter
+adds actual native evidence for the previously source/compile-qualified status
+normalization. This report's overall status remains FAIL: its sixth case,
+`product::produced_errors_keep_real_guards_until_terminal_delivery`, exited 101
+with `actual producer never dispatched`. It does not qualify the new Product
+error wrapper, the public reader join or outer HTTP. The owner is diagnosing
+that fixture before a focused rebuild.
+
+The exact report was independently read; SHA-256
+`6e1242c2f81e20a4282521942574fbb168b08b00e7e8d6c602e606426656be9c`,
+frozen binary SHA-256
+`7bd28f449226397ec642ed0a959c9f189134134042e98f99cd622c05732a843a`.
+It records exact-owned cleanup PASS and the owned root absent. Five passing
+phases remain bounded evidence; there is no six-case suite PASS, physical
+restart, committed-effect, actual Profile/Post child or HTTP acceptance claim.
+The public fixture's own joined Rust/native execution remains NOT_RUN.
