@@ -44,6 +44,8 @@ def write(path, value):
 
 def process_usage(parent):
     library = ctypes.CDLL('/usr/lib/libproc.dylib')
+    library.proc_pidinfo.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_uint64, ctypes.c_void_p, ctypes.c_int]
+    library.proc_listchildpids.argtypes = [ctypes.c_int, ctypes.c_void_p, ctypes.c_int]
     pending, seen, rss = [parent], set(), 0
     while pending:
         pid = pending.pop()
@@ -67,8 +69,8 @@ def guardian(config):
     breach = None
     while not (out / 'stop').exists():
         count, rss = process_usage(config['supervisor'])
-        new = max(0, size(Path(config['root'])) - config['baseline'])
         whole = size(Path(config['root']))
+        new = max(0, whole - config['baseline'])
         free = shutil.disk_usage(config['root']).free
         for key, value in [('processes', count), ('rss', rss), ('new_bytes', new), ('whole_bytes', whole)]:
             maxima[key] = max(maxima[key], value)
