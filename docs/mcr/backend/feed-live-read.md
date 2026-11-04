@@ -298,3 +298,19 @@ has the matching correction request for its current broad PermissionDenied to
 ResourceUnavailable conversion. Until corrected, that upstream mapping remains
 a qualification blocker. No invalid whole scope may become an empty successful
 feed response.
+
+
+## Native Post join dependency
+
+Root composer `01a1a1fc` granted exactly one Concert dev-dependency and its
+existing lockfile dependency edge. Commit
+`8496730c9abb93cdb0b1cd4d9d4f18b36e954386` adds
+`post-service = { path = "../post-service" }` under Concert dev-dependencies and
+`post-service` to Concert's existing Cargo.lock package entry. No package,
+version, feature or other manifest/lock input changed. TOML parsing, existing
+package/path checks and `git diff --check` passed; no Cargo target was accessed.
+This enables source composition of the actual Post runtime in the owned native
+Feed tests. It is not compile or joined runtime evidence. The actual root
+callback implementation and coherent participant-owned three-pass Concert
+generation fix remain prerequisites. No substitute positive authority or root
+constructor is claimed.
