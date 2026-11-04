@@ -425,6 +425,23 @@ def run(args):
     guard = None
     context = {}
     original = dev.development_environments
+    original_ledger = dev.migration.check_ledger
+
+    def ledger(cluster, database, expected):
+        try:
+            return original_ledger(cluster, database, expected)
+        except dev.SmokeError:
+            # Migration metadata only; never account rows, URLs, secrets or raw diagnostics.
+            raw = cluster.sql(database, "SELECT version,success,encode(checksum,'hex') FROM public._sqlx_migrations ORDER BY version")
+            actual = []
+            for line in raw.splitlines():
+                parts = line.split("|")
+                prep.auth.require(len(parts) == 3 and parts[0].isdigit()
+                    and parts[1] in ("t", "f") and re.fullmatch("[0-9a-f]{96}", parts[2]), "qualification-ledger-metadata")
+                actual.append({"version": int(parts[0]), "success": parts[1] == "t", "sha384": parts[2]})
+            report["migration_ledger_mismatch"] = {"database": database,
+                "expected_sha384": expected, "actual": actual}
+            raise
 
     def environments(cluster, ports, keys, credentials, *rest):
         # The retained helper validates its unchanged HTTP endpoints first.
@@ -511,7 +528,8 @@ def run(args):
             guard = QualificationGuard(args, stack)
             guard.start()
         with patch.object(dev.runtime, "readiness_value", prep.current_readiness), \
-                patch.object(dev, "development_environments", environments):
+                patch.object(dev, "development_environments", environments), \
+                patch.object(dev.migration, "check_ledger", ledger):
             descriptor = stack.start()
         browser = prep.auth.Browser(descriptor["gateway_url"], report)
         # Keep HTTP connection target separate from the actual browser Origin.
@@ -611,6 +629,11 @@ def run(args):
                 child.alive()
                 time.sleep(min(0.25, max(0, deadline - time.monotonic())))
     except BaseException as error:
+        if profile != "in01":
+            report["failure_type"] = type(error).__name__
+            if isinstance(error, dev.SmokeError):
+                phase = error.detail.get("phase", "")
+                if re.fullmatch(r"[a-z][a-z0-9:_-]{0,80}", phase): report["failure_phase"] = phase
         report["failure"] = "qualification-producer-failure" if profile != "in01" else (str(error) if isinstance(error, prep.auth.CheckFailure)
             or type(error).__name__ == "ProbeFailure" else error.detail if isinstance(error, dev.SmokeError)
             else type(error).__name__)
