@@ -1,3 +1,4 @@
+import { introSchema } from '../../features/people/contract'
 import { matchPath } from 'react-router-dom'
 import { createEventFeedController, type ResourceLink } from '../../features/event-feed'
 import { createFeedThreadController } from '../../features/feed-thread'
@@ -114,6 +115,23 @@ export function createSocialOwner(options: SocialOptions) {
     return options.avatars!.resolve({ auth, bootstrap, scope, signal })
   } } : undefined
   function start(key: string, child: { start(): void }) { if (!started.has(key)) { started.add(key); child.start() } }
+  function ensureRequests() {
+    if (available('requests') && options.requests && !requests) {
+      try {
+        const module = options.requests.create({ auth, bootstrap, scope, access: access('requests') })
+        if (!live()) { module.dispose(); return null }
+        requests = module; register(() => module.subscribe(() => { if (live()) notify() })); if (live()) module.start()
+      } catch { requests?.dispose(); requests = null }
+    }
+    return requests
+  }
+  function sharingIntro(userId: string) {
+    const state = people.read()
+    if (!live() || !available('people') || !available('requests') || !options.requests || userId === scope.userId
+      || state.target !== userId || state.profile.phase !== 'ready' || state.profile.data?.user_id !== userId
+      || state.page.phase !== 'ready' || bootstrap.event.phase === 'READ_ONLY' || !bootstrap.capabilities.mutations.available) return null
+    return state.page.data?.items.find(item => item.author.user_id === userId && item.event_id === scope.eventId) ?? null
+  }
   function enter(path: string) {
     const reason = navigationReason(path), route = socialRoute(path)
     if (reason || !route) { if (live()) notify({ notice: reason ?? 'unavailable' }); return false }
@@ -134,13 +152,7 @@ export function createSocialOwner(options: SocialOptions) {
       case 'age': { const wasStarted = started.has('age'); start('age', age); if (wasStarted && previous !== path) void age.load(); break }
       case 'inbox': start('inbox', inbox); if (previous && previous !== path) void inbox.load(); break
       case 'handles': case 'requests':
-        if (available('requests') && options.requests && !requests) {
-          try {
-            const module = options.requests.create({ auth, bootstrap, scope, access: access('requests') })
-            if (!live()) { module.dispose(); return false }
-            requests = module; register(() => module.subscribe(() => { if (live()) notify() })); if (live()) module.start()
-          } catch { requests?.dispose(); requests = null }
-        }
+        ensureRequests()
         requests?.enter?.(route.kind === 'handles' ? '/me/social' : '/me/requests')
         break
     }
@@ -149,6 +161,23 @@ export function createSocialOwner(options: SocialOptions) {
   return { auth, bootstrap, scope, options, feed, thread, threadPanel, people, intro, age, inbox, media, avatars, available, read: () => view,
     subscribe(fn: () => void) { if (disposed) return () => {}; listeners.add(fn); return () => { listeners.delete(fn) } }, isDisposed: () => disposed,
     enter, navigate, canNavigate, requests: () => requests, dispose,
+    canShare: (userId: string) => !!sharingIntro(userId),
+    async openSharing(userId: string) {
+      const candidate = sharingIntro(userId)
+      if (!candidate || locked() || socialRoute(view.path ?? '')?.kind !== 'profile' || view.path !== `/people/${userId}`) return false
+      const version = ++navigating; targetFlight?.abort(); const flight = new AbortController(); targetFlight = flight
+      try {
+        const result = await auth.privacy.run(scope, ({ signal }) => auth.request({ path: `/api/concert/events/${scope.eventId}/intros/${candidate.intro_id}`,
+          method: 'GET', access: 'protected', errorFamily: 'domain', domainOperation: 'getConcertIntro', signal,
+          decode(value, context) { const item = introSchema.parse(value); if (context.status !== 200 || item.intro_id !== candidate.intro_id || item.event_id !== scope.eventId || item.author.user_id !== userId || item.revision < candidate.revision) throw new Error('Introduction changed'); return item },
+        }), flight.signal)
+        if (!live() || version !== navigating || !sharingIntro(userId)) return false
+        const module = ensureRequests()
+        if (!module?.offer || !navigate('/me/requests')) return false
+        module.offer({ introId: result.data.intro_id, recipientId: userId, revision: result.data.revision }); return true
+      } catch { if (live() && version === navigating) notify({ notice: 'unavailable' }); return false }
+      finally { if (targetFlight === flight) targetFlight = null }
+    },
     async openResource(link: ResourceLink) {
       if (!available('feed') || !canonicalId(link.target_id)) return false
       const input = ['PARTY', 'GIVEAWAY', 'POST', 'NOTICE'].includes(link.target_type)

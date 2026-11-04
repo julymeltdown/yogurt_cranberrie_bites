@@ -4,6 +4,7 @@ import { createBrowserRouter, Link, Outlet, type RouteObject } from 'react-route
 import { Feedback } from '../shared/ui'
 import { WorldPanelOwnership } from './world-panels/ownership'
 import { PortsProvider } from './access'
+import { SafetyOwnership } from './safety-entry/context'
 import { AccountDeletionOwnership } from './account-deletion-entry/context'
 import type { ShellPorts } from './ports'
 import { adminPaths, panelRoutes, publicPaths } from './routes'
@@ -18,6 +19,8 @@ const PartiesPanel = lazy(() => import('./CommunityFeatures').then(module => ({ 
 const RoomsPanel = lazy(() => import('./world-entry/root-features').then(module => ({ default: module.ProductionRoomsPanel })))
 const NearbyPanel = lazy(() => import('./world-entry/root-features').then(module => ({ default: module.ProductionNearbyPanel })))
 const AccountPanel = lazy(() => import('./account-entry/panels'))
+const ReportPanel = lazy(() => import('./safety-entry/panels').then(module => ({ default: module.ReportPanel })))
+const BlockedUsersPanel = lazy(() => import('./safety-entry/panels').then(module => ({ default: module.BlockedUsersPanel })))
 const AccountControlsPanel = lazy(() => import('./account-deletion-entry/panel'))
 const MeetingCheckInPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingCheckInPanel })))
 const MeetingBeaconPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingBeaconPanel })))
@@ -26,6 +29,7 @@ const PlacePanel = lazy(() => import('./world-panels').then(module => ({ default
 const ThemePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionThemePanel })))
 const WallPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionWallPanel })))
 const SocialPanel = lazy(() => import('./social-composition').then(module => ({ default: module.SocialRoutePanel })))
+const WorldHelp = lazy(() => import('../features/world-help/WorldHelp').then(module => ({ default: module.WorldHelp })))
 const socialPaths = ['/feed', '/feed/new', '/feed/:postId', '/feed/:postId/edit', '/notices/:noticeId', '/meet/people', '/people/:userId', '/meet/intro/edit', '/me/age', '/notifications', '/me/social', '/me/requests'] as const
 const featurePanels: Readonly<Record<string, ReactNode>> = {
   ...communityEntryPanels,
@@ -33,10 +37,13 @@ const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/world/map': <Suspense fallback={<p role="status">Opening map…</p>}><MapPanel /></Suspense>,
   '/world/places/:placeId': <Suspense fallback={<p role="status">Opening place…</p>}><PlacePanel /></Suspense>,
   '/world/theme': <Suspense fallback={<p role="status">Opening eras…</p>}><ThemePanel /></Suspense>,
+  '/world/help': <Suspense fallback={<p role="status">Opening controls…</p>}><WorldHelp /></Suspense>,
   '/wall': <Suspense fallback={<p role="status">Opening wall…</p>}><WallPanel /></Suspense>,
   '/me': <Suspense fallback={<p role="status">Opening your account…</p>}><AccountPanel view="me" /></Suspense>,
   '/me/profile': <Suspense fallback={<p role="status">Opening your profile…</p>}><AccountPanel view="profile" /></Suspense>,
   '/me/avatar': <Suspense fallback={<p role="status">Opening your avatar…</p>}><AccountPanel view="avatar" /></Suspense>,
+  '/report': <Suspense fallback={<p role="status">Opening report…</p>}><ReportPanel /></Suspense>,
+  '/me/blocks': <Suspense fallback={<p role="status">Opening blocked users…</p>}><BlockedUsersPanel /></Suspense>,
   '/me/account': <Suspense fallback={<p role="status">Opening account controls…</p>}><AccountControlsPanel /></Suspense>,
   '/me/settings': <Suspense fallback={<p role="status">Opening settings…</p>}><AccountPanel view="settings" /></Suspense>,
   '/world/rooms': <Suspense fallback={<p role="status">Opening rooms…</p>}><RoomsPanel /></Suspense>,
@@ -64,7 +71,7 @@ export interface RouteComposition {
   panels?: Readonly<Record<string, ReactNode>>
 }
 export function createAppRoutes(ports: ShellPorts, composition: RouteComposition = {}): RouteObject[] {
-  const outlet = <PortsProvider ports={ports}><AccountDeletionOwnership><Outlet /></AccountDeletionOwnership></PortsProvider>
+  const outlet = <PortsProvider ports={ports}><SafetyOwnership><AccountDeletionOwnership><Outlet /></AccountDeletionOwnership></SafetyOwnership></PortsProvider>
   return [{ element: ports.auth ? <QueryClientProvider client={ports.auth.queryClient}>{outlet}</QueryClientProvider> : outlet, errorElement: <RouteFailure />, children: [
     ...publicPaths.map(path => ({ path, element: <LazyBoundary><PublicBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
