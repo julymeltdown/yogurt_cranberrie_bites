@@ -1,0 +1,100 @@
+{
+  "task": "QA06",
+  "scope": [
+    "W05",
+    "W06"
+  ],
+  "candidate": "ceeeb29abaa8351539ee864e02970df285e2db06",
+  "base": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+  "qualification": "MOCK_READY",
+  "completedSoftwareCases": 9,
+  "executedQualification": "six Nearby PASS from round02 plus three Theme PASS from round03; NOT nine fresh round03 cases",
+  "nearby": {
+    "eras": [
+      "PARADE",
+      "DANGER"
+    ],
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "authorizedPeople": 5,
+    "sameCanvasSocketPeakOne": true,
+    "backFocus": "world-nearby",
+    "keyboardTab": true,
+    "targets": "44px reachable person links after real scroll",
+    "images": "same width has byte-identical cross-era panel pixels; selected runtime era asserted independently; no invented skin-specific decoration"
+  },
+  "theme": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "transitions": [
+      "REVENGE",
+      "PARADE",
+      "DANGER"
+    ],
+    "newLifetimeLocalAccountEventPreference": "DANGER",
+    "serverSynchronization": "NOT_CLAIMED",
+    "sameCameraCanvasSocket": true,
+    "fullPanelSuspension": "allowed actual live/suspended phase and required disabled joystick; reload can remain suspended with zero active sockets"
+  },
+  "reuse": {
+    "FE18": "Historical native02/03 uses PARADE and reference-scene-v5/source7005 rather than current default production resolver. Its unchanged Nearby/Rooms feature pins qualify detailed room/filter/withdrawal tests only; current root/era composition substantiated by this cohort.",
+    "W08": "Responsible sole router owner21e source34b922f1ba4a63c6a66911c087b4efacb42184db publisheda40d6944a65091b93381fa96767357eb2941b74a; actual-main390defaultHelp PASS reused, no duplicate unchanged journey."
+  },
+  "failures": [
+    {
+      "round": "01",
+      "exit": 1,
+      "cause": "Own fixture API installation race before state read; fixed wait for existing marker",
+      "preserved": true
+    },
+    {
+      "round": "02",
+      "exit": 1,
+      "cause": "Own incorrect live-only assertion during blocking full panel; fixed phase acceptance plus movement-disabled requirement",
+      "sixNearbyPASSReused": true,
+      "preserved": true
+    }
+  ],
+  "custody": {
+    "loadedSources": 397,
+    "round02LoadedSources": 397,
+    "publicAssetsRound03": 23,
+    "all70OriginalsUnchanged": true,
+    "productSourceUnchanged": true,
+    "allPNGsIncludingFailedCarry": 8,
+    "allPNGsBytes": 759383,
+    "reportBytesUnmodified": true
+  },
+  "release": {
+    "FULL": true,
+    "finished": 1793820295.763131,
+    "withinFixedDeadlines": true,
+    "remainingOwnedPids": [],
+    "ownLinkAndTempAbsent": true,
+    "port19878Closed": true,
+    "newReservation": 0,
+    "peaks": {
+      "temp": 30302362,
+      "durable": 1269760,
+      "allPids": 11,
+      "rss": 2678882304,
+      "pngs": 8,
+      "new": 31482010,
+      "whole": 1320087706
+    }
+  },
+  "visualInspection": "All seven final saved images directly inspected. Legible rows/labels and reachable scrolling targets; 430px captured scroll offset clips earlier introductory copy above the visible body, not an overflow failure. Keyboard focus outline is necessary symmetric focus, not a decorative left bar. Shared panel pixels are identical by era at each width.",
+  "limits": [
+    "Synthetic canonical Auth admission() response, HTTP/C05/clock/map; not live server authority or real admission",
+    "Only exact cases above; no Cartesian549 screenshot gate and no untested combination claimed PASS",
+    "Physical iOS/Android, actual keyboard/safe area, full ten-screen reference, all61IA and live/multiuser/backend remain open",
+    "Original goal1793759287 BLOCKED/unfinished; existing physical question pending without repeat/poll"
+  ],
+  "next": "Settings/Gifts minimal five-state cohort; then genuinely uncovered Help boundary widths using published W08 pin and Wall remaining-era pair; reuse owner evidence."
+}

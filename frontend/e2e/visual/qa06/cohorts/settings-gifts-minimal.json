@@ -1,0 +1,61 @@
+{
+  "id": "settings-gifts-minimal",
+  "originalIA": [
+    "U07",
+    "G07"
+  ],
+  "cases": [
+    {
+      "id": "settings-cancel-revenge-360",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "REVENGE",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "settings-cancel-danger-430",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "DANGER",
+      "width": 430,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-revenge-390",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "REVENGE",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-parade-360",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "PARADE",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-danger-430",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "DANGER",
+      "width": 430,
+      "capture": true
+    }
+  ],
+  "selectionRationale": [
+    "Original specification requires all3widths/all3skins and61IA traceability, not549freshscreenshots.",
+    "Settings uses unchanged common form layout: owner390PARADEruntime/body is reused;360REVENGE/430DANGER substantiate boundarywidth draft/cancel/targetreach.",
+    "MyGifts source owner covers component390/desktop normal and empty/cursor states; new actualdefaultApp emptycollections use3representative width/era pairs plus qualified sharedlayout reuse.",
+    "No unexecuted individual combination or physical device is claimedPASS. Five actual cases/fivecaptures, not a Cartesian replay."
+  ],
+  "supersedesPreparedButUnrun": "settings-gifts15case plan; no runtime from that plan exists"
+}

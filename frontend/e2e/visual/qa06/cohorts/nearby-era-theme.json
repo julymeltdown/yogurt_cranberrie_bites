@@ -1,0 +1,91 @@
+{
+  "id": "nearby-era-theme",
+  "originalIA": [
+    "W05",
+    "W06"
+  ],
+  "cases": [
+    {
+      "id": "nearby-parade-360",
+      "kind": "nearby",
+      "route": "/world/nearby",
+      "ia": "W05",
+      "era": "PARADE",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "nearby-parade-390",
+      "kind": "nearby",
+      "route": "/world/nearby",
+      "ia": "W05",
+      "era": "PARADE",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "nearby-parade-430",
+      "kind": "nearby",
+      "route": "/world/nearby",
+      "ia": "W05",
+      "era": "PARADE",
+      "width": 430,
+      "capture": true
+    },
+    {
+      "id": "nearby-danger-360",
+      "kind": "nearby",
+      "route": "/world/nearby",
+      "ia": "W05",
+      "era": "DANGER",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "nearby-danger-390",
+      "kind": "nearby",
+      "route": "/world/nearby",
+      "ia": "W05",
+      "era": "DANGER",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "nearby-danger-430",
+      "kind": "nearby",
+      "route": "/world/nearby",
+      "ia": "W05",
+      "era": "DANGER",
+      "width": 430,
+      "capture": true
+    },
+    {
+      "id": "theme-persist-360",
+      "kind": "theme",
+      "route": "/world/theme",
+      "ia": "W06",
+      "era": "REVENGE",
+      "width": 360,
+      "capture": false
+    },
+    {
+      "id": "theme-persist-390",
+      "kind": "theme",
+      "route": "/world/theme",
+      "ia": "W06",
+      "era": "REVENGE",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "theme-persist-430",
+      "kind": "theme",
+      "route": "/world/theme",
+      "ia": "W06",
+      "era": "REVENGE",
+      "width": 430,
+      "capture": false
+    }
+  ],
+  "reuse": "FE18 native02/03 same-current Nearby/rooms feature pins qualify original default-era width/filter/focus behavior, not nondefault-era route geometry; no repeat of room switching/filter removal."
+}

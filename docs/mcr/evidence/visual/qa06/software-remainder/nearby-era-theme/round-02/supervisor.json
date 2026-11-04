@@ -1,0 +1,54 @@
+{
+  "job": "QA06-SOFTWARE-NEARBYTHEME-20261104T1922Z",
+  "round": "round-02",
+  "started": 1793820192.416661,
+  "workDeadline": 1793820451.271807,
+  "cleanupDeadline": 1793820511.271807,
+  "candidate": "ceeeb29abaa8351539ee864e02970df285e2db06",
+  "carriedWholeBytes": 1288843264,
+  "actualPhysicalCarryBytes": 1288843264,
+  "originalJobCarryBytes": 1288605696,
+  "retainedDependencyBytes": 438317056,
+  "aggregateNewReserve": 2617245696,
+  "caps": {
+    "whole": 2147483648,
+    "new": 268435456,
+    "temp": 209715200,
+    "durable": 33554432,
+    "allPids": 24,
+    "rss": 4294967296,
+    "pngs": 8
+  },
+  "peaks": {
+    "temp": 30302361,
+    "durable": 937984,
+    "allPids": 11,
+    "rss": 2678882304,
+    "pngs": 7,
+    "new": 31232153,
+    "whole": 1319837849
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/software.mjs"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/software.mjs"
+    ]
+  ],
+  "minFree": 13828104192,
+  "currentCarry": 1289535488,
+  "wholeMeasuredAt": 1793820220.835403,
+  "exitCode": 1,
+  "remainingOwnedPids": [],
+  "finished": 1793820224.6660092,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "portClosed": true,
+  "cleanupWithinDeadline": true,
+  "finalFree": 13859708928,
+  "FULL": true
+}
