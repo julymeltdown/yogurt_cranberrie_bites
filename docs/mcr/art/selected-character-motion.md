@@ -199,3 +199,30 @@ phone, application build, backend authorization, multiuser or release acceptance
 Those boundaries are not source-production blockers or a new king/SL review
 queue. Planning checks cannot substitute for them. This is a complete assigned
 candidate-art handoff, not automatic product admission or an original-scope cut.
+
+
+## Closed art receipt and proposed application adoption
+
+The assigned art goal was read back COMPLETE after publication; the current
+goal service returns null. No new goal was created. The checkout was clean
+before this receipt, with no owned preview/verifier server process or temporary
+dependency symlink remaining. Art delivery `2fb80680` and publication receipt
+`145d0e21` are published ancestors of the observed remote. All 373 public files,
+29 tools and qualified evidence inputs still match their delivery pins.
+
+[Consumer handoff](evidence/motion-candidates-v1/consumer-handoff.json) records
+full descriptor/atlas/provenance hashes and proposed exact consumer files and
+function hunks. The existing production whole-character adapter uses front-idle
+frame zero; the layered compositor accepts only its baked skin tone. The active
+Customize branch also selects WholeCharacterEditor rather than AvatarEditor.
+Application adoption must therefore route a versioned runtime through the actual
+registry, editor and World lease and prove direction, walking, layers and save
+behavior in the real Phaser journey. Updating a decorative gallery is insufficient.
+
+World is the sole NEXT allocator. All consumer hunks are proposals, not ownership
+grants. Root153 v8's six scope groups remain exclusive, including protected root
+wiring; no MapScene, root/main, shared/Auth, composition contract, generated or
+backend rights transfer here. The handoff identifies the additional contract,
+inventory mapping and Root journey test paths requiring owner coordination.
+This closing receipt changes only owned documentation/evidence. Original AR03
+remains IN_PROGRESS until actual application adoption and its validation finish.
