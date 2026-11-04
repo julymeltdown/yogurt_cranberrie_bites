@@ -55,3 +55,55 @@ removal, text-only compatibility and invalid remote-photo fields. Python syntax
 and whitespace checks exit 0. No generated output, application build or native
 execution is claimed. The reserved migration is being implemented separately and
 is not included in the schema/fixture publication.
+
+## Producer source checkpoint (native pending)
+
+Root explicitly granted visibility-only `BeaconProducer`/four fields in
+`meeting/commands.rs` and one `pub mod meeting_photo;` export in Concert lib.rs.
+A subsequent exact grant covers only the owner Update authorization correction:
+stale stored party Read no longer gates an explicit owner replacement; existing
+actor/owner checks, stable old/new roots, new Update policy, destination checks,
+CAS and ordinary stored-fence reads remain. Targeted photo regression exercises
+old-read denial, explicit retained-image reconfirmation at revision two and later
+place closure/removal/revoke. No other existing producer logic is assigned.
+
+The new module reuses that actual BeaconProducer and BE24 transaction ports. Full
+photo input participates in the BE15 fingerprint; old text-only serialization is
+unchanged. Old/new media are locked in sorted order before global receipt budget.
+Effect, exact revision/expiry/permission association and irreversible former-image
+erasure share the same SQL transaction. Linked reads prelock current beacon/
+audience/place authority before media locks, recheck stored linkage and final
+expiry/proof, and return only existing private no-store sanitized image types.
+
+`CanonicalPhotoGuard::from_request` consumes an actual SDK OwnerGuardScope and
+seals the full verified frame, including key and typed intent, alongside the raw
+HTTP binding. It registers the actual connection before effects and captures the
+real held actor security generation with existing event/admission/participant
+locks. No default success fence, cached observation grant or release-on-return is
+provided. Root retains the actual scope through durable SQL outcome and qualified
+Gateway HTTP terminal settlement. The closed MEETING_PHOTO reference includes its
+full frame digest; root settlement dispatch for this reference and public product
+routes remain explicit composition work, not enabled by the module export.
+
+The forward migration 0029 extends purpose and adds a one-photo-per-beacon
+association. Deferred SQL checks bind actual owner/event/READY target/media and
+beacon revisions, expiry and any pinned policy deadline. Existing 0008 and 0012
+are untouched. The owned socket-only SQL fixture passed migration application,
+five negative binding/proof cases, a real restart and marker/inode cleanup
+(`/tmp/mcr-meeting-photo-sql-b.json`, exit 0). Schema-only SQL data is explicitly
+synthetic and not a decoded/authorized production image.
+
+Authorized dependency copies: media owner's `d4ce03b1` -> local `ab9af08e` and
+`65f90e08` -> local `b54abe4c`. A pure-doc cherry-pick conflict preserved master
+and only the incoming meeting-photo port section; no dependency source behavior
+was edited. That owner's unrelated unpublished canonical/v2 preparation was not
+imported. No dependency build/live claim is inferred from these source copies.
+
+Owned native sources cover real codec/upload plus attach/replay/current privacy,
+replacement/removal/revoke, wrong owner/purpose/non-READY IDs, competing revision
+updates, forced late erasure rollback, root/media/budget contention, restart,
+expiry/cleanup, party generation/place closure/removal, and SQLx fresh/upgrade/
+preserved old media/checksum/replay. Native tests are NOT_RUN until the actual
+shared target is leased and exact binaries are executed. FixtureGuard is synthetic
+remote owner proof only; production SDK/RPC/HTTP/device/rights and IN02 remain
+unqualified. Earlier reports are not photo evidence.
