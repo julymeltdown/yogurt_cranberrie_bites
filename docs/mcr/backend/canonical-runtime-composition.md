@@ -38,3 +38,13 @@ Executed source checks: `rustfmt +1.88.0 --edition 2021 --check` on the two new 
 Planned fresh validation after an explicit target allocation: Rust 1.88.0, locked/offline dependencies, at most two jobs, debug information and incremental compilation disabled; compile `cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p concert-service --test canonical_runtime_config --no-run --message-format=json`. Freeze the exact executable outside the allocated target and release the target before running its three tests. A later combined native run must use Root's actual shared live composition; a constructor-only PASS cannot certify that gate. Record the final source commit, complete source pins, Cargo exit code, frozen executable hash, actual test results and release receipt without relabeling NOT_RUN work.
 
 Required validation, production integration, master delivery and the full persistent goal remain open.
+
+## Root integration follow-up
+
+Root imported CR07 as `c7edc116` and refactored the Participant factory to use
+the core for its existing registry, delivery publisher, Auth/Friend fence and
+Participant-specific settlement service. The returned runtime exposes that
+same core and fence for later feature composition. Combined compilation and
+serving validation of this refactor are still NOT_RUN. The C03-only child
+settler remains explicit and rejects every other kind; no public/Gift/Social
+recovery, native resolver union or child worker activation is claimed.

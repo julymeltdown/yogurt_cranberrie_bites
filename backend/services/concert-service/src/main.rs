@@ -99,6 +99,7 @@ async fn main() -> anyhow::Result<()> {
             recovery,
             callers,
             gateway_verifier,
+            ..
         }) => (
             Some((
                 participant,
