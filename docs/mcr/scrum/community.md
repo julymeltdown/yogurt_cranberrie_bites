@@ -142,7 +142,7 @@ shared purge, peer cleanup/termination or Main/King acknowledgment is required.
 
 QA05 mural owner subsequently delivered a READY exact handoff DIRECT to
 Root153: base `93ef0d89`, serial source `a2b926b8` → `7195d78c` → `d4509894`
-→ `f7a0bbc933a5b6a23ed9360a0ba36fef16d410a8`, exactly 30 NEW assigned
+→ `f7a0bbc933a5b6a23ed9360a0ba36fef16d410a8`, corrected to exactly 29 NEW assigned
 paths, no existing hunks. Owner reports final frozen `7195d78c` native PASS
 in Chrome 156 at 360/390/430, 34 checkpoints, actual hidden/visible and
 omitted supplier; 1,261 committed input pins, actual Phaser RGBA convergence,
@@ -153,9 +153,31 @@ planning/diff PASS are owner results, not manager reruns. Initial actual
 failures and fixture-versus-real matrix remain retained. No whole QA05,
 IN04, device, real ticket/service/room-membership acceptance is claimed.
 Checkout is reported clean, own link removed/resources closed, no self-push.
-SAME goal remains ACTIVE solely for publication and fresh remote ancestry/
-payload verification; the context is not yet terminal or available for
-reassignment. No new goal, review gate or routine King/Main packet was sent.
+This publication-pending stage is superseded by the actual closure below.
+No new goal, review gate or routine King/Main packet was sent.
+
+Actual final QA05 mural contribution closure: owner independently fresh-fetched
+and checked ls-remote master `8502c143cbae14c7cf748d24057026bc4e5a40f2`.
+All four published mappings `1ccb116b`, `c23937d3`, `3bc7dd4b`, `83d3df86`
+are ancestors; all 29 distinct latest payloads equal original `f7a0bbc9`,
+including all six receipt-pinned PNG hashes. Correct count is seven source,
+one doc and 21 evidence paths, not the earlier reported 30. No missing or
+out-of-scope payload is reported. Qualified native candidate remains
+`7195d78cc72078d4f0403566bee01f47f9a85edf`, tree
+`5b5b196d606d4cc90cf36dd5750f6b754f07d9d6`; same final checks/fixture limits
+above are retained. SAME goal `1793760667` actually completed in 21m20s;
+immediate fresh goal read retains a COMPLETE OBJECT, not null, with no active
+unfinished goal. Checkout/source `f7a0bbc9` is preserved clean; own dependency
+link, temp/browser/server/profile resources are absent/closed and Auth PNG
+bytes unchanged. All exact new mural harness/evidence/doc leases returned
+to Community/World; no existing hunks inherited. Community confirmed terminal
+metadata and archived the context with work preserved; no genuinely ready
+new allocation or waiting/filler goal was invented. World received the parent
+handoff directly. Original QA05 remains PARTIAL; real ticket/server restart/
+room-membership outcomes stay open, while device/IN04 remain separate gates.
+No whole QA05 completion or QA10 change is inferred. Owner records:
+`docs/mcr/frontend/qa05-mural-failure-journey.md` and
+`docs/mcr/evidence/realtime/mural/candidate-7195d78c/native.json`.
 
 World corrected primary `202`'s exact lifecycle: bounded FE17/QA05 client
 journey published `a9517e04`, idle/clean/all world-QA05 leases returned and
@@ -756,7 +778,7 @@ handoffs and never falsely complete, reset or relabel them.
 | QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
 | QA07 (World-owned; Community input contribution) | `230`; closed/published `ced8ec12` per Main record | Original QA07 closure is reported; no additional lane count is computed | World owns final task evidence and lifecycle; developer subsequently accepted QA08, so QA07 closure does not confer current availability |
 | QA08 frontend contribution (World-owned) | `230`; bounded goal COMPLETE then null/clean STOP/all leases returned; original task PARTIAL | Package `81196de6` published as `32def3dc` under master `980fc4d8`; owner actual COMPLETE/null/STOP receipt confirmed, historical baseline distinct from current narrow compatibility probe | Physical-mobile/real-service capacity proof remain NOT_RUN; World explicitly released context; Backend staffing is sole next BE39 allocator, startup pending; Community made no assignment or reservation |
-| QA05 | Original task IN_PROGRESS with bounded World client contribution published; mural owner `26e` SAME goal `1793760667` ACTIVE solely for publication/remote verification, not terminal/reassignable | World source published `a9517e04`. Mural exact 30 NEW paths, `a2b926b8` → `7195d78c` → `d4509894` → `f7a0bbc9` READY direct Root153. Owner final frozen native Chrome156 360/390/430, 34 checkpoints/1,261 pins/actual background+Phaser RGBA/queue-gap-timeout/privacy-resource checks and 124 tests/six files/two probes/types/lint/plan/diff PASS; initial failures and fixture limits retained. Clean resources/link/checkout reported, no self-push. Publication pending; no whole QA05/IN04/device/live-ticket/service/room-membership acceptance | Root153 publishes the exact owner-validated scoped handoff; developer verifies actual remote ancestry/payload then closes SAME goal/returns leases. No manager review/approval or new goal. Backend `21d` remains single disk coordinator with actual job preflights; no independent cleanup grant. BE Wall `21e` owns real supplier inputs; remaining whole-QA05 criterion reconciliation/live outcomes stay separately open |
+| QA05 | Original task PARTIAL / IN_PROGRESS; bounded World and mural contributions published. Mural `26e` SAME goal `1793760667` actually COMPLETE 21m20s then fresh COMPLETE OBJECT/no unfinished goal; clean STOP/returned leases/archived | World source `a9517e04`. Mural corrected 29 paths (7 source/1 doc/21 evidence), serial source through `f7a0bbc9` published as `1ccb116b`/`c23937d3`/`3bc7dd4b`/`83d3df86` under `8502c143`. Owner fresh ancestry/all 29 payloads/six PNG hashes verified. Frozen `7195d78c` native three widths/34 checkpoints/1,261 pins and 124 tests/six files/two probes/other scoped checks PASS with initial failures and fixture limits retained | Allocated mural contribution delivered; no new goal/reservation. World owns remaining whole-QA05 criterion reconciliation: real ticket/server restart/room membership remain open; device/IN04 separate, no parent acceptance inferred. BE Wall `21e` owns real supplier inputs; Backend `21d` remains sole disk coordinator. Next assignment only for genuinely ready disjoint scope after fresh compatible startup; otherwise preserved archive |
 | QA09 | Original whole-task disposition UNRECONCILED; frontend contribution unallocated, not evidence of zero whole-task progress; backend primary `267` at natural Gift/operator handoff | No new full-rehearsal receipt. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No frontend contribution commit/push reported |
 | QA10 frontend provenance contribution | `26e` bounded frontend contribution DELIVERED; SAME goal `1793757526` COMPLETE then null/clean STOP/all leases returned; whole original QA10 PARTIAL; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Own published-candidate ten-gate frontend PASS/PARTIAL, 3,503 Vitest + 22 Node tests PASS; backend/service/device/three real journeys remain NOT_RUN. Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` published by Root under `980fc4d8`; owner post-repair full qualification PASS reported; final evidence `d6009343` published as `d165dd7a` under `a9517e04`, actual owner ancestry and COMPLETE/null/STOP receipt confirmed |
 | IN04 frontend real mural journey | Frontend real-journey writer pending exact ready allocation; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |
