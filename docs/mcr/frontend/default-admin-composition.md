@@ -244,3 +244,23 @@ and throws after cleanup. Raw failure and FULL20:19:12.934460Z are retained unde
 retained carry; all resources were released before this edit. Only remaining
 scoped lint is requested next (`actual-lint`); neither passed test suite nor the
 passed TypeScript command is replayed. This source repair adds no runtime claim.
+
+The final lint-only round at `87021dd196ded2b617640271ad8adbe80472c187`
+passed scoped `oxlint --deny-warnings` with no tests or TypeScript replay.
+Actual ACCEPT20:24:05.666866Z and FULL20:24:06.768934Z are retained under
+`actual-source-03-qualified-lint`. Peak usage was four processes, 230,080,512
+bytes aggregate RSS, WHOLE2,254,325,026 and inclusive NEW69,820,790; minimum free
+space was 18,036,965,376 bytes. No remaining owned process or signal error,
+removed private TMP and dependency link, and successful port52624 rebind were
+recorded. Resources were returned before evidence retention and documentation.
+
+Real-driver source qualification is complete at the recorded cuts: three new
+input cases PASS at `556f5f06c`, canonical148 full TypeScript PASS at `dc5062824`,
+and repaired-driver scoped lint PASS at `87021dd196`. The original controlled
+consumer packet is already published as `331a8820ad2b1c358700669614d0419e8eba0ec1`
+plus admin-only ports `863ea6358b0f5386afae598e11f1c4ddc4df512b`, included in
+`64947bbfb0b63c26856dbb65bb3244d07ae21523`; its receipt was verified separately.
+This successor contains only the new actual-driver source, owned guardian and
+owned evidence/docs against canonical `2cc7f5de`; it excludes all normal upstream
+intake. Actual Admin runtime remains NOT_RUN, with the original active objective
+retained for the real managed cohort, private inputs and fresh joint allocation.

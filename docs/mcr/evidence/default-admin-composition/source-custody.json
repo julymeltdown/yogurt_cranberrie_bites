@@ -3,7 +3,7 @@
   "branch": "codex/mcr-fe-default-admin-composition",
   "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
   "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
-  "qualification": "OWN_COMPOSITION_PUBLISHED_CONTROLLED_NATIVE_PASS_ACTUAL_DRIVER_SOURCE_IN_PROGRESS",
+  "qualification": "OWN_COMPOSITION_PUBLISHED_CONTROLLED_NATIVE_PASS_ACTUAL_DRIVER_SOURCE_QUALIFIED",
   "scope": "Default Admin canonical consumer composition and changed boundary only",
   "actualProducer205": "NOT_QUALIFIED",
   "productionRoleRegistration": "CANONICAL148_REGISTERED_ACTUAL_RUNTIME_UNQUALIFIED",
@@ -81,7 +81,7 @@
     "release": "actual-source-01-old-registry/release.json",
     "canonical148Intake": "2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c",
     "actualRuntime": "NOT_RUN_NO_CURRENT_DESCRIPTOR_OR_OPERATOR_FIXTURE",
-    "remaining": "Only scopedlint after cleanup repair; existing3 tests and fulltypes PASS retained without replay; actualruntime futurecohort/window"
+    "remaining": "SOURCE_QUALIFIED_AT_RECORDED_CUTS; actualruntime future coherent settings/Gateway/Concert/operator/privateinputs/window"
   },
   "actualDriverRemainingTwo": {
     "pin": "dc5062824cbc89aa15bbb72741c4a8c8506e3b0d",
@@ -92,5 +92,22 @@
     "accountedWholeHighwaterBytes": 2254325026,
     "newHighwaterBytes": 69800310,
     "actualRuntime": "NOT_RUN"
+  },
+  "actualDriverQualifiedLint": {
+    "pin": "87021dd196ded2b617640271ad8adbe80472c187",
+    "readsetSha256": "3972df2d7a67c330e615f6570d93991af24f5488de66ea98d9992bbe4b6fafb1",
+    "guardSha256": "94b3fbab617d1d666c5454f4ba31f80615e1fd7d5f1f397df3fedc75c573f347",
+    "lint": "PASS_DENY_WARNINGS",
+    "release": "actual-source-03-qualified-lint/release.json",
+    "testsOrTypesReplayed": false,
+    "accountedWholeHighwaterBytes": 2254325026,
+    "inclusiveNewHighwaterBytes": 69820790,
+    "actualRuntime": "NOT_RUN"
+  },
+  "publishedConsumer": {
+    "leafCommit": "331a8820ad2b1c358700669614d0419e8eba0ec1",
+    "adminPortsOnlyCommit": "863ea6358b0f5386afae598e11f1c4ddc4df512b",
+    "includedCanonical": "64947bbfb0b63c26856dbb65bb3244d07ae21523",
+    "receiptScopedModesBlobsAndFE41PreservationVerified": true
   }
 }
