@@ -1,7 +1,7 @@
 # Reviewed motion v2 frontend boundary
 
-Status: CONTRACT_READY; implementation and local qualification complete, final
-publication and the publisher's shared build receipt pending. This bounded
+Status: ACCEPTED for this bounded contribution; implementation, qualification,
+source publication and the shared application build are verified. This bounded
 AR03/FE12 contribution connects the canonical
 reviewed2 contract to generated wire types, the existing realtime schema registry,
 and Auth bundle validation. It does not complete AR03, FE12, IN05, device or
@@ -77,6 +77,15 @@ The first coherent source batch was independently fetched and verified at remote
 `first-publication.json` records this observation, not publication of later Auth
 work. The Auth follow-up is `789b84c307674812a81e67ad59badc83fab8f532`.
 
+The complete qualified source and evidence packet was independently fetched and
+verified at remote `0b8243299c9a8c3099351364d518bbd96fc38a7f`.
+Auth `789b84c3` maps to `1f89ccf7`, qualification `10c3182c` maps to
+`0be72718`, parser `34ef8fbb` maps to `40c3bdbe`, and Motion's combined
+qualification `11e486f5` maps to `fbeaa5e3`. All 30 distinct paths authored by
+this owner match their last committed source bytes. The appended follow-up in
+`first-publication.json` records the actual ancestry and per-file hashes.
+Final receipt-only updates remain within the same documentation/evidence paths.
+
 ## Validation and remaining work
 
 The qualified composition includes Motion helpers `24c573fb` (locally
@@ -90,6 +99,7 @@ the six-line Auth branch found no ordering or runtime-authority bug.
 | Pinned Node 24.22.2 generation followed by `--check` | Exit 0; byte-identical checked-in output |
 | Relevant combined Vitest suites, cache disabled, runner config loader, two workers | Exit 0; 558 tests in 18 suites |
 | Full application `tsc --project tsconfig.json --incremental false --pretty false` | Exit 0; zero diagnostics; no shared build-info write |
+| Publisher's optimized actual `index.html` / `main.tsx` application build | Exit 0; selected Node 24.22.2 and retained React/Tailwind plugins |
 | Targeted lint | Exit 0 |
 | Planning provenance check | Exit 0; planning scope only |
 | UI-origin check | Exit 0; static source/import scope only |
@@ -112,10 +122,22 @@ old-parser type gap are resolved by the final passing composition. These early
 logs are diagnostic history, not final qualification.
 
 The resource coordinator requested Root153's existing shared Vite slot rather
-than duplicate output-heavy work. Its actual candidate, command, exit and log
-pin must be recorded when returned. Final publication must be independently
-verified with fresh fetch/remote refs, ancestry and every delivered payload.
-No self push is authorized.
+than duplicate output-heavy work. The actual application build passed at
+`d5c0c9d188f68acb749d7ed2940706f34b2a8be1`, containing published `0b824329`
+and the publisher's separate v10 source. All six boundary code/test files match
+the qualified frontend source exactly at that candidate. The command was
+`PATH=/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH MCR_FRONTEND_DEPENDENCIES=/Users/lhs/Desktop/mcr/frontend node frontend/src/world/avatar/__tests__/motion-adoption/build.mjs --application`
+in `fe-reference-root`; exit 0. The independently read log SHA256 is
+`3547a653632242465a6b95978d31784c1db6fdd67bbd67158ea41ab7840051a5`;
+its exact content and source pins are embedded in `qualification.json`.
+The build uses `copyPublicDir:false` and removes its owned temporary output/cache
+in `finally`. This is bundle validation; it is not asset publication or runtime
+admission. This owner started no duplicate build, held no output lease, and
+removed its borrowed dependency symlink after testing.
+
+The final receipt-only follow-up changes existing documentation/evidence only.
+The publisher serializes it; this owner then verifies its actual remote ancestry
+and every final payload before completing the bounded goal. No self push occurs.
 
 `production_eligible: true` and `VISUALLY_REVIEWED` are staged contract fields.
 Structural Auth validation produces no runtime admission authority. Candidate
