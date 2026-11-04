@@ -499,3 +499,20 @@ The Feed native signed-parent fixture now uses an empty HTTP GET body and its
 matching digest, preserving the release event and actual Gateway signature
 verification. The single Concert library-test build remains queued under a fresh
 explicit target allocation; no target or PostgreSQL instance is retained.
+
+
+## Published PublicProfile handoff consumed
+
+Merge `049540cce327feba88543434e0861a5d679963f5` consumes the published
+PublicProfile handoff `5ca13d4493ee9eb78675256cb2f6e58f7ac59a48`. The one local
+budget conflict was resolved by retaining the owner's published local.rs bytes,
+including its existing diagnostics and exact sealed-deadline fix. Its SHA-256 is
+`3e5929ebe1a84ba7ad7ea6964add410f939ba1f29bbdfbfc72fe840518ed8d4c`;
+comparison against the published owner commit passed. All owned Feed/Post source
+and test bytes were unchanged by the merge.
+
+The fresh dependency runtime receipt remains tied to the owner's `c04070be`
+snapshot. The merged source is not a new compile or runtime result. It is ready
+for the separately requested one-library Feed build and frozen native execution;
+no target grant or PostgreSQL instance is held. Peer evidence-log whitespace
+was preserved during reconciliation and is outside this task's authored paths.
