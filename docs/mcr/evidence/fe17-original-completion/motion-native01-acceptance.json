@@ -1,0 +1,65 @@
+{
+  "status": "ACCEPT",
+  "slot": "FE17-MOTION-NATIVE-B1-20261104T1823Z",
+  "acceptedUTC": "2026-11-04T18:24:18.467021+00:00",
+  "workStopUTC": "2026-11-04T18:27:18.467021+00:00",
+  "deadlineUTC": "2026-11-04T18:28:18.467021+00:00",
+  "pin": "56f6ec618b38da9440ac124b5f573bfa7445bd18",
+  "guardSha256": "cd43116c2d821d5f2c166d38e083d18912059cdfe293c3fb41bc6737d8dcf97b",
+  "accountingHelperSha256": "59a0fff69227b73ad4cb900738f1adbd431282bbbc5ade4f77be398f96c132fe",
+  "readsetSha256": "8bd1ceeefcc3761c3f77cce9a47226f4c8ee89075174834d7b2e140b22ca86e2",
+  "readsetFiles": 1565,
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801907386,
+        "files": 7807,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1949176,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551525347,
+    "reachableGitObjects": 39687,
+    "wholeCarryBytes": 2763645243,
+    "chargedFiles": 59068
+  },
+  "chargedCarryFloor": 2768599821,
+  "chargedCarryBytes": 2768599821,
+  "otherConservativeBytes": 4362076160,
+  "ownNewBytes": 134217728,
+  "freeBytes": 17084669952,
+  "postReserveBytes": 12588376064,
+  "port": 64377,
+  "prebind": "PASS loopback freshbind then released; guardian+runner will strictrebind",
+  "command": "Node24 frontend/src/world/network/__tests__/replication-browser.mjs ONLY",
+  "scenarios": [
+    "native optin/hashqualification/roster/ACK/ping",
+    "bounded tentative self and authoritative correction without upsert",
+    "gap one resync/no ghosts",
+    "hidden/foreground freshticket neutral seq1 nointeractionreplay",
+    "canonicalowner/disposal no retained timers/commits"
+  ],
+  "privateProfile": "Playwright ownprofile under privateTMP; guard censusonly observed ownSingletonSocket target, abort/preserveunconfirmedexternal carry; nopeerdeletion",
+  "caps": {
+    "whole": 4294967296,
+    "new": 134217728,
+    "tmp": 100663296,
+    "durable": 33554432,
+    "processes": 16,
+    "rss": 3758096384,
+    "childSeconds": 90,
+    "guardMs": 250
+  }
+}

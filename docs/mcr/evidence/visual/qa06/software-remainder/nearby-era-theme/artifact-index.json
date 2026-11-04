@@ -1,0 +1,118 @@
+{
+  "admission-round-01.json": {
+    "bytes": 1620,
+    "sha256": "a9bf25cd8e72a87f9db77dc2f7523dc9100d197a197767c401fa07b3540612b1"
+  },
+  "admission-round-02.json": {
+    "bytes": 1830,
+    "sha256": "c77345db149c668a603dc3f30de57c93b7c6ffb792356400cb273bf957d08b1b"
+  },
+  "admission-round-03.json": {
+    "bytes": 1868,
+    "sha256": "dec7ba9262fd57d30d6ce610de35c1354f82560c5e606324490c9ff73fcd4ba5"
+  },
+  "owner-assessment.json": {
+    "bytes": 3938,
+    "sha256": "2e023be2c12e8491d688366c9c22165b3f7b719bf21c9239f391fdc9133ce152"
+  },
+  "round-01/native.log": {
+    "bytes": 337,
+    "sha256": "d58f8c49a4404138c34d6952386c41ee65ad2b7ebd4a0534c6f4a8796dba14fb"
+  },
+  "round-01/nearby-parade-360.png": {
+    "bytes": 94343,
+    "sha256": "da67e0d87fdead1950d0096c2343756c8119fe7468e20435e8db8c1a8ff0c2f5"
+  },
+  "round-01/report.json": {
+    "bytes": 59629,
+    "sha256": "a15443a042c55c6170e1222585eddf67892be0fbbd4950abe76d30ee1356ebe0"
+  },
+  "round-01/report.partial.json": {
+    "bytes": 59491,
+    "sha256": "2413da77521d64a6e6bfce499a72f11d2fee93985a69a4a581f72b148ff66b58"
+  },
+  "round-01/supervisor.json": {
+    "bytes": 1492,
+    "sha256": "056c63713c72fc6343d844e634e043cd9b203001a2d755f278346cf52a4b5415"
+  },
+  "round-01/syntax.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "round-02/native.log": {
+    "bytes": 264,
+    "sha256": "71038054ab0bc9580ce66636edd75d71e9a94d094e282c9834d3e17aeb4c9401"
+  },
+  "round-02/nearby-danger-360.png": {
+    "bytes": 94343,
+    "sha256": "da67e0d87fdead1950d0096c2343756c8119fe7468e20435e8db8c1a8ff0c2f5"
+  },
+  "round-02/nearby-danger-390.png": {
+    "bytes": 98704,
+    "sha256": "f32975183262517c3e5e2db6a05d757c2c2bf43b58759d241d53ab5a90f3e413"
+  },
+  "round-02/nearby-danger-430.png": {
+    "bytes": 103895,
+    "sha256": "f4e8d089e94496a365991c6d608d9b1c9d9db5817f2bc98eafb53c8c26f1b289"
+  },
+  "round-02/nearby-parade-360.png": {
+    "bytes": 94343,
+    "sha256": "da67e0d87fdead1950d0096c2343756c8119fe7468e20435e8db8c1a8ff0c2f5"
+  },
+  "round-02/nearby-parade-390.png": {
+    "bytes": 98704,
+    "sha256": "f32975183262517c3e5e2db6a05d757c2c2bf43b58759d241d53ab5a90f3e413"
+  },
+  "round-02/nearby-parade-430.png": {
+    "bytes": 103895,
+    "sha256": "f4e8d089e94496a365991c6d608d9b1c9d9db5817f2bc98eafb53c8c26f1b289"
+  },
+  "round-02/report.json": {
+    "bytes": 78256,
+    "sha256": "f4f75ecc4f0c8f7991c472e34ea1c53f6c338871bb4e7b1c36cec5258c0c832f"
+  },
+  "round-02/report.partial.json": {
+    "bytes": 78118,
+    "sha256": "2f73ce56524855136cf7979f4b2d52d95a3867ff097b5a0c95c39f7eaa6afead"
+  },
+  "round-02/supervisor.json": {
+    "bytes": 1494,
+    "sha256": "1a63789de21d3993031bdb11c3bd9cf44c55d8ce2e1f4ccbfda29c69b83bb5c7"
+  },
+  "round-02/syntax.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "round-03/native.log": {
+    "bytes": 46,
+    "sha256": "eb30fc0d252a4cd72d3bdd298ceef7d37e0665ad10e32b29f2e8ec4c35744312"
+  },
+  "round-03/report.json": {
+    "bytes": 74381,
+    "sha256": "79c80715a8030e87605cb7f85f46c5453fb071721734281550ffb59c6d0cadd9"
+  },
+  "round-03/report.partial.json": {
+    "bytes": 74253,
+    "sha256": "bf3448de79a1106b5234d16fd4aaa3dd2e277a992db70c42d4b7b61e2403c9ba"
+  },
+  "round-03/supervisor.json": {
+    "bytes": 1495,
+    "sha256": "b6f1250f4aba8a7947f1052ae01cc2bb2a4d5abbac83486975ffa33b44f2bf8b"
+  },
+  "round-03/syntax.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "round-03/theme-persist-390.png": {
+    "bytes": 71156,
+    "sha256": "3a832db6021254f3baf859e98c5f9e0cd5c30849b79cbe457be307c2ebd9e149"
+  },
+  "round01-diagnosis.json": {
+    "bytes": 403,
+    "sha256": "70ad1281b7b95a0a37137b7285bd3749b19131156a13eb9491c701ae7fd3ef76"
+  },
+  "round02-diagnosis.json": {
+    "bytes": 581,
+    "sha256": "75842dc00c6d85c65bbbf6ae732a30ef6a0e20af61626db1ab3aaa5ee80d52ab"
+  }
+}

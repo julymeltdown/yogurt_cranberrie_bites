@@ -1,0 +1,75 @@
+import datetime,hashlib,json,os,signal,subprocess,sys,time,shutil
+from pathlib import Path
+root=Path('$CHECKOUT')
+carry=Path(__file__).parent
+accept=json.loads(Path(sys.argv[1]).read_text())
+node=Path('$PINNED_NODE')
+deps=Path('$DEPENDENCIES')
+run=accept['run']; active=datetime.datetime.fromisoformat(accept['activeUntil']).timestamp(); hard=datetime.datetime.fromisoformat(accept['hardUntil']).timestamp()
+cache=carry/(run+'-cache'); temporary=carry/(run+'-tmp'); link=root/'frontend/node_modules'
+def git(args,data=None): return subprocess.check_output(['git',*args],cwd=root,input=data,text=True).strip()
+assert git(['rev-parse','HEAD'])==accept['source'] and not git(['status','--porcelain'])
+assert hashlib.sha256(Path(__file__).read_bytes()).hexdigest()==accept['guardianSha256']
+assert hashlib.sha256(node.read_bytes()).hexdigest()=='b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a'
+for lock in [root/'frontend/pnpm-lock.yaml',deps.parent/'pnpm-lock.yaml']: assert hashlib.sha256(lock.read_bytes()).hexdigest()=='47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6'
+gitdir=Path(git(['rev-parse','--absolute-git-dir']))
+ids=set(line.split()[0] for line in git(['rev-list','--objects','654974128a27c948a449fa9e58f466b8e612361d..HEAD','codex/mcr-qa-IN03-stack-runtime','codex/mcr-fe-IN03-public-journey']).splitlines())
+sizes=[int(x) for x in git(['cat-file','--batch-check=%(objectsize)'],'\n'.join(ids)+'\n').splitlines()]
+def size(path):
+ try:
+  st=path.lstat()
+  if path.is_dir() and not path.is_symlink(): return sum(size(c) for c in path.iterdir())
+  return st.st_size
+ except FileNotFoundError: return 0
+base=sum(sizes)
+def whole(): return base+sum(size(p) for p in [root,carry,gitdir,deps])
+def free():
+ st=os.statvfs(carry); return st.f_bavail*st.f_frsize
+initial=whole(); initial_carry=size(carry)
+assert initial+128*1024**2<=3*1024**3
+assert free()>=11*1024**3 and free()-accept['otherConservativeReserveBytes']-128*1024**2>=9*1024**3
+assert not any(p.exists() or p.is_symlink() for p in [cache,temporary,link]) and time.time()<active-30
+owned={os.getpid()}; groups=set(); peak_count=peak_rss=0; violations=[]; child=None; code=1
+own_group=os.getpgrp()
+def sample():
+ rows=[tuple(map(int,line.split())) for line in subprocess.check_output(['/bin/ps','-axo','pid=,ppid=,pgid=,rss='],text=True).splitlines()]
+ changed=True
+ while changed:
+  n=len(owned); owned.update(pid for pid,ppid,pgid,rss in rows if ppid in owned or pgid in groups); changed=len(owned)!=n
+ for pid,ppid,pgid,rss in rows:
+  if pid in owned and pid!=os.getpid() and pgid!=own_group: groups.add(pgid)
+ return [r for r in rows if r[0] in owned]
+env=os.environ.copy()
+for k in list(env):
+ if k.startswith(('MCR_FEED_','MCR_IN03_','MCR_SOCIAL_')) or k in ('NODE_OPTIONS','NODE_COMPILE_CACHE'): env.pop(k,None)
+env.update(MCR_FEED_NODE=str(node),MCR_FEED_CACHE=str(cache),MCR_FEED_ALLOCATION=accept['allocation'],MCR_FEED_ACTIVE_UNTIL=accept['activeUntil'],TMPDIR=str(temporary),NODE_DISABLE_COMPILE_CACHE='1',NO_COLOR='1',PATH=str(node.parent)+':'+env['PATH'])
+try:
+ sample()
+ cache.mkdir(mode=0o700); temporary.mkdir(mode=0o700); link.symlink_to(deps)
+ with (carry/(run+'.log')).open('x') as log:
+  child=subprocess.Popen([str(node),'frontend/src/app/social-entry/production-readiness/check.mjs'],cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+  owned.add(child.pid); groups.add(child.pid)
+  while True:
+   rows=sample(); count=len(rows); rss=sum(r[3]*1024 for r in rows); total=whole(); temp=size(cache)+size(temporary); durable=size(carry)-initial_carry-temp
+   peak_count=max(peak_count,count); peak_rss=max(peak_rss,rss)
+   if not(time.time()<active and free()>=8*1024**3 and total<=3*1024**3 and total-initial<=128*1024**2 and temp<=100*1024**2 and durable<=8*1024**2 and count<=24 and rss<=4*1024**3):
+    violations.append(dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),wholeBytes=total,temporaryBytes=temp,durableNewBytes=durable,freeBytes=free(),processes=count,rssBytes=rss)); raise RuntimeError('Independent guardian limit')
+   if child.poll() is not None: code=child.returncode; break
+   time.sleep(.25)
+except Exception as e: violations.append(dict(error=type(e).__name__))
+finally:
+ for group in groups:
+  try: os.killpg(group,signal.SIGKILL)
+  except ProcessLookupError: pass
+ for pid,ppid,group,rss in sample():
+  if pid!=os.getpid():
+   try: os.kill(pid,signal.SIGKILL)
+   except ProcessLookupError: pass
+ if child is not None: child.wait(timeout=max(1,hard-time.time()))
+ for directory in [cache,temporary]:
+  if directory.exists(): shutil.rmtree(directory)
+ if link.is_symlink() and link.readlink()==deps: link.unlink()
+ live=[r for r in sample() if r[0]!=os.getpid() and r[1]!=os.getpid()]
+ record=dict(allocation=accept['allocation'],source=accept['source'],exit=code,utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),initialWholeBytes=initial,finalWholeBytes=whole(),peakAllProcesses=peak_count,peakAllRssBytes=peak_rss,freeBytes=free(),violations=violations,ownedPidsObserved=sorted(owned),ownedGroupsObserved=sorted(groups),remainingOwned=live,linkPresent=link.exists() or link.is_symlink(),cachePresent=cache.exists(),temporaryPresent=temporary.exists(),guardianIntervalMs=250,deadlineMet=time.time()<hard)
+ (carry/(run+'-release.json')).write_text(json.dumps(record,indent=2)+'\n'); print(json.dumps(record))
+ sys.exit(code if code else int(bool(violations or live or record['linkPresent'] or not record['deadlineMet'])))

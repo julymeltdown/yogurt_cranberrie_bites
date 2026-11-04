@@ -1,0 +1,12 @@
+{
+  "reportedBy": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "sourceRevision": "cdc6f2a844c8ed75525a6a3ffc81599414f4544e",
+  "canonicalRunnerRevision": "2b2d4de6f4c6948f606e0cbdc7b62445ca9aa585",
+  "publisherVerifiedMaster": "869851ce9917004a7843e5bc1b91537414550674",
+  "publisherDisposition": "All 36 scoped new paths have exact source modes/blobs; no app/helper/schema writes. Remote independently verified by publisher.",
+  "publisherPrivateReceipt": "/private/tmp/mcr-root-in04-runner-management-publication-receipt.json",
+  "consumerReadbackOrRerunRequired": false,
+  "realIN04": "NOT_RUN",
+  "originalPersistentGoal": "BLOCKED_UNFINISHED",
+  "followup": "Allocated Vite cache Phaser URL identity correction is a separate pending source qualification, not a retraction of historical source proof."
+}

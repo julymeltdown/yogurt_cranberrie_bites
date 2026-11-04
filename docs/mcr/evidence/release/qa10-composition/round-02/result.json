@@ -1,0 +1,106 @@
+{
+  "status": "ACTUAL_FULL",
+  "offer": "QA10-COMPOSITION-RETRY-SOURCE-20261104T1915Z",
+  "at": "2026-11-04T19:15:51.373422+00:00",
+  "elapsed_seconds": 91.5778043330065,
+  "results": [
+    {
+      "name": "focused-unittest",
+      "argv": [
+        "<Python3.14>/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "composition.test_composition",
+        "test_check.ReleaseChecks.test_positive_exact_candidate_test_artifacts_production_and_task_link",
+        "test_check.ReleaseChecks.test_cli_exit_codes_distinguish_partial_incomplete_and_fail",
+        "test_check.ReleaseChecks.test_existing_frontend_schema_is_consumed_and_archived_json_checked"
+      ],
+      "cwd": "<checkout>/scripts/mcr/release_checks",
+      "exit": 0
+    },
+    {
+      "name": "candidate",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "<checkout>",
+      "exit": 0
+    },
+    {
+      "name": "cli-source",
+      "argv": [
+        "<Python3.14>/bin/python3",
+        "-B",
+        "<checkout>/scripts/mcr/release_checks/check.py",
+        "--root",
+        "<checkout>",
+        "--candidate",
+        "b30749b2e039152c82c9a8472dc4e7964fb61788",
+        "--mode",
+        "source"
+      ],
+      "cwd": "<checkout>",
+      "exit": 2
+    },
+    {
+      "name": "cli-composition",
+      "argv": [
+        "<Python3.14>/bin/python3",
+        "-B",
+        "<checkout>/scripts/mcr/release_checks/check.py",
+        "--root",
+        "<checkout>",
+        "--candidate",
+        "b30749b2e039152c82c9a8472dc4e7964fb61788",
+        "--mode",
+        "composition"
+      ],
+      "cwd": "<checkout>",
+      "exit": 2
+    },
+    {
+      "name": "cli-stale",
+      "argv": [
+        "<Python3.14>/bin/python3",
+        "-B",
+        "<checkout>/scripts/mcr/release_checks/check.py",
+        "--root",
+        "<checkout>",
+        "--candidate",
+        "0000000000000000000000000000000000000000",
+        "--mode",
+        "composition"
+      ],
+      "cwd": "<checkout>",
+      "exit": 1
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "ba314a2c96639b05b6c15c1ead57353719004ffa",
+        "HEAD"
+      ],
+      "cwd": "<checkout>",
+      "exit": 0
+    }
+  ],
+  "retained_bytes": 13856,
+  "temporary_removed": true,
+  "guardian": {
+    "at": "2026-11-04T19:15:51.342409+00:00",
+    "breach": null,
+    "sampled_maxima": {
+      "processes": 4,
+      "rss": 95059968,
+      "new_bytes": 441157,
+      "whole_bytes": 646368859
+    }
+  }
+}

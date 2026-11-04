@@ -1,0 +1,129 @@
+{
+  "task": "FE41",
+  "branch": "codex/mcr-fe-FE41-original-completion",
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "frozenCandidate": "86204a3b2d340b0ba30ea0812871fab00e590ad7",
+  "grantAuthority": "Root153 explicit STOP-transfers, including narrow terminal producer and later strict typed-map-version propagation hunks; WorldSL repeated same grant, no expansion.",
+  "scopes": {
+    "frontend/src/world/network/transport/contract.ts": "WorldTransportError.kind union: add map-version only; compiler/wire semantics unchanged.",
+    "frontend/src/world/network/transport/engine.ts": "TicketAcquisitionFailure only: canonical TransportError HTTP409 core reason and registered operation pair. No bareclosecode inference.",
+    "frontend/src/world/network/replication.ts": "onEvent(error) only: preserve typed map-version; existing clearing/closed publication unchanged.",
+    "frontend/src/world/composition/index.ts": "Exactly three hunks: state problem union, typed map-version fail reason, reload-only fail copy/hidden in-place retry.",
+    "frontend/src/app/ports.ts": "Only optional readonly WorldAccessBinding.lifecycle field/type.",
+    "frontend/src/app/world-entry/production.ts": "Only scoped local lifecycle status producer/forwarding/subscription/cleanup; all motion opt-in/policy/renderer/mural/character routing retained.",
+    "frontend/src/app/errors/default-entry.ts": "Borrow only exact captured lifecycle terminal decision through existing observer service port.",
+    "frontend/src/app/errors/observer.ts": "Subscribe/retire captured optional lifecycle alongside replication; existing authority and bounded-wait machinery retained.",
+    "frontend/src/app/errors/fe41-lifecycle/**": "New pure local lifecycle type/projection and changed-only source/native tests."
+  },
+  "applicationFiles": [
+    {
+      "path": "frontend/src/app/errors/default-entry.ts",
+      "before": {
+        "sha256": "cda6e697502dc5442164c757778728ac3fe4a237aa1695a15f8877ac6638b707",
+        "modeBlob": "100644 blob c52029c241df6938ae7dc02e476719a5ddbf045f\tfrontend/src/app/errors/default-entry.ts"
+      },
+      "candidateSHA256": "7a9105358c156dc37640969fb3b9732f0d7bc8531fb4f977b15c70b7939f23aa",
+      "candidateBlob": "3004abce6f2bb37bb3c1d721f94c3f1f58645fb1"
+    },
+    {
+      "path": "frontend/src/app/errors/fe41-lifecycle/authority.test.ts",
+      "before": null,
+      "candidateSHA256": "ab6555e72f26aa08c9b46121eaa3ca8232de6dc30c895cffea480b0dd318c001",
+      "candidateBlob": "74ac9ede98c0a1b48966125290246b4f07b70270"
+    },
+    {
+      "path": "frontend/src/app/errors/fe41-lifecycle/native.mjs",
+      "before": null,
+      "candidateSHA256": "c8ee10c427f023a9a7622dd6320729b6ff5488d6a97c1df52d7ed3e3f8878122",
+      "candidateBlob": "11cb6f72805781abe2c1ea9ba5d58a4053bd96a7"
+    },
+    {
+      "path": "frontend/src/app/errors/fe41-lifecycle/status.ts",
+      "before": null,
+      "candidateSHA256": "fd0ae11112367a0f03c182e69c6b681649a63e3915f162482c1f4f1d8b3f448a",
+      "candidateBlob": "b1e686481afa60700b21699ba9ff1e9ade9f6138"
+    },
+    {
+      "path": "frontend/src/app/errors/fe41-lifecycle/version.test.ts",
+      "before": null,
+      "candidateSHA256": "5d4580e914935fcb805352dc0a0717c3fc47417c44bebb65feaca4bfca8c2310",
+      "candidateBlob": "479d09a6b4a7f95bb2da65608867213616cbf99f"
+    },
+    {
+      "path": "frontend/src/app/errors/observer.ts",
+      "before": {
+        "sha256": "9cc14d9bc182f60ac8df73a4f655d42040c19fed2b731d0dbbb5d6295565305e",
+        "modeBlob": "100644 blob 34c5133024be2f11473df36f6f79aeb05ce36b78\tfrontend/src/app/errors/observer.ts"
+      },
+      "candidateSHA256": "2149d16fafb7dcdbaf5e968cff295cb41c54680d910f2e622345f14dd8a61687",
+      "candidateBlob": "633159d327aea44b12b40e447939d8be0b1a06cf"
+    },
+    {
+      "path": "frontend/src/app/ports.ts",
+      "before": {
+        "sha256": "75430066174a9fffe54c19eca6f7f92e4e366cd898ed1ded1983e2c2a16c0a82",
+        "modeBlob": "100644 blob 7a6bcfd80b4c0ab788a5b8b9460e93895ea9197a\tfrontend/src/app/ports.ts"
+      },
+      "candidateSHA256": "dd5fbff8caf1a6eafecbb3c268cc76ca0174373acb74faa1911d0eb9613aabf7",
+      "candidateBlob": "e9f1df998cea7bf509595ee0e1540d9e38798126"
+    },
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "before": {
+        "sha256": "3cb320cee99ffcf3b039bce35173e422b2cccede3d6a428c1a7d3645945b7257",
+        "modeBlob": "100644 blob 6b38cf7a53ddb340d5833d9c86fc0ccf56b6159f\tfrontend/src/app/world-entry/production.ts"
+      },
+      "candidateSHA256": "0d454774745ac8fe484076c28aa04d57aa4efba776b59b19ade5ae26493fcaab",
+      "candidateBlob": "bc4b8edd45be3df879fbe0259963b5bbba26b6e6"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "before": {
+        "sha256": "f139b37872968aff16235b0816cf6c3f573f81020a8a5047197f11099fcbc30c",
+        "modeBlob": "100644 blob 90816c913e232f745a555237730c19b8a85d14c1\tfrontend/src/world/composition/index.ts"
+      },
+      "candidateSHA256": "565d60018b30bb9b99d5997c7dad6c664f11aca5300e05f1ebe01cde2ecf3819",
+      "candidateBlob": "500fa3dfe11d2b5c104cfbb99f7ef31bb1dd09c7"
+    },
+    {
+      "path": "frontend/src/world/network/replication.ts",
+      "before": {
+        "sha256": "23a1d227fb66837cdabff76e723689c2bb58de93b0363361d26769c7d6f69951",
+        "modeBlob": "100644 blob a66e3b54e7987f92f11a45aeb97d1508bfdd9a3d\tfrontend/src/world/network/replication.ts"
+      },
+      "candidateSHA256": "c6dc14fe74a930bb32b27154baf568394626b6dd81c48bc46b61fa274e170b0a",
+      "candidateBlob": "7d27cda839b2a4b2e89e58e2e5cbae05074bdec2"
+    },
+    {
+      "path": "frontend/src/world/network/transport/contract.ts",
+      "before": {
+        "sha256": "5dca79e4627decb98828a1f323c408fbbe98fa32c1e0ff3bce6dec8d4d4ecb1b",
+        "modeBlob": "100644 blob 2d4aef0443f854d5fcf8ea3e4261b1bc8ed15c1c\tfrontend/src/world/network/transport/contract.ts"
+      },
+      "candidateSHA256": "033e9b88a63091f9a99eb516420d4bf76b59787b04498b82738c85d9eef00d1b",
+      "candidateBlob": "9ac8db96a624fda9911e2f9f6316c7f0f1a1abc6"
+    },
+    {
+      "path": "frontend/src/world/network/transport/engine.ts",
+      "before": {
+        "sha256": "347b796a9270250c0fe2573bce4c456932f0bac1e84111984a33769977ca80e0",
+        "modeBlob": "100644 blob 9fac1426ecd99af10116b5447210962c9269637d\tfrontend/src/world/network/transport/engine.ts"
+      },
+      "candidateSHA256": "6b51fc7304fae6d26b4f464feef5f6469a2e304535417ac809b9685a6eafd17a",
+      "candidateBlob": "cf51cab3d48eb7b73a3a4feb516db9c8776abffc"
+    }
+  ],
+  "documentation": [
+    "docs/mcr/frontend/fe41-original-completion.md",
+    "docs/mcr/evidence/fe41-original-completion/**"
+  ],
+  "excluded": "All other paths including CSS/router/generated/contracts/Auth/Admin/Sharing/otherfeatures/art/manifests/locks. Old FE17 rights stay returned. No new source or target checkout.",
+  "publication": "Root153 normal scoped non-force master publication, no King/SL review or ACK.",
+  "sourceQualifiedAt": "49df4add5df4645d716c73eac35a5e00c8ad2bb4",
+  "sourceApplicationBytesUnchanged": true,
+  "nativeQualifiedAt": "a1317c4d08c8e0210c877fbb4b717f4d37c78a0b",
+  "browserHarnessOnlySuccessors": [
+    "8eda65b1fd3b5f1aaae4c6fd8194de1c83ff7107",
+    "a1317c4d08c8e0210c877fbb4b717f4d37c78a0b"
+  ]
+}

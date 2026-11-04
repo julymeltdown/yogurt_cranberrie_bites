@@ -1,0 +1,49 @@
+{
+  "status": "FULL_RELEASE",
+  "slot": "FE17-MOTION-SOURCE-A-20261104T1814Z",
+  "releasedUTC": "2026-11-04T18:18:36.862856+00:00",
+  "originalWorkStopUTC": "2026-11-04T18:18:23.909659+00:00",
+  "originalDeadlineUTC": "2026-11-04T18:19:23.909659+00:00",
+  "finalSource": "1a3cfba2bc98ee7e3a9199eab4e2c80b1f37626d",
+  "qualification": "231 distinct cases incrementally PASS (229 original batch plus2 cancellation rerun; changedproduction1 rerun);981 application files diagnostics0; deny-warning lint0/config+browser syntax0/engineering whitespace0/plan0",
+  "preservedFailures": "spy-count instrumentation collision; own2typing errors fixed; raw immutable log EOFblank artifact exclusion only; all original logs retained",
+  "peakProcesses": 4,
+  "peakRssBytes": 1884979200,
+  "peakWholeBytes": 2768599821,
+  "peakTmpBytes": 6203064,
+  "aggregateNewBoundBytes": 7013547,
+  "currentInventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801894893,
+        "files": 7805,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1945112,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551102464,
+    "reachableGitObjects": 39632,
+    "wholeCarryBytes": 2763205803,
+    "chargedFiles": 59011
+  },
+  "freeBytes": 17121308672,
+  "liveRecordedPids": [],
+  "ownedTemporaryPaths": [],
+  "ownedDependencyLinks": [],
+  "borrowedViteTemp": [],
+  "evidenceHandles": [],
+  "ports": "No browser/server/socket/listener created in source-only round",
+  "resourceReservation": "Released independently documentation/publication; no implicit next job"
+}

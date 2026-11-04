@@ -1,0 +1,54 @@
+{
+  "slot": "FE17-MOTION-SOURCE-A-20261104T1814Z",
+  "status": "ACCEPT",
+  "acceptedUTC": "2026-11-04T18:15:23.909659+00:00",
+  "workStopUTC": "2026-11-04T18:18:23.909659+00:00",
+  "deadlineUTC": "2026-11-04T18:19:23.909659+00:00",
+  "pin": "db27ad8bcead4f34eaeb2b46a2e71c975d3a9566",
+  "guardianSha256": "a9ea42991ae8cb4eaecaaf1ce8343ac95b59220e2b3b3548dadedf317443e6db",
+  "readsetSha256": "df90a29eda77ceabf5bd8925ab24d02a6a281e0af098cf73466f08e8dcb05cb9",
+  "inputFiles": 1565,
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801827852,
+        "files": 7786,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1944448,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1550358009,
+    "reachableGitObjects": 39596,
+    "wholeCarryBytes": 2762393643,
+    "chargedFiles": 58956
+  },
+  "freeBytes": 17358036992,
+  "otherConservativeReserveBytes": 2852126720,
+  "ownNewBytes": 134217728,
+  "postReserveBytes": 14371692544,
+  "predecessor": "213B2 actualFULL18:14,11descendants/link/TMP0/5323reusePASS per offer",
+  "ports": "No FE17 browser/server/listener created; source-only round",
+  "caps": {
+    "allProcesses": 8,
+    "rss": 2684354560,
+    "whole": 4294967296,
+    "files": 65536,
+    "new": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "childSeconds": 90,
+    "guardMs": 250
+  }
+}

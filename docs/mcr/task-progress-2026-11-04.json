@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T03:25:55+09:00",
+  "updated_at": "2026-11-05T03:42:03+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 40,
+      "DONE": 41,
       "IN_PROGRESS": 57,
       "WAITING_INPUT": 3,
       "REOPENED": 7,
-      "OPEN": 4,
-      "DEFERRED_BY_USER": 1
+      "DEFERRED_BY_USER": 1,
+      "OPEN": 3
     },
-    "done_tasks": 40,
-    "remaining_active_tasks": 71,
-    "task_completion_percentage": 36.0,
+    "done_tasks": 41,
+    "remaining_active_tasks": 70,
+    "task_completion_percentage": 36.9,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -48,43 +48,21 @@
       "IN05": "OPEN, functional decision with explicitQA08 deferral"
     },
     "capacity": {
+      "owner_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
+      "frontend_runtime_counterpart": "01a1a1fe-ca12-7cc3-9a1d-62bbb2689498",
+      "authority": "The resource lead current named execution allocation, fresh measured capacity, accepted reservations and actual target/runtime custody govern each run. Central management snapshots do not grant or delay admission.",
       "browser_jobs": 2,
-      "condition": "Two isolated browser jobs are a measured ceiling, not unconditional permission. Admit against fresh free-space measurements and all outstanding growth reservations. The coordinator's class-specific correction replaces the previous blanket16GiB default; product acceptance and task counts are unchanged.",
-      "policy_updated_at": "2026-11-04T16:36:00Z",
-      "policy_authority": "Coordinator operating-policy correction within user-authorized resource management;16GiB was not an explicit human-fixed threshold. No functional validation waiver.",
-      "current_free_gib_reported": 13.57,
-      "current_free_bytes_reported": 14574010368,
-      "capacity_receipt_at": "2026-11-04T16:43:56Z",
-      "capacity_receipt": "Resource lead21d externalresource-202611041643Z.json",
-      "previous_recovery_report_correction": "The earlier18.19 figure was decimalGB, approximately16.94GiB, not18.19GiB. Subsequent reported14.75GiB and current13.57GiB are dated snapshots, not continuing admission guarantees.",
-      "fresh_start_floor_gib": 16,
-      "fresh_start_floor_scope": "Default for Rust compilation/target mutation; the following explicitly bounded noncompiling classes use12GiB.",
-      "fresh_start_floors_gib": {
-        "rust_compilation_or_target_mutation": 16,
-        "bounded_source_no_compile": 12,
-        "bounded_browser": 12,
-        "copied_native_no_compile": 12
+      "source_work": "Ordinary source editing and preparation proceed independently of scarce execution slots. Preserve frozen queued candidates and exclusive writable paths. Only actual workload execution uses its applicable resource allocation.",
+      "handoff": "Resource owners dispatch the next ready job on actual predecessor release without king or SL acknowledgment, central ledger updates or repeated publisher readback.",
+      "limits": "Retain current declared growth, process/RSS, continuous free-space, target-custody and cleanup limits. Do not reuse closed offers or reset accepted growth history. Do not delete unique work, supplied assets or evidence.",
+      "dated_change_report": "At18:50UTC the lead issued specific small-source/copied-native offers with an11GiB start floor, retaining9GiB after reservations and8GiB live. These are dated named offers, not blanket admission or a Main-controlled per-job policy.",
+      "dated_recovery_report": {
+        "observed_at": "2026-11-05T04:08:18+09:00",
+        "owner_report": "The responsible owner reclaimed about5.67GiB of released outputs, preserving the active warm target and unique evidence. Lead reported about2.92GiB net free-space increase during concurrent work and actual runtime-package repair start.",
+        "claim_boundary": "No current free-space guarantee or native-startup pass is inferred."
       },
-      "additional_growth_caps_bytes_per_job": {
-        "bounded_source_no_compile": 134217728,
-        "bounded_browser_temporary_output": 209715200,
-        "copied_native_no_compile": 1073741824
-      },
-      "minimum_free_after_all_growth_reservations_gib": 9,
-      "running_floor_gib": 8,
-      "admission_rule": "Measured freeGiB minus all outstanding growth reservations minus the proposed job's declared worst-case additional growth must be>=9GiB. Retain continuous8GiB live floor plus1GiB admission margin. Preserve existing process/target/runtime limits, private outputs, lease deadlines and cleanup duties.",
-      "exclusions": "Reject uncertain or unbounded growth, hidden compilation/cold targets and bulk copies before allocation in the12GiB class. No unallocated work or deletion of unique history/evidence.",
-      "actual_admission": "C07 SOURCE-B accepted16:42:49.091506UTC at clean daa26b3d3282ae42015155e7c7a1f360ed27921b, canonical6dd22ede; fullpreflight/pinconditional/fullQA01+C07 cohort running. This is not task completion.",
-      "actual_accepted_jobs_at_snapshot": [
-        "C07 SOURCE-B16:42:49UTC",
-        "Map SOURCE-A16:43:17UTC",
-        "AR03 B1 16:42:54UTC",
-        "Gifts B2 16:43:31UTC",
-        "Root IN03 copied-native16:43:56UTC"
-      ],
-      "aggregate_reservation_snapshot": "Lead reported five combined worst-case NEW reservations1677721600bytes (1.5625GiB), leaving12896288768bytes (12.01GiB) at14574010368bytes measuredfree. Rust remains queued below16GiB; no compile/target mutation admitted. Functional outcomes remain pending.",
-      "source_work": "Continue independently where it does not launch an unallocated workload.",
-      "new_chats": "Reuse ready existing owners first; no new checkout/duplicate producer merely to make the roster look busy."
+      "new_chats": "Reuse capable existing chats; no duplicate producer or checkout merely to increase the active count.",
+      "manager_ack_required": false
     },
     "reporting": "SLs reconcile individual task state hourly from existing owner records. Kings receive major outcomes and real allocation/product exceptions. Delivery and next assignments do not await the ledger or king acknowledgment.",
     "new_original_closures_since_replan": [
@@ -95,10 +73,11 @@
       "FE11",
       "AR03",
       "FE35",
-      "C06"
+      "C06",
+      "FE17"
     ],
-    "current_original_criteria_outcomes": 47,
-    "progress_updated_at": "2026-11-05T03:25:55+09:00",
+    "current_original_criteria_outcomes": 48,
+    "progress_updated_at": "2026-11-05T04:08:18+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -131,13 +110,81 @@
       "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
     },
     "staffing_changes": {
-      "recorded_at": "2026-11-05T03:24:00+09:00",
+      "recorded_at": "2026-11-05T04:08:18+09:00",
       "sharing_safety": "Existing21e owns default FE31/FE36 composition; FE35 original client scope closed.",
       "operations": "Existing53d owns default Admin composition;230 retains blocked feature goal pending actual producers.",
-      "contracts": "Completed CI50a8 reassigned by Root to enrollment-related C07 generated-input refresh; fresh exclusive checkout custody is required because the old loan was returned.",
+      "contracts": "Existing50a8 actively qualifies new Enrollment/C05 inputs; previous C07 and hosted CI acceptance preserved. No new current-input PASS is inferred.",
       "backend_age": "Resource lead has allocated Age corrected sourcef309 after actual predecessor target release and removed source-pin-only reissue approval. Actual compile/native results are not inferred from allocation.",
       "manager_ack_required": false,
-      "manager_technical_review": false
+      "manager_technical_review": false,
+      "lifecycle": "Original FE17 complete; same developer83 reassigned original FE41 with exact shared scope transferred by Root153.",
+      "wall_integration": "Original Wall QA e2a9 restored and accepted missing B live-runner source preparation; actual live gate remains NOT_RUN.",
+      "visual_software": "Original QA06 developer1ab7 is actively implementing uncovered software IA/era/preference cases from retained coverage; device-only gaps remain separate. It reported a missing default Help route directly to the implementation owner.",
+      "profile": "Profile213 actively resumes originalFE34 ticket/visibility/persistence/preferences. Its prior media goal remains completed; settled CSS no-defect follow-up is not replayed.",
+      "avatar": "World lead withdrew the conflicting213 avatar assignment and restored completedAR03 owner1eed for FE12/FE13 reload/movement-peer and remaining editor behavior. Dispatch is confirmed; actual new goal/scope acceptance is still pending.83 remainsFE41.",
+      "accessibility": "FormerFE38 bounded owner40c576 is now active as QA07 changed input accessibility, covering only uncovered WallB/Gifts/Thread/Meet software deltas in isolated QA ownership.",
+      "runtime_priority": "Actual runtime-package repair has started; Operations and Wall follow directly. Root153 is implementing the real IN04 frontend adapter while e2a9 owns the missing live-runner source.",
+      "next_assignment": "Leads transition developers directly to a ready coherent feature, or record a genuine resource/input wait. No king acknowledgment, technical review or disposition-only busywork."
+    },
+    "capacity_history": [
+      {
+        "archived_at": "2026-11-05T04:08:18+09:00",
+        "basis": "Dated prior operational snapshot, retained as history; not a live admission controller.",
+        "snapshot": {
+          "browser_jobs": 2,
+          "condition": "Two isolated browser jobs are a measured ceiling, not unconditional permission. Admit against fresh free-space measurements and all outstanding growth reservations. The coordinator's class-specific correction replaces the previous blanket16GiB default; product acceptance and task counts are unchanged.",
+          "policy_updated_at": "2026-11-04T18:34:00Z",
+          "policy_authority": "Backend resource lead operating-policy correction in the18:34UTC ordinary digest; resource floors are coordinator operating defaults, not a user-fixed product requirement. Functional validation remains required.",
+          "current_free_gib_reported": 13.57,
+          "current_free_bytes_reported": 14574010368,
+          "capacity_receipt_at": "2026-11-04T16:43:56Z",
+          "capacity_receipt": "Resource lead21d externalresource-202611041643Z.json",
+          "previous_recovery_report_correction": "The earlier18.19 figure was decimalGB, approximately16.94GiB, not18.19GiB. Subsequent reported14.75GiB and current13.57GiB are dated snapshots, not continuing admission guarantees.",
+          "fresh_start_floor_gib": 16,
+          "fresh_start_floor_scope": "16GiB default outside the explicitly bounded12GiB classes. A declared warm Rust build using the existing exclusive target and ALL NEW growth<=3GiB may use12GiB; no cold target or hidden compilation is eligible.",
+          "fresh_start_floors_gib": {
+            "rust_compilation_or_target_mutation": 16,
+            "bounded_source_no_compile": 12,
+            "bounded_browser": 12,
+            "copied_native_no_compile": 12,
+            "bounded_warm_rust_max_new_3gib": 12
+          },
+          "additional_growth_caps_bytes_per_job": {
+            "bounded_source_no_compile": 134217728,
+            "bounded_browser_temporary_output": 209715200,
+            "copied_native_no_compile": 1073741824,
+            "bounded_warm_rust": 3221225472
+          },
+          "minimum_free_after_all_growth_reservations_gib": 9,
+          "running_floor_gib": 8,
+          "admission_rule": "Measured freeGiB minus all outstanding growth reservations minus the proposed job's declared worst-case additional growth must be>=9GiB. Retain continuous8GiB live floor plus1GiB admission margin. Preserve existing process/target/runtime limits, private outputs, lease deadlines and cleanup duties.",
+          "exclusions": "The12GiB warm-build class excludes cold/new targets, unbounded growth, hidden compilation, shared-source changes outside the grant and bulk pre-allocation copies. No cache/history deletion, expired-turn reentry or deadline extension is authorized.",
+          "actual_admission": "C07 SOURCE-B accepted16:42:49.091506UTC at clean daa26b3d3282ae42015155e7c7a1f360ed27921b, canonical6dd22ede; fullpreflight/pinconditional/fullQA01+C07 cohort running. This is not task completion.",
+          "actual_accepted_jobs_at_snapshot": [
+            "C07 SOURCE-B16:42:49UTC",
+            "Map SOURCE-A16:43:17UTC",
+            "AR03 B1 16:42:54UTC",
+            "Gifts B2 16:43:31UTC",
+            "Root IN03 copied-native16:43:56UTC"
+          ],
+          "aggregate_reservation_snapshot": "Lead reported five combined worst-case NEW reservations1677721600bytes (1.5625GiB), leaving12896288768bytes (12.01GiB) at14574010368bytes measuredfree. Rust remains queued below16GiB; no compile/target mutation admitted. Functional outcomes remain pending.",
+          "source_work": "Continue independently where it does not launch an unallocated workload.",
+          "new_chats": "Reuse ready existing owners first; no new checkout/duplicate producer merely to make the roster look busy.",
+          "shared_target_accounting": "Charge the retained warm-target baseline centrally once. Each actual turn retains all positive new growth and historical high-water charges; a refreshed central baseline does not reset an accepted job. Future mutually exclusive queued target turns are not simultaneous growth reservations.",
+          "routine_owner_actions": "Within an actual exclusive target turn, byte-identical own-checkout input mtime refresh is developer-owned under the original clock/growth/process bounds; no per-file coordinator acknowledgment. Preserve source identity in ordinary evidence. No deletion, another writer checkout, source-scope expansion or retroactive authorization."
+        }
+      }
+    ],
+    "current_delivery_checkpoint": {
+      "recorded_at": "2026-11-05T04:08:18+09:00",
+      "canonical_publication": "a10e4f409",
+      "published_increments": [
+        "47ec660d5: qualified seven-case signup-consent native follow-up; real Auth/mail pairing remains separate",
+        "daebd6773 and a10e4f409: qualified Social readiness factory and canonical main wiring",
+        "34ca081d7 and521a80754: runtime SQL package selection and launcher repair; matching native service execution remains pending"
+      ],
+      "task_count_change": 0,
+      "reason": "Published bounded increments and new assignments do not by themselves close original tasks. Counts remain41/111; all112tasks/61IA retained."
     }
   },
   "historical_accounting": {
@@ -449,9 +496,9 @@
         "4d501d92bc2a00bdce29d33988203a957f790175"
       ],
       "latest_owner_activity": {
-        "reported_at": "2026-11-04T15:11:03Z",
-        "source_chat": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
-        "scope": "Existing C06/Ticket owner21e accepted the seven new C07 prefixes, clean retained checkout/branchcodex/mcr-contracts-C07 atbcbcf3ed and a new unbudgeted ACTIVE goal. Existing generators/contracts/QA01 stay read-only except explicit owner transfers. Whole original closure not yet reported."
+        "reported_at": "2026-11-05T03:42:03+09:00",
+        "source_chat": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+        "scope": "Original C07 completion and the successful hosted CI runs remain preserved separately. Active bounded follow-up qualifies newly published Enrollment/C05 inputs, including seven added enrollment operations; source is prepared and resource admission pending. This does not claim that the changed-input qualification has passed."
       },
       "revised_plan": {
         "state": "DONE",
@@ -479,7 +526,7 @@
         "owner_role": "Backend implementation lead; exact shared-file delegates",
         "coordination_owner": "backend_staffing",
         "known_current_owner_chats": [
-          "01a1a21e-ab80-7012-b9fa-cdb69eed097b"
+          "01a1a533-50a8-7fb2-b3ed-96b941b96bbf"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
@@ -3970,7 +4017,16 @@
           "U_BODY",
           "U_AR03"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "previous_owner_chats": [],
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:08:18+09:00",
+          "state": "DISPATCHED_ACCEPTANCE_PENDING",
+          "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+          "coordinator": "World SLc276",
+          "scope": "Remaining avatar reload and movement-peer integration and uncovered editor cancel/conflict/catalog behavior; existing art and passed coverage retained.",
+          "ownership": "Fresh exact Root transfer required before writing;213 remainsFE34 and83 remainsFE41."
+        }
       }
     },
     {
@@ -4011,9 +4067,7 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [
-          "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
-        ],
+        "known_current_owner_chats": [],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE avatar-editor developer with character owner83 and Root",
         "current_scope_evidence": [
@@ -4025,7 +4079,18 @@
           "U_BODY",
           "U_AR03"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "previous_owner_chats": [
+          "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
+        ],
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:08:18+09:00",
+          "state": "DISPATCHED_ACCEPTANCE_PENDING",
+          "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+          "coordinator": "World SLc276",
+          "scope": "Remaining avatar reload and movement-peer integration and uncovered editor cancel/conflict/catalog behavior; existing art and passed coverage retained.",
+          "ownership": "Fresh exact Root transfer required before writing;213 remainsFE34 and83 remainsFE41."
+        }
       }
     },
     {
@@ -4191,25 +4256,18 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "Snapshot baseline, interpolation, bounded prediction/reconciliation, epoch reset and visibility-driven reconnect.",
         "original_acceptance": "Missing delta requests resync; restart removes ghosts; no replay of old pickup/reservation commands.",
         "updated_scope": "Finish snapshot/interpolation/bounded prediction/reconciliation, epoch/gap recovery and foreground reconnect without replaying domain commands.",
-        "remaining_work": [
-          "Resolve current public geometry, motion, acknowledgement and admission-timing contract coverage with the actual World/contract owner; old reports of absence are not current proof.",
-          "Complete only uncovered prediction/reconciliation and restart/ghost/no-command-replay criteria, reusing delivered bounded fault evidence."
-        ],
+        "remaining_work": [],
         "complete_when": "Missing delta requests resync; restart removes ghosts; no replay of old pickup/reservation commands.",
-        "reason": "Actual active FE17 completion goal in an isolated branch; six replication/entity/test leaves plus explicitly delegated prediction leaves. Original backend World20f supplies the separate negotiated C05 motion producer; Root retains untransferred interfaces.",
+        "reason": "Responsible FE17 developer explicitly completed the original client implementation, qualification and publication goal, then returned all transferred write rights. Published shared motion composition97f548f0 and remaining client/evidence1b0ce9c1 retain 231 distinct source cases and five controlled native scenarios. Missing-delta resync, bounded prediction/reconciliation, restart/ghost cleanup and no replay of domain commands are delivered within the original client scope. Actual Rust/Auth motion, real multiuser and full visual/device outcomes remain separate open owner scopes; no manager technical review was performed.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "FE16",
-          "FE14",
-          "FE12"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "C05"
         ],
@@ -4227,14 +4285,23 @@
           "docs/mcr/task-progress-2026-11-04.json#/tasks/72",
           "docs/mcr/frontend/world-replication.md",
           "docs/mcr/scrum/world.md:1676",
-          "U_RECONCILIATION"
+          "U_RECONCILIATION",
+          "97f548f0",
+          "1b0ce9c185ce1a2206d13a58bf7a0f8b007d4a36"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_completion": {
+          "recorded_at": "2026-11-05T03:42:03+09:00",
+          "owner_chat": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+          "published_commit": "1b0ce9c185ce1a2206d13a58bf7a0f8b007d4a36",
+          "basis": "Responsible FE17 developer explicitly completed the original client implementation, qualification and publication goal, then returned all transferred write rights. Published shared motion composition97f548f0 and remaining client/evidence1b0ce9c1 retain 231 distinct source cases and five controlled native scenarios. Missing-delta resync, bounded prediction/reconciliation, restart/ghost cleanup and no replay of domain commands are delivered within the original client scope. Actual Rust/Auth motion, real multiuser and full visual/device outcomes remain separate open owner scopes; no manager technical review was performed.",
+          "manager_technical_review": false
+        }
       },
       "latest_owner_activity": {
-        "reported_at": "2026-11-05T03:10:54+09:00",
+        "reported_at": "2026-11-05T03:42:03+09:00",
         "source_chat": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
-        "scope": "Actual active FE17 completion goal in an isolated branch; six replication/entity/test leaves plus explicitly delegated prediction leaves. Original backend World20f supplies the separate negotiated C05 motion producer; Root retains untransferred interfaces."
+        "scope": "Responsible FE17 developer explicitly completed the original client implementation, qualification and publication goal, then returned all transferred write rights. Published shared motion composition97f548f0 and remaining client/evidence1b0ce9c1 retain 231 distinct source cases and five controlled native scenarios. Missing-delta resync, bounded prediction/reconciliation, restart/ghost cleanup and no replay of domain commands are delivered within the original client scope. Actual Rust/Auth motion, real multiuser and full visual/device outcomes remain separate open owner scopes; no manager technical review was performed."
       }
     },
     {
@@ -5516,7 +5583,7 @@
         "scope": "Giveaway CSS writer explicitly stopped FE41, withdrew its native queue entry and returned all leases with cleanc5dd793b preserved. Root153 actually retained remaining intake/native/fixes/publication in its non-CSS checkout.150source checks/types/lint pass; browser qualification remains pending."
       },
       "revised_plan": {
-        "state": "OPEN",
+        "state": "IN_PROGRESS",
         "package": "OPERATIONS",
         "priority": 0,
         "original_scope": "New offline/reconnect/maintenance/version/404 states; stale-data labels, foreground resync and render throttling.",
@@ -5527,7 +5594,7 @@
           "Complete current operational/version/admission producers and uncovered real foreground/reconnect/pickup-no-replay paths; retain low-power/reduced-motion functional behavior and host limits."
         ],
         "complete_when": "No endless spinner; offline pickup is not queued silently; keyboard and reconnect preserve usable navigation.",
-        "reason": "Combined Root record supersedes the older blanket native-pending claim with a bounded PASS. No exact whole-original FE41 closure exists; full reconciliation is still needed.",
+        "reason": "Completed FE17 developer is actively working on the original FE41 remainder. Root153 explicitly transferred errors/connection-status leaves, a new lifecycle helper and necessary narrow lifecycle/connection-status/world-shell/reconnect hunks, stopping its overlap. Other router/composition ownership remains intact. The developer reuses retained default-root evidence and identified actual operational-input and failed-mount presentation gaps; no whole-task completion or backend/provider readiness is inferred.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5538,13 +5605,13 @@
           "BE14",
           "BE38"
         ],
-        "related_validation_gates": [
-          "QA08"
-        ],
+        "related_validation_gates": [],
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Frontend lifecycle implementation owner and frontend Root composition delegate; backend realtime/operations owners provide lifecycle inputs.",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE lifecycle/Root developer with BE realtime/operations counterparts",
         "current_scope_evidence": [
@@ -5555,7 +5622,10 @@
           "U_SCOPE",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "deferred_related_validation_gates": [
+          "QA08"
+        ]
       }
     },
     {
@@ -5834,13 +5904,22 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing art and frontend owners; developers perform their own visual/device checks",
         "coordination_owner": "joint_feature_leads",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a1fe-1ab7-79b0-adbc-d4c025701acb"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [
           "docs/mcr/qa/reference-integrated.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:08:18+09:00",
+          "state": "ACTIVE_CHAT_WORK",
+          "coordinator": "UI lead533",
+          "scope": "Remaining original task behavior, developer-owned validation and direct committed publication; unchanged evidence reused.",
+          "persistent_goal": "Owned by receiving developer; chat activity alone does not certify actual goal state."
+        }
       }
     },
     {
@@ -5885,14 +5964,23 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Responsible feature developers; release implementation owner named by leads",
         "coordination_owner": "joint_feature_leads",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a5d9-332b-7822-a8f7-40c576fad94a"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [
           "docs/mcr/evidence/accessibility/qa07/README.md",
           "docs/mcr/evidence/accessibility/qa07/publication.json"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:08:18+09:00",
+          "state": "ACTIVE_CHAT_WORK",
+          "coordinator": "Community SLc5f1",
+          "scope": "Remaining original task behavior, developer-owned validation and direct committed publication; unchanged evidence reused.",
+          "persistent_goal": "Owned by receiving developer; chat activity alone does not certify actual goal state."
+        }
       }
     },
     {
@@ -6060,14 +6148,24 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Responsible feature developers; release implementation owner named by leads",
         "coordination_owner": "joint_feature_leads",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a1fd-6b5d-75b0-8d42-01ade79b9393"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [
-          "bfddd3d7",
-          "candidate980fc4d8"
+          "candidate980fc4d8",
+          "docs/mcr/frontend/release-candidate-qa10.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "evidence_reference_correction": "bfddd3d7 is World visibility documentation, not the QA10 contribution. The incorrect current pointer is removed; dated prior reports/history stay intact. Backend lead is reconciling remaining checker ownership versus unavailable final evidence, without duplicating the existing frontend checker.",
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:08:18+09:00",
+          "state": "ACTIVE_CHAT_WORK",
+          "coordinator": "Backend resource lead21d",
+          "scope": "Remaining original task behavior, developer-owned validation and direct committed publication; unchanged evidence reused.",
+          "persistent_goal": "Owned by receiving developer; chat activity alone does not certify actual goal state."
+        }
       }
     },
     {
@@ -6254,7 +6352,7 @@
           "Exercise moderation pause/restore/final freeze and convergence without private-history leakage."
         ],
         "complete_when": "All clients converge to authoritative revision; unauthorized moderation fails.",
-        "reason": "Original gate is expanded by direct human Wall B decision; FE204/BE202 implementation remains active.",
+        "reason": "Existing original Wall QA chat accepted the missing selected-B live-runner scope and exclusive retained checkout at2ff0. Its earlier live harness covered pencil only. New source preparation uses frozen B contracts without repeating the fixture visual matrix. Actual canonical stack/accounts/event/moderation inputs remain unavailable; full IN04 stays OPEN/NOT_RUN and its original unfinished goal is not falsely completed.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -6269,9 +6367,13 @@
         "interface_collaborators_not_completion_barriers": [],
         "related_validation_gates": [],
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
-        "owner_role": "Backend202 and frontend204; named shared caller owners",
+        "owner_role": "Restored original IN04 QA developer e2a9, backend Wall202 and frontend Root153, coordinated by Community SL",
         "coordination_owner": "joint_feature_leads",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be",
+          "01a1a202-3b96-7822-ab54-2f7d29aa42e5",
+          "01a1a153-1227-7e72-801f-a2a6b91981e1"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [],

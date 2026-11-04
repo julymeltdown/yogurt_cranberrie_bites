@@ -1,0 +1,19 @@
+{
+  "job": "PROFILE-DEFAULT-SOURCE-A-20261104T1806Z",
+  "status": "FULL",
+  "finishedAt": "2026-11-04T18:08:04.205342+00:00",
+  "acceptEpoch": 1793815636,
+  "workDeadlineEpoch": 1793815756,
+  "cleanupDeadlineEpoch": 1793815816,
+  "preflightClockRefusal": "First invocation stopped before output/link/TMP creation because deadline appeared more than120s away; resumed after acceptance second using unchanged original deadline.",
+  "source": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "checks": "3MJSsyntax + exact frozenRoot fixture types PASS; removed unused native helper then syntax-driver and deny-warnings lint PASS within original deadline; all initial logs preserved.",
+  "otherReservedBytes": 2281701376,
+  "preflightFreeBytes": 19609350144,
+  "preflightWholeBytes": 1470349312,
+  "port": 5323,
+  "rebindClose": true,
+  "linkAbsent": true,
+  "remainingOwnedResources": 0,
+  "freeBytesAfter": 19293192192
+}

@@ -1,0 +1,87 @@
+{
+  "task": "FE17",
+  "status": "IN_PROGRESS",
+  "goal": "New unbudgeted active FE17 goal; actual get_goal returned null before creation; completed AR03 is preserved",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "branch": "codex/mcr-fe-FE17-original-completion",
+  "worktree": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+  "cleanAtBranch": true,
+  "soleWriterTargetedExecutablesAtStart": [],
+  "ar03PreservedBranch": "codex/mcr-fe-AR03-persistence-motion",
+  "ar03PreservedHead": "defdc8fc429e658c7f53523304208056477c6a88",
+  "ar03Published": "3b91525dd1af091a82ffbd7f43b5461aa241787d",
+  "sourcePins": {
+    "frontend/src/world/network/replication.ts": {
+      "blob": "fcda19f4503c07e2614fcc093115eb79ea77fdc1",
+      "sha256": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2"
+    },
+    "frontend/src/world/entities/replicated.ts": {
+      "blob": "01196afa593c8c99c52b430e2fe254e700852978",
+      "sha256": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700"
+    },
+    "frontend/src/world/network/transport/engine.ts": {
+      "blob": "c52b5e0bc855f23e4cbed3c282b9b5439a1f78d5",
+      "sha256": "2bc640aa283b9d1586e5b19f3d0eff05d5e19303fdc78d928a1e2a0855de513d"
+    },
+    "frontend/src/world/network/WorldTransport.ts": {
+      "blob": "2c898c20ad658f1b4efe6a4ad6eaaeedaaf0e00d",
+      "sha256": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e"
+    },
+    "frontend/src/world/network/__tests__/replication.test.ts": {
+      "blob": "2cf92ff990051df62cb3bbb63ad1274e529bfc4a",
+      "sha256": "250c937446c6322ba4c40c66fd5ea96fde2e08716d18c23da10ed245ba099b79"
+    },
+    "contracts/realtime/v1/world.schema.json": {
+      "blob": "e5e265a05f766511dd5f693cbc9ad52e559c5a38",
+      "sha256": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794"
+    },
+    "contracts/realtime/v1/policy.json": {
+      "blob": "2a50a000576034690db0cc151d9da0791cff35a8",
+      "sha256": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3"
+    },
+    "contracts/assets/v1/map-manifest.schema.json": {
+      "blob": "2cb9a9b3e7995ec51cfb9ed1dec3354f5f2be8be",
+      "sha256": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800"
+    }
+  },
+  "writable": [
+    "docs/mcr/frontend/fe17-original-completion.md",
+    "docs/mcr/evidence/fe17-original-completion/**"
+  ],
+  "applicationGrant": {
+    "status": "SOLE_CURRENT_OWNER_ROOT_STOP_TRANSFER",
+    "exactFiles": [
+      "frontend/src/world/entities/replicated.ts",
+      "frontend/src/world/network/__tests__/fixtures/replication-browser.html",
+      "frontend/src/world/network/__tests__/fixtures/replication-browser.ts",
+      "frontend/src/world/network/__tests__/prediction.test.ts",
+      "frontend/src/world/network/__tests__/replication-browser.mjs",
+      "frontend/src/world/network/__tests__/replication.test.ts",
+      "frontend/src/world/network/prediction.ts",
+      "frontend/src/world/network/replication.ts"
+    ],
+    "grantors": [
+      "MainKing01a19e5c-e9c6-7973-a53b-a6d19141620f",
+      "Root15301a1a153-1227-7e72-801f-a2a6b91981e1"
+    ],
+    "olderOverlappingNewWrites": "REVOKED",
+    "sharedPaths": "NOT_TRANSFERRED"
+  },
+  "runtimeAllocation": "NONE; no application execution/build/test/browser/install",
+  "contractFact": "Published C05 v1 has serverTick and ackInputSeq but no public motion profile/effective duration; older backend numeric tuning is not a negotiated prediction authority",
+  "createdUTC": "2026-11-04T17:34:38.562049+00:00",
+  "interfaceFinding": {
+    "owner": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+    "disposition": "Confirmed current public motion seam missing; routing existing backend World producer",
+    "notAuthority": [
+      "internal backend constants",
+      "FE15 local intent policy",
+      "ACK as one step per input"
+    ]
+  },
+  "prior202Custody": {
+    "thread": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+    "status": "NOCLAIM",
+    "qualification": "Existing returned exact leases only; not Root grant or other original author return"
+  }
+}

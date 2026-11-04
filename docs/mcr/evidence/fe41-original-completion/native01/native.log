@@ -1,0 +1,46 @@
+4:11:24 AM [vite] (client) [Unhandled error] SyntaxError: The requested module '/@fs/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/build/modern/index.cjs?import&v=e5a3520f' does not provide an export named 'queryOptions'
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toBeEnabled() failed
+
+Locator: getByRole('button', { name: 'Sign in with email' })
+Expected: enabled
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "to.be.enabled" with timeout 5000ms
+  - waiting for getByRole('button', { name: 'Sign in with email' })
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toBeEnabled (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs:52:74 {
+  matcherResult: {
+    message: 'expect(locator).toBeEnabled() failed\n' +
+      '\n' +
+      "Locator: getByRole('button', { name: 'Sign in with email' })\n" +
+      'Expected: enabled\n' +
+      'Timeout: 5000ms\n' +
+      'Error: element(s) not found\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.be.enabled" with timeout 5000ms\n' +
+      "  - waiting for getByRole('button', { name: 'Sign in with email' })\n",
+    pass: false,
+    actual: undefined,
+    name: 'toBeEnabled',
+    expected: 'enabled',
+    log: [
+      '  - Expect "to.be.enabled" with timeout 5000ms',
+      "  - waiting for getByRole('button', { name: 'Sign in with email' })"
+    ],
+    timeout: 5000,
+    ariaSnapshot: ''
+  }
+}
+
+Node.js v24.22.2

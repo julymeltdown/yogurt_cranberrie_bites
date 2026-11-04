@@ -1,0 +1,28 @@
+{
+  "id": "help-minimal",
+  "originalIA": [
+    "W08"
+  ],
+  "cases": [
+    {
+      "id": "help-parade-360",
+      "kind": "help",
+      "route": "/world/help",
+      "ia": "W08",
+      "era": "PARADE",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "help-danger-430",
+      "kind": "help",
+      "route": "/world/help",
+      "ia": "W08",
+      "era": "DANGER",
+      "width": 430,
+      "capture": true
+    }
+  ],
+  "prerequisite": "21e validated/published actualdefault binding, no source/composition overlay",
+  "reuse": "Owner actualmain390REVENGE W08 browser will be reused; exactsharedWorldHelp source/CSS unchanged, boundarywidth/nondefaulteras are the new substantive cases. No549product."
+}

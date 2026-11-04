@@ -1,0 +1,75 @@
+{
+  "job": "PROFILE-COALESCED-RETRY-B1-20261104T1830Z",
+  "status": "FAIL",
+  "startedEpoch": 1793817069.967516,
+  "workDeadline": 1793817359.048945,
+  "cleanupDeadline": 1793817419.048945,
+  "frozenRoot": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "mode": "native",
+  "head": "70b116478153584732a7f29e0c11b60ab303afae",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 24,
+    "rssMiB": 4096,
+    "pngs": 12,
+    "pngBytes": 4194304
+  },
+  "otherReservedBytesAtAdmission": 5167382528,
+  "commands": [
+    {
+      "label": "syntax-driver",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/__tests__/profile-default-flow/native.mjs"
+      ],
+      "startedEpoch": 1793817070.160384,
+      "exitCode": 0,
+      "finishedEpoch": 1793817070.743403
+    },
+    {
+      "label": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/__tests__/profile-default-flow/"
+      ],
+      "startedEpoch": 1793817070.7434309,
+      "exitCode": 0,
+      "finishedEpoch": 1793817071.356868
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/__tests__/profile-default-flow/native.mjs"
+      ],
+      "startedEpoch": 1793817071.356897,
+      "exitCode": 1,
+      "finishedEpoch": 1793817118.663093
+    }
+  ],
+  "peakProcesses": 12,
+  "peakRssKiB": 2203664,
+  "peakWholeBytes": 1500942336,
+  "peakTempBytes": 29964229,
+  "peakOutputBytes": 1065332,
+  "initialWholeBytes": 1470685184,
+  "pngCount": 9,
+  "error": "native failed; retained log/report",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793817118.833607,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true,
+    "portAbsent": true
+  }
+}

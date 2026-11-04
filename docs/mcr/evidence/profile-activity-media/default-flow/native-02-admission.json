@@ -1,0 +1,21 @@
+{
+  "job": "PROFILE-DEFAULT-RETRY-B1-20261104T1819Z",
+  "acceptEpoch": 1793816416.4577851,
+  "workDeadlineEpoch": 1793816716.4577851,
+  "cleanupDeadlineEpoch": 1793816776.4577851,
+  "port": 5324,
+  "freeBytes": 16994627584,
+  "otherReservedBytes": 4504682496,
+  "remainingHeadroomBytes": 12355727360,
+  "wholeBytes": 1470574592,
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "guardSha256": "c5b58d7673924afb9abd0b4b4973cee3660471a8a15e0b2926b7363dc4292f34",
+  "linkAbsent": true,
+  "portAbsent": true,
+  "portBindCloseReuseAddr": true,
+  "head": "9d0bef6e05568d253e6d73e9154a7d4acd0f6f00",
+  "pins": {
+    "package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  }
+}

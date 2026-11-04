@@ -111,7 +111,9 @@ export function createConnectionObserver(options: ConnectionObserverOptions) {
       const changed = () => { if (binding === captured) update() }
       captured.release.signal.addEventListener('abort', changed, { once: true })
       stopAbort = () => captured.release.signal.removeEventListener('abort', changed)
-      const remove = captured.replication.subscribe(changed)
+      const removeReplication = captured.replication.subscribe(changed)
+      const removeLifecycle = binding === captured && live(captured) ? captured.lifecycle?.subscribe(changed) : undefined
+      const remove = () => { removeReplication(); removeLifecycle?.() }
       if (binding === captured && live(captured)) stopView = remove
       else remove()
     }

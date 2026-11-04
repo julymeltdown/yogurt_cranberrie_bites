@@ -1,0 +1,11 @@
+{
+  "round": "round-01",
+  "allThreeCases": "PASS in preserved report.partial.json",
+  "nativeExit": 143,
+  "ownedNodePID": 62302,
+  "action": "Only owned Node terminated after >69s no progress following3contexts/Chrome exit; supervisor FULL cleanup preserved.",
+  "cause": "Suspected Vite SSR teardown; source close awaits environments/pending requests. Not a product/runtime behavior defect.",
+  "repair": "Reuse existing qualified unchanged-fixture placement receipt instead of unnecessary SSR recomputation, bound own Vite shutdown5s and report truthful failure if unresolved; no fakeAuth/C05/source overlay.",
+  "clock": "Same accepted absolute deadline, no extension; max8totalPNG including original4",
+  "runtimeRetry": "round-02"
+}

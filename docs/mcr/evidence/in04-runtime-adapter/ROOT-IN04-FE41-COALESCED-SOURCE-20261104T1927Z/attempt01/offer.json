@@ -1,0 +1,21 @@
+{
+  "allocation": "ROOT-IN04-FE41-COALESCED-SOURCE-20261104T1927Z",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T19:26:47.066479+00:00",
+  "work_deadline_epoch": 1793820707.0664792,
+  "hard_deadline_epoch": 1793820767.0664792,
+  "max_owned_bytes": 4294967296,
+  "max_new_bytes": 134217728,
+  "max_rss_bytes": 1073741824,
+  "max_pids": 4,
+  "start_floor_bytes": 11811160064,
+  "live_floor_bytes": 8589934592,
+  "all_new_bytes": 1610612736,
+  "candidate": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+  "frozenSource": "6d5863097c46d7ecd3d1633fd1423500e17b8867",
+  "readsetSha256": "99e0e32b3a4737c80d06af7e3e04b06d3a27736d2c3f168317820e3db162b27e",
+  "guardianSha256": "05d17a43de8bee30fff61c6eaa5cf24c7e2bafd1a6e46b374cfb2cd2af0b85bc",
+  "actualOwnedBytes": 2597417947,
+  "freeBytes": 15467257856,
+  "residualAfterAllMaximumNewBytes": 13856645120
+}

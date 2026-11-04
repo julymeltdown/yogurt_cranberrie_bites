@@ -1,0 +1,61 @@
+{
+  "status": "IN_PROGRESS",
+  "sourceChecks": "NOT_RUN",
+  "nativeChecks": "NOT_RUN",
+  "asOf": "2026-11-04T18:02:51.087316+00:00",
+  "frozenRoot": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "ownerQualification": {
+    "owner": "Root153 responsible implementation/publishing developer",
+    "tests": "75/75 new policy and affected World tests PASS; reused without replay",
+    "types": "Ordinary app no-emit types --allowImportingTsExtensions exit0",
+    "lint": "Scoped deny-warnings lint exit0",
+    "actualFullAt": "2026-11-04T17:58:20.416491Z",
+    "evidence": "docs/mcr/evidence/root-social-policy/source-02/run/release.json",
+    "included": "Qualified FE2090fd pure productionAvailability/lifetime, ART06d8, current shared CSS, private UI3a, Gift fixture guard and canonical E2E input"
+  },
+  "readOnlyPins": [
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "09b4d1896c3896b1f77c316cb9efb118433a260429391d3d7ca863ee2701a6fb"
+    },
+    {
+      "path": "frontend/src/app/ports.ts",
+      "sha256": "75430066174a9fffe54c19eca6f7f92e4e366cd898ed1ded1983e2c2a16c0a82"
+    },
+    {
+      "path": "frontend/src/world/composition/policy.ts",
+      "sha256": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "sha256": "8321ef0b3b7f20b4f5530de0aed0786cd6f7d53cd317adc47a2db64bd85cc447"
+    },
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "sha256": "564f2077f79784b70157373e17e96eddb85af6cd6bd7bb2d4d4c0593d36ff8f8"
+    },
+    {
+      "path": "frontend/src/app/world-entry/social-availability.ts",
+      "sha256": "deb8da2fc2aea43d9d84ef279ccc51ed0c11aee4e5bcde26173d1abe744c001f"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/availability.ts",
+      "sha256": "84ab5f8f6aac84052a1e3d4d33a1755b58a0650f7c377ebd6a92e1a040aeef9c"
+    },
+    {
+      "path": "frontend/src/app/world-panels/social.tsx",
+      "sha256": "f560ae58cb5dcef2f56b439a68a7de3a77f3d9053b5be47d9956f6065d6ae9bb"
+    },
+    {
+      "path": "frontend/src/app/social-entry/availability-lifetime.ts",
+      "sha256": "3f17f2516d2d58a5943302c627298f6ceaf83c218acb1f4a01cf6a633f55b13f"
+    },
+    {
+      "path": "frontend/src/app/account-entry/panels.tsx",
+      "sha256": "ae64e8f12cb973cee01bb7b36a4b24e3154e19f571f9c3513c1ee902c99ad965"
+    }
+  ],
+  "servingDefines": "Only genuinely consumed existing VITE_MCR_EVENT_ID and local input configuration. No availability override/source flag.",
+  "resourceState": "Waiting for a fresh functional SourceB offer and current ALL outstanding reservations. No slots held. 18:00 free20,532,326,400B minus old conservative16GiB and own128MiB fails9GiB reserve, so it was not accepted.",
+  "ownHarnessBeforeInputCommit": "e302290f6ed66b3d1bb2b4cc4cc6d6eda5d2da92"
+}

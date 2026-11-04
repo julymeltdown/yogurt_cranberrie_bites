@@ -1,0 +1,131 @@
+{
+  "status": "VALIDATED_AWAITING_NORMAL_PUBLICATION",
+  "sourceHead": "62f1c3a37eb755ef4cf9292db65443ed2001589b",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "branch": "codex/mcr-fe-FE17-original-completion",
+  "publisher": "Root153; normal nonforce julymeltdown/mcr master",
+  "sourceQualification": "231 distinct cases incrementalPASS;981 application files types0;deny-warning lint0/syntax0/engineering whitespace0/plan0; raw immutable failures retained",
+  "native": {
+    "result": "PASS",
+    "report": "motion-native-retry01/native/report.json",
+    "release": "motion-native01-full-release.json",
+    "browser": "156.0.8078.80",
+    "checks": [
+      "Native socket admission, public roster projection, ping response and input acknowledgement",
+      "Opt-in real WebCrypto geometry binding, bounded tentative self position and complete authoritative correction without self upsert",
+      "Gap drives one actual resync; replacement snapshot removes ghosts",
+      "Visibility boundary gets one fresh ticket/connection, with no old interaction or movement replay",
+      "Canonical owner cancellation and disposal leave no timers, retries or later sink commits"
+    ],
+    "observedPrediction": {
+      "x": 56,
+      "y": 48
+    },
+    "authoritativeBefore": {
+      "x": 48,
+      "y": 48
+    },
+    "observedCorrection": {
+      "x": 52,
+      "y": 48
+    },
+    "authoritativeAfter": {
+      "x": 52,
+      "y": 48
+    }
+  },
+  "applicationFiles": [
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "sha256": "3cb320cee99ffcf3b039bce35173e422b2cccede3d6a428c1a7d3645945b7257",
+      "blob": "6b38cf7a53ddb340d5833d9c86fc0ccf56b6159f"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "sha256": "f139b37872968aff16235b0816cf6c3f573f81020a8a5047197f11099fcbc30c",
+      "blob": "90816c913e232f745a555237730c19b8a85d14c1"
+    },
+    {
+      "path": "frontend/src/world/entities/replicated.ts",
+      "sha256": "c4f517d64fc862d033e81b14405d879545961988fd6b45b4f6ca97364122bb9d",
+      "blob": "1a92fa01ff4b4279a9540b1620899c7fae005dc1"
+    },
+    {
+      "path": "frontend/src/world/network/WorldTransport.ts",
+      "sha256": "bb2d81d2a857ee803702edc7d59d1d2c3706a174c6faa226f13bb7c27fe19708",
+      "blob": "aa72c6c0f34d3774bb56783c30661ecb94bd2341"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/fixtures/replication-browser.ts",
+      "sha256": "f72322917fc7f479f45ab8b3db2f9a23b2ad8b112e3179fef09f3b544b741dff",
+      "blob": "019e327477fdbf2c94733df9973a65eb7d5aa2c8"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/motion-transport/composition.test.ts",
+      "sha256": "643528f81a0dcbbb2ba85237039812ff780d60b90056c79782a0d77b9cdc1b43",
+      "blob": "872fd797a652f5b60047009f196dbeb0ec3917da"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/motion-transport/production.test.ts",
+      "sha256": "41bae52a2d800dab73ca2601a2752affb5a65dff42b5e716daf50b9f3873a794",
+      "blob": "c80a6c5092be09fcf3d8d955f5189cb518af8da6"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/motion-transport/transport.test.ts",
+      "sha256": "7814300313278bd31b7324ba9db3d229f40c13565fcf10e4ce5c517f0f554756",
+      "blob": "c4702e10acc78730c49dd344cfa829d6f0fe3ce5"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/prediction.test.ts",
+      "sha256": "7a92b66f9edef90256564e9b7e476f6040cb1e055fa161ad454c44e62ccb6638",
+      "blob": "2ecd59e382513110a5b485883eecfc780263d9d3"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/replication-browser.mjs",
+      "sha256": "461b25d86cd8079d82c1a044d3bfc22c04a750a5c65128ed1e510d336ba4d8aa",
+      "blob": "98b717263326bf3e7b5fe82c5d88c96e528f88f3"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/replication.test.ts",
+      "sha256": "6fe6ce0005604b108de11a42e483ee0e111a2acd4a336574c64764795bfeb1d5",
+      "blob": "bf8472de409a31861cc526f8a38c97cc7eb40b5d"
+    },
+    {
+      "path": "frontend/src/world/network/prediction.ts",
+      "sha256": "e11ebca3012d4002958e5d0ff97cef569f382f4be2ec5b980fe569f1376ff01f",
+      "blob": "98efdde4ffa5fd5ea295b90c87105a7edb37eb7a"
+    },
+    {
+      "path": "frontend/src/world/network/replication.ts",
+      "sha256": "23a1d227fb66837cdabff76e723689c2bb58de93b0363361d26769c7d6f69951",
+      "blob": "a66e3b54e7987f92f11a45aeb97d1508bfdd9a3d"
+    },
+    {
+      "path": "frontend/src/world/network/transport/contract.ts",
+      "sha256": "5dca79e4627decb98828a1f323c408fbbe98fa32c1e0ff3bce6dec8d4d4ecb1b",
+      "blob": "2d4aef0443f854d5fcf8ea3e4261b1bc8ed15c1c"
+    },
+    {
+      "path": "frontend/src/world/network/transport/engine.ts",
+      "sha256": "347b796a9270250c0fe2573bce4c456932f0bac1e84111984a33769977ca80e0",
+      "blob": "9fac1426ecd99af10116b5447210962c9269637d"
+    }
+  ],
+  "integrationPreimage": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "compositionBoundary": "Exactly WorldCompositionOptions optionalversion, transportforward, replicationqualifiedcontext; Root policy unchanged relativecf0",
+  "productionBoundary": "Exactly loadProduction explicitmotionProfileVersion1.0.0; socialPolicy forwarding unchanged relativecf0",
+  "readonlyDependencies": "motion-readonly-inputs.json: b92411 contract/generated/fixtures, correctedvalidator9c12, Gift7a, cf0policy. Excluded from authored source publication; named owners publish inputs normally.",
+  "documentation": [
+    "docs/mcr/frontend/fe17-original-completion.md",
+    "docs/mcr/evidence/fe17-original-completion/**"
+  ],
+  "oldScope": "AR03 complete and preserved; no avatar UI/asset/FE13 ownership revival",
+  "limitations": [
+    "Synthetic C05 peer nativeclient qualification; no actualRust/Auth/device/multiuser/visualtarget/artacceptance claim",
+    "Existing actualApp/Phaser3width clientfault-peer evidence retained unchanged; native changedround does not replace it",
+    "Production optin requires backend recognizing amendedC05 Authenticate.motionProfileVersion; authoritative fallback covers acceptedrequest withabsentprofile, not unknown-field rejection by an unamendedserver",
+    "CanonicalRootmaster publication receipt pending; no Roottechnicalreview/ACK gate"
+  ],
+  "readonlyDependencyPublication": "Root clarified cf0 policy/ports/forwarding are source-qualified private at this handoff, not public on master306626d4. Root normally publishes scoped policy/main/213 journey then/with FE17 and C05 owner inputs. FE17 does not claim policy implementation/publication.",
+  "runtimeResources": "FULL_RELEASE18:26:20.848203UTC; no held job/PID/TMP/profile/externalSingleton/link/cache/evidencehandle;64377rebindPASS"
+}

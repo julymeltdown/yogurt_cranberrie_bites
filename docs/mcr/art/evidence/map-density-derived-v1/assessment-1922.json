@@ -1,0 +1,128 @@
+{
+  "offer": "ART-MAP-ASSESSMENT-ONLY-20261104T1922Z",
+  "head": "905c840514d0fe86b198914cb5c2816ff5ca24d8",
+  "guardSha256": "92afc51769bb481b68cd6be08e4678d80b572fe541dcd57fe292a17717c9fafa",
+  "qualificationOffer": "ART-DENSITY-CHANGED-20261104T1851Z",
+  "inspectionCompletedBy": "2026-11-04T19:22:40Z",
+  "fullRastersInspected": [
+    {
+      "file": "danger-scene.png",
+      "bytes": 733466,
+      "sha256": "b54be823fe26b659b7223f4d2baacbdc2a232d8b1b78926540b87e790a05ec1b"
+    },
+    {
+      "file": "parade-scene.png",
+      "bytes": 744044,
+      "sha256": "a8ac1c806adfc3cd36af21c655131b3c19e80034528632c23001eb49adcae9e1"
+    },
+    {
+      "file": "revenge-scene.png",
+      "bytes": 726491,
+      "sha256": "7d657d5cd22ceafa4edf4bff7df5b75843927208ae8a8704747c4a645b51e071"
+    }
+  ],
+  "scaledPreviewsInspected": [
+    {
+      "file": "revenge-360.png",
+      "width": 360,
+      "height": 608,
+      "bytes": 197031,
+      "sha256": "0214fd2fd6121747b6831952503d386643f99152dc9fe37e5b707750f83e21fe"
+    },
+    {
+      "file": "revenge-390.png",
+      "width": 390,
+      "height": 658,
+      "bytes": 224893,
+      "sha256": "14bef98a02405ce985079ec4c92da6a3e0e2a44cc33cd018a0143cd6fe4690c4"
+    },
+    {
+      "file": "revenge-430.png",
+      "width": 430,
+      "height": 726,
+      "bytes": 267905,
+      "sha256": "44695b12e19a7beeada4578c3b166939a4d925a7e39c5b606080b1143c6842b7"
+    },
+    {
+      "file": "parade-360.png",
+      "width": 360,
+      "height": 608,
+      "bytes": 200487,
+      "sha256": "10fd7f7d57590c0d0748e9e1bffaacfa25699443dd7e7441f5c78dc7b1443039"
+    },
+    {
+      "file": "parade-390.png",
+      "width": 390,
+      "height": 658,
+      "bytes": 228719,
+      "sha256": "cec9452176cf5512df03f2f959256173621b5792b50757654d7a9d556e317769"
+    },
+    {
+      "file": "parade-430.png",
+      "width": 430,
+      "height": 726,
+      "bytes": 273236,
+      "sha256": "332bdb80925ccac2f5e7829013224efeec4d217b2d135ed29b298526bc2050c1"
+    },
+    {
+      "file": "danger-360.png",
+      "width": 360,
+      "height": 608,
+      "bytes": 198506,
+      "sha256": "1020ade58f6371395df08374f913cf9b987f170c214b8be1b6d882516bab9c93"
+    },
+    {
+      "file": "danger-390.png",
+      "width": 390,
+      "height": 658,
+      "bytes": 226388,
+      "sha256": "e49ca51bc54d63286abb47d48b3773723a58dbb2974bccd998b8583406520d8c"
+    },
+    {
+      "file": "danger-430.png",
+      "width": 430,
+      "height": 726,
+      "bytes": 270313,
+      "sha256": "a15da3aedc1b493cb4949155a14b42e2e2b6172cfbb2e6ea14e5b3bcb8e5d930"
+    }
+  ],
+  "visualFinding": "Accepted as a modest local source density increment. East-junction and southern-bank planting remains visible at360/390/430; complete original crowns, architecture and clear paths retained. Broad reserved lawns and the long central roof row remain reference gaps.",
+  "acceptanceBoundary": "SOURCE_RASTER_ONLY; NO_APP_NATIVE_SVG_ENGINE_DEVICE_LIVE_PHYSICAL_OR_FULL_REFERENCE_ACCEPTANCE",
+  "release": "Explicit interactive TTY RELEASE after all12 image observations",
+  "independentChecks": {
+    "guardianAndWorkersAbsent": [
+      72680,
+      72934
+    ],
+    "tempAbsent": true,
+    "baseline10AndOriginal9Pins": "PASS",
+    "retainedOutput8Pins": "PASS"
+  },
+  "rawReceipt": {
+    "path": "docs/mcr/art/evidence/map-density-derived-v1/ART-MAP-ASSESSMENT-ONLY-20261104T1922Z.jsonl",
+    "bytes": 11532,
+    "sha256": "006d323e834d7941e6bce6af9b415f19da0aa76eaa4d56b5257314437c5ab9dd"
+  },
+  "full": {
+    "event": "FULL",
+    "at": "2026-11-04T19:22:51.078965+00:00",
+    "status": "PASS",
+    "tempAbsent": true,
+    "guardian": 72680,
+    "workerPids": [
+      72934
+    ],
+    "allChildrenExited": true,
+    "peak": {
+      "whole": 1607067295,
+      "new": 37750236,
+      "tmp": 2087478,
+      "rss": 92094464,
+      "processes": 4
+    },
+    "minimumFree": 13931814912,
+    "finalFree": 13938114560,
+    "samples": 160,
+    "sampledPidCount": 162
+  }
+}

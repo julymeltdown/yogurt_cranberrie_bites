@@ -1,3 +1,4 @@
+import { useSafetyEntry } from '../safety-entry/context'
 import { useLayoutEffect, useRef, useSyncExternalStore } from 'react'
 import { useLocation } from 'react-router-dom'
 import { EventFeed, EventNotice, type RenderPostAuthor } from '../../features/event-feed'
@@ -33,6 +34,7 @@ export function SocialPanel({ path }: { readonly path: string }) {
 }
 function Unavailable() { return <p role="status">This section is unavailable for the current account or event.</p> }
 function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly path: string }) {
+  const safety = useSafetyEntry()
   const route = socialRoute(path)
   const runtime = useCharacterRuntime()
   const activity = useLoadedProfileActivity(route?.kind === 'profile' ? route.id : '')
@@ -59,7 +61,9 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
     case 'edit': return thread.draft.edit?.id === route.id ? <PostComposer controller={owner.thread} onPost={id => owner.navigate(`/feed/${id}`)} /> : <div role="status"><p>{thread.detail.phase === 'ready' ? 'Editing has ended or is unavailable for this post.' : 'Reading the current authorized post before editing. Editing is unavailable until ownership and write access are confirmed.'}</p><button type="button" onClick={() => owner.navigate(`/feed/${route.id}`)}>Back to post</button></div>
     case 'notice': return <EventNotice controller={owner.feed} retry={() => { void owner.feed.selectNotice(route.id) }} />
     case 'people': return <People controller={owner.people} avatars={owner.avatars} />
-    case 'profile': return <PublicProfile controller={owner.people} userId={route.id} avatars={owner.avatars} activity={activity} activityPrivacy={owner.auth.privacy}
+    case 'profile': return <PublicProfile controller={owner.people} userId={route.id}
+      {...(owner.canShare(route.id) ? { sharing: (id: string) => { void owner.openSharing(id) } } : {})}
+      {...(safety && route.id !== owner.scope.userId ? { blocking: (id: string) => { void safety.beginBlock(id, owner.scope) } } : {})} avatars={owner.avatars} activity={activity} activityPrivacy={owner.auth.privacy}
       renderAvatar={runtime ? (avatar, label) => avatar.config.contract_version === '1.1.0'
         ? <WholeCharacterView runtime={runtime} config={avatar.config} label={label} size={64} />
         : <ReviewedProfileAvatar config={avatar.config} label={label} options={owner.avatars} /> : undefined} />

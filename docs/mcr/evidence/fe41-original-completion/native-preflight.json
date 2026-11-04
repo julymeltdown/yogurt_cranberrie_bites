@@ -1,0 +1,42 @@
+{
+  "observedUTC": "2026-11-04T19:07:38.433353+00:00",
+  "pin": "14bf0ae370e52d6b7f276a2298f1d37e338e817e",
+  "guardianSHA256": "6a34d8cb3dbac2bf2a489472c91132b372973016084d709349a4876c0b20c513",
+  "readsetSHA256": "5143d10f6533ad9d72713b4741c9603edabee99926c7b218d183bcc3a4e653a0",
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806804542,
+        "files": 8273,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2044270,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "14bf0ae370e52d6b7f276a2298f1d37e338e817e",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1590697627,
+    "historyObjects": 41719,
+    "wholeBytes": 2807809773,
+    "entries": 61566
+  },
+  "freeBytes": 18618580992,
+  "nodeModulesAbsent": true,
+  "port": 64379,
+  "prebind": "PASS"
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PREFLIGHT_NOT_ACCEPTED",
+  "UTC": "2026-11-04T17:45:22.492383+00:00",
+  "source": "192c79abec2ba687db6dcae694b9c1609a23a3fc",
+  "roots": [
+    {
+      "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "logicalBytes": 801149235,
+      "files": 7753,
+      "symlinks": 0,
+      "followLinks": false
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "logicalBytes": 408263334,
+      "files": 11104,
+      "symlinks": 460,
+      "followLinks": false
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+      "logicalBytes": 1937636,
+      "files": 10,
+      "symlinks": 0,
+      "followLinks": false
+    }
+  ],
+  "entireReachableGitLogicalBytes": 1548685132,
+  "reachableGitObjects": 39401,
+  "gitHistoryRoots": [
+    "HEAD",
+    "defdc8fc429e658c7f53523304208056477c6a88"
+  ],
+  "wholeCarryBytes": 2760035337,
+  "freeBytes": 26754174976,
+  "newReservationBytes": 134217728,
+  "proposedWholeCapBytes": 4294967296,
+  "note": "Checkout includes every materialized task/peer/doc/art/evidence file, no selected-prefix omission. Borrowed retained installation physical paths count logical file sizes; pnpm target tree is included. All reachable current and preserved own AR03 history objects counted without storage-compression discount; no runtime job."
+}

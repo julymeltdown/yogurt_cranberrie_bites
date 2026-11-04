@@ -1,0 +1,25 @@
+{
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "task": "FE41",
+  "specification": "FE41 row; S02/S03; sections7.5 andmobilelifecycle",
+  "unchangedEvidenceReused": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/functional-delivery-plan.md": "1a81c71999568b79f1cbb7335ab6da4bb0da84f6f6aa4f4e2a0891039bb6afe5",
+    "docs/mcr/frontend/degraded-states.md": "dfcb14be4adda90404b2f560e648dadcfb27da15a491881b41f14330224011d0",
+    "docs/mcr/frontend/combined-root-adoption.md": "d341d5669c0b77e29f48e8c5be86f02a53fdf0d3a01a22fc540f157c48a01695",
+    "docs/mcr/frontend/runtime-preferences-root-integration.md": "963f0c837a582203ea6e0bb87b835c93b913c23452dfb599e066ebc312c3187f",
+    "docs/mcr/frontend/world-runtime-preferences.md": "a443372e19e731a55699d0918b09f78287f9baf114ceacd6a039b9cd2441f36f",
+    "docs/mcr/frontend/fe34-runtime-preferences.md": "d67c7df02e5e6c0521fab4ebbead2c47d347d8cc57bae8a20e72130f7cfe16b6",
+    "docs/mcr/frontend/community-authoring.md": "bc094f779377c8e77aaf2eb3126826f04f3164b4d2ddf16d0cf8adab3b52c671",
+    "frontend/src/features/connection-status/__tests__/pickup-no-replay.test.ts": "5662d68aa82a47dad3f15c2e07f98ef77b020a9d725e5057a2076f3f588e31ee",
+    "docs/mcr/evidence/frontend-combined-adoption/default-retry01/fe41/2026-11-04T15-34-52-198Z-native.json": "e6ff6dee483de7ec85dddf303f4a4beb6d22356b711dd0d70afe0e0258fcb094",
+    "docs/mcr/evidence/fe17-original-completion/motion-native-retry01/native/report.json": "5f573cab8f3c40b85e3a2aa181da6a91f3afe01671ecaec773577835318b8d52"
+  },
+  "currentProducerDispositions": {
+    "World20f": "No public maintenance/minimum-app-version/ServiceDecision producer in C03/C05 or World lane. HTTP409 MAP_VERSION_MISMATCH is typed;4409 also covers resync, so not sufficient alone.",
+    "BackendRoot1fc": "No frozen public maintenance/minimum-client-version/operational ServiceDecision source in current canonical Gateway/Concert bootstrap/world configuration; internal World authority maintenance is lease upkeep, not product maintenance.",
+    "CommunitySL": "Retain actual gift-pickup controller journal uncertainty/no-second-POST and original FE26 source evidence; no new pickup lease or write granted."
+  },
+  "sourceBoundary": "Root153 initial FE41 exact leaves/newprefix + narrow runtime projection; later exact contractError.kind/mapTicketFailure/onEventerror/composition3hunks STOP-transfer. No other transport/composition/predictor rights.",
+  "qualification": "Current source5d0459d7 NOT_RUN pending fresh fair resource offer; old evidence reused, no status inflation."
+}

@@ -279,13 +279,51 @@ class ImmutableSources(unittest.TestCase):
             path.parent.mkdir(parents=True)
             original = b"SELECT 51;\n"
             path.write_bytes(original)
-            git("add", "--", str(path))
+            config = root / "backend/services/concert-service/src/config/mod.rs"
+            config.parent.mkdir(parents=True)
+            config.write_text('const PACKAGED_OVERRIDE: &str = "CONCERT_MIGRATION_DIRECTORY";\n')
+            git("add", "--", str(path), str(config))
             git("-c", "user.name=IN03 pure test", "-c", "user.email=in03@localhost", "commit", "-qm", "fixture")
             revision = git("rev-parse", "HEAD")
             path.write_bytes(b"SELECT uncommitted_different_sql;\n")
             pin = stack.BinaryPin(root / "unused", "0" * 64, revision)
             result = stack.migration_inputs(root, {"concert-service": pin})
             self.assertEqual(result["concert-service"], {51: hashlib.sha384(original).hexdigest()})
+            owned = root / "owned"
+            owned.mkdir(mode=0o700)
+            cluster = SimpleNamespace(root=owned, assert_owned=Mock())
+            package = stack.package_concert_migrations(root, pin, cluster, result["concert-service"])
+            cluster.assert_owned.assert_called_once_with()
+            packaged = package / path.name
+            self.assertEqual(packaged.read_bytes(), original)
+            self.assertEqual(packaged.stat().st_mode & 0o777, 0o600)
+            # Checkout additions and edits never enter the runtime SQL package.
+            path.with_name("0060_future.sql").write_text("SELECT 60;\n")
+            stack.verify_migration_package(package, result["concert-service"])
+            packaged.write_bytes(b"SELECT altered_package;\n")
+            with self.assertRaisesRegex(stack.InputRefusal, "^migration-package-source-mismatch$"):
+                stack.verify_migration_package(package, result["concert-service"])
+            packaged.write_bytes(original)
+            extra = package / "0060_extra.sql"
+            extra.write_bytes(b"SELECT 60;\n")
+            extra.chmod(0o600)
+            with self.assertRaisesRegex(stack.InputRefusal, "^migration-package-source-mismatch$"):
+                stack.verify_migration_package(package, result["concert-service"])
+            extra.unlink()
+            packaged.unlink()
+            packaged.symlink_to(path)
+            with self.assertRaisesRegex(stack.InputRefusal, "^explicit-file-path-required$"):
+                stack.verify_migration_package(package, result["concert-service"])
+
+    def test_packaging_rejects_old_main_source_before_creating_runtime_directory(self):
+        with tempfile.TemporaryDirectory(prefix="mcr-in03-old-package-") as directory:
+            root = Path(directory).resolve()
+            cluster = SimpleNamespace(root=root, assert_owned=Mock())
+            pin = stack.BinaryPin(root / "unused", "0" * 64, "a" * 40)
+            with patch.object(stack, "source_bytes", return_value=b"compile-checkout-only migration path"):
+                with self.assertRaisesRegex(stack.InputRefusal, "^migration-package-override-source-required$"):
+                    stack.package_concert_migrations(root, pin, cluster, {51: "a" * 96})
+            self.assertFalse((root / "concert-migration-package").exists())
 
     def test_old_world_composition_is_refused_even_when_relabelled_advanced(self):
         pins = {name: stack.BinaryPin(Path("/unused"), "0" * 64, "a" * 40) for name in stack.SERVICES}

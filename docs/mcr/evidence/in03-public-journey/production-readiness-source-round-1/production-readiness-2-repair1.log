@@ -1,0 +1,13 @@
+
+ RUN  v4.1.9 $CHECKOUT/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  29 passed (29)
+   Start at  03:52:57
+   Duration  2.18s (transform 383ms, setup 0ms, import 549ms, tests 1.26s, environment 288ms)
+
+{"name":"focused-unit","exit":0,"signal":null,"actualIN03":"NOT_RUN"}
+{"name":"focused-types","exit":0,"signal":null,"actualIN03":"NOT_RUN"}
+{"name":"focused-lint","exit":0,"signal":null,"actualIN03":"NOT_RUN"}
+{"name":"launcher-syntax","exit":0,"signal":null,"actualIN03":"NOT_RUN"}

@@ -1,0 +1,78 @@
+{
+  "status": "implementation-and-controlled-qualification-delivered; publication-pending",
+  "scope": [
+    "FE31 default current-Profile sharing initiation",
+    "FE36 USER/POST report and Profile block/list/confirmed unblock composition",
+    "Root narrow /world/help default binding"
+  ],
+  "requirements": [
+    {
+      "requirement": "Sharing binds fresh current intro/recipient/revision, explicit platform consent, retained original command",
+      "evidence": [
+        "focusE.log 18-case checkpoint",
+        "combinedD-browser/report.json one sharing POST/no reveal/zero early Social"
+      ]
+    },
+    {
+      "requirement": "Canonical retained safety with target reauthorization, scope fencing and unavailable missing target/evidence producers",
+      "evidence": [
+        "safety-entry/authorization.ts",
+        "safety-entry/owner.ts",
+        "focusE.log USER and Thread POST/denied-list/duplicate-id/current-scope cases"
+      ]
+    },
+    {
+      "requirement": "USER lost-response original-key manual recovery survives navigation without replay",
+      "evidence": [
+        "combinedD-browser/report.json commands original idempotency_key and createConcertReport",
+        "focusE.log retained command cases"
+      ]
+    },
+    {
+      "requirement": "Confirmed Profile block/list/confirmed unblock clears private views and never restores old consent",
+      "evidence": [
+        "combinedD-browser/report.json exact PUT/DELETE, baseline revisions 1/2/3",
+        "combinedD-browser/unblocked-consent-remains-revoked-390.png",
+        "focusE.log privacy cases"
+      ]
+    },
+    {
+      "requirement": "Actual main/Auth/HTTP/readiness/World preserved; protected no-store API; one concurrent canvas/socket",
+      "evidence": [
+        "combinedD-browser/report.json",
+        "qualified-readset.json",
+        "canonical a10e4f40 merged c6b8dbd3"
+      ]
+    },
+    {
+      "requirement": "Default WorldHelp route actual UI and accessible 44px destinations with Back",
+      "evidence": [
+        "router.tsx narrow two-line binding",
+        "combinedD-browser/report.json actual-default-world-help stage"
+      ]
+    },
+    {
+      "requirement": "Relevant source tests/types/lint/syntax, fixes, docs and cleanup",
+      "evidence": [
+        "focusE/typesB/lintA/planA historical source checkpoint",
+        "combinedD-browser-types.log",
+        "combinedD-browser-lint.log",
+        "combinedD-browser-syntax.log",
+        "combinedA/B/C preserved RED artifacts",
+        "combined-full-release.json",
+        "docs/mcr/frontend/sharing-safety-default-app.md"
+      ]
+    },
+    {
+      "requirement": "Committed exact-path handoff and one canonical publisher receipt",
+      "evidence": [],
+      "status": "PENDING normal Root153 publication; no review or ACK gate"
+    }
+  ],
+  "limits": [
+    "COMMENT/MURAL directly addressed target producer unavailable",
+    "REPORT evidence attachment producer unavailable",
+    "live backend/provider/multiuser/physical-device/QA08 NOT_RUN",
+    "full ten-screen visual acceptance outside this controlled composition qualification"
+  ]
+}

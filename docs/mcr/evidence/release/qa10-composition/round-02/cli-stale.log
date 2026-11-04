@@ -1,0 +1,21 @@
+{
+  "candidate": "0000000000000000000000000000000000000000",
+  "composition_checks": "FAIL",
+  "findings": [
+    "candidate.not-current-head"
+  ],
+  "functional_evidence": "INCOMPLETE",
+  "gates": [],
+  "ia_coverage": {},
+  "limits": [
+    "Offline owner-evidence consistency, not signed execution attestation.",
+    "No receipt command is executed. Owner acceptance is recorded, not independently decided.",
+    "This output cannot grant IN05, qualify performance, or replace physical/live work."
+  ],
+  "qa08": "NOT_RUN",
+  "receipts": [],
+  "release_decision": "NOT_ASSESSED",
+  "schema": "mcr.qa10.release-composition.v1",
+  "status": "FAIL",
+  "task_coverage": {}
+}

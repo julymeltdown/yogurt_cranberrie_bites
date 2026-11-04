@@ -1,0 +1,63 @@
+{
+  "slot": "FE41-CHANGED-390-NATIVE-20261104T1912Z",
+  "release": "FULL",
+  "observedUTC": "2026-11-04T19:13:22.759425+00:00",
+  "attempts": [
+    {
+      "path": "native01",
+      "status": "FAIL",
+      "finishedUTC": "2026-11-04T19:11:30.475890+00:00"
+    },
+    {
+      "path": "native-retry01",
+      "status": "FAIL",
+      "finishedUTC": "2026-11-04T19:12:15.856268+00:00"
+    },
+    {
+      "path": "native-retry02",
+      "status": "PASS",
+      "finishedUTC": "2026-11-04T19:13:02.682366+00:00"
+    }
+  ],
+  "aliveMatchingPids": {},
+  "remainingTemporary": [],
+  "remainingExternalTargets": [],
+  "nodeModulesLinkAbsent": true,
+  "borrowedViteCacheEmpty": true,
+  "openOwnTemporaryHandles": [],
+  "port": 64379,
+  "bindAndNoListener": "PASS",
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806893139,
+        "files": 8286,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2044914,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "a1317c4d08c8e0210c877fbb4b717f4d37c78a0b",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1591310640,
+    "historyObjects": 41752,
+    "wholeBytes": 2808512027,
+    "entries": 61612
+  },
+  "freeBytes": 17776807936
+}

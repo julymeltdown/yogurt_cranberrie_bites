@@ -1,0 +1,73 @@
+{
+  "result": "FAIL",
+  "head": "d24668d6e4f15ace9975cac3624615fc374730b6",
+  "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "qualification": "One 390px actual main.tsx/UI sign-in/default routes and unmodified production readiness factory, canonical Auth/HTTP and incumbent World/Phaser. Controlled HTTP/C05 and synthetic geometric terrain only. No constructed harness Auth/controller/readiness. Live backend, provider, physical device, multiuser and QA08 NOT_RUN.",
+  "errors": [],
+  "stages": [],
+  "failure": {
+    "stage": "actual UI sign-in",
+    "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Reduce panel', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('button', { name: 'Reduce panel', exact: true })\n",
+    "state": {
+      "path": "/meet/people",
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "url": "http://127.0.0.1:5173/api/auth/capabilities",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/auth/login",
+          "url": "http://127.0.0.1:5173/api/auth/login",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5173/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5173/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000010/bootstrap",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000010/bootstrap",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        }
+      ],
+      "frames": [],
+      "baselineEnabled": false,
+      "policyRevision": 1,
+      "sockets": 0,
+      "activeSockets": 0,
+      "peakSockets": 0,
+      "peakCanvases": 0,
+      "canvases": 0,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    "text": "MCR Concert World\nSign in to continue\nYour link is still here\n\nEntry requires a current account and event. This page does not grant access.\n\nSign in\nBack to home"
+  }
+}

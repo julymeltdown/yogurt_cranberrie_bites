@@ -1,0 +1,41 @@
+{
+  "offer": "SHARING-HELP-COALESCED-20261104T1915Z",
+  "actualFullEpoch": 1793819985.3320892,
+  "acceptedEpoch": 1793819708.307621,
+  "cutoff": 1793820188,
+  "release": 1793820218,
+  "attempts": {
+    "combinedA": 1,
+    "combinedB": 1,
+    "combinedC": 1,
+    "combinedD": 0
+  },
+  "lastCleanupEpoch": 1793819969.460448,
+  "peaks": {
+    "whole": 4422577558,
+    "growth": 32775261,
+    "temporary": 31326389,
+    "durable": 1078868,
+    "files": 27544,
+    "processes": 11,
+    "rss": 2634612736
+  },
+  "minFree": 15919874048,
+  "freeAfter": 16303202304,
+  "allChildrenAbsent": true,
+  "linkAbsent": true,
+  "allScratchAbsent": true,
+  "sourceFilesChangedOnlyOwnedDriver": [
+    "frontend/src/app/social-composition/__tests__/sharing-safety-default/native.mjs",
+    "frontend/src/app/social-composition/__tests__/sharing-safety-default/native.tsx"
+  ],
+  "browserResult": "PASS",
+  "stages": [
+    "explicit-sharing-consent",
+    "original-report-recovered",
+    "block-confirmation",
+    "unblocked-consent-remains-revoked",
+    "actual-default-world-help"
+  ],
+  "readinessNoInjection": true
+}

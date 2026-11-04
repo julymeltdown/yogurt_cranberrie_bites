@@ -9,6 +9,8 @@ import { createProductionPorts } from './app/ports'
 import { createDefaultConnectionStatus } from './app/errors/default-entry'
 import { readMuralProductionConfiguration, validateMuralProductionConfiguration } from './app/world-entry/mural-production/configuration'
 import muralPlacement from './app/world-entry/mural-production/placement.json'
+import { createProductionSocialReadiness } from './app/social-entry/production-readiness'
+import type { SocialProductionPorts } from './app/world-panels/social'
 import './shared/styles/base.css'
 import './app/shell.css'
 
@@ -23,7 +25,9 @@ const eventId = canonicalUuid(configuredEvent) ? configuredEvent : null
 // BE03 browser rotation is qualified; the controller owns single-flight recovery and safe read replay.
 const auth = createSessionController({ eventId, qualifiedRefresh: true })
 auth.start()
-const productionPorts = createProductionPorts(auth, { localInput: readLocalInputConfiguration(import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG), mural: import.meta.env.VITE_MCR_MURAL_CONFIG === undefined ? validateMuralProductionConfiguration(muralPlacement) : readMuralProductionConfiguration(import.meta.env.VITE_MCR_MURAL_CONFIG) }, undefined, eventId)
+const social: SocialProductionPorts = { availability: context =>
+  createProductionSocialReadiness(context, productionPorts.worldAccess) }
+const productionPorts = createProductionPorts(auth, { localInput: readLocalInputConfiguration(import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG), mural: import.meta.env.VITE_MCR_MURAL_CONFIG === undefined ? validateMuralProductionConfiguration(muralPlacement) : readMuralProductionConfiguration(import.meta.env.VITE_MCR_MURAL_CONFIG) }, social, eventId)
 const connectionStatus = createDefaultConnectionStatus({ auth, world: productionPorts.worldAccess, browser: window, reload: () => location.reload() })
 connectionStatus.start()
 const ports = { ...productionPorts, connectionStatus }

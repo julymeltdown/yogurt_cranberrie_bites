@@ -1,0 +1,145 @@
+{
+  "id": "settings-gifts",
+  "originalIA": [
+    "U07",
+    "G07"
+  ],
+  "cases": [
+    {
+      "id": "settings-cancel-revenge-360",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "REVENGE",
+      "width": 360,
+      "capture": false
+    },
+    {
+      "id": "settings-cancel-revenge-430",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "REVENGE",
+      "width": 430,
+      "capture": false
+    },
+    {
+      "id": "gifts-empty-revenge-360",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "REVENGE",
+      "width": 360,
+      "capture": false
+    },
+    {
+      "id": "gifts-empty-revenge-390",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "REVENGE",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-revenge-430",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "REVENGE",
+      "width": 430,
+      "capture": false
+    },
+    {
+      "id": "settings-cancel-parade-360",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "PARADE",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "settings-cancel-parade-430",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "PARADE",
+      "width": 430,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-parade-360",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "PARADE",
+      "width": 360,
+      "capture": false
+    },
+    {
+      "id": "gifts-empty-parade-390",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "PARADE",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-parade-430",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "PARADE",
+      "width": 430,
+      "capture": false
+    },
+    {
+      "id": "settings-cancel-danger-360",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "DANGER",
+      "width": 360,
+      "capture": true
+    },
+    {
+      "id": "settings-cancel-danger-430",
+      "kind": "settings",
+      "route": "/me/settings",
+      "ia": "U07",
+      "era": "DANGER",
+      "width": 430,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-danger-360",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "DANGER",
+      "width": 360,
+      "capture": false
+    },
+    {
+      "id": "gifts-empty-danger-390",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "DANGER",
+      "width": 390,
+      "capture": true
+    },
+    {
+      "id": "gifts-empty-danger-430",
+      "kind": "gifts-activity",
+      "route": "/gifts/mine",
+      "ia": "G07",
+      "era": "DANGER",
+      "width": 430,
+      "capture": false
+    }
+  ],
+  "reuse": "Owner runtimepreferences390 effects reused, not rerun; MyGifts prior instrumented-shell390/nativecomponent reused but does not establish new current defaultApp threeera widths."
+}

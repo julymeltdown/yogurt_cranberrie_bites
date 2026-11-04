@@ -1,0 +1,1638 @@
+{
+  "task": "QA06",
+  "case": "QA06-WALL-APPROVED-MOTIF",
+  "job": "QA06-WALL-MOTIF-B1-20261104T1835Z",
+  "candidate": "5b0c5136dcb173f8af79a25b11dc960ba58a0f2b",
+  "status": "IN_PROGRESS",
+  "startedAt": "2026-11-04T18:36:51.643Z",
+  "qualification": "ACTUAL_MAIN_CANONICAL_UI_LOGIN_EXISTING_HTTP_C05_FIXTURE_APPROVED_ART_AS_SYNTHETIC_C04_SNAPSHOT_NOT_LIVE",
+  "physicalIOS": "NOT_RUN",
+  "physicalAndroid": "NOT_RUN",
+  "softwareKeyboard": "NOT_RUN",
+  "hardwareSafeArea": "NOT_RUN",
+  "otherEras": "NOT_RUN",
+  "runnerSha256": "f6364e99089ddddc173d6fecd2f909613b49338535e0a56a473b1b85fe046a0c",
+  "sourceReadset": {
+    "frontend/src/world/__tests__/illustrated/fixtures.ts": "077bb07d2edd29436677b8f6823ac1fce426786ce52647e0e472676dd0a083fc",
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/network/transport/contract.ts": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+    "frontend/src/entities/avatar/whole-character/index.ts": "9aa451c0fc7a75db299f5a0604ad14d42e26d5560a98bd5528937092d6ffa731",
+    "frontend/src/entities/avatar/whole-character/contract.ts": "5d60fa0bd3eb89f750646a4e75ad33670d8ca1d09b4d2af7eba1a6d3a0990a0d",
+    "frontend/src/entities/avatar/whole-character/runtime.ts": "46aa13d5ec97b9c956ce8fc99957450818b99aa0c7704167e7939f0013b49420",
+    "frontend/src/world/map/resources.ts": "106a01f56832bea0fc37facdbe51a44a548bf7765233773f90b38143718e8e2d",
+    "frontend/src/world/map/manifest.ts": "d765ce6b7e47a76a2763fde32c6a9e4bde244beb872e761d2c6f73b757cd033c",
+    "frontend/src/world/map/schema.ts": "88ce36b375a00ea23a28b86efe70c03154e1707dbd2a6cc2ae580c6c81de2c3e",
+    "frontend/src/world/map/formats.ts": "0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770",
+    "frontend/src/world/illustrated/model.ts": "a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e",
+    "frontend/src/world/map/tiled.ts": "65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00",
+    "frontend/src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+    "frontend/src/entities/avatar/source-catalog.ts": "7a48070b9e44f6450db88e7ef3c1857a553844d56af71c543dc7737d17ae9328",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/entities/avatar/whole-character/view.tsx": "209ade8b11f93e4f711ffc83b7a663c59f69a54c51c7eff7fb3280ab29e1c324",
+    "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts": "e2af02c405caef3143e7cb0c5eddc69b2ecdf14a5bf6e27d91dce03b2c5376ee",
+    "frontend/src/app/social-composition/__tests__/fixtures.ts": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f",
+    "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+    "frontend/src/world/network/mock.ts": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+    "frontend/src/features/mural/editor/tools.ts": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c",
+    "frontend/src/world/composition/__tests__/fixtures/data.ts": "6a14367edb48c1150e443ae18d7fedf4e421241982560f43c617ee2d14af872a",
+    "frontend/src/app/world-entry/mural-production/placement.json": "0bca5013f8b38a535728d68cb06c3905e4a18e1e79a09cf797cc6161a59fe02c",
+    "frontend/src/features/mural/editor/__tests__/wall-tools-b/fixture.ts": "a2d314293e8f0e93bd98e3865af3e54ab9eafe4d28ecee6cccc43846623deca8",
+    "frontend/src/features/party-discovery/__tests__/fixtures/data.ts": "10bb942e4b0cd9f3969bdd0294a139d0eb5aee5176ed173eb77d86acfad1d59a",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be",
+    "frontend/src/features/me/__tests__/fixtures.ts": "3f16bd102028e3a1f6a82e87eb786e7e348491c3c6b0903da830b5d4d8ab6745",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "ff8b01aa247d6c8ca3afc3e5ed92fa7d1fecabab2dadc79e586e4ce14f3daf10",
+    "frontend/src/features/event-feed/__tests__/fixtures.ts": "67bc50318e7b579b93f9bacc1bc587df893536e8cc5cb650cafba9ce8968b807",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "frontend/src/world/entities/replicated.ts": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/features/auth/model/bootstrap.ts": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+    "frontend/src/world/network/transport/engine.ts": "2bc640aa283b9d1586e5b19f3d0eff05d5e19303fdc78d928a1e2a0855de513d",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/features/mural/editor/__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/features/mural/editor/controller.ts": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795",
+    "frontend/src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
+    "frontend/src/features/me/model/controller.ts": "13eb8ef9b3db8b3a89dc4bb8c994192d2419bf0c59c2daaaa89368899dc1f177",
+    "frontend/src/features/gift-discovery/model/controller.ts": "fcc6af9ad3f78ccfb3ccdea1c0a623e96dbaea5bf3c736252a0726946b9eb470",
+    "frontend/src/app/ports.ts": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565",
+    "frontend/src/features/event-feed/controller.ts": "0d528342c21b6d1e3c9a7038c6a243d2fb4d32e9f2e00beda6ac7c3091d83c5b",
+    "frontend/src/features/auth/model/recovery.ts": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+    "frontend/src/features/auth/model/cookie-policy.ts": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/features/auth/model/enrollment.ts": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e",
+    "frontend/src/features/auth/model/account-deletion.ts": "803f860024f373d5751769a3de6c0c53174694461a4e230334fea81d09c1c008",
+    "frontend/src/shared/api/errors.ts": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",
+    "frontend/src/entities/avatar/whole-admission/index.ts": "7677fa0d1c84e5657280988e0ba7e0ed455dad03aeeb9d10694df84d9d798165",
+    "frontend/src/shared/query/keys.ts": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/features/me/model/contract.ts": "d419b356ff330f7f1a5745c2a2ebefe3e88b8e609b8100dabc29b9c5a5fcd0e8",
+    "frontend/src/features/gift-discovery/model/contract.ts": "2a931610213c57eb1dc439ac224800e0d86fd8f3a67f4804a9c6c8ceead38cba",
+    "frontend/src/app/world-entry/production.ts": "bd3b199b680f0df417763679ac85a680efd8022eec1c94946882f92001877967",
+    "frontend/src/app/character-entry/runtime.ts": "c800682cd6351329e4107fa6a5d271746ad4a614d2a58cbd9e5f92aa85b301c7",
+    "frontend/src/features/event-feed/runtime.ts": "b06fd89a3f9fbbb923329b7be01b9d7193f0b9c8e8c06e1de16e8cf4f6f9ce66",
+    "frontend/src/features/auth/model/enrollment-contract.ts": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22",
+    "frontend/src/features/auth/model/recovery-contract.ts": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+    "frontend/src/shared/api/domain-operations.generated.ts": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+    "frontend/src/features/event-feed/contract.ts": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
+    "frontend/src/entities/avatar/runtime/contract.ts": "06887a522a33090937f84d0174b2f5bda24776627683e1791842af87018ef290",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts": "450a5f52f167e062edbabf6f49cded29c2c7791a937942640ba318092eba6283",
+    "frontend/src/entities/avatar/runtime/schema.ts": "81443f94f16c7f1d52122d96727fb21c583c82e757f6fc24b5a6b45947fd5628",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "ff0a901e62f572aa406d5916f741dd771956ec767c3585cf0ce5aa6ec1b81701",
+    "frontend/src/world/__tests__/fixtures/png.ts": "13bc13762daa32a956fb08f7fd10698572ac41e2a210e3b140770b22ef295aa5",
+    "frontend/src/app/character-entry/reviewed-registry.ts": "590323cccae44f9cf3794cdceaccff7671313616e59a6636bdc2a0c87dbee8ca",
+    "frontend/src/app/world-entry/configuration.ts": "05995dbc572039bc2a975eba6fc0718e15596bf65de70c7553993604eee6b1fc",
+    "frontend/src/app/character-entry/registry.ts": "f8ee9ada9d646e8977dcd22a58a753e1ea79c2002f5d3e050ca78fc16fa846ee",
+    "frontend/src/entities/avatar/runtime/motion-adoption/art.ts": "3bc23478c870cf61894d99c735d38ec9ea76a981ee3582bb1fa7e7ad666f4d47",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts": "f807e183cfb529e953c4a01f57c3ba2ec4c2aca3d36bd0d02b5ba2de5246dee5",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts": "6e12736e28fed01b20c0a309b6e8a15d05c439f65af5ba77fbe4b8a884b13167",
+    "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts": "9d16a2caa0c072ba78410085429b30dd527b3519b83e1d50186b710ac01230b6",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts": "dcae35f22db0ce3f20eb52213271d59a25f290a74413a74518eb1708cc92e36c",
+    "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735",
+    "frontend/src/main.tsx": "c00854a39578fc0f6e4a50413685edcb02c113de609e860281e96de5d6f73a76",
+    "frontend/src/app/errors/default-entry.ts": "cda6e697502dc5442164c757778728ac3fe4a237aa1695a15f8877ac6638b707",
+    "frontend/src/app/world-entry/mural-production/configuration.ts": "4b2ce261d4bb3582d2111866d3aa5583c1c5b87dc969c9c77d5b90607eb5aa15",
+    "frontend/src/app/shell.css": "108da146fe93ff3e7bec225a737a2ff304fcb3f38f6015c0c8fca1c659f69a72",
+    "frontend/src/app/router.tsx": "a32e3f133c7ecc8eafcfe154a09ec6c140d165433241a085272525984e408915",
+    "frontend/src/shared/styles/base.css": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105",
+    "frontend/src/app/errors/observer.ts": "9cc14d9bc182f60ac8df73a4f655d42040c19fed2b731d0dbbb5d6295565305e",
+    "frontend/src/app/errors/connectivity.ts": "8ee5d6ec3737bac615e6e69db7d86934e7a762fb775137a48fddaf14dec5d6b9",
+    "frontend/src/shared/ui/index.ts": "4e34ffa485bd8d73feaaa0ad69ea3b12eeb0e2eccc606a3051cde37a9c3a346f",
+    "frontend/src/app/world-panels/ownership.tsx": "796e5c0e1fdcbcc3e9f0dc4a2e969ac2bb69d773191709a71843d4a3db65a4ef",
+    "frontend/src/app/access.tsx": "50120eef3fc1f665cf8b04944e4d4db53d5a7503f708423a6879e455483803be",
+    "frontend/src/app/WorldShell.tsx": "4d5bb4644423b32529b629d4e6c0fcb53620253a8b424888b7191c6c0ea72904",
+    "frontend/src/app/routes.ts": "f50dfb8016be34dab1ecf76b610c4bc442ac30da9a0959360d0b07048ddf9445",
+    "frontend/src/app/errors/RouteState.tsx": "87784f62c2602e1a769ae15ef70376d1dc4ebb2285bd4084993af037085ebd18",
+    "frontend/src/app/account-deletion-entry/context.tsx": "adfc7f2233d3b0dcc13e0bb05b08ca909aaed8e99e1dba7a4fc39856fdb94c2e",
+    "frontend/src/app/community-entry/index.ts": "66fd6bce2c2f65705440fa96729253e77fc9b122bfb0f85bad4fef0f860c1f14",
+    "frontend/src/app/world-entry/authority.ts": "49da1c44787801ee56b2276bbaa8a956e9ce40c840edf246f337c2118cd971df",
+    "frontend/src/shared/ui/Dialog.tsx": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18",
+    "frontend/src/shared/ui/controls.tsx": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d",
+    "frontend/src/shared/ui/feedback.tsx": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f",
+    "frontend/src/shared/ui/Tabs.tsx": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/WorldHost.tsx": "8438ad02ad8d21b3fc0e64d76ea2e47fdfb89d8f7ca5db86e57516678170a491",
+    "frontend/src/app/shell-chrome/parade-footer.tsx": "a76ee4fc64d249ad44afba0ccc7cce699c57c6771b311b94c5e80cdcaae91b8a",
+    "frontend/src/app/shell-chrome/index.tsx": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304",
+    "frontend/src/app/world-presentation/WorldTools.tsx": "1b4206cb413700246803c38b71cb16ebf3875008af65767774d7b89e36bf69a1",
+    "frontend/src/shared/ui/concert-window/index.tsx": "17aa9096ebe34f7d9c0ab49c669088672135713960fd3a7915eb8ba13b439154",
+    "frontend/src/features/connection-status/index.tsx": "acd6e2994bd3214fa7566f311fd4fba5926efb399bae5ed8c1cd12e6481a9013",
+    "frontend/src/app/community-adoption/bootstrap.ts": "8f3c566c9d79228221923e367ab579d952b3d01c177aba3b7c32873f9b51e6fc",
+    "frontend/src/features/connection-status/status.css": "362a294798130a57ef0587c972b5e15cbf6ce8b55980f2ed1a89c25b6c90a3fd",
+    "frontend/src/app/account-deletion-entry/owner.ts": "85cf502994d7e89dce9a3eebe0560c7c94993409a48cee093b1a6af6d3d573b1",
+    "frontend/src/app/community-entry/routes.tsx": "3b7cd3b75cb584a727877034a7e57065d5a7a9bdbe2ec104199fcfc7563e2549",
+    "frontend/src/app/community-entry/bridge.ts": "a3f2e9fecdc9e73d1c4676e387fc2740642e94311df3f063130751dd4650df81",
+    "frontend/src/shared/ui/modal-focus.ts": "b8d0e5833ba7e0724e8233a629e6a64a682faf81df93ed5aba4ee38c86f9d328",
+    "frontend/src/features/connection-status/model.ts": "d0155729229c27df90ce84e616ffbf8097b80e34846b4a8e7e9fbb7fcb678ccf",
+    "frontend/src/app/reference-chrome-v2/WindowInk.tsx": "e1a5dfe723f3b32eb1d6aae37acac8ef93fd1c412eea22b9d7c38d2b5aba429b",
+    "frontend/src/app/community-authority/index.ts": "15ea3f30f321fa4c23fa6e17a6d36aaa20a3212ce816d22024ed639eebae11da",
+    "frontend/src/features/theme/model/preferences.ts": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "1fdfaa797e8474a9d17f00e48658d231e4e4791dd9870a7df012946e6c0a3925",
+    "frontend/src/app/reference-chrome-v2/chrome.css": "45276b3a69f080d4537b26522b9aebf947bbe803dfd529bb907fbfc0d22d69be",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+    "frontend/src/features/account/controller.ts": "623d2418bba9e455dc83113ba7606b510ec4a99ba0cd429ae919516fe8f72d63",
+    "frontend/src/features/giveaway-authoring/index.ts": "fd0b3904c252ebb0f6079e5de5898b5b4d6e9da47a4a2d4fd5fa318823930c45",
+    "frontend/src/features/party-management/index.ts": "75982afe48e87cde75a86be71a42dea446de77dab32a426bcaad2b941a672e2a",
+    "frontend/src/features/party-authoring/index.ts": "00665545cccaf1507dd84bd75a66ff56db3df25c59024700e3581da8459200f0",
+    "frontend/src/features/gift-pickup/index.ts": "123ea5f847aa27a3781771d23e764dcb3e11c6585ea531f417db7b6d7defaf8f",
+    "frontend/src/features/giveaway-authoring/model/controller.ts": "472b7e2adfedcfeb00053497a19a2ddcb08ceb35122ed24923c37a24ca837462",
+    "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
+    "frontend/src/features/safety/contract.ts": "745f22ba62f469ee3dc630982c78b2402e7b1cffbf92725545e98638405b8c6a",
+    "frontend/src/features/account/contract.ts": "221c87cd5f0949e18f5b986def90f199c07a19c712b6b7a0ac6ac2fa21cc10ed",
+    "frontend/src/features/giveaway-authoring/model/contract.ts": "b0211f60a68ce990b0e8aca7b4ed8514640c73797a67c1cf4347e3b81a3f2315",
+    "frontend/src/features/party-management/ui/PartyManagement.tsx": "9a7b47e97ae64cb29e7383b5707b02c4f24fca001bf3d73099272325a58a7b58",
+    "frontend/src/features/party-management/model/controller.ts": "5bcfd0ae37850279f32c3e9043f3005079e70e7e0fbf2b604e9a63b644e48086",
+    "frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx": "712fdac2ba873d355da974077a97f4355d33ad03889424573bc87ff6c61bffd0",
+    "frontend/src/app/community-authority/timeline.ts": "52a85e3d0263cd3980c22f838d3ab3b971eb93f12ac98d730371239ef64f3448",
+    "frontend/src/features/party-authoring/ui/PartyAuthoring.tsx": "a36a41c1ac92f5bbc7a016a78251fe5f63645b23cd89c7a918ffacefdf7383a0",
+    "frontend/src/features/party-authoring/model/controller.ts": "2b0e5d119be785226daa92334e916564a3684973ce1075c6386510cf02c5fb66",
+    "frontend/src/features/gift-pickup/model/controller.ts": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
+    "frontend/src/features/party-authoring/model/contract.ts": "9aa33a2a259ba38c9356aea32817d8864cf1a6a07fc707e60d4fb7f5e71b11b3",
+    "frontend/src/features/gift-pickup/ui/GiftPickup.tsx": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+    "frontend/src/features/gift-pickup/model/journal.ts": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+    "frontend/src/features/party-discovery/model/contract.ts": "73d3dd2a7e6a09a7edc22bee5c24358ddfeda1049f4c5c35a7b754474508a3b7",
+    "frontend/src/features/party-authoring/model/time.ts": "28cae1b6670072da03c9640ec7c808b4fbe94a2d49a0e7047f6bc9bf9a5a2b51",
+    "frontend/src/features/giveaway-authoring/ui/giveaway-authoring.css": "e68ef83c4a15c752b9c5bb0688b500078bc8f643cf7fe83d6e24c083957abc83",
+    "frontend/src/features/party-management/ui/management.css": "47c20e172adcd3e71ebd348155242677b3d234cab278f13bf25f5c23111ebb40",
+    "frontend/src/features/party-authoring/ui/authoring.css": "3eeb0acdc8eb64487724f3a7df64d9706672cc575ea7335fe03b5c561621f1d2",
+    "frontend/src/features/gift-pickup/ui/pickup.css": "a8cdf20921d8b4133d1ff300003100c670cc232006a14c1472893ab1c75be791",
+    "frontend/src/app/PublicBoundary.tsx": "c7bd2c8e180f0691d03ebd584e6c41b4dfafafd5462e650428cf523d732152d4",
+    "frontend/src/app/FoundationApp.tsx": "39d01aa5f204126484e4c020dad39ca6436ddc0a8f14f2740dd5753331937bcc",
+    "frontend/src/features/public/ui/DocumentPage.tsx": "a919c9ad52af7a30d7b0ccd6818dfbdb7bac6ba8a9cc3e3507f46cfd3e9b3d70",
+    "frontend/src/features/auth/ui/SignUp.tsx": "2179fbdc10809f87d0c1000e7ad754750a236e6e7ec5044b251f549a637d4354",
+    "frontend/src/features/auth/ui/VerifyEmail.tsx": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c",
+    "frontend/src/features/auth/ui/ResetPassword.tsx": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5",
+    "frontend/src/features/auth/ui/Callback.tsx": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e",
+    "frontend/src/features/auth/ui/SignIn.tsx": "cb1d6a52d8cec34f8b149d2037212996a6e1627eaf06f2cbcb432d5f297ab7ea",
+    "frontend/src/app/account-deletion-entry/recovery.tsx": "3af2295c507cdc82a7617991d9bbe12de9199bcd9c5bc78f7bc7d5bf88ac2bcc",
+    "frontend/src/features/public/ui/Landing.tsx": "169591f279c818070489b8b84463df5979b010514bbc2b1ee2e5b878e15fe16f",
+    "frontend/src/features/public/model/documents.ts": "687f57f523e2aff899f61d43a52a90f2a772ad47d60458445c17082da37db7ac",
+    "frontend/src/features/public/ui/PublicFrame.tsx": "e01b4b7980b6f4f1ebe56c860695ce474c2a86931f13dd08ef4565abbb52deba",
+    "frontend/src/features/auth/model/callback.ts": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9",
+    "frontend/src/features/public/model/document-provider.tsx": "3a40053f2d881cf733604a1dd9dbf17bb756b6f38a082f73db7c4ed97428ccd9",
+    "frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx": "02f36167314327acb0f758e0698abe1ed3314f3351a35a7931cbabaf98f50588",
+    "frontend/src/features/auth/ui/reference-sign-in/ProviderMark.tsx": "ef51be71f52d9c19d90af787def66d9a3d9c6f80ed59210ca9a2798de5e308f3",
+    "frontend/src/features/auth/ui/enrollment.css": "71bcc85bf4f2b5358376c24c3024540798e920dc35a945414a83293fd9263800",
+    "frontend/src/features/safety/safety.css": "782ea4c4b0a31aeebf42311489454e1b20beb4140e94c94c3a215e592e07489f",
+    "frontend/src/features/auth/ui/recovery.css": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630",
+    "frontend/src/features/auth/ui/sign-in.css": "ab114b93c3ab4834c2394a037a62f66984b2d15123611978388d8d18c3602c33",
+    "frontend/src/entities/avatar/selected-static/index.tsx": "575ba2a5fbe59713301b7dc85d80d18f0ef42ce0f4989daba242b42fa8ad7854",
+    "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx": "a7327343587dff347b4191d799ce2fc66959594b9dd706b04af86c7ecfbfa0f6",
+    "frontend/src/features/public/ui/public.css": "1f3a6e9374b4f38c0fb6098f2bb6a7384574f8550f61737b16a7dd8a20d8382c",
+    "frontend/src/entities/avatar/selected-static/selected-static.css": "ca3b31896f53565d6e459fb55aef74dab2bd93d0b70d1f0dfc4d08eee06f57c9",
+    "frontend/src/features/public/ui/landing-reference/reference-contours.json": "4fb46bfc4f4ae523e30ac20d3ee7ca99abf8b7bc7502d250baf0add6af163cde",
+    "frontend/src/app/character-entry/provider.tsx": "9d3679fdea8b1b30c20fde46d43ccc8a2b37563cbe617034a553a9332397b620",
+    "frontend/src/app/media-entry/provider.tsx": "eaa72a2ee28cdd84fbddd8a10a5cd555763843907597955f5a283b0f9bf6a14a",
+    "frontend/src/app/media-entry/index.ts": "b1c55c4413396ab6f7ed1ee37c8a0e46f6d9a9fb4f9c60404ab524f69b3b0cc7",
+    "frontend/src/shared/media/read-media.ts": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8",
+    "frontend/src/shared/media/image-policy.ts": "7ae571867a1e2d5d54a3bb571eb11f38636676a45920142db76e3593e370cdb1",
+    "frontend/src/shared/media/contract.ts": "af30fed17cb420563836623b2613c716668116437d9fd855e1f329e0e79c9dbf",
+    "frontend/src/shared/media/preview.ts": "3cab8ce506c6cca2083ff2003c7a406cf30aa77b96ee10cb81a68f3f1b5fc283",
+    "frontend/src/app/CommunityFeatures.tsx": "db2b1d0330b5af0347e55fda017da4d0bd1b586e9c2e8872d8fbae1390e577d8",
+    "frontend/src/features/party-discovery/index.ts": "2506849e06014b72d45731ba34553ba28e42175fcded9d417247bddc6837bde4",
+    "frontend/src/features/my-gifts/index.ts": "f8736dd4237769e72704533e2ab9e3f3684e31ea58b8e69427fec3c3a977dab2",
+    "frontend/src/features/gift-discovery/index.ts": "aa7725f1f884d7650a9d5c7d0318a4098c532d0482e44cee64e194f52cf97fdf",
+    "frontend/src/app/media-entry/RootMediaView.tsx": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+    "frontend/src/app/character-entry/ReviewedCharacterView.tsx": "fa9abbca03185e05ef309ebd7245c9576e32e681f76a625f9afdc9a8fbf46163",
+    "frontend/src/app/community-adoption/usePartyCreation.ts": "a6f9d471962ccdc5dcc94896fd8478fed60e15661cc574dc36d15792d5a51560",
+    "frontend/src/app/community-adoption/owner.ts": "b61b9910ee4ca31ab3dc96e1741a76646821ce0cf18e65d49b14d9c30e7e619d",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "frontend/src/features/my-gifts/MyGifts.tsx": "e2ea39b7522eed1b9066f152cf64448157e3cf6faa6f5bce4f40eb2c73519dc6",
+    "frontend/src/features/party-discovery/model/controller.ts": "cf39ceace4d31dd7626629000e118e7dc8722c9cde19acf992c6caea90c27093",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "7fcfef793f1883117f1b3b1eac2ffe36d1e15834cafbd921619dc10c9468bb5a",
+    "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "dcb718ed62ce2deab98cd2e2c3c26d454132ba58bd97f020ca42c320421ff62e",
+    "frontend/src/app/media-entry/root-media.css": "fa2e352398f3baf98a85be0892e807d0fb84d9c913f4698dc392809981a34b31",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+    "frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "4bcd821855f976b558c5fd979ce759a97cbb1d4032fdf445dfdf3f468833b6db",
+    "frontend/src/app/world-entry/root-features.tsx": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+    "frontend/src/features/world-rooms/index.ts": "6822da877cf4d0eef2fc4288fffaba386d047b7109a52aa94e80bd353ba83965",
+    "frontend/src/app/world-panels/index.tsx": "8c3876c5bed12aa1a2c2f53a2b592115a97e1fb4bb18e793fdeae24d6b3e6467",
+    "frontend/src/app/world-entry/bridge.ts": "2c20c684d174c12485b39bbb35f307d75024bda8df8edd5068f717a0ccfcb7da",
+    "frontend/src/features/world-nearby/index.ts": "046a850dbb590d0671c76bc67bea2111a4bc73e23fcefa5c6fb805a203203d38",
+    "frontend/src/features/world-rooms/model/controller.ts": "a2e676f2623ef7cf6c07420312a0bd76adcd02108ad4348f262ead8520358ebc",
+    "frontend/src/app/places-entry/index.ts": "bf86889f5bc5dc3ffb560dd65212261a0d76e4e07186dc0e78ce9c0a66b05cd5",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+    "frontend/src/app/mural-entry/index.ts": "3949e167f001e23bd248520afbbe251db55a68dfd29c7d70bde55c03c5ba629a",
+    "frontend/src/app/world-panels/presentation.css": "a554c436ab7ac0169faef4c65d22ff5ee08f08ea4d11e9087d6c4b353f5f27e7",
+    "frontend/src/features/world-nearby/WorldNearby.tsx": "84a515f457f9b9c70778c10bb73f935cd48273bf4d0b1b3fc9c5753cef9c6f32",
+    "frontend/src/features/world-rooms/model/contract.ts": "d3e19484a27d801d3f9b00d9c7ef37bbda00400338f70decf7f6e05c436c57d3",
+    "frontend/src/app/places-entry/provider.tsx": "ca59285cd6b4556a0f3b59144288ef9ae1bda6e974cfe704581ea48317e33e4c",
+    "frontend/src/features/world-nearby/projection.ts": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+    "frontend/src/app/places-entry/owner.ts": "88ed274fe63ee33cc488a065af8553b66c74105f121cde9da210b64b13dd67ff",
+    "frontend/src/app/mural-entry/owner.ts": "2d08d0e169d13c1d06af3cdd6245b33a76de9ec40a8a25772a17374bd525c4f5",
+    "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+    "frontend/src/features/world-rooms/ui/world-access.css": "fdde6e1f0118145f9431b0ac1d90f23358861f4cb907565372c8553535850b3d",
+    "frontend/src/features/places/index.ts": "9052d813d49a9c06022fc9626ea4186bfa3d11e093b0e2f1b79ce8a6cfc50e58",
+    "frontend/src/features/mural/sync/index.ts": "40f4886e433031306c2a2f46e5901f913ba5f1fad243c0614b3e5356bb05911f",
+    "frontend/src/world/mural/index.ts": "9cf37c047ab317839bf0707aaf88ca437fe5f35c39c636114ff93292c26b9567",
+    "frontend/src/app/world-entry/mural-production/refresh.ts": "da4009105388f97b564d1fbf685a9040be43a8f34161a4d1789153f3f7c30da3",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/places/ui/Places.tsx": "4b20a826d5d9dba9d0bd2603039c3352043990d2a0e9c3fc56c9229e234e38e4",
+    "frontend/src/features/places/model/controller.ts": "48ef5e9ca08fe76f4d6308155a7f46a6098df021dda7a7f09fed1ff7d9172a09",
+    "frontend/src/features/mural/sync/controller.ts": "67a4a15cec45cbd43d334c0c338cb87eba19b8820eb7685c0ddfa623f7be4fac",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "48b9eea42bfe30ba21ad7eeda9bca47bb7a0d36f2ddd59863cd6396d73f6492b",
+    "frontend/src/world/mural/authority.ts": "f08a51650603fc0f0e6b6049df27e7fb20d554c07768ec89c82958cbc9f8b078",
+    "frontend/src/world/mural/phaser.ts": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+    "frontend/src/features/mural/sync/tools-http.ts": "ba77893b3ce635d7e10e6731660ed4fd01d4580b83c6d89f3bc763937217e6e5",
+    "frontend/src/features/mural/sync/http.ts": "737d8b55542c772f7b9631c092fb529bd3d4d41d4bbb16b67cb65a8fa9dc71ed",
+    "frontend/src/world/mural/sink.ts": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+    "frontend/src/features/places/ui/places.css": "b0cc09eaaa88ffc90b165d24f573f01d9c59021322455658d411bab8fabaaae6",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "eca4ef93e7a1d77a9e2334162be50783e78225bf6736c66b8cee44eb9bccff2e",
+    "frontend/src/features/mural/sync/projection.ts": "e69dd552120a4f02e3abd7a81e079ec76f7a2cf04014c71dd9618d196aaf79c6",
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "37aedff40afe5be4d8065f98d0d261057f448f312981a6621b2909c129ea9a00",
+    "frontend/src/features/places/ui/reference-scene/annotations.ts": "ca5f4abb8ac43d90d7909a33534b7c071b6d77b0a387efdeb6eae039602e223b",
+    "frontend/src/features/places/ui/reference-scene/viewport.ts": "103e8128db881eeaf146da8ea869f6260f045d6e36fc2387edc35b1682faf282",
+    "frontend/src/world/reference-scene/map4-service-v1/annotations.ts": "0df32577bcb7f797511546ac6912407ec74eac58631a8e6273f126ed443eb725",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "fbc4f1f88f45eae6b1c1db581c6354bee79f3423cb31537153c537045090976e",
+    "frontend/src/features/places/ui/reference-scene/map-service-links.tsx": "d1c259404fcde6ba0eba4b7e434e232f958809a4041c6872c27936122481a339",
+    "frontend/src/features/places/ui/reference-scene/spatial-v4-label-obstacles.ts": "de2364866e04e547eb0444b1a6dd434f48cca14840bc771a67174cc23aa0f066",
+    "frontend/src/world/reference-scene/map4-service-v1/layout.ts": "ca47c7aa2e5cda1c0679ffe6277f227a53f5c9781f1537fc9e7f19e4f0e9246a",
+    "frontend/src/world/reference-scene/map4-service-v2/current.ts": "43c3f1e0270741b6f9be7ea39173a839e59037562799aef7bd87c609522eeaab",
+    "frontend/src/features/mural/editor/input.ts": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+    "frontend/src/features/mural/editor/tools-b.css": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71",
+    "frontend/src/world/reference-scene/map4-service-v2/layout-source.json": "77da03bcddba15cb88a250a3cad4dbe9bdfadac519af1f1d4ac22623a8aa6141",
+    "frontend/src/features/mural/editor/editor.css": "b8bb2cb3c4e12a9719742c2636a035473f9b521531ffad70ff4626fcb98dbfea",
+    "frontend/src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/overview.ts": "1c64590a29a57071026f33d0cdd602cb601e4662d25e7476596ab6967beb3474",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/spatial-v4/model.ts": "849525ccc5fdc690a5e9b2125502a3a07abcea758c717b93279285eb12ccbd9d",
+    "frontend/src/world/reference-scene/spatial-v3/model.ts": "d4c1c74ca1f92777812af90cdc5a4dcc5bc8411ac6626ebee1fcb95ada90783f",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json": "77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/src/world/reference-scene/spatial-v5/architecture.ts": "e4565a2fd80bfcb5ca8756511aa26bd83a66800fdf5cd90d2e345af75d72eab4",
+    "frontend/src/world/reference-scene/spatial-v5/map-cozy.ts": "c724ed547432aaa3f03b84dc145b6de3eefae2396f3a4f640fa5042e375791e1",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/src/world/reference-scene/spatial-v5/map-service.ts": "73f6de00c3cd0a7e4d7f6e79669f51f0580a8d743c37a86fd2afad5a526db166",
+    "frontend/src/world/reference-scene/map4-service-v1/pins.ts": "956f5d07093c22122252e9203b555f003c2c4431dccc5896060894dd33bdeabf",
+    "frontend/src/world/reference-scene/map4-service-v1/identity.ts": "e77d085383475fa2457df902c155bca5e42707d6742add7fbe3aed52fbfea4ec",
+    "frontend/src/world/reference-scene/map4-service-v2/registration.ts": "bcfeabaa37a7b08432d367c79ce85e413c788a396702d22aec4f52e6420c3fdb",
+    "frontend/src/world/reference-scene/map4-service-v2/model.ts": "13020517c600a4b2a7bf30ca2fdfb15f9571d40edea612bae0853f56e9e6b0fa",
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json": "9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels-source.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels.ts": "b3357634e374698b343c61206dd94d51585de84e8adadfca36382263cf09c77f",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "4cc20165e13491861d71b3a8654f6300f0492b1dd9dcdf3b4ce99575c9927889",
+    "frontend/src/world/reference-scene/spatial-v4/tile-pin.json": "96766e0cdbe185e375fdced89e757013b1765e5790560faaab02fa6caec7129a",
+    "frontend/src/world/reference-scene/spatial-v3/tile-pin.json": "f20d50e9daa3026972728b8be6dd5d3f84d8c15ad74ac2a75e85edca0651bd48",
+    "frontend/src/world/reference-scene/source-inputs.json": "b25ee458e987912f91a4b3c55b87f53be5e0baada96a8372e5225fb8ada909aa",
+    "frontend/src/world/reference-scene/spatial-v3/source-inputs.json": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9",
+    "frontend/src/world/reference-scene/spatial-v4/source-inputs.json": "0b686546056ba75591b1d5c32258bd73fd22ca0767686c12aff197d58f8f0beb",
+    "frontend/src/world/reference-scene/spatial-v5/map-cozy-pins.json": "00c8606f967297afb75ab8ba2e7d3e85402b16f90d787f160dc79908695c1425",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-pin.json": "072e32f442257e54e271c485304779de0ce8ff6f6165c163e23bce1452d1e99b",
+    "frontend/src/world/reference-scene/spatial-v5/map-cozy-source.json": "56934998d331b11bf65ca68a1187b4c1d87cfd3ccd89dea0fb2572bb86a1893c",
+    "frontend/src/world/reference-scene/spatial-v5/map-service-source.json": "dbf628ed48d8cd7c85e13c633a48c6bf42b257047b11775b429b968af3714b5f",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-source.json": "4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a",
+    "frontend/src/world/reference-scene/map4-service-v2/semantics.ts": "cf5ff7240e4674407ba47f247e8a64eaf91ee8dc59f6ed962b77ab752ad1dfff",
+    "frontend/src/world/reference-scene/map4-service-v2/presentation-json.ts": "58df0486f53cf7c3a1778e7266b5f4dc88a091f585b164a72a4903f63d656939",
+    "frontend/src/world/reference-scene/spatial-v5/map-service-pins.json": "5cc09e3800007d2ef49511d1555e037a87fe2f1ce7e6cc79c4c70165c6be657d",
+    "frontend/src/world/reference-scene/map4-service-v2/contract.ts": "43be2545f73c029b4b34c9f6b9035f675c2098c8953f61551a403ad2078825e6",
+    "frontend/src/world/reference-scene/map4-service-v2/style.ts": "c5f96d6a8616398f2922a0af19285c43cb62d2906a1db8d142af79e050c28c04",
+    "frontend/src/world/reference-scene/map4-service-v2/resources.json": "20ceb507356f4426a20c82418e2a52b1efdce7c5ee00050fc422c2bfd8c8b4ee",
+    "frontend/src/world/reference-scene/map4-service-v2/style-source.json": "a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305",
+    "frontend/src/app/account-entry/provider.tsx": "8db295baaca91f1dc010792cdb7a5331a2be88bcaa7ddec319a09d7d80c46582",
+    "frontend/src/app/account-entry/owner.ts": "d150b78cefbb71f2a10f3bc9aa6697951aa551c40774e4398e8f3c16a62c4eea",
+    "frontend/src/features/avatar/index.ts": "5d8847b625bf3ba9ec70fd544f7b87fd87f932691dcee150d2364b361e3467bb",
+    "frontend/src/entities/avatar/runtime/index.ts": "7a049bd448017dfa71614acd1c0ddea486d95fb8cf93981332fa7784e3f1b346",
+    "frontend/src/features/me/index.ts": "9ec0847cc92f3e947c3b52d5a720322a5827434732ec83f5eed02b3372ecf834",
+    "frontend/src/app/account-entry/assets.ts": "e3868e19ddc67cde161cf3378958f16a9a3b57441406d49b4a6a7b30e014dd6a",
+    "frontend/src/features/avatar/motion-adoption/production-owner.ts": "242697db46552de8233c47a2a8eb80eb5eec5b9312cd147494265967637a52db",
+    "frontend/src/features/avatar/whole-character/controller.ts": "9e34de46c857062892d5b64347876fe2485f7117c6c11e2af438775bb402a353",
+    "frontend/src/features/avatar/preview.ts": "258f08cd7a5e1ebcc1917f8b36b8accb83a260f1aad0d388766f54736414945b",
+    "frontend/src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740",
+    "frontend/src/features/avatar/AvatarEditor.tsx": "37d30c4a71f0c669100d1ee84f5932c3b22eb42c49e7c833ff2209d37ea77fb6",
+    "frontend/src/entities/avatar/runtime/atlas-lease.ts": "f619127345292274795fc0805f0f344591f8bbcaf2bf6c772e740cb1e164ff52",
+    "frontend/src/entities/avatar/runtime/resources.ts": "53268ddc31ba8668ea0ac8de4e017b53e80cceb1fab69db9649f06f1bf86f965",
+    "frontend/src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "frontend/src/features/me/ui/MePages.tsx": "62cfb1e38aa5c55a05ebebda443eb88d467c4d2490b2145240d9ba937cca1b2f",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "829748940d147959bf8656e9448d00b7f9ba49305a9d5e8ac17acb0de72cfdd0",
+    "frontend/src/features/avatar/motion-adoption/controller.ts": "c092f03427278bb935520651e5f02c46e2e29f2b0a47248a539197fc10793045",
+    "frontend/src/features/avatar/motion-adoption/production-persistence.ts": "c372f14cde10b3886bc156991ee3780673b4d9d024d86e040492a3b02dd1024b",
+    "frontend/src/features/avatar/whole-character/model.ts": "ce1a8a3c3e5035983265c5f22a7ae163eb2cd511881ffae4c26e74b0f4ad385d",
+    "frontend/src/features/avatar/OptionStrip.tsx": "f162f9e5ee96c44b4b2e10ec059a09ee0e9272accf82954d68b4dcf48d6e7c7b",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/reference-presentation/CategoryRail.tsx": "ba2bdfd52a03203aa4e21967f4bd3ef1d584cab9465523f92e134430b7bd78fe",
+    "frontend/src/features/avatar/reference-presentation/actions.ts": "79667a9fd35281b5b6d27da3dcea7e621d49bba53ca2731447bc784cca5a7383",
+    "frontend/src/features/avatar/reference-presentation/TonePalette.tsx": "fb5b4a236ca8ef5c7b05ad0f424c2bfa2db61c9a5537c759d9120bfaa0f8b6dc",
+    "frontend/src/features/avatar/avatar-editor.css": "3a0c5b842ffd8dc66452805db3c8a88de233d3970f60bc0a45a6f8c6cdcbdc17",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "a0711221db597dddc6cf90c6b0d59a2fae6bcbd5075a7c9eb7ae4207809cf6ff",
+    "frontend/src/features/me/ui/me.css": "f6f49e4e87613cdffbbabbf26373020dbcc55aab90eab1cc0b5c6024db242fef",
+    "frontend/src/features/profile/reference-presentation/ProfileIcon.tsx": "4270973a977604019098e0ae8d180c76dced484a1ed28c585faf2b813ca0fd89",
+    "frontend/src/features/profile/reference-presentation/activity.css": "058c700e07d42d0c5cb27d42d9bfe0fbc519c470af0733463d052906030a3903",
+    "frontend/src/app/meeting-entry/index.ts": "0fd0a1f4709f3dab9815c2abb4ee43ecbc3a38f5e11fb182055a78b47ae1a245",
+    "frontend/src/app/meeting-entry/bridge.ts": "ecb3adf14cac50f11457f8a6868b84753c967ae7c60fe38c25e43b813f4befdb",
+    "frontend/src/app/meeting-entry/routes.tsx": "6d1972f2fab6536e1ae5a0eb7d39247ed1adf19d527f551fcc2b29b6c65cc2a9",
+    "frontend/src/features/meet-beacon/index.ts": "6da019c0f6c13e83005e1b1820fb2e73fdf5287140fe4f74f1dc520fffcbdf7d",
+    "frontend/src/features/meet-beacon/model/controller.ts": "d8ee07eb9bd021687bdd8b70825e7c632caa00d30513e09db38ebd028e22f784",
+    "frontend/src/features/meet-beacon/model/contract.ts": "2bfbbcd160d0f6ad90874627dd2ff5f5798220275ce811f71f75fd18469824fd",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "ccbc170ff1ade8193fc16667a48527241805f920b2b28acef9558c4392bb3871",
+    "frontend/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": "c5b17f78054462929ed558dbb0aaf7b519c840c281627e121f90dff2ab7df93b",
+    "frontend/src/features/meet-beacon/model/photo-client.ts": "39158c91d063b0aecfd874080708a67377cf64de66a497aa7231572e4aea1bd5",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css": "69358f493b4ad89f7e237d44f73339f216713e5577c1e0a754fab19a8b390db9",
+    "frontend/src/features/meet-beacon/model/photo-scope.ts": "1b9a658ab09f5eb07a10291b0ea33913d5857bc1d8e6306c69979c2448719417",
+    "frontend/src/features/media/model/upload-controller.ts": "e187899b6e8c4c22956eb1f1849420265603d80d56699c2a0baff76334f3e571",
+    "frontend/src/shared/media/prepare-image.ts": "a1ac4b47bdc744afd1065e82bc950a83c0d01c3d7946e098e0e6adb6171db128",
+    "frontend/src/shared/media/transport.ts": "8d71000a955dd035263074a3f961589e8b0f7a8f0bfdb3f708b99a75eb2e841c",
+    "frontend/src/app/world-panels/social.tsx": "f560ae58cb5dcef2f56b439a68a7de3a77f3d9053b5be47d9956f6065d6ae9bb",
+    "frontend/src/app/social-composition/sharing.tsx": "e9d5e63919a7d83e37d1d7494923b022bde9e4f8f2cf82a93939bb53f8456abc",
+    "frontend/src/app/social-composition/index.ts": "914a68b6c45aa00012bfd85c322bb0dea59e54fc00a3b82c8ffbb4df29949cd4",
+    "frontend/src/app/social-entry/availability-lifetime.ts": "3f17f2516d2d58a5943302c627298f6ceaf83c218acb1f4a01cf6a633f55b13f",
+    "frontend/src/app/world-panels/social.css": "e7063785972419110220609b090600a68cc1cb1d0a01a93248847d73fee5adfa",
+    "frontend/src/app/social-composition/provider.tsx": "21a3c2d3660ffc27f7953436782a6d050bc2cc9fb051f040558c522f77dda219",
+    "frontend/src/app/social-composition/panels.tsx": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce",
+    "frontend/src/app/social-composition/owner.ts": "297e0402027a6e964976b12239301cbdb6dc7ddafa3b320e54ba6f6f1e504948",
+    "frontend/src/features/social-sharing/index.ts": "030e8036ad14902c239f742dbe6766d633a7cb9a5eae642f865f9baf03e0ec3b",
+    "frontend/src/app/social-composition/routes.ts": "46daf04ced13f096fa9f6f9563552b6e96bca63ed161633bcbf2321bb3898ce4",
+    "frontend/src/app/social-composition/ports.ts": "ae55d5bccd8e39ea3c6f0e3067187de4cbd3dc20b6bc4bce7c38bb7c7e0dc67a",
+    "frontend/src/app/social-composition/navigation.tsx": "13fdc6d570dd79db90f2310b320637ac86757fee817a561eb13cf59bde3c3902",
+    "frontend/src/features/inbox/index.ts": "126fbe92aa0d555bfd4a62602bd565e643f63e69c400c1d054a707e88f9ebcfd",
+    "frontend/src/features/feed-thread/index.ts": "b2be26014fbe4be9029a9857bfb6145755327c3940705dacc06591f3771ff32f",
+    "frontend/src/features/event-feed/index.ts": "4832214a64cd326ef84ba99377d2c2d91c6b72eaa2d9415c87f4747900b959c8",
+    "frontend/src/features/people/index.ts": "8038915036f86b7ce087ccd86c9e8d4f1e0d6bf8d6e4ba8e302780a2c7b443bf",
+    "frontend/src/features/profile/index.ts": "7dbf0d6236d3bdb7458c817b949bada352611c55b2a00e596c9a7a86551ef83a",
+    "frontend/src/features/age-status/index.ts": "1853d6a5db47d0818935e8f5b8e034ad94986a9ea9f8e77e05efb53b4cbdf6af",
+    "frontend/src/app/character-entry/activity.ts": "bdde34c4bd8bda70baad74b98d8e58200e2f8cf926fe590fa88be039cb98756b",
+    "frontend/src/features/intro/index.ts": "b292dcf1fa9ebdc348d151c4b1e50b6dbb1d4e8520ae80cc52a034667e884434",
+    "frontend/src/features/profile/Avatar.tsx": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
+    "frontend/src/features/inbox/model/targets.ts": "a29acab3f1b6e2681c4ee678b4221f147d8949f17a0bb404990f86286c4e4a3c",
+    "frontend/src/features/social-sharing/model/controller.ts": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
+    "frontend/src/features/intro/contract.ts": "ca1a009b9f6666da8fe8e0985932196b5120adfa49f8949373bac7cff917502e",
+    "frontend/src/app/social-composition/composition.css": "a251f219c05c6490532b9811fa44ecb2168313f2116bfc51eadcd007e6fe696f",
+    "frontend/src/features/inbox/model/controller.ts": "004993165e1d323a7c95da03675ef063ef0059066c0947550263953b342c1e1d",
+    "frontend/src/features/feed-thread/FeedThread.tsx": "5f3059b60a7087d324e83e775784ced89f595db0c19759cc0c3b56e3eb57c49a",
+    "frontend/src/features/inbox/ui/Inbox.tsx": "e58a4525a57e5884e0bfd0d8f5cb76b0ff69f73cfbe08ec2ba20c428e7c881b9",
+    "frontend/src/features/event-feed/FeedImage.tsx": "a2d64bb338b0a658aae383c41f48a83330dc82735e3db11fedcb043bf60d06f1",
+    "frontend/src/features/people/controller.ts": "cb490a4469782f82489fd06e1be0636f32693644a5d5f6fcc5cdf647edd8a087",
+    "frontend/src/features/feed-thread/controller.ts": "712d7b6449c4cb4a263f42fb3ccc7ac04553221ffceb42569e9d4e871c2efa22",
+    "frontend/src/features/event-feed/EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+    "frontend/src/features/people/People.tsx": "6d95f84a9dfb985292af4d1caaa3f87670ca18e99974b114b50797a5649d62b9",
+    "frontend/src/features/profile/PublicProfile.tsx": "5cf3b391b78c54b2d79907d02c62d6cebfbdd022b2752aad3258e518497fa0cd",
+    "frontend/src/features/age-status/AgeStatus.tsx": "2558f9112374456d15b746d637d33ef82cc414a6fecbfd6215c2248b832ed684",
+    "frontend/src/features/age-status/controller.ts": "51d0e2c32eb17899698c7ae128a2cb8d38199f475fcf7e82bd20190c28157633",
+    "frontend/src/features/intro/IntroEditor.tsx": "fdd45a21f21f3e4e4e20393a22de1d715142738832271cb9da1b6074c0045511",
+    "frontend/src/features/intro/controller.ts": "a5a8bcebdf915b51130161d9362ce1c068c3d858029143501603fdc74787f6cd",
+    "frontend/src/features/social-sharing/model/runtime.ts": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
+    "frontend/src/features/social-sharing/model/contract.ts": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
+    "frontend/src/features/inbox/model/contract.ts": "2a21ea678e52cd837bcd50323600bcbf3ad4d3cabe9f395ace124fe25a08c38f",
+    "frontend/src/shared/validation/text.ts": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+    "frontend/src/features/people/contract.ts": "155140bd934aa3d73bf0a0d7f874c9ac92efc38c4f2f5fefeb00397d76d90722",
+    "frontend/src/features/social-sharing/ui/sharing.css": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
+    "frontend/src/features/people/runtime.ts": "fb415aac362022a6c1e4c49734fb610f9f01d6ca3d79aa9da75128a906aa9ef3",
+    "frontend/src/features/event-feed/FeedGlyph.tsx": "80cfebc22cc438245a7316b8424257ecbcf36272602cf6a6a25553e69fb3c9dc",
+    "frontend/src/features/event-feed/presentation.ts": "3ae5f3a71a2ff0e355c16638aea678539b15ceabd3803e88a621b813ee7799d1",
+    "frontend/src/features/inbox/ui/inbox.css": "a1393a5b1c2bc56dd9a1db26bf5b6a184af41224786a930c73567347299131a4",
+    "frontend/src/features/profile/profile.css": "7e545afdf5622611a2feb57c146eb15278727841843a43218930652dd74136b6",
+    "frontend/src/features/event-feed/feed.css": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+    "frontend/src/features/intro/command.ts": "b42bfef71779e743f1909dcb3fb16542d5b85d5c1668b362097d29552f7ab99c",
+    "frontend/src/features/people/people.css": "939c17cfae06880839f0b0133b1cdd0a16af4b74316dbfbc9c211edb46b3f7c8",
+    "frontend/src/app/shell-chrome/identity.tsx": "cb52295e98b6146caa8cef00743bdf35f978ec38cd0c9ddb0193b9c4bd441890",
+    "frontend/src/world/composition/index.ts": "8242e0a878742b7d31dfb1f947741b534a97b79bb18391b493d3dbec4eb492fc",
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "5586a2e9b149b89460441db1e421a1e5ca6c09d30716ec5482916cff57c1b937",
+    "frontend/src/app/world-entry/resolver.ts": "2eb4462bbf1fa873721828a265a4d1fe7afa91f9f52e9a8bc50674e9b71059b4",
+    "frontend/src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "frontend/src/app/world-entry/mural-production/factory.ts": "387b53283e45927ef7337ff585fcd63f18772b87f38105f43f1f7947bc498d83",
+    "frontend/src/world/avatar/motion-adoption/renderer.ts": "088a7550c133cdf22b66782f9259c7b18401c6b4c10ba46a2f482ea0274420aa",
+    "frontend/src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226",
+    "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/world/runtime.ts": "47fc58ab147702a4e90cf9a28aa101a999177b9af86f6bc0815ecbe36424776f",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/world/composition/ticket.ts": "50198263b8abc42d3fe666d61e1048bf49c1a7399282338c591f9a4aa7152e0c",
+    "frontend/src/world/illustrated/overview.ts": "ea615133a879ad48bf7488f862079cc4e692ecb8e4fe33905cf689a52584f5f8",
+    "frontend/src/features/theme/model/controller.ts": "879105b2e39a63b6b206c9955a650b7867bcc9ada76c5c350c1286e38da2ac96",
+    "frontend/src/world/mural-entry-lifecycle/source.ts": "dc564b568228413226d510995029c1334cc17bb6bf93f58cca18fcc3a3675458",
+    "frontend/src/world/theme/loader.ts": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053",
+    "frontend/src/app/world-entry/map-presentation-v1/loader.ts": "437f4fbc5bcac5b42490a14d0e8cfe4903ada222da9c14b5765e33213489e138",
+    "frontend/src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "frontend/src/app/world-entry/map-presentation-v1/descriptor.ts": "df8b39affbe728c607fd67565ce916fabced13dd59164096f866470fd03be899",
+    "frontend/src/app/world-entry/map-presentation-v2/loader.ts": "de7b0839c27726a38b7dc3b6e9e1b7603ddc05c13f73cce01e6408838e52593c",
+    "frontend/src/world/map/resource-cache.ts": "9bbfaf042ea6f13d52db9dc0bab730314b605c43f19a9a7781a39f747bc230a9",
+    "frontend/src/app/world-entry/mural-production/authority.ts": "6760b8b83c8d2bf3cad24474984643f2027d606550d380c835f96a26479f2723",
+    "frontend/src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+    "frontend/src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "frontend/src/world/preferences/runtime.ts": "8aca495286342baf294ff4f0c141766899f4b73307e75493a84c397aa4553e97",
+    "frontend/src/world/network/WorldTransport.ts": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e",
+    "frontend/src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "frontend/src/world/mural-entry-lifecycle/index.ts": "505dd55a69a68ad99806ec5950abe83a3a2593771aa4f4067d196a2959467da1",
+    "frontend/src/app/world-entry/map-presentation-v1/identity.ts": "e9dceb891f6b44e25812c8623e6ac97fa43ddd474b567e822a49517594bf3a31",
+    "frontend/src/world/reference-scene/map4-service-v2/labels.ts": "43b93f873276a99dcc5eeb99230cb83c390827bbefccf6f306afb50db7c9a34d",
+    "frontend/src/world/reference-scene/map4-service-v1/paint-source.ts": "e9fb63f4179c13fe6b4555620a79cc95581e82a6d3f2dc7211ee057083028fec",
+    "frontend/src/world/reference-scene/map4-service-v1/labels.ts": "31ece5daae577f86a8f5ba1a898577b442f73944041434eb19987d58c18d221b",
+    "frontend/src/features/mural/editor/index.ts": "61725a0e739815ea254c4325ea3d41b91ac173d102b8ca3a921229505d082da0",
+    "frontend/src/world/interaction/selection.ts": "bb1e330b398016dfffd6a8da79f7b4eabfd2f9de81ef96592fea7332e8fcdd85",
+    "frontend/src/world/reference-scene/map4-service-v1/style-source.json": "246562200c1379f901e08183bde53e57e03a5152eb0a03c62c4268319e890e62",
+    "frontend/src/world/scenes/MapScene.ts": "91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258",
+    "frontend/src/world/preferences/engine.ts": "22fbee961c46f7161276e61cab71bf29d8669ced70d291c364efc79d7a81e3bd",
+    "frontend/src/world/illustrated/phaser.ts": "c602992cba72af1918968ef74b8d96cc2cbc2e5fd23c1e596af08119b19eda8d",
+    "frontend/src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/app/account-entry/panels.tsx": "ae64e8f12cb973cee01bb7b36a4b24e3154e19f571f9c3513c1ee902c99ad965",
+    "frontend/src/features/avatar/whole-character/WholeCharacterEditor.tsx": "115b1912ddf6d70ee6a5ace175b8c69da0b02199a3dc6b27857b63eeb0d91d6f",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "79738a341c829682e8005f66af29592ea0436e01059b3b306db790b0843e77d8",
+    "frontend/src/app/media-entry/RootProfilePostImage.tsx": "6e9e423df31b1c59af0c3fc845e216812998cdb9832ce3167703787c8911fca8",
+    "frontend/src/features/settings/runtime-adoption/useRuntimePreferences.ts": "4753fd60eddb0caaaa27b26c1e2e4b0df30e100cbd2349b568cf28b58ecfed3a",
+    "frontend/src/features/settings/index.ts": "6c3a6ffce1012d3c3c35b205590b2857a1147501f673d4f156883228a84a8b15",
+    "frontend/src/features/settings/runtime-adoption/index.ts": "139301c0e57a56d09f7e9d2cad2c201ccf2f3b7cbdd537153018d9be5fed0b11",
+    "frontend/src/features/settings/SettingsPage.tsx": "c609c3aa42f3bc6176c8b8d2138f703223a1463bd378afe7c0138f230f324a48",
+    "frontend/src/features/avatar/part-controls/MotionBodyPalette.tsx": "e64263815305f36782d23a7f856d2313e831a1ec30073aafca201328bd338d9c",
+    "frontend/src/features/settings/runtime-adoption/motionProjection.ts": "7e3d8c2457726c7aa6e24dfc5dec00a28aeb5f13c00e8b2ebcb6aa2b12d66cd2",
+    "frontend/src/features/settings/runtime-adoption/motion.css": "c19e737030975e3d7e859c6b4574dabafb8b8c84810b8c4f9ce2bd91329216cb",
+    "frontend/src/features/avatar/motion-adoption/MotionOption.tsx": "e7661142a711a88331a63f0008693cfa6a792d91f4559374c4d83cb013bad5b6",
+    "frontend/src/features/avatar/whole-character/whole-character.css": "7a1f0361d5ec394557ce88bb91dad7adad1a65e704363d807ff77f01d83ce832",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "bb244fc1d9cc6727a2bf3ecf1679950a3c75007104000599b62bdb10ba74345c",
+    "frontend/src/app/account-deletion-entry/link.tsx": "2ab111ceded26b2df25d7b9eceb766743a551da0c86ce3011cc2e528bc11b05a",
+    "frontend/src/features/theme/ui/ThemeSelector.tsx": "a7b51a8e0b39e182e66003045e01ed7fd0901612b6da94dae5ede7723e9e4f64",
+    "frontend/src/features/avatar/wardrobe-options/body-options.ts": "1fd290ba445b1bb1d9a1a088988036f07503b5f6e2198166d03664dc0b2b8c36",
+    "frontend/src/features/avatar/part-controls/body-palette.css": "a121771f018ad64b6bf558958b0604adbca74e0cf3f1bf81afe97e0acc513a95",
+    "frontend/src/features/theme/ui/theme-selector.css": "efa98f8c022f8aab0e722423def1a4b273bb8b00548aebaf4ea2c604bcc7a30c",
+    "frontend/src/app/account-deletion-entry/panel.tsx": "3deeb1ee7779018a066756fb9e5ce4d535482dbc3472716fdad6d2eb73f5a34f",
+    "frontend/src/features/account/panel.tsx": "e11a8b19f3b39da2f17275f962910ec5ff7894b117f47df723237ccab575952c",
+    "frontend/src/features/safety/Dialog.tsx": "8cfdf13e621986fadba50e35ceb16f0515dbf85ab346fb82077e3af2147e4531"
+  },
+  "assetReadset": {
+    "frontend/public/world/maps/geometry.json": {
+      "sha256": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+      "bytes": 29538
+    },
+    "frontend/public/world/maps/virtual-places.json": {
+      "sha256": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+      "bytes": 4446
+    },
+    "frontend/public/world/maps/binding-inputs.json": {
+      "sha256": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb",
+      "bytes": 1231
+    },
+    "frontend/public/world/themes/binding-inputs.json": {
+      "sha256": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f",
+      "bytes": 7736
+    },
+    "frontend/public/world/illustrated-runtime/bindings.json": {
+      "sha256": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+      "bytes": 35434
+    },
+    "frontend/public/reference-window-controls-v2/stars.svg": {
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2",
+      "bytes": 402
+    },
+    "frontend/public/reference-window-controls-v2/close.svg": {
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72",
+      "bytes": 198
+    },
+    "frontend/public/backgrounds/cute-entry-v1/sign-in-paper.svg": {
+      "sha256": "aee62ec92a87df6a86cfd2322682cd735ba629aeb7a5728aaca2bba81182fa73",
+      "bytes": 2115
+    },
+    "frontend/public/backgrounds/cute-entry-v1/sign-in-clouds-top.svg": {
+      "sha256": "29ed345d8d974798b37bc6eb0dc8a50dd4345925a3c284283fcf2709cca4dbf1",
+      "bytes": 2609
+    },
+    "frontend/public/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg": {
+      "sha256": "0f0965425ce45f96925bc94b7d5372225f10af0a9d3a6901e6cc96bb3a328e4e",
+      "bytes": 2887
+    },
+    "frontend/public/world/avatars/derived-v1/static-release.json": {
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898
+    },
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    "frontend/public/world/maps/courtyard-tiled.json": {
+      "sha256": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+      "bytes": 34456
+    },
+    "frontend/public/world/themes/revenge.png": {
+      "sha256": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+      "bytes": 4975
+    },
+    "frontend/public/world/illustrated/revenge-ground.png": {
+      "sha256": "aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e",
+      "bytes": 96285
+    },
+    "frontend/public/world/illustrated/revenge-landmarks-atlas.png": {
+      "sha256": "0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879",
+      "bytes": 445101
+    },
+    "frontend/public/world/illustrated-runtime/revenge-details.png": {
+      "sha256": "84cd918700d99f1bfabcde38a7d48d43b51bf5ef19d431b50cc9c11e0c0a3bcd",
+      "bytes": 10119
+    },
+    "frontend/public/reference-window-controls-v2/reduce.svg": {
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5",
+      "bytes": 257
+    },
+    "frontend/public/reference-window-controls-v2/back.svg": {
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2",
+      "bytes": 223
+    },
+    "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg": {
+      "sha256": "22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7",
+      "bytes": 4500
+    },
+    "frontend/public/backgrounds/cute-wall-me-v1/me-scrapbook.svg": {
+      "sha256": "98c351c141e372d8d7e0d6879556105c551fbdf7478d66afe76d360a59a7aae1",
+      "bytes": 2728
+    },
+    "frontend/public/reference-parade-print-v2/parade-print.svg": {
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10",
+      "bytes": 5894
+    },
+    "frontend/public/backgrounds/cute-wall-me-v1/me-night-ribbon.svg": {
+      "sha256": "29ad1cb9d04101399e2483fef9de6a3d710c6bf7f08cb1cb4501fb746152932d",
+      "bytes": 2298
+    }
+  },
+  "cases": [
+    {
+      "width": 360,
+      "era": "REVENGE",
+      "height": 844,
+      "status": "PASS",
+      "errors": [],
+      "initialMutations": 2,
+      "editor128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590",
+      "audit": {
+        "snapshotReads": 1,
+        "classification": "TEST_ONLY_SYNTHETIC_C04_APPROVED_ART_READ_ONLY",
+        "mutatedSnapshotFields": [
+          "palette",
+          "pixels"
+        ]
+      },
+      "geometry": {
+        "width": 360,
+        "height": 844,
+        "overflow": false,
+        "panel": {
+          "x": 3,
+          "y": 3,
+          "width": 354,
+          "height": 838,
+          "top": 3,
+          "right": 357,
+          "bottom": 841,
+          "left": 3
+        },
+        "viewportVariable": null
+      },
+      "screenshot": {
+        "path": "wall-approved-motif-360-844.png",
+        "sha256": "49d812e43bc309c597c411b0f4079f9f4732ddedd1255a7952a91c8d877e0a83",
+        "bytes": 33760
+      },
+      "controls": [
+        {
+          "label": "Pencil preview",
+          "rect": {
+            "x": 300,
+            "y": 115,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Fill preview",
+          "rect": {
+            "x": 300,
+            "y": 203,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Zoom in",
+          "rect": {
+            "x": 300,
+            "y": 392.46875,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Pan wall",
+          "rect": {
+            "x": 252,
+            "y": 553.46875,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Fit wall",
+          "rect": {
+            "x": 300,
+            "y": 553.46875,
+            "width": 44,
+            "height": 44
+          }
+        }
+      ],
+      "paletteFirst": {
+        "x": 18,
+        "y": 496.46875,
+        "width": 44,
+        "height": 44
+      },
+      "paletteLast": {
+        "x": 298,
+        "y": 496.46875,
+        "width": 44,
+        "height": 44
+      },
+      "focusDiagnostic": {
+        "tag": "BUTTON",
+        "label": "Color 15 #E8D9BE"
+      },
+      "sameCanvas": true,
+      "state": {
+        "sockets": 1,
+        "active": 1,
+        "peak": 1,
+        "snapshots": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          }
+        ],
+        "blobURLs": 6,
+        "revision": 10,
+        "island": 1,
+        "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE"
+      },
+      "worldProof": {
+        "games": 1,
+        "canvases": 1,
+        "mural": {
+          "key": "mcr-product-virtual-wall-map4-r4-v1",
+          "x": 312,
+          "y": 624,
+          "width": 128,
+          "height": 128,
+          "depth": 0.5,
+          "island": [
+            23,
+            22,
+            23,
+            255
+          ],
+          "background": [
+            23,
+            22,
+            23,
+            255
+          ],
+          "objects": 1
+        }
+      },
+      "cleanup": {
+        "sockets": 1,
+        "active": 0,
+        "peak": 1,
+        "snapshots": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          }
+        ],
+        "blobURLs": 0,
+        "revision": 10,
+        "island": 1,
+        "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE"
+      }
+    },
+    {
+      "width": 390,
+      "era": "REVENGE",
+      "height": 844,
+      "status": "PASS",
+      "errors": [],
+      "initialMutations": 2,
+      "editor128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590",
+      "audit": {
+        "snapshotReads": 1,
+        "classification": "TEST_ONLY_SYNTHETIC_C04_APPROVED_ART_READ_ONLY",
+        "mutatedSnapshotFields": [
+          "palette",
+          "pixels"
+        ]
+      },
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": false,
+        "panel": {
+          "x": 3,
+          "y": 3,
+          "width": 384,
+          "height": 838,
+          "top": 3,
+          "right": 387,
+          "bottom": 841,
+          "left": 3
+        },
+        "viewportVariable": null
+      },
+      "screenshot": {
+        "path": "wall-approved-motif-390-844.png",
+        "sha256": "1ebf55654e955f55da8b6b9afdac7d6c4b52f7302846ee85918eb69336cdec60",
+        "bytes": 34137
+      },
+      "controls": [
+        {
+          "label": "Pencil preview",
+          "rect": {
+            "x": 330,
+            "y": 115,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Fill preview",
+          "rect": {
+            "x": 330,
+            "y": 203,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Zoom in",
+          "rect": {
+            "x": 330,
+            "y": 426.65625,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Pan wall",
+          "rect": {
+            "x": 282,
+            "y": 587.65625,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Fit wall",
+          "rect": {
+            "x": 330,
+            "y": 587.65625,
+            "width": 44,
+            "height": 44
+          }
+        }
+      ],
+      "paletteFirst": {
+        "x": 18,
+        "y": 530.65625,
+        "width": 44,
+        "height": 44
+      },
+      "paletteLast": {
+        "x": 328,
+        "y": 530.65625,
+        "width": 44,
+        "height": 44
+      },
+      "focusDiagnostic": {
+        "tag": "BUTTON",
+        "label": "Color 15 #E8D9BE"
+      },
+      "reduced": {
+        "width": 390,
+        "height": 420,
+        "overflow": false,
+        "panel": {
+          "x": 3,
+          "y": 3,
+          "width": 384,
+          "height": 414,
+          "top": 3,
+          "right": 387,
+          "bottom": 417,
+          "left": 3
+        },
+        "viewportVariable": 420
+      },
+      "reducedFitTarget": {
+        "x": 330,
+        "y": 246,
+        "width": 44,
+        "height": 44
+      },
+      "reducedScreenshot": {
+        "path": "wall-approved-motif-390-420.png",
+        "sha256": "c5fec0d8232f000f5d1c0cd7af0dac757b14746cdb6444b76ba11377b3bc84d9",
+        "bytes": 22857
+      },
+      "sameCanvas": true,
+      "state": {
+        "sockets": 1,
+        "active": 1,
+        "peak": 1,
+        "snapshots": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          }
+        ],
+        "blobURLs": 6,
+        "revision": 10,
+        "island": 1,
+        "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE"
+      },
+      "worldProof": {
+        "games": 1,
+        "canvases": 1,
+        "mural": {
+          "key": "mcr-product-virtual-wall-map4-r4-v1",
+          "x": 312,
+          "y": 624,
+          "width": 128,
+          "height": 128,
+          "depth": 0.5,
+          "island": [
+            23,
+            22,
+            23,
+            255
+          ],
+          "background": [
+            23,
+            22,
+            23,
+            255
+          ],
+          "objects": 1
+        }
+      },
+      "cleanup": {
+        "sockets": 1,
+        "active": 0,
+        "peak": 1,
+        "snapshots": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          }
+        ],
+        "blobURLs": 0,
+        "revision": 10,
+        "island": 1,
+        "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE"
+      }
+    },
+    {
+      "width": 430,
+      "era": "REVENGE",
+      "height": 844,
+      "status": "PASS",
+      "errors": [],
+      "initialMutations": 2,
+      "editor128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590",
+      "audit": {
+        "snapshotReads": 1,
+        "classification": "TEST_ONLY_SYNTHETIC_C04_APPROVED_ART_READ_ONLY",
+        "mutatedSnapshotFields": [
+          "palette",
+          "pixels"
+        ]
+      },
+      "geometry": {
+        "width": 430,
+        "height": 844,
+        "overflow": false,
+        "panel": {
+          "x": 3,
+          "y": 3,
+          "width": 424,
+          "height": 838,
+          "top": 3,
+          "right": 427,
+          "bottom": 841,
+          "left": 3
+        },
+        "viewportVariable": null
+      },
+      "screenshot": {
+        "path": "wall-approved-motif-430-844.png",
+        "sha256": "23550e7da06a37888a5924792248b875d7fcd9548e0d074f18496ee57f7c9c4d",
+        "bytes": 33102
+      },
+      "controls": [
+        {
+          "label": "Pencil preview",
+          "rect": {
+            "x": 370,
+            "y": 115,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Fill preview",
+          "rect": {
+            "x": 370,
+            "y": 203,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Zoom in",
+          "rect": {
+            "x": 370,
+            "y": 472.25,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Pan wall",
+          "rect": {
+            "x": 322,
+            "y": 633.25,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "Fit wall",
+          "rect": {
+            "x": 370,
+            "y": 633.25,
+            "width": 44,
+            "height": 44
+          }
+        }
+      ],
+      "paletteFirst": {
+        "x": 18,
+        "y": 576.25,
+        "width": 44,
+        "height": 44
+      },
+      "paletteLast": {
+        "x": 368,
+        "y": 576.25,
+        "width": 44,
+        "height": 44
+      },
+      "focusDiagnostic": {
+        "tag": "BUTTON",
+        "label": "Color 15 #E8D9BE"
+      },
+      "sameCanvas": true,
+      "state": {
+        "sockets": 1,
+        "active": 1,
+        "peak": 1,
+        "snapshots": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          }
+        ],
+        "blobURLs": 6,
+        "revision": 10,
+        "island": 1,
+        "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE"
+      },
+      "worldProof": {
+        "games": 1,
+        "canvases": 1,
+        "mural": {
+          "key": "mcr-product-virtual-wall-map4-r4-v1",
+          "x": 312,
+          "y": 624,
+          "width": 128,
+          "height": 128,
+          "depth": 0.5,
+          "island": [
+            23,
+            22,
+            23,
+            255
+          ],
+          "background": [
+            23,
+            22,
+            23,
+            255
+          ],
+          "objects": 1
+        }
+      },
+      "cleanup": {
+        "sockets": 1,
+        "active": 0,
+        "peak": 1,
+        "snapshots": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "key": null,
+            "authenticated": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/tools",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "key": null,
+            "authenticated": true
+          }
+        ],
+        "blobURLs": 0,
+        "revision": 10,
+        "island": 1,
+        "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE"
+      }
+    }
+  ],
+  "errors": [],
+  "approvedPack": {
+    "path": "frontend/public/wall/initial-motif-v1/",
+    "manifestSha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "pixelsSha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721",
+    "paletteSha256": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d",
+    "expected128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590"
+  },
+  "unchangedFixture": {
+    "path": "/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts",
+    "sha256": "e2af02c405caef3143e7cb0c5eddc69b2ecdf14a5bf6e27d91dce03b2c5376ee"
+  },
+  "limits": [
+    "Exact published art as explicitly synthetic server read data, not backend provisioning/real authority/live snapshot.",
+    "Existing actual-main/Auth/C05/placement fixture unchanged; no Auth/provider/admission override or application/renderer source overlay.",
+    "Only new approved-motif state at360/390/430 REVENGE; no unchanged all-screen matrix or other-era claim.",
+    "No paint/fill/erase/undo/submit/save/upload. Toolbar/palette/fit and DOM focus/scroll only.",
+    "Reduced420 viewport is not a physical mobile keyboard or hardware safe-area check.",
+    "Whole original QA06, full61IA/live/full-reference/device acceptance remain open."
+  ],
+  "fixturePlacement": {
+    "version": 1,
+    "kind": "PRODUCT_VIRTUAL",
+    "sourceRevision": "122ec874075509566e41eebefa7d290ce5741626",
+    "placementHash": "sha256:cbfb6fd02b9ca1b376f48afdecb8ff9801c0664bb20dcfc402b94b0dc64ac0f0",
+    "map": {
+      "id": "paradise_virtual_courtyard",
+      "revision": 1,
+      "contentHash": "sha256:394d3ec80372443eb2adaf2adcf0a7ed017bdd89b6f5128fbee27f72c67fe413",
+      "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "widthPx": 1152,
+      "heightPx": 896
+    },
+    "anchor": {
+      "x": 312,
+      "y": 624,
+      "width": 128,
+      "height": 128,
+      "depth": 0.5
+    },
+    "textureKey": "mcr-product-virtual-wall-map4-r4-v1"
+  },
+  "browser": "156.0.8078.80"
+}

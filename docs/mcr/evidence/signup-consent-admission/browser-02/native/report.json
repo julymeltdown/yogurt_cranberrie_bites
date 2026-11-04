@@ -1,0 +1,46 @@
+{
+  "qualification": "controlled fixtures through canonical client; no real Auth/mail/legal publication",
+  "node": "v24.22.2",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "case": "bound signup-double-submit-verification",
+      "passed": true
+    },
+    {
+      "case": "authoritative-resend-countdown",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "case": "bound signup-double-submit-verification",
+      "passed": true
+    },
+    {
+      "width": 430,
+      "case": "bound signup-double-submit-verification",
+      "passed": true
+    },
+    {
+      "case": "unknown-explicit-identical-retry",
+      "passed": true
+    },
+    {
+      "case": "expired-attempt-no-completion",
+      "passed": true
+    },
+    {
+      "case": "unpublished-policy-fail-closed",
+      "passed": true
+    }
+  ],
+  "calls": {
+    "policy": 5,
+    "attempts": 4,
+    "signup": 5,
+    "verify": 4,
+    "resend": 1
+  },
+  "errors": []
+}

@@ -1,0 +1,52 @@
+{
+  "job": "ROOT-SOCIAL-POLICY-SOURCE-B-20261104T1746Z",
+  "head": "75a2332d8324a7f6dd4f8f0e77a1992cd5a5e7b8",
+  "status": "FAIL",
+  "start": 1793814489.078641,
+  "workDeadline": 1793814728.970427,
+  "hardDeadline": 1793814788.970427,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/world/composition/__tests__/social-policy/vitest.config.ts"
+      ],
+      "start": 1793814489.295876,
+      "exitCode": 0,
+      "end": 1793814495.483218
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "start": 1793814495.5904808,
+      "exitCode": 2,
+      "end": 1793814506.8218508
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssBytes": 1621786624,
+  "peakWholeBytes": 1374020087,
+  "peakTempBytes": 21488119,
+  "peakOutputBytes": 18305,
+  "peakNewTotalBytes": 55060684,
+  "borrowedDependencyBytes": 438317056,
+  "error": "stage 1 failed; retained log",
+  "fullRelease": 1793814506.989275,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

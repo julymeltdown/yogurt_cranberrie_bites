@@ -1,0 +1,274 @@
+{
+  "result": "FAIL",
+  "head": "d24668d6e4f15ace9975cac3624615fc374730b6",
+  "diffSha256": "e94415c390fc1b16a32ded276be5073fd4cc9f1476f3fb952ce491c5348c0d16",
+  "qualification": "One 390px actual main.tsx/UI sign-in/default routes and unmodified production readiness factory, canonical Auth/HTTP and incumbent World/Phaser. Controlled HTTP/C05 and synthetic geometric terrain only. No constructed harness Auth/controller/readiness. Live backend, provider, physical device, multiuser and QA08 NOT_RUN.",
+  "errors": [],
+  "stages": [
+    "explicit-sharing-consent"
+  ],
+  "failure": {
+    "stage": "USER report original recovery",
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Reduce panel', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"true\" aria-label=\"Reduce panel\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <dialog open=\"\" aria-labelledby=\"_r_d_\" class=\"mcr-safety-dialog\">…</dialog> from <div id=\"shell-panel-body\" class=\"shell-panel-body\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <dialog open=\"\" aria-labelledby=\"_r_d_\" class=\"mcr-safety-dialog\">…</dialog> from <div id=\"shell-panel-body\" class=\"shell-panel-body\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <dialog open=\"\" aria-labelledby=\"_r_d_\" class=\"mcr-safety-dialog\">…</dialog> from <div id=\"shell-panel-body\" class=\"shell-panel-body\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "state": {
+      "path": "/report",
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "url": "http://127.0.0.1:5173/api/auth/capabilities",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/auth/login",
+          "url": "http://127.0.0.1:5173/api/auth/login",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5173/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5173/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/intros?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications?limit=20&unread_only=false",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/intros?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests?direction=INCOMING&limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000099",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000099",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros/00000000-0000-4000-8000-000000000028",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/intros/00000000-0000-4000-8000-000000000028",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros/00000000-0000-4000-8000-000000000028/sharing-offer",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/intros/00000000-0000-4000-8000-000000000028/sharing-offer",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/social-requests",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/social-requests",
+          "method": "POST",
+          "key": "dd65d6d4-5838-4cba-8295-b50da32edb1a",
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/social-requests/00000000-0000-4000-8000-000000000094",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/social-requests/00000000-0000-4000-8000-000000000094",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/intros?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000099",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000099",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/blocks",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/blocks?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/reports",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/me/reports?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000099",
+          "url": "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000099",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store"
+        }
+      ],
+      "frames": [
+        {
+          "type": "snapshot",
+          "streamId": "00000000-0000-4000-8000-000000000020"
+        },
+        {
+          "type": "policy.baseline",
+          "streamId": "00000000-0000-4000-8000-000000000020",
+          "policyRevision": 1
+        }
+      ],
+      "baselineEnabled": true,
+      "policyRevision": 1,
+      "sockets": 1,
+      "activeSockets": 1,
+      "peakSockets": 1,
+      "peakCanvases": 1,
+      "canvases": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    "text": "Skip to content\nREPORT\n\nEvidence attachments are unavailable in this connection. You can submit a text report when the target is authorized.\n\nReport a concern\nClose report\n\nTarget: user 00000000-0000-4000-8000-000000000099\n\nReason\nHarassment\nPrivacy concern\nUnsafe meeting\nSpam\nOther\nWhat happened? (optional, up to 2000 characters)\n\nOnly authorized reviewers can see your identity, explanation and evidence. Submission does not guarantee a moderation outcome.\n\nSubmit report\n\nYour identity and report details are shared only with authorized reviewers."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "helperSourceCommit": "62f1c3a37eb755ef4cf9292db65443ed2001589b",
+  "sourcePath": "docs/mcr/evidence/fe17-original-completion/qualify-browser.py",
+  "responsibleOwner": "developer83",
+  "adaptedPath": "docs/mcr/evidence/signup-consent-admission/browser-guard.py",
+  "adaptedSha256": "f583e4c171d858d936a5f26fb9b0ed70bc533a721d03274907ef89cf270983d8",
+  "status": "QUALIFIED_BROWSER02_FULL",
+  "differences": [
+    "FE10 finite offer/custody paths",
+    "full independent2s WHOLE census plus100ms resource loop",
+    "exact own scratch SingletonSocket discovery and external byte/entry charging",
+    "recorded PID start fingerprint before cleanup; preserve retained external targets and fail FULL",
+    "prior208B/4 unconfirmed Chrome entries remain readonly carry"
+  ],
+  "runtimeAuthority": "Actualfinite1851offeraccepted18:51:15.001128Z; permitted11GiBfuture-only floor successor; FULL18:52:04.687118Z",
+  "receipt": "browser-02/release.json"
+}

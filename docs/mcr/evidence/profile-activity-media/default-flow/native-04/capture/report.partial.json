@@ -1,0 +1,1492 @@
+{
+  "job": "PROFILE-CHANGED-MAIN-20261104T1845Z",
+  "status": "IN_PROGRESS",
+  "candidate": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "harnessHead": "23c4f8d8156410313076fcda84f178eb66afd3c3",
+  "qualification": "Actual frozen main, canonical UI login, default ports/router/providers and actual Phaser; controlled strict HTTP/C05 only, not live IN03",
+  "reused": "Earlier25 leaf,45 cached-media,7 MeHub native and Root combined caller checks. No replay.",
+  "cases": [
+    {
+      "mode": "loaded",
+      "status": "PASS",
+      "errors": [],
+      "beforePolicy": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 0,
+        "mediaReads": 0,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69"
+          ]
+        }
+      },
+      "loadedFeedUrls": [
+        "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+        "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67"
+      ],
+      "feed": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69"
+          ]
+        }
+      },
+      "beforeProfile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69"
+          ]
+        }
+      },
+      "profile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69"
+          ]
+        }
+      },
+      "media": [
+        {
+          "url": "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+          "width": 50,
+          "height": 50
+        },
+        {
+          "url": "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67",
+          "width": 50,
+          "height": 50
+        }
+      ],
+      "screenshot": "default-loaded-390.png",
+      "invalidated": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "admittedStreams": 0,
+        "canvases": 0,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67",
+            "blob:http://127.0.0.1:5324/41f11e68-e273-40c0-9ee4-1403cf65021a",
+            "blob:http://127.0.0.1:5324/c953da20-27ca-44af-90eb-2f9555326ed9"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b"
+          ]
+        }
+      },
+      "signedOut": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/me/account",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "admittedStreams": 0,
+        "canvases": 0,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67",
+            "blob:http://127.0.0.1:5324/41f11e68-e273-40c0-9ee4-1403cf65021a",
+            "blob:http://127.0.0.1:5324/c953da20-27ca-44af-90eb-2f9555326ed9",
+            "blob:http://127.0.0.1:5324/366c4a27-8bad-4942-9bce-78e33e316094",
+            "blob:http://127.0.0.1:5324/cdcf8a50-c8ef-4024-9e0c-d82998edcc7b",
+            "blob:http://127.0.0.1:5324/682dac84-965c-4d72-bcae-23ceb759535b",
+            "blob:http://127.0.0.1:5324/034749ae-7920-4313-b852-41b0fe369332"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/b2aa4e4c-6fee-4b37-9bdf-72b810b92f69",
+            "blob:http://127.0.0.1:5324/e5b3a5f5-47e3-4139-8446-fdb1bd453241",
+            "blob:http://127.0.0.1:5324/e166c078-a406-41db-bd34-33c50e316961",
+            "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+            "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67",
+            "blob:http://127.0.0.1:5324/23e4eab7-22d9-471a-9f5f-39e56d49a182",
+            "blob:http://127.0.0.1:5324/6478d723-c43a-4ef0-bf1e-01562b962f2e",
+            "blob:http://127.0.0.1:5324/0f1ed933-622b-4943-9d66-b9574fa4b36b",
+            "blob:http://127.0.0.1:5324/682dac84-965c-4d72-bcae-23ceb759535b",
+            "blob:http://127.0.0.1:5324/41f11e68-e273-40c0-9ee4-1403cf65021a",
+            "blob:http://127.0.0.1:5324/034749ae-7920-4313-b852-41b0fe369332",
+            "blob:http://127.0.0.1:5324/c953da20-27ca-44af-90eb-2f9555326ed9",
+            "blob:http://127.0.0.1:5324/366c4a27-8bad-4942-9bce-78e33e316094",
+            "blob:http://127.0.0.1:5324/cdcf8a50-c8ef-4024-9e0c-d82998edcc7b"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "denied-media",
+      "status": "PASS",
+      "errors": [],
+      "beforePolicy": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "denied-media",
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 0,
+        "mediaReads": 0,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7"
+          ]
+        }
+      },
+      "loadedFeedUrls": [],
+      "feed": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "denied-media",
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 403
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 3,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7"
+          ]
+        }
+      },
+      "beforeProfile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "denied-media",
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 403
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 3,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7"
+          ]
+        }
+      },
+      "profile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "denied-media",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 3,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7"
+          ]
+        }
+      },
+      "media": [],
+      "screenshot": "default-denied-media-390.png",
+      "invalidated": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "denied-media",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 3,
+        "socketsCreated": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "admittedStreams": 0,
+        "canvases": 0,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca",
+            "blob:http://127.0.0.1:5324/bdb58f0f-3306-4718-bd46-b0a031c44bb8",
+            "blob:http://127.0.0.1:5324/71822667-4fb7-4173-97f6-75040650a5c5"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff"
+          ]
+        }
+      },
+      "signedOut": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "denied-media",
+        "path": "/me/account",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 1,
+        "mediaReads": 3,
+        "socketsCreated": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "admittedStreams": 0,
+        "canvases": 0,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca",
+            "blob:http://127.0.0.1:5324/bdb58f0f-3306-4718-bd46-b0a031c44bb8",
+            "blob:http://127.0.0.1:5324/71822667-4fb7-4173-97f6-75040650a5c5",
+            "blob:http://127.0.0.1:5324/b695a778-e89a-485a-bcf1-e7031f8c0630",
+            "blob:http://127.0.0.1:5324/6ae3807b-c742-445f-8684-3d64b31232ec",
+            "blob:http://127.0.0.1:5324/aab949c8-3861-404a-88fe-93022b82c54b",
+            "blob:http://127.0.0.1:5324/63821824-8940-429f-8ac4-bc47d06504c7"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/fd38f2ed-3bd8-4e89-8d66-e0e3096e1ab7",
+            "blob:http://127.0.0.1:5324/20376685-5349-4509-8587-fbaed2ae7963",
+            "blob:http://127.0.0.1:5324/3ec46d95-8494-49d2-a8d8-8c7bb2b838ca",
+            "blob:http://127.0.0.1:5324/060b7006-1b3c-40b0-8076-a9fe1f2ea544",
+            "blob:http://127.0.0.1:5324/0455d10e-b9ec-47a2-9547-21757801d66d",
+            "blob:http://127.0.0.1:5324/d9122aa1-2e78-4aaf-b0b8-eff2a4101cff",
+            "blob:http://127.0.0.1:5324/aab949c8-3861-404a-88fe-93022b82c54b",
+            "blob:http://127.0.0.1:5324/bdb58f0f-3306-4718-bd46-b0a031c44bb8",
+            "blob:http://127.0.0.1:5324/63821824-8940-429f-8ac4-bc47d06504c7",
+            "blob:http://127.0.0.1:5324/71822667-4fb7-4173-97f6-75040650a5c5",
+            "blob:http://127.0.0.1:5324/b695a778-e89a-485a-bcf1-e7031f8c0630",
+            "blob:http://127.0.0.1:5324/6ae3807b-c742-445f-8684-3d64b31232ec"
+          ]
+        }
+      }
+    },
+    {
+      "mode": "cold",
+      "status": "PASS",
+      "errors": [],
+      "beforeProfile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "cold",
+        "path": "/world",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 0,
+        "mediaReads": 0,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/8ae98be2-f2d3-4afa-8fd7-a562b1783784",
+            "blob:http://127.0.0.1:5324/b82696db-8116-4d18-8551-80c8baa2738c",
+            "blob:http://127.0.0.1:5324/521b08ed-337a-4b8b-a0d2-8af148729af7",
+            "blob:http://127.0.0.1:5324/ecbf824a-af17-4a43-bd8d-1ae61cb84101",
+            "blob:http://127.0.0.1:5324/2698feb8-b219-426c-a001-c84ba64b75d8",
+            "blob:http://127.0.0.1:5324/3c62ec5f-3b71-4a6c-853e-fe9ce1e9d275"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/2698feb8-b219-426c-a001-c84ba64b75d8"
+          ]
+        }
+      },
+      "profile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "cold",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 0,
+        "mediaReads": 0,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/8ae98be2-f2d3-4afa-8fd7-a562b1783784",
+            "blob:http://127.0.0.1:5324/b82696db-8116-4d18-8551-80c8baa2738c",
+            "blob:http://127.0.0.1:5324/521b08ed-337a-4b8b-a0d2-8af148729af7",
+            "blob:http://127.0.0.1:5324/ecbf824a-af17-4a43-bd8d-1ae61cb84101",
+            "blob:http://127.0.0.1:5324/2698feb8-b219-426c-a001-c84ba64b75d8",
+            "blob:http://127.0.0.1:5324/3c62ec5f-3b71-4a6c-853e-fe9ce1e9d275"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/2698feb8-b219-426c-a001-c84ba64b75d8"
+          ]
+        }
+      },
+      "media": [],
+      "screenshot": "default-cold-390.png",
+      "signedOut": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "cold",
+        "path": "/me/account",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          }
+        ],
+        "feedReads": 0,
+        "mediaReads": 0,
+        "socketsCreated": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "admittedStreams": 0,
+        "canvases": 0,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5324/8ae98be2-f2d3-4afa-8fd7-a562b1783784",
+            "blob:http://127.0.0.1:5324/b82696db-8116-4d18-8551-80c8baa2738c",
+            "blob:http://127.0.0.1:5324/521b08ed-337a-4b8b-a0d2-8af148729af7",
+            "blob:http://127.0.0.1:5324/ecbf824a-af17-4a43-bd8d-1ae61cb84101",
+            "blob:http://127.0.0.1:5324/2698feb8-b219-426c-a001-c84ba64b75d8",
+            "blob:http://127.0.0.1:5324/3c62ec5f-3b71-4a6c-853e-fe9ce1e9d275"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5324/2698feb8-b219-426c-a001-c84ba64b75d8",
+            "blob:http://127.0.0.1:5324/8ae98be2-f2d3-4afa-8fd7-a562b1783784",
+            "blob:http://127.0.0.1:5324/3c62ec5f-3b71-4a6c-853e-fe9ce1e9d275",
+            "blob:http://127.0.0.1:5324/b82696db-8116-4d18-8551-80c8baa2738c",
+            "blob:http://127.0.0.1:5324/521b08ed-337a-4b8b-a0d2-8af148729af7",
+            "blob:http://127.0.0.1:5324/ecbf824a-af17-4a43-bd8d-1ae61cb84101"
+          ]
+        }
+      }
+    }
+  ],
+  "pngBytes": 206802,
+  "startedAt": "2026-11-04T18:45:46.453Z",
+  "browser": "156.0.8078.80"
+}

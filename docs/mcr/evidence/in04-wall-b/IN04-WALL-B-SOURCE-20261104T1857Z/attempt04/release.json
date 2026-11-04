@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "realIN04": "NOT_RUN",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--experimental-transform-types",
+        "frontend/e2e/in04-wall-b/check.ts"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "-p",
+        "frontend/e2e/in04-wall-b/tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "frontend/e2e/in04-wall-b"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "frontend/e2e/in04-wall-b/playwright.config.ts",
+        "--list"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--experimental-transform-types",
+        "frontend/e2e/in04-wall-b/preflight.ts"
+      ],
+      "exit": 2,
+      "expected": 2
+    }
+  ],
+  "peak": {
+    "ownedBytes": 690651,
+    "positiveNewBytes": 540542,
+    "rssBytes": 544096256,
+    "pids": 2
+  },
+  "finished_epoch": 1793818762.598001,
+  "sourceRevision": "23a80afb44fc3cefe261f865158196559315f7f6",
+  "sourceHashes": {
+    "frontend/e2e/in04-wall-b/preflight.ts": "f7e956220d47fce58e027aa56244b5aa2d43ae7ccbe809524c1e81007a30ce28",
+    "frontend/e2e/in04-wall-b/helpers.ts": "785d88de9c55863026fb436b3d9f685db9879b6869b2619d40ac2de554df6602",
+    "frontend/e2e/in04-wall-b/wall-b.spec.ts": "ecb84a2906a161bc8944c85f25fb53cc46426574e1272d712f5d499f5630e5ec",
+    "frontend/e2e/in04-wall-b/world-texture.ts": "f5571382fa95a03972f761f51a1af8a2479d556462ff65ed125062f7b700d088",
+    "frontend/e2e/in04-wall-b/runtime.ts": "6969c25895ba9219e48d9c38b0c9acfd4ac12ca3bdd37224c8f774d4b3a2e9b5",
+    "frontend/e2e/in04-wall-b/validate.py": "e935cc81c1ffaf401c696a3a2cfef69624d29f3fe69baa7cc71a2e3605945009",
+    "frontend/e2e/in04-wall-b/.gitignore": "9031d0c7c796f25117a8136fb2a0261584e002e52f42e81e555a2ce1942583a4",
+    "frontend/e2e/in04-wall-b/tsconfig.json": "c8966c257a2cc136bd4900832ffceb308deaa3bdd52728a468fafa0a0d26655c",
+    "frontend/e2e/in04-wall-b/playwright.config.ts": "36b77437dc07b02f57e89f445ee8936364f8c870258f2ee802e76849854faf2b",
+    "frontend/e2e/in04-wall-b/check.ts": "4161a59a0e3568e92d5074005de6741fea107bb9ca42db5503434d228a3ca627"
+  },
+  "dependencyLinkRemaining": false,
+  "observedPidsAtCleanup": [],
+  "scratchOrServerAllocated": false,
+  "rssAtCleanup": 26968064
+}

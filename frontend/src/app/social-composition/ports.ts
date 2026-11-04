@@ -22,6 +22,8 @@ export interface RequestsModule {
   start(): void
   /** Existing shell destinations only; detail stays inside the requests panel. */
   enter?(path: '/me/social' | '/me/requests'): void
+  /** Bound to a freshly authorized introduction, never a raw user/URL target. */
+  offer?(target: { readonly introId: string; readonly recipientId: string; readonly revision: number }): void
   dispose(): void
   readonly Panel: ComponentType
 }

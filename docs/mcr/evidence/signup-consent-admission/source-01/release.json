@@ -1,0 +1,54 @@
+{
+  "id": "FE10-CONSENT-SOURCE-A-20261104T1800Z",
+  "status": "FULL",
+  "releasedAt": "2026-11-04T18:02:52.366489+00:00",
+  "sourceBaseline": "b13ed1592ba2e68a0f739a6c6717bc146bb49344",
+  "fixes": [
+    {
+      "time": 1793815334.2753038,
+      "base": "b13ed1592ba2e68a0f739a6c6717bc146bb49344",
+      "path": "frontend/src/shared/api/__tests__/enrollment-transport/transport.test.ts",
+      "sha256": "3261b16a9cf5ecd7b4ada6fdac3216ee70e286f3161a324defd807c02a46fd5f",
+      "reason": "Clone the observed request before Ky finalizes its body; test observation only, cancellation is not inferred from this clone; production transport unchanged."
+    }
+  ],
+  "finalCommands": [
+    {
+      "stage": 101,
+      "exit": 0,
+      "log": "101.log"
+    },
+    {
+      "stage": 102,
+      "exit": 0,
+      "log": "102.log"
+    },
+    {
+      "stage": 103,
+      "exit": 0,
+      "log": "103.log"
+    }
+  ],
+  "tests": {
+    "files": 4,
+    "passed": 191,
+    "initialFailures": 5,
+    "reason": "test request observation body finalized by Ky, fixed by cloning inside injected fetch"
+  },
+  "peakNew": {
+    "bytes": 8752192,
+    "rss": 1004650496,
+    "processes": 4
+  },
+  "peakWhole": {
+    "bytes": 2881183921,
+    "entries": 32581
+  },
+  "freeBytes": 20105814016,
+  "ownedPidsRemaining": [],
+  "dependencyLinkRemaining": false,
+  "scratchRemaining": false,
+  "cacheRemaining": false,
+  "portsStarted": false,
+  "failedLogsRetained": true
+}

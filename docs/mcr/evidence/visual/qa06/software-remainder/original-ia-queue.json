@@ -1,0 +1,1045 @@
+{
+  "task": "QA06",
+  "base": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+  "specSha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+  "requiredCount": 61,
+  "excludesOnlyOriginalOptional": [
+    "M10",
+    "R02",
+    "X02"
+  ],
+  "allRowsInheritApplicableLoadingEmptyFailureAccessDeniedRetry": true,
+  "rows": [
+    {
+      "ia": "A01",
+      "route": "/",
+      "label": "ENTER THE WORLD",
+      "specificOriginalStates": "New landing; signed-in redirect; no old homepage.",
+      "originalOwners": "FE08, FE09",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "reference-chrome-v2 native05 Landing390x684",
+        "current-reference-review-20261105"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A02",
+      "route": "/login",
+      "label": "SIGN IN",
+      "specificOriginalStates": "Email/provider entry; invalid credentials, throttling, provider unavailable.",
+      "originalOwners": "FE09, BE03",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "css-parity-signin final390 bodyCSS+sharedheader qualification",
+        "current-reference-review-20261105"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A03",
+      "route": "/signup",
+      "label": "CREATE ACCOUNT",
+      "specificOriginalStates": "Eligibility/consent, signup; duplicate and throttled outcomes without unsafe enumeration.",
+      "originalOwners": "FE10, BE03",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A04",
+      "route": "/verify-email",
+      "label": "VERIFY EMAIL",
+      "specificOriginalStates": "Verify and resend; expiry and resend cooldown.",
+      "originalOwners": "FE10, BE03",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A05",
+      "route": "/reset-password",
+      "label": "RESET PASSWORD",
+      "specificOriginalStates": "Request and complete reset; expired link and neutral account-existence response.",
+      "originalOwners": "FE11, BE03",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A06",
+      "route": "/auth/callback",
+      "label": "CONNECTING",
+      "specificOriginalStates": "Callback completion, denial, invalid state, safe return target.",
+      "originalOwners": "FE11, BE03",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A07",
+      "route": "/legal/:document",
+      "label": "TERMS / PRIVACY / SAFETY",
+      "specificOriginalStates": "Versioned notices, operator contact, independent fan-service disclosure.",
+      "originalOwners": "FE08, BE38",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "A08",
+      "route": "/account/deleted",
+      "label": "ACCOUNT DELETED",
+      "specificOriginalStates": "Completion or pending deletion; clear private client state.",
+      "originalOwners": "FE36, BE42",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "W01",
+      "route": "/world",
+      "label": "WORLD",
+      "specificOriginalStates": "Movement, camera, interaction; loading, live, reconnecting, low power, full room.",
+      "originalOwners": "FE07, FE12, FE14, FE15, FE16, FE17, BE10, BE11, BE12, BE13, BE14",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "reviewed-persistence-motion/browser-retry04 controlled390",
+        "ART06 actualmain threeeras/width ownerqualified unchanged scene",
+        "world-runtime-preferences/native03 reducedmotion/lowpower actual390"
+      ],
+      "next": "REUSE exactowner cohorts; changeddensity/mismatch source owned by231/FE41; no duplicateMap task"
+    },
+    {
+      "ia": "W02",
+      "route": "/world/map",
+      "label": "MAP",
+      "specificOriginalStates": "Overview, camera and place legend; incompatible map version.",
+      "originalOwners": "FE19, AR02, BE08",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "map-art06-default-app native02 threeeras/widths",
+        "map-stage-placement/native02 current changed placement; native01rejected",
+        "231 densityc053 unqualified separatelyowned"
+      ],
+      "next": "REUSE exactowner cohorts; changeddensity/mismatch source owned by231/FE41; no duplicateMap task"
+    },
+    {
+      "ia": "W03",
+      "route": "/world/places/:placeId",
+      "label": "PLACE",
+      "specificOriginalStates": "Photo and instructions; verified, concept-only, closed, removed.",
+      "originalOwners": "FE19, BE08",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "W04",
+      "route": "/world/rooms",
+      "label": "ROOMS",
+      "specificOriginalStates": "Capacity, room switch, party invitation; full and denied.",
+      "originalOwners": "FE18, BE11",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "fe18-rooms-nearby/native02 full/unavailable/denial/switch/admission all3widths; invitations OPEN externalcontract"
+      ],
+      "next": "REUSE clientroom qualification; invitation requires product/frozencontract fromWorld20f/Root; do not fabricate"
+    },
+    {
+      "ia": "W05",
+      "route": "/world/nearby",
+      "label": "NEARBY IN WORLD",
+      "specificOriginalStates": "Accessible nearby-user list; block-filtered presence.",
+      "originalOwners": "FE18, BE13, BE37",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "MOCK_READY exact new cohort states; original other states/live/device not blanketaccepted",
+      "reuse": [
+        "fe18-rooms-nearby/native02 currentfeature threewidths filtering",
+        "native03 currentfeature390focuswithdrawal; no nondefaulteraroute claim",
+        "nearby-era-theme/owner-assessment.json"
+      ],
+      "next": "Retain exact cohort qualification plus source-bound FE18 detailed-state reuse; no unchanged matrix replay"
+    },
+    {
+      "ia": "W06",
+      "route": "/world/theme",
+      "label": "CHOOSE AN ERA",
+      "specificOriginalStates": "Skin selection; loading, fallback, persisted selection.",
+      "originalOwners": "FE06, BE07, AR04",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "MOCK_READY exact new cohort states; original other states/live/device not blanketaccepted",
+      "reuse": [
+        "world-runtime-preferences/native03 actual390settings withalternateassetlimitation",
+        "sharedWorldera chrome; no dedicatedtheme panel persistence all3widths",
+        "nearby-era-theme/owner-assessment.json"
+      ],
+      "next": "Retain exact cohort qualification plus source-bound FE18 detailed-state reuse; no unchanged matrix replay"
+    },
+    {
+      "ia": "W07",
+      "route": "/world/check-in",
+      "label": "REAL-WORLD CHECK-IN",
+      "specificOriginalStates": "Explicit place/audience/expiry selection; active, expired, revoked.",
+      "originalOwners": "FE20, BE09",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "W08",
+      "route": "/world/help",
+      "label": "HOW TO PLAY",
+      "specificOriginalStates": "Controls, virtual/physical distinction, meeting safety.",
+      "originalOwners": "FE15, FE19",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "Responsible sole router owner21e source34b922f1ba4a63c6a66911c087b4efacb42184db publisheda40d6944a65091b93381fa96767357eb2941b74a; actual-main390defaultHelp PASS reused, no duplicate unchanged journey."
+      ],
+      "next": "Published defaultHelp390owner journey reused. Only PARAdE360/DANGER430 boundary readability pair remains selected; no app write/overlay."
+    },
+    {
+      "ia": "F01",
+      "route": "/feed",
+      "label": "FEED",
+      "specificOriginalStates": "Latest-first event feed, filters, cursor loading; stale and read-only.",
+      "originalOwners": "FE27, BE31",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "feed-root-composition/native-round3 feed390x843 controlled Worlddisabled; IN03notimplied"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "F02",
+      "route": "/feed/new",
+      "label": "NEW POST",
+      "specificOriginalStates": "Text and image draft; upload failure, retry, published receipt.",
+      "originalOwners": "FE28, FE04, BE24, BE31",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "F03",
+      "route": "/feed/:postId",
+      "label": "THREAD",
+      "specificOriginalStates": "Post, comments, reaction, report, linked entity; deleted/unavailable.",
+      "originalOwners": "FE28, BE32",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "F04",
+      "route": "/feed/:postId/edit",
+      "label": "EDIT POST",
+      "specificOriginalStates": "Owner editing and deletion; version conflict.",
+      "originalOwners": "FE28, BE31",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "F05",
+      "route": "/notices/:noticeId",
+      "label": "NOTICE",
+      "specificOriginalStates": "Source and confirmation time; superseded or withdrawn.",
+      "originalOwners": "FE27, BE38",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M01",
+      "route": "/meet",
+      "label": "MEET",
+      "specificOriginalStates": "PARTIES / PEOPLE / MY PLAN; filters and restricted states.",
+      "originalOwners": "FE21, FE29",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "css-shared-chrome-ref-01 Meet390 boundedcandidate"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M02",
+      "route": "/meet/parties/new",
+      "label": "CREATE PARTY",
+      "specificOriginalStates": "Capacity, ticket section, time, place, requirements; validation.",
+      "originalOwners": "FE22, BE16",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M03",
+      "route": "/meet/parties/:partyId",
+      "label": "PARTY",
+      "specificOriginalStates": "Apply/cancel; requested, accepted, full, cancelled, closed.",
+      "originalOwners": "FE21, BE17",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M04",
+      "route": "/meet/parties/:partyId/manage",
+      "label": "MANAGE PARTY",
+      "specificOriginalStates": "Review applications, remove member, edit meeting, close/cancel.",
+      "originalOwners": "FE23, BE18",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M05",
+      "route": "/meet/parties/:partyId/rally",
+      "label": "RENDEZVOUS",
+      "specificOriginalStates": "Approved-members-only gathering state; moved, expired, cancelled.",
+      "originalOwners": "FE23, BE19",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M06",
+      "route": "/meet/beacons/:beaconId",
+      "label": "FIND EACH OTHER",
+      "specificOriginalStates": "Physical meeting description, identification, status; stale/revoked.",
+      "originalOwners": "FE20, BE09",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M07",
+      "route": "/meet/people",
+      "label": "PEOPLE",
+      "specificOriginalStates": "Introduction discovery; no results and verification-required.",
+      "originalOwners": "FE29, BE27",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M08",
+      "route": "/meet/intro/edit",
+      "label": "YOUR INTRO",
+      "specificOriginalStates": "Intro draft, private eligibility conditions, publish/close.",
+      "originalOwners": "FE30, BE27",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "M09",
+      "route": "/people/:userId",
+      "label": "PROFILE",
+      "specificOriginalStates": "Large avatar, public profile, request sharing, report/block; private/unavailable.",
+      "originalOwners": "FE30, BE04, BE30",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G01",
+      "route": "/gifts",
+      "label": "GIFTS",
+      "specificOriginalStates": "Discover by time/place; remaining count and no-stock state.",
+      "originalOwners": "FE24, BE20",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "css-shared-chrome-ref-01 Gifts390 boundedcandidate"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G02",
+      "route": "/gifts/new",
+      "label": "CREATE GIVEAWAY",
+      "specificOriginalStates": "Item, photo, quantity, pickup window, place; invalid/upload-failed.",
+      "originalOwners": "FE25, BE20, BE24",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "current-reflow PARADE360/390/430 actualeditable844\u2192420\u2192844 no submit"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G03",
+      "route": "/gifts/:giveawayId",
+      "label": "GIVEAWAY",
+      "specificOriginalStates": "Owner and public details; open, paused, sold-out, completed, cancelled.",
+      "originalOwners": "FE24, BE20",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G04",
+      "route": "/gifts/:giveawayId/manage",
+      "label": "MANAGE GIVEAWAY",
+      "specificOriginalStates": "Owner reservations and stock, pause, confirm pickup; version conflict.",
+      "originalOwners": "FE25, BE20, BE23",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G05",
+      "route": "/gifts/:giveawayId/reservation",
+      "label": "RESERVE",
+      "specificOriginalStates": "Atomic reservation confirmation; held, exhausted, duplicate, expired.",
+      "originalOwners": "FE26, BE21",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G06",
+      "route": "/gifts/pickups/:reservationId",
+      "label": "MY PICKUP",
+      "specificOriginalStates": "Authorized place, time, confirmation code, status; claimed/expired/cancelled.",
+      "originalOwners": "FE26, BE22, BE23",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "G07",
+      "route": "/gifts/mine",
+      "label": "MY GIFTS",
+      "specificOriginalStates": "GIVING / RECEIVING and history.",
+      "originalOwners": "FE24, BE20, BE21",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "R01",
+      "route": "/wall",
+      "label": "WALL",
+      "specificOriginalStates": "Pan/zoom, pixel preview, palette, explicit commit; cooldown/paused/frozen.",
+      "originalOwners": "FE32, FE33, BE34, BE35",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "wall-approved-motif round02 actualApp REVENGE360/390/430 +short390 source5b0 published1a1db340 controlledsnapshot; no live/worldpixel oracle"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U01",
+      "route": "/me",
+      "label": "ME",
+      "specificOriginalStates": "Avatar, profile completion, party and giveaway activity.",
+      "originalOwners": "FE34, BE06",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "css-shared-chrome-ref-01 Me390 boundedcandidate"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U02",
+      "route": "/me/avatar",
+      "label": "DRESS UP",
+      "specificOriginalStates": "Layer selections, presets, preview and save; invalid/version-conflict.",
+      "originalOwners": "FE12, FE13, BE07",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "frontend-combined-adoption reviewed-round01 all-layerLeftWalk390; initialfrontstate notqualified"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U03",
+      "route": "/me/profile",
+      "label": "EDIT PROFILE",
+      "specificOriginalStates": "Nickname, bio, optional ticket section, visibility; validation.",
+      "originalOwners": "FE34, BE04",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "current-reflow PARADE360/390/430 actualeditable844\u2192420\u2192844 no submit",
+        "Profile no-fix disposition settled"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U04",
+      "route": "/me/social",
+      "label": "SOCIAL LINKS",
+      "specificOriginalStates": "Private-by-default handles; configure, replace, remove.",
+      "originalOwners": "FE31, BE28",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U05",
+      "route": "/me/requests",
+      "label": "REQUESTS",
+      "specificOriginalStates": "Sharing requests; pending, approved, rejected, revoked, expired.",
+      "originalOwners": "FE31, BE29, BE30",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U06",
+      "route": "/me/age",
+      "label": "AGE & PRIVACY",
+      "specificOriginalStates": "Unknown, verified, expired, unsupported, provider unavailable.",
+      "originalOwners": "FE30, BE26",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U07",
+      "route": "/me/settings",
+      "label": "SETTINGS",
+      "specificOriginalStates": "Theme, reduced motion, low power, sound off by default.",
+      "originalOwners": "FE34, FE06",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [
+        "world-runtime-preferences/native03 actual390; runtimeproducer cohortnotwidth360/430visual"
+      ],
+      "next": "READY_NEXT: unchangedSettings draft/cancel/no-write360/430 readability; reuse owner390 runtime effects, no duplicate producer performance test"
+    },
+    {
+      "ia": "U08",
+      "route": "/me/blocks",
+      "label": "BLOCKED USERS",
+      "specificOriginalStates": "List and unblock; prior sharing grants do not return automatically.",
+      "originalOwners": "FE36, BE37",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U09",
+      "route": "/me/account",
+      "label": "ACCOUNT",
+      "specificOriginalStates": "Logout, deletion request and status, failure recovery.",
+      "originalOwners": "FE36, BE42",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "U10",
+      "route": "/notifications",
+      "label": "INBOX",
+      "specificOriginalStates": "Read state and authorized deep links; stale target.",
+      "originalOwners": "FE35, BE33",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "X01",
+      "route": "/archive",
+      "label": "AFTER THE SHOW",
+      "specificOriginalStates": "Read-only permitted posts and final wall; no private locations or handles.",
+      "originalOwners": "FE40, BE41",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "S01",
+      "route": "/report?targetType=:type&targetId=:id",
+      "label": "REPORT",
+      "specificOriginalStates": "Reason, evidence, receipt; reporter identity hidden from target.",
+      "originalOwners": "FE36, BE36",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "S02",
+      "route": "route-error-boundary",
+      "label": "UNAVAILABLE",
+      "specificOriginalStates": "Safe 401/403/404/410/429/503 states; return to world.",
+      "originalOwners": "FE07, FE41",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "S03",
+      "route": "connection-and-maintenance-overlay",
+      "label": "RECONNECTING / MAINTENANCE",
+      "specificOriginalStates": "Offline/stale/version mismatch; no silent offline reservation replay.",
+      "originalOwners": "FE17, FE41",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O01",
+      "route": "/admin",
+      "label": "CONTROL ROOM",
+      "specificOriginalStates": "Operational summary and kill switches; degraded state.",
+      "originalOwners": "FE38, BE38",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O02",
+      "route": "/admin/event",
+      "label": "EVENT SETTINGS",
+      "specificOriginalStates": "Event phase, feature flags, notices; publish confirmation.",
+      "originalOwners": "FE38, BE38",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O03",
+      "route": "/admin/places",
+      "label": "VENUE & PLACES",
+      "specificOriginalStates": "Source review, verification, closure, accessibility notes, map version.",
+      "originalOwners": "FE38, BE08, AR01",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O04",
+      "route": "/admin/reports",
+      "label": "REPORT QUEUE",
+      "specificOriginalStates": "Review, action, status; moderator access only.",
+      "originalOwners": "FE37, BE36, BE39",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O05",
+      "route": "/admin/users/:userId",
+      "label": "MEMBER REVIEW",
+      "specificOriginalStates": "Minimal necessary data, suspension, connection termination.",
+      "originalOwners": "FE37, BE39",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O06",
+      "route": "/admin/content",
+      "label": "CONTENT REVIEW",
+      "specificOriginalStates": "Hide/restore posts, parties, giveaways, and comments.",
+      "originalOwners": "FE37, BE39",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O07",
+      "route": "/admin/mural",
+      "label": "WALL CONTROL",
+      "specificOriginalStates": "Pause, region lock, restore, freeze; revision reset.",
+      "originalOwners": "FE39, BE40",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O08",
+      "route": "/admin/audit",
+      "label": "AUDIT LOG",
+      "specificOriginalStates": "Search actions and outcomes; redact sensitive contents.",
+      "originalOwners": "FE38, BE39",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    },
+    {
+      "ia": "O09",
+      "route": "/admin/archive",
+      "label": "CLOSE THE EVENT",
+      "specificOriginalStates": "Freeze, export, expire grants, cleanup; partial-failure recovery.",
+      "originalOwners": "FE39, BE41",
+      "requiredWidths": [
+        360,
+        390,
+        430
+      ],
+      "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
+      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "reuse": [],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+    }
+  ],
+  "queueOrder": [
+    "W05 nondefault eras",
+    "W06 dedicated panel and local persistence",
+    "U07 software-width draft/cancel",
+    "W08 when21e source ready",
+    "remaining exact state leaves using source-bound owner reuse"
+  ],
+  "physicalQuestion": "Already pending; no repoll",
+  "originalGoal": "1793759287 BLOCKED/aligned/unfinished",
+  "selectionPolicy": "No original requirement for61x3x3=549freshscreenshots; shared-layout and owner source/state evidence reduce new cohorts, without marking unexecuted individual combinations PASS"
+}

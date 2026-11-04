@@ -1,0 +1,157 @@
+{
+  "job": "PROFILE-DEFAULT-BROWSER2-20261104T1813Z",
+  "status": "FAIL",
+  "candidate": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "harnessHead": "c6ba8c95317da012c2e1e2e5361c62322f4be115",
+  "qualification": "Actual frozen main, canonical UI login, default ports/router/providers and actual Phaser; controlled strict HTTP/C05 only, not live IN03",
+  "reused": "Earlier25 leaf,45 cached-media,7 MeHub native and Root combined caller checks. No replay.",
+  "cases": [
+    {
+      "mode": "loaded",
+      "status": "IN_PROGRESS",
+      "errors": [
+        "Invalid feed response"
+      ]
+    }
+  ],
+  "pngBytes": 0,
+  "startedAt": "2026-11-04T18:13:30.553Z",
+  "browser": "156.0.8078.80",
+  "error": "locator.fill: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Email', { exact: true })\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/profile-default-flow/native.mjs:61:53",
+  "failure": {
+    "text": ""
+  },
+  "sourceReceipts": [
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json",
+      "sha256": "11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42",
+      "bytes": 204161
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/local-input.json",
+      "sha256": "89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b",
+      "bytes": 267
+    },
+    {
+      "path": "contracts/fixtures/realtime/rooms.json",
+      "sha256": "d04837604d57a40106e823596bc7f7c9d6eb07d8d8829ef0675849348d332529",
+      "bytes": 482
+    },
+    {
+      "path": "contracts/fixtures/realtime/movement-heartbeat.json",
+      "sha256": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+      "bytes": 6083
+    },
+    {
+      "path": "contracts/fixtures/domain/public-post.json",
+      "sha256": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e",
+      "bytes": 942
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/data.ts",
+      "sha256": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+      "bytes": 1263
+    },
+    {
+      "path": "frontend/src/features/event-feed/contract.ts",
+      "sha256": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
+      "bytes": 6968
+    },
+    {
+      "path": "frontend/src/world/network/mock.ts",
+      "sha256": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+      "bytes": 2639
+    },
+    {
+      "path": "frontend/src/world/network/transport/contract.ts",
+      "sha256": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+      "bytes": 9420
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v1/eligible-attendee.mjs",
+      "sha256": "37a5cfe98bad3bc32f99034bc4b7889ef9315f5c494c06fee9f45223448df35e",
+      "bytes": 505
+    },
+    {
+      "path": "contracts/fixtures/core/auth-success.json",
+      "sha256": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+      "bytes": 212
+    },
+    {
+      "path": "contracts/fixtures/core/auth-capabilities-disabled.json",
+      "sha256": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb",
+      "bytes": 538
+    },
+    {
+      "path": "contracts/fixtures/core/bootstrap-open.json",
+      "sha256": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+      "bytes": 14362
+    },
+    {
+      "path": "contracts/generated/mcr-domain.openapi.json",
+      "sha256": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+      "bytes": 2088631
+    },
+    {
+      "path": "frontend/src/world/network/transport/engine.ts",
+      "sha256": "2bc640aa283b9d1586e5b19f3d0eff05d5e19303fdc78d928a1e2a0855de513d",
+      "bytes": 24090
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "sha256": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
+      "bytes": 22882
+    },
+    {
+      "path": "contracts/core/v1/core.schema.json",
+      "sha256": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+      "bytes": 19586
+    },
+    {
+      "path": "contracts/assets/v1/avatar-config.schema.json",
+      "sha256": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+      "bytes": 3235
+    },
+    {
+      "path": "contracts/assets/v1/common.schema.json",
+      "sha256": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+      "bytes": 5744
+    },
+    {
+      "path": "contracts/assets/v2/reviewed/avatar-config.schema.json",
+      "sha256": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+      "bytes": 4149
+    },
+    {
+      "path": "contracts/assets/v2/reviewed/avatar-manifest.schema.json",
+      "sha256": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+      "bytes": 119959
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "sha256": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
+      "bytes": 2065
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/eligible-attendee-scenario.json",
+      "sha256": "af6266c4210d7f18c6e3376683c500c61242969c7325ebec619c1d35e0f9599f",
+      "bytes": 1107
+    },
+    {
+      "path": "frontend/src/shared/api/errors.ts",
+      "sha256": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",
+      "bytes": 9569
+    },
+    {
+      "path": "contracts/realtime/v1/operations.json",
+      "sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+      "bytes": 2200
+    },
+    {
+      "path": "frontend/src/shared/api/domain-operations.generated.ts",
+      "sha256": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+      "bytes": 95102
+    }
+  ],
+  "finishedAt": "2026-11-04T18:13:41.861Z"
+}

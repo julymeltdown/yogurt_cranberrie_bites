@@ -2,7 +2,7 @@ import type { SessionScope } from '../../../shared/api/http'
 import { TransportError } from '../../../shared/api/errors'
 import operations from '../../../../../contracts/realtime/v1/operations.json'
 import type { WorldEvent, WorldResources, WorldState, WorldTransport, WorldTransportOptions, Scheduler } from '../WorldTransport'
-import type { ServerMessage, Snapshot, Input, Resync, SwitchRoom } from './wire-types'
+import type { ServerMessage, Snapshot, Delta, MotionProfile, SelfMotion, Input, Resync, SwitchRoom } from './wire-types'
 import { decode, decodeTicket, ensure, policy, validate, WorldTransportError } from './contract'
 export interface SocketEvent { readonly data?: unknown; readonly code?: number }
 export interface SocketPort {
@@ -34,8 +34,10 @@ class TicketAcquisitionFailure extends WorldTransportError {
   readonly preserveOldRoom: boolean
   constructor(error: unknown) {
     const http = error instanceof TransportError ? error : null
-    super(http?.kind === 'timeout' ? 'timeout' : 'unavailable', http?.kind === 'timeout' ? 4408 : 4500)
     const reasons = ticketOperation.errors as Record<string, readonly string[]>
+    const mapVersion = http?.kind === 'http' && http.status === 409 && http.server?.core?.reason === 'MAP_VERSION_MISMATCH'
+      && reasons['409']?.includes('MAP_VERSION_MISMATCH')
+    super(mapVersion ? 'map-version' : http?.kind === 'timeout' ? 'timeout' : 'unavailable', mapVersion ? 4409 : http?.kind === 'timeout' ? 4408 : 4500)
     this.preserveOldRoom = !!http && (http.kind === 'network' || http.kind === 'timeout' || (http.kind === 'http'
       && !!http.server?.reason && ordinaryTicketReasons.has(http.server.reason)
       && !!reasons[String(http.status)]?.includes(http.server.reason)))
@@ -80,8 +82,12 @@ export class TransportEngine implements WorldTransport {
   private serverOffset = 0
   private bufferedFrames = 0
   private usedTickets = new Set<string>()
+  private readonly motionProfileVersion: '1.0.0' | undefined
+  private motion: { profile: MotionProfile; anchor: SelfMotion; ack: number } | null = null
   private completion: { resolve(): void; reject(error: WorldTransportError): void } | null = null
   constructor(private readonly options: WorldTransportOptions, private readonly factory: SocketFactory) {
+    if (options.motionProfileVersion !== undefined && options.motionProfileVersion !== '1.0.0') throw new WorldTransportError('invalid-context')
+    this.motionProfileVersion = options.motionProfileVersion
     this.clock = options.scheduler ?? defaultScheduler
     this.url = endpoint(options.origin)
   }
@@ -113,7 +119,7 @@ export class TransportEngine implements WorldTransport {
     this.controller = null; this.socket = null; this.completion = null
     this.release.splice(0).forEach(fn => fn()); controller?.abort()
     for (const handle of this.timers.values()) this.clock.clear(handle)
-    this.timers.clear(); this.scope = null; this.resources = null; this.baseline = null
+    this.timers.clear(); this.scope = null; this.resources = null; this.baseline = null; this.motion = null
     this.roster.clear(); this.streams.clear(); this.requests.clear(); this.pending = null; this.heartbeat = null
     this.sequence = this.inputSequence = this.ack = this.tick = this.serverOffset = this.bufferedFrames = 0
     if (socket) { try { socket.close(error && error.code >= 3000 && error.code <= 4999 ? error.code : error ? 4400 : 1000, error ? 'world-transport-error' : 'world-transport-closed') } catch { /* socket already unavailable */ } }
@@ -133,7 +139,8 @@ export class TransportEngine implements WorldTransport {
     if (!['idle', 'closed'].includes(this.status)) return Promise.reject(new WorldTransportError('invalid-context'))
     const session = this.options.session.read()
     if (!session.userId || session.eventId !== resources.eventId || session.signal.aborted || signal?.aborted) return Promise.reject(new WorldTransportError('invalid-context'))
-    try { validate('WorldTicketRequest', body(resources)); validate('Authenticate', { ...resources, protocolVersion: policy.protocol_version, type: 'authenticate', ticket: 'A'.repeat(43) }) }
+    try { validate('WorldTicketRequest', body(resources)); validate('Authenticate', { ...resources, protocolVersion: policy.protocol_version, type: 'authenticate', ticket: 'A'.repeat(43),
+      ...(this.motionProfileVersion ? { motionProfileVersion: this.motionProfileVersion } : {}) }) }
     catch { return Promise.reject(new WorldTransportError('invalid-context')) }
     const g = ++this.generation
     this.scope = { generation: session.generation, userId: session.userId, eventId: session.eventId }
@@ -180,7 +187,8 @@ export class TransportEngine implements WorldTransport {
       listen('open', () => {
         try {
           ensure(this.status === 'opening' && socket.protocol === '' && acquired && this.clock.now() < acquired.expires)
-          const frame = { protocolVersion: policy.protocol_version, type: 'authenticate', ...resources, ticket: acquired.ticket.ticket }
+          const frame = { protocolVersion: policy.protocol_version, type: 'authenticate', ...resources, ticket: acquired.ticket.ticket,
+            ...(this.motionProfileVersion ? { motionProfileVersion: this.motionProfileVersion } : {}) }
           acquired = null
           this.send(frame); this.stateTo('authenticating')
         } catch (error) { acquired = null; if (this.current(g)) this.stop(error instanceof WorldTransportError ? error : new WorldTransportError('invalid-frame')) }
@@ -292,6 +300,7 @@ export class TransportEngine implements WorldTransport {
         if (frame.streamId !== b.streamId || frame.roomEpoch !== b.roomEpoch) { this.recover('EPOCH_CHANGED'); return }
         if (frame.streamSeq !== this.sequence + 1) { this.recover('GAP'); return }
         ensure(frame.serverTick >= this.tick && frame.ackInputSeq >= this.ack && frame.ackInputSeq <= this.inputSequence)
+        this.motionDelta(frame, b.selfUserId)
         const roster = new Set(this.roster)
         for (const id of frame.removes) { ensure(roster.has(id) && id !== this.scope?.userId); roster.delete(id) }
         for (const row of frame.upserts) { this.avatar(row.avatar.config, b); roster.add(row.userId) }
@@ -322,6 +331,24 @@ export class TransportEngine implements WorldTransport {
   private avatar(config: { manifest_id: string; manifest_version: number }, context: WorldResources) {
     ensure(config.manifest_id === context.avatarManifestId && config.manifest_version === context.avatarManifestVersion)
   }
+  private motionDelta(frame: Delta, selfUserId: string) {
+    if (!this.motion) { ensure(!frame.selfMotion); return }
+    const next = frame.selfMotion, previous = this.motion.anchor
+    ensure(next && next.consumedInputSeq >= previous.consumedInputSeq && next.consumedInputSeq <= this.inputSequence
+      && next.droppedTicks >= previous.droppedTicks)
+    const actualSteps = frame.serverTick - this.tick - (next.droppedTicks - previous.droppedTicks)
+    ensure(actualSteps >= 0)
+    if (frame.ackInputSeq === this.motion.ack) {
+      ensure(next.inputAppliedTicks >= previous.inputAppliedTicks && next.inputAppliedTicks - previous.inputAppliedTicks <= actualSteps)
+      if (next.heldInput) ensure(previous.heldInput && next.heldInput.seq === previous.heldInput.seq
+        && next.heldInput.axisX === previous.heldInput.axisX && next.heldInput.axisY === previous.heldInput.axisY
+        && next.heldInput.remainingHoldMs <= previous.heldInput.remainingHoldMs)
+    } else ensure(next.inputAppliedTicks <= actualSteps)
+    if (next.heldInput) ensure(next.heldInput.remainingHoldMs <= this.motion.profile.holdMs)
+    const self = frame.upserts.find(player => player.userId === selfUserId)
+    if (self) ensure(self.position.x === next.position.x && self.position.y === next.position.y)
+    this.motion = { ...this.motion, anchor: structuredClone(next), ack: frame.ackInputSeq }
+  }
   private snapshot(frame: Snapshot) {
     ensure(this.scope && this.resources && ['authenticating','live','resync','switching'].includes(this.status))
     ensure(frame.selfUserId === this.scope.userId && frame.ackInputSeq === 0 && !this.streams.has(frame.streamId) && this.streams.size < 1024)
@@ -338,11 +365,20 @@ export class TransportEngine implements WorldTransport {
       if (frame.roomId === old.roomId && frame.roomEpoch === old.roomEpoch) ensure(frame.serverTick >= this.tick)
     }
     ensure(keys.every(k => frame[k] === expected[k]))
+    let motion: typeof this.motion = null
+    if (frame.motionProfile || frame.selfMotion) {
+      ensure(this.motionProfileVersion === '1.0.0' && frame.motionProfile && frame.selfMotion)
+      if (old && this.motion && frame.roomId === old.roomId && frame.roomEpoch === old.roomEpoch) {
+        ensure(frame.selfMotion.droppedTicks >= this.motion.anchor.droppedTicks
+          && frame.selfMotion.droppedTicks - this.motion.anchor.droppedTicks <= frame.serverTick - this.tick)
+      }
+      motion = { profile: structuredClone(frame.motionProfile), anchor: structuredClone(frame.selfMotion), ack: 0 }
+    }
     for (const row of frame.players) this.avatar(row.avatar.config,frame)
     const remaining = Date.parse(frame.accessExpiresAt) - (this.clock.now() + this.serverOffset)
     ensure(remaining > 0)
     const { players, ...metadata } = frame
-    this.baseline = metadata; this.resources = Object.fromEntries(keys.map(k => [k,frame[k]])) as unknown as WorldResources
+    this.baseline = metadata; this.motion = motion; this.resources = Object.fromEntries(keys.map(k => [k,frame[k]])) as unknown as WorldResources
     this.roster = new Set(players.map(p => p.userId)); this.streams.add(frame.streamId)
     this.sequence = this.inputSequence = this.ack = 0; this.tick = frame.serverTick; this.pending = null
     this.clearTimer('handshake'); this.clearTimer('control')

@@ -1,0 +1,64 @@
+{
+  "status": "FULL_RELEASE",
+  "slot": "FE17-ORIGINAL-SOURCE-B-20261104T1750Z",
+  "source": "2fa2539ab0a7dd41aeb5e59c662f32a511a9c1fb",
+  "releasedUTC": "2026-11-04T17:54:14.950763+00:00",
+  "originalWorkStopUTC": "2026-11-04T17:54:21.453728+00:00",
+  "originalDeadlineUTC": "2026-11-04T17:55:21.453728+00:00",
+  "qualification": "SCOPED_TESTS_LINT_SYNTAX_PLAN_PASS; FULL_APPLICATION_TYPES_NOT_GREEN",
+  "cases": 27,
+  "publishedDelayedBaseline": "Expected failure reproduced after dependency-alias repair; raw outcomes retained",
+  "fullApplicationTypes": {
+    "files": 977,
+    "diagnostics": 2,
+    "owner": "Root/Gifts fixture",
+    "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx:38",
+    "diagnostic": "TS2339 Blob|MediaSource.type/size; no own source diagnostics and no exclusions/waiver"
+  },
+  "peakAllProcesses": 4,
+  "peakRssBytes": 1758986240,
+  "peakWholeBytes": 2761944272,
+  "peakTmpBytes": 1447797,
+  "positiveWholeGrowthBytes": 390817,
+  "maximumNewGrowthEstimateBytes": 1838614,
+  "wholeRetainedBytes": 2760537298,
+  "chargedEntries": 58789,
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801508509,
+        "files": 7772,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1938985,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1548826470,
+    "reachableGitObjects": 39443,
+    "wholeCarryBytes": 2760537298,
+    "chargedFiles": 58789
+  },
+  "freeBytes": 25533513728,
+  "ownedWorkflowProcesses": [],
+  "liveRecordedPids": [],
+  "ownedTemporaryCachePaths": [],
+  "ownedDependencyLinks": [],
+  "borrowedViteTemp": [],
+  "ownedEvidenceHandles": [],
+  "lsofExit": 1,
+  "ports": "No socket/server/browser/listener created in this source-only round",
+  "nextFairOwner": "01a1a230-6acc-7e82-9e4b-92506decc745",
+  "routingCorrection": "53d received earlier SourceA; next B is230 commonoperations per Social newest routing",
+  "runtimeReservation": "RELEASED independently of documentation/publication; no fresh work until named reallocation"
+}

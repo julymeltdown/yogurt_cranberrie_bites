@@ -1,0 +1,7 @@
+{
+  "extends": "../../../../../tsconfig.json",
+  "compilerOptions": { "incremental": false, "types": ["vite/client", "node"] },
+  "include": ["../../model/enrollment.ts", "../../model/enrollment-contract.ts", "../../ui/SignUp.tsx", "../../ui/VerifyEmail.tsx",
+    "../../ui/ConsentAdmission.tsx", "../../ui/EnrollmentPolicy.tsx", "../enrollment.test.ts", "./fixtures.ts", "./view.test.tsx",
+    "./vitest.config.ts", "../fixtures/enrollment-preview.tsx", "../../../../shared/api/__tests__/enrollment-transport/transport.test.ts"]
+}

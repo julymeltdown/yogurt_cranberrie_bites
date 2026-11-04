@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "qualification": "Actual frozen main, canonical UI login, default ports/router/providers and actual Phaser; controlled strict HTTP/C05 only, not live IN03",
+  "candidate": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "harnessHead": "23c4f8d8156410313076fcda84f178eb66afd3c3",
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "mode": "loaded",
+      "status": "PASS",
+      "pageErrors": [],
+      "beforeMeRequests": {
+        "feed": 1,
+        "media": 5
+      },
+      "profileRequests": {
+        "feed": 1,
+        "media": 5
+      },
+      "mediaGeometry": [
+        {
+          "url": "blob:http://127.0.0.1:5324/adff05e9-cc0e-4d98-a771-ae0350c2619b",
+          "width": 50,
+          "height": 50
+        },
+        {
+          "url": "blob:http://127.0.0.1:5324/215b392d-ea46-49ae-98ae-49e79bebbd67",
+          "width": 50,
+          "height": 50
+        }
+      ],
+      "exactSameFirstBlobUrls": true,
+      "privacyInvalidation": {
+        "rowsAndImagesRemoved": true,
+        "oldProfileUrlsRevoked": true,
+        "noAdditionalFeedOrMediaReads": true
+      },
+      "worldBeforePrivacy": {
+        "sameMarkedHost": true,
+        "socketsCreated": 1,
+        "peakSockets": 1,
+        "peakCanvases": 1
+      },
+      "signedOut": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "createdURLCount": 14,
+        "uniqueRevokedURLCount": 14
+      }
+    },
+    {
+      "mode": "denied-media",
+      "status": "PASS",
+      "pageErrors": [],
+      "beforeMeRequests": {
+        "feed": 1,
+        "media": 3
+      },
+      "profileRequests": {
+        "feed": 1,
+        "media": 3
+      },
+      "mediaGeometry": [],
+      "exactSameFirstBlobUrls": true,
+      "privacyInvalidation": {
+        "rowsAndImagesRemoved": true,
+        "oldProfileUrlsRevoked": true,
+        "noAdditionalFeedOrMediaReads": true
+      },
+      "worldBeforePrivacy": {
+        "sameMarkedHost": true,
+        "socketsCreated": 1,
+        "peakSockets": 1,
+        "peakCanvases": 1
+      },
+      "signedOut": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "createdURLCount": 12,
+        "uniqueRevokedURLCount": 12
+      }
+    },
+    {
+      "mode": "cold",
+      "status": "PASS",
+      "pageErrors": [],
+      "beforeMeRequests": {
+        "feed": 0,
+        "media": 0
+      },
+      "profileRequests": {
+        "feed": 0,
+        "media": 0
+      },
+      "mediaGeometry": [],
+      "exactSameFirstBlobUrls": true,
+      "privacyInvalidation": null,
+      "worldBeforePrivacy": {
+        "sameMarkedHost": true,
+        "socketsCreated": 1,
+        "peakSockets": 1,
+        "peakCanvases": 1
+      },
+      "signedOut": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "createdURLCount": 6,
+        "uniqueRevokedURLCount": 6
+      }
+    }
+  ],
+  "evidence": "native-04/capture/report.json",
+  "sourceReceiptCount": 479,
+  "priorFailedContexts": "native-01..03 retained unchanged; no successful case replay",
+  "runtimeResources": "FULL native-04/release.json"
+}

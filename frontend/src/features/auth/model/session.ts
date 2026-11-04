@@ -8,10 +8,15 @@ import { decodeBootstrap } from './bootstrap'
 import { createBrowserCookiePolicy, type CookiePolicy } from './cookie-policy'
 import { createRecovery } from './recovery'
 import { createEnrollment } from './enrollment'
+import { decodeAdmission, type EnrollmentAdmission } from './enrollment-contract'
 import { createAccountDeletionOwner } from './account-deletion'
 
 type Notice = 'invalid-input' | 'credentials' | 'rate-limited' | 'unavailable' | 'expired' | 'changed' | null
+export type AdmissionStatus = 'unchecked' | 'checking' | 'ERROR' | EnrollmentAdmission['decision']
 export interface AuthState {
+  /** Optional for existing embedding fixtures; a missing value never admits an authenticated actor. */
+  readonly admission?: AdmissionStatus
+  readonly admissionPending?: boolean
   readonly readiness: SessionReadiness
   readonly pending: 'login' | 'logout' | null
   readonly capabilities: 'loading' | 'ready' | 'error'
@@ -37,25 +42,70 @@ export function createSessionController(options: SessionOptions) {
   const http = createHttpClient({ session, refresh: { decode: decodeAuth },
     ...(options.fetch ? { fetch: options.fetch } : {}), ...(options.timeoutMs ? { timeoutMs: options.timeoutMs } : {}) })
   let state: AuthState = Object.freeze({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null,
-    capabilities: 'loading', emailEnabled: false, notice: null, logout: 'none' })
+    capabilities: 'loading', emailEnabled: false, notice: null, logout: 'none', admission: 'unchecked', admissionPending: false })
   let started = false, disposed = false, intent = 0, expiresAt = 0, enrollmentEmailAvailable = false
   let expiry: ReturnType<typeof setTimeout> | undefined
   let refreshFlight: Promise<void> | undefined
   let capabilitiesFlight: Promise<void> | undefined
+  let admissionFlight: { generation: number; promise: Promise<boolean> } | undefined
   const listeners = new Set<() => void>()
   const publish = (patch: Partial<AuthState>) => {
     if (disposed) return
     state = Object.freeze({ ...state, ...patch }); const snapshot = [...listeners]; snapshot.forEach(listener => listener())
   }
   function clear(notice: Notice = null) {
-    ++intent; clearTimeout(expiry); expiresAt = 0; refreshFlight = undefined
+    ++intent; clearTimeout(expiry); expiresAt = 0; refreshFlight = undefined; admissionFlight = undefined
     session.replace(session.read().generation, null)
-    publish({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null, notice })
+    publish({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null, notice, admission: 'unchecked', admissionPending: false })
   }
   const recovery = createRecovery({ session, http, privacy, cookiePolicy,
     canStart: () => !disposed && state.pending === null && !enrollment.pending, beforeConfirm: () => clear() })
-  const enrollment = createEnrollment({ session, http, privacy, syntheticQualification: options.syntheticEnrollment === true,
-    canStart: () => !disposed && state.pending === null && !recovery.pending && privacy.capture().gate === 'open', available: () => enrollmentEmailAvailable })
+  const enrollment = createEnrollment({ session, http, privacy,
+    canStart: () => !disposed && state.pending === null && !recovery.pending && !admissionFlight && privacy.capture().gate === 'open', available: () => enrollmentEmailAvailable })
+  // Canonical OAuth/restored identities enter through the existing session port, not email capability.
+  let identitySignal = session.read().signal
+  const changedIdentity = () => {
+    identitySignal.removeEventListener('abort', changedIdentity)
+    identitySignal = session.read().signal
+    identitySignal.addEventListener('abort', changedIdentity, { once: true })
+    admissionFlight = undefined
+    publish({ admission: 'unchecked', admissionPending: false, readiness: session.read().userId ? 'checking' : eventId ? 'anonymous' : 'unavailable' })
+    if (started && !disposed && session.read().userId) void checkAdmission()
+  }
+  identitySignal.addEventListener('abort', changedIdentity, { once: true })
+  function admissionState(decision: AdmissionStatus) {
+    const previouslyAdmitted = state.admission === 'ADMITTED'
+    publish({ admission: decision, admissionPending: false, readiness: decision === 'ADMITTED' && eventId ? 'ready' : decision === 'checking' ? 'checking' : 'unavailable' })
+    if (previouslyAdmitted && decision !== 'ADMITTED' && decision !== 'checking') privacy.changePolicy(privacy.capture(), 'consent-revoked')
+  }
+  /** Authenticated read only. No capability, signup, POST replay, second identity or cookie restoration. */
+  function checkAdmission(signal?: AbortSignal): Promise<boolean> {
+    if (disposed || !session.read().userId || signal?.aborted) return Promise.resolve(false)
+    const expected = session.read(), attempt = intent, previous = state.admission ?? 'unchecked'
+    if (admissionFlight?.generation === expected.generation) return admissionFlight.promise.then(admitted => !signal?.aborted && admitted)
+    const flight: Promise<boolean> = Promise.resolve().then(async () => {
+      if (!current(attempt, expected)) return false
+      try {
+        const response = await http.request({ path: '/api/auth/enrollment/admission', method: 'GET', access: 'protected', errorFamily: 'auth',
+          decode: decodeAdmission })
+        if (!current(attempt, expected)) return false
+        admissionState(response.data.decision)
+        return response.data.decision === 'ADMITTED'
+      } catch (error) {
+        if (!current(attempt, expected)) return false
+        if (error instanceof TransportError && error.status === 401 && session.read().tokenVersion === expected.tokenVersion) { clear('expired'); return false }
+        const reason = error instanceof TransportError ? error.server?.envelope.details?.reason : null
+        admissionState(error instanceof TransportError && error.status === 503 && reason === 'POLICY_UNAVAILABLE' ? 'POLICY_UNAVAILABLE'
+          : error instanceof TransportError && error.status === 403 && reason === 'ACCOUNT_INACTIVE' ? 'ACCOUNT_INACTIVE' : 'ERROR')
+        return false
+      } finally { if (admissionFlight?.promise === flight) admissionFlight = undefined }
+    })
+    admissionFlight = { generation: expected.generation, promise: flight }
+    if (previous === 'ADMITTED') publish({ admissionPending: true })
+    else admissionState('checking')
+    // A route/StrictMode abort cannot cancel the canonical decision needed by another caller.
+    return flight.then(admitted => !signal?.aborted && admitted)
+  }
   const stopPeer = cookiePolicy.onInvalidate(() => {
     const interruptedLogout = state.pending === 'logout'
     clear('changed')
@@ -119,6 +169,9 @@ export function createSessionController(options: SessionOptions) {
     // Features cannot opt into FE01's uncoordinated refresh path through this composition.
     if ('refresh' in input || input.path.startsWith('/api/auth/')) throw new TransportError('invalid-request')
     const expected = session.read()
+    if (input.access === 'protected' && session.read().userId && state.admission !== 'ADMITTED') {
+      if (!await checkAdmission(input.signal) || !session.isCurrent(expected)) throw new TransportError('invalid-request')
+    }
     const execute = async () => {
       const result = await http.request(input)
       if (!session.isCurrent(expected)) throw new TransportError('session-changed')
@@ -136,6 +189,12 @@ export function createSessionController(options: SessionOptions) {
         throw error
       }
     } catch (error) {
+      if (input.access === 'protected' && session.isCurrent(expected) && error instanceof TransportError) {
+        const reason = error.server?.envelope.details?.reason
+        if (error.status === 403 && reason === 'CONSENT_REQUIRED') admissionState('CONSENT_REQUIRED')
+        if (error.status === 503 && reason === 'POLICY_UNAVAILABLE') admissionState('POLICY_UNAVAILABLE')
+        if (error.status === 403 && reason === 'ACCOUNT_INACTIVE') admissionState('ACCOUNT_INACTIVE')
+      }
       if (input.access === 'protected' && session.isCurrent(expected)
         && error instanceof TransportError && error.status === 401) clear('expired')
       throw error
@@ -156,7 +215,7 @@ export function createSessionController(options: SessionOptions) {
     credentialExpiry: () => expiresAt, unauthorized: () => clear('expired'),
   })
   return {
-    session, queryClient, privacy, request, requestSensitive, enrollment, accountDeletion: deletion.port,
+    session, queryClient, privacy, request, requestSensitive, enrollment, checkAdmission, accountDeletion: deletion.port,
     checkEnrollmentAvailability: () => capabilities(true),
     requestPasswordReset: recovery.request,
     async confirmPasswordReset(token: string, newPassword: string, signal?: AbortSignal) {
@@ -168,7 +227,7 @@ export function createSessionController(options: SessionOptions) {
     read: () => state,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } },
     readiness: { read: () => state.readiness, subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } } },
-    start() { if (!started && !disposed) { started = true; void capabilities() } },
+    start() { if (!started && !disposed) { started = true; void capabilities(); if (session.read().userId) void checkAdmission() } },
     retryCapabilities() { if (state.capabilities !== 'loading') void capabilities() },
     async login(email: string, password: string): Promise<boolean> {
       if (disposed || state.pending || recovery.pending || enrollment.pending || !eventId || !state.emailEnabled) return false
@@ -185,7 +244,9 @@ export function createSessionController(options: SessionOptions) {
           const installed = session.replace(expected.generation, { userId: result.data.userId, eventId, accessToken: result.data.accessToken })
           if (!installed || !session.isCurrent(installed)) return false
           expireIn(result.data.expiresIn)
-          publish({ readiness: 'ready', pending: null, notice: null })
+          await checkAdmission()
+          if (!current(attempt, installed)) return false
+          publish({ pending: null, notice: null })
           return true
         })
       } catch (error) {
@@ -215,6 +276,7 @@ export function createSessionController(options: SessionOptions) {
     async loadBootstrap(scope: ActiveScope, signal: AbortSignal) {
       try {
         if (!session.isCurrent(scope)) throw new TransportError('session-changed')
+        if (!await checkAdmission(signal)) throw new ShellLoadError(state.admission === 'CONSENT_REQUIRED' || state.admission === 'ACCOUNT_INACTIVE' ? 'denied' : 'unavailable')
         const response = await request({ path: `/api/concert/events/${scope.eventId}/bootstrap`, method: 'GET', access: 'protected', errorFamily: 'core', signal,
           decode: value => decodeContract('Bootstrap', value) })
         const result = await decodeBootstrap(response.data, scope)
@@ -222,6 +284,7 @@ export function createSessionController(options: SessionOptions) {
         return result
       } catch (error) {
         if (signal.aborted || !session.isCurrent(scope)) throw new ShellLoadError('unauthenticated')
+        if (error instanceof ShellLoadError) throw error
         if (!(error instanceof TransportError)) { clear('unavailable'); throw new ShellLoadError('unavailable') }
         if (error.kind === 'invalid-response') clear('unavailable')
         const reason = error.status === 401 ? 'unauthenticated' : error.status === 403 ? 'denied' : error.status === 404 ? 'not-found'
@@ -231,6 +294,7 @@ export function createSessionController(options: SessionOptions) {
     },
     dispose() {
       if (disposed) return
+      identitySignal.removeEventListener('abort', changedIdentity)
       deletion.dispose(); enrollment.dispose(); recovery.dispose(); clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
     },
   }

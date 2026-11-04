@@ -1,0 +1,43 @@
+{
+  "id": "FE10-CONSENT-BROWSER1-20261104T1812Z",
+  "status": "FULL_RUNTIME_RELEASED_GUARD_FAILURE_WITH_EXPLICIT_RETAINED_EXTERNAL_CANDIDATES",
+  "releasedAt": "2026-11-04T18:16:07.317680+00:00",
+  "exit": 1,
+  "browserAcceptance": "NOT_RUN_TO_COMPLETION",
+  "failure": "Undeclared reachable symlink target; no path was captured by generic first-census error",
+  "ownedPidsRemaining": [],
+  "dependencyLinkRemaining": false,
+  "declaredScratchRemaining": false,
+  "declaredCacheRemaining": false,
+  "portsRemainingFromOwnedTree": false,
+  "externalTemporaryCandidates": [
+    {
+      "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.chrome_chrome_url_fetcher_.NFA2MT",
+      "logicalBytes": 64,
+      "entries": 1,
+      "ownership": "unconfirmed; readonly retained candidate, no deletion or disuse inference",
+      "mtime": 1793815991.9054043
+    },
+    {
+      "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.LtSaIg",
+      "logicalBytes": 144,
+      "entries": 3,
+      "ownership": "unconfirmed; readonly retained candidate, no deletion or disuse inference",
+      "mtime": 1793815991.3456025
+    }
+  ],
+  "externalTemporaryCandidateBytes": 208,
+  "externalTemporaryCandidateEntries": 4,
+  "noPeerOrUnconfirmedDirectoryDeleted": true,
+  "peakNew": {
+    "bytes": 31943368,
+    "rss": 2001977344,
+    "processes": 10
+  },
+  "peakWhole": {
+    "bytes": 2881183921,
+    "entries": 32795
+  },
+  "freeBytes": 17296875520,
+  "retainedArtifacts": "first360filledform/accepted screenshot plus all failed logs/offer/guard/failure metadata; not PASS"
+}

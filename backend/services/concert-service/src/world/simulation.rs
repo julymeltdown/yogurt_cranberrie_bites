@@ -6,6 +6,7 @@ use concert_domain::{
     AssetId, ParticipantKey, Revision,
 };
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
+use super::motion_profile::{HeldInput, MotionAnchor, MotionCapture, MotionProfile};
 use uuid::Uuid;
 
 pub const ROOM_CAPACITY: usize = 50;
@@ -94,6 +95,8 @@ struct Player {
     access_expires_at_ms: u64,
     state: PlayerState,
     last_received_seq: u64,
+    consumed_input_seq: u64,
+    input_applied_ticks: u64,
     pending: VecDeque<(Input, u64)>,
     pending_interaction: Option<u64>,
     held: Option<(Input, u64)>,
@@ -127,6 +130,8 @@ pub struct Simulation {
     last_now_ms: u64,
     last_step_ms: u64,
     server_tick: u64,
+    dropped_ticks: u64,
+    motion_profile: Option<MotionProfile>,
 }
 impl Simulation {
     #[allow(clippy::too_many_arguments)]
@@ -163,6 +168,8 @@ impl Simulation {
             last_now_ms: now_ms,
             last_step_ms: now_ms,
             server_tick: 0,
+            dropped_ticks: 0,
+            motion_profile: None,
         })
     }
     fn clock(&mut self, now_ms: u64) -> Result<(), SimulationError> {
@@ -234,6 +241,8 @@ impl Simulation {
                 access_expires_at_ms,
                 state,
                 last_received_seq: 0,
+                consumed_input_seq: 0,
+                input_applied_ticks: 0,
                 pending: VecDeque::new(),
                 pending_interaction: None,
                 held: None,
@@ -289,6 +298,8 @@ impl Simulation {
         player.access_expires_at_ms = expiry;
         player.state.ack_input_seq = 0;
         player.last_received_seq = 0;
+        player.consumed_input_seq = 0;
+        player.input_applied_ticks = 0;
         player.pending.clear();
         player.pending_interaction = None;
         player.held = None;
@@ -395,7 +406,11 @@ impl Simulation {
                 // A later packet must not erase a stop that applies to an earlier catch-up step.
                 while player.pending.front().is_some_and(|(_, at)| *at <= step_at) {
                     let (input, at) = player.pending.pop_front().expect("front checked above");
+                    player.consumed_input_seq = input.seq();
                     if now - at <= self.limits.input_hold_ms() {
+                        if player.state.ack_input_seq != input.seq() {
+                            player.input_applied_ticks = 0;
+                        }
                         player.state.ack_input_seq = input.seq();
                         player.held = Some((input, at));
                     } else {
@@ -410,6 +425,8 @@ impl Simulation {
                 }
                 if let Some((input, at)) = &player.held {
                     if *at <= step_at && now - at <= self.limits.input_hold_ms() {
+                        // Applications include neutral and collision-blocked outcomes.
+                        player.input_applied_ticks += 1;
                         player.state.position =
                             self.map.step(player.state.position, input, self.limits);
                     } else {
@@ -431,8 +448,41 @@ impl Simulation {
         }
         self.last_step_ms += due * STEP_MS;
         self.server_tick += due;
+        self.dropped_ticks += due - steps;
         result.server_tick = self.server_tick;
         Ok(result)
+    }
+    /// Call only with the exact validated release geometry hash, before serving.
+    pub fn configure_motion_profile(&mut self, geometry_hash: &str) -> Result<(), SimulationError> {
+        if self.server_tick != 0 || !self.players.is_empty() || self.motion_profile.is_some() {
+            return Err(SimulationError::Binding);
+        }
+        self.motion_profile = Some(MotionProfile::new(geometry_hash, self.limits).ok_or(SimulationError::Binding)?);
+        Ok(())
+    }
+    pub(crate) fn motion_capture(&self, binding: &Binding, now: u64) -> Option<MotionCapture> {
+        let player = self.players.get(&binding.key.user_id.uuid())?;
+        if player.binding != *binding || now < self.last_now_ms { return None; }
+        let held_input = player.held.as_ref().and_then(|(input, received)| {
+            let age = now.checked_sub(*received)?;
+            (age <= self.limits.input_hold_ms()).then(|| HeldInput {
+                seq: input.seq(), axis_x: input.axes().0, axis_y: input.axes().1,
+                remaining_hold_ms: self.limits.input_hold_ms() - age,
+            })
+        });
+        Some(MotionCapture {
+            binding: binding.clone(), profile: self.motion_profile.clone()?,
+            anchor: MotionAnchor {
+                server_tick: self.server_tick, position: player.state.position.into(),
+                consumed_input_seq: player.consumed_input_seq,
+                input_applied_ticks: player.input_applied_ticks,
+                dropped_ticks: self.dropped_ticks, held_input,
+            },
+        })
+    }
+    /// Owner-only diagnostic/vector view; exact current binding is mandatory.
+    pub fn motion_state(&self, binding: &Binding, now: u64) -> Option<(MotionProfile, MotionAnchor)> {
+        self.motion_capture(binding, now).map(|c| (c.profile, c.anchor))
     }
     /// Owner-only state for authorized projection, never a public unfiltered roster endpoint.
     pub fn state(&self, user_id: Uuid) -> Option<PlayerState> {

@@ -7,16 +7,18 @@ import { createSessionController } from '../../model/session'
 import { eventId } from './data'
 import '../../../../shared/styles/base.css'
 import '../../../../app/shell.css'
+// Deterministic test server only; no policy is installed by this fixture.
 const params = new URLSearchParams(location.search), verify = params.get('screen') === 'verify'
-const event = params.get('event'), configuredEvent = event === 'malformed' ? 'malformed-event' : event === 'none' ? null : eventId
-history.replaceState(null, '', verify ? '/verify-email' : '/signup')
-const counts = { signup: 0, verify: 0, resend: 0 }, nativeFetch = globalThis.fetch.bind(globalThis)
+const query = new URLSearchParams()
+for (const key of ['attemptId', 'code']) if (params.has(key)) query.set(key, params.get(key)!)
+history.replaceState(null, '', verify ? `/verify-email${query.size ? `?${query}` : ''}` : '/signup')
+const counts = { policy: 0, attempts: 0, signup: 0, verify: 0, resend: 0 }, nativeFetch = globalThis.fetch.bind(globalThis)
 const observedFetch: typeof fetch = (input, init) => {
   const url = input instanceof Request ? input.url : String(input)
-  for (const key of Object.keys(counts) as (keyof typeof counts)[]) if (url.endsWith(`/email/${key}`)) counts[key]++
+  for (const key of Object.keys(counts) as (keyof typeof counts)[]) if (url.endsWith(`/enrollment/${key}`)) counts[key]++
   return nativeFetch(input, init)
 }
-const auth = createSessionController({ eventId: configuredEvent, syntheticEnrollment: !event, timeoutMs: 800, fetch: observedFetch })
+const auth = createSessionController({ eventId, timeoutMs: 800, fetch: observedFetch })
 auth.start()
 const router = createAppRouter(createProductionPorts(auth))
 declare global { interface Window { __FE10_TEST__: {
@@ -28,7 +30,4 @@ window.__FE10_TEST__ = {
   hasAccess: () => auth.session.read().accessToken !== null, dispatches: () => ({ ...counts }),
   dispose: () => { router.dispose(); auth.dispose() },
 }
-createRoot(document.getElementById('root')!).render(<StrictMode>
-  <p role="note">SYNTHETIC_FE10 — UI qualification only. No real eligibility policy, recorded consent, account or mail delivery.</p>
-  <RouterProvider router={router} />
-</StrictMode>)
+createRoot(document.getElementById('root')!).render(<StrictMode><RouterProvider router={router} /></StrictMode>)

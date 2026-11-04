@@ -1,0 +1,34 @@
+{
+  "task": "IN04-WALL-B-RUNNER",
+  "recordedAtUtc": "2026-11-04T18:49:19.228569+00:00",
+  "base": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "preparedSource": "fa6f4d476c3a46afadb07f1ebb593be710624502",
+  "realIN04": "NOT_RUN",
+  "goal": "original IN04 BLOCKED, unfinished; aligned continuation, no reset",
+  "dependencies": {
+    "frontend/e2e/real/mural-helpers.ts": "b7845326b3306318e7d01a0cdc1213b792cde0c00fe0d96514aacae11566b647",
+    "frontend/e2e/real/world-gate/observer.ts": "96a1520f56ee2104176196c7bb698ce8b20bc4dca46d7290b04207324df20a44",
+    "frontend/e2e/real/world-gate/decoder.ts": "78aefef9a35bb67b6be452dfb0f7f53f10436a3b0418078b312ba39dfed76cc0",
+    "frontend/src/app/world-entry/mural-production/configuration.ts": "4b2ce261d4bb3582d2111866d3aa5583c1c5b87dc969c9c77d5b90607eb5aa15",
+    "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts": "e2af02c405caef3143e7cb0c5eddc69b2ecdf14a5bf6e27d91dce03b2c5376ee",
+    "frontend/src/shared/api/generated/types.ts": "0bced133b9fef03234d6f976155e1b7b3a882caa8108b08fe33e02c24932d33e",
+    "contracts/domain/v1/mural.schema.json": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+    "contracts/generated/mcr-domain.openapi.json": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
+    "contracts/realtime/v1/world.schema.json": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "responsibleOwnerDispositions": {
+    "Root153": "Exact new scopes and retained checkout confirmed. Named publisher Root153. Actual default App controlled evidence is separate from live IN04.",
+    "BE202": "Native canonical Wall/seed+restart qualified and released; no standing cluster/accounts/event/operator. Admin runtime/routing unfinished.",
+    "Root1fc": "No currently usable canonical App/Gateway two-account Wall/moderation environment handoff."
+  },
+  "missingLiveInputs": [
+    "actual source-qualified inspect/restart/mural-binding adapter module and hash",
+    "fresh current canonical stack with qualified migrations, seed and prepared transaction capacity",
+    "real independent members and admitted OPEN/LIVE event",
+    "actual same-Core-held operator role and qualified moderation HTTP",
+    "exact serving DEV Phaser module URL and map-bound production configuration"
+  ],
+  "resourceState": "No browser, Node, server, stack, Cargo, PostgreSQL or performance job started at this checkpoint; source-only slot queued."
+}

@@ -1,0 +1,95 @@
+{
+  "slot": "FE41-CHANGED-390-NATIVE-20261104T1912Z",
+  "pin": "a1317c4d08c8e0210c877fbb4b717f4d37c78a0b",
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "mode": "native",
+  "deadlineUTC": "2026-11-04T19:15:10.881223+00:00",
+  "startedUTC": "2026-11-04T19:12:57.702667+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "entries": 65536,
+    "new": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 3758096384,
+    "processes": 16,
+    "childSeconds": 90
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806827600,
+        "files": 8282,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2044914,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "a1317c4d08c8e0210c877fbb4b717f4d37c78a0b",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1591310640,
+    "historyObjects": 41752,
+    "wholeBytes": 2808446488,
+    "entries": 61608
+  },
+  "carry": 2808446488,
+  "otherReserve": 2315255808,
+  "temporary": "/private/tmp/mcr-fe41-j2gz4yjc",
+  "commands": [
+    {
+      "label": "native",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs"
+      ],
+      "pid": 4499,
+      "startedEpoch": 1793819577.7140942,
+      "exit": 0,
+      "endedEpoch": 1793819582.3557749
+    }
+  ],
+  "ownedPids": {
+    "4499": "Thu Nov  5 04:12:57 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "4568": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "4589": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU)",
+    "4590": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper",
+    "4609": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)",
+    "4610": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)",
+    "4593": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper",
+    "4605": "Thu Nov  5 04:12:58 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+  },
+  "externalTargets": [
+    "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.qJilyN"
+  ],
+  "wholePeak": 2838664560,
+  "newPeak": 30218072,
+  "tmpPeak": 30159126,
+  "durablePeak": 58946,
+  "rssPeak": 2806038528,
+  "processPeak": 10,
+  "entryPeak": 61807,
+  "alivePids": [],
+  "externalRemaining": [],
+  "temporaryAbsent": true,
+  "linkAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "portReuse": "PASS",
+  "status": "PASS",
+  "finishedUTC": "2026-11-04T19:13:02.682366+00:00",
+  "finalFree": 17962418176
+}

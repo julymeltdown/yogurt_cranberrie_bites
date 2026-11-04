@@ -1,0 +1,182 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx (9 tests | 3 failed) 16324ms
+   × mounts actual USER report and blocks routes, rechecks target on submit, and retains the original report key across navigation 5005ms
+   × requires Profile block confirmation, clears old privacy views, lists and confirms unblock without restoring consent 5003ms
+   × mounts the existing Thread POST target through the default report route and registered fresh target reader 5003ms
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts (7 tests | 7 failed) 10016ms
+   × authorizes only fresh registered targets and rejects unqualified report media and unsupported target lookups 5ms
+   × aborts and ignores a late block-target response after route change 5002ms
+   × cannot confirm an old block selection after canonical privacy withdrawal 2ms
+   × preserves one original safety intent across route changes and retry without replay 1ms
+   × does not send a report when the target is withdrawn between open and submit 1ms
+   × does not navigate from a forged or freshly denied introduction 4ms
+   × aborts and ignores a late authorized introduction after leaving its Profile 5000ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx > mounts actual USER report and blocks routes, rechecks target on submit, and retains the original report key across navigation
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx:63:1
+     61|   expect(writes(f)).toHaveLength(0)
+     62| })
+     63| it('mounts actual USER report and blocks routes, rechecks target on su…
+       | ^
+     64|   const f = setup(`/report?targetType=USER&targetId=00000000-0000-4000…
+     65|   const submit = await screen.findByRole('button', { name: 'Submit rep…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx > requires Profile block confirmation, clears old privacy views, lists and confirms unblock without restoring consent
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx:73:1
+     71|   expect(writes(f)).toHaveLength(1); expect(screen.queryByRole('button…
+     72| })
+     73| it('requires Profile block confirmation, clears old privacy views, lis…
+       | ^
+     74|   const f = setup(); await profile(f); fireEvent.click(screen.getByRol…
+     75|   const confirm = await screen.findByRole('button', { name: 'Confirm b…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx > mounts the existing Thread POST target through the default report route and registered fresh target reader
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx:88:1
+     86|   expect(screen.queryByRole('button', { name: 'Unblock user' })).not.t…
+     87| })
+     88| it('mounts the existing Thread POST target through the default report …
+       | ^
+     89|   const f = setup(`/report?targetType=POST&targetId=${post.post_id}`)
+     90|   fireEvent.click(await screen.findByRole('button', { name: 'Submit re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > authorizes only fresh registered targets and rejects unqualified report media and unsupported target lookups
+TransportError: Request failed: invalid-request.
+ ❯ prepare src/shared/api/http.ts:152:54
+    150|   } else if (request.domainOperation !== undefined || request.idempote…
+    151|   const origin = globalThis.location?.origin
+    152|   if (!origin || !/^https?:\/\//.test(origin)) throw new TransportErro…
+       |                                                      ^
+    153|   const url = new URL(path, origin)
+    154|   for (const [key, value] of Object.entries(request.query ?? {})) {
+ ❯ run src/shared/api/http.ts:280:22
+ ❯ Object.request src/shared/api/http.ts:399:65
+ ❯ execute src/features/auth/model/session.ts:123:33
+ ❯ requestWithPolicy src/features/auth/model/session.ts:128:26
+ ❯ Object.request src/features/auth/model/session.ts:152:94
+ ❯ src/app/safety-entry/authorization.ts:11:31
+ ❯ src/shared/query/privacy.ts:129:16
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > aborts and ignores a late block-target response after route change
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts:27:1
+     25|   expect(f.requests.every(r => r.headers.get('Authorization')?.startsW…
+     26| })
+     27| it('aborts and ignores a late block-target response after route change…
+       | ^
+     28|   const gate = deferred<Response>(); let targetRead: Request | undefin…
+     29|   const f = setup(async (r, fallback) => { if (r.url.includes('/people…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > cannot confirm an old block selection after canonical privacy withdrawal
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts:37:85
+     35| })
+     36| it('cannot confirm an old block selection after canonical privacy with…
+     37|   const f = setup(); expect(await f.owner.beginBlock(f.service.recipie…
+       |                                                                                     ^
+     38|   f.auth.privacy.changePolicy(f.scope, 'block'); await f.owner.confirm…
+     39|   expect(f.owner.read().controller).toBeNull(); expect(f.owner.read().…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > preserves one original safety intent across route changes and retry without replay
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts:43:85
+     41| })
+     42| it('preserves one original safety intent across route changes and retr…
+     43|   const f = setup(); expect(await f.owner.beginBlock(f.service.recipie…
+       |                                                                                     ^
+     44|   f.service.mode('unknown'); await f.owner.confirmBlock()
+     45|   const safety = f.owner.read().controller!, key = f.service.last()!.k…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > does not send a report when the target is withdrawn between open and submit
+AssertionError: expected 'closed' to be 'ready' // Object.is equality
+
+Expected: "ready"
+Received: "closed"
+
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts:55:102
+     53| it('does not send a report when the target is withdrawn between open a…
+     54|   const f = setup(); await f.owner.prepare(); const safety = f.owner.r…
+     55|   await safety.open(`?targetType=USER&targetId=${f.service.recipient}`…
+       |                                                                                                      ^
+     56|   f.service.mode('target-denied'); await safety.report()
+     57|   expect(f.requests.every(r => r.method === 'GET')).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > does not navigate from a forged or freshly denied introduction
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts:63:47
+     61|   const owner = createSocialOwner({ ...f.options, requests: canonicalS…
+     62|   owner.enter(`/people/${f.service.recipient}`); await owner.people.lo…
+     63|   expect(owner.canShare(f.service.recipient)).toBe(true); f.service.mo…
+       |                                               ^
+     64|   expect(await owner.openSharing(f.service.recipient)).toBe(false); ex…
+     65|   expect(await owner.openSharing(user)).toBe(false); expect(f.requests…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts > aborts and ignores a late authorized introduction after leaving its Profile
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts:67:1
+     65|   expect(await owner.openSharing(user)).toBe(false); expect(f.requests…
+     66| })
+     67| it('aborts and ignores a late authorized introduction after leaving it…
+       | ^
+     68|   const gate = deferred<Response>(); let introRead: Request | undefined
+     69|   const f = setup(async (r, fallback) => { if (/\/intros\/[^/]+$/.test…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  10 failed | 6 passed (16)
+   Start at  03:32:38
+   Duration  28.30s (transform 1.38s, setup 0ms, import 1.38s, tests 26.34s, environment 424ms)
+

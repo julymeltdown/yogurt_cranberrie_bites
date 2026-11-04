@@ -47,7 +47,10 @@ export interface WorldLifecyclePort {
    */
   mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null }): WorldLease
 }
-export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader; readonly presentation?: import('../world/composition').WorldPresentationPort; readonly reconnect?: () => Promise<boolean> }
+export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader;
+  readonly lifecycle?: import('./errors/fe41-lifecycle/status').WorldLifecycleReader;
+  readonly socialPolicy?: import('../world/composition/policy').WorldSocialPolicyPort;
+  readonly presentation?: import('../world/composition').WorldPresentationPort; readonly reconnect?: () => Promise<boolean> }
 export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
   /** Absent until a supported clock environment is qualified; never inferred from Bootstrap. */

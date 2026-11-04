@@ -9,7 +9,7 @@ import policy from '../../../../../contracts/realtime/v1/policy.json'
 import type { ClientMessage, ServerMessage, WorldTicketResponse } from './wire-types'
 export { policy }
 export class WorldTransportError extends Error {
-  constructor(readonly kind: 'invalid-frame' | 'invalid-context' | 'unavailable' | 'timeout' | 'cancelled' | 'backpressure' | 'rate-limited' | 'closed' | 'disposed', readonly code = 4400) {
+  constructor(readonly kind: 'invalid-frame' | 'invalid-context' | 'unavailable' | 'map-version' | 'timeout' | 'cancelled' | 'backpressure' | 'rate-limited' | 'closed' | 'disposed', readonly code = 4400) {
     super(kind); this.name = 'WorldTransportError'
   }
 }
@@ -20,7 +20,7 @@ type Schema = { [key: string]: unknown }
 const record = (v: unknown): Schema => { ensure(v && typeof v === 'object' && !Array.isArray(v)); return v as Schema }
 const docs = [world, core, avatar, common, reviewedAvatar, reviewedManifest] as { $id: string; $defs: Record<string, unknown> }[]
 const cache = new Map<string, (value: unknown) => boolean>()
-const keywords = new Set(['$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum', 'anyOf', 'oneOf'])
+const keywords = new Set(['$ref', 'type', 'const', 'enum', 'properties', 'required', 'dependentRequired', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'exclusiveMinimum', 'maximum', 'anyOf', 'oneOf'])
 function compile(input: unknown, doc: typeof docs[number]): (v: unknown) => boolean {
   const s = record(input)
   ensure(Object.keys(s).every(k => keywords.has(k) || ['description', 'title'].includes(k)))
@@ -53,7 +53,8 @@ function compile(input: unknown, doc: typeof docs[number]): (v: unknown) => bool
     if (s.type === 'integer' && !Number.isSafeInteger(v)) return false
     if (s.type === 'array' && !Array.isArray(v)) return false
     if (s.type === 'object' && (!v || typeof v !== 'object' || Array.isArray(v))) return false
-    if (typeof v === 'number' && ((s.minimum !== undefined && v < Number(s.minimum)) || (s.maximum !== undefined && v > Number(s.maximum)))) return false
+    if (typeof v === 'number' && ((s.minimum !== undefined && v < Number(s.minimum))
+      || (s.exclusiveMinimum !== undefined && v <= Number(s.exclusiveMinimum)) || (s.maximum !== undefined && v > Number(s.maximum)))) return false
     if (typeof v === 'string') {
       const n = Array.from(v).length
       if ((s.minLength !== undefined && n < Number(s.minLength)) || (s.maxLength !== undefined && n > Number(s.maxLength)) || (pattern && !pattern.test(v))) return false
@@ -63,6 +64,8 @@ function compile(input: unknown, doc: typeof docs[number]): (v: unknown) => bool
     if (v && typeof v === 'object' && !Array.isArray(v)) {
       const r = v as Schema
       if ((s.required as string[] | undefined)?.some(k => !Object.hasOwn(r,k))) return false
+      if (s.dependentRequired && Object.entries(record(s.dependentRequired)).some(([key, dependencies]) =>
+        Object.hasOwn(r, key) && (dependencies as string[]).some(dependency => !Object.hasOwn(r, dependency)))) return false
       for (const [k, value] of Object.entries(r)) {
         if (Object.hasOwn(props,k)) { if (!props[k]!(value)) return false }
         else if (s.additionalProperties === false) return false
@@ -90,13 +93,32 @@ export function validate<T = unknown>(name: string, value: unknown): T {
   const v = record(value)
   if (v.type === 'input') ensure(Number(v.axisX) ** 2 + Number(v.axisY) ** 2 <= 1 + 1e-9)
   if (v.type === 'snapshot' || v.type === 'delta') {
-    const rows = (v.players ?? v.upserts) as { userId: string }[]
+    const rows = (v.players ?? v.upserts) as { userId: string; position: { x: number; y: number } }[]
     const ids = rows.map(r => r.userId)
     ensure(new Set(ids).size === ids.length)
     if (v.type === 'snapshot') {
       ensure(ids.includes(v.selfUserId as string))
       ensure((v.requestId !== null) === ['RESYNC', 'ROOM_SWITCH'].includes(v.cause as string))
     } else ensure(!(v.removes as string[]).some(id => ids.includes(id)))
+    if (v.selfMotion) {
+      const motion = record(v.selfMotion), held = motion.heldInput === null ? null : record(motion.heldInput)
+      const tick = Number(v.serverTick), ack = Number(v.ackInputSeq)
+      ensure(motion.serverTick === tick && Number(motion.droppedTicks) <= tick
+        && Number(motion.inputAppliedTicks) <= tick - Number(motion.droppedTicks) && Number(motion.consumedInputSeq) >= ack)
+      ensure(ack !== 0 || (motion.inputAppliedTicks === 0 && held === null))
+      if (held) ensure(held.seq === ack && Number(held.axisX) ** 2 + Number(held.axisY) ** 2 <= 1 + 1e-9)
+      if (v.type === 'snapshot') {
+        ensure(ack === 0 && motion.consumedInputSeq === 0 && motion.inputAppliedTicks === 0 && held === null)
+        const self = rows.find(row => row.userId === v.selfUserId)
+        ensure(self)
+        const position = record(motion.position)
+        ensure(position.x === self.position.x && position.y === self.position.y)
+      } else {
+        // Complete self anchors and a same-frame self upsert must agree. Actor
+        // identity belongs to the stream and is checked by TransportEngine.
+        ensure(!Object.hasOwn(v, 'motionProfile'))
+      }
+    }
   }
   if (name === 'WorldTicketResponse') {
     const ttl = Date.parse(v.expires_at as string) - Date.parse(v.server_time as string)

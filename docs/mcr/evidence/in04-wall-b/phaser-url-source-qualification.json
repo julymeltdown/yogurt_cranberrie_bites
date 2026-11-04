@@ -1,0 +1,141 @@
+{
+  "task": "IN04-WALL-B-PHASER-URL",
+  "sourceQualification": "PASS",
+  "helperChecks": 84,
+  "newUrlIdentityChecks": 31,
+  "realIN04": "NOT_RUN",
+  "originalPersistentGoal": "BLOCKED_UNFINISHED",
+  "sourceRevision": "abf2b5914e5fbe8178e0914166d77e21cad960a7",
+  "sourceHashes": {
+    "frontend/e2e/in04-wall-b/preflight.ts": "f7e956220d47fce58e027aa56244b5aa2d43ae7ccbe809524c1e81007a30ce28",
+    "frontend/e2e/in04-wall-b/helpers.ts": "785d88de9c55863026fb436b3d9f685db9879b6869b2619d40ac2de554df6602",
+    "frontend/e2e/in04-wall-b/wall-b.spec.ts": "ecb84a2906a161bc8944c85f25fb53cc46426574e1272d712f5d499f5630e5ec",
+    "frontend/e2e/in04-wall-b/world-texture.ts": "0aaf695555282272ebbd1494181a9bec9e8db3ae9de30d346426c84d8831f9ca",
+    "frontend/e2e/in04-wall-b/runtime.ts": "ead4b9c764fe851f93f981360dce811d7ea62c2b936dce92284759b6f46b7bef",
+    "frontend/e2e/in04-wall-b/validate.py": "e935cc81c1ffaf401c696a3a2cfef69624d29f3fe69baa7cc71a2e3605945009",
+    "frontend/e2e/in04-wall-b/.gitignore": "9031d0c7c796f25117a8136fb2a0261584e002e52f42e81e555a2ce1942583a4",
+    "frontend/e2e/in04-wall-b/tsconfig.json": "c8966c257a2cc136bd4900832ffceb308deaa3bdd52728a468fafa0a0d26655c",
+    "frontend/e2e/in04-wall-b/playwright.config.ts": "36b77437dc07b02f57e89f445ee8936364f8c870258f2ee802e76849854faf2b",
+    "frontend/e2e/in04-wall-b/check.ts": "1a1294a86354158d1801b6d49e4df7e28e3cff0076625e51934ef48a7b2e9783"
+  },
+  "allocatedOffer": {
+    "allocation": "IN04-PHASER-URL-SOURCE-20261104T1928Z",
+    "accepted": true,
+    "accepted_epoch": 1793820530.35005,
+    "work_deadline_epoch": 1793820830.35005,
+    "hard_deadline_epoch": 1793820890.35005,
+    "max_owned_bytes": 8388608,
+    "max_new_bytes": 8388608,
+    "max_rss_bytes": 2684354560,
+    "max_pids": 8,
+    "start_floor_bytes": 11811160064,
+    "live_floor_bytes": 8589934592,
+    "all_new_bytes": 1484783616,
+    "fresh_free_bytes": 16694054912,
+    "source_head": "abf2b5914e5fbe8178e0914166d77e21cad960a7",
+    "guardian_sha256": "e935cc81c1ffaf401c696a3a2cfef69624d29f3fe69baa7cc71a2e3605945009",
+    "predecessor": "ROOT-IN04-FE41-COALESCED-SOURCE-20261104T1927Z",
+    "predecessor_actual_full": "2026-11-04T19:27:12.412989Z",
+    "other_inventory": "Allocator eligible maximum after actual Root FULL: Auth2071GiB + COREmetadata/QA07 successor128MiB + QA06browser256MiB (or smaller Admin240MiB) + own8MiB. Root now0, max global4/SOURCE2/browser1 including own; no duplicate hold. Conservative maximum unchanged from actual conditional offer; no other eligible reservation reported."
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--experimental-transform-types",
+        "frontend/e2e/in04-wall-b/check.ts"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "-p",
+        "frontend/e2e/in04-wall-b/tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "frontend/e2e/in04-wall-b"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "frontend/e2e/in04-wall-b/playwright.config.ts",
+        "--list"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--experimental-transform-types",
+        "frontend/e2e/in04-wall-b/preflight.ts"
+      ],
+      "exit": 2,
+      "expected": 2
+    }
+  ],
+  "peak": {
+    "ownedBytes": 761925,
+    "positiveNewBytes": 529851,
+    "rssBytes": 536870912,
+    "pids": 2
+  },
+  "fullEpoch": 1793820545.5916648,
+  "cleanup": {
+    "remainingDescendants": [],
+    "dependencyLinkRemaining": false,
+    "scratchOrServerAllocated": false
+  },
+  "lintWarning": {
+    "rule": "eslint(no-control-regex)",
+    "file": "frontend/e2e/in04-wall-b/runtime.ts",
+    "line": 35,
+    "exit": 0,
+    "disposition": "Intentional regex rejecting decoded control bytes. Retained explicitly; zero-warning lint is not claimed. No lint suppression added."
+  },
+  "producerContract": {
+    "owner": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "producerSource": "6d5863097c46d7ecd3d1633fd1423500e17b8867",
+    "urlSource": "actual server.transformRequest(/src/world/scenes/MapScene.ts), literal versioned Phaser import",
+    "producerQualification": "Owner reports eight source cases, six syntax checks and scoped lint PASS in predecessor ROOT-IN04-FE41-COALESCED-SOURCE-20261104T1927Z. Actual frontend startup remains NOT_RUN.",
+    "producerResponsibility": "Verify normalized decoded filesystem path equals its actual allocated cache/deps/phaser.js; fetch exact same versioned URL before handoff.",
+    "consumerResponsibility": "Validate same current origin, canonical /@fs/ pathname, exact deps/phaser.js suffix and single literal v=hex, preserve path/query; reject credentials/fragment/normalization/encoded separators and controls at binding and immediately before actual page import."
+  },
+  "evidenceSha256": {
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/00.log": "945786ab5c07063662e7a242c6f20ea5118b3cda6c63a530870d3039c6848afd",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/02.log": "3e7ddb2960d7a461e1465a195ddda9813f0a69f2c5e74ad1e18fe8dcb4dcc67b",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/03.log": "1f2d0c72a0a23638440c32f4c7288b6c7b903d59d7b82c146cb52048f3e30e3e",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/04.log": "d25e97eff26702796bcfc68587445b5eeddd0d4112c7f42f9e35d414b1a2b3bb",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/guardian.jsonl": "c23c07597be4893b943c01c9aed8174bf9de14b8bb72659e3e4bea7e1f0079e6",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/offer.json": "72e63e7f7044ecfcfec7705f5203d87552c78557016cb066f55504fe37c2dbfc",
+    "docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/release.json": "66c539c3ef47738b4fbbfeb3b939e5f7034836fbe0db0bb52f252d9399dabffa"
+  },
+  "limitations": [
+    "84 cases are source checks, including 31 new URL checks, not actual Vite runtime identity or product acceptance",
+    "One intentional non-fatal scoped lint warning retained",
+    "Playwright --list launches no browser; actual canonical HTTP/App/actors/Phaser/admin/restart/freeze NOT_RUN",
+    "No runtime, stack, server, browser, PostgreSQL, native job, install, build or old visual matrix allocated",
+    "Publisher Root153 owns normal delivery; no king/SL review or acknowledgment gate"
+  ],
+  "publicationRouting": "Direct validated committed delta to Root153; canonical commit receipt not yet available for this follow-up."
+}

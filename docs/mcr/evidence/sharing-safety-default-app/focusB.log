@@ -1,0 +1,41 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx (9 tests | 2 failed) 11254ms
+   × mounts actual USER report and blocks routes, rechecks target on submit, and retains the original report key across navigation 5006ms
+   × requires Profile block confirmation, clears old privacy views, lists and confirms unblock without restoring consent 5004ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx > mounts actual USER report and blocks routes, rechecks target on submit, and retains the original report key across navigation
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx:63:1
+     61|   expect(writes(f)).toHaveLength(0)
+     62| })
+     63| it('mounts actual USER report and blocks routes, rechecks target on su…
+       | ^
+     64|   const f = setup(`/report?targetType=USER&targetId=00000000-0000-4000…
+     65|   const submit = await screen.findByRole('button', { name: 'Submit rep…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx > requires Profile block confirmation, clears old privacy views, lists and confirms unblock without restoring consent
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx:73:1
+     71|   expect(writes(f)).toHaveLength(1); expect(screen.queryByRole('button…
+     72| })
+     73| it('requires Profile block confirmation, clears old privacy views, lis…
+       | ^
+     74|   const f = setup(); await profile(f); fireEvent.click(screen.getByRol…
+     75|   const confirm = await screen.findByRole('button', { name: 'Confirm b…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 16 passed (18)
+   Start at  03:33:43
+   Duration  13.08s (transform 1.55s, setup 0ms, import 1.35s, tests 11.29s, environment 279ms)
+
