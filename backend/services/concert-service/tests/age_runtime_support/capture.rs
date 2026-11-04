@@ -45,7 +45,7 @@ pub(super) async fn binding(
     operation: &str,
 ) -> anyhow::Result<concert_service::adapters::out::relationship_authority::guarded::GuardBinding> {
     let request_id = Uuid::new_v4();
-    let (http_method, suffix, body) = match operation {
+    let (http_method, suffix, http_body) = match operation {
         "startConcertAgeVerification" => (
             "POST",
             "age-verifications",
@@ -68,7 +68,7 @@ pub(super) async fn binding(
         request_id: request_id.to_string(),
         http_method: http_method.into(),
         http_target: target.clone(),
-        http_body: body.to_vec(),
+        http_body: http_body.to_vec(),
         authority_expires_unix_micros: deadline.expires_micros(),
         auth_observed_at_unix_micros: now,
         profile_observed_at_unix_micros: now,
@@ -135,7 +135,7 @@ pub(super) async fn binding(
             operation,
             http_method,
             &target,
-            Sha256::digest(body).into(),
+            Sha256::digest(http_body).into(),
             deadline,
         )?,
     )
