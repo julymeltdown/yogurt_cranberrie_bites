@@ -1,0 +1,27 @@
+{
+  "state": "FULL",
+  "actualFullAt": "2026-11-04T20:33:54.930226+00:00",
+  "epoch": 1793824434.93024,
+  "allocation": "FE10-WORLD-OBSERVER-SOURCE-20261104T2035Z",
+  "head": "a349e1a798b3e36099dce5d5e0537b18130e0932",
+  "commands": 4,
+  "guardianExit": 0,
+  "failure": null,
+  "ownedProcessesRemaining": [],
+  "ownedGuardianRemaining": false,
+  "dependencyLinkAbsent": true,
+  "scratchCacheAbsent": true,
+  "peakNew": {
+    "bytes": 3626550,
+    "rss": 159825920,
+    "processes": 5
+  },
+  "peakWhole": {
+    "bytes": 3504899426,
+    "entries": 37706
+  },
+  "priorUnconfirmedExternalCarry": "208 bytes/four entries untouched; no external Chrome started",
+  "workDeadline": "2026-11-04T20:34:51.053126+00:00",
+  "hardDeadline": "2026-11-04T20:35:51.053126+00:00",
+  "noBrowserDatabaseBuildTarget": true
+}

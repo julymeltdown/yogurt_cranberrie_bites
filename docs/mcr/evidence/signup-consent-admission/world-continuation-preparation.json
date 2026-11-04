@@ -1,0 +1,44 @@
+{
+  "task": "FE10",
+  "status": "SOURCE_QUALIFIED_ACTUAL_WORLD_NOT_RUN",
+  "attachment": "frontend/src/features/auth/__tests__/enrollment-world-observation.mjs",
+  "sha256": "c10a2ef01866c11621922073dd78b8d7e93fa5c6c2f7517f6d979161176bd921",
+  "sharedObserverSource": "0de2faa3f7977a1a60981b5ae7c1208675680abf",
+  "sharedObserverPaths": [
+    "frontend/e2e/qa05-functional-recovery/browser-observer.mjs",
+    "frontend/e2e/qa05-functional-recovery/observations.mjs"
+  ],
+  "sharedObserverDisposition": "Responsible83 reports21 source cases plus syntax/lint/plan PASS; actual Root attachment NOT_RUN. Read-only use only.",
+  "cohort": "Root existing in03 same seven-service stack with207owned_auth_adapters, actual PolicyOperator, current Gateway28 and Concert9022. No new cohort or Auth-only bootstrap substitution.",
+  "callerContract": [
+    "Root supplies existing fresh about:blank Auth-owned page, original absolute expiry, AbortSignal and accepted-allocation guard; no browser/server/context is created",
+    "Root supplies exact read-only shared observer functions with source/byte receipts and exact actual transformed versioned Phaser module URL",
+    "Attach before first navigation; actual real Auth login, current admission and C03/current-user identity receipts remain caller-owned",
+    "Call connected after real admission/bootstrap; compare actual C05 self/event/current players with actual renderer coordinates and one Game/canvas/socket",
+    "Perform ordinary private UI navigation inside retainsAcrossPrivateNavigation; actual retained CDP Game JS reference, stream, room/epoch and socket opens must remain",
+    "Perform actual UI logout and retain HTTP/backend membership receipts before releasedAfterActualLogout; browser active0/baseline-null/Game0/canvas0 does not alone prove server membership",
+    "Always dispose own observer/CDP references; page/browser/Auth/backend custody remains with existing owner"
+  ],
+  "notRun": [
+    "Actual browser/Auth/admission/bootstrap/World/Game-identity/navigation/logout/backend-membership attachment remains NOT_RUN",
+    "No compiled seven-service serving descriptor supplied; actual operator/Gateway/Concert producing cohort readiness required",
+    "No QA05 fault matrix or qualified five-case Auth journey replay"
+  ],
+  "resourceState": "FE10-WORLD-OBSERVER-SOURCE-20261104T2035Z FULL20:33:54.930226Z, direct21d/385/BsuccessorRoot1fc notified before docs; no held workload",
+  "externalLimits": [
+    "Synthetic operator policy is not approved production legal publication",
+    "No external mailbox/provider/verified-age or per-sprite identity/art acceptance"
+  ],
+  "negativeSourceTests": {
+    "path": "frontend/src/features/auth/__tests__/enrollment-world-observation.test.mjs",
+    "status": "PASS_5_SOURCE_CASES",
+    "cases": [
+      "Same-count Game replacement rejected by actual object reference",
+      "Sequential extra socket rejected even when current count is one",
+      "Retained reference and observed logout cleanup",
+      "Expired allocation cannot install listeners",
+      "Observer provenance mismatch fails closed"
+    ]
+  },
+  "qualification": "source-world-01/qualification.json"
+}

@@ -1,0 +1,13 @@
+✔ one Game and canvas count cannot conceal replacement across private navigation (7.3635ms)
+✔ a quiet current socket cannot conceal an extra sequential connection (0.560625ms)
+✔ actual Game reference survives navigation and is released after observed logout cleanup (0.305666ms)
+✔ an expired allocation never installs observation listeners (0.123333ms)
+✔ canonical observer provenance mismatch fails before creating a CDP observer (0.263125ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 61.605125

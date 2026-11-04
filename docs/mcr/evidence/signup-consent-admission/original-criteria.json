@@ -177,5 +177,19 @@
     "responsiblePublisher": "Root153",
     "receipt": "/private/tmp/mcr-root-avatar-profile-auth-publication-receipt.json",
     "scope": "Exact28ownedharness/Consentlayout/doc/evidence chain; ports/policyexcluded; nowactualphase1qualifiedseparately, no oldfailureupgrade"
+  },
+  "actualMain2015Publication": {
+    "source": "9005602019118106a3a1008677b1bdb7777a3b08",
+    "canonical": "55ea55df83ddedfc29141fb98ff387c59bec21b0",
+    "scope": "Exact22 documentation/evidence modes and blobs; responsible publisher Root1fc reports remote delivery verified",
+    "receipt": "/private/tmp/mcr-root-control-admin-auth-main-publication-receipt.json",
+    "actualWorld": "Not qualified by this receipt"
+  },
+  "worldContinuationPreparation": {
+    "source": "a349e1a798b3e36099dce5d5e0537b18130e0932",
+    "status": "SOURCE_QUALIFIED_ACTUAL_WORLD_NOT_RUN",
+    "qualification": "source-world-01/qualification.json",
+    "sharedReadOnlyObserver": "0de2faa3f7977a1a60981b5ae7c1208675680abf",
+    "remaining": "Root existing same seven-service cohort compiled/serving readiness, freshly allocated actual attachment and backend membership receipts"
   }
 }

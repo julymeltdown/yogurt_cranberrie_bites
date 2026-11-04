@@ -1,0 +1,14 @@
+{"time": 1793824432.096799, "lease": "FE10-WORLD-OBSERVER-SOURCE-20261104T2035Z", "head": "a349e1a798b3e36099dce5d5e0537b18130e0932", "guardianPid": 72275, "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.fe10-world-observation-source-01", "status": "accepted"}
+{"time": 1793824432.525545, "stage": 1, "status": "pre-child-guard-sample", "ownedProcesses": 2, "freeBytes": 17317855232}
+{"time": 1793824432.531745, "stage": 1, "argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "--check", "src/features/auth/__tests__/enrollment-world-observation.mjs"], "pid": 72374, "status": "started"}
+{"time": 1793824432.9451258, "stage": 1, "exit": 0, "status": "finished", "remainingOwnedPids": []}
+{"time": 1793824433.005704, "stage": 2, "status": "pre-child-guard-sample", "ownedProcesses": 2, "freeBytes": 17329324032}
+{"time": 1793824433.012585, "stage": 2, "argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "--check", "src/features/auth/__tests__/enrollment-world-observation.test.mjs"], "pid": 72394, "status": "started"}
+{"time": 1793824433.432193, "stage": 2, "exit": 0, "status": "finished", "remainingOwnedPids": []}
+{"time": 1793824433.4949021, "stage": 3, "status": "pre-child-guard-sample", "ownedProcesses": 2, "freeBytes": 17325248512}
+{"time": 1793824433.5021389, "stage": 3, "argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "--test", "src/features/auth/__tests__/enrollment-world-observation.test.mjs"], "pid": 72423, "status": "started"}
+{"time": 1793824433.913635, "stage": 3, "exit": 0, "status": "finished", "remainingOwnedPids": []}
+{"time": 1793824433.972414, "stage": 4, "status": "pre-child-guard-sample", "ownedProcesses": 2, "freeBytes": 17322307584}
+{"time": 1793824433.9800582, "stage": 4, "argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint", "--deny-warnings", "src/features/auth/__tests__/enrollment-world-observation.mjs", "src/features/auth/__tests__/enrollment-world-observation.test.mjs"], "pid": 72441, "status": "started"}
+{"time": 1793824434.389937, "stage": 4, "exit": 0, "status": "finished", "remainingOwnedPids": []}
+{"time": 1793824434.807338, "status": "released", "peakNew": {"bytes": 3625117, "rss": 30949376, "processes": 3}, "peakWhole": {"bytes": 3504899426, "entries": 37706}, "finalWhole": {"bytes": 2904950424, "entries": 33723, "measuredAt": 168002.454921583, "error": null}, "observedPids": [72374, 72376, 72394, 72396, 72423, 72425, 72441, 72446], "dependencyLinkRemoved": true, "exactExternalSingletons": [], "retainedExternalSingletonRoots": []}

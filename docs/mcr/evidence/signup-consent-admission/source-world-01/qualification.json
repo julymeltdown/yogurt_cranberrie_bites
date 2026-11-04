@@ -1,0 +1,44 @@
+{
+  "task": "FE10",
+  "status": "PASS_SOURCE_ONLY_ACTUAL_WORLD_NOT_RUN",
+  "source": "a349e1a798b3e36099dce5d5e0537b18130e0932",
+  "allocation": "FE10-WORLD-OBSERVER-SOURCE-20261104T2035Z",
+  "results": {
+    "negativeOracleCases": 5,
+    "nodeSyntaxFiles": 2,
+    "exactFileDenyWarningLint": 2,
+    "commandExits": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "repairs": 0
+  },
+  "sourceCases": [
+    "Same-count replaced Game rejected by retained actual-reference comparison path",
+    "Extra sequential socket rejected despite one current socket",
+    "Stable Game identity across navigation and handle release after observed logout cleanup",
+    "Expired allocation cannot install listeners",
+    "Observer provenance mismatch rejected"
+  ],
+  "evidenceKind": "Node builtin tests with controlled source fakes; not actual Chrome/CDP/Phaser/backend proof",
+  "acceptedAt": "2026-11-04T20:33:51.053126Z",
+  "workDeadline": "2026-11-04T20:34:51.053126Z",
+  "hardDeadline": "2026-11-04T20:35:51.053126Z",
+  "actualFullAt": "2026-11-04T20:33:54.930226Z",
+  "controls": "Primary source-world-controller.py prechild/live sampling plus separate frozenf583 guardian process, fresh3rootcustody census and prior nonshrinkingfloor; noChrome",
+  "otherReservationsBytes": 4294967296,
+  "freeAfterAllReservationsBytes": 12972457984,
+  "release": "release.json",
+  "releaseSha256": "e2607dff71cdc6d065a68cc1ce41f870046a69530616c9844589b4b44341ee98",
+  "actualControllerExit": 0,
+  "allRecordedSupervisorGuardianChildPidsAbsentAfterExit": true,
+  "delivery": "B capacity returned directly21d/385/Root1fc IN04managedroles successor before docs; no ACK gate",
+  "limitations": [
+    "Actual coherent World/Auth/bootstrap/current-user/navigation/logout/membership remains NOT_RUN",
+    "Hook dependencies source-qualified by83, real attachment unqualified",
+    "No per-sprite identity/art/production legal/mail/provider/age acceptance"
+  ],
+  "unchangedAuthPublication": "55ea55df83ddedfc29141fb98ff387c59bec21b0"
+}
