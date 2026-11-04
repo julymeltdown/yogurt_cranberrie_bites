@@ -134,8 +134,8 @@ Root applied exactly those five existing-file hunks in
 `53b67c37`, adapter source as `dbb2d08c` and this handoff's initial documentation
 as `5ef20bb4`. The adopter independently compared its source/document payloads
 against those publisher commits: identical. This is actual production source
-composition, with remote publication and composed execution still outstanding
-at this checkpoint. No duplicate existing-file edits or ownership transfer was
+composition; subsequent publication and composed checks are recorded below.
+No duplicate existing-file edits or ownership transfer was
 made by the adopter.
 
 Validated adapter source checkpoint:
@@ -223,7 +223,53 @@ New tests cover explicit projection before theme selection, OS OR updates withou
 audio restart, baseline/absent attribute restoration, privacy/caller abort,
 failure, external writer preservation and reentrant abort. Root hook tests add
 the actual shell element and exercise StrictMode and missing-shell refusal.
-These follow-up source/tests are **NOT_RUN pending Root's next necessary composed
-check**: Root explicitly requested a source handoff with no standalone output
-job. The earlier 52-test/type/lint result belongs to checkpoint `3eea76f4`, and
-does not certify this later DOM follow-up or full DOM motion success.
+Root's subsequent composed source workflow
+`ROOT-COMPOSED-SOURCE3-202611040716Z`, pinned to
+`8972b0b634035055eb023dbc2f786e4463b172e5`, passed 206 tests across 11 files,
+full TypeScript and scoped lint, all exit 0. Its measured duration was 16.16
+seconds and peak temporary output 21,012,480 bytes. The committed command/exit
+receipt and adjacent compressed logs are under
+`docs/mcr/evidence/runtime-preferences-root/source-03/`. Two earlier unsuccessful
+composed attempts remain recorded there separately. This composed result
+includes the DOM projection tests, actual account-root binding and presentation
+release tests. It does not certify loaded production motion CSS or native Phaser.
+
+The adopter independently fetched and read back master
+`e237572719602da6a1a08b7fe0579b0e9c96da1f`, checked all mapped source commits
+and Root wiring as ancestors, and compared the complete owned source and
+documentation payloads with local checkpoint
+`7e776c538fd83e1e545ea65dd67ece12ba034aff`: identical, exit 0.
+`docs/source/` remained byte-identical to the full base. Root's published DOM
+projection commit is `df68f206db7cabcc525f6322f8d719e5e8bb501f`.
+
+Production `main.tsx` did not load the existing theme sheet's reduced-motion
+rules. Consequently, attribute projection alone leaves DOM suppression OPEN.
+After the separate finite panel capture, Root took explicit ownership of only
+an additive motion-rule stylesheet and its hook import; this owner leaves both
+paths untouched. Broad palette/forced-color theme stylesheet loading is not
+part of this handoff. The producer owns one combined actual Settings/Phaser
+native proof after that source is published, including computed transition
+suppression and restoration. It remains NOT_RUN at this checkpoint.
+
+## Post-freeze cancellation correction
+
+Source commit `d6dccde98a98e2a8ec9abb00fc2e0e52274a31ce`, based on
+`7e776c538fd83e1e545ea65dd67ece12ba034aff`, changes only `index.ts` and
+`__tests__/adapter.test.ts` in the assigned prefix. Releasing an old applied
+effect can synchronously abort the incoming caller before it acquires its own
+operation. The cancellation guard now withdraws the old applied state only
+when the same revision still owns the empty active slot and the adapter is not
+disposed. A reentrant successor or disposed state remains authoritative.
+
+The new regression starts with applied reduced motion and sound, aborts the
+incoming caller from old effect cleanup, and checks rejection, no new
+acquisitions, both old releases and an observed idle/baseline state. The existing
+reentrant-successor regression remains in place. Patch integrity exited 0;
+tests, TypeScript and lint for this correction are **NOT_RUN pending Root's next
+necessary composed source workflow**. No standalone workflow was launched.
+
+The separate live run encountered two `/me` HTTP 504 responses and did not
+qualify customization or real settings persistence. The planned native runtime
+workflow uses explicit deterministic `/me` fixtures and cannot close that
+real-server limitation. Sound enable remains unavailable in production because
+no authorized audio source is supplied. Whole FE34 acceptance remains open.
