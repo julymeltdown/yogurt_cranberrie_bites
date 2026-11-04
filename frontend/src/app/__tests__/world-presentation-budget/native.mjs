@@ -11,6 +11,7 @@ import { build, createServer } from 'vite'
 const root = resolve(import.meta.dirname, '../../../../..'), frontend = resolve(root, 'frontend')
 const base = 'd1a5deaae0f6b79b365cb4c451d921711573ab8c'
 const slot = process.env.MCR_FRONTEND_SLOT, output = process.env.MCR_WORLD_BUDGET_OUTPUT
+const focused = process.env.MCR_WORLD_BUDGET_FOCUSED === '1'
 assert(slot?.startsWith('FE26E-WORLD-PRESENTATION-'), 'An explicitly accepted NEW allocation is required')
 assert(!slot.endsWith('T0429Z'), 'The unaccepted 0429Z offer was returned')
 assert(output?.startsWith(resolve(root, 'docs/mcr/evidence/world-presentation-budget') + '/'))
@@ -41,7 +42,7 @@ async function preflight(ownedProfile = '') {
   return { availableBytes: available, otherValidationChromeRoots: peers.length, existingInteractiveChromeRootsPreserved: interactive.length }
 }
 const report = { status: 'IN_PROGRESS', slot, base, candidate: git('rev-parse', 'HEAD').toString().trim(),
-  qualification: 'ACTUAL_ROOT_DEFAULT_PHASER_WITH_UNREVIEWED_SOURCE_FIXTURE', sourcePins: {}, inputs: {}, cases: [], interactions: [],
+  qualification: 'ACTUAL_ROOT_DEFAULT_PHASER_WITH_UNREVIEWED_SOURCE_FIXTURE', runKind: focused ? 'FOCUSED_SETTLING_REPLAY' : 'FULL_MATRIX', sourcePins: {}, inputs: {}, cases: [], interactions: [],
   limits: ['Desktop Chrome viewports; no physical iOS/Android/software-keyboard/notch acceptance',
     'Existing source7005 synthetic C03/C05 fixture, not public/live/backend6 admission',
     'Six-player fixture positions and approved art are unchanged; no full ten-screen fidelity acceptance'] }
@@ -74,7 +75,24 @@ async function measure(page) {
       overflow: document.documentElement.scrollWidth - innerWidth }
   })
 }
+async function settleScene(page, viewport) {
+  await expect.poll(async () => page.evaluate(expected => {
+    if (expected && (innerWidth !== expected.width || innerHeight !== expected.height)) return false
+    const api = window.__SCENE_V5_ROOT__, state = api?.state(), projection = api?.cameraProjection()
+    const canvas = document.querySelector('.shell-world-host canvas'), stage = document.querySelector('.world-controls-stage')
+    if (!canvas || !stage || !projection || state?.phase !== 'live') return false
+    const c = canvas.getBoundingClientRect(), s = stage.getBoundingClientRect(), camera = state.camera?.camera
+    const near = (a, b) => typeof a === 'number' && typeof b === 'number' && Math.abs(a - b) < 1
+    return c.height > 0 && near(c.width, s.width) && near(c.height, s.height)
+      && near(canvas.width, camera?.width) && near(canvas.height, camera?.height)
+      && near(camera?.width, c.width) && near(camera?.height, c.height)
+      && near(projection.surface.left, c.left) && near(projection.surface.top, c.top)
+      && near(projection.surface.right, c.right) && near(projection.surface.bottom, c.bottom)
+  }, viewport), { timeout: 10000, message: 'Current viewport, canvas, controls, camera and projection geometry agree' }).toBe(true)
+}
 async function capture(page, name) {
+  const visibleLiveScene = await page.evaluate(() => document.querySelector('.world-shell')?.getAttribute('data-panel-size') === 'closed' && window.__SCENE_V5_ROOT__?.state().phase === 'live')
+  if (visibleLiveScene) await settleScene(page)
   // Panel return resizes the retained canvas; allow Phaser to paint before freezing evidence.
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
   await page.waitForTimeout(100)
@@ -126,6 +144,11 @@ try {
     if (input === packet.reference.artifact) await writeFile(resolve(output, 'reference-target.png'), original)
   }
   report.referenceCrop = packet.reference.crop
+  if (focused) {
+    const previousBytes = await readFile(resolve(output, '../native-01/report.json')), previous = JSON.parse(previousBytes)
+    assert.equal(previous.status, 'PASS'); assert.deepEqual(previous.sourcePins, report.sourcePins)
+    report.previousQualification = { path: '../native-01/report.json', sha256: hash(previousBytes), source: previous.candidate, cases: previous.cases.length, unchangedSourcePins: true }
+  }
   context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true, viewport: { width: 390, height: 554 } })
   report.browser = context.browser()?.version()
   // Observe only the existing fixture's Socket constructor. Normal DTO/auth/game behavior is unchanged.
@@ -156,10 +179,11 @@ try {
       server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false } })
     await server.listen()
     const origin = server.resolvedUrls.local[0].replace(/\/$/, '')
-    for (const era of mode === 'baseline' ? ['PARADE'] : ['REVENGE', 'PARADE', 'DANGER']) {
-      for (const width of [360, 390, 430]) for (const height of [554, 844]) {
+    for (const era of mode === 'baseline' || focused ? ['PARADE'] : ['REVENGE', 'PARADE', 'DANGER']) {
+      for (const width of focused ? [390] : [360, 390, 430]) for (const height of focused ? [554] : [554, 844]) {
         const page = await context.newPage(); await page.setViewportSize({ width, height })
         await ready(page, `${origin}${fixture}?era=${era}`)
+        await settleScene(page, { width, height })
         const metrics = await measure(page), single = await assertSingle(page)
         const projection = await page.evaluate(() => window.__SCENE_V5_ROOT__.cameraProjection())
         assert.equal(metrics.overflow, 0)
@@ -223,11 +247,13 @@ try {
             await capture(page, `route-${path.slice(1)}-390-h554.png`)
           }
           await page.setViewportSize({ width: 390, height: 420 })
+          await settleScene(page, { width: 390, height: 420 })
           await expect(toggle).toBeVisible(); await toggle.focus(); await page.keyboard.press('Enter')
           await expect(nav).toBeVisible(); await page.keyboard.press('Escape'); await expect(toggle).toBeFocused()
-          report.interactions.push({ name: 'reduced viewport and physical-keyboard disclosure, not a software keyboard', metrics: await measure(page), ...await assertSingle(page) })
+          report.interactions.push({ name: 'reduced viewport and physical-keyboard disclosure, not a software keyboard', metrics: await measure(page), projection: await page.evaluate(() => window.__SCENE_V5_ROOT__.cameraProjection()), ...await assertSingle(page) })
           await capture(page, 'keyboard-reduced-390-h420.png')
           await page.setViewportSize({ width: 390, height: 554 })
+          await settleScene(page, { width: 390, height: 554 })
           await page.evaluate(() => window.__WORLD_BUDGET_SOCKETS__.at(-1).serverClose(4400))
           const reconnect = page.getByRole('button', { name: 'Reconnect world', exact: true })
           await expect(reconnect).toBeVisible()
@@ -286,10 +312,14 @@ try {
   await budget()
   await context.close(); context = null
   await rm(profile, { recursive: true, force: true })
+  if (!focused) {
   const bundle = await build({ root: frontend, configLoader: 'runner', cacheDir: resolve(temporary, 'build-cache'), logLevel: 'error',
     build: { target: 'es2022', outDir: resolve(temporary, 'application'), copyPublicDir: false } })
   report.applicationBuild = { result: 'PASS', actualEntry: 'frontend/index.html and src/main.tsx', copyPublicDir: false,
     outputs: Array.isArray(bundle) ? bundle.length : 1, plugins: 'retained frontend/vite.config.ts React/Tailwind', sequentialAfterBrowser: true }
+  } else {
+    report.applicationBuild = { result: 'NOT_RERUN', reason: 'Unchanged application source; actual prior sequential build PASS is pinned in previousQualification' }
+  }
   await budget()
   assert.deepEqual(errors, [], 'No browser exceptions')
   report.peakMeasuredWorkflowBytes = peakBytes

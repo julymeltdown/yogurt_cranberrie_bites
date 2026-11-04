@@ -118,7 +118,11 @@ Visual review found the expanded-tools image captured an unpainted frame
 immediately after the fourth panel return. The ordinary scene and World-return
 captures paint correctly. The original run and image are retained unchanged;
 the new owned driver now waits two animation frames and 100ms before screenshots.
-A fresh coordinated replay is required to verify that capture; no renderer,
+QA06 independently found the reduced 390×420 sample was also stale after resize:
+stage/controls height 239px but canvas height 373px. That sample is not settled
+reduced-viewport geometry evidence. Both limitations are recorded in the added
+`native-01/settling-review.json`; original report/images/review stay immutable.
+A fresh coordinated focused replay is required to verify these transitions; no renderer,
 authority, camera or application code is changed to compensate.
 
 The first workflow measured 178,270,361 peak bytes (<0.2GiB), with 14,626,816
@@ -128,3 +132,12 @@ link was removed, zero validation Chrome roots remained and the existing
 interactive MCP browser was preserved. The slot was explicitly returned.
 Replay budget accounting includes all accumulated evidence in this task's
 owned subtree, not only its current output directory.
+
+The focused driver now polls actual viewport dimensions and agreement between
+canvas/controls-stage rectangles, canvas backing dimensions, published camera
+dimensions and projection surface before measuring resized or returned scenes.
+The repaint barrier follows that geometry assertion. Replay includes only
+PARADE baseline/candidate at 390×554 and the focused 420px transition/interactions;
+the unchanged 24-case matrix and actual application build remain pinned to the
+first report instead of being redundantly rerun. Motion holds the next slot;
+a subsequent allocation must come directly from BackendSL21d.
