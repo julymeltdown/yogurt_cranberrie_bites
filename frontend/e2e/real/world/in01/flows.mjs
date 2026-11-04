@@ -2,13 +2,13 @@ import assert from 'node:assert/strict'
 import {createHash} from 'node:crypto'
 import {expect} from '@playwright/test'
 const digest=b=>createHash('sha256').update(b).digest('hex')
-async function world(page){for(let i=0;i<8&&new URL(page.url()).pathname!=='/world';i++){const back=page.getByRole('button',{name:'Back to previous panel',exact:true});if(await back.count())await back.click();else await nav(page,'World').click()};assert.equal(new URL(page.url()).pathname,'/world')}
+async function world(page){for(let i=0;i<8&&new URL(page.url()).pathname!=='/world';i++){const prior=new URL(page.url()).pathname,back=page.getByRole('button',{name:'Back to previous panel',exact:true});if(await back.count())await back.click();else await nav(page,'World').click();await expect.poll(()=>new URL(page.url()).pathname).not.toBe(prior)};assert.equal(new URL(page.url()).pathname,'/world');await expect(page.getByRole('navigation',{name:'Main navigation'})).toBeVisible()}
 const nav=(page,name)=>page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:new RegExp('^'+name+'$','i')})
 export async function panels(j){return j.check('persistentPanels',async()=>{
  for(let i=0;i<2;i++){
   const p=j.pages[i],host=await p.locator('[data-world-host]').elementHandle(),canvas=await p.locator('[data-world-host] canvas').elementHandle(),opens=j.observers[i].opens
   for(const name of ['Feed','Meet','Gifts','Wall','Me','World']){
-   await world(p);await nav(p,name).click();assert(await p.locator('[data-world-host]').evaluate((x,y)=>x===y,host));assert(await p.locator('[data-world-host] canvas').evaluate((x,y)=>x===y,canvas))
+   await world(p);if(name!=='World'){await nav(p,name).click();await expect.poll(()=>new URL(p.url()).pathname).toBe('/'+name.toLowerCase());await expect(p.locator('.shell-panel')).toHaveCount(1)}assert(await p.locator('[data-world-host]').evaluate((x,y)=>x===y,host));assert(await p.locator('[data-world-host] canvas').evaluate((x,y)=>x===y,canvas))
    if(name==='Feed'){const before=j.observers[i].inputs;await p.getByRole('heading',{level:1,name:/^feed$/i}).focus();await p.keyboard.down('ArrowRight');try{await p.waitForTimeout(250)}finally{await p.keyboard.up('ArrowRight')}assert.equal(j.observers[i].inputs,before)}
   }
   assert.equal(j.observers[i].opens,opens);assert.equal(j.observers[i].peak,1)
@@ -37,11 +37,11 @@ export async function customization(j){return j.check('customization',async()=>{
 })}
 export async function reconnect(j){return j.check('realBrowserReconnect',async()=>{
  const p=j.pages[0],o=j.observers[0],peer=j.observers[1],ownId=o.baseline.selfUserId,oldStream=o.baseline.streamId,room=o.baseline.roomId,event=o.baseline.eventId,snapshots=o.snapshots,canvas=await p.locator('[data-world-host] canvas').elementHandle()
- await world(p);await nav(p,'World').click();await p.context().setOffline(true)
- try{await expect.poll(()=>o.active,{timeout:15000}).toBe(0);await expect.poll(()=>peer.players.has(ownId),{timeout:15000}).toBe(false)}finally{await p.context().setOffline(false)}
+ await world(p);await nav(p,'World').click();const transportCut=await j.disconnectOwnProxy(0)
+ await expect.poll(()=>o.active,{timeout:15000}).toBe(0);await expect.poll(()=>peer.players.has(ownId),{timeout:15000}).toBe(false)
  const button=p.getByRole('button',{name:'Reconnect world',exact:true});await expect(button).toBeVisible({timeout:10000});await button.click()
  await expect.poll(()=>o.snapshots>snapshots&&o.baseline?.streamId!==oldStream&&o.baseline.selfUserId===ownId&&o.baseline.roomId===room&&o.baseline.eventId===event&&o.players.size===2&&peer.players.has(ownId),{timeout:20000}).toBeTruthy()
- assert.equal(o.active,1);assert.equal(o.peak,1);assert.equal(o.invalid,0);assert(await p.locator('[data-world-host] canvas').evaluate((x,y)=>x===y,canvas));return {realBrowserOffline:true,peerWithdrawal:true,newAuthorizedStream:true,freshSnapshot:true,bothPlayersRestored:true,sameCanvas:true,peakWorldSockets:1}
+ assert.equal(o.active,1);assert.equal(o.peak,1);assert.equal(o.invalid,0);assert(await p.locator('[data-world-host] canvas').evaluate((x,y)=>x===y,canvas));return {realProxyTransportCut:transportCut,peerWithdrawal:true,newAuthorizedStream:true,freshSnapshot:true,bothPlayersRestored:true,sameCanvas:true,peakWorldSockets:1}
 })}
 export async function singleGame(j){return j.check('singleActualPhaserGame',async()=>{
  const result=[]
