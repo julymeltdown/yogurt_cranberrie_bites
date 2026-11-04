@@ -129,6 +129,10 @@ it('mounts the actual default Admin route through production ports and retains a
   expect(h.server.requests.filter(r => r.method === 'POST' && new URL(r.url).pathname.endsWith('/control'))).toHaveLength(1)
   h.server.state.role = null; fireEvent.click(screen.getByRole('button', { name: 'Check current access' }))
   await screen.findByRole('heading', { name: 'Administration unavailable' }); expect(screen.queryByRole('heading', { name: 'WALL CONTROL' })).toBeNull()
+  h.auth.privacy.changePolicy(h.auth.privacy.capture(), 'suspended')
+  fireEvent.click(screen.getByRole('button', { name: 'Check current access' }))
+  await screen.findByRole('heading', { name: 'Administration unavailable' })
+  expect(screen.getByRole('button', { name: 'Check current access' })).toBeEnabled()
 })
 it.each([false, true])('keeps legacy boolean authorization=%s compatible without granting a control factory', async value => {
   const fixture = createFixturePorts(), authorize = vi.fn(async () => value)

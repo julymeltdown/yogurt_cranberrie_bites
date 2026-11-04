@@ -11,6 +11,8 @@ import type { AdminComposition, AdminCompositionState } from './owner'
 const initial: AdminCompositionState = Object.freeze({ phase: 'idle', decision: null, settings: null, operations: null, muralClosure: null })
 const noSubscription = () => () => {}
 const initialRead = () => initial
+const unavailable: AdminCompositionState = Object.freeze({ ...initial, phase: 'unavailable' })
+const unavailableRead = () => unavailable
 const navigation = [['/admin', 'Control room'], ['/admin/event', 'Event'], ['/admin/places', 'Places'],
   ['/admin/mural', 'Wall'], ['/admin/archive', 'Closure'], ['/admin/audit', 'Audit'], ['/admin/reports', 'Reports']] as const
 
@@ -19,7 +21,8 @@ export function DefaultAdminPanel({ scope }: { scope: ActiveScope }) {
   const ports = usePorts(), { pathname } = useLocation()
   const [slot, setSlot] = useState<{ source: ShellPorts['admin']; entry: AdminComposition | null } | null>(null)
   const entry = slot?.source === ports.admin ? slot.entry : null
-  const state = useSyncExternalStore(entry?.subscribe ?? noSubscription, entry?.read ?? initialRead, initialRead)
+  const fallback = slot?.source === ports.admin ? unavailableRead : initialRead
+  const state = useSyncExternalStore(entry?.subscribe ?? noSubscription, entry?.read ?? fallback, initialRead)
   useEffect(() => {
     const opened = ports.admin.open?.(scope) ?? null
     setSlot({ source: ports.admin, entry: opened }); void opened?.start()
