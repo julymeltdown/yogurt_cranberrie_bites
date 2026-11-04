@@ -273,7 +273,8 @@ def run(args):
                           "world_two_client": report["world_two_client"]}), flush=True)
         deadline = time.monotonic() + args.hold_seconds
         while time.monotonic() < deadline:
-            stack.health()
+            with patch.object(dev.runtime, "readiness_value", prep.current_readiness):
+                stack.health()
             child.alive()
             time.sleep(min(0.25, max(0, deadline - time.monotonic())))
     except BaseException as error:
