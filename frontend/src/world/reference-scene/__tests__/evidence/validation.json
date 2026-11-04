@@ -1,0 +1,78 @@
+{
+  "task": "FE-SCENE-R3-WORLD",
+  "status": "INTEGRATED",
+  "scope": "Bounded source/loader/draw/Map-port/static-artifact consumer, NOT production admission or visual acceptance",
+  "base": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+  "modelHandoff": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b",
+  "testedParent": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b",
+  "artistRuntime": "e3af146ae4757794ca153363fd1408300ffde29e",
+  "commands": [
+    {
+      "command": "vitest run (11 exact files/glob recorded in reference-scene-world.md)",
+      "exitCode": 0,
+      "tests": 313,
+      "files": 11,
+      "ownedTests": 27,
+      "ownedFiles": 5
+    },
+    {
+      "command": "tsc -b --pretty false",
+      "exitCode": 0
+    },
+    {
+      "command": "scoped oxlint reference-scene and MapScene",
+      "exitCode": 0
+    },
+    {
+      "command": "node src/world/reference-scene/__tests__/native.mjs",
+      "exitCode": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ]
+    },
+    {
+      "command": "node src/world/reference-scene/__tests__/legacy.mjs",
+      "exitCode": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ]
+    },
+    {
+      "command": "Vite production build API; temporary output removed",
+      "exitCode": 0,
+      "warning": "Existing large chunk warning"
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/runtime/build-tiled.py",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0
+    }
+  ],
+  "checks": {
+    "nativeSourcesAndArtifacts": "All source/artifact pins match final source",
+    "sourceArtworkMutations": false,
+    "C06BudgetChanges": false,
+    "dependencyInstallOrCopy": false,
+    "diskFloorGiB": 8,
+    "retainedNative": "PASS; three inspected captures; exact MapScene hash in retained.json",
+    "reconciledPins": "All native source/artifact hashes unchanged after peer backend/art/documentation fast-forward"
+  },
+  "limits": [
+    "Candidate NOT_ADMITTED",
+    "No production bootstrap/Auth server/live socket",
+    "No real multiuser/physical-device proof",
+    "Root binding, server admission and artist fidelity remain separately owned"
+  ],
+  "reconciledParent": "b09db61e2ff4aadd2ae4a13f6a3571126d63dde4"
+}

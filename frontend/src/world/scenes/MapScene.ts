@@ -9,6 +9,8 @@ import { assertSameWorld } from '../theme/compatibility'
 import type { AvatarScenePort, AvatarSceneTexture, AvatarSceneSprite } from '../avatar/scene'
 import { prepareIllustratedSkin } from '../illustrated/phaser'
 import { validateLoadedScenery } from '../illustrated/model'
+import { referenceSceneFor } from '../reference-scene/model'
+import { prepareReferenceSceneSkin } from '../reference-scene/phaser'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -18,6 +20,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     const ready = new Promise<void>((resolve, reject) => { resolveReady = resolve; rejectReady = reject })
     const closed = new Promise<void>(resolve => { resolveClosed = resolve })
     const g = loaded.map.geometry
+    const reference = referenceSceneFor(loaded)
     const muralClose = new Set<() => void>()
     const closeMural = () => { for (const close of Array.from(muralClose)) { try { close() } catch { /* Continue scene teardown. */ } }; muralClose.clear() }
     let skinRevision = 0
@@ -61,6 +64,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       prepareSkin(next: LoadedMap): Skin {
         const textureKey = `mcr-reviewed-map-${++skinRevision}`
         validateLoadedScenery(next)
+        if (referenceSceneFor(next)) return prepareReferenceSceneSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady)
         if (next.scenery) return prepareIllustratedSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady)
         let tilemap: PhaserType.Tilemaps.Tilemap | null = null, removed = false
         const layers: PhaserType.Tilemaps.TilemapLayer[] = []
@@ -131,7 +135,8 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       // This is a view only: no spawn, player, geometry or interaction is moved.
       const stage = loaded.scenery?.manifest.objects.find(object => object.id === 'stage')
       const stageInteraction = g.interactions.find(interaction => interaction.interaction_id === 'stage_info')
-      const foot = cameraFoot ?? (stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
+      const foot = cameraFoot ?? (reference ? { x: reference.worldCamera.x + reference.worldCamera.width / 2, y: reference.worldCamera.y + reference.worldCamera.height / 2 }
+        : stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
         y: stage.y + stage.height / 2 + Math.min(260, game.scale.height / camera.zoom * .32) }
         : { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px })
       camera.centerOn(foot.x, foot.y)
