@@ -136,6 +136,38 @@ class ProfileTests(unittest.TestCase):
         for error in (ValueError("PRIVATE-TOKEN"), prep.auth.CheckFailure("principal-1-login:PRIVATE-TOKEN")):
             self.assertEqual(live.qualification_failure_code(error), "UNCLASSIFIED")
 
+    def test_failed_owned_concert_stop_classifies_log_before_cleanup_without_private_text(self):
+        calls = []
+        def stop():
+            calls.append("stop")
+            return {"pid": 123, "exit_code": 1, "forced": False, "unexpected_exit": True}
+        def diagnostic():
+            calls.append("diagnostic-before-pg-removal")
+            return "World authority maintenance failed SECRET-TOKEN https://private.invalid private-identity"
+        record = live.stop_qualified_concert(NS(stop=stop, diagnostic=diagnostic))
+        self.assertEqual(calls, ["stop", "diagnostic-before-pg-removal"])
+        self.assertEqual(record["public_failure_diagnostic"]["public_source_labels"],
+                         ["world-authority-maintenance-failed"])
+        self.assertFalse(record["public_failure_diagnostic"]["raw_log_retained"])
+        self.assertEqual(record["public_failure_diagnostic"]["capture_phase"], "post-stop-before-pg-removal")
+        self.assertTrue(record["public_failure_diagnostic"]["captured_at"].endswith("+00:00"))
+        for private in ("SECRET", "private.invalid", "private-identity"):
+            self.assertNotIn(private, json.dumps(record))
+
+    def test_concert_diagnostic_unmatched_or_unreadable_keeps_stop_receipt_and_no_text(self):
+        for read, read_status in ((Mock(return_value="PRIVATE-UNMATCHED-TOKEN"), "READ"),
+                                  (Mock(side_effect=OSError("PRIVATE-ERROR")), "FAILED")):
+            record = live.stop_qualified_concert(NS(stop=Mock(return_value={"exit_code": 1}), diagnostic=read))
+            self.assertEqual(record["exit_code"], 1)
+            self.assertEqual(record["public_failure_diagnostic"]["status"], "UNCLASSIFIED")
+            self.assertEqual(record["public_failure_diagnostic"]["read_status"], read_status)
+            self.assertEqual(record["public_failure_diagnostic"]["public_source_labels"], [])
+            self.assertNotIn("PRIVATE", json.dumps(record))
+        read = Mock()
+        record = live.stop_qualified_concert(NS(stop=Mock(return_value={"exit_code": 0, "forced": False}), diagnostic=read))
+        self.assertNotIn("public_failure_diagnostic", record)
+        read.assert_not_called()
+
     def test_real_principal_sequence_does_not_persist_token(self):
         user, token = str(uuid4()), "PRIVATE-TEST-TOKEN"
         browser = Mock()

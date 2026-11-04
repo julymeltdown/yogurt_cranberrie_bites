@@ -57,6 +57,44 @@ def qualification_failure_code(error):
         label) else "UNCLASSIFIED"
 
 
+def stop_qualified_concert(child):
+    """Stop the owned child, then classify its bounded log before PG removal."""
+    result = child.stop()
+    if (result.get("exit_code") != 0 or result.get("forced")
+            or result.get("unexpected_exit")):
+        labels = {
+            "World authority maintenance timed out": "world-authority-maintenance-timeout",
+            "World authority maintenance failed": "world-authority-maintenance-failed",
+            "World socket server failed": "world-socket-server-failed",
+            "World replay readiness lost": "world-replay-readiness-lost",
+            "World owner shutdown timed out": "world-owner-shutdown-timeout",
+            "World owner shutdown task failed": "world-owner-shutdown-task-failed",
+            "World persistent cleanup timed out": "world-persistent-cleanup-timeout",
+            "World persistent cleanup failed": "world-persistent-cleanup-failed",
+            "World shutdown has pending persistent membership cleanup": "world-pending-membership-cleanup",
+            "World replay shutdown incomplete": "world-replay-shutdown-incomplete",
+            "World stopped unexpectedly": "world-component-stopped",
+            "Participant recovery stopped unexpectedly": "participant-recovery-stopped",
+        }
+        diagnostic = {"status": "UNCLASSIFIED", "read_status": "FAILED", "public_source_labels": [],
+                      "source_revision": "7cd1e900d6bd1b4994482819486c828e43736822",
+                      "capture_phase": "post-stop-before-pg-removal",
+                      "raw_log_retained": False}
+        try:
+            # Child.diagnostic checks ownership and reads the last 8192 bytes.
+            # Even its redacted text can contain private identities/endpoints;
+            # keep it only in RAM and emit fixed public source labels.
+            raw = child.diagnostic()
+            observed = [label for text, label in labels.items() if text in raw]
+            diagnostic.update(status="CLASSIFIED_PUBLIC_LABELS_ONLY" if observed else "UNCLASSIFIED",
+                              read_status="READ", public_source_labels=observed)
+        except Exception:
+            pass
+        diagnostic["captured_at"] = datetime.now(timezone.utc).isoformat()
+        result["public_failure_diagnostic"] = diagnostic
+    return result
+
+
 class QualificationGuard:
     """Fresh offer bounds over retained carry plus only this producer's outputs."""
     def __init__(self, args, stack):
@@ -798,7 +836,8 @@ def run(args):
                 report["result"] = "FAIL"
         if child is not None:
             try:
-                report["concert_stop"] = child.stop()
+                report["concert_stop"] = (stop_qualified_concert(child)
+                                          if profile != "in01" else child.stop())
                 if (report["concert_stop"].get("exit_code") != 0
                         or report["concert_stop"].get("forced")
                         or report["concert_stop"].get("unexpected_exit")):
