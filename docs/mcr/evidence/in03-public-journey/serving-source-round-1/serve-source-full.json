@@ -1,0 +1,10 @@
+{
+  "allocation": "FE209-SERVE-GUARDS-SOURCE-B-20261104T1735Z",
+  "utc": "2026-11-04T17:36:01.173417+00:00",
+  "status": "FULL",
+  "actualLivePidsOrGroups": [],
+  "ownedLinkCacheTmpRemaining": [],
+  "freeBytes": 27573481472,
+  "listenersStarted": false,
+  "actualIN03": "NOT_RUN"
+}

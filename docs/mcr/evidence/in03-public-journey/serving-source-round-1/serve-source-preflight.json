@@ -1,0 +1,34 @@
+{
+  "utc": "2026-11-04T17:35:09.919188+00:00",
+  "source": "4617712c1c3e734113ee06c6f1a70c3d95774185",
+  "pins": {
+    "frontend/e2e/real/social/serve.mjs": "eeb98a7ae963daec3451a06ecf725878bd6991657a60b15cfb181509f5247fa6",
+    "frontend/e2e/real/social/serve.test.mjs": "6fd4e1191c5669cf2151d0707c46fb7ac4b8b9811436c890e5fff8e62a11d168",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "44e2aeda7e17eff108297467af44be741f77f2219044fdcf64530e80aeeb0f6a"
+  },
+  "guardianSha256": "c77ddd4641bc828e0313ae80afffd3263ea7b38228bb96b2ce3f2b4f0de17496",
+  "checkout": {
+    "files": 12144,
+    "bytes": 1213659117
+  },
+  "carry": {
+    "files": 249,
+    "bytes": 4404016
+  },
+  "gitMetadata": {
+    "files": 8,
+    "bytes": 1694538
+  },
+  "ownedLogicalGit": {
+    "files": 656,
+    "bytes": 5461796
+  },
+  "readOnlyBorrowedDependencies": {
+    "files": 11564,
+    "bytes": 408263334
+  },
+  "freeBytes": 27418656768,
+  "otherWorstCaseBytes": 2147483648,
+  "newBytes": 134217728,
+  "status": ""
+}

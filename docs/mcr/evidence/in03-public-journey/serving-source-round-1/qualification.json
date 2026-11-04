@@ -1,0 +1,76 @@
+{
+  "source": "4617712c1c3e734113ee06c6f1a70c3d95774185",
+  "base": "2fed1b829ab3e47f4cba9d01561ff0122a6bac50",
+  "status": "SOURCE_CHECKS_PASSED",
+  "guards": "8/8",
+  "actualIN03": "NOT_RUN",
+  "server": "NOT_RUN",
+  "browser": "NOT_RUN",
+  "artifacts": [
+    {
+      "file": "serve-source-preflight.json",
+      "rawSha256": "fa312d5bf9dec2772ac523f70f4dc28fa2f5714b283ef0f765237ad60540fe40",
+      "portableSha256": "fa312d5bf9dec2772ac523f70f4dc28fa2f5714b283ef0f765237ad60540fe40"
+    },
+    {
+      "file": "serve-source-accept.json",
+      "rawSha256": "07f58360d09096e884983122cb173c7b85f6164f574a8af9b63cb0209c4fb2f0",
+      "portableSha256": "07f58360d09096e884983122cb173c7b85f6164f574a8af9b63cb0209c4fb2f0"
+    },
+    {
+      "file": "serve-source-full.json",
+      "rawSha256": "11ff8b2afea58c5041d1388780d31bfb76d2463c82e57acc6ad1b59db2c41dbb",
+      "portableSha256": "11ff8b2afea58c5041d1388780d31bfb76d2463c82e57acc6ad1b59db2c41dbb"
+    },
+    {
+      "file": "serve-source-guardian.py",
+      "rawSha256": "c77ddd4641bc828e0313ae80afffd3263ea7b38228bb96b2ce3f2b4f0de17496",
+      "portableSha256": "dededa8031dd3ed2c3b809d495bc9a86ed10d7cfa58b27f4cf64287b7cac38b7"
+    },
+    {
+      "file": "feed-serve-source1-external.log",
+      "rawSha256": "e81f08bea84d94d518e2accd56a19a75fd0015599b3dd81757c2a6a4a8b4dae0",
+      "portableSha256": "e81f08bea84d94d518e2accd56a19a75fd0015599b3dd81757c2a6a4a8b4dae0"
+    },
+    {
+      "file": "feed-serve-source1-in03-serving-guards.log",
+      "rawSha256": "49f132e404cece0b34d2b7f639551f48f397e0f1225a1879130e816bf7207c49",
+      "portableSha256": "49f132e404cece0b34d2b7f639551f48f397e0f1225a1879130e816bf7207c49"
+    },
+    {
+      "file": "feed-serve-source1-in03-serving-lint.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "feed-serve-source1-in03-serving-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "feed-serve-source1-supervisor-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "feed-serve-source1-guardian.json",
+      "rawSha256": "6d3c19eca04e7ac6e7a91e079f80f3beb2f7574ae595bafb493b12430b631b05",
+      "portableSha256": "6d3c19eca04e7ac6e7a91e079f80f3beb2f7574ae595bafb493b12430b631b05"
+    },
+    {
+      "file": "feed-serve-source1-summary.json",
+      "rawSha256": "fa59ce06ba184046abb8e397ac6a9a61f7bcf0b4005855ead9bd04e0c13d4bf3",
+      "portableSha256": "fa59ce06ba184046abb8e397ac6a9a61f7bcf0b4005855ead9bd04e0c13d4bf3"
+    }
+  ],
+  "pins": {
+    "frontend/e2e/real/social/serve.mjs": "eeb98a7ae963daec3451a06ecf725878bd6991657a60b15cfb181509f5247fa6",
+    "frontend/e2e/real/social/serve.test.mjs": "6fd4e1191c5669cf2151d0707c46fb7ac4b8b9811436c890e5fff8e62a11d168",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "44e2aeda7e17eff108297467af44be741f77f2219044fdcf64530e80aeeb0f6a"
+  },
+  "limitations": [
+    "Pure serving guard/configuration checks only; Vite startup and actual proxy unqualified.",
+    "Root production configuration and policy lifetime are separate.",
+    "Original runtime lacked scenario resources and actual feature readiness."
+  ]
+}

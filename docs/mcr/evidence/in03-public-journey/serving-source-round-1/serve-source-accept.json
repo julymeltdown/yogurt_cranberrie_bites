@@ -1,0 +1,12 @@
+{
+  "allocation": "FE209-SERVE-GUARDS-SOURCE-B-20261104T1735Z",
+  "acceptedAt": "2026-11-04T17:35:29.770527+00:00",
+  "activeUntil": "2026-11-04T17:38:29.770527+00:00",
+  "hardUntil": "2026-11-04T17:39:29.770527+00:00",
+  "source": "4617712c1c3e734113ee06c6f1a70c3d95774185",
+  "guardianSha256": "c77ddd4641bc828e0313ae80afffd3263ea7b38228bb96b2ce3f2b4f0de17496",
+  "wholeRoundUpBytes": 2147483648,
+  "otherReserveBytes": 2147483648,
+  "newBytes": 134217728,
+  "browser": "NOT_ACCEPTED"
+}

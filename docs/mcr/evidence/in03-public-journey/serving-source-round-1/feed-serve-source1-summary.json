@@ -1,0 +1,74 @@
+{
+  "allocation": "FE209-SERVE-GUARDS-SOURCE-B-20261104T1735Z",
+  "run": "serve-source1",
+  "source": "4617712c1c3e734113ee06c6f1a70c3d95774185",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 1228,
+    "bytes": 16618923,
+    "temporaryBytes": 0,
+    "freeBytes": 27417374720
+  },
+  "jobs": [
+    {
+      "name": "in03-serving-guards",
+      "args": [
+        "--test",
+        "e2e/real/social/serve.test.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:35:40.051Z",
+      "milliseconds": 85
+    },
+    {
+      "name": "in03-serving-syntax",
+      "args": [
+        "--check",
+        "e2e/real/social/serve.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:35:40.170Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "in03-serving-lint",
+      "args": [
+        "node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "e2e/real/social/serve.mjs",
+        "e2e/real/social/serve.test.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:35:40.240Z",
+      "milliseconds": 85
+    },
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:35:40.357Z",
+      "milliseconds": 28
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "SOURCE_CHECKS_PASSED",
+  "final": {
+    "files": 1232,
+    "bytes": 16620556,
+    "temporaryBytes": 0,
+    "freeBytes": 27562643456
+  },
+  "releasedUTC": "2026-11-04T17:35:40.388Z",
+  "linkRemoved": true,
+  "peakProcesses": 3,
+  "peakRssBytes": 238600192
+}

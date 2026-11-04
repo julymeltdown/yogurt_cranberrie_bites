@@ -81,6 +81,11 @@ if (process.env.MCR_IN03_SOURCE === '1') jobs.splice(0, jobs.length,
   ['in03-availability-unit', ['node_modules/vitest/vitest.mjs', 'run', '--configLoader', 'native', '--config', 'src/app/in03-entry/__tests__/vitest.config.ts']],
   ['in03-source-lint', ['node_modules/oxlint/bin/oxlint', '--deny-warnings', 'src/app/in03-entry', 'e2e/real/social', 'e2e/real/social.spec.ts']],
   ['supervisor-syntax', ['--check', prefix + 'qualify.mjs']])
+if (process.env.MCR_IN03_SERVE_SOURCE === '1') jobs.splice(0, jobs.length,
+  ['in03-serving-guards', ['--test', 'e2e/real/social/serve.test.mjs']],
+  ['in03-serving-syntax', ['--check', 'e2e/real/social/serve.mjs']],
+  ['in03-serving-lint', ['node_modules/oxlint/bin/oxlint', '--deny-warnings', 'e2e/real/social/serve.mjs', 'e2e/real/social/serve.test.mjs']],
+  ['supervisor-syntax', ['--check', prefix + 'qualify.mjs']])
 const summary = { allocation, run, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
   node: process.version, nodeSha256: hash(pinned), lockSha256: hash(join(frontend, 'pnpm-lock.yaml')), initial, jobs: [], liveIN03: 'NOT_RUN', status: 'IN_PROGRESS' }
 const children = new Map()

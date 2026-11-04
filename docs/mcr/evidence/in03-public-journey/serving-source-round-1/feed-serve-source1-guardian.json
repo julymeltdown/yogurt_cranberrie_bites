@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-04T17:35:40.798302+00:00",
+  "allocation": "FE209-SERVE-GUARDS-SOURCE-B-20261104T1735Z",
+  "source": "4617712c1c3e734113ee06c6f1a70c3d95774185",
+  "exit": 0,
+  "initialWholeBytes": 1633485630,
+  "finalWholeBytes": 1633489270,
+  "initial": {
+    "files": 1227,
+    "bytes": 16618923,
+    "temporaryBytes": 0,
+    "freeBytes": 27417841664
+  },
+  "final": {
+    "files": 1233,
+    "bytes": 16622563,
+    "temporaryBytes": 0,
+    "freeBytes": 27561967616
+  },
+  "peakAllProcesses": 3,
+  "peakAllRssBytes": 149225472,
+  "violations": [],
+  "ownedPidsObserved": [
+    84460,
+    84846,
+    84855,
+    84858,
+    84952
+  ],
+  "independentGuardianIntervalMs": 250
+}

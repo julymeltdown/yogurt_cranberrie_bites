@@ -1,0 +1,16 @@
+✔ accepts only an explicit closed private serving configuration (1.257167ms)
+✔ rejects external, ambiguous, credentialed, self-proxy and non-origin URLs (0.292916ms)
+✔ binds the exact borrowed origin/event/owner and earlier runtime expiry without making an Auth claim (0.240709ms)
+✔ rejects a foreign Gateway or producer custody without inspecting actor credentials (0.10225ms)
+✔ requires the exact Host and same-origin browser authority while preserving API query values (0.109667ms)
+✔ rejects absolute/protocol-relative paths, traversal and invalid encoding (0.089792ms)
+✔ uses isolated Vite options, pinned public revision and a cookie/Origin-preserving API-only proxy (0.501708ms)
+✔ proxy failure emits an unqualified plain 502, never a fabricated domain denial or 200 (0.105375ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50.653583
