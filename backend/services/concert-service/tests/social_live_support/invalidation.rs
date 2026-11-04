@@ -215,39 +215,71 @@ async fn database_deadline_emits_durable_actor_scoped_signals_once_and_survives_
     let intro = Uuid::new_v4();
     // A real future database deadline, not a caller clock override. No grant
     // or synthetic authority success is inferred from these storage fixtures.
-    sqlx::query("insert into concert_intros(event_id,intro_id,owner_id,revision,state,text,created_at,updated_at,expires_at) values($1,$2,$3,1,'PUBLISHED','Expiry source',clock_timestamp()-interval '1 minute',clock_timestamp(),clock_timestamp()+interval '500 milliseconds')")
+    sqlx::query("insert into concert_intros(event_id,intro_id,owner_id,revision,state,text,created_at,updated_at,expires_at) values($1,$2,$3,1,'PUBLISHED','Expiry source',clock_timestamp()-interval '1 minute',clock_timestamp(),clock_timestamp()+interval '1000 milliseconds')")
         .bind(e).bind(intro).bind(b).execute(&p).await.unwrap();
     let mut fixture = p.begin().await.unwrap();
     // Synthetic storage setup only; this local deadline satisfies the retained
     // deferred SQL guard and is not a canonical authority or endpoint proof.
     sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '5 seconds')::text,true)")
         .execute(&mut *fixture).await.unwrap();
-    sqlx::query("insert into concert_social_requests(event_id,request_id,requester_id,recipient_id,intro_id,intro_revision,authority_revision,relationship_revision,state,created_at,expires_at) values($1,$2,$3,$4,$5,1,1,1,'PENDING',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '1100 milliseconds')")
+    sqlx::query("insert into concert_social_requests(event_id,request_id,requester_id,recipient_id,intro_id,intro_revision,authority_revision,relationship_revision,state,created_at,expires_at) values($1,$2,$3,$4,$5,1,1,1,'PENDING',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '2200 milliseconds')")
         .bind(e).bind(request).bind(a).bind(b).bind(intro).execute(&mut *fixture).await.unwrap();
     fixture.commit().await.unwrap();
-    assert_eq!(s.emit_expired(10).await.unwrap(), 0);
-    tokio::time::sleep(std::time::Duration::from_millis(600)).await;
-    assert_eq!(s.emit_expired(10).await.unwrap(), 1);
-    assert_eq!(s.emit_expired(10).await.unwrap(), 0);
+    // Expiry processing is global. Prior retained cases may be due after the
+    // physical restart, so assert this event's durable rows and publications.
+    let count = || async {
+        sqlx::query_scalar::<_, i64>("select count(*) from concert_social_policy_signals where event_id=$1 and reason='EXPIRED'")
+            .bind(e).fetch_one(&p).await.unwrap()
+    };
+    s.emit_expired(100).await.unwrap();
+    assert_eq!(count().await, 0);
+    tokio::time::sleep(std::time::Duration::from_millis(1200)).await;
+    s.emit_expired(100).await.unwrap();
+    assert_eq!(count().await, 2);
+    s.emit_expired(100).await.unwrap();
+    assert_eq!(count().await, 2);
     assert_eq!(s.baseline(e, a).await.unwrap(), 2);
     let next = SocialInvalidationSink::new(p.clone(), pub_.clone());
     pub_.fail.store(true, Ordering::SeqCst);
-    assert!(next.drain_pending(10).await.is_err());
+    assert!(next.drain_pending(100).await.is_err());
     pub_.fail.store(false, Ordering::SeqCst);
-    assert_eq!(next.drain_pending(10).await.unwrap(), 2);
-    assert_eq!(s.drain_pending(10).await.unwrap(), 0);
-    assert!(pub_
+    next.drain_pending(100).await.unwrap();
+    s.drain_pending(100).await.unwrap();
+    let seen = pub_
         .seen
         .lock()
         .unwrap()
         .iter()
-        .all(|v| v.0 == e && (v.1 == a || v.1 == b) && v.2 == 2 && v.3 == "EXPIRED"));
+        .filter(|v| v.0 == e)
+        .cloned()
+        .collect::<Vec<_>>();
+    assert_eq!(seen.len(), 2);
+    assert!(seen
+        .iter()
+        .all(|v| (v.1 == a || v.1 == b) && v.2 == 2 && v.3 == "EXPIRED"));
     // An emitted earlier Intro boundary must not mask a later request deadline.
-    tokio::time::sleep(std::time::Duration::from_millis(600)).await;
-    assert_eq!(next.emit_expired(10).await.unwrap(), 1);
-    assert_eq!(next.emit_expired(10).await.unwrap(), 0);
+    tokio::time::sleep(std::time::Duration::from_millis(1200)).await;
+    next.emit_expired(100).await.unwrap();
+    assert_eq!(count().await, 4);
+    next.emit_expired(100).await.unwrap();
+    assert_eq!(count().await, 4);
     assert_eq!(next.baseline(e, a).await.unwrap(), 3);
-    assert_eq!(next.drain_pending(10).await.unwrap(), 2);
+    next.drain_pending(100).await.unwrap();
+    let seen = pub_
+        .seen
+        .lock()
+        .unwrap()
+        .iter()
+        .filter(|v| v.0 == e)
+        .cloned()
+        .collect::<Vec<_>>();
+    assert_eq!(seen.len(), 4);
+    assert_eq!(
+        seen.iter()
+            .filter(|v| (v.1 == a || v.1 == b) && v.2 == 3 && v.3 == "EXPIRED")
+            .count(),
+        2
+    );
     let row=sqlx::query("select clock_timestamp()>=deadline_at due,published_at is not null done from concert_social_policy_signals where event_id=$1").bind(e).fetch_all(&p).await.unwrap();
     assert_eq!(row.len(), 4);
     assert!(row
