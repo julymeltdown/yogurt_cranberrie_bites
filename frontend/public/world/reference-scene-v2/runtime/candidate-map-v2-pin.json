@@ -1,0 +1,62 @@
+{
+  "format": "MCR_REFERENCE_SCENE_CANONICAL_MAP_PIN",
+  "version": 1,
+  "status": "NOT_ADMITTED",
+  "authority": "Canonical map identity and source provenance only. No bootstrap, product admission, physical destination or visual acceptance is granted.",
+  "candidate_map": {
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 2,
+    "content_hash": "sha256:3090185136d5e22138318831d230a7ce6581866a12dc3309df8ebf37825de9f5",
+    "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+  },
+  "dimensions": {
+    "width_px": 768,
+    "height_px": 1296
+  },
+  "backend_map_manifest": {
+    "revision": "60991c53241a2dd1fdb5052d86a1fff81eb66b67",
+    "path": "backend/releases/reference-scene-v2/map-manifest.json",
+    "bytes": 28733,
+    "sha256": "sha256:e003a2c7efce635e5c34e0983d759c2c47e33cac3cd9964695e9581c500689a8"
+  },
+  "backend_source_binding": {
+    "revision": "60991c53241a2dd1fdb5052d86a1fff81eb66b67",
+    "path": "backend/releases/reference-scene-v2/source-binding.json",
+    "bytes": 8788,
+    "sha256": "sha256:c44232836a4fbd64b2450a644c7103ab27fa9eec0219d13ad686ba0e1e8d1845",
+    "version": 2,
+    "art_revision": "023201343a452b859759e02039d367c11d1ff8ad",
+    "frontend_scenery_adopted": false
+  },
+  "backend_readiness": {
+    "revision": "60991c53241a2dd1fdb5052d86a1fff81eb66b67",
+    "path": "backend/releases/reference-scene-v2/readiness.json",
+    "bytes": 1469,
+    "sha256": "sha256:916985f772fd07e66af326bf6e84a5bb29a78d57f93c716861faaf3bb9d3c810",
+    "state": "NOT_ADMITTED"
+  },
+  "tilemap": {
+    "path": "world/reference-scene-v2/runtime/canonical-map-v2.json",
+    "sha256": "sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f",
+    "bytes": 24058,
+    "format": "TILED_JSON",
+    "source_revision": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b"
+  },
+  "frontend_consumer": {
+    "source_revision": "969b3b2fe45030cfad90e34f224797196ba3bdc8",
+    "artist_revision": "e3af146ae4757794ca153363fd1408300ffde29e",
+    "theme_id": "PARADE",
+    "scenery_source": {
+      "path": "world/reference-scene-v2/runtime-v4/parade-scenery.json",
+      "sha256": "sha256:53d4b4cf6e580de724053cd1d6ff11b87ef77b56fa4d5399f294a63c0a4b4594",
+      "source_revision": "e3af146ae4757794ca153363fd1408300ffde29e"
+    },
+    "binding": "Exact canonical geometry, four original virtual places and Tiled bytes match. Backend all-three-v5 scenery is a separate unadopted source choice."
+  },
+  "place_scope": "Four VIRTUAL_CONCEPT / CONCEPT_ONLY records remain unchanged. This descriptor requests no physical-place evidence and grants no physical beacon eligibility.",
+  "limitations": [
+    "No coherent product/operator bundle is supplied",
+    "Backend checkpoint still has the historical blanket provenance guard; owner-led virtual policy correction follows separately",
+    "Later map revisions and era art require explicit coordinated adoption; no silent reseal or source switch"
+  ]
+}
