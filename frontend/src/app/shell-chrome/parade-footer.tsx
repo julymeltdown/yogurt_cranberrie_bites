@@ -1,26 +1,6 @@
-/** Original hand-authored print silhouettes. Decorative ornament, never avatars or live people. */
+/** Original ART-PARADE-PRINT-02 decoration, never avatars, members or presence. */
 export function ParadeFooter() {
-  return <div className="mcr-chrome-parade-footer" aria-hidden="true"><svg viewBox="0 0 360 70" preserveAspectRatio="xMidYMax meet" focusable="false">
-    <g fill="currentColor">
-      {/* Independently drawn contours: uneven coats, bent knees and different strides. */}
-      <path d="M19 22q-3-5 1-8 4-2 7 1l2 5-3 4-4-1-3 4-5 8-6 4-2-2 7-8 4-4Z M22 25l6-1 5 10 8-5 2 2-10 9-7-5-1 8-9 2 2-13Z M18 42l6 1-7 11-8 7-5 1 1-4 8-8Z M24 42l5-2 3 11 9 6 3 1-1 3-7-1-10-8Z" />
-      <path d="M56 26q-2-4 1-7l5-1 4 3-1 5-4 2-3-1-3 6-7 8-4-1 1-3 7-7Z M58 28l7-1 4 11 8-4 2 3-9 7-7-4-4 7-9-2 4-10Z M52 44l6 2-8 10-8 5-4-1 1-3 8-5Z M60 44l5-1 3 10 8 4 5 1-1 3-9-1-8-6Z" />
-      <path d="M98 16l-4 2-2 5 2 4 5 1 4-3-1-5 3-1-2-3Z M94 29l7-2 5 9 6 4 8-4 2 3-10 7-10-5-2 7-13-3 4-10-6 3-4 8-4-1 3-11 9-5Z M89 44l7 3-6 7-10 5-6 1-1-3 9-5Z M98 46l6-3 3 11 7 5 6 1-1 3-10-1-8-7Z" />
-      <path d="M139 22q-3-3-1-7l4-3 5 2 1 5-3 4-4-1Z M140 24l6-1 3 9 9-3 2-8 3 1-1 11-12 5-2 10-12-3 2-10-5 4-4 8-3-1 2-10 8-9Z M138 44l6 2-8 10-10 4-4-1 2-3 8-4Z M146 46l5-2 3 11 7 3 6 1-1 3-10-1-6-6Z" />
-      <path d="M181 25l-4-1-2-4 1-5 5-1 4 3 1 5-3 4Z M178 27l6-1 3 10 10 3 4-3 2 3-5 5-13-3-1 8-12-2 3-12-7 1-5 7-3-2 6-10 9-2Z M175 46l6 2-5 8-11 5-5-1 1-3 10-4Z M182 47l6-1 3 8 9 3 4 2-2 3-10-3-7-4Z" />
-      <path d="M220 18q-4-3-2-7 2-4 7-2l4 4-1 5-4 2Z M220 21l7-2 7 9 7-6 3 2-9 11-8-6-2 12-12-2 3-10-6 4-7 1-1-3 8-3 6-6Z M215 38l7 3-9 12-9 6-5-1 2-4 8-5Z M224 40l6-2 4 13 8 4 5 1-1 4-10-2-8-6Z" />
-      <path d="M264 24q-4-1-4-5l2-5 5-1 4 4-1 6-4 2Z M263 27l7-2 4 10 7-4 2 3-10 7-5-5-1 10-12-3 4-10-9 3-5-2 1-3 6 1 7-5Z M257 42l7 3-9 9-9 4-5-1 2-3 8-4Z M266 44l6-2 2 10 9 4 5 1-1 3-10-1-7-6Z" />
-      <path d="M304 19l-4-3 1-5 4-2 5 2 2 4-2 4-4 1Z M302 22l7-1 5 10 8-4 3-7 3 1-2 10-12 6-4 9-12-3 2-11-8 5-4-2 1-3 6-3Z M299 42l7 3-8 9-9 3-6-1 1-3 10-3Z M308 44l6-2 4 10 8 2 4 2-1 3-11-2-7-5Z" />
-      <path d="M341 22q-2-4 1-7l5-1 4 4-1 4-4 2-3-1Z M343 26l6-1 4 10 7-3 2 3-9 6-6-5-2 10-10-2 4-12-6 4-4-2 1-3 8-3Z M337 43l7 3-7 8-8 4-5-1 2-3 7-4Z M345 44l6-2 3 10 6 3v4l-9-3-4-5Z" />
-      {/* Ragged earth joins the ornament; not an avatar asset or a place map. */}
-      <path d="M0 60l9-1 5-3 7 2 9-1 6 2 8-3 11 2 6-3 9 2 10-1 8 2 12-3 10 1 7-2 12 3 11-2 9 1 9-3 10 2 12-1 9 2 11-4 8 2 12-1 9 2 10-4 12 2 8-3 11 2 9-3 9 1 9-3 10 2 9-2 10 1V70H0Z" />
-      <path d="m158 18 1-1 10 40-2 1Z M159 18q8-7 17-3l-4 5 5 2q-9-1-15 4Z" />
-    </g>
-    <g fill="none" stroke="currentColor" strokeWidth=".65" opacity=".8">
-      <path d="M0 39q10 10 26 12M0 46q14 4 25 15M0 54q12-3 29 3M3 37l3 32M15 44 9 69M25 47 13 69M360 37q-11 15-25 16M360 46q-14 9-21 14M356 37l-2 32M345 45l6 24" />
-    </g>
-    <g fill="#e9e1d4" opacity=".5">
-      <path d="m18 64 6-1-2 1-4 1ZM47 61l3-1-1 3-2 1ZM85 65l9-1-3 1ZM126 62l3 1-2 2ZM167 66l5-1-1 1ZM207 61l5-1-2 2ZM248 65l7-1-3 1ZM289 61l3-1-1 3ZM330 65l8-1-3 1Z" />
-    </g>
-  </svg></div>
+  return <div className="mcr-chrome-parade-footer" aria-hidden="true">
+    <img src="/reference-parade-print-v2/parade-print.svg" alt="" width={360} height={96} draggable={false} />
+  </div>
 }

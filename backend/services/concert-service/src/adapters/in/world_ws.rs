@@ -82,6 +82,51 @@ pub struct SocketTransport {
     policy_baseline: Option<Arc<dyn PolicyBaselinePort>>,
 }
 impl SocketTransport {
+    pub(crate) fn account_bindings(&self, user: Uuid) -> Result<Vec<Binding>, WriteError> {
+        let slots = self.slots.lock().map_err(|_| WriteError::Failed)?;
+        let mut bindings = Vec::new();
+        for slot in slots.values() {
+            let slot = slot.lock().map_err(|_| WriteError::Failed)?;
+            if let Some(binding) = slot
+                .binding
+                .as_ref()
+                .filter(|b| b.key.user_id.uuid() == user)
+            {
+                bindings.push(binding.clone());
+            }
+        }
+        Ok(bindings)
+    }
+    /// Withdraw the actual installed registry and its private policy baseline.
+    /// Retained serve_socket handles observe terminal on their next bounded tick;
+    /// removing the registry also forbids any further native publication now.
+    pub(crate) fn withdraw_account(&self, user: Uuid) -> Result<Vec<Binding>, WriteError> {
+        let mut slots = self.slots.lock().map_err(|_| WriteError::Failed)?;
+        let mut victims = Vec::new();
+        let mut connections = Vec::new();
+        for (connection, slot) in slots.iter() {
+            let mut slot = slot.lock().map_err(|_| WriteError::Failed)?;
+            if let Some(binding) = slot
+                .binding
+                .as_ref()
+                .filter(|b| b.key.user_id.uuid() == user)
+                .cloned()
+            {
+                slot.terminal = Some(SafeClose {
+                    code: 4401,
+                    label: "SESSION_REVOKED",
+                });
+                slot.policy = PolicyState::default();
+                slot.binding = None;
+                victims.push(binding);
+                connections.push(*connection);
+            }
+        }
+        for connection in connections {
+            slots.remove(&connection);
+        }
+        Ok(victims)
+    }
     fn slot(&self, id: Uuid) -> Result<Arc<Mutex<Slot>>, WriteError> {
         self.slots
             .lock()
@@ -212,6 +257,18 @@ pub struct WorldSocketState {
     native_write_bytes: usize,
 }
 impl WorldSocketState {
+    /// Bind deletion to the same admission object, owner handle and registry
+    /// actually serving this state. A parallel empty transport is not evidence.
+    pub(crate) fn account_session_parts(
+        &self,
+        bridge: &Arc<crate::world::admission_bridge::AdmissionBridge>,
+    ) -> Result<(SocketTransport, Arc<RuntimeHandle>), WriteError> {
+        let admission: Arc<dyn AdmissionPort> = bridge.clone();
+        if !Arc::ptr_eq(&self.admission, &admission) {
+            return Err(WriteError::Failed);
+        }
+        Ok((self.transport.clone(), self.owner.clone()))
+    }
     pub fn new(
         origins: OriginPolicy,
         transport: SocketTransport,

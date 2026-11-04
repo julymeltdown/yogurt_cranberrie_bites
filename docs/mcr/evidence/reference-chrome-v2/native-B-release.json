@@ -1,0 +1,38 @@
+{
+  "job": "REFERENCE-CHROME-NATIVE-BROWSER-202611041410Z",
+  "releasedEpoch": 1793801695.6241338,
+  "originalWorkDeadline": 1793801829.605431,
+  "originalCleanupDeadline": 1793801889.605431,
+  "guardianStatus": "PASS",
+  "captureStatus": "PASS",
+  "cases": 21,
+  "passed": 21,
+  "pngs": 30,
+  "pngBytes": 2449948,
+  "peakProcesses": 12,
+  "peakRssKiB": 2658352,
+  "peakWholeBytes": 1423138816,
+  "peakTempBytes": 29661452,
+  "peakOutputBytes": 2604587,
+  "finishedEpoch": 1793801578.06145,
+  "freeBytes": 28831313920,
+  "ownLinkAbsent": true,
+  "remainingPrivateTemps": [],
+  "remainingOwnDescendants": [],
+  "port5302Free": true,
+  "art": {
+    "frontend/public/reference-parade-print-v2/": "b68d40a906ac98f8dd3da86d4136fbbe425be8d9",
+    "frontend/public/reference-window-controls-v2/": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203"
+  },
+  "feedOverlay": {
+    "commit": "1a90734394540b2f4ba7303c02e973a730baa2c6",
+    "path": "frontend/src/features/event-feed/feed.css",
+    "sha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8"
+  },
+  "rootFlatPaperOverlay": "NOT_CONSUMED_IN_THIS_FROZEN_RUN; Root supplied32fed3eb after actualACCEPT; no new screenshot above30cap",
+  "limits": [
+    "Synthetic HTTP/C05 fixture; no real multiuser/Auth/device acceptance",
+    "Old foundation except explicit qualified FeedCSS/art overlays; newRootproviders/bodypalette not qualified by this run",
+    "Actual image assessment and developer-owned visual fixes remain open"
+  ]
+}

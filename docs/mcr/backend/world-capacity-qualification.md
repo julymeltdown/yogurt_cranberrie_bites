@@ -1,5 +1,11 @@
 # QA05 / QA08 public World qualification drivers
 
+## Current user scheduling decision — 2026-11-05
+
+Performance qualification, the 200-user load run and benchmarks are `DEFERRED_BY_USER`, following the direct human priority relayed by Main through BackendSL. Pending performance rounds are removed from this assignment; no new runtime offer, resource request or 200-user retry is pending. Missing performance evidence is nonblocking for functional IN02/IN03/IN04 work. Unrelated functional work continues independently.
+
+Original QA08 remains unfinished, neither PASS nor complete; this deferral does not remove its original scope or upgrade historical evidence. Prior results and FULL-release receipts remain preserved below. This producer holds no active performance job, runtime allocation or SQL/input hold, so no new stop or release operation is required. Its existing persistent goal metadata remains unchanged and unfinished; no goal is falsely completed or reset. The current decision supersedes historical next-performance-round wording below without altering those historical records.
+
 ## Delivery and evidence boundary
 
 This is a source contribution to original QA05 and QA08. Source and offline fixtures are `MOCK_READY`; actual public HTTP/WS execution, the original 200-socket/four-room run, serving-process restart, server queue measurements, database cleanup, physical mobile performance and chosen production caps are `NOT_RUN`. Neither task is `ACCEPTED`. A successful driver result means its selected observations completed, with acceptance always `NOT_CLAIMED`. Missing hooks remain explicitly `NOT_RUN`; they are never inferred to be zero.

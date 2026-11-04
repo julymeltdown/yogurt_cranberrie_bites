@@ -1,0 +1,50 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend
+
+ ❯ src/app/reference-chrome-v2/chrome.test.tsx (5 tests | 1 failed) 1120ms
+   × places decoration after real profile content in the existing scroll owner and hides the entire flow in peek 1009ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/reference-chrome-v2/chrome.test.tsx > places decoration after real profile content in the existing scroll owner and hides the entire flow in peek
+TestingLibraryElementError: Unable to find role="heading" and name "My profile"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mOpening your event…[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mOpening your event…[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/reference-chrome-v2/chrome.test.tsx:65:18
+     63|   try {
+     64|     render(<RouterProvider router={router} />)
+     65|     await screen.findByRole('heading', { name: 'My profile', level: 1 …
+       |                  ^
+     66|     const body = document.getElementById('shell-panel-body')!
+     67|     const footer = body.querySelector('.mcr-chrome-parade-footer')!
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 26 passed (27)
+   Start at  00:19:21
+   Duration  5.32s (transform 1.21s, setup 0ms, import 1.06s, tests 2.22s, environment 1.64s)
+

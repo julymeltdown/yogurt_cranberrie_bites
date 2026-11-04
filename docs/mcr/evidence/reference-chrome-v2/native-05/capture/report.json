@@ -1,0 +1,3387 @@
+{
+  "task": "FE-REFERENCE-CHROME-02",
+  "status": "PASS",
+  "job": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+  "candidate": "94f7f90b44ede74ca9562d2e03565d4055c90cb0",
+  "diffSha256": "d36ef72f8500ba97bc86e278fb61d0a3d02c495123cd4e718df39ccfceaf24cd",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "art": {
+    "frontend/public/reference-parade-print-v2/": "ec40e53174695f03257fd7f772d91fffb12f4cf9",
+    "frontend/public/reference-window-controls-v2/": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203"
+  },
+  "feedOverlay": {
+    "commit": "654974128a27c948a449fa9e58f466b8e612361d",
+    "path": "frontend/src/features/event-feed/feed.css",
+    "sha256": "737dc607d53807bc6fcc1be9021a04da7874df7c8c26a23b3dee754799a9c1fc"
+  },
+  "flatPaperOverlay": null,
+  "selectedCases": [
+    "landing",
+    "feed",
+    "meet",
+    "gifts"
+  ],
+  "qualification": "Real production components/default router/Phaser with explicit DEV synthetic HTTP/C05 fixture; production anonymous entry separately captured",
+  "visualScope": "Shared frame, public header and CTA-safe placement only. Retro styling belongs only to post cards and replies; per-screen bodies, tabs and composer are not visually accepted by this run.",
+  "limitations": [
+    "No live backend or two-account acceptance",
+    "No physical iOS/Android or software keyboard proof",
+    "QA06 map admission fixture is not Map/C06 product acceptance",
+    "Per-screen rendering remains with its implementation owner"
+  ],
+  "cases": [
+    {
+      "id": "landing",
+      "width": 360,
+      "route": "/",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "MCR Concert World home",
+            "x": 14,
+            "y": 20,
+            "width": 66,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "name": "Sign in",
+            "x": 302,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": null
+      },
+      "state": {
+        "path": "/",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "publicHeaderInk": {
+        "background": "rgb(37, 16, 23)",
+        "image": "none",
+        "color": "rgb(242, 234, 223)"
+      },
+      "screenshot": "landing-360.png",
+      "focus": "solid",
+      "publicNavigation": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "feed",
+      "width": 360,
+      "route": "/feed",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 82.72000000000003,
+            "scrollY": 309.28,
+            "width": 348,
+            "height": 529
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "feedFrameInk": {
+        "background": "rgb(37, 16, 23)",
+        "color": "rgb(242, 234, 223)"
+      },
+      "titleContrast": 15.114013729961503,
+      "screenshot": "feed-360.png",
+      "scrollReturn": {
+        "before": 0,
+        "after": 0
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/feed",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 342,
+              "width": 348,
+              "height": 356
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "meet",
+      "width": 360,
+      "route": "/meet",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 618.75,
+          "width": 330,
+          "height": 88,
+          "bottom": 706.75,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 82.72000000000003,
+            "scrollY": 308.20000000000005,
+            "width": 348,
+            "height": 535
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "titleContrast": 15.114013729961503,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "screenshot": "meet-360.png",
+      "scrolledFooter": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 486.75,
+          "width": 330,
+          "height": 88,
+          "bottom": 574.75,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "moreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 330,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/meet/parties/new",
+            "label": "Create party",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/meet/people",
+            "label": "People",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/meet/intro/edit",
+            "label": "Your intro",
+            "keyboardReachable": true,
+            "routeVisited": true
+          }
+        ],
+        "collapsed": true
+      },
+      "createAction": "TRUTHFUL_DISABLED_BY_PRODUCTION_PRESENTATION_NO_CREATE_FLOW_CLAIM",
+      "actionPrintGeometry": {
+        "actionBottom": 575,
+        "printTop": 598.75,
+        "gap": 23.75
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 339,
+              "width": 348,
+              "height": 362
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "shortMoreActions": {
+        "summary": {
+          "x": 15,
+          "y": 59,
+          "width": 330,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/meet/parties/new",
+            "label": "Create party",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/meet/people",
+            "label": "People",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/meet/intro/edit",
+            "label": "Your intro",
+            "keyboardReachable": true,
+            "routeVisited": false
+          }
+        ],
+        "collapsed": true
+      },
+      "shortViewport": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 378.75,
+          "width": 330,
+          "height": 88,
+          "bottom": 466.75,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) none 3px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "shortScreenshot": "meet-360-short-end.png",
+      "status": "PASS"
+    },
+    {
+      "id": "gifts",
+      "width": 360,
+      "route": "/gifts",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 650,
+          "width": 330,
+          "height": 88,
+          "bottom": 738,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/gifts",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 82.72000000000003,
+            "scrollY": 312.88,
+            "width": 348,
+            "height": 509
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "titleContrast": 15.114013729961503,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "screenshot": "gifts-360.png",
+      "scrolledFooter": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 461,
+          "width": 330,
+          "height": 88,
+          "bottom": 549,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "moreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 330,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/gifts/mine",
+            "label": "My gifts",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/gifts/new",
+            "label": "Create giveaway",
+            "keyboardReachable": true,
+            "routeVisited": true
+          }
+        ],
+        "collapsed": true
+      },
+      "actionPrintGeometry": {
+        "action": "My gifts →",
+        "actionBottom": 650,
+        "printTop": 650,
+        "gap": 0
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/gifts",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 265.5,
+              "width": 348,
+              "height": 509
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "shortMoreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 330,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/gifts/mine",
+            "label": "My gifts",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/gifts/new",
+            "label": "Create giveaway",
+            "keyboardReachable": true,
+            "routeVisited": false
+          }
+        ],
+        "collapsed": true
+      },
+      "shortViewport": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 379,
+          "width": 330,
+          "height": 88,
+          "bottom": 467,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) none 3px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "shortScreenshot": "gifts-360-short-end.png",
+      "status": "PASS"
+    },
+    {
+      "id": "production-anonymous",
+      "width": 360,
+      "qualification": "Unmodified index.html and production ports; no service interception or login",
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "MCR Concert World home",
+            "x": 14,
+            "y": 20,
+            "width": 66,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "name": "Sign in",
+            "x": 302,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": null
+      },
+      "publicHeaderInk": {
+        "background": "rgb(37, 16, 23)",
+        "image": "none",
+        "color": "rgb(242, 234, 223)"
+      },
+      "screenshot": "production-anonymous-360.png",
+      "status": "PASS"
+    },
+    {
+      "id": "landing",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "MCR Concert World home",
+            "x": 14,
+            "y": 20,
+            "width": 66,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "name": "Sign in",
+            "x": 332,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": null
+      },
+      "state": {
+        "path": "/",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "publicHeaderInk": {
+        "background": "rgb(37, 16, 23)",
+        "image": "none",
+        "color": "rgb(242, 234, 223)"
+      },
+      "screenshot": "landing-390.png",
+      "focus": "solid",
+      "publicNavigation": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "feed",
+      "width": 390,
+      "route": "/feed",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 300.46000000000004,
+            "width": 378,
+            "height": 578
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "feedFrameInk": {
+        "background": "rgb(37, 16, 23)",
+        "color": "rgb(242, 234, 223)"
+      },
+      "titleContrast": 15.114013729961503,
+      "screenshot": "feed-390.png",
+      "scrollReturn": {
+        "before": 0,
+        "after": 0
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/feed",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 317.5,
+              "width": 378,
+              "height": 405
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "meet",
+      "width": 390,
+      "route": "/meet",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 653.75,
+          "width": 360,
+          "height": 96,
+          "bottom": 749.75,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 299.38,
+            "width": 378,
+            "height": 584
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "titleContrast": 15.114013729961503,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "screenshot": "meet-390.png",
+      "scrolledFooter": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 527.75,
+          "width": 360,
+          "height": 96,
+          "bottom": 623.75,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "moreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 360,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/meet/parties/new",
+            "label": "Create party",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/meet/people",
+            "label": "People",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/meet/intro/edit",
+            "label": "Your intro",
+            "keyboardReachable": true,
+            "routeVisited": true
+          }
+        ],
+        "collapsed": true
+      },
+      "createAction": "TRUTHFUL_DISABLED_BY_PRODUCTION_PRESENTATION_NO_CREATE_FLOW_CLAIM",
+      "actionPrintGeometry": {
+        "actionBottom": 624,
+        "printTop": 647.75,
+        "gap": 23.75
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 314.5,
+              "width": 378,
+              "height": 411
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "shortMoreActions": {
+        "summary": {
+          "x": 15,
+          "y": 59,
+          "width": 360,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/meet/parties/new",
+            "label": "Create party",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/meet/people",
+            "label": "People",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/meet/intro/edit",
+            "label": "Your intro",
+            "keyboardReachable": true,
+            "routeVisited": false
+          }
+        ],
+        "collapsed": true
+      },
+      "shortViewport": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 370.75,
+          "width": 360,
+          "height": 96,
+          "bottom": 466.75,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) none 3px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "shortScreenshot": "meet-390-short-end.png",
+      "status": "PASS"
+    },
+    {
+      "id": "gifts",
+      "width": 390,
+      "route": "/gifts",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 650,
+          "width": 360,
+          "height": 96,
+          "bottom": 746,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/gifts",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 304.6,
+            "width": 378,
+            "height": 555
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "titleContrast": 15.114013729961503,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "screenshot": "gifts-390.png",
+      "scrolledFooter": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 499,
+          "width": 360,
+          "height": 96,
+          "bottom": 595,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "moreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 360,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/gifts/mine",
+            "label": "My gifts",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/gifts/new",
+            "label": "Create giveaway",
+            "keyboardReachable": true,
+            "routeVisited": true
+          }
+        ],
+        "collapsed": true
+      },
+      "actionPrintGeometry": {
+        "action": "My gifts →",
+        "actionBottom": 650,
+        "printTop": 650,
+        "gap": 0
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/gifts",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 242.5,
+              "width": 378,
+              "height": 555
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "shortMoreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 360,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/gifts/mine",
+            "label": "My gifts",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/gifts/new",
+            "label": "Create giveaway",
+            "keyboardReachable": true,
+            "routeVisited": false
+          }
+        ],
+        "collapsed": true
+      },
+      "shortViewport": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 371,
+          "width": 360,
+          "height": 96,
+          "bottom": 467,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) none 3px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "shortScreenshot": "gifts-390-short-end.png",
+      "status": "PASS"
+    },
+    {
+      "id": "production-anonymous",
+      "width": 390,
+      "qualification": "Unmodified index.html and production ports; no service interception or login",
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "MCR Concert World home",
+            "x": 14,
+            "y": 20,
+            "width": 66,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "name": "Sign in",
+            "x": 332,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": null
+      },
+      "publicHeaderInk": {
+        "background": "rgb(37, 16, 23)",
+        "image": "none",
+        "color": "rgb(242, 234, 223)"
+      },
+      "screenshot": "production-anonymous-390.png",
+      "status": "PASS"
+    },
+    {
+      "id": "landing",
+      "width": 430,
+      "route": "/",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "MCR Concert World home",
+            "x": 14,
+            "y": 20,
+            "width": 66,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "name": "Sign in",
+            "x": 372,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": null
+      },
+      "state": {
+        "path": "/",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "publicHeaderInk": {
+        "background": "rgb(37, 16, 23)",
+        "image": "none",
+        "color": "rgb(242, 234, 223)"
+      },
+      "screenshot": "landing-430.png",
+      "focus": "solid",
+      "publicNavigation": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "feed",
+      "width": 430,
+      "route": "/feed",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 253,
+            "width": 418,
+            "height": 643
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "feedFrameInk": {
+        "background": "rgb(37, 16, 23)",
+        "color": "rgb(242, 234, 223)"
+      },
+      "titleContrast": 15.114013729961503,
+      "screenshot": "feed-430.png",
+      "scrollReturn": {
+        "before": 0,
+        "after": 0
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/feed",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 285,
+              "width": 418,
+              "height": 470
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "meet",
+      "width": 430,
+      "route": "/meet",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 689.75,
+          "width": 400,
+          "height": 106.65625,
+          "bottom": 796.40625,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 246,
+            "width": 418,
+            "height": 650
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "titleContrast": 15.114013729961503,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "screenshot": "meet-430.png",
+      "scrolledFooter": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 583.75,
+          "width": 400,
+          "height": 106.65625,
+          "bottom": 690.40625,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "moreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 400,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/meet/parties/new",
+            "label": "Create party",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/meet/people",
+            "label": "People",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/meet/intro/edit",
+            "label": "Your intro",
+            "keyboardReachable": true,
+            "routeVisited": true
+          }
+        ],
+        "collapsed": true
+      },
+      "createAction": "TRUTHFUL_DISABLED_BY_PRODUCTION_PRESENTATION_NO_CREATE_FLOW_CLAIM",
+      "actionPrintGeometry": {
+        "actionBottom": 666,
+        "printTop": 689.75,
+        "gap": 23.75
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 281.5,
+              "width": 418,
+              "height": 477
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "shortMoreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 400,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/meet/parties/new",
+            "label": "Create party",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/meet/people",
+            "label": "People",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/meet/intro/edit",
+            "label": "Your intro",
+            "keyboardReachable": true,
+            "routeVisited": false
+          }
+        ],
+        "collapsed": true
+      },
+      "shortViewport": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 360.75,
+          "width": 400,
+          "height": 106.65625,
+          "bottom": 467.40625,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) none 3px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "shortScreenshot": "meet-430-short-end.png",
+      "status": "PASS"
+    },
+    {
+      "id": "gifts",
+      "width": 430,
+      "route": "/gifts",
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 650,
+          "width": 400,
+          "height": 106.65625,
+          "bottom": 756.65625,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "state": {
+        "path": "/gifts",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 278,
+            "width": 418,
+            "height": 618
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "titleContrast": 15.114013729961503,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "screenshot": "gifts-430.png",
+      "scrolledFooter": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 551,
+          "width": 400,
+          "height": 106.65625,
+          "bottom": 657.65625,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) solid 2px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "moreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 400,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/gifts/mine",
+            "label": "My gifts",
+            "keyboardReachable": true,
+            "routeVisited": true
+          },
+          {
+            "path": "/gifts/new",
+            "label": "Create giveaway",
+            "keyboardReachable": true,
+            "routeVisited": true
+          }
+        ],
+        "collapsed": true
+      },
+      "actionPrintGeometry": {
+        "action": "My gifts →",
+        "actionBottom": 650,
+        "printTop": 650,
+        "gap": 0
+      },
+      "collapseInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, -1, 1, 0, 0, 0)"
+      },
+      "restoreInk": {
+        "src": "/reference-window-controls-v2/back.svg",
+        "transform": "matrix(0, 1, -1, 0, 0, 0)"
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "2px",
+        "color": "rgb(242, 234, 223)"
+      },
+      "forcedColors": "solid",
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/gifts",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 297.5,
+              "width": 418,
+              "height": 445
+            }
+          },
+          "phase": "live",
+          "entities": 6,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+              "method": "POST"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "socketPeak": 1,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "shortMoreActions": {
+        "summary": {
+          "x": 15,
+          "y": 65,
+          "width": 400,
+          "height": 44
+        },
+        "destinations": [
+          {
+            "path": "/gifts/mine",
+            "label": "My gifts",
+            "keyboardReachable": true,
+            "routeVisited": false
+          },
+          {
+            "path": "/gifts/new",
+            "label": "Create giveaway",
+            "keyboardReachable": true,
+            "routeVisited": false
+          }
+        ],
+        "collapsed": true
+      },
+      "shortViewport": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          },
+          {
+            "name": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "bottom": 54
+          }
+        ],
+        "brokenImages": [],
+        "footer": {
+          "x": 15,
+          "y": 360,
+          "width": 400,
+          "height": 106.65625,
+          "bottom": 466.65625,
+          "insideScroll": true,
+          "hidden": "true",
+          "pointerEvents": "none"
+        },
+        "heading": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "bottom": 43.5,
+          "outline": "rgb(242, 234, 223) none 3px",
+          "color": "rgb(242, 234, 223)",
+          "background": "rgb(37, 16, 23)"
+        }
+      },
+      "shortScreenshot": "gifts-430-short-end.png",
+      "status": "PASS"
+    },
+    {
+      "id": "production-anonymous",
+      "width": 430,
+      "qualification": "Unmodified index.html and production ports; no service interception or login",
+      "metrics": {
+        "overflow": false,
+        "controls": [
+          {
+            "name": "MCR Concert World home",
+            "x": 14,
+            "y": 20,
+            "width": 66,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "name": "Sign in",
+            "x": 372,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          }
+        ],
+        "brokenImages": [],
+        "footer": null,
+        "heading": null
+      },
+      "publicHeaderInk": {
+        "background": "rgb(37, 16, 23)",
+        "image": "none",
+        "color": "rgb(242, 234, 223)"
+      },
+      "screenshot": "production-anonymous-430.png",
+      "status": "PASS"
+    }
+  ],
+  "assets": [
+    {
+      "path": "frontend/public/world/maps/geometry.json",
+      "sha256": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+      "bytes": 29538
+    },
+    {
+      "path": "frontend/public/world/maps/virtual-places.json",
+      "sha256": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+      "bytes": 4446
+    },
+    {
+      "path": "frontend/public/world/maps/binding-inputs.json",
+      "sha256": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb",
+      "bytes": 1231
+    },
+    {
+      "path": "frontend/public/world/themes/binding-inputs.json",
+      "sha256": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f",
+      "bytes": 7736
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/bindings.json",
+      "sha256": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+      "bytes": 35434
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/stars.svg",
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2",
+      "bytes": 402
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/back.svg",
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2",
+      "bytes": 223
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/landing-garden-night.svg",
+      "sha256": "172636f6ccafb87d60f4a6be4c1d46657e9548ec5eec872b22517099f9ec8d95",
+      "bytes": 3820
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/close.svg",
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72",
+      "bytes": 198
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-paper.svg",
+      "sha256": "aee62ec92a87df6a86cfd2322682cd735ba629aeb7a5728aaca2bba81182fa73",
+      "bytes": 2115
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-clouds-top.svg",
+      "sha256": "29ed345d8d974798b37bc6eb0dc8a50dd4345925a3c284283fcf2709cca4dbf1",
+      "bytes": 2609
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg",
+      "sha256": "0f0965425ce45f96925bc94b7d5372225f10af0a9d3a6901e6cc96bb3a328e4e",
+      "bytes": 2887
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5",
+      "bytes": 257
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991
+    },
+    {
+      "path": "frontend/public/world/maps/courtyard-tiled.json",
+      "sha256": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+      "bytes": 34456
+    },
+    {
+      "path": "frontend/public/world/themes/parade.png",
+      "sha256": "3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+      "bytes": 5017
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-ground.png",
+      "sha256": "19a2450268ae02dd52331bbcac6b19b4d5a36462eeacf973c36af688bf638dea",
+      "bytes": 96414
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-landmarks-atlas.png",
+      "sha256": "06314ddf23ef02c2fa0432ded5c3f317287d9a08d014fcb1b382aeaf8af577ed",
+      "bytes": 423491
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/parade-details.png",
+      "sha256": "8719a7704ec247667ba67c24a02ae2be448715cf6f5e53b569e747bdd96652c7",
+      "bytes": 9841
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/expand.svg",
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff",
+      "bytes": 232
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10",
+      "bytes": 5894
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "bytes": 989
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "bytes": 1011
+    }
+  ],
+  "startedAt": "2026-11-04T15:20:28.520Z",
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T15:21:01.737Z",
+  "screenshotBytes": 2004993,
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "cacheRemoved": true
+  }
+}

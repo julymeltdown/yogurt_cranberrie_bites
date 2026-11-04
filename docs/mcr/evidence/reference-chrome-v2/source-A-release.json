@@ -1,0 +1,51 @@
+{
+  "job": "REFERENCE-CHROME-SOURCE-A-202611041356Z",
+  "releasedEpoch": 1793800849.304951,
+  "originalWorkDeadline": 1793800860.104772,
+  "originalCleanupDeadline": 1793800920.104772,
+  "outcome": "PASS_AFTER_OWN_TEST_EXPECTATION_FIX",
+  "tests": 25,
+  "attempts": [
+    {
+      "path": "source-01",
+      "status": "FAIL",
+      "finishedEpoch": 1793800746.283517,
+      "peakProcesses": 4,
+      "peakRssKiB": 847248
+    },
+    {
+      "path": "source-02",
+      "status": "PASS",
+      "finishedEpoch": 1793800778.9937851,
+      "peakProcesses": 4,
+      "peakRssKiB": 1396256
+    }
+  ],
+  "failure": "New own profile-flow test initially expected Me; canonical route title is My profile. Corrected only own assertion, original failure retained.",
+  "inputHead": "4d82e1bedd7b5878b02730aafc4604ebbb0fb278",
+  "workingDiffSha256": "71a4e6809329007b60674c06c8139bd7e0a27c702c1b88a19e65b7540ec49326",
+  "pins": {
+    "frontend/src/app/reference-chrome-v2/source-round.py": "0151f56574fa3752e65fc51cb35a9092c4b74bb7dcea6bd94502d591befe0ca8",
+    "frontend/src/app/reference-chrome-v2/source.vitest.config.ts": "0ada4d47cdb66fb198e5f1a3245eb33bc9e183efb93188baad50e86fbdf6e410",
+    "frontend/src/app/reference-chrome-v2/chrome.test.tsx": "1705edc57d18c2baf59787910c9d6df8d0ff9143aa01cb508597763c8bcb1b43",
+    "frontend/src/app/reference-chrome-v2/native.mjs": "535c0ae6f9af8d3210e991061043a7c7970b84060a34c7450dd60854e0526dc2"
+  },
+  "node": {
+    "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "version": "v24.22.2",
+    "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+  },
+  "allocatedCarryBytes": 1390555136,
+  "durableEvidenceBytesBeforeReceipt": 46894,
+  "freeBytes": 29587980288,
+  "ownLinkAbsent": true,
+  "remainingPrivateTemps": [],
+  "childExitCodes": [
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "noBrowserBuildInstallDb": true
+}

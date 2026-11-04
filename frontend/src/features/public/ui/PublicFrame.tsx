@@ -1,18 +1,19 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { documentLabels, documentPath, type DocumentKey } from '../model/documents'
-import { PosterStars } from './landing-reference/PosterArtwork'
+import { WindowInk } from '../../../app/reference-chrome-v2/WindowInk'
+import '../../../app/reference-chrome-v2/chrome.css'
 import './public.css'
 
 export function PublicFrame({ children, current, appearance }: { children: ReactNode; current?: DocumentKey; appearance?: 'poster' }) {
   return <div className={`public-entry${appearance === 'poster' ? ' public-entry--poster' : ''}`}>
     <a className="public-skip" href="#public-main">Skip to content</a>
-    <header className="public-header">
+    <header className={`public-header${appearance === 'poster' ? ' mcr-reference-public-titlebar' : ''}`}>
       <Link className="public-brand" to="/" aria-label="MCR Concert World home">{appearance === 'poster'
-        ? <PosterStars />
+        ? <WindowInk name="stars" className="landing-window-stars" />
         : <>MCR <span>Concert World</span></>}</Link>
       <Link className="public-text-link" to="/login" aria-label={appearance === 'poster' ? 'Sign in' : undefined}>{appearance === 'poster'
-        ? <span className="landing-window-entry" aria-hidden="true">↪</span> : 'Sign in'}</Link>
+        ? <WindowInk name="back" /> : 'Sign in'}</Link>
     </header>
     <main id="public-main" tabIndex={-1}>{children}</main>
     <footer className="public-footer">

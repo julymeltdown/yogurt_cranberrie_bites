@@ -219,6 +219,10 @@ struct Views {
     cleanup: BTreeMap<(Uuid, Uuid, Uuid), Binding>,
     absent: BTreeSet<(Uuid, Uuid, Uuid)>,
     invalidations: BTreeMap<Uuid, super::invalidation::Removal>,
+    // Process-local removal cache only. The common SQL fence is authoritative
+    // across restarts; entries are never evicted to reopen a deleted account.
+    deleted_users: BTreeSet<Uuid>,
+    deleted_absent: BTreeSet<Uuid>,
 }
 fn key(b: &Binding) -> (Uuid, Uuid) {
     (b.key.event_id.uuid(), b.key.user_id.uuid())
@@ -331,6 +335,96 @@ impl Drop for AdmissionAttempt<'_> {
     }
 }
 impl AdmissionBridge {
+    /// Read exact generations while the caller owns admission_gate. Native
+    /// effects may remove them, but no new admission generation can cross it.
+    pub(crate) fn account_bindings(&self, user: Uuid) -> Result<Vec<Binding>, WorldError> {
+        let _fence = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        let views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        let mut bindings = BTreeMap::new();
+        for entry in views.entries.values().chain(views.pending.values()) {
+            if entry.binding.key.user_id.uuid() == user {
+                bindings.insert(cleanup_key(&entry.binding), entry.binding.clone());
+            }
+        }
+        for binding in views.cleanup.values() {
+            if binding.key.user_id.uuid() == user {
+                bindings.insert(cleanup_key(binding), binding.clone());
+            }
+        }
+        Ok(bindings.into_values().collect())
+    }
+    /// Called only by the verified Sessions leaf, with admission_gate held.
+    /// Remove both delayed and active projections under the actual handoff fence.
+    pub(crate) fn withdraw_account_views(&self, user: Uuid) -> Result<Vec<Binding>, WorldError> {
+        let _fence = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        if views.deleted_users.len() >= 4096 && !views.deleted_users.contains(&user) {
+            return Err(WorldError::Unavailable);
+        }
+        views.deleted_users.insert(user);
+        let mut bindings = BTreeMap::new();
+        for entry in views.entries.values().chain(views.pending.values()) {
+            if entry.binding.key.user_id.uuid() == user {
+                if let Some(parent) = &entry.parent {
+                    parent.cancel();
+                }
+                bindings.insert(cleanup_key(&entry.binding), entry.binding.clone());
+            }
+        }
+        for binding in views.cleanup.values() {
+            if binding.key.user_id.uuid() == user {
+                bindings.insert(cleanup_key(binding), binding.clone());
+            }
+        }
+        let additional = bindings
+            .keys()
+            .filter(|key| !views.cleanup.contains_key(key))
+            .count();
+        if views.cleanup.len() + additional > MAX_MEMBERS {
+            return Err(WorldError::Unavailable);
+        }
+        views.entries.retain(|(_, u), _| *u != user);
+        views.pending.retain(|(_, u), _| *u != user);
+        for entry in views.entries.values_mut() {
+            entry.visible.remove(&user);
+        }
+        for entry in views.pending.values_mut() {
+            entry.visible.remove(&user);
+        }
+        // Retain exact cleanup obligations even if this invocation is cancelled.
+        // Existing bounded cleanup reserves already cover admitted bindings.
+        for (key, binding) in &bindings {
+            if views.cleanup.len() >= MAX_MEMBERS && !views.cleanup.contains_key(key) {
+                return Err(WorldError::Unavailable);
+            }
+            views.cleanup.insert(*key, binding.clone());
+        }
+        drop(views);
+        if let OwnerPorts::Production(owners) = &self.owners {
+            owners.forget_invalidated(&BTreeSet::from([user]))?;
+        }
+        Ok(bindings.into_values().collect())
+    }
+    /// Durable common-fence plus all-event membership absence is the only
+    /// authority for retiring the deleted user's retained native cleanup.
+    pub(crate) async fn confirm_account_absence(&self, user: Uuid) -> Result<(), WorldError> {
+        let _gate = self.admission_gate.lock().await;
+        let absent: bool = sqlx::query_scalar("select exists(select 1 from public.concert_world_account_deletion_fences where user_id=$1) and not exists(select 1 from public.concert_world_memberships where user_id=$1)")
+            .bind(user).fetch_one(&self.pool).await.map_err(|_| WorldError::Unavailable)?;
+        if !absent {
+            return Err(WorldError::Unavailable);
+        }
+        let _fence = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        if !views.deleted_users.contains(&user) {
+            return Err(WorldError::Unavailable);
+        }
+        views.deleted_absent.insert(user);
+        views
+            .cleanup
+            .retain(|_, binding| binding.key.user_id.uuid() != user);
+        Ok(())
+    }
     pub(crate) fn bind_remote(
         &self,
         readiness: Arc<super::invalidation::remote::RemoteReadiness>,
@@ -767,6 +861,14 @@ impl AdmissionBridge {
         stream: Uuid,
         mut auth: AuthWindow,
     ) -> Result<Binding, WorldError> {
+        // All callers own admission_gate. The Sessions leaf takes that same
+        // gate when withdrawing views, closing the read-to-install race.
+        let deleted: bool = sqlx::query_scalar("select exists(select 1 from public.concert_world_account_deletion_fences where user_id=$1)")
+            .bind(membership.key.user_id.uuid()).fetch_one(&self.pool).await
+            .map_err(|_| WorldError::Unavailable)?;
+        if deleted {
+            return Err(WorldError::Denied);
+        }
         let remote_generation = self.remote_generation()?;
         let generation = self.owners.generation();
         if generation.is_nil() {
@@ -909,6 +1011,9 @@ impl AdmissionBridge {
         }
         auth.check(&expected, membership.access_expires_at)?;
         let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        if views.deleted_users.contains(&binding.key.user_id.uuid()) {
+            return Err(WorldError::Denied);
+        }
         if views
             .invalidations
             .values()
@@ -930,6 +1035,7 @@ impl AdmissionBridge {
         for removal in views.invalidations.values() {
             visible.retain(|u| !removal.masks_user(binding.key.event_id.uuid(), *u));
         }
+        visible.retain(|u| !views.deleted_users.contains(u));
         if views.entries.len() >= MAX_MEMBERS && !views.entries.contains_key(&key(&binding)) {
             return Err(WorldError::RoomFull);
         }
@@ -1061,6 +1167,8 @@ impl AdmissionBridge {
                 // only after fresh Auth/event/restriction checks and exact owner fencing.
                 let lease=Utc::now().checked_add_signed(TimeDelta::milliseconds(5000)).ok_or(WorldError::Invalid)?.min(m.access_expires_at);
                 let mut tx=self.pool.begin().await.map_err(|_|WorldError::Unavailable)?;
+                super::account_deletion::lock_user(&mut tx,b.key.user_id.uuid()).await.map_err(|_|WorldError::Unavailable)?;
+                if super::account_deletion::is_fenced_in(&mut tx,b.key.user_id.uuid()).await.map_err(|_|WorldError::Unavailable)? { return Err(WorldError::Denied); }
                 super::closure::lock_event_open_in(&mut tx,b.key.event_id.uuid()).await?;
                 let changed=sqlx::query("update public.concert_world_memberships m set lease_until=$6 where event_id=$1 and user_id=$2 and room_id=$3 and session_id=$4 and connection_id=$5 and access_expires_at=$7 and lease_until>clock_timestamp() and not disconnected and exists(select 1 from public.concert_world_owner_leases l where l.event_id=m.event_id and l.room_id=m.room_id and l.owner_process_id=$8 and l.owner_epoch=$9 and l.lease_until>clock_timestamp())")
                     .bind(b.key.event_id.uuid()).bind(b.key.user_id.uuid()).bind(b.room_id).bind(b.session_id).bind(b.connection_id).bind(lease).bind(m.access_expires_at).bind(&self.owner.process_id).bind(self.owner.epoch).execute(&mut *tx).await.map_err(|_|WorldError::Unavailable)?.rows_affected();
@@ -1088,6 +1196,9 @@ impl AdmissionBridge {
     }
     fn request_cleanup(&self, b: &Binding) -> Result<(), AuthorityError> {
         let mut views = self.views.lock().map_err(|_| AuthorityError::Unavailable)?;
+        if views.deleted_absent.contains(&b.key.user_id.uuid()) {
+            return Ok(());
+        }
         if views.entries.get(&key(b)).is_some_and(|e| {
             e.binding.connection_id == b.connection_id
                 && e.binding.session_id == b.session_id
@@ -1188,9 +1299,10 @@ impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
             return false;
         }
         self.views.lock().is_ok_and(|views| {
-            views.entries.get(&key(b)).is_some_and(|entry| {
-                entry.binding == *b && self.owners.ready(entry.parent.as_ref())
-            })
+            !views.deleted_users.contains(&b.key.user_id.uuid())
+                && views.entries.get(&key(b)).is_some_and(|entry| {
+                    entry.binding == *b && self.owners.ready(entry.parent.as_ref())
+                })
         })
     }
     fn publication_fence(&self) -> Arc<Mutex<()>> {
@@ -1198,6 +1310,9 @@ impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
     }
     fn install_pending(&self, b: &Binding, now: u64) -> Result<(), AuthorityError> {
         let mut views = self.views.lock().map_err(|_| AuthorityError::Unavailable)?;
+        if views.deleted_users.contains(&b.key.user_id.uuid()) {
+            return Err(AuthorityError::Revoked);
+        }
         if views.entries.get(&key(b)).is_some_and(|e| e.binding == *b) {
             return Ok(());
         }
@@ -1218,7 +1333,8 @@ impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
     fn current(&self, b: &Binding, now: u64) -> Result<CanonicalMembership, AuthorityError> {
         let views = self.views.lock().map_err(|_| AuthorityError::Unavailable)?;
         let e = views.entries.get(&key(b)).ok_or(AuthorityError::Revoked)?;
-        if e.binding != *b
+        if views.deleted_users.contains(&b.key.user_id.uuid())
+            || e.binding != *b
             || e.parent
                 .as_ref()
                 .is_some_and(|parent| parent.check().is_err())
@@ -1264,7 +1380,8 @@ impl RecipientPolicy for Arc<AdmissionBridge> {
             .entries
             .get(&key(b))
             .ok_or(ProjectionError::PolicyUnavailable)?;
-        if e.binding != *b
+        if views.deleted_users.contains(&b.key.user_id.uuid())
+            || e.binding != *b
             || now >= e.valid_until_ms
             || e.owner_generation != self.owners.generation()
             || subjects.iter().any(|s| {
@@ -1289,6 +1406,7 @@ impl RecipientPolicy for Arc<AdmissionBridge> {
             visible_users: e
                 .visible
                 .intersection(&subjects.iter().map(|s| s.key.user_id.uuid()).collect())
+                .filter(|user| !views.deleted_users.contains(user))
                 .copied()
                 .collect(),
             invalidation_id: e.generation,

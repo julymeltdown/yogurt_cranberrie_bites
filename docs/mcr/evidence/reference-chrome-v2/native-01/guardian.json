@@ -1,0 +1,53 @@
+{
+  "job": "REFERENCE-CHROME-NATIVE-BROWSER-202611041410Z",
+  "status": "PASS",
+  "startedEpoch": 1793801529.8898718,
+  "workDeadline": 1793801829.605431,
+  "cleanupDeadline": 1793801889.605431,
+  "head": "c019e84d5a2102f8fd31f3498f37cb235795c55a",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "tempBytes": 209715200,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/reference-chrome-v2/native.mjs"
+      ],
+      "startedEpoch": 1793801529.896096,
+      "exitCode": 0,
+      "finishedEpoch": 1793801530.5342562
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/reference-chrome-v2/native.mjs"
+      ],
+      "startedEpoch": 1793801530.534336,
+      "exitCode": 0,
+      "finishedEpoch": 1793801577.9202461
+    }
+  ],
+  "peakProcesses": 12,
+  "peakRssKiB": 2658352,
+  "peakWholeBytes": 1423138816,
+  "peakTempBytes": 29661452,
+  "peakOutputBytes": 2604587,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793801578.06145,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

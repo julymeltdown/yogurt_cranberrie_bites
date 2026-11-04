@@ -1,0 +1,57 @@
+{
+  "job": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+  "status": "FAIL",
+  "startedEpoch": 1793805505.341088,
+  "workDeadline": 1793805804.877506,
+  "cleanupDeadline": 1793805864.877506,
+  "head": "94f7f90b44ede74ca9562d2e03565d4055c90cb0",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 209715200,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "historicalAndNewPngs": 78,
+    "pngBytes": 12582912,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/reference-chrome-v2/source.vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism",
+        "src/app/reference-chrome-v2/chrome.test.tsx",
+        "src/app/__tests__/reference-frame-footer/footer.test.tsx",
+        "src/app/__tests__/reference-root/root.test.tsx",
+        "src/features/public/__tests__/reference-target/presentation.test.tsx",
+        "src/shared/ui/__tests__/primitives.test.tsx"
+      ],
+      "startedEpoch": 1793805505.350688
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 436064,
+  "peakWholeBytes": 1400377344,
+  "peakTempBytes": 2125996,
+  "peakOutputBytes": 5247929,
+  "sourceChecksRequested": true,
+  "error": "Command '['du', '-sk', '/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer', '/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor', '/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target', '/Users/lhs/Desktop/mcr-worktrees/be-party-runtime', '/private/tmp/mcr-reference-chrome-v2-native-8gi6mrqm']' returned non-zero exit status 1.",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793805509.186578,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}
