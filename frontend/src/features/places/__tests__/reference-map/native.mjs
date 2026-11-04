@@ -7,7 +7,7 @@ const frontend=resolve(import.meta.dirname,'../../../../..'),evidence=resolve(im
 await mkdir(evidence,{recursive:true})
 const server=await createServer({root:frontend,configLoader:'runner',cacheDir:'/tmp/mcr-ref-map-vite-cache',server:{host:'127.0.0.1',port:0,strictPort:false},logLevel:'warn'})
 await server.listen()
-const report={result:'FAIL',qualification:'Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; Published root deb5865d (author7201b875), no preview layout override. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.',cases:[],errors:[]}
+const report={result:'FAIL',qualification:'Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; no preview layout override. Current root/module byte pins are recorded by the associated qualification. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.',cases:[],errors:[]}
 let browser,page,stage='start'
 try{
  browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});report.browser=browser.version()
