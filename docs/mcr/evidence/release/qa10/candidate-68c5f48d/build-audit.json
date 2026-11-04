@@ -1,0 +1,642 @@
+{
+  "entry": "frontend/index.html",
+  "modules": [
+    "frontend/src/app/AdminBoundary.tsx",
+    "frontend/src/app/CommunityFeatures.tsx",
+    "frontend/src/app/PublicBoundary.tsx",
+    "frontend/src/app/WorldHost.tsx",
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/access.tsx",
+    "frontend/src/app/account-deletion-entry/context.tsx",
+    "frontend/src/app/account-deletion-entry/link.tsx",
+    "frontend/src/app/account-deletion-entry/owner.ts",
+    "frontend/src/app/account-deletion-entry/panel.tsx",
+    "frontend/src/app/account-deletion-entry/recovery.tsx",
+    "frontend/src/app/account-entry/assets.ts",
+    "frontend/src/app/account-entry/owner.ts",
+    "frontend/src/app/account-entry/panels.tsx",
+    "frontend/src/app/account-entry/provider.tsx",
+    "frontend/src/app/capabilities.ts",
+    "frontend/src/app/character-entry/activity.ts",
+    "frontend/src/app/character-entry/provider.tsx",
+    "frontend/src/app/character-entry/registry.ts",
+    "frontend/src/app/character-entry/runtime.ts",
+    "frontend/src/app/media-entry/RootMediaView.tsx",
+    "frontend/src/app/media-entry/index.ts",
+    "frontend/src/app/media-entry/provider.tsx",
+    "frontend/src/app/media-entry/root-media.css",
+    "frontend/src/app/meeting-entry/bridge.ts",
+    "frontend/src/app/meeting-entry/routes.tsx",
+    "frontend/src/app/mural-entry/owner.ts",
+    "frontend/src/app/mural-entry/provider.tsx",
+    "frontend/src/app/navigation.tsx",
+    "frontend/src/app/places-entry/owner.ts",
+    "frontend/src/app/places-entry/provider.tsx",
+    "frontend/src/app/ports.ts",
+    "frontend/src/app/router.tsx",
+    "frontend/src/app/routes.ts",
+    "frontend/src/app/shell-chrome/identity.tsx",
+    "frontend/src/app/shell-chrome/index.tsx",
+    "frontend/src/app/shell-chrome/parade-footer.tsx",
+    "frontend/src/app/social-composition/navigation.tsx",
+    "frontend/src/app/social-composition/owner.ts",
+    "frontend/src/app/social-composition/panels.tsx",
+    "frontend/src/app/social-composition/ports.ts",
+    "frontend/src/app/social-composition/provider.tsx",
+    "frontend/src/app/social-composition/routes.ts",
+    "frontend/src/app/social-composition/sharing.tsx",
+    "frontend/src/app/world-entry/authority.ts",
+    "frontend/src/app/world-entry/bridge.ts",
+    "frontend/src/app/world-entry/configuration.ts",
+    "frontend/src/app/world-entry/production.ts",
+    "frontend/src/app/world-entry/reference-scene-overview.ts",
+    "frontend/src/app/world-entry/resolver.ts",
+    "frontend/src/app/world-entry/root-features.tsx",
+    "frontend/src/app/world-panels/index.tsx",
+    "frontend/src/app/world-panels/ownership.tsx",
+    "frontend/src/app/world-panels/social.tsx",
+    "frontend/src/entities/avatar/character-source-pack.json",
+    "frontend/src/entities/avatar/runtime/atlas-lease.ts",
+    "frontend/src/entities/avatar/runtime/compositor.ts",
+    "frontend/src/entities/avatar/runtime/contract.ts",
+    "frontend/src/entities/avatar/runtime/index.ts",
+    "frontend/src/entities/avatar/runtime/resources.ts",
+    "frontend/src/entities/avatar/runtime/schema.ts",
+    "frontend/src/entities/avatar/selected-static/index.tsx",
+    "frontend/src/entities/avatar/selected-static/release.ts",
+    "frontend/src/entities/avatar/source-catalog.ts",
+    "frontend/src/entities/avatar/whole-admission/index.ts",
+    "frontend/src/entities/avatar/whole-character/contract.ts",
+    "frontend/src/entities/avatar/whole-character/runtime.ts",
+    "frontend/src/entities/avatar/whole-character/view.tsx",
+    "frontend/src/features/account/contract.ts",
+    "frontend/src/features/account/controller.ts",
+    "frontend/src/features/account/panel.tsx",
+    "frontend/src/features/age-status/AgeStatus.tsx",
+    "frontend/src/features/age-status/controller.ts",
+    "frontend/src/features/auth/model/account-deletion.ts",
+    "frontend/src/features/auth/model/bootstrap.ts",
+    "frontend/src/features/auth/model/callback.ts",
+    "frontend/src/features/auth/model/contract.ts",
+    "frontend/src/features/auth/model/cookie-policy.ts",
+    "frontend/src/features/auth/model/enrollment-contract.ts",
+    "frontend/src/features/auth/model/enrollment.ts",
+    "frontend/src/features/auth/model/recovery-contract.ts",
+    "frontend/src/features/auth/model/recovery.ts",
+    "frontend/src/features/auth/model/session.ts",
+    "frontend/src/features/auth/ui/Callback.tsx",
+    "frontend/src/features/auth/ui/ResetPassword.tsx",
+    "frontend/src/features/auth/ui/SignIn.tsx",
+    "frontend/src/features/auth/ui/SignUp.tsx",
+    "frontend/src/features/auth/ui/VerifyEmail.tsx",
+    "frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx",
+    "frontend/src/features/auth/ui/reference-sign-in/ProviderMark.tsx",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+    "frontend/src/features/avatar/AvatarEditor.tsx",
+    "frontend/src/features/avatar/OptionStrip.tsx",
+    "frontend/src/features/avatar/contract.ts",
+    "frontend/src/features/avatar/controller.ts",
+    "frontend/src/features/avatar/preview.ts",
+    "frontend/src/features/avatar/reference-presentation/CategoryRail.tsx",
+    "frontend/src/features/avatar/reference-presentation/TonePalette.tsx",
+    "frontend/src/features/avatar/reference-presentation/actions.ts",
+    "frontend/src/features/avatar/whole-character/WholeCharacterEditor.tsx",
+    "frontend/src/features/avatar/whole-character/controller.ts",
+    "frontend/src/features/avatar/whole-character/model.ts",
+    "frontend/src/features/event-feed/EventFeed.tsx",
+    "frontend/src/features/event-feed/FeedGlyph.tsx",
+    "frontend/src/features/event-feed/contract.ts",
+    "frontend/src/features/event-feed/controller.ts",
+    "frontend/src/features/event-feed/presentation.ts",
+    "frontend/src/features/event-feed/runtime.ts",
+    "frontend/src/features/feed-thread/FeedThread.tsx",
+    "frontend/src/features/feed-thread/controller.ts",
+    "frontend/src/features/gift-discovery/model/contract.ts",
+    "frontend/src/features/gift-discovery/model/controller.ts",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+    "frontend/src/features/inbox/model/contract.ts",
+    "frontend/src/features/inbox/model/controller.ts",
+    "frontend/src/features/inbox/model/targets.ts",
+    "frontend/src/features/inbox/ui/Inbox.tsx",
+    "frontend/src/features/intro/IntroEditor.tsx",
+    "frontend/src/features/intro/command.ts",
+    "frontend/src/features/intro/contract.ts",
+    "frontend/src/features/intro/controller.ts",
+    "frontend/src/features/me/model/contract.ts",
+    "frontend/src/features/me/model/controller.ts",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx",
+    "frontend/src/features/me/ui/MePages.tsx",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+    "frontend/src/features/media/model/upload-controller.ts",
+    "frontend/src/features/meet-beacon/model/contract.ts",
+    "frontend/src/features/meet-beacon/model/controller.ts",
+    "frontend/src/features/meet-beacon/model/photo-client.ts",
+    "frontend/src/features/meet-beacon/model/photo-scope.ts",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css",
+    "frontend/src/features/mural/editor/MuralEditor.tsx",
+    "frontend/src/features/mural/editor/contract.ts",
+    "frontend/src/features/mural/editor/controller.ts",
+    "frontend/src/features/mural/editor/input.ts",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx",
+    "frontend/src/features/mural/sync/contract.ts",
+    "frontend/src/features/mural/sync/controller.ts",
+    "frontend/src/features/mural/sync/http.ts",
+    "frontend/src/features/mural/sync/projection.ts",
+    "frontend/src/features/my-gifts/MyGifts.tsx",
+    "frontend/src/features/party-discovery/model/contract.ts",
+    "frontend/src/features/party-discovery/model/controller.ts",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+    "frontend/src/features/people/People.tsx",
+    "frontend/src/features/people/contract.ts",
+    "frontend/src/features/people/controller.ts",
+    "frontend/src/features/people/runtime.ts",
+    "frontend/src/features/places/model/contract.ts",
+    "frontend/src/features/places/model/controller.ts",
+    "frontend/src/features/places/ui/IllustratedMap.tsx",
+    "frontend/src/features/places/ui/Places.tsx",
+    "frontend/src/features/places/ui/reference-scene/annotations.ts",
+    "frontend/src/features/places/ui/reference-scene/viewport.ts",
+    "frontend/src/features/profile/Avatar.tsx",
+    "frontend/src/features/profile/PublicProfile.tsx",
+    "frontend/src/features/profile/profile.css",
+    "frontend/src/features/profile/reference-presentation/ProfileIcon.tsx",
+    "frontend/src/features/public/model/document-provider.tsx",
+    "frontend/src/features/public/model/documents.ts",
+    "frontend/src/features/public/ui/DocumentPage.tsx",
+    "frontend/src/features/public/ui/Landing.tsx",
+    "frontend/src/features/public/ui/PublicFrame.tsx",
+    "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+    "frontend/src/features/public/ui/landing-reference/reference-contours.json",
+    "frontend/src/features/safety/Dialog.tsx",
+    "frontend/src/features/safety/contract.ts",
+    "frontend/src/features/settings/SettingsPage.tsx",
+    "frontend/src/features/social-sharing/model/contract.ts",
+    "frontend/src/features/social-sharing/model/controller.ts",
+    "frontend/src/features/social-sharing/model/runtime.ts",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx",
+    "frontend/src/features/theme/model/controller.ts",
+    "frontend/src/features/theme/model/preferences.ts",
+    "frontend/src/features/theme/ui/ThemeSelector.tsx",
+    "frontend/src/features/world-nearby/WorldNearby.tsx",
+    "frontend/src/features/world-nearby/projection.ts",
+    "frontend/src/features/world-rooms/model/contract.ts",
+    "frontend/src/features/world-rooms/model/controller.ts",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx",
+    "frontend/src/main.tsx",
+    "frontend/src/shared/api/domain-operations.generated.ts",
+    "frontend/src/shared/api/domain.ts",
+    "frontend/src/shared/api/errors.ts",
+    "frontend/src/shared/api/http.ts",
+    "frontend/src/shared/media/contract.ts",
+    "frontend/src/shared/media/image-policy.ts",
+    "frontend/src/shared/media/prepare-image.ts",
+    "frontend/src/shared/media/preview.ts",
+    "frontend/src/shared/media/read-media.ts",
+    "frontend/src/shared/media/transport.ts",
+    "frontend/src/shared/query/keys.ts",
+    "frontend/src/shared/query/privacy.ts",
+    "frontend/src/shared/ui/Dialog.tsx",
+    "frontend/src/shared/ui/Tabs.tsx",
+    "frontend/src/shared/ui/concert-window/index.tsx",
+    "frontend/src/shared/ui/controls.tsx",
+    "frontend/src/shared/ui/feedback.tsx",
+    "frontend/src/shared/validation/text.ts",
+    "frontend/src/world/avatar/whole-character.ts",
+    "frontend/src/world/camera/port.ts",
+    "frontend/src/world/composition/index.ts",
+    "frontend/src/world/composition/release.ts",
+    "frontend/src/world/composition/ticket.ts",
+    "frontend/src/world/entities/replicated.ts",
+    "frontend/src/world/illustrated/model.ts",
+    "frontend/src/world/illustrated/overview.ts",
+    "frontend/src/world/illustrated/phaser.ts",
+    "frontend/src/world/input/controller.ts",
+    "frontend/src/world/input/model.ts",
+    "frontend/src/world/input/simulation.ts",
+    "frontend/src/world/interaction/selection.ts",
+    "frontend/src/world/map/formats.ts",
+    "frontend/src/world/map/json.ts",
+    "frontend/src/world/map/manifest.ts",
+    "frontend/src/world/map/resource-cache.ts",
+    "frontend/src/world/map/resources.ts",
+    "frontend/src/world/map/schema.ts",
+    "frontend/src/world/map/tiled.ts",
+    "frontend/src/world/mural-entry-lifecycle/index.ts",
+    "frontend/src/world/mural-entry-lifecycle/source.ts",
+    "frontend/src/world/mural/phaser.ts",
+    "frontend/src/world/mural/sink.ts",
+    "frontend/src/world/network/replication.ts",
+    "frontend/src/world/network/transport/contract.ts",
+    "frontend/src/world/network/transport/engine.ts",
+    "frontend/src/world/network/websocket.ts",
+    "frontend/src/world/reference-scene/metadata.ts",
+    "frontend/src/world/reference-scene/model.ts",
+    "frontend/src/world/reference-scene/overview.ts",
+    "frontend/src/world/reference-scene/phaser.ts",
+    "frontend/src/world/reference-scene/source-inputs.json",
+    "frontend/src/world/reference-scene/spatial-v3/model.ts",
+    "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+    "frontend/src/world/reference-scene/spatial-v3/tile-pin.json",
+    "frontend/src/world/runtime.ts",
+    "frontend/src/world/scenes/MapScene.ts",
+    "frontend/src/world/theme/compatibility.ts",
+    "frontend/src/world/theme/loader.ts"
+  ],
+  "assets": [
+    {
+      "path": "index.html",
+      "sha256": "c36740276a1f5559f05edf232d4d091375f78ce36c51f86811fac3593f75d245",
+      "bytes": 2023
+    },
+    {
+      "path": "world/reference-scene-v2/review.html",
+      "sha256": "c8349439efa7e7b07090c1fdbb95f79d96d73b05521814132d762400a99913ef",
+      "bytes": 2773
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v8/review.html",
+      "sha256": "66b3f296d0fd9f2f7693f7c2684abfc9d9c6a049da1a4cd3bc1025afa7149b2c",
+      "bytes": 1647
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v7/review.html",
+      "sha256": "35b1f007e8e62c6d8ce5128b8b226ae36d90836d41c49402fabeb619a42557c0",
+      "bytes": 1647
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v6/review.html",
+      "sha256": "ca95af80afe22d00c10f1dcba5f1c4b6c8b971cc9dc8008370a57423bcd146d5",
+      "bytes": 1647
+    },
+    {
+      "path": "world/reference-scene-v2/map-labels-v1/review.html",
+      "sha256": "90d933c6ca9907281a1ee9a21b48b34eb7bf573d64825cb7ef6f711f9b9606c7",
+      "bytes": 1749
+    },
+    {
+      "path": "world/reference-scene-v2/eras-v5/review.html",
+      "sha256": "a1927fd3150e9e3e9f1b750f4f40a238c41d428fb48139485a514e44e65495d6",
+      "bytes": 1270
+    },
+    {
+      "path": "world/maps/phaser-review.html",
+      "sha256": "91f45277bdedecdc41db95492a6626fffc522a9e1311c03dd29a908028753436",
+      "bytes": 1638
+    },
+    {
+      "path": "world/maps/review.html",
+      "sha256": "8c7c51a337e83974dfb20c7d57db80a15a78bac880d1d50307dc4c465fd3f86d",
+      "bytes": 4665
+    },
+    {
+      "path": "world/illustrated/review.html",
+      "sha256": "997bb5d9ddc3735bf88aba93fe1f6f145f3db2343217c85c4675388f2ded374c",
+      "bytes": 6240
+    },
+    {
+      "path": "assets/AdminBoundary-C9jiIe4C.js",
+      "sha256": "f1350117982bd5fbc8734f56787c1009ab852afedb397cba3f710159f08e3f3b",
+      "bytes": 1375
+    },
+    {
+      "path": "assets/CommunityFeatures-CtYOQD37.css",
+      "sha256": "86260e0ba9c43648036314c480c7c7810190de67ac4f2ba54241999b609de36f",
+      "bytes": 17338
+    },
+    {
+      "path": "assets/CommunityFeatures-nrbzCzYW.js",
+      "sha256": "63ed77231b3172e1356193e3f5b6b8ce0e8ad5fd67c43e459eefd7ef760c37fc",
+      "bytes": 68759
+    },
+    {
+      "path": "assets/MapScene-C7cTkoze.js",
+      "sha256": "20729c10d1d30054225cb0bd6b00a4c46d91244d6e8a539378481eecf12cc8f1",
+      "bytes": 10907
+    },
+    {
+      "path": "assets/ProfileIcon-BX71YtzD.js",
+      "sha256": "a0021651055218ef4268ad510cd467c92dfe9f02d35357ca47cc090ee1bca934",
+      "bytes": 11949
+    },
+    {
+      "path": "assets/ProfileIcon-C5jlMgdD.css",
+      "sha256": "dd3d64a5292ef52f510f1d7999af678f0682ab4eda324d06d2dfb06223b72982",
+      "bytes": 1367
+    },
+    {
+      "path": "assets/PublicBoundary-CbXXeRBx.css",
+      "sha256": "255f17259e2380d2832b81ac0c4053876c07e811bb4b14c3d39ad83355249ecf",
+      "bytes": 18725
+    },
+    {
+      "path": "assets/PublicBoundary-DL7CfbGR.js",
+      "sha256": "d03192623e268a3ac42088c0e703383130a9314129dd9bcf4527731f8b70911b",
+      "bytes": 151642
+    },
+    {
+      "path": "assets/RootMediaView-BdfnIHbK.css",
+      "sha256": "d97d6186cc41e57051f2788671afc309d13f9776df62c0bbd55e62fbc5392956",
+      "bytes": 554
+    },
+    {
+      "path": "assets/RootMediaView-CQv-V9Xi.js",
+      "sha256": "c73ebf81ee2f254070890dc336e3c64f350b86564d4d82c4a84019488421f0a1",
+      "bytes": 3515
+    },
+    {
+      "path": "assets/access-Cg0XGrCp.js",
+      "sha256": "dc2b2b10318b10c943d2f1538e577dccb3c5486dfbcef5c02cc75aca927dae0f",
+      "bytes": 59289
+    },
+    {
+      "path": "assets/activity-BHwmF1y5.js",
+      "sha256": "a13511fc456c7d307ac5a0dd25bbe991fe04da16f61e251d28733c1024217c05",
+      "bytes": 87406
+    },
+    {
+      "path": "assets/activity-CSOKqWtj.css",
+      "sha256": "149c431543d6775e65965b36c9ffdab27993108479243a047adcc3dec5b457fb",
+      "bytes": 9903
+    },
+    {
+      "path": "assets/authority-D2Irq6lk.js",
+      "sha256": "a24d8fe8a962904c42d32d3c1a8e918b61e359be945f963f4777ae9312359950",
+      "bytes": 2759
+    },
+    {
+      "path": "assets/avatar-config.schema-D-59TwV9.js",
+      "sha256": "4f1743872c9341161b6373e8ff521d9087396b2cbc678167f096b3ef0b17c613",
+      "bytes": 1863
+    },
+    {
+      "path": "assets/capabilities-j6DOnuaE.js",
+      "sha256": "a30db3e51d5f6d0331f9b8472e1cd0f158e713174dfc77f2f583e07119800440",
+      "bytes": 13227
+    },
+    {
+      "path": "assets/compatibility-BAEMyyvo.js",
+      "sha256": "3b7458bbfb68b8ec13505560b90596677b15cfb6878e9eceb3d36a4caae894f3",
+      "bytes": 962
+    },
+    {
+      "path": "assets/composition-7ZC1dVCi.js",
+      "sha256": "90dd14c291685c2a5f46f24de6bd08dafc2e00e4efe18b8935a8f41256f630b8",
+      "bytes": 53097
+    },
+    {
+      "path": "assets/composition-C7uV5nlu.css",
+      "sha256": "b83af71fa57281ce2acbcfa526183443b5a55200fe77ea121fa36a2ab9e9c7ed",
+      "bytes": 3551
+    },
+    {
+      "path": "assets/contract-Bcu83lns.js",
+      "sha256": "08e459e4b094f9b4b49f9fdc7b4cc19d2309424f012a41cbf32658aef3914c06",
+      "bytes": 26642
+    },
+    {
+      "path": "assets/contract-DcaKwr0K.js",
+      "sha256": "30e064dd4379ca7f2d5b82b6cb4320f83b41bbbecaee106dacb659e0ece898ae",
+      "bytes": 2987
+    },
+    {
+      "path": "assets/contract-Dj9ImEnV.js",
+      "sha256": "485692a84d06f925196c2e81d843f8b415b495446aac6c555ae83207f58e32e8",
+      "bytes": 2166
+    },
+    {
+      "path": "assets/domain-operations.generated-CpkEJAQQ.js",
+      "sha256": "5d988fdadbf9a61cacb0a270c1fe0e6eefdc360ddfe49f0daa6c705bcd6ec6f6",
+      "bytes": 81105
+    },
+    {
+      "path": "assets/errors-hxkLUXfp.js",
+      "sha256": "5755834e98487dff4c8190e174831c82a5c9e9110157910ca98422b287b3f80c",
+      "bytes": 4480
+    },
+    {
+      "path": "assets/identity-D0mjGpJx.js",
+      "sha256": "2a50df2ee0ef965938c98c46b3315483f0e5766c5328080014782bcd6d7dbacf",
+      "bytes": 1020
+    },
+    {
+      "path": "assets/image-compression.worker-5_zI3q-z.js",
+      "sha256": "8684a6a03d41f402867aa01c9f3e61e6bbcda584f97d7bbb9cc593f11ce0ebec",
+      "bytes": 52224
+    },
+    {
+      "path": "assets/index-CIfGDwj7.js",
+      "sha256": "6591e7e92a02cf2f6d1dd7acaed3fe61e3c4f670544c12a8180cbf127ae45ab2",
+      "bytes": 276464
+    },
+    {
+      "path": "assets/index-CgHiC7As.css",
+      "sha256": "cda1c6b55524248ecb14dcfbcaa90417efb782d66ad75aaed552ad8820250c59",
+      "bytes": 27703
+    },
+    {
+      "path": "assets/jsx-runtime-CIxEorsV.js",
+      "sha256": "746b3bf847361bcee24b6a188dce1a6cae9bac7fa8972753abc7718e70fbed8b",
+      "bytes": 7899
+    },
+    {
+      "path": "assets/manifest-BovhGGz9.js",
+      "sha256": "90822b55b811ab56162ff9150f0e341038a70f111716ed315e63dacad1d7570d",
+      "bytes": 15784
+    },
+    {
+      "path": "assets/mcr-core.openapi-BTwes0QT.js",
+      "sha256": "10cb31b5781e1bdeabc88b48a5b66b1e8231c21c0250549d3eb16d37d9009f66",
+      "bytes": 126297
+    },
+    {
+      "path": "assets/mcr-domain.openapi-DSM2K8nD.js",
+      "sha256": "d532cd8d7d476bef39bea3f45bc737e715a81f1a74e8224593754e56dccc15a0",
+      "bytes": 761931
+    },
+    {
+      "path": "assets/meeting-entry-B-PBRuYh.js",
+      "sha256": "86ff793ac978277bf5be9e0b67ae6f6c2946f747636e45fd3d2671d9096315a9",
+      "bytes": 54030
+    },
+    {
+      "path": "assets/meeting-entry-CaQthYWG.css",
+      "sha256": "75aad4ca1aa1b82069e90b4bee44135bd77b53328fcaf32e574c11512b4344d5",
+      "bytes": 1733
+    },
+    {
+      "path": "assets/model-Dvkhzzqs.js",
+      "sha256": "d92dac0dc3fcbaba532a39bdb3e9bfc04d3480f84d1eb4600caa3f860051aeee",
+      "bytes": 86764
+    },
+    {
+      "path": "assets/model-a0gp53af.js",
+      "sha256": "f0c6d3a9d808c511e2f2a8c0d669559af8e82a1238d41147e59fd16ea1ecb6bf",
+      "bytes": 6411
+    },
+    {
+      "path": "assets/operations-ClTv-duQ.js",
+      "sha256": "0879a73d163b87f5c0cf331c03fd3ee773afbe97889a26276a60cf943ba34f7c",
+      "bytes": 1457
+    },
+    {
+      "path": "assets/overview-BqdjoyKZ.js",
+      "sha256": "4d20c5e04ce23275e31c019a8c5533a6e469d0c5bbac04e97db2bf73663c1ac4",
+      "bytes": 1710
+    },
+    {
+      "path": "assets/panel-FNjkh0Q0.js",
+      "sha256": "3e934bd3a1e6f1b8633755273e4a18266258fc10b671fb52e11062a4e43eb846",
+      "bytes": 4713
+    },
+    {
+      "path": "assets/panels-BMt8WHkR.css",
+      "sha256": "ac6ab8c827b3b5ba3b3877553f29a43bbc86e5d480f6e40874c83408432daa9d",
+      "bytes": 4192
+    },
+    {
+      "path": "assets/panels-BlHEg18Z.js",
+      "sha256": "698c4db50d170cb013d7e8cf51218ad2e5fc7868a954165f6e7824fa714832dc",
+      "bytes": 10962
+    },
+    {
+      "path": "assets/phaser-C-L-RzyC.js",
+      "sha256": "ec9cfe9197b216a54cc36f133e18ce4413ffc49c0341f9562c5370e038267356",
+      "bytes": 1194
+    },
+    {
+      "path": "assets/phaser-DuGV5HTt.js",
+      "sha256": "aadc808cf4b25a66d8b1ce2f0e4cf000f532be7d61a3f51cc797e789f3fa348e",
+      "bytes": 1198046
+    },
+    {
+      "path": "assets/preload-helper-CZgWQFsJ.js",
+      "sha256": "5376a697117375973d30b7cc2898a5cca3e4b63ccbf20dadf3141ab80a0bdeaf",
+      "bytes": 1256
+    },
+    {
+      "path": "assets/provider-2SrMVHNs.js",
+      "sha256": "2df9a92ea1752ba20982f0f8cc39307c5959c68fdb81dd9c7a59466b8a95295d",
+      "bytes": 3983
+    },
+    {
+      "path": "assets/provider-CzA5L2b-.js",
+      "sha256": "650f6c4ae4d32b0f0c25636338a2fd6454c9120cb382ab9ff2ac2b3866da76a3",
+      "bytes": 968
+    },
+    {
+      "path": "assets/provider-DFjYx66M.js",
+      "sha256": "d92af59ef82ed033d29e06c82ccbd0c87d3c47f29acb4ccdb87a63a5e716306e",
+      "bytes": 43205
+    },
+    {
+      "path": "assets/provider-DprRFUma.css",
+      "sha256": "6149d6556b1d2b6fb78b32c4c069e4269ba932ff223da485965da0537faa3756",
+      "bytes": 14465
+    },
+    {
+      "path": "assets/read-media-DeBuRj5i.js",
+      "sha256": "5cc411aaafa46a5cfa16b0a2a91ca27b6846daf55d1dc6c1d706937845db3b49",
+      "bytes": 6399
+    },
+    {
+      "path": "assets/reference-scene-jbfOTb7S.js",
+      "sha256": "0879979919f89fbcd4ba4d3ac4072c500ed240b092426c75385d4d780be66e55",
+      "bytes": 1957
+    },
+    {
+      "path": "assets/reference-scene-overview-Br8TIunO.js",
+      "sha256": "14a386f20c2a20cfe1e2e4911269f10c13d683de3d75cece1e74fdfbbb6e8e40",
+      "bytes": 1004
+    },
+    {
+      "path": "assets/resolver-B0ZDxypz.js",
+      "sha256": "5a409d2e1e32456c2c26b69be1d52f4c1ba23a9f815cb380746b7a093aa510e6",
+      "bytes": 4715
+    },
+    {
+      "path": "assets/resources-BCBu3f8Y.js",
+      "sha256": "aa9092d51c1eee3807c4186733de171de35655b68ad96f45713124ef9291cc96",
+      "bytes": 6184
+    },
+    {
+      "path": "assets/rolldown-runtime-QTnfLwEv.js",
+      "sha256": "5db5ba82eef00d1dee7e86e663098c9427d01183a88d357437daff295aec3e75",
+      "bytes": 694
+    },
+    {
+      "path": "assets/root-features-CZqssujL.js",
+      "sha256": "049cff7fe70a55d105c41ff37ecedcf71b350c1517136a9d1fd7739bf0d5f578",
+      "bytes": 14877
+    },
+    {
+      "path": "assets/root-features-nb6jl9cq.css",
+      "sha256": "beed26352e824accf70f00ad9dd16794bfaf47350b76d16867c394931758418c",
+      "bytes": 1550
+    },
+    {
+      "path": "assets/routes-DD6e3a7i.js",
+      "sha256": "41ba1f1716a5052567099ceabc360674fbe69bf09f3a95256f087e1268bced24",
+      "bytes": 97671
+    },
+    {
+      "path": "assets/safety-BViJNTBJ.css",
+      "sha256": "1ddbe65f09d9bef55dd82dd42b4a032a636d60314fbbda7c745ab012a0e7b804",
+      "bytes": 1517
+    },
+    {
+      "path": "assets/schemas-B9zUvP7H.js",
+      "sha256": "c10916083bf9319e1aab2984b0e57ca133cc7b98dcd6526e66258b4d58475e90",
+      "bytes": 66996
+    },
+    {
+      "path": "assets/simulation-sCcriVKG.js",
+      "sha256": "24ccf62b5c4b6c7a7b6fdbaff3197acc2ec26a176ece5d6a6bbd43002040db8e",
+      "bytes": 3150
+    },
+    {
+      "path": "assets/social-BMiG3aQa.css",
+      "sha256": "1ec64c14221aebc0b2102eec88720e1fc26fb282e97062aa24ca372f23a4bcd7",
+      "bytes": 1712
+    },
+    {
+      "path": "assets/social-Bmx8BD3z.js",
+      "sha256": "a46efd6533b8efee8329257f31878c2d3162c6ef4c817a757dc5e351260162c2",
+      "bytes": 35118
+    },
+    {
+      "path": "assets/social-composition-BD3_6jZW.css",
+      "sha256": "11b68322a504d12de4edb2012599fd24025899f216d35e045ae81f886b22fb1e",
+      "bytes": 5215
+    },
+    {
+      "path": "assets/social-composition-BEWCcQfb.js",
+      "sha256": "74cdf47dee348c5523163b82d6c06231c9c05c42377d0d5c5a207442b9ceb1cd",
+      "bytes": 8171
+    },
+    {
+      "path": "assets/source-catalog-B2GN78SH.js",
+      "sha256": "b92917ba77682ef3087dd6e0fc0f9867adf6fb6d2ab20d8264ed85de2fb13436",
+      "bytes": 15972
+    },
+    {
+      "path": "assets/whole-character-uuRj4mhS.js",
+      "sha256": "dd666cd0c5863faff4e3796d7e9d560ccb5f372a54d0e64e292cc5e8dd9d9795",
+      "bytes": 5650
+    },
+    {
+      "path": "assets/world-panels-D6eMStsa.js",
+      "sha256": "e3bd7cdb21918fb5e833c49ee91d6597f89db0d07ee53768637b47ae229c6354",
+      "bytes": 70266
+    },
+    {
+      "path": "assets/world-panels-cWsIhOQK.css",
+      "sha256": "d346a4fd50977e5dac6b5b9d1475db11fca9f8e7ee04a945c3db0796935229eb",
+      "bytes": 13679
+    }
+  ],
+  "findings": [],
+  "nonempty_count": 243
+}

@@ -120,3 +120,66 @@ this useful frontend contribution.
 
 The owner records actual candidate commands, results, fixes and publication
 receipt below after execution. No result is claimed from a planned command.
+
+## Executed candidate receipts
+
+Implementation commits (serial from the assignment base):
+`f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72`,
+`68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f`,
+`0fe5a687522ae2d08a38f7c669fe3814fd68b55e`.
+The last commit corrects the verifier's default Git output buffer for existing
+3.6 MB source blobs; all inspected blobs remain SHA-256 and Git-blob checked.
+The buffer is explicitly bounded at 64 MiB and larger inputs fail verification.
+
+Actual commands were run from the assigned checkout with existing Node 24.22.2,
+retained dependency lock SHA-256
+`47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6`,
+and the existing `contracts-validation-venv/bin/python` environment. Each
+`candidate-*/receipt.json` contains exact source/contract blobs and digests,
+resolved direct tool versions, full command argument arrays and exit codes.
+Top-level `run-*.log` records runner process output. These commands used
+`run --candidate <named SHA> --output <new absolute candidate directory>
+--python <existing environment>`; no install was performed.
+
+| Candidate | Tree | Actual result |
+| --- | --- | --- |
+| `f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72` | `b1ee4d4b3cd9d9ae11f4ff86041dac964a197f44` | Runner exit 1, FAIL: Vitest 3,416/3,417, 204 files; nine other gates PASS; 19/19 Node tests. |
+| `68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f` | `ab3ca81400cc1482354860da7bf2b8cc132eb7c2` | Runner exit 0, PARTIAL: all ten bounded gates PASS; Vitest 3,417/3,417, 204 files; 19/19 Node tests. |
+
+Both candidates passed the initial and final exact commit/tree/clean fences.
+Their product tests are unchanged. The first full run failed the case
+`preserves direct-beacon back navigation through Meet to World without creating a second world lease`
+in `frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx`, with
+expected `/world` and observed `/meet`. A separate focused command using the
+same Node/Vitest, `run <that file> --configLoader runner --no-cache
+--maxWorkers=1 --reporter=json --outputFile=<focused-meeting.json>`, exited 1
+with 6/7 passing. The second full run passed without changing that test, which
+establishes intermittent behavior rather than proving a repair. All original
+FAIL evidence and raw bytes are preserved. Root153 assigned the exact central
+test/readiness helper repair exclusively to chat `01a1a204-c583-7670-965a-4891b8b1289e`;
+this QA10 writer has no application/test repair rights.
+
+The same candidate receipts recorded 26 direct packages, 764 TypeScript inputs,
+1,297 source entries for lint provenance, 243 actually emitted production
+modules, 2,827 canonical C08 content files, and 36 source-linked task rows.
+The latter leaves FE20, FE25, FE26, FE27, FE28 and FE33 NOT_MAPPED, without
+inferring they are unimplemented. Three real-service Playwright suites remain
+NOT_RUN. The complete limitations and owning lanes are retained in each receipt.
+
+Consumer verification under final source `0fe5a687` accepts the unchanged
+historical FAIL receipt structurally and returns exit 1 with frontend_checks
+FAIL; the historical PARTIAL receipt returns exit 0. Neither certifies a later
+HEAD. `verify-probes.py` executed ten real CLI probes, all PASS: valid archived
+FAIL evidence, wrong expected candidate, missing gate, empty passing gate,
+failed process falsely marked PASS, forbidden global acceptance, missing final
+candidate fence, altered log, corrupt compressed report and an ancestor passed
+to `run`. `negative-probes.json` records actual exits and diagnostics. The initial
+consumer ENOBUFS discovery was corrected rather than skipped. Final six harness
+self-tests, scoped lint and diff checks passed. Focused raw reproduction output
+and the original candidate reports remain alongside these probes.
+
+Publication and qualification on the eventual published repaired candidate are
+still pending. The integrator can publish these implementation commits while the
+QA10 owner retains responsibility for consuming that candidate and recording a
+fresh meaningful run. Existing broad NOT_GREEN is not overwritten, and no full
+QA10, QA01, QA02, BE43, real-service or IN05 acceptance is claimed here.

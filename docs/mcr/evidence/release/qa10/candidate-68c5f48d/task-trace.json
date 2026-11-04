@@ -1,0 +1,857 @@
+{
+  "candidate": "68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f",
+  "canonical_plan": "generated/TASKS_EN.json",
+  "tasks": [
+    {
+      "task": "FE01",
+      "canonical_owned_paths": [
+        "frontend/src/shared/api/http.ts",
+        "frontend/src/shared/api/errors.ts"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/shared/api/errors.ts",
+        "frontend/src/shared/api/http.ts"
+      ],
+      "latest_source_commit": "faeb6ed4939a623627d1e9ac2c5016b986a2efea",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE02",
+      "canonical_owned_paths": [
+        "frontend/src/shared/query/keys.ts",
+        "frontend/src/shared/query/privacy.ts"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/shared/query/keys.ts",
+        "frontend/src/shared/query/privacy.ts"
+      ],
+      "latest_source_commit": "4207792d7f2ae1b1b6676e724e1712e43d72de43",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE03",
+      "canonical_owned_paths": [
+        "frontend/src/shared/validation/",
+        "frontend/src/entities/intro/model/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/entities/intro/model/age.ts",
+        "frontend/src/entities/intro/model/contract.ts",
+        "frontend/src/entities/intro/model/errors.ts",
+        "frontend/src/entities/intro/model/policy.ts",
+        "frontend/src/entities/intro/model/publication-contact.ts",
+        "frontend/src/shared/validation/tags.ts",
+        "frontend/src/shared/validation/text.ts"
+      ],
+      "latest_source_commit": "38fa133f3d92e49d20388004c19370c94b4d5389",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE04",
+      "canonical_owned_paths": [
+        "frontend/src/shared/media/",
+        "frontend/src/features/media/model/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/media/model/upload-controller.ts",
+        "frontend/src/shared/media/contract.ts",
+        "frontend/src/shared/media/image-compression.worker.ts",
+        "frontend/src/shared/media/image-policy.ts",
+        "frontend/src/shared/media/prepare-image.ts",
+        "frontend/src/shared/media/presigned-upload.ts",
+        "frontend/src/shared/media/preview.ts",
+        "frontend/src/shared/media/read-media.ts",
+        "frontend/src/shared/media/transport.ts",
+        "frontend/src/shared/media/types.ts"
+      ],
+      "latest_source_commit": "591040ff565a4b09a93bd751e2eac316558341dd",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE05",
+      "canonical_owned_paths": [
+        "frontend/src/shared/ui/",
+        "frontend/src/shared/styles/base.css"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/shared/ui/Dialog.tsx",
+        "frontend/src/shared/ui/Tabs.tsx",
+        "frontend/src/shared/ui/concert-window/index.tsx",
+        "frontend/src/shared/ui/controls.tsx",
+        "frontend/src/shared/ui/feedback.tsx",
+        "frontend/src/shared/ui/index.ts",
+        "frontend/src/shared/ui/modal-focus.ts"
+      ],
+      "latest_source_commit": "deb5865dad5e84fe08d045b9ac7392ae29123ed7",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE06",
+      "canonical_owned_paths": [
+        "frontend/src/shared/styles/themes/",
+        "frontend/src/features/theme/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/theme/model/controller.ts",
+        "frontend/src/features/theme/model/preferences.ts",
+        "frontend/src/features/theme/ui/ThemeScope.tsx",
+        "frontend/src/features/theme/ui/ThemeSelector.tsx"
+      ],
+      "latest_source_commit": "5710363883aedd590b088c56e53840ebc6ea98e8",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE07",
+      "canonical_owned_paths": [
+        "frontend/src/app/router.tsx",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/app/WorldShell.tsx",
+        "frontend/src/app/router.tsx"
+      ],
+      "latest_source_commit": "416b4e5f1adf6c1e6d1ad7f376dbdd92b7573a63",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE08",
+      "canonical_owned_paths": [
+        "frontend/src/features/public/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/public/model/document-provider.tsx",
+        "frontend/src/features/public/model/documents.ts",
+        "frontend/src/features/public/ui/DocumentPage.tsx",
+        "frontend/src/features/public/ui/Landing.tsx",
+        "frontend/src/features/public/ui/PublicFrame.tsx",
+        "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx"
+      ],
+      "latest_source_commit": "05e9367289bfab407c054d7f6b0ce991a00b186e",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE09",
+      "canonical_owned_paths": [
+        "frontend/src/features/auth/model/",
+        "frontend/src/features/auth/ui/SignIn.tsx"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/auth/model/account-deletion.ts",
+        "frontend/src/features/auth/model/bootstrap.ts",
+        "frontend/src/features/auth/model/callback.ts",
+        "frontend/src/features/auth/model/contract.ts",
+        "frontend/src/features/auth/model/cookie-policy.ts",
+        "frontend/src/features/auth/model/enrollment-contract.ts",
+        "frontend/src/features/auth/model/enrollment.ts",
+        "frontend/src/features/auth/model/recovery-contract.ts",
+        "frontend/src/features/auth/model/recovery.ts",
+        "frontend/src/features/auth/model/session.ts",
+        "frontend/src/features/auth/ui/SignIn.tsx"
+      ],
+      "latest_source_commit": "e614997db5dc54bd688c86df1bb94d96d80c4fc4",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE10",
+      "canonical_owned_paths": [
+        "frontend/src/features/auth/ui/SignUp.tsx",
+        "frontend/src/features/auth/ui/VerifyEmail.tsx"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/auth/ui/SignUp.tsx",
+        "frontend/src/features/auth/ui/VerifyEmail.tsx"
+      ],
+      "latest_source_commit": "f825b31c3f42532196ec91c562d83ddf69a7820b",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE11",
+      "canonical_owned_paths": [
+        "frontend/src/features/auth/ui/ResetPassword.tsx",
+        "frontend/src/features/auth/model/callback.ts"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/auth/model/callback.ts",
+        "frontend/src/features/auth/ui/ResetPassword.tsx"
+      ],
+      "latest_source_commit": "4360d586ce49691f902932cd41d8c062e43cd5b1",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE12",
+      "canonical_owned_paths": [
+        "frontend/src/world/avatar/",
+        "frontend/src/entities/avatar/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/entities/avatar/derived-assets/build-presets.mjs",
+        "frontend/src/entities/avatar/derived-assets/mask-presets.mjs",
+        "frontend/src/entities/avatar/derived-assets/measure-hair.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/component-pixels.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/direction-review.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/gait-review.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/pixels.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/preview.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-attachments.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-combined.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-components.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-directions.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-eyes.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-garments.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-rig.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/review.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/rig.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/server.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-components.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-directions.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-eyes.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-gait.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-garments.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-pixels.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify.mjs",
+        "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/wardrobe-review.mjs",
+        "frontend/src/entities/avatar/derived-assets/serve.mjs",
+        "frontend/src/entities/avatar/derived-assets/verify-hair.mjs",
+        "frontend/src/entities/avatar/derived-assets/verify-static.mjs",
+        "frontend/src/entities/avatar/derived-assets/verify.mjs",
+        "frontend/src/entities/avatar/runtime/atlas-lease.ts",
+        "frontend/src/entities/avatar/runtime/compositor.ts",
+        "frontend/src/entities/avatar/runtime/contract.ts",
+        "frontend/src/entities/avatar/runtime/index.ts",
+        "frontend/src/entities/avatar/runtime/resources.ts",
+        "frontend/src/entities/avatar/runtime/schema.ts",
+        "frontend/src/entities/avatar/selected-static/index.tsx",
+        "frontend/src/entities/avatar/selected-static/release.ts",
+        "frontend/src/entities/avatar/source-catalog.ts",
+        "frontend/src/entities/avatar/whole-admission/index.ts",
+        "frontend/src/entities/avatar/whole-character/contract.ts",
+        "frontend/src/entities/avatar/whole-character/index.ts",
+        "frontend/src/entities/avatar/whole-character/runtime.ts",
+        "frontend/src/entities/avatar/whole-character/view.tsx",
+        "frontend/src/world/avatar/index.ts",
+        "frontend/src/world/avatar/renderer.ts",
+        "frontend/src/world/avatar/scene.ts",
+        "frontend/src/world/avatar/whole-character.ts"
+      ],
+      "latest_source_commit": "b19be88ca8933ede034c6f55dd67c44de02abf4b",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE13",
+      "canonical_owned_paths": [
+        "frontend/src/features/avatar/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/avatar/AvatarEditor.tsx",
+        "frontend/src/features/avatar/OptionStrip.tsx",
+        "frontend/src/features/avatar/contract.ts",
+        "frontend/src/features/avatar/controller.ts",
+        "frontend/src/features/avatar/index.ts",
+        "frontend/src/features/avatar/preview.ts",
+        "frontend/src/features/avatar/reference-presentation/CategoryRail.tsx",
+        "frontend/src/features/avatar/reference-presentation/TonePalette.tsx",
+        "frontend/src/features/avatar/reference-presentation/actions.ts",
+        "frontend/src/features/avatar/whole-character/WholeCharacterEditor.tsx",
+        "frontend/src/features/avatar/whole-character/controller.ts",
+        "frontend/src/features/avatar/whole-character/model.ts"
+      ],
+      "latest_source_commit": "3c4dc76ffc0c336b5aeb76504554353bfb6e672b",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE14",
+      "canonical_owned_paths": [
+        "frontend/src/world/runtime.ts",
+        "frontend/src/world/scenes/",
+        "frontend/src/world/map/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/world/map/formats.ts",
+        "frontend/src/world/map/json.ts",
+        "frontend/src/world/map/manifest.ts",
+        "frontend/src/world/map/resource-cache.ts",
+        "frontend/src/world/map/resources.ts",
+        "frontend/src/world/map/schema.ts",
+        "frontend/src/world/map/tiled.ts",
+        "frontend/src/world/runtime.ts",
+        "frontend/src/world/scenes/MapScene.ts"
+      ],
+      "latest_source_commit": "167d1426f9247153f51bb7eaeab7983e9ad2ed03",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE15",
+      "canonical_owned_paths": [
+        "frontend/src/world/input/",
+        "frontend/src/world/camera/",
+        "frontend/src/world/interaction/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/world/camera/port.ts",
+        "frontend/src/world/input/controller.ts",
+        "frontend/src/world/input/model.ts",
+        "frontend/src/world/input/simulation.ts",
+        "frontend/src/world/interaction/selection.ts"
+      ],
+      "latest_source_commit": "e585c533d471af2a2b16f3e12ebf8eab5a96ec40",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE16",
+      "canonical_owned_paths": [
+        "frontend/src/world/network/WorldTransport.ts",
+        "frontend/src/world/network/mock.ts",
+        "frontend/src/world/network/websocket.ts"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/world/network/WorldTransport.ts",
+        "frontend/src/world/network/mock.ts",
+        "frontend/src/world/network/websocket.ts"
+      ],
+      "latest_source_commit": "e3a4d8470248dda734696eca28d6a59faaa00a10",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE17",
+      "canonical_owned_paths": [
+        "frontend/src/world/network/replication.ts",
+        "frontend/src/world/entities/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/world/entities/replicated.ts",
+        "frontend/src/world/network/replication.ts"
+      ],
+      "latest_source_commit": "79e45560b9fff757f4e4caf541cf5308d4856587",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE18",
+      "canonical_owned_paths": [
+        "frontend/src/features/world-rooms/",
+        "frontend/src/features/world-nearby/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/world-nearby/WorldNearby.tsx",
+        "frontend/src/features/world-nearby/index.ts",
+        "frontend/src/features/world-nearby/projection.ts",
+        "frontend/src/features/world-rooms/index.ts",
+        "frontend/src/features/world-rooms/model/contract.ts",
+        "frontend/src/features/world-rooms/model/controller.ts",
+        "frontend/src/features/world-rooms/ui/WorldRooms.tsx"
+      ],
+      "latest_source_commit": "5ef66e1113fc01e297f5d2531bcfd9029bf105b4",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE19",
+      "canonical_owned_paths": [
+        "frontend/src/features/places/",
+        "frontend/src/features/world-help/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/places/index.ts",
+        "frontend/src/features/places/model/contract.ts",
+        "frontend/src/features/places/model/controller.ts",
+        "frontend/src/features/places/ui/IllustratedMap.tsx",
+        "frontend/src/features/places/ui/Places.tsx",
+        "frontend/src/features/places/ui/plaque-layout.ts",
+        "frontend/src/features/places/ui/reference-scene/annotations.ts",
+        "frontend/src/features/places/ui/reference-scene/viewport.ts",
+        "frontend/src/features/world-help/WorldHelp.tsx"
+      ],
+      "latest_source_commit": "9c498fad8dc11baeda6694fdd9f98ff039832aab",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE20",
+      "canonical_owned_paths": [
+        "frontend/src/features/beacon/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [],
+      "latest_source_commit": null,
+      "ancestry_checked": false,
+      "state": "NOT_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE21",
+      "canonical_owned_paths": [
+        "frontend/src/features/party-discovery/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/party-discovery/index.ts",
+        "frontend/src/features/party-discovery/model/contract.ts",
+        "frontend/src/features/party-discovery/model/controller.ts",
+        "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx"
+      ],
+      "latest_source_commit": "58824c4f8ece5a32afba5fd63c6272cb95e569f5",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE22",
+      "canonical_owned_paths": [
+        "frontend/src/features/party-authoring/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/party-authoring/index.ts",
+        "frontend/src/features/party-authoring/model/contract.ts",
+        "frontend/src/features/party-authoring/model/controller.ts",
+        "frontend/src/features/party-authoring/model/time.ts",
+        "frontend/src/features/party-authoring/ui/PartyAuthoring.tsx"
+      ],
+      "latest_source_commit": "58824c4f8ece5a32afba5fd63c6272cb95e569f5",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE23",
+      "canonical_owned_paths": [
+        "frontend/src/features/party-management/",
+        "frontend/src/features/rally/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/party-management/index.ts",
+        "frontend/src/features/party-management/model/controller.ts",
+        "frontend/src/features/party-management/ui/PartyManagement.tsx"
+      ],
+      "latest_source_commit": "d8778b8793acc9715881835c42f34434486fa509",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE24",
+      "canonical_owned_paths": [
+        "frontend/src/features/gift-discovery/",
+        "frontend/src/features/my-gifts/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/gift-discovery/index.ts",
+        "frontend/src/features/gift-discovery/model/contract.ts",
+        "frontend/src/features/gift-discovery/model/controller.ts",
+        "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+        "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+        "frontend/src/features/my-gifts/MyGifts.tsx",
+        "frontend/src/features/my-gifts/index.ts"
+      ],
+      "latest_source_commit": "784630530b6eed853c109f107c454ffe1d56ca06",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE25",
+      "canonical_owned_paths": [
+        "frontend/src/features/gift-authoring/",
+        "frontend/src/features/gift-management/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [],
+      "latest_source_commit": null,
+      "ancestry_checked": false,
+      "state": "NOT_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE26",
+      "canonical_owned_paths": [
+        "frontend/src/features/pickup/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [],
+      "latest_source_commit": null,
+      "ancestry_checked": false,
+      "state": "NOT_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE27",
+      "canonical_owned_paths": [
+        "frontend/src/features/feed/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [],
+      "latest_source_commit": null,
+      "ancestry_checked": false,
+      "state": "NOT_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE28",
+      "canonical_owned_paths": [
+        "frontend/src/features/thread/",
+        "frontend/src/features/post-authoring/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [],
+      "latest_source_commit": null,
+      "ancestry_checked": false,
+      "state": "NOT_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE29",
+      "canonical_owned_paths": [
+        "frontend/src/features/people/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/people/People.tsx",
+        "frontend/src/features/people/contract.ts",
+        "frontend/src/features/people/controller.ts",
+        "frontend/src/features/people/index.ts",
+        "frontend/src/features/people/runtime.ts"
+      ],
+      "latest_source_commit": "e614997db5dc54bd688c86df1bb94d96d80c4fc4",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE30",
+      "canonical_owned_paths": [
+        "frontend/src/features/intro/",
+        "frontend/src/features/profile/",
+        "frontend/src/features/age-status/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/age-status/AgeStatus.tsx",
+        "frontend/src/features/age-status/controller.ts",
+        "frontend/src/features/age-status/index.ts",
+        "frontend/src/features/intro/IntroEditor.tsx",
+        "frontend/src/features/intro/command.ts",
+        "frontend/src/features/intro/contract.ts",
+        "frontend/src/features/intro/controller.ts",
+        "frontend/src/features/intro/index.ts",
+        "frontend/src/features/profile/Avatar.tsx",
+        "frontend/src/features/profile/PublicProfile.tsx",
+        "frontend/src/features/profile/index.ts",
+        "frontend/src/features/profile/reference-presentation/ProfileIcon.tsx"
+      ],
+      "latest_source_commit": "75d4dde903454ca6c8ae4280d37c10b5f30c451b",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE31",
+      "canonical_owned_paths": [
+        "frontend/src/features/social-sharing/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/social-sharing/index.ts",
+        "frontend/src/features/social-sharing/model/contract.ts",
+        "frontend/src/features/social-sharing/model/controller.ts",
+        "frontend/src/features/social-sharing/model/runtime.ts",
+        "frontend/src/features/social-sharing/ui/SocialSharing.tsx"
+      ],
+      "latest_source_commit": "9589eef4082dfedf5d8721de64719eb5b84e3265",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE32",
+      "canonical_owned_paths": [
+        "frontend/src/features/mural/editor/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/mural/editor/MuralEditor.tsx",
+        "frontend/src/features/mural/editor/contract.ts",
+        "frontend/src/features/mural/editor/controller.ts",
+        "frontend/src/features/mural/editor/index.ts",
+        "frontend/src/features/mural/editor/input.ts"
+      ],
+      "latest_source_commit": "7b567acb6026d0bab6b5afefce6bc704e4440f2a",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE33",
+      "canonical_owned_paths": [
+        "frontend/src/features/mural/model/",
+        "frontend/src/world/interaction/mural.ts"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [],
+      "latest_source_commit": null,
+      "ancestry_checked": false,
+      "state": "NOT_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE34",
+      "canonical_owned_paths": [
+        "frontend/src/features/me/",
+        "frontend/src/features/settings/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/me/index.ts",
+        "frontend/src/features/me/model/contract.ts",
+        "frontend/src/features/me/model/controller.ts",
+        "frontend/src/features/me/ui/AvatarThumbnail.tsx",
+        "frontend/src/features/me/ui/MePages.tsx",
+        "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+        "frontend/src/features/settings/SettingsPage.tsx",
+        "frontend/src/features/settings/index.ts"
+      ],
+      "latest_source_commit": "496aa2d5810b5054dfca8792d72c0e2ca9ce5661",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE35",
+      "canonical_owned_paths": [
+        "frontend/src/features/inbox/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/inbox/index.ts",
+        "frontend/src/features/inbox/model/contract.ts",
+        "frontend/src/features/inbox/model/controller.ts",
+        "frontend/src/features/inbox/model/targets.ts",
+        "frontend/src/features/inbox/ui/Inbox.tsx"
+      ],
+      "latest_source_commit": "a5571880ee39a23467f41a97fd763df55b8d1bb6",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE36",
+      "canonical_owned_paths": [
+        "frontend/src/features/safety/",
+        "frontend/src/features/account/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/account/contract.ts",
+        "frontend/src/features/account/controller.ts",
+        "frontend/src/features/account/index.ts",
+        "frontend/src/features/account/panel.tsx",
+        "frontend/src/features/safety/Dialog.tsx",
+        "frontend/src/features/safety/contract.ts",
+        "frontend/src/features/safety/controller.ts",
+        "frontend/src/features/safety/index.ts",
+        "frontend/src/features/safety/panels.tsx"
+      ],
+      "latest_source_commit": "705da35a5f77e2207dc805d38efd518968085e26",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE37",
+      "canonical_owned_paths": [
+        "frontend/src/features/admin/reports/",
+        "frontend/src/features/admin/members/",
+        "frontend/src/features/admin/content/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/admin/content/index.ts",
+        "frontend/src/features/admin/members/index.ts",
+        "frontend/src/features/admin/reports/index.ts",
+        "frontend/src/features/admin/reports/model/contract.ts",
+        "frontend/src/features/admin/reports/model/controller.ts",
+        "frontend/src/features/admin/reports/model/validate.ts",
+        "frontend/src/features/admin/reports/ui/ModerationReview.tsx"
+      ],
+      "latest_source_commit": "ccd71cb4b7c4557fa2463ae8057b853a9b877866",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE38",
+      "canonical_owned_paths": [
+        "frontend/src/features/admin/event/",
+        "frontend/src/features/admin/places/",
+        "frontend/src/features/admin/audit/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/admin/audit/AuditOperations.tsx",
+        "frontend/src/features/admin/audit/contract.ts",
+        "frontend/src/features/admin/audit/index.ts",
+        "frontend/src/features/admin/event/index.ts",
+        "frontend/src/features/admin/event/model/contract.ts",
+        "frontend/src/features/admin/event/model/controller.ts",
+        "frontend/src/features/admin/event/model/lease.ts",
+        "frontend/src/features/admin/event/model/ports.ts",
+        "frontend/src/features/admin/event/ui/EventOperations.tsx",
+        "frontend/src/features/admin/event/ui/common.tsx",
+        "frontend/src/features/admin/places/PlacesOperations.tsx",
+        "frontend/src/features/admin/places/contract.ts",
+        "frontend/src/features/admin/places/index.ts"
+      ],
+      "latest_source_commit": "86d547b9ca1fdbeaa9c2a805ae0a1f700a2c1234",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE39",
+      "canonical_owned_paths": [
+        "frontend/src/features/admin/mural/",
+        "frontend/src/features/admin/closure/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/admin/closure/EventClosure.tsx",
+        "frontend/src/features/admin/closure/contract.ts",
+        "frontend/src/features/admin/closure/controller.ts",
+        "frontend/src/features/admin/closure/http.ts",
+        "frontend/src/features/admin/closure/index.ts",
+        "frontend/src/features/admin/mural/WallControl.tsx",
+        "frontend/src/features/admin/mural/contract.ts",
+        "frontend/src/features/admin/mural/controller.ts",
+        "frontend/src/features/admin/mural/http.ts",
+        "frontend/src/features/admin/mural/index.ts",
+        "frontend/src/features/admin/mural/owner.ts",
+        "frontend/src/features/admin/mural/transport.ts"
+      ],
+      "latest_source_commit": "b880c55ef09895244f01bfb243a2fe35a0f85825",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE40",
+      "canonical_owned_paths": [
+        "frontend/src/features/archive/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/features/archive/ArchivePage.tsx",
+        "frontend/src/features/archive/context.ts",
+        "frontend/src/features/archive/contract.ts",
+        "frontend/src/features/archive/controller.ts",
+        "frontend/src/features/archive/http.ts",
+        "frontend/src/features/archive/index.ts"
+      ],
+      "latest_source_commit": "56de7d643cf23e984c637660bb48be8792bc678a",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "FE41",
+      "canonical_owned_paths": [
+        "frontend/src/app/errors/",
+        "frontend/src/features/connection-status/"
+      ],
+      "supplemental_assignment": [],
+      "source_paths": [
+        "frontend/src/app/errors/RouteState.tsx",
+        "frontend/src/app/errors/connectivity.ts",
+        "frontend/src/app/errors/observer.ts",
+        "frontend/src/features/connection-status/index.tsx",
+        "frontend/src/features/connection-status/model.ts"
+      ],
+      "latest_source_commit": "d3440e9d1acbd1882a082f9c89d1be1e807bec34",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    },
+    {
+      "task": "QA10",
+      "canonical_owned_paths": [],
+      "supplemental_assignment": [
+        "frontend/e2e/release/qa10/"
+      ],
+      "source_paths": [
+        "frontend/e2e/release/qa10/model.mjs",
+        "frontend/e2e/release/qa10/run.mjs",
+        "frontend/e2e/release/qa10/selftest.node.mjs",
+        "frontend/e2e/release/qa10/worker.mjs"
+      ],
+      "latest_source_commit": "68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f",
+      "ancestry_checked": true,
+      "state": "SOURCE_MAPPED",
+      "acceptance": "NOT_ASSESSED"
+    }
+  ],
+  "unmapped": [
+    "FE20",
+    "FE25",
+    "FE26",
+    "FE27",
+    "FE28",
+    "FE33"
+  ],
+  "nonempty_count": 36,
+  "limitation": "Source-path and ancestor linkage only. Canonical ownership paths may differ from implementation; unmapped rows are gaps, and no task completion is inferred."
+}
