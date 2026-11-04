@@ -258,3 +258,30 @@ idempotent retries, pre-dispatch cancellation, and active/committed/misbound
 receipts. Durable root child registration and Concert restart reconstruction
 remain coordinated with the canonical authority and root owners; no automatic
 TTL/Drop cleanup or joined capability is enabled.
+
+Current unpublished consumer increment also adds
+`PublicProfileReader::recover_one(&ChildRecoveryReference) -> Result<(), Status>`.
+It uses the configured Profile channel or actual Concert pool and returns no
+content or admission. PROFILE_PUBLIC preallocates its exact child/key, persists
+and attaches that reference before dispatch, and rejects a differently echoed
+capability. LOCAL_PUBLIC captures full native identity and persists its exact
+nonce-derived reference before PREPARE. Its live checks require actual database
+identity and matching prepared XID; idempotent settlement requires that exact
+transaction's aborted status. The root authenticates the encrypted saved reference
+and records child completion durably only after this proof. Missing, expired or
+unknown metadata cannot independently release a child or close a root scope.
+
+| Remaining original assignment criterion | Current state and owner |
+| --- | --- |
+| Dedicated canonical arbitrary-subject Profile read, minimal content, privacy exclusion, native restart primitive | Independently qualified and published `d4ee53f5` via `b09db61e` |
+| Pre-dispatch intents and idempotent Profile owner completion | Implemented `68d7b109` plus focused follow-ups; compile/native NOT_RUN, public Profile developer owns qualification |
+| Exact C03 assembly, canonical avatar union and shared local policy | Implemented `0b3c5a87` plus `cabec413`; compile/schema execution NOT_RUN pending additive child SDK, public Profile developer owns qualification |
+| Durable child intent API and native canonical Auth/Friend producer availability | Authority developer owns SDK and owner-store qualification; compiled base `888cb6bd` is consumed, additive child SDK remains source-only |
+| Root private ledger, HTTP completion, actual joined Feed/C04 response and restart cleanup | Root developer owns ledger/HTTP; public Profile developer validates this adapter in the actual joined flow with consumer owners |
+| Final combined validation, documentation, qualified committed publication and remote ancestry | Still required for the unpublished increments; no main-chat or scrum-lead approval stage |
+
+The separately assigned SELF producer registrations are authored in isolated
+commit `d88751fd` and sent to that owner for combined compilation with its exact
+new module and protocol. They are not part of this public recovery branch or an
+acceptance claim. The public Profile developer remains sole writer of the four
+existing Profile registration paths; no ownership transfer was implied.
