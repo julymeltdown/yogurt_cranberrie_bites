@@ -1,0 +1,390 @@
+{
+  "kind": "IN01-real-browser-v1",
+  "status": "PARTIAL",
+  "source": "2e1e01228bb8129c5e44c8741540b2206d29739b",
+  "startedAt": "2026-11-04T04:42:11.606Z",
+  "checks": {
+    "independentAccounts": {
+      "status": "PASS",
+      "detail": {
+        "independentContexts": 2,
+        "freshLogins": 2
+      }
+    },
+    "authorizedWorld": {
+      "status": "PASS",
+      "detail": [
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 0,
+          "ack": 1,
+          "lastInput": 1,
+          "players": 2,
+          "frames": 3,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        },
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 0,
+          "ack": 1,
+          "lastInput": 1,
+          "players": 2,
+          "frames": 2,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        }
+      ]
+    },
+    "bidirectionalMovementAndAck": {
+      "status": "PASS",
+      "detail": [
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 7,
+          "ack": 9,
+          "lastInput": 9,
+          "players": 2,
+          "frames": 13,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        },
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 8,
+          "ack": 10,
+          "lastInput": 10,
+          "players": 2,
+          "frames": 12,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        }
+      ]
+    },
+    "persistentPanels": {
+      "status": "FAIL",
+      "code": "RUNTIME_ASSERTION",
+      "detail": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: /^Meet$/i })\u001b[22m\n"
+    },
+    "themeRuntimeAndLocalPersistence": {
+      "status": "FAIL",
+      "code": "RUNTIME_ASSERTION",
+      "detail": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: /^World$/i })\u001b[22m\n"
+    },
+    "customization": {
+      "status": "FAIL",
+      "code": "RUNTIME_ASSERTION",
+      "detail": "locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: /^Me$/i })\u001b[22m\n"
+    },
+    "realBrowserReconnect": {
+      "status": "FAIL",
+      "code": "RUNTIME_ASSERTION",
+      "detail": "locator.elementHandle: Target page, context or browser has been closed"
+    },
+    "singleActualPhaserGame": {
+      "status": "FAIL",
+      "code": "RUNTIME_ASSERTION",
+      "detail": "browserContext.newCDPSession: page: no object with guid page@cf92c42e47f6c9c3828c2c5f76a7fd6c"
+    }
+  },
+  "requests": [
+    {
+      "principal": 0,
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+      "method": "POST",
+      "status": 200
+    }
+  ],
+  "captures": [],
+  "assets": {
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/ground.png": {
+      "sha256": "e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+      "bytes": 531480
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/danger/atlas.png": {
+      "sha256": "d5b658101719fd22834b6a4ce2b5502d80f380b7cd3c12bf7bfa8801a0e068ec",
+      "bytes": 1181494
+    }
+  },
+  "guards": [
+    {
+      "at": "2026-11-04T04:42:11.610Z",
+      "remainingSeconds": 769,
+      "freeGiB": 14.89,
+      "outputMiB": 0
+    },
+    {
+      "at": "2026-11-04T04:42:12.521Z",
+      "remainingSeconds": 768,
+      "freeGiB": 14.871,
+      "outputMiB": 27.89
+    },
+    {
+      "at": "2026-11-04T04:42:15.055Z",
+      "remainingSeconds": 765,
+      "freeGiB": 14.869,
+      "outputMiB": 28.27
+    },
+    {
+      "at": "2026-11-04T04:42:16.898Z",
+      "remainingSeconds": 764,
+      "freeGiB": 14.869,
+      "outputMiB": 28.27
+    },
+    {
+      "at": "2026-11-04T04:42:18.530Z",
+      "remainingSeconds": 762,
+      "freeGiB": 14.878,
+      "outputMiB": 28.28
+    },
+    {
+      "at": "2026-11-04T04:42:22.523Z",
+      "remainingSeconds": 758,
+      "freeGiB": 14.881,
+      "outputMiB": 28.29
+    },
+    {
+      "at": "2026-11-04T04:42:32.526Z",
+      "remainingSeconds": 748,
+      "freeGiB": 14.882,
+      "outputMiB": 28.29
+    },
+    {
+      "at": "2026-11-04T04:42:42.528Z",
+      "remainingSeconds": 738,
+      "freeGiB": 14.872,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:42:48.885Z",
+      "remainingSeconds": 732,
+      "freeGiB": 14.868,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:42:52.530Z",
+      "remainingSeconds": 728,
+      "freeGiB": 14.877,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:43:02.531Z",
+      "remainingSeconds": 718,
+      "freeGiB": 14.871,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:43:12.534Z",
+      "remainingSeconds": 708,
+      "freeGiB": 14.862,
+      "outputMiB": 28.26
+    },
+    {
+      "at": "2026-11-04T04:43:18.891Z",
+      "remainingSeconds": 702,
+      "freeGiB": 14.862,
+      "outputMiB": 28.26
+    },
+    {
+      "at": "2026-11-04T04:43:22.535Z",
+      "remainingSeconds": 698,
+      "freeGiB": 14.9,
+      "outputMiB": 28.26
+    },
+    {
+      "at": "2026-11-04T04:43:32.538Z",
+      "remainingSeconds": 688,
+      "freeGiB": 14.921,
+      "outputMiB": 28.26
+    },
+    {
+      "at": "2026-11-04T04:43:42.540Z",
+      "remainingSeconds": 678,
+      "freeGiB": 14.904,
+      "outputMiB": 32.26
+    },
+    {
+      "at": "2026-11-04T04:43:46.938Z",
+      "remainingSeconds": 674,
+      "freeGiB": 14.842,
+      "outputMiB": 32.26
+    },
+    {
+      "at": "2026-11-04T04:43:46.944Z",
+      "remainingSeconds": 674,
+      "freeGiB": 14.842,
+      "outputMiB": 32.26
+    }
+  ],
+  "errors": [],
+  "release": {
+    "eventId": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "room": {
+      "room_id": "cc2a248f-64ed-494d-8db7-54ab24f09451",
+      "capacity": 2
+    },
+    "backendSource": "e6921cf285d9729cfa8c86351e1ce61b357398f2",
+    "releaseDigest": "29f461955569825f02863dae97ccfa412ec68d23cabcfa6689c88cba1b0542ab",
+    "gatewayBinary": "857e0874dd6a62544e9104c79fc0701f0300b55772828cc978d4c5dcc6e6512b",
+    "concertBinary": "ea5eaef68ae1ec50fada5c18dc31bff9c0908a79c1c1d20ec854f2df7170c5f8",
+    "protocol": "1.0.0"
+  },
+  "qualification": "Actual retained App root, fresh real logins and genuine HTTP/WS only. No fixtures, raw-WS substitution, server process controls or token/credential exports.",
+  "localInput": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/be-media-combined/backend/releases/operator-bundle/quality-v6/local-input.json",
+    "sha256": "89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b"
+  },
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "contextsClosed": true,
+    "browserClosed": true,
+    "serverClosed": true,
+    "lastObserverActiveBeforeContextClose": [
+      1,
+      1
+    ],
+    "socketQualification": "Browser/context closure is verified; passive close callbacks may be detached before notification, server zero requires separate owner observation."
+  },
+  "observed": [
+    {
+      "active": 1,
+      "peak": 1,
+      "opens": 1,
+      "snapshots": 1,
+      "invalid": 0,
+      "inputs": 7,
+      "ack": 9,
+      "lastInput": 9,
+      "players": 2,
+      "frames": 22,
+      "privacyFields": 0,
+      "map": "mcr_reference_scene_r3",
+      "mapRevision": 4,
+      "avatarManifest": "mcr_selected_static_20261103",
+      "avatarRevision": 1
+    },
+    {
+      "active": 1,
+      "peak": 1,
+      "opens": 1,
+      "snapshots": 1,
+      "invalid": 0,
+      "inputs": 8,
+      "ack": 10,
+      "lastInput": 10,
+      "players": 2,
+      "frames": 21,
+      "privacyFields": 0,
+      "map": "mcr_reference_scene_r3",
+      "mapRevision": 4,
+      "avatarManifest": "mcr_selected_static_20261103",
+      "avatarRevision": 1
+    }
+  ],
+  "finishedAt": "2026-11-04T04:43:46.956Z",
+  "runnerInterruption": {
+    "code": "DRIVER_NAVIGATION_REPAIR",
+    "reason": "Full panels cover primary navigation; driver must use actual Back button between panel entries. Own obsolete driver interrupted; no product defect inferred.",
+    "ownChromeClosed": true,
+    "ownServerClosed": true,
+    "ownCacheRemoved": true
+  }
+}

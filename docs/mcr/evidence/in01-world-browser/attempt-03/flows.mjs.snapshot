@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict'
+import {createHash} from 'node:crypto'
+import {expect} from '@playwright/test'
+const digest=b=>createHash('sha256').update(b).digest('hex')
+const nav=(page,name)=>page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:new RegExp('^'+name+'$','i')})
+export async function panels(j){return j.check('persistentPanels',async()=>{
+ for(let i=0;i<2;i++){
+  const p=j.pages[i],host=await p.locator('[data-world-host]').elementHandle(),canvas=await p.locator('[data-world-host] canvas').elementHandle(),opens=j.observers[i].opens
+  for(const name of ['Feed','Meet','Gifts','Wall','Me','World']){
+   if(new URL(p.url()).pathname!=='/world')await p.getByRole('button',{name:'Back to previous panel',exact:true}).click();await nav(p,name).click();assert(await p.locator('[data-world-host]').evaluate((x,y)=>x===y,host));assert(await p.locator('[data-world-host] canvas').evaluate((x,y)=>x===y,canvas))
+   if(name==='Feed'){const before=j.observers[i].inputs;await p.getByRole('heading',{level:1,name:/^feed$/i}).focus();await p.keyboard.down('ArrowRight');try{await p.waitForTimeout(250)}finally{await p.keyboard.up('ArrowRight')}assert.equal(j.observers[i].inputs,before)}
+  }
+  assert.equal(j.observers[i].opens,opens);assert.equal(j.observers[i].peak,1)
+ }
+ return {independentContexts:2,panelsPerContext:6,sameHostAndCanvas:true,noNewSocket:true,coveredMovementSuppressed:true}
+})}
+export async function theme(j){return j.check('themeRuntimeAndLocalPersistence',async()=>{
+ const p=j.pages[0],o=j.observers[0],id=o.baseline.selfUserId,prior=structuredClone(o.players.get(id)),room=o.baseline.roomId,opens=o.opens
+ if(new URL(p.url()).pathname!=='/world')await p.getByRole('button',{name:'Back to previous panel',exact:true}).click();await nav(p,'World').click();const before=digest(await p.locator('[data-world-host] canvas').screenshot())
+ const current=await p.getByRole('button',{name:/^(Revenge|Parade|Danger)$/i}).evaluateAll(es=>es.find(e=>e.getAttribute('aria-pressed')==='true')?.textContent)
+ const next=/PARADE/i.test(current??'')?'REVENGE':'PARADE',button=p.getByRole('button',{name:new RegExp('^'+next+'$','i')});await button.click();await expect(button).toHaveAttribute('aria-pressed','true',{timeout:20000})
+ const after=digest(await p.locator('[data-world-host] canvas').screenshot());assert.notEqual(before,after);assert.equal(o.baseline.roomId,room);assert.deepEqual(o.players.get(id).position,prior.position);assert.deepEqual(o.players.get(id).avatar,prior.avatar);assert.equal(o.opens,opens)
+ const key=`mcr:theme:v1:${encodeURIComponent(id)}:${encodeURIComponent(o.baseline.eventId)}`;assert.equal(await p.evaluate(k=>localStorage.getItem(k),key),next)
+ assert.equal(await j.pages[1].evaluate(k=>localStorage.getItem(k),key),null)
+ await j.shot('theme-'+next.toLowerCase(),0)
+ return {selected:next,renderedCanvasChanged:true,localIdentityAndEventScoped:true,otherContextIsolated:true,roomPositionAvatarUnchanged:true,socketUnchanged:true,canvasBeforeSha256:before,canvasAfterSha256:after,persistence:'Local storage only; server preference synchronization is explicitly unavailable'}
+})}
+export async function customization(j){return j.check('customization',async()=>{
+ const p=j.pages[0];if(new URL(p.url()).pathname!=='/world')await p.getByRole('button',{name:'Back to previous panel',exact:true}).click();await nav(p,'Me').click();await p.getByRole('link',{name:'Dress up',exact:true}).click();await p.waitForTimeout(500)
+ await j.shot('customization-actual',0)
+ const whole=await p.getByRole('group',{name:'Whole character choices',exact:true}).count()
+ if(!whole){const unavailable=await p.getByText(/Customization is unavailable|Character editing is unavailable|Reviewed avatar artwork is unavailable|Preview unavailable/).count();throw Error(unavailable?'STATIC_RELEASE_HAS_NO_COMPOSED_EDITABLE_COLLECTION':'CURRENT_AVATAR_EDITOR_REQUIRES_OWNER_DIAGNOSIS')}
+ const choices=p.getByRole('button',{name:/^Choose /}),count=await choices.count();if(count<2)throw Error('ADMITTED_COLLECTION_HAS_NO_ALTERNATE_CHARACTER')
+ const candidate=await choices.evaluateAll(es=>es.findIndex(e=>e.getAttribute('aria-pressed')!=='true'&&!e.disabled));if(candidate<0)throw Error('NO_ENABLED_ALTERNATE_CHARACTER')
+ const before=JSON.stringify([...j.observers[1].players.values()].map(x=>x.avatar));await choices.nth(candidate).click();const save=p.getByRole('button',{name:'Save character',exact:true});await expect(save).toBeEnabled();const saved=p.waitForResponse(r=>/\/me\/avatar$/.test(new URL(r.url()).pathname)&&r.request().method()==='PUT');await save.click();assert((await saved).ok());await expect(p.getByText('Character saved.',{exact:true})).toBeVisible();await expect.poll(()=>JSON.stringify([...j.observers[1].players.values()].map(x=>x.avatar))!==before,{timeout:15000}).toBe(true);if(new URL(p.url()).pathname!=='/world')await p.getByRole('button',{name:'Back to previous panel',exact:true}).click();await nav(p,'World').click();return {realSave:true,peerAuthorizedAvatarChanged:true,choices:count}
+})}
+export async function reconnect(j){return j.check('realBrowserReconnect',async()=>{
+ const p=j.pages[0],o=j.observers[0],peer=j.observers[1],ownId=o.baseline.selfUserId,oldStream=o.baseline.streamId,snapshots=o.snapshots,canvas=await p.locator('[data-world-host] canvas').elementHandle()
+ if(new URL(p.url()).pathname!=='/world')await p.getByRole('button',{name:'Back to previous panel',exact:true}).click();await nav(p,'World').click();await p.context().setOffline(true)
+ try{await expect.poll(()=>o.active,{timeout:15000}).toBe(0);await expect.poll(()=>peer.players.has(ownId),{timeout:15000}).toBe(false)}finally{await p.context().setOffline(false)}
+ const button=p.getByRole('button',{name:'Reconnect world',exact:true});await expect(button).toBeVisible({timeout:10000});await button.click()
+ await expect.poll(()=>o.snapshots>snapshots&&o.baseline?.streamId!==oldStream&&o.players.size===2&&peer.players.has(ownId),{timeout:20000}).toBeTruthy()
+ assert.equal(o.active,1);assert.equal(o.peak,1);assert.equal(o.invalid,0);assert(await p.locator('[data-world-host] canvas').evaluate((x,y)=>x===y,canvas));return {realBrowserOffline:true,peerWithdrawal:true,newAuthorizedStream:true,freshSnapshot:true,bothPlayersRestored:true,sameCanvas:true,peakWorldSockets:1}
+})}
+export async function singleGame(j){return j.check('singleActualPhaserGame',async()=>{
+ const result=[]
+ for(const page of j.pages){
+  const cdp=await page.context().newCDPSession(page)
+  // Query actual existing Phaser.Game instances without replacing constructors or the engine.
+  const url=await page.evaluate(()=>performance.getEntriesByType('resource').map(e=>e.name).find(n=>/\/phaser\.js(?:\?|$)/.test(n)));if(!url)throw Error('ACTUAL_PHASER_MODULE_NOT_OBSERVED');const proto=await cdp.send('Runtime.evaluate',{expression:'import('+JSON.stringify(url)+').then(m=>(m.default??m).Game.prototype)',awaitPromise:true})
+  if(!proto.result.objectId)throw Error('ACTUAL_PHASER_PROTOTYPE_NOT_RESOLVED')
+  const objects=await cdp.send('Runtime.queryObjects',{prototypeObjectId:proto.result.objectId})
+  const data=await cdp.send('Runtime.callFunctionOn',{objectId:objects.objects.objectId,functionDeclaration:'function(){return {live:this.filter(x=>x.isRunning&&!x.pendingDestroy).length,total:this.length,ownedCanvas:this.filter(x=>x.isRunning&&!x.pendingDestroy).every(x=>x.canvas===document.querySelector("[data-world-host] canvas"))}}',returnByValue:true})
+  assert.equal(data.result.value.live,1);assert(data.result.value.ownedCanvas);result.push(data.result.value);await cdp.detach()
+ }
+ return {readOnlyHeapQuery:true,contexts:result}
+})}

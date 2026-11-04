@@ -1,0 +1,378 @@
+{
+  "kind": "IN01-real-browser-v1",
+  "status": "PARTIAL",
+  "source": "2e1e01228bb8129c5e44c8741540b2206d29739b",
+  "startedAt": "2026-11-04T04:36:43.777Z",
+  "checks": {
+    "independentAccounts": {
+      "status": "PASS",
+      "detail": {
+        "independentContexts": 2,
+        "freshLogins": 2
+      }
+    },
+    "authorizedWorld": {
+      "status": "PASS",
+      "detail": [
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 0,
+          "ack": 1,
+          "lastInput": 1,
+          "players": 2,
+          "frames": 5,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        },
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 0,
+          "ack": 1,
+          "lastInput": 1,
+          "players": 2,
+          "frames": 4,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        }
+      ]
+    },
+    "bidirectionalMovementAndAck": {
+      "status": "PASS",
+      "detail": [
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 7,
+          "ack": 9,
+          "lastInput": 9,
+          "players": 2,
+          "frames": 14,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        },
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 8,
+          "ack": 10,
+          "lastInput": 10,
+          "players": 2,
+          "frames": 13,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        }
+      ]
+    },
+    "persistentPanels": {
+      "status": "FAIL",
+      "code": "RUNTIME_ASSERTION",
+      "detail": "locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'FEED', exact: true })\u001b[22m\n"
+    }
+  },
+  "requests": [
+    {
+      "principal": 0,
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "principal": 1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+      "method": "POST",
+      "status": 200
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/mcr/evidence/in01-world-browser/attempt-01-resource-stop/world-two-real-accounts-a.png",
+      "sha256": "a432233955d610b7f5e1d85f66ae3f5d9fb90ea63049040f607a2d9c3af1f646",
+      "relocatedFrom": "docs/mcr/evidence/in01-world-browser/world-two-real-accounts-a.png"
+    },
+    {
+      "file": "docs/mcr/evidence/in01-world-browser/attempt-01-resource-stop/world-two-real-accounts-b.png",
+      "sha256": "e80f954b9b304f1bd30e032911a69f29924b912a43a20ff8b40bda2c2e177ee5",
+      "relocatedFrom": "docs/mcr/evidence/in01-world-browser/world-two-real-accounts-b.png"
+    }
+  ],
+  "assets": {
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/ground.png": {
+      "sha256": "e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+      "bytes": 531480
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/danger/atlas.png": {
+      "sha256": "d5b658101719fd22834b6a4ce2b5502d80f380b7cd3c12bf7bfa8801a0e068ec",
+      "bytes": 1181494
+    }
+  },
+  "guards": [
+    {
+      "at": "2026-11-04T04:36:43.781Z",
+      "remainingSeconds": 1097,
+      "freeGiB": 8.557,
+      "outputMiB": 0
+    },
+    {
+      "at": "2026-11-04T04:36:50.977Z",
+      "remainingSeconds": 1089,
+      "freeGiB": 8.525,
+      "outputMiB": 28.27
+    },
+    {
+      "at": "2026-11-04T04:36:54.673Z",
+      "remainingSeconds": 1086,
+      "freeGiB": 8.537,
+      "outputMiB": 28.29
+    },
+    {
+      "at": "2026-11-04T04:37:04.675Z",
+      "remainingSeconds": 1076,
+      "freeGiB": 8.532,
+      "outputMiB": 28.29
+    },
+    {
+      "at": "2026-11-04T04:37:14.677Z",
+      "remainingSeconds": 1066,
+      "freeGiB": 8.469,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:37:15.056Z",
+      "remainingSeconds": 1065,
+      "freeGiB": 8.469,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:37:15.067Z",
+      "remainingSeconds": 1065,
+      "freeGiB": 8.469,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:37:24.678Z",
+      "remainingSeconds": 1056,
+      "freeGiB": 8.465,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:37:34.681Z",
+      "remainingSeconds": 1046,
+      "freeGiB": 8.457,
+      "outputMiB": 28.25
+    },
+    {
+      "at": "2026-11-04T04:37:44.683Z",
+      "remainingSeconds": 1036,
+      "freeGiB": 8.454,
+      "outputMiB": 28.9
+    },
+    {
+      "at": "2026-11-04T04:37:54.685Z",
+      "remainingSeconds": 1026,
+      "freeGiB": 8.464,
+      "outputMiB": 28.9
+    },
+    {
+      "at": "2026-11-04T04:38:04.688Z",
+      "remainingSeconds": 1016,
+      "freeGiB": 8.475,
+      "outputMiB": 28.9
+    },
+    {
+      "at": "2026-11-04T04:38:14.688Z",
+      "remainingSeconds": 1006,
+      "freeGiB": 8.458,
+      "outputMiB": 32.9
+    },
+    {
+      "at": "2026-11-04T04:38:24.690Z",
+      "remainingSeconds": 996,
+      "freeGiB": 8.466,
+      "outputMiB": 32.9
+    },
+    {
+      "at": "2026-11-04T04:38:34.692Z",
+      "remainingSeconds": 986,
+      "freeGiB": 8.465,
+      "outputMiB": 32.9
+    },
+    {
+      "at": "2026-11-04T04:38:42.705Z",
+      "remainingSeconds": 978,
+      "freeGiB": 8.456,
+      "outputMiB": 32.9
+    },
+    {
+      "at": "2026-11-04T04:38:44.693Z",
+      "remainingSeconds": 976,
+      "freeGiB": 8.454,
+      "outputMiB": 32.9
+    }
+  ],
+  "errors": [
+    {
+      "code": "RESOURCE_OR_LIVE_GUARD"
+    }
+  ],
+  "release": {
+    "eventId": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "room": {
+      "room_id": "cc2a248f-64ed-494d-8db7-54ab24f09451",
+      "capacity": 2
+    },
+    "backendSource": "e6921cf285d9729cfa8c86351e1ce61b357398f2",
+    "releaseDigest": "29f461955569825f02863dae97ccfa412ec68d23cabcfa6689c88cba1b0542ab",
+    "gatewayBinary": "857e0874dd6a62544e9104c79fc0701f0300b55772828cc978d4c5dcc6e6512b",
+    "concertBinary": "ea5eaef68ae1ec50fada5c18dc31bff9c0908a79c1c1d20ec854f2df7170c5f8",
+    "protocol": "1.0.0"
+  },
+  "qualification": "Actual retained App root, fresh real logins and genuine HTTP/WS only. No fixtures, raw-WS substitution, server process controls or token/credential exports.",
+  "localInput": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/be-media-combined/backend/releases/operator-bundle/quality-v6/local-input.json",
+    "sha256": "89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b"
+  },
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "contextsClosed": true,
+    "browserClosed": true,
+    "serverClosed": true,
+    "sockets": [
+      1,
+      1
+    ]
+  },
+  "observed": [
+    {
+      "active": 1,
+      "peak": 1,
+      "opens": 1,
+      "snapshots": 1,
+      "invalid": 0,
+      "inputs": 7,
+      "ack": 9,
+      "lastInput": 9,
+      "players": 2,
+      "frames": 24,
+      "privacyFields": 0,
+      "map": "mcr_reference_scene_r3",
+      "mapRevision": 4,
+      "avatarManifest": "mcr_selected_static_20261103",
+      "avatarRevision": 1
+    },
+    {
+      "active": 1,
+      "peak": 1,
+      "opens": 1,
+      "snapshots": 1,
+      "invalid": 0,
+      "inputs": 8,
+      "ack": 10,
+      "lastInput": 10,
+      "players": 2,
+      "frames": 22,
+      "privacyFields": 0,
+      "map": "mcr_reference_scene_r3",
+      "mapRevision": 4,
+      "avatarManifest": "mcr_selected_static_20261103",
+      "avatarRevision": 1
+    }
+  ],
+  "finishedAt": "2026-11-04T04:38:54.975Z",
+  "resourceInterruption": {
+    "status": "RESOURCE_STOP",
+    "observedAfterStopFreeGiB": 6.5,
+    "subsequentCases": "NOT_RUN",
+    "panelFailureClassification": "Driver interrupted by own resource guard; not a product failure",
+    "cleanupSocketQualification": "Observer active counters were last-read before closed contexts; not proof of remaining sockets or server cleanup."
+  }
+}
