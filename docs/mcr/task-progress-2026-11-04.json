@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-04T19:56:00+09:00",
-  "published_snapshot": "02bd4620bad8d95674fff941be541a4606119511",
+  "updated_at": "2026-11-04T21:08:48+09:00",
+  "published_snapshot": "a4da2cb4efb59ca8e8f34fd02fda5e2b18f4fba0",
   "method": "Hourly management reconciliation of responsible-owner/SL original-task dispositions and publication metadata. No king inspection of implementation, queries, tests, screenshots or technical evidence; no reruns or approval gate.",
   "required_tasks": 112,
   "required_ia_entries": 61,
@@ -165,7 +165,12 @@
       "evidence": [
         "docs/mcr/character-art.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "latest_owner_activity": {
+        "reported_at": "2026-11-04T11:48:00Z",
+        "source_chat": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
+        "scope": "Corrected production-authority adapter source passed346 tests, application types and lint; publication a4da2cb4. These are software adapters, not proof that all original avatar-atlas/art/root/native criteria are complete."
+      }
     },
     {
       "id": "AR04",
@@ -551,11 +556,17 @@
         "docs/mcr/backend/notifications.md"
       ],
       "note": "Original BE33 remains IN_PROGRESS. The published owner record and Backend SL original-task row establish bounded source/persistence and stored-binding implementation; its previously UNRECONCILED coverage label is stale. This reconciliation adds no completion.",
-      "known_followup": "The scoped four-operation facade is now developer-reported qualified and committed asf1b1f534; integration and actual target authority/provider, public production composition and applicable IN03 behavior remain incomplete.",
+      "known_followup": "Later Gateway/Notification delivery is published through c0ed4243, and the target callback has a scoped actual database/mTLS result. These are bounded implementation outcomes; complete production adoption and all applicable original notification/IN03 criteria remain open.",
       "published_integration_commits": [
         "fc13474ebe828153707562fc523590931f5b8fcf",
-        "2088ada5e6dfe923913377ac7d81e896ee98dacb"
-      ]
+        "2088ada5e6dfe923913377ac7d81e896ee98dacb",
+        "c0ed4243862cd4ec110fa591921e070eabd79c38"
+      ],
+      "latest_owner_activity": {
+        "reported_at": "2026-11-04T11:58:00Z",
+        "source_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
+        "scope": "Gateway21 and Notification11 scoped cases passed/published; target callback database/mTLS case passed and publication reported. Broader BE33/full public IN03 not declared closed."
+      }
     },
     {
       "id": "BE34",
@@ -1321,13 +1332,18 @@
       "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
       "recorded_state": "IN_PROGRESS",
       "evidence": [],
-      "note": "Responsible developer disposition is IN_PROGRESS/PARTIAL, relayed by Backend staffing SL at 2026-11-04 08:24 UTC. Existing bounded failure/performance evidence does not close the original task. New public load/failure drivers are active; 200 distinct eligible principals, four registered rooms, reconnect-storm measurements and applicable physical-mobile qualification remain unproven. No completion or new publication is inferred.",
+      "note": "Original QA05 remains IN_PROGRESS/PARTIAL. Its specified failure suite covers packet delay/gap, slow client, background/foreground, ticket replay, server restart and room switch, with bounded queues, no ghost/duplicate membership and eventual convergence. Its independent real pair is not gated on QA08 capacity qualification. Existing partial results do not close the original suite.",
       "management_receipt": {
         "source_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
         "implementation_owner": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
         "reported_at": "2026-11-04T08:24:00Z",
         "disposition": "IN_PROGRESS/PARTIAL",
         "basis": "Existing responsible-owner records, relayed in the requested portfolio snapshot; no king technical review."
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-04T11:46:52Z",
+        "source_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
+        "scope": "Migration qualification passed after explicit runtime-input binding. Pair stopped at38 owned processes versus32 cap; cleanup passed. Owner prepares realistic bounded reallocation; full pair/Auth/WS/public-projection acceptance remains unclaimed."
       }
     },
     {
@@ -1365,13 +1381,18 @@
       "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
       "recorded_state": "IN_PROGRESS",
       "evidence": [],
-      "note": "Responsible developer disposition is IN_PROGRESS/PARTIAL, relayed by Backend staffing SL at 2026-11-04 08:24 UTC. Existing bounded failure/performance evidence does not close the original task. New public load/failure drivers are active; 200 distinct eligible principals, four registered rooms, reconnect-storm measurements and applicable physical-mobile qualification remain unproven. No completion or new publication is inferred.",
+      "note": "Original QA08 remains IN_PROGRESS/PARTIAL. The original plan requires the initial200 sockets/four rooms scenario, mobile rendering/bundle/memory measurements, slow network and reconnect storms, with measured ceilings and chosen caps. No200-user support claim is permitted without results. Legitimate local identity preparation and bounded configuration for this already-required scope do not require a new approval solely for the count; genuinely missing external inputs remain pending. A two-user run is not a substitute.",
       "management_receipt": {
         "source_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
         "implementation_owner": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
         "reported_at": "2026-11-04T08:24:00Z",
         "disposition": "IN_PROGRESS/PARTIAL",
         "basis": "Existing responsible-owner records, relayed in the requested portfolio snapshot; no king technical review."
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-04T11:55:00Z",
+        "source_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
+        "scope": "Resource lead propagated original-scope authorization for legitimate200-principal/four-room local preparation to existing owners. No actual capacity result or original completion asserted."
       }
     },
     {
@@ -1633,8 +1654,8 @@
     }
   ],
   "portfolio_snapshot": {
-    "as_of": "2026-11-04T19:56:00+09:00",
-    "reporting_cutoff": "2026-11-04T10:54:00Z",
+    "as_of": "2026-11-04T21:08:48+09:00",
+    "reporting_cutoff": "2026-11-04T12:07:39Z",
     "criteria_outcomes": 39,
     "required_tasks": 112,
     "required_ia_entries": 61,
@@ -1651,8 +1672,8 @@
       "IN05"
     ],
     "owner_reports": {
-      "frontend": "Frontend KING 10:50Z hourly rollup: zero new unique original-task closures; subsequent Map/custody exceptions retained.",
-      "backend": "Latest complete per-task report remains09:52Z. Later live lead outcomes through10:54Z are bounded development updates, not a fresh original-task closure census."
+      "frontend": "Frontend KING 11:48 UTC hourly rollup: no new unique original-task closures; subsequent live owner updates retained.",
+      "backend": "Backend staffing SL 11:59 UTC hourly report covers all 44 backend and 12 QA/integration rows; no new original-task closure is asserted. Later live updates through 12:07 UTC remain bounded component outcomes."
     },
     "recent_chat_inventory": {
       "active_coordination": 4,
@@ -1661,22 +1682,22 @@
       "not_loaded": 17
     },
     "inventory_at": "2026-11-04T10:53:00Z",
-    "inventory_limit": "38 MCR chats in the recent50-chat inventory. Active is not a source-writer count; idle/notLoaded does not by itself establish an abandoned assignment.",
+    "inventory_limit": "Retained 10:53 UTC recent 50-chat sample, not a fresh staffing census. Activity does not prove source writing, completion or abandonment.",
     "published_progress": [
-      "Combined actual Intro/Participant production startup owner qualification published at eb9c03cc; no full public HTTP/IN03 acceptance inferred.",
-      "My Profile CSS6d1b5b36, Customize background qualification through145a8e93, native Feed fixtures bdcdc184 and panel-title alignment5132e93b.",
-      "Giveaway bounded CSS source78f51c50 published through02bd4620; real item photos and shared-screen differences remain open."
+      "Gateway scoped 21-case and Notification scoped 11-case delivery published through c0ed4243; target-authority delivery 779db3a5 and World policy 058e516d are reported published, without full BE33/IN03 closure.",
+      "Feed intrinsic-image/focus CSS416051c9; Wall foreground CSS/native record c12ca006 and independently authorized static caption d9b95a87.",
+      "Reviewed avatar production-authority adapters a4da2cb4; this software handoff does not close original AR03 avatar-atlas requirements."
     ],
     "active_work": {
-      "backend": "CF02/CF03 and combined production startup now owner-qualified; inbox/Post checks passed. Gateway routing has an unresolved route case and awaits owner correction/requalification. Notification ingress/fanout, target authority and Gateway routing retain distinct existing owners; real age-provider/social, public HTTP and IN03 composition remain open.",
-      "frontend": "Nine foreground CSS workers hand off directly to Root153. Sign-in/Landing/Map recaptures, Meet/Wall/Customize CSS and Feed reference-media integration remain assigned. Map4 owner committed a synthetic eligible-attendee fixture/input-boundary fix at3aca2225; validation/native capture/publication are NOT_RUN because of capacity. AR03 reviewed-v2 adapter source is committed; validation/root composition remain open. Root is continuing separate Social adapter source work."
+      "backend": "World policy 22 cases passed and published. Age Gateway three-route 30-case and Notification five-path startup five-case rounds passed and fully released; direct committed publication handoffs follow. Social scoped native rounds retain two failures and their developer-owned fixes; full 80-case/restart/public IN03 remains open.",
+      "frontend": "Latest resource-lead relay reports corrected Map fixture run passed all 19 contexts and released, preserving the earlier failed camera attempt. This is labelled fixture qualification, not visual convergence or live admission. Separate Map26e/Artist231 scopes address reference density, architecture, paths, garden, stage and framing; the artist rejected the initial denser export for insufficient density/era distinction and is revising it. Feed reference crops and Root fixture seam are source-ready; d51f retains the independently queued CSS-only reference comparison. Wall/Meet/Customize first scoped native passes are reported complete and released. Customize CSS source 471fdcb6 is handed directly to Root; publication and wider feature/reference gaps remain separate."
     },
     "bottlenecks": [
-      "Free disk below16GiB start floor prevents new native validation rounds; existing lead/owners are reclaiming safely retirable completed work for sustainable headroom.",
-      "Public production authorities/providers and actual HTTP/multiuser IN02-IN04 journeys remain open; passing startup/component checks do not close them.",
-      "Full ten-screen reference parity, QA06, physical devices, original load/recovery and final61-entry IA/release obligations remain open."
+      "QA05 all seven runtime guards and PostgreSQL restart passed, then its pair stopped at 38 owned processes against a 32-process cap and fully released. The owner derived 78/requested 80 for a fresh allocation, awaiting actual published 0050 runtime pins/window. No Auth/WebSocket/public-projection result follows from the aborted start.",
+      "Social native defects, actual provider/authority composition, full public IN02-IN04 journeys and unresolved genuine external inputs remain open.",
+      "Full ten-screen reference fidelity, original avatar art capabilities, QA06/device/load/recovery and final61-entry IA/release obligations remain open."
     ],
-    "resource_state": "New native validation starts remain below16GiB. The removed Title/Focus checkout was reportedly1,253,376 allocated bytes; actual filesystem/APFS free-space change was not measured. Resource21d owns safe larger candidates through their actual owners. The16GiB start and8GiB running floors remain unchanged; source/publication continue where feasible.",
+    "resource_state": "Owners reported recovery to about20GiB after preserving state and retiring three completed checkouts. Existing bounded frontend/backend rounds resumed. Current16GiB start/8GiB running floors remain; sustainable headroom adds no new permanent floor or all-cleanup-complete prerequisite. One browser workflow is shared fairly; completed rounds release before reallocation.",
     "custody_exception": {
       "state": "OWNER_RECONCILED_WITH_PRESERVATION_GAP",
       "report": "Actual Title/Focus owner confirms original delivery COMPLETE unchanged and retained tracked source/branch/canonical evidence reachable. No pre-removal private/admin/index/sparse/xattr/local-config/reflog archive exists in the owner disposition; all discarded local-state preservation is UNPROVEN. The post-incident manifest is not a discarded-state backup.",
@@ -1692,8 +1713,8 @@
       "scope": "Human chooses original confirmed-single-pixel behavior versus bounded erase/fill/own-action undo. No answer or timeout default; expanded tools remain unauthorized. Static THE BLACK PARADE caption is already authorized independently."
     },
     "governance_state": "Root153 reports startup execution-plan, chat-coordination and king-coordination synchronized to canonical published f94602da postimages; checkout/HEAD retained, expected documentation-only local changes, no duplicate publication. No king/SL inspection or acknowledgment gate.",
-    "operating_decision": "No new chats/worktrees merely to queue behind disk. Leads manage ready work and capacity; developers own validation and direct named publication. All112 tasks,61 IA entries and original validation remain intact.",
-    "feed_content_direction": "Native-resolution source-derived Feed reference crops are complete fixture images and retain their true dimensions in card/detail. No fictitious high-resolution original, generated extension or fabricated real user post. Production authorized media remains separate."
+    "operating_decision": "Existing developers own validation, fixes and direct publication. Reference Map corrections have disjoint art/presentation owners; internal candidate freezes cannot waive human fidelity. QA08 local preparation for its already-required200-principal/four-room scope needs no additional approval solely for that count. Genuine missing external inputs remain pending; QA05 is independent. All112 tasks,61 IA entries and original validation remain intact.",
+    "feed_content_direction": "Approved native reference crops and the fixture seam are source-ready. Published intrinsic-image checks used synthetic test art and do not establish full photo parity. The separate approved-thumbnail/selected-tab comparison remains NOT_RUN and queued with d51f; no all-Map barrier or CSS ownership crossover."
   },
   "milestone_update": {
     "at": "2026-11-04T17:54:17+09:00",
@@ -1815,6 +1836,69 @@
       },
       "operating_decision": "Kings consume major outcomes, staffing and publication metadata only. No king/SL technical review or ACK. Required reference parity and original integration work receive fair bounded validation rounds; neither waits behind the whole other lane. No scope or validation cuts.",
       "feed_content_direction": "For local reference qualification, existing art/feature owners prepare a provenance-recorded derivative of the Feed media in the human-supplied reference, using the reference wide thumbnail crop and preserving original dimensions for detail. Fixture media is not a fabricated real user post; production authorization and server contracts stay unchanged. Full Feed parity remains open."
+    },
+    {
+      "as_of": "2026-11-04T19:56:00+09:00",
+      "reporting_cutoff": "2026-11-04T10:54:00Z",
+      "criteria_outcomes": 39,
+      "required_tasks": 112,
+      "required_ia_entries": 61,
+      "new_original_closures": [],
+      "strengthened_existing_dispositions": [],
+      "remaining_unreconciled": [
+        "C07",
+        "QA10"
+      ],
+      "open_integration_gates": [
+        "IN02",
+        "IN03",
+        "IN04",
+        "IN05"
+      ],
+      "owner_reports": {
+        "frontend": "Frontend KING 10:50Z hourly rollup: zero new unique original-task closures; subsequent Map/custody exceptions retained.",
+        "backend": "Latest complete per-task report remains09:52Z. Later live lead outcomes through10:54Z are bounded development updates, not a fresh original-task closure census."
+      },
+      "recent_chat_inventory": {
+        "active_coordination": 4,
+        "active_developer_art_or_qa": 7,
+        "idle": 10,
+        "not_loaded": 17
+      },
+      "inventory_at": "2026-11-04T10:53:00Z",
+      "inventory_limit": "38 MCR chats in the recent50-chat inventory. Active is not a source-writer count; idle/notLoaded does not by itself establish an abandoned assignment.",
+      "published_progress": [
+        "Combined actual Intro/Participant production startup owner qualification published at eb9c03cc; no full public HTTP/IN03 acceptance inferred.",
+        "My Profile CSS6d1b5b36, Customize background qualification through145a8e93, native Feed fixtures bdcdc184 and panel-title alignment5132e93b.",
+        "Giveaway bounded CSS source78f51c50 published through02bd4620; real item photos and shared-screen differences remain open."
+      ],
+      "active_work": {
+        "backend": "CF02/CF03 and combined production startup now owner-qualified; inbox/Post checks passed. Gateway routing has an unresolved route case and awaits owner correction/requalification. Notification ingress/fanout, target authority and Gateway routing retain distinct existing owners; real age-provider/social, public HTTP and IN03 composition remain open.",
+        "frontend": "Nine foreground CSS workers hand off directly to Root153. Sign-in/Landing/Map recaptures, Meet/Wall/Customize CSS and Feed reference-media integration remain assigned. Map4 owner committed a synthetic eligible-attendee fixture/input-boundary fix at3aca2225; validation/native capture/publication are NOT_RUN because of capacity. AR03 reviewed-v2 adapter source is committed; validation/root composition remain open. Root is continuing separate Social adapter source work."
+      },
+      "bottlenecks": [
+        "Free disk below16GiB start floor prevents new native validation rounds; existing lead/owners are reclaiming safely retirable completed work for sustainable headroom.",
+        "Public production authorities/providers and actual HTTP/multiuser IN02-IN04 journeys remain open; passing startup/component checks do not close them.",
+        "Full ten-screen reference parity, QA06, physical devices, original load/recovery and final61-entry IA/release obligations remain open."
+      ],
+      "resource_state": "New native validation starts remain below16GiB. The removed Title/Focus checkout was reportedly1,253,376 allocated bytes; actual filesystem/APFS free-space change was not measured. Resource21d owns safe larger candidates through their actual owners. The16GiB start and8GiB running floors remain unchanged; source/publication continue where feasible.",
+      "custody_exception": {
+        "state": "OWNER_RECONCILED_WITH_PRESERVATION_GAP",
+        "report": "Actual Title/Focus owner confirms original delivery COMPLETE unchanged and retained tracked source/branch/canonical evidence reachable. No pre-removal private/admin/index/sparse/xattr/local-config/reflog archive exists in the owner disposition; all discarded local-state preservation is UNPROVEN. The post-incident manifest is not a discarded-state backup.",
+        "owner": "Actual owner50a8 reconciled actor0644 and misrouted dispatcher153. Resource21d coordinates unaffected safe candidates; no duplicate audit owner or king technical review.",
+        "routing": "Root153 has stopped further retirement dispatch; the affected route remains paused. Unaffected source/publication and properly assigned safe cleanup continue without king release/acknowledgment.",
+        "updated_at": "2026-11-04T10:58:35Z",
+        "capacity_evidence": "Actor reported1,253,376 allocated worktree bytes. Actual filesystem/APFS free-space delta was NOT_MEASURED."
+      },
+      "wall_product_decision": {
+        "state": "AWAITING_USER_CHOICE",
+        "proposal_published": "a9dd63769c6a035e6ac8938c53ece2b974afb3ac",
+        "path": "docs/mcr/product-decisions/wall-reference-tools.md",
+        "scope": "Human chooses original confirmed-single-pixel behavior versus bounded erase/fill/own-action undo. No answer or timeout default; expanded tools remain unauthorized. Static THE BLACK PARADE caption is already authorized independently."
+      },
+      "governance_state": "Root153 reports startup execution-plan, chat-coordination and king-coordination synchronized to canonical published f94602da postimages; checkout/HEAD retained, expected documentation-only local changes, no duplicate publication. No king/SL inspection or acknowledgment gate.",
+      "operating_decision": "No new chats/worktrees merely to queue behind disk. Leads manage ready work and capacity; developers own validation and direct named publication. All112 tasks,61 IA entries and original validation remain intact.",
+      "feed_content_direction": "Native-resolution source-derived Feed reference crops are complete fixture images and retain their true dimensions in card/detail. No fictitious high-resolution original, generated extension or fabricated real user post. Production authorized media remains separate."
     }
   ],
   "hourly_updates": [
@@ -1832,6 +1916,13 @@
       "new_unique_original_closures": [],
       "criteria_outcomes": 39,
       "note": "Frontend10:50Z plus subsequent live owner/lead outcomes; backend original-task census retained at09:52Z pending next ordinary digest. Supporting delivery is not a new original closure. Current capacity and custody exceptions remain explicit."
+    },
+    {
+      "recorded_at": "2026-11-04T21:08:48+09:00",
+      "source_cutoff": "2026-11-04T12:07:39Z",
+      "new_unique_original_closures": [],
+      "criteria_outcomes": 39,
+      "note": "Frontend 11:48 and backend 11:59 hourly reports plus live outcomes through 12:07 UTC. No new unique original closure. Restore separate original QA05/QA08 scope; retain developer-owned validation, direct publisher handoffs and no king acknowledgment. Counts and requirements unchanged."
     }
   ]
 }
