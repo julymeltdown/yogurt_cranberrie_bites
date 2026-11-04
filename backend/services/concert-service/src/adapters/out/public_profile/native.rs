@@ -302,8 +302,11 @@ async fn actual_owner_public_read_reuses_local_hold_through_serialization() -> a
     tokio::time::timeout(Duration::from_secs(1), privacy).await???;
     tokio::time::timeout(Duration::from_secs(1), avatar).await???;
     assert!(
-        f.reader.read(&subject).await.is_err(),
-        "Settled scope cannot read cached content"
+        matches!(
+            f.reader.read(&subject).await,
+            Err(concert_domain::feed::FeedError::DependencyUnavailable)
+        ),
+        "Sealed root denial must fail the whole read, never become a skippable author"
     );
     f.assert_clean().await?;
     Ok(())
@@ -315,9 +318,13 @@ async fn actual_local_denials_and_failed_profile_intent_settle_without_fallback(
 ) -> anyhow::Result<()> {
     for denial in [
         "missing-avatar",
+        "missing-admission",
         "suspended",
         "missing-participant",
-        "blocked",
+        "blocked-low",
+        "blocked-high",
+        "draft-event",
+        "archived-event",
         "private-profile",
     ] {
         let f = Fixture::new().await?;
@@ -330,6 +337,28 @@ async fn actual_local_denials_and_failed_profile_intent_settle_without_fallback(
                     .execute(&f.concert)
                     .await?;
             }
+            "missing-admission" => {
+                sqlx::query(
+                    "delete from concert_event_admissions where event_id=$1 and user_id=$2",
+                )
+                .bind(event)
+                .bind(f.subject)
+                .execute(&f.concert)
+                .await?;
+            }
+            "draft-event" | "archived-event" => {
+                sqlx::query(
+                    "update concert_events set phase=$2,revision=revision+1 where event_id=$1",
+                )
+                .bind(event)
+                .bind(if denial == "draft-event" {
+                    "DRAFT"
+                } else {
+                    "ARCHIVED"
+                })
+                .execute(&f.concert)
+                .await?;
+            }
             "suspended" => {
                 sqlx::query("update concert_event_admissions set state='SUSPENDED',restriction_revision=restriction_revision+1 where event_id=$1 and user_id=$2").bind(event).bind(f.subject).execute(&f.concert).await?;
             }
@@ -340,13 +369,13 @@ async fn actual_local_denials_and_failed_profile_intent_settle_without_fallback(
                     .execute(&f.concert)
                     .await?;
             }
-            "blocked" => {
+            "blocked-low" | "blocked-high" => {
                 let (low, high) = if f.actor < f.subject {
                     (f.actor, f.subject)
                 } else {
                     (f.subject, f.actor)
                 };
-                sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user,high_blocks_low) values($1,$2,$3,true)").bind(event).bind(low).bind(high).execute(&f.concert).await?;
+                sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high,high_blocks_low) values($1,$2,$3,$4,$5)").bind(event).bind(low).bind(high).bind(denial=="blocked-low").bind(denial=="blocked-high").execute(&f.concert).await?;
             }
             "private-profile" => {
                 sqlx::query("update profiles set account_visibility='PRIVATE' where user_id=$1")
