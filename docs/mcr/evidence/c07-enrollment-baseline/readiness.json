@@ -5,17 +5,17 @@
   "goalCreatedAt": 1793816464,
   "goalBudget": null,
   "originalC07Completion": "PRESERVED_SEPARATE",
-  "sourceBeforeMetadata": "7c375ec28ae3c5e701bb3e9e7aa92c48fa62fb86",
+  "sourceBeforeMetadata": "4eeab57d66f1f3c2f1f07d8ff7197367938f65cc",
   "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
   "readsetFiles": 336,
-  "readsetSha256": "fa28bb48dd49f49267a1a6fcdf0c3f846a0e09a04ca957f7f3f78e87313df246",
-  "guardianSha256": "8cae3187f6358703b2e158312a979eb459c5010768f77d4dd0c681ce89f53136",
+  "readsetSha256": "a01eef3545407b3831915843c41b518ca7eccd50506423e59e370080f45b22be",
+  "guardianSha256": "22da61c100c21d601bfbbd27272440f9ea04b82393d183a4f839d653e8e1c60c",
   "qualifySha256": "607a2d6b9ace7f8e8820c9df873da95c312c615aa418ed8e74ac9d9c852956f3",
   "activePinsSha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
   "activePinCanonical": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
   "carryAllocatedBytes": {
-    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 824389632,
-    "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2097152,
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 824705024,
+    "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2101248,
     "/Users/lhs/Desktop/mcr/frontend/node_modules": 438317056,
     "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv": 16502784,
     "retainedNodeBytes": 122564432
@@ -38,5 +38,13 @@
   "qualificationStarted": false,
   "createdAt": 1793817530.859176,
   "floorPolicy": "Fresh explicit offer may authorize 11GiB start; default12GiB; reserve9GiB and live8GiB unchanged",
-  "metadataUpdatedAt": 1793818271.975161
+  "metadataUpdatedAt": 1793818654.7407649,
+  "priorAttempt": {
+    "status": "FAIL_FULL_RELEASED",
+    "path": "docs/mcr/evidence/c07-enrollment-baseline/round01",
+    "reason": "Unsupported schema keyword not; exact four-file compatibility granted by Root153 and source repaired"
+  },
+  "runtimeTests": 6,
+  "inventoryTests": 3,
+  "allocationStatus": "NONE_HELD_NEW_FROZEN_OFFER_REQUIRED"
 }
