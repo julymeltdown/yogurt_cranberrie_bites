@@ -37,7 +37,6 @@ async fn main() -> anyhow::Result<()> {
     // listeners. Absence retains the explicit health-only operational mode.
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
     let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
-    let mut product_owner = config::product_runtime::production_owners(product_settings)?;
     let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
     anyhow::ensure!(
         world_settings.is_none() || runtime.is_some(),
@@ -75,6 +74,25 @@ async fn main() -> anyhow::Result<()> {
     )?;
     let inbox_settings =
         config::inbox_runtime::InboxRuntimeSettings::load(intro_settings.is_some())?;
+    let target_settings =
+        config::notification_target_runtime::NotificationTargetRuntimeSettings::load(
+            inbox_settings.enabled(),
+            intro_settings.is_some(),
+            runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
+        )?;
+    let feed_settings = config::product_runtime::feed::FeedRuntimeSettings::load(
+        product_settings.public_feed_read,
+        intro_settings.is_some(),
+        runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
+        runtime.as_ref().map(|runtime| &runtime.actors),
+    )?;
+    // The standalone constructor still rejects unsupported Feed composition.
+    // Only the validated shared settings above consume the explicit read mode.
+    let mut product_owner =
+        config::product_runtime::production_owners(config::product_runtime::ProductSettings {
+            public_feed_read: false,
+            ..product_settings
+        })?;
     anyhow::ensure!(
         product_owner.is_none() || participant_settings.is_none(),
         "Product and Participant require a shared canonical scope composition"
@@ -85,6 +103,8 @@ async fn main() -> anyhow::Result<()> {
         .transpose()?;
     let pool = config::connect_pool(&config).await?;
     let mut child_recovery = None;
+    let mut notification_target = None;
+    let mut feed_callback = None;
     let participant_runtime = participant_settings
         .map(|settings| {
             let release = bootstrap
@@ -104,8 +124,18 @@ async fn main() -> anyhow::Result<()> {
                             .core
                             .child_recovery_worker(intro.recovery_settings())?,
                     );
+                    notification_target = target_settings
+                        .map(|settings| settings.compose(pool.clone(), &shared.owners.core));
                     let intro_owner = intro.compose(pool.clone(), &shared.owners);
-                    product_owner = Some(inbox_settings.compose(&shared.owners, intro_owner));
+                    let owners = inbox_settings.compose(&shared.owners, intro_owner);
+                    product_owner = Some(match feed_settings {
+                        Some(settings) => {
+                            let (owners, callback) = settings.compose(&shared.owners, owners)?;
+                            feed_callback = Some(callback);
+                            owners
+                        }
+                        None => owners,
+                    });
                     Ok(shared.participant)
                 }
                 None => settings.compose(pool.clone(), release),
@@ -253,6 +283,25 @@ async fn main() -> anyhow::Result<()> {
                             runtime.actors.clone(),
                         )
                     }).transpose()?;
+                    // This callback uses the original shared registry and the
+                    // dedicated Notification workload identity. It accepts no
+                    // Gateway actor delegation and shares this listener's TLS
+                    // and call-deadline layers.
+                    let notification_target = notification_target.map(|target| {
+                        platform::grpc_method_policy::guard_without_delegation(
+                            &config::notification_target_runtime::POLICY,
+                            target.service.server(),
+                            target.callers,
+                        )
+                    }).transpose()?;
+                    let feed_callback = feed_callback.map(|callback| {
+                        platform::grpc_method_policy::guard(
+                            &concert_service::product_rpc::root_read::POLICY,
+                            callback.service.server(),
+                            callback.callers,
+                            callback.verifier,
+                        )
+                    }).transpose()?;
                     server
                         .add_service(bootstrap)
                         .add_service(world)
@@ -260,6 +309,8 @@ async fn main() -> anyhow::Result<()> {
                         .add_optional_service(decision)
                         .add_optional_service(settlement)
                         .add_optional_service(product)
+                        .add_optional_service(notification_target)
+                        .add_optional_service(feed_callback)
                         .add_optional_service(delivery)
                         .serve_with_shutdown(
                             runtime.address,

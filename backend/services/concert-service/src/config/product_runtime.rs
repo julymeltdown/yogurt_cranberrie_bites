@@ -1,4 +1,7 @@
 //! Explicit independent product modes; a requested mode requires real producers.
+#[path = "feed_runtime.rs"]
+pub mod feed;
+
 use crate::product_rpc::{delivery::DeliveryPublisher, ProductOwner};
 use std::sync::Arc;
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
