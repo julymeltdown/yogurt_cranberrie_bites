@@ -222,6 +222,21 @@ impl BootstrapPostgresRepository {
         let user = key.user_id.uuid();
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         authority()?;
+        // Bootstrap can create personal rows before they exist. Join the same
+        // user-first fence as deletion and avatar mutations before taking any
+        // event/participant lock; an earlier admitted request cannot recreate
+        // defaults after the canonical account deletion has started.
+        crate::world::account_deletion::lock_user(&mut tx, user)
+            .await
+            .map_err(unavailable)?;
+        authority()?;
+        if crate::world::account_deletion::is_fenced_in(&mut tx, user)
+            .await
+            .map_err(unavailable)?
+        {
+            return Err(BootstrapError::Denied);
+        }
+        authority()?;
         let (phase, event_revision, event_slug, event_title, event_timezone): (String, i64, String, String, String) = sqlx::query_as(
             "select phase,revision,slug,title,timezone from public.concert_events where event_id=$1 for update",
         )

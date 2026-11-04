@@ -6,6 +6,92 @@ use std::sync::Arc;
 use uuid::Uuid;
 
 #[tokio::test]
+#[ignore = "requires marker-owned PostgreSQL16.14 bootstrap fixture"]
+async fn native_bootstrap_honors_account_deletion_before_defaults() {
+    use concert_service::world::account_deletion::lock_user;
+    let pool = support::pool().await;
+    let release = support::release();
+    let repository = Arc::new(BootstrapPostgresRepository::new(pool.clone()));
+    let event = Uuid::new_v4();
+    let deleted = Uuid::new_v4();
+    support::seed(&pool, event).await;
+
+    // A deletion already holding the common user lock must win, even when
+    // Bootstrap has a valid earlier admission and no participant exists yet.
+    let mut deletion = pool.begin().await.unwrap();
+    lock_user(&mut deletion, deleted).await.unwrap();
+    let owner_pid: i32 = sqlx::query_scalar("select pg_backend_pid()")
+        .fetch_one(&mut *deletion)
+        .await
+        .unwrap();
+    let waiting_repository = repository.clone();
+    let waiting_release = release.clone();
+    let waiting = tokio::spawn(async move {
+        waiting_repository
+            .bootstrap(
+                &support::admission(event, deleted),
+                waiting_release.release().defaults(),
+            )
+            .await
+    });
+    let mut blocked = false;
+    for _ in 0..100 {
+        blocked = sqlx::query_scalar::<_, bool>(
+            "select exists(select 1 from pg_stat_activity where $1=any(pg_blocking_pids(pid)) and wait_event_type='Lock' and query like '%pg_advisory_xact_lock%')",
+        )
+        .bind(owner_pid)
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+        if blocked {
+            break;
+        }
+        tokio::time::sleep(std::time::Duration::from_millis(5)).await;
+    }
+    assert!(blocked, "Bootstrap must wait on the actual user-first lock");
+    assert!(!waiting.is_finished());
+    // A test fixture models the immutable fence owned by canonical deletion;
+    // it does not claim to execute or authenticate the Auth deletion saga.
+    sqlx::query("insert into public.concert_world_account_deletion_fences(user_id,saga_id,identity_binding) values($1,$2,$3)")
+        .bind(deleted)
+        .bind(Uuid::new_v4())
+        .bind([91_u8; 32].as_slice())
+        .execute(&mut *deletion)
+        .await
+        .unwrap();
+    deletion.commit().await.unwrap();
+    assert_eq!(waiting.await.unwrap().unwrap_err(), BootstrapError::Denied);
+    // Repeated stale admissions remain denied; no event-local admission,
+    // participant or avatar default can be created by either attempt.
+    assert_eq!(
+        repository
+            .bootstrap(&support::admission(event, deleted), release.release().defaults())
+            .await
+            .unwrap_err(),
+        BootstrapError::Denied
+    );
+    for table in ["concert_event_admissions", "concert_participants", "concert_avatar_settings"] {
+        assert_eq!(support::count(&pool, table, event).await, 0);
+    }
+    // The fence remains user-scoped. A different email-independent canonical
+    // actor can bootstrap repeatedly and keeps exactly one persisted default.
+    let other = Uuid::new_v4();
+    for _ in 0..2 {
+        let record = repository
+            .bootstrap(&support::admission(event, other), release.release().defaults())
+            .await
+            .unwrap();
+        assert_eq!(record.participant_revision, 1);
+        assert_eq!(record.avatar_revision, 1);
+        assert_eq!(record.avatar, release.release().defaults().avatar);
+    }
+    for table in ["concert_event_admissions", "concert_participants", "concert_avatar_settings"] {
+        assert_eq!(support::count(&pool, table, event).await, 1);
+    }
+    pool.close().await;
+}
+
+#[tokio::test]
 #[ignore = "requires bootstrap_smoke.py owned native cluster"]
 async fn native_bootstrap_transactions_and_guarded_response() {
     let pool = support::pool().await;
