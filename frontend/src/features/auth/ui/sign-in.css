@@ -1,33 +1,34 @@
-/* FE-REF-AUTH-FIDELITY: screen 2, newly authored feature-only print treatment. */
+@font-face { font-family: 'MCR Auth Print'; src: url('./reference-sign-in/typography/mcr-auth-print.woff') format('woff'); font-style: normal; font-weight: 800; font-display: swap; }
+/* FE-REF-AUTH-ARTWORK-MATCH: screen 2, newly authored feature-only print treatment. */
 body:has(.auth-sign-in--concert) { padding: max(6px, env(safe-area-inset-top, 0px)) max(6px, env(safe-area-inset-right, 0px)) max(6px, env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px)); }
 .auth-sign-in { width: min(100%, 430px); min-width: 0; margin: 0 auto; padding: 0; color: #211d19; }
-.auth-sign-in .concert-window { background-color: #eee5d6; background-image: radial-gradient(ellipse at 30% 20%, #5141330b, transparent 45%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h160v160H0z' filter='url(%23n)' opacity='.19'/%3E%3C/svg%3E"); background-size: auto, 160px 160px; }
+.auth-sign-in .concert-window { background: #eee5d6 url("./reference-sign-in/artwork/paper-print.svg") center / 100% 100%; }
 .auth-sign-in .concert-window__titlebar { min-height: 44px; height: 44px; padding: 0 0 0 9px; gap: 6px; }
-.auth-sign-in .concert-window__titlebar h1 { font: 700 15px/1.1 Impact, 'Arial Narrow', sans-serif; letter-spacing: .06em; }
+.auth-sign-in .concert-window__titlebar h1 { font: 800 17px/1.1 'MCR Auth Print', 'Arial Narrow', sans-serif; letter-spacing: .06em; }
 .auth-sign-in .concert-window__titlebar > .concert-icon { width: 18px; height: 18px; }
 .auth-sign-in .concert-window__close { min-width: 44px; min-height: 44px; width: 44px; height: 44px; padding: 0; border-radius: 0; background: #921f28; color: #fff5e3; }
 .auth-sign-in .concert-window__body { position: relative; min-height: max(636px, calc((min(100vw, 442px) - 18px) * 1.8)); padding: 0 0 66px; overflow: hidden; display: flex; flex-direction: column; }
 .auth-sign-in .auth-cemetery { position: relative; display: block; width: 100%; flex: none; color: #1c1a18; pointer-events: none; }
-.auth-sign-in .auth-cemetery--top { height: clamp(120px, 33.3vw, 143px); margin-bottom: -13px; }
+.auth-sign-in .auth-cemetery--top { height: clamp(180px, 50vw, 215px); margin-bottom: calc(clamp(120px, 33.3vw, 143px) - clamp(180px, 50vw, 215px) - 13px); }
 .auth-sign-in .auth-cemetery--bottom { position: absolute; inset: auto 0 0; height: clamp(138px, 39vw, 168px); }
 .auth-sign-in .auth-paper-content { position: relative; width: 77%; left: 1%; margin: 0 auto; padding: 0; z-index: 1; }
-.auth-sign-in .auth-display-heading { font: 800 clamp(34px, 9.5vw, 41px)/1.1 'Arial Narrow', Impact, sans-serif; text-align: center; margin: 0 0 7px; letter-spacing: -.035em; text-transform: uppercase; }
+.auth-sign-in .auth-display-heading { font: 800 clamp(40px, 11.3vw, 48px)/.925 'MCR Auth Print', 'Arial Narrow', sans-serif; text-align: center; margin: 0 0 7px; letter-spacing: -.015em; text-transform: uppercase; }
 .auth-sign-in form { display: grid; gap: 4px; margin: 0; }
-.auth-sign-in label { margin: 0; font: 800 clamp(17px, 4.8vw, 20px)/1.2 'Arial Narrow', Arial, sans-serif; text-transform: uppercase; }
-.auth-sign-in input { width: 100%; min-height: 44px; box-sizing: border-box; border: 1px solid #554b41; border-radius: 1px; padding: 7px 10px; background: #f8f1e7; color: #211d19; font: 16px/1.3 Arial, sans-serif; margin: 0 0 9px; }
+.auth-sign-in label { margin: 0; font: 800 clamp(20px, 5.9vw, 25px)/.977 'MCR Auth Print', 'Arial Narrow', sans-serif; text-transform: uppercase; }
+.auth-sign-in input { width: 100%; min-height: 44px; box-sizing: border-box; border: 1.5px solid #554b41; border-radius: 3px; padding: 7px 10px; background: #f8f1e7; color: #211d19; font: 16px/1.3 Arial, sans-serif; margin: 0 0 9px; }
 .auth-sign-in button, .auth-sign-in a { min-width: 44px; min-height: 44px; box-sizing: border-box; }
 .auth-sign-in button { font: inherit; cursor: pointer; }
-.auth-sign-in .auth-submit { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 7px 10px; margin-top: 47px; border: 2px solid #541a1c; border-radius: 2px; background: #a5262c; background-image: radial-gradient(ellipse at 60% 0, #dc3e3e30, transparent 85%); color: #fff7ec; font: 800 25px/1.1 'Arial Narrow', Impact, sans-serif; letter-spacing: .015em; text-decoration: none; text-transform: uppercase; }
+.auth-sign-in .auth-submit { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 7px 10px; margin-top: 47px; border: 2px solid #541a1c; border-radius: 2px; background: #a5262c; background-image: url("./reference-sign-in/artwork/red-ink.svg"), linear-gradient(165deg, #b32b32, #9b2029); background-size: 100% 100%; color: #fff7ec; font: 800 30.5px/.9 'MCR Auth Print', 'Arial Narrow', sans-serif; letter-spacing: .015em; text-decoration: none; text-transform: uppercase; }
 .auth-sign-in .auth-link { display: inline-flex; align-items: center; color: inherit; text-underline-offset: 2px; font-weight: 800; }
-.auth-sign-in .auth-forgot { display: flex; justify-content: center; width: 100%; font-size: 15px; text-transform: uppercase; }
+.auth-sign-in .auth-forgot { font-family: 'MCR Auth Print', 'Arial Narrow', sans-serif; display: flex; justify-content: center; width: 100%; font-size: 18px; text-transform: uppercase; }
 .auth-sign-in .auth-providers { margin: 0; }
-.auth-sign-in .auth-or { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 20px 0 12px; font-size: 14px; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
+.auth-sign-in .auth-or { font-family: 'MCR Auth Print', 'Arial Narrow', sans-serif; display: flex; align-items: center; justify-content: center; gap: 9px; margin: 20px 0 12px; font-size: 17px; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
 .auth-sign-in .auth-or::before, .auth-sign-in .auth-or::after { content: ''; width: 100%; height: 1px; background: #887a68; }
 .auth-sign-in .auth-provider-buttons { display: flex; justify-content: center; gap: 10px; }
-.auth-sign-in .auth-provider-buttons button { display: grid; place-items: center; width: 66px; height: 48px; padding: 8px; border: 1px solid #1d1a17; border-radius: 3px; background: #26221e; color: #f8f1e5; }
-.auth-sign-in .auth-provider-buttons svg { width: 29px; height: 29px; }
+.auth-sign-in .auth-provider-buttons button { display: grid; place-items: center; width: 66px; height: 48px; padding: 6px; border: 1px solid #1d1a17; border-radius: 4px; background: linear-gradient(145deg, #161514, #292522); color: #f8f1e5; }
+.auth-sign-in .auth-provider-buttons svg { width: 34px; height: 34px; }
 .auth-sign-in #provider-unavailable { margin: 3px 0 0; font-size: 11px; line-height: 1.3; text-align: center; color: #554b3e; }
-.auth-sign-in .auth-create { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0 5px; margin: 0 -10px; font-size: 14px; font-weight: 800; text-transform: uppercase; }
+.auth-sign-in .auth-create { font-family: 'MCR Auth Print', 'Arial Narrow', sans-serif; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0 5px; margin: 0 -10px; font-size: 17px; font-weight: 800; text-transform: uppercase; }
 .auth-sign-in .auth-message { font-size: 14px; line-height: 1.4; color: #791d25; overflow-wrap: anywhere; }
 .auth-sign-in .auth-message:empty { display: none; }
 .auth-sign-in .auth-message p { margin: 0 0 9px; }
@@ -39,3 +40,4 @@ body:has(.auth-sign-in--concert) { padding: max(6px, env(safe-area-inset-top, 0p
 .auth-sign-in :focus-visible { outline: 3px solid #921f28; outline-offset: 2px; }
 .auth-sign-in .concert-window__titlebar :focus-visible { outline-color: #fff5e3; outline-offset: -4px; }
 @media (prefers-reduced-motion: reduce) { .auth-sign-in * { scroll-behavior: auto; } }
+.auth-sign-in .concert-window::before { inset: 0; padding: 0; background: url('./reference-sign-in/artwork/frame-print.svg') center / 100% 100%; mask: none; }
