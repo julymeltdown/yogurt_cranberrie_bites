@@ -199,7 +199,10 @@ impl OwnerGuardScope {
         }
         let previous = state.policy_disclosure_deadline.unwrap_or(original);
         let limit = AuthorityRpcDeadline::within_original(
-            until.timestamp_micros().min(original.expires_micros()).min(previous.expires_micros()),
+            until
+                .timestamp_micros()
+                .min(original.expires_micros())
+                .min(previous.expires_micros()),
             original.stop().min(previous.stop()).into_std(),
             MAX_GUARD_DURATION,
         )?;
@@ -426,6 +429,7 @@ impl OwnerGuardScope {
                             || (matches!(
                                 reference,
                                 super::ChildRecoveryReference::LocalPublic { .. }
+                                    | super::ChildRecoveryReference::SocialRead { .. }
                             ) && reference.query().subject == self.binding.actor())
                     })
                     .map(|(reference, child)| (reference.clone(), child.clone()))
@@ -477,7 +481,8 @@ impl OwnerGuardScope {
         reference.validate_for(&self.binding)?;
         reference.check_content_time()?;
         if let super::ChildRecoveryReference::LocalPublic { native, .. }
-        | super::ChildRecoveryReference::GiftPrivate { native, .. } = reference
+        | super::ChildRecoveryReference::GiftPrivate { native, .. }
+        | super::ChildRecoveryReference::SocialRead { native, .. } = reference
         {
             if native.producer_instance_id.to_string() != self.producer.instance_id {
                 return Err(Status::permission_denied("Child producer mismatch"));
