@@ -1,0 +1,35 @@
+{
+  "format": "MCR_REFERENCE_SCENE_PUBLIC_INPUTS",
+  "version": 2,
+  "status": "NOT_ADMITTED",
+  "source_revision": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+  "source_sha256": "sha256:d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542",
+  "candidate_map": {
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 2,
+    "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+  },
+  "tilemap": {
+    "path": "world/reference-scene-v2/runtime/canonical-map-v2.json",
+    "sha256": "sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f",
+    "bytes": 24058,
+    "format": "TILED_JSON"
+  },
+  "compatibility_texture": {
+    "width_px": 768,
+    "height_px": 1296,
+    "image_marker": "mcr-theme.png",
+    "marker_policy": "Inert logical tileset binding. Never fetch this marker."
+  },
+  "parade_scenery": {
+    "path": "world/reference-scene-v2/runtime-v4/parade-scenery.json",
+    "sha256": "sha256:53d4b4cf6e580de724053cd1d6ff11b87ef77b56fa4d5399f294a63c0a4b4594",
+    "source_revision": "e3af146ae4757794ca153363fd1408300ffde29e"
+  },
+  "authority": "Static inputs only. Backend/root must admit actual versioned map/theme/avatar/operator bundle. Virtual coordinates never establish physical arrival.",
+  "limitations": [
+    "PARADE-only painted source",
+    "Place provenance remains virtual/unreviewed",
+    "No production activation or release manifest is asserted"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "task": "FE-SCENE-R3-MAP",
+  "node": "24.22.2",
+  "browser": "Chrome 156.0.8078.80 headless mobile viewport",
+  "dependencyPolicy": "Retained installed dependency symlink only; no install, package or lockfile edits. Node executable and checkout prefixes normalized in recorded commands/logs.",
+  "commands": [
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache --maxWorkers 3 src/features/places src/app/places-entry src/app/__tests__/reference-root/root.test.tsx src/world/reference-scene",
+      "exitCode": 0,
+      "evidence": "tests.log",
+      "result": "145 tests / 15 files PASS"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --project tsconfig.json",
+      "exitCode": 0,
+      "evidence": "types.log",
+      "result": "PASS"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/oxlint/bin/oxlint src/features/places/ui/IllustratedMap.tsx src/features/places/ui/reference-scene src/features/places/__tests__/reference-map --format json",
+      "exitCode": 0,
+      "evidence": "lint.json",
+      "result": "13 files, no diagnostics"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --input-type=module -e 'import {build} from \"vite\"; await build({configLoader:\"runner\",build:{outDir:\"/tmp/mcr-scene-r3-map-production\",emptyOutDir:true,copyPublicDir:false}})'",
+      "exitCode": 0,
+      "evidence": "build.log",
+      "result": "PASS; existing large-chunk warnings"
+    },
+    {
+      "cwd": ".",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0,
+      "evidence": "origin.log",
+      "result": "PASS"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "evidence": "plan.log",
+      "result": "PASS"
+    },
+    {
+      "cwd": ".",
+      "command": "node frontend/src/features/places/__tests__/reference-map/scene-native.mjs",
+      "exitCode": 0,
+      "evidence": "portrait/native.json",
+      "result": "PASS; 3 native widths + short portrait; instrumented host; actual production denial"
+    },
+    {
+      "cwd": ".",
+      "command": "MCR_MAP_EVIDENCE_DIR=scene-r3-evidence/legacy node frontend/src/features/places/__tests__/reference-map/native.mjs",
+      "exitCode": 0,
+      "evidence": "legacy/native.json",
+      "result": "PASS; retained coherent release actual Phaser; 3 native widths + short"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "evidence": "plan-reconciled.log",
+      "result": "PASS after merging published peer progress/art/backend handoffs; qualified runtime inputs unchanged"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache --maxWorkers 3 src/features/places src/app/places-entry src/app/__tests__/reference-root/root.test.tsx src/world/reference-scene",
+      "exitCode": 0,
+      "evidence": "tests-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge; 150 tests / 16 files"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --project tsconfig.json",
+      "exitCode": 0,
+      "evidence": "types-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --input-type=module -e 'import {build} from \"vite\"; await build({configLoader:\"runner\",build:{outDir:\"/tmp/mcr-scene-r3-map-production\",emptyOutDir:true,copyPublicDir:false}})'",
+      "exitCode": 0,
+      "evidence": "build-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge"
+    },
+    {
+      "cwd": ".",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0,
+      "evidence": "origin-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge"
+    }
+  ],
+  "nativeCapturesInspected": [
+    "portrait/fit-selected-390.jpg",
+    "portrait/portrait-360.jpg",
+    "portrait/portrait-390.jpg",
+    "portrait/portrait-430.jpg",
+    "portrait/short-fit-390.jpg"
+  ],
+  "observedResources": {
+    "portraitPerWidth": {
+      "pngRequests": 2,
+      "gestureRequests": 0,
+      "cameraWrites": 0,
+      "createdURLs": 7,
+      "revokedURLs": 7
+    },
+    "legacyPerWidth": {
+      "createdURLs": 24,
+      "revokedURLs": 24
+    }
+  },
+  "regressionHistory": "legacy-initial records a real initial overlapping-label failure. It preceded the allocator fix; final legacy/native.json is PASS.",
+  "notRun": [
+    "admitted new-scene production root/Phaser integration",
+    "real two-user service/movement/meetings",
+    "device Safari/Android",
+    "FPS/load/process-memory soak",
+    "final target-art fidelity acceptance"
+  ],
+  "productStatus": "NOT_ADMITTED; no scope cut",
+  "finalLegacyQualificationTree": "2bf78e17d3d89f2396cd8c1e015be7f537fa555f",
+  "finalLegacyExitCode": 0
+}

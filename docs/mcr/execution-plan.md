@@ -2,6 +2,15 @@
 
 ## Current checkpoint
 
+The [current progress reconciliation](progress.md#current-task-accounting) records
+20 task-criteria outcomes: 11 preserved formal acceptances plus 9 additional
+existing frontend task-local SATISFIED dispositions. Another 77 original tasks
+have partial or unreconciled implementation evidence, 10 statuses remain
+unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
+states the evidence and limitations. Historical 11/112 statements later in this
+document are not current implementation progress, and no effort-weighted
+completion percentage is asserted.
+
 The user's latest 2026-11-04 coordination instruction supersedes historical
 single-integrator and per-handoff review rules below. Assigned owners validate,
 commit and non-force push their exclusive scopes directly to master. Developers

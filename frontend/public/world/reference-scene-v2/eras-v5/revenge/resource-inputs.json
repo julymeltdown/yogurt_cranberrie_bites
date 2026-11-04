@@ -1,0 +1,61 @@
+{
+  "version": 5,
+  "theme_id": "REVENGE",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "scenery": "scenery.json",
+  "layout": "layout.json",
+  "integer_projection": "../../runtime-v4/parade-integer-projection.json",
+  "map_metadata": "map-metadata.json",
+  "provenance": "provenance.json",
+  "art_review_state": "NOT_ACCEPTED",
+  "physical_place_provenance": "UNREVIEWED",
+  "resources": [
+    {
+      "id": "parade_runtime_v4_ground",
+      "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+      "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+      "width_px": 768,
+      "height_px": 1296,
+      "bytes": 693939
+    },
+    {
+      "id": "revenge_v5_atlas",
+      "path": "world/reference-scene-v2/eras-v5/revenge/atlas.png",
+      "sha256": "sha256:3692e79621a812bfe5e56d21e3ea44c05f59708a851ba548e18b846a0ddf350e",
+      "width_px": 1024,
+      "height_px": 1024,
+      "bytes": 1126542
+    }
+  ],
+  "combined_pixels": 2043904,
+  "combined_bytes": 1820481,
+  "budget_pass": true,
+  "metadata_pins": [
+    {
+      "path": "scenery.json",
+      "sha256": "sha256:17f582dce53c589638c8c1ee9ec6e4d766da170044644b42e7809683917f6f34",
+      "bytes": 6793
+    },
+    {
+      "path": "layout.json",
+      "sha256": "sha256:8a4076e25b31540c04543922009e46a4280da5cee116f330de86bac7ed2d986c",
+      "bytes": 16928
+    },
+    {
+      "path": "map-metadata.json",
+      "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf",
+      "bytes": 7405
+    },
+    {
+      "path": "provenance.json",
+      "sha256": "sha256:8565a8218d9986623e683c5975cdc9e9a581c70caf422b6e5d6f858b23481b21",
+      "bytes": 11150
+    },
+    {
+      "path": "prompt.md",
+      "sha256": "sha256:be768c6559ddbdc3ece8cda63b841b23066a6b4cde37c9a1b7693d77df885333",
+      "bytes": 272
+    }
+  ]
+}
