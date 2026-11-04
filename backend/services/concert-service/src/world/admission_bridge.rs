@@ -335,6 +335,24 @@ impl Drop for AdmissionAttempt<'_> {
     }
 }
 impl AdmissionBridge {
+    /// Read exact generations while the caller owns admission_gate. Native
+    /// effects may remove them, but no new admission generation can cross it.
+    pub(crate) fn account_bindings(&self, user: Uuid) -> Result<Vec<Binding>, WorldError> {
+        let _fence = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        let views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        let mut bindings = BTreeMap::new();
+        for entry in views.entries.values().chain(views.pending.values()) {
+            if entry.binding.key.user_id.uuid() == user {
+                bindings.insert(cleanup_key(&entry.binding), entry.binding.clone());
+            }
+        }
+        for binding in views.cleanup.values() {
+            if binding.key.user_id.uuid() == user {
+                bindings.insert(cleanup_key(binding), binding.clone());
+            }
+        }
+        Ok(bindings.into_values().collect())
+    }
     /// Called only by the verified Sessions leaf, with admission_gate held.
     /// Remove both delayed and active projections under the actual handoff fence.
     pub(crate) fn withdraw_account_views(&self, user: Uuid) -> Result<Vec<Binding>, WorldError> {

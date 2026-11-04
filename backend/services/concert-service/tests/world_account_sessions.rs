@@ -488,10 +488,57 @@ struct Serving {
     address: std::net::SocketAddr,
     owner: tokio::task::JoinHandle<ShutdownReport>,
     server: tokio::task::JoinHandle<()>,
+    trace: NativeTrace,
+}
+#[derive(Clone)]
+struct NativeTrace {
+    transport: SocketTransport,
+    sent: Arc<
+        Mutex<
+            Vec<(
+                concert_service::world::simulation::Binding,
+                Value,
+                std::time::Instant,
+            )>,
+        >,
+    >,
+}
+impl TransportPort for NativeTrace {
+    fn installed(
+        &mut self,
+        b: &concert_service::world::simulation::Binding,
+        now: u64,
+    ) -> Result<(), WriteError> {
+        self.transport.installed(b, now)
+    }
+    fn ready(&self, b: &concert_service::world::simulation::Binding) -> bool {
+        self.transport.ready(b)
+    }
+    fn send(
+        &mut self,
+        b: &concert_service::world::simulation::Binding,
+        d: concert_service::world::replication::Delivery,
+    ) -> Result<(), WriteError> {
+        let value = serde_json::from_slice(&d.bytes).map_err(|_| WriteError::Failed)?;
+        self.transport.send(b, d)?;
+        let mut sent = self.sent.lock().map_err(|_| WriteError::Failed)?;
+        if sent.len() >= 4096 {
+            return Err(WriteError::Failed);
+        }
+        sent.push((b.clone(), value, std::time::Instant::now()));
+        Ok(())
+    }
+    fn close(&mut self, b: &concert_service::world::simulation::Binding, reason: SafeClose) {
+        self.transport.close(b, reason)
+    }
 }
 impl Serving {
     async fn start(f: &DatabaseFixture) -> Result<Self> {
         let transport = SocketTransport::default().with_policy_baseline(Arc::new(FixturePolicy));
+        let trace = NativeTrace {
+            transport: transport.clone(),
+            sent: Arc::new(Mutex::new(Vec::new())),
+        };
         let mut target = spec(f.target, 50);
         target.room_epoch = id(7);
         let runtime = WorldRuntime::new(
@@ -501,7 +548,7 @@ impl Serving {
             vec![spec(f.room, 50), target],
             f.bridge.clone(),
             f.bridge.clone(),
-            transport.clone(),
+            trace.clone(),
         )
         .unwrap();
         let (started, origin) = runtime.clock_origin();
@@ -525,6 +572,7 @@ impl Serving {
             address,
             owner,
             server,
+            trace,
         })
     }
     fn leaf(&self, f: &DatabaseFixture) -> SessionOwner {
@@ -656,6 +704,7 @@ async fn native_sessions_actual_auth_active_pending_multievent_and_exact_retry()
     )
     .unwrap();
     let receipt = deletion.apply(command.clone(), deadline()).await.unwrap();
+    let acknowledged = std::time::Instant::now();
     assert_eq!(receipt.command, command);
     assert_eq!(receipt.fence_revision, 1);
     assert!(completed(&pool, user).await?);
@@ -699,6 +748,38 @@ async fn native_sessions_actual_auth_active_pending_multievent_and_exact_retry()
     assert_eq!(
         initial["streamId"], next["streamId"],
         "unrelated stream generation retained"
+    );
+    tokio::time::sleep(Duration::from_millis(160)).await;
+    let frames = serving.trace.sent.lock().unwrap().clone();
+    let mut observed_survivor = false;
+    for (binding, body, at) in frames {
+        if at >= acknowledged && matches!(body["type"].as_str(), Some("snapshot" | "delta")) {
+            assert_ne!(
+                binding.key.user_id.uuid(),
+                user,
+                "deleted recipient had a native publication after ACK"
+            );
+            if binding.key.user_id == other {
+                observed_survivor = true;
+                assert_eq!(body["streamId"], initial["streamId"]);
+                for player in body["players"]
+                    .as_array()
+                    .or_else(|| body["upserts"].as_array())
+                    .into_iter()
+                    .flatten()
+                {
+                    assert_ne!(
+                        player["userId"],
+                        user.to_string(),
+                        "deleted presence remained after ACK"
+                    );
+                }
+            }
+        }
+    }
+    assert!(
+        observed_survivor,
+        "no actual surviving native frame checked after ACK"
     );
     let stored: Value = sqlx::query_scalar(
         "select to_jsonb(p) from concert_world_session_deletion_progress p where user_id=$1",
@@ -980,6 +1061,115 @@ async fn native_sessions_postmaster_restart_exact_receipts() -> Result<()> {
         drop(deletion);
         drop(serving);
     }
+    pool.close().await;
+    auth.close().await;
+    Ok(())
+}
+
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+#[ignore = "requires fresh marker-owned Auth/Concert PG16 and explicit resource allocation"]
+async fn native_sessions_durable_native_batch_survives_dispatcher_reconstruction() -> Result<()> {
+    let auth = owned_pool("mcr_world_deletion_auth").await?;
+    let pool = owned_pool("mcr_world_deletion_concert").await?;
+    let user = actual_auth_user(&auth).await?;
+    let f = DatabaseFixture::new(pool.clone(), user).await?;
+    let serving = Serving::start(&f).await?;
+    let (mut client, _) = serving.connect(&f, f.user, f.room).await?;
+    let command = actual_delete(&auth, user).await?;
+    // Fail the native-confirmation authorization recheck. The assertions below
+    // prove that durable discovery happened and no completed receipt escaped.
+    let fault = Arc::new(AuthRepositoryTestTransport {
+        auth: auth.clone(),
+        reject_after: Some(3),
+        calls: AtomicUsize::new(0),
+    });
+    let interrupted = SessionDeletion::new(pool.clone(), fault, vec![serving.leaf(&f)]).unwrap();
+    assert_eq!(
+        interrupted.apply(command.clone(), deadline()).await.err(),
+        Some(DeletionFailure::Unavailable)
+    );
+    closed(&mut client).await?;
+    assert!(!completed(&pool, user).await?);
+    let pending:i64=sqlx::query_scalar("select count(*) from concert_world_session_deletion_victims where user_id=$1 and completed_at is null")
+        .bind(user).fetch_one(&pool).await?;
+    assert_eq!(
+        pending, 1,
+        "actual native generation must be durable before withdrawal"
+    );
+    let actual: Value = sqlx::query_scalar(
+        "select binding from concert_world_session_deletion_victims where user_id=$1",
+    )
+    .bind(user)
+    .fetch_one(&pool)
+    .await?;
+    // 128 additional exact-generation *metadata* obligations exercise the
+    // bounded idempotent-absence path. They are not 128 fabricated live sockets.
+    for _ in 0..128 {
+        let mut binding = actual.clone();
+        binding["stream"] = json!(Uuid::new_v4());
+        let canonical: BTreeMap<_, _> = binding.as_object().unwrap().iter().collect();
+        let mut h = Sha256::new();
+        h.update(b"MCR-SESSIONS-NATIVE-VICTIM-1\0");
+        h.update(serde_json::to_vec(&canonical)?);
+        let id: Vec<u8> = h.finalize().to_vec();
+        sqlx::query("insert into concert_world_session_deletion_victims(user_id,saga_id,victim_id,event_id,owner_process_id,owner_epoch,binding) values($1,$2,$3,$4,$5,$6,$7)")
+            .bind(user).bind(command.saga_id).bind(id).bind(f.event.uuid()).bind(Uuid::parse_str(&f.owner.process_id)?).bind(f.owner.epoch).bind(binding)
+            .execute(&pool).await?;
+    }
+    drop(interrupted);
+    let second = SessionDeletion::new(
+        pool.clone(),
+        Arc::new(AuthRepositoryTestTransport::new(auth.clone())),
+        vec![serving.leaf(&f)],
+    )
+    .unwrap();
+    assert_eq!(
+        second.apply(command.clone(), deadline()).await.err(),
+        Some(DeletionFailure::Incomplete)
+    );
+    let counts:(i64,i64)=sqlx::query_as("select count(*)::bigint,count(*) filter(where completed_at is not null)::bigint from concert_world_session_deletion_victims where user_id=$1")
+        .bind(user).fetch_one(&pool).await?;
+    assert_eq!(
+        counts,
+        (129, 128),
+        "one native batch confirms exactly128 durable obligations"
+    );
+    assert!(!completed(&pool, user).await?);
+    drop(second);
+    let reconstructed = SessionDeletion::new(
+        pool.clone(),
+        Arc::new(AuthRepositoryTestTransport::new(auth.clone())),
+        vec![serving.leaf(&f)],
+    )
+    .unwrap();
+    assert_eq!(
+        reconstructed
+            .apply(command.clone(), deadline())
+            .await
+            .unwrap()
+            .fence_revision,
+        1
+    );
+    let left:i64=sqlx::query_scalar("select count(*) from concert_world_session_deletion_victims where user_id=$1 and completed_at is null")
+        .bind(user).fetch_one(&pool).await?;
+    assert_eq!(left, 0);
+    assert!(completed(&pool, user).await?);
+    assert!(sqlx::query(
+        "update concert_world_session_deletion_victims set binding='{}' where user_id=$1"
+    )
+    .bind(user)
+    .execute(&pool)
+    .await
+    .is_err());
+    assert!(
+        sqlx::query("delete from concert_world_session_deletion_victims where user_id=$1")
+            .bind(user)
+            .execute(&pool)
+            .await
+            .is_err()
+    );
+    drop(reconstructed);
+    drop(serving);
     pool.close().await;
     auth.close().await;
     Ok(())

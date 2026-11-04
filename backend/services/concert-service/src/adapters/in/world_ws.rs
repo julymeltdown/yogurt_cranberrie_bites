@@ -82,6 +82,21 @@ pub struct SocketTransport {
     policy_baseline: Option<Arc<dyn PolicyBaselinePort>>,
 }
 impl SocketTransport {
+    pub(crate) fn account_bindings(&self, user: Uuid) -> Result<Vec<Binding>, WriteError> {
+        let slots = self.slots.lock().map_err(|_| WriteError::Failed)?;
+        let mut bindings = Vec::new();
+        for slot in slots.values() {
+            let slot = slot.lock().map_err(|_| WriteError::Failed)?;
+            if let Some(binding) = slot
+                .binding
+                .as_ref()
+                .filter(|b| b.key.user_id.uuid() == user)
+            {
+                bindings.push(binding.clone());
+            }
+        }
+        Ok(bindings)
+    }
     /// Withdraw the actual installed registry and its private policy baseline.
     /// Retained serve_socket handles observe terminal on their next bounded tick;
     /// removing the registry also forbids any further native publication now.
