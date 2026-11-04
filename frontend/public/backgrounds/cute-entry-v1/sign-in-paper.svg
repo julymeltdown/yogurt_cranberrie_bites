@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="720" viewBox="0 0 390 720" fill="none">
+<!-- Original background ornament. No text, controls, portraits or source-pack pixels. -->
+<defs>
+  <g id="heart"><path d="M0 5C-15-4-11-16-3-13L0-9 3-13C11-16 15-4 0 5Z" fill="currentColor"/></g>
+  <g id="star"><path d="M0-11Q2-2 10 0 2 2 0 11-2 2-10 0-2-2 0-11Z" fill="currentColor"/></g>
+  <g id="flower"><path d="M0-5C-11-20-22-5-9 2-24 9-10 23 0 10 10 23 24 9 9 2 22-5 11-20 0-5Z" fill="currentColor"/><circle cy="4" r="4" fill="#fff1ce"/></g>
+  <g id="note" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 8V-10L12-14V4M0-5 12-9"/><ellipse cx="-3" cy="9" rx="4" ry="3" fill="currentColor" stroke="none"/><ellipse cx="9" cy="5" rx="4" ry="3" fill="currentColor" stroke="none"/></g>
+  <g id="cloud"><path d="M-34 7C-49 7-50-13-35-15-36-31-14-36-5-23 8-39 31-28 29-14 48-15 51 8 32 9Z" fill="currentColor"/></g>
+  <g id="sprig" fill="none" stroke="#a4b49a" stroke-width="2" stroke-linecap="round"><path d="M0 0Q-6-18 1-40"/><path d="M-2-10C-21-8-19-23-3-16M-2-23C15-23 15-36 0-30" fill="#b9c5a8" stroke="none"/></g>
+</defs>
+<rect width="390" height="720" fill="#fbf2df"/>
+<ellipse cx="-83" cy="210" rx="218" ry="320" fill="#f4dfd9"/>
+<ellipse cx="478" cy="120" rx="215" ry="300" fill="#eee4f0"/>
+<ellipse cx="468" cy="705" rx="206" ry="239" fill="#e9eddd"/>
+<ellipse cx="-88" cy="718" rx="226" ry="242" fill="#f3e4d1"/>
+<use href="#heart" transform="translate(15 155) rotate(0) scale(0.45)" color="#dbbac2" opacity="0.58"/>
+<use href="#star" transform="translate(376 211) rotate(0) scale(0.5)" color="#d0c4dd" opacity="0.58"/>
+<use href="#star" transform="translate(13 368) rotate(0) scale(0.45)" color="#ddc99c" opacity="0.58"/>
+<use href="#heart" transform="translate(379 412) rotate(0) scale(0.42)" color="#ddbcc2" opacity="0.58"/>
+<use href="#note" transform="translate(18 563) rotate(0) scale(0.55)" color="#c2cbb8" opacity="0.58"/>
+<use href="#star" transform="translate(375 603) rotate(0) scale(0.5)" color="#d8bfd3" opacity="0.58"/>
+</svg>

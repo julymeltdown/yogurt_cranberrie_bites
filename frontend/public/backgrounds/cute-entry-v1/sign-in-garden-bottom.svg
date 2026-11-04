@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="180" viewBox="0 0 390 180" fill="none">
+<!-- Original background ornament. No text, controls, portraits or source-pack pixels. -->
+<defs>
+  <g id="heart"><path d="M0 5C-15-4-11-16-3-13L0-9 3-13C11-16 15-4 0 5Z" fill="currentColor"/></g>
+  <g id="star"><path d="M0-11Q2-2 10 0 2 2 0 11-2 2-10 0-2-2 0-11Z" fill="currentColor"/></g>
+  <g id="flower"><path d="M0-5C-11-20-22-5-9 2-24 9-10 23 0 10 10 23 24 9 9 2 22-5 11-20 0-5Z" fill="currentColor"/><circle cy="4" r="4" fill="#fff1ce"/></g>
+  <g id="note" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 8V-10L12-14V4M0-5 12-9"/><ellipse cx="-3" cy="9" rx="4" ry="3" fill="currentColor" stroke="none"/><ellipse cx="9" cy="5" rx="4" ry="3" fill="currentColor" stroke="none"/></g>
+  <g id="cloud"><path d="M-34 7C-49 7-50-13-35-15-36-31-14-36-5-23 8-39 31-28 29-14 48-15 51 8 32 9Z" fill="currentColor"/></g>
+  <g id="sprig" fill="none" stroke="#a4b49a" stroke-width="2" stroke-linecap="round"><path d="M0 0Q-6-18 1-40"/><path d="M-2-10C-21-8-19-23-3-16M-2-23C15-23 15-36 0-30" fill="#b9c5a8" stroke="none"/></g>
+</defs>
+<path d="M0 121Q30 82 60 118 91 97 121 136 154 120 183 147 214 118 244 137 274 100 305 121 338 76 366 111 380 105 390 112V180H0Z" fill="#e1e5cf"/>
+<path d="M0 158Q12 143 26 156 39 135 57 153 74 143 89 162 108 147 125 162 145 150 163 164 186 153 205 166 226 150 247 164 266 145 283 161 303 144 323 157 342 138 357 155 377 140 390 154V180H0Z" fill="#d2d9bd"/>
+<path d="M0 173Q24 163 46 173T90 172T137 174T184 173T232 174T280 173T328 174T390 172V180H0Z" fill="#bac7a5"/>
+<use href="#sprig" transform="translate(22 169) rotate(-10) scale(1)" color="#d9a9b7" opacity="1"/>
+<use href="#sprig" transform="translate(53 175) rotate(12) scale(0.65)" color="#d9a9b7" opacity="1"/>
+<use href="#sprig" transform="translate(337 173) rotate(-12) scale(0.65)" color="#d9a9b7" opacity="1"/>
+<use href="#sprig" transform="translate(372 167) rotate(10) scale(1)" color="#d9a9b7" opacity="1"/>
+<use href="#flower" transform="translate(22 117) rotate(-14) scale(0.95)" color="#dfafbd" opacity="1"/>
+<use href="#flower" transform="translate(56 146) rotate(12) scale(0.7)" color="#dfafbd" opacity="1"/>
+<use href="#flower" transform="translate(335 143) rotate(8) scale(0.65)" color="#dfafbd" opacity="1"/>
+<use href="#flower" transform="translate(372 118) rotate(16) scale(1)" color="#dfafbd" opacity="1"/>
+<use href="#heart" transform="translate(13 73) rotate(-15) scale(0.55)" color="#c3b2d3" opacity="1"/>
+<use href="#heart" transform="translate(376 74) rotate(15) scale(0.55)" color="#dba7b8" opacity="1"/>
+<use href="#note" transform="translate(54 113) rotate(-8) scale(0.65)" color="#b4bc9e" opacity="1"/>
+<use href="#star" transform="translate(344 96) rotate(0) scale(0.65)" color="#c9b6d3" opacity="1"/>
+</svg>

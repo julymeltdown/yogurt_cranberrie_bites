@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "scope": "Static asset integrity and flat palette checks only; rendered composition NOT_RUN",
+  "checks": [
+    "Five SVG XML documents parsed",
+    "Only inert vector elements and local fragment references",
+    "Manifest sizes/viewBoxes/SHA256 match",
+    "Authoring output reproduces byte for byte",
+    "No character asset references; zero external dependencies",
+    "Existing text sampled against every broad field: contrast >=4.5; illustration zone excluded"
+  ],
+  "elements": {
+    "landing-garden-night.svg": 45,
+    "sign-in-paper.svg": 29,
+    "sign-in-clouds-top.svg": 32,
+    "sign-in-garden-bottom.svg": 33,
+    "customize-paper.svg": 31
+  },
+  "contrast_ratios": {
+    "#eee4cf on #624250": 6.89,
+    "#eee4cf on #6b4b5b": 5.98,
+    "#eee4cf on #503b4a": 8.05,
+    "#211d19 on #fbf2df": 15.04,
+    "#211d19 on #f4dfd9": 13.08,
+    "#211d19 on #eee4f0": 13.54,
+    "#211d19 on #e9eddd": 14.05,
+    "#211d19 on #f3e4d1": 13.42,
+    "#211d19 on #f0dedd": 12.91,
+    "#211d19 on #e9e5ed": 13.47,
+    "#211d19 on #e0e6cf": 13.06,
+    "#554b3e on #fbf2df": 7.66,
+    "#554b3e on #f4dfd9": 6.66,
+    "#554b3e on #eee4f0": 6.9,
+    "#554b3e on #e9eddd": 7.16,
+    "#554b3e on #f3e4d1": 6.83,
+    "#554b3e on #f0dedd": 6.58,
+    "#554b3e on #e9e5ed": 6.86,
+    "#554b3e on #e0e6cf": 6.66,
+    "#791d25 on #fbf2df": 9.36,
+    "#791d25 on #f4dfd9": 8.14,
+    "#791d25 on #eee4f0": 8.43,
+    "#791d25 on #e9eddd": 8.74,
+    "#791d25 on #f3e4d1": 8.35,
+    "#791d25 on #f0dedd": 8.04,
+    "#791d25 on #e9e5ed": 8.38,
+    "#791d25 on #e0e6cf": 8.13
+  },
+  "contrast_limit": "Light moon/cloud midzone is illustration-only and not approved for white lettering. Owner must verify composed foreground does not overlap it.",
+  "rendered_evidence": "NOT_RUN",
+  "publication": "NOT_RUN"
+}
