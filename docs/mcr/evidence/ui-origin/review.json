@@ -527,7 +527,7 @@
     "The initial generic driver assumed #root. The primitive and control-layout fixtures mount elsewhere; both were captured successfully by state-capture.mjs.",
     "Other preview failures require their original HTTP/asset producer. They are preserved as NOT_RUN; current route gates and all tracked visual source remain audited.",
     "Exact hashes and normalized token windows cannot prove originality of transformed or reencoded assets. Manual source/visual review supplies the bounded additional evidence.",
-    "No new snapshots were adopted as golden files and no visual assertion was weakened.",
+    "No new snapshots were adopted as golden files and no visual assertion was weakened. Refreshed route/mobile files supersede initial files with the same names; browser-current.json is authoritative for those artifacts.",
     "Future rendering changes require renewed origin review."
   ]
 }
