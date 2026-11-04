@@ -1,0 +1,66 @@
+{
+  "task": "QA06",
+  "status": "BOUNDED_PUBLISHED_POSTFIX_EVIDENCE_VERIFIED_NOT_WHOLE_ACCEPTANCE",
+  "candidate": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+  "sceneCases": 9,
+  "repairCases": 27,
+  "motionComponentCases": 3,
+  "repairAssembly": {
+    "firstReport": "postfix-12a5-repairs/report.json",
+    "selectedFirstCases": "Nine width360 PASS cases only; all source hashes/fixture match tail",
+    "tailReport": "postfix-12a5-repairs-tail/report.json",
+    "tailCases": 18
+  },
+  "diagnostic": "Initial repair command exit1: new driver sampled immediately after637→420 resize. Explicit shell viewport CSS-variable barrier+two animation frames resolves at unchanged product/fixture. First9width360 successes retained; width390 re-run to add required actual reference heights. No production defect claimed.",
+  "motionLimit": "Candidate component remains separate from actual public Root qualification; four critical repair source files byte-identical to228e, current clean04ea source tree pinned",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "artifacts": {
+    "postfix-12a5-scene/world-parade-390-h554.png": {
+      "bytes": 231564,
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db",
+      "width": 390,
+      "height": 554
+    },
+    "postfix-12a5-scene/map-parade-390-h754.png": {
+      "bytes": 410974,
+      "sha256": "b10382bae8de4eb3adb9f253f1b6c63773e09f0ce555b24db556e328575f06c5",
+      "width": 390,
+      "height": 754
+    },
+    "postfix-12a5-repairs-tail/feed-revenge-390-h631.png": {
+      "bytes": 47709,
+      "sha256": "a08da33b96c8f94589c69635961535ea156677e56e38a38a65d7b4d82d551c75",
+      "width": 390,
+      "height": 631
+    },
+    "postfix-12a5-repairs-tail/meet-revenge-390-h637.png": {
+      "bytes": 81019,
+      "sha256": "7cd49e1a0e6348e42f009966f554d52377dd89d90d74fd9f65b7196505d4bb02",
+      "width": 390,
+      "height": 637
+    },
+    "postfix-12a5-repairs-tail/me-revenge-390-h595.png": {
+      "bytes": 49476,
+      "sha256": "f5e12880310d2f5f356671cdd067edd805ec4c212c4aabd54d1c3d6d8f9e6fdb",
+      "width": 390,
+      "height": 595
+    },
+    "postfix-motion-04ea/customize-component-390.png": {
+      "bytes": 55951,
+      "sha256": "eb45e2341d96061fb2912809347a90b02f0abddabc9acab079a11c89d913edfc",
+      "width": 350,
+      "height": 610
+    }
+  },
+  "allocationBytesBeforeSummary": 18717662,
+  "physicalIOS": "NOT_RUN",
+  "physicalAndroid": "NOT_RUN",
+  "softwareKeyboard": "NOT_RUN",
+  "hardwareSafeArea": "NOT_RUN",
+  "wholeQA06": "UNFINISHED",
+  "remaining": [
+    "Actual devices/keyboard/safe area",
+    "Qualified public Wall/art/admission and canonical actual Root Customize acceptance",
+    "Concrete direct target inspection/disposition and committed handoff/publication verification"
+  ]
+}

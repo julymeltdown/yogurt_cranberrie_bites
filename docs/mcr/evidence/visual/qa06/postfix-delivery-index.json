@@ -1,0 +1,583 @@
+{
+  "task": "QA06",
+  "at": "2026-11-04T04:11:07.447661+00:00",
+  "candidate": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+  "status": "BOUNDED_NATIVE_POSTFIX_VERIFIED_ORIGINAL_GOAL_UNFINISHED",
+  "artifacts": [
+    {
+      "path": "postfix-12a5-repairs/feed-danger-360-h420.png",
+      "bytes": 32871,
+      "sha256": "7d38b244320a127a2c2b784f125d961fcf738a84b17a12cbe876d88f4322fda6"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-danger-360.png",
+      "bytes": 57955,
+      "sha256": "e67e6ff151d8d729c491f600fc4efd0e4e36b74a3b8b3fa0a61972e2d6c52a9c"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-parade-360-h420.png",
+      "bytes": 32857,
+      "sha256": "d591d8ab77fe245d5dad2ff0c0a7f62e0fcd807b6b0d7c6f02ecdb301d9e36f6"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-parade-360.png",
+      "bytes": 57955,
+      "sha256": "e67e6ff151d8d729c491f600fc4efd0e4e36b74a3b8b3fa0a61972e2d6c52a9c"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-revenge-360-h420.png",
+      "bytes": 32871,
+      "sha256": "7d38b244320a127a2c2b784f125d961fcf738a84b17a12cbe876d88f4322fda6"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-revenge-360.png",
+      "bytes": 57955,
+      "sha256": "e67e6ff151d8d729c491f600fc4efd0e4e36b74a3b8b3fa0a61972e2d6c52a9c"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-revenge-390-h420.png",
+      "bytes": 34339,
+      "sha256": "edd2c0141b332e94a417b356c18f2fc23cd94e89941e93b927e7c5e926d95534"
+    },
+    {
+      "path": "postfix-12a5-repairs/feed-revenge-390.png",
+      "bytes": 61389,
+      "sha256": "5113d80e90beefb592f366755676e2cbf1df74bcbe2ac091d222f6524c1db997"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-danger-360-h420.png",
+      "bytes": 33123,
+      "sha256": "275738e2cd22ea0d1c0b7b9f9cd8abd29312e72206bce453c811eddfb8eb64d1"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-danger-360.png",
+      "bytes": 62860,
+      "sha256": "a234197d20cfc32ee06b5d898fd965ad5e6174d62d3f70ed288e2a8dbf7381a5"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-parade-360-h420.png",
+      "bytes": 33086,
+      "sha256": "023dd3b3d21065fc0aca80b1cbb87ba490313a8993b07da580439ce4e1f62cc2"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-parade-360.png",
+      "bytes": 62826,
+      "sha256": "b227e58042f7bdebb13a8cc19208c757f33d4b01387624a1899a7e7ea7b8f810"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-revenge-360-h420.png",
+      "bytes": 33158,
+      "sha256": "0e823350e775758de8eca6689ba49193fa230919db6e5489331bff181b95e95a"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-revenge-360.png",
+      "bytes": 62898,
+      "sha256": "34f4d68a8be195df4075b85f6faf3f9bff9c313dde29b26e87c0819535f5cebc"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-revenge-390-h420.png",
+      "bytes": 33703,
+      "sha256": "7b664b35aa9376f458e199c92916f9b34eef6c6c4a3a9ca329bf5b8d3a19955e"
+    },
+    {
+      "path": "postfix-12a5-repairs/me-revenge-390.png",
+      "bytes": 65288,
+      "sha256": "99415d5cf4c798d4a2aa1df0ce85b760656cfb2f4d08b8ec19c7b2a04c12b768"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-danger-360-h420.png",
+      "bytes": 42993,
+      "sha256": "ec6c6b86e4ce07f6541ee9dac8e9df33a8a5031838831a3af3f323ab61b333e1"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-danger-360.png",
+      "bytes": 91224,
+      "sha256": "a21361b3e24190158e1f6423780d753344295e5768ff738a87f7699b5ca94fe1"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-parade-360-h420.png",
+      "bytes": 42993,
+      "sha256": "ec6c6b86e4ce07f6541ee9dac8e9df33a8a5031838831a3af3f323ab61b333e1"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-parade-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-revenge-360-h420.png",
+      "bytes": 45053,
+      "sha256": "93b7b872e9301a499147ab2e144806aad99f0a3ab8279fdec668449fbbc8b321"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-revenge-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-revenge-390-h637.png",
+      "bytes": 80250,
+      "sha256": "0d87ac92136885b44b8642225484e79ffc5699c7e6cb6800fd8ba80eead59444"
+    },
+    {
+      "path": "postfix-12a5-repairs/meet-revenge-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "postfix-12a5-repairs/report.json",
+      "bytes": 87423,
+      "sha256": "d49736d4f2e4248b3d0f47ece979027290b62f9dffe6950bcd28af6adf2cda03"
+    },
+    {
+      "path": "postfix-12a5-repairs/report.partial.json",
+      "bytes": 87430,
+      "sha256": "be880cb3a8b1a8f5093c7461eb48c99f5782fe648de989973342dddcc62058c2"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-danger-390-h420.png",
+      "bytes": 34339,
+      "sha256": "edd2c0141b332e94a417b356c18f2fc23cd94e89941e93b927e7c5e926d95534"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-danger-390-h631.png",
+      "bytes": 47709,
+      "sha256": "a08da33b96c8f94589c69635961535ea156677e56e38a38a65d7b4d82d551c75"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-danger-390.png",
+      "bytes": 61389,
+      "sha256": "5113d80e90beefb592f366755676e2cbf1df74bcbe2ac091d222f6524c1db997"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-danger-430-h420.png",
+      "bytes": 35630,
+      "sha256": "0d76e505560df5f822347228c15bf227f207686d9e22bb5d43cc2546b955aba3"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-danger-430.png",
+      "bytes": 64642,
+      "sha256": "c10cdf691b73252e7d9df2297cb04b943856f264ff73afc11a08830c77c4bf25"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-parade-390-h420.png",
+      "bytes": 34339,
+      "sha256": "edd2c0141b332e94a417b356c18f2fc23cd94e89941e93b927e7c5e926d95534"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-parade-390-h631.png",
+      "bytes": 47709,
+      "sha256": "a08da33b96c8f94589c69635961535ea156677e56e38a38a65d7b4d82d551c75"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-parade-390.png",
+      "bytes": 61389,
+      "sha256": "5113d80e90beefb592f366755676e2cbf1df74bcbe2ac091d222f6524c1db997"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-parade-430-h420.png",
+      "bytes": 35630,
+      "sha256": "0d76e505560df5f822347228c15bf227f207686d9e22bb5d43cc2546b955aba3"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-parade-430.png",
+      "bytes": 64642,
+      "sha256": "c10cdf691b73252e7d9df2297cb04b943856f264ff73afc11a08830c77c4bf25"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-revenge-390-h420.png",
+      "bytes": 34339,
+      "sha256": "edd2c0141b332e94a417b356c18f2fc23cd94e89941e93b927e7c5e926d95534"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-revenge-390-h631.png",
+      "bytes": 47709,
+      "sha256": "a08da33b96c8f94589c69635961535ea156677e56e38a38a65d7b4d82d551c75"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-revenge-390.png",
+      "bytes": 61389,
+      "sha256": "5113d80e90beefb592f366755676e2cbf1df74bcbe2ac091d222f6524c1db997"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-revenge-430-h420.png",
+      "bytes": 35630,
+      "sha256": "0d76e505560df5f822347228c15bf227f207686d9e22bb5d43cc2546b955aba3"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/feed-revenge-430.png",
+      "bytes": 64642,
+      "sha256": "c10cdf691b73252e7d9df2297cb04b943856f264ff73afc11a08830c77c4bf25"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-danger-390-h420.png",
+      "bytes": 33677,
+      "sha256": "1393be540e1799dfebf9f50755c9842bb648bde8f86930fd6aa9300a499cf51f"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-danger-390-h595.png",
+      "bytes": 49466,
+      "sha256": "595fb6e482a82b2a98f2963635c03e6866ab0f9d7069acbdcdb90267d9682e5d"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-danger-390.png",
+      "bytes": 65273,
+      "sha256": "40e1b0c0efa8e69b07cb1706b0312e4a60b80958ddb53303622c4bf4c4c75cba"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-danger-430-h420.png",
+      "bytes": 30277,
+      "sha256": "95eb7590391914d19a58b40523d864be9fdbd1992aed6474639bfcecac76e0ce"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-danger-430.png",
+      "bytes": 67753,
+      "sha256": "908296b40f60e5a0a7b466edf637c195e00ec6d4610909a867c2d56ebf169cd0"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-parade-390-h420.png",
+      "bytes": 33611,
+      "sha256": "c8fb91404175016ac425155de41ea891bec9c1e72e25afc40eaab887df92d4a5"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-parade-390-h595.png",
+      "bytes": 49395,
+      "sha256": "007f38ed44b197b0f354c057108a322fc9ea388cce6a2c2065a576bce22aeee5"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-parade-390.png",
+      "bytes": 65207,
+      "sha256": "d1679c17f64f0862fe199503f2e231ba53b2df5cd17cf9587a04b4ee75fd4a99"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-parade-430-h420.png",
+      "bytes": 30189,
+      "sha256": "c53de6bec0326d4c2d37a87ea65057f65819ade1604536f374ad3a872ee0a800"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-parade-430.png",
+      "bytes": 67675,
+      "sha256": "5ce1b4d38cc780c5678d2469e1ca9a2a4a89f1f63951c940f5347fb0d36686ab"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-revenge-390-h420.png",
+      "bytes": 33703,
+      "sha256": "7b664b35aa9376f458e199c92916f9b34eef6c6c4a3a9ca329bf5b8d3a19955e"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-revenge-390-h595.png",
+      "bytes": 49476,
+      "sha256": "f5e12880310d2f5f356671cdd067edd805ec4c212c4aabd54d1c3d6d8f9e6fdb"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-revenge-390.png",
+      "bytes": 65288,
+      "sha256": "99415d5cf4c798d4a2aa1df0ce85b760656cfb2f4d08b8ec19c7b2a04c12b768"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-revenge-430-h420.png",
+      "bytes": 30291,
+      "sha256": "3ceb98b9788420ab9fcaaebdc416f303da2e950cc3e08ebaf4173150bd699550"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/me-revenge-430.png",
+      "bytes": 67778,
+      "sha256": "4c978e9ed81df441025326a2eeec66f32f8eaabad15595eac441cc86b3f64ff0"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-danger-390-h420.png",
+      "bytes": 45737,
+      "sha256": "c9643d79536f55138c13f0f39c6a06dc93113f71eee9e52101edad18093b0940"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-danger-390-h637.png",
+      "bytes": 81023,
+      "sha256": "5ebc158f41f09930c7f29b55e0f4fb4099c1ec738936f59a562120711cfd451e"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-danger-390.png",
+      "bytes": 96448,
+      "sha256": "12e1bbd82966c47ff11f816ccfabc6a544b277f6c12ef83135facc64685708d8"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-danger-430-h420.png",
+      "bytes": 46135,
+      "sha256": "605bfbef01564df90263eb56d85d476dc7ab022cdf8299053fb2c2ae7671ff05"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-danger-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-parade-390-h420.png",
+      "bytes": 45737,
+      "sha256": "c9643d79536f55138c13f0f39c6a06dc93113f71eee9e52101edad18093b0940"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-parade-390-h637.png",
+      "bytes": 81019,
+      "sha256": "7cd49e1a0e6348e42f009966f554d52377dd89d90d74fd9f65b7196505d4bb02"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-parade-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-parade-430-h420.png",
+      "bytes": 46135,
+      "sha256": "605bfbef01564df90263eb56d85d476dc7ab022cdf8299053fb2c2ae7671ff05"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-parade-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-revenge-390-h420.png",
+      "bytes": 45737,
+      "sha256": "c9643d79536f55138c13f0f39c6a06dc93113f71eee9e52101edad18093b0940"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-revenge-390-h637.png",
+      "bytes": 81019,
+      "sha256": "7cd49e1a0e6348e42f009966f554d52377dd89d90d74fd9f65b7196505d4bb02"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-revenge-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-revenge-430-h420.png",
+      "bytes": 46135,
+      "sha256": "605bfbef01564df90263eb56d85d476dc7ab022cdf8299053fb2c2ae7671ff05"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/meet-revenge-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/report.json",
+      "bytes": 110965,
+      "sha256": "e1ec4c63894ed6567d7295e5597f790ff6898547872f5bbfadafc845cfc83160"
+    },
+    {
+      "path": "postfix-12a5-repairs-tail/report.partial.json",
+      "bytes": 110946,
+      "sha256": "af285b5a5a29b54eb2162db2e30acc8f5589ebaa7230d03bd7ee433f4fca3721"
+    },
+    {
+      "path": "postfix-12a5-review/compare-customize.png",
+      "bytes": 455127,
+      "sha256": "ac82168437123c0f4fc6618c0e5c8e3b1aba231b269f682f0fe4c7fc8963bc1e"
+    },
+    {
+      "path": "postfix-12a5-review/compare-feed.png",
+      "bytes": 431434,
+      "sha256": "16aa957ce2408962aaeef96916b79b9701222463d46888557f761304ff39b52e"
+    },
+    {
+      "path": "postfix-12a5-review/compare-map.png",
+      "bytes": 962220,
+      "sha256": "f2bcae9c2dd87f75d19c59c20e1f2c82c68e3a4de9290bb1debc6ffde28b3338"
+    },
+    {
+      "path": "postfix-12a5-review/compare-me.png",
+      "bytes": 417351,
+      "sha256": "497550d06b7e63ed6053bb759792098932b2e2ee15c85cde40ea702e07105aae"
+    },
+    {
+      "path": "postfix-12a5-review/compare-meet.png",
+      "bytes": 467701,
+      "sha256": "8c06c55bb7dfc09b14e2b80273a4a5a7ec3cd3a92a189e3eda58830ce0952134"
+    },
+    {
+      "path": "postfix-12a5-review/compare-world.png",
+      "bytes": 675304,
+      "sha256": "40a2b62d7f49c72d56eb904e974be678a230256fb75f8625ab882a4ef4ea08a7"
+    },
+    {
+      "path": "postfix-12a5-review/comparison.html",
+      "bytes": 3668,
+      "sha256": "3b3bdfa009d3896bad24f56db79329db1a5ceae6ce11d659bd2cf553b9010f4f"
+    },
+    {
+      "path": "postfix-12a5-review/review.json",
+      "bytes": 2833,
+      "sha256": "5579a8a98273c269ad9cf22450567a14102dc1e2116619d8e758a43d3c88afa7"
+    },
+    {
+      "path": "postfix-12a5-scene/map-danger-360.png",
+      "bytes": 370670,
+      "sha256": "a288614fee4cd108a3bd065d338fb04edbf1d047bb979aced704bfc91547aeb1"
+    },
+    {
+      "path": "postfix-12a5-scene/map-danger-390-h754.png",
+      "bytes": 410563,
+      "sha256": "1924db3cfef0c738f63a3ed748b1d2ed696dca7848f7f863e48c7c22faf620a6"
+    },
+    {
+      "path": "postfix-12a5-scene/map-danger-390.png",
+      "bytes": 422804,
+      "sha256": "745641e37e6bdac622c6cf1eae2b02459285ade5ace28024e16b83554b8994cf"
+    },
+    {
+      "path": "postfix-12a5-scene/map-danger-430.png",
+      "bytes": 485894,
+      "sha256": "5621304677b46820194eeb7933215ae1c3ca32ad16853157bf68e79e0cabbea9"
+    },
+    {
+      "path": "postfix-12a5-scene/map-parade-360.png",
+      "bytes": 371098,
+      "sha256": "e5a56eba132f8b9c9cdb3e613a71c7264ce8c959d62f727eb1bbafccb2c54d2b"
+    },
+    {
+      "path": "postfix-12a5-scene/map-parade-390-h754.png",
+      "bytes": 410974,
+      "sha256": "b10382bae8de4eb3adb9f253f1b6c63773e09f0ce555b24db556e328575f06c5"
+    },
+    {
+      "path": "postfix-12a5-scene/map-parade-390.png",
+      "bytes": 422996,
+      "sha256": "54b91f50cd97fd67c0bf05df0463494c612ecee312853e404ac537b4996c7f5f"
+    },
+    {
+      "path": "postfix-12a5-scene/map-parade-430.png",
+      "bytes": 486884,
+      "sha256": "7e9cb43e9721c9f027907bcb590afe1a9429ea4322ee32a5ddadf1c017f8df07"
+    },
+    {
+      "path": "postfix-12a5-scene/map-revenge-360.png",
+      "bytes": 369755,
+      "sha256": "f114d386862e3ed831fe0e6dd556b65b7a450f7c7f017d67c43958e19abdd0a8"
+    },
+    {
+      "path": "postfix-12a5-scene/map-revenge-390-h754.png",
+      "bytes": 409863,
+      "sha256": "f85653e70b9ecdc2373de03605fba74fd1b69d190951ede491da0031a70b6a5a"
+    },
+    {
+      "path": "postfix-12a5-scene/map-revenge-390.png",
+      "bytes": 422008,
+      "sha256": "4830b6bd67c503963be54d112eeec359dd5ef54469f96d3f1d0b01c1a0d92e1e"
+    },
+    {
+      "path": "postfix-12a5-scene/map-revenge-430.png",
+      "bytes": 484801,
+      "sha256": "fffbdff1e57a4c1c0ada44fbb2a5b272274362a9b244bfc13918bfd8f1ea8474"
+    },
+    {
+      "path": "postfix-12a5-scene/report.json",
+      "bytes": 322981,
+      "sha256": "f51809282d804619e62d41e8b07ce02838f6ee185ce5807bda6757e2cfc0dd21"
+    },
+    {
+      "path": "postfix-12a5-scene/report.partial.json",
+      "bytes": 322964,
+      "sha256": "daa7578a1fb90ae568a99a06c6ca496201a9b4f1f8e9e085b6b8be04652126f6"
+    },
+    {
+      "path": "postfix-12a5-scene/world-danger-360.png",
+      "bytes": 413364,
+      "sha256": "e2e602a9b655f4535e6589a8cec173da9b3ef3dbdd8d8058cca694583669a466"
+    },
+    {
+      "path": "postfix-12a5-scene/world-danger-390-h554.png",
+      "bytes": 231673,
+      "sha256": "ba9fbda3664e6dd217232f762b5e94249c2639cb68b18195888fc0025c01a03a"
+    },
+    {
+      "path": "postfix-12a5-scene/world-danger-390.png",
+      "bytes": 432533,
+      "sha256": "481f88f6d75bae0b1b7e6a0d79089c9a3cfd5ae87d39ccf3c079e90c2ed89e30"
+    },
+    {
+      "path": "postfix-12a5-scene/world-danger-430.png",
+      "bytes": 482561,
+      "sha256": "d2e4f48a263647551e6aee7ec58bde3999c86c6d6f5364ff9a7d515864f7cf94"
+    },
+    {
+      "path": "postfix-12a5-scene/world-parade-360.png",
+      "bytes": 412099,
+      "sha256": "4f60ed107b298172468da6b5ea271844793e7f625d78f55259216b365b172b97"
+    },
+    {
+      "path": "postfix-12a5-scene/world-parade-390-h554.png",
+      "bytes": 231564,
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db"
+    },
+    {
+      "path": "postfix-12a5-scene/world-parade-390.png",
+      "bytes": 431426,
+      "sha256": "63f3987185752f2efac03bea7cc80b43c78308f3bb9a2d4636c9b57795fb55bf"
+    },
+    {
+      "path": "postfix-12a5-scene/world-parade-430.png",
+      "bytes": 481268,
+      "sha256": "b9d891c83c8f00a9938ff0f8320c29f679fd413b7fbd8e151583aad9033707ca"
+    },
+    {
+      "path": "postfix-12a5-scene/world-revenge-360.png",
+      "bytes": 413091,
+      "sha256": "7bdaa455926fde94c8161ae2b418c6b8683a3f195087fa712554f8396ee1e3c6"
+    },
+    {
+      "path": "postfix-12a5-scene/world-revenge-390-h554.png",
+      "bytes": 231652,
+      "sha256": "888f677f482240f6cea88766deaa4758830b3005489f6edb02c875b7194d66dc"
+    },
+    {
+      "path": "postfix-12a5-scene/world-revenge-390.png",
+      "bytes": 432845,
+      "sha256": "ef97e6e6bc8617f8317a1340d85826b080fd53b0cef2f7791f587f9fb6f82c08"
+    },
+    {
+      "path": "postfix-12a5-scene/world-revenge-430.png",
+      "bytes": 482695,
+      "sha256": "fcdcc543941d98c0aaf48b2819b07c7b3c4c8dfa7b4da4e44e267e33a2d233ab"
+    },
+    {
+      "path": "postfix-motion-04ea/customize-component-360.png",
+      "bytes": 55104,
+      "sha256": "1e3743c100bc160dd7790deb386148289d7529d15262f38765e225dfa9265d40"
+    },
+    {
+      "path": "postfix-motion-04ea/customize-component-390.png",
+      "bytes": 55951,
+      "sha256": "eb45e2341d96061fb2912809347a90b02f0abddabc9acab079a11c89d913edfc"
+    },
+    {
+      "path": "postfix-motion-04ea/customize-component-430.png",
+      "bytes": 57523,
+      "sha256": "dc5db1fddd5ff027944452fb62433bff66f8cf1c355f6e79197ca5a503504ab1"
+    },
+    {
+      "path": "postfix-motion-04ea/report.json",
+      "bytes": 430116,
+      "sha256": "195086ceed3886b71c9ad0ee2ab514cc5d09e0f3f0dbe9e636f53565ae36f5bd"
+    }
+  ],
+  "artifactBytes": 18720495,
+  "selectedCases": {
+    "publishedScene": 9,
+    "publishedRepairs": 27,
+    "isolatedComponent": 3
+  },
+  "allCommands": {
+    "scene": 0,
+    "firstRepairs": 1,
+    "tailRepairs": 0,
+    "firstMotion228ePreflight": 1,
+    "secondMotion04eaEvidenceImagePreflight": 1,
+    "motion04eaFinal": 0,
+    "postfixReview": 0,
+    "nodeSyntaxOxlint": 0
+  },
+  "diagnostics": "Initialrepairresize timing corrected; old9width360passes retained. Motion firstguarddetected legitimatewholecheckoutsource advance; clean04ea pinned after provingfourcriticalrepairfilesunchanged228e. SparseevidencePNGs excludedonly fromsourcebyteguard; no materialization/peer/source writes. Failedpreflight attempts started nobrowser and created no outputdirectory.",
+  "actualGoalStatus": "BLOCKED as retained by explicitcoordinator instruction; objective unchanged",
+  "physicalDevices": "NOT_RUN",
+  "noWholeAcceptance": true
+}

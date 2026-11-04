@@ -1,0 +1,2783 @@
+{
+  "task": "QA06",
+  "scope": "repairs",
+  "startAt": 9,
+  "status": "BOUNDED_PUBLISHED_REPAIRS_PASS",
+  "candidate": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+  "originMaster": "e449890ad62e57f6708c69c9f76dc2f6f5ee5269",
+  "qualification": "ACTUAL_PUBLISHED_SOURCE_WITH_CORRECTED_SYNTHETIC_HTTP_C05_DESKTOP_ONLY",
+  "harnessSha256": "f51736ddc3d315eb9b8191a7d1e7561f6d8590021738b46c97fcf8570aea42fe",
+  "fixtureSha256": "1c59c73e787566dbedea0e876bbf282b897bb1bf161ad41e6040ca20b492a2bd",
+  "sourceHashes": {
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+    "frontend/e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+    "frontend/e2e/reference-integrated/data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+    "frontend/src/app/social-composition/__tests__/fixtures.ts": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f",
+    "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
+    "frontend/src/world/composition/__tests__/fixtures/data.ts": "6a14367edb48c1150e443ae18d7fedf4e421241982560f43c617ee2d14af872a",
+    "frontend/src/world/network/mock.ts": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+    "frontend/src/shared/styles/base.css": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42",
+    "frontend/src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+    "frontend/src/shared/ui/index.ts": "4e34ffa485bd8d73feaaa0ad69ea3b12eeb0e2eccc606a3051cde37a9c3a346f",
+    "frontend/src/app/world-panels/ownership.tsx": "796e5c0e1fdcbcc3e9f0dc4a2e969ac2bb69d773191709a71843d4a3db65a4ef",
+    "frontend/src/app/access.tsx": "50120eef3fc1f665cf8b04944e4d4db53d5a7503f708423a6879e455483803be",
+    "frontend/src/app/account-deletion-entry/context.tsx": "adfc7f2233d3b0dcc13e0bb05b08ca909aaed8e99e1dba7a4fc39856fdb94c2e",
+    "frontend/src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "frontend/src/app/WorldShell.tsx": "4e9f90a76c20b6bdb405f4d30add4ec0b45f0468c61a4fc9ef1092db746f53d3",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/app/character-entry/runtime.ts": "0001924806cabfd66c52e71e73d413f0b2c39d0cfb95b12f4a2646672d0d6b79",
+    "frontend/src/shared/api/errors.ts": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/features/auth/model/bootstrap.ts": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+    "frontend/src/features/auth/model/cookie-policy.ts": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+    "frontend/src/features/auth/model/recovery.ts": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+    "frontend/src/features/auth/model/enrollment.ts": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e",
+    "frontend/src/features/auth/model/account-deletion.ts": "803f860024f373d5751769a3de6c0c53174694461a4e230334fea81d09c1c008",
+    "contracts/fixtures/core/auth-success.json": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+    "contracts/fixtures/core/auth-capabilities-disabled.json": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb",
+    "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "contracts/fixtures/realtime/movement-heartbeat.json": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+    "frontend/src/world/__tests__/illustrated/fixtures.ts": "077bb07d2edd29436677b8f6823ac1fce426786ce52647e0e472676dd0a083fc",
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/network/transport/contract.ts": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+    "frontend/src/entities/avatar/whole-character/index.ts": "9aa451c0fc7a75db299f5a0604ad14d42e26d5560a98bd5528937092d6ffa731",
+    "frontend/src/features/party-discovery/__tests__/fixtures/data.ts": "10bb942e4b0cd9f3969bdd0294a139d0eb5aee5176ed173eb77d86acfad1d59a",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be",
+    "frontend/src/features/me/__tests__/fixtures.ts": "3f16bd102028e3a1f6a82e87eb786e7e348491c3c6b0903da830b5d4d8ab6745",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "ff8b01aa247d6c8ca3afc3e5ed92fa7d1fecabab2dadc79e586e4ce14f3daf10",
+    "frontend/src/features/event-feed/__tests__/fixtures.ts": "67bc50318e7b579b93f9bacc1bc587df893536e8cc5cb650cafba9ce8968b807",
+    "contracts/fixtures/domain/public-intro.json": "b30c0c6b6bc462b6f5a6e5365d532d4b2071528aab25b90141c29f752cfe1b53",
+    "contracts/fixtures/realtime/rooms.json": "d04837604d57a40106e823596bc7f7c9d6eb07d8d8829ef0675849348d332529",
+    "frontend/src/world/entities/replicated.ts": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700",
+    "frontend/src/entities/avatar/source-catalog.ts": "7a48070b9e44f6450db88e7ef3c1857a553844d56af71c543dc7737d17ae9328",
+    "frontend/src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "frontend/src/world/map/resources.ts": "106a01f56832bea0fc37facdbe51a44a548bf7765233773f90b38143718e8e2d",
+    "frontend/src/world/network/transport/engine.ts": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+    "frontend/src/shared/ui/controls.tsx": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d",
+    "frontend/src/shared/ui/Dialog.tsx": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18",
+    "frontend/src/shared/ui/Tabs.tsx": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+    "frontend/src/shared/ui/feedback.tsx": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f",
+    "frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
+    "frontend/src/app/account-deletion-entry/owner.ts": "85cf502994d7e89dce9a3eebe0560c7c94993409a48cee093b1a6af6d3d573b1",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/WorldHost.tsx": "8438ad02ad8d21b3fc0e64d76ea2e47fdfb89d8f7ca5db86e57516678170a491",
+    "frontend/src/app/shell-chrome/index.tsx": "00deddbac5415012836b8efbafa7d5acfe586c6002076eb6f4cf3b91d817eded",
+    "frontend/src/app/shell-chrome/parade-footer.tsx": "7ccff5284eeb2a7851584694f9690835fa13e37746d9d68f0b2b10b8882afc2d",
+    "frontend/src/shared/ui/concert-window/index.tsx": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+    "frontend/src/app/world-entry/configuration.ts": "05995dbc572039bc2a975eba6fc0718e15596bf65de70c7553993604eee6b1fc",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/app/character-entry/registry.ts": "c72c8b1a90ffd7458595351236528da4ccb42c06f572caf769b690d6ad14b2e1",
+    "frontend/src/shared/api/domain-operations.generated.ts": "2a956a59b0802498fb2a28c98babd86ea4d804afa80722dd75d6158b423714a2",
+    "frontend/src/shared/query/keys.ts": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+    "contracts/generated/mcr-core.openapi.json": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+    "frontend/src/entities/avatar/whole-admission/index.ts": "7677fa0d1c84e5657280988e0ba7e0ed455dad03aeeb9d10694df84d9d798165",
+    "frontend/src/features/auth/model/recovery-contract.ts": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+    "frontend/src/features/auth/model/enrollment-contract.ts": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22",
+    "contracts/fixtures/assets/map-manifest.json": "0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7",
+    "contracts/fixtures/assets/theme-revenge.json": "29c7021569309b741936645b1350c9789c213fc6b729a8650257561b278c892c",
+    "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "contracts/core/v1/core.schema.json": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/common.schema.json": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "contracts/assets/v2/reviewed/avatar-config.schema.json": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+    "contracts/assets/v2/reviewed/avatar-manifest.schema.json": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+    "contracts/realtime/v1/policy.json": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+    "frontend/src/entities/avatar/whole-character/contract.ts": "5d60fa0bd3eb89f750646a4e75ad33670d8ca1d09b4d2af7eba1a6d3a0990a0d",
+    "frontend/src/entities/avatar/whole-character/runtime.ts": "46aa13d5ec97b9c956ce8fc99957450818b99aa0c7704167e7939f0013b49420",
+    "frontend/src/entities/avatar/whole-character/view.tsx": "209ade8b11f93e4f711ffc83b7a663c59f69a54c51c7eff7fb3280ab29e1c324",
+    "contracts/fixtures/domain/giveaway-management.json": "b2b74d4fa5070458e0e0f52798c6ba55fc39184f4b31c2825a19317b2993f7e3",
+    "frontend/src/features/gift-discovery/model/controller.ts": "fcc6af9ad3f78ccfb3ccdea1c0a623e96dbaea5bf3c736252a0726946b9eb470",
+    "frontend/src/features/me/model/controller.ts": "13eb8ef9b3db8b3a89dc4bb8c994192d2419bf0c59c2daaaa89368899dc1f177",
+    "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
+    "contracts/fixtures/domain/public-post.json": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e",
+    "frontend/src/features/event-feed/controller.ts": "0d528342c21b6d1e3c9a7038c6a243d2fb4d32e9f2e00beda6ac7c3091d83c5b",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/world/map/manifest.ts": "d765ce6b7e47a76a2763fde32c6a9e4bde244beb872e761d2c6f73b757cd033c",
+    "frontend/src/world/map/tiled.ts": "65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00",
+    "frontend/src/world/illustrated/model.ts": "a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e",
+    "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+    "frontend/src/shared/ui/modal-focus.ts": "b8d0e5833ba7e0724e8233a629e6a64a682faf81df93ed5aba4ee38c86f9d328",
+    "frontend/src/features/account/controller.ts": "623d2418bba9e455dc83113ba7606b510ec4a99ba0cd429ae919516fe8f72d63",
+    "frontend/src/features/theme/model/preferences.ts": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "759a7749c7e1bceb8b8ebfe6500128d1ef39b0b4cd4aac3ae142ee782d525a21",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+    "frontend/src/entities/avatar/runtime/contract.ts": "06887a522a33090937f84d0174b2f5bda24776627683e1791842af87018ef290",
+    "frontend/src/entities/avatar/runtime/schema.ts": "81443f94f16c7f1d52122d96727fb21c583c82e757f6fc24b5a6b45947fd5628",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts": "450a5f52f167e062edbabf6f49cded29c2c7791a937942640ba318092eba6283",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "e0ef0a99005364a7b77a177b1ff15b1101e3cad4a7f5d7af3843382332628eb0",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "frontend/src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+    "frontend/src/features/gift-discovery/model/contract.ts": "2a931610213c57eb1dc439ac224800e0d86fd8f3a67f4804a9c6c8ceead38cba",
+    "frontend/src/features/me/model/contract.ts": "d419b356ff330f7f1a5745c2a2ebefe3e88b8e609b8100dabc29b9c5a5fcd0e8",
+    "frontend/src/features/event-feed/runtime.ts": "b06fd89a3f9fbbb923329b7be01b9d7193f0b9c8e8c06e1de16e8cf4f6f9ce66",
+    "frontend/src/features/event-feed/contract.ts": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
+    "frontend/src/world/__tests__/fixtures/png.ts": "13bc13762daa32a956fb08f7fd10698572ac41e2a210e3b140770b22ef295aa5",
+    "frontend/src/world/map/schema.ts": "88ce36b375a00ea23a28b86efe70c03154e1707dbd2a6cc2ae580c6c81de2c3e",
+    "frontend/src/features/safety/contract.ts": "745f22ba62f469ee3dc630982c78b2402e7b1cffbf92725545e98638405b8c6a",
+    "frontend/src/features/account/contract.ts": "221c87cd5f0949e18f5b986def90f199c07a19c712b6b7a0ac6ac2fa21cc10ed",
+    "frontend/src/world/map/formats.ts": "0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770",
+    "frontend/src/entities/avatar/runtime/motion-adoption/art.ts": "3bc23478c870cf61894d99c735d38ec9ea76a981ee3582bb1fa7e7ad666f4d47",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts": "6e12736e28fed01b20c0a309b6e8a15d05c439f65af5ba77fbe4b8a884b13167",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts": "f807e183cfb529e953c4a01f57c3ba2ec4c2aca3d36bd0d02b5ba2de5246dee5",
+    "contracts/generated/mcr-domain.openapi.json": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/theme-manifest.schema.json": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d",
+    "frontend/public/world/maps/geometry.json": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+    "frontend/public/world/maps/virtual-places.json": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+    "frontend/public/world/maps/binding-inputs.json": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb",
+    "frontend/public/world/themes/binding-inputs.json": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f",
+    "frontend/public/world/illustrated-runtime/bindings.json": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+    "frontend/src/app/character-entry/provider.tsx": "b038adf79200e1d56ecb11c534801f2103a1d4b8c36eea9f6df1fc86dd1629e9",
+    "frontend/src/app/media-entry/provider.tsx": "eaa72a2ee28cdd84fbddd8a10a5cd555763843907597955f5a283b0f9bf6a14a",
+    "frontend/src/app/media-entry/index.ts": "fcf4019d22056e7d8c2c148c1fbeab00187e62751ba232c3784a9506924e058a",
+    "frontend/src/shared/media/contract.ts": "af30fed17cb420563836623b2613c716668116437d9fd855e1f329e0e79c9dbf",
+    "frontend/src/shared/media/image-policy.ts": "7ae571867a1e2d5d54a3bb571eb11f38636676a45920142db76e3593e370cdb1",
+    "frontend/src/shared/media/read-media.ts": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8",
+    "frontend/src/shared/media/preview.ts": "3cab8ce506c6cca2083ff2003c7a406cf30aa77b96ee10cb81a68f3f1b5fc283",
+    "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
+    "frontend/src/features/gift-discovery/index.ts": "aa7725f1f884d7650a9d5c7d0318a4098c532d0482e44cee64e194f52cf97fdf",
+    "frontend/src/features/my-gifts/index.ts": "f8736dd4237769e72704533e2ab9e3f3684e31ea58b8e69427fec3c3a977dab2",
+    "frontend/src/features/party-discovery/index.ts": "2506849e06014b72d45731ba34553ba28e42175fcded9d417247bddc6837bde4",
+    "frontend/src/app/media-entry/RootMediaView.tsx": "7905f2174cfe5a687f69619c2940fe34fe7d8e040bf732546def0cd0ac3bfbc6",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "62bb4f761996733443a95bffa3de57f30095cf3ac822c7e9f96d0ef30f0d9f25",
+    "frontend/src/features/my-gifts/MyGifts.tsx": "12f5a7c63ba4af7ddf0b3daa3044a44870c7585614640f166b5cf265c64dbc17",
+    "frontend/src/features/party-discovery/model/controller.ts": "cf39ceace4d31dd7626629000e118e7dc8722c9cde19acf992c6caea90c27093",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "frontend/src/app/media-entry/root-media.css": "fa2e352398f3baf98a85be0892e807d0fb84d9c913f4698dc392809981a34b31",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+    "frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "c11d23a14cf241e763f8c07b8f4c4595923aa1aac6e4c25cad1ccebfa0745040",
+    "frontend/src/features/party-discovery/model/contract.ts": "73d3dd2a7e6a09a7edc22bee5c24358ddfeda1049f4c5c35a7b754474508a3b7",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54",
+    "frontend/src/app/world-entry/root-features.tsx": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+    "frontend/src/app/world-panels/index.tsx": "4c99a2746715940524cc1a7ad1e2a002f99707f02bfedc9faf4fb3f028c35d69",
+    "frontend/src/features/world-rooms/index.ts": "6822da877cf4d0eef2fc4288fffaba386d047b7109a52aa94e80bd353ba83965",
+    "frontend/src/features/world-nearby/index.ts": "046a850dbb590d0671c76bc67bea2111a4bc73e23fcefa5c6fb805a203203d38",
+    "frontend/src/app/world-entry/bridge.ts": "2c20c684d174c12485b39bbb35f307d75024bda8df8edd5068f717a0ccfcb7da",
+    "frontend/src/app/places-entry/index.ts": "bf86889f5bc5dc3ffb560dd65212261a0d76e4e07186dc0e78ce9c0a66b05cd5",
+    "frontend/src/app/mural-entry/index.ts": "3949e167f001e23bd248520afbbe251db55a68dfd29c7d70bde55c03c5ba629a",
+    "frontend/src/app/world-panels/presentation.css": "a554c436ab7ac0169faef4c65d22ff5ee08f08ea4d11e9087d6c4b353f5f27e7",
+    "frontend/src/features/world-rooms/model/controller.ts": "a2e676f2623ef7cf6c07420312a0bd76adcd02108ad4348f262ead8520358ebc",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx": "0d9a6c5749f425d49dfc3d84071abdd3318c0bb1ee8fabdf327ade04ed0acd5f",
+    "frontend/src/features/world-nearby/WorldNearby.tsx": "df945b1f789c61ebd743e997a09ed0866d1a158fdc78a8d148c842514c7c1c5a",
+    "frontend/src/app/world-entry/authority.ts": "49da1c44787801ee56b2276bbaa8a956e9ce40c840edf246f337c2118cd971df",
+    "frontend/src/app/places-entry/owner.ts": "88ed274fe63ee33cc488a065af8553b66c74105f121cde9da210b64b13dd67ff",
+    "frontend/src/app/places-entry/provider.tsx": "ca59285cd6b4556a0f3b59144288ef9ae1bda6e974cfe704581ea48317e33e4c",
+    "frontend/src/app/mural-entry/owner.ts": "d798f2804ebd569a422da17692b9b0f3764053bceaca98488b156a00ef31a4c9",
+    "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+    "frontend/src/features/world-nearby/projection.ts": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+    "frontend/src/features/world-rooms/model/contract.ts": "d3e19484a27d801d3f9b00d9c7ef37bbda00400338f70decf7f6e05c436c57d3",
+    "frontend/src/features/world-rooms/ui/world-access.css": "8de15f87168c6509e310fbff61b74e90950bfd86a2052021ce1d75d6b04b484e",
+    "frontend/src/features/places/index.ts": "9052d813d49a9c06022fc9626ea4186bfa3d11e093b0e2f1b79ce8a6cfc50e58",
+    "frontend/src/features/mural/sync/index.ts": "19c764d211e341f1d229db86b9f8210757f54f7d60a6920b01eff9283b9eef81",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/world/mural/index.ts": "9cf37c047ab317839bf0707aaf88ca437fe5f35c39c636114ff93292c26b9567",
+    "frontend/src/features/places/model/controller.ts": "48ef5e9ca08fe76f4d6308155a7f46a6098df021dda7a7f09fed1ff7d9172a09",
+    "frontend/src/features/places/ui/Places.tsx": "4b20a826d5d9dba9d0bd2603039c3352043990d2a0e9c3fc56c9229e234e38e4",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "70c86e0b4804e6ad9e560aad31e7de73eaa58098941b716fd070018a7aaeaebe",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/world/mural/authority.ts": "f08a51650603fc0f0e6b6049df27e7fb20d554c07768ec89c82958cbc9f8b078",
+    "frontend/src/world/mural/sink.ts": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+    "frontend/src/world/mural/phaser.ts": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+    "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "961959c20225719185c83c1890ef2051bf9065a3f8617651f619023c5b3457e9",
+    "frontend/src/features/places/ui/places.css": "b0dfbaeb3c764272e16d66efa11ca0b8cf5fda0be651108a701aa9d6b4e7ecdd",
+    "frontend/src/features/mural/editor/controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "frontend/src/features/mural/sync/projection.ts": "e69dd552120a4f02e3abd7a81e079ec76f7a2cf04014c71dd9618d196aaf79c6",
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "a5bbb147d4e56c1039428234ae9b02cf36da529b96d658cff217c503b37ec762",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "20875536ef60e1a564d6bcb5a750a2b942f8d7b44eeca9cf6a2f13733f8a13c9",
+    "frontend/src/features/places/ui/reference-scene/viewport.ts": "103e8128db881eeaf146da8ea869f6260f045d6e36fc2387edc35b1682faf282",
+    "frontend/src/features/places/ui/reference-scene/annotations.ts": "ca5f4abb8ac43d90d7909a33534b7c071b6d77b0a387efdeb6eae039602e223b",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "1c5e3b7d4424e825c8b0520a09abc38396a30176c3e146a3c2f6566de09717b7",
+    "frontend/src/features/places/ui/reference-scene/spatial-v4-label-obstacles.ts": "de2364866e04e547eb0444b1a6dd434f48cca14840bc771a67174cc23aa0f066",
+    "frontend/src/features/mural/editor/input.ts": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+    "frontend/src/features/mural/editor/editor.css": "079b5441ce3a16e0757b688289f388ad50cc156f93903e4ac78f43098e9e694b",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "frontend/src/world/reference-scene/overview.ts": "919218fd36390ba379def36772c46e15946b877b72295753a71a885293768a8e",
+    "frontend/src/world/reference-scene/spatial-v3/model.ts": "d4c1c74ca1f92777812af90cdc5a4dcc5bc8411ac6626ebee1fcb95ada90783f",
+    "frontend/src/world/reference-scene/spatial-v4/model.ts": "849525ccc5fdc690a5e9b2125502a3a07abcea758c717b93279285eb12ccbd9d",
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json": "850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels-source.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+    "frontend/src/world/reference-scene/source-inputs.json": "b25ee458e987912f91a4b3c55b87f53be5e0baada96a8372e5225fb8ada909aa",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels.ts": "b3357634e374698b343c61206dd94d51585de84e8adadfca36382263cf09c77f",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "cf9cce688f3b2b17939ce52fbe67184577e4100486fd6d0b28b6514eb9fc01fd",
+    "frontend/src/world/reference-scene/spatial-v3/source-inputs.json": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9",
+    "frontend/src/world/reference-scene/spatial-v3/tile-pin.json": "f20d50e9daa3026972728b8be6dd5d3f84d8c15ad74ac2a75e85edca0651bd48",
+    "frontend/src/world/reference-scene/spatial-v4/source-inputs.json": "0b686546056ba75591b1d5c32258bd73fd22ca0767686c12aff197d58f8f0beb",
+    "frontend/src/world/reference-scene/spatial-v4/tile-pin.json": "96766e0cdbe185e375fdced89e757013b1765e5790560faaab02fa6caec7129a",
+    "frontend/src/app/account-entry/provider.tsx": "fcecedc44476e61ba9723be555ec912ea9af0fb7758c1688afaca4f05e138313",
+    "frontend/src/app/account-entry/owner.ts": "b92e9f9cb7884949677fb6f58a160f6382b0ce482f3afb546003c3b430a330ae",
+    "frontend/src/entities/avatar/runtime/index.ts": "7a049bd448017dfa71614acd1c0ddea486d95fb8cf93981332fa7784e3f1b346",
+    "frontend/src/features/avatar/index.ts": "5d8847b625bf3ba9ec70fd544f7b87fd87f932691dcee150d2364b361e3467bb",
+    "frontend/src/features/me/index.ts": "9ec0847cc92f3e947c3b52d5a720322a5827434732ec83f5eed02b3372ecf834",
+    "frontend/src/app/account-entry/assets.ts": "e3868e19ddc67cde161cf3378958f16a9a3b57441406d49b4a6a7b30e014dd6a",
+    "frontend/src/features/avatar/whole-character/controller.ts": "9e34de46c857062892d5b64347876fe2485f7117c6c11e2af438775bb402a353",
+    "frontend/src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740",
+    "frontend/src/entities/avatar/runtime/resources.ts": "53268ddc31ba8668ea0ac8de4e017b53e80cceb1fab69db9649f06f1bf86f965",
+    "frontend/src/entities/avatar/runtime/atlas-lease.ts": "f619127345292274795fc0805f0f344591f8bbcaf2bf6c772e740cb1e164ff52",
+    "frontend/src/features/avatar/AvatarEditor.tsx": "37d30c4a71f0c669100d1ee84f5932c3b22eb42c49e7c833ff2209d37ea77fb6",
+    "frontend/src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "frontend/src/features/avatar/preview.ts": "258f08cd7a5e1ebcc1917f8b36b8accb83a260f1aad0d388766f54736414945b",
+    "frontend/src/features/me/ui/MePages.tsx": "66879fb5d848716032625c53da57d4f305b897cf223183a05df86320e0cafc06",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "829748940d147959bf8656e9448d00b7f9ba49305a9d5e8ac17acb0de72cfdd0",
+    "frontend/src/features/avatar/whole-character/model.ts": "ce1a8a3c3e5035983265c5f22a7ae163eb2cd511881ffae4c26e74b0f4ad385d",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/OptionStrip.tsx": "f162f9e5ee96c44b4b2e10ec059a09ee0e9272accf82954d68b4dcf48d6e7c7b",
+    "frontend/src/features/avatar/reference-presentation/CategoryRail.tsx": "ba2bdfd52a03203aa4e21967f4bd3ef1d584cab9465523f92e134430b7bd78fe",
+    "frontend/src/features/avatar/reference-presentation/actions.ts": "79667a9fd35281b5b6d27da3dcea7e621d49bba53ca2731447bc784cca5a7383",
+    "frontend/src/features/avatar/reference-presentation/TonePalette.tsx": "fb5b4a236ca8ef5c7b05ad0f424c2bfa2db61c9a5537c759d9120bfaa0f8b6dc",
+    "frontend/src/features/avatar/avatar-editor.css": "3a0c5b842ffd8dc66452805db3c8a88de233d3970f60bc0a45a6f8c6cdcbdc17",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "e86c800a108330aac355a41a3af64bfc3e892d162e2fc24d63560cca5c82416e",
+    "frontend/src/features/profile/reference-presentation/ProfileIcon.tsx": "4270973a977604019098e0ae8d180c76dced484a1ed28c585faf2b813ca0fd89",
+    "frontend/src/features/me/ui/me.css": "037a55c87cc72e6b06cba8fb4d4b35a7ac8356ac98919d1db237d54fa2931a48",
+    "frontend/src/features/profile/reference-presentation/activity.css": "bc19d8a9c1b2c206a32a1274350368635b3cf6b0595161b76466543506d7c998",
+    "frontend/src/app/meeting-entry/index.ts": "0fd0a1f4709f3dab9815c2abb4ee43ecbc3a38f5e11fb182055a78b47ae1a245",
+    "frontend/src/app/meeting-entry/bridge.ts": "ecb3adf14cac50f11457f8a6868b84753c967ae7c60fe38c25e43b813f4befdb",
+    "frontend/src/app/meeting-entry/routes.tsx": "6d1972f2fab6536e1ae5a0eb7d39247ed1adf19d527f551fcc2b29b6c65cc2a9",
+    "frontend/src/features/meet-beacon/index.ts": "6da019c0f6c13e83005e1b1820fb2e73fdf5287140fe4f74f1dc520fffcbdf7d",
+    "frontend/src/features/meet-beacon/model/controller.ts": "d8ee07eb9bd021687bdd8b70825e7c632caa00d30513e09db38ebd028e22f784",
+    "frontend/src/features/meet-beacon/model/contract.ts": "2bfbbcd160d0f6ad90874627dd2ff5f5798220275ce811f71f75fd18469824fd",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "ccbc170ff1ade8193fc16667a48527241805f920b2b28acef9558c4392bb3871",
+    "frontend/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": "c5b17f78054462929ed558dbb0aaf7b519c840c281627e121f90dff2ab7df93b",
+    "frontend/src/features/meet-beacon/model/photo-client.ts": "39158c91d063b0aecfd874080708a67377cf64de66a497aa7231572e4aea1bd5",
+    "contracts/domain/v1/common.schema.json": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css": "69358f493b4ad89f7e237d44f73339f216713e5577c1e0a754fab19a8b390db9",
+    "frontend/src/features/media/model/upload-controller.ts": "e187899b6e8c4c22956eb1f1849420265603d80d56699c2a0baff76334f3e571",
+    "frontend/src/features/meet-beacon/model/photo-scope.ts": "1b9a658ab09f5eb07a10291b0ea33913d5857bc1d8e6306c69979c2448719417",
+    "frontend/src/shared/media/prepare-image.ts": "a1ac4b47bdc744afd1065e82bc950a83c0d01c3d7946e098e0e6adb6171db128",
+    "frontend/src/shared/media/transport.ts": "8d71000a955dd035263074a3f961589e8b0f7a8f0bfdb3f708b99a75eb2e841c",
+    "frontend/src/app/world-panels/social.tsx": "d6b5d8a6f10ce392145cf67e0c092458a600ecac900af1cf34e2a9aa2b2cb317",
+    "frontend/src/app/social-composition/index.ts": "914a68b6c45aa00012bfd85c322bb0dea59e54fc00a3b82c8ffbb4df29949cd4",
+    "frontend/src/app/social-composition/sharing.tsx": "e9d5e63919a7d83e37d1d7494923b022bde9e4f8f2cf82a93939bb53f8456abc",
+    "frontend/src/app/world-panels/social.css": "e7063785972419110220609b090600a68cc1cb1d0a01a93248847d73fee5adfa",
+    "frontend/src/app/social-composition/provider.tsx": "21a3c2d3660ffc27f7953436782a6d050bc2cc9fb051f040558c522f77dda219",
+    "frontend/src/app/social-composition/panels.tsx": "2df58c368ec9813f7ee8a7c90ee7c48f8cced00f5bb0011b61150ff11c3e65ba",
+    "frontend/src/app/social-composition/owner.ts": "297e0402027a6e964976b12239301cbdb6dc7ddafa3b320e54ba6f6f1e504948",
+    "frontend/src/app/social-composition/routes.ts": "46daf04ced13f096fa9f6f9563552b6e96bca63ed161633bcbf2321bb3898ce4",
+    "frontend/src/app/social-composition/navigation.tsx": "13fdc6d570dd79db90f2310b320637ac86757fee817a561eb13cf59bde3c3902",
+    "frontend/src/features/social-sharing/index.ts": "030e8036ad14902c239f742dbe6766d633a7cb9a5eae642f865f9baf03e0ec3b",
+    "frontend/src/features/event-feed/index.ts": "4832214a64cd326ef84ba99377d2c2d91c6b72eaa2d9415c87f4747900b959c8",
+    "frontend/src/features/feed-thread/index.ts": "b2be26014fbe4be9029a9857bfb6145755327c3940705dacc06591f3771ff32f",
+    "frontend/src/features/inbox/index.ts": "126fbe92aa0d555bfd4a62602bd565e643f63e69c400c1d054a707e88f9ebcfd",
+    "frontend/src/features/people/index.ts": "8038915036f86b7ce087ccd86c9e8d4f1e0d6bf8d6e4ba8e302780a2c7b443bf",
+    "frontend/src/features/profile/index.ts": "7dbf0d6236d3bdb7458c817b949bada352611c55b2a00e596c9a7a86551ef83a",
+    "frontend/src/features/profile/Avatar.tsx": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
+    "frontend/src/app/character-entry/activity.ts": "bdde34c4bd8bda70baad74b98d8e58200e2f8cf926fe590fa88be039cb98756b",
+    "frontend/src/features/intro/index.ts": "b292dcf1fa9ebdc348d151c4b1e50b6dbb1d4e8520ae80cc52a034667e884434",
+    "frontend/src/features/age-status/index.ts": "1853d6a5db47d0818935e8f5b8e034ad94986a9ea9f8e77e05efb53b4cbdf6af",
+    "frontend/src/app/social-composition/composition.css": "a251f219c05c6490532b9811fa44ecb2168313f2116bfc51eadcd007e6fe696f",
+    "frontend/src/features/inbox/model/targets.ts": "a29acab3f1b6e2681c4ee678b4221f147d8949f17a0bb404990f86286c4e4a3c",
+    "frontend/src/features/intro/contract.ts": "ca1a009b9f6666da8fe8e0985932196b5120adfa49f8949373bac7cff917502e",
+    "frontend/src/app/social-composition/ports.ts": "ae55d5bccd8e39ea3c6f0e3067187de4cbd3dc20b6bc4bce7c38bb7c7e0dc67a",
+    "frontend/src/features/social-sharing/model/controller.ts": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
+    "frontend/src/features/event-feed/EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+    "frontend/src/features/event-feed/FeedImage.tsx": "a2d64bb338b0a658aae383c41f48a83330dc82735e3db11fedcb043bf60d06f1",
+    "frontend/src/features/feed-thread/controller.ts": "712d7b6449c4cb4a263f42fb3ccc7ac04553221ffceb42569e9d4e871c2efa22",
+    "frontend/src/features/feed-thread/FeedThread.tsx": "4a6c5ba6839c0229554453c58059e4865bb3b49367f2417ea5a6ef460c40bbbd",
+    "frontend/src/features/inbox/model/controller.ts": "42aa28dc1770ed01241e39d4ed260a6404c82ddfd629275fb1e11a4044289094",
+    "frontend/src/features/inbox/ui/Inbox.tsx": "e58a4525a57e5884e0bfd0d8f5cb76b0ff69f73cfbe08ec2ba20c428e7c881b9",
+    "frontend/src/features/people/People.tsx": "6d95f84a9dfb985292af4d1caaa3f87670ca18e99974b114b50797a5649d62b9",
+    "frontend/src/features/people/controller.ts": "cb490a4469782f82489fd06e1be0636f32693644a5d5f6fcc5cdf647edd8a087",
+    "frontend/src/features/profile/PublicProfile.tsx": "5cf3b391b78c54b2d79907d02c62d6cebfbdd022b2752aad3258e518497fa0cd",
+    "frontend/src/features/intro/IntroEditor.tsx": "fdd45a21f21f3e4e4e20393a22de1d715142738832271cb9da1b6074c0045511",
+    "frontend/src/features/intro/controller.ts": "a5a8bcebdf915b51130161d9362ce1c068c3d858029143501603fdc74787f6cd",
+    "frontend/src/features/age-status/AgeStatus.tsx": "2558f9112374456d15b746d637d33ef82cc414a6fecbfd6215c2248b832ed684",
+    "frontend/src/features/age-status/controller.ts": "51d0e2c32eb17899698c7ae128a2cb8d38199f475fcf7e82bd20190c28157633",
+    "frontend/src/features/inbox/model/contract.ts": "2a21ea678e52cd837bcd50323600bcbf3ad4d3cabe9f395ace124fe25a08c38f",
+    "frontend/src/shared/validation/text.ts": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+    "frontend/src/features/people/contract.ts": "155140bd934aa3d73bf0a0d7f874c9ac92efc38c4f2f5fefeb00397d76d90722",
+    "frontend/src/features/social-sharing/model/runtime.ts": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
+    "frontend/src/features/social-sharing/model/contract.ts": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
+    "frontend/src/features/social-sharing/ui/sharing.css": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
+    "frontend/src/features/event-feed/FeedGlyph.tsx": "80cfebc22cc438245a7316b8424257ecbcf36272602cf6a6a25553e69fb3c9dc",
+    "frontend/src/features/event-feed/presentation.ts": "3ae5f3a71a2ff0e355c16638aea678539b15ceabd3803e88a621b813ee7799d1",
+    "frontend/src/features/event-feed/feed.css": "7749673c8e87e4d07cacd4c3dff084307d5de40386a1f4fa1a2fe87afb3fece0",
+    "frontend/src/features/inbox/ui/inbox.css": "a1393a5b1c2bc56dd9a1db26bf5b6a184af41224786a930c73567347299131a4",
+    "frontend/src/features/people/runtime.ts": "fb415aac362022a6c1e4c49734fb610f9f01d6ca3d79aa9da75128a906aa9ef3",
+    "frontend/src/features/people/people.css": "939c17cfae06880839f0b0133b1cdd0a16af4b74316dbfbc9c211edb46b3f7c8",
+    "frontend/src/features/profile/profile.css": "7e545afdf5622611a2feb57c146eb15278727841843a43218930652dd74136b6",
+    "frontend/src/features/intro/command.ts": "b42bfef71779e743f1909dcb3fb16542d5b85d5c1668b362097d29552f7ab99c",
+    "frontend/src/app/shell-chrome/identity.tsx": "cb52295e98b6146caa8cef00743bdf35f978ec38cd0c9ddb0193b9c4bd441890",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/app/world-entry/resolver.ts": "bb49ed5c1d9c6d1985ada6dd9d53c8e1b579c6303cdcb30fb88e38a5c80a6d80",
+    "frontend/src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "frontend/public/world/avatars/derived-v1/static-release.json": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+    "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+    "frontend/src/world/runtime.ts": "5acd1bd73385aeae1d0559f1a8e97978c5b939349a5f2cb84bc23b9fbc409868",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226",
+    "frontend/src/world/composition/ticket.ts": "50198263b8abc42d3fe666d61e1048bf49c1a7399282338c591f9a4aa7152e0c",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/features/theme/model/controller.ts": "0060b976b71c704b658f65e62608a1eca68cd520f0d239c00fbb0eb3bf7b348b",
+    "frontend/src/world/theme/loader.ts": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053",
+    "frontend/src/world/mural-entry-lifecycle/source.ts": "dc564b568228413226d510995029c1334cc17bb6bf93f58cca18fcc3a3675458",
+    "frontend/src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "frontend/src/world/map/resource-cache.ts": "9bbfaf042ea6f13d52db9dc0bab730314b605c43f19a9a7781a39f747bc230a9",
+    "frontend/src/world/illustrated/overview.ts": "fd56872a8697c54c5e6ef36885a97dce40520e5bb061ba31b97359a0d95c19e3",
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "frontend/src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "frontend/src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+    "frontend/src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "frontend/src/world/network/WorldTransport.ts": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e",
+    "frontend/src/world/mural-entry-lifecycle/index.ts": "505dd55a69a68ad99806ec5950abe83a3a2593771aa4f4067d196a2959467da1",
+    "frontend/src/world/interaction/selection.ts": "bb1e330b398016dfffd6a8da79f7b4eabfd2f9de81ef96592fea7332e8fcdd85",
+    "frontend/public/world/maps/courtyard-tiled.json": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+    "frontend/public/world/themes/revenge.png": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+    "frontend/public/world/illustrated/revenge-ground.png": "aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e",
+    "frontend/public/world/illustrated/revenge-landmarks-atlas.png": "0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879",
+    "frontend/public/world/illustrated-runtime/revenge-details.png": "84cd918700d99f1bfabcde38a7d48d43b51bf5ef19d431b50cc9c11e0c0a3bcd",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/illustrated/phaser.ts": "c602992cba72af1918968ef74b8d96cc2cbc2e5fd23c1e596af08119b19eda8d",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "frontend/src/app/account-entry/panels.tsx": "87b9d04d380d8099713936e704737d656a810fdb39f0a6eb63875ae4cf498b78",
+    "frontend/src/features/settings/index.ts": "6c3a6ffce1012d3c3c35b205590b2857a1147501f673d4f156883228a84a8b15",
+    "frontend/src/features/avatar/whole-character/WholeCharacterEditor.tsx": "115b1912ddf6d70ee6a5ace175b8c69da0b02199a3dc6b27857b63eeb0d91d6f",
+    "frontend/src/features/settings/SettingsPage.tsx": "79211770b9733bc8ced6732f76e4a91dd4dfcbdb5b7f368a1cc3ef2254fd24c3",
+    "frontend/src/features/avatar/whole-character/whole-character.css": "ded58eb5d0666c7e5fbd92384d74a15cc0739a4b3860081b5fceb898ff343a96",
+    "frontend/src/app/account-deletion-entry/link.tsx": "2ab111ceded26b2df25d7b9eceb766743a551da0c86ce3011cc2e528bc11b05a",
+    "frontend/src/features/theme/ui/ThemeSelector.tsx": "50042fdadce49620b823e2520708336a2e4c75c376a3900deb76a274458eb34b",
+    "frontend/src/features/theme/ui/theme-selector.css": "efa98f8c022f8aab0e722423def1a4b273bb8b00548aebaf4ea2c604bcc7a30c",
+    "frontend/public/world/themes/parade.png": "3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+    "frontend/public/world/illustrated/parade-ground.png": "19a2450268ae02dd52331bbcac6b19b4d5a36462eeacf973c36af688bf638dea",
+    "frontend/public/world/illustrated/parade-landmarks-atlas.png": "06314ddf23ef02c2fa0432ded5c3f317287d9a08d014fcb1b382aeaf8af577ed",
+    "frontend/public/world/illustrated-runtime/parade-details.png": "8719a7704ec247667ba67c24a02ae2be448715cf6f5e53b569e747bdd96652c7",
+    "frontend/public/world/themes/danger.png": "1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+    "frontend/public/world/illustrated/danger-ground.png": "dd82b20521f8032c2813cb3f842d719bfe1b328afc607094effecd6d499973bc",
+    "frontend/public/world/illustrated/danger-landmarks-atlas.png": "ec273042bc867552b76d1144ce002fbb1b63825a0c67f2ba3bba089dd2b6ca8d",
+    "frontend/public/world/illustrated-runtime/danger-details.png": "34e290c46523936ffe1ed087e8771ee8404f90feb70b085e04fe26cb51a6979c"
+  },
+  "cases": [
+    {
+      "width": 390,
+      "era": "REVENGE",
+      "kind": "feed",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 780,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot": "feed-revenge-390.png",
+      "height631": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 567,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot631": "feed-revenge-390-h631.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 356,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot420": "feed-revenge-390-h420.png",
+      "cleanup": {
+        "path": "/feed",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "REVENGE",
+      "kind": "me",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/me",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot": "me-revenge-390.png",
+      "height595": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot595": "me-revenge-390-h595.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot420": "me-revenge-390-h420.png",
+      "cleanup": {
+        "path": "/me",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "REVENGE",
+      "kind": "meet",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 694.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot": "meet-revenge-390.png",
+      "height637": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 487.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot637": "meet-revenge-390-h637.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 270.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot420": "meet-revenge-390-h420.png",
+      "cleanup": {
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "PARADE",
+      "kind": "feed",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 780,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot": "feed-parade-390.png",
+      "height631": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 567,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot631": "feed-parade-390-h631.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 356,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot420": "feed-parade-390-h420.png",
+      "cleanup": {
+        "path": "/feed",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "PARADE",
+      "kind": "me",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/me",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot": "me-parade-390.png",
+      "height595": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot595": "me-parade-390-h595.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot420": "me-parade-390-h420.png",
+      "cleanup": {
+        "path": "/me",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "PARADE",
+      "kind": "meet",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 694.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot": "meet-parade-390.png",
+      "height637": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 487.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot637": "meet-parade-390-h637.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 270.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot420": "meet-parade-390-h420.png",
+      "cleanup": {
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "DANGER",
+      "kind": "feed",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "DANGER",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 780,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot": "feed-danger-390.png",
+      "height631": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 567,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot631": "feed-danger-390-h631.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 356,
+          "width": 248,
+          "height": 44
+        }
+      },
+      "screenshot420": "feed-danger-390-h420.png",
+      "cleanup": {
+        "path": "/feed",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "DANGER",
+      "kind": "me",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/me",
+        "published": true,
+        "theme": {
+          "selected": "DANGER",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot": "me-danger-390.png",
+      "height595": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot595": "me-danger-390-h595.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot420": "me-danger-390-h420.png",
+      "cleanup": {
+        "path": "/me",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 390,
+      "era": "DANGER",
+      "kind": "meet",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "DANGER",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 694.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot": "meet-danger-390.png",
+      "height637": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 487.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot637": "meet-danger-390-h637.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 77,
+          "y": 270.953125,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot420": "meet-danger-390-h420.png",
+      "cleanup": {
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "REVENGE",
+      "kind": "feed",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 780,
+          "width": 288,
+          "height": 44
+        }
+      },
+      "screenshot": "feed-revenge-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 356,
+          "width": 288,
+          "height": 44
+        }
+      },
+      "screenshot420": "feed-revenge-430-h420.png",
+      "cleanup": {
+        "path": "/feed",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "REVENGE",
+      "kind": "me",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/me",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot": "me-revenge-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot420": "me-revenge-430-h420.png",
+      "cleanup": {
+        "path": "/me",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "REVENGE",
+      "kind": "meet",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 97,
+          "y": 688.15625,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot": "meet-revenge-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 97,
+          "y": 264.15625,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot420": "meet-revenge-430-h420.png",
+      "cleanup": {
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "PARADE",
+      "kind": "feed",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 780,
+          "width": 288,
+          "height": 44
+        }
+      },
+      "screenshot": "feed-parade-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 356,
+          "width": 288,
+          "height": 44
+        }
+      },
+      "screenshot420": "feed-parade-430-h420.png",
+      "cleanup": {
+        "path": "/feed",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "PARADE",
+      "kind": "me",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/me",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot": "me-parade-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot420": "me-parade-430-h420.png",
+      "cleanup": {
+        "path": "/me",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "PARADE",
+      "kind": "meet",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 97,
+          "y": 688.15625,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot": "meet-parade-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 97,
+          "y": 264.15625,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot420": "meet-parade-430-h420.png",
+      "cleanup": {
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "DANGER",
+      "kind": "feed",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/feed",
+        "published": true,
+        "theme": {
+          "selected": "DANGER",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 780,
+          "width": 288,
+          "height": 44
+        }
+      },
+      "screenshot": "feed-danger-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "compose": {
+          "x": 71,
+          "y": 356,
+          "width": 288,
+          "height": 44
+        }
+      },
+      "screenshot420": "feed-danger-430-h420.png",
+      "cleanup": {
+        "path": "/feed",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "DANGER",
+      "kind": "me",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/me",
+        "published": true,
+        "theme": {
+          "selected": "DANGER",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot": "me-danger-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": []
+      },
+      "screenshot420": "me-danger-430-h420.png",
+      "cleanup": {
+        "path": "/me",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    },
+    {
+      "width": 430,
+      "era": "DANGER",
+      "kind": "meet",
+      "status": "PASS",
+      "errors": [],
+      "state": {
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "DANGER",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 97,
+          "y": 688.15625,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot": "meet-danger-430.png",
+      "height420": {
+        "overflow": false,
+        "brokenImages": [],
+        "create": {
+          "x": 97,
+          "y": 264.15625,
+          "width": 236,
+          "height": 46
+        }
+      },
+      "screenshot420": "meet-danger-430-h420.png",
+      "cleanup": {
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": true
+      }
+    }
+  ],
+  "errors": [],
+  "physicalIOS": "NOT_RUN",
+  "physicalAndroid": "NOT_RUN",
+  "browser": "156.0.8078.80"
+}

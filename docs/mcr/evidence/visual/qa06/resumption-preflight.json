@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-04T03:59:44.998305+00:00",
+  "allocation": "QA06-SECOND-20261104T0359Z",
+  "status": "ACCEPT_PREFLIGHT_PASS",
+  "freeGiB": 9.598968505859375,
+  "activeOwnedOrReferenceNativeRunners": [],
+  "publishedPin": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+  "durableReservedMiB": 20,
+  "cacheReservedMiB": 100,
+  "outputHardGiB": 0.2,
+  "oneBrowserNoParallelBuild": true
+}
