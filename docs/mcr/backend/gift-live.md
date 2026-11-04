@@ -311,6 +311,11 @@ inside the opaque private request. It also requires the already-materialized
 reservation policy pair instead of inserting one inside a prepared read. Missing
 pair state fails closed. The native competing update changes indexed and JSON
 revision consistently and rolls back its test mutation.
+The opaque request now captures the SDK's actual response-wide disclosure
+ceiling, retaining the original monotonic stop and any earlier child clips.
+The SDK owner confirmed a source-audit finding that this ceiling also needs
+both actual owner-view expiries; that peer follow-up is pending consumption and
+qualification. This ceiling is metadata, not a substitute for subject checks.
 
 Pickup/IssueCode dispatch remains default-unavailable. Root must compose the
 actual Gift settler and enforce the returned clip before every positive response

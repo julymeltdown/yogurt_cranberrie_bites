@@ -48,9 +48,10 @@ impl GiftPrivateRequest {
             _ => return Err(Status::invalid_argument("Not a Gift private request")),
         };
         let mut identity = request.identity();
-        // The canonical scope may shorten the edge's original budget. Preserve
-        // that actual wall/monotonic stop for every local wait and child clip.
-        identity.deadline = scope.binding().deadline();
+        // The real response-wide ceiling may shorten the edge's original
+        // budget (owner views or an earlier child). It grants no authority;
+        // actual subject checks below remain mandatory.
+        identity.deadline = scope.disclosure_ceiling()?;
         Ok(Self {
             identity,
             kind,
