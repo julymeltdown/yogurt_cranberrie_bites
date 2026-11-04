@@ -188,6 +188,10 @@ class Contract:
         paths = sorted(DIRECTORY.glob('*.schema.json'))
         paths += [ROOT / 'contracts/core/v1/core.schema.json']
         paths += sorted((ROOT / 'contracts/assets/v1').glob('*.schema.json'))
+        # Core already references this separately reviewed version. Resolve it
+        # offline just as the asset oracle does; never register the v2 candidate.
+        paths += [ROOT / 'contracts/assets/v2/reviewed' / name for name in
+                  ('avatar-config.schema.json', 'avatar-manifest.schema.json')]
         self.documents = [read(path) for path in paths]
         for document in self.documents:
             Draft202012Validator.check_schema(document)

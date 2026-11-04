@@ -1,0 +1,30 @@
+syntax = "proto3";
+package notification.concert.v1;
+import "notification/v1/concert_inbox.proto";
+
+// Private system ingress: only the authenticated Concert workload may submit
+// committed source projections. This is not an actor delegation or public API.
+service ConcertDeliveryService {
+  rpc Deliver(DeliverRequest) returns (DeliverResponse);
+}
+message DeliveryEnvelope {
+  string outbox_id = 1;
+  string receipt_id = 2;
+  string event_id = 3;
+  string resource_id = 4;
+  int64 resource_revision = 5;
+}
+message DeliveryRecipient {
+  string user_id = 1;
+  optional string source_actor_id = 2;
+  NotificationKind kind = 3;
+  Target target = 4;
+}
+message DeliverRequest {
+  DeliveryEnvelope envelope = 1;
+  repeated DeliveryRecipient recipients = 2; // At most 1000; one per user.
+}
+message DeliverResponse {
+  // Exact immutable identity echoed only after the owning transaction commits.
+  DeliveryEnvelope committed_envelope = 1;
+}

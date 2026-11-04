@@ -25,7 +25,24 @@ async fn main() -> anyhow::Result<()> {
     let telemetry = platform::telemetry::init("notification-service")?;
     platform::shutdown::install_signal_handlers()?;
     let config = AppConfig::load()?;
+    let concert_settings = notification_service::config::concert_runtime::ConcertSettings::load(
+        config.tls_material.is_some(),
+    )?;
     let pool = connect_pool(&config).await?;
+    let concert = match concert_settings.as_ref() {
+        Some(settings) => Some(
+            settings
+                .connect(
+                    pool.clone(),
+                    config
+                        .tls_material
+                        .as_ref()
+                        .expect("live mode requires TLS"),
+                )
+                .await?,
+        ),
+        None => None,
+    };
     let readiness = readiness(pool.clone());
     let health = health_router(readiness.clone());
     let state = Arc::new(build_state(&config, pool).await?);
@@ -63,6 +80,36 @@ async fn main() -> anyhow::Result<()> {
                     .tls_config(material.server_config()?)
                     .map_err(anyhow::Error::from)?;
             }
+            let (inbox, settlement, delivery) = concert
+                .map(|services| {
+                    use notification_service::concert::{
+                        authority::{INBOX_POLICY, SETTLEMENT_POLICY},
+                        delivery::DELIVERY_POLICY,
+                    };
+                    let registry = concert_settings
+                        .as_ref()
+                        .expect("live services require settings")
+                        .callers
+                        .clone();
+                    let settlement = platform::grpc_method_policy::guard_without_delegation(
+                        &SETTLEMENT_POLICY,
+                        services.inbox.settlement_server(),
+                        registry.clone(),
+                    )?;
+                    let inbox = platform::grpc_method_policy::guard_without_delegation(
+                        &INBOX_POLICY,
+                        services.inbox.inbox_server(),
+                        registry.clone(),
+                    )?;
+                    let delivery = platform::grpc_method_policy::guard_without_delegation(
+                        &DELIVERY_POLICY,
+                        services.delivery.server(),
+                        registry,
+                    )?;
+                    Ok::<_, anyhow::Error>((Some(inbox), Some(settlement), Some(delivery)))
+                })
+                .transpose()?
+                .unwrap_or((None, None, None));
             builder
                 .add_service(readiness.grpc_service(config.caller_registry.clone())?)
                 .add_service(platform::grpc_method_policy::guard(
@@ -71,6 +118,9 @@ async fn main() -> anyhow::Result<()> {
     config.caller_registry.clone(),
     config.actor_delegation.clone(),
 )?)
+                .add_optional_service(inbox)
+                .add_optional_service(settlement)
+                .add_optional_service(delivery)
                 .serve_with_shutdown(config.grpc_addr, platform::shutdown::global().cancelled())
                 .await?;
             Ok::<(), anyhow::Error>(())

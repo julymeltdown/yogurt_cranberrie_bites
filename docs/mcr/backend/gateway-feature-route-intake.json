@@ -1,0 +1,38 @@
+{
+  "status": "INTEGRATED",
+  "owner_source": "1767927a5f329fbf135e7107b5038dd3f0d9c8a7",
+  "qualified_rust_source": "6bf0d91c087a9aad0a06431be3daf5c181fe2250",
+  "base": "145a8e939fb7bede7e46931d6559adb2c51f62a7",
+  "intake_last_owner_commit": "3baf7a17",
+  "changed_paths_exact": 4,
+  "all_original_owner_postimages_exact": true,
+  "owner_validation": {
+    "selected_cases": 21,
+    "result": "PASS",
+    "scope": "6 library +7 feature-route +4 retained Product +4 EOF cases; developer-owned copied executable round, no current public stack"
+  },
+  "combined_checks": [
+    {
+      "command": "complete contracts interpreter: scripts/mcr/validate-domain.py",
+      "exit_code": 0,
+      "fixtures": 47,
+      "scope": "Offline contract oracle only"
+    },
+    {
+      "command": "complete contracts interpreter: unittest discover -s scripts/mcr/tests -p test_domain.py",
+      "exit_code": 0,
+      "tests": 47
+    },
+    {
+      "command": "git diff 740d7962 HEAD --check (scoped source)",
+      "exit_code": 0
+    }
+  ],
+  "combined_fix": "Domain oracle now registers only the two existing separately reviewed v2 asset schemas referenced by Core. Previously failed offline reference resolution. Candidate v2 schemas remain unregistered; Map4/static1 product selection unchanged.",
+  "limitations": [
+    "Actual public ten-route Gateway-to-owner production flow NOT_RUN.",
+    "Notification target native provider and positive Inbox projection require their original owner.",
+    "Age routes are not included; its typed Product admission is a separate owner handoff.",
+    "Full original IN03 remains NOT_RUN."
+  ]
+}

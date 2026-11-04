@@ -1,0 +1,105 @@
+{
+  "status": "INTEGRATED",
+  "owner": "BE33 production delivery/startup",
+  "source_commit": "6130f648d934f5f68b616a60ba69c1f6053aa691",
+  "qualified_source": "7e15b1962ea48a59ae0802b0e2b118fc1e0a56b1",
+  "base_commit": "145a8e939fb7bede7e46931d6559adb2c51f62a7",
+  "dependency_source": "50a5003370b4dfab9cb6483c8689a8378446f9a0",
+  "dependency_owner_commit": "f7e215eb4ede50bd3a13623aabb16169ec6e16fa",
+  "dependency_delivered_commit": "55a52ce2",
+  "original_postimages_exact": 18,
+  "paths": [
+    {
+      "path": "backend/proto/notification/v1/concert_delivery.proto",
+      "sha256": "3a507a3af55ae447fa082eed8bdabae3d4b43905414c4cacf68db81679497316"
+    },
+    {
+      "path": "backend/proto/notification/v1/concert_inbox.proto",
+      "sha256": "64bb5ab81b10bb21248833f5e67e063f1c8bc5f786bce7655c99d40067bce163"
+    },
+    {
+      "path": "backend/services/concert-service/build.rs",
+      "sha256": "26a3671c26f64ac600063a1d75353aee7b83de250e43d226fbac02e3e44b4055"
+    },
+    {
+      "path": "backend/services/concert-service/src/adapters/out/notification/delivery.rs",
+      "sha256": "95000d693b5b594c2952ca9f16a616013a7d06ec872ebdeb152a4d5c770a6265"
+    },
+    {
+      "path": "backend/services/concert-service/src/adapters/out/notification/mod.rs",
+      "sha256": "18717fb9c45418e1392e48332422a9c819d0567f530b417afa4705665c9e5a2b"
+    },
+    {
+      "path": "backend/services/concert-service/src/adapters/out/notification/routing.rs",
+      "sha256": "52fda87a0c1ae251e5bbe01679a85b30c1030bf3449d493d938bc034afa915d2"
+    },
+    {
+      "path": "backend/services/concert-service/src/adapters/out/notification/source.rs",
+      "sha256": "cd622de99f0a8f7c21e27b4b49d797fad4509e8cb0da4a1f862098a5ae13fbe3"
+    },
+    {
+      "path": "backend/services/concert-service/tests/notification_projection_routing.rs",
+      "sha256": "da6579d006d99c293ef52cc4ef16b032481d18d83fef031da98ca0a8c219a7ba"
+    },
+    {
+      "path": "backend/services/notification-service/build.rs",
+      "sha256": "e30bc3fbd58d029eef2753a682613bff9865a49475759e89b95295945353cc92"
+    },
+    {
+      "path": "backend/services/notification-service/src/concert/delivery.rs",
+      "sha256": "ec23e22ed42d4e6d3eaf62dcf467a22b5fb67b64e5d3fb1b6d850e2ffb8509a6"
+    },
+    {
+      "path": "backend/services/notification-service/src/concert/mod.rs",
+      "sha256": "cd8a572fb06a1aff16b6204c281c04cec1ac6fba4018fc4c14ef3c290853adac"
+    },
+    {
+      "path": "backend/services/notification-service/src/concert/target_client.rs",
+      "sha256": "12b784f4ee45fbd82b4aca21ece0e4850fd2511abe838a47f699aee38c66d79c"
+    },
+    {
+      "path": "backend/services/notification-service/src/config/concert_runtime.rs",
+      "sha256": "4075353bb9215e80af3cbd593f9113e688349fc9349bd0fd9036f468952ef660"
+    },
+    {
+      "path": "backend/services/notification-service/src/config/mod.rs",
+      "sha256": "48307cc40a9a9c5a7188b420fb471b3a409b0155d872813d7a2f26b1bab1ca22"
+    },
+    {
+      "path": "backend/services/notification-service/src/main.rs",
+      "sha256": "fe88acd26670029d72aac414cc8466c81a527f937f4db59d7a68612ee4e2ac15"
+    },
+    {
+      "path": "backend/services/notification-service/tests/concert_delivery_ingress.rs",
+      "sha256": "5b88ddb2b375e366fde5f7caec7c86d4df182aa34f2568b13b6b9069bc5a6839"
+    },
+    {
+      "path": "backend/services/notification-service/tests/concert_runtime.rs",
+      "sha256": "c7666dff727cfc5982bb361aedc86b7c229df596b13bea4b82d6f6b85ee01bdf"
+    },
+    {
+      "path": "docs/mcr/backend/notification-production-delivery.md",
+      "sha256": "a03bbe301a1407c3184fd31b8d1c80df0fbac1eb0c3b7019444a14815c46c51f"
+    }
+  ],
+  "owner_qualification": {
+    "result": "PASS",
+    "routing_cases": 4,
+    "actual_mtls_ingress_cases": 3,
+    "runtime_cases": 4,
+    "scope": "Actual copied Notification main, ingress/routing/restart and strict configuration; private owner test fixtures.",
+    "final_release_sha256": "b2a412996681fc8745b9826bc7f27e11e063210cd17be459debb04baf4d1d830",
+    "resources": "FULLY_RELEASED; target release before native tests, no target access afterward; owned processes/listeners/PG/PKI/TMP removed; zero prepared transactions."
+  },
+  "publisher_checks": [
+    "Exact18 original-owner postimages and assigned changed paths; no conflict resolution/source mutation",
+    "Scoped whitespace check exit0",
+    "Public C04 contract is unchanged by this private wire/startup patch; combined47 Domain tests and47 fixtures passed in the same publication batch"
+  ],
+  "limitations": [
+    "207 canonical target provider implementation not included: only its early protocol/client dependency.",
+    "Concert main target callback and production Notification sink composition remain pending.",
+    "Actual positive canonical Inbox native target flow and public Gateway/full IN03 remain NOT_RUN.",
+    "Four routing cases do not imply all eight target kinds are available."
+  ]
+}

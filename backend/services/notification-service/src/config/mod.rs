@@ -1,3 +1,4 @@
+pub mod concert_runtime;
 pub fn load() {}
 use crate::adapters::out::persistence::notification_repository::PgNotificationRepository;
 use crate::adapters::r#in::messaging::retention_purge_worker::NotificationRetentionPurgeWorker;
