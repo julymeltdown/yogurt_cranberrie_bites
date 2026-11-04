@@ -14,7 +14,10 @@ use concert_service::{
     },
     product_rpc::{
         self, delivery,
-        scope_ledger::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys},
+        scope_ledger::{
+            ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys, ProducerTransaction,
+        },
+        settlement::NativeTransactionResolver,
     },
     rpc,
 };
@@ -421,10 +424,26 @@ pub async fn run() -> anyhow::Result<()> {
                 count == 1,
                 "Unknown native fixture must have an actual durable registration"
             );
+            let (identity,native): (serde_json::Value,Option<String>) = sqlx::query_as("SELECT identity,pg_xact_status((identity->>'full_xid')::xid8) FROM concert_product_owner_transactions WHERE instance_id=$1 AND scope_id=$2")
+                .bind(Uuid::parse_str(&producer.instance_id)?).bind(Uuid::parse_str(&producer.scope_id)?).fetch_one(&pool).await?;
+            anyhow::ensure!(
+                native.as_deref() == Some("committed"),
+                "Negative case requires an actual native COMMIT"
+            );
+            let identity: ProducerTransaction = serde_json::from_value(identity)?;
+            let resolution =
+                ParticipantNativeResolver::new(pool.clone(), core.ledger().instance())?
+                    .resolve(&observed.scope.binding().owner_binding(), &identity)
+                    .await?;
+            anyhow::ensure!(
+                resolution.status == proto::TransactionStatus::Unknown
+                    && resolution.receipt_evidence.is_empty(),
+                "COMMIT without an immutable witness must resolve UNKNOWN"
+            );
             marker(
                 &root,
                 "cancel-unknown-native.json",
-                serde_json::json!({"phase":state.0,"abandoned":state.3,"settled":false,"serialized":false,"delivered":false,"registered_transactions":count}),
+                serde_json::json!({"phase":state.0,"abandoned":state.3,"settled":false,"serialized":false,"delivered":false,"registered_transactions":count,"native_status":"committed","resolution":"UNKNOWN","receipt_evidence":false}),
             )?;
             results.push("registered actual native COMMIT without witness remains unknown; owner fences retained");
         }
