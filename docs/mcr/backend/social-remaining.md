@@ -1057,3 +1057,24 @@ recovery passed. Failures, limits, exact artifacts and corrective source changes
 are recorded in [factory evidence](social-policy-runtime.md). All resources were
 FULL released with no target reentry. The corrected complete cohort remains
 NOT_RUN pending a new allocation; no whole BE28/29/30/37 or IN03 acceptance follows.
+
+
+## Corrected expiry and Sharing factory cohort, 2026-11-05 KST
+
+The current successor source `46defd2346e2e73641c552b408623ce357500c15`, based on
+`cf1ca629a33ece977f8b5b1b6faf6152b35e5dbd`, passed the complete corrected focused
+Social policy/factory/supervisor cohort on the actual 47-migration Concert SQLx
+ledger and physical PG restart. No diagnostic exclusion of failed delivery or
+factory cases remained. The actual Auth worker/source/Apply/incumbent-publisher
+Sharing deletion boundary also passed before and after a separate physical PG
+restart, while all other seven saga targets stayed pending. Four C03 component
+cases and the actual Concert binary build passed. See `social-policy-runtime.md`,
+`sharing-deletion-runtime.md` and `bootstrap-feature-composition.md` for precise
+paths, source revisions, hashes, commands, exits, limits and outstanding gates.
+
+The earlier failures and source history remain recorded; this result does not
+relabel historical diagnostics as qualification. All allocated resources were
+fully released at 02:58:36.864049 KST. Production main/Gateway mounting, current
+public C03 behavior, real World socket/cache acceptance and original full product
+acceptance remain open. This developer disposition goes directly to the named
+publishing developer and implementation counterparts without a king/SL review.

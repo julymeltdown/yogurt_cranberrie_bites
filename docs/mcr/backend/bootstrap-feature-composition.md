@@ -1,6 +1,6 @@
 # SERVER-C03-AVAILABILITY-01
 
-Status: **IN_PROGRESS; validation NOT_RUN** (2026-11-05 KST).
+Status: **Four component tests and actual main build PASS; public C03 runtime NOT_RUN** (2026-11-05 KST).
 
 Root assigned the server composition gap after its R7 run served three actual
 C03 responses with Feed, Social sharing and mutations disabled despite configured
@@ -61,3 +61,24 @@ all corrected Social native cases without diagnostic exclusions, non-test main
 inspection and actual C03 runtime availability/denial/stale-pin behavior. Source
 work does not claim those checks passed. Root is the named publishing developer;
 no king/SL review or acknowledgment is a prerequisite.
+
+
+Actual component disposition: source `46defd2346e2e73641c552b408623ce357500c15`
+compiled with the five-test Social/Sharing cohort, including actual non-test Concert
+main, exit 0. All four `bootstrap_features` cases passed, exit 0, in 0.09 seconds.
+Report `/private/tmp/mcr-social-sharing-f_ut5nyi/features-report.json`, SHA256
+`b4f4b2839951b4479cd87a7ea7432c75615907f22e808770beb058f68135da61`.
+The final six executable hashes, source and tool readsets are frozen in that
+root's `all-artifacts.json`. Actual final main inspection, stale final-pin startup
+refusal and current public C03 availability/operation denial are **NOT_RUN** here.
+Root supplied its retained R7 recipe as a launch reference; the old seven-main
+cohort and its old C03 replies do not validate this changed source. The named
+publishing developer retains the current stack/runtime integration gate.
+
+Gift's implementation owner supplied a concrete future interface:
+`GiftStartupSettings::load(bootstrap, participant, intro)` immediately after Intro
+settings, and opaque `GiftFeatureReadiness::is_enabled()` obtained only through
+that settings object's `readiness()`. Its API was uncommitted during this frozen
+round, so Gifts remains unavailable in this source. A separate additive typed
+join is required after that committed factory is available; it must precede the
+same one release bind and must not grant Gift authorization or enable an off mode.

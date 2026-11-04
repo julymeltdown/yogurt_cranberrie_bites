@@ -1,6 +1,6 @@
 # Sharing deletion production composition
 
-Status: **IN_PROGRESS; build and native qualification NOT_RUN** (2026-11-05 KST).
+Status: **Real factory/Auth worker cohort PASS; production main mount open** (2026-11-05 KST).
 
 The already qualified Sharing producer (`4592a705`) remains unchanged. This task
 connects its real publisher through the existing production deletion factory and
@@ -69,7 +69,7 @@ reuses `migration_smoke.Cluster`, `invalidation_clients_smoke.pki` and the Socia
 native source manifest, all in the frozen readset. No dependencies, migrations,
 contracts, manifests or lockfiles change.
 
-Prepared validation commands, **not yet run**:
+Validation commands (the build below ran as part of the five-test cohort):
 
 ```sh
 cargo test --manifest-path backend/Cargo.toml --locked --offline -j 2 \
@@ -80,8 +80,36 @@ python3 -B backend/scripts/mcr/sharing_deletion_runtime/qualify.py \
   --report /ABS/new-sharing-report.json --deadline-epoch FINITE_EPOCH
 ```
 
-Rust formatting and Python AST parsing passed. These syntax checks do not imply
-that compilation, RPC, SQLx, worker or restart checks passed. Fresh allocation and
-all corrected Social cases remain required. Root is the named publishing owner;
+Rust formatting and Python AST parsing passed. The fresh native disposition below
+records the separate compilation, RPC, SQLx, worker and restart evidence. Root is the named publishing owner;
 207 is the implementation counterpart for main mounting. Neither handoff waits
 for king/SL review, acknowledgment or a ledger update.
+
+
+## Actual validation disposition
+
+The complete source `46defd2346e2e73641c552b408623ce357500c15` compiled with
+Rust 1.88, locked/offline, jobs=2, dev/test debug=0, incremental=0, no Rust flags or
+wrappers, contracts-build opt-level=2: exit 0. The Sharing executable was copied
+and frozen before target release. This used the fresh finite
+`SOCIAL-SHARING-MEDIA-202611041753Z` allocation, independent guardian and original
+clock; the target was not accessed during native checks.
+
+Both SOURCE and RESTARTED invocations passed, exit 0. SOURCE took 8.628 seconds;
+RESTARTED took 8.001 seconds. Both used the production Auth/source/Apply handlers,
+actual canonical repositories and the real incumbent Social factory. The positive
+Sharing step, refusal/cancellation non-ACK, exact cleanup and immutable replay
+assertions all passed. Actual full SQLx ledgers matched frozen inputs: Auth 18,
+Concert 47. Actual postmaster PIDs changed 78937 to 80666. Fresh test PIDs and
+postmaster start timestamps differed. Prepared transaction counts were zero before
+physical stop, after replay and before final teardown. Seven other saga targets
+remained required and pending; aggregate BE42 is not accepted here.
+
+Report `/private/tmp/mcr-social-sharing-f_ut5nyi/sharing-report.json`, SHA256
+`653d3019eb4883568422ff40bb73d0e8b3e03887e62f7c3babdfc02e3540c188`.
+The encompassing corrected Social+C03 component+Sharing copied cohort passed in
+33.475 seconds; see `social-policy-runtime.md` for source/artifact and release
+hashes. All owned clusters and RPC processes stopped; FULL release was
+02:58:36.864049 KST, with all future reservations zero and the guardian exited 0.
+The source remains a component/real-service boundary qualification. Main mounting,
+public Gateway and actual socket/cache removal are still separate explicit gates.

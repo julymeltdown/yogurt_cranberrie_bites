@@ -1,6 +1,6 @@
 # Social policy factory and recovery
 
-Status: **IN_PROGRESS; native validation NOT_RUN** (2026-11-05 KST).
+Status: **Corrected full factory/recovery cohort PASS; public WS/FE acceptance open** (2026-11-05 KST).
 
 The delivery base is `30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694`.
 Root explicitly delegated the complete Social-only
@@ -119,3 +119,66 @@ Evidence is retained under `/private/tmp/mcr-social-recovery-so50cci0`:
 | `diagnostic-restart-native-report.json` | `0bce6975906d0b9cadaef2b9f5c6ff11c2ab616a7cd1009dd182cbd0983041d5` |
 | `target-release.json` | `0fb3a2e929c9ead719062c61e29156618c1df877e86b88cf23b1ae602413d174` |
 | `full-release.json` | `16f2ad84593a4dd695cbae5dd97a81ed9eb1ca4084fe3cf3c2be78ec94897a83` |
+
+
+## Corrected full cohort, 2026-11-05 KST
+
+Source `46defd2346e2e73641c552b408623ce357500c15` rebases the unpublished own
+changes onto `cf1ca629a33ece977f8b5b1b6faf6152b35e5dbd`. The earlier failed cohort
+and diagnostics above remain historical evidence. Their failures were fixed in
+source, then the complete current focused inventory ran without the diagnostic
+exclusions that had skipped failing delivery or factory cases.
+
+Offer `SOCIAL-SHARING-MEDIA-202611041753Z` admitted at 02:54:31.276213 KST.
+One locked offline Rust 1.88 `cargo test --no-run` built the five integration
+executables (`social_live`, `social_delivery`, `social_policy_runtime`,
+`bootstrap_features`, `sharing_deletion_runtime`) and actual non-test Concert
+binary, exit 0. Dev/test debug and incremental were zero; both Rust flags and
+wrappers were unset; contracts-build opt-level=2, jobs=2. All six copied binaries,
+full tracked backend/contract source readset, actual complete Auth/Concert SQL,
+tool hashes and argv were frozen outside the shared target. Target release at
+02:55:47.579558 KST recorded compiler/handles/readers zero and no reentry.
+
+The corrected Social round passed all 8 pure live tests, 1 pure factory lifetime
+test, actual full SQLx migration initialization, 8 focused kernel cases, all 9
+delivery cases, both real factory cases, pending-source seed and fresh-owner
+recovery after a physical PostgreSQL restart. The rebased full Concert ledger has
+47 migrations, each matching the frozen SHA384 set. Actual postmaster PIDs changed
+77494 to 78647; persisted counts were `25|25|50|2|88` (command receipts, outbox,
+policy signals, exact unpublished independent signals, policy revision sum).
+Prepared transaction counts were zero before restart, after recovery and teardown.
+
+This was followed sequentially by the actual Sharing factory/Auth worker round
+in `sharing-deletion-runtime.md`. Four C03 component cases also passed. The total
+copied cohort exited 0 in 33.475 seconds within the original cumulative clock.
+No World/public listener or real frontend acceptance is inferred.
+
+All PG roots were removed; runtime processes were empty; the independent guardian
+exited 0. FULL release at 02:58:36.864049 KST was 169.284 seconds after target
+release. The peak whole job was 4,918,493,184 bytes including previous retained
+work, checkout, shared Git, positive target growth, copies and PG. New positive
+target growth was 65,683,456 bytes; nonshrinking historical target carry is now
+339,120,128 bytes. No old failures, target files or shared caches were removed.
+
+Before native startup, a speculative extra 205 reservation caused two conservative
+capacity refusals with no PG children. 205 then confirmed actual reservation zero
+and its proposal was 1.5 GiB. The owner voluntarily narrowed unused future growth
+to 536,870,912 bytes, with stricter effective total new-growth ceiling 881,147,904
+bytes; no historical carry or original clocks changed. Fresh free bytes were
+20,639,944,704, leaving 9,902,526,464 after the original OTHER 8 GiB envelope,
+an additional conservative possible 205 1.5 GiB and own remaining 512 MiB.
+The original whole/new upper bounds remained 8/2 GiB. FULL releases all outstanding
+future reservation; retained evidence remains charged as already consumed bytes.
+
+Retained evidence root: `/private/tmp/mcr-social-sharing-f_ut5nyi`.
+
+| File | SHA256 |
+| --- | --- |
+| `all-artifacts.json` | `e517ea4a4ab81132ea3a65f2f272eaab0b7d4049e9b6953967f1fd20874143ab` |
+| `social-report.json` | `17b862bc0fc39d05847dd22d3a37312a69f43c4b7f7a70f0fde02122dc257f85` |
+| `features-report.json` | `b4f4b2839951b4479cd87a7ea7432c75615907f22e808770beb058f68135da61` |
+| `sharing-report.json` | `653d3019eb4883568422ff40bb73d0e8b3e03887e62f7c3babdfc02e3540c188` |
+| `cohort-report.json` | `40ae1de9b6653edc1a2bb9c64ae79af34ffcbdd0955ae9114a129970ca0fe209` |
+| `target-release.json` | `a45d7ab5c3fd481701557622ce74778bdeeca51ec419d74ea8a3cd12ea11e71a` |
+| `full-release.json` | `0d7c7f3c0fece0b9a08e0e2f76c723588d333ace7c678c4a70a3cd7b00bf2090` |
+| `narrowed-native-reservation.json` | `b8d35dc5f28744fa8fa3a998e51551165033a61c0d5f41c64ca93f20ad52e6a7` |
