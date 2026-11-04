@@ -4,6 +4,7 @@ Adapted from reviewed-persistence-motion/qualify.py at a10e4f409; this round own
 only the continuity paths and the three explicitly transferred selector/footer hunks.
 """
 import datetime as dt
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -18,6 +19,7 @@ NODE = Path('/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node')
 DEPS = Path('/Users/lhs/Desktop/mcr/frontend')
 TESTS = 'src/features/avatar/__tests__/integration-continuity'
 EVIDENCE = ROOT / 'docs/mcr/evidence/avatar-integration-continuity'
+BASE = 'a10e4f409f5727cb25b6cc37d75f499a73e9bb70'
 
 
 def size(path):
@@ -26,6 +28,20 @@ def size(path):
 
 def processes():
     return [tuple(map(int, row.split())) for row in sp.check_output(['ps', '-axo', 'pid=,ppid=,pgid=,rss='], text=True).splitlines() if row.strip()]
+
+
+def inventory():
+    prefixes = ['frontend/src/entities/avatar', 'frontend/src/features/avatar', 'frontend/src/world/avatar',
+                'frontend/src/app/character-entry', 'frontend/public/world/avatars', 'docs/mcr/art',
+                'docs/mcr/evidence/avatar-motion-adoption', 'docs/mcr/evidence/customize-reviewed-production',
+                'docs/mcr/evidence/avatar-part-controls', 'docs/mcr/evidence/reviewed-persistence-motion',
+                'docs/mcr/evidence/avatar-integration-continuity']
+    result = {path: size(ROOT / path) for path in prefixes}
+    objects = {row.split()[0] for row in sp.check_output(['git', 'rev-list', '--objects', BASE + '..HEAD'], cwd=ROOT, text=True).splitlines()}
+    result['sourceGitObjects'] = sum(int(row) for row in sp.check_output(['git', 'cat-file', '--batch-check=%(objectsize)'],
+        cwd=ROOT, input='\n'.join(sorted(objects)) + '\n', text=True).splitlines()) if objects else 0
+    result['worktreeGit'] = size(Path(sp.check_output(['git', 'rev-parse', '--absolute-git-dir'], cwd=ROOT, text=True).strip()))
+    return result
 
 
 def retire(child):
@@ -50,6 +66,9 @@ def main():
     assert mode in ['source', 'native'] and attempt.replace('-', '').isalnum()
     assert deadline - time.time() > 75
     assert shutil.disk_usage(ROOT).free >= offer['admissionFreeBytes']
+    assert hashlib.sha256((ROOT / 'frontend/pnpm-lock.yaml').read_bytes()).hexdigest() == '47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6'
+    carry = inventory()
+    assert sum(carry.values()) < offer['wholeBytes']
     output = EVIDENCE / attempt
     assert not output.exists()
     output.mkdir(parents=True)
@@ -62,10 +81,11 @@ def main():
                            '--config', TESTS + '/vitest.config.mjs', '--no-cache', '--reporter', 'dot']),
                 ('lint', [str(NODE), str(DEPS / 'node_modules/oxlint/bin/oxlint'), '--deny-warnings', TESTS,
                           'src/features/avatar/motion-adoption/MotionEditor.tsx']),
+                ('types', [str(NODE), '--max-old-space-size=2048', TESTS + '/typecheck.mjs']),
                 ('syntax', [str(NODE), '--check', TESTS + '/native.mjs'])] if mode == 'source' else [
                 ('native', [str(NODE), TESTS + '/native.mjs'])]
     report = {'offer': offer, 'mode': mode, 'source': sp.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-              'commands': [], 'status': 'FAIL', 'startedUTC': dt.datetime.now(dt.timezone.utc).isoformat(),
+              'commands': [], 'inventory': carry, 'wholePeak': sum(carry.values()), 'status': 'FAIL', 'startedUTC': dt.datetime.now(dt.timezone.utc).isoformat(),
               'rssPeak': 0, 'processPeak': 0, 'temporaryPeak': 0, 'durablePeak': 0, 'freeMinimum': shutil.disk_usage(ROOT).free}
     child = None
     owned = set()
@@ -85,12 +105,15 @@ def main():
                     owned.update(ids)
                     rss = sum(rss * 1024 for pid, _, _, rss in rows if pid in ids)
                     temporary, durable, free = size(tmp), size(EVIDENCE), shutil.disk_usage(ROOT).free
+                    whole = sum(carry.values()) + temporary + size(output)
+                    report['wholePeak'] = max(report['wholePeak'], whole)
                     for key, value in [('rssPeak', rss), ('processPeak', len(ids)), ('temporaryPeak', temporary), ('durablePeak', durable)]:
                         report[key] = max(report[key], value)
                     report['freeMinimum'] = min(report['freeMinimum'], free)
                     assert time.time() < deadline - 60, 'Cleanup deadline'
                     assert free >= offer['continuousFreeBytes'], 'Continuous free floor'
                     assert temporary <= offer['temporaryBytes'] and durable <= offer['durableBytes'], 'Output byte cap'
+                    assert whole <= offer['wholeBytes'], 'Whole retained carry/output cap'
                     assert rss <= offer['rssBytes'] and len(ids) <= offer['processes'], 'Process/RSS cap'
                     if child.poll() is not None:
                         break

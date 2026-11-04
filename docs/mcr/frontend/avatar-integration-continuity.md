@@ -70,3 +70,9 @@ Source/browser jobs, command exits, source pins, original failed attempts, byte
 and process bounds, cleanup and exact publication ancestry will be recorded in
 `docs/mcr/evidence/avatar-integration-continuity/`. Execution remains NOT_RUN
 until those actual results exist.
+
+The source round also checks the full application with the pinned retained type
+helper (SHA256 `4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1`).
+As in the retained qualification, its no-emit invocation enables
+`allowImportingTsExtensions` for existing test-config imports while preserving
+the entire file set and diagnostics. No tracked compiler config changes.
