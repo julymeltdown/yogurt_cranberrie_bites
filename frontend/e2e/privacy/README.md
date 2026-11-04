@@ -2,14 +2,14 @@
 
 This is developer-owned implementation, not a review gate. Writes are restricted to this directory and `docs/mcr/evidence/privacy-frontend/`. No product UI, Auth model, shared interface, central configuration, backend, `TEST/authorization/`, source original or artwork is changed.
 
-Use the retained Node 24.22.2 and existing frontend installation. `MCR_QA04_DEPENDENCIES` selects the existing installation directory (default `/Users/lhs/Desktop/mcr/frontend`). Create an ignored **directory-local** `node_modules` symlink to that installation for Vite's deduplicated packages and TypeScript. Do not install dependencies or create a central checkout link. Remove the local symlink after qualification.
+Use the retained Node 24.22.2 and existing frontend installation. `MCR_QA04_DEPENDENCIES` selects the existing installation directory (default `/Users/lhs/Desktop/mcr/frontend`). Create a temporary **directory-local** `node_modules` symlink to that installation for Vite's deduplicated packages and TypeScript. Do not stage the link, install dependencies or create a central checkout link. Remove the local symlink after qualification. The runner removes its own cache on exit.
 
 Run from the repository root:
 
 ```sh
 NODE frontend/e2e/privacy/run.mjs
 NODE --test frontend/e2e/privacy/live-gate.test.mjs
-NODE frontend/e2e/privacy/node_modules/typescript/bin/tsc -p frontend/e2e/privacy/tsconfig.json --noEmit --incremental false
+NODE frontend/e2e/privacy/typecheck.mjs
 NODE frontend/e2e/privacy/node_modules/oxlint/bin/oxlint frontend/e2e/privacy
 NODE frontend/e2e/privacy/live-gate.mjs
 ```
@@ -17,6 +17,8 @@ NODE frontend/e2e/privacy/live-gate.mjs
 `NODE` means the selected existing Node executable, not a package command. The default Chrome executable is the installed macOS Chrome; `MCR_CHROME_EXECUTABLE` can select an existing compatible browser. The native runner blocks actual `/api/` network dispatch, injects deterministic fetch into the real canonical SessionController and SocialSharingController, and exercises the actual QueryPrivacy/SessionPort/TanStack observers in Chrome. It does not mount the application or certify cached product UI, a deployed frontend, real authorization, WS delivery, device behavior or server data filtering. The page is an unstyled test shell; no product styling is introduced.
 
 `fixture-report.json` retains all 35 social/client cells (seven roles by five operations), plus a 175-cell domain ledger. The non-handle domain list/detail/mutation/WS cells are explicitly unsupported in this increment; public DTO injection checks do not stand in for those role checks. Cache cells taint the real shared observers/drafts with five domain canaries, then prove synchronous cleanup and late-result rejection. These are local public lifetime calls, never fabricated WS events. The authorized beacon DTO shape is not proof of its audience. Admin has no implicit social-handle bypass.
+
+The synthetic stranger/admin SELF-list denial is a scenario input, not an authorization expectation for real services. `/me/social-requests` is a SELF collection; an active stranger/admin can correctly receive a 200 empty own collection. The actual seed plan supplies per-resource/per-canonical-actor expectations. A role label never replaces Auth, event membership, block or consent checks.
 
 ## Real-service gate
 
