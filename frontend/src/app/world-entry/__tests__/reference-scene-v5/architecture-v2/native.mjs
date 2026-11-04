@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
-import { mkdir, readFile, rm, statfs, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, readdir, rm, stat, statfs, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { chromium, expect } from '@playwright/test'
 import { createServer } from 'vite'
@@ -36,6 +36,15 @@ for (const path of ['frontend/src/app/world-entry/reference-scene-overview.ts', 
 const server = await createServer({ root: frontend, configLoader: 'runner', cacheDir: resolve(output, 'vite-cache'), logLevel: 'error',
   server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false } })
 let browser
+const resourceSamples=[]
+async function resourceGuard() {
+ const disk=await statfs(root),freeBytes=disk.bavail*disk.bsize
+ const size=async path=>{let total=0;for(const entry of await readdir(path,{withFileTypes:true})){const p=resolve(path,entry.name);if(entry.isDirectory())total+=await size(p);else if(entry.isFile())total+=(await stat(p)).size}return total}
+ const outputBytes=await size(output)
+ const mains=execFileSync('ps',['-axo','command='],{encoding:'utf8'}).split('\n').filter(line=>line.includes('/Google Chrome.app/Contents/MacOS/Google Chrome ')&&line.includes('--headless'))
+ resourceSamples.push({freeBytes,outputBytes,headlessChromeMains:mains.length})
+ assert(freeBytes>=8*1024**3,'Fresh8GiBfloor');assert(outputBytes<=0.2*1024**3,'Newoutput/cachehardcap');assert(mains.length<=(browser?1:0),'Another headless capture is active')
+}
 const state = page => page.evaluate(() => window.__SCENE_V5_ROOT__?.state())
 const world = page => page.evaluate(() => window.__SCENE_V5_ROOT__.inspectWorld())
 const navigate = (page, path) => page.evaluate(path => window.__SCENE_V5_ROOT__.navigate(path), path)
@@ -49,6 +58,7 @@ function assertFit({ image, viewport }) {
   assert(image.top >= viewport.top - 1 && image.bottom <= viewport.bottom + 1)
 }
 async function open(width, era, suffix = '') {
+  await resourceGuard()
   const space = await statfs(root); assert(space.bavail * space.bsize >= 8 * 1024 ** 3, 'Disk floor before next browser context')
   const context = await browser.newContext({ viewport: { width, height: 844 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
   const page = await context.newPage(), errors = [], requests = []
@@ -109,6 +119,7 @@ for(const era of ['revenge','parade','danger']) {
 async function rendererCases() {
  report.renderer=[]
  for(const [width,height] of [[360,800],[390,844],[430,932]]) {
+  await resourceGuard()
   const disk=await statfs(root);assert(disk.bavail*disk.bsize>=8*1024**3,'Disk floor before renderer')
   const page=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'}),errors=[]
   page.on('pageerror',e=>errors.push(e.message))
@@ -133,6 +144,7 @@ async function rendererCases() {
  }
 }
 try {
+ await resourceGuard()
  await server.listen(); browser=await chromium.launch({channel:'chrome',headless:true}); report.browser=browser.version(); await rendererCases()
  for(const width of [360,390,430]) for(const era of ['REVENGE','PARADE','DANGER']) {
   const fixture=await open(width,era),{page}=fixture
@@ -168,6 +180,7 @@ try {
  }
  report.editable=[]
  for(const era of ['REVENGE','PARADE','DANGER']){
+  await resourceGuard()
   const disk=await statfs(root);assert(disk.bavail*disk.bsize>=8*1024**3,'Disk floor before editable render')
   const {svg,metadata}=await writeEditable(frontend,output,era),page=await browser.newPage({viewport:{width:768,height:1296}})
   await page.setContent(`<html><body style="margin:0">${svg}</body></html>`);await page.evaluate(()=>document.fonts.ready);await settled(page)
@@ -179,7 +192,10 @@ try {
  report.status='PASS'
 }catch(error){report.status='FAIL';report.failure=String(error);throw error}
 finally{
+ await resourceGuard().catch(error=>{report.resourceFailure=String(error);report.status='FAIL'})
  await browser?.close();await server.close();await rm(resolve(output,'vite-cache'),{recursive:true,force:true});report.cleanup={browserClosed:!browser?.isConnected(),serverClosed:!server.httpServer?.listening}
+ report.resources={samples:resourceSamples,minimumFreeBytes:Math.min(...resourceSamples.map(s=>s.freeBytes)),maximumNewBytes:Math.max(...resourceSamples.map(s=>s.outputBytes))}
  await writeFile(resolve(output,'native.json'),JSON.stringify(report,null,2)+'\n')
 }
 console.log(JSON.stringify({status:report.status,rendererCases:report.renderer?.length,mapCases:9,markerCases:2,editable:report.editable?.length}))
+assert.equal(report.status,'PASS','Incomplete/resource-failed native evidence cannot exit successfully')
