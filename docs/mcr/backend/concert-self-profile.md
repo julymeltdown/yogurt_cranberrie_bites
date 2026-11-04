@@ -288,3 +288,32 @@ XID as ABORTED. Fresh signed status/reconcile after expiry must preserve that
 proof without a fabricated write receipt or coordinator decision. This is still
 NOT_RUN until the queued native qualification; an RPC conflict alone is not
 settlement evidence.
+
+## Imported Product delivery contract repair
+
+Participant owner209's updated IDL imports `concert/v1/product.proto` and adds
+`concert.product.v1.ResponseDelivery` to the internal Participant response. The
+generated Participant Rust type refers to its sibling `concert::product::v1`;
+Profile's local wire tree originally omitted that sibling. Exact owner fix
+`2500b18098020a57b2b44c9215cc95d53f0fae87` adds only that generated module, with
+no implementation import or shared build-script edit. Owner209 consumed it as
+`54a9f571` alongside the updated Participant IDL. The wire file SHA-256 matches
+in both checkouts: `fc53255599f5e2b56d9efdd6b8e18ef7e4da1f24dccae6021d5246817372c311`.
+
+Combined source `726c6da708100fba1b88833d4003790790f7c373` compiled successfully
+in the owner's allocated BACKEND slot using Rust 1.88, locked/offline, two jobs,
+debug 0 and incremental disabled. Its retained `compiler-fixed.jsonl` shows a
+new Profile library artifact (`fresh=false`), followed by an unrelated Concert
+recovery dependency error; `compiler-final.jsonl` then records build success
+and the same cached Profile dependency. Owner209 fixed its own recovery source.
+The frozen Concert lib SHA-256 was independently checked as
+`4ce26434dd9425eaec2f47cda920dbe92a80751371f4118477dd3baf53b3b652`.
+Receipts are under `/private/tmp/mcr-participant-live-ca73fb71/`; the final Cargo
+JSON has `build-finished.success=true` and no compiler errors. No shared target
+was accessed by this chat. This proves the contract composition compiles; it
+does not prove the actual multi-store or HTTP flow.
+
+The module repair requires that updated Participant IDL in the same generation
+pass. Owner209 will publish the coherent IDL/generation/wire patch after its
+checks; the wire repair is not published alone against the older IDL. This chat's
+pending Prepare/CAS tests still need their allocated build and native run.
