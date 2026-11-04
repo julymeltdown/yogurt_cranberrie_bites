@@ -1,0 +1,14 @@
+{"time": 1793818758.6308322, "ownedBytes": 165775, "positiveNewBytes": 15666, "rssBytes": 26230784, "pids": 1, "freeBytes": 16885415936}
+{"time": 1793818758.7867699, "ownedBytes": 165912, "positiveNewBytes": 15803, "rssBytes": 150454272, "pids": 2, "freeBytes": 17212432384}
+{"time": 1793818759.180222, "ownedBytes": 166334, "positiveNewBytes": 16225, "rssBytes": 26607616, "pids": 1, "freeBytes": 18176548864}
+{"time": 1793818759.3362172, "ownedBytes": 166470, "positiveNewBytes": 16361, "rssBytes": 163741696, "pids": 2, "freeBytes": 18174869504}
+{"time": 1793818759.742547, "ownedBytes": 166608, "positiveNewBytes": 16499, "rssBytes": 438960128, "pids": 2, "freeBytes": 18170376192}
+{"time": 1793818760.143297, "ownedBytes": 166745, "positiveNewBytes": 16636, "rssBytes": 544096256, "pids": 2, "freeBytes": 18137608192}
+{"time": 1793818760.5375721, "ownedBytes": 166882, "positiveNewBytes": 16773, "rssBytes": 26705920, "pids": 1, "freeBytes": 18137579520}
+{"time": 1793818760.6783922, "ownedBytes": 167019, "positiveNewBytes": 16910, "rssBytes": 26722304, "pids": 2, "freeBytes": 18137575424}
+{"time": 1793818761.098024, "ownedBytes": 167156, "positiveNewBytes": 17047, "rssBytes": 26820608, "pids": 1, "freeBytes": 18103443456}
+{"time": 1793818761.2390301, "ownedBytes": 167292, "positiveNewBytes": 17183, "rssBytes": 122437632, "pids": 2, "freeBytes": 18103095296}
+{"time": 1793818761.650236, "ownedBytes": 531950, "positiveNewBytes": 381841, "rssBytes": 26902528, "pids": 2, "freeBytes": 18100359168}
+{"time": 1793818762.0396988, "ownedBytes": 690120, "positiveNewBytes": 540011, "rssBytes": 26902528, "pids": 1, "freeBytes": 18098327552}
+{"time": 1793818762.175057, "ownedBytes": 690258, "positiveNewBytes": 540149, "rssBytes": 26951680, "pids": 2, "freeBytes": 18098262016}
+{"time": 1793818762.569064, "ownedBytes": 690651, "positiveNewBytes": 540542, "rssBytes": 26968064, "pids": 1, "freeBytes": 18095767552}

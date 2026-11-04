@@ -1,0 +1,229 @@
+{
+  "task": "IN04-WALL-B-RUNNER",
+  "sourceQualification": "PASS",
+  "helperChecks": 53,
+  "realIN04": "NOT_RUN",
+  "originalPersistentGoal": "BLOCKED_UNFINISHED",
+  "baseRevision": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "validationHead": "23a80afb44fc3cefe261f865158196559315f7f6",
+  "validationHadUncommittedFixes": [
+    "frontend/e2e/in04-wall-b/helpers.ts",
+    "frontend/e2e/in04-wall-b/check.ts",
+    "frontend/e2e/in04-wall-b/wall-b.spec.ts"
+  ],
+  "sourceHashes": {
+    "frontend/e2e/in04-wall-b/preflight.ts": "f7e956220d47fce58e027aa56244b5aa2d43ae7ccbe809524c1e81007a30ce28",
+    "frontend/e2e/in04-wall-b/helpers.ts": "785d88de9c55863026fb436b3d9f685db9879b6869b2619d40ac2de554df6602",
+    "frontend/e2e/in04-wall-b/wall-b.spec.ts": "ecb84a2906a161bc8944c85f25fb53cc46426574e1272d712f5d499f5630e5ec",
+    "frontend/e2e/in04-wall-b/world-texture.ts": "f5571382fa95a03972f761f51a1af8a2479d556462ff65ed125062f7b700d088",
+    "frontend/e2e/in04-wall-b/runtime.ts": "6969c25895ba9219e48d9c38b0c9acfd4ac12ca3bdd37224c8f774d4b3a2e9b5",
+    "frontend/e2e/in04-wall-b/validate.py": "e935cc81c1ffaf401c696a3a2cfef69624d29f3fe69baa7cc71a2e3605945009",
+    "frontend/e2e/in04-wall-b/.gitignore": "9031d0c7c796f25117a8136fb2a0261584e002e52f42e81e555a2ce1942583a4",
+    "frontend/e2e/in04-wall-b/tsconfig.json": "c8966c257a2cc136bd4900832ffceb308deaa3bdd52728a468fafa0a0d26655c",
+    "frontend/e2e/in04-wall-b/playwright.config.ts": "36b77437dc07b02f57e89f445ee8936364f8c870258f2ee802e76849854faf2b",
+    "frontend/e2e/in04-wall-b/check.ts": "4161a59a0e3568e92d5074005de6741fea107bb9ca42db5503434d228a3ca627"
+  },
+  "allocation": "IN04-WALL-B-SOURCE-20261104T1857Z",
+  "acceptedEpoch": 1793818638.20387,
+  "workDeadlineEpoch": 1793818938.20387,
+  "hardDeadlineEpoch": 1793818998.20387,
+  "fullEpoch": 1793818762.598001,
+  "acceptedAllNewBytesUnchanged": 2189426688,
+  "correctedActualAllNewBytes": 1115684864,
+  "inventoryCorrection": "Party declined/released, not reserved; Intro1GiB + QA10 32MiB + IN04 8MiB. Accepted subtraction remained stricter. Original offer retained unchanged.",
+  "attempts": [
+    {
+      "path": "docs/mcr/evidence/in04-wall-b/IN04-WALL-B-SOURCE-20261104T1857Z/attempt01",
+      "status": "FAIL",
+      "finishedEpoch": 1793818639.1480992,
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "--experimental-transform-types",
+            "frontend/e2e/in04-wall-b/check.ts"
+          ],
+          "exit": 1,
+          "expected": 0
+        }
+      ],
+      "peak": {
+        "ownedBytes": 150261,
+        "positiveNewBytes": 152,
+        "rssBytes": 66469888,
+        "pids": 2
+      },
+      "releaseSha256": "94913f06e5588f4302704c22b25c1767d4677b9a31ffc081e50b9b3ce8f5ade1"
+    },
+    {
+      "path": "docs/mcr/evidence/in04-wall-b/IN04-WALL-B-SOURCE-20261104T1857Z/attempt02",
+      "status": "FAIL",
+      "finishedEpoch": 1793818700.146202,
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "--experimental-transform-types",
+            "frontend/e2e/in04-wall-b/check.ts"
+          ],
+          "exit": 1,
+          "expected": 0
+        }
+      ],
+      "peak": {
+        "ownedBytes": 155257,
+        "positiveNewBytes": 5148,
+        "rssBytes": 26509312,
+        "pids": 2
+      },
+      "releaseSha256": "3f3167ab579cea0fb7b9ee5f269d709af83fb86b32b7a47e3313e23efdfa7e31"
+    },
+    {
+      "path": "docs/mcr/evidence/in04-wall-b/IN04-WALL-B-SOURCE-20261104T1857Z/attempt03",
+      "status": "FAIL",
+      "finishedEpoch": 1793818718.9854138,
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "--experimental-transform-types",
+            "frontend/e2e/in04-wall-b/check.ts"
+          ],
+          "exit": 0,
+          "expected": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "frontend/node_modules/typescript/bin/tsc",
+            "--noEmit",
+            "--incremental",
+            "false",
+            "-p",
+            "frontend/e2e/in04-wall-b/tsconfig.json",
+            "--pretty",
+            "false"
+          ],
+          "exit": 2,
+          "expected": 0
+        }
+      ],
+      "peak": {
+        "ownedBytes": 159924,
+        "positiveNewBytes": 9815,
+        "rssBytes": 531955712,
+        "pids": 2
+      },
+      "releaseSha256": "48344867ec2b5d38689d5054975025657a996f7dfcd9a9adbaa087dcba13afc6"
+    },
+    {
+      "path": "docs/mcr/evidence/in04-wall-b/IN04-WALL-B-SOURCE-20261104T1857Z/attempt04",
+      "status": "PASS",
+      "finishedEpoch": 1793818762.598001,
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "--experimental-transform-types",
+            "frontend/e2e/in04-wall-b/check.ts"
+          ],
+          "exit": 0,
+          "expected": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "frontend/node_modules/typescript/bin/tsc",
+            "--noEmit",
+            "--incremental",
+            "false",
+            "-p",
+            "frontend/e2e/in04-wall-b/tsconfig.json",
+            "--pretty",
+            "false"
+          ],
+          "exit": 0,
+          "expected": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+            "frontend/e2e/in04-wall-b"
+          ],
+          "exit": 0,
+          "expected": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "frontend/node_modules/@playwright/test/cli.js",
+            "test",
+            "--config",
+            "frontend/e2e/in04-wall-b/playwright.config.ts",
+            "--list"
+          ],
+          "exit": 0,
+          "expected": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "--experimental-transform-types",
+            "frontend/e2e/in04-wall-b/preflight.ts"
+          ],
+          "exit": 2,
+          "expected": 2
+        }
+      ],
+      "peak": {
+        "ownedBytes": 690651,
+        "positiveNewBytes": 540542,
+        "rssBytes": 544096256,
+        "pids": 2
+      },
+      "releaseSha256": "45fdaf7ca81ea1b8b0aa6ee4b78ade763660519fbc12ffa8b96cd5899295d5eb"
+    }
+  ],
+  "allAttemptsPeak": {
+    "ownedBytes": 690651,
+    "positiveNewBytes": 540542,
+    "rssBytes": 544096256,
+    "pids": 2
+  },
+  "cleanup": {
+    "ownedDescendants": 0,
+    "dependencyLinkRemaining": false,
+    "scratchRemaining": false,
+    "adapterCheckTempRemaining": false,
+    "browserServerPgNativeBuildInstallAllocated": false
+  },
+  "currentOwners": {
+    "runnerAndSourceValidation": "01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be",
+    "publisherAndProductionAdapterComposition": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "canonicalRuntimeBackendInspectAndExternalRestart": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+    "runtimePackageStartupRepair": "01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c",
+    "qualifiedOperationsAuthority": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+    "wallMemberAndAdminProducer": "01a1a202-3b96-7822-ab54-2f7d29aa42e5"
+  },
+  "runtimePrerequisites": [
+    "actual coherent canonical services/candidate/contracts/event/threeactors/current operator authority",
+    "genuine producer-qualified inspect/external observeRestart module and actual frontend muralBinding composed by Root153",
+    "qualified Wall admin routes/current-role integration and named restore snapshot",
+    "separate accepted bounded live/browser window with independent guardian"
+  ],
+  "notRuntimePrerequisites": [
+    "age-provider",
+    "reviewed physical place",
+    "report-evidence/cleanup",
+    "whole BE41",
+    "whole FE37"
+  ],
+  "limitations": [
+    "53 cases are source checks, not product acceptance",
+    "Playwright --list discovered one journey but launched no browser",
+    "missing private config correctly refused execution with exit2",
+    "actual HTTP/database/two-client/Phaser/restart/moderation/final freeze NOT_RUN",
+    "no king/SL review or acknowledgment gate"
+  ],
+  "publication": "Committed handoff to named publisher Root153; final delivered SHA travels in direct handoff to avoid a self-referential commit."
+}
