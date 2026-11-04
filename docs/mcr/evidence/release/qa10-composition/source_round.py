@@ -134,7 +134,8 @@ def main():
             if guard.poll() is not None or time.monotonic() >= start + 5:
                 raise RuntimeError('guardian did not start')
             time.sleep(0.02)
-        environment = {**os.environ, 'TMPDIR': str(scratch), 'PYTHONDONTWRITEBYTECODE': '1', 'LC_ALL': 'C'}
+        environment = {**os.environ, 'TMPDIR': str(scratch), 'PYTHONDONTWRITEBYTECODE': '1', 'LC_ALL': 'C',
+                       'GIT_CONFIG_GLOBAL': '/dev/null', 'GIT_CONFIG_NOSYSTEM': '1'}
 
         def run(name, command, cwd):
             if guard.poll() is not None or time.monotonic() >= start + 175:
