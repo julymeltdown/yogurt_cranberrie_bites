@@ -1,0 +1,84 @@
+{
+  "job": "CSS-CUSTOMIZE-FOREGROUND-FIRST-202611041153Z",
+  "startedAt": "2026-11-04T11:53:52.585353+00:00",
+  "stages": [
+    {
+      "name": "source-check",
+      "argv": [
+        "/usr/bin/python3",
+        "/Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/source-check.py"
+      ],
+      "startedAt": "2026-11-04T11:53:52.586248+00:00",
+      "pid": 71091,
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T11:53:53.140730+00:00"
+    },
+    {
+      "name": "node-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/native.mjs"
+      ],
+      "startedAt": "2026-11-04T11:53:53.143702+00:00",
+      "pid": 71098,
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T11:53:53.722842+00:00"
+    },
+    {
+      "name": "planning",
+      "argv": [
+        "/usr/bin/python3",
+        "/Users/lhs/.codex/worktrees/mcr-css-customize/mcr/scripts/mcr/check-plan.py"
+      ],
+      "startedAt": "2026-11-04T11:53:53.723379+00:00",
+      "pid": 71104,
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T11:53:54.284810+00:00"
+    },
+    {
+      "name": "native",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/native.mjs"
+      ],
+      "startedAt": "2026-11-04T11:53:54.287497+00:00",
+      "pid": 71112,
+      "exitCode": 1,
+      "finishedAt": "2026-11-04T11:53:54.865182+00:00"
+    }
+  ],
+  "processes": {
+    "71091": {
+      "ppid": 71086,
+      "command": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python /Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/source-check.py"
+    },
+    "71098": {
+      "ppid": 71086,
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node --check /Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/native.mjs"
+    },
+    "71104": {
+      "ppid": 71086,
+      "command": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python /Users/lhs/.codex/worktrees/mcr-css-customize/mcr/scripts/mcr/check-plan.py"
+    },
+    "71112": {
+      "ppid": 71086,
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/native.mjs"
+    }
+  },
+  "peaks": {
+    "temp": 0,
+    "durable": 22496,
+    "whole": 26216
+  },
+  "minFree": 19862142976,
+  "violations": [
+    "native failed"
+  ],
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true
+  },
+  "finishedAt": "2026-11-04T11:53:54.896299+00:00",
+  "seconds": 2.310972792
+}

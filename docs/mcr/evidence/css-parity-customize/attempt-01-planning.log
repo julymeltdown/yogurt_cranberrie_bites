@@ -1,0 +1,27 @@
+{
+  "scope": "Planning provenance, structure, exporter regression, and delivery routing only",
+  "result": "PASS",
+  "python_version": "3.9.6",
+  "checks": [
+    "13 original archive checksums match",
+    "pinned upstream narrative checksum matches",
+    "active and original narrative/table task and IA content match",
+    "original: nine regression probes pass and all committed exports reproduce",
+    "active: nine regression probes pass and all committed exports reproduce",
+    "all active metadata and 118 task destinations use mcr/master; baseline remains NOT_STARTED",
+    "release checklist contains 111 prerequisites plus IN05 and 61 required IA entries"
+  ],
+  "task_count": 118,
+  "ia_count": 64,
+  "application_build": "NOT_RUN",
+  "application_tests": "NOT_RUN",
+  "deployment": "NOT_RUN",
+  "input_sha256": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "PLAN_TABLES_EN.md": "7e81683fcc05f8441b473f673b282a1010931721ffabf15aeef6548811ec8ba5",
+    "MCR_EXPORT_PLAN_EN.py": "57cdba6af51feb45bef5b74a0ed2755b448d475b0ceb1ad2c9ff16b72060e348",
+    "TEST_PLAN_EXPORT_EN.py": "cd7b1cb49636db9468041d8bf87e7dacfeb483b0679facf50638d0f181557b8e",
+    "scripts/mcr/check-plan.py": "a172af72eb033dcc3e9461d8a16c58ac7704702a4ced39801a67b3b3edcc3cd3",
+    "docs/mcr/source-provenance.json": "bf249c1e414928d5946803243ca1857f8d6e4435fa0fe49fb2185bc778d54fd8"
+  }
+}

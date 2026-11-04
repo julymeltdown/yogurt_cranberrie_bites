@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "cssSha256": "7a1f0361d5ec394557ce88bb91dad7adad1a65e704363d807ff77f01d83ce832",
+  "changedRules": [
+    ".mcr-whole-choice-row > button",
+    ".mcr-whole-choices h2",
+    ".mcr-whole-editor .concert-action",
+    ".mcr-whole-editor .mcr-whole-choice[aria-pressed=\"true\"]"
+  ],
+  "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "paths": [
+    "docs/mcr/evidence/css-parity-customize/native.mjs",
+    "docs/mcr/evidence/css-parity-customize/source-check.py",
+    "docs/mcr/frontend/css-parity-customize.md",
+    "frontend/src/features/avatar/whole-character/whole-character.css"
+  ],
+  "previewCanvasGridDeclarationsUnchanged": true,
+  "decorativeBackgroundDeclarationsUnchanged": true,
+  "docsSourcePreserved": true
+}
