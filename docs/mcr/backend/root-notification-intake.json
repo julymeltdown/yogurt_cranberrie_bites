@@ -150,5 +150,11 @@
     "Durable original NotificationRecoveryBinding provider",
     "Same-root current target exclusions and retained Root view",
     "Actual canonical owner Track/settlement/RPC and four public vertical flows"
-  ]
+  ],
+  "worker_authored_inventory_sha256": "8ce319c0610db48b71f2a37b43911dcf7cb9a40586fa67c3b56083b23e5bdc98",
+  "worker_bounded_readback": {
+    "commit": "fed3d0de01939d4bedf0abae7be17b92f0e3915a",
+    "result": "PASS; all63paths,55exactpostimages,8authorizedcompositions and source/prose provenance independently checked by the implementation owner; no lost or out-of-scope bytes found",
+    "coherent_runtime": "NOT_RUN"
+  }
 }
