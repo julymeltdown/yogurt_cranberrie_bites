@@ -83,7 +83,10 @@ outside the shared target and release it before running tests. Native PG16 uses
 a fresh owner-marked directory, private Unix socket, no TCP listener and actual
 fsync/synchronous commit. The runner checks frozen executable identity/hash,
 migration hashes, source pin, meaningful nonzero test counts, real postmaster
-restart and owned teardown. Native time cap is four minutes.
+restart and owned teardown. Native time cap is four minutes, with work stopped
+at three minutes to reserve at least 60 seconds for cleanup. Whole-workflow
+accounting includes frozen target growth, all evidence and temporary outputs
+and the owned PG cluster.
 
 Planned commands (NOT_RUN until accepted resource allocation):
 
@@ -92,7 +95,7 @@ python3 backend/scripts/mcr/event_cleanup_mural_owner/freeze.py --snapshot "$pro
 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p concert-service --test event_cleanup_mural_owner --no-run --message-format=json
 python3 backend/scripts/mcr/event_cleanup_mural_owner/freeze.py --before "$proof/source-before.json" --cargo-json "$proof/cargo.jsonl" --out "$proof/frozen" --accepted-offer "$offer"
 # Release shared target before the following command.
-python3 backend/scripts/mcr/event_cleanup_mural_owner/run.py --frozen "$proof/frozen" --accepted-offer "$offer"
+python3 backend/scripts/mcr/event_cleanup_mural_owner/run.py --frozen "$proof/frozen" --accepted-offer "$offer" --target-growth-bytes "$target_growth"
 ```
 
 Record actual source commit, commands/exits, executable/report hashes, resource

@@ -39,10 +39,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--frozen", type=Path, required=True)
     parser.add_argument("--accepted-offer", required=True)
+    parser.add_argument("--target-growth-bytes", type=int, required=True)
     a = parser.parse_args()
     frozen = a.frozen.resolve()
     receipt, exe = preflight(frozen)  # Reject before creating any PG resource.
     assert a.accepted_offer == receipt["accepted_offer"]
+    assert a.target_growth_bytes >= 0
     assert shutil.disk_usage("/private/tmp").free >= FLOOR
     logs = frozen / "native"
     logs.mkdir(mode=0o700)
@@ -54,7 +56,7 @@ def main():
     socket.mkdir(mode=0o700)
     started = False
     start = time.monotonic()
-    record = {"status": "IN_PROGRESS", "cleanup": False, "cluster": str(root), "source": receipt["source"], "binary": receipt["binary"], "checks": [], "peak_cluster_bytes": 0, "minimum_free_bytes": shutil.disk_usage(root).free}
+    record = {"status": "IN_PROGRESS", "cleanup": False, "cluster": str(root), "source": receipt["source"], "binary": receipt["binary"], "checks": [], "peak_cluster_bytes": 0, "peak_total_new_bytes": 0, "target_growth_bytes": a.target_growth_bytes, "minimum_free_bytes": shutil.disk_usage(root).free}
     env = {k: v for k, v in os.environ.items() if not k.startswith(("PG", "DATABASE", "CONCERT_DATABASE", "MCR_"))}
     env.update(MCR_MURAL_OWNER_SOCKET=str(socket), MCR_MURAL_OWNER_TOKEN=token, MCR_MURAL_OWNER_MIGRATIONS=str(frozen / "migrations"), RUST_BACKTRACE="1")
 
@@ -63,11 +65,16 @@ def main():
         free = shutil.disk_usage(root).free
         record["minimum_free_bytes"] = min(record["minimum_free_bytes"], free)
         assert free >= FLOOR, "disk floor violated"
-        assert time.monotonic() - start < 240, "native time cap exceeded"
+        proof_bytes = sum(p.stat().st_size for p in frozen.parent.rglob("*") if p.is_file())
+        total = a.target_growth_bytes + proof_bytes + record["peak_cluster_bytes"]
+        record["peak_total_new_bytes"] = max(record["peak_total_new_bytes"], total)
+        assert total <= 1024**3, "whole-workflow 1GiB cap exceeded"
+        assert time.monotonic() - start < 180, "native work cap exceeded; reserve 60 seconds for cleanup"
 
     def run(name, cmd, timeout=60):
         sample()
-        proc = subprocess.run([str(v) for v in cmd], env=env, capture_output=True, text=True, timeout=timeout)
+        remaining = max(1, 180 - (time.monotonic() - start))
+        proc = subprocess.run([str(v) for v in cmd], env=env, capture_output=True, text=True, timeout=min(timeout, remaining))
         (logs / f"{name}.stdout").write_text(proc.stdout)
         (logs / f"{name}.stderr").write_text(proc.stderr)
         record["checks"].append({"name": name, "exit_code": proc.returncode})

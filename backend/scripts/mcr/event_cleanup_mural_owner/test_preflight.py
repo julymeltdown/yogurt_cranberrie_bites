@@ -32,7 +32,7 @@ class FrozenAdmission(unittest.TestCase):
         self.temp.cleanup()
 
     def refused_before_cluster(self):
-        with patch.object(sys, "argv", ["run.py", "--frozen", str(self.root), "--accepted-offer", "negative-fixture"]), patch.object(run.tempfile, "mkdtemp", side_effect=AssertionError("cluster must not be constructed")) as cluster:
+        with patch.object(sys, "argv", ["run.py", "--frozen", str(self.root), "--accepted-offer", "negative-fixture", "--target-growth-bytes", "0"]), patch.object(run.tempfile, "mkdtemp", side_effect=AssertionError("cluster must not be constructed")) as cluster:
             with self.assertRaises(AssertionError):
                 run.main()
             cluster.assert_not_called()
