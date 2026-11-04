@@ -23,7 +23,7 @@
 .feed-browse .mcr-tabs { flex: 1; min-height: 0; }
 .feed-browse .mcr-tablist { display: grid; grid-template-columns: .9fr 1.05fr 1.3fr 1.05fr; gap: 5px; padding: 0 0 7px; border: 0; border-bottom: 1px solid #847669; overflow: visible; }
 .feed-browse .mcr-tab { padding: 4px 3px; border: 1px solid #51453b; background: #f1eadd; font: 800 15px/1 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; text-align: center; text-decoration: none; }
-.feed-browse .mcr-tab[aria-selected="true"] { background: #ac2430; color: #fff8ec; border-color: #5d2022; box-shadow: inset 0 0 0 1px #e5b8aa66; }
+.feed-browse .mcr-tab[aria-selected="true"] { background: #ac2430; color: #fff8ec; border-color: #5d2022; box-shadow: inset 0 0 0 1px #e5b8aa66; text-decoration: none; }
 .feed-browse .mcr-tabpanel { padding: 0; margin: 0; }
 .feed-browse .feed-posts { display: grid; gap: 5px; padding: 5px 0 0; margin: 0; }
 .feed-browse .feed-posts > li { padding: 0; border: 0; min-width: 0; }

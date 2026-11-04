@@ -1,0 +1,27 @@
+{
+  "slot": "CSS-FEED-REFERENCE-202611041215Z",
+  "acceptedEpoch": 1793794627.255,
+  "releasedEpoch": 1793794746.430497,
+  "elapsedSinceAccept": 119.17549681663513,
+  "activeEndedEpoch": 1793794718.553953,
+  "activeElapsedSeconds": 91.29895973205566,
+  "wholePeakBytes": 38140126,
+  "temporaryPeakBytes": 29284281,
+  "durablePeakBytesBeforeReceipt": 8928173,
+  "durableBytesBeforeReceipt": 8928173,
+  "minimumFreeBytes": 18544066560,
+  "currentFreeBytes": 18570752000,
+  "allCommandsExitZero": true,
+  "ownProcessesRemaining": [],
+  "browserViteClosed": true,
+  "port5292Bindable": true,
+  "ownLinkAbsent": true,
+  "privateTMPAndCacheProfileRemoved": true,
+  "cssSha256": "e744a26807021b0671e967f1595e6909e47b959a6857864f1081991330777538",
+  "results": {
+    "reference1": "PASS6cases; focus assertion recognized weak, original output preserved",
+    "reference2": "PASS6cases; genuine keyboard3pxsolid focus at all widths",
+    "sourceChanges": "Only owned evidence driver focus assertion strengthened; Root/artist fixture inputs unchanged"
+  },
+  "limitations": "Synthetic fixture/browser evidence only. No real API or full reference-parity claim."
+}

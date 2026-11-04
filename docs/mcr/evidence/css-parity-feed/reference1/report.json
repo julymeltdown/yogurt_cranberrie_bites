@@ -1,0 +1,1275 @@
+{
+  "status": "PASS",
+  "phase": "reference1",
+  "slot": "CSS-FEED-REFERENCE-202611041215Z",
+  "head": "9d493b3a8c85077c1b832ae2868f3d16d79c258b",
+  "cssSha256": "e744a26807021b0671e967f1595e6909e47b959a6857864f1081991330777538",
+  "baselineCssSha256": "60a55f5e4f3493dfe2ffad49f26772e8703e5ea21d49c5f7036ace950edba178",
+  "inputs": [
+    {
+      "path": "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.tsx",
+      "sourceCommit": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "sha256": "83b55a7d2152093a0222ec909a43f462add7c783cfb2a885d8283a508c9ce294"
+    },
+    {
+      "path": "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.css",
+      "sourceCommit": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "sha256": "227da7bbfd2bbc6d99bc01682be4124e15b92e82882b3044fbd4316be6b590a1"
+    },
+    {
+      "path": "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.html",
+      "sourceCommit": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "sha256": "edd92dc9f7eb10c3e66c15e81cd1baf28101b2a1253f75cc068995b2e2812a8f"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/extract.py",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "3b7fb08cdba9bbd1397c7dba6c445382f5265b58e4d8c030d6b6f71e3483bb15"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/source-provenance.json",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "ad5c5baab4131fb26236aa1ed866d00b0f8e713103fe9417fb1dd73ef25efd32"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-1.png",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-2.png",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd"
+    },
+    {
+      "path": "docs/mcr/art/reference-feed-media-v1.md",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "9ebccb5068e5c3ed972a96a524483998b432d2dcef2f9d24e90b264f5dea8afa"
+    }
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "variant": "published",
+      "feed": {
+        "viewport": 360,
+        "documentWidth": 360,
+        "frame": {
+          "x": 5,
+          "y": 5,
+          "width": 350,
+          "height": 619.40625
+        },
+        "cards": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 332,
+            "height": 218.203125
+          },
+          {
+            "x": 14,
+            "y": 331.203125,
+            "width": 332,
+            "height": 218.203125
+          }
+        ],
+        "portraits": [
+          {
+            "x": 31,
+            "y": 125,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "x": 31,
+            "y": 348.203125,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "images": [
+          {
+            "x": 100,
+            "y": 212.390625,
+            "width": 196.90625,
+            "height": 66.96875,
+            "naturalWidth": 197,
+            "naturalHeight": 67,
+            "declaredWidth": "197",
+            "declaredHeight": "67",
+            "blob": true
+          },
+          {
+            "x": 100,
+            "y": 435.59375,
+            "width": 196.921875,
+            "height": 45.984375,
+            "naturalWidth": 197,
+            "naturalHeight": 46,
+            "declaredWidth": "197",
+            "declaredHeight": "46",
+            "blob": true
+          }
+        ],
+        "figures": [
+          {
+            "x": 99,
+            "y": 211.390625,
+            "width": 198.953125,
+            "height": 69.796875
+          },
+          {
+            "x": 99,
+            "y": 434.59375,
+            "width": 198.953125,
+            "height": 69.796875
+          }
+        ]
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/reference1/published-feed-360.png",
+        "sha256": "7a7b419e527b3fc092c571767cc7677893fcda8277c0e78e8c0607ce39aae4f0"
+      },
+      "detail": [
+        {
+          "index": 0,
+          "geometry": {
+            "viewport": 360,
+            "documentWidth": 360,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 350,
+              "height": 781.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67,
+                "naturalWidth": 197,
+                "naturalHeight": 67,
+                "declaredWidth": "197",
+                "declaredHeight": "67",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-0-360.png",
+            "sha256": "e79fe9a6945dc013fce55f700e07c3258c021c5c763e6f6498c70007f53c939d"
+          }
+        },
+        {
+          "index": 1,
+          "geometry": {
+            "viewport": 360,
+            "documentWidth": 360,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 350,
+              "height": 760.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46,
+                "naturalWidth": 197,
+                "naturalHeight": 46,
+                "declaredWidth": "197",
+                "declaredHeight": "46",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-1-360.png",
+            "sha256": "be35ef3cea44900d7628fbb96c3832942ba6f017329b68e86f0a4ea494211380"
+          }
+        }
+      ],
+      "qualification": {
+        "mode": "loaded",
+        "inputCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+        "inputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "syntheticIdentitiesAndCounts": true,
+        "completeNativeCrops": true,
+        "productionMedia": false
+      }
+    },
+    {
+      "width": 360,
+      "variant": "candidate",
+      "feed": {
+        "viewport": 360,
+        "documentWidth": 360,
+        "frame": {
+          "x": 5,
+          "y": 5,
+          "width": 350,
+          "height": 596.78125
+        },
+        "cards": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 332,
+            "height": 217.390625
+          },
+          {
+            "x": 14,
+            "y": 330.390625,
+            "width": 332,
+            "height": 196.390625
+          }
+        ],
+        "portraits": [
+          {
+            "x": 31,
+            "y": 125,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "x": 31,
+            "y": 347.390625,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "images": [
+          {
+            "x": 100,
+            "y": 212.390625,
+            "width": 197,
+            "height": 67,
+            "naturalWidth": 197,
+            "naturalHeight": 67,
+            "declaredWidth": "197",
+            "declaredHeight": "67",
+            "blob": true
+          },
+          {
+            "x": 100,
+            "y": 434.78125,
+            "width": 197,
+            "height": 46,
+            "naturalWidth": 197,
+            "naturalHeight": 46,
+            "declaredWidth": "197",
+            "declaredHeight": "46",
+            "blob": true
+          }
+        ],
+        "figures": [
+          {
+            "x": 99,
+            "y": 211.390625,
+            "width": 199,
+            "height": 69
+          },
+          {
+            "x": 99,
+            "y": 433.78125,
+            "width": 199,
+            "height": 48
+          }
+        ]
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-feed-360.png",
+        "sha256": "5b797dca085f0d8552fc7974226f259a2686a4eea2b12a9abefa7fbb18515281"
+      },
+      "detail": [
+        {
+          "index": 0,
+          "geometry": {
+            "viewport": 360,
+            "documentWidth": 360,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 350,
+              "height": 781.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67,
+                "naturalWidth": 197,
+                "naturalHeight": 67,
+                "declaredWidth": "197",
+                "declaredHeight": "67",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-0-360.png",
+            "sha256": "e79fe9a6945dc013fce55f700e07c3258c021c5c763e6f6498c70007f53c939d"
+          }
+        },
+        {
+          "index": 1,
+          "geometry": {
+            "viewport": 360,
+            "documentWidth": 360,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 350,
+              "height": 760.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46,
+                "naturalWidth": 197,
+                "naturalHeight": 46,
+                "declaredWidth": "197",
+                "declaredHeight": "46",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-1-360.png",
+            "sha256": "be35ef3cea44900d7628fbb96c3832942ba6f017329b68e86f0a4ea494211380"
+          }
+        }
+      ],
+      "qualification": {
+        "mode": "loaded",
+        "inputCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+        "inputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "syntheticIdentitiesAndCounts": true,
+        "completeNativeCrops": true,
+        "productionMedia": false
+      },
+      "selectedTabDecoration": "none",
+      "threadGeometryUnchanged": true,
+      "focus": "rgb(255, 246, 232) none 3px"
+    },
+    {
+      "width": 390,
+      "variant": "published",
+      "feed": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "frame": {
+          "x": 5,
+          "y": 5,
+          "width": 380,
+          "height": 619.40625
+        },
+        "cards": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 362,
+            "height": 218.203125
+          },
+          {
+            "x": 14,
+            "y": 331.203125,
+            "width": 362,
+            "height": 218.203125
+          }
+        ],
+        "portraits": [
+          {
+            "x": 31,
+            "y": 125,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "x": 31,
+            "y": 348.203125,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "images": [
+          {
+            "x": 100,
+            "y": 212.390625,
+            "width": 196.90625,
+            "height": 66.96875,
+            "naturalWidth": 197,
+            "naturalHeight": 67,
+            "declaredWidth": "197",
+            "declaredHeight": "67",
+            "blob": true
+          },
+          {
+            "x": 100,
+            "y": 435.59375,
+            "width": 196.921875,
+            "height": 45.984375,
+            "naturalWidth": 197,
+            "naturalHeight": 46,
+            "declaredWidth": "197",
+            "declaredHeight": "46",
+            "blob": true
+          }
+        ],
+        "figures": [
+          {
+            "x": 99,
+            "y": 211.390625,
+            "width": 198.953125,
+            "height": 69.796875
+          },
+          {
+            "x": 99,
+            "y": 434.59375,
+            "width": 198.953125,
+            "height": 69.796875
+          }
+        ]
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/reference1/published-feed-390.png",
+        "sha256": "66c0a3bd8713430b17771d144f8fbf83a380ff059c00e85f645cd480a0ae362a"
+      },
+      "detail": [
+        {
+          "index": 0,
+          "geometry": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 380,
+              "height": 781.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67,
+                "naturalWidth": 197,
+                "naturalHeight": 67,
+                "declaredWidth": "197",
+                "declaredHeight": "67",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-0-390.png",
+            "sha256": "7604adcfe07b5976090dd57c5abd05d947d3fb844ba7526ac2c0fe99ce3a0b59"
+          }
+        },
+        {
+          "index": 1,
+          "geometry": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 380,
+              "height": 760.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46,
+                "naturalWidth": 197,
+                "naturalHeight": 46,
+                "declaredWidth": "197",
+                "declaredHeight": "46",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-1-390.png",
+            "sha256": "97b7713e317f1a9eb852770db4d6cb1b9ca1e1a3a1aea8f6582d9756917daede"
+          }
+        }
+      ],
+      "qualification": {
+        "mode": "loaded",
+        "inputCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+        "inputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "syntheticIdentitiesAndCounts": true,
+        "completeNativeCrops": true,
+        "productionMedia": false
+      }
+    },
+    {
+      "width": 390,
+      "variant": "candidate",
+      "feed": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "frame": {
+          "x": 5,
+          "y": 5,
+          "width": 380,
+          "height": 596.78125
+        },
+        "cards": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 362,
+            "height": 217.390625
+          },
+          {
+            "x": 14,
+            "y": 330.390625,
+            "width": 362,
+            "height": 196.390625
+          }
+        ],
+        "portraits": [
+          {
+            "x": 31,
+            "y": 125,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "x": 31,
+            "y": 347.390625,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "images": [
+          {
+            "x": 100,
+            "y": 212.390625,
+            "width": 197,
+            "height": 67,
+            "naturalWidth": 197,
+            "naturalHeight": 67,
+            "declaredWidth": "197",
+            "declaredHeight": "67",
+            "blob": true
+          },
+          {
+            "x": 100,
+            "y": 434.78125,
+            "width": 197,
+            "height": 46,
+            "naturalWidth": 197,
+            "naturalHeight": 46,
+            "declaredWidth": "197",
+            "declaredHeight": "46",
+            "blob": true
+          }
+        ],
+        "figures": [
+          {
+            "x": 99,
+            "y": 211.390625,
+            "width": 199,
+            "height": 69
+          },
+          {
+            "x": 99,
+            "y": 433.78125,
+            "width": 199,
+            "height": 48
+          }
+        ]
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-feed-390.png",
+        "sha256": "1b8f1ceec2240affcb01d9e0be9d454e437e70c1df2eb4fdb8490e463123e21a"
+      },
+      "detail": [
+        {
+          "index": 0,
+          "geometry": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 380,
+              "height": 781.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67,
+                "naturalWidth": 197,
+                "naturalHeight": 67,
+                "declaredWidth": "197",
+                "declaredHeight": "67",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 67
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-0-390.png",
+            "sha256": "7604adcfe07b5976090dd57c5abd05d947d3fb844ba7526ac2c0fe99ce3a0b59"
+          }
+        },
+        {
+          "index": 1,
+          "geometry": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 380,
+              "height": 760.34375
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 116.59375,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46,
+                "naturalWidth": 197,
+                "naturalHeight": 46,
+                "declaredWidth": "197",
+                "declaredHeight": "46",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 226.5625,
+                "width": 197,
+                "height": 46
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-1-390.png",
+            "sha256": "97b7713e317f1a9eb852770db4d6cb1b9ca1e1a3a1aea8f6582d9756917daede"
+          }
+        }
+      ],
+      "qualification": {
+        "mode": "loaded",
+        "inputCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+        "inputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "syntheticIdentitiesAndCounts": true,
+        "completeNativeCrops": true,
+        "productionMedia": false
+      },
+      "selectedTabDecoration": "none",
+      "threadGeometryUnchanged": true,
+      "focus": "rgb(255, 246, 232) none 3px"
+    },
+    {
+      "width": 430,
+      "variant": "published",
+      "feed": {
+        "viewport": 430,
+        "documentWidth": 430,
+        "frame": {
+          "x": 5,
+          "y": 5,
+          "width": 420,
+          "height": 619.40625
+        },
+        "cards": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 402,
+            "height": 218.203125
+          },
+          {
+            "x": 14,
+            "y": 331.203125,
+            "width": 402,
+            "height": 218.203125
+          }
+        ],
+        "portraits": [
+          {
+            "x": 31,
+            "y": 125,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "x": 31,
+            "y": 348.203125,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "images": [
+          {
+            "x": 100,
+            "y": 212.390625,
+            "width": 196.90625,
+            "height": 66.96875,
+            "naturalWidth": 197,
+            "naturalHeight": 67,
+            "declaredWidth": "197",
+            "declaredHeight": "67",
+            "blob": true
+          },
+          {
+            "x": 100,
+            "y": 435.59375,
+            "width": 196.921875,
+            "height": 45.984375,
+            "naturalWidth": 197,
+            "naturalHeight": 46,
+            "declaredWidth": "197",
+            "declaredHeight": "46",
+            "blob": true
+          }
+        ],
+        "figures": [
+          {
+            "x": 99,
+            "y": 211.390625,
+            "width": 198.953125,
+            "height": 69.796875
+          },
+          {
+            "x": 99,
+            "y": 434.59375,
+            "width": 198.953125,
+            "height": 69.796875
+          }
+        ]
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/reference1/published-feed-430.png",
+        "sha256": "f7b8444dc103ecf5d86e8f4183bf876f2b271d84cb2ea0dc95dd47cf76abdcf5"
+      },
+      "detail": [
+        {
+          "index": 0,
+          "geometry": {
+            "viewport": 430,
+            "documentWidth": 430,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 420,
+              "height": 731.875
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 119.125,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 67,
+                "naturalWidth": 197,
+                "naturalHeight": 67,
+                "declaredWidth": "197",
+                "declaredHeight": "67",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 67
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-0-430.png",
+            "sha256": "303fa77e1b5994b59987d44729f2aceeffa97360a984930e81adeb660e9ad8af"
+          }
+        },
+        {
+          "index": 1,
+          "geometry": {
+            "viewport": 430,
+            "documentWidth": 430,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 420,
+              "height": 710.875
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 119.125,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 46,
+                "naturalWidth": 197,
+                "naturalHeight": 46,
+                "declaredWidth": "197",
+                "declaredHeight": "46",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 46
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-1-430.png",
+            "sha256": "5efe2f7d691919308e7245d271a6193dff35d38005c91fd9292d622c7b092c0c"
+          }
+        }
+      ],
+      "qualification": {
+        "mode": "loaded",
+        "inputCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+        "inputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "syntheticIdentitiesAndCounts": true,
+        "completeNativeCrops": true,
+        "productionMedia": false
+      }
+    },
+    {
+      "width": 430,
+      "variant": "candidate",
+      "feed": {
+        "viewport": 430,
+        "documentWidth": 430,
+        "frame": {
+          "x": 5,
+          "y": 5,
+          "width": 420,
+          "height": 596.78125
+        },
+        "cards": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 402,
+            "height": 217.390625
+          },
+          {
+            "x": 14,
+            "y": 330.390625,
+            "width": 402,
+            "height": 196.390625
+          }
+        ],
+        "portraits": [
+          {
+            "x": 31,
+            "y": 125,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "x": 31,
+            "y": 347.390625,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "images": [
+          {
+            "x": 100,
+            "y": 212.390625,
+            "width": 197,
+            "height": 67,
+            "naturalWidth": 197,
+            "naturalHeight": 67,
+            "declaredWidth": "197",
+            "declaredHeight": "67",
+            "blob": true
+          },
+          {
+            "x": 100,
+            "y": 434.78125,
+            "width": 197,
+            "height": 46,
+            "naturalWidth": 197,
+            "naturalHeight": 46,
+            "declaredWidth": "197",
+            "declaredHeight": "46",
+            "blob": true
+          }
+        ],
+        "figures": [
+          {
+            "x": 99,
+            "y": 211.390625,
+            "width": 199,
+            "height": 69
+          },
+          {
+            "x": 99,
+            "y": 433.78125,
+            "width": 199,
+            "height": 48
+          }
+        ]
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-feed-430.png",
+        "sha256": "4382bf92c857572842c324811b84ff7d5bee033545cfdc765545a4da5fb54e8b"
+      },
+      "detail": [
+        {
+          "index": 0,
+          "geometry": {
+            "viewport": 430,
+            "documentWidth": 430,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 420,
+              "height": 731.875
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 119.125,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 67,
+                "naturalWidth": 197,
+                "naturalHeight": 67,
+                "declaredWidth": "197",
+                "declaredHeight": "67",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 67
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-0-430.png",
+            "sha256": "303fa77e1b5994b59987d44729f2aceeffa97360a984930e81adeb660e9ad8af"
+          }
+        },
+        {
+          "index": 1,
+          "geometry": {
+            "viewport": 430,
+            "documentWidth": 430,
+            "frame": {
+              "x": 5,
+              "y": 5,
+              "width": 420,
+              "height": 710.875
+            },
+            "cards": [],
+            "portraits": [
+              {
+                "x": 30,
+                "y": 119.125,
+                "width": 48,
+                "height": 48
+              }
+            ],
+            "images": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 46,
+                "naturalWidth": 197,
+                "naturalHeight": 46,
+                "declaredWidth": "197",
+                "declaredHeight": "46",
+                "blob": true
+              }
+            ],
+            "figures": [
+              {
+                "x": 30,
+                "y": 229.09375,
+                "width": 197,
+                "height": 46
+              }
+            ]
+          },
+          "capture": {
+            "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-1-430.png",
+            "sha256": "5efe2f7d691919308e7245d271a6193dff35d38005c91fd9292d622c7b092c0c"
+          }
+        }
+      ],
+      "qualification": {
+        "mode": "loaded",
+        "inputCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+        "inputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "syntheticIdentitiesAndCounts": true,
+        "completeNativeCrops": true,
+        "productionMedia": false
+      },
+      "selectedTabDecoration": "none",
+      "threadGeometryUnchanged": true,
+      "focus": "rgb(255, 246, 232) none 3px"
+    }
+  ],
+  "errors": [],
+  "qualification": "Actual Feed/FeedImage/FeedThread over Root synthetic fixture. Complete approved screenshot thumbnails at native size; no original photographs, live posts, real HTTP acceptance or full parity certification.",
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "privateCacheRemoved": true
+  }
+}

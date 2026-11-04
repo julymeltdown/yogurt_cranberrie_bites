@@ -41,13 +41,17 @@ def guard():
     package = root / 'frontend/public/reference-feed-media-v1'
     art_doc = root / 'docs/mcr/art/reference-feed-media-v1.md'
     retained_input = total(package) + (art_doc.stat().st_size if art_doc.exists() else 0)
-    durable = total(evidence) + retained_input
+    source_bytes = sum((root / path).stat().st_size for path in
+                       ['frontend/src/features/event-feed/feed.css',
+                        'docs/mcr/frontend/css-parity-feed.md'])
+    durable = total(evidence) + retained_input + source_bytes
     size = temporary + durable
     report['freeMinimum'] = min(report['freeMinimum'], free)
     report['wholePeak'] = max(report['wholePeak'], size)
     report['temporaryPeak'] = max(report.get('temporaryPeak', 0), temporary)
     report['durablePeak'] = max(report.get('durablePeak', 0), durable)
     report['retainedInputBytes'] = retained_input
+    report['ownedSourceBytes'] = source_bytes
     assert free >= 8 * 1024**3 and size < 193273528
     assert temporary < 160 * 1024**2 and durable < 20 * 1024**2
     assert time.time() < deadline
