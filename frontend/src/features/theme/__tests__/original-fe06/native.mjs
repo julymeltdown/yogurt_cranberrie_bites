@@ -32,12 +32,17 @@ try {
   })
   const shot = async name => { await page.screenshot({ path: resolve(evidence, `${name}-390.png`), fullPage: true }); report.states.push({ name, ...await palette() }) }
   const era = name => page.getByRole('button', { name: name[0] + name.slice(1).toLowerCase(), exact: true })
+  const reducePanel = async () => {
+    const button = page.getByRole('button', { name: 'Reduce panel', exact: true })
+    if (await button.isVisible()) await button.click()
+  }
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/src/features/theme/__tests__/original-fe06/native.html`)
   stage = 'canonical UI sign-in'
   await page.getByLabel('Email', { exact: true }).fill('fixture@example.test')
   await page.getByLabel('Password', { exact: true }).fill('fixture-password')
   await page.getByRole('button', { name: 'Sign in with email', exact: true }).click()
   await expect(host).toBeVisible()
+  await reducePanel()
   await page.getByRole('link', { name: 'World', exact: true }).click()
   await expect(host).toHaveAttribute('data-mcr-theme', 'REVENGE')
   await expect.poll(async () => (await state()).canvases).toBe(1)
@@ -71,9 +76,8 @@ try {
   stage = 'warm panel exceptions and motion'
   await page.getByRole('button', { name: 'World tools', exact: true }).click()
   await page.getByRole('navigation', { name: 'World tools', exact: true }).getByRole('link', { name: 'Help', exact: true }).click()
-  await expect(page.getByRole('heading', { name: 'HOW TO PLAY', exact: true })).toBeVisible()
-  const reduce = page.getByRole('button', { name: 'Reduce panel', exact: true })
-  if (await reduce.isVisible()) await reduce.click()
+  await expect(page.getByRole('heading', { name: 'One world, at your pace', exact: true })).toBeVisible()
+  await reducePanel()
   await era('PARADE').first().click(); await expect(host).toHaveAttribute('data-mcr-theme', 'PARADE')
   const panel = await page.locator('.shell-panel-body').evaluate(el => {
     const style = getComputedStyle(el)
