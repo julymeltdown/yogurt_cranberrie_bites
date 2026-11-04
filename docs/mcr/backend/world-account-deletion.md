@@ -1,6 +1,6 @@
 # BE42 World ticket deletion
 
-Status: IN_PROGRESS. Tickets component implementation qualified at `9bbd33e98e4ab6b9240181b2d5311af2121722e9`; additional granted admission guards and publication remain pending. This is an internal World primitive, not a mounted production Auth deletion port or full-saga acceptance.
+Status: IN_PROGRESS. Initial ticket cleanup is qualified and published; the additional admit/switch/disconnect guards are qualified at `869a10b061d9e7ad43e3bcd56a83e98dd54bfdac` and awaiting publication. Production Auth bridge activation remains separate. This is an internal World primitive, not a mounted production Auth deletion port or full-saga acceptance.
 
 ## Ownership and provenance
 
@@ -67,3 +67,32 @@ The component test proved: 129 outstanding tickets across two events (including 
 Native work and cleanup finished in 16.923 seconds. `full-measured.json` at 14:15:55 UTC confirms all four owned postmaster/native/guardian PIDs absent, no fixture directory, and 80.591 seconds from target release to measured FULL. No resources remain held. `python3 scripts/mcr/check-plan.py` and `git diff --check` also exited 0; the planning check is not application acceptance.
 
 Root subsequently granted only additional `world/mod.rs` admit/switch/renew user-fence guards and the exact Sessions module export when its leaf exists. Those changes are outside this tested pin and require a new source pin and meaningful validation. `renew_owner` has no Auth user identity; membership lease extension belongs to the Sessions admission bridge. No result here certifies Sessions/Sharing cleanup, the canonical production Auth source bridge or the full public deletion saga.
+
+## Initial publication proof
+
+Root normally published the initial scope at master `ff6099ecbd147d7154564d317c40dbc009ad1cf6`. Independent `git ls-remote origin refs/heads/master` returned that exact HEAD. All six delivered commits are its ancestors: `7a8f7d9d`, `85677565`, `c5e3bba0`, `2b597106`, `8cafcb92`, `ed26f8f5`. The module, World repository, migration 0052 and test postimages exactly match qualified source `9bbd33e9`; the corrected document exactly matches `ef476817`. The owner saved hashes and ancestry in the original artifact directory's `remote-publication-proof.json`. The initial publication excludes the later membership guards.
+
+## Membership follow-up qualification
+
+Root explicitly expanded only the World repository admit/switch/disconnect user-fence hunks. Commits `b87adc42`, `be0f1c5d`, `8b75e1c4`, `869a10b0` implement those guards and their test. Admission and room switching take the common user lock before event or other locks and return their existing Denied outcome when permanently fenced. Disconnect begins a transaction, takes that same lock before its membership update and returns Gone without changing or extending a fenced user's lease. Its existing scoped update and behavior for ordinary users remain intact. `renew_owner` has no Auth subject and is explicitly excluded. Sessions owns membership lease renewal in the admission bridge. Root routed the Sessions module export to its combined intake; no foreign Sessions source was imported by this owner.
+
+The new native probe first performs actual Auth signup/verification/password login, positive admission, ordinary disconnect and reconnect. It then creates the actual deletion saga, holds its verified permanent user fence uncommitted and holds the event row exclusively in a separate transaction. Three concurrent stale requests (admit, switch, disconnect) must all be observed blocked at the common user lock. After fence commit they finish as Denied, Denied and Gone while the event lock remains held, proving the fence precedes event access. The membership JSON stays unchanged. Session withdrawal remains the separate Sessions leaf's responsibility.
+
+Fresh build allocation `BE42-TICKET-FIRSTUSER-BACKEND-202611041425Z` accepted clean source `869a10b061d9e7ad43e3bcd56a83e98dd54bfdac` at 14:26:24.516 UTC. The same exact one-target Cargo command/profile as the first round exited 0 in 31.11 seconds. One 17,314,528-byte test executable was frozen with SHA-256 `063ffff6b5e61b8cbcd146aeec098415b32bb59003a90122b103918cac420d3f`; the automatic service binary was recorded but neither copied nor run. Full readset: 2,385 files; source archive SHA-256 `14a483151afe7bca3c39e3d9e6bb90bca87ddb3234a9db9c33f0659db66f43c3`. Evidence is under `/Users/lhs/Desktop/mcr-tools/world-tickets-firstuser-20261104T1426Z`.
+
+The target was unconditionally released at 14:28:09.305 UTC with zero handles/compiler processes and no later access. This round closed at measured FULL 14:30:25.349 UTC, 136.044 seconds after release, before the 150-second limit: copied tests were NOT_RUN because the required actual capacity disposition had not arrived by the prudent start cutoff. No PostgreSQL or copied executable started in that round. Its build PASS is separate from native execution. Peak target growth was 3,248,128 bytes; final outside outputs were 24,125,440 bytes; the corrected whole amount was 3,158,347,776 bytes and minimum free space 27,162,578,944 bytes. All previous history, including 339 MiB C06 target reserve and 23,441,408-byte initial World target growth, was included.
+
+A new allocation `BE42-FIRSTUSER-COPIED-ONLY-202611041432Z` began at 14:32:50.085 UTC after capacity was available. It granted no target access, Cargo, rebuild or new binary copy. Starting whole carry was 3,154,231,296 bytes, including all physical history and 382,156,800 bytes of retained target-growth reserves; fresh free space was 27,040,468,992 bytes. The independent guardian enforced 90 seconds of work, 150 total, 60 cumulative copied-native seconds, 60 seconds cleanup, 128 MiB new outside outputs, 6 GiB whole and an 8 GiB free floor.
+
+This controller verified the complete frozen 869 archive/readset and extracted only its runtime harness and SQL, never substituting live checkout or newer Root inputs. The document-only successor `ef476817` does not change the tested backend. An initial harness attempt rejected an import-generated Python bytecode cache before any copied executable or PostgreSQL start. That failure and the bounded fix are retained: exclude generated `__pycache__` entries from input verification and suppress further bytecode generation. The exact archived input hashes stayed mandatory. The retry used the same original deadlines and executable; no backend or test-source fix was needed.
+
+The frozen executable's three lightweight tests and only the new native probe exited 0:
+
+```sh
+<frozen-firstuser-prefix>/world_account_deletion --test-threads=1 --nocapture --skip native_
+<frozen-firstuser-prefix>/world_account_deletion --test-threads=1 --nocapture --ignored --exact native_preconsumed_admission_switch_and_disconnect_obey_first_user_fence
+```
+
+The probe took 2.91 seconds; native setup, execution and cleanup took 5.454 seconds. Actual automatic FULL was 14:34:07.756 UTC (77.671 seconds after acceptance, within the work cutoff). The later independent measured receipt at 14:35:01.563 UTC was within 131.478 of the 150 seconds and confirms all four failed-controller/native/guardian/postmaster PIDs absent and no fixture root. Final new outside size was 520,192 bytes; last guardian whole amount 3,233,173,504 bytes and minimum free space 26,872,791,040 bytes. No resource or process cap breach occurred and no resource remains held.
+
+Copied-round evidence is under `/Users/lhs/Desktop/mcr-tools/world-tickets-firstuser-native-20261104T1432Z`: `source-pin.json`, original failed stdout/stderr, `harness-fix.json`, exact command logs, `native-report.json`, `FULL`, and `full-measured.json`. The two original cleanup/restart native tests remain qualified at 9bb; they were deliberately not rerun or relabeled as new-source tests. This new result qualifies the exact added membership guards at 869, not production Auth transport or the complete deletion saga.
