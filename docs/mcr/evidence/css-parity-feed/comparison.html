@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feed CSS foreground comparison</title>
+<style>
+body{margin:24px;color:#202020;background:#fafafa;font:15px/1.5 system-ui,sans-serif}h1{font-size:24px}p{max-width:80ch}.frames{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}figure{margin:0;width:390px}figcaption{min-height:54px;font-weight:700}img{display:block;max-width:100%;height:auto;border:1px solid #777}a{color:#5729a3}a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+</style>
+<h1>Feed CSS foreground comparison</h1>
+<p><strong>Baseline and both iterations were captured in the named Feed resource
+round. Final iteration passes the bounded fixture checks. Full photo parity,
+live services and physical-device acceptance remain open.</strong></p>
+<p>Evidence only. The photo Feed panel is normalized from 255px to 390px width.
+Application captures use functioning existing components and explicitly synthetic
+fixture content. The cute backgrounds and selected-character framing have separate
+owners. Reference identities, counts and attachment images are not product data.</p>
+<div class="frames">
+<figure><figcaption>Human reference, normalized 390px</figcaption><img src="reference-feed-390.png" alt="Supplied Feed panel, enlarged for comparison"></figure>
+<figure><figcaption>390px saved baseline CSS, current reference fixture</figcaption><img src="before/feed-390.png" alt="Current fixture with original stylesheet"></figure>
+<figure><figcaption>390px first foreground CSS iteration</figcaption><img src="round1/feed-390.png" alt="Current fixture with foreground CSS changes"></figure>
+<figure><figcaption>390px final iteration: condensed sans-serif copy</figcaption><img src="round2/feed-390.png" alt="Final Feed foreground CSS iteration"></figure>
+<figure><figcaption>390px default app, selected character, synthetic services</figcaption><img src="round2/default-root-390.png" alt="Feed in the actual shell fixture"></figure>
+</div>
+<p><a href="../../frontend/css-parity-feed.md">Scope, checks and remaining differences</a> ·
+<a href="before/report.json">Baseline report</a> · <a href="round1/report.json">First iteration report</a> ·
+<a href="round2/report.json">Final iteration report</a> · <a href="release.json">Resource release</a></p>
+</html>

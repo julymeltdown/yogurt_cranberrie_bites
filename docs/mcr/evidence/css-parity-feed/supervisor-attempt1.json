@@ -1,0 +1,17 @@
+{
+  "started": 1793785108.973363,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs"
+      ],
+      "phase": "before",
+      "exit": 1,
+      "seconds": 0.6227096670045285
+    }
+  ],
+  "freeMin": 17008295936,
+  "wholePeak": 345268,
+  "elapsed": 0.6228361670073355
+}

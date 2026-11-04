@@ -1,0 +1,20 @@
+{
+  "phase": "before",
+  "slot": "CSS-PARITY-FEED-202611040938Z",
+  "base": "b16133bd1285dd7ba4fef812bee6c4517cf4fc24",
+  "cssSha256": "520b669d1b39719bd6765da7e3411b5d1396d2561915a924a7e49e02104a0f5b",
+  "qualification": "Existing actual EventFeed/reference and default Auth/router/Phaser fixture, synthetic HTTP/media. Not live/device/QA06 acceptance.",
+  "cases": [],
+  "errors": [],
+  "status": "FAIL",
+  "renderedCssSha256": "7749673c8e87e4d07cacd4c3dff084307d5de40386a1f4fa1a2fe87afb3fece0",
+  "failure": {
+    "stage": "boot",
+    "error": "TypeError: Cannot read properties of undefined (reading 'launch')\n    at file:///Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs:31:47\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "privateCacheRemoved": true
+  }
+}

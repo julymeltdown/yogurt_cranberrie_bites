@@ -1,0 +1,54 @@
+{
+  "started": 1793785131.439924,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs"
+      ],
+      "phase": "before",
+      "exit": 0,
+      "seconds": 1.8650167909945594
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs"
+      ],
+      "phase": "round1",
+      "exit": 0,
+      "seconds": 10.603996249992633
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs"
+      ],
+      "phase": "round2",
+      "exit": 0,
+      "seconds": 130.4219572909933
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--maxWorkers",
+        "1",
+        "src/features/event-feed/__tests__/controller.test.ts",
+        "src/features/event-feed/__tests__/presentation.test.tsx",
+        "src/features/feed-thread/__tests__/controller.test.ts",
+        "src/features/feed-thread/__tests__/ui.test.tsx"
+      ],
+      "phase": null,
+      "exit": 0,
+      "seconds": 145.84649116599758
+    }
+  ],
+  "freeMin": 16797978624,
+  "wholePeak": 22851772,
+  "elapsed": 145.8467075410008
+}

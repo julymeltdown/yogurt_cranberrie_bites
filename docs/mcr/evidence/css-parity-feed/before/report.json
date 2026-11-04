@@ -1,0 +1,202 @@
+{
+  "phase": "before",
+  "slot": "CSS-PARITY-FEED-202611040938Z",
+  "base": "b16133bd1285dd7ba4fef812bee6c4517cf4fc24",
+  "cssSha256": "520b669d1b39719bd6765da7e3411b5d1396d2561915a924a7e49e02104a0f5b",
+  "qualification": "Existing actual EventFeed/reference and default Auth/router/Phaser fixture, synthetic HTTP/media. Not live/device/QA06 acceptance.",
+  "cases": [
+    {
+      "width": 390,
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "feed": {
+          "x": 14,
+          "y": 51,
+          "width": 362,
+          "height": 588.75,
+          "bottom": 639.75
+        },
+        "rows": [
+          {
+            "x": 14,
+            "y": 108,
+            "width": 362,
+            "height": 230.375,
+            "bottom": 338.375
+          },
+          {
+            "x": 14,
+            "y": 343.375,
+            "width": 362,
+            "height": 230.375,
+            "bottom": 573.75
+          }
+        ],
+        "portraits": [
+          {
+            "x": 25,
+            "y": 119,
+            "width": 48,
+            "height": 48,
+            "bottom": 167
+          },
+          {
+            "x": 25,
+            "y": 354.375,
+            "width": 48,
+            "height": 48,
+            "bottom": 402.375
+          }
+        ],
+        "media": [
+          {
+            "x": 83,
+            "y": 186.96875,
+            "width": 282,
+            "height": 106.40625,
+            "bottom": 293.375
+          },
+          {
+            "x": 83,
+            "y": 422.34375,
+            "width": 282,
+            "height": 106.40625,
+            "bottom": 528.75
+          }
+        ],
+        "footer": {
+          "x": 14,
+          "y": 580.75,
+          "width": 362,
+          "height": 59,
+          "bottom": 639.75
+        },
+        "controls": [
+          {
+            "name": "ALL",
+            "x": 14,
+            "y": 51,
+            "width": 66.890625,
+            "height": 44,
+            "bottom": 95
+          },
+          {
+            "name": "MEETUP",
+            "x": 85.890625,
+            "y": 51,
+            "width": 87.78125,
+            "height": 44,
+            "bottom": 95
+          },
+          {
+            "name": "GIVEAWAY",
+            "x": 178.671875,
+            "y": 51,
+            "width": 108.703125,
+            "height": 44,
+            "bottom": 95
+          },
+          {
+            "name": "NOTICE",
+            "x": 292.375,
+            "y": 51,
+            "width": 83.625,
+            "height": 44,
+            "bottom": 95
+          },
+          {
+            "name": "View 42 reactions in thread",
+            "x": 76,
+            "y": 293.375,
+            "width": 46.953125,
+            "height": 44,
+            "bottom": 337.375
+          },
+          {
+            "name": "Open thread · 7 comments",
+            "x": 203.484375,
+            "y": 293.375,
+            "width": 44,
+            "height": 44,
+            "bottom": 337.375
+          },
+          {
+            "name": "View post sharing in thread",
+            "x": 328,
+            "y": 293.375,
+            "width": 44,
+            "height": 44,
+            "bottom": 337.375
+          },
+          {
+            "name": "View 27 reactions in thread",
+            "x": 76,
+            "y": 528.75,
+            "width": 46.953125,
+            "height": 44,
+            "bottom": 572.75
+          },
+          {
+            "name": "Open thread · 5 comments",
+            "x": 203.484375,
+            "y": 528.75,
+            "width": 44,
+            "height": 44,
+            "bottom": 572.75
+          },
+          {
+            "name": "View post sharing in thread",
+            "x": 328,
+            "y": 528.75,
+            "width": 44,
+            "height": 44,
+            "bottom": 572.75
+          },
+          {
+            "name": "Feed options",
+            "x": 18,
+            "y": 590.75,
+            "width": 44,
+            "height": 44,
+            "bottom": 634.75
+          },
+          {
+            "name": "Write a post",
+            "x": 70,
+            "y": 590.75,
+            "width": 250,
+            "height": 44,
+            "bottom": 634.75
+          },
+          {
+            "name": "Refresh feed",
+            "x": 328,
+            "y": 590.75,
+            "width": 44,
+            "height": 44,
+            "bottom": 634.75
+          }
+        ],
+        "background": {
+          "color": "rgb(245, 217, 223)",
+          "image": "url(\"http://127.0.0.1:5292/backgrounds/cute-community-v1/feed-backdrop.svg\")"
+        },
+        "copyFont": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+      },
+      "capture": {
+        "path": "docs/mcr/evidence/css-parity-feed/before/feed-390.png",
+        "sha256": "08d23813243970ed8bc7c868646f991b3a8af541db8a1ba7b302f77f9e00c68b"
+      }
+    }
+  ],
+  "errors": [],
+  "status": "PASS",
+  "renderedCssSha256": "7749673c8e87e4d07cacd4c3dff084307d5de40386a1f4fa1a2fe87afb3fece0",
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "privateCacheRemoved": true
+  }
+}
