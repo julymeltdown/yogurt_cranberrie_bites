@@ -1,0 +1,94 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "FE36 synthetic safety qualification"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "navigation",
+    "name": "Fixture routes"
+  },
+  {
+    "role": "button",
+    "name": "Block user"
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Synthetic FE36 qualification only"
+  },
+  {
+    "role": "button",
+    "name": "Open report"
+  },
+  {
+    "role": "button",
+    "name": "Blocked users"
+  },
+  {
+    "role": "button",
+    "name": "Account"
+  },
+  {
+    "role": "StaticText",
+    "name": "Block user"
+  },
+  {
+    "role": "StaticText",
+    "name": "Private views were cleared. Reopen safety controls with your current session."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Synthetic FE36 qualification only"
+  },
+  {
+    "role": "StaticText",
+    "name": "Open report"
+  },
+  {
+    "role": "StaticText",
+    "name": "Blocked users"
+  },
+  {
+    "role": "StaticText",
+    "name": "Account"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Block user"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Private views were cleared. Reopen safety "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "controls with your current session."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Open report"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Blocked users"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Account"
+  }
+]

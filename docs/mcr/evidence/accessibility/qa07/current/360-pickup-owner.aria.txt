@@ -1,0 +1,10 @@
+- paragraph: GIFTS / YOUR PICKUP
+- heading "Fan badges" [level=1]
+- paragraph: A reservation holds an item. Only a server-confirmed collection completes pickup.
+- status: The server confirmed one-time collection.
+- button "Read current reservation"
+- heading "Reservation status" [level=2]
+- paragraph: CLAIMED
+- paragraph: "Expiry: 07 Nov 2026, 18:15 KST."
+- heading "Collection receipt" [level=2]
+- paragraph: Claimed at 07 Nov 2026, 17:05 KST. The server confirmed one collection.

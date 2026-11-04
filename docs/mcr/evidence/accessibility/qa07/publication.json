@@ -1,0 +1,31 @@
+{
+  "task": "QA07",
+  "originalCriteria": "SATISFIED_TASK_LOCAL_NATIVE_CLIENT_FIXTURES",
+  "status": "MOCK_READY",
+  "deliveryRepository": "julymeltdown/mcr",
+  "deliveryBranch": "master",
+  "artifactCommit": "41f7c64c1c4bea6615c5eb1058e42d703fb77541",
+  "remoteHeadVerified": "41f7c64c1c4bea6615c5eb1058e42d703fb77541",
+  "verifiedAncestry": true,
+  "publishedUtc": "2026-11-04T01:52:20.492904+00:00",
+  "testedCandidate": "5eb418391012cb2cc435ef3dcb08884b95055720",
+  "peerBase": "16fde48ab9842b3a5e9b5e4aab3719c926191ac9",
+  "pinEqualityAfterSerialRebase": {
+    "files": 2077,
+    "changed": []
+  },
+  "publication": "Normal non-force push after one non-fast-forward rejection and serial peer rebase; no tested input byte changed.",
+  "ownedPrefixes": [
+    "frontend/e2e/accessibility/qa07/",
+    "docs/mcr/evidence/accessibility/qa07/"
+  ],
+  "changedFiles": 331,
+  "nativeChecks": 36,
+  "componentTests": 90,
+  "unrun": [
+    "Live two-principal service journeys",
+    "Physical mobile devices and touch/hardware keyboard",
+    "Actual screen-reader speech/output",
+    "IN/release gates"
+  ]
+}

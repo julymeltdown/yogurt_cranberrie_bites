@@ -1,0 +1,16 @@
+- link "Skip to content":
+  - /url: "#shell-content"
+- main "Nearby in world":
+  - heading "Nearby in world" [level=1]
+  - button "Reduce panel" [expanded]
+  - button "Minimize panel" [expanded]
+  - button "Back to previous panel"
+  - navigation "Nearby navigation":
+    - link "Choose a room":
+      - /url: /world/rooms
+    - link "Back to world":
+      - /url: /world
+  - heading "Nearby in world" [level=2]
+  - paragraph: People currently visible to you in this virtual room. This list does not show physical location or distance.
+  - status: The world is paused. The previous list has been cleared.
+  - paragraph: Visibility can change when someone leaves, access changes or blocking applies. Hidden people are not listed.

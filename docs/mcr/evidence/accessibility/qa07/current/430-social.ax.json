@@ -1,0 +1,126 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 synthetic accessibility inputs"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Sharing request detail"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic consent fixture; no live reciprocal consent."
+  },
+  {
+    "role": "heading",
+    "name": "SHARING REQUEST"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic consent fixture; no live reciprocal "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "consent."
+  },
+  {
+    "role": "StaticText",
+    "name": "SHARING REQUEST"
+  },
+  {
+    "role": "StaticText",
+    "name": "Sharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent."
+  },
+  {
+    "role": "StaticText",
+    "name": "REVOKED"
+  },
+  {
+    "role": "StaticText",
+    "name": "Expires "
+  },
+  {
+    "role": "time",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "SHARING REQUEST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Sharing lets the other person see your selected "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "account name. It does not follow anyone "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "automatically. Revoking stops future access here; "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "it cannot erase a name someone already saw or "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "copied. Unblocking does not restore previous "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "consent."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "REVOKED"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Expires "
+  },
+  {
+    "role": "StaticText",
+    "name": "11/7/2026, 7:00:00 PM"
+  },
+  {
+    "role": "StaticText",
+    "name": "The server confirmed this change."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "11/7/2026, 7:00:00 PM"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The server confirmed this change."
+  }
+]
