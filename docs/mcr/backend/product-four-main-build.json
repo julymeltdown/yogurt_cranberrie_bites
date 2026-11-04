@@ -216,5 +216,27 @@
   "copied_only_receipt_sha256": {
     "full-release.json": "44a171c1a5c3b777c0d5f8f23b72fdaa94b5d4092216be3c146ef67802941630",
     "copied-results.json": "f84ab69d66dbd44e411575de6c2c79bb16fd1068f02dc673fa93f580bec1f549"
+  },
+  "publication_followup": {
+    "compiled_rust_manifests_locks_sql_contracts_unchanged": true,
+    "post_build_diagnostic_only_paths": [
+      "backend/scripts/mcr/test_world_live_failure_probe.py",
+      "backend/scripts/mcr/world_capacity_support/scenarios.py"
+    ],
+    "source": "0a7f78900792b39372989ce24606346259edb62d",
+    "meaningful_root_python_validation": {
+      "command": "/private/tmp/mcr-contracts-admission/bin/python -B -m unittest test_world_capacity_probe test_world_live_failure_probe test_world_in01_profiles test_in03_stack_runtime",
+      "exit_code": 0,
+      "tests_passed": 85,
+      "seconds": 6.816,
+      "log_sha256": "b623bd8d85499b53934ed9b63579a3d45db38a0821e4a14b7cd0032cbf05d0ce"
+    },
+    "default_python_attempt": {
+      "exit_code": 1,
+      "tests": 85,
+      "failures": 10,
+      "errors": 4,
+      "disposition": "Default environment did not match the pinned contracts/schema dependency environment. Exact pinned interpreter rerun passed; no source changed to bypass it."
+    }
   }
 }
