@@ -1,0 +1,242 @@
+{
+  "offer": "ART-GIFTS-NATIVE03-BROWSER-202611041455Z",
+  "acceptUtc": "2026-11-04T14:56:02.626506+00:00",
+  "workDeadlineUtc": "2026-11-04T14:58:02.626506+00:00",
+  "fullDeadlineUtc": "2026-11-04T14:59:02.626506+00:00",
+  "attempt": "native-03",
+  "startedUtc": "2026-11-04T14:56:02.626709+00:00",
+  "candidate": "73512425aadd859bad07123be4e18ff0a9cbbe5b",
+  "actualHead": "5ce31a1b49429eaf0b8050e968bf4dc9a24866ff",
+  "dirtyAtStart": "",
+  "retainedLogicalBytes": 408263334,
+  "preflightWholeBytes": 410342307,
+  "freeBytes": 25283227648,
+  "packagePins": {
+    "package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "browserSha256": "77d8278b1ac9d0687fad4e817ea83023ede09b1deef36e1864b49ba194ac9634",
+  "sourcePins": [
+    {
+      "file": "docs/mcr/art/reference-gifts-content-v1.md",
+      "bytes": 13467,
+      "sha256": "cbb00d2c6a416fc43303cb87e3e932a4ee5971ab6e9f2361652c1bab6ec91087"
+    },
+    {
+      "file": "docs/mcr/art/reference-window-controls-v2.md",
+      "bytes": 10033,
+      "sha256": "a86a3b58234830fc2ea85cf66e684caa2c98e97b4856a0e3405454d65c610b3a"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/allocation-native-01.json",
+      "bytes": 8690,
+      "sha256": "e0b5a0c6ea3b5468953c16ee032b495408396cdcfbcc46b47b7f1ddf5a3db7cf"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/allocation-native-02.json",
+      "bytes": 75267,
+      "sha256": "13b098ce90b91ac346fad70a9ebb7892675ae0aa0ded7b4fa33d98776b803ce0"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/allocation-source90.json",
+      "bytes": 5830,
+      "sha256": "0e1f7b578be72cdac247f52a64eec4c818611a2a5c4681be62175876642b9fac"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/capture.mjs",
+      "bytes": 5077,
+      "sha256": "f38fcf48fd328e407b28de47cc1140829ffa4e3c9c05946efff38198eeba6a87"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/check_assets.py",
+      "bytes": 5413,
+      "sha256": "c47f012d9eda4768ef3b2a796435e973b96846b11db8934b51c9c279ac7b9ccc"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/fixture-derivation.json",
+      "bytes": 2235,
+      "sha256": "74ca1c48adcc587be1a39b50c0e43435dd66531160c7ebb81035e7fd4e12da63"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/grammar-source.json",
+      "bytes": 1746,
+      "sha256": "949cd25f64190718d6e6ea9481054bc51d5045c85fe966fb0cf7859c0665628e"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-01/report.json",
+      "bytes": 324,
+      "sha256": "a15b3e50cc19c740b75aea70dbd6e8b64de8f3b9dda0a3354a38b10379d7bfb6"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-01.stderr.log",
+      "bytes": 1333,
+      "sha256": "83cf49aa5efe87bf4616fa7b5d8dab9c556f33d56dc07931ece2be2f74c14a49"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-01.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-02-working.diff",
+      "bytes": 2142,
+      "sha256": "06e0314ad8620dcd5d26a2eb9ff72a00a27c40d1cd5a8b33ad4d9180109d246c"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-02.stderr.log",
+      "bytes": 70439,
+      "sha256": "3ae9ac6da289464d6f62cdcb8917f3b29c6ab3ebaddc9d6d4974cebcd34ccf30"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-02.stdout.log",
+      "bytes": 189,
+      "sha256": "899dedf2964bfed9338e7f835fdf56b38ef080af7679dc5db34cb4ef8e01e05b"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-full-release.json",
+      "bytes": 917,
+      "sha256": "56c65643d1ddbd48db59a6aef902b351f42844c11ea0d78302db3c610e8f0a1d"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-guardian-02.json",
+      "bytes": 358,
+      "sha256": "fbb02ab7fc7c215e121816f5f7eafac76a2fcca9c2bf5e515c8d5c34d05647c5"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native-guardian.json",
+      "bytes": 386,
+      "sha256": "0c4ea03284d7b82a73a97e628823a19e48dedf898e00f9a426de69916a24c8ae"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native.css",
+      "bytes": 176,
+      "sha256": "64015ae7b2f9937a1186ebda03fbe5d7be5ec79968534ba328130b9e7eb27d5b"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native.html",
+      "bytes": 282,
+      "sha256": "6777af179a2cffd4df9f64c1890683de1ca707a450ff64236f78fd65884b49c5"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native.tsx",
+      "bytes": 3438,
+      "sha256": "4c3758dbc0e63acdbd73a5653e13458e2ac5cae9aca33cb8347115d33e135ed8"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/preview.html",
+      "bytes": 2799,
+      "sha256": "9392a8dfb54ccc8a79aba5ca336fd4bbbd7954ae51126f1a80b3b11c8ccc8b86"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/run-native.py",
+      "bytes": 12385,
+      "sha256": "aefdca70d8b70e0aec36d2b1bc146c6324c955ae7eae3d79e5e19b8e271f3290"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/runtime-inputs.json",
+      "bytes": 1195,
+      "sha256": "c590474fbbce0779e36bbee290d85550f77986903daa400246a55054f60fcfcb"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/serve.mjs",
+      "bytes": 4835,
+      "sha256": "ff3bdfdb18de269a53a3cef53759e261f1d00938f0993e92ae6c4c48723fcb3c"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/source-validation.json",
+      "bytes": 1477,
+      "sha256": "1b4c03a0104b85c59efbc08bfe9623e3d7b951589c1148ecf4c3c7956ac371b9"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/allocation-source90.json",
+      "bytes": 2935,
+      "sha256": "0e773b329381683e2c6ad8d3c520c3a66d094f30eb981d520d07f67b7abcf8dd"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/check_assets.py",
+      "bytes": 5051,
+      "sha256": "a58ba1a442967276c52fa9470db51a3d7875cbec6a4a3f5dff416c1f20ed62d4"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/native-disposition.json",
+      "bytes": 4882,
+      "sha256": "8199706fc8b98f4915e3a443e80a21dfce1d27720704a2432ae2df90f92ba617"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/preview.html",
+      "bytes": 3092,
+      "sha256": "33204e8dec922689b1f4a2f2de6925ca768876f75f583d9f1bf25e4f7fb0254b"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/source-validation.json",
+      "bytes": 1651,
+      "sha256": "c0a0aeee44a76a5ac84dd36d66d24ffea0ec3ba033a783c83b9b0af306a04b88"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/diy-buttons.svg",
+      "bytes": 1300,
+      "sha256": "d16d01d7822192687496477dc2946b7f4db7e42059512c86408d12ba24cb8d90"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/hand-banner.svg",
+      "bytes": 1054,
+      "sha256": "2e1229c95ba56831980295f98f4059f0e9a85533df44be524387b8be0c4b41eb"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/source-provenance.json",
+      "bytes": 4249,
+      "sha256": "65ec2ed4b2020a99975fe8e4981ff8e43107cf25f95ad332edbde432697b456c"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/sticker-pack.svg",
+      "bytes": 1621,
+      "sha256": "067b2f4153158f1a914a2b257c539d954a26d82dbd814272f0d367b53330ae7d"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/back.svg",
+      "bytes": 223,
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/close.svg",
+      "bytes": 198,
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/expand.svg",
+      "bytes": 232,
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/manifest.json",
+      "bytes": 4765,
+      "sha256": "9b6f7918f88ec8190aead5398ded9c4961e140e9ab47e507329c48eb6c2c53fb"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "bytes": 257,
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/stars.svg",
+      "bytes": 402,
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2"
+    }
+  ],
+  "argv": [
+    "node",
+    "docs/mcr/evidence/art-gifts-content-v1/capture.mjs"
+  ],
+  "guardianArmedBeforeWorkload": true,
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Unable to resolve `@import \"./cozy-identity-backgrounds-v1.css\"` from /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles\n11:56:03 PM [vite] (client) Pre-transform error: [postcss] ENOENT: no such file or directory, open './cozy-identity-backgrounds-v1.css'\n  Plugin: vite:css\n  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles/base.css:undefined:NaN\nUnable to resolve `@import \"./cozy-identity-backgrounds-v1.css\"` from /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles\n11:56:03 PM [vite] Internal server error: [postcss] ENOENT: no such file or directory, open './cozy-identity-backgrounds-v1.css'\n  Plugin: vite:css\n  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles/base.css:undefined:NaN\n      at async open (node:internal/fs/promises:1345:25)\n      at async Object.readFile (node:internal/fs/promises:2003:14)\n      at async Object.load (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:22161:17)\n      at async loadImportContent (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:392:19)\n      at async Promise.all (index 0)\n      at async resolveImportId (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:378:20)\n      at async parseStyles (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:331:4)\n      at async Object.Once (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:455:20)\n      at async LazyResult.runAsync (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/postcss@8.5.16/node_modules/postcss/lib/lazy-result.js:293:11)\n      at async runPostCSS (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:22215:19)\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\npage.waitForFunction: Timeout 30000ms exceeded.\n    at /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/capture.mjs:24:16 {\n  log: [],\n  name: 'TimeoutError'\n}\n\nNode.js v24.22.2\n",
+  "guardianOutput": "{\"reason\": \"NORMAL_STOP\", \"peaks\": {\"processes\": 9, \"rssBytes\": 1145257984, \"wholeBytes\": 415914516, \"tempBytes\": 79684, \"cacheBytes\": 5492481, \"outputBytes\": 2079017}, \"minimumFreeBytes\": 25015705600, \"remainingOwnedPids\": [], \"port5197Free\": true, \"ephemeralAbsent\": {\"node_modules\": true, \"native-tmp\": true, \"private-cache\": true}}\n",
+  "guardianError": "",
+  "guardianExitCode": 0,
+  "resourceAndCleanupPassed": true,
+  "finishedUtc": "2026-11-04T14:56:35.045668+00:00",
+  "postWholeBytes": 410349622,
+  "postFreeBytes": 25072005120,
+  "port5197Free": true
+}

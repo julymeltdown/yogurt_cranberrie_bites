@@ -1,0 +1,13 @@
+{
+  "status": "EXECUTED_NATIVE_FIXTURE_PASS",
+  "actualExecutionEvidence": "allocation-native-04.json and native-04/report.json; earlier failed attempts remain retained separately.",
+  "provider": "FE-REFERENCE-CHROME-02 owner",
+  "nodeVersion": "24.22.2",
+  "nodeExecutableSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "frontendPackageSha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+  "frontendPnpmLockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "dependencyPolicy": "Existing retained dependencies only, read-only. Compare actual source package/lock and retained package/lock at native ACCEPT. No install or shared dependency/cache mutation.",
+  "pathPolicy": "Machine-specific dependency and pinned Node paths are supplied only at run time, not published as repository assumptions. Pinned Node bin must be first in child PATH.",
+  "temporaryPolicy": "Only own evidence-prefix absent node_modules symlink, private-cache and private TMPDIR under an explicit accepted native allocation; include all outputs/temp/carry in caps and remove ephemeral entries before FULL release.",
+  "vitePolicy": "Read-only source Git middleware; explicit private cache, configFile false and configLoader runner. No shared .vite-temp."
+}

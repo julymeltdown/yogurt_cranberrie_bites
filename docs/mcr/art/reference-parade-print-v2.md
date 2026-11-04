@@ -1,12 +1,14 @@
 # Shared parade print — ART-PARADE-PRINT-02
 
-Status: **INTEGRATED — refined source and bounded native art inspection PASS;
-screen reference differences remain; final publication/readback pending**.
+Status: **ACCEPTED — bounded original-art delivery published and independently
+read back; screen/reference and shared-activation differences remain outside
+this art disposition**.
 This original decorative print is for the shared lower band in Meet, Giveaway
 and Profile. Source validation and direct source-preview inspection pass. The
-functioning consumer and retained native comparison are now recorded below;
-art refinement, component-owner flow disposition and final publication remain
-required. A rendered source asset is not an application screenshot.
+functioning fixture consumer, source refinement, retained native comparison and
+independent publication proof are recorded below. Component-owner flow and
+whole-screen reference disposition remain separate. A rendered source asset
+is not an application screenshot.
 
 ## Ownership and base
 
@@ -449,7 +451,36 @@ native fit. It does not claim pixel-identical reference grain, full ten-screen
 visual parity, live service, two accounts, physical device, software keyboard
 or Map acceptance. The run uses explicit DEV synthetic HTTP/C05 fixtures with
 real default components/router/Phaser and separate production-anonymous entry.
-Remaining own duties are committed publishing handoff and independent final-master
-ancestry/exact-byte readback. Screen differences
+The subsequent publication section records the completed own publishing
+handoff and independent master readback. Screen differences
 stay visible with their responsible implementation owners; no King/SL/QA
 review or acknowledgment gate is introduced.
+
+## Published bounded delivery and independent readback
+
+Root153 published all33 owned postimages from source handoff
+`fc691930dbbcc823fe702ebb1dffe754b2cff43d` in
+`d2867709a23fd584d733a90bd6bda622a06a85dc`. A fresh independent fetch and
+`ls-remote origin refs/heads/master` agreed on
+`f02fe29c69627007aa15eb1e17699b9e3806fba8`. All33 source/publishing/master
+tree entries, Git blob IDs, file modes and independently read remote bytes
+match; the public four-file pack is still exactly `ec40e531`. The delivery
+base is an ancestor of the publishing commit, which is an ancestor of the
+fresh remote master. Publication copied qualified scoped postimages; it is
+not misrepresented as a merge of the source branch.
+
+Per-file hashes, modes and actual observations are in
+[`publication-readback.json`](../evidence/art-parade-print-v2/publication-readback.json).
+That receipt and this concise documentation update are a new postpublication
+owner handoff, not silently claimed as part of the33-file snapshot checked.
+No public asset, shared consumer, character, CSS or runtime was changed during
+readback; no browser/build/export was run or closed resource lease reused.
+
+The original bounded art duties are delivered: editable original SVG,
+transparent preview/native2× source, placement/provenance, actual allocated
+source checks and fixes,18 retained successor image inspections, immutable
+native seal binding, committed handoff and independently verified publication.
+This does not activate consumer213's shared changes or accept full-screen
+reference parity, live services, devices or Map. Remaining CTA/More actions
+placement and first-view density belong to213/Root/per-screen owners; their
+follow-up preserves ec40 and requires no additional art export job.

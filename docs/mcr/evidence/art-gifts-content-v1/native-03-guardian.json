@@ -1,0 +1,19 @@
+{
+  "reason": "NORMAL_STOP",
+  "peaks": {
+    "processes": 9,
+    "rssBytes": 1145257984,
+    "wholeBytes": 415914516,
+    "tempBytes": 79684,
+    "cacheBytes": 5492481,
+    "outputBytes": 2079017
+  },
+  "minimumFreeBytes": 25015705600,
+  "remainingOwnedPids": [],
+  "port5197Free": true,
+  "ephemeralAbsent": {
+    "node_modules": true,
+    "native-tmp": true,
+    "private-cache": true
+  }
+}

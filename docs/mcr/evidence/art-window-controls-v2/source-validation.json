@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "task": "ART-WINDOW-CONTROLS-02",
+  "method": "Python standard library XML/JSON and source byte inspection",
+  "nativeQualification": "NOT_RUN",
+  "checks": [
+    "five bounded editable vector sources",
+    "valid XML and viewBox agreement",
+    "no scripts, links, fonts, text, raster, filters or external resources",
+    "explicit approved palette and transparent source background",
+    "stroke/alignment metadata agreement",
+    "static noninteractive specimen source",
+    "SHA-256 source pins"
+  ],
+  "assets": [
+    {
+      "file": "stars.svg",
+      "bytes": 402,
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2",
+      "viewBox": [
+        0,
+        0,
+        72,
+        24
+      ]
+    },
+    {
+      "file": "close.svg",
+      "bytes": 198,
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ]
+    },
+    {
+      "file": "back.svg",
+      "bytes": 223,
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ]
+    },
+    {
+      "file": "expand.svg",
+      "bytes": 232,
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ]
+    },
+    {
+      "file": "reduce.svg",
+      "bytes": 257,
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ]
+    }
+  ],
+  "result": "PASS"
+}

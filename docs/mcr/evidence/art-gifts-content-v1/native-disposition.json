@@ -1,0 +1,97 @@
+{
+  "task": "ART-GIFTS-CONTENT-02",
+  "usage": "TEST_ONLY_REFERENCE_FIXTURE",
+  "status": "SOURCE_AND_NATIVE_FIXTURE_PASS_PRODUCTION_BINDING_NOT_READY",
+  "productionBinding": null,
+  "sourceCommit": "73512425aadd859bad07123be4e18ff0a9cbbe5b",
+  "actualConsumer": "GiftDiscovery -> ReferenceGiftRow",
+  "offer": "ART-GIFTS-NATIVE03-BROWSER-202611041455Z",
+  "acceptUtc": "2026-11-04T14:56:02.626506Z",
+  "originalWorkDeadlineUtc": "2026-11-04T14:58:02.626506Z",
+  "originalFullDeadlineUtc": "2026-11-04T14:59:02.626506Z",
+  "actualSuccessfulFullUtc": "2026-11-04T14:57:05.633338Z",
+  "successfulAttempt": "native-04",
+  "report": {
+    "file": "native-04/report.json",
+    "sha256": "a6a1f5e0bdbceae867c9c3523c321eb212a364f1bf6c69bc0ecfbec28992b9b6",
+    "result": "PASS",
+    "errors": []
+  },
+  "runtimeSourcePins": "allocation-native-04.json",
+  "firstFailure": "native-03/report.json and native-03.stderr.log; PostCSS disk-relative import failure; no PNG; raw receipts retained.",
+  "sameClockRetry": true,
+  "metrics": [
+    {
+      "viewport": 360,
+      "frameCssPx": 90.46875,
+      "imageCssPx": 88.46875,
+      "fit": "contain",
+      "scrollWidth": 360
+    },
+    {
+      "viewport": 390,
+      "frameCssPx": 99.171875,
+      "imageCssPx": 97.171875,
+      "fit": "contain",
+      "scrollWidth": 390
+    },
+    {
+      "viewport": 430,
+      "frameCssPx": 110.765625,
+      "imageCssPx": 108.765625,
+      "fit": "contain",
+      "scrollWidth": 430
+    }
+  ],
+  "directlyInspectedImages": [
+    {
+      "file": "native-04/context-withdrawn-390.png",
+      "bytes": 82798,
+      "sha256": "c763511aea17d2299d75c36b45330ccc4f0c7e8c4727d2b8ba5c61515830f38c"
+    },
+    {
+      "file": "native-04/gifts-360.png",
+      "bytes": 107187,
+      "sha256": "31a0c0db061855cefc4bf5ec369914361d6a0b33709d758bb3a789317ce81862"
+    },
+    {
+      "file": "native-04/gifts-390.png",
+      "bytes": 115086,
+      "sha256": "e9d969689f21837724449b0f361b4cf0791497a2b776794a3b30d8153650fe88"
+    },
+    {
+      "file": "native-04/gifts-430.png",
+      "bytes": 123555,
+      "sha256": "85f158c4ef42f25e215e43cbabd1ddf200fc1824c64199a09861e20cbe1524c4"
+    },
+    {
+      "file": "native-04/source-specimen.png",
+      "bytes": 141691,
+      "sha256": "9531041b19ae383f53017289b12ef15d68502eee76d71ea0137bed6e4eb598fd"
+    }
+  ],
+  "findings": [
+    {
+      "scope": "art-fit",
+      "result": "PASS",
+      "detail": "All three original motifs are recognizable, centered and unclipped at actual 360/390/430 row widths; lettering, cloth seams, rose/skull/heart/star and button outlines remain legible. Source specimens at 256/99 inspected. No SVG correction needed."
+    },
+    {
+      "scope": "fixture-context-withdrawal",
+      "result": "PASS",
+      "detail": "Actual 390 withdrawal state contains no item images; saved PNG directly inspected."
+    },
+    {
+      "scope": "consumer-full-screen-palette",
+      "result": "NOT_ACCEPTED",
+      "detail": "Pinned consumer retains pastel row decoration; artwork fit qualification does not accept the final whole-screen palette."
+    }
+  ],
+  "limitations": [
+    "Production catalog/media identity and rights decision remain NOT_READY; never a no-photo fallback.",
+    "Retained synthetic row/media mapping is explicitly composite and is not RootGiftImage authorization/cache proof.",
+    "No live stock, reservation/claim journey, detail image integration, physical device or full accessibility acceptance."
+  ],
+  "cleanup": "allocation-native-04.json and native-04-guardian.json: NORMAL_STOP, no owned PIDs/link/TMP/cache, no listener and reusable bind PASS before original work cutoff.",
+  "publication": "PENDING_ROOT153_AND_OWN_FRESH_EXACT_READBACK"
+}

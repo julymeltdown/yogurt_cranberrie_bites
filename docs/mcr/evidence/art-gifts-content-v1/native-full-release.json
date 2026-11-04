@@ -1,0 +1,25 @@
+{
+  "utc": "2026-11-04T14:33:01.355771+00:00",
+  "offer": "ART-GIFTS-NATIVE-BROWSER-202611041427Z",
+  "result": "FAILED_NATIVE_NOT_QUALIFIED",
+  "originalWorkDeadlineUtc": "2026-11-04T14:32:16.541231Z",
+  "originalFullDeadlineUtc": "2026-11-04T14:33:16.541231Z",
+  "port5197Listeners": "",
+  "port5197NoListener": true,
+  "port5197ReusableBind": true,
+  "ephemeralAbsent": {
+    "node_modules": true,
+    "native-tmp": true,
+    "private-cache": true
+  },
+  "ownedCarryBytes": 235323,
+  "retainedDependencyLogicalBytes": 408263334,
+  "wholeBytes": 408498657,
+  "freeBytes": 27009802240,
+  "pngs": 0,
+  "notes": [
+    "Attempt1missingdefaultPlaywright1228browser;noinstall",
+    "Attempt2explicitretained1248browser:Vitevirtualsourcecontracts/refreshresolutionfailure;stoppedat ORIGINAL workdeadline",
+    "Guardianportbindfalseimmediatelyafterkill;freshLISTENandSO_REUSEADDRchecksseparate,oldrawproofpreserved"
+  ]
+}

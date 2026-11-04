@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "observedAtUTC": "2026-11-04T14:58:48.185839+00:00",
+  "repository": "https://github.com/julymeltdown/mcr.git",
+  "scope": [
+    "frontend/src/features/places/ui/places.css"
+  ],
+  "fetch": {
+    "command": "git fetch origin master",
+    "exitCode": 0
+  },
+  "remoteObservation": {
+    "command": "git ls-remote --heads origin master",
+    "exitCode": 0,
+    "stdout": "f02fe29c69627007aa15eb1e17699b9e3806fba8\trefs/heads/master"
+  },
+  "originMaster": "f02fe29c69627007aa15eb1e17699b9e3806fba8",
+  "publicationCommit": "3ea8703fb62cba6760e12a534551c198d99a5c54",
+  "publicationAncestorOfObservedMaster": true,
+  "path": "frontend/src/features/places/ui/places.css",
+  "postimages": [
+    {
+      "commit": "0ae5e161b478039fa582eeacddc101d819b95cb6",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "f9b27c5db477510fe344f72add5d5b1877af83ff",
+      "sha256": "b0cc09eaaa88ffc90b165d24f573f01d9c59021322455658d411bab8fabaaae6",
+      "bytes": 10643
+    },
+    {
+      "commit": "3ea8703fb62cba6760e12a534551c198d99a5c54",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "f9b27c5db477510fe344f72add5d5b1877af83ff",
+      "sha256": "b0cc09eaaa88ffc90b165d24f573f01d9c59021322455658d411bab8fabaaae6",
+      "bytes": 10643
+    },
+    {
+      "commit": "f02fe29c69627007aa15eb1e17699b9e3806fba8",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "f9b27c5db477510fe344f72add5d5b1877af83ff",
+      "sha256": "b0cc09eaaa88ffc90b165d24f573f01d9c59021322455658d411bab8fabaaae6",
+      "bytes": 10643
+    }
+  ],
+  "workingCopyMatchesRemote": true,
+  "qualification": "Exact owned CSS payload, Git blob and mode only. No rerun or independent qualification of peer source05/ART03 files, tests, native captures, live/device or full visual parity."
+}

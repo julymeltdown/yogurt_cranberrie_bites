@@ -1,0 +1,176 @@
+{
+  "offer": "ART-GIFTS-NATIVE-BROWSER-202611041427Z",
+  "acceptUtc": "2026-11-04T14:30:16.541231+00:00",
+  "workDeadlineUtc": "2026-11-04T14:32:16.541231+00:00",
+  "fullDeadlineUtc": "2026-11-04T14:33:16.541231+00:00",
+  "actualHead": "44c365e710c75c3ae7fb2c45b7fb6b031849e2ff",
+  "candidate": "68f203f7070bfe636e36aeb6017aefc9198f615a",
+  "preflightOwnCarryBytes": 78248,
+  "retainedLogicalBytes": 408263334,
+  "preflightWholeBytes": 408341582,
+  "preflightFreeBytes": 27181842432,
+  "packagePins": {
+    "package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "nodeVersion": "24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "sourcePins": [
+    {
+      "file": "docs/mcr/art/reference-gifts-content-v1.md",
+      "bytes": 8516,
+      "sha256": "732b273ea99454330c9fd91bd5e85e2d3ba027b0e5afe1fb269de4ee4d9dfafc"
+    },
+    {
+      "file": "docs/mcr/art/reference-window-controls-v2.md",
+      "bytes": 8027,
+      "sha256": "47780a6ee8f51c5ae70a587f37594b437c6927d890b36564aa392709c62737f2"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/allocation-source90.json",
+      "bytes": 5830,
+      "sha256": "0e1f7b578be72cdac247f52a64eec4c818611a2a5c4681be62175876642b9fac"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/capture.mjs",
+      "bytes": 4591,
+      "sha256": "c9e8d4a2c4e1131753ff27d1ff418c5f10a35b3be4ec03574373b287a0cf3409"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/check_assets.py",
+      "bytes": 5413,
+      "sha256": "c47f012d9eda4768ef3b2a796435e973b96846b11db8934b51c9c279ac7b9ccc"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/fixture-derivation.json",
+      "bytes": 2235,
+      "sha256": "74ca1c48adcc587be1a39b50c0e43435dd66531160c7ebb81035e7fd4e12da63"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native.css",
+      "bytes": 176,
+      "sha256": "64015ae7b2f9937a1186ebda03fbe5d7be5ec79968534ba328130b9e7eb27d5b"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native.html",
+      "bytes": 282,
+      "sha256": "6777af179a2cffd4df9f64c1890683de1ca707a450ff64236f78fd65884b49c5"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/native.tsx",
+      "bytes": 3438,
+      "sha256": "4c3758dbc0e63acdbd73a5653e13458e2ac5cae9aca33cb8347115d33e135ed8"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/preview.html",
+      "bytes": 2799,
+      "sha256": "9392a8dfb54ccc8a79aba5ca336fd4bbbd7954ae51126f1a80b3b11c8ccc8b86"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/runtime-inputs.json",
+      "bytes": 1195,
+      "sha256": "c590474fbbce0779e36bbee290d85550f77986903daa400246a55054f60fcfcb"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/serve.mjs",
+      "bytes": 4201,
+      "sha256": "5df182deb5956f5558e3c3637f4d7b75c2a30b7998576b134dff0416ecb1ef06"
+    },
+    {
+      "file": "docs/mcr/evidence/art-gifts-content-v1/source-validation.json",
+      "bytes": 1477,
+      "sha256": "1b4c03a0104b85c59efbc08bfe9623e3d7b951589c1148ecf4c3c7956ac371b9"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/allocation-source90.json",
+      "bytes": 2935,
+      "sha256": "0e773b329381683e2c6ad8d3c520c3a66d094f30eb981d520d07f67b7abcf8dd"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/check_assets.py",
+      "bytes": 5051,
+      "sha256": "a58ba1a442967276c52fa9470db51a3d7875cbec6a4a3f5dff416c1f20ed62d4"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/native-disposition.json",
+      "bytes": 3038,
+      "sha256": "432ffa583bc239671b91eeea8a07ac3be08117db73a0b1cc9cbbfe10866bca45"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/preview.html",
+      "bytes": 3092,
+      "sha256": "33204e8dec922689b1f4a2f2de6925ca768876f75f583d9f1bf25e4f7fb0254b"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/source-validation.json",
+      "bytes": 1651,
+      "sha256": "c0a0aeee44a76a5ac84dd36d66d24ffea0ec3ba033a783c83b9b0af306a04b88"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/diy-buttons.svg",
+      "bytes": 1300,
+      "sha256": "d16d01d7822192687496477dc2946b7f4db7e42059512c86408d12ba24cb8d90"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/hand-banner.svg",
+      "bytes": 1054,
+      "sha256": "2e1229c95ba56831980295f98f4059f0e9a85533df44be524387b8be0c4b41eb"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/source-provenance.json",
+      "bytes": 4249,
+      "sha256": "65ec2ed4b2020a99975fe8e4981ff8e43107cf25f95ad332edbde432697b456c"
+    },
+    {
+      "file": "frontend/public/reference-gifts-content-v1/sticker-pack.svg",
+      "bytes": 1621,
+      "sha256": "067b2f4153158f1a914a2b257c539d954a26d82dbd814272f0d367b53330ae7d"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/back.svg",
+      "bytes": 223,
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/close.svg",
+      "bytes": 198,
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/expand.svg",
+      "bytes": 232,
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/manifest.json",
+      "bytes": 4765,
+      "sha256": "9b6f7918f88ec8190aead5398ded9c4961e140e9ab47e507329c48eb6c2c53fb"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "bytes": 257,
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/stars.svg",
+      "bytes": 402,
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2"
+    }
+  ],
+  "argv": [
+    "node",
+    "docs/mcr/evidence/art-gifts-content-v1/capture.mjs"
+  ],
+  "guardianArmedBeforeWorkload": true,
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Both esbuild and oxc options were set. oxc options will be used and esbuild options will be ignored. The following esbuild options were set: `{ jsx: 'automatic' }`\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nbrowserType.launch: Executable doesn't exist at /Users/lhs/Library/Caches/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-mac-arm64/chrome-headless-shell\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 Looks like Playwright was just installed or updated.       \u2551\n\u2551 Please run the following command to download new browsers: \u2551\n\u2551                                                            \u2551\n\u2551     npx playwright install                                 \u2551\n\u2551                                                            \u2551\n\u2551 <3 Playwright Team                                         \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n    at /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/capture.mjs:16:28 {\n  log: [],\n  name: 'Error'\n}\n\nNode.js v24.22.2\n",
+  "guardianOutput": "{\"reason\": \"NORMAL_STOP\", \"peaks\": {\"processes\": 4, \"rssBytes\": 341606400, \"wholeBytes\": 408341626, \"tempBytes\": 0, \"cacheBytes\": 0, \"retainedOutputBytes\": 78292}, \"minimumFreeBytes\": 27181420544, \"remainingOwnedPids\": [], \"linkAbsent\": true, \"tempAbsent\": true, \"cacheAbsent\": true, \"port5197Free\": true, \"trackedPids\": [30796]}\n",
+  "guardianError": "",
+  "guardianExitCode": 0,
+  "finishedUtc": "2026-11-04T14:30:17.147773+00:00",
+  "elapsedSeconds": 0.606359,
+  "postFreeBytes": 27181076480,
+  "postOwnCarryBytes": 80291,
+  "postWholeBytes": 408343625
+}
