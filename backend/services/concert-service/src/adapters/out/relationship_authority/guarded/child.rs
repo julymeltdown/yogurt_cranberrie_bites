@@ -133,12 +133,22 @@ pub enum ChildRecoveryReference {
         child_nonce: Uuid,
         native: ChildNativeIdentity,
     },
+    GiftPrivate {
+        query: ChildQuery,
+        child_nonce: Uuid,
+        native: ChildNativeIdentity,
+        private_kind: GiftPrivateKind,
+        giveaway_id: Uuid,
+        reservation_id: Uuid,
+        valid_until_unix_micros: i64,
+    },
 }
 impl ChildRecoveryReference {
     pub fn kind_name(&self) -> &'static str {
         match self {
             Self::ProfilePublic { .. } => "PROFILE_PUBLIC",
             Self::LocalPublic { .. } => "LOCAL_PUBLIC",
+            Self::GiftPrivate { .. } => "GIFT_PRIVATE",
         }
     }
     pub(super) fn key(&self) -> Result<(u8, Uuid), Status> {
@@ -146,13 +156,16 @@ impl ChildRecoveryReference {
             match self {
                 Self::ProfilePublic { .. } => 1,
                 Self::LocalPublic { .. } => 2,
+                Self::GiftPrivate { .. } => 3,
             },
             self.intent_id()?,
         ))
     }
     pub fn query(&self) -> &ChildQuery {
         match self {
-            Self::ProfilePublic { query, .. } | Self::LocalPublic { query, .. } => query,
+            Self::ProfilePublic { query, .. }
+            | Self::LocalPublic { query, .. }
+            | Self::GiftPrivate { query, .. } => query,
         }
     }
     pub fn intent_id(&self) -> Result<Uuid, Status> {
@@ -164,7 +177,7 @@ impl ChildRecoveryReference {
                     .strip_prefix(&query.profile_prefix())
                     .ok_or_else(invalid)?,
             ),
-            Self::LocalPublic { child_nonce, .. } => {
+            Self::LocalPublic { child_nonce, .. } | Self::GiftPrivate { child_nonce, .. } => {
                 if child_nonce.is_nil() {
                     Err(invalid())
                 } else {
@@ -183,9 +196,42 @@ impl ChildRecoveryReference {
                 simple_uuid(completion_secret)?;
             }
             Self::LocalPublic { native, .. } => native.validate(&binding.digest())?,
+            Self::GiftPrivate {
+                query,
+                native,
+                giveaway_id,
+                reservation_id,
+                valid_until_unix_micros,
+                ..
+            } => {
+                native.validate(&binding.digest())?;
+                gift_fields(
+                    query,
+                    *giveaway_id,
+                    *reservation_id,
+                    *valid_until_unix_micros,
+                )?;
+            }
         }
         if serde_json::to_vec(self).map_err(unavailable)?.len() > 8192 {
             return Err(invalid());
+        }
+        Ok(())
+    }
+    /// Disclosure ceiling only, never a business expiry or settlement authority.
+    /// Root must retain this ceiling at its before-byte boundary as well.
+    pub fn content_expires_unix_micros(&self) -> i64 {
+        match self {
+            Self::GiftPrivate {
+                valid_until_unix_micros,
+                ..
+            } => *valid_until_unix_micros,
+            _ => self.query().expires_unix_micros,
+        }
+    }
+    pub fn check_content_time(&self) -> Result<(), Status> {
+        if self.content_expires_unix_micros() <= chrono::Utc::now().timestamp_micros() {
+            return Err(Status::deadline_exceeded("Child disclosure expired"));
         }
         Ok(())
     }
@@ -194,9 +240,30 @@ impl ChildRecoveryReference {
             Self::LocalPublic { child_nonce, .. } if !child_nonce.is_nil() => {
                 Ok(format!("mcr-public-avatar:{}", child_nonce.simple()))
             }
+            Self::GiftPrivate { child_nonce, .. } if !child_nonce.is_nil() => {
+                Ok(format!("mcr-gift-private:{}", child_nonce.simple()))
+            }
             _ => Err(invalid()),
         }
     }
+}
+fn gift_fields(
+    query: &ChildQuery,
+    giveaway: Uuid,
+    reservation: Uuid,
+    until: i64,
+) -> Result<(), Status> {
+    // Time-independent for restart recovery. This clip does not rewrite business
+    // expiry; actual admission and before-byte gates separately require live time.
+    if giveaway.is_nil()
+        || reservation.is_nil()
+        || until <= 0
+        || until > query.expires_unix_micros
+        || chrono::DateTime::from_timestamp_micros(until).is_none()
+    {
+        return Err(invalid());
+    }
+    Ok(())
 }
 fn simple_uuid(value: &str) -> Result<Uuid, Status> {
     let id = Uuid::parse_str(value).map_err(|_| invalid())?;
@@ -277,5 +344,46 @@ mod tests {
         let mut value = serde_json::to_value(reference).unwrap();
         value["gid"] = serde_json::json!("arbitrary SQL");
         assert!(serde_json::from_value::<ChildRecoveryReference>(value).is_err());
+    }
+    #[test]
+    fn gift_private_metadata_cannot_expand_disclosure_or_supply_a_gid() {
+        let q = query();
+        for until in [0, -1, q.expires_unix_micros + 1] {
+            assert!(gift_fields(&q, Uuid::from_u128(11), Uuid::from_u128(12), until).is_err());
+        }
+        assert!(gift_fields(&q, Uuid::nil(), Uuid::from_u128(12), 1).is_err());
+        assert!(gift_fields(&q, Uuid::from_u128(11), Uuid::nil(), 1).is_err());
+        for purpose in [GiftPrivateKind::Pickup, GiftPrivateKind::Code] {
+            let reference = ChildRecoveryReference::GiftPrivate {
+                query: q.clone(),
+                child_nonce: Uuid::from_u128(13),
+                native: ChildNativeIdentity {
+                    system_identifier: "123".into(),
+                    database_oid: 4,
+                    full_xid: "77".into(),
+                    backend_pid: 8,
+                    backend_started_unix_micros: 100,
+                    producer_instance_id: Uuid::from_u128(6),
+                },
+                private_kind: purpose,
+                giveaway_id: Uuid::from_u128(11),
+                reservation_id: Uuid::from_u128(12),
+                valid_until_unix_micros: 500_000,
+            };
+            assert_eq!(
+                reference.local_prepared_gid().unwrap(),
+                format!("mcr-gift-private:{}", Uuid::from_u128(13).simple())
+            );
+            assert_eq!(reference.kind_name(), "GIFT_PRIVATE");
+            assert_eq!(reference.key().unwrap(), (3, Uuid::from_u128(13)));
+            let encoded = serde_json::to_vec(&reference).unwrap();
+            let restored: ChildRecoveryReference = serde_json::from_slice(&encoded).unwrap();
+            assert!(restored == reference);
+            for key in ["gid", "callback_url", "code", "instructions"] {
+                let mut poisoned = serde_json::to_value(&reference).unwrap();
+                poisoned[key] = serde_json::json!("forbidden");
+                assert!(serde_json::from_value::<ChildRecoveryReference>(poisoned).is_err());
+            }
+        }
     }
 }
