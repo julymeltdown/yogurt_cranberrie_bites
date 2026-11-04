@@ -1,0 +1,27 @@
+RUN  v4.1.9 <WORKTREE>/frontend
+
+ ✓ src/features/event-feed/__tests__/presentation.test.tsx > uses contract filters, local notices and preserves cached reads without tab refetches 110ms
+ ✓ src/features/event-feed/__tests__/presentation.test.tsx > routes real counts to the thread, preserves linked validation callbacks and composes once 17ms
+ ✓ src/features/event-feed/__tests__/presentation.test.tsx > passes exact public author/media values to caller renderers and scrubs them on canonical invalidation 6ms
+ ✓ src/features/event-feed/__tests__/presentation.test.tsx > displays an honest author placeholder, source-stamped notice and read-only controls 25ms
+ ✓ src/features/event-feed/__tests__/presentation.test.tsx > keeps the media filter reachable without inventing a fifth main tab 14ms
+ ✓ src/features/event-feed/__tests__/presentation.test.tsx > formats truthful relative metadata, future-clock skew and absolute older dates 1ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > real Feed owns one compose action while its shell fallback remains available without a feature 70ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > real Me owns every account destination once, with secondary destinations in compact options 23ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps all registered fallback destinations on /feed without supplied feature content 2ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps all registered fallback destinations on /me without supplied feature content 4ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps other feature supplementary navigation on /meet 4ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps other feature supplementary navigation on /gifts 2ms
+ ✓ src/features/me/__tests__/ui.test.tsx > FE34 accessible route-ready UI > keeps optional fields independent of world navigation and cancels a public draft 104ms
+ ✓ src/features/me/__tests__/ui.test.tsx > FE34 accessible route-ready UI > starts sound off and never invents live application without an adapter 11ms
+ ✓ src/features/me/__tests__/ui.test.tsx > FE34 accessible route-ready UI > aborts a pending runtime adapter on privacy invalidation and drops its late success in StrictMode 67ms
+ ✓ src/features/me/__tests__/reference-target/presentation.test.tsx > shows two real-schema own posts only in the partial event-page view; does not fetch on presentation 117ms
+ ✓ src/features/me/__tests__/reference-target/presentation.test.tsx > rejects foreign subject/event/lease and unexpected private fields without showing their text 4ms
+ ✓ src/features/me/__tests__/reference-target/presentation.test.tsx > filters other authors; empty current page never claims an empty history 3ms
+ ✓ src/features/me/__tests__/reference-target/presentation.test.tsx > retains saved identity, honest art absence, current draft cancellation and no private handle links 28ms
+ ✓ src/features/me/__tests__/reference-target/presentation.test.tsx > forwards only the actual authorized saved avatar to the optional root portrait renderer, then removes it on revoke 10ms
+
+ Test Files  4 passed (4)
+      Tests  20 passed (20)
+   Start at  12:09:24
+   Duration  1.95s (transform 528ms, setup 0ms, import 1.39s, tests 624ms, environment 1.55s)

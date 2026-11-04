@@ -49,7 +49,7 @@
 .me-hub--reference .concert-window__titlebar{min-height:44px;padding:0 0 0 8px;gap:6px}
 .me-hub--reference .concert-window__titlebar h2{font:800 22px/1.1 Impact,'Arial Narrow',sans-serif;letter-spacing:.02em}
 .me-hub--reference .me-profile-header{background:#1c1a18;color:#f5ecdc;padding:10px 8px 7px}
-.me-hub--reference .me-identity{grid-template-columns:clamp(112px,33vw,148px) minmax(0,1fr);gap:11px;align-items:start}
+.me-hub--reference .me-identity{grid-template-columns:clamp(112px,36vw,148px) minmax(0,1fr);gap:11px;align-items:start}
 .me-hub--reference .me-avatar{min-height:0;aspect-ratio:1;display:grid;align-content:center;border:3px double #e1d4bc;background:#d8cdbb;padding:3px;color:#4b4238;overflow:hidden}
 .me-hub--reference .me-avatar canvas{width:100%;height:auto;image-rendering:pixelated}
 .me-hub--reference .me-avatar p{font:12px/1.3 Arial,sans-serif;margin:0;padding:5px}
@@ -68,6 +68,10 @@
 .me-hub--reference .me-profile-options summary::after{content:'+';margin-left:auto;font-size:20px}
 .me-hub--reference .me-profile-options[open] summary::after{content:'−'}
 .me-hub--reference .me-profile-options a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:inherit}
+.me-hub--reference .me-account-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+.me-hub--reference .reference-activity{min-height:0;padding:8px}
+.me-hub--reference .reference-activity__notice{margin:0}
+.me-hub--reference .me-activity-load{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:inherit;font-weight:700;text-underline-offset:2px}
 .me-hub--reference .me-status{margin:0;padding:0;border:0}
 .me-hub--reference .concert-window__footer{padding:3px 8px}
 .me-hub--reference .concert-window__footer a{font-size:12px;padding:4px 0}

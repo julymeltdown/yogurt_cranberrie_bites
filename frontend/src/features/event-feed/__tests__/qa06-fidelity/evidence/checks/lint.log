@@ -1,0 +1,5 @@
+src/world/avatar/__tests__/motion-adoption/qualify.mjs:23:149: warning eslint(no-control-regex): Unexpected control character help: Avoid matching control characters in regular expressions. If intentional, consider using a Unicode escape instead.
+src/app/media-entry/index.ts:66:26: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.
+src/app/media-entry/index.ts:67:29: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.
+src/app/media-entry/index.ts:87:31: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.
+src/app/media-entry/index.ts:102:54: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.

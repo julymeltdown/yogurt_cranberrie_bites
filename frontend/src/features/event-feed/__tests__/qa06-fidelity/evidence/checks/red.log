@@ -1,0 +1,162 @@
+RUN  v4.1.9 <WORKTREE>/frontend
+
+ × src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > real Feed owns one compose action while its shell fallback remains available without a feature 60ms
+   → expected <a id="section--feed-new" …(2)>…(1)</a> to be null
+ × src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > real Me owns every account destination once, with secondary destinations in compact options 19ms
+   → expected <nav …(2)>…(8)</nav> to be null
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps all registered fallback destinations on /feed without supplied feature content 3ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps all registered fallback destinations on /me without supplied feature content 4ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps other feature supplementary navigation on /meet 3ms
+ ✓ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > keeps other feature supplementary navigation on /gifts 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > real Feed owns one compose action while its shell fallback remains available without a feature
+AssertionError: expected <a id="section--feed-new" …(2)>…(1)</a> to be null
+
+- Expected:
+null
+
++ Received:
+<a
+  data-discover="true"
+  href="/feed/new"
+  id="section--feed-new"
+>
+  New post
+  <span
+    aria-hidden="true"
+  >
+    →
+  </span>
+</a>
+
+ ❯ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx:20:55
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx > real Me owns every account destination once, with secondary destinations in compact options
+AssertionError: expected <nav …(2)>…(8)</nav> to be null
+
+- Expected:
+null
+
++ Received:
+<nav
+  aria-label="Me sections"
+  class="shell-section-links"
+>
+  <a
+    data-discover="true"
+    href="/me/avatar"
+    id="section--me-avatar"
+  >
+    Dress up
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/profile"
+    id="section--me-profile"
+  >
+    Edit profile
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/social"
+    id="section--me-social"
+  >
+    Social links
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/requests"
+    id="section--me-requests"
+  >
+    Requests
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/age"
+    id="section--me-age"
+  >
+    Age & privacy
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/settings"
+    id="section--me-settings"
+  >
+    Settings
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/blocks"
+    id="section--me-blocks"
+  >
+    Blocked users
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+  <a
+    data-discover="true"
+    href="/me/account"
+    id="section--me-account"
+  >
+    Account
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  </a>
+</nav>
+
+ ❯ src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx:26:64
+     24|  const h=meFixture(async()=>Response.json(participant()));disposers.pu…
+     25|  render(<MemoryRouter initialEntries={['/me']}><PanelScreen route={rou…
+     26|  expect(screen.queryByRole('navigation',{name:'Me sections'})).toBeNul…
+       |                                                                ^
+     27|  fireEvent.click(screen.getByText('Profile options',{exact:true}))
+     28|  for(const path of ['/me/avatar','/me/profile','/me/social','/me/reque…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 4 passed (6)
+   Start at  12:05:47
+   Duration  1.26s (transform 334ms, setup 0ms, import 609ms, tests 93ms, environment 480ms)
