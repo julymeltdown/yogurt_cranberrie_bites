@@ -1,0 +1,17 @@
+✔ versioned canonical local mail inputs pass preflight only and remain unqualified for IN03 (1.750917ms)
+✔ look-real email, SMTP claims and fabricated principal markers cannot replace canonical provenance (0.457958ms)
+✔ foreign actors, events, origins, source pins, custody and expired runtime are rejected (0.4065ms)
+✔ non-200 signup, verification, login or bootstrap statuses never qualify actor preflight (0.600042ms)
+✔ canonical Python UTC precision is accepted and no independent 900-second renewal gate is invented (0.081042ms)
+✔ private configuration rejects public permissions and symlink custody (0.998542ms)
+✔ missing original inputs remain NOT_RUN without requiring an unrelated approved request (0.082792ms)
+✔ dependency outage cannot be admitted as authorization-denial evidence; diagnostics stay redacted (0.088958ms)
+✔ malformed private JSON cannot expose its content in the thrown diagnostic (0.476042ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 48.682792

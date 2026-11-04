@@ -1,0 +1,110 @@
+{
+  "allocation": "FE209-REMAINING-SOURCE-B-202611041412Z",
+  "run": "source3",
+  "source": "34025f45d43411e80a3d3da446e91bfe43a2a416",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 302,
+    "bytes": 2513578,
+    "temporaryBytes": 0,
+    "freeBytes": 28922736640
+  },
+  "jobs": [
+    {
+      "name": "tsc",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/feed-entry/__tests__/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:14:10.665Z",
+      "milliseconds": 3636
+    },
+    {
+      "name": "unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vitest.config.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:14:14.327Z",
+      "milliseconds": 872
+    },
+    {
+      "name": "lint",
+      "args": [
+        "node_modules/oxlint/bin/oxlint",
+        "src/app/feed-entry"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:14:15.225Z",
+      "milliseconds": 71
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:14:15.325Z",
+      "milliseconds": 27
+    },
+    {
+      "name": "admission",
+      "args": [
+        "--test",
+        "e2e/real/social/admission-original.test.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:14:15.381Z",
+      "milliseconds": 79
+    },
+    {
+      "name": "admission-tsc",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "e2e/real/social/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:14:15.488Z",
+      "milliseconds": 2633
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "SOURCE_CHECKS_PASSED",
+  "final": {
+    "files": 308,
+    "bytes": 2514877,
+    "temporaryBytes": 0,
+    "freeBytes": 28906856448
+  },
+  "releasedUTC": "2026-11-04T14:14:18.123Z",
+  "linkRemoved": true,
+  "peakProcesses": 4,
+  "peakRssBytes": 1088913408
+}

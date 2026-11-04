@@ -1,0 +1,91 @@
+{
+  "allocation": "FE209-FEED-ADMISSION-SOURCE-B-202611041403Z",
+  "acceptedUTC": "2026-11-04T14:06:28Z",
+  "workCutoffUTC": "2026-11-04T14:11:28Z",
+  "hardCutoffUTC": "2026-11-04T14:12:28Z",
+  "fullReleaseUTC": "2026-11-04T14:10:36.016765Z",
+  "status": "INCOMPLETE_RESOURCE_FILE_CAP",
+  "feedTypes": "PASS",
+  "feedUnitGuards": "NOT_RUN",
+  "authAdmissionGuards": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "nativeSyntax": "NOT_RUN",
+  "originalHarnessTypes": "NOT_RUN",
+  "native": "NOT_RUN",
+  "liveIN03": "NOT_RUN",
+  "attempts": [
+    "0bac6cf57f33dfd11921f40d7df92ae4f1f20849",
+    "d512c51b"
+  ],
+  "guardStop": {
+    "files": 306,
+    "maxFiles": 300,
+    "bytes": 4976243,
+    "temporaryBytes": 2538372,
+    "processes": 4,
+    "rssBytes": 487112704,
+    "freeBytes": 29119582208
+  },
+  "peakRssBytes": 1095925760,
+  "release": {
+    "ownedNodeMatches": 0,
+    "linkAbsent": true,
+    "privateCacheTMPAbsent": true,
+    "ports": 0,
+    "freeBytes": 29060640768
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source1-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source1-unit.log",
+      "rawSha256": "05e21482819617eaa7d50aa586838f8c1d813d418b9475a292ca1c380cc19bb8",
+      "portableSha256": "35e0a46a581a6ed6b1d2cee877fecafe68446faa3f9f9646e13546087a4f1085"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source1-summary.json",
+      "rawSha256": "1760478cb09c54ecd8a4e254f023f0c1d23be0d26565b1a92c80ca3fde065f77",
+      "portableSha256": "1760478cb09c54ecd8a4e254f023f0c1d23be0d26565b1a92c80ca3fde065f77"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source2-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source2-unit.log",
+      "rawSha256": "05e21482819617eaa7d50aa586838f8c1d813d418b9475a292ca1c380cc19bb8",
+      "portableSha256": "35e0a46a581a6ed6b1d2cee877fecafe68446faa3f9f9646e13546087a4f1085"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source2-summary.json",
+      "rawSha256": "22562ff963a4cd216edaf9301bdf0932272494a1d210e25694440a45943842b0",
+      "portableSha256": "22562ff963a4cd216edaf9301bdf0932272494a1d210e25694440a45943842b0"
+    }
+  ],
+  "authoredPostimages": {
+    "frontend/src/app/feed-entry/__tests__/fixture.ts": "d2b913258c425aaaae015bea1d861fedd3a114920c8e1a8590b7bb55100ac1d7",
+    "frontend/src/app/feed-entry/__tests__/native.mjs": "240850114cd62f3a3ba6632d243a5962095c2bb322861afd734a0d3afc634a6d",
+    "frontend/src/app/feed-entry/__tests__/preview.html": "dcf91cb947e126f7007253f133800a889a49b03f5eaf91529ab727393cc96136",
+    "frontend/src/app/feed-entry/__tests__/preview.tsx": "ead3b6559e0bf55466e0de24929a17ad053397b0592cd3cf3e0a870ab014ed62",
+    "frontend/src/app/feed-entry/__tests__/production.test.ts": "faf1035617e78f7c2c69efd129fcdc8e56e214d6c1aa4d7cf3a763e868fbef30",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "954cace07ddd5f69632c80632611127f06e3370a02e92c913b6173fc99f624b1",
+    "frontend/src/app/feed-entry/__tests__/tsconfig.json": "983cb31f6e9eef5142f4da57423ca47e21447430dc4d1717e4a5c0e81b6812eb",
+    "frontend/src/app/feed-entry/__tests__/vite.config.ts": "3013032ba83cb766c3fdd38d0576ebfa2d6d63a1204a3c3c097ff486a3ab7977",
+    "frontend/src/app/feed-entry/__tests__/vitest.config.ts": "d4b1237aa48adb8fe3ddc70f39d7447d795f1d3b521c99bca392f161a76b733f",
+    "frontend/src/app/feed-entry/production.ts": "3475ecd14440ccaa3f4c1178b3de84da2496e0f102a13bbaf1c18241c2030bdd",
+    "frontend/e2e/real/social/admission.mjs": "58a43734435a253485fb9f84538c7fbd9f53f7a017c6d17cdeee0fc31305e7e9",
+    "frontend/e2e/real/social/admission.d.mts": "89369877097b9643759780867e8c391018ed79583c17b6f7842cc74e2d01cf67",
+    "frontend/e2e/real/social/admission-original.test.mjs": "6eacdb6af21aa9147c17e12726f02620184d8d15be90a38c7c72f30a7c362e9c"
+  },
+  "limitations": [
+    "No Feed test assertion executed; Vitest launches were terminated by the independent file guard.",
+    "Only Feed no-emit types passed; two runs used identical TypeScript inputs.",
+    "No browser, server, provider, actual public HTTP or WS ran.",
+    "Whole ledger includes preserved carry, source, owned Git metadata and conservative logical Git-object custody.",
+    "No failures were deleted and no allocation deadline or cap was extended."
+  ]
+}

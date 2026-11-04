@@ -1,0 +1,107 @@
+{
+  "allocation": "FE209-REMAINING-SOURCE-B-202611041412Z",
+  "acceptedUTC": "2026-11-04T14:13:56Z",
+  "workCutoffUTC": "2026-11-04T14:18:56Z",
+  "hardCutoffUTC": "2026-11-04T14:19:56Z",
+  "testedSource": "34025f45d43411e80a3d3da446e91bfe43a2a416",
+  "status": "SOURCE_CHECKS_PASSED",
+  "feedTypes": {
+    "exit": 0,
+    "changedInputs": [
+      "frontend/src/app/feed-entry/__tests__/vite.config.ts",
+      "frontend/src/app/feed-entry/__tests__/tsconfig.json"
+    ]
+  },
+  "feedGuards": {
+    "passed": 6,
+    "exit": 0
+  },
+  "feedLint": {
+    "exit": 0
+  },
+  "nativeDriverSyntax": {
+    "exit": 0
+  },
+  "authAdmissionGuards": {
+    "passed": 9,
+    "exit": 0
+  },
+  "originalHarnessTypes": {
+    "exit": 0
+  },
+  "initial": {
+    "files": 302,
+    "bytes": 2513578,
+    "freeBytes": 28943114240
+  },
+  "peakProcesses": 4,
+  "peakRssBytes": 1088913408,
+  "fullReleaseUTC": "2026-11-04T14:14:41.348130Z",
+  "release": {
+    "ownedNodeMatches": 0,
+    "linkAbsent": true,
+    "cacheTMPAbsent": true,
+    "ports": 0,
+    "freeBytes": 28884402176
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-summary.json",
+      "rawSha256": "a1359cd2e5e64b2f1ac8a2d2612289da6fc5ce28292dd692a309cee1d2e66a8b",
+      "portableSha256": "a1359cd2e5e64b2f1ac8a2d2612289da6fc5ce28292dd692a309cee1d2e66a8b"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-unit.log",
+      "rawSha256": "1203f871df293623baa601886e325704f24264237584765b3368bbbda0ad8920",
+      "portableSha256": "5ec534018803517b9dfe24233e12cc7b2a15e929ff76ec7440e85a3949be4be3"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-lint.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-native-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-admission.log",
+      "rawSha256": "f20e975aef7c8b20ec45431fd831ee68549a492030185b649e252e6e2e63ba4a",
+      "portableSha256": "f20e975aef7c8b20ec45431fd831ee68549a492030185b649e252e6e2e63ba4a"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-admission-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "qualifiedPostimages": {
+    "frontend/src/app/feed-entry/__tests__/fixture.ts": "d2b913258c425aaaae015bea1d861fedd3a114920c8e1a8590b7bb55100ac1d7",
+    "frontend/src/app/feed-entry/__tests__/native.mjs": "bdcf6e53a223d3438f55fd62908bc7cfa5c6f033838f3ab74113ebc45379302b",
+    "frontend/src/app/feed-entry/__tests__/preview.html": "dcf91cb947e126f7007253f133800a889a49b03f5eaf91529ab727393cc96136",
+    "frontend/src/app/feed-entry/__tests__/preview.tsx": "ead3b6559e0bf55466e0de24929a17ad053397b0592cd3cf3e0a870ab014ed62",
+    "frontend/src/app/feed-entry/__tests__/production.test.ts": "faf1035617e78f7c2c69efd129fcdc8e56e214d6c1aa4d7cf3a763e868fbef30",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "954cace07ddd5f69632c80632611127f06e3370a02e92c913b6173fc99f624b1",
+    "frontend/src/app/feed-entry/__tests__/tsconfig.json": "75a17cac9c90f2bfb565b04b2e9b15dd2213eaaa269882d5de542d016fe6404f",
+    "frontend/src/app/feed-entry/__tests__/vite.config.ts": "387680988e99615cc77faf63ad78002ad480490b5924d938640cd595c909af66",
+    "frontend/src/app/feed-entry/__tests__/vitest.config.ts": "d4b1237aa48adb8fe3ddc70f39d7447d795f1d3b521c99bca392f161a76b733f",
+    "frontend/src/app/feed-entry/production.ts": "3475ecd14440ccaa3f4c1178b3de84da2496e0f102a13bbaf1c18241c2030bdd",
+    "frontend/e2e/real/social/admission.mjs": "b5f1e0cf374885801b36a7391d331cdb17a2199a31a49a8f3e03b2ef6502d4ac",
+    "frontend/e2e/real/social/admission.d.mts": "89369877097b9643759780867e8c391018ed79583c17b6f7842cc74e2d01cf67",
+    "frontend/e2e/real/social/admission-original.test.mjs": "fbdca142448f04d1f8019e6e4bb273e80204d139bc866bafb8f74b79002b251f"
+  },
+  "limitations": [
+    "Source qualification only; synthetic actual-shell fixture has not run in a browser.",
+    "Both previous 300-file stops remain failed and preserved under source-round-1.",
+    "Fresh 400-file allocation did not retroactively change the old cap or deadline.",
+    "No old C07 suite, server, database, actual public HTTP, provider or WS workflow ran.",
+    "Native 360/390/430 and short captures, visual assessment and live IN03 remain NOT_RUN.",
+    "Persistent original IN03 goal remains unfinished; no king/SL review or acknowledgment gate."
+  ]
+}

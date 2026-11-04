@@ -1,0 +1,61 @@
+{
+  "allocation": "FE209-FEED-ADMISSION-SOURCE-B-202611041403Z",
+  "run": "source1",
+  "source": "0bac6cf57f33dfd11921f40d7df92ae4f1f20849",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 255,
+    "bytes": 2421676,
+    "temporaryBytes": 0,
+    "freeBytes": 29199732736
+  },
+  "jobs": [
+    {
+      "name": "tsc",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/feed-entry/__tests__/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:06:43.096Z",
+      "milliseconds": 3544
+    },
+    {
+      "name": "unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vitest.config.ts"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T14:06:46.664Z",
+      "milliseconds": 722
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "FAILED",
+  "error": "Failed unit; retain evidence and repair only inside the accepted lease",
+  "final": {
+    "files": 257,
+    "bytes": 2421756,
+    "temporaryBytes": 0,
+    "freeBytes": 29201080320
+  },
+  "releasedUTC": "2026-11-04T14:06:47.391Z",
+  "linkRemoved": true,
+  "peakProcesses": 4,
+  "peakRssBytes": 1095925760
+}
