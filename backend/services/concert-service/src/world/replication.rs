@@ -99,6 +99,7 @@ pub struct Replication {
     baseline: Option<BTreeMap<Uuid, ProjectedPlayer>>,
     pending: Option<Pending>,
     terminal: Option<Delivery>,
+    terminal_close: Option<(&'static str, u16)>,
     closed: bool,
     generation: Option<Uuid>,
     seq: u64,
@@ -125,6 +126,7 @@ impl Replication {
             baseline: None,
             pending: None,
             terminal: None,
+            terminal_close: None,
             closed: false,
             generation: None,
             seq: 0,
@@ -172,6 +174,7 @@ impl Replication {
         self.pending = None;
         self.baseline = None;
         self.generation = None;
+        self.terminal_close = Some((reason, code));
         self.terminal = Some(Delivery {
             bytes: serde_json::to_vec(&json!({"protocolVersion":"1.0.0",
             "type":kind,"streamId":self.binding().stream_id,"reason":reason}))
@@ -208,6 +211,10 @@ impl Replication {
             return Err(StreamError::Session(e));
         }
         Ok(())
+    }
+    /// Preserve the original terminal disposition even when the socket cannot accept bytes.
+    pub(crate) fn terminal_close(&self) -> Option<(&'static str, u16)> {
+        self.terminal_close
     }
     /// Terminal controls contain no private state and can be drained without a room frame.
     pub fn take_terminal(&mut self) -> Option<Delivery> {
