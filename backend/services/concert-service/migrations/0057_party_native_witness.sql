@@ -119,20 +119,67 @@ CREATE TRIGGER concert_party_native_witness_no_truncate BEFORE TRUNCATE
  ON public.concert_party_native_witnesses FOR EACH STATEMENT
  EXECUTE FUNCTION public.concert_party_native_witness_guard();
 
+-- Installed by the deferred trigger after the actual BE15 receipt exists. The
+-- receipt ID is retained independently of its later mutable business state.
+CREATE TABLE public.concert_party_native_command_receipts (
+ instance_id uuid NOT NULL,
+ scope_id uuid NOT NULL,
+ identity_digest bytea NOT NULL,
+ receipt_id uuid NOT NULL REFERENCES public.concert_command_receipts(receipt_id) ON DELETE RESTRICT,
+ receipt jsonb NOT NULL CHECK(jsonb_typeof(receipt)='object'),
+ PRIMARY KEY(instance_id,scope_id,identity_digest),
+ FOREIGN KEY(instance_id,scope_id,identity_digest)
+  REFERENCES public.concert_party_native_witnesses(instance_id,scope_id,identity_digest)
+);
+CREATE FUNCTION public.concert_party_native_command_receipt_guard()
+RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE
+ w public.concert_party_native_witnesses;
+ actual jsonb;
+BEGIN
+ IF TG_OP<>'INSERT' THEN
+  RAISE EXCEPTION 'party native receipt witness is immutable' USING ERRCODE='23514';
+ END IF;
+ SELECT * INTO w FROM public.concert_party_native_witnesses
+  WHERE instance_id=NEW.instance_id AND scope_id=NEW.scope_id AND identity_digest=NEW.identity_digest;
+ IF NOT FOUND OR w.native_role<>'COMMAND' THEN
+  RAISE EXCEPTION 'party native receipt requires command witness' USING ERRCODE='23514';
+ END IF;
+ PERFORM public.concert_party_native_assert(w);
+ SELECT to_jsonb(r) INTO actual FROM public.concert_command_receipts r
+  WHERE r.receipt_id=NEW.receipt_id AND r.actor_id=(w.binding->>'actor_id')::uuid
+   AND r.event_id=(w.binding->>'event_id')::uuid AND r.operation_id=w.binding->>'operation'
+   AND r.idempotency_key=w.idempotency_key AND r.state IN ('PENDING','SUCCEEDED','FAILED')
+   AND r.expires_at>clock_timestamp() FOR SHARE OF r;
+ IF actual IS NULL OR actual IS DISTINCT FROM NEW.receipt THEN
+  RAISE EXCEPTION 'party native receipt is not exact actual command receipt' USING ERRCODE='23514';
+ END IF;
+ RETURN NEW;
+END $$;
+CREATE TRIGGER concert_party_native_command_receipt_guard BEFORE INSERT OR UPDATE OR DELETE
+ ON public.concert_party_native_command_receipts FOR EACH ROW
+ EXECUTE FUNCTION public.concert_party_native_command_receipt_guard();
+CREATE TRIGGER concert_party_native_command_receipt_no_truncate BEFORE TRUNCATE
+ ON public.concert_party_native_command_receipts FOR EACH STATEMENT
+ EXECUTE FUNCTION public.concert_party_native_command_receipt_guard();
+
 CREATE FUNCTION public.concert_party_native_receipt_guard()
 RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
  -- Recheck the actual current native connection, original deadline and exact
  -- still-held Product parent at COMMIT, not merely at early registration.
  PERFORM public.concert_party_native_assert(NEW);
- IF NEW.native_role='COMMAND' AND NOT EXISTS(
-  SELECT 1 FROM public.concert_command_receipts r
-   WHERE r.actor_id=(NEW.binding->>'actor_id')::uuid
-    AND r.event_id=(NEW.binding->>'event_id')::uuid
-    AND r.operation_id=NEW.binding->>'operation'
-    AND r.idempotency_key=NEW.idempotency_key
-    AND r.state IN ('PENDING','SUCCEEDED','FAILED') AND r.expires_at>clock_timestamp()) THEN
-  RAISE EXCEPTION 'party command witness requires exact actual receipt' USING ERRCODE='23514';
+ IF NEW.native_role='COMMAND' THEN
+  INSERT INTO public.concert_party_native_command_receipts(instance_id,scope_id,identity_digest,receipt_id,receipt)
+   SELECT NEW.instance_id,NEW.scope_id,NEW.identity_digest,r.receipt_id,to_jsonb(r)
+    FROM public.concert_command_receipts r
+    WHERE r.actor_id=(NEW.binding->>'actor_id')::uuid
+     AND r.event_id=(NEW.binding->>'event_id')::uuid AND r.operation_id=NEW.binding->>'operation'
+     AND r.idempotency_key=NEW.idempotency_key
+     AND r.state IN ('PENDING','SUCCEEDED','FAILED') AND r.expires_at>clock_timestamp();
+  IF NOT FOUND THEN
+   RAISE EXCEPTION 'party command witness requires exact actual receipt' USING ERRCODE='23514';
+  END IF;
  END IF;
  RETURN NULL;
 END $$;

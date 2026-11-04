@@ -271,10 +271,12 @@ impl NativeTransactionResolver for PartyNativeResolver {
                 receipt_evidence: vec![],
             });
         }
-        let row=sqlx::query("select w.binding,w.identity,w.request_digest,w.idempotency_key,w.native_role,w.settlement_reference,to_jsonb(r) receipt from public.concert_party_native_witnesses w left join public.concert_command_receipts r on w.native_role='COMMAND' and r.actor_id=(w.binding->>'actor_id')::uuid and r.event_id=(w.binding->>'event_id')::uuid and r.operation_id=w.binding->>'operation' and r.idempotency_key=w.idempotency_key where w.instance_id=$1 and w.scope_id=$2 and w.binding_digest=$3 and w.identity_digest=$4")
+        let row=sqlx::query("select w.binding,w.identity,w.request_digest,w.idempotency_key,w.native_role,w.settlement_reference,to_jsonb(r) receipt,c.receipt committed_receipt from public.concert_party_native_witnesses w left join public.concert_party_native_command_receipts c using(instance_id,scope_id,identity_digest) left join public.concert_command_receipts r on r.receipt_id=c.receipt_id and w.native_role='COMMAND' and r.actor_id=(w.binding->>'actor_id')::uuid and r.event_id=(w.binding->>'event_id')::uuid and r.operation_id=w.binding->>'operation' and r.idempotency_key=w.idempotency_key where w.instance_id=$1 and w.scope_id=$2 and w.binding_digest=$3 and w.identity_digest=$4")
             .bind(self.instance).bind(reference.scope_id).bind(binding.digest()?.as_slice()).bind(digest.as_slice()).fetch_optional(&mut *tx).await.map_err(unresolved)?;
         let Some(row) = row else { return Ok(unknown()) };
         let receipt: Option<serde_json::Value> = row.try_get("receipt").map_err(unresolved)?;
+        let committed_receipt: Option<serde_json::Value> =
+            row.try_get("committed_receipt").map_err(unresolved)?;
         if row
             .try_get::<serde_json::Value, _>("binding")
             .map_err(unresolved)?
@@ -300,19 +302,39 @@ impl NativeTransactionResolver for PartyNativeResolver {
                 .map_err(unresolved)?
                 != identity.settlement_reference
             || (reference.role == NativeRole::Command
-                && !receipt.as_ref().is_some_and(|r| {
-                    matches!(
-                        r["state"].as_str(),
-                        Some("PENDING" | "SUCCEEDED" | "FAILED" | "RETIRED")
-                    )
-                }))
+                && !receipt
+                    .as_ref()
+                    .zip(committed_receipt.as_ref())
+                    .is_some_and(|(current, committed)| {
+                        matches!(
+                            current["state"].as_str(),
+                            Some("PENDING" | "SUCCEEDED" | "FAILED" | "RETIRED")
+                        ) && matches!(
+                            committed["state"].as_str(),
+                            Some("PENDING" | "SUCCEEDED" | "FAILED")
+                        ) && [
+                            "receipt_id",
+                            "actor_id",
+                            "event_id",
+                            "operation_id",
+                            "idempotency_key",
+                            "request_hash",
+                            "target_id",
+                            "created_at",
+                            "expires_at",
+                        ]
+                        .iter()
+                        .all(|k| current[*k] == committed[*k])
+                    }))
         {
             return Ok(unknown());
         }
         // Expose only private opaque correlation and the actual receipt outcome,
         // never raw binding/body or owner registration secrets. No success flag.
-        let receipt=receipt.as_ref().map(|r|serde_json::json!({"receipt_id":r["receipt_id"],"state":r["state"],"target_id":r["target_id"],"resource_id":r["resource_id"],"resource_revision":r["resource_revision"],"failure_reason":r["failure_reason"]}));
+        let safe_receipt = |r: &serde_json::Value| serde_json::json!({"receipt_id":r["receipt_id"],"state":r["state"],"target_id":r["target_id"],"resource_id":r["resource_id"],"resource_revision":r["resource_revision"],"failure_reason":r["failure_reason"]});
+        let receipt = receipt.as_ref().map(&safe_receipt);
+        let committed_receipt = committed_receipt.as_ref().map(&safe_receipt);
         tx.commit().await.map_err(unresolved)?;
-        Ok(NativeTransactionResolution{status:native_status,receipt_evidence:serde_json::to_vec(&serde_json::json!({"kind":"PARTY_NATIVE_TRANSACTION_V1","scope_id":reference.scope_id,"request_id":binding.request_id,"identity_digest":digest,"request_digest":reference.request_digest,"role":reference.role,"receipt":receipt})).map_err(unresolved)?})
+        Ok(NativeTransactionResolution{status:native_status,receipt_evidence:serde_json::to_vec(&serde_json::json!({"kind":"PARTY_NATIVE_TRANSACTION_V1","scope_id":reference.scope_id,"request_id":binding.request_id,"identity_digest":digest,"request_digest":reference.request_digest,"role":reference.role,"receipt":receipt,"committed_receipt":committed_receipt})).map_err(unresolved)?})
     }
 }

@@ -463,6 +463,11 @@ async fn native_party_all_eight_operations_bind_real_commit_and_failed_receipt(
         assert!(v.get("success").is_none());
         if role == NativeRole::Command {
             assert_eq!(v["receipt"]["state"], "FAILED");
+            assert_eq!(v["committed_receipt"]["state"], "FAILED");
+            assert_eq!(
+                v["committed_receipt"]["receipt_id"],
+                v["receipt"]["receipt_id"]
+            );
         } else {
             assert!(v["receipt"].is_null());
         }
@@ -715,6 +720,30 @@ async fn native_party_failed_receipt_replay_and_changed_body_remain_truthful() -
             proto::TransactionStatus::Aborted
         );
     }
+    for sql in [
+        "update concert_party_native_command_receipts set receipt=receipt||'{\"state\":\"SUCCEEDED\"}'::jsonb where instance_id=$1",
+        "delete from concert_party_native_command_receipts where instance_id=$1",
+        "insert into concert_party_native_command_receipts select * from concert_party_native_command_receipts where instance_id=$1",
+    ] {
+        let error = sqlx::query(sql).bind(f.instance).execute(&f.concert).await.unwrap_err();
+        assert_eq!(error.as_database_error().and_then(|e|e.code()).as_deref(), Some("23514"));
+    }
+    assert!(
+        sqlx::query("truncate concert_party_native_command_receipts")
+            .execute(&f.concert)
+            .await
+            .is_err()
+    );
+    let error = sqlx::query("delete from concert_command_receipts where receipt_id=$1")
+        .bind(receipt_id.unwrap())
+        .execute(&f.concert)
+        .await
+        .unwrap_err();
+    assert_eq!(
+        error.as_database_error().and_then(|e| e.code()).as_deref(),
+        Some("23503"),
+        "original command receipt must not be replaceable"
+    );
     // Retained receipt retirement clears business outcome fields, not the actual
     // earlier native commit. Exercise this metadata lifecycle directly; this is
     // not a claim that a 24-hour expiry worker elapsed in the fixture.
@@ -730,6 +759,11 @@ async fn native_party_failed_receipt_replay_and_changed_body_remain_truthful() -
         assert_eq!(proof.status, proto::TransactionStatus::Committed);
         let value: Value = serde_json::from_slice(&proof.receipt_evidence)?;
         assert_eq!(value["receipt"]["state"], "RETIRED");
+        assert_eq!(value["committed_receipt"]["state"], "FAILED");
+        assert_eq!(
+            value["committed_receipt"]["receipt_id"],
+            value["receipt"]["receipt_id"]
+        );
         assert!(value.get("success").is_none());
     }
 

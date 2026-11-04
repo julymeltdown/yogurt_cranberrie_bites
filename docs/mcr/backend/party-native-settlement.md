@@ -20,7 +20,12 @@ The old generic `PARTY_REQUEST_V1` correlation is never positive proof.
 Migration 0057 validates the current connection's identity and exact confirmed
 parent at insertion and deferred commit, recomputes the Party binding digest,
 and enforces the original deadline. It holds parent/tracking shared locks through
-commit. COMMAND requires its actual matching receipt. READ and LOOKUP cannot
+commit. COMMAND requires its actual matching receipt. The deferred trigger installs a
+second immutable command-receipt witness containing the exact receipt ID and
+commit-time snapshot. A restrictive foreign key retains that original receipt;
+key reuse cannot substitute a replacement row. Resolution verifies the original
+immutable receipt correlation, reports both commit-time and current business
+state, and still accepts later metadata retirement without asserting success. READ and LOOKUP cannot
 commit changes to Party aggregates, memberships, applications, receipts or
 outbox, including effects written before the witness was installed. Retained
 policy pair reservations and child bookkeeping remain outside that business
@@ -40,8 +45,8 @@ IN_PROGRESS; absent, malformed or mismatched proof is UNKNOWN. Committed work
 requires the immutable witness and, for commands, its current actual receipt.
 COMMITTED describes the transaction; FAILED and PENDING receipts are not
 business success. Private correlation evidence exposes the actual receipt state
-at resolution, including later RETIRED metadata, not a fabricated success flag or immutable historical receipt
-snapshot. No raw request body or owner registration secrets are returned.
+at resolution, including later RETIRED metadata, alongside the actual immutable
+commit-time receipt snapshot. Neither state becomes a fabricated success flag. No raw request body or owner registration secrets are returned.
 
 Root retains config/native resolver routing, runtime/main, actual Profile and
 community resource factory composition, manifests, contracts and infrastructure.
