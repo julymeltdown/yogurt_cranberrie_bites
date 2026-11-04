@@ -28,3 +28,15 @@ Actual World readiness, the Participant runtime factory and main mounts, public
 C03 save/reload, and two-client browser movement remain required work. Optional
 producer routes remain closed until their coherent ownership and runtime inputs
 are composed.
+
+## Spatial handoff publication
+
+The independent map-five quality-v8 handoff `3742056c` was consumed in order as
+`d02a4eb7`, `779da4cb`, `35088212`, `5889d6d0`, and `c3f3dc10`.
+All final assigned file bytes match the owner packet. Its component receipt
+records 81 pure and six PostgreSQL spatial tests, including three actual restarts;
+these owner native checks were not rerun during publication. The integrator ran
+the 17 Python source tests successfully using the documented
+`/tmp/mcr-fe14-format-venv/bin/python` environment. An earlier system-Python run
+refused the missing mandatory URI/date-time format checkers; no guard was disabled.
+Map five remains NOT_ADMITTED and does not replace the map-four IN01 catalog.
