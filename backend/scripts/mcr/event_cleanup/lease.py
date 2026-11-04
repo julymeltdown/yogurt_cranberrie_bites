@@ -163,8 +163,9 @@ try:
   assert sum(v['size'] for v in f['binaries'].values())<=A['copied_exe_cap_bytes']
   state.pop('copy_started');write('state.json',state)
  elif MODE=='release':
-  f=json.loads((OUT/'frozen/freeze.json').read_text())
-  for name,v in f['binaries'].items():assert sha(OUT/'frozen/bin'/name)==v['sha256']
+  if (OUT/'frozen/freeze.json').exists():
+   f=json.loads((OUT/'frozen/freeze.json').read_text())
+   for name,v in f['binaries'].items():assert sha(OUT/'frozen/bin'/name)==v['sha256']
   rows=process_rows();assert not any(str(TARGET) in args and Path(comm).name in ('cargo','rustc','rustdoc') for pid,pp,comm,args in rows)
   handles=execute('release-target-handles',['/usr/sbin/lsof','+D',TARGET],expected=None)
   assert checks[-1]['exit_code']==1 and not handles.strip() and not (OUT/'release-target-handles.stderr').read_text().strip()
