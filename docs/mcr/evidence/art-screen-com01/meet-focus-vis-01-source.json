@@ -1,0 +1,72 @@
+{
+  "task": "MEET-FOCUS-VIS-01",
+  "originalTasks": [
+    "QA07 followup on FE21",
+    "retained QA06-owned COM01 background disposition"
+  ],
+  "lease": "Community-recorded exact Root grant before writes; only single summary outline-offset rule and owned COM docs/evidence. No functional overflow/layout or header/title rights.",
+  "goalReadback": {
+    "threadId": "01a1a533-50a9-73a1-8d4f-a16bf0b69aee",
+    "separateGoalId": "Not exposed by get_goal",
+    "createdAt": 1793772982,
+    "status": "blocked",
+    "objective": "Original full COM01 objective retained; no reset/newgoal/budget/active claim."
+  },
+  "baseCommit": "35ce1d0a8861ed4ba522d7dfdd25020b41c86a01",
+  "branch": "codex/mcr-art-screen-com01",
+  "worktree": "/Users/lhs/.codex/worktrees/06af/mcr",
+  "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+  "before": {
+    "bytes": 9041,
+    "sha256": "264b4c5304ada1419b46f73d3cdb0168505234a0d308289560967a495d801350"
+  },
+  "after": {
+    "bytes": 9120,
+    "sha256": "366664ac1c5a4a538173209656e59064c55612b3db880d968e40c481226a7c91"
+  },
+  "change": ".party-browse .party-filters > summary:focus-visible { outline-offset: -3px; }",
+  "exactAppendOnly": true,
+  "retainedProductionPreimage": {
+    "commit": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+    "bytes": 9066,
+    "sha256": "0f4b94ffb12cf8890d6e7c4e258e69b68833287dca0e8ad275a69d0700ebdea8",
+    "note": "Existing peer Meet typography differs from local branch. Root must preserve current production preimage and integrate only this rule."
+  },
+  "findingPacket": "1722a81734947764996590b94a63aa001501df28",
+  "rawReportSha256": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f",
+  "sourceGeometryProjection": {
+    "existingTarget": {
+      "x": 15,
+      "y": 465.5625,
+      "width": 301.546875,
+      "height": 44
+    },
+    "existingOutlineWidth": 3,
+    "existingOutlineColor": "rgb(163, 33, 43)",
+    "existingOutlineStyle": "solid",
+    "existingOffset": 2,
+    "newOffset": -3,
+    "outerExtentBeyondBorderBox": 0,
+    "outlineOuterBox": {
+      "x": 15,
+      "y": 465.5625,
+      "width": 301.546875,
+      "height": 44
+    },
+    "outlineInnerBox": {
+      "x": 18,
+      "y": 468.5625,
+      "width": 295.546875,
+      "height": 38
+    },
+    "interpretation": "For a3px outline with-3px offset, the full ring lies within the existing target border box. This is source/CSS geometry reasoning, not measured runtime proof."
+  },
+  "validation": {
+    "boundaryCheckExit": 0,
+    "buildLintNative": "NOT_RUN; no fresh resource offer, none required for source authoring",
+    "cssMirrorUnitTest": "Not created",
+    "diffCheckExit": 0
+  },
+  "requiredRuntime": "Root-only finite affected Meetfocused/unfocused360/390/430 plus390forced, after fresh21d namedoffer+accept. Verify all4ring sides/contrast, target/font/text/scroll/layout, avatars/backgrounds/controlstate unchanged. No broad matrix or packet writes.",
+  "remaining": "Original bounded Wall/background docs publication/readback plus this source/rendered validation and final publication ancestry; goal unfinished."
+}

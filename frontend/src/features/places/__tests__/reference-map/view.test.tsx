@@ -9,6 +9,7 @@ import { PlacesOverview } from '../../ui/Places'
 import { catalog, eventId, release, userId } from '../fixtures/data'
 import type { SceneryOverview } from '../../../../world/illustrated/overview'
 import { referenceMapRelease } from './scene-data'
+import { getReferenceOverviewMetadata, referenceSceneIdentity } from '../../../../world/reference-scene'
 beforeEach(() => {
   vi.stubGlobal('location', { origin: 'https://mcr.example.invalid' })
   vi.stubGlobal('ResizeObserver', class { observe() {} disconnect() {} })
@@ -67,9 +68,18 @@ it('falls back after image failure/replacement and withdraws old plaques and pin
 
 it('uses four real candidate IDs and catalog text; source-art decoration never creates a destination', async () => {
   const f = await setup(true)
+  // The supported legacy identity still has historical placement metadata.
+  // Its strings must never become product text, accessible labels or routes.
+  expect(getReferenceOverviewMetadata(referenceSceneIdentity)?.mapLabels.map(label => label.label)).toEqual(
+    expect.arrayContaining(['FOOD', 'MERCH']),
+  )
   expect(document.querySelector('[data-map-presentation="reference-scene"]')).not.toBeNull()
   expect(screen.getAllByRole('link', { name: /^View / })).toHaveLength(4)
   expect(screen.queryByRole('link', { name: /FOOD|MEETUP ZONE|GIVEAWAY BOOTH|PLAZA/ })).not.toBeInTheDocument()
+  expect(document.body.textContent).not.toMatch(/\b(?:FOOD|MERCH)\b/)
+  for (const link of screen.getAllByRole('link', { name: /^View / })) {
+    expect(`${link.getAttribute('aria-label')} ${link.getAttribute('title')} ${link.getAttribute('href')}`).not.toMatch(/food|merch/i)
+  }
   const stage = screen.getByRole('link', { name: 'View Virtual stage' })
   expect(stage).toHaveAttribute('href', '/world/places/6a5c196b-58e1-47d5-99bb-000000000003')
   fireEvent.focus(stage)

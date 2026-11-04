@@ -26,6 +26,33 @@ milestones, ready unstaffed work, blockers/decisions and links to owner records.
 Immediate escalation is limited to cross-lane conflicts unresolved directly,
 genuinely unattended critical work or human-required product/access decisions.
 
+## Current foreground CSS ownership — human correction
+
+Frontend King relays the human's explicit correction: nine new per-screen
+CSS-only workers exclusively own foreground visual matching for Landing,
+Sign in, Map, Customize, Feed, Meet, Giveaway, Wall and My Profile. These
+workers do NOT report to Community or any SL and require no SL review,
+approval or acknowledgment. They send committed CSS/evidence DIRECT Root153,
+who alone integrates/publishes. Community neither duplicates their work nor
+edits/reassigns their CSS leases. No exact new worker IDs/paths are inferred
+from this screen-level notice; Root/current owner resolves concrete overlaps.
+
+Existing Community feature/real-flow work and separately authorized background
+ownership continue.204's isolated FE40 archive scope remains unchanged; it
+acquires no other screen CSS rights. COM01's already committed Meet focus
+source/disposition remains preserved, but its earlier narrow Meet foreground
+CSS editing grant authorizes no further writes after this correction. The
+existing owner was directly instructed to stop any such foreground editing
+and continue its SAME unfinished goal's pending committed docs/evidence/
+publication/independent readback and lease reconciliation. No goal pause,
+reset/false completion, feature halt or extra SL gate is introduced. Genuine
+later foreground fixes route directly to Root and the current foreground
+writer; background-only grants do not include foreground selectors.
+
+This explicit correction supersedes conflicting older staffing/foreground
+ownership prose below while retaining historical receipts/source unchanged.
+No routine King acknowledgment or oversight of the nine new workers is added.
+
 ## Hourly reconciliation — 2026-11-04 17:41 KST
 
 This checkpoint reconciles every original ID in the FE/IN and QA/IN tables

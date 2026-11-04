@@ -1,0 +1,116 @@
+{
+  "task": "TITLE-FOCUS-01",
+  "status": "SOURCE_MODEL_PASS_ACTUAL_RENDER_NOT_RUN",
+  "base": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "cssSha256": "5c9e194e62eaf438f8b98436b4e8d7315702ead3307e60684fe4f61800d067c4",
+  "cssBytes": 5923,
+  "selector": ".mcr-chrome-panel-header:has(> #panel-title:focus-visible)",
+  "allOutsideSelectorByteExact": true,
+  "declarations": {
+    "background-image": "linear-gradient(to right, #251017 7px, transparent 0 calc(100% - 133px), #251017 0),\n    linear-gradient(to bottom, #251017 10px, #e9e1d4 0 14px, transparent 0 31px, #e9e1d4 0 35px, #251017 0),\n    linear-gradient(to right, #251017 7px, #e9e1d4 0 11px, #251017 0 calc(100% - 137px), #e9e1d4 0 calc(100% - 133px), #251017 0)",
+    "background-size": "100% 100%",
+    "background-repeat": "no-repeat"
+  },
+  "retainedMapPacket": "4600542ba8f5d16210075c93847fa60960809540",
+  "cases": [
+    {
+      "era": "PARADE",
+      "width": 390,
+      "retainedSha256": "0a87dcdf04eeb737892cfd27ad5cabc67a9f2ccfb7fffa41d8e26cfdc2ac15f7",
+      "paperBackedRingPixels": 1446,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "retainedSha256": "875ff6d6976ed2ed0ba8bef148a593e29d5154d8cf7254334d320dedc2152c11",
+      "paperBackedRingPixels": 1446,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "retainedSha256": "d62c8eef74663ed6b41dcf4eb7faf272eb59538a0734803d8853df40b0acf1f2",
+      "paperBackedRingPixels": 1446,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "retainedSha256": "1b4966674269db735b2a832f94e47c125725fdaa85b845a201e77882f5dc4c9b",
+      "paperBackedRingPixels": 1266,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "retainedSha256": "7c7899be9cb14d43b5f55e67923d3b992d910189efa40c9d837b89449646b0bc",
+      "paperBackedRingPixels": 1266,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "retainedSha256": "f4ec1abd3271eb48c5ebb4992e01a62175d131a3a3738cdd1f87086880d2229f",
+      "paperBackedRingPixels": 1266,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "retainedSha256": "d0fcc011697cc1ba632508f9ff3d8f155a367749475f938b54bedc96fb24b522",
+      "paperBackedRingPixels": 1686,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "retainedSha256": "b804e551233e7ed1e8d0c97878ec10f1f17f5b301571e94ab7cc033a9c169e49",
+      "paperBackedRingPixels": 1686,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "retainedSha256": "7037198a37c29f21a3aaed877c707818a93e61b76d15ed2937be256d58337e1e",
+      "paperBackedRingPixels": 1686,
+      "darkBackedVisibleGlyphPixels": 556,
+      "controlInteriorDark": true,
+      "fourExposedOuterPaperEdges": true,
+      "unfocusedPaddingBoxDark": true
+    }
+  ],
+  "retainedMePacket": "5186f11017185a040e4ccde1c59589e140563ef0",
+  "retainedMePath": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-0-390.png",
+  "unfocusedMeCreamCoreDarkBacking": true,
+  "forcedColors": "Non-URL gradients are forced to none by CSS Color Adjustment; actual browser check remains NOT_RUN",
+  "limits": [
+    "Analytical evaluation of authored hard-stop gradients, not candidate raster output",
+    "Retained native coordinate system only; actual DOM/raster, focus transitions and forced colors need Root capture",
+    "Synthetic route/transport evidence cannot certify live or multiuser acceptance"
+  ]
+}

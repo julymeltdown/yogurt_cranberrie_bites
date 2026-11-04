@@ -1,0 +1,51 @@
+{
+  "base": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "qualifiedNativeHead": "7909a45a6f0344299550d9c54ecd9d4fd1243fd2",
+  "sourceQualificationHead": "3f69299bc1e1132c474139e5a11f3bfb6d8ff8e5",
+  "ownCommitsBeforeFinalEvidence": [
+    "931bc26d71ef6912e36b1ef362031e5c496bf3a7",
+    "f7c4b89922322c678227119f31b70e9bc897062f",
+    "3f69299bc1e1132c474139e5a11f3bfb6d8ff8e5",
+    "b49f7f726ec85d9eed8eab84f7cf18886db43cf6",
+    "c8f8b75ac1fb5932834d64b2fa02c6d839bd3b05",
+    "04b8398f11733e38802b2ca566cb7294f4ecbd04",
+    "2bdc353d68880e6a2f6b761800bba00a69306719",
+    "07f68aa99ecc0c228c023e774f2eb8c7eb95796f",
+    "6eb3d7ff8e84f0c6b7b7e840740a4117e7c41eef",
+    "7909a45a6f0344299550d9c54ecd9d4fd1243fd2"
+  ],
+  "ownedChangedPathsBeforeFinalEvidence": [
+    "docs/mcr/evidence/archive-root-composition/failures/native-development-socket.json",
+    "docs/mcr/evidence/archive-root-composition/logs/lint.log",
+    "docs/mcr/evidence/archive-root-composition/logs/native-qualified.log",
+    "docs/mcr/evidence/archive-root-composition/logs/native.log",
+    "docs/mcr/evidence/archive-root-composition/logs/plan.log",
+    "docs/mcr/evidence/archive-root-composition/logs/syntax-qualified.log",
+    "docs/mcr/evidence/archive-root-composition/logs/syntax.log",
+    "docs/mcr/evidence/archive-root-composition/logs/types.log",
+    "docs/mcr/evidence/archive-root-composition/logs/vitest.log",
+    "docs/mcr/evidence/archive-root-composition/native-second-release.json",
+    "docs/mcr/evidence/archive-root-composition/native/report.json",
+    "docs/mcr/evidence/archive-root-composition/source-qualification.json",
+    "docs/mcr/frontend/archive-root-composition.md",
+    "frontend/src/app/__tests__/archive-entry/native.mjs",
+    "frontend/src/app/__tests__/archive-entry/preview.html",
+    "frontend/src/app/__tests__/archive-entry/preview.tsx",
+    "frontend/src/app/__tests__/archive-entry/route.test.tsx",
+    "frontend/src/app/__tests__/archive-entry/tsconfig.json",
+    "frontend/src/app/archive-entry/index.tsx"
+  ],
+  "RootOwnedConsumedInputs": [
+    "246e9be31e895173cdf74cc1777f36dbb05a0434",
+    "67264947497ea5e5c417a098135b7fa2c21dbd8d"
+  ],
+  "allNativeSourcePinsMatch": 29,
+  "allScreenshotHashesMatch": 4,
+  "visuallyInspectedCaptures": 4,
+  "scopeAudit": "PASS; own paths only; no backend imports; Root inputs exact and excluded from own handoff",
+  "logNormalization": "Only absolute assigned worktree prefix replaced by <worktree>; commands/exits/messages retained",
+  "BE41": "NOT_RUN",
+  "qualifiedPublicMedia": "NOT_RUN",
+  "physicalDevice": "NOT_RUN",
+  "releaseAcceptance": "NOT_RUN"
+}

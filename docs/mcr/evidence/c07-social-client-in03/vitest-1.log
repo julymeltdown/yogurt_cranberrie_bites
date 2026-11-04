@@ -1,0 +1,110 @@
+
+ RUN  v4.1.9 ${WORKTREE}/frontend
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts (17 tests | 9 failed) 291ms
+   × deterministic two-principal discovery/feed/comment/consent/decision/reveal/revoke uses canonical consumers 10ms
+   × denied HTTP 401 sensitive read does not replay, refresh or expose a name 2ms
+   × denied HTTP 403 sensitive read does not replay, refresh or expose a name 1ms
+   × denied HTTP 404 sensitive read does not replay, refresh or expose a name 1ms
+   × denied HTTP 409 sensitive read does not replay, refresh or expose a name 1ms
+   × denied HTTP 503 sensitive read does not replay, refresh or expose a name 1ms
+   × expiry and wrong response context fail closed without widening a grant 1ms
+   × restricted discovery cannot retain a previous public intro or infer age 1ms
+   × foreign event discovery and foreign actor unread count fail closed in their actual consumers 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > deterministic two-principal discovery/feed/comment/consent/decision/reveal/revoke uses canonical consumers
+AssertionError: expected undefined to be '00000000-0000-4000-8000-000000000028' // Object.is equality
+
+- Expected:
+"00000000-0000-4000-8000-000000000028"
+
++ Received:
+undefined
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts:19:63
+     17|   const a = world.actor(), b = world.actor(recipient)
+     18|   a.owner.people.start(); await a.owner.people.load()
+     19|   expect(a.owner.people.read().page.data?.items[0]?.intro_id).toBe(req…
+       |                                                               ^
+     20|   a.owner.feed.start(); await a.owner.feed.loadFeed()
+     21|   const post = readJSON('contracts/fixtures/domain/public-post.json')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > denied HTTP 401 sensitive read does not replay, refresh or expose a name
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > denied HTTP 403 sensitive read does not replay, refresh or expose a name
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > denied HTTP 404 sensitive read does not replay, refresh or expose a name
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > denied HTTP 409 sensitive read does not replay, refresh or expose a name
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > denied HTTP 503 sensitive read does not replay, refresh or expose a name
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts:76:53
+     74|   world.approve(); const a = world.actor(); await a.sharing.loadReques…
+     75|   world.override(r => r.url.endsWith('/reveal') ? Response.json({ code…
+     76|   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(false)
+       |                                                     ^
+     77|   expect(a.sharing.read().secret.data).toBeNull()
+     78|   expect(world.calls.filter(c => c.path.endsWith('/reveal'))).toHaveLe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > expiry and wrong response context fail closed without widening a grant
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts:84:53
+     82|   world.approve(); const a = world.actor(); await a.sharing.loadReques…
+     83|   world.override(r => r.url.endsWith('/reveal') ? Response.json({ ...s…
+     84|   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(false)
+       |                                                     ^
+     85|   world.setNow(Date.parse(request.expires_at)); const count = world.ca…
+     86|   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(false); expec…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > restricted discovery cannot retain a previous public intro or infer age
+AssertionError: Target cannot be null or undefined.
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts:90:50
+     88| it('restricted discovery cannot retain a previous public intro or infe…
+     89|   const a = world.actor(); a.owner.people.start(); await a.owner.peopl…
+     90|   expect(a.owner.people.read().page.data?.items).toHaveLength(1)
+       |                                                  ^
+     91|   world.override(r => r.url.endsWith('/intros') ? Response.json({ code…
+     92|   await a.owner.people.load(); expect(a.owner.people.read().page.data)…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > foreign event discovery and foreign actor unread count fail closed in their actual consumers
+AssertionError: expected 'loading' to be 'error' // Object.is equality
+
+Expected: "error"
+Received: "loading"
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts:121:44
+    119|   })
+    120|   a.owner.people.start(); await a.owner.people.load()
+    121|   expect(a.owner.people.read().page.phase).toBe('error'); expect(a.own…
+       |                                            ^
+    122|   a.owner.inbox.start(); await a.owner.inbox.loadUnreadCount()
+    123|   expect(a.owner.inbox.read().count.phase).toBe('error'); expect(a.own…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  9 failed | 30 passed (39)
+   Start at  17:54:27
+   Duration  1.15s (transform 363ms, setup 0ms, import 603ms, tests 349ms, environment 0ms)
