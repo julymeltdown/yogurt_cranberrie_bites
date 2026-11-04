@@ -62,23 +62,24 @@ impl SessionOwner {
             .withdraw_account_views(user)
             .map_err(unavailable)?;
         // No await separates local withdrawal and retained exact obligations.
-        let mut pending = self.pending.lock().map_err(unavailable)?;
-        for binding in bindings {
-            pending.insert(stream_key(&binding), binding);
-        }
-        for binding in self.transport.withdraw_account(user).map_err(unavailable)? {
-            pending.insert(stream_key(&binding), binding);
-        }
-        if pending.len() > 4096 {
-            return Err(DeletionFailure::Unavailable);
-        }
-        let batch: Vec<_> = pending
-            .values()
-            .filter(|b| b.key.user_id.uuid() == user)
-            .take(*budget)
-            .cloned()
-            .collect();
-        drop(pending);
+        let batch: Vec<_> = {
+            let mut pending = self.pending.lock().map_err(unavailable)?;
+            for binding in bindings {
+                pending.insert(stream_key(&binding), binding);
+            }
+            for binding in self.transport.withdraw_account(user).map_err(unavailable)? {
+                pending.insert(stream_key(&binding), binding);
+            }
+            if pending.len() > 4096 {
+                return Err(DeletionFailure::Unavailable);
+            }
+            pending
+                .values()
+                .filter(|b| b.key.user_id.uuid() == user)
+                .take(*budget)
+                .cloned()
+                .collect()
+        };
         for binding in batch {
             let (reply, answer) = oneshot::channel();
             self.runtime
@@ -261,7 +262,7 @@ impl SessionDeletion {
         Ok(())
     }
     async fn require_owner_coverage(&self, user: Uuid) -> Result<(), DeletionFailure> {
-        let rows = sqlx::query("select distinct m.event_id,m.owner_process_id,m.owner_epoch from public.concert_world_memberships m left join public.concert_world_owner_leases l on (l.event_id,l.room_id,l.owner_process_id,l.owner_epoch)=(m.event_id,m.room_id,m.owner_process_id,m.owner_epoch) where m.user_id=$1 and (m.lease_until>clock_timestamp() or l.lease_until>clock_timestamp())")
+        let rows = sqlx::query("select distinct m.event_id,m.owner_process_id,m.owner_epoch from public.concert_world_memberships m left join public.concert_world_owner_leases l on (l.event_id,l.room_id,l.owner_process_id,l.owner_epoch)=(m.event_id,m.room_id,m.owner_process_id,m.owner_epoch) where m.user_id=$1 and (m.lease_until>clock_timestamp() or l.lease_until>clock_timestamp()) limit 17")
             .bind(user).fetch_all(&self.pool).await.map_err(unavailable)?;
         for row in rows {
             let event: Uuid = row.try_get("event_id").map_err(unavailable)?;
