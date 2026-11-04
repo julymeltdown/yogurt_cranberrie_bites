@@ -1,0 +1,29 @@
+{
+  "status": "INTEGRATED_SOURCE",
+  "original_source": "1c511f0cb3d7413be4228558ab179522a7eb51f1",
+  "qualified_source": "cca1723c7b046a4d9475d708e35516f838f31e91",
+  "history_preserved_by_merge": true,
+  "exact_original_postimages": 4,
+  "paths": [
+    "backend/services/concert-service/src/feed/mod.rs",
+    "backend/services/concert-service/src/feed/product.rs",
+    "backend/services/concert-service/tests/feed_product_scope.rs",
+    "docs/mcr/backend/feed-product-scope.md"
+  ],
+  "owner_validation": {
+    "target": "feed_product_scope",
+    "build_exit_code": 0,
+    "copied_tests_passed": 5,
+    "ignored": 0,
+    "test_executable_sha256": "e12ca9c9dc83e6e953d710cb14062e62e1d0435fcd2d976ee600e422012dbe06",
+    "checkpoint_sha256": "c31d6d3c768a6ba493922cfd8be152a5cad4626c78ce337b4107c311a847ee58",
+    "test_report_sha256": "26e3f21c6740a1047187ad7c2e414276ad32eca5ee2422b0ae8e611a008844cb",
+    "full_release_sha256": "e9e43b44cc9bb8ed832a55ed87fdb4a7f5ee04774c740f9f638c5d29d0c309c9"
+  },
+  "limitations": [
+    "Five cases qualify constructors, original request/scope context boundaries and closed read operation set, not current live owner RPC behavior.",
+    "Original eight native component cases remain historical at their original source.",
+    "Actual Concert Feed opt-in settings, callback composition and public Gateway HTTP/EOF/IN03 remain pending.",
+    "No new scope, token, delivery factory, main, manifest, proto or frontend implementation is imported."
+  ]
+}
