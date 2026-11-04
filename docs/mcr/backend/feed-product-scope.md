@@ -109,7 +109,8 @@ The adapter explicitly rejects raw fragments and control characters before accep
 the endpoint, including both authority-only and slash-prefixed fragment cases.
 This is a source-based correction; no failing or passing executable test is implied.
 
-Executable validation: **NOT_RUN pending fresh Backend SL OFFER/ACCEPT**. Start
+At source checkpoint `cca1723c`, executable validation was **NOT_RUN pending
+fresh Backend SL OFFER/ACCEPT**. The completed round below supersedes that status. Start
 floor 16 GiB, continuous stop floor 8 GiB; Rust 1.88 locked/offline, jobs <=2,
 debug=0, incremental=0. No target is held. Required bounded test target is
 `concert-service --test feed_product_scope`; no prior native proof rerun is
@@ -138,7 +139,81 @@ files totaled 32,655 bytes. The failure was returned to Backend SL for the fresh
 queue; a new eligible allocation is required. No lease or readiness is inferred
 from the offer. The intended matching build environment leaves global RUSTFLAGS
 unset and uses dev/test profile debug=0, incremental=0, Rust 1.88, jobs=2,
-locked/offline. All five new executable checks remain NOT_RUN.
+locked/offline. At that denied preflight all five executable checks remained NOT_RUN; the later
+qualified round below records their actual execution.
+
+## Actual scoped-producer construction validation
+
+**PASS** on exact clean source `cca1723c7b046a4d9475d708e35516f838f31e91`.
+The fresh `FEED-PRODUCT-MEDIA-202611041121Z` allocation was ACCEPTed at
+2026-11-04 11:22:08 UTC after measuring 22,566,105,088 free bytes, Rust 1.88.0,
+clean source and zero prior external round carry. Its exact target was
+`/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target`.
+
+The only build request was:
+
+```text
+cargo +1.88.0 test --locked --offline -j2 -p concert-service --test feed_product_scope --no-run --message-format=json
+```
+
+The absolute working directory was the existing worktree's `backend` directory;
+RUSTFLAGS/CARGO_ENCODED_RUSTFLAGS were unset, dev/test profile debug=0 and
+incremental=0. Build exit 0 in 23.53 seconds; zero warnings in leased Feed code,
+16 peer World/Party warnings. Cargo automatically emitted Concert main artifact
+metadata; that binary was never explicitly built, copied or run. No shared
+cleanup, retry, source correction or feature/config change was needed.
+
+Frozen evidence root:
+`/private/tmp/mcr-feed-product-scope-20261104-112208Z`.
+The freeze retains all 2,454 selected build-source/runtime inputs (287,322,444
+logical bytes), all source-bound release pins, Cargo JSON/stderr, exact one test
+executable, preflight/process/target-release/build/test receipts and accounting.
+The adapter, test and module source hashes above are unchanged.
+
+- Test executable `feed_product_scope`, 1,482,544 logical bytes, SHA-256
+  `e12ca9c9dc83e6e953d710cb14062e62e1d0435fcd2d976ee600e422012dbe06`.
+- `source-manifest.json` SHA-256
+  `f9a34b86481079193f682e57914ea87edb2302ebebc1ebb023136d4359caedf6`.
+- `checkpoint.json` SHA-256
+  `c31d6d3c768a6ba493922cfd8be152a5cad4626c78ce337b4107c311a847ee58`.
+- `build-receipt.json` SHA-256
+  `be417cd0aae47ef7a5c878c95aba4f53a63aa8a1f65cf99e9a974e978e2d1a1a`.
+- `target-release.json` SHA-256
+  `157f26f43ac7443446647389d9a7d94de39d343a21f970d3ba9ffb8b28502b6f`.
+- `test-report.json` SHA-256
+  `26e3f21c6740a1047187ad7c2e414276ad32eca5ee2422b0ae8e611a008844cb`.
+- `fullrelease-accounting.json` SHA-256
+  `e9e43b44cc9bb8ed832a55ed87fdb4a7f5ee04774c740f9f638c5d29d0c309c9`.
+
+MEDIA was explicitly and unconditionally TARGETRELEASEd at 11:23:42 UTC, after
+fresh exact-target `lsof` exit 1 with empty stdout/stderr and an empty owned Cargo
+process group. Only then was the frozen test executable run, with an explicit
+external frozen-source/backend working directory and minimal environment:
+
+```text
+/private/tmp/mcr-feed-product-scope-20261104-112208Z/feed_product_scope --test-threads=1
+```
+
+Actual result: **5 passed, 0 failed, 0 ignored, 0 filtered**, exit 0, empty stderr.
+All frozen source hashes were checked before that run. No target access occurred
+after TARGETRELEASE. Full release at 11:24:43 UTC confirmed empty owned build/test
+process groups, exact copied executable `lsof` exit 1 with empty output, and the
+new private TMP directory empty and removed. No PG/service/prior native test ran.
+Total round elapsed 155.30 seconds, preserving the cleanup reserve.
+
+Allocated source freeze was 292,970,496 bytes; one test copy 1,482,752; proof/log
+files 1,413,120 before the final accounting receipt. Positive target growth was
+196,063,232 bytes. The whole round upper bound including final receipt reserve
+was 491,945,984 bytes, within every component cap and the 2 GiB whole cap.
+Free space at full release was 21,837,471,744 bytes. Frozen evidence is retained;
+no target, process, private TMP or active runtime resource remains held.
+
+These checks qualify construction inputs, the closed operation set and successful
+compilation of the actual adapter. They do **not** prove original-request/scope
+mismatch behavior under live owners, production service composition, actual
+Gateway HTTP EOF, or the real restricted/deleted/blocked IN03 consumer. Root's
+existing shared production consumer remains responsible for that proof. The
+prior eight native component cases were preserved and not rerun or relabeled.
 
 ## Qualified lineage intake order
 
