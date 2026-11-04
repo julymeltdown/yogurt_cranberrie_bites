@@ -1,0 +1,8 @@
+{
+  "originalPath": "/tmp/mcr-fe04-evidence/results.json",
+  "destinationPath": "docs/mcr/evidence/client-foundation-delivery/fe04-original-native-results.json",
+  "sha256": "ded875f2ab7abb74030c07dde8c4bf83f86274fe62e6b795b59aab28a10829dc",
+  "sourceBasis": "Original795f46b implementation andb730742 final report. Historical raw result is preserved byte-for-byte; no new browser run or contemporaneous source hash is claimed.",
+  "sameSharedHttpAt795f46b": true,
+  "sameReturnSanitizerAt1bb71ccc": true
+}

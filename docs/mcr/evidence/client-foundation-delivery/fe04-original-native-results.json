@@ -1,0 +1,53 @@
+{
+  "browser": "156.0.8078.80",
+  "status": "PASS",
+  "results": [
+    {
+      "mode": "development",
+      "compression": {
+        "width": 2048,
+        "height": 1152,
+        "type": "image/webp",
+        "bytes": 4752,
+        "originalBytes": 34717,
+        "sha256Matches": true,
+        "metadataAbsent": true,
+        "progressCompleted": true,
+        "revoked": true,
+        "liveWorkers": 0,
+        "peakWorkers": 1,
+        "terminatedWorkers": 1
+      },
+      "abort": {
+        "result": "aborted",
+        "liveWorkers": 0,
+        "terminatedWorkers": 2
+      },
+      "presigned": "cookie/token/session-header free"
+    },
+    {
+      "mode": "production-bundle",
+      "compression": {
+        "width": 2048,
+        "height": 1152,
+        "type": "image/webp",
+        "bytes": 4752,
+        "originalBytes": 34717,
+        "sha256Matches": true,
+        "metadataAbsent": true,
+        "progressCompleted": true,
+        "revoked": true,
+        "liveWorkers": 0,
+        "peakWorkers": 1,
+        "terminatedWorkers": 1
+      },
+      "abort": {
+        "result": "aborted",
+        "liveWorkers": 0,
+        "terminatedWorkers": 2
+      },
+      "presigned": "cookie/token/session-header free"
+    }
+  ],
+  "limitation": "Synthetic native-browser fixture; BE24/live media flow and actual devices NOT_RUN."
+}

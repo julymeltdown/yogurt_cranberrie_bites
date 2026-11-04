@@ -1,0 +1,65 @@
+{
+  "registration": "docs/mcr/reuse-allowlist.json",
+  "registeredExtracts": [
+    {
+      "source": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "destination": "frontend/src/shared/validation/text.ts",
+      "registeredSha256": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+      "actualSha256": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+      "matches": true,
+      "symbols": [
+        "codePointLength",
+        "boundedText",
+        "tagSchema",
+        "tagArray"
+      ],
+      "tests": [
+        "frontend/src/shared/validation/__tests__/text.test.ts"
+      ]
+    },
+    {
+      "source": "frontend/src/features/social-intro/social-intro-model.ts",
+      "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "destination": "frontend/src/shared/validation/tags.ts",
+      "registeredSha256": "187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e",
+      "actualSha256": "187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e",
+      "matches": true,
+      "symbols": [
+        "parseTagInput"
+      ],
+      "tests": [
+        "frontend/src/shared/validation/__tests__/text.test.ts"
+      ]
+    },
+    {
+      "source": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "destination": "frontend/src/entities/intro/model/publication-contact.ts",
+      "registeredSha256": "31aefa77596f710eebe311018de07a88ce1e2ceeb888c968ab4580b96254b6c4",
+      "actualSha256": "31aefa77596f710eebe311018de07a88ce1e2ceeb888c968ab4580b96254b6c4",
+      "matches": true,
+      "symbols": [
+        "introContactBypass (renamed contactBypass)"
+      ],
+      "tests": [
+        "frontend/src/entities/intro/model/__tests__/policy.test.ts"
+      ]
+    },
+    {
+      "source": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "destination": "frontend/src/entities/intro/model/age.ts",
+      "registeredSha256": "1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5",
+      "actualSha256": "1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5",
+      "matches": true,
+      "symbols": [
+        "ageBoundsSchema (adapted socialIntroVisibilitySchema)"
+      ],
+      "tests": [
+        "frontend/src/entities/intro/model/__tests__/policy.test.ts"
+      ]
+    }
+  ],
+  "scope": "Recorded audited headless adaptation provenance, not a new managerial review or a re-executed C08 gate."
+}

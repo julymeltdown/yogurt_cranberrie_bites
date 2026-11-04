@@ -1,0 +1,328 @@
+{
+  "kind": "Read-only source/receipt reconciliation; no application test or browser rerun",
+  "emailArchive": {
+    "verifiedReferences": 28,
+    "rows": [
+      {
+        "path": "docs/mcr/evidence/real-email-flow/e482f0173dec-receipt.json",
+        "expected": "e482f0173dece132284cfdb0e36834e02fd8d46772a00cc37a19e1a1466d015a",
+        "actual": "e482f0173dece132284cfdb0e36834e02fd8d46772a00cc37a19e1a1466d015a",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/7cdc75f2bada-report.json",
+        "expected": "7cdc75f2bada1f934f6eb3bfe81df2104fe3cc667268c8f5c790b1070aadfc6d",
+        "actual": "7cdc75f2bada1f934f6eb3bfe81df2104fe3cc667268c8f5c790b1070aadfc6d",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/6c4a38401e3d-signed-in-bootstrap-unavailable.png",
+        "expected": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73",
+        "actual": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/e94bafc24eeb-stack.json",
+        "expected": "e94bafc24eeb7d071233b38aa827d5e3a35e18f7a7dec8cc169aa385e8d7ad6d",
+        "actual": "e94bafc24eeb7d071233b38aa827d5e3a35e18f7a7dec8cc169aa385e8d7ad6d",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/4877e06e80fd-verified-mobile.png",
+        "expected": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4",
+        "actual": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/4e50a3585e23-mcr-real-email-cookie-proof.log",
+        "expected": "4e50a3585e231be3c78bc586904281bbad24aae620d19a84c48da92f3601b8f5",
+        "actual": "4e50a3585e231be3c78bc586904281bbad24aae620d19a84c48da92f3601b8f5",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/9e952c0e0ea3-mcr-real-email-auth-regression.txt",
+        "expected": "9e952c0e0ea381c179e2edb568bd1be667c8b5c8cde673d0ee7ec6cdab68f1e8",
+        "actual": "9e952c0e0ea381c179e2edb568bd1be667c8b5c8cde673d0ee7ec6cdab68f1e8",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/3f5daa3c0aa5-mcr-real-email-build.txt",
+        "expected": "3f5daa3c0aa5a2a1dfc0ce3f9ac1e609ae01a8c452e02bccf7a6005ebc55b09b",
+        "actual": "3f5daa3c0aa5a2a1dfc0ce3f9ac1e609ae01a8c452e02bccf7a6005ebc55b09b",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/e3b0c44298fc-mcr-real-email-entry-typecheck-final.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/e3b0c44298fc-mcr-real-email-lint.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/e3b0c44298fc-mcr-real-email-cookie-proof-lint.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/ab0ac16503eb-mcr-real-email-contract.txt",
+        "expected": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6",
+        "actual": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/49bffded3f55-mcr-real-email-origin-cookie-proof.txt",
+        "expected": "49bffded3f552b885af9e706fe41ae7c2cdacf6109944242d2ba11ec0c77e351",
+        "actual": "49bffded3f552b885af9e706fe41ae7c2cdacf6109944242d2ba11ec0c77e351",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/88606f33d640-mcr-real-email-plan.json",
+        "expected": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+        "actual": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/7a31d03b0b3f-mcr-real-email-boundaries-cookie-proof.txt",
+        "expected": "7a31d03b0b3fa46d9e675a53e532934f2f0190e8eff524329b0597ad178da690",
+        "actual": "7a31d03b0b3fa46d9e675a53e532934f2f0190e8eff524329b0597ad178da690",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/7a186f484c9f-report.json",
+        "expected": "7a186f484c9f95d8c60a0a55bf768baf4a01b05779ed0acc950dca414d8c83c5",
+        "actual": "7a186f484c9f95d8c60a0a55bf768baf4a01b05779ed0acc950dca414d8c83c5",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/815599ea6132-stack.json",
+        "expected": "815599ea61321a10cd3f97b7ec3adb022b3f080a487bb85db5787a9c58c3bec8",
+        "actual": "815599ea61321a10cd3f97b7ec3adb022b3f080a487bb85db5787a9c58c3bec8",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/c5a7a3a38b44-report.json",
+        "expected": "c5a7a3a38b447edb92296e0dcbeb37bfe9348b048acfc7cb4d57e711352a550e",
+        "actual": "c5a7a3a38b447edb92296e0dcbeb37bfe9348b048acfc7cb4d57e711352a550e",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/cfccf9a62b67-report.json",
+        "expected": "cfccf9a62b6731ab3ae150973704019afec74fc566b4005e8a46ceec5bb4c7fa",
+        "actual": "cfccf9a62b6731ab3ae150973704019afec74fc566b4005e8a46ceec5bb4c7fa",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/c93fc14dede3-stack.json",
+        "expected": "c93fc14dede3d1620540eb45d047ec4a8cf415f4967fb60bbc79d855ad256906",
+        "actual": "c93fc14dede3d1620540eb45d047ec4a8cf415f4967fb60bbc79d855ad256906",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/972aeee0c2b2-report.json",
+        "expected": "972aeee0c2b27b7dfa40f325ff3604b58577846e4c3b93334629b1f3e1f87f6b",
+        "actual": "972aeee0c2b27b7dfa40f325ff3604b58577846e4c3b93334629b1f3e1f87f6b",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/4f06543267ae-stack.json",
+        "expected": "4f06543267ae20600a563e7a0a081099ab88b8fa366f6503f3596273b0706d80",
+        "actual": "4f06543267ae20600a563e7a0a081099ab88b8fa366f6503f3596273b0706d80",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/5e27a791047a-report.json",
+        "expected": "5e27a791047abdd3b9b5b8b3df1424f828f490cf1b1cd00dae7616d001752f4c",
+        "actual": "5e27a791047abdd3b9b5b8b3df1424f828f490cf1b1cd00dae7616d001752f4c",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/6c4a38401e3d-signed-in-bootstrap-unavailable.png",
+        "expected": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73",
+        "actual": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/9e9e9278c587-stack.json",
+        "expected": "9e9e9278c587072922b4c339a84e9464f883934bcbec9254a156f82d50d156e8",
+        "actual": "9e9e9278c587072922b4c339a84e9464f883934bcbec9254a156f82d50d156e8",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/4877e06e80fd-verified-mobile.png",
+        "expected": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4",
+        "actual": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/766d7c6c6fd3-receipt.json",
+        "expected": "766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d",
+        "actual": "766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d",
+        "matches": true
+      },
+      {
+        "path": "docs/mcr/evidence/real-email-flow/479c6ba9f0b3-receipt.json",
+        "expected": "479c6ba9f0b3295db19f3ca5c803e6e168a0189765746f5d6d152392b975bae3",
+        "actual": "479c6ba9f0b3295db19f3ca5c803e6e168a0189765746f5d6d152392b975bae3",
+        "matches": true
+      }
+    ]
+  },
+  "operationContracts": [
+    {
+      "operationId": "initConcertUpload",
+      "identicalToOriginal795f46b": true
+    },
+    {
+      "operationId": "putConcertUploadBytes",
+      "identicalToOriginal795f46b": true
+    },
+    {
+      "operationId": "finalizeConcertUpload",
+      "identicalToOriginal795f46b": true
+    },
+    {
+      "operationId": "getConcertMedia",
+      "identicalToOriginal795f46b": true
+    },
+    {
+      "operationId": "readConcertMedia",
+      "identicalToOriginal795f46b": true
+    },
+    {
+      "operationId": "getConcertCommandStatus",
+      "identicalToOriginal795f46b": true
+    },
+    {
+      "operationId": "setConcertIntro",
+      "identicalToOriginal795f46b": true
+    }
+  ],
+  "fe11OriginalReceiptComparisons": [
+    {
+      "path": "docs/mcr/frontend/password-recovery.md",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "fabccf40628568a5a09c54f41a6a1030798d9491885784807adff135acb3572c",
+      "historicalSha256": "fabccf40628568a5a09c54f41a6a1030798d9491885784807adff135acb3572c"
+    },
+    {
+      "path": "frontend/src/app/PublicBoundary.tsx",
+      "matchesHistoricalFE11Receipt": false,
+      "currentSha256": "c7bd2c8e180f0691d03ebd584e6c41b4dfafafd5462e650428cf523d732152d4",
+      "historicalSha256": "c78d59f97d96aca542b2f56ea06932d1d25d9eb7cf77d63bdc67f971f32db7fe"
+    },
+    {
+      "path": "frontend/src/app/__tests__/recovery.test.tsx",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "b796042456a2bac705649850cb88e70c7ff924817463faec599b87e4d1cc512a",
+      "historicalSha256": "b796042456a2bac705649850cb88e70c7ff924817463faec599b87e4d1cc512a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/callback.test.ts",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "4d655e336b7e1370b83be2b15fef34a6734f176076e099e31b3ceb47cfe4de4f",
+      "historicalSha256": "4d655e336b7e1370b83be2b15fef34a6734f176076e099e31b3ceb47cfe4de4f"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/recovery-preview.html",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "1f7a14d167438ea086e2e58d41e0b4072d819cad15e6e06acf60f2888fde21f0",
+      "historicalSha256": "1f7a14d167438ea086e2e58d41e0b4072d819cad15e6e06acf60f2888fde21f0"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/recovery-preview.tsx",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "25d6e85cad41cf4d18aca005ff78c88ce879e3c94567429269063ad12014b3d1",
+      "historicalSha256": "25d6e85cad41cf4d18aca005ff78c88ce879e3c94567429269063ad12014b3d1"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/recovery-browser-smoke.mjs",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "084f6fd5e870679a0b44c7445ede6dd15e88f6723db2b988989711fb7d58b6a1",
+      "historicalSha256": "084f6fd5e870679a0b44c7445ede6dd15e88f6723db2b988989711fb7d58b6a1"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/recovery.test.ts",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "e1fe04a3a7c47e3500545b2c375d8c5e755cb5238706c5c0d68808d7dcc941ca",
+      "historicalSha256": "e1fe04a3a7c47e3500545b2c375d8c5e755cb5238706c5c0d68808d7dcc941ca"
+    },
+    {
+      "path": "frontend/src/features/auth/model/callback.ts",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9",
+      "historicalSha256": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9"
+    },
+    {
+      "path": "frontend/src/features/auth/model/cookie-policy.ts",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+      "historicalSha256": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd"
+    },
+    {
+      "path": "frontend/src/features/auth/model/recovery-contract.ts",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+      "historicalSha256": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd"
+    },
+    {
+      "path": "frontend/src/features/auth/model/recovery.ts",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+      "historicalSha256": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d"
+    },
+    {
+      "path": "frontend/src/features/auth/model/session.ts",
+      "matchesHistoricalFE11Receipt": false,
+      "currentSha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+      "historicalSha256": "0aaea678ef51be2e169ddc14e4eb078c26022bc027a440f9810aab33635fd6c5"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/Callback.tsx",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e",
+      "historicalSha256": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ResetPassword.tsx",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5",
+      "historicalSha256": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/recovery.css",
+      "matchesHistoricalFE11Receipt": true,
+      "currentSha256": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630",
+      "historicalSha256": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630"
+    }
+  ],
+  "fe04OriginalTemporaryNativeProof": {
+    "path": "/tmp/mcr-fe04-evidence/results.json",
+    "existsNow": true,
+    "sha256": "ded875f2ab7abb74030c07dde8c4bf83f86274fe62e6b795b59aab28a10829dc"
+  },
+  "interpretation": {
+    "fe11ChangedReadonlyDependencies": [
+      "frontend/src/app/PublicBoundary.tsx",
+      "frontend/src/features/auth/model/session.ts"
+    ],
+    "newCandidateLiveFlow": "NOT_RUN; historical17-native local email flow not relabeled as current live execution",
+    "unchangedLeafReuse": "All7 FE03 production leaves match0faaf8b; all6 FE11 leaves match1bb71ccc; FE04 controller/preparation/compression/presigned/transport unchanged795f46b, only2 read-only purpose DTOs add BEACON."
+  },
+  "fe11FrozenResetWireComparedTo1bb71ccc": {
+    "paths": {
+      "/api/auth/password/reset/request": true,
+      "/api/auth/password/reset/confirm": true
+    },
+    "schemas": {
+      "PasswordResetRequest": true,
+      "PasswordResetConfirmRequest": true,
+      "PasswordResetResponse": true
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "specification": "MCR_IMPLEMENTATION_PLAN_V2_EN.md:509,510,517",
+  "base": "0177cca15c46bb91dc01204e10e2c9f27a0345fd",
+  "status": "Original task-local client criteria satisfied; final disposition awaits committed normal publication. No new runtime test or whole-project acceptance claimed.",
+  "criteria": [
+    {
+      "task": "FE03",
+      "requirement": "Pure Zod/text/tag/policy extraction separated from old rendering",
+      "source": [
+        "frontend/src/shared/validation/text.ts",
+        "frontend/src/shared/validation/tags.ts",
+        "frontend/src/entities/intro/model/publication-contact.ts",
+        "frontend/src/entities/intro/model/policy.ts"
+      ],
+      "evidence": [
+        "extract-provenance.json",
+        "frontend/src/shared/validation/__tests__/evidence/source-verification.json",
+        "frontend/src/shared/validation/__tests__/evidence/validation-receipt.json"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE03",
+      "requirement": "Canonical UUIDs, exact current operation errors, strict public/private DTOs and half-open age semantics",
+      "source": [
+        "frontend/src/entities/intro/model/contract.ts",
+        "frontend/src/entities/intro/model/errors.ts",
+        "frontend/src/entities/intro/model/age.ts"
+      ],
+      "evidence": [
+        "receipt-reconciliation.json",
+        "frontend/src/entities/intro/model/__tests__/policy.test.ts",
+        "frontend/src/entities/intro/model/__tests__/contract-oracle.py"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE03",
+      "requirement": "Semantic and Unicode consumer fixtures; no old pages/components/styles imports",
+      "source": [
+        "frontend/src/shared/validation/__tests__/text.test.ts",
+        "frontend/src/features/intro/contract.ts",
+        "frontend/src/features/people/contract.ts"
+      ],
+      "evidence": [
+        "docs/mcr/frontend/form-policy-integration.md",
+        "frontend/src/features/intro/__tests__/evidence/unicode-length/report.json",
+        "frontend/src/features/people/__tests__/evidence/unicode-length/validation-receipt.json"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE04",
+      "requirement": "Headless image-only preparation/compression/progress, no video/FFmpeg",
+      "source": [
+        "frontend/src/shared/media/prepare-image.ts",
+        "frontend/src/shared/media/image-compression.worker.ts",
+        "frontend/src/shared/media/image-policy.ts"
+      ],
+      "evidence": [
+        "fe04-original-native-results.json",
+        "frontend/src/features/media/model/__tests__/preparation.test.ts",
+        "docs/mcr/frontend/media-upload.md"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE04",
+      "requirement": "Abort releases worker/request/preview/private state and suppresses late completion",
+      "source": [
+        "frontend/src/features/media/model/upload-controller.ts",
+        "frontend/src/shared/media/prepare-image.ts",
+        "frontend/src/shared/media/preview.ts"
+      ],
+      "evidence": [
+        "fe04-original-native-results.json",
+        "frontend/src/features/media/model/__tests__/controller.test.ts",
+        "docs/mcr/evidence/delivery-2026-11-04/frontend-combined.log"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE04",
+      "requirement": "Explicit upload/finalize; failed, malformed, pending and unknown finalization never READY",
+      "source": [
+        "frontend/src/features/media/model/upload-controller.ts",
+        "frontend/src/shared/media/contract.ts"
+      ],
+      "evidence": [
+        "frontend/src/features/media/model/__tests__/controller.test.ts",
+        "docs/mcr/evidence/delivery-2026-11-04/frontend-combined.log"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE04",
+      "requirement": "Safe explicit local retry and exact original receipt recovery without mutation replay",
+      "source": [
+        "frontend/src/features/media/model/upload-controller.ts",
+        "frontend/src/shared/media/transport.ts"
+      ],
+      "evidence": [
+        "frontend/src/features/media/model/__tests__/controller.test.ts",
+        "frontend/src/features/media/model/__tests__/transport.test.ts",
+        "docs/mcr/frontend/media-upload.md"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE04",
+      "requirement": "No credentials on presigned PUT; canonical authenticated same-origin C04 binary upload stays separate",
+      "source": [
+        "frontend/src/shared/media/presigned-upload.ts",
+        "frontend/src/shared/media/transport.ts",
+        "frontend/src/shared/api/http.ts"
+      ],
+      "evidence": [
+        "fe04-original-native-results.json",
+        "historical-proof-custody.json",
+        "frontend/src/features/media/model/__tests__/transport.test.ts"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE11",
+      "requirement": "Reset request/confirm use canonical Auth, exact wire and neutral unknown-email response",
+      "source": [
+        "frontend/src/features/auth/model/recovery.ts",
+        "frontend/src/features/auth/model/recovery-contract.ts",
+        "frontend/src/features/auth/ui/ResetPassword.tsx"
+      ],
+      "evidence": [
+        "docs/mcr/evidence/password-recovery/tests.log",
+        "docs/mcr/evidence/password-recovery/browser-browser-results.json",
+        "docs/mcr/evidence/real-email-flow/7cdc75f2bada-report.json"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE11",
+      "requirement": "Expired/invalid/used token handling, safe fragment intake and late/privacy cancellation",
+      "source": [
+        "frontend/src/features/auth/model/callback.ts",
+        "frontend/src/features/auth/model/recovery.ts",
+        "frontend/src/features/auth/ui/ResetPassword.tsx"
+      ],
+      "evidence": [
+        "frontend/src/features/auth/__tests__/recovery.test.ts",
+        "frontend/src/features/auth/__tests__/callback.test.ts",
+        "docs/mcr/evidence/password-recovery/browser-browser-results.json"
+      ],
+      "disposition": "SATISFIED"
+    },
+    {
+      "task": "FE11",
+      "requirement": "Hostile return targets rejected and denial returns safely without importing credentials or enabling unsupported OAuth",
+      "source": [
+        "frontend/src/features/auth/model/callback.ts",
+        "frontend/src/features/auth/ui/Callback.tsx",
+        "frontend/src/app/routes.ts"
+      ],
+      "evidence": [
+        "historical-proof-custody.json",
+        "frontend/src/features/auth/__tests__/callback.test.ts",
+        "docs/mcr/evidence/password-recovery/browser-browser-results.json"
+      ],
+      "disposition": "SATISFIED"
+    }
+  ],
+  "uncoveredImplementationGaps": [],
+  "publication": "PENDING Root153 canonical receipt",
+  "externalLimits": [
+    "No current whole-stack/live production rerun",
+    "Production legal/eligibility publication, TLS/provider credentials and EX04 are not synthesized",
+    "Real OS IME/physical devices/live media/release gates remain separate",
+    "Historical intermittent enrollment Request-signal assertion is retained; no claim of cause or resolution"
+  ]
+}

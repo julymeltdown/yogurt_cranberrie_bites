@@ -1,0 +1,85 @@
+{
+  "scope": "Original qualification artifacts remain immutable and keep historical limitations. No new test result is inferred.",
+  "references": [
+    {
+      "path": "frontend/src/shared/validation/__tests__/evidence/validation-receipt.json",
+      "sha256": "ba2f5ca1c1e2b1c63c70755ca1d76f751e36b6fd9c6c3f9250165d086438aa53",
+      "gitBlob": "8e655be5f58c9ddee63e9ab9f58c59e167eb2b68"
+    },
+    {
+      "path": "frontend/src/shared/validation/__tests__/evidence/source-verification.json",
+      "sha256": "200bdb45e05c623a417458fd0fa62016ba08a51957445b927673ca8ea0257b1d",
+      "gitBlob": "133a2c7370ead636bb892b61a5d3f9c106fe4352"
+    },
+    {
+      "path": "frontend/src/shared/validation/__tests__/evidence/allowlist-proposal.json",
+      "sha256": "b9d28817a4a99bd28b7f7400a1bf15a33da18caba82ef88b60b45f7e0d124647",
+      "gitBlob": "383261cd73a4775192391c1ebd6f600629b08988"
+    },
+    {
+      "path": "frontend/src/features/intro/__tests__/evidence/unicode-length/report.json",
+      "sha256": "57f6fa40a07471b41d410e95f8048d61fc334d8b86763501e9ef17e54dcb12ff",
+      "gitBlob": "5c8d4c859e7db65067e42ab3664096c603eceb52"
+    },
+    {
+      "path": "frontend/src/features/people/__tests__/evidence/unicode-length/validation-receipt.json",
+      "sha256": "aa4ae9cef0cc1ad16138b10510ec7f37b2eaf20578d176f8a40e94df4bdbfbf7",
+      "gitBlob": "b5416020101c0a572d16a50c060412239cc594e0"
+    },
+    {
+      "path": "frontend/src/features/people/__tests__/evidence/unicode-length/report.json",
+      "sha256": "c333a0e54d487ac9531d2459790ac7d1347a6b83accf7f0dd0625b097658cd28",
+      "gitBlob": "a71dd5779b4bab7d551dbed0fb16893eb813d3f6"
+    },
+    {
+      "path": "docs/mcr/frontend/form-policy-integration.md",
+      "sha256": "34f41565d6d539f21376d396cf6925fe47477b5e3cff3d6c815735d2963f50cd",
+      "gitBlob": "b6f3f4fc45924847171ad3efc36381805d5e0254"
+    },
+    {
+      "path": "docs/mcr/frontend/media-upload.md",
+      "sha256": "76655925937ac7a0afd3db6fe3fd8720d58b32c8d5fe6ec78a3b6e9328678df7",
+      "gitBlob": "1eb928ab26aa439430acf559e379ed6618faa1e2"
+    },
+    {
+      "path": "docs/mcr/evidence/delivery-2026-11-04/checkpoint.md",
+      "sha256": "d3129bd5cd984d441b1472e318a752db67e212c0038e1ff8a2fa188d3a94c363",
+      "gitBlob": "0791518714861197b0022c89431dded22e08b8c9"
+    },
+    {
+      "path": "docs/mcr/evidence/delivery-2026-11-04/frontend-combined.log",
+      "sha256": "ae2e4093be7f17673430ea9c3e74f68bc5a3c011b41fc7664e9cea97ce1d4564",
+      "gitBlob": "b7ac8fffd4468b5928e1f1a4713b952e27fbe699"
+    },
+    {
+      "path": "docs/mcr/evidence/password-recovery/hashes.json",
+      "sha256": "890bea7fc3b3a9180310bf0f9d4cd35ec090543caf603650f8bc8bc413b833c9",
+      "gitBlob": "50f0fcac89a672751b353c9dc16d5243f2f2b838"
+    },
+    {
+      "path": "docs/mcr/evidence/password-recovery/tests.log",
+      "sha256": "db62e3ee98102fd57cb088d29707471a5f864aa6dadb9f72d51a17380a921679",
+      "gitBlob": "9fd246ad75c1c0d3afa3a01f00e8ff5f39121d4f"
+    },
+    {
+      "path": "docs/mcr/evidence/password-recovery/browser-browser-results.json",
+      "sha256": "36437f8b4330c77455bb98bd9e4c94f850931f921004c60a82062aaea4cab305",
+      "gitBlob": "59dc0b9f36ec3ea7bc1447661709c475cdc21418"
+    },
+    {
+      "path": "docs/mcr/evidence/real-email-flow/index.json",
+      "sha256": "3d25fa94c8607331e3e2bbae3d1777724340d4538ce6168f4e6171adfcf12c1b",
+      "gitBlob": "9641b2cd4a3720cb311118c54f4f7416d8b008eb"
+    },
+    {
+      "path": "docs/mcr/evidence/real-email-flow/e482f0173dec-receipt.json",
+      "sha256": "e482f0173dece132284cfdb0e36834e02fd8d46772a00cc37a19e1a1466d015a",
+      "gitBlob": "79fcd97eafb4d248c80be14f098ddf30e1d12782"
+    },
+    {
+      "path": "docs/mcr/evidence/real-email-flow/7cdc75f2bada-report.json",
+      "sha256": "7cdc75f2bada1f934f6eb3bfe81df2104fe3cc667268c8f5c790b1070aadfc6d",
+      "gitBlob": "6e5ab2504f32360738cdb973282d8093bd755264"
+    }
+  ]
+}
