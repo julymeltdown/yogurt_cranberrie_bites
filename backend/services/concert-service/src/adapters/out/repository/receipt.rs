@@ -24,6 +24,20 @@ pub trait CommandProducer: Send + Sync {
         scope: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError>;
+    /// Called only after verified safe projection, on the actual transaction
+    /// immediately before commit, including a verified idempotency replay.
+    /// Historical default behavior supplies NO witness or settlement proof.
+    /// A producer requiring committed proof must persist its own same-TX
+    /// completion witness here (or in apply for a successful mutation).
+    async fn completed(
+        &self,
+        _connection: &mut PgConnection,
+        _scope: Scope,
+        _target: Uuid,
+        _receipt: &SafeReceipt,
+    ) -> Result<(), CommandError> {
+        Ok(())
+    }
 }
 #[derive(Clone)]
 pub struct PgCommandRepository {
@@ -78,6 +92,7 @@ impl PgCommandRepository {
             if value.state == ReceiptState::Retired {
                 return Err(CommandError::Expired);
             }
+            producer.completed(&mut tx, scope, target, &value).await?;
             tx.commit().await.map_err(unavailable)?;
             return Ok(value);
         }
@@ -146,6 +161,7 @@ impl PgCommandRepository {
         let row=sqlx::query("update public.concert_command_receipts set state=$2,resource_id=$3,resource_revision=$4,result_status=$5,failure_reason=$6 where receipt_id=$1 returning *")
             .bind(id).bind(state.as_str()).bind(reference.map(|r|r.resource)).bind(reference.map(|r|r.revision)).bind(status).bind(failure.map(|f|f.as_str())).fetch_one(&mut *tx).await.map_err(unavailable)?;
         let receipt = project(row, scope)?;
+        producer.completed(&mut tx, scope, target, &receipt).await?;
         tx.commit().await.map_err(unavailable)?;
         Ok(receipt)
     }
