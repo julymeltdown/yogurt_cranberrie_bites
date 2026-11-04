@@ -29,9 +29,11 @@ unserialized failed roots finished. This differs from the earlier incident.
 
 Expiry-triggered refresh was NOT_RUN: a fresh login's actual 900-second access
 lifetime exceeded the remaining window, and neither a one-shot 401 control nor
-an App reload-resume path existed. No clocks, TTLs or tokens were changed. A
-separate finite allocation must cover genuine access expiry and refresh after
-the actual `/me` availability prerequisite is resolved.
+an App reload-resume path existed. No clocks, TTLs or tokens were changed. The
+NOT_RUN expiry observation is informational and does not block original IN01.
+There is no required 900-second duration, automatic renewal, proactive refresh
+or cookie/reload restoration. The current original blocker is `/me` availability
+and the resulting failed customization.
 
 The browser fully released its resources at 07:31:23Z. The backend ended normally
 at its original expiry, 07:36:38.785173Z, with exit zero, graceful Concert stop,
@@ -40,6 +42,26 @@ Maximum sampled whole additional allocation was 143,589,376 bytes below the
 1.5 GiB bound. No target was accessed, prepared transaction manually settled,
 lease extended or retry silently launched. Cleanup does not accept the failed
 customization flow or prove recovery.
+
+## Participant read-lock diagnosis
+
+Three [bounded native diagnostic runs](root-c03-me-diagnostics.json) reused the
+qualified source/runtime inputs after the failed browser attempt. All 44 actual
+HTTP reads returned 200: 14 without World connections, 15 with two real World
+connections and normal movement, and 15 while both connections sent repeated
+zero-axis inputs. The last run targeted 15 Hz but achieved 11.268 Hz per actor;
+it does not qualify exact 15 Hz behavior. All three workflows released normally
+with zero prepared transactions, delivered roots and owned cleanup PASS.
+
+Without World connections, header latency was 82–303 ms. With World connections,
+it increased to 675–924 ms. Closed query-class and blocker sampling identified
+161 lock-wait observations of read-only Participant queries requesting
+`FOR UPDATE` on `concert_events`, blocked by actual World transactions holding
+share locks across event, participant, admission, avatar and membership rows.
+This is observed unnecessary contention, not reproduction or resolution of the
+original browser 504. A persistence-only shared-lock regression and repair are
+being prepared; mutations and the World revocation fences retain their locking
+requirements. No deadline widening or frontend decoder change is justified.
 
 ## Current qualified checkpoint
 

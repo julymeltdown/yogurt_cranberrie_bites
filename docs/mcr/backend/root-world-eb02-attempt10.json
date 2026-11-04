@@ -123,7 +123,7 @@
     "runtime_extension": "NONE",
     "prepared_rollback": "NONE",
     "expiry_driven_refresh": "NOT_RUN; live Auth defaults900s, no401fault controller",
-    "future_refresh_requirement": "Separate fresh finite allocation long enough for genuine900s access expiry after actual/me504 prerequisite is resolved; no shorterTTL/synthetic401/clock change"
+    "expiry_observation": "Informational NOT_RUN only; no mandatory900s duration or newly successful automatic renewal. Existing expiry behavior is unchanged; original IN01 blocker is actual/me504/customization."
   },
   "guard_sha256": "30a244f4da61e909e90b0e47b528fe840653b7c4784f6b15c079a71e2175f228",
   "created_at": "2026-11-04T07:27:51.261356+00:00",
