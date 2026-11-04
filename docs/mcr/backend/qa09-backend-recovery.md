@@ -1,8 +1,10 @@
 # QA09-BE recovery orchestration and owner observations
 
 Status: IN_PROGRESS. Twenty source regressions and the fresh physical recovery,
-owned-restart and read-only SQL supporting qualification passed. Normal Root
-publication/readback remain pending. Original QA09 remains open.
+owned-restart and read-only SQL supporting qualification passed. Root published
+the supporting delivery through `e966739bb03c577a9a8549b8fc562927e96e3ab9`;
+independent remote ancestry and postimage verification passed. Original QA09
+remains open.
 
 ## Assignment and original criteria
 
@@ -257,3 +259,26 @@ consumer-bound outbox replay, pending/committed pickup, deletion fencing and
 privileged partial closure on the real current candidate. Those requirements
 are not removed by this supporting delivery. Normal Root publication and own
 fresh ancestry/postimage proof are separate from those outstanding product gates.
+
+## Published supporting delivery
+
+Root normally published the four source commits without a separate approval
+stage. Independent fetched-master and `ls-remote` readback agreed on
+`cacf2503c1e62643d5af5268413103d1be12b21d`. All delivered commits were ancestors
+of that tip, every source/delivery pair had the same stable patch ID, and all
+three delivered file postimages matched source handoff
+`b57f2a72fb96f7b808f9f617220ba381ce315926`. Both Python scripts also matched
+the exact tested source `73636ad86f3ba42dbf939a6487e557b97d89b5c0`.
+
+| Source commit | Published commit |
+|---|---|
+| `7b59208dac84fa033f7315f2c399ff97b331dc58` | `b0851d5530efbe495f93d35a89f1a74852f79609` |
+| `320eb6c5bff37445f29477fddd050a5d8697aa9a` | `38cc31f85ac13d1693cc18a573342537ab86937c` |
+| `73636ad86f3ba42dbf939a6487e557b97d89b5c0` | `d9db21df5f3c46451a71fa4765cdf2c9a2ff8512` |
+| `b57f2a72fb96f7b808f9f617220ba381ce315926` | `e966739bb03c577a9a8549b8fc562927e96e3ab9` |
+
+The private `published-readback.json` retains exact patch IDs and postimage
+hashes. Publication closes the supporting handoff only. The persistent QA09-BE
+goal remains active while original application/business recovery requirements
+remain unmet. No native resources are held, and no released allocation permits
+another native run. This publication note changes documentation only.
