@@ -1,5 +1,6 @@
 //! Request-bound uploader-only media runtime. No public/link authority is implied.
 //! Production composition must supply a qualified canonical Auth owner fence.
+pub mod canonical;
 pub mod context;
 pub mod settlement;
 mod wire;
@@ -290,6 +291,22 @@ impl BoundOwnerAuthority {
 }
 #[async_trait]
 impl MediaAuthority for BoundOwnerAuthority {
+    async fn prelock_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        if owner != self.binding.identity.actor || target.is_some() {
+            return Err(CommandError::Denied);
+        }
+        if self.context_in(c).await? != context {
+            return Err(CommandError::Denied);
+        }
+        self.guard.authorize_in(c, &self.binding).await?;
+        self.binding.check_current()
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,

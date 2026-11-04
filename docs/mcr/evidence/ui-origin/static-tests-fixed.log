@@ -1,0 +1,22 @@
+✔ clean original code and prose containing library/import words pass (11.184417ms)
+✔ renamed byte-identical legacy UI fails (4.570667ms)
+✔ copied asset bytes under public or tests fail regardless of extension (5.464ms)
+✔ static prohibited dependency and legacy namespace import forms fail (19.415084ms)
+✔ CSS and HTML loading references fail (4.183666ms)
+✔ prohibited manifest dependency fails even without a source import (4.046875ms)
+✔ modified allowlist cannot approve a legacy visual source (4.4055ms)
+✔ candidate bytes require reviewed source revision/hash, destination hash, and tests (13.809792ms)
+✔ visual destination hash cannot be approved using a headless source (3.247375ms)
+✔ inventory hash, exact schema versions, source revision and counts fail closed (8.848875ms)
+✔ dependencies and build outputs are excluded; source symlinks fail closed (5.16525ms)
+✔ no frontend content reports NOT_RUN rather than a passing application check (3.815ms)
+✔ portable CLI --root, invalid flags, and missing inventory (204.779292ms)
+✔ shipped policy pins the audited inventory and only the four reviewed headless extracts (3.897458ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 356.551125

@@ -4,17 +4,17 @@
   "increment": "MOCK_READY",
   "goal": "ACTIVE; original live requirements unfinished",
   "assignmentBase": "22f9771544d9c0d09ac5819e77377e7524fad0d0",
-  "sourceCandidate": "56f514f247e6b2d6b769ecca1aa84b5ef2f057e2",
+  "sourceCandidate": "e251a5af2845b990dce07820fd4971422d5fb80f",
   "compilerHarnessCommit": "5c3b7499",
-  "remoteParent": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
-  "peerReconciliationHead": "56f514f247e6b2d6b769ecca1aa84b5ef2f057e2",
-  "qualifiedSourcePinsAfterPeerMerge": "79 SHA-256 pins current; affected native and strict-type checks rerun after reference-scene-overview.ts peer change",
+  "remoteParent": "15e7bd8abf02e5bf0f3a782914826b0ac613f8d2",
+  "peerReconciliationHead": "e251a5af2845b990dce07820fd4971422d5fb80f",
+  "qualifiedSourcePinsAfterPeerMerge": "All108 current SHA-256 pins verified; expanded native matrix and strict transitive types pass after peer merge",
   "commands": [
     {
       "command": "NODE frontend/e2e/privacy/run.mjs",
       "exitCode": 0,
       "log": "native.txt",
-      "result": "28 social/client PASS;7 WS UNSUPPORTED;6 projections;175 domain cells=56 fixturePASS/119UNSUPPORTED;zero actualAPI calls/page errors"
+      "result": "28 social/client PASS;7WS unsupported;175domain cells=112fixturePASS/63UNSUPPORTED;6projections;actual evidence/recipient/beacon lifetimes;zero actualAPI calls/pageerrors"
     },
     {
       "command": "NODE --test frontend/e2e/privacy/live-gate.test.mjs",
@@ -49,7 +49,7 @@
         "python3",
         "scripts/mcr/check-boundaries.py",
         "--base",
-        "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+        "15e7bd8abf02e5bf0f3a782914826b0ac613f8d2",
         "--lane",
         "frontend",
         "--allow-doc",
@@ -59,24 +59,12 @@
         "--allow-doc",
         "docs/mcr/evidence/privacy-frontend/fixture-report.json",
         "--allow-doc",
-        "docs/mcr/evidence/privacy-frontend/gate-tests.txt",
-        "--allow-doc",
-        "docs/mcr/evidence/privacy-frontend/lint.txt",
-        "--allow-doc",
-        "docs/mcr/evidence/privacy-frontend/live-refusal.txt",
-        "--allow-doc",
-        "docs/mcr/evidence/privacy-frontend/live-report.json",
-        "--allow-doc",
         "docs/mcr/evidence/privacy-frontend/native.txt",
-        "--allow-doc",
-        "docs/mcr/evidence/privacy-frontend/plan.txt",
-        "--allow-doc",
-        "docs/mcr/evidence/privacy-frontend/types.txt",
         "--allow-doc",
         "frontend/e2e/privacy/README.md"
       ],
       "exitCode": 0,
-      "result": "BOUNDARIES PASS: frontend, 21 changes vs c610fbf9d1c9afe0508c236df0e5e69a36a22f1c; manual assignment/import review required"
+      "result": "BOUNDARIES PASS: frontend, 10 changes vs 15e7bd8abf02e5bf0f3a782914826b0ac613f8d2; manual assignment/import review required"
     }
   ],
   "cleanup": {
@@ -89,24 +77,13 @@
     "docs/mcr/evidence/privacy-frontend/README.md",
     "docs/mcr/evidence/privacy-frontend/checks.json",
     "docs/mcr/evidence/privacy-frontend/fixture-report.json",
-    "docs/mcr/evidence/privacy-frontend/gate-tests.txt",
-    "docs/mcr/evidence/privacy-frontend/lint.txt",
-    "docs/mcr/evidence/privacy-frontend/live-refusal.txt",
-    "docs/mcr/evidence/privacy-frontend/live-report.json",
     "docs/mcr/evidence/privacy-frontend/native.txt",
-    "docs/mcr/evidence/privacy-frontend/plan.txt",
-    "docs/mcr/evidence/privacy-frontend/types.txt",
     "frontend/e2e/privacy/README.md",
-    "frontend/e2e/privacy/browser.ts",
+    "frontend/e2e/privacy/beacon-fixtures.ts",
+    "frontend/e2e/privacy/evidence-fixtures.ts",
     "frontend/e2e/privacy/fixtures.ts",
-    "frontend/e2e/privacy/index.html",
-    "frontend/e2e/privacy/live-gate.mjs",
-    "frontend/e2e/privacy/live-gate.test.mjs",
-    "frontend/e2e/privacy/oracle.ts",
-    "frontend/e2e/privacy/run.mjs",
-    "frontend/e2e/privacy/runtime.mjs",
-    "frontend/e2e/privacy/schema.mjs",
-    "frontend/e2e/privacy/typecheck.mjs"
+    "frontend/e2e/privacy/recipient-fixtures.ts",
+    "frontend/e2e/privacy/run.mjs"
   ],
   "manualImportBoundary": "Only published frontend and contract/fixture imports; no backend implementation import",
   "remainingInputOwners": {
@@ -121,22 +98,40 @@
     "IN03 inactive"
   ],
   "harnessPins": {
-    "frontend/e2e/privacy/README.md": "6d244fb60e359dbaea99494f05ee23c1b43886bbf18946d507b586ba22171bd4",
+    "frontend/e2e/privacy/README.md": "79228fb961e244d032011f941ccbf21bd0577c91eb4046f57960ff02217cc3c8",
+    "frontend/e2e/privacy/beacon-fixtures.ts": "fa0f345f0d8f69b511097ab487f945ae8e078c35812a104be8a11882d3559f96",
     "frontend/e2e/privacy/browser.ts": "71acb215ffc792ee2d1828e271d69311f33003a48e24275f45790801e97c6796",
-    "frontend/e2e/privacy/fixtures.ts": "9698854362381ab51cae2e00c58252a5c395419b8fd0b9657fbfc6bc1c2cdef9",
+    "frontend/e2e/privacy/evidence-fixtures.ts": "e280fed40b5c3bba40f357470a9a0cd56d9d71a90bb8d59679a8931c1c20612d",
+    "frontend/e2e/privacy/fixtures.ts": "592ded58f8aec169255ff053b6f2e17f7c62d2d6bc0cc6a989e51277b976cfb8",
     "frontend/e2e/privacy/index.html": "7a995a72cf2d61cde1e5ea30f7096adf2e6b1ddbadf75f3dcabb6b0e89517168",
     "frontend/e2e/privacy/live-gate.mjs": "64c2437ad0a72cd3efb277564be747467b1ff87118a8f54263d21193e9914267",
     "frontend/e2e/privacy/live-gate.test.mjs": "0777d7d370d1a033f38bf3e5a6bbec977d5fe13b16ed932b3f3234eed2cdcf92",
     "frontend/e2e/privacy/oracle.ts": "27c6ed83bc2eeb54c0520abb9e8c4a0099f3c3dbec2ffc9efb4403a83e729344",
-    "frontend/e2e/privacy/run.mjs": "a11c4556a780ce3b9243af9af453265c8b3664e17c21123f72c1786d4df6ead4",
+    "frontend/e2e/privacy/recipient-fixtures.ts": "25a163dc100599caaf4d5188368d1045e83f5b850db59bbdfa0d637e55e96cb2",
+    "frontend/e2e/privacy/run.mjs": "c2d4bc6090e2c356b8604a6f1c63d9acb0c0b28b2bd4d1d3000803f710a7dafb",
     "frontend/e2e/privacy/runtime.mjs": "2d558ddc7877be223f9863b857bf17d02ec37451b237863af6614bdfd86ace41",
     "frontend/e2e/privacy/schema.mjs": "1a4d147a0c349180e22cd323bfde6109eaf4ab7cf342e2a8ecf8c421e75b7ced",
     "frontend/e2e/privacy/typecheck.mjs": "2c9873d04c726613d8edfd5b78570b4cfdf9fb73cae36332d764e9e70b204b89"
   },
   "authoredWhitespaceExitCode": 0,
+  "continuation": {
+    "previousGoalTurn": "PROGRESS: published original QA04 scaffold cb9abce4",
+    "thisGoalTurn": "PROGRESS: actual moderation evidence, recipient/pickup and beacon privacy lifetime implementation",
+    "sourceCommits": [
+      "43e657b1",
+      "e225f15f"
+    ],
+    "remainingCells": {
+      "allDomainWS": 35,
+      "rawPrivateClaimListDetailMutation": 21,
+      "beaconList": 7
+    },
+    "liveRuntimeHandoff": "Not published in merged candidate; ProductRoot constructor qualification is not actual seven-principal public service handoff",
+    "originalGoal": "ACTIVE; no completion claim"
+  },
   "publicationRetry": {
-    "reason": "non-fast-forward preserved concurrent peers",
-    "mergedRemote": "bd103c101b07e1df30c424cbc1e8a3ea62ca5315",
-    "qualifiedSourcePins": "all unchanged; no repeated runtime needed"
+    "reason": "non-fast-forward; serial peer-preserving merge",
+    "mergedRemote": "0c1f81c7d8f709daa2728ab4829e0d17ea9234fe",
+    "qualifiedSourcePins": "all108 unchanged; no new runtime claim"
   }
 }

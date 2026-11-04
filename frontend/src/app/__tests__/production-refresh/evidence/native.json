@@ -1,0 +1,1215 @@
+{
+  "status": "PASS",
+  "qualification": "ACTUAL_PRODUCTION_ENTRY_AND_CONTROLLER_WITH_DETERMINISTIC_HTTP_FIXTURES",
+  "candidate": "cb9abce48d78227bbdedf7ea59ce95e9e0270c4a",
+  "backendProducer": "0a8c422645458c9397af9289e15089ee3f9cb0ad",
+  "backendNativeReceiptSha256": "e46cac5739809af1ead93d707efa699b2790a180d85346e771d82911fc439957",
+  "sourcePins": {
+    "frontend/src/main.tsx": "9c5bc96f45a5e8ce3e3c42536ce990c4cf9c2c2c5f2a9d35b524f89e76f8e715",
+    "frontend/src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "frontend/src/features/auth/model/cookie-policy.ts": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/app/__tests__/production-refresh/bridge.ts": "94f3b227f6796c3ca399b829c3de03b860abea3048ffd9fa12ecf6d32332432f",
+    "frontend/src/app/__tests__/production-refresh/native.mjs": "41bffe5b74c5e35cdb28090551c115cdbd45d487a2850960c80f1294b3db021a",
+    "contracts/fixtures/core/auth-success.json": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+    "contracts/fixtures/core/auth-capabilities-disabled.json": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb",
+    "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+    "docs/mcr/backend/browser-refresh-qualification.md": "ee2d2053283f04fd649fc9bf52cfef5868a8206de3d42206c7d873ee013d066f",
+    "backend/docs/api/browser-refresh-contract.md": "52934a6baeff9e6403d1ea5725f8e30b53861458c40ade37c6f8af41f787c79f"
+  },
+  "checks": [
+    {
+      "name": "actual main concurrent401 single-flight and delayed old-token401",
+      "status": "PASS",
+      "readReplays": 3,
+      "identityGenerationPreserved": true,
+      "server": {
+        "refresh": 1,
+        "login": 1,
+        "logout": 0,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 3,
+        "newReads": 3,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "refresh",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "ready",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "none"
+          },
+          "generation": 2,
+          "tokenVersion": 1,
+          "authenticated": true,
+          "credentialPresent": true,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 1,
+            "observed": true,
+            "draft": true,
+            "subscriptions": 1,
+            "oldSignalAborted": false,
+            "oldScopeCurrent": true
+          },
+          "results": {
+            "first": {
+              "ok": true
+            },
+            "second": {
+              "ok": true
+            },
+            "delayed": {
+              "ok": true
+            }
+          },
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/qualification/origin",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/qualification/origin",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/second",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/delayed",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/second",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/delayed",
+              "method": "GET",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "mutation401 never refreshes or replays",
+      "status": "PASS",
+      "server": {
+        "refresh": 0,
+        "login": 1,
+        "logout": 0,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 0,
+        "newReads": 0,
+        "mutation": 1,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": "expired",
+            "logout": "none"
+          },
+          "generation": 3,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {
+            "mutation": {
+              "ok": false,
+              "kind": "http",
+              "status": 401
+            }
+          },
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/mutation",
+              "method": "PATCH",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "failed renewal 401 clears private authority without app retry",
+      "status": "PASS",
+      "applicationRefreshFetches": 1,
+      "transportAttempts": 1,
+      "nativeBackendRotation": "NOT_RUN in this frontend fixture",
+      "server": {
+        "refresh": 1,
+        "login": 1,
+        "logout": 1,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 2,
+        "newReads": 0,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "refresh",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "logout",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "confirmed"
+          },
+          "generation": 4,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {
+            "first": {
+              "ok": false,
+              "kind": "http",
+              "status": 401
+            },
+            "second": {
+              "ok": false,
+              "kind": "http",
+              "status": 401
+            },
+            "afterFailure": {
+              "ok": false,
+              "kind": "authentication-required"
+            },
+            "logout": {
+              "ok": true
+            }
+          },
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/second",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/logout",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "failed renewal 409 clears private authority without app retry",
+      "status": "PASS",
+      "applicationRefreshFetches": 1,
+      "transportAttempts": 1,
+      "nativeBackendRotation": "NOT_RUN in this frontend fixture",
+      "server": {
+        "refresh": 1,
+        "login": 1,
+        "logout": 1,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 2,
+        "newReads": 0,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "refresh",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "logout",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "confirmed"
+          },
+          "generation": 4,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {
+            "first": {
+              "ok": false,
+              "kind": "http",
+              "status": 409,
+              "uncertain": true
+            },
+            "second": {
+              "ok": false,
+              "kind": "http",
+              "status": 409,
+              "uncertain": true
+            },
+            "afterFailure": {
+              "ok": false,
+              "kind": "authentication-required"
+            },
+            "logout": {
+              "ok": true
+            }
+          },
+          "route": "/login"
+        },
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "error",
+            "emailEnabled": false,
+            "notice": "changed",
+            "logout": "none"
+          },
+          "generation": 2,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": false,
+            "oldScopeCurrent": false
+          },
+          "results": {},
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/second",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/logout",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "uncertain"
+            },
+            {
+              "version": 1,
+              "type": "uncertain"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        },
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "failed renewal malformed clears private authority without app retry",
+      "status": "PASS",
+      "applicationRefreshFetches": 1,
+      "transportAttempts": 1,
+      "nativeBackendRotation": "NOT_RUN in this frontend fixture",
+      "server": {
+        "refresh": 1,
+        "login": 1,
+        "logout": 1,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 2,
+        "newReads": 0,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "refresh",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "logout",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "confirmed"
+          },
+          "generation": 4,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {
+            "first": {
+              "ok": false,
+              "kind": "invalid-response",
+              "uncertain": true
+            },
+            "second": {
+              "ok": false,
+              "kind": "invalid-response",
+              "uncertain": true
+            },
+            "afterFailure": {
+              "ok": false,
+              "kind": "authentication-required"
+            },
+            "logout": {
+              "ok": true
+            }
+          },
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/second",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/logout",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "uncertain"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "failed renewal eof clears private authority without app retry",
+      "status": "PASS",
+      "applicationRefreshFetches": 1,
+      "transportAttempts": 1,
+      "nativeBackendRotation": "NOT_RUN in this frontend fixture",
+      "server": {
+        "refresh": 1,
+        "login": 1,
+        "logout": 1,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 2,
+        "newReads": 0,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "refresh",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "logout",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "confirmed"
+          },
+          "generation": 4,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {
+            "first": {
+              "ok": false,
+              "kind": "network",
+              "uncertain": true
+            },
+            "second": {
+              "ok": false,
+              "kind": "network",
+              "uncertain": true
+            },
+            "afterFailure": {
+              "ok": false,
+              "kind": "authentication-required"
+            },
+            "logout": {
+              "ok": true
+            }
+          },
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/second",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/logout",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "uncertain"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "logout immediately clears private state and fences held refresh",
+      "status": "PASS",
+      "server": {
+        "refresh": 1,
+        "login": 1,
+        "logout": 1,
+        "active": 0,
+        "peak": 2,
+        "oldReads": 1,
+        "newReads": 0,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "refresh",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "logout",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "confirmed"
+          },
+          "generation": 3,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {
+            "first": {
+              "ok": false,
+              "kind": "session-changed",
+              "uncertain": true
+            },
+            "logout": {
+              "ok": true
+            }
+          },
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/qualification/first",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/logout",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "uncertain"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    },
+    {
+      "name": "actual browser cookie-policy serializes writers and peer revocation scrubs private state",
+      "status": "PASS",
+      "server": {
+        "refresh": 0,
+        "login": 3,
+        "logout": 0,
+        "active": 0,
+        "peak": 1,
+        "oldReads": 0,
+        "newReads": 0,
+        "mutation": 0,
+        "intent": true,
+        "origin": true,
+        "originHeaders": [
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          },
+          {
+            "operation": "login",
+            "origin": "same-origin"
+          }
+        ],
+        "automaticCookie": true,
+        "noRefreshBearer": true
+      },
+      "snapshots": [
+        {
+          "auth": {
+            "readiness": "ready",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": null,
+            "logout": "none"
+          },
+          "generation": 5,
+          "tokenVersion": 0,
+          "authenticated": true,
+          "credentialPresent": true,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": false,
+            "oldScopeCurrent": false
+          },
+          "results": {},
+          "route": "/login"
+        },
+        {
+          "auth": {
+            "readiness": "anonymous",
+            "pending": null,
+            "capabilities": "ready",
+            "emailEnabled": true,
+            "notice": "changed",
+            "logout": "none"
+          },
+          "generation": 4,
+          "tokenVersion": 0,
+          "authenticated": false,
+          "credentialPresent": false,
+          "canonicalPorts": true,
+          "private": {
+            "queries": 0,
+            "observed": false,
+            "draft": false,
+            "subscriptions": 0,
+            "oldSignalAborted": true,
+            "oldScopeCurrent": false
+          },
+          "results": {},
+          "route": "/login"
+        }
+      ],
+      "transports": [
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        },
+        {
+          "fetches": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "credentials": "same-origin"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "credentials": "same-origin"
+            }
+          ],
+          "messages": [
+            {
+              "version": 1,
+              "type": "hello"
+            },
+            {
+              "version": 1,
+              "type": "revoke"
+            }
+          ],
+          "channels": 1,
+          "setCookieVisible": false,
+          "storage": 0
+        }
+      ],
+      "cleanup": {
+        "channels": 0,
+        "heldLocks": 0,
+        "pendingLocks": 0
+      }
+    }
+  ],
+  "limits": [
+    "Frontend HTTP responses are deterministic fixtures, not native backend responses",
+    "Actual producer evidence is the separately published BE03 qualification at the exact pin",
+    "No deployed cookie-domain/TLS, OAuth, Safari, physical-device or world/multiuser acceptance"
+  ],
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "mainTransform": {
+    "originalSha256": "9c5bc96f45a5e8ce3e3c42536ce990c4cf9c2c2c5f2a9d35b524f89e76f8e715",
+    "transformedSha256": "8f51db4bb43c05b95b1802f6998d8a9a6b81145f707496bf992f03e8f63d8950",
+    "operation": "Append test-only inspection of actual main closure and equivalent teardown; factory/options unmodified"
+  },
+  "browserOriginPolicy": [
+    {
+      "referrerPolicy": "no-referrer",
+      "status": 200,
+      "origin": "same-origin"
+    },
+    {
+      "referrerPolicy": "same-origin",
+      "status": 200,
+      "origin": "same-origin"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-11-04T01:28:38.583Z",
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryCertificateRemoved": true
+  }
+}

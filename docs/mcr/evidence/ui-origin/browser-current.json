@@ -1,0 +1,1100 @@
+{
+  "candidate": "f0d0663a4d95361eea74040a8dee28598e9a7ff9",
+  "capturedAt": "2026-11-04T01:15:49.931Z",
+  "qualification": "Native Chrome; actual production components. Deterministic fixture data/readiness only; route probe uses instrumented host. Feature previews separately exercise present components. No live/backend/device/QA06/fidelity acceptance.",
+  "routes": [
+    {
+      "pattern": "/",
+      "route": "/",
+      "id": "route-00",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2F&anonymous=1",
+      "file": "snapshots/route-00.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/login",
+      "route": "/login",
+      "id": "route-01",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Flogin&anonymous=1",
+      "file": "snapshots/route-01.jpg",
+      "text": "SIGN IN\n\nSIGN IN\n\nEvent entry is not open yet. Please check back later.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/signup",
+      "route": "/signup",
+      "id": "route-02",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fsignup&anonymous=1",
+      "file": "snapshots/route-02.jpg",
+      "text": "MCR Concert World\n\nBEFORE THE SHOW\n\nCreate account\n\nOne account for your concert world.\n\nAccount creation is not open yet. We are preparing the signup requirements and notices.\n\nEmail account actions are not available right now.\n\nEmail\nPassword\n\n8–128 UTF-8 bytes. Spaces count; your password is not changed or trimmed.\n\nCreate account\nI have a verification codeSign inReset passwordTermsPrivacy\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create account"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/verify-email",
+      "route": "/verify-email",
+      "id": "route-03",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fverify-email&anonymous=1",
+      "file": "snapshots/route-03.jpg",
+      "text": "MCR Concert World\n\nBEFORE THE SHOW\n\nVerify email\n\nUse the email and six-digit code from your verification instructions.\n\nEmail account actions are not available right now.\n\nEmail\nVerification code\n\nCodes can expire. Request new instructions if your code no longer works.\n\nVerify email\nRequest another code\nSign inReset password\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Verify email"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/reset-password",
+      "route": "/reset-password",
+      "id": "route-04",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Freset-password&anonymous=1",
+      "file": "snapshots/route-04.jpg",
+      "text": "MCR Concert World\n\nYOUR WAY BACK\n\nReset password\n\nStart with the email you use to sign in.\n\nEmail\nRequest reset\n\nPassword recovery is not available right now.\n\nI have a reset token\nBack to sign inBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Reset password"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/auth/callback",
+      "route": "/auth/callback",
+      "id": "route-05",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fauth%2Fcallback&anonymous=1",
+      "file": "snapshots/route-05.jpg",
+      "text": "MCR Concert World\n\nBACK TO THE CROWD\n\nProvider sign-in is unavailable\n\nProvider sign-in is not available yet. You can use an available sign-in option instead.\n\nBack to sign in\nBack to your destinationBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Provider sign-in is unavailable"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/legal/:document",
+      "route": "/legal/privacy",
+      "id": "route-06",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Flegal%2Fprivacy&anonymous=1",
+      "file": "snapshots/route-06.jpg",
+      "text": "Skip to content\nMCR\nConcert World\nSign in\n\nPUBLIC INFORMATION\n\nPrivacy\n\nThis document is not available yet.\n\nBack to home\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDifferent eras. Same crowd.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Privacy"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/account/deleted",
+      "route": "/account/deleted",
+      "id": "route-07",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Faccount%2Fdeleted&anonymous=1",
+      "file": "snapshots/route-07.jpg",
+      "text": "Account deletion status\n\nNo deletion completion is confirmed in this session. Retained recovery is unavailable after expiry, sign-out or a session change.\n\nSign in\n\nCompletion requires all eight cleanup steps. A pending request or disabled account is not completed cleanup.\n\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Account deletion status"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/archive",
+      "route": "/archive",
+      "id": "route-08",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Farchive&anonymous=1",
+      "file": "snapshots/route-08.jpg",
+      "text": "MCR Concert World\nAfter the show\n\nThis page is still being prepared. No account action has been completed.\n\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "After the show"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world",
+      "route": "/world",
+      "id": "route-09",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld&anonymous=0",
+      "file": "snapshots/route-09.jpg",
+      "text": "Skip to content\nMCR Concert World\nShell review · test event\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nInstrumented test host · no live world\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/map",
+      "route": "/world/map",
+      "id": "route-10",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fmap&anonymous=0",
+      "file": "snapshots/route-10.jpg",
+      "text": "Skip to content\nMAP\n−\n▾\n\nPlaces are unavailable until your current event map is verified. Return to the world to check access.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Map"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/places/:placeId",
+      "route": "/world/places/00000000-0000-4000-8000-000000000002",
+      "id": "route-11",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fplaces%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-11.jpg",
+      "text": "Skip to content\nPLACE\n−\n▾\n\nPlaces are unavailable until your current event map is verified. Return to the world to check access.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Place"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/rooms",
+      "route": "/world/rooms",
+      "id": "route-12",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Frooms&anonymous=0",
+      "file": "snapshots/route-12.jpg",
+      "text": "Skip to content\nROOMS\n−\n▾\n\nRoom access is unavailable until your current world access is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Rooms"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/nearby",
+      "route": "/world/nearby",
+      "id": "route-13",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fnearby&anonymous=0",
+      "file": "snapshots/route-13.jpg",
+      "text": "Skip to content\nNEARBY IN WORLD\n−\n▾\n\nNearby people are unavailable until your current world access is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Nearby in world"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/theme",
+      "route": "/world/theme",
+      "id": "route-14",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Ftheme&anonymous=0",
+      "file": "snapshots/route-14.jpg",
+      "text": "Skip to content\nCHOOSE AN ERA\n−\n▾\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nEra preferences are saved on this device for this account and event. Server preference synchronization is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Choose an era"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/check-in",
+      "route": "/world/check-in",
+      "id": "route-15",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fcheck-in&anonymous=0",
+      "file": "snapshots/route-15.jpg",
+      "text": "Skip to content\nREAL-WORLD CHECK-IN\n−\n▾\n\nReal-world meeting guidance is unavailable until current place, audience, and expiry information is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Real-world check-in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/help",
+      "route": "/world/help",
+      "id": "route-16",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fhelp&anonymous=0",
+      "file": "snapshots/route-16.jpg",
+      "text": "Skip to content\nHOW TO PLAY\n−\n▾\n\nSTILL TAKING SHAPE\n\nHow to play is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "How to play",
+          "How to play is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed",
+      "route": "/feed",
+      "id": "route-17",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed&anonymous=0",
+      "file": "snapshots/route-17.jpg",
+      "text": "Skip to content\nFEED\n−\n▾\n\nThis section is unavailable for the current account or event.\n\nNew post\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Feed"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed/new",
+      "route": "/feed/new",
+      "id": "route-18",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed%2Fnew&anonymous=0",
+      "file": "snapshots/route-18.jpg",
+      "text": "Skip to content\nNEW POST\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "New post"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed/:postId",
+      "route": "/feed/00000000-0000-4000-8000-000000000002",
+      "id": "route-19",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-19.jpg",
+      "text": "Skip to content\nTHREAD\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Thread"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed/:postId/edit",
+      "route": "/feed/00000000-0000-4000-8000-000000000002/edit",
+      "id": "route-20",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed%2F00000000-0000-4000-8000-000000000002%2Fedit&anonymous=0",
+      "file": "snapshots/route-20.jpg",
+      "text": "Skip to content\nEDIT POST\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Edit post"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/notices/:noticeId",
+      "route": "/notices/00000000-0000-4000-8000-000000000002",
+      "id": "route-21",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fnotices%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-21.jpg",
+      "text": "Skip to content\nNOTICE\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Notice"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet",
+      "route": "/meet",
+      "id": "route-22",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet&anonymous=0",
+      "file": "snapshots/route-22.jpg",
+      "text": "Skip to content\nMEET\n−\n▾\n\nParty access is unavailable.\n\nCreate party\n→\nPeople\n→\nYour intro\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Meet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/new",
+      "route": "/meet/parties/new",
+      "id": "route-23",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2Fnew&anonymous=0",
+      "file": "snapshots/route-23.jpg",
+      "text": "Skip to content\nCREATE PARTY\n−\n▾\n\nSTILL TAKING SHAPE\n\nCreate party is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create party",
+          "Create party is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/:partyId",
+      "route": "/meet/parties/00000000-0000-4000-8000-000000000002",
+      "id": "route-24",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-24.jpg",
+      "text": "Skip to content\nPARTY\n−\n▾\n\nParty access is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Party"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/:partyId/manage",
+      "route": "/meet/parties/00000000-0000-4000-8000-000000000002/manage",
+      "id": "route-25",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2F00000000-0000-4000-8000-000000000002%2Fmanage&anonymous=0",
+      "file": "snapshots/route-25.jpg",
+      "text": "Skip to content\nMANAGE PARTY\n−\n▾\n\nSTILL TAKING SHAPE\n\nManage party is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Manage party",
+          "Manage party is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/:partyId/rally",
+      "route": "/meet/parties/00000000-0000-4000-8000-000000000002/rally",
+      "id": "route-26",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2F00000000-0000-4000-8000-000000000002%2Frally&anonymous=0",
+      "file": "snapshots/route-26.jpg",
+      "text": "Skip to content\nRENDEZVOUS\n−\n▾\n\nSTILL TAKING SHAPE\n\nRendezvous is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Rendezvous",
+          "Rendezvous is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/beacons/:beaconId",
+      "route": "/meet/beacons/00000000-0000-4000-8000-000000000002",
+      "id": "route-27",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fbeacons%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-27.jpg",
+      "text": "Skip to content\nFIND EACH OTHER\n−\n▾\n\nReal-world meeting guidance is unavailable until current place, audience, and expiry information is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Find each other"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/people",
+      "route": "/meet/people",
+      "id": "route-28",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fpeople&anonymous=0",
+      "file": "snapshots/route-28.jpg",
+      "text": "Skip to content\nPEOPLE\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "People"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/intro/edit",
+      "route": "/meet/intro/edit",
+      "id": "route-29",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fintro%2Fedit&anonymous=0",
+      "file": "snapshots/route-29.jpg",
+      "text": "Skip to content\nYOUR INTRO\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Your intro"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/people/:userId",
+      "route": "/people/00000000-0000-4000-8000-000000000002",
+      "id": "route-30",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fpeople%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-30.jpg",
+      "text": "Skip to content\nPROFILE\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Profile"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts",
+      "route": "/gifts",
+      "id": "route-31",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts&anonymous=0",
+      "file": "snapshots/route-31.jpg",
+      "text": "Skip to content\nGIFTS\n−\n▾\n\nGift access is unavailable.\n\nMy gifts\n→\nCreate giveaway\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Gifts"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/new",
+      "route": "/gifts/new",
+      "id": "route-32",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2Fnew&anonymous=0",
+      "file": "snapshots/route-32.jpg",
+      "text": "Skip to content\nCREATE GIVEAWAY\n−\n▾\n\nSTILL TAKING SHAPE\n\nCreate giveaway is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create giveaway",
+          "Create giveaway is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/mine",
+      "route": "/gifts/mine",
+      "id": "route-33",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2Fmine&anonymous=0",
+      "file": "snapshots/route-33.jpg",
+      "text": "Skip to content\nMY GIFTS\n−\n▾\n\nGift access is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My gifts"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/:giveawayId",
+      "route": "/gifts/00000000-0000-4000-8000-000000000002",
+      "id": "route-34",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-34.jpg",
+      "text": "Skip to content\nGIVEAWAY\n−\n▾\n\nGift access is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Giveaway"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/:giveawayId/manage",
+      "route": "/gifts/00000000-0000-4000-8000-000000000002/manage",
+      "id": "route-35",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2F00000000-0000-4000-8000-000000000002%2Fmanage&anonymous=0",
+      "file": "snapshots/route-35.jpg",
+      "text": "Skip to content\nMANAGE GIVEAWAY\n−\n▾\n\nSTILL TAKING SHAPE\n\nManage giveaway is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Manage giveaway",
+          "Manage giveaway is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/:giveawayId/reservation",
+      "route": "/gifts/00000000-0000-4000-8000-000000000002/reservation",
+      "id": "route-36",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2F00000000-0000-4000-8000-000000000002%2Freservation&anonymous=0",
+      "file": "snapshots/route-36.jpg",
+      "text": "Skip to content\nRESERVE\n−\n▾\n\nSTILL TAKING SHAPE\n\nReserve is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Reserve",
+          "Reserve is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/pickups/:reservationId",
+      "route": "/gifts/pickups/00000000-0000-4000-8000-000000000002",
+      "id": "route-37",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2Fpickups%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-37.jpg",
+      "text": "Skip to content\nMY PICKUP\n−\n▾\n\nSTILL TAKING SHAPE\n\nMy pickup is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My pickup",
+          "My pickup is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/wall",
+      "route": "/wall",
+      "id": "route-38",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fwall&anonymous=0",
+      "file": "snapshots/route-38.jpg",
+      "text": "Skip to content\nWALL\n−\n▾\nGRAFFITI WALL\n\nWall unavailable. Reconnect to a qualified world scene before opening the current wall.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "GRAFFITI WALL"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me",
+      "route": "/me",
+      "id": "route-39",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme&anonymous=0",
+      "file": "snapshots/route-39.jpg",
+      "text": "Skip to content\nME\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.\n\nDress up\n→\nEdit profile\n→\nSocial links\n→\nRequests\n→\nAge & privacy\n→\nSettings\n→\nBlocked users\n→\nAccount\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Me"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/avatar",
+      "route": "/me/avatar",
+      "id": "route-40",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Favatar&anonymous=0",
+      "file": "snapshots/route-40.jpg",
+      "text": "Skip to content\nDRESS UP\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Dress up"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/profile",
+      "route": "/me/profile",
+      "id": "route-41",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fprofile&anonymous=0",
+      "file": "snapshots/route-41.jpg",
+      "text": "Skip to content\nEDIT PROFILE\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Edit profile"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/social",
+      "route": "/me/social",
+      "id": "route-42",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fsocial&anonymous=0",
+      "file": "snapshots/route-42.jpg",
+      "text": "Skip to content\nSOCIAL LINKS\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Social links"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/requests",
+      "route": "/me/requests",
+      "id": "route-43",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Frequests&anonymous=0",
+      "file": "snapshots/route-43.jpg",
+      "text": "Skip to content\nREQUESTS\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Requests"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/age",
+      "route": "/me/age",
+      "id": "route-44",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fage&anonymous=0",
+      "file": "snapshots/route-44.jpg",
+      "text": "Skip to content\nAGE & PRIVACY\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Age & privacy"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/settings",
+      "route": "/me/settings",
+      "id": "route-45",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fsettings&anonymous=0",
+      "file": "snapshots/route-45.jpg",
+      "text": "Skip to content\nSETTINGS\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Settings"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/blocks",
+      "route": "/me/blocks",
+      "id": "route-46",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fblocks&anonymous=0",
+      "file": "snapshots/route-46.jpg",
+      "text": "Skip to content\nBLOCKED USERS\n−\n▾\n\nSTILL TAKING SHAPE\n\nBlocked users is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Blocked users",
+          "Blocked users is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/account",
+      "route": "/me/account",
+      "id": "route-47",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Faccount&anonymous=0",
+      "file": "snapshots/route-47.jpg",
+      "text": "Skip to content\nACCOUNT\n−\n▾\n\nAccount controls require your current canonical session.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Account"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/notifications",
+      "route": "/notifications",
+      "id": "route-48",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fnotifications&anonymous=0",
+      "file": "snapshots/route-48.jpg",
+      "text": "Skip to content\nINBOX\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Inbox"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/report",
+      "route": "/report",
+      "id": "route-49",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Freport&anonymous=0",
+      "file": "snapshots/route-49.jpg",
+      "text": "Skip to content\nREPORT\n−\n▾\n\nSTILL TAKING SHAPE\n\nReport is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Report",
+          "Report is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin",
+      "route": "/admin",
+      "id": "route-50",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin&anonymous=0",
+      "file": "snapshots/route-50.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/event",
+      "route": "/admin/event",
+      "id": "route-51",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fevent&anonymous=0",
+      "file": "snapshots/route-51.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/places",
+      "route": "/admin/places",
+      "id": "route-52",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fplaces&anonymous=0",
+      "file": "snapshots/route-52.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/reports",
+      "route": "/admin/reports",
+      "id": "route-53",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Freports&anonymous=0",
+      "file": "snapshots/route-53.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/users/:userId",
+      "route": "/admin/users/00000000-0000-4000-8000-000000000002",
+      "id": "route-54",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fusers%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-54.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/content",
+      "route": "/admin/content",
+      "id": "route-55",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fcontent&anonymous=0",
+      "file": "snapshots/route-55.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/mural",
+      "route": "/admin/mural",
+      "id": "route-56",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fmural&anonymous=0",
+      "file": "snapshots/route-56.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/audit",
+      "route": "/admin/audit",
+      "id": "route-57",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Faudit&anonymous=0",
+      "file": "snapshots/route-57.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/archive",
+      "route": "/admin/archive",
+      "id": "route-58",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Farchive&anonymous=0",
+      "file": "snapshots/route-58.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    }
+  ],
+  "features": [
+    {
+      "source": "public mobile boundary",
+      "id": "public-360",
+      "url": "/src/features/public/__tests__/reference-target/preview.html",
+      "file": "snapshots/public-360.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 360,
+        "scroll": 360,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "auth mobile boundary",
+      "id": "auth-360",
+      "url": "/src/features/auth/__tests__/reference-target/preview.html",
+      "file": "snapshots/auth-360.jpg",
+      "text": "SYNTHETIC AUTH · production SignIn · no real account\nSIGN IN\n\nSIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 360,
+        "scroll": 360,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "public mobile boundary",
+      "id": "public-430",
+      "url": "/src/features/public/__tests__/reference-target/preview.html",
+      "file": "snapshots/public-430.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 430,
+        "scroll": 430,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "auth mobile boundary",
+      "id": "auth-430",
+      "url": "/src/features/auth/__tests__/reference-target/preview.html",
+      "file": "snapshots/auth-430.jpg",
+      "text": "SYNTHETIC AUTH · production SignIn · no real account\nSIGN IN\n\nSIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 430,
+        "scroll": 430,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    }
+  ],
+  "errors": []
+}

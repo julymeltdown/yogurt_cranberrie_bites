@@ -13,6 +13,22 @@ use uuid::Uuid;
 struct FixtureAuthority;
 #[async_trait]
 impl MediaAuthority for FixtureAuthority {
+    async fn prelock_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        self.authorize_in(
+            c,
+            context,
+            Access::Read(target.map_or(Purpose::Post, |t| t.purpose)),
+            owner,
+            target,
+        )
+        .await
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
@@ -37,6 +53,274 @@ impl MediaAuthority for FixtureAuthority {
             _ => Err(CommandError::Denied),
         }
     }
+}
+
+struct DeleteOnlyAuthority;
+#[async_trait]
+impl MediaAuthority for DeleteOnlyAuthority {
+    async fn prelock_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        FixtureAuthority
+            .prelock_target_in(c, context, owner, target)
+            .await
+    }
+    async fn authorize_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        access: Access,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        if !matches!(access, Access::Delete(_)) {
+            return Err(CommandError::Denied);
+        }
+        FixtureAuthority
+            .authorize_in(c, context, access, owner, target)
+            .await
+    }
+}
+
+#[tokio::test]
+async fn target_erasure_uses_delete_without_read_and_rolls_back_with_caller() -> anyhow::Result<()>
+{
+    let (p, c, s) = fixture().await?;
+    let old = upload(&s, c, encode(ImageFormat::Png), Mime::Png, Purpose::Post).await?;
+    let new = upload(&s, c, encode(ImageFormat::Png), Mime::Png, Purpose::Post).await?;
+    let target = Target {
+        resource: Uuid::new_v4(),
+        purpose: Purpose::Post,
+    };
+    let mut tx = p.begin().await?;
+    s.link_owned_in(&mut tx, c, old, target).await?;
+    tx.commit().await?;
+    let deletion = PgMedia::new(
+        p.clone(),
+        Arc::new(DeleteOnlyAuthority),
+        sanitizer(),
+        keys(),
+    );
+    assert!(deletion.read(c, old).await.is_err());
+    let mut tx = p.begin().await?;
+    // Reversed input and a duplicate are sorted/deduplicated by the media port.
+    deletion
+        .lock_owned_in(&mut tx, c, &[new, old], target)
+        .await?;
+    deletion
+        .lock_owned_in(&mut tx, c, &[old, old], target)
+        .await?;
+    assert!(deletion
+        .erase_target_in(
+            &mut tx,
+            c,
+            old,
+            Target {
+                resource: Uuid::new_v4(),
+                ..target
+            }
+        )
+        .await
+        .is_err());
+    assert!(deletion
+        .erase_target_in(&mut tx, c, new, target)
+        .await
+        .is_err());
+    deletion.erase_target_in(&mut tx, c, old, target).await?;
+    // Simulate a later association/receipt failure: the byte erase rolls back.
+    tx.rollback().await?;
+    assert!(!s.read(c, old).await?.bytes.is_empty());
+    let mut tx = p.begin().await?;
+    let erased = deletion.erase_target_in(&mut tx, c, old, target).await?;
+    tx.commit().await?;
+    assert!(erased.revision > 1);
+    let cleared: bool = sqlx::query_scalar("select state='DELETED' and staged is null and sanitized is null and width is null and height is null and target_id is null from concert_media where media_id=$1")
+        .bind(old).fetch_one(&p).await?;
+    assert!(cleared);
+    assert!(s.read(c, old).await.is_err());
+    let mut tx = p.begin().await?;
+    assert!(deletion
+        .erase_target_in(&mut tx, c, old, target)
+        .await
+        .is_err());
+    tx.rollback().await?;
+    assert!(!s.read(c, new).await?.bytes.is_empty());
+    cleanup(&p, c).await;
+    Ok(())
+}
+
+#[tokio::test]
+async fn caller_transaction_reads_keep_media_locked_after_return() -> anyhow::Result<()> {
+    let (p, c, s) = fixture().await?;
+    let id = upload(&s, c, encode(ImageFormat::Png), Mime::Png, Purpose::Post).await?;
+    let mut tx = p.begin().await?;
+    let before: String = sqlx::query_scalar("select pg_current_xact_id()::text")
+        .fetch_one(&mut *tx)
+        .await?;
+    let metadata = s.metadata_in(&mut tx, c, id).await?;
+    let image = s.read_in(&mut tx, c, id).await?;
+    assert_eq!(metadata, image.metadata);
+    let after: String = sqlx::query_scalar("select pg_current_xact_id()::text")
+        .fetch_one(&mut *tx)
+        .await?;
+    assert_eq!(before, after);
+    let lock =
+        sqlx::query("select media_id from concert_media where media_id=$1 for update nowait")
+            .bind(id)
+            .fetch_one(&p)
+            .await
+            .unwrap_err();
+    assert_eq!(
+        lock.as_database_error().and_then(|e| e.code()).as_deref(),
+        Some("55P03")
+    );
+    tx.rollback().await?;
+    sqlx::query("select media_id from concert_media where media_id=$1 for update nowait")
+        .bind(id)
+        .fetch_one(&p)
+        .await?;
+    cleanup(&p, c).await;
+    Ok(())
+}
+
+struct HintGateAuthority {
+    seen: Arc<tokio::sync::Notify>,
+    resume: Arc<tokio::sync::Notify>,
+    final_calls: Arc<std::sync::atomic::AtomicUsize>,
+}
+#[async_trait]
+impl MediaAuthority for HintGateAuthority {
+    async fn prelock_target_in(
+        &self,
+        _c: &mut PgConnection,
+        _context: Context,
+        _owner: Uuid,
+        _target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        self.seen.notify_one();
+        self.resume.notified().await;
+        Ok(())
+    }
+    async fn authorize_in(
+        &self,
+        _c: &mut PgConnection,
+        _context: Context,
+        _access: Access,
+        _owner: Uuid,
+        _target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        self.final_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Err(CommandError::Denied)
+    }
+}
+
+#[tokio::test]
+async fn changed_unlocked_target_hint_is_denied_before_final_authority() -> anyhow::Result<()> {
+    let (p, c, s) = fixture().await?;
+    let id = upload(&s, c, encode(ImageFormat::Png), Mime::Png, Purpose::Post).await?;
+    let seen = Arc::new(tokio::sync::Notify::new());
+    let resume = Arc::new(tokio::sync::Notify::new());
+    let final_calls = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+    let reader = PgMedia::new(
+        p.clone(),
+        Arc::new(HintGateAuthority {
+            seen: seen.clone(),
+            resume: resume.clone(),
+            final_calls: final_calls.clone(),
+        }),
+        sanitizer(),
+        keys(),
+    );
+    let read = tokio::spawn(async move { reader.metadata(c, id).await });
+    tokio::time::timeout(std::time::Duration::from_secs(2), seen.notified()).await?;
+    let mut tx = p.begin().await?;
+    s.link_owned_in(
+        &mut tx,
+        c,
+        id,
+        Target {
+            resource: Uuid::new_v4(),
+            purpose: Purpose::Post,
+        },
+    )
+    .await?;
+    tx.commit().await?;
+    resume.notify_one();
+    assert!(matches!(
+        tokio::time::timeout(std::time::Duration::from_secs(2), read).await??,
+        Err(CommandError::Denied)
+    ));
+    assert_eq!(final_calls.load(std::sync::atomic::Ordering::SeqCst), 0);
+    cleanup(&p, c).await;
+    Ok(())
+}
+
+struct RootWaitAuthority(Arc<tokio::sync::Notify>);
+#[async_trait]
+impl MediaAuthority for RootWaitAuthority {
+    async fn prelock_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        self.0.notify_one();
+        FixtureAuthority
+            .prelock_target_in(c, context, owner, target)
+            .await
+    }
+    async fn authorize_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        access: Access,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        FixtureAuthority
+            .authorize_in(c, context, access, owner, target)
+            .await
+    }
+}
+
+#[tokio::test]
+async fn reader_waits_for_target_root_without_holding_media() -> anyhow::Result<()> {
+    let (p, c, s) = fixture().await?;
+    let id = upload(&s, c, encode(ImageFormat::Png), Mime::Png, Purpose::Post).await?;
+    let mut writer = p.begin().await?;
+    sqlx::query("update be24_test_policy set allowed=false where event=$1 and actor=$2")
+        .bind(c.event)
+        .bind(c.actor)
+        .execute(&mut *writer)
+        .await?;
+    let seen = Arc::new(tokio::sync::Notify::new());
+    let reader = PgMedia::new(
+        p.clone(),
+        Arc::new(RootWaitAuthority(seen.clone())),
+        sanitizer(),
+        keys(),
+    );
+    let read = tokio::spawn(async move { reader.read(c, id).await.map(|_| ()) });
+    tokio::time::timeout(std::time::Duration::from_secs(2), seen.notified()).await?;
+    // Writer already holds the target/policy root. The reader must not own media
+    // while waiting for that root, or this NOWAIT would expose the old cycle.
+    sqlx::query("select media_id from concert_media where media_id=$1 for update nowait")
+        .bind(id)
+        .fetch_one(&mut *writer)
+        .await?;
+    writer.commit().await?;
+    assert!(matches!(
+        tokio::time::timeout(std::time::Duration::from_secs(2), read).await??,
+        Err(CommandError::Denied)
+    ));
+    cleanup(&p, c).await;
+    Ok(())
 }
 fn sanitizer() -> Arc<dyn ImageSanitizer> {
     Arc::new(BoundedImageSanitizer::new(
@@ -723,6 +1007,17 @@ async fn shorter_caller_sql_deadline_is_preserved() -> anyhow::Result<()> {
 struct DelayedAuthority;
 #[async_trait]
 impl MediaAuthority for DelayedAuthority {
+    async fn prelock_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        FixtureAuthority
+            .prelock_target_in(c, context, owner, target)
+            .await
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,

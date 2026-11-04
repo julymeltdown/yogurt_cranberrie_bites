@@ -1,0 +1,1055 @@
+
+ RUN  v4.1.9 <checkout>/frontend
+
+ ❯ src/world/__tests__/runtime.test.ts (137 tests | 2 failed | 13 skipped) 1583ms
+   × matches C06 positive UUID/provenance semantics with consistent references aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa 216ms
+   × matches C06 positive UUID/provenance semantics with consistent references 11111111-1111-0111-1111-111111111111 144ms
+ ❯ src/world/network/__tests__/replication.test.ts (23 tests | 1 failed) 284ms
+     × a gap clears ghosts, requests one resync, discards queued old changes and replaces the complete baseline 16ms
+ ❯ src/features/admin/reports/__tests__/controller.test.ts (49 tests | 4 failed) 50ms
+     × binds exact members command actor/event/target/revision/key with no replay 1ms
+     × uses the frozen user_id filter for a direct member route and retains minimal fields 2ms
+     × supports the reverse members action against the new revision 0ms
+   × uses a fresh key only for a separately reviewed intent after refresh 1ms
+(node:64401) [DEP0129] DeprecationWarning: _channel is deprecated. Use ChildProcess.channel instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ unavailable setup is rejected before any transport work (1.235125ms)
+✔ all seven roles and 21 HTTP cells are required, without duplicates or role bypass (1.729875ms)
+✔ unregistered endpoints, methods, queries, cross-event IDs and malformed bodies refuse setup (5.933792ms)
+✔ non-isolated setup, URL credentials and unqualified mutations refuse setup (0.430125ms)
+✔ gate selftest consumes published schema/status and labels mocked fetch as synthetic (25.623125ms)
+✔ schema-valid private markers, unknown private fields and missing no-store fail rather than produce passing receipts (1.065167ms)
+✔ oversized private responses stop at the bounded reader (1.022333ms)
+✔ positive-content assertions stop a vacuous empty successful response (0.400834ms)
+ ❯ e2e/privacy/live-gate.test.mjs (0 test)
+ ❯ src/app/meeting-entry/__tests__/root-registration.test.tsx (7 tests | 1 failed) 2005ms
+   × preserves direct-beacon back navigation through Meet to World without creating a second world lease 1078ms
+✔ all ten distinct routes stay within the original source image and preserve unequal phone aspects (0.73125ms)
+✔ memory cache, disk cache and transferred bytes are not conflated with loader calls (1.548084ms)
+✔ warm request avoidance is distinct from an HTTP cache hit or a fresh decode (0.174333ms)
+ ❯ e2e/reference-integrated/metrics.test.mjs (0 test)
+ ❯ e2e/reference-integrated/whole/data.test.mjs (0 test)
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx (3 tests | 2 failed) 2112ms
+   × keeps the same owner and unknown command across actual Wall/world/other-panel navigation and reconnect 1036ms
+   × removes protected DOM and raster on privacy closure and never installs a replacement owner for the expired scope 1018ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  e2e/privacy/live-gate.test.mjs [ e2e/privacy/live-gate.test.mjs ]
+Error: No test suite found in file <checkout>/frontend/e2e/privacy/live-gate.test.mjs
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  e2e/reference-integrated/metrics.test.mjs [ e2e/reference-integrated/metrics.test.mjs ]
+Error: No test suite found in file <checkout>/frontend/e2e/reference-integrated/metrics.test.mjs
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  e2e/reference-integrated/whole/data.test.mjs [ e2e/reference-integrated/whole/data.test.mjs ]
+Error: No test suite found in file <checkout>/frontend/e2e/reference-integrated/whole/data.test.mjs
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/__tests__/runtime.test.ts > matches C06 positive UUID/provenance semantics with consistent references aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+ FAIL  src/world/__tests__/runtime.test.ts > matches C06 positive UUID/provenance semantics with consistent references 11111111-1111-0111-1111-111111111111
+AssertionError: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import runpy,sys,json;m=runpy.run_path('../scripts/mcr/validate-assets.py');d=json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']);checks=m['validators']();m['validate_document'](d['map'],checks,'map');m['validate_document'](d['theme'],checks,'theme');m['validate_map'](d['map'])
+                                                                                                                                                               ~~~~~~~~~~~~~~~^^
+  File "../scripts/mcr/validate-assets.py", line 107, in validators
+    require(not missing,
+    ~~~~~~~^^^^^^^^^^^^^
+            "required asset format checkers unavailable: " + ", ".join(missing) +
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "; install scripts/mcr/requirements-contracts.txt in the validation environment")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "../scripts/mcr/validate-assets.py", line 34, in require
+    raise AssetError(message)
+<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/world/__tests__/runtime.test.ts:282:40
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  src/app/meeting-entry/__tests__/root-registration.test.tsx > preserves direct-beacon back navigation through Meet to World without creating a second world lease
+AssertionError: expected '/meet' to be '/world' // Object.is equality
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mcr-root-social"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"world-shell"[39m
+          [33mdata-mcr-shell[39m=[32m""[39m
+          [33mdata-panel-size[39m=[32m"half"[39m
+          [33mstyle[39m=[32m"--shell-viewport-height: 768px;"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"skip-link"[39m
+            [33mhref[39m=[32m"#shell-content"[39m
+          [36m>[39m
+            [0mSkip to content[0m
+          [36m</a>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"MCR Concert World"[39m
+              [33mclass[39m=[32m"mcr-chrome-brand"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/world"[39m
+              [33mid[39m=[32m"shell-brand"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"concert-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"square"[39m
+                  [33mstroke-linejoin[39m=[32m"miter"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+              [36m>[39m
+                [36m<strong>[39m
+                  [0mMCR Concert World[0m
+                [36m</strong>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"mcr-chrome-event"[39m
+                  [33mtitle[39m=[32m"Shell review · test event"[39m
+                [36m>[39m
+                  [0mShell review · test event[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33maria-label[39m=[32m"Inbox"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/notifications"[39m
+                [33mid[39m=[32m"shell-inbox"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"concert-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"square"[39m
+                  [33mstroke-linejoin[39m=[32m"miter"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33maria-label[39m=[32m"Settings"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/me/settings"[39m
+                [33mid[39m=[32m"shell-settings"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"concert-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"square"[39m
+                  [33mstroke-linejoin[39m=[32m"miter"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+                  [36m/>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"12"[39m
+                    [33mcy[39m=[32m"12"[39m
+                    [33mr[39m=[32m"3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+            [36m</div>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shell-era-region"[39m
+          [36m>[39m
+            [36m<section[39m
+              [33maria-label[39m=[32m"World era"[39m
+              [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-describedby[39m=[32m"_r_7_-status"[39m
+                [33maria-label[39m=[32m"Choose an era"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+                [33mrole[39m=[32m"group"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Revenge"[39m
+                  [33maria-pressed[39m=[32m"false"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mREVENGE[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                  [36m/>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Parade"[39m
+                  [33maria-pressed[39m=[32m"false"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mPARADE[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                  [36m/>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Danger"[39m
+ ...
+
+Expected: "/world"
+Received: "/meet"
+
+ ❯ src/app/meeting-entry/__tests__/root-registration.test.tsx:71:64
+     69|   await waitFor(() => expect(f.router.state.location.pathname).toBe('/…
+     70|   fireEvent.click(screen.getByRole('button', { name: 'Back to previous…
+     71|   await waitFor(() => expect(f.router.state.location.pathname).toBe('/…
+       |                                                                ^
+     72|   expect(document.querySelector('[data-world-host]')).toBe(host); expe…
+     73| })
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  src/app/mural-entry/__tests__/routes.test.tsx > keeps the same owner and unknown command across actual Wall/world/other-panel navigation and reconnect
+TestingLibraryElementError: Unable to find an element with the text: Confirmed revision 10. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"world-shell"[39m
+      [33mdata-mcr-shell[39m=[32m""[39m
+      [33mdata-panel-size[39m=[32m"half"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#shell-content"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"MCR Concert World"[39m
+          [33mclass[39m=[32m"mcr-chrome-brand"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/world"[39m
+          [33mid[39m=[32m"shell-brand"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0mMCR Concert World[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mcr-chrome-event"[39m
+              [33mtitle[39m=[32m"Shell review · test event"[39m
+            [36m>[39m
+              [0mShell review · test event[0m
+            [36m</span>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Inbox"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/notifications"[39m
+            [33mid[39m=[32m"shell-inbox"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Settings"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me/settings"[39m
+            [33mid[39m=[32m"shell-settings"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"12"[39m
+                [33mr[39m=[32m"3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-era-region"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"World era"[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-describedby[39m=[32m"_r_1_-status"[39m
+            [33maria-label[39m=[32m"Choose an era"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+            [33mrole[39m=[32m"group"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Revenge"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mREVENGE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Parade"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mPARADE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Danger"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDANGER[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__status"[39m
+            [33mid[39m=[32m"_r_1_-status"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mEras unavailable.[0m
+         ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"world-shell"[39m
+      [33mdata-mcr-shell[39m=[32m""[39m
+      [33mdata-panel-size[39m=[32m"half"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#shell-content"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"MCR Concert World"[39m
+          [33mclass[39m=[32m"mcr-chrome-brand"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/world"[39m
+          [33mid[39m=[32m"shell-brand"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0mMCR Concert World[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mcr-chrome-event"[39m
+              [33mtitle[39m=[32m"Shell review · test event"[39m
+            [36m>[39m
+              [0mShell review · test event[0m
+            [36m</span>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Inbox"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/notifications"[39m
+            [33mid[39m=[32m"shell-inbox"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Settings"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me/settings"[39m
+            [33mid[39m=[32m"shell-settings"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"12"[39m
+                [33mr[39m=[32m"3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-era-region"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"World era"[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-describedby[39m=[32m"_r_1_-status"[39m
+            [33maria-label[39m=[32m"Choose an era"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+            [33mrole[39m=[32m"group"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Revenge"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mREVENGE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Parade"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mPARADE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Danger"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDANGER[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__status"[39m
+            [33mid[39m=[32m"_r_1_-status"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mEras unavailable.[0m
+         ...
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx:35:35
+     33| }
+     34| it('keeps the same owner and unknown command across actual Wall/world/…
+     35|   const h = setup(); await screen.findByText('Confirmed revision 10');…
+       |                                   ^
+     36|   h.f.server.mode('lost')
+     37|   await act(async () => { sync.editor.select(2, 3); await sync.editor.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  src/app/mural-entry/__tests__/routes.test.tsx > removes protected DOM and raster on privacy closure and never installs a replacement owner for the expired scope
+TestingLibraryElementError: Unable to find an element with the text: Confirmed revision 10. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"world-shell"[39m
+      [33mdata-mcr-shell[39m=[32m""[39m
+      [33mdata-panel-size[39m=[32m"half"[39m
+      [33mstyle[39m=[32m"--shell-viewport-height: 768px;"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#shell-content"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"MCR Concert World"[39m
+          [33mclass[39m=[32m"mcr-chrome-brand"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/world"[39m
+          [33mid[39m=[32m"shell-brand"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0mMCR Concert World[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mcr-chrome-event"[39m
+              [33mtitle[39m=[32m"Shell review · test event"[39m
+            [36m>[39m
+              [0mShell review · test event[0m
+            [36m</span>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Inbox"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/notifications"[39m
+            [33mid[39m=[32m"shell-inbox"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Settings"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me/settings"[39m
+            [33mid[39m=[32m"shell-settings"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"12"[39m
+                [33mr[39m=[32m"3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-era-region"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"World era"[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-describedby[39m=[32m"_r_5_-status"[39m
+            [33maria-label[39m=[32m"Choose an era"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+            [33mrole[39m=[32m"group"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Revenge"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mREVENGE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Parade"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mPARADE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Danger"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDANGER[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__status"[39m
+            [33mid[39m=[32m"_r_5_-status"[39m
+            [33mrole[39m=[32m"status"[39m
+   ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"world-shell"[39m
+      [33mdata-mcr-shell[39m=[32m""[39m
+      [33mdata-panel-size[39m=[32m"half"[39m
+      [33mstyle[39m=[32m"--shell-viewport-height: 768px;"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"skip-link"[39m
+        [33mhref[39m=[32m"#shell-content"[39m
+      [36m>[39m
+        [0mSkip to content[0m
+      [36m</a>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"MCR Concert World"[39m
+          [33mclass[39m=[32m"mcr-chrome-brand"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/world"[39m
+          [33mid[39m=[32m"shell-brand"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0mMCR Concert World[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mcr-chrome-event"[39m
+              [33mtitle[39m=[32m"Shell review · test event"[39m
+            [36m>[39m
+              [0mShell review · test event[0m
+            [36m</span>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Inbox"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/notifications"[39m
+            [33mid[39m=[32m"shell-inbox"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Settings"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me/settings"[39m
+            [33mid[39m=[32m"shell-settings"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"12"[39m
+                [33mr[39m=[32m"3"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-era-region"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"World era"[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-describedby[39m=[32m"_r_5_-status"[39m
+            [33maria-label[39m=[32m"Choose an era"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+            [33mrole[39m=[32m"group"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Revenge"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mREVENGE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Parade"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mPARADE[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Danger"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDANGER[0m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+              [36m/>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mclass[39m=[32m"mcr-chrome-eras__status"[39m
+            [33mid[39m=[32m"_r_5_-status"[39m
+            [33mrole[39m=[32m"status"[39m
+   ...
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx:62:35
+     60| })
+     61| it('removes protected DOM and raster on privacy closure and never inst…
+     62|   const h = setup(); await screen.findByText('Confirmed revision 10');…
+       |                                   ^
+     63|   const canvas = document.querySelector('.mcr-mural__surface canvas') …
+     64|   act(() => { h.r.scene.frame(); h.f.auth.privacy.changePolicy(h.f.sco…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > a gap clears ghosts, requests one resync, discards queued old changes and replaces the complete baseline
+TypeError: Cannot read properties of undefined (reading 'open')
+ ❯ Object.live src/world/network/__tests__/replication.test.ts:29:64
+     27|   const receive = (data: unknown) => socket().receive(JSON.stringify(d…
+     28|   return { c, session, clock, transport, commits, acquire, socket, rec…
+     29|     async live() { const p = c.start(); await flush(); socket().open()…
+       |                                                                ^
+     30|     delta(seq: number, upserts: readonly WorldPlayer[] = [], removes: …
+     31|       receive({ protocolVersion: '1.0.0', type: 'delta', streamId: c.r…
+ ❯ src/world/network/__tests__/replication.test.ts:90:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > explicit revision/reason and truthful commands > binds exact members command actor/event/target/revision/key with no replay
+TypeError: Cannot use 'in' operator to search for 'target_type' in undefined
+ ❯ rowKey src/features/admin/reports/model/contract.ts:54:35
+     52| }
+     53| export const rowId = (r: Row) => 'report_id' in r ? r.report_id : 'use…
+     54| export const rowKey = (r: Row) => 'target_type' in r && !('report_id' …
+       |                                   ^
+     55| export const rowSchema = (lane: Lane) => lane === 'reports' ? 'Report'…
+     56| export function row(lane: Lane, value: unknown, event: string): Row {
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:21:31
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:116:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > private evidence, direct member entry and command recovery > uses the frozen user_id filter for a direct member route and retains minimal fields
+AssertionError: expected null to match object { Object (user_id) }
+
+- Expected:
+{
+  "user_id": "00000000-0000-4000-8000-000000000400",
+}
+
++ Received:
+null
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:275:39
+    273|             await c.load();
+    274|             expect(new URL(h.requests[0]!.url).searchParams.get('user_…
+    275|             expect(c.read().selected).toMatchObject({ user_id: id(400)…
+       |                                       ^
+    276|             expect(Object.keys((c.read().selected as {
+    277|                 profile: object;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > private evidence, direct member entry and command recovery > supports the reverse members action against the new revision
+TypeError: Cannot use 'in' operator to search for 'target_type' in undefined
+ ❯ rowKey src/features/admin/reports/model/contract.ts:54:35
+     52| }
+     53| export const rowId = (r: Row) => 'report_id' in r ? r.report_id : 'use…
+     54| export const rowKey = (r: Row) => 'target_type' in r && !('report_id' …
+       |                                   ^
+     55| export const rowSchema = (lane: Lane) => lane === 'reports' ? 'Report'…
+     56| export function row(lane: Lane, value: unknown, event: string): Row {
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:21:31
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:294:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > uses a fresh key only for a separately reviewed intent after refresh
+TypeError: Cannot use 'in' operator to search for 'target_type' in undefined
+ ❯ rowKey src/features/admin/reports/model/contract.ts:54:35
+     52| }
+     53| export const rowId = (r: Row) => 'report_id' in r ? r.report_id : 'use…
+     54| export const rowKey = (r: Row) => 'target_type' in r && !('report_id' …
+       |                                   ^
+     55| export const rowSchema = (lane: Lane) => lane === 'reports' ? 'Report'…
+     56| export function row(lane: Lane, value: unknown, event: string): Row {
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:21:31
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:354:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+
+ Test Files  8 failed | 198 passed (206)
+      Tests  10 failed | 3368 passed | 14 skipped (3392)
+   Start at  10:27:07
+   Duration  15.51s (transform 13.60s, setup 0ms, import 54.28s, tests 94.15s, environment 56.53s)
+
