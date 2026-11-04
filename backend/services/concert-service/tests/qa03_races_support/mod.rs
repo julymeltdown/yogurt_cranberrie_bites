@@ -87,7 +87,7 @@ impl CommunityAuthority for IsolatedAuthority {
         event: Uuid,
         access: CommunityAccess,
     ) -> Result<(), CommandError> {
-        self.authorize_in(c, actor, event, actor, access).await
+        CommunityAuthority::authorize_in(self, c, actor, event, actor, access).await
     }
     async fn authorize_in(
         &self,
