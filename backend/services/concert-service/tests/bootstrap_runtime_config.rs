@@ -205,7 +205,7 @@ fn spatial_index_rejects_unknown_duplicate_and_traversal_inputs() {
     invalid["extra"] = true.into();
     let index = scratch.write("binding.json", &invalid);
     assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).is_err());
-    std::fs::write(&index, raw.replacen('{', "{\"version\":1,", 1)).unwrap();
+    std::fs::write(&index, raw.replacen('{', "{\"version\":2,", 1)).unwrap();
     assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).is_err());
     for path in [
         "../outside.json",
@@ -250,4 +250,34 @@ fn spatial_binding_rejects_duplicate_or_aliased_themes() {
     aliased["scenes"][1]["theme_id"] = theme;
     let index = scratch.write("binding.json", &aliased);
     assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).is_err());
+}
+#[test]
+fn spatial_binding_rejects_actual_runtime_file_tampering() {
+    let (map, index, root) = spatial_paths();
+    let scratch = SpatialScratch::new();
+    let binding: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(&index).unwrap()).unwrap();
+    let mut pins = vec![&binding["geometry_source"], &binding["tilemap_source"]];
+    for scene in binding["scenes"].as_array().unwrap() {
+        pins.push(&scene["scenery_source"]);
+        pins.extend(scene["scene_sources"].as_array().unwrap());
+        pins.extend(scene["runtime_resources"].as_array().unwrap());
+    }
+    for pin in pins {
+        let path = pin["path"].as_str().unwrap();
+        let target = scratch.0.join(path);
+        std::fs::create_dir_all(target.parent().unwrap()).unwrap();
+        std::fs::copy(root.join(path), target).unwrap();
+    }
+    concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).unwrap();
+    let path = scratch.0.join(
+        binding["scenes"][0]["runtime_resources"][1]["path"]
+            .as_str()
+            .unwrap(),
+    );
+    let mut actual = std::fs::read(&path).unwrap();
+    let last = actual.len() - 1;
+    actual[last] ^= 1;
+    std::fs::write(path, actual).unwrap();
+    assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).is_err());
 }
