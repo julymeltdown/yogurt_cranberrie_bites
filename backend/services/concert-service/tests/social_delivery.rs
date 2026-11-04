@@ -411,3 +411,61 @@ async fn shutdown_aborts_inflight_publication_without_ack_or_detached_tasks() {
     f.retire_fixture_jobs().await;
     f.pool.close().await;
 }
+
+#[tokio::test]
+#[ignore = "owned Social privacy recovery allocation required"]
+async fn deferred_expiry_publication_keeps_supervisor_alive_and_preserves_foreign_outbox() {
+    let f = Fixture::new().await;
+    let request = f.request(1, "150 milliseconds").await;
+    let foreign = f.source("closeConcertEvent", 1, None).await;
+    f.publisher.fail.store(true, Ordering::SeqCst);
+    tokio::time::sleep(std::time::Duration::from_millis(200)).await;
+    let rt = f.runtime();
+    // The actual supervisor used to return Err at its first normal publisher
+    // Retryable. It must remain alive while both expiry sources stay pending.
+    let (stop, stopped) = oneshot::channel();
+    let mut task = tokio::spawn(rt.run_until(async {
+        let _ = stopped.await;
+    }));
+    tokio::time::timeout(
+        std::time::Duration::from_secs(2),
+        f.publisher.entered.notified(),
+    )
+    .await
+    .unwrap();
+    assert!(
+        tokio::time::timeout(std::time::Duration::from_millis(80), &mut task)
+            .await
+            .is_err()
+    );
+    let pending: (i64, i64) = sqlx::query_as("select count(*),count(published_at) from concert_social_policy_signals where event_id=$1 and deadline_request=$2")
+        .bind(f.event).bind(request).fetch_one(&f.pool).await.unwrap();
+    assert_eq!(pending, (2, 0));
+    assert_eq!(f.state(foreign).await, ("READY".into(), 0));
+    f.publisher.fail.store(false, Ordering::SeqCst);
+    tokio::time::timeout(std::time::Duration::from_secs(3), async {
+        loop {
+            let published: i64 = sqlx::query_scalar("select count(*) from concert_social_policy_signals where event_id=$1 and deadline_request=$2 and published_at is not null")
+                .bind(f.event).bind(request).fetch_one(&f.pool).await.unwrap();
+            if published == 2 { break; }
+            tokio::time::sleep(std::time::Duration::from_millis(10)).await;
+        }
+    }).await.unwrap();
+    stop.send(()).unwrap();
+    assert!(task.await.unwrap().is_ok());
+    assert_eq!(f.state(foreign).await, ("READY".into(), 0));
+    assert_eq!(f.publisher.seen.lock().unwrap().len(), 2);
+    // No force-settlement or fixture job retirement is used for this proof.
+    f.pool.close().await;
+}
+
+#[tokio::test]
+#[ignore = "owned Social privacy recovery allocation required"]
+async fn expiry_storage_failure_remains_a_fatal_supervisor_error() {
+    let f = Fixture::new().await;
+    let rt = f.runtime();
+    f.pool.close().await;
+    assert!(rt.run_expiry_batch().await.is_err());
+    assert!(rt.run_until(std::future::pending()).await.is_err());
+    assert!(f.publisher.seen.lock().unwrap().is_empty());
+}
