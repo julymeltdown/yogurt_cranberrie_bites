@@ -166,6 +166,41 @@ async fn missing_gid_requires_real_full_xid_abort() -> anyhow::Result<()> {
     Ok(())
 }
 #[tokio::test]
+#[ignore = "owned private PG; SQL budget only, canonical/Root NOT_RUN"]
+async fn sql_budget_never_widens_existing_timeouts() -> anyhow::Result<()> {
+    let f = Fixture::new().await?;
+    let until = Utc::now().timestamp_micros() + 4_000_000;
+    let deadline = AuthorityRpcDeadline::new(until, Duration::from_secs(5))?;
+    let mut tx = f.pool.begin().await?;
+    sqlx::query("set local statement_timeout='75ms'")
+        .execute(&mut *tx)
+        .await?;
+    sqlx::query("set local lock_timeout='33ms'")
+        .execute(&mut *tx)
+        .await?;
+    native::budget(&mut tx, deadline, until).await?;
+    let actual:(i64,i64)=sqlx::query_as("select (extract(epoch from current_setting('statement_timeout')::interval)*1000)::bigint,(extract(epoch from current_setting('lock_timeout')::interval)*1000)::bigint")
+        .fetch_one(&mut *tx).await?;
+    assert_eq!(actual, (75, 33));
+    let result = sqlx::query("select pg_sleep(0.12)").execute(&mut *tx).await;
+    assert!(matches!(result,Err(sqlx::Error::Database(e)) if e.code().as_deref()==Some("57014")));
+    tx.rollback().await?;
+    let mut tx = f.pool.begin().await?;
+    sqlx::query("set local statement_timeout=0")
+        .execute(&mut *tx)
+        .await?;
+    native::budget(&mut tx, deadline, until).await?;
+    let millis: i64 = sqlx::query_scalar(
+        "select (extract(epoch from current_setting('statement_timeout')::interval)*1000)::bigint",
+    )
+    .fetch_one(&mut *tx)
+    .await?;
+    assert!((1..=2000).contains(&millis));
+    tx.rollback().await?;
+    f.pool.close().await;
+    Ok(())
+}
+#[tokio::test]
 #[ignore = "two-phase owned runner; prepared restart recovery only"]
 async fn prepared_restart_recovery() -> anyhow::Result<()> {
     let phase = std::env::var("GIFT_PRIVATE_RESTART_PHASE")?;

@@ -286,6 +286,11 @@ certify Root's durable intent order. `gift_live_resources.py --private-test`
 accepts the same frozen Concert lib binary as `--queries-test`, configures only
 its own newly created marker/inode-owned cluster, and requires no prepared
 children remain before cleanup. These tests are authored, not executed yet.
+SDK peer review identified that the initial private SQL budget could widen an
+existing shorter statement timeout. The corrected helper clamps that limit,
+treats zero as unbounded and leaves the existing lock timeout unchanged. An
+additional actual-SQL test checks both retained limits and a real statement
+cancellation, plus the zero-to-bounded case; it is also **NOT_RUN** currently.
 
 Pickup/IssueCode dispatch remains default-unavailable. Root must compose the
 actual Gift settler and enforce the returned clip before every positive response

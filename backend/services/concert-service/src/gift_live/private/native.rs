@@ -20,8 +20,10 @@ pub(super) async fn budget(
     if millis == 0 {
         return Err(unavailable());
     }
-    sqlx::query("select set_config('statement_timeout',$1,true)")
-        .bind(millis.to_string())
+    // Zero means unbounded in PG. Clamp an existing nonzero timeout instead of
+    // widening a caller/resource's shorter limit. Leave lock_timeout unchanged.
+    sqlx::query("select set_config('statement_timeout',(extract(epoch from least(coalesce(nullif(current_setting('statement_timeout')::interval,interval '0'),$1::text::interval),$1::text::interval))*1000)::bigint::text||'ms',true)")
+        .bind(format!("{millis}ms"))
         .execute(&mut *c)
         .await
         .map_err(|_| unavailable())?;

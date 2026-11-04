@@ -107,7 +107,8 @@ def main():
                 require(result.returncode == 0, "native Gift private exclusion test failed")
                 require(re.search(r"test result: ok\. 1 passed", result.stdout) is not None, "expected exactly one named Gift private test")
             for name in ["drop_keeps_exclusion_until_exact_idempotent_abort", "expiry_denies_content_without_releasing_exclusion",
-                         "mismatched_identity_cannot_rollback_and_commit_is_not_abort", "missing_gid_requires_real_full_xid_abort"]:
+                         "mismatched_identity_cannot_rollback_and_commit_is_not_abort", "missing_gid_requires_real_full_xid_abort",
+                         "sql_budget_never_widens_existing_timeouts"]:
                 private_run(name)
             private_run("prepared_restart_recovery", "prepare")
             before = cluster.assert_postmaster()
