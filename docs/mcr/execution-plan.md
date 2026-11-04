@@ -2,6 +2,20 @@
 
 ## Current checkpoint
 
+The [13:33 UTC staffing correction](progress.md#staffing-correction-2026-11-04-1333-utc)
+supersedes the earlier activity census below. Seven existing frontend/art chats
+have concrete accepted assignments and source work; this adds no original-task
+completion. Backend validation/helper assignments are separate from still-pending
+BE41/BE42 production transfers. Frontend KING owns frontend/art allocation and the
+resource lead owns backend allocation; neither source work nor delivery needs a
+king acknowledgment. A new human retro-design instruction is being applied to
+Feed while the frontend chat clarifies whether it covers all ten screens.
+
+The following hourly task accounting is retained at its stated cutoff. Later
+runtime outcomes are recorded in the staffing correction, including the failed
+first 200-user provisioning attempt and the next QA08 preparation; no capacity
+acceptance follows from starting an attempt.
+
 The [current progress reconciliation](progress.md#current-task-accounting) records
 39 task-criteria outcomes: 13 acceptance dispositions and 26 additional original
 criteria closures. Another 67 tasks have implementation evidence, 2 dispositions
