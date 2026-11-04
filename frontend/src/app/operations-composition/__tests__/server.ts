@@ -14,6 +14,8 @@ export function createControlledServer() {
     if (path === '/api/auth/login' || path === '/api/auth/refresh') return Response.json(wire.auth)
     if (path === '/api/auth/logout') return new Response(null, { status: 204 })
     if (!request.headers.get('Authorization')) return error(401, 'AUTHENTICATION_REQUIRED')
+    if (path === '/api/auth/enrollment/admission') return Response.json({ decision: 'ADMITTED',
+      policyRevision: '11111111-1111-4111-8111-111111111111', acceptedRevision: '11111111-1111-4111-8111-111111111111', serverTime: new Date().toISOString() })
     const intercepted = state.intercept?.(request); if (intercepted) return intercepted
     if (!path.startsWith(`/api/concert/events/${wire.event}/`)) return error(404, 'RESOURCE_UNAVAILABLE')
     if (path.endsWith('/me/operations-access')) {

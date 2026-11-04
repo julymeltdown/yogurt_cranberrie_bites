@@ -42,7 +42,14 @@ try {
       await route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body:await response.text()})
     } catch { await route.abort('failed') }
   })
-  await page.goto(`http://127.0.0.1:${process.env.ADMIN_PORT}/admin/mural`)
+  await page.goto(`http://127.0.0.1:${process.env.ADMIN_PORT}/login`)
+  await page.getByLabel('Email',{exact:true}).fill('operator@example.com')
+  await page.getByLabel('Password',{exact:true}).fill('TEST_ONLY_default_admin_password')
+  await page.getByRole('button',{name:'Sign in with email'}).click()
+  await page.waitForURL('**/world')
+  // Admin is deliberately excluded from sign-in return URLs. Use normal browser
+  // history navigation in the already signed-in SPA; never inject an identity.
+  await page.evaluate(()=>{history.pushState(null,'','/admin/mural');dispatchEvent(new PopStateEvent('popstate'))})
   const status=page.getByRole('status',{name:'Wall control status'})
   await expect(status).toContainText('Server wall state loaded')
   await page.getByLabel('Reason',{exact:true}).fill('Reviewed default Admin retained command')
@@ -78,6 +85,12 @@ try {
   await expect(page.getByText('PRIVATE diagnostic must never render')).toHaveCount(0)
   await capture('390-withdrawn.png')
   report.requests=controlled.requests.map(r=>({method:r.method,path:new URL(r.url).pathname,key:r.headers.get('Idempotency-Key')}))
+  const admission=report.requests.findIndex(r=>r.path==='/api/auth/enrollment/admission')
+  const role=report.requests.findIndex(r=>r.path.endsWith('/me/operations-access'))
+  assert(admission>=0&&role>admission,'Canonical registered admission must precede Admin role HTTP')
+  assert.equal(controlled.requests.filter(r=>new URL(r.url).pathname==='/api/auth/login').length,1)
+  assert(controlled.requests.filter(r=>new URL(r.url).pathname.includes('/admin/')).every(r=>r.headers.get('Authorization')===`Bearer ${wire.auth.accessToken}`))
+  report.canonicalAdmissionBeforeAdmin=true;report.identityInjected=false
   assert.deepEqual(report.errors,[]);report.result='PASS';report.retainedOriginalKey=originalKey;report.singleMutation=true;report.withdrawal=true
   await context.close()
 } catch(error) {report.failure=String(error);process.exitCode=1}
