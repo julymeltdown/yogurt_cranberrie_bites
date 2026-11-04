@@ -17,6 +17,7 @@ import migration_smoke as migration
 ROOT = Path(__file__).resolve().parents[3]
 MIGRATION = ROOT / "backend/services/concert-service/migrations/0028_product_owner_scope_lifecycle.sql"
 GIFT_MIGRATION = ROOT / "backend/services/concert-service/migrations/0037_gift_private_child_intents.sql"
+SOCIAL_MIGRATION = ROOT / "backend/services/concert-service/migrations/0042_social_read_child_intents.sql"
 DATABASE = "mcr_product_scope_ledger"
 INSTANCE = "a0280000-0000-4000-8000-000000000001"
 SCOPE = "a0280000-0000-4000-8000-000000000002"
@@ -37,6 +38,7 @@ def run(args, report):
     report["migration_sha256"] = source_hash
     gift_hash = hashlib.sha256(GIFT_MIGRATION.read_bytes()).hexdigest()
     report["gift_migration_sha256"] = gift_hash
+    report["social_migration_sha256"] = hashlib.sha256(SOCIAL_MIGRATION.read_bytes()).hexdigest()
     binary = None
     if args.repository_test is not None:
         binary = migration.executable(args.repository_test)
@@ -84,6 +86,11 @@ def run(args, report):
             env=cluster.client_env(DATABASE), cwd=cluster.root, capture_output=True, timeout=30)
         report["commands"]["apply-gift-child-migration"] = result.returncode
         require(result.returncode == 0, "Gift child kind migration failed")
+        result = subprocess.run(
+            [str(tools["psql"]), "-X", "--no-password", "-v", "ON_ERROR_STOP=1", "-1", "-f", str(SOCIAL_MIGRATION)],
+            env=cluster.client_env(DATABASE), cwd=cluster.root, capture_output=True, timeout=30)
+        report["commands"]["apply-social-child-migration"] = result.returncode
+        require(result.returncode == 0, "Social child kind migration failed")
         if binary is not None:
             env = {**cluster.env, "CONCERT_TEST_DATABASE_URL": cluster.url(DATABASE),
                    "CONCERT_TEST_OWNER_ROOT": str(cluster.root), "CONCERT_TEST_OWNER_TOKEN": cluster.token,
@@ -145,6 +152,10 @@ def run(args, report):
         require(sql(f"SELECT count(*) FROM concert_product_child_intents WHERE {child} AND kind='GIFT_PRIVATE'") == "1",
                 "closed Gift child kind not admitted")
         report["commands"]["closed-gift-child-kind"] = 0
+        sql(child_insert.replace("PROFILE_PUBLIC", "SOCIAL_READ").replace("000000000008", "000000000012"))
+        require(sql(f"SELECT count(*) FROM concert_product_child_intents WHERE {child} AND kind='SOCIAL_READ'") == "1",
+                "closed Social child kind not admitted")
+        report["commands"]["closed-social-child-kind"] = 0
         denied("unknown-child-kind-denied", child_insert.replace("PROFILE_PUBLIC", "GIFT_ARBITRARY").replace("000000000008", "000000000011"))
         denied("child-cannot-complete-before-root", f"UPDATE concert_product_child_intents SET completed_at=clock_timestamp() WHERE {child}")
         denied("child-cannot-rebind", f"UPDATE concert_product_child_intents SET key_id='other' WHERE {child}")
@@ -173,7 +184,7 @@ def run(args, report):
         cluster.stop()
         cluster.start()
         require(sql(f"SELECT phase FROM concert_product_owner_scopes WHERE {key}") == "ROOT_FINISHED", "finished state lost")
-        require(sql(f"SELECT count(*)=2 AND bool_and(completed_at IS NULL AND key_id='fixture' AND sealed_reference=decode(repeat('77',28),'hex')) FROM concert_product_child_intents WHERE {child}") == "t", "unresolved child evidence lost")
+        require(sql(f"SELECT count(*)=3 AND bool_and(completed_at IS NULL AND key_id='fixture' AND sealed_reference=decode(repeat('77',28),'hex')) FROM concert_product_child_intents WHERE {child}") == "t", "unresolved child evidence lost")
         report["commands"]["restart-retains-child-intent"] = 0
         sql(f"UPDATE concert_product_child_intents SET completed_at=clock_timestamp() WHERE {child}")
         denied("completed-child-cannot-reopen", f"UPDATE concert_product_child_intents SET completed_at=NULL WHERE {child}")

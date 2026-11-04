@@ -12,13 +12,26 @@ use tonic::Status;
 pub trait GiftPrivateIntentSettler: Send + Sync {
     async fn recover_gift_private(&self, reference: &ChildRecoveryReference) -> Result<(), Status>;
 }
+#[async_trait::async_trait]
+pub trait SocialReadIntentSettler: Send + Sync {
+    async fn recover_social_read(&self, reference: &ChildRecoveryReference) -> Result<(), Status>;
+}
 pub struct CompositeChildIntentSettler {
     public: Arc<PublicProfileReader>,
     gift: Arc<dyn GiftPrivateIntentSettler>,
+    social: Option<Arc<dyn SocialReadIntentSettler>>,
 }
 impl CompositeChildIntentSettler {
     pub fn new(public: Arc<PublicProfileReader>, gift: Arc<dyn GiftPrivateIntentSettler>) -> Self {
-        Self { public, gift }
+        Self {
+            public,
+            gift,
+            social: None,
+        }
+    }
+    pub fn with_social(mut self, social: Arc<dyn SocialReadIntentSettler>) -> Self {
+        self.social = Some(social);
+        self
     }
 }
 #[async_trait::async_trait]
@@ -31,6 +44,15 @@ impl ChildIntentSettler for CompositeChildIntentSettler {
             }
             ChildRecoveryReference::GiftPrivate { .. } => {
                 self.gift.recover_gift_private(reference).await
+            }
+            ChildRecoveryReference::SocialRead { .. } => {
+                self.social
+                    .as_ref()
+                    .ok_or_else(|| {
+                        Status::failed_precondition("Social read recovery is unavailable")
+                    })?
+                    .recover_social_read(reference)
+                    .await
             }
         }
     }

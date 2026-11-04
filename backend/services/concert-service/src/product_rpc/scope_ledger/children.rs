@@ -179,7 +179,8 @@ impl PgScopeLedger {
                 }
             }
             ChildRecoveryReference::LocalPublic { native, .. }
-            | ChildRecoveryReference::GiftPrivate { native, .. } => {
+            | ChildRecoveryReference::GiftPrivate { native, .. }
+            | ChildRecoveryReference::SocialRead { native, .. } => {
                 if native.producer_instance_id != scope.instance {
                     return Err(invalid());
                 }
@@ -195,6 +196,19 @@ impl PgScopeLedger {
                     &[],
                 )?;
                 reference.local_prepared_gid()?;
+                if let ChildRecoveryReference::SocialRead {
+                    valid_until_unix_micros,
+                    ..
+                } = reference
+                {
+                    if *valid_until_unix_micros != q.expires_unix_micros
+                        || *valid_until_unix_micros <= 0
+                        || chrono::DateTime::from_timestamp_micros(*valid_until_unix_micros)
+                            .is_none()
+                    {
+                        return Err(invalid());
+                    }
+                }
                 if let ChildRecoveryReference::GiftPrivate {
                     giveaway_id,
                     reservation_id,

@@ -143,6 +143,7 @@ impl CanonicalOwnerFence {
                 child_intents: BTreeMap::new(),
                 attached_children: BTreeSet::new(),
                 registered: Vec::new(),
+                policy_disclosure_deadline: None,
                 serialized: false,
                 sealed: false,
                 complete: false,
@@ -161,6 +162,7 @@ struct State {
     child_intents: BTreeMap<(u8, Uuid), super::ChildRecoveryReference>,
     attached_children: BTreeSet<(u8, Uuid)>,
     registered: Vec<ProducerTransaction>,
+    policy_disclosure_deadline: Option<AuthorityRpcDeadline>,
     serialized: bool,
     sealed: bool,
     complete: bool,
@@ -184,6 +186,29 @@ impl OwnerGuardScope {
     pub fn binding(&self) -> &GuardBinding {
         &self.binding
     }
+    /// Only shorten this held response's disclosure window. This does not mint
+    /// authority, renew a request, complete a scope or settle any transaction.
+    /// Preserve the captured monotonic stop as well as wall expiry so a later
+    /// wall-clock rollback cannot restore previously consumed disclosure time.
+    pub fn limit_disclosure_until(&self, until: DateTime<Utc>) -> Result<(), Status> {
+        self.binding.check()?;
+        let original = self.binding.deadline();
+        let mut state = self.state.lock().map_err(unavailable)?;
+        if state.sealed {
+            return Err(Status::permission_denied("Root scope sealed"));
+        }
+        let previous = state.policy_disclosure_deadline.unwrap_or(original);
+        let limit = AuthorityRpcDeadline::within_original(
+            until
+                .timestamp_micros()
+                .min(original.expires_micros())
+                .min(previous.expires_micros()),
+            original.stop().min(previous.stop()).into_std(),
+            MAX_GUARD_DURATION,
+        )?;
+        state.policy_disclosure_deadline = Some(limit);
+        Ok(())
+    }
     /// Response-wide disclosure ceiling. This is not a fresh authorization or a
     /// settlement grant. Include every immutable intent (also unknown/lost ACK
     /// children), regardless of which subject the last projection queried.
@@ -205,9 +230,10 @@ impl OwnerGuardScope {
                     .min(self.friend_view.expires_unix_micros),
                 |until, reference| until.min(reference.content_expires_unix_micros()),
             );
+        let policy = state.policy_disclosure_deadline.unwrap_or(original);
         AuthorityRpcDeadline::within_original(
-            expires,
-            original.stop().into_std(),
+            expires.min(policy.expires_micros()),
+            original.stop().min(policy.stop()).into_std(),
             MAX_GUARD_DURATION,
         )
     }
@@ -403,6 +429,7 @@ impl OwnerGuardScope {
                             || (matches!(
                                 reference,
                                 super::ChildRecoveryReference::LocalPublic { .. }
+                                    | super::ChildRecoveryReference::SocialRead { .. }
                             ) && reference.query().subject == self.binding.actor())
                     })
                     .map(|(reference, child)| (reference.clone(), child.clone()))
@@ -454,7 +481,8 @@ impl OwnerGuardScope {
         reference.validate_for(&self.binding)?;
         reference.check_content_time()?;
         if let super::ChildRecoveryReference::LocalPublic { native, .. }
-        | super::ChildRecoveryReference::GiftPrivate { native, .. } = reference
+        | super::ChildRecoveryReference::GiftPrivate { native, .. }
+        | super::ChildRecoveryReference::SocialRead { native, .. } = reference
         {
             if native.producer_instance_id.to_string() != self.producer.instance_id {
                 return Err(Status::permission_denied("Child producer mismatch"));

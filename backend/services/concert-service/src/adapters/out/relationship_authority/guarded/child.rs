@@ -142,6 +142,12 @@ pub enum ChildRecoveryReference {
         reservation_id: Uuid,
         valid_until_unix_micros: i64,
     },
+    SocialRead {
+        query: ChildQuery,
+        child_nonce: Uuid,
+        native: ChildNativeIdentity,
+        valid_until_unix_micros: i64,
+    },
 }
 impl ChildRecoveryReference {
     pub fn kind_name(&self) -> &'static str {
@@ -149,6 +155,7 @@ impl ChildRecoveryReference {
             Self::ProfilePublic { .. } => "PROFILE_PUBLIC",
             Self::LocalPublic { .. } => "LOCAL_PUBLIC",
             Self::GiftPrivate { .. } => "GIFT_PRIVATE",
+            Self::SocialRead { .. } => "SOCIAL_READ",
         }
     }
     pub(super) fn key(&self) -> Result<(u8, Uuid), Status> {
@@ -157,6 +164,7 @@ impl ChildRecoveryReference {
                 Self::ProfilePublic { .. } => 1,
                 Self::LocalPublic { .. } => 2,
                 Self::GiftPrivate { .. } => 3,
+                Self::SocialRead { .. } => 4,
             },
             self.intent_id()?,
         ))
@@ -165,7 +173,8 @@ impl ChildRecoveryReference {
         match self {
             Self::ProfilePublic { query, .. }
             | Self::LocalPublic { query, .. }
-            | Self::GiftPrivate { query, .. } => query,
+            | Self::GiftPrivate { query, .. }
+            | Self::SocialRead { query, .. } => query,
         }
     }
     pub fn intent_id(&self) -> Result<Uuid, Status> {
@@ -177,7 +186,9 @@ impl ChildRecoveryReference {
                     .strip_prefix(&query.profile_prefix())
                     .ok_or_else(invalid)?,
             ),
-            Self::LocalPublic { child_nonce, .. } | Self::GiftPrivate { child_nonce, .. } => {
+            Self::LocalPublic { child_nonce, .. }
+            | Self::GiftPrivate { child_nonce, .. }
+            | Self::SocialRead { child_nonce, .. } => {
                 if child_nonce.is_nil() {
                     Err(invalid())
                 } else {
@@ -196,6 +207,15 @@ impl ChildRecoveryReference {
                 simple_uuid(completion_secret)?;
             }
             Self::LocalPublic { native, .. } => native.validate(&binding.digest())?,
+            Self::SocialRead {
+                query,
+                native,
+                valid_until_unix_micros,
+                ..
+            } => {
+                native.validate(&binding.digest())?;
+                social_fields(query, *valid_until_unix_micros)?;
+            }
             Self::GiftPrivate {
                 query,
                 native,
@@ -225,6 +245,10 @@ impl ChildRecoveryReference {
             Self::GiftPrivate {
                 valid_until_unix_micros,
                 ..
+            }
+            | Self::SocialRead {
+                valid_until_unix_micros,
+                ..
             } => *valid_until_unix_micros,
             _ => self.query().expires_unix_micros,
         }
@@ -243,9 +267,23 @@ impl ChildRecoveryReference {
             Self::GiftPrivate { child_nonce, .. } if !child_nonce.is_nil() => {
                 Ok(format!("mcr-gift-private:{}", child_nonce.simple()))
             }
+            Self::SocialRead { child_nonce, .. } if !child_nonce.is_nil() => {
+                Ok(format!("mcr-social-read:{}", child_nonce.simple()))
+            }
             _ => Err(invalid()),
         }
     }
+}
+fn social_fields(query: &ChildQuery, until: i64) -> Result<(), Status> {
+    // This read child conservatively protects the entire original parent
+    // window. It cannot renew authority or introduce a hidden shorter window.
+    if until <= 0
+        || until != query.expires_unix_micros
+        || chrono::DateTime::from_timestamp_micros(until).is_none()
+    {
+        return Err(invalid());
+    }
+    Ok(())
 }
 fn gift_fields(
     query: &ChildQuery,
@@ -343,6 +381,38 @@ mod tests {
         assert!(wrong.validate(&q.binding_digest).is_err());
         let mut value = serde_json::to_value(reference).unwrap();
         value["gid"] = serde_json::json!("arbitrary SQL");
+        assert!(serde_json::from_value::<ChildRecoveryReference>(value).is_err());
+    }
+    #[test]
+    fn social_read_is_closed_and_covers_exact_original_window() {
+        let q = query();
+        for until in [0, -1, q.expires_unix_micros - 1, q.expires_unix_micros + 1] {
+            assert!(social_fields(&q, until).is_err());
+        }
+        social_fields(&q, q.expires_unix_micros).unwrap();
+        let reference = ChildRecoveryReference::SocialRead {
+            query: q.clone(),
+            child_nonce: Uuid::from_u128(13),
+            native: ChildNativeIdentity {
+                system_identifier: "123".into(),
+                database_oid: 4,
+                full_xid: "77".into(),
+                backend_pid: 8,
+                backend_started_unix_micros: 100,
+                producer_instance_id: Uuid::from_u128(6),
+            },
+            valid_until_unix_micros: q.expires_unix_micros,
+        };
+        assert_eq!(reference.kind_name(), "SOCIAL_READ");
+        assert_eq!(reference.key().unwrap(), (4, Uuid::from_u128(13)));
+        assert_eq!(
+            reference.local_prepared_gid().unwrap(),
+            format!("mcr-social-read:{}", Uuid::from_u128(13).simple())
+        );
+        let bytes = serde_json::to_vec(&reference).unwrap();
+        assert!(serde_json::from_slice::<ChildRecoveryReference>(&bytes).unwrap() == reference);
+        let mut value = serde_json::to_value(&reference).unwrap();
+        value["gid"] = serde_json::json!("mcr-public-avatar:other");
         assert!(serde_json::from_value::<ChildRecoveryReference>(value).is_err());
     }
     #[test]
