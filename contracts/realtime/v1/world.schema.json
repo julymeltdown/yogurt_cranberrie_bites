@@ -661,6 +661,12 @@
         },
         {
           "$ref": "#/$defs/ServerPing"
+        },
+        {
+          "$ref": "#/$defs/PolicyBaseline"
+        },
+        {
+          "$ref": "#/$defs/PolicyInvalidated"
         }
       ]
     },
@@ -837,6 +843,92 @@
           "type": "string",
           "format": "date-time",
           "pattern": "Z$"
+        }
+      }
+    },
+    "PolicyBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "eventId",
+        "scope",
+        "policyRevision"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "policy.baseline"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "eventId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "scope": {
+          "const": "SOCIAL"
+        },
+        "policyRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "PolicyInvalidated": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "eventId",
+        "scope",
+        "policyRevision",
+        "reason"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "policy.invalidate"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "eventId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "scope": {
+          "const": "SOCIAL"
+        },
+        "policyRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "reason": {
+          "enum": [
+            "SOURCE_CHANGED",
+            "CONSENT_CHANGED",
+            "BLOCK_CHANGED",
+            "EXPIRED",
+            "CANONICAL_POLICY_CHANGED"
+          ]
         }
       }
     }

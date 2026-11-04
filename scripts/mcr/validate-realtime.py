@@ -208,11 +208,20 @@ class Trace:
         self.heartbeat = None
         self.used_streams, self.used_requests = set(), set()
         self.suspended = self.closed = False
+        # Policy metadata never authenticates a user or grants a private read.
+        self.policy_revision = None
+        self.policy_baseline_current = False
+        self.policy_floors = {}
 
     def consume(self, direction, message):
         # Route objects through the exact wire parser and byte limits as fixtures do.
-        message = self.contract.decode(json.dumps(message, ensure_ascii=False,
-                                                  allow_nan=False), direction)
+        try:
+            message = self.contract.decode(json.dumps(message, ensure_ascii=False,
+                                                      allow_nan=False), direction)
+        except (WireError, ValueError):
+            if direction == 'server':
+                self.policy_baseline_current = False
+            raise
         require(not self.closed, 'message after revoke')
         kind = message['type']
         if direction == 'client' and kind == 'authenticate':
@@ -225,6 +234,9 @@ class Trace:
             self.accept_snapshot(message)
             return
         require(self.snapshot is not None, 'snapshot required')
+        if direction == 'server' and kind in ('policy.baseline', 'policy.invalidate'):
+            self.accept_policy(message)
+            return
         if 'streamId' in message:
             require(message['streamId'] == self.snapshot['streamId'], 'obsolete stream')
         if 'roomEpoch' in message:
@@ -286,12 +298,39 @@ class Trace:
             self.heartbeat = message['heartbeatId']
 
     def close(self):
+        self.policy_baseline_current = False
+        self.policy_revision = None
         self.closed = True
         self.players.clear()
         self.snapshot = self.authenticate = None
         self.pending = self.heartbeat = None
         self.used_streams.clear()
         self.used_requests.clear()
+
+    def accept_policy(self, message):
+        previous = self.policy_baseline_current
+        self.policy_baseline_current = False
+        require(message['streamId'] == self.snapshot['streamId'], 'obsolete policy stream')
+        require(message['eventId'] == self.snapshot['eventId'], 'policy event mismatch')
+        event, revision = message['eventId'], message['policyRevision']
+        floor = self.policy_floors.get(event, 0)
+        if message['type'] == 'policy.baseline':
+            require(revision >= floor, 'policy baseline regressed')
+            if self.policy_revision == revision:
+                self.policy_baseline_current = previous
+                return
+            self.policy_revision = revision
+            self.policy_floors[event] = revision
+            self.policy_baseline_current = True
+            return
+        require(self.policy_revision is not None, 'policy baseline required before invalidation')
+        # An invalidation is withdrawal, including jumps. It cannot create the
+        # new baseline/availability required for a subsequent private request.
+        if revision <= floor:
+            self.policy_baseline_current = previous
+            return
+        self.policy_revision = revision
+        self.policy_floors[event] = revision
 
     def accept_snapshot(self, message):
         require(message['selfUserId'] == self.actor, 'self identity mismatch')
@@ -319,6 +358,8 @@ class Trace:
         # Validate everything before replacing the old complete baseline.
         # Retain one roster only; a snapshot copy must not retain subsequently blocked players.
         self.snapshot = {key: copy.deepcopy(value) for key, value in message.items() if key != 'players'}
+        self.policy_baseline_current = False
+        self.policy_revision = None
         self.players = {row['userId']: copy.deepcopy(row) for row in message['players']}
         self.sequence = self.input_sequence = self.ack = 0
         self.tick = message['serverTick']
