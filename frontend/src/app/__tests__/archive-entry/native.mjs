@@ -43,9 +43,11 @@ const inputs = [
   'frontend/src/app/archive-entry/index.tsx', 'frontend/src/app/PublicBoundary.tsx', 'frontend/src/app/router.tsx',
   'frontend/src/app/ports.ts', 'frontend/src/main.tsx', 'frontend/src/app/access.tsx', 'frontend/src/app/routes.ts',
   'frontend/src/app/__tests__/archive-entry/preview.tsx', 'frontend/src/app/__tests__/archive-entry/native.mjs',
+  'frontend/src/app/__tests__/archive-entry/preview.html', 'frontend/src/app/__tests__/archive-entry/route.test.tsx',
+  'frontend/src/features/archive/__tests__/fixtures/data.ts', 'frontend/src/shared/styles/base.css', 'frontend/src/app/shell.css',
   'frontend/src/app/__tests__/fixtures/ports.ts', 'frontend/src/features/event-feed/contract.ts',
   'frontend/src/shared/api/domain.ts', 'frontend/src/shared/api/domain-operations.generated.ts',
-  'contracts/generated/mcr-domain.openapi.json', 'frontend/pnpm-lock.yaml',
+  'contracts/generated/mcr-domain.openapi.json', 'frontend/pnpm-lock.yaml', 'frontend/package.json', 'frontend/tsconfig.json',
 ]
 for (const name of await readdir(resolve(frontend, 'src/features/archive'))) if (/\.(ts|tsx|css)$/.test(name)) inputs.push(`frontend/src/features/archive/${name}`)
 const report = { result: 'FAIL', qualification: 'ACTUAL_DEFAULT_ROOT_SYNTHETIC_PUBLIC_HTTP_NO_QUALIFIED_MEDIA',
