@@ -390,10 +390,13 @@ async fn pending(pool: &PgPool, user: Uuid) -> Result<i64> {
     .await?)
 }
 async fn wait_user_lock(pool: &PgPool) -> Result<()> {
+    wait_user_locks(pool, 1).await
+}
+async fn wait_user_locks(pool: &PgPool, expected: i64) -> Result<()> {
     tokio::time::timeout(WallDuration::from_secs(1),async {
         loop {
             let n:i64=sqlx::query_scalar("select count(*) from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid() and cardinality(pg_blocking_pids(pid))>0 and strpos(query,'mcr-world-account-deletion:')>0").fetch_one(pool).await?;
-            if n>0{return Ok::<_,anyhow::Error>(())}
+            if n>=expected{return Ok::<_,anyhow::Error>(())}
             tokio::time::sleep(WallDuration::from_millis(5)).await;
         }
     }).await??;
@@ -653,7 +656,7 @@ async fn native_actual_postmaster_restart_replays_durable_receipts() -> Result<(
 
 #[tokio::test]
 #[ignore = "owned PG16 actual Auth source; preconsumed admission and room-switch races"]
-async fn native_preconsumed_admission_and_switch_obey_first_user_fence() -> Result<()> {
+async fn native_preconsumed_admission_switch_and_disconnect_obey_first_user_fence() -> Result<()> {
     let auth = owned_pool("mcr_world_deletion_auth").await?;
     let pool = owned_pool("mcr_world_deletion_concert").await?;
     let user = actual_auth_user(&auth).await?;
@@ -691,6 +694,22 @@ async fn native_preconsumed_admission_and_switch_obey_first_user_fence() -> Resu
         ConsumeOutcome::Consumed(c) => c,
         _ => anyhow::bail!("actual second consume missing"),
     };
+    assert!(matches!(
+        repo.disconnect(
+            initial.membership.key,
+            a.event_id,
+            initial.membership.connection_id,
+            &initial.membership.session_id,
+            Utc::now(),
+            Duration::seconds(20)
+        )
+        .await?,
+        LeaseState::Disconnected(_)
+    ));
+    assert!(matches!(
+        repo.admit(&owner, &first_claim, Utc::now()).await?,
+        AdmissionOutcome::Replaced(_)
+    ));
     let before: serde_json::Value = sqlx::query_scalar(
         "select to_jsonb(m) from concert_world_memberships m where event_id=$1 and user_id=$2",
     )
@@ -721,10 +740,25 @@ async fn native_preconsumed_admission_and_switch_obey_first_user_fence() -> Resu
             .switch(&o, &current, &second_claim, Utc::now())
             .await
     });
-    wait_user_lock(&pool).await?;
+    let contender = repo.clone();
+    let current = initial.membership.clone();
+    let disconnect = tokio::spawn(async move {
+        contender
+            .disconnect(
+                current.key,
+                current.key.event_id,
+                current.connection_id,
+                &current.session_id,
+                Utc::now(),
+                Duration::seconds(60),
+            )
+            .await
+    });
+    wait_user_locks(&pool, 3).await?;
     deletion_tx.commit().await?;
     assert_eq!(admit.await?, Ok(AdmissionOutcome::Denied));
     assert_eq!(switch.await?, Ok(SwitchOutcome::Denied));
+    assert_eq!(disconnect.await?, Ok(LeaseState::Gone));
     let after: serde_json::Value = sqlx::query_scalar(
         "select to_jsonb(m) from concert_world_memberships m where event_id=$1 and user_id=$2",
     )
@@ -737,7 +771,7 @@ async fn native_preconsumed_admission_and_switch_obey_first_user_fence() -> Resu
         .apply(command, deadline())
         .await
         .is_ok());
-    eprintln!("BE42 preconsumed admission/switch PASS: actual positive admission then concurrent stale-claim denial behind FIRST shared user fence; membership unchanged. Session withdrawal remains Sessions owner's scope.");
+    eprintln!("BE42 preconsumed admission/switch/disconnect PASS: actual positive admission then concurrent stale-claim denial behind FIRST shared user fence; membership unchanged. Session withdrawal remains Sessions owner's scope.");
     pool.close().await;
     auth.close().await;
     Ok(())
