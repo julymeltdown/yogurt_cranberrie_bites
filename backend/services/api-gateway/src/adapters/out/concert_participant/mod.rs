@@ -179,24 +179,19 @@ impl GrpcConcertParticipantClient {
                 Operation::Avatar => Box::pin(client.set_avatar(request)).await?,
                 Operation::Update => Box::pin(client.update_preferences(request)).await?,
             };
-            identity
-                .check()
-                .map_err(|_| Status::unauthenticated("Current identity required"))?;
-            context
-                .check()
-                .map_err(|_| Status::unauthenticated("Current access required"))?;
-            if chrono::Utc::now().timestamp_micros() >= expires
-                || response
-                    .metadata()
-                    .get("cache-control")
-                    .and_then(|v| v.to_str().ok())
-                    != Some("no-store")
+            // A received capability is cleanup authority, not content authority.
+            // Validate the entire authenticated reply before any late freshness
+            // refusal. Invalid/mismatched replies must remain quarantined.
+            if response
+                .metadata()
+                .get("cache-control")
+                .and_then(|v| v.to_str().ok())
+                != Some("no-store")
             {
                 return Err(Status::unavailable("Participant response unavailable"));
             }
-            let value = response.into_inner();
-            if value.content_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
-                || value.content_expires_unix_micros > expires
+            let mut value = response.into_inner();
+            if value.content_expires_unix_micros <= 0 || value.content_expires_unix_micros > expires
             {
                 return Err(Status::unavailable("Participant disclosure unavailable"));
             }
@@ -211,6 +206,25 @@ impl GrpcConcertParticipantClient {
                 }
                 None => validate_document(&value.response_json, http.operation, actor, http.event)?,
                 _ => return Err(Status::unavailable("Participant response unavailable")),
+            }
+            // Preserve the exact validated opaque capability and original
+            // ceiling. Only the outer HTTP EOF layer may use it; no background
+            // completion, content renewal or producer work is introduced here.
+            let late_failure = if identity.check().is_err() || context.check().is_err() {
+                Some((tonic::Code::Unauthenticated, "AUTHENTICATION_REQUIRED"))
+            } else if chrono::Utc::now().timestamp_micros() >= expires
+                || value.content_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
+            {
+                Some((tonic::Code::Unavailable, "DEPENDENCY_UNAVAILABLE"))
+            } else {
+                None
+            };
+            if let Some((code, reason)) = late_failure {
+                value.response_json.clear();
+                value.failure = Some(proto::ParticipantFailure {
+                    grpc_code: code as u32,
+                    core_reason: reason.into(),
+                });
             }
             Ok(value)
         };
