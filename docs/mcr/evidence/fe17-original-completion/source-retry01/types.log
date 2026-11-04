@@ -1,0 +1,11 @@
+[96msrc/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx[0m:[93m38[0m:[93m99[0m - [91merror[0m[90m TS2339: [0mProperty 'type' does not exist on type 'Blob | MediaSource'.
+  Property 'type' does not exist on type 'MediaSource'.
+
+[7m38[0m URL.createObjectURL = blob => { const url = originalCreate(blob); createdUrls.push(url); if (blob.type === 'image/png' && blob.size === png.byteLength) protectedUrls.push(url); return url }
+[7m  [0m [91m                                                                                                  ~~~~[0m
+[96msrc/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx[0m:[93m38[0m:[93m128[0m - [91merror[0m[90m TS2339: [0mProperty 'size' does not exist on type 'Blob | MediaSource'.
+  Property 'size' does not exist on type 'MediaSource'.
+
+[7m38[0m URL.createObjectURL = blob => { const url = originalCreate(blob); createdUrls.push(url); if (blob.type === 'image/png' && blob.size === png.byteLength) protectedUrls.push(url); return url }
+[7m  [0m [91m                                                                                                                               ~~~~[0m
+{"files":977,"diagnostics":2}

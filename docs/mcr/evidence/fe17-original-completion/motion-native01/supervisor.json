@@ -1,0 +1,218 @@
+{
+  "slot": "FE17-MOTION-NATIVE-B1-20261104T1823Z",
+  "pin": "56f6ec618b38da9440ac124b5f573bfa7445bd18",
+  "deadlineUTC": "2026-11-04T18:28:18.467021+00:00",
+  "startedUTC": "2026-11-04T18:24:32.019121+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "new": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "files": 65536,
+    "rss": 3758096384,
+    "processes": 16,
+    "childSeconds": 90
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801909707,
+        "files": 7808,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1949176,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551525347,
+    "reachableGitObjects": 39687,
+    "wholeCarryBytes": 2763647564,
+    "chargedFiles": 59069
+  },
+  "chargedCarryBytes": 2768599821,
+  "declaredPort": 64377,
+  "portPrebind": "PASS",
+  "otherReserveBytes": 4362076160,
+  "readonlyInputs": [
+    {
+      "path": "contracts/fixtures/realtime/index.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "e2888ccd54c4a95fd43e734980e7902713acf507814f340a2a5886365d26dfeb",
+      "preimageSha256": "cb4133e389293820230bf234fbc16051fe76691e8aae30201f9467a8919fa13b",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/boolean-version.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "c6e6498ffc33ac305d542ff83273e4b62098799143f741d26c39415f51651025",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/negotiated.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "871eebcd1adc4d0d16c6c059f1f5908abde2259baa71610e73437bc99f9585b6",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/null-version.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "993b3f8e81e1c77b5cbb0b6d87fbfbc2e0e7dd6e77b3999e519b522137c36ded",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/unsupported-version.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "524baa6e7d9e61f93ff6d82458322bce1f21f29e50d622fa75193ba6270b20b6",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/vectors.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "4929a4ff10b33c7bf8286f5e2208f3a044ed73d5780d242ceb4a40629c457c6a",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734",
+      "preimageSha256": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85",
+      "preimageSha256": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "frontend/src/world/network/transport/wire-types.ts",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "f5edb775204f7bd01b7c278d565f046405102b10c662684e3a45593897ac5db2",
+      "preimageSha256": "78657e0a50e19a6a0e567149a23bb5cbca2ba20eb60488769b65cbdd240dbc85",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "scripts/mcr/tests/test_realtime.py",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "67336945ffbe0dee39f8123652aa9a09a3a8cf413260aab0ea3ec1f161d9aa26",
+      "preimageSha256": "fcc229afc69e7bef62416e894f5f8b605d7c04b1eb41e8c1c80432d87a068c80",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "scripts/mcr/validate-realtime.py",
+      "commit": "9c12e1cbdd42bf48aadd3f99d2721a2eeb10f041",
+      "sha256": "f16597d77d7110c417dc610b54aa8a40951da7ad656198139df4770e60c1be09",
+      "preimageSha256": "31ee92c619fae378c03a6ed25339dae9bd1dfeee7b8cb986cc38bd34c4400ee9",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "BackendWorld20f exact corrected oracle intake9c12: complete anchor without upsert updatescachedself; conflicting same-frame upsert rejected. Root exactread-only input authority persists.",
+      "custody": "Readonly input; excluded from FE17 authored/published patch",
+      "priorInputCommit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "priorInputSha256": "e8c388aa6c00aa41a41ce78a65a21e3e44c8e96c260b9bad0631b8929805fbef"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx",
+      "commit": "7aecd87b5ea61f5bd54aeacdbe97e86e6f888f59",
+      "sha256": "1160d0678c399dc3570d81d4ea6a0983ae106c6e97fc5f3678bbad2cb839fafb",
+      "preimageSha256": "4af3e2d4286ec1b082f61dd548c956a3b85108d6ff106458636dbe538098d63a",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact fixture postimage intake after original source FULL; fresh remaining type qualification only",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "frontend/src/world/composition/policy.ts",
+      "commit": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "sha256": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd",
+      "preimageSha256": null,
+      "authority": "Root153 exact frozen composition integration preimage; preserve policy attachment; only three motion hunks transferred",
+      "custody": "Readonly dependency"
+    }
+  ],
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/replication-browser.mjs"
+  ],
+  "externalSingletonTargets": [
+    "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.3gGB4F"
+  ],
+  "wholePeak": 2768599821,
+  "temporaryPeak": 0,
+  "durablePeak": 0,
+  "rssPeak": 346685440,
+  "processPeak": 3,
+  "newPeak": 0,
+  "pid": 78055,
+  "minimumFree": 17006759936,
+  "failure": "RuntimeError: Unconfirmed external Chrome singleton target; preserve carry, no peer deletion",
+  "aliveOwnedPids": [],
+  "unconfirmedRetainedExternal": [
+    "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.3gGB4F"
+  ],
+  "temporaryAbsent": true,
+  "dependencyLinkAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalInventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801909707,
+        "files": 7809,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1949176,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551525347,
+    "reachableGitObjects": 39687,
+    "wholeCarryBytes": 2763647564,
+    "chargedFiles": 59070
+  },
+  "finalFree": 16855154688,
+  "status": "FAIL",
+  "finishedUTC": "2026-11-04T18:24:33.030123+00:00"
+}

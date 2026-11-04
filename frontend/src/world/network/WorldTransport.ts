@@ -33,6 +33,8 @@ export interface Scheduler {
   clear(handle: unknown): void
 }
 export interface WorldTransportOptions {
+  /** Explicit compatible C05 request. Omission preserves the legacy Authenticate byte shape. */
+  readonly motionProfileVersion?: '1.0.0'
   readonly session: SessionPort
   readonly acquireTicket: AcquireWorldTicket
   /** Exact browser origin, with no path/query/credentials. WSS for HTTPS; WS only loopback HTTP. */

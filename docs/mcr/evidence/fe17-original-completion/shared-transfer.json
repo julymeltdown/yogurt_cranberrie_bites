@@ -1,0 +1,32 @@
+{
+  "grant": "Root153 STOP-transfer 2026-11-04; supersedes shared-seam retention",
+  "ownedLeaves": [
+    "frontend/src/world/network/WorldTransport.ts",
+    "frontend/src/world/network/transport/engine.ts",
+    "frontend/src/world/network/transport/contract.ts"
+  ],
+  "ownedNewPrefix": "frontend/src/world/network/__tests__/motion-transport/",
+  "compositionHunks": [
+    "WorldCompositionOptions.motionProfileVersion",
+    "transport optin forwarding",
+    "replication motion context conditional on same optin"
+  ],
+  "integrationPreimages": [
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "commit": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "sha256": "8321ef0b3b7f20b4f5530de0aed0786cd6f7d53cd317adc47a2db64bd85cc447",
+      "preimageSha256": "8242e0a878742b7d31dfb1f947741b534a97b79bb18391b493d3dbec4eb492fc",
+      "authority": "Root153 exact frozen composition integration preimage; preserve policy attachment; only three motion hunks transferred",
+      "custody": "Frozen integration preimage; only three explicit optin hunks writable"
+    },
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "commit": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "sha256": "564f2077f79784b70157373e17e96eddb85af6cd6bd7bb2d4d4c0593d36ff8f8",
+      "preimageSha256": "bd3b199b680f0df417763679ac85a680efd8022eec1c94946882f92001877967",
+      "custody": "Frozen Root source; ONLY loadProduction createWorldComposition motionProfileVersion option hunk transferred"
+    }
+  ],
+  "productionEnablement": "Root153 additional exact option hunk now transferred: actual default-production loadProduction explicitly requests1.0.0; class/composition omission remainslegacy; missing serverprofile fallback."
+}

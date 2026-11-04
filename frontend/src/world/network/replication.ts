@@ -2,6 +2,7 @@ import type { SessionPort, SessionScope } from '../../shared/api/http'
 import type { Input, Resync, Scheduler, Snapshot, WorldEvent, WorldResources, WorldState, WorldTransport } from './WorldTransport'
 import { policy, validate } from './transport/contract'
 import { createEntityProjection, immutable, type EntitySink, type ReplicatedEntity } from '../entities/replicated'
+import { createMotionPrediction, qualifyMotionContext, type MotionContext, type MotionInput, type QualifiedMotionContext } from './prediction'
 
 export interface ReplicationView {
   readonly scope: SessionScope
@@ -11,8 +12,8 @@ export interface ReplicationView {
   readonly entities: readonly ReplicatedEntity[]
   readonly pendingInputs: number
   readonly ackInputSeq: number
-  /** C05 has no authoritative speed/collision/duration model. Never fabricate predicted coordinates. */
-  readonly spatialPrediction: 'unavailable'
+  /** Available means bounded tentative presentation, never server movement authority. */
+  readonly spatialPrediction: 'unavailable' | 'bounded'
   readonly problem: 'connection' | 'room-unavailable' | 'authority' | 'map-version' | 'sink' | null
 }
 export interface ReplicationOptions {
@@ -23,6 +24,7 @@ export interface ReplicationOptions {
   readonly sink: EntitySink<ReplicationView>
   readonly scheduler?: Scheduler
   readonly requestId?: () => string
+  readonly motion?: MotionContext
 }
 const clock: Scheduler = { now: () => performance.now(), set: (ms, fn) => setTimeout(fn, ms), clear: h => clearTimeout(h as ReturnType<typeof setTimeout>) }
 const emptyIntent = () => ({ axisX: 0, axisY: 0, interact: false })
@@ -36,7 +38,12 @@ export function createWorldReplication(options: ReplicationOptions) {
   let resources = { ...options.resources }, started = false, disposed = false, ended = false, visible = true, resume = false
   let generation = 0, phase: ReplicationView['phase'] = 'idle', problem: ReplicationView['problem'] = null
   let baseline: ReplicationView['baseline'] = null, sequence = 0, ack = 0
-  let intent = emptyIntent(), pending: number[] = [], resyncPending = false, lastResync = -Infinity
+  let intent = emptyIntent(), pending: MotionInput[] = [], resyncPending = false, lastResync = -Infinity
+  let motionContext: QualifiedMotionContext | null = null
+  let prediction: ReturnType<typeof createMotionPrediction> = null
+  // Clone before the first async boundary; a caller cannot swap geometry during qualification.
+  const motion = options.motion ? structuredClone(options.motion) : null
+  let motionReady: Promise<void> | null = null
   let lastSent: { x: number; y: number } | null = null
   let inputTimer: unknown = null, resyncTimer: unknown = null, connection: AbortController | null = null
   let removeTransport = () => {}, removeScope = () => {}, withdrawing = false
@@ -44,8 +51,9 @@ export function createWorldReplication(options: ReplicationOptions) {
   let view = snapshot()
   function current() { return started && !disposed && !ended && options.session.isCurrent(scope) }
   function snapshot(): ReplicationView {
-    return immutable({ scope, phase, visible, baseline, entities: entities.render(scheduler.now()), pendingInputs: pending.length,
-      ackInputSeq: ack, spatialPrediction: 'unavailable', problem })
+    const predicted = prediction?.sample(scheduler.now(), pending) ?? null
+    return immutable({ scope, phase, visible, baseline, entities: entities.render(scheduler.now(), predicted), pendingInputs: pending.length,
+      ackInputSeq: ack, spatialPrediction: prediction ? 'bounded' : 'unavailable', problem })
   }
   function stopTimers() {
     if (inputTimer !== null) scheduler.clear(inputTimer)
@@ -53,7 +61,7 @@ export function createWorldReplication(options: ReplicationOptions) {
     inputTimer = resyncTimer = null
   }
   function clear(keepBaseline = false, keepHeld = false) {
-    stopTimers(); entities.clear(); pending = []; sequence = ack = 0; resyncPending = false; lastSent = null
+    stopTimers(); entities.clear(); pending = []; prediction = null; sequence = ack = 0; resyncPending = false; lastSent = null
     if (!keepBaseline) baseline = null
     intent = keepHeld ? { ...intent, interact: false } : emptyIntent()
   }
@@ -117,7 +125,7 @@ export function createWorldReplication(options: ReplicationOptions) {
       try { transport.sendInput(sent) } catch { connectionFailure(); return }
       if (!active() || generation !== g) return
       lastSent = { x: sent.axisX, y: sent.axisY }
-      pending.push(sent.seq); publish()
+      pending.push({ seq: sent.seq, axisX: sent.axisX, axisY: sent.axisY, sentAt: scheduler.now() }); publish()
       if (generation === g) scheduleInput()
     })
   }
@@ -157,13 +165,25 @@ export function createWorldReplication(options: ReplicationOptions) {
       const { players, ...metadata } = frame
       baseline = immutable(structuredClone(metadata)); resources = { ...resources, roomId: frame.roomId }
       entities.reset(players, frame.selfUserId, scheduler.now()); phase = 'live'; problem = null
+      if (motionContext && frame.mapId === motionContext.mapId && frame.mapRevision === motionContext.mapRevision && frame.motionProfile && frame.selfMotion) {
+        const self = players.find(player => player.userId === frame.selfUserId)
+        prediction = createMotionPrediction(motionContext, frame.motionProfile)
+        if (!self || self.position.x !== frame.selfMotion.position.x || self.position.y !== frame.selfMotion.position.y
+          || !prediction?.correct(frame.selfMotion, frame.serverTick, frame.ackInputSeq, sequence, scheduler.now())) prediction = null
+      }
       publish(); scheduleInput()
     } else if (frame.type === 'delta') {
       if (!active() || !baseline) return
       // Ordering/epochs/filtering/roster are FE16's authority, never room-global sequence inference.
       entities.delta(frame.upserts, frame.removes, scheduler.now())
-      baseline = immutable({ ...baseline, streamSeq: frame.streamSeq, serverTick: frame.serverTick, ackInputSeq: frame.ackInputSeq })
-      ack = frame.ackInputSeq; pending = pending.filter(seq => seq > ack); publish()
+      if (prediction && (!frame.selfMotion || !prediction.correct(frame.selfMotion, frame.serverTick, frame.ackInputSeq, sequence, scheduler.now()))) prediction = null
+      // A validated complete anchor remains authoritative even without an upsert or prediction context.
+      if (frame.selfMotion) entities.anchorSelf(frame.selfMotion.position)
+      baseline = immutable({ ...baseline, streamSeq: frame.streamSeq, serverTick: frame.serverTick, ackInputSeq: frame.ackInputSeq,
+        ...(frame.selfMotion ? { selfMotion: frame.selfMotion } : {}) })
+      ack = frame.ackInputSeq
+      const consumed = frame.selfMotion ? frame.selfMotion.consumedInputSeq : ack
+      pending = pending.filter(input => input.seq > consumed); publish()
     } else if (frame.type === 'switchRejected') { phase = 'live'; problem = 'room-unavailable'; publish(); scheduleInput() }
     else if (frame.type === 'revoke') { terminate('authority') }
     else if (frame.type === 'resyncRequired' && ['MAP_VERSION_MISMATCH', 'BACKPRESSURE'].includes(frame.reason)) {
@@ -178,7 +198,15 @@ export function createWorldReplication(options: ReplicationOptions) {
     const g = generation
     publish()
     if (!current() || generation !== g) return false
-    try { await transport.connect(resources, attempt.signal); return current() && connection === attempt && !attempt.signal.aborted && baseline !== null && visible }
+    try {
+      if (motion) {
+        motionReady ??= qualifyMotionContext(motion).then(context => { motionContext = context }, () => { motionContext = null })
+        await motionReady
+        if (!current() || generation !== g || !visible || attempt.signal.aborted) return false
+      }
+      await transport.connect(resources, attempt.signal)
+      return current() && connection === attempt && !attempt.signal.aborted && baseline !== null && visible
+    }
     catch { if (current() && generation === g) connectionFailure(); return false }
   }
   return {

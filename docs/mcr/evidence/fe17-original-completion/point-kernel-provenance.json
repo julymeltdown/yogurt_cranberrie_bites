@@ -1,0 +1,16 @@
+{
+  "sourceBase": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "sourcePath": "backend/crates/concert-domain/src/world/mod.rs",
+  "sourceBlob": "06ccbf95bdd6b8b690dc53acc89d3d5c1406fbb0",
+  "sourceSHA256": "5bed3adce15687b7f952e117a2550e54a090205dc066b513e2ec034aeefa7e1e",
+  "sourceSymbols": [
+    "WorldMap::walkable",
+    "WorldMap::clear_segment",
+    "WorldMap::step",
+    "Input::new normalized rounding"
+  ],
+  "destination": "frontend/src/world/network/prediction.ts",
+  "dependencies": "Public C06 Geometry and C05 WorldPosition types only; no backend import or runtime dependency",
+  "qualification": "Newly authored TypeScript point geometry adaptation, explicit distance only; not an activated profile or invented server tuning. Four focused cases plus pending shared producer vectors.",
+  "runtime": "NOT_RUN pending fresh source allocation"
+}

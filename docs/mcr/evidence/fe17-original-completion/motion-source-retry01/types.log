@@ -1,0 +1,20 @@
+[96msrc/world/network/__tests__/motion-transport/production.test.ts[0m:[93m42[0m:[93m74[0m - [91merror[0m[90m TS2739: [0mType 'Promise<ShellBootstrap>' is missing the following properties from type 'ShellBootstrap': contractVersion, event, participant, worldAvailable, capabilities
+
+[7m42[0m   world.world.mount(host, { scope, privacyScope: auth.privacy.capture(), bootstrap: decodeBootstrap(fixture(), scope), signal: new AbortController().signal })
+[7m  [0m [91m                                                                         ~~~~~~~~~[0m
+
+  [96msrc/app/ports.ts[0m:[93m48[0m:[93m59[0m
+    [7m48[0m   mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null }): WorldLease
+    [7m  [0m [96m                                                          ~~~~~~~~~[0m
+    The expected type comes from property 'bootstrap' which is declared here on type '{ scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null; }'
+[96msrc/world/network/transport/contract.ts[0m:[93m112[0m:[93m22[0m - [91merror[0m[90m TS2352: [0mConversion of type '{ userId: string; } | undefined' to type '{ position: { x: number; y: number; }; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'position' is missing in type '{ userId: string; }' but required in type '{ position: { x: number; y: number; }; }'.
+
+[7m112[0m         const self = rows.find(row => row.userId === v.selfUserId) as { position: { x: number; y: number } }
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96msrc/world/network/transport/contract.ts[0m:[93m112[0m:[93m73[0m
+    [7m112[0m         const self = rows.find(row => row.userId === v.selfUserId) as { position: { x: number; y: number } }
+    [7m   [0m [96m                                                                        ~~~~~~~~[0m
+    'position' is declared here.
+{"files":981,"diagnostics":2}

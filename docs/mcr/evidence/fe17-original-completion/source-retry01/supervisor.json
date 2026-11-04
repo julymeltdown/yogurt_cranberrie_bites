@@ -1,0 +1,126 @@
+{
+  "slot": "FE17-ORIGINAL-SOURCE-B-20261104T1750Z",
+  "pin": "810a3041e23351aad5bb7c84ca26344a3f710414",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "mode": "source",
+  "startedUTC": "2026-11-04T17:52:12.998242+00:00",
+  "deadlineUTC": "2026-11-04T17:55:21.453728+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8,
+    "files": 65536,
+    "new": 134217728
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801490650,
+        "files": 7762,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1938757,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1548799508,
+    "reachableGitObjects": 39436,
+    "wholeCarryBytes": 2760492249,
+    "chargedFiles": 58772
+  },
+  "carryBytes": 2760492249,
+  "newPeak": 1452023,
+  "commands": [
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "pid": 25429,
+      "startedEpoch": 1793814733.01035,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814733.296421
+    },
+    {
+      "label": "published-fixture-delayed-red",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      "pid": 25528,
+      "startedEpoch": 1793814733.397581,
+      "expectedExit": 1,
+      "exit": 1,
+      "endedEpoch": 1793814739.641302
+    },
+    {
+      "label": "lifecycle-delayed-green",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      "pid": 27806,
+      "startedEpoch": 1793814739.729991,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814743.003428
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--input-type=module",
+        "--eval",
+        "import assert from 'node:assert/strict';\nimport {readFileSync} from 'node:fs';\nimport {createHash} from 'node:crypto';\nimport {dirname} from 'node:path';\nconst helper=\"/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs\";\nconst original=readFileSync(helper,'utf8');\nassert.equal(createHash('sha256').update(original).digest('hex'),'4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1');\nassert(original.includes('...parsed.options, incremental:'));\nconst source=original.replace('...parsed.options, incremental:','...parsed.options, allowImportingTsExtensions: true, incremental:')\n  .replaceAll('import.meta.dirname',JSON.stringify(dirname(helper)));\nprocess.argv.push('--application');\nawait import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));\n"
+      ],
+      "pid": 28407,
+      "startedEpoch": 1793814743.073754,
+      "expectedExit": 0,
+      "exit": 1,
+      "endedEpoch": 1793814751.790228
+    }
+  ],
+  "wholePeak": 2761944272,
+  "temporaryPeak": 1447797,
+  "durablePeak": 4397,
+  "rssPeak": 1758986240,
+  "processPeak": 4,
+  "sourcePins": {},
+  "minimumFree": 25777065984,
+  "failure": "RuntimeError: types unexpected exit; original raw evidence retained",
+  "aliveOwnedPids": [],
+  "status": "FAIL",
+  "finishedUTC": "2026-11-04T17:52:31.892994+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 25777274880
+}

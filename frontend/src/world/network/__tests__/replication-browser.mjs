@@ -5,22 +5,38 @@ import { createServer as createHttpServer } from 'node:http'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { execFileSync } from 'node:child_process'
-import { createServer } from 'vite'
-import { chromium } from '@playwright/test'
+import { createRequire } from 'node:module'
+import { resolve } from 'node:path'
+assert(process.env.MCR_FRONTEND_DEPENDENCIES && process.env.MCR_FE17_CACHE, 'Explicit retained dependencies and private cache required')
+const require = createRequire(resolve(process.env.MCR_FRONTEND_DEPENDENCIES, 'package.json'))
+const { createServer } = await import(require.resolve('vite'))
+const { chromium } = require('@playwright/test')
+const packages = require('./package.json')
+const aliases = Object.fromEntries(Object.keys(packages.dependencies).filter(name => !name.startsWith('@types/')).map(name => [name,
+  name === 'phaser' ? resolve(require.resolve('phaser/package.json'), '../dist/phaser.js')
+    : name === 'zod' ? resolve(require.resolve('zod/package.json'), '../index.js') : require.resolve(name)]))
 const evidence = process.env.MCR_FE17_EVIDENCE
 assert(evidence?.startsWith('/'), 'Set a new absolute MCR_FE17_EVIDENCE directory')
 await mkdir(evidence)
 const root = fileURLToPath(new URL('../../../../', import.meta.url))
 const movement = JSON.parse(await readFile(new URL('../../../../../contracts/fixtures/realtime/movement-heartbeat.json', import.meta.url)))
-const initial = movement.messages[1].message
-const sourcePaths = ['src/world/network/replication.ts', 'src/world/entities/replicated.ts', 'src/world/network/__tests__/fixtures/replication-browser.ts', 'src/world/network/__tests__/fixtures/replication-browser.html', 'src/world/network/__tests__/replication-browser.mjs', 'src/world/network/WorldTransport.ts', 'src/world/network/websocket.ts', 'src/world/network/transport/engine.ts', 'src/world/network/transport/contract.ts', 'src/world/network/transport/wire-types.ts', 'src/shared/api/http.ts']
+const negotiated = JSON.parse(await readFile(new URL('../../../../../contracts/fixtures/realtime/motion-v1/negotiated.json', import.meta.url)))
+const rawInitial = movement.messages[1].message
+const initial = { ...rawInitial, players: rawInitial.players.map(player => player.userId === rawInitial.selfUserId ? { ...player, position: { x: 48, y: 48 } } : player),
+  motionProfile: negotiated.messages[1].message.motionProfile,
+  selfMotion: { serverTick: 0, position: { x: 48, y: 48 }, consumedInputSeq: 0, inputAppliedTicks: 0, droppedTicks: 0, heldInput: null } }
+const sourcePaths = ['src/world/network/replication.ts', 'src/world/network/prediction.ts', 'src/world/entities/replicated.ts', 'src/world/map/json.ts', 'src/world/network/__tests__/fixtures/replication-browser.ts', 'src/world/network/__tests__/fixtures/replication-browser.html', 'src/world/network/__tests__/replication-browser.mjs', 'src/world/network/WorldTransport.ts', 'src/world/network/websocket.ts', 'src/world/network/transport/engine.ts', 'src/world/network/transport/contract.ts', 'src/world/network/transport/wire-types.ts', 'src/shared/api/http.ts']
 const hash = b => createHash('sha256').update(b).digest('hex')
 const sourceHashes = Object.fromEntries(await Promise.all(sourcePaths.map(async p => [p, hash(await readFile(root + p))])))
 const report = { result: 'FAIL', revision: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), sourceHashes,
-  scope: 'FE17 headless synthetic C05 projection and native WS lifecycle only; no renderer/art/backend acceptance', checks: [], errors: [] }
-const reserve = createHttpServer(); await new Promise(r => reserve.listen(0, '127.0.0.1', r)); const port = reserve.address().port; await new Promise(r => reserve.close(r))
-const dev = await createServer({ root, logLevel: 'error', server: { host: '127.0.0.1', port, strictPort: true } })
-const sockets = new Set(), accepted = [], received = []
+  scope: 'FE17 negotiated bounded self presentation, synthetic C05 peer and native WS lifecycle; no renderer/art/Rust/backend acceptance', checks: [], errors: [] }
+const reserve = createHttpServer(); await new Promise(r => reserve.listen(Number(process.env.MCR_FE17_PORT ?? 0), '127.0.0.1', r)); const port = reserve.address().port; await new Promise(r => reserve.close(r))
+report.port = port
+const dev = await createServer({ root, configFile: false, cacheDir: process.env.MCR_FE17_CACHE,
+  resolve: { alias: Object.entries(aliases).sort(([a], [b]) => b.length - a.length).map(([find, replacement]) => ({ find, replacement })) },
+  optimizeDeps: { noDiscovery: true, include: [] }, logLevel: 'error', server: { host: '127.0.0.1', port, strictPort: true } })
+const sockets = new Set(), accepted = [], received = [], peers = new Map()
+let holdInputAnchors = false
 function wire(data) {
   const payload = Buffer.from(JSON.stringify(data)), head = payload.length < 126 ? Buffer.from([0x81, payload.length]) : Buffer.from([0x81, 126, payload.length >> 8, payload.length & 255])
   return Buffer.concat([head, payload])
@@ -35,7 +51,19 @@ try {
     const connectionNumber = accepted.length
     const accept = createHash('sha1').update(request.headers['sec-websocket-key'] + '258EAFA5-E914-47DA-95CA-C5AB0DC85B11').digest('base64')
     socket.write(`HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ${accept}\r\n\r\n`)
-    let buffer = head, stream = initial.streamId, streamSeq = 0, tickBase = 0, accessExpiresAt = new Date(Date.now() + 60000).toISOString()
+    let buffer = head, stream = initial.streamId, streamSeq = 0, serverTick = 0, ack = 0, consumed = 0, position = { ...initial.selfMotion.position }
+    const accessExpiresAt = new Date(Date.now() + 60000).toISOString()
+    const delta = (nextPosition = position) => {
+      position = { ...nextPosition }; serverTick += 2
+      socket.write(wire({ protocolVersion: '1.0.0', type: 'delta', streamId: stream, roomEpoch: initial.roomEpoch,
+        streamSeq: ++streamSeq, serverTick, ackInputSeq: ack, upserts: [], removes: [],
+        selfMotion: { serverTick, position, consumedInputSeq: consumed, inputAppliedTicks: ack ? 1 : 0, droppedTicks: 0, heldInput: null } }))
+    }
+    peers.set(socket, { correct: delta, gap() {
+      socket.write(wire({ protocolVersion: '1.0.0', type: 'delta', streamId: stream, roomEpoch: initial.roomEpoch,
+        streamSeq: 900, serverTick: 900, ackInputSeq: ack, upserts: [], removes: [],
+        selfMotion: { serverTick: 900, position, consumedInputSeq: consumed, inputAppliedTicks: ack ? 1 : 0, droppedTicks: 0, heldInput: null } }))
+    } })
     socket.on('data', chunk => {
       buffer = Buffer.concat([buffer, chunk]); assert(buffer.length < 8192)
       while (buffer.length >= 2) {
@@ -48,11 +76,17 @@ try {
         for (let i = 0; i < data.length; i++) data[i] ^= mask[i % 4]
         if (opcode === 8) { socket.end(Buffer.from([0x88, 0])); continue }
         assert.equal(opcode, 1); const message = JSON.parse(data); received.push({ ...message, connectionNumber })
-        if (message.type === 'authenticate') { socket.write(wire({ ...initial, accessExpiresAt })); socket.write(wire(movement.messages[4].message)) }
-        else if (message.type === 'input') socket.write(wire({ ...movement.messages[3].message, streamId: stream, streamSeq: ++streamSeq, serverTick: tickBase + streamSeq * 2, ackInputSeq: message.seq }))
+        if (message.type === 'authenticate') {
+          assert.equal(message.motionProfileVersion, '1.0.0')
+          socket.write(wire({ ...initial, accessExpiresAt })); socket.write(wire(movement.messages[4].message))
+        } else if (message.type === 'input') {
+          ack = message.seq; consumed = message.seq
+          if (!holdInputAnchors) delta()
+        }
         else if (message.type === 'resync') {
-          stream = '00000000-0000-4000-8000-000000000150'; streamSeq = 0; tickBase = 20
-          socket.write(wire({ ...initial, streamId: stream, cause: 'RESYNC', requestId: message.requestId, accessExpiresAt, players: [initial.players[0]], serverTick: 20 }))
+          stream = '00000000-0000-4000-8000-000000000150'; streamSeq = 0; serverTick = 20; ack = consumed = 0; position = { ...initial.selfMotion.position }
+          socket.write(wire({ ...initial, streamId: stream, cause: 'RESYNC', requestId: message.requestId, accessExpiresAt, players: [initial.players[0]], serverTick,
+            selfMotion: { ...initial.selfMotion, serverTick } }))
         }
       }
     })
@@ -65,7 +99,25 @@ try {
   assert.equal(accepted.length, 1); assert(received.some(m => m.type === 'authenticate'))
   await page.waitForFunction(() => window.__FE17_TEST_ONLY__.view().ackInputSeq > 0 && window.__FE17_TEST_ONLY__.view().pendingInputs === 0)
   assert(received.some(m => m.type === 'pong')); report.checks.push('Native socket admission, public roster projection, ping response and input acknowledgement')
-  accepted[0].write(wire({ ...movement.messages[3].message, streamSeq: 900 }))
+  holdInputAnchors = true
+  await page.evaluate(() => window.__FE17_TEST_ONLY__.intent({ axisX: 1, axisY: 0, buttons: ['interact'] }))
+  await page.waitForFunction(() => {
+    const view = window.__FE17_TEST_ONLY__.sample(), self = view.entities.find(entity => entity.self)
+    return view.spatialPrediction === 'bounded' && self.position.x > self.player.position.x
+  })
+  report.predicted = await page.evaluate(() => window.__FE17_TEST_ONLY__.sample().entities.find(entity => entity.self))
+  assert(report.predicted.position.x - report.predicted.player.position.x <= initial.motionProfile.speedPxPerSecond * .2 + 1e-9)
+  await page.evaluate(() => window.__FE17_TEST_ONLY__.intent({ axisX: 0, axisY: 0, buttons: [] }))
+  await page.waitForFunction(() => window.__FE17_TEST_ONLY__.sample().pendingInputs >= 2)
+  peers.get(accepted[0]).correct({ x: 52, y: 48 })
+  await page.waitForFunction(() => {
+    const view = window.__FE17_TEST_ONLY__.view(), self = view.entities.find(entity => entity.self)
+    return view.pendingInputs === 0 && self.player.position.x === 52 && self.position.x === 52
+  })
+  report.corrected = await page.evaluate(() => window.__FE17_TEST_ONLY__.view().entities.find(entity => entity.self))
+  holdInputAnchors = false
+  report.checks.push('Opt-in real WebCrypto geometry binding, bounded tentative self position and complete authoritative correction without self upsert')
+  peers.get(accepted[0]).gap()
   await page.waitForFunction(() => window.__FE17_TEST_ONLY__.view().entities.length === 1)
   assert.equal(received.filter(m => m.type === 'resync').length, 1); report.checks.push('Gap drives one actual resync; replacement snapshot removes ghosts')
   await page.evaluate(() => { window.__FE17_TEST_ONLY__.intent({ axisX: 1, axisY: 0, buttons: ['interact'] }); window.__FE17_TEST_ONLY__.visible(false) })
