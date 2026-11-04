@@ -1,0 +1,1366 @@
+{
+  "kind": "SOURCE_PIXEL_ARTICULATED_FRONT_GAIT",
+  "status": "IN_PROGRESS",
+  "productionEligible": false,
+  "sourcePack": {
+    "id": "mcr_user_characters_20261103",
+    "revision": 3
+  },
+  "source": {
+    "source_id": "photo_01",
+    "original_name": "Photo 1.jpg",
+    "file": "photo-01.jpg",
+    "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+    "byte_length": 168045,
+    "width_px": 1280,
+    "height_px": 853,
+    "mime_type": "image/jpeg",
+    "has_alpha": false,
+    "category": "presets",
+    "label": "Six character presets",
+    "visible_choice_count": 6,
+    "layout": {
+      "columns": 3,
+      "rows": 2,
+      "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+    },
+    "duplicate_of": null,
+    "notes": "Front-facing complete characters; columns are Revenge, Parade and Danger.",
+    "first_registered_name": "Photo 1.jpg",
+    "first_registered_revision": 1,
+    "attachment_number": 1,
+    "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
+  },
+  "baseCommit": "a3526254a716e14e3134de551c3b277379a1096f",
+  "method": "Reviewed source-coordinate limb partitions; independent translations under 12-source-pixel stationary joint overlap; one nearest-source sample per output pixel. No new design pixels or hidden-surface fill.",
+  "qualification": "Authored front walking derivative, not supplied motion capture, full-direction atlas, slot contract, inventory or production admission.",
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    60
+  ],
+  "directions": [
+    "front"
+  ],
+  "missingDirections": [
+    "left",
+    "right",
+    "rear"
+  ],
+  "frames": [
+    {
+      "preset": "photo01-front-01",
+      "pose": "idle",
+      "direction": "front",
+      "scale": 0.15555555555555556,
+      "sourceAnchor": {
+        "x": 193.5,
+        "y": 373
+      },
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 40,
+          "y": 80,
+          "width": 380,
+          "height": 390
+        },
+        "center": 244,
+        "armTop": 360,
+        "armLeft": 175,
+        "armRight": 307,
+        "legTop": 423
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-01",
+      "pose": "walk-0-left-contact",
+      "direction": "front",
+      "scale": 0.15555555555555556,
+      "sourceAnchor": {
+        "x": 193.5,
+        "y": 373
+      },
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 40,
+          "y": 80,
+          "width": 380,
+          "height": 390
+        },
+        "center": 244,
+        "armTop": 360,
+        "armLeft": 175,
+        "armRight": 307,
+        "legTop": 423
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-01",
+      "pose": "walk-1-left-passing",
+      "direction": "front",
+      "scale": 0.15555555555555556,
+      "sourceAnchor": {
+        "x": 193.5,
+        "y": 373
+      },
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 40,
+          "y": 80,
+          "width": 380,
+          "height": 390
+        },
+        "center": 244,
+        "armTop": 360,
+        "armLeft": 175,
+        "armRight": 307,
+        "legTop": 423
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-01",
+      "pose": "walk-2-right-contact",
+      "direction": "front",
+      "scale": 0.15555555555555556,
+      "sourceAnchor": {
+        "x": 193.5,
+        "y": 373
+      },
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 40,
+          "y": 80,
+          "width": 380,
+          "height": 390
+        },
+        "center": 244,
+        "armTop": 360,
+        "armLeft": 175,
+        "armRight": 307,
+        "legTop": 423
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-01",
+      "pose": "walk-3-right-passing",
+      "direction": "front",
+      "scale": 0.15555555555555556,
+      "sourceAnchor": {
+        "x": 193.5,
+        "y": 373
+      },
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 40,
+          "y": 80,
+          "width": 380,
+          "height": 390
+        },
+        "center": 244,
+        "armTop": 360,
+        "armLeft": 175,
+        "armRight": 307,
+        "legTop": 423
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-02",
+      "pose": "idle",
+      "direction": "front",
+      "scale": 0.15512465373961218,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 377
+      },
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 440,
+          "y": 80,
+          "width": 390,
+          "height": 390
+        },
+        "center": 640,
+        "armTop": 362,
+        "armLeft": 575,
+        "armRight": 708,
+        "legTop": 426
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-02",
+      "pose": "walk-0-left-contact",
+      "direction": "front",
+      "scale": 0.15512465373961218,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 377
+      },
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 440,
+          "y": 80,
+          "width": 390,
+          "height": 390
+        },
+        "center": 640,
+        "armTop": 362,
+        "armLeft": 575,
+        "armRight": 708,
+        "legTop": 426
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-02",
+      "pose": "walk-1-left-passing",
+      "direction": "front",
+      "scale": 0.15512465373961218,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 377
+      },
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 440,
+          "y": 80,
+          "width": 390,
+          "height": 390
+        },
+        "center": 640,
+        "armTop": 362,
+        "armLeft": 575,
+        "armRight": 708,
+        "legTop": 426
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-02",
+      "pose": "walk-2-right-contact",
+      "direction": "front",
+      "scale": 0.15512465373961218,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 377
+      },
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 440,
+          "y": 80,
+          "width": 390,
+          "height": 390
+        },
+        "center": 640,
+        "armTop": 362,
+        "armLeft": 575,
+        "armRight": 708,
+        "legTop": 426
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-02",
+      "pose": "walk-3-right-passing",
+      "direction": "front",
+      "scale": 0.15512465373961218,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 377
+      },
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 440,
+          "y": 80,
+          "width": 390,
+          "height": 390
+        },
+        "center": 640,
+        "armTop": 362,
+        "armLeft": 575,
+        "armRight": 708,
+        "legTop": 426
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-03",
+      "pose": "idle",
+      "direction": "front",
+      "scale": 0.15217391304347827,
+      "sourceAnchor": {
+        "x": 197.5,
+        "y": 376
+      },
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 850,
+          "y": 80,
+          "width": 395,
+          "height": 390
+        },
+        "center": 1050,
+        "armTop": 363,
+        "armLeft": 980,
+        "armRight": 1110,
+        "legTop": 429
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-03",
+      "pose": "walk-0-left-contact",
+      "direction": "front",
+      "scale": 0.15217391304347827,
+      "sourceAnchor": {
+        "x": 197.5,
+        "y": 376
+      },
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 850,
+          "y": 80,
+          "width": 395,
+          "height": 390
+        },
+        "center": 1050,
+        "armTop": 363,
+        "armLeft": 980,
+        "armRight": 1110,
+        "legTop": 429
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-03",
+      "pose": "walk-1-left-passing",
+      "direction": "front",
+      "scale": 0.15217391304347827,
+      "sourceAnchor": {
+        "x": 197.5,
+        "y": 376
+      },
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 850,
+          "y": 80,
+          "width": 395,
+          "height": 390
+        },
+        "center": 1050,
+        "armTop": 363,
+        "armLeft": 980,
+        "armRight": 1110,
+        "legTop": 429
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-03",
+      "pose": "walk-2-right-contact",
+      "direction": "front",
+      "scale": 0.15217391304347827,
+      "sourceAnchor": {
+        "x": 197.5,
+        "y": 376
+      },
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 850,
+          "y": 80,
+          "width": 395,
+          "height": 390
+        },
+        "center": 1050,
+        "armTop": 363,
+        "armLeft": 980,
+        "armRight": 1110,
+        "legTop": 429
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-03",
+      "pose": "walk-3-right-passing",
+      "direction": "front",
+      "scale": 0.15217391304347827,
+      "sourceAnchor": {
+        "x": 197.5,
+        "y": 376
+      },
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 850,
+          "y": 80,
+          "width": 395,
+          "height": 390
+        },
+        "center": 1050,
+        "armTop": 363,
+        "armLeft": 980,
+        "armRight": 1110,
+        "legTop": 429
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-04",
+      "pose": "idle",
+      "direction": "front",
+      "scale": 0.1723076923076923,
+      "sourceAnchor": {
+        "x": 196.5,
+        "y": 352
+      },
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 40,
+          "y": 475,
+          "width": 380,
+          "height": 360
+        },
+        "center": 244,
+        "armTop": 750,
+        "armLeft": 176,
+        "armRight": 307,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-04",
+      "pose": "walk-0-left-contact",
+      "direction": "front",
+      "scale": 0.1723076923076923,
+      "sourceAnchor": {
+        "x": 196.5,
+        "y": 352
+      },
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 40,
+          "y": 475,
+          "width": 380,
+          "height": 360
+        },
+        "center": 244,
+        "armTop": 750,
+        "armLeft": 176,
+        "armRight": 307,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-04",
+      "pose": "walk-1-left-passing",
+      "direction": "front",
+      "scale": 0.1723076923076923,
+      "sourceAnchor": {
+        "x": 196.5,
+        "y": 352
+      },
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 40,
+          "y": 475,
+          "width": 380,
+          "height": 360
+        },
+        "center": 244,
+        "armTop": 750,
+        "armLeft": 176,
+        "armRight": 307,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-04",
+      "pose": "walk-2-right-contact",
+      "direction": "front",
+      "scale": 0.1723076923076923,
+      "sourceAnchor": {
+        "x": 196.5,
+        "y": 352
+      },
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 40,
+          "y": 475,
+          "width": 380,
+          "height": 360
+        },
+        "center": 244,
+        "armTop": 750,
+        "armLeft": 176,
+        "armRight": 307,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-04",
+      "pose": "walk-3-right-passing",
+      "direction": "front",
+      "scale": 0.1723076923076923,
+      "sourceAnchor": {
+        "x": 196.5,
+        "y": 352
+      },
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 40,
+          "y": 475,
+          "width": 380,
+          "height": 360
+        },
+        "center": 244,
+        "armTop": 750,
+        "armLeft": 176,
+        "armRight": 307,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-05",
+      "pose": "idle",
+      "direction": "front",
+      "scale": 0.16422287390029325,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 351
+      },
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 440,
+          "y": 475,
+          "width": 390,
+          "height": 360
+        },
+        "center": 642,
+        "armTop": 752,
+        "armLeft": 576,
+        "armRight": 711,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-05",
+      "pose": "walk-0-left-contact",
+      "direction": "front",
+      "scale": 0.16422287390029325,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 351
+      },
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 440,
+          "y": 475,
+          "width": 390,
+          "height": 360
+        },
+        "center": 642,
+        "armTop": 752,
+        "armLeft": 576,
+        "armRight": 711,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-05",
+      "pose": "walk-1-left-passing",
+      "direction": "front",
+      "scale": 0.16422287390029325,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 351
+      },
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 440,
+          "y": 475,
+          "width": 390,
+          "height": 360
+        },
+        "center": 642,
+        "armTop": 752,
+        "armLeft": 576,
+        "armRight": 711,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-05",
+      "pose": "walk-2-right-contact",
+      "direction": "front",
+      "scale": 0.16422287390029325,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 351
+      },
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 440,
+          "y": 475,
+          "width": 390,
+          "height": 360
+        },
+        "center": 642,
+        "armTop": 752,
+        "armLeft": 576,
+        "armRight": 711,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-05",
+      "pose": "walk-3-right-passing",
+      "direction": "front",
+      "scale": 0.16422287390029325,
+      "sourceAnchor": {
+        "x": 198.5,
+        "y": 351
+      },
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 440,
+          "y": 475,
+          "width": 390,
+          "height": 360
+        },
+        "center": 642,
+        "armTop": 752,
+        "armLeft": 576,
+        "armRight": 711,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-06",
+      "pose": "idle",
+      "direction": "front",
+      "scale": 0.16326530612244897,
+      "sourceAnchor": {
+        "x": 197,
+        "y": 353
+      },
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 850,
+          "y": 475,
+          "width": 395,
+          "height": 360
+        },
+        "center": 1050,
+        "armTop": 752,
+        "armLeft": 980,
+        "armRight": 1112,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-06",
+      "pose": "walk-0-left-contact",
+      "direction": "front",
+      "scale": 0.16326530612244897,
+      "sourceAnchor": {
+        "x": 197,
+        "y": 353
+      },
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 850,
+          "y": 475,
+          "width": 395,
+          "height": 360
+        },
+        "center": 1050,
+        "armTop": 752,
+        "armLeft": 980,
+        "armRight": 1112,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-06",
+      "pose": "walk-1-left-passing",
+      "direction": "front",
+      "scale": 0.16326530612244897,
+      "sourceAnchor": {
+        "x": 197,
+        "y": 353
+      },
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 850,
+          "y": 475,
+          "width": 395,
+          "height": 360
+        },
+        "center": 1050,
+        "armTop": 752,
+        "armLeft": 980,
+        "armRight": 1112,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-06",
+      "pose": "walk-2-right-contact",
+      "direction": "front",
+      "scale": 0.16326530612244897,
+      "sourceAnchor": {
+        "x": 197,
+        "y": 353
+      },
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 850,
+          "y": 475,
+          "width": 395,
+          "height": 360
+        },
+        "center": 1050,
+        "armTop": 752,
+        "armLeft": 980,
+        "armRight": 1112,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      }
+    },
+    {
+      "preset": "photo01-front-06",
+      "pose": "walk-3-right-passing",
+      "direction": "front",
+      "scale": 0.16326530612244897,
+      "sourceAnchor": {
+        "x": 197,
+        "y": 353
+      },
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 850,
+          "y": 475,
+          "width": 395,
+          "height": 360
+        },
+        "center": 1050,
+        "armTop": 752,
+        "armLeft": 980,
+        "armRight": 1112,
+        "legTop": 800
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "atlas": {
+    "width": 320,
+    "height": 384,
+    "file": "front-articulated-gait-ac271dd67f8cd2fe.png"
+  },
+  "provenance": {
+    "file": "front-gait-source-pixel-map-44a1b362c1d0836e.bin",
+    "format": "little-endian int16 [originalX,originalY] per pixel, frame-major 64x64; -1,-1 transparent"
+  },
+  "files": [
+    {
+      "file": "front-articulated-gait-ac271dd67f8cd2fe.png",
+      "sha256": "ac271dd67f8cd2feb223aba3b0f6d83622746eb1f96adedb5d7f2d2c7e6a2503",
+      "bytes": 53642
+    },
+    {
+      "file": "front-gait-source-pixel-map-44a1b362c1d0836e.bin",
+      "sha256": "44a1b362c1d0836e46c6f714e131778903a876af0061fa2351ae79f977d0a72d",
+      "bytes": 491520
+    }
+  ]
+}
