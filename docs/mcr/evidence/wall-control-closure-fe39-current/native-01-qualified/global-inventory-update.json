@@ -1,0 +1,15 @@
+{
+  "receivedAfterOwnFull": true,
+  "actualOwnAccept": "2026-11-04T17:59:15.900190Z",
+  "actualOwnFull": "2026-11-04T17:59:20.499746Z",
+  "other205ActualAcceptDuringOwnRun": "2026-11-04T17:59:18.339231Z",
+  "other205OutstandingNewBytes": 1610612736,
+  "other230ActualFull": "2026-11-04T17:58:05.626483Z",
+  "conservativeFrontendOtherNewStillCharged": 268435456,
+  "originalAdmissionFreeBytes": 20437704704,
+  "recomputedFreeMinusAllOtherAndOwn": 18306998272,
+  "guardMinimumFreeMinusAllOtherAndOwn": 18243203072,
+  "requiredReserveBytes": 9663676416,
+  "result": "PASS",
+  "qualification": "This records actual subsequent global inventory, not a changed admission clock or a rerun. Own workflow was already fully released when this delayed input arrived."
+}

@@ -11,7 +11,7 @@ export const receiptSchema = z.strictObject({ receipt_id: uuid, event_id: uuid.n
 export type Receipt = z.infer<typeof receiptSchema>
 export type Outcome<T> = { kind: 'confirmed'; data: T } | { kind: 'pending' | 'unknown' } | { kind: 'rejected'; reason: string }
 export function createAdminTransport({ http, privacy, context, now = Date.now }: {
-  http: HttpClient; privacy: PrivacyPort; context: OperatorContextPort; now?: () => number
+  http: Pick<HttpClient, 'request'>; privacy: PrivacyPort; context: OperatorContextPort; now?: () => number
 }) {
   let retryAt = 0, retryScope: string | null = null, disposed = false
   const stopPrivacy = privacy.registerCleanup(() => { retryAt = 0; retryScope = null })

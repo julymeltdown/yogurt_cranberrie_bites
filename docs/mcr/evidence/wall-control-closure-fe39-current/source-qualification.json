@@ -1,0 +1,24 @@
+{
+  "sourceResult": "PASS",
+  "focusedTests": 11,
+  "testSource": "72af0d043855877c2eefa333054cb3c78c7ad3d6",
+  "remainingChecksSource": "1a16e13b6d211078bc32412e4b11d30e3d2e165d",
+  "remainingChecks": [
+    "whole frontend TypeScript with documented baseline allowImportingTsExtensions CLI",
+    "scoped oxlint",
+    "native MJS syntax"
+  ],
+  "unchangedTestsReplayed": false,
+  "fixtureOnlyRepair": "7aecd87b5ea61f5bd54aeacdbe97e86e6f888f59",
+  "native": "PASS_3_CONTEXTS_12_INSPECTED_CAPTURES",
+  "currentHashes": {
+    "frontend/src/app/admin-entry/mural-closure/index.ts": "a28b03a9fece882620b5aeebc7fad1075377b5c2454f21a0b304cc43cbebe3ef",
+    "frontend/src/app/admin-entry/mural-closure/MuralClosurePanel.tsx": "93c69e4ebcced9f7f8446023d2f0fb07f56088ad1524739522dafb7c0db58dbf",
+    "frontend/src/features/admin/mural/transport.ts": "f473f04ffa9e3d5dbf0129025e5ae46fbac18d3ce1009bc46a85409feac33b87",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "39e0d76739ff95cb34d1496e779e2ddd94b6824fc139b8f422edac6118e5b824",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/native.mjs": "94de51c3a4fe011f5bd5846cb5dd5369973ea932e916adb3a8ea836f577564a1"
+  },
+  "typeFailureRetained": "source-01-baseline-type-failure",
+  "qualifiedChecksAndRelease": "source-02-qualified/release.json",
+  "nativeSource": "db917d13abac5a22a946ed068edefb32b2a1da9d"
+}

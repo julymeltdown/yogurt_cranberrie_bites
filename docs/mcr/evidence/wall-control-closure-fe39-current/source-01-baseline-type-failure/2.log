@@ -1,0 +1,4 @@
+src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx(38,99): error TS2339: Property 'type' does not exist on type 'Blob | MediaSource'.
+  Property 'type' does not exist on type 'MediaSource'.
+src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx(38,128): error TS2339: Property 'size' does not exist on type 'Blob | MediaSource'.
+  Property 'size' does not exist on type 'MediaSource'.
