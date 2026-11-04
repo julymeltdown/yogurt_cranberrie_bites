@@ -178,7 +178,8 @@ impl PgScopeLedger {
                     return Err(invalid());
                 }
             }
-            ChildRecoveryReference::LocalPublic { native, .. } => {
+            ChildRecoveryReference::LocalPublic { native, .. }
+            | ChildRecoveryReference::GiftPrivate { native, .. } => {
                 if native.producer_instance_id != scope.instance {
                     return Err(invalid());
                 }
@@ -194,6 +195,24 @@ impl PgScopeLedger {
                     &[],
                 )?;
                 reference.local_prepared_gid()?;
+                if let ChildRecoveryReference::GiftPrivate {
+                    giveaway_id,
+                    reservation_id,
+                    valid_until_unix_micros,
+                    ..
+                } = reference
+                {
+                    // Shape validation is deliberately time independent so an
+                    // expired disclosure can still be recovered after restart.
+                    if giveaway_id.is_nil()
+                        || reservation_id.is_nil()
+                        || *valid_until_unix_micros <= 0
+                        || *valid_until_unix_micros > q.expires_unix_micros
+                        || DateTime::from_timestamp_micros(*valid_until_unix_micros).is_none()
+                    {
+                        return Err(invalid());
+                    }
+                }
             }
         }
         Ok(())
