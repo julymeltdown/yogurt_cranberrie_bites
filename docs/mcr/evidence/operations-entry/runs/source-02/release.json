@@ -1,0 +1,121 @@
+{
+  "allocation": "OPERATIONS-COMMON-REPAIR-SOURCE-B-20261104T1757Z",
+  "class": "source",
+  "candidate": "a9aa6d3314ca962e5b6e107dcb96d517a8ca5add",
+  "acceptedUtc": "2026-11-04T17:57:40+00:00",
+  "acceptedFreeBytes": 20644380672,
+  "otherReserveBytes": 385875968,
+  "workUtc": "2026-11-04T17:59:10+00:00",
+  "hardUtc": "2026-11-04T17:59:40+00:00",
+  "sourceSha256": {
+    "frontend/src/app/operations-entry/contract.ts": "c0abb2c88b64ecfff2af859374b2beca0e77be864f3242b19923acfe490347de",
+    "frontend/src/app/operations-entry/index.ts": "d6139ce9279c61b7e430495ba1f2c7a15ec6b5f4157726df5309b625769ce437",
+    "frontend/src/app/operations-entry/__tests__/access.test.ts": "d7d81bd3b000160fff712323fa9dbc6c220d48bd55761375fb5f2a046e26ac02",
+    "frontend/src/app/operations-entry/__tests__/operation.fixture.json": "9cdbebd33bf6436f2d2bc9f9edca2f5c3f3d8b90c2c681ac42a71c3be750b5e0",
+    "frontend/src/app/operations-entry/__tests__/runner.ts": "14cf934bf11050459a6a87ef983efc016f1be2f341e90ecd5fa653da7529b957",
+    "docs/mcr/evidence/operations-entry/run-allocated.py": "db5672079f8d1f4dfb896b079162e97f4f0983aa2a73725ffee2a374e9ad3ef3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "4f24f37e8ef13f1e888a0cd69c971b132eace79cc1ef633efd86a8b669b1644d",
+    "frontend/src/app/community-authority/timeline.ts": "52a85e3d0263cd3980c22f838d3ab3b971eb93f12ac98d730371239ef64f3448",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/shared/api/domain-operations.generated.ts": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+    "frontend/src/features/admin/reports/model/controller.ts": "1f3602075f054ae645f732e212938871b0d3b67c6f9f6134c2a7cd783dab3f57",
+    "frontend/src/features/admin/event/model/ports.ts": "38e116b5fb365920c9ca35a2d445ec2b34eefc6148cf35b7da021be60c70252b",
+    "frontend/src/features/admin/event/model/lease.ts": "64139083f91530cbe75a5e37fa473e82e5196c3f8c8253dfa69b5ba8d6223214",
+    "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+    "contracts/domain/v1/policy.json": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6"
+  },
+  "guardianPid": 77487,
+  "standingBeforeChildrenUtc": "2026-11-04T17:57:55.137714+00:00",
+  "retained": {
+    "checkoutBytes": 1195208704,
+    "gitMetadataBytes": 1900544,
+    "readOnlyDependencyLogicalBytes": 408236853,
+    "readOnlyDependencyAllocatedBytes": 438317056,
+    "readOnlyDependencyChargeBytes": 438317056,
+    "readOnlyNodeRuntimeBytes": 122564432,
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "caps": {
+    "wholeBytes": 2147483648,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 33554432,
+    "rssBytes": 4294967296,
+    "processes": 32
+  },
+  "peaks": {
+    "wholeBytes": 1768550224,
+    "newBytes": 10559488,
+    "temporaryBytes": 10543104,
+    "durableBytes": 61440,
+    "rssBytes": 1468547072,
+    "processes": 3
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/operations-entry/__tests__/runner.ts",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/operations-entry/runs/source-02/vitest.json"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 2.0985630000000004
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 7.941595709
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/operations-entry"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 0.35242024999999977
+    }
+  ],
+  "status": "PASS",
+  "fullUtc": "2026-11-04T17:58:05.626483+00:00",
+  "cleanupSeconds": 0.06861570899999947,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "freeAfterBytes": 20616491008,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "2cf23ee882c7c4177b52ff194e8b00316614e789840552f14b0b807ca1a4fc2f",
+    "01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

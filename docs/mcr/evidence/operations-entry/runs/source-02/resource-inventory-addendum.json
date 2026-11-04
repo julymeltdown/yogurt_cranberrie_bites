@@ -1,0 +1,20 @@
+{
+  "classification": "POST_FULL_INVENTORY_RECONCILIATION_NOT_REPLAYED_ADMISSION",
+  "workflowFullUtc": "2026-11-04T17:58:05.626483+00:00",
+  "originalOtherReserveBytes": 385875968,
+  "newlyReportedOutsideWorkflow": "BE16e1 actual workflow, target release is not workflow FULL",
+  "newlyReportedOutsideReserveBytes": 2147483648,
+  "correctedOtherReserveBytes": 2533359616,
+  "ownNewBytes": 134217728,
+  "acceptedFreeBytes": 20644380672,
+  "fullFreeBytes": 20616491008,
+  "retrospectiveAcceptedMarginBytes": 17976803328,
+  "retrospectiveFullMarginBytes": 17948913664,
+  "originalReceiptUnchanged": true,
+  "noClockExtensionOrRerun": true,
+  "noReplacementFrontendJobStarted": true,
+  "globalFullRecipients": [
+    "Social",
+    "backend resource21d"
+  ]
+}

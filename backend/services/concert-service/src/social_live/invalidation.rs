@@ -9,7 +9,7 @@ use chrono::{DateTime, Utc};
 use concert_application::commands::maintenance::InvalidationKind;
 use sqlx::{postgres::PgRow, PgConnection, PgPool, Postgres, Row, Transaction};
 use std::{
-    sync::Arc,
+    sync::{Arc, Mutex},
     time::{Duration, Instant},
 };
 use uuid::Uuid;
@@ -86,6 +86,19 @@ pub trait SocialPolicyPublisher: Send + Sync {
 pub struct SocialInvalidationSink {
     pool: PgPool,
     publisher: Arc<dyn SocialPolicyPublisher>,
+    // Scheduling only, never source proof or acknowledgement. Shared clones
+    // move past refused rows so one unavailable tuple cannot starve all others.
+    pending_cursor: Arc<Mutex<Option<(DateTime<Utc>, Uuid)>>>,
+}
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct PendingPublicationRound {
+    pub attempted: usize,
+    pub published: usize,
+    pub deferred: usize,
+}
+struct PreparedPublication {
+    signal: VerifiedSocialInvalidation,
+    deletion: Option<Uuid>,
 }
 /// Keep Root's stream gated until its matching tuple and baseline are installed.
 /// Dropping/failed commit requires Root to withdraw the gated stream. No private
@@ -105,7 +118,11 @@ impl BaselineGuard {
 }
 impl SocialInvalidationSink {
     pub fn new(pool: PgPool, publisher: Arc<dyn SocialPolicyPublisher>) -> Self {
-        Self { pool, publisher }
+        Self {
+            pool,
+            publisher,
+            pending_cursor: Arc::new(Mutex::new(None)),
+        }
     }
 
     /// Root must supply its actual canonical actor/event and hold its gated
@@ -146,7 +163,11 @@ impl SocialInvalidationSink {
             .fetch_one(&self.pool).await.map_err(retry)
     }
 
-    async fn publish_row(&self, c: &mut PgConnection, row: PgRow) -> Result<(), DeliveryFailure> {
+    async fn prepare_publication(
+        &self,
+        c: &mut PgConnection,
+        row: PgRow,
+    ) -> Result<PreparedPublication, DeliveryFailure> {
         let deletion: Option<Uuid> = row.try_get("deletion_saga").map_err(retry)?;
         if deletion.is_some() {
             // A raw command, synthetic deadline or ordinary outbox is not a
@@ -171,12 +192,24 @@ impl SocialInvalidationSink {
         {
             return Err(DeliveryFailure::Rejected);
         }
-        tokio::time::timeout(Duration::from_secs(2), self.publisher.publish(&signal))
+        Ok(PreparedPublication { signal, deletion })
+    }
+
+    async fn publish(&self, signal: &VerifiedSocialInvalidation) -> Result<(), DeliveryFailure> {
+        tokio::time::timeout(Duration::from_secs(2), self.publisher.publish(signal))
             .await
-            .map_err(retry)??;
+            .map_err(retry)?
+    }
+
+    async fn record_publication(
+        &self,
+        c: &mut PgConnection,
+        prepared: &PreparedPublication,
+    ) -> Result<(), DeliveryFailure> {
+        let signal = &prepared.signal;
         sqlx::query("update public.concert_social_policy_signals set published_at=clock_timestamp() where signal_id=$1 and published_at is null")
             .bind(signal.signal).execute(&mut *c).await.map_err(retry)?;
-        if let Some(saga) = deletion {
+        if let Some(saga) = prepared.deletion {
             let result = sqlx::query("update public.concert_social_deletion_audience set published_at=clock_timestamp() where saga_id=$1 and event_id=$2 and actor_id=$3 and policy_revision=$4 and published_at is null")
                 .bind(saga).bind(signal.event).bind(signal.actor).bind(signal.revision)
                 .execute(c).await.map_err(retry)?;
@@ -185,6 +218,57 @@ impl SocialInvalidationSink {
             }
         }
         Ok(())
+    }
+
+    async fn publish_row(&self, c: &mut PgConnection, row: PgRow) -> Result<(), DeliveryFailure> {
+        let prepared = self.prepare_publication(c, row).await?;
+        self.publish(&prepared.signal).await?;
+        self.record_publication(c, &prepared).await
+    }
+
+    /// Bounded attempts, individual SQL commits and actual publisher handoff.
+    /// A retryable publisher leaves its source pending and is reported as
+    /// deferred, not a fatal storage error or an acknowledgement. Future rounds
+    /// resume after this round's cursor and wrap only at the start of a round.
+    /// Cursor loss/restart merely rescans durable pending rows; it grants nothing.
+    /// The supervisor retains its original whole-round cancellation/deadline.
+    pub async fn drain_pending_round(
+        &self,
+        limit: i64,
+    ) -> Result<PendingPublicationRound, DeliveryFailure> {
+        if !(1..=100).contains(&limit) {
+            return Err(DeliveryFailure::Rejected);
+        }
+        let mut result = PendingPublicationRound::default();
+        for index in 0..limit {
+            let mut tx = self.pool.begin().await.map_err(retry)?;
+            bound(&mut tx).await?;
+            let cursor = *self.pending_cursor.lock().map_err(retry)?;
+            let mut row = pending_after(&mut tx, cursor).await?;
+            if row.is_none() && index == 0 && cursor.is_some() {
+                *self.pending_cursor.lock().map_err(retry)? = None;
+                row = pending_after(&mut tx, None).await?;
+            }
+            let Some(row) = row else { break };
+            *self.pending_cursor.lock().map_err(retry)? =
+                Some((row.get("created_at"), row.get("signal_id")));
+            // Verification/storage failure cannot be disguised as normal retry.
+            let prepared = self.prepare_publication(&mut tx, row).await?;
+            result.attempted += 1;
+            match self.publish(&prepared.signal).await {
+                Ok(()) => {
+                    self.record_publication(&mut tx, &prepared).await?;
+                    tx.commit().await.map_err(retry)?;
+                    result.published += 1;
+                }
+                Err(DeliveryFailure::Retryable) => {
+                    tx.rollback().await.map_err(retry)?;
+                    result.deferred += 1;
+                }
+                Err(error) => return Err(error),
+            }
+        }
+        Ok(result)
     }
 
     /// Drain ONLY this source-verified deletion's removal signals. No new queue,
@@ -271,6 +355,15 @@ impl SocialInvalidationSink {
         }
         Ok(count)
     }
+}
+
+async fn pending_after(
+    c: &mut PgConnection,
+    cursor: Option<(DateTime<Utc>, Uuid)>,
+) -> Result<Option<PgRow>, DeliveryFailure> {
+    sqlx::query("select * from public.concert_social_policy_signals where source_outbox is null and published_at is null and ($1::timestamptz is null or (created_at,signal_id)>($1,$2)) order by created_at,signal_id limit 1 for update skip locked")
+        .bind(cursor.map(|v| v.0)).bind(cursor.map(|v| v.1))
+        .fetch_optional(c).await.map_err(retry)
 }
 
 impl SocialInvalidationSink {

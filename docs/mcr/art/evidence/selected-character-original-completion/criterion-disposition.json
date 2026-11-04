@@ -1,0 +1,568 @@
+{
+  "task": "AR03",
+  "status": "INTEGRATED",
+  "originalArtCriteria": "SATISFIED_BY_RETAINED_QUALIFIED_DELIVERIES",
+  "originalTaskDisposition": "ACCEPTED_ARTWORK_CRITERIA_ONLY",
+  "observedAt": "2026-11-04T17:56:11Z",
+  "sourceBase": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+  "branch": "codex/mcr-art-C06-AR03-source-completion-20261105",
+  "worktree": "art-runtime",
+  "goal": {
+    "status": "blocked",
+    "reason": "Historical authorization metadata; original aligned goal retained, no reset/replacement. This disposition publication remains pending."
+  },
+  "ownership": {
+    "grantingOwner": "Root153",
+    "formerWriter": "Motion83 asset lease returned; now FE17 only",
+    "acceptedPrefixes": [
+      "frontend/src/entities/avatar/derived-assets/selected-character-original-completion/**",
+      "frontend/public/world/avatars/derived-v1/selected-character-original-completion/**",
+      "docs/mcr/art/selected-character-original-completion.md",
+      "docs/mcr/art/evidence/selected-character-original-completion/**"
+    ],
+    "actuallyUsed": "Only new documentation/evidence; no product, helper, image, schema, generated or shared file changed"
+  },
+  "source": {
+    "pack": "mcr_user_characters_20261103",
+    "revision": 3,
+    "selectedOriginals": 20,
+    "manifestId": "mcr_selected_motion_reviewed_20261104",
+    "manifestVersion": 2,
+    "contract": "2.0.0",
+    "manifestContentHash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018",
+    "atlas": {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png",
+      "sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+      "bytes": 470010,
+      "width": 1280,
+      "height": 1856
+    },
+    "categories": {
+      "body": 8,
+      "hair": 6,
+      "outfit": 6,
+      "accessory": 4,
+      "eyes": 4
+    },
+    "presetCount": 6,
+    "presetCells": 120,
+    "geometry": {
+      "cell": [
+        64,
+        64
+      ],
+      "foot": [
+        32,
+        60
+      ],
+      "directions": [
+        "down",
+        "left",
+        "right",
+        "up"
+      ],
+      "source_direction_aliases": {
+        "down": "front",
+        "left": "left",
+        "right": "right",
+        "up": "rear"
+      },
+      "phase_order": [
+        "idle",
+        "walk-0",
+        "walk-1",
+        "walk-2",
+        "walk-3"
+      ],
+      "output_cells": 20,
+      "physical_frames": 576
+    },
+    "composition": {
+      "layer_order": [
+        "body",
+        "hands",
+        "outfit",
+        "eyes",
+        "hair",
+        "accessory"
+      ],
+      "dressed_body_clip_y_exclusive": 42,
+      "hand_palette_color_index": 2,
+      "skin_policy": "BODY_SELECTS_SEMANTIC_RGB_PALETTE_NO_BLANKET_TINT",
+      "rear_eyes": "NON_VISIBLE_FROM_REAR",
+      "stationary_uv_sharing": true,
+      "combined_indices_already_offset": true
+    },
+    "attribution": "30 preset cells use supplied front pixels/source articulation;90 preset cells use previously authored, explicitly reviewed reconstruction. Existing wardrobe reconstruction/selected eyes/skin palettes retain their provenance. No new reconstruction here."
+  },
+  "sourceBindings": {
+    "exitCode": 0,
+    "scope": "Read-only pin/canonical-schema/metadata inspection, not fresh image decoding, native execution, test suite or device qualification",
+    "verifiedResources": [
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png",
+        "sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+        "bytes": 470010,
+        "result": "PASS"
+      },
+      {
+        "path": "docs/mcr/contracts/avatar-motion-v2/review/visual-review.json",
+        "sha256": "27dd1f7f1d31b792f4da415cf6daf6eafc97e91023443a27ac70480f75ce5956",
+        "bytes": 8109,
+        "result": "PASS"
+      },
+      {
+        "path": "backend/releases/selected-character-motion-v2/manifest.json",
+        "sha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6",
+        "bytes": 95128,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json",
+        "sha256": "6cf3aad25ceba681f4c0306d1139109ee6c07508de617ecf1c0b08b1d43fb950",
+        "bytes": 42925,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/motion-release-candidate.json",
+        "sha256": "223926a1ee23d57daa791fa15cbdb8a3417eaa9eabfc0026e9cff1096dfe8cae",
+        "bytes": 154956,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/wardrobe-release-candidate.json",
+        "sha256": "76314115c9de6e7d9e7aec36c49b0f27dfe36e7e185d4f8220c1a43f58dc6b50",
+        "bytes": 115552,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/candidate-index.json",
+        "sha256": "123d8f56f88299b084bed15d26fe9960c252ee10423ce98db08cba7b2e633433",
+        "bytes": 375733,
+        "result": "PASS"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/source-pins.json",
+        "sha256": "313748ed86619e5f0a0b4b62794e7e11d23d5d17cf98cfcdc0c00f471278534c",
+        "bytes": 4403,
+        "result": "PASS"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/delivery-pins.json",
+        "sha256": "69b1e071a8195e35f56d4ca5f717b8e3262e7d2d694789b47b22c788ce13c423",
+        "bytes": 50007,
+        "result": "PASS"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/original-hashes.json",
+        "sha256": "2a388cf3e8b2a4794dda7ba3d0d0ab1a278e0ba8276094bf0ebd7f2be9c5728f",
+        "bytes": 3206,
+        "result": "PASS"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/authored-reconstruction.json",
+        "sha256": "ee963e181bf6cb1a08f0652dc5fd9d72706dc4c62868496cb5ea30aff484846a",
+        "bytes": 810,
+        "result": "PASS"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/component-source-inputs.json",
+        "sha256": "f1ba21e4addf4efb8eb5a2cdff83afa22e2dfe14b583f54e8de34e4b45c7efc1",
+        "bytes": 1404,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/src/entities/avatar/character-source-pack.json",
+        "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+        "bytes": 21539,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+        "sha256": "da986a83df2440723b37b224ea7b74de0edfbc4f40bd1c716333199f5581f6d2",
+        "bytes": 750770,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+        "sha256": "1ecafff63abbb0252098f6a81fc710aaa8dee78354c1e2fd9223e5a955749fef",
+        "bytes": 1565889,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+        "sha256": "a106fab178ab0a05b7d56da3ffb3e3b35dc4d21e3ade53089204926803863dd3",
+        "bytes": 960682,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-accessory-source-29ff6bab42ff3829.png",
+        "sha256": "29ff6bab42ff3829119103cd8281799224292668b1b1f317b22c502bc9be818c",
+        "bytes": 1011224,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-turnaround-source-9a40c5d4098296b0.png",
+        "sha256": "9a40c5d4098296b076f57732f57c6e63778999e360cccb49de477f12d6e004e0",
+        "bytes": 1153603,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-01.jpg",
+        "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+        "bytes": 168045,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-02.jpg",
+        "sha256": "cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489",
+        "bytes": 166375,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-04.jpg",
+        "sha256": "87cdfbff215758c12d7042a7c435a17a6cdccb7637b0542dd9e0508d832e2a63",
+        "bytes": 189238,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-05.jpg",
+        "sha256": "681f566ab7ef081fa7f8a39ea0c3367cc822ea31f1bcfe3065f2755679950027",
+        "bytes": 185536,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-06.jpg",
+        "sha256": "a5fa9ecebf1ce7f36d1cb3eb50c5a21d75fe817797d9f1cd330d252b3677845f",
+        "bytes": 193901,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-07.jpg",
+        "sha256": "5ff980e6268beb3162c23f1d8d0478d09d2180ce45f5df9c4303eac80b9c82ce",
+        "bytes": 172536,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-08.jpg",
+        "sha256": "9b9e5ba41b8f286ecf73ca2e859a03eefa294ff3750c013f75310189343445d9",
+        "bytes": 111594,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-09.jpg",
+        "sha256": "e4e857fb1a7f98d1a52538f47738b8fe01f0e352be0cd71e7b2f9e36ae4008c8",
+        "bytes": 142915,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-10.jpg",
+        "sha256": "397ffa665515ebe8c573f1a5164358c5cb698633a1680f545994404026ecc96d",
+        "bytes": 98841,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-11.jpg",
+        "sha256": "528bc065159be519e076c84648561845eb97d08c1fa090345e80489f5d69821f",
+        "bytes": 242601,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-12.jpg",
+        "sha256": "ac2d1aa9153aa1217afa0817679fba0c00d09f3290f191d4706ad5a22833db94",
+        "bytes": 273737,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-13.jpg",
+        "sha256": "292a1080e08ac42474222ea1c1cda2d063885b7da72f2f9ea8c606b25c5217b3",
+        "bytes": 263938,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-14.jpg",
+        "sha256": "6bceb582fc1301589c968a40335ad7dc183f01c60b47ad45f223a375d3c49d95",
+        "bytes": 288728,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-15.jpg",
+        "sha256": "d0a17abd38eb55e46db985c168d0183073b5d703478d00e8d49ca8e14d4af825",
+        "bytes": 293533,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-16.jpg",
+        "sha256": "48200de941ebc7b9474752b0475c7c0fe4983fd16442afce83fbe56a1d474507",
+        "bytes": 248204,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-17.jpg",
+        "sha256": "21c7dbe159570072cb7406d6d1bf3521ba44da4bd392dd9f058f4e2bb026750c",
+        "bytes": 175218,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-18.jpg",
+        "sha256": "419a2b2527dab6b63bf2cee251651eefeb6792a546bcd4737a99d6f5678aa514",
+        "bytes": 222649,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-19.jpg",
+        "sha256": "856135f8c8b970f711b1ccdf1c071151a54037e07827bae6b518465e18d6c1ad",
+        "bytes": 240144,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-20.jpg",
+        "sha256": "1b741978ef59714c6ecd7f906abf6f909ee77d2dc1906c97cc95b958aa98243a",
+        "bytes": 193103,
+        "result": "PASS"
+      },
+      {
+        "path": "frontend/public/world/avatars/supplied-v1/photo-21.jpg",
+        "sha256": "3f0d763f18913cdd4e6af8830404ef7163315cd30a275054c76e63c6fa09831d",
+        "bytes": 255136,
+        "result": "PASS"
+      }
+    ],
+    "sourceAndReceiptPins": [
+      {
+        "path": "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+        "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+        "bytes": 93063,
+        "blob": "fdb247c35a5a2a7e8e371c7008fd42df6c6b7a03"
+      },
+      {
+        "path": "docs/mcr/character-art.md",
+        "sha256": "3aa9657c61ae16e433077aae785fdd5a63e28dad5bd217f388966fd851f0a4e8",
+        "bytes": 8011,
+        "blob": "5484864e33a0a726f7a82e8916259269b46c56a3"
+      },
+      {
+        "path": "frontend/src/entities/avatar/character-source-pack.json",
+        "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+        "bytes": 21539,
+        "blob": "c6600f6c1745ee1aebffe41a575ffc6a9b05edf7"
+      },
+      {
+        "path": "backend/releases/selected-character-motion-v2/reviewed/manifest.json",
+        "sha256": "1342f2b640a8135c2f128713fe1f59adc0b6da8b925a0ac84808b2d8d1ec884d",
+        "bytes": 97407,
+        "blob": "8d47ef572ffc27edc86e89ac71b006c34c1003f8"
+      },
+      {
+        "path": "contracts/assets/v2/reviewed/avatar-manifest.schema.json",
+        "sha256": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+        "bytes": 119959,
+        "blob": "88d50c366a2b981f842f0ab34a0a8cd7602762be"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/direction-validation.json",
+        "sha256": "bff9d08935e3b5995bf3b0802e30e2d162f5dd97301332befb39a25826e78ebf",
+        "bytes": 46634,
+        "blob": "bf2bc61656eac371f6abaa031a4ccc1b78e26778"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/wardrobe-validation.json",
+        "sha256": "0c40ffca8b694b5ade5c31b94b70d12a85276418b60cc47cb5d4f04d48cf4f35",
+        "bytes": 138482,
+        "blob": "cded33d45bb9915fc235dcd2eeb9de7350b4793b"
+      },
+      {
+        "path": "docs/mcr/contracts/avatar-motion-v2/review/seams.json",
+        "sha256": "1181d1f5bd46c5a9e718a026528ec46d0f148457f806733a469ebc4998528362",
+        "bytes": 693,
+        "blob": "c233a17a82d7f2ac5a42563c1f0bcb4baa99d804"
+      },
+      {
+        "path": "docs/mcr/evidence/frontend-combined-adoption/reviewed-round01/reviewed/2026-11-04T15-46-44-984Z-native.json",
+        "sha256": "dd59913991048ed93fde44a68dcda814792d59a93cc5cca1dd3c5cb83eb8b0b3",
+        "bytes": 26302,
+        "blob": "a3dea6c6d6a2c913da190806afb41788c5f5e5f2"
+      },
+      {
+        "path": "docs/mcr/evidence/reviewed-persistence-motion/handoff.json",
+        "sha256": "c5a7a79befd12f182ea395a7657dc602448077a2bbd6a5996c2344933fcca954",
+        "bytes": 13406,
+        "blob": "d1505b9ba2d4c86cbdfb0a5ab019209b830137dd"
+      },
+      {
+        "path": "docs/mcr/art/selected-character-motion.md",
+        "sha256": "d128bcf2ec9a1185803c13a27eb89aa20689f8f2311b705d45a2068d67732b06",
+        "bytes": 14490,
+        "blob": "7ef36c1be5d1cc44786b77a82ad2e7153ee5496e"
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/consumer-handoff.json",
+        "sha256": "213965d57a912a64d36dd7d8bdb7abd58dfb73938e9a3b781db38163eddae977",
+        "bytes": 14344,
+        "blob": "54a953654e7e6b957381074df3e69a555c86bbd4"
+      },
+      {
+        "path": "frontend/src/entities/avatar/runtime/motion-adoption/art.ts",
+        "sha256": "3bc23478c870cf61894d99c735d38ec9ea76a981ee3582bb1fa7e7ad666f4d47",
+        "bytes": 6062,
+        "blob": "4fb14e13d24427b5855fc70d1f9614ad6cf7b337"
+      },
+      {
+        "path": "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+        "sha256": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735",
+        "bytes": 6075,
+        "blob": "d205902a62c606b6e8475ee6bd098d9941274bb2"
+      },
+      {
+        "path": "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts",
+        "sha256": "9d16a2caa0c072ba78410085429b30dd527b3519b83e1d50186b710ac01230b6",
+        "bytes": 7519,
+        "blob": "4aafb403be2c3242a7e3d87ec82ee199aeb75ee3"
+      },
+      {
+        "path": "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts",
+        "sha256": "ff0a901e62f572aa406d5916f741dd771956ec767c3585cf0ce5aa6ec1b81701",
+        "bytes": 6940,
+        "blob": "17f9ac455a2986af0c79aeab90d0849396f9af4d"
+      },
+      {
+        "path": "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts",
+        "sha256": "dcae35f22db0ce3f20eb52213271d59a25f290a74413a74518eb1708cc92e36c",
+        "bytes": 5015,
+        "blob": "3645eddc5d93fe4c3bc8ea92c1f543e9950147c8"
+      },
+      {
+        "path": "frontend/src/app/character-entry/reviewed-registry.ts",
+        "sha256": "590323cccae44f9cf3794cdceaccff7671313616e59a6636bdc2a0c87dbee8ca",
+        "bytes": 5212,
+        "blob": "f0d750eb43c211cbd51db6c6d1dc543ce7714d79"
+      },
+      {
+        "path": "frontend/src/app/character-entry/runtime.ts",
+        "sha256": "c800682cd6351329e4107fa6a5d271746ad4a614d2a58cbd9e5f92aa85b301c7",
+        "bytes": 1259,
+        "blob": "16941bef3bfd43eae95d445e63fe9b8dcc8915ad"
+      },
+      {
+        "path": "frontend/src/app/account-entry/owner.ts",
+        "sha256": "d150b78cefbb71f2a10f3bc9aa6697951aa551c40774e4398e8f3c16a62c4eea",
+        "bytes": 4406,
+        "blob": "ec52d1c65e0612387cb07f4b5a940a04cd1249ee"
+      },
+      {
+        "path": "frontend/src/app/account-entry/panels.tsx",
+        "sha256": "ae64e8f12cb973cee01bb7b36a4b24e3154e19f571f9c3513c1ee902c99ad965",
+        "bytes": 3278,
+        "blob": "d1c3a9ce16d73f27d54151db5e0ae25722a5005c"
+      },
+      {
+        "path": "frontend/src/app/world-entry/production.ts",
+        "sha256": "bd3b199b680f0df417763679ac85a680efd8022eec1c94946882f92001877967",
+        "bytes": 10247,
+        "blob": "3844405ea544ac87f71e8fa17d07efd345d169da"
+      },
+      {
+        "path": "frontend/src/world/avatar/motion-adoption/renderer.ts",
+        "sha256": "088a7550c133cdf22b66782f9259c7b18401c6b4c10ba46a2f482ea0274420aa",
+        "bytes": 8976,
+        "blob": "744d4406532ac8ac314656bca53e07af7962aa70"
+      }
+    ]
+  },
+  "criteria": [
+    {
+      "id": "AR03-PRESETS",
+      "criterion": "Six presets",
+      "disposition": "SATISFIED",
+      "evidence": [
+        "backend/releases/selected-character-motion-v2/reviewed/manifest.json",
+        "docs/mcr/art/evidence/motion-candidates-v1/direction-validation.json"
+      ],
+      "details": "Six closed preset IDs,120 distinct physical cells."
+    },
+    {
+      "id": "AR03-LAYERS",
+      "criterion": "Six hair/four eyes/six outfits/four accessories/selectable skin",
+      "disposition": "SATISFIED",
+      "evidence": [
+        "backend/releases/selected-character-motion-v2/reviewed/manifest.json",
+        "docs/mcr/art/evidence/motion-candidates-v1/wardrobe-validation.json",
+        "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts"
+      ],
+      "details": "8 bodies with selected skin palettes;6/4/6/4 item counts. Cuff masks,body clip42 and rear-eye invisibility explicitly supported by versionedv2; no fake five-slot decomposition."
+    },
+    {
+      "id": "AR03-FRAMES",
+      "criterion": "64x64 cell,foot32,60,four directions,idle/four walks",
+      "disposition": "SATISFIED",
+      "evidence": [
+        "backend/releases/selected-character-motion-v2/reviewed/manifest.json",
+        "docs/mcr/art/evidence/motion-candidates-v1/direction-validation.json",
+        "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+        "frontend/src/world/avatar/motion-adoption/renderer.ts"
+      ],
+      "details": "Existing576-cell shared atlas; source alias front/down,rear/up; renderer produces320x256 sheet and uses facing,moving and incumbent scene time."
+    },
+    {
+      "id": "AR03-MOBILE",
+      "criterion": "No clipping/missing frames/theme-dependent identity change at actual mobile scale",
+      "disposition": "SATISFIED_WITH_RETAINED_EVIDENCE",
+      "evidence": [
+        "docs/mcr/art/evidence/motion-candidates-v1/direction-validation.json",
+        "docs/mcr/art/evidence/motion-candidates-v1/wardrobe-validation.json",
+        "docs/mcr/contracts/avatar-motion-v2/review/seams.json",
+        "docs/mcr/contracts/avatar-motion-v2/review/visual-review.json",
+        "docs/mcr/evidence/frontend-combined-adoption/reviewed-round01/reviewed/2026-11-04T15-46-44-984Z-native.json"
+      ],
+      "details": "Art56/64/72px at360/390/430/three themes;1176 pairwise compositions; independent4800 seam cases. Existing owner visual judgment and fixture/actual-main qualifications remain distinct."
+    },
+    {
+      "id": "FE12-INTEGRATION",
+      "criterion": "Shared deterministic composition,cache,World/Profile,explicit admission",
+      "disposition": "DELIVERED_CLIENT",
+      "evidence": [
+        "frontend/src/app/character-entry/reviewed-registry.ts",
+        "frontend/src/app/character-entry/runtime.ts",
+        "frontend/src/app/account-entry/owner.ts",
+        "frontend/src/app/account-entry/panels.tsx",
+        "frontend/src/app/world-entry/production.ts",
+        "docs/mcr/evidence/frontend-combined-adoption/reviewed-round01/reviewed/2026-11-04T15-46-44-984Z-native.json",
+        "docs/mcr/evidence/reviewed-persistence-motion/handoff.json"
+      ],
+      "details": "Production code dispatches reviewedv2 under minted canonical Auth scope. Actual-main controlledHTTP/C05 proves selection/save/Profile/World,hardreload/naturalselfpeerframes; not real services/device/multiuser."
+    }
+  ],
+  "uncoveredAssetRequirements": [],
+  "inputBlockedArtwork": [],
+  "requiredSharedContractOrAccessorHunk": null,
+  "actualConsumerFailureObserved": null,
+  "notRunThisTurn": [
+    "New image generation,masking,atlas regeneration or new derivative",
+    "Repeated native/browser/Phaser/art suites on unchanged assets",
+    "Real iOS/Android,live backend persistence,two-account fullflow,release/full ten-screen acceptance"
+  ],
+  "separateRemainingObligations": [
+    {
+      "scope": "QA06",
+      "owner": "Restored1ab7 under UI533",
+      "remaining": "Actual iOS Safari/Android Chrome and applicable fullreference duties; reuse pins/captures shared directly."
+    },
+    {
+      "scope": "Integration/release",
+      "owner": "Assigned functional developers/Root",
+      "remaining": "Existing controlledHTTP/C05 receipts do not establish live persistence/two-account/device/release. No new consumer bug or shared hunk demonstrated here."
+    }
+  ],
+  "publication": {
+    "publisher": "Root153 01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "state": "WAITING_FOR_PUBLICATION",
+    "noKingSlReviewOrAck": true
+  },
+  "provenance": {
+    "newArt": false,
+    "copiedApplicationCode": false,
+    "sourceModifications": false,
+    "newDependencies": false,
+    "licenseClaim": "User-selected originals and retained reviewed derivatives; no new license grant or third-party rights assertion."
+  }
+}

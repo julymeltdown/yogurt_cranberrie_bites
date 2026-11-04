@@ -35,7 +35,7 @@ const png = Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAA
 const createdUrls: string[] = [], revokedUrls: string[] = [], protectedUrls: string[] = []
 const originalCreate = URL.createObjectURL.bind(URL), originalRevoke = URL.revokeObjectURL.bind(URL)
 // TEST_ONLY classification of the existing exact-size PNG transport bytes; public character textures stay separate.
-URL.createObjectURL = blob => { const url = originalCreate(blob); createdUrls.push(url); if (blob.type === 'image/png' && blob.size === png.byteLength) protectedUrls.push(url); return url }
+URL.createObjectURL = blob => { const url = originalCreate(blob); createdUrls.push(url); if (blob instanceof Blob && blob.type === 'image/png' && blob.size === png.byteLength) protectedUrls.push(url); return url }
 URL.revokeObjectURL = url => { revokedUrls.push(url); originalRevoke(url) }
 if (!['world-only', 'enabled', 'no-policy', 'virtual'].includes(scenario)) throw Error('Unknown TEST_ONLY scenario')
 document.title = `TEST_ONLY Gifts protected media: ${mediaMode}`

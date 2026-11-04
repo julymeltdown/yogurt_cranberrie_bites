@@ -1,0 +1,29 @@
+{
+  "at": "2026-11-04T17:41:18.258345+00:00",
+  "pin": "72af0d043855877c2eefa333054cb3c78c7ad3d6",
+  "clean": true,
+  "source_bytes": 1393385472,
+  "deps_bytes": 789164032,
+  "git_bytes": 1975212,
+  "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+  "git_dir_bytes": 1937408,
+  "free_bytes": 27222949888,
+  "accepted_at": "2026-11-04T17:41:17.993451+00:00",
+  "other_new_bytes": 478150656,
+  "own_new_bytes": 134217728,
+  "remaining_after_all_growth_bytes": 26618523648,
+  "node_sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "readset_sha256": {
+    "frontend/src/app/admin-entry/mural-closure/MuralClosurePanel.tsx": "93c69e4ebcced9f7f8446023d2f0fb07f56088ad1524739522dafb7c0db58dbf",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "39e0d76739ff95cb34d1496e779e2ddd94b6824fc139b8f422edac6118e5b824",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/fixture.ts": "c48f669585ab62f4e363f969aca73f3dd46845c94e1572bbec366ffc00e1d7a4",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/native.mjs": "94de51c3a4fe011f5bd5846cb5dd5369973ea932e916adb3a8ea836f577564a1",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/preview.html": "7a377d466da8f7f051cda59391efc8c2872de85f4942087b514c470d5ec97a7c",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/preview.tsx": "e6a11b6931fddb003b1eb13688863f8b2c24ff6ccb6de2cd8b6c5437b6450ac2",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/round.py": "db1aa89e2cf5c7b51b9dbb0c516d3b954848fbc44878b8e7743e1c224ca5e85f",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/vitest.config.ts": "0756e9ac7bf312bd7fe1a37b023e69da01fc77f099c75fd7c0c25e71bf934925",
+    "frontend/src/app/admin-entry/mural-closure/index.ts": "a28b03a9fece882620b5aeebc7fad1075377b5c2454f21a0b304cc43cbebe3ef"
+  },
+  "provenance": "Acceptance stdout retained in Codex command session26933; control records original same accepted clock. Reconstructed hash set from unchanged72af0d04 files, not a second acceptance."
+}

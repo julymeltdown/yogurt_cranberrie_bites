@@ -1,0 +1,46 @@
+{
+  "source": "3a089a3b",
+  "operationId": "getOwnConcertOperationsAccess",
+  "definition": {
+    "method": "GET",
+    "path": "/api/concert/events/{eventId}/me/operations-access",
+    "query": "common.EmptyRequest",
+    "parameters": {
+      "eventId": {
+        "type": "string",
+        "format": "uuid",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      }
+    },
+    "idempotency": false,
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "success": [
+      200
+    ]
+  }
+}

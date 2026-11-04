@@ -1,0 +1,37 @@
+{
+  "ownerViewedEveryImage": true,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "images": {
+    "360-partial.png": "50fbec2d4203d6d312686d85e29ad6077318be1d87b6e0828e8b3bf34aba3932",
+    "360-restore.png": "38bd88f98ceb37fefc070e0809f4ebf21c9ff35375c30f7649397da2f1448149",
+    "360-retained-unknown.png": "df9e5c0e72a2c926ed8f31a56c934ed919619e347b9cf836bed8979989a9474b",
+    "360-withdrawn.png": "6d90f50588abf6022a2c61deb4c3453c97c8f988bcecad935e25927a381664eb",
+    "390-partial.png": "c5330cfa7ff2913adde6ef694e6f4b5872eaf6a52fab895660c98cbd7362831d",
+    "390-restore.png": "798f89d0b122d6c95412664f4d285b474655de752a7d9428f7a4b3fae77aebf0",
+    "390-retained-unknown.png": "c00c6cead6ce315ea23308193dcafc7f2c0ff2e9de1fbebcfafaa9604bd5e9e7",
+    "390-withdrawn.png": "588875ab1499ef09346d011ae48698952442b614a318eeb46a1693780dee7f61",
+    "430-partial.png": "e0bd23f65877c0220a703f273e1fb5aff0cc4f1ef470b4c1becc4d4b56d7db21",
+    "430-restore.png": "265cec97d42d5d2868df909bd31e52b65c587947f59e981fb932e0657d1ebbc5",
+    "430-retained-unknown.png": "5d8c75eb84c9d5cbf70172cd3b42e2292f06edc12df5937ff68413c8311bbe30",
+    "430-withdrawn.png": "5b5b8ab880c542bc234a62e284bf71941d9204fa5c66c200a539a8ca208c0b43"
+  },
+  "reference": "Read-only existing MCR admin.css and historical390 restore/resume captures individually inspected; no dedicated operations screen in ten-screen visual target. This compares retained controls and new adapter states, not full application visual acceptance.",
+  "observations": [
+    "Exact restore snapshot UUID and expected revision are legible at every width; long UUID wraps at360 without horizontal overflow.",
+    "All seven closure steps and explicit FAILED export/PENDING cleanup remain readable; completed steps remain SUCCEEDED.",
+    "Unknown command banner persists after panel navigation, with original status checking and no additional resume/start control. The displayed revision3 progress is the last verified pre-command job, not asserted as a current server result.",
+    "Withdrawal removes job/snapshot/commands and displays an explicit unavailable state.",
+    "Touch controls retain44px minimum; full-page captures show content extending below the initial844px viewport. Native scrolling/focus and keyboard confirmation passed.",
+    "All12 new captures directly viewed; no blank/error panels, clipping or missing artwork observed. No artwork was introduced."
+  ],
+  "limitations": [
+    "Synthetic Auth response, operator context and HTTP server facts; canonical SessionController/transport/feature renderer/entry are real.",
+    "No default AdminBoundary or production operations-access mount acceptance.",
+    "No live server actor authorization, actual cleanup effects, multi-client reset/IN04/IN05, physical device or whole-reference visual acceptance."
+  ],
+  "result": "PASS_FOR_CHANGED_ADAPTER_CONTROLLED_NATIVE_SCOPE"
+}

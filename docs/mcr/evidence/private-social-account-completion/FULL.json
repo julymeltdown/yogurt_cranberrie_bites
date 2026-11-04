@@ -1,0 +1,35 @@
+{
+  "offer": "PRIVATE-SOCIAL-ACCOUNT-SOURCE-A-20261104T1743Z",
+  "released": 1793814722.57816,
+  "cutoff": 1793814851,
+  "hardDeadline": 1793814911,
+  "source": "b2b3abd6da2001931d73ae85e16cf4ec604cdd27",
+  "dependencyLinkAbsent": true,
+  "temporaryRootsAbsent": true,
+  "processesRemaining": [],
+  "portsOpened": [],
+  "freeBytes": 26251870208,
+  "peakAcrossPhases": {
+    "whole": 2733207958,
+    "growth": 33297733,
+    "temporary": 29884196,
+    "durable": 509517,
+    "files": 26160,
+    "processes": 4,
+    "rss": 1671069696
+  },
+  "finalPassed": [
+    "regressionF:384/384",
+    "ownedTypesC:39roots/750files/0diagnostics",
+    "lintB:exit0",
+    "planA:exit0"
+  ],
+  "preservedFailures": [
+    "redA:8/8fail plus completed-ps false-positive supervisor assertion",
+    "regressionA:cold Settings import at one-second default",
+    "regressionB-E:owned harness resolution failures",
+    "typesA:external TS5097 and Gift TS2339",
+    "ownedTypesA:missing original config resolution context"
+  ],
+  "noFurtherWorkloadHeld": true
+}

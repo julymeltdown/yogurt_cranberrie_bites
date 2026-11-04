@@ -257,11 +257,36 @@ impl ParticipantRuntimeSettings {
     /// All credentials, explicit dedicated keys and mTLS are required even locally.
     /// Validate before opening the database; no channel connects during this load.
     pub fn load(grpc_enabled: bool) -> anyhow::Result<Option<Self>> {
+        Self::load_source(grpc_enabled, None)
+    }
+
+    /// Structural release inspection only. The caller returns before composition,
+    /// DB/listeners or serving. Use the already validated source pin to break the
+    /// digest/configuration cycle; actual serving always uses strict `load()` and
+    /// requires its configured FINAL digest to match the computed feature release.
+    pub fn load_for_release_inspection(
+        grpc_enabled: bool,
+        source: &ValidatedProductRelease,
+    ) -> anyhow::Result<Option<Self>> {
+        Self::load_source(grpc_enabled, Some(source))
+    }
+
+    fn load_source(
+        grpc_enabled: bool,
+        inspection_source: Option<&ValidatedProductRelease>,
+    ) -> anyhow::Result<Option<Self>> {
         let Some(settings) = settings(
-            |name| match std::env::var(name) {
-                Ok(v) => Ok(Some(v)),
-                Err(std::env::VarError::NotPresent) => Ok(None),
-                Err(_) => anyhow::bail!("{name} must contain valid Unicode"),
+            |name| {
+                if name == RELEASE {
+                    if let Some(source) = inspection_source {
+                        return Ok(Some(source.source_digest().to_owned()));
+                    }
+                }
+                match std::env::var(name) {
+                    Ok(v) => Ok(Some(v)),
+                    Err(std::env::VarError::NotPresent) => Ok(None),
+                    Err(_) => anyhow::bail!("{name} must contain valid Unicode"),
+                }
             },
             grpc_enabled,
         )?

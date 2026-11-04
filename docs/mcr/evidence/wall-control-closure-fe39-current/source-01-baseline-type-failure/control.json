@@ -1,0 +1,29 @@
+{
+  "offer": "FE39-OPERATIONS-SOURCE-A-20261104T1741Z",
+  "kind": "source",
+  "pin": "72af0d043855877c2eefa333054cb3c78c7ad3d6",
+  "accepted_at": "2026-11-04T17:41:17.993451+00:00",
+  "port": 59744,
+  "work_end": 1793814197.993451,
+  "hard_end": 1793814257.993451,
+  "preflight": {
+    "at": "2026-11-04T17:41:18.258345+00:00",
+    "pin": "72af0d043855877c2eefa333054cb3c78c7ad3d6",
+    "clean": true,
+    "source_bytes": 1393385472,
+    "deps_bytes": 789164032,
+    "git_bytes": 1975212,
+    "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+    "git_dir_bytes": 1937408,
+    "free_bytes": 27222949888
+  },
+  "limits": {
+    "pids": 8,
+    "rss": 3221225472,
+    "whole": 2684354560,
+    "temporary": 83886080,
+    "durable": 25165824,
+    "other": 16777216,
+    "new_total": 134217728
+  }
+}

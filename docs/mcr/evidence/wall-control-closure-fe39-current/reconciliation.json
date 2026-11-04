@@ -1,0 +1,280 @@
+{
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "historicalResumeIntegration": [
+    "b880c55",
+    "5c92862"
+  ],
+  "reports": {
+    "wall": {
+      "path": "frontend/src/features/admin/mural/__tests__/evidence/browser/report.json",
+      "result": "PASS",
+      "recordedBase": "75856239d273e14a21a17f4c6248af35fe7e7007",
+      "hashes": {
+        "frontend/src/features/admin/mural/WallControl.tsx": {
+          "match": true,
+          "historical": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838",
+          "current": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838"
+        },
+        "frontend/src/features/admin/mural/admin.css": {
+          "match": true,
+          "historical": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b",
+          "current": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b"
+        },
+        "frontend/src/features/admin/mural/contract.ts": {
+          "match": true,
+          "historical": "996e1099335427ab5b515d89e4725675cf85b3cd782b5cad878610e353382917",
+          "current": "996e1099335427ab5b515d89e4725675cf85b3cd782b5cad878610e353382917"
+        },
+        "frontend/src/features/admin/mural/controller.ts": {
+          "match": true,
+          "historical": "8c9be4341fb5d1d9f909c56328e5d020238cd04a69473b5540fdf2d97b5bd43b",
+          "current": "8c9be4341fb5d1d9f909c56328e5d020238cd04a69473b5540fdf2d97b5bd43b"
+        },
+        "frontend/src/features/admin/mural/http.ts": {
+          "match": true,
+          "historical": "cd87f2cbf3257f202008bba978181ae1b17eb3f6f51298c21eaa9699125fbfab",
+          "current": "cd87f2cbf3257f202008bba978181ae1b17eb3f6f51298c21eaa9699125fbfab"
+        },
+        "frontend/src/features/admin/mural/index.ts": {
+          "match": true,
+          "historical": "0d9d924f75f3ee3af88c4d603925f4b888ecfdf9d23e8f67d32f690f483b4c47",
+          "current": "0d9d924f75f3ee3af88c4d603925f4b888ecfdf9d23e8f67d32f690f483b4c47"
+        },
+        "frontend/src/features/admin/mural/owner.ts": {
+          "match": true,
+          "historical": "7de653bbaf968f412b4bbfb96c51074e3bec04d0d13deb2e12ead7b1be13f045",
+          "current": "7de653bbaf968f412b4bbfb96c51074e3bec04d0d13deb2e12ead7b1be13f045"
+        },
+        "frontend/src/features/admin/mural/transport.ts": {
+          "match": false,
+          "historical": "cdfd9e71c322ad495a0c54b59f825158c73c3874d33e9e2cf1443b4f542fc091",
+          "current": "f473f04ffa9e3d5dbf0129025e5ae46fbac18d3ce1009bc46a85409feac33b87"
+        },
+        "frontend/src/features/admin/closure/EventClosure.tsx": {
+          "match": false,
+          "historical": "dfdd25b9ba0dea99c6497463cf38db04b1fd9917da4722e8b1966ada38171fa6",
+          "current": "fd4b11be8c59a332c475ae03f1799891793bde147c8b4935257f4ee62e826cd1"
+        },
+        "frontend/src/features/admin/closure/contract.ts": {
+          "match": false,
+          "historical": "3c99d1f93ea85ecccf6b4f99150bab8785dff3f565223f01671e91513480a4c0",
+          "current": "873d48455a60c75f9ed247d8095281584bf9233c44e56c347f6cf08ccaea9cdd"
+        },
+        "frontend/src/features/admin/closure/controller.ts": {
+          "match": false,
+          "historical": "19480c169de90dab2fb39946f451164e3fc66ddb671273dad9bbb81492b78f05",
+          "current": "e10eb54be82d7c0c6581cf4ef15cc02260f221b175c10fdc72662a90416136fb"
+        },
+        "frontend/src/features/admin/closure/http.ts": {
+          "match": false,
+          "historical": "e4bea896233e6e9727f4d678a57ba0cfd92e3e689ce068b2c1c32d49e330e183",
+          "current": "6ab2abb003e2c80c1683c5cd7d81231dcbc3ccf3bcafd4ead5fb72fb63f467e9"
+        },
+        "frontend/src/features/admin/closure/index.ts": {
+          "match": false,
+          "historical": "7c21dedb65c80e05392bbf09023d876cdd62c98958e24bae849577e81212e11d",
+          "current": "9489ddd233e0225243946f252976a0c83d825cceceb42fa14208b30a39e5ec26"
+        },
+        "frontend/src/features/admin/mural/__tests__/fixture.ts": {
+          "match": true,
+          "historical": "ca67ae20bc74ec6b63d44c29b1f751f59cae86fdcea72f48e34a25103dba760e",
+          "current": "ca67ae20bc74ec6b63d44c29b1f751f59cae86fdcea72f48e34a25103dba760e"
+        },
+        "frontend/src/features/admin/mural/__tests__/preview.tsx": {
+          "match": true,
+          "historical": "9baf6e687f5c53951563ddd616e63cfc52a3aaa5d41f2591303d026b3f85ba43",
+          "current": "9baf6e687f5c53951563ddd616e63cfc52a3aaa5d41f2591303d026b3f85ba43"
+        },
+        "frontend/src/features/admin/mural/__tests__/preview.css": {
+          "match": true,
+          "historical": "df094ae087b5c03d9e3a6d4bb7faec002da26642172f51d0c4dffe52e9b0511b",
+          "current": "df094ae087b5c03d9e3a6d4bb7faec002da26642172f51d0c4dffe52e9b0511b"
+        },
+        "frontend/src/features/admin/mural/__tests__/preview.html": {
+          "match": true,
+          "historical": "3009ca44a282fa5578a7fd3ed96091918eb4c04cd3dea09410a2bcc90ccaea8c",
+          "current": "3009ca44a282fa5578a7fd3ed96091918eb4c04cd3dea09410a2bcc90ccaea8c"
+        },
+        "frontend/src/features/admin/mural/__tests__/browser-smoke.mjs": {
+          "match": true,
+          "historical": "ef55bd3a890e2aeb28be30302a5d92a29bc134d3dd15806bfb07090743930098",
+          "current": "ef55bd3a890e2aeb28be30302a5d92a29bc134d3dd15806bfb07090743930098"
+        },
+        "contracts/domain/v1/mural.schema.json": {
+          "match": false,
+          "historical": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+          "current": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9"
+        },
+        "contracts/domain/v1/admin.schema.json": {
+          "match": false,
+          "historical": "b8a4f8b91440d561bbcf23dc68bc196919a8893cf744ca09ac05ecaabff72cb8",
+          "current": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640"
+        },
+        "contracts/domain/v1/operations.json": {
+          "match": false,
+          "historical": "411fcee8222db2f5a7938866ac37791033e85682f11d024ceb895c245c708500",
+          "current": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d"
+        },
+        "contracts/domain/v1/policy.json": {
+          "match": false,
+          "historical": "01c6b9e9a44b81bcf1273ebd7ba8361d3cc035a969399b4dad1f9dedec05839a",
+          "current": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6"
+        }
+      },
+      "scope": "Historical controlled evidence; mismatched current files are not silently requalified."
+    },
+    "resume": {
+      "path": "frontend/src/features/admin/closure/__tests__/resume/evidence/browser/report.json",
+      "result": "PASS",
+      "recordedBase": "45d44fce8c2a9ad346adc01e4d73c1717ddbac90",
+      "hashes": {
+        "frontend/src/features/admin/closure/EventClosure.tsx": {
+          "match": true,
+          "historical": "fd4b11be8c59a332c475ae03f1799891793bde147c8b4935257f4ee62e826cd1",
+          "current": "fd4b11be8c59a332c475ae03f1799891793bde147c8b4935257f4ee62e826cd1"
+        },
+        "frontend/src/features/admin/closure/contract.ts": {
+          "match": true,
+          "historical": "873d48455a60c75f9ed247d8095281584bf9233c44e56c347f6cf08ccaea9cdd",
+          "current": "873d48455a60c75f9ed247d8095281584bf9233c44e56c347f6cf08ccaea9cdd"
+        },
+        "frontend/src/features/admin/closure/controller.ts": {
+          "match": true,
+          "historical": "e10eb54be82d7c0c6581cf4ef15cc02260f221b175c10fdc72662a90416136fb",
+          "current": "e10eb54be82d7c0c6581cf4ef15cc02260f221b175c10fdc72662a90416136fb"
+        },
+        "frontend/src/features/admin/closure/http.ts": {
+          "match": true,
+          "historical": "6ab2abb003e2c80c1683c5cd7d81231dcbc3ccf3bcafd4ead5fb72fb63f467e9",
+          "current": "6ab2abb003e2c80c1683c5cd7d81231dcbc3ccf3bcafd4ead5fb72fb63f467e9"
+        },
+        "frontend/src/features/admin/closure/index.ts": {
+          "match": true,
+          "historical": "9489ddd233e0225243946f252976a0c83d825cceceb42fa14208b30a39e5ec26",
+          "current": "9489ddd233e0225243946f252976a0c83d825cceceb42fa14208b30a39e5ec26"
+        },
+        "frontend/src/features/admin/mural/WallControl.tsx": {
+          "match": true,
+          "historical": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838",
+          "current": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838"
+        },
+        "frontend/src/features/admin/mural/admin.css": {
+          "match": true,
+          "historical": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b",
+          "current": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b"
+        },
+        "frontend/src/features/admin/mural/contract.ts": {
+          "match": true,
+          "historical": "996e1099335427ab5b515d89e4725675cf85b3cd782b5cad878610e353382917",
+          "current": "996e1099335427ab5b515d89e4725675cf85b3cd782b5cad878610e353382917"
+        },
+        "frontend/src/features/admin/mural/controller.ts": {
+          "match": true,
+          "historical": "8c9be4341fb5d1d9f909c56328e5d020238cd04a69473b5540fdf2d97b5bd43b",
+          "current": "8c9be4341fb5d1d9f909c56328e5d020238cd04a69473b5540fdf2d97b5bd43b"
+        },
+        "frontend/src/features/admin/mural/http.ts": {
+          "match": true,
+          "historical": "cd87f2cbf3257f202008bba978181ae1b17eb3f6f51298c21eaa9699125fbfab",
+          "current": "cd87f2cbf3257f202008bba978181ae1b17eb3f6f51298c21eaa9699125fbfab"
+        },
+        "frontend/src/features/admin/mural/index.ts": {
+          "match": true,
+          "historical": "0d9d924f75f3ee3af88c4d603925f4b888ecfdf9d23e8f67d32f690f483b4c47",
+          "current": "0d9d924f75f3ee3af88c4d603925f4b888ecfdf9d23e8f67d32f690f483b4c47"
+        },
+        "frontend/src/features/admin/mural/owner.ts": {
+          "match": true,
+          "historical": "7de653bbaf968f412b4bbfb96c51074e3bec04d0d13deb2e12ead7b1be13f045",
+          "current": "7de653bbaf968f412b4bbfb96c51074e3bec04d0d13deb2e12ead7b1be13f045"
+        },
+        "frontend/src/features/admin/mural/transport.ts": {
+          "match": false,
+          "historical": "cdfd9e71c322ad495a0c54b59f825158c73c3874d33e9e2cf1443b4f542fc091",
+          "current": "f473f04ffa9e3d5dbf0129025e5ae46fbac18d3ce1009bc46a85409feac33b87"
+        },
+        "frontend/src/features/admin/closure/__tests__/resume/fixture.ts": {
+          "match": true,
+          "historical": "ce69b511bc399c35e0abe0acc9d24a58135c746cb4ed1f354447c93fb80be230",
+          "current": "ce69b511bc399c35e0abe0acc9d24a58135c746cb4ed1f354447c93fb80be230"
+        },
+        "frontend/src/features/admin/closure/__tests__/resume/preview.tsx": {
+          "match": true,
+          "historical": "2e549859097263de06f67b1d8198d98f4cd253a08903fd29f87ac350135980ce",
+          "current": "2e549859097263de06f67b1d8198d98f4cd253a08903fd29f87ac350135980ce"
+        },
+        "frontend/src/features/admin/closure/__tests__/resume/preview.css": {
+          "match": true,
+          "historical": "3867d04298b80c2c20d6c2c41d8bd3c50bc87373e05d30e21a7050a946c91b70",
+          "current": "3867d04298b80c2c20d6c2c41d8bd3c50bc87373e05d30e21a7050a946c91b70"
+        },
+        "frontend/src/features/admin/closure/__tests__/resume/preview.html": {
+          "match": true,
+          "historical": "842d69f1661bc5b1bfa1be0283759324402760efa559e6885721495bce9cf26d",
+          "current": "842d69f1661bc5b1bfa1be0283759324402760efa559e6885721495bce9cf26d"
+        },
+        "frontend/src/features/admin/closure/__tests__/resume/browser-smoke.mjs": {
+          "match": true,
+          "historical": "4a6ba638bc29f924dac3f74682cfb02f0742cab5fac960b3580d38be668ae08e",
+          "current": "4a6ba638bc29f924dac3f74682cfb02f0742cab5fac960b3580d38be668ae08e"
+        },
+        "frontend/src/shared/api/http.ts": {
+          "match": true,
+          "historical": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+          "current": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1"
+        },
+        "frontend/src/shared/query/privacy.ts": {
+          "match": true,
+          "historical": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+          "current": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081"
+        },
+        "contracts/domain/v1/admin.schema.json": {
+          "match": true,
+          "historical": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+          "current": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640"
+        },
+        "contracts/domain/v1/operations.json": {
+          "match": false,
+          "historical": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+          "current": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d"
+        },
+        "contracts/domain/v1/policy.json": {
+          "match": false,
+          "historical": "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb",
+          "current": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6"
+        },
+        "docs/mcr/contracts/event-closure-resume.md": {
+          "match": true,
+          "historical": "7a47264d6141810dd2b1028089edf7f4ea6256e074a60df615e7a55ac09729a4",
+          "current": "7a47264d6141810dd2b1028089edf7f4ea6256e074a60df615e7a55ac09729a4"
+        },
+        "frontend/src/shared/api/domain-operations.generated.ts": {
+          "match": false,
+          "historical": "cf2bc3b5f3015820891773723181f106cdf29656dbc478f747b284cf9f6e593a",
+          "current": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117"
+        }
+      },
+      "scope": "Historical controlled evidence; mismatched current files are not silently requalified."
+    }
+  },
+  "currentReadset": {
+    "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "contracts/domain/v1/mural.schema.json": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+    "contracts/domain/v1/policy.json": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6",
+    "frontend/src/shared/api/domain-operations.generated.ts": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+    "frontend/src/app/AdminBoundary.tsx": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+    "frontend/src/app/ports.ts": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565"
+  },
+  "knownChangedTransport": "Type-only dependency narrowed from HttpClient to Pick<HttpClient,request> to accept canonical SessionController.request. No runtime branch change; new composition tests required.",
+  "criteria": {
+    "pause_region_lock_restore_freeze": "Delivered mural/controller.ts, WallControl.tsx, http.ts + historical wall report",
+    "snapshot_named_confirmation": "Delivered WallControl review names exact snapshot; current adapter DOM/native must preserve",
+    "revision_reset": "Confirmed wall result requires expected_revision+1; publishes clients-must-resynchronize; no local editor/world owner here",
+    "closure_steps_partial_failure": "Delivered EventClosure seven steps, PARTIAL_FAILURE visible, monotonic controller",
+    "explicit_retry": "Delivered b880c55/5c92862 RESUME_CLOSURE after exact current failed job read/review, fresh key; no reimplementation",
+    "root_entry_lifetime": "NEW adapter and panel, current source/native qualification pending",
+    "actual_operations_authority": "205 implementing versioned durable operations-access producer; Root owns common role/boundary/current event settings seam; not qualified",
+    "live_cleanup": "Not qualified by frontend deterministic fixtures; backend/Root producer owners retain actual effects"
+  }
+}

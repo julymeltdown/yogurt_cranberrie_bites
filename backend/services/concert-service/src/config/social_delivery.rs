@@ -118,6 +118,9 @@ impl SocialDeliveryRuntime {
     /// handoff. It touches deadline signals only, never command outbox ACKs.
     pub async fn run_expiry_batch(&self) -> anyhow::Result<()> {
         tokio::time::timeout(Duration::from_secs(30), async {
+            // Deferred publisher handoff stays durable and retries on the next
+            // poll. Only source/storage failures escape this typed round; no
+            // deferred count is converted into an outbox acknowledgement.
             self.worker
                 .social
                 .emit_expired(4)
@@ -125,7 +128,7 @@ impl SocialDeliveryRuntime {
                 .map_err(|_| unavailable())?;
             self.worker
                 .social
-                .drain_pending(8)
+                .drain_pending_round(8)
                 .await
                 .map_err(|_| unavailable())?;
             Ok::<_, anyhow::Error>(())

@@ -995,3 +995,86 @@ publishing developer and owns common dispatch, startup polling, socket
 publication and the frozen `930380de` WS contract. This handoff needs no
 king/SL review or acknowledgment. Root's combined integration validation and
 remote publication proof remain pending until actually delivered.
+
+
+## Social privacy recovery successor — 2026-11-05 KST
+
+Status: **IN_PROGRESS; native validation NOT_RUN**. This successor starts at
+published `30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694`; the previous 0051 evidence
+above qualifies its historical source only. Migration 0051 and supplied source
+are unchanged. This increment does not repeat the delivered BE42 Sharing cohort.
+
+A normal retryable publisher response previously escaped `drain_pending` and
+terminated the production expiry supervisor. Repeated refused prefixes could
+also starve independent actor/event tuples. The new `drain_pending_round` returns
+attempted/published/deferred counts, shares a scheduling cursor across clones,
+and wraps only between rounds. Each selected row retains its existing source
+validation, publisher deadline and SQL transaction. Cancellation or cursor loss
+never grants completion. Actual source/SQL failure remains an error; only the
+publisher's retryable outcome is deferred. Common outbox rows are excluded and
+retain their exact existing lease, attempts and ACK path. Existing legacy and
+Sharing deletion drain APIs retain their behavior.
+
+Root explicitly transferred only `SocialDeliveryRuntime::run_expiry_batch` and
+its corresponding regression slices, plus the Social-only factory file, new
+`tests/social_policy_runtime.rs`, and `social-policy-runtime.md`. No main,
+public WS, core/router, contract, lockfile or peer source ownership transfers.
+The factory exposes the same sealed publisher Arc already used by its sink for
+Auth207's `LiveDeletionOwners.sharing_publisher`; construction adds no transport,
+listener, task or authority. See [factory evidence](social-policy-runtime.md).
+
+The owned `native.py --policy-recovery` mode is prepared to run three exact
+copied executables, the full current Concert SQLx migration ledger, eight kernel
+native regressions, nine delivery regressions, two factory native checks, and
+one pending-source seed followed by physical PG restart and fresh-owner recovery.
+Nine pure checks precede native setup. It records exact inventories, SHA384
+migration receipts, pending counts, changed postmaster, zero prepared transactions,
+sanitary failure output and owned-root cleanup. These checks are NOT_RUN until
+an accepted finite resource lease supplies the actual execution evidence.
+
+Public Auth/Friend source delivery, real acquired authority, positive Notification,
+actual socket frames, FE cache withdrawal and IN03 remain outside this component
+qualification. Root owns the same-shell public policy-frame integration and
+publishes this owner's validated handoff without king/SL review or acknowledgment.
+The original unfinished goal is preserved; this bounded successor does not
+complete all BE28/29/30/37 or IN03 acceptance.
+
+
+Current-schema fixture boundary: raw Intro insertion is prohibited by migration
+0049's actual native-witness requirement. Recovery fixtures therefore use only
+an actual future request deadline and do not forge an Intro or disable its guard.
+The focused eight kernel cases exclude the historical selected-schema Intro
+fixture test and include an actual two-second publisher-timeout/deferred/retry
+case preserving exact signal identities. The legacy selected-schema runner keeps
+its historical 15-case inventory separate. Full migration-ledger qualification
+does not turn these storage fixtures into canonical admission or provider proof.
+
+
+The first current-schema round froze `b895c200`; all 45 SQLx migrations and nine
+pure checks passed. Full native qualification failed on retained storage fixture
+deadlines and one new concurrency fixture; diagnostic-only physical restart
+recovery passed. Failures, limits, exact artifacts and corrective source changes
+are recorded in [factory evidence](social-policy-runtime.md). All resources were
+FULL released with no target reentry. The corrected complete cohort remains
+NOT_RUN pending a new allocation; no whole BE28/29/30/37 or IN03 acceptance follows.
+
+
+## Corrected expiry and Sharing factory cohort, 2026-11-05 KST
+
+The current successor source `46defd2346e2e73641c552b408623ce357500c15`, based on
+`cf1ca629a33ece977f8b5b1b6faf6152b35e5dbd`, passed the complete corrected focused
+Social policy/factory/supervisor cohort on the actual 47-migration Concert SQLx
+ledger and physical PG restart. No diagnostic exclusion of failed delivery or
+factory cases remained. The actual Auth worker/source/Apply/incumbent-publisher
+Sharing deletion boundary also passed before and after a separate physical PG
+restart, while all other seven saga targets stayed pending. Four C03 component
+cases and the actual Concert binary build passed. See `social-policy-runtime.md`,
+`sharing-deletion-runtime.md` and `bootstrap-feature-composition.md` for precise
+paths, source revisions, hashes, commands, exits, limits and outstanding gates.
+
+The earlier failures and source history remain recorded; this result does not
+relabel historical diagnostics as qualification. All allocated resources were
+fully released at 02:58:36.864049 KST. Production main/Gateway mounting, current
+public C03 behavior, real World socket/cache acceptance and original full product
+acceptance remain open. This developer disposition goes directly to the named
+publishing developer and implementation counterparts without a king/SL review.

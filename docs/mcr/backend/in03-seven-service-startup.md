@@ -64,6 +64,14 @@ functional round only. These settings are not production, maintenance,
 replication, load or performance qualification. No process cap, business
 assertion, TLS check, policy check or canonical schema assertion was relaxed.
 
+A subsequent source inspection identified a separate journey prerequisite:
+the actual LocalPublic, SocialRead, GiftPrivate and Notification target children
+refuse PostgreSQL configurations below 256 prepared transactions. R7 exercised
+startup and bootstrap rather than those protected disclosures. The launcher now
+sets and verifies 256 for future owned stacks. This does not change R7's recorded
+128 or certify a protected read; the next actual journey must exercise its
+prepared child, before-byte boundary, EOF completion and recovery.
+
 Validation of the persisted helper patch:
 
 ```sh

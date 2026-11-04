@@ -1,0 +1,62 @@
+{
+  "offer": "FE39-REMAINING-SOURCE-A-20261104T175345Z",
+  "kind": "source",
+  "pin": "1a16e13b6d211078bc32412e4b11d30e3d2e165d",
+  "accepted_at": "2026-11-04T17:54:53.604774+00:00",
+  "port": 49705,
+  "work_end": 1793815013.604774,
+  "hard_end": 1793815073.604774,
+  "preflight": {
+    "at": "2026-11-04T17:54:53.739420+00:00",
+    "pin": "1a16e13b6d211078bc32412e4b11d30e3d2e165d",
+    "clean": true,
+    "source_bytes": 1393430528,
+    "deps_bytes": 789164032,
+    "git_bytes": 1982614,
+    "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+    "git_dir_bytes": 1941504,
+    "free_bytes": 23634489344
+  },
+  "limits": {
+    "pids": 8,
+    "rss": 3221225472,
+    "whole": 2684354560,
+    "temporary": 83886080,
+    "durable": 25165824,
+    "other": 16777216,
+    "new_total": 134217728
+  },
+  "admission": {
+    "at": "2026-11-04T17:54:52.881147+00:00",
+    "pin": "1a16e13b6d211078bc32412e4b11d30e3d2e165d",
+    "clean": true,
+    "source_bytes": 1393430528,
+    "deps_bytes": 789164032,
+    "git_bytes": 1982614,
+    "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+    "git_dir_bytes": 1941504,
+    "free_bytes": 23756378112,
+    "accepted_at": "2026-11-04T17:54:53.604774+00:00",
+    "offer": "FE39-REMAINING-SOURCE-A-20261104T175345Z",
+    "other_reserved_bytes": 4294967296,
+    "own_new_bytes": 134217728,
+    "remaining_after_all_growth_bytes": 19327193088,
+    "retained_new_offset_bytes": 52458,
+    "node_sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "work_deadline": "2026-11-04T17:56:53.604774+00:00",
+    "hard_deadline": "2026-11-04T17:57:53.604774+00:00",
+    "stage": "remaining TS/lint/MJS only; 11PASS retained72af0d04"
+  },
+  "readset_sha256": {
+    "frontend/src/app/admin-entry/mural-closure/MuralClosurePanel.tsx": "93c69e4ebcced9f7f8446023d2f0fb07f56088ad1524739522dafb7c0db58dbf",
+    "frontend/src/app/admin-entry/mural-closure/index.ts": "a28b03a9fece882620b5aeebc7fad1075377b5c2454f21a0b304cc43cbebe3ef",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/preview.html": "7a377d466da8f7f051cda59391efc8c2872de85f4942087b514c470d5ec97a7c",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/preview.tsx": "e6a11b6931fddb003b1eb13688863f8b2c24ff6ccb6de2cd8b6c5437b6450ac2",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "39e0d76739ff95cb34d1496e779e2ddd94b6824fc139b8f422edac6118e5b824",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/round.py": "bd4a7e09c0a1c090c33048449ee69bc8634b243560f10be14b48561fb3abd80e",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/native.mjs": "94de51c3a4fe011f5bd5846cb5dd5369973ea932e916adb3a8ea836f577564a1",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/vitest.config.ts": "0756e9ac7bf312bd7fe1a37b023e69da01fc77f099c75fd7c0c25e71bf934925",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/fixture.ts": "c48f669585ab62f4e363f969aca73f3dd46845c94e1572bbec366ffc00e1d7a4"
+  }
+}
