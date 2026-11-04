@@ -17,6 +17,11 @@ pub mod profile {
     }
 }
 pub mod concert {
+    pub mod product {
+        pub mod v1 {
+            tonic::include_proto!("concert.product.v1");
+        }
+    }
     pub mod participant {
         pub mod v1 {
             tonic::include_proto!("concert.participant.v1");

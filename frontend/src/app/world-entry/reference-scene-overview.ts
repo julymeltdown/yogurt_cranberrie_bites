@@ -1,5 +1,5 @@
 import { createSceneryOverview } from '../../world/illustrated/overview'
-import { createReferenceSceneOverview, referenceSceneIdentity } from '../../world/reference-scene'
+import { createReferenceSceneOverview, isSpatialReferenceClaim, referenceSceneIdentity } from '../../world/reference-scene'
 import { validateReferenceMetadata } from '../../world/reference-scene/model'
 import type { LoadedMap } from '../../world/map/resources'
 import type { RuntimeOverview } from '../../world/runtime'
@@ -7,7 +7,7 @@ import type { RuntimeOverview } from '../../world/runtime'
 type Metadata = Pick<LoadedMap, 'map' | 'theme' | 'widthPx' | 'heightPx' | 'spawn'>
 /** Any reference claim must qualify as the exact coherent release, never fall back to old pixels. */
 export function isReferenceSceneCandidate(metadata: Pick<Metadata, 'map' | 'theme'>) {
-  return metadata.map.map_id === referenceSceneIdentity.mapId || metadata.map.geometry_hash === referenceSceneIdentity.geometryHash
+  return isSpatialReferenceClaim(metadata) || metadata.map.map_id === referenceSceneIdentity.mapId || metadata.map.geometry_hash === referenceSceneIdentity.geometryHash
     || [metadata.theme.scenery?.ground.path, ...metadata.theme.scenery?.atlases.map(a => a.path) ?? []]
       .some(path => path?.startsWith('world/reference-scene-v2/runtime-v4/'))
 }
