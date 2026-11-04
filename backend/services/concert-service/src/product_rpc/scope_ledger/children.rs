@@ -10,6 +10,23 @@ use sha2::{Digest, Sha256};
 
 const MAX_CHILDREN: i64 = 202;
 const MAX_REFERENCE: usize = 8192;
+
+/// Counters describe confirmed durable ACKs, never a delivery receipt. A pending
+/// attempt may have settled remotely but lost its ACK; retry stays idempotent.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct ChildRecoveryCounts {
+    pub selected: u32,
+    pub attempted: u32,
+    pub completed: u32,
+    pub pending: u32,
+    pub timed_out: u32,
+    pub scan_wrapped: bool,
+}
+
+/// One global lexicographic position, independent of the number of roots or
+/// failed children. Kept private to the configured worker, never a capability.
+#[derive(Default)]
+pub(crate) struct ChildRecoveryCursor(Option<(Uuid, String, Uuid)>);
 fn crypto_error() -> Status {
     Status::unavailable("Private child recovery unavailable")
 }
@@ -302,6 +319,96 @@ impl PgScopeLedger {
                 .execute(&mut *tx).await.map_err(unavailable)?;
         }
         tx.commit().await.map_err(unavailable)
+    }
+    /// Best-effort background recovery of immutable terminal-root children.
+    /// No producer transaction, live registry, content deadline or delivery ACK
+    /// is required or manufactured. Every attempted candidate advances the
+    /// cursor, including failures, so an unknown first child cannot starve later
+    /// children of either the same root or another root.
+    pub(crate) async fn drain_finished_children(
+        &self,
+        cursor: &mut ChildRecoveryCursor,
+        batch_size: u16,
+        per_child_timeout: std::time::Duration,
+        stop: tokio::time::Instant,
+    ) -> Result<ChildRecoveryCounts, Status> {
+        if batch_size == 0 || i64::from(batch_size) > MAX_CHILDREN || per_child_timeout.is_zero() {
+            return Err(invalid());
+        }
+        type Candidate = (Uuid, Vec<u8>, String, Uuid, String, Vec<u8>);
+        let after = cursor.0.as_ref();
+        let rows: Vec<Candidate> = tokio::time::timeout_at(stop, async {
+            let mut tx = self.transaction().await?;
+            let rows = sqlx::query_as(
+                "SELECT c.scope_id,c.binding_digest,c.kind,c.intent_id,c.key_id,c.sealed_reference
+                 FROM concert_product_child_intents c
+                 JOIN concert_product_owner_scopes s USING (instance_id,scope_id,binding_digest)
+                 WHERE c.instance_id=$1 AND s.phase='ROOT_FINISHED' AND c.completed_at IS NULL
+                   AND ($2::uuid IS NULL OR (c.scope_id,c.kind,c.intent_id)>($2,$3,$4))
+                 ORDER BY c.scope_id,c.kind,c.intent_id LIMIT $5",
+            )
+            .bind(self.instance)
+            .bind(after.map(|v| v.0))
+            .bind(after.map(|v| v.1.as_str()))
+            .bind(after.map(|v| v.2))
+            .bind(i64::from(batch_size))
+            .fetch_all(&mut *tx)
+            .await
+            .map_err(unavailable)?;
+            tx.commit().await.map_err(unavailable)?;
+            Ok::<_, Status>(rows)
+        })
+        .await
+        .map_err(|_| Status::deadline_exceeded("Child recovery scan budget exhausted"))??;
+        let mut counts = ChildRecoveryCounts {
+            selected: rows.len() as u32,
+            ..Default::default()
+        };
+        for (scope, digest, kind, intent, key_id, sealed) in rows {
+            if tokio::time::Instant::now() >= stop {
+                break;
+            }
+            // Advance before I/O: lost replies, decrypt failures, timeouts and
+            // even a failed durable ACK must not pin the enumeration head.
+            cursor.0 = Some((scope, kind.clone(), intent));
+            counts.attempted += 1;
+            let child_stop = stop.min(tokio::time::Instant::now() + per_child_timeout);
+            let outcome = tokio::time::timeout_at(child_stop, async {
+                let scope = ScopeKey {
+                    instance: self.instance,
+                    scope,
+                    binding_digest: digest.try_into().map_err(|_| crypto_error())?,
+                };
+                scope.validate(self.instance)?;
+                let reference = self
+                    .child_keys
+                    .open(&scope, &kind, intent, &key_id, &sealed)?;
+                // Validate the original full binding before native dispatch.
+                // This transaction is committed BEFORE the owner/native call.
+                let mut tx = self.transaction().await?;
+                if self.lock(&mut tx, &scope).await? != ScopePhase::RootFinished {
+                    return Err(Status::failed_precondition("Child root is unfinished"));
+                }
+                self.validate_child_in(&mut tx, &scope, &reference).await?;
+                tx.commit().await.map_err(unavailable)?;
+                self.child_settler.recover_one(&reference).await?;
+                self.record_child_completed(&scope, &reference).await
+            })
+            .await;
+            match outcome {
+                Ok(Ok(())) => counts.completed += 1,
+                Ok(Err(_)) => counts.pending += 1,
+                Err(_) => {
+                    counts.pending += 1;
+                    counts.timed_out += 1;
+                }
+            }
+        }
+        if counts.attempted == counts.selected && counts.selected < u32::from(batch_size) {
+            cursor.0 = None;
+            counts.scan_wrapped = true;
+        }
+        Ok(counts)
     }
     pub async fn settle_child_intents(&self, scope: &ScopeKey) -> Result<(), Status> {
         if self.resolve_scope(scope).await? != ScopePhase::RootFinished {

@@ -4,6 +4,7 @@ use crate::{
     adapters::out::{
         relationship_authority::{
             grpc::GrpcRelationshipAuthority,
+            invalidation::{InvalidationOwner, InvalidationSource},
             world_auth::{GrpcWorldAuthReader, WorldAuthRead},
         },
         world_profile::GrpcWorldProfileReader,
@@ -13,6 +14,7 @@ use crate::{
     world::{
         admission_bridge::AdmissionBridge,
         ingress::OriginPolicy,
+        invalidation::runtime::RemoteInvalidationRuntime,
         membership::ClockAnchor,
         production_owners::ProductionOwners,
         recipient_owners::WorldRecipientReader,
@@ -20,6 +22,7 @@ use crate::{
         simulation::ResourcePin,
     },
 };
+use anyhow::Context;
 use concert_application::world_ticket::OwnerIdentity;
 use concert_domain::{
     world::{Limits, WorldMap},
@@ -46,11 +49,14 @@ pub struct WorldProductionPorts {
     profile: GrpcWorldProfileReader,
     relationship: GrpcRelationshipAuthority,
     auth: Arc<dyn WorldAuthRead>,
+    auth_invalidation: InvalidationSource,
+    friend_invalidation: InvalidationSource,
 }
 pub struct WorldRuntimeSettings {
     pub address: SocketAddr,
     origins: OriginPolicy,
     owner: Uuid,
+    consumer: Uuid,
     event: EventId,
     rooms: Vec<ConfiguredRoom>,
     release: Arc<concert_application::bootstrap::ValidatedProductRelease>,
@@ -75,6 +81,9 @@ impl WorldRuntimeSettings {
             "CONCERT_WORLD_OWNER_ID",
             "CONCERT_WORLD_EVENT_ID",
             "CONCERT_WORLD_ROOMS_JSON",
+            "CONCERT_WORLD_INVALIDATION_CONSUMER_ID",
+            "CONCERT_WORLD_RESOURCE_ROOT",
+            "CONCERT_WORLD_SOURCE_BINDING_FILE",
         ];
         let values: Vec<_> = names
             .iter()
@@ -126,6 +135,11 @@ impl WorldRuntimeSettings {
             Ok(id)
         };
         let owner = canonical(&values[1])?;
+        let consumer = canonical(&values[4])?;
+        anyhow::ensure!(
+            consumer == owner,
+            "World replay consumer must equal the stable World owner identity"
+        );
         let event = EventId::from_uuid(canonical(&values[2])?);
         anyhow::ensure!(
             values[3].len() <= 8192,
@@ -152,7 +166,7 @@ impl WorldRuntimeSettings {
                     .ok_or_else(|| anyhow::anyhow!("{n} is required for World product serving"))
             })
             .collect::<anyhow::Result<_>>()?;
-        let release = ProductReleaseBundle::from_product_files(
+        let release = ProductReleaseBundle::from_source_bound_files(
             &files[0],
             &files[1],
             &files[2],
@@ -161,16 +175,25 @@ impl WorldRuntimeSettings {
                 world: true,
                 ..Default::default()
             },
+            std::path::Path::new(&values[5]),
+            std::path::Path::new(&values[6]),
         )
         .map_err(|_| anyhow::anyhow!("World product release is unavailable"))?;
         Ok(Some(Self {
             address,
             origins,
             owner,
+            consumer,
             event,
             rooms,
             release,
         }))
+    }
+    /// Reuse the exact World-featured release for C03, including its source digest.
+    pub fn validated_release(
+        &self,
+    ) -> Arc<concert_application::bootstrap::ValidatedProductRelease> {
+        self.release.clone()
     }
     /// Composes the actual DB bridge, 20Hz owner and socket server with supplied
     /// qualified live owner ports. Absence is rejected before binding a listener.
@@ -179,7 +202,24 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        ports.require_publication_qualification()?;
+        self.serve_inner(pool, ports, None).await
+    }
+    /// Startup barrier for a supervised C03 listener. Failure drops the sender;
+    /// success is not a persistent authority grant or an ongoing health signal.
+    pub async fn serve_with_ready(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(pool, ports, Some(ready)).await
+    }
+    async fn serve_inner(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: Option<tokio::sync::oneshot::Sender<()>>,
+    ) -> anyhow::Result<()> {
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
         anyhow::ensure!(
@@ -237,7 +277,7 @@ impl WorldRuntimeSettings {
                 .map_err(|_| anyhow::anyhow!("World avatar catalog is invalid"))?,
         );
         let bridge = AdmissionBridge::new_production(
-            pool,
+            pool.clone(),
             bootstrap,
             owners,
             ports.auth,
@@ -248,7 +288,18 @@ impl WorldRuntimeSettings {
             anchor.clone(),
             started,
         )?;
-        tokio::time::timeout(Duration::from_secs(2), bridge.claim_rooms()).await??;
+        let mut remote = RemoteInvalidationRuntime::new(
+            pool,
+            self.consumer,
+            ports.auth_invalidation,
+            ports.friend_invalidation,
+            vec![bridge.clone()],
+        )
+        .map_err(|_| anyhow::anyhow!("World replay construction failed"))?;
+        remote
+            .bootstrap()
+            .await
+            .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
         let transport = SocketTransport::default();
         let runtime = WorldRuntime::new(
             self.event,
@@ -261,6 +312,9 @@ impl WorldRuntimeSettings {
         )
         .map_err(|_| anyhow::anyhow!("World owner construction failed"))?;
         let (clock, origin_ms) = runtime.clock_origin();
+        // Claim only after geometry/runtime construction, so startup's owning
+        // lease is fresh when the native owner and public barrier become ready.
+        tokio::time::timeout(Duration::from_secs(2), bridge.claim_rooms()).await??;
         let listener = tokio::net::TcpListener::bind(self.address).await?;
         let (handle, owner_task) = runtime.spawn();
         let handle = Arc::new(handle);
@@ -277,36 +331,137 @@ impl WorldRuntimeSettings {
             let mut tick = tokio::time::interval(Duration::from_secs(1));
             tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
             loop {
-                tokio::select! {biased;_ = platform::shutdown::global().cancelled()=>return Ok::<(),anyhow::Error>(()),_ = tick.tick()=>{tokio::time::timeout(Duration::from_secs(2),bridge.maintain()).await??;}}
+                tokio::select! {
+                    biased;
+                    _ = platform::shutdown::global().cancelled()=>return Ok::<(),anyhow::Error>(()),
+                    _ = tick.tick()=>{
+                        tokio::time::timeout(Duration::from_secs(2),bridge.maintain())
+                            .await.context("World authority maintenance timed out")?
+                            .context("World authority maintenance failed")?;
+                    }
+                }
             }
         };
         let server = axum::serve(listener, world_ws::router(state))
             .with_graceful_shutdown(platform::shutdown::global().cancelled());
-        let result = tokio::select! {result=async { server.await }=>result.map_err(anyhow::Error::from),result=authority=>result};
-        // Dropping all listener states closes sockets and the final handle stops
-        // the owner independently of a full command queue. Await its cleanup report.
-        transport.close_all(crate::world::ingress::SafeClose::UNAVAILABLE);
-        handle.request_stop();
-        drop(handle);
-        let report = tokio::time::timeout(Duration::from_secs(2), owner_task).await??;
-        for b in report.remaining_cleanup {
-            let _ = crate::world::membership::CanonicalAuthorityPort::release(&bridge, &b);
+        let startup = tokio::time::timeout(Duration::from_secs(2), async {
+            handle
+                .ready()
+                .await
+                .map_err(|_| anyhow::anyhow!("World owner startup unavailable"))?;
+            // Room claims/binding/owner startup may outlast the initial replay
+            // freshness window. Both actual journals must be caught up again.
+            while !remote
+                .poll()
+                .await
+                .map_err(|_| anyhow::anyhow!("World startup replay unavailable"))?
+            {
+                tokio::task::yield_now().await;
+            }
+            bridge
+                .startup_ready()
+                .map_err(|_| anyhow::anyhow!("World startup authority unavailable"))?;
+            anyhow::ensure!(
+                !owner_task.is_finished() && !platform::shutdown::global().is_requested(),
+                "World stopped during startup"
+            );
+            if let Some(ready) = ready {
+                ready
+                    .send(())
+                    .map_err(|_| anyhow::anyhow!("World startup receiver closed"))?;
+            }
+            Ok::<(), anyhow::Error>(())
+        })
+        .await
+        .map_err(|_| anyhow::anyhow!("World startup readiness timed out"))
+        .and_then(|result| result);
+        // Startup failure after spawn follows the same explicit native/SQL
+        // cleanup path as later server, authority or replay failure.
+        let result = match startup {
+            Ok(()) => tokio::select! {
+                result=async { server.await }=>result.context("World socket server failed"),
+                result=authority=>result,
+                result=remote.run()=>result.map_err(|_|anyhow::anyhow!("World replay readiness lost")),
+            },
+            Err(error) => Err(error),
+        };
+        if let Err(error) = &result {
+            // Only the fixed top-level stage is printed, never a response body,
+            // credential, identity or SQL error. Preserve it before cleanup.
+            eprintln!("World supervised failure before cleanup: {error}");
         }
-        let pending = tokio::time::timeout(Duration::from_secs(2), bridge.cleanup()).await??;
-        anyhow::ensure!(
-            pending == 0,
-            "World shutdown has pending persistent membership cleanup"
-        );
-        result
+        let cleanup = async {
+            let remote_cleanup = remote.shutdown().await;
+            // Dropping all listener states closes sockets and the final handle stops
+            // the owner independently of a full command queue. Await its cleanup report.
+            transport.close_all(crate::world::ingress::SafeClose::UNAVAILABLE);
+            handle.request_stop();
+            drop(handle);
+            let report = tokio::time::timeout(Duration::from_secs(2), owner_task)
+                .await
+                .context("World owner shutdown timed out")?
+                .context("World owner shutdown task failed")?;
+            for b in report.remaining_cleanup {
+                let _ = crate::world::membership::CanonicalAuthorityPort::release(&bridge, &b);
+            }
+            let pending = tokio::time::timeout(Duration::from_secs(2), bridge.cleanup())
+                .await
+                .context("World persistent cleanup timed out")?
+                .context("World persistent cleanup failed")?;
+            anyhow::ensure!(
+                pending == 0,
+                "World shutdown has pending persistent membership cleanup"
+            );
+            remote_cleanup.map_err(|_| anyhow::anyhow!("World replay shutdown incomplete"))?;
+            Ok(())
+        }
+        .await;
+        finish_world_run(result, cleanup)
     }
 }
-/// Current owner reads are concrete; none of these ports supplies a distributed
-/// known-invalidation delivery and acknowledgment before further sends. This is a qualification
-/// failure, not a missing-client placeholder, and cannot be bypassed by a flag.
-const PUBLICATION_GAP: &str = "World production publication unavailable: bounded owner reads are configured, but reliable known-invalidation delivery and local publication acknowledgment for Auth, Friend and Profile are unavailable";
-impl WorldProductionPorts {
-    fn require_publication_qualification(&self) -> anyhow::Result<()> {
-        anyhow::bail!(PUBLICATION_GAP)
+/// Cleanup failure must not erase the supervised failure that initiated shutdown.
+fn finish_world_run(result: anyhow::Result<()>, cleanup: anyhow::Result<()>) -> anyhow::Result<()> {
+    if let Err(error) = &cleanup {
+        eprintln!("World shutdown failure: {error}");
+    }
+    match (result, cleanup) {
+        (Err(error), Err(_)) => {
+            Err(error.context("World shutdown also failed; see stage diagnostic"))
+        }
+        (Err(error), Ok(())) => Err(error),
+        (Ok(()), cleanup) => cleanup,
+    }
+}
+
+#[cfg(test)]
+mod shutdown_result_tests {
+    use super::finish_world_run;
+
+    #[test]
+    fn cleanup_failure_preserves_original_supervised_error() {
+        let primary =
+            anyhow::Error::new(concert_application::world_ticket::WorldError::OwnerFenced)
+                .context("World authority maintenance failed");
+        let result = finish_world_run(Err(primary), Err(anyhow::anyhow!("cleanup unavailable")))
+            .unwrap_err();
+        assert!(result
+            .downcast_ref::<concert_application::world_ticket::WorldError>()
+            .is_some_and(|error| matches!(
+                error,
+                concert_application::world_ticket::WorldError::OwnerFenced
+            )));
+        assert!(format!("{result:#}").contains("World authority maintenance failed"));
+    }
+
+    #[test]
+    fn successful_runtime_still_reports_cleanup_failure() {
+        assert_eq!(
+            finish_world_run(Ok(()), Err(anyhow::anyhow!("cleanup unavailable")))
+                .unwrap_err()
+                .to_string(),
+            "cleanup unavailable"
+        );
+        assert!(finish_world_run(Ok(()), Ok(())).is_ok());
     }
 }
 fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
@@ -323,9 +478,9 @@ fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
     platform::config::require_production_https_url(production, name, value)?;
     Ok(())
 }
-/// Validate explicit typed owner configuration before any DB or listener opens.
-/// Even correctly configured clients remain unavailable for production sends
-/// until their owning services provide the missing publication contract.
+/// Validate explicit typed owner and sealed replay configuration before any DB
+/// or listener opens. Serving bootstraps durable replay with publication closed;
+/// only caught-up readiness and exact live SQL permits allow native handoffs.
 pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
     use platform::{
         actor_delegation::{relationship_read::RelationshipReadSigner, ActorDelegationVerifier},
@@ -356,7 +511,24 @@ pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
     let tls = platform::config::resolve_tls_material(production, "concert")?;
     let gateway = ActorDelegationVerifier::from_env(production, Workload::Concert)?;
     let signer = RelationshipReadSigner::from_env(&gateway)?;
+    let replay_tls = tls
+        .as_ref()
+        .ok_or_else(|| anyhow::anyhow!("World replay requires explicit mutual TLS material"))?;
     let ports = WorldProductionPorts {
+        auth_invalidation: InvalidationSource::new(
+            InvalidationOwner::Auth,
+            &auth_endpoint,
+            &credential,
+            replay_tls,
+        )
+        .map_err(|_| anyhow::anyhow!("World Auth replay source is unavailable"))?,
+        friend_invalidation: InvalidationSource::new(
+            InvalidationOwner::Friend,
+            &friend_endpoint,
+            &credential,
+            replay_tls,
+        )
+        .map_err(|_| anyhow::anyhow!("World Friend replay source is unavailable"))?,
         auth: Arc::new(GrpcWorldAuthReader::connect(
             &auth_endpoint,
             &credential,
@@ -377,7 +549,6 @@ pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
             signer,
         )?,
     };
-    ports.require_publication_qualification()?;
     Ok(ports)
 }
 #[cfg(test)]

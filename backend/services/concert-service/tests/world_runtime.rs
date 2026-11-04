@@ -974,3 +974,36 @@ fn publication_pause_defers_native_send_and_preserves_authority_expiry() {
     assert_eq!(f.socket.0.lock().unwrap().frames.len(), 1);
     assert!(!f.socket.0.lock().unwrap().closes.is_empty());
 }
+
+#[test]
+fn install_drains_confirmed_cleanup_without_waiting_for_another_tick() {
+    let mut f = fixture(2, 1);
+    let a = binding(&f, 1, 0);
+    let b = binding(&f, 2, 0);
+    enter(&mut f, &a);
+    enter(&mut f, &b);
+    f.authority.0.lock().unwrap().fail_release = true;
+    f.owner.disconnect(&a, 1).unwrap();
+    f.owner.disconnect(&b, 2).unwrap();
+    let c = binding(&f, 3, 0);
+    f.authority.grant(&c);
+    assert_eq!(
+        f.owner.install(c.clone(), SnapshotCause::Initial, 3),
+        Err(RuntimeError::Capacity),
+        "unconfirmed cleanup must still reserve bounded capacity"
+    );
+    f.authority.0.lock().unwrap().fail_release = false;
+    f.owner.install(c, SnapshotCause::Initial, 4).unwrap();
+    assert_eq!(f.owner.pending_cleanup_count(), 0);
+    assert_eq!(f.owner.active_count(), 1);
+}
+
+#[tokio::test]
+async fn readiness_requires_actual_owner_task_and_closes_after_shutdown() {
+    let f = fixture(2, 1);
+    let (handle, task) = f.owner.spawn();
+    handle.ready().await.unwrap();
+    handle.request_stop();
+    assert!(task.await.unwrap().remaining_cleanup.is_empty());
+    assert_eq!(handle.ready().await, Err(RuntimeError::Closed));
+}

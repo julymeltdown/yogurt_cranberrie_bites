@@ -303,6 +303,10 @@ where
         let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
         self.clock(now)?;
         self.scope(&b)?;
+        // Absence may have been confirmed since the preceding owner tick.
+        // Drain only acknowledged exact generations before reserving cleanup
+        // capacity; unresolved obligations still reject the new installation.
+        self.retry_cleanup();
         let old = self.members.get(&member_key(&b)).cloned();
         let target = &self.rooms[&b.room_id];
         let already_here = old.as_ref().is_some_and(|old| old.room_id == b.room_id);
@@ -850,6 +854,7 @@ where
                     let Some(command) = command else { break; }; commands += 1;
                     let Some(now) = self.origin_ms.checked_add(self.started.elapsed().as_millis().try_into().unwrap_or(u64::MAX)) else { break; };
                     match command {
+                        Command::Ready { reply } => { let _ = reply.send(self.maintain(now).map(|_|())); },
                         Command::Install { binding,cause,reply } => { let _ = reply.send(self.install(binding,cause,now)); },
                         Command::BeginSwitch{binding,request_id,reply}=>{let _=reply.send(self.begin_switch(&binding,request_id,now));},
                         Command::RejectSwitch{binding,request_id,reason,reply}=>{let _=reply.send(self.reject_switch(&binding,request_id,reason,now));},
@@ -877,6 +882,10 @@ where
     }
 }
 pub enum Command {
+    /// A bounded owner-task maintenance barrier; it creates no membership or authority.
+    Ready {
+        reply: oneshot::Sender<Result<(), RuntimeError>>,
+    },
     BeginSwitch {
         binding: Binding,
         request_id: Uuid,
@@ -913,6 +922,15 @@ pub struct RuntimeHandle {
     stop: Mutex<Option<oneshot::Sender<()>>>,
 }
 impl RuntimeHandle {
+    /// Acknowledge only after this exact owner task has serviced maintenance.
+    pub async fn ready(&self) -> Result<(), RuntimeError> {
+        let (reply, answer) = oneshot::channel();
+        self.try_submit(Command::Ready { reply })?;
+        tokio::time::timeout(Duration::from_secs(1), answer)
+            .await
+            .map_err(|_| RuntimeError::Closed)?
+            .map_err(|_| RuntimeError::Closed)?
+    }
     pub fn try_submit(&self, command: Command) -> Result<(), RuntimeError> {
         self.sender.try_send(command).map_err(|e| match e {
             mpsc::error::TrySendError::Full(_) => RuntimeError::QueueFull,

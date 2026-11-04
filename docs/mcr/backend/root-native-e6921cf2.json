@@ -1,0 +1,278 @@
+{
+  "status": "PARTIAL",
+  "source_commit": "e6921cf285d9729cfa8c86351e1ce61b357398f2",
+  "source_pin_count": 2049,
+  "source_pins_sha256": "573fc4b0283f163fdb1cd19c4e9a444b271cd7ebcc87723a311a4ecb2b79e427",
+  "rustc": "1.88.0",
+  "locked": true,
+  "offline": true,
+  "jobs": 2,
+  "debug": 0,
+  "incremental": false,
+  "builds": [
+    {
+      "phase": "concert-lib",
+      "exit_code": 0,
+      "seconds": 45.35,
+      "artifact_sha256": "7fd8cf22b88ed9258be9340fbb78ab0bc170d0ca9177eceb54f05401bd64994a",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--lib",
+        "--no-run"
+      ],
+      "cargo_json_sha256": "2f67c6cbe18246c1dd894ba531bd9cf3dc52a5013b6f62a1c07a1504ac3cc665",
+      "stderr_sha256": "1ca3232ba6dab4a4e9e40b17d20c4e1e136b779b5c26cc2a142a58cb9f11db5d"
+    },
+    {
+      "phase": "owner-http",
+      "exit_code": 0,
+      "seconds": 17.53,
+      "artifact_sha256": "beef905e49164bf69b89f650d67c87a327c0a6cc141d538cd41d7264158619e6",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "owner_authority_http",
+        "--no-run"
+      ],
+      "cargo_json_sha256": "182c58edd9312d1a687072da1702b74c3d7d853cf35bc09f2c3cd2dca8187216",
+      "stderr_sha256": "0a4b90840c441eefd36e640dd2bb04be5cde549a951771782d80171200427808"
+    },
+    {
+      "phase": "concert-bin",
+      "exit_code": 0,
+      "seconds": 19.66,
+      "artifact_sha256": "ea5eaef68ae1ec50fada5c18dc31bff9c0908a79c1c1d20ec854f2df7170c5f8",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--bin",
+        "concert-service"
+      ],
+      "cargo_json_sha256": "697bf01c3b2b59d8a815886f9660c38cfdab8095f1204c98b2bb7e27c1234621",
+      "stderr_sha256": "8b7fe8888331682c7f1e77f61f6de46d4c771622bf63b58e4a279702f462f175"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "phase": "concert-lib",
+      "attempt": 1,
+      "exit_code": 101,
+      "seconds": 2.94,
+      "cause": "Cached Friend protobuf include referenced a foreign worktree.",
+      "remediation": "Package-specific cargo clean -p contracts-build -p friend-service -p auth-service; 118 files, 212.0 MiB removed; no source changes.",
+      "cargo_json_sha256": "adf06c248e057b0460e2e6ff7a1db47a6fd9a8a85da61336c31e025848549cd7",
+      "stderr_sha256": "69888e061f1482c38ac778a4caba643a7a9070961532a664342e94b62045ad89"
+    }
+  ],
+  "release_before_tests": {
+    "released_at": "2026-11-04T04:23:35.917124+00:00",
+    "rust_process_count": 0,
+    "target_handle_count": 0,
+    "free_bytes": 10598301696,
+    "net_delta_bytes": 151224320,
+    "native_before_release": "NOT_RUN"
+  },
+  "focused_tests": {
+    "filter": "config::world_runtime::shutdown_result_tests::",
+    "passed": 2,
+    "failed": 0,
+    "exit_code": 0,
+    "log_sha256": "b401f69b0c9098641cc765e0cabeaa9e44d8b4c33412e1e74f2d700c46e51f18",
+    "behavior": "Original supervised failure survives cleanup failure; cleanup failure still fails otherwise successful runtime."
+  },
+  "actual_public_http": {
+    "status": "PASS",
+    "original_report_sha256": "d295407ac1e25148a628162b1972017d3f1f4bc499864d0a0b646e5d9946e143",
+    "source_pin_count": 1976,
+    "source_manifest_sha256": "8a2fcd04926303ab191cfa6cebc8934f5ccc1fb340495b4ecd8666632c90f2dd",
+    "test": {
+      "case": "http::actual_public_router_retains_real_owners_and_checks_before_bytes",
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest http::actual_public_router_retains_real_owners_and_checks_before_bytes ... actual login/JWT/current Auth+Profile/full public router/socket normalization/ungated actual terminal HTTP framing settles both real owners and records genuine DeliveryCompleted; separate held-frame gate EOF settles both owners; actual TCP reset drops the unopened response body and retains both guards; delayed poll past original ceiling discloses no representation and retains both guards. Two scopes remain quarantined for owned-cluster teardown; no positive product, Gift, full TLS identity-main or restart claim\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.48s\n\n",
+      "stderr": ""
+    },
+    "postgres_version": "16.14 (Homebrew)",
+    "expected_reset_and_expired_quarantine": {
+      "auth": 2,
+      "friend": 2,
+      "concert": 0
+    },
+    "cleanup": {
+      "status": "PASS",
+      "owned_root_absent": true,
+      "unsettled_scopes": "Owned fixture teardown only; no fabricated successful terminal delivery"
+    },
+    "runtime_binary_sha256": {
+      "api-gateway": "857e0874dd6a62544e9104c79fc0701f0300b55772828cc978d4c5dcc6e6512b",
+      "auth-service": "d89ae929ea030a00a4ce49f478dd7e437ae3f3d411262b069d6b159334cbb6b9",
+      "friend-service": "28654896a5d3dfb07de09caa2157db6bba19a268706e15ea90946cc403f97931",
+      "profile-service": "b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32",
+      "post-service": "75b44e97f64f611776bb5a429f6249f61766ba2ceb6b7cdc5e5c287e042d0c47",
+      "notification-service": "f8c53f7df0a571ab8a53bbd16fcc220c51e5d4d196d00def19e12a8a1e9623b3"
+    },
+    "runtime_migrations": {
+      "api-gateway": {
+        "1": "8e9e36a5c52f9f7a6cda7b97432537841996117838cf7041d265eed72650ce98e9a802c0d5c1a2a3c70f5d8659768039",
+        "2": "fbdf9406304c5604c18f63ecc6d1a0f0af915bcb554da1e12c20f501c730b24b629529cff4d178adde4d78f279b6f6e5",
+        "3": "e61666eba63eba9a39044f42f09d8902cab44eb5c3da8cf9d7465fc0a5a1f4a35d7d804df09c546479cd8bc4422cecea",
+        "4": "9cf227a7455b82db1421aca8e50b679eec8a0f47e6456bc16a91d61399550893dfb96e7ab25eccdee29241d442e61a5f",
+        "5": "f93dfc2f01d6a05cc8c58f0c6266209f80984057af04493bbc118de844bcefd704353c30991f4a16db5c132ffabfd477",
+        "6": "a267f9397cca8721c994f94a96d680705fab7f83ce50083027c3ac342d7a0281b77dc4533cb8879ad784d098759edc69",
+        "7": "8779ebb93f7bb96404ceea8381ffed45ca891fe5b67dabacd71ba9a98cf3b70af3c1e2bfc7e841f338cef939eed78e17",
+        "8": "8c211d4cdb28b596cfa815e85877451809b4508f7eb92025b4661c70a03a08f5132e8194a4289b78774bc0c58919e3fb",
+        "9": "f08454e401123da1c554373144b1f6bb040065ff230924c24ae45909694c4686fcc867cd68e5cfc2e786464850037637",
+        "10": "8bb07ea25d64df267c20dc2e4eb357a107661a101007819d31c02a8e663b66f866949ba3ef498576ad240d60cd51732d",
+        "11": "9c0417bdbd1f8538e3124ff3991f92b060b4b973171650c8e6962e960d66d9e5e7c7c1b3907468c8893b0b6ca8ea0979",
+        "12": "b180c976e7399c9a1f386312f6c2d4597278351d9537e81a798b43f4964270e65cc4a060d123fcb11695a719ae083ce4",
+        "13": "2b607c2e51ee6e8f7ac3aae1d0402f8fb4ac773358abe8a1b5ebd2f283dcf16522176b9a167e7a9aae331ce6b37c0846",
+        "14": "6635e736721df850daeb7ab8aebc83e7f4fef8d0d482c75a911b6f7a26f9a72101bffcbae71c34bd84cc7a6e401ad821",
+        "15": "08d3fa5bb4d1790a668adc7672d4d30ce4ca61372d4b07d1191b7eb874c823b65e67faf9d91061ce039b686dba3fb904",
+        "16": "41dd65c48aa6163897f1ef38f47240da9df6cdd46ef533e9aa61225b4ab0fd9e2d1fae7ef123e68dbd3bddf7aebe0c4e",
+        "17": "9ed805d16d09bd6858606980a50c5773d66dfbf701fc09150edb28c78496b84ce399e19cddd52fa48aaa81a0d494b7f9"
+      },
+      "auth-service": {
+        "1": "d015e5bebb4fe89b2e1b03511577839e1b8c044380580bc0a53329fde815b4bcdce34c6eb794ccdb3549ab882f6ffb13",
+        "2": "7b62a676367d3bea2835884225049766f40b3943c7d58608a0f8081ea1049db2b215ae1176927eb130458455b130f1a5",
+        "3": "c7fb94a1b69109ff2525853a2b6e03e47f9c6ced518c533be1aff67f0be2b7dfd4b351fefda327151123e4a4c713553b",
+        "4": "099822444bd75b3cd72f61a86450f4a222611d2586e31bc4699567a7fac2b83804eeb7bde39dcff1c87863d3f00a544e",
+        "5": "6ab2825646d0bfdd8766db9effd8e8c233838a68dd892b65721f538ade59d411025629152a33be961ea5b87a528d2a7e",
+        "6": "bc611f08bf859fa08ad2c03e7e8743c3f6333c5cd33caa28a46d4415bac8b2b1362b59dcd9cee1fde87bd2440c551bf4",
+        "7": "96c76d66dcd1ce52ccc3c04c7e5c80b2aa01495974367ebe8037d27f04d9418b4ebf4058cae22d2544d0040b25390bb2",
+        "8": "96627f801a3a5bb4a5438c95e551a57a1dc57708f263468e17218d12bc26e185dc65ca965ad1dbdb225737d382485b27",
+        "9": "a20fd39beb1539fd12eaaaabfc4a52169c50eaab6fe7ff20867fa169ae58ee557a6fa00e9bd233d2b5c1ef0e240ce19f",
+        "10": "4d1648116cf4fde2f72a4f4b9dcaa1ac8a817022a4be4789a870d4d6fafafd835efc74f123c4cff3e113e57a1d63864e",
+        "11": "30b622ecc304d75bb8cb4201f02bf3c962347889c1ed9d336a16cb997651ec8754ea111f9c0fbe5d653dc331b6a3ac7c",
+        "12": "3ff9cd841186a5418d1c8c6d2fb11ecae9da77d572117d1b5e7938102f73d4bc62dfd8f8647d3f33d3ea72851ab9c842",
+        "13": "d9e7b97458ee05ba8e821c6b44bf79e2848db53ff6cafecfe6c929e3ab3377d078f486d096d9522e4b98eaaf2988068f",
+        "14": "769b363274fdd7b068b985f97e29a57e2a39a00ef28d021bac6bc84db31b852849546d109561cf335efeafad7b970785",
+        "15": "edf0a2b95aacc32a609a4fc53f5bf5fc52c0a8ae70a90468fe76b38bad132b4fd4b7ff3a2dacff2cb29cf4957239b075",
+        "16": "1a1e6ac9bd0891d48f6163ccda8e09664f582a71a7942b2feae53f273eb9b8fa89dab6cead3b28148581ac357c9af782",
+        "17": "102a80f97651ed1c386da666649489e239e0393749926d9e3bc3d3e8a55c55f2365ecad9d473e53894bd304fe47e84e2"
+      },
+      "friend-service": {
+        "1": "b36b3e99587a225c9c0e996ec8fc4fa769bbff3bccdb433491f26b6178b2b85a215cd586d815c2f728a572cddfe492f7",
+        "2": "27c7c3fa17f5e4c6afb09f4f11c6e417f5c1f1348e95709b0d218a3a8a034f3e238572a1ab020b29839ee8a0f8e38999",
+        "3": "95f4f9698b9efefb92bdc10bd4359ca67fd75bbb1df40e7519cb4816b180eaf019455636c6ed6587818509d178e910f6",
+        "4": "9b36c49b0dfee8fa1b737dc79e8a1b97ee3322b55662f982153c993ad79452c35ca625dbe00a56390b1b08890fedc9c9",
+        "5": "3d52ec3aa6bf061d8fcf6d537a3e277f736eb3cac64391bd6c1d103d5a79d0ec45031a3a31d33c1bba4640f38b11d6fc",
+        "6": "d5a23bc59cb4821c22c15bce783e32ff1b3b34f7cd682b06e38e3debbfa792263e12113768ca7bce622e98c2d9488c5f",
+        "7": "609909f7d1b47a240324585a8b24f1b9cfd03b1274e98f14e2b90c61f7d77f67560fe0f8f3d95201314bad0dadf2adf7",
+        "8": "29554004bf36b7cbb37f2d499aafface9db98b6d349d0332603edaa972fc5e40d0fd0156a88bd9208a4ac63df657ea9c",
+        "9": "24dc82d7726873acc8862a2855b1e1085e9bc83d3b73bc3e478a4d4011043e29fe8368c20d0ec65a351b400ce017bdde",
+        "10": "34ec924ad0a3106435408d025e8972015d18b243b2c89c4b29bd63de23f327eda5e82383d34493a3728a529cb26c7c2a",
+        "11": "e679726e5d8838549e836987c2f15dfe07c7f9f0f29b88a7f66984e46a4342fe42ebe0a1c32a29c3365022460730fc84",
+        "12": "4a28ccf145e226e6482f352af7410a5fafd10a22d48473e197e6c759835bb41ec56fdbce5d8e2f13b9d09b72e900fedc",
+        "13": "69d60d47835eeb6b038730289374e1ac637e54c9f1f1569f67a725b1b43d2b5d167ee0e7c64362d998da9ff4f98e6654",
+        "14": "4e4f4e313ee15947cdfeabefc4d0dc37677499257f415f2eed38c37a548ad19eba8b6738f72c58fdff55bdf469bad789",
+        "15": "473a4ea2054c8ccde337512127e7c892ce63fbee2926bba90ac36ffe26ec2bde7f9f20727ed3c100235dabc8b15a1f18",
+        "16": "e8fbac2d597bb629316b2021faa7cee649a530f9e8ce3e4e08e89c9696f6f48345af3d84a69bfa2c6ff30f5806141548",
+        "17": "a80d6a5a8f93a8fea1d072a252417416295fc223981fba586f4787979d3e8bad8a2f7802abcbacef7caace5facd0c533"
+      },
+      "profile-service": {
+        "1": "21d29e854e3a322365cd97df6ef13c5b7da6477edec17964467003030f8c539da3364a4bd69ebc46bc5db3c8da36e077",
+        "2": "5cbd75edfd24bb6f05afce9618e8956f0606bd391ccd23084d6728fe88c4f87a9368b5969b5512d6217d87a90bf9a062",
+        "3": "2f0efbfad7c90a16be09bae0de69194681d0cddab7b6c7982842d342ef8e6a7bdc61f67cf6cf538ff67eb4e2e53c71bd",
+        "4": "489e48d6ddf4dc1dfae3898ae05f245bd8dc0692f584eb326d2a9477100bbcb889c3984aed61a01908db7b74ff7ec524",
+        "5": "15cf34401f51d05bc90326583aae0eed9f712a81f335eeb6bf72f9e77071afce1d070a96407188379a0bc6767cb2f8fb",
+        "6": "a339407bc0b3a1e2969cbf9dbc8de75643e7b0c3c7807092046cadb18f3f4635385bfa6dea1db9a0551451763907c916",
+        "7": "30b6a1cedae9433ba2fa51f3ee2fdc74c01258ac3482ce12efd1bde2761e2c7d4234bea9a3e569824e56f55d4e2d3619",
+        "8": "302533481e533b98362d2452db7f91f85eb6d08fe13a8d307877de05de57588e6358547f577f3d910418d48f7f61afa3",
+        "9": "8071d3db02d6dea4494986f87691754e6144ca38e62c5738a8495b4646ffbe4a8bd4619d9589acdfe17e181454249679"
+      },
+      "post-service": {
+        "1": "dd9e04a01be58eaa5b990a6f3cbfdac66c2902ed155ec32c898be80be546a21dcf9469d79bd583c49f02de78b89b9d5d",
+        "2": "e72977e87e01ee38b414a282d130da187f78e59a7116b274f6b1ab1f1129f4ce14105c74998b31b6c10bbc3a07356cf9",
+        "3": "307ac4475d64bc7709c1904e836b089794536a00f542ce79874ebab228a0a06fff3b73f406e399038f03ebe5128151b3",
+        "4": "9ae5e2cca203b47703c582ebf82b91426ffbb8962185e098fae1954c22df41c4770b3e7452d1bf0c8658ad158beb8941",
+        "5": "9790b3200dae44d81b9810222d121e01e1430a59d869bae5434c787d97ed071039dd5a47cfa70784a3c298c6d9cef619",
+        "6": "f729196e1945718fd75e56b81eebe42534ae2ce9ab4c0409b1f8838f5cdedf23ced7fa14f511acf9095226b59b938963",
+        "7": "a4fa59601def3d393f1df585bfa18a189361f22bd5eb9d04c46be2b35e3883b3d312418506f597a62673f4144c2c557f",
+        "8": "5f6d59f7898e3ecd6e77a1b649ea09209f09c5aac688c77dd2496e868c1444dadd909d09a662288168e2a9529fa4ead0",
+        "9": "1ccb587cf027590192fd7efc84267af2ead3c508402d93e371e731c35bcba6a529e47d6542a9426554e37b31dc452122",
+        "10": "3716b64ad943cacacc154d57315b2f28fddb9e5ca558b2eb2754368a68e5f7aeee2a608a05a330b3c9abf284e8481fb1",
+        "11": "db996f81547d47824be665f968408ea7457300b9c42d0c9d4aa29bb8657e26745338a5d6d3c7878398a223989e46055b",
+        "12": "a5664d36a69efa554d4dcee756f94010d39970f2bdc5caad5347ccc6a0ee35230d3eff6e90aae7080ee4f115108c96f9",
+        "13": "cd47d4d2e537950098fb24887a50b5628c8360ca6b2cf8ce4d35778a26eb2ec8ff3da04ef24605433148d23bd6f28413",
+        "14": "11df491eea9d168f75b01e5e4b54e99316dc20e57eef8e5229bd0d5560f0a7ebc45667d64f9ff650e27b5a9f3fe8a519",
+        "15": "288ddd86a7fd0ce4ab593a3fab5803a9af87dd32cb465b09fdfe376122d566f60db80a667e507b9dcc5b855e019f9706",
+        "16": "605cae9748ea04a18352af56b6d0402160089912bb5aef9897234c8d06a04cd9c0ae60ad077f8fc038d1d164a9cf1190",
+        "17": "fd14ab851fa63bb71ac6c42c6e181981505669216444ddcc5636120ccb1557dee59bbe52944596e19067fbb140620c45",
+        "18": "a0e832e25f73f16172e7f5a6c117f961eae43ee186d2efab8ca9b9004dac9174d05ffb12d64448fd469a2e042de61d8b",
+        "19": "c3228f794887ce3402c26819f386743b0b5a04df16f957df888c07f0298e3f8ec8eb2035ba0e66539909813717b186bf",
+        "20": "1202aecda0d253c4c15af8cc62decec9f5c52e9ed2e222d488765bf4b4b0f6a29df8ab5f8c10c90c73fd112b5426afba",
+        "21": "0fed201a9d981cf93d92d57eddc590e8eb8b92dcf3e22dd3c5bc6964d107315865a5367e3f6b8efa753f24eec0aaf303",
+        "22": "96ca4ebaf3ee7de7d5d987fa4cd6686e8802a6d7de5cffe181f3593916ba0c89b9a80cc73a19996806042cef9d453eac",
+        "23": "2b77b0d6d434f62276af93c4a245e91aeaecc42b49ae715f855622881b67a88d9dace8486a294389d37cf6f10b29b1c7",
+        "24": "49df7b9aabf1bccf957bd58aad12c7371d56685bd622666a3546bcc61ca1700e514fa9019d37548378a79c7b8726dedf",
+        "25": "8ca81b5efd16be2ff7ef69a44c892a911b2f68dabf8dbdc859ed12e9a0f4829c2d421c84fd33c65e2f94094eefc80259",
+        "26": "4e8a6faeec265563a06da9ff758cf547225248203d58e72e7c5f929ff9fd0d6eaec0b4785a4f3a826753777c75b05099",
+        "27": "7483b3541964f7cf0de0bbf738a0e3158d32148e1bad2a3c91b3effb5219e363e70c29044d41b39846c425137a909734",
+        "28": "4fe32d2e20c5932183069a43976d84a0ca28f9eac5816a808e9c905ece7239bc6b48441fd330ee958b55e9c13b34709a",
+        "29": "4b4ddd55cbae58a86afd0d207e78953ea67f0b1255865bb2d7272e6d804692a2496d0587bd04c981bd43f4467233dcce",
+        "30": "1efe39068f3f3d5c2fb31d450b9e8b7f75d68d8d83e444d59e2fc21f34e95cb6b87dad05262a7ab64b218e24dac1cddc",
+        "31": "218cd6f4bc03a447465b94627dd44fab8eeab63e83ee66b6c2900b6e8c6d6e84102413313063d42d36da393075da6aa1"
+      },
+      "notification-service": {
+        "1": "c0beb3fabc2f6db27d9eb2d3257e1d525c1c6d1978b788a51f770e7fc3500cdd6d007208d21180f25de3edf6493d8484",
+        "2": "c63778c2d2ad4bdeca1eb51b1983d2bc695202af4cf3ba1db4ebb770f7636f5196bab5802f1caa17d020d8b253df5cc5",
+        "3": "cda124fd5f3e9aab5b5af0a67358633f11e4988a8d592fde8977208c32b8e93344a180ad184d57e4e0585618101d182a",
+        "4": "50710633e7974523a1cd6216d3e0d702c735198096ff56d1b3bce91d4eb6fb5c43ea4d2dc6804a21f8fd35d5af73ea7b"
+      }
+    },
+    "limitations": [
+      "Six-service identity mains use actual parity configuration, not full internal TLS startup.",
+      "The producer deliberately refuses; no positive product, Gift, child-join or consumer restart proof.",
+      "Reset/expired-response owner exclusions remain quarantined until owned fixture teardown."
+    ]
+  },
+  "world_hold": {
+    "status": "IN_PROGRESS",
+    "browser_in01": "NOT_RUN",
+    "scope": "e692 production binary, retained six-service MAIN cohort, canonical map4 and approved static avatar",
+    "initial_two_principal_probe": "PASS",
+    "initial_c03_database": "PASS; 16 delivered Root scopes, 16 COMPLETED Auth and Friend leases, zero pending participants, two real Concert native commits, zero prepared transactions",
+    "started_at": "2026-11-04T04:25:00Z",
+    "expires_at": "2026-11-04T04:55:00.941230Z",
+    "live_bundle": "Delivered privately to the designated World lead, frontend integrator and resource coordinator after confirming survival beyond the previous immediate failure window.",
+    "cleanup": "PENDING_HELD_RUNTIME",
+    "prior_intermittent_failure": "UNRESOLVED; diagnostics preserve evidence but do not establish a fix."
+  },
+  "limitations": [
+    "No full-task, multiuser browser, restart or sustained World acceptance is asserted.",
+    "The qualified child recovery component is not yet activated in the Root union; the Participant-only settler is not a general child resolver.",
+    "Six-service executable sources are a retained mixed immutable cohort. Runtime migration manifests are recorded separately and do not amend executable compile ancestry.",
+    "Actual provider/role-backed optional product routes remain separate integration obligations."
+  ]
+}

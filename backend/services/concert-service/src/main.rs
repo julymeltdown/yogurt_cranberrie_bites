@@ -9,7 +9,13 @@ async fn main() -> anyhow::Result<()> {
     if arguments.len() == 1 && arguments[0] == "--prepare-in01-catalog" {
         return in01_catalog::run().await;
     }
-    let command = migration_runtime::parse_command(std::env::args_os().skip(1))?;
+    let inspect_release = arguments.len() == 1 && arguments[0] == "--inspect-product-release";
+    let command_arguments = if inspect_release {
+        Vec::new()
+    } else {
+        arguments
+    };
+    let command = migration_runtime::parse_command(command_arguments.iter().cloned())?;
     if matches!(
         command,
         migration_runtime::Command::Migrate | migration_runtime::Command::Verify
@@ -17,7 +23,7 @@ async fn main() -> anyhow::Result<()> {
         config::database_options(std::env::var("CONCERT_DATABASE_URL").ok().as_deref())?;
     }
     if migration_runtime::handle_command(
-        std::env::args_os().skip(1),
+        command_arguments.iter().cloned(),
         "CONCERT_DATABASE_URL",
         &config::migration_directory(),
     )
@@ -32,9 +38,17 @@ async fn main() -> anyhow::Result<()> {
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
     let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
     let product_owner = config::product_runtime::production_owners(product_settings)?;
+    let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
+    anyhow::ensure!(
+        world_settings.is_none() || runtime.is_some(),
+        "World requires the guarded Concert bootstrap listener"
+    );
     let bootstrap = runtime
         .as_ref()
         .map(|runtime| {
+            if let Some(world) = world_settings.as_ref() {
+                return Ok(world.validated_release());
+            }
             let files = &runtime.files;
             ProductReleaseBundle::from_product_files(
                 &files[0],
@@ -46,12 +60,65 @@ async fn main() -> anyhow::Result<()> {
             .map_err(|_| anyhow::anyhow!("Concert product release is unavailable"))
         })
         .transpose()?;
-    let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
+    if inspect_release {
+        let release = bootstrap
+            .as_ref()
+            .ok_or_else(|| anyhow::anyhow!("Product release inspection requires bootstrap"))?;
+        println!("CONCERT_PRODUCT_RELEASE_DIGEST={}", release.source_digest());
+        return Ok(());
+    }
+    let participant_settings =
+        config::participant_runtime::ParticipantRuntimeSettings::load(runtime.is_some())?;
+    anyhow::ensure!(
+        product_owner.is_none() || participant_settings.is_none(),
+        "Product and Participant require a shared canonical scope composition"
+    );
     let world_owners = world_settings
         .as_ref()
         .map(|_| config::world_runtime::production_owners())
         .transpose()?;
     let pool = config::connect_pool(&config).await?;
+    let participant_runtime = participant_settings
+        .map(|settings| {
+            settings.compose(
+                pool.clone(),
+                bootstrap
+                    .as_ref()
+                    .ok_or_else(|| anyhow::anyhow!("Participant release is unavailable"))?
+                    .clone(),
+            )
+        })
+        .transpose()?;
+    let (participant_owners, participant_recovery) = match participant_runtime {
+        Some(config::participant_runtime::ParticipantRuntime {
+            participant,
+            decision,
+            decision_verifier,
+            settlement,
+            delivery,
+            recovery,
+            callers,
+            gateway_verifier,
+        }) => (
+            Some((
+                participant,
+                decision,
+                decision_verifier,
+                settlement,
+                delivery,
+                callers,
+                gateway_verifier,
+            )),
+            Some(recovery),
+        ),
+        None => (None, None),
+    };
+    let (world_ready_tx, world_ready_rx) = if world_settings.is_some() {
+        let (tx, rx) = tokio::sync::oneshot::channel();
+        (Some(tx), Some(rx))
+    } else {
+        (None, None)
+    };
     let _application = config::build_application(pool.clone());
     let health = health::router(health::readiness(pool.clone()));
     let listener = tokio::net::TcpListener::bind(config.metrics_addr)
@@ -68,6 +135,12 @@ async fn main() -> anyhow::Result<()> {
             Ok::<(), anyhow::Error>(())
         };
         let grpc = async move {
+            if let Some(ready) = world_ready_rx {
+                tokio::select! {
+                    result = ready => result.map_err(|_| anyhow::anyhow!("World startup readiness failed"))?,
+                    _ = platform::shutdown::global().cancelled() => return Ok(()),
+                }
+            }
             match (runtime, bootstrap) {
                 (Some(runtime), Some(release)) => {
                     let mut server = tonic::transport::Server::builder()
@@ -103,6 +176,32 @@ async fn main() -> anyhow::Result<()> {
                         runtime.callers.clone(),
                         runtime.actors.clone(),
                     )?;
+                    let (participant, decision, settlement, participant_delivery) = participant_owners
+                        .map(|(participant, decision, decision_verifier, settlement, delivery, callers, gateway_verifier)| {
+                            let participant = platform::grpc_method_policy::guard(
+                                &concert_service::participant::POLICY,
+                                participant.server(),
+                                callers.clone(), gateway_verifier.clone(),
+                            )?;
+                            let decision = platform::grpc_method_policy::guard(
+                                &concert_service::participant::live::decision_rpc::DECISION_POLICY,
+                                decision.server(),
+                                callers.clone(), decision_verifier,
+                            )?;
+                            let settlement = platform::grpc_method_policy::guard(
+                                &concert_service::product_rpc::settlement::POLICY,
+                                settlement.server(),
+                                callers.clone(), gateway_verifier.clone(),
+                            )?;
+                            let delivery = platform::grpc_method_policy::guard(
+                                &concert_service::product_rpc::delivery::POLICY,
+                                concert_service::product_rpc::proto::product_delivery_service_server::ProductDeliveryServiceServer::new(
+                                    concert_service::product_rpc::delivery::DeliveryService::new(delivery),
+                                ).max_decoding_message_size(4096).max_encoding_message_size(4096),
+                                callers, gateway_verifier,
+                            )?;
+                            Ok::<_, anyhow::Error>((Some(participant), Some(decision), Some(settlement), Some(delivery)))
+                        }).transpose()?.unwrap_or((None, None, None, None));
                     let delivery = product_owner.as_ref().map(|owners| {
                         platform::grpc_method_policy::guard(
                             &concert_service::product_rpc::delivery::POLICY,
@@ -112,7 +211,7 @@ async fn main() -> anyhow::Result<()> {
                             runtime.callers.clone(),
                             runtime.actors.clone(),
                         )
-                    }).transpose()?;
+                    }).transpose()?.or(participant_delivery);
                     let product = product_owner.map(|owners| {
                         platform::grpc_method_policy::guard(
                             &concert_service::product_rpc::POLICY,
@@ -128,6 +227,9 @@ async fn main() -> anyhow::Result<()> {
                     server
                         .add_service(bootstrap)
                         .add_service(world)
+                        .add_optional_service(participant)
+                        .add_optional_service(decision)
+                        .add_optional_service(settlement)
                         .add_optional_service(product)
                         .add_optional_service(delivery)
                         .serve_with_shutdown(
@@ -141,15 +243,105 @@ async fn main() -> anyhow::Result<()> {
             Ok::<(), anyhow::Error>(())
         };
         let world = async move {
-            match (world_settings, world_owners) {
-                (Some(settings), Some(owners)) => settings.serve(world_pool, owners).await,
+            match (world_settings, world_owners, world_ready_tx) {
+                (Some(settings), Some(owners), Some(ready)) => {
+                    settings.serve_with_ready(world_pool, owners, ready).await
+                }
                 _ => platform::shutdown::idle().await,
             }
         };
-        tokio::try_join!(http, grpc, world)?;
+        let recovery = async move {
+            match participant_recovery {
+                Some(recovery) => {
+                    let (stop, receiver) = tokio::sync::watch::channel(false);
+                    let worker = recovery.run(receiver);
+                    tokio::pin!(worker);
+                    tokio::select! {
+                        _ = &mut worker => {
+                            anyhow::ensure!(platform::shutdown::global().is_requested(), "Participant recovery stopped unexpectedly");
+                        }
+                        _ = platform::shutdown::global().cancelled() => {
+                            stop.send_replace(true);
+                            worker.await;
+                        }
+                    }
+                    Ok(())
+                }
+                None => platform::shutdown::idle().await,
+            }
+        };
+        // Each component requests shared shutdown on failure. Join rather than
+        // dropping peer futures so native replay, membership and recovery drain.
+        let (http, grpc, world, recovery) = tokio::join!(
+            component("health", http, platform::shutdown::global()),
+            component("gRPC", grpc, platform::shutdown::global()),
+            component("World", world, platform::shutdown::global()),
+            component("Participant recovery", recovery, platform::shutdown::global()),
+        );
+        http?;
+        grpc?;
+        world?;
+        recovery?;
         Ok(())
     })
     .await;
     pool.close().await;
     result
+}
+
+async fn component(
+    name: &'static str,
+    future: impl std::future::Future<Output = anyhow::Result<()>>,
+    shutdown: platform::shutdown::Shutdown,
+) -> anyhow::Result<()> {
+    let result = future.await;
+    let result = if result.is_ok() && !shutdown.is_requested() {
+        Err(anyhow::anyhow!("{name} stopped unexpectedly"))
+    } else {
+        result
+    };
+    if result.is_err() {
+        shutdown.request();
+    }
+    result
+}
+
+#[cfg(test)]
+mod tests {
+    use super::component;
+    use platform::shutdown::Shutdown;
+    use std::sync::atomic::{AtomicBool, Ordering};
+
+    #[tokio::test]
+    async fn component_failure_requests_stop_and_allows_peer_cleanup_to_finish() {
+        let stop = Shutdown::new();
+        let cleaned = AtomicBool::new(false);
+        let peer = async {
+            stop.cancelled().await;
+            tokio::task::yield_now().await;
+            cleaned.store(true, Ordering::SeqCst);
+            Ok(())
+        };
+        let (failed, drained) = tokio::join!(
+            component(
+                "failed",
+                async { anyhow::bail!("owned failure") },
+                stop.clone()
+            ),
+            component("peer", peer, stop.clone()),
+        );
+        assert!(failed.is_err());
+        assert!(drained.is_ok());
+        assert!(cleaned.load(Ordering::SeqCst));
+    }
+
+    #[tokio::test]
+    async fn unexpected_success_stops_peers_but_normal_shutdown_is_successful() {
+        let stop = Shutdown::new();
+        assert!(component("early", async { Ok(()) }, stop.clone())
+            .await
+            .is_err());
+        assert!(stop.is_requested());
+        assert!(component("drained", async { Ok(()) }, stop).await.is_ok());
+    }
 }

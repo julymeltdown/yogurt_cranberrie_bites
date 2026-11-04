@@ -737,6 +737,7 @@ name = "concert-service"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "api-gateway",
  "async-trait",
  "auth-service",
  "axum 0.7.9",

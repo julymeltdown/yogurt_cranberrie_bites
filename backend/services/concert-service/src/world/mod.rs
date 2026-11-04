@@ -231,7 +231,10 @@ impl TicketRepository for PgWorldRepository {
     async fn issue(&self, record: TicketRecord) -> Result<IssueOutcome, WorldError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         closure::lock_event_open_in(&mut tx,record.pin.event_id.uuid()).await?;
-        let room = sqlx::query("select availability,capacity from public.concert_world_rooms where event_id=$1 and room_id=$2 for update")
+        // Issuance observes availability/capacity but reserves no membership.
+        // Share the room with live publication permits; admission below keeps
+        // its serialized room lock and enforces capacity when a ticket is used.
+        let room = sqlx::query("select availability,capacity from public.concert_world_rooms where event_id=$1 and room_id=$2 for share")
             .bind(record.pin.event_id.uuid())
             .bind(record.pin.room_id.uuid())
             .fetch_optional(&mut *tx)

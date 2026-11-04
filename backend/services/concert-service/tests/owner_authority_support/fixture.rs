@@ -60,6 +60,7 @@ pub(super) struct Fixture {
     pub(super) registry: Arc<ScopeRegistry>,
     pub(super) fence: CanonicalOwnerFence,
     ledger: PgScopeLedger,
+    relationship_signer: platform::actor_delegation::relationship_read::RelationshipReadSigner,
     settlement_url: String,
     effects: Arc<RejectEffects>,
     _auth: owners::Running,
@@ -79,6 +80,12 @@ impl Fixture {
         Self::build(true).await
     }
     async fn build(native_abort: bool) -> anyhow::Result<Self> {
+        Self::build_for_gateway(native_abort, super::capture::gateway()?.public_key()).await
+    }
+    pub(super) async fn build_for_gateway(
+        native_abort: bool,
+        gateway: [u8; 32],
+    ) -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
         let friend = environment::pool("friend").await?;
         let concert = environment::pool("concert").await?;
@@ -123,14 +130,15 @@ impl Fixture {
                 .await
                 .expect("actual root settlement server");
         });
-        let running_auth = owners::auth(auth.clone(), &url).await?;
-        let running_friend = owners::friend(friend.clone(), &url).await?;
+        let running_auth = owners::auth_for_gateway(auth.clone(), &url, gateway).await?;
+        let running_friend = owners::friend_for_gateway(friend.clone(), &url, gateway).await?;
+        let relationship_signer = owners::signer_for_gateway(gateway)?;
         let fence = CanonicalOwnerFence::connect(
             &running_auth.url,
             &running_friend.url,
             "concert-fixture",
             &environment::tls(Workload::Concert)?,
-            owners::signer()?,
+            relationship_signer.clone(),
             registry.clone(),
         )?;
         Ok(Self {
@@ -140,6 +148,7 @@ impl Fixture {
             registry,
             fence,
             ledger,
+            relationship_signer,
             settlement_url: url,
             effects,
             _auth: running_auth,
@@ -178,7 +187,7 @@ impl Fixture {
             friend_endpoint,
             "concert-fixture",
             &environment::tls(Workload::Concert)?,
-            owners::signer()?,
+            self.relationship_signer.clone(),
             self.registry.clone(),
         )
     }

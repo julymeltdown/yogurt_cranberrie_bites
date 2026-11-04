@@ -17,6 +17,7 @@ pub mod proto {
     tonic::include_proto!("concert.product.v1");
 }
 pub mod delivery;
+pub mod child_recovery;
 pub mod child_settlement;
 mod owner_media;
 mod query;
