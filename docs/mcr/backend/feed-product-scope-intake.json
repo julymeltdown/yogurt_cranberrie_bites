@@ -21,7 +21,7 @@
     "full_release_sha256": "e9e43b44cc9bb8ed832a55ed87fdb4a7f5ee04774c740f9f638c5d29d0c309c9"
   },
   "limitations": [
-    "Five cases qualify constructors, original request/scope context boundaries and closed read operation set, not current live owner RPC behavior.",
+    "Five cases qualify constructor inputs and the closed read operation set; adapter compilation passes. Original-request/retained-scope mismatch behavior and current live owner RPC behavior remain unqualified.",
     "Original eight native component cases remain historical at their original source.",
     "Actual Concert Feed opt-in settings, callback composition and public Gateway HTTP/EOF/IN03 remain pending.",
     "No new scope, token, delivery factory, main, manifest, proto or frontend implementation is imported."
