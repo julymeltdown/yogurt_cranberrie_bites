@@ -69,13 +69,7 @@ impl FeedPolicy for GuardedPolicy {
             .map_err(|status| subject_failure(status, c.actor == subject))?;
         // policy and author read share this exact retained local child. policy
         // does not require the viewing actor's own profile to be PUBLIC.
-        let local = self.profiles.policy(&guarded).await.map_err(|error| {
-            if c.actor != subject && error == FeedError::PermissionDenied {
-                FeedError::ResourceUnavailable
-            } else {
-                error
-            }
-        })?;
+        let local = self.profiles.policy(&guarded).await?;
         let owners = guarded.revision_vector();
         let (actor_security, subject_security) = guarded
             .security_revisions()
