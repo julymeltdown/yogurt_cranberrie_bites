@@ -1,0 +1,698 @@
+{
+  "task": "ART-PARADE-PRINT-02",
+  "assessment": "PASS_BOUNDED_ORIGINAL_ART_AND_NATIVE_INTEGRATION_SCREEN_PARITY_OPEN",
+  "method": "Art owner directly viewed canonical reference and all18 retained NativeC normal and480px-height end images. Read-only hashes/report/sealed source readback, no new browser/render/build.",
+  "nativePacket": {
+    "reportPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/report.json",
+    "reportSha256": "6c140b707be8dd2d9a2dfa47267db858bb637177cf747e4fd41cd05ffe05df88",
+    "job": "CHROME02-SOURCE-SELECTIVE-NATIVE-202611041446Z",
+    "candidate": "db07437a2619b049d2030d8127b4910c1a44f6dd",
+    "art": {
+      "frontend/public/reference-parade-print-v2/": "ec40e53174695f03257fd7f772d91fffb12f4cf9",
+      "frontend/public/reference-window-controls-v2/": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203"
+    },
+    "feedOverlay": {
+      "commit": "1a90734394540b2f4ba7303c02e973a730baa2c6",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "sha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8"
+    },
+    "flatPaperOverlay": {
+      "commit": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "sha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "injection": "Exact pinned CSS replaces its single base.css @import before PostCSS resolution",
+      "basePath": "frontend/src/shared/styles/base.css",
+      "baseSha256": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105"
+    },
+    "startedAt": "2026-11-04T14:47:21.942Z",
+    "finishedAt": "2026-11-04T14:48:03.375Z",
+    "browser": "156.0.8078.80",
+    "qualification": "Real production components/default router/Phaser with explicit DEV synthetic HTTP/C05 fixture; production anonymous entry separately captured",
+    "limitations": [
+      "No live backend or two-account acceptance",
+      "No physical iOS/Android or software keyboard proof",
+      "QA06 map admission fixture is not Map/C06 product acceptance",
+      "Per-screen rendering remains with its implementation owner"
+    ],
+    "receipts": {
+      "native-C-accept.json": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-C-accept.json",
+        "bytes": 2067,
+        "sha256": "3352fa2997238636b653e1f0a67caff83db8880819f2c8bfa0215f4878462b46"
+      },
+      "native-C-release.json": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-C-release.json",
+        "bytes": 1607,
+        "sha256": "4f78dbe96c9d33bedf4cb83c5569ae36333faab1e3ac1940c53db44ae00b49ba"
+      },
+      "native-02/guardian.json": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/guardian.json",
+        "bytes": 3396,
+        "sha256": "c6530845124a6a5e71cfd5ea9478466de2aaa1b057ca96c1a90f1319c5761d25"
+      }
+    },
+    "seal": "76afcfdd36ca956564fdc352616268f2cf7793bf",
+    "sealReadback": {
+      "directlyViewedImages": 18,
+      "reportAndAllThreeReceiptsMatch": true,
+      "method": "git show immutable consumer seal; exact SHA-256 compared to original retained-image assessment, no browser/render or dirty peer file substituted"
+    }
+  },
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "cases": [
+    {
+      "surface": "meet",
+      "width": 360,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/meet-360.png",
+          "bytes": 61600,
+          "sha256": "c69f914810134138919ce861b09d114c2bd1ff63a5a3126e1c3a69b327b574e9",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/meet-360-short-end.png",
+          "bytes": 47649,
+          "sha256": "104122ec3bc1dc31bf550d821cc46ff4bbe06c2bb4a08c9f967e70eb53ded74c",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 618.75,
+        "width": 330,
+        "height": 88,
+        "bottom": 706.75,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 378.75,
+        "width": 330,
+        "height": 88,
+        "bottom": 466.75,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": {
+        "actionBottom": 413,
+        "printTop": 486.75,
+        "gap": 73.75
+      },
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "gifts",
+      "width": 360,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/gifts-360.png",
+          "bytes": 46427,
+          "sha256": "a78e1612e59d5dc143ccb1af81ed2409a2bf2e9f84d7336476ed27c1a5a35d3b",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/gifts-360-short-end.png",
+          "bytes": 39199,
+          "sha256": "4803ddf10f1f0b8c19260b76a43caf743d5b265081c423a1bf2bfd6d43b43f4f",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 650,
+        "width": 330,
+        "height": 88,
+        "bottom": 738,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 379,
+        "width": 330,
+        "height": 88,
+        "bottom": 467,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": {
+        "action": "My gifts \u2192",
+        "actionBottom": 411,
+        "printTop": 461,
+        "gap": 50
+      },
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "me",
+      "width": 360,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/me-360.png",
+          "bytes": 57437,
+          "sha256": "c478acdc2fe246209b9ed4463d00dfad311f890f7e703a461e71afcb0c6238e8",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/me-360-short-end.png",
+          "bytes": 38638,
+          "sha256": "98bee97ecfad4d08902306589c884413b58fc4223f110df9f3a3c1b3cd5c5a7a",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 500.765625,
+        "width": 330,
+        "height": 88,
+        "bottom": 588.765625,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 378.765625,
+        "width": 330,
+        "height": 88,
+        "bottom": 466.765625,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": null,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "meet",
+      "width": 390,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/meet-390.png",
+          "bytes": 65614,
+          "sha256": "cb1844e8bafb47b47c5cf9ae85ff45103cef6c6bd60bcd2a73f470fe965a367d",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/meet-390-short-end.png",
+          "bytes": 49177,
+          "sha256": "49428ec300c02c6e9a982c637ebbe7ea7a02cd0929ac39a0f190bb08b4296ac6",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 653.75,
+        "width": 360,
+        "height": 96,
+        "bottom": 749.75,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 370.75,
+        "width": 360,
+        "height": 96,
+        "bottom": 466.75,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": {
+        "actionBottom": 454,
+        "printTop": 527.75,
+        "gap": 73.75
+      },
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "gifts",
+      "width": 390,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/gifts-390.png",
+          "bytes": 55563,
+          "sha256": "e78eb63871fb3c230776e586f6e6ea80f56901f003742e7fe58093f73b3c2a2c",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/gifts-390-short-end.png",
+          "bytes": 38834,
+          "sha256": "29d194740dd62b4b2548d0ce42cb627ce9d5d3e347ffd666a1d8a9e3a6c5359b",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 650,
+        "width": 360,
+        "height": 96,
+        "bottom": 746,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 371,
+        "width": 360,
+        "height": 96,
+        "bottom": 467,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": {
+        "action": "My gifts \u2192",
+        "actionBottom": 449,
+        "printTop": 499,
+        "gap": 50
+      },
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "me",
+      "width": 390,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/me-390.png",
+          "bytes": 63430,
+          "sha256": "5d9914af0d14558a7ce069930f82dabe6d07cbe736fe94f3abbd18d9124ddc21",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/me-390-short-end.png",
+          "bytes": 38295,
+          "sha256": "019b85b2871c0bafdce8d673af90a45ae850bd0ecab1aa43e4f3465397346f08",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 507.546875,
+        "width": 360,
+        "height": 96,
+        "bottom": 603.546875,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 371.296875,
+        "width": 360,
+        "height": 96,
+        "bottom": 467.296875,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": null,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "meet",
+      "width": 430,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/meet-430.png",
+          "bytes": 71629,
+          "sha256": "d551219b01f3b4365e816c0fa90257765f38038b90eb3d2e3b2c024751dfcd9f",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/meet-430-short-end.png",
+          "bytes": 51879,
+          "sha256": "77dc19bed9ca602a77c97cc2ea3200f87f503fef4713c4a531fed39e2419b98f",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 689.75,
+        "width": 400,
+        "height": 106.65625,
+        "bottom": 796.40625,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 360.75,
+        "width": 400,
+        "height": 106.65625,
+        "bottom": 467.40625,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": {
+        "actionBottom": 510,
+        "printTop": 583.75,
+        "gap": 73.75
+      },
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "gifts",
+      "width": 430,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/gifts-430.png",
+          "bytes": 61338,
+          "sha256": "8ea64f1177a0fe57a441e7a13766be998d66373d9b839b515ddacb5647ec5bd9",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/gifts-430-short-end.png",
+          "bytes": 39421,
+          "sha256": "0971562f596ba12f2f9a9f4c11849d63c46504b6d4d37f6d62d98acbd691dc02",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 650,
+        "width": 400,
+        "height": 106.65625,
+        "bottom": 756.65625,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 360,
+        "width": 400,
+        "height": 106.65625,
+        "bottom": 466.65625,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": {
+        "action": "My gifts \u2192",
+        "actionBottom": 501,
+        "printTop": 551,
+        "gap": 50
+      },
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "surface": "me",
+      "width": 430,
+      "images": [
+        {
+          "state": "screenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/me-430.png",
+          "bytes": 67036,
+          "sha256": "16f86f673a967e675d052c4a407cd3825806dd8c89be104fad0c8f04152ad326",
+          "directlyViewed": true
+        },
+        {
+          "state": "shortScreenshot",
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/reference-chrome-v2/native-02/capture/me-430-short-end.png",
+          "bytes": 38831,
+          "sha256": "bfdda3f7489a153361128a5e9b4438c6e464ea184a85f3f7279863df57b56061",
+          "directlyViewed": true
+        }
+      ],
+      "initialFooter": {
+        "x": 15,
+        "y": 536.34375,
+        "width": 400,
+        "height": 106.65625,
+        "bottom": 643,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "shortFooter": {
+        "x": 15,
+        "y": 360.1875,
+        "width": 400,
+        "height": 106.65625,
+        "bottom": 466.84375,
+        "insideScroll": true,
+        "hidden": "true",
+        "pointerEvents": "none"
+      },
+      "actionPrintGeometry": null,
+      "printPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "forcedPrintPixels": {
+        "dimensions": [
+          360,
+          96
+        ],
+        "opaque": 16152,
+        "unexpected": 0,
+        "transparent": 16094
+      },
+      "errors": [],
+      "overflow": false,
+      "brokenImages": []
+    }
+  ],
+  "ownArtDisposition": {
+    "state": "PASS_BOUNDED_ART_SCOPE",
+    "figures": "Qualified ec40 source is actually visible in allnine body-end images: nine smaller angular independently drawn silhouettes, varied head heights/strides, instruments and pennant. Original source refinement replaces smoother b68 figures; no character/member portrait derivative.",
+    "ground": "Heavier uneven earth edge, scattered smaller transparent nicks and sparse stalks survive native360/390/430 sizing. Ground remains distinct from paper with visible transparent gaps and no paper rectangle. Prior shallow broad repeated-nick source concern addressed.",
+    "placement": "Actual330x88/360x96/400x106.65625 boxes atx15 preserve360:96 aspect. Allnine480px end images retain the complete print without extra source crop/stretch or control obstruction. Source-edge silhouette cropping is intentional.",
+    "colorAndAlpha": "Allnine native normal and forced-colors probes match: natural360x96,opaque16152,transparent16094,unexpectedRGB0. Sealed source candidate script SHAba51160f2eef12fa84c2bcbb2ab66915689d04abf3becfd72babf7ffffc3e16a matches ACCEPT; probe checks opaqueRGB25,24,23. No retained forced-color screenshots; probe evidence is not a full manual forced-mode visual comparison.",
+    "semantics": "Allnine footer reports insideScroll true, aria-hidden true, pointerEvents none; errors/brokenImages empty and no overflow. Static SVG, reducedMotion reduce context. Selected fixture portrait remains distinct from decorative figures; no source-pack byte-equivalence or live identity claim.",
+    "claimBoundary": "Pass covers original art implementation, measured composition, ink/alpha and observed native integration. It does not assert copied character contours, pixel-identical reference grain, full-screen exact visual parity or live/device acceptance."
+  },
+  "materialScreenDifferences": [
+    {
+      "id": "ART02-MEET-FLOW",
+      "owner": "consumer213 / Root composition",
+      "state": "OPEN_SCREEN_REFERENCE_DIFFERENCE",
+      "finding": "Compact More actions replaces three extra navigation rows, but measured Create Party action-to-print gap remains73.75px at everywidth. Canonical CTA overlaps/touches parade. Disabled fixture action remains truthful.",
+      "fixBoundary": "Component/flow owner; art will not edit CSS/runtime or encode a fake CTA into pixels."
+    },
+    {
+      "id": "ART02-GIFTS-FLOW",
+      "owner": "consumer213 / feature owner",
+      "state": "OPEN_SCREEN_REFERENCE_DIFFERENCE",
+      "finding": "Measured My gifts action-to-print gap50px at everywidth; More actions is between feature content and ornament.",
+      "fixBoundary": "Preserve genuine action/navigation semantics; owner chooses composition remedy."
+    },
+    {
+      "id": "ART02-FIRST-VIEW",
+      "owner": "consumer213 / per-screen owners",
+      "state": "OPEN_SCREEN_REFERENCE_DIFFERENCE",
+      "finding": "Allnormal Meet/Gifts prints remain below initial viewport. NormalProfile360 lower print clipped by scroll viewport;390/430 shows band. Allnine short-end states retain complete print.",
+      "fixBoundary": "Screen density/flow and viewport handling, not an intrinsic SVG sizing/load defect."
+    }
+  ],
+  "history": "NativeB/b68 and source candidate02 qualification receipts remain unchanged. Public ec40 four-file pack remains frozen; this document does not mutate rendered assets or frozen placement metadata.",
+  "remainingOwnDuties": [
+    "Send committed direct publishing handoff",
+    "Verify final master publication, exact owned postimages and remote ancestry"
+  ],
+  "acceptanceLimits": [
+    "No full ten-screen visual/reference acceptance",
+    "Explicit DEV synthetic HTTP/C05 fixture with real default components/router/Phaser; no live backend/two-account/device/keyboard/Map acceptance",
+    "Component/per-screen differences remain with their implementation owners; no King/SL/QA review gate"
+  ]
+}

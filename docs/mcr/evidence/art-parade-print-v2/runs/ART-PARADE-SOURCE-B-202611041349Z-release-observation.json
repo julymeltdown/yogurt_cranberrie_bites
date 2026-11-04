@@ -1,0 +1,22 @@
+{
+  "task": "ART-PARADE-PRINT-02",
+  "offer": "ART-PARADE-SOURCE-B-202611041349Z",
+  "kind": "Independent postwrite release observation, not a second output job",
+  "observedAtUtc": "2026-11-04T13:52:40.279673+00:00",
+  "allocatedDeadlineUtc": "2026-11-04T13:52:48.037183+00:00",
+  "rawReceiptSha256": "4114e084ca6a7e51fddd2f312f555bec2b4ff364cf81c3fcd2a57d87d81df848",
+  "rawStatus": "PASS_SOURCE_ONLY",
+  "rawExitCode": 0,
+  "rawRelease": "FULL",
+  "recordedChildPidsAbsent": [94748, 94755],
+  "temporaryTreeAbsent": true,
+  "all17FrozenInputsUnchanged": true,
+  "originalAuthoringReportsMatch4d297ce6": true,
+  "observedDurableFiles": 19,
+  "observedDurableBytesIncludingRawReceiptAndLog": 176825,
+  "readonlyReferenceBytes": 3449863,
+  "observedWholeBytes": 3626688,
+  "sampledWorkPhaseDurablePeakBytes": 167633,
+  "interpretation": "Raw peaks are sampled during output work. Its durable value excludes the raw receipt written after cleanup; this independent observation includes that receipt and log. This note and later documentation/commit authoring are not retroactively included in that timed measurement.",
+  "native": "NOT_RUN"
+}

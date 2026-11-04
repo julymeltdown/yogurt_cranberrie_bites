@@ -1,0 +1,87 @@
+{
+  "task": "ART-PARADE-PRINT-02",
+  "scope": "Source/asset validation only; native integration NOT_RUN",
+  "source": {
+    "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+    "bytes": 5875,
+    "sha256": "341c27a80e3988c9665b1ca8ea7579a750848bc304fd34d0f4ebf6ec039c9c9a",
+    "viewBox": [
+      0,
+      0,
+      360,
+      96
+    ],
+    "pathCount": 15,
+    "externalReferences": 0,
+    "activeContent": false
+  },
+  "renderer": {
+    "name": "PyMuPDF",
+    "version": "1.27.2.3"
+  },
+  "python": "3.14.3",
+  "outputs": [
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print-preview.png",
+      "bytes": 11240,
+      "sha256": "1298e000cfadc385f184d13210d516d7c204ff941c5a0273a0f72f98e270b826",
+      "size": [
+        360,
+        96
+      ],
+      "mode": "RGBA",
+      "nonzeroAlphaBounds": [
+        0,
+        6,
+        360,
+        96
+      ],
+      "fullyTransparentFraction": 0.42375578703703703,
+      "opaqueInkFraction": 0.47662037037037036,
+      "alphaWeightedInkFraction": 0.5285792256717502,
+      "opaqueInkRgb": [
+        25,
+        24,
+        23
+      ]
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print@2x.png",
+      "bytes": 25153,
+      "sha256": "99419c620afb19b8b511d310125c8e03e34f1d94427489c008d9199f1284f1c6",
+      "size": [
+        720,
+        192
+      ],
+      "mode": "RGBA",
+      "nonzeroAlphaBounds": [
+        0,
+        13,
+        720,
+        192
+      ],
+      "fullyTransparentFraction": 0.4466579861111111,
+      "opaqueInkFraction": 0.5028573495370371,
+      "alphaWeightedInkFraction": 0.5288111326706608,
+      "opaqueInkRgb": [
+        25,
+        24,
+        23
+      ]
+    }
+  ],
+  "rasterExportColorResolution": {
+    "from": "currentColor",
+    "to": "#191817",
+    "reason": "MuPDF inherited SVG color is not resolved; one paint token only",
+    "renderInputSha256": "56aeaf7f2c621791aecb5d52f3123b5ebce3a03f4d14330d0350c6841811b4e5",
+    "editableSourceChanged": false,
+    "browserColorAcceptance": "NOT_RUN"
+  },
+  "sourceReview": {
+    "path": "docs/mcr/evidence/art-parade-print-v2/source-review-paper.png",
+    "sha256": "1c79760ebd36014a61bb6fb905099f6b119f83e784ce1bc7ab6f016a207ecf48",
+    "description": "Source render on #e9e1d4 paper for inspection, not an app capture or public asset"
+  },
+  "status": "PASS_SOURCE_ONLY"
+}

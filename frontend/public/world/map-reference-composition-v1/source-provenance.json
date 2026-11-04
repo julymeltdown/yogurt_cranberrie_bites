@@ -3,7 +3,8 @@
   "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
   "version": "map4-reference-composition-v1",
   "sourceBaseCommit": "6bb850755f1b6540a8d013f84106c673c5567069",
-  "previousSourceCandidate": "4618026884c1b9a846fcd2a46567ae26340bb75f",
+  "previousSourceCandidate": "1f2f9ff6bac13467d76c430ff67a26e51b421727",
+  "recipeRevision": "reference-correction-03",
   "sourceInputs": [
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -54,6 +55,32 @@
   "originalCropPins": [
     {
       "themeId": "REVENGE",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 148
+      },
+      "canopyRgbaSha256": "sha256:1de81a17176095cae94137f7e7d7bcfae57c61b8326304c86a55d1ea230c673b"
+    },
+    {
+      "themeId": "REVENGE",
       "frame": "west_hall",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
@@ -74,26 +101,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:cc386ed83d28b0b84cebb650baa857b11e7e9137e38473d57e9429080c668efd"
-    },
-    {
-      "themeId": "REVENGE",
-      "frame": "tree_green",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
-        "bytes": 1176781,
-        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
-      },
-      "sourceRect": {
-        "x": 6,
-        "y": 286,
-        "width": 244,
-        "height": 195
-      },
-      "rgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": "sha256:cc386ed83d28b0b84cebb650baa857b11e7e9137e38473d57e9429080c668efd",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "REVENGE",
@@ -112,7 +122,14 @@
       "rgbaSha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 145
+      },
+      "canopyRgbaSha256": "sha256:1e1ad45e39bbc28ab6661a7aa5595872b8d0ce5c30866432a9d66b108d92f857"
     },
     {
       "themeId": "REVENGE",
@@ -131,7 +148,9 @@
       "rgbaSha256": "sha256:baa9b22ea4d6b6bb0f78c08af09db453a2ff8e0237461808d0bffbf08215547e",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "REVENGE",
@@ -155,7 +174,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:d214b484e3a064bd627a89270064a15e8c3e6bbf645767363cbcc291b0f82bb8"
+      "facadeRgbaSha256": "sha256:d214b484e3a064bd627a89270064a15e8c3e6bbf645767363cbcc291b0f82bb8",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "REVENGE",
@@ -179,7 +200,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:98e9a7232d2e1171ed658bea3e7b994522c0703d0468a981270f2735e615a00d"
+      "facadeRgbaSha256": "sha256:98e9a7232d2e1171ed658bea3e7b994522c0703d0468a981270f2735e615a00d",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "REVENGE",
@@ -198,7 +221,9 @@
       "rgbaSha256": "sha256:711c1a0b9ea2810685e5e4d94ef12b715d1c739d5b6a08dca74d3ff192271e1e",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "REVENGE",
@@ -217,26 +242,9 @@
       "rgbaSha256": "sha256:23c10f40880c32074173bebec1496f823bb17b315408dae0d8fc8ad364c2dcca",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
-    },
-    {
-      "themeId": "REVENGE",
-      "frame": "shrub_bed",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
-        "bytes": 1176781,
-        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
-      },
-      "sourceRect": {
-        "x": 774,
-        "y": 819,
-        "width": 244,
-        "height": 154
-      },
-      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "REVENGE",
@@ -255,7 +263,56 @@
       "rgbaSha256": "sha256:fe8ccfaa8b18a727b65c803c3e78e63a016263dad256782115de7118db530536",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 148
+      },
+      "canopyRgbaSha256": "sha256:c87b1c8218660802ff18a1b662a3fdbbe9599e1748aa12390c498de468905d98"
     },
     {
       "themeId": "PARADE",
@@ -279,26 +336,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:7faacfdd69f0f63e1ccfb745605e22e6945be7134313d59022e566c5016aaf09"
-    },
-    {
-      "themeId": "PARADE",
-      "frame": "tree_green",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
-        "bytes": 1201118,
-        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
-      },
-      "sourceRect": {
-        "x": 6,
-        "y": 286,
-        "width": 244,
-        "height": 195
-      },
-      "rgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": "sha256:7faacfdd69f0f63e1ccfb745605e22e6945be7134313d59022e566c5016aaf09",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "PARADE",
@@ -317,7 +357,14 @@
       "rgbaSha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 145
+      },
+      "canopyRgbaSha256": "sha256:5f3b48650758b05da906d0f98ee47b53484eb4020e2db90436dfd17759b29a57"
     },
     {
       "themeId": "PARADE",
@@ -336,7 +383,9 @@
       "rgbaSha256": "sha256:272672f92436a2a481e1f74dd1154fe0004fbda62ae3a6d083129131bd75a21b",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "PARADE",
@@ -360,7 +409,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:37a46aae78a005703e08883be08b29ced9dea3d3783468656e46dd914caab82b"
+      "facadeRgbaSha256": "sha256:37a46aae78a005703e08883be08b29ced9dea3d3783468656e46dd914caab82b",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "PARADE",
@@ -384,7 +435,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:c6cb6209ae565a133b9f5bda4a8b8901e0f5d85b5a1b4443a7a57676b0443130"
+      "facadeRgbaSha256": "sha256:c6cb6209ae565a133b9f5bda4a8b8901e0f5d85b5a1b4443a7a57676b0443130",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "PARADE",
@@ -403,7 +456,9 @@
       "rgbaSha256": "sha256:635fe197e906e1eca7c7a669e45370a2f53c5caca1b5823373c863e59a5ecfb1",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "PARADE",
@@ -422,26 +477,9 @@
       "rgbaSha256": "sha256:dfb76e1b0ccc57846919ba8f501188d2fe899afb0de3b57b45dfdf33f20ee899",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
-    },
-    {
-      "themeId": "PARADE",
-      "frame": "shrub_bed",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
-        "bytes": 1201118,
-        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
-      },
-      "sourceRect": {
-        "x": 774,
-        "y": 818,
-        "width": 244,
-        "height": 156
-      },
-      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "PARADE",
@@ -460,7 +498,56 @@
       "rgbaSha256": "sha256:2a04d91132e8e16ef29ad2cbc35c613bab542f3acf4e9c3c43ca1b8cbd462a24",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 148
+      },
+      "canopyRgbaSha256": "sha256:b2b4e590e08d749bc021607706563584ab13dda279263787609f85581ba31926"
     },
     {
       "themeId": "DANGER",
@@ -484,26 +571,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:fb92e998bd4df9d3f66362e6e4f9d79decb60287c8bd8e9635ef29f928642d1b"
-    },
-    {
-      "themeId": "DANGER",
-      "frame": "tree_green",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
-        "bytes": 1178440,
-        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
-      },
-      "sourceRect": {
-        "x": 6,
-        "y": 286,
-        "width": 244,
-        "height": 195
-      },
-      "rgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": "sha256:fb92e998bd4df9d3f66362e6e4f9d79decb60287c8bd8e9635ef29f928642d1b",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "DANGER",
@@ -522,7 +592,14 @@
       "rgbaSha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 145
+      },
+      "canopyRgbaSha256": "sha256:33d953a9e6ee73562742af04f46149608b035f65e2be346a097ca819de2b77e3"
     },
     {
       "themeId": "DANGER",
@@ -541,7 +618,9 @@
       "rgbaSha256": "sha256:62a9d99553dc31dd0645ded88048f7fefd98c465a649fab789d2c594e3f6ccc8",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "DANGER",
@@ -565,7 +644,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:9d35c48a1b85b56de55fa0999573ba3d41cade5c2fedce01d315731f4a0f2809"
+      "facadeRgbaSha256": "sha256:9d35c48a1b85b56de55fa0999573ba3d41cade5c2fedce01d315731f4a0f2809",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "DANGER",
@@ -589,7 +670,9 @@
         "width": 244,
         "height": 83
       },
-      "facadeRgbaSha256": "sha256:9028b7a049c429f9454c9ba6c7b9f87d7e5aa11c27923d855dd6846d07b9704f"
+      "facadeRgbaSha256": "sha256:9028b7a049c429f9454c9ba6c7b9f87d7e5aa11c27923d855dd6846d07b9704f",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "DANGER",
@@ -608,7 +691,9 @@
       "rgbaSha256": "sha256:3d153d5963b10d39670ef733106e3c6a33dd145a7388e36219e283d5e1a145a6",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "DANGER",
@@ -627,26 +712,9 @@
       "rgbaSha256": "sha256:2209fc308e88ff452b43fe98785a8e831e1cd6ffe8e9d13b9467439aa61aa7bc",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
-    },
-    {
-      "themeId": "DANGER",
-      "frame": "shrub_bed",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
-        "bytes": 1178440,
-        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
-      },
-      "sourceRect": {
-        "x": 774,
-        "y": 819,
-        "width": 244,
-        "height": 154
-      },
-      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     },
     {
       "themeId": "DANGER",
@@ -665,55 +733,523 @@
       "rgbaSha256": "sha256:b32695b7e05beecc890e857c847b5f1a642732df67eb15e32750ea5f22cd69a4",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
     }
   ],
   "outputs": [
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 508321,
-      "sha256": "sha256:9a9a117a18159c422354c1967957dc0c6f1f82554055a2c88a29aa9f80951b06"
+      "bytes": 677852,
+      "sha256": "sha256:b503fde72ebd8c46181609cd1256809bd58eaf34b24f8811781246abbef675bc"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
-      "bytes": 1702548,
-      "sha256": "sha256:f6bb4a330ce03e550f823840ffe588b69a3c395b890357371032ea6740c2cd84"
+      "bytes": 1834992,
+      "sha256": "sha256:6deee6f006ba023d1e9bf28a284e4a7d3a63fec0948ec1847bd21bfa252c2e66"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 522044,
-      "sha256": "sha256:c14b06dd0763fef26746cb6f7b7b5fcc24d482272251c844a1365a0f4aef5269"
+      "bytes": 697466,
+      "sha256": "sha256:0a25503095d2ed62960e5ff23731a35d87159301e9a3993a12ead671c057ac06"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
-      "bytes": 1734996,
-      "sha256": "sha256:4fecf75fd0a3e6906c1579a708dcbf617f164c3cef885676412c19e3f9bf1f4a"
+      "bytes": 1867440,
+      "sha256": "sha256:dc7447be761db0719746f2aa2afedaff85ead22955c99f70a526a53d71b70117"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 512256,
-      "sha256": "sha256:58b3a9a8b71cd02d044a68fb596bf5cbbf5a383fdbee2eb2706fc8d2dc5527e0"
+      "bytes": 686555,
+      "sha256": "sha256:8cc354d6666e48d183173bc73ed5c459286bdc8e28a11cce3bc2bdb0f852fbd1"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
-      "bytes": 1704760,
-      "sha256": "sha256:ebadbc9286d7f38f42460d1d008ae4f4292e023a9c69c2820ac68788ae4b86d1"
+      "bytes": 1837204,
+      "sha256": "sha256:431a705f83865ddd25b33df4ee4940d055c8a29d8204edbd216c0ea09aec0b8b"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/layout.json",
-      "bytes": 45370,
-      "sha256": "sha256:418af3bf14ee2e8b79eeb2b038f64b48713de17967993aa4e7fa3ce22c8d26b9"
+      "bytes": 101203,
+      "sha256": "sha256:3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792"
     }
   ],
   "recipe": {
     "path": "frontend/public/world/map-reference-composition-v1/build.py",
-    "bytes": 22329,
-    "sha256": "sha256:aae07bd39c9c2d1bfa38321645b815f459b485d5a0cf9951ba7d6545d76447a7"
+    "bytes": 31720,
+    "sha256": "sha256:a58fb7a47e8c9f9f7692041f998961b1e9bb1cd3e4c9abeafa5d0eb61b1f46b4"
   },
   "referenceUse": "DIRECT_VISUAL_INSPECTION_ONLY_NO_REFERENCE_PIXELS_SAMPLED",
   "authorship": "New editable paths/gardens/placement geometry; retained original built-in generated warm atlas crops. No new generation, stock, character or font input.",
-  "transform": "Uniform nearest fit per retained frame; centered X/bottom Y; half-up destination dimensions. Original RGBA unchanged before sampling.",
-  "venueProjection": "Bottom46percent of original frame provides the exact lower facade fragment. Original authored overhead roof polygons replace the omitted upper54percent in Map only; no original atlas pixel is modified.",
+  "transform": "Whole and upper76percent canopy crops retain uniform nearest fit, centered X/bottom Y. Venue bottom46percent source crops retain width and receive explicit 0.80 vertical nearest projection, bottom-aligned; original RGBA unchanged before sampling.",
+  "venueProjection": {
+    "sourceStartFraction": 0.54,
+    "facadeHeightScale": 0.8,
+    "roofEaveFraction": 0.65,
+    "roofCoordinateQuantumPx": 2,
+    "roofTextureCellPx": [
+      8,
+      6
+    ],
+    "policy": "ORIGINAL_MAP_ONLY_PIXEL_HIP_ROOF_NO_WORLD_ATLAS_MUTATION"
+  },
+  "planting": {
+    "parcels": [
+      [
+        [
+          0,
+          106
+        ],
+        [
+          94,
+          110
+        ],
+        [
+          146,
+          174
+        ],
+        [
+          128,
+          280
+        ],
+        [
+          35,
+          310
+        ],
+        [
+          0,
+          256
+        ]
+      ],
+      [
+        [
+          173,
+          70
+        ],
+        [
+          248,
+          91
+        ],
+        [
+          309,
+          115
+        ],
+        [
+          282,
+          193
+        ],
+        [
+          184,
+          218
+        ],
+        [
+          143,
+          160
+        ]
+      ],
+      [
+        [
+          455,
+          74
+        ],
+        [
+          573,
+          70
+        ],
+        [
+          650,
+          133
+        ],
+        [
+          651,
+          256
+        ],
+        [
+          555,
+          253
+        ],
+        [
+          521,
+          167
+        ]
+      ],
+      [
+        [
+          625,
+          383
+        ],
+        [
+          768,
+          390
+        ],
+        [
+          768,
+          545
+        ],
+        [
+          685,
+          573
+        ],
+        [
+          586,
+          510
+        ],
+        [
+          570,
+          442
+        ]
+      ],
+      [
+        [
+          0,
+          400
+        ],
+        [
+          114,
+          387
+        ],
+        [
+          177,
+          448
+        ],
+        [
+          162,
+          566
+        ],
+        [
+          50,
+          592
+        ],
+        [
+          0,
+          536
+        ]
+      ],
+      [
+        [
+          253,
+          402
+        ],
+        [
+          369,
+          416
+        ],
+        [
+          440,
+          452
+        ],
+        [
+          451,
+          526
+        ],
+        [
+          382,
+          585
+        ],
+        [
+          239,
+          558
+        ],
+        [
+          204,
+          468
+        ]
+      ],
+      [
+        [
+          92,
+          580
+        ],
+        [
+          183,
+          594
+        ],
+        [
+          243,
+          635
+        ],
+        [
+          212,
+          682
+        ],
+        [
+          125,
+          659
+        ],
+        [
+          62,
+          622
+        ]
+      ],
+      [
+        [
+          441,
+          575
+        ],
+        [
+          541,
+          563
+        ],
+        [
+          621,
+          600
+        ],
+        [
+          613,
+          729
+        ],
+        [
+          522,
+          776
+        ],
+        [
+          426,
+          731
+        ],
+        [
+          392,
+          640
+        ]
+      ],
+      [
+        [
+          658,
+          741
+        ],
+        [
+          768,
+          730
+        ],
+        [
+          768,
+          863
+        ],
+        [
+          657,
+          894
+        ],
+        [
+          586,
+          851
+        ],
+        [
+          605,
+          795
+        ]
+      ],
+      [
+        [
+          0,
+          789
+        ],
+        [
+          100,
+          783
+        ],
+        [
+          198,
+          837
+        ],
+        [
+          213,
+          955
+        ],
+        [
+          147,
+          1002
+        ],
+        [
+          32,
+          947
+        ],
+        [
+          0,
+          887
+        ]
+      ],
+      [
+        [
+          295,
+          795
+        ],
+        [
+          398,
+          817
+        ],
+        [
+          468,
+          859
+        ],
+        [
+          494,
+          949
+        ],
+        [
+          414,
+          1014
+        ],
+        [
+          287,
+          972
+        ],
+        [
+          252,
+          869
+        ]
+      ],
+      [
+        [
+          541,
+          870
+        ],
+        [
+          628,
+          901
+        ],
+        [
+          703,
+          942
+        ],
+        [
+          714,
+          1035
+        ],
+        [
+          631,
+          1066
+        ],
+        [
+          548,
+          1019
+        ],
+        [
+          526,
+          958
+        ]
+      ],
+      [
+        [
+          180,
+          1008
+        ],
+        [
+          274,
+          1036
+        ],
+        [
+          333,
+          1081
+        ],
+        [
+          292,
+          1150
+        ],
+        [
+          201,
+          1182
+        ],
+        [
+          146,
+          1110
+        ]
+      ],
+      [
+        [
+          310,
+          1154
+        ],
+        [
+          411,
+          1139
+        ],
+        [
+          495,
+          1205
+        ],
+        [
+          502,
+          1296
+        ],
+        [
+          339,
+          1296
+        ],
+        [
+          278,
+          1248
+        ]
+      ],
+      [
+        [
+          606,
+          1157
+        ],
+        [
+          713,
+          1167
+        ],
+        [
+          768,
+          1225
+        ],
+        [
+          768,
+          1296
+        ],
+        [
+          582,
+          1296
+        ],
+        [
+          563,
+          1224
+        ]
+      ]
+    ],
+    "paintedGroundPixelsByTheme": {
+      "REVENGE": 232892,
+      "PARADE": 232892,
+      "DANGER": 232892
+    },
+    "pathClearancePx": 60,
+    "gardenEdgeClearancePx": 30,
+    "pathWidthsPx": [
+      46,
+      40,
+      28
+    ],
+    "gardenBorderPx": 22,
+    "canopySourceEndFraction": 0.76,
+    "canopyPlacements": 123,
+    "excludes": [
+      "six exact label rectangles",
+      "declared path corridors",
+      "declared garden edges"
+    ],
+    "coverageMeaning": "Continuous substrate-mask painted pixels before original canopy/scenery occlusion, not vegetation coverage or reference/runtime similarity"
+  },
   "surfacePaletteByTheme": {
     "REVENGE": {
       "lawn": "#b5c4a5",
@@ -757,6 +1293,11 @@
       "roofLight": "#d5e0c9",
       "roofDark": "#7a968b"
     }
+  },
+  "plantPaletteByTheme": {
+    "REVENGE": "#a4b692",
+    "PARADE": "#9fb68a",
+    "DANGER": "#a2bba8"
   },
   "svgPolicy": "Editable SVG embeds the exact era atlas; Pillow PNG is raster authority. SVG engine parity NOT_RUN.",
   "checks": {

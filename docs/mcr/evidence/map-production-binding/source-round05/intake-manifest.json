@@ -1,0 +1,209 @@
+{
+  "qualifiedSource": "66eacf888541e526da88f68dae7dbebffbcae3d5",
+  "basePriorQualifiedSource": "575726966fd8b52d04e9ba1ec4d8be3129286071",
+  "artSource": "94c47a8b3219efc76a4be9646014cfeaad2f1957",
+  "externalReadOnlyArtCarry": "98b19e0b",
+  "presentationVersion": "map4-reference-composition-v1",
+  "presentationHash": "sha256:4922af8c4761014a2dd672ec52610ab9abd394be0bcc0b29e7780421167600ca",
+  "styleSha256": "sha256:a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305",
+  "ownedSourcePostimages": [
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/composition-overview.test.ts",
+      "bytes": 4930,
+      "sha256": "4a7b217db534327c242a1f3b0a780a636c8811af69686699bfd734a7ab811697"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx",
+      "bytes": 7091,
+      "sha256": "93dfc152d249d1b64f0ea418318d907e28274ef010a22a84f23306ecba8f8ccd"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/contract.test.ts",
+      "bytes": 5158,
+      "sha256": "5ca42486576aea3db187fc78d766d994402786773261dddb5f979db574c86aac"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "bytes": 3503,
+      "sha256": "554796ed0d28fcfd77504ec6f5d1952afc8ea579f58918db692abfccf9155673"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/labels.test.ts",
+      "bytes": 5561,
+      "sha256": "14f6cbc05f0b2089d8afd6ee6afefc0fa2df94023a8cc808fc8e3a172725598a"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "bytes": 7450,
+      "sha256": "aa16c13824ace93b076267af09b347bf800ccf95b04b78f02fdb38a239a49cdd"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+      "bytes": 8354,
+      "sha256": "c3c9eefffe002c65965c42ee3ad3f884e4167d205b98fdd49582f989f91ed39f"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "bytes": 6333,
+      "sha256": "087e6104224713e6c9600cf68d880827a685ada9a1713f4d0c798a23f5cef1ee"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/tsconfig.json",
+      "bytes": 271,
+      "sha256": "de92b0c2d06bc5e8dee256cb8cfa32b1d8218f815e73b11156efd67ccacbfaa6"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/vitest.config.ts",
+      "bytes": 823,
+      "sha256": "8b6664da0f01be6183c8102d1976f5a1e5a4c6d6c23324308ff0cc0489f8762f"
+    },
+    {
+      "path": "frontend/src/app/world-entry/map-presentation-v2/loader.ts",
+      "bytes": 4549,
+      "sha256": "de7b0839c27726a38b7dc3b6e9e1b7603ddc05c13f73cce01e6408838e52593c"
+    },
+    {
+      "path": "frontend/src/app/world-entry/reference-scene-overview.ts",
+      "bytes": 3552,
+      "sha256": "5586a2e9b149b89460441db1e421a1e5ca6c09d30716ec5482916cff57c1b937"
+    },
+    {
+      "path": "frontend/src/features/places/ui/IllustratedMap.tsx",
+      "bytes": 19526,
+      "sha256": "a655570fcaef239ee8ec72b876a881c2b76b03815b0a7fa08125588b7f076112"
+    },
+    {
+      "path": "frontend/src/features/places/ui/reference-scene/map-service-links.tsx",
+      "bytes": 2368,
+      "sha256": "d1c259404fcde6ba0eba4b7e434e232f958809a4041c6872c27936122481a339"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "bytes": 7036,
+      "sha256": "43be2545f73c029b4b34c9f6b9035f675c2098c8953f61551a403ad2078825e6"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/current.ts",
+      "bytes": 358,
+      "sha256": "43c3f1e0270741b6f9be7ea39173a839e59037562799aef7bd87c609522eeaab"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/labels.ts",
+      "bytes": 5609,
+      "sha256": "43b93f873276a99dcc5eeb99230cb83c390827bbefccf6f306afb50db7c9a34d"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "bytes": 101203,
+      "sha256": "3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/model.ts",
+      "bytes": 4269,
+      "sha256": "13020517c600a4b2a7bf30ca2fdfb15f9571d40edea612bae0853f56e9e6b0fa"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/presentation-json.ts",
+      "bytes": 837,
+      "sha256": "58df0486f53cf7c3a1778e7266b5f4dc88a091f585b164a72a4903f63d656939"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "bytes": 445,
+      "sha256": "d42e4f9867662b9ea723b63a833be7221bdcdc29a1e39945cc953f63cd8d4e00"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "bytes": 1132,
+      "sha256": "8b08da2b440295c5454c0677130283d1eba16ec7164c00326b4c66a68fbe6033"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "bytes": 1068,
+      "sha256": "cf5ff7240e4674407ba47f247e8a64eaf91ee8dc59f6ed962b77ab752ad1dfff"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style-source.json",
+      "bytes": 9173,
+      "sha256": "a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style.ts",
+      "bytes": 372,
+      "sha256": "c5f96d6a8616398f2922a0af19285c43cb62d2906a1db8d142af79e050c28c04"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/overview.ts",
+      "bytes": 7735,
+      "sha256": "1c64590a29a57071026f33d0cdd602cb601e4662d25e7476596ab6967beb3474"
+    }
+  ],
+  "externalReadOnlyArtPostimages": [
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "bytes": 8888,
+      "sha256": "a244e90d5f39843487e316ddfef233019da9c49b3f1af1940aeae17011107fb5"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "bytes": 31720,
+      "sha256": "a58fb7a47e8c9f9f7692041f998961b1e9bb1cd3e4c9abeafa5d0eb61b1f46b4"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "bytes": 686555,
+      "sha256": "8cc354d6666e48d183173bc73ed5c459286bdc8e28a11cce3bc2bdb0f852fbd1"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "bytes": 1837204,
+      "sha256": "431a705f83865ddd25b33df4ee4940d055c8a29d8204edbd216c0ea09aec0b8b"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "bytes": 101203,
+      "sha256": "3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "bytes": 697466,
+      "sha256": "0a25503095d2ed62960e5ff23731a35d87159301e9a3993a12ead671c057ac06"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "bytes": 1867440,
+      "sha256": "dc7447be761db0719746f2aa2afedaff85ead22955c99f70a526a53d71b70117"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "bytes": 677852,
+      "sha256": "b503fde72ebd8c46181609cd1256809bd58eaf34b24f8811781246abbef675bc"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "bytes": 1834992,
+      "sha256": "6deee6f006ba023d1e9bf28a284e4a7d3a63fec0948ec1847bd21bfa252c2e66"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "bytes": 35516,
+      "sha256": "95605459793ab950f711791de3094daf644c4114406efa0ed9a86380d163135d"
+    }
+  ],
+  "retainedReadOnlyDependencies": [
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v1/style-source.json",
+      "bytes": 9131,
+      "sha256": "246562200c1379f901e08183bde53e57e03a5152eb0a03c62c4268319e890e62"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+      "bytes": 145012,
+      "sha256": "f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
+    }
+  ],
+  "explicitlyExcludedRootOwnedPath": "frontend/src/app/world-entry/__tests__/map-presentation-v2/native.mjs",
+  "ownerDocumentationPath": "docs/mcr/frontend/map-production-binding.md",
+  "ownerNewEvidencePrefix": "docs/mcr/evidence/map-production-binding/source-round05/",
+  "routing": "Only exact listed consumer/public postimages plus own documentation/evidence. Do not overwrite Root native, CSS, central manifests/locks, history/evidence or unrelated integration source. Public ART is read-only carry, not this consumer authoring scope. New ART03+paint needs Root combined native checks; no automatic live/device/visual qualification."
+}

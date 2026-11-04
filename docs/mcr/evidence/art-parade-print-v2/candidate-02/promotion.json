@@ -1,0 +1,44 @@
+{
+  "task": "ART-PARADE-PRINT-02",
+  "status": "QUALIFIED_SOURCE_SUCCESSOR_NATIVE_NOT_RUN",
+  "previousQualifiedCommit": "b68d40a906ac98f8dd3da86d4136fbbe425be8d9",
+  "previousPublicPins": {
+    "frontend/public/reference-parade-print-v2/parade-print.svg": {
+      "bytes": 5875,
+      "sha256": "341c27a80e3988c9665b1ca8ea7579a750848bc304fd34d0f4ebf6ec039c9c9a"
+    },
+    "frontend/public/reference-parade-print-v2/parade-print-preview.png": {
+      "bytes": 11240,
+      "sha256": "1298e000cfadc385f184d13210d516d7c204ff941c5a0273a0f72f98e270b826"
+    },
+    "frontend/public/reference-parade-print-v2/parade-print@2x.png": {
+      "bytes": 25153,
+      "sha256": "99419c620afb19b8b511d310125c8e03e34f1d94427489c008d9199f1284f1c6"
+    },
+    "frontend/public/reference-parade-print-v2/placement.json": {
+      "bytes": 4904,
+      "sha256": "8ae9dd1926a5f2d169ec981b267fb80547a3374a847b60ce50b079b718421270"
+    }
+  },
+  "qualificationReceipt": "docs/mcr/evidence/art-parade-print-v2/runs/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z.json",
+  "newPublicPins": {
+    "frontend/public/reference-parade-print-v2/parade-print.svg": {
+      "bytes": 5894,
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10"
+    },
+    "frontend/public/reference-parade-print-v2/placement.json": {
+      "bytes": 5617,
+      "sha256": "13c65b667b1e488d2ad125d69fa36ced60c7f736b7b505c0ef2cb3a72232ba2a"
+    },
+    "frontend/public/reference-parade-print-v2/parade-print@2x.png": {
+      "bytes": 21210,
+      "sha256": "27c087442ff29576901765f6dcfed3d0c2ee668044ac9593b733cd6d9b38fe6a"
+    },
+    "frontend/public/reference-parade-print-v2/parade-print-preview.png": {
+      "bytes": 9936,
+      "sha256": "48e3145b5675081376ab5cc1a5cf92b8abe85bc14ee47034cc58a36dbb6c2351"
+    }
+  },
+  "inspection": "Directly viewed retained360x96 transparent preview and720x192 paper-source review. Source fixes address smaller angular varied figures and heavier jagged ground with finer irregular nicks. Full placement/reference acceptance awaits new native consumer images.",
+  "copyPolicy": "Exact source/PNG bytes copied after FULL release; no render/browser/export job and no old evidence mutation. b68 remains immutable in Git; current URLs interface unchanged."
+}

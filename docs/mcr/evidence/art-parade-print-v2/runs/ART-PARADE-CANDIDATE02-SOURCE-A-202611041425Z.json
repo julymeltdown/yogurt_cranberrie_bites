@@ -1,0 +1,285 @@
+{
+  "task": "ART-PARADE-PRINT-02",
+  "offer": "ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z",
+  "acceptance": "Caller explicitly ACCEPTed the actual Resource21d offer; not inferred from script invocation",
+  "acceptedAt": "2026-11-04T14:31:33.281969+00:00",
+  "deadlineUtc": "2026-11-04T14:33:03.281969+00:00",
+  "startedAt": "2026-11-04T14:31:47.187514+00:00",
+  "head": "65b393ff7d1fc7ebe6e6ebc182fdb5b7ac298f5a",
+  "artCommit": "4d297ce650a84d43b67203826c7a10dbfa21696d",
+  "limits": {
+    "offer": "ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z",
+    "head": "65b393ff7d1fc7ebe6e6ebc182fdb5b7ac298f5a",
+    "deadline_utc": "2026-11-04T14:33:03.281969+00:00",
+    "accepted_at": "2026-11-04T14:31:33.281969+00:00",
+    "candidate_source": "docs/mcr/evidence/art-parade-print-v2/candidate-02/parade-print.svg",
+    "candidate_output": "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01",
+    "git_baseline_reserve_bytes": 2097152,
+    "total_seconds": 90,
+    "work_seconds": 60,
+    "cleanup_seconds": 30,
+    "whole_bytes": 8388608,
+    "temp_bytes": 1048576,
+    "durable_bytes": 2097152,
+    "rss_bytes": 536870912,
+    "processes": 4,
+    "log_bytes": 65536,
+    "accept_free_bytes": 27095855104
+  },
+  "carryBytes": 219636,
+  "readonlyReferenceBytes": 3449863,
+  "accounting": "Whole=exclusive owned tree including temp/logs/receipts + counted readonly reference bytes + explicit fixed private Git baseline reserve; durable=owned tree excluding job temp and existing private Git baseline. Shared common Git and foreign checkouts excluded. RSS=sampled guard+descendants including ps; rusage child high-water separately recorded.",
+  "privateGitBaseline": {
+    "path": "/Users/lhs/Desktop/mcr/.git/worktrees/mcr5",
+    "actualBytes": 1648286,
+    "wholeReserveBytes": 2097152,
+    "policy": "Private Git baseline counted only in WHOLE. Shared common Git and foreign checkouts are read-only/excluded; no recursive common-store scan."
+  },
+  "acceptanceFreeBytes": 27095855104,
+  "sourceFreeBytes": 27077685248,
+  "minimumFreeBytes": 27076902912,
+  "peaks": {
+    "wholeBytes": 5887864,
+    "tempBytes": 64428,
+    "durableBytes": 276421,
+    "rssBytes": 91226112,
+    "processCount": 3
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/lhs/.codex/worktrees/12a1/mcr/docs/mcr/evidence/art-parade-print-v2/measure-reference.py",
+        "--report-dir",
+        "/Users/lhs/.codex/worktrees/12a1/mcr/docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc"
+      ],
+      "startedAt": "2026-11-04T14:31:47.188116+00:00",
+      "pid": 36183,
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T14:31:47.494638+00:00"
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/lhs/.codex/worktrees/12a1/mcr/docs/mcr/evidence/art-parade-print-v2/render-assets.py",
+        "--output-dir",
+        "/Users/lhs/.codex/worktrees/12a1/mcr/docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc/exports",
+        "--report-dir",
+        "/Users/lhs/.codex/worktrees/12a1/mcr/docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc",
+        "--source",
+        "/Users/lhs/.codex/worktrees/12a1/mcr/docs/mcr/evidence/art-parade-print-v2/candidate-02/parade-print.svg"
+      ],
+      "startedAt": "2026-11-04T14:31:47.494652+00:00",
+      "pid": 36192,
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T14:31:47.805284+00:00"
+    }
+  ],
+  "commandFiles": {
+    "docs/mcr/evidence/art-parade-print-v2/qualify-source.py": "bb3a36453560b46c40091e29abfb484c81ef5aa927c9361d8677cfdae9b4153a",
+    "docs/mcr/evidence/art-parade-print-v2/measure-reference.py": "79ed20a4440981fc3e19eecd4b64d109c6466892b4a30ee4edafce0ec763b8b6",
+    "docs/mcr/evidence/art-parade-print-v2/render-assets.py": "52ce552a1b33c3affdb74978ecb2015c73c1a45463faced8b49a854b5c59a15e"
+  },
+  "temporary": "docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc",
+  "inputPins": [
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "url": "/reference-parade-print-v2/parade-print.svg",
+      "bytes": 5875,
+      "sha256": "341c27a80e3988c9665b1ca8ea7579a750848bc304fd34d0f4ebf6ec039c9c9a"
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print-preview.png",
+      "url": "/reference-parade-print-v2/parade-print-preview.png",
+      "bytes": 11240,
+      "sha256": "1298e000cfadc385f184d13210d516d7c204ff941c5a0273a0f72f98e270b826"
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print@2x.png",
+      "url": "/reference-parade-print-v2/parade-print@2x.png",
+      "bytes": 25153,
+      "sha256": "99419c620afb19b8b511d310125c8e03e34f1d94427489c008d9199f1284f1c6"
+    },
+    {
+      "id": "canonical",
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "id": "supplied-jpeg",
+      "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+      "bytes": 482737,
+      "size": [
+        1280,
+        853
+      ],
+      "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+    }
+  ],
+  "frozenCarryPins": {
+    "frontend/public/reference-parade-print-v2/parade-print.svg": {
+      "bytes": 5875,
+      "sha256": "341c27a80e3988c9665b1ca8ea7579a750848bc304fd34d0f4ebf6ec039c9c9a"
+    },
+    "frontend/public/reference-parade-print-v2/placement.json": {
+      "bytes": 4904,
+      "sha256": "8ae9dd1926a5f2d169ec981b267fb80547a3374a847b60ce50b079b718421270"
+    },
+    "frontend/public/reference-parade-print-v2/parade-print@2x.png": {
+      "bytes": 25153,
+      "sha256": "99419c620afb19b8b511d310125c8e03e34f1d94427489c008d9199f1284f1c6"
+    },
+    "frontend/public/reference-parade-print-v2/parade-print-preview.png": {
+      "bytes": 11240,
+      "sha256": "1298e000cfadc385f184d13210d516d7c204ff941c5a0273a0f72f98e270b826"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/source-validation.json": {
+      "bytes": 2371,
+      "sha256": "7b1efc412effa6202be90e793ea4840e89e7b03da098f5bd7f92858ae5ac2253"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/native-01-assessment.json": {
+      "bytes": 19821,
+      "sha256": "2e082160fbc61e3e1e5d7b7976bb06c8e1f9095726ae03efd542dfd4d0fa9e47"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/.gitignore": {
+      "bytes": 22,
+      "sha256": "54491f7e57d8f5f056510226a717b1fd5022ebefd392041d42f18af47d38fb0d"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/offer-preflight.md": {
+      "bytes": 4580,
+      "sha256": "ed09354b7b3fe712a18f42e1a05571bd47e3df3cbc36d64da055732b7a9ca866"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/render-assets.py": {
+      "bytes": 5833,
+      "sha256": "52ce552a1b33c3affdb74978ecb2015c73c1a45463faced8b49a854b5c59a15e"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/qualify-source.py": {
+      "bytes": 16487,
+      "sha256": "bb3a36453560b46c40091e29abfb484c81ef5aa927c9361d8677cfdae9b4153a"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/reference-measurements.json": {
+      "bytes": 10338,
+      "sha256": "5a6e3b208ec5b40b44fe5ce79c144d1a41bead7d375e311b91344a78d8a9e57e"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/source-review-paper.png": {
+      "bytes": 25267,
+      "sha256": "1c79760ebd36014a61bb6fb905099f6b119f83e784ce1bc7ab6f016a207ecf48"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/measure-reference.py": {
+      "bytes": 3537,
+      "sha256": "79ed20a4440981fc3e19eecd4b64d109c6466892b4a30ee4edafce0ec763b8b6"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/draft-01/source-validation.json": {
+      "bytes": 2082,
+      "sha256": "06b9a775875bbfff550fc89c3f94f6d12de6ef2fdc23dc19ab5357985dbd3a3a"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/draft-01/parade-print.svg": {
+      "bytes": 4856,
+      "sha256": "6af0ab9ce2c66d1cc2c6c0fe1fbdb6f96ad33e162045806fd8ec79cf734f9fb3"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/draft-01/parade-print@2x.png": {
+      "bytes": 24930,
+      "sha256": "1cab1713ac94aa6991a9e902b269fd44bb1f9b92bcd93e471d75a67303755a6e"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/draft-01/parade-print-preview.png": {
+      "bytes": 11504,
+      "sha256": "bb440364b37a31baaea99b9d49e484a419750f13bd430341418fda55353bca62"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/parade-print.svg": {
+      "bytes": 5894,
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/preflight.md": {
+      "bytes": 3342,
+      "sha256": "bf994343f7590292c89d5392b366d801eeee379af2ff2683d1b33582e5d42a7b"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/README.md": {
+      "bytes": 1055,
+      "sha256": "af8d0118ca58b3b7e7c0793280dfdfffd30673885363a27020837034a795c8f7"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/runs/ART-PARADE-SOURCE-B-202611041349Z.json": {
+      "bytes": 9192,
+      "sha256": "4114e084ca6a7e51fddd2f312f555bec2b4ff364cf81c3fcd2a57d87d81df848"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/runs/ART-PARADE-SOURCE-B-202611041349Z.log": {
+      "bytes": 2653,
+      "sha256": "13beaae85e2eec0fd45f07ed95bc15a9e26942ee960cf66fcb6fdac735ad9e8d"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/runs/ART-PARADE-SOURCE-B-202611041349Z-release-observation.json": {
+      "bytes": 1141,
+      "sha256": "e2832b48a9910a6077a2168aef1a82c2d0e97e59cbd3c3116696a50638926783"
+    },
+    "docs/mcr/art/reference-parade-print-v2.md": {
+      "bytes": 17559,
+      "sha256": "8df0f97f1b0467d28807f617f0bcbccb92b62b1620cfe8d0c32ed1db601cef29"
+    }
+  },
+  "native": "NOT_RUN",
+  "status": "PASS_SOURCE_ONLY",
+  "release": "FULL",
+  "candidateSource": {
+    "path": "docs/mcr/evidence/art-parade-print-v2/candidate-02/parade-print.svg",
+    "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10"
+  },
+  "freshExportsMatchFrozenPins": false,
+  "frozenCarryUnchanged": true,
+  "candidateExportPins": {
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01/parade-print-preview.png": {
+      "bytes": 9936,
+      "sha256": "48e3145b5675081376ab5cc1a5cf92b8abe85bc14ee47034cc58a36dbb6c2351"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01/parade-print@2x.png": {
+      "bytes": 21210,
+      "sha256": "27c087442ff29576901765f6dcfed3d0c2ee668044ac9593b733cd6d9b38fe6a"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01/source-review-paper.png": {
+      "bytes": 20334,
+      "sha256": "25178c4f71e1e6fbbfa0ffcbde515ab79e16a34a1baaddbb290ef4ae22045766"
+    },
+    "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01/source-validation.json": {
+      "bytes": 2610,
+      "sha256": "9292366c7fa38e8d44fe8dfd90f0ea96d40bfe6f0568e81fb4be36e0ef08c95f"
+    }
+  },
+  "candidateDisposition": "SOURCE_ONLY; retained candidate exports, no public source promotion or native claim",
+  "temporaryOutputPins": {
+    "source-validation.json": {
+      "bytes": 2610,
+      "sha256": "9292366c7fa38e8d44fe8dfd90f0ea96d40bfe6f0568e81fb4be36e0ef08c95f"
+    },
+    "reference-measurements.json": {
+      "bytes": 10338,
+      "sha256": "5a6e3b208ec5b40b44fe5ce79c144d1a41bead7d375e311b91344a78d8a9e57e"
+    },
+    "source-review-paper.png": {
+      "bytes": 20334,
+      "sha256": "25178c4f71e1e6fbbfa0ffcbde515ab79e16a34a1baaddbb290ef4ae22045766"
+    },
+    "exports/parade-print@2x.png": {
+      "bytes": 21210,
+      "sha256": "27c087442ff29576901765f6dcfed3d0c2ee668044ac9593b733cd6d9b38fe6a"
+    },
+    "exports/parade-print-preview.png": {
+      "bytes": 9936,
+      "sha256": "48e3145b5675081376ab5cc1a5cf92b8abe85bc14ee47034cc58a36dbb6c2351"
+    }
+  },
+  "cleanupSeconds": 0.000684083002852276,
+  "elapsedSeconds": 0.6219977499858942,
+  "acceptanceToFinishedSeconds": 14.527531862258911,
+  "childMaxRssBytes": 65536000,
+  "liveDescendants": [],
+  "temporaryAbsent": true,
+  "finishedAt": "2026-11-04T14:31:47.837636+00:00",
+  "log": {
+    "path": "docs/mcr/evidence/art-parade-print-v2/runs/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z.log",
+    "bytes": 2695,
+    "sha256": "fbc812f3fe2e2859a47d53e3350940d608f0a26d12ce3db8583da0b2515f9c56"
+  },
+  "exitCode": 0
+}

@@ -1,0 +1,88 @@
+PASS: both references hashed and six inspected regions measured; originals untouched
+{
+  "task": "ART-PARADE-PRINT-02",
+  "scope": "Source/asset validation only; native integration NOT_RUN",
+  "source": {
+    "path": "docs/mcr/evidence/art-parade-print-v2/candidate-02/parade-print.svg",
+    "bytes": 5894,
+    "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10",
+    "viewBox": [
+      0,
+      0,
+      360,
+      96
+    ],
+    "pathCount": 14,
+    "externalReferences": 0,
+    "activeContent": false
+  },
+  "renderer": {
+    "name": "PyMuPDF",
+    "version": "1.27.2.3"
+  },
+  "python": "3.14.3",
+  "outputs": [
+    {
+      "path": "docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc/exports/parade-print-preview.png",
+      "bytes": 9936,
+      "sha256": "48e3145b5675081376ab5cc1a5cf92b8abe85bc14ee47034cc58a36dbb6c2351",
+      "size": [
+        360,
+        96
+      ],
+      "mode": "RGBA",
+      "nonzeroAlphaBounds": [
+        0,
+        13,
+        360,
+        96
+      ],
+      "fullyTransparentFraction": 0.4528935185185185,
+      "opaqueInkFraction": 0.4498553240740741,
+      "alphaWeightedInkFraction": 0.5011891793754539,
+      "opaqueInkRgb": [
+        25,
+        24,
+        23
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc/exports/parade-print@2x.png",
+      "bytes": 21210,
+      "sha256": "27c087442ff29576901765f6dcfed3d0c2ee668044ac9593b733cd6d9b38fe6a",
+      "size": [
+        720,
+        192
+      ],
+      "mode": "RGBA",
+      "nonzeroAlphaBounds": [
+        0,
+        26,
+        720,
+        192
+      ],
+      "fullyTransparentFraction": 0.4745876736111111,
+      "opaqueInkFraction": 0.476244212962963,
+      "alphaWeightedInkFraction": 0.5014487166394336,
+      "opaqueInkRgb": [
+        25,
+        24,
+        23
+      ]
+    }
+  ],
+  "rasterExportColorResolution": {
+    "from": "currentColor",
+    "to": "#191817",
+    "reason": "MuPDF inherited SVG color is not resolved; one paint token only",
+    "renderInputSha256": "7420317b0d0784e1da939c2ecc4ab1f2e6351e586461bc450edaea39ac35effa",
+    "editableSourceChanged": false,
+    "browserColorAcceptance": "NOT_RUN"
+  },
+  "sourceReview": {
+    "path": "docs/mcr/evidence/art-parade-print-v2/.qualification-work/ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z-mxhsvckc/source-review-paper.png",
+    "sha256": "25178c4f71e1e6fbbfa0ffcbde515ab79e16a34a1baaddbb290ef4ae22045766",
+    "description": "Source render on #e9e1d4 paper for inspection, not an app capture or public asset"
+  },
+  "status": "PASS_SOURCE_ONLY"
+}
