@@ -4,8 +4,10 @@ Implementation owner: `BE-CANONICAL-OWNER-AUTHORITY` in isolated
 `be-intro-age-policy`, branch `codex/mcr-be-owner-authority`, base
 `b8b5a939318bf39465fad44663eb272cb71868dc`. The former BE25 branch remains at
 `7ca2f730`; its independently integrated policy work is not repeated here.
-Status: **IN_PROGRESS**. Platform-only library validation is recorded below;
-owner-store and combined producer native/runtime qualification remain **NOT_RUN**.
+Status: **IN_PROGRESS**. SDK library validation is recorded below. Auth/Friend
+owner-store native qualification is **INTEGRATED** in its assigned component;
+joined core consumer qualification is recorded below. Full producer/child/public-
+transport qualification remains **NOT_RUN**.
 
 ## Required behavior
 
@@ -287,3 +289,93 @@ pure-policy-only criteria: delivered commit 3810016a, existing combined 28/28
 qualification and eight matching implementation/test pins satisfy it. That goal
 was completed truthfully. The current unbudgeted canonical-authority goal remains
 active for the outstanding implementation and real-flow qualification above.
+
+
+## Published SDK2 and joined native qualification
+
+SDK2 was delivered non-force as `c4ad561cd813f0f7f1e14f21cb2ee90592e09eea`
+on fresh master parent `bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9`. Exactly nine
+owned SDK/platform/document paths changed; no Auth/Friend seed ancestry, producer
+implementation, shared build, proto or manifest changed in this patch. Remote
+HEAD was checked after publication. The source pins match the final 40-test
+Concert result and earlier 202-test platform result above.
+
+The separately delivered owner-store component is
+`dc70d62049d8e8430c88b9ebfc6f071740020538`, compiled and qualified from identical
+source pins at `d4c604f03b4645b19cf6448526d4ff4577336f96`. Its frozen report was
+inspected: 13 canonical phases pass, with four additional model checks recorded
+by its owner, physical PG16.14 restart changes the postmaster identity, and the
+owned cluster was removed. Actual Auth/Friend main binaries use parity AppConfig
+with strict dedicated workload credentials and mTLS. This is component evidence;
+it does not qualify the root/public HTTP join. See
+[owner-store evidence](owner-authority-stores.md).
+
+The owner-authored joined fixture lives exclusively in
+`backend/services/concert-service/tests/owner_authority.rs` and
+`tests/owner_authority_support/`. Its initial source checkpoints are `7ea8c4e8`,
+`a4247c40` and `0748c7d1`. It consumes the actual signed Gateway parent guard,
+real owner servers and mTLS settlement clients, and root owner's concrete
+`PgScopeLedger`/`ProducerSettlementService`/`PgNativeAbortResolver`. The first
+four cases cover both-owner writer exclusion, all 100 subjects plus actor and
+callback drain, duplicate same-transaction registration followed by actual abort,
+and unexposed partial-acquisition cancellation with durable root recovery.
+Rejecting/counting adapters in the no-effect cases cannot manufacture successful
+child or transaction settlement. The disposable controller refuses changed source
+pins, unfrozen executables and foreign database roots. These source checkpoints were subsequently qualified by the exact four-case run
+below. They do not claim physical consumer process restart, Profile child
+projection, committed producer receipt or browser HTTP delivery.
+
+A separate following SDK increment is agreed for private Gift disclosure.
+`GiftPrivate` will carry only the exact root query, closed purpose PICKUP/CODE,
+native identity/nonce, giveaway/reservation IDs and disclosure validity clip.
+Actual Gift rows/place/policy locks and idempotent native recovery remain the Gift
+producer's responsibility; encrypted dispatch and before-byte validity remain
+root-owned. This capability is not part of SDK2 or its validation results.
+
+
+### Actual joined core result
+
+Status: **INTEGRATED** for the joined core fixture, **IN_PROGRESS** for the full
+canonical-authority objective. Qualified source is clean
+`3e22615eb39a8912c71c7bbcb003930cfc24f373`, consuming published root
+`21d0ac95d20641f99e57bb5c943327f365cbfb37` and owner stores `dc70d620`.
+The source manifest binds 1,235 backend/contract inputs. The real Gateway
+signature/workload guard captures the sealed parent in-process; Concert-to-owner
+and owner-to-root calls use actual mTLS, production guarded servers, actual
+PostgreSQL stores and production root settlement adapters. The joined fixture
+instantiates owner libraries, while their actual main processes have the separate
+owner-store qualification above. This is not a real Gateway HTTP journey.
+
+Commands, both exit 0, used Rust 1.88.0, locked/offline dependencies, two jobs,
+debug 0 and incremental disabled. The existing BACKEND target was exclusively
+allocated, artifacts copied and hashed, then explicitly released before PG use.
+
+```sh
+cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p concert-service --test owner_authority --no-run --message-format=json
+PYTHONDONTWRITEBYTECODE=1 python3 backend/services/concert-service/tests/owner_authority_support/qualify.py --checkpoint "$MCR_FROZEN/checkpoint.json" --pg-bin-dir "$MCR_PG16_BIN" --report "$MCR_FROZEN/native-report-1.json"
+```
+
+Compile passed with fourteen inherited warnings and zero warnings in the owned
+fixture. PostgreSQL was **16.14 (Homebrew)**. Every exact native case ran alone
+and passed; no ignored inventory was counted as execution:
+
+| Case | Actual result | Duration |
+| --- | --- | --- |
+| Both owners exclude writers | Actual password/block writers wait on prepared owner guards; Enroll works behind waiting writers; run-return and serialization retain guards; actual root/owner settlement releases them | 0.45 s |
+| Full page and callback drain | All 100 subjects plus actor fit the original 4.8-second scope; overflow fails; an existing root permit drains after a register-after-seal denial without lock inversion | 0.53 s |
+| Registered transaction | Exact same actual transaction registers twice with one durable identity; real in-progress status retains both exclusions; actual rollback enables a fresh completion retry | 0.29 s |
+| Unexposed cancellation | Real Auth lease is ACTIVE before cancellation; durable no-root-work is recorded; cancellation and expiry do not release exclusion; a fresh owner object verifies root closure over mTLS before recovery | 4.96 s |
+
+All three service migration ledgers matched their actual files. Prepared
+transactions were absent after the cases; marker/inode-owned cluster cleanup
+passed and its directory was absent. This run uses a fresh owner object, not a
+physical consumer-process or PostgreSQL restart. No Profile/local-child
+projection, committed producer receipt, Gift-private authority or browser body
+lifetime is inferred.
+
+Portable proof hashes (full immutable JSON/transcripts and executable retained
+in the private frozen artifact directory):
+
+- Copied executable SHA-256: `b274dcace738082e7a7e7e8bd6ac38514c5e8abec0fe71f1b439667c512139d1`.
+- Canonically sorted source-manifest SHA-256: `9b5ecd7abb337fbb6c33a6b7fd341f048dd99ae5b1a3792822f793f2544e07bf`.
+- Native report SHA-256: `2a26d6f2b747d8f9e4f1579fed6ee39737c02eaae678d6385dc379b8d7e03940`.
