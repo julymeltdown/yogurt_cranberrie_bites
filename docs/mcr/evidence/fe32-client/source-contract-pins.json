@@ -1,0 +1,67 @@
+{
+  "assignmentBase": "1c6b8ebaf9ac054ce7708e01fd60345b6fced376",
+  "contract": "C04 exact mural/operations bytes, core/domain0.1.0 with delivered own-result additions; no input changes",
+  "reference": {
+    "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/327C1E99-C917-4D55-96F7-C83C59A70F90/1-Photo-1.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "comparison": "bottom row fourth WALL; supplied JPEG, not a product texture"
+  },
+  "pins": {
+    "AGENTS.md": {
+      "sha256": "1c44f8c1ec729a8a533991cd877877da8ea93f7c0471d0f828eb2dd0f1ee4948",
+      "lastRevision": "d2a5fbddb781bcd1ac87e830a45405fd3c39c0f8"
+    },
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": {
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+      "lastRevision": "f5b97aca2b002484fc4cbdd7581c723392df10c6"
+    },
+    "docs/mcr/project-assessment.md": {
+      "sha256": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+      "lastRevision": "f5b97aca2b002484fc4cbdd7581c723392df10c6"
+    },
+    "docs/mcr/execution-plan.md": {
+      "sha256": "80f32a8dfa2dd45eb820ef917de2b3ac960137d648cbeed3a20a09ca31ee3d4e",
+      "lastRevision": "1a0fb44237389dadb91edb526185c4aa026366e2"
+    },
+    "contracts/domain/v1/mural.schema.json": {
+      "sha256": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+      "lastRevision": "bff7e53c0638d5462af819bf560468a1f857c88e"
+    },
+    "contracts/domain/v1/operations.json": {
+      "sha256": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+      "lastRevision": "3bdc49c63c9bef57dec8bcf04ed1d1b7af671be1"
+    },
+    "contracts/domain/v1/policy.json": {
+      "sha256": "646f25a81e64ee4f0958c86ea5c46829780bc42dde15c7bf05362f7bd974f294",
+      "lastRevision": "3bdc49c63c9bef57dec8bcf04ed1d1b7af671be1"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "sha256": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+      "lastRevision": "d839bc208dfe21f33b4a72c03868952268c34608"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "lastRevision": "605b858b3baa2bb93ce4a01a6620cd25bc648c14"
+    },
+    "frontend/src/shared/query/privacy.ts": {
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+      "lastRevision": "4207792d7f2ae1b1b6676e724e1712e43d72de43"
+    },
+    "frontend/src/shared/ui/concert-window/index.tsx": {
+      "sha256": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+      "lastRevision": "deb5865dad5e84fe08d045b9ac7392ae29123ed7"
+    },
+    "frontend/src/shared/ui/concert-window/concert-window.css": {
+      "sha256": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+      "lastRevision": "deb5865dad5e84fe08d045b9ac7392ae29123ed7"
+    },
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.tsx": {
+      "sha256": "92e33845c1a9e36166c88cb901b50c6a81f36d2d2f3451c8dc38c300d3cfdecb",
+      "lastRevision": "fe9cbb2d48e7cdb6bdd8ca5ded6298b12e48f31a"
+    },
+    "frontend/src/features/mural/editor/__tests__/reference-target/browser.mjs": {
+      "sha256": "90e47c678bee5620142a2fafc333f5ba2373b0b2c07bc9af553d0a207aba2b08",
+      "lastRevision": "fe9cbb2d48e7cdb6bdd8ca5ded6298b12e48f31a"
+    }
+  }
+}
