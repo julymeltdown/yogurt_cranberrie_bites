@@ -10,9 +10,13 @@ import argparse
 import asyncio
 from contextlib import ExitStack
 import json
+import os
 from pathlib import Path
 import sys
 import socket
+import signal
+import shutil
+import threading
 import time
 from unittest.mock import patch
 from uuid import uuid4
@@ -31,6 +35,8 @@ def main(argv=None):
     parser.add_argument('--publisher-sha256', required=True)
     parser.add_argument('--sessions-report', type=Path, required=True)
     parser.add_argument('--runtime-sql-pins', type=Path, required=True)
+    parser.add_argument('--guardian-pid', type=int, required=True)
+    parser.add_argument('--start-free-bytes', type=int, default=16*1024**3)
     parser.add_argument('--scenario-seconds', type=int, default=60)
     options, forwarded = parser.parse_known_args(argv)
     # Parse only fixed inherited arguments here; its main validates the entire
@@ -39,6 +45,9 @@ def main(argv=None):
         inherited.require(forwarded.count(name) == 1, 'sessions-explicit-input-required')
         return forwarded[forwarded.index(name) + 1]
     inherited.require(1 <= options.scenario_seconds <= 120, 'sessions-bounded-scenario-required')
+    inherited.require(options.start_free_bytes in (12*1024**3,16*1024**3)
+        and options.guardian_pid>1 and options.guardian_pid!=os.getpid(), 'sessions-original-allocation-guard-required')
+    os.kill(options.guardian_pid,0)
     inherited.require(options.sessions_report.is_absolute()
         and options.sessions_report.parent.is_dir()
         and not options.sessions_report.exists(), 'sessions-new-private-report-required')
@@ -61,8 +70,31 @@ def main(argv=None):
             context['guard'] = self
 
         def check(self):
+            os.kill(options.guardian_pid,0)
             super().check()
             sql_pins.verify()
+
+        def start(self):
+            # Future admissions may use the allocator's explicit bounded warm
+            # 12GiB class. The accepted outer lease still owns ALLNEW/reserves,
+            # global workflow/RSS/PID bounds and independent process cleanup.
+            inherited.require(shutil.disk_usage(self.output).free>=options.start_free_bytes,
+                              'sessions-actual-start-free-space')
+            self.phase('native-startup',180)
+            self.check()
+            def watch():
+                while not self.stop_event.wait(.5):
+                    try:self.check()
+                    except BaseException:
+                        self.failure='qualification-resource-or-runtime-sql-bound'
+                        os.kill(os.getpid(),signal.SIGTERM)
+                        return
+            self.thread=threading.Thread(target=watch,daemon=True)
+            self.thread.start()
+
+        def close(self):
+            return {**super().close(),'start_free_floor_bytes':options.start_free_bytes,
+                    'independent_guardian_pid':options.guardian_pid,'runtime_sql_continuously_checked':True}
 
     class RestartPorts(dev.runtime.Ports):
         def reserve(self,name,port=0):
