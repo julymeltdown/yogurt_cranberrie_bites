@@ -64,16 +64,21 @@ def run(args,report):
             if item['prepared_before_teardown']!=expected:raise RuntimeError('exact supported settlement/quarantine mismatch')
             item['normal_all_owner_native_settlement']=case=='FINISHED';item['elapsed_seconds']=round(time.monotonic()-start,3)
         finally:
-            diagnostics=[]
-            for cluster in(source,restored):
-                # Bounded fixed diagnostics only. Private handoff and GIDs never
-                # become portable evidence. Raw logs live only in owned roots.
-                for log in cluster.root.glob('restore-*.log'):
-                    for line in log.read_text(errors='replace').splitlines():
-                        if line.startswith(('Error:','thread ')):diagnostics.append(line[:300])
+            diagnostics=[];cleanup_errors=[]
+            try:
+                for cluster in(source,restored):
+                    for log in cluster.root.glob('restore-*.log'):
+                        for line in log.read_text(errors='replace').splitlines():
+                            if line.startswith(('Error:','thread ')):diagnostics.append(line[:300])
+            except BaseException as error:
+                cleanup_errors.append('diagnostics: '+type(error).__name__)
+            finally:
+                for label,cluster in(('restored',restored),('source',source)):
+                    try:cluster.cleanup()
+                    except BaseException as error:cleanup_errors.append(label+': '+type(error).__name__+': '+str(error))
             if diagnostics:item['fixed_diagnostics']=diagnostics[:6]
-            restored.cleanup();source.cleanup()
-            item['cleanup']={'owned_source_root_absent':not source.root.exists(),'owned_restored_root_absent':not restored.root.exists(),'kind':'EXACT_OWNED_CLUSTER_TEARDOWN','certifies_native_settlement':False}
+            item['cleanup']={'owned_source_root_absent':not source.root.exists(),'owned_restored_root_absent':not restored.root.exists(),'kind':'EXACT_OWNED_CLUSTER_TEARDOWN','certifies_native_settlement':False,'errors':cleanup_errors}
+            if cleanup_errors:raise RuntimeError('owned cleanup failures: '+repr(cleanup_errors))
     verify(args.checkpoint)
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--pg-bin-dir',type=Path,required=True);p.add_argument('--report',type=Path,required=True);a=p.parse_args()

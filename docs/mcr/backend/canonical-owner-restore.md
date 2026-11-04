@@ -40,7 +40,7 @@ identical while recovery runs against its restored copy.
 
 | Case | Actual source state | Required restored outcome |
 | --- | --- | --- |
-| FINISHED | Actual native registration rolled back; real outer body EOF finishes Root; negative Profile Complete retains two children | Rotated keyring retaining the original lets the real composite worker settle both actual prepared children; repeated recovery adds no ACK/effect; all native prepared work reaches zero |
+| FINISHED | Actual native registration rolled back; real outer body EOF finishes Root; negative Profile Complete retains Profile after the earlier Local child has actually settled | Rotated keyring retaining the original lets the real composite worker settle the remaining actual prepared Profile child; repeated recovery adds no ACK/effect; all native prepared work reaches zero |
 | ACTIVE | Actual owner scope and children; inner serialization only, no outer terminal proof | Original expiry and restart do not finish Root; owner recovery and child worker retain all four native fences and both pending children |
 | MISSING_WITNESS | Actual registered transaction commits a test-owned effect once; actual outer EOF finishes Root; native resolver cannot certify a commit witness | Committed SQL remains committed/one effect; authenticated owner-to-root resolver calls return UNKNOWN, owner registrations remain PENDING/fenced; eligible children may settle, and repeated recovery creates no duplicate effect |
 

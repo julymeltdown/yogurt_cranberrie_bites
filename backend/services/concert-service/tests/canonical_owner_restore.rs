@@ -328,11 +328,17 @@ async fn source(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
     let expected_owner = if case == "FINISHED" { 0 } else { 1 };
     assert_eq!(rows["auth"].len(), expected_owner);
     assert_eq!(rows["friend"].len(), expected_owner);
-    assert_eq!(rows["concert"].len(), 1);
+    assert_eq!(
+        rows["concert"].len(),
+        if case == "FINISHED" { 0 } else { 1 }
+    );
     assert_eq!(rows["profile"].len(), 1);
     let saved_intents = intents(&f.concert, &k).await?;
     assert_eq!(saved_intents.len(), 2);
-    assert_eq!(pending(&f.concert, &k).await?, 2);
+    assert_eq!(
+        pending(&f.concert, &k).await?,
+        if case == "FINISHED" { 1 } else { 2 }
+    );
     assert_eq!(
         effects(&f.concert).await?,
         (1, if case == "MISSING_WITNESS" { 1 } else { 0 })
@@ -356,7 +362,61 @@ async fn source(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
     std::future::pending::<()>().await;
     Ok(())
 }
-async fn owner_recover(f: &fixture::Fixture) -> anyhow::Result<(u32, u32)> {
+// Delegation preserves the actual mTLS owner identity and exact persisted
+// registration supplied by production recovery. Only successful typed UNKNOWN
+// responses for that same transaction count; no fake settlement is returned.
+macro_rules! observe_owner {
+    ($name:ident, $service:ident) => {
+        struct $name {
+            inner: $service::concert_authority::RpcSettlementResolver,
+            unknown: Arc<AtomicUsize>,
+        }
+        #[async_trait::async_trait]
+        impl $service::concert_authority::SettlementResolver for $name {
+            fn configured(&self, producer: $service::concert_authority::proto::Producer) -> bool {
+                $service::concert_authority::SettlementResolver::configured(&self.inner, producer)
+            }
+            async fn resolve_scope(
+                &self,
+                query: $service::concert_authority::proto::ResolveScopeRequest,
+                budget: &$service::concert_authority::OperationBudget,
+            ) -> Result<$service::concert_authority::proto::ResolveScopeResponse, Status> {
+                $service::concert_authority::SettlementResolver::resolve_scope(
+                    &self.inner,
+                    query,
+                    budget,
+                )
+                .await
+            }
+            async fn resolve_transaction(
+                &self,
+                query: $service::concert_authority::proto::ResolveTransactionRequest,
+                budget: &$service::concert_authority::OperationBudget,
+            ) -> Result<$service::concert_authority::proto::ResolveTransactionResponse, Status>
+            {
+                let expected = query.transaction.clone();
+                assert!(!query.registration_id.is_empty());
+                let result = $service::concert_authority::SettlementResolver::resolve_transaction(
+                    &self.inner,
+                    query,
+                    budget,
+                )
+                .await?;
+                assert_eq!(result.transaction, expected);
+                if result.status
+                    == $service::concert_authority::proto::TransactionStatus::Unknown as i32
+                    && result.receipt_evidence.is_empty()
+                {
+                    self.unknown.fetch_add(1, Ordering::SeqCst);
+                }
+                Ok(result)
+            }
+        }
+    };
+}
+observe_owner!(ObservedAuth, auth_service);
+observe_owner!(ObservedFriend, friend_service);
+async fn owner_recover(f: &fixture::Fixture, require_unknown: bool) -> anyhow::Result<(u32, u32)> {
     use auth_service::concert_authority::{
         proto as ap, OperationBudget as ABudget, PgOwnerAuthority as Auth,
         RpcSettlementResolver as AuthResolver,
@@ -366,28 +426,49 @@ async fn owner_recover(f: &fixture::Fixture) -> anyhow::Result<(u32, u32)> {
         RpcSettlementResolver as FriendResolver,
     };
     use std::time::Instant;
+    // Observe each actual owner resolver independently after the authenticated
+    // RPC succeeds. Unavailable cannot satisfy this assertion.
+    let auth_unknown = Arc::new(AtomicUsize::new(0));
+    let friend_unknown = Arc::new(AtomicUsize::new(0));
     let a = Auth::new(
         f.auth.clone(),
-        Arc::new(AuthResolver::new(
-            &environment::tls(Workload::Auth)?,
-            "auth-fixture",
-            &[(ap::Producer::Concert, f.root_url.clone())],
-        )?),
+        Arc::new(ObservedAuth {
+            inner: AuthResolver::new(
+                &environment::tls(Workload::Auth)?,
+                "auth-fixture",
+                &[(ap::Producer::Concert, f.root_url.clone())],
+            )?,
+            unknown: auth_unknown.clone(),
+        }),
     )?;
     let b = Friend::new(
         f.friend.clone(),
-        Arc::new(FriendResolver::new(
-            &environment::tls(Workload::Friend)?,
-            "friend-fixture",
-            &[(fp::Producer::Concert, f.root_url.clone())],
-        )?),
+        Arc::new(ObservedFriend {
+            inner: FriendResolver::new(
+                &environment::tls(Workload::Friend)?,
+                "friend-fixture",
+                &[(fp::Producer::Concert, f.root_url.clone())],
+            )?,
+            unknown: friend_unknown.clone(),
+        }),
     )?;
-    Ok((
+    let counts = (
         a.recover(&ABudget::new(Instant::now() + Duration::from_secs(2))?)
             .await?,
         b.recover(&FBudget::new(Instant::now() + Duration::from_secs(2))?)
             .await?,
-    ))
+    );
+    if require_unknown {
+        assert!(
+            auth_unknown.load(Ordering::SeqCst) > 0,
+            "Auth exact transaction RPC must successfully return UNKNOWN"
+        );
+        assert!(
+            friend_unknown.load(Ordering::SeqCst) > 0,
+            "Friend exact transaction RPC must successfully return UNKNOWN"
+        );
+    }
+    Ok(counts)
 }
 async fn restored(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
     let saved = load(run)?;
@@ -441,7 +522,10 @@ async fn restored(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
         .core
         .child_recovery_worker(ChildRecoverySettings::default())?;
     assert_eq!(worker.tick().await?.attempted, 0);
-    assert_eq!(pending(&f.concert, &k).await?, 2);
+    assert_eq!(
+        pending(&f.concert, &k).await?,
+        if case == "FINISHED" { 1 } else { 2 }
+    );
     assert_eq!(prepared_all(&f).await?, saved.prepared);
     let mut missing = f
         .compose(instance, fixture::KeyMode::Missing)?
@@ -449,7 +533,10 @@ async fn restored(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
         .child_recovery_worker(ChildRecoverySettings::default())?;
     let failed = missing.tick().await?;
     assert_eq!(failed.completed, 0);
-    assert_eq!(pending(&f.concert, &k).await?, 2);
+    assert_eq!(
+        pending(&f.concert, &k).await?,
+        if case == "FINISHED" { 1 } else { 2 }
+    );
     assert_eq!(intents(&f.concert, &k).await?, saved.intents);
     assert_eq!(prepared_all(&f).await?, saved.prepared);
     let expected_phase = if case == "ACTIVE" {
@@ -470,9 +557,12 @@ async fn restored(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
     let first = actual.tick().await?;
     if case == "ACTIVE" {
         assert_eq!(first.attempted, 0);
-        assert_eq!(pending(&f.concert, &k).await?, 2);
+        assert_eq!(
+            pending(&f.concert, &k).await?,
+            if case == "FINISHED" { 1 } else { 2 }
+        );
     } else {
-        assert_eq!(first.completed, 2);
+        assert_eq!(first.completed, if case == "FINISHED" { 1 } else { 2 });
         assert_eq!(pending(&f.concert, &k).await?, 0);
     }
     for _ in 0..2 {
@@ -481,7 +571,7 @@ async fn restored(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
             0,
             "idempotent drain must not re-ACK or duplicate effects"
         );
-        assert_eq!(owner_recover(&f).await?, (0, 0));
+        assert_eq!(owner_recover(&f, case == "MISSING_WITNESS").await?, (0, 0));
         assert_eq!(effects(&f.concert).await?, expected_effect);
     }
     let after = prepared_all(&f).await?;
