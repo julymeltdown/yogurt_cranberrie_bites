@@ -111,6 +111,14 @@ pub(super) async fn budget(
     if millis == 0 {
         return Err(unavailable());
     }
+    // The pair reservation writes metadata, so its deferred PREPARE guard must
+    // receive the original verified authority deadline too. Reuse the owning
+    // policy helper: repeated calls can only shorten an existing deadline.
+    let until = chrono::DateTime::from_timestamp_micros(deadline.expires_micros())
+        .ok_or_else(unavailable)?;
+    crate::relationship::pin_deadline(&mut **tx, until)
+        .await
+        .map_err(|_| unavailable())?;
     sqlx::query("select set_config('statement_timeout',$1,true)")
         .bind(millis.to_string())
         .execute(&mut **tx)
