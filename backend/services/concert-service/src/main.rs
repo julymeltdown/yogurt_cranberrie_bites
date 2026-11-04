@@ -38,6 +38,12 @@ async fn main() -> anyhow::Result<()> {
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
     let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
     let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
+    let deletion_composition =
+        config::deletion_composition::DeletionComposition::load(runtime.as_ref())?;
+    // Domain constructors are connected as their actual source inputs arrive.
+    // The real core-only coordinator remains INCOMPLETE, never available/complete.
+    let deletion_private_data =
+        config::private_data_composition::PrivateDataComposition::awaiting_domain_providers();
     anyhow::ensure!(
         world_settings.is_none() || runtime.is_some(),
         "World requires the guarded Concert bootstrap listener"
@@ -220,6 +226,13 @@ async fn main() -> anyhow::Result<()> {
     } else {
         (None, None)
     };
+    let (world_deletion_tx, world_deletion_rx) =
+        if deletion_composition.managed() && world_settings.is_some() {
+            let (tx, rx) = tokio::sync::oneshot::channel();
+            (Some(tx), Some(rx))
+        } else {
+            (None, None)
+        };
     let _application = config::build_application(pool.clone());
     let health = health::router(health::readiness(pool.clone()));
     let listener = tokio::net::TcpListener::bind(config.metrics_addr)
@@ -242,6 +255,13 @@ async fn main() -> anyhow::Result<()> {
                     _ = platform::shutdown::global().cancelled() => return Ok(()),
                 }
             }
+            let deletion_world = match world_deletion_rx {
+                Some(receiver) => tokio::select! {
+                    result = receiver => Some(result.map_err(|_| anyhow::anyhow!("Serving World deletion handle unavailable"))?),
+                    _ = platform::shutdown::global().cancelled() => return Ok(()),
+                },
+                None => None,
+            };
             match (runtime, bootstrap) {
                 (Some(runtime), Some(release)) => {
                     let mut server = tonic::transport::Server::builder()
@@ -249,6 +269,10 @@ async fn main() -> anyhow::Result<()> {
                         .layer(platform::correlation::CorrelationLayer)
                         .layer(platform::call_deadline::CallDeadlineLayer)
                         .layer(platform::trace_context::TraceContextLayer);
+                    let account_deletion = deletion_composition.compose(
+                        grpc_pool.clone(), runtime.tls.as_ref(), deletion_world,
+                        deletion_sharing_publisher, deletion_private_data,
+                    )?;
                     if let Some(tls) = runtime.tls {
                         server = server.tls_config(tls.server_config()?)?;
                     }
@@ -352,6 +376,7 @@ async fn main() -> anyhow::Result<()> {
                     server
                         .add_service(bootstrap)
                         .add_service(world)
+                        .add_optional_service(account_deletion)
                         .add_optional_service(participant)
                         .add_optional_service(decision)
                         .add_optional_service(settlement)
@@ -372,13 +397,14 @@ async fn main() -> anyhow::Result<()> {
         let world = async move {
             match (world_settings, world_owners, world_ready_tx) {
                 (Some(settings), Some(owners), Some(ready)) => {
-                    match (world_transport, world_local) {
-                        (Some(transport), Some(local)) => settings
-                            .serve_with_ready_and_social(world_pool, owners, ready, transport, local)
-                            .await,
-                        (None, None) => settings.serve_with_ready(world_pool, owners, ready).await,
+                    let (transport, local) = match (world_transport, world_local) {
+                        (Some(transport), Some(local)) => (transport, Some(local)),
+                        (None, None) => (concert_service::adapters::r#in::world_ws::SocketTransport::default(), None),
                         _ => anyhow::bail!("World Social policy composition is incomplete"),
-                    }
+                    };
+                    settings.serve_with_ready_and_owners(
+                        world_pool, owners, ready, transport, local, world_deletion_tx,
+                    ).await
                 }
                 _ => platform::shutdown::idle().await,
             }

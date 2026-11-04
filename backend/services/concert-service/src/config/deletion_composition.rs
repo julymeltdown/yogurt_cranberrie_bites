@@ -5,6 +5,7 @@ use super::{
         AuthDeletionCallers, LiveDeletionOwners,
     },
     bootstrap_runtime::BootstrapRuntime,
+    private_data_composition::PrivateDataComposition,
     world_runtime::WorldDeletionHandle,
 };
 use crate::social_live::invalidation::SocialPolicyPublisher;
@@ -68,12 +69,13 @@ impl DeletionComposition {
         tls: Option<&platform::grpc_tls::TlsMaterial>,
         world: Option<WorldDeletionHandle>,
         sharing_publisher: Option<Arc<dyn SocialPolicyPublisher>>,
+        private_data: PrivateDataComposition,
     ) -> anyhow::Result<Option<AccountDeletionService>> {
         if !self.managed() {
             return Ok(None);
         }
         let worlds = world.as_ref().map(|world| vec![world.serving_world()]);
-        AccountDeletionRuntime::compose(
+        AccountDeletionRuntime::compose_with_private_data(
             self.mode,
             pool,
             self.auth_endpoint
@@ -87,7 +89,9 @@ impl DeletionComposition {
             LiveDeletionOwners {
                 worlds,
                 sharing_publisher,
+                private_data: None,
             },
+            move |pool, authority| private_data.compose(pool, authority).map(Some),
         )?
         .map(AccountDeletionRuntime::service)
         .transpose()

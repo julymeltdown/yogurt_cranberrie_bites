@@ -185,3 +185,4 @@ pub mod world_runtime;
 pub mod event_cleanup;
 
 pub mod deletion_composition;
+pub mod private_data_composition;

@@ -1,6 +1,7 @@
 //! Composition only. Root mounts the service on its existing mTLS listener and
 //! supplies the actual serving World/socket and Sharing publication handles.
 use crate::{
+    account_private_data::PrivateDataAggregateCoordinator,
     adapters::{
         out::relationship_authority::deletion_source::AuthDeletionSource,
         r#in::{
@@ -65,12 +66,13 @@ pub struct ServingWorld<'a> {
     pub bridge: Arc<AdmissionBridge>,
     pub sockets: &'a WorldSocketState,
 }
-/// Missing dependencies remain unavailable. There is intentionally no PrivateData
-/// field: core completion does not qualify the aggregate or its external owners.
+/// Missing dependencies remain unavailable. A configured PrivateData coordinator
+/// still refuses completion until its real category owners are all terminal.
 #[derive(Default)]
 pub struct LiveDeletionOwners<'a> {
     pub worlds: Option<Vec<ServingWorld<'a>>>,
     pub sharing_publisher: Option<Arc<dyn SocialPolicyPublisher>>,
+    pub private_data: Option<Arc<PrivateDataAggregateCoordinator>>,
 }
 
 /// An Auth-only registry built from the canonical configured credentials, with
@@ -112,6 +114,37 @@ impl AccountDeletionRuntime {
         callers: AuthDeletionCallers,
         live: LiveDeletionOwners<'_>,
     ) -> anyhow::Result<Option<Self>> {
+        Self::compose_with_private_data(
+            settings,
+            pool,
+            auth_endpoint,
+            tls,
+            concert_credential,
+            callers,
+            live,
+            |_, _| Ok(None),
+        )
+    }
+
+    /// The single composition owner may construct the real coordinator using
+    /// this SAME pool and canonical Auth source. The closure never runs in off
+    /// mode, and cannot replace an already supplied coordinator.
+    pub fn compose_with_private_data<F>(
+        settings: AccountDeletionSettings,
+        pool: PgPool,
+        auth_endpoint: &str,
+        tls: Option<&TlsMaterial>,
+        concert_credential: &str,
+        callers: AuthDeletionCallers,
+        live: LiveDeletionOwners<'_>,
+        private_data: F,
+    ) -> anyhow::Result<Option<Self>>
+    where
+        F: FnOnce(
+            PgPool,
+            Arc<dyn DeletionAuthority>,
+        ) -> anyhow::Result<Option<Arc<PrivateDataAggregateCoordinator>>>,
+    {
         if settings == AccountDeletionSettings::Off {
             return Ok(None);
         }
@@ -134,6 +167,15 @@ impl AccountDeletionRuntime {
             tls,
             concert_credential,
         )?);
+        let constructed = private_data(pool.clone(), authority.clone())?;
+        anyhow::ensure!(
+            live.private_data.is_none() || constructed.is_none(),
+            "PrivateData coordinator supplied twice"
+        );
+        let private_data = live
+            .private_data
+            .or(constructed)
+            .map(|owner| Arc::new(PrivateDataAdapter(owner)) as Arc<dyn DeletionOwner>);
         let tickets: Arc<dyn DeletionOwner> =
             Arc::new(TicketDeletion::new(pool.clone(), authority.clone()));
         let sessions = match live.worlds {
@@ -161,7 +203,7 @@ impl AccountDeletionRuntime {
                 tickets: Some(tickets),
                 sessions,
                 sharing,
-                private_data: None,
+                private_data,
             },
             authority,
             callers: callers.0,
@@ -169,6 +211,26 @@ impl AccountDeletionRuntime {
     }
     pub fn service(self) -> anyhow::Result<AccountDeletionService> {
         deletion_rpc::guarded_server(self.owners, self.authority, self.callers)
+    }
+}
+struct PrivateDataAdapter(Arc<PrivateDataAggregateCoordinator>);
+#[async_trait::async_trait]
+impl DeletionOwner for PrivateDataAdapter {
+    async fn apply(
+        &self,
+        command: WorldDeletionCommand,
+        original_deadline: tokio::time::Instant,
+    ) -> Result<DeletionAcknowledgement, DeletionFailure> {
+        crate::world::account_deletion::check_deadline(original_deadline)?;
+        let receipt = self.0.apply(command.clone(), original_deadline).await?;
+        crate::world::account_deletion::check_deadline(original_deadline)?;
+        if !receipt.verifies(&command) {
+            return Err(DeletionFailure::Unavailable);
+        }
+        Ok(DeletionAcknowledgement {
+            command,
+            fence_revision: receipt.fence_revision,
+        })
     }
 }
 struct SessionAdapter(SessionDeletion);

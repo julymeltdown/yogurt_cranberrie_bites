@@ -382,7 +382,8 @@ async fn actual_production_worker_factory_commit_restart_and_non_ack() -> anyhow
             AuthDeletionCallers::from_credentials(AUTH, None)?,
             LiveDeletionOwners {
                 worlds: Some(Vec::new()),
-                sharing_publisher: None
+                sharing_publisher: None,
+                private_data: None,
             }
         )
         .is_err());
