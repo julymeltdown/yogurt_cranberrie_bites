@@ -400,7 +400,7 @@ unresized component captures, source pins, lifecycle cleanup and sampled process
 tree RSS; mutation requests are counted and rejected. It reuses the unchanged
 component/Phaser fixture and does not replay the full art matrix.
 
-Native reference qualification is currently NOT_RUN. A new sequential slot was
+The source checkpoint above preceded native qualification below. A new sequential slot was
 requested directly from BackendSL/World. The initial conservative 256 MiB
 temporary budget was corrected before any run to a 192 MiB whole-workflow
 estimate, within the coordinator's 0.2 GiB cap, with 1.5 GiB estimated process-tree
@@ -412,6 +412,53 @@ every path; service workers are blocked for this bounded check. These are
 proposed budgets, not observed peaks; actual bytes/RSS will be recorded. No run
 has started; no prior slot is inherited. An actually
 runnable expiring IN01 consumer takes priority, and no live holder is preempted.
-The portrait source is committed for qualification, with publication held until
-that concrete component check and visual readback finish. Actual public Root,
+The source was committed for qualification, with publication held until
+that concrete component check and visual readback finished. Actual public Root,
 service save/reload, live multiuser and device proof remain separate obligations.
+
+
+## Portrait bounded native qualification
+
+BackendSL released `MOTION-PORTRAIT-202611040456Z` after the prior holder's actual
+cleanup. An initial run failed before fixture initialization because the new
+harness dereferenced `window.motionJourney` too early. Its exit-1 report and
+startup image are retained, with zero remaining browser/process/cache verified.
+Only the harness startup wait changed in `14d61ee7`; the three product blobs
+remain exactly those of source `bae99bb7`, already covered by 290 passing tests,
+782 application TS files with zero diagnostics and scoped lint.
+
+The explicitly allocated retry `MOTION-PORTRAIT-RETRY-202611040501Z` ran all five
+registered cases and exited 0. It proved square contained canvas sizes of
+237/267/307px at viewport widths 360/390/430, 197px at 320×554, and 267px at
+390×420. Every drawing buffer remains 64×64; preset/option/Profile views remain
+64/56/72px. All five categories and visible controls meet 44px minimums. Pose and
+walk frames, draft reset/Save enablement, Save focus and footer reachability after
+scroll, one game, no live world socket, two artwork requests and complete owned
+cleanup passed. The all-page request guard observed zero HTTP write attempts;
+this readonly fixture performs no actual service save.
+
+The owner viewed saved 390, narrow320,430 and reduced-height390 component PNGs at
+native size alongside the unchanged reference comparison. The canvas now uses
+its available figure width, improving portrait hierarchy without changing the
+selected artwork, supported categories or fixed-size callers. At390 the measured
+DOM panel is350×683.984375; its actual unresized element PNG is350×685 due to pixel
+rounding. At430 the DOM panel is390×723.984375 and legitimately needs scrolling.
+Reduced-height actions remained reachable; these are component captures, not
+public390×698 Root captures, device proof or whole-screen fidelity acceptance.
+
+The actual sampled whole-workflow peak was29,560,832B (28.191MiB), including the
+controlled Chrome profile/artifacts, Vite temporary cache and durable output.
+Sampled aggregate process-tree RSS peaked at2,222,571,520B (2.070GiB), slightly
+above the estimated2GiB; it is not a whole-machine or physical incremental memory
+measurement. Durable output including the retained failure totaled329,608B before
+this handoff document. Final checks found zero validation browsers, portrait
+workflows or owned temporary cache directories and38.301GiB free. BackendSL/World
+received the actual release so the queued replay could proceed. No more browser
+or build was launched.
+
+`portrait-responsive/handoff.json` pins the exact source, commands, exit code,
+geometry, PNG dimensions/hashes, first failure, measured resources and limits.
+This closes the bounded available-width portrait correction for integration;
+actual public Root/runtime, service persistence, live multiuser, device and full
+AR03 acceptance remain unfinished. Goal metadata was checked and remains BLOCKED;
+no goal reset or false completion was performed.

@@ -1,0 +1,210 @@
+{
+  "status": "MOCK_READY_PORTRAIT_COMPONENT_REFERENCE_CORRECTION",
+  "recordedAt": "2026-11-04T05:05:33.965667+00:00",
+  "parent": "14d61ee7d179732d3fd582de0876de664613ff79",
+  "originalGoal": "AR03 unchanged and unfinished; get_goal returned BLOCKED, no reset/completion",
+  "allocation": {
+    "ownershipCommit": "9ab53082",
+    "resource": "MOTION-PORTRAIT-RETRY-202611040501Z",
+    "released": true,
+    "freshFreeBytes": 41132945408,
+    "otherValidationBrowserAndWorkflowCount": 0,
+    "worktree": "assigned fe-ref-map; same writer/branch"
+  },
+  "sourceCommits": [
+    "43075968d8f31150e5bd4d9f61268f3b58ec5b3d",
+    "bae99bb73e26fe5bb6970b8b6ec617c1aeb865e5",
+    "0a1107be8a07b3a6abfd0c8ab7b852250b4297e1",
+    "5871334d5029e6bf7cca3617d44bc21b1bce137e",
+    "14d61ee7d179732d3fd582de0876de664613ff79"
+  ],
+  "sourcePins": {
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "975ffb0031341a61ca538125178396f13247213427d183ae9c2c13827b957423",
+    "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "7a6aa970cdc85130d836e0a21a6048ac9e6f51e4e2634854127f91d0744d8b02",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "bb244fc1d9cc6727a2bf3ecf1679950a3c75007104000599b62bdb10ba74345c",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/portrait-native.mjs": "06db1e533f06c8c1944973f4cd655e2855899c196cbdbf3339fdf71d02849821"
+  },
+  "productCodeUnchangedSinceSourceChecks": "All three product Git blobs match bae99bb7 exactly",
+  "sourceChecks": {
+    "tests": 290,
+    "suites": 11,
+    "applicationTsFiles": 782,
+    "typeDiagnostics": 0,
+    "lintExit": 0,
+    "harnessLintSyntaxDiffExit": 0,
+    "evidence": "../portrait-source-checks.json"
+  },
+  "native": {
+    "commandSanitized": "MCR_FRONTEND_DEPENDENCIES=<retained-frontend> MCR_PORTRAIT_CAPTURE_SLOT=MOTION-PORTRAIT-RETRY-202611040501Z <node24> frontend/src/app/character-entry/__tests__/motion-adoption/portrait-native.mjs",
+    "exit": 0,
+    "sourceCommit": "14d61ee7d179732d3fd582de0876de664613ff79",
+    "cases": 5,
+    "viewportCases": [
+      [
+        360,
+        698
+      ],
+      [
+        390,
+        698
+      ],
+      [
+        430,
+        698
+      ],
+      [
+        320,
+        554
+      ],
+      [
+        390,
+        420
+      ]
+    ],
+    "displayedSquareCanvasSizes": [
+      237,
+      267,
+      307,
+      197,
+      267
+    ],
+    "intrinsicBuffer": [
+      64,
+      64
+    ],
+    "fixedPresetOptionProfileSizes": [
+      64,
+      56,
+      72
+    ],
+    "allVisibleControlMinimum": [
+      44,
+      44
+    ],
+    "pageHttpWriteAttempts": 0,
+    "pageErrors": [],
+    "qualification": "TEST_ONLY actual MotionEditor/Phaser component geometry, not production Root/service/device admission"
+  },
+  "observedResourceUse": {
+    "peakWholeWorkflowBytes": 29560832,
+    "wholeWorkflowBudgetBytes": 201326592,
+    "watchdogStopBytes": 134217728,
+    "peakAggregateProcessTreeRssBytes": 2222571520,
+    "rssEstimateBytes": 2147483648,
+    "note": "RSS slightly exceeded the estimate; observed storage remained below the cap. These are sampled process-tree/directory peaks, not an OS-enforced quota or whole-machine memory measurement.",
+    "durableOutputBytesIncludingPreservedFailure": 329608,
+    "postRunHeadlessValidationChrome": 0,
+    "postRunPortraitWorkflows": 0,
+    "postRunOwnedTemporaryCaches": 0,
+    "postRunFreeGiB": 38.301
+  },
+  "referenceReview": {
+    "unchangedTargetSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "qaPacketCommits": [
+      "e8dac180",
+      "0f4b030f"
+    ],
+    "visuallyInspectedNativeCaptures": [
+      "component-390x698.png",
+      "component-320x554.png",
+      "component-430x698.png",
+      "component-390x420.png"
+    ],
+    "result": "Available-width portrait hierarchy improved with unchanged selected artwork and real five-layer rail. No stretched comparison or source-art replacement.",
+    "actual390DomPanel": {
+      "x": 20,
+      "y": 378.875,
+      "width": 350,
+      "height": 683.984375
+    },
+    "actual390PngSize": [
+      350,
+      685
+    ],
+    "scroll": "The 430px case is about724px tall and legitimately scrolls; reduced-height Save focus and44px reachability passed. Element captures are not full public Root viewports."
+  },
+  "firstAttempt": {
+    "source": "5871334d",
+    "exit": 1,
+    "issue": "Harness read the async fixture before motionJourney was exposed",
+    "fix": "Optional startup read plus bounded ready-state poll only",
+    "retainedEvidence": [
+      "attempt-1.json",
+      "attempt-1-startup.png"
+    ],
+    "cleanupVerified": true
+  },
+  "preserved": [
+    "64x64 source-frame extraction/UV/smoothing",
+    "acquire/shared cache/lifecycle/one scene clock",
+    "five categories and draft/reset/save/pose/mode/error/loading logic",
+    "approved art/originals and all source/privacy/eligibility guards"
+  ],
+  "notProven": [
+    "positive production Root/runtime admission",
+    "actual service save/reload/reconciliation",
+    "real live multiuser World",
+    "physical device/keyboard/safe area",
+    "whole-screen visual fidelity acceptance",
+    "full AR03 completion"
+  ],
+  "artifacts": {
+    "attempt-1-startup.png": {
+      "sha256": "da53229e2aac88e84c751e3c834bd2d6ef3990d33783991fb78071b0ad18e140",
+      "bytes": 7164,
+      "pngDimensions": [
+        360,
+        698
+      ]
+    },
+    "attempt-1.json": {
+      "sha256": "c5def4a01916d7dc87194e477f9314f7bc1864a4c65d51cf21b9672967eb7a0b",
+      "bytes": 2269
+    },
+    "component-320x554.png": {
+      "sha256": "ebf7ff1ecda55c93d4229dc2dfd43e4f5635729b537eb8af19cbcf199407213b",
+      "bytes": 53814,
+      "pngDimensions": [
+        280,
+        615
+      ]
+    },
+    "component-360x698.png": {
+      "sha256": "101d4cb393c3be726f9768da61b0fe40bc3a6929b7ee4d6ce86e067bc6196ab3",
+      "bytes": 56582,
+      "pngDimensions": [
+        320,
+        655
+      ]
+    },
+    "component-390x420.png": {
+      "sha256": "9cdef7356d3c79785d1c0d932f5672f7e0556c21311d198ded5697d96c44d8d7",
+      "bytes": 58670,
+      "pngDimensions": [
+        350,
+        685
+      ]
+    },
+    "component-390x698.png": {
+      "sha256": "c4cb177d72ae8ebe9dcc57ef28a5880abb7171aaa88429b275db847d6a5d7af2",
+      "bytes": 58703,
+      "pngDimensions": [
+        350,
+        685
+      ]
+    },
+    "component-430x698.png": {
+      "sha256": "e8a062534887bf7f1e31c8e59c22ef667b7f786d35739936908b9f8a44d31a1b",
+      "bytes": 60746,
+      "pngDimensions": [
+        390,
+        725
+      ]
+    },
+    "report.json": {
+      "sha256": "6bcc367f524787f0501d051f37033df5306432af828ef2756e70cfd1ef95727c",
+      "bytes": 31660
+    }
+  },
+  "delivery": "Designated Root153 serial integration only; owner publication/blob verification follows actual receipt."
+}
