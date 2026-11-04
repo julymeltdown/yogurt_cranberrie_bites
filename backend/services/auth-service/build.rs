@@ -3,6 +3,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let protos = vec![
         relationship,
         contracts_build::proto_root().join("authority/v1/lease.proto"),
+        contracts_build::proto_root().join("authority/v1/deletion_source.proto"),
         contracts_build::source_auth_proto(),
         contracts_build::source_profile_proto(),
         contracts_build::source_friend_proto(),

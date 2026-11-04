@@ -7,6 +7,7 @@ use std::{fmt, time::Duration};
 use uuid::Uuid;
 pub mod grpc;
 pub mod guarded;
+pub mod deletion_source;
 pub mod invalidation;
 pub(crate) mod world_auth;
 pub(crate) mod world_projection;
