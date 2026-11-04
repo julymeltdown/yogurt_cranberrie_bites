@@ -66,6 +66,10 @@ certify a different candidate. Verification requires the explicit original SHA,
 its Git tree/source blob and SHA-256 pins, unchanged artifacts/logs and a complete
 nonempty gate inventory. It does not treat ancestor status as candidate equality.
 The receipt is transparent local execution evidence, not a signed attestation.
+Large Vitest JSON is stored losslessly as `vitest.json.gz`. Artifact pins retain
+the original uncompressed byte digest; the verifier decompresses a JSON archive
+when its original file is absent, then verifies that digest. Archiving historical
+output preserves its original receipt and all raw report bytes.
 
 The runner installs nothing and first requires exact installed/candidate pnpm
 lock equality and Node engine match. It records resolved direct package versions

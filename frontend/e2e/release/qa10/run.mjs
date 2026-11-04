@@ -4,6 +4,7 @@ import { execFileSync, spawn } from 'node:child_process'
 import { resolve, relative, join, dirname, isAbsolute } from 'node:path'
 import { tmpdir } from 'node:os'
 import { pathToFileURL } from 'node:url'
+import { gzipSync, gunzipSync } from 'node:zlib'
 import { SCHEMA, assertCandidate, digest, inventory, nodeCounts, safePath, validateReceipt, vitestCounts } from './model.mjs'
 
 const root = resolve(import.meta.dirname, '../../../..'), frontend = join(root, 'frontend')
@@ -11,6 +12,13 @@ const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8'
 const readJSON = async path => JSON.parse(await readFile(path, 'utf8'))
 const worker = 'e2e/release/qa10/worker.mjs', node = process.execPath
 const option = name => { const i = process.argv.indexOf(name); return i < 0 ? null : process.argv[i + 1] }
+
+async function evidenceBytes(path) {
+  try { return await readFile(path) } catch (error) {
+    if (error.code !== 'ENOENT' || !path.endsWith('.json')) throw error
+    return gunzipSync(await readFile(path + '.gz'))
+  }
+}
 
 async function candidateState(expected) {
   const state = { commit: git('rev-parse', 'HEAD'), tree: git('rev-parse', 'HEAD^{tree}'), dirty: false }
@@ -45,7 +53,7 @@ async function verify(receipt, expected) {
   const checks = validateReceipt(report, expected)
   assert.equal(git('rev-parse', `${expected}^{tree}`), report.candidate.tree, 'Receipt tree is not the named Git candidate')
   for (const [path, hash] of Object.entries(report.artifact_pins)) {
-    assert.ok(safePath(path)); assert.equal(digest(await readFile(join(folder, path))), hash, `Artifact changed: ${path}`)
+    assert.ok(safePath(path)); assert.equal(digest(await evidenceBytes(join(folder, path))), hash, `Artifact changed: ${path}`)
   }
   for (const c of report.commands) assert.equal(digest(await readFile(join(folder, c.log))), c.report_hash, `Command log changed: ${c.id}`)
   for (const [path, pin] of Object.entries({ ...report.source_pins, ...report.contract_pins })) {
@@ -135,7 +143,14 @@ async function run(expected, output, python) {
     await rm(temporary, { recursive: true, force: true })
     report.finished_at = new Date().toISOString()
     for (const file of artifacts) {
-      try { report.artifact_pins[file] = digest(await readFile(join(output, file))) } catch { report.unsupported.push({ criterion: file, status: 'NOT_RUN', reason: 'Expected evidence file was not produced' }) }
+      try {
+        const bytes = await readFile(join(output, file))
+        report.artifact_pins[file] = digest(bytes)
+        if (file === 'vitest.json') {
+          await writeFile(join(output, file + '.gz'), gzipSync(bytes))
+          await rm(join(output, file))
+        }
+      } catch { report.unsupported.push({ criterion: file, status: 'NOT_RUN', reason: 'Expected evidence file was not produced' }) }
     }
     await writeFile(join(output, 'receipt.json'), JSON.stringify(report, null, 2) + '\n')
   }
