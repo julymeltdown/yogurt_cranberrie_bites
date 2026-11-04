@@ -1,5 +1,6 @@
 //! Internal operations authority values. None are request-provided role claims.
 pub mod event;
+pub mod moderation;
 pub mod notices;
 pub mod places;
 use crate::commands::CommandError;
@@ -33,6 +34,11 @@ pub enum Action {
     NoticeAdminRead,
     NoticeCreate,
     NoticeUpdate,
+    ModerateUser,
+    ModerateContent,
+    AdminUsers,
+    AdminContent,
+    AuditRead,
 }
 impl Action {
     pub fn operation(self) -> &'static str {
@@ -51,12 +57,22 @@ impl Action {
             Self::NoticeAdminRead => "listConcertAdminNotices",
             Self::NoticeCreate => "createConcertNotice",
             Self::NoticeUpdate => "updateConcertNotice",
+            Self::ModerateUser => "moderateConcertUser",
+            Self::ModerateContent => "moderateConcertContent",
+            Self::AdminUsers => "listConcertAdminUsers",
+            Self::AdminContent => "listConcertAdminContent",
+            Self::AuditRead => "listConcertAudit",
         }
     }
     pub fn permits(self, role: Role) -> bool {
         match self {
             Self::CreateReport | Self::OwnReports | Self::NoticeRead | Self::NoticeDetail => true,
-            Self::ReviewReports | Self::ReportDetail => {
+            Self::ReviewReports
+            | Self::ReportDetail
+            | Self::ModerateUser
+            | Self::ModerateContent
+            | Self::AdminUsers
+            | Self::AdminContent => {
                 matches!(role, Role::Moderator | Role::Operator)
             }
             _ => role == Role::Operator,
