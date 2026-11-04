@@ -6,7 +6,7 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/environment.rs",
     "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
     "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
-    "validation": "NOT_RUN"
+    "validation": "CF01 actual native cases PASS at tested source 0138dbe5f94997c6393c3b4f0851ace441afe42e; source/native_qualification.json records exact evidence and limitations"
   },
   {
     "source": "backend/services/concert-service/tests/owner_authority_support/owners.rs",
@@ -15,7 +15,7 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/owners.rs",
     "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
     "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
-    "validation": "NOT_RUN"
+    "validation": "CF01 actual native cases PASS at tested source 0138dbe5f94997c6393c3b4f0851ace441afe42e; source/native_qualification.json records exact evidence and limitations"
   },
   {
     "source": "backend/services/concert-service/tests/process_child_recovery_support/release.rs",
@@ -24,7 +24,7 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/release.rs",
     "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
     "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
-    "validation": "NOT_RUN"
+    "validation": "CF01 actual native cases PASS at tested source 0138dbe5f94997c6393c3b4f0851ace441afe42e; source/native_qualification.json records exact evidence and limitations"
   },
   {
     "source": "backend/services/concert-service/tests/owner_authority_support/capture.rs",
@@ -33,6 +33,6 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/capture.rs",
     "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
     "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
-    "validation": "NOT_RUN"
+    "validation": "CF01 actual native cases PASS at tested source 0138dbe5f94997c6393c3b4f0851ace441afe42e; source/native_qualification.json records exact evidence and limitations"
   }
 ]
