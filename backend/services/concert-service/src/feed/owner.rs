@@ -175,7 +175,7 @@ fn comment(c: Context, p: proto::CommentRecord) -> Result<Comment, FeedError> {
 }
 fn failure(s: Status) -> FeedError {
     match s.code() {
-        Code::NotFound | Code::PermissionDenied => FeedError::ResourceUnavailable,
+        Code::NotFound => FeedError::ResourceUnavailable,
         Code::Aborted | Code::AlreadyExists => FeedError::VersionConflict,
         _ => FeedError::DependencyUnavailable,
     }
@@ -480,5 +480,26 @@ impl<T: PostTransport> PostOwner<T> {
             .receipt
             .map(|v| committed(p, r, v))
             .transpose()
+    }
+}
+
+#[cfg(test)]
+mod qualified_failure_tests {
+    use super::*;
+
+    #[test]
+    fn only_explicit_post_resource_absence_is_filterable() {
+        assert_eq!(
+            failure(Status::not_found("subject absent")),
+            FeedError::ResourceUnavailable
+        );
+        for status in [
+            Status::permission_denied("scope sealed"),
+            Status::unauthenticated("invalid proof"),
+            Status::unavailable("owner unavailable"),
+            Status::deadline_exceeded("original deadline"),
+        ] {
+            assert_eq!(failure(status), FeedError::DependencyUnavailable);
+        }
     }
 }
