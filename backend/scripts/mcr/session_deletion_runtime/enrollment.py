@@ -12,11 +12,12 @@ from urllib.parse import parse_qsl, urlsplit
 from uuid import UUID, uuid4
 
 
-def adapters(prep, world, dev, publisher_binary, publisher_sha256, source_revision):
+def adapters(prep, world, dev, publisher_binary, publisher_sha256, source_revision, frontend_origin):
     """Return exact local test seams for the owning runtime's scoped patch context."""
     import hashlib
     if publisher_binary.is_symlink() or hashlib.sha256(publisher_binary.read_bytes()).hexdigest() != publisher_sha256:
         raise ValueError('Sessions operator executable identity mismatch')
+    expected_origin = urlsplit(dev.local_origin(frontend_origin))
 
     class EnrollmentMailSink(dev.MailSink):
         def accept(self, path, delivery_id, payload):
@@ -32,6 +33,7 @@ def adapters(prep, world, dev, publisher_binary, publisher_sha256, source_revisi
                     and len(payload['verification_code']) == 6 and payload['verification_code'].isascii()
                     and payload['verification_code'].isdigit() and link.path == '/verify-email'
                     and len(pairs) == 2 and dict(pairs) == {'attemptId':attempt,'code':payload['verification_code']}
+                    and (link.scheme,link.netloc) == (expected_origin.scheme,expected_origin.netloc)
                     and not link.username and not link.password and not link.fragment):
                 raise ValueError('bound enrollment link required')
             if self.directory.is_symlink() or not self.directory.is_dir():
