@@ -1,0 +1,30 @@
+{
+  "scope": "all eight final changed-candidate Wall captures directly viewed",
+  "sha256": {
+    "360x800-filled.png": "c325195099b598922cc83f193768b4ebc9f0d6e5c91c10172d193dd111ce454f",
+    "360x800-restored.png": "bf03932a7bc866e4c59983f20a92281225d860d28852d4e7b69c9cd670d611f6",
+    "390x480-filled.png": "7c97076dede5ec986a06068cfbd804759b6dded72bc8eee38e7fa347aad7f7e2",
+    "390x480-restored.png": "ba88c1a63fb1f38212cd6ffce2d74340602fec0231521c81ef99b2ae115ec36b",
+    "390x844-filled.png": "d05d3219a202353192de3298dce373d2c24f7dbc6a9124fae45e519d45cccb33",
+    "390x844-restored.png": "9605df1f09479c0b608d5b73a11fe827dd609b92dbcb1496c07b215dfdd300e8",
+    "430x932-filled.png": "607a963097aff4c87cabfaa41a18da159c01ebf4187e27ca8af3034a061328fe",
+    "430x932-restored.png": "9a25a100f3dce50818817420a6b4a759162b83979446405355165402eaa0f4bd"
+  },
+  "observations": [
+    "Fill red and restored authoritative pixel differences visible; palette/tool layout retained at ordinary widths.",
+    "390x480 viewport folds palette/status/coordinates below visible panel; automated actions scrolled controls into view.",
+    "Three header image assets show broken image placeholders across fixture captures; full visual fidelity is not accepted.",
+    "Canvas is intentionally sparse synthetic16-cell island, not approved initial-server artwork."
+  ],
+  "limits": [
+    "No full target visual acceptance",
+    "No live backend/two-client IN04",
+    "No physical device acceptance"
+  ],
+  "followup": {
+    "path": "backoff-native-01/run/capture/390x844-backoff-recovered.png",
+    "sha256": "bdd5c3dec50e647bf01a69befed0cbb72bd237133e4401ab870a93fd3f244fbf",
+    "directlyInspected": true,
+    "observation": "All three original control glyphs are loaded, bounded and legible after carrying exact already-public assets. Earlier broken icons were private fixture omissions, not current master asset defects."
+  }
+}

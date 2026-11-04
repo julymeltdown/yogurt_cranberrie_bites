@@ -1,0 +1,70 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793811110.315531,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--pool=threads",
+        "src/app/world-entry/mural-production/__tests__/wall-shell.test.tsx"
+      ],
+      "start": 1793811110.315603,
+      "exitCode": 0,
+      "end": 1793811112.4762518
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "start": 1793811112.476352,
+      "exitCode": 0,
+      "end": 1793811120.282061
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/world-entry/mural-production",
+        "src/app/WorldShell.tsx",
+        "src/app/mural-entry/owner.ts",
+        "src/app/world-entry/production.ts",
+        "src/main.tsx"
+      ],
+      "start": 1793811120.282153,
+      "exitCode": 1,
+      "end": 1793811120.649415
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssBytes": 1519304704,
+  "peakWholeBytes": 893876996,
+  "peakTempBytes": 1362692,
+  "peakOutputBytes": 67422,
+  "peakNewTotalBytes": 26595938,
+  "error": "stage 2 failed; retained log",
+  "fullRelease": 1793811120.8110359,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

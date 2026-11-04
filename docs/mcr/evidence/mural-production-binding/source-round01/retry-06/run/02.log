@@ -1,0 +1,1 @@
+src/app/world-entry/mural-production/__tests__/default-entry/preview.ts:134:45: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `rgba.slice` returns a new array. Spreading it into an array expression to create a new array is redundant.

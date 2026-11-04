@@ -1,0 +1,37 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793811142.673203,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "start": 1793811142.673273
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssBytes": 1060241408,
+  "peakWholeBytes": 892522496,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 71115,
+  "peakNewTotalBytes": 25236939,
+  "error": "original work deadline",
+  "fullRelease": 1793811145.410811,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

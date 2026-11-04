@@ -1,0 +1,111 @@
+{
+  "taskId": "WALL-PRODUCT-VIRTUAL-PLACEMENT01",
+  "sourceRevision": "20531df752a12a84143eedcce6151b6d89530190",
+  "purpose": "Read-only source/retained-evidence provenance, not resource or runtime qualification",
+  "pins": [
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "c044060e6db917049c746dc3c60315c2b38554b3",
+      "bytes": 204161,
+      "sha256": "sha256:11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "05c57e2e95f63543975ba4a906483892392ac44d",
+      "bytes": 24058,
+      "sha256": "sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v3/geometry-proposal.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "3a0f568276831494814e7b0d4fa60df3f93e907a",
+      "bytes": 177926,
+      "sha256": "sha256:373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/ground.png",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "d2132557f3a234b5d4a86de270435808e76e41fc",
+      "bytes": 531480,
+      "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/parade-world-360.png",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "84875d85141ee2839835674361d9adc3b7a64afa",
+      "bytes": 518863,
+      "sha256": "sha256:49ef676437951fd78cf76eb359890f07652fdeb002d9e906b68202b8ff56c3cd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/revenge/scenery.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "fcd32d58a8b73cd6ac5acdd2db59d1dc3f9fe829",
+      "bytes": 6966,
+      "sha256": "sha256:319d38c0e29296ed4b1c47ce1e178a5fca7e408dda0545b6ad0f88f6c8f4e40f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/parade/scenery.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "88975222c200fc3a761c85fef239780fd61b0633",
+      "bytes": 6942,
+      "sha256": "sha256:7c049ebb8bee5369656de0ce69e49162daa52e3a5678d707cf05a5f9c0938a6b"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/danger/scenery.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "575455dbb25730297b4d797eebe3c5da3e97969f",
+      "bytes": 6942,
+      "sha256": "sha256:8dfdf93e47d97392a0002a5755f606c976456355ba60714e14405dd5245a432d"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/phaser.ts",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "b6b58c674a0395d5d3b6ec47dfb126ff1e84ea3c",
+      "bytes": 3035,
+      "sha256": "sha256:b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8"
+    },
+    {
+      "path": "frontend/src/world/illustrated/model.ts",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "0693e22f2e91f7ec1973888352bb5f2453f74628",
+      "bytes": 4717,
+      "sha256": "sha256:a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e"
+    },
+    {
+      "path": "frontend/src/world/mural/phaser.ts",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "13967881cfb0c15a5bee0bc3d203c254504d432e",
+      "bytes": 2530,
+      "sha256": "sha256:b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "845fe9e162919d5894e3a23ff28283b0b0f23e2c",
+      "bytes": 19140,
+      "sha256": "sha256:91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258"
+    },
+    {
+      "path": "docs/mcr/evidence/frontend-combined-adoption/default-round01/map/report.json",
+      "revision": "20531df752a12a84143eedcce6151b6d89530190",
+      "mode": "100644",
+      "gitBlob": "059df0715ae18e991c54048a9425943a919dfd8e",
+      "bytes": 1055439,
+      "sha256": "sha256:478b2c6bc41f0ea21321d87a39eecaf66e685f4c3f992292dba566e3bb44c133"
+    }
+  ]
+}

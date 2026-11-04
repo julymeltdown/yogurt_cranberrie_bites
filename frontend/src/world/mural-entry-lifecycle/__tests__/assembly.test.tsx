@@ -61,6 +61,7 @@ async function fixture(mode: 'qualified' | 'absent' | 'throw' | 'readonly' = 'qu
 it('actual custom-load production adapter forwards composition mural publication into WorldPanels and stable entry ownership', async () => {
   const h = await fixture(); await screen.findByText('REV 10 · EDITABLE'); h.scene.frame()
   const sync = h.sync()!, release = h.composition.presentation.read()!.mural!.read()!
+  await waitFor(() => expect(sync.editor.canUseTool('pencil')).toBe(true))
   expect(h.engines()).toBe(1); expect(h.f.sockets).toHaveLength(1); expect(h.f.stats().factoryCalls).toBe(1)
   expect(Object.keys(h.f.context()!.world).sort()).toEqual(['read', 'subscribe']); expect(Object.isFrozen(h.f.context()!.world)).toBe(true)
   expect(h.scene.read()).toMatchObject({ objects: 1, textures: 1 }); expect(release.scope).toEqual(h.f.auth.privacy.capture())

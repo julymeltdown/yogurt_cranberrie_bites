@@ -111,7 +111,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
       {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <p className="shell-mode" role="status">Read only</p>}
     </div>
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
-      <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full'} />
+      <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full' && location.pathname !== '/wall'} />
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
         : <WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} />}
     </div>

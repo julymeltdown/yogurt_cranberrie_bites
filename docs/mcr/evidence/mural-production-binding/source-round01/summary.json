@@ -1,0 +1,20 @@
+{
+  "status": "SOURCE_PARTIAL",
+  "acceptedSource": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "newAndAffectedUniqueTests": 140,
+  "tests": "PASS_ACROSS_RETAINED_SCOPED_ATTEMPTS",
+  "ordinaryFullAppTypes": "PASS_BEFORE_FINAL_BROWSER_FIXTURE_ARRAY_FROM_CLEANUP",
+  "currentFinalTypes": "NOT_COMPLETED_ORIGINAL_WORK_CUTOFF",
+  "currentFinalLint": "NOT_RUN_AFTER_SINGLE_WARNING_FIX",
+  "browser": "NOT_RUN",
+  "originalWorkDeadline": "2026-11-04T16:52:24.924663Z",
+  "originalHardDeadline": "2026-11-04T16:53:24.924663Z",
+  "fullRelease": "2026-11-04T16:52:25.410811Z",
+  "resourcesRemaining": 0,
+  "initialProcessCap": "FAIL_5_AGAINST_4_IMMEDIATELY_GUARDED",
+  "laterPeakProcesses": 3,
+  "peakWholeBytes": 914504053,
+  "peakNewTotalBytes": 47273080,
+  "requiredNext": "Fresh_short_source_only_current_full_types_and_scoped_lint_then_separate_browser_offer",
+  "failureHistory": "All_attempt_logs_and_release_receipts_retained"
+}

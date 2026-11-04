@@ -1,0 +1,55 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793810845.350064,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/world-entry/mural-production/__tests__/default-entry/native.mjs"
+      ],
+      "start": 1793810845.350142,
+      "exitCode": 0,
+      "end": 1793810845.705906
+    },
+    {
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-c",
+        "import ast,pathlib; ast.parse(pathlib.Path('src/app/world-entry/mural-production/__tests__/round.py').read_text())"
+      ],
+      "start": 1793810845.7059379,
+      "exitCode": 0,
+      "end": 1793810846.060019
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--no-cache"
+      ],
+      "start": 1793810846.0600379
+    }
+  ],
+  "peakProcesses": 5,
+  "peakRssBytes": 860209152,
+  "peakWholeBytes": 914504053,
+  "peakTempBytes": 22071669,
+  "peakOutputBytes": 35587,
+  "peakNewTotalBytes": 47273080,
+  "error": "descendant process/RSS cap",
+  "fullRelease": 1793810855.867739,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

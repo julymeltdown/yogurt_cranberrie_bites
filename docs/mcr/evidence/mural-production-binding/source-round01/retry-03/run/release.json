@@ -1,0 +1,41 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793810966.699142,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--pool=threads",
+        "src/app/mural-entry/__tests__",
+        "src/world/mural-entry-lifecycle/__tests__",
+        "src/app/world-entry/mural-production/__tests__"
+      ],
+      "start": 1793810966.699251,
+      "exitCode": 1,
+      "end": 1793810972.295197
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssBytes": 882688000,
+  "peakWholeBytes": 892469248,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 55950,
+  "peakNewTotalBytes": 25221774,
+  "error": "stage 0 failed; retained log",
+  "fullRelease": 1793810972.455971,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

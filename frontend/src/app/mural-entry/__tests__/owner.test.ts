@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { entryFixture, drain, ids } from './fixtures'
+import { subscribeMuralEligibilityRefresh } from '../../world-entry/mural-production/refresh'
 const owned: ReturnType<typeof entryFixture>[] = []
 beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example.invalid' }))
 afterEach(() => { owned.splice(0).forEach(f => f.dispose()); vi.unstubAllGlobals() })
@@ -7,6 +8,26 @@ const fixture = () => { const f = entryFixture(); owned.push(f); return f }
 const settle = async () => { for (let i = 0; i < 20; i++) await drain() }
 
 describe('FE33 shell mural entry', () => {
+  it('settles the initial authenticated snapshot before a soft eligibility withdrawal aborts old flights', async () => {
+    const f = fixture(), r = f.release()
+    let refreshes = 0
+    const stop = subscribeMuralEligibilityRefresh(f.auth, f.scope, () => {
+      refreshes++; r.authority.set({ binding: r.value.binding, writable: false })
+    })
+    try {
+      const owner = f.create(r.value); await settle()
+      await new Promise(resolve => globalThis.setTimeout(resolve, 10)); await settle()
+      const sync = owner.read().sync!
+      expect(refreshes).toBe(1)
+      expect(sync.read().phase).toBe('ready')
+      expect(sync.editor.read().snapshot?.revision).toBe(10)
+      expect(sync.editor.canEdit()).toBe(false)
+      r.scene.frame(); expect(r.scene.read()).toMatchObject({ textures: 1, objects: 1 })
+      expect(f.requests.filter(request => request.url.endsWith('/snapshot'))).toHaveLength(1)
+      expect(f.requests.filter(request => request.method === 'POST')).toHaveLength(0)
+    } finally { stop() }
+  })
+
   it('fails closed without/mismatched authority and recovers through one existing sync/scene lease', async () => {
     const f = fixture(), owner = f.create(), r = f.release()
     expect(owner.read().sync).toBeNull(); expect(f.requests).toHaveLength(0)
@@ -16,15 +37,15 @@ describe('FE33 shell mural entry', () => {
     expect(f.requests).toHaveLength(0); expect(owner.read().sync).toBeNull()
     owner.bind(r.value); await settle(); const sync = owner.read().sync!
     expect(sync.read().phase).toBe('ready'); r.scene.frame()
-    expect(r.scene.read()).toMatchObject({ textures: 1, objects: 1, listeners: 1 }); expect(f.clock.count()).toBe(1)
-    owner.bind(r.value); await settle(); expect(owner.read().sync).toBe(sync); expect(f.requests).toHaveLength(1)
+    expect(r.scene.read()).toMatchObject({ textures: 1, objects: 1, listeners: 1 }); expect(f.clock.count()).toBe(3)
+    owner.bind(r.value); await settle(); expect(owner.read().sync).toBe(sync); expect(f.requests).toHaveLength(2)
     r.authority.set(null); expect(sync.editor.read().snapshot).toBeNull(); expect(owner.read().sync).toBeNull()
     expect(r.scene.read()).toMatchObject({ textures: 0, objects: 0, listeners: 0 }); expect(f.clock.count()).toBe(0)
     r.authority.set({ binding: r.value.binding, writable: false }); await settle()
     expect(owner.read().sync).toBe(sync); expect(sync.editor.canEdit()).toBe(false)
     expect(sync.editor.select(2, 3)).toBe(false); await sync.editor.confirm()
     expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(0)
-    r.authority.set({ binding: r.value.binding, writable: true }); expect(sync.editor.canEdit()).toBe(true)
+    r.authority.set({ binding: r.value.binding, writable: true }); await settle(); expect(sync.editor.canEdit()).toBe(true)
     sync.editor.select(2, 3); sync.editor.chooseColor(2); await sync.editor.confirm()
     const post = f.requests.find(r => r.method === 'POST')!
     expect(new URL(post.url).pathname).toBe(`/api/concert/events/${ids.event}/mural/pixels`)
@@ -54,7 +75,7 @@ describe('FE33 shell mural entry', () => {
     const gets = f.requests.filter(r => r.method === 'GET').map(r => new URL(r.url))
     expect(gets.some(u => u.pathname.endsWith('/commands') && u.searchParams.get('idempotency_key') === command.key)).toBe(true)
     expect(gets.some(u => u.pathname.endsWith(`/mural/commands/${command.key}/result`) && u.search === '')).toBe(true)
-    expect(f.clock.count()).toBe(1); next.scene.frame(); expect(next.scene.read().textures).toBe(1)
+    expect(f.clock.count()).toBe(3); next.scene.frame(); expect(next.scene.read().textures).toBe(1)
     expect(r.scene.read().textures).toBe(0)
   })
 
@@ -107,7 +128,7 @@ describe('FE33 shell mural entry', () => {
     const next = f.release(); next.authority.set({ binding, writable: true })
     owner.bind({ ...next.value, binding }); await settle(); next.scene.frame()
     expect(owner.read().sync).toBe(sync); expect(sync.editor.read().command).toBe(command)
-    expect(next.scene.read()).toMatchObject({ textures: 1, objects: 1, listeners: 1 }); expect(f.clock.count()).toBe(1)
+    expect(next.scene.read()).toMatchObject({ textures: 1, objects: 1, listeners: 1 }); expect(f.clock.count()).toBe(3)
     expect(r.authority.count()).toBe(0); expect(r.count()).toBe(0); expect(r.scene.read().textures).toBe(0)
     expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(1)
   })

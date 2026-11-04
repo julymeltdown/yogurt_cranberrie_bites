@@ -1,0 +1,164 @@
+{
+  "kind": "product_virtual_mural_placement_proposal",
+  "version": 1,
+  "taskId": "WALL-PRODUCT-VIRTUAL-PLACEMENT01",
+  "status": "SOURCE_PROPOSAL_COMPLETE",
+  "adoption": "NOT_ADOPTED",
+  "runtimeValidation": "NOT_RUN",
+  "authority": "EXPLICIT_PRODUCT_VIRTUAL_PLACEMENT_PROPOSAL",
+  "physicalPlaceProvenance": "NOT_APPLICABLE_PRODUCT_VIRTUAL",
+  "mapBinding": {
+    "mapId": "mcr_reference_scene_r3",
+    "mapRevision": 4,
+    "mapContentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+    "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+    "widthPx": 768,
+    "heightPx": 1296
+  },
+  "anchor": {
+    "x": 312,
+    "y": 624,
+    "width": 128,
+    "height": 128,
+    "depth": 0.5
+  },
+  "textureKey": "mcr-product-virtual-wall-map4-r4-v1",
+  "sourceRevision": "20531df752a12a84143eedcce6151b6d89530190",
+  "coordinateSystem": {
+    "space": "CANONICAL_WORLD_PIXELS",
+    "origin": "TOP_LEFT",
+    "imageOrigin": [
+      0,
+      0
+    ],
+    "axes": "x right; y down",
+    "tileWidthPx": 16,
+    "tileHeightPx": 16
+  },
+  "raster": {
+    "sourceWidth": 128,
+    "sourceHeight": 128,
+    "filter": "NEAREST",
+    "scale": 1,
+    "surface": "NEW_FLAT_VIRTUAL_PAVING_RASTER",
+    "collisionEffect": "NONE",
+    "interactionEffect": "NONE"
+  },
+  "sourceGeometryReadback": {
+    "worldPropRectsPerEra": 22,
+    "overlappingPropIds": {
+      "REVENGE": [],
+      "PARADE": [],
+      "DANGER": []
+    },
+    "touchedCellColumns": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "touchedCellRows": [
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "touchedCells": 72,
+    "blockedTouchedCells": 0,
+    "spawnsInside": [],
+    "interactionsInside": [],
+    "gapsPx": {
+      "tree11BottomToRasterTop": 7,
+      "rasterBottomToMeetingPavilionTop": 27,
+      "westMerchHallRightToRasterLeft": 92,
+      "rasterRightToCommunitySpawnCenterX": 64,
+      "rasterRightToCommunitySpawn64pxAvatarLeft": 32
+    }
+  },
+  "depthReason": "Ground is depth0. Normal scenery and avatar depths are greater than or equal to1. Depth0.5 keeps the new flat raster above ground and behind selected characters and every source prop. This is not upright wall foot sorting.",
+  "recordedCameraReadback": [
+    {
+      "viewportWidth": 360,
+      "viewportHeight": 844,
+      "source": "worldCamera.camera",
+      "recordedCamera": {
+        "zoom": 1,
+        "scrollX": 298,
+        "scrollY": 92.5,
+        "width": 348,
+        "height": 663
+      },
+      "proposalFullyInsideRecordedView": true
+    },
+    {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "source": "worldCamera.camera",
+      "recordedCamera": {
+        "zoom": 1,
+        "scrollX": 283,
+        "scrollY": 92.5,
+        "width": 378,
+        "height": 663
+      },
+      "proposalFullyInsideRecordedView": true
+    },
+    {
+      "viewportWidth": 430,
+      "viewportHeight": 844,
+      "source": "worldCamera.camera",
+      "recordedCamera": {
+        "zoom": 1,
+        "scrollX": 263,
+        "scrollY": 92.5,
+        "width": 418,
+        "height": 663
+      },
+      "proposalFullyInsideRecordedView": true
+    },
+    {
+      "viewportWidth": 390,
+      "viewportHeight": 420,
+      "source": "worldCamera.camera",
+      "recordedCamera": {
+        "zoom": 1,
+        "scrollX": 283,
+        "scrollY": 304.5,
+        "width": 378,
+        "height": 239
+      },
+      "proposalFullyInsideRecordedView": false
+    }
+  ],
+  "explicitlyExcludedAuthoritySources": [
+    "virtualwall_info stale cell28,22",
+    "proposal interaction cell14,68",
+    "retained Map4 wall_info cell14,61",
+    "any Map-only WALL label, display anchor, marker or leader line",
+    "existing mural fixture anchors or illustrated/mural-original.png"
+  ],
+  "requiredFactoryBehavior": [
+    "Require exact map ID/revision/content hash/geometry hash and canonical pixel dimensions; mismatch means no mural scene allocation.",
+    "Treat anchor and key as product placement only; never infer writable eligibility, arrival, admission or physical place authority.",
+    "Bind the current admitted incumbent World scene and current user/event/privacy/release lifecycle. Obtain actual mural/server eligibility independently.",
+    "Allocate only the exclusive texture key; existing ownership/collision must fail closed, with no overwrite/fallback key.",
+    "Retain existing nearest128x128 raster lifecycle and dispose image/texture/listeners on withdrawal, scope change or scene close.",
+    "Do not modify Map consumer/registration/art pack, original World assets/props/collision/spawns/cameras/interaction cells."
+  ],
+  "limits": [
+    "Source geometry and existing saved-camera arithmetic only; no new raster, application source, native browser/render or runtime tests.",
+    "Source art inspection does not prove the newly painted mural readable or correctly admitted. Root owns actual default Wall factory/server eligibility/native validation/publication.",
+    "Full-height recorded fixture views contain the proposal. Short view does not; moving cameras/player positions can change visibility. No automatic recenter or teleport is authorized.",
+    "No full parity, live multiuser, physical-device, physical venue or existing-wall claim.",
+    "Historical Map goal metadata remains blocked and incompatible; no goal reset or false completion."
+  ]
+}

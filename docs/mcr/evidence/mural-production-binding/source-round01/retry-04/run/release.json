@@ -1,0 +1,57 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793811033.572366,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--pool=threads",
+        "src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx",
+        "src/app/world-entry/mural-production/__tests__/authority.test.ts"
+      ],
+      "start": 1793811033.5724502,
+      "exitCode": 0,
+      "end": 1793811036.4144828
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.app.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "start": 1793811036.414635,
+      "exitCode": 1,
+      "end": 1793811036.768157
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssBytes": 651837440,
+  "peakWholeBytes": 892485632,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 60558,
+  "peakNewTotalBytes": 25226382,
+  "error": "stage 1 failed; retained log",
+  "fullRelease": 1793811036.932951,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

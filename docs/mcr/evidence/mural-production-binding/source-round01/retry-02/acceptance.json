@@ -1,0 +1,55 @@
+{
+  "accepted": true,
+  "id": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "task": "ROOT-WALL-PRODUCTION",
+  "kind": "source",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "acceptedAt": "2026-11-04T16:47:24.924663+00:00",
+  "hardDeadline": "2026-11-04T16:53:24.924663+00:00",
+  "cleanupSeconds": 60,
+  "startupFloorBytes": 12884901888,
+  "port": 5317,
+  "limits": {
+    "processes": 4,
+    "rssBytes": 2684354560,
+    "wholeBytes": 2147483648,
+    "tempBytes": 83886080,
+    "outputBytes": 25165824,
+    "newTotalBytes": 134217728
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+      "--configLoader",
+      "runner",
+      "--no-cache",
+      "--pool=threads"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.app.json",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--allowImportingTsExtensions",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+      "--deny-warnings",
+      "src/app/world-entry/mural-production",
+      "src/app/WorldShell.tsx",
+      "src/app/mural-entry/owner.ts",
+      "src/app/world-entry/production.ts",
+      "src/main.tsx"
+    ]
+  ],
+  "repair": "Use one Vitest worker thread to fit original 4ALL including sampler ps; original cap failure retained, no deadline extension."
+}

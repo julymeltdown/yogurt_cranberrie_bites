@@ -1,0 +1,234 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/lifecycle.test.ts (38 tests | 1 failed) 220ms
+     × rechecks unannounced world/authority loss at dispatch and fences previously captured scene methods 11ms
+ ❯ src/app/mural-entry/__tests__/owner.test.ts (12 tests | 10 failed) 5122ms
+     × fails closed without/mismatched authority and recovers through one existing sync/scene lease 27ms
+     × retains an unknown command across signal withdrawal and replacement; recovery reads the original without POST replay 9ms
+     × aborts and fences late snapshots and commands on release withdrawal, including ignored fetch aborts 5002ms
+     × scrubs raster/command and captured callbacks synchronously on block 9ms
+     × scrubs raster/command and captured callbacks synchronously on identity 8ms
+     × scrubs raster/command and captured callbacks synchronously on event 7ms
+     × scrubs raster/command and captured callbacks synchronously on suspended 8ms
+     × requires a newly qualified matching scene after an epoch change and preserves the unresolved command 15ms
+     × uses epoch receipt expiry independently from the monotonic sync clock 6ms
+     × rechecks the captured authority at dispatch even before its change notification arrives 7ms
+ ❯ src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx (7 tests | 1 failed) 333ms
+   × actual custom-load production adapter forwards composition mural publication into WorldPanels and stable entry ownership 150ms
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx (3 tests | 1 failed) 553ms
+   × keeps the same owner and unknown command across actual Wall/world/other-panel navigation and reconnect 417ms
+ ❯ src/world/mural-entry-lifecycle/__tests__/journey.test.ts (5 tests | 3 failed) 5164ms
+   × retains a lost placement across world replacement and checks exactly the original key/result without another POST 27ms
+   × scene withdrawal during a committed held POST leaves an unknown original, and explicit recovery resolves it 5002ms
+   × privacy invalidation erases the retained unknown command and private cooldown, rather than recovering it in another scope 8ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 16 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > fails closed without/mismatched authority and recovers through one existing sync/scene lease
+AssertionError: expected 2 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:19:110
+     17|     owner.bind(r.value); await settle(); const sync = owner.read().syn…
+     18|     expect(sync.read().phase).toBe('ready'); r.scene.frame()
+     19|     expect(r.scene.read()).toMatchObject({ textures: 1, objects: 1, li…
+       |                                                                                                              ^
+     20|     owner.bind(r.value); await settle(); expect(owner.read().sync).toB…
+     21|     r.authority.set(null); expect(sync.editor.read().snapshot).toBeNul…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > retains an unknown command across signal withdrawal and replacement; recovery reads the original without POST replay
+AssertionError: expected 'idle' to be 'unknown' // Object.is equality
+
+Expected: "unknown"
+Received: "idle"
+
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:44:38
+     42|     const sync = owner.read().sync!; f.server.mode('lost'); sync.edito…
+     43|     const command = sync.editor.read().command!
+     44|     expect(sync.editor.read().phase).toBe('unknown')
+       |                                      ^
+     45|     r.lifetime.abort(); expect(owner.read().sync).toBeNull(); expect(s…
+     46|     expect(sync.editor.read().command).toBe(command); expect(r.authori…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > aborts and fences late snapshots and commands on release withdrawal, including ignored fetch aborts
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:61:3
+     59|   })
+     60|
+     61|   it('aborts and fences late snapshots and commands on release withdra…
+       |   ^
+     62|     const f = fixture(), r = f.release(), hold = f.hold(r => r.url.end…
+     63|     const response = await hold.arrived.promise, sync = owner.read().s…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > scrubs raster/command and captured callbacks synchronously on block
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > scrubs raster/command and captured callbacks synchronously on identity
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > scrubs raster/command and captured callbacks synchronously on event
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > scrubs raster/command and captured callbacks synchronously on suspended
+AssertionError: expected null not to be null
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:79:44
+     77|     const f = fixture(), r = f.release(true), owner = f.create(r.value…
+     78|     r.scene.frame(); f.server.mode('lost'); sync.editor.select(1, 1); …
+     79|     expect(sync.editor.read().command).not.toBeNull()
+       |                                            ^
+     80|     if (change === 'identity' || change === 'event') f.auth.session.re…
+     81|       { userId: change === 'identity' ? ids.other : ids.user, eventId:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > requires a newly qualified matching scene after an epoch change and preserves the unresolved command
+AssertionError: expected 2 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:110:113
+    108|     owner.bind({ ...next.value, binding }); await settle(); next.scene…
+    109|     expect(owner.read().sync).toBe(sync); expect(sync.editor.read().co…
+    110|     expect(next.scene.read()).toMatchObject({ textures: 1, objects: 1,…
+       |                                                                                                                 ^
+    111|     expect(r.authority.count()).toBe(0); expect(r.count()).toBe(0); ex…
+    112|     expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(1)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > uses epoch receipt expiry independently from the monotonic sync clock
+AssertionError: expected 'idle' to be 'unknown' // Object.is equality
+
+Expected: "unknown"
+Received: "idle"
+
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:128:88
+    126|     const command = sync.editor.read().command; expect(f.clock.now()).…
+    127|     f.server.mode('ack'); f.server.resultAvailable(true); await sync.e…
+    128|     expect(sync.editor.read().command).toBe(command); expect(sync.edit…
+       |                                                                                        ^
+    129|     expect(f.requests.some(r => r.url.endsWith('/result'))).toBe(false)
+    130|     expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(1)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/owner.test.ts > FE33 shell mural entry > rechecks the captured authority at dispatch even before its change notification arrives
+AssertionError: expected null not to be null
+ ❯ src/app/mural-entry/__tests__/owner.test.ts:140:44
+    138|     await sync.editor.confirm()
+    139|     expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(0)
+    140|     expect(sync.editor.read().command).not.toBeNull()
+       |                                            ^
+    141|   })
+    142| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/16]⎯
+
+ FAIL  src/app/mural-entry/__tests__/routes.test.tsx > keeps the same owner and unknown command across actual Wall/world/other-panel navigation and reconnect
+AssertionError: expected null not to be null
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx:49:23
+     47|   await act(async () => { sync.editor.select(2, 3); await sync.editor.…
+     48|   const command = sync.editor.read().command
+     49|   expect(command).not.toBeNull(); expect(sync.editor.read().phase).toB…
+       |                       ^
+     50|   expect(screen.getByRole('status', { name: 'Original placement status…
+     51|   await act(() => h.router.navigate('/world'))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/16]⎯
+
+ FAIL  src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx > actual custom-load production adapter forwards composition mural publication into WorldPanels and stable entry ownership
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx:72:86
+     70|   act(() => h.f.revoke())
+     71|   expect(screen.getByText(/Wall unavailable/)).toBeVisible(); expect(h…
+     72|   expect(h.f.requests.filter(r => r.method === 'POST' && r.url.endsWit…
+       |                                                                                      ^
+     73|   expect(h.sync()).toBeNull(); expect(h.engines()).toBe(1); expect(h.f…
+     74|   act(() => { h.f.qualify() }); await screen.findByText('REV 11 · EDIT…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/16]⎯
+
+ FAIL  src/world/mural-entry-lifecycle/__tests__/journey.test.ts > retains a lost placement across world replacement and checks exactly the original key/result without another POST
+AssertionError: expected 'idle' to be 'unknown' // Object.is equality
+
+Expected: "unknown"
+Received: "idle"
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/journey.test.ts:12:36
+     10|   const { f, r, sync } = await setup(); f.server.mode('lost'); sync.ed…
+     11|   const command = sync.editor.read().command!, old = f.lifecycle.read(…
+     12|   expect(sync.editor.read().phase).toBe('unknown')
+       |                                    ^
+     13|   const binding = { ...f.binding, roomEpoch: ids.next, streamId: ids.o…
+     14|   f.setView({ ...f.view(), baseline: { ...f.view().baseline!, ...bindi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/16]⎯
+
+ FAIL  src/world/mural-entry-lifecycle/__tests__/journey.test.ts > scene withdrawal during a committed held POST leaves an unknown original, and explicit recovery resolves it
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/world/mural-entry-lifecycle/__tests__/journey.test.ts:39:1
+     37| })
+     38|
+     39| it('scene withdrawal during a committed held POST leaves an unknown or…
+       | ^
+     40|   const { f, r, sync } = await setup(), hold = f.hold(r => r.method ==…
+     41|   sync.editor.select(2, 2); const pending = sync.editor.confirm(), res…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/16]⎯
+
+ FAIL  src/world/mural-entry-lifecycle/__tests__/journey.test.ts > privacy invalidation erases the retained unknown command and private cooldown, rather than recovering it in another scope
+AssertionError: expected null not to be null
+ ❯ src/world/mural-entry-lifecycle/__tests__/journey.test.ts:71:42
+     69| it('privacy invalidation erases the retained unknown command and priva…
+     70|   const { f, r, sync } = await setup(); f.server.mode('lost'); sync.ed…
+     71|   expect(sync.editor.read().command).not.toBeNull()
+       |                                          ^
+     72|   const count = f.requests.length; f.auth.privacy.changePolicy(f.scope…
+     73|   expect(sync.editor.read().command).toBeNull(); expect(sync.editor.re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/16]⎯
+
+ FAIL  src/world/mural-entry-lifecycle/__tests__/lifecycle.test.ts > explicit incumbent world qualification > rechecks unannounced world/authority loss at dispatch and fences previously captured scene methods
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/lifecycle.test.ts:74:105
+     72|     sync.editor.select(2, 2); f.setView({ ...f.view(), visible: false …
+     73|     await sync.editor.confirm()
+     74|     expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(0…
+       |                                                                                                         ^
+     75|     expect(() => release.scene.texture()).toThrow('withdrawn'); expect…
+     76|     expect(r.scene.read()).toMatchObject({ textures: 0, objects: 0, li…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/16]⎯
+
+
+ Test Files  5 failed | 5 passed (10)
+      Tests  16 failed | 123 passed (139)
+   Start at  01:48:03
+   Duration  16.61s (transform 1.17s, setup 0ms, import 1.95s, tests 13.03s, environment 1.08s)
+

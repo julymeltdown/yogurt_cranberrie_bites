@@ -1,0 +1,33 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx (7 tests | 1 failed) 330ms
+   × actual custom-load production adapter forwards composition mural publication into WorldPanels and stable entry ownership 143ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx > actual custom-load production adapter forwards composition mural publication into WorldPanels and stable entry ownership
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx:72:86
+     70|   act(() => h.f.revoke())
+     71|   expect(screen.getByText(/Wall unavailable/)).toBeVisible(); expect(h…
+     72|   expect(h.f.requests.filter(r => r.method === 'POST' && r.url.endsWit…
+       |                                                                                      ^
+     73|   expect(h.sync()).toBeNull(); expect(h.engines()).toBe(1); expect(h.f…
+     74|   act(() => { h.f.qualify() }); await screen.findByText('REV 11 · EDIT…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 8 passed (9)
+      Tests  1 failed | 105 passed (106)
+   Start at  01:49:26
+   Duration  5.12s (transform 1.07s, setup 0ms, import 1.83s, tests 2.08s, environment 744ms)
+

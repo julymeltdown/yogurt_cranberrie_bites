@@ -11,7 +11,13 @@ export function entryFixture() {
   let hold: { match: (r: Request) => boolean; response: ReturnType<typeof deferred<Response>>; arrived: ReturnType<typeof deferred<Response>> } | null = null
   const auth = createSessionController({ eventId: ids.event, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
     const req = input as Request; requests.push(req.clone())
-    const result = await server.fetch(input)
+    const result = new URL(req.url).pathname.endsWith('/mural/tools') ? Response.json({
+      version: 1, event_id: ids.event, actor_id: ids.user, revision: server.read().revision, server_time: new Date(timestamp).toISOString(),
+      background_index: 0, fill_limit: 256, cell_allowance: 512, window_seconds: 600, remaining_cells: 512,
+      next_cell_available_at: null, next_allowed_at: null, editable: true,
+      available: { pencil: true, erase: false, fill: false, undo: false }, undo_window_seconds: 600,
+      undo: null, latest_action: null, unresolved: null,
+    }) : await server.fetch(input)
     if (hold?.match(req)) { hold.arrived.resolve(result); return hold.response.promise }
     return result
   } })

@@ -1,0 +1,31 @@
+{
+  "job": "ROOT-WALL-DEFAULT-BROWSER1-202611041701Z",
+  "head": "410816c1e19f34268c4bf24aa942e3811ccb5356",
+  "status": "FAIL",
+  "start": 1793811862.285784,
+  "workDeadline": 1793812099.43958,
+  "hardDeadline": 1793812159.43958,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/world-entry/mural-production/__tests__/default-entry/native.mjs"
+      ],
+      "start": 1793811862.2858791,
+      "exitCode": 1,
+      "end": 1793811872.045383
+    }
+  ],
+  "peakProcesses": 11,
+  "peakRssBytes": 2570420224,
+  "peakWholeBytes": 922700068,
+  "peakTempBytes": 29947169,
+  "peakOutputBytes": 296623,
+  "peakNewTotalBytes": 55381971,
+  "error": "stage 0 failed; retained log",
+  "fullRelease": 1793811872.212438,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

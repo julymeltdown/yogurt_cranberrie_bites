@@ -1,0 +1,144 @@
+{
+  "result": "PASS",
+  "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_PRODUCTION_WALL_INCUMBENT_PHASER_SYNTHETIC_HTTP_C05_NOT_LIVE_IN04",
+  "builtInPlacement": {
+    "version": 1,
+    "kind": "PRODUCT_VIRTUAL",
+    "sourceRevision": "122ec874075509566e41eebefa7d290ce5741626",
+    "placementHash": "sha256:cbfb6fd02b9ca1b376f48afdecb8ff9801c0664bb20dcfc402b94b0dc64ac0f0",
+    "map": {
+      "id": "mcr_reference_scene_r3",
+      "revision": 4,
+      "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+      "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+      "widthPx": 768,
+      "heightPx": 1296
+    },
+    "anchor": {
+      "x": 312,
+      "y": 624,
+      "width": 128,
+      "height": 128,
+      "depth": 0.5
+    },
+    "textureKey": "mcr-product-virtual-wall-map4-r4-v1"
+  },
+  "fixturePlacement": {
+    "version": 1,
+    "kind": "PRODUCT_VIRTUAL",
+    "sourceRevision": "122ec874075509566e41eebefa7d290ce5741626",
+    "placementHash": "sha256:cbfb6fd02b9ca1b376f48afdecb8ff9801c0664bb20dcfc402b94b0dc64ac0f0",
+    "map": {
+      "id": "paradise_virtual_courtyard",
+      "revision": 1,
+      "contentHash": "sha256:394d3ec80372443eb2adaf2adcf0a7ed017bdd89b6f5128fbee27f72c67fe413",
+      "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "widthPx": 1152,
+      "heightPx": 896
+    },
+    "anchor": {
+      "x": 312,
+      "y": 624,
+      "width": 128,
+      "height": 128,
+      "depth": 0.5
+    },
+    "textureKey": "mcr-product-virtual-wall-map4-r4-v1"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "result": "PASS",
+      "screenshots": [
+        "360x800-filled.png",
+        "360x800-restored.png"
+      ],
+      "actualMain": true,
+      "actualProductionFactory": true,
+      "uiLogin": true,
+      "fullWallKeepsIncumbent": true,
+      "boundedToolsPolling": 2,
+      "fillResetTexture": true,
+      "undo": true,
+      "opaqueErase": true,
+      "unknownOriginalKey": "5ae4ec0f-9ce0-4c87-bfd4-236ef0418c35",
+      "noDuplicatePost": true,
+      "visibilityWithdrawal": true,
+      "deniedReadWithdrawal": true,
+      "peakSocket": 1,
+      "uiSignoutResources": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "result": "PASS",
+      "screenshots": [
+        "390x844-filled.png",
+        "390x844-restored.png"
+      ],
+      "actualMain": true,
+      "actualProductionFactory": true,
+      "uiLogin": true,
+      "fullWallKeepsIncumbent": true,
+      "boundedToolsPolling": 2,
+      "fillResetTexture": true,
+      "undo": true,
+      "opaqueErase": true,
+      "unknownOriginalKey": "ec539f30-48d0-413c-83fe-0c3f7d63c75b",
+      "noDuplicatePost": true,
+      "visibilityWithdrawal": true,
+      "deniedReadWithdrawal": true,
+      "peakSocket": 1,
+      "uiSignoutResources": 0
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "result": "PASS",
+      "screenshots": [
+        "430x932-filled.png",
+        "430x932-restored.png"
+      ],
+      "actualMain": true,
+      "actualProductionFactory": true,
+      "uiLogin": true,
+      "fullWallKeepsIncumbent": true,
+      "boundedToolsPolling": 2,
+      "fillResetTexture": true,
+      "undo": true,
+      "opaqueErase": true,
+      "unknownOriginalKey": "551e4478-edcc-4c75-b313-9bb947387482",
+      "noDuplicatePost": true,
+      "visibilityWithdrawal": true,
+      "deniedReadWithdrawal": true,
+      "peakSocket": 1,
+      "uiSignoutResources": 0
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "result": "PASS",
+      "screenshots": [
+        "390x480-filled.png",
+        "390x480-restored.png"
+      ],
+      "actualMain": true,
+      "actualProductionFactory": true,
+      "uiLogin": true,
+      "fullWallKeepsIncumbent": true,
+      "boundedToolsPolling": 2,
+      "fillResetTexture": true,
+      "undo": true,
+      "opaqueErase": true,
+      "unknownOriginalKey": "347b7ca4-1c9d-4f01-a55d-e8d62734c266",
+      "noDuplicatePost": true,
+      "visibilityWithdrawal": true,
+      "deniedReadWithdrawal": true,
+      "peakSocket": 1,
+      "uiSignoutResources": 0
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80"
+}

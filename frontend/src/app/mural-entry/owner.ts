@@ -1,8 +1,9 @@
-import { createMuralHttp, createMuralSync, type MuralSyncController, type MuralAuthority, type MuralAuthorityPort } from '../../features/mural/sync'
+import { createMuralHttp, createMuralSync, createMuralToolsHttp, type MuralSyncController, type MuralAuthority, type MuralAuthorityPort } from '../../features/mural/sync'
 import { bindingSchema, sameBinding, sameScope } from '../../features/mural/sync/contract'
 import type { HttpClient } from '../../shared/api/http'
 import { createMuralTextureSink, type MuralSink } from '../../world/mural'
 import type { MuralEntryOptions, MuralEntryRelease } from './ports'
+import { invalidateMuralEligibility } from '../world-entry/mural-production/refresh'
 
 export interface MuralEntryView {
   readonly phase: 'available' | 'unavailable' | 'disposed'
@@ -62,9 +63,20 @@ export function createMuralEntry({ auth, scope: supplied, clock, receiptNow }: M
       const signal = AbortSignal.any([flight.signal, captured.signal, ...(input.signal ? [input.signal] : [])])
       return privacy.run(scope, async context => {
         if (release !== captured || signal.aborted) throw new Error('Mural release changed')
-        const result = await request({ ...input, signal: context.signal })
-        if (release !== captured || signal.aborted || !current()) throw new Error('Mural release changed')
-        return result
+        try {
+          const result = await request({ ...input, signal: context.signal })
+          if (release !== captured || signal.aborted || !current()) throw new Error('Mural release changed')
+          return result
+        } finally {
+          // Reset snapshots and command outcomes refresh admission independently.
+          // Tools and delta reads must not recursively invalidate their own polling.
+          if (release === captured && current() && (input.method !== 'GET' || (/\/mural\/(?:snapshot|commands|actions)(?:\/|$)/.test(input.path) || input.path.endsWith('/commands')))) {
+            // Let canonical HTTP and its command/read consumer finish the response
+            // microtasks before withdrawing writes; owner authority changes abort
+            // in-flight requests, including this completed response otherwise.
+            globalThis.setTimeout(() => { if (release === captured && current()) invalidateMuralEligibility(auth, scope) }, 0)
+          }
+        }
       }, signal)
     },
     // Feature HTTP never calls refresh. Session refresh ownership stays with canonical Auth.
@@ -79,7 +91,7 @@ export function createMuralEntry({ auth, scope: supplied, clock, receiptNow }: M
     try {
       stopPrivacy = privacy.registerCleanup(dispose)
       const adapter = createMuralHttp({ http, privacy, authority, ...(receiptNow ? { now: receiptNow } : {}) })
-      sync = createMuralSync({ privacy, authority, sink, ...adapter, ...(clock ? { clock } : {}) })
+      sync = createMuralSync({ privacy, authority, sink, ...adapter, tools: createMuralToolsHttp({ http, privacy, authority, ...(receiptNow ? { now: receiptNow } : {}) }), ...(clock ? { clock } : {}) })
       sync.start()
     } catch { dispose() }
   } else dispose()

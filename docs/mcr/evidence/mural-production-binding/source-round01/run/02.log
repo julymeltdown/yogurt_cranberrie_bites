@@ -1,0 +1,16 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend
+
+ ❯ src/world/mural-entry-lifecycle/__tests__/lifecycle.test.ts (38 tests | 1 failed) 235ms
+     × rechecks unannounced world/authority loss at dispatch and fences previously captured scene methods 14ms
+ ❯ src/app/mural-entry/__tests__/owner.test.ts (12 tests | 10 failed) 5141ms
+     × fails closed without/mismatched authority and recovers through one existing sync/scene lease 41ms
+     × retains an unknown command across signal withdrawal and replacement; recovery reads the original without POST replay 15ms
+     × aborts and fences late snapshots and commands on release withdrawal, including ignored fetch aborts 5001ms
+     × scrubs raster/command and captured callbacks synchronously on block 9ms
+     × scrubs raster/command and captured callbacks synchronously on identity 8ms
+     × scrubs raster/command and captured callbacks synchronously on event 8ms
+     × scrubs raster/command and captured callbacks synchronously on suspended 8ms
+     × requires a newly qualified matching scene after an epoch change and preserves the unresolved command 14ms
+     × uses epoch receipt expiry independently from the monotonic sync clock 7ms
+     × rechecks the captured authority at dispatch even before its change notification arrives 7ms

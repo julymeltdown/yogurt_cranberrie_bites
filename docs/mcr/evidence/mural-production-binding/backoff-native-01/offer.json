@@ -1,0 +1,33 @@
+{
+  "id": "ROOT-WALL-BACKOFF-BROWSER2-DIRECT-202611041717Z",
+  "task": "ROOT-WALL-PRODUCTION",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T17:17:24.366544+00:00",
+  "head": "253cc3b43f5347a6cc4e22ccfd653b42691ba569",
+  "kind": "browser",
+  "startupFloorBytes": 12884901888,
+  "hardDeadline": "2026-11-04T17:20:24.366544+00:00",
+  "cleanupSeconds": 60,
+  "port": 5317,
+  "limits": {
+    "processes": 16,
+    "rssBytes": 3758096384,
+    "wholeBytes": 2147483648,
+    "tempBytes": 134217728,
+    "outputBytes": 50331648,
+    "newTotalBytes": 209715200
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "src/app/world-entry/mural-production/__tests__/default-entry/native.mjs"
+    ]
+  ],
+  "preflight": {
+    "freeBytes": 29604048896,
+    "conservativeAggregateReservationsBytes": 2147483648,
+    "remainingBytes": 27456565248,
+    "authorization": "Social direct conditional target390 afterbackoffsourcePASS, actualGiftsB2FULL17:07:07/MapB1FULL17:14:08; ProfilewrappernotREADY/nootherB2claim",
+    "scope": "single390actualWorlddelta100/denied2sretry/recovery/headerassetload/signout ONLY, notfourcontextreplay"
+  }
+}

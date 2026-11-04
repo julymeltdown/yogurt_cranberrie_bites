@@ -1,0 +1,33 @@
+{
+  "id": "ROOT-WALL-DEFAULT-BROWSER1-202611041701Z",
+  "task": "ROOT-WALL-PRODUCTION",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T17:03:19.439580+00:00",
+  "head": "410816c1e19f34268c4bf24aa942e3811ccb5356",
+  "kind": "browser",
+  "startupFloorBytes": 12884901888,
+  "hardDeadline": "2026-11-04T17:09:19.439580+00:00",
+  "cleanupSeconds": 60,
+  "port": 5317,
+  "limits": {
+    "processes": 16,
+    "rssBytes": 3758096384,
+    "wholeBytes": 2147483648,
+    "tempBytes": 134217728,
+    "outputBytes": 50331648,
+    "newTotalBytes": 209715200
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "src/app/world-entry/mural-production/__tests__/default-entry/native.mjs"
+    ]
+  ],
+  "preflight": {
+    "freeBytes": 26910220288,
+    "conservativeAggregateReservationsBytes": 4294967296,
+    "remainingBytes": 22615252992,
+    "authorization": "21d standing named Browser1 now; directFULL handoff Map26e next, then Gifts53d"
+  },
+  "attempt": "retry02 same original work/hard deadline; diagnostics and TIME_WAIT-safe port proof only"
+}

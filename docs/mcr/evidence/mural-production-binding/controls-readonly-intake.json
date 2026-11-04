@@ -1,0 +1,32 @@
+{
+  "source": "fccee9369ff8929db699f2f09af4d639e4be35e6",
+  "canonicalAlreadyPublished": true,
+  "svgOriginal": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203",
+  "files": [
+    {
+      "path": "frontend/public/reference-window-controls-v2/back.svg",
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/close.svg",
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/expand.svg",
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/manifest.json",
+      "sha256": "9b6f7918f88ec8190aead5398ded9c4961e140e9ab47e507329c48eb6c2c53fb"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/stars.svg",
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2"
+    }
+  ],
+  "reason": "Root private frozen default-app readset omitted already-public immutable control art; no production art authored"
+}

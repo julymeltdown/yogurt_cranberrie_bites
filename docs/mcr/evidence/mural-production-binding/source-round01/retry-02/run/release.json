@@ -1,0 +1,38 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793810882.873516,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--pool=threads"
+      ],
+      "start": 1793810882.8736022,
+      "exitCode": 1,
+      "end": 1793810899.85553
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssBytes": 908410880,
+  "peakWholeBytes": 892444672,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 41134,
+  "peakNewTotalBytes": 25206958,
+  "error": "stage 0 failed; retained log",
+  "fullRelease": 1793810900.0159192,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

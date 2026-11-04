@@ -1,0 +1,39 @@
+{
+  "job": "ROOT-WALL-PRODUCTION-SOURCE-A-202611041646Z",
+  "head": "25397496029479a6957254501c6f46ba9aea7a4a",
+  "status": "FAIL",
+  "start": 1793811080.958427,
+  "workDeadline": 1793811144.924663,
+  "hardDeadline": 1793811204.924663,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "start": 1793811080.958507,
+      "exitCode": 2,
+      "end": 1793811088.616075
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssBytes": 1521057792,
+  "peakWholeBytes": 892493824,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 63737,
+  "peakNewTotalBytes": 25229561,
+  "error": "stage 0 failed; retained log",
+  "fullRelease": 1793811088.770133,
+  "remainingPids": [],
+  "dependencyLinkPresent": false,
+  "scratchPresent": false,
+  "portReuseBind": true
+}

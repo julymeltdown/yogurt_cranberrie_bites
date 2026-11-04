@@ -1,0 +1,156 @@
+{
+  "status": "READ_ONLY_DEPENDENCIES_FOR_ROOT_CANDIDATE_NOT_A_PUBLICATION",
+  "root": "c34c5cf7f640c66b219cff186d0dc3e48e5dac6f",
+  "files": [
+    {
+      "path": "frontend/src/features/mural/editor/MuralEditor.tsx",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/reference-target/presentation.test.tsx",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "802b425cbd1b0a41e731da9527e7286f7150ab082b4f0c097fff3e4e6affbaec"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "9886f4d65be4e9f03ef27060b9bbbedbd80fd377417eb23ed86b4706b129edae"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/fixture.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "a2d314293e8f0e93bd98e3865af3e54ab9eafe4d28ecee6cccc43846623deca8"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/freshness.test.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "714066535bd9178ae756f3dcce6468c381bf75043a79c1614bf374ca82f87be7"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/guard.py",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "d09c534f3a281d88aa4cc23c0da7a9dd82e0900035ba3f1662507f9fded5a45a"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/presentation.test.tsx",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "bc719f24fe245ae93d75755f636718ce0fe00a2acb2846e463c8aabf803ce098"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.html",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "cc7ded4fff35107f32ae48a331392ae6838c58b9b0303246f7e7626b41274d81"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "fb1eb455afdee326d43dba0557ddeef603e415cbac81a63884a2658ac2431aa8"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/tools.test.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "1f80019adda768c59e4b06a69afc297bd587c20e9b7151ece13a74ae30ef84c7"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/controller.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/index.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "61725a0e739815ea254c4325ea3d41b91ac173d102b8ca3a921229505d082da0"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/tools-b.css",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/tools.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/MuralSyncPanel.tsx",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "48b9eea42bfe30ba21ad7eeda9bca47bb7a0d36f2ddd59863cd6396d73f6492b"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/fixture.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "8844fe2e362a1e0fbc24b2ca3e54364530bdd311eca3c7668a5dcd4d9029e431"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/tools-http.test.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "3cd6affcd9a2ee7e342244b55a2e93626a28f4fbbe3f9cc124b76edf1f0ced78"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/wall-tools-b-wire/own-fill-256.json",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "d21a8014938fb7d8a3fbd3a9f747d97af0c1349e79903bf935f9e29b386dba3a"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/wall-tools-b-wire/tools-qualified.json",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "929e6e0fbfd7c600fed6277f415a8b54a258d06d98a2fcda3e28e549a9bf8a93"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/wall-tools-b.test.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "9c3efa7eb6c1a60579be5cb96bdb7d7152029d888e3a47198075497fb213b519"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/controller.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "67a4a15cec45cbd43d334c0c338cb87eba19b8820eb7685c0ddfa623f7be4fac"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/http.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "737d8b55542c772f7b9631c092fb529bd3d4d41d4bbb16b67cb65a8fa9dc71ed"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/index.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "40f4886e433031306c2a2f46e5901f913ba5f1fad243c0614b3e5356bb05911f"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/tools-http.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "ba77893b3ce635d7e10e6731660ed4fd01d4580b83c6d89f3bc763937217e6e5"
+    },
+    {
+      "path": "frontend/src/shared/api/domain-operations.generated.ts",
+      "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+      "sha256": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117"
+    },
+    {
+      "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+      "source": "94fbdcd87647999b4edc3816632c9f14bda93a30",
+      "sha256": "5f3059b60a7087d324e83e775784ced89f595db0c19759cc0c3b56e3eb57c49a"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+      "source": "e1252109cd21eae720eef8e5337a743ca04828bd",
+      "sha256": "7fcfef793f1883117f1b3b1eac2ffe36d1e15834cafbd921619dc10c9468bb5a"
+    }
+  ],
+  "correctedWallIntake": {
+    "source": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a",
+    "supersedes": "86c015b4f629daccab30ce9237a3782193146ead",
+    "changedPaths": [
+      "frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs",
+      "frontend/src/features/mural/editor/__tests__/wall-tools-b/guard.py",
+      "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx",
+      "frontend/src/features/mural/editor/__tests__/wall-tools-b/tools.test.ts",
+      "frontend/src/features/mural/editor/controller.ts",
+      "frontend/src/features/mural/editor/tools.ts",
+      "frontend/src/features/mural/sync/__tests__/tools-http.test.ts",
+      "frontend/src/features/mural/sync/tools-http.ts"
+    ],
+    "qualification": "20439tests/fulltypes/lint/390regressionPASS; Root140testsourcequalification815d precedes this interface-preserving fix; actual default browser pending"
+  }
+}

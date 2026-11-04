@@ -1,0 +1,235 @@
+{
+  "qualification": "SOURCE_AND_DEFAULT_APP_BROWSER_QUALIFIED_NOT_LIVE_IN04",
+  "rootBase": "c34c5cf7f640c66b219cff186d0dc3e48e5dac6f",
+  "sourceFiles": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "sha256": "4e8bcf73905f95de244b02e7225fdc9527f68fd120b62854aa4e0175c54846c7"
+    },
+    {
+      "path": "frontend/src/app/mural-entry/__tests__/fixtures.ts",
+      "sha256": "a4ff64b3897327d59689100d450dfbb0a8a2b96904d25be3c7e213d27459db19"
+    },
+    {
+      "path": "frontend/src/app/mural-entry/__tests__/owner.test.ts",
+      "sha256": "b7814d4d95f0073034bc0141a59703873d50b01bff5e516a2402185e7c9018d1"
+    },
+    {
+      "path": "frontend/src/app/mural-entry/owner.ts",
+      "sha256": "2d08d0e169d13c1d06af3cdd6245b33a76de9ec40a8a25772a17374bd525c4f5"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/authority.test.ts",
+      "sha256": "fadbe42df4e3a6845060e81a3b97a466d386419a18620c720eda770aa5dbe38c"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/configuration.test.ts",
+      "sha256": "655edfa60fb55571339fd401f6438492253b7eeabde6b55e4c07bd3c45e87bc0"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/native.mjs",
+      "sha256": "5834830a1350078d7ed1f59263dce8044b53605f8c6a1c3f4ae81822f224e416"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.html",
+      "sha256": "e55893b49528caa08738e5dcc5735f5669304935df8454ee1c4cd78efdccbfd8"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts",
+      "sha256": "e2af02c405caef3143e7cb0c5eddc69b2ecdf14a5bf6e27d91dce03b2c5376ee"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/refresh.test.ts",
+      "sha256": "3e2e7819fb10d07ced834bdbb387aa4530466faad885d5dac8c2677050e273d6"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/round.py",
+      "sha256": "3b4054d557edcf4fcf74f30217f7d2297eb4d7f6e0dc1cca4f6a15d2b655a706"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/vitest.config.ts",
+      "sha256": "48141ac57f69b743940ec1211d82fe4c6b92dc503a5f4ad464063d69fe660d64"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/wall-shell.test.tsx",
+      "sha256": "cfaecf5ffacae0b1fa018eabb64ed9313999709b800875a32f4ee37b550bc3d9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/authority.ts",
+      "sha256": "6760b8b83c8d2bf3cad24474984643f2027d606550d380c835f96a26479f2723"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/configuration.ts",
+      "sha256": "4b2ce261d4bb3582d2111866d3aa5583c1c5b87dc969c9c77d5b90607eb5aa15"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/factory.ts",
+      "sha256": "387b53283e45927ef7337ff585fcd63f18772b87f38105f43f1f7947bc498d83"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/placement.json",
+      "sha256": "0bca5013f8b38a535728d68cb06c3905e4a18e1e79a09cf797cc6161a59fe02c"
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/refresh.ts",
+      "sha256": "da4009105388f97b564d1fbf685a9040be43a8f34161a4d1789153f3f7c30da3"
+    },
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "sha256": "bd3b199b680f0df417763679ac85a680efd8022eec1c94946882f92001877967"
+    },
+    {
+      "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+      "sha256": "5f3059b60a7087d324e83e775784ced89f595db0c19759cc0c3b56e3eb57c49a"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+      "sha256": "7fcfef793f1883117f1b3b1eac2ffe36d1e15834cafbd921619dc10c9468bb5a"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/MuralEditor.tsx",
+      "sha256": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/reference-target/presentation.test.tsx",
+      "sha256": "802b425cbd1b0a41e731da9527e7286f7150ab082b4f0c097fff3e4e6affbaec"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs",
+      "sha256": "9886f4d65be4e9f03ef27060b9bbbedbd80fd377417eb23ed86b4706b129edae"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/fixture.ts",
+      "sha256": "a2d314293e8f0e93bd98e3865af3e54ab9eafe4d28ecee6cccc43846623deca8"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/freshness.test.ts",
+      "sha256": "714066535bd9178ae756f3dcce6468c381bf75043a79c1614bf374ca82f87be7"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/guard.py",
+      "sha256": "d09c534f3a281d88aa4cc23c0da7a9dd82e0900035ba3f1662507f9fded5a45a"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/presentation.test.tsx",
+      "sha256": "bc719f24fe245ae93d75755f636718ce0fe00a2acb2846e463c8aabf803ce098"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.html",
+      "sha256": "cc7ded4fff35107f32ae48a331392ae6838c58b9b0303246f7e7626b41274d81"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx",
+      "sha256": "fb1eb455afdee326d43dba0557ddeef603e415cbac81a63884a2658ac2431aa8"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/wall-tools-b/tools.test.ts",
+      "sha256": "1f80019adda768c59e4b06a69afc297bd587c20e9b7151ece13a74ae30ef84c7"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/controller.ts",
+      "sha256": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/index.ts",
+      "sha256": "61725a0e739815ea254c4325ea3d41b91ac173d102b8ca3a921229505d082da0"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/tools-b.css",
+      "sha256": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71"
+    },
+    {
+      "path": "frontend/src/features/mural/editor/tools.ts",
+      "sha256": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/MuralSyncPanel.tsx",
+      "sha256": "48b9eea42bfe30ba21ad7eeda9bca47bb7a0d36f2ddd59863cd6396d73f6492b"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/fixture.ts",
+      "sha256": "8844fe2e362a1e0fbc24b2ca3e54364530bdd311eca3c7668a5dcd4d9029e431"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/tools-http.test.ts",
+      "sha256": "3cd6affcd9a2ee7e342244b55a2e93626a28f4fbbe3f9cc124b76edf1f0ced78"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/wall-tools-b-wire/own-fill-256.json",
+      "sha256": "d21a8014938fb7d8a3fbd3a9f747d97af0c1349e79903bf935f9e29b386dba3a"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/wall-tools-b-wire/tools-qualified.json",
+      "sha256": "929e6e0fbfd7c600fed6277f415a8b54a258d06d98a2fcda3e28e549a9bf8a93"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/__tests__/wall-tools-b.test.ts",
+      "sha256": "9c3efa7eb6c1a60579be5cb96bdb7d7152029d888e3a47198075497fb213b519"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/controller.ts",
+      "sha256": "67a4a15cec45cbd43d334c0c338cb87eba19b8820eb7685c0ddfa623f7be4fac"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/http.ts",
+      "sha256": "737d8b55542c772f7b9631c092fb529bd3d4d41d4bbb16b67cb65a8fa9dc71ed"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/index.ts",
+      "sha256": "40f4886e433031306c2a2f46e5901f913ba5f1fad243c0614b3e5356bb05911f"
+    },
+    {
+      "path": "frontend/src/features/mural/sync/tools-http.ts",
+      "sha256": "ba77893b3ce635d7e10e6731660ed4fd01d4580b83c6d89f3bc763937217e6e5"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "c00854a39578fc0f6e4a50413685edcb02c113de609e860281e96de5d6f73a76"
+    },
+    {
+      "path": "frontend/src/shared/api/domain-operations.generated.ts",
+      "sha256": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117"
+    },
+    {
+      "path": "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-data.ts",
+      "sha256": "2869653694b8f592085fe133ab2faf4bdd77729b9665c21a2a601e85208aaec2"
+    },
+    {
+      "path": "frontend/src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx",
+      "sha256": "2a24345efa4ada4c8520070ffaf88ca55a93f66c715680e0c933517703cc824d"
+    }
+  ],
+  "sourceValidation": {
+    "head": "405b8a5151462cce3d0eb09b4bea369658da480d",
+    "uniqueTests": 143,
+    "finalTypesAndLint": "source-tail-01/run/release.json",
+    "sourceCohort": "source-round01",
+    "status": "PASS",
+    "changedOwnerSuiteTests": 13,
+    "finalChangedOwnerSource": "settlement-source-01/run/release.json",
+    "validatedSource": "92a26b9650424d6df6209c74a71ed223441883dd",
+    "authoritySuiteTests": 21,
+    "backoffSource": "backoff-source-01/run/release.json"
+  },
+  "browserValidation": {
+    "report": "native-retry04/run/capture/report.json",
+    "release": "native-retry04/run/release.json",
+    "status": "PASS",
+    "failedAttempts": [
+      "native-round01",
+      "native-retry02",
+      "native-retry03"
+    ],
+    "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_NOT_LIVE_IN04",
+    "backoffFollowup": {
+      "report": "backoff-native-01/run/capture/report.json",
+      "release": "backoff-native-01/run/release.json",
+      "status": "PASS",
+      "actualWorldDeltas": 100,
+      "sameBindingBurstReads": 0,
+      "afterTwoSecondReads": 1,
+      "loadedHeaderIcons": 3
+    }
+  },
+  "correctedWallIntake": "41bb44a9db05eb980e6658d6300c8d1c60fcf29a"
+}

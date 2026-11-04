@@ -1,0 +1,8 @@
+{
+  "status": "RELEASED_WITH_INITIAL_PROBE_FAILURE",
+  "time": "2026-11-04T17:04:22.236128+00:00",
+  "dependencyLinkPresent": false,
+  "portReuseBindWithReuseAddr": true,
+  "reason": "initial non-REUSEADDR bind encountered TIME_WAIT after Vite close; no LISTEN found, retry guard now sets REUSEADDR",
+  "initialGuardianReleaseJsonMissing": true
+}

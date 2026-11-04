@@ -21,6 +21,13 @@ export async function assemblyData() {
     if (path.endsWith('/bootstrap')) return Response.json(data.bootstrap)
     if (path.endsWith('/rooms')) return Response.json(data.rooms)
     if (path.endsWith('/world-tickets')) return Response.json(ticket(await request.json() as WorldTicketRequest, requests.length))
+    if (path.endsWith('/mural/tools')) return Response.json({
+      version: 1, event_id: eventId, actor_id: userId, revision: server.read().revision, server_time: new Date().toISOString(),
+      background_index: 0, fill_limit: 256, cell_allowance: 512, window_seconds: 600, remaining_cells: 512,
+      next_cell_available_at: null, next_allowed_at: null, editable: true,
+      available: { pencil: true, erase: false, fill: false, undo: false }, undo_window_seconds: 600,
+      undo: null, latest_action: null, unresolved: null,
+    })
     if (path.includes('/mural') || path.endsWith('/commands')) {
       const headers = new Headers(request.headers); headers.set('Authorization', `Bearer ${ids.user}`)
       const response = await server.fetch(new Request(request, { headers }))

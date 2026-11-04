@@ -5,20 +5,23 @@ import type { WorldComposition, WorldRendererPort } from '../../world/compositio
 import type { LocalInputConfiguration } from './resolver'
 import { validateLocalInputConfiguration } from './configuration'
 import type { RootCharacterRegistry } from '../character-entry/runtime'
+import type { MuralProductionConfiguration } from './mural-production/configuration'
 
 export interface ProductionWorldOptions {
   readonly auth: SessionController
   readonly localInput?: LocalInputConfiguration | null
   readonly origin?: string
+  /** Explicit reviewed virtual placement; server tools reads independently qualify eligibility. */
+  readonly mural?: MuralProductionConfiguration | null
   /** Borrow the application owner; a World lease never destroys it. */
   readonly characters?: RootCharacterRegistry
   /** Test seam. The default loads the actual production composition and resolver only on mount. */
-  readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) => Promise<WorldComposition>
+  readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry; mural?: MuralProductionConfiguration | null }) => Promise<WorldComposition>
 }
-async function loadProduction({ auth, origin, localInput, characters }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) {
-  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }, { createRootSceneOverview }, { createMotionWorldRenderer }] = await Promise.all([
+async function loadProduction({ auth, origin, localInput, characters, mural }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry; mural?: MuralProductionConfiguration | null }) {
+  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }, { createRootSceneOverview }, { createMotionWorldRenderer }, { createProductionMuralFactory }] = await Promise.all([
     import('../../world/composition'), import('./resolver'), import('../../world/avatar/whole-character'),
-    import('./reference-scene-overview'), import('../../world/avatar/motion-adoption/renderer'),
+    import('./reference-scene-overview'), import('../../world/avatar/motion-adoption/renderer'), import('./mural-production/factory'),
   ])
   const pinFor = (manifest: Readonly<Record<string, unknown>>) => {
     if (typeof manifest.manifest_id !== 'string' || typeof manifest.manifest_version !== 'number'
@@ -35,7 +38,8 @@ async function loadProduction({ auth, origin, localInput, characters }: { auth: 
     if (!owner) throw new Error('Reviewed character authority unavailable')
     return owner.runtime
   } }) : null
-  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput, ...(characters ? { characters } : {}) }), createOverview: createRootSceneOverview,
+  const muralFactory = createProductionMuralFactory({ auth, configuration: mural })
+  return createWorldComposition({ auth, ...(muralFactory ? { mural: muralFactory } : {}), resolveRelease: createWorldEntryResolver({ auth, origin, localInput, ...(characters ? { characters } : {}) }), createOverview: createRootSceneOverview,
     ...(whole && reviewed ? { renderer: { mount(context: Parameters<WorldRendererPort['mount']>[0]) {
       const representation = context.release.avatarManifest.representation
       if (representation === 'whole_character') return whole.mount(context)
@@ -103,7 +107,7 @@ export function createProductionWorld(options: ProductionWorldOptions) {
     if (live() && !configuration) notice.textContent = 'The world is unavailable. You can keep browsing.'
     if (live() && configuration) {
       if (!loading) loading = Promise.resolve().then(() => (options.load ?? loadProduction)({ auth, origin: options.origin ?? location.origin, localInput: configuration,
-        ...(options.characters ? { characters: options.characters } : {}) })).then(value => {
+        ...(options.characters ? { characters: options.characters } : {}), ...(options.mural ? { mural: options.mural } : {}) })).then(value => {
         if (closed) { value.dispose(); throw new Error('World owner closed') }
         composition = value; return value
       }).catch(error => { loading = null; throw error })
