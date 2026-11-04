@@ -39,6 +39,7 @@ pub(super) struct Fixture {
     pub(super) concert: PgPool,
     pub(super) profile: PgPool,
     profile_addr: std::net::SocketAddr,
+    profile_shutdown: Option<tokio::sync::oneshot::Sender<()>>,
     pub(super) reader: Arc<PublicProfileReader>,
     pub(super) ledger: PgScopeLedger,
     _registry: Arc<ScopeRegistry>,
@@ -103,7 +104,11 @@ fn product_release() -> anyhow::Result<Arc<concert_application::bootstrap::Valid
 async fn profile_server(
     profile: PgPool,
     address: std::net::SocketAddr,
-) -> anyhow::Result<(std::net::SocketAddr, tokio::task::JoinHandle<()>)> {
+) -> anyhow::Result<(
+    std::net::SocketAddr,
+    tokio::task::JoinHandle<()>,
+    tokio::sync::oneshot::Sender<()>,
+)> {
     use profile_service::adapters::r#in::grpc::concert_public_profile::{
         proto, PublicProfileServer, PUBLIC_PROFILE_POLICY,
     };
@@ -122,24 +127,33 @@ async fn profile_server(
     )?;
     let listener = tokio::net::TcpListener::bind(address).await?;
     let address = listener.local_addr()?;
+    let (shutdown, stopped) = tokio::sync::oneshot::channel::<()>();
     let profile_task = spawn(
         tonic::transport::Server::builder()
             .tls_config(environment::tls(Workload::Profile)?.server_config()?)?
             .layer(CallDeadlineLayer)
             .add_service(profile_service)
-            .serve_with_incoming(incoming(listener)),
+            .serve_with_incoming_shutdown(incoming(listener), async {
+                let _ = stopped.await;
+            }),
     );
 
-    Ok((address, profile_task))
+    Ok((address, profile_task, shutdown))
 }
 impl Fixture {
-    pub(super) async fn stop_profile(&mut self) {
-        self.tasks[0].abort();
-        let _ = (&mut self.tasks[0]).await;
+    pub(super) async fn stop_profile(&mut self) -> anyhow::Result<()> {
+        self.profile_shutdown
+            .take()
+            .expect("actual running Profile fixture")
+            .send(())
+            .map_err(|_| anyhow::anyhow!("Profile shutdown signal unavailable"))?;
+        tokio::time::timeout(Duration::from_secs(2), &mut self.tasks[0]).await??;
+        Ok(())
     }
     pub(super) async fn restart_profile(&mut self) -> anyhow::Result<()> {
-        let (_, task) = profile_server(self.profile.clone(), self.profile_addr).await?;
+        let (_, task, shutdown) = profile_server(self.profile.clone(), self.profile_addr).await?;
         self.tasks[0] = task;
+        self.profile_shutdown = Some(shutdown);
         Ok(())
     }
     pub(super) async fn new() -> anyhow::Result<Self> {
@@ -172,7 +186,7 @@ impl Fixture {
         }
         sqlx::query("insert into concert_meeting_settings(event_id,event_cutoff) values($1,clock_timestamp()+interval '1 day') on conflict(event_id) do nothing").bind(event).execute(&concert).await?;
 
-        let (profile_addr, profile_task) =
+        let (profile_addr, profile_task, profile_shutdown) =
             profile_server(profile.clone(), "127.0.0.1:0".parse()?).await?;
         let profile_url = format!("https://{profile_addr}");
         let reader = Arc::new(PublicProfileReader::connect(
@@ -233,6 +247,7 @@ impl Fixture {
             concert,
             profile,
             profile_addr,
+            profile_shutdown: Some(profile_shutdown),
             reader,
             ledger,
             _registry: registry,

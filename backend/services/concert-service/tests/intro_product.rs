@@ -518,7 +518,7 @@ async fn canonical_block_departure_suspension_and_profile_outage() -> anyhow::Re
         .bind(f.subject)
         .execute(&f.auth)
         .await?;
-    f.stop_profile().await;
+    f.stop_profile().await?;
     let (scope, parent, request) = acquire(
         &f,
         "listConcertIntros",
