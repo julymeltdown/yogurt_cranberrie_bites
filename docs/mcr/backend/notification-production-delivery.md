@@ -1,7 +1,9 @@
 # BE33 production delivery and Notification startup
 
-Status: `IN_PROGRESS`. Build, PostgreSQL, mTLS and actual-process checks are
-`NOT_RUN` for this source revision until a fresh finite resource offer is accepted.
+Status: `IN_PROGRESS` for original BE33. The bounded production delivery and
+Notification startup checks below passed against source
+`7e15b1962ea48a59ae0802b0e2b118fc1e0a56b1`. Real canonical target/inbox policy
+and public IN03 acceptance remain open.
 This continues original BE33; it creates no new required task and does not accept
 IN03 or reduce other notification families from specification scope.
 
@@ -90,26 +92,93 @@ and remains unavailable when absent.
 | --- | --- | --- |
 | Explicit-path Rust 1.88 rustfmt | PASS | Exit 0; default stable rustfmt failed to load its driver, so installed 1.88 formatter was used without installation |
 | `git diff --check` | PASS | Exit 0 |
-| New routing tests (4) | NOT_RUN | Reuse owned NB03 SQL fixture; protected SQL setup rolls back; additional actual Concert-client case uses the copied live ingress, not public IN03 |
-| New ingress tests (3) | NOT_RUN | Actual mTLS and Notification PG; concurrent repeats, immutable fanout, purge retry, caller/certificate denial and malformed input |
-| New runtime tests (4) | NOT_RUN | Pure opt-in checks, actual pre-DB refusal, live process mounting and repeated delivery across graceful restart |
+| New routing tests (4) | PASS | Reuse owned NB03 SQL fixture; protected SQL setup rolls back; additional actual Concert-client case uses the copied live ingress, not public IN03 |
+| New ingress tests (3) | PASS | Actual mTLS and Notification PG; concurrent repeats, immutable fanout, purge retry, caller/certificate denial and malformed input |
+| New runtime tests (4) | PASS | Pure opt-in checks, actual pre-DB refusal, live process mounting and repeated delivery across graceful restart |
 | Real canonical target/inbox/native policy | NOT_RUN | Separate owner 207's provider and Root combined composition required |
 | Public Gateway / original IN03 | NOT_RUN | Required downstream vertical-flow gate, no acceptance inferred |
 
-Planned finite build commands use Rust 1.88, `--locked --offline`, `-j 2`, debug
-information disabled and incremental disabled, in the coordinator-selected existing
-target only. The exact test targets are Notification `concert_delivery_ingress`,
-Notification `concert_runtime`, and Concert `notification_projection_routing`, plus
-the actual `notification-service` binary. Test execution uses copied, hash-pinned
-artifacts only after explicit unconditional target release. The accepted offer,
-source/artifact hashes, commands/exit codes, native evidence, cleanup and subsequent
-publication ancestry must be appended before this work is reported accepted.
+The developer accepted `BE33-DELIVERY-MEDIA-202611041106Z` for the existing
+MEDIA target. Both build commands exited 0 with Rust 1.88, two jobs, debug
+information disabled, incremental disabled and the offered contracts-build dev
+optimization level 2:
 
-Existing CF03's 11 qualified cases are unchanged and are not repeated by this
-stage. No Cargo, PostgreSQL or application process was started during source prep.
+```text
+cargo +1.88.0 test --locked --offline -p notification-service --test concert_delivery_ingress --test concert_runtime --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2
+cargo +1.88.0 test --locked --offline -p concert-service --test notification_projection_routing --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2
+```
 
-Source handoff commits: `b54d88d4` (shared private wire/build), `93830287`
-(Concert projection/client), `e86952b5` (Notification ingress/startup). The
-pre-qualification code pin is `e86952b5`; subsequent evidence documentation does
-not substitute for executed checks. Resource request sent to coordinator 21d;
-no named offer has yet been accepted.
+The actual Notification binary was emitted automatically. Automatic Concert main
+was recorded as metadata/growth only and was neither copied nor run. Four exact
+artifacts (94,420,048 bytes total) were copied and hash-pinned outside the target:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `concert_delivery_ingress` | `100fe59cab02b932b0995a222d1dc405b479fb679ed24207be8e1925e2584132` |
+| `concert_runtime` | `99dcec420fd384e40230432ffd803dc7026a2cb1efc048bfb49227c84114a311` |
+| `notification_projection_routing` | `6309aa3c83de295ba5082f1da7a33368b5edafa6d6b3a3c8ef53de0b6991620c` |
+| `notification-service` | `9c92b2e0141503752af7ff99be60173426c7030da3f66be5c862cbf382450d0b` |
+
+The target was released unconditionally after Cargo finished and full `lsof`
+returned exit 0 with zero target handles. No target access occurred afterward.
+Each copied test binary ran with `--test-threads=1 --nocapture`, exiting 0:
+
+- `concert_delivery_ingress`: 3 passed, 0 failed, 0 ignored.
+- `concert_runtime`: 4 passed, 0 failed, 0 ignored.
+- `notification_projection_routing`: 4 passed, 0 failed, 0 ignored.
+
+The actual Concert client delivered concurrently and repeatedly through the copied
+production Notification main, producing exactly one notification. The actual main
+startup check repeated delivery across two gracefully terminated service processes
+against the same Notification database and still observed exactly one notification.
+The Inbox service was mounted and rejected a missing canonical scope. This is a
+mounting/fail-closed result, not a real positive target-policy or public-flow grant.
+
+The original owned-cluster and PKI helpers were reused for exactly these PG16
+databases: `mcr_concert_notification`, `mcr_concert_notification_source`, and
+`mcr_notification_target_policy`. No real Auth/Friend/Post service was started.
+Protected SQL routing metadata remained uncommitted and rolled back. Prepared
+transactions were zero and protected fixture rows committed were zero. All owned
+main/test processes, listeners, database, PKI, temporary fixture and artifact handles
+were released before the original absolute stop; full `lsof` returned exit 0 with
+zero owned artifact handles. The source worktree remained clean throughout testing.
+
+Private evidence is retained at `/private/tmp/mcr-be33-delivery-7e15b196/`:
+
+| Evidence | SHA-256 |
+| --- | --- |
+| `source-1.tar.gz` (full tracked backend/contracts source) | `debaa37fd1d7ef1566ac667ba4e73465226a78140bc6b2e7a02fca51c0186b2a` |
+| `artifact-receipt.json` (source/runtime pins and exact Cargo artifacts) | `522c41a9fe9a01e763873259b1918820bc5481b3a4ad72bdb2a1cc14ca8e46d4` |
+| `target-release.json` | `d6e901a1a71108753af459ca80e71a0a3911b2570f25a8968e08ee5970e411af` |
+| `qualify-result-1793790780.json` | `4704abdc2a921d3d4662b2de7468279ddd33ea1423109721e248f8ef530a358e` |
+| `full-release.json` | `698373cbfa78709aebcc8622659cff61d0d3804ec4c97b2e2b33f835ec224f2d` |
+
+The first copied orchestration attempt stopped at `fixture-pki` before database or
+tests; its failure report and executed controller are preserved. The helper then
+used the owned explicit OpenSSL request configuration; the successful attempt ran
+all eleven cases. No Rust source fix, rebuild or repeat of a passing case occurred.
+The first wrapper retained the failed phase/exit result, not the full OpenSSL
+stderr; the limitation is not hidden by the successful retry.
+
+Full-release accounting: prior retained carry 416,411,648 bytes; retained target
+growth 156,639,232 bytes; private output 102,133,760 bytes; whole retained growth
+675,184,640 bytes. Peak whole usage was 761,757,696 bytes, below the offered
+2.5 GiB cap, and minimum observed free space was 22,418,092,032 bytes. No resources
+remain held. Existing CF03's eleven qualified cases were unchanged and not rerun.
+
+## Developer ownership and publication
+
+The latest human working agreement applies to this resumed assignment: the
+implementation developer owns validation and fixes; there is no separate king,
+SL or QA review/acknowledgment gate. The named publishing developer receives this
+validated handoff directly. Publication routing does not transfer shared-file or
+publishing ownership. Canonical target provider work remains with owner 207 and
+Concert main/shared composition remains with the designated Root developer.
+
+Source handoff commits are `b54d88d4` (shared private wire/build), `93830287`
+(Concert projection/client), and `e86952b5` (Notification ingress/startup), with
+`7e15b196` the exact clean qualified source pin. Subsequent changes to this document
+are documentation-only. Normal publication, delivered ancestry and this owner's
+remote proof remain required. Original BE33 is unfinished while real canonical
+inbox/native policy and the actual public Gateway/IN03 flow remain unqualified;
+no old review clause is treated as an unfinished product requirement.
