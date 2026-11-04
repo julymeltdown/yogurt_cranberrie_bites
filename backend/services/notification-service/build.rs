@@ -4,9 +4,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         std::env::set_var("PROTOC", protoc);
     }
 
-    let lease = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("../../proto/authority/v1/lease.proto");
-    let local_include = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../proto");
+    let lease = contracts_build::proto_root().join("authority/v1/lease.proto");
+    let local_include = contracts_build::proto_root();
     let authority_output =
         std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("owner_authority");
     std::fs::create_dir_all(&authority_output)?;
@@ -15,8 +14,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build_client(true)
         .out_dir(&authority_output)
         .compile_protos(&[lease.clone()], &[local_include.clone()])?;
-    let notification = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("../../proto/notification/v1/concert_inbox.proto");
+    let notification = contracts_build::proto_root().join("notification/v1/concert_inbox.proto");
     let protos = [
         notification.clone(),
         contracts_build::source_notification_proto(),

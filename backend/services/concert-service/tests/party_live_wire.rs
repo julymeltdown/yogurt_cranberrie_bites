@@ -217,7 +217,7 @@ fn detail_binding_rejects_noncanonical_and_foreign_paths() {
 }
 
 #[test]
-fn closed_route_parser_derives_only_the_three_owned_party_operations() {
+fn closed_route_parser_derives_exact_party_operations_and_rejects_unlisted_routes() {
     let event = Uuid::new_v4();
     let party = Uuid::new_v4();
     let root = format!("/api/concert/events/{event}/parties");
@@ -234,11 +234,64 @@ fn closed_route_parser_derives_only_the_three_owned_party_operations() {
         operation_for_fixture(event, "POST", &root).unwrap(),
         "createConcertParty"
     );
+    let application = Uuid::new_v4();
+    let user = Uuid::new_v4();
+    assert_eq!(
+        operation_for_fixture(event, "POST", &format!("{detail}/applications")).unwrap(),
+        "applyConcertParty"
+    );
+    assert_eq!(
+        operation_for_fixture(
+            event,
+            "POST",
+            &format!("/api/concert/events/{event}/party-applications/{application}/decision")
+        )
+        .unwrap(),
+        "decideConcertApplication"
+    );
+    assert_eq!(
+        operation_for_fixture(
+            event,
+            "DELETE",
+            &format!(
+                "/api/concert/events/{event}/party-applications/{application}?expected_revision=1"
+            )
+        )
+        .unwrap(),
+        "cancelConcertApplication"
+    );
+    assert_eq!(
+        operation_for_fixture(
+            event,
+            "DELETE",
+            &format!("{detail}/members/{user}?expected_revision=1&party_revision=1")
+        )
+        .unwrap(),
+        "removeConcertMember"
+    );
+    assert_eq!(
+        operation_for_fixture(event, "POST", &format!("{detail}/cancel")).unwrap(),
+        "cancelConcertParty"
+    );
     for (method, target) in [
         ("POST", detail.clone()),
         ("GET", format!("{root}/applications")),
         ("PATCH", detail.clone()),
         ("GET", format!("{detail}/members")),
+        (
+            "POST",
+            format!("{detail}/applications?extra=true")
+                .as_str()
+                .to_owned(),
+        ),
+        (
+            "DELETE",
+            format!("/api/concert/events/{event}/party-applications/{application}"),
+        ),
+        (
+            "DELETE",
+            format!("{detail}/members/{user}?expected_revision=1"),
+        ),
         (
             "GET",
             format!("/api/concert/events/{}/parties", Uuid::new_v4()),
@@ -246,4 +299,100 @@ fn closed_route_parser_derives_only_the_three_owned_party_operations() {
     ] {
         assert!(operation_for_fixture(event, method, &target).is_err());
     }
+}
+
+#[test]
+fn mutation_body_parser_requires_exact_closed_c04_shapes() {
+    let event = Uuid::new_v4();
+    let party = Uuid::new_v4();
+    let application = Uuid::new_v4();
+    let user = Uuid::new_v4();
+    let key = Uuid::new_v4();
+    let root = format!("/api/concert/events/{event}");
+    let apply = format!("{root}/parties/{party}/applications");
+    assert!(parse_verified_body_for_fixture(
+        event,
+        "POST",
+        &apply,
+        br#"{"party_revision":1,"note":"See you there"}"#,
+        "application/json",
+        &key.to_string()
+    )
+    .is_ok());
+    let decision = format!("{root}/party-applications/{application}/decision");
+    assert!(parse_verified_body_for_fixture(
+        event,
+        "POST",
+        &decision,
+        br#"{"expected_revision":1,"party_revision":2,"decision":"APPROVED"}"#,
+        "application/json",
+        &key.to_string()
+    )
+    .is_ok());
+    assert!(parse_verified_body_for_fixture(
+        event,
+        "POST",
+        &format!("{root}/parties/{party}/cancel"),
+        br#"{"expected_revision":3}"#,
+        "application/json",
+        &key.to_string()
+    )
+    .is_ok());
+    for body in [
+        br#"{"party_revision":1}"#.as_slice(),
+        br#"{"party_revision":1,"note":"a","extra":true}"#.as_slice(),
+        br#"{"party_revision":1,"note":"a","note":"b"}"#.as_slice(),
+    ] {
+        assert!(parse_verified_body_for_fixture(
+            event,
+            "POST",
+            &apply,
+            body,
+            "application/json",
+            &key.to_string()
+        )
+        .is_err());
+    }
+    assert!(parse_verified_body_for_fixture(
+        event,
+        "DELETE",
+        &format!("{root}/parties/{party}/members/{user}?expected_revision=1&party_revision=2"),
+        &[],
+        "",
+        &key.to_string()
+    )
+    .is_ok());
+    for (body, content_type, idempotency) in [
+        (&[][..], "", "".to_owned()),
+        (&b"{}"[..], "", key.to_string()),
+        (&[][..], "application/json", key.to_string()),
+    ] {
+        assert!(parse_verified_body_for_fixture(
+            event,
+            "DELETE",
+            &format!("{root}/parties/{party}/members/{user}?expected_revision=1&party_revision=2"),
+            body,
+            content_type,
+            &idempotency,
+        )
+        .is_err());
+    }
+    assert!(parse_verified_body_for_fixture(
+        event,
+        "DELETE",
+        &format!("{root}/party-applications/{application}?expected_revision=2"),
+        &[],
+        "",
+        &key.to_string()
+    )
+    .is_ok());
+    assert!(parse_verified_body_for_fixture(
+        event,
+        "DELETE",
+        &format!("{root}/party-applications/{application}?expected_revision=2&expected_revision=2"),
+        &[],
+        "",
+        &key.to_string()
+    )
+    .is_err());
 }

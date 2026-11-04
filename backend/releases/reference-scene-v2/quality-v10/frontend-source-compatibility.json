@@ -1,0 +1,121 @@
+{
+  "admission": "NOT_ADMITTED",
+  "backend_allocation_record": {
+    "bytes": 502,
+    "path": "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json",
+    "sha256": "sha256:6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060"
+  },
+  "descriptor": {
+    "bytes": 56822,
+    "path": "frontend/src/world/reference-scene/spatial-v5/source-inputs.json",
+    "sha256": "sha256:6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b"
+  },
+  "format": "MCR_SPATIAL_FRONTEND_SOURCE_COMPATIBILITY",
+  "frontend_allocation_binding": {
+    "bytes": 16840,
+    "path": "world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+    "sha256": "sha256:8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041"
+  },
+  "frontend_binding": {
+    "bytes": 16314,
+    "path": "world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+    "sha256": "sha256:86a5cf9891b77ed31054e4696ade8ae54092d5cbe1f7e8f442643be8b4192244"
+  },
+  "frontend_candidate_revision_at_pin": null,
+  "frontend_commit": "473534296490bbcd4c63a4a0eb85ce7fdd57215a",
+  "frontend_metadata_candidate_revision": 6,
+  "frontend_metadata_commit": "5d3e81f125dd6bf7f507dcf96914f6878c8fe6f4",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "limits": [
+    "Immutable source descriptor comparison only",
+    "No frontend/runtime or art-fidelity acceptance",
+    "No supplied ThemeManifest, Bootstrap or Product/operator admission"
+  ],
+  "map_id": "mcr_reference_scene_r3",
+  "map_revision": 6,
+  "reservation_commit": "390bb9a57c2ede32b814e8c36f8d1c85a10a99a2",
+  "reservation_sha256": "sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317",
+  "scenes": [
+    {
+      "map_objects": 39,
+      "runtime_resources": [
+        {
+          "bytes": 549155,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768
+        },
+        {
+          "bytes": 1203841,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/quality-v8/revenge/atlas.png",
+          "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+          "width_px": 1024
+        }
+      ],
+      "scenery_source": {
+        "bytes": 10456,
+        "path": "world/reference-scene-v2/quality-v10/revenge/scenery.json",
+        "sha256": "sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5"
+      },
+      "theme_id": "REVENGE",
+      "world_objects": 34
+    },
+    {
+      "map_objects": 39,
+      "runtime_resources": [
+        {
+          "bytes": 549155,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768
+        },
+        {
+          "bytes": 1215028,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+          "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+          "width_px": 1024
+        }
+      ],
+      "scenery_source": {
+        "bytes": 10420,
+        "path": "world/reference-scene-v2/quality-v10/parade/scenery.json",
+        "sha256": "sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855"
+      },
+      "theme_id": "PARADE",
+      "world_objects": 34
+    },
+    {
+      "map_objects": 39,
+      "runtime_resources": [
+        {
+          "bytes": 549155,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768
+        },
+        {
+          "bytes": 1201333,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/quality-v8/danger/atlas.png",
+          "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+          "width_px": 1024
+        }
+      ],
+      "scenery_source": {
+        "bytes": 10420,
+        "path": "world/reference-scene-v2/quality-v10/danger/scenery.json",
+        "sha256": "sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990"
+      },
+      "theme_id": "DANGER",
+      "world_objects": 34
+    }
+  ],
+  "source_input_pins_verified": 44,
+  "state": "CONTRACT_READY",
+  "version": 1
+}

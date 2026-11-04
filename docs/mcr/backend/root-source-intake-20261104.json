@@ -1,0 +1,675 @@
+{
+  "schema_version": 1,
+  "base": "c9dd4c980f39b12eda5a79fff871c8de48f8df71",
+  "source_intake_head": "845557272fae890dcb1ba7b6924ec4a5a07ffcfb",
+  "status": "INTEGRATED",
+  "combined_compile": "NOT_RUN",
+  "combined_native_runtime": "NOT_RUN",
+  "production_union_activation": "NOT_RUN",
+  "source_originals_preserved": true,
+  "unique_changed_paths": 80,
+  "source_checks": {
+    "python_ast": 18,
+    "json_parse": 11
+  },
+  "packets": [
+    {
+      "packet": "CR09",
+      "status": "INTEGRATED",
+      "source_handoff": "d2fe415274ae4c44d0a1c7c43c0f58a9fff5a903",
+      "destination_commits": [
+        "47441cb0f6451b4a7c00c1a8f553c1f3184cc4c4",
+        "b12c92e23c764baf4936557be63eb96c5907854e",
+        "a1085f51695a971ad0b9bcde8d9bd3f34330aff9"
+      ],
+      "path_count": 8,
+      "paths": [
+        {
+          "path": "backend/services/concert-service/src/product_rpc/mod.rs",
+          "source_git_blob": "32ca0a54a00d3a750590055179c639068c1aa680",
+          "destination_git_blob": "32ca0a54a00d3a750590055179c639068c1aa680",
+          "destination_sha256": "65b9610310b9644b83864e22aaff76c51e164271de0bb039f490b4c5c84c5623",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/product_rpc/scoped.rs",
+          "source_git_blob": "962c9c9cc27a1a82df0a6b2e6829a02255369f94",
+          "destination_git_blob": "962c9c9cc27a1a82df0a6b2e6829a02255369f94",
+          "destination_sha256": "f4b51f65f60aa4b26eaf646f3b0368d5c0e31863b5af489facf75993a843bf4b",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/product_owner_cancellation.rs",
+          "source_git_blob": "5bee5ff52ab7ac605870bd4c697800b3ce1c90cf",
+          "destination_git_blob": "5bee5ff52ab7ac605870bd4c697800b3ce1c90cf",
+          "destination_sha256": "dc26dc469641af155cca4412efd0e3b7232b2a7bdfc6a1a04463a9621904d719",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/product_owner_cancellation_support/cases.rs",
+          "source_git_blob": "c61ea78225b5aafbabf5372db9b650e16e88fc86",
+          "destination_git_blob": "c61ea78225b5aafbabf5372db9b650e16e88fc86",
+          "destination_sha256": "31c60c806fff35b3d51d157aa940f2e607abd3f92d705215646ca3e83dd94396",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/product_owner_cancellation_support/native_qualification.json",
+          "source_git_blob": "b4e6c9de651b484ebf5159dbac16bc084f799909",
+          "destination_git_blob": "b4e6c9de651b484ebf5159dbac16bc084f799909",
+          "destination_sha256": "1091723cc299cf6390cf99905e773c0a8f7173e780029b57871b31d18e55d350",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/product_owner_cancellation_support/qualify.py",
+          "source_git_blob": "ee9e39aa8100340fd357e6df19697fed637d8608",
+          "destination_git_blob": "ee9e39aa8100340fd357e6df19697fed637d8608",
+          "destination_sha256": "d5627cbe757cb220337fa2a93eb5529e49f9b0d521a71f916c0431b44a0035bd",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/product_owner_cancellation_support/qualify_http.py",
+          "source_git_blob": "0e76236628f412dd03e86dfad82d70ba68488bec",
+          "destination_git_blob": "0e76236628f412dd03e86dfad82d70ba68488bec",
+          "destination_sha256": "cae23054339a7cdae178608aeb89e8a5c7d721c32a93997ebea66acc24c69077",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "docs/mcr/backend/canonical-product-cancellation.md",
+          "source_git_blob": "b2c6c8f70f974922a321b8af759562b6773f6af2",
+          "destination_git_blob": "b2c6c8f70f974922a321b8af759562b6773f6af2",
+          "destination_sha256": "ca9925933ec6d27f4b2af47f39ff2e7f09940ec5225c8c954557d7cf04db86b5",
+          "disposition": "exact worker postimage"
+        }
+      ],
+      "qualification": "Original worker component evidence retained with its original source pins. Combined candidate build/runtime NOT_RUN."
+    },
+    {
+      "packet": "CR01-CR06",
+      "status": "INTEGRATED",
+      "source_handoff": "04c61b6f40ec383e26d1be2010af8cf360388e70",
+      "destination_commits": [
+        "9df05de49422908bc753cfe8d370ef5c3d523fe0",
+        "43ff93631e7d3f1b2cda96efb80c6504cfa40b03",
+        "7cf45a7148ab80b8e68d4990fef0ec0afabdf97a",
+        "f2af14a97537b2aeec07897a6511d1cfa611da43",
+        "10bf0b9db2a4137d9e917d927b93247e580c7edf",
+        "f0cac1bd05e37116fd28c4f8c91b1866bdd37ad8",
+        "6a738a1de79c11ab644c1ca1ab6d59850d3ca378",
+        "a5a7cf590ba222e9849d657f9dd95f12810ec102",
+        "3829c9b7e0f7194f839a429d1666caacba9e3d8e",
+        "7c3bafceaf02dfaf714f3b185f23eb169ff845f9"
+      ],
+      "path_count": 25,
+      "paths": [
+        {
+          "path": "backend/services/concert-service/tests/owner_authority_support/restart_contract.json",
+          "source_git_blob": "9f90c223a45c91c647f03acadd102a11f37f825b",
+          "destination_git_blob": "9f90c223a45c91c647f03acadd102a11f37f825b",
+          "destination_sha256": "7b37cd98980b64259561d5c18093a5aad6d71a532a5b3556a50b928b5a3e1b7c",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery.rs",
+          "source_git_blob": "a6a20b2c519e6af23f98836956636825388e8f70",
+          "destination_git_blob": "a6a20b2c519e6af23f98836956636825388e8f70",
+          "destination_sha256": "61332593160d7060606c233f13fe1dd7d24b169e7dfc98ffabfff62ef715b58e",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/capture.rs",
+          "source_git_blob": "e790b10eeb5021b2e2cab53a84af3b6297ec37ab",
+          "destination_git_blob": "e790b10eeb5021b2e2cab53a84af3b6297ec37ab",
+          "destination_sha256": "07d91d1a8c85e9942f6f59d85af32eaa3f4ef7b21041d6d954f1480025e71ea5",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/checkpoint.py",
+          "source_git_blob": "afcd9a80eb2c74e91e3c3d0a9407528c49254c9b",
+          "destination_git_blob": "afcd9a80eb2c74e91e3c3d0a9407528c49254c9b",
+          "destination_sha256": "d35d9d63b6afb6ef4608dd411a95ddcd3c85551b889c36f6e6697a50cb1c8967",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/controller.py",
+          "source_git_blob": "57e186915b0c65228c588d2205731b6328bd1ee3",
+          "destination_git_blob": "57e186915b0c65228c588d2205731b6328bd1ee3",
+          "destination_sha256": "45576f3a9c7847a6776df8514ecfc1be0c8b3e77050f3e16d4701f1cefa7b617",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/controller_cr04.py",
+          "source_git_blob": "942ff93913c8e706825a67076f74e0324794e6e4",
+          "destination_git_blob": "942ff93913c8e706825a67076f74e0324794e6e4",
+          "destination_sha256": "5111cd51ce1868fe52ef800ce5ef201ec778af880ea46e84a012f1ff15cdbfd8",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/controller_cr06.py",
+          "source_git_blob": "c9c4e5ff68b754bda317e0e935604a5541b17cf6",
+          "destination_git_blob": "c9c4e5ff68b754bda317e0e935604a5541b17cf6",
+          "destination_sha256": "7cc77f07f205a460145b4698f4da9e3e4c747884b9b77ad8f853ac038fa5e0a5",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/controller_uncertain.py",
+          "source_git_blob": "3c06ae916665e2fbc09ab6fd010dd1d7a154c8cc",
+          "destination_git_blob": "3c06ae916665e2fbc09ab6fd010dd1d7a154c8cc",
+          "destination_sha256": "80737bc7cb83bc50254b2748614738124405c2895057e25d2b654167eb57cbc0",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/environment.rs",
+          "source_git_blob": "c113d7c6dc3dc9fddecab67975a269579e7ac947",
+          "destination_git_blob": "c113d7c6dc3dc9fddecab67975a269579e7ac947",
+          "destination_sha256": "adde0dc16f21112e866bea96f11334d6033f6669fad408569de492f5c392c352",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/fairness.rs",
+          "source_git_blob": "78667b1ca5b70c8ba311891067910acc0cc472ae",
+          "destination_git_blob": "78667b1ca5b70c8ba311891067910acc0cc472ae",
+          "destination_sha256": "3e23f051b529ff59fe47984125191884b80c7e1e21a5c0354aeffb25271991ee",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/fault.rs",
+          "source_git_blob": "c6ee26da4d3f915a68c4f54d47523e1a856e0e4b",
+          "destination_git_blob": "c6ee26da4d3f915a68c4f54d47523e1a856e0e4b",
+          "destination_sha256": "6b6f48654e82427875ae5e2f433e038ba7fd824de94eddd18a0f8b9c9468293b",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/fixture.rs",
+          "source_git_blob": "91673cb86f445d6b0e4863c21efbd9ac5166b029",
+          "destination_git_blob": "91673cb86f445d6b0e4863c21efbd9ac5166b029",
+          "destination_sha256": "86d3a8e612b6bb9acbe6ecb934936f92671074a26d931e5cf3f58ab0dae10280",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/missing_key.rs",
+          "source_git_blob": "64ccf154e4f9ca7a14188d4eeee3075ac5f6903b",
+          "destination_git_blob": "64ccf154e4f9ca7a14188d4eeee3075ac5f6903b",
+          "destination_sha256": "c64827e79665609771a4bc6e316c715ea214256d13ee1bda8da4f788ffd3f1ff",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/owners.rs",
+          "source_git_blob": "df9c8b79dcecdb19e5f8acf5483a549d156e3c9c",
+          "destination_git_blob": "df9c8b79dcecdb19e5f8acf5483a549d156e3c9c",
+          "destination_sha256": "266f3b506947b44efd4b94d7ccd5d6116929c20dc9bc227393fc1f1474ecc885",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/profile_read_fault.rs",
+          "source_git_blob": "22d2effbdbf81d828f6d236a55315f01baa85577",
+          "destination_git_blob": "22d2effbdbf81d828f6d236a55315f01baa85577",
+          "destination_sha256": "986d6905e8dafa99d14789715f03062b2e5f71420bd5f042e1e044a0c2c23244",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/provenance.json",
+          "source_git_blob": "0a7a6aae0a60a908e16de90669f119b6da56b9d2",
+          "destination_git_blob": "0a7a6aae0a60a908e16de90669f119b6da56b9d2",
+          "destination_sha256": "70f7e21a29d60d57eeb23f4e50460eb642c1a7926b5b1c8d892ab8face76475d",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/qualify.py",
+          "source_git_blob": "080229bf4e6cf2156df9ca86fa79f0d5398dc04a",
+          "destination_git_blob": "080229bf4e6cf2156df9ca86fa79f0d5398dc04a",
+          "destination_sha256": "61a8fc90c93b203a83ad636acafb9d326ba212bacb02df93445397c2087225aa",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/qualify_cr04.py",
+          "source_git_blob": "d66147c7226e6c8809a3f16e24e077f70d1f08fe",
+          "destination_git_blob": "d66147c7226e6c8809a3f16e24e077f70d1f08fe",
+          "destination_sha256": "6cd77ca51f65ec42383e01a32c1210353e837157ad13df7f4a4256c76804863f",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/qualify_cr06.py",
+          "source_git_blob": "1ffa74fd5b19b2f6d8464c70052a08b9e83e8438",
+          "destination_git_blob": "1ffa74fd5b19b2f6d8464c70052a08b9e83e8438",
+          "destination_sha256": "2683871852832f6986419e8355d46599d8fb8d7b501893c3e8e5091b5fd1397a",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/qualify_uncertain.py",
+          "source_git_blob": "458ae70823460f75c8684282fac7ecf6586b400e",
+          "destination_git_blob": "458ae70823460f75c8684282fac7ecf6586b400e",
+          "destination_sha256": "879fb45a6bd0211f69f7d6578cf0aa016f48d26e3e982a79d46bc590a4ce6673",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/release.rs",
+          "source_git_blob": "189252f85c632b97167114793bf49ebaf647b1ba",
+          "destination_git_blob": "189252f85c632b97167114793bf49ebaf647b1ba",
+          "destination_sha256": "7f891de7c322e586944b5f8094f5e2664ed2338eeb8102d5c5e18309570b5852",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/uncertain.rs",
+          "source_git_blob": "ea50d6b3bdd6e885f5caaf3cce748c8d3c78b6d7",
+          "destination_git_blob": "ea50d6b3bdd6e885f5caaf3cce748c8d3c78b6d7",
+          "destination_sha256": "0787bb28ce27c870cac78c2a1d03116c580716ed34f1bc59ac0481e7e1a07ac2",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/uncertain_producer.rs",
+          "source_git_blob": "aea3042fdcc18ab45c18ee65b82c80484efd7596",
+          "destination_git_blob": "aea3042fdcc18ab45c18ee65b82c80484efd7596",
+          "destination_sha256": "105f124b2d38c62adaa67ef03d6b732b7ff55df207a2cab82c93f2977adf79d6",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/process_child_recovery_support/unfinished.rs",
+          "source_git_blob": "f024bfe1e42c14f502c3f45d66f265060d71e5c9",
+          "destination_git_blob": "f024bfe1e42c14f502c3f45d66f265060d71e5c9",
+          "destination_sha256": "752a837f75cd9040eedb48d9830bee384a440d746d448f0732316e8ec95292e1",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "docs/mcr/backend/child-recovery-process.md",
+          "source_git_blob": "75e194cd9d8f545fe7feabee7a821a4818e3c6e6",
+          "destination_git_blob": "75e194cd9d8f545fe7feabee7a821a4818e3c6e6",
+          "destination_sha256": "f861086b3086a706e54633c96151b8d7e54599590f5bcc53f593c28c9c57d0b1",
+          "disposition": "exact worker postimage"
+        }
+      ],
+      "qualification": "Original worker component evidence retained with its original source pins. Combined candidate build/runtime NOT_RUN."
+    },
+    {
+      "packet": "Party runtime",
+      "status": "INTEGRATED",
+      "source_handoff": "5043ed9c98acf8aa5b696f37cb533856a83aa571",
+      "destination_commits": [
+        "8c62ef7a90d8e0e13fda033a481b488f82e20d66"
+      ],
+      "path_count": 10,
+      "paths": [
+        {
+          "path": "backend/scripts/mcr/party_live_native_smoke.py",
+          "source_git_blob": "7bf6923515ea37194d031c1439778491dcb8be4d",
+          "destination_git_blob": "7bf6923515ea37194d031c1439778491dcb8be4d",
+          "destination_sha256": "086b349def1c4719a7dd8c8f8fabf14ee40ca3ad8cc9787d2d744c45739fd649",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/scripts/mcr/party_live_smoke.py",
+          "source_git_blob": "d0f87866ff27a3f7d27d2d9276e60e769b9282d8",
+          "destination_git_blob": "d0f87866ff27a3f7d27d2d9276e60e769b9282d8",
+          "destination_sha256": "2b6d5dacf12f8b12d7b41aef371deb47977b8e9f85dbc1f23b2b54905cd55908",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/party_live/mod.rs",
+          "source_git_blob": "964ddf5f859abe48ec19e78fee0cb26bcafe466d",
+          "destination_git_blob": "964ddf5f859abe48ec19e78fee0cb26bcafe466d",
+          "destination_sha256": "b5d447320d92cc947ecad83c09f4e89bb5069def1fff09e50e886d1a6697a851",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/party_live/product.rs",
+          "source_git_blob": "962d9e58b70affd42dfc34cebd6261d190d3ad68",
+          "destination_git_blob": "962d9e58b70affd42dfc34cebd6261d190d3ad68",
+          "destination_sha256": "5f1950589c96530065554eb3db98cdad57d8d3a258e47d065b11a0d1d63ea0d0",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/party_live/scope_guard.rs",
+          "source_git_blob": "bcfd19b94b153830fb4939315c71b5e63739a452",
+          "destination_git_blob": "bcfd19b94b153830fb4939315c71b5e63739a452",
+          "destination_sha256": "8f329b6a5ba8a516c619a87c1cba3a4037e82d39f97bf7eb4db252c504f0b833",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/party_live/wire.rs",
+          "source_git_blob": "28567b2a29a4067e39c5d15f6c6421ca89913ef9",
+          "destination_git_blob": "28567b2a29a4067e39c5d15f6c6421ca89913ef9",
+          "destination_sha256": "02f12929bd65d3bf812ed0fadb8f188caf687b243498143d322360661c09493d",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/party_live_native.rs",
+          "source_git_blob": "4a6aa4384a97d1ad5cf987a82edbfdbe2e79fee6",
+          "destination_git_blob": "4a6aa4384a97d1ad5cf987a82edbfdbe2e79fee6",
+          "destination_sha256": "2cc1997fff66e145aafd054f04bc2fda532a2ad4cb90db9d25f8d259f40051f6",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/party_live_support/mod.rs",
+          "source_git_blob": "b9710c5efbd7c286b100c74b8d40d354a84e23cb",
+          "destination_git_blob": "b9710c5efbd7c286b100c74b8d40d354a84e23cb",
+          "destination_sha256": "4f643eec90342763cd979a83bb59779af43ada662e1155882ff6e62076b7a0e9",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/party_live_wire.rs",
+          "source_git_blob": "8a5d9da8d9ccefbcb8c66e3df955339f537422c8",
+          "destination_git_blob": "8a5d9da8d9ccefbcb8c66e3df955339f537422c8",
+          "destination_sha256": "a932b539cc77da7b2cfaf870e39fd84b5b0c44ce713ea4a4f758677876f11622",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "docs/mcr/backend/party-live.md",
+          "source_git_blob": "5f0ad16dedc7ddb90c28ab5de2c2c4cca17b7d1a",
+          "destination_git_blob": "5f0ad16dedc7ddb90c28ab5de2c2c4cca17b7d1a",
+          "destination_sha256": "e60a03caf3f8863ecf107be16a0825b210ce5fb97a320ae04446f166b4fbe232",
+          "disposition": "exact worker postimage"
+        }
+      ],
+      "qualification": "Original worker component evidence retained with its original source pins. Combined candidate build/runtime NOT_RUN."
+    },
+    {
+      "packet": "NB01-NB02",
+      "status": "INTEGRATED",
+      "source_handoff": "67f722c64893f514338ab17e1ac8cdb10b5a138a",
+      "destination_commits": [
+        "f011797e4ba083b3a06840d3b20a30bd8f8fc40b",
+        "d32417859f09f44ac8b0da7c23f3aade65568c61",
+        "dd4d2dde65e6d06a94e94b4539876a763b778a0e",
+        "fc13474ebe828153707562fc523590931f5b8fcf",
+        "74cf48dc95f5bdc1970df0254f88bae06d991f0e",
+        "2088ada5e6dfe923913377ac7d81e896ee98dacb"
+      ],
+      "path_count": 6,
+      "paths": [
+        {
+          "path": "backend/services/concert-service/src/product_rpc/scope_ledger.rs",
+          "source_git_blob": "204421d77dbf02b5fb815974e878ee220aa2de7d",
+          "destination_git_blob": "204421d77dbf02b5fb815974e878ee220aa2de7d",
+          "destination_sha256": "f0d5d195cbed2a630d99a448d0a3a1926388295b72daa8806e30f986b5215929",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/product_rpc/scope_ledger/notification_binding.rs",
+          "source_git_blob": "86f17d1412434241e932672c9b9f9aac49889cf0",
+          "destination_git_blob": "86f17d1412434241e932672c9b9f9aac49889cf0",
+          "destination_sha256": "3c09a594d79ec8dfcbdf68e4e2e9c70c3f18383fd697668422015a8588f96cd5",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/notification_root_binding.rs",
+          "source_git_blob": "f123cbfdf987063f213cf59e6561737d570f92ae",
+          "destination_git_blob": "f123cbfdf987063f213cf59e6561737d570f92ae",
+          "destination_sha256": "3a77b44b40f1fd2bcee40656c99bed46ebc08e4418347d835179fdd550f9c78c",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/notification_root_binding_support/mod.rs",
+          "source_git_blob": "b16938cdb29d7a88e2574fccb5f9a918843b747f",
+          "destination_git_blob": "b16938cdb29d7a88e2574fccb5f9a918843b747f",
+          "destination_sha256": "c79125c254af6da36c7903108fae24bd950e0aa459eb7bb233d8044ad5d24037",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/notification_root_binding_support/run.py",
+          "source_git_blob": "e30233a1ee5549f123300edc8420719648bd89e6",
+          "destination_git_blob": "e30233a1ee5549f123300edc8420719648bd89e6",
+          "destination_sha256": "2a06d8050d76896780319dd25e543a48cd6b1b1ab40820fd3285e86668f6e4cb",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "docs/mcr/backend/notifications.md",
+          "source_git_blob": "130cb417195e517e6028b1d0550d7c9662b7706d",
+          "destination_git_blob": "130cb417195e517e6028b1d0550d7c9662b7706d",
+          "destination_sha256": "13fe514195062b33cd33d65ffe2f0fbf87faad2ffdd8b6d09697d52f73c532a4",
+          "disposition": "exact worker postimage"
+        }
+      ],
+      "qualification": "Original worker component evidence retained with its original source pins. Combined candidate build/runtime NOT_RUN."
+    },
+    {
+      "packet": "Operations",
+      "status": "INTEGRATED",
+      "source_handoff": "8844798769e4eb9b885721a186c6ad311235cbf5",
+      "destination_commits": [
+        "0508a0f9dfce8dbc49f214d8a6d233e5c056586b"
+      ],
+      "path_count": 18,
+      "paths": [
+        {
+          "path": "backend/scripts/mcr/operations_live_controller_test.py",
+          "source_git_blob": "ed78b1a00d62e7e2480cf10c30799b7fefa8d0f4",
+          "destination_git_blob": "ed78b1a00d62e7e2480cf10c30799b7fefa8d0f4",
+          "destination_sha256": "8db5976324e75c0fb7133907f384b8a3868e2c9783ca874a58fef4586795523a",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/scripts/mcr/operations_live_smoke.py",
+          "source_git_blob": "837edc503eddbf6f2a1badf35eb7cd21ff86a1ac",
+          "destination_git_blob": "837edc503eddbf6f2a1badf35eb7cd21ff86a1ac",
+          "destination_sha256": "1fc21c174bf1dabab88ac725a39da40790ea883baeeeb1135f85c17629eef484",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/migrations/0047_operations_native_witness.sql",
+          "source_git_blob": "d21308c6c958ab0784bbcb94fad69c24f53ea96b",
+          "destination_git_blob": "d21308c6c958ab0784bbcb94fad69c24f53ea96b",
+          "destination_sha256": "8757982a0f42ad9248565bb760e6a92f254ef8eb8debc2fcf1ee5758b0e9d43e",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/lib.rs",
+          "source_git_blob": "8c3c7df530e3bb135e157ad5b12dd62a5ad73ca9",
+          "destination_git_blob": "7fb28277fafda04a812df33391004421e3b284a7",
+          "destination_sha256": "7951a9ef9c8ef3d12c59f81302fe79703190204f44e6f47d6c6e6f0abb44160e",
+          "disposition": "Root union retained; one operations_live export added"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/audience.rs",
+          "source_git_blob": "b57361ea6a71d5cf1c31bced5769f4fc6f7a4262",
+          "destination_git_blob": "b57361ea6a71d5cf1c31bced5769f4fc6f7a4262",
+          "destination_sha256": "14aa81824df8b738740a86dbc855b4d5e8e650932ab47015e611fa1aaf2938e1",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/authority.rs",
+          "source_git_blob": "49db3bb3ca4954a7964914cb680e6dfb13908809",
+          "destination_git_blob": "49db3bb3ca4954a7964914cb680e6dfb13908809",
+          "destination_sha256": "dae5cb0ab6b7a15d9067ab0b9d924e531fe7620d6a80fba98e50ce3b2a3ac0c9",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/cursor.rs",
+          "source_git_blob": "237c80c44f7ee34f000b8b1ee4d53c0b131c5174",
+          "destination_git_blob": "237c80c44f7ee34f000b8b1ee4d53c0b131c5174",
+          "destination_sha256": "69923259365d7b9d2770e2a1cfc7c6d96db1383ab3dfe74658c88fc1d9256d54",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/mod.rs",
+          "source_git_blob": "35904e1102aef4c31824a891be0e16db754d793c",
+          "destination_git_blob": "35904e1102aef4c31824a891be0e16db754d793c",
+          "destination_sha256": "b46e1d993bc71c5fbc86d4def7afe2720e26c63e215ddd2a20c2f2dd63ca8633",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/owners.rs",
+          "source_git_blob": "4599f016066451b0e74111d18f10d1af6b1f7a59",
+          "destination_git_blob": "4599f016066451b0e74111d18f10d1af6b1f7a59",
+          "destination_sha256": "d5d4a39ad0b5bf40972f729128dd5abf2e80db418b9368b10d35fa700ee34857",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/runtime.rs",
+          "source_git_blob": "35be5c4dc82c46826aa2c31bb02cc3ab486b525d",
+          "destination_git_blob": "35be5c4dc82c46826aa2c31bb02cc3ab486b525d",
+          "destination_sha256": "a99ebd702c4361aa6d87ff91c20de502d100612d8bbbf1a68965d088aef1b4c5",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/settlement.rs",
+          "source_git_blob": "8f9a47c142192a7ed3c69659e9c24da99bb8632c",
+          "destination_git_blob": "8f9a47c142192a7ed3c69659e9c24da99bb8632c",
+          "destination_sha256": "93417c7a09e32c7ea0e3d27aeffb91f2573e0a9785f379871a1914fee697f9cf",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/src/operations_live/wire.rs",
+          "source_git_blob": "ad98a416506c3973dd6089c79bf8743b75331440",
+          "destination_git_blob": "ad98a416506c3973dd6089c79bf8743b75331440",
+          "destination_sha256": "37fdb8e013738e462bc3d6d8d3a29538004401bac8cb13b0bd1854d5e43ef7c9",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/operations_live_contract.rs",
+          "source_git_blob": "82a4c65d537db04ed5c1d9a25dba003aea40206f",
+          "destination_git_blob": "82a4c65d537db04ed5c1d9a25dba003aea40206f",
+          "destination_sha256": "32de7218c5a3a78d9b5dc72b223d8fcad7ed026971dbf4f5e757edcfa5192366",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/operations_live_native.rs",
+          "source_git_blob": "89f4646b20a783b7da861d638f87575de5c2ff07",
+          "destination_git_blob": "89f4646b20a783b7da861d638f87575de5c2ff07",
+          "destination_sha256": "bbcfb67965a8f150dca8589d3b7ba02890c9a1c7a2d7d0d04c902d6d9b6b1ee8",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/operations_live_support/capture.rs",
+          "source_git_blob": "baecfcebe6dd6613b5f544dea9bdc73604f4108f",
+          "destination_git_blob": "baecfcebe6dd6613b5f544dea9bdc73604f4108f",
+          "destination_sha256": "dc1ff202e50fa12eaa0f381135132b5688fa0f1fed9ffdebbfeb591d08b3f901",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/operations_live_support/environment.rs",
+          "source_git_blob": "97e7f80d2b22b4759832c525b5758ba6ca9b27f7",
+          "destination_git_blob": "97e7f80d2b22b4759832c525b5758ba6ca9b27f7",
+          "destination_sha256": "f6db7378a6f1420f0f3074676750e4ea1ef69488a8995fdd0c0571c6387376d0",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/operations_live_support/owners.rs",
+          "source_git_blob": "1161e1725c1905e3c4c7fba927654ce31311224b",
+          "destination_git_blob": "1161e1725c1905e3c4c7fba927654ce31311224b",
+          "destination_sha256": "04bcb958b6f2816f2ec99bf8ab745bfc0e62e0cd4e8cb42003dc13fc54a49327",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "docs/mcr/backend/operations-runtime.md",
+          "source_git_blob": "c5897aa51b73f6b4936435c79754fd5b6ec95d65",
+          "destination_git_blob": "b2adf7cce39dee2b363fbe19d21ed863cc70bbaa",
+          "destination_sha256": "a451aeee7cd37754bfd5281ca3fab5131938559840c99fda9dc0720504e6c244",
+          "disposition": "only local evidence prefixes normalized; original SHA256 bd35f45e255a977f81bb16d5e1178effc853d81b04241e87c5e26dc826a3e3d5"
+        }
+      ],
+      "qualification": "Original worker component evidence retained with its original source pins. Combined candidate build/runtime NOT_RUN."
+    },
+    {
+      "packet": "V10 spatial",
+      "status": "INTEGRATED",
+      "source_handoff": "834dc34afbbd61eef734ea55253d3c6b0f41cc12",
+      "destination_commits": [
+        "470c922f13b640d3d657893d416f7848ac3f67cd",
+        "4611567d17fa61de11f451ad5904fb3348492b10",
+        "ae29b02d82b7c9ed77e8ca9559f8ea8b6063ce8d",
+        "0b79c3ed5afa9e7b6cd43fe506d179ccfb0fa0c9",
+        "845557272fae890dcb1ba7b6924ec4a5a07ffcfb"
+      ],
+      "path_count": 13,
+      "paths": [
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/component-qualification.json",
+          "source_git_blob": "b8d7c54629732ef270de67ea6d35392803b80d67",
+          "destination_git_blob": "b8d7c54629732ef270de67ea6d35392803b80d67",
+          "destination_sha256": "69f9af195874de34d89f79c886bfd196746fe1ac363d278ff588ed470cdb48ca",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/engineering-source-review.json",
+          "source_git_blob": "a9d03f3ae7c47447567c71c3a8598b88768b3de9",
+          "destination_git_blob": "a9d03f3ae7c47447567c71c3a8598b88768b3de9",
+          "destination_sha256": "0c8a52fc32a18878e278b5949b70f0f303ebeef90b226704a539fb6d435c0512",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/frontend-source-compatibility.json",
+          "source_git_blob": "f5484508d170a2e8888af7ac52e7f11a2edb7a40",
+          "destination_git_blob": "f5484508d170a2e8888af7ac52e7f11a2edb7a40",
+          "destination_sha256": "e22c107e99d2afd80e5565bf8d6f17936091a42afe3cb06b7b1f34cbaeed6c70",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/map-manifest.json",
+          "source_git_blob": "c6bac2b5e378e5d95ac46cc85203d05abd9c3973",
+          "destination_git_blob": "c6bac2b5e378e5d95ac46cc85203d05abd9c3973",
+          "destination_sha256": "34369f4a84e8b27c78bdb62b25bacca8f0db550ab468f76b8a23f8f5dcdf3ac8",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/readiness.json",
+          "source_git_blob": "0d88fb56c693d028311ba21a1afa373c864ebcd2",
+          "destination_git_blob": "0d88fb56c693d028311ba21a1afa373c864ebcd2",
+          "destination_sha256": "6869b399b41ad240b754c265669bbd60ddb0032f1f23a5e2658353ac0f907a50",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/revision-reservation.json",
+          "source_git_blob": "9d49386995dfddf9651d25e59b0c2d4616da17fe",
+          "destination_git_blob": "9d49386995dfddf9651d25e59b0c2d4616da17fe",
+          "destination_sha256": "771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/scene-source-qualification.json",
+          "source_git_blob": "4ee77bf2cbd5325a2a786ad592828f746680697c",
+          "destination_git_blob": "4ee77bf2cbd5325a2a786ad592828f746680697c",
+          "destination_sha256": "ab24f6a50758dd6a5fe87b8d9c018db705395ab1dad18484580b3d87ecc84fcf",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/releases/reference-scene-v2/quality-v10/source-binding.json",
+          "source_git_blob": "df995c508d10aa3da69772b785a0aab0b8fbfac9",
+          "destination_git_blob": "df995c508d10aa3da69772b785a0aab0b8fbfac9",
+          "destination_sha256": "12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/scripts/mcr/build_spatial_release.py",
+          "source_git_blob": "c62c79cd4238c7ff80ab900921b147d57ce0ac35",
+          "destination_git_blob": "c62c79cd4238c7ff80ab900921b147d57ce0ac35",
+          "destination_sha256": "8452fb9c1c5cbf744faa676b36807650cf945e1170fbbdd273812e1066eb5738",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/scripts/mcr/test_spatial_release.py",
+          "source_git_blob": "a7a123bb229093312d845baadae1b8480998f694",
+          "destination_git_blob": "a7a123bb229093312d845baadae1b8480998f694",
+          "destination_sha256": "a915702e01a5739d274c4db7f6be3d7b2ffcbbc538684f3c872caec6dafe168a",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/bootstrap.rs",
+          "source_git_blob": "76120af926f1ace6afbd33d0321add57440c49c6",
+          "destination_git_blob": "76120af926f1ace6afbd33d0321add57440c49c6",
+          "destination_sha256": "f0904f031feef23b8da2cfdc40fe6a695e26a363218ee160fa74d5ea110e7747",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "backend/services/concert-service/tests/bootstrap_runtime_config.rs",
+          "source_git_blob": "ce9d671221b17bc4b7755eee1f7418d59adabecc",
+          "destination_git_blob": "ce9d671221b17bc4b7755eee1f7418d59adabecc",
+          "destination_sha256": "43b8f0ca2cd2552ca1a9ebe5bf7fc1e5a6a09588efee3a913d95ab1207b6c881",
+          "disposition": "exact worker postimage"
+        },
+        {
+          "path": "docs/mcr/backend/spatial-release.md",
+          "source_git_blob": "b1717989a661ded1d8cba2386977791938399a2a",
+          "destination_git_blob": "b1717989a661ded1d8cba2386977791938399a2a",
+          "destination_sha256": "d730d7a812c939610da1b5d8de6d3b707ca8dc2ce0d06bd9cab330651253a827",
+          "disposition": "exact worker postimage"
+        }
+      ],
+      "qualification": "Original worker component evidence retained with its original source pins. Combined candidate build/runtime NOT_RUN."
+    }
+  ],
+  "admission": {
+    "canonical_world_map": 4,
+    "canonical_avatar": "selected static v1",
+    "V10_map6": "NOT_ADMITTED",
+    "no_manifest_or_bootstrap_activation_changed": true
+  }
+}

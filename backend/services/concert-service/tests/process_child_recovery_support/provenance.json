@@ -1,0 +1,212 @@
+{
+  "CR03_extension": {
+    "base_commit": "0f93c1e73471c8c6acd14105717262fc0c80074f",
+    "compile": "NOT_RUN",
+    "copied_fixture_source": {
+      "backend/services/concert-service/tests/process_child_recovery.rs": "241c70a22213d5d23024a793d09c329bad8d35e159c976eed3bfca6a1fa5579e"
+    },
+    "native": "NOT_RUN",
+    "scope": "Actual ACTIVE and SEALED physical restart variants; no direct lifecycle or ACK write; all four native guards intentionally retained for explicit owned cluster teardown.",
+    "static_review": "Full new module and controller/runner delta inspected; no concrete unresolved source finding. No compiler or runtime credit."
+  },
+  "CR04_extension": {
+    "base_commit": "ef90021867332e159651f7f0ddbcc2dcb7f38d6b",
+    "compile": "NOT_RUN",
+    "native": "NOT_RUN",
+    "scope": "Actual omitted-key production drain then new-active plus retained-original key restoration across three physical Root PIDs. Full shared CR01 restart verifier and actual adapters; no direct ACK/phase/native release fixture shortcut.",
+    "static_validation": "Rustfmt, Python AST, focused actual API/controller review. Both concrete controller findings fixed: omitted-key protocol token is accepted, public case PASS attribution is CR04. No additional concrete Rust/API source finding; compile/native NOT_RUN."
+  },
+  "CR06_extension": {
+    "base_commit": "e34b90dd8616bc2c51a66d1acaf3521d4dd142c7",
+    "compile": "NOT_RUN",
+    "native": "NOT_RUN",
+    "scope": "Two real canonical terminal roots, eight actual native guards, physical restart, same composed ledger/typed settlers, concurrent batch-one production workers, actual hung adapter and rollback-only NOWAIT probe, four unique ACKs, real owner RPC reconciliation.",
+    "static_review": "Focused actual API/ownership/native/cursor review found no concrete source defect. Receiver corrected inherited controller default and added exact executing-script hash checks. Rustfmt/Python AST only; compilation/native NOT_RUN."
+  },
+  "authoring_source_head_historical": "2ee8ac6dc4d42fc8a63e0f2fba68130c7248d632",
+  "cr02_cr05_private_source_draft": {
+    "authoring_core": "e34b90dd8616bc2c51a66d1acaf3521d4dd142c7",
+    "canonical_sources": {
+      "backend/proto/authority/v1/lease.proto": "e0d1d839bbf3e6be2070236c04253ba77b963f59aef19cbc796ff250b68f1b1a",
+      "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+      "backend/services/concert-service/src/adapters/out/public_profile/mod.rs": "d99e638f7c86b6960799d6378cf157e7170cf64540338ce8080ca201acfe4a01",
+      "backend/services/concert-service/src/adapters/out/public_profile/profile.rs": "c3896273b1c6297602b39abae1a21279d0dbdbda681f60ad539d7f173918e766",
+      "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/child.rs": "28a3faddb1393e0ef24dbfcd8aa13d8cea1f731a980e1b255a9353b1e6f16454",
+      "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs": "5d4e6a64396a32daf46535bfb94bf34c5a6846142aacf2a6d2352ea105344b8b",
+      "backend/services/concert-service/src/product_rpc/child_recovery.rs": "aa8fba57bf86c7528d25ee22ba254b5b71005ff618735b463892e9965de391a0",
+      "backend/services/concert-service/src/product_rpc/scope_ledger/children.rs": "cc838859066d502493c9c65b123e517baad66e7af6311c9fe0a7bd24a1a8227a",
+      "backend/services/concert-service/src/product_rpc/scoped.rs": "e1a632ab3b80d06e1d816a86e599ba2242f9baaeaffaab0e184057666ae6816e",
+      "backend/services/concert-service/tests/owner_authority_support/qualify.py": "7891352ae8d272c04671b60dca34e149865c1aee6df4fa4a20cfbd2c885bcea8",
+      "backend/services/concert-service/tests/owner_authority_support/restart_contract.json": "7b37cd98980b64259561d5c18093a5aad6d71a532a5b3556a50b928b5a3e1b7c",
+      "backend/services/profile-service/migrations/0009_concert_public_profile_children.sql": "756bbfe4cf70d13765f580c28e5ba1bd147ebfd5a8970df4cb1d1829dbe90afa",
+      "backend/services/profile-service/src/concert_public_profile/mod.rs": "cfa6ef8a6eb4259048044186680a0bec63f2890de02535538f2ea5b6042ddff2",
+      "backend/services/profile-service/src/concert_public_profile/persistence.rs": "c7ea92bae50e514772b1a96b4f888b1e0301b44cb9a3175accf3c6c1e0af4a75"
+    },
+    "cases": [
+      "CR02",
+      "CR05"
+    ],
+    "changes": "Negative transport faults, explicit SDK future cancellation, shared physical outcome parameters, exact real Profile/native receipts, case-specific controllers and owned socket PG runner; no application changes.",
+    "compilation": "NOT_RUN",
+    "dependencies": "Existing integration target dependencies and unchanged selected release constructor/assets; no manifest or lock changes.",
+    "runtime": "NOT_RUN",
+    "starting_point_only": {
+      "README.md": "3dd3ba95e80a537f509471f097c14b1c14f4b63d61a3402c29a0f5151ccf43ef",
+      "profile_read_fault.rs": "a9c04bba2adfe1484650c675f7e2db92945ec0558be2b9209417f2cc57bf28f5",
+      "uncertain_producer.rs": "da3bc6f828c935480982d40a1d0df921c9091a02bc21a43258f688d03896854c"
+    },
+    "validation": "Private static source/patch/Python AST checks only; compiler/native qualification remains NOT_RUN."
+  },
+  "dependencies": "Existing concert-service development dependencies only; no manifest or lockfile changes.",
+  "destination_paths": [
+    "backend/services/concert-service/tests/process_child_recovery.rs",
+    "backend/services/concert-service/tests/process_child_recovery_support/"
+  ],
+  "files": [
+    {
+      "sha256": "3b276170b55f9e24d67841335b8ba3b8fe6d275831b8614f63bc8a0d0babbf3a",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/native.rs"
+    },
+    {
+      "sha256": "adde0dc16f21112e866bea96f11334d6033f6669fad408569de492f5c392c352",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/native/environment.rs"
+    },
+    {
+      "sha256": "0d9c52e710823bd936d36daf46da25dae08226efeb5db96dd4209dde2280a9ce",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/native/owners.rs"
+    },
+    {
+      "sha256": "438063134a950ef2d06a1f25a876f023552201ebab6304c8d77853ed70677806",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/native/capture.rs"
+    },
+    {
+      "sha256": "5f9eee8f0ed0beb269ee922263fcbdcfbda1a1e4809c28cc1a5038605a00a161",
+      "source": "backend/services/concert-service/tests/owner_authority_support/product.rs"
+    },
+    {
+      "sha256": "aa8fba57bf86c7528d25ee22ba254b5b71005ff618735b463892e9965de391a0",
+      "source": "backend/services/concert-service/src/product_rpc/child_recovery.rs"
+    },
+    {
+      "sha256": "e2ca01cb4b8889f0b41703c558eb65f82fced37c05b3dfdfc19b486a61ff0efe",
+      "source": "backend/services/concert-service/src/product_rpc/scope_ledger.rs"
+    },
+    {
+      "sha256": "cc838859066d502493c9c65b123e517baad66e7af6311c9fe0a7bd24a1a8227a",
+      "source": "backend/services/concert-service/src/product_rpc/scope_ledger/children.rs"
+    },
+    {
+      "sha256": "e1a632ab3b80d06e1d816a86e599ba2242f9baaeaffaab0e184057666ae6816e",
+      "source": "backend/services/concert-service/src/product_rpc/scoped.rs"
+    },
+    {
+      "sha256": "4f7dc6c889aedd7198d069e7bcbee202e87a0fa29da7b3d867c0e47151519592",
+      "source": "backend/services/concert-service/src/product_rpc/delivery.rs"
+    },
+    {
+      "sha256": "d99e638f7c86b6960799d6378cf157e7170cf64540338ce8080ca201acfe4a01",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/mod.rs"
+    },
+    {
+      "sha256": "c3896273b1c6297602b39abae1a21279d0dbdbda681f60ad539d7f173918e766",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/profile.rs"
+    },
+    {
+      "sha256": "3e5929ebe1a84ba7ad7ea6964add410f939ba1f29bbdfbfc72fe840518ed8d4c",
+      "source": "backend/services/concert-service/src/adapters/out/public_profile/local.rs"
+    },
+    {
+      "sha256": "5d4e6a64396a32daf46535bfb94bf34c5a6846142aacf2a6d2352ea105344b8b",
+      "source": "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs"
+    },
+    {
+      "sha256": "28a3faddb1393e0ef24dbfcd8aa13d8cea1f731a980e1b255a9353b1e6f16454",
+      "source": "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/child.rs"
+    },
+    {
+      "sha256": "27a6ffc9465fcefe04f778393f4e1da17d5c79c8355f1a8c08ee886eb1d27bdf",
+      "source": "backend/services/concert-service/Cargo.toml"
+    },
+    {
+      "sha256": "756bbfe4cf70d13765f580c28e5ba1bd147ebfd5a8970df4cb1d1829dbe90afa",
+      "source": "backend/services/profile-service/migrations/0009_concert_public_profile_children.sql"
+    },
+    {
+      "sha256": "8cbd027b83a7438e8e99578b8b8179944786ca399e0509f64cc2fbc48d0e28e9",
+      "source": "backend/services/concert-service/migrations/0028_product_owner_scope_lifecycle.sql"
+    },
+    {
+      "sha256": "d6304ba3154ed193c08922e5ae059a7b80d10f4501209ed0b046a22e0f1f52eb",
+      "source": "backend/services/concert-service/src/product_rpc/root_read.rs"
+    },
+    {
+      "sha256": "7ef1492842eca0e6da4659296de2a2023436724d8462c6590a0cf529cf0d4515",
+      "source": "backend/crates/platform/src/actor_delegation/concert_read.rs"
+    },
+    {
+      "sha256": "bd77f6d317ca922983b10f0d178de3151e5af88942b8df557cc4f70a1c4f2f0d",
+      "source": "backend/crates/platform/src/grpc_method_policy.rs"
+    },
+    {
+      "sha256": "1271e86cfeff5af970936a93d78ccd7dd17005aa858ca621823f3956bfbde0d3",
+      "source": "backend/services/concert-service/src/product_rpc/mod.rs"
+    },
+    {
+      "sha256": "c7ea92bae50e514772b1a96b4f888b1e0301b44cb9a3175accf3c6c1e0af4a75",
+      "source": "backend/services/profile-service/src/concert_public_profile/persistence.rs"
+    },
+    {
+      "sha256": "ddad670b4f80e882623a6cd8b5cf55a3c343beeb4141c2e7aef2ea9007cb8c8f",
+      "source": "backend/services/concert-service/tests/owner_authority_support/qualify_child_recovery.py"
+    },
+    {
+      "sha256": "16bcd5b4bba4f6af9030d5fb3ef866722a0dc690534e119bc46bcf8fc8238c73",
+      "source": "docs/mcr/backend/child-recovery-runtime.md"
+    },
+    {
+      "sha256": "e0d1d839bbf3e6be2070236c04253ba77b963f59aef19cbc796ff250b68f1b1a",
+      "source": "backend/proto/authority/v1/lease.proto"
+    },
+    {
+      "sha256": "bf74aa65cb6a7da5546ce2b84c00530ec69b49262a9efde9c6772378fa32fc56",
+      "source": "backend/services/auth-service/src/concert_authority/store.rs",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    },
+    {
+      "sha256": "259e1201fe1faa2269b31d4bfa9e7475ac2af63f748368bef0915960255f5693",
+      "source": "backend/services/auth-service/src/concert_authority/owner.rs",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    },
+    {
+      "sha256": "5f76cdde832a53f0a1e3f291190ee2c5bff8d7dc5e1927de8bf51e8d3efc7bfc",
+      "source": "backend/services/auth-service/migrations/0017_concert_owner_guard_leases.sql",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    },
+    {
+      "sha256": "a71ebdfe21baf401999f63da52ff892861b61748f1a56ed0ccd27bfbf1cdae22",
+      "source": "backend/services/friend-service/migrations/0017_concert_owner_guard_leases.sql",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    },
+    {
+      "sha256": "7891352ae8d272c04671b60dca34e149865c1aee6df4fa4a20cfbd2c885bcea8",
+      "source": "backend/services/concert-service/tests/owner_authority_support/qualify.py",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    },
+    {
+      "sha256": "e24940d19d6c348d6b5cc32ab169b7c51aaf9f6259ffb1ca2598433604fdc6ae",
+      "source": "backend/proto/concert/v1/product.proto",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    },
+    {
+      "sha256": "1271e86cfeff5af970936a93d78ccd7dd17005aa858ca621823f3956bfbde0d3",
+      "source": "backend/services/concert-service/src/product_rpc/mod.rs",
+      "source_head_observed_at_review": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9"
+    }
+  ],
+  "kind": "Historical source provenance; not a build or runtime checkpoint",
+  "private_draft_manifest_sha256": "5bbbbaab0519a1ef60e9d2dc691be5228890b6b1a3e1260ba37ba057774a6835",
+  "review_source_head_observed": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9",
+  "scope": "Actual Product/Delivery, Auth/Friend stores, Profile public service, native children, strict fixture mTLS and production worker. Negative-only Auth Complete fault. Root process is physically killed and replaced; fixture owner RPC servers share each Root child PID. After genuine RootFinished, an enabled exact Profile Complete negative transport and negative Local settler exercise the old production worker with zero ACKs; replacement restores actual adapters. Repeated new-process drains must preserve encrypted identity/key/ciphertext and original ACK timestamps.",
+  "six_case_contract_source": "f4a15ba981a327ee22aff0c59eed5885ffab9fd5:backend/services/concert-service/tests/owner_authority_support/restart_contract.json (byte-exact)",
+  "validation": "Authored and static-reviewed. Compile and physical CR01 NOT_RUN at initial source commit. Qualified build checkpoints capture the full committed source and selected-art/runtime-resource manifest separately."
+}

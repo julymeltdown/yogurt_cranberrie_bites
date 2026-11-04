@@ -1,0 +1,470 @@
+{
+  "artifacts": [
+    {
+      "bytes": 57493568,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "participant_delivery_retention",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "kind": [
+        "test"
+      ],
+      "manifest_path_is_CR10_isolated_worktree": true,
+      "sha256": "dc8cd978ded9cddb6d1365bc1f283eb28e799399f89e95976f7817d21c1a606e",
+      "source_commit": "05ae2e8ff5a9b0f33f922d19d97e5165b24b16e2",
+      "source_inputs_count": 2157,
+      "target": "participant_delivery_retention",
+      "test": true
+    },
+    {
+      "bytes": 50151936,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--bin",
+        "concert-service",
+        "--message-format=json"
+      ],
+      "kind": [
+        "bin"
+      ],
+      "manifest_path_is_CR10_isolated_worktree": true,
+      "sha256": "77e598a10b15e26acdc9b1095727aef8effc4cd36247a8857bac7cc9b16fb50e",
+      "source_commit": "05ae2e8ff5a9b0f33f922d19d97e5165b24b16e2",
+      "source_inputs_count": 2157,
+      "target": "concert-service",
+      "test": false
+    },
+    {
+      "bytes": 57225952,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway",
+        "--message-format=json"
+      ],
+      "kind": [
+        "bin"
+      ],
+      "manifest_path_is_CR10_isolated_worktree": true,
+      "sha256": "712ae759f4a2ef3da61dbafc85ba13d524e64c4c8d53cef3609366a26e9091a5",
+      "source_commit": "05ae2e8ff5a9b0f33f922d19d97e5165b24b16e2",
+      "source_inputs_count": 2157,
+      "target": "api-gateway",
+      "test": false
+    },
+    {
+      "bytes": 34953264,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_participant",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "kind": [
+        "test"
+      ],
+      "manifest_path_is_CR10_isolated_worktree": true,
+      "sha256": "014c34bc34c3e90508ace4f8b6d88e1c9fb30203002af1a7fbb189143b4c1020",
+      "source_commit": "05ae2e8ff5a9b0f33f922d19d97e5165b24b16e2",
+      "source_inputs_count": 2157,
+      "target": "concert_participant",
+      "test": true
+    }
+  ],
+  "base_commit": "c9dd4c980f39b12eda5a79fff871c8de48f8df71",
+  "compiled_source_commit": "05ae2e8ff5a9b0f33f922d19d97e5165b24b16e2",
+  "fixed_component": {
+    "binary_sha256": "dc8cd978ded9cddb6d1365bc1f283eb28e799399f89e95976f7817d21c1a606e",
+    "elapsed_seconds": 5.928,
+    "exit_code": 0,
+    "log_sha256": "455a55d8ba5b75dd1bb5839e89f86f883caeaf9bc1f289b521c2bdd504527341",
+    "max_whole_allocated": 840310784,
+    "native_test_ignored": 1,
+    "result": "PASS",
+    "target_release_before_test": true,
+    "tests_passed": 3
+  },
+  "limits": [
+    "Test-owned typed mTLS reply proxy shortens disclosure ceiling; no signed-JWT or clock mutation.",
+    "Exact production incident/JWT expiry scheduling and full browser IN01 not reproduced.",
+    "No fabricated capability, EOF, CompleteResponse, TTL fence release, canonical data rewrite or detached producer work.",
+    "Negative reset/partial-body fences survive until disposable owned-cluster teardown, which is not settlement proof.",
+    "Actual native positive is Participant GET. Avatar/preferences transport boundaries are covered by original controlled-peer regressions, not this native case.",
+    "Protected success body first-DATA expiry and error/drop/partial-body quarantine remain intentional. This patch does not settle lost/unknown bodies.",
+    "No full browser IN01, sustained application acceptance, exact signed-JWT expiry scheduling, production-incident causality, full Product/Participant main factory union, or IN05 acceptance claim.",
+    "Evidence successor adds only documentation/portable JSON after qualification; compiled/native source remains explicitly pinned above."
+  ],
+  "native": {
+    "actual_setup_http_statuses": {
+      "login-before-retention": 200,
+      "principal-1-bootstrap": 200,
+      "principal-1-login": 200,
+      "principal-1-profile": 200,
+      "principal-1-signup": 200,
+      "principal-1-verify": 200,
+      "principal-2-bootstrap": 200,
+      "principal-2-login": 200,
+      "principal-2-profile": 200,
+      "principal-2-signup": 200,
+      "principal-2-verify": 200,
+      "principal-3-bootstrap": 200,
+      "principal-3-login": 200,
+      "principal-3-profile": 200,
+      "principal-3-signup": 200,
+      "principal-3-verify": 200,
+      "refresh-after-error-EOF": 200
+    },
+    "command": [
+      "python3",
+      "backend/services/api-gateway/tests/participant_delivery_retention_support/native.py",
+      "--binary",
+      "<copied CR10 test>",
+      "--receipt",
+      "<compiled source receipt>",
+      "--bin-dir",
+      "<five immutable peers plus CR10 Gateway MAIN>",
+      "--cohort",
+      "<hash manifest>",
+      "--concert-bin",
+      "<CR10 Concert MAIN>",
+      "--report",
+      "<new private report>"
+    ],
+    "elapsed_seconds": 21.28,
+    "exit_code": 0,
+    "five_peer_input_equivalence": {
+      "live_baked_migration_paths_checked_before_and_after_runtime": true,
+      "mismatches": [],
+      "original_compiled_source": "d0f063d18a0549935f80a536077c30962d89f9e9",
+      "peers": [
+        {
+          "actual_migration_sha256": {
+            "0001_init_auth.sql": "a4af04e2d91b4ebbcad2b4d1e31724030492b859a16627d576f235203f75d1e6",
+            "0002_oauth_identities.sql": "902c977960e9d3c85ee7b4e96d355e8bbea5af92cad27855a53e1e8944bdf2d2",
+            "0003_governance.sql": "a0a47910510fc53fa218c7303bb3411f2a22f75af504061d913677875d3379b9",
+            "0004_oauth_authorizations.sql": "8da1c9adefd84cf22e9566c77fc0b180b4a8ce50fe2baa5a262653076dab2c30",
+            "0005_user_deletion_sagas.sql": "286811b445dae24dbeb87e79075c27d62936caa04b8c1c8708aa8494aef774b4",
+            "0006_atomic_auth_and_delivery.sql": "a1d72adc0b0fc558f6d20615198ca511a06c8eaaad6e0a95ccdc59e7bc81d5cc",
+            "0007_login_attempt_classification.sql": "ad3f0604a1c831cb7999337f564d6350aeca3cc691c185bdff26b3d63c011eb5",
+            "0008_refresh_token_families.sql": "8e06bf45a6082e63666e95fe2993d27e15b341ca4535e2ebe9793388d0e6e535",
+            "0009_user_deletion_operator_retries.sql": "7422660c10813cf3a4d64d85b30c53749cab41be4b22c05bc3daafdf2ea2c0ff",
+            "0010_user_deletion_dead_letter_cursor.sql": "27fcd1c9d7fccc206b78499b570e1b5fc5b711842c965aed3f815654e00ebe24",
+            "0011_user_deletion_trace_context.sql": "1b068d731b3959f276fde68ad2ed6dd6bb75500404d62f06a37cc4fed803168a",
+            "0012_mail_outbox_trace_context.sql": "3d98845e8e5b0ee12f9150d5ef1deb42b88013478165a02be3b9ff0f7c585404",
+            "0013_identity_binding_epoch.sql": "0062e550ad7895389f9e49175795db73e1e4b8b4fd4be5e3bcf2a6b083dcfc9a",
+            "0014_concert_relationship_revision.sql": "ab2b935a378a6c1f0a2a9339edfcc057ec4e74092c38410e8fb8a6225358b6a7",
+            "0015_concert_deletion_steps.sql": "6b5ad5b41e145dab76b41569f225d0f38f3db304e9b9c8e7e649af87a465f751",
+            "0016_concert_invalidation_journal.sql": "4224d8d0aee0704eb34ee5ef279f546d2fbdb9772b78c09526dafa63ed328622",
+            "0017_concert_owner_guard_leases.sql": "5f76cdde832a53f0a1e3f291190ee2c5bff8d7dc5e1927de8bf51e8d3efc7bfc",
+            "0018_notification_producer.sql": "524f6ffc3ad9d8f1dadfd8fa8fa04b5c6df3dcc9ec594cbdc6fd79154eeddd28"
+          },
+          "bytes": 46112128,
+          "live_baked_migration_relative_path": "backend/services/auth-service/migrations",
+          "manifest_path_origin": "retained integration checkout embedded in original d0f build",
+          "service": "auth-service",
+          "sha256": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7"
+        },
+        {
+          "actual_migration_sha256": {
+            "0001_init_friend.sql": "08b1f1d611b856c72237b907e206e534a7ebcddb06d79afa3207a5e25c2c06ba",
+            "0002_governance.sql": "b2fca092e1b81a6283b144919c54dbc9252327c39f74df359823aac87380e5aa",
+            "0003_query_hardening.sql": "1e3bd6d8a28ee725b86d7af751bbcdf6fbbf2d6b9ac199cc2cfd0ce0862bffe7",
+            "0004_follow_requests.sql": "faf17e6eefccfd2f26a669e92af6b753c54c9639a45bb41552c6dd04e013d2b9",
+            "0005_blocks_mutes.sql": "39480d08724c3cd17d773c29d82bed36ea5fa995ecd72012c6a4ef64698d030a",
+            "0006_user_lifecycle.sql": "30d3f49c2e2f8a43cce5639c32be53ab446e1bdb6653ec1928135a169cccb439",
+            "0007_people_recommendations.sql": "57cbd758e30fe83fa52ef5cbdfdf6034cbe54427497186dbe02d94cdd5091834",
+            "0008_people_model_registry.sql": "cf88b876fe303e4e2e7220ef57dc966ce709518107b0fa926bc9096891d9bd22",
+            "0009_recommendation_retention.sql": "f16ee1e167d7dbf6c3d4eaf4e511ce03ca2bc966b06bd2eed66c68f2c35bc3da",
+            "0010_owner_mutation_receipts.sql": "3c85dde8c8c556ee9a75af49703282cfa93d612d13a0130c6d9c1082e4d0462d",
+            "0011_user_deletion_fences.sql": "73be9a37e9b2049ea1dae45c9f4d42505af14ce9c70b1b7358ab8cb307466765",
+            "0012_recommendation_event_admission.sql": "3db47ecdc17f16122a9df9f2d310ee0b343c2c9a682ba2f6b8b54bc1dbc06f52",
+            "0013_recommendation_metadata_admission.sql": "cc012b57865f4c1c2f3da664b833baa6ee32be46dcbc8c99a3b90db299d49ab5",
+            "0014_runtime_recommendation_cleanup.sql": "169a785331a228d19446a6ccc1a90ca92ce202cd6658162826bff524b1c7126b",
+            "0015_concert_relationship_revision.sql": "05fe915674d7bfc755f3943d19f3bfd7e0659b0236b616be765dc96dcbb5ee62",
+            "0016_concert_invalidation_journal.sql": "8449449c7b7b3b8afb9a253976c22b1c54e0f9c885ce20c7d6330d4dfeb27cab",
+            "0017_concert_owner_guard_leases.sql": "a71ebdfe21baf401999f63da52ff892861b61748f1a56ed0ccd27bfbf1cdae22",
+            "0018_notification_producer.sql": "524f6ffc3ad9d8f1dadfd8fa8fa04b5c6df3dcc9ec594cbdc6fd79154eeddd28"
+          },
+          "bytes": 37830288,
+          "live_baked_migration_relative_path": "backend/services/friend-service/migrations",
+          "manifest_path_origin": "retained integration checkout embedded in original d0f build",
+          "service": "friend-service",
+          "sha256": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509"
+        },
+        {
+          "actual_migration_sha256": {
+            "0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+            "0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+            "0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+            "0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+            "0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+            "0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+            "0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930",
+            "0008_concert_self_profile.sql": "056fe8d0eb15f352fc8cbd6b07f4562ebca937fa857cd03fe129f319716cf544",
+            "0009_concert_public_profile_children.sql": "756bbfe4cf70d13765f580c28e5ba1bd147ebfd5a8970df4cb1d1829dbe90afa"
+          },
+          "bytes": 39884656,
+          "live_baked_migration_relative_path": "backend/services/profile-service/migrations",
+          "manifest_path_origin": "retained integration checkout embedded in original d0f build",
+          "service": "profile-service",
+          "sha256": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35"
+        },
+        {
+          "actual_migration_sha256": {
+            "0001_init_post.sql": "16ffb73c9c1aa3fe5c39b50bd3cdd33512e65310e9d190a9299b20a8a73b7ec8",
+            "0002_governance.sql": "6d3b6fc3ab611750ef1cb11029f206d5a6a97c82726f8d098c06b2086a9c4beb",
+            "0003_delivery_checkpoints.sql": "875274a1b08606aa254d3806b33fda2d5907fa2ba5d449ee8e0975fef669d6bf",
+            "0004_user_lifecycle.sql": "5f7a68cc57a3f35811a11877827fc9d6913a91fe5057e6ab1a4e5c5389f800ea",
+            "0005_moderation.sql": "55ae1057a0877abafd3d241634f32f5321c54a9ab0438baa4c1f006515867837",
+            "0006_feed_ranking.sql": "c7cd0bb466ebd79a80fcd44fa42b31d267a1dbabd7e7f38a59d222c0c083d9f3",
+            "0007_hybrid_home_feed.sql": "30b04a49e23f760f195173b5c612eeda695b8e9d08e12a41476061cace293fb3",
+            "0008_recommendation_retention.sql": "8011292d9fd1d7424a3b5b15f327117347fc3e2915b99034c4219882ebbd9ae5",
+            "0009_search_trigram_index.sql": "230cb948b02331db61b87643d13f248c1af05cf4cdd9607c6626ee339a92fe7c",
+            "0010_consumer_inbox.sql": "5f330ed23f14888e53d108a2884c6bea9953132e6140ecf9171ab8973b8fab00",
+            "0011_owner_mutation_receipts.sql": "2074dbdc63b47986e53f31c52b22c978cac788d55b79384ec6be122c028687ff",
+            "0012_outbox_aggregate_versions.sql": "255626f24d7219800b39bd72c27c4200c0001258c5da45a191de2f2866c166c0",
+            "0013_delivery_attempt_history.sql": "6648616528dd7777b7a9c06ea5829c08544b2bfd0501ae13f9acbcda8c7817c5",
+            "0014_audited_dead_letter_replay.sql": "1ec5b68ad313d26e7b3bcf5462fce121d811ea85ff0f901b0d43d4b14feb52ac",
+            "0015_user_deletion_fences.sql": "0cf4a6c6999e68cd37899e15bd34d0f8ea33e4b1d4d9fb187d9e0695877100ba",
+            "0016_outbox_trace_context.sql": "1ad46a742122c69a29736ef6ccb9573f0f8db86fa0370de175413a67fdf5f3a5",
+            "0017_target_delivery_scheduling.sql": "f58ed49ba3bc6b85d122d1fb027ed54acf79fde4c9095e5a4f71a1939d272760",
+            "0018_fenced_manual_replay.sql": "43655cb203bd8eb89888935d225a6ea326a2ff05b3421b594498f0fcf71eb776",
+            "0019_fenced_timeline_fanout.sql": "1374b9bafdf7d04fa4dc5ade859cfec4bc6ca732c2a728280335e392b0759096",
+            "0020_timeline_fanout_page_budget.sql": "c5b5c52be1d9b6ef177269dcb7d1c5ccd800cc3fda340c3279303ed99e978302",
+            "0021_timeline_projection_order.sql": "b9e5881932466730d16e8c55b84aacd0f73e00ebfc056e16d2f74e5e90dbe28d",
+            "0022_timeline_progress_retry_credit.sql": "730ea25b31e4f4ac3785ab41e4957784a6b0db13dc01185c7c4d46a0333f55bb",
+            "0023_affinity_source_order.sql": "652ba40c617548a00756b24f1006581a1929deaac3c5a52d022948ab844904e2",
+            "0024_affinity_pair_provenance.sql": "fb6224f34108e3ec6177ad4b61e52616d827816a8d5f4ec1da8ba44c885c2f9b",
+            "0025_controlled_affinity_baselines.sql": "f50b35d9654d6a0296633d4bc0053434d324fa65c4a03310764f515f6e342b71",
+            "0026_ordered_affinity_resolution.sql": "eed6a5bc90362c3cb0f3bea49e99287b34c41d9526db67fc545f5e3c924eb1c3",
+            "0027_recommendation_retry_identity.sql": "54cb16884d7094a206c35af6677cda98c35dbad28f2c6b673996d51033f5302d",
+            "0028_timeline_affinity_dependency_selection.sql": "159b066cfd8ef96cbf157ddbc91b4fd45c495f05a676235baafc026984c2c026",
+            "0029_authority_resource_witnesses.sql": "b9e6eac659bab71fd247cc053b0acd9d1abe04bb4ba743628916bffb14e01428",
+            "0030_runtime_legacy_affinity_capability.sql": "43812428d2dc5b0794adaf8192f140cabea3f050f42309d518ec7e089df785ff",
+            "0031_concert_feed_owner.sql": "82b7a25170d78281158e2a889614e08f343e57627846eee7310de97aefd386ac"
+          },
+          "bytes": 47215664,
+          "live_baked_migration_relative_path": "backend/services/post-service/migrations",
+          "manifest_path_origin": "retained integration checkout embedded in original d0f build",
+          "service": "post-service",
+          "sha256": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0"
+        },
+        {
+          "actual_migration_sha256": {
+            "0001_init_notification.sql": "3a74c58e0366823d732de64e2d3e3ba0c1ec1f1fa15bde379296e37ab8c0124c",
+            "0002_governance.sql": "d645b9fb9d23bf9295d63c90fdb0ba0df2c9435072d2bbef45e8b77e46f52087",
+            "0003_recipient_suppression.sql": "70b2cd29a581c838569d6e1cbd0f11920b3bceb2112b1e525c7190c05297854e",
+            "0004_notification_consistency.sql": "94efdaf34a7cc130274ba399b9c6299d9c2d19b9a2f546013f05f4a5a387d19e",
+            "0005_concert_inbox.sql": "c5b228ad5b502c2c182b76797b9c1c3f76189b51f7020a2226e6114ea09aa40a",
+            "0006_notification_authority.sql": "9edbc2ccb49513e2b35684ea1b6d7ad8cfb916c204e989470cd5b46184227be0"
+          },
+          "bytes": 31537776,
+          "live_baked_migration_relative_path": "backend/services/notification-service/migrations",
+          "manifest_path_origin": "retained integration checkout embedded in original d0f build",
+          "service": "notification-service",
+          "sha256": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8"
+        }
+      ],
+      "required_compile_inputs_verified": 1108
+    },
+    "fresh_real_auth_refresh": "PASS",
+    "guard_sha256": "1cfee2268cf7c967e378d33ce6e8d7e2a55544d3429001e0d67d0cb187746572",
+    "migration_counts": {
+      "api-gateway": 17,
+      "auth-service": 18,
+      "concert-service": 36,
+      "friend-service": 18,
+      "notification-service": 6,
+      "post-service": 31,
+      "profile-service": 9
+    },
+    "negative_resets": [
+      {
+        "mode": 3,
+        "partial_data": false,
+        "prepared": 2,
+        "root": {
+          "abandoned": false,
+          "cancellation_settled": false,
+          "delivered": false,
+          "phase": "ACTIVE",
+          "serialized": true
+        }
+      },
+      {
+        "mode": 4,
+        "partial_data": true,
+        "prepared": 4,
+        "root": {
+          "abandoned": false,
+          "cancellation_settled": false,
+          "delivered": false,
+          "phase": "ACTIVE",
+          "serialized": true
+        }
+      }
+    ],
+    "new_gateway_and_concert_MAIN_embedded_paths": "stable CR10 isolated worktree; actual Cargo artifact manifest paths verified",
+    "owners_after_positive": {
+      "auth": [
+        {
+          "count": 1,
+          "settled": true,
+          "state": "COMPLETED"
+        }
+      ],
+      "friend": [
+        {
+          "count": 1,
+          "settled": true,
+          "state": "COMPLETED"
+        }
+      ]
+    },
+    "positive_root": {
+      "abandoned": false,
+      "cancellation_settled": false,
+      "delivered": true,
+      "phase": "ROOT_FINISHED",
+      "serialized": true
+    },
+    "postgres_server_version_num": "160014",
+    "prepared_before_owned_shutdown": 4,
+    "prepared_transaction_capacity": 128,
+    "report_sha256": "a66db33a06ad18f99c4221eb5dc7d2ff04ad7ff9175134ea4d316bc5f908b48c",
+    "result": "PASS",
+    "terminal_error_actual_EOF": "PASS",
+    "terminal_error_http_status": 503
+  },
+  "original_participant_regressions": {
+    "binary_sha256": "014c34bc34c3e90508ace4f8b6d88e1c9fb30203002af1a7fbb189143b4c1020",
+    "elapsed_seconds": 2.504,
+    "exit_code": 0,
+    "log_sha256": "dcaa98f594234f9095a58c67aae2d06ab82ebc2440edf5dcdd692f42cee788f8",
+    "max_whole_allocated": 840318976,
+    "result": "PASS",
+    "target_release_before_test": true,
+    "tests_passed": 7
+  },
+  "prefixed_regression": {
+    "binary_bytes": 34914688,
+    "binary_sha256": "2256b6991f904660eb834ee007cb72566c064f3a9fe1a7d4c96f29830e385fab",
+    "exit_code": 101,
+    "log_sha256": "48c0cfa0b9f359f0fb42088d803f7ad55491f4ac5f0ce6f6a7604c398f0025b7",
+    "observed": "Actual closed error EOF completion count 0, required 1; drop/partial/invalid negatives pass.",
+    "pg_started": false,
+    "receipt_sha256": "f56176ed4b0c27a6eecfade474efd80efae5a09e06868c9b5eddb4ce2c7108f4",
+    "result": "EXPECTED_FAIL",
+    "source_commit": "df8728b1bc6a490b69f6782e8a294d880908b200",
+    "target_release_before_test": true
+  },
+  "preserved_unsuccessful_attempts": [
+    {
+      "conservative_limit": 751619276,
+      "exit_code": -15,
+      "granted_whole_hard_limit": 2147483648,
+      "kind": "private conservative allocation subguard abort",
+      "max_additional_allocated": 768925696,
+      "phase": "fourth original-regression compile, attempt 1",
+      "receipt_sha256": "012eeed7c98571356c970921843a3c9059cc569c2b40a082c9535b3bb1fb1bba",
+      "retry": "same source/target/baseline/window, corrected guard to granted whole 2 GiB, exact retry PASS4.42s",
+      "source_change": false
+    },
+    {
+      "phase": "retained d0f Concert MAIN runtime reuse",
+      "reason": "Original hash/2151 compile pins valid, but baked migration directory advanced to37; rebuilt exact Concert MAIN in stable CR10 worktree with36 migrations. No SQL restore or binary patch.",
+      "result": "UNQUALIFIED before runtime"
+    },
+    {
+      "phase": "retained d0f Gateway MAIN reuse",
+      "reason": "Two Participant production inputs changed; built fresh exact Gateway MAIN rather than claiming full input equivalence.",
+      "result": "NOT_USED"
+    }
+  ],
+  "resource_and_cleanup": {
+    "all_recorded_stops_unforced_exit_zero": true,
+    "cleanup": "PASS",
+    "full_workflow_release_at": "2026-11-04T06:36:22.461047+00:00",
+    "hard_whole_bytes": 2147483648,
+    "max_sampled_runtime_additional": 141434880,
+    "max_sampled_whole_additional": 981446656,
+    "native_fixture_host_successfully_waited_exit_zero": true,
+    "offer": "CR10-FIXED4-BACKEND-202611040633Z",
+    "owned_roots_absent": true,
+    "recorded_service_pids_absent": true,
+    "runtime_process_group_absent": true,
+    "target_access_after_release": false,
+    "target_handles_at_release": 0,
+    "target_release_at": "2026-11-04T06:34:24.207679+00:00",
+    "target_released_before_any_copied_test_or_PG": true
+  },
+  "reviews": [
+    {
+      "result": "no actionable findings",
+      "reviewer": "Boyle",
+      "runtime_claim": false,
+      "scope": "read-only two-production-adapter diff and disclosure/EOF context",
+      "source_commit": "dd34f46521f43ec23b7b3d9526df73e7e23c3cb1",
+      "unchanged_reviewed_bytes_at_compiled_source": true
+    }
+  ],
+  "scope_status": "implementation and scoped native validation complete; master integration pending",
+  "source_inputs": {
+    "all_independently_match_compiled_git_blobs": true,
+    "count": 2157,
+    "manifest_sha256": "15da799457b19e6073a83b1c15804be8d4f00034aafce17f5ba157c061e702a9"
+  },
+  "task": "CR10 Participant post-response delivery retention"
+}

@@ -562,3 +562,257 @@ with one of `baseline`, `quality-v6`, `quality-v8`, plus the frozen
 All six exact selected test commands exited 0. Full portable command templates
 and all source-check exit codes are in the component receipt; the two compiler
 attempts retain their distinct failure/success outcomes.
+
+## Quality-v10 successor: scope and revision reservation
+
+The v8 goal completed after an independent audit of actual remote master
+`babbc3f42eec8fa89b71f4c7d036f253c3c45237`: all eleven handoff paths match
+`3742056c` byte for byte; five ordered integrated commits have equivalent stable
+patch IDs, and old release/source/selected-avatar bytes are preserved. Its
+component qualification does not confer Product, physical-place or art acceptance.
+
+Root granted this sequential v10 assignment explicitly. After accepting it, the
+same isolated backend checkout starts `codex/mcr-be-spatial-v10` from the master
+above, with a new aligned unbudgeted goal. Exact scope is NEW
+`backend/releases/reference-scene-v2/quality-v10/**`, additive v10-only handling
+in the retained two spatial Python scripts, new spatial cases in the two
+bootstrap test files, and this append-only v10 document section. No production
+Rust, frontend, contracts, manifests, root composition or old release outputs
+are writable. No build or PostgreSQL resource is held.
+
+A fresh recursive scan of every tracked backend release JSON at that published
+base found server revisions 3, 4, 5 for `mcr_reference_scene_r3`, with no existing 6
+reservation or release. Under this accepted exclusive producer grant, this
+committed checkpoint **allocates actual new server map revision 6**, before any
+v10 generation. `quality-v10/revision-reservation.json` records the source/ref,
+scan coverage, prior identities and exact input pins. This is a source identity
+reservation; nothing has been published to a database, event-current pointer,
+operator bundle or admitted bootstrap. The artist's proposed 6 and frontend's
+minimum 6 were constraints, not prior authority for this allocation.
+
+Frozen artist input is `06562ff1962be525ed929ef431a54bb589860373`, retaining
+material source `c7b0cb013e5ab1d9f8cac08be1d0046c249e1cd4`. Frozen frontend input
+is `473534296490bbcd4c63a4a0eb85ce7fdd57215a`: finite 48×81, 16-pixel Tiled resource
+`world/reference-scene-v2/runtime/spatial-v5/canonical-map.json`, 24058 bytes,
+SHA256 `e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078`.
+Its three row-major layers have the expected dimensions. Geometry is
+`sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395`.
+The original frontend binding remains `map_revision:null` and pending allocation
+at that immutable source revision; it is not rewritten to forge historical
+publication. The three source scenery bodies each contain 34 WORLD objects.
+The expected delta is 560 terrain cells and zero collision cells, with old props,
+places, spawns and interactions retained. These semantic deltas and all source
+pins still require generator/native qualification; reservation alone proves none
+of that runtime behavior. Synthetic frontend fixtures 7005 have no production
+or canonical-allocation authority.
+
+At reservation time v10 generation, Rust, PostgreSQL adoption/conflict/stale-map
+and restart checks are NOT_RUN. Current v8/map5 proof is frozen. V10 remains
+NOT_ADMITTED with no new ThemeManifest/Bootstrap or operator switch. Source
+materialization proceeds through the frontend owner and designated publisher,
+independently of its remaining runtime feature work. No backend-authored Tiled
+serializer, implicit C06 family admission, new target or device gate is added.
+
+### V10 source-bound candidate checkpoint
+
+Published frontend sources at `29b1779e` were materialized by backend branch
+merge `32a40daec2b8694165d440813aa5c8e107c2bc33`. This merges existing published
+work; the backend producer authors no frontend path. The exact original
+`47353429` Tiled, frontend binding and generated descriptor bytes all match the
+checkout. The immutable reservation is commit
+`390bb9a57c2ede32b814e8c36f8d1c85a10a99a2`, reservation SHA256
+`771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317`.
+The retained generator verifies those reservation bytes before v10 generation.
+
+The new map ID remains `mcr_reference_scene_r3`, actual server revision 6,
+content hash
+`sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985`.
+Its raw MapManifest is 28854 bytes, SHA256
+`34369f4a84e8b27c78bdb62b25bacca8f0db550ab468f76b8a23f8f5dcdf3ac8`;
+source binding is 19471 bytes, SHA256
+`6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae`.
+The separate per-era source qualification is 8028 bytes, SHA256
+`6af6ae4374b1a9109cbe899ad16852bd087ac1a506f7db8b32e52c1be69cddcc`.
+This source-level engineering review preserves original artist provenance and
+all four original UNREVIEWED concept-place records. It supplies no complete
+new ThemeManifest or Bootstrap and accepts no art fidelity or physical venue.
+
+The generator proves exactly 560 row-major terrain changes against the pinned
+artist evidence. Every other geometry field, including the entire collision
+grid and ID, dimensions, overdraw, spawns, interactions and default spawn, is
+unchanged from map 5. All 34 WORLD placements and their fractional footprints
+are identical. Eight authored MAP representations replace three WORLD drawings
+and add five, yielding 39 displayed MAP objects; they introduce no solid
+footprints, backend place IDs or physical authority. The first source-only run
+caught an incorrect assumption of 41 MAP objects; the actual frozen descriptor
+established the three replacements, and the generator now enforces that value.
+
+Each era retains two runtime PNGs and 2,043,904 pixels. Bytes are REVENGE
+1,752,996, PARADE 1,764,183 and DANGER 1,750,488, all within the existing C06
+2,097,152-byte/pixel limits. The four unique runtime PNGs are integrity checked
+and completely decoded. Native/editable art sources are separately byte-pinned;
+that does not assert a pixel decode or visual acceptance of every source file.
+Each backend scene carries 24 source pins, below the retained limit of 32.
+
+`frontend-source-compatibility.json` pins the exact 56822-byte frontend generated
+descriptor, SHA256
+`6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b`,
+and the original 16314-byte source binding, SHA256
+`86a5cf9891b77ed31054e4696ade8ae54092d5cbe1f7e8f442643be8b4192244`.
+All 44 frontend source input pins and the exact three scenery/runtime descriptor
+bodies agree with the artist source and backend binding. The original frontend
+binding's null allocation remains historical source data, distinguished from
+actual server reservation 6. Any later frontend allocation-metadata publication
+must be frozen explicitly as a new input tuple; checkout drift is not waived.
+
+All 22 Python tests pass, covering all old candidates plus new terrain/collision
+and prop drift, missing terrain evidence, valid old map 5 Tiled resealing,
+existing-revision aliases, actual source descriptor matching and admission limits.
+All four exact generation checks pass, including byte-identical old map 3,
+map 4 and map 5 outputs. Planning, changed Rust formatting and diff checks pass
+(exit 0). Source archives, selected avatars, production Rust, contracts and
+lockfiles remain unchanged. The new native cases are authored but NOT_RUN:
+map 5→6 publication/adoption, immutable same-ID/revision conflict with no current
+head advance, stale map 5 refusal, and exact map 6 plus old map 5 bytes retained
+across a real postmaster restart. A fresh named build offer is still required;
+no target or database is held. Candidate readiness remains NOT_ADMITTED.
+
+### V10 allocated frontend metadata checkpoint
+
+Frontend metadata-only commit `5d3e81f125dd6bf7f507dcf96914f6878c8fe6f4`
+was published as `135ab0fe` under master `8502c143` and materialized by
+merge `4e9c576a`. Its current source binding is 16840 bytes, SHA256
+`8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041`.
+The separate 502-byte backend-allocation record has SHA256
+`6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060`.
+Both name actual revision 6 and the committed `390bb9a5` reservation with
+SHA256 `771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317`.
+The generator verifies exact published/current metadata bytes and permits
+only `candidate_map` and `backend_allocation` to differ from the original
+binding. Historical commit `47353429` retains its original null allocation;
+its Tiled and descriptor remain the frozen source tuple. No source repin,
+backend-authored frontend edit, database publication or admission is implied.
+
+The compatibility receipt now distinguishes these two frontend checkpoints:
+4514 bytes, SHA256
+`e22c107e99d2afd80e5565bf8d6f17936091a42afe3cb06b7b1f34cbaeed6c70`.
+MapManifest, backend source-binding, engineering review and scene qualification
+bytes are unchanged from the preceding v10 source checkpoint. All 23 Python
+tests pass (21.757 seconds), including refusal of a historical pending binding
+in place of allocated metadata. Exact generation checks pass for all four
+candidates (exit 0). Native compilation and PostgreSQL remain NOT_RUN pending
+a fresh named build lease; no target or database is held. NOT_ADMITTED remains
+unchanged.
+
+### V10 retained-loader finding and producer correction
+
+The first actual Rust1.88 three-target compile at source `5d250cd4` initially
+failed with a friend-service protobuf shadow error. The cached `contracts-build`
+rlib embedded a different worktree path. A narrowly evidenced package-only clean
+removed 20 files (816.4 KiB); the corrected retry passed in 35.808 seconds.
+The first clean invocation failed before cleanup because it omitted the explicit
+Rust1.88 `RUSTC` path. No broad cache cleanup or production-source change occurred.
+The three emitted executables and Cargo JSON were copied and hash checked;
+MEDIA was explicitly released with zero handles before running copied tests.
+
+That copied runtime-config suite reported 16 passes and one v10 load failure,
+`ReleaseUnavailable`. The producer included `quality-v10/ground.png` both among
+common source pins and runtime image pins. The retained loader correctly rejects
+duplicate paths across these groups. The v10-only producer correction excludes
+runtime paths from common pins after all original artist-source pins have been
+verified; the runtime ground retains its exact hash, size, dimensions and decode.
+Each era now has 23 scene-source pins. Existing production Rust, path uniqueness
+and source/provenance policy are unchanged. A regression assertion covers the
+complete scene path set. The previously failing exact copied test now passes
+as a diagnostic against the corrected binding; this does not substitute for
+fresh committed-source compilation and complete native qualification.
+
+Map 6 remains byte identical: raw MapManifest SHA256
+`34369f4a84e8b27c78bdb62b25bacca8f0db550ab468f76b8a23f8f5dcdf3ac8`,
+content `sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985`.
+The corrected source binding is 18838 bytes, SHA256
+`12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f`.
+Engineering review SHA256 is
+`0c8a52fc32a18878e278b5949b70f0f303ebeef90b226704a539fb6d435c0512`;
+scene-source qualification remains 8028 bytes, now SHA256
+`ab24f6a50758dd6a5fe87b8d9c018db705395ab1dad18484580b3d87ecc84fcf`.
+Frontend source/allocated-metadata compatibility stays byte identical at
+`e22c107e99d2afd80e5565bf8d6f17936091a42afe3cb06b7b1f34cbaeed6c70`.
+All 23 Python tests pass (21.764 seconds). The failed compile and copied-suite
+logs are retained privately. PostgreSQL is NOT_RUN at this checkpoint;
+NOT_ADMITTED remains unchanged. A fresh named lease is required for the
+corrected source checkpoint; the previous lease is released.
+
+### V10 corrected-source native qualification and delivery
+
+The fully qualified source checkpoint is
+`75b380d64b79739e86a17aaa1de3504b7b139c69`. Fresh offer
+`SPATIAL-CONFIG-BACKEND-202611040516Z` was explicitly accepted after clean-source,
+all 1981 backend/contract plus four frontend pins, zero target handles and
+38,978,072,576 free bytes were verified. Exactly the Concert library,
+`bootstrap_runtime_config` and `bootstrap` test executables were requested with
+Rust1.88 locked/offline jobs2, dev/test debug0 and incremental0. Their successful
+compile took 23.650 seconds (exit 0). An incidental Concert main executable
+appears in Cargo metadata only; it was not copied or executed.
+
+The BACKEND cache first retained an old protobuf-root helper and then an old
+Concert application rlib missing the source's `age_verification` export. Concrete
+compiler errors, cached metadata and embedded other-worktree paths established
+both defects. Only `contracts-build` (20 files, 816.3 KiB) and
+`concert-application` (7 files, 4.7 MiB) were cleaned; no source or broad cache
+cleanup was used. A private monitor's `du` raced a disappearing compiler archive;
+the failed compiler was confirmed terminal with no handles, the monitor gained
+bounded measurement retries and unconditional owned-child termination, and the
+retry above passed. Every failed attempt is retained separately.
+
+All three exact emitted executables, Cargo JSON and source pins were frozen
+outside BACKEND and hash verified. Fresh handle checks were empty before/after
+freezing. BACKEND was unconditionally released before any copied tests or
+PostgreSQL work, and was never read again by this workflow. Frozen executable
+SHA256 values are:
+
+- `concert_service`: `c966c968397c6a52cfca781cba7d6f149b284cf8f860faa1c6a9b72df6aedbf3`
+- `bootstrap_runtime_config`: `601b55503c618a4cf84901708180aa7f47b2cda3d4ae28d5bf428fa8dc938a30`
+- `bootstrap`: `2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda`
+
+Copied executables passed 84 pure tests: 62 library, 17 runtime configuration,
+and five bootstrap (all exit 0). The 31 unrelated library-native cases and two
+incumbent nonspatial bootstrap-native cases remain NOT_RUN. The two spatial
+native cases were separately executed for each of four candidates below.
+
+Eight PostgreSQL16.14 cases passed (all exit 0), using marker/inode-owned private
+Unix-socket clusters, actual candidate observations and real postmaster restarts:
+
+| Candidate | Actual revision | Restart PIDs | Cases | Cleanup |
+| --- | --- | --- | --- | --- |
+| baseline | 3 | 66650 → 66778 | 2 PASS | PASS |
+| quality-v6 | 4 | 67038 → 67139 | 2 PASS | PASS |
+| quality-v8 | 5 | 67460 → 67554 | 2 PASS | PASS |
+| quality-v10 | 6 | 69207 → 69896 | 2 PASS | PASS |
+
+The map6 run published and adopted over actual map5, preserved canonical map5
+bytes, rejected a valid same-ID/revision conflicting map without advancing the
+event head, refused stale map5 selection, and retained exact map6/map5 bytes
+through the restart. All four place records stayed virtual/concept-only. The
+initial monitor-wrapped cluster name lacked the required `mcr-pg-` prefix; the
+retained Rust ownership guard refused it before transactions. Cleanup passed,
+only the new private root naming was corrected, and all eight cases then passed.
+No production check or source fixture was weakened. All owned clusters are gone.
+
+Observed maximum whole-workflow growth was 458,375,168 bytes (~0.427 GiB), below
+the 0.60 GiB estimate and 0.70 GiB cap including the retained prior frozen cohort.
+Minimum free space across final compile/native monitoring was 37,763,899,392
+bytes, above the 8 GiB floor. No foreign process, target or database was stopped.
+The resource monitor and raw reports remain in private evidence
+`/tmp/mcr-spatial-v10`; previous v8 evidence is unchanged.
+
+Portable `quality-v10/component-qualification.json` records exact inputs,
+commands/exit codes, frozen binaries, actual observations, restart/cleanup,
+source review, failures/remediation, budgets and limits. Its SHA256 is
+`69f9af195874de34d89f79c886bfd196746fe1ac363d278ff588ed470cdb48ca`. It records CONTRACT_READY component evidence and NOT_ADMITTED.
+Map6 ac30/ef52, corrected binding12d14fa1, scene qualification ab24f6a5 and frozen
+FE473/allocated-metadata5d tuple remain as above. This supplies no complete
+ThemeManifest/Bootstrap and changes no operator bundle, IN01 live baseline,
+physical-place status, public multiuser or art-fidelity acceptance. Final normal
+master publication and exact path/ancestry audit remain the designated delivery
+integrator's handoff boundary.

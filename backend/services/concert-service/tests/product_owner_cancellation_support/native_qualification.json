@@ -1,0 +1,452 @@
+{
+  "base_commit": "c9dd4c980f39b12eda5a79fff871c8de48f8df71",
+  "build": {
+    "aborted": null,
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "concert-service",
+      "--test",
+      "product_owner_cancellation",
+      "--no-run",
+      "--message-format=json"
+    ],
+    "binary_bytes": 61714240,
+    "binary_sha256": "d3fdfc5264396a0a8660978257916758d4a9ae2284d154d72f2362f28914de6a",
+    "checkpoint_sha256": "d1500b7416f3fc183e01cb1e44031b441e026f305857aea5050885c816c3d3cc",
+    "debug": 0,
+    "elapsed_seconds": 5.11,
+    "exit_code": 0,
+    "hard_compile_bytes": 751619276,
+    "hard_whole_bytes": 2147483648,
+    "incremental": 0,
+    "max_additional_allocated": 12677120,
+    "receipt_sha256": "43474f7f5cb6d47eead143e75222aab465b97378436c913383dc8059f1b57c82",
+    "source_commit": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+    "source_pins_sha256": "6cb8617b85de48b9bd5b8c3f63c5898477fa0027b6a1180ea56b0593e2e64880"
+  },
+  "compiled_source_commit": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+  "complete_input_pins": {
+    "count": 2070,
+    "independent_git_tree_match": true,
+    "json_sha256": "6cb8617b85de48b9bd5b8c3f63c5898477fa0027b6a1180ea56b0593e2e64880"
+  },
+  "components": [
+    {
+      "case": "cases::caller_drop_destroys_actual_product_before_owner_release",
+      "elapsed_seconds": 3.14,
+      "guard_sha256": "d7352b1741ebb57e66c5afb8a6711ba310c44021c5e7ac59813a68ace15e6298",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "receipt_sha256": "a97a818654250f23bc5297051edf0d45a681bab1baa82ac840bab5026aaf8ba1",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::original_deadline_stops_actual_product_and_settles_without_delivery",
+      "elapsed_seconds": 3.91,
+      "guard_sha256": "85444588815e0a729f2b969bdaebdb7e9f13175490b56606650d41b20f4381f0",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "receipt_sha256": "0db893cbcc354939123ec4bc27502e12ba96791c72cf67b64e936cbdbe3af36e",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::admitted_callback_past_expiry_retains_actual_product_fences",
+      "elapsed_seconds": 4.58,
+      "guard_sha256": "7c487783a4336bbc8b8a8b8a489c67ac8a66b8286bb730733999ebcb6e72cb7b",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "receipt_sha256": "b1ecdcd3cf7e96e82ffb1de242a9b3863f4f047cd19ff8f81e0032ebc9b7b80b",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::committed_native_without_receipt_keeps_actual_product_quarantined",
+      "elapsed_seconds": 4.77,
+      "guard_sha256": "1fba2f18e3ee379ca2b4914a2b58797ce503f73da2a0cc9265883f981aa2d79f",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "receipt_sha256": "a40d88dd934fd162775edac941ec8a24724dff6c5624198b459f0b9616a82e2e",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::successful_handoff_lost_before_eof_never_becomes_cancellation",
+      "elapsed_seconds": 2.33,
+      "guard_sha256": "403f9702e187a56c888fd312d047091027f002b090f223aa152c518e63ea7ae2",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "receipt_sha256": "b81f958761c957879ef82d2b86d2073b705d57ff22e416f48893ede4df1cd5b1",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::original_context_queries_parent_and_actual_success_eof_are_preserved",
+      "elapsed_seconds": 2.65,
+      "guard_sha256": "7e1b25e4799735cb359fe609e3f1787cb03a7217dd0c5677ec6c1a39ba00f806",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "receipt_sha256": "7eaa9ef0539bbb4f7153def527d8cb473358a4e22e8dbbb60a8c6478d2fa0e34",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::actual_publication_failure_is_supervised_before_producer_dispatch",
+      "elapsed_seconds": 3.53,
+      "guard_sha256": "5a1566e19d93e07bb460ab9d35f47b9fb078b75042a3a3611bf80e99d84b86fd",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "receipt_sha256": "b8eaca7728aed65848e3d707d4892f4f17604c49d2c588ec58cb0a47d8780214",
+      "status": "PASS"
+    },
+    {
+      "case": "product::produced_errors_keep_real_guards_until_terminal_delivery",
+      "elapsed_seconds": 4.35,
+      "guard_sha256": "1c098c4f83aec051d28f920b616870bd3504cdc37ff35dc1ff82783cad295326",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "receipt_sha256": "1d9f83810cf56fc46c5b3ddeea350ab1c36db348ce870683d4adcefccbdb9042",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::actual_product_destructor_fault_prevents_terminal_proof",
+      "elapsed_seconds": 2.34,
+      "guard_sha256": "a6c2cc0ff97a41de50f2440ff327d20da3d520a8213be7ecd693dbd845a1fe16",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "receipt_sha256": "da42ee1b5de0a5a538231a76d0ec14321edc97d90c0f3fd671fb3fd051e754ba",
+      "status": "PASS"
+    },
+    {
+      "case": "cases::caller_drop_during_actual_awaited_publication_never_dispatches_product",
+      "elapsed_seconds": 2.33,
+      "guard_sha256": "62d3ba2651372fb1deb57f8ebe8993568a5863617d3687f4959d8df5c280c34a",
+      "migrations": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "receipt_sha256": "346a90fc1b76c01c5c92982ea055e178bfa5662a161d1a8d3a07a1ae5c32791a",
+      "status": "PASS"
+    }
+  ],
+  "copied_workflow_release": {
+    "http_guard_sha256": "2f22ab391ec0a2a41e94c906cc195e8f03feb3f8276a4209689395118ca13bc5",
+    "http_report_sha256": "5ee207952a3426236b450b31dbb8ed6555051fdf86578126e433b69d06ab3044",
+    "max_sampled_whole_additional": 225640448,
+    "native_summary_sha256": "16c5cefb76a382f51fed208540f346da1c498d5bc2cc7ed9d212cb6989ba8164",
+    "offer": "CR09-RETRY-BACKEND-202611040600Z",
+    "original_failures_retained": true,
+    "owned_processes_absent": true,
+    "owned_roots_absent": true,
+    "qualified_actual_http": true,
+    "qualified_component_cases": 10,
+    "released_at": "2026-11-04T06:05:08.791124+00:00",
+    "source_commit": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+    "state": "RELEASED",
+    "target_access_since_release": "NONE"
+  },
+  "copied_workflow_release_sha256": "28f9c63201e358ebc0025613d780c66d8ce1984ffacc4144f0ed880ed7a86df3",
+  "http": {
+    "actual_identity_statuses": {
+      "http-login": 200,
+      "http-profile": 200,
+      "http-signup": 200,
+      "http-verify": 200
+    },
+    "binary_sha256": "d3fdfc5264396a0a8660978257916758d4a9ae2284d154d72f2362f28914de6a",
+    "cleanup": {
+      "owned_root_absent": true,
+      "status": "PASS",
+      "unsettled_scopes": "Owned fixture teardown only; no fabricated successful terminal delivery"
+    },
+    "driver_sha256": "cae23054339a7cdae178608aeb89e8a5c7d721c32a93997ebea66acc24c69077",
+    "expected_reset_and_expired_quarantine": {
+      "auth": 2,
+      "concert": 0,
+      "friend": 2
+    },
+    "guard": {
+      "aborted": null,
+      "elapsed_seconds": 10.91,
+      "exit_code": 0,
+      "finished_at": "2026-11-04T06:04:25.604009+00:00",
+      "fixed_target_growth": 16384,
+      "hard_runtime_bytes": 858993459,
+      "hard_whole_bytes": 2147483648,
+      "max_sampled_runtime_additional": 163123200,
+      "max_sampled_whole_additional": 225640448,
+      "owned_roots_absent": [
+        true
+      ],
+      "target_access": "NONE"
+    },
+    "guard_sha256": "2f22ab391ec0a2a41e94c906cc195e8f03feb3f8276a4209689395118ca13bc5",
+    "migration_receipts": {
+      "auth": 18,
+      "concert": 36,
+      "friend": 18
+    },
+    "peer_binary_sha256": {
+      "api-gateway": {
+        "sha256": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470",
+        "size": 57225248
+      },
+      "auth-service": {
+        "sha256": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7",
+        "size": 46112128
+      },
+      "friend-service": {
+        "sha256": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509",
+        "size": 37830288
+      },
+      "notification-service": {
+        "sha256": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8",
+        "size": 31537776
+      },
+      "post-service": {
+        "sha256": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0",
+        "size": 47215664
+      },
+      "profile-service": {
+        "sha256": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35",
+        "size": 39884656
+      }
+    },
+    "peer_compiled_source": "d0f063d18a0549935f80a536077c30962d89f9e9",
+    "process_stops": [
+      {
+        "exit_code": 0,
+        "forced": false,
+        "resource": "in_process_mail_sink",
+        "service": "local-mail"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "api-gateway"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "auth-service"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "post-service"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "friend-service"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "notification-service"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "profile-service"
+      },
+      {
+        "exit_code": 0,
+        "forced": false,
+        "service": "redis"
+      }
+    ],
+    "report_sha256": "5ee207952a3426236b450b31dbb8ed6555051fdf86578126e433b69d06ab3044",
+    "source_commit": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+    "stack_artifacts_sha256": "fd73d70573acb217679a757ff9cbeae2326c4df9d6aed9c7c2bf91358362e654",
+    "status": "PASS",
+    "test": {
+      "case": "http::actual_public_router_retains_real_owners_and_checks_before_bytes",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "\nrunning 1 test\ntest http::actual_public_router_retains_real_owners_and_checks_before_bytes ... actual login/JWT/current Auth+Profile/full public router/socket normalization/ungated actual terminal HTTP framing settles both real owners and records genuine DeliveryCompleted; separate held-frame gate EOF settles both owners; actual TCP reset drops the unopened response body and retains both guards; delayed poll past original ceiling discloses no representation and retains both guards. Two scopes remain quarantined for owned-cluster teardown; no positive product, Gift, full TLS identity-main or restart claim\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 2.40s\n\n"
+    }
+  },
+  "limitations": [
+    "Product modes remain disabled; no production main activation, typed producer union or supervised production child worker is inferred.",
+    "Peer main binaries were compiled at d0f063d1; every owning service, shared crate/proto/script/manifest/lock input remained unchanged. No peer compiled revision is relabeled.",
+    "Six identity mains use parity transport; canonical owner and fixture Product/Delivery RPCs use real mTLS. Full internal-TLS-main startup is not qualified.",
+    "Component successful EOF is actual retained gRPC body plus authenticated terminal RPC; outer public HTTP is certified only by the separate actual TCP fixture.",
+    "Gated reset/expired HTTP cases change size hints and do not certify unchanged terminal framing; the positive ungated actual TCP case does.",
+    "Expected unknown-work exclusions are observed before teardown; shutdown is not settlement.",
+    "Original failures remain failures. Current documentation/receipt successor is not a newly compiled source revision.",
+    "No browser, new positive product/Gift feature, cross-producer restart, whole MCR acceptance or master publication is claimed."
+  ],
+  "native_summary_sha256": "16c5cefb76a382f51fed208540f346da1c498d5bc2cc7ed9d212cb6989ba8164",
+  "peer_input_equivalence_sha256": "ce76d42095ea697d8520efd88d1e90a47e308a4ffdb2432889d6bc9890280b0c",
+  "peer_reuse_provenance": {
+    "all_peer_service_sources_unchanged": true,
+    "changed_backend_paths": [
+      "backend/services/concert-service/src/product_rpc/mod.rs",
+      "backend/services/concert-service/src/product_rpc/scoped.rs",
+      "backend/services/concert-service/tests/participant_cancellation_support/consumer_native_qualification.json",
+      "backend/services/concert-service/tests/participant_cancellation_support/consumer_platform_qualification.json",
+      "backend/services/concert-service/tests/participant_cancellation_support/platform_provenance_followup.json",
+      "backend/services/concert-service/tests/product_owner_cancellation.rs",
+      "backend/services/concert-service/tests/product_owner_cancellation_support/cases.rs",
+      "backend/services/concert-service/tests/product_owner_cancellation_support/qualify.py",
+      "backend/services/concert-service/tests/product_owner_cancellation_support/qualify_http.py"
+    ],
+    "host_source": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+    "original_cohort_sha256": "90a7e7fb4231471ea02cb3b1639a72e0c18be413d582aa561e7913b2b4efb058",
+    "peer_compiled_source": "d0f063d18a0549935f80a536077c30962d89f9e9",
+    "peer_copied_sha256": {
+      "api-gateway": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470",
+      "auth-service": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7",
+      "friend-service": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509",
+      "notification-service": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8",
+      "post-service": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0",
+      "profile-service": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35"
+    },
+    "peer_unchanged_since_compile": true,
+    "scope": "Normal peer main binaries; new Concert test host is separately compiled. Gateway dev dependency Concert is test-only, not the reused main binary.",
+    "shared_crates_proto_scripts_manifests_locks_unchanged": true
+  },
+  "previous_failed_checkpoints": [
+    {
+      "build_credit": "NONE",
+      "owned_process_group_terminated": true,
+      "phase": "private build guard missing field",
+      "receipt_sha256": "0cc08b37f1cd81d012d3cff26f2362b7bb57105d207b811e2f16c1e322d00d97",
+      "source_commit": "32f95676be921729c8bfa4916c2ed7490d60bed1"
+    },
+    {
+      "actual_guard_stop_shortening_ns": 417,
+      "cleanup": "PASS",
+      "phase": "first actual caller-Drop case pre-cancel assertion",
+      "report_sha256": "85f084d79c5e9d82aa82d60926c6a7a3d43638e5ca575c2dbb0bcf9729477cef",
+      "source_commit": "32f95676be921729c8bfa4916c2ed7490d60bed1",
+      "status": "FAIL",
+      "test_only_correction": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed"
+    },
+    {
+      "cleanup": "PASS",
+      "correction": "Private argument changed Apple LibreSSL to installed Homebrew OpenSSL 3; no source or binary change",
+      "phase": "HTTP fixture OpenSSL preflight",
+      "report_sha256": "ba2ba10c0b9c37672b0ac82976c77fee81b379a96496e6778860d9408482bcbc",
+      "source_commit": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+      "status": "FAIL"
+    }
+  ],
+  "production_source_changed_in_test_correction": false,
+  "publication": "PENDING_ROOT_SCOPE_INTAKE_AND_NON_FORCE_MASTER_VERIFICATION",
+  "qualification_scope": "Actual generic Product component cancellation and public HTTP EOF regressions; production activation and master delivery pending",
+  "source_commits": [
+    "32f95676be921729c8bfa4916c2ed7490d60bed1",
+    "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed"
+  ],
+  "source_postimage_sha256": {
+    "backend/services/concert-service/src/product_rpc/mod.rs": "65b9610310b9644b83864e22aaff76c51e164271de0bb039f490b4c5c84c5623",
+    "backend/services/concert-service/src/product_rpc/scoped.rs": "f4b51f65f60aa4b26eaf646f3b0368d5c0e31863b5af489facf75993a843bf4b",
+    "backend/services/concert-service/tests/product_owner_cancellation.rs": "dc26dc469641af155cca4412efd0e3b7232b2a7bdfc6a1a04463a9621904d719",
+    "backend/services/concert-service/tests/product_owner_cancellation_support/cases.rs": "31c60c806fff35b3d51d157aa940f2e607abd3f92d705215646ca3e83dd94396",
+    "backend/services/concert-service/tests/product_owner_cancellation_support/qualify.py": "d5627cbe757cb220337fa2a93eb5529e49f9b0d521a71f916c0431b44a0035bd",
+    "backend/services/concert-service/tests/product_owner_cancellation_support/qualify_http.py": "cae23054339a7cdae178608aeb89e8a5c7d721c32a93997ebea66acc24c69077",
+    "docs/mcr/backend/canonical-product-cancellation.md": "2e1892f3090a2222a396b6bf7f6b8a3a4d87ab37a3fc8ec77481b0ae35790fd1"
+  },
+  "status": "INTEGRATED",
+  "target_release": {
+    "before_copied_tests_or_pg": true,
+    "binary_sha256": "d3fdfc5264396a0a8660978257916758d4a9ae2284d154d72f2362f28914de6a",
+    "compiler_processes": [],
+    "fixed_target_growth": 16384,
+    "lsof_exit_code": 1,
+    "offer": "CR09-RETRY-BACKEND-202611040600Z",
+    "released_at": "2026-11-04T06:02:02.198822+00:00",
+    "source_commit": "c1fd3ec8a867a4edce40abe68b1ff8a06a4a79ed",
+    "state": "RELEASED",
+    "target_access_after_this_receipt": "NONE_PERMITTED",
+    "target_open_handles": 0
+  },
+  "target_release_sha256": "8139267344bf326c9fd0f373f2c7bb78dc158b10a66383a1564b6b8c59ceebcf",
+  "task": "CR09"
+}

@@ -1,0 +1,880 @@
+{
+  "admission": "NOT_ADMITTED",
+  "candidate_files": {
+    "engineering-source-review.json": {
+      "bytes": 1889,
+      "sha256": "0c8a52fc32a18878e278b5949b70f0f303ebeef90b226704a539fb6d435c0512"
+    },
+    "frontend-source-compatibility.json": {
+      "bytes": 4514,
+      "sha256": "e22c107e99d2afd80e5565bf8d6f17936091a42afe3cb06b7b1f34cbaeed6c70"
+    },
+    "map-manifest.json": {
+      "bytes": 28854,
+      "sha256": "34369f4a84e8b27c78bdb62b25bacca8f0db550ab468f76b8a23f8f5dcdf3ac8"
+    },
+    "readiness.json": {
+      "bytes": 1433,
+      "sha256": "6869b399b41ad240b754c265669bbd60ddb0032f1f23a5e2658353ac0f907a50"
+    },
+    "revision-reservation.json": {
+      "bytes": 2050,
+      "sha256": "771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317"
+    },
+    "scene-source-qualification.json": {
+      "bytes": 8028,
+      "sha256": "ab24f6a50758dd6a5fe87b8d9c018db705395ab1dad18484580b3d87ecc84fcf"
+    },
+    "source-binding.json": {
+      "bytes": 18838,
+      "sha256": "12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f"
+    }
+  },
+  "compile": {
+    "cache_repair": {
+      "application_repair": {
+        "clean_exit_code": 0,
+        "package": "concert-application",
+        "reason": "cached other checkout rlib lacks age_verification export present in pinned source",
+        "removed_files": 7,
+        "removed_size": "4.7MiB"
+      },
+      "broad_clean": false,
+      "clean_exit_code": 0,
+      "evidence": "auth-service protoc shadow; cached rlib embeds be-intro-age-policy root",
+      "initial_compile_exit_code": 101,
+      "monitor_race": "du temporary archive disappeared; compiler terminal failure verified; bounded measurement retries and own-child finally termination added",
+      "package": "contracts-build",
+      "removed_files": 20,
+      "removed_size": "816.3KiB",
+      "source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69"
+    },
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "concert-service",
+      "--lib",
+      "--test",
+      "bootstrap_runtime_config",
+      "--test",
+      "bootstrap",
+      "--no-run",
+      "--message-format=json-render-diagnostics"
+    ],
+    "compiler_json_sha256": "87d24a265c7ce1d6831c21775208fe822c151d031772b09e7e8ac4296720744e",
+    "dev_debug": 0,
+    "elapsed_seconds": 23.650140084006125,
+    "exit_code": 0,
+    "incremental": 0,
+    "initial_attempts": [
+      {
+        "exit_code": 101,
+        "reason": "cached contracts-build proto root; corrected-attempt1 report retained"
+      },
+      {
+        "reason": "cached concert-application missing source export; monitor transient du error; corrected-attempt2 artifacts retained",
+        "result": "FAIL"
+      }
+    ],
+    "jobs": 2,
+    "locked": true,
+    "minimum_free_bytes": 38878175232,
+    "offline": true,
+    "rust_version": "1.88.0",
+    "test_debug": 0
+  },
+  "contract_files": {
+    "backend/docs/api/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "contracts/assets/v1/common.schema.json": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/theme-manifest.schema.json": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d"
+  },
+  "earlier_source_attempt": {
+    "compile": {
+      "initial_exit_code": 101,
+      "package_cache_repair": {
+        "broad_clean": false,
+        "corrected_clean_exit_code": 0,
+        "evidence": "cached rlib embeds be-media-combined path; friend-service protoc shadow failure",
+        "first_clean_exit_code": 101,
+        "first_clean_reason": "missing explicit Rust1.88 RUSTC path; no cleanup ran",
+        "initial_compile_exit_code": 101,
+        "package": "contracts-build",
+        "removed_files": 20,
+        "removed_size": "816.4KiB"
+      },
+      "reason": "cached contracts-build embedded another checkout proto root",
+      "retry_exit_code": 0,
+      "retry_seconds": 35.80812183399394
+    },
+    "copied_runtime_config": {
+      "exit_code": 101,
+      "failed": 1,
+      "passed": 16,
+      "reason": "v10 ground source/runtime duplicate path refused by retained loader"
+    },
+    "frozen_evidence_preserved": true,
+    "remediation": "Runtime ground stays byte-pinned once; v10 source/runtime path uniqueness regression assertion",
+    "remediation_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+    "source_commit": "5d250cd410022fac99ea9ccddfc1ef09438f0f19"
+  },
+  "format": "MCR_SPATIAL_COMPONENT_QUALIFICATION",
+  "frontend_source_compatibility": {
+    "admission": "NOT_ADMITTED",
+    "backend_allocation_record": {
+      "bytes": 502,
+      "path": "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json",
+      "sha256": "sha256:6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060"
+    },
+    "descriptor": {
+      "bytes": 56822,
+      "path": "frontend/src/world/reference-scene/spatial-v5/source-inputs.json",
+      "sha256": "sha256:6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b"
+    },
+    "format": "MCR_SPATIAL_FRONTEND_SOURCE_COMPATIBILITY",
+    "frontend_allocation_binding": {
+      "bytes": 16840,
+      "path": "world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+      "sha256": "sha256:8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041"
+    },
+    "frontend_binding": {
+      "bytes": 16314,
+      "path": "world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+      "sha256": "sha256:86a5cf9891b77ed31054e4696ade8ae54092d5cbe1f7e8f442643be8b4192244"
+    },
+    "frontend_candidate_revision_at_pin": null,
+    "frontend_commit": "473534296490bbcd4c63a4a0eb85ce7fdd57215a",
+    "frontend_metadata_candidate_revision": 6,
+    "frontend_metadata_commit": "5d3e81f125dd6bf7f507dcf96914f6878c8fe6f4",
+    "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+    "limits": [
+      "Immutable source descriptor comparison only",
+      "No frontend/runtime or art-fidelity acceptance",
+      "No supplied ThemeManifest, Bootstrap or Product/operator admission"
+    ],
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 6,
+    "reservation_commit": "390bb9a57c2ede32b814e8c36f8d1c85a10a99a2",
+    "reservation_sha256": "sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317",
+    "scenes": [
+      {
+        "map_objects": 39,
+        "runtime_resources": [
+          {
+            "bytes": 549155,
+            "height_px": 1296,
+            "path": "world/reference-scene-v2/quality-v10/ground.png",
+            "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+            "width_px": 768
+          },
+          {
+            "bytes": 1203841,
+            "height_px": 1024,
+            "path": "world/reference-scene-v2/quality-v8/revenge/atlas.png",
+            "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+            "width_px": 1024
+          }
+        ],
+        "scenery_source": {
+          "bytes": 10456,
+          "path": "world/reference-scene-v2/quality-v10/revenge/scenery.json",
+          "sha256": "sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5"
+        },
+        "theme_id": "REVENGE",
+        "world_objects": 34
+      },
+      {
+        "map_objects": 39,
+        "runtime_resources": [
+          {
+            "bytes": 549155,
+            "height_px": 1296,
+            "path": "world/reference-scene-v2/quality-v10/ground.png",
+            "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+            "width_px": 768
+          },
+          {
+            "bytes": 1215028,
+            "height_px": 1024,
+            "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+            "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+            "width_px": 1024
+          }
+        ],
+        "scenery_source": {
+          "bytes": 10420,
+          "path": "world/reference-scene-v2/quality-v10/parade/scenery.json",
+          "sha256": "sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855"
+        },
+        "theme_id": "PARADE",
+        "world_objects": 34
+      },
+      {
+        "map_objects": 39,
+        "runtime_resources": [
+          {
+            "bytes": 549155,
+            "height_px": 1296,
+            "path": "world/reference-scene-v2/quality-v10/ground.png",
+            "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+            "width_px": 768
+          },
+          {
+            "bytes": 1201333,
+            "height_px": 1024,
+            "path": "world/reference-scene-v2/quality-v8/danger/atlas.png",
+            "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+            "width_px": 1024
+          }
+        ],
+        "scenery_source": {
+          "bytes": 10420,
+          "path": "world/reference-scene-v2/quality-v10/danger/scenery.json",
+          "sha256": "sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990"
+        },
+        "theme_id": "DANGER",
+        "world_objects": 34
+      }
+    ],
+    "source_input_pins_verified": 44,
+    "state": "CONTRACT_READY",
+    "version": 1
+  },
+  "frozen_executables": [
+    {
+      "compiler_artifact": "bootstrap_runtime_config-91f180c9c8515ae1",
+      "package": "concert-service",
+      "sha256": "601b55503c618a4cf84901708180aa7f47b2cda3d4ae28d5bf428fa8dc938a30",
+      "snapshot_name": "bootstrap_runtime_config",
+      "target": "bootstrap_runtime_config"
+    },
+    {
+      "compiler_artifact": "bootstrap-cbab0198c5130231",
+      "package": "concert-service",
+      "sha256": "2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda",
+      "snapshot_name": "bootstrap",
+      "target": "bootstrap"
+    },
+    {
+      "compiler_artifact": "concert_service-5359776a12d8c920",
+      "package": "concert-service",
+      "sha256": "c966c968397c6a52cfca781cba7d6f149b284cf8f860faa1c6a9b72df6aedbf3",
+      "snapshot_name": "concert_service",
+      "target": "concert_service"
+    }
+  ],
+  "incidental_executables": [
+    {
+      "action": "METADATA_ONLY_NOT_COPIED_OR_EXECUTED",
+      "compiler_artifact": "concert-service",
+      "kind": [
+        "bin"
+      ],
+      "target": "concert-service"
+    }
+  ],
+  "limits": [
+    "Component and isolated PostgreSQL qualification only; no complete ThemeManifest or Bootstrap supplied",
+    "No product/IN01, operator-switch, public multiuser, physical-place or art-fidelity acceptance",
+    "All four concept place records remain UNREVIEWED and do not permit physical selection",
+    "Runtime PNG integrity and decode covered; editable/native art sources are byte-pinned only",
+    "No implicit C06 family admission or selected-avatar replacement",
+    "Only selected spatial PostgreSQL cases run; ignored unrelated native tests are not accepted",
+    "Old release evidence remains frozen; new regression results belong to this v10 receipt"
+  ],
+  "map": {
+    "content_hash": "sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985",
+    "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 6
+  },
+  "native": {
+    "baseline": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
+      "binary_sha256": "2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "0038_age_runtime.sql": 0,
+        "0042_social_read_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+      "map_revision": 3,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "38": "5a38c84c4cbc73bda827a2a488fc40276e26987a97ce085901b20ffe62e139ef0e1399f4ecd7c2bff21785cbd848f362",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "42": "4d09541234e44f86cc2867d05e931aeab18a22b0dbe3b0bf135a4c121ed44496f48028ee764fb78bb86f0994860fdb8b",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
+          "content_hash": "sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920",
+          "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 3,
+          "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
+          "content_hash": "sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920",
+          "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 3,
+          "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "a9c18d9a593920ee685e1fa94dfd9ac7f83c9d9064ec22b61b9050ed9babf555",
+      "restart": {
+        "after_pid": 66778,
+        "before_pid": 66650
+      },
+      "source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+      "state": "PASS",
+      "workflow_resources": {
+        "minimum_free_bytes": 37968977920,
+        "peak_workflow_growth_bytes": 458219520,
+        "stop_reason": null
+      }
+    },
+    "quality-v10": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "06562ff1962be525ed929ef431a54bb589860373",
+      "binary_sha256": "2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "0038_age_runtime.sql": 0,
+        "0042_social_read_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+      "map_revision": 6,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "38": "5a38c84c4cbc73bda827a2a488fc40276e26987a97ce085901b20ffe62e139ef0e1399f4ecd7c2bff21785cbd848f362",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "42": "4d09541234e44f86cc2867d05e931aeab18a22b0dbe3b0bf135a4c121ed44496f48028ee764fb78bb86f0994860fdb8b",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "06562ff1962be525ed929ef431a54bb589860373",
+          "content_hash": "sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985",
+          "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 6,
+          "source_commit": "06562ff1962be525ed929ef431a54bb589860373"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "06562ff1962be525ed929ef431a54bb589860373",
+          "content_hash": "sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985",
+          "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 6,
+          "source_commit": "06562ff1962be525ed929ef431a54bb589860373"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "591d390124e198584a65f165e488d53686b325ac3a092968f4c9146ff50787f7",
+      "restart": {
+        "after_pid": 69896,
+        "before_pid": 69207
+      },
+      "source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+      "state": "PASS",
+      "workflow_resources": {
+        "minimum_free_bytes": 37763899392,
+        "peak_workflow_growth_bytes": 458375168,
+        "stop_reason": null
+      }
+    },
+    "quality-v6": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+      "binary_sha256": "2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "0038_age_runtime.sql": 0,
+        "0042_social_read_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+      "map_revision": 4,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "38": "5a38c84c4cbc73bda827a2a488fc40276e26987a97ce085901b20ffe62e139ef0e1399f4ecd7c2bff21785cbd848f362",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "42": "4d09541234e44f86cc2867d05e931aeab18a22b0dbe3b0bf135a4c121ed44496f48028ee764fb78bb86f0994860fdb8b",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+          "content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 4,
+          "source_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+          "content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 4,
+          "source_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "ed7e05e30db1e39d61e1d01b0b08d0b1af5f58ffec7bf15f27a6c46bee472149",
+      "restart": {
+        "after_pid": 67139,
+        "before_pid": 67038
+      },
+      "source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+      "state": "PASS",
+      "workflow_resources": {
+        "minimum_free_bytes": 37980663808,
+        "peak_workflow_growth_bytes": 458235904,
+        "stop_reason": null
+      }
+    },
+    "quality-v8": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+      "binary_sha256": "2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "0038_age_runtime.sql": 0,
+        "0042_social_read_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+      "map_revision": 5,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "38": "5a38c84c4cbc73bda827a2a488fc40276e26987a97ce085901b20ffe62e139ef0e1399f4ecd7c2bff21785cbd848f362",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "42": "4d09541234e44f86cc2867d05e931aeab18a22b0dbe3b0bf135a4c121ed44496f48028ee764fb78bb86f0994860fdb8b",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+          "content_hash": "sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539",
+          "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 5,
+          "source_commit": "492160b15465818eca172f4017f3816d58c989a9"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+          "content_hash": "sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539",
+          "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 5,
+          "source_commit": "492160b15465818eca172f4017f3816d58c989a9"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "60baad66c059142563a6f07b69232793af6d92cc4d962a6ca07a3b7dba8501f1",
+      "restart": {
+        "after_pid": 67554,
+        "before_pid": 67460
+      },
+      "source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+      "state": "PASS",
+      "workflow_resources": {
+        "minimum_free_bytes": 37973450752,
+        "peak_workflow_growth_bytes": 458252288,
+        "stop_reason": null
+      }
+    }
+  },
+  "native_command_template": [
+    "python",
+    "backend/scripts/mcr/test_spatial_release.py",
+    "--native",
+    "--candidate",
+    "<baseline|quality-v6|quality-v8|quality-v10>",
+    "--build-metadata",
+    "<frozen>/compiler-artifacts.jsonl",
+    "--pinned-binaries",
+    "<frozen>/binary.json",
+    "--pg-bin",
+    "<PostgreSQL16.14>/bin"
+  ],
+  "peer_source_review": {
+    "actionable_findings": 0,
+    "admission": "NOT_ADMITTED",
+    "corrected_source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+    "correction_actionable_findings": 0,
+    "metadata_checkpoint": "5d250cd410022fac99ea9ccddfc1ef09438f0f19",
+    "native_review": "NOT_RUN",
+    "reviewer": "01a1a45c-f717-7e50-bccc-2d83ee9eb01e",
+    "scope": [
+      "original44sourcepins/560terrainonly/34WORLD/39MAP/runtimebudgets/source-reservation",
+      "separate FE metadata5d3e81f1 exact current bytes and only2key delta",
+      "v10 duplicate runtime ground pin correction; whole scene uniqueness; no byte-pin coverage loss"
+    ],
+    "source_checkpoint": "e89d1b24",
+    "source_reviews": "PASS"
+  },
+  "private_native_harness_retry": {
+    "failed_report_sha256": "16f64a21d9ff48c137c9165047ec47aecdf3d307137f8f35136bfece97c7835f",
+    "first_cleanup": "PASS",
+    "first_state": "FAIL",
+    "fix": "Restore required mcr-pg- prefix for new owned cluster only; source and executable bytes unchanged",
+    "reason": "Owned monitor root initially lacked required mcr-pg- prefix; retained guard refused before transactions"
+  },
+  "pure": {
+    "bootstrap": {
+      "exit_code": 0,
+      "ignored": 4,
+      "log_sha256": "de6910dce05b4e580d5ad2ec8ac306aa9523952d9182766efbb2a895b60a1b66",
+      "passed": 5
+    },
+    "bootstrap_runtime_config": {
+      "exit_code": 0,
+      "ignored": 0,
+      "log_sha256": "2479d6f80aa7bed7719856aa14d680cf7420d4bd275de493207644a3f54675a5",
+      "passed": 17
+    },
+    "concert_service": {
+      "exit_code": 0,
+      "ignored": 31,
+      "log_sha256": "3eed3a03f56560aa867a5d7e4a5ec23dd547f6833e4bc73fee72d35914915bd1",
+      "passed": 62
+    }
+  },
+  "source_commit": "75b380d64b79739e86a17aaa1de3504b7b139c69",
+  "source_files": {
+    "backend/Cargo.lock": "28d6079b3de9474ae6b3ed866cb516b0091d8f1090b5772023f75701dd9b7fc8",
+    "backend/crates/concert-application/src/place/mod.rs": "af26f6af39d3170cb96dfc524c353daa918468e5108f32b35813bea170c4ba05",
+    "backend/crates/concert-domain/src/place/mod.rs": "0ff1efb27cddbf42ec48532c2545825e5b5643edb2b1780ab23f9b8cf581ebf5",
+    "backend/scripts/mcr/bootstrap_smoke.py": "a425f3b58954be294877638fe86a6393e9482bce94458164741988a721063ee8",
+    "backend/scripts/mcr/build_spatial_release.py": "8452fb9c1c5cbf744faa676b36807650cf945e1170fbbdd273812e1066eb5738",
+    "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "backend/scripts/mcr/test_spatial_release.py": "a915702e01a5739d274c4db7f6be3d7b2ffcbbc538684f3c872caec6dafe168a",
+    "backend/services/concert-service/src/adapters/out/repository/place.rs": "9a21c06b36529183a60df385900ebdd85f2d259e6452ced9078375f33a925e2f",
+    "backend/services/concert-service/src/bootstrap/mod.rs": "8d3277ced6e88175bf1e35bc3b148038e4ca29996ba707940cebc93719dea02c",
+    "backend/services/concert-service/src/bootstrap/release.rs": "07dce341d130ca4298445cdb606e651beec6ddaafc016a0dc3c083f92487a11a",
+    "backend/services/concert-service/src/bootstrap/schema.rs": "79d61d8983253d5066104750bb03ffd65df46f5592813deef822e08ab987cb18",
+    "backend/services/concert-service/src/bootstrap/spatial.rs": "0c64ecc4e7b6faf3ad4e965052a834aa1866274b96e6d03d86b18d52a0b9adbe",
+    "backend/services/concert-service/tests/bootstrap.rs": "f0904f031feef23b8da2cfdc40fe6a695e26a363218ee160fa74d5ea110e7747",
+    "backend/services/concert-service/tests/bootstrap_runtime_config.rs": "43b8f0ca2cd2552ca1a9ebe5bf7fc1e5a6a09588efee3a913d95ab1207b6c881",
+    "scripts/mcr/validate-assets.py": "11c766b57b9ca08185641005dd9b7b5d8dea84ea4ddc48e8d929aa1abf52b18d"
+  },
+  "state": "CONTRACT_READY",
+  "target_lifecycle": {
+    "frozen_artifacts": 3,
+    "handles_before_and_after_freeze": "NONE",
+    "hash_verified_against_compiler_outputs": true,
+    "post_release_target_access": "NONE",
+    "released_before_pure_and_postgres": true
+  },
+  "validation": {
+    "changed_rustfmt": "PASS",
+    "commands": [
+      {
+        "argv": [
+          "python-with-required-format-extras",
+          "backend/scripts/mcr/test_spatial_release.py"
+        ],
+        "exit_code": 0,
+        "passed": 23
+      },
+      {
+        "argv": [
+          "python-with-required-format-extras",
+          "backend/scripts/mcr/build_spatial_release.py",
+          "--candidate",
+          "baseline",
+          "--check"
+        ],
+        "exit_code": 0
+      },
+      {
+        "argv": [
+          "python-with-required-format-extras",
+          "backend/scripts/mcr/build_spatial_release.py",
+          "--candidate",
+          "quality-v6",
+          "--check"
+        ],
+        "exit_code": 0
+      },
+      {
+        "argv": [
+          "python-with-required-format-extras",
+          "backend/scripts/mcr/build_spatial_release.py",
+          "--candidate",
+          "quality-v8",
+          "--check"
+        ],
+        "exit_code": 0
+      },
+      {
+        "argv": [
+          "python-with-required-format-extras",
+          "backend/scripts/mcr/build_spatial_release.py",
+          "--candidate",
+          "quality-v10",
+          "--check"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "diff": "PASS",
+    "exact_generation_candidates": [
+      "baseline",
+      "quality-v6",
+      "quality-v8",
+      "quality-v10"
+    ],
+    "planning": "PASS",
+    "python_passed": 23,
+    "python_seconds": 21.764
+  },
+  "version": 1,
+  "workflow_resources": {
+    "compile_peak_target_growth_bytes": 148307968,
+    "compile_peak_workflow_growth_bytes": 270077952,
+    "expected_peak_bytes": 644245094,
+    "hard_cap_bytes": 751619276,
+    "minimum_free_bytes": 37763899392,
+    "monitor_scope": "Current owned workflow only; released target is never read again; other owners are never stopped",
+    "native_peak_workflow_growth_bytes": 458375168,
+    "offer": "SPATIAL-CONFIG-BACKEND-202611040516Z",
+    "private_monitor_sha256": "fbba2f2abafe701070907ec2aa15e48cbc110e9e0421fb4953f5c118117f66c2"
+  }
+}

@@ -700,6 +700,7 @@ fn selected_release_binds_all_six_presets_without_layered_defaults() {
 
 fn source_spatial_candidate() -> concert_service::bootstrap::spatial::SourceBoundSpatialCandidate {
     let directory = match std::env::var("MCR_SPATIAL_TEST_CANDIDATE").as_deref() {
+        Ok("quality-v10") => "backend/releases/reference-scene-v2/quality-v10",
         Ok("quality-v8") => "backend/releases/reference-scene-v2/quality-v8",
         Ok("quality-v6") => "backend/releases/reference-scene-v2/quality-v6",
         Ok("baseline") | Err(_) => "backend/releases/reference-scene-v2",
@@ -745,6 +746,7 @@ async fn native_spatial_candidate_transactions() {
     let previous_directory = match candidate.catalog.manifest.map_revision {
         4 => Some("backend/releases/reference-scene-v2"),
         5 => Some("backend/releases/reference-scene-v2/quality-v6"),
+        6 => Some("backend/releases/reference-scene-v2/quality-v8"),
         _ => None,
     };
     let previous = if let Some(directory) = previous_directory {
@@ -782,12 +784,17 @@ async fn native_spatial_candidate_transactions() {
     );
     // A fully valid, differently hashed release cannot overwrite the immutable
     // identity or advance the event head merely by reusing its revision.
-    if candidate.catalog.manifest.map_revision == 5 {
+    if matches!(candidate.catalog.manifest.map_revision, 5 | 6) {
         use concert_domain::place::{canonical_json_bytes, parse_stored_release, CatalogRelease};
         use sha2::{Digest, Sha256};
         let mut changed: serde_json::Value =
             serde_json::from_slice(&candidate.catalog.canonical_bytes).unwrap();
-        changed["geometry"]["collision_id"] = "conflicting_revision_five".into();
+        changed["geometry"]["collision_id"] = if candidate.catalog.manifest.map_revision == 6 {
+            "conflicting_revision_six"
+        } else {
+            "conflicting_revision_five"
+        }
+        .into();
         let geometry =
             canonical_json_bytes(&serde_json::to_vec(&changed["geometry"]).unwrap()).unwrap();
         changed["geometry_hash"] = format!("sha256:{:x}", Sha256::digest(geometry)).into();
@@ -869,9 +876,13 @@ async fn native_spatial_candidate_restart() {
     assert_eq!(read.release, candidate.catalog);
     assert_eq!(read.places.len(), 4);
     assert!(candidate.scenery_within_budget);
-    if candidate.catalog.manifest.map_revision == 5 {
-        let previous =
-            spatial_candidate_from_directory("backend/releases/reference-scene-v2/quality-v6");
+    if matches!(candidate.catalog.manifest.map_revision, 5 | 6) {
+        let directory = if candidate.catalog.manifest.map_revision == 6 {
+            "backend/releases/reference-scene-v2/quality-v8"
+        } else {
+            "backend/releases/reference-scene-v2/quality-v6"
+        };
+        let previous = spatial_candidate_from_directory(directory);
         let bytes: Vec<u8> = sqlx::query_scalar(
             "select canonical_bytes from concert_map_releases where map_id=$1 and map_revision=$2",
         )

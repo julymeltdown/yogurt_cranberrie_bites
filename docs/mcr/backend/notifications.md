@@ -830,3 +830,291 @@ claim is made by this checkpoint.
 ## Root intake hygiene
 
 Root preserves the original qualified worker document as Git blob `0ca013839824bc6d55721c36945b1c8a08112fb9`, SHA256 `72dd944f3d88a03994ea467958e1e9f5530436edb106029c1a0649a805661beb`. Published prose substitutes portable checkout/artifact placeholders only; source and runtime evidence remain bound to the original worker pins. Coherent Root compilation and actual public producers remain NOT_RUN.
+
+
+## NB01 — durable original root binding recovery
+
+Status: `IN_PROGRESS` for BE33 overall. NB01 implementation and native lookup
+qualification are complete; Root integration and canonical/public acceptance
+remain `NOT_RUN`.
+
+Source base: Root `73e89bceadc4b456522d0d979ccc768eea8e367e`, isolated branch
+`codex/mcr-be-NB01`. Original BE33 handoff and worktree remain preserved.
+This assignment owns only the new `scope_ledger/notification_binding.rs`, its
+single `mod notification_binding;` registration in `scope_ledger.rs`, the new
+`tests/notification_root_binding.rs` and `tests/notification_root_binding_support/`
+files, and this appended section. Parent module bytes otherwise remain unchanged;
+stopped lifecycle/guard/settler slices and CR08 implementation are untouched.
+
+`PgScopeLedger` now implements `NotificationRecoveryBinding` directly. It loads
+the stored `OwnerBinding` by its configured producer instance and exact query
+fingerprint. `ChildQuery` carries no scope ID, so the provider fetches at most two
+matching rows across **all phases** and requires exactly one before requiring
+`ROOT_FINISHED`. Missing, foreign-instance, ambiguous, nonterminal, malformed or
+mismatched rows return `Unavailable`. No new contract or migration is required;
+ambiguity deliberately remains unavailable rather than choosing a scope.
+
+The original actor/event/family/request, own-subject, expiry, complete fingerprint,
+parent method and four Notification operation/method/path pairs must match. The
+fingerprint validates all original parent/body/HTTP/operation fields. The exact
+stored query bytes and digests are returned without reconstruction from the
+child query. As in the original `OwnerGuardScope::wire_binding()` at this source
+revision, wire subjects are empty. Recovery accepts an expired original binding
+without renewing its expiry. A 750 ms mechanical lookup limit, shortened by the
+caller deadline, bounds pool acquisition and SQL; it grants no content authority.
+
+This provider neither dispatches owner RPCs nor settles a child/native transaction.
+Existing encrypted durable intent, original child completion secret and actual
+remote owner/native proof remain mandatory in their existing layers. Root runtime
+composition and actual canonical-owner/public inbox journeys remain `NOT_RUN`.
+
+Provenance: the implementation uses this base's `OwnerBinding::digest()`, original
+`OwnerGuardScope::wire_binding()`, `NotificationRecoveryBinding` contract, and the
+four Notification operation pairs in Notification's `concert/authority/inbox.rs`.
+Owned fixture checks adapt `product_scope_ledger.rs` and
+`owner_authority_support/environment.rs` at the same base. The runner reuses the
+existing marker/token/inode/postmaster-guarded `backend/scripts/mcr/migration_smoke.py`
+cluster and applies original migrations 0028 and 0048. No dependency, manifest,
+lockfile, migration, source-pack or legacy-rendering changes are introduced.
+
+Seven native tests cover all four exact expired wire bindings after a new ledger
+and empty actual registry; actual register/seal/finish transitions; missing and
+foreign instances; ambiguity with ACTIVE/SEALED/ROOT_FINISHED duplicates; every
+query identity/expiry/digest/own-subject mismatch; malformed and altered original
+fields; valid-fingerprint operation/path relabeling; and bounded pool-starvation,
+caller-deadline and locked-table refusal. Synthetic historical rows are explicitly
+lookup fixtures, not canonical owner admission or positive Track acknowledgements.
+
+Before native qualification: targeted Rust 1.88 rustfmt and Python runner AST
+parse exited 0; the unchanged-parent byte assertion passed;
+`python3 scripts/mcr/check-plan.py` exited 0.
+
+
+### NB01 qualified committed handoff
+
+Compiled/native source pin: `41e81a3702c389fc30a9d0dc2c8a936d2f766382`.
+Handoff ancestry is Root `73e89bce` → implementation `dc01de3b` → evidence-runner
+hardening `52d6373f` → actor-mismatch regression improvement `41e81a37` → the
+following documentation-only qualification commit. All tracked backend bytes
+remain identical to the compiled pin. No manifest, lockfile or public contract
+changed. Notification contract `backend/proto/notification/v1/concert_inbox.proto`
+remains SHA-256 `a77385e06a567a59d91e93d8fe2e7acda9e1613705c5bfbf8d1dc4cffb554e76`.
+
+Changed paths, relative to Root base:
+
+- `backend/services/concert-service/src/product_rpc/scope_ledger/notification_binding.rs`
+- `backend/services/concert-service/src/product_rpc/scope_ledger.rs` (one module declaration)
+- `backend/services/concert-service/tests/notification_root_binding.rs`
+- `backend/services/concert-service/tests/notification_root_binding_support/mod.rs`
+- `backend/services/concert-service/tests/notification_root_binding_support/run.py`
+- `docs/mcr/backend/notifications.md` (this appended NB01 section)
+
+A fresh explicitly accepted `NB01-BACKEND-202611040523Z` allocation provided one
+existing BACKEND target and one serial copied-artifact owned PostgreSQL slot.
+Fresh preflight had 36492264 KiB free and zero target handles. All Cargo work used
+Rust 1.88.0, `--locked --offline`, jobs 2, dev/test debug 0 and incremental 0.
+The same single test artifact was requested on both attempts:
+
+```sh
+cargo +1.88.0 test --locked --offline -p concert-service --test notification_root_binding --no-run --message-format=json
+```
+
+| Check/command | Exit/result |
+|---|---|
+| First compile | 101; retained stale-cache evidence, not a source regression |
+| `cargo +1.88.0 clean -p contracts-build -p concert-domain -p concert-application` | 0; exactly three evidenced stale packages |
+| Same single-artifact compile retry | 0; exact Cargo-emitted test frozen and hashed |
+| Original migration 0028, then original migration 0048 | 0 each in a new socket-only PostgreSQL 16.14 cluster |
+| Frozen `notification_root_binding --test-threads=1` | 0; **7 passed, 0 failed, 0 ignored**, 0.66 s |
+| Committed owned-fixture runner | 0; PASS, 2.19 s, owned stop and deletion PASS |
+| Final targeted rustfmt check, runner AST, unchanged parent/doc-prefix and complete backend pin assertions | 0/PASS |
+
+The initial failure reported existing domain/application modules missing while
+Cargo marked both libraries fresh, plus protoc shadowing this checkout with the
+previous writer's checkout through a fresh `contracts-build` output. First Cargo
+JSON/stderr/receipt are retained. The lease explicitly allowed evidenced
+package-only repair; no broad clean, second target or source workaround occurred.
+
+The exact test binary was frozen before unconditional target release. Incidental
+`concert-service` main executable metadata is recorded but it was not executed.
+After own Cargo process-group exit, the target handle scan returned no handles;
+there was no target access after release. Native tests used only the frozen test
+binary and strict marker/token/inode/system-identifier-owned PostgreSQL fixture.
+The original encrypted intent and real completion capability/proof requirements
+were neither forged nor bypassed. The actual registry constructed in the test is
+empty, and the lookup itself never calls the rejecting child settler.
+
+The conservative combined bound over both compile attempts, frozen evidence and
+owned PostgreSQL was 199225344 bytes, below the hard 1 GiB limit. Whole compile,
+freeze, native qualification and release completed in 190.68 s, below ten minutes;
+final free space was 37210398720 bytes, above the 8 GiB floor. All owned resources
+were released. Portable evidence under `<NB01_ARTIFACT_DIR>`:
+
+| Evidence | SHA-256 |
+|---|---|
+| `notification_root_binding` (13757952 bytes) | `e33dcd37f50e6a69fe1f2a7e55be2ae5ffc8083a4efd893e9643e8b16f383a95` |
+| `backend-source.tar.gz` | `655bc9629fa7f0fa5f8337846b9084c4cdb1107579a6df8c20c09e5af2cdd9b6` |
+| `artifact-receipt.json` | `f020028d2968bf92ddcb7fc828010bcb54c1ca9f622f30d112cce6489606333e` |
+| `qualification-report.json` | `a01d0ae4e126a0439f7db03f253be39f2b223b08e3c9a73abb0df6f8f97a784d` |
+| `target-release.json` | `25cfd5ad466951e1346b95f1729642509d4acdc4ba1d23f441b7fff738496ff2` |
+| `copied-release.json` | `091f92eb6b78eba3bf7f947ae5458f332f703505404c0dac08e7640634112cb1` |
+| `first-artifact-receipt.json` | `ba565430375234f1a8f8716d10931ded13aa258f3563205af313b9a6255ce7f1` |
+| `build.py` (bounded exact-artifact wrapper) | `7727b96ee9c5c6001d3fdcc97e3a9915f79e95ef8848f884dd94c9a38f1714a9` |
+
+Reproduction uses the committed runner with the frozen binary/receipt, PG16 tool
+directory and a report destination. It verifies the emitted test identity, complete
+source manifest and artifact digest before creating its own database:
+
+```sh
+python3 backend/services/concert-service/tests/notification_root_binding_support/run.py --artifact <NB01_ARTIFACT_DIR>/notification_root_binding --receipt <NB01_ARTIFACT_DIR>/artifact-receipt.json --pg-bin <PG16_BIN> --report <NB01_ARTIFACT_DIR>/qualification-report.json
+```
+
+These results qualify the NB01 durable original-binding lookup mechanics only.
+Root still owns runtime/client/settler/public operation composition and the actual
+canonical owner/transaction authority and authenticated four-operation vertical
+journeys. BE33 overall and its original persistent goal remain unfinished; this
+handoff makes no public activation, product acceptance or master-push claim.
+
+
+## NB02 — acyclic crate-private binding reader
+
+Status: `IN_PROGRESS` for BE33 overall. NB02 dependency implementation and fresh
+native qualification are complete; Root factory integration and canonical/public
+acceptance remain `NOT_RUN`. Original NB01 receipts and its documentation above
+remain immutable historical qualification.
+
+Base: qualified NB01 `164ac70ffd6c996cca3b93737ee6f2d9677a8988`, same isolated
+`codex/mcr-be-NB01` worktree, exclusive NB02 ownership. Root confirmed the actual
+assembly comparison commit is `d0f063d18a0549935f80a536077c30962d89f9e9` (2,151
+recorded input hashes); its `config/canonical_runtime.rs` constructor takes the
+actual child settler before constructing the ledger and registry. A Notification
+client whose recovery provider required that ledger created a constructor cycle.
+
+The new crate-private `PgNotificationBindingReader` holds exactly the configured
+`PgPool` clone and immutable instance UUID. Its constructor rejects nil instances
+without database I/O; it holds no ledger, child keys, settler, registry, callback
+or owner authority. Root can build this reader, then the actual Notification
+client and composite settler, then its one canonical core using the same pool
+and instance. `PgPool::clone` shares the existing pool. The narrow parent change
+is only `pub(crate) use notification_binding::PgNotificationBindingReader;`.
+Root's factory remains within the service library; visibility is not widened
+for binaries or integration tests. Root core/factory/settler wiring is outside
+this patch and remains separately unqualified here.
+
+The original `PgScopeLedger` trait implementation now delegates to the reader.
+Only the reader contains the lookup algorithm. Its complete NB01 lookup body is
+byte-for-byte retained, SHA-256
+`8d92c206064d2ca0842c04ce661356dd1b2408f7b70c42dc8fac863bfef6841c`.
+The reader's private transaction bootstrap preserves pool acquisition and the
+250 ms lock/750 ms statement timeouts within the existing caller-shortened
+750 ms whole lookup limit. All-phase ambiguity refusal, unique ROOT_FINISHED,
+exact stored full-binding validation, own-subject, original expired wire fields,
+closed operations and unavailable refusals remain unchanged. No registration,
+expiry renewal, transaction/remote proof or content authority is introduced.
+
+All seven original ledger-facing native test bodies remain byte-identical;
+they now exercise the sole reader implementation through delegation. The strict
+owned fixture is shared using a parent crate alias so library tests can exercise
+the actual private type without exporting it. Three additional private tests
+cover: nil-instance refusal and sharing the existing pool; exact reader/ledger
+wire and unavailable-result equivalence; and constructing/dropping the actual
+lazy Notification client with a typed recovery reader before any ledger or
+settler, checking that client ownership releases the reader. That transport test
+constructs no server and invokes no RPC or authority proof. Synthetic historical
+rows retain their original mechanics-only meaning and rejecting settler guard.
+
+The committed runner now requires two separately identified, hash-bound Cargo
+artifacts at the same complete source pin: the seven-test integration executable
+and the library test executable filtered to the three private NB02 tests. It runs
+them serially in one new socket-only owned PostgreSQL16 fixture using unchanged
+migrations 0028/0048 and original strict ownership checks, then verifies owned
+cleanup. Running only the old seven-test artifact cannot qualify NB02.
+
+Changed paths are the same six assigned paths as NB01: the binding module, narrow
+parent re-export, original integration test crate alias, strict fixture module,
+owned runner and this appended document section. No public API/proto/DTO, caller
+policy, main, settler, registry, CR08, manifest, lockfile or cross-lane path changes
+are included. Fresh build/native receipts will be recorded separately below;
+NB01's `f020...`/`a01d...` receipts do not certify the refactor.
+
+The aligned persistent BE33 goal was inspected and execution explicitly resumed
+under this follow-up grant. The goal API still reports its historical `BLOCKED`
+state; it was not reset, budgeted or falsely completed. BE33 and the four real
+public verticals remain unfinished; NB02 only unblocks Root's typed factory.
+
+
+### NB02 fresh qualification and stopped handoff
+
+Compiled/native source pin: `d7ca2faf9a4d8706ee55d2b86b77d8260b2caf6d`, parent
+qualified NB01 `164ac70ffd6c996cca3b93737ee6f2d9677a8988`. The subsequent
+qualification commit changes only this appended NB02 documentation section.
+All tracked backend bytes remain identical to the fresh compiled pin. This is a
+separate qualification from NB01; none of the old artifacts/receipts were modified
+or relabeled. The original NB01 chain remains Root `73e89bce` → `dc01de3b` →
+`52d6373f` → `41e81a37` → `164ac70f`, followed by this NB02 chain.
+
+Fresh explicitly accepted lease `NB02-CYCLE-BACKEND-202611040606Z` provided the
+existing BACKEND target and one serial owned PostgreSQL fixture. Preflight had
+33216956 KiB free, zero target handles and the exact clean source pin. One Cargo
+invocation compiled the two declared test executables with Rust 1.88.0,
+`--locked --offline`, jobs 2, dev/test debug 0 and incremental 0:
+
+```sh
+cargo +1.88.0 test --locked --offline -p concert-service --lib --test notification_root_binding --no-run --message-format=json
+```
+
+| Check | Exit/result |
+|---|---|
+| Targeted Rust 1.88 formatting check, Python runner AST and planning check | 0/PASS |
+| Original lookup body, seven original test bodies and narrow parent-byte assertions | PASS |
+| Two-artifact Cargo build, first attempt | 0; 48.28 s including source freeze, no cache repair |
+| Zero-handle target release before PostgreSQL | PASS; no later target access |
+| Original migrations 0028/0048 in new socket-only PostgreSQL 16.14 | 0 each |
+| Frozen `notification_root_binding --test-threads=1` | 0; **7 passed**, 0 failed/ignored, 0.65 s |
+| Frozen library executable with exact `product_rpc::scope_ledger::notification_binding::tests::` filter | 0; **3 passed**, 0 failed/ignored, 124 other tests filtered, 0.10 s |
+| Owned runner/cleanup | 0/PASS; 3.35 s; owned postmaster stopped and fixture deleted |
+
+The two selected artifacts were identified from Cargo JSON and frozen outside
+the shared target with full source hashes and a complete backend source archive.
+Incidental main executable metadata is recorded, but that executable was not run.
+Own Cargo process-group exit and the zero-handle scan preceded unconditional
+target release. Both frozen receipts bind the same complete source manifest;
+the runner validates both before starting its one owned database cluster.
+
+Observed compile/freeze growth was 210321408 bytes and owned fixture allocation
+48766976 bytes, giving a conservative combined bound of **259088384 bytes**,
+below the expected 0.4 GiB and hard 1 GiB limits. Compile monitoring observed at
+least 33792176128 bytes free; final free space was 42541309952 bytes, above the
+8 GiB floor. Whole build/freeze/native qualification/release completed in
+126.26 s, below ten minutes. All owned target/copied-workflow resources were
+released; Root's World hold, live databases and services were untouched.
+
+Portable fresh evidence under `<NB02_ARTIFACT_DIR>`:
+
+| Evidence | SHA-256 |
+|---|---|
+| `notification_root_binding` (13762144 bytes) | `da320b845eeb613d5570ebf1d27b9a1a6de8a8b479d7d3050b4bc129a04234d9` |
+| `concert_service` library test (94554768 bytes) | `46ec24a5bb3ba33590e878888a23bef395a72e7058d0542bd75ca92f132df94e` |
+| `backend-source.tar.gz` | `029a04eead4b1fab64323b034999625c10df6c39417478469d396c073da020d7` |
+| `artifact-receipt.json` | `8182b71499999d8cb9ec498d4a5314ff0a9c1f05a26a4b9b173be362f94e5da5` |
+| `reader-artifact-receipt.json` | `3e155f3eac496a853c1893fae57ec647376b62ddd01184cf374fbb4259b3c59e` |
+| `qualification-report.json` | `3c7148d470a9c5770f4f5b606167d20d2416ad6a68c243fe87dc840f944295c2` |
+| `target-release.json` | `9fba1f219c975a12452d8e5c27fe1db375ae199d6d9a5cf601d2df103db4cea0` |
+| `copied-release.json` | `e8d72335e47bceaa3046037bc9eee513732f38db8f145d00dbfd241a0d06e3a8` |
+| `build.py` | `0b129619014cbbeeb50a130d7f449b8694cc8ed8858f1b3afe1f107da9cec39f` |
+
+Fresh reproduction requires both artifacts and their receipts; the exact filter
+prevents accidentally claiming a full-library run:
+
+```sh
+python3 backend/services/concert-service/tests/notification_root_binding_support/run.py --artifact <NB02_ARTIFACT_DIR>/notification_root_binding --receipt <NB02_ARTIFACT_DIR>/artifact-receipt.json --reader-artifact <NB02_ARTIFACT_DIR>/concert_service --reader-receipt <NB02_ARTIFACT_DIR>/reader-artifact-receipt.json --pg-bin <PG16_BIN> --report <NB02_ARTIFACT_DIR>/qualification-report.json
+```
+
+Root's library factory may now construct
+`product_rpc::scope_ledger::PgNotificationBindingReader::new(pool.clone(), instance)`
+before the Notification client/composite settler/canonical core. This handoff
+qualifies the shared reader, ledger delegation and local lazy-client construction
+only. Actual factory/core integration, canonical owner/native authority and all
+four authenticated public journeys remain separate `NOT_RUN` gates. BE33's
+original goal remains unfinished. The writer stops at this clean committed
+handoff; no public activation, main/registry/settler changes or master push occur.

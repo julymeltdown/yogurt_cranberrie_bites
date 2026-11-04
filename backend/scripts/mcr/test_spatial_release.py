@@ -251,6 +251,96 @@ class QualityV8Tests(unittest.TestCase):
             builder.decode_png(image(b'\x05\xff\0\0\xff'))
 
 
+class QualityV10Tests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.outputs = builder.build(builder.QUALITY_V10)
+
+    def test_new_reserved_revision_changes_only_exact_terrain_cells(self):
+        old = builder.build(builder.QUALITY_V8)['map-manifest.json']
+        new = self.outputs['map-manifest.json']
+        self.assertEqual(new['map_revision'], 6)
+        self.assertEqual(new['places'], old['places'])
+        self.assertEqual({k: v for k, v in new['geometry'].items() if k != 'terrain_layer'},
+                         {k: v for k, v in old['geometry'].items() if k != 'terrain_layer'})
+        changes = [(a, b) for before, after in zip(old['geometry']['terrain_layer'], new['geometry']['terrain_layer'])
+                   for a, b in zip(before, after) if a != b]
+        self.assertEqual(len(changes), 560)
+        self.assertEqual(set(changes), {(1, 2), (2, 1)})
+        for name, value in self.outputs.items():
+            self.assertEqual(json.loads((builder.ROOT / 'backend/releases/reference-scene-v2/quality-v10' / name).read_bytes()), value)
+
+    def test_exact_frontend_descriptors_sources_and_runtime_budgets(self):
+        expected = {'REVENGE': 1752996, 'PARADE': 1764183, 'DANGER': 1750488}
+        compatibility = self.outputs['frontend-source-compatibility.json']
+        self.assertEqual(compatibility['source_input_pins_verified'], 44)
+        self.assertIsNone(compatibility['frontend_candidate_revision_at_pin'])
+        self.assertEqual(compatibility['frontend_metadata_candidate_revision'], 6)
+        self.assertEqual(compatibility['frontend_metadata_commit'], builder.V10_METADATA_COMMIT)
+        for scene in self.outputs['source-binding.json']['scenes']:
+            paths = [self.outputs['source-binding.json'][key]['path']
+                     for key in ('geometry_source', 'tilemap_source')]
+            paths += [scene['scenery_source']['path']]
+            paths += [pin['path'] for group in ('scene_sources', 'runtime_resources') for pin in scene[group]]
+            self.assertEqual(len(paths), len(set(paths)), 'retained loader rejects source/runtime path aliases')
+            self.assertEqual(len(scene['scene_sources']), 23)
+        for scene in compatibility['scenes']:
+            self.assertEqual((scene['world_objects'], scene['map_objects']), (34, 39))
+            self.assertEqual(len(scene['runtime_resources']), 2)
+            budget = self.outputs['readiness.json']['scenery_budget'][scene['theme_id']]
+            self.assertEqual((budget['bytes'], budget['pixels']), (expected[scene['theme_id']], 2043904))
+        packet = self.outputs['scene-source-qualification.json']
+        self.assertEqual(packet['admission'], 'NOT_ADMITTED')
+        self.assertTrue(all(s['source_provenance']['source_id'].startswith('mcr_quality_v10_') for s in packet['scenes']))
+        self.assertIsNone(self.outputs['readiness.json']['bootstrap'])
+        self.assertIsNone(self.outputs['readiness.json']['theme_manifests'])
+        self.assertTrue(all(p['provenance']['review_state'] == 'UNREVIEWED' for p in self.outputs['map-manifest.json']['places']))
+
+    def test_terrain_evidence_cannot_hide_collision_or_world_prop_changes(self):
+        proposal = json.loads(builder.published_input(builder.QUALITY_V10.geometry_path, builder.QUALITY_V10.source_commit))
+        evidence = json.loads(builder.published_input(builder.BASE + 'spatial-v5/revision-evidence.json', builder.QUALITY_V10.art_commit))
+        builder.verify_v10_revision(proposal, evidence)
+        changed = copy.deepcopy(evidence); changed['terrain_changed_cells'].pop()
+        with self.assertRaisesRegex(ValueError, 'terrain evidence'):
+            builder.verify_v10_revision(proposal, changed)
+        changed = copy.deepcopy(proposal)
+        changed['geometry']['collision_grid'][0][0] = 1 - changed['geometry']['collision_grid'][0][0]
+        with self.assertRaisesRegex(ValueError, 'frozen collision'):
+            builder.verify_v10_revision(changed, evidence)
+        changed = copy.deepcopy(proposal); changed['placements'][0]['x'] += 1
+        with self.assertRaisesRegex(ValueError, 'frozen WORLD props'):
+            builder.verify_v10_revision(changed, evidence)
+
+    def test_valid_map5_tiled_cannot_be_resealed_under_map6(self):
+        original = builder.published_input
+        def swapped(path, revision=builder.SOURCE_COMMIT):
+            if path == builder.QUALITY_V10.tiled_path:
+                return original(builder.QUALITY_V8.tiled_path, builder.QUALITY_V8.tiled_commit)
+            return original(path, revision)
+        with patch.object(builder, 'published_input', side_effect=swapped), patch.object(builder, 'verify_v10_reservation', return_value={}):
+            with self.assertRaisesRegex(ValueError, 'Tiled differs'):
+                builder.build(builder.QUALITY_V10._replace(tiled_hash=builder.QUALITY_V8.tiled_hash))
+
+    def test_revision_cannot_be_an_alias_of_existing_map5_or_unallocated_frontend(self):
+        with self.assertRaisesRegex(ValueError, 'actual committed revision6'):
+            builder.verify_v10_reservation(builder.QUALITY_V10._replace(map_revision=5))
+        reservation = builder.verify_v10_reservation(builder.QUALITY_V10)
+        self.assertEqual(reservation['map_revision'], 6)
+        self.assertIsNone(reservation['frontend_candidate_revision_at_pin'])
+
+    def test_historical_pending_binding_cannot_replace_allocated_current_metadata(self):
+        original = builder.published_input
+        def swapped(path, revision=builder.SOURCE_COMMIT):
+            if path == builder.BASE + 'runtime/spatial-v5/source-binding.json' and revision == builder.V10_METADATA_COMMIT:
+                return builder.subprocess.check_output(
+                    ['git', 'show', builder.QUALITY_V10.tiled_commit + ':frontend/public/' + path], cwd=builder.ROOT)
+            return original(path, revision)
+        with patch.object(builder, 'published_input', side_effect=swapped):
+            with self.assertRaisesRegex(ValueError, 'allocation binding drift'):
+                builder.verify_v10_frontend(builder.QUALITY_V10,
+                    builder.verify_v10_reservation(builder.QUALITY_V10), self.outputs['source-binding.json']['scenes'])
+
+
 def verify_native_candidate(stdout, expected):
     rows = re.findall(r'MCR_SPATIAL_CANDIDATE (\{[^\n]*\})', stdout)
     builder.require(len(rows) == 1 and json.loads(rows[0]) == expected,

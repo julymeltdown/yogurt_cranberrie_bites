@@ -178,6 +178,37 @@ pub struct VerifiedProduct {
     command_query: Option<CommandStatusQuery>,
 }
 impl VerifiedProduct {
+    // Retain this already authenticated request for the owned producer future.
+    // Copy both original deadline clocks and the sealed parent; never reparse
+    // observations, renew authority, or expose another context constructor.
+    fn owned_for_producer(&self) -> Self {
+        Self {
+            trusted_network_bucket: self.trusted_network_bucket,
+            actor: self.actor,
+            event: self.event,
+            session: self.session,
+            request: self.request,
+            deadline: self.deadline,
+            operation: self.operation,
+            parent: self.parent.clone(),
+            feed_query: self
+                .feed_query
+                .as_ref()
+                .map(|query| crate::feed::live_read::FeedQuery {
+                    limit: query.limit,
+                    cursor: query.cursor.clone(),
+                    filter: query.filter,
+                    before: query.before,
+                }),
+            comments_query: self.comments_query.as_ref().map(|query| {
+                crate::feed::live_read::CommentsQuery {
+                    limit: query.limit,
+                    cursor: query.cursor.clone(),
+                }
+            }),
+            command_query: self.command_query,
+        }
+    }
     /// Only populated from the exact workload/actor-authenticated Gateway frame.
     /// Absence is unavailable, never a shared/random/default network bucket.
     pub fn trusted_pickup_context(&self) -> Option<crate::community::giveaway::TrustedPickupContext> {

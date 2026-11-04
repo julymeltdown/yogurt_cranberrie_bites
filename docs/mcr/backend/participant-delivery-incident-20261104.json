@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "status": "IN_PROGRESS",
+  "incident": "CR10 serialized participant response capability retention",
+  "qualified_backend_revision": "d0f063d18a0549935f80a536077c30962d89f9e9",
+  "runtime_source_revision": "c9dd4c980f39b12eda5a79fff871c8de48f8df71",
+  "backend_input_hashes_matched": 2151,
+  "frontend_published_app_revision": "4af1c868",
+  "frontend_merged_replay_revision": "06e2",
+  "browser_current_master_attempt": "09",
+  "browser_result": "FAIL",
+  "dependent_reconnect_and_game_checks": "NOT_RUN",
+  "observed_requests_utc": [
+    {
+      "time": "2026-11-04T06:00:49.176Z",
+      "method": "GET",
+      "target": "/api/concert/events/{event}/me",
+      "status": 401
+    },
+    {
+      "time": "2026-11-04T06:00:49.191Z",
+      "method": "GET",
+      "target": "/api/concert/events/{event}/me",
+      "status": 200
+    },
+    {
+      "time": "2026-11-04T06:00:49.982Z",
+      "method": "POST",
+      "target": "/api/auth/refresh",
+      "status": 504
+    }
+  ],
+  "snapshot": {
+    "observed_at": "2026-11-04T06:04:26.044153+00:00",
+    "read_only": true,
+    "sha256": "1ba95d9aaf4390cbb50b0e3b787dc890413ea106a0f5a8dd84550f5ef66b23d0",
+    "all_query_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "root_states": [
+      {
+        "phase": "ROOT_FINISHED",
+        "serialized": true,
+        "delivered": true,
+        "abandoned": false,
+        "cancellation_settled": false,
+        "count": 29
+      },
+      {
+        "phase": "ACTIVE",
+        "serialized": true,
+        "delivered": false,
+        "abandoned": false,
+        "cancellation_settled": false,
+        "count": 2
+      }
+    ],
+    "unfinished_roots": [
+      {
+        "scope_id": "5c87b9ab-97f0-42d1-a1f2-492bb04d9f73",
+        "phase": "ACTIVE",
+        "created_at": "2026-11-04T06:00:48.184366+00:00",
+        "operation": "getConcertParticipant",
+        "request_id": "ccbe3ec7-37da-473d-92a3-59ba3c34353d",
+        "expires_us": "1793772049174250",
+        "published": true,
+        "serialized": true,
+        "delivered": false,
+        "abandoned": false,
+        "cancellation_settled": false,
+        "native_transactions": 0
+      },
+      {
+        "scope_id": "4b2fe7c7-efa5-4576-8bcf-57afbcbd5726",
+        "phase": "ACTIVE",
+        "created_at": "2026-11-04T06:00:49.592777+00:00",
+        "operation": "setConcertAvatar",
+        "request_id": "031c15dc-924a-4548-b0b5-76f4f682df4b",
+        "expires_us": "1793772050482059",
+        "published": true,
+        "serialized": true,
+        "delivered": false,
+        "abandoned": false,
+        "cancellation_settled": false,
+        "native_transactions": 1
+      }
+    ],
+    "prepared_by_database": {
+      "mcr_auth": 2,
+      "mcr_friend": 2
+    },
+    "auth_owners": [
+      {
+        "state": "SEALED",
+        "settled": false,
+        "count": 2
+      },
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "count": 29
+      }
+    ],
+    "friend_owners": [
+      {
+        "state": "SEALED",
+        "settled": false,
+        "count": 2
+      },
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "count": 29
+      }
+    ],
+    "live_blocking_pids": []
+  },
+  "logs": {
+    "sha256": {
+      "api-gateway-8cb57b76.log": "1122966dd96a849244209fdf7ecdfd322ada2c00ce4af9d99f6a7705e39f49c9",
+      "auth-service-54cc7181.log": "554c6729ad5e0e31fad7f590c04da6ea7e51d382f17447c45d2799d459270c71",
+      "postgres.log": "83b04ce92a37efb9d8c69e47a7cc79123f3db457dc8905a4c01ad65219162c42",
+      "concert-service-91c93388.log": "a8535cbad5d879e397b18d28c6d00d3f7a8ac420c809132c8739d5b9058aa20b"
+    },
+    "actual_error": "Auth refresh rotation trigger waited on auth_concert_relationship_revision singleton FOR UPDATE and failed with lock_timeout at 2026-11-04T06:00:51.184982Z",
+    "private_originals_retained": true,
+    "credentials_published": false
+  },
+  "initial_backend_probe": {
+    "c03_database": {
+      "root_delivery_16": "PASS",
+      "profile_commit_2": "PASS",
+      "concert_native_commit_2": "PASS",
+      "auth_settlement_16": "PASS",
+      "friend_settlement_16": "PASS",
+      "auth_pending_participants_0": "PASS",
+      "friend_pending_participants_0": "PASS",
+      "no_prepared_transactions": "PASS"
+    },
+    "world_database": {
+      "issued_tickets_2": "PASS",
+      "consumed_tickets_2": "PASS",
+      "released_memberships_0": "PASS",
+      "no_prepared_transactions": "PASS"
+    },
+    "world_two_client": "PASS",
+    "separate_from_browser_result": true
+  },
+  "cleanup": {
+    "runtime_exit_code": 0,
+    "guard_aborted": null,
+    "finished_at": "2026-11-04T06:09:03.072023+00:00",
+    "max_sampled_whole_additional_bytes": 146251776,
+    "hard_whole_bytes": 1610612736,
+    "owned_roots_absent": true,
+    "owner_pid_absent": true,
+    "concert_stop": {
+      "pid": 59803,
+      "forced": false,
+      "exit_code": 0
+    },
+    "owned_stack_result": "PASS",
+    "owned_stack_cleanup": "PASS",
+    "hold_extended": false,
+    "manual_prepared_rollback": false,
+    "recovery_certified": false
+  },
+  "source_diagnosis": {
+    "status": "HYPOTHESIS_REQUIRING_REGRESSION",
+    "paths": [
+      "backend/services/api-gateway/src/adapters/out/concert_participant/mod.rs",
+      "backend/services/api-gateway/src/adapters/in/http/concert_participant/mod.rs"
+    ],
+    "finding": "Post-gRPC identity/context checks and route access check can return before the authenticated response delivery capability is retained by the actual outer HTTP body.",
+    "safety": "Only actual terminal response EOF can complete delivery. Expiry, discarded reply, body drop, partial body, and unknown native work do not certify completion."
+  },
+  "next_owner": {
+    "task": "CR10",
+    "scope": "Two Gateway participant adapters and dedicated tests/support/documentation in an isolated worktree",
+    "required_proof": [
+      "deterministic pre-fix reproduction",
+      "authenticated serialized reply followed by expiry produces safe terminal error",
+      "actual error EOF settles real Auth/Friend fences",
+      "subsequent genuine Auth refresh succeeds",
+      "reset/drop/partial-body negative cases remain quarantined"
+    ]
+  },
+  "limits": [
+    "This receipt records diagnosis and cleanup, not a recovery fix.",
+    "The earlier attempt07 pass belongs to frontend 15d68856 and cannot accept current master.",
+    "CR08/C03 pre-serialization cancellation and CR09 Product tests do not qualify this serialized boundary.",
+    "No fresh browser retry is authorized until a precise fix is qualified and new genuine inputs/resources are allocated."
+  ]
+}

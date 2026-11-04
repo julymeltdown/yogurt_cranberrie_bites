@@ -69,8 +69,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             &[contracts_build::proto_root()],
         )?;
     println!("cargo:rerun-if-changed={}", participant_proto.display());
-    let notification_proto = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("../../proto/notification/v1/concert_inbox.proto");
+    let notification_proto = contracts_build::proto_root().join("notification/v1/concert_inbox.proto");
     let notification_output =
         std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("notification_authority");
     std::fs::create_dir_all(&notification_output)?;
@@ -84,7 +83,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )
         .compile_protos(
             &[notification_proto.clone()],
-            &[std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../proto")],
+            &[contracts_build::proto_root()],
         )?;
     println!("cargo:rerun-if-changed={}", notification_proto.display());
     Ok(())

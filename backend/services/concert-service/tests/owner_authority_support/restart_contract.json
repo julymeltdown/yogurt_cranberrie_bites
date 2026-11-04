@@ -1,0 +1,102 @@
+{
+  "format": "MCR_CANONICAL_CHILD_RESTART_CONTRACT_V1",
+  "status": "CONTRACT_READY",
+  "execution": "NOT_RUN",
+  "root_production_owner": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+  "native_fixture_owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+  "purpose": "Qualify durable typed child recovery after actual loss of the original Root process and registry, including read-only scopes with no registered producer transaction.",
+  "required_composition": [
+    "Frozen source-bound executables outside shared build targets; target release before native execution.",
+    "One new marker/inode/uid-owned PostgreSQL 16 cluster, actual migrations, max_prepared_transactions at least 256, private mTLS PKI and dedicated workload credentials.",
+    "Actual Auth/Friend owner stores, actual configured Root ledger and typed child settlers, actual Profile guarded producer and actual Concert local native child.",
+    "ProductReleaseBundle and PublicProfileReader public constructors using the selected source-bound release; no alternate positive constructor or legacy artwork.",
+    "Actual guarded Product/Delivery or Participant response path generates terminal root phase; never UPDATE phase or delivery receipt directly in SQL.",
+    "Terminate and reap the exact owned Root child process, then start a distinct child PID with the same configured durable instance and recovery-key ring. A new object in the same process is insufficient.",
+    "The replacement process uses an empty ScopeRegistry and the production durable-drain seam. A test-only direct ledger drain does not certify production startup integration."
+  ],
+  "ledger_phase_contract": {
+    "ACTIVE": "No terminal root proof. Process death, EOF of an internal RPC, original expiry and absent registry cannot authorize child settlement or an HTTP success acknowledgement.",
+    "SEALED": "No more admissions, but no terminal root proof yet. Retain unknown children and owner exclusions; do not promote solely because a process exited.",
+    "ROOT_FINISHED": "Actual prior root/callback drain and terminal path are durable. Eligible for typed child recovery independently of producer-transaction count. It is not a complete delivery receipt.",
+    "unexposed_no_work": "The existing cap-never-published branch may finish only actual unexposed acquisition. It cannot be reused for a published response with protected work or child intents.",
+    "delivery_completed_at": "Never infer from ROOT_FINISHED, all child acknowledgements, process absence or expiry. Preserve existing separate proof of both owners and all children; absent original registry still refuses content."
+  },
+  "cases": [
+    {
+      "id": "CR01",
+      "name": "finished_read_only_root_recovers_actual_children_after_process_restart",
+      "setup": "Acquire actual canonical owners; retain actual LocalPublic and ProfilePublic child guards through a real public projection. Assert zero rows in concert_product_owner_transactions for this exact scope.",
+      "fault": "After real terminal handling reaches durable ROOT_FINISHED, make actual child settlement temporarily unreachable, observe incomplete terminal result, then terminate and reap the original Root child.",
+      "observations": [
+        "Before restart the pending encrypted intent row and actual prepared child exist, with immutable exact native/nonce/root binding.",
+        "After restart the old RootReadView and absent-registry content path fail closed.",
+        "Production drain discovers pending children without any ResolveTransaction call or producer-transaction registration.",
+        "With the actual child endpoint restored, real guarded recovery aborts the matching prepared child and records only the corresponding durable child acknowledgement.",
+        "Repeated drain is idempotent; no completed intent, identity, key identifier or root binding changes."
+      ]
+    },
+    {
+      "id": "CR02",
+      "name": "lost_child_acquire_reply_recovers_without_a_live_child_handle",
+      "setup": "Durably register the actual pre-dispatch ProfilePublic intent, dispatch the guarded Profile acquisition and observe its actual prepared child.",
+      "fault": "Drop the real acquisition reply before Root receives or retains a successful child handle; use the real produced-error terminal path, fail child settlement, then restart Root.",
+      "observations": [
+        "The durable pending intent survives even though no retained successful projection/Arc was returned.",
+        "Replacement production drain decrypts the original closed reference and queries the actual Profile producer.",
+        "Matching terminal native proof releases the child; no caller-supplied UUID, missing GID or expired disclosure alone acknowledges it."
+      ]
+    },
+    {
+      "id": "CR03",
+      "name": "unfinished_root_and_expired_authority_remain_quarantined",
+      "setup": "Prepare actual protected children under a durably ACTIVE scope; separately cover an actually SEALED but unfinished scope.",
+      "fault": "Terminate the owned Root process before terminal root proof, wait past original wall and monotonic content limits, and restart with an empty registry.",
+      "observations": [
+        "Drain neither promotes root phase nor acknowledges the child based on expiry, missing registry or process exit.",
+        "Real prepared guards remain; actual invalidating writers stay blocked and unknown work remains capacity counted.",
+        "No content authority, RootReadPermit or successful delivery result can be recreated from durable metadata."
+      ]
+    },
+    {
+      "id": "CR04",
+      "name": "unreadable_or_native_unknown_intent_retains_evidence_until_real_proof",
+      "setup": "Use an actual terminal root and an actual pending typed child intent; first restart with its required recovery key omitted, or make the actual child owner unavailable.",
+      "fault": "Invoke the bounded production drain under the unavailable configuration, including after original disclosure expiry.",
+      "observations": [
+        "Missing key, authenticated endpoint failure or native UNKNOWN preserves ciphertext, key ID, pending status and prepared exclusion.",
+        "No fallback to LocalPublic, arbitrary URL, generic success or forced rollback occurs.",
+        "Restore the retained key/actual endpoint and retry; only real exact native proof can settle and acknowledge the child."
+      ]
+    },
+    {
+      "id": "CR05",
+      "name": "cancelled_before_child_dispatch_uses_authenticated_absence_proof",
+      "setup": "Record an actual valid closed pre-dispatch intent, then cancel before the child producer receives acquisition; reach terminal root via the real error path.",
+      "fault": "Restart Root with no successful child handle and no prepared child for that exact intent.",
+      "observations": [
+        "Absence is established by the actual configured guarded producer/native adapter for the exact immutable nonce/identity, not by a missing prepared-GID query alone.",
+        "Durable intent acknowledgement follows that actual proof and remains idempotent.",
+        "Any ambiguous or unavailable absence proof remains pending and capacity counted."
+      ]
+    },
+    {
+      "id": "CR06",
+      "name": "bounded_retry_and_concurrent_restart_drain_do_not_duplicate_effects",
+      "setup": "Use actual pending terminal-root intents within the existing 16-scope and 202-intent limits, including one temporarily unresolved first candidate and one resolvable later candidate.",
+      "fault": "Run bounded production drain iterations concurrently or across a second owned restart; the unresolved candidate remains genuinely unresolved.",
+      "observations": [
+        "Each invocation has an explicit original system deadline and bounded candidate/work count; no database transaction is held over a remote owner call.",
+        "An unresolved first candidate does not permanently starve a later eligible candidate across retries.",
+        "Native release and acknowledgement are exact and idempotent; no deadline renewal, new content access or fabricated complete delivery receipt occurs.",
+        "Reports distinguish actual settlement from explicit owned-fixture teardown of intentionally unknown guards."
+      ]
+    }
+  ],
+  "required_receipts": [
+    "Exact source commit, complete source/migration/contract pins, Cargo JSON and exit code, copied executable hashes and explicit shared-target release receipt.",
+    "Owned root marker/identity, actual PostgreSQL version, old/new Root child PID and exit status, process handles and restart chronology.",
+    "Per-case exact scope/native identity hashes, phase and pending/completed counts, prepared/native status before and after the fault, actual writer outcomes and guarded RPC outcomes.",
+    "No raw bearer tokens, private references, recovery secrets, private content, credentials or database URLs in committed evidence.",
+    "Actual normal settlement counts separate from forced fixture cleanup; owned processes stopped and exact private root absent at final cleanup."
+  ]
+}

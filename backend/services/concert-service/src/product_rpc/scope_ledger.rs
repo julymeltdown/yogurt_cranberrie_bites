@@ -12,6 +12,8 @@ use uuid::Uuid;
 
 mod children;
 mod cancellation;
+mod notification_binding;
+pub(crate) use notification_binding::PgNotificationBindingReader;
 pub(crate) use children::ChildRecoveryCursor;
 pub use children::{ChildIntentSettler, ChildRecoveryCounts, ChildRecoveryKey, ChildRecoveryKeys};
 use std::sync::Arc;

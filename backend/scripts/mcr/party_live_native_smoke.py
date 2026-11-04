@@ -51,6 +51,7 @@ def run(binary: Path, report: Path, pg_bin: Path) -> dict:
         "binary": str(binary),
         "binary_sha256": binary_sha,
         "native_postgres": "NOT_RUN",
+        "restart_durability": "NOT_RUN",
         "canonical_owner_holder": "NOT_RUN",
         "public_profile_holder": "NOT_RUN",
         "product_route": "NOT_RUN",
@@ -94,6 +95,9 @@ def run(binary: Path, report: Path, pg_bin: Path) -> dict:
         )
         result["command_exit_code"] = completed.returncode
         result["stdout_sha256"] = hashlib.sha256(completed.stdout.encode()).hexdigest()
+        result["stdout_tail"] = re.sub(
+            r"(?:postgres(?:ql)?|redis)://[^\s]+", "[redacted-url]", completed.stdout
+        )[-6000:]
         result["stderr_tail"] = re.sub(
             r"(?:postgres(?:ql)?|redis)://[^\s]+", "[redacted-url]", completed.stderr
         )[-4000:]
@@ -104,6 +108,35 @@ def run(binary: Path, report: Path, pg_bin: Path) -> dict:
         if completed.returncode != 0 or match is None:
             raise RuntimeError("exact native test did not pass")
         result["native_postgres"] = "PASS"
+        tables = (
+            "concert_events",
+            "concert_event_admissions",
+            "concert_participants",
+            "concert_relationship_pairs",
+            "concert_community_parties",
+            "concert_community_members",
+            "concert_community_applications",
+            "concert_command_budget",
+            "concert_command_receipts",
+            "concert_outbox",
+        )
+        snapshot_sql = "select jsonb_build_object(" + ",".join(
+            f"'{table}',(select coalesce(jsonb_agg(to_jsonb(t) order by "
+            f"to_jsonb(t)::text),'[]'::jsonb) from {table} t)"
+            for table in tables
+        ) + ")::text;"
+        before = cluster.sql(DATABASE, snapshot_sql)
+        counts = {table: len(rows) for table, rows in json.loads(before).items()}
+        if not counts["concert_command_receipts"] or not counts["concert_outbox"]:
+            raise RuntimeError("restart snapshot lacks committed effects")
+        cluster.stop()
+        cluster.start()
+        after = cluster.sql(DATABASE, snapshot_sql)
+        result["restart_snapshot_sha256"] = hashlib.sha256(before.encode()).hexdigest()
+        result["restart_table_rows"] = counts
+        if before != after:
+            raise RuntimeError("committed database state changed across restart")
+        result["restart_durability"] = "PASS"
         result["status"] = "PASS"
     except BaseException as error:
         result["failure"] = type(error).__name__
@@ -113,6 +146,26 @@ def run(binary: Path, report: Path, pg_bin: Path) -> dict:
         try:
             if cluster is not None:
                 root = cluster.root
+                try:
+                    cluster.assert_owned()
+                    log = root / "postgres.log"
+                    if log.is_file() and not log.is_symlink():
+                        content = log.read_bytes()
+                        result["postgres_log_sha256"] = hashlib.sha256(content).hexdigest()
+                        tail = content[-16000:].decode(errors="replace")
+                        tail = tail.replace(cluster.password, "[redacted]").replace(
+                            cluster.token, "[redacted]"
+                        )
+                        result["postgres_log_tail"] = re.sub(
+                            r"(?:postgres(?:ql)?|redis)://[^\s]+", "[redacted-url]", tail
+                        )
+                    result["cluster_bytes_before_cleanup"] = sum(
+                        path.stat().st_blocks * 512
+                        for path in root.rglob("*")
+                        if path.is_file() and not path.is_symlink()
+                    )
+                except Exception as error:
+                    result["diagnostic_capture_failure"] = type(error).__name__
                 cluster.cleanup()
                 if root.exists():
                     raise RuntimeError("owned root remains")

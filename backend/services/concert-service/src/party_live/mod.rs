@@ -1,9 +1,12 @@
-//! Bounded C04 party list/detail/create producer.
+//! Bounded C04 party read and command producer.
 //!
 //! This module owns transport input validation and orchestration only. The injected
 //! owner fence must acquire current canonical Auth/Friend exclusion and current
 //! public Profile content. Local event, admission, participant, pair, party and
 //! capacity locks are held on the provided PostgreSQL connection through commit.
+//! A Party mutation locks event admission, then the Party root and its child
+//! revision, and finally the current subject pair before recording a BE15
+//! receipt. Approval capacity is checked by the same locked root transaction.
 //! No permissive authority or fixture implementation is installed here.
 mod cursor;
 mod product;
@@ -16,7 +19,7 @@ use concert_application::{
     commands::{CommandError, FingerprintKeys, ReceiptState},
     community::PartyCommand,
 };
-use concert_domain::community::party::{Party, PartyAction, PartyError, PartyFields};
+use concert_domain::community::party::{Party, PartyAction, PartyError, PartyFields, PartyState};
 use serde_json::Value;
 use sha2::{Digest, Sha256};
 use sqlx::{PgConnection, PgPool};
@@ -32,6 +35,7 @@ use prost::Message;
 
 pub use cursor::{PartyCursorBinding, PartyCursorCodec, PartyPosition, PartyWindow};
 pub use product::PartyProductProducer;
+pub use product::ScopedPartyProductProducer;
 pub use scope_guard::ScopePartyLiveGuard;
 #[doc(hidden)]
 pub use wire::{operation_for_fixture, parse_verified_body_for_fixture};
@@ -48,6 +52,8 @@ pub enum PartyLiveError {
     VersionConflict,
     InvalidTransition,
     EventReadOnly,
+    PartyFull,
+    DuplicateApplication,
     Internal,
 }
 
@@ -65,7 +71,11 @@ impl PartyLiveError {
             Self::InvalidInput => 400,
             Self::Denied => 403,
             Self::ResourceUnavailable => 404,
-            Self::VersionConflict | Self::InvalidTransition | Self::EventReadOnly => 409,
+            Self::VersionConflict
+            | Self::InvalidTransition
+            | Self::EventReadOnly
+            | Self::PartyFull
+            | Self::DuplicateApplication => 409,
             Self::DependencyUnavailable => 503,
             Self::Internal => 500,
         }
@@ -80,6 +90,8 @@ impl PartyLiveError {
             Self::VersionConflict => "VERSION_CONFLICT",
             Self::InvalidTransition => "INVALID_TRANSITION",
             Self::EventReadOnly => "EVENT_READ_ONLY",
+            Self::PartyFull => "PARTY_FULL",
+            Self::DuplicateApplication => "DUPLICATE_APPLICATION",
             Self::Internal => "INTERNAL_ERROR",
         }
     }
@@ -170,12 +182,38 @@ impl PartyLiveBinding {
     }
     pub fn check(&self) -> Result<(), PartyLiveError> {
         let root = format!("/api/concert/events/{}/parties", self.event);
+        let application_root = format!("/api/concert/events/{}/party-applications", self.event);
         let (path, query) = self
             .target
             .split_once('?')
             .map_or((self.target.as_str(), None), |(path, query)| {
                 (path, Some(query))
             });
+        let party_tail = |value: &str, tail: &str| {
+            value
+                .strip_prefix(&(root.clone() + "/"))
+                .and_then(|suffix| suffix.strip_suffix(&format!("/{tail}")))
+                .and_then(canonical_uuid)
+        };
+        let application_id = |value: &str, tail: &str| {
+            value
+                .strip_prefix(&(application_root.clone() + "/"))
+                .and_then(|suffix| {
+                    if tail.is_empty() {
+                        Some(suffix)
+                    } else {
+                        suffix.strip_suffix(&format!("/{tail}"))
+                    }
+                })
+                .and_then(canonical_uuid)
+        };
+        let member_target = path
+            .strip_prefix(&(root.clone() + "/"))
+            .and_then(|suffix| {
+                let (party, user) = suffix.split_once("/members/")?;
+                Some((canonical_uuid(party)?, canonical_uuid(user)?))
+            })
+            .is_some();
         let exact_target = match self.operation {
             "listConcertParties" => path == root && self.method == "GET",
             "getConcertParty" => {
@@ -185,10 +223,35 @@ impl PartyLiveBinding {
                     && self.method == "GET"
             }
             "createConcertParty" => path == root && query.is_none() && self.method == "POST",
+            "applyConcertParty" => {
+                party_tail(path, "applications").is_some()
+                    && query.is_none()
+                    && self.method == "POST"
+            }
+            "decideConcertApplication" => {
+                application_id(path, "decision").is_some()
+                    && query.is_none()
+                    && self.method == "POST"
+            }
+            "cancelConcertApplication" => {
+                // The revision is admitted and fingerprinted by the exact HTTP
+                // command request. A retry must carry the same query revision;
+                // the aggregate independently validates the current child.
+                application_id(path, "").is_some() && self.method == "DELETE"
+            }
+            "removeConcertMember" => member_target && self.method == "DELETE",
+            "cancelConcertParty" => {
+                party_tail(path, "cancel").is_some() && query.is_none() && self.method == "POST"
+            }
             _ => false,
         };
         let exact_idempotency = match self.operation {
-            "createConcertParty" => self.idempotency_key.is_some_and(|key| !key.is_nil()),
+            "createConcertParty"
+            | "applyConcertParty"
+            | "decideConcertApplication"
+            | "cancelConcertApplication"
+            | "removeConcertMember"
+            | "cancelConcertParty" => self.idempotency_key.is_some_and(|key| !key.is_nil()),
             "listConcertParties" | "getConcertParty" => self.idempotency_key.is_none(),
             _ => false,
         };
@@ -259,15 +322,9 @@ impl PartyLiveBinding {
             .map_err(|_| PartyLiveError::DependencyUnavailable)?;
         if !PARTY_OPERATIONS.contains(&operation)
             || guard.operation() != operation
-            || guard.http_method()
-                != if operation == "createConcertParty" {
-                    "POST"
-                } else {
-                    "GET"
-                }
-            || !guard
-                .http_target()
-                .starts_with(&format!("/api/concert/events/{}/parties", guard.event()))
+            || guard.http_method() != method_for(operation)
+            || wire::parse_operation(guard.event(), guard.http_method(), guard.http_target())?
+                != operation
             || guard.http_target().len() > 4096
         {
             return Err(PartyLiveError::InvalidInput);
@@ -282,7 +339,7 @@ impl PartyLiveBinding {
             guard.http_method(),
             guard.http_target().to_owned(),
             body,
-            if operation == "createConcertParty" {
+            if mutation_operation(operation) {
                 Some(
                     idempotency_key
                         .filter(|key| !key.is_nil())
@@ -332,6 +389,14 @@ pub trait PartyLiveOwnerGuard: Send + Sync {
     /// Current C03 PublicProfile, including the avatar union. The real adapter
     /// retains its Profile child in this owner scope until response settlement.
     async fn public_profile_in(
+        &self,
+        connection: &mut PgConnection,
+        binding: &PartyLiveBinding,
+        subject: Uuid,
+    ) -> Result<Value, PartyLiveError>;
+    /// Current profile for a party child record. The binding still identifies the
+    /// exact command, while the implementation scopes this read to `subject`.
+    async fn application_profile_in(
         &self,
         connection: &mut PgConnection,
         binding: &PartyLiveBinding,
@@ -483,17 +548,118 @@ where
         }
         match action {
             PartyLiveAction::List(query) => {
-                Self::list_in(pool, cursors, binding, query, guard).await
+                Self::list_in(pool, authority, cursors, binding, query, guard).await
             }
-            PartyLiveAction::Detail(party) => Self::detail_in(pool, binding, party, guard).await,
+            PartyLiveAction::Detail(party) => {
+                Self::detail_in(pool, authority, binding, party, guard).await
+            }
             PartyLiveAction::Create(fields) => {
                 Self::create(pool, authority, keys, binding, fields, guard).await
+            }
+            PartyLiveAction::Apply {
+                party,
+                party_revision,
+                note,
+            } => {
+                Self::mutate(
+                    pool,
+                    authority,
+                    keys,
+                    binding,
+                    party,
+                    PartyAction::Apply {
+                        party_revision,
+                        note,
+                    },
+                    guard,
+                )
+                .await
+            }
+            PartyLiveAction::Decide {
+                application,
+                expected_revision,
+                party_revision,
+                approve,
+            } => {
+                let party = application_party(&pool, &binding, application, &guard).await?;
+                Self::mutate(
+                    pool,
+                    authority,
+                    keys,
+                    binding,
+                    party,
+                    PartyAction::Decide {
+                        application,
+                        expected: expected_revision,
+                        party_revision,
+                        approve,
+                    },
+                    guard,
+                )
+                .await
+            }
+            PartyLiveAction::CancelApplication {
+                application,
+                expected_revision,
+            } => {
+                Self::mutate(
+                    pool,
+                    authority,
+                    keys,
+                    binding,
+                    Uuid::nil(),
+                    PartyAction::CancelApplication {
+                        application,
+                        expected: expected_revision,
+                    },
+                    guard,
+                )
+                .await
+            }
+            PartyLiveAction::Remove {
+                party,
+                user,
+                expected_revision,
+                party_revision,
+            } => {
+                Self::mutate(
+                    pool,
+                    authority,
+                    keys,
+                    binding,
+                    party,
+                    PartyAction::Remove {
+                        user,
+                        expected: expected_revision,
+                        party_revision,
+                    },
+                    guard,
+                )
+                .await
+            }
+            PartyLiveAction::CancelParty {
+                party,
+                expected_revision,
+            } => {
+                Self::mutate(
+                    pool,
+                    authority,
+                    keys,
+                    binding,
+                    party,
+                    PartyAction::Cancel {
+                        expected: expected_revision,
+                    },
+                    guard,
+                )
+                .await
             }
         }
     }
 
     async fn list_in(
         pool: PgPool,
+        authority: Arc<A>,
         cursors: PartyCursorCodec,
         binding: Arc<PartyLiveBinding>,
         query: PartyQuery,
@@ -501,9 +667,8 @@ where
     ) -> Result<PartyLiveReply, PartyLiveError> {
         let cursor_binding = query.cursor_binding(&binding)?;
         let mut tx = pool.begin().await.map_err(db)?;
-        local_actor_in(&mut tx, &binding).await?;
-        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
         guard.track_in(&mut tx, &binding).await?;
+        local_actor_in(&mut tx, &binding).await?;
         let upper = if query.cursor.is_some() {
             // Opened below after the immutable initial upper is available.
             None
@@ -528,52 +693,45 @@ where
                 after: None,
             },
         };
+        // Lock the complete bounded candidate window before acquiring policy
+        // pair locks. Taking another Party root after a pair lock can deadlock
+        // with a mutation holding that root while waiting for the same pair.
+        let rows = wire::scan(
+            &mut tx,
+            binding.event(),
+            &cursor_binding,
+            window.upper,
+            window.after,
+            i64::try_from(MAX_SCAN).map_err(|_| PartyLiveError::Internal)?,
+        )
+        .await?;
+        authority
+            .actor_in(
+                &mut tx,
+                binding.actor(),
+                binding.event(),
+                CommunityAccess::ReadParties,
+            )
+            .await
+            .map_err(PartyLiveError::from)?;
+        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
+        let count = rows.len();
         let mut after = window.after;
         let mut items = Vec::with_capacity(usize::from(cursor_binding.limit));
         let mut scanned = 0usize;
-        let mut more = false;
-        while items.len() < usize::from(cursor_binding.limit) && scanned < MAX_SCAN {
-            let remaining_visible = usize::from(cursor_binding.limit) - items.len();
-            let batch = remaining_visible
-                .saturating_mul(2)
-                .clamp(16, 100)
-                .min(MAX_SCAN - scanned);
-            let rows = wire::scan(
-                &mut tx,
-                binding.event(),
-                &cursor_binding,
-                window.upper,
-                after,
-                i64::try_from(batch).map_err(|_| PartyLiveError::Internal)?,
-            )
-            .await?;
-            if rows.is_empty() {
-                more = false;
-                break;
+        for row in rows {
+            scanned += 1;
+            after = Some(row.position);
+            match project_party(&mut tx, &binding, row.party, &guard, &authority).await {
+                Ok(value) => items.push(value),
+                Err(PartyLiveError::Denied | PartyLiveError::ResourceUnavailable) => continue,
+                Err(error) => return Err(error),
             }
-            more = rows.len() == batch;
-            for row in rows {
-                scanned += 1;
-                after = Some(row.position);
-                match project_party(&mut tx, &binding, row.party, &guard).await {
-                    Ok(value) => items.push(value),
-                    Err(PartyLiveError::Denied | PartyLiveError::ResourceUnavailable) => continue,
-                    Err(error) => return Err(error),
-                }
-                if items.len() == usize::from(cursor_binding.limit) {
-                    break;
-                }
-            }
-            if !more {
+            if items.len() == usize::from(cursor_binding.limit) {
                 break;
             }
         }
-        // A full batch may still end exactly at the collection tail. Only expose a
-        // continuation when this bounded scan actually observed additional rows or
-        // reached the scan ceiling.
-        if items.len() == usize::from(cursor_binding.limit) || scanned >= MAX_SCAN {
-            more = more || scanned >= MAX_SCAN;
-        }
+        let more = scanned < count || count == MAX_SCAN;
         let next = if more {
             after
                 .map(|position| {
@@ -598,18 +756,28 @@ where
 
     async fn detail_in(
         pool: PgPool,
+        authority: Arc<A>,
         binding: Arc<PartyLiveBinding>,
         party: Uuid,
         guard: Arc<dyn PartyLiveOwnerGuard>,
     ) -> Result<PartyLiveReply, PartyLiveError> {
         let mut tx = pool.begin().await.map_err(db)?;
-        local_actor_in(&mut tx, &binding).await?;
-        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
         guard.track_in(&mut tx, &binding).await?;
+        local_actor_in(&mut tx, &binding).await?;
         let value = wire::load(&mut tx, binding.event(), party)
             .await?
             .ok_or(PartyLiveError::ResourceUnavailable)?;
-        let value = project_party(&mut tx, &binding, value, &guard).await?;
+        authority
+            .actor_in(
+                &mut tx,
+                binding.actor(),
+                binding.event(),
+                CommunityAccess::ReadParties,
+            )
+            .await
+            .map_err(PartyLiveError::from)?;
+        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
+        let value = project_party(&mut tx, &binding, value, &guard, &authority).await?;
         let reply = wire::party(value)?;
         guard_ready(&guard, &binding)?;
         tx.commit().await.map_err(db)?;
@@ -655,14 +823,115 @@ where
         }
         let reference = receipt.reference.ok_or(PartyLiveError::Internal)?;
         let mut tx = pool.begin().await.map_err(db)?;
-        local_actor_in(&mut tx, &binding).await?;
-        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
         guard.track_in(&mut tx, &binding).await?;
+        local_actor_in(&mut tx, &binding).await?;
         let party = wire::load(&mut tx, binding.event(), reference.resource)
             .await?
             .ok_or(PartyLiveError::DependencyUnavailable)?;
-        let value = project_party(&mut tx, &binding, party, &guard).await?;
+        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
+        let value = project_party(&mut tx, &binding, party, &guard, &authority).await?;
         let reply = wire::party(value)?;
+        guard_ready(&guard, &binding)?;
+        tx.commit().await.map_err(db)?;
+        Ok(reply)
+    }
+
+    async fn mutate(
+        pool: PgPool,
+        authority: Arc<A>,
+        keys: Arc<FingerprintKeys>,
+        binding: Arc<PartyLiveBinding>,
+        party: Uuid,
+        action: PartyAction,
+        guard: Arc<dyn PartyLiveOwnerGuard>,
+    ) -> Result<PartyLiveReply, PartyLiveError> {
+        let key = binding
+            .idempotency_key()
+            .ok_or(PartyLiveError::InvalidInput)?;
+        let party = if party.is_nil() {
+            let PartyAction::CancelApplication { application, .. } = &action else {
+                return Err(PartyLiveError::InvalidInput);
+            };
+            application_party(&pool, &binding, *application, &guard).await?
+        } else {
+            party
+        };
+        let command = PartyCommand {
+            actor: binding.actor(),
+            event: binding.event(),
+            key,
+            party,
+            action,
+        };
+        let (receipt, domain_error) = execute_mutation_command(
+            pool.clone(),
+            authority.clone(),
+            keys.clone(),
+            binding.clone(),
+            command,
+            guard.clone(),
+        )
+        .await;
+        if let Some(error) = domain_error {
+            return Err(error);
+        }
+        let receipt = receipt.map_err(PartyLiveError::from)?;
+        if receipt.state != ReceiptState::Succeeded {
+            return Err(match receipt.state {
+                ReceiptState::Failed => match receipt.failure {
+                    Some(concert_application::commands::SafeFailure::PartyFull) => {
+                        PartyLiveError::PartyFull
+                    }
+                    Some(concert_application::commands::SafeFailure::DuplicateApplication) => {
+                        PartyLiveError::DuplicateApplication
+                    }
+                    Some(concert_application::commands::SafeFailure::VersionConflict) => {
+                        PartyLiveError::VersionConflict
+                    }
+                    Some(concert_application::commands::SafeFailure::InvalidTransition) => {
+                        PartyLiveError::InvalidTransition
+                    }
+                    _ => PartyLiveError::InvalidTransition,
+                },
+                _ => PartyLiveError::DependencyUnavailable,
+            });
+        }
+        let reference = receipt.reference.ok_or(PartyLiveError::Internal)?;
+        let mut tx = pool.begin().await.map_err(db)?;
+        guard.track_in(&mut tx, &binding).await?;
+        local_actor_in(&mut tx, &binding).await?;
+        // The reply is a second transaction: retain root-before-pair order
+        // here too, including when a competing command already holds UPDATE.
+        let reply_party = match binding.operation() {
+            "applyConcertParty" | "cancelConcertApplication" | "decideConcertApplication" => {
+                wire::load_application(&mut tx, binding.event(), reference.resource).await?
+            }
+            "removeConcertMember" => {
+                wire::load_member_party(&mut tx, binding.event(), party).await?
+            }
+            "cancelConcertParty" => wire::load(&mut tx, binding.event(), party)
+                .await?
+                .ok_or(PartyLiveError::DependencyUnavailable)?,
+            _ => return Err(PartyLiveError::InvalidInput),
+        };
+        local_pair_in(&mut tx, binding.event(), binding.actor(), binding.actor()).await?;
+        let reply = match binding.operation() {
+            "applyConcertParty" | "cancelConcertApplication" | "decideConcertApplication" => {
+                wire::application_from_receipt(&mut tx, &binding, reference.resource, &guard)
+                    .await?
+            }
+            "removeConcertMember" => {
+                let _ = project_party(&mut tx, &binding, reply_party.clone(), &guard, &authority)
+                    .await?;
+                wire::member(&reply_party, reference.resource)?
+            }
+            "cancelConcertParty" => {
+                let value =
+                    project_party(&mut tx, &binding, reply_party, &guard, &authority).await?;
+                wire::party(value)?
+            }
+            _ => return Err(PartyLiveError::InvalidInput),
+        };
         guard_ready(&guard, &binding)?;
         tx.commit().await.map_err(db)?;
         Ok(reply)
@@ -702,12 +971,70 @@ where
     (result, domain_error)
 }
 
-async fn project_party(
+async fn execute_mutation_command<A>(
+    pool: PgPool,
+    authority: Arc<A>,
+    keys: Arc<FingerprintKeys>,
+    binding: Arc<PartyLiveBinding>,
+    command: PartyCommand,
+    guard: Arc<dyn PartyLiveOwnerGuard>,
+) -> (
+    Result<concert_application::commands::SafeReceipt, CommandError>,
+    Option<PartyLiveError>,
+)
+where
+    A: CommunityAuthority,
+{
+    let producer = PartyMutationProducer {
+        command: &command,
+        authority: &authority,
+        binding: &binding,
+        guard: guard.as_ref(),
+        error: std::sync::Mutex::new(None),
+    };
+    let result = match command.request() {
+        Ok(request) => {
+            PgCommandRepository::new(pool)
+                .execute(&request, command.target(), &keys, &producer)
+                .await
+        }
+        Err(error) => Err(error),
+    };
+    let domain_error = producer.error.lock().ok().and_then(|mut slot| slot.take());
+    (result, domain_error)
+}
+
+async fn application_party(
+    pool: &PgPool,
+    binding: &PartyLiveBinding,
+    application: Uuid,
+    guard: &Arc<dyn PartyLiveOwnerGuard>,
+) -> Result<Uuid, PartyLiveError> {
+    let mut tx = pool.begin().await.map_err(db)?;
+    guard.track_in(&mut tx, binding).await?;
+    local_actor_in(&mut tx, binding).await?;
+    let party = wire::load_application(&mut tx, binding.event(), application).await?;
+    tx.commit().await.map_err(db)?;
+    Ok(party.id)
+}
+
+async fn project_party<A: CommunityAuthority>(
     connection: &mut PgConnection,
     binding: &PartyLiveBinding,
     party: Party,
     guard: &Arc<dyn PartyLiveOwnerGuard>,
+    authority: &Arc<A>,
 ) -> Result<Value, PartyLiveError> {
+    authority
+        .authorize_in(
+            connection,
+            binding.actor(),
+            binding.event(),
+            party.owner,
+            CommunityAccess::ReadParties,
+        )
+        .await
+        .map_err(PartyLiveError::from)?;
     local_subject_in(connection, binding.event(), party.owner).await?;
     local_pair_in(connection, binding.event(), binding.actor(), party.owner).await?;
     guard.authorize_in(connection, binding, party.owner).await?;
@@ -717,12 +1044,272 @@ async fn project_party(
     wire::public_party(&party, owner)
 }
 
+pub(crate) async fn profile_for_subject(
+    connection: &mut PgConnection,
+    binding: &PartyLiveBinding,
+    subject: Uuid,
+    guard: &Arc<dyn PartyLiveOwnerGuard>,
+) -> Result<Value, PartyLiveError> {
+    local_subject_in(connection, binding.event(), subject).await?;
+    guard
+        .application_profile_in(connection, binding, subject)
+        .await
+}
+
 struct PartyCreateProducer<'a, A, G: ?Sized> {
     command: &'a PartyCommand,
     authority: &'a Arc<A>,
     binding: &'a PartyLiveBinding,
     guard: &'a G,
     error: std::sync::Mutex<Option<PartyLiveError>>,
+}
+
+struct PartyMutationProducer<'a, A, G: ?Sized> {
+    command: &'a PartyCommand,
+    authority: &'a Arc<A>,
+    binding: &'a PartyLiveBinding,
+    guard: &'a G,
+    error: std::sync::Mutex<Option<PartyLiveError>>,
+}
+
+impl<A, G: PartyLiveOwnerGuard + ?Sized> PartyMutationProducer<'_, A, G> {
+    fn domain(&self, error: PartyError) -> CommandError {
+        if let Ok(mut slot) = self.error.lock() {
+            *slot = Some(match error {
+                PartyError::Denied => PartyLiveError::Denied,
+                PartyError::VersionConflict => PartyLiveError::VersionConflict,
+                PartyError::InvalidTransition => PartyLiveError::InvalidTransition,
+                PartyError::Full => PartyLiveError::PartyFull,
+                PartyError::DuplicateApplication => PartyLiveError::DuplicateApplication,
+                PartyError::Unavailable => PartyLiveError::DependencyUnavailable,
+                PartyError::InvalidInput => PartyLiveError::InvalidInput,
+            });
+        }
+        CommandError::InvalidState
+    }
+}
+
+#[async_trait]
+impl<A, G> CommandProducer for PartyMutationProducer<'_, A, G>
+where
+    A: CommunityAuthority,
+    G: PartyLiveOwnerGuard + ?Sized,
+{
+    async fn authorize(
+        &self,
+        connection: &mut PgConnection,
+        scope: Scope,
+        target: Uuid,
+    ) -> Result<(), CommandError> {
+        if scope != self.command.scope()? || target != self.command.target() {
+            return Err(CommandError::Denied);
+        }
+        self.binding.check().map_err(|_| CommandError::Denied)?;
+        // Match the canonical audience reader: event -> Party root -> pair.
+        // Take UPDATE before any policy locks or BE15 budget/receipt work.
+        self.phase_write_in(connection).await?;
+        let party =
+            wire::load_for_update(connection, self.binding.event(), self.command.party_id())
+                .await
+                .map_err(command_error)?;
+        self.guard
+            .track_in(connection, self.binding)
+            .await
+            .map_err(command_error)?;
+        local_actor_in(connection, self.binding)
+            .await
+            .map_err(command_error)?;
+        local_pair_in(
+            connection,
+            self.binding.event(),
+            self.binding.actor(),
+            self.binding.actor(),
+        )
+        .await
+        .map_err(command_error)?;
+        self.authority
+            .authorize_in(
+                connection,
+                self.binding.actor(),
+                self.binding.event(),
+                self.binding.actor(),
+                CommunityAccess::party(true, self.command.safety()),
+            )
+            .await?;
+        self.guard
+            .authorize_in(connection, self.binding, self.binding.actor())
+            .await
+            .map_err(command_error)?;
+        self.authorize_subject(connection, scope, &party).await?;
+        self.guard
+            .track_in(connection, self.binding)
+            .await
+            .map_err(command_error)
+    }
+
+    async fn apply(
+        &self,
+        connection: &mut PgConnection,
+        scope: Scope,
+        target: Uuid,
+    ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        if scope != self.command.scope()? || target != self.command.target() {
+            return Err(CommandError::Denied);
+        }
+        let mut party = wire::load_member_party(connection, scope.event, self.command.party_id())
+            .await
+            .map_err(command_error)?;
+        let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+            .fetch_one(&mut *connection)
+            .await
+            .map_err(|_| CommandError::Unavailable)?;
+        let change = match party.change(
+            scope.actor,
+            &self.command.action,
+            self.command.created_id(),
+            now,
+        ) {
+            Ok(change) => change,
+            Err(error) => {
+                if let Some(failure) = party_safe_failure(error) {
+                    return Ok((Completion::Failed(failure), None));
+                }
+                return Err(self.domain(error));
+            }
+        };
+        if matches!(
+            self.command.action,
+            PartyAction::Apply { .. } | PartyAction::Decide { approve: true, .. }
+        ) {
+            crate::community::policy::pin_effect_until(connection, party.fields.meeting_ends_at)
+                .await?;
+        }
+        save_party(connection, &party).await?;
+        let reference = SafeReference {
+            resource: change.resource,
+            revision: change.revision,
+        }
+        .validate()?;
+        Ok((
+            Completion::Succeeded {
+                reference,
+                status: 200,
+            },
+            // BE15 binds result and invalidation to the exact command target.
+            // Party audience revocation is synchronous in the locked aggregate;
+            // it never waits for this application/member outbox notification.
+            Some(Invalidation { reference }),
+        ))
+    }
+}
+
+impl<A, G: PartyLiveOwnerGuard + ?Sized> PartyMutationProducer<'_, A, G>
+where
+    A: CommunityAuthority,
+{
+    async fn phase_write_in(&self, connection: &mut PgConnection) -> Result<(), CommandError> {
+        let phase: Option<String> = sqlx::query_scalar(
+            "select phase from public.concert_events where event_id=$1 for share",
+        )
+        .bind(self.binding.event())
+        .fetch_optional(&mut *connection)
+        .await
+        .map_err(|_| CommandError::Unavailable)?;
+        if phase.is_none() {
+            return Err(CommandError::Denied);
+        }
+        if matches!(phase.as_deref(), Some("OPEN" | "LIVE"))
+            || (self.command.safety() && phase.as_deref() == Some("READ_ONLY"))
+        {
+            Ok(())
+        } else {
+            Err(CommandError::Denied)
+        }
+    }
+
+    async fn authorize_subject(
+        &self,
+        connection: &mut PgConnection,
+        scope: Scope,
+        party: &Party,
+    ) -> Result<(), CommandError> {
+        // Authorization runs for both fresh commands and durable receipt replay.
+        // Revision/state checks remain in the domain so successful retries work.
+        match &self.command.action {
+            PartyAction::Decide { .. } | PartyAction::Cancel { .. }
+                if scope.actor != party.owner =>
+            {
+                return Err(CommandError::Denied)
+            }
+            PartyAction::CancelApplication { application, .. }
+                if !party
+                    .applications
+                    .iter()
+                    .any(|a| a.id == *application && a.user == scope.actor) =>
+            {
+                return Err(CommandError::Denied)
+            }
+            PartyAction::Remove { user, .. }
+                if scope.actor != party.owner && scope.actor != *user =>
+            {
+                return Err(CommandError::Denied)
+            }
+            _ => {}
+        }
+        let subject = match &self.command.action {
+            PartyAction::Apply { .. } => scope.actor,
+            PartyAction::Decide { application, .. }
+            | PartyAction::CancelApplication { application, .. } => {
+                party
+                    .applications
+                    .iter()
+                    .find(|value| value.id == *application)
+                    .ok_or(CommandError::Denied)?
+                    .user
+            }
+            PartyAction::Remove { user, .. } => *user,
+            PartyAction::Cancel { .. } => scope.actor,
+            _ => return Err(CommandError::InvalidInput),
+        };
+        let mut subjects = vec![party.owner, subject];
+        subjects.sort_unstable();
+        subjects.dedup();
+        for subject in subjects {
+            local_subject_in(connection, scope.event, subject)
+                .await
+                .map_err(command_error)?;
+            self.authority
+                .authorize_in(
+                    connection,
+                    scope.actor,
+                    scope.event,
+                    subject,
+                    CommunityAccess::party(true, self.command.safety()),
+                )
+                .await?;
+            local_pair_in(connection, scope.event, scope.actor, subject)
+                .await
+                .map_err(command_error)?;
+            self.guard
+                .authorize_in(connection, self.binding, subject)
+                .await
+                .map_err(command_error)?;
+        }
+        // Application responses contain a profile; authorize that projection
+        // before committing the command, including cancellation/rejection.
+        if matches!(
+            self.command.action,
+            PartyAction::Apply { .. }
+                | PartyAction::Decide { .. }
+                | PartyAction::CancelApplication { .. }
+        ) {
+            self.guard
+                .application_profile_in(connection, self.binding, subject)
+                .await
+                .map_err(command_error)?;
+        }
+        Ok(())
+    }
 }
 
 impl<A, G: PartyLiveOwnerGuard + ?Sized> PartyCreateProducer<'_, A, G> {
@@ -759,6 +1346,10 @@ where
             return Err(CommandError::Denied);
         }
         self.binding.check().map_err(|_| CommandError::Denied)?;
+        self.guard
+            .track_in(connection, self.binding)
+            .await
+            .map_err(command_error)?;
         local_actor_in(connection, self.binding)
             .await
             .map_err(command_error)?;
@@ -907,8 +1498,46 @@ fn command_error(error: PartyLiveError) -> CommandError {
         PartyLiveError::InvalidTransition | PartyLiveError::EventReadOnly => {
             CommandError::InvalidState
         }
+        PartyLiveError::PartyFull | PartyLiveError::DuplicateApplication => {
+            CommandError::InvalidState
+        }
         PartyLiveError::Internal => CommandError::InvalidState,
     }
+}
+
+fn party_safe_failure(error: PartyError) -> Option<concert_application::commands::SafeFailure> {
+    use concert_application::commands::SafeFailure;
+    match error {
+        PartyError::Full => Some(SafeFailure::PartyFull),
+        PartyError::DuplicateApplication => Some(SafeFailure::DuplicateApplication),
+        PartyError::VersionConflict => Some(SafeFailure::VersionConflict),
+        PartyError::InvalidTransition => Some(SafeFailure::InvalidTransition),
+        _ => None,
+    }
+}
+
+async fn save_party(connection: &mut PgConnection, party: &Party) -> Result<(), CommandError> {
+    let aggregate = serde_json::to_value(party).map_err(|_| CommandError::InvalidState)?;
+    sqlx::query("insert into public.concert_community_parties(event_id,party_id,owner_id,revision,state,member_count,capacity,meeting_revision,audience_revision,aggregate) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) on conflict(event_id,party_id) do update set owner_id=excluded.owner_id,revision=excluded.revision,state=excluded.state,member_count=excluded.member_count,capacity=excluded.capacity,meeting_revision=excluded.meeting_revision,audience_revision=excluded.audience_revision,aggregate=excluded.aggregate")
+        .bind(party.event).bind(party.id).bind(party.owner).bind(party.revision)
+        .bind(match party.state { PartyState::Open=>"OPEN",PartyState::Closed=>"CLOSED",PartyState::Cancelled=>"CANCELLED",PartyState::Completed=>"COMPLETED" })
+        .bind(party.member_count()).bind(party.fields.capacity).bind(party.meeting_revision)
+        .bind(party.audience_revision).bind(aggregate).execute(&mut *connection).await.map_err(|_| CommandError::Unavailable)?;
+    sqlx::query("update public.concert_community_members set is_owner=false where event_id=$1 and party_id=$2 and is_owner and user_id<>$3")
+        .bind(party.event).bind(party.id).bind(party.owner).execute(&mut *connection).await.map_err(|_| CommandError::Unavailable)?;
+    for member in &party.members {
+        sqlx::query("insert into public.concert_community_members(event_id,party_id,user_id,is_owner,state,revision) values($1,$2,$3,$4,$5,$6) on conflict(event_id,party_id,user_id) do update set is_owner=excluded.is_owner,state=excluded.state,revision=excluded.revision")
+            .bind(party.event).bind(party.id).bind(member.user).bind(member.owner)
+            .bind(match member.state { concert_domain::community::party::MemberState::Active=>"ACTIVE",concert_domain::community::party::MemberState::Removed=>"REMOVED",concert_domain::community::party::MemberState::Left=>"LEFT" })
+            .bind(member.revision).execute(&mut *connection).await.map_err(|_| CommandError::Unavailable)?;
+    }
+    for application in &party.applications {
+        sqlx::query("insert into public.concert_community_applications(event_id,party_id,application_id,user_id,state,revision) values($1,$2,$3,$4,$5,$6) on conflict(event_id,application_id) do update set state=excluded.state,revision=excluded.revision")
+            .bind(party.event).bind(party.id).bind(application.id).bind(application.user)
+            .bind(match application.state { concert_domain::community::party::ApplicationState::Pending=>"PENDING",concert_domain::community::party::ApplicationState::Approved=>"APPROVED",concert_domain::community::party::ApplicationState::Rejected=>"REJECTED",concert_domain::community::party::ApplicationState::Cancelled=>"CANCELLED" })
+            .bind(application.revision).execute(&mut *connection).await.map_err(|_| CommandError::Unavailable)?;
+    }
+    Ok(())
 }
 
 async fn local_phase_write_in(
@@ -925,6 +1554,26 @@ async fn local_phase_write_in(
         Ok(())
     } else {
         Err(CommandError::Denied)
+    }
+}
+
+fn mutation_operation(operation: &str) -> bool {
+    matches!(
+        operation,
+        "createConcertParty"
+            | "applyConcertParty"
+            | "decideConcertApplication"
+            | "cancelConcertApplication"
+            | "removeConcertMember"
+            | "cancelConcertParty"
+    )
+}
+
+fn method_for(operation: &str) -> &'static str {
+    match operation {
+        "listConcertParties" | "getConcertParty" => "GET",
+        "cancelConcertApplication" | "removeConcertMember" => "DELETE",
+        _ => "POST",
     }
 }
 

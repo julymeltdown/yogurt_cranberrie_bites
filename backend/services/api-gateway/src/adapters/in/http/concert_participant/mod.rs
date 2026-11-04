@@ -226,9 +226,8 @@ async fn dispatch(
         Ok(v) => v,
         Err(e) => return rpc_error(e),
     };
-    if access.check().is_err() {
-        return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED");
-    }
+    // The outbound adapter has already validated this authenticated reply.
+    // Retain its cleanup capability before any late access/disclosure refusal.
     let delivery = match value
         .delivery
         .and_then(|v| state.client.delivery_token(v).ok())
@@ -236,30 +235,33 @@ async fn dispatch(
         Some(v) => v,
         None => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
     };
-    let response = match value.failure {
-        Some(f) => match failure_status(&f) {
+    let mut response = if access.check().is_err() {
+        error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED")
+    } else if let Some(failure) = value.failure {
+        match failure_status(&failure) {
             Ok((status, reason)) => error(status, reason),
             Err(e) => return rpc_error(e),
-        },
-        None => {
-            let mut r = Response::new(Body::from(value.response_json));
-            r.headers_mut().insert(
-                header::CONTENT_TYPE,
-                HeaderValue::from_static("application/json"),
-            );
-            r
+        }
+    } else {
+        // Only protected success content carries the original disclosure gate.
+        // A locally authored safe error contains no protected owner payload and
+        // must remain consumable after that ceiling without extending it.
+        match super::response_disclosure::DisclosureBody::new(
+            Body::from(value.response_json),
+            value.content_expires_unix_micros,
+            original,
+        ) {
+            Ok(body) => {
+                let mut response = Response::new(Body::new(body));
+                response.headers_mut().insert(
+                    header::CONTENT_TYPE,
+                    HeaderValue::from_static("application/json"),
+                );
+                response
+            }
+            Err(e) => rpc_error(e),
         }
     };
-    let (parts, body) = response.into_parts();
-    let body = match super::response_disclosure::DisclosureBody::new(
-        body,
-        value.content_expires_unix_micros,
-        original,
-    ) {
-        Ok(body) => body,
-        Err(e) => return rpc_error(e),
-    };
-    let mut response = Response::from_parts(parts, Body::new(body));
     // This same token survives both success and closed error representations.
     // Only Root's actual outer HTTP EOF layer may complete it.
     response.extensions_mut().insert(delivery);

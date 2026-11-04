@@ -65,34 +65,52 @@ impl ProductOwner for ScopedProductOwner {
             Sha256::digest(&request.http_body).into(),
             context.deadline(),
         )?;
+        let context = context.owned_for_producer();
+        let parent = context.parent_authority().clone();
+        let publisher = self.delivery.clone();
+        let producer = self.producer.clone();
         let scope = self.fence.acquire(binding).await?;
-        // No protected producer future is even constructed before the durable
-        // terminal capability exists. Failure here retains unresolved exclusion.
-        let (delivery, token) = self.delivery.publish(scope.clone()).await?;
-        let representation = match scope
-            .run(self.producer.dispatch(context, scope.clone(), request))
+        let owned = scope.clone();
+        // No await separates acquisition from supervised ownership. The actual
+        // publication, producer and response work all belong to this future.
+        scope
+            .run_owned(async move {
+                // Tokio task locals do not cross spawn. Reinstall only the
+                // original sealed parent; run_owned retains the original stop.
+                parent
+                    .scope(async move {
+                        context.check()?;
+                        // Do not even construct protected producer work until its
+                        // exact durable terminal capability has been published.
+                        let (delivery, token) = publisher.publish(owned.clone()).await?;
+                        let representation =
+                            match producer.dispatch(&context, owned.clone(), request).await {
+                                Ok(value) => value,
+                                Err(error) => produced_error(error.code(), context.request()),
+                            };
+                        // A normal refusal remains a response, not cancellation.
+                        // Its actual EOF must follow the same guarded delivery path
+                        // as success. Unknown native work still prevents settlement.
+                        context.check()?;
+                        let mut response = Response::new(proto::ProductResponse {
+                            status: representation.status,
+                            content_type: representation.content_type,
+                            body: representation.body,
+                            delivery: Some(delivery),
+                            content_expires_unix_micros: owned
+                                .disclosure_ceiling()?
+                                .expires_micros(),
+                        });
+                        response.extensions_mut().insert(token);
+                        response.metadata_mut().insert(
+                            "cache-control",
+                            "no-store".parse().expect("static metadata"),
+                        );
+                        Ok(response)
+                    })
+                    .await
+            })
             .await
-        {
-            Ok(value) => value,
-            Err(error) => produced_error(error.code(), context.request()),
-        };
-        // A produced error is still a delivered representation. Its scope/token
-        // must reach the exact same EOF path as success, or ordinary refusals
-        // would permanently consume owner capacity. Unknown outcomes still fail
-        // actual owner/native settlement; this envelope never attests rollback.
-        let mut response = Response::new(proto::ProductResponse {
-            status: representation.status,
-            content_type: representation.content_type,
-            body: representation.body,
-            delivery: Some(delivery),
-            content_expires_unix_micros: scope.disclosure_ceiling()?.expires_micros(),
-        });
-        response.extensions_mut().insert(token);
-        response.metadata_mut().insert(
-            "cache-control",
-            "no-store".parse().expect("static metadata"),
-        );
-        Ok(response)
     }
 }
 fn produced_error(code: tonic::Code, request: uuid::Uuid) -> ProductRepresentation {

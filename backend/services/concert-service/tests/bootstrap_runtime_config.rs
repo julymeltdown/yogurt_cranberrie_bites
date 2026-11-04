@@ -311,6 +311,84 @@ fn quality_v8_paths() -> (std::path::PathBuf, std::path::PathBuf, std::path::Pat
         root,
     )
 }
+fn quality_v10_paths() -> (std::path::PathBuf, std::path::PathBuf, std::path::PathBuf) {
+    let (map, index, root) = spatial_paths();
+    (
+        map.parent().unwrap().join("quality-v10/map-manifest.json"),
+        index
+            .parent()
+            .unwrap()
+            .join("quality-v10/source-binding.json"),
+        root,
+    )
+}
+#[test]
+fn quality_v10_binds_560_terrain_changes_without_collision_or_prop_authority_changes() {
+    let (map, index, root) = quality_v10_paths();
+    let candidate =
+        concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).unwrap();
+    let (map, index, _) = quality_v8_paths();
+    let old = concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).unwrap();
+    assert_eq!(candidate.catalog.manifest.map_revision, 6);
+    assert_eq!(candidate.catalog.map_id, old.catalog.map_id);
+    assert_eq!(
+        candidate.catalog.manifest.geometry_hash,
+        "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395"
+    );
+    assert_eq!(
+        (candidate.scenery_bytes, candidate.scenery_pixels),
+        (5_267_667, 6_131_712)
+    );
+    assert!(candidate.scenery_within_budget);
+    assert_eq!(candidate.scenes.len(), 3);
+    let before = &old.catalog.manifest.geometry;
+    let after = &candidate.catalog.manifest.geometry;
+    let mut expected = before.clone();
+    expected.terrain = after.terrain.clone();
+    assert_eq!(&expected, after);
+    let changes: Vec<_> = before
+        .terrain
+        .iter()
+        .flatten()
+        .zip(after.terrain.iter().flatten())
+        .filter(|(a, b)| a != b)
+        .map(|(a, b)| (*a, *b))
+        .collect();
+    assert_eq!(changes.len(), 560);
+    assert!(changes
+        .iter()
+        .all(|&(a, b)| matches!((a, b), (1, 2) | (2, 1))));
+    assert_eq!(
+        candidate.catalog.manifest.places,
+        old.catalog.manifest.places
+    );
+}
+#[test]
+fn quality_v10_rejects_valid_map5_layout_under_changed_terrain_geometry() {
+    let (map, index, root) = quality_v10_paths();
+    let (_, old_index, _) = quality_v8_paths();
+    let mut binding: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(index).unwrap()).unwrap();
+    let old: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(old_index).unwrap()).unwrap();
+    let old_layout = old["scenes"][0]["scene_sources"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|pin| pin["path"].as_str().unwrap().ends_with("/layout.json"))
+        .unwrap();
+    let layout = binding["scenes"][0]["scene_sources"]
+        .as_array_mut()
+        .unwrap()
+        .iter_mut()
+        .find(|pin| pin["path"].as_str().unwrap().ends_with("/layout.json"))
+        .unwrap();
+    *layout = old_layout.clone();
+    let scratch = SpatialScratch::new();
+    copy_spatial_sources(&binding, &root, &scratch.0);
+    let index = scratch.write("binding.json", &binding);
+    assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).is_err());
+}
 #[test]
 fn quality_v8_binds_actual_sources_and_only_adds_72_blocked_cells() {
     let (map, index, root) = quality_v8_paths();
