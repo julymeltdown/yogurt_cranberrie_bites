@@ -412,6 +412,34 @@ terminal/archive/reallocation yet, no extra review/approval gate or new scope.
 Original-ID criterion change is batched into the next hourly King digest;
 four helper commits are not four tasks and no aggregate count is recomputed.
 
+### Shared frame/footer staffing collision resolved directly
+
+Frontend King requested compatible204's next allocation prioritize the human's
+required frame/footer fidelity fix AFTER actual FE32 publication/remote proof/
+COMPLETE→null/clean STOP/lease return. Community preserved active FE32 and
+coordinated the prospective next allocation directly with World, without a
+new goal/source assignment or interrupting current delivery.
+
+World's existing actual ownership supersedes that prospective transfer:
+Backend-released213 has ALREADY ACTUALLY ACCEPTED the SAME required fix under
+World grant `f9e3ea9c` and receiving receipt `8ffa4bee`. World record confirms
+clean isolated `/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer`,
+branch `codex/mcr-fe-QA06-reference-frame-footer`, base `6f2d289b`, exact four
+Root-defined decorative CSS/footer hunks and new-prefix absence, NEW ACTIVE
+unbudgeted delivery goal, supplied JPEG viewed/hash verified. Prior Party
+paths stopped/resources gone. Source preparation is underway, no native slot.
+Current213 compact is active, not free; no goal ID is invented here.
+
+Community WITHDRAWS the conditional204 next-transfer/reservation for this SAME
+already-staffed scope. No actual204 transfer/source grant occurred. Community
+retains its current FE32 allocator responsibility and future compatible
+allocation after actual closure;213's accepted goal/leases remain untouched.
+There is NO Community incumbent on shared frame/header/footer style/component/
+asset hunks. No duplicate writer, new waiting goal, archive, reset, pause or
+King/SL approval gate is introduced. The human fidelity correction remains
+required and now has its verified owner; this routine collision was resolved
+directly and does not require immediate escalation or another King packet.
+
 ### Current QA06 shared evidence and explicit design direction
 
 QA06 remains World-owned IN_PROGRESS; latest bounded readback turn is idle,
