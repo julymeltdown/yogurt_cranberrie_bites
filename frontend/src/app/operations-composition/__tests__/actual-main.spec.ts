@@ -17,6 +17,7 @@ test('Actual canonical Admin discovery uses genuine operator lease and denies th
     captures: [] as string[], limitations: 'Read-only actual producer discovery only. No role publication, service launch, intercepted HTTP, test registry, identity injection or replay of controlled Wall mutation coverage.' }
   let browser: Awaited<ReturnType<typeof playwright.chromium.launch>> | undefined
   let context: BrowserContext | undefined
+  let failure: Error | undefined
   try {
     // These checks happen before Chrome. Missing actual inputs are never a PASS.
     const registered = domainOperation(OPERATIONS_ACCESS_ID)
@@ -93,15 +94,16 @@ test('Actual canonical Admin discovery uses genuine operator lease and denies th
   } catch {
     if (report.stage !== 'inputs') report.status = 'FAIL'
     // Never serialize thrown protocol/network objects or private input values.
-    throw new Error('ACTUAL_ADMIN_DISCOVERY_UNQUALIFIED_AT_' + report.stage.toUpperCase())
+    failure = new Error('ACTUAL_ADMIN_DISCOVERY_UNQUALIFIED_AT_' + report.stage.toUpperCase())
   } finally {
     let cleanupFailed = false
     try { await context?.close() } catch { cleanupFailed = true }
     try { await browser?.close() } catch { cleanupFailed = true }
     if (cleanupFailed) { report.status = 'FAIL'; report.checks.push('CLEANUP_FAILED') }
     await writeFile(resolve(out, 'actual-admin.json'), JSON.stringify(report, null, 2) + '\n')
-    if (cleanupFailed) throw new Error('ACTUAL_ADMIN_CLEANUP_FAILED')
+    if (cleanupFailed) failure ??= new Error('ACTUAL_ADMIN_CLEANUP_FAILED')
   }
+  if (failure) throw failure
 })
 async function signIn(page: Page, config: GateConfig, account: GateConfig['operator']) {
   const response = await page.goto(config.origin + '/login')

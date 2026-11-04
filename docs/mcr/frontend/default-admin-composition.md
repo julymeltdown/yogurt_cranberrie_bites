@@ -196,10 +196,10 @@ controlled retained-command journey. Missing prerequisites remain NOT_RUN and a
 nonzero result, never PASS. The accepted work deadline also bounds Playwright.
 
 The new `actual-inputs.config.ts` isolates three new input-boundary checks from
-the already passed 21-case suite. Source qualification is pending. Actual runtime
-qualification is NOT_RUN: Root1fc explicitly reported no live descriptor or
-operator fixture at preparation time; C07's canonical148 closure and the real
-current Concert/OwnAccess cohort remain prerequisites. Root owns private ephemeral
+the already passed 21-case suite. Its three input cases passed at the recorded
+source below. Actual runtime qualification is NOT_RUN: Root1fc explicitly reported no live descriptor or
+operator fixture at preparation time. C07 canonical148 is now published; the real
+current Concert/settings/OwnAccess cohort remains a prerequisite. Root owns private ephemeral
 issuer keys and signed OPERATOR publication after normal Enrollment; frontend
 configuration labels grant no role. Run only within a fresh joint owner window
 using the actual shared frontend/backend and a separate finite browser allocation.
@@ -233,3 +233,14 @@ including FE41; no central integration hunk was rewritten. The next source stage
 three-case PASS without replay. Actual runtime remains NOT_RUN until the shared
 owner supplies the current settings producer, Gateway28, Concert, private
 descriptor and genuine operator fixture.
+
+On canonical148, full TypeScript passed at `dc5062824` in the fresh two-command
+round. Scoped deny-warning lint failed only on `no-unsafe-finally` in the new
+actual driver: an explicit cleanup throw could replace the original failure.
+The driver now retains the sanitized original error, records cleanup failure,
+and throws after cleanup. Raw failure and FULL20:19:12.934460Z are retained under
+`actual-source-02-cleanup-lint`. The independent guard recorded four processes,
+1,687,437,312 bytes aggregate RSS, WHOLE2,254,325,026 and NEW69,800,310 including
+retained carry; all resources were released before this edit. Only remaining
+scoped lint is requested next (`actual-lint`); neither passed test suite nor the
+passed TypeScript command is replayed. This source repair adds no runtime claim.
