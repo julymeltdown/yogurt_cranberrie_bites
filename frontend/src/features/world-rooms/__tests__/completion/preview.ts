@@ -58,8 +58,11 @@ async function actorProbe(id: string) {
   const sprite = scene.children.list.find(o => o.type === 'Sprite' && Reflect.get(o, 'x') === player.position.x && Reflect.get(o, 'y') === player.position.y) as PhaserType.GameObjects.Sprite | undefined
   if (!sprite?.visible) throw Error('Authorized actor has no visible actual Phaser sprite')
   const b = sprite.getBounds(), camera = scene.cameras.main
-  const topLeft = camera.matrix.transformPoint(b.x - camera.scrollX, b.y - camera.scrollY)
-  const bottomRight = camera.matrix.transformPoint(b.right - camera.scrollX, b.bottom - camera.scrollY)
+  // Retained Phaser BaseCamera exposes matrix at runtime; its generated Camera declaration omits it.
+  const matrix = Reflect.get(camera, 'matrix') as PhaserType.GameObjects.Components.TransformMatrix
+  if (typeof matrix?.transformPoint !== 'function') throw Error('Actual Phaser camera matrix unavailable')
+  const topLeft = matrix.transformPoint(b.x - camera.scrollX, b.y - camera.scrollY)
+  const bottomRight = matrix.transformPoint(b.right - camera.scrollX, b.bottom - camera.scrollY)
   const x = Math.max(0, Math.floor(topLeft.x)), y = Math.max(0, Math.floor(topLeft.y))
   const width = Math.min(g.canvas.width - x, Math.ceil(bottomRight.x) - x), height = Math.min(g.canvas.height - y, Math.ceil(bottomRight.y) - y)
   if (width < 4 || height < 4) throw Error('Actor paint region is not visible on actual canvas')

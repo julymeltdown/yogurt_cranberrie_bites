@@ -1,8 +1,8 @@
 # FE18 rooms and authorized Nearby client completion
 
-Status: IN_PROGRESS. Source checks pass; the first targeted native attempt
-failed a pixel-oracle assertion and is preserved. A corrected targeted retry and
-actual application build remain pending a new named slot.
+Status: IN_PROGRESS. The corrected three-width native qualification and actual
+application build passed on source d5247c9c. A focused 390px scrolling/keyboard
+check remains for the additional Nearby focus recovery, followed by publication.
 
 ## Authority and ownership
 
@@ -125,7 +125,36 @@ The initial pixel oracle used `(world-scroll)*zoom` and omitted Phaser's camera
 matrix origin. Only the owned test probe changes to the actual public camera
 matrix transform; `changedChannels >20` stays mandatory. The new runner retains
 partial case metrics and the after-removal image before asserting. No production
-renderer/camera/authority/art/feet change. Types and scoped lint pass after the
-probe correction. Initial measured peak77,455,513 bytes; own browser/server/temp
+renderer/camera/authority/art/feet change. The later final type check exposed that Phaser generated declarations omit
+the runtime BaseCamera matrix. The owned probe now reads that runtime property
+through Reflect with a typed TransformMatrix and a runtime function guard; no
+camera behavior changes. Initial measured peak77,455,513 bytes; own browser/server/temp
 and borrowed link were removed, and the slot was explicitly returned before
 requesting a new named retry allocation.
+
+
+## Corrected native qualification and focused follow-up
+
+`native-02/report.json` is PASS on exact capture source
+`d5247c9c87233621afc58fc556d7e4423786b26e`, allocated slot
+`FE18-CLIENT-RETRY-202611040541Z`. All three 360/390/430 x 844 cases passed,
+including full/unavailable/503 recovery, 403 ticket denial, pending/rejected/
+correlated admitted membership, result focus, 44px controls, no horizontal
+overflow, one retained game/socket, epoch replacement, privacy cancellation and
+late admission disposal. The actual removed actor is absent from DOM and actual
+Phaser sprite state; its sampled paint changed 2295/2704/3369 channels. Fourteen
+original PNGs and source/contract pins remain with their actual capture times.
+The actual optimized application build passed after browser/server/profile
+closure. Whole-task measured peak was 113,864,857 bytes. Own browser, server,
+temporary directory and dependency link were removed; that slot was returned.
+
+Visual inspection found the people names below the half-panel fold. The next
+check scrolls a real person link into view, verifies its bounds and keyboard Tab
+navigation, then records visible DOM and actual canvas before/after removal.
+It reuses the prior three-width qualification only after comparing every shared
+runtime/contract pin. It does not repeat that unchanged matrix. Nearby now also
+recovers focus to the Other people region if the currently focused authorized
+person disappears, while preserving deliberate focus elsewhere. Two added unit
+cases cover those distinct behaviors; the combined regression run passes 223
+checks in 13 files. The focused run includes a new sequential app build because
+this additional Nearby accessibility behavior changes product source.

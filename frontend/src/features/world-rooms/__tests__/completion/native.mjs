@@ -8,6 +8,7 @@ import { chromium, expect } from '@playwright/test'
 import { build, createServer } from 'vite'
 const root = resolve(import.meta.dirname, '../../../../../..'), frontend = resolve(root, 'frontend')
 const output = process.env.MCR_FE18_OUTPUT, slot = process.env.MCR_FRONTEND_SLOT
+const scrollOnly = process.env.MCR_FE18_SCROLL_ONLY === '1'
 assert(slot?.startsWith('FE18-'), 'Explicit NEW coordinator slot acceptance required')
 assert(output?.startsWith(resolve(root, 'docs/mcr/evidence/fe18-rooms-nearby') + '/'))
 async function bytes(path) {
@@ -25,7 +26,7 @@ async function guard() {
   return { availableBytes: free, otherValidationBrowserRoots: 0, interactiveBrowsersPreserved: roots.length }
 }
 const report = { status: 'IN_PROGRESS', slot, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
-  capturedAtUTC: new Date().toISOString(), preflight: await guard(), pins: {}, cases: [], captures: [], errors: [],
+  runKind: scrollOnly ? 'FOCUSED_SCROLL_KEYBOARD' : 'THREE_WIDTH_CLIENT', capturedAtUTC: new Date().toISOString(), preflight: await guard(), pins: {}, cases: [], captures: [], errors: [],
   limits: ['Synthetic canonical Auth/C03/C05 source7005 fixture, not live backend or real BE37 block enforcement', 'Actual default Phaser + authorized DOM client behavior; not production art admission or whole reference fidelity', 'Automated desktop Chrome keyboard/touch events and viewports, not physical devices/software keyboards', 'W04 invitation authority unresolved; capacity is not measured occupancy'] }
 await mkdir(output)
 const temporary = await mkdtemp('/private/tmp/mcr-fe18-completion-'), profile = resolve(temporary, 'chrome-profile')
@@ -72,24 +73,32 @@ try {
     'frontend/src/entities/avatar/character-source-pack.json', ...['operations.json', 'world.schema.json', 'policy.json'].map(p => 'contracts/realtime/v1/' + p),
     ...['rooms.json', 'movement-heartbeat.json', 'ticket-response.json', 'filtered-viewers.json'].map(p => 'contracts/fixtures/realtime/' + p))
   for (const path of paths) report.pins[path] = createHash('sha256').update(await readFile(resolve(root, path))).digest('hex')
+  if (scrollOnly) {
+    const previousBytes = await readFile(resolve(output, '../native-02/report.json')), previous = JSON.parse(previousBytes)
+    assert.equal(previous.status, 'PASS')
+    const shared = Object.keys(report.pins).filter(path => !path.startsWith('frontend/src/features/'))
+    for (const path of shared) assert.equal(report.pins[path], previous.pins[path], `Preserved shared authority/renderer input ${path}`)
+    report.priorThreeWidthQualification = { path: '../native-02/report.json', sha256: createHash('sha256').update(previousBytes).digest('hex'), source: previous.source, cases: previous.cases.length, sharedPinsIdentical: shared }
+  }
   context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true, viewport: { width: 390, height: 844 } })
   report.browser = context.browser()?.version()
   context.on('page', page => page.on('pageerror', error => report.errors.push(error.message)))
   server = await createServer({ root: frontend, configLoader: 'runner', cacheDir: resolve(temporary, 'vite-cache'), logLevel: 'error', server: { host: '127.0.0.1', port: 0, hmr: false } })
   await server.listen(); const origin = server.resolvedUrls.local[0].replace(/\/$/, '')
-  for (const width of [360, 390, 430]) {
+  for (const width of scrollOnly ? [390] : [360, 390, 430]) {
     const page = await context.newPage(); await page.setViewportSize({ width, height: 844 })
     await page.goto(origin + '/src/features/world-rooms/__tests__/completion/preview.html?era=PARADE')
     await expect.poll(async () => page.evaluate(() => window.__FE18_COMPLETION__?.state().root.phase), { timeout: 30000 }).toBe('live')
     await expect.poll(async () => (await engine(page)).sprites, { timeout: 30000 }).toBe(6)
+    const rowResult = { width, status: 'IN_PROGRESS', before: await single(page), states: [] }; report.cases.push(rowResult)
     await page.getByRole('button', { name: 'World tools', exact: true }).click()
+    if (scrollOnly) { await page.getByRole('link', { name: 'Nearby', exact: true }).click() } else {
     await page.getByRole('link', { name: 'Rooms', exact: true }).click()
     const row = label => page.getByRole('heading', { name: label, exact: true, level: 3 }).locator('..').locator('..')
     const current = label => expect(row(label)).toHaveAttribute('aria-current', 'true')
     const change = () => page.getByRole('button', { name: 'Switch to SECOND ROOM', exact: true })
     const refresh = () => page.getByRole('button', { name: 'Refresh rooms', exact: true }).click()
     await expect(change()).toBeVisible(); await current('MAIN STAGE')
-    const rowResult = { width, status: 'IN_PROGRESS', before: await single(page), states: [] }; report.cases.push(rowResult)
     for (const availability of ['FULL', 'UNAVAILABLE']) {
       await page.evaluate(value => window.__FE18_COMPLETION__.catalog(value), availability); await refresh()
       await expect(change()).toBeDisabled(); await expect(page.getByText(`Capacity 50 · ${availability === 'FULL' ? 'Full' : 'Unavailable'}`, { exact: true })).toBeVisible()
@@ -119,6 +128,7 @@ try {
     }
     await capture(page, `rooms-admitted-${width}.png`, 'Correlated switch admitted; keyboard focus on result')
     await page.getByRole('link', { name: 'Nearby in world', exact: true }).click()
+    }
     const roster = page.getByRole('list', { name: 'People authorized in your current virtual room' })
     await expect(roster.getByRole('link')).toHaveCount(5)
     await page.getByRole('button', { name: 'Reduce panel', exact: true }).click()
@@ -129,10 +139,22 @@ try {
     await paint(page)
     const actor = (await state(page)).serverSnapshot.players[1]
     await expect(roster.getByRole('link', { name: actor.name, exact: true })).toHaveCount(1)
+    if (scrollOnly) {
+      const actorLink = roster.getByRole('link', { name: actor.name, exact: true })
+      await actorLink.scrollIntoViewIfNeeded(); await actorLink.focus(); await expect(actorLink).toBeFocused()
+      await page.keyboard.press('Tab')
+      const next = (await state(page)).serverSnapshot.players[2]
+      await expect(roster.getByRole('link', { name: next.name, exact: true })).toBeFocused()
+      await actorLink.focus()
+      const box = await actorLink.boundingBox(), panel = await page.locator('.shell-panel-body').boundingBox()
+      assert(box.width >= 44 && box.height >= 44 && box.y >= panel.y && box.y + box.height <= panel.y + panel.height)
+      rowResult.scrolledKeyboard = { actor: actor.id, box, panel, nextPersonFocusedByTab: next.id }
+    }
     rowResult.paintBefore = await page.evaluate(id => window.__FE18_COMPLETION__.actorProbe(id), actor.id)
     await capture(page, `nearby-before-${width}.png`, 'Authorized roster and actual Phaser before filtered removal')
     await page.evaluate(id => window.__FE18_COMPLETION__.remove(id), actor.id)
     await expect(roster.getByRole('link', { name: actor.name, exact: true })).toHaveCount(0)
+    if (scrollOnly) await expect(page.getByRole('region', { name: 'Other people in this world' })).toBeFocused()
     await expect.poll(async () => (await engine(page)).sprites).toBe(5); await paint(page)
     rowResult.paintAfter = await page.evaluate(() => window.__FE18_COMPLETION__.removedPaint())
     await capture(page, `nearby-removed-${width}.png`, 'One filtered projection removes the name and actual painted avatar')
@@ -149,7 +171,7 @@ try {
     if (width === 390) {
       await capture(page, 'nearby-epoch-self-only.png', 'Epoch replacement removes every previous remote person')
       await page.getByRole('link', { name: 'Choose a room', exact: true }).click()
-      const back = page.getByRole('button', { name: 'Switch to MAIN STAGE', exact: true }); await back.click()
+      const back = page.getByRole('button', { name: scrollOnly ? 'Switch to SECOND ROOM' : 'Switch to MAIN STAGE', exact: true }); await back.click()
       await expect.poll(async () => (await state(page)).pending?.roomId).toBeTruthy()
       await page.evaluate(() => window.__SCENE_V5_ROOT__.suspend())
       await expect.poll(async () => (await rootState(page)).activeSockets).toBe(0)

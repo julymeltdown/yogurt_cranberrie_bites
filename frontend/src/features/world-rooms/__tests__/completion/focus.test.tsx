@@ -36,3 +36,22 @@ it('names the authorized roster as a list, retaining the self/other distinction'
   expect(screen.getByRole('list', { name: 'People authorized in your current virtual room' }).textContent).toContain('Ghost')
   expect(screen.getByRole('region', { name: 'You in this world' }).textContent).toContain('You')
 })
+
+it('restores a useful list focus when filtering removes the focused person', async () => {
+  const h = harness(); owned.push(h); await h.live()
+  render(<MemoryRouter><WorldNearby controller={h.controller} /></MemoryRouter>)
+  screen.getByRole('link', { name: 'Ghost' }).focus()
+  const b = h.replication.read().baseline!
+  act(() => h.receive({ protocolVersion: '1.0.0', type: 'delta', streamId: b.streamId, roomEpoch: b.roomEpoch, streamSeq: 1, serverTick: 2, ackInputSeq: 0, upserts: [], removes: [uid(2)] }))
+  expect(screen.queryByRole('link', { name: 'Ghost' })).toBeNull()
+  expect(document.activeElement).toBe(screen.getByRole('region', { name: 'Other people in this world' }))
+})
+it('preserves another control focus when filtering changes the list', async () => {
+  const h = harness(); owned.push(h); await h.live()
+  render(<MemoryRouter><WorldNearby controller={h.controller} /></MemoryRouter>)
+  screen.getByRole('link', { name: 'Ghost' }).focus()
+  const rooms = screen.getByRole('link', { name: 'Choose a room' }); rooms.focus()
+  const b = h.replication.read().baseline!
+  act(() => h.receive({ protocolVersion: '1.0.0', type: 'delta', streamId: b.streamId, roomEpoch: b.roomEpoch, streamSeq: 1, serverTick: 2, ackInputSeq: 0, upserts: [], removes: [uid(2)] }))
+  expect(document.activeElement).toBe(rooms)
+})
