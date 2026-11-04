@@ -6,9 +6,12 @@ ownership allocations. This is management bookkeeping, not implementation,
 query, visual, test or runtime review. Developers own qualification, fixes and
 exact committed handoffs. Current publication routing follows the user's
 integrator-only clause: only the existing designated delivery integrator
-publishes new work through safe non-force integration. Its actual identity is
-being resolved through Main's existing routing; Product root is not assumed to
-be that publisher without confirmation. No king/SL technical review or new
+publishes new work through safe non-force integration. Main explicitly
+designated frontend Root `01a1a153-1227-7e72-801f-a2a6b91981e1` as that
+integrator; Product root retains its separate technical composition ownership.
+Owner-validated exact handoffs go directly to Root's separate isolated
+publishing checkout with serialized writes; its active source goal is preserved
+and delivery maintenance adds no second goal. No king/SL technical review or new
 approval stage is introduced; implementation continues. Previously published
 owner receipts below remain historical facts, not future push authorization.
 
@@ -246,7 +249,9 @@ base, changed paths, pins, commands/results and limitations to the existing
 designated delivery integrator for publication. Earlier direct-owner-push
 instructions for this new QA10 goal are withdrawn. Same ACTIVE goal
 `1793757526` continues, with required publication unfinished until the actual
-integrator receipt; no false goal completion, feature halt or king/SL review.
+Root publication/remote-ancestry receipt; no false goal completion, feature halt
+or king/SL review. Root's explicit identity was forwarded to the receiving
+developer, who acknowledged no self-push and preservation of the same goal.
 Already-published `047d892c` and other history are preserved without duplicate
 integration or rewrites. No duplicate human confirmation question is requested.
 
