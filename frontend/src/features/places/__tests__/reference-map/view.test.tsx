@@ -8,6 +8,7 @@ import { createPlacesController } from '../../model/controller'
 import { PlacesOverview } from '../../ui/Places'
 import { catalog, eventId, release, userId } from '../fixtures/data'
 import type { SceneryOverview } from '../../../../world/illustrated/overview'
+import { referenceMapRelease } from './scene-data'
 beforeEach(() => {
   vi.stubGlobal('location', { origin: 'https://mcr.example.invalid' })
   vi.stubGlobal('ResizeObserver', class { observe() {} disconnect() {} })
@@ -17,19 +18,20 @@ beforeEach(() => {
   vi.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(function(this: HTMLDialogElement) { this.open = false })
 })
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
-async function setup() {
+async function setup(scene = false) {
   const session = createMemorySession(); session.replace(0, { userId, eventId, accessToken: 'memory-test' })
-  const map = await release(), g = map.manifest.geometry, listeners = new Set<() => void>()
+  const map = scene ? await referenceMapRelease(session.read()) : await release(), g = map.manifest.geometry, listeners = new Set<() => void>()
   let snapshot: SceneryOverview | null = { width: g.width_cells * g.tile_width_px, height: g.height_cells * g.tile_height_px,
     mapId: map.manifest.map_id, mapRevision: map.manifest.map_revision, mapHash: map.manifest.content_hash, geometryHash: map.manifest.geometry_hash,
-    themeId: 'REVENGE', themeRevision: 1, themeHash: 'sha256:TEST', imageUrl: 'blob:test-map-1' }
-  const fetch = vi.fn(async () => Response.json(catalog())), camera = { setZoom: vi.fn(() => true), lookAt: vi.fn(), recenter: vi.fn(), read: () => ({ following: true, camera: null }) }
+    themeId: scene ? 'PARADE' : 'REVENGE', themeRevision: 1, themeHash: 'sha256:TEST', imageUrl: 'blob:test-map-1' }
+  const fetch = vi.fn(async () => Response.json(scene ? { event_id: eventId, revision: 7, items: map.manifest.places } : catalog())), camera = { setZoom: vi.fn(() => true), lookAt: vi.fn(), recenter: vi.fn(), read: () => ({ following: true, camera: null }) }
   const controller = createPlacesController({ session, http: createHttpClient({ session, fetch }), map: { read: () => map, subscribe: () => () => {} }, camera: { read: () => camera }, overview: { read: () => snapshot, subscribe(fn) { listeners.add(fn); return () => { listeners.delete(fn) } } } })
   render(<MemoryRouter><PlacesOverview controller={controller} /></MemoryRouter>)
-  await waitFor(() => expect(document.querySelector('img[alt="REVENGE illustrated virtual map"]')).not.toBeNull())
-  const img = document.querySelector('img[alt="REVENGE illustrated virtual map"]')!
+  const selector = `img[alt="${scene ? 'PARADE' : 'REVENGE'} illustrated virtual map"]`
+  await waitFor(() => expect(document.querySelector(selector)).not.toBeNull())
+  const img = document.querySelector(selector)!
   fireEvent.load(img)
-  return { controller, fetch, camera, img, replace(value: SceneryOverview | null) { snapshot = value; listeners.forEach(f => f()) }, snapshot: () => snapshot }
+  return { controller, fetch, camera, img, map, replace(value: SceneryOverview | null) { snapshot = value; listeners.forEach(f => f()) }, snapshot: () => snapshot }
 }
 it('uses authorized labels/icon plaques, no fabricated current-position pin, and local zoom without network/camera writes', async () => {
   const f = await setup()
@@ -61,4 +63,42 @@ it('falls back after image failure/replacement and withdraws old plaques and pin
   f.replace(next); await waitFor(() => expect(document.querySelector('img[alt="PARADE illustrated virtual map"]')).not.toBeNull()); fireEvent.load(document.querySelector('img[alt="PARADE illustrated virtual map"]')!)
   expect(await screen.findByRole('link', { name: 'View Synthetic virtual stage' })).toBeInTheDocument()
   f.replace(null); await waitFor(() => expect(screen.queryByRole('img', { name: 'PARADE illustrated virtual map' })).not.toBeInTheDocument()); f.controller.dispose()
+})
+
+it('uses four real candidate IDs and catalog text; source-art decoration never creates a destination', async () => {
+  const f = await setup(true)
+  expect(document.querySelector('[data-map-presentation="reference-scene"]')).not.toBeNull()
+  expect(screen.getAllByRole('link', { name: /^View / })).toHaveLength(4)
+  expect(screen.queryByRole('link', { name: /FOOD|MEETUP ZONE|GIVEAWAY BOOTH|PLAZA/ })).not.toBeInTheDocument()
+  const stage = screen.getByRole('link', { name: 'View Virtual stage' })
+  expect(stage).toHaveAttribute('href', '/world/places/6a5c196b-58e1-47d5-99bb-000000000003')
+  fireEvent.focus(stage)
+  const pin = screen.getByRole('img', { name: 'Selected virtual location: Virtual stage' })
+  expect(pin).toHaveStyle({ left: `${30.5 / 48 * 100}%`, top: `${35.5 / 81 * 100}%` })
+  const plane = document.querySelector<HTMLElement>('.places-map-plane')!
+  const stageY = 568 / 1296 * Number.parseFloat(plane.style.height)
+  const leader = Array.from(document.querySelectorAll('.places-map-leaders line')).find(line => Math.abs(Number(line.getAttribute('y1')) - stageY) < .001)!
+  expect(leader).toBeDefined()
+  expect(leader.getAttribute('y1')).not.toBe(leader.getAttribute('y2'))
+  expect(f.map.manifest.geometry.interactions.find(p => p.interaction_id === 'stage_info')).toMatchObject({ cell_x: 30, cell_y: 35 })
+  expect(f.fetch).toHaveBeenCalledTimes(1)
+  f.controller.dispose()
+})
+it('does not let late image events or same-URL release changes revive an earlier snapshot', async () => {
+  const f = await setup(true), first = f.img
+  f.replace({ ...f.snapshot()!, imageUrl: 'blob:reference-replacement' })
+  await waitFor(() => expect(document.querySelector('img')).not.toBe(first))
+  const second = document.querySelector('img')!
+  expect(screen.queryByRole('link', { name: /^View / })).not.toBeInTheDocument()
+  fireEvent.load(first)
+  expect(screen.queryByRole('link', { name: /^View / })).not.toBeInTheDocument()
+  fireEvent.load(second)
+  expect(screen.getAllByRole('link', { name: /^View / })).toHaveLength(4)
+  f.replace({ ...f.snapshot()!, themeHash: 'sha256:replacement-theme-same-url' })
+  await waitFor(() => expect(document.querySelector('img')).not.toBe(second))
+  fireEvent.error(second)
+  expect(screen.queryByText('Illustration unavailable. Schematic and place list remain available.')).not.toBeInTheDocument()
+  fireEvent.load(document.querySelector('img')!)
+  expect(screen.getAllByRole('link', { name: /^View / })).toHaveLength(4)
+  f.controller.dispose()
 })

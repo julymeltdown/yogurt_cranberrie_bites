@@ -17,6 +17,7 @@ use uuid::Uuid;
 mod json;
 pub mod release;
 mod schema;
+pub mod spatial;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct BootstrapFeatures {
@@ -66,6 +67,21 @@ impl ProductReleaseBundle {
             features,
             ReleasePolicy::Product,
         )
+    }
+    /// Keeps the existing product policy and additionally verifies the exact
+    /// source geometry, actual resource bytes/dimensions and inert Tiled grids.
+    pub fn from_source_bound_files(
+        bootstrap: &Path,
+        avatar_manifest: &Path,
+        map_manifest: &Path,
+        themes: [&Path; 3],
+        features: BootstrapFeatures,
+        resource_root: &Path,
+        source_binding: &Path,
+    ) -> Result<Arc<ValidatedProductRelease>, BootstrapServiceError> {
+        let release = Self::from_product_files(bootstrap, avatar_manifest, map_manifest, themes, features)?;
+        spatial::validate_product(&release, map_manifest, source_binding, resource_root)?;
+        Ok(release)
     }
     /// Test-only entry. It cannot be selected by the product filesystem API and
     /// is intended for the isolated native harness.

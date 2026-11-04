@@ -96,7 +96,10 @@ impl AvatarPersistence {
             .validate(&release.release().defaults().avatar)
             .map_err(invalid)?;
         Ok(Self {
-            repository: PgAvatarRepository::new(pool),
+            repository: PgAvatarRepository {
+                pool,
+                require_effect_fence: !synthetic,
+            },
             release,
             catalog,
         })
@@ -214,11 +217,52 @@ fn invalid(_: impl std::fmt::Debug) -> AvatarError {
 #[derive(Clone)]
 pub struct PgAvatarRepository {
     pool: PgPool,
+    require_effect_fence: bool,
 }
 impl PgAvatarRepository {
     pub fn new(pool: PgPool) -> Self {
-        Self { pool }
+        Self {
+            pool,
+            require_effect_fence: true,
+        }
     }
+}
+async fn check_effect(
+    authority: &dyn AvatarAuthority,
+    key: ParticipantKey,
+    operation: AvatarOperation,
+    digest: &str,
+    fence: Option<&dyn AvatarEffectFence>,
+) -> Result<(), AvatarError> {
+    authorize(authority, key, operation, digest)?;
+    if let Some(fence) = fence {
+        fence.check().await?;
+        authorize(authority, key, operation, digest)?;
+    }
+    Ok(())
+}
+async fn effect_identity(
+    tx: &mut sqlx::Transaction<'_, sqlx::Postgres>,
+) -> Result<AvatarTransactionIdentity, AvatarError> {
+    let (system_identifier, database_oid, full_xid, backend_pid, backend_started):
+        (String,i64,String,i32,chrono::DateTime<chrono::Utc>) = sqlx::query_as(
+        "select c.system_identifier::text,d.oid::bigint,pg_current_xact_id()::text,a.pid,a.backend_start from pg_control_system() c join pg_database d on d.datname=current_database() join pg_stat_activity a on a.pid=pg_backend_pid()"
+    ).fetch_one(&mut **tx).await.map_err(unavailable)?;
+    let decimal = |value: &str| {
+        !value.is_empty() && value.len() <= 20 && value.bytes().all(|b| b.is_ascii_digit())
+    };
+    let database_oid = u32::try_from(database_oid).map_err(invalid)?;
+    if !decimal(&system_identifier) || !decimal(&full_xid) || database_oid == 0 || backend_pid <= 0
+    {
+        return Err(AvatarError::InvalidState);
+    }
+    Ok(AvatarTransactionIdentity {
+        system_identifier,
+        database_oid,
+        full_xid,
+        backend_pid,
+        backend_started,
+    })
 }
 #[async_trait]
 impl AvatarRepository for PgAvatarRepository {
@@ -233,6 +277,14 @@ impl AvatarRepository for PgAvatarRepository {
         let op = mutation.operation();
         let check = || authorize(authority, key, op, digest);
         check()?;
+        let fence = if op == AvatarOperation::Read {
+            None
+        } else {
+            authority.effect_fence()
+        };
+        if self.require_effect_fence && op != AvatarOperation::Read && fence.is_none() {
+            return Err(AvatarError::Unavailable);
+        }
         if let AvatarMutation::Avatar(command) = &mutation {
             catalog
                 .validate(&command.selection)
@@ -242,6 +294,13 @@ impl AvatarRepository for PgAvatarRepository {
         let user = key.user_id.uuid();
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         check()?;
+        if let Some(fence) = fence {
+            let identity = effect_identity(&mut tx).await?;
+            check()?;
+            fence.register(identity).await?;
+            check()?;
+            check_effect(authority, key, op, digest, Some(fence)).await?;
+        }
         let phase: Option<String> = sqlx::query_scalar(
             "select phase from public.concert_events where event_id=$1 for update",
         )
@@ -249,7 +308,7 @@ impl AvatarRepository for PgAvatarRepository {
         .fetch_optional(&mut *tx)
         .await
         .map_err(unavailable)?;
-        check()?;
+        check_effect(authority, key, op, digest, fence).await?;
         let phase: EventPhase = phase
             .ok_or(AvatarError::Missing)?
             .parse()
@@ -262,17 +321,17 @@ impl AvatarRepository for PgAvatarRepository {
         }
         let state: Option<String> = sqlx::query_scalar("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 for update")
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
-        check()?;
+        check_effect(authority, key, op, digest, fence).await?;
         if state.as_deref() != Some("ACTIVE") {
             return Err(AvatarError::Denied);
         }
         let row = sqlx::query("select revision,theme,low_power,reduced_motion,sound_enabled,created_at,updated_at from public.concert_participants where event_id=$1 and user_id=$2 for update")
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
-        check()?;
+        check_effect(authority, key, op, digest, fence).await?;
         let mut participant = participant(row.ok_or(AvatarError::Missing)?, key)?;
         let row = sqlx::query("select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2 for update")
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
-        check()?;
+        check_effect(authority, key, op, digest, fence).await?;
         let mut avatar = avatar(row.ok_or(AvatarError::Missing)?, key)?;
         catalog.validate(&avatar.selection).map_err(invalid)?;
         match mutation {
@@ -290,7 +349,7 @@ impl AvatarRepository for PgAvatarRepository {
                     .bind(columns.accessory).bind(columns.skin_tone).bind(columns.contract_version)
                     .bind(columns.representation).bind(columns.preset_id)
                     .fetch_one(&mut *tx).await.map_err(unavailable)?;
-                check()?;
+                check_effect(authority, key, op, digest, fence).await?;
                 avatar.selection = s;
                 avatar.revision = next;
                 avatar.updated_at = updated;
@@ -303,7 +362,7 @@ impl AvatarRepository for PgAvatarRepository {
                 let updated: chrono::DateTime<chrono::Utc> = sqlx::query_scalar("update public.concert_participants set revision=$3,theme=$4,low_power=$5,reduced_motion=$6,sound_enabled=$7 where event_id=$1 and user_id=$2 returning updated_at")
                     .bind(event).bind(user).bind(next.get()).bind(value.theme.as_str()).bind(value.low_power).bind(value.reduced_motion).bind(value.sound_enabled)
                     .fetch_one(&mut *tx).await.map_err(unavailable)?;
-                check()?;
+                check_effect(authority, key, op, digest, fence).await?;
                 participant.revision = next;
                 participant.preferences = value;
                 participant.updated_at = updated;
@@ -312,9 +371,9 @@ impl AvatarRepository for PgAvatarRepository {
         catalog.validate(&avatar.selection).map_err(invalid)?;
         validate_times(avatar.created_at, avatar.updated_at).map_err(invalid)?;
         validate_times(participant.created_at, participant.updated_at).map_err(invalid)?;
-        check()?;
+        check_effect(authority, key, op, digest, fence).await?;
         tx.commit().await.map_err(unavailable)?;
-        check()?;
+        check_effect(authority, key, op, digest, fence).await?;
         Ok(AvatarSnapshot {
             avatar,
             participant,
