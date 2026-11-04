@@ -117,14 +117,14 @@ it('mounts the actual default Admin route through production ports and retains a
   render(<RouterProvider router={router} />)
   await screen.findByRole('heading', { name: 'WALL CONTROL' }); await waitFor(() => expect(screen.getByRole('status', { name: 'Wall control status' })).toHaveTextContent('Server wall state loaded'))
   fireEvent.change(screen.getByLabelText('Reason', { exact: true }), { target: { value: 'Reviewed lost pause' } })
-  fireEvent.click(screen.getByRole('button', { name: 'Review wall action', exact: true })); h.server.state.lost = true
-  fireEvent.click(screen.getByRole('button', { name: 'Confirm wall action', exact: true }))
+  fireEvent.click(screen.getByRole('button', { name: 'Review wall action' })); h.server.state.lost = true
+  fireEvent.click(screen.getByRole('button', { name: 'Confirm wall action' }))
   await waitFor(() => expect(screen.getByRole('status', { name: 'Wall control status' })).toHaveTextContent('unresolved'))
   const command = ports.admin.open!(h.auth.session.read() as typeof h.scope)!.read().muralClosure!.wall.read().command!
-  fireEvent.click(screen.getByRole('link', { name: 'Event', exact: true })); await screen.findByRole('heading', { name: 'Event settings' })
-  fireEvent.click(screen.getByRole('link', { name: 'Places', exact: true })); await screen.findByRole('heading', { name: 'Venue and places' })
-  fireEvent.click(screen.getByRole('link', { name: 'Closure', exact: true })); await screen.findByRole('heading', { name: 'CLOSE THE EVENT' })
-  fireEvent.click(screen.getByRole('link', { name: 'Wall', exact: true })); await screen.findByRole('button', { name: 'Check original wall command' })
+  fireEvent.click(screen.getByRole('link', { name: 'Event' })); await screen.findByRole('heading', { name: 'Event settings' })
+  fireEvent.click(screen.getByRole('link', { name: 'Places' })); await screen.findByRole('heading', { name: 'Venue and places' })
+  fireEvent.click(screen.getByRole('link', { name: 'Closure' })); await screen.findByRole('heading', { name: 'CLOSE THE EVENT' })
+  fireEvent.click(screen.getByRole('link', { name: 'Wall' })); await screen.findByRole('button', { name: 'Check original wall command' })
   expect(ports.admin.open!(h.auth.session.read() as typeof h.scope)!.read().muralClosure!.wall.read().command?.key).toBe(command.key)
   expect(h.server.requests.filter(r => r.method === 'POST' && new URL(r.url).pathname.endsWith('/control'))).toHaveLength(1)
   h.server.state.role = null; fireEvent.click(screen.getByRole('button', { name: 'Check current access' }))

@@ -50,3 +50,11 @@ evidence prefix; transferred `app/AdminBoundary.tsx`; and only the compatible
 `app/ports.ts`. All CSS, main/router/session/World, feature consumers, backend,
 contracts/generated registry, lockfile and unrelated Root/consent hunks remain
 read-only. No new cache, Auth controller, socket, install or build is introduced.
+
+The first source round passed all 21 changed cases. Full TypeScript then rejected
+six test-only Testing Library `ByRoleOptions.exact` properties. Removing those
+unsupported optional flags preserves the existing exact string-name matching.
+The failed logs and FULL release are retained under
+`source-01-query-type-failure`; lint and native syntax were not run after that
+stop. The private prefix was removed after retention. Product source is
+unchanged; only the remaining types/lint/syntax need fresh qualification.

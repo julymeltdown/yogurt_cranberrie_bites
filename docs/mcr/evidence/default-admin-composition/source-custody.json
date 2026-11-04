@@ -3,11 +3,21 @@
   "branch": "codex/mcr-fe-default-admin-composition",
   "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
   "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
-  "qualification": "PENDING_FRESH_FUNCTIONAL_SOURCE_OFFER",
+  "qualification": "21_FOCUSED_PASS_REMAINING_TYPES_LINT_SYNTAX_PENDING",
   "scope": "Default Admin canonical consumer composition and changed boundary only",
   "actualProducer205": "NOT_QUALIFIED",
   "productionRoleRegistration": "ABSENT_FAIL_CLOSED_NO_FALLBACK",
   "placeWriteRelease": "ABSENT_NO_ROLE_DERIVED_GRANT",
   "missingReviewProducers": "Operations205",
-  "wholeTaskLiveAcceptance": "OPEN_SEPARATE"
+  "wholeTaskLiveAcceptance": "OPEN_SEPARATE",
+  "firstSource": {
+    "pin": "97befb78e7f3d04b9d226fb6529dcacd1baf1b6a",
+    "tests": 21,
+    "result": "PASS",
+    "fullTypes": "FAILED_6_TEST_ONLY_UNSUPPORTED_BYROLE_EXACT_OPTIONS",
+    "lint": "NOT_RUN",
+    "nativeSyntax": "NOT_RUN",
+    "release": "source-01-query-type-failure/release.json",
+    "repair": "Remove only6 unsupported optional exact flags; ByRole string matching remains exact by default. No product change or passing suite replay."
+  }
 }
