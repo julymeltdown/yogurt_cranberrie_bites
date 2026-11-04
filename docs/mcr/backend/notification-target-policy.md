@@ -102,3 +102,8 @@ Source revision for every following entry: `cde817b2ade8caabcf8c3a96508121053997
 | `backend/scripts/mcr/migration_smoke.py` | `a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8` | smoke runner uses unchanged owned Cluster, execute, receipt checks |
 | `backend/services/concert-service/tests/age_runtime_support/qualify.py` | `5d960e413cb54eff1ebaaafdacf0e64f231c70022098221b5fe2798226b23c68` | smoke runner pattern adapted: clean source/binary pins, finally cleanup |
 | `frontend/src/features/inbox/model/targets.ts` | `a29acab3f1b6e2681c4ee678b4221f147d8949f17a0bb404990f86286c4e4a3c` | read-only compatibility evidence: REPORT has no participant detail route |
+
+
+## Targeted source review
+
+A read-only peer review of `edfe6cd2` found one concrete fixture bug: notice confirmation used `clock_timestamp()` while the actual immediate 0021 CHECK requires `confirmed_at <= statement_timestamp()`. The fixture now uses the owning constraint's `statement_timestamp()`. This repair changes no policy, authority or scope. Review performed no builds, PG, target or network activity and reported no other actionable findings in the frozen local-component scope. Compilation/runtime remain NOT_RUN until the named offer.

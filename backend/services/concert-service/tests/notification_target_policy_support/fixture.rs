@@ -187,7 +187,7 @@ impl Fixture {
                 sqlx::query("insert into public.concert_relationship_pairs(event_id,low_user,high_user) values($1,$2,$3)").bind(self.event).bind(low).bind(high).execute(&mut *c).await?;
             }
         }
-        sqlx::query("insert into public.concert_operation_notices(notice_id,event_id,title,text,source_uri,confirmed_at,state) values($1,$2,'Fixture notice','Fixture text','https://example.invalid/fixture',clock_timestamp(),'PUBLISHED')").bind(self.notice).bind(self.event).execute(&mut *c).await?;
+        sqlx::query("insert into public.concert_operation_notices(notice_id,event_id,title,text,source_uri,confirmed_at,state) values($1,$2,'Fixture notice','Fixture text','https://example.invalid/fixture',statement_timestamp(),'PUBLISHED')").bind(self.notice).bind(self.event).execute(&mut *c).await?;
         let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
             .fetch_one(&mut *c)
             .await?;
