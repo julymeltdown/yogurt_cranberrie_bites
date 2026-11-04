@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T05:28:00+09:00",
+  "updated_at": "2026-11-05T05:59:44+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 46,
-      "IN_PROGRESS": 52,
+      "DONE": 48,
+      "IN_PROGRESS": 50,
       "WAITING_INPUT": 3,
       "REOPENED": 7,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 46,
-    "remaining_active_tasks": 65,
-    "task_completion_percentage": 41.4,
+    "done_tasks": 48,
+    "remaining_active_tasks": 63,
+    "task_completion_percentage": 43.2,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -88,10 +88,12 @@
       "FE36",
       "BE13",
       "BE14",
-      "FE06"
+      "FE06",
+      "BE04",
+      "BE07"
     ],
-    "current_original_criteria_outcomes": 53,
-    "progress_updated_at": "2026-11-05T05:28:00+09:00",
+    "current_original_criteria_outcomes": 55,
+    "progress_updated_at": "2026-11-05T05:59:44+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -124,10 +126,10 @@
       "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
     },
     "staffing_changes": {
-      "recorded_at": "2026-11-05T05:28:00+09:00",
+      "recorded_at": "2026-11-05T05:59:44+09:00",
       "sharing_safety": "OriginalFE31 andFE36 client criteria explicitly closed by21e at publisheda40d6944; actual IN03/moderation/report/media/deletion producers remain separate open scopes.",
       "operations": "Existing53d owns default Admin composition;230 retains blocked feature goal pending actual producers.",
-      "contracts": "Existing50a8 actively qualifies new Enrollment/C05 inputs; previous C07 and hosted CI acceptance preserved. No new current-input PASS is inferred.",
+      "contracts": "Existing50a8 owns trusted application-release identity and changed generated contract inputs after Root actual STOP/transfer; current qualification and FE41 production adoption remain open.",
       "backend_age": "Resource lead has allocated Age corrected sourcef309 after actual predecessor target release and removed source-pin-only reissue approval. Actual compile/native results are not inferred from allocation.",
       "manager_ack_required": false,
       "manager_technical_review": false,
@@ -136,14 +138,16 @@
       "visual_software": "Original QA06 developer1ab7 is actively implementing uncovered software IA/era/preference cases from retained coverage; device-only gaps remain separate. It reported a missing default Help route directly to the implementation owner.",
       "profile": "Profile213 actively resumes originalFE34 ticket/visibility/persistence/preferences. Its prior media goal remains completed; settled CSS no-defect follow-up is not replayed.",
       "avatar": "Native Cancel/conflict packet published1adf8006b;1eed continues original FE12/FE13 completeness with WorldSL/FrontendKING, without publication-only waiting.",
-      "accessibility": "FormerFE38 bounded owner40c576 is now active as QA07 changed input accessibility, covering only uncovered WallB/Gifts/Thread/Meet software deltas in isolated QA ownership.",
+      "accessibility": "Former QA07 software-delta developer40c576 now has an actual active resource-accounting reliability goal and exclusiveqa/resource-accounting/**, docs/mcr/qa/resource-accounting.md anddocs/mcr/evidence/resource-accounting/**. Separate full QA07 device/live criteria remain open.",
       "runtime_priority": "Qualified Wall native-admin increment and portableSQL startup repair are delivered. Root owns combined runtime and actualOwnAccess composition; frontendadapterd0f27b108 source and originalIN04runner2b2d4de6 are published, while combined liveIN04 remains NOT_RUN.",
-      "next_assignment": "Leads transition developers directly to a ready coherent feature, or record a genuine resource/input wait. No king acknowledgment, technical review or disposition-only busywork.",
+      "next_assignment": "Leads resume unfinished ready objectives and assign independent whole-feature work on actual completion/release. Genuine runtime/input waits retain an owner; no idle ACK campaign, duplicate harness or activity-only assignment.",
       "themes": "Original FE06 delivered at0ff6b459f;21e now implements FE41 trusted pre-World service-policy consumer with Root153 and backend16e.",
       "world_recovery": "Original BE13/BE14 complete;20f implements QA05 backend controls and corrects its resource-controller qualification gap before the actual combined run.",
       "map": "Mapdensity packet7acfac3a published; artist completed three full/nine scaled assessments, and existingMap26e resumed actual consumer adoption. No fullAR02/AR04 closure inferred.",
-      "backend_identity": "6b5d has committed bootstrap/deletion-fence fix1289d90e9; its matching warm-target qualification is queued with21d.",
-      "resource_reliability": "21d coordinates actual guard defects with their developers: QA07 shutdown race, BE38 heartbeat-rename scan race and QA05 primary-control live-limit gap. Existing limits stay; unaffected feature matrices are not replayed for paperwork."
+      "backend_identity": "Original BE04/BE07 accepted and published atdf244a715. The frozen BE06 deletion-fence correction171379761 remains queued for its actual native run. Developer6b5d has also received exclusive BE10/BE11 source ownership and is implementing their remaining behavior.",
+      "resource_reliability": "Dedicated developer40c576 implements the recurring resource scan/shutdown reliability fixes;21d schedules capacity and actual adoption owners qualify their use. Main/SL do not inspect helper implementation or relax runtime limits.",
+      "notifications": "Existing Intro developer6ec9 received exclusive BE33 production routing after232 andRoot STOP;232 retains BE42 Auth transport. Original Notification whole-task criteria remain open.",
+      "publication": "Existing412e now performs dedicated mechanical publication. Its first seven-packet batch is delivered at60831ca3b, and the empty-queue turn was returned toRoot1fc. Owners route ready qualified packets directly to the named publisher with one actual Git writer; Root can keep implementing the runtime. No Main acknowledgment or semantic re-review."
     },
     "capacity_history": [
       {
@@ -200,21 +204,21 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T05:28:00+09:00",
-      "canonical_publication": "80de53f327c90db21955eb63d3b74aa41ec62514",
+      "recorded_at": "2026-11-05T05:59:44+09:00",
+      "canonical_publication": "60831ca3b05cc698973c6296b2722b14cfde9d25",
       "original_closures": [
-        "FE06"
+        "BE04",
+        "BE07"
       ],
-      "closure_publication": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
+      "closure_publication": "df244a715a7a7d109282029dee78df4bf65de10d",
       "published_increments": [
-        "1adf8006b: avatar Cancel/conflict native journey; original FE12/FE13 full disposition remains in progress",
-        "af625380c: QA05 frontend recovery driver source; live combined recovery remains open",
-        "919284b1f: scoped two-phase PrivateData; whole BE42 remains incomplete",
-        "192cc3f5f and318b14c5c: scoped Age/legacy deletion provider results; explicit PostgreSQL17.10/PG16 limits retained",
-        "80de53f32: actual Enrollment browser retry five cases; World continuation and broader FE10/IN04 scope remain open"
+        "9bea73f31: Intro deletion native/provider increment; full BE27/IN03 remains separately open",
+        "d52aec156 and5aad280b4: operator documentation and managed-role helper; actual joined runtime remains open",
+        "f0c73e066: corrected operations result/custody limits; no original-task closure",
+        "4f32121de and60831ca3b: QA05 relay and failure-cleanup source/evidence; actual C05/Vite/App cohort remains NOT_RUN"
       ],
-      "task_count_change": 1,
-      "reason": "Only original FE06 closes here from its developer completion record and canonical delivery. All112 tasks/61 required IA and functional criteria remain."
+      "task_count_change": 2,
+      "reason": "Only the explicit original BE04/BE07 dispositions close tasks. The dedicated publisher normally pushed seven exact-path packets and supplied one verified canonical receipt. BE06, whole BE42, live IN02/IN03/IN04/QA05 and visual/device/release boundaries remain open."
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -237,7 +241,7 @@
         "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
       }
     },
-    "staffing_updated_at": "2026-11-05T05:28:00+09:00",
+    "staffing_updated_at": "2026-11-05T05:59:44+09:00",
     "delivery_checkpoint_history": [
       {
         "recorded_at": "2026-11-05T04:37:28+09:00",
@@ -257,6 +261,23 @@
         ],
         "task_count_change": 2,
         "reason": "Only explicit originalFE31/FE36 client outcomes close rows. All112tasks/61IA and original requirements remain."
+      },
+      {
+        "recorded_at": "2026-11-05T05:28:00+09:00",
+        "canonical_publication": "80de53f327c90db21955eb63d3b74aa41ec62514",
+        "original_closures": [
+          "FE06"
+        ],
+        "closure_publication": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
+        "published_increments": [
+          "1adf8006b: avatar Cancel/conflict native journey; original FE12/FE13 full disposition remains in progress",
+          "af625380c: QA05 frontend recovery driver source; live combined recovery remains open",
+          "919284b1f: scoped two-phase PrivateData; whole BE42 remains incomplete",
+          "192cc3f5f and318b14c5c: scoped Age/legacy deletion provider results; explicit PostgreSQL17.10/PG16 limits retained",
+          "80de53f32: actual Enrollment browser retry five cases; World continuation and broader FE10/IN04 scope remain open"
+        ],
+        "task_count_change": 1,
+        "reason": "Only original FE06 closes here from its developer completion record and canonical delivery. All112 tasks/61 required IA and functional criteria remain."
       }
     ]
   },
@@ -1047,31 +1068,26 @@
       "id": "BE04",
       "title": "Canonical participant identity adapter",
       "lane": "BE-CORE",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "ACCEPTED",
       "evidence": [
-        "docs/mcr/backend/http-owner-chain.md"
+        "docs/mcr/backend/http-owner-chain.md",
+        "docs/mcr/backend/identity-bootstrap-avatar-completion.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "The responsible identity developer explicitly accepts all original BE04 criteria in the published completion record: canonical Auth UUID/session, optional exact provider binding, email-only participation, suspension handling, foreign/relinked/deleted claim rejection and private-field allowlist projection. The developer reconciled current sources with retained real owner/RPC/public-reader and IN01 evidence; no original-task remainder was identified. Canonical publication is complete. Separate live integration, external claim/provider, device and release requirements remain open.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "Resolve Auth UUID, basic Profile projection, suspension state, and explicit provider-to-user binding; remove X-account prerequisite.",
         "original_acceptance": "Email-only user participates; foreign identity cannot attach claims; private profile fields never leak.",
         "updated_scope": "Resolve Auth UUID, basic Profile projection, suspension state, and explicit provider-to-user binding; remove X-account prerequisite.",
-        "remaining_work": [
-          "Finish canonical Auth UUID/Profile/suspension/provider-binding adoption through the actual participant and public-profile interfaces.",
-          "Reconcile email-only participation, foreign-identity claim rejection and private-field projection criteria beyond the bounded IN01 outcome."
-        ],
+        "remaining_work": [],
         "complete_when": "Email-only user participates; foreign identity cannot attach claims; private profile fields never leak.",
-        "reason": "The ledger has implementation evidence only; accepted IN01 does not close all identity/projection obligations.",
+        "reason": "The responsible identity developer explicitly accepts all original BE04 criteria in the published completion record: canonical Auth UUID/session, optional exact provider binding, email-only participation, suspension handling, foreign/relinked/deleted claim rejection and private-field allowlist projection. The developer reconciled current sources with retained real owner/RPC/public-reader and IN01 evidence; no original-task remainder was identified. Canonical publication is complete. Separate live integration, external claim/provider, device and release requirements remain open.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "BE03",
-          "C03"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "BE05"
         ],
@@ -1092,14 +1108,12 @@
         ],
         "active_delivery_requirement": true,
         "latest_owner_report": {
-          "owner": "Participant209 /Root1fc; canonical Avatar19f83 and SELF1fd own adapters",
-          "status": "IN_PROGRESS original; original frozen-cohort IN01 now ACCEPTED",
-          "completed": "Retained prior component evidence; current App1722/backendcde/native7cd passed original IN01: actual two-user World, customization GET200/PUT200/freshGET persisted+peer, 91.284s movement/panels, real TCPcut/reconnect/newticket/samecanvas. All10 runtime checks plus source/staticart PASS. Consumer929 published1bb; fresh remote41b48e verified all19payloads/1173pins. GoalactuallyCOMPLETE, all leases returned.",
-          "remaining": "Original task-specific remaining production/release obligations require responsible-owner disposition; IN01 closure alone does not close every supporting BE parent. Naturalexpiry NOT_RUN informational/nonblocking.",
-          "blockerOwner": "Responsible feature owners and Root actual production composition",
-          "nextAction": "Continue ready original scope and actual IN02/03/04 prerequisites; no IN01freeze or expiry gate",
-          "commitPush": "backendcde817b2/native7cd1e900; consumer92989fd7→published1bb911c3; Root41b48eb7 remote verified",
-          "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
+          "owner": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "status": "ACCEPTED original criteria; canonically published",
+          "completed": "The responsible identity developer explicitly accepts all original BE04 criteria in the published completion record: canonical Auth UUID/session, optional exact provider binding, email-only participation, suspension handling, foreign/relinked/deleted claim rejection and private-field allowlist projection. The developer reconciled current sources with retained real owner/RPC/public-reader and IN01 evidence; no original-task remainder was identified. Canonical publication is complete. Separate live integration, external claim/provider, device and release requirements remain open.",
+          "remaining": "No identified original-task remainder; separate integration and product obligations retain their owners.",
+          "commitPush": "df244a715a7a7d109282029dee78df4bf65de10d",
+          "source": "docs/mcr/backend/identity-bootstrap-avatar-completion.md"
         },
         "routing_reconciliation": {
           "at": "2026-11-05T04:53:24+09:00",
@@ -1108,11 +1122,23 @@
           "remaining_ownership_action": "Actual next owner is identity6b5d under the explicit Root transfer; additional repository leaves require their own custody census."
         },
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:28:00+09:00",
-          "state": "SOURCE_COMMITTED_QUALIFICATION_QUEUED",
-          "scope": "Original identity/bootstrap/avatar persistence remainder in the existing developer context after QA10 handoff freeze. Root stopped the exact participant/bootstrap/projection leaves; shared configuration/main/contracts remain Root-owned.",
-          "current_gap": "Bootstrap deletion-fence fix/native regression committed through1289d90e9; matching warm-target qualification awaits the allocated slot. Original BE04/BE07 disposition is being reconciled by the owner; no new closure is inferred.",
-          "goal": "Prior unfinished Profile goal preserved; new authorized scope is recorded without a false reset or completion."
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "state": "DELIVERED_ORIGINAL_TASK_SCOPE",
+          "scope": "Original task delivered; this developer retains the separately queued BE06 correction and now implements BE10/BE11 under confirmed exclusive ownership.",
+          "manager_technical_review": false
+        },
+        "prior_remaining_work_before_closure": [
+          "Finish canonical Auth UUID/Profile/suspension/provider-binding adoption through the actual participant and public-profile interfaces.",
+          "Reconcile email-only participation, foreign-identity claim rejection and private-field projection criteria beyond the bounded IN01 outcome."
+        ],
+        "current_completion": {
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "owner_chat": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "published_commit": "df244a715a7a7d109282029dee78df4bf65de10d",
+          "source_commit": "1289d90e9fe5bc6fee04858aee829c9e54b030ab",
+          "basis": "The responsible identity developer explicitly accepts all original BE04 criteria in the published completion record: canonical Auth UUID/session, optional exact provider binding, email-only participation, suspension handling, foreign/relinked/deleted claim rejection and private-field allowlist projection. The developer reconciled current sources with retained real owner/RPC/public-reader and IN01 evidence; no original-task remainder was identified. Canonical publication is complete. Separate live integration, external claim/provider, device and release requirements remain open.",
+          "evidence_basis": "Responsible developer completion record and single canonical publisher receipt. Main reconciled management dispositions and publication metadata only; no code, query, test or runtime re-review.",
+          "manager_technical_review": false
         }
       }
     },
@@ -1184,11 +1210,11 @@
         "original_acceptance": "Repeated bootstrap creates one participant; degraded optional dependencies do not fabricate data.",
         "updated_scope": "Implement idempotent participant creation, preset avatar, event capabilities, manifests, and server clock aggregation. Defaults and manifest capabilities must truthfully use the selected character pack and current admitted spatial release.",
         "remaining_work": [
-          "Finish production bootstrap composition of canonical participant, selected preset, event capabilities, manifests and server clock.",
-          "Reconcile repeated-bootstrap uniqueness and optional-dependency degradation without fabricated identity, art capability or venue data."
+          "Execute the committed canonical deletion-fence correction and its three relevant native bootstrap regressions, including real PostgreSQL restart, under the next allocated bounded run; fix any failures and publish the qualified correction.",
+          "Have the responsible implementation owner dispose the complete original BE06 row using the existing idempotence/default/capability/manifest/clock evidence and the actual changed-path result; do not replay unrelated matrices for management acknowledgment."
         ],
         "complete_when": "Repeated bootstrap creates one participant; degraded optional dependencies do not fabricate data.",
-        "reason": "Accepted IN01 proves a bounded entry journey; the register still records no whole BE06 disposition.",
+        "reason": "The published responsible-owner record accepts BE04/BE07 and retains BE06 IN_PROGRESS: original behavior has retained evidence, while the newly fixed canonical deletion exclusion and relevant native regressions remain unqualified.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -1234,11 +1260,11 @@
           "remaining_ownership_action": "Actual next owner is identity6b5d under the explicit Root transfer; additional repository leaves require their own custody census."
         },
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "recorded_at": "2026-11-05T05:59:44+09:00",
           "state": "SOURCE_COMMITTED_QUALIFICATION_QUEUED",
-          "scope": "Original identity/bootstrap/avatar persistence remainder in the existing developer context after QA10 handoff freeze. Root stopped the exact participant/bootstrap/projection leaves; shared configuration/main/contracts remain Root-owned.",
-          "current_gap": "Bootstrap deletion-fence fix/native regression committed through1289d90e9; matching warm-target qualification awaits the allocated slot. Original BE04/BE07 disposition is being reconciled by the owner; no new closure is inferred.",
-          "goal": "Prior unfinished Profile goal preserved; new authorized scope is recorded without a false reset or completion."
+          "scope": "Preserve frozen correction171379761 and its native retry while the same developer independently implements BE10/BE11 in granted paths.",
+          "current_gap": "Three changed-path native bootstrap cases and restart remain pending actual execution; document-only publication1289d90e9 does not qualify the correction.",
+          "goal": "Historical incompatible unfinished goal remains truthful; the new authorized objective is recorded without reset or false completion."
         }
       }
     },
@@ -1246,32 +1272,27 @@
       "id": "BE07",
       "title": "Avatar and preference persistence",
       "lane": "BE-CONCERT",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "ACCEPTED",
       "evidence": [
         "docs/mcr/contracts/selected-static-avatar.md",
-        "docs/mcr/king-coordination.md"
+        "docs/mcr/king-coordination.md",
+        "docs/mcr/backend/identity-bootstrap-avatar-completion.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "Validate asset IDs/layers/version; update avatar and theme with optimistic concurrency and bounded payloads.",
         "original_acceptance": "Invalid URL/item rejected; stale version conflicts; other users' outfits remain unchanged.",
         "updated_scope": "Validate asset IDs/layers/version; update avatar and theme with optimistic concurrency and bounded payloads. Preserve the selected-static 1.1.0 whole-character contract and retained 1.0.0 layered behavior; only the supplied pack/reviewed derivatives may be served. Static selection does not close the outstanding animation/layered-art requirement.",
-        "remaining_work": [
-          "Reconcile selected-character save/reload/default and theme preference persistence through current canonical production consumers, preserving optimistic versions and invalid-input rejection.",
-          "Keep full original asset/layer validation requirements visible; coordinate approved layered/animated descriptors with C06/AR03 instead of inventing frames, legacy fallbacks or a scope waiver."
-        ],
+        "remaining_work": [],
         "complete_when": "Invalid URL/item rejected; stale version conflicts; other users' outfits remain unchanged.",
-        "reason": "Selected-static component qualification and IN01 are recorded, but BE07 remains unclosed and its contract explicitly preserves unfinished full layered/art scope.",
+        "reason": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "BE05",
-          "C06"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "AR03",
           "BE06"
@@ -1295,14 +1316,12 @@
         ],
         "active_delivery_requirement": true,
         "latest_owner_report": {
-          "owner": "Canonical Avatar19f83 /Participant209 /Root1fc",
-          "status": "IN_PROGRESS original; original frozen-cohort IN01 now ACCEPTED",
-          "completed": "Retained prior component evidence; current App1722/backendcde/native7cd passed original IN01: actual two-user World, customization GET200/PUT200/freshGET persisted+peer, 91.284s movement/panels, real TCPcut/reconnect/newticket/samecanvas. All10 runtime checks plus source/staticart PASS. Consumer929 published1bb; fresh remote41b48e verified all19payloads/1173pins. GoalactuallyCOMPLETE, all leases returned.",
-          "remaining": "Original task-specific remaining production/release obligations require responsible-owner disposition; IN01 closure alone does not close every supporting BE parent. Naturalexpiry NOT_RUN informational/nonblocking.",
-          "blockerOwner": "Responsible feature owners and Root actual production composition",
-          "nextAction": "Continue ready original scope and actual IN02/03/04 prerequisites; no IN01freeze or expiry gate",
-          "commitPush": "backendcde817b2/native7cd1e900; consumer92989fd7→published1bb911c3; Root41b48eb7 remote verified",
-          "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
+          "owner": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "status": "ACCEPTED original criteria; canonically published",
+          "completed": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open.",
+          "remaining": "No identified original-task remainder; separate integration and product obligations retain their owners.",
+          "commitPush": "df244a715a7a7d109282029dee78df4bf65de10d",
+          "source": "docs/mcr/backend/identity-bootstrap-avatar-completion.md"
         },
         "routing_reconciliation": {
           "at": "2026-11-05T04:53:24+09:00",
@@ -1311,11 +1330,23 @@
           "remaining_ownership_action": "Actual next owner is identity6b5d under the explicit Root transfer; additional repository leaves require their own custody census."
         },
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:28:00+09:00",
-          "state": "SOURCE_COMMITTED_QUALIFICATION_QUEUED",
-          "scope": "Original identity/bootstrap/avatar persistence remainder in the existing developer context after QA10 handoff freeze. Root stopped the exact participant/bootstrap/projection leaves; shared configuration/main/contracts remain Root-owned.",
-          "current_gap": "Bootstrap deletion-fence fix/native regression committed through1289d90e9; matching warm-target qualification awaits the allocated slot. Original BE04/BE07 disposition is being reconciled by the owner; no new closure is inferred.",
-          "goal": "Prior unfinished Profile goal preserved; new authorized scope is recorded without a false reset or completion."
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "state": "DELIVERED_ORIGINAL_TASK_SCOPE",
+          "scope": "Original task delivered; this developer retains the separately queued BE06 correction and now implements BE10/BE11 under confirmed exclusive ownership.",
+          "manager_technical_review": false
+        },
+        "prior_remaining_work_before_closure": [
+          "Reconcile selected-character save/reload/default and theme preference persistence through current canonical production consumers, preserving optimistic versions and invalid-input rejection.",
+          "Keep full original asset/layer validation requirements visible; coordinate approved layered/animated descriptors with C06/AR03 instead of inventing frames, legacy fallbacks or a scope waiver."
+        ],
+        "current_completion": {
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "owner_chat": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "published_commit": "df244a715a7a7d109282029dee78df4bf65de10d",
+          "source_commit": "1289d90e9fe5bc6fee04858aee829c9e54b030ab",
+          "basis": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open.",
+          "evidence_basis": "Responsible developer completion record and single canonical publisher receipt. Main reconciled management dispositions and publication metadata only; no code, query, test or runtime re-review.",
+          "manager_technical_review": false
         }
       }
     },
@@ -1495,11 +1526,11 @@
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "backend_staffing",
         "known_current_owner_chats": [
-          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
-          "01a1a207-f012-7343-a24b-12b9c544973f"
+          "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
-        "validation_owner": "World20f admission implementation developer with Root1fc and canonical authority producer.",
+        "validation_owner": "World admission implementation developer6b5d with Root production composition; original authority/World owners are direct interface counterparts.",
         "current_scope_evidence": [
           "SPEC:L465",
           "LEDGER:/tasks/21",
@@ -1520,6 +1551,12 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
+        },
+        "current_assignment": {
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "state": "ACTIVE_IMPLEMENTATION",
+          "scope": "Root and prior implementation owners confirmed exact ownership transfer. Developer6b5d is implementing the admission freshness boundary and reconciling previous-room-owner membership behavior against the complete original BE10/BE11 criteria.",
+          "manager_technical_review": false
         }
       }
     },
@@ -1559,11 +1596,11 @@
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "backend_staffing",
         "known_current_owner_chats": [
-          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
-          "01a1a207-f012-7343-a24b-12b9c544973f"
+          "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
-        "validation_owner": "World20f room-membership developer with Root1fc composition developer.",
+        "validation_owner": "World admission implementation developer6b5d with Root production composition; original authority/World owners are direct interface counterparts.",
         "current_scope_evidence": [
           "SPEC:L466",
           "LEDGER:/tasks/22",
@@ -1584,6 +1621,12 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
+        },
+        "current_assignment": {
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "state": "ACTIVE_IMPLEMENTATION",
+          "scope": "Root and prior implementation owners confirmed exact ownership transfer. Developer6b5d is implementing the admission freshness boundary and reconciling previous-room-owner membership behavior against the complete original BE10/BE11 criteria.",
+          "manager_technical_review": false
         }
       }
     },
@@ -2961,12 +3004,12 @@
         "original_acceptance": "No handle/location secret in payload; repeated delivery creates one notification; stale target handled.",
         "updated_scope": "Deduplicate domain event delivery, safe summary text, own inbox/read state and authorized target links.",
         "remaining_work": [
-          "Complete the active Notification232-21e2 continuation and its five queued cases; carry durable committed receipts through service responses and Auth verification where still required.",
+          "Extend the actual production routing beyond the four existing Social commands using each producer owner's recipient/target rules; preserve the qualified typed receipts and transport behavior.",
           "Finish nonempty authorized delivery, pending-outbox processing, inbox/read ownership and stale-target reauthorization; retain safe summary text and delivery deduplication.",
           "Close private/deleted-target behavior and the production notification portion of IN03 using the existing consumer."
         ],
         "complete_when": "No handle/location secret in payload; repeated delivery creates one notification; stale target handled.",
-        "reason": "ae31de6a immutable deletion-receipt delivery is bounded. Latest user management records five cases queued; neither that queue nor older helper success closes original BE33.",
+        "reason": "The former writer has returned Notification custody and the qualified source/evidence pins. Developer6ec9 now owns the original production remainder; nonempty inbox, recipient/target rules and actual integration remain incomplete.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -2979,10 +3022,11 @@
         "owner_role": "Existing social/Auth/Notification developers and corresponding frontend owners",
         "coordination_owner": "backend_staffing",
         "known_current_owner_chats": [
-          "01a1a232-21e2-75c2-8474-a5fa6ae895cd"
+          "01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e",
+          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
-        "validation_owner": "Notification232-21e2 implementation developer with Root1fc publishing/composition counterpart.",
+        "validation_owner": "Notification production developer6ec9 with actual producer owners and Root composition; former Notification232 now owns separate BE42 Auth transport.",
         "current_scope_evidence": [
           "SPEC:L488",
           "LEDGER:/tasks/44",
@@ -2999,6 +3043,18 @@
           "nextAction": "Root production composition/207 runtime factory uses typed proof; no repeated passing tests, remote proof or idle ACK campaign.",
           "commitPush": "Canonical Root master550fba0542d0be46521e8cefd22c1e170c7c86e4 includes exact10 Notification paths.",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
+        },
+        "current_assignment": {
+          "recorded_at": "2026-11-05T05:59:44+09:00",
+          "state": "ACTIVE_IMPLEMENTATION",
+          "scope": "Exclusive Notification transfer confirmed by receiving developer and outgoing232/Root. Reuse qualified payload/deduplication/transport evidence, implement remaining producer routing and qualify actual nonempty authorized delivery.",
+          "manager_technical_review": false,
+          "pending_product_decision": {
+            "state": "HUMAN_QUESTION_PENDING",
+            "scope": "Recipients for Party CREATE/UPDATE/CANCEL/TRANSFER/REMOVE; actor exclusion; pending applicants on cancellation; command-time recipient selection and delivery privacy.",
+            "question_owner": "Main KING, relayed through Community SLc5f1 to Party12cc and Notification6ec9",
+            "continuation": "Existing three Application directions and authorized immutable Party correlation continue. Only undefined fanout semantics wait; no original BE33 completion or proposed policy approval is inferred."
+          }
         }
       }
     },
@@ -6029,7 +6085,7 @@
         "current_assignment": {
           "recorded_at": "2026-11-05T05:28:00+09:00",
           "state": "ACTIVE_IMPLEMENTATION",
-          "scope": "Trusted pre-World service-policy consumer after FE06 delivery; Root153 retains app-release identity and shared composition; backend16e owns policy producer. Frontend83 remains QA05, not FE41.",
+          "scope": "Developer21e owns trusted pre-World service-policy consumer;50a8 owns explicitly transferred application-release identity and generated150 inputs; Root153 retains shared app integration and backend16e owns the policy producer. Source qualification does not establish the remaining production/browser journey.",
           "manager_technical_review": false
         }
       }
@@ -7067,6 +7123,20 @@
       "owner_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
       "receipt_commit": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
       "disposition": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them."
+    },
+    {
+      "recorded_at": "2026-11-05T05:59:44+09:00",
+      "task": "BE04",
+      "owner_chat": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+      "receipt_commit": "df244a715a7a7d109282029dee78df4bf65de10d",
+      "disposition": "The responsible identity developer explicitly accepts all original BE04 criteria in the published completion record: canonical Auth UUID/session, optional exact provider binding, email-only participation, suspension handling, foreign/relinked/deleted claim rejection and private-field allowlist projection. The developer reconciled current sources with retained real owner/RPC/public-reader and IN01 evidence; no original-task remainder was identified. Canonical publication is complete. Separate live integration, external claim/provider, device and release requirements remain open."
+    },
+    {
+      "recorded_at": "2026-11-05T05:59:44+09:00",
+      "task": "BE07",
+      "owner_chat": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+      "receipt_commit": "df244a715a7a7d109282029dee78df4bf65de10d",
+      "disposition": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open."
     }
   ],
   "coverage_updates": [
@@ -9093,6 +9163,18 @@
       "state": "DONE",
       "commit": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
       "basis": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them."
+    },
+    {
+      "task": "BE04",
+      "state": "DONE",
+      "commit": "df244a715a7a7d109282029dee78df4bf65de10d",
+      "basis": "The responsible identity developer explicitly accepts all original BE04 criteria in the published completion record: canonical Auth UUID/session, optional exact provider binding, email-only participation, suspension handling, foreign/relinked/deleted claim rejection and private-field allowlist projection. The developer reconciled current sources with retained real owner/RPC/public-reader and IN01 evidence; no original-task remainder was identified. Canonical publication is complete. Separate live integration, external claim/provider, device and release requirements remain open."
+    },
+    {
+      "task": "BE07",
+      "state": "DONE",
+      "commit": "df244a715a7a7d109282029dee78df4bf65de10d",
+      "basis": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open."
     }
   ]
 }

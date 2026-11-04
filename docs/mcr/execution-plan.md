@@ -2,7 +2,7 @@
 
 The [revised functional delivery plan](functional-delivery-plan.md) is the current user-authorized amendment. Its 112-row register replaces outdated staffing, wave and status descriptions in earlier versions of this document. Preserve the original specification/source, all 112 task IDs, 61 IA entries and six excluded optional tasks. Read progress from the [current register](task-progress-2026-11-04.json), not generated planning exports.
 
-Current delivered-task count: **46/111 active tasks (41.4%)**, with 65 active tasks remaining. This is task accounting, not full-product readiness.
+Current delivered-task count: **48/111 active tasks (43.2%)**, with 63 active tasks remaining. This is task accounting, not full-product readiness.
 
 ## Priority and scope
 
@@ -16,16 +16,16 @@ Use the supplied ten-screen reference and selected character pack. Retro styling
 
 | Queue | Immediate outcome | Current routing |
 | --- | --- | --- |
-| Contracts | Original C06 accepted and hosted installation/QA01/C07 repair qualified; enrollment generated-input refresh and remaining C04/C05 changes continue | Existing50a8 owns the enrollment generator follow-up after fresh checkout custody; World20f/C05, Wall202 and exact shared delegates retain their scopes |
+| Contracts | Original C06 accepted and hosted installation/QA01/C07 repair qualified; enrollment generated-input refresh and remaining C04/C05 changes continue | Existing50a8 owns trusted application-release identity and changed generated inputs after actual Root transfer; World20f/C05, Wall202 and exact shared delegates retain their scopes |
 | Meet/Gifts | Real party, beacon, reservation and pickup through IN02; protected Gifts detail images | Party 19f83/backend 1fc; Gifts 53d/frontend 153; backend lead allocates remaining giveaway/media scope |
-| Social/Feed | Real consent, privacy and notifications through IN03; original FE31/35/36 client acceptance closed; real producer integration remains | Backend Auth207 and social/notification owners; Profile213; Feed209; scoped Root caller owner;21e now FE41 |
+| Social/Feed | Real consent, privacy and notifications through IN03; original FE31/35/36 client acceptance closed; real producer integration remains | Backend Auth207 and Notification6ec9 with direct producer counterparts; Profile213; Feed209; scoped Root caller owner;21e now FE41 |
 | Wall B | Controlled tools/default lifecycle delivered; live integration and IN04 remain | Backend202 and Root153; Existing53d owns default Admin composition; duplicate735 retired |
 | Reference/World | AR03 original artwork closed; ART06 delivered; remaining map/reference and mobile fidelity | World/Map lead, art231/Map26e; FE17 and scoped FE41 client work delivered; backend20f and frontend83 now own the paired QA05 recovery work after BE13/BE14 delivery; restored original QA06 developer; Profile213 owns FE34 |
 | Operations/recovery | Reports/settings, lifecycle, deletion and functional recovery | Report03de, service-policy16e, Operations205/Auth207 and deletion owners; FE37 owner230, FE38 production remainder via Community lead; FE39/default Admin owner53d; remaining FE41 policy consumer21e with Root153/backend16e, and original IN04 QA e2a9; Root153 delegates independent remaining callers |
 
 These are routing facts, not blanket file leases. Leads assign unowned remaining scope to capable existing developers. Independent composition pieces may be delegated after the previous writer stops; shared files are not reserved as one indivisible integration assignment. Backend and frontend use separate commits, exact paths and isolated worktrees. Contracts, manifests, lockfiles, root composition, CI and shared artifacts require explicit single-writer ownership.
 
-Original FE31/FE36 client work is complete at `a40d6944`, and original FE06 is now delivered at `0ff6b459f`. Developer21e now implements the remaining FE41 trusted service-policy consumer with backend16e and Root153. Frontend83 and backend20f retain QA05 recovery; Root has delegated the frame-fault utility to83 while retaining actual Vite integration. Avatar1eed has published the Cancel/conflict native packet at `1adf8006b` and continues full FE12/FE13 completeness;213 remains FE34. QA06 developer1ab7 and QA07 developer40c576 own their software/device/input remainders. Artist231 and Map26e retain their disjoint art/consumer scopes. Resource lead21d controls current execution allocations, and frontendKING385 handles staffing while Social messaging is unavailable. Developers validate and deliver directly; pending publication, a progress edit or a king/SL acknowledgment does not block independent ready work.
+Existing developer6b5d now owns BE10/BE11 World admission after an actual exclusive transfer;6ec9 owns BE33 Notification production routing after the former writer returned custody. Developer232 retains BE42 Auth transport. Dedicated publisher412e delivered seven ready packets at `60831ca3b`, freeing Root1fc for coherent runtime implementation. Developer50a8 owns trusted application-release identity and generated inputs, while21e owns its FE41 consumer. Frontend83/backend20f retain QA05 recovery;1eed continues avatar portrait integration and53d owns Community clock composition. Former QA07 software-delta developer40c576 now implements resource-accounting reliability in exclusive QA paths. Leads assign ready follow-up work directly and preserve real runtime/input waits; developers validate and publish without king/SL acknowledgment.
 
 ## Complete feature assignments and direct delivery
 

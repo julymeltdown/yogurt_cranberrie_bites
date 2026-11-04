@@ -1,6 +1,6 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T05:28:00+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
+Updated **2026-11-05T05:59:44+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
 
 ## Current progress
 
@@ -8,22 +8,22 @@ Updated **2026-11-05T05:28:00+09:00** for the user's full 112-task replan. The [
 | --- | --- |
 | Original required tasks | 112 |
 | Active functional-delivery tasks | 111 |
-| Complete under revised scope | **46/111 (41.4%)** |
-| Remaining active tasks | **65** |
+| Complete under revised scope | **48/111 (43.2%)** |
+| Remaining active tasks | **63** |
 | Deferred by user | **QA08: 1; not passed or complete** |
 | Historical original-task criteria baseline | 39/112, preserved |
-| Current original-task criteria outcomes | 53/112, including fourteen newly published closures |
+| Current original-task criteria outcomes | 55/112, including sixteen newly published closures |
 | Historically closed IDs with current deltas | 7 |
 | Required IA entries | 61, all retained; full readiness reconciliation remains open |
 | Integrated outcomes | IN01 historically accepted; IN02/IN04/IN05 open; IN03 awaiting authorized provider/claims input |
 | Product delivery decision | NOT_READY |
 
-This is an unweighted task-count fraction, not an effort estimate or a claim that 41.4% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Seven affected historical IDs retain current work. Fourteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06) bring the current revised count to 46. No completed work was erased, and bounded helper deliveries did not inflate the total.
+This is an unweighted task-count fraction, not an effort estimate or a claim that 43.2% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Seven affected historical IDs retain current work. Sixteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07) bring the current revised count to 48. No completed work was erased, and bounded helper deliveries did not inflate the total.
 
 | Revised state | Count |
 | --- | ---: |
-| DONE | 46 |
-| IN_PROGRESS | 52 |
+| DONE | 48 |
+| IN_PROGRESS | 50 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
 | REOPENED | 7 |
@@ -56,7 +56,7 @@ QA01 and QA07 need targeted coverage for new Wall B contracts and controls, not 
 | Wall B | Tools/C18 and default lifecycle `3f81baea` published with controlled source/native qualification | Live C04/C05, moderation and real two-client IN04; full visual/device acceptance open |
 | Operations/recovery | Bounded Auth, deletion, report and lifecycle increments published | Full category convergence, populated business recovery, authorization/races/abuse/configuration and release evidence |
 
-The latest observed canonical publication snapshot is `80de53f32`. The actual Enrollment browser retry passed its five cases, while live World continuation and the broader integration obligations remain open. Avatar Cancel/conflict, QA05 source-driver and scoped PrivateData/Age/legacy-deletion results are published; their limitations remain attached and they do not close whole parent tasks. Earlier original-task closures and hosted CI outcomes remain credited. One canonical publisher receipt establishes delivery; no extra king readback or proof-only commit is required. QA01, QA10 and real IN02–IN05 remain open.
+The latest observed canonical publication snapshot is `60831ca3b`. The actual Enrollment browser retry passed its five cases, while live World continuation and the broader integration obligations remain open. Avatar Cancel/conflict, QA05 source-driver and scoped PrivateData/Age/legacy-deletion results are published; their limitations remain attached and they do not close whole parent tasks. Earlier original-task closures and hosted CI outcomes remain credited. One canonical publisher receipt establishes delivery; no extra king readback or proof-only commit is required. QA01, QA10 and real IN02–IN05 remain open.
 
 Original **C06** is now accepted and published at `6504448f` through the responsible owner's [disposition](c06-original-disposition.md). All five original criteria are covered; the existing six golden assets and qualified consumers remain the evidence basis. This does not close separate live, visual or device gates.
 
@@ -70,6 +70,8 @@ Original **BE13 and BE14 are accepted and published** at `9e4ace4d`, explicitly 
 
 Original **FE06 is complete and published** at `0ff6b459f`. The responsible developer's [completion record](frontend/original-fe06-completion.md) covers all original theme criteria using the changed default-app binding and relevant retained evidence. Canonical publication fulfills its final delivery requirement. This adds one task closure; full live backend, reference and device outcomes remain open with their existing owners. The developer has moved to FE41 implementation.
 
+Original **BE04 and BE07 are accepted and published** at `df244a715`. The responsible developer's [completion record](backend/identity-bootstrap-avatar-completion.md) explicitly closes canonical identity/private projection and validated avatar/theme persistence using source-reconciled retained native and public-reader evidence. The single canonical publisher receipt establishes delivery. **BE06 remains IN_PROGRESS** until its deletion-fence correction and relevant native regressions are actually qualified. Separate live integration, reference, device and release requirements remain open.
+
 ## Work allocation and capacity
 
 - Prioritize complete meetup/pickup, social/privacy, Wall B and remaining UI defects. Keep developer-owned functional, security, integrity, recovery, accessibility and visual checks. Performance qualification alone is deferred.
@@ -79,9 +81,9 @@ Original **FE06 is complete and published** at `0ff6b459f`. The responsible deve
 - Resource owners report about5.67GiB of released outputs reclaimed, preserving the warm target and unique evidence; the runtime-package repair started. These dated reports establish queue movement, not standing capacity or a native pass.
 - All 112 task IDs and61 IA entries remain. QA08 stays DEFERRED_BY_USER. Existing owner evidence and original outcomes remain in the register and Git history; generated exports stay PLANNING_ONLY.
 
-Original FE31/FE36 client work is complete at `a40d6944`, and original FE06 is now delivered at `0ff6b459f`. Developer21e now implements the remaining FE41 trusted service-policy consumer with backend16e and Root153. Frontend83 and backend20f retain QA05 recovery; Root has delegated the frame-fault utility to83 while retaining actual Vite integration. Avatar1eed has published the Cancel/conflict native packet at `1adf8006b` and continues full FE12/FE13 completeness;213 remains FE34. QA06 developer1ab7 and QA07 developer40c576 own their software/device/input remainders. Artist231 and Map26e retain their disjoint art/consumer scopes. Resource lead21d controls current execution allocations, and frontendKING385 handles staffing while Social messaging is unavailable. Developers validate and deliver directly; pending publication, a progress edit or a king/SL acknowledgment does not block independent ready work.
+Existing developer6b5d now owns BE10/BE11 World admission after an actual exclusive transfer;6ec9 owns BE33 Notification production routing after the former writer returned custody. Developer232 retains BE42 Auth transport. Dedicated publisher412e delivered seven ready packets at `60831ca3b`, freeing Root1fc for coherent runtime implementation. Developer50a8 owns trusted application-release identity and generated inputs, while21e owns its FE41 consumer. Frontend83/backend20f retain QA05 recovery;1eed continues avatar portrait integration and53d owns Community clock composition. Former QA07 software-delta developer40c576 now implements resource-accounting reliability in exclusive QA paths. Leads assign ready follow-up work directly and preserve real runtime/input waits; developers validate and publish without king/SL acknowledgment.
 
-The staffing routing was reconciled on 2026-11-05T05:28:00+09:00 from current owner records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately documented FE06 delivery adds one.
+The staffing routing was reconciled on 2026-11-05T05:59:44+09:00 from current owner records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately published BE04/BE07 dispositions add two.
 
 ## Next outcomes
 
