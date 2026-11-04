@@ -49,11 +49,40 @@
     },
     "capacity": {
       "browser_jobs": 2,
-      "condition": "Two isolated jobs are a measured ceiling, not unconditional permission. The earlier disk hold was resolved by resource lead21d:18.19GiB observed after lossless archive deduplication and recoverable retired-checkout cleanup. New guarded C07/Wall/Thread/Root rounds were actually admitted; source work continues.",
-      "current_free_gib_reported": 18.19,
-      "capacity_receipt_at": "2026-11-04T16:16:49Z",
+      "condition": "Two isolated browser jobs are a measured ceiling, not unconditional permission. Admit against fresh free-space measurements and all outstanding growth reservations. The coordinator's class-specific correction replaces the previous blanket16GiB default; product acceptance and task counts are unchanged.",
+      "policy_updated_at": "2026-11-04T16:36:00Z",
+      "policy_authority": "Coordinator operating-policy correction within user-authorized resource management;16GiB was not an explicit human-fixed threshold. No functional validation waiver.",
+      "current_free_gib_reported": 13.57,
+      "current_free_bytes_reported": 14574010368,
+      "capacity_receipt_at": "2026-11-04T16:43:56Z",
+      "capacity_receipt": "Resource lead21d externalresource-202611041643Z.json",
+      "previous_recovery_report_correction": "The earlier18.19 figure was decimalGB, approximately16.94GiB, not18.19GiB. Subsequent reported14.75GiB and current13.57GiB are dated snapshots, not continuing admission guarantees.",
       "fresh_start_floor_gib": 16,
+      "fresh_start_floor_scope": "Default for Rust compilation/target mutation; the following explicitly bounded noncompiling classes use12GiB.",
+      "fresh_start_floors_gib": {
+        "rust_compilation_or_target_mutation": 16,
+        "bounded_source_no_compile": 12,
+        "bounded_browser": 12,
+        "copied_native_no_compile": 12
+      },
+      "additional_growth_caps_bytes_per_job": {
+        "bounded_source_no_compile": 134217728,
+        "bounded_browser_temporary_output": 209715200,
+        "copied_native_no_compile": 1073741824
+      },
+      "minimum_free_after_all_growth_reservations_gib": 9,
       "running_floor_gib": 8,
+      "admission_rule": "Measured freeGiB minus all outstanding growth reservations minus the proposed job's declared worst-case additional growth must be>=9GiB. Retain continuous8GiB live floor plus1GiB admission margin. Preserve existing process/target/runtime limits, private outputs, lease deadlines and cleanup duties.",
+      "exclusions": "Reject uncertain or unbounded growth, hidden compilation/cold targets and bulk copies before allocation in the12GiB class. No unallocated work or deletion of unique history/evidence.",
+      "actual_admission": "C07 SOURCE-B accepted16:42:49.091506UTC at clean daa26b3d3282ae42015155e7c7a1f360ed27921b, canonical6dd22ede; fullpreflight/pinconditional/fullQA01+C07 cohort running. This is not task completion.",
+      "actual_accepted_jobs_at_snapshot": [
+        "C07 SOURCE-B16:42:49UTC",
+        "Map SOURCE-A16:43:17UTC",
+        "AR03 B1 16:42:54UTC",
+        "Gifts B2 16:43:31UTC",
+        "Root IN03 copied-native16:43:56UTC"
+      ],
+      "aggregate_reservation_snapshot": "Lead reported five combined worst-case NEW reservations1677721600bytes (1.5625GiB), leaving12896288768bytes (12.01GiB) at14574010368bytes measuredfree. Rust remains queued below16GiB; no compile/target mutation admitted. Functional outcomes remain pending.",
       "source_work": "Continue independently where it does not launch an unallocated workload.",
       "new_chats": "Reuse ready existing owners first; no new checkout/duplicate producer merely to make the roster look busy."
     },
@@ -7923,7 +7952,7 @@
       "as_of": "2026-11-04T16:11:11Z",
       "new_original_closures": 0,
       "source": "Backend staffing lead ordinary16:00 digest",
-      "capacity_followup": "Safe recovery restored18.19GiB and actual guarded admissions; no original-task closure added."
+      "capacity_followup": "Safe recovery restored18.19GB (approximately16.94GiB; corrected decimal/binary unit labeling) and actual guarded admissions; no original-task closure added. Later capacity and the coordinator's class-specific policy are recorded in functional_delivery.capacity; historical reports remain dated evidence."
     },
     "frontend": {
       "source": "Frontend KING ordinary16:00 reconciliation",
