@@ -30,3 +30,12 @@ operations and protected metadata/content reads. Direct owner agreement and exac
 shared dependencies are tracked in the contract document, not a king/SL review
 queue. Both current Cargo targets are occupied; no target, install, third build
 cache or cleanup was used. Native and live HTTP evidence remains NOT_RUN.
+
+Media213 confirmed exact wire names and owns BE24 target-prelock/read-in/erase
+ports plus the Purpose enum (root-coordinated). FE1ab7 is now explicitly activated
+and has received the exact contract/fixtures directly. The publication below is
+a contract/fixture handoff, not the missing generated-schema/HTTP implementation.
+Fixture JSON identifier/actor/event/media/expiry/READY binding checks, planning
+check and whitespace check exit 0. No Cargo or native test has run for this slice.
+New owned strict DTO and pure-test work is preserved uncommitted separately while
+this documentation/fixture checkpoint publishes; it is not included in the claim.

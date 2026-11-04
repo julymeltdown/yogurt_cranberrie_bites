@@ -3,9 +3,9 @@
 Candidate `meeting-photo/v1-proposal`, based on master
 `0c76e42790106501f3988fe7cb46113b8cd7784e`. This document is the explicitly
 assigned shared contract path; it does not claim the existing generated C04
-schemas or live routes already accept these additions. Technical agreement is
-being requested directly from FE owner 1ab7, media owner 213 and authority owner
-207. No king/SL implementation review or approval is required.
+schemas or live routes already accept these additions. Media owner 213 has confirmed the exact fields and semantics. FE owner 1ab7
+has received the fixture and is confirming its consumer input. Authority owner
+207 has pinned the canonical guard SDK at published `888cb6bd`. No king/SL implementation review or approval is required.
 
 This completes original BE09/FE20 optional authorized photos (§5.4), not the
 specification's giveaway BE20. Existing registered beacon operation IDs, HTTP
