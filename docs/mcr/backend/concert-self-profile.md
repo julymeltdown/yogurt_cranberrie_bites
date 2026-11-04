@@ -26,8 +26,8 @@ not permission to release them or guess rollback. ReadOperation and Reconcile
 cannot originate another mutation. Full coordinator/guard interface and native
 qualification are in progress; nothing here certifies a live PATCH flow yet.
 
-Source authored for this task; no rendering or dependency upgrade. Full RPC
-registration and native multi-store checks: NOT_RUN.
+Source authored for this task; no rendering or dependency upgrade. Production registration compiles and actual owner read RPC checks pass below.
+The native multi-store Prepare/decision flow remains NOT_RUN.
 
 ## Guarded RPC source checkpoint
 
@@ -64,8 +64,8 @@ Concert issuer and dedicated base64 key variables. It rejects Gateway trust and
 Gateway/Concert/Profile parity keys. Its exact new-file ownership was transferred
 by canonical authority; the parent module export and method policy remain theirs.
 
-The new RPC modules now compile; their actual external RPC qualification is
-NOT_RUN. Amended 0008 has SQL and current-binary qualification below. Neither
+The new RPC modules compile; actual Auth/Friend read/Track/abort RPC
+qualification passes below. Concert Prepare/decision qualification is NOT_RUN. Amended 0008 has SQL and current-binary qualification below. Neither
 storage qualification certifies a real owner/coordinator RPC flow.
 
 ## Amended schema SQL qualification
@@ -147,7 +147,7 @@ Both signatures and actual owner capabilities remain necessary. The new receipt
 INSERT also checks the actual registered full XID, cluster/database, PID/start,
 instance, command/effect digest and current Profile version on the same database
 connection. A different connection must not forge the receipt. The expanded
-native test covers that refusal; it is NOT_RUN pending a new allocated build.
+native test covers that refusal and passed in the current qualification below.
 
 Remaining BE-PROFILE-SELF gates belong to this developer: qualify the actual
 Auth/Friend Check/Track and Concert decision/settlement RPC path with their real
@@ -184,9 +184,38 @@ target access occurred. Frozen test SHA-256:
 production Profile SHA-256:
 `e7483ca02811ee835a0c63cc83c2dca343a812f67dab937f5cc9951cc7004ec8`.
 
-The new external actual-owner read/Track/abort controller and ignored native RPC
-probe compile but remain NOT_RUN until exact Auth/Friend artifact prerequisites
-arrive. The actual Concert decision endpoint is supplied separately by owner209.
+The external actual-owner read/Track/abort probe passed as recorded below.
+The actual Concert decision endpoint is supplied separately by owner209.
 ReadOperation/Reconcile may inspect only their exact existing persisted operation
 under a fresh signed query; original binding expiry is not renewed into mutation
 authority, and no fresh owner-view grant or caller-selected decision is invented.
+
+## Actual owner read RPC qualification
+
+`rpc-report-2.json` is PASS using the current frozen Profile binaries and actual
+Auth/Friend production binaries from owner publication
+`dc70d62049d8e8430c88b9ebfc6f071740020538` (qualified source `d4c604f0`).
+The owner metadata and exact source/binary hashes were checked before launch.
+All three production mains used a new isolated PostgreSQL 16.14 fixture, fresh
+private mTLS identities, explicit endpoints and separate standard-Base64 signing
+keys. All three migrate/verify pairs exited 0. The exact external read test
+exited 0 with one passing test: actual signed owner Acquire, both owner Check/Track,
+Profile protected read, persisted native read identity, and actual Auth workload
+querying Profile settlement with native ABORTED proof. Wrong subject and wrong
+Friend credential were refused without another read reference. Exactly one read
+reference and no write receipt remained.
+
+The unavailable private Concert root endpoint was intentional for this bounded
+read component. After original expiry, both actual owner guards remained prepared;
+expiry did not fabricate root completion or grant release. Root scope release,
+actual Concert decision and Gateway HTTP remain NOT_RUN. All three service mains
+shut down normally with exit 0, no forced stops; owned PG cleanup passed.
+The first runner failed before service launch because system LibreSSL could not
+derive an Ed25519 public key. The controller now uses installed OpenSSL 3 for that
+fixture step, with no package install. Both attempts and cleanup are preserved.
+
+Evidence: `/private/tmp/mcr-profile-self-906e69ab-20261104/rpc-report-2.json`,
+controller SHA-256 `9ce31ae9c2fcbad5298013af9a50a5a1243c2b820c2b8715d78da13c81954a4b`,
+owner metadata SHA-256 `dadd2b3ddab4c19e2eb165def6c2e8e8d9cc079ee3c8fa14b7bdc3aa9beb4b8b`.
+No mutable Cargo target was used for this RPC run. The full assigned goal remains
+active through actual Prepare/Concert decision/reconcile validation and delivery.

@@ -40,7 +40,8 @@ def key(cluster, label):
     private = cluster.root / (label + ".der")
     public = cluster.root / (label + ".pub")
     runtime.private_file(private, bytes.fromhex("302e020100300506032b657004220420") + seed)
-    migration.execute(["/usr/bin/openssl", "pkey", "-inform", "DER", "-in", str(private), "-pubout", "-outform", "DER", "-out", str(public)], env=cluster.env, cwd=cluster.root, phase="fixture-key")
+    openssl = migration.executable(Path("/opt/homebrew/opt/openssl@3/bin/openssl"))
+    migration.execute([str(openssl), "pkey", "-inform", "DER", "-in", str(private), "-pubout", "-outform", "DER", "-out", str(public)], env={**cluster.env, "OPENSSL_CONF": "/dev/null"}, cwd=cluster.root, phase="fixture-key")
     value = public.read_bytes()
     require(len(value) == 44 and value[:12] == bytes.fromhex("302a300506032b6570032100"), "key-shape-refused")
     private.unlink()
@@ -155,6 +156,9 @@ def main():
         exercise(cluster, ports, children, own, owners, report)
     except (Exception, KeyboardInterrupt) as error:
         report["failure"] = str(error) if type(error).__name__ == "CheckFailure" else type(error).__name__
+        if isinstance(error, migration.SmokeError):
+            report["failure_phase"] = error.detail["phase"]
+            report["failure_exit_code"] = error.detail["exit_code"]
     finally:
         try:
             if cluster is not None:
