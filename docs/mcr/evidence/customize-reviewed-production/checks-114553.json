@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "slot": "AR03-PRODUCTION-SOURCE-202611041141Z",
+  "source": "f23344e7df7bcf472786b55a2ebbecd52561a7ee",
+  "base": "01d604080670c967e1ce194df5c3d1827df11228",
+  "startedUTC": "2026-11-04T11:45:37.724317+00:00",
+  "deadlineUTC": "2026-11-04T11:51:41.434921+00:00",
+  "wholeChargedCapBytes": 134217728,
+  "rssCapBytes": 2684354560,
+  "startFloorBytes": 17179869184,
+  "stopFloorBytes": 8589934592,
+  "peakChargedBytes": 80036,
+  "peakAggregateRssBytes": 1470464000,
+  "checks": [
+    {
+      "name": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/__tests__/reviewed-production/vitest.config.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+      "exit": 0
+    },
+    {
+      "name": "application-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+        "--application"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/motion-adoption/production-persistence.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/motion-adoption/controller.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/__tests__/reviewed-production",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/__tests__/reviewed-production"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "01d604080670c967e1ce194df5c3d1827df11228"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    }
+  ],
+  "sourcePins": {
+    "docs/mcr/frontend/customize-reviewed-production.md": "a7fc19d2a88e9eb72962020d39e59478aabf88d865545301daa553e84144f428",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/authority.test.ts": "3e26e4e23896cf730979927ea05be69ef6b33d443d66d4954ea520fd9ea9942a",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/qualify.py": "655df2ea1f3ff1b562c342ca9c76180a64ebea3be54f8c725889efc5c0987ef8",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/resource.test.ts": "bccc761030e3b3c6eed33237907e83f29dfdbf5d086775d94928efbe186b7f9e",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/vitest.config.mjs": "5ec0a597ded2f4510a87fdca8e0b88cf07e220a2430616735c9dcb8d847e66ec",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "ff0a901e62f572aa406d5916f741dd771956ec767c3585cf0ce5aa6ec1b81701",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts": "dcae35f22db0ce3f20eb52213271d59a25f290a74413a74518eb1708cc92e36c",
+    "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts": "9d16a2caa0c072ba78410085429b30dd527b3519b83e1d50186b710ac01230b6",
+    "frontend/src/features/avatar/__tests__/reviewed-production/controller.test.tsx": "4d72db95693f40d094f4a6c6bc45c291da0b4b4635d0408410f3c19f44708113",
+    "frontend/src/features/avatar/__tests__/reviewed-production/fixtures.ts": "26d00a5503098aa74dc81f5776bd11b7e4c30dd5e3be1f3b7146249247025692",
+    "frontend/src/features/avatar/__tests__/reviewed-production/persistence.test.ts": "4448764f2cad494da7dfb2b7868e0fe64ad033b46668123cd9179b1036835430",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "9090cc0c806aa6493764826522d16a5fbe27a05f4578ddc1f0851985a258eb2a",
+    "frontend/src/features/avatar/motion-adoption/controller.ts": "c092f03427278bb935520651e5f02c46e2e29f2b0a47248a539197fc10793045",
+    "frontend/src/features/avatar/motion-adoption/production-persistence.ts": "c372f14cde10b3886bc156991ee3780673b4d9d024d86e040492a3b02dd1024b"
+  },
+  "ownedTemporaryRemoved": true,
+  "localNodeModulesPresent": false,
+  "finishedUTC": "2026-11-04T11:45:53.526498+00:00"
+}

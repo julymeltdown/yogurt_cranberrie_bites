@@ -1,0 +1,16 @@
+{
+  "slot": "AR03-PRODUCTION-SOURCE-202611041141Z",
+  "releasedUTC": "2026-11-04T11:46:10.571551+00:00",
+  "qualifiedSource": "f23344e7df7bcf472786b55a2ebbecd52561a7ee",
+  "reportCount": 4,
+  "peakAggregateRssBytes": 1470464000,
+  "peakChargedBytes": 80036,
+  "retainedEvidenceBytes": 24914,
+  "freshFreeBytes": 20062150656,
+  "ownedProcesses": [],
+  "ownedTemporaryPaths": [],
+  "localNodeModulesPresent": false,
+  "borrowedViteTempAfter": [],
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "noBrowserServerNativeBuildInstallStarted": true
+}

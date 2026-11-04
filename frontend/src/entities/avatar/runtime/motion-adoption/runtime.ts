@@ -2,16 +2,17 @@ import type { PrivacyScope } from '../../../../shared/query/privacy'
 import { abortable } from '../../../../world/map/resources'
 import { MOTION_LAYERS, loadMotionArtwork, requireMotion, validateMotionSelection, type MotionArt, type MotionSelection } from './art'
 import { createMotionCompositor, type MotionComposition, type MotionCompositor } from './compositor'
+import { isReviewedProductionAuthority, type ReviewedProductionLifetime } from './reviewed-production'
 
-/** Internal injection boundary, not a parallel public schema. Only TEST_ONLY authority exists until C06 authorship. */
-export interface MotionAuthority<C> {
-  readonly qualification: 'TEST_ONLY'
+/** Operations do not themselves admit a release. Production additionally needs a minted public grant. */
+export interface MotionAuthorityOperations<C> {
   readonly manifestId: string; readonly manifestVersion: number; readonly manifestHash: string
   decodeConfig(value: unknown): C
   selection(config: C): MotionSelection
   presets(art: MotionArt): readonly { readonly id: string; readonly label: string; readonly config: C }[]
   replace(config: C, selection: MotionSelection): C
 }
+export type MotionAuthority<C> = MotionAuthorityOperations<C> & ({ readonly qualification: 'TEST_ONLY' } | ReviewedProductionLifetime)
 export interface MotionLease<C> {
   read(): Readonly<{ config: C; selection: MotionSelection; canvas: HTMLCanvasElement }> | null
   subscribe(listener: () => void): () => void
@@ -25,22 +26,27 @@ export function createMotionRuntime<C>(options: {
   readonly load?: typeof loadMotionArtwork
 }) {
   const scope = Object.freeze({ ...options.scope }), authority = options.authority
-  requireMotion(scope.userId && scope.eventId && scope.gate === 'open' && authority.qualification === 'TEST_ONLY'
+  const production = authority.qualification === 'REVIEWED_PRODUCTION' ? authority : null
+  requireMotion(!production || isReviewedProductionAuthority(production) && production.isCurrent() && !options.load
+    && scope.userId === production.scope.userId && scope.eventId === production.scope.eventId
+    && scope.generation === production.scope.generation && scope.policyGeneration === production.scope.policyGeneration && scope.gate === production.scope.gate)
+  requireMotion(scope.userId && scope.eventId && scope.gate === 'open' && (production || authority.qualification === 'TEST_ONLY')
     && authority.manifestId.length > 0 && Number.isSafeInteger(authority.manifestVersion) && authority.manifestVersion > 0
     && /^sha256:[a-f0-9]{64}$/.test(authority.manifestHash))
   const controller = new AbortController(), leases = new Set<() => void>(), clocks = new Set<(time: number) => void>()
   let disposed = false, flight: Promise<{ art: MotionArt; image: HTMLImageElement; dispose(): void }> | null = null
   let loaded: Awaited<ReturnType<typeof loadMotionArtwork>> | null = null, compositor: MotionCompositor | null = null, time = 0
-  const current = () => !disposed && !controller.signal.aborted && options.privacy.isCurrent(scope)
+  const current = () => !disposed && !controller.signal.aborted && options.privacy.isCurrent(scope) && (!production || production.isCurrent())
   const assertCurrent = (signal?: AbortSignal) => requireMotion(current() && !signal?.aborted)
   function dispose() {
     if (disposed) return
-    disposed = true; controller.abort(); unregister(); clocks.clear()
+    disposed = true; controller.abort(); unregister(); unregisterAuthority(); production?.dispose(); clocks.clear()
     for (const close of Array.from(leases)) close()
     compositor?.dispose(); compositor = null; loaded?.dispose(); loaded = null; flight = null
   }
-  let unregister = () => {}
+  let unregister = () => {}, unregisterAuthority = () => {}
   unregister = options.privacy.registerCleanup(dispose)
+  if (production) unregisterAuthority = production.onInvalidate(dispose)
   if (!current()) dispose()
   async function ready(signal: AbortSignal) {
     assertCurrent(signal)
@@ -49,7 +55,7 @@ export function createMotionRuntime<C>(options: {
         ...(options.fetch ? { fetch: options.fetch } : {}) }).then(value => {
           if (!current()) { value.dispose(); throw new Error('Motion owner expired') }
           loaded = value; compositor = createMotionCompositor({ art: value.art, image: value.image, isCurrent: current }); return value
-        }).catch(error => { if (flight === next) flight = null; throw error })
+        }).catch(error => { if (flight === next) flight = null; if (production) dispose(); throw error })
       flight = next
     }
     const value = await abortable(flight, signal); assertCurrent(signal); return value

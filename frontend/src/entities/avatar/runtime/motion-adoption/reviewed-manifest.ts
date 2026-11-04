@@ -1,7 +1,7 @@
 import { canonicalJson, contentHash, record, strictJson } from '../../../../world/map/json'
 import { MOTION_ART, assertMotionArt, requireMotion, validateMotionSelection, type MotionArt, type MotionDirection, type MotionLayer } from './art'
 import { MOTION_V2_CANDIDATE } from './v2-candidate'
-import type { MotionAuthority } from './runtime'
+import type { MotionAuthority, MotionAuthorityOperations } from './runtime'
 import { decodeReviewedMotionConfig, reviewedMotionConfig, reviewedMotionSelection, REVIEWED_MOTION_FAMILY, type ReviewedMotionConfig } from './reviewed-config'
 
 /** Structural and visual-review pins. Backend admission gates remain independently required. */
@@ -55,9 +55,9 @@ export async function decodeReviewedMotionManifest(input: unknown, pin: Reviewed
 }
 
 /** Canonical staged configs may be exercised by fixtures; this is not a production registry authority. */
-export function createReviewedMotionFixtureAuthority(stage: ReviewedMotionStage): MotionAuthority<ReviewedMotionConfig> {
+export function reviewedMotionAuthorityOperations(stage: ReviewedMotionStage): MotionAuthorityOperations<ReviewedMotionConfig> {
   requireMotion(stage?.[verified] === true && stage.qualification === 'STAGED_NOT_ADMITTED')
-  return Object.freeze({ qualification: 'TEST_ONLY' as const, manifestId: REVIEWED_MOTION.manifestId, manifestVersion: 2, manifestHash: REVIEWED_MOTION.contentHash,
+  return Object.freeze({ manifestId: REVIEWED_MOTION.manifestId, manifestVersion: 2, manifestHash: REVIEWED_MOTION.contentHash,
     decodeConfig: decodeReviewedMotionConfig, selection: reviewedMotionSelection,
     presets(art: MotionArt) {
       assertMotionArt(art)
@@ -72,4 +72,9 @@ export function createReviewedMotionFixtureAuthority(stage: ReviewedMotionStage)
       decodeReviewedMotionConfig(config); return reviewedMotionConfig(selection)
     },
   })
+}
+
+/** Operations alone do not grant production authority. The fixture remains TEST_ONLY. */
+export function createReviewedMotionFixtureAuthority(stage: ReviewedMotionStage): MotionAuthority<ReviewedMotionConfig> {
+  return Object.freeze({ ...reviewedMotionAuthorityOperations(stage), qualification: 'TEST_ONLY' as const })
 }

@@ -1,0 +1,56 @@
+{
+  "status": "FAIL",
+  "slot": "AR03-PRODUCTION-SOURCE-202611041141Z",
+  "source": "122b0928a4c32c0647a6d32dd408be98ffab5bbb",
+  "base": "01d604080670c967e1ce194df5c3d1827df11228",
+  "startedUTC": "2026-11-04T11:43:07.098645+00:00",
+  "deadlineUTC": "2026-11-04T11:51:41.434921+00:00",
+  "wholeChargedCapBytes": 134217728,
+  "rssCapBytes": 2684354560,
+  "startFloorBytes": 17179869184,
+  "stopFloorBytes": 8589934592,
+  "peakChargedBytes": 76889,
+  "peakAggregateRssBytes": 1397424128,
+  "checks": [
+    {
+      "name": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/__tests__/reviewed-production/vitest.config.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+      "exit": 0
+    },
+    {
+      "name": "application-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+        "--application"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 1
+    }
+  ],
+  "sourcePins": {},
+  "failure": "application-types failed",
+  "ownedTemporaryRemoved": true,
+  "localNodeModulesPresent": false,
+  "finishedUTC": "2026-11-04T11:43:19.803369+00:00"
+}

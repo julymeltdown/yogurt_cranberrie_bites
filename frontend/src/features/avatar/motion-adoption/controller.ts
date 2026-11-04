@@ -2,7 +2,7 @@ import type { PrivacyScope } from '../../../shared/query/privacy'
 import { TransportError } from '../../../shared/api/errors'
 import { canonicalJson } from '../../../world/map/json'
 import type { MotionRuntime } from '../../../entities/avatar/runtime/motion-adoption/runtime'
-import { requireMotion, type MotionSelection } from '../../../entities/avatar/runtime/motion-adoption/art'
+import { requireMotion, type MotionLayer, type MotionSelection } from '../../../entities/avatar/runtime/motion-adoption/art'
 
 export interface MotionAvatarState<C> { readonly revision: number; readonly config: C }
 export interface MotionPersistence<C> {
@@ -71,18 +71,35 @@ export function createMotionEditorController<C>(options: {
     if (!preset) { publish({ notice: 'invalid-selection' }); return false }
     editEpoch++; publish({ draft: runtime.validateConfig(preset.config), notice: state.needsReconciliation ? state.notice : null }); return true
   }
+  async function choose(selection: MotionSelection) {
+    if (!current() || state.phase !== 'ready' || !state.draft || operation) return false
+    const version = epoch, edit = ++editEpoch, flight = new AbortController(), draft = state.draft
+    try {
+      const next = await runtime.choose(draft, selection, flight.signal)
+      if (!current(version) || edit !== editEpoch || operation) return false
+      publish({ draft: next, notice: state.needsReconciliation ? state.notice : null }); return true
+    } catch { if (current(version) && edit === editEpoch) publish({ notice: 'invalid-selection' }); return false }
+  }
   return { kind: 'motion-editor' as const, runtime, scope, read: () => state,
     subscribe(fn: () => void) { listeners.add(fn); return () => { listeners.delete(fn) } },
     start() { if (started || disposed || revoked) return; started = true; if (!current()) { revoke(); return }; void initialize() },
     selectPreset,
-    async choose(selection: MotionSelection) {
-      if (!current() || state.phase !== 'ready' || !state.draft || operation) return false
-      const version = epoch, edit = ++editEpoch, flight = new AbortController(), draft = state.draft
-      try {
-        const next = await runtime.choose(draft, selection, flight.signal)
-        if (!current(version) || edit !== editEpoch || operation) return false
-        publish({ draft: next, notice: state.needsReconciliation ? state.notice : null }); return true
-      } catch { if (current(version) && edit === editEpoch) publish({ notice: 'invalid-selection' }); return false }
+    choose,
+    random() {
+      if (!current() || state.phase !== 'ready' || !state.draft || !state.catalog || operation) return Promise.resolve(false)
+      const selected = runtime.authority.selection(state.draft)
+      if (selected.mode === 'preset') {
+        const presets = state.catalog.presets.filter(preset => !same(preset.config, state.draft))
+        return Promise.resolve(presets.length > 0 && selectPreset(presets[Math.floor(Math.random() * presets.length)]!.id))
+      }
+      // Every coordinate comes from the actual admitted catalog. Keep preset and layered modes explicit.
+      const pick = <T,>(values: readonly T[]): T => { requireMotion(values.length > 0); return values[Math.floor(Math.random() * values.length)]! }
+      const keys = (kind: MotionLayer) => state.catalog!.items.filter(item => item.kind === kind).map(item => item.key)
+      let next: MotionSelection = { mode: 'wardrobe', body: pick(keys('body')), hair: pick(keys('hair')), eyes: pick(keys('eyes')),
+        outfit: pick([...keys('outfit'), null]), accessory: pick([...keys('accessory'), null]) }
+      // A repeated random sample still offers a different valid choice without unbounded retry.
+      if (same(next, selected)) next = { ...next, hair: pick(keys('hair').filter(key => key !== selected.hair)) }
+      return choose(next)
     },
     reset() { if (!current() || state.phase !== 'ready' || !state.persisted || state.candidate) return false; editEpoch++; publish({ draft: state.persisted.config, notice: state.needsReconciliation ? state.notice : null }); return true },
     reload: () => readServer(state.needsReconciliation || state.draft !== null),
