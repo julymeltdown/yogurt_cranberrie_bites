@@ -176,9 +176,9 @@ export function PanelScreen({ route, children }: { route: PanelRoute; children?:
     <p>It may have changed or you may not have access.</p><ShellLink className="shell-link" to="/world">Back to world</ShellLink>
   </Feedback>
   return <>
-    {compactSections && <details className="shell-more-sections"><summary>More actions</summary>{sections}</details>}
     {children ?? <div className="shell-unavailable"><p className="shell-kicker">Still taking shape</p>
       <h2>{route.title} is not available yet</h2><p>This part of the event is still being prepared. You can browse the other sections.</p></div>}
+    {compactSections && <details className="shell-more-sections"><summary>More actions</summary>{sections}</details>}
     {!compactSections && sections}
   </>
 }
