@@ -62,7 +62,8 @@ ALTER TABLE public.concert_social_policy_signals ADD CONSTRAINT concert_social_s
    OR (source_outbox IS NULL AND source_receipt IS NULL AND source_operation IS NULL AND source_resource IS NULL
     AND source_revision IS NULL AND deadline_request IS NOT NULL AND deadline_at IS NOT NULL AND reason='EXPIRED')))
  OR (deletion_saga IS NOT NULL AND deletion_user IS NOT NULL AND deletion_command_binding IS NOT NULL
-  AND deletion_source_binding IS NOT NULL AND deletion_fence_revision=1 AND reason='CANONICAL_POLICY_CHANGED'
+  AND deletion_source_binding IS NOT NULL AND deletion_fence_revision IS NOT NULL
+  AND deletion_fence_revision=1 AND reason='CANONICAL_POLICY_CHANGED'
   AND source_outbox IS NULL AND source_receipt IS NULL AND source_operation IS NULL AND source_resource IS NULL
   AND source_revision IS NULL AND deadline_request IS NULL AND deadline_at IS NULL)
 );

@@ -479,6 +479,7 @@ impl Fixture {
     }
 }
 #[tokio::test]
+#[ignore = "explicit marker/inode-owned native PG16 qualification"]
 async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exact_replay(
 ) -> Result<()> {
     let f = Fixture::new(2, 70).await?;
@@ -574,6 +575,7 @@ async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exac
     Ok(())
 }
 #[tokio::test]
+#[ignore = "explicit marker/inode-owned native PG16 qualification"]
 async fn native_cancellation_keeps_source_pending_and_does_not_ack_empty_registry() -> Result<()> {
     let f = Fixture::new(1, 1).await?;
     let command = actual_delete(&f.auth, f.user).await?;
@@ -600,6 +602,7 @@ async fn native_cancellation_keeps_source_pending_and_does_not_ack_empty_registr
     Ok(())
 }
 #[tokio::test]
+#[ignore = "explicit marker/inode-owned native PG16 qualification"]
 async fn native_actual_auth_source_rejects_wrong_subject_retention_and_undeleted_user() -> Result<()>
 {
     let f = Fixture::new(1, 0).await?;
@@ -663,6 +666,7 @@ async fn native_actual_auth_source_rejects_wrong_subject_retention_and_undeleted
     Ok(())
 }
 #[tokio::test]
+#[ignore = "explicit marker/inode-owned native PG16 qualification"]
 async fn native_original_deadline_while_common_user_lock_waits_cannot_create_partial_fence(
 ) -> Result<()> {
     let f = Fixture::new(1, 1).await?;
