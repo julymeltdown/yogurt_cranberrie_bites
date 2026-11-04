@@ -518,18 +518,33 @@ async fn canonical_block_departure_suspension_and_profile_outage() -> anyhow::Re
         .bind(f.subject)
         .execute(&f.auth)
         .await?;
-    f.stop_profile();
-    let (status, v) = call(
+    f.stop_profile().await;
+    let (scope, parent, request) = acquire(
         &f,
-        &r,
         "listConcertIntros",
         raw(&f, "GET", "intros", Value::Null, None),
     )
     .await?;
+    let owned = scope.clone();
+    let producer = r.clone();
+    let value = scope
+        .run_owned(async move {
+            parent
+                .scope(producer.dispatch_for_scope(owned, request))
+                .await
+        })
+        .await?;
     assert_eq!(
-        status, 503,
-        "Profile outage must abort rather than pretend the page is empty: {v}"
+        value.status, 503,
+        "Profile outage must abort the whole projection"
     );
+    scope.mark_serialized().await?;
+    // Lost/unreceived Profile work is not guessed complete while its actual
+    // owner is unavailable. Test Root retains terminal settlement for recovery.
+    assert!(scope.finish_response().await.is_err());
+    f.restart_profile().await?;
+    scope.finish_response().await?;
+    f.assert_clean().await?;
     Ok(())
 }
 

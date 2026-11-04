@@ -38,6 +38,7 @@ pub(super) struct Fixture {
     pub(super) friend: PgPool,
     pub(super) concert: PgPool,
     pub(super) profile: PgPool,
+    profile_addr: std::net::SocketAddr,
     pub(super) reader: Arc<PublicProfileReader>,
     pub(super) ledger: PgScopeLedger,
     _registry: Arc<ScopeRegistry>,
@@ -99,9 +100,47 @@ fn product_release() -> anyhow::Result<Arc<concert_application::bootstrap::Valid
     )
     .map_err(|_| anyhow::anyhow!("Actual source-bound public Profile release unavailable"))
 }
+async fn profile_server(
+    profile: PgPool,
+    address: std::net::SocketAddr,
+) -> anyhow::Result<(std::net::SocketAddr, tokio::task::JoinHandle<()>)> {
+    use profile_service::adapters::r#in::grpc::concert_public_profile::{
+        proto, PublicProfileServer, PUBLIC_PROFILE_POLICY,
+    };
+    let profile_service = guard(
+        &PUBLIC_PROFILE_POLICY,
+        proto::concert_public_profile_service_server::ConcertPublicProfileServiceServer::new(
+            PublicProfileServer::from_pool(profile),
+        ),
+        CallerRegistry::new().register(Workload::Concert, "concert-fixture")?,
+        RelationshipReadVerifier::new(
+            Workload::Profile,
+            &[owners::signer()?.public_key()],
+            &ActorDelegationVerifier::new(Workload::Profile, &[capture::gateway()?.public_key()])?,
+        )?
+        .into_inner(),
+    )?;
+    let listener = tokio::net::TcpListener::bind(address).await?;
+    let address = listener.local_addr()?;
+    let profile_task = spawn(
+        tonic::transport::Server::builder()
+            .tls_config(environment::tls(Workload::Profile)?.server_config()?)?
+            .layer(CallDeadlineLayer)
+            .add_service(profile_service)
+            .serve_with_incoming(incoming(listener)),
+    );
+
+    Ok((address, profile_task))
+}
 impl Fixture {
-    pub(super) fn stop_profile(&self) {
+    pub(super) async fn stop_profile(&mut self) {
         self.tasks[0].abort();
+        let _ = (&mut self.tasks[0]).await;
+    }
+    pub(super) async fn restart_profile(&mut self) -> anyhow::Result<()> {
+        let (_, task) = profile_server(self.profile.clone(), self.profile_addr).await?;
+        self.tasks[0] = task;
+        Ok(())
     }
     pub(super) async fn new() -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
@@ -133,34 +172,9 @@ impl Fixture {
         }
         sqlx::query("insert into concert_meeting_settings(event_id,event_cutoff) values($1,clock_timestamp()+interval '1 day') on conflict(event_id) do nothing").bind(event).execute(&concert).await?;
 
-        use profile_service::adapters::r#in::grpc::concert_public_profile::{
-            proto, PublicProfileServer, PUBLIC_PROFILE_POLICY,
-        };
-        let profile_service = guard(
-            &PUBLIC_PROFILE_POLICY,
-            proto::concert_public_profile_service_server::ConcertPublicProfileServiceServer::new(
-                PublicProfileServer::from_pool(profile.clone()),
-            ),
-            CallerRegistry::new().register(Workload::Concert, "concert-fixture")?,
-            RelationshipReadVerifier::new(
-                Workload::Profile,
-                &[owners::signer()?.public_key()],
-                &ActorDelegationVerifier::new(
-                    Workload::Profile,
-                    &[capture::gateway()?.public_key()],
-                )?,
-            )?
-            .into_inner(),
-        )?;
-        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
-        let profile_url = format!("https://{}", listener.local_addr()?);
-        let profile_task = spawn(
-            tonic::transport::Server::builder()
-                .tls_config(environment::tls(Workload::Profile)?.server_config()?)?
-                .layer(CallDeadlineLayer)
-                .add_service(profile_service)
-                .serve_with_incoming(incoming(listener)),
-        );
+        let (profile_addr, profile_task) =
+            profile_server(profile.clone(), "127.0.0.1:0".parse()?).await?;
+        let profile_url = format!("https://{profile_addr}");
         let reader = Arc::new(PublicProfileReader::connect(
             concert.clone(),
             release,
@@ -218,6 +232,7 @@ impl Fixture {
             friend,
             concert,
             profile,
+            profile_addr,
             reader,
             ledger,
             _registry: registry,
