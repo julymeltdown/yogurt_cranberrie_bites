@@ -228,3 +228,67 @@ seven-field frontend handoff are unchanged. This source attachment is not an
 executed QA05 or IN04 acceptance result. Accepted clocks, exact per-attempt
 readsets, raw failures, success logs and guardian releases are retained under
 `docs/mcr/evidence/in04-runtime-adapter/ROOT-FE-QA05-RELAY-SOURCE-20261104T2050Z/`.
+
+## Private consumed-ticket replay attachment
+
+The relay source above was published at `4f32121dec01fdbf1af21b69d2cc055052fa358f`.
+The subsequent private capture/probe implementation passed its own fresh
+source-component qualification. Actual managed execution remains **NOT_RUN**.
+Existing relay/fault-factory results were reused without relabeling their scope.
+
+`installQa05WorldRelay` optionally accepts `decodeClient` alongside the required
+`decodeServer`. The actual caller must bind both to the same source-pinned
+canonical C05 decoder, using its client/server directions. A first browser
+Authenticate is observed from original masked bytes without changing the
+forwarded bytes. A validated upstream snapshot must match its event, room, map,
+avatar manifest and self principal before private one-shot release through
+`takeConsumedAuthentication(principalId)`. Resync or room-switch snapshots never
+repopulate a released authentication. Pair retirement destroys capture custody;
+no public endpoint, serialized receipt or debug log exposes the ticket.
+
+`createConsumedTicketProbe` receives the closed noncredential configuration used
+by owner checkpoints, that factory's five-field binding, relay, actual owner
+control, current window guard/signal, actual World origin and canonical server
+decoder. Its returned callback has the existing
+`probeConsumedTicket({config,requestId,signal})` interface. It inspects the two
+actual connected members, takes one consumed authentication, and makes one raw
+upgrade directly to the actual World service with the frontend Host and Origin.
+It acquires no new ticket, creates no member and never retries an uncertain
+effect. The raw socket has a 2.8-second deadline. Only one Authenticate, no
+application snapshot, close code 4401 and actual socket closure can succeed;
+4408, application data, negotiated compression, cancellation or changed member
+rows refuse the result. A second owner inspection must show the same two
+connected member rows. The result is the checkpoint factory's closed count-only
+`CONSUMED_TICKET_REPLAY` proof, without raw frames, tickets, user IDs or PIDs.
+The surrounding checkpoint facade's timeout does not cancel an owner-control
+socket call; Root retains actual handle/guardian cleanup responsibility.
+
+The direct probe is separate from the relay's two active App pairs. The
+foreground group permits at most three App relay connections plus this one
+direct attempt, four total. Relay limits remain two active pairs and four
+lifetime connections. Browser extension offers are preserved verbatim; actual
+upstream extension negotiation and compressed server frames are refused.
+
+The new focused source cohort uses explicitly synthetic decoders, authentication
+and owner observations with actual controlled loopback HTTP/raw WebSocket I/O.
+It checks one-shot custody, original-byte preservation, extension-offer
+forwarding without negotiation, 4401/EOF, wrong close codes/application data,
+abort, foreign/disconnected members and changed membership. Its result cannot
+establish a real consumed App ticket, canonical decoder binding, Vite wiring,
+private managed window or any of the seven actual QA05 cases. Those remain
+separate runtime requirements. The IN04 seven-field frontend handoff and its
+historical qualified artifact are unchanged by this attachment.
+
+The fresh `ROOT-FE-TICKET-PROBE-SOURCE-20261104T2115Z` round accepted at
+21:16:35.105171 UTC and fully released at 21:17:01.221581 UTC. All eight new
+component cases, four syntax checks and four-file deny-warning lint passed.
+Both independent live controls passed; complete retained inventory included the
+full Python framework and Node/dependency trees, checkout and actual shared Git
+store. Peak retained bytes were 3,606,483,386, positive new bytes at most
+2,243,928, aggregate processes four and RSS 141,672,448 bytes. All descendants
+drained, controlled HTTP servers closed and scratch was removed before direct
+release to the allocator and named successor. The 180/240-second clocks,
+4 GiB whole/64 MiB new caps and 6-process/512 MiB RSS caps were unchanged.
+Exact source hashes, commands, raw results and both live releases are retained
+in `ticket-source-qualification.json` and the round directory. No Vite, browser,
+backend, install or dependency link ran.

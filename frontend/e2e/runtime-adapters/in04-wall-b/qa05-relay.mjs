@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import http from 'node:http'
 import { createHash } from 'node:crypto'
 import { TextDecoder } from 'node:util'
+import { createAuthenticationCapture } from './qa05-authentication.mjs'
 
 const MAX_PAYLOAD = 65536
 const MAX_BUFFER = 262144
@@ -73,7 +74,7 @@ function loopbackOrigin(value) {
 // Install on the SAME Vite httpServer, with Vite's /world-ws proxy omitted.
 // HTTP /api remains Vite's normal proxy. There is no public fault-control route.
 export function installQa05WorldRelay({ httpServer, worldOrigin, frontendOrigin, eventId,
-  principalIds, createFaultController, decodeServer, guard, signal, now = () => performance.now() }) {
+  principalIds, createFaultController, decodeServer, decodeClient, guard, signal, now = () => performance.now() }) {
   assert(httpServer && typeof httpServer.on === 'function')
   const upstreamOrigin = loopbackOrigin(worldOrigin), origin = loopbackOrigin(frontendOrigin)
   assert.equal(typeof eventId, 'string')
@@ -92,19 +93,21 @@ export function installQa05WorldRelay({ httpServer, worldOrigin, frontendOrigin,
     try {
       live()
       assert(req.method === 'GET' && req.headers.origin === origin.origin, 'QA05_UPGRADE_ORIGIN')
-      assert(!req.headers['sec-websocket-extensions'], 'QA05_COMPRESSED_UPGRADE_REFUSED')
+      // Browsers may OFFER permessage-deflate even when the real server declines
+      // it. Preserve that request verbatim; reject NEGOTIATED extensions below.
       assert(pairs.size < 2 && accepted < 4, 'QA05_CONNECTION_BOUND')
       assert(initial.length <= MAX_BUFFER, 'QA05_PREFETCH_BOUND')
       downstream.pause()
       pair = { downstream, upstream: null, request: null, identity: null, reader: null, faults: null,
         closed: false, receivedFrames: 0, forwardedBytes: 0, openedAtMs: now(), failure: null }
+      pair.authentication = decodeClient ? createAuthenticationCapture({ decodeClient, eventId, guard: live }) : null
       pairs.add(pair); accepted++
       function close(reason = 'QA05_PAIR_CLOSED') {
         if (pair.closed) return
         pair.closed = true; pair.failure = reason
         if (byPrincipal.get(pair.identity) === pair) byPrincipal.delete(pair.identity)
         pairs.delete(pair)
-        pair.reader?.dispose(); pair.faults?.dispose()
+        pair.reader?.dispose(); pair.faults?.dispose(); pair.authentication?.dispose()
         pair.request?.destroy(); pair.upstream?.destroy(); downstream.destroy()
       }
       pair.close = close
@@ -130,6 +133,7 @@ export function installQa05WorldRelay({ httpServer, worldOrigin, frontendOrigin,
             assert(pair.identity === null || pair.identity === message.selfUserId, 'QA05_PRINCIPAL_CHANGED')
             assert(!byPrincipal.has(message.selfUserId) || byPrincipal.get(message.selfUserId) === pair, 'QA05_DUPLICATE_PRINCIPAL')
             pair.identity = message.selfUserId; byPrincipal.set(pair.identity, pair)
+            pair.authentication?.consumed(message)
           }
           pair.receivedFrames++
           const proof = pair.faults.acceptServerFrame(bytes, { isBinary: false, isDelta: message.type === 'delta' })
@@ -162,8 +166,8 @@ export function installQa05WorldRelay({ httpServer, worldOrigin, frontendOrigin,
           const raw = [`HTTP/${response.httpVersion} ${response.statusCode} ${response.statusMessage}`]
           for (let i = 0; i < response.rawHeaders.length; i += 2) raw.push(`${response.rawHeaders[i]}: ${response.rawHeaders[i + 1]}`)
           assert(write(downstream, Buffer.from(raw.join('\r\n') + '\r\n\r\n')))
-          if (initial.length) assert(write(upstream, initial))
-          downstream.on('data', bytes => { try { assert(write(upstream, bytes)) } catch { close('QA05_CLIENT_WRITE_FAILED') } })
+          if (initial.length) { pair.authentication?.feed(initial); assert(write(upstream, initial)) }
+          downstream.on('data', bytes => { try { pair.authentication?.feed(bytes); assert(write(upstream, bytes)) } catch { close('QA05_CLIENT_WRITE_FAILED') } })
           upstream.on('data', bytes => { try { pair.reader.feed(bytes) } catch { close('QA05_SERVER_FRAME_REFUSED') } })
           if (head.length) pair.reader.feed(head)
           downstream.resume()
@@ -179,6 +183,12 @@ export function installQa05WorldRelay({ httpServer, worldOrigin, frontendOrigin,
   }
   live(); httpServer.on('upgrade', upgrade); signal.addEventListener('abort', close, { once: true })
   return Object.freeze({ close,
+    takeConsumedAuthentication(principalId) {
+      live()
+      const pair = byPrincipal.get(principalId)
+      assert(pair && !pair.closed && pair.authentication, 'QA05_CONSUMED_AUTHENTICATION_UNAVAILABLE')
+      return pair.authentication.take(principalId)
+    },
     arm(principalId, request) {
       live()
       const pair = byPrincipal.get(principalId)

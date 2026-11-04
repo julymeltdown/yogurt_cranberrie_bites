@@ -105,7 +105,7 @@ def main():
     out = OUT / offer['allocation'] / args.attempt
     assert out.parent.parent == OUT and out.parent.name == offer['allocation'] and out.name == args.attempt
     common = Path(subprocess.check_output(['git', 'rev-parse', '--path-format=absolute', '--git-common-dir'], cwd=ROOT, text=True).strip())
-    bases = [ROOT, common, DEPS, NODE.parent.parent]
+    bases = [ROOT, common, DEPS, NODE.parent.parent, Path(os.sys.executable).resolve().parent.parent]
     if args.watch_pid:
         return independent_watch(offer, out, bases, args.watch_pid)
     assert not out.exists()
@@ -131,12 +131,21 @@ def main():
            'MCR_IN04_SOURCE_REPO': str(ROOT), 'MCR_IN04_SOURCE_CANDIDATE': offer['candidate']}
     env.pop('NODE_COMPILE_CACHE', None)
     relay_only = offer.get('qa05_relay', False)
+    ticket_only = offer.get('qa05_ticket_probe', False)
+    assert not (relay_only and ticket_only)
     commands = ([[str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(TAIL)],
                  [str(NODE), '--check', str(TAIL)]] if include_tail else [])
     if offer.get('deferred_bundle', False):
         commands += [[str(NODE), str(HERE / 'deferred.mjs'), str(ROOT), offer['backend_source'], offer['backend_sha256'], str(HERE / 'qualified-runtime.mjs')],
                      [str(NODE), '--check', str(HERE / 'qualified-runtime.mjs')]]
-    if relay_only:
+    if ticket_only:
+        assert not include_tail and not offer.get('deferred_bundle', False)
+        paths = [str(HERE / name) for name in ['qa05-authentication.mjs', 'qa05-relay.mjs',
+                                              'qa05-ticket-probe.mjs', 'qa05-ticket-probe.test.mjs']]
+        commands += [[str(NODE), '--check', path] for path in paths]
+        commands += [[str(NODE), '--test', '--test-isolation=none', paths[-1]],
+                     [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', *paths]]
+    elif relay_only:
         assert not include_tail and not offer.get('deferred_bundle', False)
         factory = subprocess.check_output(['git', 'show', offer['frame_factory_source'] + ':frontend/e2e/qa05-functional-recovery/frame-faults.mjs'], cwd=ROOT)
         assert hashlib.sha256(factory).hexdigest() == 'ad76fd4be3702d90676ed5b156c8831e2b5f5f016595f5c8130ec8020e975a05'
@@ -178,7 +187,7 @@ def main():
     signal.signal(signal.SIGINT, stop)
     watcher = None
     try:
-        if relay_only:
+        if relay_only or ticket_only:
             watcher = subprocess.Popen([str(Path(os.sys.executable)), '-B', str(HERE / 'validate.py'),
                 '--accepted-offer', str(args.accepted_offer), '--attempt', args.attempt, '--watch-pid', str(os.getpid())], start_new_session=True)
             ready_deadline = time.monotonic() + 10

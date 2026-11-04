@@ -1,0 +1,16 @@
+✔ one-shot capture waits for actual bytes and matching consumed snapshot, then retains no second release (2.884833ms)
+✔ foreign, unmasked, fragmented, invalid UTF8, oversized, decoder failure and expired capture are refused (3.651541ms)
+✔ one actual raw upgrade and masked authentication observes 4401/EOF with unchanged owner membership (21.114583ms)
+✔ 4408 authentication timeout and an application snapshot cannot masquerade as consumed-ticket rejection (4.103958ms)
+✔ aborting a pending raw probe destroys the socket and never retries or requests another ticket (7.273ms)
+✔ foreign owner binding and disconnected membership refuse before custody release or network effect (0.639ms)
+✔ a successful close followed by membership mutation is rejected rather than reported as acceptance (1.047542ms)
+✔ actual relay observes original masked client bytes and releases custody only after forwarded snapshot (12.169833ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90.816042

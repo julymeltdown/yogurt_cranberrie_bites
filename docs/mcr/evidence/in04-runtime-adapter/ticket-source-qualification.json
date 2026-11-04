@@ -1,0 +1,112 @@
+{
+  "qualification": "PASS_SOURCE_COMPONENT_ONLY",
+  "source": "26f8931081bfbb5cf1bd093b322c0069e190cdfc",
+  "worktreeHeadAtAdmission": "b9afaaa4f2ee1ab3eae4ca5081c50ac2084a8e70",
+  "selectedSourceHashes": {
+    "frontend/e2e/runtime-adapters/in04-wall-b/qa05-authentication.mjs": "2ee000495026cdce8c8af61eb094838470bf86365eede5455a58a38e40e173c9",
+    "frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.mjs": "88b4e52d764551f54de1f98e83724d93421dd47980ac33899d6f315e33c474ca",
+    "frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.test.mjs": "7c8fa07170f80b763de6eacd194bbc89fe3ddc54f006d54a2d0899854cb7fa54",
+    "frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.mjs": "bb1297acf03dc8f207b76832fbf6454b55fdf812a3e2418b7b2e0376a5f8e0a0",
+    "frontend/e2e/runtime-adapters/in04-wall-b/validate.py": "fddeab3636a1bbe2bf2e157306f33e78e38552c0c669f4e906763f207cc4201f"
+  },
+  "cases": 8,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-authentication.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-authentication.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-ticket-probe.test.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "acceptedEpoch": 1793826995.105171,
+  "actualFull": "2026-11-04T21:17:01.221581+00:00",
+  "primaryPeak": {
+    "ownedBytes": 3606483099,
+    "positiveNewBytes": 2243928,
+    "pids": 4,
+    "rssBytes": 141672448
+  },
+  "independent": {
+    "peak": {
+      "ownedBytes": 3606483386,
+      "positiveNewBytes": 2239937,
+      "pids": 3,
+      "rssBytes": 139018240
+    },
+    "failure": null
+  },
+  "completeRetainedInventoryIncludes": [
+    "whole checkout",
+    "actual shared Git directory",
+    "existing dependency tree",
+    "Node24.22.2 full tool tree",
+    "Python3.14 full framework version tree",
+    "scratch and retained evidence"
+  ],
+  "accounting": "Global inode deduplication; nonshrinking carry plus per-inode positive growth; actual complete initial3606422510B is higher than prior2605855900B. Caps and clocks unchanged.",
+  "cleanup": {
+    "remainingDescendants": [],
+    "scratchRemaining": false,
+    "controlledServers": "All controlled server.close callbacks awaited in tests; test child exited; no persistent listener allocated."
+  },
+  "limits": [
+    "Explicit synthetic authentication/owner/decoder fixtures only.",
+    "Actual consumed App ticket/canonical C05 client-server decoder binding NOT_RUN.",
+    "Actual Vite/managed control descriptor/cohort and all seven QA05 groups NOT_RUN.",
+    "IN04 genuine whole runtime NOT_RUN.",
+    "No ticket/secret/raw authenticate bytes are serialized into this receipt.",
+    "Existing relay5/faultfactory19/checkpoint45/identity5/IN04 source matrices were reused, not rerun."
+  ],
+  "proofs": {
+    "tests": "docs/mcr/evidence/in04-runtime-adapter/ROOT-FE-TICKET-PROBE-SOURCE-20261104T2115Z/attempt01/04.log",
+    "release": "docs/mcr/evidence/in04-runtime-adapter/ROOT-FE-TICKET-PROBE-SOURCE-20261104T2115Z/attempt01/release.json",
+    "independentRelease": "docs/mcr/evidence/in04-runtime-adapter/ROOT-FE-TICKET-PROBE-SOURCE-20261104T2115Z/attempt01/independent-release.json"
+  }
+}
