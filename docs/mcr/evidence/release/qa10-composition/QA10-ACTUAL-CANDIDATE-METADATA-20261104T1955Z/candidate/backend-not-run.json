@@ -1,0 +1,12 @@
+{
+  "candidate": {
+    "commit": "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+    "dirty": false,
+    "tree": "f9b4696543d042919f149b7be4cb0510516d5789"
+  },
+  "id": "backend-candidate",
+  "owner": "Responsible backend implementation/evidence owner",
+  "reason": "No compatible exact-candidate producer envelope in the explicit published release input set.",
+  "schema": "mcr.qa10.composition-evidence.v1",
+  "status": "NOT_RUN"
+}

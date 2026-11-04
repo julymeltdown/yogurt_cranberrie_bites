@@ -1,0 +1,8 @@
+{
+  "root": "<QA10_CHECKOUT>",
+  "out": "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/QA10-ACTUAL-CANDIDATE-SOURCE-20261104T1933Z",
+  "supervisor": 42554,
+  "baseline": 648420602,
+  "work_end": 164661.304266291,
+  "full_end": 164691.304266291
+}

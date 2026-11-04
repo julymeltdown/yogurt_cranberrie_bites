@@ -1,6 +1,9 @@
 # QA10 same-candidate evidence composition
 
-Status: **IN_PROGRESS** for original QA10; this implementation slice is source-validated and ready for direct publication. This implements the functional remainder
+Status: **IN_PROGRESS** for original QA10. The checker implementation was published
+as `6d351502bcee839e0836955edbf5eff61ab9b0b7`; its actual-candidate
+composition check returned **INCOMPLETE**. The committed report records the
+remaining release-input gaps without changing owner task dispositions. This implements the functional remainder
 **QA10-COMPOSITION-01**, not a release decision or a new acceptance matrix.
 Original QA10 and IN05 remain open until their actual responsible-owner evidence
 exists. QA08 remains **DEFERRED_BY_USER**, nonblocking and uncompleted; no capacity
@@ -264,7 +267,141 @@ The original unused1850 offer was definitively declined before children; no
 closed round or old runtime/build lease was reused.
 
 The committed handoff routes directly to Root1fc for publication into
-`julymeltdown/mcr:master`. Publication is pending until its actual publisher
-receipt. This source validation does not complete original QA10, IN05 or the
+`julymeltdown/mcr:master`. The source slice was published by Root as
+`6d351502bcee839e0836955edbf5eff61ab9b0b7`, preserving the delivered source
+postimages from `007527a5a455340fb27080070c4fe1b34ab6a8f3`. The publisher
+receipt confirms remote delivery. The actual-candidate report below is a separate
+committed handoff. Source validation does not complete original QA10, IN05 or the
 historical incompatible Profile goal. Real responsible-owner service/device/
 operator evidence and full functional release acceptance remain open.
+
+
+## Actual published-candidate execution
+
+Candidate `6d351502bcee839e0836955edbf5eff61ab9b0b7`, tree
+`f9b4696543d042919f149b7be4cb0510516d5789`, was frozen with clean tracked
+state on `codex/mcr-qa-QA10-candidate-report` in the same exclusive checkout.
+The newly authored audit collector/controller were outside that candidate and
+SHA-pinned before admission; they are not represented as product code tested
+in the candidate. They read immutable candidate source and actual existing
+owner evidence. No application, feature matrix, browser, database, device,
+build, installation or recorded receipt command was executed.
+
+| Fresh round | Actual ACCEPT / FULL (UTC, 2026-11-04) | Actual result |
+| --- | --- | --- |
+| `QA10-ACTUAL-CANDIDATE-SOURCE-20261104T1933Z` | 19:35:13.664087 / 19:35:21.723630 | Collector exit1: sparse checkout omitted `.node-version` from the filesystem. |
+| `QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z` | 19:55:03.130843 / 19:55:11.937719 | Collector exit0; real composition exit2 INCOMPLETE; real historical frontend receipt exit1 `candidate.mismatch`. |
+
+The first failure does not mean the published file was absent. Git contains
+`.node-version`, `frontend/package.json` and `frontend/pnpm-lock.yaml`; the
+retained sparse checkout marks them skip-worktree. The correction reads their
+size-bounded immutable Git blobs without materializing frontend or changing
+sparse settings. The failed round was closed and released before requeue.
+The second round used a fresh offer, rather than extending the failed lease.
+The unchanged checker also refused a noncurrent candidate inside the collector.
+
+Exact successful controller invocation, with the exclusive checkout as `ROOT`:
+
+```sh
+exec python3 -B docs/mcr/evidence/release/qa10-composition/candidate_round.py \
+  --root "$ROOT" --candidate 6d351502bcee839e0836955edbf5eff61ab9b0b7 \
+  --offer QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z \
+  --all-new-bytes 1543503872
+```
+
+The retained `result.json` records exact collector and external CLI argv/exits.
+The round's `candidate/input.json` is an actual-input manifest, not the synthetic
+complete fixture. It preserves all112 task records and61 IA rows with honest
+pending producer envelopes. `candidate/candidate-report.json` is the actual
+checker result, byte-identical to `cli-input.log`.
+
+### Result and original QA10 disposition
+
+The actual release composition is **INCOMPLETE** with zero qualified current
+release task/IA bindings,111 missing active task bindings,61 missing IA bindings
+and the one uncompleted, nonblocking **QA08 DEFERRED_BY_USER** row. All five
+candidate producer categories are NOT_RUN because compatible exact-candidate
+release envelopes were not supplied. IN03 remains BLOCKED from canonical
+WAITING_INPUT; no duplicate operator question is created. Other absent gate
+bindings remain NOT_RUN. `release_decision` stays **NOT_ASSESSED**; IN05 retains
+its separate owner and NOT_READY release boundary.
+
+These counts do not revoke historical owner acceptance. `task-provenance.json`
+preserves the canonical revised states:41 DONE,57 IN_PROGRESS,3 WAITING_INPUT,
+7 REOPENED,1 DEFERRED_BY_USER and3 OPEN. It records original owned paths, matching
+candidate files, Git blob identities and latest touch commits for88 tasks.
+The other24 tasks have no original-owned-path match; they remain explicit
+mapping gaps. A touch commit is provenance, never behavior acceptance. The
+collector retains190 unique explicit evidence references without rewriting
+those owner documents or inferring acceptance from their filenames.
+
+Original QA10 remains **IN_PROGRESS**. The checker implementation and actual
+candidate-report execution are delivered, including an honestly incomplete
+result. Remaining QA10 qualification requires current retained production bytes,
+compatible responsible-owner receipt/criterion bindings and resolution of the
+explicit bounded input gaps. It does not wait for a king/SL review, all product
+tasks to pass before running the checker, or a duplicate feature matrix. The
+next implementation assignment can proceed after this committed handoff.
+
+### Reused evidence and limits
+
+- The real frontend receipt is for `980fc4d85020f297b36fee8195e1ca92079ff33f`.
+  Its retained gzip streams to83,822,272 uncompressed bytes with the pinned
+  digest. Of its source/contract pins,1799 blobs match this candidate and142
+  changed, with none absent. Its small Node TAP reports22 passes/0 skips.
+  Vitest3503 is OWNER_RECORDED_NOT_REPARSED; no huge JSON graph or test rerun
+  was performed. This historical evidence is preserved and explicitly rejected
+  as a current-candidate envelope, never promoted to current product PASS.
+- The published37 genuine checker self-tests are reused by matching the actual
+  verbose log hash and all seven tested executable/test/controller source
+  hashes. This qualifies unchanged tooling only. Five retained visual owner
+  references match5/5 hashes; they remain owner evidence, with no new visual
+  judgment or physical-device acceptance.
+- Source versions declare Node24.22.2, pnpm11.7.0 and Rust1.88.0. The actual
+  checker used Python3.14.3 and Git2.55.0 on Darwin. Seven version/lock/schema
+  references are hashed; `contracts/generated/mcr-domain.openapi.json` remains
+  NOT_RUN with `inventory.file-limit` because it exceeds the2MiB text bound.
+  Source pins are not observed running application versions.
+- Actual application binary versions, genuine current-candidate product-test
+  receipts, production mock scan and production secret scan remain NOT_RUN:
+  **CURRENT_RETAINED_BUILD_BYTES_NOT_SUPPLIED**. No scan result is fabricated
+  from source manifests. Total collector input reads were90,013,500 bytes,
+  within its128MiB bound. Historical receipts and selected-art originals are
+  unchanged.
+
+### Resource and retention provenance
+
+Both rounds used the existing independent native guardian, started before any
+worker, with180s work/210s FULL, NEW32MiB, logs below2MiB, WHOLE6GiB preserving
+prior650272KiB carry, <=4 own ALL processes and RSS512MiB. The1955 offer explicitly
+changed the fresh-start floor from12 to11GiB before ACCEPT; reserve9GiB/live8GiB
+remained binding. Fresh free bytes were13,365,104,640; all admitted NEW reservations
+were1,543,503,872, leaving11,821,600,768 bytes. The controller is a per-round
+SOURCE guardian, not the allocator's global capacity controller.
+
+The successful round lasted8.8069s, retained2,998,440 bytes at FULL and reported
+no guardian breach. Sampled maxima were4 own ALL processes,118,718,464 RSS bytes,
+2,998,270 new bytes and651,465,570 whole bytes. No application resources were
+created; supervisor/worker/guardian ended before literal FULL. Root and21d
+received the immediate release; next Avatar owner1eed received the literal
+D release directly before documentation completion.
+
+The final collector SHA256 is
+`99ddd21c8b2c936f1c29f58d3313a48adc4072940f4cc5fbea21cf5862c6972e`;
+controller SHA256 is
+`a644bc26f83b98f612fd1285b56c9a17ea64493e13dce7a6fc8204ab121a2438`;
+reused guardian SHA256 is
+`a30910274bd9eb3a98cebc75332292d453c7be2ee6191a3d560f6b54f68850ab`.
+`tool-history/` retains both original failed and corrected collector bytes and
+both admission-floor controller revisions, with hash provenance. The failed
+collector snapshot was reconstructed and verified against its original admission
+SHA; it is not claimed as a separately retained original file.
+
+Both named actual-round directories are retained with their original structure.
+`actual-candidate-retention.json` pins every original and retained file hash.
+Only exclusive-checkout/Python executable prefixes in five control/log files
+were sanitized; immutable candidate manifests, reports, artifact paths and
+hash bindings are unchanged. Raw records remain locally preserved. The report
+is historical evidence for its frozen6d351502 candidate; the later documentation
+commit does not silently rebind it to a new HEAD. Publication of this report
+routes directly to Root1fc with no manager inspection or acknowledgment gate.

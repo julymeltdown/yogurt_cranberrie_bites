@@ -1,0 +1,69 @@
+{
+  "status": "ACTUAL_FULL",
+  "offer": "QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z",
+  "at": "2026-11-04T19:55:11.937719+00:00",
+  "elapsed_seconds": 8.806923041993286,
+  "results": [
+    {
+      "name": "actual-inventory",
+      "argv": [
+        "<PYTHON3>",
+        "-B",
+        "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/candidate_probe.py",
+        "--root",
+        "<QA10_CHECKOUT>",
+        "--candidate",
+        "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+        "--out",
+        "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z/candidate"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "cli-input",
+      "argv": [
+        "<PYTHON3>",
+        "-B",
+        "<QA10_CHECKOUT>/scripts/mcr/release_checks/check.py",
+        "--root",
+        "<QA10_CHECKOUT>",
+        "--candidate",
+        "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+        "--mode",
+        "composition",
+        "--manifest",
+        "docs/mcr/evidence/release/qa10-composition/QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z/candidate/input.json"
+      ],
+      "exit": 2
+    },
+    {
+      "name": "cli-stale-frontend-input",
+      "argv": [
+        "<PYTHON3>",
+        "-B",
+        "<QA10_CHECKOUT>/scripts/mcr/release_checks/check.py",
+        "--root",
+        "<QA10_CHECKOUT>",
+        "--candidate",
+        "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+        "--mode",
+        "composition",
+        "--manifest",
+        "docs/mcr/evidence/release/qa10-composition/QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z/candidate/stale-frontend-input.json"
+      ],
+      "exit": 1
+    }
+  ],
+  "retained_bytes": 2998440,
+  "temporary_app_resources": "NONE_CREATED",
+  "guardian": {
+    "at": "2026-11-04T19:55:11.894960+00:00",
+    "breach": null,
+    "sampled_maxima": {
+      "processes": 4,
+      "rss": 118718464,
+      "new_bytes": 2998270,
+      "whole_bytes": 651465570
+    }
+  }
+}

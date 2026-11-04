@@ -1,0 +1,35 @@
+{
+  "status": "ACTUAL_FULL",
+  "offer": "QA10-ACTUAL-CANDIDATE-SOURCE-20261104T1933Z",
+  "at": "2026-11-04T19:35:21.723630+00:00",
+  "elapsed_seconds": 8.059575999999652,
+  "results": [
+    {
+      "name": "actual-inventory",
+      "argv": [
+        "<PYTHON3>",
+        "-B",
+        "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/candidate_probe.py",
+        "--root",
+        "<QA10_CHECKOUT>",
+        "--candidate",
+        "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+        "--out",
+        "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/QA10-ACTUAL-CANDIDATE-SOURCE-20261104T1933Z/candidate"
+      ],
+      "exit": 1
+    }
+  ],
+  "retained_bytes": 2473,
+  "temporary_app_resources": "NONE_CREATED",
+  "guardian": {
+    "at": "2026-11-04T19:35:21.680949+00:00",
+    "breach": null,
+    "sampled_maxima": {
+      "processes": 4,
+      "rss": 118620160,
+      "new_bytes": 2306,
+      "whole_bytes": 648422908
+    }
+  }
+}
