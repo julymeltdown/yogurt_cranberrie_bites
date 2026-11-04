@@ -137,3 +137,46 @@ motion metadata fixtures; those follow-up additions remain NOT_RUN pending a
 fresh allocation. The old checker also needs an explicit ownership extension to
 invoke that helper and enumerate four v2 schemas. Social fixtures already use
 existing trace/wire-rejection branches and need no new dispatch logic.
+
+## Forward-baseline preflight
+
+Root granted the three exact legacy checker extensions and additive regressions.
+Commit `fcee6a69` invokes offline motion coverage before the exhaustive fixture
+comparison, appends the four explicit v2 schemas, and counts root-only schemas
+without requiring `$defs`. Existing Social dispatch and original negatives are
+unchanged. Commit `a5d372ba` also corrects integer compatibility: the canonical
+Auth `expiresIn` has `int64` format without a safe-integer maximum, so the client
+uses JSON Schema integer semantics and adds independent numeric boundary cases.
+Those client additions require fresh generation and validation; the earlier C07
+PASS is not extended to them without execution.
+
+The amended source-only allocation
+`C07-FORWARD-BASELINE-SOURCE-B-202611041534Z` began at
+2026-11-04 15:43:16 UTC on clean
+`a5d372bac1e2ae0f737a08d7b607f735d9b30a84`. Its first and only workload was:
+
+```sh
+<retained-contract-python> -B scripts/mcr/contracts/c07/qualify_baseline.py --pins <round>/candidate-pins.json --output <round>/preflight.json
+```
+
+Exit 1: `ValueError: generated OpenAPI drift`. The candidate passed source schema
+checking (229 definitions, including the four newly enumerated schemas), then
+failed comparison with the canonical domain generator before fixture coverage.
+No active pin update, client regeneration, full QA01 negatives or new C07 check
+run followed that failure. The exact preflight/log and control/source hashes are
+retained under local `mcr-tools/c07-baseline-20261104T1521Z`.
+
+The historical archive still matches the untouched active pins byte for byte.
+Root separately assigned the already-public C05/Intro generated baseline mirror
+correction to the Wall producer; this is a named source dependency, not a full
+Wall implementation barrier or permission to mask drift. After its qualified
+publication, this owner must consume the corrected baseline, refresh the exact
+audit, and rerun the complete candidate/public QA01/C07 path.
+
+This allocation reached FULL at 15:44:21 UTC with no worker/guardian process,
+temporary workspace or link remaining. Nonshrinking carry was 3,252,854,784 bytes,
+new positive growth 819,200 bytes, free space 18,352,828,416 bytes; the guardian
+recorded a peak of two scoped processes and no breach. The latest human direction
+allows the designated publisher's single canonical delivery receipt; repeated
+independent readback proofs and proof-only commits are not required. Functional
+validation, fixes and the meaningful committed handoff remain required.
