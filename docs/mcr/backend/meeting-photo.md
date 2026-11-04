@@ -188,3 +188,44 @@ The actual persistent-goal API still returned BLOCKED after explicit assignment
 resumption; its available mutation API cannot set ACTIVE. This administrative
 state was reported to BackendSL while the complete authorized work resumed; no
 replacement goal or false completion was used to bypass it.
+
+
+## Delivery path and provenance audit
+
+Original worker base: `0c76e42790106501f3988fe7cb46113b8cd7784e`.
+Input contract handoff: `17fd2e93`, delivered through `a3526254`.
+Owned implementation: `cd4b7362`, `96c44d3d`, `418b5ce4`, `a45b78ea`, `b41cf49b`.
+Qualified native evidence: `701962ef`. Upstream peer commits are preserved through
+serial normal merges; no peer changes are reattributed to this implementation.
+
+Exact owned source/delivery paths (Concert-relative paths below start in
+`backend/services/concert-service/`):
+
+- `src/meeting_photo/{mod,wire,producer,authority,canonical}.rs` (new authored adapter).
+- `migrations/0029_meeting_photo.sql` (explicit exact shared grant).
+- `src/lib.rs` (exact one module export) and `src/meeting/commands.rs` (exact
+  BeaconProducer visibility and explicit owner Update authorization correction).
+- `tests/meeting_photo.rs`, `tests/meeting_photo_contract.rs`,
+  `tests/meeting_photo_migrations.rs`, `tests/meeting_photo_support/**`.
+- `backend/scripts/mcr/meeting_photo_contract.py` and `meeting_photo_smoke.py`.
+- `backend/docs/api/meeting-photo-contract.md`, this execution document, and
+  previously published exact `contracts/domain/v1/{beacon,feed}.schema.json` inputs.
+
+Authorized unchanged media dependency copies `d4ce03b1` → `ab9af08e` and
+`65f90e08` → `b54abe4c` additionally carry the dedicated Purpose enum,
+`src/adapters/out/media/mod.rs`, `src/media_runtime/mod.rs` uploader prelock,
+`tests/media.rs`, and the media owner's exact documentation section. Media213
+explicitly confirmed the relevant blobs against qualified `c32f4c74`, authorized
+publication with this independent photo qualification, and stopped writing these
+ports during reconciliation. No other canonical preparation is imported.
+
+The scoped path/import check found no frontend imports, backend/UI crossing,
+manifest/lockfile authorship or `docs/source` changes. Canonical generated outputs
+and FE client changes are their owners' published commits, preserved as peers.
+
+After the first native proof, peer publication added actual PublicProfile source/
+proto and Spatial bootstrap library inputs. Merge `cf6ba979176de15aac8e1896a01ba262a1f905bd`
+preserves them; all 14 photo qualification pins remained byte-identical. A short
+final combined build has been requested specifically for those newly compiled
+inputs. The earlier native receipt retains its exact `b41cf49b` claim; it is not
+relabeled as evidence for a later uncompiled source.
