@@ -26,3 +26,5 @@ pub mod gift_live;
 pub mod party_live;
 
 pub mod meeting_photo;
+
+pub mod moderation_live;
