@@ -49,6 +49,17 @@ def key(cluster, label):
     return base64.b64encode(seed).decode(), base64.b64encode(value[12:]).decode()
 
 
+def probe(report, label, binary, name, env, cluster, redactions):
+    result = subprocess.run([str(binary), "--ignored", "--exact", name, "--test-threads=1"],
+                            env=env, cwd=cluster.root, capture_output=True, timeout=30)
+    report["commands"][label] = result.returncode
+    output = result.stdout + result.stderr
+    require(all(value.encode() not in output for value in redactions if value), label + ":redaction")
+    report.setdefault("native_diagnostics", {})[label] = migration.redact(output.decode(errors="replace"), redactions)
+    require(result.returncode == 0, label + ":exit")
+    require(b"test result: ok. 1 passed; 0 failed;" in result.stdout, "exact-real-owner-test-required")
+
+
 def pki(cluster):
     pki_source.pki(cluster)
     directory = cluster.root / "pki"
@@ -124,8 +135,7 @@ def exercise(cluster, ports, children, own, owners, report, case):
         name = "concert_self_profile::native_prepare::actual_owner_prepare_and_recovery_quarantine"
         label = "actual-owners-prepare-rpc"
         env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "prepare"
-    result = command(report, label, [own["test"], "--ignored", "--exact", name, "--test-threads=1"], env, cluster.root, secrets=redactions)
-    require(b"test result: ok. 1 passed; 0 failed;" in result.stdout, "exact-real-owner-test-required")
+    probe(report, label, own["test"], name, env, cluster, redactions)
     for child in children:
         require(child.listeners(), "owned-service-must-remain-alive")
     require(cluster.sql(native.DB, "select count(*) from concert_self_profile_read_references;") == "1", "exact-read-reference-required")
@@ -133,8 +143,7 @@ def exercise(cluster, ports, children, own, owners, report, case):
     time.sleep(6)  # Original request expires; no completion proof may be invented.
     if case == "prepare":
         env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "recover"
-        result = command(report, "actual-owners-expired-recovery-rpc", [own["test"], "--ignored", "--exact", name, "--test-threads=1"], env, cluster.root, secrets=redactions)
-        require(b"test result: ok. 1 passed; 0 failed;" in result.stdout, "exact-real-recovery-test-required")
+        probe(report, "actual-owners-expired-recovery-rpc", own["test"], name, env, cluster, redactions)
         require(cluster.sql(native.DB, "select count(*) from concert_self_profile_operations;") == "1", "one-original-operation-required")
         require(cluster.sql(native.DB, "select count(*) from pg_prepared_xacts where database=current_database();") == "1", "missing-decision-must-retain-profile-effect")
         report.update(actual_prepare_invisibility="PASS", expired_original_recovery="PASS", missing_decision_quarantine="PASS")
