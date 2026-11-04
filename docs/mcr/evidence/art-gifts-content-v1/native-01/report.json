@@ -1,0 +1,11 @@
+{
+  "usage": "TEST_ONLY_REFERENCE_FIXTURE",
+  "sourceCommit": "68f203f7070bfe636e36aeb6017aefc9198f615a",
+  "productionBinding": null,
+  "actualConsumer": "GiftDiscovery -> ReferenceGiftRow",
+  "sourceFormatChecksSeparate": true,
+  "fullTypeCheck": "NOT_RUN",
+  "scenarios": [],
+  "errors": [],
+  "consumerInputsRead": []
+}

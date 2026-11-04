@@ -1,0 +1,83 @@
+{
+  "offer": "ART-WINDOW-CONTROLS-SOURCE-202611041343Z",
+  "acceptUtc": "2026-11-04T13:42:30.510245+00:00",
+  "workDeadlineUtc": "2026-11-04T13:43:30.510245+00:00",
+  "fullDeadlineUtc": "2026-11-04T13:44:00.510245+00:00",
+  "head": "4678956c43d9b1bb643312fbc6d3f809535bbd63",
+  "preflightFreeBytes": 30819913728,
+  "preflightCarryBytes": 19881,
+  "sourcePins": [
+    {
+      "file": "docs/mcr/art/reference-gifts-content-v1.md",
+      "bytes": 3118,
+      "sha256": "5cb79f09b0a70b533ac2fc5e70b10c889aae37d56a3bebccea11512a29532b05"
+    },
+    {
+      "file": "docs/mcr/art/reference-window-controls-v2.md",
+      "bytes": 3771,
+      "sha256": "d3cea6f47be88e42d608420f0bb77d459299370d553c96ef5a077466dd07d4d8"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/check_assets.py",
+      "bytes": 5051,
+      "sha256": "a58ba1a442967276c52fa9470db51a3d7875cbec6a4a3f5dff416c1f20ed62d4"
+    },
+    {
+      "file": "docs/mcr/evidence/art-window-controls-v2/preview.html",
+      "bytes": 3092,
+      "sha256": "33204e8dec922689b1f4a2f2de6925ca768876f75f583d9f1bf25e4f7fb0254b"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/back.svg",
+      "bytes": 223,
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/close.svg",
+      "bytes": 198,
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/expand.svg",
+      "bytes": 232,
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/manifest.json",
+      "bytes": 3537,
+      "sha256": "9ec16351eb962fb4c9994e187a7a8fc4588aae35261ee1d257e1f9f6bd7728c1"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "bytes": 257,
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5"
+    },
+    {
+      "file": "frontend/public/reference-window-controls-v2/stars.svg",
+      "bytes": 402,
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2"
+    }
+  ],
+  "argv": [
+    "python3",
+    "docs/mcr/evidence/art-window-controls-v2/check_assets.py"
+  ],
+  "guardianPid": 53728,
+  "jobPid": 53727,
+  "guardianStartedBeforeWorkload": true,
+  "exitCode": 0,
+  "stdout": "{\"result\": \"PASS\", \"assetCount\": 5, \"svgBytes\": 1312, \"report\": \"docs/mcr/evidence/art-window-controls-v2/source-validation.json\"}\n",
+  "stderr": "",
+  "finishedUtc": "2026-11-04T13:42:30.569905+00:00",
+  "elapsedSeconds": 0.059678,
+  "childPeakRssBytes": 21921792,
+  "cleanup": {
+    "jobAlive": false,
+    "guardianAlive": false,
+    "tempBytes": 0,
+    "cacheBytes": 0,
+    "retainedProcesses": 0
+  },
+  "postFreeBytes": 30819901440,
+  "postCarryBytesBeforeRecord": 22760
+}

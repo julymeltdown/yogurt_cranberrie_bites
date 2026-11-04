@@ -1,0 +1,57 @@
+{
+  "task": "ART-WINDOW-CONTROLS-02",
+  "status": "ART_LEGIBILITY_AND_ARROW_STATE_PASS_PUBLIC_PALETTE_FIX_PENDING",
+  "artSourceCommit": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203",
+  "consumerTask": "FE-REFERENCE-CHROME-02",
+  "consumerCandidate": "c019e84d5a2102f8fd31f3498f37cb235795c55a",
+  "consumerAllocation": "REFERENCE-CHROME-NATIVE-BROWSER-202611041410Z",
+  "captureStartedAt": "2026-11-04T14:12:10.805Z",
+  "captureFinishedAt": "2026-11-04T14:12:57.768Z",
+  "consumerReport": "docs/mcr/evidence/reference-chrome-v2/native-01/capture/report.json",
+  "consumerEvidenceCommit": "c0c24f4abea2afa40f94d9349920ee297b3e6e76",
+  "consumerReportSha256": "07464529154845c17a5e6e573bfdec466ec4f43a063190fc19290259251ce725",
+  "consumerActualAcceptUtc": "2026-11-04T14:12:09.605431Z",
+  "consumerOriginalWorkDeadlineUtc": "2026-11-04T14:17:09.605431Z",
+  "consumerOriginalCleanupDeadlineUtc": "2026-11-04T14:18:09.605431Z",
+  "consumerGuardianFinishedUtc": "2026-11-04T14:12:58.061450Z",
+  "consumerMeasuredFullReleaseUtc": "2026-11-04T14:14:55.624134Z",
+  "consumerAcceptanceRecord": "docs/mcr/evidence/reference-chrome-v2/native-B-accept.json",
+  "consumerReleaseRecord": "docs/mcr/evidence/reference-chrome-v2/native-B-release.json",
+  "consumerGuardianRecord": "docs/mcr/evidence/reference-chrome-v2/native-01/guardian.json",
+  "method": "Artist directly inspected the existing actual native PNGs; no new rendering, screenshot extraction or duplicate browser matrix.",
+  "inspected": [
+    "landing-360.png", "landing-390.png", "landing-430.png",
+    "login-360.png", "login-390.png", "login-430.png",
+    "feed-360.png", "feed-390.png", "feed-430.png",
+    "meet-360.png", "meet-390.png", "meet-430.png",
+    "me-360.png", "me-390.png", "me-430.png"
+  ],
+  "findings": [
+    {"scope": "art", "result": "PASS", "detail": "Red/cream tri-stars and cream arrow/X/window-corner glyphs are legible, centered in their faces, unclipped and loaded from the exact source commit across all three native widths. No SVG geometry or palette fix is needed from this cohort."},
+    {"scope": "consumer", "result": "ARROW_FIX_INSPECTED_PASS", "detail": "Original full-size panel headers showed identical reduce.svg for size/minimization. NativeC now shows a clear distinct downward Back-arrow cue at all three widths. Actual browser collapse/restore matrices are -90/+90 degrees; the upward state is supported by recorded browser matrix and source bounds, not a separately saved restore PNG."},
+    {"scope": "consumer-public-palette", "result": "FIX_PENDING", "detail": "Direct NativeC Landing images still show a mauve header. Frame owner confirmed CSS specificity/load-order failure (#624250) and owns the selector fix plus fresh computed palette assertion and retained 360/390/430 Landing/anonymous captures. The artist has not accepted a dark public header from prose."}
+  ],
+  "followup": {
+    "candidate": "db07437a2619b049d2030d8127b4910c1a44f6dd",
+    "consumerReport": "docs/mcr/evidence/reference-chrome-v2/native-02/capture/report.json",
+    "reportSha256": "6c140b707be8dd2d9a2dfa47267db858bb637177cf747e4fd41cd05ffe05df88",
+    "consumerEvidenceCommit": "76afcfdd36ca956564fdc352616268f2cf7793bf",
+    "actualAcceptUtc": "2026-11-04T14:47:07.808845Z",
+    "workDeadlineUtc": "2026-11-04T14:52:07.808845Z",
+    "fullDeadlineUtc": "2026-11-04T14:53:07.808845Z",
+    "measuredFullReleaseUtc": "2026-11-04T14:48:26.503731Z",
+    "captureStartedAt": "2026-11-04T14:47:21.942Z",
+    "captureFinishedAt": "2026-11-04T14:48:03.375Z",
+    "inspected": ["landing-360.png", "landing-390.png", "landing-430.png", "feed-360.png", "feed-390.png", "feed-430.png", "meet-360.png", "meet-390.png", "meet-430.png", "me-360.png", "me-390.png", "me-430.png"],
+    "reportedConsumerResult": "18/18 cases PASS; functional result does not close the public-palette mismatch.",
+    "collapseInk": {"src": "/reference-window-controls-v2/back.svg", "transform": "matrix(0, -1, 1, 0, 0, 0)"},
+    "restoreInk": {"src": "/reference-window-controls-v2/back.svg", "transform": "matrix(0, 1, -1, 0, 0, 0)"},
+    "scope": "Actual default App/router/Phaser DEV synthetic HTTP/C05 fixture plus separate anonymous entry captures. Controls artwork remains exact65b; no live/backend/device/full-screen acceptance."
+  },
+  "reportedConsumerChecks": "21 cases PASS, 44px native targets, keyboard/forced-color focus, Back/size/peek/history and scroll/persistence. These are the consumer owner's results; this artist disposition independently covers glyph appearance only.",
+  "limits": [
+    "Original frozen cohort does not include the later Root flat-paper CSS candidate.",
+    "No overall screen-design, live backend, Auth, two-account, C06 product-art or physical-device acceptance is implied.",
+    "Original and arrow-state followup evidence are sealed; public-palette correction and publication remain open."
+  ]
+}

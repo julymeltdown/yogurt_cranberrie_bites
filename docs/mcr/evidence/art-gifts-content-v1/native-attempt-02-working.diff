@@ -1,0 +1,34 @@
+diff --git a/docs/mcr/evidence/art-gifts-content-v1/capture.mjs b/docs/mcr/evidence/art-gifts-content-v1/capture.mjs
+index d6cd6f3b..29fd6a6b 100644
+--- a/docs/mcr/evidence/art-gifts-content-v1/capture.mjs
++++ b/docs/mcr/evidence/art-gifts-content-v1/capture.mjs
+@@ -6,14 +6,14 @@ import { chromium } from '@playwright/test'
+ import { serve } from './serve.mjs'
+ 
+ const env = await serve()
+-const out = path.join(env.packet, 'native-01')
++const out = path.join(env.packet, process.env.MCR_ART_ATTEMPT ?? 'native-01')
+ await mkdir(out, { recursive: true })
+ let browser
+ const report = { usage: 'TEST_ONLY_REFERENCE_FIXTURE', sourceCommit: env.sourceCommit,
+   productionBinding: null, actualConsumer: 'GiftDiscovery -> ReferenceGiftRow',
+   sourceFormatChecksSeparate: true, fullTypeCheck: 'NOT_RUN', scenarios: [], errors: [] }
+ try {
+-  browser = await chromium.launch({ headless: true })
++  browser = await chromium.launch({ headless: true, ...(process.env.MCR_ART_BROWSER ? { executablePath: process.env.MCR_ART_BROWSER } : {}) })
+   for (const width of [360, 390, 430]) {
+     const page = await browser.newPage({ viewport: { width, height: 844 }, deviceScaleFactor: 1 })
+     page.on('pageerror', error => report.errors.push(error.message))
+diff --git a/docs/mcr/evidence/art-gifts-content-v1/serve.mjs b/docs/mcr/evidence/art-gifts-content-v1/serve.mjs
+index 5556adbd..c57d321a 100644
+--- a/docs/mcr/evidence/art-gifts-content-v1/serve.mjs
++++ b/docs/mcr/evidence/art-gifts-content-v1/serve.mjs
+@@ -66,7 +66,7 @@ export async function serve() {
+   const server = await createServer({ configFile: false, configLoader: 'runner', root: packet, publicDir: false,
+     plugins: [plugin, react()], cacheDir: path.join(packet, 'private-cache'),
+     server: { host: '127.0.0.1', port: Number(process.env.MCR_ART_PORT ?? 5197), strictPort: true },
+-    esbuild: { jsx: 'automatic' }, build: { write: false },
++    build: { write: false },
+   })
+   try { await server.listen() } catch (error) { await server.close(); throw error }
+   return { server, packet, sourceCommit, readPaths, baseUrl: `http://127.0.0.1:${server.config.server.port}` }

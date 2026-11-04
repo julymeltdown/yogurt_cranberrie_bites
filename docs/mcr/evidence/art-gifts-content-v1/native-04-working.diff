@@ -1,0 +1,33 @@
+diff --git a/docs/mcr/evidence/art-gifts-content-v1/serve.mjs b/docs/mcr/evidence/art-gifts-content-v1/serve.mjs
+index b411d89a..9f39e390 100644
+--- a/docs/mcr/evidence/art-gifts-content-v1/serve.mjs
++++ b/docs/mcr/evidence/art-gifts-content-v1/serve.mjs
+@@ -15,6 +15,18 @@ export async function serve() {
+   const files = new Set(git('ls-tree', '-r', '--name-only', sourceCommit, 'frontend', 'contracts').toString().trim().split('\n'))
+   const virtual = path.join(packet, '.readonly-git') + path.sep
+   const readPaths = new Set()
++  const readPinned = (file, parents = []) => {
++    if (!files.has(file) || parents.includes(file)) throw new Error(`Invalid pinned input: ${file}`)
++    readPaths.add(file)
++    const source = git('show', `${sourceCommit}:${file}`).toString()
++    if (!file.endsWith('.css')) return source
++    // PostCSS reads relative imports from disk before Vite's virtual loader.
++    // Inline only pinned relative imports, preserving their unchanged bytes.
++    return source.replace(/@import\s+["']([^"']+)["']\s*;/g, (statement, target) => {
++      if (!target.startsWith('.')) return statement
++      return readPinned(path.posix.normalize(path.posix.join(path.posix.dirname(file), target)), [...parents, file])
++    })
++  }
+   const find = candidate => [candidate, ...['.ts', '.tsx', '.js', '.json', '.css', '/index.ts', '/index.tsx'].map(ext => candidate + ext)].find(file => files.has(file))
+   const plugin = {
+     name: 'art-readonly-pinned-consumer', enforce: 'pre',
+@@ -51,8 +63,7 @@ export async function serve() {
+       if (!id.startsWith(virtual)) return null
+       const file = id.slice(virtual.length).split('?')[0]
+       if (!files.has(file)) throw new Error(`Unpinned consumer input: ${file}`)
+-      readPaths.add(file)
+-      return git('show', `${sourceCommit}:${file}`).toString()
++      return readPinned(file)
+     },
+     configureServer(server) {
+       server.middlewares.use(async (req, res, next) => {
