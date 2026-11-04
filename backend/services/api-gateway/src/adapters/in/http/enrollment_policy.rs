@@ -88,9 +88,14 @@ pub fn failure(error: EnrollmentFailure) -> Response {
     let mut response=(StatusCode::from_u16(error.status).unwrap_or(StatusCode::SERVICE_UNAVAILABLE),Json(json!({
         "code":format!("GATEWAY_{}",error.status),"message":"Enrollment request could not be completed",
         "traceId":correlation_id_for_response(),"timestamp":Utc::now().to_rfc3339_opts(SecondsFormat::Millis,true),
-        "details":{"reason":error.reason}
+        "details":if error.reason=="RATE_LIMITED" {json!({"reason":error.reason,"retry_after_ms":1000})} else {json!({"reason":error.reason})}
     }))).into_response();
     response.extensions_mut().insert(Protected);
+    if error.status == 429 {
+        response
+            .headers_mut()
+            .insert(header::RETRY_AFTER, HeaderValue::from_static("1"));
+    }
     if matches!(error.reason, "CONSENT_REQUIRED" | "POLICY_UNAVAILABLE") {
         response.extensions_mut().insert(PolicyDenial);
     }

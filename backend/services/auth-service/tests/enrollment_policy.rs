@@ -315,6 +315,29 @@ async fn native_policy_signup_atomicity_guarded_rpc_gateway_and_restart() -> any
             .fetch_one(&pool)
             .await?;
         assert_eq!(before, 0);
+        {
+            use api_gateway::application::enrollment_policy::{
+                EnrollmentOperation, EnrollmentPolicyPort,
+            };
+            let denied_client =
+                api_gateway::adapters::out::enrollment_policy::GrpcEnrollmentClient::connect(
+                    &endpoint,
+                    "wrong-gateway-credential",
+                    None,
+                    platform::actor_delegation::ActorDelegationSigner::local_parity(
+                        platform::grpc_auth::Workload::Gateway,
+                    ),
+                    Default::default(),
+                )?;
+            assert_eq!(
+                denied_client
+                    .execute(EnrollmentOperation::Policy, None, None, Value::Null)
+                    .await
+                    .unwrap_err()
+                    .status,
+                401
+            );
+        }
         let policy = publication();
         store.publish(&policy).await?;
         let actual = http(&client, &base, "GET", "policy", None, None, None).await?;
@@ -332,7 +355,7 @@ async fn native_policy_signup_atomicity_guarded_rpc_gateway_and_restart() -> any
         .await?;
         assert_eq!(begin.0, 201);
         let cookie = begin.2.as_deref().unwrap();
-        let attempt = begin.1["attemptId"].as_str().unwrap();
+        let mut attempt = begin.1["attemptId"].as_str().unwrap().to_owned();
         let email = format!("enrollment-{}@example.test", Uuid::new_v4().simple());
         let mut command = json!({"attemptId":attempt,"policyRevision":policy.revision,"acknowledgementIds":["test-terms-v1"],"idempotencyKey":Uuid::new_v4(),"email":email,"password":"test-password-123"});
         let mut missing = command.clone();
@@ -425,13 +448,11 @@ async fn native_policy_signup_atomicity_guarded_rpc_gateway_and_restart() -> any
             );
             assert!(!link.as_str().contains(&email));
         }
-        mail_server.abort();
-        let _ = mail_server.await;
         let user: Uuid = sqlx::query_scalar("select id from users where primary_email=$1")
             .bind(&email)
             .fetch_one(&pool)
             .await?;
-        let code: String =
+        let mut code: String =
             sqlx::query_scalar("select code from email_verifications where user_id=$1")
                 .bind(user)
                 .fetch_one(&pool)
@@ -449,6 +470,7 @@ async fn native_policy_signup_atomicity_guarded_rpc_gateway_and_restart() -> any
         let mut duplicate = command.clone();
         duplicate["attemptId"] = shadow.1["attemptId"].clone();
         duplicate["idempotencyKey"] = json!(Uuid::new_v4());
+        duplicate["password"] = json!("wrong-password-stays-shadow");
         let duplicate = http(
             &client,
             &base,
@@ -497,6 +519,65 @@ async fn native_policy_signup_atomicity_guarded_rpc_gateway_and_restart() -> any
                 .fetch_one(&pool)
                 .await?;
         assert_eq!(tries, 1);
+        // Negative clock fixtures model an expired original attempt and elapsed
+        // canonical resend throttle; identity/password/consent are never SQL-seeded.
+        sqlx::query("update mcr_enrollment_attempts set created_at=clock_timestamp()-interval '2 hours',expires_at=clock_timestamp()-interval '1 minute' where id=$1")
+            .bind(Uuid::parse_str(&attempt)?).execute(&pool).await?;
+        denied(
+            &http(
+                &client,
+                &base,
+                "POST",
+                "verify",
+                Some(json!({"attemptId":attempt,"code":code})),
+                Some(cookie),
+                None,
+            )
+            .await?,
+            410,
+            "ATTEMPT_EXPIRED",
+        );
+        sqlx::query("update auth_mail_outbox set created_at=clock_timestamp()-interval '31 minutes' where user_id=$1")
+            .bind(user).execute(&pool).await?;
+        let resume_begin = http(
+            &client,
+            &base,
+            "POST",
+            "attempts",
+            Some(json!({"policyRevision":policy.revision})),
+            Some(cookie),
+            None,
+        )
+        .await?;
+        let mut resume_command = command.clone();
+        resume_command["attemptId"] = resume_begin.1["attemptId"].clone();
+        resume_command["idempotencyKey"] = json!(Uuid::new_v4());
+        let resumed = http(
+            &client,
+            &base,
+            "POST",
+            "signup",
+            Some(resume_command),
+            Some(cookie),
+            None,
+        )
+        .await?;
+        assert_eq!(resumed.0, 202);
+        attempt = resume_begin.1["attemptId"].as_str().unwrap().into();
+        assert_eq!(worker.run_once().await?, 1);
+        {
+            let mail = captured.lock().unwrap();
+            assert_eq!(mail.len(), 2);
+            assert_eq!(mail[1]["enrollment_attempt_id"], attempt);
+            let link = reqwest::Url::parse(mail[1]["verification_link"].as_str().unwrap())?;
+            let pairs: std::collections::BTreeMap<_, _> = link.query_pairs().into_owned().collect();
+            assert_eq!(pairs.len(), 2);
+            assert_eq!(pairs["attemptId"], attempt);
+            code = mail[1]["verification_code"].as_str().unwrap().into();
+            assert_eq!(pairs["code"], code);
+        }
+        mail_server.abort();
+        let _ = mail_server.await;
         let verified = http(
             &client,
             &base,

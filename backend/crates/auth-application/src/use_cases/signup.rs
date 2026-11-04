@@ -47,10 +47,36 @@ where
     ) -> crate::errors::AuthResult<(
         crate::dto::repository_dto::AuthUserRecordDto,
         crate::dto::verification_code_dto::VerificationCodeDto,
+        Option<crate::dto::repository_dto::AuthUserRecordDto>,
     )> {
         let normalized_email = User::normalized_email(email);
         validate_email(&normalized_email)?;
         validate_password(password)?;
+        let snapshot = self
+            .user_repository
+            .find_by_email(&normalized_email)
+            .await?;
+        let resume = if let Some(record) = snapshot {
+            let pending =
+                record.status == crate::dto::repository_dto::AuthUserStatusDto::PendingVerification;
+            if pending {
+                if self
+                    .password_work
+                    .verify_login(password, &record.password_hash)
+                    .await?
+                {
+                    Some(record)
+                } else {
+                    None
+                }
+            } else {
+                self.password_work.equalize_login(password).await?;
+                None
+            }
+        } else {
+            self.password_work.equalize_login(password).await?;
+            None
+        };
         let password_hash = self.password_work.hash_for_signup(password).await?;
         let code = self.verification_crypto.generate()?;
         let user = User {
@@ -60,7 +86,7 @@ where
             status: UserStatus::PendingVerification,
             last_login_at: Some(self.runtime.now()),
         };
-        Ok(((&user).into(), code))
+        Ok(((&user).into(), code, resume))
     }
 
     pub async fn signup_email(

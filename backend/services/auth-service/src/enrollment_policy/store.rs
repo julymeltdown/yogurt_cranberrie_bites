@@ -181,7 +181,7 @@ impl EnrollmentStore {
             return Ok(receipt);
         }
         tx.rollback().await.map_err(unavailable)?;
-        let (user, code) = owner
+        let (user, code, resume) = owner
             .prepare_email_signup(&input.email, &input.password)
             .await
             .map_err(|error| match error {
@@ -216,7 +216,7 @@ impl EnrollmentStore {
                 .fetch_one(&mut *tx)
                 .await
                 .map_err(unavailable)?;
-        let mut created = false;
+        let mut enrolled_user = None;
         if !existing {
             sqlx::query("savepoint enrollment_identity")
                 .execute(&mut *tx)
@@ -224,7 +224,7 @@ impl EnrollmentStore {
                 .map_err(unavailable)?;
             match register_email_connection(&mut tx, &user, &code.code).await {
                 Ok(()) => {
-                    created = true;
+                    enrolled_user = Some(user.id);
                     bind_enrollment_mail(
                         &mut tx,
                         user.id,
@@ -266,6 +266,28 @@ impl EnrollmentStore {
                 .await
                 .map_err(unavailable)?;
         }
+        if existing {
+            if let Some(snapshot) = resume {
+                let same:Option<Uuid>=sqlx::query_scalar("select id from users where id=$1 and primary_email=$2 and password_hash=$3 and status='PENDING_VERIFICATION' and deleted_at is null for update")
+                    .bind(snapshot.id).bind(&snapshot.primary_email).bind(&snapshot.password_hash)
+                    .fetch_optional(&mut *tx).await.map_err(unavailable)?;
+                if same == Some(snapshot.id) {
+                    resend_verification_connection(&mut tx, &snapshot.primary_email, &code.code)
+                        .await
+                        .map_err(unavailable)?;
+                    bind_enrollment_mail(
+                        &mut tx,
+                        snapshot.id,
+                        input.attempt_id,
+                        &code.code,
+                        &self.verification_link(input.attempt_id, &code.code)?,
+                        attempt.expires_at,
+                    )
+                    .await?;
+                    enrolled_user = Some(snapshot.id);
+                }
+            }
+        }
         let receipt = AcceptedReceipt {
             status: "ACCEPTED".into(),
             attempt_id: input.attempt_id,
@@ -274,14 +296,14 @@ impl EnrollmentStore {
             server_time: now,
         };
         sqlx::query("update mcr_enrollment_attempts set state=$2,user_id=$3,signup_key=$4,request_hash=$5,signup_receipt=$6,resend_available_at=$7 where id=$1")
-            .bind(input.attempt_id).bind(if created {"PENDING"} else {"SHADOW"})
-            .bind(if created {Some(user.id)} else {None}).bind(input.idempotency_key).bind(fingerprint)
+            .bind(input.attempt_id).bind(if enrolled_user.is_some() {"PENDING"} else {"SHADOW"})
+            .bind(enrolled_user).bind(input.idempotency_key).bind(fingerprint)
             .bind(serde_json::to_value(&receipt).map_err(unavailable)?).bind(receipt.resend_available_at)
             .execute(&mut *tx).await.map_err(unavailable)?;
-        if created {
+        if let Some(enrolled_user) = enrolled_user {
             accept(
                 &mut tx,
-                user.id,
+                enrolled_user,
                 &policy,
                 &input.acknowledgement_ids,
                 Some(input.attempt_id),
