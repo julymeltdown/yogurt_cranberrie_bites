@@ -19,9 +19,11 @@ MOCK_READY environment label does not withhold the met frontend criteria.
 No new task ID, automatic IN04 completion or aggregate count is inferred.
 
 Frontend king subsequently reported central ledger reconciliation published at
-`c6eb8c6d6c642a07297e83f8ee3340d6a2440722`: 24 original-task outcomes
-(12 acceptance dispositions plus 12 additional SATISFIED), 73 other
-implementation-evidenced tasks, 10 unreconciled tasks and 5 open IN gates.
+`4b327722`: 27 original-task outcomes (12 recorded acceptance dispositions
+plus 15 SATISFIED), 71 other implementation-evidenced tasks, 9 unreconciled
+tasks and 5 open IN gates. FE14, FE19 and QA01 were added once from published
+owner receipts. FE07 whole-parent remains unreconciled (only a bounded
+persistent criterion was met); FE15 remains partial.
 Original FE33 was added once from the `7c2f3af7` owner receipt. Its recorded
 MOCK_READY environment coexists with SATISFIED task criteria. This is the
 king-reported bookkeeping baseline, adding FE20 once from `6c908472`, not a new
@@ -97,6 +99,29 @@ Real HTTP/live multiuser IN04, device and full-product acceptance are separate
 open outcomes. The new caller assembly is assigned functioning frontend work,
 not an added condition on the already satisfied original FE33 fixture criteria.
 
+## Current QA07 context release
+
+Community released completed caller developer
+`01a1a230-6acc-7e82-9e4b-92506decc745` to World SL as sole next QA07 allocator.
+Fresh compact chat metadata confirms notLoaded/latest turn completed and its
+actual goal COMPLETE then null/clean STOP/no retained work or lease receipt;
+Community sent no later assignment. All prospective Community QA05/IN04/QA09/
+QA10/IN05 reservations on this developer are withdrawn. The existing chat is
+still archived; release is not proof of QA07 goal startup.
+
+Exact next QA07 grant: NEW `frontend/e2e/accessibility/qa07/**` plus NEW
+`docs/mcr/evidence/accessibility/qa07/**` only. World owns actual usable-input
+confirmation, direct Social/World handoff, isolated checkout, truthful new
+unbudgeted goal and acceptance receipt, implementation/native checks/fixes,
+documentation and scoped publication. Original criteria retain keyboard,
+focus, screen-reader labels, DOM alternatives, reduced motion, pointer
+cancellation, essential social/pickup without precise canvas input and focus
+return. Frozen client entries permit independent work without a generic BE,
+device or full-FE15-wave barrier; a genuine gap names its exact source port and
+owner. No existing app/config/test/backend or returned caller-hunk rights are
+inherited. QA10/IN05 frontend contribution owners will be named at an actual
+next-ready handoff; root retains shared-script/decision publication ownership.
+
 ## Other material lane outcomes and ownership boundaries
 
 ### Original QA/IN implementation staffing
@@ -114,13 +139,13 @@ handoffs and never falsely complete, reset or relabel them.
 | Original task | Named implementation owner / status | Delivered contribution and remaining original criteria | Prerequisite owner / next action / publication |
 |---|---|---|---|
 | QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
-| QA05 mural contribution | Reserved `230` after its completed caller handoff; World primary `202` after current spatial work; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
-| QA09 frontend lifecycle/closure/retry contribution | Reserved `230`; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
-| QA10 frontend provenance contribution | Reserved `230` serially after ready mural/recovery work; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner; NOT_STARTED | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Proposed NEW `docs/mcr/evidence/release/frontend/**` only, pending exact lease. No release-script grant to frontend contributor and no commit/push |
-| IN04 frontend real mural journey | Reserved `230`; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |
-| IN05 frontend evidence/limitations reconciliation contribution | Reserved `230` serially with its QA10 frontend contribution; joint backend decision artifact/publication owner Product root `1fc`; NOT_STARTED | Reconcile all 112 original tasks and 61 IA entries, same-candidate frontend evidence and explicit limitations; no helper inflation or fixture-to-live promotion. Release decision itself stays with root | Proposed NEW `docs/mcr/evidence/release/frontend/**` contribution, not `docs/mcr/release-decision.md` ownership. Original IN/QA/device/operator/recovery evidence remains required. No fake waiting goal, decision approval role or contribution commit/push |
+| QA05 mural contribution | Frontend mural contributor not yet allocated after releasing `230` to World QA07; World primary `202`; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
+| QA09 frontend lifecycle/closure/retry contribution | Frontend contribution writer pending next ready handoff; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
+| QA10 frontend provenance contribution | Frontend contribution writer pending next ready handoff; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner; NOT_STARTED | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Proposed NEW `docs/mcr/evidence/release/frontend/**` only, pending exact lease. No release-script grant to frontend contributor and no commit/push |
+| IN04 frontend real mural journey | Frontend real-journey writer pending exact ready allocation; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |
+| IN05 frontend evidence/limitations reconciliation contribution | Frontend contribution writer pending actual next-available context handoff; joint backend decision artifact/publication owner Product root `1fc`; NOT_STARTED | Reconcile all 112 original tasks and 61 IA entries, same-candidate frontend evidence and explicit limitations; no helper inflation or fixture-to-live promotion. Release decision itself stays with root | Proposed NEW `docs/mcr/evidence/release/frontend/**` contribution, not `docs/mcr/release-decision.md` ownership. Original IN/QA/device/operator/recovery evidence remains required. No fake waiting goal, decision approval role or contribution commit/push |
 
-Full reserved developer identifiers: `230` =
+Developer identifiers (not implicit future reservations): `230` =
 `01a1a230-6acc-7e82-9e4b-92506decc745`, `6ec9` =
 `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`, World primary `202` =
 `01a1a202-375e-7401-bfa1-ff8721e90ed6`, backend `267` =
@@ -128,9 +153,9 @@ Full reserved developer identifiers: `230` =
 `01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c`. Other dependency identifiers are
 listed in the production table above. `1ab7` =
 `01a1a1fe-1ab7-79b0-adbc-d4c025701acb`; latest frontend-king allocation names it
-for independent QA02 under the king's dispatch and World tracking, not QA01.
-Social's IN02 reservation follows its committed QA02 STOP, with no parallel
-waiting goal. World QA05 primary above is a different UUID from active Auth
+for the whole FE07 shell journey under the king's direct assignment, after its
+separate QA02 work. No parallel Community QA07/IN02 assignment is granted.
+Social's later IN02 follows an actual ready handoff, with no waiting goal. World QA05 primary above is a different UUID from active Auth
 QA04 owner `01a1a202-3ff2-7a93-95c3-374c6df97281`; prefix similarity gives no
 ownership collision or right to divert Auth work.
 
