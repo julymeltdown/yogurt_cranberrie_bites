@@ -14,12 +14,12 @@ Use the supplied ten-screen reference and selected character pack. Retro styling
 
 | Queue | Immediate outcome | Current routing |
 | --- | --- | --- |
-| Contracts | Finish C04/C06/C07 and changed-contract fixture coverage | C07 owner 21e; Wall contracts owner 202; exact generated/shared transfers through named publishers |
+| Contracts | C07 delivered; finish C04/C06 and remaining changed-contract task dispositions | C07 original owner21e completed/preserved; Wall contracts owner202; exact shared transfers through publishers |
 | Meet/Gifts | Real party, beacon, reservation and pickup through IN02; protected Gifts detail images | Party 19f83/backend 1fc; Gifts 53d/frontend 153; backend lead allocates remaining giveaway/media scope |
 | Social/Feed | Real consent, privacy and notifications through IN03; retain the published Thread portrait correction | Existing social/Auth/Notification owners; Feed 209; scoped shared caller owner |
-| Wall B | Backend commands, frontend tools/recovery and IN04 | Sole backend 202 and frontend 204; duplicate 735 retired |
-| Reference/World | ART05, avatar follow-ups, Meet density and mobile fidelity | Art 231, avatar 83, Meet 213/6950 and existing frontend owners |
-| Operations/recovery | Reports/settings, lifecycle, deletion and functional recovery | Reports 205, lifecycle 232, deletion/recovery category owners and backend publisher |
+| Wall B | Controlled tools/default lifecycle delivered; live integration and IN04 remain | Backend202 and Root153; Community lead assigns returned FE39 leaves; duplicate735 retired |
+| Reference/World | ART05 and bounded motion delivered; ART06 intake, remaining original art and mobile fidelity | World/Map lead, art231, Map26e; UI lead assigns exact reference scopes; Profile213 owns FE34 |
+| Operations/recovery | Reports/settings, lifecycle, deletion and functional recovery | BE205/207 and deletion owners; FE37 owner230, FE38 owner092f; Community lead assigns FE39 and Root153 owns remaining caller integration |
 
 These are routing facts, not blanket file leases. Leads assign unowned remaining scope to capable existing developers. Independent composition pieces may be delegated after the previous writer stops; shared files are not reserved as one indivisible integration assignment. Backend and frontend use separate commits, exact paths and isolated worktrees. Contracts, manifests, lockfiles, root composition, CI and shared artifacts require explicit single-writer ownership.
 
