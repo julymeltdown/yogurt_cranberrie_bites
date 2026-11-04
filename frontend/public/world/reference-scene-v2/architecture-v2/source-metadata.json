@@ -1,0 +1,429 @@
+{
+  "format": "MCR_ARCHITECTURE_SOURCE_V2",
+  "status": "SOURCE_CANDIDATE_CORE_CUTOUTS_VERIFIED_PACKING_NOT_RUN",
+  "source": {
+    "path": "venue-sheet.png",
+    "sha256": "ef8f0a5c05702940bae39b0e4661f6a5223f8afd1e351a96f9d28186e0d4769a",
+    "bytes": 2759982,
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "raw_alpha_bbox": [
+      0,
+      15,
+      1225,
+      1254
+    ]
+  },
+  "prompt": {
+    "path": "prompt.md",
+    "sha256": "5bd706a196e01a5e8875f7803db7a6a1af44badac93d2db06ca43892a4201e28"
+  },
+  "generation": {
+    "tool": "built-in image_gen",
+    "intent": "generate with references",
+    "transparent_background": true,
+    "job": "ART-ARCH-SOURCE-01",
+    "provider_basename": "exec-2cb8ded0-0fc9-414f-ad15-44e1758336c9.png",
+    "owned_copy": "byte-exact; provider original preserved"
+  },
+  "reference_pins": [
+    {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "role": "MAP architecture/style reference only"
+    },
+    {
+      "path": "quality-v7/sources/venue-sheet.png",
+      "sha256": "051a063e048f50e1abd3ec143e8c74f0cfb61545f927aeb08e6eb640f5aed122",
+      "role": "old era/grid reference; unchanged"
+    }
+  ],
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "core_alpha_threshold": 32,
+  "core_components": 12,
+  "row_cuts": [
+    0,
+    313,
+    629,
+    926,
+    1254
+  ],
+  "frames": [
+    {
+      "era": "revenge",
+      "frame": "meeting_pavilion",
+      "source_cell": [
+        0,
+        0,
+        418,
+        313
+      ],
+      "source_rect": [
+        34,
+        15,
+        365,
+        292
+      ],
+      "core_component": {
+        "pixels": 91643,
+        "bbox": [
+          36,
+          17,
+          397,
+          305
+        ]
+      },
+      "planned_uniform_scale": 0.6027397260273972,
+      "planned_packed_size": [
+        220,
+        176
+      ]
+    },
+    {
+      "era": "parade",
+      "frame": "meeting_pavilion",
+      "source_cell": [
+        418,
+        0,
+        836,
+        313
+      ],
+      "source_rect": [
+        440,
+        15,
+        365,
+        292
+      ],
+      "core_component": {
+        "pixels": 91618,
+        "bbox": [
+          442,
+          17,
+          803,
+          305
+        ]
+      },
+      "planned_uniform_scale": 0.6027397260273972,
+      "planned_packed_size": [
+        220,
+        176
+      ]
+    },
+    {
+      "era": "danger",
+      "frame": "meeting_pavilion",
+      "source_cell": [
+        836,
+        0,
+        1254,
+        313
+      ],
+      "source_rect": [
+        848,
+        15,
+        365,
+        292
+      ],
+      "core_component": {
+        "pixels": 91707,
+        "bbox": [
+          850,
+          17,
+          1211,
+          305
+        ]
+      },
+      "planned_uniform_scale": 0.6027397260273972,
+      "planned_packed_size": [
+        220,
+        176
+      ]
+    },
+    {
+      "era": "revenge",
+      "frame": "giveaway_pavilion",
+      "source_cell": [
+        0,
+        313,
+        418,
+        629
+      ],
+      "source_rect": [
+        40,
+        328,
+        359,
+        301
+      ],
+      "core_component": {
+        "pixels": 97403,
+        "bbox": [
+          42,
+          330,
+          397,
+          629
+        ]
+      },
+      "planned_uniform_scale": 0.584717607973422,
+      "planned_packed_size": [
+        210,
+        176
+      ]
+    },
+    {
+      "era": "parade",
+      "frame": "giveaway_pavilion",
+      "source_cell": [
+        418,
+        313,
+        836,
+        629
+      ],
+      "source_rect": [
+        446,
+        329,
+        359,
+        300
+      ],
+      "core_component": {
+        "pixels": 97059,
+        "bbox": [
+          448,
+          331,
+          803,
+          629
+        ]
+      },
+      "planned_uniform_scale": 0.5866666666666667,
+      "planned_packed_size": [
+        211,
+        176
+      ]
+    },
+    {
+      "era": "danger",
+      "frame": "giveaway_pavilion",
+      "source_cell": [
+        836,
+        313,
+        1254,
+        629
+      ],
+      "source_rect": [
+        852,
+        329,
+        360,
+        300
+      ],
+      "core_component": {
+        "pixels": 97357,
+        "bbox": [
+          854,
+          331,
+          1210,
+          629
+        ]
+      },
+      "planned_uniform_scale": 0.5866666666666667,
+      "planned_packed_size": [
+        211,
+        176
+      ]
+    },
+    {
+      "era": "revenge",
+      "frame": "north_hall",
+      "source_cell": [
+        0,
+        629,
+        418,
+        926
+      ],
+      "source_rect": [
+        25,
+        649,
+        378,
+        260
+      ],
+      "core_component": {
+        "pixels": 87596,
+        "bbox": [
+          27,
+          651,
+          401,
+          907
+        ]
+      },
+      "planned_uniform_scale": 0.6349206349206349,
+      "planned_packed_size": [
+        240,
+        165
+      ]
+    },
+    {
+      "era": "parade",
+      "frame": "north_hall",
+      "source_cell": [
+        418,
+        629,
+        836,
+        926
+      ],
+      "source_rect": [
+        433,
+        649,
+        379,
+        260
+      ],
+      "core_component": {
+        "pixels": 87668,
+        "bbox": [
+          435,
+          651,
+          810,
+          907
+        ]
+      },
+      "planned_uniform_scale": 0.633245382585752,
+      "planned_packed_size": [
+        240,
+        165
+      ]
+    },
+    {
+      "era": "danger",
+      "frame": "north_hall",
+      "source_cell": [
+        836,
+        629,
+        1254,
+        926
+      ],
+      "source_rect": [
+        841,
+        649,
+        383,
+        260
+      ],
+      "core_component": {
+        "pixels": 88685,
+        "bbox": [
+          843,
+          651,
+          1222,
+          907
+        ]
+      },
+      "planned_uniform_scale": 0.6266318537859008,
+      "planned_packed_size": [
+        240,
+        163
+      ]
+    },
+    {
+      "era": "revenge",
+      "frame": "west_hall",
+      "source_cell": [
+        0,
+        926,
+        418,
+        1254
+      ],
+      "source_rect": [
+        35,
+        926,
+        363,
+        322
+      ],
+      "core_component": {
+        "pixels": 105306,
+        "bbox": [
+          37,
+          927,
+          396,
+          1246
+        ]
+      },
+      "planned_uniform_scale": 0.546583850931677,
+      "planned_packed_size": [
+        198,
+        176
+      ]
+    },
+    {
+      "era": "parade",
+      "frame": "west_hall",
+      "source_cell": [
+        418,
+        926,
+        836,
+        1254
+      ],
+      "source_rect": [
+        441,
+        926,
+        364,
+        322
+      ],
+      "core_component": {
+        "pixels": 105210,
+        "bbox": [
+          443,
+          927,
+          803,
+          1246
+        ]
+      },
+      "planned_uniform_scale": 0.546583850931677,
+      "planned_packed_size": [
+        199,
+        176
+      ]
+    },
+    {
+      "era": "danger",
+      "frame": "west_hall",
+      "source_cell": [
+        836,
+        926,
+        1254,
+        1254
+      ],
+      "source_rect": [
+        848,
+        926,
+        367,
+        322
+      ],
+      "core_component": {
+        "pixels": 106373,
+        "bbox": [
+          850,
+          927,
+          1213,
+          1246
+        ]
+      },
+      "planned_uniform_scale": 0.546583850931677,
+      "planned_packed_size": [
+        201,
+        176
+      ]
+    }
+  ],
+  "source_findings": [
+    "Two visible floor levels in rows1-3 and three in row4 replace single-storey forms.",
+    "Raw sub32-alpha residuals touch left/bottom sheet edges. Original pixels are retained.",
+    "Core silhouettes do not touch outer edges. Planned crops enclose each core with2px margin.",
+    "Rows1,2,4 are taller/narrower than requested1.35-1.5 aspect; uniform letterboxing must preserve them.",
+    "No generated character, text, extra place identity or scene geometry is introduced."
+  ],
+  "packing_policy": "NOT_RUN. Future allocated job may crop recorded rectangles and uniformly nearest-scale RGBA into existing244x180 frames, centered/bottom-aligned2px. No alpha thresholding/repaint/nonuniform scaling; clipping of faint exterior residue is recorded by these source crops.",
+  "acceptance": {
+    "atlas": "NOT_RUN",
+    "native": "NOT_RUN",
+    "runtime": "NOT_RUN",
+    "reference_fidelity": "IN_PROGRESS_NOT_ACCEPTED",
+    "release": "NOT_ADMITTED"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "version": 10,
+  "theme_id": "REVENGE",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "resources": [
+    {
+      "id": "quality_v10_route_edge_ground",
+      "path": "world/reference-scene-v2/quality-v10/ground.png",
+      "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+      "width_px": 768,
+      "height_px": 1296,
+      "bytes": 549155
+    },
+    {
+      "id": "revenge_architecture_v2_atlas",
+      "path": "world/reference-scene-v2/architecture-v2/revenge/atlas.png",
+      "sha256": "sha256:108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+      "width_px": 1024,
+      "height_px": 1024,
+      "bytes": 1272098
+    }
+  ],
+  "total_bytes": 1821253,
+  "total_pixels": 2043904,
+  "limits": {
+    "bytes": 2097152,
+    "pixels": 2097152
+  },
+  "budget_pass": true,
+  "scenery": "scenery.json",
+  "layout": "layout.json",
+  "map_metadata": "../../quality-v10/revenge/map-metadata.json",
+  "projection": "../../spatial-v5/integer-projection.json",
+  "provenance": "provenance.json",
+  "source_variant": "architecture-v2"
+}

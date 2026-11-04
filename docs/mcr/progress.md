@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T12:37:23+09:00**, from published history through `54e1325f` and the 02:33–03:35 UTC hourly digests and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T13:37:13+09:00**, from published history through `921cb3d8` and the 03:33–04:35 UTC frontend/backend hourly digests. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -57,7 +57,7 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 
 | Feature | Published or owner-reported delivery | Required remainder |
 | --- | --- | --- |
-| Actual Auth → Profile → public bootstrap | Root owner reports published source `e9e65e5d`, integration `14b0548a`: two real canonical Auth principals, actual Profile PUT and public HTTP bootstrap 200 for each; map4 catalog, 27 migrations, positive/negative probes and cleanup qualified by that developer. | Actual public World sockets and the two-client journey remain NOT_RUN. World's current native handoff and Root startup wiring retain named owners; this milestone does not close IN01 or require optional Age/Intro/Gifts/new-art work first. |
+| Actual Auth → Profile → public bootstrap | Root owner reports published source `e9e65e5d`, integration `14b0548a`: two real canonical Auth principals, actual Profile PUT and public HTTP bootstrap 200 for each; map4 catalog, 27 migrations, positive/negative probes and cleanup qualified by that developer. | Later owner reports now establish C03, ungated HTTP and short two-user World checks. The longer availability incident is not yet qualified; a genuine expiring World hold and the accepted browser IN01 assignment are active. No full IN01 acceptance or optional Age/Intro/Gifts/new-art prerequisite is inferred. |
 | Selected characters and root integration | Canonical avatar persistence `b13d79e6`, participant increment `0313afa5`, whole editor `c3f411ad`, default-root character flow `9fc3a299` / `903773b8`, authorized portrait/media binding `9dacd962`. | Actual live identity/Profile/authority journeys, all original avatar capabilities, directional/walk/layered art and full device/visual acceptance. |
 | Ten-screen reference design | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Original FE09 production refresh caller is now delivered in `62b4bf80`; FE08 and FE09 task-local criteria are recorded satisfied. The combined live frontend/service journey remains separate. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
 | Three-era scenery and map | All three era inputs `02320134`, canonical Tiled/loader `aa3e2f3d`, World scene hook `969b3b2f` and Map consumer `4dc12a56` are published. World owner correction `482d02c4` identifies all four current scene targets as virtual concepts. | The source-fixture root/Map integration is now delivered in `10784b26`; final reference fidelity and actual Product/art/theme/release admission remain open. These four virtual records do not establish a physical-venue-review prerequisite. Real physical-place qualification remains separate AR01/beacon/IN02 scope; no REVIEWED status or physical eligibility is invented. |
@@ -69,42 +69,54 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 
 ## Hourly milestone and dependency snapshot
 
-The 02:33–03:35 UTC frontend and backend digests establish one new original
-closure, BE26. Frontend helper repairs do not add original task IDs. The mural
-failure journey, Feed/Me and Party clipping repairs, and QA06 desktop/ten-screen
-checkpoint are published per the responsible delivery reports. Whole QA05,
-QA06, QA08 and QA10 remain open within their original scopes. QA06's existing
-physical-device access question remains pending; no duplicate request is made.
+The 03:33–04:35 UTC frontend/backend digests establish no additional original
+task closure beyond the already recorded BE26. The count remains **34 original
+task-criteria outcomes**. Bounded Participant and BE39 deliveries are published,
+their goals are complete and idle contexts archived; BE39 production role,
+owner and public composition remain open. QA03's assigned database race/restart
+work has a passing committed handoff, with publication and its completion audit
+pending. None of these helper or pending dispositions adds an original closure.
 
-The actual Auth → Profile → public-bootstrap milestone above is retained.
-Root's newer actual C03 client steps passed, but terminal settlement failed;
-the owner has the correction and next resource allocation. Actual public World
-two-user qualification and IN01 remain unproven. Root and World developers own
-that joined flow; optional Age, Intro, Gifts and new-art activation are not
-prerequisites for the currently valid basic World entry.
+Backend owners report passing C03, ungated HTTP and short two-user World checks.
+The longer World availability incident remains unqualified. A genuine expiring
+World hold is live; the explicitly transferred IN01 browser developer
+`01a1a202-375e-7401-bfa1-ff8721e90ed6` accepted a new persistent goal and actually
+started the browser journey. **Full IN01 remains unaccepted.** The responsible
+Root/World/frontend owners manage runtime validity and follow-up directly;
+there is no king/SL technical review or acknowledgment dependency.
 
-Map v10 source is committed with owner-reported non-native checks complete;
-marker/caption/framing/parity qualification and publication remain pending.
-Canonical avatar production admission and C06/motion integration retain actual
-writers and are still unqualified. Source publication or a desktop fixture does
-not establish final reference fidelity, product admission or an IN gate.
+The v10 Map and canonical parser/bootstrap boundary are published and verified
+by their delivery owners. Independent QA06 post-fix captures cover requested
+World/Map and Feed/Me/Meet repairs; the newer evidence and measured
+World/Customize packets are committed and track publication directly with Root.
+Root's paired Map layout/label adoption has passing focused checks and is
+finishing regressions, documentation and publication. The World canvas row-budget
+correction has a new accepted developer goal; Motion owns its exact responsive
+preview scope under the unfinished goal. Building atlas candidates are delivered
+as art inputs; runtime adoption, scene occlusion and mobile proof remain open.
+Fixture population differences do not authorize changing server positions.
 
-Backend SL's individual register covers all 44 BE tasks and 12 backend QA/IN
-rows. BE39, QA03, v10 and C06 have current writers. The actually completed BE26
-owner accepted a new isolated BE41 goal after the former owner stopped. BE42
-still needs its durable deletion fence, typed owner composition, World/cache
-and retention inputs; it is not ready for a blind assignment. QA04's unfinished
-goal retains its actual principal/seed/HTTP/WS dependencies. Frontend SLs report
-no ready unattended scope and manage the freed contexts directly.
+FE12/AR03, whole QA06, actual production admission and the required live/device
+boundaries remain unfinished. The existing physical-device request is still
+pending, with no duplicate question. Backend motion/map release native
+qualification and actual admission are separate. All ten reference screens
+still require the requested fidelity; bounded fixes do not narrow that target.
 
-Disk headroom is the recurring shared constraint. Backend SL is the single
-recovery coordinator, with one executor and owner-confirmed restorable archives
-of retired generated artifacts. The explicitly retired private meeting target
-may be archived and retired with source/WIP/Git/evidence preserved; both shared
-targets and current runtime inputs remain protected. After recovery, the queue
-combines one Rust workflow with one bounded frontend capture. Map validation is
-the first frontend capture and QA06 post-fix captures follow, subject to fresh
-capacity and process checks. Resource recovery is not product validation.
+Current ready work is staffed. Spatial v10 has the next backend allocation,
+followed by the existing recorded queue. BE42 still needs typed deletion fences
+from Root/Social/World; other provider/composition gaps remain explicit. SLs
+report no ready unattended scope, unresolved allocation conflict or new human
+decision. Returned worker leases are managed by their SLs without a new king
+assignment or extra waiting workers.
+
+The exact retired private-cache recovery is complete, with source, unfinished
+work and regeneration provenance preserved. The earlier binary-archive
+condition was superseded only for that confirmed regenerable private Cargo
+cache; shared targets, evidence and current runtime inputs stayed protected.
+Scheduling currently allows one Rust workflow and one frontend browser/native
+output workflow. Released capture capacity prioritizes the actual expiring IN01
+browser offer; other source work continues independently. Resource recovery is
+not a product-acceptance claim.
 
 ## Staffing and delivery policy
 
