@@ -1,0 +1,73 @@
+vite v8.1.3 building client environment for production...
+
+transforming...✓ 471 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../tmp/mcr-scene-r3-map-production/index.html                                          1.94 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/ProfileIcon-C5jlMgdD.css                     1.36 kB │ gzip:   0.59 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/root-features-nb6jl9cq.css                   1.55 kB │ gzip:   0.65 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/meeting-entry-jVy7UCgi.css                   1.58 kB │ gzip:   0.66 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/panels-BMt8WHkR.css                          4.19 kB │ gzip:   1.38 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/activity-CSOKqWtj.css                        9.90 kB │ gzip:   2.79 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/world-panels-cWsIhOQK.css                   13.67 kB │ gzip:   3.54 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/provider-DprRFUma.css                       14.46 kB │ gzip:   3.38 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/CommunityFeatures-CtYOQD37.css              17.33 kB │ gzip:   3.90 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/PublicBoundary-DbDm6fa3.css                 18.98 kB │ gzip:   4.65 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/index-CgHiC7As.css                          27.70 kB │ gzip:   6.03 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/rolldown-runtime-QTnfLwEv.js                 0.69 kB │ gzip:   0.42 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/compatibility-BGkcp1nM.js                    0.84 kB │ gzip:   0.40 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/provider-N3gORgTx.js                         0.96 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/identity-CyRWQBxx.js                         1.02 kB │ gzip:   0.59 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/AdminBoundary-Bt_R-a8E.js                    1.37 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/operations-ClTv-duQ.js                       1.45 kB │ gzip:   0.61 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/authority-DSYmWhU8.js                        2.75 kB │ gzip:   1.19 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/contract-DcaKwr0K.js                         2.98 kB │ gzip:   1.33 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/RootMediaView-668URzKW.js                    3.47 kB │ gzip:   1.48 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/errors-CeAwlIOM.js                           4.41 kB │ gzip:   1.86 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/resolver-CTxLXy9-.js                         4.56 kB │ gzip:   2.11 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/panel-DX4VY6VM.js                            4.71 kB │ gzip:   1.92 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/whole-character-uuRj4mhS.js                  5.65 kB │ gzip:   2.20 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/jsx-runtime-CIxEorsV.js                      7.89 kB │ gzip:   2.98 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/social-composition-BoVykTrt.js               8.17 kB │ gzip:   2.80 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/provider-2TSyEmiK.js                         9.25 kB │ gzip:   4.07 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/MapScene-DO9FS0iK.js                        10.87 kB │ gzip:   4.17 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/panels-TPAGrISH.js                          10.96 kB │ gzip:   3.60 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/ProfileIcon-DxvTsm1y.js                     11.95 kB │ gzip:   4.75 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/root-features-km0IDvz0.js                   14.87 kB │ gzip:   4.93 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/capabilities-Dzat_4h8.js                    19.35 kB │ gzip:   6.11 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/contract-Bcu83lns.js                        26.64 kB │ gzip:   5.81 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/social-DYvFFshp.js                          35.11 kB │ gzip:  10.27 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/meeting-entry-C233ZTM_.js                   37.45 kB │ gzip:  10.47 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/phaser-B0JqOrhk.js                          38.19 kB │ gzip:   5.25 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/provider-BHcpUaxU.js                        43.20 kB │ gzip:  13.13 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/PublicBoundary-BCY93ZQj.js                  47.29 kB │ gzip:  15.01 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/composition-BnLnGVwY.js                     50.06 kB │ gzip:  16.90 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/access-DxenB9oI.js                          58.88 kB │ gzip:  19.94 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/CommunityFeatures-DZie9dZi.js               68.75 kB │ gzip:  18.93 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/world-panels-BB-xgeGi.js                    72.16 kB │ gzip:  23.52 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/domain-operations.generated-Ck-JZXyo.js     81.08 kB │ gzip:   4.34 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/activity-CG8v91ZV.js                        87.40 kB │ gzip:  24.72 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/routes-DD6e3a7i.js                          97.67 kB │ gzip:  32.09 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/mcr-core.openapi-BTwes0QT.js               126.29 kB │ gzip:  12.56 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/index-mXJQsgDk.js                          275.92 kB │ gzip:  86.41 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/mcr-domain.openapi-CbO9FwOW.js             760.84 kB │ gzip:  49.27 kB
+../../../../../../tmp/mcr-scene-r3-map-production/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 509ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

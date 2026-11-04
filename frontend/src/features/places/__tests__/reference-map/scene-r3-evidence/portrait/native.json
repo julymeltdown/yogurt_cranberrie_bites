@@ -1,0 +1,142 @@
+{
+  "result": "PASS",
+  "qualification": "Actual production Map/Places/controller and router/window, coherent exact candidate geometry and shared MAP producer. In-process HTTP and instrumented test world host, NOT Phaser/C05/live admission. Separate actual canonical production bootstrap must reject this PARADE-only unreviewed proposal. Legacy actual-Phaser regression recorded separately. Partial art fidelity is not acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "mapBounds": {
+        "x": 17,
+        "y": 65,
+        "width": 326,
+        "height": 718
+      },
+      "fitBounds": {
+        "x": 17,
+        "y": 148.9375,
+        "width": 326,
+        "height": 550.125
+      },
+      "textureRequests": 2,
+      "textureURLs": [
+        "/world/reference-scene-v2/runtime-v4/parade-ground.png",
+        "/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+      ],
+      "gestureRequests": 0,
+      "cameraWrites": 0,
+      "createdURLs": 7,
+      "revokedURLs": 7,
+      "instrumentedHost": {
+        "games": 0,
+        "connections": 0,
+        "peakGames": 1,
+        "peakConnections": 1,
+        "mounts": 2,
+        "disposals": 2,
+        "inputBlocked": true,
+        "visible": false,
+        "scopes": [
+          "00000000-0000-4000-8000-000000000001/00000000-0000-4000-8000-000000000003",
+          "00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000003"
+        ],
+        "signals": [
+          {},
+          {}
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "mapBounds": {
+        "x": 17,
+        "y": 65,
+        "width": 356,
+        "height": 718
+      },
+      "fitBounds": {
+        "x": 17,
+        "y": 123.625,
+        "width": 356,
+        "height": 600.75
+      },
+      "textureRequests": 2,
+      "textureURLs": [
+        "/world/reference-scene-v2/runtime-v4/parade-ground.png",
+        "/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+      ],
+      "gestureRequests": 0,
+      "cameraWrites": 0,
+      "createdURLs": 7,
+      "revokedURLs": 7,
+      "instrumentedHost": {
+        "games": 0,
+        "connections": 0,
+        "peakGames": 1,
+        "peakConnections": 1,
+        "mounts": 2,
+        "disposals": 2,
+        "inputBlocked": true,
+        "visible": false,
+        "scopes": [
+          "00000000-0000-4000-8000-000000000001/00000000-0000-4000-8000-000000000003",
+          "00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000003"
+        ],
+        "signals": [
+          {},
+          {}
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "mapBounds": {
+        "x": 17,
+        "y": 65,
+        "width": 396,
+        "height": 718
+      },
+      "fitBounds": {
+        "x": 17,
+        "y": 89.875,
+        "width": 396,
+        "height": 668.25
+      },
+      "textureRequests": 2,
+      "textureURLs": [
+        "/world/reference-scene-v2/runtime-v4/parade-ground.png",
+        "/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+      ],
+      "gestureRequests": 0,
+      "cameraWrites": 0,
+      "createdURLs": 7,
+      "revokedURLs": 7,
+      "instrumentedHost": {
+        "games": 0,
+        "connections": 0,
+        "peakGames": 1,
+        "peakConnections": 1,
+        "mounts": 2,
+        "disposals": 2,
+        "inputBlocked": true,
+        "visible": false,
+        "scopes": [
+          "00000000-0000-4000-8000-000000000001/00000000-0000-4000-8000-000000000003",
+          "00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000003"
+        ],
+        "signals": [
+          {},
+          {}
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "productionAdmission": {
+    "baselineAccepted": true,
+    "denied": true,
+    "denial": "ShellLoadError: unavailable",
+    "bootstrapRequests": 2,
+    "textureRequests": 0,
+    "qualification": "Actual canonical Auth/createProductionPorts accepts coherent incumbent baseline, then rejects partial scene candidate; no injected acceptance"
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "version": 5,
+  "theme_id": "DANGER",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "worker_base": "e3af146ae4757794ca153363fd1408300ffde29e",
+  "generation_ref": "exec-e0cf1d5c-b66e-46e4-859b-a96298fcfc7a.png",
+  "method": "Built-in imagegen original character-free era edit of own source atlas, then explicitly authorized non-generative source-preserving nearest-neighbor packing. No source PNG pixel rewrites.",
+  "input_source": {
+    "path": "../../painted/parade-source-atlas-v3.png",
+    "sha256": "sha256:4a93f18cd55b66f3c09853f01e7fc78b88da8593298e4758738ff73e1e73ea2c",
+    "revision": "8f89d1905a86143d34ff77d2951fc60651ab2497"
+  },
+  "native_packaging": {
+    "path": "native-atlas.png",
+    "sha256": "sha256:32cccbffa476f7b84526e18932b58f48b8c807a5ae2209ef2380d45b89f3eff9",
+    "width": 2048,
+    "height": 2048,
+    "method": "Identical runtime atlas pixels at0,0 with transparent padding only; native CLI0.4 image-mask surface otherwise clips world-space masks below source height1024. Not a runtime PNG fetch."
+  },
+  "generated_source": {
+    "path": "source-atlas.png",
+    "sha256": "sha256:8473efaf6b25b8547d7fe46b673c7fe5279437c7e42dbb015cfda32fa22fe80f",
+    "width": 1254,
+    "height": 1254
+  },
+  "runtime_atlas": {
+    "id": "danger_v5_atlas",
+    "path": "world/reference-scene-v2/eras-v5/danger/atlas.png",
+    "sha256": "sha256:32d0b99c95798f8d329e7394a9f590c687a448497b9e40e36997b761338406ec",
+    "width_px": 1024,
+    "height_px": 1024,
+    "bytes": 1125227
+  },
+  "shared_ground": {
+    "id": "parade_runtime_v4_ground",
+    "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+    "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+    "width_px": 768,
+    "height_px": 1296,
+    "bytes": 693939
+  },
+  "measured_source_grid": [
+    {
+      "row": 0,
+      "y": [
+        0,
+        323
+      ],
+      "columns": [
+        0,
+        322,
+        627,
+        940,
+        1254
+      ]
+    },
+    {
+      "row": 1,
+      "y": [
+        323,
+        630
+      ],
+      "columns": [
+        0,
+        313,
+        627,
+        940,
+        1254
+      ]
+    },
+    {
+      "row": 2,
+      "y": [
+        630,
+        938
+      ],
+      "columns": [
+        0,
+        313,
+        625,
+        939,
+        1254
+      ]
+    },
+    {
+      "row": 3,
+      "y": [
+        938,
+        1254
+      ],
+      "columns": [
+        0,
+        313,
+        627,
+        914,
+        1254
+      ]
+    }
+  ],
+  "source_frames": {
+    "stage": {
+      "x": 7,
+      "y": 10,
+      "width": 315,
+      "height": 311,
+      "cell": 0
+    },
+    "white_merch_booth": {
+      "x": 331,
+      "y": 25,
+      "width": 290,
+      "height": 298,
+      "cell": 1
+    },
+    "white_food_booth": {
+      "x": 633,
+      "y": 25,
+      "width": 298,
+      "height": 295,
+      "cell": 2
+    },
+    "park_plaque": {
+      "x": 940,
+      "y": 53,
+      "width": 310,
+      "height": 268,
+      "cell": 3
+    },
+    "tree_green": {
+      "x": 7,
+      "y": 326,
+      "width": 306,
+      "height": 304,
+      "cell": 4
+    },
+    "tree_yellow": {
+      "x": 327,
+      "y": 331,
+      "width": 288,
+      "height": 299,
+      "cell": 5
+    },
+    "tree_dark": {
+      "x": 627,
+      "y": 367,
+      "width": 305,
+      "height": 263,
+      "cell": 6
+    },
+    "tree_red": {
+      "x": 960,
+      "y": 358,
+      "width": 281,
+      "height": 272,
+      "cell": 7
+    },
+    "meeting_pavilion": {
+      "x": 5,
+      "y": 690,
+      "width": 308,
+      "height": 236,
+      "cell": 8
+    },
+    "giveaway_pavilion": {
+      "x": 321,
+      "y": 689,
+      "width": 296,
+      "height": 237,
+      "cell": 9
+    },
+    "north_hall": {
+      "x": 625,
+      "y": 693,
+      "width": 307,
+      "height": 218,
+      "cell": 10
+    },
+    "west_hall": {
+      "x": 939,
+      "y": 692,
+      "width": 312,
+      "height": 234,
+      "cell": 11
+    },
+    "food_counter": {
+      "x": 7,
+      "y": 988,
+      "width": 302,
+      "height": 247,
+      "cell": 12
+    },
+    "plaza_furniture": {
+      "x": 318,
+      "y": 1018,
+      "width": 305,
+      "height": 214,
+      "cell": 13
+    },
+    "cross_banner": {
+      "x": 681,
+      "y": 938,
+      "width": 159,
+      "height": 307,
+      "cell": 14
+    },
+    "shrub_bed": {
+      "x": 914,
+      "y": 1020,
+      "width": 336,
+      "height": 212,
+      "cell": 15
+    }
+  },
+  "transforms": [
+    {
+      "frame": "stage",
+      "source_rect": {
+        "x": 7,
+        "y": 10,
+        "width": 315,
+        "height": 311
+      },
+      "packed_rect": {
+        "x": 13,
+        "y": 15,
+        "width": 229,
+        "height": 226
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "white_merch_booth",
+      "source_rect": {
+        "x": 331,
+        "y": 25,
+        "width": 290,
+        "height": 298
+      },
+      "packed_rect": {
+        "x": 278,
+        "y": 20,
+        "width": 211,
+        "height": 216
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "white_food_booth",
+      "source_rect": {
+        "x": 633,
+        "y": 25,
+        "width": 298,
+        "height": 295
+      },
+      "packed_rect": {
+        "x": 532,
+        "y": 21,
+        "width": 216,
+        "height": 214
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "park_plaque",
+      "source_rect": {
+        "x": 940,
+        "y": 53,
+        "width": 310,
+        "height": 268
+      },
+      "packed_rect": {
+        "x": 783,
+        "y": 30,
+        "width": 225,
+        "height": 195
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "tree_green",
+      "source_rect": {
+        "x": 7,
+        "y": 326,
+        "width": 306,
+        "height": 304
+      },
+      "packed_rect": {
+        "x": 17,
+        "y": 273,
+        "width": 222,
+        "height": 221
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "tree_yellow",
+      "source_rect": {
+        "x": 327,
+        "y": 331,
+        "width": 288,
+        "height": 299
+      },
+      "packed_rect": {
+        "x": 279,
+        "y": 275,
+        "width": 209,
+        "height": 217
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "tree_dark",
+      "source_rect": {
+        "x": 627,
+        "y": 367,
+        "width": 305,
+        "height": 263
+      },
+      "packed_rect": {
+        "x": 529,
+        "y": 288,
+        "width": 221,
+        "height": 191
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "tree_red",
+      "source_rect": {
+        "x": 960,
+        "y": 358,
+        "width": 281,
+        "height": 272
+      },
+      "packed_rect": {
+        "x": 794,
+        "y": 285,
+        "width": 204,
+        "height": 198
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "meeting_pavilion",
+      "source_rect": {
+        "x": 5,
+        "y": 690,
+        "width": 308,
+        "height": 236
+      },
+      "packed_rect": {
+        "x": 16,
+        "y": 554,
+        "width": 224,
+        "height": 171
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "source_rect": {
+        "x": 321,
+        "y": 689,
+        "width": 296,
+        "height": 237
+      },
+      "packed_rect": {
+        "x": 276,
+        "y": 554,
+        "width": 215,
+        "height": 172
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "north_hall",
+      "source_rect": {
+        "x": 625,
+        "y": 693,
+        "width": 307,
+        "height": 218
+      },
+      "packed_rect": {
+        "x": 528,
+        "y": 561,
+        "width": 223,
+        "height": 158
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "west_hall",
+      "source_rect": {
+        "x": 939,
+        "y": 692,
+        "width": 312,
+        "height": 234
+      },
+      "packed_rect": {
+        "x": 782,
+        "y": 555,
+        "width": 227,
+        "height": 170
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "food_counter",
+      "source_rect": {
+        "x": 7,
+        "y": 988,
+        "width": 302,
+        "height": 247
+      },
+      "packed_rect": {
+        "x": 18,
+        "y": 806,
+        "width": 219,
+        "height": 179
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "plaza_furniture",
+      "source_rect": {
+        "x": 318,
+        "y": 1018,
+        "width": 305,
+        "height": 214
+      },
+      "packed_rect": {
+        "x": 273,
+        "y": 818,
+        "width": 221,
+        "height": 155
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "cross_banner",
+      "source_rect": {
+        "x": 681,
+        "y": 938,
+        "width": 159,
+        "height": 307
+      },
+      "packed_rect": {
+        "x": 582,
+        "y": 784,
+        "width": 115,
+        "height": 223
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    },
+    {
+      "frame": "shrub_bed",
+      "source_rect": {
+        "x": 914,
+        "y": 1020,
+        "width": 336,
+        "height": 212
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest, ties away from zero"
+    }
+  ],
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "integer_projection": "../../runtime-v4/parade-integer-projection.json",
+  "prompt": "prompt.md",
+  "runtime_resources": 2,
+  "combined_pixels": 2043904,
+  "combined_bytes": 1819166,
+  "limits": {
+    "pixels": 2097152,
+    "bytes": 2097152
+  },
+  "shared_ground_policy": "Intentional shared quiet physical ground across all eras, not a PARADE atlas alias. Each era has a distinct original atlas/hash. Theme swaps change only scenery.",
+  "identities": "No new place/operator/interaction IDs; no physical arrival/routing/provenance claim."
+}

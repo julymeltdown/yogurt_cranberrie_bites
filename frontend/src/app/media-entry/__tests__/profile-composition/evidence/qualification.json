@@ -19,7 +19,7 @@
       "log": "layered.log"
     },
     {
-      "check": "native Chrome 5 cases",
+      "check": "Native Chrome 6 cases including actual Feed/Profile/Party and Feed-visible suspension",
       "command": "node src/app/media-entry/__tests__/profile-composition/browser.mjs",
       "cwd": "frontend",
       "exit_code": 0,
@@ -52,22 +52,57 @@
       "cwd": "repository",
       "exit_code": 0,
       "log": "plan.log"
+    },
+    {
+      "check": "7 Feed regressions plus repeated layered passthrough",
+      "command": "node node_modules/vitest/vitest.mjs run src/app/media-entry/__tests__/profile-composition/layered-fallback.test.tsx src/features/event-feed/__tests__/presentation.test.tsx src/features/event-feed/__tests__/visual-adoption/adoption.test.tsx",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "feed-unit.log"
     }
   ],
   "pins": {
     "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
-    "frontend/src/app/social-composition/panels.tsx": "6772cd55288c68752c398aca0bb6973b80ac17c53510652b21e8dd8083a5dbfb",
+    "frontend/src/app/social-composition/panels.tsx": "2df58c368ec9813f7ee8a7c90ee7c48f8cced00f5bb0011b61150ff11c3e65ba",
     "frontend/src/app/character-entry/provider.tsx": "b038adf79200e1d56ecb11c534801f2103a1d4b8c36eea9f6df1fc86dd1629e9",
     "frontend/src/app/character-entry/activity.ts": "bdde34c4bd8bda70baad74b98d8e58200e2f8cf926fe590fa88be039cb98756b",
     "frontend/src/features/profile/PublicProfile.tsx": "5cf3b391b78c54b2d79907d02c62d6cebfbdd022b2752aad3258e518497fa0cd",
     "frontend/src/features/profile/Avatar.tsx": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
     "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
     "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
-    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "frontend/src/features/event-feed/EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+    "frontend/src/features/event-feed/index.ts": "4832214a64cd326ef84ba99377d2c2d91c6b72eaa2d9415c87f4747900b959c8",
+    "frontend/src/app/media-entry/__tests__/profile-composition/browser.mjs": "6208e3e979e2f6b2bd8b2edc0d4af17e383a4480a8fcda8def8cdc1f2ecf7ef3",
+    "frontend/src/app/media-entry/__tests__/profile-composition/preview.tsx": "fd788eaa59ee6f4e32054a3d7ef05776dbb65eb3217fa6b8fe24ddf64c2b68eb",
+    "frontend/src/app/media-entry/__tests__/profile-composition/layered-fallback.test.tsx": "66515b50357183da30c0546789c016e0c47aab27efa8113b5e1d41c23f2de70a"
   },
   "limitations": [
     "Deterministic authorized HTTP identity/rows/bootstrap/availability and instrumented world host",
     "Layered resolver passthrough/unavailable fallback only; no layered art decode claim",
     "Live producer, real Phaser, multiuser and device acceptance NOT_RUN"
-  ]
+  ],
+  "reconciled_master": "903773b82836f6b76f2a2ece5b37ec686633a655",
+  "merge_commit": "b78b2cbefeec4af35f5da923292c527f6c8e59c3",
+  "integrated_checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.json --incremental --tsBuildInfoFile /tmp/mcr-profile-composition-types.tsbuildinfo --pretty false",
+      "exit_code": 0,
+      "log": "integrated-types.log"
+    },
+    {
+      "command": "node node_modules/vite/bin/vite.js build --outDir /tmp/mcr-profile-composition-build",
+      "exit_code": 0,
+      "log": "integrated-build.log"
+    }
+  ],
+  "log_format": "Trailing whitespace and terminal blank lines normalized; command content retained.",
+  "reconciliation": "Peers merged serially; new Feed binding caused final native, type, Feed-regression, scoped lint and build checks. No shared dependency production edits.",
+  "profile_party_source_commit": "46a56a08974c8924f63587c81fe2fb2181b75e67",
+  "profile_party_published_master": "57682e285208e746cdb2a9400e287420b9a30970",
+  "feed_binding": "Explicit scope extension uses existing EventFeed.renderAuthor(author), no feature production edits or readiness change",
+  "unique_tests": {
+    "files": 9,
+    "tests": 61
+  }
 }

@@ -1,0 +1,163 @@
+{
+  "format": "MCR_REFERENCE_SCENE_THREE_ERA_ART_INPUTS",
+  "version": 5,
+  "status": "CONTRACT_READY",
+  "visual_acceptance": "IN_PROGRESS_NOT_ACCEPTED",
+  "production_admission": "NOT_ADMITTED",
+  "physical_place_provenance": "UNREVIEWED",
+  "geometry": {
+    "path": "../geometry-proposal.json",
+    "sha256": "sha256:d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542",
+    "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+    "source_revision": "8f89d1905a86143d34ff77d2951fc60651ab2497"
+  },
+  "integer_projection": {
+    "path": "../runtime-v4/parade-integer-projection.json",
+    "sha256": "sha256:0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde",
+    "source_revision": "e3af146ae4757794ca153363fd1408300ffde29e"
+  },
+  "themes": [
+    {
+      "theme_id": "REVENGE",
+      "files": [
+        {
+          "path": "revenge/source-atlas.png",
+          "sha256": "sha256:0b45b757048b36b46e9fcd07273db97b4487145f08b9d709186a645113d483a5",
+          "bytes": 2032361
+        },
+        {
+          "path": "revenge/atlas.png",
+          "sha256": "sha256:3692e79621a812bfe5e56d21e3ea44c05f59708a851ba548e18b846a0ddf350e",
+          "bytes": 1126542
+        },
+        {
+          "path": "revenge/scenery.json",
+          "sha256": "sha256:17f582dce53c589638c8c1ee9ec6e4d766da170044644b42e7809683917f6f34",
+          "bytes": 6793
+        },
+        {
+          "path": "revenge/layout.json",
+          "sha256": "sha256:8a4076e25b31540c04543922009e46a4280da5cee116f330de86bac7ed2d986c",
+          "bytes": 16928
+        },
+        {
+          "path": "revenge/map-metadata.json",
+          "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf",
+          "bytes": 7405
+        },
+        {
+          "path": "revenge/resource-inputs.json",
+          "sha256": "sha256:cf9517afe426bd9beeb1af8482088d97f97d1fe6957d76a6e9efb3715bea25e8",
+          "bytes": 1932
+        },
+        {
+          "path": "revenge/provenance.json",
+          "sha256": "sha256:8565a8218d9986623e683c5975cdc9e9a581c70caf422b6e5d6f858b23481b21",
+          "bytes": 11150
+        },
+        {
+          "path": "revenge/prompt.md",
+          "sha256": "sha256:be768c6559ddbdc3ece8cda63b841b23066a6b4cde37c9a1b7693d77df885333",
+          "bytes": 272
+        }
+      ]
+    },
+    {
+      "theme_id": "PARADE",
+      "files": [
+        {
+          "path": "parade/source-atlas.png",
+          "sha256": "sha256:881afb5cbf1c7db96b92feb164b69ce1181f625750ca6eba96a80a89b7f33b18",
+          "bytes": 2098979
+        },
+        {
+          "path": "parade/atlas.png",
+          "sha256": "sha256:e27587a0de0bde6eb63b83e2689ac22ed8040a415851d1877a13826ce7b7b274",
+          "bytes": 1145887
+        },
+        {
+          "path": "parade/scenery.json",
+          "sha256": "sha256:3e5ff5b185dedddb1fb2270b90bc9922f59163b5f458166d27c6734b650dd3b8",
+          "bytes": 6769
+        },
+        {
+          "path": "parade/layout.json",
+          "sha256": "sha256:a4a78b94a3d66d41b94237a38549eb244b364afa08b99fb331aba32719a0c45f",
+          "bytes": 16927
+        },
+        {
+          "path": "parade/map-metadata.json",
+          "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf",
+          "bytes": 7405
+        },
+        {
+          "path": "parade/resource-inputs.json",
+          "sha256": "sha256:cd11255630460fc20e672242747f22d2e010e2849b3461f3ae0ded257303bbc9",
+          "bytes": 1929
+        },
+        {
+          "path": "parade/provenance.json",
+          "sha256": "sha256:00286dec6c4d0409d537a7a774a9dc2541743a978f0071380a2028457fb96e46",
+          "bytes": 11140
+        },
+        {
+          "path": "parade/prompt.md",
+          "sha256": "sha256:5a629ca5033e894a8f334fd0234b4f63d5acb224a0c48df0f7e2325a49f2c6ce",
+          "bytes": 333
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "files": [
+        {
+          "path": "danger/source-atlas.png",
+          "sha256": "sha256:8473efaf6b25b8547d7fe46b673c7fe5279437c7e42dbb015cfda32fa22fe80f",
+          "bytes": 2023523
+        },
+        {
+          "path": "danger/atlas.png",
+          "sha256": "sha256:32d0b99c95798f8d329e7394a9f590c687a448497b9e40e36997b761338406ec",
+          "bytes": 1125227
+        },
+        {
+          "path": "danger/scenery.json",
+          "sha256": "sha256:220e318a663ef491ee5ef15f389350f1ab2151312c628a05c0fac10d7283b934",
+          "bytes": 6769
+        },
+        {
+          "path": "danger/layout.json",
+          "sha256": "sha256:c922442e1f161d79d3344fff6b7897be6849030faa7b289e4b7b0bb4ac829881",
+          "bytes": 16927
+        },
+        {
+          "path": "danger/map-metadata.json",
+          "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf",
+          "bytes": 7405
+        },
+        {
+          "path": "danger/resource-inputs.json",
+          "sha256": "sha256:0fcaad674636ced0c2ebb440688ebaeafd7d040c8ca8c344a5f8c59687640d31",
+          "bytes": 1930
+        },
+        {
+          "path": "danger/provenance.json",
+          "sha256": "sha256:6876293ffbd5977e4e54944aaffe7a946e59813382411d49e06a4f670f5fd03b",
+          "bytes": 11149
+        },
+        {
+          "path": "danger/prompt.md",
+          "sha256": "sha256:232a0828baf10326c229ef45c5afa90b0930e573eedb65a1c8c42662a216a7ee",
+          "bytes": 2637
+        }
+      ]
+    }
+  ],
+  "adoption": "Versioned art inputs only. Coordinate actual server/frontend release revision and pins. Do not alter frozen v4 pins, treat aliases as themes, or infer provenance review from art verification.",
+  "static_map_owner": "WORLD developer exclusively owns sibling ../runtime/** canonical static Tiled/descriptor; this art manifest does not produce a competing map.",
+  "limitations": [
+    "Place/source review and operator bundle unavailable here; all nested places remain byte/value-equivalent UNREVIEWED.",
+    "Only virtual concept scenery. No physical arrival, safe routing or event-operation claim.",
+    "No target-fidelity acceptance, application/Phaser/device/multiuser release proof."
+  ]
+}

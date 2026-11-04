@@ -1,5 +1,6 @@
 vite v8.1.3 building client environment for production...
-[2Ktransforming...✓ 463 modules transformed.
+[2K
+transforming...✓ 463 modules transformed.
 
 (!) outDir /tmp/mcr-profile-composition-build is not inside project root and will not be emptied.
 Use --emptyOutDir to override.
@@ -69,7 +70,7 @@ computing gzip size...
 ../../../../../../tmp/mcr-profile-composition-build/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
 
 ✓ built in 775ms
-[plugin builtin:vite-reporter] 
+[plugin builtin:vite-reporter]
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting

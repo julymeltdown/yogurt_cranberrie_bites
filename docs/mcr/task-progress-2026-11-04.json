@@ -1,0 +1,1300 @@
+{
+  "updated_at": "2026-11-04T09:03:56+09:00",
+  "published_snapshot": "023201343a452b859759e02039d367c11d1ff8ad",
+  "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
+  "required_tasks": 112,
+  "required_ia_entries": 61,
+  "optional_tasks_excluded": 6,
+  "counts": {
+    "RECORDED_ACCEPTED": 11,
+    "IMPLEMENTATION_EVIDENCED": 77,
+    "UNRECONCILED": 10,
+    "TASK_CRITERIA_SATISFIED": 9,
+    "OPEN_INTEGRATION_GATE": 5
+  },
+  "recorded_task_criteria_outcomes": 20,
+  "implementation_percentage": null,
+  "limitations": [
+    "11 are preserved formal acceptance records; 9 are additional existing task-local SATISFIED dispositions, not new formal acceptance decisions.",
+    "77 denotes evidence of work, not 77 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "10 unreconciled task statuses are not assumed NOT_STARTED.",
+    "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
+    "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
+  ],
+  "reporting_sources": [
+    {
+      "chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
+      "role": "Backend staffing/resources SL"
+    },
+    {
+      "chat": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
+      "role": "Frontend king"
+    },
+    {
+      "chat": "01a1a1fe-c276-7eb3-a36e-2f383c0e81b8",
+      "role": "World/Map SL"
+    },
+    {
+      "chat": "01a1a1fe-ca12-7cc3-9a1d-62bbb2689498",
+      "role": "Identity/Social SL"
+    },
+    {
+      "chat": "01a1a1fe-c5f1-7e60-87c2-43785b07f941",
+      "role": "Community/Wall SL"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "C01",
+      "title": "Source and rewrite inventory",
+      "lane": "LEAD",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/source-map.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "C02",
+      "title": "Reproducible workspace and toolchain",
+      "lane": "LEAD",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/evidence/foundation.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "C03",
+      "title": "Core HTTP and identity contract",
+      "lane": "LEAD",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/core-contract.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "C04",
+      "title": "Domain HTTP and transition contracts",
+      "lane": "LEAD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/domain-contract.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "C05",
+      "title": "Realtime wire protocol",
+      "lane": "LEAD",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/realtime-contract.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "C06",
+      "title": "Map and avatar interfaces",
+      "lane": "LEAD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/contracts/selected-static-avatar.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "C07",
+      "title": "Generated clients and fixture harness",
+      "lane": "LEAD",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "C08",
+      "title": "New-UI and source-boundary gate",
+      "lane": "LEAD",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/qa/ui-origin.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "AR01",
+      "title": "Venue source and landmark pack",
+      "lane": "ART",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/venue-provenance.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "AR02",
+      "title": "Walkable venue tilemap",
+      "lane": "ART",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "frontend/public/world/reference-scene-v2/ADOPTION.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "AR03",
+      "title": "Original avatar atlases",
+      "lane": "ART",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/character-art.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "AR04",
+      "title": "Three world skin packs",
+      "lane": "ART",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "frontend/public/world/reference-scene-v2/ADOPTION.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE01",
+      "title": "Import port-rust foundations",
+      "lane": "BE-CORE",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/evidence/core-foundation-integration.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "BE02",
+      "title": "Relocate build and migration tooling",
+      "lane": "BE-CORE",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/evidence/privacy-local-stack-integration.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "BE03",
+      "title": "Browser auth contract adapter",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/evidence/browser-auth-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE04",
+      "title": "Canonical participant identity adapter",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/http-owner-chain.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE05",
+      "title": "Concert service and core schema",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/evidence/concert-core-integration.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "BE06",
+      "title": "Bootstrap and participant defaults",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/bootstrap.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE07",
+      "title": "Avatar and preference persistence",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/contracts/selected-static-avatar.md",
+        "docs/mcr/king-coordination.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE08",
+      "title": "Places and map-release reads",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/places.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE09",
+      "title": "Physical beacon lifecycle",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/progress.md#historical-task-acceptance-ledger"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE10",
+      "title": "One-use world admission tickets",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/world-admission.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE11",
+      "title": "Room registry and membership leases",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/world-admission.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE12",
+      "title": "Authoritative movement loop",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/world-simulation.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE13",
+      "title": "Recipient-specific snapshots and deltas",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/world-replication-recovery.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE14",
+      "title": "Reconnect and authorization revocation",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/world-replication-recovery.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE15",
+      "title": "Domain outbox and command receipts",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/command-receipts.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE16",
+      "title": "Party aggregate and CRUD",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE17",
+      "title": "Applications and atomic approval",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE18",
+      "title": "Leave, remove, and cancel party",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE19",
+      "title": "Rally and real-arrival commands",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/progress.md#historical-task-acceptance-ledger"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE20",
+      "title": "Giveaway aggregate and catalog",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE21",
+      "title": "Atomic reservation command",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE22",
+      "title": "Cancellation and expiry worker",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE23",
+      "title": "Pickup confirmation and receipts",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/community.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE24",
+      "title": "Authorized image upload pipeline",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/owner-media-live.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE25",
+      "title": "Extract introduction and age policy",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/intro-age-combined-qualification.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE26",
+      "title": "Verified-age claim persistence",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/age-verification-combined.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE27",
+      "title": "Introduction authoring and discovery",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/intro-discovery.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE28",
+      "title": "Private social-handle storage",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/relationship-policy.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE29",
+      "title": "Mutual social-sharing decisions",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/relationship-policy.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE30",
+      "title": "Authorized reveal endpoint",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/relationship-policy.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE31",
+      "title": "Event feed and post adapter",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/post-concert-feed.md",
+        "docs/mcr/backend/product-api-runtime.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE32",
+      "title": "Comments, reactions, and content controls",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/post-concert-feed.md",
+        "docs/mcr/backend/product-api-runtime.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE33",
+      "title": "Concert notification adapter",
+      "lane": "BE-CORE",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "BE34",
+      "title": "Mural writes and cooldown",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/mural-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE35",
+      "title": "Mural snapshot and realtime changes",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/mural-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE36",
+      "title": "Reports and evidence access",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/operations-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE37",
+      "title": "Shared relationship policy port",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/relationship-authority-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE38",
+      "title": "Event settings, notices, and flags",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/operations-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE39",
+      "title": "Moderation commands and audit trail",
+      "lane": "BE-CORE",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "BE40",
+      "title": "Mural pause, lock, and restore",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "BE41",
+      "title": "Event closure and archive jobs",
+      "lane": "BE-CONCERT",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/event-lifecycle.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE42",
+      "title": "Account-deletion integration",
+      "lane": "BE-CORE",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/account-deletion.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "BE43",
+      "title": "Boundary and abuse hardening",
+      "lane": "BE-CORE",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "BE44",
+      "title": "Reproducible real-stack startup",
+      "lane": "BE-CORE",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "FE01",
+      "title": "Extract and adapt HTTP transport",
+      "lane": "FE-APP",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/frontend/http-transport.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "FE02",
+      "title": "Identity-neutral queries and invalidation",
+      "lane": "FE-APP",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/frontend/query-privacy.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "FE03",
+      "title": "Extract pure form and policy helpers",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/form-policy-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE04",
+      "title": "Headless image upload controller",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/media-upload.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE05",
+      "title": "New accessible UI primitives",
+      "lane": "FE-APP",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
+      "evidence": [
+        "docs/mcr/frontend/ui-primitives.md"
+      ],
+      "note": "Preserved historical original-task acceptance record; no new technical review."
+    },
+    {
+      "id": "FE06",
+      "title": "Three-theme token system",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/theme-system.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE07",
+      "title": "Persistent world shell and routes",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/reference-root.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE08",
+      "title": "New public landing and legal views",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/reference-public.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "known_followup": "Required reference artwork/glyph fidelity remains active; previous bounded checkpoints do not close it."
+    },
+    {
+      "id": "FE09",
+      "title": "Session controller and sign-in",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/reference-auth.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "known_followup": "Required reference artwork/glyph fidelity remains active; previous bounded checkpoints do not close it."
+    },
+    {
+      "id": "FE10",
+      "title": "Signup and verification views",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/signup-verification.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE11",
+      "title": "Reset-password and callback views",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/password-recovery.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE12",
+      "title": "Shared avatar compositor",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/whole-character-runtime.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE13",
+      "title": "New avatar editor",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/reference-customize-whole.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE14",
+      "title": "Phaser runtime and map loader",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/reference-scene-world.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE15",
+      "title": "Mobile movement, camera, and interactions",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/world-controls-layout.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE16",
+      "title": "Realtime transport implementations",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/world-transport.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE17",
+      "title": "Replication and reconnect controller",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/world-replication.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE18",
+      "title": "Rooms and accessible nearby list",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/world-access.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE19",
+      "title": "Map, place details, and help",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/reference-map.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE20",
+      "title": "Physical check-in and meeting beacon",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/meeting-beacon.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "known_task_local_gap": "Photo attachment/upload/persistence; optional photo display does not close this requirement."
+    },
+    {
+      "id": "FE21",
+      "title": "Party discovery and application",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/party-discovery.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE22",
+      "title": "Party authoring form",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/community-authoring.md",
+        "docs/mcr/scrum/community.md#frontend-task-disposition-against-specification-section-12"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "e82a220",
+        "48bb3e8",
+        "d8778b8"
+      ]
+    },
+    {
+      "id": "FE23",
+      "title": "Party management and rally",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/community-authoring.md",
+        "docs/mcr/scrum/community.md#frontend-task-disposition-against-specification-section-12"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "aa103a8",
+        "48bb3e8",
+        "d8778b8"
+      ]
+    },
+    {
+      "id": "FE24",
+      "title": "Giveaway discovery and own activity",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/gift-discovery.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE25",
+      "title": "Giveaway authoring and owner tools",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/community-authoring.md",
+        "docs/mcr/scrum/community.md#frontend-task-disposition-against-specification-section-12"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "95d9f37",
+        "d8778b8"
+      ]
+    },
+    {
+      "id": "FE26",
+      "title": "Reservation and pickup journey",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/community-authoring.md",
+        "docs/mcr/scrum/community.md#frontend-task-disposition-against-specification-section-12"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "941d36c"
+      ]
+    },
+    {
+      "id": "FE27",
+      "title": "Event timeline and notices",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/social-feed.md",
+        "docs/mcr/scrum/social.md"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "9f72a71",
+        "cf7836a",
+        "a413e69"
+      ]
+    },
+    {
+      "id": "FE28",
+      "title": "Thread, composer, and comments",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/social-feed.md",
+        "docs/mcr/scrum/social.md"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "5bc0055",
+        "a413e69",
+        "b392f56"
+      ]
+    },
+    {
+      "id": "FE29",
+      "title": "People and introduction discovery",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/introduction-profile.md",
+        "docs/mcr/scrum/social.md"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "a3bdb38"
+      ]
+    },
+    {
+      "id": "FE30",
+      "title": "Introduction editor, profile, age status",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/introduction-profile.md",
+        "docs/mcr/scrum/social.md"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance.",
+      "published_integration_commits": [
+        "a3bdb38"
+      ]
+    },
+    {
+      "id": "FE31",
+      "title": "Private social-sharing UI",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/social-sharing.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE32",
+      "title": "Mural editing surface",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/mural-editor.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE33",
+      "title": "Mural synchronization and world object",
+      "lane": "FE-WORLD",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/mural-sync.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE34",
+      "title": "Personal profile and preferences",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/profile-preferences.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE35",
+      "title": "Notification inbox",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/inbox.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE36",
+      "title": "Report, block, and deletion controls",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/safety-account.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE37",
+      "title": "Moderator review screens",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/moderation.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE38",
+      "title": "Event operations screens",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/event-operations.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "FE39",
+      "title": "Wall control and event closure UI",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/closure-resume-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task. Later closure-resume integration supersedes the old retry-contract BLOCKED header; do not report that old blocker as current."
+    },
+    {
+      "id": "FE40",
+      "title": "Read-only archive views",
+      "lane": "FE-APP",
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
+      "evidence": [
+        "docs/mcr/frontend/archive.md"
+      ],
+      "note": "Existing owner/SL disposition records original frontend task-local criteria satisfied under specification section 12. This is not a newly invented formal ACCEPTED decision or live/release acceptance."
+    },
+    {
+      "id": "FE41",
+      "title": "Global degraded and lifecycle states",
+      "lane": "FE-APP",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/degraded-states.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA01",
+      "title": "Contract and fixture coverage",
+      "lane": "QA",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "QA02",
+      "title": "Zero legacy-UI audit",
+      "lane": "QA",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/qa/ui-origin.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA03",
+      "title": "Database race suite",
+      "lane": "QA",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/qa/community-native-qualification.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA04",
+      "title": "Privacy and authorization matrix",
+      "lane": "QA",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/reviews/fe28-receipt-privacy.md",
+        "docs/mcr/frontend/social-sharing.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA05",
+      "title": "Realtime failure suite",
+      "lane": "QA",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "QA06",
+      "title": "Mobile visual acceptance",
+      "lane": "QA",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/qa/reference-integrated.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA07",
+      "title": "Accessibility and input suite",
+      "lane": "QA",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/frontend/ui-primitives.md",
+        "docs/mcr/qa/reference-integrated.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA08",
+      "title": "Capacity and performance qualification",
+      "lane": "QA",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "QA09",
+      "title": "Recovery and lifecycle rehearsal",
+      "lane": "QA",
+      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+      "recorded_state": null,
+      "evidence": [
+        "docs/mcr/backend/account-deletion.md",
+        "docs/mcr/frontend/closure-resume-integration.md"
+      ],
+      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "id": "QA10",
+      "title": "Candidate provenance and release checks",
+      "lane": "QA",
+      "coverage_bucket": "UNRECONCILED",
+      "recorded_state": null,
+      "evidence": [],
+      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+    },
+    {
+      "id": "IN01",
+      "title": "Two-user world gate",
+      "lane": "INTEGRATOR",
+      "coverage_bucket": "OPEN_INTEGRATION_GATE",
+      "recorded_state": "NOT_RUN",
+      "evidence": [],
+      "note": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "id": "IN02",
+      "title": "Real meetup and pickup gate",
+      "lane": "INTEGRATOR",
+      "coverage_bucket": "OPEN_INTEGRATION_GATE",
+      "recorded_state": "NOT_RUN",
+      "evidence": [],
+      "note": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "id": "IN03",
+      "title": "Social and privacy gate",
+      "lane": "INTEGRATOR",
+      "coverage_bucket": "OPEN_INTEGRATION_GATE",
+      "recorded_state": "NOT_RUN",
+      "evidence": [],
+      "note": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "id": "IN04",
+      "title": "Shared mural and moderation gate",
+      "lane": "INTEGRATOR",
+      "coverage_bucket": "OPEN_INTEGRATION_GATE",
+      "recorded_state": "NOT_RUN",
+      "evidence": [],
+      "note": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "id": "IN05",
+      "title": "Release decision",
+      "lane": "INTEGRATOR",
+      "coverage_bucket": "OPEN_INTEGRATION_GATE",
+      "recorded_state": "NOT_RUN",
+      "evidence": [],
+      "note": "No completed original integration/release gate is established by the current delivery receipts."
+    }
+  ]
+}
