@@ -39,7 +39,7 @@ the task record for QA01/QA05/QA07/QA08/QA09/QA10/IN04/IN05.
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE20 | Former owner `3ff2`; SATISFIED at MOCK_READY per explicit photo-completion receipt; no current Community writer | No newer task receipt; published `6c908472` retained | No identified original frontend gap in that receipt. Genuine provider/IN02 qualification stays with Product root `1fc`; do not reopen frozen criteria or divert the owner's later Auth scope |
-| FE21 | Whole-task disposition UNRECONCILED; bounded QA06 Party-action repair owner `204` actually accepted NEW unbudgeted ACTIVE goal | Existing discovery source/fixtures retained; new repair starts clean at `819d30c3`, no repair commit/publication yet | New owner qualifies and repairs actual same-three-row 390×637 clipped action with narrow feature-only lease and developer native checks/docs/Root publication. Existing whole-task filters/list/detail/apply/cancel/receipt/MY PLAN/privacy/state criteria still require their own explicit full disposition; this visual follow-up does not infer closure |
+| FE21 | Whole-task disposition UNRECONCILED; bounded QA06 Party-action repair owner `204` SAME goal ACTIVE for publication/remote verification | Repair `52f7b2f9`, exact 17 paths, owner-validated READY handoff direct Root153. Production changes only three feature CSS container hunks; TSX/root/shared/row style/capability/art unchanged. Native seven-case matrix, 46 focused tests/types/lint/temp build PASS reported; publication pending | Root publishes exact owner-validated repair; developer freshly verifies remote ancestry/payload before closing goal/returning leases. QA06 independently recaptures published fix. Existing whole-task filters/list/detail/apply/cancel/receipt/MY PLAN/privacy/state criteria still require their own explicit full disposition; no FE21/FE23/QA06 closure inferred |
 | FE22 | Former authoring owner `6ec9`, now Backend-allocated; last explicit frontend criteria SATISFIED | No new delivery; source `1c38ad4` → published `e82a220`, final KST correction `d8778b8` retained | No identified task-local gap: form/validation/draft/conflict criteria met in retained receipt. Root `1fc` owns actual producer/configuration; real IN02 remains separate; no old writer wake |
 | FE23 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | No new delivery; `7342058`/`58e18ab` → `aa103a8`/`48bb3e8`, KST `d8778b8` retained | No identified task-local gap for member decisions, explicit rally, conflict/removal/moved-card behavior. Product root/Gift counterpart own real journey inputs; next actual IN02 owner qualifies the real flow |
 | FE24 | Historical Gift discovery owner; current whole-task disposition UNRECONCILED, existing environment MOCK_READY | No new task receipt; historical `3cb3f9c`/`8c33ba3` and touch follow-up `9055af1e` retained | Current owner must reconcile public privacy, stock/time filters, GIVING/RECEIVING and paused/sold-out/ended action eligibility. Gift `267` supplies genuine producer inputs; lack of current receipt does not erase delivered fixtures |
@@ -303,6 +303,24 @@ publication and remote verification, concrete fixes and clean STOP. QA06
 was asked to give actual fixture/harness pins directly to `204` and independently
 recapture the final published fix. No row-height or Gifts fixture production
 fix, whole-parent closure, source-rights inheritance or dispatch-as-ACTIVE.
+
+Later Party repair owner READY handoff: commit `52f7b2f9`, exactly 17 paths,
+sent DIRECT Root153 for serialized publication. Production change is only
+three container-geometry hunks in the leased CSS, including the explicitly
+allocated minimum-height/overflow selector. TSX/root/shared/row style/
+capability/art are reported unchanged. Developer reports native 7/7 cases
+including same-input 390×637 before/after and retained expected baseline
+failure, 44px targets/expanded form/touch scrolling/action routes/history/
+no overflow; 46 focused tests, TypeScript/lint and temporary build PASS.
+These are implementation-owner results, not manager source/native review.
+Owner doc: `docs/mcr/frontend/qa06-meet-cta-repair.md`. Owned native resources
+and dependency link are reported closed/removed; final clean-STOP check is
+still underway. Source writes stopped, no new work; SAME goal remains ACTIVE
+until actual publication receipt and fresh remote ancestry/payload verification.
+Exact leases are not returned yet; context is not terminal/reassignable.
+QA06 receives the ready source and independently recaptures the actual
+published fix once its publication pin is available. No parent FE21/FE23/
+QA06 closure or new acceptance count is inferred.
 
 QA06 also reports corrected ten equal-aspect captures completed; full corrected
 78-matrix rerun reported an actual 7.53 GiB guard hold, with existing
