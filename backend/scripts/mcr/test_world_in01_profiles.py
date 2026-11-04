@@ -81,6 +81,7 @@ class ProfileTests(unittest.TestCase):
         active, peak, ordinals = 0, 0, []
         def finish(stack, browser, ordinal, **kwargs):
             nonlocal active, peak
+            self.assertIsNotNone(kwargs.get("signup_gate"))
             with lock:
                 active += 1
                 peak = max(peak, active)
@@ -160,9 +161,15 @@ class ProfileTests(unittest.TestCase):
 
     def test_concurrent_real_principal_flows_keep_email_code_password_token_bindings(self):
         barrier, lock, accounts, messages, persisted = threading.Barrier(4), threading.Lock(), {}, [], []
+        signup_gate, active_signup, peak_signup = threading.Lock(), 0, 0
         def request(label, path, payload):
+            nonlocal active_signup, peak_signup
             email = payload["email"]
             if path.endswith("signup"):
+                with lock:
+                    active_signup += 1
+                    peak_signup = max(peak_signup, active_signup)
+                time.sleep(.005)
                 ordinal = int(label.split("-")[1])
                 user, code, token = str(uuid4()), str(100000 + ordinal), "PRIVATE-TOKEN-" + str(ordinal)
                 mail = Mock()
@@ -173,7 +180,7 @@ class ProfileTests(unittest.TestCase):
                 with lock:
                     accounts[email] = (user, code, payload["password"], token)
                     messages.append(mail)
-                barrier.wait(timeout=2)
+                    active_signup -= 1
                 return {}, {"userId": user}
             user, code, password, token = accounts[email]
             if path.endswith("verify"):
@@ -189,9 +196,13 @@ class ProfileTests(unittest.TestCase):
         browser = NS(request=request)
         stack = NS(cluster=NS(root=Path("/fixture-only"), assert_owned=Mock()),
                    mail=NS(directory=NS(glob=inbox)))
+        def provision(ordinal):
+            barrier.wait(timeout=2)
+            return prep.principal(stack, browser, ordinal, signup_gate=signup_gate)
         with patch.object(prep, "private_json", side_effect=persist), prep.ThreadPoolExecutor(max_workers=4) as pool:
-            futures = [pool.submit(prep.principal, stack, browser, ordinal) for ordinal in range(1, 5)]
+            futures = [pool.submit(provision, ordinal) for ordinal in range(1, 5)]
             results = [future.result(timeout=3) for future in futures]
+        self.assertEqual((peak_signup, active_signup), (1, 0))
         self.assertEqual(len({item[0] for item in results}), 4)
         self.assertEqual(len({path for path, _ in persisted}), 4)
         for email, (user, _, password, token) in accounts.items():
@@ -200,6 +211,22 @@ class ProfileTests(unittest.TestCase):
             self.assertEqual((saved["email"], saved["password"], saved["access_token"]),
                              (email, password, "MEMORY_ONLY"))
         self.assertNotIn("PRIVATE-TOKEN", json.dumps([value for _, value in persisted]))
+
+    def test_signup_gate_serializes_only_signup_and_rechecks_cancellation(self):
+        gate, stop, entered = threading.Lock(), threading.Event(), threading.Event()
+        browser = Mock()
+        gate.acquire()
+        def waiting():
+            entered.set()
+            return prep.principal(None, browser, 1, cancel_event=stop, signup_gate=gate)
+        with prep.ThreadPoolExecutor(max_workers=1) as pool:
+            future = pool.submit(waiting)
+            self.assertTrue(entered.wait(timeout=2))
+            stop.set()
+            gate.release()
+            with self.assertRaisesRegex(prep.auth.CheckFailure, "principal-provision-cancelled"):
+                future.result(timeout=2)
+        browser.request.assert_not_called()
 
     def test_operator_seed_only_changes_room_configuration(self):
         bootstrap = configuration()["bootstrap"]

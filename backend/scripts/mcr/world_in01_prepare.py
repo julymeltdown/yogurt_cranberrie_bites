@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import nullcontext
 import http.client
 import json
 import os
@@ -65,6 +66,7 @@ def provision_principals(stack, browser, profile, timeout_seconds=120):
         return principals
 
     stop, lock, failures = threading.Event(), threading.Lock(), []
+    signup_gate = threading.Lock()
 
     def create(ordinal):
         try:
@@ -74,7 +76,8 @@ def provision_principals(stack, browser, profile, timeout_seconds=120):
                 progress["started"] += 1
             # Browser.request owns a fresh connection and local headers/body;
             # it has no cookie jar. Only distinct ordinal/status keys are shared.
-            item = principal(stack, browser, ordinal, deadline=deadline, cancel_event=stop)
+            item = principal(stack, browser, ordinal, deadline=deadline, cancel_event=stop,
+                             signup_gate=signup_gate)
             with lock:
                 progress["completed"] += 1
             return item
@@ -137,15 +140,19 @@ def release_inputs():
     }
 
 
-def principal(stack, browser, ordinal, *, deadline=None, cancel_event=None):
+def principal(stack, browser, ordinal, *, deadline=None, cancel_event=None, signup_gate=None):
     def budget():
         auth.require(cancel_event is None or not cancel_event.is_set(), "principal-provision-cancelled")
         auth.require(deadline is None or time.monotonic() < deadline, "principal-provision-deadline")
     budget()
     email = f"mcr-in01-{secrets.token_hex(12)}@example.test"
     password = secrets.token_urlsafe(24)
-    _, created = browser.request(f"principal-{ordinal}-signup", "/api/auth/email/signup",
-                                  {"email": email, "password": password})
+    # The pinned Auth has one signup hashing worker and Gateway's existing
+    # 900-ms edge deadline. Overlap lifecycles, not queued signup HTTP calls.
+    with signup_gate if signup_gate is not None else nullcontext():
+        budget()
+        _, created = browser.request(f"principal-{ordinal}-signup", "/api/auth/email/signup",
+                                      {"email": email, "password": password})
     user = str(UUID(created["userId"]))
     auth.require(created["userId"] == user and UUID(user).int != 0, "canonical-principal")
     delivery_deadline = min(time.monotonic() + 20, deadline) if deadline is not None else time.monotonic() + 20
