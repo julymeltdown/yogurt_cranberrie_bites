@@ -7,7 +7,7 @@ import { resolve } from 'node:path'
 import { createServer } from 'vite'
 import { chromium, expect } from '@playwright/test'
 const root = resolve(import.meta.dirname, '../../../..'), out = resolve(root, 'docs/mcr/evidence/fe32-client/native'), cache = `/tmp/mcr-fe32-native-${process.pid}`
-const slot=process.env.MCR_NATIVE_SLOT; assert(slot?.startsWith('FE32-NATIVE-'),'Explicit named coordinator slot required')
+const slot=process.env.MCR_NATIVE_SLOT; assert(/^FE32-(?:CLIENT-)?NATIVE-/.test(slot ?? ''),'Explicit named coordinator slot required')
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 async function bytes(path) { let total=0; for(const e of await readdir(path,{withFileTypes:true}).catch(()=>[])){const p=resolve(path,e.name);total+=e.isDirectory()?await bytes(p):(await stat(p)).size} return total }
 async function disk(start=false) { const f = await statfs(root); assert(f.bavail * f.bsize >= (start?16:8) * 1024 ** 3, '8GiB disk floor: pause captures/builds') }
