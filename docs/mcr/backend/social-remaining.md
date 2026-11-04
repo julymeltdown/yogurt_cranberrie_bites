@@ -488,7 +488,7 @@ Published `origin/master` was fetched at
 `29b1779e84106fcbe1c59f973cb5992d83c4fc00` (including `babbc3f4`) and merged into
 the Social branch. Root clarified that Party `5d662b` is a patch hash, not a Git
 commit. The exact returned five-path Party patch at
-`/Users/lhs/Desktop/mcr-evidence/be-party-runtime-central-return-c7d8eff6/five-central-files.patch`,
+`$MCR_EVIDENCE_ROOT/be-party-runtime-central-return-c7d8eff6/five-central-files.patch`,
 SHA256 `5d662bef90afad48a8fd7a1e436040b506fecee4f8e01f34daca4c31a3723d09`,
 applied unchanged in separate compatibility commit
 `871b55a4cdb9c8074cdefdd5afd061240d3ef5c6`. That is the Social shared-slice
@@ -601,3 +601,6 @@ READ_ONLY mutation error's generic denial projection also remains a known
 contract limitation pending the actual runtime flow. The original BE28–30/BE37
 scope is unfinished; its goal API still reports BLOCKED and has not been
 falsely completed or replaced.
+
+Delivery note: `$MCR_EVIDENCE_ROOT` redacts the machine-local evidence directory;
+the returned patch SHA256 above remains the exact artifact identity.

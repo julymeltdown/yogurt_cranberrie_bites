@@ -5,7 +5,7 @@
       "batch": "initial",
       "build": {
         "command": [
-          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
           "test",
           "--locked",
           "--offline",
@@ -31,7 +31,7 @@
       "batch": "initial",
       "build": {
         "command": [
-          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
           "test",
           "--locked",
           "--offline",
@@ -57,7 +57,7 @@
       "batch": "initial",
       "build": {
         "command": [
-          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
           "test",
           "--locked",
           "--offline",
@@ -82,7 +82,7 @@
       "batch": "namespace-fix",
       "build": {
         "command": [
-          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
           "test",
           "--locked",
           "--offline",
@@ -119,7 +119,7 @@
       "batch": "namespace-fix",
       "build": {
         "command": [
-          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
           "test",
           "--locked",
           "--offline",
@@ -180,7 +180,7 @@
   "scoped_cache_repairs": [
     {
       "command": [
-        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
         "clean",
         "--offline",
         "-p",
@@ -193,7 +193,7 @@
     },
     {
       "command": [
-        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "$RUSTUP_HOME/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
         "clean",
         "--offline",
         "-p",
@@ -203,5 +203,11 @@
       "stderr": "     Removed 20 files, 816.3KiB total\n",
       "stdout": ""
     }
-  ]
+  ],
+  "delivery_redaction": {
+    "original_source_commit": "b1a4bc82956b3f1150ff8fbdc559d9039193b9bb",
+    "original_blob": "git:b1a4bc82956b3f1150ff8fbdc559d9039193b9bb:backend/services/concert-service/tests/qa03_races_support/evidence/build-attempts.json",
+    "original_sha256": "12430e1f23ccc66ab02ffc8c83bbc6b1e87fc79407d5580851e2f3d3611fc314",
+    "machine_prefix": "$RUSTUP_HOME replaces the machine-local rustup prefix; argv meaning, exits, hashes and qualification results are unchanged."
+  }
 }
