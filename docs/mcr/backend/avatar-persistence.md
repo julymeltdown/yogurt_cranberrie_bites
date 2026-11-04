@@ -436,7 +436,8 @@ Neither side acquires the other's files. A new unbudgeted goal is tool-confirmed
 active for this follow-up; the separate spatial goal was fully delivered.
 
 The coordinated proposed ABI is a non-authoritative witness descriptor containing
-operation/session-family UUIDs, exact 32-byte parent/guard/body/effect binding
+producer-instance/scope/operation/session-family UUIDs, exact nonzero 32-byte
+parent/guard/body/effect binding
 digests and the exact existing 64-character lowercase release digest. A synchronous
 `witness_binding` fence method defaults to Unavailable. Missing production witness
 metadata cannot certify commit. Read-only and explicitly synthetic unfenced

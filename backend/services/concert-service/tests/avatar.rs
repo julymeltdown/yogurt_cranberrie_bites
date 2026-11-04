@@ -39,6 +39,8 @@ fn witness_metadata_defaults_to_unavailable_and_binds_the_exact_release() {
         AvatarError::Unavailable
     );
     let valid = AvatarEffectWitnessBinding {
+        producer_instance_id: Uuid::new_v4(),
+        scope_id: Uuid::new_v4(),
         operation_id: Uuid::new_v4(),
         session_family_id: Uuid::new_v4(),
         parent_digest: [11; 32],
@@ -52,11 +54,28 @@ fn witness_metadata_defaults_to_unavailable_and_binds_the_exact_release() {
         valid.validate_for_release(&"b".repeat(64)),
         Err(AvatarError::Unavailable)
     );
-    for field in ["operation", "session", "uppercase", "short"] {
+    for field in [
+        "producer",
+        "scope",
+        "operation",
+        "session",
+        "parent",
+        "guard",
+        "body",
+        "effect",
+        "uppercase",
+        "short",
+    ] {
         let mut invalid = valid.clone();
         match field {
+            "producer" => invalid.producer_instance_id = Uuid::nil(),
+            "scope" => invalid.scope_id = Uuid::nil(),
             "operation" => invalid.operation_id = Uuid::nil(),
             "session" => invalid.session_family_id = Uuid::nil(),
+            "parent" => invalid.parent_digest = [0; 32],
+            "guard" => invalid.guard_binding_digest = [0; 32],
+            "body" => invalid.body_digest = [0; 32],
+            "effect" => invalid.effect_binding_digest = [0; 32],
             "uppercase" => invalid.release_digest = "A".repeat(64),
             "short" => invalid.release_digest.pop().map(|_| ()).unwrap(),
             _ => unreachable!(),

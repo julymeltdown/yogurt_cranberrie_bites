@@ -44,6 +44,8 @@ pub struct AvatarTransactionIdentity {
 /// effect transaction can establish the durable outcome.
 #[derive(Clone, PartialEq, Eq)]
 pub struct AvatarEffectWitnessBinding {
+    pub producer_instance_id: uuid::Uuid,
+    pub scope_id: uuid::Uuid,
     pub operation_id: uuid::Uuid,
     pub session_family_id: uuid::Uuid,
     pub parent_digest: [u8; 32],
@@ -60,10 +62,19 @@ impl std::fmt::Debug for AvatarEffectWitnessBinding {
 }
 impl AvatarEffectWitnessBinding {
     pub fn validate_for_release(&self, expected: &str) -> Result<(), AvatarError> {
-        if self.operation_id.is_nil()
+        if self.producer_instance_id.is_nil()
+            || self.scope_id.is_nil()
+            || self.operation_id.is_nil()
             || self.session_family_id.is_nil()
             || self.release_digest != expected
             || !valid_release_digest(&self.release_digest)
+            || [
+                self.parent_digest,
+                self.guard_binding_digest,
+                self.body_digest,
+                self.effect_binding_digest,
+            ]
+            .contains(&[0; 32])
         {
             return Err(AvatarError::Unavailable);
         }
