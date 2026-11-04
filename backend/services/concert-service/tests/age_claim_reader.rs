@@ -33,6 +33,9 @@ struct FixtureAuthority {
 }
 #[async_trait]
 impl ProjectionAuthority for FixtureAuthority {
+    fn accepts_claim(&self, verifier: &str, revision: &str) -> bool {
+        verifier == "fixture" && revision == "fixture-v1"
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
