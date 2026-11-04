@@ -82,6 +82,15 @@ all three widths were visually inspected. Native viewer-open returned queued;
 actual CLI exports provide render evidence. Frozen v8/v9 and plan/archive checks
 pass. No package or tool was installed/upgraded.
 
+Focused technical peer review found two verifier false-pass gaps; the current
+assets themselves were correct. The verifier now hashes the ground project's
+embedded PNG against the new material ground and enforces every theme's geometry
+binding against a recomputed canonical digest. `verify-diagonal-negative.py`
+rejects a substituted legacy ground bitmap and all12 theme documents changed
+to the old hash, even with refreshed outer manifest pins. Both mutations stay
+in memory and perform zero artifact writes; results are in
+`negative-verification.json`.
+
 ## Adoption and remaining work
 
 The designated frontend/art integrator publishes the committed source handoff;
@@ -109,6 +118,7 @@ python3 frontend/public/world/reference-scene-v2/editable-quality.py revenge --r
 python3 frontend/public/world/reference-scene-v2/editable-quality.py danger --revision 10
 python3 frontend/public/world/reference-scene-v2/verify-diagonal-spatial.py
 python3 frontend/public/world/reference-scene-v2/verify-diagonal-composition.py
+python3 frontend/public/world/reference-scene-v2/verify-diagonal-negative.py
 # Serve the repository on localhost8896 and use an existing installed package:
 MCR_ART_REVISION=10 MCR_PLAYWRIGHT_PACKAGE=/absolute/path/to/installed/frontend/package.json node frontend/public/world/reference-scene-v2/check-quality.mjs
 ```

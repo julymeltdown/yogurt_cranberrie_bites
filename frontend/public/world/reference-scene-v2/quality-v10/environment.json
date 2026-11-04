@@ -62,11 +62,21 @@
     {
       "command": "git diff --check",
       "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-diagonal-negative.py",
+      "exit_code": 0
     }
   ],
   "initial_probe_findings": [
     "Technical verifier variable shadowing corrected.",
     "Lower-venue MAP sample coverage now excludes the explicit label rectangles; original visible-source threshold retained."
   ],
-  "limits": "Native viewer open queued; actual PNGs inspected. Source/native/browser evidence only; no new critic score, app/server/source-review/physical/device/multiuser acceptance."
+  "limits": "Native viewer open queued; actual PNGs inspected. Source/native/browser evidence only; no new critic score, app/server/source-review/physical/device/multiuser acceptance.",
+  "technical_review_fixes": [
+    "Packed editable ground bitmap must hash-match the selected new material ground.",
+    "All12 theme geometry bindings must match the recomputed canonical geometry hash; layout revision/projection path are exact.",
+    "Both reviewed false-pass mutations are rejected with fresh outer manifest pins, entirely in memory."
+  ],
+  "technical_peer_review": "Both P2 false-pass findings resolved; read-only follow-up passed. Exact scope in technical-review.json."
 }

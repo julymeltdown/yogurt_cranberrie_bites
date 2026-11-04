@@ -51,6 +51,7 @@
     "frontend/public/world/reference-scene-v2/quality-v10/material-ground-native.png",
     "frontend/public/world/reference-scene-v2/quality-v10/material-ground.png",
     "frontend/public/world/reference-scene-v2/quality-v10/material-ground.tsrct",
+    "frontend/public/world/reference-scene-v2/quality-v10/negative-verification.json",
     "frontend/public/world/reference-scene-v2/quality-v10/parade-map-360.png",
     "frontend/public/world/reference-scene-v2/quality-v10/parade-map-390.png",
     "frontend/public/world/reference-scene-v2/quality-v10/parade-map-430.png",
@@ -101,6 +102,7 @@
     "frontend/public/world/reference-scene-v2/quality-v10/review.mjs",
     "frontend/public/world/reference-scene-v2/quality-v10/route-edges.json",
     "frontend/public/world/reference-scene-v2/quality-v10/surface-native.png",
+    "frontend/public/world/reference-scene-v2/quality-v10/technical-review.json",
     "frontend/public/world/reference-scene-v2/quality-v10/verification.json",
     "frontend/public/world/reference-scene-v2/spatial-v5/ADOPTION.md",
     "frontend/public/world/reference-scene-v2/spatial-v5/geometry-proposal.json",
@@ -108,6 +110,7 @@
     "frontend/public/world/reference-scene-v2/spatial-v5/revision-evidence.json",
     "frontend/public/world/reference-scene-v2/spatial-v5/verification.json",
     "frontend/public/world/reference-scene-v2/verify-diagonal-composition.py",
+    "frontend/public/world/reference-scene-v2/verify-diagonal-negative.py",
     "frontend/public/world/reference-scene-v2/verify-diagonal-spatial.py"
   ],
   "files": [
@@ -143,8 +146,8 @@
     },
     {
       "path": "frontend/public/world/reference-scene-v2/quality-v10/ADOPTION.md",
-      "bytes": 6873,
-      "sha256": "sha256:a165bef40dcda9cbed2d859ea77bb0bf4317763c481699526c3a6b5b8256a562"
+      "bytes": 7508,
+      "sha256": "sha256:16e7490c29bf7648faf9c4a3e727b90497e055ac6232c4cdb4e7328c7254daae"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/quality-v10/browser-verification.json",
@@ -263,8 +266,8 @@
     },
     {
       "path": "frontend/public/world/reference-scene-v2/quality-v10/environment.json",
-      "bytes": 2685,
-      "sha256": "sha256:c7b235ac0cddc28f140225a6ad7914e2ca619ea9b8874fae891e639d88a80d6b"
+      "bytes": 3309,
+      "sha256": "sha256:c8712d55016555d2f0dc3a44a47d5a1ae18179eb0ba60a24ceb6a90a3838c6e1"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/quality-v10/ground-editable.json",
@@ -330,6 +333,11 @@
       "path": "frontend/public/world/reference-scene-v2/quality-v10/material-ground.tsrct",
       "bytes": 1846402,
       "sha256": "sha256:eddc0a9bc652c67d578e6a8d0ce79232a525138b186e72d94f816a7dc760274f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/negative-verification.json",
+      "bytes": 379,
+      "sha256": "sha256:e566cded95f2f28ae4fbf52b38768ba291e92c8c9c82fdbb2ebd6774793182fd"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/quality-v10/parade/atlas.png",
@@ -582,6 +590,11 @@
       "sha256": "sha256:d5f4e8fd42cab7d0524a7553eb2056dc197e106ee382ffb62ea58f6cf958a40b"
     },
     {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/technical-review.json",
+      "bytes": 1635,
+      "sha256": "sha256:16ef6cdd713fc850caefd167ad1e0af6f30760450d82717a9df6ae366315f0b0"
+    },
+    {
       "path": "frontend/public/world/reference-scene-v2/quality-v10/verification.json",
       "bytes": 6720,
       "sha256": "sha256:9932a8e9367c5f49df1dfc11dad43f46b9e17a1c71cf9fc8e1e02b6a4d0722a8"
@@ -613,8 +626,13 @@
     },
     {
       "path": "frontend/public/world/reference-scene-v2/verify-diagonal-composition.py",
-      "bytes": 12583,
-      "sha256": "sha256:a1547d3fa59c9a40a7ebeefddee9b5b20ec57c671a8e17d770bcab12ced7d81b"
+      "bytes": 13287,
+      "sha256": "sha256:51168bd5e75082d125f5b3fee5740e1fd3c33e5e710a357af4a73f718b659cf1"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/verify-diagonal-negative.py",
+      "bytes": 3249,
+      "sha256": "sha256:b6ed44d17c2f7fd733ad7984305344c820fee36b97bdc7f33a1880f9ce3df20e"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/verify-diagonal-spatial.py",
@@ -624,8 +642,9 @@
   ],
   "scope": "Only assigned original virtual-art source paths plus exact lane doc; runtime/** reserved, no app/backend/shared/character/archive edits.",
   "validation": "All commands and exits in quality-v10/environment.json, spatial-v5/verification.json, quality-v10/verification.json and browser-verification.json.",
-  "review": "Focused technical peer review pending; this is not a fourth visual critic panel.",
+  "review": "Both concrete P2 verifier findings fixed and peer-confirmed; actual positive and two fresh-pin in-memory negative cases pass. Technical review only, not a new visual critic panel.",
   "publication": "Task branch only; designated frontend/art integrator Root153 serializes publication. Sent handoff is not master proof.",
   "adoption": "New terrain needs distinct canonical Tiled/server/client revision greater than allocated5; proposed6 is not reserved or published. Current0448/map5 and899/map4 sources/releases remain immutable. No implicit consumer/source-review/admission transfer.",
-  "remaining": "Full target fidelity and concrete application consumer findings remain in active artist goal; no new critic score, current app/server/device/multiuser/physical acceptance."
+  "remaining": "Full target fidelity and concrete application consumer findings remain in active artist goal; no new critic score, current app/server/device/multiuser/physical acceptance.",
+  "implementation_commit": "a24cc7516db1d058dc312b139a1410da4c68573b"
 }

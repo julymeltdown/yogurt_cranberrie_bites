@@ -1,0 +1,1 @@
+{"status": "PASS_READ_ONLY_MUTATION_PROOFS", "cases": [{"case": "legacy ground bitmap inside editable project", "result": "REJECTED", "reason": "Packed ground source differs from selected material ground"}, {"case": "all12 theme geometry hashes reverted with fresh pins", "result": "REJECTED", "reason": "Theme geometry binding differs from canonical spatial-v5"}], "writes": 0}

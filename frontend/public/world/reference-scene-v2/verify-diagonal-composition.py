@@ -7,6 +7,8 @@ from jsonschema import Draft202012Validator
 HERE=Path(__file__).resolve().parent;OUT=HERE/'quality-v10';BASE=HERE/'quality-v8'
 read=lambda p:json.loads(p.read_text());sha=lambda p:'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest()
 p=read(HERE/'spatial-v5/geometry-proposal.json');projection=read(HERE/'spatial-v5/integer-projection.json');m=read(OUT/'manifest.json')
+canonical='sha256:'+hashlib.sha256(json.dumps(p['geometry'],sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
+assert canonical==p['geometry_hash']==projection['geometry_hash']==m['geometry_hash']
 api=read(HERE.parents[3]/'backend/docs/api/mcr-core.openapi.json');validator=Draft202012Validator({'$ref':'#/components/schemas/Scenery','components':api['components']})
 for pin in [m['geometry'],m['integer_projection'],m['base_manifest'],m['map_label_sidecar'],m['revision_evidence'],*m['ground_sources'],*[f for t in m['themes'] for f in t['files']]]:
  f=OUT/pin['path'];assert sha(f)==pin['sha256'];assert 'bytes' not in pin or f.stat().st_size==pin['bytes']
@@ -63,10 +65,14 @@ assert ImageChops.subtract(changed,edge).getbbox() is None,'Ground changed away 
 changed_count=sum(changed.point(lambda n:255 if n else 0).histogram()[1:]);assert 10000<changed_count<100000
 with zipfile.ZipFile(OUT/'ground.tsrct') as z:
  assert json.loads(z.read('project.json'))['composition']==read(OUT/'ground-editable.json')['composition']
- assert len([n for n in z.namelist() if n.endswith('.png')])==1
+ pngs=[n for n in z.namelist() if n.endswith('.png')];assert len(pngs)==1
+ assert 'sha256:'+hashlib.sha256(z.read(pngs[0])).hexdigest()==sha(OUT/'material-ground.png'),'Packed ground source differs from selected material ground'
 summary=read(OUT/'resource-summary.json');reports=[];facades=[];native_probes=[]
+assert summary['geometry_hash']==canonical
 for era in ['revenge','parade','danger']:
  f=OUT/era;old=BASE/era;layout=read(f/'layout.json');before=read(old/'layout.json');scene=read(f/'scenery.json');oldscene=read(old/'scenery.json');meta=read(f/'map-metadata.json');resources=read(f/'resource-inputs.json')
+ assert all(v['geometry_hash']==canonical for v in [layout,meta,resources,read(f/'provenance.json')]),'Theme geometry binding differs from canonical spatial-v5'
+ assert layout['geometry_revision']==5 and resources['projection']=='../../spatial-v5/integer-projection.json'
  validator.validate(scene);assert layout['placements']==before['placements']==projection['placements'];assert len(scene['objects'])==34
  assert {k:v for k,v in scene.items() if k!='ground'}=={k:v for k,v in oldscene.items() if k!='ground'}
  assert meta['map_label_presentation']['path']=='../map-label-presentation.json' and meta['map_label_presentation']['sha256']==sha(OUT/'map-label-presentation.json')
