@@ -1,0 +1,9 @@
+file:///Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/operations-fe37-fe38-current/native.mjs:32
+  browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
+                           ^
+
+TypeError: Cannot read properties of undefined (reading 'launch')
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/operations-fe37-fe38-current/native.mjs:32:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.22.2

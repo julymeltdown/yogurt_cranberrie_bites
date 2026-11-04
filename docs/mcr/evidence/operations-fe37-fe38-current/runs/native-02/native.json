@@ -1,0 +1,210 @@
+{
+  "scope": "Synthetic FE37 components with canonical Auth/privacy and explicit fixture role/evidence ports. No production admin route, role producer, real moderation, FE38 or live-service acceptance.",
+  "cases": [
+    {
+      "name": "reports-360-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-360-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-360-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-360-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-360-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-360-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-360-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-360-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-360-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-390-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-390-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-390-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-390-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-390-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-390-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-390-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-390-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-390-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-430-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-430-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "reports-430-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-430-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-430-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "members-430-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-430-startup",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-430-disposed",
+      "status": "PASS",
+      "writes": 0,
+      "privateUrlsAfterWithdrawal": 0
+    },
+    {
+      "name": "content-430-pending",
+      "status": "PASS",
+      "writes": 1,
+      "privateUrlsAfterWithdrawal": 0
+    }
+  ],
+  "captures": [
+    {
+      "file": "reports-390-startup.png",
+      "sha256": "23f9a4490670e32a6a98936e9df97d5632059373a354460a2f0677d4e478800c"
+    },
+    {
+      "file": "reports-390-disposed.png",
+      "sha256": "23f9a4490670e32a6a98936e9df97d5632059373a354460a2f0677d4e478800c"
+    },
+    {
+      "file": "reports-390-pending.png",
+      "sha256": "7ec02b00b7d87faf6214b6ab4cefa4cfb17dc2b7b588311aa5067ed2a6bb39ab"
+    },
+    {
+      "file": "members-390-startup.png",
+      "sha256": "23f9a4490670e32a6a98936e9df97d5632059373a354460a2f0677d4e478800c"
+    },
+    {
+      "file": "members-390-disposed.png",
+      "sha256": "23f9a4490670e32a6a98936e9df97d5632059373a354460a2f0677d4e478800c"
+    },
+    {
+      "file": "members-390-pending.png",
+      "sha256": "b1aad17ae944b4f9cfd46173feec1ce1274332f8f44945be62b595bc77792f94"
+    },
+    {
+      "file": "content-390-startup.png",
+      "sha256": "23f9a4490670e32a6a98936e9df97d5632059373a354460a2f0677d4e478800c"
+    },
+    {
+      "file": "content-390-disposed.png",
+      "sha256": "23f9a4490670e32a6a98936e9df97d5632059373a354460a2f0677d4e478800c"
+    },
+    {
+      "file": "content-390-pending.png",
+      "sha256": "4d2c30affb43ec64db4942e508e19383b5de23accd4417a6c12096c5d6504746"
+    }
+  ],
+  "errors": [],
+  "released": true,
+  "browser": "156.0.8078.80",
+  "port": 5173,
+  "status": "SYNTHETIC_FE37_PASS"
+}

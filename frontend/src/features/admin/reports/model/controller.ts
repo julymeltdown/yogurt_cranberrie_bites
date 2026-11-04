@@ -56,7 +56,7 @@ export interface ModerationState {
 export function createModeration(options: ModerationOptions) {
     const { auth, access, lane } = options, now = options.now ?? Date.now;
     let state: ModerationState = immutable({ access: false, phase: 'idle', rows: [], cursor: null, selected: null, detail: null, evidenceUrl: null, reason: '', action: '', confirm: false, message: '', receipt: null, epoch: 0 });
-    let disposed = false, serial = 0, flight: AbortController | null = null, binding: (Binding & {
+    let disposed = false, unavailable = false, serial = 0, flight: AbortController | null = null, binding: (Binding & {
         targetRow: Row;
         action: string;
     }) | null = null, authority: ModeratorLease | null = null, timer: ReturnType<typeof setTimeout> | null = null;
@@ -77,7 +77,7 @@ export function createModeration(options: ModerationOptions) {
     function lease(): ModeratorLease | null {
         try {
             const a = access.read();
-            return !disposed && (options.memberId === undefined || lane === 'members' && uuid(options.memberId))
+            return !disposed && !unavailable && (options.memberId === undefined || lane === 'members' && uuid(options.memberId))
                 && a && ['MODERATOR', 'OPERATOR'].includes(a.role) && typeof a.decisionId === 'string' && a.decisionId.trim()
                 && Number.isFinite(a.expiresAt) && a.expiresAt > now() && uuid(a.scope.userId) && uuid(a.scope.eventId)
                 && auth.privacy.isCurrent(a.scope) && auth.session.isCurrent(a.scope) ? a : null;
@@ -119,8 +119,25 @@ export function createModeration(options: ModerationOptions) {
             clearTimeout(timer);
         timer = setTimeout(sync, Math.min(2147483647, Math.max(1, a!.expiresAt - now())));
     }
-    const stopPrivacy = auth.privacy.registerCleanup(scrub), stopAccess = access.subscribe(sync);
-    sync();
+    let stopPrivacy = () => {}, stopAccess = () => {};
+    function releaseSubscriptions() {
+        const stops = [stopPrivacy, stopAccess];
+        stopPrivacy = () => {};
+        stopAccess = () => {};
+        for (const stop of stops) {
+            try { stop(); } catch { /* Release the remaining registrations. */ }
+        }
+    }
+    try {
+        stopPrivacy = auth.privacy.registerCleanup(scrub);
+        stopAccess = access.subscribe(sync);
+        sync();
+    } catch {
+        // Without both withdrawal observers, a readable role is not authority.
+        unavailable = true;
+        releaseSubscriptions();
+        scrub();
+    }
     function allowed() {
         if (!current()) {
             scrub();
@@ -342,8 +359,7 @@ export function createModeration(options: ModerationOptions) {
                 return;
             scrub();
             disposed = true;
-            stopPrivacy();
-            stopAccess();
+            releaseSubscriptions();
             listeners.clear();
         } };
 }

@@ -1,0 +1,83 @@
+{
+  "allocation": "FE37-REPAIR-BROWSER1-20261104T1732Z",
+  "class": "native",
+  "candidate": "9bcbe10a202116c535279280888fc317e1f4e101",
+  "acceptedUtc": "2026-11-04T17:32:51Z",
+  "acceptedFreeBytes": 27870949376,
+  "otherReserveBytes": 268435456,
+  "workUtc": "2026-11-04T17:35:51Z",
+  "hardUtc": "2026-11-04T17:36:21Z",
+  "sourceSha256": {
+    "frontend/src/features/admin/reports/index.ts": "8cd3efb5cbb9eb4c35a564ddd52614f5c9fe2a2e11255231d15bd3a0edfd0ec9",
+    "frontend/src/features/admin/reports/ui/moderation.css": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+    "frontend/src/features/admin/reports/__tests__/controller.test.ts": "aa0733b4881dc85737e9a8ae08bf399b5769bc92e0e039152d65b202f2544c0a",
+    "frontend/src/features/admin/reports/__tests__/current/preview.tsx": "9044b7247c34d10a5036fd7f6ad9eb9c530aaff68ca7ef86c76a6cb103da6bd6",
+    "frontend/src/features/admin/reports/__tests__/current/authority.test.ts": "1c057171d7dcd6ba8d6e4864e0572e8159820faff77d70f07ad6204d397fa0bb",
+    "frontend/src/features/admin/reports/__tests__/current/runner.ts": "b4451f7098b5144ff72afba74d5b4ebf02d0ef4eca9d84ac24458869fdec1c48",
+    "frontend/src/features/admin/reports/__tests__/fixtures/preview.tsx": "a6065b09bfb9f334478dc1f6a13ddb80789c5719b0d72338557f2320defcba11",
+    "frontend/src/features/admin/reports/__tests__/fixtures/harness.ts": "a817d1cee8671f5a54f41b944e482f3e94ababb1de023b4a519f9addad9906bb",
+    "frontend/src/features/admin/reports/model/contract.ts": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+    "frontend/src/features/admin/reports/model/validate.ts": "6ef318a0da70e08b04e7a5797816fd09a868a1a6e3e54b999d867e880db9ed37",
+    "frontend/src/features/admin/reports/model/controller.ts": "1f3602075f054ae645f732e212938871b0d3b67c6f9f6134c2a7cd783dab3f57",
+    "frontend/src/features/admin/members/index.ts": "edd62388b0cd1b6ad21d8b788a1826c3d96f7cfb556ae96d27585700d4661305",
+    "frontend/src/features/admin/content/index.ts": "43f8e8da55b1fc0c54bca563108dda3f1e46befafd557fbe0b3a23227a4aef63",
+    "docs/mcr/evidence/operations-fe37-fe38-current/native.mjs": "8304ff1b148d4f32ac99bc9b67d31abc937a0219d94d7b3d10560ce0418ac658",
+    "docs/mcr/evidence/operations-fe37-fe38-current/run-allocated.py": "7824cd8852a296aa989dbdf45ceec82f6f352c9caf893a0a28efba2d8d3173bc",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "4f24f37e8ef13f1e888a0cd69c971b132eace79cc1ef633efd86a8b669b1644d",
+    "frontend/src/app/AdminBoundary.tsx": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+    "frontend/src/app/ports.ts": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565",
+    "frontend/src/app/router.tsx": "a32e3f133c7ecc8eafcfe154a09ec6c140d165433241a085272525984e408915",
+    "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+    "contracts/generated/mcr-domain.openapi.json": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef"
+  },
+  "guardianPid": 55970,
+  "standingBeforeChildrenUtc": "2026-11-04T17:33:02.819872+00:00",
+  "retained": {
+    "checkoutBytes": 1194606592,
+    "gitMetadataBytes": 1896448,
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "caps": {
+    "wholeBytes": 2147483648,
+    "newBytes": 209715200,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "rssBytes": 4294967296,
+    "processes": 32
+  },
+  "peaks": {
+    "wholeBytes": 1226874880,
+    "newBytes": 30371840,
+    "temporaryBytes": 29888512,
+    "durableBytes": 557056,
+    "rssBytes": 2215329792,
+    "processes": 9
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/operations-fe37-fe38-current/native.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 11.770852167
+    }
+  ],
+  "status": "PASS",
+  "fullUtc": "2026-11-04T17:33:14.680422+00:00",
+  "cleanupSeconds": 0.06608841699999957,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "freeAfterBytes": 27731972096,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
