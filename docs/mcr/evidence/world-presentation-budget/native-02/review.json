@@ -1,0 +1,31 @@
+{
+  "status": "FOCUSED_TRANSITIONS_PASS",
+  "command": "MCR_FRONTEND_SLOT=FE26E-FOCUSED-REPLAY-202611040504Z MCR_WORLD_BUDGET_FOCUSED=1 MCR_WORLD_BUDGET_OUTPUT=<owned native-02> node-v24.22.2 frontend/src/app/__tests__/world-presentation-budget/native.mjs",
+  "exitCode": 0,
+  "candidate": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+  "sourceEquivalenceToInitialMatrix": {
+    "path": "../native-01/report.json",
+    "sha256": "46bfada6aba20bf65bdb5a6d8c67b9ec3353b6685027f8f42eaf8ea608efe8d8",
+    "source": "e93b92ad0058f3ad62d9bc639f7dc8c5df1db23c",
+    "cases": 24,
+    "unchangedSourcePins": true
+  },
+  "ownerVisualReview": {
+    "toolsExpanded": "Painted retained scene, four legible destinations, disclosure and footer visible.",
+    "reduced420": "Canvas/controls/stage height239 and bottom348 agree; current camera378x239 and projection surface agree. Controls, status, notice and footer visible. Existing camera exposes a map edge at right; no camera/fidelity/device acceptance inferred."
+  },
+  "measuredWorkflowPeakBytesIncludingPriorEvidence": 145866904,
+  "durableTaskBytesBeforeFinalReceipts": 20430848,
+  "cleanup": {
+    "report": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "temporaryRemoved": true
+    },
+    "freshValidationChromeRoots": 0,
+    "interactiveMCPChromeRootsPreserved": 1,
+    "borrowedDependencyLinkRemoved": true,
+    "ownTemporaryDirectoriesRemaining": 0
+  },
+  "slotReleased": true
+}
