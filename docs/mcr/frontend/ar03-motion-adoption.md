@@ -178,6 +178,16 @@ were captured; the 360px selector/pose preview was visually inspected. All avata
 interactions retain two initial resource requests and zero additional requests.
 These results remain TEST_ONLY component/real-Phaser evidence, not public admission.
 
+A subsequent real-application optimized build also passed through `index.html`
+and `src/main.tsx`, with the retained React and Tailwind Vite plugins. Reproduce
+with `build.mjs --application` in the motion test prefix and the same dependency
+environment. `application-build.json` records this separate result, the fixture
+mode rerun and lint. The first attempt exposed two tracked sign-in PNGs omitted
+by this worktree's sparse patterns. Expanding only those two exact patterns
+materialized their committed bytes; both Git blob identities matched HEAD.
+No auth code, original asset, dependency or lockfile changed. A successful
+application bundle does not prove the still-denied positive v2 Root journey.
+
 The actual application registry, C03 and C05 refusal cases run in
 `app/character-entry/__tests__/motion-adoption/root-denial.test.ts`. They prove
 the candidate cannot allocate a production runtime, even with forged eligibility

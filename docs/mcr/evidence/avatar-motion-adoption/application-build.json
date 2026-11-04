@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "recordedAt": "2026-11-04T02:51:51.385169+00:00",
+  "parent": "df0522fa7fa93fd9f66db3a8b0ec38b95db0d6ee",
+  "qualification": "Optimized actual application index.html/main.tsx build with retained React/Tailwind plugins. Positive v2 production Root/admission NOT_RUN.",
+  "source": {
+    "path": "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs",
+    "sha256": "f71df7efab72d592498885075cd44a7195a251ed71c856ed2b3a4f13a2e6d7be"
+  },
+  "commands": [
+    {
+      "command": "MCR_FRONTEND_DEPENDENCIES=<retained-frontend> <node24> frontend/src/world/avatar/__tests__/motion-adoption/build.mjs --application",
+      "exit": 0,
+      "outputs": 1
+    },
+    {
+      "command": "MCR_FRONTEND_DEPENDENCIES=<retained-frontend> <node24> frontend/src/world/avatar/__tests__/motion-adoption/build.mjs",
+      "exit": 0,
+      "outputs": 1
+    },
+    {
+      "command": "<node24> <retained-frontend>/node_modules/oxlint/bin/oxlint frontend/src/world/avatar/__tests__/motion-adoption/build.mjs",
+      "exit": 0,
+      "warnings": 0
+    }
+  ],
+  "initialFailure": {
+    "exit": 1,
+    "reason": "Sparse checkout omitted two tracked sign-in artwork PNGs; both index entries had skip-worktree=S. This was checkout materialization, not missing committed assets."
+  },
+  "remediation": {
+    "command": "git sparse-checkout add --skip-checks /frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png /frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+    "scope": "Only per-worktree sparse patterns changed. Restored byte-identical committed files; no auth source or asset edits.",
+    "verifiedGitBlobs": {
+      "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png": "4174202f3859e4fa5e2b3a326ce4423070b20572",
+      "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png": "141bdc92c9d169ff608749c55e604b71434bdfc2"
+    }
+  },
+  "outputs": "Temporary build outputs/cache removed by finally; no dependency installs, links, lockfile, app source or original-art changes.",
+  "priorEvidence": "df0522fa candidate checkpoint eight checks remain preserved. This follow-up changes only the owned build harness, this report and owned documentation; fixture mode rerun with exit0, modified harness lint exit0.",
+  "goal": "ACTIVE. Actual eligible versioned release, canonical C03/C05 generated union/server support and positive Root/service/two-account/device gates remain open."
+}
