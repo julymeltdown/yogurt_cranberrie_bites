@@ -4,11 +4,11 @@ import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad } from './access'
 import type { ActiveScope } from './ports'
 import { DefaultAdminPanel } from './operations-composition/panel'
+import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
 
 export default function AdminBoundary() {
   const { scope } = useAccess()
-  if (!scope) return <AccessNotice />
-  return <AdminAccess key={scopeKey(scope)} scope={scope} />
+  return <AdmissionBoundary>{scope ? <AdminAccess key={scopeKey(scope)} scope={scope} /> : <AccessNotice />}</AdmissionBoundary>
 }
 function AdminAccess({ scope }: { scope: ActiveScope }) {
   const ports = usePorts()

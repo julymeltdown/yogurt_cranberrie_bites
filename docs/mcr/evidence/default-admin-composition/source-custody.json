@@ -19,5 +19,8 @@
     "nativeSyntax": "NOT_RUN",
     "release": "source-01-query-type-failure/release.json",
     "repair": "Remove only6 unsupported optional exact flags; ByRole string matching remains exact by default. No product change or passing suite replay."
-  }
+  },
+  "canonicalIntake": "1a1db34065a190790459e4be41891750ab46d882",
+  "currentAdmission": "Registered canonical Auth admission; existing AdmissionBoundary borrowed; controlledHTTP only/noidentityinjection",
+  "old21CaseDisposition": "PASS only at97befb78 immutable readset; no current-cut21 replay"
 }

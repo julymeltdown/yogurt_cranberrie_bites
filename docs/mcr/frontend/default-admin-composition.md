@@ -58,3 +58,19 @@ The failed logs and FULL release are retained under
 `source-01-query-type-failure`; lint and native syntax were not run after that
 stop. The private prefix was removed after retention. Product source is
 unchanged; only the remaining types/lint/syntax need fresh qualification.
+
+Root requested current canonical intake before the one native journey. Normal
+merge retains published `1a1db34065a190790459e4be41891750ab46d882`, including
+strict canonical admission and the existing World/Social/consent integration.
+Only the assigned Admin ports hunks differ from that canonical ports file.
+AdminBoundary borrows the published AdmissionBoundary; its readiness never
+substitutes a boolean or injected identity for the registered admission response.
+The controlled server now returns that closed registered admission DTO. The
+actual-main harness signs in through the existing UI, waits for canonical
+admission, then uses browser history navigation within the same signed-in SPA.
+Admin paths are intentionally excluded from sign-in return URLs; no production
+return-target rule changes and no identity injection are used. Current 21-case
+fixture request counts include admission, but the earlier suite remains qualified
+only at its recorded source. It is not replayed or relabeled as current-cut proof.
+One combined full types/lint/syntax round and the changed current-main native
+journey supply the new intake boundary proof.
