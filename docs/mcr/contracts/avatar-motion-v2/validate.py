@@ -87,6 +87,12 @@ def main():
                 assert direction['visibility'] == 'NON_VISIBLE_FROM_REAR'
     with Image.open(ROOT/m['atlas']['path']) as image:
         image.load(); assert image.mode == 'RGBA' and image.size == (1280,1856)
+        def cell_hash(index):
+            x,y=(index%20)*64,(index//20)*64
+            return hashlib.sha256(image.crop((x,y,x+64,y+64)).tobytes()).hexdigest()
+        for entry in [*m['presets'], *[x for x in m['items'] if x['phase_motion']=='ARTICULATED_LIMBS']]:
+            for direction in entry['directions']:
+                assert len({cell_hash(index) for index in direction['frames']}) == 5
         for item in m['items']:
             if item['slot'] == 'eyes':
                 index = item['directions'][3]['frames'][0]
@@ -105,6 +111,6 @@ def main():
         try: json.loads(raw,object_pairs_hook=no_duplicates)
         except AssertionError: pass
         else: raise AssertionError('duplicate field accepted')
-    print(f'PASS: schemas; {len(valid)} accepted/{len(invalid)} refused fixtures; {len(resources)} pinned resource occurrences; 6 presets/28 items; direction/frame/palette/cuff/source/raster checks; 9 manifest tamper refusals. CANDIDATE_ONLY, production NOT ADMITTED.')
+    print(f'PASS: schemas; {len(valid)} accepted/{len(invalid)} refused fixtures; {len(resources)} pinned resource occurrences; 6 presets/28 items; direction/frame/palette/cuff/source/raster checks (5 distinct RGBA cells in all animated directions); 9 manifest tamper refusals. CANDIDATE_ONLY, production NOT ADMITTED.')
 
 if __name__ == '__main__': main()
