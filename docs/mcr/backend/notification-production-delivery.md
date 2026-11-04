@@ -151,7 +151,7 @@ Private evidence is retained at `/private/tmp/mcr-be33-delivery-7e15b196/`:
 | `artifact-receipt.json` (source/runtime pins and exact Cargo artifacts) | `522c41a9fe9a01e763873259b1918820bc5481b3a4ad72bdb2a1cc14ca8e46d4` |
 | `target-release.json` | `d6e901a1a71108753af459ca80e71a0a3911b2570f25a8968e08ee5970e411af` |
 | `qualify-result-1793790780.json` | `4704abdc2a921d3d4662b2de7468279ddd33ea1423109721e248f8ef530a358e` |
-| `full-release.json` | `698373cbfa78709aebcc8622659cff61d0d3804ec4c97b2e2b33f835ec224f2d` |
+| `full-release.json` | `b2a412996681fc8745b9826bc7f27e11e063210cd17be459debb04baf4d1d830` |
 
 The first copied orchestration attempt stopped at `fixture-pki` before database or
 tests; its failure report and executed controller are preserved. The helper then
@@ -161,8 +161,8 @@ The first wrapper retained the failed phase/exit result, not the full OpenSSL
 stderr; the limitation is not hidden by the successful retry.
 
 Full-release accounting: prior retained carry 416,411,648 bytes; retained target
-growth 156,639,232 bytes; private output 102,133,760 bytes; whole retained growth
-675,184,640 bytes. Peak whole usage was 761,757,696 bytes, below the offered
+growth 156,639,232 bytes; private output 102,137,856 bytes; whole retained growth
+675,188,736 bytes. Peak whole usage was 761,757,696 bytes, below the offered
 2.5 GiB cap, and minimum observed free space was 22,418,092,032 bytes. No resources
 remain held. Existing CF03's eleven qualified cases were unchanged and not rerun.
 
