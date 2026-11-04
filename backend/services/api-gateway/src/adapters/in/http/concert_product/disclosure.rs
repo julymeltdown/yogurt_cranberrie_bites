@@ -1,7 +1,7 @@
 //! Check the actual root-wide ceiling at the HTTP data-frame boundary.
 //! Completion after EOF may settle existing work; expiry never releases it.
 use axum::body::{Body, Bytes};
-use http_body::{Frame, SizeHint};
+use http_body::{Body as HttpBody, Frame, SizeHint};
 use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use std::{
     pin::Pin,
@@ -38,7 +38,7 @@ impl DisclosureBody {
         })
     }
 }
-impl http_body::Body for DisclosureBody {
+impl HttpBody for DisclosureBody {
     type Data = Bytes;
     type Error = Status;
     fn poll_frame(
@@ -119,7 +119,10 @@ mod tests {
         )
         .unwrap()
     }
-    async fn response() -> (impl http_body::Body<Data = Bytes>, Arc<AtomicUsize>) {
+    async fn response() -> (
+        impl HttpBody<Data = Bytes, Error = Box<dyn std::error::Error + Send + Sync>>,
+        Arc<AtomicUsize>,
+    ) {
         let deadline = original();
         let body = DisclosureBody::new(
             Body::from("private-code"),
@@ -129,7 +132,9 @@ mod tests {
         .unwrap();
         let count = Arc::new(AtomicUsize::new(0));
         let token = ResponseScopeToken::new(Arc::new(Terminal(count.clone())));
+        let mut pending = Some((body, token));
         let service = tower::service_fn(move |()| {
+            let (body, token) = pending.take().expect("one response");
             let mut response = http::Response::new(body);
             response.extensions_mut().insert(token);
             async move { Ok::<_, std::convert::Infallible>(response) }
