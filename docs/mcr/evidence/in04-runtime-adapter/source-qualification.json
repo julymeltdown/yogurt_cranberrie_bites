@@ -1,0 +1,43 @@
+{
+  "kind": "SOURCE_QUALIFICATION_ONLY",
+  "sourceRevision": "6d5863097c46d7ecd3d1633fd1423500e17b8867",
+  "canonicalApplicationCandidate": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+  "sourceCasesPassed": 8,
+  "syntaxChecksPassed": 6,
+  "scopedDenyWarningLint": "PASS",
+  "fe41FrozenTailChecks": {
+    "sha256": "c8ee10c427f023a9a7622dd6320729b6ff5488d6a97c1df52d7ed3e3f8878122",
+    "commands": [
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+          "--deny-warnings",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs"
+        ],
+        "exitCode": 0
+      }
+    ],
+    "inputUnchanged": true
+  },
+  "runtimeStatus": "NOT_RUN",
+  "goalStatus": "ACTIVE",
+  "release": "docs/mcr/evidence/in04-runtime-adapter/ROOT-IN04-FE41-COALESCED-SOURCE-20261104T1927Z/attempt01/release.json",
+  "executablePostimages": {
+    "frontend/e2e/runtime-adapters/in04-wall-b/adapter.mjs": "812709028e70a232cc8f00a9088b4b12d350955030fe3c83ea63ed9849dccade",
+    "frontend/e2e/runtime-adapters/in04-wall-b/source.test.mjs": "d0d16905ff06d5dbaf2f5772e4393a7bd41b6f807fdfca6ecc8bde6437b4b9e4",
+    "frontend/e2e/runtime-adapters/in04-wall-b/validate.py": "05d17a43de8bee30fff61c6eaa5cf24c7e2bafd1a6e46b374cfb2cd2af0b85bc",
+    "frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs": "511808e9963f81a187280c8593280d583852ac13b5e7460e6e1937b0d0d1b09d",
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": "b40b786b8ed972c30696270929ca35c85b4d680d866b0ba1c6f5344f59dd9816",
+    "frontend/e2e/runtime-adapters/in04-wall-b/inputs.mjs": "46d1d400589b63c522297e5840b1d3a23f26884e3ee5ab2211dec2cc57bdf596",
+    "frontend/e2e/runtime-adapters/in04-wall-b/prepare.mjs": "a6c566db62a6bbb0a3959baf7f9daa342680ac5f246a09da6f5432b10358412a"
+  }
+}
