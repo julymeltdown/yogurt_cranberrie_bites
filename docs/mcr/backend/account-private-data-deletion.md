@@ -5,6 +5,15 @@ PrivateData deletion remains **INCOMPLETE** until every owner category in the
 [field inventory](account-private-data-field-inventory.md) has a real owner
 step and the Auth-to-Concert transport is qualified.
 
+The implementing developer owns the ten leaf paths named in the original
+assignment, the native qualification file
+`tests/account_private_data_native.rs`, and the single
+`pub mod account_private_data;` export hunk in `src/lib.rs`. Root confirmed
+both latter grants explicitly; no other `src/lib.rs` hunk belongs to this
+delivery. Shared Auth-to-Concert composition, common deletion sources and
+publication remain Root responsibilities. A successful leaf receipt is not a
+whole PrivateData acknowledgement.
+
 ## Receipt and authority
 
 The public entry is `PrivateDataCoreDeletion::apply` using the shared
@@ -49,6 +58,24 @@ lock precedence. The ignored native test is intended for a marker-owned fresh
 PostgreSQL database and covers multiple events, non-target user preservation,
 idempotent replay, the permanent write fence and receipt completion. Rust 1.88
 locked/offline compilation and the native run require a fresh named allocation.
+The two additional grants authorize the native test and exact module-export
+hunk only; historical pinned-source receipts do not qualify a later tree.
+Fresh bounded allocation `BE42-PRIVATE-DATA-RESTART-BACKEND-202611041534Z`
+passed on source `9575be685a4dd2f0fde55e0e7b25668f960840a6` (parent
+`f167a770c308060df6d87db175e13dd0219454c7`; native postimage
+`f72f85ce9ee17cc52e349c5308bb745d239e5823002b13df0dcf95e7f138db05`). The build
+used Rust 1.88.0, locked/offline dependencies and two jobs. After the target
+was released with zero handles, the copied source suite passed three cases,
+the writer-fence suite passed two cases, and one fresh PostgreSQL 16.14
+database applied all 43 migrations. The native case completed the receipt at
+`COMPLETE|131|131|131`, neutralized 131 participant rows, removed 131 avatars
+and left one permanent fence. A physical stop/start of the same owned database
+kept the receipt unchanged; replay without reseeding passed, with zero
+prepared transactions. The owned database was then stopped and removed. A
+previous run at source `ebbd27ce` passed its pre-restart case but its fixture
+attempted to seed fenced rows after restart; that failed attempt is retained.
+Evidence is under `/Users/lhs/Desktop/mcr-evidence/be42-private-data-restart-202611041534Z`.
+This qualifies only the bounded core leaf.
 
 This leaf does not provide canonical Auth transport, production route wiring,
 foreign service database writes, or full BE42/IN02 acceptance.
