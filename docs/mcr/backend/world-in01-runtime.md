@@ -1,86 +1,85 @@
-# Isolated World startup preparation
+# Isolated World startup
 
 Status: `IN_PROGRESS`. World remains `CLOSED`; IN01 two-client execution is
-`NOT_RUN`. Optional Age, Social, Gift, Feed and media modes are not prerequisites
-for this preparation.
+`NOT_RUN`. Optional Age, Social, Gift, Feed and media modes are not prerequisites.
 
-`backend/scripts/mcr/world_in01_prepare.py` starts the existing disposable native
-DevStack with private PostgreSQL, Redis, six service binaries and the local Auth
-mail sink. It creates two distinct principals through actual Gateway signup,
-email delivery, verification and login. No Auth rows, JWTs or sessions are
-fabricated. Access tokens remain in memory. Separate mode-0600 principal files
-contain credentials for subsequent real login, inside the owned mode-0700 root.
+`backend/scripts/mcr/world_in01_prepare.py` owns disposable PostgreSQL, Redis,
+six native services, real Auth mail delivery and, with `--bootstrap`, the actual
+Concert bootstrap RPC listener. It creates two distinct principals through
+Gateway signup, email verification and login. Access tokens remain in memory.
+Separate mode-0600 principal files contain credentials for subsequent real login
+inside the owned mode-0700 root. No Auth rows, JWTs or sessions are fabricated.
 
-The optional `--concert-bin` path runs the actual Concert `--migrate` and
-`--verify-migrations` commands against a newly created `mcr_concert` database and
-checks the exact source migration ledger. It inserts operator configuration only:
-the event and one two-person room with selected map4/avatar pins. It asserts that
-admissions, participants and avatars remain empty. Actual authenticated bootstrap
-must create those rows. An earlier preliminary harness directly populated them;
-that path was removed and supplies no public-flow evidence.
+`--concert-bin` runs real Concert migration and ledger-verification commands on
+a newly created `mcr_concert`. Only operator configuration is seeded: an event
+and one two-person room with selected map4/avatar pins. Admissions, participants
+and avatars are asserted empty before actual authenticated bootstrap.
 
-Release paths and their exact bundle hashes are verified before startup. The
-existing source-bound Rust constructor was independently qualified by the
-operator bundle checkpoint; checking file hashes here does not rerun it.
+`--publish-catalog` calls the production binary's `--prepare-in01-catalog`.
+It loads `ProductReleaseBundle::from_source_bound_files`, validates map4 through
+`bootstrap::spatial::load_candidate`, publishes through
+`PgPlaceRepository::publish_release`, and checks repository readback. Release
+paths, source binding and resource bytes retain the actual bundle hashes.
 
-## Actual preparation evidence
+`--bootstrap` requires catalog publication. Before stack startup, an isolated
+configuration hook supplies the actual Gateway credential and actor verifying
+keys to Concert and configures Gateway's Concert endpoint. Each real principal
+initializes Profile through `PUT /api/profile/{ownUUID}`, then requests
+`GET /api/concert/events/{event}/bootstrap`. The harness checks the response's
+owner and exactly two resulting admissions, participants and canonical avatars.
+It does not enable World settings or register unfinished production owners.
+
+## Actual evidence
 
 The portable receipt is `world-in01-preparation.json` beside this document.
-The final operator-only run used the already copied six-service refresh binaries
-and the already copied Concert binary from source `188db7c9`. No target, compiler,
-new binary or new World capability was involved. Concert's migration CLI loads
-SQL from its configured source migration directory; the receipt pins that exact
-25-file set separately from the older binary's compiled source.
+Concert library and production binary were compiled from
+`4d5c044fa1b09cfd794a519d963bcd63d22c26d8` with Rust 1.88, locked/offline,
+two jobs, debug info disabled and incremental compilation disabled. Both builds
+exited 0. Executables and source pins were copied outside the build target;
+zero target handles were confirmed before target release and all native runs.
+The copied library passed eight Participant tests (four ignored) and seven
+Product RPC tests. These checks do not certify HTTP or multiuser World behavior.
 
-Actual results:
+Actual isolated startup results:
 
-- Six services migrated, verified, survived PostgreSQL restart and passed current
-  readiness; local Redis and real Auth mail delivery operated.
-- Two different canonical Auth identities each completed signup, verification
-  and login through HTTP, with the expected real refresh-cookie attributes.
-- Concert migration and receipt verification commands exited 0. Event/room seed
-  succeeded; participant/admission/avatar tables remained empty.
-- Current schema probe returned true. Removing the required avatar representation
-  constraint inside a rolled-back transaction made it return false; restoring the
-  transaction made it return true again.
-- Owned processes and PostgreSQL stopped, and the private root was removed.
+- All six existing service binaries migrated, verified, survived PostgreSQL
+  restart and passed current readiness; Redis and Auth mail delivery operated.
+- Two canonical Auth identities completed signup, verification and login, with
+  real refresh-cookie attributes; both public Profile writes returned 200.
+- The newly compiled Concert binary applied and verified 27 migrations.
+  Source-bound map4 catalog publication and repository readback passed.
+- The schema probe passed, failed when the required avatar representation
+  constraint was temporarily removed, then passed after rollback.
+- Both public bootstrap requests returned 200. Actual bootstrap created the
+  two admissions, participants and canonical avatars; none were SQL-seeded.
+- Concert stopped with exit 0 without forced termination. All owned resources
+  stopped and the private root was removed.
 
-The external-migration schema probe previously required
-`concert_avatar_contract`, which migration 0025 replaces with
-`concert_avatar_representation`. The probe now checks the actual production
-constraint. This corrected SQL was exercised against PostgreSQL; a new Concert
-binary containing the corrected probe still needs compilation.
+Migration 0025 replaces `concert_avatar_contract` with
+`concert_avatar_representation`; the corrected production schema probe was
+compiled and exercised in this run. The receipt pins compiled Concert source,
+all actual migration digests and each separate existing service binary hash.
 
-## Next executable seam
-
-The new `concert-service --prepare-in01-catalog` command is authored source only,
-`NOT_COMPILED` / `NOT_RUN`. It loads the actual full product release with
-`ProductReleaseBundle::from_source_bound_files`, validates map4 through
-`bootstrap::spatial::load_candidate`, publishes with
-`PgPlaceRepository::publish_release`, and compares repository readback. It
-creates no principal, participant, admission, ticket or listener. Its configuration
-uses the six existing release file variables plus `CONCERT_SOURCE_BINDING_FILE`,
-`CONCERT_ASSET_ROOT`, `CONCERT_WORLD_EVENT_ID`, explicit local mode and the owned
-Concert database URL. `--publish-catalog` in the Python harness opts into this
-command only when a newly compiled binary is explicitly supplied.
-
-Example from the repository root, using absolute private copied-binary paths:
+Example from the repository root:
 
 ```sh
 python3 backend/scripts/mcr/world_in01_prepare.py \
   --bin-dir /absolute/private/six-service-binaries \
   --concert-bin /absolute/private/concert-service \
-  --report /absolute/private/new-preparation-report.json \
+  --publish-catalog --bootstrap \
+  --report /absolute/private/new-startup-report.json \
   --hold-seconds 300
 ```
 
-While held, stdout provides only a local private-input path. The descriptor and
-all credentials expire when the owned process exits; the default hold is zero.
-No stale path is a live runtime handoff. The command always reports preparation
-as `PARTIAL`, never IN01 acceptance.
+While held, stdout exposes only a private descriptor path. Credentials and
+inputs expire when the owned process exits; the default hold is zero. A removed
+path is not a live runtime handoff. The command reports `PARTIAL`, never IN01
+acceptance. Existing six-service binaries retain their separate provenance;
+compiling Concert does not rebuild or qualify all six services.
 
-Still required: qualified World native fixes and production owner registration,
-fresh catalog-command build/run, real Profile initialization through the current
-user's public Profile write, real authenticated Concert bootstrap, room/ticket
-HTTP requests, and two actual WebSocket clients with revocation and shutdown
-evidence. No synthetic source fixture or successful preparation waives them.
+Still required: the final qualified World native fixes and production-owner
+registration, real room/ticket HTTP requests, two actual WebSocket clients,
+revocation and shutdown evidence, and the frontend consumer handoff. C05's
+motion-profile and input-application timing gap also remains open for full
+FE17 prediction/reconciliation; hidden server constants are not a negotiated
+public contract. Current map4 startup does not depend on new art or map5.

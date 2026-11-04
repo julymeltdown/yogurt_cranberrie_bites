@@ -8,6 +8,7 @@ directory; stdout and the external report contain paths and sanitized results.
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import os
 from pathlib import Path
@@ -16,6 +17,7 @@ import signal
 import time
 from unittest.mock import patch
 from uuid import UUID, uuid4
+from urllib.parse import urlsplit
 
 import browser_auth_smoke as auth
 from browser_refresh import current_readiness
@@ -84,7 +86,41 @@ def principal(stack, browser, ordinal):
     path = stack.cluster.root / f"in01-principal-{ordinal}.json"
     private_json(path, {"user_id": user, "email": email, "password": password,
                         "login_path": "/api/auth/login", "access_token": "MEMORY_ONLY"})
-    return user, path
+    return user, path, logged_in["accessToken"]
+
+
+def public_json(browser, report, label, path, bearer, *, method="GET", payload=None):
+    """Exercise the actual public route without Auth-only response assumptions."""
+    headers = {"Authorization": "Bearer " + bearer,
+               "X-Correlation-Id": "in01-" + label, "Origin": browser.origin,
+               "X-MCR-Intent": "browser"}
+    body = None
+    if payload is not None:
+        body = json.dumps(payload)
+        headers["Content-Type"] = "application/json"
+    target = urlsplit(browser.origin)
+    connection = http.client.HTTPConnection(target.hostname, target.port, timeout=10)
+    try:
+        connection.request(method, path, body=body, headers=headers)
+        response = connection.getresponse()
+        raw = response.read(2_000_001)
+        report["statuses"][label] = response.status
+        auth.require(response.status == 200, label + ":status")
+        auth.require(len(raw) <= 2_000_000, label + ":body-limit")
+        return json.loads(raw)
+    finally:
+        connection.close()
+
+
+def initialize_profiles(browser, report, principals):
+    for ordinal, (user, _, token) in enumerate(principals, 1):
+        result = public_json(browser, report, f"principal-{ordinal}-profile",
+            "/api/profile/" + user, token, method="PUT", payload={
+                "username": "in01_" + secrets.token_hex(6),
+                "nickname": f"IN01 participant {ordinal}",
+                "avatarUrl": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+                "bio": "Owned IN01 runtime participant"})
+        auth.require(result["userId"] == user, "public-profile-owner-identity")
 
 
 def seed_concert(stack, binary, report, publish_catalog):
@@ -163,12 +199,15 @@ def main():
     parser.add_argument("--concert-bin", type=Path)
     parser.add_argument("--publish-catalog", action="store_true",
                         help="Requires a freshly compiled binary with --prepare-in01-catalog")
+    parser.add_argument("--bootstrap", action="store_true",
+                        help="Start real Concert bootstrap RPC and initialize through public HTTP")
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--hold-seconds", type=int, default=0)
     args = parser.parse_args()
     if (not args.report.is_absolute() or not args.bin_dir.is_absolute()
             or (args.concert_bin is not None and not args.concert_bin.is_absolute())
             or (args.publish_catalog and args.concert_bin is None)
+            or (args.bootstrap and not args.publish_catalog)
             or not 0 <= args.hold_seconds <= 3600):
         parser.error("absolute new report path and hold-seconds in 0..3600 required")
     fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
@@ -177,22 +216,63 @@ def main():
               "script_sha256": dev.runtime.digest(Path(__file__))}
     stack = dev.DevStack(args.bin_dir, Path("/opt/homebrew/bin"),
                          Path("/opt/homebrew/bin/redis-server"), Path("/opt/homebrew/bin/openssl"))
+    concert_child = None
+    concert_env = {}
+    original_environments = dev.development_environments
+
+    def startup_environments(cluster, ports, keys, credentials, *rest):
+        envs = original_environments(cluster, ports, keys, credentials, *rest)
+        if args.bootstrap:
+            ports.reserve("concert-service:grpc")
+            ports.reserve("concert-service:metrics")
+            envs["api-gateway"]["GATEWAY_CONCERT_GRPC_ENDPOINT"] = ports.url("concert-service:grpc")
+            concert_env.update(cluster.env, **credentials,
+                ACTOR_DELEGATION_VERIFYING_KEYS=keys["ACTOR_DELEGATION_VERIFYING_KEYS"],
+                CONCERT_DATABASE_URL=cluster.url("mcr_concert"),
+                CONCERT_RUNTIME_MODE="local", CONCERT_MIGRATION_MODE="external",
+                CONCERT_GRPC_ADDR=ports.address("concert-service:grpc"),
+                CONCERT_METRICS_ADDR=ports.address("concert-service:metrics"),
+                CONCERT_PUBLIC_FEED_MODE="off", CONCERT_OWNER_MEDIA_MODE="off",
+                TOKIO_WORKER_THREADS="2", RUST_LOG="warn",
+                **{k: v for k, v in release_inputs().items() if k.startswith("CONCERT_")})
+        return envs
     previous = {sig: signal.signal(sig, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
                 for sig in (signal.SIGINT, signal.SIGTERM)}
     try:
         release = release_inputs()
-        report["release_pins"] = "EXACT_BUNDLE_BYTES_VERIFIED; no new constructor qualification"
-        with patch.object(dev.runtime, "readiness_value", current_readiness):
+        report["release_pins"] = "EXACT_BUNDLE_BYTES_VERIFIED; catalog constructor outcome recorded separately"
+        with patch.object(dev.runtime, "readiness_value", current_readiness), \
+                patch.object(dev, "development_environments", startup_environments):
             descriptor = stack.start()
         browser = auth.Browser(descriptor["gateway_url"], report)
         principals = [principal(stack, browser, n) for n in (1, 2)]
         auth.require(principals[0][0] != principals[1][0], "distinct-canonical-principals")
         inputs = {"gateway_url": descriptor["gateway_url"],
-                  "principals": [str(path) for _, path in principals],
+                  "principals": [str(path) for _, path, _ in principals],
                   "release_inputs": release,
                   "world": "CLOSED", "lifetime": "Valid only while this owned process is holding"}
         if args.concert_bin:
             inputs["concert"] = str(seed_concert(stack, args.concert_bin, report, args.publish_catalog))
+        if args.bootstrap:
+            initialize_profiles(browser, report, principals)
+            concert_child = dev.runtime.Child(stack.cluster, "concert-service",
+                [str(dev.migration.executable(args.concert_bin))], concert_env, stack.ports,
+                ("concert-service:grpc", "concert-service:metrics"),
+                tuple(concert_env.values()))
+            concert_child.wait_listeners()
+            status, _ = dev.runtime.http_probe(concert_child, "metrics", "/readyz")
+            auth.require(status == 200, "actual-concert-ready")
+            event = json.loads((RELEASE / "bootstrap.json").read_bytes())["event"]["event_id"]
+            for ordinal, (user, _, token) in enumerate(principals, 1):
+                result = public_json(browser, report, f"principal-{ordinal}-bootstrap",
+                    f"/api/concert/events/{event}/bootstrap", token)
+                auth.require(result["participant"]["user_id"] == user,
+                             "authenticated-bootstrap-owner")
+            for table in ("concert_participants", "concert_event_admissions", "concert_avatar_settings"):
+                auth.require(stack.cluster.sql("mcr_concert", f"SELECT count(*) FROM {table}") == "2",
+                             "actual-bootstrap-created-two-" + table)
+            report["public_bootstrap"] = "PASS; actual Profile writes and bootstrap-created state"
+            inputs["event_id"] = event
         path = stack.cluster.root / "in01-runtime-inputs.json"
         private_json(path, inputs)
         report.update(result="PARTIAL", principal_count=2, private_inputs=str(path),
@@ -202,6 +282,8 @@ def main():
         deadline = time.monotonic() + args.hold_seconds
         while time.monotonic() < deadline:
             stack.health()
+            if concert_child is not None:
+                concert_child.alive()
             time.sleep(min(0.25, max(0, deadline - time.monotonic())))
     except BaseException as error:
         report["failure"] = (str(error) if isinstance(error, auth.CheckFailure)
@@ -209,6 +291,16 @@ def main():
                              else type(error).__name__)
         report["result"] = "FAIL"
     finally:
+        if concert_child is not None:
+            try:
+                report["concert_stop"] = concert_child.stop()
+                if (report["concert_stop"].get("exit_code") != 0
+                        or report["concert_stop"].get("forced")
+                        or report["concert_stop"].get("unexpected_exit")):
+                    report["result"] = "FAIL"
+            except BaseException:
+                report["concert_stop"] = {"result": "FAIL"}
+                report["result"] = "FAIL"
         try:
             stack.close()
         except BaseException:

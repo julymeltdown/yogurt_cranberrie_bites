@@ -1,23 +1,40 @@
 {
   "actual_http_statuses": {
+    "principal-1-bootstrap": 200,
     "principal-1-login": 200,
+    "principal-1-profile": 200,
     "principal-1-signup": 200,
     "principal-1-verify": 200,
+    "principal-2-bootstrap": 200,
     "principal-2-login": 200,
+    "principal-2-profile": 200,
     "principal-2-signup": 200,
     "principal-2-verify": 200
   },
   "canonical_principal_count": 2,
-  "catalog_command": "SOURCE_ONLY_NOT_COMPILED_NOT_RUN",
+  "catalog_command": "PASS",
   "cleanup": "PASS",
-  "compiled_concert_source": "188db7c9b01ed30d63e2dd3d9272b11dad1bef31",
+  "compiled_artifacts": [
+    {
+      "compile_exit": 0,
+      "name": "concert_service",
+      "sha256": "4091242e1fda6604662a2c463fd2076cccbbdfa7586cc6af111afbde326509ac",
+      "source_commit": "4d5c044fa1b09cfd794a519d963bcd63d22c26d8"
+    },
+    {
+      "compile_exit": 0,
+      "name": "concert-service",
+      "sha256": "b2a4cf43430a92be1a4f29a11bed802148ca75b6ae8b466a5fd4f922c93459b7",
+      "source_commit": "4d5c044fa1b09cfd794a519d963bcd63d22c26d8"
+    }
+  ],
+  "compiled_concert_source": "4d5c044fa1b09cfd794a519d963bcd63d22c26d8",
   "concert_seed": {
-    "binary_sha256": "dff6ba30fead9bedd54208758f2a85e9ca4c2a610bb392749de56065d586471b",
-    "ledger_count": 25,
+    "binary_sha256": "b2a4cf43430a92be1a4f29a11bed802148ca75b6ae8b466a5fd4f922c93459b7",
+    "ledger_count": 27,
     "limits": [
-      "Owner runtime registration pending.",
-      "Participants, admissions and avatars await real authenticated bootstrap.",
-      "No World listener, ticket, or connection has been started."
+      "Participants, admissions and canonical avatars were created by actual public bootstrap after this operator-only seed.",
+      "World owner runtime registration, room/ticket and WS remain pending."
     ],
     "migration_commands_exit": [
       0,
@@ -40,8 +57,10 @@
       "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
       "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
       "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+      "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
       "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
       "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+      "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
       "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
       "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
       "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
@@ -52,16 +71,33 @@
     },
     "result": "PARTIAL",
     "schema_probe": "PASS; missing avatar representation constraint refused",
-    "source_bound_catalog_publication": "NOT_RUN"
+    "source_bound_catalog_publication": "PASS"
   },
+  "concert_stop": {
+    "exit_code": 0,
+    "forced": false
+  },
+  "copied_native_checks": {
+    "participant_live": {
+      "ignored": 4,
+      "passed": 8
+    },
+    "product_rpc": {
+      "passed": 7
+    }
+  },
+  "evidence_script_meaning": "Exact executed script SHA; follow-up only clarified release label and rejects unsuccessful Concert cleanup.",
+  "external_report_sha256": "367694c9515cb415b4e2b68068d8f552372db85a2aaac6b779f580aae992f576",
   "format": "MCR_IN01_PREPARATION_V1",
   "limits": [
     "Auth access tokens were memory-only; no credentials included.",
-    "Profile initialization, actual bootstrap, ticket and WS remain NOT_RUN.",
-    "Migration SQL is separately pinned; old binary cannot qualify SDK3 or new catalog command."
+    "Real Profile writes and public bootstrap passed; rooms/ticket/WS remain NOT_RUN.",
+    "The six existing service binaries retain their separate binary source provenance.",
+    "World production owner activation remains CLOSED pending qualified handoff."
   ],
   "private_root_removed": true,
-  "script_sha256": "1f2eeebd5410d73b315339a2c2e836a076b6ab4ccc8b2267f2f237268ccb3516",
+  "public_bootstrap": "PASS; actual Profile writes and bootstrap-created state",
+  "script_sha256": "2cc4701b7441e18ee4cbb0176bab9b83ffdea1e675421647bba3898daa387bd9",
   "services": [
     {
       "binary_sha256": "67d07d1d212dfcfef4390011e46dffaca973b6a646746a3a162d6167831c7221",
@@ -124,9 +160,15 @@
       "verify_after_restart": "PASS"
     }
   ],
-  "source_checkout_revision": "9b6d925568251860c2061dca26ac090c31914dd3",
+  "source_checkout_revision": "4d5c044fa1b09cfd794a519d963bcd63d22c26d8",
   "source_checkout_revision_meaning": "launcher checkout, not compiled binary revision",
   "status": "PARTIAL",
+  "target_release": {
+    "free_bytes": 46481838080,
+    "released_at_unix": 1793758066.1111958,
+    "source_commit": "4d5c044fa1b09cfd794a519d963bcd63d22c26d8",
+    "target_handles": 0
+  },
   "two_client_world": "NOT_RUN",
   "world_activation": "CLOSED"
 }
