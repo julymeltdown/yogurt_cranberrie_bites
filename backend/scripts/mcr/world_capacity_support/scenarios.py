@@ -214,7 +214,8 @@ class Client:
 
     async def bootstrap(self):
         status, document = await self.runner.http("bootstrap", self.token)
-        check(status == 200, "public-bootstrap-status")
+        integer(status, 100, 599, "public-bootstrap-status")
+        check(status == 200, f"public-bootstrap-status-{status}")
         actor = self.runner.contracts.bootstrap(document, self.runner.config["event_id"])
         check(self.actor in (None, actor), "principal-changed")
         expected = self.runner.config["bootstrap"]
@@ -225,7 +226,8 @@ class Client:
         room = self.runner.config["rooms"][room_index]["room_id"]
         request = {"room_id": room, **dict(zip(PIN_HTTP, self.runner.pins))}
         status, value = await self.runner.http("world-tickets", self.token, request)
-        check(status == 200, "public-ticket-status")
+        integer(status, 100, 599, "public-ticket-status")
+        check(status == 200, f"public-ticket-status-{status}")
         self.runner.contracts.validate(value, "WorldTicketResponse")
         check(value["event_id"] == self.runner.config["event_id"] and all(value[k] == v for k, v in request.items()), "ticket-binding")
         expiry = datetime.fromisoformat(value["expires_at"])
@@ -416,7 +418,8 @@ class Runner:
         check(len(self.by_actor) == len(self.clients), "distinct-canonical-principals")
         for client in self.clients:
             status, catalog = await self.http("rooms", client.token)
-            check(status == 200, "public-rooms-status")
+            integer(status, 100, 599, "public-rooms-status")
+            check(status == 200, f"public-rooms-status-{status}")
             self.contracts.validate(catalog, "WorldRooms")
             check(catalog["event_id"] == self.config["event_id"], "room-catalog-event")
             rooms = {r["room_id"]: r for r in catalog["items"]}
