@@ -1,0 +1,80 @@
+{
+  "task": "FE17",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "criteria": [
+    {
+      "criterion": "Snapshot baseline, missing delta resync, epoch replacement/ghost withdrawal",
+      "existingEvidence": "fe17-baseline-recovery:183 focused logic/contract tests; fe17-client-failure-journey actual-App local-peer native3widths",
+      "remaining": "Preserve unchanged behavior; changed prediction must reset with same baseline fences",
+      "status": "EXISTING_CLIENT_EVIDENCE"
+    },
+    {
+      "criterion": "Remote interpolation",
+      "existingEvidence": "world-replication bounded100ms/no extrapolation; native actualPhaserintermediate/target observations",
+      "remaining": "Preserve presentation endpoints; new selfprediction must not alter peeridentity/membership",
+      "status": "EXISTING_CLIENT_EVIDENCE"
+    },
+    {
+      "criterion": "Bounded prediction and reconciliation",
+      "existingEvidence": "64pending seq ledger/ACKprune and authoritative selfcorrection, but spatialPrediction unavailable",
+      "remaining": "Negotiated source and changed nativeChrome5scenarioPASS; normalRootpublication withC05ownerinputs/canonicalreceipt remains. ExternalRust/Auth/multiuser/visualacceptance not certified.",
+      "status": "VALIDATED_AWAITING_PUBLICATION"
+    },
+    {
+      "criterion": "Visibility reconnect/admission timing",
+      "existingEvidence": "Native trusted visibility two connections/fresh ticket/neutral seq1; targetedgap fixture waitFor readinessfixed",
+      "remaining": "Actualnative visibility/freshticket/neutral seq1/nointeractionreplayPASS; oldrealhashRED/current23 sourceevidence preserved.",
+      "status": "SOURCE_AND_NATIVE_QUALIFIED"
+    },
+    {
+      "criterion": "No old pickup/reservation replay",
+      "existingEvidence": "Intent schema rejects additional domain commands, resync/hide clears one-shot world intent; no HTTPmutationqueue",
+      "remaining": "Preserve intent-only boundary; real durableHTTPrecovery belongs actual domain/integration owners",
+      "status": "EXISTING_CLIENT_EVIDENCE"
+    },
+    {
+      "criterion": "Publication and original scope accounting",
+      "existingEvidence": "Earlier boundedgoals/pins retained; not wholeFE17 acceptance",
+      "remaining": "Exact15path handoff+newdocs/evidence toRoot153, canonicalnormalnonforcepublicationreceipt; originalgoalactive, no review/ACKgate.",
+      "status": "VALIDATED_AWAITING_PUBLICATION"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "frontend/src/world/network/replication.ts",
+      "sourceCommit": "79e45560b9fff757f4e4caf541cf5308d4856587",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    },
+    {
+      "path": "frontend/src/world/entities/replicated.ts",
+      "sourceCommit": "79e45560b9fff757f4e4caf541cf5308d4856587",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/replication.test.ts",
+      "sourceCommit": "14c5c3204bfd44e30af53d96c2bfef89fb509fee",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    },
+    {
+      "path": "frontend/src/world/network/transport/engine.ts",
+      "sourceCommit": "d44b725a8fdfb7bf63d5036b0c6b0453c15a36fc",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "sourceCommit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "sourceCommit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    },
+    {
+      "path": "contracts/assets/v1/map-manifest.schema.json",
+      "sourceCommit": "12acc2d7a93701d89aad63ea7c3376f91b7fcb13",
+      "reason": "Read-only original source/contract dependency; exact application grant pending"
+    }
+  ],
+  "execution": "231distinct sourcecases incrementalPASS;981applicationfiles types0/lint0/syntax0/engineeringwhitespace0/plan0. NativeChrome5scenariosPASS at62f1c3a3; originalguardianfailure/census retained, sameclock/caps. ActualNativeFULL18:26:20.848203UTC; nojobheld. NormalRootpublicationreceipt pending."
+}

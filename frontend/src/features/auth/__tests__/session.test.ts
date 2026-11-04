@@ -3,6 +3,7 @@ import { QueryObserver } from '@tanstack/react-query'
 import { createSessionController, type SessionController } from '../model/session'
 import { TransportError } from '../../../shared/api/errors'
 import { authResponse, capabilities, deferred, eventId, fixture, isolatedCookiePolicy, userId } from './fixtures/data'
+import { admission } from './enrollment-consent/fixtures'
 const controllers: SessionController[] = []
 beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
 afterEach(() => { controllers.splice(0).forEach(c => c.dispose()); vi.useRealTimers(); vi.unstubAllGlobals() })
@@ -12,6 +13,7 @@ function setup(handler: (request: Request) => Promise<Response> | Response = () 
     const request = input as Request, path = new URL(request.url).pathname
     if (path === '/api/auth/capabilities') return Response.json(capabilities())
     if (path === '/api/auth/login') return Response.json(authResponse())
+    if (path === '/api/auth/enrollment/admission') return Response.json(admission())
     return handler(request)
   })
   const controller = createSessionController({ eventId, fetch, cookiePolicy, qualifiedRefresh, timeoutMs: 1000 })
@@ -74,7 +76,7 @@ describe('session authority, privacy and stale completion fences', () => {
   it('makes a peer cookie writer revoke local access and ignores a late private read', async () => {
     const delayed = deferred<Response>(), { controller: c, cookiePolicy, fetch } = setup(() => delayed.promise)
     await login(c); const result = c.request(privateRead()).catch(error => error)
-    await vi.waitFor(() => expect(fetch).toHaveBeenCalledTimes(3))
+    await vi.waitFor(() => expect(fetch).toHaveBeenCalledTimes(4))
     cookiePolicy.invalidate(); delayed.resolve(Response.json({ private: 'late' }))
     expect(await result).toBeInstanceOf(TransportError)
     expect(c.session.read().userId).toBeNull(); expect(c.read().notice).toBe('changed')
@@ -82,7 +84,7 @@ describe('session authority, privacy and stale completion fences', () => {
   it('clears on revoked auth without attempting production refresh or replay', async () => {
     const { controller: c, fetch } = setup(unauthorized); await login(c)
     await expect(c.request(privateRead())).rejects.toMatchObject({ status: 401 })
-    expect(c.session.read().accessToken).toBeNull(); expect(fetch).toHaveBeenCalledTimes(3)
+    expect(c.session.read().accessToken).toBeNull(); expect(fetch).toHaveBeenCalledTimes(4)
     expect(fetch.mock.calls.some(([r]) => (r as Request).url.endsWith('/refresh'))).toBe(false)
   })
   it('rejects wrong-context or malformed full bootstrap and clears private authority', async () => {
@@ -99,10 +101,10 @@ describe('session authority, privacy and stale completion fences', () => {
   })
   it('expires memory authority without automatic renewal', async () => {
     const short = authResponse(); short.expiresIn = 1
-    const cookiePolicy = isolatedCookiePolicy(), f = vi.fn<typeof globalThis.fetch>(async input => (input as Request).url.endsWith('capabilities') ? Response.json(capabilities()) : Response.json(short))
+    const cookiePolicy = isolatedCookiePolicy(), f = vi.fn<typeof globalThis.fetch>(async input => (input as Request).url.endsWith('capabilities') ? Response.json(capabilities()) : (input as Request).url.endsWith('/admission') ? Response.json(admission()) : Response.json(short))
     const next = createSessionController({ eventId, fetch: f, cookiePolicy }); controllers.push(next); next.start(); await login(next)
     await vi.waitFor(() => expect(next.read().notice).toBe('expired'), { timeout: 1500 })
-    expect(next.session.read().accessToken).toBeNull(); expect(f).toHaveBeenCalledTimes(2)
+    expect(next.session.read().accessToken).toBeNull(); expect(f).toHaveBeenCalledTimes(3)
   })
 })
 describe('explicitly qualified refresh path', () => {
@@ -128,7 +130,7 @@ describe('explicitly qualified refresh path', () => {
   it('never refreshes or replays a mutation, even under qualified read recovery', async () => {
     const { controller: c, fetch } = setup(unauthorized, true); await login(c)
     await expect(c.request({ ...privateRead(), path: `/api/concert/events/${eventId}/me/preferences`, method: 'PATCH', body: { json: { sound_enabled: true } } })).rejects.toMatchObject({ status: 401 })
-    expect(fetch).toHaveBeenCalledTimes(3); expect(c.session.read().userId).toBeNull()
+    expect(fetch).toHaveBeenCalledTimes(4); expect(c.session.read().userId).toBeNull()
   })
   it('failed refresh clears and concurrent callers cannot retry the same cookie', async () => {
     const { controller: c, fetch } = setup(unauthorized, true); await login(c)
@@ -147,7 +149,7 @@ describe('explicitly qualified refresh path', () => {
 })
 
 describe('R1 authorization denial preserves authenticated scope', () => {
-  it.each(['PERMISSION_DENIED', 'CONSENT_REQUIRED'])('preserves private data, drafts and current world scope on feature 403 %s without refresh/replay', async reason => {
+  it.each(['PERMISSION_DENIED', 'CONSENT_REQUIRED'])('retains identity and applies the server-specific privacy boundary on feature 403 %s without refresh/replay', async reason => {
     const { controller: c, fetch } = setup(() => Response.json({ code: 'DENIED', message: 'safe server envelope', details: { reason } }, { status: 403 }), true)
     await login(c)
     const before = c.session.read(), cleanup = vi.fn()
@@ -157,10 +159,12 @@ describe('R1 authorization denial preserves authenticated scope', () => {
     const draft = { value: 'retained draft' }; c.privacy.registerCleanup(() => { draft.value = '' })
     await expect(c.request(privateRead())).rejects.toMatchObject({ status: 403, server: { reason } })
     expect(c.session.read()).toBe(before); expect(before.signal.aborted).toBe(false)
-    expect(c.read().readiness).toBe('ready'); expect(c.privacy.isCurrent(c.privacy.capture())).toBe(true)
-    expect(c.queryClient.getQueryData(options.queryKey)).toBe('retained private data')
-    expect(draft.value).toBe('retained draft'); expect(cleanup).not.toHaveBeenCalled()
-    expect(fetch).toHaveBeenCalledTimes(3)
+    expect(c.read().readiness).toBe(reason === 'CONSENT_REQUIRED' ? 'unavailable' : 'ready')
+    expect(c.privacy.isCurrent(c.privacy.capture())).toBe(true)
+    expect(c.queryClient.getQueryData(options.queryKey)).toBe(reason === 'CONSENT_REQUIRED' ? undefined : 'retained private data')
+    expect(draft.value).toBe(reason === 'CONSENT_REQUIRED' ? '' : 'retained draft')
+    expect(cleanup).toHaveBeenCalledTimes(reason === 'CONSENT_REQUIRED' ? 1 : 0)
+    expect(fetch).toHaveBeenCalledTimes(4)
     expect(fetch.mock.calls.some(([r]) => (r as Request).url.endsWith('/refresh'))).toBe(false)
   })
   it.each(['PERMISSION_DENIED', 'CONSENT_REQUIRED'])('maps bootstrap 403 %s to denied while preserving canonical identity', async reason => {
@@ -168,12 +172,12 @@ describe('R1 authorization denial preserves authenticated scope', () => {
     await login(c); const scope = c.session.read()
     await expect(c.loadBootstrap({ ...scope, userId, eventId }, new AbortController().signal)).rejects.toMatchObject({ name: 'ShellLoadError', reason: 'denied' })
     expect(c.session.read()).toBe(scope); expect(scope.signal.aborted).toBe(false)
-    expect(c.read().readiness).toBe('ready'); expect(fetch).toHaveBeenCalledTimes(3)
+    expect(c.read().readiness).toBe(reason === 'CONSENT_REQUIRED' ? 'unavailable' : 'ready'); expect(fetch).toHaveBeenCalledTimes(5)
   })
   it('rejects inherited refresh configuration before transport can bypass cookie coordination', async () => {
     const { controller: c, fetch } = setup(unauthorized, true); await login(c)
     const inherited = Object.assign(Object.create({ refresh: 'once' }), privateRead())
     await expect(c.request(inherited)).rejects.toMatchObject({ kind: 'invalid-request' })
-    expect(fetch).toHaveBeenCalledTimes(2); expect(c.read().readiness).toBe('ready')
+    expect(fetch).toHaveBeenCalledTimes(3); expect(c.read().readiness).toBe('ready')
   })
 })

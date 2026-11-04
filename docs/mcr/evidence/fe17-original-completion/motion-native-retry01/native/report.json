@@ -1,0 +1,99 @@
+{
+  "result": "PASS",
+  "revision": "62f1c3a37eb755ef4cf9292db65443ed2001589b",
+  "sourceHashes": {
+    "src/world/network/replication.ts": "23a1d227fb66837cdabff76e723689c2bb58de93b0363361d26769c7d6f69951",
+    "src/world/network/prediction.ts": "e11ebca3012d4002958e5d0ff97cef569f382f4be2ec5b980fe569f1376ff01f",
+    "src/world/entities/replicated.ts": "c4f517d64fc862d033e81b14405d879545961988fd6b45b4f6ca97364122bb9d",
+    "src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "src/world/network/__tests__/fixtures/replication-browser.ts": "f72322917fc7f479f45ab8b3db2f9a23b2ad8b112e3179fef09f3b544b741dff",
+    "src/world/network/__tests__/fixtures/replication-browser.html": "7c9d194dc4b25d07b01af84131f03ae96f4ae2e889c3f2e58e9af8a980075c8e",
+    "src/world/network/__tests__/replication-browser.mjs": "461b25d86cd8079d82c1a044d3bfc22c04a750a5c65128ed1e510d336ba4d8aa",
+    "src/world/network/WorldTransport.ts": "bb2d81d2a857ee803702edc7d59d1d2c3706a174c6faa226f13bb7c27fe19708",
+    "src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226",
+    "src/world/network/transport/engine.ts": "347b796a9270250c0fe2573bce4c456932f0bac1e84111984a33769977ca80e0",
+    "src/world/network/transport/contract.ts": "5dca79e4627decb98828a1f323c408fbbe98fa32c1e0ff3bce6dec8d4d4ecb1b",
+    "src/world/network/transport/wire-types.ts": "f5edb775204f7bd01b7c278d565f046405102b10c662684e3a45593897ac5db2",
+    "src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1"
+  },
+  "scope": "FE17 negotiated bounded self presentation, synthetic C05 peer and native WS lifecycle; no renderer/art/Rust/backend acceptance",
+  "checks": [
+    "Native socket admission, public roster projection, ping response and input acknowledgement",
+    "Opt-in real WebCrypto geometry binding, bounded tentative self position and complete authoritative correction without self upsert",
+    "Gap drives one actual resync; replacement snapshot removes ghosts",
+    "Visibility boundary gets one fresh ticket/connection, with no old interaction or movement replay",
+    "Canonical owner cancellation and disposal leave no timers, retries or later sink commits"
+  ],
+  "errors": [],
+  "port": 64377,
+  "browser": "156.0.8078.80",
+  "predicted": {
+    "player": {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "displayName": "Raven",
+      "position": {
+        "x": 48,
+        "y": 48
+      },
+      "facing": "down",
+      "moving": false,
+      "avatar": {
+        "revision": 1,
+        "config": {
+          "contract_version": "1.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "avatar_fixture",
+          "manifest_version": 1,
+          "item_ids": {
+            "body": "body_fixture",
+            "eyes": "eyes_fixture",
+            "hair": "hair_fixture",
+            "outfit": "outfit_fixture",
+            "accessory": "accessory_fixture"
+          },
+          "skin_tone_id": "tone_fixture"
+        }
+      }
+    },
+    "position": {
+      "x": 56,
+      "y": 48
+    },
+    "self": true
+  },
+  "corrected": {
+    "player": {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "displayName": "Raven",
+      "position": {
+        "x": 52,
+        "y": 48
+      },
+      "facing": "down",
+      "moving": false,
+      "avatar": {
+        "revision": 1,
+        "config": {
+          "contract_version": "1.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "avatar_fixture",
+          "manifest_version": 1,
+          "item_ids": {
+            "body": "body_fixture",
+            "eyes": "eyes_fixture",
+            "hair": "hair_fixture",
+            "outfit": "outfit_fixture",
+            "accessory": "accessory_fixture"
+          },
+          "skin_tone_id": "tone_fixture"
+        }
+      }
+    },
+    "position": {
+      "x": 52,
+      "y": 48
+    },
+    "self": true
+  },
+  "cleanup": "PASS"
+}

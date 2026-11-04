@@ -1,0 +1,53 @@
+{
+  "id": "ROOT-SOCIAL-TAIL-SOURCE-A-20261104T1757Z",
+  "task": "ROOT-SOCIAL-POLICY",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T17:58:08.411694+00:00",
+  "head": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "kind": "source",
+  "startupFloorBytes": 12884901888,
+  "hardDeadline": "2026-11-04T18:01:08.411694+00:00",
+  "cleanupSeconds": 60,
+  "limits": {
+    "processes": 16,
+    "rssBytes": 3758096384,
+    "wholeBytes": 2147483648,
+    "tempBytes": 100663296,
+    "outputBytes": 25165824,
+    "newTotalBytes": 134217728
+  },
+  "preflight": {
+    "freeBytes": 20550275072,
+    "otherConservativeWholeBytes": 4294967296,
+    "otherOfferedNewBytes": 385875968,
+    "ownNewBytes": 134217728,
+    "remainingBytes": 16121090048,
+    "newReadset": "Root policy/main +2090fd+ART06d8+privateUI3a qualified six readonly postimages;75 priorcases unchanged; oldE2Ehelper alignedcanonical",
+    "authorization": "Fresh1757SourceAafter53dFULL;230SourceBonly; CommunityoneFE39browserpotential"
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.json",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--allowImportingTsExtensions",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+      "--deny-warnings",
+      "src/main.tsx",
+      "src/app/ports.ts",
+      "src/app/world-entry/production.ts",
+      "src/app/world-entry/social-availability.ts",
+      "src/world/composition/index.ts",
+      "src/world/composition/policy.ts",
+      "src/world/composition/__tests__/social-policy"
+    ]
+  ]
+}

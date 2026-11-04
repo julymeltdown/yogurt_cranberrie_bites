@@ -45,9 +45,14 @@ export function createEntityProjection(interpolationMs: number) {
         rows.set(player.userId, { player: owned, from: previous ? position(previous, now) : owned.position, at: now })
       }
     },
-    render(now: number): readonly ReplicatedEntity[] {
+    /** Complete C05 self anchors may arrive without a self upsert. */
+    anchorSelf(position: WorldPosition) {
+      const row = rows.get(selfId)
+      if (row) row.player = immutable({ ...row.player, position: structuredClone(position) })
+    },
+    render(now: number, predictedSelf: WorldPosition | null = null): readonly ReplicatedEntity[] {
       return immutable([...rows.values()].sort((a, b) => a.player.userId.localeCompare(b.player.userId))
-        .map(row => ({ player: row.player, position: position(row, now), self: row.player.userId === selfId })))
+        .map(row => ({ player: row.player, position: row.player.userId === selfId && predictedSelf ? predictedSelf : position(row, now), self: row.player.userId === selfId })))
     },
   }
 }

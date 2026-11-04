@@ -1,0 +1,50 @@
+{
+  "owner": "developer204",
+  "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "rootCurrentDocsOnly": "3fc96bd5",
+  "featureSourceRemains": "4f2ff8e4b129d396dfc50440c19aee7fa8e70e4d",
+  "paths": [
+    {
+      "path": "frontend/src/features/auth/model/session.ts",
+      "previousSha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+      "intakeSha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+      "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "authority": "Exact Root153 STOP-transfer and four-file source-intake; preserve all unrelated source interfaces/bytes"
+    },
+    {
+      "path": "frontend/src/app/PublicBoundary.tsx",
+      "previousSha256": "c7bd2c8e180f0691d03ebd584e6c41b4dfafafd5462e650428cf523d732152d4",
+      "intakeSha256": "c7bd2c8e180f0691d03ebd584e6c41b4dfafafd5462e650428cf523d732152d4",
+      "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "authority": "Exact Root153 STOP-transfer and four-file source-intake; preserve all unrelated source interfaces/bytes"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "previousSha256": "4e8bcf73905f95de244b02e7225fdc9527f68fd120b62854aa4e0175c54846c7",
+      "intakeSha256": "4d5bb4644423b32529b629d4e6c0fcb53620253a8b424888b7191c6c0ea72904",
+      "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "authority": "Exact Root153 STOP-transfer and four-file source-intake; preserve all unrelated source interfaces/bytes"
+    },
+    {
+      "path": "frontend/src/app/ports.ts",
+      "previousSha256": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565",
+      "intakeSha256": "75430066174a9fffe54c19eca6f7f92e4e366cd898ed1ded1983e2c2a16c0a82",
+      "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "authority": "Exact Root153 STOP-transfer and four-file source-intake; preserve all unrelated source interfaces/bytes"
+    }
+  ],
+  "protected": "No router/main/postimage/other peer/sourcepack/manifest/lock edits. ports/WorldShell changes only consent hunks after exact authorized baseline import.",
+  "readonlyDependencyIntake": {
+    "path": "frontend/src/world/composition/policy.ts",
+    "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+    "blob": "33534a8d686d7b3f8645be40e6037854fda2da22",
+    "sha256": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd",
+    "authoringOwner": "Root153",
+    "publicationOwner": "Root153; not an FE10 authored patch",
+    "authority": "Exact Root readonly single-module intake; no broad merge",
+    "lookupCorrection": "Previous non-extension pathspec was not the exact file path",
+    "publishedCommit": "f3fbedf1",
+    "publishedSha256Verified": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd",
+    "publicationStatus": "Root-reported canonical and exact bytes matched using git show; not FE10 authored"
+  }
+}

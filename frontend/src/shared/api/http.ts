@@ -120,6 +120,16 @@ const publicAuthCommands = new Set([
   '/api/auth/email/signup', '/api/auth/email/verify', '/api/auth/email/resend', '/api/auth/login',
   '/api/auth/password/reset/request', '/api/auth/password/reset/confirm', '/api/auth/refresh', '/api/auth/logout',
 ])
+// Frozen ed50c2f1 enrollment operations only. Body idempotency is not a domain header.
+const enrollmentOperations: Readonly<Record<string, readonly [HttpRequest<unknown>['method'], HttpRequest<unknown>['access']]>> = {
+  '/api/auth/enrollment/policy': ['GET', 'public'],
+  '/api/auth/enrollment/attempts': ['POST', 'public'],
+  '/api/auth/enrollment/signup': ['POST', 'public'],
+  '/api/auth/enrollment/verify': ['POST', 'public'],
+  '/api/auth/enrollment/resend': ['POST', 'public'],
+  '/api/auth/enrollment/admission': ['GET', 'protected'],
+  '/api/auth/enrollment/consent': ['POST', 'protected'],
+}
 
 function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
   const { path, method, access } = request
@@ -129,7 +139,9 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
     || !['public', 'protected'].includes(access) || !['auth', 'core', 'domain'].includes(request.errorFamily)
     || typeof request.decode !== 'function') throw new TransportError('invalid-request')
   if (path.startsWith('/api/auth/')) {
-    const allowed = path === '/api/auth/capabilities' ? method === 'GET' && access === 'public'
+    const enrollment = Object.hasOwn(enrollmentOperations, path) ? enrollmentOperations[path] : undefined
+    const allowed = enrollment ? method === enrollment[0] && access === enrollment[1]
+      : path === '/api/auth/capabilities' ? method === 'GET' && access === 'public'
       : publicAuthCommands.has(path) ? method === 'POST' && access === 'public'
         : path === '/api/auth/account' ? ['GET', 'DELETE'].includes(method) && access === 'protected'
           : path === '/api/auth/account/deletion' && method === 'GET' && access === 'protected'
@@ -297,7 +309,7 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
       dispatched = true
       const pending = ky(prepared.url, {
         method: request.method, headers, ...(prepared.body === undefined ? {} : { body: prepared.body }),
-        credentials: 'same-origin', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer',
+        credentials: Object.hasOwn(enrollmentOperations, request.path) ? 'include' : 'same-origin', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer',
         retry: 0, throwHttpErrors: false, timeout: false, signal: lifetime.signal,
         ...(options.fetch ? { fetch: options.fetch } : {}),
       }).then(response => {

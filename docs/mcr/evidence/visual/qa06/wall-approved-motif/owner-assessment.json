@@ -1,0 +1,155 @@
+{
+  "task": "QA06",
+  "case": "QA06-WALL-APPROVED-MOTIF",
+  "status": "MOCK_READY",
+  "candidate": "5b0c5136dcb173f8af79a25b11dc960ba58a0f2b",
+  "canonicalBase": "7d2f948a2367e951fc484f7f7f390ba9c40facfd",
+  "originalGoal": {
+    "createdAt": 1793759287,
+    "actualStatusReadBack": "BLOCKED",
+    "aligned": true,
+    "unfinished": true,
+    "reset": false
+  },
+  "qualification": "ACTUAL_MAIN_CANONICAL_UI_LOGIN_EXISTING_HTTP_C05_FIXTURE_APPROVED_ART_AS_SYNTHETIC_C04_SNAPSHOT_NOT_LIVE",
+  "coverage": {
+    "route": "/wall",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "height": 844,
+    "short390Height": 420,
+    "era": "REVENGE",
+    "eraReason": "Unchanged incumbent fixture default. Earlier planned PARADE superseded; THE BLACK PARADE is independent event title.",
+    "physicalIOS": "NOT_RUN",
+    "physicalAndroid": "NOT_RUN",
+    "softwareKeyboard": "NOT_RUN",
+    "hardwareSafeArea": "NOT_RUN",
+    "otherEras": "NOT_RUN",
+    "fullReference": "NOT_ACCEPTED",
+    "full61IA": "NOT_RUN"
+  },
+  "approvedPack": {
+    "path": "frontend/public/wall/initial-motif-v1/",
+    "manifestSha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "pixelsSha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721",
+    "paletteSha256": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d",
+    "expected128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590"
+  },
+  "unchangedFixture": {
+    "path": "/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts",
+    "sha256": "e2af02c405caef3143e7cb0c5eddc69b2ecdf14a5bf6e27d91dce03b2c5376ee"
+  },
+  "existingPlacementReceipt": {
+    "path": "docs/mcr/evidence/mural-production-binding/backoff-native-01/run/capture/report.json",
+    "sha256": "cec3d134320c1012dc708dcdefac83d5445fb4215323f28ae859da17257bec3d"
+  },
+  "custody": {
+    "sourceFiles": 444,
+    "servedAssets": 23,
+    "allExact": true,
+    "all8PNGHashesDimensions": "PASS",
+    "pngBytes": 247712,
+    "original70Files": "PASS unchanged byte for byte",
+    "protectedProductSource": "No diff",
+    "docsSource": "Untouched; plan archive check passed"
+  },
+  "behavior": {
+    "all3Cases": "PASS",
+    "editor128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590",
+    "toolbar": "Five actual controls44px/center-hit after scroll, not every toolbar action",
+    "palette": "16colors; first/last44px and real center hit after horizontal scroll",
+    "headerImages": "All3 loaded positive naturalWidth",
+    "bounds": "No horizontal overflow; panel y3/bottom841 normal and417 reduced",
+    "world": "Same existing canvas; peak1socket; worldProof1mural/1game/1canvas",
+    "logout": "Canonical UI; zero sockets/blobURLs/Worldcanvas",
+    "domainMutation": "Only existing login/world-ticket requests; no added nonGET after login until logout",
+    "HomeFocus": "Diagnostic remains Color15; not keyboard-navigation acceptance or proved defect",
+    "worldMuralPixelOracle": "NOT_RUN; equality measured in editor only"
+  },
+  "personalInspection": {
+    "images": [
+      "wall-approved-motif-360-844.png",
+      "wall-approved-motif-390-420.png",
+      "wall-approved-motif-390-844.png",
+      "wall-approved-motif-430-844.png"
+    ],
+    "observations": [
+      "Approved cream petals/red center motif is legible/proportional in actual editor across all3widths with real toolbar/palette/state labels.",
+      "At390x420 real scrolling exposes lower canvas/palette/status/coordinates and reachable Fit; entire motif not simultaneously visible.",
+      "Actual event/revision10/editable512cellbudget/16colors are fixture facts, not invented live data.",
+      "No new CSS/rendering/art/static screenshot substitution. Full-reference/all-era acceptance remains open."
+    ]
+  },
+  "harnessFixes": {
+    "round01": "All3 runtime cases PASS in partial report; native143 after >69s own Vite shutdown hang; only owned Node62302 terminated; all evidence retained.",
+    "cause": "Suspected unnecessary SSR module-runner teardown; not proved root cause or product defect.",
+    "round02": "Reuse pinned unchanged-fixture placement receipt, remove unnecessary SSR recomputation, bound Vite close5s. Actual close resolved2ms; exit0. Same accepted fixed clock,8totalPNG.",
+    "runtimeRunnerSha256": "f82c76cb6f60c025878060383ff2908e25a474483ab0da9b7a6919915a3e3fdf",
+    "finalRunnerSha256": "2332a308e1c4ecd1a23d77be703ebb3d94d898c1489b565ead881a606f1d9023",
+    "postRunSerializationOnly": "Exact successful report.raw.txt preserves trailing literal backslash-n; report.json changes only suffix to newline. Final source corrects only that serializer; reconstruction SHA equals actual runtime source. No additional runtime warranted for newline-only fix.",
+    "rawReportSha256": "a7944123b9cf42e7bcdcb75abc3ec43f19e55e6d884fd6cc587fb2eddddad485",
+    "normalizedReportSha256": "96902f3edd6b8c9dae7294ca5e5ffb2a37bca93b6635b5456f0b8fc901f6757a"
+  },
+  "commands": {
+    "round01": [
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-seed.mjs"
+      ],
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-seed.mjs"
+      ]
+    ],
+    "round01Exit": 143,
+    "round02": [
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-seed.mjs"
+      ],
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-seed.mjs"
+      ]
+    ],
+    "round02Exit": 0,
+    "pythonAST": "PASS",
+    "planCheckExit": 0,
+    "planCheckCommand": "python3 scripts/mcr/check-plan.py",
+    "planCheckResult": "PASS planning/provenance only"
+  },
+  "mapStageReuse": {
+    "source": "1d34b5af06016058ca8d40d71ed62ea0d440be02",
+    "published": "aeb7512b6949ef02aaf4c8d6c67f7efb94964728",
+    "native02Candidate": "fbbfe633",
+    "native02ReportSha256": "af1e02398c0928e090aa0af64a0de93533bd7722c59536e3d63a3e27a33795fa",
+    "native01": "OWNER_REJECTED_NOT_ACCEPTANCE",
+    "all10ART06SourcePacks": "UNCHANGED",
+    "twoConsumerPostimages": "INTENTIONALLY_CHANGED; not all old36consumerpins unchanged",
+    "newDensityC053": "NOT_QUALIFIED; old1822INVALIDADMISSION closed/FULL; not a current ART App input",
+    "newMapJob": false
+  },
+  "publication": {
+    "publisher": "Root153",
+    "routing": "Direct normal validated postimage handoff, no king/SL/QA review or acknowledgment",
+    "priorAllTenSource": "4d69aa9185592980d3e6b614a7cd5c6f30a2a12d",
+    "priorAllTenPublished": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+    "priorReflowPublished": "d2849226cc7b94ae519e6a3b71321ed1fbaa3c23",
+    "proofOnlySuccessorRequired": false
+  },
+  "limits": [
+    "Exact published art as explicitly synthetic server read data, not backend provisioning/real authority/live snapshot.",
+    "Existing actual-main/Auth/C05/placement fixture unchanged; no Auth/provider/admission override or application/renderer source overlay.",
+    "Only new approved-motif state at360/390/430 REVENGE; no unchanged all-screen matrix or other-era claim.",
+    "No paint/fill/erase/undo/submit/save/upload. Toolbar/palette/fit and DOM focus/scroll only.",
+    "Reduced420 viewport is not a physical mobile keyboard or hardware safe-area check.",
+    "Whole original QA06, full61IA/live/full-reference/device acceptance remain open.",
+    "Original physical connection question remains pending; do not repeat or poll. Last Android enumeration0devices.",
+    "Other ready scope reuses responsible-owner qualified pins; no duplicate matrix, and client-motion evidence is not realRust/Auth-motion acceptance."
+  ]
+}

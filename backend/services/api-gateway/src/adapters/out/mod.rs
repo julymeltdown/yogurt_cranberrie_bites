@@ -25,3 +25,5 @@ pub mod infrastructure_error;
 pub mod owner_resource_client;
 
 pub mod fanout_authority;
+
+pub mod enrollment_policy;

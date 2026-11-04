@@ -1,0 +1,12 @@
+{
+  "automatedStatus": "PASS",
+  "ownerVisualDisposition": "FIX_REQUIRED_NOT_FOR_PUBLICATION",
+  "opened": [
+    "stage-placement-parade-390.png",
+    "forced-focus-parade-390.png"
+  ],
+  "finding": "Stage marker moved to lower gift/meet area with a long leader despite valid non-overlapping hit boxes. Coarse-grid priority chooses a distant vacant grid cell before nearby obstacle-edge candidates.",
+  "fix": "Qualified composition opts into nearest valid anchor/edge candidate selection; v1 grid preference remains unchanged. Add production item-order and actual-native stage-proximity assertions.",
+  "capacity": "OldBrowser2actualFULL18:12:27.797160Z; fresh offer required for changed source/native checks.",
+  "noReplay": "Retain this run byte-exact; only changed placement candidate may be rerun with fresh bounded offer."
+}

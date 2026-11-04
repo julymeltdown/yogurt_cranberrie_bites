@@ -2,34 +2,49 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { createMemorySession } from '../../../shared/api/http'
 import { TransportError, parseServerError } from '../../../shared/api/errors'
 import { MockWorldClock, MockWorldTransport } from '../mock'
-import { createWorldReplication, type ReplicationView, type WorldReplication } from '../replication'
-import type { Snapshot, WorldPlayer, WorldTicketResponse, WorldTransportOptions } from '../WorldTransport'
+import { createWorldReplication, type ReplicationOptions, type ReplicationView, type WorldReplication } from '../replication'
+import type { MotionProfile, Snapshot, WorldPlayer, WorldTicketResponse, WorldTransportOptions } from '../WorldTransport'
 import movement from '../../../../../contracts/fixtures/realtime/movement-heartbeat.json'
 import ticket from '../../../../../contracts/fixtures/realtime/ticket-response.json'
 import filtered from '../../../../../contracts/fixtures/realtime/filtered-viewers.json'
+import manifest from '../../../../../contracts/fixtures/assets/map-manifest.json'
+import negotiated from '../../../../../contracts/fixtures/realtime/motion-v1/negotiated.json'
 
 const initial = movement.messages[1]!.message as Snapshot
 const resources = { eventId: initial.eventId, roomId: initial.roomId, mapId: initial.mapId, mapRevision: initial.mapRevision,
   avatarManifestId: initial.avatarManifestId, avatarManifestVersion: initial.avatarManifestVersion }
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`
-const flush = async () => { for (let i = 0; i < 20; i++) await Promise.resolve(); await new Promise(r => setTimeout(r, 5)) }
+const motionProfile = negotiated.messages[1]!.message.motionProfile as MotionProfile
+// Original C05 fixture coordinates are protocol examples. Use the C06 oracle's
+// walkable point for actual collision qualification; preserve shared fixture bytes.
+const motionInitial: Snapshot = { ...initial, players: initial.players.map(player => player.userId === initial.selfUserId
+  ? { ...player, position: { x: 48, y: 48 } } : player), motionProfile,
+  selfMotion: { serverTick: 0, position: { x: 48, y: 48 }, consumedInputSeq: 0, inputAppliedTicks: 0, droppedTicks: 0, heldInput: null } }
+const motionOptions = { motion: { version: '1.0.0' as const, map: manifest } }
 const owned: WorldReplication[] = []
 afterEach(() => owned.splice(0).forEach(c => c.dispose()))
-function setup(patch: Partial<WorldTransportOptions> = {}, sink?: (view: ReplicationView) => void, admitted = initial) {
+function setup(patch: Partial<WorldTransportOptions> = {}, sink?: (view: ReplicationView) => void, admitted = initial, replication: Pick<ReplicationOptions, 'motion'> = {}) {
   const session = createMemorySession(); session.replace(0, { userId: admitted.selfUserId, eventId: resources.eventId, accessToken: 'synthetic-only-token' })
   const clock = new MockWorldClock(Date.parse(ticket.server_time)), commits: ReplicationView[] = []
   let issued = 0, requests = 100
   const acquire = vi.fn(async ({ body }: Parameters<WorldTransportOptions['acquireTicket']>[0]) => ({ ...ticket, ...body, ticket: String.fromCharCode(65 + issued++).repeat(43) }) as WorldTicketResponse)
   const transport = new MockWorldTransport({ session, origin: 'https://mcr.example', scheduler: clock, acquireTicket: acquire, ...patch })
-  const c = createWorldReplication({ session, resources, transport, scheduler: clock, requestId: () => id(requests++), sink: { replace: value => { commits.push(value); sink?.(value) } } })
+  const c = createWorldReplication({ session, resources, transport, scheduler: clock, requestId: () => id(requests++), ...replication, sink: { replace: value => { commits.push(value); sink?.(value) } } })
   owned.push(c)
   const socket = () => transport.sockets.at(-1)!
   const receive = (data: unknown) => socket().receive(JSON.stringify(data))
-  return { c, session, clock, transport, commits, acquire, socket, receive,
+  async function opening(expected: number) {
+    // Ticket hashing is real asynchronous WebCrypto work, not a fixed number of Promise turns.
+    await vi.waitFor(() => {
+      expect(transport.sockets).toHaveLength(expected)
+      expect(transport.state).toBe('opening')
+    })
+    return socket()
+  }
+  return { c, session, clock, transport, commits, acquire, socket, receive, opening,
     async live() {
       const p = c.start()
-      // Ticket validation hashes asynchronously before the socket exists.
-      await vi.waitFor(() => expect(transport.sockets).toHaveLength(1))
+      await opening(1)
       socket().open(); receive(admitted); expect(await p).toBe(true)
     },
     delta(seq: number, upserts: readonly WorldPlayer[] = [], removes: readonly string[] = [], extra = {}) {
@@ -38,6 +53,62 @@ function setup(patch: Partial<WorldTransportOptions> = {}, sink?: (view: Replica
     },
   }
 }
+describe('FE17 negotiated prediction through the strict transport', () => {
+  it('opts in explicitly, bounds self presentation, and corrects complete anchors without a self upsert', async () => {
+    const s = setup({ motionProfileVersion: '1.0.0' }, undefined, motionInitial, motionOptions); await s.live()
+    expect(JSON.parse(s.socket().sent[0]!)).toHaveProperty('motionProfileVersion', '1.0.0')
+    expect(s.c.read().spatialPrediction).toBe('bounded')
+    s.c.setIntent({ axisX: 1, axisY: 0, buttons: ['interact'] }); s.clock.advance(100); s.c.sample()
+    const self = () => s.c.read().entities.find(entity => entity.self)!
+    expect(self().position).toEqual({ x: 64, y: 48 })
+    expect(self().player.position).toEqual({ x: 48, y: 48 })
+    s.delta(1, [], [], { serverTick: 2, ackInputSeq: 1,
+      selfMotion: { serverTick: 2, position: { x: 52, y: 48 }, consumedInputSeq: 2, inputAppliedTicks: 1, droppedTicks: 0, heldInput: null } })
+    expect(self().position).toEqual({ x: 52, y: 48 }); expect(self().player.position).toEqual(self().position)
+    expect(s.c.read().pendingInputs).toBe(0) // consumption includes expired/coalesced seq2; ACK remains1
+    s.c.setIntent({ axisX: 0, axisY: 0, buttons: [] }); s.clock.advance(50); s.c.sample()
+    expect(self().position).toEqual({ x: 52, y: 48 })
+    expect(s.socket().sent.map(text => JSON.parse(text)).filter(frame => frame.buttons?.includes('interact'))).toHaveLength(1)
+  })
+  it('falls back when a requested profile is absent, geometry differs, or qualification fails', async () => {
+    for (const [admitted, options] of [
+      [initial, motionOptions],
+      [{ ...motionInitial, motionProfile: { ...motionProfile, geometryHash: 'sha256:' + '0'.repeat(64) } }, motionOptions],
+      [motionInitial, { motion: { version: '1.0.0' as const, map: { ...manifest, geometry_hash: 'sha256:' + '0'.repeat(64) } } }],
+    ] as const) {
+      const s = setup({ motionProfileVersion: '1.0.0' }, undefined, admitted, options); await s.live()
+      expect(s.c.read().spatialPrediction).toBe('unavailable')
+      s.c.setIntent({ axisX: 1, axisY: 0, buttons: [] }); s.clock.advance(100); s.c.sample()
+      expect(s.c.read().entities.find(entity => entity.self)!.position).toEqual(admitted.players[0]!.position)
+    }
+  })
+  it('withdraws predicted state on a gap, replaces the stream, and clears again on epoch reset and hide', async () => {
+    const s = setup({ motionProfileVersion: '1.0.0' }, undefined, motionInitial, motionOptions); await s.live()
+    s.c.setIntent({ axisX: 1, axisY: 0, buttons: ['interact'] }); s.clock.advance(50)
+    s.delta(3); expect(s.c.read()).toMatchObject({ phase: 'resync', entities: [], pendingInputs: 0, spatialPrediction: 'unavailable' })
+    const request = JSON.parse(s.socket().sent.at(-1)!)
+    s.receive({ ...motionInitial, streamId: id(120), cause: 'RESYNC', requestId: request.requestId })
+    expect(s.c.read()).toMatchObject({ spatialPrediction: 'bounded', pendingInputs: 0 })
+    expect(s.c.read().entities.find(entity => entity.self)!.position).toEqual({ x: 48, y: 48 })
+    s.clock.advance(50); expect(JSON.parse(s.socket().sent.at(-1)!)).toMatchObject({ seq: 1, axisX: 1, buttons: [] })
+    s.receive({ ...motionInitial, streamId: id(121), roomEpoch: id(122), cause: 'EPOCH_CHANGED' })
+    expect(s.c.read()).toMatchObject({ spatialPrediction: 'bounded', pendingInputs: 0 })
+    expect(s.c.read().entities.find(entity => entity.self)!.position).toEqual({ x: 48, y: 48 })
+    s.c.setVisible(false); expect(s.c.read()).toMatchObject({ entities: [], spatialPrediction: 'unavailable', pendingInputs: 0 })
+    s.c.setVisible(true); await s.opening(2); s.socket().open(); s.receive(motionInitial); s.clock.advance(50)
+    expect(JSON.parse(s.socket().sent.at(-1)!)).toMatchObject({ seq: 1, axisX: 0, axisY: 0, buttons: [] })
+  })
+  it('qualifies motion when initially hidden and cancels a pending qualification with canonical ownership', async () => {
+    const s = setup({ motionProfileVersion: '1.0.0' }, undefined, motionInitial, motionOptions)
+    s.c.setVisible(false); expect(await s.c.start()).toBe(false)
+    s.c.setVisible(true); await s.opening(1); s.socket().open(); s.receive(motionInitial)
+    expect(s.c.read().spatialPrediction).toBe('bounded')
+    const cancelled = setup({ motionProfileVersion: '1.0.0' }, undefined, motionInitial, motionOptions)
+    const starting = cancelled.c.start(); cancelled.c.dispose(); expect(await starting).toBe(false)
+    expect(cancelled.transport.sockets).toHaveLength(0); expect(cancelled.clock.pending).toBe(0)
+  })
+})
+
 describe('FE17 authoritative entity projection', () => {
   for (const viewer of filtered.viewers) it(`consumes canonical filtered-viewer stream for ${viewer.actor_id}`, async () => {
     const admitted = viewer.initial[1]!.message as Snapshot
@@ -177,26 +248,26 @@ describe('FE17 bounded input and transport lifecycle', () => {
     s.c.setIntent({ axisX: 1, axisY: 0, buttons: ['interact'] }); s.c.setVisible(false)
     expect(s.c.read().phase).toBe('suspended'); expect(s.c.read().entities).toEqual([]); expect(s.clock.pending).toBe(0)
     expect([...old.listeners.values()].every(set => set.size === 0)).toBe(true)
-    s.c.setVisible(true); s.c.setVisible(true); await flush(); expect(s.acquire).toHaveBeenCalledTimes(2)
+    s.c.setVisible(true); s.c.setVisible(true); await s.opening(2); expect(s.acquire).toHaveBeenCalledTimes(2)
     s.socket().open(); s.receive(initial); s.clock.advance(50)
     expect(JSON.parse(s.socket().sent.at(-1)!)).toMatchObject({ type: 'input', seq: 1, axisX: 0, axisY: 0, buttons: [] })
     s.c.dispose(); expect(s.clock.pending).toBe(0)
   })
   it('can start hidden without acquiring a ticket until first foreground', async () => {
     const s = setup(); s.c.setVisible(false); expect(await s.c.start()).toBe(false); expect(s.acquire).not.toHaveBeenCalled()
-    s.c.setVisible(true); await flush(); expect(s.acquire).toHaveBeenCalledTimes(1)
+    s.c.setVisible(true); await s.opening(1); expect(s.acquire).toHaveBeenCalledTimes(1)
     s.socket().open(); s.receive(initial); expect(s.c.read().entities).toHaveLength(3)
   })
   it('does not reconnect on unexpected close until explicit retry', async () => {
     const s = setup(); await s.live(); s.socket().serverClose(4500); s.clock.advance(1000)
     expect(s.c.read().entities).toEqual([]); expect(s.acquire).toHaveBeenCalledTimes(1)
-    const retry = s.c.reconnect(); await flush(); s.socket().open(); s.receive(initial); expect(await retry).toBe(true)
+    const retry = s.c.reconnect(); await s.opening(2); s.socket().open(); s.receive(initial); expect(await retry).toBe(true)
   })
   it('canonical owner replacement while a ticket is pending disposes and ignores its eventual result', async () => {
     let resolve!: (value: WorldTicketResponse) => void
     const pending = new Promise<WorldTicketResponse>(r => { resolve = r }), s = setup({ acquireTicket: () => pending })
     const started = s.c.start(); s.session.replace(s.session.read().generation, { userId: id(2), eventId: resources.eventId, accessToken: 'new-owner' })
-    resolve(ticket as WorldTicketResponse); expect(await started).toBe(false); await flush()
+    resolve(ticket as WorldTicketResponse); expect(await started).toBe(false)
     expect(s.c.read().entities).toEqual([]); expect(s.c.read().baseline).toBeNull(); expect(s.transport.state).toBe('disposed')
     expect(await s.c.reconnect()).toBe(false); expect(s.transport.sockets).toHaveLength(0); expect(s.clock.pending).toBe(0)
   })
@@ -209,7 +280,7 @@ describe('FE17 bounded input and transport lifecycle', () => {
     const broken = setup({}, view => { if (view.entities.length) throw Error('private sink error') }); await broken.live().catch(() => {})
     expect(broken.c.read().problem).toBe('sink'); expect(broken.transport.state).toBe('disposed'); expect(broken.clock.pending).toBe(0)
     const s = setup(); s.c.subscribe(() => { if (s.c.read().entities.length) s.c.dispose() })
-    const p = s.c.start(); await flush(); s.socket().open(); s.receive(initial); expect(await p).toBe(false)
+    const p = s.c.start(); await s.opening(1); s.socket().open(); s.receive(initial); expect(await p).toBe(false)
     const n = s.commits.length; s.clock.advance(10000); s.c.sample(); expect(s.commits).toHaveLength(n)
     expect(s.clock.pending).toBe(0); expect(s.c.read().phase).toBe('disposed')
   })

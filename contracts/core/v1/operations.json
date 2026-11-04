@@ -62,5 +62,75 @@
     "response": "PlaceResponse",
     "request": null,
     "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/auth/enrollment/policy",
+    "operationId": "getEnrollmentPolicy",
+    "response": "EnrollmentPolicy",
+    "request": null,
+    "authenticated": false,
+    "successStatus": 200,
+    "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "post",
+    "path": "/api/auth/enrollment/attempts",
+    "operationId": "beginEnrollmentAttempt",
+    "response": "EnrollmentAttempt",
+    "request": "EnrollmentBeginRequest",
+    "authenticated": false,
+    "successStatus": 201,
+    "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "post",
+    "path": "/api/auth/enrollment/signup",
+    "operationId": "submitEnrollmentSignup",
+    "response": "EnrollmentAccepted",
+    "request": "EnrollmentSignupRequest",
+    "authenticated": false,
+    "successStatus": 202,
+    "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "post",
+    "path": "/api/auth/enrollment/verify",
+    "operationId": "verifyEnrollmentEmail",
+    "response": "EnrollmentVerified",
+    "request": "EnrollmentVerifyRequest",
+    "authenticated": false,
+    "successStatus": 200,
+    "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "post",
+    "path": "/api/auth/enrollment/resend",
+    "operationId": "resendEnrollmentVerification",
+    "response": "EnrollmentAccepted",
+    "request": "EnrollmentResendRequest",
+    "authenticated": false,
+    "successStatus": 202,
+    "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "get",
+    "path": "/api/auth/enrollment/admission",
+    "operationId": "getEnrollmentAdmission",
+    "response": "EnrollmentAdmission",
+    "request": null,
+    "authenticated": true,
+    "successStatus": 200,
+    "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "post",
+    "path": "/api/auth/enrollment/consent",
+    "operationId": "acceptEnrollmentPolicy",
+    "response": "EnrollmentAdmission",
+    "request": "EnrollmentConsentRequest",
+    "authenticated": true,
+    "successStatus": 200,
+    "enrollmentContractVersion": "1.0"
   }
 ]

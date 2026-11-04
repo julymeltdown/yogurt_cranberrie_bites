@@ -1,0 +1,32 @@
+{
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "contract": "ed50c2f1",
+  "status": "IN_PROGRESS; before source qualification",
+  "files": [
+    {
+      "path": "frontend/src/features/auth/model/enrollment.ts",
+      "baseSha256": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e",
+      "candidateSha256": "210ce1a4a2f76efd7ee7e05654d8fc7c485b26e65427f28a0dcd9a90676c8608"
+    },
+    {
+      "path": "frontend/src/features/auth/model/enrollment-contract.ts",
+      "baseSha256": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22",
+      "candidateSha256": "387c54c637bb1dbbf4ad082483aa14f75047f8674ece1d6615260815f3166deb"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignUp.tsx",
+      "baseSha256": "2179fbdc10809f87d0c1000e7ad754750a236e6e7ec5044b251f549a637d4354",
+      "candidateSha256": "5e98ae14100dda7d2fc0b4f54cde265efd3d47f56b3d76914c59f2efa2f1b3e5"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/VerifyEmail.tsx",
+      "baseSha256": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c",
+      "candidateSha256": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c"
+    },
+    {
+      "path": "frontend/src/shared/api/http.ts",
+      "baseSha256": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+      "candidateSha256": "23dc24d55f9d91f769af10106930e2fc0a7ac78dbc6aa3294f6c5ea526947fee"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "slot": "FE17-ORIGINAL-SOURCE-B-20261104T1750Z",
+  "pin": "a49d2212c20defc73b17c2666e2170f5c3968239",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "mode": "source",
+  "startedUTC": "2026-11-04T17:51:38.304989+00:00",
+  "deadlineUTC": "2026-11-04T17:55:21.453728+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8,
+    "files": 65536,
+    "new": 134217728
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801486810,
+        "files": 7759,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1938555,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1548784984,
+    "reachableGitObjects": 39429,
+    "wholeCarryBytes": 2760473683,
+    "chargedFiles": 58762
+  },
+  "carryBytes": 2760473683,
+  "newPeak": 953,
+  "commands": [
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "pid": 17931,
+      "startedEpoch": 1793814698.313975,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814698.6008132
+    },
+    {
+      "label": "published-fixture-delayed-red",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      "pid": 18173,
+      "startedEpoch": 1793814698.667399,
+      "expectedExit": 1,
+      "exit": 1,
+      "endedEpoch": 1793814699.236154
+    }
+  ],
+  "wholePeak": 2760474636,
+  "temporaryPeak": 0,
+  "durablePeak": 953,
+  "rssPeak": 177307648,
+  "processPeak": 4,
+  "sourcePins": {},
+  "minimumFree": 26507468800,
+  "failure": "AssertionError: Red did not establish the expected admission fixture race",
+  "aliveOwnedPids": [],
+  "status": "FAIL",
+  "finishedUTC": "2026-11-04T17:51:39.347033+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 26507448320
+}

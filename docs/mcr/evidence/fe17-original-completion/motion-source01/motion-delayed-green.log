@@ -1,0 +1,36 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+stderr | src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds ticket processing cancellation while its fingerprint computation is pending
+Promise returned by `expect(actual).rejects.toThrow(expected)` was not awaited. Vitest currently auto-awaits hanging assertions at the end of the test, but this will cause the test to fail in the next Vitest major. Please remember to await the assertion.
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/transport.test.ts:335:96
+
+stderr | src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds ticket processing cancellation while its fingerprint computation is pending
+Promise returned by `expect(actual).rejects.toThrow(expected)` was not awaited. Vitest currently auto-awaits hanging assertions at the end of the test, but this will cause the test to fail in the next Vitest major. Please remember to await the assertion.
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/transport.test.ts:335:96
+
+ ❯ src/world/network/__tests__/transport.test.ts (164 tests | 2 failed) 20021ms
+     × bounds ticket processing cancellation while its fingerprint computation is pending 88ms
+     × bounds ticket processing cancellation while its fingerprint computation is pending 85ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds ticket processing cancellation while its fingerprint computation is pending
+ FAIL  src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds ticket processing cancellation while its fingerprint computation is pending
+AssertionError: expected "digest" to be called 1 times, but got 2 times
+ ❯ src/world/network/__tests__/transport.test.ts:336:36
+    334|     try {
+    335|       const switching=s.transport.roomSwitch(user,resources.eventId),r…
+    336|       await flush();expect(digest).toHaveBeenCalledTimes(1);s.clock.ad…
+       |                                    ^
+    337|       expect(s.transport.state).toBe('live');expect(socket.sent).toHav…
+    338|       s.transport.dispose();expect(s.clock.pending).toBe(0)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  2 failed | 229 passed (231)
+   Start at  03:15:36
+   Duration  34.98s (transform 403ms, setup 42ms, import 742ms, tests 33.05s, environment 691ms)
+

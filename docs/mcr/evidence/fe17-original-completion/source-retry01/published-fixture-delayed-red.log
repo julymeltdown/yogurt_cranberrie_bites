@@ -1,0 +1,80 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+ ❯ src/world/network/__tests__/replication.test.ts (23 tests | 4 failed | 19 skipped) 5258ms
+     × hidden teardown removes ghosts/listeners, foreground gets a fresh ticket once and replays no old intent 133ms
+     × can start hidden without acquiring a ticket until first foreground 7ms
+     × does not reconnect on unexpected close until explicit retry 5004ms
+     × sink failure and reentrant disposal cannot leave an active transport, timers or later commits 112ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > hidden teardown removes ghosts/listeners, foreground gets a fresh ticket once and replays no old intent
+AssertionError: expected { protocolVersion: '1.0.0', …(8) } to match object { type: 'input', seq: 1, …(3) }
+(8 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "axisX": 0,
+-   "axisY": 0,
+-   "buttons": [],
+-   "seq": 1,
+-   "type": "input",
++   "type": "authenticate",
+  }
+
+ ❯ src/world/network/__tests__/replication.test.ts:182:49
+    180|   })
+    181|   it('hidden teardown removes ghosts/listeners, foreground gets a fres…
+    182|     const s = setup(); await s.live(); const old = s.socket()
+       |                                                 ^
+    183|     s.c.setIntent({ axisX: 1, axisY: 0, buttons: ['interact'] }); s.c.…
+    184|     expect(s.c.read().phase).toBe('suspended'); expect(s.c.read().enti…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > can start hidden without acquiring a ticket until first foreground
+TypeError: Cannot read properties of undefined (reading 'open')
+ ❯ src/world/network/__tests__/replication.test.ts:188:15
+    186|     s.c.setVisible(true); s.c.setVisible(true); await s.opening(2); ex…
+    187|     s.socket().open(); s.receive(initial); s.clock.advance(50)
+    188|     expect(JSON.parse(s.socket().sent.at(-1)!)).toMatchObject({ type: …
+       |               ^
+    189|     s.c.dispose(); expect(s.clock.pending).toBe(0)
+    190|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > does not reconnect on unexpected close until explicit retry
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/world/network/__tests__/replication.test.ts:190:3
+    188|     expect(JSON.parse(s.socket().sent.at(-1)!)).toMatchObject({ type: …
+    189|     s.c.dispose(); expect(s.clock.pending).toBe(0)
+    190|   })
+       |   ^
+    191|   it('can start hidden without acquiring a ticket until first foregrou…
+    192|     const s = setup(); s.c.setVisible(false); expect(await s.c.start()…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > sink failure and reentrant disposal cannot leave an active transport, timers or later commits
+TypeError: Cannot read properties of undefined (reading 'open')
+ ❯ src/world/network/__tests__/replication.test.ts:212:53
+    210|     const s = setup(); await s.live(); s.receive({ protocolVersion: '1…
+    211|     expect(s.c.read().entities).toEqual([]); expect(s.c.read().baselin…
+    212|     expect(await s.c.reconnect()).toBe(false); expect(s.acquire).toHav…
+       |                                                     ^
+    213|   })
+    214|   it('sink failure and reentrant disposal cannot leave an active trans…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 19 skipped (23)
+   Start at  02:52:13
+   Duration  5.53s (transform 110ms, setup 20ms, import 161ms, tests 5.26s, environment 0ms)
+

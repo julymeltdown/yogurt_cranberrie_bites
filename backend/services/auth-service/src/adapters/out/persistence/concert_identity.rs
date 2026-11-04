@@ -62,6 +62,11 @@ impl PgCurrentAdmission {
                 exists(select 1 from public.users where id=$1 and status='ACTIVE' and deleted_at is null) as active,
                 exists(select 1 from public.refresh_tokens where user_id=$1 and family_id=$2
                     and revoked_at is null and expires_at > owner_clock.observed_at) as live,
+                exists(select 1 from public.mcr_enrollment_current c join public.mcr_enrollment_policies p on p.revision=c.revision
+                    where c.singleton=true and p.published_at<=owner_clock.observed_at and p.expires_at>owner_clock.observed_at) as policy_live,
+                exists(select 1 from public.mcr_enrollment_current c join public.mcr_enrollment_policies p on p.revision=c.revision
+                    join public.mcr_enrollment_acceptances a on a.revision=p.revision and a.user_id=$1
+                    where c.singleton=true and p.published_at<=owner_clock.observed_at and p.expires_at>owner_clock.observed_at) as service_consent,
                 {binding_clause} as bound
             from owner_clock
         "#
@@ -86,6 +91,10 @@ impl PgCurrentAdmission {
         let observed_at = row
             .try_get("observed_at")
             .map_err(|_| ReadError::Unavailable)?;
+        let policy_live: bool = row.try_get("policy_live").map_err(|_| ReadError::Unavailable)?;
+        let service_consent: bool = row.try_get("service_consent").map_err(|_| ReadError::Unavailable)?;
+        if !policy_live { return Err(ReadError::PolicyUnavailable); }
+        if !service_consent { return Err(ReadError::ConsentRequired); }
         let active: bool = row.try_get("active").map_err(|_| ReadError::Unavailable)?;
         let live: bool = row.try_get("live").map_err(|_| ReadError::Unavailable)?;
         let bound: Option<bool> = row.try_get("bound").map_err(|_| ReadError::Unavailable)?;

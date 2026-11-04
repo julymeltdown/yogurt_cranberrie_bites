@@ -7,7 +7,14 @@ layer-contract follow-up. The synthetic fixtures below remain metadata tests;
 they are not product art or fallback images. Source registration does not turn
 the JPEG sheets into the transparent, animated atlas described below.
 
-Status: **CONTRACT_READY for parent review; not frozen or ACCEPTED**. This is an isolated common-contract handoff, based on `605b858b3baa2bb93ce4a01a6620cd25bc648c14`, branch `codex/mcr-contracts-C06`. Only the parent integrator reviews/freezes the contracts, integrates consumer work, and publishes to `julymeltdown/mcr/master`. No remote delivery is claimed here.
+Status: **ACCEPTED for the whole original C06 interface task**. See the
+[current criterion disposition](c06-original-disposition.md) for canonical source,
+golden validation, current reviewed-avatar/map consumers and remaining runtime
+boundaries. The definitions below retain the original v1 contract description;
+the separately versioned reviewed v2 avatar is the current production successor.
+The original isolated handoff was based on
+`605b858b3baa2bb93ce4a01a6620cd25bc648c14`, branch `codex/mcr-contracts-C06`.
+Publication uses the normal delivery owner without a manager approval gate.
 
 ## Public schema references
 

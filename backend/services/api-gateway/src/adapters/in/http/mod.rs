@@ -93,6 +93,10 @@ pub fn correlation_id_for_response() -> String {
 
 #[derive(Debug, thiserror::Error)]
 pub enum GatewayError {
+    #[error("Global service consent required")]
+    ConsentRequired,
+    #[error("Global enrollment policy unavailable")]
+    PolicyUnavailable,
     #[error("{0}")]
     BadRequest(String),
     #[error("{0}")]
@@ -154,9 +158,16 @@ pub const BUSY_RETRY_AFTER_SECONDS: u64 = 1;
 
 impl IntoResponse for GatewayError {
     fn into_response(self) -> Response {
+        let policy_reason = match &self {
+            Self::ConsentRequired => Some("CONSENT_REQUIRED"),
+            Self::PolicyUnavailable => Some("POLICY_UNAVAILABLE"),
+            _ => None,
+        };
         let retry_after = matches!(self, Self::ServiceBusy | Self::AdmissionSaturated)
             .then_some(BUSY_RETRY_AFTER_SECONDS);
         let (status, message) = match self {
+            Self::ConsentRequired => (StatusCode::FORBIDDEN, "Global service consent required".into()),
+            Self::PolicyUnavailable => (StatusCode::SERVICE_UNAVAILABLE, "Global enrollment policy unavailable".into()),
             Self::BadRequest(message) => (StatusCode::BAD_REQUEST, message),
             Self::Unauthorized(message) => (StatusCode::UNAUTHORIZED, message),
             Self::Forbidden(message) => (StatusCode::FORBIDDEN, message),
@@ -208,10 +219,11 @@ impl IntoResponse for GatewayError {
                 message,
                 trace_id: Some(correlation_id.clone()),
                 timestamp: Some(Utc::now()),
-                details: None,
+                details: policy_reason.map(|reason| serde_json::json!({"reason": reason})),
             }),
         )
             .into_response();
+        if policy_reason.is_some() { response.extensions_mut().insert(enrollment_policy::PolicyDenial); }
         if let Ok(value) = HeaderValue::from_str(&correlation_id) {
             response.headers_mut().insert("x-correlation-id", value);
         }
@@ -1635,3 +1647,5 @@ mod timeout_metric_label_tests {
         assert_eq!(downstream_for_route("/metrics"), "gateway");
     }
 }
+
+pub mod enrollment_policy;

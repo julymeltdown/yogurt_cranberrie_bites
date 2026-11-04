@@ -126,5 +126,25 @@
   {
     "file": "social-policy-private-field-rejection.json",
     "kind": "wire-rejection"
+  },
+  {
+    "file": "motion-v1/vectors.json",
+    "kind": "motion-vectors"
+  },
+  {
+    "file": "motion-v1/negotiated.json",
+    "kind": "trace"
+  },
+  {
+    "file": "motion-v1/unsupported-version.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "motion-v1/null-version.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "motion-v1/boolean-version.json",
+    "kind": "wire-rejection"
   }
 ]

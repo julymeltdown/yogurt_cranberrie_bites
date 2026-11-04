@@ -1,0 +1,148 @@
+{
+  "task": "QA06",
+  "sourcePreparation": "5b0c5136dcb173f8af79a25b11dc960ba58a0f2b",
+  "scope": "Only original three assigned prefixes; no product or peer writes",
+  "excludesSelf": true,
+  "files": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/admission-round-01.json",
+      "bytes": 679,
+      "sha256": "d60c881cacc4e3cd0371993a5136efafa48b3156e020c3025dff268987387eb7"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/comparison.md",
+      "bytes": 3343,
+      "sha256": "301e74387906ded834102a13c5c981cfa214f0569ff883bdfaf9c4ff8a355e0a"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/custody-check.json",
+      "bytes": 1950,
+      "sha256": "06a0dc4c3722d1e104dfd80dd98f3e3e03029e0e39d3849b245267f3a560be91"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/intake.json",
+      "bytes": 5626,
+      "sha256": "ed8933e673a747c4161c499d02b994c122d5cb4a0fc9cc6761022dab4ffc585f"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/owner-assessment.json",
+      "bytes": 7988,
+      "sha256": "4465332895d73a12039fdf92f9e98839701a86669a1f866d9b55a031085c2855"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/release.json",
+      "bytes": 796,
+      "sha256": "d32060dddacdacfdaffe208c068a49d17ed322c56e455178acde6a262e16e08c"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/report.partial.json",
+      "bytes": 91291,
+      "sha256": "08ed891cce77bc9ac1c9287c6fe3627150f502faa6d71cf935e91ad97e63b4d3"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/supervisor.json",
+      "bytes": 1449,
+      "sha256": "09258feb334b577a68f16b6e176675356b368026c1ddcce6d210fd61b6295754"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/wall-approved-motif-360-844.png",
+      "bytes": 33760,
+      "sha256": "49d812e43bc309c597c411b0f4079f9f4732ddedd1255a7952a91c8d877e0a83"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/wall-approved-motif-390-420.png",
+      "bytes": 22857,
+      "sha256": "c5fec0d8232f000f5d1c0cd7af0dac757b14746cdb6444b76ba11377b3bc84d9"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/wall-approved-motif-390-844.png",
+      "bytes": 34137,
+      "sha256": "1ebf55654e955f55da8b6b9afdac7d6c4b52f7302846ee85918eb69336cdec60"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-01/wall-approved-motif-430-844.png",
+      "bytes": 33102,
+      "sha256": "23550e7da06a37888a5924792248b875d7fcd9548e0d074f18496ee57f7c9c4d"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/native.log",
+      "bytes": 46,
+      "sha256": "eb30fc0d252a4cd72d3bdd298ceef7d37e0665ad10e32b29f2e8ec4c35744312"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/report.json",
+      "bytes": 92281,
+      "sha256": "96902f3edd6b8c9dae7294ca5e5ffb2a37bca93b6635b5456f0b8fc901f6757a"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/report.partial.json",
+      "bytes": 92129,
+      "sha256": "27310eb4aa8052675efda5daa626d03c83be3dcc624054fa809b312d7a92327a"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/report.raw.txt",
+      "bytes": 92282,
+      "sha256": "a7944123b9cf42e7bcdcb75abc3ec43f19e55e6d884fd6cc587fb2eddddad485"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/supervisor.json",
+      "bytes": 1446,
+      "sha256": "76032bb7a2c291af4f62cc7124d94c2a3f2dc1910af3f337aa9812233009b132"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/wall-approved-motif-360-844.png",
+      "bytes": 33760,
+      "sha256": "49d812e43bc309c597c411b0f4079f9f4732ddedd1255a7952a91c8d877e0a83"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/wall-approved-motif-390-420.png",
+      "bytes": 22857,
+      "sha256": "c5fec0d8232f000f5d1c0cd7af0dac757b14746cdb6444b76ba11377b3bc84d9"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/wall-approved-motif-390-844.png",
+      "bytes": 34137,
+      "sha256": "1ebf55654e955f55da8b6b9afdac7d6c4b52f7302846ee85918eb69336cdec60"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/round-02/wall-approved-motif-430-844.png",
+      "bytes": 33102,
+      "sha256": "23550e7da06a37888a5924792248b875d7fcd9548e0d074f18496ee57f7c9c4d"
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/wall-approved-motif/shutdown-diagnostic.json",
+      "bytes": 740,
+      "sha256": "46aa125eb51464fd4bd4e99e833c5da9477d1a96f772feb7561f306fecef7470"
+    },
+    {
+      "path": "docs/mcr/frontend/mobile-visual-qa06.md",
+      "bytes": 52268,
+      "sha256": "b0818d4cb6603682a7607f27d635da70052ea5d8552fab3736c3e0594ed3cf6a"
+    },
+    {
+      "path": "frontend/e2e/visual/qa06/wall-seed-guard.py",
+      "bytes": 7865,
+      "sha256": "9f810781b58ea3d5f6dd14fbfe6735a616fad791b42aea6cbb3a75cf35de5d88"
+    },
+    {
+      "path": "frontend/e2e/visual/qa06/wall-seed.mjs",
+      "bytes": 15800,
+      "sha256": "2332a308e1c4ecd1a23d77be703ebb3d94d898c1489b565ead881a606f1d9023"
+    }
+  ]
+}

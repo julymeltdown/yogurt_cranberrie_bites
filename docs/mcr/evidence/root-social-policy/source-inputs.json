@@ -1,0 +1,350 @@
+{
+  "policySource": "b0eb879c",
+  "priorPrivateRootPreservedAsAncestor": "8deeabb3f82bcf0528db5acc265dbfd023934558",
+  "canonicalFrontendReadOnlyIntake": [
+    {
+      "path": "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/fixture.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/native.mjs",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/preview.tsx",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/thread-types.mjs",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/tsconfig.json",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/vite.config.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/availability.test.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/response-delay.test.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/tsconfig.json",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/vitest.config.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/availability.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/__tests__/current/place-producer.test.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/__tests__/current/preview.html",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/__tests__/current/preview.tsx",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/__tests__/current/producer-fixture.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/__tests__/current/runner.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/__tests__/current/tsconfig.json",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/event/model/controller.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/reports/__tests__/current/authority.test.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/reports/__tests__/current/preview.tsx",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/reports/__tests__/current/runner.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/admin/reports/model/controller.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/event-feed/__tests__/thread-author/author.test.tsx",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/event-feed/__tests__/thread-author/vitest.config.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/adoption-inputs.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/adoption-inputs/CommunityFeatures.tsx.source",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/adoption-inputs/RootMediaView.tsx.source",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.html",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native_round.py",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/offer_preflight.py",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/protected-detail.test.tsx",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/source_round.py",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/typecheck.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/vitest.config.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/public/ui/__tests__/css-parity-landing/native.mjs",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/THIRD_PARTY_NOTICES.txt",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/document.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/formats.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/index.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/mock.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/runtime.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    },
+    {
+      "path": "frontend/src/shared/api/generated/types.ts",
+      "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29"
+    }
+  ],
+  "retainedRootPolicyHunks": [
+    "frontend/src/app/ports.ts",
+    "frontend/src/app/world-entry/production.ts",
+    "frontend/src/world/composition/index.ts"
+  ],
+  "fixtureOnlyReadOnlyIntake": {
+    "source": "7aecd87b5ea61f5bd54aeacdbe97e86e6f888f59",
+    "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx",
+    "change": "Blob guard only"
+  },
+  "qualifiedCounterpart": {
+    "source": "0fd3846914e82ddefc3cc7352ebac234ecbd1a91",
+    "paths": [
+      "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "frontend/src/app/in03-entry/availability.ts",
+      "frontend/src/app/social-entry/__tests__/availability-lifetime/lifetime.test.ts",
+      "frontend/src/app/social-entry/__tests__/availability-lifetime/root.test.tsx",
+      "frontend/src/app/social-entry/__tests__/availability-lifetime/tsconfig.json",
+      "frontend/src/app/social-entry/__tests__/availability-lifetime/vitest.config.ts",
+      "frontend/src/app/social-entry/availability-lifetime.ts",
+      "frontend/src/app/world-panels/social.tsx"
+    ]
+  },
+  "qualification": "SOURCE_QUALIFIED_75_TESTS_FULL_APP_TYPES_0_SCOPED_LINT_0_ACTUAL_MAIN_NATIVE_PENDING",
+  "canonicalE2EReadOnlyIntake": {
+    "source": "dcccb88283a7212915c35cf7a4f9b2ca8bd84e29",
+    "paths": [
+      "frontend/e2e/qa08-rendering/allocated-run.py",
+      "frontend/e2e/qa08-rendering/current-data.ts",
+      "frontend/e2e/qa08-rendering/fixture.tsx",
+      "frontend/e2e/qa08-rendering/metrics.mjs",
+      "frontend/e2e/qa08-rendering/metrics.node-selftest.mjs",
+      "frontend/e2e/qa08-rendering/native.mjs",
+      "frontend/e2e/real/qa09-recovery/actions.mjs",
+      "frontend/e2e/real/qa09-recovery/actions.test.mjs",
+      "frontend/e2e/real/qa09-recovery/cases.mjs",
+      "frontend/e2e/real/qa09-recovery/journey.mjs",
+      "frontend/e2e/real/qa09-recovery/observer.mjs",
+      "frontend/e2e/real/qa09-recovery/observer.test.mjs",
+      "frontend/e2e/real/qa09-recovery/producer-binding.mjs",
+      "frontend/e2e/real/qa09-recovery/producer-binding.test.mjs",
+      "frontend/e2e/real/social.spec.ts",
+      "frontend/e2e/real/social/admission-original.test.mjs",
+      "frontend/e2e/real/social/admission.d.mts",
+      "frontend/e2e/real/social/admission.mjs",
+      "frontend/e2e/real/social/browser-state.ts",
+      "frontend/e2e/real/social/journey.ts",
+      "frontend/e2e/real/social/observations.ts",
+      "frontend/e2e/real/social/real-entry.ts",
+      "frontend/e2e/real/social/run-input.example.json",
+      "frontend/e2e/real/social/serve.mjs",
+      "frontend/e2e/real/social/serve.test.mjs"
+    ],
+    "reason": "Published response-delay test imports published holdNextProfileRead/dispose; Root private E2E helper was older"
+  },
+  "qualifiedART06ReadOnlyIntake": {
+    "source": "d8c59c65bf563e7f270e4ca24d2011e4d9d48e22",
+    "paths": [
+      "docs/mcr/evidence/map-art06-default-app/README.md",
+      "docs/mcr/evidence/map-art06-default-app/attempts.jsonl",
+      "docs/mcr/evidence/map-art06-default-app/cleanup.jsonl",
+      "docs/mcr/evidence/map-art06-default-app/consumer-preimages.json",
+      "docs/mcr/evidence/map-art06-default-app/frozen-art05-invariants.json",
+      "docs/mcr/evidence/map-art06-default-app/git-accounting.json",
+      "docs/mcr/evidence/map-art06-default-app/guardian.jsonl",
+      "docs/mcr/evidence/map-art06-default-app/handoff.json",
+      "docs/mcr/evidence/map-art06-default-app/intake.json",
+      "docs/mcr/evidence/map-art06-default-app/native-acceptance.json",
+      "docs/mcr/evidence/map-art06-default-app/native-full-release.json",
+      "docs/mcr/evidence/map-art06-default-app/native01/failure-analysis.md",
+      "docs/mcr/evidence/map-art06-default-app/native01/job-00.log",
+      "docs/mcr/evidence/map-art06-default-app/native01/job-01.log",
+      "docs/mcr/evidence/map-art06-default-app/native01/job-02.log",
+      "docs/mcr/evidence/map-art06-default-app/native01/report.json",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-danger-360.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-danger-390.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-danger-430.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-360.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-390-short.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-390.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-430.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-revenge-360.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-revenge-390.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/art06-revenge-430.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/forced-focus-parade-390-short.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/forced-focus-parade-390.png",
+      "docs/mcr/evidence/map-art06-default-app/native02/job-00.log",
+      "docs/mcr/evidence/map-art06-default-app/native02/job-01.log",
+      "docs/mcr/evidence/map-art06-default-app/native02/job-02.log",
+      "docs/mcr/evidence/map-art06-default-app/native02/report.json",
+      "docs/mcr/evidence/map-art06-default-app/owner-assessment.json",
+      "docs/mcr/evidence/map-art06-default-app/readset.json",
+      "docs/mcr/evidence/map-art06-default-app/source-acceptance.json",
+      "docs/mcr/evidence/map-art06-default-app/source-full-release.json",
+      "docs/mcr/evidence/map-art06-default-app/source-pins.json",
+      "docs/mcr/evidence/map-art06-default-app/source01/job-00.log",
+      "docs/mcr/evidence/map-art06-default-app/source01/job-01.log",
+      "docs/mcr/evidence/map-art06-default-app/source01/job-02.log",
+      "docs/mcr/evidence/map-art06-default-app/source01/job-03.log",
+      "docs/mcr/evidence/map-art06-default-app/source01/job-04.log",
+      "docs/mcr/frontend/map-art06-default-app.md",
+      "frontend/public/world/map-reference-composition-v1/README.md",
+      "frontend/public/world/map-reference-composition-v1/build.py",
+      "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "frontend/public/world/map-reference-composition-v1/layout.json",
+      "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/guardian.py",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/intake.test.ts",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/native.mjs",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/preview.html",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/preview.ts",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/tsconfig.json",
+      "frontend/src/app/world-entry/__tests__/art06-default-entry/vitest.config.ts",
+      "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+      "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "frontend/src/world/reference-scene/map4-service-v2/resources.json"
+    ],
+    "sourcePin": "bd6e4517ba641d5ef6d15e6ea4878a94fc93a06c",
+    "actualAppNativePin": "9523b0b5a036fc73ba4801b5e84ac254fcacefac",
+    "presentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+    "rootTail": "Fresh ordinary app types and scoped Root lint only; prior75 policy/World cases unchanged"
+  },
+  "qualifiedPrivateSocialAccountIntake": {
+    "source": "3a862f3d744c24ca66cff865e4601f80cb8ed12f",
+    "paths": [
+      "frontend/src/features/account/__tests__/completion.test.tsx",
+      "frontend/src/features/account/panel.tsx",
+      "frontend/src/features/inbox/__tests__/completion.test.tsx",
+      "frontend/src/features/inbox/model/controller.ts",
+      "frontend/src/features/safety/__tests__/completion.test.tsx",
+      "frontend/src/features/safety/panels.tsx"
+    ],
+    "ownerTests": "384 PASS; own39roots/750importedfiles types0; lint0",
+    "combined": "Fresh Root full types and lint will cover these exact source postimages; no384 replay"
+  },
+  "qualifiedRootSource": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "successfulTail": "docs/mcr/evidence/root-social-policy/source-02/run/release.json"
+}

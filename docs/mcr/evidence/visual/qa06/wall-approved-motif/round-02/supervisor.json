@@ -1,0 +1,53 @@
+{
+  "job": "QA06-WALL-MOTIF-B1-20261104T1835Z",
+  "round": "round-02",
+  "started": 1793817617.31635,
+  "workDeadline": 1793817703.814703,
+  "cleanupDeadline": 1793817763.814703,
+  "candidate": "5b0c5136dcb173f8af79a25b11dc960ba58a0f2b",
+  "carriedWholeBytes": 1285795840,
+  "originalJobCarryBytes": 1285558272,
+  "retainedDependencyBytes": 438317056,
+  "aggregateNewReserve": 3221225472,
+  "caps": {
+    "whole": 2147483648,
+    "new": 268435456,
+    "temp": 209715200,
+    "durable": 33554432,
+    "allPids": 24,
+    "rss": 4294967296,
+    "pngs": 8
+  },
+  "peaks": {
+    "temp": 30302362,
+    "durable": 479232,
+    "allPids": 12,
+    "rss": 2665447424,
+    "pngs": 8,
+    "new": 30724250,
+    "whole": 1316282522
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-seed.mjs"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-seed.mjs"
+    ]
+  ],
+  "minFree": 15297998848,
+  "currentCarry": 1286025216,
+  "wholeMeasuredAt": 1793817662.147539,
+  "exitCode": 0,
+  "remainingOwnedPids": [],
+  "finished": 1793817662.7243469,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "portClosed": true,
+  "cleanupWithinDeadline": true,
+  "finalFree": 15328489472,
+  "FULL": true
+}

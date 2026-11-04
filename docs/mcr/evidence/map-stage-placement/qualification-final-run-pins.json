@@ -1,0 +1,28 @@
+{
+  "candidate": "fbbfe6332f12e6f9a032d212689dbc41999690ba",
+  "readsetSha256": "35809e7962f6ee8a0cc4f7ee658a99113d05035a10fd8c4c924a26187a0422a8",
+  "reportSha256": "af1e02398c0928e090aa0af64a0de93533bd7722c59536e3d63a3e27a33795fa",
+  "guardianSha256": "16474f41e46babe152be8782883deb21db8f3a7b35bb921264ef0bb40318ee7b",
+  "driverSha256": "ce4b06b7b2d76342858798ed908d61178a7728597f5cac07998e8adc1b4963eb",
+  "guardMode": "qualification",
+  "stepsPrefix": "qualification02/",
+  "commands": 5,
+  "allExit0": true,
+  "nativeContexts": 1,
+  "images": [
+    {
+      "path": "docs/mcr/evidence/map-stage-placement/native02/stage-placement-parade-390.png",
+      "sha256": "10c4f85fd8293e3132d84aa5ddd18c9e21a66b01f4b3ec7b70061982e78ebf69",
+      "bytes": 227460,
+      "ownerOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-stage-placement/native02/forced-focus-parade-390.png",
+      "sha256": "ee6e728bfcc3b87661ae606894e714a4ee46c9ed73db880f3dfa1d12c09662a0",
+      "bytes": 211201,
+      "ownerOpened": true
+    }
+  ],
+  "sourceTests": 35,
+  "sourceFiles": 4
+}

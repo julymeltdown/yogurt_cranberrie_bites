@@ -20,6 +20,10 @@ pub enum ReadError {
     Cancelled,
     #[error("identity read deadline exceeded")]
     DeadlineExceeded,
+    #[error("global service consent required")]
+    ConsentRequired,
+    #[error("global enrollment policy unavailable")]
+    PolicyUnavailable,
     #[error("identity owner unavailable")]
     Unavailable,
 }

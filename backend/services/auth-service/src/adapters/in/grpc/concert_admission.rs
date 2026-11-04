@@ -121,6 +121,8 @@ fn read_status(error: ReadError) -> Status {
         ReadError::DeadlineExceeded => {
             Status::deadline_exceeded("Admission read deadline exceeded")
         }
+        ReadError::ConsentRequired => Status::failed_precondition("CONSENT_REQUIRED"),
+        ReadError::PolicyUnavailable => Status::unavailable("POLICY_UNAVAILABLE"),
         ReadError::Unavailable => Status::unavailable("Admission owner unavailable"),
     }
 }
