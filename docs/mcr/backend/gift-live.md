@@ -317,6 +317,25 @@ The SDK owner confirmed a source-audit finding that this ceiling also needs
 both actual owner-view expiries; that peer follow-up is pending consumption and
 qualification. This ceiling is metadata, not a substitute for subject checks.
 
+The native runner also accepts `--private-test /absolute/frozen/concert-lib`
+without a resource integration binary. This permits the six private native
+test cases (the restart case executes in separate prepare/recover processes) to
+run after Root releases its target, without waiting for the four integration
+binaries. `--queries-test` independently selects local query/correlation checks;
+when both lib modes are selected their executable hashes must match. Omitted
+resource/query/correlation modes stay **NOT_RUN** in the report. Reports label
+the checkout hashes as execution-harness/migration pins; the producer's frozen
+build source pins and binary hash must accompany them separately. This runner
+change supplies no compile, native, canonical or HTTP acceptance by itself.
+Runner selection validation passed: no selected binaries exits 2 before fixture
+creation; a relative lib path exits 1 before PG creation; an absolute executable
+which exits 0 but runs zero tests is rejected by the exact private test count.
+The latter used only a new marker/inode-owned PostgreSQL 16 fixture with current
+Concert migrations, and strict cleanup passed. All omitted checks remained
+**NOT_RUN**. `tests/gift_live_support/runner-selection-evidence.json` records
+these negative checks and the exact runner hash. Gift private tests and Rust
+compilation remain **NOT_RUN** for this increment.
+
 Pickup/IssueCode dispatch remains default-unavailable. Root must compose the
 actual Gift settler and enforce the returned clip before every positive response
 data frame without rewriting business expiries. Actual canonical joined reads,
