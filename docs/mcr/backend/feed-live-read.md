@@ -457,3 +457,23 @@ External evidence: `/private/tmp/mcr-feed-adapter-current-20261104/` contains
 `ba8ed3a5731574fedaf32b23f65c438cb9faef863842831d579570551b2c4c47`.
 The historical Post-only native five-case result remains tied to `4552ccf9`.
 No positive native/HTTP acceptance or target ownership is carried forward.
+
+
+## Narrow deadline fix consumed
+
+PublicProfile owner `01a1a205` explicitly granted the exact eight production
+lines from `c04070be` with the existing unavailable error mapping for this
+consumer. Commit `6d9ef8c436732e208a51142429e4659f0443c4e4` changes only
+`public_profile/local.rs`: it pins the exact sealed absolute expiry through the
+existing relationship::pin_deadline helper before PREPARE. The existing SQL
+helper takes the least of current and supplied deadlines. No diagnostics,
+private fixture, migration or trigger change was imported, and ongoing path
+ownership remains with the PublicProfile owner.
+
+Consumer file SHA-256:
+`328a355ec2782e27208e2044c25447fea142654fcb013493efdbb99823f5ba22`.
+Formatting and diff checks passed. Rust/native checks for this changed source are
+NOT_RUN; the earlier adapter result qualifies the unchanged `236a2839` snapshot.
+The next bounded request is a single Concert library-test build, followed by
+frozen copies and a separate owned PostgreSQL run after unconditional target
+release. No prior target grant is retained or reused.
