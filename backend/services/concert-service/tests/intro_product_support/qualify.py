@@ -47,6 +47,18 @@ def source_manifest() -> dict[str, str]:
         paths.update(p for p in (ROOT / prefix).rglob("*") if p.is_file())
     return {str(p.relative_to(ROOT)): sha(p) for p in sorted(paths)}
 
+def profile_pki(cluster: Cluster) -> None:
+    """Additional actual workload certificate; retained helper covers four peers."""
+    cluster.assert_owned()
+    directory=cluster.root/"pki"
+    extension=directory/"profile.ext"
+    extension.write_text("basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth,clientAuth\nsubjectAltName=DNS:profile.svc.internal,URI:spiffe://internal/profile\n")
+    openssl=executable(Path("/usr/bin/openssl"))
+    for args in (("req","-new","-newkey","rsa:2048","-nodes","-keyout","profile.key","-out","profile.csr","-subj","/CN=profile.svc.internal"),
+                 ("x509","-req","-in","profile.csr","-CA","ca.crt","-CAkey","ca.key","-CAcreateserial","-out","profile.crt","-days","2","-extfile",str(extension))):
+        execute([str(openssl),*args],env=cluster.env,cwd=directory,phase="fixture-profile-pki",timeout=30)
+    (directory/"profile.key").chmod(0o600)
+
 def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     if checkpoint["source_commit"] != commit or checkpoint["source_sha256"] != source_manifest():
@@ -67,6 +79,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
             stream.write("\nmax_prepared_transactions=256\n")
         cluster.start()
         pki(cluster)
+        profile_pki(cluster)
         version = cluster.sql("postgres", "show server_version_num;")
         if int(version) // 10000 != 16:
             raise SmokeError("preflight", "PG16 required")
