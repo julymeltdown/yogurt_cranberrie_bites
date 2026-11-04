@@ -18,6 +18,8 @@ import giveaway from '../../../contracts/fixtures/domain/giveaway-management.jso
 import beacon from '../../../contracts/fixtures/domain/private-beacon.json'
 import { roles, operations, markers, check, assertAbsent, deferred, until, type Cell, type Role } from './oracle'
 import { evidenceCells } from './evidence-fixtures'
+import { recipientCells } from './recipient-fixtures'
+import { beaconCells } from './beacon-fixtures'
 
 const eventId = approved.event_id, owner = approved.requester_id, member = approved.recipient_id
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`
@@ -176,9 +178,12 @@ export async function runFixtures() {
   check(new Set(cells.map(cell => cell.role + ':' + cell.operation)).size === cells.length, 'unique matrix cells')
   const domains = ['handle', 'claim', 'evidence', 'beacon', 'recipient']
   const evidence = (await Promise.all(roles.map(role => evidenceCells(role)))).flat()
+  const recipient = (await Promise.all(roles.map(role => recipientCells(role)))).flat()
+  const beacon = (await Promise.all(roles.map(role => beaconCells(role)))).flat()
+  const featureCells = { evidence, recipient, beacon }
   const domainMatrix = domains.flatMap(domain => cells.map(cell => ({ domain, role: cell.role, operation: cell.operation,
-    status: domain === 'evidence' && evidence.some(result => result.role === cell.role && result.operation === cell.operation) ? 'PASS' : domain === 'handle' || cell.operation === 'cache' ? cell.status : 'UNSUPPORTED', provenance: 'SYNTHETIC_FIXTURE',
-    evidence: domain === 'evidence' ? evidence.find(result => result.role === cell.role && result.operation === cell.operation)?.evidence ?? cell.evidence : domain === 'handle' || cell.operation === 'cache' ? cell.evidence : 'Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated.' })))
+    status: domain in featureCells && featureCells[domain as keyof typeof featureCells].some(result => result.role === cell.role && result.operation === cell.operation) ? 'PASS' : domain === 'handle' || cell.operation === 'cache' ? cell.status : 'UNSUPPORTED', provenance: 'SYNTHETIC_FIXTURE',
+    evidence: domain in featureCells ? featureCells[domain as keyof typeof featureCells].find(result => result.role === cell.role && result.operation === cell.operation)?.evidence ?? (domain === 'beacon' && cell.operation === 'list' ? 'UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface.' : cell.evidence) : domain === 'handle' || cell.operation === 'cache' ? cell.evidence : 'Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated.' })))
   return { task: 'QA04', result: 'MOCK_READY', originalTask: 'IN_PROGRESS', qualification: 'SYNTHETIC_CLIENT_FIXTURE_ONLY', cells, domainMatrix, projections: projections(),
     realService: 'NOT_RUN', remaining: ['Actual seeded principals and registered public services', 'HTTP/WS role authorization, real revocation delivery and cached product UI qualification'],
     nonClaims: ['No QA04 live acceptance', 'No IN02/IN03/QA07/FE09 production acceptance', 'No server role-policy proof', 'No actual WS/cache service execution'] }

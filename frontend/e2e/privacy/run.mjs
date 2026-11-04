@@ -26,6 +26,8 @@ try {
   assert.equal(report.result, 'MOCK_READY')
   assert.equal(report.cells.filter(cell => cell.status === 'PASS').length, 28)
   assert.equal(report.cells.filter(cell => cell.status === 'UNSUPPORTED').length, 7)
+  assert.equal(report.domainMatrix.length, 175)
+  assert.equal(new Set(report.domainMatrix.map(cell => [cell.domain, cell.role, cell.operation].join(':'))).size, 175)
   // No private payload is rendered by the qualification shell.
   assert.doesNotMatch(await page.locator('body').innerText(), /qa04_private_/)
   const files = [
@@ -41,7 +43,7 @@ try {
     'frontend/src/features/safety/contract.ts',
     'frontend/src/features/meet-beacon/model/contract.ts',
     ...['approved-social-request', 'public-intro', 'public-post', 'party-full', 'giveaway-management', 'private-beacon'].map(name => `contracts/fixtures/domain/${name}.json`),
-    ...['fixtures.ts', 'evidence-fixtures.ts', 'oracle.ts', 'browser.ts', 'runtime.mjs', 'run.mjs'].map(name => `frontend/e2e/privacy/${name}`),
+    ...['fixtures.ts', 'evidence-fixtures.ts', 'recipient-fixtures.ts', 'beacon-fixtures.ts', 'oracle.ts', 'browser.ts', 'runtime.mjs', 'run.mjs'].map(name => `frontend/e2e/privacy/${name}`),
   ]
   for (const module of server.environments.client.moduleGraph.idToModuleMap.values()) {
     if (module.file?.startsWith(root + '/') && /\.(?:ts|tsx|json)$/.test(module.file) && !module.file.includes('/node_modules/')) files.push(module.file.slice(root.length + 1))
@@ -50,7 +52,7 @@ try {
   Object.assign(report, { browser: browser.version(), node: process.version, candidate: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
     command: 'NODE frontend/e2e/privacy/run.mjs', exitCode: 0, sourcePins, actualApiNetworkCalls: 0, pageErrors: errors })
   await writeFile(resolve(output, 'fixture-report.json'), JSON.stringify(report, null, 2) + '\n')
-  console.log(JSON.stringify({ result: report.result, passed: 28, unsupportedWS: 7, projections: report.projections.length, pageErrors: errors.length }))
+  console.log(JSON.stringify({ result: report.result, passed: 28, unsupportedWS: 7, domainPassed: report.domainMatrix.filter(cell => cell.status === 'PASS').length, domainUnsupported: report.domainMatrix.filter(cell => cell.status === 'UNSUPPORTED').length, projections: report.projections.length, pageErrors: errors.length }))
 } finally {
   await browser?.close()
   await server.close()
