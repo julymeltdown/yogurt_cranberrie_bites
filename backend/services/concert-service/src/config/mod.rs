@@ -9,6 +9,7 @@ use std::{net::SocketAddr, path::PathBuf, str::FromStr, time::Duration};
 
 pub mod bootstrap_runtime;
 pub mod canonical_runtime;
+pub mod native_resolver;
 pub mod product_runtime;
 pub mod participant_runtime;
 pub mod social_runtime;

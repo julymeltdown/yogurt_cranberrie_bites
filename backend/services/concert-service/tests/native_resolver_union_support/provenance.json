@@ -1,0 +1,37 @@
+{
+  "task": "CU01",
+  "copied_fixtures": [
+    {
+      "source": "backend/services/concert-service/tests/age_runtime_support/environment.rs",
+      "source_commit": "845557272fae890dcb1ba7b6924ec4a5a07ffcfb",
+      "source_sha256": "d02ed1917ed25ea635dd4187a3b862cead97b52942c951cb0a25786e30a21a33",
+      "destination": "backend/services/concert-service/tests/native_resolver_union_support/environment.rs"
+    },
+    {
+      "source": "backend/services/concert-service/tests/age_runtime_support/owners.rs",
+      "source_commit": "845557272fae890dcb1ba7b6924ec4a5a07ffcfb",
+      "source_sha256": "5f2b9d7589a6faf5106c1984154bb20f63977ed27916391f325731059aaee8bc",
+      "destination": "backend/services/concert-service/tests/native_resolver_union_support/owners.rs"
+    },
+    {
+      "source": "backend/services/concert-service/tests/age_runtime_support/fixture.rs",
+      "source_commit": "845557272fae890dcb1ba7b6924ec4a5a07ffcfb",
+      "source_sha256": "26cd6e991a9e909c3f57fceff962aeb73df7772785d25ccc3423c30684502c74",
+      "destination": "backend/services/concert-service/tests/native_resolver_union_support/fixture.rs"
+    },
+    {
+      "source": "backend/services/concert-service/tests/operations_live_support/capture.rs",
+      "source_commit": "845557272fae890dcb1ba7b6924ec4a5a07ffcfb",
+      "source_sha256": "dc1ff202e50fa12eaa0f381135132b5688fa0f1fed9ffdebbfeb591d08b3f901",
+      "destination": "backend/services/concert-service/tests/native_resolver_union_support/product_capture.rs"
+    }
+  ],
+  "changes": [
+    "Concert fixture store renamed to mcr_concert_cu01 to use the configured namespace policy",
+    "Fixture composes actual NativeResolverUnion instead of age-only settlement",
+    "Ledger exposed only inside test fixture",
+    "Participant capture adapts pinned Product capture to actual Participant protobuf/policy",
+    "Producer fixtures use actual canonical guards and production witness writers; initial identities and selected avatar rows are test setup only"
+  ],
+  "external_dependencies": "Existing retained Cargo workspace only; no new manifest/lockfile dependency"
+}
