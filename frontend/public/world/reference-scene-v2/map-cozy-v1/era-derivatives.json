@@ -1,0 +1,1193 @@
+{
+  "format": "MCR_COZY_ERA_DERIVATIVES_V1",
+  "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
+  "allocation": "ART-ERA-PACK-202611040658Z",
+  "scope_record": "7dcbc0e2",
+  "source": {
+    "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-original.png",
+    "bytes": 2120690,
+    "sha256": "sha256:db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514"
+  },
+  "shared_ground": {
+    "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+    "bytes": 850849,
+    "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+    "width_px": 768,
+    "height_px": 1296,
+    "mime": "image/png"
+  },
+  "recipe_rounding": "min(255,(percent*channel+100*offset+50)//100); alpha identity",
+  "eras": {
+    "REVENGE": {
+      "atlas": {
+        "path": "world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd",
+        "width_px": 1024,
+        "height_px": 1024,
+        "mime": "image/png",
+        "id": "revenge_architecture_v2_atlas"
+      },
+      "ground": {
+        "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+        "bytes": 850849,
+        "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+        "width_px": 768,
+        "height_px": 1296,
+        "mime": "image/png"
+      },
+      "frame_rects": {
+        "stage": {
+          "x": 7,
+          "y": 6,
+          "width": 242,
+          "height": 244
+        },
+        "white_merch_booth": {
+          "x": 273,
+          "y": 16,
+          "width": 222,
+          "height": 224
+        },
+        "white_food_booth": {
+          "x": 526,
+          "y": 16,
+          "width": 227,
+          "height": 224
+        },
+        "park_plaque": {
+          "x": 780,
+          "y": 28,
+          "width": 232,
+          "height": 199
+        },
+        "tree_green": {
+          "x": 6,
+          "y": 286,
+          "width": 244,
+          "height": 195
+        },
+        "tree_yellow": {
+          "x": 262,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "tree_dark": {
+          "x": 518,
+          "y": 288,
+          "width": 244,
+          "height": 191
+        },
+        "tree_red": {
+          "x": 774,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "meeting_pavilion": {
+          "x": 6,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "giveaway_pavilion": {
+          "x": 262,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "north_hall": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "west_hall": {
+          "x": 774,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "food_counter": {
+          "x": 13,
+          "y": 803,
+          "width": 230,
+          "height": 185
+        },
+        "plaza_furniture": {
+          "x": 268,
+          "y": 815,
+          "width": 231,
+          "height": 161
+        },
+        "cross_banner": {
+          "x": 578,
+          "y": 781,
+          "width": 124,
+          "height": 230
+        },
+        "shrub_bed": {
+          "x": 774,
+          "y": 819,
+          "width": 244,
+          "height": 154
+        }
+      },
+      "recipe": {
+        "layout_sha256": "7769f6b6ef754f2c64fccc000ce995a4d0d87d1423e87f9bd8aacc4776b2f043",
+        "atlas_sha256": "108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+        "rgb_percent_and_offset": [
+          [
+            92,
+            20
+          ],
+          [
+            84,
+            28
+          ],
+          [
+            87,
+            24
+          ]
+        ],
+        "palette": "warm strawberry / rose cream"
+      },
+      "original_layout": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/revenge/layout.json",
+        "bytes": 25334,
+        "sha256": "sha256:7769f6b6ef754f2c64fccc000ce995a4d0d87d1423e87f9bd8aacc4776b2f043"
+      },
+      "original_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/revenge/atlas.png",
+        "bytes": 1272098,
+        "sha256": "sha256:108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa"
+      },
+      "frames": [
+        {
+          "frame": "stage",
+          "policy": "EXACT_ORIGINAL_ERA_RGBA",
+          "frame_rect": {
+            "x": 7,
+            "y": 6,
+            "width": 242,
+            "height": 244
+          },
+          "original_core_base_y": 242,
+          "output_core_base_y": 242,
+          "rgba_sha256": "sha256:00c6d53126461e3cbf4a6418cb9ea1c412dd4e2e3d1997588eae18474dd744b8"
+        },
+        {
+          "frame": "white_merch_booth",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            346,
+            31,
+            610,
+            298
+          ],
+          "resized_dimensions": [
+            218,
+            220
+          ],
+          "destination_xy": [
+            2,
+            4
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.8257575757575758,
+          "frame_rect": {
+            "x": 273,
+            "y": 16,
+            "width": 222,
+            "height": 224
+          },
+          "original_core_base_y": 223,
+          "output_core_base_y": 223,
+          "rgba_sha256": "sha256:fe8ccfaa8b18a727b65c803c3e78e63a016263dad256782115de7118db530536"
+        },
+        {
+          "frame": "white_food_booth",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            644,
+            31,
+            914,
+            298
+          ],
+          "resized_dimensions": [
+            222,
+            220
+          ],
+          "destination_xy": [
+            2,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.8239700374531835,
+          "frame_rect": {
+            "x": 526,
+            "y": 16,
+            "width": 227,
+            "height": 224
+          },
+          "original_core_base_y": 221,
+          "output_core_base_y": 221,
+          "rgba_sha256": "sha256:23c10f40880c32074173bebec1496f823bb17b315408dae0d8fc8ad364c2dcca"
+        },
+        {
+          "frame": "park_plaque",
+          "policy": "EXACT_ORIGINAL_ERA_RGBA",
+          "frame_rect": {
+            "x": 780,
+            "y": 28,
+            "width": 232,
+            "height": 199
+          },
+          "original_core_base_y": 196,
+          "output_core_base_y": 196,
+          "rgba_sha256": "sha256:e6f1067892427bf7897f4494a4e32b31d4f7dfbf94b0b78b732f7b14d1179fc7"
+        },
+        {
+          "frame": "tree_green",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            15,
+            349,
+            311,
+            611
+          ],
+          "resized_dimensions": [
+            217,
+            192
+          ],
+          "destination_xy": [
+            13,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.732824427480916,
+          "frame_rect": {
+            "x": 6,
+            "y": 286,
+            "width": 244,
+            "height": 195
+          },
+          "original_core_base_y": 193,
+          "output_core_base_y": 193,
+          "rgba_sha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3"
+        },
+        {
+          "frame": "tree_yellow",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            327,
+            346,
+            611,
+            610
+          ],
+          "resized_dimensions": [
+            209,
+            194
+          ],
+          "destination_xy": [
+            17,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7348484848484849,
+          "frame_rect": {
+            "x": 262,
+            "y": 285,
+            "width": 244,
+            "height": 197
+          },
+          "original_core_base_y": 195,
+          "output_core_base_y": 195,
+          "rgba_sha256": "sha256:baa9b22ea4d6b6bb0f78c08af09db453a2ff8e0237461808d0bffbf08215547e"
+        },
+        {
+          "frame": "tree_dark",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            634,
+            349,
+            928,
+            610
+          ],
+          "resized_dimensions": [
+            212,
+            188
+          ],
+          "destination_xy": [
+            16,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7203065134099617,
+          "frame_rect": {
+            "x": 518,
+            "y": 288,
+            "width": 244,
+            "height": 191
+          },
+          "original_core_base_y": 189,
+          "output_core_base_y": 189,
+          "rgba_sha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646"
+        },
+        {
+          "frame": "tree_red",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            942,
+            346,
+            1243,
+            610
+          ],
+          "resized_dimensions": [
+            221,
+            194
+          ],
+          "destination_xy": [
+            11,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7348484848484849,
+          "frame_rect": {
+            "x": 774,
+            "y": 285,
+            "width": 244,
+            "height": 197
+          },
+          "original_core_base_y": 195,
+          "output_core_base_y": 195,
+          "rgba_sha256": "sha256:711c1a0b9ea2810685e5e4d94ef12b715d1c739d5b6a08dca74d3ff192271e1e"
+        },
+        {
+          "frame": "meeting_pavilion",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            9,
+            646,
+            306,
+            901
+          ],
+          "resized_dimensions": [
+            204,
+            175
+          ],
+          "destination_xy": [
+            20,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.6862745098039216,
+          "frame_rect": {
+            "x": 6,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 176,
+          "output_core_base_y": 176,
+          "rgba_sha256": "sha256:e26a699d3d251ce364f12e670403a1004314ff3247231623f58fcce766be696d"
+        },
+        {
+          "frame": "giveaway_pavilion",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            325,
+            651,
+            603,
+            899
+          ],
+          "resized_dimensions": [
+            197,
+            176
+          ],
+          "destination_xy": [
+            23,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7096774193548387,
+          "frame_rect": {
+            "x": 262,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 177,
+          "output_core_base_y": 177,
+          "rgba_sha256": "sha256:34e958c1b8afa6763beb790be4b70536a0038c886ae7e2e7df3142c23123f4e3"
+        },
+        {
+          "frame": "north_hall",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            625,
+            674,
+            930,
+            897
+          ],
+          "resized_dimensions": [
+            239,
+            175
+          ],
+          "destination_xy": [
+            2,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7847533632286996,
+          "frame_rect": {
+            "x": 518,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 176,
+          "output_core_base_y": 176,
+          "rgba_sha256": "sha256:bbefa9f2e33075be1bd6aa7a2c5b974ef31f4fa3d4e0c5477914e7ab698f178e"
+        },
+        {
+          "frame": "west_hall",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            944,
+            653,
+            1242,
+            899
+          ],
+          "resized_dimensions": [
+            212,
+            175
+          ],
+          "destination_xy": [
+            16,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7113821138211383,
+          "frame_rect": {
+            "x": 774,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 176,
+          "output_core_base_y": 176,
+          "rgba_sha256": "sha256:c8638a36864ee081f8a5b11aabf8feff5019ad22a399c42abce1f0b6096bbab6"
+        },
+        {
+          "frame": "food_counter",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            18,
+            991,
+            291,
+            1205
+          ],
+          "resized_dimensions": [
+            226,
+            177
+          ],
+          "destination_xy": [
+            2,
+            7
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.8278388278388278,
+          "frame_rect": {
+            "x": 13,
+            "y": 803,
+            "width": 230,
+            "height": 185
+          },
+          "original_core_base_y": 183,
+          "output_core_base_y": 183,
+          "rgba_sha256": "sha256:66084ae5553ed1a0868128b52001f20c27a1865e6598b73009ec642aea1c0e41"
+        },
+        {
+          "frame": "plaza_furniture",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            324,
+            1004,
+            619,
+            1205
+          ],
+          "resized_dimensions": [
+            227,
+            155
+          ],
+          "destination_xy": [
+            2,
+            5
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7694915254237288,
+          "frame_rect": {
+            "x": 268,
+            "y": 815,
+            "width": 231,
+            "height": 161
+          },
+          "original_core_base_y": 159,
+          "output_core_base_y": 159,
+          "rgba_sha256": "sha256:b63e47ce5e6b440c32540c827a6f1a8dbeb3e2bf550e6494eafe045d3467c37f"
+        },
+        {
+          "frame": "cross_banner",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            683,
+            953,
+            854,
+            1228
+          ],
+          "resized_dimensions": [
+            120,
+            193
+          ],
+          "destination_xy": [
+            2,
+            36
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7017543859649122,
+          "frame_rect": {
+            "x": 578,
+            "y": 781,
+            "width": 124,
+            "height": 230
+          },
+          "original_core_base_y": 228,
+          "output_core_base_y": 228,
+          "rgba_sha256": "sha256:478e012ab1e7a260c1f98deec1cef6643f689cf85f8c3bdac119dfa450e1d9be"
+        },
+        {
+          "frame": "shrub_bed",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            938,
+            1003,
+            1238,
+            1201
+          ],
+          "resized_dimensions": [
+            229,
+            151
+          ],
+          "destination_xy": [
+            7,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7626262626262627,
+          "frame_rect": {
+            "x": 774,
+            "y": 819,
+            "width": 244,
+            "height": 154
+          },
+          "original_core_base_y": 152,
+          "output_core_base_y": 152,
+          "rgba_sha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9"
+        }
+      ],
+      "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+      "decoded_pixels": 2043904,
+      "combined_png_bytes": 2027630,
+      "native_visual_qualification": "NOT_RUN"
+    },
+    "DANGER": {
+      "atlas": {
+        "path": "world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a",
+        "width_px": 1024,
+        "height_px": 1024,
+        "mime": "image/png",
+        "id": "danger_architecture_v2_atlas"
+      },
+      "ground": {
+        "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+        "bytes": 850849,
+        "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+        "width_px": 768,
+        "height_px": 1296,
+        "mime": "image/png"
+      },
+      "frame_rects": {
+        "stage": {
+          "x": 7,
+          "y": 6,
+          "width": 242,
+          "height": 244
+        },
+        "white_merch_booth": {
+          "x": 275,
+          "y": 16,
+          "width": 218,
+          "height": 224
+        },
+        "white_food_booth": {
+          "x": 528,
+          "y": 17,
+          "width": 224,
+          "height": 221
+        },
+        "park_plaque": {
+          "x": 779,
+          "y": 27,
+          "width": 233,
+          "height": 201
+        },
+        "tree_green": {
+          "x": 6,
+          "y": 286,
+          "width": 244,
+          "height": 195
+        },
+        "tree_yellow": {
+          "x": 262,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "tree_dark": {
+          "x": 518,
+          "y": 288,
+          "width": 244,
+          "height": 191
+        },
+        "tree_red": {
+          "x": 774,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "meeting_pavilion": {
+          "x": 6,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "giveaway_pavilion": {
+          "x": 262,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "north_hall": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "west_hall": {
+          "x": 774,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "food_counter": {
+          "x": 14,
+          "y": 803,
+          "width": 227,
+          "height": 185
+        },
+        "plaza_furniture": {
+          "x": 269,
+          "y": 815,
+          "width": 229,
+          "height": 161
+        },
+        "cross_banner": {
+          "x": 580,
+          "y": 781,
+          "width": 119,
+          "height": 230
+        },
+        "shrub_bed": {
+          "x": 774,
+          "y": 819,
+          "width": 244,
+          "height": 154
+        }
+      },
+      "recipe": {
+        "layout_sha256": "1dbea3beddbba01f62fae1170b3f626a5b65eae138e1aab2c0171c85888b2b9a",
+        "atlas_sha256": "20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d",
+        "rgb_percent_and_offset": [
+          [
+            83,
+            34
+          ],
+          [
+            94,
+            16
+          ],
+          [
+            98,
+            10
+          ]
+        ],
+        "palette": "apricot / mint / lavender"
+      },
+      "original_layout": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/danger/layout.json",
+        "bytes": 25333,
+        "sha256": "sha256:1dbea3beddbba01f62fae1170b3f626a5b65eae138e1aab2c0171c85888b2b9a"
+      },
+      "original_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/danger/atlas.png",
+        "bytes": 1271456,
+        "sha256": "sha256:20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d"
+      },
+      "frames": [
+        {
+          "frame": "stage",
+          "policy": "EXACT_ORIGINAL_ERA_RGBA",
+          "frame_rect": {
+            "x": 7,
+            "y": 6,
+            "width": 242,
+            "height": 244
+          },
+          "original_core_base_y": 242,
+          "output_core_base_y": 242,
+          "rgba_sha256": "sha256:f0fc69eac4e3108028ce461c4d86a894a36727b474f3e586dfddc33b2f3b9621"
+        },
+        {
+          "frame": "white_merch_booth",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            346,
+            31,
+            610,
+            298
+          ],
+          "resized_dimensions": [
+            214,
+            216
+          ],
+          "destination_xy": [
+            2,
+            8
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.8106060606060606,
+          "frame_rect": {
+            "x": 275,
+            "y": 16,
+            "width": 218,
+            "height": 224
+          },
+          "original_core_base_y": 223,
+          "output_core_base_y": 223,
+          "rgba_sha256": "sha256:b32695b7e05beecc890e857c847b5f1a642732df67eb15e32750ea5f22cd69a4"
+        },
+        {
+          "frame": "white_food_booth",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            644,
+            31,
+            914,
+            298
+          ],
+          "resized_dimensions": [
+            220,
+            218
+          ],
+          "destination_xy": [
+            2,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.8148148148148148,
+          "frame_rect": {
+            "x": 528,
+            "y": 17,
+            "width": 224,
+            "height": 221
+          },
+          "original_core_base_y": 219,
+          "output_core_base_y": 219,
+          "rgba_sha256": "sha256:2209fc308e88ff452b43fe98785a8e831e1cd6ffe8e9d13b9467439aa61aa7bc"
+        },
+        {
+          "frame": "park_plaque",
+          "policy": "EXACT_ORIGINAL_ERA_RGBA",
+          "frame_rect": {
+            "x": 779,
+            "y": 27,
+            "width": 233,
+            "height": 201
+          },
+          "original_core_base_y": 198,
+          "output_core_base_y": 198,
+          "rgba_sha256": "sha256:614d7c3a10d77bfb3b59cc307da574408f5b48390c5b79bad97efc2bfb4045f0"
+        },
+        {
+          "frame": "tree_green",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            15,
+            349,
+            311,
+            611
+          ],
+          "resized_dimensions": [
+            217,
+            192
+          ],
+          "destination_xy": [
+            13,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.732824427480916,
+          "frame_rect": {
+            "x": 6,
+            "y": 286,
+            "width": 244,
+            "height": 195
+          },
+          "original_core_base_y": 193,
+          "output_core_base_y": 193,
+          "rgba_sha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72"
+        },
+        {
+          "frame": "tree_yellow",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            327,
+            346,
+            611,
+            610
+          ],
+          "resized_dimensions": [
+            209,
+            194
+          ],
+          "destination_xy": [
+            17,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7348484848484849,
+          "frame_rect": {
+            "x": 262,
+            "y": 285,
+            "width": 244,
+            "height": 197
+          },
+          "original_core_base_y": 195,
+          "output_core_base_y": 195,
+          "rgba_sha256": "sha256:62a9d99553dc31dd0645ded88048f7fefd98c465a649fab789d2c594e3f6ccc8"
+        },
+        {
+          "frame": "tree_dark",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            634,
+            349,
+            928,
+            610
+          ],
+          "resized_dimensions": [
+            212,
+            188
+          ],
+          "destination_xy": [
+            16,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7203065134099617,
+          "frame_rect": {
+            "x": 518,
+            "y": 288,
+            "width": 244,
+            "height": 191
+          },
+          "original_core_base_y": 189,
+          "output_core_base_y": 189,
+          "rgba_sha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e"
+        },
+        {
+          "frame": "tree_red",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            942,
+            346,
+            1243,
+            610
+          ],
+          "resized_dimensions": [
+            221,
+            194
+          ],
+          "destination_xy": [
+            11,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7348484848484849,
+          "frame_rect": {
+            "x": 774,
+            "y": 285,
+            "width": 244,
+            "height": 197
+          },
+          "original_core_base_y": 195,
+          "output_core_base_y": 195,
+          "rgba_sha256": "sha256:3d153d5963b10d39670ef733106e3c6a33dd145a7388e36219e283d5e1a145a6"
+        },
+        {
+          "frame": "meeting_pavilion",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            9,
+            646,
+            306,
+            901
+          ],
+          "resized_dimensions": [
+            204,
+            175
+          ],
+          "destination_xy": [
+            20,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.6862745098039216,
+          "frame_rect": {
+            "x": 6,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 176,
+          "output_core_base_y": 176,
+          "rgba_sha256": "sha256:9709709a299238f1246bf5366723b379a96615f6670dce3fdb18bb995116abbd"
+        },
+        {
+          "frame": "giveaway_pavilion",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            325,
+            651,
+            603,
+            899
+          ],
+          "resized_dimensions": [
+            197,
+            176
+          ],
+          "destination_xy": [
+            23,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7096774193548387,
+          "frame_rect": {
+            "x": 262,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 177,
+          "output_core_base_y": 177,
+          "rgba_sha256": "sha256:2da47bd423a32fb4a4fc77c43b1cf2f0f752c4c826b8d64d04692b94894787e7"
+        },
+        {
+          "frame": "north_hall",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            625,
+            674,
+            930,
+            897
+          ],
+          "resized_dimensions": [
+            239,
+            175
+          ],
+          "destination_xy": [
+            2,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7847533632286996,
+          "frame_rect": {
+            "x": 518,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 176,
+          "output_core_base_y": 176,
+          "rgba_sha256": "sha256:6f606a6d7759c0ef46b4f5f61f07e6d1fb43dd9a9092ab178aa48ecf7058c78b"
+        },
+        {
+          "frame": "west_hall",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            944,
+            653,
+            1242,
+            899
+          ],
+          "resized_dimensions": [
+            212,
+            175
+          ],
+          "destination_xy": [
+            16,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7113821138211383,
+          "frame_rect": {
+            "x": 774,
+            "y": 550,
+            "width": 244,
+            "height": 180
+          },
+          "original_core_base_y": 176,
+          "output_core_base_y": 176,
+          "rgba_sha256": "sha256:35f149026e0d49352b50451e3b07337ef3c37719cb526d80f084e3b02060152f"
+        },
+        {
+          "frame": "food_counter",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            18,
+            991,
+            291,
+            1205
+          ],
+          "resized_dimensions": [
+            223,
+            175
+          ],
+          "destination_xy": [
+            2,
+            9
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.8168498168498168,
+          "frame_rect": {
+            "x": 14,
+            "y": 803,
+            "width": 227,
+            "height": 185
+          },
+          "original_core_base_y": 183,
+          "output_core_base_y": 183,
+          "rgba_sha256": "sha256:33d5a6fdbffe6a261675c0f439ef97d8964debea64fb76672a476bc646693995"
+        },
+        {
+          "frame": "plaza_furniture",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            324,
+            1004,
+            619,
+            1205
+          ],
+          "resized_dimensions": [
+            225,
+            153
+          ],
+          "destination_xy": [
+            2,
+            6
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7627118644067796,
+          "frame_rect": {
+            "x": 269,
+            "y": 815,
+            "width": 229,
+            "height": 161
+          },
+          "original_core_base_y": 158,
+          "output_core_base_y": 158,
+          "rgba_sha256": "sha256:84afa3a865f100e11ef2872b5de3d5b03a8134e9e8cf2daa462709bfaf595942"
+        },
+        {
+          "frame": "cross_banner",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            683,
+            953,
+            854,
+            1228
+          ],
+          "resized_dimensions": [
+            115,
+            185
+          ],
+          "destination_xy": [
+            2,
+            44
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.672514619883041,
+          "frame_rect": {
+            "x": 580,
+            "y": 781,
+            "width": 119,
+            "height": 230
+          },
+          "original_core_base_y": 228,
+          "output_core_base_y": 228,
+          "rgba_sha256": "sha256:bf12a5e8e7ddfd1a332bd80f2721264680979b4ee379853c324a1566efb69ea6"
+        },
+        {
+          "frame": "shrub_bed",
+          "policy": "EXPLICIT_RGB_PALETTE_UNCHANGED_ALPHA_NEAREST_FIT",
+          "source_crop_xyxy": [
+            938,
+            1003,
+            1238,
+            1201
+          ],
+          "resized_dimensions": [
+            229,
+            151
+          ],
+          "destination_xy": [
+            7,
+            2
+          ],
+          "alpha_preserved_before_sampling": true,
+          "scale_limit": 0.7626262626262627,
+          "frame_rect": {
+            "x": 774,
+            "y": 819,
+            "width": 244,
+            "height": 154
+          },
+          "original_core_base_y": 152,
+          "output_core_base_y": 152,
+          "rgba_sha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f"
+        }
+      ],
+      "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+      "decoded_pixels": 2043904,
+      "combined_png_bytes": 2029289,
+      "native_visual_qualification": "NOT_RUN"
+    }
+  },
+  "new_generation_calls": 0,
+  "character_changes": false,
+  "actual_era_distinction_and_cuteness": "NOT_RUN_NATIVE_COMPARISON_REQUIRED"
+}

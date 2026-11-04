@@ -10,9 +10,11 @@
       "MAP"
     ],
     "eras": [
-      "PARADE"
+      "PARADE",
+      "REVENGE",
+      "DANGER"
     ],
-    "other_eras": "UNCHANGED",
+    "other_eras": "THREE_SCENERY_SOURCE_TUPLES_ONLY",
     "characters": "ALL_ORIGINAL_BYTES_UV_RENDERERS_CROPS_ANCHORS_SIZING_FROZEN",
     "foreground": "ALL_TEXT_TYPOGRAPHY_CONTROLS_LAYOUT_LABELS_INTENTS_FROZEN"
   },
@@ -205,7 +207,365 @@
     "new_browser_native_runs": 0,
     "actual_390_world_map_after": "NOT_RUN",
     "affected_360_430_after": "NOT_RUN",
-    "other_eras_cozy": "NOT_RUN_UNCHANGED",
+    "other_eras_cozy": "SOURCE_READY_NATIVE_NOT_RUN",
     "visual_acceptance": "OPEN_FIRST_GLANCE_CUTER_REQUIRED"
+  },
+  "eras": {
+    "PARADE": {
+      "atlas": {
+        "path": "world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f",
+        "width_px": 1024,
+        "height_px": 1024,
+        "mime": "image/png",
+        "id": "parade_architecture_v2_atlas"
+      },
+      "ground": {
+        "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+        "bytes": 850849,
+        "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+        "width_px": 768,
+        "height_px": 1296,
+        "mime": "image/png"
+      },
+      "frame_rects": {
+        "stage": {
+          "x": 7,
+          "y": 6,
+          "width": 242,
+          "height": 244
+        },
+        "white_merch_booth": {
+          "x": 274,
+          "y": 16,
+          "width": 220,
+          "height": 224
+        },
+        "white_food_booth": {
+          "x": 526,
+          "y": 16,
+          "width": 227,
+          "height": 224
+        },
+        "park_plaque": {
+          "x": 781,
+          "y": 28,
+          "width": 230,
+          "height": 199
+        },
+        "tree_green": {
+          "x": 6,
+          "y": 286,
+          "width": 244,
+          "height": 195
+        },
+        "tree_yellow": {
+          "x": 262,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "tree_dark": {
+          "x": 518,
+          "y": 288,
+          "width": 244,
+          "height": 191
+        },
+        "tree_red": {
+          "x": 774,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "meeting_pavilion": {
+          "x": 6,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "giveaway_pavilion": {
+          "x": 262,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "north_hall": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "west_hall": {
+          "x": 774,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "food_counter": {
+          "x": 13,
+          "y": 805,
+          "width": 229,
+          "height": 182
+        },
+        "plaza_furniture": {
+          "x": 268,
+          "y": 815,
+          "width": 231,
+          "height": 161
+        },
+        "cross_banner": {
+          "x": 579,
+          "y": 781,
+          "width": 122,
+          "height": 229
+        },
+        "shrub_bed": {
+          "x": 774,
+          "y": 818,
+          "width": 244,
+          "height": 156
+        }
+      }
+    },
+    "REVENGE": {
+      "atlas": {
+        "path": "world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd",
+        "width_px": 1024,
+        "height_px": 1024,
+        "mime": "image/png",
+        "id": "revenge_architecture_v2_atlas"
+      },
+      "ground": {
+        "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+        "bytes": 850849,
+        "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+        "width_px": 768,
+        "height_px": 1296,
+        "mime": "image/png"
+      },
+      "frame_rects": {
+        "stage": {
+          "x": 7,
+          "y": 6,
+          "width": 242,
+          "height": 244
+        },
+        "white_merch_booth": {
+          "x": 273,
+          "y": 16,
+          "width": 222,
+          "height": 224
+        },
+        "white_food_booth": {
+          "x": 526,
+          "y": 16,
+          "width": 227,
+          "height": 224
+        },
+        "park_plaque": {
+          "x": 780,
+          "y": 28,
+          "width": 232,
+          "height": 199
+        },
+        "tree_green": {
+          "x": 6,
+          "y": 286,
+          "width": 244,
+          "height": 195
+        },
+        "tree_yellow": {
+          "x": 262,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "tree_dark": {
+          "x": 518,
+          "y": 288,
+          "width": 244,
+          "height": 191
+        },
+        "tree_red": {
+          "x": 774,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "meeting_pavilion": {
+          "x": 6,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "giveaway_pavilion": {
+          "x": 262,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "north_hall": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "west_hall": {
+          "x": 774,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "food_counter": {
+          "x": 13,
+          "y": 803,
+          "width": 230,
+          "height": 185
+        },
+        "plaza_furniture": {
+          "x": 268,
+          "y": 815,
+          "width": 231,
+          "height": 161
+        },
+        "cross_banner": {
+          "x": 578,
+          "y": 781,
+          "width": 124,
+          "height": 230
+        },
+        "shrub_bed": {
+          "x": 774,
+          "y": 819,
+          "width": 244,
+          "height": 154
+        }
+      }
+    },
+    "DANGER": {
+      "atlas": {
+        "path": "world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a",
+        "width_px": 1024,
+        "height_px": 1024,
+        "mime": "image/png",
+        "id": "danger_architecture_v2_atlas"
+      },
+      "ground": {
+        "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+        "bytes": 850849,
+        "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+        "width_px": 768,
+        "height_px": 1296,
+        "mime": "image/png"
+      },
+      "frame_rects": {
+        "stage": {
+          "x": 7,
+          "y": 6,
+          "width": 242,
+          "height": 244
+        },
+        "white_merch_booth": {
+          "x": 275,
+          "y": 16,
+          "width": 218,
+          "height": 224
+        },
+        "white_food_booth": {
+          "x": 528,
+          "y": 17,
+          "width": 224,
+          "height": 221
+        },
+        "park_plaque": {
+          "x": 779,
+          "y": 27,
+          "width": 233,
+          "height": 201
+        },
+        "tree_green": {
+          "x": 6,
+          "y": 286,
+          "width": 244,
+          "height": 195
+        },
+        "tree_yellow": {
+          "x": 262,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "tree_dark": {
+          "x": 518,
+          "y": 288,
+          "width": 244,
+          "height": 191
+        },
+        "tree_red": {
+          "x": 774,
+          "y": 285,
+          "width": 244,
+          "height": 197
+        },
+        "meeting_pavilion": {
+          "x": 6,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "giveaway_pavilion": {
+          "x": 262,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "north_hall": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "west_hall": {
+          "x": 774,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "food_counter": {
+          "x": 14,
+          "y": 803,
+          "width": 227,
+          "height": 185
+        },
+        "plaza_furniture": {
+          "x": 269,
+          "y": 815,
+          "width": 229,
+          "height": 161
+        },
+        "cross_banner": {
+          "x": 580,
+          "y": 781,
+          "width": 119,
+          "height": 230
+        },
+        "shrub_bed": {
+          "x": 774,
+          "y": 819,
+          "width": 244,
+          "height": 154
+        }
+      }
+    }
+  },
+  "era_derivatives": {
+    "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+    "bytes": 32665,
+    "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
   }
 }

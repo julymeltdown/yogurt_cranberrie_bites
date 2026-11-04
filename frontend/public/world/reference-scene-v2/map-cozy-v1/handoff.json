@@ -4,8 +4,8 @@
   "payloads": [
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
-      "bytes": 4702,
-      "sha256": "sha256:6d3b4edc18de98c696200e475960e46cb85b828f9f438d97e2c9f6e4fd6f7665"
+      "bytes": 5364,
+      "sha256": "sha256:1453f533b9a18c3554fcefeddcc08e684e00f5e2ff87fb89bba47180116b041e"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/build.py",
@@ -39,8 +39,8 @@
     },
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
-      "bytes": 5836,
-      "sha256": "sha256:0b2be1fa5773f9c98f221ac83d1fd729fee89f0e0c3a8bf2bf71c81d2bf35217"
+      "bytes": 14186,
+      "sha256": "sha256:b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -51,6 +51,21 @@
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/ground.png",
       "bytes": 850849,
       "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+      "bytes": 1176781,
+      "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "bytes": 1178440,
+      "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "bytes": 32665,
+      "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
     }
   ],
   "root_export_ownership": "Root153 produces parade/ground.png from pinned ground.svg, then explicitly stops/releases; ART subsequently closes hashes without modifying PNG.",

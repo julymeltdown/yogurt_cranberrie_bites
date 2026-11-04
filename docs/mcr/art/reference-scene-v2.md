@@ -673,3 +673,61 @@ baked-text pixels; five REVENGE and seven DANGER rectangles differ from PARADE.
 Their future palette/registration mode requires an explicit binding record,
 separate named output allocation and a committed first PARADE handoff. No
 released media allocation, extra image generation or new character rights apply.
+
+### Three-era source derivative delivery
+
+The first PARADE source70f22a683ab029751548331df5cf46f2ad16baf8 was published as
+97c65b8e8120eb46e72c958d1816383f31689378. Artist independently fetched master
+716b749665fab1b7b05c414da4155b3046c47054, matched ls-remote, all12 source/doc
+postimages, all10 payload pins and source/master ancestry. No receipt-only
+commit or repeated runtime test was needed.
+
+Root then supplied actual390x844 World/Map before/after images from
+candidate4e491a4509e9cab6a3e28364db616bdab9c157f5, native-02. Artist checked all
+four SHA/byte/dimension records and directly viewed the actual scenes. World
+AFTER449001bytes/SHA256ff25b45a3d9f05729705fe628a82ea8ecfcda3392dde63b6951de754c2c829a8
+was saved15:54:23.954KST; Map AFTER386020bytes/SHA25662114b928572cb7462f877f828c2b5ba2c7130b36181632d231eb8673a52a473
+at15:54:24.864KST. Their dominant foliage/buildings/terrain visibly show the
+warm cozy direction against both before and the unchanged collage. No new
+registration defect was identified. The olive Map fit bands were reported to
+Root as a bounded presentation-background observation, without changing CSS,
+camera, layout or source PNGs. Six-character texture/frame/position/origin/size
+equality and camera/semantic-target equality are attributed to Root's runtime
+checks, not an Artist rerun. This is a first390px source-owner visual cue, not
+human final acceptance, live/device/IN evidence or all-era qualification.
+
+Binding7dcbc0e2 grants only revenge/atlas.png, danger/atlas.png and
+era-derivatives.json in this source prefix, plus the already assigned recipe/
+metadata/documentation updates. ART-ERA-PACK-202611040658Z was separately
+accepted after a fresh37.571GiB free-disk guard, clean checkout and absent new
+output paths. Actual packing used build.py19955bytes/SHA2566f9c122c97ceab201202a9693575edcd4f1989fb1c4b95324a21574cdf54937f
+and the immutable generated sheet. One bounded Python/Pillow job exited0 in
+0.657seconds. No second image generation, browser, native capture, ground export,
+server, dependency or character input was used.
+
+The exact RGB integer recipes are recorded in era-derivatives.json. All alpha
+bytes are preserved before nearest sampling. Every destination uses its own era
+layout; all32 frame rectangles/baseline rows, four original stage/plaque RGBA
+frames and all pixels outside the fourteen replacement slots per era passed
+independent checks. Source sheet, PARADE atlas, ground and registration bytes
+remain exact. The following PNGs are new scenery, never character resources:
+
+- REVENGE1176781bytes/SHA25654b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd;
+  combined with shared ground2027630bytes.
+- DANGER1178440bytes/SHA2563184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a;
+  combined with shared ground2029289bytes.
+
+Each pair stays below2097152bytes/2043904decoded pixels. The32665-byte era
+provenance record has SHA2564cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0.
+Metadata-only closure and verification passed with13 exact payload pins. The
+finite output allocation was explicitly fully released at2026-11-04T07:01:02Z
+(16:01:02KST):2405246 new/changed PNG+JSON bytes, zero temporary bytes, exited
+owned child/no remaining job/browser/server/process, and40353869824 free bytes.
+No further packing is acquired by later prose/hash closure or publication.
+
+The first PARADE PNG tuple remains immutable; the refreshed era-keyed source
+manifest is a distinct source cohort requiring Root's explicitly assigned
+consumer extension. Generated source differences do not establish visible
+in-app era distinction. Actual REVENGE/DANGER390px World/Map scenes, relevant
+360/430px views, all-ten background acceptance and original functional/live/
+device/public-flow obligations remain open under the same unfinished goal.
