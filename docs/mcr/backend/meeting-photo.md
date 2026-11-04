@@ -39,3 +39,19 @@ Fixture JSON identifier/actor/event/media/expiry/READY binding checks, planning
 check and whitespace check exit 0. No Cargo or native test has run for this slice.
 New owned strict DTO and pure-test work is preserved uncommitted separately while
 this documentation/fixture checkpoint publishes; it is not included in the claim.
+
+## Frozen input contract
+
+FE1ab7 and media213 explicitly agreed the exact fields, nullable/full-replacement
+semantics, retained-photo acknowledgement and receipt/private-read lifecycle. The
+frozen marker is `meeting-photo/v1`; it is an opt-in client input contract, not
+live producer capability. BackendSL explicitly allocated only beacon.schema.json
+and feed.schema.json additions plus reserved forward migration 0029 to this owner;
+media213 owns Purpose enum, and root/230 retain generated outputs.
+
+`python3 backend/scripts/mcr/meeting_photo_contract.py` exits 0: 17 offline schema
+cases cover fixtures, dedicated purpose, attachment permission, omitted/null
+removal, text-only compatibility and invalid remote-photo fields. Python syntax
+and whitespace checks exit 0. No generated output, application build or native
+execution is claimed. The reserved migration is being implemented separately and
+is not included in the schema/fixture publication.

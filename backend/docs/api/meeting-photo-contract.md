@@ -1,10 +1,10 @@
 # Meeting photo v1: producer/consumer agreement
 
-Candidate `meeting-photo/v1-proposal`, based on master
+Frozen producer/consumer input port `meeting-photo/v1`, based on master
 `0c76e42790106501f3988fe7cb46113b8cd7784e`. This document is the explicitly
 assigned shared contract path; it does not claim the existing generated C04
 schemas or live routes already accept these additions. Media owner 213 has confirmed the exact fields and semantics. FE owner 1ab7
-has received the fixture and is confirming its consumer input. Authority owner
+has explicitly agreed the exact fields and lifecycle semantics. Authority owner
 207 has pinned the canonical guard SDK at published `888cb6bd`. No king/SL implementation review or approval is required.
 
 This completes original BE09/FE20 optional authorized photos (§5.4), not the
@@ -109,3 +109,9 @@ Exact ungranted shared changes identified early:
   no implicit old-beacon/domain source edit is required for that composition.
 
 Native/HTTP/production rights qualification is NOT_RUN for this new slice.
+
+The input-port marker is **meeting-photo/v1**. It is an explicit opt-in client
+configuration name, not a server capability or automatic root activation flag.
+Absent configuration preserves text-only behavior. Schema inputs are frozen here;
+generated OpenAPI/TypeScript outputs remain with root/230 until their coordinated
+regeneration. Runtime support is NOT_RUN and must not be inferred from this marker.
