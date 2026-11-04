@@ -199,11 +199,11 @@ are composition inputs and are not counted as coordinator native evidence.
 The Party/Gift composite becomes terminal only when both actual child effects
 are terminal; Meeting remains a separate `BEACONS_AND_RALLY` category.
 
-The serving-composition branch at `915fca43` imported an earlier aggregate
-postimage (`af2d67ac`) that still moved `source_binding` into the query before
-the asynchronous replay read. The owner source at default `b42f86ee5` keeps
-`&source_binding` there, matching the already-qualified `04a51b2b` aggregate
-postimage and avoiding an ownership change during cancellation. The
-serving-composition source has not been qualified for this coordinator and
-must not replace the current owner copy without a coherent intake and a fresh
-native run. Composition source status is **NOT_RUN**.
+The current serving-composition branch imports aggregate blob `b33e7425`, which
+retains the owned borrow fix (`&source_binding`) from `cfa8793e`. Its historical
+native blob `6a698ca9` is not the current owner native postimage. The owner
+source at `709f506b4` has aggregate blob `1e191147`, adding the pre-owner
+reauthentication, and native blob `64945802`. The provider owner confirmed
+that it will not overwrite the six owner postimages or fold them into a stale
+serving copy; coherent intake must carry the full immutable owner pin. Current
+composition/native status remains **NOT_RUN**.
