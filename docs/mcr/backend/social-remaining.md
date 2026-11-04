@@ -925,3 +925,73 @@ carry/prior growth. Failed evidence stays in `mcr-social-0051-diagnostic-d08d8xh
 `ebddf0c4abbb7a44adfb56b920800ae3df29626ecba7e27305548511aa4c00e3`;
 `full-release.json`
 `5ddaa15bf00e9c72f4af243db531fd6917c79a61319459d78371039358cfbe5a`.
+
+
+### Qualified invalidation source — 10 pure and 80 native checks passed
+
+Candidate `beeb34941f3da4bed3826dd388d59ebc781b136c` contains the exact
+internal-create receipt-status fix from `08602903` and an owned test correction:
+expiry emission and draining operate globally, so the restart case asserts its
+own event's signals/publications while allowing legitimate prior-case deadlines.
+It still verifies two successive actual PostgreSQL deadlines, retry, deduplication,
+sink recreation and actor/event scope. No production Rust API changed.
+
+Allocation `SOCIAL-0051-CREATE-REPAIR-MEDIA-202611041203Z` began at
+12:08:24 UTC. Cargo exited **0** in 3.70 seconds with the exact command:
+
+```sh
+cargo test --manifest-path backend/Cargo.toml --locked --offline -j 2 \
+  --config profile.dev.package.contracts-build.opt-level=2 \
+  -p concert-service --lib --test social_live --test social_remaining \
+  --test command_receipts --no-run --message-format=json
+```
+
+Rust/Cargo 1.88, development/test debug 0, incremental 0 and unset Rust flag
+overrides were preserved. Four target executables and all tracked backend and
+contract sources, isolated SQL prerequisites and runtime fixtures were frozen
+externally before unconditional zero-handle target release at **12:09:03 UTC**.
+No build-script repair or target access after release occurred.
+
+The copied library passed **2 pure checks**; live passed **8 pure checks**.
+On the owned Unix-only PostgreSQL 16.14 cluster, live **15**, remaining **8**
+and command receipts **17** passed both before and after an actual physical
+restart: **80 native checks, zero failures**. This includes all five new policy
+invalidation cases and the retained canonical-claim, savepoint, witness and
+receipt regressions. Restart preserved database counts/generation sums. Explicit
+prepared-transaction counts were **0** before restart, before final stop and in
+finally. The selected native runner exited **0** in 21.30 seconds.
+
+PostgreSQL cleanup passed; the owned root was absent and fresh process
+inspection found zero owned runtime processes. Full release was recorded at
+**12:09:46 UTC**, before the 12:23:24 UTC deadline. Peak whole allocation was
+**1,866,764,288 bytes**, including all historical artifacts and known prior
+positive target growth; this round added no positive target growth. The
+historical failed rounds remain unchanged.
+
+Evidence bundle `mcr-social-0051-create-saffwf8h` retains four copied executables,
+Cargo JSON, full source/runtime SQL freeze, raw test results and release records:
+
+| Evidence | SHA256 |
+| --- | --- |
+| `native-report.json` | `2fee6bd7543a054f6a2ff47262591d95aa9b46339211eb10adaf5df70ae8fa05` |
+| `all-artifacts.json` | `69751ef31a0ac822c4d8ec4be482746ca040ef61a303a6d77be2e0706ebc62a4` |
+| `full-source.tar.gz` | `9fda8d96f2a9b3e33b1d13d95b5a22301dea62276026ce5bc7a4344a794ce1cf` |
+| `target-release.json` | `465357a48d1f919d88ca98f689c0fb00a0223238b38e281d515bdadcc5392796` |
+| `full-release.json` | `74eeca4f9a39bb7305a8935033a488faa1aa48b088d893f326d779eaa97ae3f7` |
+
+This is **qualified isolated storage/sink behavior**, using explicit synthetic
+provider/authority fixtures and selected prerequisite schemas. It does not
+certify full production migration composition, actual acquired OwnerGuardScope,
+real Auth/Friend canonical change delivery, provider calls, public HTTP, actual
+socket publication, browser cache withdrawal, visual acceptance or IN03. Those
+original acceptance gates remain open; the aligned historical goal remains
+truthfully BLOCKED and is not reset or declared complete.
+
+The delivery base is `145a8e939fb7bede7e46931d6559adb2c51f62a7`.
+Only the nine previously assigned Social paths changed: the new migration,
+source/scope export, owned live test module/re-export, native runner,
+HTTP-flow harness/documentation and this evidence document. Root is the named
+publishing developer and owns common dispatch, startup polling, socket
+publication and the frozen `930380de` WS contract. This handoff needs no
+king/SL review or acknowledgment. Root's combined integration validation and
+remote publication proof remain pending until actually delivered.
