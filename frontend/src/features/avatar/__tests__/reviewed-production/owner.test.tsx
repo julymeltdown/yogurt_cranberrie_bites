@@ -94,7 +94,7 @@ it('edits all actual layer choices through the production component and saves on
   expect(f.owner.controller.read()).toMatchObject({ persisted: f.server(), draft: f.server().config, notice: 'saved' })
   expect(f.onCommitted).toHaveBeenCalledExactlyOnceWith(f.server(), f.scope)
   await click(view.host, 'Random character'); expect(writes(f)).toHaveLength(1)
-  await click(view.host, 'Reset draft'); expect(f.owner.controller.read().draft).toEqual(f.server().config)
+  await click(view.host, 'Cancel changes'); expect(f.owner.controller.read().draft).toEqual(f.server().config)
 })
 it('view unmount/remount keeps the Account draft, one read and the shared art owner', async () => {
   const f = await fixture(), first = mount(f.owner)
