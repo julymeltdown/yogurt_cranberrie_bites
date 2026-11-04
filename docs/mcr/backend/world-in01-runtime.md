@@ -1,10 +1,20 @@
 # Isolated World startup
 
 Status: `IN_PROGRESS`. Public backend C03 and a bounded actual two-client World
-flow passed. Sustained World serving subsequently failed, so no live frontend
-handoff is available and browser IN01 remains `NOT_RUN`. The historical startup
+flow passed. A new diagnostic production cohort is held through 04:55 UTC on
+2026-11-04 and its expiring private bundle has reached the designated frontend
+team. Sustained World serving previously failed intermittently; that incident
+remains unresolved and browser IN01 remains `NOT_RUN`. The historical startup
 baseline below is superseded by the dated followups. Optional Age, Social, Gift,
 Feed and media modes are not prerequisites.
+
+The portable `root-native-e6921cf2.json` receipt records the coherent diagnostic
+build, both shutdown-result tests, and a passing actual ungated HTTP owner
+qualification. The latter uses genuine signup, verification, login and Profile
+creation, then verifies terminal delivery and settlement on the public router.
+Its reset and expiry cases deliberately retain owner quarantine until isolated
+teardown. This is distinct from the earlier gated-body framing qualification.
+The ongoing World hold has no final cleanup or browser acceptance result yet.
 
 `backend/scripts/mcr/world_in01_prepare.py` owns disposable PostgreSQL, Redis,
 six native services, real Auth mail delivery and, with `--bootstrap`, the actual
