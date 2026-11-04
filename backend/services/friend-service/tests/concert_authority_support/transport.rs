@@ -200,13 +200,24 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
         .await
         .is_err());
     native::finish_scopes(&prod).await?;
-    assert!(
-        client
+    let stop = Instant::now() + Duration::from_secs(2);
+    loop {
+        if client
             .complete(native::completion(&b, &g))
             .await?
             .into_inner()
             .completed
-    );
+        {
+            break;
+        }
+        // Actual main also runs recovery. A concurrent cleanup sweep may own
+        // the sealed ledger row; retry the idempotent protocol within a bound.
+        anyhow::ensure!(
+            Instant::now() < stop,
+            "actual main completion remained unsettled"
+        );
+        tokio::time::sleep(Duration::from_millis(5)).await;
+    }
     println!("mTLS owner acquisition signed Concert-only; Post view capability; forged capability denied; configured producer settlement authenticated PASS");
     p.close().await;
     prod.close().await;
