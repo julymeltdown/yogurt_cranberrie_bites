@@ -28,6 +28,9 @@ Old atlas booth/food-counter pixels are a separate raster-art question: DOM
 assertions and current-v5 captures cannot establish that historical r3 artwork
 contains no lettering. No native legacy-art acceptance is claimed.
 
-Validation: regression source authored and committed as `101019a1`; execution
-is **NOT_RUN** until the fresh named Root focus/source allocation. The resulting
-immutable source/native packet will record the actual command and exit code.
+Validation: regression source committed as `101019a1`; the allocated
+`ROOT-FOCUS-VIS-202611040902Z` run passed all 15 tests across the three affected
+files, full TypeScript, scoped lint and runner syntax. Exact commands and logs
+are retained in `../evidence/cozy-backgrounds-v1/focus-04/resource/`. The native
+packet's separate forced-title sampling failures do not change this source
+result or establish anything about historical r3 raster lettering.
