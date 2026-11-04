@@ -24,6 +24,7 @@ use concert_application::{
     Clock,
 };
 use concert_domain::{age_policy::AgeStatus, AuthUserId, EventId};
+use prost::Message;
 use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use sqlx::PgPool;
@@ -169,6 +170,16 @@ impl ScopedProductProducer for AgeRuntime {
         request: proto::ProductRequest,
     ) -> Result<ProductRepresentation, Status> {
         verified.check()?;
+        let original = proto::ProductRequest::decode(
+            verified
+                .parent_authority()
+                .message()
+                .map_err(|_| Status::permission_denied("Invalid sealed age frame"))?,
+        )
+        .map_err(|_| Status::permission_denied("Invalid sealed age message"))?;
+        if original != request {
+            return Err(Status::permission_denied("Age original request mismatch"));
+        }
         let b = scope.binding();
         b.check()?;
         let expires_at = DateTime::from_timestamp_micros(b.deadline().expires_micros())
