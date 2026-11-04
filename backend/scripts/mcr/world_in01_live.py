@@ -381,6 +381,12 @@ def restart_owned_concert(stack, child, env, binary, names, records):
                       and not stopped.get("unexpected_exit"), "qualification-restart-stop")
     record = {"before_pid": before, "stop": stopped}
     records.append(record)
+    # The pinned 7cd1e900 runtime renews five-second room-owner leases. A fresh
+    # owner must wait for natural expiry after the old process has stopped;
+    # immediate replacement is correctly fenced. Never mutate/shorten leases.
+    wait_started = time.monotonic()
+    time.sleep(5.1)
+    record["natural_owner_lease_wait_seconds"] = time.monotonic() - wait_started
     ports, replacement = RestartPorts(), None
     fresh_env = {**env, "CONCERT_WORLD_OWNER_ID": str(uuid4()),
                  "CONCERT_PRODUCER_INSTANCE_ID": str(uuid4())}
@@ -412,6 +418,9 @@ def restart_owned_concert(stack, child, env, binary, names, records):
             "World owner construction failed": "world-owner-construction",
             "World Auth replay source is unavailable": "world-auth-replay-source",
             "World Friend replay source is unavailable": "world-friend-replay-source",
+            "room owner is no longer current": "world-owner-fenced",
+            "world authority is unavailable": "world-authority-unavailable",
+            "world authority denied admission": "world-authority-denied",
         }
         phase = error.detail.get("phase") if isinstance(error, dev.SmokeError) else None
         record["replacement_failure"] = {
