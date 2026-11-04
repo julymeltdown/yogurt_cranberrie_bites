@@ -171,7 +171,7 @@ async fn exact_partial_owner_tracking_and_actual_unsettled_transaction_are_disti
         full_xid: actual.xid().into(),
         backend_pid: actual.backend_pid(),
         backend_started_unix_micros: actual.backend_started_at().timestamp_micros(),
-        effect_binding_digest: key.binding_digest,
+        effect_binding_digest: [87; 32],
         producer_instance: key.instance,
         settlement_reference: b"native-ledger-fixture".to_vec(),
     };
@@ -411,7 +411,7 @@ async fn settlement_requires_exact_owner_registration_and_native_abort_after_los
         full_xid: actual.xid().into(),
         backend_pid: actual.backend_pid(),
         backend_started_unix_micros: actual.backend_started_at().timestamp_micros(),
-        effect_binding_digest: key.binding_digest,
+        effect_binding_digest: [88; 32],
         producer_instance: key.instance,
         settlement_reference: b"native-abort-fixture".to_vec(),
     };
