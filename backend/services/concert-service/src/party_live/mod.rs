@@ -11,6 +11,7 @@
 mod cursor;
 mod product;
 mod scope_guard;
+pub mod settlement;
 mod wire;
 
 use async_trait::async_trait;
@@ -37,6 +38,7 @@ pub use cursor::{PartyCursorBinding, PartyCursorCodec, PartyPosition, PartyWindo
 pub use product::PartyProductProducer;
 pub use product::ScopedPartyProductProducer;
 pub use scope_guard::ScopePartyLiveGuard;
+pub use settlement::PartyNativeResolver;
 #[doc(hidden)]
 pub use wire::{operation_for_fixture, parse_verified_body_for_fixture};
 pub use wire::{PartyLiveAction, PartyLiveReply, PartyLiveRequest, PartyQuery, PARTY_OPERATIONS};
@@ -408,6 +410,15 @@ pub trait PartyLiveOwnerGuard: Send + Sync {
         connection: &mut PgConnection,
         binding: &PartyLiveBinding,
     ) -> Result<(), PartyLiveError>;
+    /// The command's separate application lookup precedes its receipt. The
+    /// canonical implementation records LOOKUP and forbids command effects.
+    async fn track_lookup_in(
+        &self,
+        connection: &mut PgConnection,
+        binding: &PartyLiveBinding,
+    ) -> Result<(), PartyLiveError> {
+        self.track_in(connection, binding).await
+    }
 }
 
 /// Explicit failure-only provider. No production startup may substitute this for a
@@ -1011,7 +1022,7 @@ async fn application_party(
     guard: &Arc<dyn PartyLiveOwnerGuard>,
 ) -> Result<Uuid, PartyLiveError> {
     let mut tx = pool.begin().await.map_err(db)?;
-    guard.track_in(&mut tx, binding).await?;
+    guard.track_lookup_in(&mut tx, binding).await?;
     local_actor_in(&mut tx, binding).await?;
     let party = wire::load_application(&mut tx, binding.event(), application).await?;
     tx.commit().await.map_err(db)?;
