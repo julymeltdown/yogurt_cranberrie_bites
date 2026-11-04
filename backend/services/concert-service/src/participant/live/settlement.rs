@@ -198,7 +198,12 @@ impl NativeTransactionResolver for ParticipantNativeResolver {
         if identity.producer != "CONCERT"
             || identity.producer_instance != self.instance
             || identity.settlement_reference.as_slice() != binding.request_id.as_bytes()
-            || binding.http_method != "PATCH"
+            || binding.http_method
+                != if binding.operation == "setConcertAvatar" {
+                    "PUT"
+                } else {
+                    "PATCH"
+                }
             || !matches!(
                 binding.operation.as_str(),
                 "setConcertAvatar" | "updateConcertParticipant"
