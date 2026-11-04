@@ -111,6 +111,19 @@ fn canonical(value: &str) -> Result<Uuid, Status> {
 fn unavailable(_: impl std::fmt::Display) -> Status {
     Status::unavailable("Participant decision unavailable")
 }
+fn query_deadline(
+    original: platform::actor_delegation::authority_deadline::AuthorityRpcDeadline,
+    query_expiry: i64,
+) -> Result<platform::actor_delegation::authority_deadline::AuthorityRpcDeadline, Status> {
+    // The signed proof and incoming RPC already bound `original`. A producer
+    // may use a larger local ceiling; shorten that query to our wall/monotonic
+    // limits rather than rejecting it against an already shortened wall clock.
+    platform::actor_delegation::authority_deadline::AuthorityRpcDeadline::within_original(
+        query_expiry.min(original.expires_micros()),
+        original.stop().into_std(),
+        BUDGET,
+    )
+}
 #[tonic::async_trait]
 impl proto::concert_participant_decision_service_server::ConcertParticipantDecisionService
     for ParticipantDecisionService
@@ -154,17 +167,7 @@ impl proto::concert_participant_decision_service_server::ConcertParticipantDecis
             return Err(Status::invalid_argument("Invalid decision effect binding"));
         }
         let original = proof.deadline(BUDGET)?;
-        if query.authority_expires_unix_micros > original.expires_micros() {
-            return Err(Status::permission_denied(
-                "Decision query exceeds original expiry",
-            ));
-        }
-        let deadline =
-            platform::actor_delegation::authority_deadline::AuthorityRpcDeadline::within_original(
-                query.authority_expires_unix_micros,
-                original.stop().into_std(),
-                BUDGET,
-            )?;
+        let deadline = query_deadline(original, query.authority_expires_unix_micros)?;
         let result = platform::call_deadline::scope(
             deadline.stop().into_std(),
             tokio::time::timeout_at(deadline.stop(), self.resolve(query)),
@@ -178,5 +181,42 @@ impl proto::concert_participant_decision_service_server::ConcertParticipantDecis
             .metadata_mut()
             .insert("cache-control", "no-store".parse().unwrap());
         Ok(response)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
+    use std::time::Duration;
+
+    #[tokio::test]
+    async fn recovery_query_clips_larger_producer_ceiling_without_renewing_proof() {
+        let now = Utc::now().timestamp_micros();
+        let stop = tokio::time::Instant::now() + Duration::from_millis(100);
+        let original =
+            AuthorityRpcDeadline::within_original(now + 2_000_000, stop.into_std(), BUDGET)
+                .unwrap();
+        let clipped = query_deadline(original, now + 5_000_000).unwrap();
+        assert!(clipped.expires_micros() <= original.expires_micros());
+        assert_eq!(clipped.stop(), stop);
+        let shorter = query_deadline(original, now + 20_000).unwrap();
+        assert_eq!(shorter.expires_micros(), now + 20_000);
+        assert!(shorter.stop() < stop);
+        assert_eq!(
+            query_deadline(original, now - 1).err().unwrap().code(),
+            tonic::Code::DeadlineExceeded
+        );
+        let elapsed =
+            AuthorityRpcDeadline::within_original(now + 2_000_000, stop.into_std(), BUDGET)
+                .unwrap();
+        tokio::time::sleep(Duration::from_millis(110)).await;
+        assert_eq!(
+            query_deadline(elapsed, now + 5_000_000)
+                .err()
+                .unwrap()
+                .code(),
+            tonic::Code::DeadlineExceeded
+        );
     }
 }

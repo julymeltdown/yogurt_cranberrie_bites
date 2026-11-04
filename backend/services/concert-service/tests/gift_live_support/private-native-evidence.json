@@ -1,0 +1,191 @@
+{
+  "scope": "BE-GIFTS-LIVE selected local Concert native checks only",
+  "result": "PASS",
+  "canonical_auth_friend": "NOT_RUN",
+  "media_link": "NOT_RUN",
+  "public_profile": "NOT_RUN",
+  "http_routes": "NOT_RUN",
+  "two_user_flow": "NOT_RUN",
+  "checks": {
+    "resources": "NOT_RUN",
+    "queries": "NOT_RUN",
+    "correlation": "NOT_RUN",
+    "private_native": "PASS"
+  },
+  "binary_provenance": "Execution hashes below; compilation source/pins must be supplied by the producing build handoff separately. Harness checkout pins are not a binary build claim.",
+  "source_revision": "35fcc64b975a07074eb8e49281b1c2dd26fd25cf",
+  "source_pin_scope": "Harness checkout and migrations used during native execution; compiled binary provenance is separate",
+  "private_binary_sha256": "2686efa3fd2c35b2ad69c201bb495de07863510fc7e485eb50c3c69334bfc06d",
+  "postgres_version": "16.14 (Homebrew)",
+  "private_runs": [
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::drop_keeps_exclusion_until_exact_idempotent_abort"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::drop_keeps_exclusion_until_exact_idempotent_abort ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.19s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    },
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::expiry_denies_content_without_releasing_exclusion"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::expiry_denies_content_without_releasing_exclusion ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.68s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    },
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::mismatched_identity_cannot_rollback_and_commit_is_not_abort"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::mismatched_identity_cannot_rollback_and_commit_is_not_abort ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.07s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    },
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::missing_gid_requires_real_full_xid_abort"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::missing_gid_requires_real_full_xid_abort ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.09s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    },
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::sql_budget_never_widens_existing_timeouts"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::sql_budget_never_widens_existing_timeouts ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.13s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    },
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::prepared_restart_recovery"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::prepared_restart_recovery ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.08s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    },
+    {
+      "command": [
+        "[frozen-copy]/concert_service-tests",
+        "--ignored",
+        "--test-threads=1",
+        "--exact",
+        "gift_live::private::native_tests::prepared_restart_recovery"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::private::native_tests::prepared_restart_recovery ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.06s\n\n",
+      "stderr": "",
+      "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"
+    }
+  ],
+  "private_restart": "PASS",
+  "cleanup": "PASS",
+  "owned_root": "[owned-private-PG-root-removed]",
+  "raw_report_sha256": "278fd4dfec97d22f3954fc1f98de94b0a2aea33d4ea397e734206e9d76989f5b",
+  "build": {
+    "exit_code": 0,
+    "locked": true,
+    "offline": true,
+    "rustc_version": "rustc 1.88.0 (6b00bc388 2025-06-23)",
+    "jobs": 2,
+    "debug": "0",
+    "incremental": "0",
+    "source_commit": "5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395",
+    "artifact_sha256": "2686efa3fd2c35b2ad69c201bb495de07863510fc7e485eb50c3c69334bfc06d",
+    "cargo_artifact": {
+      "reason": "compiler-artifact",
+      "package_id": "concert-service 0.1.0 (producer checkout)",
+      "manifest_path": "backend/services/concert-service/Cargo.toml",
+      "target": {
+        "kind": [
+          "lib"
+        ],
+        "crate_types": [
+          "lib"
+        ],
+        "name": "concert_service",
+        "src_path": "backend/services/concert-service/src/lib.rs",
+        "edition": "2021",
+        "doc": true,
+        "doctest": true,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "0",
+        "debuginfo": 0,
+        "debug_assertions": true,
+        "overflow_checks": true,
+        "test": true
+      },
+      "features": [],
+      "filenames": [
+        "[released-MEDIA-target]/debug/deps/concert_service-5359776a12d8c920"
+      ],
+      "executable": "[released-MEDIA-target]/debug/deps/concert_service-5359776a12d8c920",
+      "fresh": true
+    },
+    "receipt_sha256": "c85e73b3f0361d28d374d1e51ba2130b5cdb1aaa7c6b25be586d2fa458aa2555",
+    "source_pin_count": 1885,
+    "all_source_pins_match_exact_git_commit": true,
+    "source_pins_artifact": "private-build-source-pins.json"
+  },
+  "execution_source_pins_artifact": "private-execution-source-pins.json",
+  "release": {
+    "target_handles": 0,
+    "source_commit": "5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395",
+    "artifact_count": 4,
+    "release_json_sha256": "e948cc075914349625f77a72835b32c83e54c3a20fe50f0a1d7338869476e2d9",
+    "native_execution_after_explicit_release": true,
+    "worker_target_access": "NONE; copied executable only"
+  },
+  "summary": {
+    "distinct_native_cases": 6,
+    "native_process_invocations": 7,
+    "ordinary_cases": 5,
+    "restart_prepare_processes": 1,
+    "restart_recover_processes": 1,
+    "residual_prepared_children": 0,
+    "owned_pg_root_removed": true,
+    "binary_hash_unchanged": true,
+    "all_command_exit_codes": 0
+  },
+  "limits": [
+    "Real PostgreSQL local prepared exclusion/recovery only; synthetic test correlation metadata.",
+    "No positive OwnerGuardScope/GuardedSubject fixture, actual Auth/Friend Gift join, Root durable intent orchestration, before-byte HTTP behavior, real media/place closure race or two-user acceptance.",
+    "Gift integration binaries were not allocated; resources/query/correlation and protocol/cursor/response reruns NOT_RUN at this source.",
+    "Earlier e9b761fb 29-pass evidence remains bound to its own source; it is not promoted to this compiled tree.",
+    "Pickup/IssueCode and Claim production activation remain closed."
+  ]
+}

@@ -8,6 +8,7 @@ use platform::{
 use std::time::Duration;
 use tonic::{service::interceptor::InterceptedService, transport::Channel, Status};
 use uuid::Uuid;
+mod network;
 pub mod proto {
     tonic::include_proto!("concert.product.v1");
 }
@@ -23,6 +24,7 @@ const EDGE: EdgeBudget = EdgeBudget {
 };
 /// Captured by the HTTP route. Raw uploads and idempotency keys are not logged.
 pub struct ProductHttpRequest {
+    pub client_address: Option<crate::adapters::r#in::http::client_identity::VerifiedClientAddress>,
     pub event: Uuid,
     pub request_id: Uuid,
     pub method: String,
@@ -33,6 +35,7 @@ pub struct ProductHttpRequest {
 }
 #[derive(Clone)]
 pub struct GrpcConcertProductClient {
+    network_key: Option<std::sync::Arc<network::NetworkBucketKey>>,
     client: proto::product_service_client::ProductServiceClient<
         InterceptedService<ActorDelegationClient<Channel>, ServiceIdentityClientInterceptor>,
     >,
@@ -54,6 +57,7 @@ impl GrpcConcertProductClient {
             EDGE.validate()?,
         )?;
         Ok(Self {
+            network_key: network::NetworkBucketKey::load()?.map(std::sync::Arc::new),
             client: proto::product_service_client::ProductServiceClient::with_interceptor(
                 ActorDelegationClient::new(channel.clone(), signer, Workload::Concert),
                 ServiceIdentityClientInterceptor::new(Workload::Gateway, token)?,
@@ -124,6 +128,8 @@ impl GrpcConcertProductClient {
                 return Err(Status::deadline_exceeded("Product deadline expired"));
             }
             let message = proto::ProductRequest {
+                trusted_network_bucket: self.network_key.as_ref()
+                    .zip(http.client_address).map(|(key, address)| key.bucket(address)).unwrap_or_default(),
                 user_id: actor.to_string(),
                 event_id: http.event.to_string(),
                 session_family_id: context

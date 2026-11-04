@@ -412,8 +412,9 @@ sixth Product error-delivery fixture reported that its producer capture was
 absent. The fixture omitted the production `CallDeadlineLayer`, leaving no
 original caller deadline for the real Product handler. Source `41841fb2` adds
 that actual layer and bounded gRPC diagnostics; its fresh compile/native rerun
-is pending. No Product wrapper, six-case, Gift-private or outer Gateway HTTP
-acceptance is inferred from the five individual passes. Owned cluster cleanup
+was pending at that checkpoint and is now qualified below. No Product wrapper,
+six-case, Gift-private or outer Gateway HTTP acceptance was inferred from the five
+individual passes. Owned cluster cleanup
 passed and the private directory was absent even after the failed sixth case.
 
 The earlier compile on `175fb8f4` returned 101 for the Party owner's obsolete
@@ -434,3 +435,57 @@ Gift-private intent and the minimum original/intended/held-child disclosure
 ceiling. Root and Gift still own the matching encrypted recovery, database,
 private producer and before-byte transport qualifications. Expiry does not
 release any prepared guard.
+
+
+### Six-case native retry, including produced-error delivery
+
+Status: **INTEGRATED** for these six native cases; the overall canonical-owner
+goal remains **IN_PROGRESS**. The earlier FAIL receipt remains historical
+evidence. Clean source `41841fb23b15afe812a9296f04622f928c68988b` includes the
+actual production `CallDeadlineLayer` on Product and Delivery test services.
+No authority was fabricated and no application rejection was bypassed.
+
+The same locked/offline Rust 1.88 compile command above returned **0**, with
+sixteen inherited warnings and zero owned-fixture warnings. The fresh exclusive
+MEDIA target was used with two jobs, debug 0 and incremental disabled; the
+executable and all 1,289 input pins were frozen outside that target. The target
+was explicitly and unconditionally released with zero open handles before the
+copied-binary-only PostgreSQL run. The exact six-case controller command above
+returned **0**, PostgreSQL was **16.14 (Homebrew)**, all three migration ledgers
+matched, final prepared counts were zero, and marker/inode-owned cleanup passed
+with the cluster directory absent.
+
+| Exact case | Exit | Duration |
+| --- | --- | --- |
+| `native::both_owners_exclude_writers_through_actual_scope_settlement` | 0 | 0.50 s |
+| `native::full_page_and_callback_drain_obey_original_scope` | 0 | 0.88 s |
+| `native::registered_actual_transaction_quarantines_until_native_abort` | 0 | 0.31 s |
+| `native::cancelled_unexposed_acquisition_recovers_from_actual_root_proof` | 0 | 4.95 s |
+| `native::subject_denial_never_masks_whole_scope_failure` | 0 | 0.29 s |
+| `product::produced_errors_keep_real_guards_until_terminal_delivery` | 0 | 2.36 s |
+
+The sixth case runs **17 sequential actual scopes**, exceeding the 16-slot
+capacity across the sequence. Each actual `ScopedProductOwner` durably binds its
+delivery secret before invoking the refusing producer. The production error
+envelope is safe 403 JSON without the private dependency diagnostic. Before
+consumption, both real Auth/Friend prepared guards are present and premature
+completion fails. Actual retained Concert gRPC body EOF marks serialization
+without releasing either guard. An authenticated production `DeliveryService`
+terminal call then settles both owners; a duplicate capability completes
+idempotently. Rejecting/counting no-effect recovery adapters were never called.
+
+The transaction case also binds a SHA-256 effect distinct from the original
+guard fingerprint, exercises duplicate registration of the same full actual
+native identity, and resolves its actual rollback. This is not a committed
+producer-receipt qualification.
+
+No real Gateway outer HTTP body, positive Product/Gift representation, full
+Profile/Post/Media child join or physical consumer/PostgreSQL restart is claimed
+by this run. The separate actual Gateway HTTP fixture is authored source only
+and has not been compiled or run. SDK3 remains a separate source cohort.
+
+Portable proof pins:
+
+- Copied executable SHA-256: `42a215c8011deba1990cc3a9028900e9bef0c2f7424ae7e52cb80f5a9e87b0a0`.
+- Canonically sorted source-manifest SHA-256: `0277c0e683e86c8211ff6435a45feb069459d25a861431c0c2dc0ae279083be6`.
+- Overall six-case PASS report SHA-256: `3f319481b00eabaf4dd8f42c5a0d270ae90c0ef3904cc4b81bfc7ee1c851c8f0`.

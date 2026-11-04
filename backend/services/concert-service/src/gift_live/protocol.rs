@@ -100,7 +100,7 @@ impl GiftOperation {
             _ => "GET",
         }
     }
-    fn parse(id: &str) -> Result<Self, InputError> {
+    pub(crate) fn parse(id: &str) -> Result<Self, InputError> {
         [
             Self::List,
             Self::Detail,
@@ -347,6 +347,9 @@ impl GiftRequest {
     pub fn input(&self) -> &GiftInput {
         &self.input
     }
+    pub(crate) fn into_input(self) -> GiftInput {
+        self.input
+    }
 }
 pub enum GiftReply {
     Json { status: u16, body: Value },
@@ -463,7 +466,7 @@ struct Claim {
     expected_revision: i64,
     confirmation_code: String,
 }
-fn parse_query(raw: Option<&str>) -> Result<BTreeMap<String, String>, InputError> {
+pub(crate) fn parse_query(raw: Option<&str>) -> Result<BTreeMap<String, String>, InputError> {
     let mut query = BTreeMap::new();
     if let Some(raw) = raw {
         if raw.is_empty() {

@@ -7,7 +7,7 @@ SELECT
             'concert_event_slug_shape','concert_event_title_bounds','concert_event_phase',
             'concert_event_timezone','concert_event_revision','concert_event_times','concert_event_slug_unique',
             'concert_participant_revision','concert_participant_theme','concert_participant_key',
-            'concert_participant_event','concert_participant_times','concert_avatar_revision','concert_avatar_contract',
+            'concert_participant_event','concert_participant_times','concert_avatar_revision','concert_avatar_representation',
             'concert_avatar_manifest_id','concert_avatar_manifest_version','concert_avatar_body','concert_avatar_eyes',
             'concert_avatar_hair','concert_avatar_outfit','concert_avatar_accessory','concert_avatar_skin_tone',
             'concert_avatar_key','concert_avatar_participant','concert_avatar_times'

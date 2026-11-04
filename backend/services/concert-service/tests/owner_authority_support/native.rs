@@ -2,6 +2,7 @@ use super::{capture, environment, fixture::Fixture};
 use concert_service::adapters::out::relationship_authority::guarded::{
     ChildQuery, ChildRecoveryReference,
 };
+use sha2::Digest;
 use sqlx::PgPool;
 use std::time::{Duration, Instant};
 use uuid::Uuid;
@@ -151,11 +152,14 @@ async fn registered_actual_transaction_quarantines_until_native_abort() -> anyho
     f.bind_delivery(&scope).await?;
     let mut actual = f.concert.begin().await?;
     let reference = Uuid::new_v4().as_bytes().to_vec();
+    let effect = sha2::Sha256::digest(b"canonical distinct producer effect");
+    let effect: [u8; 32] = effect.into();
+    assert_ne!(effect, scope.binding().digest());
     scope
-        .register_transaction_in(&mut actual, scope.binding().digest(), reference.clone())
+        .register_transaction_in(&mut actual, effect, reference.clone())
         .await?;
     scope
-        .register_transaction_in(&mut actual, scope.binding().digest(), reference)
+        .register_transaction_in(&mut actual, effect, reference)
         .await?;
     let producer = scope.producer_scope();
     let registered:i64=sqlx::query_scalar("select count(*) from concert_product_owner_transactions where instance_id=$1 and scope_id=$2")
@@ -174,7 +178,7 @@ async fn registered_actual_transaction_quarantines_until_native_abort() -> anyho
     scope.finish_response().await?;
     assert_eq!((pending(&f.auth).await?, pending(&f.friend).await?), (0, 0));
     f.assert_no_recovery_calls();
-    println!("same actual TX repeated Track admission, real in-progress quarantine, actual native rollback proof and idempotent completion retry PASS; no committed receipt/HTTP/restart claim");
+    println!("distinct effect versus scope digest, same actual TX repeated Track admission, real in-progress quarantine, actual native rollback proof and idempotent completion retry PASS; no committed receipt/HTTP/restart claim");
     Ok(())
 }
 

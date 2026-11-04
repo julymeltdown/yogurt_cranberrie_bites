@@ -83,6 +83,9 @@ impl PublicProfileReader {
             ChildRecoveryReference::LocalPublic { .. } => {
                 local::recover_one(&self.pool, reference).await
             }
+            ChildRecoveryReference::GiftPrivate { .. } => Err(Status::failed_precondition(
+                "Public Profile recovery does not support Gift private children",
+            )),
         }
     }
     /// Root must retain/run the actual owner scope through final C04 serialization

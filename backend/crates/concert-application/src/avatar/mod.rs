@@ -39,10 +39,57 @@ pub struct AvatarTransactionIdentity {
     pub backend_pid: i32,
     pub backend_started: chrono::DateTime<chrono::Utc>,
 }
+/// Correlation data from the already-held participant scope, not authority or
+/// proof of commit. Only a witness inserted by the repository in its actual
+/// effect transaction can establish the durable outcome.
+#[derive(Clone, PartialEq, Eq)]
+pub struct AvatarEffectWitnessBinding {
+    pub producer_instance_id: uuid::Uuid,
+    pub scope_id: uuid::Uuid,
+    pub operation_id: uuid::Uuid,
+    pub session_family_id: uuid::Uuid,
+    pub parent_digest: [u8; 32],
+    pub guard_binding_digest: [u8; 32],
+    pub body_digest: [u8; 32],
+    pub release_digest: String,
+    pub effect_binding_digest: [u8; 32],
+}
+impl std::fmt::Debug for AvatarEffectWitnessBinding {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("AvatarEffectWitnessBinding")
+            .finish_non_exhaustive()
+    }
+}
+impl AvatarEffectWitnessBinding {
+    pub fn validate_for_release(&self, expected: &str) -> Result<(), AvatarError> {
+        if self.producer_instance_id.is_nil()
+            || self.scope_id.is_nil()
+            || self.operation_id.is_nil()
+            || self.session_family_id.is_nil()
+            || self.release_digest != expected
+            || !valid_release_digest(&self.release_digest)
+            || [
+                self.parent_digest,
+                self.guard_binding_digest,
+                self.body_digest,
+                self.effect_binding_digest,
+            ]
+            .contains(&[0; 32])
+        {
+            return Err(AvatarError::Unavailable);
+        }
+        Ok(())
+    }
+}
 #[async_trait]
 pub trait AvatarEffectFence: Send + Sync {
     async fn register(&self, transaction: AvatarTransactionIdentity) -> Result<(), AvatarError>;
     async fn check(&self) -> Result<(), AvatarError>;
+    /// Supplies the original immutable scope/request/effect correlation only.
+    /// The default cannot certify a successful production mutation.
+    fn witness_binding(&self) -> Result<AvatarEffectWitnessBinding, AvatarError> {
+        Err(AvatarError::Unavailable)
+    }
 }
 /// Implementations must check a verified canonical actor, exact event/HTTP
 /// target, live bounded authority, current release and server capability.
@@ -65,11 +112,7 @@ pub fn authorize(
     if key.event_id.uuid().is_nil() || key.user_id.uuid().is_nil() {
         return Err(AvatarError::Denied);
     }
-    if digest.len() != 64
-        || !digest
-            .bytes()
-            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
-    {
+    if !valid_release_digest(digest) {
         return Err(AvatarError::Unavailable);
     }
     let grant = authority.check()?;
@@ -80,6 +123,12 @@ pub fn authorize(
         return Err(AvatarError::Unavailable);
     }
     Ok(())
+}
+fn valid_release_digest(digest: &str) -> bool {
+    digest.len() == 64
+        && digest
+            .bytes()
+            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct AvatarSnapshot {

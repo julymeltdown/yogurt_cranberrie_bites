@@ -1,0 +1,41 @@
+{
+  "scope": "Gift native runner selection and false-positive rejection only",
+  "result": "PASS",
+  "runner_sha256": "45b7a721c39d188ebca8a60dfd65878d90ffd0789c9e64064f7150c0c2dfd19a",
+  "source_parent": "d44d1861294afa90d4aade30d539baaaf638e55e",
+  "cases": [
+    {
+      "input": "--report NEW_PATH; no selected binaries",
+      "exit_code": 2,
+      "result": "PASS; parser rejected before report/PG creation"
+    },
+    {
+      "input": "--private-test relative-lib --report NEW_PATH",
+      "exit_code": 1,
+      "result": "PASS; rejected absolute-path preflight before PG creation"
+    },
+    {
+      "input": "--private-test /usr/bin/true --report NEW_PATH",
+      "exit_code": 1,
+      "result": "PASS; zero native tests cannot pass private mode",
+      "observed_failure": "RuntimeError: expected exactly one named Gift private test",
+      "private_run_exit": 0,
+      "checks": {
+        "resources": "NOT_RUN",
+        "queries": "NOT_RUN",
+        "correlation": "NOT_RUN",
+        "private_native": "NOT_RUN"
+      }
+    }
+  ],
+  "postgres_version": "16.14 (Homebrew)",
+  "owned_cluster": "new marker/inode-owned socket-only PG; all current Concert migrations; prepared capacity configured only in this disposable fixture",
+  "cleanup": "PASS",
+  "owned_root_removed": true,
+  "gift_native_tests": "NOT_RUN",
+  "rust_build": "NOT_RUN",
+  "canonical_auth_friend": "NOT_RUN",
+  "root_before_byte": "NOT_RUN",
+  "http_two_user": "NOT_RUN",
+  "limits": "Negative runner validation only. No Gift production native test or binary build provenance is certified."
+}

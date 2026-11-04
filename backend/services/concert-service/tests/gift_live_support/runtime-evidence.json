@@ -1,0 +1,189 @@
+{
+  "source_revision": "e9b761fb90bc02db570c2aee8f999d3a8b48f993",
+  "scope": "Compiled production Gift modules and local/synthetic-policy SQL only",
+  "result": "PASS",
+  "focused_tests_passed": 29,
+  "compile": {
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "concert-service",
+      "--lib",
+      "--test",
+      "gift_live_protocol",
+      "--test",
+      "gift_live_cursor",
+      "--test",
+      "gift_live_response",
+      "--test",
+      "gift_live_resources",
+      "--no-run",
+      "--message-format=json-render-diagnostics"
+    ],
+    "environment": {
+      "CARGO_TARGET_DIR": "<ALLOCATED_MEDIA_TARGET>",
+      "CARGO_BUILD_JOBS": "2",
+      "CARGO_PROFILE_DEV_DEBUG": "0",
+      "CARGO_PROFILE_TEST_DEBUG": "0",
+      "CARGO_INCREMENTAL": "0"
+    },
+    "exit_code": 0,
+    "elapsed_seconds": 27.316797971725464,
+    "own_warnings": 0,
+    "initial_attempt": {
+      "exit_code": 101,
+      "cause": "cached contracts-build embedded previous checkout protobuf include root",
+      "remediation": "allocated-target package-only contracts-build cleanup; 20 files / 816.4 KiB"
+    },
+    "cargo_json_sha256": "49785825b8d4894cf28cf991756258877a74845d70e027a52db47db484b12e3a",
+    "cargo_stderr_sha256": "7e8648f298dfc4e5d5664a6df923c3b9bfd49a5ff158ccac66c657d36d84da72"
+  },
+  "executables": {
+    "gift_live_cursor": {
+      "sha256": "a2248783eed0f6491cf3068d43cbc9aa3a8f16800aad954fdd2c22d152391375"
+    },
+    "gift_live_resources": {
+      "sha256": "41f9c224d926b01158c27968889b00faa441733c9c1b53a64714c204f2cc5245"
+    },
+    "gift_live_protocol": {
+      "sha256": "b0bf5d39100e263bd69c489ebd3c07fa35751c83882379eb90386ea70d1ae327"
+    },
+    "gift_live_response": {
+      "sha256": "b3be5beda699fca3580ec8044da04f279491040993cde5ce7f08b4a8a0d98884"
+    },
+    "concert_service": {
+      "sha256": "031a9dfbc9322d26f9656ccd522775d887df426dc8918870a763d0b9406545d7"
+    }
+  },
+  "source_file_count": 1639,
+  "source_sha256_file": "runtime-source-pins.json",
+  "boundary_runs": [
+    {
+      "binary": "gift_live_protocol",
+      "sha256": "b0bf5d39100e263bd69c489ebd3c07fa35751c83882379eb90386ea70d1ae327",
+      "command": [
+        "<FROZEN>/gift_live_protocol.bin",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 8 tests\ntest all_thirteen_frozen_operations_have_exact_routes_and_shapes ... ok\ntest code_and_revision_validation_matches_closed_contract ... ok\ntest mutations_require_keys_and_exact_content_type_and_reads_refuse_payloads ... ok\ntest original_expired_monotonic_stop_cannot_be_renewed_by_parser ... ok\ntest preserves_original_edge_material_for_owner_binding ... ok\ntest query_is_closed_single_valued_bounded_and_percent_decoded ... ok\ntest rejects_body_authority_unknown_missing_and_duplicate_fields ... ok\ntest rejects_wrong_method_route_event_and_noncanonical_ids ... ok\n\ntest result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s\n\n",
+      "stderr": "",
+      "expected_count": 8,
+      "result": "PASS"
+    },
+    {
+      "binary": "gift_live_cursor",
+      "sha256": "a2248783eed0f6491cf3068d43cbc9aa3a8f16800aad954fdd2c22d152391375",
+      "command": [
+        "<FROZEN>/gift_live_cursor.bin",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 5 tests\ntest corruption_noncanonical_and_unbounded_tokens_are_rejected ... ok\ntest identity_event_collection_filters_limit_and_key_are_authenticated ... ok\ntest management_target_and_position_types_cannot_be_substituted ... ok\ntest opaque_nonce_unique_roundtrip_and_exact_expiry ... ok\ntest snapshot_boundary_is_preserved_and_future_positions_are_rejected ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "",
+      "expected_count": 5,
+      "result": "PASS"
+    },
+    {
+      "binary": "gift_live_response",
+      "sha256": "b3be5beda699fca3580ec8044da04f279491040993cde5ce7f08b4a8a0d98884",
+      "command": [
+        "<FROZEN>/gift_live_response.bin",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 5 tests\ntest all_reservation_states_conform_without_internal_code_metadata ... ok\ntest claimed_requires_terminal_state_receipt_and_time ... ok\ntest completed_receipt_cannot_be_reported_as_pending ... ok\ntest one_shot_code_preserves_leading_zero_and_only_c04_fields ... ok\ntest safe_errors_match_frozen_status_policy_and_do_not_include_input ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s\n\n",
+      "stderr": "",
+      "expected_count": 5,
+      "result": "PASS"
+    },
+    {
+      "binary": "concert_service",
+      "sha256": "031a9dfbc9322d26f9656ccd522775d887df426dc8918870a763d0b9406545d7",
+      "command": [
+        "<FROZEN>/concert_service.bin",
+        "--test-threads=1",
+        "gift_live::status::tests"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest gift_live::status::tests::binds_exact_closed_query_to_gift_mutation_and_canonical_key ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 67 filtered out; finished in 0.00s\n\n",
+      "stderr": "",
+      "expected_count": 1,
+      "result": "PASS"
+    }
+  ],
+  "native": {
+    "scope": "BE-GIFTS-LIVE local Concert resources only",
+    "result": "PASS",
+    "canonical_auth_friend": "NOT_RUN",
+    "media_link": "NOT_RUN",
+    "public_profile": "NOT_RUN",
+    "http_routes": "NOT_RUN",
+    "two_user_flow": "NOT_RUN",
+    "source_revision": "e9b761fb90bc02db570c2aee8f999d3a8b48f993",
+    "binary_sha256": "41f9c224d926b01158c27968889b00faa441733c9c1b53a64714c204f2cc5245",
+    "owned_root": "<OWNED_PRIVATE_PG>",
+    "postgres_version": "16.14 (Homebrew)",
+    "native_run": {
+      "command": [
+        "/private<FROZEN>/gift_live_resources.bin",
+        "--ignored",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 4 tests\ntest optional_media_does_not_create_a_permissive_link_fallback ... ok\ntest rejects_unbound_connection_and_cross_actor_or_event ... ok\ntest settings_capture_real_grace_cutoff_and_hold_lock_until_outer_terminal ... ok\ntest shutdown_preserves_only_validated_cancel_and_read_only_denies_writes ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.31s\n\n",
+      "stderr": ""
+    },
+    "query_binary_sha256": "031a9dfbc9322d26f9656ccd522775d887df426dc8918870a763d0b9406545d7",
+    "query_run": {
+      "command": [
+        "/private<FROZEN>/concert_service.bin",
+        "--ignored",
+        "--test-threads=1",
+        "gift_live::queries::native_tests"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 3 tests\ntest gift_live::queries::native_tests::management_is_owner_only_descending_and_durably_advances_readiness ... ok\ntest gift_live::queries::native_tests::public_descending_snapshot_excludes_later_insert_and_rebind ... ok\ntest gift_live::queries::native_tests::receiving_uses_reservation_creation_order_and_actor_scoped_lookup ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 65 filtered out; finished in 0.82s\n\n",
+      "stderr": "",
+      "authority": "synthetic test policy only; canonical owner acceptance NOT_RUN"
+    },
+    "target_run": {
+      "command": [
+        "/private<FROZEN>/concert_service.bin",
+        "--ignored",
+        "--test-threads=1",
+        "gift_live::correlation::native_tests"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 3 tests\ntest gift_live::correlation::native_tests::every_live_mutation_installs_exact_target_only_materialized_with_receipt ... ok\ntest gift_live::correlation::native_tests::missing_or_disabled_migration_fails_before_receipt_admission ... ok\ntest gift_live::correlation::native_tests::transaction_context_cannot_be_rebound_and_resets_on_commit ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 65 filtered out; finished in 0.23s\n\n",
+      "stderr": "",
+      "authority": "synthetic test policy only; canonical owner acceptance NOT_RUN"
+    },
+    "cleanup": "PASS"
+  },
+  "resource_lifecycle": {
+    "target": "existing explicitly allocated MEDIA target",
+    "frozen_before_release": true,
+    "target_handles_at_release": 0,
+    "released_before_private_pg": true,
+    "private_pg_cleanup": "PASS",
+    "second_build_target_used": false,
+    "preflight_dry_run_correction": "Initial package-clean dry run omitted CARGO_TARGET_DIR and created only rustc metadata, cache tag and empty lock in checkout. Exact metadata-only tree was verified created during this run and removed. All compilation used the allocated MEDIA target."
+  },
+  "limitations": {
+    "canonical_owner_business_flow": "NOT_RUN",
+    "real_media_link": "NOT_RUN",
+    "gift_physical_place_closure_race": "NOT_RUN",
+    "joined_profile_native": "NOT_RUN",
+    "http_delivery": "NOT_RUN",
+    "two_user_IN02": "NOT_RUN",
+    "pickup_and_code_disclosure": "FAIL_CLOSED_PENDING_SDK3",
+    "claim_trusted_network": "ROOT_SEAM_PENDING"
+  }
+}
