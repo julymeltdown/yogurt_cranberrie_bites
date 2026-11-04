@@ -38,11 +38,13 @@ struct Binding {
     version: u32,
     source_commit: String,
     art_commit: String,
+    tilemap_commit: String,
     map_id: String,
     map_revision: i64,
     map_content_hash: String,
     geometry_hash: String,
     geometry_source: FilePin,
+    tilemap_source: FilePin,
     scenery_source: FilePin,
     scene_sources: Vec<FilePin>,
     runtime_resources: Vec<ImagePin>,
@@ -149,6 +151,7 @@ fn load(
             && binding.version == 1
             && revision(&binding.source_commit)
             && revision(&binding.art_commit)
+            && revision(&binding.tilemap_commit)
             && !binding.scene_sources.is_empty()
             && !binding.runtime_resources.is_empty()
             && binding.scene_sources.len() <= 32
@@ -186,6 +189,29 @@ fn load(
     );
     let scenery =
         super::json::parse(&verify_file(root, &binding.scenery_source)?).map_err(invalid)?;
+    let tiled =
+        super::json::parse(&verify_file(root, &binding.tilemap_source)?).map_err(invalid)?;
+    ensure(
+        map_value["tilemap"]["resource_state"] == "PROVIDED"
+            && map_value["tilemap"]["path"] == binding.tilemap_source.path
+            && map_value["tilemap"]["sha256"] == binding.tilemap_source.sha256,
+    )?;
+    validate_tiled(
+        &tiled,
+        &map_value["geometry"],
+        &[serde_json::json!({"texture": {
+            "width_px": scenery["ground"]["width_px"], "height_px": scenery["ground"]["height_px"],
+            "path": scenery["ground"]["path"]
+        }})],
+    )?;
+    ensure(
+        paths
+            .insert(
+                binding.tilemap_source.path.clone(),
+                binding.tilemap_source.sha256.clone(),
+            )
+            .is_none(),
+    )?;
     ensure(
         paths
             .insert(

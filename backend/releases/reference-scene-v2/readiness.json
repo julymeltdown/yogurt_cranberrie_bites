@@ -4,7 +4,6 @@
     "MISSING_PAINTED_REVENGE",
     "MISSING_PAINTED_DANGER",
     "UNREVIEWED_SOURCE_PROVENANCE",
-    "TILED_RESOURCE_NOT_PROVIDED",
     "PRODUCT_BOOTSTRAP_NOT_CONFIGURED"
   ],
   "bootstrap": null,
@@ -12,14 +11,14 @@
   "limits": [
     "No art fidelity acceptance",
     "No physical place qualification",
-    "No public URL invented for a missing Tiled resource",
+    "Published Tiled resource binds the same canonical grids",
     "No event-current map publication or production admission"
   ],
   "map": {
-    "content_hash": "sha256:d455e77ddeadeaf120fefad4d2eaec6d92d4c0ccc7c091688b5471598776950a",
+    "content_hash": "sha256:3090185136d5e22138318831d230a7ce6581866a12dc3309df8ebf37825de9f5",
     "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
     "map_id": "mcr_reference_scene_r3",
-    "map_revision": 1
+    "map_revision": 2
   },
   "scenery_budget": {
     "bytes": 1947817,
@@ -35,5 +34,6 @@
   "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497",
   "state": "NOT_ADMITTED",
   "task": "BE-SPATIAL-RELEASE",
-  "theme_manifests": null
+  "theme_manifests": null,
+  "tilemap_commit": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b"
 }

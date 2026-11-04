@@ -723,7 +723,7 @@ async fn native_spatial_candidate_transactions() {
         .publish_release(event, candidate.catalog.clone())
         .await
         .unwrap();
-    assert_eq!(first.map_revision, 1);
+    assert_eq!(first.map_revision, 2);
     assert_eq!(first.map_id, "mcr_reference_scene_r3");
     let read = repo.catalog(event).await.unwrap().unwrap();
     assert_eq!(read.release, candidate.catalog);
@@ -751,14 +751,14 @@ async fn native_spatial_candidate_transactions() {
             SelectionOutcome::ConceptOnly
         );
         assert_eq!(
-            repo.select_physical(event, place.id, again.revision, 2)
+            repo.select_physical(event, place.id, again.revision, 3)
                 .await
                 .unwrap(),
             SelectionOutcome::MapMismatch
         );
     }
-    let row:(Vec<u8>,String)=sqlx::query_as("select canonical_bytes,geometry_hash from concert_map_releases where map_id=$1 and map_revision=1")
-        .bind(&first.map_id).fetch_one(&pool).await.unwrap();
+    let row:(Vec<u8>,String)=sqlx::query_as("select canonical_bytes,geometry_hash from concert_map_releases where map_id=$1 and map_revision=$2")
+        .bind(&first.map_id).bind(first.map_revision).fetch_one(&pool).await.unwrap();
     assert_eq!(row.0, candidate.catalog.canonical_bytes);
     assert_eq!(row.1, candidate.catalog.manifest.geometry_hash);
     pool.close().await;

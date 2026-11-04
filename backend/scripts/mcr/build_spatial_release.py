@@ -13,8 +13,11 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_COMMIT = '8f89d1905a86143d34ff77d2951fc60651ab2497'
 ART_COMMIT = 'e3af146ae4757794ca153363fd1408300ffde29e'
+TILED_COMMIT = 'aa3e2f3d67afc1f288aee63f994dc829fcc81e7b'
 BASE = 'world/reference-scene-v2/'
 RUNTIME = BASE + 'runtime-v4/'
+TILED_PATH = BASE + 'runtime/canonical-map-v2.json'
+TILED_HASH = 'sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f'
 GEOMETRY_HASH = 'sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5'
 MAP_ID = 'mcr_reference_scene_r3'
 MAX_SCENERY = 2_097_152
@@ -62,7 +65,7 @@ def candidate_map(proposal):
             'proposal geometry pin mismatch')
     manifest = {
         'contract_version': '1.0.0', 'kind': 'map_manifest', 'map_id': MAP_ID,
-        'map_revision': 1, 'geometry_hash': GEOMETRY_HASH,
+        'map_revision': 2, 'geometry_hash': GEOMETRY_HASH,
         'provenance': {
             'source_id': 'mcr_reference_scene_r3', 'source_kind': 'ORIGINAL_ART',
             'source_revision': SOURCE_COMMIT + '; geometry-proposal.json v2',
@@ -73,8 +76,8 @@ def candidate_map(proposal):
             'review_state': 'UNREVIEWED', 'reviewed_by': None, 'reviewed_at': None,
             'photo_permission': 'NOT_APPLICABLE',
         },
-        'tilemap': {'format': 'TILED_JSON', 'resource_state': 'NOT_PROVIDED',
-                    'path': None, 'sha256': None},
+        'tilemap': {'format': 'TILED_JSON', 'resource_state': 'PROVIDED',
+                    'path': TILED_PATH, 'sha256': TILED_HASH},
         'geometry': geometry, 'places': copy.deepcopy(proposal['places']),
     }
     manifest['content_hash'] = assets.content_hash(manifest)
@@ -94,6 +97,23 @@ def build():
              'parade-map-metadata.json']
     data = {RUNTIME + name: published_input(RUNTIME + name, ART_COMMIT) for name in names}
     proposal = json.loads(geometry_data)
+    tiled_data = published_input(TILED_PATH, TILED_COMMIT)
+    require(sha(tiled_data) == TILED_HASH and len(tiled_data) == 24058, 'published Tiled pin mismatch')
+    geometry = proposal['geometry']
+    expected_tiled = {
+        'type': 'map', 'version': '1.10', 'tiledversion': '1.10.2',
+        'orientation': 'orthogonal', 'renderorder': 'right-down', 'infinite': False,
+        'width': 48, 'height': 81, 'tilewidth': 16, 'tileheight': 16,
+        'layers': [{'id': i + 1, 'name': name, 'type': 'tilelayer', 'width': 48, 'height': 81,
+                    'x': 0, 'y': 0, 'opacity': 1, 'visible': True,
+                    'data': [cell for row in geometry[field] for cell in row]}
+                   for i, (name, field) in enumerate([('terrain', 'terrain_layer'),
+                       ('collision', 'collision_grid'), ('overdraw', 'overdraw_layer')])],
+        'tilesets': [{'firstgid': 1, 'name': 'theme', 'image': 'mcr-theme.png',
+                      'imagewidth': 768, 'imageheight': 1296, 'tilewidth': 16,
+                      'tileheight': 16, 'tilecount': 3888, 'columns': 48, 'margin': 0, 'spacing': 0}],
+    }
+    require(json.loads(tiled_data) == expected_tiled, 'published Tiled differs from canonical finite grids')
     layout = json.loads(data[RUNTIME + 'parade-layout.json'])
     resources = json.loads(data[RUNTIME + 'parade-resource-inputs.json'])
     scenery = json.loads(data[RUNTIME + 'parade-scenery.json'])
@@ -129,16 +149,18 @@ def build():
     pixels = sum(r['width_px'] * r['height_px'] for r in runtime)
     binding = {
         'format': 'MCR_SOURCE_BOUND_SPATIAL_RELEASE', 'version': 1,
-        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'map_id': MAP_ID, 'map_revision': 1,
+        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
+        'map_id': MAP_ID, 'map_revision': 2,
         'map_content_hash': manifest['content_hash'], 'geometry_hash': GEOMETRY_HASH,
         'geometry_source': file_pin(geometry_path, geometry_data),
+        'tilemap_source': file_pin(TILED_PATH, tiled_data),
         'scenery_source': file_pin(RUNTIME + 'parade-scenery.json', data[RUNTIME + 'parade-scenery.json']),
         'scene_sources': [file_pin(RUNTIME + name, data[RUNTIME + name]) for name in names
                           if name != 'parade-scenery.json'],
         'runtime_resources': runtime,
     }
     blockers = ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER',
-                'UNREVIEWED_SOURCE_PROVENANCE', 'TILED_RESOURCE_NOT_PROVIDED',
+                'UNREVIEWED_SOURCE_PROVENANCE',
                 'PRODUCT_BOOTSTRAP_NOT_CONFIGURED']
     if byte_count > MAX_SCENERY:
         blockers.append('C06_SCENERY_BYTE_BUDGET')
@@ -149,7 +171,8 @@ def build():
         blockers.append('C06_INTEGER_SCENERY_PROJECTION_REQUIRED')
     readiness = {
         'task': 'BE-SPATIAL-RELEASE', 'state': 'NOT_ADMITTED',
-        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'map': {key: manifest[key] for key in
+        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
+        'map': {key: manifest[key] for key in
             ['map_id', 'map_revision', 'content_hash', 'geometry_hash']},
         'skins': {'PARADE': 'SOURCE_PROPOSAL', 'REVENGE': 'UNAVAILABLE', 'DANGER': 'UNAVAILABLE'},
         'blockers': blockers,
@@ -158,7 +181,7 @@ def build():
         'fractional_depth_count': fractional_depths,
         'bootstrap': None, 'theme_manifests': None,
         'limits': ['No art fidelity acceptance', 'No physical place qualification',
-                   'No public URL invented for a missing Tiled resource',
+                   'Published Tiled resource binds the same canonical grids',
                    'No event-current map publication or production admission'],
     }
     return {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness}

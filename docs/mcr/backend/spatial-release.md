@@ -95,3 +95,26 @@ assertion to require an incremented event revision plus identical canonical map
 bytes, then uses the current event revision for virtual-place selection checks.
 No place repository behavior was changed. A fresh named compile lease is queued;
 BACKEND was explicitly returned after freezing, and no target access is retained.
+
+### Published Tiled input and candidate revision 2
+
+World's published `aa3e2f3d67afc1f288aee63f994dc829fcc81e7b` supplies
+`world/reference-scene-v2/runtime/canonical-map-v2.json`, 24,058 bytes,
+`sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f`.
+The source-bound loader verifies actual bytes and exact finite canonical grids;
+`mcr-theme.png` is an inert marker, never a resource request. The compatibility
+texture dimensions are 768x1296 for each skin. Static ownership remains with the
+World developer under the explicitly transferred NEW `runtime/**` prefix.
+
+Current canonical map `mcr_reference_scene_r3` revision **2** has content hash
+`sha256:3090185136d5e22138318831d230a7ce6581866a12dc3309df8ebf37825de9f5`.
+Its geometry/places are identical to revision 1. The revision-1 checkpoint above
+is historical and remains recoverable from `fcc03a8f`; its content is not resealed
+under the same identity. Current readiness no longer lists the Tiled gap. All
+three era art inputs, genuine nested place/source provenance review and operator
+bundle configuration remain genuine admission prerequisites. Announced unpublished
+art is not treated as a delivered input. Product state remains NOT_ADMITTED.
+
+The separately assigned operator-bundle owner is Product API root; provenance
+review/source ownership was escalated as a project decision. Neither an art schema
+check nor component/native database evidence silently upgrades REVIEWED metadata.

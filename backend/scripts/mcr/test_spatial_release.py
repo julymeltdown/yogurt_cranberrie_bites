@@ -44,13 +44,13 @@ class SpatialReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'geometry pin'):
             builder.candidate_map(proposal)
 
-    def test_candidate_construction_never_mutates_source_or_guesses_tilemap(self):
+    def test_candidate_preserves_source_and_binds_published_tilemap(self):
         proposal = copy.deepcopy(self.proposal)
         original = copy.deepcopy(proposal)
         candidate = builder.candidate_map(proposal)
         candidate['places'][0]['label'] = 'Changed destination'
         self.assertEqual(proposal, original)
-        self.assertEqual(candidate['tilemap'], {'format': 'TILED_JSON', 'resource_state': 'NOT_PROVIDED', 'path': None, 'sha256': None})
+        self.assertEqual(candidate['tilemap'], {'format': 'TILED_JSON', 'resource_state': 'PROVIDED', 'path': builder.TILED_PATH, 'sha256': builder.TILED_HASH})
 
     def test_actual_runtime_bytes_dimensions_and_budgets_are_truthful(self):
         binding = self.outputs['source-binding.json']
@@ -75,7 +75,7 @@ class SpatialReleaseTests(unittest.TestCase):
         report = self.outputs['readiness.json']
         self.assertEqual(report['state'], 'NOT_ADMITTED')
         self.assertEqual(report['skins'], {'PARADE': 'SOURCE_PROPOSAL', 'REVENGE': 'UNAVAILABLE', 'DANGER': 'UNAVAILABLE'})
-        for reason in ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER', 'UNREVIEWED_SOURCE_PROVENANCE', 'TILED_RESOURCE_NOT_PROVIDED']:
+        for reason in ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER', 'UNREVIEWED_SOURCE_PROVENANCE']:
             self.assertIn(reason, report['blockers'])
         self.assertEqual(report['fractional_depth_count'], 0)
         self.assertFalse(any(b.startswith('C06_') for b in report['blockers']))
