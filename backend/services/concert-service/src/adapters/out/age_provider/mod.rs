@@ -1,5 +1,5 @@
-//! BE26 owned SQL adapter. Root registration/provider/HTTP remain separate gates.
-//! Integration composes the application module as crate::age_verification until exported.
+//! Concert-owned BE26 SQL adapter and canonical runtime composition.
+//! External provider verification is an explicit trusted port; no positive default.
 use super::repository::receipt::{CommandProducer, PgCommandRepository};
 use crate::age_verification::*;
 use async_trait::async_trait;
@@ -26,6 +26,11 @@ pub enum Access {
 /// A timestamp is not a fence. Missing production integration must remain unavailable.
 #[async_trait]
 pub trait Authority: Send + Sync {
+    /// Only a response ceiling, never authorization or a reusable claim lease.
+    /// A canonical runtime binds this to the original held response scope.
+    fn disclose_until(&self, _until: DateTime<Utc>) -> Result<(), CommandError> {
+        Ok(())
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
@@ -67,6 +72,7 @@ pub struct PgAgeClaims {
     config: Option<ProviderConfig>,
     clock: Arc<dyn Clock>,
     keys: Arc<FingerprintKeys>,
+    trust: trust::ClaimTrust,
 }
 impl PgAgeClaims {
     pub fn new(
@@ -77,6 +83,10 @@ impl PgAgeClaims {
         clock: Arc<dyn Clock>,
         keys: Arc<FingerprintKeys>,
     ) -> Self {
+        let trust = config
+            .as_ref()
+            .map(trust::ClaimTrust::configured)
+            .unwrap_or_default();
         Self {
             pool,
             authority,
@@ -84,7 +94,13 @@ impl PgAgeClaims {
             config,
             clock,
             keys,
+            trust,
         }
+    }
+    /// Accepted persisted sources are separate from operational verifier health.
+    pub fn with_claim_trust(mut self, trust: trust::ClaimTrust) -> Self {
+        self.trust = trust;
+        self
     }
     pub fn unavailable(pool: PgPool, clock: Arc<dyn Clock>, keys: Arc<FingerprintKeys>) -> Self {
         Self::new(
@@ -97,7 +113,10 @@ impl PgAgeClaims {
         )
     }
     fn available(&self) -> bool {
-        self.config.is_some() && self.verifier.available()
+        self.config
+            .as_ref()
+            .is_some_and(|c| self.trust.accepts(&c.verifier, &c.revision))
+            && self.verifier.available()
     }
     pub async fn start(
         &self,
@@ -370,11 +389,26 @@ impl PgAgeClaims {
             .map(owner_claim)
             .transpose()?
             .into_iter()
+            .filter(|claim| {
+                self.trust
+                    .accepts(&claim.verifier_id, &claim.source_revision)
+            })
             .collect::<Vec<_>>();
         deadline(self, &mut tx, c).await.map_err(command)?;
-        let result = own_status(c, &claims, self.available(), self.clock.now())?;
+        let assessment = concert_domain::age_policy::assess(c.actor, &claims, self.clock.now())
+            .map_err(|_| Error::Unavailable)?;
+        let until = if assessment.status() == concert_domain::age_policy::AgeStatus::Verified {
+            assessment
+                .recheck_at()
+                .unwrap_or(c.expires_at)
+                .min(c.expires_at)
+        } else {
+            c.expires_at
+        };
+        self.authority.disclose_until(until).map_err(command)?;
         tx.commit().await.map_err(db)?;
-        Ok(result)
+        // A known COMMIT does not extend claim expiry or the Seoul birthday boundary.
+        own_status(c, &claims, self.available(), self.clock.now())
     }
     /// Status only: absence is not permission to replay an uncertain external exchange.
     pub async fn recover(
@@ -689,3 +723,11 @@ async fn bounded<T>(
         .await
         .map_err(|_| on_timeout)?
 }
+
+pub mod runtime;
+pub mod scoped;
+pub mod settlement;
+
+pub mod trust;
+
+pub mod claim_reader;
