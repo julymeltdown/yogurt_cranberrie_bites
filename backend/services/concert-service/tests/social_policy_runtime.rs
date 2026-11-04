@@ -3,9 +3,7 @@
 pub use concert_service::{adapters, social_live};
 #[path = "social_remaining_support/owned.rs"]
 mod owned;
-#[path = "../src/config/social_policy_runtime.rs"]
-mod policy_runtime;
-use policy_runtime::SocialWorldPolicy;
+use concert_service::config::social_policy_runtime::SocialWorldPolicy;
 use social_live::invalidation::SocialInvalidationSink;
 use sqlx::{PgPool, Row};
 use std::{sync::Arc, time::Duration};
