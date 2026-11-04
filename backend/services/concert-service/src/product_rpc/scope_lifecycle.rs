@@ -1,7 +1,9 @@
 //! Exact canonical SDK to durable producer-ledger mapping. No actor observation
 //! or request DTO is promoted to owner authority by these conversions.
 use super::{canonical_uuid, scope_ledger::*};
-use crate::adapters::out::relationship_authority::guarded::{proto, GuardBinding, ScopeLifecycle};
+use crate::adapters::out::relationship_authority::guarded::{
+    proto, ChildRecoveryReference, GuardBinding, ScopeLifecycle,
+};
 use platform::{actor_delegation::owner_binding::OwnerBinding, grpc_auth::Workload};
 use tonic::Status;
 
@@ -127,6 +129,23 @@ impl ScopeLifecycle for PgScopeLedger {
     }
     async fn mark_serialized(&self, scope: &proto::ProducerScope) -> Result<(), Status> {
         PgScopeLedger::mark_serialized(self, &key(scope)?).await
+    }
+    async fn register_child_intent(
+        &self,
+        scope: &proto::ProducerScope,
+        reference: &ChildRecoveryReference,
+    ) -> Result<(), Status> {
+        PgScopeLedger::register_child_intent(self, &key(scope)?, reference).await
+    }
+    async fn record_child_completed(
+        &self,
+        scope: &proto::ProducerScope,
+        reference: &ChildRecoveryReference,
+    ) -> Result<(), Status> {
+        PgScopeLedger::record_child_completed(self, &key(scope)?, reference).await
+    }
+    async fn settle_child_intents(&self, scope: &proto::ProducerScope) -> Result<(), Status> {
+        PgScopeLedger::settle_child_intents(self, &key(scope)?).await
     }
     async fn seal(&self, scope: &proto::ProducerScope) -> Result<(), Status> {
         PgScopeLedger::seal(self, &key(scope)?).await

@@ -10,6 +10,10 @@ use sqlx::{PgPool, Postgres, Transaction};
 use tonic::Status;
 use uuid::Uuid;
 
+mod children;
+pub use children::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys};
+use std::sync::Arc;
+
 const CAPACITY: i64 = 16;
 fn invalid() -> Status {
     Status::invalid_argument("Invalid product scope lifecycle binding")
@@ -79,13 +83,25 @@ fn phase(value: &str) -> Result<ScopePhase, Status> {
 pub struct PgScopeLedger {
     pool: PgPool,
     instance: Uuid,
+    child_keys: Arc<ChildRecoveryKeys>,
+    child_settler: Arc<dyn ChildIntentSettler>,
 }
 impl PgScopeLedger {
-    pub fn new(pool: PgPool, instance: Uuid) -> Result<Self, Status> {
+    pub fn new(
+        pool: PgPool,
+        instance: Uuid,
+        child_keys: Arc<ChildRecoveryKeys>,
+        child_settler: Arc<dyn ChildIntentSettler>,
+    ) -> Result<Self, Status> {
         if instance.is_nil() {
             return Err(invalid());
         }
-        Ok(Self { pool, instance })
+        Ok(Self {
+            pool,
+            instance,
+            child_keys,
+            child_settler,
+        })
     }
     pub fn instance(&self) -> Uuid {
         self.instance
@@ -409,5 +425,51 @@ impl PgScopeLedger {
             return Err(Status::permission_denied("Product settlement mismatch"));
         }
         Ok(binding)
+    }
+    /// A lost Track reply may leave the owner's registration unknown here.
+    /// Preserve that distinction: only actual ABORTED proof may settle it.
+    pub async fn settlement_registration(
+        &self,
+        owner: Workload,
+        registration: Uuid,
+        identity: &ProducerTransaction,
+    ) -> Result<(OwnerBinding, bool, ScopePhase), Status> {
+        if registration.is_nil() {
+            return Err(invalid());
+        }
+        let column = match owner {
+            Workload::Auth => "auth_registration_id",
+            Workload::Friend => "friend_registration_id",
+            _ => {
+                return Err(Status::permission_denied(
+                    "Invalid product settlement owner",
+                ))
+            }
+        };
+        let digest = identity.digest()?;
+        let query=format!("SELECT s.binding,t.identity,t.{column},s.phase FROM concert_product_owner_transactions t JOIN concert_product_owner_scopes s USING(instance_id,scope_id,binding_digest) WHERE t.instance_id=$1 AND t.identity_digest=$2");
+        let rows: Vec<(serde_json::Value, serde_json::Value, Option<Uuid>, String)> =
+            sqlx::query_as(&query)
+                .bind(self.instance)
+                .bind(digest.as_slice())
+                .fetch_all(&self.pool)
+                .await
+                .map_err(unavailable)?;
+        // A native identity must resolve unambiguously to one original scope.
+        if rows.len() != 1 {
+            return Err(Status::failed_precondition(
+                "Unknown product settlement transaction",
+            ));
+        }
+        let (binding, value, ack, state) = rows.into_iter().next().ok_or_else(invalid)?;
+        let actual: ProducerTransaction = serde_json::from_value(value).map_err(|_| invalid())?;
+        let binding: OwnerBinding = serde_json::from_value(binding).map_err(|_| invalid())?;
+        if actual != *identity
+            || binding.digest()? != identity.effect_binding_digest
+            || ack.is_some_and(|id| id != registration)
+        {
+            return Err(Status::permission_denied("Product settlement mismatch"));
+        }
+        Ok((binding, ack.is_some(), phase(&state)?))
     }
 }

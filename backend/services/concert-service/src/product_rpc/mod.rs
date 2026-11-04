@@ -20,6 +20,7 @@ pub mod delivery;
 mod owner_media;
 mod query;
 pub mod scope_ledger;
+pub mod settlement;
 mod scope_lifecycle;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_BODY: usize = 10 * 1024 * 1024;

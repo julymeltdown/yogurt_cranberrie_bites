@@ -129,13 +129,22 @@ def run(args, report):
         sql(f"UPDATE concert_product_owner_transactions SET friend_registration_id='{FRIEND}' WHERE {key}")
         sql(f"UPDATE concert_product_owner_transactions SET confirmed_at=clock_timestamp() WHERE {key}")
         denied("confirmed-transaction-immutable", f"UPDATE concert_product_owner_transactions SET identity='{{\"changed\":true}}' WHERE {key}")
+        child = f"instance_id='{INSTANCE}' AND scope_id='{SCOPE}'"
+        child_insert = ("INSERT INTO concert_product_child_intents(instance_id,scope_id,binding_digest,kind,intent_id,key_id,sealed_reference,reference_digest) "
+                        f"VALUES('{INSTANCE}','{SCOPE}',decode(repeat('11',32),'hex'),'PROFILE_PUBLIC','a0280000-0000-4000-8000-000000000008','fixture',decode(repeat('77',28),'hex'),decode(repeat('88',32),'hex'))")
+        sql(child_insert)
+        denied("child-cannot-complete-before-root", f"UPDATE concert_product_child_intents SET completed_at=clock_timestamp() WHERE {child}")
+        denied("child-cannot-rebind", f"UPDATE concert_product_child_intents SET key_id='other' WHERE {child}")
+        denied("child-evidence-cannot-delete", f"DELETE FROM concert_product_child_intents WHERE {child}")
         sql(f"UPDATE concert_product_owner_scopes SET serialized_at=clock_timestamp() WHERE {key}")
         require(sql(f"SELECT phase FROM concert_product_owner_scopes WHERE {key}") == "ACTIVE", "serialization finished scope early")
         report["commands"]["serialization-does-not-finish"] = 0
         sql(f"UPDATE concert_product_owner_scopes SET phase='SEALED',sealed_at=clock_timestamp() WHERE {key}")
         denied("late-transaction-denied", f"INSERT INTO concert_product_owner_transactions(instance_id,scope_id,binding_digest,identity_digest,identity) VALUES('{INSTANCE}','{SCOPE}',decode(repeat('11',32),'hex'),decode(repeat('55',32),'hex'),'{{}}')")
+        denied("late-child-denied", child_insert.replace("000000000008", "000000000009"))
         denied("sealed-cannot-reopen", f"UPDATE concert_product_owner_scopes SET phase='ACTIVE',sealed_at=NULL WHERE {key}")
         sql(f"UPDATE concert_product_owner_scopes SET phase='ROOT_FINISHED',root_finished_at=clock_timestamp() WHERE {key}")
+        denied("delivery-needs-all-children", f"UPDATE concert_product_owner_scopes SET delivery_completed_at=clock_timestamp() WHERE {key}")
         denied("finished-cannot-reopen", f"UPDATE concert_product_owner_scopes SET phase='ACTIVE',sealed_at=NULL,root_finished_at=NULL WHERE {key}")
         denied("scope-evidence-cannot-delete", f"DELETE FROM concert_product_owner_scopes WHERE {key}")
         denied("transaction-evidence-cannot-delete", f"DELETE FROM concert_product_owner_transactions WHERE {key}")
@@ -151,6 +160,14 @@ def run(args, report):
         cluster.stop()
         cluster.start()
         require(sql(f"SELECT phase FROM concert_product_owner_scopes WHERE {key}") == "ROOT_FINISHED", "finished state lost")
+        require(sql(f"SELECT completed_at IS NULL AND key_id='fixture' AND sealed_reference=decode(repeat('77',28),'hex') FROM concert_product_child_intents WHERE {child}") == "t", "unresolved child evidence lost")
+        report["commands"]["restart-retains-child-intent"] = 0
+        sql(f"UPDATE concert_product_child_intents SET completed_at=clock_timestamp() WHERE {child}")
+        denied("completed-child-cannot-reopen", f"UPDATE concert_product_child_intents SET completed_at=NULL WHERE {child}")
+        denied("completed-child-cannot-change-ciphertext", f"UPDATE concert_product_child_intents SET sealed_reference=decode(repeat('99',28),'hex') WHERE {child}")
+        sql(f"UPDATE concert_product_owner_scopes SET delivery_completed_at=clock_timestamp() WHERE {key}")
+        require(sql(f"SELECT delivery_completed_at IS NOT NULL FROM concert_product_owner_scopes WHERE {key}") == "t", "settled child blocked durable completion")
+        report["commands"]["settled-child-allows-completion"] = 0
         require(sql(f"SELECT phase FROM concert_product_owner_scopes WHERE {partial}") == "ACTIVE", "unfinished scope falsely settled")
         require(sql(f"SELECT auth_registration_id IS NOT NULL AND friend_registration_id IS NULL AND confirmed_at IS NULL FROM concert_product_owner_transactions WHERE {partial}") == "t", "partial owner tracking lost")
         require(sql("SELECT count(*) FROM concert_product_owner_scopes WHERE scope_id='a0280000-0000-4000-8000-000000000099' AND phase='ROOT_FINISHED'") == "0", "missing scope falsely settled")

@@ -103,3 +103,56 @@ BEGIN
 END $$;
 CREATE TRIGGER concert_product_owner_transaction_transition BEFORE INSERT OR UPDATE OR DELETE
  ON public.concert_product_owner_transactions FOR EACH ROW EXECUTE FUNCTION public.concert_product_owner_transaction_transition();
+
+-- Private pre-dispatch child capabilities are encrypted by the configured root
+-- at-rest key. Root finish is intentionally independent of child completion.
+CREATE TABLE public.concert_product_child_intents (
+ instance_id uuid NOT NULL,
+ scope_id uuid NOT NULL,
+ binding_digest bytea NOT NULL,
+ kind text NOT NULL CHECK(kind IN ('PROFILE_PUBLIC','LOCAL_PUBLIC')),
+ intent_id uuid NOT NULL CHECK(intent_id<>'00000000-0000-0000-0000-000000000000'),
+ key_id text NOT NULL CHECK(key_id ~ '^[A-Za-z0-9_-]{1,64}$'),
+ sealed_reference bytea NOT NULL CHECK(octet_length(sealed_reference) BETWEEN 28 AND 8220),
+ reference_digest bytea NOT NULL CHECK(octet_length(reference_digest)=32),
+ created_at timestamptz NOT NULL DEFAULT clock_timestamp(),
+ completed_at timestamptz,
+ PRIMARY KEY(instance_id,scope_id,kind,intent_id),
+ FOREIGN KEY(instance_id,scope_id,binding_digest)
+  REFERENCES public.concert_product_owner_scopes(instance_id,scope_id,binding_digest)
+);
+CREATE FUNCTION public.concert_product_child_intent_transition() RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE current_phase text; current_count bigint;
+BEGIN
+ IF TG_OP='DELETE' THEN
+  RAISE EXCEPTION 'child intent evidence is immutable' USING ERRCODE='23514';
+ END IF;
+ SELECT phase INTO current_phase FROM public.concert_product_owner_scopes
+  WHERE instance_id=NEW.instance_id AND scope_id=NEW.scope_id FOR UPDATE;
+ IF TG_OP='INSERT' THEN
+  SELECT count(*) INTO current_count FROM public.concert_product_child_intents
+   WHERE instance_id=NEW.instance_id AND scope_id=NEW.scope_id;
+  IF current_phase IS DISTINCT FROM 'ACTIVE' OR NEW.completed_at IS NOT NULL OR current_count>=202 THEN
+   RAISE EXCEPTION 'child intent admission closed' USING ERRCODE='23514';
+  END IF;
+ ELSIF current_phase IS DISTINCT FROM 'ROOT_FINISHED'
+  OR (NEW.instance_id,NEW.scope_id,NEW.binding_digest,NEW.kind,NEW.intent_id,NEW.key_id,NEW.sealed_reference,NEW.reference_digest,NEW.created_at)
+   IS DISTINCT FROM (OLD.instance_id,OLD.scope_id,OLD.binding_digest,OLD.kind,OLD.intent_id,OLD.key_id,OLD.sealed_reference,OLD.reference_digest,OLD.created_at)
+  OR OLD.completed_at IS NOT NULL OR NEW.completed_at IS NULL THEN
+  RAISE EXCEPTION 'invalid child intent completion' USING ERRCODE='23514';
+ END IF;
+ RETURN NEW;
+END $$;
+CREATE TRIGGER concert_product_child_intent_transition BEFORE INSERT OR UPDATE OR DELETE
+ ON public.concert_product_child_intents FOR EACH ROW EXECUTE FUNCTION public.concert_product_child_intent_transition();
+CREATE FUNCTION public.concert_product_child_delivery_guard() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+ IF NEW.delivery_completed_at IS NOT NULL AND EXISTS(
+  SELECT 1 FROM public.concert_product_child_intents WHERE instance_id=NEW.instance_id
+   AND scope_id=NEW.scope_id AND completed_at IS NULL) THEN
+  RAISE EXCEPTION 'child recovery remains unresolved' USING ERRCODE='23514';
+ END IF;
+ RETURN NEW;
+END $$;
+CREATE TRIGGER concert_product_child_delivery_guard BEFORE UPDATE
+ ON public.concert_product_owner_scopes FOR EACH ROW EXECUTE FUNCTION public.concert_product_child_delivery_guard();
