@@ -1,0 +1,1832 @@
+{
+  "base": "93517018b2733c7e7f6ed09b97d83d1bdb85940b",
+  "clock": "2026-11-07T07:00:00.000Z",
+  "slot": "FE21-FE24-NATIVE-202611040517Z",
+  "diskFreeGiB": 34.812965393066406,
+  "qualification": "ACTUAL_DEFAULT_ROOT_WITH_SYNTHETIC_HTTP_C05",
+  "physicalIOS": "NOT_RUN",
+  "physicalAndroid": "NOT_RUN",
+  "sourceHashes": {
+    "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+    "contracts/generated/mcr-domain.openapi.json": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+    "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/features/gift-discovery/__tests__/client-completion.test.tsx": "ef58079aa54e946467c8098e09b6f06cef525b1fab48a331532774e08e3bebca",
+    "frontend/src/features/gift-discovery/__tests__/contract.test.ts": "d4f5e03bf8b8ef72c89abac55b51856944a9cb739f5f9dba0097f6d81b989ef8",
+    "frontend/src/features/gift-discovery/__tests__/controller.test.ts": "c9cab77c25c63e69815e16cafb45fa973bebd4381e196a1231194a6f9223727b",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/preview.tsx": "9c264ce143b84b445cd3bd0f8060d491958367eb9c0474498c2e9c6f2badd4f6",
+    "frontend/src/features/gift-discovery/__tests__/reference-native/preview.css": "e72220be6edc2657e69b2c4518ba149556da7da173caf01d8dbbae0dd8c1fac3",
+    "frontend/src/features/gift-discovery/__tests__/reference-native/preview.tsx": "2979b33a6067f766ff8b979693d170d876fdb9de14a7c2f404a5c539b42cf066",
+    "frontend/src/features/gift-discovery/__tests__/reference-native/root-touch-data.ts": "a9bcb50b15a3a78598e63b518b3d19f33890ceb701a21bc2f01e58301e5e7523",
+    "frontend/src/features/gift-discovery/__tests__/reference-presentation.test.tsx": "de36c82547aaaf9f4afa2468e71162378b77035dbd547cb8f37a8dfeb2c129cb",
+    "frontend/src/features/gift-discovery/__tests__/ui.test.tsx": "d496425ef170fb86489f10ef9700f2801a2a6e16c547585829a4393f87a689ab",
+    "frontend/src/features/gift-discovery/__tests__/visual-adoption/adoption.test.tsx": "afefef34a609b826cf3b5d4e36aa24153aeb3ef116cb9239eb021479200af052",
+    "frontend/src/features/gift-discovery/index.ts": "aa7725f1f884d7650a9d5c7d0318a4098c532d0482e44cee64e194f52cf97fdf",
+    "frontend/src/features/gift-discovery/model/contract.ts": "2a931610213c57eb1dc439ac224800e0d86fd8f3a67f4804a9c6c8ceead38cba",
+    "frontend/src/features/gift-discovery/model/controller.ts": "fcc6af9ad3f78ccfb3ccdea1c0a623e96dbaea5bf3c736252a0726946b9eb470",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d",
+    "frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "c11d23a14cf241e763f8c07b8f4c4595923aa1aac6e4c25cad1ccebfa0745040",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+    "frontend/src/features/my-gifts/MyGifts.tsx": "e2ea39b7522eed1b9066f152cf64448157e3cf6faa6f5bce4f40eb2c73519dc6",
+    "frontend/src/features/my-gifts/index.ts": "f8736dd4237769e72704533e2ab9e3f3684e31ea58b8e69427fec3c3a977dab2",
+    "frontend/src/features/party-discovery/__tests__/contract.test.ts": "f4412078b2b1b383126a95ae1d6520dd85224927b53700493fda1743df459049",
+    "frontend/src/features/party-discovery/__tests__/controller.test.ts": "9274ce46cc9fd3c6224fc3d7278aa978c2297ea34a85833468a98117c8f11eb7",
+    "frontend/src/features/party-discovery/__tests__/fixtures/data.ts": "10bb942e4b0cd9f3969bdd0294a139d0eb5aee5176ed173eb77d86acfad1d59a",
+    "frontend/src/features/party-discovery/__tests__/fixtures/harness.ts": "5db794aac665c8f942a4e4ab5c71589e3ee167dd4447a450cdc3e327700ecdb4",
+    "frontend/src/features/party-discovery/__tests__/fixtures/preview.tsx": "e470c476a7056eb4a6f5b175803b1219bf2f5ce942c92ab3a41eaac088d17339",
+    "frontend/src/features/party-discovery/__tests__/qa06-meet-cta/preview.tsx": "ce889431a8077e6e954d3a7685766b7a00454ab8cd201220aaec5987dc1f1309",
+    "frontend/src/features/party-discovery/__tests__/reference-presentation.test.tsx": "164b0855c2ed3e9f21d954070a471a58ec88695b288456459ab394f3b66c1653",
+    "frontend/src/features/party-discovery/__tests__/reference/preview.css": "cd0743b1888ddb4224083f6202a0de1d28a86e8a6985eb61c1d2b77fd8a3640a",
+    "frontend/src/features/party-discovery/__tests__/reference/preview.tsx": "5cf5e6eb55ea99cbfde176373a28e61e4a4eee559c73a380505ed1e84240cc8d",
+    "frontend/src/features/party-discovery/__tests__/ui.test.tsx": "d2b33773747eb6387813979f735073424445f0013b589c7dd411d9b9c20807a4",
+    "frontend/src/features/party-discovery/__tests__/visual-adoption/adoption.test.tsx": "fb95cc5e0aabb8b1637941b4e14eca7f466a0327a711017c135d5a221b654cfa",
+    "frontend/src/features/party-discovery/index.ts": "2506849e06014b72d45731ba34553ba28e42175fcded9d417247bddc6837bde4",
+    "frontend/src/features/party-discovery/model/contract.ts": "73d3dd2a7e6a09a7edc22bee5c24358ddfeda1049f4c5c35a7b754474508a3b7",
+    "frontend/src/features/party-discovery/model/controller.ts": "cf39ceace4d31dd7626629000e118e7dc8722c9cde19acf992c6caea90c27093",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "264b4c5304ada1419b46f73d3cdb0168505234a0d308289560967a495d801350",
+    "frontend/e2e/community-client/fe21-fe24/data.ts": "525a10c297003676e6ecc05bbf221f93263f923a5b208f54a0355c85def109ee",
+    "frontend/e2e/community-client/fe21-fe24/preview.tsx": "0083214bab6f7c0686232e55920dcf5ddf2e9b3eb91c01ba9db848d6fc73b82d",
+    "frontend/e2e/community-client/fe21-fe24/preview.html": "8e769225e95d0849db8462203af8ae6ecdc7cac39a375832820f0cffeff235f9",
+    "frontend/e2e/community-client/fe21-fe24/native.mjs": "ada9f9aeb4224ac308d4d2aef5e7a83a629c9217ad4273b2c67d5b4735a13272",
+    "frontend/e2e/community-client/fe21-fe24/fixture.test.ts": "6cea7bfe6a4b81d2cd5dc49a28c5b1d83048d1bd6834c8f5dbf1c6c0bcc9cdaf"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "checks": [
+        "FE21 lost response -> 404 -> PENDING -> SUCCEEDED + fresh MY PLAN; one POST, original key, no replay",
+        "FE21 actual MY PLAN link and cancellation",
+        "FE21 empty/full/cancelled/private states",
+        "FE24 current stock/status/KST time filters",
+        "FE24 real GIVING/RECEIVING route, own draft, independent cursor requests",
+        "FE24 paused/sold-out/ended prohibit reservation action",
+        "FE24 public recipient projection rejected",
+        "Identity/policy cleanup withdraws private activity and drafts"
+      ],
+      "captures": [
+        {
+          "file": "360-parties.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/meet",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 82.72000000000003,
+                "scrollY": 105,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "360-uncertain-application.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/meet/parties/00000000-0000-4000-8000-000000000010",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 82.72000000000003,
+                "scrollY": 105,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "360-gifts.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 82.72000000000003,
+                "scrollY": 105,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "360-gift-detail.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts/00000000-0000-4000-8000-000000000064",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 82.72000000000003,
+                "scrollY": 105,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000064",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "360-receiving.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts/mine",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 82.72000000000003,
+                "scrollY": 105,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000064",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        }
+      ],
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "width": 390,
+      "checks": [
+        "FE21 lost response -> 404 -> PENDING -> SUCCEEDED + fresh MY PLAN; one POST, original key, no replay",
+        "FE21 actual MY PLAN link and cancellation",
+        "FE21 empty/full/cancelled/private states",
+        "FE24 current stock/status/KST time filters",
+        "FE24 real GIVING/RECEIVING route, own draft, independent cursor requests",
+        "FE24 paused/sold-out/ended prohibit reservation action",
+        "FE24 public recipient projection rejected",
+        "Identity/policy cleanup withdraws private activity and drafts"
+      ],
+      "captures": [
+        {
+          "file": "390-parties.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/meet",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 71.92000000000002,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "390-uncertain-application.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/meet/parties/00000000-0000-4000-8000-000000000010",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 71.92000000000002,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "390-gifts.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 71.92000000000002,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "390-gift-detail.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts/00000000-0000-4000-8000-000000000064",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 71.92000000000002,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000064",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "390-receiving.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts/mine",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 71.92000000000002,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000064",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        }
+      ],
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "width": 430,
+      "checks": [
+        "FE21 lost response -> 404 -> PENDING -> SUCCEEDED + fresh MY PLAN; one POST, original key, no replay",
+        "FE21 actual MY PLAN link and cancellation",
+        "FE21 empty/full/cancelled/private states",
+        "FE24 current stock/status/KST time filters",
+        "FE24 real GIVING/RECEIVING route, own draft, independent cursor requests",
+        "FE24 paused/sold-out/ended prohibit reservation action",
+        "FE24 public recipient projection rejected",
+        "Identity/policy cleanup withdraws private activity and drafts"
+      ],
+      "captures": [
+        {
+          "file": "430-parties.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/meet",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 57.51999999999998,
+                "scrollY": 105,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "430-uncertain-application.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/meet/parties/00000000-0000-4000-8000-000000000010",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 57.51999999999998,
+                "scrollY": 105,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "430-gifts.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 57.51999999999998,
+                "scrollY": 105,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "430-gift-detail.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts/00000000-0000-4000-8000-000000000064",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 57.51999999999998,
+                "scrollY": 105,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000064",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        },
+        {
+          "file": "430-receiving.png",
+          "overflow": false,
+          "smallControls": [],
+          "state": {
+            "path": "/gifts/mine",
+            "published": true,
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 57.51999999999998,
+                "scrollY": 105,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "avatarPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/party-applications/00000000-0000-4000-8000-000000000321",
+                "method": "DELETE"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000011",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000064",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/giveaways",
+                "method": "GET"
+              }
+            ],
+            "sockets": 0,
+            "activeSockets": 0,
+            "socketPeak": 0,
+            "canvases": 1,
+            "disposed": false
+          }
+        }
+      ],
+      "errors": [],
+      "result": "PASS"
+    }
+  ],
+  "assetReads": [
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    {
+      "path": "frontend/public/world/themes/revenge.png",
+      "sha256": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+      "bytes": 4975
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-ground.png",
+      "sha256": "aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e",
+      "bytes": 96285
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks-atlas.png",
+      "sha256": "0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879",
+      "bytes": 445101
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/revenge-details.png",
+      "sha256": "84cd918700d99f1bfabcde38a7d48d43b51bf5ef19d431b50cc9c11e0c0a3bcd",
+      "bytes": 10119
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "result": "PASS"
+}

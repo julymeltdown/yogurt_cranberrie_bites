@@ -1,6 +1,5 @@
 {
   "assignmentBase": "096858b96c3bc11ca92222a3b87cd026ee412ede",
-  "qualifiedSource": "51b1dba40ca0eae7ac31a1e44c53e41226005d92",
   "contractVersion": "0.1.0",
   "wireVersion": "1.0.0",
   "pins": {
@@ -17,6 +16,11 @@
     "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
     "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
     "frontend/e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
-    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
-  }
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/src/features/party-discovery/__tests__/qa06-meet-cta/preview.tsx": "ce889431a8077e6e954d3a7685766b7a00454ab8cd201220aaec5987dc1f1309",
+    "frontend/src/features/party-discovery/__tests__/fixtures/data.ts": "10bb942e4b0cd9f3969bdd0294a139d0eb5aee5176ed173eb77d86acfad1d59a",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be"
+  },
+  "initialNativeSource": "51b1dba40ca0eae7ac31a1e44c53e41226005d92",
+  "qualifiedSource": "93517018b2733c7e7f6ed09b97d83d1bdb85940b"
 }

@@ -1,4 +1,11 @@
-# FE24 — giveaway discovery and own activity
+# FE24 — current client completion
+
+Original FE24 pure-client criteria: **SATISFIED**. Qualification status: **MOCK_READY** against frozen contracts and synthetic HTTP/C05 in the actual default application. The current [FE21/FE24 delivery record](fe21-fe24-client-delivery.md) records the final criterion matrix, source pins, failures/fixes, 148 focused checks, three native touch journeys, and limits. Publication is handled by Root153 with fresh owner remote verification; no King/SL review stage applies.
+
+The historical source/validation record below is preserved. Its initial review queues, uncomposed-root statements and earlier goal states are superseded by the current record. The default root now composes the feature; server/IN02 and physical-device qualification remain separate.
+
+
+## Historical initial delivery
 
 Status: **MOCK_READY**, pending independent review and parent disposition. The
 unbudgeted FE24 goal remains **ACTIVE** through review fixes. This does not accept
