@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "assets": [
+    {
+      "path": "artwork/cemetery-top-v1.png",
+      "sha256": "230480492acf6eb841c4aa1dbb66e622e8ef866aed2694f91308d50572b6b072",
+      "transparentContentClearance": "PASS"
+    },
+    {
+      "path": "artwork/cemetery-bottom-v1.png",
+      "sha256": "104e4b1acdb16ac40c671e62fd858917b1507b87935d43a80334fe7622bb4c92",
+      "transparentContentClearance": "PASS"
+    }
+  ],
+  "font": {
+    "family": "MCR Auth Print",
+    "coverage": "PASS",
+    "fontTools": "4.62.1",
+    "sha256": "cb8969bdfb81ea7cb9e5d4b2d3918a84ae41adae5a4ab89986887f51455acf63"
+  },
+  "paperTexture": {
+    "target": {
+      "mean": 232.02586206896552,
+      "standardDeviation": 3.627309902724222
+    },
+    "actual": {
+      "mean": 231.67955182072828,
+      "standardDeviation": 3.8382348622720337
+    },
+    "scope": "Regional paper tone/grain only; not a pixel-identity or visual acceptance oracle"
+  },
+  "visualRequirement": "Developer inspection of native comparisons is required separately; static metrics do not certify composition or artwork alone."
+}
