@@ -1,5 +1,6 @@
 //! Durable BE10/BE11 PostgreSQL adapter. No HTTP, WebSocket or public DTO is exposed here.
 pub mod rpc;
+pub mod account_deletion;
 pub(crate) mod recipient_owners;
 pub mod simulation;
 pub mod interest;
@@ -230,6 +231,10 @@ async fn write_membership(
 impl TicketRepository for PgWorldRepository {
     async fn issue(&self, record: TicketRecord) -> Result<IssueOutcome, WorldError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)? {
+            return Err(WorldError::Denied);
+        }
         closure::lock_event_open_in(&mut tx,record.pin.event_id.uuid()).await?;
         // Issuance observes availability/capacity but reserves no membership.
         // Share the room with live publication permits; admission below keeps
@@ -387,16 +392,23 @@ impl WorldRepository for PgWorldRepository {
         // keeps the outcome stable across concurrent transactions and preserves the row predicate
         // as a second atomic guard against accidental reintroduction of a reusable update path.
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
-        let actual:Option<Uuid>=sqlx::query_scalar("select event_id from public.concert_world_tickets where ticket_digest=$1").bind(claim.digest.as_bytes().as_slice()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
-        let Some(actual)=actual else {return Ok(ConsumeOutcome::Unknown)};
-        closure::lock_event_open_in(&mut tx,actual).await?;
+        let actual = sqlx::query("select event_id,user_id from public.concert_world_tickets where ticket_digest=$1")
+            .bind(claim.digest.as_bytes().as_slice()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
+        let Some(actual) = actual else { return Ok(ConsumeOutcome::Unknown) };
+        let actual_event: Uuid = actual.try_get("event_id").map_err(invalid)?;
+        let actual_user: Uuid = actual.try_get("user_id").map_err(invalid)?;
+        account_deletion::lock_user(&mut tx, actual_user).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, actual_user).await.map_err(unavailable)? {
+            return Err(WorldError::Denied);
+        }
+        closure::lock_event_open_in(&mut tx,actual_event).await?;
 
         sqlx::query("select pg_advisory_xact_lock(hashtextextended('mcr-world-ticket:' || encode($1::bytea,'hex'), 0))")
             .bind(claim.digest.as_bytes().as_slice())
             .execute(&mut *tx)
             .await
             .map_err(unavailable)?;
-        let existing = sqlx::query("select event_id,consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
+        let existing = sqlx::query("select event_id,user_id,consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
             .bind(claim.digest.as_bytes().as_slice())
             .fetch_optional(&mut *tx)
             .await
@@ -405,7 +417,10 @@ impl WorldRepository for PgWorldRepository {
             tx.commit().await.map_err(unavailable)?;
             return Ok(ConsumeOutcome::Unknown);
         };
-        if existing.try_get::<Uuid,_>("event_id").map_err(invalid)?!=actual {return Err(WorldError::CredentialInvalid)}
+        if existing.try_get::<Uuid,_>("event_id").map_err(invalid)? != actual_event
+            || existing.try_get::<Uuid,_>("user_id").map_err(invalid)? != actual_user {
+            return Err(WorldError::CredentialInvalid);
+        }
         if existing
             .try_get::<Option<DateTime<Utc>>, _>("consumed_at")
             .map_err(invalid)?
