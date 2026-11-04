@@ -1,5 +1,5 @@
-//! BE26 owned SQL adapter. Root registration/provider/HTTP remain separate gates.
-//! Integration composes the application module as crate::age_verification until exported.
+//! Concert-owned BE26 SQL adapter and canonical runtime composition.
+//! External provider verification is an explicit trusted port; no positive default.
 use super::repository::receipt::{CommandProducer, PgCommandRepository};
 use crate::age_verification::*;
 use async_trait::async_trait;

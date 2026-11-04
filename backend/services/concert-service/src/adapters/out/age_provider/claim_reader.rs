@@ -1,5 +1,5 @@
-//! BE26-CLAIM-READER safe independent projection scope, NOT a successful legacy lease.
-//! Root registration and the application projection-scope port remain coordinated work.
+//! BE26 private projection scopes, including a borrowed consumer transaction.
+//! The legacy synchronous ClaimReader lease deliberately remains unavailable.
 use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
 use concert_application::{
@@ -27,7 +27,7 @@ pub trait ProjectionAuthority: Send + Sync {
     /// hold participating owner/session/scope fences through the final COMMIT.
     /// Cross-service authority needs a qualified source protocol, not a cached
     /// token, process mutex, receipt, timestamp, or successful RPC observation.
-    /// This adapter provides no production Auth implementation.
+    /// The companion scoped adapter requires an actual canonical owner scope.
     async fn authorize_in(
         &self,
         connection: &mut PgConnection,
@@ -101,8 +101,8 @@ impl PgClaimProjection {
     /// Execute trusted, side-effect-free projection inside a private SQL scope.
     /// The closure must not publish/log/cache its intermediate values or return
     /// an authorization capability. Its value is discarded on any final failure.
-    /// All read-policy/collection/row decisions must share this scope in a future
-    /// BE25/BE27 composition; this is not a drop-in replacement for ClaimReader.
+    /// Consumers with their own row/relationship transaction use project_in so
+    /// all policy and projection decisions share it through the same commit.
     ///
     /// Successful COMMIT is the linearization point. Later revocation invalidates
     /// later reads; it cannot retroactively retract a completed response. No
