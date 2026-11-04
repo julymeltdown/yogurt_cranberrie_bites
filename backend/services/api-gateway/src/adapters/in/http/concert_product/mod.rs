@@ -456,7 +456,10 @@ pub async fn protect_response(request: Request, next: axum::middleware::Next) ->
     // Router::layer also wraps the shared fallback. Keep unmounted feature
     // suffixes out of unrelated service middleware and return a closed C04 error.
     if feature_routes::protects(request.uri().path())
-        && request.extensions().get::<axum::extract::MatchedPath>().is_none()
+        && request
+            .extensions()
+            .get::<axum::extract::MatchedPath>()
+            .is_none()
     {
         return error(StatusCode::NOT_FOUND, "RESOURCE_UNAVAILABLE");
     }
