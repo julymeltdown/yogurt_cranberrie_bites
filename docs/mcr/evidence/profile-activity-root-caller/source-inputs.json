@@ -1,0 +1,40 @@
+{
+  "status": "ROOT_CALLER_FULLTYPES_LINT_PASS_COUPLED_NATIVE_LEAF_PASS",
+  "counterpart": "871213dbb391adba002c807790e74d1935b4aae3",
+  "readOnlyIntake": [
+    {
+      "path": "frontend/src/app/media-entry/index.ts",
+      "source": "871213dbb391adba002c807790e74d1935b4aae3",
+      "sha256": "b1c55c4413396ab6f7ed1ee37c8a0e46f6d9a9fb4f9c60404ab524f69b3b0cc7"
+    },
+    {
+      "path": "frontend/src/app/media-entry/RootProfilePostImage.tsx",
+      "source": "871213dbb391adba002c807790e74d1935b4aae3",
+      "sha256": "6e9e423df31b1c59af0c3fc845e216812998cdb9832ce3167703787c8911fca8"
+    },
+    {
+      "path": "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+      "source": "871213dbb391adba002c807790e74d1935b4aae3",
+      "sha256": "a0711221db597dddc6cf90c6b0d59a2fae6bcbd5075a7c9eb7ae4207809cf6ff"
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "source": "871213dbb391adba002c807790e74d1935b4aae3",
+      "sha256": "62cfb1e38aa5c55a05ebebda443eb88d467c4d2490b2145240d9ba937cca1b2f"
+    }
+  ],
+  "caller": "frontend/src/app/account-entry/panels.tsx",
+  "callerSha256": "ae64e8f12cb973cee01bb7b36a4b24e3154e19f571f9c3513c1ee902c99ad965",
+  "scope": "Rootoneprop/importonly; newproducerandfeaturebytesare213readonlyhandoff",
+  "qualification": "Root combined ordinary app types and caller lint passed; owner coupled MeHub/RootMediaProvider native 7/7 passed with labeled controlled HTTP. Actual default AccountPanel Feed-to-Me and live Social policy baseline remain NOT_RUN.",
+  "combinedSource": "docs/mcr/evidence/root-map-profile-integration/source-01/run/release.json",
+  "qualifiedHandoff": "c2c973284e0429528118649f2825f7a2589fbf58",
+  "nativeReport": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/report.json",
+  "nativeAssessment": "docs/mcr/evidence/profile-activity-media/native-01/visual-assessment.json",
+  "unchangedProductionPostimages": [
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+    "frontend/src/features/me/ui/MePages.tsx",
+    "frontend/src/app/media-entry/index.ts",
+    "frontend/src/app/media-entry/RootProfilePostImage.tsx"
+  ]
+}

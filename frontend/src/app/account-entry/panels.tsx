@@ -12,6 +12,7 @@ import { ReviewedCharacterView } from '../character-entry/ReviewedCharacterView'
 import { WholeCharacterEditor } from '../../features/avatar/whole-character/WholeCharacterEditor'
 import { AvatarThumbnail } from '../../features/me/ui/AvatarThumbnail'
 import { useLoadedProfileActivity } from '../character-entry/activity'
+import { RootProfilePostImage } from '../media-entry/RootProfilePostImage'
 export type AccountView = 'me' | 'profile' | 'avatar' | 'settings'
 export default function AccountPanel({ view }: { view: AccountView }) {
   const owner = useAccountOwner()
@@ -29,6 +30,7 @@ export default function AccountPanel({ view }: { view: AccountView }) {
     {...(runtimePreferences && presentation ? { runtime: runtimePreferences, theme: presentation.theme } : {})} />
   return <MeHub controller={owner.me} auth={owner.auth} {...(owner.source ? { thumbnailSource: owner.source } : {})}
     {...(activity ? { activity } : {})}
+    renderPostMedia={post => <RootProfilePostImage auth={owner.auth} scope={owner.scope} post={post} />}
     {...(reviewed ? { renderAvatar: (avatar, label) => <ReviewedCharacterView owner={reviewed} config={avatar.config} label={label} size={128} /> } : runtime ? { renderAvatar: (avatar, label) => avatar.config.contract_version === '1.1.0'
       ? <WholeCharacterView runtime={runtime} config={avatar.config} label={label} size={128} />
       : <AvatarThumbnail auth={owner.auth} config={avatar.config} {...(owner.source ? { source: owner.source } : {})} /> } : {})} />
