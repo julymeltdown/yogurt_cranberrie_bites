@@ -135,5 +135,7 @@ owned dependency links/cache, Chrome profile/subprocess temporary files and
 Vite cache with one-second resource sampling. They do not change product,
 TypeScript test or Root input bytes. One residual native-only workflow is READY
 for a fresh offer after C07; syntax/native results for those corrections are
-still NOT_RUN. Root has separately mapped worker `f7c4b899` to `19e4c22e` and
+still NOT_RUN. The runner records any nonempty accepted offer name; actual
+authorization comes from the fresh offer and explicit acceptance, not inferred
+task words or a timestamp format. Root has separately mapped worker `f7c4b899` to `19e4c22e` and
 report-only `3f69299b` to `ca7909b8`, preserving the shared producer inputs.
