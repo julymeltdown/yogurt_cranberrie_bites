@@ -66,6 +66,13 @@ begin
     or new.identity->>'producer_instance'='00000000-0000-0000-0000-000000000000'
     or not (new.identity ?& array['producer','system_identifier','database_oid','full_xid','backend_pid','backend_started_unix_micros','producer_instance','effect_binding_digest','settlement_reference'])
  then raise exception 'Age witness native identity mismatch'; end if;
+ -- Read the durable acknowledgement without locking root rows: holding a root
+ -- row lock here would invert later child/transaction enrollment.
+ if not exists(select 1 from concert_product_owner_transactions t
+     where t.binding_digest=new.binding_digest and t.identity_digest=new.identity_digest
+       and t.identity=new.identity and t.instance_id=(new.identity->>'producer_instance')::uuid
+       and t.confirmed_at is not null and t.auth_registration_id is not null and t.friend_registration_id is not null)
+ then raise exception 'Age witness requires confirmed canonical registration'; end if;
  return new;
 end $$;
 create trigger concert_age_runtime_witness_insert before insert or update or delete on concert_age_runtime_witnesses for each row execute function concert_age_runtime_witness_guard();
