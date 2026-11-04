@@ -1,0 +1,231 @@
+{
+  "status": "INTEGRATED",
+  "qualification": "Component startup configuration and negative boundaries only",
+  "source_commit": "e1531f40bbc5c10b13bc3ad8074aa9f5c4ef52bb",
+  "source_pinned_files": 3719,
+  "source_pins_sha256": "4490a7907dac08012064da51756d25a3feda84b4719ec14475a9bd45c9d178a1",
+  "source_pack_sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+  "artifacts": {
+    "concert-service": {
+      "kind": "actual non-test main",
+      "sha256": "132166f394b36c16e49e61e6c9702c04b136ca1642930f1d7b5a5f5a65ed2e05",
+      "bytes": 61759872
+    },
+    "social_runtime_config": {
+      "kind": "integration-test executable",
+      "sha256": "e7bfd60737c0a7bfb0ffc04fdbf94118aa011b475228ce4158eb6c74d83f30a7",
+      "bytes": 2025296
+    },
+    "social_startup": {
+      "kind": "integration-test executable",
+      "sha256": "0b724a84158d8a82b2c1415903a7e61667669fc52ed77c4a3c67f792efa3d05f",
+      "bytes": 12283504
+    },
+    "world_ws": {
+      "kind": "integration-test executable",
+      "sha256": "cacf47f1469ab3982159229fe0e17898286bfecbd2e95db2edeb57c0d32cec35",
+      "bytes": 39978512
+    }
+  },
+  "builds": [
+    {
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--bin",
+        "concert-service",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 23.909582374995807,
+      "exit_code": 0,
+      "maximum_whole_bytes": 4778946560,
+      "minimum_free_bytes": 31047761920,
+      "source_commit": "e1531f40bbc5c10b13bc3ad8074aa9f5c4ef52bb"
+    },
+    {
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--test",
+        "social_runtime_config",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 1.0158361669746228,
+      "exit_code": 0,
+      "maximum_whole_bytes": 4724822016,
+      "minimum_free_bytes": 31100137472,
+      "source_commit": "e1531f40bbc5c10b13bc3ad8074aa9f5c4ef52bb"
+    },
+    {
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--test",
+        "social_startup",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 24.85296204200131,
+      "exit_code": 0,
+      "maximum_whole_bytes": 4712112128,
+      "minimum_free_bytes": 31114141696,
+      "source_commit": "e1531f40bbc5c10b13bc3ad8074aa9f5c4ef52bb"
+    },
+    {
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--test",
+        "world_ws",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 1.9484478749800473,
+      "exit_code": 0,
+      "maximum_whole_bytes": 4729843712,
+      "minimum_free_bytes": 31090745344,
+      "source_commit": "e1531f40bbc5c10b13bc3ad8074aa9f5c4ef52bb"
+    }
+  ],
+  "copied_components": {
+    "social_startup": {
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0
+    },
+    "social_runtime_config": {
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0
+    },
+    "world_ws": {
+      "passed": 19,
+      "failed": 0,
+      "ignored": 4
+    }
+  },
+  "main_pre_database_refusals": [
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "Live Social requires shared Intro/Participant, World and live Notification inbox/target composition",
+      "name": "social-without-shared",
+      "observed_expected_error": true,
+      "output_sha256": "0c6600133e08448288b01619b56e8f37ae7d6a236a716ff5d64424d99674f4b6"
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "CONCERT_SOCIAL_MODE must be off or live",
+      "name": "invalid-social-mode",
+      "observed_expected_error": true,
+      "output_sha256": "888122f8c6a2e198dbede11815129e45d0abf97f10fecd27131aa7234803b39e"
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "Live Notification target requires Inbox and shared live Intro/Participant",
+      "name": "target-without-inbox",
+      "observed_expected_error": true,
+      "output_sha256": "10d4d99e5eea11f0198a826561cf46e998b9bf4d9c14372811d683172ccf9d91"
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "CONCERT_NOTIFICATION_TARGET_MODE must be off or live",
+      "name": "invalid-target-mode",
+      "observed_expected_error": true,
+      "output_sha256": "1f08535eb15741b28eb1fbd58131722e54fe0490554794d6c83bf90856ee142b"
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "Concert product modes require guarded gRPC bootstrap composition",
+      "name": "feed-without-bootstrap",
+      "observed_expected_error": true,
+      "output_sha256": "3afbb0da493929cdc2e0554ea72dab626c096d1fa44b60fce292f32359ee76b2"
+    }
+  ],
+  "allocation": {
+    "offer": "ROOT-SOCIAL-MAIN-BACKEND-202611041339Z",
+    "accepted_at_utc": "2026-11-04T13:39:54.578019+00:00",
+    "carry_bytes": 4675334144,
+    "fresh_free_bytes": 31176466432,
+    "hard_whole_bytes": 6442450944,
+    "hard_copied_bytes": 134217728,
+    "compile_deadline_utc": "2026-11-04T13:47:24.578019+00:00",
+    "work_deadline_utc": "2026-11-04T13:48:54.578019+00:00",
+    "hard_deadline_utc": "2026-11-04T13:49:54.578019+00:00"
+  },
+  "release": {
+    "accepted_to_release_seconds": 89.52229499816895,
+    "final_free_bytes": 30828404736,
+    "no_pg_services_listeners": true,
+    "offer": "ROOT-SOCIAL-MAIN-BACKEND-202611041339Z",
+    "own_open_handles": 0,
+    "owned_groups_absent": true,
+    "owned_pki_tmp_removed": true,
+    "released_at": 1793799684.1003141,
+    "state": "FULLY_RELEASED",
+    "target_access_after_target_release": "NONE",
+    "target_to_full_release_seconds": 12.8245689868927,
+    "whole_upper_bound_including_receipt_reserve_bytes": 4830060544
+  },
+  "receipt_sha256": {
+    "checkpoint.json": "ec3c3c0973d9d5f1936c309258d7af74f7cce13b99edab8d3c5541b9e5ac6ab0",
+    "source-pins.json": "4490a7907dac08012064da51756d25a3feda84b4719ec14475a9bd45c9d178a1",
+    "source-freeze-receipt.json": "282ec6486673952bfb9a97a88a7f50280c318f8e43a5fa29e7efcb34a83eb2b0",
+    "offer-acceptance.json": "423fa67f998bcf7489624a6ce8d6752a2bce79131c4d1aa7699af21bef45239b",
+    "target-release.json": "24fde2409f57257b6ccc7ffd07cb818df2e17dd5de58976749a92258c37ca6aa",
+    "test-results.json": "7c47ca041093ca0cc5ccbe7457c66b55e809b827ff040b58b99af5029138b236",
+    "copied-results.json": "c3eb2c66a7602b0de7d9903ffa12bde9da9f81c0b41aa70e0104c6b36834310b",
+    "full-release.json": "f4522f9a02fe88fb8b18b24cecb45b2c46b643ee4a7c18e619853d1ae694cd96"
+  },
+  "limits": [
+    "No PostgreSQL provisioned; four World database cases ignored.",
+    "Actual SQL baseline adapter tested with deliberately unavailable database; ordinary socket movement passes without private baseline.",
+    "No positive production main SQL/TLS startup, canonical public Gateway Social flow, real age verifier, Notification/World fanout, block/cache withdrawal, real 200-user QA08 or IN03 acceptance.",
+    "First build E0308 and subsequent copied endpoint failure retained; only later changed candidate qualified.",
+    "Report producer independently delivered but not activated by this startup patch."
+  ]
+}

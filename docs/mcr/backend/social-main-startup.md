@@ -1,6 +1,6 @@
 # Social production startup composition
 
-Status: **IN_PROGRESS**. This source increment connects the qualified Social producer and SQL policy sink to the existing Product and World owners. It does not certify public HTTP, real age verification, multiuser consent/reveal, or IN03. Qualification results belong in the accompanying build receipt once executed.
+Status: **INTEGRATED** for the compiled startup composition and its scoped component checks. This source increment connects the qualified Social producer and SQL policy sink to the existing Product and World owners. It does not certify public HTTP, real age verification, multiuser consent/reveal, or IN03. The scoped qualification is recorded in `social-main-build.json`; full product acceptance remains open.
 
 ## Source and ownership
 
@@ -51,3 +51,13 @@ The first allocated combined check accepted clean `e7d1f06bbb2a335f4b0c99d8d4cb2
 The corrected candidate froze 3,719 SHA256-pinned inputs and four Cargo-selected executables (three tests and the actual non-test main). The target was unconditionally released before copied execution, with zero handles and absent compiler group; cumulative target growth was 27,271,168 bytes. Copied `social_startup` then passed three cases and failed its endpoint-rejection case. Other copied components and actual-main startup refusals were **NOT_RUN** because the controller stopped at this failure. The full workflow released at 13:33:04.716938 UTC after 131.714 seconds, only 2.394 seconds after target release. Owned groups, PKI and temporary directories were absent; the conservative whole charge was 4,673,658,880 bytes. No PostgreSQL was launched.
 
 Fix `389d8d48` rejects a raw fragment delimiter before HTTP URI normalization, adds a bare-fragment negative case and labels any unexpectedly accepted endpoint. This source fix requires a fresh allocated qualification; the earlier successful compilation does not qualify this changed source. All first-attempt evidence remains retained under the Root-owned private `mcr-root-social-main-j3vg0v_d` receipt directory.
+
+## Corrected candidate qualification
+
+Fresh offer `ROOT-SOCIAL-MAIN-BACKEND-202611041339Z` accepted clean `e1531f40bbc5c10b13bc3ad8074aa9f5c4ef52bb` at 13:39:54.578019 UTC. The four exact locked/offline Rust 1.88 commands passed: `social_startup`, `social_runtime_config`, `world_ws` with `--no-run`, then the actual non-test `concert-service` build. Three thousand seven hundred nineteen inputs were SHA256-pinned and the complete read set was frozen outside the target; public image files were pinned before/after and were not inputs to these component checks. Four copied binaries totaled less than 128 MiB.
+
+After unconditional zero-handle target release, copied tests passed: Social startup 4/4, Social runtime configuration 5/5, and World socket 19/19 with four PostgreSQL-dependent cases explicitly ignored. The new socket case uses the actual Social SQL baseline adapter against an unavailable test database; it confirms snapshot and movement without a private baseline. All five actual-main startup refusals exited 1 with their expected configuration errors before database connection. These are expected refusals, not failed startup acceptance attempts.
+
+The copied controller exited 0 in 11.866 seconds. Full release at 13:41:24.100314 UTC took 89.522 seconds from acceptance and 12.825 seconds from target release. The whole conservative charge was 4,830,060,544 bytes including all retained earlier attempts; fresh final free space was 30,828,404,736 bytes. No PostgreSQL was launched, owned groups and private PKI/TMP were absent, and target access ended permanently at its release receipt. `social-main-build.json` records commands, binary hashes, exact counts, receipt hashes and limits.
+
+Still **NOT_RUN**: the changed production main against the complete live seven-service stack, public Gateway Social/Intro/Feed/Inbox requests and responses, positive policy fanout, actual multiuser block/private-cache withdrawal, production verifier and full IN03. Independently qualified Social delivery and Report adapters retain their narrower evidence. This qualification does not activate Report or supply missing age/operator/retention providers.
