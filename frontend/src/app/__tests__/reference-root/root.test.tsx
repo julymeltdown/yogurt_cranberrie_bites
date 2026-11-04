@@ -16,7 +16,7 @@ it('mobile default routes fill the window, retain one world through sizing and r
  fireEvent.click(screen.getByRole('button',{name:'Reduce panel'}));expect(document.querySelector('.world-shell')).toHaveAttribute('data-panel-size','half');expect(fixture.stats.visible).toBe(true)
  fireEvent.click(screen.getByRole('button',{name:'Minimize panel'}));expect(document.querySelector('.shell-panel-body')).not.toBeVisible()
  fireEvent.click(screen.getByRole('button',{name:'Show panel content'}));expect(document.querySelector('.shell-panel-body')).toBeVisible()
- fireEvent.click(screen.getByRole('button',{name:'Back to previous panel'}));await screen.findByRole('link',{name:/^Map$/});expect(opener).toHaveFocus();expect(document.querySelector('[data-world-host]')).toBe(host);expect(fixture.stats.mounts).toBe(1)
+ fireEvent.click(screen.getByRole('button',{name:'Back to previous panel'}));await screen.findByRole('button',{name:'World tools'});expect(opener).toHaveFocus();expect(document.querySelector('[data-world-host]')).toBe(host);expect(fixture.stats.mounts).toBe(1)
 })
 it('a new mobile route restores full content after a deliberate reduction or minimized panel',async()=>{
  mobile();const fixture=createFixturePorts(),router=createMemoryRouter(createAppRoutes(fixture.ports),{initialEntries:['/feed']});owned.push(()=>router.dispose());render(<RouterProvider router={router}/>)

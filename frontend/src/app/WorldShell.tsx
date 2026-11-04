@@ -8,7 +8,8 @@ import { resolvePanel, type PanelRoute } from './routes'
 import { WorldHost } from './WorldHost'
 import { BottomNavigation, PanelHeader } from './shell-chrome'
 import { ParadeFooter } from './shell-chrome/parade-footer'
-import { ConcertIcon, ConcertWindowEmbedding } from '../shared/ui/concert-window'
+import { ConcertWindowEmbedding } from '../shared/ui/concert-window'
+import { WorldTools } from './world-presentation/WorldTools'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
@@ -77,6 +78,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
   const panelOpen = location.pathname !== '/world'
   const [size, setSize] = useState<'peek' | 'half' | 'full'>(() => window.matchMedia?.('(max-width: 799px)').matches ? 'full' : 'half')
   const [typing, setTyping] = useState(false)
+  const [worldToolsOpen, setWorldToolsOpen] = useState(false)
   const root = useRef<HTMLDivElement>(null)
   const positions = useRef(new Map<string, number>())
   const key = scopeKey(scope)
@@ -104,13 +106,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
       <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full'} />
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
-        : <main id="shell-content" className="shell-world-tools" tabIndex={-1}>
-          <h1 className="mcr-visually-hidden">World</h1>
-          <nav aria-label="World tools"><ShellLink id="world-map" to="/world/map"><ConcertIcon name="map" /><span>Map</span></ShellLink>
-            <ShellLink id="world-rooms" to="/world/rooms"><ConcertIcon name="world" /><span>Rooms</span></ShellLink>
-            <ShellLink id="world-nearby" to="/world/nearby"><ConcertIcon name="meet" /><span>Nearby</span></ShellLink>
-            <ShellLink id="world-help" to="/world/help"><ConcertIcon name="help" /><span>Help</span></ShellLink></nav>
-        </main>}
+        : <WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} />}
     </div>
     <BottomNavigation />
   </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>

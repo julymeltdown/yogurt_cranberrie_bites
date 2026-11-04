@@ -1,0 +1,73 @@
+{
+  "status": "SOURCE_READY_NATIVE_NOT_RUN",
+  "base": "d1a5deaae0f6b79b365cb4c451d921711573ab8c",
+  "source_grant": "e6312ce472a4b00f64d0c874424c0f715b5e4e89",
+  "sentinel_grant": "46d3999555e30295afa2b75330f1c42dcdaea180",
+  "goal": 1793766233,
+  "packet_commit": "e8dac180cd20b9135a32b13243f5f05dccd34de2",
+  "packet_sha256": "99de13f2160c3789da9a51502ddcccf407d7b6e60de0188717b8549d205165b8",
+  "immutable_inputs": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/reference-target.png",
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "bytes": 2967126,
+      "verified": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-scene/world-parade-390-h554.png",
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db",
+      "bytes": 231564,
+      "verified": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-world.png",
+      "sha256": "40a2b62d7f49c72d56eb904e974be678a230256fb75f8625ab882a4ef4ea08a7",
+      "bytes": 675304,
+      "verified": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-scene/map-parade-390-h754.png",
+      "sha256": "b10382bae8de4eb3adb9f253f1b6c63773e09f0ce555b24db556e328575f06c5",
+      "bytes": 410974,
+      "verified": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-map.png",
+      "sha256": "f2bcae9c2dd87f75d19c59c20e1f2c82c68e3a4de9290bb1debc6ffde28b3338",
+      "bytes": 962220,
+      "verified": true
+    }
+  ],
+  "source_sha256": {
+    "frontend/src/app/WorldShell.tsx": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d",
+    "frontend/src/app/shell.css": "406cbfb6bbbec5cf037a957e8b1dfd5c8fb806bfc4fb32616d60d73496abbc71",
+    "frontend/src/app/world-presentation/WorldTools.tsx": "1b4206cb413700246803c38b71cb16ebf3875008af65767774d7b89e36bf69a1",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "ef986573f544278ee891602305d56e7a0b72bd3f2cb6d886e454afa7088659db",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.html": "6218d6246ad676d54bef02368359b33c82894caafd0b0d1adc9ffe511e2c095e",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb"
+  },
+  "qualification": {
+    "tests": 110,
+    "suites": 7,
+    "full_types_exit": 0,
+    "lint_exit": 0,
+    "native": "NOT_RUN",
+    "browser_slot": "0429Z offer returned unaccepted; a NEW named slot is required"
+  },
+  "planned_capture_inventory": {
+    "baseline": "6 cases PARADE at360/390/430x554/844",
+    "candidate": "18 cases three eras at360/390/430x554/844",
+    "focused": "44px/four tools+Back focus/six routes/skip/keyboard/reduced viewport/reconnect/resource retry/privacy/cleanup",
+    "reference": "Unchanged supplied source with proportional crop, before/after exact-aspect comparison"
+  },
+  "workflow_limits": {
+    "temporary_peak_GiB": 0.2,
+    "durable_max_MiB": 40,
+    "browser_processes": 1,
+    "minimum_available_GiB": 8
+  }
+}

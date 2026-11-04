@@ -27,9 +27,9 @@ it('default six routes, Settings and Inbox preserve sole world and Back focus', 
     expect(screen.getByRole('link', { name: label }).getAttribute('aria-current')).toBe('page')
     expect(h.stats.mounts).toBe(1); expect(h.stats.connections).toBe(1)
   }
-  fireEvent.click(screen.getByRole('link', { name: 'World' })); await screen.findByRole('navigation', { name: 'World tools' })
+  fireEvent.click(screen.getByRole('link', { name: 'World' })); await screen.findByRole('button', { name: 'World tools' })
   fireEvent.click(screen.getByRole('link', { name: 'Inbox' })); await screen.findByRole('heading', { name: 'Inbox', level: 1 })
-  fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' })); await screen.findByRole('navigation', { name: 'World tools' })
+  fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' })); await screen.findByRole('button', { name: 'World tools' })
   await waitFor(() => expect(document.activeElement?.id).toBe('shell-inbox'))
   fireEvent.click(screen.getByRole('link', { name: 'Settings' })); await screen.findByRole('heading', { name: 'Settings', level: 1 })
   expect(h.router.state.location.pathname).toBe('/me/settings'); expect(h.stats.mounts).toBe(1)
