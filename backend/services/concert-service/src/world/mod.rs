@@ -485,6 +485,10 @@ impl WorldRepository for PgWorldRepository {
             return Ok(AdmissionOutcome::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)? {
+            return Ok(AdmissionOutcome::Denied);
+        }
         closure::lock_event_open_in(&mut tx,record.subject.key.event_id.uuid()).await?;
         lock_event_user(
             &mut tx,
@@ -561,6 +565,10 @@ impl WorldRepository for PgWorldRepository {
             return Ok(SwitchOutcome::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, current.key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, current.key.user_id.uuid()).await.map_err(unavailable)? {
+            return Ok(SwitchOutcome::Denied);
+        }
         closure::lock_event_open_in(&mut tx,current.key.event_id.uuid()).await?;
         lock_event_user(&mut tx, current.key.event_id, current.key.user_id).await?;
         let status = lock_room(&mut tx, &record.pin).await?;
