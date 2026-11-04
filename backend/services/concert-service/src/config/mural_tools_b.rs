@@ -128,3 +128,41 @@ impl ProductOwner for WallProductOwner {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn disabled_mode_has_no_live_success_and_live_requires_incumbent_core_and_keys() {
+        assert!(WallBSettings::from_values(None, None, false)
+            .unwrap()
+            .is_none());
+        assert!(WallBSettings::from_values(Some("off"), None, false)
+            .unwrap()
+            .is_none());
+        assert!(WallBSettings::from_values(Some("fixture"), None, true).is_err());
+        assert!(WallBSettings::from_values(Some("live"), None, true).is_err());
+        assert!(WallBSettings::from_values(Some("live"), Some("[]"), false).is_err());
+        assert!(WallBSettings::from_values(Some("live"), Some("[]"), true).is_err());
+    }
+    #[test]
+    fn live_keys_are_closed_unique_nonzero_and_support_rotation() {
+        let key = |id: &str, byte: &str| serde_json::json!({"id":id,"secret_hex":byte.repeat(32)});
+        let good = serde_json::json!([key("current", "01"), key("retained", "02")]);
+        assert!(
+            WallBSettings::from_values(Some("live"), Some(&good.to_string()), true)
+                .unwrap()
+                .is_some()
+        );
+        for raw in [
+            serde_json::json!([key("a", "00")]),
+            serde_json::json!([key("a", "01"), key("a", "02")]),
+            serde_json::json!([key("a", "01"), key("b", "01")]),
+            serde_json::json!([{"id":"a","secret_hex":"01".repeat(32),"allow_all":true}]),
+        ] {
+            assert!(
+                WallBSettings::from_values(Some("live"), Some(&raw.to_string()), true).is_err()
+            );
+        }
+    }
+}

@@ -533,3 +533,108 @@ async fn canonical_activation_cannot_forgive_recent_unaccounted_pencil() -> anyh
     assert_eq!(caps["available"]["fill"], false);
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "owned allocated PG16 and actual mTLS owner services required"]
+async fn canonical_actor_budget_and_private_recovery_are_isolated() -> anyhow::Result<()> {
+    let mut f = setup(256).await?;
+    let r = runtime(&f);
+    let first = f.actor;
+    let first_family = f.family;
+    let first_key = Uuid::new_v4();
+    let (status, first_action) = call(
+        &f,
+        &r,
+        "fillConcertMuralRegion",
+        raw(
+            &f,
+            "POST",
+            "mural/fill",
+            json!({"expected_revision":1,"x":0,"y":0,"color_index":2}),
+            Some(first_key),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 200, "{first_action}");
+    f.actor = f.subject;
+    f.family = Uuid::new_v4();
+    sqlx::query("insert into refresh_tokens(jti,token_hash,user_id,family_id,expires_at) values($1,$2,$3,$4,clock_timestamp()+interval '1 hour')").bind(Uuid::new_v4().to_string()).bind(Uuid::new_v4().to_string()).bind(f.actor).bind(f.family).execute(&f.auth).await?;
+    let (status, error) = call(
+        &f,
+        &r,
+        "getOwnConcertMuralAction",
+        raw(
+            &f,
+            "GET",
+            &format!("mural/actions/{first_key}"),
+            Value::Null,
+            None,
+        ),
+    )
+    .await?;
+    assert_eq!(status, 404, "{error}");
+    let (status, caps) = call(
+        &f,
+        &r,
+        "getConcertMuralTools",
+        raw(&f, "GET", "mural/tools", Value::Null, None),
+    )
+    .await?;
+    assert_eq!(status, 200, "{caps}");
+    assert_eq!(caps["remaining_cells"], 512);
+    assert_eq!(caps["latest_action"], Value::Null);
+    let (status, other) = call(
+        &f,
+        &r,
+        "eraseConcertMuralPixel",
+        raw(
+            &f,
+            "POST",
+            "mural/erase",
+            json!({"expected_revision":2,"x":0,"y":0}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 200, "{other}");
+    assert_eq!(other["changed_cells"], 1);
+    let (status, caps) = call(
+        &f,
+        &r,
+        "getConcertMuralTools",
+        raw(&f, "GET", "mural/tools", Value::Null, None),
+    )
+    .await?;
+    assert_eq!(status, 200, "{caps}");
+    assert_eq!(caps["remaining_cells"], 511);
+    f.actor = first;
+    f.family = first_family;
+    let baseline = state(&f).await?;
+    let (status, error) = call(
+        &f,
+        &r,
+        "undoConcertMuralAction",
+        raw(
+            &f,
+            "POST",
+            "mural/undo",
+            json!({"expected_revision":3,"target_action_id":first_action["action_id"]}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 409, "{error}");
+    assert_eq!(error["details"]["reason"], "MURAL_UNDO_NOT_LATEST");
+    assert_eq!(state(&f).await?, baseline);
+    let (status, caps) = call(
+        &f,
+        &r,
+        "getConcertMuralTools",
+        raw(&f, "GET", "mural/tools", Value::Null, None),
+    )
+    .await?;
+    assert_eq!(status, 200, "{caps}");
+    assert_eq!(caps["remaining_cells"], 256);
+    assert_eq!(caps["undo"], Value::Null);
+    Ok(())
+}

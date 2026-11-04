@@ -179,3 +179,39 @@ Use a new mural or wait for the untracked legacy window to expire before the
 operator insert; no historical budget is silently forgiven or fabricated.
 Concurrent activation and pencil writes serialize on the same root. Once
 provisioned, every successful pencil uses the shared history/charge transaction.
+
+
+## Additional public baseline publication
+
+C07's next preflight exposed stale existing transport metadata. A separate
+single-file baseline commit `efc1f56b19d3cd33d64a0aff6a960f0b772277bf`
+was generated against byte-exact public `3cbaeae5e5c33d4ef3327b6f0f3e0f27c9544254`
+inputs with the unchanged public generator. It changes only one input-hash
+comment in `frontend/src/shared/api/domain-operations.generated.ts`, preserves
+mode 100644, and contains no private Wall contract or runtime work. The complete
+readset reproduced metadata drift (exit 1), regenerated (exit 0), and passed
+`--check` (exit 0, 109 operations). An initial incomplete readset omitted the
+transitive core schema; its FileNotFoundError was preserved separately before
+correcting the frozen readset. The qualified output SHA-256 is
+`5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308`.
+Root reported the exact commit published atop the frozen public base with its
+canonical publication receipt. No additional owner proof loop was requested.
+This does not qualify C07 or the Wall runtime.
+
+## Pending allocated round
+
+Wall has its own queued allocation, behind the recorded OwnReports and Party
+cohorts; Root's combined executable cohort grants this owner no resource lease.
+No Cargo target is inspected or inherited. The requested build round uses Rust
+1.88.0, locked/offline, one job, development/test debug information off and
+incremental off. The exact accepted target, deadlines, byte allowance, free-space
+floor and guardian become part of evidence before any Cargo start. Relevant
+commands target domain Wall unit cases, application command regressions,
+Concert library/startup compilation, `--test mural_tools_b` (one pure case and
+six ignored canonical native cases), and Gateway Concert product route tests.
+The executable, source manifest (including the contract oracle), checksums,
+commands/exits and failures must be frozen outside the target before unconditional
+build-resource release and a separate accepted native PG16 round. No native
+job runs during the Cargo lease. Candidate config tests also reject missing
+shared composition/keys, unknown modes, malformed/duplicate/nonzero-key violations
+and retain key rotation. All Rust/native cases remain NOT_RUN.

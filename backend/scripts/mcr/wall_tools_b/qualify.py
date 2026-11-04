@@ -24,13 +24,13 @@ OWNERS = ("auth", "friend", "concert", "profile")
 DATABASES = {owner: ("mcr_concert_wall_b" if owner == "concert" else f"mcr_canonical_{owner}")
              for owner in OWNERS}
 # Exact names are required: a filtered or wholly ignored inventory is not proof.
-CASES = ("canonical_fill_undo_budget_recovery_and_restart", "canonical_fill_257_noop_region_lock_and_failures_are_atomic", "canonical_pencil_shares_undo_budget_and_storage_failure_rolls_back", "canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned", "canonical_activation_cannot_forgive_recent_unaccounted_pencil")
+CASES = ("canonical_fill_undo_budget_recovery_and_restart", "canonical_fill_257_noop_region_lock_and_failures_are_atomic", "canonical_pencil_shares_undo_budget_and_storage_failure_rolls_back", "canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned", "canonical_activation_cannot_forgive_recent_unaccounted_pencil", "canonical_actor_budget_and_private_recovery_are_isolated")
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def source_manifest() -> dict[str, str]:
-    paths = {ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock", Path(__file__).resolve()}
+    paths = {ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock", ROOT / "scripts/mcr/validate-domain.py", Path(__file__).resolve()}
     for prefix in ("backend/crates", "backend/proto", "backend/services/auth-service",
                    "backend/services/friend-service", "backend/services/concert-service",
                    "backend/services/profile-service", "contracts"):
@@ -112,8 +112,8 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
         report["migration_receipts"] = {}
         report["pure"] = {}
         result=execute([str(binary), "--test-threads=1", "--nocapture"], env=env, phase="pure", cwd=ROOT/"backend")
-        if "test result: ok. 1 passed; 0 failed; 5 ignored;" not in result.stdout:
-            raise SmokeError("inventory", "exact one pure and five native cases required")
+        if "test result: ok. 1 passed; 0 failed; 6 ignored;" not in result.stdout:
+            raise SmokeError("inventory", "exact one pure and six native cases required")
         report["pure"]={"exit_code":result.returncode,"stdout":result.stdout}
         for index,case in enumerate(CASES):
             # Every native case receives a fresh four-store fixture. Selected
