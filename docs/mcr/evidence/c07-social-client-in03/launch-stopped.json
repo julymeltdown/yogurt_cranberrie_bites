@@ -1,0 +1,23 @@
+{
+  "allocation": "C07-IN03-209-PINNED-202611040905Z",
+  "source": "e6787c85c1f72f84f837b3a10a5af871ecadfc15",
+  "status": "NOT_RUN",
+  "acceptUTC": "2026-11-04T09:05:48Z",
+  "fullReleaseUTC": "2026-11-04T09:06:58Z",
+  "reason": "Dependency-link setup used frontend cwd with an additional frontend path prefix; link creation failed before supervisor deadline/PATH update. The old expired supervisor immediately terminated the Node child before Vitest startup. No test or qualification result.",
+  "attempt": {
+    "exit": -15,
+    "seconds": 0.003,
+    "testsExecuted": 0
+  },
+  "pinnedVersionProbe": {
+    "parent": "v24.22.2",
+    "child": "v24.22.2"
+  },
+  "cleanup": {
+    "heldProcesses": 0,
+    "linkCreated": false,
+    "cacheAndTmpRemoved": true
+  },
+  "nextAction": "Fresh named allocation; absolute paths and separately checked setup before jobs"
+}
