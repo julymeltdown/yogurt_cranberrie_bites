@@ -147,6 +147,17 @@ impl SocialInvalidationSink {
     }
 
     async fn publish_row(&self, c: &mut PgConnection, row: PgRow) -> Result<(), DeliveryFailure> {
+        let deletion: Option<Uuid> = row.try_get("deletion_saga").map_err(retry)?;
+        if deletion.is_some() {
+            // A raw command, synthetic deadline or ordinary outbox is not a
+            // deletion source. Only the durable exact leaf+common fence may
+            // construct the existing sealed signal passed to the publisher.
+            let valid: bool = sqlx::query_scalar("select exists(select 1 from public.concert_social_policy_signals s join public.concert_social_account_deletions d on d.saga_id=s.deletion_saga and d.user_id=s.deletion_user and d.command_binding=s.deletion_command_binding and d.source_binding=s.deletion_source_binding and d.fence_revision=s.deletion_fence_revision join public.concert_world_account_deletion_fences f on f.user_id=d.user_id and f.saga_id=d.saga_id and f.identity_binding=d.identity_binding and f.fence_revision=d.fence_revision join public.concert_social_deletion_audience a on a.saga_id=d.saga_id and a.event_id=s.event_id and a.actor_id=s.actor_id and a.policy_revision=s.policy_revision where s.signal_id=$1 and d.target='SHARING' and s.reason='CANONICAL_POLICY_CHANGED' and s.source_outbox is null and s.source_receipt is null and s.deadline_request is null and s.deadline_at is null and s.published_at is null and a.published_at is null)")
+                .bind(row.get::<Uuid,_>("signal_id")).fetch_one(&mut *c).await.map_err(retry)?;
+            if !valid {
+                return Err(DeliveryFailure::Rejected);
+            }
+        }
         let signal = VerifiedSocialInvalidation {
             signal: row.get("signal_id"),
             event: row.get("event_id"),
@@ -164,8 +175,43 @@ impl SocialInvalidationSink {
             .await
             .map_err(retry)??;
         sqlx::query("update public.concert_social_policy_signals set published_at=clock_timestamp() where signal_id=$1 and published_at is null")
-            .bind(signal.signal).execute(c).await.map_err(retry)?;
+            .bind(signal.signal).execute(&mut *c).await.map_err(retry)?;
+        if let Some(saga) = deletion {
+            let result = sqlx::query("update public.concert_social_deletion_audience set published_at=clock_timestamp() where saga_id=$1 and event_id=$2 and actor_id=$3 and policy_revision=$4 and published_at is null")
+                .bind(saga).bind(signal.event).bind(signal.actor).bind(signal.revision)
+                .execute(c).await.map_err(retry)?;
+            if result.rows_affected() != 1 {
+                return Err(DeliveryFailure::Retryable);
+            }
+        }
         Ok(())
+    }
+
+    /// Drain ONLY this source-verified deletion's removal signals. No new queue,
+    /// synthetic command or alternate unsealed publisher is introduced.
+    pub async fn drain_account_deletion(
+        &self,
+        saga: Uuid,
+        user: Uuid,
+        limit: i64,
+    ) -> Result<usize, DeliveryFailure> {
+        if saga.is_nil() || user.is_nil() || !(1..=100).contains(&limit) {
+            return Err(DeliveryFailure::Rejected);
+        }
+        let mut count = 0;
+        for _ in 0..limit {
+            let mut tx = self.pool.begin().await.map_err(retry)?;
+            bound(&mut tx).await?;
+            let row=sqlx::query("select * from public.concert_social_policy_signals where deletion_saga=$1 and deletion_user=$2 and published_at is null order by event_id,actor_id limit 1 for update skip locked")
+                .bind(saga).bind(user).fetch_optional(&mut *tx).await.map_err(retry)?;
+            let Some(row) = row else {
+                break;
+            };
+            self.publish_row(&mut tx, row).await?;
+            tx.commit().await.map_err(retry)?;
+            count += 1;
+        }
+        Ok(count)
     }
 
     /// Bounded server-time discovery. Only removes cached views; it does NOT
@@ -204,7 +250,7 @@ impl SocialInvalidationSink {
         Ok(emitted)
     }
 
-    /// Drain only server-deadline signals. Common outbox signals MUST use their
+    /// Drain server-deadline and verified deletion signals. Common outbox signals MUST use their
     /// actual active Delivery lease through deliver, never this alternate path.
     pub async fn drain_pending(&self, limit: i64) -> Result<usize, DeliveryFailure> {
         if !(1..=100).contains(&limit) {

@@ -130,6 +130,41 @@ impl SocialRuntime {
             }
             _ => None,
         };
+        // Parsed identity is correlation only. Actual request subjects below
+        // come from immutable stored request bindings; the policy still owns
+        // authorization. Common deletion locks precede every event/row lock.
+        let mut deletion_subjects = vec![context.actor()];
+        match (&op, &input.input) {
+            (SocialOperation::Create, SocialInput::Create(create)) => {
+                deletion_subjects.extend([
+                    create.context.requester.uuid(),
+                    create.context.recipient.uuid(),
+                ]);
+            }
+            (SocialOperation::Block(peer) | SocialOperation::Unblock(peer), _) => {
+                deletion_subjects.push(*peer)
+            }
+            (
+                SocialOperation::Request(id)
+                | SocialOperation::Decide(id)
+                | SocialOperation::Cancel(id)
+                | SocialOperation::Revoke(id)
+                | SocialOperation::Reveal(id),
+                _,
+            ) => {
+                let row = sqlx::query("select requester_id,recipient_id from public.concert_social_requests where event_id=$1 and request_id=$2")
+                    .bind(context.event()).bind(id).fetch_optional(&self.pool).await.map_err(|_| unavailable())?;
+                if let Some(row) = row {
+                    deletion_subjects.extend([
+                        row.get::<Uuid, _>("requester_id"),
+                        row.get::<Uuid, _>("recipient_id"),
+                    ]);
+                }
+            }
+            _ => (),
+        }
+        deletion_subjects.sort();
+        deletion_subjects.dedup();
         let hooks = Arc::new(RuntimeHooks {
             witness: Arc::new(SocialWitness::new(scope.clone(), input.key)),
             write_gate: Arc::new(ReadOnlyGate::default()),
@@ -138,6 +173,7 @@ impl SocialRuntime {
             pool: self.pool.clone(),
             operation: op,
             retained,
+            deletion_subjects,
         });
         let service = SocialService::new(
             self.pool.clone(),
@@ -652,6 +688,7 @@ struct RuntimeHooks {
     pool: PgPool,
     operation: SocialOperation,
     retained: Option<SocialReadSources>,
+    deletion_subjects: Vec<Uuid>,
 }
 impl RuntimeHooks {
     fn for_projection(&self) -> Arc<Self> {
@@ -663,6 +700,7 @@ impl RuntimeHooks {
             pool: self.pool.clone(),
             operation: self.operation,
             retained: self.retained.clone(),
+            deletion_subjects: self.deletion_subjects.clone(),
         })
     }
     fn command(&self, error: CommandError) -> Status {
@@ -680,6 +718,37 @@ impl RuntimeHooks {
 #[async_trait::async_trait]
 impl SocialTransactionHooks for RuntimeHooks {
     async fn register(&self, c: &mut PgConnection) -> Result<(), RelationshipError> {
+        let binding = self.scope.binding();
+        let milliseconds = binding
+            .deadline()
+            .remaining(
+                std::time::Duration::from_secs(5),
+                binding.deadline().expires_micros(),
+            )
+            .map_err(|_| RelationshipError::Unavailable)?
+            .as_millis()
+            .max(1)
+            .to_string();
+        sqlx::query(
+            "select set_config('statement_timeout',$1,true),set_config('lock_timeout',$1,true)",
+        )
+        .bind(milliseconds)
+        .execute(&mut *c)
+        .await
+        .map_err(|_| RelationshipError::Unavailable)?;
+        for user in &self.deletion_subjects {
+            // Exact fixed 0052 shared-lock ABI, confirmed with its sole owner.
+            sqlx::query("select pg_advisory_xact_lock(hashtextextended('mcr-world-account-deletion:' || $1::uuid::text,0))")
+                .bind(user).execute(&mut *c).await.map_err(|_| RelationshipError::Unavailable)?;
+            let fenced: bool=sqlx::query_scalar("select exists(select 1 from public.concert_world_account_deletion_fences where user_id=$1)")
+                .bind(user).fetch_one(&mut *c).await.map_err(|_| RelationshipError::Unavailable)?;
+            if fenced {
+                return Err(RelationshipError::Denied);
+            }
+        }
+        binding
+            .check()
+            .map_err(|_| RelationshipError::Unavailable)?;
         self.witness.register(c).await?;
         if self.command_transaction && normal_mutation(self.operation) {
             let binding = self.scope.binding();
