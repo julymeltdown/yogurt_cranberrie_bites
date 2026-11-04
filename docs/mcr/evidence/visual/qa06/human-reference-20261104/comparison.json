@@ -269,7 +269,123 @@
       },
       "observedAgainstActualHumanPhoto": "The target contains a large mural grid, title, bounded right tool rail, palette and cooldown area. Existing available frame shows only the truthful current-world qualification error, so editor proportions cannot be evaluated from it.",
       "sourceFixtureCapabilitySeparation": "Do not replace this guard with fake target art/anchor/admission. The client editor can and should be compared under its own valid deterministic fixture; publicRoot denial does not make all client work depend on backend/device readiness.",
-      "responsibleNextAction": "Current FE32 owner204/Community receives exact visual criteria within its existing editor lease. Palette/grid/confirm/pan/cooldown must use genuine128x128/16-color/server-state requirements, not literal fictional reference counters. Editor comparison remains NOT_RUN in this QA06 frame set."
+      "responsibleNextAction": "Published FE32 owner component qualification is separately recorded as MOCK_READY; no duplicate editor task or capture requested. This selected QA06 guard frame remains NOT_RUN for editor comparison. Public root/live/device/full visual acceptance remain open.",
+      "supplementalOwnerEvidence": {
+        "task": "FE32",
+        "qualification": "MOCK_READY",
+        "originalPureClientCriteria": "SATISFIED_OWNER_REPORTED",
+        "publicationCommit": "4af1c86863698e311d286039a0702d5b2517c1c3",
+        "runtimeSourceCommit": "21ceef6080c302ca8d7a92ef6045db88c7d5bf70",
+        "evidenceScope": "Production MuralSyncPanel/MuralEditor actual raster and canonical HTTP, frozen deterministic fixture; no production-root, liveBE, physical-device or IN04 claim.",
+        "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+        "report": {
+          "path": "docs/mcr/evidence/fe32-client/native/report.json",
+          "sha256": "eda5a7c8162b8d78ffe734df2c0ded31ddeb9556a6fa12d531a9bf61f57818e6"
+        },
+        "ownerComparison": {
+          "path": "docs/mcr/frontend/fe32-client-delivery.md",
+          "sha256": "099526f66cfcd6c6471ec0a7c38adf0971bbb41a680c05b6fd634518d9ac3ba1",
+          "actualFramesViewedByOwner": [
+            "360-loaded",
+            "390-loaded",
+            "430-loaded",
+            "390-preview",
+            "390-unknown",
+            "360-cooldown"
+          ],
+          "reportedValidation": "136 tests/11 files; 3-width actual component+canonical HTTP/C04 synthetic native PASS; 15 captures; owner remote ancestry/payload checks reported complete"
+        },
+        "geometry": [
+          {
+            "width": 360,
+            "geometry": {
+              "panel": {
+                "width": 348,
+                "height": 635.71875
+              },
+              "canvas": {
+                "top": 71,
+                "width": 342,
+                "height": 376.1875
+              },
+              "tools": {
+                "right": 9,
+                "top": 77,
+                "width": 44
+              },
+              "palette": {
+                "top": 451.1875,
+                "height": 62
+              },
+              "ratio": 0.5917514624195055
+            },
+            "errors": []
+          },
+          {
+            "width": 390,
+            "geometry": {
+              "panel": {
+                "width": 378,
+                "height": 668.71875
+              },
+              "canvas": {
+                "top": 71,
+                "width": 372,
+                "height": 409.1875
+              },
+              "tools": {
+                "right": 9,
+                "top": 77,
+                "width": 44
+              },
+              "palette": {
+                "top": 484.1875,
+                "height": 62
+              },
+              "ratio": 0.6118977522314126
+            },
+            "errors": []
+          },
+          {
+            "width": 430,
+            "geometry": {
+              "panel": {
+                "width": 418,
+                "height": 712.71875
+              },
+              "canvas": {
+                "top": 71,
+                "width": 412,
+                "height": 453.1875
+              },
+              "tools": {
+                "right": 9,
+                "top": 77,
+                "width": 44
+              },
+              "palette": {
+                "top": 528.1875,
+                "height": 62
+              },
+              "ratio": 0.6358574121980094
+            },
+            "errors": []
+          }
+        ],
+        "sourceInputPins": 21,
+        "artifactPattern": "docs/mcr/evidence/fe32-client/native/{360,390,430}-{loaded,preview,cooldown,unknown,frozen}.png",
+        "regressionFixes": [
+          "Track every held touch until release to prevent ambiguous selection",
+          "Preserve newer snapshot cooldown deadline against delayed placement acknowledgement"
+        ],
+        "qa06Verification": "Read actual published-revision delivery doc and native report Git blobs; checked exact human-reference SHA/runtime source and 3-width PASS metadata. No new remote fetch, payload audit, test, capture or independent visual acceptance; owner performed the recorded comparison.",
+        "limitations": [
+          "Original QA06 selected default-guard frame remains NOT_RUN for editor comparison",
+          "Component fixture does not prove public root editor admission, live service, physical devices, full reference fidelity or IN04",
+          "Shared frame/footer source was unchanged in these captures; no adoption or new capture inferred",
+          "Owner publication report supersedes pending-publication prose in sealed delivery doc; QA06 does not infer clean STOP or goal completion"
+        ]
+      }
     },
     {
       "screen": "me",

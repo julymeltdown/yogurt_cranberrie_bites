@@ -139,3 +139,14 @@ Current portrait aspect and World canvas repairs, as well as the previously fixe
 ## Validation and delivery
 
 This update only preserves the exact human reference, copies three already qualified PNGs byte for byte into the owned evidence prefix, indexes existing frames, reads source hunks and authors QA06 comparison prose/HTML. No app/art/contract/shared-helper/dependency/CI edits, tests, builds, native/browser run, new device request or slot claim. Static hash/link/scope checks are recorded at commit handoff; Root153 alone handles serialized publication. Whole original QA06 remains unfinished.
+
+
+## FE32 published component qualification — supplemental readback
+
+FE32 owner204 reports publication `4af1c86863698e311d286039a0702d5b2517c1c3`, runtime source `21ceef6080c302ca8d7a92ef6045db88c7d5bf70`, and original pure-client criteria **SATISFIED / MOCK_READY**. QA06 read the actual delivery document and native-report Git blobs at that published revision. The report pins the exact same human JPEG, three passing widths360/390/430, and21 source inputs. The source document records136 passing tests,15 component captures and direct owner comparison of all three loaded frames plus390px preview/unknown and360px cooldown. This is owner comparison evidence, not a new QA06 visual verdict.
+
+Owner evidence: `docs/mcr/frontend/fe32-client-delivery.md` and `docs/mcr/evidence/fe32-client/native/report.json`; images follow `docs/mcr/evidence/fe32-client/native/{360,390,430}-{loaded,preview,cooldown,unknown,frozen}.png`. The machine-readable comparison stores exact document/report SHA256s and measured geometry: portrait ratio1.10 versus target approximately1.11, canvas59–64% of idle panel,44px tools,16 server colors and genuine128×128 grid/explicit Confirm/pan/server cooldown. Two reproduced input/cooldown regressions were fixed; no target illustration, counters or admission were fabricated.
+
+The original selected QA06 Wall guard frame remains **NOT_RUN for editor comparison**. FE32 supplies separate valid component+canonical HTTP/C04 synthetic qualification; no new task/capture is needed merely because the default guard remains visible. Public root admission, live service, physical Safari/Chrome, whole-reference fidelity and IN04 remain open. Shared frame/footer was unchanged in these captures. No shared-style adoption is inferred.
+
+Owner reports fresh remote ancestry/payload verification and full resource release. QA06 did not repeat that audit, run tests, launch a browser, recapture, reserve capacity or change source ownership. Pending-publication prose in the sealed delivery document is historical relative to the owner's newer publication report; neither that report nor this note proves clean STOP or goal completion.
