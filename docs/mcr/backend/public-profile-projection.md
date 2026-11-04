@@ -444,3 +444,41 @@ map/theme art, final Gateway HTTP bytes or complete Feed/C04 routes. No positive
 GuardedSubject is fabricated. Failed native runs remain failures even if exact
 private fixture teardown rolls back known child/owner GIDs; unknown quarantine
 retains its owned root. All follow-up work remains IN_PROGRESS.
+
+
+### Production constructor prerequisite consumed
+
+Root publication `95afbfc98dc12db7f87b3331d8ee49dbae8b9e45` closes the earlier
+source-bound release prerequisite. Its portable constructor receipt records
+actual clean source `c7fdd2581a9543e1748929739865ae79d436f870`, whole Concert
+library/product-runtime compilation exit 0 and five copied-binary tests passing.
+The production `ProductReleaseBundle::from_source_bound_files` actually reads
+the inert Bootstrap, byte-preserved selected avatar, map4, three real theme
+descriptors, public resources and source bindings; unrelated resources fail.
+All capabilities stay false, with no operator/physical/fidelity/HTTP admission.
+The receipt is `backend/releases/operator-bundle/quality-v6/constructor-qualification.json`;
+this is peer-owned constructor evidence, not execution of this joined fixture.
+
+Own source `cb7ac1bb` now calls that production constructor followed by actual
+`PublicProfileReader::connect`. The private reader struct initializer/catalog
+bypass is removed. The copied signed-parent capture helper accepts the exact
+release event while retaining production Gateway proof verification; isolated
+fixture SQL seeds actual owner/event/admission/participant/avatar/Profile rows.
+The inert release event is not promoted to admission. The controller additionally
+pins all tracked `frontend/public` resource bytes and the character source
+registry because production construction now reads these inputs.
+
+Fresh comparison confirms all portable qualified constructor input hashes match
+except the public module, whose own pending native cfg(test) hook changes its
+bytes. Therefore Root's receipt qualifies its exact constructor snapshot, and
+does not certify this new native binary. Six controller regressions and
+`git diff --check` pass, exit 0. The actual joined Rust/native cases remain
+NOT_RUN pending the existing fresh three-artifact target request.
+
+The compile candidate remains on `codex/mcr-be-public-profile-joined`, consuming
+published master `9edf2275` and the source-bound fixture without the SDK3 draft.
+SDK3 and its three-line unsupported-Gift handoff `56f18703` are preserved on
+`codex/mcr-be-public-profile-sdk3`; the draft is not a prerequisite for qualifying
+this published SDK2 component. Root's published mapper and SDK subject-status
+normalization are consumed as source. Actual final callback/Post/Gateway HTTP
+acceptance and joined restart cleanup remain separate open obligations.
