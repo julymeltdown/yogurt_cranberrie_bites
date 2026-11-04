@@ -70,7 +70,7 @@ This establishes staffing/progress, not an original criterion completion.
 | FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | Public pickup and actual route-fixture pointers now sent directly to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
 | FE27 | Social ledger retains original SATISFIED/MOCK_READY; bounded latest fidelity owner `202` complete/null/clean STOP/returned leases/archived; no Community feature lease | Existing `9f72a71`/`cf7836a`/`a413e69` retained. Since checkpoint, Social reports bounded source `576f9848` → `ddd279e4`, final receipt `203db3a4` → `6393b451`, all 44 final payloads owner-verified; duplicate root action/bottom compose repair with owner native three widths/244 affected tests | No identified original fixture criterion gap in Social's explicit receipt. QA06 postfix evidence is published with unfinished whole-visual acceptance preserved; real Feed/media providers and IN03 remain separate. Actual evidence/ownership primary is Social, not a new Community acceptance or count |
 | FE28 | Social ledger retains original SATISFIED/MOCK_READY; historical Social author has no new lease | Existing published `5bc0055`/`a413e69`/`b392f56` owner registry pointers newly reconciled here; no new original-task delivery inferred this hour | Original composer/thread/recovery/privacy criteria already recorded in Social owner evidence; no known task-local gap in that receipt. Real service/media and QA04/IN03 are separate dependencies, not grounds for withholding fixture-satisfied original criteria |
-| FE32 | MOCK_READY; all original pure-client criteria individually SATISFIED per owner204; SAME goal ACTIVE for publication/readback, writer quiescent | Base `1c6b8eba` → tip `0db20367e1b4cfa74be48e6a141d72e02175e7ce`, four ordered commits/exact 36-path manifest READY direct Root153. Two reproduced/fixed touch/cooldown regressions; owner 136 tests/11 files, app+fixture types/lint/build/origin/plan PASS; component+canonicalHTTP+C04 synthetic three-width native PASS/15 captures, 21 runtime hashes match | Root153 publishes exact validated handoff; owner fresh remote ancestry/all 36 latest payload equality then actual same-goal completion/clean STOP/exact leases return. Source checkout/resources/link clean, capacity fully released. Full reference art/actual root/live/device/FE33/IN04 remain separately bounded; no new scope or review gate |
+| FE32 | MOCK_READY; all original pure-client criteria SATISFIED per owner204; actual SAME goal COMPLETE → fresh null / clean STOP / exact leases returned | Source tip `0db20367` published through master `4af1c86863698e311d286039a0702d5b2517c1c3`; actual Root receipt and independent owner readback agree: all four ancestors, all 36 latest payloads, 21 native hashes. Owner 136 tests/native/build and publisher 148 tests/types/lint PASS retained | No original pure-client gap or delivery work remains in explicit owner receipt. Scope preserved clean; resources/capacity/leases released. Public-root/live/device/FE33/IN04/full-reference remain separate. QA06 supplement `1cd494af` is committed evidence reconciliation, not duplicate editor acceptance/capture |
 | FE33 | Former owner `230`, now Backend allocator-owned; original frozen-client criteria SATISFIED | Published module `7c2f3af7` and caller `eeae69be` fixture references routed to QA06/World; no new original outcome | No identified original frozen-client gap. Ordinary production remains closed without supplier. Wall `21e`, root `1fc`, SDK `207`, BE World `20f` and FE Root153 own genuine inputs/activation; IN04 separate |
 | FE37 | Bounded repair owner `26e` COMPLETE/null/STOP; whole-task UNRECONCILED | No new parent receipt; decoder/route regressions published `047d892c` retained | Moderator report/member/content/reason/role-route and truthful failure criteria require the implementation owner's whole-task receipt. Bounded canonical decoder fix is delivered, not whole FE37 acceptance; Root supplies actual role inputs |
 | FE38 | Current frontend whole-task owner/disposition UNRECONCILED | Existing operator work retained; no fresh exact task pin supplied | Event/settings/place review/closure/notices/capability/audit, risky confirmation/stale conflict/source provenance remain to reconcile with actual owner; Root `1fc` is composition dependency contact. No fabricated NOT_STARTED conclusion |
@@ -481,6 +481,75 @@ photos/quantity/KST/filters do not establish a Reserve bug or permit invented
 content/removing required filters. Wall default guard is not an editor capture;
 valid frozen128×128/16-color editor criteria remain independently qualifiable.
 No extra QA capture or resource queue request is created by this packet.
+
+### Actual FE32 publication/goal closure and exact Meet grant BEFORE dispatch
+
+Actual Root153 literal publication receipt is received and matches independent
+owner fresh fetch/ls-remote master
+`4af1c86863698e311d286039a0702d5b2517c1c3`. Source→publisher mappings:
+`5f2cb065`→`252a2b2b`, `e04f61bd`→`c781fb81`, `21ceef60`→`3770dcbe`,
+`0db20367`→`4af1c868`. All four ancestors/all36 latest payloads/all21 native
+hashes verified by owner; publisher reports148tests/12files/app+fixture types/
+lint PASS, owner136affectedtests/11files/three-width native/build PASS retained.
+SAME FE32 goal actually COMPLETE, immediate get_goal null, elapsed1227s
+(20m27s). Source `0db20367`/old branch preserved clean, all exact FE32 leases
+RETURNED; no task link/browser/server/cache/build/temp or held slot. Sole
+execution-plan FE21/24 bookkeeping drift reconciled; no runtime drift reported.
+No original QA06/root/live/device/IN04/full-reference promotion.
+
+QA06 supplemental `1cd494af` (parent `2a845c59`) now reconciles FE32 owner
+delivery/native metadata in its four owned comparison/visual-QA docs, committed
+DIRECT Root, publication pending. QA06 independently pins two Git document
+hashes/same humanJPEG/runtime/three-width PASS metadata; no duplicate remote/
+payload audit, capture or pure-client editor assignment because default Wall
+is guarded. All ten original screen entries/full unfinished QA06 scope remain.
+
+Community now records genuinely ready bounded original IDs QA06 + FE21,
+source finding `QA06-HUMAN-MEET-TYPE-01`, BEFORE dispatch to completed204.
+Retain ONLY isolated `/Users/lhs/Desktop/mcr-worktrees/fe-ref-feed`; preserve
+old FE32/Party/Gift branches/evidence. NEW `codex/mcr-fe-QA06-meet-type` from
+fresh actual published master containing `4af1c868`; receiver verifies clean
+state/new branch and reports exact base. Prior null → NEW truthful UNBUDGETED
+finish-to-delivery goal; preserve incompatible unfinished goals without reset,
+pause or false completion. Same model/reasoning, English only. New branch and
+three output prefixes are absent in current Git management metadata; receiver
+must verify actual absence BEFORE writes. Latest terminal owner receipt is
+explicit; compact turn completion is checked before dispatch, not inferred
+from a timeout.
+
+EXACT exclusive write scope:
+`frontend/src/features/party-discovery/ui/party-discovery.css` ONLY title/place/
+action typography, spacing and ink styling needed for the finding;
+NEW `frontend/e2e/community-client/qa06-meet-type/**`;
+NEW `docs/mcr/evidence/qa06-meet-type/**`;
+NEW `docs/mcr/frontend/qa06-meet-type.md`.
+No JSX/controller/member/capability data or Party/Gift behavior, shared frame/
+footer/shell/global typography/Map/root/router/composition/art/contracts/
+generated/manifests/locks/CI/backend/other-doc writes. Any necessary extra
+file/function hunk named directly to Root+Community/current incumbent BEFORE
+edit; independent work continues.213's four shared decorative hunks remain
+World-owned and disjoint. No old FE32/Party/Gift rights carry forward.
+
+Finish objective: developer fresh-reconciles current source and capture lineage
+against QA06's older12a5/a0db pin, directly inspects exact humanJPEG and equal-
+three-row Meet evidence, diagnoses/fixes title/place/action hierarchy and
+spacing/ink within the leaf. Preserve truthful current data/states,44px hitboxes,
+CreateParty and footer reachability, safe area/reduced-height behavior, keyboard/
+focus and existing uncertain-request/client safety. Meaningful affected checks
+and actual target comparison/native current-source proof across relevant widths/
+heights are developer-owned; old screenshot or self-renderer equality is not
+current target proof. No invented members/content or row omission. Qualify
+actual root only with genuine existing qualified fixtures and label limits;
+no fabricated live/device/backend gate, no duplicate QA full-matrix/capture.
+Record provenance/behavior/checks-exits/retained failures/limits/scoped commits,
+direct Root153 serial non-force publication, concrete fixes, independent owner
+fresh remote ancestry/all latest payload equality and clean STOP/lease return.
+Required publication stays in SAME active goal until actual receipt/readback.
+Native/build only under fresh21d named capacity offer plus owner acceptance,
+minimum/peak/duration/output/process inventory, >=16GiB START/8GiB STOP,
+one serial workflow/hard0.2GiB output; no install/shared target/peer cleanup.
+Actual receiving goal/checkout/base/path acceptance remains PENDING until
+owner readback; dispatch does not complete original FE21 or whole QA06.
 
 ### Current QA06 shared evidence and explicit design direction
 
