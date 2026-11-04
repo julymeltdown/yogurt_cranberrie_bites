@@ -42,3 +42,4 @@ pub mod intro_live;
 pub mod notification_target_policy;
 
 pub mod mural_tools_b;
+pub mod mural_seed;
