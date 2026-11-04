@@ -17,6 +17,15 @@ impl SelfProfileService {
             for id in ids {
                 super::identity::remaining(deadline)?;
                 if let Some(operation) = Operation::load(&self.pool, id, deadline).await? {
+                    // Schedule before native/RPC resolution too: one unavailable
+                    // native status must not starve later existing operations.
+                    super::reconcile::observe_status(
+                        &self.pool,
+                        &operation,
+                        super::identity::NativeStatus::Unknown,
+                        deadline,
+                    )
+                    .await?;
                     // One unavailable coordinator leaves this operation intact;
                     // it must not prevent unrelated existing effects progressing.
                     let _ = self.settle(&operation, deadline).await;

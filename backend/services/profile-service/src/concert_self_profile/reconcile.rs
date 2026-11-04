@@ -37,15 +37,15 @@ pub(super) async fn reconcile(
     let status = operation.status(pool, deadline).await?;
     if status != NativeStatus::Prepared {
         connection.close().await.map_err(|_| Error::Unavailable)?;
-        observe_terminal(pool, operation, status, deadline).await?;
+        observe_status(pool, operation, status, deadline).await?;
         return Ok(status);
     }
-    observe_terminal(pool, operation, NativeStatus::Prepared, deadline).await?;
+    observe_status(pool, operation, NativeStatus::Prepared, deadline).await?;
     let decision = coordinator.query(operation, deadline).await?;
     let command = match decision {
         Decision::Unresolved => {
             connection.close().await.map_err(|_| Error::Unavailable)?;
-            observe_terminal(pool, operation, NativeStatus::Prepared, deadline).await?;
+            observe_status(pool, operation, NativeStatus::Prepared, deadline).await?;
             return Ok(NativeStatus::Prepared);
         }
         Decision::Commit => "commit prepared",
@@ -66,10 +66,10 @@ pub(super) async fn reconcile(
     // A lost/late COMMIT reply is unknown until this actual retained XID and
     // exact effect receipt are read. No retry is interpreted as another write.
     let status = operation.status(pool, deadline).await?;
-    observe_terminal(pool, operation, status, deadline).await?;
+    observe_status(pool, operation, status, deadline).await?;
     Ok(status)
 }
-async fn observe_terminal(
+pub(super) async fn observe_status(
     pool: &PgPool,
     operation: &Operation,
     status: NativeStatus,

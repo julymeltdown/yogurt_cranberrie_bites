@@ -131,11 +131,8 @@ impl Owners {
         .await?
         .into_inner();
         valid_revision(a.revision.as_ref())?;
-        if !a.session_live
-            || !a.subjects.iter().any(|s| {
-                s.user_id == scope.actor.to_string() && s.active && s.security_revision > 0
-            })
-        {
+        let auth_subject = self_subject(&a.subjects, scope.actor)?;
+        if !a.session_live || !auth_subject.active || auth_subject.security_revision <= 0 {
             return Err(denied());
         }
         let mut friend = self.friend.clone();
@@ -152,12 +149,12 @@ impl Owners {
         .await?
         .into_inner();
         valid_revision(f.revision.as_ref())?;
-        if !f.subjects.iter().any(|s| {
-            s.user_id == scope.actor.to_string()
-                && s.active
-                && !s.actor_blocks_subject
-                && !s.subject_blocks_actor
-        }) {
+        let friend_subject = self_subject(&f.subjects, scope.actor)?;
+        if !friend_subject.active
+            || friend_subject.security_revision != 0
+            || friend_subject.actor_blocks_subject
+            || friend_subject.subject_blocks_actor
+        {
             return Err(denied());
         }
         scope.check()
@@ -224,9 +221,6 @@ impl CheckedScope {
     }
     pub fn digest(&self) -> [u8; 32] {
         self.digest
-    }
-    pub fn actor(&self) -> Uuid {
-        self.actor
     }
     pub fn event(&self) -> Uuid {
         self.event
@@ -347,6 +341,18 @@ fn valid_revision(revision: Option<&lease::OwnerRevision>) -> Result<(), Status>
         return Err(denied());
     }
     Ok(())
+}
+fn self_subject(
+    subjects: &[lease::SubjectState],
+    actor: Uuid,
+) -> Result<&lease::SubjectState, Status> {
+    let actor = actor.to_string();
+    let mut matches = subjects.iter().filter(|s| s.user_id == actor);
+    let subject = matches.next().ok_or_else(denied)?;
+    if matches.next().is_some() {
+        return Err(denied());
+    }
+    Ok(subject)
 }
 fn rpc<T>(deadline: AuthorityRpcDeadline, value: T) -> Result<Request<T>, Status> {
     let mut request = Request::new(value);
