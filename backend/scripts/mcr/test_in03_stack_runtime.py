@@ -267,6 +267,56 @@ class RuntimeBoundaries(unittest.TestCase):
                 self.assertEqual(output.call_args.args, ('{"result":"REFUSED","reason":"invalid-or-unavailable-stack-input"}',))
 
 
+class ManagedProfileEntry(unittest.TestCase):
+    def arguments(self):
+        now = stack.time.time()
+        return ["--inputs", "/not-opened-in-cli-test", "--report", "/not-opened-in-cli-test",
+            "--browser-origin", "http://127.0.0.1:3000", "--allocation-id", "managed-test",
+            "--allocation-work-deadline-epoch", str(now + 120),
+            "--allocation-release-deadline-epoch", str(now + 500),
+            "--whole-timeout-seconds", "600", "--startup-timeout-seconds", "180",
+            "--provision-timeout-seconds", "120", "--hold-seconds", "120",
+            "--whole-byte-limit", "1000", "--retained-carry-bytes", "0", "--max-owned-processes", "48"]
+
+    def test_default_cli_preserves_legacy_run_without_profile_argument(self):
+        with patch.object(stack, "run", return_value=0) as run:
+            self.assertEqual(stack.main(self.arguments()), 0)
+        self.assertEqual(run.call_args.kwargs, {})
+        self.assertIsNone(run.call_args.args[0].in04_managed_inputs)
+
+    def test_managed_flag_without_injected_actual_profile_refuses_before_run(self):
+        with patch.object(stack, "run", side_effect=AssertionError("native started")):
+            with patch("builtins.print"):
+                self.assertEqual(stack.main(self.arguments() + ["--in04-managed-inputs", "/private/profile.json"]), 2)
+
+    def test_injected_profile_requires_explicit_managed_input_path(self):
+        with patch.object(stack, "run", side_effect=AssertionError("native started")):
+            with patch("builtins.print"):
+                self.assertEqual(stack.main(self.arguments(), managed=object()), 2)
+
+    def test_injected_profile_and_explicit_path_forward_same_object(self):
+        profile = object()
+        with patch.object(stack, "run", return_value=0) as run:
+            self.assertEqual(stack.main(self.arguments() + ["--in04-managed-inputs", "/private/profile.json"],
+                                        managed=profile), 0)
+        self.assertIs(run.call_args.kwargs["managed"], profile)
+        self.assertEqual(run.call_args.args[0].in04_managed_inputs, Path("/private/profile.json"))
+
+    def test_direct_api_missing_profile_refuses_before_input_or_native_work(self):
+        with patch.object(stack, "load_helpers", side_effect=AssertionError("services imported")):
+            with self.assertRaisesRegex(stack.InputRefusal, "^managed-profile-required$"):
+                stack.run(SimpleNamespace(in04_managed_inputs=Path("/private/profile.json")))
+
+    def test_incomplete_profile_refuses_before_loading_native_helpers(self):
+        with tempfile.TemporaryDirectory(prefix="ma-cli-") as directory:
+            path = Path(directory).resolve() / "profile.json"
+            path.write_text("{}")
+            path.chmod(0o600)
+            with patch.object(stack, "load_helpers", side_effect=AssertionError("services imported")):
+                with self.assertRaisesRegex(stack.InputRefusal, "^managed-profile-incomplete$"):
+                    stack.run(SimpleNamespace(in04_managed_inputs=path), managed=object())
+
+
 class ImmutableSources(unittest.TestCase):
     def test_migrations_use_binary_revision_even_after_checkout_changes(self):
         with tempfile.TemporaryDirectory(prefix="mcr-in03-source-") as directory:

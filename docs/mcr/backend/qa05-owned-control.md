@@ -213,3 +213,139 @@ any actual faults directly and World20f fixes its assigned control if needed.
 No standalone duplicate fault driver is added. Publication of this source
 component does not close the original combined QA05 or IN04 flow. The persistent
 goal remains active while those required assigned outcomes are unfinished.
+
+## Managed attachment continuation
+
+QA05-MANAGED-ATTACHMENT-01 is the next concrete objective in the same active goal:
+wire the published controls and read-only observer to the actual incumbent
+seven-service launcher, preserve default IN03 behavior, use Root's real managed
+Enrollment/role/checkpoint profile, and deliver validated lifecycle/cleanup,
+committed source and actual allocated producer attachment evidence. No new stack,
+Auth pair, database or browser is created by this attachment. Actual App recovery
+and optional PG+Concert results remain open until the real owner window executes.
+
+Root1fc explicitly stopped and transferred only `in03_stack_runtime.py::run`
+managed lifecycle/loop/cleanup hunks, its optional managed flag/call signature,
+matching new cases in `test_in03_stack_runtime.py`, new
+`in04_wall_runtime/{attachment.py,test_attachment.py}` and this document appendix.
+The launcher postimage before editing is exactly Root
+`9022e739a77842c0a1ee0ba66753087aef73d13e`. Root retains new
+`in04_wall_runtime/launch.py`, actual profile adapters, signed role/checkpoint
+production, deployment closure and real owner allocation. Root's frozen build
+checkout/readset is untouched. Latest human no-review/no-acknowledgment policy
+overrides obsolete instructions in historical checkouts; no technical approval
+stage is introduced. Implementation developers own fixes and relevant checks.
+
+The four exact Root9022 dependencies `__init__.py`, `observer.py`, `runtime.mjs`
+and `test-runtime.mjs` were copied read-only into the isolated World worktree for
+compatibility. They are not authored changes or part of this five-path handoff.
+Observer SHA-256 is `ed219d1997d92bc5c27eb0d0370e47fd102861bd7b1fc015641e55f103bc1052`;
+runtime SHA-256 remains `7d29fee99b5eab4b3e3320ba5a4513f803d6d2b450da33246fa467767deba6ad`.
+The published control files remain unchanged; their 21 source checks are reused.
+
+### Frozen profile ABI
+
+Root and World agreed `main(argv=None, managed=None)` and `run(args, managed=None)`.
+The optional CLI flag is `--in04-managed-inputs` with an absolute private Path.
+An actual injected profile and that flag must both exist, or both be absent.
+There is no profile discovery or fake fallback. Root's launch entrypoint injects
+its actual profile. Missing/incomplete profiles refuse before native work.
+
+All hooks are synchronous keyword-only calls:
+
+- `before_start(args,stack,guard,pins,manifests,context,world,prep,dev,patches)`
+  installs actual MailSink/Enrollment adapters in the existing startup ExitStack
+  before Auth starts. That patch context ends after stack startup; it does not
+  become a second producer or independent resource lifetime.
+- `configure_environment(envs,concert,context,cluster,ports,args)` runs after the
+  actual event/rooms/release/digest/context are set and before child listeners.
+  The normal mode and mTLS checks run again after configuration.
+- `principal(stack,browser,ordinal,deadline,context,args)` returns exactly
+  `(user_id:str, credentials_path:Path, access_token_in_RAM:str)` from the actual
+  supplier. The normal three-principal loop is reused; no extra cohort is added.
+- `auth_provenance(stack,browser,report,principals,event,revision,auth_source,
+  expires_at,world,args,context)` calls Root's actual Enrollment producer and
+  preserves genuine HTTP dispositions; it does not apply the legacy all-200
+  signup assumption.
+- `after_principals(stack,browser,guard,pins,manifests,context,principals,
+  source_root,candidate,origin,expires_at,args)` produces actual roles/checkpoint
+  and returns exactly `environment_id`, `window_id`, `restore_snapshot_id`,
+  `expires_at`, `validate_deployment`, `actor_sessions`. The three session tuples
+  must equal the actual supplied principals; first two are App members, third is
+  the actual signed operator. The callback returns no claimed readiness proof.
+
+The attachment performs actual public-role/snapshot/current-source/child/ledger
+observations before publishing two exclusive 0600 descriptors in the existing
+owned 0700 root. Private handoff adds `managedRuntime` with version,
+environmentId, windowId, restoreSnapshotId, expiresAtEpoch, backendDescriptor and
+qa05ControlDescriptor. Root maps the last two paths to
+`MCR_IN04_BACKEND_DESCRIPTOR` and `MCR_QA05_BACKEND_DESCRIPTOR`. Canonical access
+tokens never enter those files. The launcher refuses token material in private
+handoff data and writes only a fixed failure report if a profile accidentally
+places a bearer in report metadata.
+
+The existing guarded loop services the control socket, advances the actual
+owner tick and services the observer. Only a currently active owner fault skips
+full readiness; direct children, peer identity, binary/source and resource checks
+remain active. Read-only observation refuses during the fault rather than
+claiming health. Full seven-service health resumes after completion. A registered
+replacement's actual RAM environment is followed before the profile's deployment
+closure checks it. No observer exports or control implementation are changed.
+
+Cleanup closes both server handles, retires only exact owned descriptor/socket
+inodes and still runs the original stack cleanup after an attachment failure.
+Replaced foreign files are never unlinked. Missing/replaced custody is a cleanup
+failure, not an assumed success.
+
+### Attachment validation status
+
+Source validation PASS: 14 dedicated attachment cases and all 25 changed-launcher
+cases (19 retained, 6 new managed entry cases). They cover actual
+object routing, canonical-session and expiry binding, real-observation refusal,
+token-free private files, fault-aware health, current-env tracking and safe partial
+cleanup, plus explicit managed activation and unchanged default entry behavior.
+They use synthetic stack/profile fixtures and private Unix sockets; no product
+Auth, Rust process or PG is started. Both commands exited 0 under Python 3.14,
+with bytecode disabled and ResourceWarning treated as an error:
+
+```text
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -B -W error::ResourceWarning backend/scripts/mcr/in04_wall_runtime/test_attachment.py -v
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -B -W error::ResourceWarning backend/scripts/mcr/test_in03_stack_runtime.py -v
+```
+
+The source under test is commit
+`75809d0c64b0a602f93d7c837495891a1873f1cb`, parent
+`fe7310cdb926a36abf93cf5dd1fe7e04960cfdf2`. All 135 source/helper/controller
+pins matched before and after execution. No old control test matrix was rerun.
+
+The finite SOURCE offer `QA05-MANAGED-ATTACHMENT-SOURCE-20261104T2110Z`
+was accepted at epoch `1793825715.157002` (2026-11-04 20:55:15.157002 UTC)
+and reached literal FULL at `1793825716.56196` (20:55:16.561960 UTC).
+Evidence is retained at `/private/tmp/mcr-world-managed-attach-20261105`:
+`check-0.log`, `check-1.log`, `source-pins.json`, `guard-receipt.json` and
+`full-release.json`. The FULL receipt SHA-256 is
+`324306793455b86bf9fb8b1ba33823fccbb753292f9d1b9ad3a7087172c02f11`.
+The primary 50ms controller and independent controller both reported no failure;
+all owned groups and the independent controller were reaped, no owned PG
+remained, and target access was NONE. Combined command duration was
+1.366187708 seconds. Observed peaks were NEW 217088 bytes, WHOLE 9946427392
+bytes, five processes and 87326720 RSS bytes; minimum free was 16725938176
+bytes. No workflow, browser, service, database or target allocation remains.
+The offer is spent. Future accounting preserves at least the retained WHOLE
+peak plus subsequent growth; any further execution requires a fresh offer.
+
+An interrupted controlled restart retains normal conservative cleanup semantics:
+every registered child is stopped, but a fault interrupted before replacement
+does not become a successful runtime result. No cleanup behavior was weakened.
+
+Publication is a five-path handoff to Root1fc, without king/SL review or
+acknowledgment. Root's coherent helper-source commit must include the four
+read-only Root dependencies, this attachment and Root's actual launch/adapters:
+the launcher pins the complete Python helper inventory, so this isolated source
+commit alone is not a complete managed helper source. Root9022 remains the
+retained per-binary source identity; a helper-only change does not claim a new
+Rust executable or require an otherwise unnecessary Rust rebuild.
+
+Actual Enrollment/role/checkpoint provider attachment, managed same-stack faults,
+PG restart and App convergence remain NOT_RUN. Root's real profile must be
+present and valid; source construction does not certify any of those outcomes.

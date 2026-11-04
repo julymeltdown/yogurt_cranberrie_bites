@@ -423,7 +423,15 @@ def auth_provenance(stack, browser, report, principals, event, revision, auth_so
         "custody": "PRIVATE_MODE_0600", "actors": actors}
 
 
-def run(args):
+def run(args, managed=None):
+    managed_path = getattr(args, "in04_managed_inputs", None)
+    require((managed is None) == (managed_path is None), "managed-profile-required")
+    if managed is not None:
+        require(isinstance(managed_path, Path) and managed_path.is_absolute(), "managed-input-path-required")
+        private_input(managed_path)
+        require(all(callable(getattr(managed, name, None)) for name in (
+            "before_start", "configure_environment", "principal", "auth_provenance", "after_principals")),
+            "managed-profile-incomplete")
     config = closed(json_object(private_input(args.inputs)),
         ("version", "helper_source", "binaries", "pg_bin_dir", "redis_binary", "openssl_binary"), "stack-input-schema")
     require(config["version"] == 1, "stack-input-version")
@@ -448,7 +456,7 @@ def run(args):
               "source_revision": revision, "helper_sha256": sources, "cohort": provenance,
               "allocation_id": args.allocation_id, "full_c03_retained_or_hashed": False,
               "providers": "NO_VERIFIED_AGE_OR_OPERATOR_PROVIDER; missing providers remain unavailable"}
-    context, principals, control = {}, [], None
+    context, principals, control, attachment = {}, [], None, None
     original_envs = dev.development_environments
     runtime = dev.runtime
     readiness = lambda status, body, name: seven_readiness(status, body, name, prep.current_readiness)
@@ -539,6 +547,10 @@ def run(args):
         envs["api-gateway"].update(GATEWAY_CONCERT_GRPC_ENDPOINT=urls["concert"], GATEWAY_CONCERT_RELEASE_DIGEST=match[1])
         validate_modes(envs, concert)
         context.update(env=concert, event=event, rooms=json.loads(rooms), digest=match[1], release=release)
+        if managed is not None:
+            managed.configure_environment(envs=envs, concert=concert, context=context,
+                                          cluster=cluster, ports=ports, args=args)
+            validate_modes(envs, concert)
         return envs
 
     previous = {sig: signal.signal(sig, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
@@ -550,6 +562,9 @@ def run(args):
             patches.enter_context(patch.object(runtime, "readiness_value", readiness))
             patches.enter_context(patch.object(dev.migration, "preflight", preflight))
             patches.enter_context(patch.object(dev, "development_environments", environments))
+            if managed is not None:
+                managed.before_start(args=args, stack=stack, guard=guard, pins=pins, manifests=manifests,
+                    context=context, world=world, prep=prep, dev=dev, patches=patches)
             descriptor = stack.start()
         # Register Concert in the same cleanup owner BEFORE listener qualification.
         env = context["env"]
@@ -567,18 +582,40 @@ def run(args):
         provision_deadline = min(guard.deadline, time.monotonic() + args.provision_timeout_seconds)
         for ordinal in range(1, 4):
             guard.check()
-            item = prep.principal(stack, browser, ordinal, deadline=provision_deadline)
+            item = (prep.principal(stack, browser, ordinal, deadline=provision_deadline) if managed is None else
+                    managed.principal(stack=stack, browser=browser, ordinal=ordinal,
+                                      deadline=provision_deadline, context=context, args=args))
+            if managed is not None:
+                require(isinstance(item, tuple) and len(item) == 3 and isinstance(item[0], str)
+                        and isinstance(item[1], Path) and isinstance(item[2], str) and bool(item[2]),
+                        "managed-principal-shape")
             require(item[0] not in {p[0] for p in principals}, "distinct-canonical-principals")
             principals.append(item)
         world.initialize_profiles(browser, report, principals)
         expires_at = min(time.time() + args.hold_seconds, args.allocation_work_deadline_epoch)
-        producer = auth_provenance(stack, browser, report, principals, context["event"], revision,
-                                  pins["auth-service"].source, expires_at, world)
+        if managed is None:
+            producer = auth_provenance(stack, browser, report, principals, context["event"], revision,
+                                      pins["auth-service"].source, expires_at, world)
+        else:
+            producer = managed.auth_provenance(stack=stack, browser=browser, report=report,
+                principals=principals, event=context["event"], revision=revision,
+                auth_source=pins["auth-service"].source, expires_at=expires_at, world=world,
+                args=args, context=context)
+            require(isinstance(producer, dict), "managed-auth-producer-required")
         report["public_projection"] = world.retain_public_projection(browser, report, context["event"],
             principals[0], args.report.parent, {"helper_source": revision, "binary_sources":
                 {name: pin.source for name, pin in pins.items()}, "original_in03_journey": "NOT_RUN"})
         # Full C03 exists only in retain_public_projection's local memory. No full-body copy or digest here.
         check_inputs()
+        if managed is not None:
+            from in04_wall_runtime.attachment import ManagedAttachment
+            attachment_inputs = managed.after_principals(stack=stack, browser=browser, guard=guard,
+                pins=pins, manifests=manifests, context=context, principals=principals,
+                source_root=root, candidate=revision, origin=args.browser_origin, expires_at=expires_at, args=args)
+            with patch.object(runtime, "readiness_value", readiness):
+                attachment = ManagedAttachment(inputs=attachment_inputs, stack=stack, browser=browser,
+                    guard=guard, pins=pins, manifests=manifests, context=context, principals=principals,
+                    source_root=root, candidate=revision, origin=args.browser_origin, expires_at=expires_at)
         control = dev.Control(stack)
         private = {**stack.descriptor(), "browser_origin": args.browser_origin, "event_id": context["event"],
             "auth_http": "Gateway /api/auth/*; canonical private local HTTP mail fixture",
@@ -602,8 +639,15 @@ def run(args):
                 "provider-qualified Intro/Post/server-expired request resources", "actual contract denial dispositions"],
             "expires_at_epoch": expires_at,
             "allocation_id": args.allocation_id}
+        if attachment is not None:
+            private["managedRuntime"] = attachment.handoff()
+            private["fault_control"] = "OWNER_BOUND_REQUEST_CHECKPOINT"
+            report["providers"] = "ROOT_MANAGED_PROFILE; actual observations required"
         private["services"]["concert-service"] = {
             kind: stack.ports.url("concert-service:" + kind) for kind in ("grpc", "metrics", "world")}
+        if managed is not None:
+            from in04_wall_runtime.attachment import contains_access_token
+            require(not contains_access_token(private, principals), "managed-token-serialization-refused")
         handoff = stack.cluster.root / "in03-live-inputs.json"
         prep.private_json(handoff, private)
         prep.private_json(args.report.with_suffix(".ready.json"), {"state": "READY", "private_inputs": str(handoff),
@@ -616,13 +660,24 @@ def run(args):
             guard.check()
             verify_migration_package(context["migration_package"], manifests["concert-service"])
             with patch.object(runtime, "readiness_value", readiness):
-                stack.health()
+                if attachment is None:
+                    stack.health()
+                else:
+                    attachment.poll()
+                    attachment.health(stack.health)
                 control.handle_request()
     except BaseException as error:
         report.update(result="FAIL", failure=error.args[0] if isinstance(error, InputRefusal)
                       else "native-stack-operation-failed", failure_type=type(error).__name__)
     finally:
+        if attachment is not None:
+            try:
+                attachment.close()
+            except BaseException:
+                report["managed_cleanup"] = "FAIL"
         report.update(cleanup_owned(stack, control, guard))
+        if report.get("managed_cleanup") == "FAIL":
+            report.update(result="FAIL", cleanup="FAIL")
         if guard.failure:
             report["result"] = "FAIL"
         # Do not serialize DevStack's diagnostics, URLs, credentials or migration witness tokens.
@@ -631,16 +686,23 @@ def run(args):
             report["result"] = "FAIL"
         for sig, handler in previous.items():
             signal.signal(sig, handler)
+        if managed is not None:
+            from in04_wall_runtime.attachment import contains_access_token
+            if contains_access_token(report, principals):
+                report = {"scope": "IN04 managed runtime", "result": "FAIL",
+                          "failure": "managed-token-serialization-refused",
+                          "cleanup": "PASS" if report.get("cleanup") == "PASS" else "FAIL"}
         dev.write_fd(fd, report)
     return int(report["result"] == "FAIL")
 
 
-def main(argv=None):
+def main(argv=None, managed=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--inputs", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--browser-origin", required=True)
     parser.add_argument("--allocation-id", required=True)
+    parser.add_argument("--in04-managed-inputs", type=Path)
     for name in ("allocation-work-deadline-epoch", "allocation-release-deadline-epoch",
                  "whole-timeout-seconds", "startup-timeout-seconds", "provision-timeout-seconds", "hold-seconds"):
         parser.add_argument("--" + name, type=float, required=True)
@@ -660,7 +722,8 @@ def main(argv=None):
         require(args.allocation_release_deadline_epoch - args.allocation_work_deadline_epoch >= 240,
                 "cleanup-reserve-required")
         require(re.fullmatch(r"[A-Za-z0-9_-]{1,100}", args.allocation_id) is not None, "allocation-id-invalid")
-        return run(args)
+        require((managed is None) == (args.in04_managed_inputs is None), "managed-profile-required")
+        return run(args) if managed is None else run(args, managed=managed)
     except (InputRefusal, OSError, ValueError, TypeError, KeyError):
         print('{"result":"REFUSED","reason":"invalid-or-unavailable-stack-input"}')
         return 2
