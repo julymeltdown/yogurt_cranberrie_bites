@@ -1,6 +1,6 @@
 {
-  "status": "INTEGRATED",
-  "scope": "Current-published backend serving, native readiness, actual external App replay and normal resource release; source/art audit and committed consumer publication remain separate.",
+  "status": "ACCEPTED",
+  "scope": "Original IN01 current App journey: native readiness, actual HTTP/WebSocket behavior, source/static-art audit, published exact consumer handoff and normal resource release. Not whole-project or IN05 acceptance.",
   "backend_source": "cde817b2ade8caabcf8c3a96508121053997873e",
   "frontend_candidate": "1722a81734947764996590b94a63aa001501df28",
   "qualified_concert_source": "7cd1e900d6bd1b4994482819486c828e43736822",
@@ -236,11 +236,13 @@
     },
     "error_count": 0,
     "source_art_audit": "PASS",
-    "publication": "PENDING_DELIVERY_PUBLICATION",
+    "publication": "1bb911c3c8594a997e7a309d86b823d906198b95",
     "handoff_commit": "92989fd79d176195d9c9f1c1180526e8a1e0dafc",
     "report_sha256": "5a31e78089ba0828b725b2fcc65f22970c0e3b5a6e70df1fe7830d15bcb60d47",
     "full_release_at": "2026-11-04T08:38:06Z",
-    "peak_whole_mib": 40.85
+    "peak_whole_mib": 40.85,
+    "published_postimages_match": true,
+    "qualification_status": "RUNTIME_AND_ART_PASS"
   },
   "after_browser_readonly": {
     "checked_at": "2026-11-04T08:38:56.175562+00:00",
@@ -338,11 +340,19 @@
     "mcr-readshare-live-guard.py": {
       "sha256": "3ec575ff1bfb58574d2fe8742d9a1dea27ee39de7488317dba0d112ddbf0f331",
       "bytes": 4730
+    },
+    "consumer-qualification-11.json": {
+      "sha256": "dfcac95eef337c485667bd4e14a4f29a41d068ea2b8809adfc709a47f50b914c",
+      "bytes": 8454
+    },
+    "consumer-validation-11.json": {
+      "sha256": "927468dcbbf0eda4c61b4f3dbb386fc027bdbceba24b07e067151046e4adfc01",
+      "bytes": 5071
     }
   },
   "limits": [
     "Backend driver PARTIAL denotes separately owned browser evaluation; it is not falsely promoted to whole application acceptance.",
-    "Current App runtime, source and static art checks passed in committed consumer packet; delivery publication proof remains required.",
+    "Current App runtime, source and static art checks passed; all 19 consumer payloads match published delivery. This accepts original IN01, not IN05, full composition or the whole project.",
     "Actual room fixture capacity is two. No 200-user/four-room capacity, mobile qualification or World server process restart is claimed.",
     "Expiry-triggered refresh is informational NOT_RUN; no 900-second duration or automatic renewal requirement added.",
     "No target/Cargo access, extra executable copy, manual prepared settlement, TTL fault, extension, reset or second browser run."

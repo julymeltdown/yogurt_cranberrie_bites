@@ -1,10 +1,12 @@
 # Root composition intake
 
 Status: IN_PROGRESS. Combined component qualification passed at `34fa7a6d`.
-Full production composition, complete IN01 and project acceptance remain open.
+Full production composition and project acceptance remain open.
+Original IN01 passed its current App runtime, source/static-art and published
+handoff gates; broader load/mobile/server-restart obligations remain separate.
 The current App runtime passed customization, persistence and peer appearance,
-as well as the sustained two-player/reconnect slice. Consumer source/static-art audit passed in `92989fd7`; publication proof
-remains pending.
+as well as the sustained two-player/reconnect slice. Consumer source/static-art audit passed in `92989fd7`, published with all 19
+exact payloads in `1bb911c3`.
 Existing immutable qualifications retain their exact source pins.
 
 ## Current-published replay after Participant read-lock repair
@@ -24,7 +26,9 @@ new ticket/stream, peer withdrawal/restoration, the same canvas, one live Phaser
 instance and one peak World socket per context. There were no invalid frames,
 private-field disclosures or late errors. Consumer source/static-art audit passed in committed packet `92989fd7`, report
 SHA-256 `5a31e78089ba0828b725b2fcc65f22970c0e3b5a6e70df1fe7830d15bcb60d47`.
-Delivery publication proof remains pending.
+All 19 consumer payloads match published delivery `1bb911c3`, independently
+verified against remote HEAD. Original IN01 is accepted for this frozen scope;
+this does not accept IN05, full composition or the whole project.
 
 After browser release, a read-only database snapshot found all 22 roots finished,
 serialized and delivered, all 22 Auth/Friend scopes completed and settled, zero
