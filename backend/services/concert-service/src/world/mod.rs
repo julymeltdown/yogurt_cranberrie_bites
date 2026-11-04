@@ -677,13 +677,20 @@ impl WorldRepository for PgWorldRepository {
             return Err(WorldError::Invalid);
         }
         let until = now.checked_add_signed(grace).ok_or(WorldError::Invalid)?;
+        let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, key.user_id.uuid()).await.map_err(unavailable)? {
+            return Ok(LeaseState::Gone);
+        }
         let row = sqlx::query(&format!("update public.concert_world_memberships set disconnected=true,lease_until=least(access_expires_at,$4) where event_id=$1 and user_id=$2 and connection_id=$3 and session_id=$5 and lease_until>$6 returning {MEMBERSHIP_COLUMNS}"))
             .bind(key.event_id.uuid()).bind(key.user_id.uuid()).bind(connection_id.uuid()).bind(until)
             .bind(session_uuid(session_id)?).bind(now)
-            .fetch_optional(&self.pool).await.map_err(unavailable)?;
-        row.map(|row| membership(&row).map(LeaseState::Disconnected))
-            .transpose()
-            .map(|value| value.unwrap_or(LeaseState::Gone))
+            .fetch_optional(&mut *tx).await.map_err(unavailable)?;
+        let state = row.map(|row| membership(&row).map(LeaseState::Disconnected))
+            .transpose()?
+            .unwrap_or(LeaseState::Gone);
+        tx.commit().await.map_err(unavailable)?;
+        Ok(state)
     }
 
     async fn leave(
