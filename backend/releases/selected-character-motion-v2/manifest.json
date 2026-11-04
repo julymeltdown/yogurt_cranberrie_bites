@@ -1,0 +1,3649 @@
+{
+  "contract_version": "2.0.0",
+  "kind": "avatar_manifest",
+  "manifest_id": "mcr_selected_motion_20261103",
+  "manifest_version": 1,
+  "representation": "selected_source_motion",
+  "production_eligible": false,
+  "qualification": "CANDIDATE_ONLY",
+  "fallback": "NONE",
+  "source": {
+    "pack_id": "mcr_user_characters_20261103",
+    "revision": 3,
+    "descriptor": {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json",
+      "sha256": "6cf3aad25ceba681f4c0306d1139109ee6c07508de617ecf1c0b08b1d43fb950",
+      "bytes": 42925
+    },
+    "originals": [
+      {
+        "source_id": "photo_01",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-01.jpg",
+          "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+          "bytes": 168045
+        }
+      },
+      {
+        "source_id": "photo_02",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-02.jpg",
+          "sha256": "cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489",
+          "bytes": 166375
+        }
+      },
+      {
+        "source_id": "photo_04",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-04.jpg",
+          "sha256": "87cdfbff215758c12d7042a7c435a17a6cdccb7637b0542dd9e0508d832e2a63",
+          "bytes": 189238
+        }
+      },
+      {
+        "source_id": "photo_05",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-05.jpg",
+          "sha256": "681f566ab7ef081fa7f8a39ea0c3367cc822ea31f1bcfe3065f2755679950027",
+          "bytes": 185536
+        }
+      },
+      {
+        "source_id": "photo_06",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-06.jpg",
+          "sha256": "a5fa9ecebf1ce7f36d1cb3eb50c5a21d75fe817797d9f1cd330d252b3677845f",
+          "bytes": 193901
+        }
+      },
+      {
+        "source_id": "photo_07",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-07.jpg",
+          "sha256": "5ff980e6268beb3162c23f1d8d0478d09d2180ce45f5df9c4303eac80b9c82ce",
+          "bytes": 172536
+        }
+      },
+      {
+        "source_id": "photo_08",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-08.jpg",
+          "sha256": "9b9e5ba41b8f286ecf73ca2e859a03eefa294ff3750c013f75310189343445d9",
+          "bytes": 111594
+        }
+      },
+      {
+        "source_id": "photo_09",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-09.jpg",
+          "sha256": "e4e857fb1a7f98d1a52538f47738b8fe01f0e352be0cd71e7b2f9e36ae4008c8",
+          "bytes": 142915
+        }
+      },
+      {
+        "source_id": "photo_10",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-10.jpg",
+          "sha256": "397ffa665515ebe8c573f1a5164358c5cb698633a1680f545994404026ecc96d",
+          "bytes": 98841
+        }
+      },
+      {
+        "source_id": "photo_11",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-11.jpg",
+          "sha256": "528bc065159be519e076c84648561845eb97d08c1fa090345e80489f5d69821f",
+          "bytes": 242601
+        }
+      },
+      {
+        "source_id": "photo_12",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-12.jpg",
+          "sha256": "ac2d1aa9153aa1217afa0817679fba0c00d09f3290f191d4706ad5a22833db94",
+          "bytes": 273737
+        }
+      },
+      {
+        "source_id": "photo_13",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-13.jpg",
+          "sha256": "292a1080e08ac42474222ea1c1cda2d063885b7da72f2f9ea8c606b25c5217b3",
+          "bytes": 263938
+        }
+      },
+      {
+        "source_id": "photo_14",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-14.jpg",
+          "sha256": "6bceb582fc1301589c968a40335ad7dc183f01c60b47ad45f223a375d3c49d95",
+          "bytes": 288728
+        }
+      },
+      {
+        "source_id": "photo_15",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-15.jpg",
+          "sha256": "d0a17abd38eb55e46db985c168d0183073b5d703478d00e8d49ca8e14d4af825",
+          "bytes": 293533
+        }
+      },
+      {
+        "source_id": "photo_16",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-16.jpg",
+          "sha256": "48200de941ebc7b9474752b0475c7c0fe4983fd16442afce83fbe56a1d474507",
+          "bytes": 248204
+        }
+      },
+      {
+        "source_id": "photo_17",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-17.jpg",
+          "sha256": "21c7dbe159570072cb7406d6d1bf3521ba44da4bd392dd9f058f4e2bb026750c",
+          "bytes": 175218
+        }
+      },
+      {
+        "source_id": "photo_18",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-18.jpg",
+          "sha256": "419a2b2527dab6b63bf2cee251651eefeb6792a546bcd4737a99d6f5678aa514",
+          "bytes": 222649
+        }
+      },
+      {
+        "source_id": "photo_19",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-19.jpg",
+          "sha256": "856135f8c8b970f711b1ccdf1c071151a54037e07827bae6b518465e18d6c1ad",
+          "bytes": 240144
+        }
+      },
+      {
+        "source_id": "photo_20",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-20.jpg",
+          "sha256": "1b741978ef59714c6ecd7f906abf6f909ee77d2dc1906c97cc95b958aa98243a",
+          "bytes": 193103
+        }
+      },
+      {
+        "source_id": "photo_21",
+        "resource": {
+          "path": "frontend/public/world/avatars/supplied-v1/photo-21.jpg",
+          "sha256": "3f0d763f18913cdd4e6af8830404ef7163315cd30a275054c76e63c6fa09831d",
+          "bytes": 255136
+        }
+      }
+    ],
+    "art_source_revision": "bb7d21b3",
+    "art_receipt_revision": "145d0e21b5ce92c55a04c31dc447267f78014a99",
+    "resources": [
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json",
+        "sha256": "6cf3aad25ceba681f4c0306d1139109ee6c07508de617ecf1c0b08b1d43fb950",
+        "bytes": 42925
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png",
+        "sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+        "bytes": 470010,
+        "width": 1280,
+        "height": 1856
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/motion-release-candidate.json",
+        "sha256": "223926a1ee23d57daa791fa15cbdb8a3417eaa9eabfc0026e9cff1096dfe8cae",
+        "bytes": 154956
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/wardrobe-release-candidate.json",
+        "sha256": "76314115c9de6e7d9e7aec36c49b0f27dfe36e7e185d4f8220c1a43f58dc6b50",
+        "bytes": 115552
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/candidate-index.json",
+        "sha256": "123d8f56f88299b084bed15d26fe9960c252ee10423ce98db08cba7b2e633433",
+        "bytes": 375733
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/source-pins.json",
+        "sha256": "313748ed86619e5f0a0b4b62794e7e11d23d5d17cf98cfcdc0c00f471278534c",
+        "bytes": 4403
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/delivery-pins.json",
+        "sha256": "69b1e071a8195e35f56d4ca5f717b8e3262e7d2d694789b47b22c788ce13c423",
+        "bytes": 50007
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/original-hashes.json",
+        "sha256": "2a388cf3e8b2a4794dda7ba3d0d0ab1a278e0ba8276094bf0ebd7f2be9c5728f",
+        "bytes": 3206
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/authored-reconstruction.json",
+        "sha256": "ee963e181bf6cb1a08f0652dc5fd9d72706dc4c62868496cb5ea30aff484846a",
+        "bytes": 810
+      },
+      {
+        "path": "docs/mcr/art/evidence/motion-candidates-v1/component-source-inputs.json",
+        "sha256": "f1ba21e4addf4efb8eb5a2cdff83afa22e2dfe14b583f54e8de34e4b45c7efc1",
+        "bytes": 1404
+      },
+      {
+        "path": "frontend/src/entities/avatar/character-source-pack.json",
+        "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+        "bytes": 21539
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+        "sha256": "da986a83df2440723b37b224ea7b74de0edfbc4f40bd1c716333199f5581f6d2",
+        "bytes": 750770,
+        "width": 2172,
+        "height": 724
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+        "sha256": "1ecafff63abbb0252098f6a81fc710aaa8dee78354c1e2fd9223e5a955749fef",
+        "bytes": 1565889,
+        "width": 1024,
+        "height": 1536
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+        "sha256": "a106fab178ab0a05b7d56da3ffb3e3b35dc4d21e3ade53089204926803863dd3",
+        "bytes": 960682,
+        "width": 1086,
+        "height": 1448
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-accessory-source-29ff6bab42ff3829.png",
+        "sha256": "29ff6bab42ff3829119103cd8281799224292668b1b1f317b22c502bc9be818c",
+        "bytes": 1011224,
+        "width": 1261,
+        "height": 1247
+      },
+      {
+        "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-turnaround-source-9a40c5d4098296b0.png",
+        "sha256": "9a40c5d4098296b076f57732f57c6e63778999e360cccb49de477f12d6e004e0",
+        "bytes": 1153603,
+        "width": 887,
+        "height": 1774
+      }
+    ]
+  },
+  "atlas": {
+    "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png",
+    "sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+    "bytes": 470010,
+    "width": 1280,
+    "height": 1856
+  },
+  "geometry": {
+    "cell": [
+      64,
+      64
+    ],
+    "foot": [
+      32,
+      60
+    ],
+    "directions": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "source_direction_aliases": {
+      "down": "front",
+      "left": "left",
+      "right": "right",
+      "up": "rear"
+    },
+    "phase_order": [
+      "idle",
+      "walk-0",
+      "walk-1",
+      "walk-2",
+      "walk-3"
+    ],
+    "output_cells": 20,
+    "physical_frames": 576
+  },
+  "composition": {
+    "layer_order": [
+      "body",
+      "hands",
+      "outfit",
+      "eyes",
+      "hair",
+      "accessory"
+    ],
+    "dressed_body_clip_y_exclusive": 42,
+    "hand_palette_color_index": 2,
+    "skin_policy": "BODY_SELECTS_SEMANTIC_RGB_PALETTE_NO_BLANKET_TINT",
+    "rear_eyes": "NON_VISIBLE_FROM_REAR",
+    "stationary_uv_sharing": true,
+    "combined_indices_already_offset": true
+  },
+  "presets": [
+    {
+      "preset_id": "motion_v2_photo01_front_01",
+      "local_key": "photo01-front-01",
+      "source_pointer": "/presets/frames/0",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "source_frames": [
+        {
+          "preset": "photo01-front-01",
+          "direction": "front",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 0
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "front",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 1
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "front",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 2
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "front",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 3
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "front",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 4
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "left",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 5
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "left",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 6
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "left",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 7
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "left",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 8
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "left",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 9
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "right",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 10
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "right",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 11
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "right",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 12
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "right",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 13
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "right",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 14
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "rear",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 15
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "rear",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 16
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "rear",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 17
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "rear",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 18
+        },
+        {
+          "preset": "photo01-front-01",
+          "direction": "rear",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 19
+        }
+      ]
+    },
+    {
+      "preset_id": "motion_v2_photo01_front_02",
+      "local_key": "photo01-front-02",
+      "source_pointer": "/presets/frames/20",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            20,
+            21,
+            22,
+            23,
+            24
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            25,
+            26,
+            27,
+            28,
+            29
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            30,
+            31,
+            32,
+            33,
+            34
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            35,
+            36,
+            37,
+            38,
+            39
+          ]
+        }
+      ],
+      "source_frames": [
+        {
+          "preset": "photo01-front-02",
+          "direction": "front",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 20
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "front",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 21
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "front",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 22
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "front",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 23
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "front",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 24
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "left",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 25
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "left",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 26
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "left",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 27
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "left",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 28
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "left",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 29
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "right",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 30
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "right",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 31
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "right",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 32
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "right",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 33
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "right",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 34
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "rear",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 35
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "rear",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 36
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "rear",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 37
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "rear",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 38
+        },
+        {
+          "preset": "photo01-front-02",
+          "direction": "rear",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 39
+        }
+      ]
+    },
+    {
+      "preset_id": "motion_v2_photo01_front_03",
+      "local_key": "photo01-front-03",
+      "source_pointer": "/presets/frames/40",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            40,
+            41,
+            42,
+            43,
+            44
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            45,
+            46,
+            47,
+            48,
+            49
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            50,
+            51,
+            52,
+            53,
+            54
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            55,
+            56,
+            57,
+            58,
+            59
+          ]
+        }
+      ],
+      "source_frames": [
+        {
+          "preset": "photo01-front-03",
+          "direction": "front",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 40
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "front",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 41
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "front",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 42
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "front",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 43
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "front",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 44
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "left",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 45
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "left",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 46
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "left",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 47
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "left",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 48
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "left",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 49
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "right",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 50
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "right",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 51
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "right",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 52
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "right",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 53
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "right",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 54
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "rear",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 55
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "rear",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 56
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "rear",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 57
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "rear",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 58
+        },
+        {
+          "preset": "photo01-front-03",
+          "direction": "rear",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 59
+        }
+      ]
+    },
+    {
+      "preset_id": "motion_v2_photo01_front_04",
+      "local_key": "photo01-front-04",
+      "source_pointer": "/presets/frames/60",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            65,
+            66,
+            67,
+            68,
+            69
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            70,
+            71,
+            72,
+            73,
+            74
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            75,
+            76,
+            77,
+            78,
+            79
+          ]
+        }
+      ],
+      "source_frames": [
+        {
+          "preset": "photo01-front-04",
+          "direction": "front",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 60
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "front",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 61
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "front",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 62
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "front",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 63
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "front",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 64
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "left",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 65
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "left",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 66
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "left",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 67
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "left",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 68
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "left",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 69
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "right",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 70
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "right",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 71
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "right",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 72
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "right",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 73
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "right",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 74
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "rear",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 75
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "rear",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 76
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "rear",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 77
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "rear",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 78
+        },
+        {
+          "preset": "photo01-front-04",
+          "direction": "rear",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 79
+        }
+      ]
+    },
+    {
+      "preset_id": "motion_v2_photo01_front_05",
+      "local_key": "photo01-front-05",
+      "source_pointer": "/presets/frames/80",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            80,
+            81,
+            82,
+            83,
+            84
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            85,
+            86,
+            87,
+            88,
+            89
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            90,
+            91,
+            92,
+            93,
+            94
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            95,
+            96,
+            97,
+            98,
+            99
+          ]
+        }
+      ],
+      "source_frames": [
+        {
+          "preset": "photo01-front-05",
+          "direction": "front",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 80
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "front",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 81
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "front",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 82
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "front",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 83
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "front",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 84
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "left",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 85
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "left",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 86
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "left",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 87
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "left",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 88
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "left",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 89
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "right",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 90
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "right",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 91
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "right",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 92
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "right",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 93
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "right",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 94
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "rear",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 95
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "rear",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 96
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "rear",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 97
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "rear",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 98
+        },
+        {
+          "preset": "photo01-front-05",
+          "direction": "rear",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 99
+        }
+      ]
+    },
+    {
+      "preset_id": "motion_v2_photo01_front_06",
+      "local_key": "photo01-front-06",
+      "source_pointer": "/presets/frames/100",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            100,
+            101,
+            102,
+            103,
+            104
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            105,
+            106,
+            107,
+            108,
+            109
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            110,
+            111,
+            112,
+            113,
+            114
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            115,
+            116,
+            117,
+            118,
+            119
+          ]
+        }
+      ],
+      "source_frames": [
+        {
+          "preset": "photo01-front-06",
+          "direction": "front",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 100
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "front",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 101
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "front",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 102
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "front",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 103
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "front",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+          "source": "photo_01",
+          "atlasIndex": 104
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "left",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 105
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "left",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 106
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "left",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 107
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "left",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 108
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "left",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 109
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "right",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 110
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "right",
+          "phase": 1,
+          "pose": "walk-0-front-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 111
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "right",
+          "phase": 2,
+          "pose": "walk-1-front-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 112
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "right",
+          "phase": 3,
+          "pose": "walk-2-back-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 113
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "right",
+          "phase": 4,
+          "pose": "walk-3-back-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 114
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "rear",
+          "phase": 0,
+          "pose": "idle",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 115
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "rear",
+          "phase": 1,
+          "pose": "walk-0-left-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 116
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "rear",
+          "phase": 2,
+          "pose": "walk-1-left-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 117
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "rear",
+          "phase": 3,
+          "pose": "walk-2-right-contact",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 118
+        },
+        {
+          "preset": "photo01-front-06",
+          "direction": "rear",
+          "phase": 4,
+          "pose": "walk-3-right-passing",
+          "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+          "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+          "atlasIndex": 119
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "item_id": "motion_v2_body_0",
+      "slot": "body",
+      "local_key": "body-0",
+      "source_pointer": "/wardrobe/items/0",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            120,
+            121,
+            122,
+            123,
+            124
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            125,
+            126,
+            127,
+            128,
+            129
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            130,
+            131,
+            132,
+            133,
+            134
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            135,
+            136,
+            137,
+            138,
+            139
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 0,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            251,
+            223,
+            209
+          ],
+          [
+            252,
+            226,
+            213
+          ],
+          [
+            252,
+            226,
+            213
+          ],
+          [
+            255,
+            227,
+            213
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_1",
+      "slot": "body",
+      "local_key": "body-1",
+      "source_pointer": "/wardrobe/items/1",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            140,
+            141,
+            142,
+            143,
+            144
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            145,
+            146,
+            147,
+            148,
+            149
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            150,
+            151,
+            152,
+            153,
+            154
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            155,
+            156,
+            157,
+            158,
+            159
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 1,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            246,
+            213,
+            194
+          ],
+          [
+            252,
+            214,
+            191
+          ],
+          [
+            252,
+            214,
+            193
+          ],
+          [
+            252,
+            217,
+            195
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_2",
+      "slot": "body",
+      "local_key": "body-2",
+      "source_pointer": "/wardrobe/items/2",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            160,
+            161,
+            162,
+            163,
+            164
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            165,
+            166,
+            167,
+            168,
+            169
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            170,
+            171,
+            172,
+            173,
+            174
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            175,
+            176,
+            177,
+            178,
+            179
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 2,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            240,
+            199,
+            171
+          ],
+          [
+            242,
+            198,
+            173
+          ],
+          [
+            241,
+            199,
+            175
+          ],
+          [
+            244,
+            202,
+            177
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_3",
+      "slot": "body",
+      "local_key": "body-3",
+      "source_pointer": "/wardrobe/items/3",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            180,
+            181,
+            182,
+            183,
+            184
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            185,
+            186,
+            187,
+            188,
+            189
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            190,
+            191,
+            192,
+            193,
+            194
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            195,
+            196,
+            197,
+            198,
+            199
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 3,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            230,
+            167,
+            126
+          ],
+          [
+            228,
+            168,
+            131
+          ],
+          [
+            229,
+            169,
+            132
+          ],
+          [
+            230,
+            172,
+            134
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_4",
+      "slot": "body",
+      "local_key": "body-4",
+      "source_pointer": "/wardrobe/items/4",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            200,
+            201,
+            202,
+            203,
+            204
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            205,
+            206,
+            207,
+            208,
+            209
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            210,
+            211,
+            212,
+            213,
+            214
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            215,
+            216,
+            217,
+            218,
+            219
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 4,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            220,
+            161,
+            129
+          ],
+          [
+            220,
+            163,
+            133
+          ],
+          [
+            223,
+            164,
+            132
+          ],
+          [
+            223,
+            168,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_5",
+      "slot": "body",
+      "local_key": "body-5",
+      "source_pointer": "/wardrobe/items/5",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            220,
+            221,
+            222,
+            223,
+            224
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            225,
+            226,
+            227,
+            228,
+            229
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            230,
+            231,
+            232,
+            233,
+            234
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            235,
+            236,
+            237,
+            238,
+            239
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 5,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            185,
+            127,
+            103
+          ],
+          [
+            188,
+            128,
+            104
+          ],
+          [
+            188,
+            130,
+            106
+          ],
+          [
+            195,
+            134,
+            106
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_6",
+      "slot": "body",
+      "local_key": "body-6",
+      "source_pointer": "/wardrobe/items/6",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            240,
+            241,
+            242,
+            243,
+            244
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            245,
+            246,
+            247,
+            248,
+            249
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            250,
+            251,
+            252,
+            253,
+            254
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            255,
+            256,
+            257,
+            258,
+            259
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 6,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            137,
+            91,
+            76
+          ],
+          [
+            139,
+            92,
+            76
+          ],
+          [
+            141,
+            92,
+            77
+          ],
+          [
+            145,
+            93,
+            79
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_body_7",
+      "slot": "body",
+      "local_key": "body-7",
+      "source_pointer": "/wardrobe/items/7",
+      "selected_source_ids": [
+        "photo_02"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            260,
+            261,
+            262,
+            263,
+            264
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            265,
+            266,
+            267,
+            268,
+            269
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            270,
+            271,
+            272,
+            273,
+            274
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            275,
+            276,
+            277,
+            278,
+            279
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-clean-body-source-da986a83df244072.png",
+      "skin_palette": {
+        "sourceId": "photo_02",
+        "bodySourceIndex": 7,
+        "method": "ACTUAL_SELECTED_SKIN_RGB_QUANTILES",
+        "colors": [
+          [
+            99,
+            66,
+            61
+          ],
+          [
+            102,
+            67,
+            61
+          ],
+          [
+            105,
+            68,
+            60
+          ],
+          [
+            106,
+            69,
+            61
+          ]
+        ]
+      }
+    },
+    {
+      "item_id": "motion_v2_hair_0",
+      "slot": "hair",
+      "local_key": "hair-0",
+      "source_pointer": "/wardrobe/items/8",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_04",
+        "photo_05"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            280,
+            280,
+            280,
+            280,
+            280
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            281,
+            281,
+            281,
+            281,
+            281
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            282,
+            282,
+            282,
+            282,
+            282
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            283,
+            283,
+            283,
+            283,
+            283
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+      "source_row": 0
+    },
+    {
+      "item_id": "motion_v2_hair_1",
+      "slot": "hair",
+      "local_key": "hair-1",
+      "source_pointer": "/wardrobe/items/9",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_04",
+        "photo_05"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            284,
+            284,
+            284,
+            284,
+            284
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            285,
+            285,
+            285,
+            285,
+            285
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            286,
+            286,
+            286,
+            286,
+            286
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            287,
+            287,
+            287,
+            287,
+            287
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+      "source_row": 1
+    },
+    {
+      "item_id": "motion_v2_hair_2",
+      "slot": "hair",
+      "local_key": "hair-2",
+      "source_pointer": "/wardrobe/items/10",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_04",
+        "photo_05"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            288,
+            288,
+            288,
+            288,
+            288
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            289,
+            289,
+            289,
+            289,
+            289
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            290,
+            290,
+            290,
+            290,
+            290
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            291,
+            291,
+            291,
+            291,
+            291
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+      "source_row": 2
+    },
+    {
+      "item_id": "motion_v2_hair_3",
+      "slot": "hair",
+      "local_key": "hair-3",
+      "source_pointer": "/wardrobe/items/11",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_04",
+        "photo_05"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            292,
+            292,
+            292,
+            292,
+            292
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            293,
+            293,
+            293,
+            293,
+            293
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            294,
+            294,
+            294,
+            294,
+            294
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            295,
+            295,
+            295,
+            295,
+            295
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+      "source_row": 3
+    },
+    {
+      "item_id": "motion_v2_hair_4",
+      "slot": "hair",
+      "local_key": "hair-4",
+      "source_pointer": "/wardrobe/items/12",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_04",
+        "photo_05"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            296,
+            296,
+            296,
+            296,
+            296
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            297,
+            297,
+            297,
+            297,
+            297
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            298,
+            298,
+            298,
+            298,
+            298
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            299,
+            299,
+            299,
+            299,
+            299
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+      "source_row": 4
+    },
+    {
+      "item_id": "motion_v2_hair_5",
+      "slot": "hair",
+      "local_key": "hair-5",
+      "source_pointer": "/wardrobe/items/13",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_04",
+        "photo_05"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            300,
+            300,
+            300,
+            300,
+            300
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            301,
+            301,
+            301,
+            301,
+            301
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            302,
+            302,
+            302,
+            302,
+            302
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            303,
+            303,
+            303,
+            303,
+            303
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-hair-source-1ecafff63abbb025.png",
+      "source_row": 5
+    },
+    {
+      "item_id": "motion_v2_outfit_0",
+      "slot": "outfit",
+      "local_key": "outfit-0",
+      "source_pointer": "/wardrobe/items/14",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_06"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            309,
+            310,
+            311,
+            312,
+            313
+          ],
+          "hand_frames": [
+            304,
+            305,
+            306,
+            307,
+            308
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            319,
+            320,
+            321,
+            322,
+            323
+          ],
+          "hand_frames": [
+            314,
+            315,
+            316,
+            317,
+            318
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            329,
+            330,
+            331,
+            332,
+            333
+          ],
+          "hand_frames": [
+            324,
+            325,
+            326,
+            327,
+            328
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            339,
+            340,
+            341,
+            342,
+            343
+          ],
+          "hand_frames": [
+            334,
+            335,
+            336,
+            337,
+            338
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+      "source_row": 0,
+      "cuff_policy": "SEMANTIC_CUFF_FILL_REMOVED_AND_BODY_SKIN_RENDERED_BEHIND"
+    },
+    {
+      "item_id": "motion_v2_outfit_1",
+      "slot": "outfit",
+      "local_key": "outfit-1",
+      "source_pointer": "/wardrobe/items/15",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_06"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            349,
+            350,
+            351,
+            352,
+            353
+          ],
+          "hand_frames": [
+            344,
+            345,
+            346,
+            347,
+            348
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            359,
+            360,
+            361,
+            362,
+            363
+          ],
+          "hand_frames": [
+            354,
+            355,
+            356,
+            357,
+            358
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            369,
+            370,
+            371,
+            372,
+            373
+          ],
+          "hand_frames": [
+            364,
+            365,
+            366,
+            367,
+            368
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            379,
+            380,
+            381,
+            382,
+            383
+          ],
+          "hand_frames": [
+            374,
+            375,
+            376,
+            377,
+            378
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+      "source_row": 1,
+      "cuff_policy": "SEMANTIC_CUFF_FILL_REMOVED_AND_BODY_SKIN_RENDERED_BEHIND"
+    },
+    {
+      "item_id": "motion_v2_outfit_2",
+      "slot": "outfit",
+      "local_key": "outfit-2",
+      "source_pointer": "/wardrobe/items/16",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_06"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            389,
+            390,
+            391,
+            392,
+            393
+          ],
+          "hand_frames": [
+            384,
+            385,
+            386,
+            387,
+            388
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            399,
+            400,
+            401,
+            402,
+            403
+          ],
+          "hand_frames": [
+            394,
+            395,
+            396,
+            397,
+            398
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            409,
+            410,
+            411,
+            412,
+            413
+          ],
+          "hand_frames": [
+            404,
+            405,
+            406,
+            407,
+            408
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            419,
+            420,
+            421,
+            422,
+            423
+          ],
+          "hand_frames": [
+            414,
+            415,
+            416,
+            417,
+            418
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+      "source_row": 2,
+      "cuff_policy": "SEMANTIC_CUFF_FILL_REMOVED_AND_BODY_SKIN_RENDERED_BEHIND"
+    },
+    {
+      "item_id": "motion_v2_outfit_3",
+      "slot": "outfit",
+      "local_key": "outfit-3",
+      "source_pointer": "/wardrobe/items/17",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_06"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            429,
+            430,
+            431,
+            432,
+            433
+          ],
+          "hand_frames": [
+            424,
+            425,
+            426,
+            427,
+            428
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            439,
+            440,
+            441,
+            442,
+            443
+          ],
+          "hand_frames": [
+            434,
+            435,
+            436,
+            437,
+            438
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            449,
+            450,
+            451,
+            452,
+            453
+          ],
+          "hand_frames": [
+            444,
+            445,
+            446,
+            447,
+            448
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            459,
+            460,
+            461,
+            462,
+            463
+          ],
+          "hand_frames": [
+            454,
+            455,
+            456,
+            457,
+            458
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+      "source_row": 3,
+      "cuff_policy": "SEMANTIC_CUFF_FILL_REMOVED_AND_BODY_SKIN_RENDERED_BEHIND"
+    },
+    {
+      "item_id": "motion_v2_outfit_4",
+      "slot": "outfit",
+      "local_key": "outfit-4",
+      "source_pointer": "/wardrobe/items/18",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_06"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            469,
+            470,
+            471,
+            472,
+            473
+          ],
+          "hand_frames": [
+            464,
+            465,
+            466,
+            467,
+            468
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            479,
+            480,
+            481,
+            482,
+            483
+          ],
+          "hand_frames": [
+            474,
+            475,
+            476,
+            477,
+            478
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            489,
+            490,
+            491,
+            492,
+            493
+          ],
+          "hand_frames": [
+            484,
+            485,
+            486,
+            487,
+            488
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            499,
+            500,
+            501,
+            502,
+            503
+          ],
+          "hand_frames": [
+            494,
+            495,
+            496,
+            497,
+            498
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+      "source_row": 4,
+      "cuff_policy": "SEMANTIC_CUFF_FILL_REMOVED_AND_BODY_SKIN_RENDERED_BEHIND"
+    },
+    {
+      "item_id": "motion_v2_outfit_5",
+      "slot": "outfit",
+      "local_key": "outfit-5",
+      "source_pointer": "/wardrobe/items/19",
+      "selected_source_ids": [
+        "photo_01",
+        "photo_06"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "phase_motion": "ARTICULATED_LIMBS",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            509,
+            510,
+            511,
+            512,
+            513
+          ],
+          "hand_frames": [
+            504,
+            505,
+            506,
+            507,
+            508
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            519,
+            520,
+            521,
+            522,
+            523
+          ],
+          "hand_frames": [
+            514,
+            515,
+            516,
+            517,
+            518
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            529,
+            530,
+            531,
+            532,
+            533
+          ],
+          "hand_frames": [
+            524,
+            525,
+            526,
+            527,
+            528
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            539,
+            540,
+            541,
+            542,
+            543
+          ],
+          "hand_frames": [
+            534,
+            535,
+            536,
+            537,
+            538
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-outfit-source-a106fab178ab0a05.png",
+      "source_row": 5,
+      "cuff_policy": "SEMANTIC_CUFF_FILL_REMOVED_AND_BODY_SKIN_RENDERED_BEHIND"
+    },
+    {
+      "item_id": "motion_v2_accessory_0",
+      "slot": "accessory",
+      "local_key": "accessory-0",
+      "source_pointer": "/wardrobe/items/20",
+      "selected_source_ids": [
+        "photo_19"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_ACCESSORY_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            544,
+            544,
+            544,
+            544,
+            544
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            545,
+            545,
+            545,
+            545,
+            545
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            546,
+            546,
+            546,
+            546,
+            546
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            547,
+            547,
+            547,
+            547,
+            547
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-accessory-source-29ff6bab42ff3829.png",
+      "source_row": 0
+    },
+    {
+      "item_id": "motion_v2_accessory_1",
+      "slot": "accessory",
+      "local_key": "accessory-1",
+      "source_pointer": "/wardrobe/items/21",
+      "selected_source_ids": [
+        "photo_19"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_ACCESSORY_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            548,
+            548,
+            548,
+            548,
+            548
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            549,
+            549,
+            549,
+            549,
+            549
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            550,
+            550,
+            550,
+            550,
+            550
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            551,
+            551,
+            551,
+            551,
+            551
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-accessory-source-29ff6bab42ff3829.png",
+      "source_row": 1
+    },
+    {
+      "item_id": "motion_v2_accessory_2",
+      "slot": "accessory",
+      "local_key": "accessory-2",
+      "source_pointer": "/wardrobe/items/22",
+      "selected_source_ids": [
+        "photo_19"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_ACCESSORY_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            552,
+            552,
+            552,
+            552,
+            552
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            553,
+            553,
+            553,
+            553,
+            553
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            554,
+            554,
+            554,
+            554,
+            554
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            555,
+            555,
+            555,
+            555,
+            555
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-accessory-source-29ff6bab42ff3829.png",
+      "source_row": 2
+    },
+    {
+      "item_id": "motion_v2_accessory_3",
+      "slot": "accessory",
+      "local_key": "accessory-3",
+      "source_pointer": "/wardrobe/items/23",
+      "selected_source_ids": [
+        "photo_19"
+      ],
+      "attribution": "BUILT_IN_IMAGEGEN_SELECTED_ACCESSORY_RECONSTRUCTION",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            556,
+            556,
+            556,
+            556,
+            556
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            557,
+            557,
+            557,
+            557,
+            557
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            558,
+            558,
+            558,
+            558,
+            558
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            559,
+            559,
+            559,
+            559,
+            559
+          ]
+        }
+      ],
+      "authored_resource": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/authored-accessory-source-29ff6bab42ff3829.png",
+      "source_row": 3
+    },
+    {
+      "item_id": "motion_v2_eyes_0",
+      "slot": "eyes",
+      "local_key": "eyes-0",
+      "source_pointer": "/wardrobe/items/24",
+      "selected_source_ids": [
+        "photo_09"
+      ],
+      "attribution": "SUPPLIED_EYE_CUTOUTS",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            560,
+            560,
+            560,
+            560,
+            560
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            561,
+            561,
+            561,
+            561,
+            561
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            562,
+            562,
+            562,
+            562,
+            562
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            563,
+            563,
+            563,
+            563,
+            563
+          ],
+          "visibility": "NON_VISIBLE_FROM_REAR"
+        }
+      ],
+      "source_location": "row1-col1"
+    },
+    {
+      "item_id": "motion_v2_eyes_1",
+      "slot": "eyes",
+      "local_key": "eyes-1",
+      "source_pointer": "/wardrobe/items/25",
+      "selected_source_ids": [
+        "photo_09"
+      ],
+      "attribution": "SUPPLIED_EYE_CUTOUTS",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            564,
+            564,
+            564,
+            564,
+            564
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            565,
+            565,
+            565,
+            565,
+            565
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            566,
+            566,
+            566,
+            566,
+            566
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            567,
+            567,
+            567,
+            567,
+            567
+          ],
+          "visibility": "NON_VISIBLE_FROM_REAR"
+        }
+      ],
+      "source_location": "row1-col2"
+    },
+    {
+      "item_id": "motion_v2_eyes_2",
+      "slot": "eyes",
+      "local_key": "eyes-2",
+      "source_pointer": "/wardrobe/items/26",
+      "selected_source_ids": [
+        "photo_09"
+      ],
+      "attribution": "SUPPLIED_EYE_CUTOUTS",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            568,
+            568,
+            568,
+            568,
+            568
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            569,
+            569,
+            569,
+            569,
+            569
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            570,
+            570,
+            570,
+            570,
+            570
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            571,
+            571,
+            571,
+            571,
+            571
+          ],
+          "visibility": "NON_VISIBLE_FROM_REAR"
+        }
+      ],
+      "source_location": "row1-col3"
+    },
+    {
+      "item_id": "motion_v2_eyes_3",
+      "slot": "eyes",
+      "local_key": "eyes-3",
+      "source_pointer": "/wardrobe/items/27",
+      "selected_source_ids": [
+        "photo_09"
+      ],
+      "attribution": "SUPPLIED_EYE_CUTOUTS",
+      "phase_motion": "STATIONARY_HEAD_ATTACHMENT",
+      "directions": [
+        {
+          "direction": "down",
+          "frames": [
+            572,
+            572,
+            572,
+            572,
+            572
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            573,
+            573,
+            573,
+            573,
+            573
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            574,
+            574,
+            574,
+            574,
+            574
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            575,
+            575,
+            575,
+            575,
+            575
+          ],
+          "visibility": "NON_VISIBLE_FROM_REAR"
+        }
+      ],
+      "source_location": "row2-col3"
+    }
+  ]
+}

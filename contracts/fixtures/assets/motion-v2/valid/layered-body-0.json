@@ -1,0 +1,14 @@
+{
+  "contract_version": "2.0.0",
+  "kind": "avatar_config",
+  "manifest_id": "mcr_selected_motion_20261103",
+  "manifest_version": 1,
+  "representation": "motion_layered",
+  "item_ids": {
+    "body": "motion_v2_body_0",
+    "eyes": "motion_v2_eyes_0",
+    "hair": "motion_v2_hair_0",
+    "outfit": "motion_v2_outfit_0",
+    "accessory": "motion_v2_accessory_0"
+  }
+}

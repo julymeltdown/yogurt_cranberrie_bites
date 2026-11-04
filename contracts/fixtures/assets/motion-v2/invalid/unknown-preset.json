@@ -1,0 +1,8 @@
+{
+  "contract_version": "2.0.0",
+  "kind": "avatar_config",
+  "manifest_id": "mcr_selected_motion_20261103",
+  "manifest_version": 1,
+  "representation": "motion_preset",
+  "preset_id": "motion_v2_photo01_front_07"
+}
