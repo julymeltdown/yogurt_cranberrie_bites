@@ -253,6 +253,12 @@ class ProfileTests(unittest.TestCase):
             self.assertEqual(guard.process_peak, 3)
             with patch.object(live.subprocess, "run", return_value=NS(stdout="\n".join(f"{n} 100" for n in range(200,233)))):
                 with self.assertRaisesRegex(prep.auth.CheckFailure, "process-cap"): guard.process_check()
+            self.assertEqual(guard.process_limit, 32)
+            args.max_owned_processes = 80  # Fixture offered cap only; never runtime authorization.
+            configured = live.QualificationGuard(args, NS(cluster=None))
+            self.assertEqual(configured.close()["owned_process_cap"], 80)
+            args.max_owned_processes = 129
+            with self.assertRaises(Failure): live.validate_qualification_arguments(args)
 
     def test_runtime_migration_overlay_keeps_binary_source_and_exact_ledger_guard(self):
         with tempfile.TemporaryDirectory() as directory:

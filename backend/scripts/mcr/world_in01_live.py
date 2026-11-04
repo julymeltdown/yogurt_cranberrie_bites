@@ -52,6 +52,7 @@ class QualificationGuard:
         self.hard_deadline_at = self.started_at + timedelta(seconds=args.whole_timeout_seconds)
         self.phase_history, self.phase_deadline = [], self.deadline
         self.process_peak = 0
+        self.process_limit = getattr(args, "max_owned_processes", 32)
         self.limit, self.carry = args.whole_byte_limit, args.retained_carry_bytes
         self.maximum, self.failure = self.carry, None
         self.stop_event, self.thread = threading.Event(), None
@@ -78,7 +79,7 @@ class QualificationGuard:
             if not more: break
             owned.update(more)
         self.process_peak = max(self.process_peak, len(owned))
-        prep.auth.require(len(owned) <= 32, "qualification-owned-process-cap")
+        prep.auth.require(len(owned) <= self.process_limit, "qualification-owned-process-cap")
 
     def check(self):
         info = self.output.lstat()
@@ -133,7 +134,7 @@ class QualificationGuard:
         return {"max_sampled_whole_bytes": self.maximum, "hard_whole_bytes": self.limit,
                 "retained_carry_bytes": self.carry, "cleanup_reserve_seconds": CLEANUP_RESERVE_SECONDS,
                 "start_free_floor_bytes": 16 * 1024**3, "continuous_stop_floor_bytes": 8 * 1024**3,
-                "owned_process_cap": 32, "max_sampled_owned_processes": self.process_peak,
+                "owned_process_cap": self.process_limit, "max_sampled_owned_processes": self.process_peak,
                 "started_at": self.started_at.isoformat(),
                 "work_deadline_at": self.work_deadline_at.isoformat(),
                 "hard_deadline_at": self.hard_deadline_at.isoformat(),
@@ -783,6 +784,8 @@ def main():
     parser.add_argument("--whole-timeout-seconds", type=float, default=600)
     parser.add_argument("--whole-byte-limit", type=int, help="whole carry plus outputs cap from the fresh resource offer")
     parser.add_argument("--retained-carry-bytes", type=int, help="measured reusable cohort/source/proof carry from the fresh offer")
+    parser.add_argument("--max-owned-processes", type=int, default=32,
+                        help="exact process cap of the separately accepted fresh offer; includes owned PG children")
     parser.add_argument("--retain-public-projection", action="store_true",
                         help="QA05 only: retain public resource/capability projection after in-memory actual C03 validation")
     parser.add_argument("--frontend-source-revision", help="consumer frontend commit for retention provenance; no frontend process is run")
@@ -817,6 +820,7 @@ def validate_qualification_arguments(args):
         number(args.whole_timeout_seconds, CLEANUP_RESERVE_SECONDS + 60, 3600, "qualification-whole-timeout")
         integer(args.whole_byte_limit, 1, 4 * 1024**3, "qualification-whole-byte-limit")
         integer(args.retained_carry_bytes, 309342208, args.whole_byte_limit - 1, "qualification-retained-carry")
+        integer(getattr(args, "max_owned_processes", 32), 16, 128, "qualification-owned-process-limit")
 
 
 if __name__ == "__main__":
