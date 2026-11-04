@@ -5,11 +5,11 @@
   "goalCreatedAt": 1793816464,
   "goalBudget": null,
   "originalC07Completion": "PRESERVED_SEPARATE",
-  "sourceBeforeMetadata": "82620da0ebc601b50b881a74f86c044d10f8bd77",
+  "sourceBeforeMetadata": "7c375ec28ae3c5e701bb3e9e7aa92c48fa62fb86",
   "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
   "readsetFiles": 336,
   "readsetSha256": "fa28bb48dd49f49267a1a6fcdf0c3f846a0e09a04ca957f7f3f78e87313df246",
-  "guardianSha256": "62db978bb52dfa3f0131f55f0bdcceb6d6a4f40df556331726410a57c5b643b0",
+  "guardianSha256": "8cae3187f6358703b2e158312a979eb459c5010768f77d4dd0c681ce89f53136",
   "qualifySha256": "607a2d6b9ace7f8e8820c9df873da95c312c615aa418ed8e74ac9d9c852956f3",
   "activePinsSha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
   "activePinCanonical": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
@@ -36,5 +36,7 @@
   },
   "newSourceReservationHeld": false,
   "qualificationStarted": false,
-  "createdAt": 1793817530.859176
+  "createdAt": 1793817530.859176,
+  "floorPolicy": "Fresh explicit offer may authorize 11GiB start; default12GiB; reserve9GiB and live8GiB unchanged",
+  "metadataUpdatedAt": 1793818271.975161
 }

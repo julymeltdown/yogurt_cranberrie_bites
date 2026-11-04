@@ -18,6 +18,8 @@ LEASE = os.environ['MCR_C07_LEASE']
 DEADLINE = float(os.environ['MCR_C07_DEADLINE'])
 ACTIVE_END = DEADLINE - 60
 OTHER_NEW = int(os.environ['MCR_C07_OTHER_NEW'])
+START_FLOOR = int(os.environ.get('MCR_C07_START_FLOOR_GIB', '12'))
+assert START_FLOOR in (11, 12), 'fresh offer must state an authorized floor'
 GIB = 1024 ** 3
 MIB = 1024 ** 2
 assert Path.cwd() == ROOT and OUT.parent == HERE and not OUT.exists()
@@ -33,7 +35,7 @@ def allocated(path):
 BASE = allocated(ROOT) + allocated(GIT)
 RETAINED = allocated(Path('/Users/lhs/Desktop/mcr/frontend/node_modules')) + allocated(Path('/Users/lhs/Desktop/mcr-tools/contracts-validation-venv')) + Path('/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node').stat().st_size
 free = shutil.disk_usage(ROOT).free
-assert free >= 12 * GIB and free - OTHER_NEW - 128 * MIB >= 9 * GIB
+assert free >= START_FLOOR * GIB and free - OTHER_NEW - 128 * MIB >= 9 * GIB
 assert BASE + RETAINED + 128 * MIB <= 2 * GIB
 OUT.mkdir(); TMP.mkdir()
 def record(name, value):
@@ -42,6 +44,7 @@ record('acceptance.json', dict(lease=LEASE, source=os.environ['MCR_C07_SOURCE'],
     readsetSha256=hashlib.sha256((HERE/'readset.json').read_bytes()).hexdigest(),
     guardianSha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     acceptedAt=time.time(), activeEnd=ACTIVE_END, deadline=DEADLINE, freeBytes=free, otherWorstNewBytes=OTHER_NEW,
+    startFloorGiB=START_FLOOR, liveFloorGiB=8, reserveMarginGiB=9,
     ownWorstNewBytes=128*MIB, remainingMarginBytes=free-OTHER_NEW-128*MIB, wholeFloorBytes=BASE+RETAINED,
     caps=dict(processes=24, rssBytes=4*GIB, wholeBytes=2*GIB, newBytes=128*MIB, tmpBytes=96*MIB, durableBytes=24*MIB),
     privateTmp=str(TMP), portsCreated=[]))
