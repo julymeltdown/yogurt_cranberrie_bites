@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "event_id": "20000000-0000-4000-8000-000000000002",
+  "actor_id": "10000000-0000-4000-8000-000000000001",
+  "revision": 2,
+  "server_time": "2026-11-05T00:00:00Z",
+  "background_index": 1,
+  "fill_limit": 256,
+  "cell_allowance": 512,
+  "window_seconds": 600,
+  "remaining_cells": 256,
+  "next_cell_available_at": null,
+  "next_allowed_at": "2026-11-05T00:00:00Z",
+  "editable": true,
+  "available": {
+    "pencil": true,
+    "erase": true,
+    "fill": true,
+    "undo": true
+  },
+  "undo_window_seconds": 600,
+  "undo": {
+    "action_id": "40000000-0000-4000-8000-000000000004",
+    "expires_at": "2026-11-05T00:10:00Z",
+    "changed_cells": 256
+  },
+  "latest_action": {
+    "action_id": "40000000-0000-4000-8000-000000000004",
+    "receipt_id": "50000000-0000-4000-8000-000000000005",
+    "event_id": "20000000-0000-4000-8000-000000000002",
+    "actor_id": "10000000-0000-4000-8000-000000000001",
+    "command": {
+      "operation_id": "fillConcertMuralRegion",
+      "body": {
+        "expected_revision": 1,
+        "x": 0,
+        "y": 0,
+        "color_index": 2
+      }
+    },
+    "idempotency_key": "30000000-0000-4000-8000-000000000003",
+    "kind": "FILL",
+    "revision": 2,
+    "changed_cells": 256,
+    "committed_at": "2026-11-05T00:00:00Z",
+    "next_allowed_at": "2026-11-05T00:00:00Z",
+    "undo_expires_at": "2026-11-05T00:10:00Z",
+    "reset_required": true
+  },
+  "unresolved": null
+}

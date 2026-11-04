@@ -6600,5 +6600,382 @@
       }
     },
     "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "eraseConcertMuralPixel",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/mural/erase",
+    "request": "mural.ErasePixel",
+    "request_location": "body",
+    "response": "mural.OwnAction",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "mural_tools_b_write",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED",
+        "MURAL_COOLDOWN",
+        "MURAL_BUDGET_EXCEEDED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE",
+        "MURAL_TOOL_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_PAUSED",
+        "MURAL_FROZEN",
+        "MURAL_REGION_LOCKED",
+        "MURAL_NO_CHANGE",
+        "MURAL_FILL_TOO_LARGE",
+        "MURAL_UNDO_EXPIRED",
+        "MURAL_UNDO_NOT_LATEST",
+        "MURAL_UNDO_UNAVAILABLE",
+        "MURAL_ACTION_UNRESOLVED"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "fillConcertMuralRegion",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/mural/fill",
+    "request": "mural.FillRegion",
+    "request_location": "body",
+    "response": "mural.OwnAction",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "mural_tools_b_write",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED",
+        "MURAL_COOLDOWN",
+        "MURAL_BUDGET_EXCEEDED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE",
+        "MURAL_TOOL_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_PAUSED",
+        "MURAL_FROZEN",
+        "MURAL_REGION_LOCKED",
+        "MURAL_NO_CHANGE",
+        "MURAL_FILL_TOO_LARGE",
+        "MURAL_UNDO_EXPIRED",
+        "MURAL_UNDO_NOT_LATEST",
+        "MURAL_UNDO_UNAVAILABLE",
+        "MURAL_ACTION_UNRESOLVED"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "undoConcertMuralAction",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/mural/undo",
+    "request": "mural.UndoAction",
+    "request_location": "body",
+    "response": "mural.OwnAction",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "mural_tools_b_write",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED",
+        "MURAL_COOLDOWN",
+        "MURAL_BUDGET_EXCEEDED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE",
+        "MURAL_TOOL_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_PAUSED",
+        "MURAL_FROZEN",
+        "MURAL_REGION_LOCKED",
+        "MURAL_NO_CHANGE",
+        "MURAL_FILL_TOO_LARGE",
+        "MURAL_UNDO_EXPIRED",
+        "MURAL_UNDO_NOT_LATEST",
+        "MURAL_UNDO_UNAVAILABLE",
+        "MURAL_ACTION_UNRESOLVED"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "getConcertMuralTools",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/mural/tools",
+    "request": null,
+    "request_location": "query",
+    "response": "mural.ToolCapabilities",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "mural_tools_b_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED",
+        "MURAL_COOLDOWN"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_PAUSED",
+        "MURAL_FROZEN",
+        "MURAL_REGION_LOCKED"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "getOwnConcertMuralAction",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/mural/actions/{idempotencyKey}",
+    "request": null,
+    "request_location": "query",
+    "response": "mural.OwnAction",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "mural_tools_b_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED",
+        "MURAL_COOLDOWN"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_PAUSED",
+        "MURAL_FROZEN",
+        "MURAL_REGION_LOCKED"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "idempotencyKey": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   }
 ]

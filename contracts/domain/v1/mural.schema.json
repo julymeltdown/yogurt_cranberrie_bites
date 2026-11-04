@@ -501,6 +501,405 @@
         "idempotency_key",
         "result"
       ]
+    },
+    "ErasePixel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "x": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        }
+      },
+      "required": [
+        "expected_revision",
+        "x",
+        "y"
+      ]
+    },
+    "FillRegion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "x": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "color_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        }
+      },
+      "required": [
+        "expected_revision",
+        "x",
+        "y",
+        "color_index"
+      ]
+    },
+    "UndoAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "target_action_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "target_action_id"
+      ]
+    },
+    "ActionBody": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "operation_id": {
+              "const": "placeConcertPixel"
+            },
+            "body": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/PlacePixel"
+            }
+          },
+          "required": [
+            "operation_id",
+            "body"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "operation_id": {
+              "const": "eraseConcertMuralPixel"
+            },
+            "body": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/ErasePixel"
+            }
+          },
+          "required": [
+            "operation_id",
+            "body"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "operation_id": {
+              "const": "fillConcertMuralRegion"
+            },
+            "body": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/FillRegion"
+            }
+          },
+          "required": [
+            "operation_id",
+            "body"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "operation_id": {
+              "const": "undoConcertMuralAction"
+            },
+            "body": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/UndoAction"
+            }
+          },
+          "required": [
+            "operation_id",
+            "body"
+          ]
+        }
+      ]
+    },
+    "OwnAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "receipt_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "actor_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "command": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/ActionBody"
+        },
+        "idempotency_key": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "kind": {
+          "enum": [
+            "PENCIL",
+            "ERASE",
+            "FILL",
+            "UNDO"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "changed_cells": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "committed_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "next_allowed_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "undo_expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "reset_required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "action_id",
+        "receipt_id",
+        "event_id",
+        "actor_id",
+        "command",
+        "idempotency_key",
+        "kind",
+        "revision",
+        "changed_cells",
+        "committed_at",
+        "next_allowed_at",
+        "undo_expires_at",
+        "reset_required"
+      ]
+    },
+    "UndoEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "changed_cells": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "action_id",
+        "expires_at",
+        "changed_cells",
+        "revision"
+      ]
+    },
+    "UnresolvedAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/ActionBody"
+        },
+        "idempotency_key": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "receipt_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "command",
+        "idempotency_key",
+        "receipt_id"
+      ]
+    },
+    "ToolAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pencil": {
+          "type": "boolean"
+        },
+        "erase": {
+          "type": "boolean"
+        },
+        "fill": {
+          "type": "boolean"
+        },
+        "undo": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "pencil",
+        "erase",
+        "fill",
+        "undo"
+      ]
+    },
+    "ToolCapabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "actor_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "server_time": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "background_index": {
+          "anyOf": [
+            {
+              "const": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fill_limit": {
+          "const": 256
+        },
+        "cell_allowance": {
+          "const": 512
+        },
+        "window_seconds": {
+          "const": 600
+        },
+        "remaining_cells": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 512
+        },
+        "next_cell_available_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "next_allowed_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "editable": {
+          "type": "boolean"
+        },
+        "available": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/ToolAvailability"
+        },
+        "undo_window_seconds": {
+          "const": 600
+        },
+        "undo": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/UndoEligibility"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "latest_action": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/OwnAction"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unresolved": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/UnresolvedAction"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "event_id",
+        "actor_id",
+        "revision",
+        "server_time",
+        "background_index",
+        "fill_limit",
+        "cell_allowance",
+        "window_seconds",
+        "remaining_cells",
+        "next_cell_available_at",
+        "next_allowed_at",
+        "editable",
+        "available",
+        "undo_window_seconds",
+        "undo",
+        "latest_action",
+        "unresolved"
+      ]
     }
   }
 }

@@ -308,6 +308,28 @@ class Contract:
         except ValidationError:
             raise ContractError('schema mismatch: ' + name) from None
         semantic(value)
+        if name == 'mural.OwnAction':
+            command = value['command']
+            kinds = {'placeConcertPixel': 'PENCIL', 'eraseConcertMuralPixel': 'ERASE',
+                     'fillConcertMuralRegion': 'FILL', 'undoConcertMuralAction': 'UNDO'}
+            require(kinds[command['operation_id']] == value['kind'], 'Wall action kind mismatch')
+            require(value['revision'] == command['body']['expected_revision'] + 1, 'Wall action revision mismatch')
+            require(timestamp(value['committed_at']) <= timestamp(value['next_allowed_at']) and
+                    timestamp(value['committed_at']) < timestamp(value['undo_expires_at']) <=
+                    timestamp(value['committed_at']) + timedelta(seconds=600), 'Wall action deadline mismatch')
+            require(value['kind'] in ('FILL', 'UNDO') or value['changed_cells'] == 1, 'Wall single cell count mismatch')
+            require(value['kind'] == 'PENCIL' or value['reset_required'] is True, 'Wall tool reset required')
+        if name == 'mural.ToolCapabilities':
+            for field in ('latest_action',):
+                action = value[field]
+                if action is not None:
+                    self.validate(action, 'mural.OwnAction')
+                    require(action['event_id'] == value['event_id'] and action['actor_id'] == value['actor_id'],
+                            'foreign Wall action history')
+            require(not any(value['available'][k] for k in ('erase', 'fill', 'undo')) or
+                    value['background_index'] == 0 and value['editable'], 'unqualified Wall tools')
+            if value['undo'] is not None:
+                require(timestamp(value['undo']['expires_at']) > timestamp(value['server_time']), 'expired Wall undo')
         if name == 'social.PrivateAgeClaim':
             start, end = timestamp(value['verified_at']), timestamp(value['expires_at'])
             require(end - start <= timedelta(days=90), 'age claim exceeds 90 days')
@@ -458,6 +480,21 @@ class Contract:
                             'original pixel command mismatch')
                 else:
                     require(value['actor_id'] == actor_id, 'foreign unread count')
+            if operation_id in {'getConcertMuralTools', 'getOwnConcertMuralAction', 'eraseConcertMuralPixel', 'fillConcertMuralRegion', 'undoConcertMuralAction'} and status == op['success_status']:
+                self.validate(actor_id, 'common.Uuid')
+                self.validate(event_id, 'common.Uuid')
+                require(value['actor_id'] == actor_id and value['event_id'] == event_id, 'foreign Wall scope')
+                if name == 'mural.OwnAction':
+                    self.validate(idempotency_key, 'common.Uuid')
+                    self.validate(original_command, 'mural.ActionBody')
+                    require(value['idempotency_key'] == idempotency_key and value['command'] == original_command,
+                            'Wall original command correlation mismatch')
+                    if operation_id == 'getOwnConcertMuralAction':
+                        require(request_path is not None, 'captured Wall recovery target required')
+                        target = self.validate_target(operation_id, request_path, request_query, event_id=event_id)
+                        require(target['path']['idempotencyKey'] == idempotency_key, 'foreign Wall recovery key')
+                    else:
+                        require(original_command['operation_id'] == operation_id, 'Wall operation mismatch')
             if operation_id in reads or name == 'common.CommandReceipt':
                 self.validate(actor_id, 'common.Uuid')
                 self.validate(event_id, 'common.Uuid')
@@ -616,7 +653,7 @@ def validate_fixtures(contract):
     seen = set()
     for row in rows:
         relative = Path(row['file'])
-        require(len(relative.parts) == 1 and relative.suffix == '.json', 'unsafe fixture path')
+        require((len(relative.parts) == 1 or len(relative.parts) == 2 and relative.parts[0] == 'wall-tools-b' and relative.parts[1] not in ('.', '..')) and relative.suffix == '.json' and not relative.is_absolute(), 'unsafe fixture path')
         require(row['file'] not in seen, 'duplicate fixture')
         seen.add(row['file'])
         value = read(FIXTURES / relative)
@@ -626,7 +663,7 @@ def validate_fixtures(contract):
         except ContractError:
             rejected = True
         require(rejected == (row['expected'] == 'reject'), 'fixture expectation mismatch: ' + row['file'])
-    require(seen == {p.name for p in FIXTURES.glob('*.json')} - {'index.json'}, 'fixture index drift')
+    require(seen == ({p.name for p in FIXTURES.glob('*.json')} - {'index.json'}) | {str(p.relative_to(FIXTURES)) for p in (FIXTURES / 'wall-tools-b').glob('*.json')}, 'fixture index drift')
     return len(seen)
 
 
