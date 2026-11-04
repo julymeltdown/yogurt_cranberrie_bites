@@ -129,6 +129,29 @@
       "command": "python3 frontend/public/world/reference-scene-v2/runtime/spatial-v3/build-candidate-pin.py e66597df4a8f8010b66eea97464115328ea0fc5f",
       "exit_code": 0,
       "result": "Published source ancestry and exact canonical/source/artifact pins match"
+    },
+    {
+      "command": "tsc -b --pretty false",
+      "exit_code": 0,
+      "revision": "15188c2917f93a9436a6f0cfbce25fc019b8142c"
+    },
+    {
+      "command": "MCR_FE14_PYTHON=<contract-validation-python> vitest run src/world/reference-scene src/world/composition/__tests__ src/world/__tests__/runtime.test.ts src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx",
+      "exit_code": 0,
+      "revision": "15188c2917f93a9436a6f0cfbce25fc019b8142c",
+      "tests": 229,
+      "files": 11,
+      "scope": "Final concurrent FE33 composition integration"
+    },
+    {
+      "command": "vite build",
+      "exit_code": 0,
+      "revision": "15188c2917f93a9436a6f0cfbce25fc019b8142c"
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base 4e9c57e3838a8f9b3de30e0962e4d2ff01133937 --lane frontend --allow-doc docs/mcr/frontend/reference-scene-world.md",
+      "exit_code": 0,
+      "paths": 4
     }
   ],
   "canonical_backend_pin": {
@@ -152,5 +175,11 @@
     "native_server_browser_temp_closed": true,
     "debug_captures_removed": true
   },
-  "remaining_assigned_work": "None after containing final pin/audit publication; parent-product, backend native and required artist fidelity acceptance remain separately owned."
+  "remaining_assigned_work": "None after containing final pin/audit publication; parent-product, backend native and required artist fidelity acceptance remain separately owned.",
+  "canonical_pin_delivery_commit": "0167a092",
+  "canonical_pin_publication": "15188c2917f93a9436a6f0cfbce25fc019b8142c",
+  "handoff_limits": {
+    "root_optional_era_gate": "composition/release.ts69-73 requires optional enabled themes top-level ORIGINAL_ART/REVIEWED with reviewer/date. Native consumer fixture deliberately bypasses Product composition admission, without changing source provenance. No existing qualification seam identified; Root/BE own honest derived-theme qualification and remaining product integration.",
+    "later_art_choice": "quality-v7/12f6fbf8 is independently published future art; frozen bc731 quality-v6 is not silently switched."
+  }
 }
