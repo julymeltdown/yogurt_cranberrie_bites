@@ -2,7 +2,8 @@
   "status": "CONTRACT_READY_NOT_RELEASE_BOUND_NOT_ADMITTED",
   "source_commits": [
     "cf48c0fe",
-    "fc36280e"
+    "fc36280e",
+    "d83c03f7"
   ],
   "own_paths": [
     "docs/mcr/frontend/reference-scene-v4.md",
@@ -10,12 +11,54 @@
     "frontend/public/world/reference-scene-v2/runtime/spatial-v4/source-binding.json",
     "frontend/src/app/world-entry/__tests__/reference-scene-v4/contracts.test.ts",
     "frontend/src/app/world-entry/__tests__/reference-scene-v4/data.ts",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-danger-360.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-danger-390.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-danger-430.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-parade-360.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-parade-390.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-parade-430.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-revenge-360.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-revenge-390.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/map-revenge-430.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/native.json",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/qualification.json",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-danger-360.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-danger-390.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-danger-430.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-parade-360.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-parade-390.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-parade-430.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-revenge-360.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-revenge-390.png",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/evidence/world-revenge-430.png",
     "frontend/src/app/world-entry/__tests__/reference-scene-v4/native.mjs",
     "frontend/src/app/world-entry/__tests__/reference-scene-v4/preview.html",
     "frontend/src/app/world-entry/__tests__/reference-scene-v4/preview.tsx",
     "frontend/src/app/world-entry/reference-scene-overview.ts",
     "frontend/src/features/places/ui/IllustratedMap.tsx",
     "frontend/src/features/places/ui/reference-scene/spatial-v4-label-obstacles.ts",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/landmark1-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/landmark2-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/landmark3-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-danger-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-danger-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-danger-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-parade-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-parade-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-parade-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-revenge-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-revenge-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/map-revenge-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/native.json",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-danger-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-danger-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-danger-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-parade-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-parade-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-parade-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-revenge-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-revenge-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/evidence/world-revenge-430.jpg",
     "frontend/src/world/reference-scene/__tests__/spatial-v4/fixture.ts",
     "frontend/src/world/reference-scene/__tests__/spatial-v4/label-reference.js",
     "frontend/src/world/reference-scene/__tests__/spatial-v4/map-labels.test.ts",
@@ -71,6 +114,22 @@
     },
     "ui_origin": {
       "exit": 0
+    },
+    "assigned_boundaries": {
+      "exit": 0,
+      "local_base": "fc36280e",
+      "entire_own_commit_paths_verified": 72
+    },
+    "integrated_peer_regressions": {
+      "exit": 0,
+      "files": 26,
+      "tests": 451,
+      "includes": "All scoped scene/runtime/root/Places tests and current Social composition/FE07 boundary suite"
+    },
+    "native_pins_on_integrated_tree": {
+      "exit": 0,
+      "renderer": 55,
+      "root": 35
     }
   },
   "limits": [
