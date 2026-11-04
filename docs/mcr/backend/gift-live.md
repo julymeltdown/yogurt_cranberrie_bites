@@ -1,6 +1,6 @@
 # BE-GIFTS-LIVE production producer
 
-Status: IN_PROGRESS. The current functional continuation below is source-only pending its allocated validation round. Earlier checks are pinned historical evidence; canonical-owner Gift business flows and live HTTP acceptance remain NOT_RUN here.
+Status: IN_PROGRESS. The current functional continuation passed its developer-owned component qualification at `90be4084`. Canonical-owner Gift business flows, public HTTP activation and two-user IN02 acceptance remain NOT_RUN here. Earlier checks below retain their historical source pins.
 
 ## Functional continuation — 2026-11-05
 
@@ -80,12 +80,77 @@ named tests/counts, starts only its marker/inode-owned PostgreSQL, checks actual
 postmaster replacement, verifies source/executable hashes and cleans its owned
 root. It must be run under the allocator's external deadline/process/disk guards.
 
-Current validation: Rust formatting/parser and diff whitespace checked; no
-current Cargo compile, Rust tests, PG/native execution, canonical business flow,
-public HTTP or two-user IN02 result is claimed. These remain NOT_RUN until the
-fresh resource queue admits them. No target, copied executable, full source
-archive or database was allocated for source work. Existing historical results
-below retain their original source pins and limitations.
+### Current developer qualification and publishing handoff
+
+The business increment is `7d61b479`; `57da6bf7` adds an explicit fresh
+`--owned-root` so the native runner's PostgreSQL stays inside its measured
+allocation. The first compile failed with two E0603 sibling-test visibility
+errors; `ec39c8fc` fixes only those fixture helpers. The successful build and
+execution checkout is `90be4084b4ebe3d92423ddcd828943f91154a406`.
+`functional-source-pins.json` records the producing source `ec39c8fc` and
+2,118 exact backend/C04 inputs; its SHA-256 is
+`590d774def7172db061b4c9918dc8d383999d9c3d42fa66dc198f0507f82b9ac`.
+The committed [functional evidence](../../../backend/services/concert-service/tests/gift_live_support/functional-evidence.json)
+contains the producing Cargo JSON hashes, five actual artifact hashes, complete
+selected test output, source/control pins, external guardian source and resource
+release receipts. No source archive was made.
+
+The exact build command was `cargo test --manifest-path backend/Cargo.toml -p
+concert-service --lib --test gift_live_protocol --test gift_live_resources
+--test gift_live_cursor --test gift_live_response --no-run --locked --offline
+-j 2 --message-format=json`, using Rust 1.88.0, debug 0, incremental 0, both
+RUSTFLAGS variables unset and no compiler wrapper. The corrected build exited 0.
+Only the actual five Cargo-reported test executables were frozen. All tests ran
+from those copies after target release; there was no target reentry.
+
+| Current check | Result |
+| --- | --- |
+| Gift library pure checks, including status/reference/route selection | 4 passed |
+| Gift off/live factory configuration checks | 2 passed |
+| Strict protocol, encrypted cursor and C04 response checks | 8 + 5 + 5 passed |
+| Native resource, query/completion and target-correlation cases | 4 + 4 + 3 passed |
+| Prepared Gift-private native exclusion/recovery | 6 cases, 7 invocations passed |
+| Native transaction/receipt witness guards and recovery | 5 cases, 6 invocations passed |
+| Actual PostgreSQL postmaster replacement in private and witness recovery | Passed |
+| Owned PostgreSQL cleanup and unchanged frozen/source hashes | Passed |
+
+This is 24 pure checks and 24 final native test invocations, representing 46
+distinct checks in total. Native SQL uses PostgreSQL 16.14. The final native
+report SHA-256 is
+`4ad03965b00e58ede2060f465f50c3fb3ee9e4027cb5e28c493ce24c1090696e`.
+Receipt snapshots were checked for same-transaction/parent binding and immutable
+retirement evidence; the two-process restart case checks the native witness,
+not a receipt snapshot. The native cohort was repeated only to correct the
+external guardian's detached PostgreSQL process accounting; all repetitions
+were charged to the original lease, totaling 28.89 seconds of native time.
+The final guardian observed ten native processes. Passing product checks were
+not promoted to a canonical authorization or public HTTP result.
+
+The actual 1719 allocation was accepted at 17:26:04.880585 UTC on November 4,
+2026, after the current predecessor's release. Five frozen files total
+151,959,200 bytes; the largest is 96,490,288 bytes, below the 96 MiB individual
+limit. Target release was 17:28:53.931257 UTC with zero compiler processes and
+handles; the next developer received it directly before Gift PostgreSQL work.
+Full resource release was 17:32:19.896206 UTC, 205.96 seconds after target
+release. New-growth high water was 382,128,128 bytes of the 2 GiB allowance;
+outside evidence was 154,054,656 bytes of the 512 MiB limit. Fixed worktree,
+shared Git and nonshrinking history carry plus the full new reservation rounded
+to 5 GiB, within the 12 GiB whole-carry bound. All owned PostgreSQL roots and
+processes were absent, and workload guardians were reaped. No deadline or cap
+was reset. The already released target is not needed for documentation or
+publication.
+
+RootBE receives these validated commits directly for publication, with no king,
+SL, QA or acknowledgment gate. Root still owns closed operation parsing,
+Gateway/public route admission, main composition, the native resolver union
+and combined runtime qualification. Integrate `GiftRuntimeSettings::compose`
+over the existing `CanonicalOwnerComposition` and `ProductOwners`, route the
+thirteen Gift operations and Gift command-status query to this scoped producer,
+and route matching `handles_binding` values to `GiftNativeResolver`. The
+existing composition's exact Gift-private child settler must be retained.
+Actual canonical Gift business acquisition, protected media and reviewed place
+flows, before-byte private body delivery, live HTTP and two-user IN02 remain
+open. This handoff does not amend BE20/21/22/23 or IN02 acceptance.
 
 The current 29-test proof is pinned to `e9b761fb90bc02db570c2aee8f999d3a8b48f993`,
 with exact executable and 1,639 source hashes. It supersedes the earlier local
