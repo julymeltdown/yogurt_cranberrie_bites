@@ -108,6 +108,20 @@ def denied_sql(sql):
     return "DO $$ BEGIN " + sql + " RAISE EXCEPTION 'expected constraint refusal'; EXCEPTION WHEN check_violation THEN NULL; END $$;"
 
 
+def required_sources(repo):
+    sources = list((repo / "backend/services/concert-service/src/participant").rglob("*.rs"))
+    sources += list((repo / "backend/crates/platform/src").rglob("*.rs"))
+    sources += list((repo / "backend/services/concert-service/src/adapters/out/relationship_authority/guarded").rglob("*.rs"))
+    sources += [repo / relative for relative in (
+        "backend/Cargo.lock", "backend/services/concert-service/Cargo.toml",
+        "backend/services/concert-service/build.rs",
+        "backend/proto/concert/v1/participant.proto", "backend/proto/authority/v1/lease.proto",
+        "backend/crates/concert-application/src/avatar/mod.rs",
+        "backend/services/concert-service/src/adapters/out/repository/avatar.rs",
+        "backend/services/concert-service/migrations/0027_participant_profile_coordinator.sql")]
+    return {str(path.relative_to(repo)): hashlib.sha256(path.read_bytes()).hexdigest() for path in sources}
+
+
 def validate_binary(binary, receipt, repo):
     pin = json.loads(receipt.read_text())
     actual = migration.executable(binary)
@@ -115,17 +129,13 @@ def validate_binary(binary, receipt, repo):
     require(hashlib.sha256(actual.read_bytes()).hexdigest() == pin["sha256"], "artifact checksum mismatch")
     require(pin["compile_exit"] == 0 and pin["artifact"]["reason"] == "compiler-artifact"
             and pin["artifact"]["target"]["name"] == "concert_service"
-            and pin["artifact"]["profile"]["test"] is True, "exact Cargo test artifact required")
+            and pin["artifact"]["target"]["kind"] == ["lib"]
+            and pin["artifact"]["profile"]["test"] is True
+            and pin["artifact"]["manifest_path"] == str(repo / "backend/services/concert-service/Cargo.toml"), "exact Cargo test artifact required")
+    emitted = Path(pin["artifact"]["executable"])
+    require(emitted.is_absolute() and not actual.is_relative_to(emitted.parents[2]), "test must use a private copy outside the build target")
     require(pin["source_commit"] == subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip(), "source commit changed")
-    expected = {str(path.relative_to(repo)): hashlib.sha256(path.read_bytes()).hexdigest()
-                for path in (repo / "backend/services/concert-service/src/participant").rglob("*.rs")}
-    for relative in ("backend/proto/concert/v1/participant.proto",
-                     "backend/crates/platform/src/actor_delegation.rs",
-                     "backend/crates/platform/src/actor_delegation/owner_binding.rs",
-                     "backend/crates/platform/src/grpc_method_policy.rs",
-                     "backend/services/concert-service/migrations/0027_participant_profile_coordinator.sql"):
-        expected[relative] = hashlib.sha256((repo / relative).read_bytes()).hexdigest()
-    require(pin.get("source_sha256") == expected, "required source pins differ")
+    require(pin.get("source_sha256") == required_sources(repo), "required source pins differ")
     require(pin.get("rustc") == "1.88.0" and pin.get("incremental") == "0" and pin.get("debug") == "0"
             and pin.get("jobs") == 2 and pin.get("locked") is True and pin.get("offline") is True, "build constraints missing")
     return pin
