@@ -5,7 +5,7 @@ use crate::media_runtime::{
     OwnerMediaIdentity, OwnerMediaReply, OwnerMediaRequest, OwnerMediaRuntime,
 };
 use concert_application::commands::CommandError;
-use tonic::Status;
+use tonic::{Response, Status};
 
 fn failure(context: &VerifiedProduct, error: CommandError) -> proto::ProductResponse {
     let (status, reason) = match error {
@@ -24,6 +24,7 @@ fn failure(context: &VerifiedProduct, error: CommandError) -> proto::ProductResp
     }
     proto::ProductResponse {
         status,
+        delivery: None,
         content_type: "application/json".into(),
         body: serde_json::to_vec(&serde_json::json!({
             "code":format!("CONCERT_{status}"), "message":"Concert media request unavailable",
@@ -41,7 +42,7 @@ impl ProductOwner for OwnerMediaRuntime {
         &self,
         context: &VerifiedProduct,
         request: proto::ProductRequest,
-    ) -> Result<proto::ProductResponse, Status> {
+    ) -> Result<Response<proto::ProductResponse>, Status> {
         let operation = match context.operation() {
             Operation::InitializeUpload => "initConcertUpload",
             Operation::UploadBytes(_) => "putConcertUploadBytes",
@@ -49,7 +50,14 @@ impl ProductOwner for OwnerMediaRuntime {
             Operation::MediaMetadata(_) => "getConcertMedia",
             Operation::PrivateContent(_) => "readConcertMedia",
             Operation::CommandStatus => "getConcertCommandStatus",
-            Operation::Feed => return Err(Status::unavailable("Public Feed producer unavailable")),
+            Operation::Feed
+            | Operation::Post(_)
+            | Operation::Comments(_)
+            | Operation::ListParties
+            | Operation::GetParty(_)
+            | Operation::CreateParty => {
+                return Err(Status::unavailable("Product producer unavailable"));
+            }
         };
         context.check()?;
         let input = OwnerMediaRequest::from_verified(
@@ -69,23 +77,26 @@ impl ProductOwner for OwnerMediaRuntime {
         );
         let input = match input {
             Ok(input) => input,
-            Err(error) => return Ok(failure(context, error)),
+            Err(error) => return Ok(Response::new(failure(context, error))),
         };
         let result = OwnerMediaRuntime::dispatch(self, input).await;
         context.check()?;
-        match result {
-            Ok(OwnerMediaReply::Json { status, body }) => Ok(proto::ProductResponse {
+        let body = match result {
+            Ok(OwnerMediaReply::Json { status, body }) => proto::ProductResponse {
                 status: status.into(),
+                delivery: None,
                 content_type: "application/json".into(),
                 body: serde_json::to_vec(&body)
                     .map_err(|_| Status::internal("Invalid media representation"))?,
-            }),
-            Ok(OwnerMediaReply::Image(image)) => Ok(proto::ProductResponse {
+            },
+            Ok(OwnerMediaReply::Image(image)) => proto::ProductResponse {
                 status: 200,
+                delivery: None,
                 content_type: image.metadata.mime.as_str().into(),
                 body: image.bytes,
-            }),
-            Err(error) => Ok(failure(context, error)),
-        }
+            },
+            Err(error) => failure(context, error),
+        };
+        Ok(Response::new(body))
     }
 }
