@@ -220,3 +220,70 @@ alone cannot recover handles lost on process restart. Profile owner 205 and root
 owner 1fc own the corresponding producer receipt and private durable intent
 implementation. Their pending shared intent hook will be additive. No live
 feature factory or production-readiness flag is enabled by this SDK delivery.
+
+## Durable child SDK extension
+
+The standalone SDK1 delivery is
+`888cb6bd30846d891286b92a9a66e921e8d1ce78`, published on actual parent
+`969b3b2fe45030cfad90e34f224797196ba3bdc8` with only 15 explicit SDK/platform/
+build/document paths. Its remote HEAD was verified after the non-force push.
+Original source-only ancestry is preserved on `codex/mcr-be-owner-authority-input`;
+the active owner branch now starts from this clean published SDK baseline.
+
+The additive closed `ChildRecoveryReference` has exactly PROFILE_PUBLIC and
+LOCAL_PUBLIC variants. It binds all five query identities, the original expiry
+and complete root fingerprint. Profile uses a preallocated child identifier and
+private completion key; Concert local children carry actual cluster/database/
+full-XID/backend/instance identity captured before PREPARE. Arbitrary URLs, SQL
+identifiers or replacement GIDs are rejected. The Profile child-id encoding is
+checked against the actual retained Profile ReadBinding validator.
+
+`ScopeLifecycle::register_child_intent` is required before any Profile RPC or local
+PREPARE can run. Root persists the private reference under an explicitly configured
+at-rest key. `retain_child` accepts only that exact pre-registered reference;
+there is no successful default hook. After actual idempotent child completion,
+`record_child_completed` records the exact reference before advancing the local
+completion index. `settle_child_intents` resolves all durable intents, including
+lost replies with no live child handle, before root scope retirement. Profile
+owner 205 implements its durable 0009 receipt/cancellation protocol; root owner
+1fc owns its encrypted intent ledger and actual recovery dispatch.
+
+Exact transaction registration is deduplicated only after both owner Track
+acknowledgements and durable confirmation. The key includes cluster, database,
+full xid, backend PID/start, producer instance, effect fingerprint and complete
+producer reference. A partial/lost Track acknowledgement never enters this cache.
+
+A private unexposed-acquisition guard handles cancellation before any capability
+can escape. It synchronously seals callbacks, then a bounded settlement-only task
+may persist no-root-work. It does not release owner transactions. Actual owner
+recovery still independently verifies the durable root scope and every registered
+producer transaction. Ordinary live scope Drop has no completion behavior.
+Unknown cleanup keeps counted quarantine.
+
+The settlement path uses a separate completion mutex and releases admission
+serialization before waiting for existing callback permits. A callback already
+holding a permit can then observe the sealed scope and exit instead of waiting
+for a mutex held by its own drainer. Freshness checks cover the current subject
+and the actor's local guard, avoiding a page-wide child RPC scan on every row;
+both owner revision vectors are still checked on every refresh. A read-only peer
+identified the lock-order issue; the final source includes this correction.
+Actual joined callback-drain and 100-subject qualification remain NOT_RUN.
+
+SDK2 validation on exclusive MEDIA leases: platform library 202 passed with
+zero warnings; Concert library 40 passed, zero failed, 13 inherited native tests
+ignored, nine inherited warnings outside the owned adapter. The two added tests
+check actual Profile child-wire compatibility, closed reference serialization and
+native identity shape. Initial build exit 101 came from a cached Friend build
+script's other-worktree path; only helper/build-script mtimes were refreshed,
+without changing their contents. Final retry of the corrected mutex/query source exited 0 using
+`cargo +1.88.0 test --locked --offline -p concert-service --lib` with jobs 2,
+debug 0 and incremental disabled. Frozen binary/source receipts are private
+`sdk2-checkpoint.json` and `sdk2-concert-final-2.log`; the target was explicitly
+released. Platform source pins match the earlier 202-test run.
+These tests do not certify the real owner/root/Profile restart flow.
+
+At this handoff the old BE25 persistent goal was reconciled against its original
+pure-policy-only criteria: delivered commit 3810016a, existing combined 28/28
+qualification and eight matching implementation/test pins satisfy it. That goal
+was completed truthfully. The current unbudgeted canonical-authority goal remains
+active for the outstanding implementation and real-flow qualification above.

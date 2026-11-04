@@ -1,0 +1,206 @@
+{
+  "format": "MCR_REFERENCE_SCENE_SPATIAL3_PUBLIC_INPUTS",
+  "version": 1,
+  "status": "NOT_RELEASE_BOUND",
+  "production_status": "NOT_ADMITTED",
+  "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+  "geometry_source": {
+    "path": "world/reference-scene-v2/spatial-v3/geometry-proposal.json",
+    "sha256": "sha256:373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc",
+    "bytes": 177926
+  },
+  "integer_projection": {
+    "path": "world/reference-scene-v2/spatial-v3/integer-projection.json",
+    "sha256": "sha256:da7d0f0023a314b7d20572f403cc2deedda31f5389c4d5dff1f38d47ab73303c",
+    "bytes": 29220
+  },
+  "artist_manifest": {
+    "path": "world/reference-scene-v2/quality-v6/manifest.json",
+    "sha256": "sha256:a78fbd045e9123e18ffa01efc669dfef9965bbeccb1cd378b886b9b975247aed",
+    "bytes": 5868
+  },
+  "candidate_map": {
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 4,
+    "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+  },
+  "tilemap": {
+    "path": "world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+    "sha256": "sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9",
+    "bytes": 24058,
+    "format": "TILED_JSON"
+  },
+  "compatibility_texture": {
+    "width_px": 768,
+    "height_px": 1296,
+    "image_marker": "mcr-theme.png",
+    "marker_policy": "Inert logical tileset binding. Never fetch this marker."
+  },
+  "scenes": [
+    {
+      "theme_id": "REVENGE",
+      "sources": [
+        {
+          "path": "world/reference-scene-v2/quality-v6/revenge/scenery.json",
+          "sha256": "sha256:319d38c0e29296ed4b1c47ce1e178a5fca7e408dda0545b6ad0f88f6c8f4e40f",
+          "bytes": 6966
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/revenge/layout.json",
+          "sha256": "sha256:3b0ea87623eb4ef022e477dbb12585a3067808d2638cb767af836f05fe297b68",
+          "bytes": 17061
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/revenge/map-metadata.json",
+          "sha256": "sha256:98e2714e60568beac8cf90638f1823e985ef793ae3b05e88876e12c2b7eaa500",
+          "bytes": 7419
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/revenge/resource-inputs.json",
+          "sha256": "sha256:26be991706452a09ce1924bda6711075321dd3b0a98ac168aa669b653fa9c1df",
+          "bytes": 1095
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/revenge/provenance.json",
+          "sha256": "sha256:030052b9f6d2285b42cd6d1c0654ef0c94deea8578e949475aa9ae4dc6286aca",
+          "bytes": 8900
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "sha256": "sha256:210f82ccce180d5b5502f5c865b9505097c8960b2d4c82a7fb74411149df7185",
+          "bytes": 1176082
+        }
+      ],
+      "runtime_resources": [
+        {
+          "id": "quality_v6_shared_ground",
+          "path": "world/reference-scene-v2/quality-v6/ground.png",
+          "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 531480
+        },
+        {
+          "id": "revenge_quality_v6_atlas",
+          "path": "world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "sha256": "sha256:210f82ccce180d5b5502f5c865b9505097c8960b2d4c82a7fb74411149df7185",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1176082
+        }
+      ]
+    },
+    {
+      "theme_id": "PARADE",
+      "sources": [
+        {
+          "path": "world/reference-scene-v2/quality-v6/parade/scenery.json",
+          "sha256": "sha256:7c049ebb8bee5369656de0ce69e49162daa52e3a5678d707cf05a5f9c0938a6b",
+          "bytes": 6942
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/parade/layout.json",
+          "sha256": "sha256:ae05cf49876b148f68c9c0f059aa2919c443eaaf47499a5fc8e5287304c0fc10",
+          "bytes": 17060
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/parade/map-metadata.json",
+          "sha256": "sha256:98e2714e60568beac8cf90638f1823e985ef793ae3b05e88876e12c2b7eaa500",
+          "bytes": 7419
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/parade/resource-inputs.json",
+          "sha256": "sha256:c498abde0a9502cc22244fa83c5625ed3cb00d5e8054e942e40fd3f18416fd8a",
+          "bytes": 1092
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/parade/provenance.json",
+          "sha256": "sha256:f7512a4959f6515910d17d823d94e7be3f8a5ada3f2c49c541eed0c6c669707c",
+          "bytes": 8895
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "sha256": "sha256:e0bc7f1d88b307fd7dd317eb17aae9c2dd2158d5106dedee8b6c9a0ccffdc272",
+          "bytes": 1195741
+        }
+      ],
+      "runtime_resources": [
+        {
+          "id": "quality_v6_shared_ground",
+          "path": "world/reference-scene-v2/quality-v6/ground.png",
+          "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 531480
+        },
+        {
+          "id": "parade_quality_v6_atlas",
+          "path": "world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "sha256": "sha256:e0bc7f1d88b307fd7dd317eb17aae9c2dd2158d5106dedee8b6c9a0ccffdc272",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1195741
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "sources": [
+        {
+          "path": "world/reference-scene-v2/quality-v6/danger/scenery.json",
+          "sha256": "sha256:8dfdf93e47d97392a0002a5755f606c976456355ba60714e14405dd5245a432d",
+          "bytes": 6942
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/danger/layout.json",
+          "sha256": "sha256:8be24044963008d4149521065a3ebf08b1d5c85b3752287d0cdcf4a8ab0fa51d",
+          "bytes": 17060
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/danger/map-metadata.json",
+          "sha256": "sha256:98e2714e60568beac8cf90638f1823e985ef793ae3b05e88876e12c2b7eaa500",
+          "bytes": 7419
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/danger/resource-inputs.json",
+          "sha256": "sha256:a31e5db4abff10e0c2778dac28ea0423ff20ef705a23466e11270c47d5f9e660",
+          "bytes": 1092
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/danger/provenance.json",
+          "sha256": "sha256:2ae398cc9cd4143b44299deb0c0d1c7fb9b436f6378a3b4d60a6918c6324c54c",
+          "bytes": 8893
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v6/danger/atlas.png",
+          "sha256": "sha256:d5b658101719fd22834b6a4ce2b5502d80f380b7cd3c12bf7bfa8801a0e068ec",
+          "bytes": 1181494
+        }
+      ],
+      "runtime_resources": [
+        {
+          "id": "quality_v6_shared_ground",
+          "path": "world/reference-scene-v2/quality-v6/ground.png",
+          "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 531480
+        },
+        {
+          "id": "danger_quality_v6_atlas",
+          "path": "world/reference-scene-v2/quality-v6/danger/atlas.png",
+          "sha256": "sha256:d5b658101719fd22834b6a4ce2b5502d80f380b7cd3c12bf7bfa8801a0e068ec",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1181494
+        }
+      ]
+    }
+  ],
+  "authority": "Static source inputs and proposed map identity only; no canonical backend manifest hash or admission asserted.",
+  "limitations": [
+    "Required geometry/fidelity consumer increment, not final visual acceptance",
+    "Original virtual concept places remain unchanged; no physical destination authority",
+    "No product/bootstrap/operator/live qualification"
+  ]
+}
