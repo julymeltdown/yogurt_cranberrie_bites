@@ -1,0 +1,410 @@
+{
+  "status": "FAIL",
+  "qualification": "ARCHITECTURE_V2_ACTUAL_ROOT_RENDERER_MAP_AND_NEW_EDITABLE_SOURCE_FIXTURES",
+  "startedAt": "2026-11-04T05:09:45.586Z",
+  "resourceAllocation": "ARCHITECTURE-NATIVE-202611040508Z",
+  "resourceLimit": {
+    "minimumFreeGiB": 8,
+    "maximumNewGiB": 0.2
+  },
+  "candidate": "a0c88b5c7db6eb456b71efd559bad15d5371d0b4",
+  "sourcePins": {
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "frontend/src/app/WorldShell.tsx": "4e9f90a76c20b6bdb405f4d30add4ec0b45f0468c61a4fc9ef1092db746f53d3",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/app/world-entry/resolver.ts": "bb49ed5c1d9c6d1985ada6dd9d53c8e1b579c6303cdcb30fb88e38a5c80a6d80",
+    "frontend/src/app/world-panels/index.tsx": "4c99a2746715940524cc1a7ad1e2a002f99707f02bfedc9faf4fb3f028c35d69",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "961959c20225719185c83c1890ef2051bf9065a3f8617651f619023c5b3457e9",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "1c5e3b7d4424e825c8b0520a09abc38396a30176c3e146a3c2f6566de09717b7",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/presentation.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/handoff.json": "a3cfaf56d880bca913f34e91fea72c70aefa8b8c8e3bc8aa8b30f76e3b473686",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf": "f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/OFL.txt": "0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "frontend/src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "frontend/src/world/reference-scene/overview.ts": "919218fd36390ba379def36772c46e15946b877b72295753a71a885293768a8e",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "3626d4cce526e8bcaf97764a7301bdb1ec87ca48809d0d068b53582ae175a07b",
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/reference-scene/spatial-v5/build-source-inputs.py": "5a69bce8b29ce8068c679e7a1d9a4163164cef893b342647df1134a78a3a5c57",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "9c63a3373f2def4c16e2c7898613823623840f624309a40e9875111e913f18ec",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json": "77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json": "9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c",
+    "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py": "47f07eaabfa3ebf2d1baf88f506e09d5975412eabb76e0a312b1f8c1f974e7e6",
+    "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json": "6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "d236e2769abbda946444fb8eda64cf525f48a1c830e42a0715ce8f812e518599",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.html": "6218d6246ad676d54bef02368359b33c82894caafd0b0d1adc9ffe511e2c095e",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/native.mjs": "f07870b29e8dfa3c5cf7330df1319f7c0ce5ec064045f4a80388663c1038d38b",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/contracts.test.ts": "f2bc4fba449540fffb977b29545ce6629a072d30f6e3e8f33edc6410cfdb6c3e",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json": "e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/source-binding.json": "8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2.mjs": "f19985b2005ef2c1a2feed85fcbe06775211edc39073fd6e7cf54a75add3ab4c",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2-probe.ts": "ebe7a46becfc56fe96f7d600891505b871c0e9651df6b666c29f27565cf24047",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2-editable.mjs": "d4775b07b0e29c351e1c314e65ae29dcc4dc21a517bacedf8af851406791ed89",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/handoff.json": "f4094dffd71a661663f34b94874f2a908aaaa7bdf0dbf587a6bee291e8c107c0",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/target-measurements.json": "7a9e6315c90c47adb9ab17037ba3af992bb2c957b7a0f3fcc670c9e229a88142",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/verification.json": "f6a5872b1fbe6f288237a8a6e1913cd76c75861866356b97a40e7a16140e4154",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts": "580d1eff002a212d290eb635d7c45b7f7787223921575767c3aa95f0576b46d7",
+    "frontend/src/world/reference-scene/spatial-v5/build-architecture-inputs.py": "d148343f2e084e453efa3141e90cce4d7c449636418323997fd19f4a8c3860ca",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-source.json": "4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-pin.json": "072e32f442257e54e271c485304779de0ce8ff6f6165c163e23bce1452d1e99b",
+    "frontend/src/world/reference-scene/spatial-v5/architecture.ts": "e4565a2fd80bfcb5ca8756511aa26bd83a66800fdf5cd90d2e345af75d72eab4",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs": "66533bb2df8d40a79e2df29611d2d7968412af69c42c613df006238e7e54eff3",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/renderer.ts": "a5fdaf8bdfda37b1f74e6c1ecfb2653962aff459cd825a9e2117b2951f84a8a2",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/renderer.html": "8047ffefe9e5381bbef8e65a9a63cb08feafc8ca3d442deafdd941328d00f038",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/editable.mjs": "5d23f2093e89096aa7d6ce4a5f96660c3f4d93bcce74196e6c5df3bbd96ef6c8",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/probe.ts": "82cb9e9ce15eb44ed8b5bf6ddfaa4e61ff230e0c378a039bdf6f2bdda304fa63",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/architecture.test.ts": "c45cf1126d6ed32e20e153237c04aacb97da3a9920e40bbe200611535010ab8c",
+    "frontend/public/world/reference-scene-v2/runtime/architecture-v2/source-binding.json": "17ae9c7c16862123a5ba56a4a5b106eed839819aae7187cd6b173f965bd5e336",
+    "frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json": "98484ffd7c3301f7ba3b8cc5221be29d48386ec1dcc2eb67015c2dffc76a5fc0",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/atlas.png": "108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/native-atlas.png": "d93cee0b2a1a68f4e8933b5969a5d5fedd5048d10b85559ba95b0847a3a5ec6f",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/layout.json": "7769f6b6ef754f2c64fccc000ce995a4d0d87d1423e87f9bd8aacc4776b2f043",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/scenery.json": "68e23383ac162d2bcfe0a28019a9aa7685da6a81edb8d304c69a8d306b0388dd",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/resource-inputs.json": "0cbb8451b04afe87bdbc16188a438d11d3c774fe1f0d0bf86e0258980a0b9fea",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/provenance.json": "732a9587dc11d09f9e0dae41611f7fcd2c0716ef6b9749062610fa6f1a7cc220",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/atlas.png": "aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/native-atlas.png": "e8cf8eb7e1b073f93ebbeda06b2095390f1508136effa95e33e70fc6c945be59",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/layout.json": "1dabdcd979ae3d64ebfdb834ce0319f25869d20f6d354e69f0f2c2e8d68f619d",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/scenery.json": "11241a53b1ccd5e11a70e920d0a9e90e34213ded5174684fba34daf93e41fe18",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/resource-inputs.json": "da49d22a143ff5d57631b9dc8b8bf5e18f3ef8405ddfe226a710e4b9cb26046e",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/provenance.json": "e59c51c9504d41dc5277b7f6e804732d3afba4c8b25ffd0589f1ec25b2ca35d0",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/atlas.png": "20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/native-atlas.png": "4fb8ea46a44803416abebe436f34c94f6ec1099ccb6d5f6db49d8b923eaac4d3",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/layout.json": "1dbea3beddbba01f62fae1170b3f626a5b65eae138e1aab2c0171c85888b2b9a",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/scenery.json": "60595eceb1207e91eaca34cc5868fadd10d51be3b99aabd344abe7dc99ee7255",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/resource-inputs.json": "ee5e2f4389cde753cdb6a79599dd9aaf6ad708047f8395b59ea81964e8c5406b",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/provenance.json": "a2de9c8598cb3c1b23658169235de63621c621daa2c69eb4b25d49b02a5ac377",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-revenge.svg": "4ff8f0e6a987eb1b917ced7404b77b429e5e787a79defd18d918e2180f9ee8dc",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-parade.svg": "ce7527927525bbf3339d7880a67ddd7dd955832fa50a4f56a605c18b5bdc4566",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-danger.svg": "39b7de9a3b2f10fd5e9f3eca77587b17c124b3cd685c6da6c002fdfdd46262aa"
+  },
+  "checks": [],
+  "limits": [
+    "Synthetic map7005 is not an allocated backend release",
+    "No invented REVIEWED provenance; optional skins remain guarded",
+    "Desktop Chrome viewports and reduced height, not iOS Safari/Android device or actual software keyboard/notch acceptance",
+    "No live Auth/server/multiuser/physical/fidelity or release admission"
+  ],
+  "browser": "156.0.8078.80",
+  "renderer": [
+    {
+      "width": 360,
+      "height": 800,
+      "era": "REVENGE",
+      "capturedAt": "2026-11-04T05:09:49.090Z",
+      "worldPixels": {
+        "different": 0,
+        "max": 0,
+        "channels": 1012320
+      },
+      "mapPixels": {
+        "different": 0,
+        "channels": 3981312,
+        "pins": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 7005,
+          "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+          "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+          "themeId": "REVENGE",
+          "themeRevision": 10,
+          "themeHash": "sha256:230a53fbc923f2484193726fa3851b825d59ece743b13ad01786b72afd321147",
+          "imageUrl": "blob:http://127.0.0.1:5173/ab80fb6a-643c-4941-8e93-9592f0abc298"
+        }
+      },
+      "occlusion": [
+        {
+          "foot": {
+            "x": 344,
+            "y": 344
+          },
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:a61a8199f86e2ba24741181cd5f56281ce9238eca9da493c20670d32c886ba8d"
+        },
+        {
+          "foot": {
+            "x": 344,
+            "y": 376
+          },
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:72a8ca2d4bce25fb5a5c6ce1b523e3b9cc755fc31083aa09abd8995d6abde81f"
+        }
+      ],
+      "architectureOcclusion": [
+        {
+          "prop": "meeting_pavilion",
+          "side": "behind",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 440,
+            "y": 984
+          },
+          "depth": 985,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:3342f55eea1af0eda7c788dfa1f847174c5d8745ec51858df201ff65c7ec198c"
+        },
+        {
+          "prop": "meeting_pavilion",
+          "side": "front",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 376,
+            "y": 1000
+          },
+          "depth": 985,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:81b6da57e8d0b6703539aadf402553188c220a786d408304eb6e8a3e56291c89"
+        },
+        {
+          "prop": "giveaway_pavilion",
+          "side": "behind",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 472,
+            "y": 1240
+          },
+          "depth": 1250,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:0bc415c3cc7ae073d62687efc7b97856ead801eff4a3e3648944a19afb389559"
+        },
+        {
+          "prop": "giveaway_pavilion",
+          "side": "front",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 552,
+            "y": 1256
+          },
+          "depth": 1250,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:f2f4890cf51459b72c534da2de950d26c86b5da428dca7171a62c757c8603b27"
+        },
+        {
+          "prop": "northern_hall",
+          "side": "behind",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 56,
+            "y": 88
+          },
+          "depth": 96,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:99b76792ca041f56219980c187339bba2b9c9b9679c5719e24c5bc57d4b6f637"
+        },
+        {
+          "prop": "northern_hall",
+          "side": "front",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 136,
+            "y": 104
+          },
+          "depth": 96,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:a49e69a9d4034ecd4a1b78eae1c0efabb78043c4807c9465dfcd1ff95891e2b5"
+        },
+        {
+          "prop": "north_eastern_hall",
+          "side": "behind",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 504,
+            "y": 88
+          },
+          "depth": 96,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:1ea4de3d152c09d0476bfdcee9e9dcbb4c13b0b74fd1556ec3013d0bb53cdb83"
+        },
+        {
+          "prop": "north_eastern_hall",
+          "side": "front",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 600,
+            "y": 104
+          },
+          "depth": 96,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:939a7488df784a591c819f2a85a20b8f7b993ea0787c2166ddd614e337822896"
+        },
+        {
+          "prop": "merch_venue_hall",
+          "side": "behind",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 40,
+            "y": 728
+          },
+          "depth": 731,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:3299486679224ac648145df62d22f853cf11baa8531808220afeb1fd0cf8b5de"
+        },
+        {
+          "prop": "merch_venue_hall",
+          "side": "front",
+          "status": "PASS_SOURCE_COMPOSITION",
+          "foot": {
+            "x": 120,
+            "y": 744
+          },
+          "depth": 731,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "signature": "sha256:64082f71260f716073978aed3f6776031aae746d9ad8e131b0237efa2777179a"
+        }
+      ],
+      "state": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 35,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "REVENGE",
+        "camera": {
+          "zoom": 0.6164383561643836,
+          "scrollX": 272,
+          "scrollY": 218.7111111111111,
+          "width": 360,
+          "height": 703
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v10/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/architecture-v2/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/architecture-v2/revenge/atlas.png"
+        ],
+        "cache": {
+          "loads": 4,
+          "hits": 4,
+          "coalesced": 0,
+          "residentBytes": 3129740,
+          "entries": 4,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 7005,
+          "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+          "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+          "themeId": "REVENGE",
+          "themeRevision": 10,
+          "themeHash": "sha256:230a53fbc923f2484193726fa3851b825d59ece743b13ad01786b72afd321147",
+          "imageUrl": "blob:http://127.0.0.1:5173/ab80fb6a-643c-4941-8e93-9592f0abc298"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      }
+    }
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n50 !== 0\n",
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "ownedCacheAndBrowserTempRemoved": true
+  },
+  "resources": {
+    "samples": [
+      {
+        "freeBytes": 40536367104,
+        "outputBytes": 0,
+        "headlessChromeMains": 0
+      },
+      {
+        "freeBytes": 40532094976,
+        "outputBytes": 1172796,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 40459407360,
+        "outputBytes": 30154942,
+        "headlessChromeMains": 1
+      }
+    ],
+    "minimumFreeBytes": 40459407360,
+    "maximumNewBytes": 30154942
+  },
+  "finishedAt": "2026-11-04T05:09:50.912Z"
+}
