@@ -1,7 +1,8 @@
 # Shared frame and footer — preserved baseline
 
 Status: **IN_PROGRESS**. The original frame baseline is published. Root captured
-the first background pass; corrected-source native verification is **NOT_RUN**.
+the first background pass and corrected World/Map shared paint. Remaining panel
+follow-up, source-check receipt and final publication verification are pending.
 This bounded QA06-HUMAN-FRAME-FOOTER-01 correction supports AR02/AR04 and does
 not close the original QA06, AR02, AR03, AR04 or any IN gate.
 
@@ -41,8 +42,8 @@ The owner therefore corrected only the two header backgrounds to `#251017`:
 ring contrast becomes2.41:1 and header text15.11:1, preserving or improving
 both original pairings. Focus styles, text and control foregrounds stay frozen.
 The original red ring itself remains below3:1; this is baseline preservation,
-not a claim of full focus-contrast compliance. New corrected-source rendered
-verification remains pending and the c8a images keep their actual old palette.
+not a claim of full focus-contrast compliance. Corrected-source World/Map
+verification is recorded below; the c8a images keep their actual old palette.
 
 The independent review is recorded in
 [`owner-review.json`](../evidence/reference-frame-footer/background-review-c8a731e5/owner-review.json),
@@ -69,13 +70,45 @@ geometry, padding, border, position, z-index, pointer behavior or mask changed.
 Further panel backdrop work is a distinct later source pass.
 
 `git diff --check` passes for these source edits. This owner has launched no
-native/build/browser or install job. The first actual390px before/after World and MAP views will
-use Root's coordinated new-background candidate and a fresh21d resource offer;
-the returned0612 offer grants no launch. Root's scenery tuple is separate and
-must be pinned by its actual source/hashes. The owner will inspect real saved
-images and preserve fixture/viewport/time/source limitations before extending
-checks to affected routes, widths and skins. A color proposal or source image
-is not proof that the World/MAP backdrop is visibly cuter in the application.
+native/build/browser or install job. The first actual390px World/Map before/after
+is reviewed below using Root's separately allocated source cohort. The returned
+0612 offer grants no launch. Root's scenery tuple remains a separate, pinned
+source scope. Further panel/skin evidence retains its own actual source, time,
+viewport and fixture limitations. A color proposal or source image alone is
+not proof of the requested appearance in the application.
+
+## Corrected World and Map saved-evidence review
+
+Root job `PARADE-WORLD-MAP2-202611040654Z` captured source
+`4e491a4509e9cab6a3e28364db616bdab9c157f5` at
+06:54:12.310–06:54:41.696UTC. The owner directly inspected all eight saved PNGs:
+World and Map before/after at390×844, then candidate views at360×844 and430×844.
+Each screenshot's bytes, SHA-256 and actual dimensions match the original
+report. All four assigned shared frame/footer source postimages match exactly.
+The independent review and byte-identical report are retained in
+[`world-map-review-4e491a45`](../evidence/reference-frame-footer/world-map-review-4e491a45/owner-review.json).
+
+The scenery is visibly softer and cuter: pastel flowering trees, mint lawn,
+warm stalls and pink/lavender roofs. Stage artwork, baked labels, character
+framing and controls remain familiar. The saved390 pair's six sprite texture,
+frame, origin, position and size records, camera projection and labels compare
+exactly. Map checks report51 objects and zero differing channels against the
+cohort's expected composed image. All four Map targets remain at least44px.
+The360/430 captures were directly viewed; they are not new baseline pairs.
+
+Actual390 Map PNG samples retain red ring `#a2232b` at(21,22), while its
+background at(230,30) changes from `#191817` to the corrected `#251017`.
+Calculated ring contrast is2.37→2.41:1. The pastel perimeter is also actually
+rendered. BG-FOCUS-01 is therefore rendered-fix verified for this Map cohort;
+the targeted test execution and remaining panel follow-up remain pending.
+
+This uses the actual root/Places/Phaser renderer with synthetic C03/C05
+map7005 and NOT_ADMITTED provenance. Other eras, live authority and devices
+are unqualified. The report records browser/server/temp cleanup. The earlier
+`PARADE-WORLD-MAP-202611040651Z` attempt atc1352d14 failed its separate-Phaser
+diagnostic and produced zero screenshots; it remains a failure, not evidence
+of success. These source-specific cohorts are retained separately from the
+first eight-panel captures and are not relabeled as one simultaneous run.
 
 ## Superseding human direction — 2026-11-04 06:10 UTC
 
