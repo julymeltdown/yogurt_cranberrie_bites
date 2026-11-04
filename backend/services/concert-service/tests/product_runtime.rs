@@ -39,7 +39,10 @@ fn actual_source_bound_operator_candidate_parses_without_enabling_capabilities()
         .unwrap()
         .values()
         .all(|value| value["available"] == false));
-    assert_eq!(document["avatar_manifest"]["representation"], "whole_character");
+    assert_eq!(
+        document["avatar_manifest"]["representation"],
+        "whole_character"
+    );
     assert_eq!(document["map_manifest"]["map_revision"], 4);
     assert_eq!(document["theme_manifests"].as_array().unwrap().len(), 3);
     // A valid metadata-only bundle cannot replace actual source-byte admission.
