@@ -184,6 +184,29 @@ impl OwnerGuardScope {
     pub fn binding(&self) -> &GuardBinding {
         &self.binding
     }
+    /// Response-wide disclosure ceiling. This is not a fresh authorization or a
+    /// settlement grant. Include every immutable intent (also unknown/lost ACK
+    /// children), regardless of which subject the last projection queried.
+    pub fn disclosure_ceiling(&self) -> Result<AuthorityRpcDeadline, Status> {
+        self.binding.check()?;
+        let original = self.binding.deadline();
+        let state = self.state.lock().map_err(unavailable)?;
+        if state.sealed {
+            return Err(Status::permission_denied("Root scope sealed"));
+        }
+        let expires = state
+            .child_intents
+            .values()
+            .chain(state.children.iter().map(|(reference, _)| reference))
+            .fold(original.expires_micros(), |until, reference| {
+                until.min(reference.content_expires_unix_micros())
+            });
+        AuthorityRpcDeadline::within_original(
+            expires,
+            original.stop().into_std(),
+            MAX_GUARD_DURATION,
+        )
+    }
     pub fn revision_vector(&self) -> RevisionVector {
         self.vector
     }
