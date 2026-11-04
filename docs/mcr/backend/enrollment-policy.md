@@ -87,3 +87,68 @@ Actual signup/resend receipts carry the server's60-second `resendAvailableAt`; a
 After actual verification, before login, atomically create mode0600 `browser-rotate.json` with exactly `{"expectedRevision":"<initial policy UUID>"}`. The fixture requires a real verified active signup under that revision, then invokes the actual operator `EnrollmentStore.publish` with a distinct explicitly synthetic v2 policy; it inserts no acceptance. `browser-policy-rotated.json` contains `previousRevision`, `policyRevision`, `requiredAcknowledgementIds`, `serverTime`, and `syntheticPolicyOnly:true`. The immutable initial ready file remains truthful. Ordinary canonical login/current admission must now require the real user's renewed policy acknowledgements/consent, followed by fresh admitted state. These are private fixture file controls, with bounded owned-file/inode checks, not public product endpoints or production legal approval.
 
 The fixture now refuses every non-`/api/auth/` path with a real503 error, so the helper's unused foundation test ports cannot accidentally supply a synthetic bootstrap/profile to the actual frontend. `browser-ready.json` identifies `authOnly:true`. Full World continuation remains a separate real seven-service gate. All newly added controls remain NOT_COMPILED / NOT_RUN until the fresh backend build/boot and actual paired-browser rounds; no server lifecycle exit alone qualifies these cases.
+
+## Additive Enrollment + Wall Gateway dependency checkpoint (NOT_COMPILED / NOT_RUN)
+
+Root's IN04 dependency grant explicitly includes the selected Wall B participant
+routes as well as Wall202's four admin routes in the single Gateway feature file
+`backend/services/api-gateway/src/adapters/in/http/concert_product/feature_routes.rs`.
+The checkpoint starts from Enrollment branch revision
+`71b1b8ab88d157bb0433a91843cd68a76ab5705e`; it does not replace that file wholesale
+or import another domain, service main, contract, dependency or migration.
+
+Published participant source is
+`e0784fa59243c923c620a88cf328c94a363183c9`, with the same feature-file blob
+`005d7a86de293878ce86e0795deceee4271f9051` also present at
+`b97608d4235eb7f82cba29c4807e219f7f606e3c` and
+`13d0a6ad57def630dcb76ed3747c5a5dbe4c93ac`.
+The nine participant operations cover snapshot, operations after a revision,
+pixel placement and its own result, tools, own action result, erase, fill and
+undo. Their original closed DTOs, byte limits, canonical UUID checks and exact
+query parsing are retained. Published source provenance does not qualify this
+new combined executable.
+
+Separate, not yet qualified admin source is
+`13ca63ad960ea33cd43ad96ce12cfca712229f29`, feature-file blob
+`cab545eeaa5f865850b71511d19384c7d22bd93f`, SHA256
+`5c7f840d785a85533803e12be02b0c59e6005a690a0ed619da3b6815842eb6db`.
+Wall202 supplied this immutable source directly. The four admitted operations
+are GET `/admin/mural`, POST `/admin/mural/control`, POST `/admin/mural/locks`
+and POST `/admin/mural/restore`, below the existing event prefix. Same-file
+variants, mutation/receipt selection, 8192-byte command limit, closed typed
+bodies, operation IDs and protection of unknown admin suffixes accompany those
+routes. Current authorization, held operator role and actual settlement still
+belong to the production Concert owners; Gateway admission grants no role.
+
+The original thirteen feature operations remain. The frozen-contract unit
+probe now expects twenty-six operations, including both sets of Wall routes;
+its original substitutions additionally resolve the two Wall result-key
+parameters. Imported participant and admin admission tests remain executable
+source, not passing evidence. Rust formatting and `git diff --check` pass.
+Compilation and all combined HTTP/native cases are NOT_RUN. In particular,
+`2f7992d4`'s copied Gateway remains historical Auth qualification and cannot be
+used as the Wall-capable IN04 producer.
+
+The genuine combined Gateway build plan is one new actual main executable:
+
+```sh
+cargo +1.88.0 build --manifest-path backend/Cargo.toml --locked --offline -j 2 \
+  --config profile.dev.package.contracts-build.opt-level=2 \
+  -p api-gateway --bin api-gateway --message-format=json
+```
+
+This command requires its own explicitly updated/named allocation and actual
+frozen readset before execution. Retain debug=0, incremental=0 and unset both
+Rust flags and both compiler-wrapper variables; use only the existing retained
+warm target. Preserve the Cargo artifact record, immutable producing source,
+all inputs, exact copied EXE SHA256 and actual Gateway runtime SQL closure.
+Release the target before any separately allocated copied-native use. Root's
+single-stack assembler consumes the new Gateway alongside current Enrollment
+Auth19 and its coherently composed Concert main; no old Auth substitution or
+second stack is introduced. Build success alone will not qualify IN04.
+
+The queued `ENROLLMENT-BROWSER-FIXTURE-MEDIA-20261104T1902Z` was unaccepted when
+this source changed. Its old frozen readset remains preserved and is ineligible
+for admission until explicitly updated; this note does not add another build
+output to that one-test-executable offer. No accepted epoch, cap or deadline is
+changed, and no compiler, PostgreSQL process or target handle is held.
