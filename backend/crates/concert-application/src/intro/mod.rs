@@ -50,6 +50,8 @@ pub enum IntroError {
     Unavailable,
     #[error("Event is read-only")]
     ReadOnly,
+    #[error("Introduction idempotency key expired")]
+    Expired,
 }
 
 #[derive(Clone)]

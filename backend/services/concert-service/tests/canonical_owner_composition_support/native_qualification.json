@@ -1,0 +1,110 @@
+{
+  "artifacts": {
+    "canonical_owner_composition": {
+      "bytes": 49871728,
+      "sha256": "82e22c20a3d62c99b20b8c083d2a110c353b3042415fc98b5edeb9794cd30e34"
+    },
+    "canonical_runtime_config": {
+      "bytes": 14194336,
+      "sha256": "00e5a451cf5c71d2edfa13ddf786a468e2931f34dc1449205d582dcdbb1fec5d"
+    }
+  },
+  "base_commit": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+  "build": {
+    "contracts_build_opt_level": 2,
+    "debug": 0,
+    "elapsed_seconds": 38.17,
+    "exit_code": 0,
+    "incremental": false,
+    "jobs": 2,
+    "locked": true,
+    "offline": true,
+    "toolchain": "1.88.0"
+  },
+  "full_workflow_release": "2026-11-04T07:09:17.411420+00:00",
+  "git_blob_pin_mismatches": 0,
+  "hard_whole_bytes": 2147483648,
+  "legacy_core_tests": {
+    "exit_code": 0,
+    "log_sha256": "f08ac9455bd18b2e277457fc937fbe166c0ca082869bef9763b3e7ef266d7d48",
+    "passed": 3
+  },
+  "limitations": [
+    "Test-owned guarded RPC services share the test PID; public Gateway HTTP and physical process death are not claimed.",
+    "Gift and Social actual adapters are composed but their business flows are NOT_RUN here.",
+    "No Notification root target provider is supplied: inbox execution refuses; only actual durable close-before-dispatch cleanup is positive. Full public target/inbox acceptance NOT_RUN.",
+    "Main mounting, complete native resolver union and child worker supervision remain integrator obligations."
+  ],
+  "max_sampled_runtime_additional_bytes": 104558592,
+  "max_sampled_whole_additional_bytes": 246136832,
+  "native_cases": {
+    "actual_factory_retains_profile_and_local_children_until_outer_body_eof": {
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "kind": "OWNED_CLUSTER_TEARDOWN",
+        "owned_root_absent": true
+      },
+      "elapsed_seconds": 1.217,
+      "exit_code": 0,
+      "migration_receipts": {
+        "auth": 18,
+        "concert": 37,
+        "friend": 18,
+        "notification": 6,
+        "profile": 9
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0,
+        "notification": 0,
+        "profile": 0
+      },
+      "status": "PASS"
+    },
+    "fresh_factory_recovers_original_notification_binding_without_target_policy": {
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "kind": "OWNED_CLUSTER_TEARDOWN",
+        "owned_root_absent": true
+      },
+      "elapsed_seconds": 6.919,
+      "exit_code": 0,
+      "migration_receipts": {
+        "auth": 18,
+        "concert": 37,
+        "friend": 18,
+        "notification": 6,
+        "profile": 9
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0,
+        "notification": 0,
+        "profile": 0
+      },
+      "status": "PASS"
+    }
+  },
+  "native_report_sha256": "1f1004679ea62bd9ca4ebf24e2363f95c5740d508abc4f42f1aa62c492a4a182",
+  "owned_roots_absent": true,
+  "review": {
+    "findings": 0,
+    "kind": "read-only targeted production/fixture review",
+    "production_rust_changed_since_review": false,
+    "source_commit": "6a6fa6f75d96b3ef23c70cd2d8edef054c60cbef"
+  },
+  "runtime_guard_sha256": "54b2f4f56a484652c53ea9c64e1077e21e90462652a668497d1dc256e6716cf6",
+  "runtime_process_group_absent": true,
+  "scope": "CF01 typed canonical owner factory; scoped native component qualification only",
+  "source_pin_count": 3521,
+  "source_pins_file_sha256": "926b5fdd4e69c2ea1fd059e72cea7f31232a22ad84d3644a9e760d77a755b0ae",
+  "source_runtime_audit_sha256": "154c971aa97843d085213f552240d7210001278370b984310c852482fc85f0e4",
+  "status": "PASS",
+  "target_access_after_release": "NONE",
+  "target_release_before_copied_tests": "2026-11-04T07:08:03.725063+00:00",
+  "tested_source_commit": "0138dbe5f94997c6393c3b4f0851ace441afe42e"
+}

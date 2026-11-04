@@ -9,6 +9,31 @@ as well as the sustained two-player/reconnect slice. Consumer source/static-art 
 exact payloads in `1bb911c3`.
 Existing immutable qualifications retain their exact source pins.
 
+## Current combined component source intake
+
+The [serial intake](root-component-intake-20261104.json) records all 54 exact
+feature postimages and 26 worker-to-delivery commit mappings for CF01, physical
+BE15/QA09 restore support, BE27 Intro and BE33 Notification. Shared build
+prerequisites retain Root `591d908a` rather than duplicate worker patches.
+
+[Fresh combined qualification](root-components-f4349d5a.json) at `f4349d5a`
+passed all four exact locked/offline Cargo phases, froze seven actual artifacts,
+released the target with zero handles before tests, then passed 82 library, two
+Intro and four Notification pure cases. Ignored and filtered cases receive no
+normal-run credit. Actual sequential native controllers passed both CF01 cases,
+all three physical restore scenarios, seven canonical Intro cases plus four
+retained engine cases/restart, and three Notification refusal/retention cases.
+All owned roots were removed; at most one postmaster ran concurrently. Maximum
+sampled whole allocation was 1,214,356,999 bytes, including carry and frozen
+positive target growth, below 2 GiB. Minimum free space was 31,211,147,264 bytes.
+
+This integrates qualified components, not production activation or whole parent
+acceptance. Shared Participant/Product assembly, complete resolver routing,
+producer mounting, supervised recovery and real Notification target authority
+remain open. Root transferred only `config/canonical_runtime.rs` and
+`config/participant_runtime.rs` to CF02 owner207 in an isolated worktree; Root
+retains main/config-module composition, resolver union and other shared paths.
+
 ## Current-published replay after Participant read-lock repair
 
 The [fresh attempt-eleven receipt](root-world-read-share-attempt11.json) pins

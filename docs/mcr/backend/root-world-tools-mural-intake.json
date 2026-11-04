@@ -1,0 +1,92 @@
+{
+  "status": "INTEGRATED",
+  "intakes": [
+    {
+      "task": "QA05-QA08",
+      "status": "MOCK_READY",
+      "worker_base": "0bd35b223d2590fb2b343171d6d8ac30d37ff857",
+      "worker_final": "c2da5c44efbe6afb294c87506302eb8a6cd0cfc0",
+      "commits": [
+        {
+          "worker": "c2da5c44efbe6afb294c87506302eb8a6cd0cfc0",
+          "delivery": "164d81859d90cbdfe7b225a56c2850221e2f00a9"
+        }
+      ],
+      "postimages_sha256": {
+        "backend/scripts/mcr/test_world_capacity_probe.py": "f566b67b8d082f4e96b57a57377c650453ab2e0798dff24ee9784f701533ee2a",
+        "backend/scripts/mcr/test_world_live_failure_probe.py": "cf028ecbb3c58c2fb2dfe144a95229112d8464d502a57adab039a0d3671f5caf",
+        "backend/scripts/mcr/world_capacity_probe.py": "8485b7020b9111bad15fd19da587204c96812abfeb08f884f2cb4c75418548be",
+        "backend/scripts/mcr/world_capacity_support/__init__.py": "f8a5c5fed6429b475f93f3a348299d17525e31158ea4fffc7c42c38535d0d934",
+        "backend/scripts/mcr/world_capacity_support/report.py": "84a130fb2bdf06d32abaf7a6d1d4b826cf7f536e9e578443605dda2559420d6b",
+        "backend/scripts/mcr/world_capacity_support/scenarios.py": "fc3ac926c53b576fe92bc42bd957d60fc91ff686ab8dd1e48e07f91f7e8e2a35",
+        "backend/scripts/mcr/world_capacity_support/transport.py": "2fe68718816abbdd83eb1cf7155867a7f549e60ecdf583f513429eb72d08031b",
+        "backend/scripts/mcr/world_live_failure_probe.py": "6cc1375ac65c956509d9d99f8d69b10ea95acdf490b5a778b63c0dcbef405507",
+        "docs/mcr/backend/world-capacity-qualification.md": "b413fe6d11ed39eca2610968ec852a9acf31c2cbd54b0f27d125ebbdc2ac36ef"
+      }
+    },
+    {
+      "task": "BE41-Mural",
+      "status": "INTEGRATED",
+      "worker_base": "0bd35b223d2590fb2b343171d6d8ac30d37ff857",
+      "worker_final": "ede18985b0f9dbc28b75e892165a0312f94ebbf9",
+      "commits": [
+        {
+          "worker": "581e1ea49d8d31f3021938240b3a725fcf809e87",
+          "delivery": "0f02f1b17d174fdd2e6c09518567beb3618a164a"
+        },
+        {
+          "worker": "af00e848a803a4b1013d0faf3a535f6a60eb44d3",
+          "delivery": "cafbf68eb9dce4f3608e139ca56c738f75c56305"
+        },
+        {
+          "worker": "b0b4d9b5c08f1f00228e24c7e79fe592962cb72d",
+          "delivery": "4face6e44ff089dfdf0cf84e8d8b7370915c5986"
+        },
+        {
+          "worker": "3fa068013024c4000fe4226c717126f49c899467",
+          "delivery": "5186f6fb34a3919f256abce059270d0b7e971d4b"
+        },
+        {
+          "worker": "ede18985b0f9dbc28b75e892165a0312f94ebbf9",
+          "delivery": "1f57c83c447f76fd3a18a3c8a18f698e72efe6b2"
+        }
+      ],
+      "postimages_sha256": {
+        "backend/scripts/mcr/event_cleanup_mural_owner/freeze.py": "9e9da198f71e8b0830373916f3c2fc1b6736fc52314f17b99cc2e722ebc6e9b7",
+        "backend/scripts/mcr/event_cleanup_mural_owner/run.py": "2d6dee9c7e71f83a1222e7e41ddcd680385784faa27d2ab4845d43981534c4f6",
+        "backend/scripts/mcr/event_cleanup_mural_owner/test_preflight.py": "dfd7f4ffcaddf94c3e13bf8961958e14a6ffa48f03b57ef197e537925863209a",
+        "backend/services/concert-service/src/event_cleanup_mural_owner/mod.rs": "8d4d5f5c6bda8e5400994e50cd29abe9bb83cc9a3cd2833424883e8c43508fc0",
+        "backend/services/concert-service/tests/event_cleanup_mural_owner.rs": "6a08e529866afe31dde0091e3572639942ec7c48ca1f7a38c00faa6b738776ec",
+        "backend/services/concert-service/tests/event_cleanup_mural_owner_support/mod.rs": "c905325ea66363b01f323799a14f53209fc80c337b4bcab2d5d3663d86b8c461",
+        "docs/mcr/backend/event-cleanup-mural-owner.md": "b457e89657fe66b3999183e67542cdb9b1178141755bf6bd1e5a6a3d231e19e1"
+      }
+    }
+  ],
+  "fresh_checks": {
+    "world_capacity_failure_fixture_tests": {
+      "count": 35,
+      "exit_code": 0
+    },
+    "mural_admission_tests": {
+      "count": 3,
+      "exit_code": 0
+    },
+    "diff_check": 0
+  },
+  "mural_worker_qualification": {
+    "source": "3fa068013024c4000fe4226c717126f49c899467",
+    "native_sha256": "eb0bc71979ae6978ccf67e6066fe4bb9588ccbc3f72b5719f4b4058f28db3a91",
+    "binary_sha256": "0d1c9a1f4c62abe7015f6430d3b390a43507ede53205900abde176841805e9a1",
+    "rust_cases": 10,
+    "native_status": "PASS",
+    "cleanup": "PASS",
+    "current_root_native": "PASS"
+  },
+  "limits": [
+    "QA05/QA08 source and deterministic fixture checks are MOCK_READY; no 200-user/four-room/load, real network/server restart, mobile or whole QA acceptance.",
+    "Mural supplied-connection component preserves its actual worker native qualification, immutable snapshot/revision checks and owned cleanup; current Root native requalification remains separate.",
+    "No Mural library export, operator/system authority, main activation or full BE41/IN04 acceptance.",
+    "Original IN01 acceptance stays pinned to App1722/backendcde; later source integration does not rewrite it."
+  ],
+  "current_root_qualification": "root-intro-union-mural-dfc63137.json"
+}

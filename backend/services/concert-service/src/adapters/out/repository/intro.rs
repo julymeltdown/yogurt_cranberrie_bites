@@ -6,8 +6,6 @@ use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::commands::*;
 use concert_application::intro::{self, cursor};
-use concert_domain::avatar::SetAvatar;
-use serde::Deserialize;
 use serde_json::{json, Value};
 use sha2::{Digest, Sha256};
 use sqlx::{PgConnection, PgPool, Row};
@@ -89,6 +87,11 @@ pub trait IntroProjectionExecutor: Send + Sync {
         context: intro::IntroReadContext,
         now: DateTime<Utc>,
     ) -> impl std::future::Future<Output = Result<(), intro::IntroError>> + Send;
+    fn after_commit(
+        &self,
+    ) -> impl std::future::Future<Output = Result<(), intro::IntroError>> + Send {
+        async { Ok(()) }
+    }
 }
 pub struct UnavailableIntroProjection;
 impl IntroProjectionExecutor for UnavailableIntroProjection {
@@ -138,6 +141,21 @@ impl IntroProfileProjection for UnavailableIntroProfile {
     }
 }
 
+/// Lock ordering only; this does not grant actor authority. Write policies call
+/// this before taking shared event/admission locks or the receipt-budget lock.
+pub async fn lock_intro_event_for_write(
+    c: &mut PgConnection,
+    event: Uuid,
+) -> Result<(), intro::IntroError> {
+    let locked: Option<Uuid> = sqlx::query_scalar(
+        "select event_id from public.concert_events where event_id=$1 for update",
+    )
+    .bind(event)
+    .fetch_optional(c)
+    .await
+    .map_err(|_| intro::IntroError::Unavailable)?;
+    locked.ok_or(intro::IntroError::Denied).map(|_| ())
+}
 #[derive(Clone)]
 pub struct PgIntro<P, R, C, E = UnavailableIntroProjection> {
     pool: PgPool,
@@ -225,6 +243,9 @@ impl<P: IntroPolicy> CommandProducer for Producer<'_, P> {
         .await
         .map_err(db)?;
         let ownership = self.command.operation() == "closeConcertIntro";
+        if !ownership && phase == "READ_ONLY" {
+            return Ok((Completion::Failed(SafeFailure::EventReadOnly), None));
+        }
         if !ownership && !matches!(phase.as_str(), "OPEN" | "LIVE") {
             return Err(CommandError::Denied);
         }
@@ -390,10 +411,7 @@ impl<
                 .and_then(intro_failure)
                 .unwrap_or(intro::IntroError::Unavailable));
         }
-        let next = match self
-            .owner(command.actor(), command.event(), command.intro())
-            .await
-        {
+        let next = match self.owner(command).await {
             Ok(next) => next,
             Err(_) => return Err(intro::IntroError::Unavailable),
         };
@@ -409,14 +427,23 @@ impl<
     }
     async fn owner(
         &self,
-        actor: concert_domain::AuthUserId,
-        event: concert_domain::EventId,
-        id: Uuid,
+        command: &intro::IntroCommand,
     ) -> Result<intro::OwnerIntro, intro::IntroError> {
+        let mut tx = self
+            .pool
+            .begin()
+            .await
+            .map_err(|_| intro::IntroError::Unavailable)?;
+        self.policy.check(&mut tx, command).await?;
         let row = sqlx::query("select event_id,intro_id,owner_id,revision,state,text,minimum_age,maximum_age_exclusive,expires_at,created_at,updated_at from public.concert_intros where event_id=$1 and intro_id=$2 and owner_id=$3 for share")
-            .bind(event.uuid()).bind(id).bind(actor.uuid()).fetch_optional(&self.pool).await.map_err(|_| intro::IntroError::Unavailable)?
+            .bind(command.event().uuid()).bind(command.intro()).bind(command.actor().uuid()).fetch_optional(&mut *tx).await.map_err(|_| intro::IntroError::Unavailable)?
             .ok_or(intro::IntroError::NotFound)?;
-        row_owner(&row)
+        let owner = row_owner(&row)?;
+        self.policy.check(&mut tx, command).await?;
+        tx.commit()
+            .await
+            .map_err(|_| intro::IntroError::Unavailable)?;
+        Ok(owner)
     }
 
     pub async fn own(
@@ -450,10 +477,15 @@ impl<
             .fetch_one(&mut *tx)
             .await
             .map_err(|_| intro::IntroError::Unavailable)?;
+        self.executor
+            .acknowledge(&mut tx, context, final_now)
+            .await?;
         context.check(final_now)?;
         tx.commit()
             .await
             .map_err(|_| intro::IntroError::Unavailable)?;
+        self.executor.after_commit().await?;
+        context.check(Utc::now())?;
         Ok(owner)
     }
 
@@ -468,6 +500,9 @@ impl<
         ),
         intro::IntroError,
     > {
+        // The fields remain public for retained callers; never trust them to
+        // have passed the transport constructor.
+        let query = intro::wire::Query::validate(Some(query.limit), query.cursor, query.q)?;
         let mut tx = self
             .pool
             .begin()
@@ -497,7 +532,6 @@ impl<
         };
         cursor::validate_binding(&binding, window, now)?;
         let mut after = window.after;
-        let mut scanned = None;
         let mut items = vec![];
         let mut more = false;
         let mut scanned_count = 0_usize;
@@ -526,15 +560,24 @@ impl<
             if rows.is_empty() {
                 break;
             }
-            let exhausted = rows.len() < 101;
-            for row in rows {
+            let row_count = rows.len();
+            let exhausted = row_count < 101;
+            for (index, row) in rows.into_iter().enumerate() {
+                // Each candidate can enroll a distinct owner. Respect the real
+                // root scope's subject bound even when every row is filtered.
+                // Continue after the last scanned row, never the last result.
+                if scanned_count
+                    == crate::adapters::out::relationship_authority::guarded::MAX_SUBJECTS
+                {
+                    more = true;
+                    break 'scan;
+                }
                 scanned_count += 1;
                 let value = row_public(&row)?;
                 after = Some(intro::Position {
                     created_at: value.created_at,
                     intro_id: value.intro_id,
                 });
-                scanned = after;
                 match self
                     .executor
                     .project_public(&mut tx, context, &value, now)
@@ -544,10 +587,15 @@ impl<
                     Err(intro::IntroError::Denied | intro::IntroError::NotFound) => continue,
                     Err(error) => return Err(error),
                 }
-                let author = self
+                let author = match self
                     .profiles
                     .author(&mut tx, context.event.uuid(), value.author.uuid())
-                    .await?;
+                    .await
+                {
+                    Ok(author) => author,
+                    Err(intro::IntroError::NotFound) => continue,
+                    Err(error) => return Err(error),
+                };
                 let display_name = validate_public_profile(&author.json, value.author)?;
                 intro::validated_public(&value, author.clone())?;
                 if query.q.as_ref().is_some_and(|needle| {
@@ -557,20 +605,15 @@ impl<
                     continue;
                 }
                 items.push((value, author));
-                if items.len() > usize::from(query.limit) {
-                    more = true;
+                if items.len() == usize::from(query.limit) {
+                    more = index + 1 < row_count || !exhausted;
                     break 'scan;
                 }
-            }
-            if scanned_count >= 1_000 {
-                more = true;
-                break;
             }
             if exhausted {
                 break;
             }
         }
-        items.truncate(usize::from(query.limit));
         let final_now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
             .fetch_one(&mut *tx)
             .await
@@ -582,15 +625,8 @@ impl<
             Some(self.cursors.seal(
                 &binding,
                 cursor::CursorWindow {
-                    upper: now,
-                    after: if more {
-                        items.last().map(|(value, _)| intro::Position {
-                            created_at: value.created_at,
-                            intro_id: value.intro_id,
-                        })
-                    } else {
-                        scanned
-                    },
+                    upper: window.upper,
+                    after,
                 },
                 now,
             )?)
@@ -601,6 +637,8 @@ impl<
         tx.commit()
             .await
             .map_err(|_| intro::IntroError::Unavailable)?;
+        self.executor.after_commit().await?;
+        context.check(Utc::now())?;
         Ok((items, next))
     }
 
@@ -661,6 +699,8 @@ impl<
         tx.commit()
             .await
             .map_err(|_| intro::IntroError::Unavailable)?;
+        self.executor.after_commit().await?;
+        context.check(Utc::now())?;
         Ok((value, author))
     }
 }
@@ -719,7 +759,9 @@ fn row_owner(row: &sqlx::postgres::PgRow) -> Result<intro::OwnerIntro, intro::In
         .map_err(|_| intro::IntroError::Unavailable)?,
     })
 }
-fn row_public(row: &sqlx::postgres::PgRow) -> Result<intro::PublicForumIntro, intro::IntroError> {
+pub(crate) fn row_public(
+    row: &sqlx::postgres::PgRow,
+) -> Result<intro::PublicForumIntro, intro::IntroError> {
     Ok(intro::PublicForumIntro {
         intro_id: row
             .try_get("intro_id")
@@ -748,55 +790,36 @@ fn hash_query(value: &String) -> u64 {
     let digest = Sha256::digest(value.as_bytes());
     u64::from_be_bytes(digest[..8].try_into().expect("fixed SHA-256 prefix"))
 }
-#[derive(Deserialize)]
-#[serde(deny_unknown_fields)]
-struct ProfileWire {
-    user_id: String,
-    display_name: String,
-    bio: Value,
-    avatar: AvatarWire,
-}
-#[derive(Deserialize)]
-#[serde(deny_unknown_fields)]
-struct AvatarWire {
-    revision: i64,
-    // This seam carries the validated C06 avatar selection in its exact C03 config.
-    // It is structurally checked here; release catalog validation remains BE07.
-    config: Value,
-}
-fn validate_public_profile(
+pub(crate) fn validate_public_profile(
     bytes: &[u8],
     owner: concert_domain::AuthUserId,
 ) -> Result<String, intro::IntroError> {
     if bytes.is_empty() || bytes.len() > intro::INTRO_PUBLIC_PROFILE_MAX {
         return Err(intro::IntroError::Unavailable);
     }
-    let profile: ProfileWire =
+    let profile: Value =
         serde_json::from_slice(bytes).map_err(|_| intro::IntroError::Unavailable)?;
-    let user = Uuid::parse_str(&profile.user_id).map_err(|_| intro::IntroError::Unavailable)?;
-    if profile.user_id != user.to_string()
-        || user != owner.uuid()
-        || profile.display_name.trim().is_empty()
-        || profile.display_name.chars().count() > 40
-        || profile.display_name.chars().any(char::is_control)
-        || !valid_profile_text(&profile.bio, 160, true)
-        || !(1..=concert_domain::MAX_REVISION).contains(&profile.avatar.revision)
+    // One canonical C03 validator covers both approved avatar representations.
+    crate::adapters::out::public_profile::validate(&profile)
+        .map_err(|_| intro::IntroError::Unavailable)?;
+    if profile["user_id"].as_str() != Some(owner.uuid().to_string().as_str()) {
+        return Err(intro::IntroError::Unavailable);
+    }
+    let display = profile["display_name"]
+        .as_str()
+        .ok_or(intro::IntroError::Unavailable)?;
+    if display.trim().is_empty()
+        || display.chars().any(char::is_control)
+        || profile["bio"]
+            .as_str()
+            .is_some_and(|value| value.chars().any(char::is_control))
     {
         return Err(intro::IntroError::Unavailable);
     }
-    let wire = json!({"expected_revision": 1, "config": profile.avatar.config});
-    SetAvatar::parse(&serde_json::to_vec(&wire).map_err(|_| intro::IntroError::Unavailable)?)
-        .map_err(|_| intro::IntroError::Unavailable)?;
-    Ok(profile.display_name)
-}
-fn valid_profile_text(value: &Value, max: usize, nullable: bool) -> bool {
-    match value {
-        Value::Null => nullable,
-        Value::String(value) => {
-            value.chars().count() <= max && !value.chars().any(char::is_control)
-        }
-        _ => false,
-    }
+    profile["display_name"]
+        .as_str()
+        .map(str::to_owned)
+        .ok_or(intro::IntroError::Unavailable)
 }
 pub fn owner_dto(value: &intro::OwnerIntro) -> Result<Value, intro::IntroError> {
     let (minimum, maximum) = value
@@ -813,7 +836,7 @@ pub fn owner_dto(value: &intro::OwnerIntro) -> Result<Value, intro::IntroError> 
                 .map_err(|_| intro::IntroError::Invalid)
         }
     };
-    value.validate()?;
+    validate_owner_projection(value, Utc::now())?;
     Ok(json!({
         "intro_id": value.intro_id,
         "event_id": value.event_id,
@@ -888,6 +911,7 @@ fn command(value: intro::IntroError) -> CommandError {
         intro::IntroError::Denied => CommandError::Denied,
         intro::IntroError::Invalid => CommandError::InvalidInput,
         intro::IntroError::Conflict => CommandError::Conflict,
+        intro::IntroError::Expired => CommandError::Expired,
         intro::IntroError::ReadOnly => CommandError::Denied,
         intro::IntroError::Unavailable | intro::IntroError::NotFound => CommandError::Unavailable,
     }
@@ -898,7 +922,7 @@ fn error(value: CommandError) -> intro::IntroError {
         CommandError::InvalidInput => intro::IntroError::Invalid,
         CommandError::Conflict => intro::IntroError::Conflict,
         CommandError::InvalidState => intro::IntroError::Conflict,
-        CommandError::Expired => intro::IntroError::NotFound,
+        CommandError::Expired => intro::IntroError::Expired,
         _ => intro::IntroError::Unavailable,
     }
 }
@@ -921,4 +945,23 @@ async fn db_now(pool: &PgPool) -> Result<DateTime<Utc>, intro::IntroError> {
         .fetch_one(pool)
         .await
         .map_err(|_| intro::IntroError::Unavailable)
+}
+
+fn validate_owner_projection(
+    value: &intro::OwnerIntro,
+    now: DateTime<Utc>,
+) -> Result<(), intro::IntroError> {
+    // Validate stored private shape without imposing public expiry on owner recovery.
+    intro::OwnerIntro {
+        intro_id: value.intro_id,
+        event_id: value.event_id,
+        owner_id: value.owner_id,
+        text: value.text.clone(),
+        age_bounds: value.age_bounds.clone(),
+        expires_at: None,
+        created_at: value.created_at,
+        state: value.state,
+        revision: value.revision,
+    }
+    .validate_at(now)
 }

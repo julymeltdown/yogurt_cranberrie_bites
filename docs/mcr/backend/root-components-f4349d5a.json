@@ -1,0 +1,650 @@
+{
+  "status": "INTEGRATED",
+  "source_revision": "f4349d5a1884c451cabdefc6462fe8e82e6d84fd",
+  "offer": "ROOT-CF01-INTRO-NOTIF-COMBINED-MEDIA-202611040854Z",
+  "accepted_at": "2026-11-04T08:52:55.152685+00:00",
+  "release": {
+    "offer": "ROOT-CF01-INTRO-NOTIF-COMBINED-MEDIA-202611040854Z",
+    "state": "RELEASED",
+    "runtime_exit_code": 0,
+    "finished_at": "2026-11-04T08:55:14.331510+00:00",
+    "elapsed_seconds": 139.17911683300918,
+    "max_sampled_whole_additional": 1214356999,
+    "minimum_sampled_free_bytes": 31211147264,
+    "all_owned_roots_absent": true,
+    "max_concurrent_owned_postmasters": 1,
+    "qualified": true
+  },
+  "target_release": {
+    "offer": "ROOT-CF01-INTRO-NOTIF-COMBINED-MEDIA-202611040854Z",
+    "state": "RELEASED",
+    "released_at": "2026-11-04T08:53:50.025970+00:00",
+    "target_open_handles": 0,
+    "before_any_copied_test_or_pg": true,
+    "target_access_after_receipt": "NONE",
+    "fixed_target_growth_bytes": 177500160,
+    "aborted": null
+  },
+  "build_phases": {
+    "cf01": {
+      "exit_code": 0,
+      "command_display": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "/workspace/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "canonical_owner_composition",
+        "--no-run"
+      ],
+      "command_display_is_sanitized": true,
+      "exact_argv_in_retained_evidence": true
+    },
+    "restore": {
+      "exit_code": 0,
+      "command_display": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "/workspace/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "canonical_owner_restore",
+        "--no-run"
+      ],
+      "command_display_is_sanitized": true,
+      "exact_argv_in_retained_evidence": true
+    },
+    "intro": {
+      "exit_code": 0,
+      "command_display": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "/workspace/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "intro_product",
+        "--test",
+        "intro",
+        "--no-run"
+      ],
+      "command_display_is_sanitized": true,
+      "exact_argv_in_retained_evidence": true
+    },
+    "notification": {
+      "exit_code": 0,
+      "command_display": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "/workspace/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "notification_product",
+        "--lib",
+        "--no-run"
+      ],
+      "command_display_is_sanitized": true,
+      "exact_argv_in_retained_evidence": true
+    }
+  },
+  "artifacts": {
+    "canonical_owner_composition": {
+      "sha256": "ec3a6edb75f6fc7c430144c87b04a0590d87a3f9e218ea62976445c732f09c1a",
+      "bytes": 49873808,
+      "cargo_kind": [
+        "test"
+      ],
+      "profile_test": true
+    },
+    "canonical_owner_restore": {
+      "sha256": "9b5e64b27ad8ae9799f96f41931160daea10ecccb9225a21edc05363a6fddd21",
+      "bytes": 50428320,
+      "cargo_kind": [
+        "test"
+      ],
+      "profile_test": true
+    },
+    "intro_product": {
+      "sha256": "51e4203bba82d302ad5789dd3de4921b06b6c6ae598152076035d90a36830d71",
+      "bytes": 49983648,
+      "cargo_kind": [
+        "test"
+      ],
+      "profile_test": true
+    },
+    "intro": {
+      "sha256": "20e3336cd9c85f3ad7477b3a424fcf38e06197a69eaf4f73b18a641ede9a72ef",
+      "bytes": 24109312,
+      "cargo_kind": [
+        "test"
+      ],
+      "profile_test": true
+    },
+    "notification_product": {
+      "sha256": "9e0195a5fe04b24214c4e3bbc470fc6de38edf91a964c6c049ebc8b26c01ba7d",
+      "bytes": 35034800,
+      "cargo_kind": [
+        "test"
+      ],
+      "profile_test": true
+    },
+    "concert-lib": {
+      "sha256": "832c82a40e99324f72ee9383659484c0f23b2fc69c318665034a400501f1f26e",
+      "bytes": 92520336,
+      "cargo_kind": [
+        "lib"
+      ],
+      "profile_test": true
+    },
+    "concert-service": {
+      "sha256": "a0a40150a0d624989af0eead229d36c24ccd3304940463fd8ebd680a75caf4a9",
+      "bytes": 49952176,
+      "cargo_kind": [
+        "bin"
+      ],
+      "profile_test": false
+    }
+  },
+  "normal": {
+    "concert-lib": {
+      "exit_code": 0,
+      "summary": "test result: ok. 82 passed; 0 failed; 46 ignored; 0 measured; 3 filtered out; finished in 1.98s"
+    },
+    "canonical_owner_composition": {
+      "exit_code": 0,
+      "summary": "test result: ok. 0 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    },
+    "canonical_owner_restore": {
+      "exit_code": 0,
+      "summary": "test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    },
+    "intro_product": {
+      "exit_code": 0,
+      "summary": "test result: ok. 2 passed; 0 failed; 7 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    },
+    "notification_product": {
+      "exit_code": 0,
+      "summary": "test result: ok. 4 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    }
+  },
+  "native": {
+    "cf01": {
+      "status": "PASS",
+      "limitations": [
+        "Test-owned guarded RPC services share the test PID; public Gateway HTTP and physical process death are not claimed.",
+        "Gift and Social actual adapters are composed but their business flows are NOT_RUN here.",
+        "No Notification root target provider is supplied: inbox execution refuses; only actual durable close-before-dispatch cleanup is positive. Full public target/inbox acceptance NOT_RUN.",
+        "Main mounting, complete native resolver union and child worker supervision remain integrator obligations."
+      ],
+      "source_pin_count": 3602,
+      "cases": {
+        "actual_factory_retains_profile_and_local_children_until_outer_body_eof": {
+          "status": "PASS",
+          "exit_code": 0,
+          "elapsed_seconds": 1.188,
+          "postgres_version": "16.14 (Homebrew)",
+          "remaining_prepared": {
+            "auth": 0,
+            "concert": 0,
+            "friend": 0,
+            "notification": 0,
+            "profile": 0
+          },
+          "cleanup": {
+            "certifies_native_settlement": false,
+            "kind": "OWNED_CLUSTER_TEARDOWN",
+            "owned_root_absent": true
+          }
+        },
+        "fresh_factory_recovers_original_notification_binding_without_target_policy": {
+          "status": "PASS",
+          "exit_code": 0,
+          "elapsed_seconds": 6.918,
+          "postgres_version": "16.14 (Homebrew)",
+          "remaining_prepared": {
+            "auth": 0,
+            "concert": 0,
+            "friend": 0,
+            "notification": 0,
+            "profile": 0
+          },
+          "cleanup": {
+            "certifies_native_settlement": false,
+            "kind": "OWNED_CLUSTER_TEARDOWN",
+            "owned_root_absent": true
+          }
+        }
+      }
+    },
+    "restore": {
+      "status": "PASS",
+      "limitations": [
+        "No overall BE15/QA09 acceptance: actual domain outbox downstream deduplication, committed pickup preservation, deletion and partial event closure are separate scenarios.",
+        "No external Gateway HTTP, sustained World/browser or production composition activation.",
+        "Auth/Friend/Profile/Notification servers share each owned Root test process; independent owner process deployment is not claimed.",
+        "Finished-root child recovery cannot recreate lost registry authority or DeliveryCompleted.",
+        "Actual committed native SQL without producer-specific commit witness remains UNKNOWN with owner fences retained. A test-owned effect counter is not a business receipt.",
+        "Only an offline stopped WHOLE cluster copy, operator-retained keys/instance/capabilities and exact PG16 schema vector are qualified. No pg_dump, live snapshot or split-service independent recovery is claimed."
+      ],
+      "source_pin_count": 3603,
+      "cases": {
+        "ACTIVE": {
+          "status": "PASS",
+          "elapsed_seconds": 9.534,
+          "postgres_version": "16.14 (Homebrew)",
+          "normal_all_owner_native_settlement": false,
+          "prepared_before_teardown": {
+            "auth": 1,
+            "concert": 1,
+            "friend": 1,
+            "notification": 0,
+            "profile": 1
+          },
+          "source_sigkill_reaped": true,
+          "source_postmaster_stopped": true,
+          "restored_postmaster_distinct": true,
+          "restored_process_exit_code": 0,
+          "backup_unmodified_after_recovery": true,
+          "cleanup": {
+            "certifies_native_settlement": false,
+            "errors": [],
+            "kind": "EXACT_OWNED_CLUSTER_TEARDOWN",
+            "owned_restored_root_absent": true,
+            "owned_source_root_absent": true
+          }
+        },
+        "FINISHED": {
+          "status": "PASS",
+          "elapsed_seconds": 9.18,
+          "postgres_version": "16.14 (Homebrew)",
+          "normal_all_owner_native_settlement": true,
+          "prepared_before_teardown": {
+            "auth": 0,
+            "concert": 0,
+            "friend": 0,
+            "notification": 0,
+            "profile": 0
+          },
+          "source_sigkill_reaped": true,
+          "source_postmaster_stopped": true,
+          "restored_postmaster_distinct": true,
+          "restored_process_exit_code": 0,
+          "backup_unmodified_after_recovery": true,
+          "cleanup": {
+            "certifies_native_settlement": false,
+            "errors": [],
+            "kind": "EXACT_OWNED_CLUSTER_TEARDOWN",
+            "owned_restored_root_absent": true,
+            "owned_source_root_absent": true
+          }
+        },
+        "MISSING_WITNESS": {
+          "status": "PASS",
+          "elapsed_seconds": 9.817,
+          "postgres_version": "16.14 (Homebrew)",
+          "normal_all_owner_native_settlement": false,
+          "prepared_before_teardown": {
+            "auth": 1,
+            "concert": 0,
+            "friend": 1,
+            "notification": 0,
+            "profile": 0
+          },
+          "source_sigkill_reaped": true,
+          "source_postmaster_stopped": true,
+          "restored_postmaster_distinct": true,
+          "restored_process_exit_code": 0,
+          "backup_unmodified_after_recovery": true,
+          "cleanup": {
+            "certifies_native_settlement": false,
+            "errors": [],
+            "kind": "EXACT_OWNED_CLUSTER_TEARDOWN",
+            "owned_restored_root_absent": true,
+            "owned_source_root_absent": true
+          }
+        }
+      }
+    },
+    "intro": {
+      "status": "PASS",
+      "limitations": [
+        "Actual canonical Intro facade, Auth/Friend owners, Profile RPC and same-TX Age projection; Root HTTP composition has a separate owner.",
+        "Commercial provider activation, Root HTTP composition and full browser/two-client IN03 are NOT_RUN."
+      ],
+      "source_pin_count": 2990,
+      "phases": {
+        "canonical_authoring_discovery_detail_idempotency_and_close": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 0
+        },
+        "canonical_block_departure_suspension_and_profile_outage": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 0
+        },
+        "canonical_claim_expiry_bounds_root_delivery_after_commit": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 0
+        },
+        "canonical_full_frame_rebinding_and_missing_parent_fail_closed": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 0
+        },
+        "canonical_intro_edit_revokes_consent_atomically_with_receipt_outbox": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 0
+        },
+        "canonical_native_witness_requires_exact_registered_transaction": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 2
+        },
+        "canonical_restricted_age_outage_trust_and_expiry_parity": {
+          "status": "PASS",
+          "exit_code": 0,
+          "prepared_after": 0
+        }
+      },
+      "restart": {
+        "after_pid": 65289,
+        "after_start": "2026-11-04 17:55:03.4874+09",
+        "before_pid": 64222,
+        "before_start": "2026-11-04 17:54:41.039044+09",
+        "retained_row": "PUBLISHED|1",
+        "status": "PASS"
+      },
+      "cleanup": {
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "retained": {
+        "intro": {
+          "status": "PASS",
+          "exit_code": 0,
+          "binary_sha256": "20e3336cd9c85f3ad7477b3a424fcf38e06197a69eaf4f73b18a641ede9a72ef"
+        }
+      }
+    },
+    "notification": {
+      "status": "PASS",
+      "limitations": [
+        "Component refusal/child mechanics only; positive real target policy and four success flows NOT_RUN.",
+        "Root ProductRpcService routing, actual ScopedProductOwner no-store, Gateway outer HTTP and target invalidation/restart are separate NOT_RUN gates."
+      ],
+      "source_pin_count": 2273,
+      "pure_phases": {
+        "all_four_frozen_routes_and_query_bounds": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "closed_mutation_body_revision_type_and_idempotency": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "duplicate_encoded_unknown_and_malformed_query_are_closed": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "event_actor_family_request_path_and_method_cannot_be_relabelled": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "notification_live::product::tests::all_four_outputs_validate_against_frozen_c04_without_private_envelopes": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "notification_live::product::tests::foreign_malformed_unknown_kind_target_revision_and_times_are_refused": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "notification_live::product::tests::mutation_conflicts_remain_409_and_diagnostics_never_escape": {
+          "status": "PASS",
+          "exit_code": 0
+        },
+        "notification_live::product::tests::output_operation_page_filter_count_and_mutation_identity_are_bound": {
+          "status": "PASS",
+          "exit_code": 0
+        }
+      },
+      "native": [
+        {
+          "case": "support::native::missing_target_policy_denies_all_four_under_real_owners_and_terminal_body",
+          "status": "PASS",
+          "exit_code": 0,
+          "postgres_version": "16.14 (Homebrew)",
+          "prepared_after": {
+            "auth": 0,
+            "concert": 0,
+            "friend": 0,
+            "notification": 0
+          },
+          "expected_quarantine": false,
+          "cleanup": {
+            "owned_root_absent": true,
+            "quarantine_teardown_is_not_settlement": false,
+            "status": "PASS"
+          }
+        },
+        {
+          "case": "support::native::sealed_parent_mutations_and_missing_task_local_never_register_child",
+          "status": "PASS",
+          "exit_code": 0,
+          "postgres_version": "16.14 (Homebrew)",
+          "prepared_after": {
+            "auth": 0,
+            "concert": 0,
+            "friend": 0,
+            "notification": 0
+          },
+          "expected_quarantine": false,
+          "cleanup": {
+            "owned_root_absent": true,
+            "quarantine_teardown_is_not_settlement": false,
+            "status": "PASS"
+          }
+        },
+        {
+          "case": "support::native::dropped_body_and_expiry_do_not_finish_registered_child",
+          "status": "PASS",
+          "exit_code": 0,
+          "postgres_version": "16.14 (Homebrew)",
+          "prepared_after": {
+            "auth": 1,
+            "concert": 0,
+            "friend": 1,
+            "notification": 0
+          },
+          "expected_quarantine": true,
+          "cleanup": {
+            "owned_root_absent": true,
+            "quarantine_teardown_is_not_settlement": true,
+            "status": "PASS"
+          }
+        }
+      ]
+    }
+  },
+  "retained_evidence": {
+    "combined.json": {
+      "sha256": "856e9dfec23028dffcf02539607f24e08c81ac6ab960e01bb2fd4a21e21575fa",
+      "bytes": 1139
+    },
+    "target-release.json": {
+      "sha256": "15594bca34ff6621c8bb6d91962cc632860c217e270b73d4bd3065f71c4be8f5",
+      "bytes": 2467
+    },
+    "notification-checkpoint.json": {
+      "sha256": "eeaa1f96ac768d8700079f93162bd115d6627a87e68090d27ddc6e9949b22b33",
+      "bytes": 315360
+    },
+    "normal.json": {
+      "sha256": "78664ab1ed7851a30c172c66a7700a1ed054bb69f858da4da3e947bddf24d4dc",
+      "bytes": 819
+    },
+    "notification-compiler-artifacts.json": {
+      "sha256": "2f08b612a93563761756532ddcee8288d3110fb77ff314ae8c0701b4c108b161",
+      "bytes": 3241
+    },
+    "notification-source-pins.json": {
+      "sha256": "bf34ef6d53e4c31a7131fc339127431ab19bef797b2c2756fa45194ab5d9385b",
+      "bytes": 309802
+    },
+    "restore-checkpoint.json": {
+      "sha256": "8c4d065626f4c0c31394b35ce736b84baa7a7bddc8abba2ad3f485f062336a90",
+      "bytes": 523641
+    },
+    "intro-checkpoint.json": {
+      "sha256": "078d93b4bd359d421c51ffccbce3203f0ad288546b1fae96fb930a5814834833",
+      "bytes": 438756
+    },
+    "offer-acceptance.json": {
+      "sha256": "af7f5f74eb6713345e53f79521b459ffb7f781c65be7ea96a02bc53afb8d72dc",
+      "bytes": 1302
+    },
+    "intro-compiler-artifacts.json": {
+      "sha256": "3e1a4a1533af0e7ba4bcbbf24ebde27cb1a241ef278b1360fd2b42347652873e",
+      "bytes": 3190
+    },
+    "runtime-owner.json": {
+      "sha256": "a72b85c42e966486e8909ecd2ed42b3aeedf68ca9c3cb056d095c584c7aa7a78",
+      "bytes": 45
+    },
+    "cf01-checkpoint.json": {
+      "sha256": "65c48233caaa39ab2cc8817d2a9e63dfcd423e4ea454cea2f25b6de2cae3b34e",
+      "bytes": 523537
+    },
+    "intro-native.json": {
+      "sha256": "eb6226ecde723491d780c349bf47874b059df857f0adb62d48eacc899c2893e8",
+      "bytes": 444089
+    },
+    "notification-native.json": {
+      "sha256": "6de7bd729568a290b90bb3a7015de9525314b608631509752dea042d61fb0a3f",
+      "bytes": 321403
+    },
+    "cf01-compiler-artifacts.json": {
+      "sha256": "53d8148525e021d912836f41bc07053e5de17b32aa69c94b009831cd35236835",
+      "bytes": 2189
+    },
+    "cf01-native.json": {
+      "sha256": "97b6355ece3aea9f6561a68ef0bca71e1e91c4b9d7f87b8ed679cec89884b496",
+      "bytes": 525667
+    },
+    "restore-compiler-artifacts.json": {
+      "sha256": "0c255535a78766a886b653b980b5bed8030e92a4a0db879cd124c0cef8213118",
+      "bytes": 2172
+    },
+    "restore-source-pins.json": {
+      "sha256": "003893448545d88568b2ca6167c3deb87325a0ef8eeba1374c03db6928db1598",
+      "bytes": 515696
+    },
+    "cf01-source-pins.json": {
+      "sha256": "390e33dad426be9e53e2af9dad00f58835d4db361f72c572b9d94ab46f3d5d18",
+      "bytes": 515567
+    },
+    "fullworkflow-release.json": {
+      "sha256": "db9db6f9cb23ba01e3081135e7e1e1946268b90b848ccfb2a1593c69639a2745",
+      "bytes": 398
+    },
+    "pinned-artifacts.json": {
+      "sha256": "c13d59683b94084b0d233d5508eceea3069041ad00807615c3501329099e1fab",
+      "bytes": 10273
+    },
+    "runtime-guard.json": {
+      "sha256": "b5250614bdda1b459696f9e496fe7f93ab575bbe6ca311d7beda4c718938954c",
+      "bytes": 2784
+    },
+    "restore-native.json": {
+      "sha256": "c6e12c15a01567342c58e10207c3b4dba84004e26b580c9e4d65425dbee6586c",
+      "bytes": 531553
+    },
+    "launch-preflight-history.json": {
+      "sha256": "f5f299b217cc80d7e960fe5e8d18b5eb0ed31d7a21419ea9c610266a8ad553bf",
+      "bytes": 348
+    },
+    "intro-source-pins.json": {
+      "sha256": "3915a5f78fef5c45506ab7beb3200d11eb9ef1a9b6ba7d1a2efde4f5124513b3",
+      "bytes": 431856
+    },
+    "restore-cargo.jsonl": {
+      "sha256": "bb9acddf9a1e850174e991242db232b0e3061b7b8b2791f3a1b2fab101435e82",
+      "bytes": 421296
+    },
+    "cf01-cargo.jsonl": {
+      "sha256": "4683abe699e29751982991cc739bcc661d464c9973683ea902b98d2c99cc26a7",
+      "bytes": 417425
+    },
+    "notification-cargo.jsonl": {
+      "sha256": "0fe3e037fb766ff2b633aaee22707d117bf69370888f9a33918f74030d352578",
+      "bytes": 483461
+    },
+    "intro-cargo.jsonl": {
+      "sha256": "ecd238c4a2b642ccf392f830bec590ba826d5e98a2a3da7733ccb5f4c8b23e40",
+      "bytes": 422145
+    },
+    "mcr-root-component-native.py": {
+      "sha256": "62d96483a5f8b59e176d7d82f4d312df353b68a93d44d73460360bf8eac946df",
+      "bytes": 1939
+    },
+    "mcr-root-component-workflow.py": {
+      "sha256": "fb4326b32356b7f13ab4a252e7288ef33cff80f74a1af714fb118ff81097b5bf",
+      "bytes": 10731
+    },
+    "mcr-root-component-runtime-guard.py": {
+      "sha256": "235a48ead48712ba4c8ab5b895e5f1844fece3f7c2d962af2e7dee9e5fced556",
+      "bytes": 4996
+    }
+  },
+  "limitations": [
+    "Source integration and actual component qualification do not activate production composition, main mounting or shared Participant/Product runtime.",
+    "82 normal library cases passed; 46 ignored and three filtered Notification-binding cases receive no normal credit. Those three retain their earlier exact ROOT18 native qualification, not rerun here.",
+    "CF01 two native cases, physical restore three actual scenarios, Intro seven canonical cases plus four retained engine cases and actual restart, Notification three native cases all passed. Repeated pure cases in native controllers are not additional unique coverage.",
+    "Notification missing-target safe503 and retained UNKNOWN/fence cases are passing refusal tests, not successful public inbox acceptance.",
+    "ACTIVE/MISSING_WITNESS restore and Notification quarantine retain expected prepared work until owned teardown; teardown is not settlement.",
+    "Earlier preflight-only typo refusal is retained; actual named acceptance, deadline and all four successful phases were not reset.",
+    "Exact selected source and baked migration vectors are recorded per controller; six retained peer mains were hash checked and counted in carry, not invoked by these in-process native fixtures.",
+    "No released target access, manual prepared settlement, broad clean, Docker, frontend or browser resource used."
+  ]
+}

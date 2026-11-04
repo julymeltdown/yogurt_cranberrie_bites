@@ -1,0 +1,236 @@
+{
+  "status": "INTEGRATED",
+  "integration_base": "41b48eb7ba0079652f236b28ec28531fc20bd115",
+  "source_checkpoint": "876162e0fef0ecae3b32e197046c8fbe36a58699",
+  "intakes": [
+    {
+      "task": "CF01",
+      "source_base": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+      "source_final": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+      "commits": [
+        {
+          "worker": "6a6fa6f75d96b3ef23c70cd2d8edef054c60cbef",
+          "delivery": "8c8e610038e4c1ba718a178da4a065216bcba898"
+        },
+        {
+          "worker": "0138dbe5f94997c6393c3b4f0851ace441afe42e",
+          "delivery": "fad24717744bbf9aa9e5bf3087696eeff1e1bc7e"
+        },
+        {
+          "worker": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+          "delivery": "f49485c7b499e0ac9cf9bced2000e2626100b248"
+        }
+      ],
+      "postimages_sha256": {
+        "backend/services/concert-service/src/config/canonical_runtime.rs": "c69c663355ec209ac4e6791a8f9e0fe248a95fa363a08bb0d1fa598625561369",
+        "backend/services/concert-service/tests/canonical_owner_composition.rs": "10488ad03bfbe5466dfd7b93a73eebf27966d77cd5edb8195eb7e02a4760dce8",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/capture.rs": "8226908b6566e22896e254dcd626071364e6df8757c9c8ba6ae4db238e488385",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/environment.rs": "7d1b8a3a51be7c63a6aaeaa0a82a25dbb62f9e7ae46737a89ea0905166dd49f6",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/fixture.rs": "75bb4ed0b03b149c16003f6ea8941f9a432207e3ca1021c316862c78570be472",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/native_qualification.json": "f6785ae0c926aa1b21e840751ba1d961b8ed8082cd8faec1b14fccfb37394607",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/notification.rs": "32df277ffc99b4007bbe815b3c16ddde7af877553eb323aeb77fbd770ae0f7b9",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/owners.rs": "80a792190a04f984f1abcd7be3310d6f94b7c6c07e6a1ebfd454dcbee723f3c7",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/provenance.json": "1326b4c73342888353c8670ec9584cb68adb3c9869f2bbc195feee7615c9f10c",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/qualify.py": "47e4e34e76232db3423d7ea71219d3fd18e5c384c633fb4ad294779a0bb868c6",
+        "backend/services/concert-service/tests/canonical_owner_composition_support/release.rs": "6e0ca735e4dcddc07b7ca60114c20e520823e9338877cd55cfacea0decdb2df8",
+        "docs/mcr/backend/canonical-owner-composition.md": "57bb3f4bcf8a5ed61eb8dc40431a069ed58f29c0b4c205b02c51e60dd1ff7415"
+      },
+      "status": "INTEGRATED",
+      "combined_validation": "PASS"
+    },
+    {
+      "task": "BE15-QA09",
+      "source_base": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+      "source_final": "3fadb82de3b81be661deab732af6da1b190ac734",
+      "commits": [
+        {
+          "worker": "f423ee8aafe7adcc9e5f05b90dd7705c7df9d83e",
+          "delivery": "efd54329dfcf833188bc7b704f6118e355fa2729"
+        },
+        {
+          "worker": "d5209a06b0bb5be4104dfa1fdcd8fcc1a041e322",
+          "delivery": "86404b1034303f5c041a309eb38d9949133a858c"
+        },
+        {
+          "worker": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+          "delivery": "2e454c67dc7ebb471658d5bc98824fa23c783934"
+        },
+        {
+          "worker": "37a41d88f91d3f1d671897872ccca932b3863d18",
+          "delivery": "8141ce8d80aa5c3b1a6083988d93c38808b8c355"
+        },
+        {
+          "worker": "3fadb82de3b81be661deab732af6da1b190ac734",
+          "delivery": "0468346b465c43becf0608562841ef0bb17b1085"
+        }
+      ],
+      "postimages_sha256": {
+        "backend/services/concert-service/tests/canonical_owner_restore.rs": "8ea6d5c61238f3a722920470c9b84c0fa005b5ee29b82cb6e391fee4e2590a42",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/capture.rs": "eb49fed2b3bc6601ff28cde28af01b3ddc4c62cd6e3a6819015c0b79b29e461f",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/controller.py": "440635a8abdc2c918aa244e93b5596456da1cce79151a306c3f067530c1910ad",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/environment.rs": "1ef151b65ff647f73ee5b5ed5be5d6f46e9cdc900bd00db174bc7ed4fab130f5",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/fault.rs": "6b6f48654e82427875ae5e2f433e038ba7fd824de94eddd18a0f8b9c9468293b",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/fixture.rs": "705e66e4e477dee1d816e4cceb1994432b19359e3daeee80beb4a88db2bc3cbb",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/notification.rs": "26e64fd01b92d52f1a36f8cfffb12ccc4db71e2608ad9a15a28bd32bed055953",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/owners.rs": "5239e82f46860a355b33b9f4181c6e0feaae12af273235597eb4c961f71f777d",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/provenance.json": "c3c7d716305488ef73775e547798b07b49434869738eef9148b9014a34c395b3",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/qualify.py": "287df4a176cb803eb036d732534a8a6c924662f89b50d9d1ec0bfd73cf253a63",
+        "backend/services/concert-service/tests/canonical_owner_restore_support/release.rs": "9710b903ab15d50b9442c0b0ef11efbeb17aeff64c7d2dc2491ce2beb678b492",
+        "docs/mcr/backend/canonical-owner-restore.md": "f9914ae9a996b05af51c39f0392d978ceb603037eb12f250b0533c9e34a2727d"
+      },
+      "status": "INTEGRATED",
+      "combined_validation": "PASS"
+    },
+    {
+      "task": "BE27",
+      "source_base": "a7f3989d9c40c53a9c2982bced938f8b4853f627",
+      "source_final": "b0418437d67e035be963456e228cd3d8c15a4bf0",
+      "commits": [
+        {
+          "worker": "296557ead13bb7bb259ca759ff6323168b328005",
+          "delivery": "efcd865121e8a8db4db482b661a878c1f56071e0"
+        },
+        {
+          "worker": "76dca41cac86cad790f546788337e0f3b4f8f7eb",
+          "delivery": "65d2c78ffe8e516d5d59efbff1168482696fa82e"
+        },
+        {
+          "worker": "ffb4b491051a2f76c3d6f9e7a7700223898a3e9f",
+          "delivery": "0f29b9ab7368bef16e419c63c07df77af34c749b"
+        },
+        {
+          "worker": "c34e561513a3252339248024ec2941d760231e03",
+          "delivery": "2562dfa35c6c2d98645e8788813f7b9fd14886fa"
+        },
+        {
+          "worker": "b30b9e208d59d636a8198dee99657658f14632b8",
+          "delivery": "7ac4ff8fa95f01807685fe53f891cfb6c93e6207"
+        },
+        {
+          "worker": "1473d3453e052ddd46e642a256cb8d4aadd8f684",
+          "delivery": "e255f48d78a31fc1f0ef248fcf0d586ed7d4f211"
+        },
+        {
+          "worker": "12d0ddfbc7b24611873fdcb69bfa3ae659291b0d",
+          "delivery": "bfc69f084b28bc0fc7e8f97219bc2e1a21a41197"
+        },
+        {
+          "worker": "d30ad9f0cf936f6f51e7d20b8e73a0f4d44a525a",
+          "delivery": "bf6c03bc0e937a1067dab6c7db1bb7a9df58cf74"
+        },
+        {
+          "worker": "8e14fc251fa70f50d2c60d70316dc70376fd6901",
+          "delivery": "5091e3b965168310988c10f1c779d7761b9ce985"
+        },
+        {
+          "worker": "cf67c1a9cf1d98b207e6a0f1c7a460025f548cfd",
+          "delivery": "c032f31f8fbea362133af0eefc93f4d879caef42"
+        },
+        {
+          "worker": "6828ad0f5dbdb4e4d331d0648ea419df8c08916a",
+          "delivery": "005973cb6dd7207a11658afe77ab7d280b16fb01"
+        },
+        {
+          "worker": "868d9db276b7f704ebeb675c7d2d96bc88b019a2",
+          "delivery": "f93256a8419fb3aa22268da8d299019b51eb298d"
+        },
+        {
+          "worker": "b0418437d67e035be963456e228cd3d8c15a4bf0",
+          "delivery": "801cc1eecd7b4c389134d30f71af654a5ac89229"
+        }
+      ],
+      "postimages_sha256": {
+        "backend/crates/concert-application/src/intro/mod.rs": "2a6f1d0a58dca05fe749da25bcc684b4c3c153ccde22bd8ca476399ea0723f23",
+        "backend/services/concert-service/migrations/0049_intro_native_witness.sql": "709067d4d4d4aafff642943b3ae58f92a8ddf0b3574f34ab5d1a732701780896",
+        "backend/services/concert-service/src/adapters/out/repository/intro.rs": "4ae66e3bde93ab7faab967592f209c5148d850b2c535624e190b9b9b538d44c5",
+        "backend/services/concert-service/src/intro_live/authority.rs": "f6bee294beb2eecad5b64a3ab840c85b51700aedd4833a375dff175142796e4b",
+        "backend/services/concert-service/src/intro_live/cursor.rs": "296856f5cf943a2980d1c8e77d33d4b1d331f326eea3fdf3b4e78157271865dd",
+        "backend/services/concert-service/src/intro_live/mod.rs": "693f1c46fe0e7941fa688c627f501c15bc48bdb6495d26438cc5a51a128e960c",
+        "backend/services/concert-service/src/intro_live/profile.rs": "d5f1c01d7b1134f132c1b531dda867c84b05ed543f99109e06f8642a89231edb",
+        "backend/services/concert-service/src/intro_live/protocol.rs": "c76a210656c6ef6bf7c30091eae9c531eceb32307f9b17cfb3c22b7aa8a9e06e",
+        "backend/services/concert-service/src/intro_live/witness.rs": "1b67b23319d780d541ac60f80399ff1f35cb4b93dbd4ad80d91df9e6982016d1",
+        "backend/services/concert-service/src/lib.rs": "3136d2341117563610f1694aedbe1af8d791394380cf448691be8d4c8b95be92",
+        "backend/services/concert-service/tests/intro_product.rs": "a677819e4a9b94b63921bf1abf116d07c7cdcfe7f967bf2a70a389ca9cc245e4",
+        "backend/services/concert-service/tests/intro_product_support/capture.rs": "040d073bd05c4006f603ef77bb3510d1d03b88453c549d1212266639a43ddb81",
+        "backend/services/concert-service/tests/intro_product_support/environment.rs": "adde0dc16f21112e866bea96f11334d6033f6669fad408569de492f5c392c352",
+        "backend/services/concert-service/tests/intro_product_support/fixture.rs": "41261eac4a2db46772fa2b2513d8bc19e0906a745bab80ff29a0193b2bf1008e",
+        "backend/services/concert-service/tests/intro_product_support/owners.rs": "0d9c52e710823bd936d36daf46da25dae08226efeb5db96dd4209dde2280a9ce",
+        "backend/services/concert-service/tests/intro_product_support/qualify.py": "f0a214cc76ad3ab194694269bada83e9138e7dd70d214171bf226fa5f60bbbb6",
+        "docs/mcr/backend/intro-product.md": "6350023a125fa50a2a62c41572fa6526e1d448a213bb405b87c31becb70b0617"
+      },
+      "status": "INTEGRATED",
+      "combined_validation": "PASS"
+    },
+    {
+      "task": "BE33",
+      "source_base": "a7f3989d9c40c53a9c2982bced938f8b4853f627",
+      "source_final": "f1b1f5347c31d58f286a2e3c9981637d6329b66b",
+      "commits": [
+        {
+          "worker": "5f85e06fee7c6a2d5b5109f90f05b75831db4e45",
+          "delivery": "d3022026e3170510ef1f3cb232f4a8d4cea89dab"
+        },
+        {
+          "worker": "d48edb835455e8b0d59a83ac71930f7a21c57d30",
+          "delivery": "9142ee22b15b126fde511c8feaa79b9105dcd09a"
+        },
+        {
+          "worker": "58a3010284291b370b47aa9c2564bc102aef9169",
+          "delivery": "22e5f4e12db5dd01ea822aeb3c54b0b4eb71df99"
+        },
+        {
+          "worker": "09395dd0afaa44ee28a13c657a8858f67818d672",
+          "delivery": "8b500fedaaffee8b11d2c66d7f196a52e3f09a4f"
+        },
+        {
+          "worker": "f1b1f5347c31d58f286a2e3c9981637d6329b66b",
+          "delivery": "876162e0fef0ecae3b32e197046c8fbe36a58699"
+        }
+      ],
+      "postimages_sha256": {
+        "backend/services/concert-service/src/notification_live/mod.rs": "82849a704c58023e15af0da95f0e1f6abed6466c186edf0f4206041d60e6f6a2",
+        "backend/services/concert-service/src/notification_live/product.rs": "00ad947305d839ea05211d0f7772e77e55342f98e48affdaaff9d13a82097307",
+        "backend/services/concert-service/src/notification_live/protocol.rs": "cbe7e9499f7e896c78592bd959b9d45b3a163dbe64e01052f5714c76b74bfb36",
+        "backend/services/concert-service/tests/notification_product.rs": "4a6809783675d7530ef2727909acc63104234bffdf2c40e99bfa1676faff0a6a",
+        "backend/services/concert-service/tests/notification_product_support/capture.rs": "19e83f92f538445f21cebe1225710b3ec92b56b3926db9f15a3afb31f45781ef",
+        "backend/services/concert-service/tests/notification_product_support/environment.rs": "d14f382fc0f0f22a2eb09ccd5922d49ce9495262eff5eb2f7ac4f5d520b69e30",
+        "backend/services/concert-service/tests/notification_product_support/fixture.rs": "6856e1390acad21183820d636f6faade8d78f182540a2a8657cedb5aaffbac7d",
+        "backend/services/concert-service/tests/notification_product_support/mod.rs": "917e8a3707c4019ea9d15250824e665a120f430697eca8c1e5cf41483c248813",
+        "backend/services/concert-service/tests/notification_product_support/native.rs": "94adc6b1f9366f3a2260a89410668b82717e818f6f5ea1351dd8fea902afcb53",
+        "backend/services/concert-service/tests/notification_product_support/owners.rs": "55826fffcaed96784145ccee443c4a6381a8be5879e0f80c6aec4ff4451023cf",
+        "backend/services/concert-service/tests/notification_product_support/projection.rs": "b14f4cd28fc83e80dcc9300b13498f9842b28cb3884430197c881ca060f61356",
+        "backend/services/concert-service/tests/notification_product_support/qualify.py": "5cca01e30f0bd473b8bcd5303c7d85ec3bf77818b4fd3133e9635f2c52a712bf",
+        "docs/mcr/backend/notification-product.md": "e6f434ed84edb896da246e12f47bef06cfc577114e31ac69ef3bb36184483080"
+      },
+      "status": "INTEGRATED",
+      "combined_validation": "PASS"
+    }
+  ],
+  "shared_prerequisite": {
+    "root_commit": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+    "excluded_worker_duplicates": [
+      "d8a841acd1e05eef7af2de89c3cdb46a5317a985",
+      "ecb088156b6cc5ff0cfbafdc5682381193b177b7"
+    ],
+    "scope": "Four current-worktree protocol build scripts and prerequisite document retain Root postimages."
+  },
+  "checks": {
+    "exact_feature_postimages": true,
+    "assigned_boundaries": true,
+    "cross_directory_implementation_imports": false,
+    "source_archive_and_frontend_unchanged": true,
+    "python_AST": "PASS",
+    "selected_Rust_1_88_format": "PASS",
+    "diff_check": "PASS",
+    "combined_build": "PASS",
+    "combined_native": "PASS"
+  },
+  "limits": [
+    "Source intake does not activate production owners or change main composition.",
+    "CF01 typed composition and BE15/QA09 physical restore retain component-only native evidence; full parent and outbox/pickup/deletion obligations remain open.",
+    "BE33 real target provider is absent: safe503 qualification is not successful public inbox acceptance.",
+    "BE27 retains actual canonical source qualification, while combined source requires its own bounded build/native workflow.",
+    "Prior IN01 acceptance pins its original published source and binaries; this intake does not rewrite that evidence."
+  ],
+  "combined_qualification": "root-components-f4349d5a.json"
+}

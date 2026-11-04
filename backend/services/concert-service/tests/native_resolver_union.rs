@@ -43,6 +43,37 @@ fn closed_route_table_matches_actual_producer_ownership() {
     let id = "00000000-0000-0000-0000-000000000009";
     let rows = [
         (
+            "listConcertIntros",
+            "GET",
+            "intros?limit=10&q=music".into(),
+            Domain::Intro,
+        ),
+        (
+            "getConcertIntro",
+            "GET",
+            format!("intros/{id}"),
+            Domain::Intro,
+        ),
+        (
+            "getOwnConcertIntro",
+            "GET",
+            "me/intro".into(),
+            Domain::Intro,
+        ),
+        ("setConcertIntro", "PUT", "me/intro".into(), Domain::Intro),
+        (
+            "publishConcertIntro",
+            "POST",
+            "me/intro/publish".into(),
+            Domain::Intro,
+        ),
+        (
+            "closeConcertIntro",
+            "POST",
+            "me/intro/close".into(),
+            Domain::Intro,
+        ),
+        (
             "getConcertAgeStatus",
             "GET",
             "me/age-status".into(),
@@ -270,6 +301,15 @@ fn closed_route_table_matches_actual_producer_ownership() {
 fn foreign_malformed_and_unsupported_routes_have_no_commit_adapter() {
     for (op, method, target) in [
         ("createConcertParty", "POST", "parties"),
+        ("listConcertIntros", "GET", "intros?unknown=1"),
+        ("listConcertIntros", "GET", "intros?limit=10&limit=10"),
+        ("listConcertIntros", "GET", "intros?limit=0"),
+        ("listConcertIntros", "GET", "intros?"),
+        ("listConcertIntros", "GET", "intros?q=%ZZ"),
+        ("getConcertIntro", "GET", "intros/not-a-uuid"),
+        ("setConcertIntro", "PUT", "me/intro?extra=1"),
+        ("setConcertIntro", "POST", "me/intro"),
+        ("publishConcertIntro", "POST", "me/intro/close"),
         ("setConcertSettings", "POST", "admin/settings"),
         ("setConcertSettings", "PUT", "admin/settings?x=1"),
         ("setConcertPlace", "PUT", "admin/places/not-a-uuid"),
