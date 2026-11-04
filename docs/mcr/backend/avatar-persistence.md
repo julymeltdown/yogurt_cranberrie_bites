@@ -419,3 +419,39 @@ Report `/tmp/mcr-spatial-6c700f04/avatar-native.json`; source/binary receipt
 no target/native cluster remains held. Actual external 207 SDK, participant
 adapter, root-held distributed guard and unknown-settlement quarantine remain
 separate owner obligations. No live authority or multiuser acceptance is claimed.
+
+## Successful-commit witness follow-up — assigned, not implemented
+
+Base `0a8c422645458c9397af9289e15089ee3f9cb0ad`; isolated branch
+`codex/mcr-be-avatar-witness`. The previously qualified actual-transaction
+registration hook does not by itself prove successful avatar/preference commit.
+An uncertain raw-commit outcome therefore correctly remains Unknown and must
+retain the owner scopes until an actual durable outcome can be established.
+
+Product API root assigned this owner the existing application AvatarEffectFence
+trait/DTO, avatar repository hook, existing service avatar tests and this document.
+Participant209 exclusively owns new migration0035, its sealed
+BoundParticipantAuthority descriptor and participant witness/settlement resolver.
+Neither side acquires the other's files. A new unbudgeted goal is tool-confirmed
+active for this follow-up; the separate spatial goal was fully delivered.
+
+The coordinated proposed ABI is a non-authoritative witness descriptor containing
+operation/session-family UUIDs, exact 32-byte parent/guard/body/effect binding
+digests and the exact existing 64-character lowercase release digest. A synchronous
+`witness_binding` fence method defaults to Unavailable. Missing production witness
+metadata cannot certify commit. Read-only and explicitly synthetic unfenced
+fixtures remain distinct. The repository will attach its already captured actual
+PostgreSQL transaction identity, real actor/event, mutation kind and expected/next
+revision, and insert the immutable witness inside the effect transaction before
+commit. No plaintext profile/request payload, external boolean or new authority
+scope is proposed. The existing repository advances revision for every successful
+mutation, including equal values; there is no mutation no-op branch to waive.
+
+Exact schema/insert columns and mutation tokens are being frozen directly with
+Participant209 before repository SQL edits. The matching proposed application ABI
+now has a source draft: typed descriptor, redacted Debug, exact release/nil UUID
+validation and default Unavailable fence method, plus a regression for missing or
+malformed metadata. Formatting/diff checks pass; compilation and native checks
+remain NOT_RUN for this follow-up. No repository witness insert is implemented
+yet. Actual joined commit/abort qualification and full Product/participant
+admission remain open.

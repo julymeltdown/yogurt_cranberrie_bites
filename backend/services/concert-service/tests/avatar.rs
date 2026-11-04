@@ -23,6 +23,53 @@ fn prefs(expected: i64) -> Vec<u8> {
     serde_json::to_vec(&json!({"expected_revision":expected,"preferences":{"theme":"DANGER","low_power":true,"reduced_motion":true,"sound_enabled":false}})).unwrap()
 }
 #[test]
+fn witness_metadata_defaults_to_unavailable_and_binds_the_exact_release() {
+    struct LegacyFence;
+    #[async_trait::async_trait]
+    impl AvatarEffectFence for LegacyFence {
+        async fn register(&self, _: AvatarTransactionIdentity) -> Result<(), AvatarError> {
+            Ok(())
+        }
+        async fn check(&self) -> Result<(), AvatarError> {
+            Ok(())
+        }
+    }
+    assert_eq!(
+        LegacyFence.witness_binding().unwrap_err(),
+        AvatarError::Unavailable
+    );
+    let valid = AvatarEffectWitnessBinding {
+        operation_id: Uuid::new_v4(),
+        session_family_id: Uuid::new_v4(),
+        parent_digest: [11; 32],
+        guard_binding_digest: [22; 32],
+        body_digest: [33; 32],
+        release_digest: "a".repeat(64),
+        effect_binding_digest: [44; 32],
+    };
+    valid.validate_for_release(&"a".repeat(64)).unwrap();
+    assert_eq!(
+        valid.validate_for_release(&"b".repeat(64)),
+        Err(AvatarError::Unavailable)
+    );
+    for field in ["operation", "session", "uppercase", "short"] {
+        let mut invalid = valid.clone();
+        match field {
+            "operation" => invalid.operation_id = Uuid::nil(),
+            "session" => invalid.session_family_id = Uuid::nil(),
+            "uppercase" => invalid.release_digest = "A".repeat(64),
+            "short" => invalid.release_digest.pop().map(|_| ()).unwrap(),
+            _ => unreachable!(),
+        }
+        assert_eq!(
+            invalid.validate_for_release(&invalid.release_digest),
+            Err(AvatarError::Unavailable)
+        );
+    }
+    let debug = format!("{valid:?}");
+    assert_eq!(debug, "AvatarEffectWitnessBinding { .. }");
+}
+#[test]
 fn preference_payload_is_exact_bounded_and_no_character_fields() {
     assert!(parse_preferences(&prefs(1)).is_ok());
     for raw in [
