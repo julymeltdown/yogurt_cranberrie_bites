@@ -78,3 +78,12 @@ helper (SHA256 `4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1
 As in the retained qualification, its no-emit invocation enables
 `allowImportingTsExtensions` for existing test-config imports while preserving
 the entire file set and diagnostics. No tracked compiler config changes.
+
+The first finite source offer, `AVATAR-CANCEL-SOURCE-20261104T1955Z`, became
+predecessor-eligible after QA10's literal release. Admission then failed before
+ACCEPT: free space was 12,774,301,696 bytes, below the offer's explicit 12 GiB
+start floor. Projected free space after all outstanding/proposed growth passed
+the separate 9 GiB reserve. No worker, guardian, temporary root, dependency link
+or application process started. The declined offer is not reused or weakened;
+the same candidate remains queued for a fresh eligible offer. The exact declined
+disposition was sent directly to 21d and the named FE34 resource successor.
