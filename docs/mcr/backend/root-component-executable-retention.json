@@ -1,0 +1,70 @@
+{
+  "status": "ARCHIVED_VERIFIED_REDUNDANT_COPIES_REMOVED",
+  "scope": "seven Root-owned completed f434 component EXE copies only",
+  "archive": {
+    "custody": "Root private completed-component retention directory; restore pointer remains beside the original artifact location",
+    "name": "completed-component-executables.tar.gz",
+    "sha256": "05e693073726dd49b5a9e3d4fc10bbdf810170179e8f516124a24b637c79c486",
+    "bytes": 103220611
+  },
+  "members": [
+    {
+      "name": "intro_product",
+      "bytes": 49983648,
+      "allocated_bytes": 49987584,
+      "sha256": "51e4203bba82d302ad5789dd3de4921b06b6c6ae598152076035d90a36830d71",
+      "mode_octal": "0o500"
+    },
+    {
+      "name": "canonical_owner_composition",
+      "bytes": 49873808,
+      "allocated_bytes": 49876992,
+      "sha256": "ec3a6edb75f6fc7c430144c87b04a0590d87a3f9e218ea62976445c732f09c1a",
+      "mode_octal": "0o500"
+    },
+    {
+      "name": "intro",
+      "bytes": 24109312,
+      "allocated_bytes": 24113152,
+      "sha256": "20e3336cd9c85f3ad7477b3a424fcf38e06197a69eaf4f73b18a641ede9a72ef",
+      "mode_octal": "0o500"
+    },
+    {
+      "name": "concert-lib",
+      "bytes": 92520336,
+      "allocated_bytes": 92520448,
+      "sha256": "832c82a40e99324f72ee9383659484c0f23b2fc69c318665034a400501f1f26e",
+      "mode_octal": "0o500"
+    },
+    {
+      "name": "canonical_owner_restore",
+      "bytes": 50428320,
+      "allocated_bytes": 50429952,
+      "sha256": "9b5e64b27ad8ae9799f96f41931160daea10ecccb9225a21edc05363a6fddd21",
+      "mode_octal": "0o500"
+    },
+    {
+      "name": "concert-service",
+      "bytes": 49952176,
+      "allocated_bytes": 49954816,
+      "sha256": "a0a40150a0d624989af0eead229d36c24ccd3304940463fd8ebd680a75caf4a9",
+      "mode_octal": "0o500"
+    },
+    {
+      "name": "notification_product",
+      "bytes": 35034800,
+      "allocated_bytes": 35037184,
+      "sha256": "9e0195a5fe04b24214c4e3bbc470fc6de38edf91a964c6c049ebc8b26c01ba7d",
+      "mode_octal": "0o500"
+    }
+  ],
+  "verification": "every archive member bytes/hash/mode checked before unlink; no symlinks/hardlinks; fresh zero handles and unchanged inode/mtime/hash",
+  "removed_allocated_bytes": 351920128,
+  "preserved": "all evidence/source/receipts; ROOT18/Green/new Intro/new Inbox/Post binaries; shared targets/dependencies; Git refs and source originals",
+  "limitations": [
+    "Archive custody is private; this repository contains no executable or credential.",
+    "Restore and verify member hashes before reuse, under a fresh allocation.",
+    "Historical runtime evidence does not qualify a different source revision.",
+    "No shared target, dependency, branch, source original or active worktree was removed."
+  ]
+}
