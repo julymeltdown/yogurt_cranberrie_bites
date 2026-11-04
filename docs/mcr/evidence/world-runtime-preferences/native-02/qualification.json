@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "source": "948232992914a306d0a267511b5266a67e1d8098",
+  "slot": "WORLD-PREFERENCES-NATIVE2-202611040819Z",
+  "scopedLintExitCode": 0,
+  "nativeExitCode": 1,
+  "reason": "An exact getByLabel query did not match the era select wrapping label, whose accessible name includes option text.",
+  "originalTimeoutMilliseconds": 30000,
+  "captures": 0,
+  "applicationBuild": "NOT_RUN",
+  "partialFlow": "Actual world live/six sprites, Settings and Reduce panel, initial actual normal methods/tween scale1/noAudio/CSS120ms were reached before the failing select query. No native acceptance inferred.",
+  "peakMeasuredWorkflowBytes": 77893830,
+  "minimumFreeBytes": 36572729344,
+  "ownDependencyLinkRemovedAtUTC": "2026-11-04T08:20:57.742010+00:00",
+  "browserServerProfileCacheTempRemoved": true,
+  "fix": "Use combobox role with anchored Preferred era accessible-name prefix and assert selected PARADE value; retain all timeouts and behavioral checks.",
+  "recordedAtUTC": "2026-11-04T08:23:51.141014+00:00"
+}

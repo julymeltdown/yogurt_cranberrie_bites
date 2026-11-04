@@ -49,24 +49,98 @@
       "frontend/src/features/theme/ui/ThemeSelector.tsx"
     ]
   },
-  "combined_actual_phaser_browser": "NOT_RUN",
+  "combined_actual_phaser_browser": {
+    "status": "PASS_CONTROLLED_FIXTURES",
+    "workflow": "WORLD-PREFERENCES-NATIVE3-202611040829Z",
+    "source": "f9781febcd3784f7beeff862bc0939f243018803",
+    "frozen_production": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+    "receipt": "docs/mcr/evidence/world-runtime-preferences/native-03/report.json",
+    "receipt_sha256": "ec6ff9191ae5312930034d70f66fdcbcb4d36365cdb91d8653b243aec5409cc1",
+    "independent_published_source_pin_matches": 20,
+    "normal": {
+      "duration_ms": 803,
+      "updates": 48,
+      "pre": 48,
+      "render": 48,
+      "post": 48
+    },
+    "low_power": {
+      "duration_ms": 1203,
+      "updates": 72,
+      "pre": 16,
+      "render": 16,
+      "post": 16
+    },
+    "css_transition_sequence": [
+      "0.12s",
+      "0s",
+      "0.12s"
+    ],
+    "os_and_explicit_reduced_motion": true,
+    "saved_vs_apply_separation": true,
+    "game_camera_connection_sprite_identity_preserved": true,
+    "no_audio_source": "EXPLICIT_SOUND_ENABLE_UNAVAILABLE",
+    "caller_abort_scope": "Public producer lease; adapter navigation/privacy in native and adapter caller-abort/races in source tests",
+    "captures": {
+      "viewport": [
+        390,
+        844
+      ],
+      "paths": [
+        "settings-saved-only.png",
+        "settings-applied-low-power.png",
+        "settings-privacy-withdrawn.png"
+      ],
+      "originals_reused": true
+    },
+    "errors": [],
+    "application_module_build": "PASS_COPY_PUBLIC_DIR_FALSE",
+    "duration_seconds": 7.563,
+    "peak_measured_bytes": 78586053,
+    "cleanup": {
+      "browser_closed": true,
+      "server_closed": true,
+      "temporary_removed": true,
+      "borrowed_link_removed": "REPORTED_BY_PRODUCER"
+    },
+    "limits": [
+      "Controlled HTTP/C05/assets; no live persistence or /me504 resolution",
+      "Native theme success uses available incumbent PARADE, unavailable DANGER fallback; no alternate-art success claim",
+      "No physical-device, battery, production-art-admission, 360/430 visual-target or whole-FE34 acceptance"
+    ],
+    "retained_failed_attempts": [
+      {
+        "receipt": "docs/mcr/evidence/world-runtime-preferences/native-01/report.json",
+        "status": "FAIL_PREBROWSER_ARCHIVED_PNG_PIN"
+      },
+      {
+        "receipt": "docs/mcr/evidence/world-runtime-preferences/native-02/report.json",
+        "status": "FAIL_NATIVE_EXACT_LABEL_LOCATOR"
+      }
+    ]
+  },
   "remote_publication": {
-    "verified_master": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+    "verified_master": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
     "fetched_and_independent_ls_remote": true,
     "mapped_source_and_root_wiring_ancestors": true,
     "owned_payloads_identical_at": "7e776c538fd83e1e545ea65dd67ece12ba034aff",
-    "docs_source_unchanged": true
+    "docs_source_unchanged": true,
+    "cancellation_postimages_identical": true,
+    "additional_prefix_changes": "Root-authored motion.css and hook import only",
+    "latest_source_and_motion_commits_ancestors": true
   },
   "whole_FE34": "NOT_ACCEPTED",
   "publisher_source_mapping": {
     "3cd74cae5b5c4a3d8ce572ef883b4b12fc3493da": "53b67c3718785a154c4d2ceaf02bdc67ea2a1f1d",
     "3eea76f47f9f7825c98e5d72616fcb8b72849720": "dbb2d08ceacd0fb1f82034dd426c4dbbaa44b360",
     "281d80e8eb5d21844c62a37325d63fafed2171c2": "5ef20bb4d296362de9ed052f8435f7590bb7f15e",
-    "7e776c538fd83e1e545ea65dd67ece12ba034aff": "df68f206db7cabcc525f6322f8d719e5e8bb501f"
+    "7e776c538fd83e1e545ea65dd67ece12ba034aff": "df68f206db7cabcc525f6322f8d719e5e8bb501f",
+    "d6dccde98a98e2a8ec9abb00fc2e0e52274a31ce": "44aa157c56107309e57383e8615d5b37305a5761",
+    "0d90ce21454b96a9522d16db760fe3091cf79b19": "a4197421a9022c7f9693dfe0fa7addec54434acb"
   },
   "adopted_source_and_document_payloads_identical": true,
   "dom_motion_projection": {
-    "status": "SOURCE_VALIDATED_CASCADE_OPEN",
+    "status": "INTEGRATED_SOURCE_AND_CONTROLLED_NATIVE_PASS",
     "requested_by": "Root153",
     "validation_owner": "Root composed check, no standalone output job",
     "owned_source_sha256": {
@@ -105,12 +179,40 @@
       "frontend/src/features/settings/runtime-adoption/__tests__/adapter.test.ts"
     ],
     "diff_check_exit": 0,
-    "tests": "NOT_RUN_PENDING_ROOT_COMPOSED_WORKFLOW",
+    "tests": "PASSED_SOURCE04_35_TESTS_4_FILES",
     "standalone_job_launched": false
   },
   "motion_css_loading": {
-    "status": "PENDING_ROOT_SOURCE",
+    "status": "PUBLISHED_CONTROLLED_NATIVE_PASS",
     "owner": "Root153",
-    "scope": "New motion-only CSS leaf and hook import; adopter writer stopped on both paths"
+    "scope": "New motion-only CSS leaf and hook import; adopter writer stopped on both paths",
+    "source_commit": "7d4c523461840ff5bfdbff3df06c86757b0c8139"
+  },
+  "final_source_validation": {
+    "workflow": "ROOT-PREFERENCES-FINAL-SOURCE-202611040810Z",
+    "source_revision": "7d4c523461840ff5bfdbff3df06c86757b0c8139",
+    "receipt": "docs/mcr/evidence/runtime-preferences-root/source-04/report.json",
+    "tests": 35,
+    "test_files": 4,
+    "tests_exit": 0,
+    "typescript_exit": 0,
+    "lint_exit": 0,
+    "native_syntax_exit": 0,
+    "elapsed_seconds": 10.529050917000859,
+    "new_output_peak_bytes": 13328384,
+    "whole_tree_peak_bytes": 20742144,
+    "carried_art_bytes": 7413760,
+    "owned_temp_absent": true,
+    "owned_link_absent": true,
+    "finished_at": "2026-11-04T08:06:23.623310+00:00"
+  },
+  "native_evidence_handoff": {
+    "producer_commit": "c16c0c875b446f494137b72bc1feee6f27fdbe14",
+    "harness_correction_commits": [
+      "948232992914a306d0a267511b5266a67e1d8098",
+      "f9781febcd3784f7beeff862bc0939f243018803"
+    ],
+    "publisher": "Root153",
+    "publication_readback": "Recorded in adopter final delivery; this snapshot independently verifies production source through 9e7952fc"
   }
 }

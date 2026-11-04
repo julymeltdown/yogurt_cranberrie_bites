@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "source": "9095dc5163bc11e3947106312be7878dc849faf6",
+  "slot": "WORLD-PREFERENCES-NATIVE-202611040810Z",
+  "exitCode": 1,
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "frontend/src/world/preferences/__tests__/native/native.mjs"
+  ],
+  "reason": "Authored source-pin list included a tracked, unmaterialized historical screenshot; ENOENT before browser/server/build creation.",
+  "captures": 0,
+  "browserServerBuildNeverStarted": true,
+  "originalReportPreserved": true,
+  "originalMonitorPeakMeaning": "NOT_MEASURED: failure preceded first150ms sample; original0 must not be interpreted as measured zero",
+  "postCleanupDurableBytesBeforeThisSupplement": 40960,
+  "conservativeWholeWorkflowUpperBoundBytes": 1048576,
+  "upperBoundBasis": "No browser/server/build/cache was started; own temp was empty and removed; retained evidence40960B plus dependency symlink/directory allowance is under1MiB.",
+  "ownDependencyLinkObservedAbsent": true,
+  "recordedAtUTC": "2026-11-04T08:16:23.446618+00:00"
+}

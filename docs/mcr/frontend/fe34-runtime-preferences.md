@@ -1,6 +1,7 @@
 # FE34 runtime preference application leaf
 
-Status: IN_PROGRESS. This leaf does not certify original FE34, FE06, U07,
+Status: INTEGRATED for the bounded runtime-preference application leaf.
+This leaf does not certify original FE34, FE06, U07,
 real-server flows, supplied artwork, or release acceptance.
 
 Implementation owner: `01a1a53d-36b8-7522-ae11-646f5e6f0b30`.
@@ -247,9 +248,11 @@ rules. Consequently, attribute projection alone leaves DOM suppression OPEN.
 After the separate finite panel capture, Root took explicit ownership of only
 an additive motion-rule stylesheet and its hook import; this owner leaves both
 paths untouched. Broad palette/forced-color theme stylesheet loading is not
-part of this handoff. The producer owns one combined actual Settings/Phaser
-native proof after that source is published, including computed transition
-suppression and restoration. It remains NOT_RUN at this checkpoint.
+part of this handoff. Root delivered only the existing suppression rules in a
+six-line `motion.css` and its import in the owned hook through
+`7d4c523461840ff5bfdbff3df06c86757b0c8139`. The producer owns one combined actual
+Settings/Phaser native proof of that published source, including computed
+transition suppression and restoration. Its subsequent result is recorded below.
 
 ## Post-freeze cancellation correction
 
@@ -265,11 +268,127 @@ The new regression starts with applied reduced motion and sound, aborts the
 incoming caller from old effect cleanup, and checks rejection, no new
 acquisitions, both old releases and an observed idle/baseline state. The existing
 reentrant-successor regression remains in place. Patch integrity exited 0;
-tests, TypeScript and lint for this correction are **NOT_RUN pending Root's next
-necessary composed source workflow**. No standalone workflow was launched.
+tests, TypeScript and lint for this correction subsequently passed in Root's
+necessary final composed source workflow, recorded below. No standalone
+adopter workflow was launched.
+
+## Final composed source checkpoint
+
+Root published the cancellation correction as
+`44aa157c56107309e57383e8615d5b37305a5761` and the preceding documentation
+checkpoint as `a4197421a9022c7f9693dfe0fa7addec54434acb`. The final source
+workflow `ROOT-PREFERENCES-FINAL-SOURCE-202611040810Z` used exact source
+`7d4c523461840ff5bfdbff3df06c86757b0c8139`. The adopter read the committed
+`docs/mcr/evidence/runtime-preferences-root/source-04/report.json` and all four
+adjacent compressed logs: all 35 affected tests in four files, full TypeScript,
+scoped lint and native harness syntax checking passed, each exit 0. The test
+command uses the owned adapter test prefix, a bounded temporary Vitest config,
+runner config loading, no cache, no parallel files and one worker. TypeScript
+uses the project configuration with incremental output disabled. The receipt
+retains each exact command and source/driver pin.
+
+Execution took 10.529 seconds, with 13,328,384 new output bytes measured and a
+20,742,144-byte whole-tree peak including 7,413,760 carried art bytes. The job
+ended at `2026-11-04T08:06:23.623310+00:00`; its own temporary prefix and
+dependency link were absent. This result covers the new cancellation
+regression and imported CSS source, without claiming browser cascade execution.
+
+A fresh fetch and independent `git ls-remote origin refs/heads/master` both
+resolved to `9e7952fcd89360f7b4fe43c69f22060b9aa55c74`. The correction,
+documentation and motion-loading commits above are all ancestors (exit 0).
+The published `index.ts` and adapter regression exactly match local
+`d6dccde98a98e2a8ec9abb00fc2e0e52274a31ce` (exit 0). Across the entire owned
+prefix, the only additional changes are Root's explicitly transferred motion
+stylesheet and hook import. The source archive still matches the full base.
 
 The separate live run encountered two `/me` HTTP 504 responses and did not
-qualify customization or real settings persistence. The planned native runtime
+qualify customization or real settings persistence. The combined native runtime
 workflow uses explicit deterministic `/me` fixtures and cannot close that
 real-server limitation. Sound enable remains unavailable in production because
 no authorized audio source is supplied. Whole FE34 acceptance remains open.
+
+## Combined native runtime qualification
+
+The producer's single combined workflow qualified on its third bounded attempt,
+`WORLD-PREFERENCES-NATIVE3-202611040829Z`. The original receipt is
+`docs/mcr/evidence/world-runtime-preferences/native-03/report.json`, SHA-256
+`ec6ff9191ae5312930034d70f66fdcbcb4d36365cdb91d8653b243aec5409cc1`.
+Its committed clean harness source is
+`f9781febcd3784f7beeff862bc0939f243018803`, which includes frozen production
+`9e7952fcd89360f7b4fe43c69f22060b9aa55c74` as an ancestor (exit 0).
+The adopter read the original receipt and relevant harness assertions, viewed
+all three original 390×844 captures, and independently compared 20 reported
+adapter/Root/runtime/theme source hashes against that published production
+revision: every pin matched. No receipt, screenshot or workflow was duplicated.
+
+The actual Root Settings route uses the retained ME/Auth/privacy controllers,
+production adapter and theme binding, incumbent Phaser game and real MapScene.
+Settings remains mounted in the existing reduced panel while the World is
+visible. Controlled HTTP, C05 transport and source-controlled asset fixtures
+remain explicit boundaries. The receipt records these results:
+
+- Saving low power leaves engine methods, tween scale and CSS transition
+  unchanged until the explicit Apply action. A baseline interval measured
+  48 pre/render/post paints and 48 updates over 803ms.
+- Applying saved low power measured 16 pre/render/post paints and 72 updates
+  over 1203ms, within the 15Hz paint ceiling. Tweens, scene updates and transport
+  pong traffic continue; this is not a battery or authoritative-physics proof.
+- OS reduced motion stops the real nonessential tween (`scale=0`, zero delta)
+  while updates continue. The loaded production CSS changes the probe from
+  `0.12s` to `0s`. Removing the OS override restores the tween and `0.12s`;
+  explicit saved reduced motion still applies with OS preference disabled.
+- Sound off succeeds and creates no audio element or sound source. Explicit
+  sound enable reports application failure because no eligible source exists.
+- The game, camera, connection, six rendered sprites and map/geometry identity
+  remain the incumbent ones through application and normal navigation. Native
+  theme selection uses the available incumbent PARADE fixture; unavailable
+  DANGER leaves PARADE selected with an error and no pending selection. This
+  does not prove a successful alternate-art switch.
+- Navigating away from Settings releases its applied lifetime, restores normal
+  engine methods/tween scale and the exact prior shell motion attribute/CSS.
+  A separately borrowed public producer lease is also synchronously restored
+  by caller abort after acquisition settles. Adapter caller-abort/race cases
+  remain covered by the source tests.
+- Privacy withdrawal removes the private World presentation and restores the
+  applied effects/attribute. Teardown closes the connection, removes the canvas,
+  disposes the source cache and revokes all created object URLs. No page or
+  runtime errors were recorded.
+
+The original captures are `settings-saved-only.png`,
+`settings-applied-low-power.png` and `settings-privacy-withdrawn.png` in that same
+receipt directory, captured at `08:30:20.984Z`, `08:30:22.302Z` and
+`08:30:23.548Z` on 2026-11-04. These are functional 390px captures; no new
+360/430px visual-target or whole-product acceptance is claimed.
+
+After closing the browser, development server, profile and cache, the workflow
+also passed the actual `frontend/index.html` / `src/main.tsx` Vite application
+build with target `es2022`, temporary output and `copyPublicDir:false`. The
+successful awaited command and its parameters are retained in the pinned native
+driver. This checks the application module build, not a full copied release
+asset bundle. The workflow lasted 7.563 seconds, measured 78,586,053 peak bytes,
+and completed at `2026-11-04T08:30:24.409Z`. Its receipt records browser/server
+closure and temporary removal; the producer reported full allocation release
+with its borrowed dependency link removed.
+
+The original failed receipts remain under `native-01/report.json` and
+`native-02/report.json` in the same evidence prefix. Attempt 1 stopped before
+opening a browser while hashing an archived PNG absent from the checkout.
+Attempt 2 reached the actual World/Settings baseline probes but its exact era
+label locator timed out. The producer corrected the pin list and used the
+unique combobox role with the Preferred era prefix, retaining the original
+timeout and all behavior assertions. Neither failure established a product
+defect, and neither is represented as a pass.
+
+The producer committed the original native evidence, failed attempts, captures
+and ownership manifest in
+`c16c0c875b446f494137b72bc1feee6f27fdbe14`; its harness correction commits are
+`948232992914a306d0a267511b5266a67e1d8098` and
+`f9781febcd3784f7beeff862bc0939f243018803`. Root153 remains the sole publisher.
+The adopter's final delivery reports the fresh remote ancestry and exact
+receipt/document payload readback after publication; this snapshot's independent
+production-source verification is pinned to `9e7952fc` above.
+
+Implementation, composed source validation, the controlled native criterion and
+committed documentation are the bounded leaf delivery. Original FE34, live
+preferences persistence (including the reported `/me` 504), physical devices,
+production art admission and release acceptance remain outside this result.

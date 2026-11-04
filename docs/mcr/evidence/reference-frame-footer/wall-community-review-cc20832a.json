@@ -1,0 +1,262 @@
+{
+  "reviewed_at_utc": "2026-11-04T08:26:59.757986+00:00",
+  "kind": "POST_COMPLETION_TARGETED_READ_ONLY_EVIDENCE_FOLLOW_UP",
+  "original_goal_status": "COMPLETE; source writes STOPPED and all leases returned",
+  "canonical_packet": {
+    "commit": "1722a81734947764996590b94a63aa001501df28",
+    "directory": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03",
+    "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+    "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+    "started_at": "2026-11-04T08:17:02.026Z",
+    "finished_at": "2026-11-04T08:17:31.969Z",
+    "report_sha256": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f",
+    "packet_sha256": "4b1b8bf2d7a29678d072f6073c37e0a43ce646beb3a0cb99766275b2c952e61e",
+    "qualification_sha256": "f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301",
+    "raw_status": "OPEN_FAILURES",
+    "raw_exit": 1,
+    "source_asset_physical_css_pins": {
+      "count": 725,
+      "attribution": "Root verified; not independently repeated by this targeted review"
+    }
+  },
+  "independent_checks": {
+    "all_32_artifact_pins_match_bytes_hashes_and_Git1722": true,
+    "packet_png_count": 25,
+    "targeted_text_focus_pngs_verified": 16,
+    "recorded_focused_pixels_verified": true,
+    "rgba_outline_composition_checked": true,
+    "directly_viewed": [
+      "candidate-wall-text-backing-forced-390.png",
+      "candidate-wall-focus-forced-390.png",
+      "candidate-feed-focus-forced-390.png",
+      "candidate-meet-focus-normal-390.png",
+      "candidate-meet-focus-forced-390.png",
+      "candidate-gifts-focus-forced-390.png",
+      "candidate-feed-text-backing-forced-390.png",
+      "candidate-meet-text-backing-forced-390.png",
+      "candidate-gifts-text-backing-forced-390.png"
+    ]
+  },
+  "normal_measurements": [
+    {
+      "route": "/wall",
+      "text_minimum": 9.545801856993844,
+      "focus_minimum": 15.114013729961503,
+      "focus_four_samples_present": true
+    },
+    {
+      "route": "/feed",
+      "text_minimum": 15.622721919572312,
+      "focus_minimum": 6.02012280875499,
+      "focus_four_samples_present": true
+    },
+    {
+      "route": "/meet",
+      "text_minimum": 5.499084791599385,
+      "focus_minimum": 1,
+      "focus_four_samples_present": false
+    },
+    {
+      "route": "/gifts",
+      "text_minimum": 7.464103914133896,
+      "focus_minimum": 6.586126471068874,
+      "focus_four_samples_present": true
+    }
+  ],
+  "forced_text_disposition": {
+    "decision": "INVALID_BACKING_MEASUREMENT_NOT_PROVEN_PRODUCT_TEXT_FAILURE",
+    "reason": "Saved forced text-backing images visibly retain black glyphs. The transparent -webkit-text-fill-color mask did not remove forced system text; the minimum1:1 samples are glyph pixels, not clean background. Root qualification retains spot/backplate limits; no comprehensive contrast pass inferred.",
+    "driver": "frontend/src/app/__tests__/cozy-wall-accessibility-v1/native.mjs:37",
+    "driver_sha256": "84b23c4d4de54d7126447cc6a282b042db216d72a3311eb4b30febc965e7db6f",
+    "failing_samples": [
+      {
+        "route": "/wall",
+        "selector": ".shell-panel-body [role=\"status\"]",
+        "sample": {
+          "x": 20,
+          "y": 67,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      },
+      {
+        "route": "/feed",
+        "selector": ".feed-browse .feed-post-copy",
+        "sample": {
+          "x": 87,
+          "y": 157,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      },
+      {
+        "route": "/meet",
+        "selector": ".meet-party__members-unavailable",
+        "sample": {
+          "x": 91,
+          "y": 197,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      },
+      {
+        "route": "/meet",
+        "selector": ".meet-party__members-unavailable",
+        "sample": {
+          "x": 91,
+          "y": 313,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      },
+      {
+        "route": "/meet",
+        "selector": ".meet-party__members-unavailable",
+        "sample": {
+          "x": 91,
+          "y": 430,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      },
+      {
+        "route": "/meet",
+        "selector": ".meet-tools button",
+        "sample": {
+          "x": 334,
+          "y": 482,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      },
+      {
+        "route": "/gifts",
+        "selector": ".gift-reference-footnote p",
+        "sample": {
+          "x": 213,
+          "y": 571,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        "raw_minimum": 1
+      }
+    ]
+  },
+  "forced_focus_disposition": {
+    "decision": "RGBA_COMPOSITING_FALSE_ALARMS_FOR_WALL_FEED_GIFTS; REAL_MEET_CLIPPING_REMAINS_OPEN",
+    "reason": "Checker drops alpha from rgba(5,0,73,0.8) and compares raw RGB with opaque PNG pixels. All Wall/Feed/Gifts recorded pixels match 0.8*systemRGB+0.2*backing within1 channel unit; sampled contrast is high. Meet left/bottom pixels still fail after proper compositing.",
+    "driver": "frontend/src/app/__tests__/cozy-wall-accessibility-v1/native.mjs:48",
+    "sampled_minima": {
+      "wall": 11.309774587047812,
+      "feed": 9.376977599757085,
+      "meet": 1,
+      "gifts": 10.677607806093935
+    },
+    "limit": "Four midpoint samples per representative control; no full perimeter/viewport/state or WCAG acceptance."
+  },
+  "meet_product_finding": {
+    "decision": "OPEN_INHERITED_FOCUS_CLIPPING_NORMAL_AND_FORCED",
+    "route": "/meet",
+    "viewport": [
+      390,
+      844
+    ],
+    "selector": ".party-filters > summary",
+    "summary_rect": {
+      "x": 15,
+      "y": 465.5625,
+      "width": 301.546875,
+      "height": 44
+    },
+    "clip_ancestor": {
+      "selector": ".meet-discovery",
+      "overflow_x": "auto",
+      "overflow_y": "auto",
+      "rect": {
+        "x": 15,
+        "y": 115,
+        "width": 360,
+        "height": 394.5625
+      }
+    },
+    "outline": {
+      "width": 3,
+      "offset": 2
+    },
+    "actual_sample_coordinates": {
+      "top_visible": [
+        165,
+        462
+      ],
+      "right_visible": [
+        320,
+        487
+      ],
+      "bottom_missing": [
+        165,
+        513
+      ],
+      "left_missing": [
+        11,
+        487
+      ]
+    },
+    "finding": "Leftx11 and bottomy513 lie outside the ancestor clip bounds x15 and bottom509.5625. Actual saved images and recorded pixels show top/right painted and left/bottom unchanged backing in normal and forced colors.",
+    "source": "frontend/src/features/party-discovery/ui/party-discovery.css:14 and :52",
+    "unchanged_from_8972": [
+      "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "frontend/src/app/shell.css",
+      "frontend/src/app/shell-chrome/shell-chrome.css",
+      "frontend/src/shared/styles/base.css"
+    ]
+  },
+  "ownership_and_routing": {
+    "root": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "screen_art": "01a1a531-d994-7100-909b-112e1215d8cb",
+    "community": "01a1a1fe-c5f1-7e60-87c2-43785b07f941",
+    "disposition": "Exact finding sent to Root, Screen Art and Community. Root confirms no active functional Meet clipping writer. COM01 has background-paint scope only; prior Meet owner204 now owns FE40 and has no old Meet lease. Allocation/scope disposition must precede any functional fix; no implicit layout/outline transfer or additional QA approval gate."
+  },
+  "limits": [
+    "Raw OPEN_FAILURES/exit1 preserved; no packet rewrites or copies",
+    "Wall lower artwork and character preservation are separate Root/asset-owner decisions",
+    "Title-heading ring2.413 is a separate inherited issue and owner",
+    "Controlled synthetic HTTP/C05/local admission; guarded Wall is not the editor",
+    "No live service/device/global accessibility acceptance",
+    "No application/CSS/asset edits, browser/helper/resource job or goal reset/new goal by this evidence follow-up"
+  ],
+  "handoff": "Derived own record only; Root remains sole canonical packet custodian and publisher."
+}

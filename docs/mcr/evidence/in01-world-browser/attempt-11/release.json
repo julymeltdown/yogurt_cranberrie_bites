@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-04T08:38:06.138979+00:00",
+  "slot": "IN01-READSHARE-BROWSER-202611040834Z",
+  "status": "FULLY_RELEASED",
+  "processExit": 0,
+  "runnerAndOwnedChromePids": [],
+  "ipv4AndIpv6Port5173Free": true,
+  "browserContextsProxyServerProfileCacheTempClosed": true,
+  "ownedTempDirectories": 0,
+  "ownDependencyLinkCreated": false,
+  "preExistingPhysicalDependenciesPreserved": true,
+  "durableBytes": 9695217,
+  "wholePeakMeasuredMiB": 40.85,
+  "lowestFreeGiB": 29.433,
+  "nativeStartedAt": "2026-11-04T08:35:46.452Z",
+  "nativeFinishedAt": "2026-11-04T08:37:33.606Z",
+  "acceptedMaxSeconds": 300,
+  "absoluteBrowserDeadline": "2026-11-04T08:40:28.057604Z",
+  "noFurtherCaptureWithoutFreshOffer": true
+}

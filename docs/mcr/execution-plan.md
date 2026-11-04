@@ -6,13 +6,13 @@ The [current progress reconciliation](progress.md#current-task-accounting) recor
 38 task-criteria outcomes: 12 recorded acceptance dispositions plus 26 additional
 task-local criteria closures. Exact owner states are preserved, including FE07 and FE15
 INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY. The latest owner-declared original-task closures are FE14, FE19, QA01,
-QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18 and FE32. Another 65 original tasks
-have partial or unreconciled implementation evidence, 4 statuses remain
+QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18 and FE32. Another 67 original tasks
+have partial or unreconciled implementation evidence, 2 statuses remain
 unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
-Five stale backend coverage labels now reflect partial implementation; this adds no completed tasks. IN01 is IN_PROGRESS after the current-source partial live run, with customization504 unresolved. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
+Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. IN01 is IN_PROGRESS after the current-source partial live run, with customization504 unresolved. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
@@ -29,19 +29,31 @@ digest and main updates the central register in batches. Escalate immediately
 only for an unresolved cross-lane conflict, genuinely unattended critical work
 or a necessary human decision. Routine receipts do not require replies.
 
-The latest staffing expansion adds eight accepted development assignments:
-five frontend/art workers and three reused backend workers. Exact path ownership
-and isolated worktrees remain mandatory. Source development is not capped by
-the two output workflows; leads coordinate resource-heavy jobs separately and
-assign ready follow-up work without main acknowledgment. New coordination
-roles and redundant stopped chats are not counted as productive developers.
+The requested17:24KST portfolio refresh confirms source work on BE15/QA09
+backup/restore, QA05/QA08 public load/failure drivers and FE40 archive entry.
+FE34 retains separate producer/consumer ownership. C07/IN03 transfer is not a
+confirmed start until its goal/checkout acceptance. Active chat count includes
+feasibility, evidence and qualification; it must not be reported as source-worker
+headcount. The earlier eight-assignment expansion is historical, not a current
+active count. Exact paths, isolated worktrees and honest goal states remain
+mandatory. Source development is not capped by shared build/browser slots.
+
+The recent inventory has8 active coordination chats and9 active developer/QA
+chats. Consolidate duplicate capture/status monitoring and park completed
+redundant coordinators after ownership handoff. Main and frontend KING follow
+major features, staffing, cross-lane blockers and publication metadata only;
+no individual test/fix/screenshot watcher or small-task approval gate belongs
+in either king. Root153 is packet/publication custodian; Backend SL is the
+output allocator. Functional leads assign developers to ready original-scope
+work autonomously, preserving112 tasks/61IA and developer-owned validation.
+
 The latest human visual direction changes backgrounds only to a noticeably
 cuter style; characters remain untouched. The first before/after image metrics
 do not certify canvas/CSS-image preservation or final visual acceptance.
 
 A king or SL receiving a technical review request must decline: "I don't perform
 reviews. The responsible developer owns validation; please resolve this with
-the implementation owner." See the current [milestone and staffing snapshot](progress.md#hourly-milestone-and-dependency-snapshot).
+the implementation owner." See the current [milestone and staffing snapshot](progress.md#portfolio-and-staffing-update).
 
 ## Historical execution plan (superseded where noted above)
 

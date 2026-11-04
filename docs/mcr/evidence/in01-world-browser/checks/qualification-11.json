@@ -1,0 +1,245 @@
+{
+  "at": "2026-11-04T08:39:57.166792+00:00",
+  "status": "RUNTIME_AND_ART_PASS",
+  "originalTask": "IN01",
+  "appPublishedPin": "1722a81734947764996590b94a63aa001501df28",
+  "backendPublishedPin": "cde817b2ade8caabcf8c3a96508121053997873e",
+  "historyBaseline": "619256f1da3f72045adea2cd170ae4380765796f",
+  "worktree": "qa-in01-world",
+  "branch": "codex/mcr-qa-IN01",
+  "descriptorSha256": "97bdb5450d951ddb19236de29cace57a717400942ab84cbb5690690b5efe985c",
+  "nativeProcessExit": 0,
+  "startedAt": "2026-11-04T08:35:46.452Z",
+  "finishedAt": "2026-11-04T08:37:33.606Z",
+  "allOriginalCriteria": {
+    "independentAccounts": {
+      "status": "PASS",
+      "detail": {
+        "independentContexts": 2,
+        "freshLogins": 2
+      }
+    },
+    "authorizedWorld": {
+      "status": "PASS",
+      "detail": [
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 0,
+          "ack": 1,
+          "lastInput": 1,
+          "players": 2,
+          "frames": 3,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        },
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 0,
+          "ack": 1,
+          "lastInput": 1,
+          "players": 2,
+          "frames": 2,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        }
+      ]
+    },
+    "bidirectionalMovementAndAck": {
+      "status": "PASS",
+      "detail": [
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 7,
+          "ack": 9,
+          "lastInput": 9,
+          "players": 2,
+          "frames": 11,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        },
+        {
+          "active": 1,
+          "peak": 1,
+          "opens": 1,
+          "snapshots": 1,
+          "invalid": 0,
+          "inputs": 7,
+          "ack": 9,
+          "lastInput": 9,
+          "players": 2,
+          "frames": 10,
+          "privacyFields": 0,
+          "map": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "avatarManifest": "mcr_selected_static_20261103",
+          "avatarRevision": 1
+        }
+      ]
+    },
+    "persistentPanels": {
+      "status": "PASS",
+      "detail": {
+        "independentContexts": 2,
+        "panelsPerContext": 6,
+        "sameHostAndCanvas": true,
+        "noNewSocket": true,
+        "coveredMovementSuppressed": true
+      }
+    },
+    "themeRuntimeAndLocalPersistence": {
+      "status": "PASS",
+      "detail": {
+        "selected": "PARADE",
+        "renderedCanvasChanged": true,
+        "localIdentityAndEventScoped": true,
+        "otherContextIsolated": true,
+        "roomPositionAvatarUnchanged": true,
+        "socketUnchanged": true,
+        "canvasBeforeSha256": "7e7f7226b6faedf31d88180af437dbd85cacec1542114da7d757f24b2441a76e",
+        "canvasAfterSha256": "971d04abe0d807d9a68350d54db1f96c54ca9c75d721b020f317547f088b69fa",
+        "persistence": "Local storage only; server preference synchronization is explicitly unavailable"
+      }
+    },
+    "customization": {
+      "status": "PASS",
+      "detail": {
+        "realSave": true,
+        "peerAuthorizedAvatarChanged": true,
+        "choices": 3,
+        "realServerReadAfterReentry": true,
+        "selectedCharacterPersisted": true,
+        "cleanSavedDraft": true
+      }
+    },
+    "sustainedCurrentAuthWorld": {
+      "status": "PASS",
+      "detail": {
+        "durationMs": 91284,
+        "cycles": 6,
+        "independentLiveIdentities": 2,
+        "sameRoom": true,
+        "realProfileNavigations": 12,
+        "refreshObservation": {
+          "status": "NOT_RUN",
+          "reason": "Actual deployment token TTL900s exceeds the immutable runtime window; no actual App reload-resume path or owned401trigger. No expiry/token/clock manipulation."
+        },
+        "successfulRefreshRequests": 0,
+        "refreshPrincipals": [],
+        "noAuthInjectionOrMock": true,
+        "oneSocketPerContext": true,
+        "protocolPrivacyAndLateErrors": 0
+      }
+    },
+    "realBrowserReconnect": {
+      "status": "PASS",
+      "detail": {
+        "realProxyTransportCut": {
+          "method": "Destroyed exactly one own real Vite proxy client/upstream TCP pair; no synthetic WebSocket frames or backend control",
+          "principal": 0
+        },
+        "peerWithdrawal": true,
+        "newAuthorizedStream": true,
+        "freshSnapshot": true,
+        "bothPlayersRestored": true,
+        "sameCanvas": true,
+        "peakWorldSockets": 1
+      }
+    },
+    "singleActualPhaserGame": {
+      "status": "PASS",
+      "detail": {
+        "readOnlyHeapQuery": true,
+        "contexts": [
+          {
+            "live": 1,
+            "total": 2,
+            "ownedCanvas": true
+          },
+          {
+            "live": 1,
+            "total": 2,
+            "ownedCanvas": true
+          }
+        ]
+      }
+    },
+    "finalWorldInvariants": {
+      "status": "PASS",
+      "detail": {
+        "independentIdentities": 2,
+        "liveStreams": 2,
+        "playersPerStream": 2,
+        "peakSocketsPerContext": 1,
+        "invalidFrames": 0,
+        "privateFields": 0,
+        "lateErrors": 0
+      }
+    }
+  },
+  "sourceVerification": {
+    "appContractInputsExactFrozenPublished": 1158,
+    "exactRuntimeDriverSnapshots": 6,
+    "captureHashes": 5,
+    "loadedAssetHashes": 4,
+    "productionPublicPackageLockContractPostimagesExact": true
+  },
+  "artReview": {
+    "status": "PASS",
+    "method": "Direct native inspection of saved-persisted editor and both final real-client World captures, plus actual selected atlas Git/hash verification.",
+    "approvedAtlasSha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "findings": [
+      "Saved selected character appears in editor after a real server read; save is disabled for the clean persisted draft.",
+      "Both clients show the changed authorized peer appearance; the other actor retains its character.",
+      "Approved static whole-character artwork has coherent scale, ordinary foreground occlusion and no legacy/synthetic fallback.",
+      "Different local themes remain isolated between contexts."
+    ],
+    "limits": "Admitted static map4/avatar1 and actual390px captures only; no motion, era/ten-screen target, full frontend, IN05 or release-wide acceptance."
+  },
+  "scopeClarification": {
+    "authority": "Latest explicit BackendRoot/FrontendRoot/BackendSL assignment and current docs/mcr/execution-plan.md line15.",
+    "naturalExpiry": "NOT_RUN_INFORMATIONAL_ONLY",
+    "no900SecondOrNewAutomaticRefreshGate": true,
+    "qualification": "No original IN01 scope cut; expiry/automatic renewal was never an original criterion and no new Auth behavior is authorized."
+  },
+  "privateFailureBodies": "No /me or avatar failure occurred in this attempt. New error-only observer retains allowlisted keys/types and bounded public error code if an actual failure occurs; no raw/private values.",
+  "reportSha256": "5a31e78089ba0828b725b2fcc65f22970c0e3b5a6e70df1fe7830d15bcb60d47",
+  "releaseSha256": "a90122dc8719043ea24678e5da4545a8407cf577ed2a82605be0e29ae67df410",
+  "publication": "Committed scoped handoff and fresh remote ancestry/postimage proof remain separate required delivery steps. Native snapshots/reports will not be rewritten.",
+  "credentialSeedScan": {
+    "status": "PASS",
+    "files": 128,
+    "valuesExported": false
+  },
+  "backendOwnerAfterBrowserObservation": {
+    "at": "2026-11-04T08:38:56.175562Z",
+    "provenance": "BackendRoot direct read-only aggregate; not frontend SQL or independent transaction inspection.",
+    "rootFinishedSerializedDelivered": 22,
+    "authCompletedSettled": 22,
+    "friendCompletedSettled": 22,
+    "preparedTransactions": 0,
+    "activeLockWaits": 0,
+    "writesOrSettlementByFrontend": false,
+    "qualification": "Specific post-browser timepoint, not future-zero or release-wide proof."
+  }
+}
