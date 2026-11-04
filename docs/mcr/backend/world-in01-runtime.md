@@ -83,3 +83,34 @@ revocation and shutdown evidence, and the frontend consumer handoff. C05's
 motion-profile and input-application timing gap also remains open for full
 FE17 prediction/reconciliation; hidden server constants are not a negotiated
 public contract. Current map4 startup does not depend on new art or map5.
+# Supervised World and C03 composition followup
+
+The Root entrypoint now mounts the opt-in Participant factory, exact C03 method
+policy, Profile-only Decision verifier, Auth/Friend-only settlement, one shared
+Delivery publisher, and a supervised Participant recovery loop. It refuses
+simultaneous independent Product and Participant owners before opening the
+database; a future union must share the canonical scope and delivery identity.
+
+When World is enabled, Bootstrap and Participant use the exact validated release
+`Arc` supplied by World settings, including the World feature capability and
+source digest. The gRPC listener waits for World’s one-shot readiness after real
+replay catchup, room claims and owner maintenance. A dropped startup sender fails
+closed. After startup, the World future remains supervised. Component failure
+requests shared shutdown and joins peer futures so native replay and membership
+cleanup can finish, rather than abandoning them on the first error.
+
+`--inspect-product-release` validates the same release configuration and prints
+only its digest without opening a database/listener. Runtime tooling can use
+this value for the Gateway and Participant release bindings rather than copying
+a digest from a different feature configuration.
+
+The qualified World source `82803760` was integrated as `2658000b`, including the
+missing immutable migration 0026 and the full 18-path final packet. Earlier
+individual fixes alone were insufficient because their replay implementation
+was not yet present in Root. Readiness followups `68b68338`/`4c0a0468` are mapped
+to `36adc136`/`55470af8`; the preceding cleanup regression test was retained in
+the test-file conflict. Participant factory `e7c0cbb8` maps to `161a3bd6`.
+These mappings do not certify the combined Root entrypoint: its fresh compilation,
+supervision tests and actual public C03/World serving proof remain NOT_RUN at
+this source checkpoint.
+
