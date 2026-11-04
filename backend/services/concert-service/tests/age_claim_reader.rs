@@ -550,6 +550,9 @@ struct CommitDelayAuthority {
 }
 #[async_trait]
 impl ProjectionAuthority for CommitDelayAuthority {
+    fn accepts_claim(&self, verifier: &str, revision: &str) -> bool {
+        self.base.accepts_claim(verifier, revision)
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
