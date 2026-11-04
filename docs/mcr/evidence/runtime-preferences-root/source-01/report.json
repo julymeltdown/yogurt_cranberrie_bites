@@ -1,0 +1,39 @@
+{
+  "source_revision": "44d168f25342c3dac2394f4d5da9adabd6544bc6",
+  "runner_sha256": "fa35f62f4098c8ef9dca956a5c67cf783ee5720004c682b813c954cfeaf4be53",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/world/preferences/__tests__",
+        "src/features/theme/__tests__/runtime-preferences",
+        "src/world/__tests__/runtime.test.ts",
+        "src/features/settings/runtime-adoption/__tests__",
+        "src/app/account-entry/__tests__/root.test.tsx",
+        "src/world/composition/__tests__/presentation-release.test.ts",
+        "src/app/__tests__/reference-frame-footer/background-contrast.test.ts",
+        "--config",
+        "/private/tmp/mcr-composed-preferences-source01/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--cache=false",
+        "--no-file-parallelism",
+        "--maxWorkers=1"
+      ],
+      "started_at": "2026-11-04T07:09:45.210028+00:00",
+      "exit_code": 1,
+      "log": "1.log"
+    }
+  ],
+  "failure": "command-1-exit-1",
+  "elapsed_seconds": 6.980726958994637,
+  "peak_whole_bytes": 20967424,
+  "peak_temp_bytes": 20963328,
+  "peak_durable_bytes": 20480,
+  "minimum_free_bytes": 41057857536,
+  "owned_temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T07:09:52.143873+00:00"
+}
