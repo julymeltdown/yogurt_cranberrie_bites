@@ -1,0 +1,848 @@
+{
+  "kind": "CSS-PARITY-MEET",
+  "fixture": "src/app/__tests__/cozy-backgrounds-v1/preview.html",
+  "qualification": "MOCK_READY_ONLY",
+  "candidate": "002184eeb93e6a471f8e132400594a63379337f9",
+  "source": "frontend/src/features/party-discovery/ui/party-discovery.css",
+  "baselineRootInput": "91058462",
+  "cssSha256": "487c1b051bfc246b2f3e76e6f31174f96d3da7960be30b7489e8189acf0f3051",
+  "node": "v24.22.2",
+  "reference": {
+    "photo": "AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+    "crop": [
+      260,
+      450,
+      501,
+      848
+    ]
+  },
+  "liveServices": "NOT_RUN",
+  "devices": "NOT_RUN",
+  "fullVisualAcceptance": "OPEN",
+  "resource": {
+    "minFree": 20009504768,
+    "peaks": {
+      "temporary": 6787680,
+      "durable": 22669383,
+      "whole": 29457063
+    },
+    "caps": {
+      "temporary": 134217728,
+      "durable": 33554432,
+      "whole": 167772160
+    }
+  },
+  "cases": [
+    {
+      "width": 390,
+      "errors": [],
+      "initial": {
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 644
+        },
+        "rows": [
+          {
+            "x": 15,
+            "y": 111,
+            "width": 360,
+            "height": 111.1875
+          },
+          {
+            "x": 15,
+            "y": 227.1875,
+            "width": 360,
+            "height": 111.1875
+          },
+          {
+            "x": 15,
+            "y": 343.375,
+            "width": 360,
+            "height": 111.1875
+          }
+        ],
+        "foreground": [
+          {
+            "selector": "party-tabs",
+            "text": "PartiesPeopleMY PLAN",
+            "rect": {
+              "x": 15,
+              "y": 59,
+              "width": 360,
+              "height": 44
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__portrait",
+            "text": "",
+            "rect": {
+              "x": 23,
+              "y": 121,
+              "width": 59.265625,
+              "height": 59.265625
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "H3",
+            "text": "Area A Queue Group",
+            "rect": {
+              "x": 90.265625,
+              "y": 121,
+              "width": 200.734375,
+              "height": 44
+            },
+            "font": "800 18px / 20.7px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__where",
+            "text": "Area A · 17:00",
+            "rect": {
+              "x": 90.265625,
+              "y": 167,
+              "width": 200.734375,
+              "height": 18.1875
+            },
+            "font": "600 14px / 18.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__members-unavailable",
+            "text": "Member portraits unavailable",
+            "rect": {
+              "x": 90.265625,
+              "y": 191.1875,
+              "width": 200.734375,
+              "height": 23
+            },
+            "font": "10px / 11.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__capacity",
+            "text": "12/20 members",
+            "rect": {
+              "x": 299,
+              "y": 121,
+              "width": 68,
+              "height": 17
+            },
+            "font": "800 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__join",
+            "text": "Join",
+            "rect": {
+              "x": 299,
+              "y": 170.1875,
+              "width": 68,
+              "height": 44
+            },
+            "font": "800 14px / 14px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__portrait",
+            "text": "",
+            "rect": {
+              "x": 23,
+              "y": 237.1875,
+              "width": 59.265625,
+              "height": 59.265625
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "H3",
+            "text": "After Show Hangout",
+            "rect": {
+              "x": 90.265625,
+              "y": 237.1875,
+              "width": 200.734375,
+              "height": 44
+            },
+            "font": "800 18px / 20.7px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__where",
+            "text": "Standing A · 17:00",
+            "rect": {
+              "x": 90.265625,
+              "y": 283.1875,
+              "width": 200.734375,
+              "height": 18.1875
+            },
+            "font": "600 14px / 18.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__members-unavailable",
+            "text": "Member portraits unavailable",
+            "rect": {
+              "x": 90.265625,
+              "y": 307.375,
+              "width": 200.734375,
+              "height": 23
+            },
+            "font": "10px / 11.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__capacity",
+            "text": "8/12 members",
+            "rect": {
+              "x": 299,
+              "y": 237.1875,
+              "width": 68,
+              "height": 17
+            },
+            "font": "800 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__join",
+            "text": "Join",
+            "rect": {
+              "x": 299,
+              "y": 286.375,
+              "width": 68,
+              "height": 44
+            },
+            "font": "800 14px / 14px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__portrait",
+            "text": "",
+            "rect": {
+              "x": 23,
+              "y": 353.375,
+              "width": 59.265625,
+              "height": 59.265625
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "H3",
+            "text": "Photo Walk (Parade ver.)",
+            "rect": {
+              "x": 90.265625,
+              "y": 353.375,
+              "width": 200.734375,
+              "height": 44
+            },
+            "font": "800 18px / 20.7px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__where",
+            "text": "Standing A · 17:00",
+            "rect": {
+              "x": 90.265625,
+              "y": 399.375,
+              "width": 200.734375,
+              "height": 18.1875
+            },
+            "font": "600 14px / 18.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__members-unavailable",
+            "text": "Member portraits unavailable",
+            "rect": {
+              "x": 90.265625,
+              "y": 423.5625,
+              "width": 200.734375,
+              "height": 23
+            },
+            "font": "10px / 11.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__capacity",
+            "text": "5/8 members",
+            "rect": {
+              "x": 299,
+              "y": 353.375,
+              "width": 68,
+              "height": 17
+            },
+            "font": "800 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__join",
+            "text": "Join",
+            "rect": {
+              "x": 299,
+              "y": 402.5625,
+              "width": 68,
+              "height": 44
+            },
+            "font": "800 14px / 14px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-create",
+            "text": "Create partyParty creation is currently unavailable.",
+            "rect": {
+              "x": 15,
+              "y": 476.953125,
+              "width": 360,
+              "height": 87.75
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        ],
+        "controls": [
+          {
+            "name": "Parties",
+            "disabled": false,
+            "rect": {
+              "x": 15,
+              "y": 59,
+              "width": 117.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "People",
+            "disabled": false,
+            "rect": {
+              "x": 136.328125,
+              "y": 59,
+              "width": 117.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "MY PLAN",
+            "disabled": false,
+            "rect": {
+              "x": 257.65625,
+              "y": 59,
+              "width": 117.34375,
+              "height": 44
+            }
+          },
+          {
+            "name": "Area A Queue Group",
+            "disabled": false,
+            "rect": {
+              "x": 90.265625,
+              "y": 121,
+              "width": 200.734375,
+              "height": 44
+            }
+          },
+          {
+            "name": "View details for Area A Queue Group",
+            "disabled": false,
+            "rect": {
+              "x": 299,
+              "y": 170.1875,
+              "width": 68,
+              "height": 44
+            }
+          },
+          {
+            "name": "After Show Hangout",
+            "disabled": false,
+            "rect": {
+              "x": 90.265625,
+              "y": 237.1875,
+              "width": 200.734375,
+              "height": 44
+            }
+          },
+          {
+            "name": "View details for After Show Hangout",
+            "disabled": false,
+            "rect": {
+              "x": 299,
+              "y": 286.375,
+              "width": 68,
+              "height": 44
+            }
+          },
+          {
+            "name": "Photo Walk (Parade ver.)",
+            "disabled": false,
+            "rect": {
+              "x": 90.265625,
+              "y": 353.375,
+              "width": 200.734375,
+              "height": 44
+            }
+          },
+          {
+            "name": "View details for Photo Walk (Parade ver.)",
+            "disabled": false,
+            "rect": {
+              "x": 299,
+              "y": 402.5625,
+              "width": 68,
+              "height": 44
+            }
+          },
+          {
+            "name": "Filter parties",
+            "disabled": false,
+            "rect": {
+              "x": 15,
+              "y": 461.5625,
+              "width": 301.546875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Refresh parties",
+            "disabled": false,
+            "rect": {
+              "x": 324.546875,
+              "y": 461.5625,
+              "width": 50.453125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Create party",
+            "disabled": true,
+            "rect": {
+              "x": 77,
+              "y": 494.953125,
+              "width": 236,
+              "height": 46
+            }
+          }
+        ]
+      },
+      "characters": [
+        {
+          "width": 64,
+          "height": 64,
+          "cssWidth": 64,
+          "cssHeight": 64,
+          "objectFit": "contain",
+          "imageRendering": "pixelated",
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "cssWidth": 64,
+          "cssHeight": 64,
+          "objectFit": "contain",
+          "imageRendering": "pixelated",
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "cssWidth": 64,
+          "cssHeight": 64,
+          "objectFit": "contain",
+          "imageRendering": "pixelated",
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        }
+      ],
+      "joinReachability": [
+        {
+          "width": 68,
+          "height": 44,
+          "hit": true,
+          "focus": true,
+          "outline": "solid",
+          "outlineColor": "rgb(163, 33, 43)"
+        },
+        {
+          "width": 68,
+          "height": 44,
+          "hit": true,
+          "focus": true,
+          "outline": "solid",
+          "outlineColor": "rgb(163, 33, 43)"
+        },
+        {
+          "width": 68,
+          "height": 44,
+          "hit": true,
+          "focus": true,
+          "outline": "solid",
+          "outlineColor": "rgb(163, 33, 43)"
+        }
+      ],
+      "detailReadNoMutation": true,
+      "tabsAndFilters": true,
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px",
+        "offset": "-3px",
+        "adjust": "auto"
+      },
+      "longTitle": {
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 644
+        },
+        "rows": [
+          {
+            "x": 15,
+            "y": 74,
+            "width": 360,
+            "height": 129.25
+          },
+          {
+            "x": 15,
+            "y": 208.25,
+            "width": 360,
+            "height": 111.1875
+          },
+          {
+            "x": 15,
+            "y": 324.4375,
+            "width": 360,
+            "height": 111.1875
+          }
+        ],
+        "foreground": [
+          {
+            "selector": "party-tabs",
+            "text": "PartiesPeopleMY PLAN",
+            "rect": {
+              "x": 15,
+              "y": 59,
+              "width": 360,
+              "height": 44
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__portrait",
+            "text": "",
+            "rect": {
+              "x": 23,
+              "y": 84,
+              "width": 59.265625,
+              "height": 59.265625
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "H3",
+            "text": "TEST ONLY long party title with enough words to wrap naturally across several lines",
+            "rect": {
+              "x": 90.265625,
+              "y": 84,
+              "width": 200.734375,
+              "height": 62.0625
+            },
+            "font": "800 18px / 20.7px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__where",
+            "text": "Area A · 17:00",
+            "rect": {
+              "x": 90.265625,
+              "y": 148.0625,
+              "width": 200.734375,
+              "height": 18.1875
+            },
+            "font": "600 14px / 18.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__members-unavailable",
+            "text": "Member portraits unavailable",
+            "rect": {
+              "x": 90.265625,
+              "y": 172.25,
+              "width": 200.734375,
+              "height": 23
+            },
+            "font": "10px / 11.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__capacity",
+            "text": "12/20 members",
+            "rect": {
+              "x": 299,
+              "y": 84,
+              "width": 68,
+              "height": 17
+            },
+            "font": "800 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__join",
+            "text": "Join",
+            "rect": {
+              "x": 299,
+              "y": 151.25,
+              "width": 68,
+              "height": 44
+            },
+            "font": "800 14px / 14px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__portrait",
+            "text": "",
+            "rect": {
+              "x": 23,
+              "y": 218.25,
+              "width": 59.265625,
+              "height": 59.265625
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "H3",
+            "text": "After Show Hangout",
+            "rect": {
+              "x": 90.265625,
+              "y": 218.25,
+              "width": 200.734375,
+              "height": 44
+            },
+            "font": "800 18px / 20.7px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__where",
+            "text": "Standing A · 17:00",
+            "rect": {
+              "x": 90.265625,
+              "y": 264.25,
+              "width": 200.734375,
+              "height": 18.1875
+            },
+            "font": "600 14px / 18.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__members-unavailable",
+            "text": "Member portraits unavailable",
+            "rect": {
+              "x": 90.265625,
+              "y": 288.4375,
+              "width": 200.734375,
+              "height": 23
+            },
+            "font": "10px / 11.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__capacity",
+            "text": "8/12 members",
+            "rect": {
+              "x": 299,
+              "y": 218.25,
+              "width": 68,
+              "height": 17
+            },
+            "font": "800 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__join",
+            "text": "Join",
+            "rect": {
+              "x": 299,
+              "y": 267.4375,
+              "width": 68,
+              "height": 44
+            },
+            "font": "800 14px / 14px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__portrait",
+            "text": "",
+            "rect": {
+              "x": 23,
+              "y": 334.4375,
+              "width": 59.265625,
+              "height": 59.265625
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "H3",
+            "text": "Photo Walk (Parade ver.)",
+            "rect": {
+              "x": 90.265625,
+              "y": 334.4375,
+              "width": 200.734375,
+              "height": 44
+            },
+            "font": "800 18px / 20.7px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__where",
+            "text": "Standing A · 17:00",
+            "rect": {
+              "x": 90.265625,
+              "y": 380.4375,
+              "width": 200.734375,
+              "height": 18.1875
+            },
+            "font": "600 14px / 18.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__members-unavailable",
+            "text": "Member portraits unavailable",
+            "rect": {
+              "x": 90.265625,
+              "y": 404.625,
+              "width": 200.734375,
+              "height": 23
+            },
+            "font": "10px / 11.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__capacity",
+            "text": "5/8 members",
+            "rect": {
+              "x": 299,
+              "y": 334.4375,
+              "width": 68,
+              "height": 17
+            },
+            "font": "800 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-party__join",
+            "text": "Join",
+            "rect": {
+              "x": 299,
+              "y": 383.625,
+              "width": 68,
+              "height": 44
+            },
+            "font": "800 14px / 14px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          {
+            "selector": "meet-create",
+            "text": "Create partyParty creation is currently unavailable.",
+            "rect": {
+              "x": 15,
+              "y": 476.953125,
+              "width": 360,
+              "height": 87.75
+            },
+            "font": "14px / 17.5px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        ],
+        "controls": [
+          {
+            "name": "Parties",
+            "disabled": false,
+            "rect": {
+              "x": 15,
+              "y": 59,
+              "width": 117.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "People",
+            "disabled": false,
+            "rect": {
+              "x": 136.328125,
+              "y": 59,
+              "width": 117.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "MY PLAN",
+            "disabled": false,
+            "rect": {
+              "x": 257.65625,
+              "y": 59,
+              "width": 117.34375,
+              "height": 44
+            }
+          },
+          {
+            "name": "TEST ONLY long party title with enough words to wrap naturally across several lines",
+            "disabled": false,
+            "rect": {
+              "x": 90.265625,
+              "y": 84,
+              "width": 200.734375,
+              "height": 62.0625
+            }
+          },
+          {
+            "name": "View details for Area A Queue Group",
+            "disabled": false,
+            "rect": {
+              "x": 299,
+              "y": 151.25,
+              "width": 68,
+              "height": 44
+            }
+          },
+          {
+            "name": "After Show Hangout",
+            "disabled": false,
+            "rect": {
+              "x": 90.265625,
+              "y": 218.25,
+              "width": 200.734375,
+              "height": 44
+            }
+          },
+          {
+            "name": "View details for After Show Hangout",
+            "disabled": false,
+            "rect": {
+              "x": 299,
+              "y": 267.4375,
+              "width": 68,
+              "height": 44
+            }
+          },
+          {
+            "name": "Photo Walk (Parade ver.)",
+            "disabled": false,
+            "rect": {
+              "x": 90.265625,
+              "y": 334.4375,
+              "width": 200.734375,
+              "height": 44
+            }
+          },
+          {
+            "name": "View details for Photo Walk (Parade ver.)",
+            "disabled": false,
+            "rect": {
+              "x": 299,
+              "y": 383.625,
+              "width": 68,
+              "height": 44
+            }
+          },
+          {
+            "name": "Filter parties",
+            "disabled": false,
+            "rect": {
+              "x": 15,
+              "y": 442.625,
+              "width": 301.546875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Refresh parties",
+            "disabled": false,
+            "rect": {
+              "x": 324.546875,
+              "y": 442.625,
+              "width": 50.453125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Create party",
+            "disabled": true,
+            "rect": {
+              "x": 77,
+              "y": 494.953125,
+              "width": 236,
+              "height": 46
+            }
+          }
+        ]
+      },
+      "status": "PASS"
+    }
+  ],
+  "browser": "156.0.8078.80"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "NOT_RUN",
+  "reason": "Local next-request guard rejected before child launch because insufficient original work clock remained; supervisor already at cleanup/work cutoff. No implicit extension, source checks or fourth browser run.",
+  "requestCommandExitCode": 1,
+  "nativeChildStarted": false,
+  "unrunDriverAddition": "Optional source/planning assertions removed; final driver remains the driver used for successful baseline and candidate01-03.",
+  "planningCheck": "NOT_RUN_THIS_CSS_ROUND"
+}
