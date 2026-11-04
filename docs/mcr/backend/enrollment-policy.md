@@ -211,3 +211,37 @@ contract, shared producer or role factory was copied. Root owns the one prepared
 Operations factory, current-role producer and shared Wall dispatch composition.
 The already compiled fixture retains producing revision `857a6955`; this newer
 Gateway source requires its own immutable compile pin and main qualification.
+
+### Compiled actual combined Gateway main — producing source `a985dba4`
+
+The separately allocated `GATEWAY-WALL-MAIN-MEDIA-20261104T1920Z` ran exactly
+one `cargo +1.88.0 build -p api-gateway --bin api-gateway` command with the
+previously specified locked/offline/j2/profile flags. It exited 0 in 20.22
+seconds. The copied actual main is 58,068,528 bytes, SHA256
+`c3778db0ca94d516e5d458f60afc0f153de9625634a3c7613cb48850acb2ec1b`, compiled
+at `a985dba4e407183d7d5439b2cb8d55a103a2c37b`. There were no compiler fixes,
+extra selected outputs, test matrix, PG, services or browser runs in this turn.
+This is actual-main compilation, not a claim that the main was launched or
+that any Wall/admin/role-access HTTP operation or IN04 passed. The imported
+unit probes remain NOT_RUN.
+
+The frozen producing readset contains 1,952 Rust/SQL/proto/manifest/lock inputs.
+The actual compiled checkout's Gateway migration inventory remains seventeen
+files, with exact SHA256, SHA384 and directory device/inode recorded in its
+private `gateway-main-handoff.json`. Root's single-stack assembler can consume
+that main and SQL closure with the current Enrollment Auth19 producer and its
+separately qualified Concert composition. An EXE hash does not embed or freeze
+the checkout's runtime SQL. Historical `2f7992d4` Gateway qualification remains
+separate and cannot stand in for this Wall/current-role route composition.
+
+Private build custody is `/private/tmp/mcr-gateway207-wall-_4noci5n`.
+The turn accepted 19:32:56.783403 UTC on 2026-11-04, after both the previous Auth
+FULL and the named Operations target release/FULL. Target release went directly
+to PrivateData at 19:33:51.695241 with zero compilers/readers/handles and a reaped
+guard. FULL was 19:34:14.383247, 22.688006 seconds later, with all owned processes,
+guards, binary readers, services and workflows zero. There was no target
+reentry. NEW peaked at 60,170,240 bytes and retained whole at 4,962,492,416 bytes;
+that larger whole is the nonshrinking floor for later owned turns. Original
+periodic guardian samples and final-copy endpoint reconciliation are retained.
+The failed Operations native qualification remains its implementation owner's
+responsibility and is not promoted by this successful Gateway build.
