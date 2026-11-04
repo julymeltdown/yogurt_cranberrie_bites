@@ -1227,6 +1227,69 @@
         }
       },
       "required": []
+    },
+    "OperationsAccessLeaseV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "MODERATOR",
+            "OPERATOR"
+          ]
+        },
+        "role_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "decision_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "checked_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "actor_id",
+        "event_id",
+        "role",
+        "role_revision",
+        "decision_id",
+        "checked_at",
+        "expires_at"
+      ]
+    },
+    "OwnOperationsAccessV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "server_time": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "access": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/admin.schema.json#/$defs/OperationsAccessLeaseV1"
+            }
+          ]
+        }
+      },
+      "required": [
+        "server_time",
+        "access"
+      ]
     }
   }
 }
