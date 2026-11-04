@@ -130,8 +130,11 @@ export function createOperationsController(options: OperationsOptions) {
       if (finishLoad(id, 'audit')) emit({ audit: page.items, auditCursor: page.next_cursor })
     } catch (error) { const message = feedback(error); if (alive() && id === sequence) emit({ loading: false, message }) }
   }
+  function readPlaceRelease() {
+    try { return options.places?.read() ?? null } catch { return null }
+  }
   function placeGrant(body: SetPlace) {
-    const release = options.places?.read(), current = state.places.find(row => row.place.place_id === body.place.place_id)
+    const release = readPlaceRelease(), current = state.places.find(row => row.place.place_id === body.place.place_id)
     if (!release || !sameScope(release.scope, guard.scope) || !Number.isSafeInteger(release.mapRevision) || release.mapRevision < 1
       || !utc.safeParse(release.expiresAt).success || Date.parse(release.expiresAt) <= guard.now()! || !current || current.revision !== body.expected_revision) return null
     const target = release.targets.find(t => t.placeId === body.place.place_id && t.expectedRevision === current.revision)
@@ -304,14 +307,16 @@ export function createOperationsController(options: OperationsOptions) {
   }
   guard.own(() => options.places?.subscribe(() => {
     if (command?.action.operation === 'setConcertPlace' && command.action.stage === 'review' && !placeGrant(command.body as SetPlace)) cancel()
-    if (placeFlight && !equal(options.places?.read(), placeFlight.release)) { placeFlight.abort.abort(); action('unknown', 'The map/write release was withdrawn. Check current state; do not repeat the command.') }
+    if (placeFlight && !equal(readPlaceRelease(), placeFlight.release)) { placeFlight.abort.abort(); action('unknown', 'The map/write release was withdrawn. Check current state; do not repeat the command.') }
+    // Refresh the displayed write-map revision even when no review or write is active.
+    if (alive()) emit({})
   }) ?? (() => {}))
   return {
     read: () => state,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } },
     loadEvent, loadPlaces, loadNotices, loadAudit, prepareSettings, preparePhase, prepareNotice, preparePlace, cancel, confirm, checkStatus,
     selectAudit(id: string | null) { if (alive()) emit({ auditDetail: state.audit.find(row => row.audit_id === id) ?? null }) },
-    mapRevision() { const release = options.places?.read(); return alive() && release && sameScope(release.scope, guard.scope)
+    mapRevision() { const release = readPlaceRelease(); return alive() && release && sameScope(release.scope, guard.scope)
       && utc.safeParse(release.expiresAt).success && Date.parse(release.expiresAt) > guard.now()! && Number.isSafeInteger(release.mapRevision) && release.mapRevision > 0 ? release.mapRevision : null },
     dispose() { if (disposed) return; disposed = true; guard.withdraw(); listeners.clear() },
   }

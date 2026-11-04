@@ -1,0 +1,19 @@
+{
+  "job": "FE38-OPERATIONS-BROWSER2-20261104T1732Z",
+  "kind": "native",
+  "acceptedAt": 1793813536.847852,
+  "workDeadline": 1793814016.847852,
+  "cleanupDeadline": 1793814076.847852,
+  "head": "f092712fd46b3715728993fc062c8cfd49b78793",
+  "pins": {
+    "native.mjs": "466b2a81a077563b480933905970600917cf59fd54dfbc84ad1fb6fa26706e56",
+    "supervise.py": "44ab764428c1cf736abfa85e6ba061d2b484778856e8fab4c6ef19debcf9ec58"
+  },
+  "freeBytes": 27865309184,
+  "otherNew": 343932928,
+  "ownNew": 134217728,
+  "remainingAfterGrowth": 27387158528,
+  "wholeCap": 2147483648,
+  "port5297": "reusable",
+  "scope": "Exact affected producer native, original components,360/390/430 and568short, oneChrome/Vite only"
+}

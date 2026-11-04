@@ -1,0 +1,23 @@
+{
+  "job": "FE38-OPERATIONS-BROWSER2-20261104T1732Z",
+  "releasedAt": 1793813568.259928,
+  "result": "AUTOMATED_NATIVE_PASS_OWNER_IMAGE_INSPECTION_PENDING",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "allKnownPidsAbsent": true,
+  "port5297": "actual bind/listen/reuse succeeded",
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "freeBytes": 27876102144,
+  "peaks": {
+    "durable": 5286848,
+    "temp": 52744708,
+    "new": 66360790,
+    "whole": 1894608323
+  },
+  "peakPids": 8,
+  "peakRss": 2096594944
+}

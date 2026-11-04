@@ -1,0 +1,116 @@
+{
+  "task": "FE38",
+  "status": "SOURCE_PINS_NOT_RUNTIME_ACCEPTANCE",
+  "base": "0624d581325946c593b5bbe00c4cfde0213ad538",
+  "candidate": "a412814d702d82709f7445fc356abd03d697acab",
+  "custody": {
+    "commit": "9ecf641affe7633787c28ca86aa0abbc28a7f566",
+    "parent": "09c24adc1f34c798530ae0a9b8693b4539de80c1",
+    "adoptedOnly": [
+      "frontend/src/features/admin/event/model/controller.ts",
+      "frontend/src/features/admin/event/__tests__/current/place-producer.test.ts"
+    ],
+    "formerWriterStopped": true,
+    "qualification": "Unvalidated custody; current author owns all validation and fixes."
+  },
+  "pins": {
+    "frontend/src/features/admin/event/model/controller.ts": {
+      "base": "dcb105e816ab1e61e3014be431f2cc33f485a2a5dcda91dcfed675635c63019e",
+      "candidate": "73b157cc65a4004a138c4c161e55a46dbbd3746c001b52e5b3da8c1d4ef30bce"
+    },
+    "frontend/src/features/admin/event/model/ports.ts": {
+      "base": "38e116b5fb365920c9ca35a2d445ec2b34eefc6148cf35b7da021be60c70252b",
+      "candidate": "38e116b5fb365920c9ca35a2d445ec2b34eefc6148cf35b7da021be60c70252b"
+    },
+    "frontend/src/features/admin/event/model/lease.ts": {
+      "base": "64139083f91530cbe75a5e37fa473e82e5196c3f8c8253dfa69b5ba8d6223214",
+      "candidate": "64139083f91530cbe75a5e37fa473e82e5196c3f8c8253dfa69b5ba8d6223214"
+    },
+    "frontend/src/features/admin/event/model/contract.ts": {
+      "base": "42b8624fc4e0b07c1410fcc6084ae9bf85e81692ef2f9f0d80d126eab8bfad20",
+      "candidate": "42b8624fc4e0b07c1410fcc6084ae9bf85e81692ef2f9f0d80d126eab8bfad20"
+    },
+    "frontend/src/features/admin/event/ui/EventOperations.tsx": {
+      "base": "ef7af68d29d17627b57d31d1ad926ec234f7b3d05a5b852419351ba208a364b6",
+      "candidate": "ef7af68d29d17627b57d31d1ad926ec234f7b3d05a5b852419351ba208a364b6"
+    },
+    "frontend/src/features/admin/event/ui/common.tsx": {
+      "base": "7055c5c6b844fd8df88714576d9cd9aaa986b3326937a2a173c0eeae9b35969c",
+      "candidate": "7055c5c6b844fd8df88714576d9cd9aaa986b3326937a2a173c0eeae9b35969c"
+    },
+    "frontend/src/features/admin/event/ui/operations.css": {
+      "base": "56c26b90323d4acd1a86b3e80a3aff7f9efb8eec5dce2807ee2ab8f3387ab17c",
+      "candidate": "56c26b90323d4acd1a86b3e80a3aff7f9efb8eec5dce2807ee2ab8f3387ab17c"
+    },
+    "frontend/src/features/admin/places/PlacesOperations.tsx": {
+      "base": "eb6654419e4e3a659677bed38c6db5e9d3d7b38ea811b01c43230a62a0224507",
+      "candidate": "eb6654419e4e3a659677bed38c6db5e9d3d7b38ea811b01c43230a62a0224507"
+    },
+    "frontend/src/features/admin/places/contract.ts": {
+      "base": "b56c89d81a270240342ff11a8265737cf8651acda6ebefe0ea6aaa6b3a0d5493",
+      "candidate": "b56c89d81a270240342ff11a8265737cf8651acda6ebefe0ea6aaa6b3a0d5493"
+    },
+    "frontend/src/features/admin/audit/AuditOperations.tsx": {
+      "base": "68dfca7cc1cc820bc0fa2523dce73b533508f5b872bc9f28ded8be704cb95d8c",
+      "candidate": "68dfca7cc1cc820bc0fa2523dce73b533508f5b872bc9f28ded8be704cb95d8c"
+    },
+    "frontend/src/features/admin/audit/contract.ts": {
+      "base": "6fe7f35047e83b29f2340c9de1b025c7e7ae767c1f0abc78fc9c5888ef68b2c7",
+      "candidate": "6fe7f35047e83b29f2340c9de1b025c7e7ae767c1f0abc78fc9c5888ef68b2c7"
+    },
+    "frontend/src/features/admin/event/__tests__/fixtures/data.ts": {
+      "base": "cbcff7c01fe0695958674c9484864d856103496bd7da80e91f83cc22180fcbd9",
+      "candidate": "cbcff7c01fe0695958674c9484864d856103496bd7da80e91f83cc22180fcbd9"
+    },
+    "frontend/src/features/admin/event/__tests__/controller.test.ts": {
+      "base": "3425af5578bde80e0b408bb69b6ba5968d3b9eb163d35daa7fab4db041d432f2",
+      "candidate": "3425af5578bde80e0b408bb69b6ba5968d3b9eb163d35daa7fab4db041d432f2"
+    },
+    "frontend/src/features/admin/event/__tests__/contract.test.ts": {
+      "base": "f4d19d613f1a54cc340a7b3495143f61ca9e4e62a10b4fdb0450ef25d4927b8a",
+      "candidate": "f4d19d613f1a54cc340a7b3495143f61ca9e4e62a10b4fdb0450ef25d4927b8a"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "base": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+      "candidate": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "base": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "candidate": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "contracts/domain/v1/admin.schema.json": {
+      "base": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+      "candidate": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640"
+    },
+    "contracts/domain/v1/feed.schema.json": {
+      "base": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed",
+      "candidate": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed"
+    },
+    "contracts/domain/v1/common.schema.json": {
+      "base": "cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258",
+      "candidate": "cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258"
+    },
+    "contracts/domain/v1/operations.json": {
+      "base": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+      "candidate": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d"
+    },
+    "contracts/domain/v1/policy.json": {
+      "base": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6",
+      "candidate": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6"
+    },
+    "frontend/src/app/AdminBoundary.tsx": {
+      "base": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+      "candidate": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb"
+    },
+    "frontend/src/app/ports.ts": {
+      "base": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565",
+      "candidate": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565"
+    }
+  },
+  "producerDisposition": {
+    "roleClockPlace": "Backend205 OPERATIONS-PUBLIC-01 owns proposed public interface. No registered/frozen browser role-query at this read set.",
+    "roleProposal": "getOwnConcertOperationsAccess was proposed, not consumed or treated as authority.",
+    "root": "Root153 owns current placeholder/default-denied AdminBoundary/ports/router and future explicit composition.",
+    "feature": "Missing role/clock keeps whole operations unavailable; missing/unreadable place authority alone disables only place writes. No fabricated role, clock, venue or legal input."
+  }
+}

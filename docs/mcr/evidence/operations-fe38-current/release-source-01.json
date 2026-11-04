@@ -1,0 +1,18 @@
+{
+  "job": "FE38-SOURCE-A-DIRECT-202611041727Z",
+  "releasedAt": 1793813327.879361,
+  "round": "source-01",
+  "result": "PASS_77_TESTS_SCOPED_TYPES_LINT",
+  "allKnownPidsAbsent": true,
+  "remainingKnownPids": [],
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "freeBytes": 27207356416,
+  "peaks": {
+    "durable": 26294,
+    "temp": 3148293,
+    "new": 11536901,
+    "whole": 1839734573
+  },
+  "scope": "SOURCE-A FULL; no browser reservation. Other growth reservation was Social-authorized actual NEW209715200B; subsequent optional whole2GiB conservative envelope also fits fresh arithmetic, no duplicate check."
+}

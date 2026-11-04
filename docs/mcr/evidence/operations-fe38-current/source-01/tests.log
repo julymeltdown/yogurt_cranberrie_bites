@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/.codex/worktrees/092f/mcr/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  77 passed (77)
+   Start at  02:28:00
+   Duration  1.22s (transform 278ms, setup 0ms, import 607ms, tests 381ms, environment 0ms)
+

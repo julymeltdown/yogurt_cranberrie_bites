@@ -1,0 +1,855 @@
+{
+  "task": "FE38",
+  "job": "FE38-OPERATIONS-BROWSER2-20261104T1732Z",
+  "base": "0624d581325946c593b5bbe00c4cfde0213ad538",
+  "candidate": "f092712fd46b3715728993fc062c8cfd49b78793",
+  "startedAt": "2026-11-04T17:32:26.633Z",
+  "scope": "Actual FE38 production components and canonical Auth; explicitly fictional operator/clock/place/HTTP. No root producer/live/device/operator-publication proof.",
+  "cases": [
+    {
+      "width": 360,
+      "errors": [],
+      "captures": [
+        {
+          "file": "unreadable-360.png",
+          "sha256": "738fa2b8b625c338a9f0c01f6dbb0d15ee1d77e45305174b9d1200a0c4fd32b0",
+          "bytes": 287821
+        },
+        {
+          "file": "confirmation-360.png",
+          "sha256": "f306b07d42cabaa91d7c35b93d7652f9c9b7034f0f01c4ba84122b131037c9fd",
+          "bytes": 372651
+        },
+        {
+          "file": "unknown-360.png",
+          "sha256": "423e06298ff9e1ae7ca85f93f336df7e89fcd0de85f61caa22c03ba6c7590cd2",
+          "bytes": 372500
+        },
+        {
+          "file": "applied-360.png",
+          "sha256": "212822a1bf495d7600cd2aaa953bc67279149cb50c0c32241e6fe55b36183134",
+          "bytes": 366656
+        },
+        {
+          "file": "short-focus-360.png",
+          "sha256": "9e3463b3ff929d90fc83880c01186abb0644b2e6c165ef10b5889495b6cb6baa",
+          "bytes": 272016
+        }
+      ],
+      "unavailableLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 76.265625,
+            "width": 130.6875
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark"
+      },
+      "idleWithdrawal": "display updates without opening review",
+      "confirmation": {
+        "operation": "setConcertPlace",
+        "target": "00000000-0000-4000-8000-000000000003",
+        "expectedRevision": 4,
+        "changes": [
+          [
+            "Place",
+            "SYNTHETIC landmark"
+          ],
+          [
+            "Closure",
+            "CLOSED"
+          ],
+          [
+            "Verification",
+            "VERIFIED"
+          ],
+          [
+            "Source revision",
+            "SYNTHETIC release 1"
+          ],
+          [
+            "Review state",
+            "REVIEWED"
+          ],
+          [
+            "Accessibility",
+            "SYNTHETIC access notes; no real venue claim."
+          ],
+          [
+            "Reason",
+            "SYNTHETIC reviewed closure"
+          ]
+        ],
+        "stage": "review",
+        "message": "Review this exact target and revision before confirming."
+      },
+      "unknownLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Check command status",
+            "height": 44,
+            "width": 147.578125
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 76.265625,
+            "width": 130.6875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "UNVERIFIEDVERIFIED",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "OPENCLOSED",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "SYNTHETIC access notes; no real venue claim.",
+            "height": 112,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "UNREVIEWEDREVIEWEDREJECTED",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "SYNTHETIC reviewed closure",
+            "height": 112,
+            "width": 271.21875
+          },
+          {
+            "label": "Review place change",
+            "height": 44,
+            "width": 136.734375
+          },
+          {
+            "label": "Close place editor",
+            "height": 44,
+            "width": 119.5
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCommand outcome\nOperation\nUpdate place\nTarget\n00000000-0000-4000-8000-000000000003\nExpected revision\n4\nStatus\nunknown\nPlace\nSYNTHETIC landmark\nClosure\nCLOSED\nVerification\nVERIFIED\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nAccessibility\nSYNTHETIC access notes; no real venue claim.\nReason\nSYNTHETIC reviewed closure\n\nThe outcome is unknown. Check status and current state; do not submit another command.\n\nCheck command status\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark\nReview place source\nPlace\n00000000-0000-4000-8000-000000000003\nCurrent revision\n4\nCurrent source\nhttps://venue.example.invalid/review\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nReviewed by\nSYNTHETIC reviewer\nReviewed at\n2026-11-03T04:00:00.000Z\nSource kind\nPLACE_REFERENCE\nAuthor\nSYNTHETIC author\nLicense\nSYNTHETIC fixture only\nPhoto permission\nDENIED\n\nClosure-only changes preserve immutable provenance. Source, verification, accessibility or other edits must exactly match a separately reviewed new release. Draft inputs survive refresh; compare the current revision.\n\nProposed place change\nPlace label\nVerification state\nUNVERIFIED\nVERIFIED\nClosure state\nOPEN\nCLOSED\nAccessibility notes\nPlace source URI\nSource revision\nSource review state\nUNREVIEWED\nREVIEWED\nREJECTED\nSource reviewed by\nSource reviewed at (UTC)\nReason for place change\nReview place change\nClose place editor"
+      },
+      "shortLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 76.265625,
+            "width": 130.6875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "UNVERIFIEDVERIFIED",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "OPENCLOSED",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "SYNTHETIC access notes; no real venue claim.",
+            "height": 112,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "UNREVIEWEDREVIEWEDREJECTED",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 271.21875
+          },
+          {
+            "label": "",
+            "height": 112,
+            "width": 271.21875
+          },
+          {
+            "label": "Review place change",
+            "height": 44,
+            "width": 136.734375
+          },
+          {
+            "label": "Close place editor",
+            "height": 44,
+            "width": 119.5
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark\nReview place source\nPlace\n00000000-0000-4000-8000-000000000003\nCurrent revision\n4\nCurrent source\nhttps://venue.example.invalid/review\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nReviewed by\nSYNTHETIC reviewer\nReviewed at\n2026-11-03T04:00:00.000Z\nSource kind\nPLACE_REFERENCE\nAuthor\nSYNTHETIC author\nLicense\nSYNTHETIC fixture only\nPhoto permission\nDENIED\n\nClosure-only changes preserve immutable provenance. Source, verification, accessibility or other edits must exactly match a separately reviewed new release. Draft inputs survive refresh; compare the current revision.\n\nProposed place change\nPlace label\nVerification state\nUNVERIFIED\nVERIFIED\nClosure state\nOPEN\nCLOSED\nAccessibility notes\nPlace source URI\nSource revision\nSource review state\nUNREVIEWED\nREVIEWED\nREJECTED\nSource reviewed by\nSource reviewed at (UTC)\nReason for place change\nReview place change\nClose place editor"
+      },
+      "afterWithdrawal": {
+        "view": {
+          "access": "withdrawn",
+          "loading": false,
+          "message": null,
+          "settings": null,
+          "overview": null,
+          "notices": [],
+          "noticeCursor": null,
+          "places": [],
+          "placeCursor": null,
+          "audit": [],
+          "auditCursor": null,
+          "auditDetail": null,
+          "command": null
+        },
+        "writeCalls": 0,
+        "aborted": false,
+        "placeSubscriptions": 0,
+        "authoritySubscriptions": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/admin/places"
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "errors": [],
+      "captures": [
+        {
+          "file": "unreadable-390.png",
+          "sha256": "de2371309386dfb803ebf66bfa49c3c91fd132c32b9042f40f36592e2ad4c296",
+          "bytes": 293173
+        },
+        {
+          "file": "confirmation-390.png",
+          "sha256": "3f1ef26268e8556b86720a14d2dac61ab8d7156575b4cd264aaf7d388541352e",
+          "bytes": 384617
+        },
+        {
+          "file": "unknown-390.png",
+          "sha256": "bf4fda27a0352ebf9ef8fc3bf7738ffb468ac4ada48d33a9443262f2c24ba615",
+          "bytes": 385585
+        },
+        {
+          "file": "applied-390.png",
+          "sha256": "3249fd28aa71ce0524ab527fdb646750a047af1d2050cab43252804d79224ea4",
+          "bytes": 379702
+        },
+        {
+          "file": "short-focus-390.png",
+          "sha256": "5b03ac85cafc352fbeff06a8440c2baf386daae2912703f0045f30b8d3aaa595",
+          "bytes": 278933
+        }
+      ],
+      "unavailableLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 57.375,
+            "width": 147.34375
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark"
+      },
+      "idleWithdrawal": "display updates without opening review",
+      "confirmation": {
+        "operation": "setConcertPlace",
+        "target": "00000000-0000-4000-8000-000000000003",
+        "expectedRevision": 4,
+        "changes": [
+          [
+            "Place",
+            "SYNTHETIC landmark"
+          ],
+          [
+            "Closure",
+            "CLOSED"
+          ],
+          [
+            "Verification",
+            "VERIFIED"
+          ],
+          [
+            "Source revision",
+            "SYNTHETIC release 1"
+          ],
+          [
+            "Review state",
+            "REVIEWED"
+          ],
+          [
+            "Accessibility",
+            "SYNTHETIC access notes; no real venue claim."
+          ],
+          [
+            "Reason",
+            "SYNTHETIC reviewed closure"
+          ]
+        ],
+        "stage": "review",
+        "message": "Review this exact target and revision before confirming."
+      },
+      "unknownLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Check command status",
+            "height": 44,
+            "width": 147.578125
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 57.375,
+            "width": 147.34375
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "UNVERIFIEDVERIFIED",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "OPENCLOSED",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "SYNTHETIC access notes; no real venue claim.",
+            "height": 112,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "UNREVIEWEDREVIEWEDREJECTED",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "SYNTHETIC reviewed closure",
+            "height": 112,
+            "width": 301.21875
+          },
+          {
+            "label": "Review place change",
+            "height": 44,
+            "width": 136.734375
+          },
+          {
+            "label": "Close place editor",
+            "height": 44,
+            "width": 119.5
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCommand outcome\nOperation\nUpdate place\nTarget\n00000000-0000-4000-8000-000000000003\nExpected revision\n4\nStatus\nunknown\nPlace\nSYNTHETIC landmark\nClosure\nCLOSED\nVerification\nVERIFIED\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nAccessibility\nSYNTHETIC access notes; no real venue claim.\nReason\nSYNTHETIC reviewed closure\n\nThe outcome is unknown. Check status and current state; do not submit another command.\n\nCheck command status\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark\nReview place source\nPlace\n00000000-0000-4000-8000-000000000003\nCurrent revision\n4\nCurrent source\nhttps://venue.example.invalid/review\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nReviewed by\nSYNTHETIC reviewer\nReviewed at\n2026-11-03T04:00:00.000Z\nSource kind\nPLACE_REFERENCE\nAuthor\nSYNTHETIC author\nLicense\nSYNTHETIC fixture only\nPhoto permission\nDENIED\n\nClosure-only changes preserve immutable provenance. Source, verification, accessibility or other edits must exactly match a separately reviewed new release. Draft inputs survive refresh; compare the current revision.\n\nProposed place change\nPlace label\nVerification state\nUNVERIFIED\nVERIFIED\nClosure state\nOPEN\nCLOSED\nAccessibility notes\nPlace source URI\nSource revision\nSource review state\nUNREVIEWED\nREVIEWED\nREJECTED\nSource reviewed by\nSource reviewed at (UTC)\nReason for place change\nReview place change\nClose place editor"
+      },
+      "shortLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 57.375,
+            "width": 147.34375
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "UNVERIFIEDVERIFIED",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "OPENCLOSED",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "SYNTHETIC access notes; no real venue claim.",
+            "height": 112,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "UNREVIEWEDREVIEWEDREJECTED",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 301.21875
+          },
+          {
+            "label": "",
+            "height": 112,
+            "width": 301.21875
+          },
+          {
+            "label": "Review place change",
+            "height": 44,
+            "width": 136.734375
+          },
+          {
+            "label": "Close place editor",
+            "height": 44,
+            "width": 119.5
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark\nReview place source\nPlace\n00000000-0000-4000-8000-000000000003\nCurrent revision\n4\nCurrent source\nhttps://venue.example.invalid/review\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nReviewed by\nSYNTHETIC reviewer\nReviewed at\n2026-11-03T04:00:00.000Z\nSource kind\nPLACE_REFERENCE\nAuthor\nSYNTHETIC author\nLicense\nSYNTHETIC fixture only\nPhoto permission\nDENIED\n\nClosure-only changes preserve immutable provenance. Source, verification, accessibility or other edits must exactly match a separately reviewed new release. Draft inputs survive refresh; compare the current revision.\n\nProposed place change\nPlace label\nVerification state\nUNVERIFIED\nVERIFIED\nClosure state\nOPEN\nCLOSED\nAccessibility notes\nPlace source URI\nSource revision\nSource review state\nUNREVIEWED\nREVIEWED\nREJECTED\nSource reviewed by\nSource reviewed at (UTC)\nReason for place change\nReview place change\nClose place editor"
+      },
+      "afterWithdrawal": {
+        "view": {
+          "access": "withdrawn",
+          "loading": false,
+          "message": null,
+          "settings": null,
+          "overview": null,
+          "notices": [],
+          "noticeCursor": null,
+          "places": [],
+          "placeCursor": null,
+          "audit": [],
+          "auditCursor": null,
+          "auditDetail": null,
+          "command": null
+        },
+        "writeCalls": 0,
+        "aborted": false,
+        "placeSubscriptions": 0,
+        "authoritySubscriptions": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/admin/places"
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "errors": [],
+      "captures": [
+        {
+          "file": "unreadable-430.png",
+          "sha256": "c6a99af293bfa5acec2a968b5a4c99eba4bc9b4d0f1bdc477a378366cc8de17d",
+          "bytes": 305191
+        },
+        {
+          "file": "confirmation-430.png",
+          "sha256": "9f03c8eb81f1203dd664fce821f7e56b518caf263cc3c4680832d8981aa42d71",
+          "bytes": 400691
+        },
+        {
+          "file": "unknown-430.png",
+          "sha256": "492f9bcae8659ae987f82c33a5005a0a9eadbeae9cec02479079c6df5c63266e",
+          "bytes": 400007
+        },
+        {
+          "file": "applied-430.png",
+          "sha256": "0ce7d65f83c3ee8504724c48ed0d097adfc2bf708b61ce503887d42bdbc371db",
+          "bytes": 395346
+        },
+        {
+          "file": "short-focus-430.png",
+          "sha256": "cda2a1bf7a9b5fd1754342c45c3d6ad977dab366c6e7ae6643560fc116aa7d38",
+          "bytes": 288728
+        }
+      ],
+      "unavailableLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 57.375,
+            "width": 169.53125
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark"
+      },
+      "idleWithdrawal": "display updates without opening review",
+      "confirmation": {
+        "operation": "setConcertPlace",
+        "target": "00000000-0000-4000-8000-000000000003",
+        "expectedRevision": 4,
+        "changes": [
+          [
+            "Place",
+            "SYNTHETIC landmark"
+          ],
+          [
+            "Closure",
+            "CLOSED"
+          ],
+          [
+            "Verification",
+            "VERIFIED"
+          ],
+          [
+            "Source revision",
+            "SYNTHETIC release 1"
+          ],
+          [
+            "Review state",
+            "REVIEWED"
+          ],
+          [
+            "Accessibility",
+            "SYNTHETIC access notes; no real venue claim."
+          ],
+          [
+            "Reason",
+            "SYNTHETIC reviewed closure"
+          ]
+        ],
+        "stage": "review",
+        "message": "Review this exact target and revision before confirming."
+      },
+      "unknownLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Check command status",
+            "height": 44,
+            "width": 147.578125
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 57.375,
+            "width": 169.53125
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "UNVERIFIEDVERIFIED",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "OPENCLOSED",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "SYNTHETIC access notes; no real venue claim.",
+            "height": 112,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "UNREVIEWEDREVIEWEDREJECTED",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "SYNTHETIC reviewed closure",
+            "height": 112,
+            "width": 341.21875
+          },
+          {
+            "label": "Review place change",
+            "height": 44,
+            "width": 136.734375
+          },
+          {
+            "label": "Close place editor",
+            "height": 44,
+            "width": 119.5
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCommand outcome\nOperation\nUpdate place\nTarget\n00000000-0000-4000-8000-000000000003\nExpected revision\n4\nStatus\nunknown\nPlace\nSYNTHETIC landmark\nClosure\nCLOSED\nVerification\nVERIFIED\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nAccessibility\nSYNTHETIC access notes; no real venue claim.\nReason\nSYNTHETIC reviewed closure\n\nThe outcome is unknown. Check status and current state; do not submit another command.\n\nCheck command status\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark\nReview place source\nPlace\n00000000-0000-4000-8000-000000000003\nCurrent revision\n4\nCurrent source\nhttps://venue.example.invalid/review\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nReviewed by\nSYNTHETIC reviewer\nReviewed at\n2026-11-03T04:00:00.000Z\nSource kind\nPLACE_REFERENCE\nAuthor\nSYNTHETIC author\nLicense\nSYNTHETIC fixture only\nPhoto permission\nDENIED\n\nClosure-only changes preserve immutable provenance. Source, verification, accessibility or other edits must exactly match a separately reviewed new release. Draft inputs survive refresh; compare the current revision.\n\nProposed place change\nPlace label\nVerification state\nUNVERIFIED\nVERIFIED\nClosure state\nOPEN\nCLOSED\nAccessibility notes\nPlace source URI\nSource revision\nSource review state\nUNREVIEWED\nREVIEWED\nREJECTED\nSource reviewed by\nSource reviewed at (UTC)\nReason for place change\nReview place change\nClose place editor"
+      },
+      "shortLayout": {
+        "overflow": false,
+        "controls": [
+          {
+            "label": "Refresh places",
+            "height": 44,
+            "width": 104.171875
+          },
+          {
+            "label": "Review SYNTHETIC landmark",
+            "height": 57.375,
+            "width": 169.53125
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "UNVERIFIEDVERIFIED",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "OPENCLOSED",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "SYNTHETIC access notes; no real venue claim.",
+            "height": 112,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "UNREVIEWEDREVIEWEDREJECTED",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 44,
+            "width": 341.21875
+          },
+          {
+            "label": "",
+            "height": 112,
+            "width": 341.21875
+          },
+          {
+            "label": "Review place change",
+            "height": 44,
+            "width": 136.734375
+          },
+          {
+            "label": "Close place editor",
+            "height": 44,
+            "width": 119.5
+          }
+        ],
+        "text": "VENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: Unavailable. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark\nReview place source\nPlace\n00000000-0000-4000-8000-000000000003\nCurrent revision\n4\nCurrent source\nhttps://venue.example.invalid/review\nSource revision\nSYNTHETIC release 1\nReview state\nREVIEWED\nReviewed by\nSYNTHETIC reviewer\nReviewed at\n2026-11-03T04:00:00.000Z\nSource kind\nPLACE_REFERENCE\nAuthor\nSYNTHETIC author\nLicense\nSYNTHETIC fixture only\nPhoto permission\nDENIED\n\nClosure-only changes preserve immutable provenance. Source, verification, accessibility or other edits must exactly match a separately reviewed new release. Draft inputs survive refresh; compare the current revision.\n\nProposed place change\nPlace label\nVerification state\nUNVERIFIED\nVERIFIED\nClosure state\nOPEN\nCLOSED\nAccessibility notes\nPlace source URI\nSource revision\nSource review state\nUNREVIEWED\nREVIEWED\nREJECTED\nSource reviewed by\nSource reviewed at (UTC)\nReason for place change\nReview place change\nClose place editor"
+      },
+      "afterWithdrawal": {
+        "view": {
+          "access": "withdrawn",
+          "loading": false,
+          "message": null,
+          "settings": null,
+          "overview": null,
+          "notices": [],
+          "noticeCursor": null,
+          "places": [],
+          "placeCursor": null,
+          "audit": [],
+          "auditCursor": null,
+          "auditDetail": null,
+          "command": null
+        },
+        "writeCalls": 0,
+        "aborted": false,
+        "placeSubscriptions": 0,
+        "authoritySubscriptions": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/admin/places"
+          }
+        ]
+      },
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "pins": {
+    "frontend/src/features/admin/event/model/controller.ts": "73b157cc65a4004a138c4c161e55a46dbbd3746c001b52e5b3da8c1d4ef30bce",
+    "frontend/src/features/admin/event/model/ports.ts": "38e116b5fb365920c9ca35a2d445ec2b34eefc6148cf35b7da021be60c70252b",
+    "frontend/src/features/admin/event/model/lease.ts": "64139083f91530cbe75a5e37fa473e82e5196c3f8c8253dfa69b5ba8d6223214",
+    "frontend/src/features/admin/event/ui/EventOperations.tsx": "ef7af68d29d17627b57d31d1ad926ec234f7b3d05a5b852419351ba208a364b6",
+    "frontend/src/features/admin/event/ui/common.tsx": "7055c5c6b844fd8df88714576d9cd9aaa986b3326937a2a173c0eeae9b35969c",
+    "frontend/src/features/admin/event/ui/operations.css": "56c26b90323d4acd1a86b3e80a3aff7f9efb8eec5dce2807ee2ab8f3387ab17c",
+    "frontend/src/features/admin/places/PlacesOperations.tsx": "eb6654419e4e3a659677bed38c6db5e9d3d7b38ea811b01c43230a62a0224507",
+    "frontend/src/features/admin/audit/AuditOperations.tsx": "68dfca7cc1cc820bc0fa2523dce73b533508f5b872bc9f28ded8be704cb95d8c",
+    "frontend/src/features/admin/event/__tests__/fixtures/data.ts": "cbcff7c01fe0695958674c9484864d856103496bd7da80e91f83cc22180fcbd9",
+    "frontend/src/features/admin/event/__tests__/current/producer-fixture.ts": "910cb16f864482bfdefd9f530796935057a01dbc6ad1bad8ebeda76b876c4ff5",
+    "frontend/src/features/admin/event/__tests__/current/preview.tsx": "f51a0ab0e8fa775500315126583f4ac1aa4570f31956f9caab6508079efd0932",
+    "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "browser": "156.0.8078.80",
+  "baselineFailure": {
+    "status": "EXPECTED_FAILURE_REPRODUCED",
+    "errors": [
+      "PRIVATE place producer diagnostic"
+    ],
+    "capture": {
+      "file": "baseline-unreadable-360.png",
+      "sha256": "d3817c5d70f2235cf931a4c17180e73bdb189f0a7896f1f3af9712ff1560cd5f",
+      "bytes": 2532
+    }
+  },
+  "finishedAt": "2026-11-04T17:32:35.125Z",
+  "status": "PASS_PENDING_OWNER_IMAGE_INSPECTION",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "job": "FE38-OPERATIONS-BROWSER2-20261104T1732Z",
+  "round": "native-01",
+  "started": 1793813546.1554172,
+  "deadline": 1793814016.847852,
+  "cleanupDeadline": 1793814076.847852,
+  "ownedGitReservation": 8388608,
+  "peaks": {
+    "durable": 5286848,
+    "temp": 52744708,
+    "new": 66360790,
+    "whole": 1894608323
+  },
+  "floor": 8589934592,
+  "outstandingGrowthReservation": 343932928,
+  "retainedCheckoutStart": 1387933696,
+  "retainedReadOnlyDepsStart": 438317056,
+  "ownGitMetadataStart": 1921024,
+  "ownGitObjectsStart": 75757,
+  "pid": 50322,
+  "minFree": 27877601280,
+  "lastDescendants": [
+    50322
+  ],
+  "peakPids": 8,
+  "peakRss": 2096594944,
+  "exitCode": 0,
+  "finished": 1793813555.820029,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "durableBytes": 5286848,
+  "cleanupWithinDeadline": true,
+  "free": 28040802304
+}

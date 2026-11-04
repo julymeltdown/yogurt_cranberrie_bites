@@ -1,0 +1,49 @@
+{
+  "job": "FE38-SOURCE-A-DIRECT-202611041727Z",
+  "source": "Current original FE38 controller/contract tests and producer regression, scoped strict types/lint; no unrelated matrix",
+  "startedAt": "2026-11-04T17:28:00.135Z",
+  "checks": [
+    {
+      "name": "tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/092f/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/admin/event/__tests__/current/runner.ts",
+        "--configLoader",
+        "runner"
+      ],
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/bin/tsc",
+        "--project",
+        "src/features/admin/event/__tests__/current/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/092f/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "src/features/admin/event",
+        "src/features/admin/places",
+        "src/features/admin/audit"
+      ],
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "finishedAt": "2026-11-04T17:28:05.279Z",
+  "status": "PASS"
+}

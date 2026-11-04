@@ -1,0 +1,21 @@
+{
+  "job": "FE38-SOURCE-A-DIRECT-202611041727Z",
+  "head": "393e0aa041cd42b6f99710ad3712644847f5f802",
+  "sampleEpoch": 1793813266.068081,
+  "freeBytes": 28883968000,
+  "otherNewReservationBytes": 209715200,
+  "newReservationBytes": 134217728,
+  "checkoutBytes": 1387900928,
+  "readOnlyDepsBytes": 438317056,
+  "ownGitMetadataBytes": 1921024,
+  "ownTaskGitObjectsBytes": 54568,
+  "workDeadline": 1793813746.068081,
+  "cleanupDeadline": 1793813806.068081,
+  "sourceSlotsIncludingOwn": 1,
+  "browserSlotsIncludingLiveOtherOffer": 1,
+  "potentialAggregateJobs": 2,
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "linkAbsent": true,
+  "afterReservationsBytes": 28540035072,
+  "wholeWorstCase": 1962411304
+}

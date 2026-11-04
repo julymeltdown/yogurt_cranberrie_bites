@@ -1,0 +1,35 @@
+{
+  "job": "FE38-SOURCE-A-DIRECT-202611041727Z",
+  "round": "source-01",
+  "started": 1793813280.098075,
+  "deadline": 1793813746.068081,
+  "cleanupDeadline": 1793813806.068081,
+  "ownedGitReservation": 8388608,
+  "peaks": {
+    "durable": 26294,
+    "temp": 3148293,
+    "new": 11536901,
+    "whole": 1839734573
+  },
+  "floor": 8589934592,
+  "outstandingGrowthReservation": 209715200,
+  "retainedCheckoutStart": 1387905024,
+  "retainedReadOnlyDepsStart": 438317056,
+  "ownGitMetadataStart": 1921024,
+  "ownGitObjectsStart": 54568,
+  "pid": 12567,
+  "minFree": 28693446656,
+  "lastDescendants": [
+    12567,
+    12671
+  ],
+  "peakPids": 3,
+  "peakRss": 979419136,
+  "exitCode": 0,
+  "finished": 1793813285.6813529,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "durableBytes": 29030,
+  "cleanupWithinDeadline": true,
+  "free": 28695363584
+}

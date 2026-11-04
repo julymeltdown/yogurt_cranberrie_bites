@@ -1,0 +1,43 @@
+{
+  "status": "PASS_CHANGED_CANDIDATE_NATIVE_AND_OWNER_IMAGE_INSPECTION",
+  "candidate": "f092712fd46b3715728993fc062c8cfd49b78793",
+  "at": 1793813607.89942,
+  "inspected": [
+    {
+      "file": "native-01/unreadable-360.png",
+      "sha256": "738fa2b8b625c338a9f0c01f6dbb0d15ee1d77e45305174b9d1200a0c4fd32b0"
+    },
+    {
+      "file": "native-01/confirmation-390.png",
+      "sha256": "3f1ef26268e8556b86720a14d2dac61ab8d7156575b4cd264aaf7d388541352e"
+    },
+    {
+      "file": "native-01/unknown-430.png",
+      "sha256": "492f9bcae8659ae987f82c33a5005a0a9eadbeae9cec02479079c6df5c63266e"
+    },
+    {
+      "file": "native-01/short-focus-360.png",
+      "sha256": "9e3463b3ff929d90fc83880c01186abb0644b2e6c165ef10b5889495b6cb6baa"
+    },
+    {
+      "file": "native-01/short-focus-390.png",
+      "sha256": "5b03ac85cafc352fbeff06a8440c2baf386daae2912703f0045f30b8d3aaa595"
+    },
+    {
+      "file": "native-01/short-focus-430.png",
+      "sha256": "cda2a1bf7a9b5fd1754342c45c3d6ad977dab366c6e7ae6643560fc116aa7d38"
+    },
+    {
+      "file": "native-01/applied-360.png",
+      "sha256": "212822a1bf495d7600cd2aaa953bc67279149cb50c0c32241e6fe55b36183134"
+    }
+  ],
+  "findings": [
+    "Source/review metadata remains legible and available when map/write authority is unavailable.",
+    "Confirmation shows target,expected revision,changed closure and reason before dispatch.",
+    "Unknown result remains distinct from current OPEN revision4; authoritative success alone shows CLOSED revision5.",
+    "All three short-height captures show the keyboard focus outline and reachable Review action.",
+    "No material new clipping or document overflow; 44px product controls and short-height hit testing passed. Existing symmetric frame and all CSS unchanged."
+  ],
+  "limits": "Deterministic fictional role/clock/venue/HTTP on actual production components, not production admission, real backend flow,physical device or full ten-screen visual acceptance."
+}
