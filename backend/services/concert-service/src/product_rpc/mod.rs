@@ -19,9 +19,10 @@ pub mod proto {
 pub mod delivery;
 mod owner_media;
 mod query;
+pub use query::CommandStatusQuery;
 pub mod scope_ledger;
-pub mod settlement;
 mod scope_lifecycle;
+pub mod settlement;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_BODY: usize = 10 * 1024 * 1024;
 pub const MAX_FRAME: usize = MAX_BODY + 16 * 1024;
@@ -133,6 +134,7 @@ pub struct VerifiedProduct {
     parent: VerifiedParentAuthority,
     feed_query: Option<crate::feed::live_read::FeedQuery>,
     comments_query: Option<crate::feed::live_read::CommentsQuery>,
+    command_query: Option<CommandStatusQuery>,
 }
 impl VerifiedProduct {
     pub fn actor(&self) -> Uuid {
@@ -161,6 +163,9 @@ impl VerifiedProduct {
     }
     pub fn comments_query(&self) -> Option<&crate::feed::live_read::CommentsQuery> {
         self.comments_query.as_ref()
+    }
+    pub fn command_query(&self) -> Option<CommandStatusQuery> {
+        self.command_query
     }
     pub fn check(&self) -> Result<(), Status> {
         self.deadline
@@ -213,6 +218,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
         .transpose()?;
     let comments_query = matches!(operation, Operation::Comments(_))
         .then(|| query::comments(&m.http_target))
+        .transpose()?;
+    let command_query = matches!(operation, Operation::CommandStatus)
+        .then(|| query::command_status(&m.http_target))
         .transpose()?;
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
@@ -269,6 +277,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
         parent,
         feed_query,
         comments_query,
+        command_query,
         deadline: AuthorityRpcDeadline::within_original(
             expires.min(original.expires_micros()),
             original.stop().into_std(),

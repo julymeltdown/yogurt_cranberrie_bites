@@ -2,11 +2,42 @@
 //! target remains unchanged in the signed parent and canonical guard binding.
 use crate::feed::live_read::{CommentsQuery, FeedQuery};
 use chrono::{DateTime, Utc};
+use concert_application::commands::RegisteredOperation;
 use concert_domain::feed::Filter;
 use tonic::Status;
+use uuid::Uuid;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct CommandStatusQuery {
+    pub operation: RegisteredOperation,
+    pub key: Uuid,
+}
+pub(super) fn command_status(target: &str) -> Result<CommandStatusQuery, Status> {
+    if target.len() > 4096 {
+        return Err(invalid());
+    }
+    let query = target.split_once('?').ok_or_else(invalid)?.1;
+    let (mut operation, mut key) = (None, None);
+    for pair in query.split('&') {
+        let (name, value) = pair.split_once('=').ok_or_else(invalid)?;
+        let name = decode(name)?;
+        let value = decode(value)?;
+        match name.as_str() {
+            "operation_id" if operation.is_none() => {
+                operation = Some(RegisteredOperation::find(&value).map_err(|_| invalid())?)
+            }
+            "idempotency_key" if key.is_none() => key = Some(super::canonical_uuid(&value)?),
+            _ => return Err(invalid()),
+        }
+    }
+    Ok(CommandStatusQuery {
+        operation: operation.ok_or_else(invalid)?,
+        key: key.ok_or_else(invalid)?,
+    })
+}
 
 fn invalid() -> Status {
-    Status::invalid_argument("Invalid Concert Feed query")
+    Status::invalid_argument("Invalid Concert product query")
 }
 pub(super) fn comments(target: &str) -> Result<CommentsQuery, Status> {
     let query = feed(target)?;
@@ -188,6 +219,32 @@ mod tests {
             "limit=1&%6cimit=2",
         ] {
             assert!(comments(&format!("/comments?{query}")).is_err());
+        }
+    }
+    #[test]
+    fn command_status_binds_only_registered_operation_and_exact_key_without_public_target() {
+        let key = Uuid::from_u128(12);
+        let valid = format!("/commands?operation_id=createConcertGiveaway&idempotency_key={key}");
+        let parsed = command_status(&valid).unwrap();
+        assert_eq!(parsed.operation.id(), "createConcertGiveaway");
+        assert_eq!(parsed.key, key);
+        for bad in [
+            "",
+            "?",
+            "?operation_id=createConcertGiveaway",
+            "?operation_id=arbitrary&idempotency_key=bad",
+        ] {
+            assert!(command_status(&format!("/commands{bad}")).is_err());
+        }
+        for extra in [
+            "&target_id=anything",
+            "&operation_id=createConcertGiveaway",
+            "&%6fperation_id=createConcertGiveaway",
+            "&idempotency_key=bad",
+            "&",
+            "&unknown=1",
+        ] {
+            assert!(command_status(&format!("{valid}{extra}")).is_err());
         }
     }
 }
