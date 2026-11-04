@@ -10,6 +10,7 @@ import type { AvatarScenePort, AvatarSceneTexture, AvatarSceneSprite } from '../
 import { prepareIllustratedSkin } from '../illustrated/phaser'
 import { validateLoadedScenery } from '../illustrated/model'
 import { referenceSceneFor } from '../reference-scene/model'
+import { spatialV5CameraPresentation } from '../reference-scene/spatial-v5/camera'
 import { prepareReferenceSceneSkin } from '../reference-scene/phaser'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
@@ -139,7 +140,9 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         : stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
         y: stage.y + stage.height / 2 + Math.min(260, game.scale.height / camera.zoom * .32) }
         : { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px })
-      camera.centerOn(foot.x, foot.y)
+      const presentation = spatialV5CameraPresentation(loaded, { width: game.scale.width, height: game.scale.height }, foot, cameraZoom ?? 1)
+      if (presentation) camera.setZoom(presentation.zoom)
+      camera.centerOn(presentation?.center.x ?? foot.x, presentation?.center.y ?? foot.y)
       camera.preRender() // Updates bounded scroll and the matrix used by public getWorldPoint().
     }
     const cameraView: WorldCamera = {

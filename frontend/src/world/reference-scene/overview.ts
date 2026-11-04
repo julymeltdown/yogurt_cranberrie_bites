@@ -4,6 +4,8 @@ import { limits } from '../map/manifest'
 import { requireReferenceScene, type ReferenceSceneBinding } from './model'
 import { isSpatialV4ReferenceClaim } from './spatial-v4/model'
 import { createSpatialV4Labels } from './spatial-v4/map-labels'
+import { isSpatialV5ReferenceClaim } from './spatial-v5/model'
+import { createSpatialV5Labels } from './spatial-v5/map-labels'
 
 /** MAP-only semantic projection; never mutates the shared WORLD collision or actor canvas. */
 export function drawReferenceOverview(context: CanvasRenderingContext2D, binding: ReferenceSceneBinding) {
@@ -27,7 +29,7 @@ export function drawReferenceOverview(context: CanvasRenderingContext2D, binding
 
 /** Same public pixel/identity port as the incumbent overview. Root owns release and privacy binding. */
 export function createReferenceSceneOverview() {
-  const labels = createSpatialV4Labels()
+  let labels = createSpatialV4Labels(), labelsVersion = 4
   type Raster = { canvas: HTMLCanvasElement; ticket: number; pins: Omit<SceneryOverview, 'imageUrl'> }
   let disposed = false, generation = 0, encoding = false, active: Raster | null = null, pending: Raster | null = null
   let snapshot: SceneryOverview | null = null
@@ -61,6 +63,10 @@ export function createReferenceSceneOverview() {
     if (disposed) return
     const expected = generation + 1; withdraw()
     if (disposed || generation !== expected || !map) return
+    const version = isSpatialV5ReferenceClaim(map) ? 5 : isSpatialV4ReferenceClaim(map) ? 4 : 0
+    if (version && labelsVersion !== version) {
+      labels.dispose(); labels = version === 5 ? createSpatialV5Labels() : createSpatialV4Labels(); labelsVersion = version
+    }
     const render = () => {
      if (disposed || generation !== expected) return
      let canvas: HTMLCanvasElement | null = null
@@ -69,7 +75,7 @@ export function createReferenceSceneOverview() {
       canvas = document.createElement('canvas'); canvas.width = map.widthPx; canvas.height = map.heightPx
       const context = canvas.getContext('2d'); if (!context) throw new Error('Reference overview unavailable')
       drawReferenceOverview(context, binding)
-      if (isSpatialV4ReferenceClaim(map)) labels.draw(context)
+      if (version) labels.draw(context)
       if (disposed || generation !== ticket) { canvas.width = canvas.height = 0; return }
       const raster = { canvas, ticket, pins: { width: map.widthPx, height: map.heightPx,
         mapId: map.map.map_id, mapRevision: map.map.map_revision, mapHash: map.map.content_hash, geometryHash: map.map.geometry_hash,
@@ -78,7 +84,7 @@ export function createReferenceSceneOverview() {
       else encode(raster)
      } catch { if (canvas) canvas.width = canvas.height = 0 }
     }
-    if (isSpatialV4ReferenceClaim(map)) void labels.prepare().then(render, () => { /* Exact font unavailable: retain schematic/list fallback. */ })
+    if (version) void labels.prepare().then(render, () => { /* Exact font unavailable: retain schematic/list fallback. */ })
     else render()
   }
   return { read: () => snapshot,
