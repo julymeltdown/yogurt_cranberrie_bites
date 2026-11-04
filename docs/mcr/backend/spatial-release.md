@@ -742,3 +742,77 @@ All 23 Python tests pass (21.764 seconds). The failed compile and copied-suite
 logs are retained privately. PostgreSQL is NOT_RUN at this checkpoint;
 NOT_ADMITTED remains unchanged. A fresh named lease is required for the
 corrected source checkpoint; the previous lease is released.
+
+### V10 corrected-source native qualification and delivery
+
+The fully qualified source checkpoint is
+`75b380d64b79739e86a17aaa1de3504b7b139c69`. Fresh offer
+`SPATIAL-CONFIG-BACKEND-202611040516Z` was explicitly accepted after clean-source,
+all 1981 backend/contract plus four frontend pins, zero target handles and
+38,978,072,576 free bytes were verified. Exactly the Concert library,
+`bootstrap_runtime_config` and `bootstrap` test executables were requested with
+Rust1.88 locked/offline jobs2, dev/test debug0 and incremental0. Their successful
+compile took 23.650 seconds (exit 0). An incidental Concert main executable
+appears in Cargo metadata only; it was not copied or executed.
+
+The BACKEND cache first retained an old protobuf-root helper and then an old
+Concert application rlib missing the source's `age_verification` export. Concrete
+compiler errors, cached metadata and embedded other-worktree paths established
+both defects. Only `contracts-build` (20 files, 816.3 KiB) and
+`concert-application` (7 files, 4.7 MiB) were cleaned; no source or broad cache
+cleanup was used. A private monitor's `du` raced a disappearing compiler archive;
+the failed compiler was confirmed terminal with no handles, the monitor gained
+bounded measurement retries and unconditional owned-child termination, and the
+retry above passed. Every failed attempt is retained separately.
+
+All three exact emitted executables, Cargo JSON and source pins were frozen
+outside BACKEND and hash verified. Fresh handle checks were empty before/after
+freezing. BACKEND was unconditionally released before any copied tests or
+PostgreSQL work, and was never read again by this workflow. Frozen executable
+SHA256 values are:
+
+- `concert_service`: `c966c968397c6a52cfca781cba7d6f149b284cf8f860faa1c6a9b72df6aedbf3`
+- `bootstrap_runtime_config`: `601b55503c618a4cf84901708180aa7f47b2cda3d4ae28d5bf428fa8dc938a30`
+- `bootstrap`: `2cd7b141c1f0b057e4a35be6cc99683c9c999c691019da9b4eeb9dc096c8fdda`
+
+Copied executables passed 84 pure tests: 62 library, 17 runtime configuration,
+and five bootstrap (all exit 0). The 31 unrelated library-native cases and two
+incumbent nonspatial bootstrap-native cases remain NOT_RUN. The two spatial
+native cases were separately executed for each of four candidates below.
+
+Eight PostgreSQL16.14 cases passed (all exit 0), using marker/inode-owned private
+Unix-socket clusters, actual candidate observations and real postmaster restarts:
+
+| Candidate | Actual revision | Restart PIDs | Cases | Cleanup |
+| --- | --- | --- | --- | --- |
+| baseline | 3 | 66650 → 66778 | 2 PASS | PASS |
+| quality-v6 | 4 | 67038 → 67139 | 2 PASS | PASS |
+| quality-v8 | 5 | 67460 → 67554 | 2 PASS | PASS |
+| quality-v10 | 6 | 69207 → 69896 | 2 PASS | PASS |
+
+The map6 run published and adopted over actual map5, preserved canonical map5
+bytes, rejected a valid same-ID/revision conflicting map without advancing the
+event head, refused stale map5 selection, and retained exact map6/map5 bytes
+through the restart. All four place records stayed virtual/concept-only. The
+initial monitor-wrapped cluster name lacked the required `mcr-pg-` prefix; the
+retained Rust ownership guard refused it before transactions. Cleanup passed,
+only the new private root naming was corrected, and all eight cases then passed.
+No production check or source fixture was weakened. All owned clusters are gone.
+
+Observed maximum whole-workflow growth was 458,375,168 bytes (~0.427 GiB), below
+the 0.60 GiB estimate and 0.70 GiB cap including the retained prior frozen cohort.
+Minimum free space across final compile/native monitoring was 37,763,899,392
+bytes, above the 8 GiB floor. No foreign process, target or database was stopped.
+The resource monitor and raw reports remain in private evidence
+`/tmp/mcr-spatial-v10`; previous v8 evidence is unchanged.
+
+Portable `quality-v10/component-qualification.json` records exact inputs,
+commands/exit codes, frozen binaries, actual observations, restart/cleanup,
+source review, failures/remediation, budgets and limits. Its SHA256 is
+`69f9af195874de34d89f79c886bfd196746fe1ac363d278ff588ed470cdb48ca`. It records CONTRACT_READY component evidence and NOT_ADMITTED.
+Map6 ac30/ef52, corrected binding12d14fa1, scene qualification ab24f6a5 and frozen
+FE473/allocated-metadata5d tuple remain as above. This supplies no complete
+ThemeManifest/Bootstrap and changes no operator bundle, IN01 live baseline,
+physical-place status, public multiuser or art-fidelity acceptance. Final normal
+master publication and exact path/ancestry audit remain the designated delivery
+integrator's handoff boundary.
