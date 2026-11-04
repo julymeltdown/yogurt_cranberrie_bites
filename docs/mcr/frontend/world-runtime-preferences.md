@@ -1,9 +1,9 @@
 # FE06 / FE34 incumbent runtime preferences
 
 Status: IN_PROGRESS. Production source is implemented; 172 source/regression
-checks pass. Corrected full types and scoped lint pass for the initial source. A small paint-
-deadline follow-up is SOURCE-AWAITING-ROOT-VALIDATION in the queued combined
-batch; composed actual-engine/adopter native qualification remains pending. No complete FE06/FE34, W04, IN01/IN05, device,
+checks pass. Corrected full types and scoped lint pass for the initial source. Root reports its composed source batch passed206tests, full types and scoped lint,
+including the paint-deadline follow-up. Composed actual-engine/adopter native
+qualification remains pending. No complete FE06/FE34, W04, IN01/IN05, device,
 audio-source, or art-admission acceptance is inferred.
 
 ## Assignment and ownership
@@ -108,6 +108,37 @@ preventing an extra immediate paint during lease replacement. A deterministic
 observed pre/render/post count test covers the boundary. Root requested this
 small source commit before its already queued combined source batch, which
 includes the same producer tests and full types. It is explicitly
-SOURCE-AWAITING-ROOT-VALIDATION; no redundant producer check or pass is claimed.
+SOURCE-AWAITING-ROOT-VALIDATION at handoff. Root subsequently reports its composed
+SOURCE3 cohort8972b0b6 passed206tests/11files, full types and scoped lint on
+2026-11-04T07:16:56.885–07:17:13.006UTC, with21,012,480bytes measured peak and
+full resource release. Publisher mappings are3cd74cae→53b67c37 and
+dd181c21→44d168f2 in reported published mastere2375727. This is Root
+source evidence, not producer native qualification; no redundant run is claimed.
 New owned composed-native helpers are being prepared separately and are not
 part of this production follow-up commit.
+
+
+## Composed native preparation
+
+The new `world/preferences/__tests__/native/` harness is TEST ONLY, derived
+from Root's reference-scene-v5 fixture at c8a731e5. It retains the actual production
+Root, router, canonical Auth, ports, composition, default Phaser and selected-source
+character renderer. Frozen C03/C05/source asset fixtures supply deterministic
+HTTP/WebSocket behavior; preference PATCH uses the existing Me schema, endpoint
+and revision rather than an invented API. No copied legacy rendering is used.
+
+Independent actual Canvas renderer events and Scene UPDATE counts distinguish
+paint suppression from simulation cadence. A data-only real Phaser tween verifies
+TweenManager pause/resume without changing visible character or background pixels.
+A hidden inline120ms transition under the actual shell must compute0s on OS or
+user reduction and restore on release. An attribute alone cannot certify that
+the production CSS rule is loaded. Direct actual socket ping/pong, game/camera/
+sprite identity, Settings navigation, caller abort after settle, unavailable
+sound/theme, privacy withdrawal and full teardown remain asserted.
+
+The one finite native job remains NOT_RUN pending Root's published composed
+FE34 cohort, including actual existing motion-rule loading. It will use one
+390px browser and one Vite server, then remove browser/server/profile/cache before
+the application build. All failures will be retained. The new source preparation
+has only passed the no-output Node syntax check; native helper full types/lint
+and browser/build qualification are not inferred from earlier source checks.
