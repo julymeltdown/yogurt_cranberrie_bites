@@ -1,6 +1,6 @@
 # BE39 moderation runtime
 
-Status: IN_PROGRESS. The bounded command engine and closed C04 adapter are authored. Compilation, native qualification and publication evidence are recorded below when completed. Whole BE39 cross-owner live behavior remains NOT_RUN until actual providers and Root routing are installed and exercised.
+Status: CONTRACT_READY for the bounded BE39 engine: compilation, focused tests and isolated native PostgreSQL qualification passed on the source pin below. Publication is pending the designated publisher. Whole BE39 cross-owner live behavior remains NOT_RUN until actual providers and Root routing are installed and exercised.
 
 ## Scope and provenance
 
@@ -93,7 +93,7 @@ Synthetic native fixtures do not qualify actual Concert admission changes, World
 
 - Source-level Python syntax: PASS (two new files; no cluster started).
 - Explicit Rust 1.95.0 rustfmt on owned new Rust sources: PASS. The global stable shim failed because its `librustc_driver` is missing; no toolchain installation or default change was performed.
-- Cargo/native: NOT_RUN pending fresh accepted target allocation.
+- Cargo/native: PASS on source `2e18c5bc17127e2d6f0f10dd2c7d51db6012f0c4` under the fresh named lease recorded below.
 - Publication: NOT_RUN.
 
 ### Frozen input digests
@@ -103,6 +103,39 @@ Synthetic native fixtures do not qualify actual Concert admission changes, World
 - `contracts/domain/v1/policy.json` SHA256 `81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb`.
 - `contracts/generated/mcr-domain.openapi.json` SHA256 `79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb`.
 
-- Source correction after checkpoint `db360d67`: traced `VerifiedParentAuthority::request_digest` and the admitting interceptor; compare SHA256 of flag + big-endian message length + full prost message, and require the ProductService Dispatch parent method. The signature-verified parent test covers the actual frame boundary. Execution remains pending the fresh target lease.
+- Source correction after checkpoint `db360d67`: traced `VerifiedParentAuthority::request_digest` and the admitting interceptor; compare SHA256 of flag + big-endian message length + full prost message, and require the ProductService Dispatch parent method. The signature-verified parent test covers the actual frame boundary. The genuine captured-parent case subsequently passed in the native qualification below.
 
 - Frozen-bundle refusal tests: PASS, 3 tests, exit0. Command: `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend/scripts/mcr python3 -m unittest moderation_live_support.test_preflight -v`. Altered executable/migration pins and replaced bundle inode are refused before any Cluster construction. These are local admission tests, not Cargo/native qualification. The fixture target and PG paths are never opened; temporary directories were automatically removed.
+
+### Qualified source and native execution
+
+Fresh offer/explicit ACCEPT: `BE39-FIRSTQUAL-BACKEND-20261104T0354Z`, exclusive existing BACKEND target. Source commit `2e18c5bc17127e2d6f0f10dd2c7d51db6012f0c4`; clean checkout. Rust 1.88.0, locked/offline, two jobs, dev/test debug=0, incremental=0. Exactly three selected test binaries were frozen with committed backend/contracts source and Cargo JSON outside the shared target. The target was unconditionally released with zero open handles before copied tests or PostgreSQL. No shared target was reopened during native execution.
+
+| Check | Command / outcome | Exit |
+| --- | --- | --- |
+| Application compile | `cargo test --locked --offline -j 2 -p concert-application --lib --no-run --message-format=json` | 0 |
+| Service compile | `cargo test --locked --offline -j 2 -p concert-service --lib --no-run --message-format=json` | 0 |
+| Native integration compile | `cargo test --locked --offline -j 2 -p concert-service --test moderation_live --no-run --message-format=json` | 0 |
+| Copied application tests | `application-test admin::moderation --test-threads=1`: 3 passed | 0 |
+| Copied service tests | `service-test moderation_live --test-threads=1`: 6 passed | 0 |
+| Genuine published SQLx checkpoint | 27 baseline migrations and receipt verification | 0 |
+| Injected late 0043 DDL collision | Expected failure; no earlier 0043 tables/receipt or published-state changes survived | 101, expected |
+| Forward 0043 and reapply | 28 genuine successful SQLx ledger rows, exact SHA384 verification | 0 / 0 |
+| Native integration tests | 9 passed; 2 explicit migration helpers excluded from ordinary run and executed separately | 0 |
+| Owned PostgreSQL restart | All ledger/count/native-identity and published-state checks passed | 0 |
+| Cleanup | Owned postmaster stopped and private cluster removed | PASS |
+
+The first service compile failed on a `contracts-build` protobuf include path retained from another worktree; only that package cache was repaired (20 files, 816.3 KiB). The next attempt revealed a stale `concert-application` dependency from a different worktree with no moderation module; only that package cache was repaired (13 files, 5.9 MiB). The subsequent actual source compile passed. Original failed Cargo JSON and diagnostics were preserved. Cargo's integration-test command also emitted its implicit service binary; it was neither selected, copied nor executed. The artifact collector selected the `moderation_live` test target explicitly after observing that additional Cargo artifact.
+
+Frozen executable SHA256:
+
+- Application: `fc3c292d5b876d0c256f3e88fcc5383aedc975c21be8f208853ea4d8b2659486`.
+- Service: `f0f023456afd8b53ab5fe1f84e368aeae62e2073c971d4ca666d3de4dae35136`.
+- Moderation integration: `2f7281dae984f7d363422f90bf78da5e52791346ca0719d0fd3f963acc5ac30b`.
+- Native report: `f4721661670e8f36cebe773d5c8ca480149c6cf3c1cf8877c5dbbcab834e30e0`.
+
+Restart-persistent rows: 12 moderation commands, 27 owner results, 21 moderation audits, 13 generic receipts, 6 outbox records and 10 synthetic owner effects. The lost-acknowledgment case compared the exact durable original owning-transaction bytes to the settled APPLIED identity. The partial-failure case retained its APPLIED owner result and appended FAILED, with no success audit. Current role revocation denied same-key replay. Native CAS rejected a stale expected revision; fresh unsuspension preserved the fixture's revoked old sessions/grants and admission epoch. These fixture semantics remain distinct from real owner/provider qualification.
+
+Resource accounting: 30,801,920 bytes target growth plus 140,066,816 bytes frozen outputs at release; conservative observed compile/frozen/new-cluster peak 218,157,056 bytes (about 208 MiB), within the explicit 1.0 GiB allowance. Sampled free space stayed above the required 8 GiB floor. All PostgreSQL outputs were removed by owned cleanup. Frozen source/binaries/Cargo JSON and safe reports are retained privately for the publisher; they are not production assets or committed outside this document's grant.
+
+Production event-role provider, actual cross-owner suspension/content effects and Root HTTP terminal flow remain NOT_RUN. Passing the command ledger with synthetic role/owner semantics does not qualify those boundaries. Existing default unavailable behavior stays explicit until real providers are supplied by their owning implementations.
