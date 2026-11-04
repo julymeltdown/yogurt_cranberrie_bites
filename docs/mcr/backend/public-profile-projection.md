@@ -683,13 +683,24 @@ published parent is exactly:
 - backend/services/concert-service/src/adapters/out/public_profile/native/owners.rs
 - docs/mcr/backend/public-profile-projection.md
 
-The implementation owner performed that push using an earlier carried direct
-publication instruction; this crossed the current AGENTS designated-integrator
-publication boundary. The integrator and coordination chats were informed.
-There was no force push, SDK3 import or unrelated implementation change. All
-subsequent changes are committed handoffs to the designated Root integrator;
-this owner will make no further direct master pushes. No history rewrite or
-rollback of concurrent work is authorized by this note.
+The earlier handoff incorrectly labeled this exclusive-scope owner publication
+as a policy deviation after receiving a stale integrator-only reminder. That
+label and the blanket commitment to route every future push through Root are
+withdrawn. Freshly fetched master at `bb7d21b3` contains the current AGENTS rule:
+"Each assigned implementation owner may commit and push validated work within
+its exclusive scope directly to master, without a king or scrum-lead review
+queue." The policy was introduced by
+`66c9ecb1454383feecc46c5bbc8da372d78d4e57` and retained by
+`d2a5fbddb781bcd1ac87e830a45405fd3c39c0f8`; the verified AGENTS Git blob is
+`f10eaf65562271572f4841327b9f5da423c819a9`.
+
+Publication is not a deviation solely because this owner, rather than Root,
+pushed it. Explicit file ownership, developer-owned affected validation,
+current-remote reconciliation, non-force publication and remote ancestry checks
+still apply. Shared files require their exact ownership transfer. No SDK3
+publication, rollback, history rewrite, new implementation grant or additional
+review queue is implied by this correction. The existing ancestry is consumed
+once; new validated exclusive-scope changes may be published by their owner.
 
 After reconciliation, the exact public adapter/native/controller source, SDK2
 authority contract, public Profile producer and selected constructor inputs were
