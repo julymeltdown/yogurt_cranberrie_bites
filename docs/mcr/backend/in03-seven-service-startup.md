@@ -108,3 +108,50 @@ two-client IN04, complete multiuser privacy, a physical device, or load.
 QA08/performance remains **DEFERRED_BY_USER**. The copied-native run and helper
 change are newly authored MCR integration work; no source-pack originals,
 `docs/source/`, dependencies or lockfile resolutions changed.
+
+## Current migration-directory custody correction
+
+Two subsequent copied-native C03 attempts failed before service readiness and
+fully released at 18:31:46.839297 and 18:35:25.019816 UTC on 2026-11-04.
+The [source-custody receipt](../evidence/in03-seven-service-startup/r8-runtime-sql-refusal.json)
+preserves their disposition. Neither attempt qualifies the new configured C03
+capabilities or original IN03. Both retained their failures and stayed within
+their resource caps; cleanup passed with zero prepared transactions.
+
+The diagnostic attempt observed 50 applied Concert SQLx migrations against the
+47 expected from executable source `46defd2346e2e73641c552b408623ce357500c15`.
+Versions 60, 63 and 78 were additional; all 47 shared SHA-384 checksums matched.
+This was initially described as embedded SQL or a stale executable. That
+interpretation is withdrawn. At this source revision,
+`config::migration_directory()` uses `env!("CARGO_MANIFEST_DIR")/migrations`, and
+`migration_runtime::load_migrations` reads that directory at **runtime**. The
+owning checkout had advanced after the executable was frozen. Its current
+50-file inventory matched the observed ledger exactly. The guard correctly
+refused this runtime input drift; it does not demonstrate a product behavior
+failure or a stale compiled artifact.
+
+The service owner authored source-only override API
+`9a3c008b6914146d1c38d5de29010dc91ac2d4eb`: an explicit absolute
+`CONCERT_MIGRATION_DIRECTORY`, validated for path and SQL-file custody, used by
+migration commands and serving startup. Actual build, override/ledger and C03
+qualification remain **NOT_RUN** for that API. Older executables cannot acquire
+this behavior through environment configuration alone.
+
+The launcher now requires that API in the selected Concert source, packages
+only that revision's SQL under its existing owned ephemeral cluster, verifies
+the exact version/checksum inventory, and passes the same directory to migrate,
+verify, catalog preparation and serving startup. It checks the package again
+before handoff and during the consumer hold. No peer checkout is rolled back,
+rewritten or used as a mutable SQL package. The six retained peer migration
+directories were separately verified byte-for-byte against `18076c95`; that is
+a current source-custody check, not new runtime or enrollment qualification.
+
+The focused strict-Python source qualification passed all 19 existing-module
+tests with zero failures, errors or skips, plus `git diff --check`, exit 0.
+It includes packaging the original Git SQL after checkout edits, rejecting
+package tampering, extra SQL and symlinks, and refusing old source without the
+override before creating a package. The controlled runner used Python `-B -W
+error` and `unittest.TextTestRunner` for `test_in03_stack_runtime`; it launched no
+database, service, browser or compiler. The source receipt pins the unchanged
+inputs, result and complete resource release. Actual new-main/package startup
+and C03 acceptance still require the service owner's qualified artifact.
