@@ -1,0 +1,37 @@
+{
+  "base": "aebcfb9c34db2f40b36b5f54142c319ae92028f7",
+  "sources": {
+    "backend/scripts/mcr/in04_wall_runtime/roles.py": {
+      "source": "5aad280b404fba46a63ccc3092266dea0c30eccd",
+      "sha256": "65e238a225b4805ce25eef02526cbfcfea19b2c98adac01ff403f6f7b2b0fa79"
+    },
+    "backend/scripts/mcr/in04_wall_runtime/test_roles.py": {
+      "source": "5aad280b404fba46a63ccc3092266dea0c30eccd",
+      "sha256": "e3be11633aeea70c0ca019ead4f1cf80d5c4a7adb90bbe672998a5a9929f5321"
+    },
+    "docs/mcr/backend/in04-managed-roles.md": {
+      "source": "5aad280b404fba46a63ccc3092266dea0c30eccd",
+      "sha256": "e4b207221b027b99cf02bcca3a5869f980e6c8607f72258211c7d64978c3719a"
+    },
+    "backend/scripts/mcr/session_deletion_runtime/enrollment.py": {
+      "source": "dee64fd1ac868f4dffbea49c0e75ca8e98727f3a",
+      "sha256": "c4a328cdbb220202ef90502324f9873da5012e045b4f1e8b22d6ba9843760dc9"
+    }
+  },
+  "runtime": "NOT_RUN",
+  "roles_source_validation": "16 PASS; real OpenSSL; SQL controlled",
+  "enrollment_operator": "compile qualified; execution in real stack NOT_RUN",
+  "launcher": {
+    "path": "backend/scripts/mcr/in04_wall_runtime/launch.py",
+    "sha256": "3b8a7d7942abb3874ca11b64bad2ed0cd52e8f97ac3bad00f30485103c2e3db3",
+    "state": "SOURCE_CHECKED_RUNTIME_NOT_RUN",
+    "required_attachment_source": "75809d0c64b0a602f93d7c837495891a1873f1cb qualified39cases; optionalhooks de792 qualified5cases"
+  },
+  "source_dependencies": {
+    "owner_controls": "a2c2e669faebb56f0716a4034c238f106af2b0e1",
+    "managed_attachment": "d4300acb5af2104b171dcdf78f2736e02af660e0",
+    "pending_profile_hooks": "de79265714c3af94d5f4e4b7ece13d8e8a416f7a SOURCE5PASS; actual runtime NOT_RUN",
+    "Root_baseline_handshake": "12PythonPASS + NodeprivateprotocolPASS; realrestartNOT_RUN"
+  },
+  "qualification_source": "7d74b7fbf397688f3ae41dd7fa5347d3bcc50aa4"
+}

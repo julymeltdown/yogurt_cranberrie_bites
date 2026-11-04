@@ -1,0 +1,101 @@
+{
+  "source_revision": "7d74b7fbf397688f3ae41dd7fa5347d3bcc50aa4",
+  "status": "SOURCE_CHECKED",
+  "actual_runtime": "NOT_RUN",
+  "original_node_attempt": {
+    "exit_code": 1,
+    "reason": "Unix socket listen EINVAL before assertions; allocation TMPDIR made macOS path too long",
+    "raw_log_sha256": "c5ad04c4a041a177b86da495ecbb60b062a48e9b35e99538a4f97773dcf10aee",
+    "full_receipt_sha256": "239f6b2367f53898d2085a5b2b3e2fa289f4a250f6bb6355d3d793bfd30a4cf9",
+    "actual_full_epoch": 1793827162.117277
+  },
+  "python_checks": {
+    "commands": [
+      {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+          "-B",
+          "-W",
+          "error::ResourceWarning",
+          "backend/scripts/mcr/in04_wall_runtime/test_restart_baseline.py",
+          "-v"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+          "-B",
+          "-W",
+          "error::ResourceWarning",
+          "backend/scripts/mcr/in04_wall_runtime/test_launch.py",
+          "-v"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "cases": 12,
+    "replayed": false,
+    "raw_logs_sha256": [
+      "bed8e11696f9ae0ebd4abc0fb481777d7418d7b4f68e239e9f03c441ddd8437b",
+      "af966a71d3e4cc794dc3317e3d2b9768493cb868a4288c172d860097f3d56506"
+    ]
+  },
+  "node_retry": {
+    "commands": [
+      {
+        "command": [
+          "/usr/local/bin/node",
+          "backend/scripts/mcr/in04_wall_runtime/test-runtime.mjs"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "actual_full_epoch": 1793827489.5992901,
+    "receipt_sha256": "e203237cc4c44109b1f6e677a9ea53680efeecdd8da1d9bf5735e9df5a7b09b5",
+    "raw_log_sha256": "556b98ca042a932f9f701cb6b479c10fee653496a352743a05df766444e37d34",
+    "change": "short private allocation TMPDIR; no source change"
+  },
+  "release": {
+    "all_owned_groups_released": true,
+    "guard_reaped": true,
+    "owned_pg_absent": true,
+    "target_access": "NONE",
+    "guard": {
+      "failure": null,
+      "peak_new_bytes": 57344,
+      "peak_whole_bytes": 16106254336,
+      "peak_all_processes": 5,
+      "peak_rss_bytes": 109887488,
+      "minimum_free_bytes": 22837596160,
+      "at": 1793827489.357559,
+      "target_access": "NONE"
+    },
+    "primary": {
+      "failure": null,
+      "peaks": {
+        "new": 57344,
+        "whole": 16106254336,
+        "processes": 5,
+        "rss": 108756992,
+        "min_free": 22837592064
+      }
+    }
+  },
+  "source_paths": {
+    "backend/scripts/mcr/in04_wall_runtime/__init__.py": "63e6bc3699bdee3d0905f9c45ba08d069a54400aa35fa9a8b81cf113f2e1c5fd",
+    "backend/scripts/mcr/in04_wall_runtime/launch.py": "3b8a7d7942abb3874ca11b64bad2ed0cd52e8f97ac3bad00f30485103c2e3db3",
+    "backend/scripts/mcr/in04_wall_runtime/observer.py": "3870641dbe6d302c509af9297ba418c9dffb34d451d1fac09d3ff882ef52c09e",
+    "backend/scripts/mcr/in04_wall_runtime/runtime.mjs": "40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350",
+    "backend/scripts/mcr/in04_wall_runtime/test-runtime.mjs": "aed6eb881cb7cc95e29e9763d63c43e4b9f1c810e00af43f169da871d8ab2abd",
+    "backend/scripts/mcr/in04_wall_runtime/test_launch.py": "2f1da06f55ac2030fed7ead5dbc6b9703675d15d43a41ffadefafe37312a0746",
+    "backend/scripts/mcr/in04_wall_runtime/test_restart_baseline.py": "6a270d824393fbc703948a79101aa107ab990c056ebc128d3468ea88e176b4d8",
+    "backend/scripts/mcr/session_deletion_runtime/enrollment.py": "c4a328cdbb220202ef90502324f9873da5012e045b4f1e8b22d6ba9843760dc9"
+  },
+  "limitations": [
+    "synthetic observation/control and private protocol only",
+    "no actual provisioning, role publication, mural snapshot, controlled restart or App convergence",
+    "new Concert main and Gateway28 execution remain separate gates",
+    "frontend embedded observer must be rebuilt from qualified runtime.mjs; old artifact remains historical"
+  ]
+}
