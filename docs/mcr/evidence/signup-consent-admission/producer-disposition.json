@@ -4,7 +4,7 @@
   "compiledSource": "2f7992d4",
   "controllerSource": "5a9a67dd",
   "contractSource": "ed50c2f1",
-  "disposition": "PASS owner-owned PG/RPC/Gateway and mail-worker capture; canonical publication pending",
+  "disposition": "PASS responsible-owner native PG/RPC/Gateway/mail-worker capture; normal canonical publication owner-verified",
   "cases": [
     "pure consent case",
     "real PostgreSQL16/19 Auth SQL",
@@ -27,5 +27,19 @@
     "No external real mailbox proof claimed",
     "Production approved policy remains absent; POLICY_UNAVAILABLE is intentional",
     "Requires actual approved operator publication and configured AUTH_ENROLLMENT_VERIFICATION_URL"
-  ]
+  ],
+  "handoff": "8e82ddce62ef1483d048960c15083bade44bc9da",
+  "publishedCommit": "22b11054c57eb724022050cc017a665852b521c5",
+  "reportedMasterAfterDocsOnly": "6504448fa682b10c53b3f6cd3e0aeef4d75b1483",
+  "nativeReportSha256": "4fd95bb8dc771191f2e3fbeb1d39e75d6aa2a79e815808e97258bb63006c28c6",
+  "pairedBrowserFixture": {
+    "source": "9f5cfc0f",
+    "status": "SOURCE_ONLY_NOT_COMPILED",
+    "actualMailLinkKeys": [
+      "attemptId",
+      "code"
+    ],
+    "handoffCorrection": "Producer example attempt was a typo; actual unchanged published store emits attemptId; no alias permitted",
+    "world": "Not provided by Auth-only fixture; coherent seven-service producer required separately"
+  }
 }

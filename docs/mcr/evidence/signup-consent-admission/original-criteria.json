@@ -80,7 +80,7 @@
         "frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs"
       ],
       "state": "IN_PROGRESS",
-      "disposition": "Controlled client/native qualification NOT_RUN; new real Auth/RPC/Gateway/mail binding qualification owned207; Root central admission composition pending; old email receipts are historical only",
+      "disposition": "Real Auth/RPC/Gateway/mail producer owner-qualified and published22b11054. Actual main client source authored; paired Auth-only browser pending. Coherent real concert/bootstrap/World producer not ready; no synthetic success claim.",
       "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
     }
   ],
@@ -88,7 +88,7 @@
     "Actual approved legal/eligibility publication remains absent",
     "Restricted-age provider remains independent of basic signup; no invented verified-age or eligibility boolean"
   ],
-  "resourceState": "Source FULL, no current runtime hold; single browser READY queued",
+  "resourceState": "SourceFULL18:44:54.134302Z; no runtimehold. Native Auth pairing waits freshBEfixturequalification; realWorldphase2 separate",
   "historicalEvidence": [
     {
       "path": "docs/mcr/evidence/real-email-flow/index.json",
@@ -103,5 +103,16 @@
     "ownedLintExit": 0,
     "receipt": "source-01/release.json",
     "qualification": "controlled feature/transport fixtures; no actual Auth/mail/legal publication proof"
+  },
+  "centralSourcePin": "28f564fde314ec331fadd44b0788a76b65846a5d",
+  "centralQualification": {
+    "tests": 63,
+    "files": 5,
+    "typesExit": 0,
+    "lintExit": 0,
+    "repairs": 0,
+    "sourcePin": "28f564fde314ec331fadd44b0788a76b65846a5d",
+    "receipt": "source-02/release.json",
+    "qualification": "Affected canonical Auth/central fixtures only, no actual browser or producer/World success"
   }
 }

@@ -42,6 +42,9 @@
     "authoringOwner": "Root153",
     "publicationOwner": "Root153; not an FE10 authored patch",
     "authority": "Exact Root readonly single-module intake; no broad merge",
-    "lookupCorrection": "Previous non-extension pathspec was not the exact file path"
+    "lookupCorrection": "Previous non-extension pathspec was not the exact file path",
+    "publishedCommit": "f3fbedf1",
+    "publishedSha256Verified": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd",
+    "publicationStatus": "Root-reported canonical and exact bytes matched using git show; not FE10 authored"
   }
 }

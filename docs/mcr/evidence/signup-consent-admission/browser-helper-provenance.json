@@ -1,0 +1,16 @@
+{
+  "helperSourceCommit": "62f1c3a37eb755ef4cf9292db65443ed2001589b",
+  "sourcePath": "docs/mcr/evidence/fe17-original-completion/qualify-browser.py",
+  "responsibleOwner": "developer83",
+  "adaptedPath": "docs/mcr/evidence/signup-consent-admission/browser-guard.py",
+  "adaptedSha256": "84b5bd706b40b143d73c8624c175f94343674330ec6a6a7669fd6f0e732b7d74",
+  "status": "SOURCE_AUTHORED_NOT_RUN",
+  "differences": [
+    "FE10 finite offer/custody paths",
+    "full independent2s WHOLE census plus100ms resource loop",
+    "exact own scratch SingletonSocket discovery and external byte/entry charging",
+    "recorded PID start fingerprint before cleanup; preserve retained external targets and fail FULL",
+    "prior208B/4 unconfirmed Chrome entries remain readonly carry"
+  ],
+  "runtimeAuthority": "No current browser allocation. Source intake/adaptation only."
+}
