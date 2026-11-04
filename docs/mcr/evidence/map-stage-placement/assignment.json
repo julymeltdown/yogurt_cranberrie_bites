@@ -1,0 +1,16 @@
+{
+  "task": "FE-MAP-STAGE-OCCLUSION-01",
+  "base": "d8c59c65bf563e7f270e4ca24d2011e4d9d48e22",
+  "rootTransfer": "Additional exact placement scope from Root153; incumbent stopped",
+  "scope": [
+    "frontend/src/features/places/ui/IllustratedMap.tsx marker exclusions",
+    "frontend/src/world/reference-scene/map4-service-v1/layout.ts packing only if necessary",
+    "frontend/src/features/places/__tests__/reference-map/plaque-layout.test.ts",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/layout.test.ts",
+    "new map-stage-placement harness/doc/evidence"
+  ],
+  "sourceArt": "af298e3246096c4b7a3ae5c7e439f5f33988a6be",
+  "native": "one PARADE390 context only, no cohort replay",
+  "goal": "Same unfinished historical blocked Map goal, no reset or false completion",
+  "resource": "NOT_ACCEPTED; authoring only"
+}

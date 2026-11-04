@@ -1,0 +1,45 @@
+{
+  "lease": "MAP-STAGE-SOURCE-B-20261104T1802Z",
+  "actualFullAt": "2026-11-04T18:06:16.411011+00:00",
+  "lastWorkAt": "2026-11-04T18:05:55.915648+00:00",
+  "cleanupAt": "2026-11-04T18:05:56.551043+00:00",
+  "candidate": "aebaddb11490989d01f22e1dc852978331a786d3",
+  "readsetSha256": "ea79170e49790415b6d5073deca007bd901a633ca9e6bebe9ba1356e6d0597ab",
+  "status": "FULL_RELEASED_SOURCE_QUALIFIED",
+  "sourceTests": {
+    "files": 4,
+    "tests": 32,
+    "targetedNew": 21,
+    "originalV1Layout": 4,
+    "plaque": 3,
+    "v2Consumer": 4
+  },
+  "allFourCommandsExit0": true,
+  "failedRoundsRetained": [
+    "source01",
+    "source02",
+    "source03"
+  ],
+  "allKnownPids": [
+    16657,
+    21776,
+    28229,
+    36196,
+    36817,
+    37013,
+    37021
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "portsCreated": [],
+  "peak": {
+    "processes": 2,
+    "rssBytes": 728236032,
+    "newBytes": 43529812,
+    "tmpBytes": 1435055,
+    "wholeBytes": 1329412927
+  },
+  "freeBytes": 19697041408,
+  "scope": "source only; one new390browser case needs separate fresh offer"
+}

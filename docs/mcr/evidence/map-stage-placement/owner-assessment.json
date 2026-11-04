@@ -1,0 +1,42 @@
+{
+  "task": "FE-MAP-STAGE-OCCLUSION-01",
+  "at": "2026-11-04T18:22:53.006677+00:00",
+  "disposition": "BOUNDED_PLACEMENT_FIX_QUALIFIED",
+  "nativeCandidate": "fbbfe6332f12e6f9a032d212689dbc41999690ba",
+  "ownerOpened": [
+    {
+      "path": "docs/mcr/evidence/map-stage-placement/native02/stage-placement-parade-390.png",
+      "sha256": "10c4f85fd8293e3132d84aa5ddd18c9e21a66b01f4b3ec7b70061982e78ebf69",
+      "bytes": 227460,
+      "ownerOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-stage-placement/native02/forced-focus-parade-390.png",
+      "sha256": "ee6e728bfcc3b87661ae606894e714a4ee46c9ed73db880f3dfa1d12c09662a0",
+      "bytes": 211201,
+      "ownerOpened": true
+    }
+  ],
+  "retainedBaselines": [
+    "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-390.png",
+    "docs/mcr/evidence/map-stage-placement/native01/stage-placement-parade-390.png",
+    "docs/mcr/evidence/map-stage-placement/native01/forced-focus-parade-390.png"
+  ],
+  "finding": "Central stage roof/facade is exposed. Stage marker is beside its own stage anchor with a short leader, not down in the gift/meet area. Park/wall/gift markers, six labels and controls remain distinguishable; normal and forced-focus captures opened.",
+  "priorRejectedDistanceCssPx": 324.8361257606293,
+  "finalStageDistanceCssPx": 36.11768874556044,
+  "hitRects": {
+    "canonicalMarkers": 4,
+    "minimumCssPx": 44,
+    "approvedArchitecturalFootprints": 22,
+    "architectureOverlaps": 0,
+    "otherMarkerOrTargetOverlaps": 0
+  },
+  "limits": [
+    "Only changed PARADE390x844 actual-main deterministic HTTP/C05 fixture; not live/operator/multiuser/device.",
+    "Three-width source proximity and short/zoom packing coverage; no new three-era native matrix.",
+    "Broad lawns/junctions/contain bands/long architecture remain full-reference gaps.",
+    "Selected canonical pin/leader endpoints retain original Map-only display anchors; no geometry/World/physical-arrival mutation.",
+    "Density-derived artwork and any later consumer uptake are separate and unqualified here."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "nativeCandidate": "1269f938dd34d427ebdcdf29e987662d5bbc6def",
+  "retainedCapture": "stage-placement-parade-390.png",
+  "target": {
+    "x": 207.05208333333331,
+    "y": 292.05729166666663
+  },
+  "markerCenter": {
+    "x": 137,
+    "y": 609.25
+  },
+  "distanceCssPx": 324.8361257606293,
+  "ownerDisposition": "FIX_REQUIRED; geometry/authority correct but stage marker visually remote",
+  "newRegressionBoundCssPx": 96,
+  "boundRationale": "Two retained48px grid intervals; prevents unrelated lower-map relocation while preserving full44px targets.",
+  "changedCandidate": "2a6e1245; prefers near valid obstacle-edge candidates only for qualified composition",
+  "newValidation": "NOT_RUN; fresh finite allocation requested"
+}

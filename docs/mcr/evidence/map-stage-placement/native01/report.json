@@ -1,0 +1,1922 @@
+{
+  "task": "FE-MAP-STAGE-OCCLUSION-01",
+  "status": "PASS",
+  "qualification": "ACTUAL_MAIN_CANONICAL_UI_LOGIN_MAP4_HTTP_C05_FIXTURE_NOT_LIVE",
+  "candidate": "1269f938dd34d427ebdcdf29e987662d5bbc6def",
+  "lease": "MAP-STAGE-BROWSER2-20261104T1811Z",
+  "expectedPresentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+  "checks": [
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "requests": [
+        "/login",
+        "/@vite/client",
+        "/src/app/world-entry/__tests__/art06-default-entry/preview.ts",
+        "/@react-refresh",
+        "/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/fixtures/realtime/rooms.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/fixtures/realtime/movement-heartbeat.json",
+        "/src/features/auth/__tests__/fixtures/data.ts",
+        "/src/world/network/mock.ts",
+        "/src/world/network/transport/contract.ts",
+        "/src/world/map/json.ts",
+        "/src/app/world-entry/__tests__/map-presentation-v1/input-readiness.mjs",
+        "/src/app/world-entry/__tests__/map-presentation-v1/eligible-attendee.mjs",
+        "/src/shared/styles/base.css",
+        "/src/app/shell.css",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/zod.js",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/realtime/v1/world.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/core/v1/core.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v1/avatar-config.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v1/common.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v2/reviewed/avatar-config.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v2/reviewed/avatar-manifest.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/realtime/v1/policy.json",
+        "/src/world/network/transport/engine.ts",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/fixtures/core/auth-success.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/fixtures/core/auth-capabilities-disabled.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/fixtures/core/bootstrap-open.json",
+        "/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/eligible-attendee-scenario.json",
+        "/@fs/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/rolldown-runtime-B-1-B7_t.js",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/core-BXUr5mSA.js",
+        "/src/shared/api/errors.ts",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/realtime/v1/operations.json",
+        "/src/shared/api/domain-operations.generated.ts",
+        "/src/main.tsx",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react.js",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react-dom_client.js",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react-router-dom.js",
+        "/src/app/router.tsx",
+        "/src/features/auth/model/session.ts",
+        "/src/features/auth/model/contract.ts",
+        "/src/app/world-entry/configuration.ts",
+        "/src/app/ports.ts",
+        "/src/app/errors/default-entry.ts",
+        "/src/app/world-entry/mural-production/configuration.ts",
+        "/src/app/world-entry/mural-production/placement.json",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react_jsx-dev-runtime.js",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react-dom.js",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/@tanstack_react-query.js",
+        "/src/shared/ui/index.ts",
+        "/src/app/world-panels/ownership.tsx",
+        "/src/app/access.tsx",
+        "/src/app/account-deletion-entry/context.tsx",
+        "/src/app/routes.ts",
+        "/src/app/WorldShell.tsx",
+        "/src/app/errors/RouteState.tsx",
+        "/src/app/community-entry/index.ts",
+        "/src/app/world-entry/production.ts",
+        "/src/shared/api/http.ts",
+        "/src/app/character-entry/runtime.ts",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/generated/mcr-core.openapi.json",
+        "/src/shared/query/privacy.ts",
+        "/src/features/auth/model/bootstrap.ts",
+        "/src/features/auth/model/cookie-policy.ts",
+        "/src/features/auth/model/recovery.ts",
+        "/src/features/auth/model/enrollment.ts",
+        "/src/features/auth/model/account-deletion.ts",
+        "/src/app/errors/connectivity.ts",
+        "/src/app/errors/observer.ts",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react_jsx-runtime.js",
+        "/src/app/capabilities.ts",
+        "/src/shared/ui/controls.tsx",
+        "/src/shared/ui/Dialog.tsx",
+        "/src/shared/ui/Tabs.tsx",
+        "/src/shared/ui/feedback.tsx",
+        "/src/app/account-deletion-entry/owner.ts",
+        "/src/app/navigation.tsx",
+        "/src/app/WorldHost.tsx",
+        "/src/app/shell-chrome/index.tsx",
+        "/src/app/shell-chrome/parade-footer.tsx",
+        "/src/shared/ui/concert-window/index.tsx",
+        "/src/app/world-presentation/WorldTools.tsx",
+        "/src/features/connection-status/index.tsx",
+        "/src/app/community-adoption/bootstrap.ts",
+        "/src/features/connection-status/status.css",
+        "/src/app/community-entry/bridge.ts",
+        "/src/app/community-entry/routes.tsx",
+        "/src/entities/avatar/whole-character/index.ts",
+        "/src/app/character-entry/registry.ts",
+        "/src/app/character-entry/reviewed-registry.ts",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/ky.js",
+        "/src/shared/api/domain.ts",
+        "/src/features/auth/model/recovery-contract.ts",
+        "/src/entities/avatar/whole-admission/index.ts",
+        "/src/features/auth/model/enrollment-contract.ts",
+        "/src/shared/query/keys.ts",
+        "/src/app/world-entry/authority.ts",
+        "/src/features/account/controller.ts",
+        "/src/shared/ui/modal-focus.ts",
+        "/src/features/theme/model/preferences.ts",
+        "/src/app/reference-chrome-v2/WindowInk.tsx",
+        "/src/app/shell-chrome/shell-chrome.css",
+        "/src/app/reference-chrome-v2/chrome.css",
+        "/src/shared/ui/concert-window/concert-window.css",
+        "/src/app/community-authority/index.ts",
+        "/src/features/party-authoring/index.ts",
+        "/src/features/party-management/index.ts",
+        "/src/features/giveaway-authoring/index.ts",
+        "/src/features/gift-pickup/index.ts",
+        "/src/features/connection-status/model.ts",
+        "/src/entities/avatar/whole-character/contract.ts",
+        "/src/entities/avatar/whole-character/runtime.ts",
+        "/src/entities/avatar/whole-character/view.tsx",
+        "/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts",
+        "/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts",
+        "/src/entities/avatar/runtime/motion-adoption/runtime.ts",
+        "/src/world/entities/replicated.ts",
+        "/src/entities/avatar/runtime/contract.ts",
+        "/src/entities/avatar/runtime/schema.ts",
+        "/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts",
+        "/src/features/safety/contract.ts",
+        "/src/features/account/contract.ts",
+        "/src/features/places/model/contract.ts",
+        "/src/app/community-authority/timeline.ts",
+        "/src/features/party-authoring/ui/PartyAuthoring.tsx",
+        "/src/features/party-authoring/model/controller.ts",
+        "/src/features/party-authoring/model/contract.ts",
+        "/src/features/party-management/model/controller.ts",
+        "/src/features/party-management/ui/PartyManagement.tsx",
+        "/src/features/giveaway-authoring/model/controller.ts",
+        "/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx",
+        "/src/features/giveaway-authoring/model/contract.ts",
+        "/src/features/gift-pickup/model/controller.ts",
+        "/src/features/gift-pickup/model/journal.ts",
+        "/src/features/gift-pickup/ui/GiftPickup.tsx",
+        "/src/entities/avatar/runtime/motion-adoption/art.ts",
+        "/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v1/avatar-manifest.schema.json",
+        "/src/world/map/resources.ts",
+        "/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+        "/src/entities/avatar/selected-static/release.ts",
+        "/src/world/map/formats.ts",
+        "/src/entities/avatar/runtime/motion-adoption/v2.ts",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/react-hook-form.js",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/@hookform_resolvers_zod.js",
+        "/src/features/party-authoring/model/time.ts",
+        "/src/features/party-authoring/ui/authoring.css",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/generated/mcr-domain.openapi.json",
+        "/src/features/party-discovery/model/contract.ts",
+        "/src/features/party-management/ui/management.css",
+        "/src/features/giveaway-authoring/ui/giveaway-authoring.css",
+        "/src/features/gift-pickup/ui/pickup.css",
+        "/src/entities/avatar/source-catalog.ts",
+        "/src/world/map/manifest.ts",
+        "/src/world/map/tiled.ts",
+        "/src/world/illustrated/model.ts",
+        "/src/entities/avatar/character-source-pack.json",
+        "/src/world/map/schema.ts",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v1/map-manifest.schema.json",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/assets/v1/theme-manifest.schema.json",
+        "/src/app/PublicBoundary.tsx",
+        "/src/app/FoundationApp.tsx",
+        "/src/features/public/ui/DocumentPage.tsx",
+        "/src/features/auth/ui/SignIn.tsx",
+        "/src/features/auth/ui/ResetPassword.tsx",
+        "/src/features/auth/ui/SignUp.tsx",
+        "/src/features/auth/ui/VerifyEmail.tsx",
+        "/src/features/auth/ui/Callback.tsx",
+        "/src/app/account-deletion-entry/recovery.tsx",
+        "/src/features/public/ui/Landing.tsx",
+        "/src/features/public/model/document-provider.tsx",
+        "/src/features/public/model/documents.ts",
+        "/src/features/public/ui/PublicFrame.tsx",
+        "/src/features/auth/ui/reference-sign-in/Cemetery.tsx",
+        "/src/features/auth/ui/reference-sign-in/ProviderMark.tsx",
+        "/src/features/auth/ui/sign-in.css",
+        "/src/features/auth/model/callback.ts",
+        "/src/features/auth/ui/recovery.css",
+        "/src/features/auth/ui/enrollment.css",
+        "/src/features/safety/safety.css",
+        "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+        "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+        "/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+        "/src/entities/avatar/selected-static/index.tsx",
+        "/src/features/public/ui/public.css",
+        "/src/features/public/ui/landing-reference/reference-contours.json",
+        "/src/entities/avatar/selected-static/selected-static.css",
+        "/reference-window-controls-v2/stars.svg",
+        "/reference-window-controls-v2/close.svg",
+        "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+        "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+        "/backgrounds/cute-entry-v1/sign-in-paper.svg",
+        "/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg",
+        "/backgrounds/cute-entry-v1/sign-in-clouds-top.svg",
+        "/src/features/auth/ui/reference-sign-in/artwork/red-ink.svg",
+        "/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg",
+        "/src/features/auth/ui/reference-sign-in/typography/mcr-auth-print.woff",
+        "/src/app/character-entry/provider.tsx",
+        "/src/app/media-entry/provider.tsx",
+        "/src/app/media-entry/index.ts",
+        "/src/shared/media/contract.ts",
+        "/src/shared/media/image-policy.ts",
+        "/src/shared/media/read-media.ts",
+        "/src/shared/media/preview.ts",
+        "/src/app/CommunityFeatures.tsx",
+        "/src/features/gift-discovery/index.ts",
+        "/src/features/my-gifts/index.ts",
+        "/src/features/party-discovery/index.ts",
+        "/src/app/character-entry/ReviewedCharacterView.tsx",
+        "/src/app/media-entry/RootMediaView.tsx",
+        "/src/app/community-adoption/owner.ts",
+        "/src/app/community-adoption/usePartyCreation.ts",
+        "/src/features/party-discovery/model/controller.ts",
+        "/src/features/party-discovery/ui/PartyDiscovery.tsx",
+        "/src/features/avatar/motion-adoption/MotionView.tsx",
+        "/src/app/media-entry/root-media.css",
+        "/src/features/gift-discovery/model/controller.ts",
+        "/src/features/gift-discovery/ui/Gifts.tsx",
+        "/src/features/my-gifts/MyGifts.tsx",
+        "/src/features/gift-discovery/model/contract.ts",
+        "/src/features/party-discovery/ui/party-discovery.css",
+        "/src/features/gift-discovery/ui/reference-presentation.tsx",
+        "/src/features/gift-discovery/ui/gifts.css",
+        "/src/features/gift-discovery/ui/reference-gifts.css",
+        "/src/app/world-entry/root-features.tsx",
+        "/src/app/world-panels/index.tsx",
+        "/src/features/world-rooms/index.ts",
+        "/src/features/world-nearby/index.ts",
+        "/src/app/world-entry/bridge.ts",
+        "/src/features/world-rooms/model/controller.ts",
+        "/src/features/world-rooms/ui/WorldRooms.tsx",
+        "/src/app/places-entry/index.ts",
+        "/src/app/mural-entry/index.ts",
+        "/src/app/world-panels/presentation.css",
+        "/src/features/world-nearby/WorldNearby.tsx",
+        "/src/app/places-entry/owner.ts",
+        "/src/app/places-entry/provider.tsx",
+        "/src/app/mural-entry/owner.ts",
+        "/src/app/mural-entry/provider.tsx",
+        "/src/features/world-nearby/projection.ts",
+        "/src/features/world-rooms/model/contract.ts",
+        "/src/features/world-rooms/ui/world-access.css",
+        "/src/features/mural/sync/index.ts",
+        "/src/features/places/index.ts",
+        "/src/features/mural/sync/contract.ts",
+        "/src/world/mural/index.ts",
+        "/src/app/world-entry/mural-production/refresh.ts",
+        "/src/features/mural/sync/controller.ts",
+        "/src/features/mural/sync/MuralSyncPanel.tsx",
+        "/src/features/mural/sync/http.ts",
+        "/src/features/mural/sync/tools-http.ts",
+        "/src/world/mural/authority.ts",
+        "/src/world/mural/sink.ts",
+        "/src/world/mural/phaser.ts",
+        "/src/features/mural/editor/contract.ts",
+        "/src/features/places/model/controller.ts",
+        "/src/features/places/ui/Places.tsx",
+        "/src/features/mural/editor/MuralEditor.tsx",
+        "/src/features/mural/editor/controller.ts",
+        "/src/features/mural/sync/projection.ts",
+        "/src/features/mural/editor/tools.ts",
+        "/src/features/places/ui/IllustratedMap.tsx",
+        "/src/features/places/ui/places.css",
+        "/src/features/mural/editor/input.ts",
+        "/src/features/mural/editor/editor.css",
+        "/src/features/mural/editor/tools-b.css",
+        "/src/world/reference-scene/index.ts",
+        "/src/world/reference-scene/spatial-v5/model.ts",
+        "/src/features/places/ui/reference-scene/viewport.ts",
+        "/src/features/places/ui/reference-scene/annotations.ts",
+        "/src/features/places/ui/reference-scene/map-service-links.tsx",
+        "/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts",
+        "/src/features/places/ui/reference-scene/spatial-v4-label-obstacles.ts",
+        "/src/world/reference-scene/map4-service-v1/annotations.ts",
+        "/src/world/reference-scene/map4-service-v1/layout.ts",
+        "/src/world/reference-scene/map4-service-v2/current.ts",
+        "/src/world/reference-scene/map4-service-v2/layout-source.json",
+        "/src/world/reference-scene/metadata.ts",
+        "/src/world/reference-scene/model.ts",
+        "/src/world/reference-scene/loader.ts",
+        "/src/world/reference-scene/overview.ts",
+        "/src/world/reference-scene/spatial-v3/model.ts",
+        "/src/world/reference-scene/spatial-v4/model.ts",
+        "/src/world/reference-scene/spatial-v5/source-inputs.json",
+        "/src/world/reference-scene/spatial-v5/map-landscape-source.json",
+        "/src/world/reference-scene/spatial-v5/map-labels-source.json",
+        "/src/world/reference-scene/spatial-v5/map-labels-pins.json",
+        "/src/world/reference-scene/spatial-v5/map-landscape-pin.json",
+        "/src/world/reference-scene/spatial-v5/tile-pin.json",
+        "/src/world/reference-scene/spatial-v5/architecture.ts",
+        "/src/world/reference-scene/spatial-v5/map-cozy.ts",
+        "/src/world/reference-scene/spatial-v5/map-service.ts",
+        "/src/world/reference-scene/map4-service-v1/identity.ts",
+        "/src/world/reference-scene/map4-service-v1/pins.ts",
+        "/src/world/reference-scene/spatial-v4/map-labels-source.json",
+        "/src/world/reference-scene/map4-service-v2/model.ts",
+        "/src/world/reference-scene/map4-service-v2/registration.ts",
+        "/src/world/reference-scene/source-inputs.json",
+        "/src/world/reference-scene/spatial-v4/map-labels.ts",
+        "/src/world/reference-scene/spatial-v5/map-labels.ts",
+        "/src/world/reference-scene/spatial-v3/source-inputs.json",
+        "/src/world/reference-scene/spatial-v3/tile-pin.json",
+        "/src/world/reference-scene/spatial-v4/source-inputs.json",
+        "/src/world/reference-scene/spatial-v4/tile-pin.json",
+        "/src/world/reference-scene/spatial-v5/architecture-source.json",
+        "/src/world/reference-scene/spatial-v5/architecture-pin.json",
+        "/src/world/reference-scene/spatial-v5/map-cozy-source.json",
+        "/src/world/reference-scene/spatial-v5/map-cozy-pins.json",
+        "/src/world/reference-scene/spatial-v5/map-service-source.json",
+        "/src/world/reference-scene/spatial-v5/map-service-pins.json",
+        "/src/world/reference-scene/map4-service-v2/presentation-json.ts",
+        "/src/world/reference-scene/map4-service-v2/style.ts",
+        "/src/world/reference-scene/map4-service-v2/contract.ts",
+        "/src/world/reference-scene/map4-service-v2/semantics.ts",
+        "/src/world/reference-scene/map4-service-v2/resources.json",
+        "/src/world/reference-scene/map4-service-v2/style-source.json",
+        "/src/app/account-entry/provider.tsx",
+        "/src/app/account-entry/owner.ts",
+        "/src/entities/avatar/runtime/index.ts",
+        "/src/features/avatar/index.ts",
+        "/src/features/me/index.ts",
+        "/src/app/account-entry/assets.ts",
+        "/src/features/avatar/whole-character/controller.ts",
+        "/src/features/avatar/motion-adoption/production-owner.ts",
+        "/src/features/me/model/controller.ts",
+        "/src/features/me/ui/MePages.tsx",
+        "/src/features/me/ui/AvatarThumbnail.tsx",
+        "/src/entities/avatar/runtime/compositor.ts",
+        "/src/entities/avatar/runtime/resources.ts",
+        "/src/entities/avatar/runtime/atlas-lease.ts",
+        "/src/features/avatar/AvatarEditor.tsx",
+        "/src/features/avatar/controller.ts",
+        "/src/features/avatar/preview.ts",
+        "/src/features/avatar/motion-adoption/controller.ts",
+        "/src/features/avatar/motion-adoption/production-persistence.ts",
+        "/src/features/avatar/whole-character/model.ts",
+        "/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+        "/src/features/profile/reference-presentation/ProfileIcon.tsx",
+        "/src/features/me/ui/me.css",
+        "/src/features/me/model/contract.ts",
+        "/src/features/avatar/contract.ts",
+        "/src/features/avatar/OptionStrip.tsx",
+        "/src/features/avatar/reference-presentation/CategoryRail.tsx",
+        "/src/features/avatar/reference-presentation/actions.ts",
+        "/src/features/avatar/reference-presentation/TonePalette.tsx",
+        "/src/features/avatar/avatar-editor.css",
+        "/src/features/profile/reference-presentation/activity.css",
+        "/src/features/event-feed/contract.ts",
+        "/src/app/meeting-entry/index.ts",
+        "/src/app/meeting-entry/bridge.ts",
+        "/src/app/meeting-entry/routes.tsx",
+        "/src/features/meet-beacon/index.ts",
+        "/src/features/meet-beacon/model/controller.ts",
+        "/src/features/meet-beacon/model/contract.ts",
+        "/src/features/meet-beacon/ui/MeetingBeacon.tsx",
+        "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx",
+        "/src/features/meet-beacon/model/photo-client.ts",
+        "/src/features/meet-beacon/ui/meeting-beacon.css",
+        "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/contracts/domain/v1/common.schema.json",
+        "/src/features/media/model/upload-controller.ts",
+        "/src/features/meet-beacon/model/photo-scope.ts",
+        "/src/shared/media/prepare-image.ts",
+        "/src/shared/media/transport.ts",
+        "/src/app/world-panels/social.tsx",
+        "/src/app/social-composition/index.ts",
+        "/src/app/social-composition/sharing.tsx",
+        "/src/app/world-panels/social.css",
+        "/src/app/social-composition/provider.tsx",
+        "/src/app/social-composition/panels.tsx",
+        "/src/app/social-composition/owner.ts",
+        "/src/app/social-composition/routes.ts",
+        "/src/app/social-composition/navigation.tsx",
+        "/src/features/social-sharing/index.ts",
+        "/src/features/event-feed/index.ts",
+        "/src/features/feed-thread/index.ts",
+        "/src/features/inbox/index.ts",
+        "/src/features/inbox/model/targets.ts",
+        "/src/features/people/index.ts",
+        "/src/features/intro/index.ts",
+        "/src/features/intro/contract.ts",
+        "/src/features/age-status/index.ts",
+        "/src/app/social-composition/ports.ts",
+        "/src/app/social-composition/composition.css",
+        "/src/features/profile/index.ts",
+        "/src/features/profile/Avatar.tsx",
+        "/src/app/character-entry/activity.ts",
+        "/src/features/social-sharing/model/controller.ts",
+        "/src/features/social-sharing/ui/SocialSharing.tsx",
+        "/src/features/inbox/model/controller.ts",
+        "/src/features/inbox/ui/Inbox.tsx",
+        "/src/features/inbox/model/contract.ts",
+        "/src/features/feed-thread/controller.ts",
+        "/src/features/feed-thread/FeedThread.tsx",
+        "/src/features/event-feed/controller.ts",
+        "/src/features/event-feed/EventFeed.tsx",
+        "/src/features/event-feed/FeedImage.tsx",
+        "/src/features/intro/IntroEditor.tsx",
+        "/src/features/intro/controller.ts",
+        "/src/features/people/People.tsx",
+        "/src/features/people/controller.ts",
+        "/src/shared/validation/text.ts",
+        "/src/features/people/contract.ts",
+        "/src/features/age-status/AgeStatus.tsx",
+        "/src/features/age-status/controller.ts",
+        "/src/features/profile/PublicProfile.tsx",
+        "/src/features/social-sharing/model/runtime.ts",
+        "/src/features/social-sharing/model/contract.ts",
+        "/src/features/social-sharing/ui/sharing.css",
+        "/src/features/event-feed/runtime.ts",
+        "/src/features/inbox/ui/inbox.css",
+        "/src/features/event-feed/feed.css",
+        "/src/features/event-feed/FeedGlyph.tsx",
+        "/src/features/event-feed/presentation.ts",
+        "/src/features/people/people.css",
+        "/src/features/people/runtime.ts",
+        "/src/features/intro/command.ts",
+        "/src/features/profile/profile.css",
+        "/src/app/shell-chrome/identity.tsx",
+        "/src/world/composition/index.ts",
+        "/src/app/world-entry/resolver.ts",
+        "/src/world/avatar/whole-character.ts",
+        "/src/app/world-entry/reference-scene-overview.ts",
+        "/src/world/avatar/motion-adoption/renderer.ts",
+        "/src/app/world-entry/mural-production/factory.ts",
+        "/world/avatars/derived-v1/static-release.json",
+        "/src/world/illustrated/overview.ts",
+        "/src/app/world-entry/map-presentation-v1/loader.ts",
+        "/src/app/world-entry/map-presentation-v1/descriptor.ts",
+        "/src/app/world-entry/map-presentation-v2/loader.ts",
+        "/src/world/input/controller.ts",
+        "/src/world/runtime.ts",
+        "/src/world/network/replication.ts",
+        "/src/world/network/websocket.ts",
+        "/src/world/composition/ticket.ts",
+        "/src/world/composition/release.ts",
+        "/src/features/theme/model/controller.ts",
+        "/src/world/theme/loader.ts",
+        "/src/world/mural-entry-lifecycle/source.ts",
+        "/src/world/input/simulation.ts",
+        "/src/world/map/resource-cache.ts",
+        "/src/app/world-entry/mural-production/authority.ts",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "http://127.0.0.1:5323/46a766ab-f716-4d7e-9c15-ed95b8551bf6",
+        "/src/app/world-entry/map-presentation-v1/identity.ts",
+        "/src/world/reference-scene/map4-service-v2/labels.ts",
+        "/src/world/reference-scene/map4-service-v1/labels.ts",
+        "/src/world/reference-scene/map4-service-v1/paint-source.ts",
+        "/src/world/preferences/runtime.ts",
+        "/src/world/theme/compatibility.ts",
+        "/src/world/camera/port.ts",
+        "/src/world/input/model.ts",
+        "/src/world/input/controls.css",
+        "/src/world/network/WorldTransport.ts",
+        "/src/world/mural-entry-lifecycle/index.ts",
+        "/src/features/mural/editor/index.ts",
+        "/src/world/reference-scene/map4-service-v1/style-source.json",
+        "/src/world/interaction/selection.ts",
+        "/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+        "/world/reference-scene-v2/quality-v6/ground.png",
+        "http://127.0.0.1:5323/8e4fea64-29ac-46f9-b016-0e6d607c8c6d",
+        "http://127.0.0.1:5323/d80ebd62-b2dc-483a-a9e4-1915dc44db5c",
+        "/world/reference-scene-v2/quality-v6/parade/atlas.png",
+        "http://127.0.0.1:5323/51f47dad-7d21-481a-b914-08624e424780",
+        "/src/world/scenes/MapScene.ts",
+        "/src/world/preferences/engine.ts",
+        "/src/world/illustrated/phaser.ts",
+        "/src/world/reference-scene/spatial-v5/camera.ts",
+        "/src/world/reference-scene/phaser.ts",
+        "/@fs/private/tmp/mcr-stage-browser2-1811/vite/deps/phaser.js",
+        "/world/map-reference-composition-v1/layout.json",
+        "/world/map-reference-composition-v1/parade-scene.png",
+        "http://127.0.0.1:5323/fa6cdcdd-6ebf-4d88-8849-32ba34a25fee",
+        "/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+        "/reference-window-controls-v2/reduce.svg",
+        "/reference-window-controls-v2/back.svg",
+        "/reference-window-controls-v2/close.svg",
+        "http://127.0.0.1:5323/162f8a73-3afd-408f-a8bd-bf9cc78753d1",
+        "/world/map-reference-composition-v1/parade-scene.png",
+        "/world/map-reference-composition-v1/layout.json",
+        "/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+        "/src/app/account-entry/panels.tsx",
+        "/backgrounds/cute-wall-me-v1/me-scrapbook.svg",
+        "/reference-parade-print-v2/parade-print.svg",
+        "/src/features/settings/index.ts",
+        "/src/features/settings/runtime-adoption/useRuntimePreferences.ts",
+        "/src/features/avatar/motion-adoption/MotionEditor.tsx",
+        "/src/features/avatar/whole-character/WholeCharacterEditor.tsx",
+        "/src/features/settings/SettingsPage.tsx",
+        "/src/features/settings/runtime-adoption/index.ts",
+        "/src/features/settings/runtime-adoption/motionProjection.ts",
+        "/src/features/settings/runtime-adoption/motion.css",
+        "/src/features/avatar/whole-character/whole-character.css",
+        "/src/features/avatar/motion-adoption/MotionOption.tsx",
+        "/src/features/avatar/part-controls/MotionBodyPalette.tsx",
+        "/src/features/avatar/motion-adoption/motion.css",
+        "/src/app/account-deletion-entry/link.tsx",
+        "/src/features/theme/ui/ThemeSelector.tsx",
+        "/src/features/avatar/wardrobe-options/body-options.ts",
+        "/src/features/avatar/part-controls/body-palette.css",
+        "/src/features/theme/ui/theme-selector.css",
+        "/backgrounds/cute-wall-me-v1/me-night-ribbon.svg",
+        "/src/app/account-deletion-entry/panel.tsx",
+        "/src/features/account/panel.tsx",
+        "/src/features/safety/Dialog.tsx"
+      ],
+      "virtualActions": [
+        {
+          "intent": "wall",
+          "path": "/wall",
+          "width": 102.4375,
+          "height": 44,
+          "keyboardAndBackFocus": true,
+          "routeWorld": {
+            "canvases": 1,
+            "socketsCreated": 1,
+            "activeSockets": 1,
+            "singleCanvas": true
+          }
+        },
+        {
+          "intent": "feed",
+          "path": "/feed",
+          "width": 89,
+          "height": 44,
+          "keyboardAndBackFocus": true,
+          "routeWorld": {
+            "canvases": 1,
+            "socketsCreated": 1,
+            "activeSockets": 1,
+            "singleCanvas": true
+          }
+        },
+        {
+          "intent": "meet",
+          "path": "/meet",
+          "width": 111.25,
+          "height": 44,
+          "keyboardAndBackFocus": true,
+          "routeWorld": {
+            "canvases": 1,
+            "socketsCreated": 1,
+            "activeSockets": 1,
+            "singleCanvas": true
+          }
+        },
+        {
+          "intent": "gifts",
+          "path": "/gifts",
+          "width": 111.25,
+          "height": 44,
+          "keyboardAndBackFocus": true,
+          "routeWorld": {
+            "canvases": 1,
+            "socketsCreated": 1,
+            "activeSockets": 1,
+            "singleCanvas": true
+          }
+        }
+      ],
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 89,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)",
+          "screenshot": "forced-focus-parade-390.png"
+        }
+      },
+      "status": "PASS",
+      "worldBefore": {
+        "width": 378,
+        "height": 663,
+        "rgba": "sha256:1bcd5d6ab5ebe886ca6c75f1af15a27e4b321460abeb96932e75069c43809eba",
+        "objects": [
+          {
+            "type": "Image",
+            "x": 0,
+            "y": 0,
+            "depth": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-reviewed-map-1-quality_v6_shared_ground",
+            "frame": "__BASE"
+          },
+          {
+            "type": "Image",
+            "x": 12,
+            "y": -94,
+            "depth": 1.066615265998458,
+            "scaleX": 1.0163934426229508,
+            "scaleY": 1.52,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "northern_hall"
+          },
+          {
+            "type": "Image",
+            "x": 472,
+            "y": -94,
+            "depth": 1.066615265998458,
+            "scaleX": 1.0163934426229508,
+            "scaleY": 1.2101910828025477,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "north_eastern_hall"
+          },
+          {
+            "type": "Image",
+            "x": 146,
+            "y": -22,
+            "depth": 1.095065535851966,
+            "scaleX": 0.7793427230046949,
+            "scaleY": 0.7794117647058824,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_01"
+          },
+          {
+            "type": "Image",
+            "x": 328,
+            "y": -25,
+            "depth": 1.095065535851966,
+            "scaleX": 0.7793427230046949,
+            "scaleY": 0.7941176470588235,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_02"
+          },
+          {
+            "type": "Image",
+            "x": 558,
+            "y": -28,
+            "depth": 1.095065535851966,
+            "scaleX": 0.7685185185185185,
+            "scaleY": 0.7432432432432432,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_03"
+          },
+          {
+            "type": "Image",
+            "x": 665,
+            "y": 31,
+            "depth": 1.1040863531225906,
+            "scaleX": 0.44052863436123346,
+            "scaleY": 0.5357142857142857,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "north_white_food"
+          },
+          {
+            "type": "Image",
+            "x": 522,
+            "y": 141,
+            "depth": 1.1880493446414804,
+            "scaleX": 0.4098360655737705,
+            "scaleY": 0.5851528384279476,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "cross_banner_east"
+          },
+          {
+            "type": "Image",
+            "x": 634,
+            "y": 220,
+            "depth": 1.2456437933693139,
+            "scaleX": 0.6203703703703703,
+            "scaleY": 0.6036036036036037,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_05"
+          },
+          {
+            "type": "Image",
+            "x": 160,
+            "y": 37,
+            "depth": 1.2498072474942175,
+            "scaleX": 1.2396694214876034,
+            "scaleY": 1.3770491803278688,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "main_stage"
+          },
+          {
+            "type": "Image",
+            "x": 2,
+            "y": 220,
+            "depth": 1.2650732459521974,
+            "scaleX": 0.7217391304347827,
+            "scaleY": 0.72,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_04"
+          },
+          {
+            "type": "Image",
+            "x": 585,
+            "y": 319,
+            "depth": 1.2851966075558983,
+            "scaleX": 0.6782608695652174,
+            "scaleY": 0.4824120603015075,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "culture_park_plaque"
+          },
+          {
+            "type": "Sprite",
+            "x": 488,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-1",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 504,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-2",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 520,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-3",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 536,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-4",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 552,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-5",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 472,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-6",
+            "frame": 0
+          },
+          {
+            "type": "Image",
+            "x": 160,
+            "y": 381,
+            "depth": 1.3677717810331536,
+            "scaleX": 0.6,
+            "scaleY": 0.6875,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "west_white_merch"
+          },
+          {
+            "type": "Image",
+            "x": 640,
+            "y": 455,
+            "depth": 1.402467232074017,
+            "scaleX": 0.5565217391304348,
+            "scaleY": 0.5555555555555556,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_06"
+          },
+          {
+            "type": "Image",
+            "x": 410,
+            "y": 455,
+            "depth": 1.428141865844256,
+            "scaleX": 0.7217391304347827,
+            "scaleY": 0.72,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_11"
+          },
+          {
+            "type": "Image",
+            "x": 5,
+            "y": 535,
+            "depth": 1.4836545875096376,
+            "scaleX": 0.7217391304347827,
+            "scaleY": 0.72,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_07"
+          },
+          {
+            "type": "Image",
+            "x": 8,
+            "y": 551,
+            "depth": 1.5072474942174248,
+            "scaleX": 0.8688524590163934,
+            "scaleY": 1.44,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "merch_venue_hall"
+          },
+          {
+            "type": "Image",
+            "x": 568,
+            "y": 611,
+            "depth": 1.5377794911333846,
+            "scaleX": 0.8296943231441049,
+            "scaleY": 0.9010989010989011,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "food_counters"
+          },
+          {
+            "type": "Image",
+            "x": 594,
+            "y": 809,
+            "depth": 1.6612952968388588,
+            "scaleX": 0.7280701754385965,
+            "scaleY": 0.7309644670050761,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_09"
+          },
+          {
+            "type": "Image",
+            "x": 256,
+            "y": 779,
+            "depth": 1.6835003855050115,
+            "scaleX": 0.9672131147540983,
+            "scaleY": 1.3642384105960266,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "meeting_pavilion"
+          },
+          {
+            "type": "Image",
+            "x": 40,
+            "y": 983,
+            "depth": 1.7966075558982266,
+            "scaleX": 0.7685185185185185,
+            "scaleY": 0.7432432432432432,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_08"
+          },
+          {
+            "type": "Image",
+            "x": 440,
+            "y": 1044,
+            "depth": 1.8673862760215882,
+            "scaleX": 0.9672131147540983,
+            "scaleY": 1.4714285714285715,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "giveaway_pavilion"
+          },
+          {
+            "type": "Image",
+            "x": 8,
+            "y": 1137,
+            "depth": 1.8888974556669238,
+            "scaleX": 0.7280701754385965,
+            "scaleY": 0.7309644670050761,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_10"
+          }
+        ],
+        "camera": {
+          "x": 283,
+          "y": 92.5,
+          "width": 378,
+          "height": 663,
+          "zoom": 1
+        }
+      },
+      "initial": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793815923393,
+            "expiresTimeMs": 1793815953393,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5323/46a766ab-f716-4d7e-9c15-ed95b8551bf6",
+            "blob:http://127.0.0.1:5323/8e4fea64-29ac-46f9-b016-0e6d607c8c6d",
+            "blob:http://127.0.0.1:5323/d80ebd62-b2dc-483a-a9e4-1915dc44db5c",
+            "blob:http://127.0.0.1:5323/51f47dad-7d21-481a-b914-08624e424780",
+            "blob:http://127.0.0.1:5323/fa6cdcdd-6ebf-4d88-8849-32ba34a25fee",
+            "blob:http://127.0.0.1:5323/162f8a73-3afd-408f-a8bd-bf9cc78753d1"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5323/fa6cdcdd-6ebf-4d88-8849-32ba34a25fee"
+          ]
+        },
+        "path": "/world/map",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "PARADE"
+      },
+      "raster": {
+        "presentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+        "compared": 833600,
+        "mismatches": 0
+      },
+      "headerImages": [
+        {
+          "src": "/reference-window-controls-v2/reduce.svg",
+          "complete": true,
+          "width": 24,
+          "height": 24
+        },
+        {
+          "src": "/reference-window-controls-v2/back.svg",
+          "complete": true,
+          "width": 24,
+          "height": 24
+        },
+        {
+          "src": "/reference-window-controls-v2/close.svg",
+          "complete": true,
+          "width": 24,
+          "height": 24
+        }
+      ],
+      "markerPlacement": {
+        "architecture": [
+          {
+            "id": "map_only_edge_venue_01",
+            "left": 137.52083333333334,
+            "top": 80.68229166666666,
+            "width": 93.171875,
+            "height": 69.53125
+          },
+          {
+            "id": "map_only_edge_venue_00",
+            "left": -2.46875,
+            "top": 89.953125,
+            "width": 98.27083333333334,
+            "height": 70.921875
+          },
+          {
+            "id": "map_only_edge_venue_02",
+            "left": 295.125,
+            "top": 96.44270833333333,
+            "width": 89.46354166666666,
+            "height": 66.28645833333334
+          },
+          {
+            "id": "map_only_north_east_annex",
+            "left": 284,
+            "top": 168.29166666666666,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_north_west_annex",
+            "left": 20.708333333333332,
+            "top": 168.29166666666666,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_edge_venue_16",
+            "left": 325.71875,
+            "top": 182.66145833333331,
+            "width": 47.74479166666667,
+            "height": 50.0625
+          },
+          {
+            "id": "map_only_stage_west_wing",
+            "left": 84.67708333333333,
+            "top": 231.796875,
+            "width": 88.07291666666667,
+            "height": 56.088541666666664
+          },
+          {
+            "id": "map_only_stage_east_wing",
+            "left": 228.375,
+            "top": 233.1875,
+            "width": 74.63020833333333,
+            "height": 55.161458333333336
+          },
+          {
+            "id": "map_only_stage_central_hall",
+            "left": 146.79166666666666,
+            "top": 223.453125,
+            "width": 117.73958333333334,
+            "height": 68.140625
+          },
+          {
+            "id": "map_only_edge_venue_03",
+            "left": -14.520833333333336,
+            "top": 250.33854166666666,
+            "width": 80.65625,
+            "height": 68.140625
+          },
+          {
+            "id": "map_only_edge_venue_04",
+            "left": 335.453125,
+            "top": 250.80208333333334,
+            "width": 84.36458333333333,
+            "height": 68.60416666666666
+          },
+          {
+            "id": "map_only_edge_venue_15",
+            "left": 26.270833333333336,
+            "top": 305.0364583333333,
+            "width": 44.5,
+            "height": 46.354166666666664
+          },
+          {
+            "id": "map_only_east_arcade",
+            "left": 317.375,
+            "top": 324.04166666666663,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_east_courtyard",
+            "left": 272.875,
+            "top": 346.29166666666663,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_central_workshop",
+            "left": 220.95833333333331,
+            "top": 390.7916666666667,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_central_kiosk",
+            "left": 183.875,
+            "top": 420.4583333333333,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_meet_east_annex",
+            "left": 287.7083333333333,
+            "top": 516.875,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_edge_venue_10",
+            "left": 226.05729166666669,
+            "top": 574.3541666666667,
+            "width": 91.31770833333334,
+            "height": 42.18229166666667
+          },
+          {
+            "id": "map_only_edge_venue_07",
+            "left": -11.276041666666664,
+            "top": 535.8802083333334,
+            "width": 107.078125,
+            "height": 89
+          },
+          {
+            "id": "map_only_south_courtyard",
+            "left": 131.95833333333334,
+            "top": 650.375,
+            "width": 39.864583333333336,
+            "height": 29.666666666666664
+          },
+          {
+            "id": "map_only_edge_venue_11",
+            "left": 354.4583333333333,
+            "top": 624.8802083333334,
+            "width": 82.51041666666667,
+            "height": 68.60416666666666
+          },
+          {
+            "id": "map_only_edge_venue_09",
+            "left": 7.265625,
+            "top": 640.1770833333333,
+            "width": 90.390625,
+            "height": 69.53125
+          }
+        ],
+        "markers": [
+          {
+            "id": "map-place-6a5c196b-58e1-47d5-99bb-000000000002",
+            "interaction": "park_info",
+            "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "View Virtual Culture Park lawn",
+            "bounds": {
+              "left": 211,
+              "top": 299.25,
+              "width": 44,
+              "height": 44
+            },
+            "architectureOverlaps": [],
+            "targetOverlaps": [],
+            "markerOverlaps": [],
+            "centerHit": true
+          },
+          {
+            "id": "map-place-6a5c196b-58e1-47d5-99bb-000000000003",
+            "interaction": "stage_info",
+            "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "View Virtual stage",
+            "bounds": {
+              "left": 115,
+              "top": 587.25,
+              "width": 44,
+              "height": 44
+            },
+            "architectureOverlaps": [],
+            "targetOverlaps": [],
+            "markerOverlaps": [],
+            "centerHit": true
+          },
+          {
+            "id": "map-place-6a5c196b-58e1-47d5-99bb-000000000004",
+            "interaction": "gifts_info",
+            "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "View Virtual gift corner",
+            "bounds": {
+              "left": 178.046875,
+              "top": 568.984375,
+              "width": 44,
+              "height": 44
+            },
+            "architectureOverlaps": [],
+            "targetOverlaps": [],
+            "markerOverlaps": [],
+            "centerHit": true
+          },
+          {
+            "id": "map-place-6a5c196b-58e1-47d5-99bb-000000000005",
+            "interaction": "wall_info",
+            "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "View Virtual pixel wall",
+            "bounds": {
+              "left": 61.28125,
+              "top": 463.859375,
+              "width": 44,
+              "height": 44
+            },
+            "architectureOverlaps": [],
+            "targetOverlaps": [],
+            "markerOverlaps": [],
+            "centerHit": true
+          }
+        ]
+      },
+      "captureStartedAt": "2026-11-04T18:12:04.519Z",
+      "screenshot": "stage-placement-parade-390.png",
+      "screenshotHash": "sha256:3f3c73064a85a20d39c7cad116dc9a37eefa7148948e4019f456fb47b58b845a",
+      "captureFinishedAt": "2026-11-04T18:12:04.579Z",
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [
+          {
+            "family": "MCR Auth Print",
+            "status": "loaded",
+            "weight": "800"
+          }
+        ],
+        "labelFontCssPx": 18.541666666666668,
+        "image": {
+          "x": 17,
+          "y": 105.25,
+          "width": 356,
+          "height": 600.75
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 356,
+          "scrollWidth": 356
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "canonicalKeyboard": [
+        {
+          "interaction": "park_info",
+          "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000002",
+          "backFocus": true
+        },
+        {
+          "interaction": "stage_info",
+          "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000003",
+          "backFocus": true
+        },
+        {
+          "interaction": "gifts_info",
+          "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000004",
+          "backFocus": true
+        },
+        {
+          "interaction": "wall_info",
+          "href": "/world/places/6a5c196b-58e1-47d5-99bb-000000000005",
+          "backFocus": true
+        }
+      ],
+      "worldAfter": {
+        "width": 378,
+        "height": 663,
+        "rgba": "sha256:1bcd5d6ab5ebe886ca6c75f1af15a27e4b321460abeb96932e75069c43809eba",
+        "objects": [
+          {
+            "type": "Image",
+            "x": 0,
+            "y": 0,
+            "depth": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-reviewed-map-1-quality_v6_shared_ground",
+            "frame": "__BASE"
+          },
+          {
+            "type": "Image",
+            "x": 12,
+            "y": -94,
+            "depth": 1.066615265998458,
+            "scaleX": 1.0163934426229508,
+            "scaleY": 1.52,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "northern_hall"
+          },
+          {
+            "type": "Image",
+            "x": 472,
+            "y": -94,
+            "depth": 1.066615265998458,
+            "scaleX": 1.0163934426229508,
+            "scaleY": 1.2101910828025477,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "north_eastern_hall"
+          },
+          {
+            "type": "Image",
+            "x": 146,
+            "y": -22,
+            "depth": 1.095065535851966,
+            "scaleX": 0.7793427230046949,
+            "scaleY": 0.7794117647058824,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_01"
+          },
+          {
+            "type": "Image",
+            "x": 328,
+            "y": -25,
+            "depth": 1.095065535851966,
+            "scaleX": 0.7793427230046949,
+            "scaleY": 0.7941176470588235,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_02"
+          },
+          {
+            "type": "Image",
+            "x": 558,
+            "y": -28,
+            "depth": 1.095065535851966,
+            "scaleX": 0.7685185185185185,
+            "scaleY": 0.7432432432432432,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_03"
+          },
+          {
+            "type": "Image",
+            "x": 665,
+            "y": 31,
+            "depth": 1.1040863531225906,
+            "scaleX": 0.44052863436123346,
+            "scaleY": 0.5357142857142857,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "north_white_food"
+          },
+          {
+            "type": "Image",
+            "x": 522,
+            "y": 141,
+            "depth": 1.1880493446414804,
+            "scaleX": 0.4098360655737705,
+            "scaleY": 0.5851528384279476,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "cross_banner_east"
+          },
+          {
+            "type": "Image",
+            "x": 634,
+            "y": 220,
+            "depth": 1.2456437933693139,
+            "scaleX": 0.6203703703703703,
+            "scaleY": 0.6036036036036037,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_05"
+          },
+          {
+            "type": "Image",
+            "x": 160,
+            "y": 37,
+            "depth": 1.2498072474942175,
+            "scaleX": 1.2396694214876034,
+            "scaleY": 1.3770491803278688,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "main_stage"
+          },
+          {
+            "type": "Image",
+            "x": 2,
+            "y": 220,
+            "depth": 1.2650732459521974,
+            "scaleX": 0.7217391304347827,
+            "scaleY": 0.72,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_04"
+          },
+          {
+            "type": "Image",
+            "x": 585,
+            "y": 319,
+            "depth": 1.2851966075558983,
+            "scaleX": 0.6782608695652174,
+            "scaleY": 0.4824120603015075,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "culture_park_plaque"
+          },
+          {
+            "type": "Sprite",
+            "x": 488,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-1",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 504,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-2",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 520,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-3",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 536,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-4",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 552,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-5",
+            "frame": 0
+          },
+          {
+            "type": "Sprite",
+            "x": 472,
+            "y": 424,
+            "depth": 1.2942174248265228,
+            "scaleX": 1,
+            "scaleY": 1,
+            "texture": "mcr-avatar-6",
+            "frame": 0
+          },
+          {
+            "type": "Image",
+            "x": 160,
+            "y": 381,
+            "depth": 1.3677717810331536,
+            "scaleX": 0.6,
+            "scaleY": 0.6875,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "west_white_merch"
+          },
+          {
+            "type": "Image",
+            "x": 640,
+            "y": 455,
+            "depth": 1.402467232074017,
+            "scaleX": 0.5565217391304348,
+            "scaleY": 0.5555555555555556,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_06"
+          },
+          {
+            "type": "Image",
+            "x": 410,
+            "y": 455,
+            "depth": 1.428141865844256,
+            "scaleX": 0.7217391304347827,
+            "scaleY": 0.72,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_11"
+          },
+          {
+            "type": "Image",
+            "x": 5,
+            "y": 535,
+            "depth": 1.4836545875096376,
+            "scaleX": 0.7217391304347827,
+            "scaleY": 0.72,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_07"
+          },
+          {
+            "type": "Image",
+            "x": 8,
+            "y": 551,
+            "depth": 1.5072474942174248,
+            "scaleX": 0.8688524590163934,
+            "scaleY": 1.44,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "merch_venue_hall"
+          },
+          {
+            "type": "Image",
+            "x": 568,
+            "y": 611,
+            "depth": 1.5377794911333846,
+            "scaleX": 0.8296943231441049,
+            "scaleY": 0.9010989010989011,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "food_counters"
+          },
+          {
+            "type": "Image",
+            "x": 594,
+            "y": 809,
+            "depth": 1.6612952968388588,
+            "scaleX": 0.7280701754385965,
+            "scaleY": 0.7309644670050761,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_09"
+          },
+          {
+            "type": "Image",
+            "x": 256,
+            "y": 779,
+            "depth": 1.6835003855050115,
+            "scaleX": 0.9672131147540983,
+            "scaleY": 1.3642384105960266,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "meeting_pavilion"
+          },
+          {
+            "type": "Image",
+            "x": 40,
+            "y": 983,
+            "depth": 1.7966075558982266,
+            "scaleX": 0.7685185185185185,
+            "scaleY": 0.7432432432432432,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_08"
+          },
+          {
+            "type": "Image",
+            "x": 440,
+            "y": 1044,
+            "depth": 1.8673862760215882,
+            "scaleX": 0.9672131147540983,
+            "scaleY": 1.4714285714285715,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "giveaway_pavilion"
+          },
+          {
+            "type": "Image",
+            "x": 8,
+            "y": 1137,
+            "depth": 1.8888974556669238,
+            "scaleX": 0.7280701754385965,
+            "scaleY": 0.7309644670050761,
+            "texture": "mcr-reviewed-map-1-parade_quality_v6_atlas",
+            "frame": "rooted_tree_10"
+          }
+        ],
+        "camera": {
+          "x": 283,
+          "y": 92.5,
+          "width": 378,
+          "height": 663,
+          "zoom": 1
+        }
+      },
+      "cleanup": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793815923393,
+            "expiresTimeMs": 1793815953393,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 0,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5323/46a766ab-f716-4d7e-9c15-ed95b8551bf6",
+            "blob:http://127.0.0.1:5323/8e4fea64-29ac-46f9-b016-0e6d607c8c6d",
+            "blob:http://127.0.0.1:5323/d80ebd62-b2dc-483a-a9e4-1915dc44db5c",
+            "blob:http://127.0.0.1:5323/51f47dad-7d21-481a-b914-08624e424780",
+            "blob:http://127.0.0.1:5323/fa6cdcdd-6ebf-4d88-8849-32ba34a25fee",
+            "blob:http://127.0.0.1:5323/162f8a73-3afd-408f-a8bd-bf9cc78753d1"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5323/fa6cdcdd-6ebf-4d88-8849-32ba34a25fee",
+            "blob:http://127.0.0.1:5323/46a766ab-f716-4d7e-9c15-ed95b8551bf6",
+            "blob:http://127.0.0.1:5323/162f8a73-3afd-408f-a8bd-bf9cc78753d1",
+            "blob:http://127.0.0.1:5323/8e4fea64-29ac-46f9-b016-0e6d607c8c6d",
+            "blob:http://127.0.0.1:5323/d80ebd62-b2dc-483a-a9e4-1915dc44db5c",
+            "blob:http://127.0.0.1:5323/51f47dad-7d21-481a-b914-08624e424780"
+          ]
+        },
+        "path": "/me/account",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "PARADE"
+      }
+    }
+  ],
+  "assetPins": {
+    "frontend/public/reference-window-controls-v2/stars.svg": {
+      "sha256": "sha256:4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2",
+      "bytes": 402
+    },
+    "frontend/public/reference-window-controls-v2/close.svg": {
+      "sha256": "sha256:1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72",
+      "bytes": 198
+    },
+    "frontend/public/backgrounds/cute-entry-v1/sign-in-paper.svg": {
+      "sha256": "sha256:aee62ec92a87df6a86cfd2322682cd735ba629aeb7a5728aaca2bba81182fa73",
+      "bytes": 2115
+    },
+    "frontend/public/backgrounds/cute-entry-v1/sign-in-clouds-top.svg": {
+      "sha256": "sha256:29ed345d8d974798b37bc6eb0dc8a50dd4345925a3c284283fcf2709cca4dbf1",
+      "bytes": 2609
+    },
+    "frontend/public/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg": {
+      "sha256": "sha256:0f0965425ce45f96925bc94b7d5372225f10af0a9d3a6901e6cc96bb3a328e4e",
+      "bytes": 2887
+    },
+    "frontend/public/world/avatars/derived-v1/static-release.json": {
+      "sha256": "sha256:cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898
+    },
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "sha256:e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json": {
+      "sha256": "sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9",
+      "bytes": 24058
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/ground.png": {
+      "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+      "bytes": 531480
+    },
+    "frontend/public/world/reference-scene-v2/quality-v6/parade/atlas.png": {
+      "sha256": "sha256:e0bc7f1d88b307fd7dd317eb17aae9c2dd2158d5106dedee8b6c9a0ccffdc272",
+      "bytes": 1195741
+    },
+    "frontend/public/world/map-reference-composition-v1/layout.json": {
+      "sha256": "sha256:77da03bcddba15cb88a250a3cad4dbe9bdfadac519af1f1d4ac22623a8aa6141",
+      "bytes": 98497
+    },
+    "frontend/public/world/map-reference-composition-v1/parade-scene.png": {
+      "sha256": "sha256:1d7cc73a1cdaf0931d446206a5424dd8f131c5c819e1f147a0a150583e98b493",
+      "bytes": 726705
+    },
+    "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf": {
+      "sha256": "sha256:f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b",
+      "bytes": 145012
+    },
+    "frontend/public/reference-window-controls-v2/reduce.svg": {
+      "sha256": "sha256:536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5",
+      "bytes": 257
+    },
+    "frontend/public/reference-window-controls-v2/back.svg": {
+      "sha256": "sha256:a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2",
+      "bytes": 223
+    },
+    "frontend/public/backgrounds/cute-wall-me-v1/me-scrapbook.svg": {
+      "sha256": "sha256:98c351c141e372d8d7e0d6879556105c551fbdf7478d66afe76d360a59a7aae1",
+      "bytes": 2728
+    },
+    "frontend/public/reference-parade-print-v2/parade-print.svg": {
+      "sha256": "sha256:e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10",
+      "bytes": 5894
+    },
+    "frontend/public/backgrounds/cute-wall-me-v1/me-night-ribbon.svg": {
+      "sha256": "sha256:29ad1cb9d04101399e2483fef9de6a3d710c6bf7f08cb1cb4501fb746152932d",
+      "bytes": 2298
+    }
+  },
+  "limits": [
+    "Only explicit eligible-attendee HTTP/C05 fixtures; no real operator/admission/live/device claim.",
+    "Changed ART06 only, no ART04 replay/build; original Map4/geometry/theme/avatar pins.",
+    "World invariance compares the same actual App before/after Map/control/route navigation; no historical framebuffer equivalence claim.",
+    "Full ten-screen fidelity remains open."
+  ],
+  "readsetHash": "sha256:ea79170e49790415b6d5073deca007bd901a633ca9e6bebe9ba1356e6d0597ab",
+  "browser": "156.0.8078.80",
+  "current": {
+    "era": "PARADE",
+    "width": 390,
+    "height": 844
+  },
+  "finishedAt": "2026-11-04T18:12:08.574Z"
+}

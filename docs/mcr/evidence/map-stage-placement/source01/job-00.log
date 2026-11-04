@@ -1,0 +1,220 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend
+
+ ❯ src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx (4 tests | 2 failed) 146ms
+   × projects canonical markers, leaders and selected pins together without rewriting server coordinates 16ms
+   × retains closed and unavailable canonical status without a supported selected pin 10ms
+ ❯ src/app/world-entry/__tests__/map-stage-placement/placement.test.ts (20 tests | 7 failed) 22ms
+   × projects all 22 approved architecture footprints, including clipped edge venues, without mutating art 4ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 326×681 zoom -1 1ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 326×96 zoom -1 0ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 356×681 zoom -1 0ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 356×96 zoom -1 0ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 396×681 zoom -1 0ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 396×96 zoom -1 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx > projects canonical markers, leaders and selected pins together without rewriting server coordinates
+ FAIL  src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx > retains closed and unavailable canonical status without a supported selected pin
+Error: Map4 marker space unavailable
+ ❯ packMap4Markers src/world/reference-scene/map4-service-v1/layout.ts:32:23
+     30|       return [...excluded, ...placed].every(e => !overlaps(r, e))
+     31|     })
+     32|     if (!point) throw Error('Map4 marker space unavailable')
+       |                       ^
+     33|     result.set(anchor.id, point); placed.push({ left: point.x - 22, to…
+     34|   }
+ ❯ IllustratedViewport src/features/places/ui/IllustratedMap.tsx:104:7
+ ❯ Object.react_stack_bottom_frame ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ performUnitOfWork ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:17641:22
+ ❯ workLoopSync ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:17469:41
+ ❯ renderRootSync ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:17450:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > projects all 22 approved architecture footprints, including clipped edge venues, without mutating art
+AssertionError: expected [ …(22) ] to deep equally contain { left: 140, top: 127.5, …(2) }
+
+- Expected:
+{
+  "height": 73.5,
+  "left": 140,
+  "top": 127.5,
+  "width": 127,
+}
+
++ Received:
+[
+  {
+    "height": 75,
+    "left": 130,
+    "top": -26.5,
+    "width": 100.5,
+  },
+  {
+    "height": 76.5,
+    "left": -21,
+    "top": -16.5,
+    "width": 106,
+  },
+  {
+    "height": 71.5,
+    "left": 300,
+    "top": -9.5,
+    "width": 96.5,
+  },
+  {
+    "height": 32,
+    "left": 288,
+    "top": 68,
+    "width": 43,
+  },
+  {
+    "height": 32,
+    "left": 4,
+    "top": 68,
+    "width": 43,
+  },
+  {
+    "height": 54,
+    "left": 333,
+    "top": 83.5,
+    "width": 51.5,
+  },
+  {
+    "height": 60.5,
+    "left": 73,
+    "top": 136.5,
+    "width": 95,
+  },
+  {
+    "height": 59.5,
+    "left": 228,
+    "top": 138,
+    "width": 80.5,
+  },
+  {
+    "height": 73.5,
+    "left": 140,
+    "top": 127.50000000000001,
+    "width": 127,
+  },
+  {
+    "height": 73.5,
+    "left": -34,
+    "top": 156.5,
+    "width": 87,
+  },
+  {
+    "height": 74,
+    "left": 343.5,
+    "top": 157,
+    "width": 91,
+  },
+  {
+    "height": 50,
+    "left": 10,
+    "top": 215.5,
+    "width": 48,
+  },
+  {
+    "height": 32,
+    "left": 324,
+    "top": 236,
+    "width": 43,
+  },
+  {
+    "height": 32,
+    "left": 276,
+    "top": 260,
+    "width": 43,
+  },
+  {
+    "height": 32,
+    "left": 220,
+    "top": 308,
+    "width": 43,
+  },
+  {
+    "height": 32,
+    "left": 180,
+    "top": 340,
+    "width": 43,
+  },
+  {
+    "height": 32,
+    "left": 292,
+    "top": 444.00000000000006,
+    "width": 43,
+  },
+  {
+    "height": 45.50000000000001,
+    "left": 225.5,
+    "top": 506,
+    "width": 98.5,
+  },
+  {
+    "height": 96,
+    "left": -30.5,
+    "top": 464.5,
+    "width": 115.5,
+  },
+  {
+    "height": 32,
+    "left": 124,
+    "top": 588,
+    "width": 43,
+  },
+  {
+    "height": 74,
+    "left": 364,
+    "top": 560.5,
+    "width": 89,
+  },
+  {
+    "height": 75,
+    "left": -10.5,
+    "top": 577,
+    "width": 97.5,
+  },
+]
+
+ ❯ src/app/world-entry/__tests__/map-stage-placement/placement.test.ts:23:22
+     21|   expect(rectangles).toHaveLength(22)
+     22|   const central = approved.decorations.find(d => d.id === 'map_only_st…
+     23|   expect(rectangles).toContainEqual({ left: central.rect[0]! / 2, top:…
+       |                      ^
+     24|     width: central.rect[2]! / 2, height: central.rect[3]! / 2 })
+     25|   expect(rectangles.some(r => r.left < 0)).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 326×681 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 326×96 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 356×681 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 356×96 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 396×681 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 396×96 zoom -1
+Error: Map4 marker space unavailable
+ ❯ packMap4Markers src/world/reference-scene/map4-service-v1/layout.ts:32:23
+     30|       return [...excluded, ...placed].every(e => !overlaps(r, e))
+     31|     })
+     32|     if (!point) throw Error('Map4 marker space unavailable')
+       |                       ^
+     33|     result.set(anchor.id, point); placed.push({ left: point.x - 22, to…
+     34|   }
+ ❯ src/app/world-entry/__tests__/map-stage-placement/placement.test.ts:43:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  9 failed | 22 passed (31)
+   Start at  03:03:01
+   Duration  1.66s (transform 348ms, setup 0ms, import 714ms, tests 216ms, environment 442ms)
+

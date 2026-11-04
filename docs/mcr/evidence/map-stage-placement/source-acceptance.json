@@ -1,0 +1,26 @@
+{
+  "lease": "MAP-STAGE-SOURCE-B-20261104T1802Z",
+  "acceptedAt": "2026-11-04T18:03:00.575200+00:00",
+  "activeDeadline": "2026-11-04T18:08:00.575200+00:00",
+  "hardDeadline": "2026-11-04T18:09:00.575200+00:00",
+  "candidate": "19ae0722943d8ae5640398871e351579dffdbb97",
+  "readsetSha256": "d812c141d6a137a32bb538c6dd0d5822e94b97975e08371f23a017bbc06245d5",
+  "guardianSha256": "c4b1cd02cd4c26752b28b7eaff62e48a5ed854bef92bfe314fab1e320d166ea1",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "freeBytes": 20086513664,
+  "otherOutstandingWorstNewBytes": 4596957184,
+  "ownWorstNewBytes": 134217728,
+  "remainingMarginBytes": 15355338752,
+  "wholeNonshrinkingFloorBytes": 1327975853,
+  "tmp": "/private/tmp/mcr-stage-source-1802",
+  "portsCreated": [],
+  "caps": {
+    "allProcesses": 6,
+    "rssBytes": 2684354560,
+    "wholeBytes": 2147483648,
+    "newBytes": 134217728,
+    "tmpBytesIncluded": 100663296,
+    "sampleMs": 100
+  },
+  "qualification": "Only targeted source tests/types/lint/native syntax; no browser/build/install/ART/replay"
+}
