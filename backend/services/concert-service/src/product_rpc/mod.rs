@@ -22,6 +22,7 @@ mod query;
 pub use query::CommandStatusQuery;
 pub mod scope_ledger;
 mod scope_lifecycle;
+pub mod scoped;
 pub mod settlement;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_BODY: usize = 10 * 1024 * 1024;

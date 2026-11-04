@@ -439,9 +439,18 @@ fn validate_release_provenance(
         match value {
             Value::Object(map) => {
                 if let Some(provenance) = map.get("provenance") {
+                    // BE08/AR01/FE19 keep display-only concepts distinct from
+                    // physical meeting places. Full C06 validation precedes
+                    // this policy; no other object receives this exception.
+                    let virtual_concept = map.get("place_id").is_some()
+                        && map.get("place_kind").and_then(Value::as_str) == Some("VIRTUAL_CONCEPT")
+                        && map.get("verification_state").and_then(Value::as_str)
+                            == Some("CONCEPT_ONLY");
+                    let review_state = string(provenance, "review_state")?;
                     if policy == ReleasePolicy::Product
                         && (string(provenance, "source_kind")? == "ORIGINAL_FIXTURE"
-                            || string(provenance, "review_state")? != "REVIEWED")
+                            || !(review_state == "REVIEWED"
+                                || (virtual_concept && review_state == "UNREVIEWED")))
                     {
                         return Err(super::BootstrapServiceError::ReleaseUnavailable);
                     }
@@ -649,6 +658,42 @@ fn validate_persisted_binding(
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn product_virtual_concepts_preserve_unreviewed_place_truth_without_physical_or_fixture_waivers(
+    ) {
+        let reviewed = json!({"source_kind":"ORIGINAL_ART","review_state":"REVIEWED","source_id":"mcr_user_characters_20261103"});
+        let mut values = vec![
+            Value::Null,
+            json!({"provenance":reviewed}),
+            json!({"provenance":reviewed,
+            "places":[{"place_id":"6a5c196b-58e1-47d5-99bb-000000000002","place_kind":"VIRTUAL_CONCEPT",
+                "verification_state":"CONCEPT_ONLY","provenance":{"source_kind":"ORIGINAL_ART","review_state":"UNREVIEWED"}}]}),
+        ];
+        validate_release_provenance(&values, ReleasePolicy::Product).unwrap();
+        let original = values.clone();
+        for (field, value) in [
+            ("place_kind", "PHYSICAL"),
+            ("verification_state", "VERIFIED"),
+        ] {
+            values = original.clone();
+            values[2]["places"][0][field] = value.into();
+            assert!(validate_release_provenance(&values, ReleasePolicy::Product).is_err());
+        }
+        values = original.clone();
+        values[2]["places"][0]["provenance"]["source_kind"] = "ORIGINAL_FIXTURE".into();
+        assert!(validate_release_provenance(&values, ReleasePolicy::Product).is_err());
+        values = original.clone();
+        values[2]["places"][0]["provenance"]["review_state"] = "REJECTED".into();
+        assert!(validate_release_provenance(&values, ReleasePolicy::Product).is_err());
+        values = original.clone();
+        values[2]["provenance"]["review_state"] = "UNREVIEWED".into();
+        assert!(validate_release_provenance(&values, ReleasePolicy::Product).is_err());
+        values = original;
+        values[2]["places"][0]["place_kind"] = "PHYSICAL".into();
+        values[2]["places"][0]["verification_state"] = "VERIFIED".into();
+        values[2]["places"][0]["provenance"]["review_state"] = "REVIEWED".into();
+        validate_release_provenance(&values, ReleasePolicy::Product).unwrap();
+    }
     #[test]
     fn canonical_ascii_and_surrogates_match_c06_python() {
         assert_eq!(
