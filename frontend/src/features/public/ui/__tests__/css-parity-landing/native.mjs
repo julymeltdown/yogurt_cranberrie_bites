@@ -10,25 +10,45 @@ import { chromium, expect } from '@playwright/test'
 
 const root = resolve(import.meta.dirname, '../../../../../..')
 const repository = resolve(root, '..')
-const evidence = resolve(repository, 'docs/mcr/evidence/css-parity-landing')
-const baseline = '29a42ca1f5d86262ee18141d2bab75996af7e6fd'
+const evidenceRoot = resolve(repository, 'docs/mcr/evidence/css-parity-landing')
+const round = process.env.MCR_LANDING_ROUND ?? ''
+assert(['', 'round-02'].includes(round))
+const iteration = process.env.MCR_LANDING_ITERATION ?? ''
+assert(['', 'final'].includes(iteration) && (!iteration || round))
+const evidence = resolve(evidenceRoot, round, iteration)
+const baseline = round ? 'a5c6cad52e630d61aa4ce581e7230c13cc5feb25' : '29a42ca1f5d86262ee18141d2bab75996af7e6fd'
 const phase = process.env.MCR_LANDING_PHASE ?? 'candidate'
 assert(['baseline', 'candidate'].includes(phase))
-const cache = resolve('/tmp/mcr-css-parity-landing', phase)
-const target = '/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg'
+const cache = resolve(`/tmp/mcr-css-parity-landing${round ? '-round-02' : ''}`, phase)
+const target = resolve(evidenceRoot, 'reference-original.jpg')
 const digest = value => createHash('sha256').update(value).digest('hex')
+const baselineCSS = execFileSync('git', ['show', `${baseline}:frontend/src/features/public/ui/public.css`], { cwd: repository, encoding: 'utf8' })
+const worktreeCSS = await readFile(resolve(root, 'src/features/public/ui/public.css'))
 const report = {
   phase, baseline, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repository, encoding: 'utf8' }).trim(),
-  cssSHA256: digest(await readFile(resolve(root, 'src/features/public/ui/public.css'))),
+  cssSHA256: digest(phase === 'baseline' ? baselineCSS : worktreeCSS),
+  worktreeCSSSHA256: digest(worktreeCSS),
   targetSHA256: digest(await readFile(target)),
   result: 'FAIL', cases: [], errors: [],
   limits: 'Synthetic canonical readiness/session fixture, actual Landing/PublicFrame/routes. No live provider, backend, mobile-device, release or exact-art acceptance.',
+}
+if (round) {
+  const protectedPaths = [
+    'src/features/public/ui/Landing.tsx', 'src/features/public/ui/PublicFrame.tsx',
+    'src/features/public/ui/landing-reference/PosterArtwork.tsx',
+    'src/features/public/ui/landing-reference/reference-contours.json',
+    'src/entities/avatar/selected-static/index.tsx',
+    'src/entities/avatar/selected-static/selected-static.css',
+    'src/entities/avatar/selected-static/release.ts',
+    'src/shared/styles/base.css', 'src/shared/styles/cozy-identity-backgrounds-v1.css',
+  ]
+  report.protectedInputs = Object.fromEntries(await Promise.all(protectedPaths.map(async path =>
+    [path, digest(await readFile(resolve(root, path)))])))
 }
 assert.equal(report.targetSHA256, '2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23')
 const free = await statfs(repository)
 assert(free.bavail * free.bsize >= 8 * 1024 ** 3, '8GiB continuous floor')
 await mkdir(evidence, { recursive: true })
-const baselineCSS = execFileSync('git', ['show', `${baseline}:frontend/src/features/public/ui/public.css`], { cwd: repository, encoding: 'utf8' })
 const server = await createServer({
   root, configLoader: 'runner', cacheDir: cache, logLevel: 'warn',
   plugins: phase === 'baseline' ? [{ name: 'owned-css-baseline', enforce: 'pre', transform(source, id) {
@@ -69,7 +89,7 @@ try {
       const poster = document.querySelector('.public-poster'), paint = getComputedStyle(poster)
       return {
         header: rect('.public-header'), brand: rect('.public-brand'), signIn: rect('.public-header > .public-text-link'),
-        poster: rect('.public-poster'), copy: rect('.landing-poster-copy'), cta: rect('.public-primary'),
+        poster: rect('.public-poster'), wordmark: rect('.landing-wordmark'), copy: rect('.landing-poster-copy'), cta: rect('.public-primary'),
         characters: [...document.querySelectorAll('.landing-crowd > span')].map(el => {
           const s = getComputedStyle(el), r = el.getBoundingClientRect()
           return { x: r.x, y: r.y, width: r.width, height: r.height, backgroundPosition: s.backgroundPosition,
@@ -86,15 +106,24 @@ try {
     assert.equal(geometry.sceneOpacity, '0')
     assert(geometry.background.image.includes('landing-garden-night.svg'))
     assert.equal(await page.locator('canvas, [data-world-host]').count(), 0)
-    const screenshots = [`${phase}-landing-${width}.png`, `${phase}-poster-${width}.png`]
-    await page.screenshot({ path: resolve(evidence, screenshots[0]) })
-    await page.screenshot({ path: resolve(evidence, screenshots[1]), clip: {
+    const screenshots = []
+    if (!iteration) {
+      const file = `${phase}-landing-${width}.png`; screenshots.push(file)
+      await page.screenshot({ path: resolve(evidence, file) })
+    }
+    if (!iteration || width === 390) {
+      const file = `${phase}-poster-${width}.png`; screenshots.push(file)
+      await page.screenshot({ path: resolve(evidence, file), clip: {
       x: geometry.header.x, y: geometry.header.y, width: geometry.header.width,
       height: geometry.poster.y + geometry.poster.height - geometry.header.y,
-    } })
-    if (phase === 'candidate' && width === 390) {
-      const before = JSON.parse(await readFile(resolve(evidence, 'baseline.json'), 'utf8')).cases[0].geometry
+      } })
+    }
+    if (phase === 'candidate' && (width === 390 || round)) {
+      const priorReport = JSON.parse(await readFile(resolve(width === 390 ? resolve(evidenceRoot, round) : evidenceRoot,
+        width === 390 ? 'baseline.json' : 'candidate.json'), 'utf8'))
+      const before = priorReport.cases.find(item => item.width === width).geometry
       assert.deepEqual(geometry.background, before.background)
+      if (width === 390 && round) assert.deepEqual(report.protectedInputs, priorReport.protectedInputs)
       for (let i = 0; i < 4; i++) {
         const old = before.characters[i], current = geometry.characters[i]
         for (const key of ['width', 'height', 'backgroundPosition', 'backgroundSize', 'imageRendering', 'transform']) assert.equal(current[key], old[key], key)
@@ -133,7 +162,7 @@ try {
       await page.goto(`${url}?entry=unavailable`)
       await expect(page.getByRole('button', { name: 'Enter the world', exact: true })).toBeDisabled()
       await expect(page.getByText('World entry is not open yet.', { exact: true })).toBeVisible()
-      if (width === 390) {
+      if (width === 390 && !iteration) {
         const file = 'candidate-unavailable-390.png'
         await page.screenshot({ path: resolve(evidence, file) }); screenshots.push(file)
       }

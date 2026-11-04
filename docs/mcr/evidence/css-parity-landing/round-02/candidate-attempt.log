@@ -1,0 +1,6 @@
+UTCepoch=1793796488.761647 accepted=1793796417.9 stop=1793796837.9 command=['/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node', 'frontend/src/features/public/ui/__tests__/css-parity-landing/native.mjs']
+{"phase":"candidate","result":"PASS","cases":3}
+EXIT=0 guard=None
+UTCepoch=1793796695.500149 accepted=1793796417.9 stop=1793796837.9 command=['/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node', 'frontend/src/features/public/ui/__tests__/css-parity-landing/native.mjs']
+{"phase":"candidate","result":"PASS","cases":3}
+EXIT=0 guard=None

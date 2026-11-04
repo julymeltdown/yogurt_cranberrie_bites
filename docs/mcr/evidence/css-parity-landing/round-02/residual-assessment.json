@@ -1,0 +1,140 @@
+{
+  "qualification": "Full-panel geometric registration and coarse cream masks; excludes artwork/background/character acceptance. No production change is certified by an analytical warp.",
+  "newPhotoSize": [
+    1280,
+    853
+  ],
+  "originalSourceSize": [
+    1536,
+    1024
+  ],
+  "originalPanelXYWH": [
+    6,
+    4,
+    296,
+    524
+  ],
+  "newPhotoPanelLTRB": [
+    5.0,
+    3.33203125,
+    251.66666666666669,
+    439.828125
+  ],
+  "oldFirstPassCropLTRB": [
+    5,
+    3,
+    254,
+    440
+  ],
+  "oldExtraGutterColumns": 2.3333333333333144,
+  "uniformTargetSize": [
+    378,
+    669
+  ],
+  "firstPass": {
+    "wordmark": {
+      "referenceBounds": [
+        35,
+        55,
+        351,
+        279
+      ],
+      "observedBounds": [
+        35,
+        61,
+        358,
+        264
+      ],
+      "edgeError": 28,
+      "maskIoU": 0.619858552019356
+    },
+    "copy": {
+      "referenceBounds": [
+        86,
+        497,
+        297,
+        575
+      ],
+      "observedBounds": [
+        85,
+        497,
+        295,
+        575
+      ],
+      "edgeError": 3,
+      "maskIoU": 0.22862985685071574
+    },
+    "cta": {
+      "referenceBounds": [
+        42,
+        586,
+        341,
+        638
+      ],
+      "observedBounds": [
+        42,
+        591,
+        338,
+        639
+      ],
+      "edgeError": 9,
+      "maskIoU": 0.36279815594307474
+    }
+  },
+  "sourceCoordinateWordmarkProposal": {
+    "leftPercent": -0.2436863092600798,
+    "topPercent": 0.8864469225499978,
+    "widthPercent": 99.78954364200267,
+    "heightPercent": 98.39924759671062
+  },
+  "nativeCandidate": {
+    "wordmark": {
+      "referenceBounds": [
+        35,
+        55,
+        351,
+        279
+      ],
+      "observedBounds": [
+        35,
+        67,
+        358,
+        264
+      ],
+      "edgeError": 34,
+      "maskIoU": 0.8964625625790834
+    },
+    "copy": {
+      "referenceBounds": [
+        86,
+        497,
+        297,
+        575
+      ],
+      "observedBounds": [
+        85,
+        496,
+        297,
+        576
+      ],
+      "edgeError": 3,
+      "maskIoU": 0.580168776371308
+    },
+    "cta": {
+      "referenceBounds": [
+        42,
+        586,
+        341,
+        638
+      ],
+      "observedBounds": [
+        41,
+        591,
+        341,
+        640
+      ],
+      "edgeError": 8,
+      "maskIoU": 0.5270618556701031
+    }
+  }
+}
