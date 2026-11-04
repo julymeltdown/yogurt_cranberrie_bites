@@ -1,0 +1,27 @@
+{
+  "job": "GIFTS-REPORT-CLEANUP-BROWSER2-202611041704Z",
+  "source_revision": "09ade32c687bb6b38e5dd80d221a005aa9beaedb",
+  "accepted_at": "2026-11-04T17:05:12.146320+00:00",
+  "runtime_finished_at": "2026-11-04T17:06:03.099702+00:00",
+  "released_at": "2026-11-04T17:07:07.924181+00:00",
+  "qualified_native": "PASS",
+  "contexts": 15,
+  "captures": 21,
+  "live_job_processes": [],
+  "node_modules_exists": false,
+  "temporary_exists": false,
+  "listener_port": 54695,
+  "listener_query_exit": 1,
+  "reuse_bind_listen": "PASS",
+  "readonly_root_dependencies_preserved": true,
+  "peaks": {
+    "pids": 13,
+    "rss": 2613542912,
+    "whole": 2135114013,
+    "temporary": 32681984,
+    "durable": 2691072,
+    "new_total": 32792576,
+    "other": 0
+  },
+  "minimum_free_bytes": 31546585088
+}

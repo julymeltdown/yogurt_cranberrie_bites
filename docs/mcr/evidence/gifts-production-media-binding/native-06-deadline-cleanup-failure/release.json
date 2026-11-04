@@ -1,0 +1,43 @@
+{
+  "released_at": "2026-11-04T16:55:03.228246+00:00",
+  "job": "GIFTS-DETAIL-CORRECTED-NATIVE-BROWSER1-202611041651Z",
+  "source_revision": "e5e28af1ec01ca00f71285a74ad96d9c2b1dd912",
+  "status": "INCOMPLETE_FINAL_REPORT_CLEANUP_ERROR",
+  "functional_case_pass_lines": 15,
+  "native_final_report_exists": false,
+  "live_processes": [],
+  "temporary_exists": false,
+  "dependency_link_exists": false,
+  "recovered_local_origins_reuse_bind": {},
+  "listener_port_record": "MISSING_FINAL_REPORT_NO_AUTHORITATIVE_LISTENER_PORT",
+  "guard": {
+    "peaks": {
+      "pids": 13,
+      "rss": 2581921792,
+      "whole": 2130747082,
+      "temporary": 32198656,
+      "durable": 147456,
+      "new_total": 32528834
+    },
+    "minimum_free_bytes": 29208080384,
+    "reason": null,
+    "last_sample_utc": "2026-11-04T16:53:46.910203+00:00",
+    "observed_groups": [
+      83059,
+      83060,
+      83064,
+      84344
+    ],
+    "live_pids": [
+      82810,
+      83049,
+      83060,
+      83064,
+      83071,
+      83072,
+      83073,
+      84344,
+      85803
+    ]
+  }
+}

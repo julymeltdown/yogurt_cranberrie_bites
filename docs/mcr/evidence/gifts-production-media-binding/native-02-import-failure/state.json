@@ -1,0 +1,14 @@
+{
+  "running": false,
+  "groups": [
+    37608,
+    37609,
+    37611
+  ],
+  "git_bytes": 1867905,
+  "source_bytes": 1307082752,
+  "carry_bytes": 2098114689,
+  "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+  "git_dir_bytes": 1814528,
+  "work_done": true
+}

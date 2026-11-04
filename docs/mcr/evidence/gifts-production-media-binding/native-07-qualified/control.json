@@ -1,0 +1,15 @@
+{
+  "job": "GIFTS-REPORT-CLEANUP-BROWSER2-202611041704Z",
+  "pin": "09ade32c687bb6b38e5dd80d221a005aa9beaedb",
+  "accepted_at": "2026-11-04T17:05:12.146320+00:00",
+  "assigned_port": 54695,
+  "work_deadline_utc": 1793812032.14632,
+  "hard_deadline_utc": 1793812092.14632,
+  "readset_sha256": {
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/ui/Gifts.tsx": "7fcfef793f1883117f1b3b1eac2ffe36d1e15834cafbd921619dc10c9468bb5a",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/ui/reference-gifts.css": "bfc7fcd0f0d5cc32fad690a272502af361392e272e38cc9b35fb9fafe8e5ae91",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/adoption-inputs/CommunityFeatures.tsx.source": "db2b1d0330b5af0347e55fda017da4d0bd1b586e9c2e8872d8fbae1390e577d8",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/adoption-inputs/RootMediaView.tsx.source": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a"
+  }
+}

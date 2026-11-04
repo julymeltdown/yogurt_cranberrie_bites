@@ -1,0 +1,85 @@
+{
+  "job": "GIFTS-MEDIA-DETAIL-SOURCE-A-202611041619Z",
+  "source_revision": "23d6da66f585d448c244adf055e0a1772309e345",
+  "accepted_at": "2026-11-04T16:19:50.691116+00:00",
+  "work_deadline_utc": 1793809310.691116,
+  "hard_deadline_utc": 1793809370.691116,
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/gift-discovery/__tests__/gift-detail-media/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--pool=threads",
+        "--cache=false",
+        "--no-file-parallelism",
+        "--maxWorkers=1"
+      ],
+      "started_at": "2026-11-04T16:19:51.819461+00:00",
+      "exit_code": 0,
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "started_at": "2026-11-04T16:19:59.612618+00:00",
+      "exit_code": 0,
+      "log": "2.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/gift-discovery/__tests__/gift-detail-media/typecheck.ts"
+      ],
+      "started_at": "2026-11-04T16:20:07.072347+00:00",
+      "exit_code": 1,
+      "log": "3.log"
+    }
+  ],
+  "failure": "command 3 exited 1",
+  "elapsed_seconds": 24.05848820801475,
+  "guard": {
+    "peaks": {
+      "pids": 4,
+      "rss": 1592426496,
+      "whole": 2099413475,
+      "temporary": 1363968,
+      "durable": 16384
+    },
+    "minimum_free_bytes": 17336655872,
+    "reason": null,
+    "last_sample_utc": "2026-11-04T16:20:15.621305+00:00"
+  },
+  "retained_dependencies": "ROOT_READ_ONLY_PRESERVED_TEMP_LINK_REMOVED",
+  "own_temp_removed": true,
+  "charged_carry_paths": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/fe34-runtime-preferences",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/runtime-preferences-root",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/world-runtime-preferences",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/community-authority",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/community-adoption",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/world/preferences",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/app/community-authority",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/app/community-adoption",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules"
+  ],
+  "git_bytes": 1868259,
+  "carry_bytes": 2098033123,
+  "finished_at": "2026-11-04T16:20:15.684636+00:00"
+}

@@ -1,0 +1,145 @@
+{
+  "classification": "TEST_ONLY_QUALIFIED_NATIVE",
+  "source_revision": "09ade32c687bb6b38e5dd80d221a005aa9beaedb",
+  "native_status": "PASS",
+  "contexts": 15,
+  "assessed_at": "2026-11-04T17:09:17.240282+00:00",
+  "captures": 21,
+  "inspection_method": "All current capture bytes SHA256-match original PNGs already individually viewed by this implementation owner. No image was edited.",
+  "findings": [
+    "Ready is the decoded existing 1x1 white shared-reader PNG, not production artwork or a failed-read placeholder.",
+    "Explicit No photo, Loading image, and Image unavailable with Retry remain distinct and legible at all three widths.",
+    "No horizontal overflow in any case; scrollable detail content extends below the first viewport.",
+    "List/detail/back and World roundtrip keep the same scoped photo URL/read count. The full report records exact protected read counts and active socket/canvas lifecycle.",
+    "Privacy withdrawal removes protected photos and revokes their URLs; delayed bytes cannot create one. No recipient identity or reservation mutation is shown.",
+    "Production motif rights/media records, independent CSS-density adoption, visual-reference signoff, FE24 acceptance and live IN02 remain outside this qualified synthetic gate."
+  ],
+  "images": [
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/denied-360.png",
+      "sha256": "adb78f21b54097673f42cb79336974d7aa8af6e6ee00b8f3aae8e0f314a52f01",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/denied-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/denied-390.png",
+      "sha256": "2899ce921b5249418c2decb7e98be1b8c3f57c10ed88729d33db91220af0b1f3",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/denied-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/denied-430.png",
+      "sha256": "3b86b17c2e17eb3ce2be4d6a1002d7935077e5739c44cd88bcd78832bafa96f0",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/denied-430.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-denied-360.png",
+      "sha256": "82244ae6dca337226431565153be2fb734741fcdbc356633b5b210ca7a29c129",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-denied-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-denied-390.png",
+      "sha256": "77e41cecc3eba1ba1d6736f3f2aef4048a747c763fc3a0d605b7145e57e7ddda",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-denied-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-denied-430.png",
+      "sha256": "a582f1c041316c410b2854ac18ad5ab1cf52f0bb96d7b00d035dc3b8f9417413",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-denied-430.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-direct-360.png",
+      "sha256": "287c72d3eab12ea5f4a12a29cda5e03e892e451ff1ca508eaeeece325ce7739c",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-direct-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-direct-390.png",
+      "sha256": "a6cee1e77e1edd78d07c611b047a0cc65f4edd152446c37ba5abe21c0a2e8d1b",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-direct-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-direct-430.png",
+      "sha256": "d3c0675891ca16374a023c89666b86efcac6722a608ad1694e05a4d119f68676",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-direct-430.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-list-detail-360.png",
+      "sha256": "ee3b126c43ef54e3b1339113139464d630126f93a4fc906f5d855cd5fdb10e52",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-list-detail-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-list-detail-390.png",
+      "sha256": "2ab4cc233cced718707eb627e6fb9ab8356b63647a5cf01fa47b35c33c8c4c51",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-list-detail-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-list-detail-430.png",
+      "sha256": "cf07544a9ac580c1431ad6412e866a8ff1fa426ea248fbca028720188db1dde0",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-list-detail-430.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-none-360.png",
+      "sha256": "3f80757543e473c50494d408ec60395f1dcd46b371e4e49ebb077b1621e4ff8e",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-none-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-none-390.png",
+      "sha256": "14b8f707da742dd81d8f7acab56ce0de417ada1d4ba87e16d58659ba994e85e0",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-none-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/detail-none-430.png",
+      "sha256": "9c5517c0b2862d83785b2ceaabfc7522b63c29a2b133998c3e3d7806cc7d9ac2",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/detail-none-430.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/list-photo-360.png",
+      "sha256": "245344dfb127aaf3bf6899af85a83fc8bf636f29e97bfc7cc60c76a775254951",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/list-photo-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/list-photo-390.png",
+      "sha256": "6cc4581744553c831031f1fb4805ad7cfb4e6bbd69f6bc7ce249c6417ae926b9",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/list-photo-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/list-photo-430.png",
+      "sha256": "b2de2632d7b1223ed6adabbd748471de2c841a185d7bddd7f87588b8643ba9ca",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/list-photo-430.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/loading-360.png",
+      "sha256": "f534e781bc993f242ba8556d9529fd449ee02defec86f7a5384afdc2eeb99a3d",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/loading-360.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/loading-390.png",
+      "sha256": "8775fa7af46ea1e59c7043f9dce5acc599543ee3d7bca6d999e643e1bbc64bed",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/loading-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/gifts-production-media-binding/native-07-qualified/native/loading-430.png",
+      "sha256": "ba5a207211972d80886eef3d023e5bd52b807191411511953f957dc4619f37f0",
+      "assessment": "INSPECTED_EXACT_PIXELS",
+      "previously_viewed_original": "docs/mcr/evidence/gifts-production-media-binding/native-06-deadline-cleanup-failure/native/loading-430.png"
+    }
+  ]
+}

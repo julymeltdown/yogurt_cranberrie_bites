@@ -1,0 +1,12 @@
+{
+  "peaks": {
+    "pids": 4,
+    "rss": 1587462144,
+    "whole": 2099454787,
+    "temporary": 1363968,
+    "durable": 16384
+  },
+  "minimum_free_bytes": 17302769664,
+  "reason": null,
+  "last_sample_utc": "2026-11-04T16:21:08.489185+00:00"
+}

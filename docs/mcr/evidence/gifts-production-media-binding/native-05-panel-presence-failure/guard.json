@@ -1,0 +1,23 @@
+{
+  "peaks": {
+    "pids": 11,
+    "rss": 2554462208,
+    "whole": 2128663816,
+    "temporary": 30437376,
+    "durable": 200704,
+    "new_total": 30445568
+  },
+  "minimum_free_bytes": 29619294208,
+  "reason": null,
+  "last_sample_utc": "2026-11-04T16:51:58.001520+00:00",
+  "observed_groups": [
+    75481,
+    75482,
+    75499
+  ],
+  "live_pids": [
+    75300,
+    75469,
+    76213
+  ]
+}

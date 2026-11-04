@@ -1,0 +1,35 @@
+{
+  "job": "GIFTS-DETAIL-NATIVE-BROWSER2-202611041642Z",
+  "released_at": "2026-11-04T16:46:36.558712+00:00",
+  "live_job_processes": [],
+  "node_modules_exists": false,
+  "temporary_exists": false,
+  "listener_port": 62555,
+  "reuse_bind": "PASS",
+  "status": "FAIL_HARNESS_ASSERTION",
+  "native_contexts_passed": 0,
+  "production_source_unchanged": true,
+  "guard": {
+    "peaks": {
+      "pids": 12,
+      "rss": 2531393536,
+      "whole": 2128497008,
+      "temporary": 30269440,
+      "durable": 49152,
+      "new_total": 30382319
+    },
+    "minimum_free_bytes": 14470905856,
+    "reason": null,
+    "last_sample_utc": "2026-11-04T16:45:13.302085+00:00",
+    "observed_groups": [
+      45228,
+      45229,
+      45327
+    ],
+    "live_pids": [
+      45104,
+      45200,
+      45681
+    ]
+  }
+}

@@ -1,0 +1,1349 @@
+{
+  "peaks": {
+    "pids": 13,
+    "rss": 2613542912,
+    "whole": 2135114013,
+    "temporary": 32681984,
+    "durable": 2691072,
+    "new_total": 32792576,
+    "other": 0
+  },
+  "minimum_free_bytes": 31546585088,
+  "reason": null,
+  "last_sample_utc": "2026-11-04T17:06:03.074027+00:00",
+  "observed_processes": {
+    "88684": {
+      "parent": 49590,
+      "group": 88684,
+      "uid": 501,
+      "rss": 25680,
+      "started": "Thu Nov 5 02:05:12 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python frontend/src/features/gift-discovery/__tests__/gift-detail-media/native_round.py /private/tmp/mcr-gifts-detail-native-01 GIFTS-REPORT-CLEANUP-BROWSER2-202611041704Z 09ade32c687bb6b38e5dd80d221a005aa9beaedb 2026-11-04T17:05:12.146320+00:00"
+    },
+    "88952": {
+      "parent": 88684,
+      "group": 88684,
+      "uid": 501,
+      "rss": 28736,
+      "started": "Thu Nov 5 02:05:13 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/native_round.py guard /private/tmp/mcr-gifts-detail-native-01 88684 1793812032.14632 1793812092.14632"
+    },
+    "88954": {
+      "parent": 88684,
+      "group": 88684,
+      "uid": 501,
+      "rss": 12560,
+      "started": "Thu Nov 5 02:05:13 2026",
+      "command": "(git)"
+    },
+    "88955": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:13 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "88967": {
+      "parent": 88684,
+      "group": 88967,
+      "uid": 501,
+      "rss": 1002032,
+      "started": "Thu Nov 5 02:05:13 2026",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs"
+    },
+    "88984": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:13 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "88989": {
+      "parent": 88967,
+      "group": 88989,
+      "uid": 501,
+      "rss": 252016,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --remote-debugging-pipe --no-startup-window"
+    },
+    "89007": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 161344,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708988185955192"
+    },
+    "89008": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 131632,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708989122997041"
+    },
+    "89010": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 84960,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708990060038890"
+    },
+    "89011": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 93520,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "(Google Chrome He)"
+    },
+    "89019": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 191104,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=155482059135 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708991934122588"
+    },
+    "89020": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89022": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103568,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=155482086914 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708993808206286"
+    },
+    "89023": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 464688,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=155482087297 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708992871164437"
+    },
+    "89050": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:14 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89070": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:15 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89186": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2256,
+      "started": "Thu Nov 5 02:05:15 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89286": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89325": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 37232,
+      "started": "Thu Nov 5 02:05:16 2026",
+      "command": "(Google Chrome He)"
+    },
+    "89327": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89365": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:17 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89371": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 186912,
+      "started": "Thu Nov 5 02:05:17 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=11 --launch-time-ticks=155484992950 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708996619331833"
+    },
+    "89373": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103488,
+      "started": "Thu Nov 5 02:05:17 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=13 --launch-time-ticks=155485015048 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708998493415531"
+    },
+    "89374": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 432384,
+      "started": "Thu Nov 5 02:05:17 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=12 --launch-time-ticks=155485015471 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708997556373682"
+    },
+    "89400": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:17 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89431": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:18 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89529": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:18 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89599": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:19 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89671": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:19 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89752": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:19 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89777": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189728,
+      "started": "Thu Nov 5 02:05:20 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=14 --launch-time-ticks=155487719323 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190708999430457380"
+    },
+    "89782": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103104,
+      "started": "Thu Nov 5 02:05:20 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=16 --launch-time-ticks=155487739704 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709001304541078"
+    },
+    "89783": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 420880,
+      "started": "Thu Nov 5 02:05:20 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=15 --launch-time-ticks=155487740168 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709000367499229"
+    },
+    "89811": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2304,
+      "started": "Thu Nov 5 02:05:20 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89968": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:20 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "89996": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:21 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90096": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2272,
+      "started": "Thu Nov 5 02:05:21 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90227": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:22 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90239": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189728,
+      "started": "Thu Nov 5 02:05:22 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=17 --launch-time-ticks=155490191408 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709002241582927"
+    },
+    "90243": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 105280,
+      "started": "Thu Nov 5 02:05:22 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=19 --launch-time-ticks=155490216571 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709004115666625"
+    },
+    "90244": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 426880,
+      "started": "Thu Nov 5 02:05:22 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=18 --launch-time-ticks=155490216991 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709003178624776"
+    },
+    "90255": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2256,
+      "started": "Thu Nov 5 02:05:22 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90279": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:23 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90304": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:23 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90328": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:24 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90349": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2256,
+      "started": "Thu Nov 5 02:05:24 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90382": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:25 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90387": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189856,
+      "started": "Thu Nov 5 02:05:25 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=20 --launch-time-ticks=155492859651 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709005052708474"
+    },
+    "90388": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103504,
+      "started": "Thu Nov 5 02:05:25 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=22 --launch-time-ticks=155492882334 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709006926792172"
+    },
+    "90389": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 421216,
+      "started": "Thu Nov 5 02:05:25 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=21 --launch-time-ticks=155492882803 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709005989750323"
+    },
+    "90399": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:25 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90429": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:25 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90439": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:26 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90470": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:26 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90475": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:27 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90478": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189232,
+      "started": "Thu Nov 5 02:05:27 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=23 --launch-time-ticks=155495191379 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709007863834021"
+    },
+    "90479": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103600,
+      "started": "Thu Nov 5 02:05:27 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=25 --launch-time-ticks=155495226581 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709009737917719"
+    },
+    "90480": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 425488,
+      "started": "Thu Nov 5 02:05:27 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=24 --launch-time-ticks=155495227141 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709008800875870"
+    },
+    "90483": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:27 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90580": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2288,
+      "started": "Thu Nov 5 02:05:28 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90735": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:28 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90790": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:29 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90808": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:29 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90813": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 187392,
+      "started": "Thu Nov 5 02:05:30 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=26 --launch-time-ticks=155497666479 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709010674959568"
+    },
+    "90814": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:30 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90815": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103584,
+      "started": "Thu Nov 5 02:05:30 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=28 --launch-time-ticks=155497689652 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709012549043266"
+    },
+    "90816": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 428432,
+      "started": "Thu Nov 5 02:05:30 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=27 --launch-time-ticks=155497690114 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709011612001417"
+    },
+    "90817": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:30 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90826": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:30 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90833": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:31 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90859": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:31 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "90976": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:32 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91007": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189536,
+      "started": "Thu Nov 5 02:05:32 2026",
+      "command": "(Google Chrome He)"
+    },
+    "91008": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103392,
+      "started": "Thu Nov 5 02:05:32 2026",
+      "command": "(Google Chrome He)"
+    },
+    "91009": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 421024,
+      "started": "Thu Nov 5 02:05:32 2026",
+      "command": "(Google Chrome He)"
+    },
+    "91010": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:32 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91028": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:33 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91035": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:33 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91221": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:34 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91275": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:34 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91280": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:35 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91286": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 187536,
+      "started": "Thu Nov 5 02:05:35 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=32 --launch-time-ticks=155502832362 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709016297210662"
+    },
+    "91287": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103584,
+      "started": "Thu Nov 5 02:05:35 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=34 --launch-time-ticks=155502849395 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709018171294360"
+    },
+    "91288": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 421344,
+      "started": "Thu Nov 5 02:05:35 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=33 --launch-time-ticks=155502849826 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709017234252511"
+    },
+    "91292": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:35 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91297": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:36 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91311": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:05:36 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91332": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:05:36 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91355": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:37 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91391": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 187248,
+      "started": "Thu Nov 5 02:05:37 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=35 --launch-time-ticks=155505476029 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709019108336209"
+    },
+    "91392": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103536,
+      "started": "Thu Nov 5 02:05:37 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=37 --launch-time-ticks=155505491921 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709020982419907"
+    },
+    "91393": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 421568,
+      "started": "Thu Nov 5 02:05:37 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=36 --launch-time-ticks=155505492349 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709020045378058"
+    },
+    "91394": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:37 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91581": {
+      "parent": 88989,
+      "group": 91581,
+      "uid": 501,
+      "rss": 0,
+      "started": "Thu Nov 5 02:05:38 2026",
+      "command": "<defunct>"
+    },
+    "91601": {
+      "parent": 91581,
+      "group": 91581,
+      "uid": 501,
+      "rss": 12960,
+      "started": "Thu Nov 5 02:05:38 2026",
+      "command": "/Users/lhs/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/GoogleUpdater.app/Contents/MacOS/GoogleUpdater --wake"
+    },
+    "91636": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2304,
+      "started": "Thu Nov 5 02:05:38 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91742": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:38 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91753": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:39 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91762": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:39 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91769": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 0,
+      "started": "Thu Nov 5 02:05:40 2026",
+      "command": "(Google Chrome He)"
+    },
+    "91770": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 0,
+      "started": "Thu Nov 5 02:05:40 2026",
+      "command": "(Google Chrome He)"
+    },
+    "91771": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 0,
+      "started": "Thu Nov 5 02:05:40 2026",
+      "command": "(Google Chrome He)"
+    },
+    "91777": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:40 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91792": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:40 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91795": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:05:41 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91907": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:05:41 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91928": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:42 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91931": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:42 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91932": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189904,
+      "started": "Thu Nov 5 02:05:42 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=41 --launch-time-ticks=155510231368 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709024730587303"
+    },
+    "91933": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103536,
+      "started": "Thu Nov 5 02:05:42 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=43 --launch-time-ticks=155510263204 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709026604671001"
+    },
+    "91934": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 436576,
+      "started": "Thu Nov 5 02:05:42 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=42 --launch-time-ticks=155510263679 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709025667629152"
+    },
+    "91943": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:43 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91966": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:43 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "91970": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:05:43 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92192": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:05:44 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92212": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:44 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92224": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:45 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92225": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189520,
+      "started": "Thu Nov 5 02:05:45 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=44 --launch-time-ticks=155512994991 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709027541712850"
+    },
+    "92226": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 102816,
+      "started": "Thu Nov 5 02:05:45 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=46 --launch-time-ticks=155513016440 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709029415796548"
+    },
+    "92227": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 423472,
+      "started": "Thu Nov 5 02:05:45 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=45 --launch-time-ticks=155513016958 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709028478754699"
+    },
+    "92228": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:45 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92235": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:46 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92252": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:46 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92267": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:47 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92268": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:47 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92278": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 189520,
+      "started": "Thu Nov 5 02:05:47 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=47 --launch-time-ticks=155515436395 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709030352838397"
+    },
+    "92279": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 104752,
+      "started": "Thu Nov 5 02:05:47 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=49 --launch-time-ticks=155515460587 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709032226922095"
+    },
+    "92280": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 424592,
+      "started": "Thu Nov 5 02:05:47 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=48 --launch-time-ticks=155515461148 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709031289880246"
+    },
+    "92283": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 02:05:47 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92367": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:48 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92562": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:48 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92638": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92653": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92656": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:50 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92663": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 186752,
+      "started": "Thu Nov 5 02:05:50 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=50 --launch-time-ticks=155518115505 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709033163963944"
+    },
+    "92664": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 103312,
+      "started": "Thu Nov 5 02:05:50 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=52 --launch-time-ticks=155518140716 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709035038047642"
+    },
+    "92665": {
+      "parent": 88989,
+      "group": 88989,
+      "uid": 501,
+      "rss": 418320,
+      "started": "Thu Nov 5 02:05:50 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-gifts-detail-native-01/work/playwright_chromiumdev_profile-YFa7J7 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=51 --launch-time-ticks=155518141158 --shared-files --field-trial-handle=1718379636,r,10916034865723833737,5455228419793724364,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,14732924418962039570,8109073986447728990,4 --trace-process-track-uuid=3190709034101005793"
+    },
+    "92666": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:50 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92669": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:51 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92684": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:51 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92700": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:52 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92789": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:52 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92798": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:53 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92809": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:53 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92812": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:53 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92853": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2240,
+      "started": "Thu Nov 5 02:05:54 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92895": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:54 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "92902": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:55 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93013": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:55 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93058": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93140": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93163": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93164": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:57 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93173": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2256,
+      "started": "Thu Nov 5 02:05:57 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93260": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:58 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93267": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:58 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93268": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:59 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93359": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:05:59 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93427": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:06:00 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93463": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:06:00 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93567": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:06:01 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93585": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2208,
+      "started": "Thu Nov 5 02:06:01 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93610": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:06:01 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93611": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 02:06:02 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "93626": {
+      "parent": 88952,
+      "group": 88684,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 02:06:02 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    }
+  },
+  "live_pids": [
+    88684,
+    88952,
+    93626
+  ]
+}

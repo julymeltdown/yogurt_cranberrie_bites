@@ -1,0 +1,15 @@
+{
+  "classification": "TEST_ONLY",
+  "realService": false,
+  "status": "FAIL",
+  "errors": [],
+  "cases": [],
+  "listenerPort": 5173,
+  "diagnostic": {
+    "width": 360,
+    "scenario": "direct",
+    "state": null,
+    "text": "Opening your event…"
+  },
+  "failure": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'state')\n    at eval (eval at evaluate (:303:30), <anonymous>:1:37)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at state (/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs:25:30)\n    at expect.poll.timeout (/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs:30:44)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs:30:7"
+}

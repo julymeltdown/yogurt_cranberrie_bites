@@ -1,0 +1,16 @@
+{
+  "job": "GIFTS-MEDIA-DETAIL-NATIVE-BROWSER2-202611041624Z",
+  "source_revision": "3cf6774b9d683913e624ae69ebfea51c7a93f746",
+  "accepted_at": "2026-11-04T16:24:09.841242+00:00",
+  "observed_free_bytes": 16866349056,
+  "required_start_free_bytes": 17179869184,
+  "status": "NOT_RUN_STARTUP_FLOOR",
+  "failure": "AssertionError: start disk floor",
+  "no_workload_created": true,
+  "prefix_exists": false,
+  "dependency_link_exists": false,
+  "listener_port": null,
+  "port_reuse_bind": "NOT_APPLICABLE_NO_LISTENER_CREATED",
+  "released_at": "2026-11-04T16:24:36.690603+00:00",
+  "current_free_bytes": 15904813056
+}

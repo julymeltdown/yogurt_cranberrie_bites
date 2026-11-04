@@ -1,0 +1,5 @@
+{
+  "port": 5173,
+  "reuse_bind": "PASS",
+  "failure": "fixture side-effect CSS imports used original relative depth"
+}

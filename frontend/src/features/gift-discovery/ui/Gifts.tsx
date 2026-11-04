@@ -138,13 +138,22 @@ function GiftCollections({ controller, state, places, renderGiftImage }: {
     <ShellLink id="gift-own" to="/gifts/mine">My gifts →</ShellLink></footer></>
 }
 
-export function GiftDetail({ controller, giveawayId, places = [] }: { controller: GiftDiscoveryController; giveawayId: string; places?: readonly GiftPlaceOption[] }) {
+export function GiftDetail({ controller, giveawayId, places = [], renderGiftImage }: {
+  controller: GiftDiscoveryController; giveawayId: string; places?: readonly GiftPlaceOption[]; renderGiftImage?: RenderGiftImage
+}) {
   const state = useGifts(controller), key = JSON.stringify(state.context?.scope)
   useEffect(() => { controller.select(giveawayId) }, [controller, giveawayId, key])
   return <section className="gifts-view" aria-label="Giveaway detail"><GiftAccess state={state}>
     <ShellLink id="gift-back" to="/gifts">← All giveaways</ShellLink>
     <GiftResult resource={state.selectedId === giveawayId ? state.detail : { phase: 'loading', data: null, failure: null, retryAt: null }} now={state.now} label="giveaway" retry={() => void controller.retryDetail()}>{gift => <>
       <header className="gift-detail-heading"><p className="gift-eyebrow">{giveawayStatus(gift, state.now)}</p><h2>{gift.title}</h2><p>Shared by {gift.owner.display_name}</p></header>
+      <div className="gift-detail-media" role="group" aria-label="Giveaway photo" key={`${key}:${gift.giveaway_id}:${gift.image_media_id}`}>
+        {gift.image_media_id === null ? <p>No photo</p>
+          : state.context && renderGiftImage
+            ? renderGiftImage({ mediaId: gift.image_media_id, giveawayId: gift.giveaway_id, scope: state.context.scope, alt: gift.title })
+              ?? <p>Image access unavailable.</p>
+            : <p>Image access unavailable.</p>}
+      </div>
       <p className="gift-description">{gift.description || 'No item description was added.'}</p>
       <dl className="gift-facts"><div><dt>Stock</dt><dd><strong>{gift.available} remaining</strong> of {gift.quantity_total}</dd></div>
         <div><dt>Pickup window</dt><dd><GiftTime value={gift.pickup_starts_at} /><br />to <GiftTime value={gift.pickup_ends_at} /></dd></div>

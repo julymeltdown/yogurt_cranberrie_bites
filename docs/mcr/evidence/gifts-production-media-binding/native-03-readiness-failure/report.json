@@ -1,0 +1,73 @@
+{
+  "job": "GIFTS-DETAIL-NATIVE-BROWSER2-202611041642Z",
+  "start_floor_bytes": 12884901888,
+  "new_total_limit_bytes": 268435456,
+  "source_revision": "9e6037c36bcd2e438cd617a324ccaa9707cbd914",
+  "accepted_at": "2026-11-04T16:43:31.835952+00:00",
+  "work_deadline_utc": 1793810731.835952,
+  "hard_deadline_utc": 1793810791.835952,
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs"
+      ],
+      "started_at": "2026-11-04T16:44:11.350670+00:00",
+      "exit_code": 0,
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs"
+      ],
+      "started_at": "2026-11-04T16:44:11.391953+00:00",
+      "exit_code": 1,
+      "log": "2.log"
+    }
+  ],
+  "failure": "command 2 exited 1",
+  "elapsed_seconds": 2.5181559170014225,
+  "guard": {
+    "peaks": {
+      "pids": 12,
+      "rss": 1920434176,
+      "whole": 2128034444,
+      "temporary": 29859840,
+      "durable": 16384,
+      "new_total": 29919755
+    },
+    "minimum_free_bytes": 14524923904,
+    "reason": null,
+    "last_sample_utc": "2026-11-04T16:44:13.699425+00:00",
+    "observed_groups": [
+      40639,
+      40642,
+      40666
+    ],
+    "live_pids": [
+      40498,
+      40624,
+      40909
+    ]
+  },
+  "retained_dependencies": "ROOT_READ_ONLY_PRESERVED_TEMP_LINK_REMOVED",
+  "own_temp_removed": true,
+  "charged_carry_paths": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/fe34-runtime-preferences",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/runtime-preferences-root",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/world-runtime-preferences",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/community-authority",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/community-adoption",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/world/preferences",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/app/community-authority",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/app/community-adoption",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules"
+  ],
+  "git_bytes": 1890956,
+  "carry_bytes": 2098166412,
+  "finished_at": "2026-11-04T16:44:13.743691+00:00"
+}

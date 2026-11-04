@@ -1,0 +1,4 @@
+{
+  "port": 64652,
+  "reuse_bind": "PASS"
+}

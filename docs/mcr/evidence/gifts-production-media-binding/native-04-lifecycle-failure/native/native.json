@@ -1,0 +1,128 @@
+{
+  "classification": "TEST_ONLY",
+  "realService": false,
+  "status": "FAIL",
+  "errors": [],
+  "cases": [],
+  "listenerPort": 62555,
+  "diagnostic": {
+    "width": 360,
+    "scenario": "direct",
+    "state": {
+      "scenario": "enabled",
+      "capabilityMode": "TEST_ONLY synthetic capabilities",
+      "classification": "TEST_ONLY",
+      "policy": {
+        "classification": "TEST_ONLY",
+        "evidence": "Synthetic native fixture, not measured platform guarantees",
+        "maxAgeMs": 30000,
+        "uncertaintyMs": 1000,
+        "maxElapsedRate": 1.01,
+        "maxObservationGapMs": 5000
+      },
+      "path": "/gifts/00000000-0000-4000-8000-000000000005",
+      "published": true,
+      "theme": {
+        "selected": "REVENGE",
+        "pending": null,
+        "phase": "ready",
+        "message": "",
+        "saved": false
+      },
+      "camera": {
+        "following": true,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 82.72000000000003,
+          "scrollY": 105,
+          "width": 348,
+          "height": 791
+        }
+      },
+      "phase": "suspended",
+      "entities": 0,
+      "avatarPin": {
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+      },
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET",
+          "authorized": false,
+          "aborted": false
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "authorized": false,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000005",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000052",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000052/content",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET",
+          "authorized": true,
+          "aborted": false
+        }
+      ],
+      "sockets": 0,
+      "activeSockets": 0,
+      "socketPeak": 0,
+      "mediaMode": "ready",
+      "createdUrls": [
+        "blob:http://127.0.0.1:62555/a1e0936a-a2db-4837-bf79-6614b2a492b8",
+        "blob:http://127.0.0.1:62555/0de94467-3a55-4057-bda7-5fcf04a5bfba",
+        "blob:http://127.0.0.1:62555/570c49d7-0afd-42fd-9e57-20f408f01779",
+        "blob:http://127.0.0.1:62555/b0e3bbe2-8608-42c0-80a8-27506978e1cd",
+        "blob:http://127.0.0.1:62555/0f30a459-4372-4977-8fda-eb8a73d5f1e2",
+        "blob:http://127.0.0.1:62555/821539dc-0596-41aa-8cbe-c82bf6d5d403",
+        "blob:http://127.0.0.1:62555/41588e5f-4934-4341-a790-13fe961ca33f"
+      ],
+      "revokedUrls": [],
+      "pending": 0,
+      "mediaId": "00000000-0000-4000-8000-000000000052",
+      "giftId": "00000000-0000-4000-8000-000000000005",
+      "canvases": 1,
+      "disposed": false
+    },
+    "text": "Skip to content\nGIVEAWAY\n← All giveaways\n\nOPEN · PICKUP LATER\n\nFan badges\n\nShared by Fixture fan\n\nHandmade badges\n\nStock\n1 remaining of 3\nPickup window\n7 Nov, 17:00 KST\nto 7 Nov, 18:00 KST\nPublic place\nEvent place reference\nView public place reference\n\nCheck the current place information before travelling. This public reference does not confirm arrival or disclose private pickup instructions.\n\nReservation availability\n\nYour current reservation eligibility has not been confirmed.\n\nReserve unavailable\nReview reservation\n\nOpen the reservation journey to confirm current eligibility. No item has been reserved from this view.\n\nCheck my gifts →"
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at file:///Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/native.mjs:39:14"
+}
