@@ -1,0 +1,27 @@
+✔ policy observations require the actual event/stream and never expose an authentication frame (0.853042ms)
+✔ malformed, oversized and unsupported policy frames do not become baseline evidence (0.12225ms)
+✔ HTTP projection removes query/identities and audit refuses private fields with bounded storage (0.630167ms)
+✔ admits only a bounded explicit default-app subset, never provider/WS/full-gate flags (0.724542ms)
+✔ Enrollment provenance rejects legacy status normalization, production approval and invented identity claims (0.8265ms)
+✔ release and explicit social resources are required, without interpreting third-role labels as age proof (0.448459ms)
+✔ binds canonical private origin/event/producer and actual producer-supplied local configuration (0.19125ms)
+✔ startup requires cleanup headroom while live guard preserves the original expiry without early renewal (0.124708ms)
+✔ public define contains exactly validated producer data, with no default movement or environment fallback (0.10025ms)
+✔ frozen actual-main readset pins the requested bridge and excludes old harness/tests (23076.562042ms)
+✔ borrowed file guard rejects mutation/symlinks and does not rewrite a frozen source tree (1.553334ms)
+✔ source path admission excludes traversal, fixture entrypoints and unrelated private files (0.077709ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23128.757125
+{"name":"new-unit","exit":0,"signal":null,"actualIN03":"NOT_RUN"}
+e2e/real/social/default-app/observe.ts(71,18): error TS2339: Property 'reason' does not exist on type '{ type: string; streamId: any; matches: boolean; } | { reason?: any; type: any; streamId: any; revision: any; matches: boolean; }'.
+  Property 'reason' does not exist on type '{ type: string; streamId: any; matches: boolean; }'.
+e2e/real/social/default-app/observe.ts(72,18): error TS2339: Property 'reason' does not exist on type '{ type: string; streamId: any; matches: boolean; } | { reason?: any; type: any; streamId: any; revision: any; matches: boolean; }'.
+  Property 'reason' does not exist on type '{ type: string; streamId: any; matches: boolean; }'.
+e2e/real/social/default-app/playwright.config.ts(7,66): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+{"name":"new-types","exit":2,"signal":null,"actualIN03":"NOT_RUN"}

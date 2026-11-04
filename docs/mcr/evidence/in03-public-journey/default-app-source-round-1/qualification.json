@@ -1,0 +1,613 @@
+{
+  "kind": "NEW_DEFAULT_APP_SOURCE_QUALIFICATION_ONLY",
+  "status": "SOURCE_QUALIFIED",
+  "actualIN03": "NOT_RUN",
+  "cacheCriterion": "CACHE_NOT_RUN",
+  "source": "be49ca6562d5ff2b66682dc90d7600c9713709e5",
+  "unitSource": "ac5b7a7c3837451b61c8a975e8eeb10a35e95f95",
+  "base": "7e14cac1f6b4941a15723fef4fc2a885eb4b6529",
+  "frozenApplicationBridge": "37add6d996eacb7674c1c220150870d7090d5e09",
+  "contractRevision": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+  "enrollmentProducerSource": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+  "applicationReleaseSource": "db1bacda16c1e0cf69c7a00b9729e277e9e31863",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "nodeVersion": "24.22.2",
+  "retainedLockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "acceptance": {
+    "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+    "run": "default-app-source-2343-attempt1",
+    "source": "ac5b7a7c3837451b61c8a975e8eeb10a35e95f95",
+    "acceptedAt": "2026-11-04T23:42:35.121165+00:00",
+    "activeUntil": "2026-11-04T23:46:35.121165+00:00",
+    "hardUntil": "2026-11-04T23:47:35.121165+00:00",
+    "wholeCapBytes": 3758096384,
+    "maximumNewBytes": 134217728,
+    "priorWholeMaxBytes": 3070668800,
+    "initialFreeFloorBytes": 11811160064,
+    "residualFreeFloorBytes": 9663676416,
+    "liveFreeFloorBytes": 8589934592,
+    "otherConservativeReserveBytes": 3221225472,
+    "processCap": 24,
+    "rssCapBytes": 4294967296,
+    "capacitySha256": "098b2a21a6f066469f9e88842b0f44b86ca70ca826580828ac4a7fb1d3cfd8cb",
+    "primarySha256": "fe6138b3172be3b1464b27d0eba19578e03e5ca88ea683a8eb594c6e2af98290",
+    "guardianSha256": "66af4c8e2865a24e65da48898a84f42c23bda140f588d3c967a22d325b239dc9",
+    "actualPreAcceptFreeBytes": 14647980032,
+    "residualAfterAllMaximumNewBytes": 11292536832,
+    "actualIN03": "NOT_RUN"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "source": "ac5b7a7c3837451b61c8a975e8eeb10a35e95f95",
+      "continuation": false,
+      "commands": [
+        {
+          "name": "new-unit",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "new-types",
+          "exit": 2,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        }
+      ],
+      "primary": {
+        "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+        "source": "ac5b7a7c3837451b61c8a975e8eeb10a35e95f95",
+        "exit": 2,
+        "violations": [],
+        "actualFULL": 1793835791.723847,
+        "withinFULL": true,
+        "remainingOwned": [],
+        "linkPresent": false,
+        "cachePresent": false,
+        "tmpPresent": false,
+        "completeWholeMaxBytes": 3070722048,
+        "peakAllProcesses": 8,
+        "peakAllRssBytes": 628637696,
+        "freeBytes": 14564376576,
+        "guardianIntervalMs": 250
+      },
+      "independent": {
+        "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+        "source": "ac5b7a7c3837451b61c8a975e8eeb10a35e95f95",
+        "exit": 2,
+        "actualFULL": 1793835791.221048,
+        "withinFULL": true,
+        "initialWholeBytes": 3070705664,
+        "completeWholeMaxBytes": 3070717952,
+        "violations": [],
+        "ownedPidsObserved": [
+          280,
+          627,
+          1115,
+          1129,
+          1131,
+          1174,
+          1199,
+          1614,
+          1616,
+          1991,
+          1992,
+          2510,
+          2511,
+          2760,
+          3009,
+          3010,
+          3433,
+          3437,
+          3438,
+          3674,
+          3675,
+          3676,
+          3919,
+          3923,
+          3924,
+          4236,
+          4240,
+          4480,
+          4481,
+          4482,
+          4699,
+          4703,
+          4704,
+          4951,
+          4952,
+          4956,
+          5371,
+          5375,
+          5376,
+          5585,
+          5589,
+          5809,
+          5810,
+          5814,
+          6080,
+          6083,
+          6084,
+          6407,
+          6412,
+          6413,
+          6797,
+          6800,
+          6804,
+          7054,
+          7056,
+          7057,
+          7357,
+          7359,
+          7364,
+          7568,
+          7569,
+          7570,
+          7767,
+          7768,
+          7772,
+          7977,
+          7978,
+          7982,
+          8201,
+          8202,
+          8203,
+          8400,
+          8404,
+          8405,
+          8611,
+          8613,
+          8614,
+          8809,
+          8810,
+          9101,
+          9102,
+          9103,
+          9359,
+          9360,
+          9364,
+          9599,
+          9603,
+          9604,
+          9888,
+          9889,
+          9892,
+          10141,
+          10142,
+          10146,
+          10440,
+          10442,
+          10444,
+          10772,
+          10773,
+          10774,
+          11004,
+          11005,
+          11006,
+          11247,
+          11248,
+          11252,
+          12133,
+          12136,
+          12138,
+          12404,
+          12408,
+          12653,
+          12658,
+          12662,
+          12913,
+          12914,
+          12915,
+          13037,
+          13063,
+          13140,
+          13141
+        ],
+        "ownedGroupsObserved": [
+          1129
+        ],
+        "remainingOwned": [],
+        "linkPresent": false,
+        "cachePresent": false,
+        "tmpPresent": false,
+        "peakAllProcesses": 8,
+        "peakAllRssBytes": 626130944,
+        "freeBytes": 14564421632,
+        "guardianIntervalMs": 250
+      }
+    },
+    {
+      "attempt": 2,
+      "source": "92126c1bd1bdc3affbabe7e6cf959cb88752ba8d",
+      "continuation": true,
+      "commands": [
+        {
+          "name": "new-types",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "new-lint",
+          "exit": 1,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        }
+      ],
+      "primary": {
+        "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+        "source": "92126c1bd1bdc3affbabe7e6cf959cb88752ba8d",
+        "exit": 1,
+        "violations": [],
+        "actualFULL": 1793835844.697941,
+        "withinFULL": true,
+        "remainingOwned": [],
+        "linkPresent": false,
+        "cachePresent": false,
+        "tmpPresent": false,
+        "completeWholeMaxBytes": 3070980096,
+        "peakAllProcesses": 5,
+        "peakAllRssBytes": 398327808,
+        "freeBytes": 15416442880,
+        "guardianIntervalMs": 250
+      },
+      "independent": {
+        "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+        "source": "92126c1bd1bdc3affbabe7e6cf959cb88752ba8d",
+        "exit": 1,
+        "actualFULL": 1793835844.090524,
+        "withinFULL": true,
+        "initialWholeBytes": 3070922752,
+        "completeWholeMaxBytes": 3070976000,
+        "violations": [],
+        "ownedPidsObserved": [
+          22150,
+          22229,
+          22337,
+          22352,
+          22354,
+          22386,
+          22511,
+          22524,
+          22525
+        ],
+        "ownedGroupsObserved": [
+          22352
+        ],
+        "remainingOwned": [],
+        "linkPresent": false,
+        "cachePresent": false,
+        "tmpPresent": false,
+        "peakAllProcesses": 5,
+        "peakAllRssBytes": 746733568,
+        "freeBytes": 15428366336,
+        "guardianIntervalMs": 250
+      }
+    },
+    {
+      "attempt": 3,
+      "source": "be49ca6562d5ff2b66682dc90d7600c9713709e5",
+      "continuation": true,
+      "commands": [
+        {
+          "name": "new-types",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "new-lint",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "syntax-source.mjs",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "syntax-configuration.mjs",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "syntax-enrollment.mjs",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "syntax-serve.mjs",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "syntax-audit.mjs",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        },
+        {
+          "name": "syntax-check.mjs",
+          "exit": 0,
+          "signal": null,
+          "actualIN03": "NOT_RUN"
+        }
+      ],
+      "primary": {
+        "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+        "source": "be49ca6562d5ff2b66682dc90d7600c9713709e5",
+        "exit": 0,
+        "violations": [],
+        "actualFULL": 1793835877.760073,
+        "withinFULL": true,
+        "remainingOwned": [],
+        "linkPresent": false,
+        "cachePresent": false,
+        "tmpPresent": false,
+        "completeWholeMaxBytes": 3073425408,
+        "peakAllProcesses": 5,
+        "peakAllRssBytes": 416022528,
+        "freeBytes": 14811889664,
+        "guardianIntervalMs": 250
+      },
+      "independent": {
+        "allocation": "IN03-NEW-DRIVER-SOURCE-20261104T2343Z",
+        "source": "be49ca6562d5ff2b66682dc90d7600c9713709e5",
+        "exit": 0,
+        "actualFULL": 1793835877.068815,
+        "withinFULL": true,
+        "initialWholeBytes": 3073417216,
+        "completeWholeMaxBytes": 3073421312,
+        "violations": [],
+        "ownedPidsObserved": [
+          28830,
+          29010,
+          29135,
+          29136,
+          29137,
+          29163,
+          29190,
+          29191
+        ],
+        "ownedGroupsObserved": [
+          29136
+        ],
+        "remainingOwned": [],
+        "linkPresent": false,
+        "cachePresent": false,
+        "tmpPresent": false,
+        "peakAllProcesses": 4,
+        "peakAllRssBytes": 370343936,
+        "freeBytes": 14822912000,
+        "guardianIntervalMs": 250
+      }
+    }
+  ],
+  "pureCases": {
+    "passed": 12,
+    "failed": 0,
+    "replayed": false,
+    "unchangedFinalSourceBlobs": [
+      {
+        "path": "frontend/e2e/real/social/default-app/configuration.mjs",
+        "blob": "e4964fbc3f664fe62adc57693543c0a338c00956"
+      },
+      {
+        "path": "frontend/e2e/real/social/default-app/configuration.test.mjs",
+        "blob": "df243cbc9cb4a599c837a33d7f423b86a803d5c1"
+      },
+      {
+        "path": "frontend/e2e/real/social/default-app/audit.mjs",
+        "blob": "497a0b2fe3772e262bc5bb9a420b1f885251be40"
+      },
+      {
+        "path": "frontend/e2e/real/social/default-app/audit.test.mjs",
+        "blob": "9d8ed44fefaf4f8b0615c20ad605d935e269d7b1"
+      },
+      {
+        "path": "frontend/e2e/real/social/default-app/source.mjs",
+        "blob": "e70e246373c9a0a801718227992361687a0cb0bc"
+      },
+      {
+        "path": "frontend/e2e/real/social/default-app/source.test.mjs",
+        "blob": "9bc0b5cf46eae7ce281125400e83ad3a789cb52d"
+      },
+      {
+        "path": "frontend/e2e/real/social/default-app/enrollment.mjs",
+        "blob": "03dc53d225b03de2ef122ef8a9ed06ab00fd964c"
+      }
+    ]
+  },
+  "postimages": [
+    {
+      "path": "frontend/e2e/real/social/default-app/audit.mjs",
+      "mode": "100644",
+      "blob": "497a0b2fe3772e262bc5bb9a420b1f885251be40",
+      "sha256": "e9c65eb192b79c182b95f7b9a060de345f61e10d51195187edfaca6cb9cfedbb"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/audit.test.mjs",
+      "mode": "100644",
+      "blob": "9d8ed44fefaf4f8b0615c20ad605d935e269d7b1",
+      "sha256": "319f98d5afae26377c01a5e763b2d79a5d0ee5f77f527cc81a740985f35ac430"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/check.mjs",
+      "mode": "100644",
+      "blob": "428e0469b4c750d5ebc22e4f4372ed5b7874f4c6",
+      "sha256": "b76bccbe69afecb5e68600f9ba49448816c6ab22b84b0dd1931d2ddd9e88a796"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/configuration.mjs",
+      "mode": "100644",
+      "blob": "e4964fbc3f664fe62adc57693543c0a338c00956",
+      "sha256": "bacac1b75f1780b2fef28a10a386b0fe8de310298c3211d083a61d159446ae83"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/configuration.test.mjs",
+      "mode": "100644",
+      "blob": "df243cbc9cb4a599c837a33d7f423b86a803d5c1",
+      "sha256": "08a70877ca64b1c805b268c48a93e9042564a5ba7696623dc0652edc58f3da30"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/default-app.spec.ts",
+      "mode": "100644",
+      "blob": "921df6e84d828c8e1e8bb2bd1bb7d79023617950",
+      "sha256": "2044d034032ca0c9f1cb2e8a28d724656be6ac13fa5cb7694f7cdee18c6d4680"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/enrollment.mjs",
+      "mode": "100644",
+      "blob": "03dc53d225b03de2ef122ef8a9ed06ab00fd964c",
+      "sha256": "8f7661d1fa42a0b616cf10bb41217688b51fa2c8d46ae0070062b766029d8f0c"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/observe.ts",
+      "mode": "100644",
+      "blob": "ce992a4b4b55617971394aa63f6be1c48de3112d",
+      "sha256": "29dd79432cfad70c9ee70097293a73e5102de3ff3efc92c84d18c9fc5d932e03"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/playwright.config.ts",
+      "mode": "100644",
+      "blob": "fdef612bf4cf47a0f776a03d4ba953df29d2263e",
+      "sha256": "13d963050c59f966a0698042c6c39b2c6b919da377f9c35e8d52dfea85c83c5e"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/serve.mjs",
+      "mode": "100644",
+      "blob": "8241bdd7e11c403190e61c7f1d1cc22e0e686336",
+      "sha256": "c8fd9139f2b138911250e97809791f2d21a6a7f25de0bbd505125165d216fba1"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/social-ui.ts",
+      "mode": "100644",
+      "blob": "89f33548310c9e37f53920d21e3738254ea6b627",
+      "sha256": "56039e73d4fb954c874310071ad4a32ac253e0de76b429241a32542a248785e0"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/source.mjs",
+      "mode": "100644",
+      "blob": "e70e246373c9a0a801718227992361687a0cb0bc",
+      "sha256": "bf3023842b7475344535a48bfae45d7189ecf2f5d57174f15c7edaa58d6968a1"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/source.test.mjs",
+      "mode": "100644",
+      "blob": "9bc0b5cf46eae7ce281125400e83ad3a789cb52d",
+      "sha256": "17ac3e6a433de0c4aef21b04a704d88cc59fff8778789ecaa8586fabc34b1dcd"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/tsconfig.json",
+      "mode": "100644",
+      "blob": "d567a3e07569bdcfda9de9f9edf1f311424a7d5b",
+      "sha256": "82f75cfb6a78a10c16752bd1dbbd01afce8f1f83660ea0e4d7723718d113fc5a"
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/ui.ts",
+      "mode": "100644",
+      "blob": "eba342dfa61d5da39ca2f100e5460ef9a289e434",
+      "sha256": "1aaa971a9d189be5120f08b82c68b8ec317fa1145b1b002fe1f78e84d04f2f03"
+    }
+  ],
+  "readOnlyDependencies": [
+    {
+      "path": "frontend/e2e/real/social/admission.mjs",
+      "blob": "bb25ad05bab9ff4a73b74097d6759b5a7aff5a9c"
+    },
+    {
+      "path": "frontend/e2e/real/social/serve.mjs",
+      "blob": "90501c1a7f4b06b31703b7cec27347d2e6273170"
+    }
+  ],
+  "limits": [
+    "No actual browser/default-main execution or business-flow qualification.",
+    "No server, build, backend, database, install or new checkout.",
+    "No restricted-age/provider or unrelated/expired/revoked/blocked actual HTTP-denial proof.",
+    "No delayed-response closure or qualified live same-identity Query-cache observation.",
+    "Intro author/set/close/absence driver work remains open.",
+    "Actual runtime startup, cohort, scenario catalog, descriptor and finite window still absent at sealing."
+  ],
+  "repairNotes": [
+    "Attempt1:12 cases passed; TypeScript rejected optional metadata reason and possibly undefined process.getuid.",
+    "92126c1bd1bdc3affbabe7e6cf959cb88752ba8d fixes those guards; check.mjs resumes only new-types after unchanged pure cases.",
+    "Attempt2:types passed; denied-warning lint rejected redundant Promise.allSettled array spread.",
+    "be49ca6562d5ff2b66682dc90d7600c9713709e5 removes that spread; relevant types/lint/six syntax all passed without replaying unit cases."
+  ],
+  "commandDefinitions": {
+    "new-unit": [
+      "<pinned-node24>",
+      "--test",
+      "e2e/real/social/default-app/configuration.test.mjs",
+      "e2e/real/social/default-app/audit.test.mjs",
+      "e2e/real/social/default-app/source.test.mjs"
+    ],
+    "new-types": [
+      "<pinned-node24>",
+      "node_modules/typescript/bin/tsc",
+      "-p",
+      "e2e/real/social/default-app/tsconfig.json",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--pretty",
+      "false"
+    ],
+    "new-lint": [
+      "<pinned-node24>",
+      "node_modules/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "e2e/real/social/default-app/"
+    ],
+    "syntax-source.mjs": [
+      "<pinned-node24>",
+      "--check",
+      "e2e/real/social/default-app/source.mjs"
+    ],
+    "syntax-configuration.mjs": [
+      "<pinned-node24>",
+      "--check",
+      "e2e/real/social/default-app/configuration.mjs"
+    ],
+    "syntax-enrollment.mjs": [
+      "<pinned-node24>",
+      "--check",
+      "e2e/real/social/default-app/enrollment.mjs"
+    ],
+    "syntax-serve.mjs": [
+      "<pinned-node24>",
+      "--check",
+      "e2e/real/social/default-app/serve.mjs"
+    ],
+    "syntax-audit.mjs": [
+      "<pinned-node24>",
+      "--check",
+      "e2e/real/social/default-app/audit.mjs"
+    ],
+    "syntax-check.mjs": [
+      "<pinned-node24>",
+      "--check",
+      "e2e/real/social/default-app/check.mjs"
+    ]
+  },
+  "commandWorkingDirectory": "frontend",
+  "controllerWorkflow": [
+    "<pinned-node24>",
+    "frontend/e2e/real/social/default-app/check.mjs"
+  ],
+  "continuationEnvironment": {
+    "attempt1": {},
+    "attempt2": {
+      "MCR_DEFAULT_APP_CHECK_FROM": "new-types"
+    },
+    "attempt3": {
+      "MCR_DEFAULT_APP_CHECK_FROM": "new-types"
+    }
+  }
+}
