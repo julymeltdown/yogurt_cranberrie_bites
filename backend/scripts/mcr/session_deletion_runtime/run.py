@@ -21,7 +21,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import in03_stack_runtime as inherited
 from session_deletion_runtime.enrollment import adapters
-from session_deletion_runtime.scenario import exercise
+from session_deletion_runtime.scenario import exercise, survivors_after_restart
 
 
 def main(argv=None):
@@ -167,9 +167,14 @@ def main(argv=None):
             restarted_receipt = replay('restart')
             inherited.require(all(source_receipt[key]==restarted_receipt[key] for key in
                 ('command','snapshot','sourceBinding','fenceRevision')),'sessions-restart-exact-durable-receipt')
+            async def restarted_clients():
+                async with asyncio.timeout(max(.001,deadline-time.monotonic())):
+                    return await survivors_after_restart(stack,browser,probe_report,context['event'],
+                        context['rooms'],principals,browser.origin,argument('--allocation-id'))
+            restart_clients = asyncio.run(restarted_clients())
             outcome.update(result='SOURCE_AND_PHYSICAL_RESTART_PASS',physical_restart={
                 'before_postmaster_pid':before,'after_postmaster_pid':after,'same_system_identifier':True,
-                'direct_child_stops':stops,'exact_receipt_replay':'PASS'},
+                'direct_child_stops':stops,'exact_receipt_replay':'PASS','native_clients':restart_clients},
                 cancellation='ACTUAL_NATIVE_LOCK_WAIT_NO_ACK_EXPIRED_RETRY_AND_FRESH_REPLAY_PASS',
                 source_replay=source_receipt,restart_replay=restarted_receipt)
             super().__init__(stack)

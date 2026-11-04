@@ -10,8 +10,39 @@ import time
 from uuid import UUID
 
 
-async def exercise(stack, browser, report, event, rooms, principals, origin, allocation, deadline):
+async def real_runner(stack, browser, report, event, rooms, principals, origin, allocation):
     from world_capacity_support.scenarios import Runner
+    _, bootstrap = await asyncio.to_thread(browser.request, 'sessions-source-bootstrap',
+        f'/api/concert/events/{event}/bootstrap', method='GET', bearer=principals[0][2])
+    return Runner({
+        'allocation_id': allocation, 'gateway_url': stack.ports.url('api-gateway:http'),
+        'ws_url': 'ws://' + stack.ports.address('concert-service:world') + '/world-ws',
+        'browser_origin': origin, 'event_id': event, 'bootstrap': bootstrap, 'rooms': rooms,
+        'principals': [{'bearer': item[2], 'room_index': 0} for item in principals[:2]],
+        'schedule': {'arrival_concurrency': 2, 'operation_timeout_seconds': 20,
+                     'measurement_seconds': 1, 'total_timeout_seconds': 60, 'input_hz': 1},
+    }, False)
+
+
+async def survivors_after_restart(stack, browser, report, event, rooms, principals, origin, allocation):
+    from world_capacity_support.report import check
+    runner = await real_runner(stack,browser,report,event,rooms,principals[1:3],origin,allocation)
+    try:
+        await runner.prepare()
+        expected = {item[0] for item in principals[1:3]}
+        check(all(set(client.state.players)==expected for client in runner.clients),
+              'sessions-restarted-world-survivor-rosters')
+        status, _ = await runner.http('world-tickets',principals[0][2],
+            {'room_id': rooms[0]['room_id'], **dict(zip(
+                ('map_id','map_revision','avatar_manifest_id','avatar_manifest_version'),runner.pins))})
+        check(status in (401,403),'sessions-restarted-world-deleted-ticket-denied')
+        return {'actual_survivor_clients':len(runner.clients),'actual_native_rosters':'PASS',
+                'deleted_reconnect_status':status}
+    finally:
+        await asyncio.gather(*(client.stop() for client in runner.clients),return_exceptions=True)
+
+
+async def exercise(stack, browser, report, event, rooms, principals, origin, allocation, deadline):
     from world_capacity_support.report import check
 
     def budget():
@@ -31,17 +62,7 @@ async def exercise(stack, browser, report, event, rooms, principals, origin, all
     victim_user, _, victim_token = principals[0]
     survivor_user, _, _ = principals[1]
     actor = subject(victim_user)
-    _, bootstrap = await asyncio.to_thread(browser.request, 'sessions-source-bootstrap',
-        f'/api/concert/events/{event}/bootstrap', method='GET', bearer=victim_token)
-    config = {
-        'allocation_id': allocation, 'gateway_url': stack.ports.url('api-gateway:http'),
-        'ws_url': 'ws://' + stack.ports.address('concert-service:world') + '/world-ws',
-        'browser_origin': origin, 'event_id': event, 'bootstrap': bootstrap, 'rooms': rooms,
-        'principals': [{'bearer': item[2], 'room_index': 0} for item in principals[:2]],
-        'schedule': {'arrival_concurrency': 2, 'operation_timeout_seconds': 20,
-                     'measurement_seconds': 1, 'total_timeout_seconds': 60, 'input_hz': 1},
-    }
-    runner = Runner(config, False)
+    runner = await real_runner(stack,browser,report,event,rooms,principals[:2],origin,allocation)
     outcome = {'scope': 'ACTUAL_SERVING_SESSIONS_SOURCE_ROUND', 'result': 'FAIL',
                'physical_restart': 'NOT_RUN', 'cancellation': 'NOT_RUN',
                'whole_be42': 'NOT_CLAIMED', 'positive_identity_or_receipt_sql': False}
