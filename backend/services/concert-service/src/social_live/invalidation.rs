@@ -227,9 +227,8 @@ impl SocialInvalidationSink {
     }
 }
 
-#[async_trait]
-impl IdempotentInvalidationSink for SocialInvalidationSink {
-    async fn deliver(&self, d: &Delivery) -> Result<(), DeliveryFailure> {
+impl SocialInvalidationSink {
+    async fn deliver_round(&self, d: &Delivery) -> Result<(), DeliveryFailure> {
         if d.kind != InvalidationKind::ResourceInvalidated || d.receipt.is_none() {
             return Err(DeliveryFailure::Rejected);
         }
@@ -266,6 +265,18 @@ impl IdempotentInvalidationSink for SocialInvalidationSink {
         } else {
             Ok(())
         }
+    }
+}
+
+#[async_trait]
+impl IdempotentInvalidationSink for SocialInvalidationSink {
+    async fn deliver(&self, d: &Delivery) -> Result<(), DeliveryFailure> {
+        // Includes pool/lock waits and commit, below the shared ten-second
+        // worker budget. Cancellation drops the SQL transaction; already sent
+        // removal frames remain safe and are deduplicated on retry.
+        tokio::time::timeout(Duration::from_secs(8), self.deliver_round(d))
+            .await
+            .map_err(retry)?
     }
 }
 
