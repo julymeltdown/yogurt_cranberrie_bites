@@ -6,6 +6,7 @@ from copy import deepcopy
 import hashlib
 import importlib.util
 import json
+import re
 from pathlib import Path
 import sys
 sys.dont_write_bytecode = True
@@ -16,6 +17,26 @@ SCHEMA_KEYS = {'$ref','type','properties','required','additionalProperties','ite
 
 def dump(v): return json.dumps(v, sort_keys=True, ensure_ascii=False, allow_nan=False, indent=2)+'\n'
 def sha(raw): return hashlib.sha256(raw).hexdigest()
+def uri_pattern():
+    # Port the already-pinned oracle expression; no new frontend dependency.
+    import rfc3986_validator
+    if rfc3986_validator.__version__!='0.1.1':raise ValueError('C07 URI oracle version mismatch')
+    source=rfc3986_validator.URI_RE
+    result=[];inside=False;escaped=False;comment=False
+    for char in source:
+        if comment:
+            if char=='\n':comment=False
+            continue
+        if escaped:result.extend(('\\',char));escaped=False;continue
+        if char=='\\':escaped=True;continue
+        if char=='[':inside=True
+        if char==']':inside=False
+        if not inside and char=='#':comment=True;continue
+        if not inside and char.isspace():continue
+        result.append(char)
+    if escaped:raise ValueError('C07 malformed URI oracle expression')
+    # Python accepts {,n}; ECMAScript spells the same bound {0,n}.
+    return '^(?:'+re.sub(r'\{,([0-9]+)\}',r'{0,\1}',''.join(result))+')$',sha(source.encode())
 def load(path):
     def pairs(rows):
         value = {}
@@ -130,32 +151,44 @@ def render(include_fixtures=True, probe=None):
     doc=normalized(source)
     for s in source['components']['schemas'].values():check_schema(s)
     inputs={str(p.relative_to(ROOT)):sha(p.read_bytes()) for p in sorted((ROOT/'contracts').rglob('*.json')) if not any(str(p.relative_to(ROOT)).startswith(q) for q in ('contracts/fixtures/c07/','contracts/generated/api-client/'))}
-    inputs.update({str(p.relative_to(ROOT)):sha(p.read_bytes()) for p in sorted((HERE/'templates').glob('*.ts'))})
+    inputs.update({str(p.relative_to(ROOT)):sha(p.read_bytes()) for p in sorted((HERE/'templates').iterdir()) if p.is_file()})
     for name in ('scripts/mcr/contracts/qa01-coverage/witness.py','scripts/mcr/validate-core.py','scripts/mcr/requirements-contracts.txt','frontend/package.json','frontend/pnpm-lock.yaml'):
         inputs[name]=sha((ROOT/name).read_bytes())
     inputs['scripts/mcr/generate-api-client.py']=sha(Path(__file__).read_bytes())
+    pattern,pattern_sha=uri_pattern()
+    inputs['dependency:rfc3986-validator@0.1.1/URI_RE']=pattern_sha
     outputs={}
     files={'types.ts':types(doc),'document.ts':'// Generated C07 public contract. No live authority.\nexport const document = '+dump(doc).rstrip()+'\n','runtime.ts':(HERE/'templates/runtime.ts').read_text(),'mock.ts':(HERE/'templates/mock.ts').read_text(),'index.ts':"export { createClient, ContractError, schema, schemas, accepts } from './runtime.js'\nexport type { ClientOptions, CallOptions } from './runtime.js'\nexport type { Schemas, Operations } from './types.js'\nexport { FixtureClock, createMock } from './mock.js'\nexport type { MockStep } from './mock.js'\n"}
+    files['formats.ts']='// Generated from rfc3986-validator 0.1.1; see THIRD_PARTY_NOTICES.txt.\nexport const uriPattern = '+json.dumps(pattern)+'\n'
+    files['THIRD_PARTY_NOTICES.txt']=(HERE/'templates/rfc3986-LICENSE.txt').read_text()
     for prefix in CLIENTS:
         for name,value in files.items():outputs[prefix+'/'+name]=value
     if include_fixtures:
         sys.path.insert(0,str(ROOT/'scripts/mcr/contracts/qa01-coverage'))
-        from witness import Witnesses
+        from witness import Witnesses, nodes
         core=module('c07_core','scripts/mcr/validate-core.py')
         from jsonschema import FormatChecker
         validator=lambda s:core.CoreValidator({'components':source['components'],**s},format_checker=FormatChecker())
         corpus=[load(str(p.relative_to(ROOT))) for p in sorted((ROOT/'contracts/fixtures').rglob('*.json')) if '/c07/' not in str(p)]
         witnesses=Witnesses(source,validator,corpus);cases=[];compatibility=[]
-        def differential(rule):
+        def differential(rule, extra=()):
             value=witnesses.make(rule)
             mutations=[value,None,False,42,"UNKNOWN_C07",{},[],{**value,'__c07_unknown':True} if isinstance(value,dict) else None]
             mutations += [9007199254740992, -9007199254740992, 0.5]
+            mutations += list(extra)
             if isinstance(value,dict):
                 mutations += [{k:v for k,v in value.items() if k!=name} for name in value]
                 mutations += [{**value,name:'UNKNOWN_C07'} for name in value]
                 mutations += [{**value,name:9007199254740992} for name,child in value.items() if isinstance(child,int) and not isinstance(child,bool)]
             for mutated in mutations:compatibility.append({'schema':rule,'value':mutated,'accept':validator(rule).is_valid(mutated)})
         for name in sorted(source['components']['schemas']):differential({'$ref':'#/components/schemas/'+name})
+        formats={
+            'date':['0000-01-01','0001-01-01','1900-02-29','2000-02-29','2026-11-07\n'],
+            'date-time':['0000-01-01T00:00:00Z','0001-01-01T00:00:00Z','2026-11-07T23:59:60Z'],
+            'uri':['http://','urn:example:item','custom:','https://한글.example/','https://example.test/é','https://example.test/[x]','https://example.test/%C3%A9','http://[::1]/','https://example.test/\n','https://example.test/\x01'],
+        }
+        for node in nodes(source['components']['schemas']):
+            if isinstance(node,dict) and node.get('format') in formats:differential(node,formats[node['format']])
         for identity,op in doc['operations'].items():
             request={}
             for location,name in [('path','path'),('query','query'),('header','headers')]:

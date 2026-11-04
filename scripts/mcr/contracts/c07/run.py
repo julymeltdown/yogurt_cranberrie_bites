@@ -41,8 +41,9 @@ def main():
         run('motion-regressions', [sys.executable, '-B', HERE / 'test_motion.py'])
         with tempfile.TemporaryDirectory(prefix='compile-', dir=args.artifacts) as directory:
             temporary = Path(directory)
-            for source in (ROOT / 'contracts/generated/api-client').glob('*.ts'):
-                shutil.copyfile(source, temporary / source.name)
+            for source in (ROOT / 'contracts/generated/api-client').iterdir():
+                if source.suffix == '.ts' or source.name == 'THIRD_PARTY_NOTICES.txt':
+                    shutil.copyfile(source, temporary / source.name)
             shutil.copyfile(HERE / 'typecheck.ts', temporary / 'typecheck.ts')
             (temporary / 'node_modules').symlink_to(args.dependencies.resolve(), target_is_directory=True)
             (temporary / 'package.json').write_text('{"type":"module"}\n')

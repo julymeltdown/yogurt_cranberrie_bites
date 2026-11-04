@@ -1,9 +1,11 @@
 // Generated public C07 runtime. No storage, application imports, or server authority.
 import { z } from 'zod'
 import { document } from './document.js'
+import { uriPattern } from './formats.js'
 import type { Schemas, Operations } from './types.js'
 type Rule = boolean | Record<string, any>
 const doc: any = document
+const uri = new RegExp(uriPattern)
 const object = (v: unknown): v is Record<string, any> => v !== null && typeof v === 'object' && !Array.isArray(v)
 function canonical(v: any): string {
   if (Array.isArray(v)) return `[${v.map(canonical).join(',')}]`
@@ -22,8 +24,9 @@ function resolve(ref: string): Rule {
 }
 function date(value: string): boolean {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
-  if (!m) return false
+  if (!m || m[0] !== value) return false
   const y = Number(m[1]), month = Number(m[2]), day = Number(m[3])
+  if (y < 1) return false
   const d = new Date(0); d.setUTCFullYear(y, month - 1, day)
   return d.getUTCFullYear() === y && d.getUTCMonth() === month - 1 && d.getUTCDate() === day
 }
@@ -37,8 +40,7 @@ function format(kind: string, value: string): boolean {
   // Match the retained Python JSON Schema email annotation. Product policy is separate.
   if (kind === 'email') return value.includes('@')
   if (kind === 'uri') {
-    if (!/^[a-z][a-z0-9+.-]*:/i.test(value) || /[\s<>"{}|\\^`]|%(?![0-9a-f]{2})/i.test(value)) return false
-    try { new URL(value); return true } catch { return false }
+    return uri.test(value)
   }
   return kind === 'password' || kind === 'int64' || kind === 'binary'
 }

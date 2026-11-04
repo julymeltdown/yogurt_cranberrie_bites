@@ -205,3 +205,45 @@ guardian or workload started and no clock or slot was retained. Source and
 controls are ready under local `mcr-tools/c07-published-baseline-20261104T1554Z`;
 the temporary-candidate preflight and complete public QA01/C07 checks remain
 NOT_RUN on this corrected source until a usable allocation is accepted.
+
+The usable round `C07-PUBLISHED-BASELINE-SOURCE-B-202611041614Z` started at
+16:17:42 UTC on `4760ffabc31a6fccf898fa482e34348320d82367`. Candidate preflight
+passed the core/domain generator comparisons, 229 source definitions, and all
+185 fixture outcomes, including 62 explicitly classified motion configs. Its
+next generator check failed: `scripts/mcr/generate-domain-transport.py --check`
+reported `Domain transport metadata drift; regenerate`. Active pins were again
+preserved; no conditional client generation or later checks ran. This round's
+complete receipt is in the same local published-baseline artifact directory.
+
+FULL at 16:20:38 UTC left zero workers, guardian, private TMP or links. All 245
+canonical/source snapshot files remained unchanged; carry was 3,253,313,536 bytes,
+positive growth 458,752 bytes and free space 17,332,854,784 bytes, with no guardian
+breach. The original unsuccessful baseline receipts remain retained separately.
+
+The incumbent producer subsequently qualified the one-header-line metadata
+repair on frozen public inputs, with the existing generator unchanged:
+initial check 1, regeneration 0, final check 0. Root published
+`efc1f56b19d3cd33d64a0aff6a960f0b772277bf`; its exact single-file output has
+SHA-256 `5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308`.
+Consumption commit `449fac5b` takes only that published frontend metadata change,
+with no private Wall contract input. A fresh audit and full qualification remain
+required before active pins change.
+
+## Format oracle provenance
+
+Completion inspection found two compatibility gaps beyond the initial fixture
+catalog: Python's date checker rejects year zero and requires a full date-string
+match, and its RFC3986 URI checker is not the browser URL normalizer. The new
+source corrects date handling and derives the JavaScript URI expression directly
+from the already-pinned `rfc3986-validator==0.1.1` `URI_RE`. The generator strips
+Python verbose-regex comments/whitespace and converts `{,n}` to ECMAScript's
+equivalent `{0,n}`; its source expression SHA-256 is recorded in the manifest.
+Generated `formats.ts` is public contract data with no extra frontend dependency.
+
+This is an audited headless validator expression, not rendering reuse. Its MIT
+license, copyright Nicolas Aimetti 2019, is preserved exactly in
+`scripts/mcr/contracts/c07/templates/rfc3986-LICENSE.txt` and both generated
+`THIRD_PARTY_NOTICES.txt` outputs. Temporary compile workspaces also retain the
+notice. All formatted canonical leaf schemas gain independent Python decisions
+for year zero, leap days, URI control/unicode/path syntax and IPv6 boundaries.
+These source additions remain NOT_RUN until the next bounded full round.
