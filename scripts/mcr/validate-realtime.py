@@ -156,6 +156,22 @@ class Contract:
                         'snapshot correlation mismatch')
             else:
                 require(not set(ids).intersection(value['removes']), 'upsert/remove overlap')
+            motion = value.get('selfMotion')
+            if motion is not None:
+                require(motion['serverTick'] == value['serverTick'], 'motion tick mismatch')
+                require(motion['consumedInputSeq'] >= value['ackInputSeq'], 'motion consumption precedes ACK')
+                require(motion['droppedTicks'] <= value['serverTick'], 'motion discarded ticks exceed clock')
+                require(motion['inputAppliedTicks'] <= value['serverTick'] - motion['droppedTicks'], 'motion applications exceed simulated ticks')
+                held = motion['heldInput']
+                require(value['ackInputSeq'] != 0 or (held is None and motion['inputAppliedTicks'] == 0), 'motion before input ACK')
+                if held is not None:
+                    require(held['seq'] == value['ackInputSeq'], 'held input differs from ACK')
+                    require(held['axisX'] ** 2 + held['axisY'] ** 2 <= 1 + 1e-9, 'held input exceeds unit disk')
+                if kind == 'snapshot':
+                    profile = value['motionProfile']
+                    require(motion['consumedInputSeq'] == 0 and motion['inputAppliedTicks'] == 0 and held is None, 'snapshot replays input')
+                    require(next(row['position'] for row in rows if row['userId'] == value['selfUserId']) == motion['position'], 'self anchor differs from snapshot')
+                    require(held is None or held['remainingHoldMs'] <= profile['holdMs'], 'held duration exceeds profile')
         if name == 'WorldTicketResponse':
             seconds = (datetime.fromisoformat(value['expires_at']) -
                        datetime.fromisoformat(value['server_time'])).total_seconds()
@@ -212,6 +228,8 @@ class Trace:
         self.policy_revision = None
         self.policy_baseline_current = False
         self.policy_floors = {}
+        self.motion_requested = False
+        self.motion = None
 
     def consume(self, direction, message):
         # Route objects through the exact wire parser and byte limits as fixtures do.
@@ -228,6 +246,7 @@ class Trace:
             require(self.authenticate is None, 'duplicate authenticate')
             # Admission context only; never retain the consumed bearer ticket.
             self.authenticate = {key: message[key] for key in IDENTITY}
+            self.motion_requested = message.get('motionProfileVersion') == '1.0.0'
             return
         require(self.authenticate is not None, 'authenticate must be first', 4401)
         if direction == 'server' and kind == 'snapshot':
@@ -279,6 +298,7 @@ class Trace:
                 self.contract.avatar_matches(row, self.snapshot)
                 updated[row['userId']] = copy.deepcopy(row)
             require(len(updated) <= self.contract.policy['room_capacity_max'], 'too many players')
+            self.accept_motion(message, updated)
             self.players = updated
             self.sequence, self.tick, self.ack = message['streamSeq'], message['serverTick'], message['ackInputSeq']
         elif kind == 'switchRejected':
@@ -335,6 +355,8 @@ class Trace:
     def accept_snapshot(self, message):
         require(message['selfUserId'] == self.actor, 'self identity mismatch')
         require(message['streamId'] not in self.used_streams, 'snapshot reused stream ID')
+        require('motionProfile' not in message or self.motion_requested, 'unnegotiated motion profile')
+        previous_snapshot, previous_motion = self.snapshot, self.motion
         require(message['ackInputSeq'] == 0, 'new stream must reset input acknowledgement')
         if self.snapshot is not None:
             require(datetime.fromisoformat(message['accessExpiresAt']) ==
@@ -361,11 +383,32 @@ class Trace:
         self.policy_baseline_current = False
         self.policy_revision = None
         self.players = {row['userId']: copy.deepcopy(row) for row in message['players']}
+        self.motion = None
+        if previous_motion is not None and previous_snapshot['roomEpoch'] == message['roomEpoch'] and previous_snapshot['roomId'] == message['roomId']:
+            require('selfMotion' not in message or message['selfMotion']['droppedTicks'] >= previous_motion['droppedTicks'], 'room discarded ticks regressed on stream reset')
+        self.accept_motion(message, self.players, initial=True)
         self.sequence = self.input_sequence = self.ack = 0
         self.tick = message['serverTick']
         self.pending = None
         self.suspended = False
         self.used_streams.add(message['streamId'])
+
+    def accept_motion(self, message, players, initial=False):
+        enabled = self.snapshot is not None and 'motionProfile' in self.snapshot
+        require(('selfMotion' in message) == enabled, 'motion anchor missing or unnegotiated')
+        if not enabled:
+            return
+        motion = message['selfMotion']
+        require(motion['position'] == players[self.actor]['position'], 'motion anchor differs from self state')
+        held = motion['heldInput']
+        require(held is None or held['remainingHoldMs'] <= self.snapshot['motionProfile']['holdMs'], 'held duration exceeds profile')
+        if not initial:
+            require(motion['consumedInputSeq'] <= self.input_sequence, 'motion consumes future input')
+            require(motion['consumedInputSeq'] >= self.motion['consumedInputSeq'], 'motion consumption regressed')
+            require(motion['droppedTicks'] >= self.motion['droppedTicks'], 'discarded tick count regressed')
+            if message['ackInputSeq'] == self.ack:
+                require(motion['inputAppliedTicks'] >= self.motion['inputAppliedTicks'], 'input duration regressed')
+        self.motion = copy.deepcopy(motion)
 
 
 def filtered_projection(fixture, contract):
@@ -401,18 +444,46 @@ def filtered_projection(fixture, contract):
     return delivered
 
 
+def validate_motion_vectors(fixture):
+    require(fixture['version'] == '1.0.0', 'motion vector version')
+    require(fixture['mapFixture'] == 'contracts/fixtures/assets/map-manifest.json', 'motion vector map source')
+    manifest = read(ROOT / fixture['mapFixture'])
+    require(fixture['geometryHash'] == manifest['geometry_hash'], 'motion geometry mismatch')
+    require(0 < fixture['speedPxPerSecond'] <= 1000 and 50 <= fixture['holdMs'] <= 1000, 'motion vector limits')
+    require(0 < fixture['tolerance'] <= 1e-9, 'motion vector tolerance')
+    names = [case['name'] for case in fixture['cases']]
+    require(len(names) == len(set(names)) and len(names) >= 9, 'motion vector coverage')
+    for case in fixture['cases']:
+        last = 0
+        for action in case['actions']:
+            require(set(action) in ({'input'}, {'advanceMs', 'expected'}, {'reset','atMs','expected'}), 'motion vector action')
+            if action.get('reset') == 'EPOCH': last = 0
+            require('reset' not in action or action['reset'] in ('STREAM','EPOCH'), 'motion vector reset')
+            at = action['input']['atMs'] if 'input' in action else action.get('advanceMs', action.get('atMs'))
+            require(type(at) is int and last <= at <= 10000, 'motion vector clock')
+            last = at
+            if 'input' in action:
+                v = action['input']
+                require(0 < v['seq'] <= 64 and v['axisX'] ** 2 + v['axisY'] ** 2 <= 1 + 1e-9, 'motion vector input')
+            else:
+                expected = action['expected']
+                require(expected['consumedInputSeq'] >= expected['ackInputSeq'] and expected['droppedTicks'] <= at // 50, 'motion vector anchor')
+
+
 def validate_fixtures():
     contract = Contract()
     index = read(FIXTURES / 'index.json')
     seen = set()
     for entry in index:
         name = entry['file']
-        require(Path(name).name == name and name.endswith('.json') and name not in seen,
+        require((Path(name).name == name or (Path(name).parent.as_posix() == 'motion-v1' and Path(name).name not in ('.', '..'))) and name.endswith('.json') and name not in seen,
                 'invalid fixture index')
         seen.add(name)
         fixture = read(FIXTURES / name)
         kind = entry['kind']
-        if kind == 'trace':
+        if kind == 'motion-vectors':
+            validate_motion_vectors(fixture)
+        elif kind == 'trace':
             trace = Trace(contract, fixture['actor_id'])
             for row in fixture['messages']:
                 trace.consume(row['direction'], row['message'])
@@ -433,7 +504,9 @@ def validate_fixtures():
         else:
             require(kind == 'http', 'unknown fixture kind')
             contract.validate(fixture, entry['schema'])
-    require(seen == {p.name for p in FIXTURES.glob('*.json')} - {'index.json'}, 'unindexed fixture')
+    expected = {p.name for p in FIXTURES.glob('*.json')} - {'index.json'}
+    expected |= {p.relative_to(FIXTURES).as_posix() for p in (FIXTURES / 'motion-v1').glob('*.json')}
+    require(seen == expected, 'unindexed fixture')
     return len(seen)
 
 

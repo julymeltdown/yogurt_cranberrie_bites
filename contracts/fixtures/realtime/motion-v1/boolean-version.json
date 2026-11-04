@@ -1,0 +1,6 @@
+{
+  "direction": "client",
+  "payload": "{\"protocolVersion\": \"1.0.0\", \"type\": \"authenticate\", \"ticket\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\", \"eventId\": \"00000000-0000-4000-8000-000000000010\", \"roomId\": \"00000000-0000-4000-8000-000000000011\", \"mapId\": \"map_fixture\", \"mapRevision\": 1, \"avatarManifestId\": \"avatar_fixture\", \"avatarManifestVersion\": 1, \"motionProfileVersion\": true}",
+  "binary": false,
+  "close_code": 4400
+}
