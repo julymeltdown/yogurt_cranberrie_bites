@@ -1,5 +1,5 @@
 //! Qualified Feed reads over the existing shared canonical owners and listener.
-use super::{canonical_runtime::CanonicalOwnerComposition, product_runtime::ProductOwners};
+use crate::config::{canonical_runtime::CanonicalOwnerComposition, product_runtime::ProductOwners};
 use crate::{
     adapters::out::SystemClock,
     feed::product::{FeedProductConfig, FeedProductProducer},
