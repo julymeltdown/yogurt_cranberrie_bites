@@ -1,10 +1,10 @@
 {
   "task": "BE-OWNER-MEDIA-LIVE",
   "status": "IN_PROGRESS",
-  "build_source_revision": "c32f4c74259d350f5f8c3c0a2e024812c7ce417d",
+  "build_source_revision": "b544a231e22ae698da8b4ab7476d6c2e910aac74",
   "canonical_sdk_revision": "c4ad561cd813f0f7f1e14f21cb2ee90592e09eea",
   "build_exit_code": 0,
-  "build_duration_seconds": 17.85,
+  "build_duration_seconds": 20.15,
   "toolchain": "rustc 1.88.0 (6b00bc388 2025-06-23)",
   "build_constraints": {
     "jobs": 2,
@@ -13,10 +13,9 @@
     "locked": true,
     "offline": true
   },
-  "artifact_sha256": "bced59cda4ac6343266eb690e34a4ef251052eb12fbed41ec836ec07b564257a",
-  "producer_artifact_sha256": "dd8802f460636a902aeec85abacc9468d139c73f269b238d67bf3c2de005c65a",
-  "source_pin_count": 1621,
-  "supplemental_backend_json_pin_count": 27,
+  "artifact_sha256": "f7559062692ae8410f7d7caf728b327ddd082ab0aed7d152d6d4c352e1b89646",
+  "producer_artifact_sha256": "379bd8321350232892088cd8d2db843fa72697d4506cbb3167d24c6ed412f40d",
+  "source_pin_count": 1711,
   "runtime_tests": {
     "passed": 11,
     "failed": 0,
@@ -58,5 +57,13 @@
   "meeting_photo_runtime": "NOT_RUN",
   "production_activation": false,
   "artifact_boundary_python_tests": "NOT_RERUN_UNCHANGED_SCRIPT",
-  "planning_provenance_check": "NOT_RERUN_THIS_INCREMENT"
+  "planning_provenance_check": "NOT_RERUN_THIS_INCREMENT",
+  "api_json_in_source_pins": true,
+  "initial_build_failure": {
+    "exit_code": 101,
+    "reason": "stale contracts-build proto root from another worktree",
+    "scoped_cache_clear": "contracts-build only: 20 files, 816.4 KiB",
+    "source_changes": false
+  },
+  "prior_qualified_source_revision": "c32f4c74259d350f5f8c3c0a2e024812c7ce417d"
 }
