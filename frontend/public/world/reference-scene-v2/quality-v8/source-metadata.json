@@ -1,0 +1,43 @@
+{
+  "version": 8,
+  "status": "ORIGINAL_ART_NOT_REFERENCE_ACCEPTED",
+  "source_sheet": {
+    "path": "sources/canopy-sheet.png",
+    "sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95",
+    "bytes": 1699886,
+    "width": 1254,
+    "height": 1254
+  },
+  "canopy_frames": {
+    "tree_red": {
+      "x": 16,
+      "y": 79,
+      "width": 611,
+      "height": 493
+    },
+    "tree_green": {
+      "x": 627,
+      "y": 87,
+      "width": 608,
+      "height": 485
+    },
+    "tree_yellow": {
+      "x": 14,
+      "y": 674,
+      "width": 602,
+      "height": 486
+    },
+    "tree_dark": {
+      "x": 629,
+      "y": 682,
+      "width": 610,
+      "height": 478
+    }
+  },
+  "prompt": "sources/prompt.md",
+  "base_manifest": {
+    "path": "../quality-v7/manifest.json",
+    "sha256": "sha256:156d416606e648dc357a686bc1fd18ec67e425c32ee0955e164277ab229d1e87"
+  },
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f"
+}

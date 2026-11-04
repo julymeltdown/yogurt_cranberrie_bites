@@ -19,10 +19,11 @@ MOCK_READY environment label does not withhold the met frontend criteria.
 No new task ID, automatic IN04 completion or aggregate count is inferred.
 
 Frontend king subsequently reported central ledger reconciliation published at
-`4b327722`: 27 original-task outcomes (12 recorded acceptance dispositions
-plus 15 SATISFIED), 71 other implementation-evidenced tasks, 9 unreconciled
-tasks and 5 open IN gates. FE14, FE19 and QA01 were added once from published
-owner receipts. FE07 whole-parent remains unreconciled (only a bounded
+`7e8f762b`: 28 original-task outcomes (12 recorded acceptance dispositions
+plus 16 SATISFIED), 70 other implementation-evidenced tasks, 9 unreconciled
+tasks and 5 open IN gates. QA02 was added once after the earlier FE14, FE19
+and QA01 owner receipts; no fidelity, QA06 or live promotion is inferred.
+FE07 whole-parent remains unreconciled (only a bounded
 persistent criterion was met); FE15 remains partial.
 Original FE33 was added once from the `7c2f3af7` owner receipt. Its recorded
 MOCK_READY environment coexists with SATISFIED task criteria. This is the
@@ -43,8 +44,8 @@ Isolated checkout: `/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts`. The develope
 reported clean startup, no prior writer/WIP collision, and accepted the exact
 lease. Final goal receipt: `update_goal(complete)` succeeded for goal
 `1793752991`, 774 seconds, followed by `get_goal: null`. Owner reported resource
-cleanup and no remaining owned work; the completed chat is archived, with no
-waiting goal. Its two-hunk lease is returned, not implicitly reassigned.
+cleanup and no remaining caller work. Its two-hunk lease is returned, not
+implicitly reassigned; the same developer's later QA07 assignment is separate.
 
 Owner reports optional `WorldCompositionOptions.mural` qualification factory and
 `presentation.mural` connected to the actual WorldPanels provider; omitted
@@ -99,15 +100,38 @@ Real HTTP/live multiuser IN04, device and full-product acceptance are separate
 open outcomes. The new caller assembly is assigned functioning frontend work,
 not an added condition on the already satisfied original FE33 fixture criteria.
 
-## Current QA07 context release
+## Current QA07 ownership and hourly checkpoint
 
 Community released completed caller developer
 `01a1a230-6acc-7e82-9e4b-92506decc745` to World SL as sole next QA07 allocator.
-Fresh compact chat metadata confirms notLoaded/latest turn completed and its
-actual goal COMPLETE then null/clean STOP/no retained work or lease receipt;
-Community sent no later assignment. All prospective Community QA05/IN04/QA09/
-QA10/IN05 reservations on this developer are withdrawn. The existing chat is
-still archived; release is not proof of QA07 goal startup.
+The caller goal had actually completed then returned null/clean STOP before
+transfer; Community sent no competing assignment. All prospective Community
+QA05/IN04/QA09/QA10/IN05 reservations on this developer are withdrawn.
+
+Hourly checkpoint 2026-11-04 10:31 KST: compact live chat metadata shows the
+developer actively implementing QA07. World SL reports verified acceptance of
+a NEW unbudgeted ACTIVE goal, clean isolated branch, absent target prefixes
+and usable published inputs. This is an actual acceptance receipt, replacing
+the earlier release-only state. Task status IN_PROGRESS; no QA07 deliverable
+commit/publication or whole-task satisfaction has yet been reported.
+
+World's subsequent exact startup receipt: fresh null to NEW unbudgeted ACTIVE
+goal `1793755842`, checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts`,
+branch `codex/mcr-qa-QA07-accessibility`, base `cf706882`; both allocated new
+prefixes absent at startup and current published inputs confirmed usable.
+World's management receipt is published at `59782c52`. No QA07 acceptance,
+original-task count increment or result is inferred from this startup.
+
+The developer reports pickup fixtures exercise reservation recovery, private
+instructions, code issuance and one-time collection through actual UI controls;
+native keyboard reach/activation, modal containment/return and trusted touch
+cancellation are being qualified. Synthetic authority fixtures and retained
+failures remain explicit evidence limitations. Product root `1fc` and Gift
+producer `267` were asked to hand the developer current public-entry/fixture
+pins and exact unsupported live-authority ports directly. Remaining original
+criteria and next action are owner-run harness/native qualification, fixes,
+evidence, scoped publication and exact task disposition. World remains sole
+allocator; no manager inspection, test rerun or new prerequisite gate occurred.
 
 Exact next QA07 grant: NEW `frontend/e2e/accessibility/qa07/**` plus NEW
 `docs/mcr/evidence/accessibility/qa07/**` only. World owns actual usable-input
@@ -139,6 +163,7 @@ handoffs and never falsely complete, reset or relabel them.
 | Original task | Named implementation owner / status | Delivered contribution and remaining original criteria | Prerequisite owner / next action / publication |
 |---|---|---|---|
 | QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
+| QA07 (World-owned; Community input contribution) | `230`; actual new ACTIVE goal/accepted isolated scope reported by World, IN_PROGRESS | Native accessibility harness underway using published client entries and explicit fixtures; no original QA07 completion or publication reported | Exact NEW accessibility/qa07 test and evidence prefixes; World owns staffing/startup. Product root `1fc`, Gift `267`, Social and FE15 World provide precise inputs; developer owns keyboard/focus/labels/DOM/reduced-motion/pointer-cancel/social-pickup proof, fixes and publication |
 | QA05 mural contribution | Frontend mural contributor not yet allocated after releasing `230` to World QA07; World primary `202`; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
 | QA09 frontend lifecycle/closure/retry contribution | Frontend contribution writer pending next ready handoff; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
 | QA10 frontend provenance contribution | Frontend contribution writer pending next ready handoff; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner; NOT_STARTED | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Proposed NEW `docs/mcr/evidence/release/frontend/**` only, pending exact lease. No release-script grant to frontend contributor and no commit/push |
@@ -179,15 +204,14 @@ reconciliation once; no replacement aggregate is computed here.
 
 **Post-QA01 context handoff:** Community released completed `6ec9` to Backend
 staffing `01a1a21d-39ec-7912-84cb-910058e7a110` as sole next allocator for
-prospective BE27 backend implementation. A fresh compact chat snapshot confirms
-notLoaded/latest turn completed and the QA01 COMPLETE/null/clean-STOP receipt;
-Community has sent no new assignment or goal. The chat remains archived until
-a concrete assignment. Backend staffing must first obtain actual STOP/zero-edit
-release of the prospective BE27 scope from developer `00c`, then own the exact
-ten-path lease, isolated backend worktree and truthful new-goal startup. No
-BE27 implementation or active goal is inferred from this context release, and
-no former frontend/shared-script/contract rights transfer. Community will not
-dispatch concurrent QA10/IN05/other work to this context.
+BE27 backend implementation. Backend staffing subsequently reports actual
+`00c` STOP/zero-WIP and executed handoff: the chat was unarchived/renamed
+`mcr(be) Introduction runtime integration` and assigned exact ten backend
+headless paths in a new isolated backend worktree. Actual new-goal acceptance
+was pending in that receipt and is tracked by Backend staffing, not inferred
+from dispatch. No former frontend/shared-script/contract rights transfer.
+Community has sent no new goal and will not dispatch concurrent QA10/IN05/
+other work to this context; no future frontend writer reservation is retained.
 
 **Historical crossed-allocation lifecycle:** the earlier explicit frontend-king and
 World QA01-first grant to `6ec9` was acted on before the king's newer switch to
