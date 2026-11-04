@@ -33,8 +33,9 @@ Auth/Friend/intro/claim or browser acceptance.
 
 ## Current validation
 
-Cargo/PostgreSQL: NOT_RUN for this increment; no build target or private database
-lease acquired. No implementation completion or remote publication is claimed.
+Local adapter qualification: PASS at compiled source `600a65c966e06696bfd1b6fcb7bd3752f2103093`.
+Original BE28–30/37 runtime delivery remains IN_PROGRESS. See the exact native
+evidence below; local fixtures do not certify the public owner/provider join.
 
 ## Implemented successor scope
 
@@ -94,3 +95,64 @@ availability source, runtime schema and route composition are not yet delivered.
 fixtures implement SQL-held synthetic status solely for local qualification.
 An absent source, unsupported/newer claim, unknown owner, expired deadline or
 unavailable provider cannot grant sharing.
+
+
+## Initial native qualification, 2026-11-04
+
+Compiled source: `600a65c966e06696bfd1b6fcb7bd3752f2103093`, including adapter
+checkpoint `09fd15caf62f80fb0d0241d4d7b31e76cb1b7566` and the published Party
+identity fix `f0d0663a`. The preceding clean `bf92d72a` build failed with E0599
+in that Party reader; no Social source correction was needed for the rebuild.
+The unfinished `social_live` bridge and transaction hooks were absent from this
+source and are excluded from the following qualification.
+
+Build command (exit 0, Rust 1.88.0, offline/locked, two jobs, no incremental or
+dev/test debug information):
+
+```sh
+cargo test --manifest-path backend/Cargo.toml --locked --offline \
+  -p friend-service --test concert_social_remaining \
+  -p concert-service --test social_remaining --no-run --message-format=json
+```
+
+The allocated BACKEND target was released after copying and hashing the exact
+Cargo-emitted executables and recording every relevant source file hash. No
+Cargo or shared target access occurred during the subsequent database run.
+
+| Frozen artifact | SHA256 |
+| --- | --- |
+| Friend test executable | `c2394a4379963457ae28389a97499e9853b76655da35a8809ce5031c7abcd962` |
+| Concert test executable | `4646f65d96853419a45b29badcdfecd139feba4488d8af5e8b4584fcd1a2fcff` |
+| Native JSON report | `8ee502c758739bdf86d181aa9ec555b27f8fcca0c681d9b452fd48255d157891` |
+
+Local artifacts and exact source manifest:
+`/private/tmp/mcr-social-initial-ba5xsvyn/artifacts.json`; native report:
+`/private/tmp/mcr-social-initial-ba5xsvyn/native-report.json`.
+
+```sh
+python3 backend/services/concert-service/tests/social_remaining_support/native.py \
+  --artifacts /private/tmp/mcr-social-initial-ba5xsvyn/artifacts.json \
+  --report /private/tmp/mcr-social-initial-ba5xsvyn/native-report.json
+```
+
+Exit 0 on PostgreSQL 16.14 (Homebrew), an owned socket-only cluster. All five
+Friend and six Concert cases passed both before and after a physical postmaster
+restart (22 executions, zero failures). Friend's exact 17 migration ledger was
+checked both times. Persisted counts remained Friend `7|2|9` (blocks, follows,
+invalidation journal) and Concert `6|15` (introductions, claims) across restart.
+The native report confirms all processes stopped and the owned cluster root was
+removed. No retained production database or frozen dc70 store artifact changed.
+
+Friend cases cover committed block versus plain and receipt follow, pending
+request creation, accept/block lock ordering and cancellation, block rollback,
+bidirectional blocking and unblock non-restoration. Concert cases cover exact
+introduction/revision/age bounds, latest unsupported claims without fallback,
+provider outage, verified requirements for unbounded sharing, source-lock
+retention, original deadline under lock contention, and retained SocialService
+consent/encryption/reveal with current claim invalidation.
+
+These remain synthetic owner/provider fences over real local SQL and retained
+service logic. The real Auth/Friend scope join, independently verified age
+provider, runtime intro/claim composition, public routes, seven-principal QA04
+matrix, WebSocket revocation and cached-product UI are NOT_RUN for this increment.
+No original task or persistent goal is completed by this adapter qualification.
