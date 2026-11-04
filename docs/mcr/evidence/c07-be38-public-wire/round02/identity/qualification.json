@@ -1,0 +1,76 @@
+{
+  "task": "APPLICATION-RELEASE-IDENTITY",
+  "source": "680ca0e719a73c4f7b95af76e5f76452f07c3001",
+  "candidate": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "status": "FAIL",
+  "commands": [
+    {
+      "name": "manifest",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+        "80de53f327c90db21955eb63d3b74aa41ec62514",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "vite-serve",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round02/identity/application-release.json"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "five-cases",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-application-release.mjs",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-application-release.test.mjs",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-server.mjs",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/server.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/server.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/shared/release/application.ts"
+      ],
+      "exit": 1
+    }
+  ],
+  "started": 1793825628.015649,
+  "runtime": "NOT_RUN",
+  "emittedOutputs": "NOT_BUILT_BY_THIS_PUBLISHER",
+  "error": "AssertionError('lint failed; original output retained')",
+  "finished": 1793825629.893313
+}

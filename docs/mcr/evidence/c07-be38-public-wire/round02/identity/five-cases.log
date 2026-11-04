@@ -1,0 +1,15 @@
+✔ application release has a closed immutable compatibility shape without an absent-input fallback (99.657834ms)
+✔ application versions use bounded ASCII numeric tuples, rejecting ambiguous or overflowing claims (0.120542ms)
+(node:91418) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ generated real-source manifest independently binds source bytes, toolchain and explicit version; it is not an output bundle receipt (46.35675ms)
+✔ unsupported build modes, unpinned sources and mismatched dependency inputs refuse before bulk source hashing (22.663375ms)
+✔ the new standalone client release leaf passes strict TypeScript with the actual Vite environment types (267.708792ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 474.031625

@@ -1,0 +1,7 @@
+{
+  "qualificationSource": "184c4e43f8accef58f1ebea2375dc6c140c5dd98",
+  "status": "PASS",
+  "receiptSha256": "306bd20563b27385da0416f0f911ec17b2023725917e2833bfa5488b605d75fc",
+  "manifestSha256": "e2f89a5fd821a5c900331a230fece6040b39426e3b154d4d398668a25db8a3c9",
+  "reason": "Exact identity readset unchanged; contract-only correction requires C07 requalification, not another identity run."
+}

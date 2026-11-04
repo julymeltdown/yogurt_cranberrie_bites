@@ -31,11 +31,22 @@ def resolve(schema):
 
 def scalar(schema):
     schema = resolve(schema)
-    assert set(schema) <= {"type", "enum", "format", "pattern", "minimum", "maximum", "minLength", "maxLength", "default"}, schema
+    assert set(schema) <= {"type", "enum", "format", "pattern", "minimum", "maximum", "minLength", "maxLength", "default", "description"}, schema
+    assert "description" not in schema or isinstance(schema["description"], str), "Invalid scalar description"
     assert schema.get("type") in {None, "string", "integer", "boolean"}
     assert schema.get("type") is not None or "enum" in schema
     assert schema.get("format") in {None, "uuid", "date-time"}
-    return {k: v for k, v in schema.items() if k != "default"}
+    return {k: v for k, v in schema.items() if k not in {"default", "description"}}
+
+
+def query_schema(schema):
+    assert {"type", "additionalProperties", "properties"} <= set(schema) <= {"type", "additionalProperties", "properties", "required"}
+    assert schema["type"] == "object" and schema["additionalProperties"] is False
+    assert isinstance(schema["properties"], dict)
+    required = schema.get("required", [])
+    assert isinstance(required, list) and all(isinstance(name, str) for name in required), "Invalid required list"
+    assert len(required) == len(set(required)) and set(required) <= set(schema["properties"]), "Invalid required properties"
+    return {"required": required, "properties": {k: scalar(v) for k, v in schema["properties"].items()}}
 
 
 def main():
@@ -49,9 +60,7 @@ def main():
         family, name = query.split(".")
         if query not in queries:
             schema = read(SOURCE / f"{family}.schema.json")["$defs"][name]
-            assert set(schema) == {"type", "additionalProperties", "properties", "required"}
-            assert schema["type"] == "object" and schema["additionalProperties"] is False
-            queries[query] = {"required": schema["required"], "properties": {k: scalar(v) for k, v in schema["properties"].items()}}
+            queries[query] = query_schema(schema)
         operations[op["operationId"]] = {
             "method": op["method"].upper(), "path": op["path"], "query": query,
             "parameters": {k: scalar(v) for k, v in op["path_parameters"].items()},

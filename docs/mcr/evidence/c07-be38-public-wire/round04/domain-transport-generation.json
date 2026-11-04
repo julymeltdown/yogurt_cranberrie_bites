@@ -1,0 +1,20 @@
+{
+  "beforeSha256": "424ebe6045fddce3231b299e80236981c278ae12f82775d87e81db6ab7cb2df8",
+  "afterSha256": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447",
+  "runtimeExportsByteIdentical": false,
+  "existingOperationsPreserved": true,
+  "addedOperations": [
+    "getConcertServicePolicy",
+    "setConcertServicePolicy"
+  ],
+  "commentDeltas": [
+    [
+      "// contracts/domain/v1/admin.schema.json: ee24c4bd99ce6057ca55007c5b8fc02aed9370ad4ea6e1eb4b42b393a7c94d4b",
+      "// contracts/domain/v1/admin.schema.json: 045af18ec63eceaf2198c1a11031b6c49abc0a6652a77a68d534b82a59bd0a3e"
+    ],
+    [
+      "// contracts/domain/v1/operations.json: 0b5941eca26241e8be9389aae23f29f6f6147bf36e1c27de1dbf9f092d4e8066",
+      "// contracts/domain/v1/operations.json: e6fd3cb09b6660935102c25c76f8abbb709451dfc039aea4495037df0f5458fb"
+    ]
+  ]
+}

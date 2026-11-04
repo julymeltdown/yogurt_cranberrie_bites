@@ -1,0 +1,28 @@
+{
+  "lease": "APPLICATION-RELEASE-C07-RETRY-SOURCE-20261104T2115Z",
+  "source": "70a6336697e4ebb700a3ffca04ac06fe1675e958",
+  "canonical": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "readsetSha256": "80e3f0bc5ea0f4b33a70f8d78fea23c4919d634fd516b7a800493046c60d602c",
+  "guardianSha256": "5cac875af8b9070b08fa7adfe5fe5e746c8fb43b27f9fffa930a2fcdadafa25e",
+  "acceptedAt": 1793827009.908424,
+  "activeEnd": 1793827609.647061,
+  "deadline": 1793827669.647061,
+  "freeBytes": 21611110400,
+  "otherWorstNewBytes": 4294967296,
+  "startFloorGiB": 11,
+  "liveFloorGiB": 8,
+  "reserveMarginGiB": 9,
+  "ownWorstNewBytes": 134217728,
+  "remainingMarginBytes": 17181925376,
+  "wholeFloorBytes": 1435303760,
+  "caps": {
+    "processes": 24,
+    "rssBytes": 4294967296,
+    "wholeBytes": 2147483648,
+    "newBytes": 134217728,
+    "tmpBytes": 100663296,
+    "durableBytes": 25165824
+  },
+  "privateTmp": "/private/tmp/mcr-release-2115-round04",
+  "portsCreated": []
+}

@@ -1,0 +1,677 @@
+{
+  "task": "C07-BE38-PUBLIC-WIRE",
+  "source": "86eef1fbca208c98b1559dafdac42f6d6017c7e6",
+  "qualificationSource": "70a6336697e4ebb700a3ffca04ac06fe1675e958",
+  "base": "f0f2e2187de8eb60f11b350890c6139758cfdb91",
+  "contractInput": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "canonicalCandidateFieldMeaning": "Authorized contract input revision, not a separately published commit; publisher receipt maps this coherent packet to the actual canonical master commit. No partial input publication.",
+  "paths": [
+    "backend/docs/api/mcr-domain.openapi.json",
+    "contracts/domain/v1/admin.schema.json",
+    "contracts/domain/v1/operations.json",
+    "contracts/domain/v1/policy.json",
+    "contracts/fixtures/c07/compatibility.json",
+    "contracts/fixtures/c07/index.json",
+    "contracts/fixtures/c07/responses.json",
+    "contracts/generated/api-client/document.ts",
+    "contracts/generated/api-client/manifest.json",
+    "contracts/generated/api-client/types.ts",
+    "contracts/generated/mcr-domain.openapi.json",
+    "docs/mcr/evidence/c07-be38-public-wire/README.md",
+    "docs/mcr/evidence/c07-be38-public-wire/objective.md",
+    "docs/mcr/evidence/c07-be38-public-wire/qualify.py",
+    "docs/mcr/evidence/c07-be38-public-wire/readset.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/acceptance.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/full-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/guardian.jsonl",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/application-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/five-cases.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/manifest.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/owner.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round01/query-projection-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/acceptance.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/full-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/guardian.jsonl",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/application-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/five-cases.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/lint.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/manifest.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-application-release.mjs.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-application-release.test.mjs.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-server.mjs.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/owner.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round02/query-projection-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/acceptance.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/active-before.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/candidate-pins.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/domain-transport-generation.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/domain-transport-generation.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/failed-output-hashes.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/forward-audit.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/full-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/generation.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/guardian.jsonl",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/application-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/five-cases.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/lint.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/manifest.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-application-release.mjs.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-application-release.test.mjs.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-server.mjs.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/owner.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/preflight.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/preflight.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round03/query-projection-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/acceptance.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/active-before.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/c07.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/candidate-pins.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/drift.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/inventory-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/missing-operation.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/motion-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/output-drift.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/receipt.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/runtime.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/schema-mismatch.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/typescript.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/domain-transport-generation.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/domain-transport-generation.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/forward-audit.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/full-release.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/generation.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/guardian.jsonl",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/identity-reuse.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/owner.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/preflight.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/preflight.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qa01-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qa01.log",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qualification.json",
+    "docs/mcr/evidence/c07-be38-public-wire/round04/query-projection-regressions.log",
+    "docs/mcr/evidence/c07-be38-public-wire/test_query_projection.py",
+    "docs/mcr/frontend/c07-service-policy-wire.md",
+    "frontend/src/shared/api/domain-operations.generated.ts",
+    "frontend/src/shared/api/generated/document.ts",
+    "frontend/src/shared/api/generated/types.ts",
+    "scripts/mcr/contracts/c07/test-runtime.mjs",
+    "scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-7c563cf09fe971b904ac9549f5e3e8fe1391d94a.json",
+    "scripts/mcr/contracts/qa01-coverage/archive/pins-a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9.json",
+    "scripts/mcr/contracts/qa01-coverage/pins.json",
+    "scripts/mcr/generate-domain-transport.py"
+  ],
+  "preimages": {
+    "backend/docs/api/mcr-domain.openapi.json": {
+      "gitBlob": "6a0fff4dc24d31109a206c9bd574c34da285b55a",
+      "sha256": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65"
+    },
+    "contracts/domain/v1/admin.schema.json": {
+      "gitBlob": "591464246ea976254bdeba0ab2e66a285bab89f1",
+      "sha256": "ee24c4bd99ce6057ca55007c5b8fc02aed9370ad4ea6e1eb4b42b393a7c94d4b"
+    },
+    "contracts/domain/v1/operations.json": {
+      "gitBlob": "4d47158ff6b303e4ece5411195a4b277c551c1b4",
+      "sha256": "0b5941eca26241e8be9389aae23f29f6f6147bf36e1c27de1dbf9f092d4e8066"
+    },
+    "contracts/domain/v1/policy.json": {
+      "gitBlob": "4da19fd1fff21deeee48befa9757c864867bb7f5",
+      "sha256": "abce444846b53a716b2d42f8029e2bf8939b78c78b248c0b1d3540797a467c9f"
+    },
+    "contracts/fixtures/c07/compatibility.json": {
+      "gitBlob": "8144cd80a9ad9aeb69e0894e1b8e6daf581cc054",
+      "sha256": "7a5cc365083fe87ab9cc9c0f6c93d621de1c48ad10df9525df99472794b2b261"
+    },
+    "contracts/fixtures/c07/index.json": {
+      "gitBlob": "eaca8e97e3d0451dbd7c2180cd969caf8c406989",
+      "sha256": "fef746223f7842ed7b1c322067ca170652b9f1b0dbac854f09895a19973ed149"
+    },
+    "contracts/fixtures/c07/responses.json": {
+      "gitBlob": "41fbf7524a2c8abd200156456c4fb9280572eb9e",
+      "sha256": "acf6d4eeb88eb2d4677c203b965310068b218cca9a1ced757cf64d70fb0c1fe4"
+    },
+    "contracts/generated/api-client/document.ts": {
+      "gitBlob": "b7425e9bf15817f6be0206ea5558676f93dfb862",
+      "sha256": "a8791b528bcde392022896cc7e17117c2e86a9dfe940487083857ef1711faddb"
+    },
+    "contracts/generated/api-client/manifest.json": {
+      "gitBlob": "fd9ab6dd4fb9856230f614f87c1dacc7961bce8f",
+      "sha256": "5fa5010f5493a2ee036a056ca454dbf89293411c002e9f8cc29a0fff29661060"
+    },
+    "contracts/generated/api-client/types.ts": {
+      "gitBlob": "81247cddf9680cc5617bfc5d799f183637df068e",
+      "sha256": "bd4a2502b5995b169e8544bae8dee0e8639d08e959b2b03f388dcf75072b32ce"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "gitBlob": "6a0fff4dc24d31109a206c9bd574c34da285b55a",
+      "sha256": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/README.md": null,
+    "docs/mcr/evidence/c07-be38-public-wire/objective.md": null,
+    "docs/mcr/evidence/c07-be38-public-wire/qualify.py": null,
+    "docs/mcr/evidence/c07-be38-public-wire/readset.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/acceptance.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/full-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/guardian.jsonl": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/application-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/five-cases.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/manifest.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/owner.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round01/query-projection-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/acceptance.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/full-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/guardian.jsonl": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/application-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/five-cases.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/lint.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/manifest.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-application-release.mjs.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-application-release.test.mjs.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-server.mjs.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/owner.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round02/query-projection-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/acceptance.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/active-before.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/candidate-pins.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/domain-transport-generation.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/domain-transport-generation.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/failed-output-hashes.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/forward-audit.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/full-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/generation.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/guardian.jsonl": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/application-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/five-cases.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/lint.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/manifest.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-application-release.mjs.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-application-release.test.mjs.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-server.mjs.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/owner.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/preflight.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/preflight.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round03/query-projection-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/acceptance.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/active-before.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/c07.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/candidate-pins.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/drift.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/inventory-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/missing-operation.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/motion-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/output-drift.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/receipt.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/runtime.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/schema-mismatch.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/typescript.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/domain-transport-generation.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/domain-transport-generation.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/forward-audit.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/full-release.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/generation.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/guardian.jsonl": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/identity-reuse.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/owner.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/preflight.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/preflight.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qa01-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qa01.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qualification.json": null,
+    "docs/mcr/evidence/c07-be38-public-wire/round04/query-projection-regressions.log": null,
+    "docs/mcr/evidence/c07-be38-public-wire/test_query_projection.py": null,
+    "docs/mcr/frontend/c07-service-policy-wire.md": null,
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "gitBlob": "42fd06c65be5f654a302a164cdba512f6941e7a4",
+      "sha256": "424ebe6045fddce3231b299e80236981c278ae12f82775d87e81db6ab7cb2df8"
+    },
+    "frontend/src/shared/api/generated/document.ts": {
+      "gitBlob": "b7425e9bf15817f6be0206ea5558676f93dfb862",
+      "sha256": "a8791b528bcde392022896cc7e17117c2e86a9dfe940487083857ef1711faddb"
+    },
+    "frontend/src/shared/api/generated/types.ts": {
+      "gitBlob": "81247cddf9680cc5617bfc5d799f183637df068e",
+      "sha256": "bd4a2502b5995b169e8544bae8dee0e8639d08e959b2b03f388dcf75072b32ce"
+    },
+    "scripts/mcr/contracts/c07/test-runtime.mjs": {
+      "gitBlob": "27d38be934ec6a96a1fff747abe3a748d82b6427",
+      "sha256": "d65e9dde245e6add76fe0dc332db63387bfaf275427e9e0f506c4c3d0117db69"
+    },
+    "scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-7c563cf09fe971b904ac9549f5e3e8fe1391d94a.json": null,
+    "scripts/mcr/contracts/qa01-coverage/archive/pins-a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9.json": null,
+    "scripts/mcr/contracts/qa01-coverage/pins.json": {
+      "gitBlob": "320e9f9d920aab78fdd0dd82d861f4ffb698f351",
+      "sha256": "5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e"
+    },
+    "scripts/mcr/generate-domain-transport.py": {
+      "gitBlob": "97603e69d958317bcf646ded42cd77ece3bb6438",
+      "sha256": "7a85c1d47978df991f767989ad4264345f7b0a057bc54259a8f8c0bdc9cb941b"
+    }
+  },
+  "postimages": {
+    "backend/docs/api/mcr-domain.openapi.json": {
+      "gitBlob": "0e78f02b58068b013031f4eacad0c1ecc47989cb",
+      "sha256": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634"
+    },
+    "contracts/domain/v1/admin.schema.json": {
+      "gitBlob": "6c0027b184b86d3d4466c141f4296168d14a3b16",
+      "sha256": "045af18ec63eceaf2198c1a11031b6c49abc0a6652a77a68d534b82a59bd0a3e"
+    },
+    "contracts/domain/v1/operations.json": {
+      "gitBlob": "b6ed254e7375f80e1fad773d9b6a07d9b4bf14ca",
+      "sha256": "e6fd3cb09b6660935102c25c76f8abbb709451dfc039aea4495037df0f5458fb"
+    },
+    "contracts/domain/v1/policy.json": {
+      "gitBlob": "e48bac616f1551696ab4fbcc023f08c25d000558",
+      "sha256": "55deb76bf4591d33100b824b1fdd6bfd7c61ca656f073093e3bfc1541149e3ef"
+    },
+    "contracts/fixtures/c07/compatibility.json": {
+      "gitBlob": "2b237b354b52fb3db49c92d6702f51e9a5fa9b00",
+      "sha256": "d68a5e93086f826959dcecca95f33c02ea337aa3a4e19d17f78162e5b554a374"
+    },
+    "contracts/fixtures/c07/index.json": {
+      "gitBlob": "0a83323c23ce980bf2665661642fc17f5cd84d7b",
+      "sha256": "361300d852ded85aaefed57d4e9e38100c3b56ab42d13fec72b37bef60573721"
+    },
+    "contracts/fixtures/c07/responses.json": {
+      "gitBlob": "6a09d167575b623da1dfbc3fa9d239d0b1756515",
+      "sha256": "593a038c2007565ed8f617c82099187a1f2d5ed330e92485547f8910a51c9693"
+    },
+    "contracts/generated/api-client/document.ts": {
+      "gitBlob": "624c161605d0c4b78a6c20d81e346ba9d59f5922",
+      "sha256": "95a5e5e5a9da7e970fe2e2eb6850f6529adace9976736d1296264d06275d85f6"
+    },
+    "contracts/generated/api-client/manifest.json": {
+      "gitBlob": "4e46168de5ad85b5f347576eb264b5ebe0f53b8b",
+      "sha256": "03fe0bfd025dc5d22803b3972bdcbf69a2fdb3841480029bef51f9d1307d3706"
+    },
+    "contracts/generated/api-client/types.ts": {
+      "gitBlob": "dfd70d03592fa44079814aa5fbc2f34e510ffb46",
+      "sha256": "32de221a260c37703735cef910411a9969a9401fcdc9d217cf0c3b5321a99eb0"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "gitBlob": "0e78f02b58068b013031f4eacad0c1ecc47989cb",
+      "sha256": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/README.md": {
+      "gitBlob": "2ef0a63a64346a4fd5c897f75bc14f4df21932a9",
+      "sha256": "b41293078c76d6de68f2f4b52640bfde7ee370709a2615591635aa0d17efbe73"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/objective.md": {
+      "gitBlob": "49a5a1b2b055b43185eb29e4278a98c746d8810f",
+      "sha256": "9c4728c4ea006c62c74b0d557d453b5f8200d085e5986375afad7c320ce71c61"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/qualify.py": {
+      "gitBlob": "dbc6444e9f12c58d1583ed8d9903a731e685c952",
+      "sha256": "9facedc9345a7d9b46122c96a756733da79cf4b34ca6210073efc042613e9316"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/readset.json": {
+      "gitBlob": "adfd29c2cccf3179150c0c0dd8244895a794a617",
+      "sha256": "80e3f0bc5ea0f4b33a70f8d78fea23c4919d634fd516b7a800493046c60d602c"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/acceptance.json": {
+      "gitBlob": "65d97e7727046624ed8f0996ce824ebcb2b4b785",
+      "sha256": "d6abeb3607780a94669c5b5d99bc838e90be8a1b9c17e08564301e971789ecfe"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/full-release.json": {
+      "gitBlob": "5894609f60d4d805b12f9564ad2506a2e3632861",
+      "sha256": "043dee95f16e4f2eedd522bd94ba970a9d430e376d84df0ae454ddb4e4319734"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/guardian.jsonl": {
+      "gitBlob": "3630f0bd956970d4bd7f2d4033277418b9a227a8",
+      "sha256": "48250c7bbc17ca25287a7c061f97c5b34378221fd983bd20b2101215e16ff372"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity.log": {
+      "gitBlob": "e24efdca7c165e21e77547894e8cc05dc7d1aed9",
+      "sha256": "ba10efc7d1870de45ccf43d8d7d48b295a14801571903a1ed144575602c1c5c2"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/application-release.json": {
+      "gitBlob": "7167e6409827d71f12c060528b5a97ea19436cec",
+      "sha256": "92230fa529088a2fd5174fe112cefd5ca64532da1c2283a8ca1fba8f3da26574"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/five-cases.log": {
+      "gitBlob": "90965163315b9a815808bf5b91b29354e0153ab4",
+      "sha256": "14925e8824179ddfd408f486fac0bcdbb28e49634d857c5f19e91b33d47c20e5"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/manifest.log": {
+      "gitBlob": "9db9cce09a3054db6f105f9bf0249c11e4c81450",
+      "sha256": "f64241d357542ef890d6c6fdc5e599fab6d192c6518e6bac30e7cc4dd7d16699"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/identity/qualification.json": {
+      "gitBlob": "8cf7287fdf9352366094487be93dbe83fd059ff9",
+      "sha256": "0c18dc071f16f2c487345b9a3f1da8391c0889213bae3c409cc64027d40ae77c"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/owner.log": {
+      "gitBlob": "4398e61ae98894c6878de90666cac8929a7f287e",
+      "sha256": "1c63683d86e144ce8e19011c9388f90dd10b7a142ffd2c3d21a08d47b5b46be7"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/qualification.json": {
+      "gitBlob": "e904998b0705fcb5963f6c126ed43ef5ef976270",
+      "sha256": "c7f0adbf9dec12eb9285ba9159b57b405a79b7693b434fb9ea8db786a253e64a"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round01/query-projection-regressions.log": {
+      "gitBlob": "f85a6884de83d0cd4ad7696358f85ad05cdde95e",
+      "sha256": "e6ec182765cd965f2837d8eeaef5a64af48a104f245cd1a0b7281559194c57c1"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/acceptance.json": {
+      "gitBlob": "be8c37348acc9ab17a3183e4ef7a2c84be2341fe",
+      "sha256": "7511442ce1a275e3ef8b5e01a334df3637aef48cb3e5e053c98aa92e4fd814cf"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/full-release.json": {
+      "gitBlob": "560951ffa35211a40821f5e944b50c75356c8914",
+      "sha256": "8b660ca850576d50ec84227efaf30acb981119610e7444203b27e50f909228a8"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/guardian.jsonl": {
+      "gitBlob": "01bad9f521af129bd69cf0123d9b67702961558d",
+      "sha256": "11be08890ee30ecca30ed4ffb7bc4472a9e9322dadf0b8fea47fa32e677e29f7"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity.log": {
+      "gitBlob": "ed5166c39df06f037173c5b195ccf1d405a7cd87",
+      "sha256": "86936915ae9d8f8dc80ad239dc97abb7abb975c5baf8f4bf9b83c12657693c5a"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/application-release.json": {
+      "gitBlob": "7167e6409827d71f12c060528b5a97ea19436cec",
+      "sha256": "92230fa529088a2fd5174fe112cefd5ca64532da1c2283a8ca1fba8f3da26574"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/five-cases.log": {
+      "gitBlob": "e97f59526ad620f3b10b364218af6943048701da",
+      "sha256": "590e1506539400058c478a7731495fa09582db59dd6992b0749988ec1c281c70"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/lint.log": {
+      "gitBlob": "51e589d04022a46b5e630af536d7fc204f47023b",
+      "sha256": "66cff86aee511cceac3fc1b64d11c64fd8750db1c32da7a21e3a2569ae7434a1"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/manifest.log": {
+      "gitBlob": "9db9cce09a3054db6f105f9bf0249c11e4c81450",
+      "sha256": "f64241d357542ef890d6c6fdc5e599fab6d192c6518e6bac30e7cc4dd7d16699"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/qualification.json": {
+      "gitBlob": "884e5baecf203677eb0d3d525904d3570e4a6b92",
+      "sha256": "9120fcb960e3ef6e0bcbb4a9cd25bc044767708e2df28503b45ae1bbf6a0a6e3"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-application-release.mjs.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-application-release.test.mjs.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/identity/syntax-server.mjs.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/owner.log": {
+      "gitBlob": "994f49f4b5c686d7f956b8d1a5fcaf5156bde5d5",
+      "sha256": "57c79338affb7808aabfca5d935126a0cbc92defb9a087fbb014e4ad29f287ca"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/qualification.json": {
+      "gitBlob": "7c004f66ca3d8b3d9e0543026c02ab8f76ae128e",
+      "sha256": "7796d1589d89a7d1e579558f52b1c78442e5833e2a6c40d68f69239db4634a82"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round02/query-projection-regressions.log": {
+      "gitBlob": "f85a6884de83d0cd4ad7696358f85ad05cdde95e",
+      "sha256": "e6ec182765cd965f2837d8eeaef5a64af48a104f245cd1a0b7281559194c57c1"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/acceptance.json": {
+      "gitBlob": "7fefc8c5708c2b43a97bed7ae54ccdf272c6e824",
+      "sha256": "51d1ba027a298fdac3c97ede15dd95295687a0f505eae95e852aefbc5182a674"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/active-before.json": {
+      "gitBlob": "4a3ae257ce1f74257969846c6e693e7b00e50fb6",
+      "sha256": "d25351ff10ad60170fc2f4a37809241b117897a5df2935020643dfc438133142"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/candidate-pins.json": {
+      "gitBlob": "ca8d44ae13707b3a693da6637452cd31a7a530c4",
+      "sha256": "384ef4c86f744dde29467ec9fbbe0f56f9ffca3aa50a627dee2fb4b624b9b2cf"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/domain-transport-generation.json": {
+      "gitBlob": "5c181e107c8a6eadb926471d6b90b2899b95de4e",
+      "sha256": "09496b8e9da871d6f4260ded00dbda8ba2323a2835920d6f7a1bc6977c967475"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/domain-transport-generation.log": {
+      "gitBlob": "ae6070e3a599f20a8f304be9fff677657cea0879",
+      "sha256": "d93b040849aef60ec896ce0c03507aeae60492eba05de0607088c2a29de88b35"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/failed-output-hashes.json": {
+      "gitBlob": "e89f497d355a749e1d4eff5cdc9ac16cb86dc4c7",
+      "sha256": "ecddcc6a9bedc50980223c9704667ad72d3d4c62b486718f36009b0b7619de64"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/forward-audit.json": {
+      "gitBlob": "3936b1b454c08543014401ae2e7780f562a4880b",
+      "sha256": "410f82f8ace484046feeb64b0f7ff5af97e233e52b0fc35e9c58a3578b0bad86"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/full-release.json": {
+      "gitBlob": "c08aed69596fe4a9d6b839aa00e2c636caf3cc23",
+      "sha256": "63e6e4dedcb6346a0008946e595eac555ee5123a1cdf200d209efe240bd2ad6e"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/generation.json": {
+      "gitBlob": "70ff8719f8eaf2f038c1ce3203f5e8c1500160f7",
+      "sha256": "635091d114bbf01c973beb259e1364310b6acfb924149b652a89b33095b7f6f3"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/guardian.jsonl": {
+      "gitBlob": "d734b0c6f4b45ab8d35f3ab893a72a0e58a37b94",
+      "sha256": "1efadd6be099075677a3d5ab28e94fccc81e38d8e4a8e49c75e90edc6925f759"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity.log": {
+      "gitBlob": "18f769d3bb318ee75641cc1a3ff9994dcd7fbdf9",
+      "sha256": "bf33c41b5512b25ad6be6182ee0ce120a6847787785024c34504ef68636027b7"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/application-release.json": {
+      "gitBlob": "851d03c2b651528e1af0f73994630ffb0a5d0c6e",
+      "sha256": "e2f89a5fd821a5c900331a230fece6040b39426e3b154d4d398668a25db8a3c9"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/five-cases.log": {
+      "gitBlob": "80221e140089f11a86c3f51f2acf2ec68eab1700",
+      "sha256": "6a77a45093929d1858323618c03c0f741a720a5be8523e68c370be3f3c06064b"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/lint.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/manifest.log": {
+      "gitBlob": "1238194b8becd14a88a127e4b1dd91756a521952",
+      "sha256": "10ff031171da16a37ecac0c7ed58bb969d396a1bb603bdc5c387a4952ebf3489"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/qualification.json": {
+      "gitBlob": "23f4814e26f5a328aba6e0c1d4e9a18d3d7f3d61",
+      "sha256": "306bd20563b27385da0416f0f911ec17b2023725917e2833bfa5488b605d75fc"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-application-release.mjs.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-application-release.test.mjs.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/identity/syntax-server.mjs.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/owner.log": {
+      "gitBlob": "a985e3deaae288511f4e4aa38c88d423fe391bbd",
+      "sha256": "c51dd3496c7c4f697b579eeca23729338e040374dfcee0f7675a306e709b858b"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/preflight.json": {
+      "gitBlob": "47f0f59cde318e1b4c70853356779694788937dc",
+      "sha256": "ab47cb3541b71d5b192a1a7660ab9f64a364306781f7827d4f1ceebb036ee876"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/preflight.log": {
+      "gitBlob": "ae15a90d60c5813cfb414927cf2a4b2dd31c1ee7",
+      "sha256": "6576d1aa53483d3a35d266b6b2139360e1aa1e4814ae29efebe5110a1fab3632"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/qualification.json": {
+      "gitBlob": "5e538f5f0018ebf427d067f43f9e23c04103bfa4",
+      "sha256": "d08701fc606b5ec496a4dddad7521f0467e20b3af010a71231e7389086bbeade"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round03/query-projection-regressions.log": {
+      "gitBlob": "f85a6884de83d0cd4ad7696358f85ad05cdde95e",
+      "sha256": "e6ec182765cd965f2837d8eeaef5a64af48a104f245cd1a0b7281559194c57c1"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/acceptance.json": {
+      "gitBlob": "d22cfdceac002bdef78c75b6d9406a766b0ec5f1",
+      "sha256": "ab4d0f379debf12195211585fbe50a9905a5702cbac8ca1fc0471a76cc385661"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/active-before.json": {
+      "gitBlob": "4a3ae257ce1f74257969846c6e693e7b00e50fb6",
+      "sha256": "d25351ff10ad60170fc2f4a37809241b117897a5df2935020643dfc438133142"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/c07.log": {
+      "gitBlob": "618168276db3df007c0febf786bb65b290d6af4e",
+      "sha256": "6422940871f15d45f38a4ef4ebd44dc0cc9c1e13c5d2d45dd2d06244c2e96d42"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/candidate-pins.json": {
+      "gitBlob": "a1bf1a6698790c4cc573abdb0e1dc805eb8f868c",
+      "sha256": "147be6549c1f4c1d1307415ff2350b67bc2bdeace47f503050bfdf4da66198c5"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/drift.log": {
+      "gitBlob": "8a94c790af61349dedcfb2992003412d54e84f59",
+      "sha256": "8cd9aff26cc964f70e0139f16a562b9b705ced13571eb0c650da1ccc4e43a89a"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/inventory-regressions.log": {
+      "gitBlob": "6efca2d922325d28e02d6a8f048ae2adc0e233e8",
+      "sha256": "120fcf1e1b1ef6883b716f1b33b4fbea79c7089f1d1ff950e98c9608d82abb42"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/missing-operation.log": {
+      "gitBlob": "c5aea4527a5855789b83c207daf7a438120bf19b",
+      "sha256": "571f75fd7f6b9362cd77cb951bb4a19125c7e371370c4a8d3cec1b6f6101d67f"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/motion-regressions.log": {
+      "gitBlob": "088ad3684442773957968ebb39cd153beac06af0",
+      "sha256": "de1e4dc395dd332191f4ae068c290036f41ed19925cd4f3442e0901c2bdad22e"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/output-drift.log": {
+      "gitBlob": "ca85fef92e53e56d01791fedd4e61965cf1fa746",
+      "sha256": "f3ac14d7f9279eb5d7bbb7f71af6e1c00910f44689bc92af73b4c722744f9ac5"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/receipt.json": {
+      "gitBlob": "ca34fab55dd28ee13e8b0ad30828c188090cf533",
+      "sha256": "6241631b089830b1461ad262618e1c1a2b9542b3a026de43fdda0ccec90904f4"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/runtime.log": {
+      "gitBlob": "a864bfd5808b4f1a79f0b1fb6ad050692123b299",
+      "sha256": "ad47d66052b28c7423ce302d8ce1c6084eb2a1a0643363bef2f282e4ae0dcd5b"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/schema-mismatch.log": {
+      "gitBlob": "c5aea4527a5855789b83c207daf7a438120bf19b",
+      "sha256": "571f75fd7f6b9362cd77cb951bb4a19125c7e371370c4a8d3cec1b6f6101d67f"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/checks/typescript.log": {
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/domain-transport-generation.json": {
+      "gitBlob": "08264ea6aa4167806ddd0bfc114ca94ec9c684d3",
+      "sha256": "cc6bac6d1dcbb91e9bd796991ecda616dada0b0c84273867e08422cbeeb0cda1"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/domain-transport-generation.log": {
+      "gitBlob": "ae6070e3a599f20a8f304be9fff677657cea0879",
+      "sha256": "d93b040849aef60ec896ce0c03507aeae60492eba05de0607088c2a29de88b35"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/forward-audit.json": {
+      "gitBlob": "2667f2a84464465f14186f1a854e58cc3eb76251",
+      "sha256": "81a1c0fc26598f50e015fb61561d17602994cdd2b532c810661dd3d48cea2454"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/full-release.json": {
+      "gitBlob": "c2ac329b29e3db382662fcf68b11e93f6c0a2991",
+      "sha256": "118be54c47464cb8dd7ed534f4a23541496c6a761a9928b63cbfa68f7d1d6a03"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/generation.json": {
+      "gitBlob": "d0e3605a2fe7871a4964ebb908bd30f8e75e8025",
+      "sha256": "ff5a81766f9ec105fbfb5783b376c59dd595568525210e5f2c6c43fdc5437379"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/guardian.jsonl": {
+      "gitBlob": "a78f62df67b03f4e75f975b261c5809754bc61a6",
+      "sha256": "37f9460be7e2ee5e567a030c8b9dab6fb219a93946537893ad8bb1a3f864ecff"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/identity-reuse.json": {
+      "gitBlob": "251ac6478d1dad7e83c37e0f3350b81e2c7b0af5",
+      "sha256": "43f07afebc2c42044c3595f0c64ab107929aa4223c441c6a863612ea7ad8120a"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/owner.log": {
+      "gitBlob": "29a395599025db3dcbe68e205fafbe8cd6c8a7e5",
+      "sha256": "e657acc3f384cb40c4f1b0aefa4b36de468cc29686110f8c321cdfdf0a9e4a0f"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/preflight.json": {
+      "gitBlob": "29b6bf7ebd8e1163d7625b1618aa9ec48902c27b",
+      "sha256": "6a9eed72d227acabb8ae5478311ac8641ec841ead990a173c071d67c1679b846"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/preflight.log": {
+      "gitBlob": "68ccdcb1d3a50951602baa72b95d9433a9b672ae",
+      "sha256": "5585295ba0da8fbeee83963926a938a4aee3c30b471840eb966a4668f3a2cbd4"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qa01-regressions.log": {
+      "gitBlob": "206e5a143652daa33f2bfc5592c129ee9df22ce8",
+      "sha256": "b85392da07d1a7e602d0948c03b2e8beff8c1087478ba7a3227d1f4b0d4ea21c"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qa01.log": {
+      "gitBlob": "70a60b24616dba55df55cf4ef716e8ca5d40abec",
+      "sha256": "352ba6664f297a9d4f2f5fda715c295cfd72fd91c56916bed84d2c83eb285d6e"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/qualification.json": {
+      "gitBlob": "7962e0698a306cd87f519cd865f60f92ff730e42",
+      "sha256": "685c03a8482266527a16f63f3c242e84c0d1b11a061aea754b637c2786a0e423"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/round04/query-projection-regressions.log": {
+      "gitBlob": "f85a6884de83d0cd4ad7696358f85ad05cdde95e",
+      "sha256": "e6ec182765cd965f2837d8eeaef5a64af48a104f245cd1a0b7281559194c57c1"
+    },
+    "docs/mcr/evidence/c07-be38-public-wire/test_query_projection.py": {
+      "gitBlob": "9762bd85274b89dc4196f2faf33f44a721a955b9",
+      "sha256": "1767cd025ae45c793c06eb952109270ac14e748c384c38831a5d8fba3083c402"
+    },
+    "docs/mcr/frontend/c07-service-policy-wire.md": {
+      "gitBlob": "ef0aba3c5498cf4f3672ff07b23bac3c4561c1d6",
+      "sha256": "13ab67c3a243ccff3c26c03668a48ee0a6183da02e67cd119f6eb26fc845f99f"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "gitBlob": "6e01670f57e73a2acb6d31595d520a969128ad93",
+      "sha256": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+    },
+    "frontend/src/shared/api/generated/document.ts": {
+      "gitBlob": "624c161605d0c4b78a6c20d81e346ba9d59f5922",
+      "sha256": "95a5e5e5a9da7e970fe2e2eb6850f6529adace9976736d1296264d06275d85f6"
+    },
+    "frontend/src/shared/api/generated/types.ts": {
+      "gitBlob": "dfd70d03592fa44079814aa5fbc2f34e510ffb46",
+      "sha256": "32de221a260c37703735cef910411a9969a9401fcdc9d217cf0c3b5321a99eb0"
+    },
+    "scripts/mcr/contracts/c07/test-runtime.mjs": {
+      "gitBlob": "2967db95efec700182ead4ff5c1609e6e33991de",
+      "sha256": "20e9294f38f7699e981a57daeb100065475f1d951e81a41967116f53f9b6c47e"
+    },
+    "scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-7c563cf09fe971b904ac9549f5e3e8fe1391d94a.json": {
+      "gitBlob": "1e77a674e542655fa12ee93859db07570c43870a",
+      "sha256": "29f79d2fd707d0a3154ff694d6ca5f7b2a8505e288991665ee382b6844efe04f"
+    },
+    "scripts/mcr/contracts/qa01-coverage/archive/pins-a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9.json": {
+      "gitBlob": "320e9f9d920aab78fdd0dd82d861f4ffb698f351",
+      "sha256": "5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e"
+    },
+    "scripts/mcr/contracts/qa01-coverage/pins.json": {
+      "gitBlob": "a1bf1a6698790c4cc573abdb0e1dc805eb8f868c",
+      "sha256": "147be6549c1f4c1d1307415ff2350b67bc2bdeace47f503050bfdf4da66198c5"
+    },
+    "scripts/mcr/generate-domain-transport.py": {
+      "gitBlob": "26f837aafd9c573b62845967e48760f89402cfcf",
+      "sha256": "77c34bca7951c83dca20be6680c0125e349ea0ab0abf8b50b782e0379a24d33f"
+    }
+  }
+}

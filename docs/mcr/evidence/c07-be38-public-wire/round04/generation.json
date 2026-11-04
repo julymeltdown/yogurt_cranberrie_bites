@@ -1,0 +1,149 @@
+{
+  "changed": [
+    "contracts/generated/mcr-domain.openapi.json",
+    "backend/docs/api/mcr-domain.openapi.json",
+    "contracts/generated/api-client/types.ts",
+    "contracts/generated/api-client/document.ts",
+    "frontend/src/shared/api/generated/types.ts",
+    "frontend/src/shared/api/generated/document.ts",
+    "contracts/fixtures/c07/responses.json",
+    "contracts/fixtures/c07/compatibility.json",
+    "contracts/fixtures/c07/index.json",
+    "contracts/generated/api-client/manifest.json"
+  ],
+  "oldResponseCases": 1705,
+  "newResponseCases": 1727,
+  "removedCaseKeys": [],
+  "addedCaseKeys": [
+    [
+      "getConcertServicePolicy",
+      200,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      400,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      401,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      403,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      404,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      429,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      500,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      503,
+      "application/json"
+    ],
+    [
+      "getConcertServicePolicy",
+      504,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      200,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      202,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      400,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      401,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      403,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      404,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      409,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      413,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      415,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      429,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      500,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      503,
+      "application/json"
+    ],
+    [
+      "setConcertServicePolicy",
+      504,
+      "application/json"
+    ]
+  ],
+  "generatedOutputHashes": {
+    "contracts/generated/api-client/types.ts": "32de221a260c37703735cef910411a9969a9401fcdc9d217cf0c3b5321a99eb0",
+    "contracts/generated/api-client/document.ts": "95a5e5e5a9da7e970fe2e2eb6850f6529adace9976736d1296264d06275d85f6",
+    "contracts/generated/api-client/runtime.ts": "2022e42863e2d0970071d6930c0ec746384768901ca2854fc67f09d40ea33065",
+    "contracts/generated/api-client/mock.ts": "ce9eb2b15946589b287c0fad6f5fba68b7c18965b6182787fa1500f71df8bdc0",
+    "contracts/generated/api-client/index.ts": "1ceb9baf7f43050203cc8dc7746f4414f8a24410b9aa7019a18b81ed595c9678",
+    "contracts/generated/api-client/formats.ts": "c3b897d24cee22c5f4aa744d6edd9c3fe71b55f6610e9e2b55315956a1c85dff",
+    "contracts/generated/api-client/THIRD_PARTY_NOTICES.txt": "5ba1a4f03626ccca6dcbf53a554545e4f776a335bfdaa233ec3bfe9bb7fac15d",
+    "frontend/src/shared/api/generated/types.ts": "32de221a260c37703735cef910411a9969a9401fcdc9d217cf0c3b5321a99eb0",
+    "frontend/src/shared/api/generated/document.ts": "95a5e5e5a9da7e970fe2e2eb6850f6529adace9976736d1296264d06275d85f6",
+    "frontend/src/shared/api/generated/runtime.ts": "2022e42863e2d0970071d6930c0ec746384768901ca2854fc67f09d40ea33065",
+    "frontend/src/shared/api/generated/mock.ts": "ce9eb2b15946589b287c0fad6f5fba68b7c18965b6182787fa1500f71df8bdc0",
+    "frontend/src/shared/api/generated/index.ts": "1ceb9baf7f43050203cc8dc7746f4414f8a24410b9aa7019a18b81ed595c9678",
+    "frontend/src/shared/api/generated/formats.ts": "c3b897d24cee22c5f4aa744d6edd9c3fe71b55f6610e9e2b55315956a1c85dff",
+    "frontend/src/shared/api/generated/THIRD_PARTY_NOTICES.txt": "5ba1a4f03626ccca6dcbf53a554545e4f776a335bfdaa233ec3bfe9bb7fac15d",
+    "contracts/fixtures/c07/responses.json": "593a038c2007565ed8f617c82099187a1f2d5ed330e92485547f8910a51c9693",
+    "contracts/fixtures/c07/compatibility.json": "d68a5e93086f826959dcecca95f33c02ea337aa3a4e19d17f78162e5b554a374",
+    "contracts/fixtures/c07/index.json": "361300d852ded85aaefed57d4e9e38100c3b56ab42d13fec72b37bef60573721",
+    "contracts/generated/api-client/manifest.json": "03fe0bfd025dc5d22803b3972bdcbf69a2fdb3841480029bef51f9d1307d3706"
+  }
+}

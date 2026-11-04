@@ -9,6 +9,93 @@ const fixtures = name => JSON.parse(readFileSync(path.join(process.env.C07_REPO_
 const rows = fixtures('responses.json').cases
 const compatibility = fixtures('compatibility.json').cases
 
+test('service policy preserves closed decisions, canonical query names, operation errors and write idempotency', async () => {
+  const readId = 'getConcertServicePolicy', writeId = 'setConcertServicePolicy'
+  const readRow = rows.find(row => row.operation === readId && row.status === 200)
+  const writeRow = rows.find(row => row.operation === writeId && row.status === 200)
+  const pendingRow = rows.find(row => row.operation === writeId && row.status === 202)
+  assert.ok(readRow && writeRow && pendingRow)
+  assert.equal(contract.operations[readId].method, 'GET')
+  assert.equal(contract.operations[readId].requestBody, undefined)
+  const normal = { event_revision: 1, policy_revision: 1, kind: 'NORMAL', minimum_client_version: '0.1.0',
+    server_time: '2030-01-01T00:00:00Z', valid_until: '2030-01-01T00:01:00Z' }
+  const unavailable = { ...normal, kind: 'UNAVAILABLE', policy_revision: null, minimum_client_version: null }
+  const decision = api.schemas.Domain_admin_ServicePolicyDecision
+  for (const kind of ['NORMAL', 'MAINTENANCE', 'CLIENT_VERSION_REQUIRED']) {
+    assert.equal(decision.safeParse({ ...normal, kind }).success, true)
+    assert.equal(decision.safeParse({ ...normal, kind, policy_revision: null }).success, false)
+    assert.equal(decision.safeParse({ ...normal, kind, minimum_client_version: null }).success, false)
+  }
+  assert.equal(decision.safeParse(unavailable).success, true)
+  for (const invalid of [{ ...normal, kind: '503' }, { ...normal, kind: 'GAP' }, { ...normal, kind: '4409' },
+    { ...normal, minimumClientVersion: normal.minimum_client_version }, { ...normal, validUntil: normal.valid_until },
+    { ...normal, event_revision: 0 }, { ...normal, minimum_client_version: '65536.0.0' },
+    { ...normal, minimum_client_version: '0.1.0\n' }]) {
+    assert.equal(decision.safeParse(invalid).success, false)
+  }
+  let calls = 0, observed
+  const responding = (body, status = 200, fixture = readRow) => api.createClient({ baseUrl: 'https://fixture.invalid',
+    fetch: async (url, init) => {
+      calls++; observed = { url: new URL(url), init }
+      return new Response(JSON.stringify(body), { status, headers: {
+        ...Object.fromEntries(Object.entries(fixture.headers).map(([key, value]) => [key, String(value)])),
+        'content-type': 'application/json',
+      } })
+    } })
+  const request = { path: structuredClone(readRow.request.path) }
+  const read = responding(unavailable)
+  // Omitted claims are syntactically allowed; this mock is no catalog/admission proof.
+  for (const query of [undefined, {}, { client_version: '0.1.0' }, { client_release: 'a'.repeat(64) },
+    { client_release: 'a'.repeat(64), client_version: '65535.65535.65535' }]) {
+    await read.call(readId, { ...request, ...(query === undefined ? {} : { query }) })
+    assert.equal(observed.init.method, 'GET'); assert.equal(observed.init.body, undefined)
+    assert.deepEqual([...observed.url.searchParams.keys()], ['client_version', 'client_release'].filter(key => query?.[key] !== undefined))
+    for (const [key, value] of Object.entries(query ?? {})) assert.equal(observed.url.searchParams.get(key), value)
+  }
+  for (const query of [{ clientVersion: '0.1.0' }, { clientRelease: 'a'.repeat(64) },
+    { client_version: '' }, { client_version: '00.1.0' }, { client_version: '65536.0.0' },
+    { client_version: '１.0.0' }, ...['\n', '\r', '\u2028', '\u2029', ' '].map(suffix => ({ client_version: '0.1.0' + suffix })),
+    { client_version: ['0.1.0'] },
+    { client_release: 'A'.repeat(64) }, { client_release: 'a'.repeat(63) }, { client_release: 'a'.repeat(64) + '\n' }]) {
+    const before = calls
+    await assert.rejects(read.call(readId, { ...request, query }), api.ContractError)
+    assert.equal(calls, before)
+  }
+  for (const extra of [{ body: {} }, { mediaType: 'application/json' }, { headers: { 'Idempotency-Key': 'a' } }]) {
+    const before = calls
+    await assert.rejects(read.call(readId, { ...request, ...extra }), api.ContractError)
+    assert.equal(calls, before)
+  }
+  await assert.rejects(responding(unavailable, 503).call(readId, request), api.ContractError)
+  const errorRow = rows.find(row => row.operation === readId && row.status === 400)
+  for (const reason of ['UNKNOWN_SERVICE_POLICY', 'EVENT_READ_ONLY']) {
+    const body = structuredClone(errorRow.body); body.details.reason = reason
+    await assert.rejects(responding(body, 400, errorRow).call(readId, request), api.ContractError)
+  }
+  const command = api.schemas.Domain_admin_ServicePolicyInput
+  const publish = { expected_policy_revision: 0, reason: 'Policy publication', change: {
+    action: 'PUBLISH', mode: 'NORMAL', minimum_client_version: '0.1.0', expires_at: '2030-01-01T00:01:00Z' } }
+  const withdraw = { ...publish, change: { action: 'WITHDRAW' } }
+  assert.equal(command.safeParse(publish).success, true); assert.equal(command.safeParse(withdraw).success, true)
+  for (const invalid of [{ ...publish, expectedPolicyRevision: 0 }, { ...publish, expected_policy_revision: -1 },
+    { ...publish, reason: ' ' }, { ...publish, change: { ...publish.change, minimum_client_version: '01.0.0' } },
+    { ...publish, change: { ...publish.change, minimum_client_version: '0.1.0\n' } },
+    { ...withdraw, change: { action: 'WITHDRAW', mode: 'NORMAL' } }]) assert.equal(command.safeParse(invalid).success, false)
+  const pending = await responding(pendingRow.body, 202, pendingRow).call(writeId, { ...structuredClone(pendingRow.request), body: publish })
+  assert.equal(pending.status, 202)
+  const write = responding(writeRow.body, 200, writeRow)
+  for (const change of [publish, withdraw]) {
+    const input = { ...structuredClone(writeRow.request), body: change }
+    await write.call(writeId, input)
+    assert.equal(observed.init.method, 'PUT')
+    assert.equal(observed.init.headers.get('Idempotency-Key'), input.headers['Idempotency-Key'])
+    delete input.headers['Idempotency-Key']
+    const before = calls
+    await assert.rejects(write.call(writeId, input), api.ContractError)
+    assert.equal(calls, before)
+  }
+})
+
 test('every registered operation/status/media witness runs through the real generated client', async () => {
   assert.ok(rows.length > 100)
   assert.equal(new Set(rows.map(r => r.operation)).size, Object.keys(contract.operations).length)

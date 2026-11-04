@@ -1,0 +1,43 @@
+{
+  "task": "C07-BE38-PUBLIC-WIRE",
+  "canonical": "b4233d3e6d09e6b86576e1253b0c395e5dfb6faf",
+  "source": "184c4e43f8accef58f1ebea2375dc6c140c5dd98",
+  "started": 1793826458.01029,
+  "commands": [
+    {
+      "name": "query-projection-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/test_query_projection.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "domain-transport-generation",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-domain-transport.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "preflight",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/qualify_baseline.py",
+        "--pins",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round03/candidate-pins.json",
+        "--output",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round03/preflight.json"
+      ],
+      "exit": 1
+    }
+  ],
+  "status": "FAIL",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "error": "RuntimeError('preflight failed; original output retained')",
+  "finished": 1793826473.799121
+}

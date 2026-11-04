@@ -1,0 +1,16 @@
+✔ service policy preserves closed decisions, canonical query names, operation errors and write idempotency (19.279042ms)
+✔ every registered operation/status/media witness runs through the real generated client (140.186459ms)
+✔ Zod agrees with retained independent Python JSON Schema decisions for every differential case (482.316167ms)
+✔ conditionals, exclusive branches, sibling assertions, UTF-8 bytes and JSON edge cases fail closed (0.412042ms)
+✔ request/response drift, malformed media, aborts and unexpected mock calls are observable failures (0.878541ms)
+✔ clock and seed drive reproducible mock IDs, timestamps, expiry and scripted failures (0.927792ms)
+✔ Enrollment negation excludes nil UUIDs and bounded traversal cannot invert into acceptance (2.722ms)
+✔ published C05 motion speed is positive and snapshot motion fields are paired own properties (1.011ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 842.4905

@@ -1201,6 +1201,48 @@
         "Informational lease is never a bearer grant or a substitute for current server authorization; unobserved server withdrawal is not inferred; every privileged read/write checks current authority and holds its own delivery fence",
         "Existing getConcertSettings EventSettings is the authoritative event revision/phase producer for OPERATOR context; do not invent event facts from this role-only projection"
       ]
+    },
+    "service_policy_read_v1": {
+      "contract_version": 1,
+      "preconditions": [
+        "Current canonical Auth actor/session/generation and original signed request; no Participant, event admission, World or Operator prerequisite",
+        "Bodyless GET on the new service-policy route only; optional closed canonical client_version/client_release query is bound by the original target",
+        "Read latest immutable policy publication using the PostgreSQL clock; no missing/expired/withdrawn/future policy defaults to NORMAL",
+        "Recognize exact claimed build/version only against the real current Root-owned application publisher catalog; package/map/theme/API are not fallbacks"
+      ],
+      "result": [
+        "Every valid decision uses HTTP 200 with the closed NORMAL|MAINTENANCE|CLIENT_VERSION_REQUIRED|UNAVAILABLE union; transport success is not availability",
+        "Unknown/DRAFT/ARCHIVED event is canonical 404 RESOURCE_UNAVAILABLE; canonical Auth/transport errors retain existing DomainError, never infer policy from 503/4409/GAP",
+        "Precedence: unavailable policy, maintenance, missing or unrecognized client, recognized client below minimum, compatible NORMAL",
+        "event_revision is current; policy_revision is current immutable history revision or null only when no history exists; minimum version is null when no usable publication exists",
+        "server_time is DB clock; valid_until is bounded by policy expiry, actual remaining monotonic authority deadline and server_time+30 seconds",
+        "Client charges request-start-to-receipt time using a monotonic clock and binds user/event/Auth/privacy generation/build/bootstrap attempt/AbortSignal; stale, foreign or aborted arrivals are unavailable",
+        "NORMAL may be consumed only by the exact current fresh pre-World attempt. Once real World is admitted, preflight expiry must not remount or duplicate shell; every new/recovery/bootstrap attempt refreshes policy",
+        "Unconsumed or nonNORMAL decisions withdraw on expiry/binding change/current unavailable response; no persisted grant or silent offline replay",
+        "Unobserved publication changes are bounded by explicit refresh/expiry; real server World and mutation guards remain authoritative"
+      ]
+    },
+    "service_policy_write_v1": {
+      "contract_version": 1,
+      "preconditions": [
+        "Current signed managed Operations publication and real Operator role retained on the same canonical core/scope through terminal; stale SQL assignment is insufficient",
+        "Canonical Idempotency-Key and exact expected_policy_revision (0 only before first publication); original actor/event/method/target/body bound",
+        "Publish NORMAL or MAINTENANCE with validated minimum client version and DB expiry strictly future and at most 86400 seconds; WITHDRAW writes a new unavailable revision",
+        "Serialize on event UPDATE; validate current revision, role, authority deadline and policy invariants on the actual receipt/effects transaction"
+      ],
+      "idempotency": [
+        "Common canonical server-keyed command receipt semantics apply; current authority gates replay/conflict metadata",
+        "Identical authorized replay returns the same receipt and does not republish, increment revisions or refresh expiry; different input conflicts",
+        "Never automatically replay or mint a new key from an unknown, expired, failed, pending or unavailable result"
+      ],
+      "result": [
+        "Event revision, policy revision, immutable actor/reason/receipt-linked history, least-privilege audit and invalidation commit atomically or roll back",
+        "Deferred receipt guard requires the exact successful actor/event/operation/target/result revision; history updates/deletes are rejected",
+        "Stale expected revision yields VERSION_CONFLICT without policy effects; malformed input or out-of-bounds expiry does not publish",
+        "Withdrawal never revives an older NORMAL publication; recovery requires a new currently authorized publication",
+        "Command success is a safe CommandReceipt; it is not a fresh public policy decision, admission or server-enforcement grant",
+        "Same current policy must gate genuine World and non-exempt mutation effects; preserve existing owner-classified READ_ONLY safety/cancellation exceptions"
+      ]
     }
   },
   "remaining_before_freeze": [

@@ -1,0 +1,51 @@
+{
+  "task": "C07-BE38-PUBLIC-WIRE",
+  "oldCanonical": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "newCanonical": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "oldActiveSha256": "5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e",
+  "newActiveSha256": "147be6549c1f4c1d1307415ff2350b67bc2bdeace47f503050bfdf4da66198c5",
+  "inputDeltas": {
+    "backend/docs/api/mcr-domain.openapi.json": {
+      "old": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65",
+      "new": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634"
+    },
+    "contracts/domain/v1/admin.schema.json": {
+      "old": "ee24c4bd99ce6057ca55007c5b8fc02aed9370ad4ea6e1eb4b42b393a7c94d4b",
+      "new": "045af18ec63eceaf2198c1a11031b6c49abc0a6652a77a68d534b82a59bd0a3e"
+    },
+    "contracts/domain/v1/operations.json": {
+      "old": "0b5941eca26241e8be9389aae23f29f6f6147bf36e1c27de1dbf9f092d4e8066",
+      "new": "e6fd3cb09b6660935102c25c76f8abbb709451dfc039aea4495037df0f5458fb"
+    },
+    "contracts/domain/v1/policy.json": {
+      "old": "abce444846b53a716b2d42f8029e2bf8939b78c78b248c0b1d3540797a467c9f",
+      "new": "55deb76bf4591d33100b824b1fdd6bfd7c61ca656f073093e3bfc1541149e3ef"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "old": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65",
+      "new": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "old": "424ebe6045fddce3231b299e80236981c278ae12f82775d87e81db6ab7cb2df8",
+      "new": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+    },
+    "scripts/mcr/generate-domain-transport.py": {
+      "old": "7a85c1d47978df991f767989ad4264345f7b0a057bc54259a8f8c0bdc9cb941b",
+      "new": "77c34bca7951c83dca20be6680c0125e349ea0ab0abf8b50b782e0379a24d33f"
+    }
+  },
+  "addedOperations": {
+    "getConcertServicePolicy": [
+      "/api/concert/events/{eventId}/service-policy",
+      "get"
+    ],
+    "setConcertServicePolicy": [
+      "/api/concert/events/{eventId}/admin/service-policy",
+      "put"
+    ]
+  },
+  "removedOperations": [],
+  "changedRouteIdentities": {},
+  "provenance": "Exact e11bd284136851544e54083c70c8679721b9ca1b input-only handoff plus explicitly granted six-pattern strict-end correction b4233d3e6d09e6b86576e1253b0c395e5dfb6faf and explicitly granted pending202/common.CommandReceipt correction 7c563cf09fe971b904ac9549f5e3e8fe1391d94a; canonical publication must include the coherent 150-operation outputs. No live provider/consumer claim.",
+  "qualification": "Pending unchanged full temporary-candidate QA01 preflight"
+}

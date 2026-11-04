@@ -1,0 +1,36 @@
+{
+  "task": "APPLICATION-RELEASE-IDENTITY",
+  "source": "994f9b34f3a6ed2ebef5e647291e43f4485a2bad",
+  "candidate": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "status": "FAIL",
+  "commands": [
+    {
+      "name": "manifest",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+        "80de53f327c90db21955eb63d3b74aa41ec62514",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "vite-serve",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round01/identity/application-release.json"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "five-cases",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs"
+      ],
+      "exit": 1
+    }
+  ],
+  "started": 1793825334.925622,
+  "runtime": "NOT_RUN",
+  "emittedOutputs": "NOT_BUILT_BY_THIS_PUBLISHER",
+  "error": "AssertionError('five-cases failed; original output retained')",
+  "finished": 1793825337.316402
+}

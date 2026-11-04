@@ -1,0 +1,80 @@
+{
+  "task": "C07-BE38-PUBLIC-WIRE",
+  "canonical": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "source": "70a6336697e4ebb700a3ffca04ac06fe1675e958",
+  "started": 1793827009.9454389,
+  "commands": [
+    {
+      "name": "query-projection-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/test_query_projection.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "domain-transport-generation",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-domain-transport.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "preflight",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/qualify_baseline.py",
+        "--pins",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round04/candidate-pins.json",
+        "--output",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round04/preflight.json"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "qa01",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/qa01-coverage/run.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "qa01-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/qa01-coverage/test_coverage.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "c07",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/run.py",
+        "--node",
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--dependencies",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "--artifacts",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round04/checks"
+      ],
+      "exit": 0
+    }
+  ],
+  "status": "PASS",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "oldPinArchive": "scripts/mcr/contracts/qa01-coverage/archive/pins-a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9.json",
+  "auditArchive": "scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-7c563cf09fe971b904ac9549f5e3e8fe1391d94a.json",
+  "activePinsSha256": "147be6549c1f4c1d1307415ff2350b67bc2bdeace47f503050bfdf4da66198c5",
+  "operations": 150,
+  "inputs": 243,
+  "finished": 1793827099.330559
+}

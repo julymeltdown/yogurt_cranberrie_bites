@@ -15574,6 +15574,506 @@
         "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
       }
     },
+    "/api/concert/events/{eventId}/admin/service-policy": {
+      "put": {
+        "operationId": "setConcertServicePolicy",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Domain_common_Uuid"
+            }
+          },
+          {
+            "name": "X-MCR-Intent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "browser"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Domain_common_Uuid"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "ORIGIN_NOT_ALLOWED",
+                                "BROWSER_INTENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "INVALID_TRANSITION",
+                                "IDEMPOTENCY_CONFLICT",
+                                "IDEMPOTENCY_EXPIRED",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Domain_common_CommandReceipt"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Pending; not successful completion or media readiness",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Domain_common_CommandReceipt"
+                }
+              }
+            }
+          }
+        },
+        "x-mcr-query-schema": {
+          "$ref": "#/components/schemas/Domain_common_EmptyRequest"
+        },
+        "x-mcr-closed-query": true,
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-retry": "STATUS_THEN_IDENTICAL_COMMAND",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-actor": "OPERATOR",
+        "x-mcr-rule": "service_policy_write_v1",
+        "x-mcr-write-policy": "OPERATIONS",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain_admin_ServicePolicyInput"
+              }
+            }
+          }
+        },
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
+      }
+    },
     "/api/concert/events/{eventId}/admin/settings": {
       "get": {
         "operationId": "getConcertSettings",
@@ -58548,6 +59048,374 @@
         "x-mcr-cache": "NO_STORE"
       }
     },
+    "/api/concert/events/{eventId}/service-policy": {
+      "get": {
+        "operationId": "getConcertServicePolicy",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Domain_common_Uuid"
+            }
+          },
+          {
+            "name": "client_version",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 17,
+              "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+              "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+            }
+          },
+          {
+            "name": "client_release",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$",
+              "description": "Untrusted application build claim; only a real current Root publisher catalog can recognize its exact declared version/build pair."
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Domain_admin_ServicePolicyDecision"
+                }
+              }
+            }
+          }
+        },
+        "x-mcr-query-schema": {
+          "$ref": "#/components/schemas/Domain_admin_ServicePolicyQuery"
+        },
+        "x-mcr-closed-query": true,
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-actor": "SELF",
+        "x-mcr-rule": "service_policy_read_v1",
+        "x-mcr-write-policy": "READ"
+      }
+    },
     "/api/concert/events/{eventId}/social-requests": {
       "post": {
         "operationId": "createConcertSocialRequest",
@@ -63798,6 +64666,252 @@
           "decision",
           "note"
         ]
+      },
+      "Domain_admin_ServicePolicyDecision": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "event_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "policy_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "kind": {
+                "const": "NORMAL"
+              },
+              "minimum_client_version": {
+                "type": "string",
+                "maxLength": 17,
+                "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+                "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+              },
+              "server_time": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              },
+              "valid_until": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              }
+            },
+            "required": [
+              "event_revision",
+              "policy_revision",
+              "kind",
+              "minimum_client_version",
+              "server_time",
+              "valid_until"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "event_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "policy_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "kind": {
+                "const": "MAINTENANCE"
+              },
+              "minimum_client_version": {
+                "type": "string",
+                "maxLength": 17,
+                "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+                "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+              },
+              "server_time": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              },
+              "valid_until": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              }
+            },
+            "required": [
+              "event_revision",
+              "policy_revision",
+              "kind",
+              "minimum_client_version",
+              "server_time",
+              "valid_until"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "event_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "policy_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "kind": {
+                "const": "CLIENT_VERSION_REQUIRED"
+              },
+              "minimum_client_version": {
+                "type": "string",
+                "maxLength": 17,
+                "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+                "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+              },
+              "server_time": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              },
+              "valid_until": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              }
+            },
+            "required": [
+              "event_revision",
+              "policy_revision",
+              "kind",
+              "minimum_client_version",
+              "server_time",
+              "valid_until"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "event_revision": {
+                "$ref": "#/components/schemas/Domain_common_Revision"
+              },
+              "policy_revision": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_Revision"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "UNAVAILABLE"
+              },
+              "minimum_client_version": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 17,
+                    "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+                    "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "server_time": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              },
+              "valid_until": {
+                "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+              }
+            },
+            "required": [
+              "event_revision",
+              "policy_revision",
+              "kind",
+              "minimum_client_version",
+              "server_time",
+              "valid_until"
+            ]
+          }
+        ]
+      },
+      "Domain_admin_ServicePolicyInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_policy_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740990
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "pattern": "^[^\\s\\u0000-\\u001f\\u007f-\\u009f](?:[^\\u0000-\\u001f\\u007f-\\u009f]*[^\\s\\u0000-\\u001f\\u007f-\\u009f])?$",
+            "description": "Nonblank trimmed reason with no control characters; server enforces at most 500 UTF-8 bytes."
+          },
+          "change": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "const": "PUBLISH"
+                  },
+                  "mode": {
+                    "enum": [
+                      "NORMAL",
+                      "MAINTENANCE"
+                    ]
+                  },
+                  "minimum_client_version": {
+                    "type": "string",
+                    "maxLength": 17,
+                    "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+                    "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+                  },
+                  "expires_at": {
+                    "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+                  }
+                },
+                "required": [
+                  "action",
+                  "mode",
+                  "minimum_client_version",
+                  "expires_at"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "const": "WITHDRAW"
+                  }
+                },
+                "required": [
+                  "action"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "expected_policy_revision",
+          "reason",
+          "change"
+        ]
+      },
+      "Domain_admin_ServicePolicyQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "client_version": {
+            "type": "string",
+            "maxLength": 17,
+            "pattern": "^(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])\\.(?:0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(?![\\s\\S])",
+            "description": "Canonical ASCII M.m.p, each numeric component 0..65535, no leading zeroes; compare numeric tuples."
+          },
+          "client_release": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64,
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Untrusted application build claim; only a real current Root publisher catalog can recognize its exact declared version/build pair."
+          }
+        }
       },
       "Domain_admin_SetEventPhase": {
         "type": "object",
@@ -77874,6 +78988,48 @@
           "Client binds its full current actor/event/generation/policy/gate PrivacyScope, synchronously withdraws the old decision BEFORE replacement or null, aborts late reads on withdrawal/disposal, and rechecks scope/expiry at each read",
           "Informational lease is never a bearer grant or a substitute for current server authorization; unobserved server withdrawal is not inferred; every privileged read/write checks current authority and holds its own delivery fence",
           "Existing getConcertSettings EventSettings is the authoritative event revision/phase producer for OPERATOR context; do not invent event facts from this role-only projection"
+        ]
+      },
+      "service_policy_read_v1": {
+        "contract_version": 1,
+        "preconditions": [
+          "Current canonical Auth actor/session/generation and original signed request; no Participant, event admission, World or Operator prerequisite",
+          "Bodyless GET on the new service-policy route only; optional closed canonical client_version/client_release query is bound by the original target",
+          "Read latest immutable policy publication using the PostgreSQL clock; no missing/expired/withdrawn/future policy defaults to NORMAL",
+          "Recognize exact claimed build/version only against the real current Root-owned application publisher catalog; package/map/theme/API are not fallbacks"
+        ],
+        "result": [
+          "Every valid decision uses HTTP 200 with the closed NORMAL|MAINTENANCE|CLIENT_VERSION_REQUIRED|UNAVAILABLE union; transport success is not availability",
+          "Unknown/DRAFT/ARCHIVED event is canonical 404 RESOURCE_UNAVAILABLE; canonical Auth/transport errors retain existing DomainError, never infer policy from 503/4409/GAP",
+          "Precedence: unavailable policy, maintenance, missing or unrecognized client, recognized client below minimum, compatible NORMAL",
+          "event_revision is current; policy_revision is current immutable history revision or null only when no history exists; minimum version is null when no usable publication exists",
+          "server_time is DB clock; valid_until is bounded by policy expiry, actual remaining monotonic authority deadline and server_time+30 seconds",
+          "Client charges request-start-to-receipt time using a monotonic clock and binds user/event/Auth/privacy generation/build/bootstrap attempt/AbortSignal; stale, foreign or aborted arrivals are unavailable",
+          "NORMAL may be consumed only by the exact current fresh pre-World attempt. Once real World is admitted, preflight expiry must not remount or duplicate shell; every new/recovery/bootstrap attempt refreshes policy",
+          "Unconsumed or nonNORMAL decisions withdraw on expiry/binding change/current unavailable response; no persisted grant or silent offline replay",
+          "Unobserved publication changes are bounded by explicit refresh/expiry; real server World and mutation guards remain authoritative"
+        ]
+      },
+      "service_policy_write_v1": {
+        "contract_version": 1,
+        "preconditions": [
+          "Current signed managed Operations publication and real Operator role retained on the same canonical core/scope through terminal; stale SQL assignment is insufficient",
+          "Canonical Idempotency-Key and exact expected_policy_revision (0 only before first publication); original actor/event/method/target/body bound",
+          "Publish NORMAL or MAINTENANCE with validated minimum client version and DB expiry strictly future and at most 86400 seconds; WITHDRAW writes a new unavailable revision",
+          "Serialize on event UPDATE; validate current revision, role, authority deadline and policy invariants on the actual receipt/effects transaction"
+        ],
+        "idempotency": [
+          "Common canonical server-keyed command receipt semantics apply; current authority gates replay/conflict metadata",
+          "Identical authorized replay returns the same receipt and does not republish, increment revisions or refresh expiry; different input conflicts",
+          "Never automatically replay or mint a new key from an unknown, expired, failed, pending or unavailable result"
+        ],
+        "result": [
+          "Event revision, policy revision, immutable actor/reason/receipt-linked history, least-privilege audit and invalidation commit atomically or roll back",
+          "Deferred receipt guard requires the exact successful actor/event/operation/target/result revision; history updates/deletes are rejected",
+          "Stale expected revision yields VERSION_CONFLICT without policy effects; malformed input or out-of-bounds expiry does not publish",
+          "Withdrawal never revives an older NORMAL publication; recovery requires a new currently authorized publication",
+          "Command success is a safe CommandReceipt; it is not a fresh public policy decision, admission or server-enforcement grant",
+          "Same current policy must gate genuine World and non-exempt mutation effects; preserve existing owner-classified READ_ONLY safety/cancellation exceptions"
         ]
       }
     },

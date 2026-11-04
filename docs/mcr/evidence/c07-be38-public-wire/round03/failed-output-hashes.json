@@ -1,0 +1,13 @@
+{
+  "backend/docs/api/mcr-domain.openapi.json": "e150410fce6ef2db1184ce147b0c097f0bdde36f22521cc52935d485dad2c2c2",
+  "contracts/fixtures/c07/compatibility.json": "af9d8850248928429af2239879fc50b5e96654c4a8e65b806ae29d0e0a06a476",
+  "contracts/fixtures/c07/index.json": "84447e0139eee87495023e34762dba2255a03fb8614cb911c9377ef5867b9f29",
+  "contracts/fixtures/c07/responses.json": "8c164cd9f842ba90876f66b7e6dcff81b158737679c30b9a0ab27d2739c6d446",
+  "contracts/generated/api-client/document.ts": "3a7b7bd094d1f57a1c59ac1b76527cf632911b08aac58d94f6471f90d4686dac",
+  "contracts/generated/api-client/manifest.json": "5b65fb4fcf700a8cedd7c64b692a2e79e13166174f483bec3b782725dbe70189",
+  "contracts/generated/api-client/types.ts": "c1d07ba704bad35ed753ef4c42b7b083435da7f4b03c8d8f546e462d5c255a97",
+  "contracts/generated/mcr-domain.openapi.json": "e150410fce6ef2db1184ce147b0c097f0bdde36f22521cc52935d485dad2c2c2",
+  "frontend/src/shared/api/domain-operations.generated.ts": "f298f041f28a2a50081c4ec121b78203b2c76cdc08eb037c5310f0c5db156c4d",
+  "frontend/src/shared/api/generated/document.ts": "3a7b7bd094d1f57a1c59ac1b76527cf632911b08aac58d94f6471f90d4686dac",
+  "frontend/src/shared/api/generated/types.ts": "c1d07ba704bad35ed753ef4c42b7b083435da7f4b03c8d8f546e462d5c255a97"
+}

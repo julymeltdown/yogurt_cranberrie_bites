@@ -1,0 +1,17 @@
+{
+  "task": "QA01_FORWARD_PREFLIGHT",
+  "candidate": "184c4e43f8accef58f1ebea2375dc6c140c5dd98",
+  "pins_sha256": "384ef4c86f744dde29467ec9fbbe0f56f9ffca3aa50a627dee2fb4b624b9b2cf",
+  "active_pins_unchanged": true,
+  "dependencies": {
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0",
+    "rfc3339-validator": "0.1.4",
+    "rfc3986-validator": "0.1.1",
+    "six": "1.17.0"
+  },
+  "schema_definitions": 257,
+  "fixtures": [],
+  "result": "FAIL",
+  "error": "ContractError: missing async recovery contract"
+}

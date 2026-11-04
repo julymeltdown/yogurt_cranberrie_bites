@@ -1,0 +1,85 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "drift",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-api-client.py",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "schema-mismatch",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-api-client.py",
+        "--probe",
+        "schema-mismatch"
+      ],
+      "exit": 1
+    },
+    {
+      "name": "missing-operation",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-api-client.py",
+        "--probe",
+        "missing-operation"
+      ],
+      "exit": 1
+    },
+    {
+      "name": "output-drift",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-api-client.py",
+        "--probe",
+        "output-drift"
+      ],
+      "exit": 1
+    },
+    {
+      "name": "inventory-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/test_inventory.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "motion-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/test_motion.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "typescript",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round04/checks/compile-l8092b48/tsconfig.json"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/test-runtime.mjs"
+      ],
+      "exit": 0
+    }
+  ]
+}

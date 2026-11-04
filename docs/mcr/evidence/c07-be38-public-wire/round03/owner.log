@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "error": "RuntimeError('preflight failed; original output retained')",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/round03"
+}

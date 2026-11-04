@@ -1,0 +1,21 @@
+{
+  "task": "C07-BE38-PUBLIC-WIRE",
+  "canonical": "e11bd284136851544e54083c70c8679721b9ca1b",
+  "source": "680ca0e719a73c4f7b95af76e5f76452f07c3001",
+  "started": 1793825627.7825,
+  "commands": [
+    {
+      "name": "query-projection-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-be38-public-wire/test_query_projection.py"
+      ],
+      "exit": 0
+    }
+  ],
+  "status": "FAIL",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "error": "AssertionError('Independent identity phase failed; original logs retained')",
+  "finished": 1793825629.898546
+}
