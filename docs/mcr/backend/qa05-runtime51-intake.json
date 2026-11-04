@@ -1,0 +1,33 @@
+{
+  "status": "MOCK_READY",
+  "source": "fa0cab0b1fe0b94d404162524277581aaa449f36",
+  "parent": "5bc12ec982e49556feeb6f2642eca599d9654930",
+  "publisher_commit": "4e6851455a2b10f17884c378c7deba13d39f8fb4",
+  "paths": [
+    "backend/scripts/mcr/test_world_in01_profiles.py",
+    "backend/scripts/mcr/world_in01_live.py",
+    "docs/mcr/backend/world-capacity-qualification.md"
+  ],
+  "postimages_sha256": {
+    "backend/scripts/mcr/test_world_in01_profiles.py": "913fc94dc01eed0cb0638582ae5781ee23b4da9b83abcea6888ad745be7a03a7",
+    "backend/scripts/mcr/world_in01_live.py": "381d982907f60f24bf5608c369da0cd997535ec7682131cac26233c3aa678a96",
+    "docs/mcr/backend/world-capacity-qualification.md": "ea04ca134cc0ff11c5d6169f10c765eaa9a2a464f15c2db9ca5a2429d39143d7"
+  },
+  "owner_offline_checks": {
+    "passed": 57,
+    "failed": 0,
+    "seconds": 5.645
+  },
+  "runtime_inputs": [
+    17,
+    18,
+    9,
+    18,
+    32,
+    6,
+    40
+  ],
+  "runtime_sql_final_source": "08602903d100300edc0b6746b046ab9d77051af2",
+  "new_actual_qa05": "NOT_RUN",
+  "limitation": "Pins the published 0051 input for a future actual allocation; retains all prior QA05 failures. No resource lease/input hold granted by this source publication."
+}
