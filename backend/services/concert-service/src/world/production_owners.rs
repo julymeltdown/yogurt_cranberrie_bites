@@ -13,6 +13,7 @@ use crate::adapters::out::{
 use chrono::{DateTime, Utc};
 use concert_application::world_ticket::WorldError;
 use concert_domain::{avatar::AvatarCatalog, AvatarSelection, Revision};
+use futures::{stream, StreamExt, TryStreamExt};
 use sqlx::{postgres::PgRow, PgPool, Postgres, Row, Transaction};
 use std::{
     collections::{BTreeMap, BTreeSet},
@@ -34,6 +35,19 @@ fn avatar(row: &PgRow) -> Result<(Revision, AvatarSelection), WorldError> {
         crate::adapters::out::repository::avatar::selection_from_row(row).map_err(unavailable)?,
     ))
 }
+// Bound concurrent remote candidates without changing their source order, owner
+// attempt gates or original parent deadline. No detached tasks survive a failure.
+const RECIPIENT_READ_CONCURRENCY: usize = 4;
+async fn observe_in_order<T, E, F>(reads: impl IntoIterator<Item = F>) -> Result<Vec<T>, E>
+where
+    F: std::future::Future<Output = Result<T, E>>,
+{
+    stream::iter(reads)
+        .buffered(RECIPIENT_READ_CONCURRENCY)
+        .try_collect()
+        .await
+}
+
 const AVATAR:&str="select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2";
 struct Candidate {
     context: WorldPresenceProjection,
@@ -200,11 +214,11 @@ impl ProductionOwners {
         let actor = parent
             .current_membership()
             .ok_or(WorldError::MembershipMissing)?;
-        let mut visible = BTreeSet::new();
-        let mut candidates = Vec::new();
-        let mut until = DateTime::from_timestamp_micros(parent.deadline().expires_micros())
-            .ok_or(WorldError::Unavailable)?;
-        for subject in subjects {
+        // Each candidate still calls the qualified reader, which reserves and
+        // runs both real owner attempts and enforces the clipped original stop.
+        // Ordered buffering preserves the later SQL plan/lock order while a
+        // slow first candidate no longer serializes all following owner reads.
+        let candidates = observe_in_order(subjects.iter().map(|subject| async move {
             let expected = concert_application::world_ticket::WorldSubject {
                 key: subject.membership.key,
                 event_id: subject.membership.key.event_id,
@@ -216,18 +230,25 @@ impl ProductionOwners {
                 &expected,
                 subject.membership.connection_id,
             )?;
-            // The qualified reader reserves BOTH attempts and nests run around
-            // the entire legacy call, including local checks. Do not bypass it.
             let observation = Box::pin(self.recipient.read(&context)).await?;
             observation.check_scope(&context)?;
-            until = until.min(observation.valid_until());
-            if observation.visible() {
-                visible.insert(subject.membership.key.user_id.uuid());
-            }
-            candidates.push(Candidate {
+            Ok::<_, WorldError>(Candidate {
                 context,
                 observation,
-            });
+            })
+        }))
+        .await?;
+        let mut visible = BTreeSet::new();
+        let mut until = DateTime::from_timestamp_micros(parent.deadline().expires_micros())
+            .ok_or(WorldError::Unavailable)?;
+        for candidate in &candidates {
+            // A completed earlier observation may have expired while another
+            // candidate was pending. Never turn concurrency into a fresh lease.
+            candidate.observation.check_scope(&candidate.context)?;
+            until = until.min(candidate.observation.valid_until());
+            if candidate.observation.visible() {
+                visible.insert(candidate.context.candidate().membership.key.user_id.uuid());
+            }
         }
         if !visible.contains(&parent.actor()) {
             return Err(WorldError::Denied);
@@ -452,4 +473,80 @@ async fn held_membership(
     let access:Option<DateTime<Utc>>=sqlx::query_scalar("select m.access_expires_at from concert_world_memberships m join concert_world_owner_leases l using(event_id,room_id) join concert_world_rooms r using(event_id,room_id) where m.event_id=$1 and m.user_id=$2 and m.room_id=$3 and m.session_id=$4 and m.connection_id=$5 and m.owner_process_id=$6 and m.owner_epoch=$7 and l.owner_process_id=m.owner_process_id and l.owner_epoch=m.owner_epoch and not m.disconnected and m.lease_until>clock_timestamp() and m.access_expires_at>clock_timestamp() and m.lease_until<=m.access_expires_at and l.lease_until>clock_timestamp() and r.availability='AVAILABLE' and m.map_id=$8 and m.map_revision=$9 and m.avatar_manifest_id=$10 and m.avatar_manifest_version=$11 and r.map_id=m.map_id and r.map_revision=m.map_revision and r.avatar_manifest_id=m.avatar_manifest_id and r.avatar_manifest_version=m.avatar_manifest_version for share of m,l,r")
         .bind(m.key.event_id.uuid()).bind(m.key.user_id.uuid()).bind(m.room_id.uuid()).bind(Uuid::parse_str(m.session_id.as_str()).map_err(unavailable)?).bind(m.connection_id.uuid()).bind(&current.owner.process_id).bind(current.owner.epoch).bind(m.pin.map.id.as_str()).bind(m.pin.map.revision.get()).bind(m.pin.avatar.manifest_id.as_str()).bind(m.pin.avatar.manifest_version.get()).fetch_optional(&mut **tx).await.map_err(unavailable)?;
     Ok(access == Some(m.access_expires_at))
+}
+
+#[cfg(test)]
+mod visibility_pipeline_tests {
+    use super::*;
+    use std::sync::atomic::AtomicUsize;
+
+    struct Active(Arc<AtomicUsize>);
+    impl Drop for Active {
+        fn drop(&mut self) {
+            self.0.fetch_sub(1, Ordering::SeqCst);
+        }
+    }
+
+    #[tokio::test]
+    async fn overlaps_at_most_four_and_retains_input_lock_order() {
+        let active = Arc::new(AtomicUsize::new(0));
+        let peak = Arc::new(AtomicUsize::new(0));
+        let values = observe_in_order((0..12).map(|n| {
+            let active = active.clone();
+            let peak = peak.clone();
+            async move {
+                let count = active.fetch_add(1, Ordering::SeqCst) + 1;
+                let _guard = Active(active);
+                peak.fetch_max(count, Ordering::SeqCst);
+                tokio::time::sleep(Duration::from_millis((4 - n % 4) * 2)).await;
+                Ok::<_, WorldError>(n)
+            }
+        }))
+        .await
+        .unwrap();
+        assert_eq!(values, (0..12).collect::<Vec<_>>());
+        assert_eq!(peak.load(Ordering::SeqCst), RECIPIENT_READ_CONCURRENCY);
+        assert_eq!(active.load(Ordering::SeqCst), 0);
+    }
+
+    #[tokio::test]
+    async fn failure_drops_all_inflight_reads_without_a_partial_plan() {
+        let active = Arc::new(AtomicUsize::new(0));
+        let started = Arc::new(AtomicUsize::new(0));
+        let result = observe_in_order((0..20).map(|n| {
+            let active = active.clone();
+            let started = started.clone();
+            async move {
+                active.fetch_add(1, Ordering::SeqCst);
+                started.fetch_add(1, Ordering::SeqCst);
+                let _guard = Active(active);
+                if n == 0 {
+                    tokio::task::yield_now().await;
+                    Err::<usize, _>(WorldError::Unavailable)
+                } else {
+                    std::future::pending().await
+                }
+            }
+        }))
+        .await;
+        assert!(matches!(result, Err(WorldError::Unavailable)));
+        assert!(started.load(Ordering::SeqCst) <= RECIPIENT_READ_CONCURRENCY);
+        assert_eq!(active.load(Ordering::SeqCst), 0);
+    }
+
+    #[tokio::test]
+    async fn original_deadline_cancels_the_whole_batch_and_releases_reads() {
+        let active = Arc::new(AtomicUsize::new(0));
+        let original = tokio::time::Instant::now() + Duration::from_millis(10);
+        let reads = observe_in_order((0..20).map(|_| {
+            let active = active.clone();
+            async move {
+                active.fetch_add(1, Ordering::SeqCst);
+                let _guard = Active(active);
+                std::future::pending::<Result<(), WorldError>>().await
+            }
+        }));
+        assert!(tokio::time::timeout_at(original, reads).await.is_err());
+        assert_eq!(active.load(Ordering::SeqCst), 0);
+    }
 }
