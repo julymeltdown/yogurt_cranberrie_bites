@@ -2,12 +2,13 @@
 use async_trait::async_trait;
 use platform::{
     actor_delegation::{
-        authority_deadline::AuthorityRpcDeadline, read_authority::VerifiedReadAuthority,
-        VerifiedActor,
+        authority_deadline::AuthorityRpcDeadline, exchange::VerifiedParentAuthority,
+        read_authority::VerifiedReadAuthority, VerifiedActor,
     },
     grpc_auth::{VerifiedCaller, Workload},
     grpc_method_policy::MethodPolicy,
 };
+use prost::Message;
 use std::{sync::Arc, time::Duration};
 use tonic::{Request, Response, Status};
 use uuid::Uuid;
@@ -15,7 +16,11 @@ use uuid::Uuid;
 pub mod proto {
     tonic::include_proto!("concert.product.v1");
 }
+pub mod delivery;
 mod owner_media;
+mod query;
+pub mod scope_ledger;
+mod scope_lifecycle;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_BODY: usize = 10 * 1024 * 1024;
 pub const MAX_FRAME: usize = MAX_BODY + 16 * 1024;
@@ -29,12 +34,35 @@ pub const POLICY: MethodPolicy = MethodPolicy {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Operation {
     Feed,
+    Post(Uuid),
+    Comments(Uuid),
+    ListParties,
+    GetParty(Uuid),
+    CreateParty,
     InitializeUpload,
     MediaMetadata(Uuid),
     UploadBytes(Uuid),
     FinalizeUpload(Uuid),
     PrivateContent(Uuid),
     CommandStatus,
+}
+impl Operation {
+    pub fn contract_id(self) -> &'static str {
+        match self {
+            Self::Feed => "listConcertFeed",
+            Self::Post(_) => "getConcertPost",
+            Self::Comments(_) => "listConcertComments",
+            Self::ListParties => "listConcertParties",
+            Self::GetParty(_) => "getConcertParty",
+            Self::CreateParty => "createConcertParty",
+            Self::InitializeUpload => "initConcertUpload",
+            Self::MediaMetadata(_) => "getConcertMedia",
+            Self::UploadBytes(_) => "putConcertUploadBytes",
+            Self::FinalizeUpload(_) => "finalizeConcertUpload",
+            Self::PrivateContent(_) => "readConcertMedia",
+            Self::CommandStatus => "getConcertCommandStatus",
+        }
+    }
 }
 pub fn canonical_uuid(value: &str) -> Result<Uuid, Status> {
     Uuid::parse_str(value)
@@ -56,24 +84,37 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
+        ("GET", "parties") => Operation::ListParties,
+        ("POST", "parties") => Operation::CreateParty,
         ("GET", "commands") => Operation::CommandStatus,
         ("POST", "media/uploads") => Operation::InitializeUpload,
         _ => {
             let pieces: Vec<_> = suffix.split('/').collect();
-            if pieces.first() != Some(&"media") || !(2..=3).contains(&pieces.len()) {
+            if !(2..=3).contains(&pieces.len()) {
                 return Err(Status::permission_denied("Unsupported product operation"));
             }
             let id = canonical_uuid(pieces[1])?;
-            match (method, pieces.get(2).copied()) {
-                ("GET", None) => Operation::MediaMetadata(id),
-                ("GET", Some("content")) => Operation::PrivateContent(id),
-                ("PUT", Some("bytes")) => Operation::UploadBytes(id),
-                ("POST", Some("finalize")) => Operation::FinalizeUpload(id),
+            match (method, pieces[0], pieces.get(2).copied()) {
+                ("GET", "posts", None) => Operation::Post(id),
+                ("GET", "posts", Some("comments")) => Operation::Comments(id),
+                ("GET", "parties", None) => Operation::GetParty(id),
+                ("GET", "media", None) => Operation::MediaMetadata(id),
+                ("GET", "media", Some("content")) => Operation::PrivateContent(id),
+                ("PUT", "media", Some("bytes")) => Operation::UploadBytes(id),
+                ("POST", "media", Some("finalize")) => Operation::FinalizeUpload(id),
                 _ => return Err(Status::permission_denied("Unsupported product operation")),
             }
         }
     };
-    if query.is_some() && !matches!(result, Operation::Feed | Operation::CommandStatus) {
+    if query.is_some()
+        && !matches!(
+            result,
+            Operation::Feed
+                | Operation::Comments(_)
+                | Operation::ListParties
+                | Operation::CommandStatus
+        )
+    {
         return Err(Status::invalid_argument("Unexpected product query"));
     }
     Ok(result)
@@ -88,6 +129,9 @@ pub struct VerifiedProduct {
     request: Uuid,
     deadline: AuthorityRpcDeadline,
     operation: Operation,
+    parent: VerifiedParentAuthority,
+    feed_query: Option<crate::feed::live_read::FeedQuery>,
+    comments_query: Option<crate::feed::live_read::CommentsQuery>,
 }
 impl VerifiedProduct {
     pub fn actor(&self) -> Uuid {
@@ -107,6 +151,15 @@ impl VerifiedProduct {
     }
     pub fn operation(&self) -> Operation {
         self.operation
+    }
+    pub fn parent_authority(&self) -> &VerifiedParentAuthority {
+        &self.parent
+    }
+    pub fn feed_query(&self) -> Option<&crate::feed::live_read::FeedQuery> {
+        self.feed_query.as_ref()
+    }
+    pub fn comments_query(&self) -> Option<&crate::feed::live_read::CommentsQuery> {
+        self.comments_query.as_ref()
     }
     pub fn check(&self) -> Result<(), Status> {
         self.deadline
@@ -131,18 +184,44 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
         .get::<VerifiedReadAuthority>()
         .ok_or_else(|| Status::unauthenticated("Original product deadline required"))?;
     let m = request.get_ref();
+    let parent = request
+        .extensions()
+        .get::<VerifiedParentAuthority>()
+        .ok_or_else(|| Status::unauthenticated("Verified original product parent required"))?
+        .clone();
+    if parent.request().method != "/concert.product.v1.ProductService/Dispatch"
+        || parent.actor() != actor
+        || proto::ProductRequest::decode(
+            parent
+                .message()
+                .map_err(|_| Status::permission_denied("Invalid product parent frame"))?,
+        )
+        .map_err(|_| Status::permission_denied("Invalid product parent message"))?
+            != *m
+    {
+        return Err(Status::permission_denied("Product parent mismatch"));
+    }
     let user = canonical_uuid(&m.user_id)?;
     let event = canonical_uuid(&m.event_id)?;
     if user != actor || user != proof.actor() {
         return Err(Status::permission_denied("Product actor mismatch"));
     }
     let operation = operation(event, &m.http_method, &m.http_target)?;
+    let feed_query = matches!(operation, Operation::Feed)
+        .then(|| query::feed(&m.http_target))
+        .transpose()?;
+    let comments_query = matches!(operation, Operation::Comments(_))
+        .then(|| query::comments(&m.http_target))
+        .transpose()?;
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
     let mutation = matches!(
         operation,
-        Operation::InitializeUpload | Operation::UploadBytes(_) | Operation::FinalizeUpload(_)
+        Operation::InitializeUpload
+            | Operation::UploadBytes(_)
+            | Operation::FinalizeUpload(_)
+            | Operation::CreateParty
     );
     if mutation {
         canonical_uuid(&m.idempotency_key)?;
@@ -186,6 +265,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
         session: canonical_uuid(&m.session_family_id)?,
         request: canonical_uuid(&m.request_id)?,
         operation,
+        parent,
+        feed_query,
+        comments_query,
         deadline: AuthorityRpcDeadline::within_original(
             expires.min(original.expires_micros()),
             original.stop().into_std(),
@@ -202,7 +284,7 @@ pub trait ProductOwner: Send + Sync {
         &self,
         context: &VerifiedProduct,
         request: proto::ProductRequest,
-    ) -> Result<proto::ProductResponse, Status>;
+    ) -> Result<Response<proto::ProductResponse>, Status>;
 }
 
 pub struct ProductRpcService {
@@ -229,16 +311,23 @@ impl proto::product_service_server::ProductService for ProductRpcService {
             .clone()
             .try_acquire_owned()
             .map_err(|_| Status::unavailable("Product capacity unavailable"))?;
-        let result = platform::call_deadline::scope(context.deadline.stop().into_std(), async {
-            tokio::time::timeout_at(
-                context.deadline.stop(),
-                self.owner.dispatch(&context, request.into_inner()),
-            )
-            .await
-            .map_err(|_| Status::deadline_exceeded("Product deadline expired"))?
-        })
-        .await?;
+        let mut response = context
+            .parent
+            .clone()
+            .scope(async {
+                platform::call_deadline::scope(context.deadline.stop().into_std(), async {
+                    tokio::time::timeout_at(
+                        context.deadline.stop(),
+                        self.owner.dispatch(&context, request.into_inner()),
+                    )
+                    .await
+                    .map_err(|_| Status::deadline_exceeded("Product deadline expired"))?
+                })
+                .await
+            })
+            .await?;
         context.check()?;
+        let result = response.get_ref();
         if result.body.is_empty()
             || result.body.len() > MAX_BODY
             || !matches!(
@@ -255,7 +344,16 @@ impl proto::product_service_server::ProductService for ProductRpcService {
         {
             return Err(Status::internal("Invalid product representation"));
         }
-        let mut response = Response::new(result);
+        if result.delivery.is_none()
+            || response
+                .extensions()
+                .get::<platform::actor_delegation::response_scope::ResponseScopeToken>()
+                .is_none()
+        {
+            return Err(Status::unavailable(
+                "Canonical product delivery scope required",
+            ));
+        }
         response.metadata_mut().insert(
             "cache-control",
             "no-store".parse().expect("static metadata"),
