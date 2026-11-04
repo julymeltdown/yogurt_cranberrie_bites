@@ -30,6 +30,8 @@ and this document grants no foreign-database writes.
 `WorldDeletionCommand` with `WorldDeletionTarget::PrivateData`, a mandatory
 `DeletionAuthority`, and the original monotonic deadline. It verifies source
 again before committing progress and before a final whole acknowledgement.
+It also reauthenticates immediately before each owner category dispatch, so a
+source revoked between two categories cannot cause a new owner effect.
 The common user-first advisory lock and fence are required before receipt rows
 or category effects.
 

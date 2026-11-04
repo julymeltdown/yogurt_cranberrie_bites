@@ -363,6 +363,10 @@ impl PrivateDataAggregateCoordinator {
         let mut missing_core = false;
         for category in categories {
             source.check(&command, deadline)?;
+            let before_owner = verify_source(self.authority.as_ref(), &command, deadline).await?;
+            if before_owner.source_binding() != source.source_binding() {
+                return Err(DeletionFailure::Unavailable);
+            }
             let Some(owner) = self.owners.get(category) else {
                 self.record_missing(&command, &source, category, ordinal(category), deadline)
                     .await?;
