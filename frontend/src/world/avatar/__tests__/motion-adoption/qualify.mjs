@@ -25,7 +25,7 @@ const report = { result: 'FAIL', qualification: 'TEST_ONLY consumer checkpoint; 
 try {
   for (const [name, executable, args] of checks) {
     const result = spawnSync(executable, args, { cwd: checkout, env: { ...process.env, MCR_MOTION_CACHE: resolve(temporary, 'vitest') }, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 })
-    await writeFile(resolve(evidence, `${name}.log`), clean((result.stdout ?? '') + (result.stderr ?? '')))
+    await writeFile(resolve(evidence, `${name}.log`), clean((result.stdout ?? '') + (result.stderr ?? '')).trimEnd() + '\n')
     report.checks.push({ name, command: clean([executable, ...args].join(' ')), exit: result.status, error: result.error?.message ?? null })
     console.log(JSON.stringify(report.checks.at(-1)))
     if (result.status !== 0 || result.error) throw Error(`Check ${name} failed`)

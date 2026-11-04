@@ -57,7 +57,7 @@
     "frontend/src/features/avatar/motion-adoption/motion.css": "7252bc282eaa9b248651ae33c8e23c15a51db7949d007910d836a41746a01a7b",
     "frontend/src/world/avatar/__tests__/motion-adoption/art.test.ts": "f18c432790522ff6c25dd4143ec81726032acda127f62608f6aa026707f46534",
     "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "305d487e8ea1a072350cf4c16d9e095a9b601f4fdd524d48d95f03c3f8a38801",
-    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "85b0982db721db99fd07b825300c5cdfb2192457e4aebae41e21b697cd9267f7",
+    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "56fac991d89070de13283b6c6c74d1efdbdffdeb28be521c9cceccda9471ec51",
     "frontend/src/world/avatar/__tests__/motion-adoption/renderer.test.ts": "9a0e72545ce54d296114dd3847d9b249b98b22c35f623f3584dac41dbfffb665",
     "frontend/src/world/avatar/__tests__/motion-adoption/test-authority.ts": "88a37fcccf152f6e03c8a6a13909f070892686cb4df4047254af9a5fffde97e0",
     "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs": "cbdf2861da733f9bbbb52f7de2913cfccbcb48e078ed8ecdf43f53f218d99a34",
@@ -67,5 +67,6 @@
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.html": "12c59aa5a9d241fc0386f98a20db69e284d52f0d23682ea4d13e0b312c80ff2d",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx": "12c33a45da0394fec2d89da16f357262d1e60fe63eba2f31069a19fe47a2e0f3",
     "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs": "3d0bad2d55e496d1c64ca770dac2e4d6c2b6217498306adcd0c0a6036e6b2b17"
-  }
+  },
+  "postQualificationNote": "Only qualifier log-output trailing whitespace normalization changed after PASS; executable/source behavior under qualification unchanged. Wrapper syntax/lint rechecked."
 }
