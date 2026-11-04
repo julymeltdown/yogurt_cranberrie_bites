@@ -74,6 +74,52 @@ impl SocialRuntimeConfig {
             read_settler,
         })
     }
+
+    /// Attach only Social dispatch to the already composed canonical core. Its
+    /// Social read settler and native resolver were installed before serving;
+    /// do not create another registry, ledger, scope or delivery publisher here.
+    pub fn compose_shared(
+        self,
+        pool: PgPool,
+        owners: &super::canonical_runtime::CanonicalOwnerComposition,
+        base: super::product_runtime::ProductOwners,
+    ) -> Result<super::product_runtime::ProductOwners, Status> {
+        let producer = Arc::new(ScopedSocialProducer::new(
+            pool,
+            self.keys,
+            self.provenance,
+            self.ttl_seconds,
+        )?);
+        let delivery = owners.core.delivery();
+        Ok(super::product_runtime::ProductOwners {
+            product: Arc::new(SharedSocialOwner {
+                base: base.product,
+                social: ScopedProductOwner::new(owners.fence.clone(), delivery.clone(), producer),
+            }),
+            delivery,
+        })
+    }
+}
+
+struct SharedSocialOwner {
+    base: Arc<dyn crate::product_rpc::ProductOwner>,
+    social: ScopedProductOwner,
+}
+#[async_trait::async_trait]
+impl crate::product_rpc::ProductOwner for SharedSocialOwner {
+    async fn dispatch(
+        &self,
+        context: &crate::product_rpc::VerifiedProduct,
+        request: crate::product_rpc::proto::ProductRequest,
+    ) -> Result<tonic::Response<crate::product_rpc::proto::ProductResponse>, Status> {
+        use crate::product_rpc::ProductOwner;
+        match context.operation() {
+            crate::product_rpc::Operation::Social(_) => {
+                self.social.dispatch(context, request).await
+            }
+            _ => self.base.dispatch(context, request).await,
+        }
+    }
 }
 
 /// These are real adapters, not an activated capability or settlement proof.

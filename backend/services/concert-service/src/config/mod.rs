@@ -16,6 +16,9 @@ pub mod notification_target_runtime;
 pub mod product_runtime;
 pub mod participant_runtime;
 pub mod social_runtime;
+pub mod social_policy_runtime;
+pub mod social_startup;
+pub mod social_delivery;
 
 pub struct AppConfig {
     pub database: PgConnectOptions,

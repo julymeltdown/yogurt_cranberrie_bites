@@ -86,6 +86,12 @@ async fn main() -> anyhow::Result<()> {
         runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
         runtime.as_ref().map(|runtime| &runtime.actors),
     )?;
+    let social_settings = config::social_startup::SocialStartupSettings::load(
+        intro_settings.is_some(),
+        world_settings.is_some(),
+        inbox_settings.enabled() && target_settings.is_some(),
+        runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
+    )?;
     // The standalone constructor still rejects unsupported Feed composition.
     // Only the validated shared settings above consume the explicit read mode.
     let mut product_owner =
@@ -105,6 +111,9 @@ async fn main() -> anyhow::Result<()> {
     let mut child_recovery = None;
     let mut notification_target = None;
     let mut feed_callback = None;
+    let mut social_delivery = None;
+    let mut world_transport = None;
+    let mut world_local = None;
     let participant_runtime = participant_settings
         .map(|settings| {
             let release = bootstrap
@@ -128,11 +137,33 @@ async fn main() -> anyhow::Result<()> {
                         .map(|settings| settings.compose(pool.clone(), &shared.owners.core));
                     let intro_owner = intro.compose(pool.clone(), &shared.owners);
                     let owners = inbox_settings.compose(&shared.owners, intro_owner);
-                    product_owner = Some(match feed_settings {
+                    let owners = match feed_settings {
                         Some(settings) => {
                             let (owners, callback) = settings.compose(&shared.owners, owners)?;
                             feed_callback = Some(callback);
                             owners
+                        }
+                        None => owners,
+                    };
+                    product_owner = Some(match social_settings {
+                        Some(settings) => {
+                            let policy = config::social_policy_runtime::SocialWorldPolicy::compose(
+                                pool.clone(),
+                            );
+                            let (sender, receiver) = tokio::sync::oneshot::channel();
+                            social_delivery = Some(
+                                config::social_delivery::SocialDeliveryRuntime::new(
+                                    pool.clone(),
+                                    policy.sink,
+                                    settings.notification,
+                                )
+                                .with_world(receiver),
+                            );
+                            world_transport = Some(policy.transport);
+                            world_local = Some(sender);
+                            settings
+                                .config
+                                .compose_shared(pool.clone(), &shared.owners, owners)?
                         }
                         None => owners,
                     });
@@ -325,7 +356,13 @@ async fn main() -> anyhow::Result<()> {
         let world = async move {
             match (world_settings, world_owners, world_ready_tx) {
                 (Some(settings), Some(owners), Some(ready)) => {
-                    settings.serve_with_ready(world_pool, owners, ready).await
+                    match (world_transport, world_local) {
+                        (Some(transport), Some(local)) => settings
+                            .serve_with_ready_and_social(world_pool, owners, ready, transport, local)
+                            .await,
+                        (None, None) => settings.serve_with_ready(world_pool, owners, ready).await,
+                        _ => anyhow::bail!("World Social policy composition is incomplete"),
+                    }
                 }
                 _ => platform::shutdown::idle().await,
             }
@@ -356,20 +393,28 @@ async fn main() -> anyhow::Result<()> {
                 None => platform::shutdown::idle().await,
             }
         };
+        let social = async move {
+            match social_delivery {
+                Some(worker) => worker.run().await,
+                None => platform::shutdown::idle().await,
+            }
+        };
         // Each component requests shared shutdown on failure. Join rather than
         // dropping peer futures so native replay, membership and recovery drain.
-        let (http, grpc, world, recovery, children) = tokio::join!(
+        let (http, grpc, world, recovery, children, social) = tokio::join!(
             component("health", http, platform::shutdown::global()),
             component("gRPC", grpc, platform::shutdown::global()),
             component("World", world, platform::shutdown::global()),
             component("Participant recovery", recovery, platform::shutdown::global()),
             component("canonical child recovery", children, platform::shutdown::global()),
+            component("Social delivery", social, platform::shutdown::global()),
         );
         http?;
         grpc?;
         world?;
         recovery?;
         children?;
+        social?;
         Ok(())
     })
     .await;

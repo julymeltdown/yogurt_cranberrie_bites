@@ -202,7 +202,8 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, None).await
+        self.serve_inner(pool, ports, None, SocketTransport::default(), None)
+            .await
     }
     /// Startup barrier for a supervised C03 listener. Failure drops the sender;
     /// success is not a persistent authority grant or an ongoing health signal.
@@ -212,13 +213,47 @@ impl WorldRuntimeSettings {
         ports: WorldProductionPorts,
         ready: tokio::sync::oneshot::Sender<()>,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready)).await
+        self.serve_inner(pool, ports, Some(ready), SocketTransport::default(), None)
+            .await
+    }
+    /// Supply the single incumbent socket registry with its canonical policy
+    /// baseline installed before any runtime or listener clones are created.
+    pub async fn serve_with_ready_and_transport(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(pool, ports, Some(ready), transport, None)
+            .await
+    }
+    /// Publish this exact native owner's local invalidation leg only after the
+    /// normal startup barrier succeeds. The receiver grants no queue-wide ACK.
+    pub async fn serve_with_ready_and_social(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: tokio::sync::oneshot::Sender<
+            Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        >,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(pool, ports, Some(ready), transport, Some(local))
+            .await
     }
     async fn serve_inner(
         self,
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
         ready: Option<tokio::sync::oneshot::Sender<()>>,
+        transport: SocketTransport,
+        local: Option<
+            tokio::sync::oneshot::Sender<
+                Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+            >,
+        >,
     ) -> anyhow::Result<()> {
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
@@ -300,7 +335,6 @@ impl WorldRuntimeSettings {
             .bootstrap()
             .await
             .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
-        let transport = SocketTransport::default();
         let runtime = WorldRuntime::new(
             self.event,
             self.owner,
@@ -365,6 +399,15 @@ impl WorldRuntimeSettings {
                 !owner_task.is_finished() && !platform::shutdown::global().is_requested(),
                 "World stopped during startup"
             );
+            if let Some(local) = local {
+                local
+                    .send(Arc::new(
+                        crate::world::invalidation::WorldInvalidationConsumer::new(Arc::new(
+                            bridge.clone(),
+                        )),
+                    ))
+                    .map_err(|_| anyhow::anyhow!("World local invalidation receiver closed"))?;
+            }
             if let Some(ready) = ready {
                 ready
                     .send(())

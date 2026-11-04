@@ -207,6 +207,27 @@ impl SocketTransport {
 }
 
 impl WorldPolicyPublisher {
+    /// Source-owner adapter checks durable active memberships before treating
+    /// this process's publication as complete. A foreign active connection is
+    /// never covered by an empty local registry or a queue acknowledgement.
+    pub(crate) fn covers_connections(
+        &self,
+        event: Uuid,
+        actor: Uuid,
+        connections: &[Uuid],
+    ) -> Result<bool, PolicyUnavailable> {
+        let slots = self.transport.slots.lock().map_err(|_| PolicyUnavailable)?;
+        let mut local = std::collections::BTreeSet::new();
+        for slot in slots.values() {
+            let slot = slot.lock().map_err(|_| PolicyUnavailable)?;
+            if let Some(binding) = slot.binding.as_ref() {
+                if binding.key.event_id.uuid() == event && binding.key.user_id.uuid() == actor {
+                    local.insert(binding.connection_id);
+                }
+            }
+        }
+        Ok(connections.iter().all(|id| local.contains(id)))
+    }
     /// Called only by the canonical sealed-source adapter, never from HTTP/WS
     /// input or arbitrary invalidation rows. The adapter owns durable source proof.
     pub(crate) fn publish_metadata(

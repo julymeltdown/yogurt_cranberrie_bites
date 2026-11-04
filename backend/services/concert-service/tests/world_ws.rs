@@ -214,6 +214,13 @@ impl Harness {
         budget: usize,
         policy: Option<Arc<dyn policy::PolicyBaselinePort>>,
     ) -> Self {
+        let transport = match policy {
+            Some(policy) => SocketTransport::default().with_policy_baseline(policy),
+            None => SocketTransport::default(),
+        };
+        Self::with_transport(budget, transport).await
+    }
+    async fn with_transport(budget: usize, transport: SocketTransport) -> Self {
         let event = EventId::from_uuid(Uuid::new_v4());
         let anchor = Utc::now();
         let room = id(50);
@@ -227,10 +234,6 @@ impl Harness {
             event,
             room,
         });
-        let transport = match policy {
-            Some(policy) => SocketTransport::default().with_policy_baseline(policy),
-            None => SocketTransport::default(),
-        };
         let runtime = WorldRuntime::new(
             event,
             id(4),
@@ -388,6 +391,27 @@ async fn failed_policy_guard_preserves_world_without_a_private_baseline() {
     client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":snapshot["streamId"],"roomEpoch":snapshot["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await.unwrap();
     assert_eq!(value(&mut client).await["type"], "delta");
     h.close().await;
+}
+
+#[tokio::test]
+async fn actual_social_baseline_database_unavailability_preserves_basic_world() {
+    // The actual SQL baseline adapter is used, with no database provisioned.
+    // This is a failure-boundary test, never a positive Social sharing proof.
+    let pool = sqlx::postgres::PgPoolOptions::new()
+        .acquire_timeout(Duration::from_millis(50))
+        .connect_lazy("postgres://unused@127.0.0.1:9/mcr_concert_unavailable")
+        .unwrap();
+    let policy =
+        concert_service::config::social_policy_runtime::SocialWorldPolicy::compose(pool.clone());
+    let h = Harness::with_transport(NATIVE_WRITE_BYTES, policy.transport).await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let snapshot = value(&mut client).await;
+    assert_eq!(snapshot["type"], "snapshot");
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":snapshot["streamId"],"roomEpoch":snapshot["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await.unwrap();
+    assert_eq!(value(&mut client).await["type"], "delta");
+    h.close().await;
+    pool.close().await;
 }
 async fn value(client: &mut Client) -> Value {
     loop {
