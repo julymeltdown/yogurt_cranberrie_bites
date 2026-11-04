@@ -1,6 +1,6 @@
 {
   "base": "30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694",
-  "compiled_candidate": "7d61b479e355b69b620ba6fcf6a545d970db5966",
+  "compiled_candidate": "57da6bf7e2da80c46b1e67365b5a1659394b7a44",
   "purpose": "READY source manifest only; no build or native execution claimed",
   "sha256": {
     "backend/.cargo/config.toml": "fe3fa4be90cac8acd1b0e36270ef4bb83ad0609ecbe3127cc99b78ab65962044",
@@ -523,7 +523,7 @@
     "backend/scripts/mcr/feed_smoke.py": "ec9271642a9036bc121c5735756cb19b8f270b7a5373b907e099947b45b51159",
     "backend/scripts/mcr/friend_invalidation_rpc_smoke.py": "972bf11195348d7484448386ea38fbab3ecd31a8eb7914796b63cca1defb4343",
     "backend/scripts/mcr/friend_invalidation_smoke.py": "4dc14bd37933f666f0f9d86e6dab2cebf692a416ad7957149cf1f024c81e8b15",
-    "backend/scripts/mcr/gift_live_resources.py": "bad0f8f25e816ccde8376edb0c52d6844e4e85cc064789401d1ed975466228d0",
+    "backend/scripts/mcr/gift_live_resources.py": "3f4e5bba4fccf69d8a9b61b7d615d797ff35e953a68a840d5c5ae53f9e6b2fe7",
     "backend/scripts/mcr/gift_live_targets.py": "640a37940399b2d46a956acae7c1ac37340f6abb83cd94c09f3bcb707b43d7e9",
     "backend/scripts/mcr/in01_provision.py": "61a9d0855ca540788bc267e5d560ecdd727a6839cb9b5f1e6d83e75f71fdf56b",
     "backend/scripts/mcr/in03_stack_runtime.py": "52fd92faa2231ddc6b58e5d9d670dd3a8c9b09cc7351c1afdbd99073e3597c8a",
