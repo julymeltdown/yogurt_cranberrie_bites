@@ -461,6 +461,28 @@ mod fixture {
 use fixture::*;
 
 type Client = WebSocketStream<MaybeTlsStream<tokio::net::TcpStream>>;
+// Deterministic external Social metadata only. Actual Slot.policy is armed and
+// observed on the native socket, so deletion does not merely clear an empty cache.
+struct FixturePolicy;
+#[async_trait]
+impl policy::HeldPolicyBaseline for FixturePolicy {
+    fn revision(&self) -> i64 {
+        1
+    }
+    async fn commit(self: Box<Self>) -> Result<(), policy::PolicyUnavailable> {
+        Ok(())
+    }
+}
+#[async_trait]
+impl policy::PolicyBaselinePort for FixturePolicy {
+    async fn held_baseline(
+        &self,
+        _: Uuid,
+        _: Uuid,
+    ) -> Result<Box<dyn policy::HeldPolicyBaseline>, policy::PolicyUnavailable> {
+        Ok(Box::new(FixturePolicy))
+    }
+}
 struct Serving {
     state: Arc<WorldSocketState>,
     address: std::net::SocketAddr,
@@ -469,7 +491,7 @@ struct Serving {
 }
 impl Serving {
     async fn start(f: &DatabaseFixture) -> Result<Self> {
-        let transport = SocketTransport::default();
+        let transport = SocketTransport::default().with_policy_baseline(Arc::new(FixturePolicy));
         let mut target = spec(f.target, 50);
         target.room_epoch = id(7);
         let runtime = WorldRuntime::new(
@@ -525,6 +547,11 @@ impl Serving {
         anyhow::ensure!(
             snapshot["type"] == "snapshot",
             "actual native initial snapshot missing"
+        );
+        let baseline = value(&mut client).await?;
+        anyhow::ensure!(
+            baseline["type"] == "policy.baseline" && baseline["policyRevision"] == 1,
+            "actual private policy baseline was not armed before deletion"
         );
         Ok((client, snapshot))
     }
