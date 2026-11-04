@@ -109,6 +109,19 @@ Real HTTP/live multiuser IN04, device and full-product acceptance are separate
 open outcomes. The new caller assembly is assigned functioning frontend work,
 not an added condition on the already satisfied original FE33 fixture criteria.
 
+Later BE40 dependency receipt from Wall owner `21e`: qualified operator source
+`bcf81212` handed directly to Product root `1fc` for integration; remote
+publication is not established by this receipt. Frozen C04 admin mural read,
+control, locks and restore use prepared canonical scope and retained current
+Operator adapter. Owner reports 12 private PostgreSQL fixture checks PASS,
+including pause/freeze paint rejection, overlap union/exact unlock, paused-only
+authorized same-event restore to a NEW revision/checkpoint/reset, retained
+cooldown/operation sequence, failed-action audit truth, original-key result and
+expiry. Actual positive operator principal/root HTTP and real multi-client
+IN04 remain NOT_RUN; no activation or whole BE40/FE39/IN04 acceptance inferred.
+FE39 may consume frozen C04 independently. No frontend writes or shared target
+held, and no current frontend allocation is changed by this backend receipt.
+
 ## Delivered bounded FE33-ENTRY / FE37 regression assignment
 
 Frontend king appointed Community sole allocator for existing FE09 broad
