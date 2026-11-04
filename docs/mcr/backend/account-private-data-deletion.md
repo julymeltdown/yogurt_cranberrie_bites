@@ -1,5 +1,11 @@
 # BE42 PrivateData core deletion
 
+## Current resource-procedure correction (2026-11-05 KST)
+
+The bounded core source is published at `52ab02173eb7c0d240d4765a267155eb97c6e3c0`; whole PrivateData/BE42 and canonical Auth-to-Concert runtime composition remain INCOMPLETE. The previously reported 44-ledger runtime results must be separated from resource admission: **RESOURCE_PROCEDURE_FAIL**, not a scheduler-qualified allocation PASS. The responsible developer's read-only `compile-provenance-audit.txt` records the actual Cargo artifact root `/Users/lhs/Desktop/mcr-build/backend`, source `7acf9b85a344429aa3e587a5469af74251b2e7bc`, compile finish 2026-11-04 15:44:32 UTC, freeze 15:44:47 UTC, and **target removal** 15:44:54 UTC. Removal of the shared target was not ordinary lease release and has no retrospective authorization. The reported environment used nonempty `RUSTFLAGS=-C debuginfo=0`; the exact raw invocation argv was not separately captured. Cargo JSON proves emitted paths, but does not supply the missing argv/environment receipt. Cleanup was reported at 15:45:38 UTC. The raw source archive, readset, executable hashes, failed fixture attempts and native observations remain preserved under `/Users/lhs/Desktop/mcr-evidence/be42-private-data-44ledger-202611041544Z/`.
+
+The earlier 3 source checks, 2 writer-fence checks and native erase/restart results are retained as **owner-reported bounded-core results with these provenance/resource limitations**. They do not certify whole PrivateData, repair the resource procedure, or establish a new coherent Root/runtime cohort. Root's independent current-cohort qualification is NOT_RUN while its fresh resource allocation is unavailable. No target was inspected, recreated or deleted for this correction.
+
 Status: **IN_PROGRESS**. The bounded core leaf is implemented here. Whole
 PrivateData deletion remains **INCOMPLETE** until every owner category in the
 [field inventory](account-private-data-field-inventory.md) has a real owner
