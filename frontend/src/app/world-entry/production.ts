@@ -94,7 +94,11 @@ export function createProductionWorld(options: ProductionWorldOptions) {
       read() { return live() ? composition?.presentation?.read() ?? null : null },
       subscribe(fn: () => void) { if (!live()) return () => {}; observers.add(fn); return () => { observers.delete(fn) } },
     }
-    owner = owned; binding = Object.freeze({ release, replication, presentation,
+    const socialPolicy = {
+      read() { return live() ? composition?.policy?.read() ?? null : null },
+      subscribe(fn: () => void) { if (!live()) return () => {}; observers.add(fn); return () => { observers.delete(fn) } },
+    }
+    owner = owned; binding = Object.freeze({ release, replication, presentation, socialPolicy,
       async reconnect() {
         if (!live()) return false
         const recovered = await (composition?.replication.reconnect() ?? Promise.resolve(false))
@@ -114,7 +118,8 @@ export function createProductionWorld(options: ProductionWorldOptions) {
       void loading.then(value => {
         if (!live()) return
         stopForwarding()
-        const stops = [value.replication.subscribe(() => notify(observers)), value.presentation?.subscribe(() => notify(observers))]
+        const stops = [value.replication.subscribe(() => notify(observers)), value.presentation?.subscribe(() => notify(observers)),
+          value.policy?.subscribe(() => notify(observers))]
         stopComposition = () => stops.forEach(stop => stop?.())
         notice.remove()
         const created = value.mount(host, { ...context, signal: lifetime.signal, privacyScope: release.privacyScope })
