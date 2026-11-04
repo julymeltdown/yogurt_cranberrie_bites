@@ -1,8 +1,8 @@
 # BE-GW-IN03: public Intro and Notification admission
 
 Status: CONTRACT_READY for the bounded Gateway admission unit. All selected
-checks passed on the repair revision; normal publication and the owner readback
-are recorded in the delivery handoff. This unit does not close BE33 or real IN03.
+checks passed on the repair revision. Normal publication and the owner readback
+remain required before goal completion. This unit does not close BE33 or real IN03.
 
 Source baseline: published `145a8e939fb7bede7e46931d6559adb2c51f62a7`.
 The existing `qa-contract-coverage` worktree is reused on `codex/mcr-be-GW-IN03`.
@@ -151,7 +151,7 @@ CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend
 CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0
 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0
 CARGO_PROFILE_DEV_PACKAGE_CONTRACTS_BUILD_OPT_LEVEL=2
-cargo +1.88.0 test -p api-gateway --lib   --test concert_feature_routes --test concert_product_http   --test product_delivery_http --no-run --locked --offline -j2   --message-format=json
+cargo +1.88.0 test -p api-gateway --lib --test concert_feature_routes --test concert_product_http --test product_delivery_http --no-run --locked --offline -j2 --message-format=json
 ```
 
 The exact argv and environment are also preserved in `build.result.json` and
