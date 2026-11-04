@@ -1,0 +1,100 @@
+{
+  "job": "FE34-EXISTING-CONTRACT-RETRY-20261104T2005Z",
+  "status": "PASS",
+  "startedEpoch": 1793822561.803128,
+  "workDeadline": 1793822671.3881311,
+  "cleanupDeadline": 1793822731.3881311,
+  "head": "1d70772bcbafdfcac5fb40a3bb526095c0cd68a4",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 4,
+    "rssMiB": 2560
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/me/__tests__/original-fe34/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793822562.0490801,
+      "exitCode": 0,
+      "finishedEpoch": 1793822565.25436
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "startedEpoch": 1793822565.254421,
+      "exitCode": 0,
+      "finishedEpoch": 1793822573.896424
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/features/me/model/contract.ts",
+        "src/features/me/model/controller.ts",
+        "src/features/me/ui/MePages.tsx",
+        "src/features/me/__tests__/fixtures.ts",
+        "src/features/me/__tests__/original-fe34"
+      ],
+      "startedEpoch": 1793822573.896506,
+      "exitCode": 0,
+      "finishedEpoch": 1793822574.3841941
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 1684496,
+  "peakWholeBytes": 2027491328,
+  "peakTempBytes": 14135075,
+  "peakOutputBytes": 24626,
+  "sourceSha256": {
+    "frontend/src/features/me/model/contract.ts": "69c70ab44898f34a84a18817d670c3d84186f904ea4c5e0edbdf75a8a56eed79",
+    "frontend/src/features/me/model/controller.ts": "34c9c487f539b7781d31c6db1e453c871fa424a4bd0dd17bc14fc02f6d531e2e",
+    "frontend/src/features/me/__tests__/fixtures.ts": "5468b439d47aa871d221261a6c2ff057b1d17b28f228245b5ca087db142ed53d",
+    "frontend/src/features/me/ui/MePages.tsx": "4e2b9742c0e5b4df87290d5daf7a986c456cd9e781a76a672f2f0790afec9941",
+    "frontend/src/features/me/__tests__/original-fe34/admitted-fetch.ts": "b05f56ea5f0a1e07cb6f87e4b1297ba3817fdba338e8af9e504edf45aeaa8fd5",
+    "frontend/src/features/me/__tests__/original-fe34/profile-validation.test.tsx": "9eae2780fb104da301f52d857f4598788b4512e2d8aa9acd0b781ff487f43e61",
+    "frontend/src/features/me/__tests__/original-fe34/source-round.py": "7ca094d0aff5e6b71f923d2fb8ad4cf868c0f190e0325d071d1891e4e7d091e0",
+    "frontend/src/features/me/__tests__/original-fe34/vitest.config.mjs": "2e45d2beb176ce8ef1582be28421816718bc8a236230dd394ad4d6cfaaa3f106"
+  },
+  "admission": {
+    "freeBytes": 12639076352,
+    "otherNewBytes": 2818572288,
+    "ownNewBytes": 134217728,
+    "startFloorBytes": 11811160064,
+    "residualBytes": 9686286336
+  },
+  "initialWholeBytes": 2013052928,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793822574.528556,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

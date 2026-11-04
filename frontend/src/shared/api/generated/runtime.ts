@@ -62,9 +62,15 @@ function format(kind: string, value: string): boolean {
   return kind === 'password' || kind === 'int64' || kind === 'binary'
 }
 function matches(s: Rule, v: any, depth: number, budget: { left: number }): boolean {
-  if (--budget.left < 0 || depth > 96) return false
+  // Exhaustion aborts the complete decision: negation must never turn a
+  // bounded traversal failure into an accepted instance.
+  if (--budget.left < 0 || depth > 96) throw new Error('C07 schema traversal bound')
   if (typeof s === 'boolean') return s
+  if (s.exclusiveMinimum !== undefined && (typeof s.exclusiveMinimum !== 'number' || !Number.isFinite(s.exclusiveMinimum))) return false
+  if (s.dependentRequired !== undefined && (!object(s.dependentRequired) || !Object.values(s.dependentRequired).every(
+    required => Array.isArray(required) && required.every(name => typeof name === 'string') && new Set(required).size === required.length))) return false
   if (s.$ref && !matches(resolve(s.$ref), v, depth + 1, budget)) return false
+  if (s.not !== undefined && matches(s.not, v, depth + 1, budget)) return false
   if (s.allOf && !s.allOf.every((r: Rule) => matches(r, v, depth + 1, budget))) return false
   if (s.anyOf && !s.anyOf.some((r: Rule) => matches(r, v, depth + 1, budget))) return false
   if (s.oneOf && s.oneOf.filter((r: Rule) => matches(r, v, depth + 1, budget)).length !== 1) return false
@@ -78,7 +84,7 @@ function matches(s: Rule, v: any, depth: number, budget: { left: number }): bool
     const kinds = Array.isArray(s.type) ? s.type : [s.type]
     if (!kinds.some((t: string) => t === 'null' ? v === null : t === 'object' ? object(v) : t === 'array' ? Array.isArray(v) : t === 'integer' ? Number.isInteger(v) : t === 'number' ? typeof v === 'number' && Number.isFinite(v) : typeof v === t)) return false
   }
-  if (typeof v === 'number' && ((s.minimum !== undefined && v < s.minimum) || (s.maximum !== undefined && v > s.maximum))) return false
+  if (typeof v === 'number' && ((s.minimum !== undefined && v < s.minimum) || (s.maximum !== undefined && v > s.maximum) || (s.exclusiveMinimum !== undefined && v <= s.exclusiveMinimum))) return false
   if (typeof v === 'string') {
     const length = Array.from(v).length
     if ((s.minLength !== undefined && length < s.minLength) || (s.maxLength !== undefined && length > s.maxLength) || (s.pattern && !patternAccepts(s.pattern, v)) || (s.format && !format(s.format, v))) return false
@@ -95,6 +101,9 @@ function matches(s: Rule, v: any, depth: number, budget: { left: number }): bool
   if (object(v)) {
     if (s.minProperties !== undefined && Object.keys(v).length < s.minProperties) return false
     if (s.required && !s.required.every((k: string) => Object.hasOwn(v, k))) return false
+    for (const [trigger, required] of Object.entries(s.dependentRequired ?? {}) as [string, string[]][]) {
+      if (Object.hasOwn(v, trigger) && !required.every(name => Object.hasOwn(v, name))) return false
+    }
     for (const [key, value] of Object.entries(v)) {
       if (Object.hasOwn(s.properties ?? {}, key)) { if (!matches(s.properties[key], value, depth + 1, budget)) return false }
       else if (s.additionalProperties === false) return false

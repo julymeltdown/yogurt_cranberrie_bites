@@ -1,0 +1,21 @@
+{
+  "status": "ACTUAL_ACCEPT",
+  "offer": "QA10-ACTUAL-CANDIDATE-SOURCE-20261104T1933Z",
+  "at": "2026-11-04T19:35:13.664087+00:00",
+  "candidate": "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+  "free": 14098849792,
+  "all_new_bytes": 2483027968,
+  "reserved_free": 11615821824,
+  "whole_baseline": 648420602,
+  "work_seconds": 180,
+  "full_seconds": 210,
+  "new_cap": 33554432,
+  "whole_cap": 6442450944,
+  "process_cap": 4,
+  "rss_cap": 536870912,
+  "tool_sha256": {
+    "candidate_round.py": "641f5587ed5a1f876b671f03397e5d01fc0a832ae278d71d0b2808c518c7b73a",
+    "candidate_probe.py": "baf08479d98f167cb363e11b15edc81bb3780cb64b39801d722656fb32d95161",
+    "source_round.py": "a30910274bd9eb3a98cebc75332292d453c7be2ee6191a3d560f6b54f68850ab"
+  }
+}

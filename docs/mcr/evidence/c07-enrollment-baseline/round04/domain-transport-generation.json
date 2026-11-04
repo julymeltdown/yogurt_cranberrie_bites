@@ -1,0 +1,11 @@
+{
+  "beforeSha256": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+  "afterSha256": "924ad2d9e8906abe020cb927b256db98cb477d3aa470405fdf2236b71059147d",
+  "runtimeExportsByteIdentical": true,
+  "commentDeltas": [
+    [
+      "// contracts/core/v1/core.schema.json: e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+      "// contracts/core/v1/core.schema.json: 7760712818b399faf956b874565c080726f70913b6b4fc81e2236ab127332eaa"
+    ]
+  ]
+}

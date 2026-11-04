@@ -1,0 +1,19 @@
+{
+  "offer": "AVATAR-CANCEL-SOURCE-20261104T1955Z",
+  "disposition": "DECLINED_BEFORE_ACCEPT_BEFORE_CHILDREN",
+  "candidate": "a2a381229",
+  "predecessorFull": "QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z ACTUAL_FULL2026-11-04T19:55:11.937719Z",
+  "freeBytes": 12774301696,
+  "requiredStartBytes": 12884901888,
+  "allOutstandingAndProposedUpperBytes": 1849688064,
+  "freeAfterALLBytes": 10924613632,
+  "requiredAfterALLBytes": 9663676416,
+  "failedCondition": "Fresh 12 GiB offer-specific admission floor",
+  "accepted": false,
+  "validationChildrenStarted": 0,
+  "guardianStarted": false,
+  "temporaryRootsCreated": 0,
+  "dependencyLinksCreated": 0,
+  "heldResources": 0,
+  "next": "Same ready queue item needs a fresh eligible offer. Do not weaken or reuse this declined offer."
+}

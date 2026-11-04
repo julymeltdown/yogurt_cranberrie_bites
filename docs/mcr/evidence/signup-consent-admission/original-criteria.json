@@ -14,8 +14,8 @@
         "frontend/src/features/auth/model/enrollment-contract.ts"
       ],
       "state": "IN_PROGRESS",
-      "disposition": "Source authored against registered ed50c2f1; fresh qualification NOT_RUN",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "disposition": "Canonical signup/verification source published and controlled native forms inspected360/390/430; actualproducerbrowserpairing stillopen",
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     },
     {
       "id": "validation",
@@ -25,8 +25,8 @@
         "frontend/src/features/auth/model/recovery-contract.ts"
       ],
       "state": "IN_PROGRESS",
-      "disposition": "Existing password predicate retained; new policy/attempt controller paths require focused checks",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "disposition": "RawUTF8 validation source-qualified; rendered native submit/secret-clearing checks pass; realproducerbrowserpairing stillopen",
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     },
     {
       "id": "consent",
@@ -38,7 +38,7 @@
       ],
       "state": "IN_PROGRESS",
       "disposition": "Internal client implemented; production approved document publication not supplied, no invented fixture acceptance",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     },
     {
       "id": "expiry",
@@ -49,7 +49,7 @@
       ],
       "state": "IN_PROGRESS",
       "disposition": "Known local attempt expiry blocks dispatch; server remains authority for generic challenge expiry, no fabricated challenge-expires field; explicit restart only",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     },
     {
       "id": "resend",
@@ -60,7 +60,7 @@
       ],
       "state": "IN_PROGRESS",
       "disposition": "Receipt resendAvailableAt and Retry-After control monotonic waits; no invented duration or mail delivery claim",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     },
     {
       "id": "double-submit",
@@ -71,24 +71,25 @@
       ],
       "state": "IN_PROGRESS",
       "disposition": "Synchronous UI/controller reservation; body UUID; no automatic replay; explicit unknown retry retains exact request",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     },
     {
       "id": "real-vertical-flow",
       "criterion": "Real signup to mail verification to canonical sign-in",
       "paths": [
-        "frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs"
+        "frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs",
+        "frontend/src/features/auth/__tests__/enrollment-main-browser.mjs"
       ],
       "state": "IN_PROGRESS",
       "disposition": "Real Auth/RPC/Gateway/mail producer owner-qualified and published22b11054. Actual main client source authored; paired Auth-only browser pending. Coherent real concert/bootstrap/World producer not ready; no synthetic success claim.",
-      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
     }
   ],
   "externalInputs": [
     "Actual approved legal/eligibility publication remains absent",
     "Restricted-age provider remains independent of basic signup; no invented verified-age or eligibility boolean"
   ],
-  "resourceState": "SourceFULL18:44:54.134302Z; no runtimehold. Native Auth pairing waits freshBEfixturequalification; realWorldphase2 separate",
+  "resourceState": "NativefeatureFULL18:52:04.687118Z; no resourcehold. ActualmainAuthmailpair awaits207qualifiedfixture; realWorldphase2 separate",
   "historicalEvidence": [
     {
       "path": "docs/mcr/evidence/real-email-flow/index.json",
@@ -114,5 +115,50 @@
     "sourcePin": "28f564fde314ec331fadd44b0788a76b65846a5d",
     "receipt": "source-02/release.json",
     "qualification": "Affected canonical Auth/central fixtures only, no actual browser or producer/World success"
+  },
+  "canonicalPublication": {
+    "responsiblePublisher": "Root153",
+    "sourceFeatureCommit": "3936448e736d39fe1b4678c843e25b251e8dcaf9",
+    "worldConsentCommit": "7ee21c586a32a6ad0ea21f32b6dd4539ef930421",
+    "reportedMaster": "1a1db34065a190790459e4be41891750ab46d882",
+    "receipt": "/private/tmp/mcr-root-fe10-qa06-wall-publication-receipt.json",
+    "disposition": "69exactpostimages responsible-publisher verified; borrowedRootports/policy excluded",
+    "scope": "Source publication only; originalFE10acceptance remainsIN_PROGRESS"
+  },
+  "nativeFeatureQualification": {
+    "head": "d0c8e3f926404020adb77d8a00f4239091af4129",
+    "guardSha256": "f583e4c171d858d936a5f26fb9b0ed70bc533a721d03274907ef89cf270983d8",
+    "cases": 7,
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "repairs": 0,
+    "receipt": "browser-02/release.json",
+    "qualification": "Controlled native through canonical client; no actual Auth/mail/legal/World claim",
+    "visualInspection": "Form360/390/430 and verified390 captures inspected; text/controls legible. Does not certify all-ten-screen visual acceptance."
+  },
+  "nativeFeaturePublication": {
+    "source": "c4224fc8759187a933793b424a0c732f53d733d8",
+    "published": "47ec660d5c77008d168d785b6043326c9a2ed02f",
+    "reportedMaster": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+    "receipt": "/private/tmp/mcr-root-fe10-native-social-readiness-publication-receipt.json",
+    "receiptSha256": "e7721fff84c4cdd8d925cb360fb746f6d9de9ad1a8e8e883109baf8a0a46e459",
+    "disposition": "Responsible publisher verified exact22 scoped modes/blobs; borrowed Root ports/policy excluded; no repeated validation or whole-FE10 acceptance"
+  },
+  "actualMainBrowserPreparation": {
+    "status": "SOURCE_AUTHORED_NOT_RUN",
+    "runner": "frontend/src/features/auth/__tests__/enrollment-main-browser.mjs",
+    "plan": "main-journey-plan.json",
+    "scope": "Actual expiry422, predeadline202/no mail, real server countdown/fresh resend/latest captured mail, policy rotation/current explicit consent and fresh admission. BE control source frozen; needs fresh compiled/boot-qualified serving cohort plus paired allocations.",
+    "world": "OPEN; no coherent actual World runtime descriptor available",
+    "backendControlSource": "e7123c412283ad6d0f95d7404e23922790e628fc"
+  },
+  "actualMainBrowser1955": {
+    "state": "IN_PROGRESS",
+    "qualification": "browser-main-01/qualification.json",
+    "disposition": "Actualcanonical main/Auth/mail/expiry422/server60s/latestverify/renewedconsent/admission/bootstrap503 reached; finalunclassifiedsocket3vs0FAILED, nooverallPASS. Repairsourceauthored; freshfixture/rerunrequired.",
+    "resources": "BothactorsFULL19:59:37.371093Z latest; resource0, nohold"
   }
 }

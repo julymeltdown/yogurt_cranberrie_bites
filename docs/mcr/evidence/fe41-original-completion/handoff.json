@@ -1,0 +1,59 @@
+{
+  "task": "FE41",
+  "branch": "codex/mcr-fe-FE41-original-completion",
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "state": "CLIENT_SOURCE_NATIVE_QUALIFIED_AWAITING_PUBLICATION",
+  "publisher": "Root153",
+  "publicationRoute": "Scoped normal non-force master delivery; no king/SL review or ACK",
+  "applicationFiles": [
+    "frontend/src/app/errors/default-entry.ts",
+    "frontend/src/app/errors/fe41-lifecycle/authority.test.ts",
+    "frontend/src/app/errors/fe41-lifecycle/native.mjs",
+    "frontend/src/app/errors/fe41-lifecycle/status.ts",
+    "frontend/src/app/errors/fe41-lifecycle/version.test.ts",
+    "frontend/src/app/errors/observer.ts",
+    "frontend/src/app/ports.ts",
+    "frontend/src/app/world-entry/production.ts",
+    "frontend/src/world/composition/index.ts",
+    "frontend/src/world/network/replication.ts",
+    "frontend/src/world/network/transport/contract.ts",
+    "frontend/src/world/network/transport/engine.ts"
+  ],
+  "documentationPrefixes": [
+    "docs/mcr/frontend/fe41-original-completion.md",
+    "docs/mcr/evidence/fe41-original-completion/**"
+  ],
+  "source": {
+    "distinctCases": 42,
+    "newCases": 11,
+    "affectedCases": 31,
+    "attempts": [
+      "source01/supervisor.json",
+      "source-retry01/supervisor.json"
+    ],
+    "applicationTypeFiles": 1022,
+    "applicationTypeDiagnostics": 0,
+    "remainingChecks": "full types, deny-warning lint, native/config syntax, whitespace excluding immutable raw logs, planning: all exit0",
+    "fullRelease": "source-full-release.json"
+  },
+  "native": {
+    "status": "PASS",
+    "qualifiedAt": "a1317c4d08c8e0210c877fbb4b717f4d37c78a0b",
+    "report": "native-retry02/native/report.json",
+    "capture": "native-retry02/native/390-map-version.png",
+    "fullRelease": "native-full-release.json",
+    "attempts": [
+      "native01:FAIL CJS query module",
+      "native-retry01:FAIL Phaser missing browser prebundle",
+      "native-retry02:PASS"
+    ],
+    "scope": "One390x844 viewport, actual default main/login/production/HTTPdecoder/transport/composition/observer; exact syntheticticket409 branch only, selectedsourceart retained; keyboard reload/no reticket/no credentialreplay/canvas0/socket0/pageerrors[]",
+    "finalHarnessLint": "Prior lint/syntax applies source-qualified predecessor; final harness runtimePASS. No false same-byte lint claim."
+  },
+  "retainedEvidence": "See reconciliation.json and original-criteria.json; unchanged three-width root matrices/pickup-no-replay/preferences/FE17 evidence reused, not rerun",
+  "authority": "Canonical strict ticket409MAP_VERSION_MISMATCH and typedC05resync map-version only. No public operational maintenance/minimumappversion producer currently exists, confirmed by BackendRoot1fc andWorld20f; never infer from503/capabilities/4409 alone/navigator/protocol or motion versions.",
+  "limits": "Controlled client/HTTPfixture. Real Rust/Auth/multiuser/outage/OS-background/device/physical pickup/operational producer/full ten-screen visual acceptance remain open. No original task or IA cuts.",
+  "resources": "0; source andnative independentlyFULL released",
+  "ownershipAfterHandoff": "Return all exact FE41 grants at cleanSTOP; oldFE17 grants remain returned, preservedFE17/AR03/stashrefs unchanged.",
+  "capturedAtUTC": "2026-11-04T19:14:06.616848+00:00"
+}

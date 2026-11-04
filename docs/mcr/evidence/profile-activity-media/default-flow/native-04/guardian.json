@@ -1,0 +1,74 @@
+{
+  "job": "PROFILE-CHANGED-MAIN-20261104T1845Z",
+  "status": "PASS",
+  "startedEpoch": 1793817944.564805,
+  "workDeadline": 1793818234.711723,
+  "cleanupDeadline": 1793818294.711723,
+  "frozenRoot": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "mode": "native",
+  "head": "23c4f8d8156410313076fcda84f178eb66afd3c3",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 24,
+    "rssMiB": 4096,
+    "pngs": 12,
+    "pngBytes": 4194304
+  },
+  "otherReservedBytesAtAdmission": 3221225472,
+  "commands": [
+    {
+      "label": "syntax-driver",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/__tests__/profile-default-flow/native.mjs"
+      ],
+      "startedEpoch": 1793817944.7813919,
+      "exitCode": 0,
+      "finishedEpoch": 1793817945.3835871
+    },
+    {
+      "label": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/__tests__/profile-default-flow/"
+      ],
+      "startedEpoch": 1793817945.383625,
+      "exitCode": 0,
+      "finishedEpoch": 1793817945.954595
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/__tests__/profile-default-flow/native.mjs"
+      ],
+      "startedEpoch": 1793817945.954624,
+      "exitCode": 0,
+      "finishedEpoch": 1793817992.5258722
+    }
+  ],
+  "peakProcesses": 11,
+  "peakRssKiB": 2548336,
+  "peakWholeBytes": 1501327360,
+  "peakTempBytes": 29964397,
+  "peakOutputBytes": 1426837,
+  "initialWholeBytes": 1470799872,
+  "pngCount": 12,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793817992.71365,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true,
+    "portAbsent": true
+  }
+}

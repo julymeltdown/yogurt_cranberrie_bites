@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  28 passed (28)
+   Start at  05:02:42
+   Duration  2.75s (transform 598ms, setup 0ms, import 1.13s, tests 614ms, environment 765ms)
+

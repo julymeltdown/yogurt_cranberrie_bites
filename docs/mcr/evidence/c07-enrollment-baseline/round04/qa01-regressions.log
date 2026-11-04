@@ -1,0 +1,22 @@
+test_dispatch_invokes_published_vector_validator_and_preserves_rejections (__main__.C05NestedMotionCatalogTests.test_dispatch_invokes_published_vector_validator_and_preserves_rejections) ... ok
+test_motion_paths_preserve_traversal_depth_and_family_guards (__main__.C05NestedMotionCatalogTests.test_motion_paths_preserve_traversal_depth_and_family_guards) ... ok
+test_motion_symlink_alias_still_fails_closed (__main__.C05NestedMotionCatalogTests.test_motion_symlink_alias_still_fails_closed) ... ok
+test_published_five_motion_files_have_exact_inventory (__main__.C05NestedMotionCatalogTests.test_published_five_motion_files_have_exact_inventory) ... ok
+test_candidate_and_reviewed_fixtures_are_explicitly_classified (__main__.C07MotionCoverageTests.test_candidate_and_reviewed_fixtures_are_explicitly_classified) ... ok
+test_root_only_schemas_are_checked_without_definitions (__main__.C07MotionCoverageTests.test_root_only_schemas_are_checked_without_definitions) ... ok
+test_c07_separation_is_exact_not_a_global_exclusion (__main__.C07NamespaceTests.test_c07_separation_is_exact_not_a_global_exclusion) ... ok
+test_non_c07_unclassified_files_still_fail_discovery (__main__.C07NamespaceTests.test_non_c07_unclassified_files_still_fail_discovery) ... ok
+test_nested_admission_rejects_traversal_aliases_and_other_families (__main__.C18NestedCatalogTests.test_nested_admission_rejects_traversal_aliases_and_other_families) ... ok
+test_published_domain_nested_catalog_is_exact (__main__.C18NestedCatalogTests.test_published_domain_nested_catalog_is_exact) ... ok
+test_catalog_duplicate_and_traversal_are_rejected (__main__.CoverageTests.test_catalog_duplicate_and_traversal_are_rejected) ... ok
+test_duplicate_and_nonfinite_json_are_rejected (__main__.CoverageTests.test_duplicate_and_nonfinite_json_are_rejected) ... ok
+test_missing_dependencies_are_not_silent_success (__main__.CoverageTests.test_missing_dependencies_are_not_silent_success) ... ok
+test_missing_optional_format_plugins_fail_closed (__main__.CoverageTests.test_missing_optional_format_plugins_fail_closed) ... ok
+test_missing_schema_family_cannot_be_an_empty_pass (__main__.CoverageTests.test_missing_schema_family_cannot_be_an_empty_pass) ... ok
+test_positive_public_entrypoint_is_nonempty (__main__.CoverageTests.test_positive_public_entrypoint_is_nonempty) ... ok
+test_public_cli_rejects_real_mutations (__main__.CoverageTests.test_public_cli_rejects_real_mutations) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 12.652s
+
+OK

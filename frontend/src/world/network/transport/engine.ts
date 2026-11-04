@@ -34,8 +34,10 @@ class TicketAcquisitionFailure extends WorldTransportError {
   readonly preserveOldRoom: boolean
   constructor(error: unknown) {
     const http = error instanceof TransportError ? error : null
-    super(http?.kind === 'timeout' ? 'timeout' : 'unavailable', http?.kind === 'timeout' ? 4408 : 4500)
     const reasons = ticketOperation.errors as Record<string, readonly string[]>
+    const mapVersion = http?.kind === 'http' && http.status === 409 && http.server?.core?.reason === 'MAP_VERSION_MISMATCH'
+      && reasons['409']?.includes('MAP_VERSION_MISMATCH')
+    super(mapVersion ? 'map-version' : http?.kind === 'timeout' ? 'timeout' : 'unavailable', mapVersion ? 4409 : http?.kind === 'timeout' ? 4408 : 4500)
     this.preserveOldRoom = !!http && (http.kind === 'network' || http.kind === 'timeout' || (http.kind === 'http'
       && !!http.server?.reason && ordinaryTicketReasons.has(http.server.reason)
       && !!reasons[String(http.status)]?.includes(http.server.reason)))

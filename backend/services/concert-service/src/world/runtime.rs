@@ -416,6 +416,23 @@ where
         }
         Ok(())
     }
+    /// Additive opt-in installation; legacy callers keep the original frame shape.
+    pub fn install_motion(
+        &mut self, b: Binding, cause: SnapshotCause, now: u64,
+    ) -> Result<(), RuntimeError> {
+        self.install(b.clone(), cause, now)?;
+        if self.rooms[&b.room_id].simulation.motion_capture(&b, now).is_some() {
+            self.recovery.stream_mut(&b).map_err(|_| RuntimeError::Stale)?.enable_motion();
+        }
+        Ok(())
+    }
+    /// Startup-only forwarding from the actual validated C06 release.
+    pub fn configure_motion_profile(&mut self, geometry_hash: &str) -> Result<(), RuntimeError> {
+        for room in self.rooms.values_mut() {
+            room.simulation.configure_motion_profile(geometry_hash).map_err(|_| RuntimeError::Binding)?;
+        }
+        Ok(())
+    }
     /// Suppress only this subscription's publication before asynchronous DB work.
     /// Others omit its presence; BE12 keeps using actual canonical membership.
     pub fn begin_switch(
@@ -680,7 +697,10 @@ where
         }
         // Refresh without dequeuing/numbering to enforce current privacy and slow-consumer limits.
         for b in members {
-            self.publish_inner(&b, now, false)?;
+            // Terminal cleanup may also acknowledge another closed member from this snapshot.
+            if self.members.get(&member_key(&b)) == Some(&b) {
+                self.publish_inner(&b, now, false)?;
+            }
         }
         self.retry_cleanup();
         report.pending_cleanup = self.cleanup.len() + self.recovery.pending_cleanup_count();
@@ -754,16 +774,30 @@ where
                 return Ok(());
             }
         };
+        let motion = self.rooms[&b.room_id].simulation.motion_capture(b, now);
         let stream = self
             .recovery
             .stream_mut(b)
             .map_err(|_| RuntimeError::Stale)?;
+        stream.capture_motion(motion);
         if !handoff || !self.transport.ready(b) {
             if stream
                 .refresh(&frame, now, &self.membership, &self.recipient)
                 .is_err()
             {
-                self.close_member(b, RevokeReason::PolicyUnavailable);
+                // Refresh may have already selected a precise terminal control (for example
+                // GAP or BACKPRESSURE). Maintenance must not replace it with a policy outage.
+                let (label, code) = stream.terminal_close().unwrap_or(("POLICY_UNAVAILABLE", 4500));
+                let terminal = stream.take_terminal();
+                if self.transport.ready(b) {
+                    if let Some(delivery) = terminal {
+                        let _ = self.transport.send(b, delivery);
+                    }
+                }
+                self.transport.close(b, SafeClose { code, label });
+                // No terminal subscription or queued private state survives a blocked socket.
+                // Exact failed persistent cleanup remains discoverable for retry.
+                let _ = self.disconnect_inner(b, now);
             }
             return Ok(());
         }
@@ -856,6 +890,7 @@ where
                     match command {
                         Command::Ready { reply } => { let _ = reply.send(self.maintain(now).map(|_|())); },
                         Command::Install { binding,cause,reply } => { let _ = reply.send(self.install(binding,cause,now)); },
+                        Command::InstallMotion { binding,cause,reply } => { let _ = reply.send(self.install_motion(binding,cause,now)); },
                         Command::BeginSwitch{binding,request_id,reply}=>{let _=reply.send(self.begin_switch(&binding,request_id,now));},
                         Command::RejectSwitch{binding,request_id,reason,reply}=>{let _=reply.send(self.reject_switch(&binding,request_id,reason,now));},
                         Command::Input { binding,input,reply } => { let _ = reply.send(self.input(&binding,input,now)); },
@@ -898,6 +933,11 @@ pub enum Command {
         reply: oneshot::Sender<Result<(), RuntimeError>>,
     },
     Install {
+        binding: Binding,
+        cause: SnapshotCause,
+        reply: oneshot::Sender<Result<(), RuntimeError>>,
+    },
+    InstallMotion {
         binding: Binding,
         cause: SnapshotCause,
         reply: oneshot::Sender<Result<(), RuntimeError>>,

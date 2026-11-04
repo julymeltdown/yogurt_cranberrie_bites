@@ -1,0 +1,42 @@
+{
+  "admission-round-01.json": {
+    "bytes": 1960,
+    "sha256": "7a179c165e5281881b364e0b9ec65f8ac0e286c4aa79faaf46dae7684f60fadd"
+  },
+  "allocation-update.json": {
+    "bytes": 1015,
+    "sha256": "5e7789b305b6ca7383f703a259111084944457189e46b44b115a6d1ef4faa3da"
+  },
+  "owner-assessment.json": {
+    "bytes": 5086,
+    "sha256": "1f89cd4fd80c5938803cb967bf05a0e3fc0933d36ef97ec69633737467b73dc6"
+  },
+  "round-01/help-danger-430.png": {
+    "bytes": 197852,
+    "sha256": "5c965ac67c0d03cb124d081ba72d4e7d8187f1dd04900635bddb82257fa52dd3"
+  },
+  "round-01/help-parade-360.png": {
+    "bytes": 170676,
+    "sha256": "82c5987128be72114e0b53fc8c1a98b5495b2b97a0f1fbb257c278b89f7eb9e6"
+  },
+  "round-01/native.log": {
+    "bytes": 46,
+    "sha256": "7b06d5dedc324c0022db4605d76fe430fd6126ac1292acf9ff500c801b9f6feb"
+  },
+  "round-01/report.json": {
+    "bytes": 62246,
+    "sha256": "21213afcfb52d41eef772c81628c703488b824aa08e6a2d835ec9573b19ff494"
+  },
+  "round-01/report.partial.json": {
+    "bytes": 62118,
+    "sha256": "eb32954b4f69e1acdec8d59dd3381967a206c4f6dccb3fcfc4e7bc8e2747f386"
+  },
+  "round-01/supervisor.json": {
+    "bytes": 1499,
+    "sha256": "6995f5c906c439c82bd388cc3f2dbe0a78693039c72031c95b1f6b27f51019eb"
+  },
+  "round-01/syntax.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

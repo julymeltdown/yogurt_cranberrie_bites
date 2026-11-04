@@ -1,0 +1,401 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend
+
+ ❯ src/features/me/__tests__/controller.test.ts (15 tests | 11 failed) 3137ms
+     × saves only the selected section with exact revision and no token persistence or replay 11ms
+     × keeps conflict draft, never replays, and requires explicit reload 2ms
+     × blocks replay after an uncertain network save, retaining the draft 1ms
+     × rejects oversized unicode names but accepts 40 astral characters and optional null bio 1ms
+   × serializes saves and sends the exact preference-only BE07 subset 1004ms
+   × fences a late write after canonical event/identity change 1002ms
+   × rejects stale read and mutation revisions without presenting false save success 1ms
+   × does not silently rebase drafts when FE13 notifies of a verified avatar commit 1ms
+   × clears displayed own data on forbidden responses, without rendering server error contents 1ms
+   × does not lose a verified avatar notification while a profile save is pending 1002ms
+   × ignores stale-scope and duplicate-avatar notifications 1ms
+ ❯ src/features/me/__tests__/original-fe34/profile-validation.test.tsx (10 tests | 10 failed) 109ms
+     × keeps invalid draft local without attempting a PATCH: { display_name: '   ' } 12ms
+     × keeps invalid draft local without attempting a PATCH: { display_name: ' \u202f　' } 1ms
+     × keeps invalid draft local without attempting a PATCH: { display_name: 'Name\twith tab' } 1ms
+     × keeps invalid draft local without attempting a PATCH: { display_name: 'Name\u007f' } 1ms
+     × keeps invalid draft local without attempting a PATCH: { display_name: 'Name\u009f' } 1ms
+     × keeps invalid draft local without attempting a PATCH: { bio: 'Two\nlines' } 1ms
+     × keeps invalid draft local without attempting a PATCH: { bio: 'Bio\u0000' } 1ms
+     × keeps invalid draft local without attempting a PATCH: { bio: 'Bio\u0085' } 1ms
+     × explains a blank name and saves the corrected name exactly without normalization 78ms
+     × explains a multiline bio and allows local cancellation without a server rollback 12ms
+ ❯ src/features/me/__tests__/ui.test.tsx (3 tests | 1 failed) 1121ms
+     × aborts a pending runtime adapter on privacy invalidation and drops its late success in StrictMode 1012ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 22 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > saves only the selected section with exact revision and no token persistence or replay
+AssertionError: expected [ { method: 'GET', body: null, …(1) } ] to deeply equal [ { method: 'GET', …(2) }, …(1) ]
+
+- Expected
++ Received
+
+@@ -2,15 +2,6 @@
+    {
+      "body": null,
+      "cache": "no-store",
+      "method": "GET",
+    },
+-   {
+-     "body": {
+-       "bio": null,
+-       "display_name": "New name",
+-       "expected_revision": 1,
+-     },
+-     "cache": "no-store",
+-     "method": "PATCH",
+-   },
+  ]
+
+ ❯ src/features/me/__tests__/controller.test.ts:21:19
+     19|     }))
+     20|     await controller.load(); controller.editPreferences({ low_power: t…
+     21|     expect(calls).toEqual([{ method: 'GET', body: null, cache: 'no-sto…
+       |                   ^
+     22|     expect(controller.read().participant?.revision).toBe(2); expect(co…
+     23|     controller.cancel('preferences'); expect(controller.read().draft.p…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > keeps conflict draft, never replays, and requires explicit reload
+AssertionError: expected 'error' to be 'conflict' // Object.is equality
+
+Expected: "conflict"
+Received: "error"
+
+ ❯ src/features/me/__tests__/controller.test.ts:29:37
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > blocks replay after an uncertain network save, retaining the draft
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/me/__tests__/controller.test.ts:35:39
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > rejects oversized unicode names but accepts 40 astral characters and optional null bio
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/me/__tests__/controller.test.ts:47:113
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > serializes saves and sends the exact preference-only BE07 subset
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/me/__tests__/controller.test.ts:54:80
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > fences a late write after canonical event/identity change
+AssertionError: expected "vi.fn()" to be called 2 times, but got 1 times
+ ❯ src/features/me/__tests__/controller.test.ts:64:40
+     62|   if(kind==='write')await controller.load()
+     63|   controller.editProfile({bio:'private draft'});const flight=kind==='r…
+     64|   await vi.waitFor(()=>expect(fetcher).toHaveBeenCalledTimes(kind==='r…
+       |                                        ^
+     65|   auth.session.replace(auth.session.read().generation,{userId:eventId,…
+     66|   expect(controller.read().draft.display_name).toBe('');expect(control…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > rejects stale read and mutation revisions without presenting false save success
+AssertionError: expected 'GET' to be 'PATCH' // Object.is equality
+
+Expected: "PATCH"
+Received: "GET"
+
+ ❯ src/features/me/__tests__/controller.test.ts:71:113
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > does not silently rebase drafts when FE13 notifies of a verified avatar commit
+AssertionError: expected null to be 'Keep this' // Object.is equality
+
+- Expected:
+"Keep this"
+
++ Received:
+null
+
+ ❯ src/features/me/__tests__/controller.test.ts:76:141
+     74| it('does not silently rebase drafts when FE13 notifies of a verified a…
+     75|   const {controller,dispose}=setup(vi.fn(async()=>response(participant…
+     76|   await controller.refreshAfterAvatar(controller.scope, 2);expect(cont…
+       |                                                                                                                                             ^
+     77| })
+     78| it('clears displayed own data on forbidden responses, without renderin…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > clears displayed own data on forbidden responses, without rendering server error contents
+AssertionError: expected 'error' to be 'expired' // Object.is equality
+
+Expected: "expired"
+Received: "error"
+
+ ❯ src/features/me/__tests__/controller.test.ts:80:147
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > does not lose a verified avatar notification while a profile save is pending
+AssertionError: expected "vi.fn()" to be called 2 times, but got 1 times
+ ❯ src/features/me/__tests__/controller.test.ts:85:40
+     83|   const pending=deferred<Response>(),fetcher=vi.fn(async input=>(input…
+     84|   const {controller,dispose}=setup(fetcher);await controller.load();co…
+     85|   await vi.waitFor(()=>expect(fetcher).toHaveBeenCalledTimes(2));await…
+       |                                        ^
+     86|   pending.resolve(response({...participant(),revision:2}));await save;…
+     87| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/22]⎯
+
+ FAIL  src/features/me/__tests__/controller.test.ts > ignores stale-scope and duplicate-avatar notifications
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/me/__tests__/controller.test.ts:92:37
+     90|   await controller.refreshAfterAvatar({...controller.scope,policyGener…
+     91|   await controller.refreshAfterAvatar(controller.scope,1)
+     92|   expect(controller.read().blocked).toBe(false);expect(controller.read…
+       |                                     ^
+     93| })
+     94| it('rejects a stale avatar GET after a newer verified FE13 commit',asy…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/22]⎯
+
+ FAIL  src/features/me/__tests__/ui.test.tsx > FE34 accessible route-ready UI > aborts a pending runtime adapter on privacy invalidation and drops its late success in StrictMode
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Settings"[39m
+        [33mclass[39m=[32m"me-view"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mSETTINGS[0m
+        [36m</h2>[39m
+        [36m<p>[39m
+          [0mSaved for your account and this event. Sound stays off until you explicitly apply it in this session.[0m
+        [36m</p>[39m
+        [36m<p[39m
+          [33maria-atomic[39m=[32m"true"[39m
+          [33maria-live[39m=[32m"polite"[39m
+          [33mrole[39m=[32m"status"[39m
+        [36m>[39m
+          [0mCould not load your profile. Retry to read the latest saved version.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLoad your profile[0m
+        [36m</button>[39m
+        [36m<form>[39m
+          [36m<fieldset[39m
+            [33mdisabled[39m=[32m""[39m
+          [36m>[39m
+            [36m<legend>[39m
+              [0mSaved preferences[0m
+            [36m</legend>[39m
+            [36m<label>[39m
+              [0mPreferred era[0m
+              [36m<select>[39m
+                [36m<option>[39m
+                  [0mREVENGE[0m
+                [36m</option>[39m
+                [36m<option>[39m
+                  [0mPARADE[0m
+                [36m</option>[39m
+                [36m<option>[39m
+                  [0mDANGER[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"me-check"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mLow power[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"me-check"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mReduced motion[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"me-check"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mEnable sound[0m
+            [36m</label>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"me-note"[39m
+            [36m>[39m
+              [0mSound is off by default. Saving a preference does not start audio.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"me-actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mSave preferences[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mCancel preference changes[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</fieldset>[39m
+        [36m</form>[39m
+        [36m<button[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mApply saved preferences in this session[0m
+        [36m</button>[39m
+        [36m<p[39m
+          [33mrole[39m=[32m"status"[39m
+        [36m/>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"shell-link"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/me/account"[39m
+          [33mid[39m=[32m"settings-account-controls"[39m
+        [36m>[39m
+          [0mAccount controls[0m
+        [36m</a>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/world"[39m
+          [33mid[39m=[32m"settings-back-world"[39m
+        [36m>[39m
+          [0mBack to world[0m
+        [36m</a>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/features/me/__tests__/ui.test.tsx:39:37
+     37|     render(<StrictMode><MemoryRouter><SettingsPage controller={control…
+     38|     fireEvent.click(screen.getByRole('button', { name: 'Apply saved pr…
+     39|     await waitFor(()=>expect(apply).toHaveBeenCalledTimes(1))
+       |                                     ^
+     40|     act(()=>{auth.privacy.changePolicy(auth.privacy.capture(),'block')…
+     41|     await act(async()=>resolve()); expect(screen.queryByText('Saved pr…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/22]⎯
+
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { display_name: '   ' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { display_name: ' \u202f　' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { display_name: 'Name\twith tab' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { display_name: 'Name\u007f' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { display_name: 'Name\u009f' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { bio: 'Two\nlines' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { bio: 'Bio\u0000' }
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > keeps invalid draft local without attempting a PATCH: { bio: 'Bio\u0085' }
+AssertionError: expected 'error' to be 'ready' // Object.is equality
+
+Expected: "ready"
+Received: "error"
+
+ ❯ src/features/me/__tests__/original-fe34/profile-validation.test.tsx:28:39
+     26|       await controller.save('profile')
+     27|       expect(fetcher).toHaveBeenCalledTimes(1)
+     28|       expect(controller.read().phase).toBe('ready')
+       |                                       ^
+     29|       expect(controller.read().blocked).toBe(false)
+     30|       expect(controller.read().message).toContain(message)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/22]⎯
+
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > explains a blank name and saves the corrected name exactly without normalization
+AssertionError: expected 'Could not load your profile. Retry to…' to contain 'non-space'
+
+Expected: "non-space"
+Received: "Could not load your profile. Retry to read the latest saved version."
+
+ ❯ src/features/me/__tests__/original-fe34/profile-validation.test.tsx:56:54
+     54|       fireEvent.change(screen.getByLabelText('Display name'), { target…
+     55|       fireEvent.click(screen.getByRole('button', { name: 'Save profile…
+     56|       expect(screen.getByRole('status').textContent).toContain('non-sp…
+       |                                                      ^
+     57|       expect(writes).toEqual([])
+     58|       const corrected = '  Listener 🎸  '
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/22]⎯
+
+ FAIL  src/features/me/__tests__/original-fe34/profile-validation.test.tsx > original FE34 Profile owner validation > explains a multiline bio and allows local cancellation without a server rollback
+AssertionError: expected 'Could not load your profile. Retry to…' to contain 'Remove tabs, newlines and other contr…'
+
+Expected: "Remove tabs, newlines and other control characters from your bio."
+Received: "Could not load your profile. Retry to read the latest saved version."
+
+ ❯ src/features/me/__tests__/original-fe34/profile-validation.test.tsx:75:54
+     73|       fireEvent.change(screen.getByLabelText('Bio (optional)'), { targ…
+     74|       fireEvent.click(screen.getByRole('button', { name: 'Save profile…
+     75|       expect(screen.getByRole('status').textContent).toContain('Remove…
+       |                                                      ^
+     76|       expect((screen.getByLabelText('Bio (optional)') as HTMLTextAreaE…
+     77|       fireEvent.click(screen.getByRole('button', { name: 'Cancel profi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/22]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  22 failed | 6 passed (28)
+   Start at  04:34:08
+   Duration  6.28s (transform 524ms, setup 0ms, import 1.02s, tests 4.37s, environment 672ms)
+

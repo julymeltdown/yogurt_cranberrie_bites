@@ -1,0 +1,17 @@
+{
+  "frontend/src/app/safety-entry/authorization.ts": "6d8be2f29c8e2220a3c3410062052c98089b3027d82944eee6f5eac59a79c3d8",
+  "frontend/src/app/safety-entry/panels.tsx": "c9bbe0411946bcc7f15261322c6b297d89721bff5942a7f1b55f06e5383fbe68",
+  "frontend/src/app/safety-entry/owner.ts": "3bac1bf987a91f418411fb896bf428a7c6e84f636e09b2ad08f261d961130a4c",
+  "frontend/src/app/safety-entry/context.tsx": "83a426987aba12bfdb3308af30a0fe0455293892ba40a5f5f91d1d9d00b09934",
+  "frontend/src/app/social-composition/__tests__/sharing-safety-default/owner.test.ts": "c7de09d093679debb7bba88496e2b9d2fe3b63fcbf9f4f5daf846cb14512988c",
+  "frontend/src/app/social-composition/__tests__/sharing-safety-default/native.tsx": "08d0c0db023666b8bc70eb7c572f5778ea2c6e7b4d15f507a076f01c55e68e38",
+  "frontend/src/app/social-composition/__tests__/sharing-safety-default/native.html": "25448a77353921476df48790bf87b45eb971fd4559b86ec5294f6313a901566b",
+  "frontend/src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx": "660400974bc988785468fb04499d475cd6f9e114a61f227c5f3c8a4242f7bda3",
+  "frontend/src/app/social-composition/__tests__/sharing-safety-default/native.mjs": "0dd0e56a3a0a01b0f65c42c085c945518730f202d6a84f4a3ff780e3e058184a",
+  "frontend/src/app/social-composition/__tests__/sharing-safety-default/service.ts": "7ee7e9fbc81a13c826f8b5e8231c4eaf387d37b7a887ee63fb5d53022819b298",
+  "frontend/src/app/social-composition/owner.ts": "9e350f190535d1d79c87825e769eaa52c118a79a96c143abae73a72daaa73ad8",
+  "frontend/src/app/social-composition/ports.ts": "d9e73992eda7fe2ca795407a63c3485b201ee8ed833ecd351c2a378603706535",
+  "frontend/src/app/social-composition/sharing.tsx": "37082de801b8ba4352b27a6df8debad0262a1ab0fa20bd7274e8dccae24389f1",
+  "frontend/src/app/social-composition/panels.tsx": "7d6a1378dc1a838866101b4380b36edeaf3b95dfb424e35b29efd2d7f94e2c6d",
+  "frontend/src/app/router.tsx": "dbd3263435a0efe0599fb5bf298ab465dcd41fe97e736b11a1e99b2fbe95101b"
+}

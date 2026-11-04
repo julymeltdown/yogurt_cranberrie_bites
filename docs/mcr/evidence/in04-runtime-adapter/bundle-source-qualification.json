@@ -1,0 +1,40 @@
+{
+  "kind": "SOURCE_QUALIFICATION_ONLY",
+  "sourceRevision": "8a822994349e051a60d29c0267d15371baf9896c",
+  "canonicalApplicationCandidate": "7804fbaef9f6c41177b45e391a9f5c7b6e1d6a06",
+  "sourceCasesPassed": 11,
+  "syntaxChecksPassed": 10,
+  "scopedDenyWarningLint": "PASS",
+  "backendModuleQualification": "SOURCE_PROTOCOL_ONLY",
+  "runtimeStatus": "NOT_RUN",
+  "actualFrontendStartup": "NOT_RUN",
+  "goalStatus": "ACTIVE",
+  "artifact": {
+    "path": "frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime.mjs",
+    "adapterSha256": "7b1807be10b7a6a717bb10e66b1395ef12a6c06fa047db8ccb0a53059408283c",
+    "backendSource": "2653376e5d8d68f65e05c644e1397a38c6bc02a4",
+    "backendSha256": "7d29fee99b5eab4b3e3320ba5a4513f803d6d2b450da33246fa467767deba6ad",
+    "frontendImplementationSha256": "812709028e70a232cc8f00a9088b4b12d350955030fe3c83ea63ed9849dccade",
+    "privateReaderSha256": "253063a7965050bba34a96d6958ad9cf038ec9106ff3d6a37bfb4e09b61fe296",
+    "bytes": 14316
+  },
+  "acceptedOffer": "docs/mcr/evidence/in04-runtime-adapter/accepted-bundle-source-offer.json",
+  "release": "docs/mcr/evidence/in04-runtime-adapter/ROOT-IN04-ADAPTER-BUNDLE-SOURCE-20261104T2010Z/attempt01/release.json",
+  "nonshrinkingWholeCarryBytes": 2604455423,
+  "chargedCarryPlusPositiveGrowthBytes": 2604477845,
+  "executablePostimages": {
+    "frontend/e2e/runtime-adapters/in04-wall-b/deferred.test.mjs": "b53195aa165d7ce2dc3bf8d764de310ffd04d17be841e6f19f755b514007a156",
+    "frontend/e2e/runtime-adapters/in04-wall-b/private-file.mjs": "253063a7965050bba34a96d6958ad9cf038ec9106ff3d6a37bfb4e09b61fe296",
+    "frontend/e2e/runtime-adapters/in04-wall-b/adapter.mjs": "812709028e70a232cc8f00a9088b4b12d350955030fe3c83ea63ed9849dccade",
+    "frontend/e2e/runtime-adapters/in04-wall-b/source.test.mjs": "d0d16905ff06d5dbaf2f5772e4393a7bd41b6f807fdfca6ecc8bde6437b4b9e4",
+    "frontend/e2e/runtime-adapters/in04-wall-b/validate.py": "6aa54216c33cffecdceb7e9ded3bf550d8f7eb1ea7247bd75e053cf2012e25f4",
+    "frontend/e2e/runtime-adapters/in04-wall-b/deferred.mjs": "10cafaaca6a89173cf5cb8061900072df359e06710100e15657c6affc8b04253",
+    "frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs": "511808e9963f81a187280c8593280d583852ac13b5e7460e6e1937b0d0d1b09d",
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": "cbcd295752e9cbb5bc05501489f7acdbda0702019a0569f9f84ec81dcc6e02ad",
+    "frontend/e2e/runtime-adapters/in04-wall-b/inputs.mjs": "fd932e9cda587ef6a0be383e143a30555f5ca29844e7056289ef819dcc4f5432",
+    "frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime.mjs": "7b1807be10b7a6a717bb10e66b1395ef12a6c06fa047db8ccb0a53059408283c",
+    "frontend/e2e/runtime-adapters/in04-wall-b/prepare.mjs": "a6c566db62a6bbb0a3959baf7f9daa342680ac5f246a09da6f5432b10358412a"
+  },
+  "retainedDecline": "docs/mcr/evidence/in04-runtime-adapter/ROOT-IN04-ADAPTER-BUNDLE-SOURCE-20261104T1958Z/declined-before-accept.json",
+  "scopeLimit": "No actual Vite/browser/backend/three-actor Wall/raster/moderation/restart acceptance; no FE41 replay"
+}

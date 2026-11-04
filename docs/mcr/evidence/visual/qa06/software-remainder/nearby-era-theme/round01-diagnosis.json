@@ -1,0 +1,11 @@
+{
+  "round01Exit": 1,
+  "case1": "nearby-parade-360 PASS",
+  "case2": "nearby-parade-390 own API installation race before state poll",
+  "capturedPNGs": 1,
+  "repair": "Wait for existing fixture API marker, no source/gate/controller/timeout/behavior assertion weakening",
+  "sameWorkDeadline": 1793820451.271807,
+  "remainingSeconds": 259.2451388835907,
+  "nextRound": "round-02",
+  "allJobMaxPNG": 8
+}

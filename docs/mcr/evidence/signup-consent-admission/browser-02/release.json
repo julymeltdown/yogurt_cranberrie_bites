@@ -1,0 +1,48 @@
+{
+  "id": "FE10-NATIVE-FEATURE-20261104T1851Z",
+  "status": "FULL",
+  "releasedAt": "2026-11-04T18:52:04.687118+00:00",
+  "head": "d0c8e3f926404020adb77d8a00f4239091af4129",
+  "guardSha256": "f583e4c171d858d936a5f26fb9b0ed70bc533a721d03274907ef89cf270983d8",
+  "nativeCases": 7,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "exit": 0,
+  "repairs": 0,
+  "ownedPidsRemaining": [],
+  "guardianRemaining": false,
+  "dependencyLinkRemaining": false,
+  "scratchRemaining": false,
+  "cacheRemaining": false,
+  "ownedPortsRemaining": false,
+  "exactExternalSingletons": [
+    {
+      "source": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.fe10-native-feature-round-02/playwright_chromiumdev_profile-p6L9PD/SingletonSocket",
+      "target": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.ZyJiE2/SingletonSocket",
+      "root": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.ZyJiE2",
+      "observedAt": 1793818289.8715441
+    }
+  ],
+  "remainingExactExternalSingletonRoots": [],
+  "peakNew": {
+    "bytes": 32966670,
+    "rss": 2085519360,
+    "processes": 11
+  },
+  "peakWhole": {
+    "bytes": 2918148577,
+    "entries": 33861
+  },
+  "freeBytes": 12283293696,
+  "retainedPriorUnconfirmedExternalCarry": {
+    "bytes": 208,
+    "entries": 4,
+    "ownership": "readonly/unconfirmed; not deleted; no all-system-TMP-zero claim"
+  },
+  "qualification": "controlled fixtures through canonical client; no real Auth/mail/legal publication",
+  "node": "v24.22.2",
+  "browser": "156.0.8078.80"
+}

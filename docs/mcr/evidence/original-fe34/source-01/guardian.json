@@ -1,0 +1,67 @@
+{
+  "job": "FE34-EXISTING-CONTRACT-SOURCE-20261104T1932Z",
+  "status": "FAIL",
+  "startedEpoch": 1793820848.453521,
+  "workDeadline": 1793820958.236792,
+  "cleanupDeadline": 1793821018.236792,
+  "head": "5df308914c052da1672e138e24f44035ad26b539",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 4,
+    "rssMiB": 2560
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/me/__tests__/original-fe34/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793820848.6294668,
+      "exitCode": 1,
+      "finishedEpoch": 1793820855.31838
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 733008,
+  "peakWholeBytes": 2027442176,
+  "peakTempBytes": 14127219,
+  "peakOutputBytes": 2935,
+  "sourceSha256": {
+    "frontend/src/features/me/model/contract.ts": "69c70ab44898f34a84a18817d670c3d84186f904ea4c5e0edbdf75a8a56eed79",
+    "frontend/src/features/me/model/controller.ts": "34c9c487f539b7781d31c6db1e453c871fa424a4bd0dd17bc14fc02f6d531e2e",
+    "frontend/src/features/me/ui/MePages.tsx": "4e2b9742c0e5b4df87290d5daf7a986c456cd9e781a76a672f2f0790afec9941",
+    "frontend/src/features/me/__tests__/original-fe34/profile-validation.test.tsx": "9eae2780fb104da301f52d857f4598788b4512e2d8aa9acd0b781ff487f43e61",
+    "frontend/src/features/me/__tests__/original-fe34/source-round.py": "cd14ad8c5107b63de51b2f09a22f2bdaa78f3832dfc090521d709cd2b6b276a3",
+    "frontend/src/features/me/__tests__/original-fe34/vitest.config.mjs": "2e45d2beb176ce8ef1582be28421816718bc8a236230dd394ad4d6cfaaa3f106"
+  },
+  "admission": {
+    "freeBytes": 14214991872,
+    "otherNewBytes": 2348810240,
+    "ownNewBytes": 134217728,
+    "residualBytes": 11731963904
+  },
+  "initialWholeBytes": 2013011968,
+  "error": "source-tests failed; retained log/report",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793820855.4823601,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

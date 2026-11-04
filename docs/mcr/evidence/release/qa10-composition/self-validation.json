@@ -1,0 +1,100 @@
+{
+  "schema": "mcr.qa10.composition-self-validation.v1",
+  "source_candidate": "b30749b2e039152c82c9a8472dc4e7964fb61788",
+  "scope": "Parser/unit/CLI evidence only; no application release acceptance",
+  "raw_records_retained_locally": true,
+  "sanitization": "Local checkout and Python-framework prefixes replaced; original SHA256 retained.",
+  "rounds": [
+    {
+      "offer": "QA10-COMPOSITION-SOURCE-20261104T1902Z",
+      "files": {
+        "admission.json": {
+          "original_sha256": "11813d91720e2ce8e6c6791e7e8a40f6bb9254303718beeed9c93439c357f0f0",
+          "retained_sha256": "11813d91720e2ce8e6c6791e7e8a40f6bb9254303718beeed9c93439c357f0f0"
+        },
+        "candidate.log": {
+          "original_sha256": "aa5679bae37b80d40b730cfbbb503ed7eb43b31459105101a8d4f186d49f5fad",
+          "retained_sha256": "aa5679bae37b80d40b730cfbbb503ed7eb43b31459105101a8d4f186d49f5fad"
+        },
+        "focused-unittest.log": {
+          "original_sha256": "809a2335aabdb6ca6ae69dad2637da746043ec2374de720551219dc58428f96b",
+          "retained_sha256": "440ad3c956a6f09682774aba48633556f786e2f85ea69210db111a1e1847d654"
+        },
+        "cli-source.log": {
+          "original_sha256": "0c0ff3cbf32d8aebb02f389a97f57ebce4d12b31a6e97390c4a763eca439c22c",
+          "retained_sha256": "0c0ff3cbf32d8aebb02f389a97f57ebce4d12b31a6e97390c4a763eca439c22c"
+        },
+        "cli-composition.log": {
+          "original_sha256": "b4205ffbc1b3da62aa5dc4ecc3c8595c0efc218d61013eb399b1e8fff2e9e833",
+          "retained_sha256": "b4205ffbc1b3da62aa5dc4ecc3c8595c0efc218d61013eb399b1e8fff2e9e833"
+        },
+        "cli-stale.log": {
+          "original_sha256": "73f33ceece1e82b1fd7ef9eb085de7cfe9a40c30cf81e6cdfe25c67fe2bcf344",
+          "retained_sha256": "73f33ceece1e82b1fd7ef9eb085de7cfe9a40c30cf81e6cdfe25c67fe2bcf344"
+        },
+        "whitespace.log": {
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "retained_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "guardian-result.json": {
+          "original_sha256": "d8d01a79b1f008e4957c18c25383136e1cb6b8e5a96f0e0bf8678de5db3ca2b0",
+          "retained_sha256": "d8d01a79b1f008e4957c18c25383136e1cb6b8e5a96f0e0bf8678de5db3ca2b0"
+        },
+        "result.json": {
+          "original_sha256": "2c7984247e834b5d8206b2489feff17014b6cbf9b0df3fbdec209b074e2073ae",
+          "retained_sha256": "62c9a86c8b8941a69a9c5802ac531c5ce48c901a63e2b53c5c3f56459dc2465e"
+        }
+      }
+    },
+    {
+      "offer": "QA10-COMPOSITION-RETRY-SOURCE-20261104T1915Z",
+      "files": {
+        "admission.json": {
+          "original_sha256": "38dfdfb1897d087eb9daaf8f16e677a57fe41eb52fb847ea51b99a07c558464f",
+          "retained_sha256": "38dfdfb1897d087eb9daaf8f16e677a57fe41eb52fb847ea51b99a07c558464f"
+        },
+        "candidate.log": {
+          "original_sha256": "a0725dc421f6858ae850d0e2bd59f101189ec5c51f55f06f044f6422373d8d0c",
+          "retained_sha256": "a0725dc421f6858ae850d0e2bd59f101189ec5c51f55f06f044f6422373d8d0c"
+        },
+        "focused-unittest.log": {
+          "original_sha256": "8b4a5cbdab9a70fa9a46152107fc874b33e3b808393b7f9eedce2d82d1c87bd3",
+          "retained_sha256": "8b4a5cbdab9a70fa9a46152107fc874b33e3b808393b7f9eedce2d82d1c87bd3"
+        },
+        "cli-source.log": {
+          "original_sha256": "d84e12e14c5da026c9a76e5acd62e85505a5a5174b3cf164a6d116f353b003d5",
+          "retained_sha256": "d84e12e14c5da026c9a76e5acd62e85505a5a5174b3cf164a6d116f353b003d5"
+        },
+        "cli-composition.log": {
+          "original_sha256": "a803283f55252d9329407e06eb1e8287e96bc758d20de75c28333f4031d20f49",
+          "retained_sha256": "a803283f55252d9329407e06eb1e8287e96bc758d20de75c28333f4031d20f49"
+        },
+        "cli-stale.log": {
+          "original_sha256": "73f33ceece1e82b1fd7ef9eb085de7cfe9a40c30cf81e6cdfe25c67fe2bcf344",
+          "retained_sha256": "73f33ceece1e82b1fd7ef9eb085de7cfe9a40c30cf81e6cdfe25c67fe2bcf344"
+        },
+        "whitespace.log": {
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "retained_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "guardian-result.json": {
+          "original_sha256": "1d737103a5fabc15a6368078752acd07068d64e51253d3dc25248b61fd7fb23e",
+          "retained_sha256": "1d737103a5fabc15a6368078752acd07068d64e51253d3dc25248b61fd7fb23e"
+        },
+        "result.json": {
+          "original_sha256": "225d5ea6c825c3c4b6e2ceb694913489fe5dc0a0444b88f708dada724efa47f1",
+          "retained_sha256": "7770c5a2f82e9ccb12329b7e50cda96d93fdabc327c393e0d22411a49d3b82f6"
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "scripts/mcr/release_checks/check.py": "d7f0223d35ccaa2949a2039c84a3bd193c03b0c1b00db741f4658b22ffca221a",
+    "scripts/mcr/release_checks/test_check.py": "558c0efe0892656fb9be5de88ee8dbc7625157a21af810a8b61ed21117b7a451",
+    "scripts/mcr/release_checks/composition/__init__.py": "59215fe6d2f2d11bdacc982725fb3424f3c8ac924a9ab92729216ecec0c5819a",
+    "scripts/mcr/release_checks/composition/model.py": "e0e5f145aa0ca4ebdc2d28ecd391f4cfda0887c97dd86972032e49bf7b784317",
+    "scripts/mcr/release_checks/composition/reports.py": "067d468260e472d55833b018cbda335a8a7df108ec367aef37d1ee6d3f032b66",
+    "scripts/mcr/release_checks/composition/test_composition.py": "4c91d74ee989e451c142edf879f7ddfa49c1cef680b1d46833223dda1d040651",
+    "docs/mcr/evidence/release/qa10-composition/source_round.py": "a30910274bd9eb3a98cebc75332292d453c7be2ee6191a3d560f6b54f68850ab"
+  }
+}

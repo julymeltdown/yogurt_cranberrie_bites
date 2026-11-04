@@ -1,0 +1,20 @@
+{
+  "allocation": "IN04-PHASER-URL-SOURCE-20261104T1928Z",
+  "accepted": true,
+  "accepted_epoch": 1793820530.35005,
+  "work_deadline_epoch": 1793820830.35005,
+  "hard_deadline_epoch": 1793820890.35005,
+  "max_owned_bytes": 8388608,
+  "max_new_bytes": 8388608,
+  "max_rss_bytes": 2684354560,
+  "max_pids": 8,
+  "start_floor_bytes": 11811160064,
+  "live_floor_bytes": 8589934592,
+  "all_new_bytes": 1484783616,
+  "fresh_free_bytes": 16694054912,
+  "source_head": "abf2b5914e5fbe8178e0914166d77e21cad960a7",
+  "guardian_sha256": "e935cc81c1ffaf401c696a3a2cfef69624d29f3fe69baa7cc71a2e3605945009",
+  "predecessor": "ROOT-IN04-FE41-COALESCED-SOURCE-20261104T1927Z",
+  "predecessor_actual_full": "2026-11-04T19:27:12.412989Z",
+  "other_inventory": "Allocator eligible maximum after actual Root FULL: Auth2071GiB + COREmetadata/QA07 successor128MiB + QA06browser256MiB (or smaller Admin240MiB) + own8MiB. Root now0, max global4/SOURCE2/browser1 including own; no duplicate hold. Conservative maximum unchanged from actual conditional offer; no other eligible reservation reported."
+}

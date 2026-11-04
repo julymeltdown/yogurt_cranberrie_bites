@@ -1,0 +1,18 @@
+{
+  "allocation": "IN04-WALL-B-SOURCE-20261104T1857Z",
+  "accepted": true,
+  "accepted_epoch": 1793818638.20387,
+  "work_deadline_epoch": 1793818938.20387,
+  "hard_deadline_epoch": 1793818998.20387,
+  "max_owned_bytes": 8388608,
+  "max_new_bytes": 8388608,
+  "max_rss_bytes": 2684354560,
+  "max_pids": 8,
+  "start_floor_bytes": 11811160064,
+  "live_floor_bytes": 8589934592,
+  "all_new_bytes": 2189426688,
+  "fresh_free_bytes": 17151635456,
+  "source_head": "23a80afb44fc3cefe261f865158196559315f7f6",
+  "guardian_sha256": "e935cc81c1ffaf401c696a3a2cfef69624d29f3fe69baa7cc71a2e3605945009",
+  "other_inventory": "Allocator upper: Party warm 2GiB NEW, QA10 SOURCE32MiB, this SOURCE8MiB; global3/SOURCE2. No other reported offer/hold."
+}

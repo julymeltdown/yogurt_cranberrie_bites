@@ -1,0 +1,84 @@
+{
+  "changed": [
+    "contracts/generated/mcr-domain.openapi.json",
+    "backend/docs/api/mcr-domain.openapi.json",
+    "contracts/generated/api-client/types.ts",
+    "contracts/generated/api-client/document.ts",
+    "frontend/src/shared/api/generated/types.ts",
+    "frontend/src/shared/api/generated/document.ts",
+    "contracts/fixtures/c07/responses.json",
+    "contracts/fixtures/c07/compatibility.json",
+    "contracts/fixtures/c07/index.json",
+    "contracts/generated/api-client/manifest.json"
+  ],
+  "oldResponseCases": 1696,
+  "newResponseCases": 1705,
+  "removedCaseKeys": [],
+  "addedCaseKeys": [
+    [
+      "getOwnConcertOperationsAccess",
+      200,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      400,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      401,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      403,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      404,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      429,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      500,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      503,
+      "application/json"
+    ],
+    [
+      "getOwnConcertOperationsAccess",
+      504,
+      "application/json"
+    ]
+  ],
+  "generatedOutputHashes": {
+    "contracts/generated/api-client/types.ts": "bd4a2502b5995b169e8544bae8dee0e8639d08e959b2b03f388dcf75072b32ce",
+    "contracts/generated/api-client/document.ts": "a8791b528bcde392022896cc7e17117c2e86a9dfe940487083857ef1711faddb",
+    "contracts/generated/api-client/runtime.ts": "2022e42863e2d0970071d6930c0ec746384768901ca2854fc67f09d40ea33065",
+    "contracts/generated/api-client/mock.ts": "ce9eb2b15946589b287c0fad6f5fba68b7c18965b6182787fa1500f71df8bdc0",
+    "contracts/generated/api-client/index.ts": "1ceb9baf7f43050203cc8dc7746f4414f8a24410b9aa7019a18b81ed595c9678",
+    "contracts/generated/api-client/formats.ts": "c3b897d24cee22c5f4aa744d6edd9c3fe71b55f6610e9e2b55315956a1c85dff",
+    "contracts/generated/api-client/THIRD_PARTY_NOTICES.txt": "5ba1a4f03626ccca6dcbf53a554545e4f776a335bfdaa233ec3bfe9bb7fac15d",
+    "frontend/src/shared/api/generated/types.ts": "bd4a2502b5995b169e8544bae8dee0e8639d08e959b2b03f388dcf75072b32ce",
+    "frontend/src/shared/api/generated/document.ts": "a8791b528bcde392022896cc7e17117c2e86a9dfe940487083857ef1711faddb",
+    "frontend/src/shared/api/generated/runtime.ts": "2022e42863e2d0970071d6930c0ec746384768901ca2854fc67f09d40ea33065",
+    "frontend/src/shared/api/generated/mock.ts": "ce9eb2b15946589b287c0fad6f5fba68b7c18965b6182787fa1500f71df8bdc0",
+    "frontend/src/shared/api/generated/index.ts": "1ceb9baf7f43050203cc8dc7746f4414f8a24410b9aa7019a18b81ed595c9678",
+    "frontend/src/shared/api/generated/formats.ts": "c3b897d24cee22c5f4aa744d6edd9c3fe71b55f6610e9e2b55315956a1c85dff",
+    "frontend/src/shared/api/generated/THIRD_PARTY_NOTICES.txt": "5ba1a4f03626ccca6dcbf53a554545e4f776a335bfdaa233ec3bfe9bb7fac15d",
+    "contracts/fixtures/c07/responses.json": "acf6d4eeb88eb2d4677c203b965310068b218cca9a1ced757cf64d70fb0c1fe4",
+    "contracts/fixtures/c07/compatibility.json": "7a5cc365083fe87ab9cc9c0f6c93d621de1c48ad10df9525df99472794b2b261",
+    "contracts/fixtures/c07/index.json": "fef746223f7842ed7b1c322067ca170652b9f1b0dbac854f09895a19973ed149",
+    "contracts/generated/api-client/manifest.json": "5fa5010f5493a2ee036a056ca454dbf89293411c002e9f8cc29a0fff29661060"
+  }
+}

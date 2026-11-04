@@ -1,0 +1,21 @@
+{
+  "id": "wall-other-eras",
+  "originalIA": [
+    "R01"
+  ],
+  "driver": "wall-other-eras.mjs",
+  "cases": [
+    {
+      "era": "PARADE",
+      "width": 390,
+      "state": "exactapproved128RGBA actualApp read-only"
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "state": "exactapproved128RGBA actualApp read-only"
+    }
+  ],
+  "reuse": "1a1db340 REVENGE3width+short390 exactapprovededitorRGBy, not rerun; currentAuthnewadmissionfixture throughcanonicaldecoder, no authority bypass",
+  "selectionRationale": "Prior REVENGE3width+short unchanged Wall layout/source retained; only missingPARADE/DANGERcontrast and approvedpixels tested, no repeated6/9capture matrix."
+}

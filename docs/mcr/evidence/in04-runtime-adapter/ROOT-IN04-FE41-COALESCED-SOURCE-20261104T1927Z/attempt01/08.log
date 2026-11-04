@@ -1,0 +1,18 @@
+✔ canonical loader pins main and rejects absent application imports rather than falling back (107.987458ms)
+✔ only explicit exact loopback origins accepted (1.045917ms)
+✔ owned private input denies symlink, permissions, hash and size drift (3.587708ms)
+✔ uses exact canonical production validators, never a second placement schema (109.91475ms)
+(node:96021) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ delegates actual proof unchanged and binds only observed frontend; no authority derived from config (29.625792ms)
+✔ missing frontend, expired observation and different source/settings fail closed (11.865125ms)
+✔ backend source mismatch or missing capability refuses composition (0.899542ms)
+✔ emitted private adapter is self-contained through QA-style data URL loading (4.216959ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 307.845875

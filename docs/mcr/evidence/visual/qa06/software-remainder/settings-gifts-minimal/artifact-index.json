@@ -1,0 +1,78 @@
+{
+  "admission-round-01.json": {
+    "bytes": 1772,
+    "sha256": "c2ef4ae844bd446cd7321ef33745e1111ad83a5998366c04664ccea14205ebd9"
+  },
+  "admission-round-02.json": {
+    "bytes": 2070,
+    "sha256": "71299f61b6524199d1a14e554f990a5084b3a8a3f1a8f8a9ffa12a22cd0f7afe"
+  },
+  "owner-assessment.json": {
+    "bytes": 5440,
+    "sha256": "2ccd0a06a424196d2d02760102506548941d5215de2c53f414a79162ce360f5a"
+  },
+  "round-01/native.log": {
+    "bytes": 498,
+    "sha256": "5eef8fc93e5d78843e0d9c7a170092de1d07f147268814bc2809a9e67c0d620b"
+  },
+  "round-01/report.json": {
+    "bytes": 60266,
+    "sha256": "b8656c544fda6ba4d76423870ceb8d52f8a71456d21d7269997b0676f08b0fa7"
+  },
+  "round-01/report.partial.json": {
+    "bytes": 60128,
+    "sha256": "eb9818543c93e50f334ac2eb33222b0393749f98a5c3ba1ebd5afca297871cb9"
+  },
+  "round-01/supervisor.json": {
+    "bytes": 1499,
+    "sha256": "d147e028d6c2d2703a0ffc4f279dca16c150f72912094a0d76c56956cfee05b9"
+  },
+  "round-01/syntax.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "round-02/gifts-empty-danger-430.png": {
+    "bytes": 79590,
+    "sha256": "114918fd01508e83b0f94ed2140806c8ba67fd70f528067936e22a044152ba77"
+  },
+  "round-02/gifts-empty-parade-360.png": {
+    "bytes": 72076,
+    "sha256": "87cc3f2d642b28bc86d92ae53c808a0fa5f148dad1aca23d7cab10bd7b2b82b2"
+  },
+  "round-02/gifts-empty-revenge-390.png": {
+    "bytes": 75826,
+    "sha256": "7ddbeb5b55a20824f179553847940f61f5733778d96dd9bdabbed7d358d9c61f"
+  },
+  "round-02/native.log": {
+    "bytes": 46,
+    "sha256": "1e73d8d0c0dff8532b87fae1ba876ec93a1fb1276b0d17c8913feb10e06a96c4"
+  },
+  "round-02/report.json": {
+    "bytes": 71277,
+    "sha256": "67036198a1aa6444558c612e1f21ec7f3752b1180f3184dbaf7c316bebab7d57"
+  },
+  "round-02/report.partial.json": {
+    "bytes": 71149,
+    "sha256": "d4253a825d2a5638d8d6df9d55f172d173ef9cc77ddefdabd787068eb23c5fa0"
+  },
+  "round-02/settings-cancel-danger-430.png": {
+    "bytes": 118853,
+    "sha256": "8796c2685c52d537f337c957c3058ae01ba40b52a443eabf2eb954df61607b98"
+  },
+  "round-02/settings-cancel-revenge-360.png": {
+    "bytes": 109213,
+    "sha256": "d3d22ad27739d571fbc4333897c4f271100dd0ad399d8d6ca572b8f61fdc1e7a"
+  },
+  "round-02/supervisor.json": {
+    "bytes": 1498,
+    "sha256": "b66d09f24c9b22f129db236d96d966e5c89011d9dd4da8f0792bb02dc5947200"
+  },
+  "round-02/syntax.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "round01-diagnosis.json": {
+    "bytes": 550,
+    "sha256": "7d770d1dc6d33ddac7cb02a8a46669fa79519f4c7953299e34f1efdf4103c1ad"
+  }
+}

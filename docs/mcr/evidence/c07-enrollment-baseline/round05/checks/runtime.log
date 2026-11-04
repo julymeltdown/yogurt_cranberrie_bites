@@ -1,0 +1,15 @@
+✔ every registered operation/status/media witness runs through the real generated client (141.138ms)
+✔ Zod agrees with retained independent Python JSON Schema decisions for every differential case (443.861333ms)
+✔ conditionals, exclusive branches, sibling assertions, UTF-8 bytes and JSON edge cases fail closed (0.427417ms)
+✔ request/response drift, malformed media, aborts and unexpected mock calls are observable failures (0.930167ms)
+✔ clock and seed drive reproducible mock IDs, timestamps, expiry and scripted failures (1.005792ms)
+✔ Enrollment negation excludes nil UUIDs and bounded traversal cannot invert into acceptance (2.660208ms)
+✔ published C05 motion speed is positive and snapshot motion fields are paired own properties (0.904375ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 793.298041

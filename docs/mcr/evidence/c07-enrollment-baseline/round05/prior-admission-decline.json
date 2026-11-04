@@ -1,0 +1,15 @@
+{
+  "lease": "CORE-OWNACCESS-C07-SOURCE-20261104T1955Z",
+  "status": "DECLINED_BEFORE_ACCEPT",
+  "freeBytes": 12499857408,
+  "otherWorstNewBytes": 2818572288,
+  "ownWorstNewBytes": 134217728,
+  "remainingMarginBytes": 9547067392,
+  "requiredMarginBytes": 9663676416,
+  "resourcesHeld": 0,
+  "generationStarted": false,
+  "pinsChanged": false,
+  "successorNotified": "Root153 and resource coordinator",
+  "closedOfferReused": false,
+  "replacement": "CORE-OWNACCESS-C07-SOURCE-20261104T2010Z"
+}

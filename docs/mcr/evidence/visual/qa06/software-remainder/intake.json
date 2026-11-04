@@ -1,0 +1,147 @@
+{
+  "base": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+  "branch": "codex/mcr-qa-QA06-software-20261105",
+  "preserved70": true,
+  "originalGoal": {
+    "createdAt": 1793759287,
+    "actual": "BLOCKED",
+    "unfinished": true
+  },
+  "firstCohort": {
+    "id": "nearby-era-theme",
+    "originalIA": [
+      "W05",
+      "W06"
+    ],
+    "cases": [
+      {
+        "id": "nearby-parade-360",
+        "kind": "nearby",
+        "route": "/world/nearby",
+        "ia": "W05",
+        "era": "PARADE",
+        "width": 360,
+        "capture": true
+      },
+      {
+        "id": "nearby-parade-390",
+        "kind": "nearby",
+        "route": "/world/nearby",
+        "ia": "W05",
+        "era": "PARADE",
+        "width": 390,
+        "capture": true
+      },
+      {
+        "id": "nearby-parade-430",
+        "kind": "nearby",
+        "route": "/world/nearby",
+        "ia": "W05",
+        "era": "PARADE",
+        "width": 430,
+        "capture": true
+      },
+      {
+        "id": "nearby-danger-360",
+        "kind": "nearby",
+        "route": "/world/nearby",
+        "ia": "W05",
+        "era": "DANGER",
+        "width": 360,
+        "capture": true
+      },
+      {
+        "id": "nearby-danger-390",
+        "kind": "nearby",
+        "route": "/world/nearby",
+        "ia": "W05",
+        "era": "DANGER",
+        "width": 390,
+        "capture": true
+      },
+      {
+        "id": "nearby-danger-430",
+        "kind": "nearby",
+        "route": "/world/nearby",
+        "ia": "W05",
+        "era": "DANGER",
+        "width": 430,
+        "capture": true
+      },
+      {
+        "id": "theme-persist-360",
+        "kind": "theme",
+        "route": "/world/theme",
+        "ia": "W06",
+        "era": "REVENGE",
+        "width": 360,
+        "capture": false
+      },
+      {
+        "id": "theme-persist-390",
+        "kind": "theme",
+        "route": "/world/theme",
+        "ia": "W06",
+        "era": "REVENGE",
+        "width": 390,
+        "capture": true
+      },
+      {
+        "id": "theme-persist-430",
+        "kind": "theme",
+        "route": "/world/theme",
+        "ia": "W06",
+        "era": "REVENGE",
+        "width": 430,
+        "capture": false
+      }
+    ],
+    "reuse": "Historical native02/03 uses PARADE and reference-scene-v5/source7005 rather than current default production resolver. Its unchanged Nearby/Rooms feature pins qualify detailed room/filter/withdrawal tests only; current root/era composition substantiated by this cohort.",
+    "result": "nearby-era-theme/owner-assessment.json"
+  },
+  "writes": [
+    "frontend/e2e/visual/qa06/**",
+    "docs/mcr/evidence/visual/qa06/**",
+    "docs/mcr/frontend/mobile-visual-qa06.md"
+  ],
+  "reusePublications": [
+    "ba314a2c96639b05b6c15c1ead57353719004ffa",
+    "1a1db34065a190790459e4be41891750ab46d882",
+    "d2849226cc7b94ae519e6a3b71321ed1fbaa3c23"
+  ],
+  "provenance": [
+    {
+      "from": "50a5f4c0c74a66cc40393d8c4dacdb66b792866e",
+      "path": "frontend/e2e/visual/qa06/wall-seed-guard.py",
+      "to": "frontend/e2e/visual/qa06/software-guard.py",
+      "adaptation": "Cohort scoped output/env and nonshrinking carry; existing fullcaps/finiteclock/ALLPIDs/failedcarry/cleanup unchanged"
+    },
+    {
+      "from": "c18d1bfe42aabb8c006f2cde1ad860d799a55cc7",
+      "path": "frontend/e2e/visual/qa06/reflow.mjs",
+      "to": "frontend/e2e/visual/qa06/software.mjs",
+      "adaptation": "Read-only Vite/source-bound Git public-serving/realhit/bounds/state/dispose patterns; new original state assertions, no copied rendering"
+    }
+  ],
+  "validation": {
+    "pythonAST": "PASS",
+    "nodeSyntax": "PASS all3rounds exit0",
+    "native": "MOCK_READY sixNearby round02 plus threeTheme round03; failed attempts preserved",
+    "planning": "separate planning check, not application acceptance"
+  },
+  "slotHeld": false,
+  "fixtureCompatibilityRepair": {
+    "foundBeforeNode": true,
+    "problem": "Canonical Auth admission required but incumbent visualfixture omitted server response",
+    "ownFixture": "frontend/e2e/visual/qa06/software-preview.tsx",
+    "source": "frontend/src/app/community-adoption/__tests__/native/preview.tsx",
+    "sourceSha256": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc",
+    "onlyBehaviorChange": "Exact existing Auth admission() response for canonical authenticated GET; canonical controller/decoder/AdmissionBoundary remain intact",
+    "authFixture": "frontend/src/features/auth/__tests__/enrollment-consent/fixtures.ts",
+    "authFixtureSha256": "6b6a5b8f757d626d565fd71a36a891bb4b6a15aaaa23d206a69dc89726a9fbd4",
+    "noSyntheticEnrollmentFlag": true,
+    "noProductPolicyClaim": true
+  },
+  "selectionPolicy": "No original requirement for61x3x3=549freshscreenshots; shared-layout and owner source/state evidence reduce new cohorts, without marking unexecuted individual combinations PASS",
+  "resourceRouting": "21d temporary allocator through same controller/fairqueue; Social inbound broken, no retry"
+}

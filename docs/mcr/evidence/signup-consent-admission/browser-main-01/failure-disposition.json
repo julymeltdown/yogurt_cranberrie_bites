@@ -1,0 +1,17 @@
+{
+  "epoch": 1793822356.984032,
+  "status": "FAILED_FINAL_SOCKET_ASSERTION_NO_PASS",
+  "originalLog": "01.log",
+  "repairLog": "101.log",
+  "actualCompletedBeforeFailure": [
+    "real signup and second-browser denial",
+    "negative-only challenge expiry and actual422",
+    "real server countdown/predeadline no mail and explicitfreshresend/latestcapture",
+    "actual verify200",
+    "syntheticpolicyrotation/currentexplicitconsent/freshADMITTED",
+    "actualbootstrap503/unavailable; canvas0"
+  ],
+  "failure": "Socket counter3!=0; socket kinds were not retained, no World or overall acceptance claim",
+  "next": "Retain failure, release bothactors; classify/disable actual dev transport without weakening World socket invariant; futurefreshfixture required because controlsconsumed",
+  "noClockReset": true
+}

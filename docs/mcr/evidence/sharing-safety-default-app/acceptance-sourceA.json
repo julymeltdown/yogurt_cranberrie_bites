@@ -1,0 +1,17 @@
+{
+  "measured": 1793817147.710591,
+  "free": 16121470976,
+  "sourceFiles": 14185,
+  "sourceBytes": 1380078821,
+  "gitFiles": 356,
+  "gitBytes": 933257463,
+  "metadataFiles": 8,
+  "metadataBytes": 1986299,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "outFiles": 2,
+  "outBytes": 10898,
+  "offer": "SHARING-SAFETY-SOURCE-A-20261104T1832Z",
+  "cutoff": 1793817627,
+  "release": 1793817657
+}

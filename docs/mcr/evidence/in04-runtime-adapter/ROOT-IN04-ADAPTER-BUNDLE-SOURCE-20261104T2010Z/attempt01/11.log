@@ -1,0 +1,21 @@
+✔ canonical browser prebundling excludes the native Tailwind server toolchain and retains lazy Phaser identity (40.038958ms)
+✔ real source-pinned adapter can be prepared before live frontend binding; import refuses missing input (20.688917ms)
+✔ actual backend module survives data-URL composition and refuses absent managed runtime; live binding stays private (28.372833ms)
+✔ canonical loader pins main and rejects absent application imports rather than falling back (41.626ms)
+✔ only explicit exact loopback origins accepted (0.330375ms)
+✔ owned private input denies symlink, permissions, hash and size drift (1.772625ms)
+✔ uses exact canonical production validators, never a second placement schema (78.483ms)
+(node:37212) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ delegates actual proof unchanged and binds only observed frontend; no authority derived from config (5.755ms)
+✔ missing frontend, expired observation and different source/settings fail closed (10.698084ms)
+✔ backend source mismatch or missing capability refuses composition (0.681166ms)
+✔ emitted private adapter is self-contained through QA-style data URL loading (3.474209ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 251.155375

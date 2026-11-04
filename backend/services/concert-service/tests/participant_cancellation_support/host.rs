@@ -178,7 +178,7 @@ async fn owned_pool(root: &std::path::Path) -> anyhow::Result<PgPool> {
                 env("MCR_CANCEL_SYSTEM")?
             )
     );
-    sqlx::migrate::Migrator::new(concert_service::config::migration_directory().as_path())
+    sqlx::migrate::Migrator::new(concert_service::config::migration_directory().unwrap().as_path())
         .await?
         .run(&pool)
         .await?;

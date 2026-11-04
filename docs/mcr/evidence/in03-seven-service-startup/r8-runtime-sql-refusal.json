@@ -1,0 +1,119 @@
+{
+  "task": "IN03-STACK-01",
+  "state": "IN_PROGRESS",
+  "new_c03_and_original_in03": "NOT_RUN",
+  "runs": [
+    {
+      "run_id": "mcr-c03-091ikinf",
+      "allocation_id": "ROOT-C03-COPIED-NATIVE-202611041805Z",
+      "accepted_epoch": 1793817088.7288299,
+      "fully_released_epoch": 1793817106.839297,
+      "result": "FAIL",
+      "failure": "native-stack-operation-failed",
+      "failure_type": "SmokeError",
+      "original_in03": "NOT_RUN",
+      "prepared_before_cleanup": "0",
+      "cleanup": "PASS",
+      "maximum_new_bytes": 142114816,
+      "new_limit_bytes": 536870912,
+      "maximum_runner_processes": 8,
+      "maximum_whole_bytes": 8732049408,
+      "all_owned_resources_released": true,
+      "artifact_sha256": {
+        "report.json": "2993db9ba9d3a44ab5995dd1a29b53bc174787436a828498f3181767c8f25367",
+        "full-release.json": "ef7d6772456aff9a810a2078fe64c108b18bb7dde7c708b61ed80499c4411e1f",
+        "supervisor-completion.json": "d88dcad3cbbe12d80b7a140ce4e78fd5b94c51914f6657302f0e352f570d956f",
+        "guardian-peak.json": "4bbf3646648541e1239d88ab3a26a76d4f9b103a45ab0a6370024176380ca13d"
+      }
+    },
+    {
+      "run_id": "mcr-c03-ledger-bsxsfmy5",
+      "allocation_id": "ROOT-C03-DIAGNOSTIC-RETRY-20261104T1835Z",
+      "accepted_epoch": 1793817310.0588732,
+      "fully_released_epoch": 1793817325.019816,
+      "result": "FAIL",
+      "failure": "native-stack-operation-failed",
+      "failure_type": "SmokeError",
+      "original_in03": "NOT_RUN",
+      "prepared_before_cleanup": "0",
+      "cleanup": "PASS",
+      "maximum_new_bytes": 140939264,
+      "new_limit_bytes": 536870912,
+      "maximum_runner_processes": 8,
+      "maximum_whole_bytes": 8718880768,
+      "all_owned_resources_released": true,
+      "artifact_sha256": {
+        "report.json": "c41cfd2e914a73177381f437b855c1872e3d44a6a065efd647549d92803df189",
+        "full-release.json": "4d1fd6d9623ddc9c040db1a8aff730f4d81649370aeac1e3f283b63f9491fea6",
+        "supervisor-completion.json": "8b1cc5ca85387ebf202c82240c11a8fe614f3a25a4baf54fe012cb679153ca21",
+        "guardian-peak.json": "8ca9be4db05e6e631afaa654d55ab66610fd4f48b0ec6ebc5cebc9a0452b642d"
+      }
+    }
+  ],
+  "concert_executable_source": "46defd2346e2e73641c552b408623ce357500c15",
+  "concert_executable_sha256": "c9c32b5196e545bcdf3dda44e69cc786bac7dbd05318cdac4ca244f91ddae28a",
+  "diagnostic": {
+    "expected_sqlx_count": 47,
+    "actual_sqlx_count": 50,
+    "additional_versions": [
+      60,
+      63,
+      78
+    ],
+    "missing_versions": [],
+    "changed_shared_checksums": [],
+    "actual_runtime_directory_source": "83912cfe514af7c98792b9231bf0f64824baf320",
+    "root_cause": "SQL read at runtime from mutable compile-time checkout path; owning checkout advanced after executable freeze",
+    "withdrawn_inference": "Embedded SQL or stale compiled artifact is not established",
+    "ledger_metadata_sha256": "24dd51dd0d368e0b19ff9e942bd7df0e980ab83a67a988dac098ad6ddb93a826"
+  },
+  "service_override_api_source": "9a3c008b6914146d1c38d5de29010dc91ac2d4eb",
+  "service_override_build_and_native": "NOT_RUN",
+  "launcher_packaging_native": "NOT_RUN",
+  "six_peer_current_sql_custody": {
+    "source_revision": "18076c951a7283354c869caaf64d40491ca52d75",
+    "counts": {
+      "api-gateway": 17,
+      "auth-service": 18,
+      "friend-service": 18,
+      "profile-service": 9,
+      "post-service": 32,
+      "notification-service": 7
+    },
+    "all_inventory_and_bytes_match": true,
+    "receipt_sha256": "d66f8bd2be1a53e634c1d628e437dbe95f4a8e5564b9cb5b6b95c13da7a6f575",
+    "runtime_or_new_enrollment_qualification": false
+  },
+  "retained_evidence_custodian": "Root backend publisher; private original artifacts retained",
+  "privacy": {
+    "full_c03_retained_or_hashed": false,
+    "credentials_or_user_data_in_this_receipt": false
+  },
+  "launcher_focused_checks": {
+    "status": "PASS",
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "diff_check_exit": 0,
+    "actual_invocation": "strict Python -B -W error controlled unittest.TextTestRunner(test_in03_stack_runtime), then git diff --check",
+    "accepted_epoch": 1793818344.538666,
+    "full_release_epoch": 1793818345.065932,
+    "source_pins_unchanged": true,
+    "new_peak_bytes": 172032,
+    "maximum_all_processes": 4,
+    "maximum_all_rss_bytes": 68304896,
+    "result_sha256": "c25cfb2879296a5c4ad9ef879c6744dbf96296aa99cb3d5eb5fc989f9830c938",
+    "full_release_sha256": "5f0cb134042943ef310f81fc555d0392d1c83c07444d2205a63d1df7084bc54b",
+    "guard_sha256": "5fafa2b7908ade7cca899d76e25586cc718832cb807bf85260328a661f5c9378",
+    "native": "NOT_RUN",
+    "later_capacity_inventory": {
+      "other_proposed_new_bytes": 1476395008,
+      "own_new_limit_bytes": 33554432,
+      "fresh_start_free_bytes": 12283518976,
+      "free_after_later_all_proposals_bytes": 10773569536,
+      "minimum_after_growth_bytes": 9663676416,
+      "note": "Later Social inventory substituted queued World and Report for closed earlier offers; this does not change completed clocks or caps."
+    }
+  }
+}

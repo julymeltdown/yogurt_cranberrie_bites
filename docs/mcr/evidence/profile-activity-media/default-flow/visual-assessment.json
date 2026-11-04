@@ -1,0 +1,78 @@
+{
+  "status": "SCOPED_MEDIA_PRESENTATION_PASS_FULL_REFERENCE_OPEN",
+  "qualification": "Individual human-readable author inspection of retained native PNGs against unchanged supplied target, not pixel-diff/whole-screen acceptance.",
+  "target": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "images": [
+    {
+      "mode": "loaded",
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-loaded-390.png",
+      "sha256": "a108706fb3b45817d32ab830b774a650b786bb09a906b308aa1860a8a003918c",
+      "width": 390,
+      "height": 844,
+      "bytes": 80956,
+      "inspectedIndividually": true,
+      "assessment": "Two actual authorized first-ID Feed images displayed at50x50 inside existing52px decorative visual; two readable own-post links, partial-view notice, no overflow. Captured black title/frame, approved selected-source avatar and actual controlled identity. Pink/purple header/pastel body and action set materially differ from reference black Profile header. Lower footer shows a broken decorative image; no full reference pass.",
+      "scopedMediaPresentation": "PASS",
+      "fullReferenceVisual": "OPEN"
+    },
+    {
+      "mode": "denied-media",
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-denied-media-390.png",
+      "sha256": "66d6ef18a078df75fc10e9fbaa69224348e179d54526a5b77b446670e8dc84e7",
+      "width": 390,
+      "height": 844,
+      "bytes": 70671,
+      "inspectedIndividually": true,
+      "assessment": "Two existing Feed icons replace denied images while the two links/text remain readable; no Profile image/retry/request. Same retained header/theme/controls differences as loaded. Lower footer broken decorative image is visible. Correct fail-closed state is not substituted with reference activity.",
+      "scopedMediaPresentation": "PASS",
+      "fullReferenceVisual": "OPEN"
+    },
+    {
+      "mode": "cold",
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-cold-390.png",
+      "sha256": "7401ccfe569865e3e8f4355765d0818f38a1d39ae525bd45bb8004357d5e4f0c",
+      "width": 390,
+      "height": 844,
+      "bytes": 55175,
+      "inspectedIndividually": true,
+      "assessment": "Truthful Recent activity unavailable notice and Open feed link; no activity images or invented joined/reserved rows, zero Feed/media reads. Current selected-source avatar and Profile actions visible. Sparse body differs from target; lower footer is below this capture, so its rendering is not qualified by this image.",
+      "scopedMediaPresentation": "PASS",
+      "fullReferenceVisual": "OPEN"
+    }
+  ],
+  "frozenFooterLimitation": {
+    "component": "frontend/src/app/shell-chrome/parade-footer.tsx",
+    "requestedAsset": "frontend/public/reference-parade-print-v2/parade-print.svg",
+    "gitTreeAtFrozenRevision": "ABSENT",
+    "sourceReceiptForSvg": "ABSENT",
+    "observed": "Broken image lower footer in loaded/denied captures.",
+    "disposition": "Root153 verified current canonical asset present; broken captured footer is exact frozen cf0 input limitation only. No artwork replacement, product patch or replay.",
+    "currentCanonicalOwnerDisposition": {
+      "evidenceKind": "Responsible publishing developer Root153 current Git disposition; no owner replay",
+      "canonicalCommit": "1a1db340",
+      "svgPath": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "svgGitBlob": "4f00f8e364b5738edb5449f42157d714867ac312",
+      "present": true,
+      "relatedHistory": [
+        "d2867709a",
+        "ec40e5317",
+        "4d297ce65"
+      ],
+      "conclusion": "Frozen cf0 lacks asset; current canonical asset and component path match. No current missing-asset defect established; no fix or replay required."
+    }
+  },
+  "preservedLimits": [
+    "Controlled canonical HTTP/C05; not live IN03 or actual Rust/Auth/backend qualification",
+    "Only this default-main cached-media boundary; no whole FE34 or ten-screen acceptance",
+    "Truthful controlled own-post rows remain different from target reserved/joined examples",
+    "Current Root header/theme/action/header controls retained without out-of-scope edits"
+  ]
+}

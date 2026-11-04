@@ -4,6 +4,7 @@ pub mod account_deletion;
 pub mod account_sessions;
 pub(crate) mod recipient_owners;
 pub mod simulation;
+pub mod motion_profile;
 pub mod interest;
 pub mod replication;
 pub mod session;

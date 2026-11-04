@@ -1,0 +1,7 @@
+{
+  "epoch": 1793822234.279308,
+  "failure": "Browser optimizer included server-only Tailwind Vite plugin/native oxide from package dependencies; actual app/API not reached",
+  "repair": "Exclude @tailwindcss/vite and tailwindcss from explicit browser optimizer includes; retain actual server plugins and client dependencies",
+  "runnerSha256": "d9f47234df58eaca32708fba002bf6540ed0bc0b4a5a285259342faf6b1c6dbc",
+  "originalClockUnchanged": true
+}

@@ -1,0 +1,66 @@
+{
+  "offer": "SHARING-SAFETY-SOURCE-A-20261104T1832Z",
+  "released": 1793817370.395295,
+  "free": 14956404736,
+  "peaks": {
+    "whole": 2752532189,
+    "growth": 28972753,
+    "temporary": 28578454,
+    "durable": 385929,
+    "files": 26266,
+    "processes": 4,
+    "rss": 1729642496
+  },
+  "minFree": 14951190528,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "result": "PASS",
+  "scope": "18 focused controlled composition cases; full frontend types; changed-path lint; plan. Browser/main/live NOT_RUN.",
+  "attempts": [
+    {
+      "job": "focus",
+      "exitCode": 1,
+      "finished": 1793817187.2776802
+    },
+    {
+      "job": "focus",
+      "exitCode": 1,
+      "finished": 1793817236.664633
+    },
+    {
+      "job": "focus",
+      "exitCode": 1,
+      "finished": 1793817256.081163
+    },
+    {
+      "job": "focus",
+      "exitCode": 0,
+      "finished": 1793817276.935688
+    },
+    {
+      "job": "focus",
+      "exitCode": 0,
+      "finished": 1793817308.56454
+    },
+    {
+      "job": "types",
+      "exitCode": 2,
+      "finished": 1793817293.227465
+    },
+    {
+      "job": "types",
+      "exitCode": 0,
+      "finished": 1793817330.4094589
+    },
+    {
+      "job": "lint",
+      "exitCode": 0,
+      "finished": 1793817336.139153
+    },
+    {
+      "job": "plan",
+      "exitCode": 0,
+      "finished": 1793817355.8983622
+    }
+  ]
+}

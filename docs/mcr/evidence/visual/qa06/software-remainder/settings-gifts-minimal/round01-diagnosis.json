@@ -1,0 +1,10 @@
+{
+  "preserve": "round-01 exit1/FULL;0PNG; actualfullrenderedSettings retained in report",
+  "cause": "ExactPreferred era label lookup excluded wrapped select options in actualaccessible name",
+  "fix": "Named actual combobox /^Preferred era/; no productchange",
+  "helperBefore": "source7f48 settings-activity.mjs",
+  "helperAfter": "16ab70b1a019800e48148dce8f3ed180ac2188ad862856c74e1fd8c95aadb784",
+  "runnerAfter": "e94084298dc82c53a7f3b7fb5399ea790be91277b6da2c9197db2d924efb1b1b",
+  "sameWorkDeadline": 1793821398.5505521,
+  "sameCaps": true
+}

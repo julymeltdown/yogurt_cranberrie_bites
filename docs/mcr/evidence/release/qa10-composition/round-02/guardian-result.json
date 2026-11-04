@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-04T19:15:51.342409+00:00",
+  "breach": null,
+  "sampled_maxima": {
+    "processes": 4,
+    "rss": 95059968,
+    "new_bytes": 441157,
+    "whole_bytes": 646368859
+  }
+}

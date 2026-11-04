@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/candidate_probe.py", line 277, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/candidate_probe.py", line 201, in main
+    'declared_node': inventory.read('.node-version').decode().strip(),
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "<QA10_CHECKOUT>/docs/mcr/evidence/release/qa10-composition/candidate_probe.py", line 45, in read
+    source.require(file.stat().st_size <= limit, 'inventory.file-limit')
+                   ~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 654, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '<QA10_CHECKOUT>/.node-version'

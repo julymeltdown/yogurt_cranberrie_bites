@@ -1,0 +1,824 @@
+{
+  "candidate": "7f48a3e12efd9e1b6302a12710963607fd16216d",
+  "selection": "Original61IA exactstates preserved. No549freshscreenshotrequirement. Source/body qualification is bounded; changedroot/model pins never silentlypass.",
+  "items": {
+    "signup": {
+      "ias": [
+        "A03",
+        "A04"
+      ],
+      "artifact": "docs/mcr/evidence/signup-consent-admission/browser-02/native/report.json",
+      "artifactSha256": "551e6fe6dc9f6d886b70c60c469c77356b6dd6336b1ae94d96fd397b81f02287",
+      "exactQualification": "Seven existing feature-native cases including360/390/430. Syntheticpolicy/HTTP, not realmail or currentwholeApp/physical. ActualUI/source remain checked separately.",
+      "reportedResult": "controlled fixtures through canonical client; no real Auth/mail/legal publication",
+      "matchingCurrentPins": [
+        "frontend/src/features/auth/ui/SignUp.tsx",
+        "frontend/src/features/auth/ui/VerifyEmail.tsx",
+        "frontend/src/features/auth/ui/EnrollmentPolicy.tsx",
+        "frontend/src/features/auth/ui/enrollment.css",
+        "frontend/src/features/auth/model/enrollment.ts",
+        "frontend/src/features/auth/model/enrollment-contract.ts"
+      ],
+      "changedCurrentPins": [],
+      "missingOrEphemeralPins": [],
+      "newRuntime": "NONE_REUSE_ONLY",
+      "sourcePinRevision": "d0c8e3f926404020adb77d8a00f4239091af4129",
+      "comparedHistoricalPins": {
+        "frontend/src/features/auth/ui/SignUp.tsx": {
+          "executed": "accf4323fc2fd20d416d2ab2103573fc9533f863e8345a2bdf4ce706cf77061f",
+          "current": "accf4323fc2fd20d416d2ab2103573fc9533f863e8345a2bdf4ce706cf77061f",
+          "match": true
+        },
+        "frontend/src/features/auth/ui/VerifyEmail.tsx": {
+          "executed": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c",
+          "current": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c",
+          "match": true
+        },
+        "frontend/src/features/auth/ui/EnrollmentPolicy.tsx": {
+          "executed": "a29cc2ecbbbd01905749fdf9515fa3809c44261d197a8147783b603b839396c3",
+          "current": "a29cc2ecbbbd01905749fdf9515fa3809c44261d197a8147783b603b839396c3",
+          "match": true
+        },
+        "frontend/src/features/auth/ui/enrollment.css": {
+          "executed": "10893176b5e43b78a238e896903ee9c8d590eeada51c944454e31b315e6ffe0b",
+          "current": "10893176b5e43b78a238e896903ee9c8d590eeada51c944454e31b315e6ffe0b",
+          "match": true
+        },
+        "frontend/src/features/auth/model/enrollment.ts": {
+          "executed": "0fb3a741d1924ff0c04154eacdee9030a42d94761d67e237b976ab7f569d5e07",
+          "current": "0fb3a741d1924ff0c04154eacdee9030a42d94761d67e237b976ab7f569d5e07",
+          "match": true
+        },
+        "frontend/src/features/auth/model/enrollment-contract.ts": {
+          "executed": "407dfaa9f512ca35d474b5f4470a864b082bc24e8b8e6b9a968ceefb9cb7b37b",
+          "current": "407dfaa9f512ca35d474b5f4470a864b082bc24e8b8e6b9a968ceefb9cb7b37b",
+          "match": true
+        }
+      }
+    },
+    "recovery": {
+      "ias": [
+        "A05",
+        "A06"
+      ],
+      "artifact": "docs/mcr/evidence/password-recovery/browser-browser-results.json",
+      "artifactSha256": "36437f8b4330c77455bb98bd9e4c94f850931f921004c60a82062aaea4cab305",
+      "exactQualification": "Existing native360/390/430/1280 and420height forms/neutral/uncertain/fragment/callback hygiene; OAuth/provider unavailable remains truthful; not realmail/physical.",
+      "reportedResult": "MOCK_READY",
+      "matchingCurrentPins": [
+        "frontend/src/features/auth/__tests__/callback.test.ts",
+        "frontend/src/features/auth/__tests__/fixtures/recovery-preview.html",
+        "frontend/src/features/auth/__tests__/fixtures/recovery-preview.tsx",
+        "frontend/src/features/auth/__tests__/recovery-browser-smoke.mjs",
+        "frontend/src/features/auth/__tests__/recovery.test.ts",
+        "frontend/src/features/auth/model/callback.ts",
+        "frontend/src/features/auth/model/cookie-policy.ts",
+        "frontend/src/features/auth/model/recovery-contract.ts",
+        "frontend/src/features/auth/model/recovery.ts",
+        "frontend/src/features/auth/ui/Callback.tsx",
+        "frontend/src/features/auth/ui/ResetPassword.tsx",
+        "frontend/src/features/auth/ui/recovery.css"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/features/auth/model/session.ts"
+      ],
+      "missingOrEphemeralPins": [],
+      "newRuntime": "NONE_REUSE_ONLY",
+      "sourcePinRevision": "c300a231506cfcd08b25697234e2e427c426fca9",
+      "comparedHistoricalPins": {
+        "frontend/src/features/auth/__tests__/callback.test.ts": {
+          "executed": "4d655e336b7e1370b83be2b15fef34a6734f176076e099e31b3ceb47cfe4de4f",
+          "current": "4d655e336b7e1370b83be2b15fef34a6734f176076e099e31b3ceb47cfe4de4f",
+          "match": true
+        },
+        "frontend/src/features/auth/__tests__/fixtures/recovery-preview.html": {
+          "executed": "1f7a14d167438ea086e2e58d41e0b4072d819cad15e6e06acf60f2888fde21f0",
+          "current": "1f7a14d167438ea086e2e58d41e0b4072d819cad15e6e06acf60f2888fde21f0",
+          "match": true
+        },
+        "frontend/src/features/auth/__tests__/fixtures/recovery-preview.tsx": {
+          "executed": "25d6e85cad41cf4d18aca005ff78c88ce879e3c94567429269063ad12014b3d1",
+          "current": "25d6e85cad41cf4d18aca005ff78c88ce879e3c94567429269063ad12014b3d1",
+          "match": true
+        },
+        "frontend/src/features/auth/__tests__/recovery-browser-smoke.mjs": {
+          "executed": "084f6fd5e870679a0b44c7445ede6dd15e88f6723db2b988989711fb7d58b6a1",
+          "current": "084f6fd5e870679a0b44c7445ede6dd15e88f6723db2b988989711fb7d58b6a1",
+          "match": true
+        },
+        "frontend/src/features/auth/__tests__/recovery.test.ts": {
+          "executed": "e1fe04a3a7c47e3500545b2c375d8c5e755cb5238706c5c0d68808d7dcc941ca",
+          "current": "e1fe04a3a7c47e3500545b2c375d8c5e755cb5238706c5c0d68808d7dcc941ca",
+          "match": true
+        },
+        "frontend/src/features/auth/model/callback.ts": {
+          "executed": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9",
+          "current": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9",
+          "match": true
+        },
+        "frontend/src/features/auth/model/cookie-policy.ts": {
+          "executed": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+          "current": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+          "match": true
+        },
+        "frontend/src/features/auth/model/recovery-contract.ts": {
+          "executed": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+          "current": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+          "match": true
+        },
+        "frontend/src/features/auth/model/recovery.ts": {
+          "executed": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+          "current": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+          "match": true
+        },
+        "frontend/src/features/auth/model/session.ts": {
+          "executed": "0aaea678ef51be2e169ddc14e4eb078c26022bc027a440f9810aab33635fd6c5",
+          "current": "12289039f5d10a0d87b1403220e80dd8a4da2feda8452c5b73a9b241052104f7",
+          "match": false
+        },
+        "frontend/src/features/auth/ui/Callback.tsx": {
+          "executed": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e",
+          "current": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e",
+          "match": true
+        },
+        "frontend/src/features/auth/ui/ResetPassword.tsx": {
+          "executed": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5",
+          "current": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5",
+          "match": true
+        },
+        "frontend/src/features/auth/ui/recovery.css": {
+          "executed": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630",
+          "current": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630",
+          "match": true
+        }
+      }
+    },
+    "inbox": {
+      "ias": [
+        "U10"
+      ],
+      "artifact": "frontend/src/features/inbox/__tests__/evidence/browser-report.json",
+      "artifactSha256": "cb7da5b0fc6e0b5107a47e998570dc4b58e5cc7e0f17ae29b3d3dc8ac1ceec16",
+      "exactQualification": "Existing component native360/390/430/1280 retained. Controller changed since native; use latestowner384source-regressions separately, never pretend historicalnative tested newmodel.",
+      "reportedResult": "PASS",
+      "matchingCurrentPins": [
+        "frontend/src/features/inbox/model/contract.ts",
+        "frontend/src/features/inbox/model/targets.ts",
+        "frontend/src/features/inbox/ui/Inbox.tsx",
+        "frontend/src/features/inbox/ui/inbox.css",
+        "frontend/src/features/inbox/__tests__/preview.tsx",
+        "frontend/src/features/inbox/__tests__/browser-smoke.mjs"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/features/inbox/model/controller.ts"
+      ],
+      "missingOrEphemeralPins": [],
+      "newRuntime": "NONE_REUSE_ONLY"
+    },
+    "privateSocial": {
+      "ias": [
+        "U04",
+        "U05",
+        "U08",
+        "U09",
+        "U10",
+        "S01"
+      ],
+      "artifact": "docs/mcr/evidence/private-social-account-completion/regressionF.json",
+      "artifactSha256": "8949ce832cd5a613cfb2779db6b1c965f76e67d55b3ce9b57a9a3b3ebf99ed8c",
+      "exactQualification": "Responsibleowner384sourcecases only. Not new360/390/430visual or liveprovider/accountdeletion proof.",
+      "reportedResult": 0,
+      "matchingCurrentPins": [
+        "frontend/src/features/social-sharing/index.ts",
+        "frontend/src/features/social-sharing/ui/SocialSharing.tsx",
+        "frontend/src/features/social-sharing/ui/sharing.css",
+        "frontend/src/features/social-sharing/__tests__/browser-smoke.mjs",
+        "frontend/src/features/social-sharing/__tests__/controller.test.ts",
+        "frontend/src/features/social-sharing/__tests__/ui.test.tsx",
+        "frontend/src/features/social-sharing/model/contract.ts",
+        "frontend/src/features/social-sharing/model/runtime.ts",
+        "frontend/src/features/social-sharing/model/controller.ts",
+        "frontend/src/features/social-sharing/__tests__/evidence/browser-report.json",
+        "frontend/src/features/social-sharing/__tests__/fixtures/data.ts",
+        "frontend/src/features/social-sharing/__tests__/fixtures/preview.html",
+        "frontend/src/features/social-sharing/__tests__/fixtures/preview.tsx",
+        "frontend/src/features/inbox/index.ts",
+        "frontend/src/features/inbox/ui/inbox.css",
+        "frontend/src/features/inbox/ui/Inbox.tsx",
+        "frontend/src/features/inbox/__tests__/preview.html",
+        "frontend/src/features/inbox/__tests__/completion.test.tsx",
+        "frontend/src/features/inbox/__tests__/preview.tsx",
+        "frontend/src/features/inbox/__tests__/browser-smoke.mjs",
+        "frontend/src/features/inbox/__tests__/targets.test.ts",
+        "frontend/src/features/inbox/__tests__/controller.test.ts",
+        "frontend/src/features/inbox/__tests__/count.test.ts",
+        "frontend/src/features/inbox/model/contract.ts",
+        "frontend/src/features/inbox/model/targets.ts",
+        "frontend/src/features/inbox/model/controller.ts",
+        "frontend/src/features/inbox/__tests__/evidence/browser-report.json",
+        "frontend/src/features/inbox/__tests__/fixtures/data.ts",
+        "frontend/src/features/safety/contract.ts",
+        "frontend/src/features/safety/safety.css",
+        "frontend/src/features/safety/panels.tsx",
+        "frontend/src/features/safety/Dialog.tsx",
+        "frontend/src/features/safety/index.ts",
+        "frontend/src/features/safety/controller.ts",
+        "frontend/src/features/safety/__tests__/fixtures.ts",
+        "frontend/src/features/safety/__tests__/preview.html",
+        "frontend/src/features/safety/__tests__/completion.test.tsx",
+        "frontend/src/features/safety/__tests__/preview.tsx",
+        "frontend/src/features/safety/__tests__/browser-smoke.mjs",
+        "frontend/src/features/safety/__tests__/controller.test.ts",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/native.mjs",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-identity-changed.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-policy-revoked.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/unit.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/native.json",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-close-button.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-escape.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-identity-changed.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-policy-revoked.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/unit.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/native.json",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-policy-revoked.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-identity-changed.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-close-button.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-escape.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-escape.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-policy-revoked.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-close-button.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-close-button.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-escape.aria.txt",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-identity-changed.aria.txt",
+        "frontend/src/features/account/contract.ts",
+        "frontend/src/features/account/panel.tsx",
+        "frontend/src/features/account/index.ts",
+        "frontend/src/features/account/controller.ts",
+        "frontend/src/features/account/__tests__/completion.test.tsx",
+        "frontend/src/features/account/__tests__/deletion-preview.html",
+        "frontend/src/features/account/__tests__/deletion-targets.test.ts",
+        "frontend/src/features/account/__tests__/controller.test.ts",
+        "frontend/src/features/account/__tests__/deletion-fixtures.ts",
+        "frontend/src/features/account/__tests__/deletion-preview.tsx",
+        "frontend/src/features/account/__tests__/deletion-browser-smoke.mjs"
+      ],
+      "changedCurrentPins": [],
+      "missingOrEphemeralPins": [],
+      "newRuntime": "NONE_REUSE_ONLY",
+      "sparseTrackedPinsMatchedFromGit": [
+        "frontend/src/features/social-sharing/__tests__/evidence/sharing-390.png",
+        "frontend/src/features/social-sharing/__tests__/evidence/sharing-430.png",
+        "frontend/src/features/social-sharing/__tests__/evidence/sharing-360.png",
+        "frontend/src/features/inbox/__tests__/evidence/430-pending.png",
+        "frontend/src/features/inbox/__tests__/evidence/1280-pending.png",
+        "frontend/src/features/inbox/__tests__/evidence/390-pending.png",
+        "frontend/src/features/inbox/__tests__/evidence/1280-inbox.png",
+        "frontend/src/features/inbox/__tests__/evidence/430-inbox.png",
+        "frontend/src/features/inbox/__tests__/evidence/360-inbox.png",
+        "frontend/src/features/inbox/__tests__/evidence/390-inbox.png",
+        "frontend/src/features/inbox/__tests__/evidence/360-pending.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-policy-revoked.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-close-button.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-escape.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/initial/390-identity-changed.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-identity-changed.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-close-button.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-policy-revoked.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-escape.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-policy-revoked.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-close-button.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-close-button.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-escape.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/430-identity-changed.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-escape.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/360-policy-revoked.png",
+        "frontend/src/features/safety/__tests__/qa07-report-dismissal/evidence/corrected/390-identity-changed.png"
+      ]
+    },
+    "archive": {
+      "ias": [
+        "X01"
+      ],
+      "artifact": "docs/mcr/evidence/archive-root-composition/native/report.json",
+      "artifactSha256": "655226ea3161d955fb3b3686f1a31ca74a3bc6045336b16d1b2a8d2b2021f3e1",
+      "exactQualification": "Actualdefaultpublicroot360/390/430x844 plus390x420; noauth/private/APIwrites. Some currentsharedrootpins differ; immutablefeaturebody reused, wholecurrentroot not recertified.",
+      "reportedResult": "PASS",
+      "matchingCurrentPins": [
+        "frontend/src/app/archive-entry/index.tsx",
+        "frontend/src/app/access.tsx",
+        "frontend/src/app/__tests__/archive-entry/preview.tsx",
+        "frontend/src/app/__tests__/archive-entry/native.mjs",
+        "frontend/src/app/__tests__/archive-entry/preview.html",
+        "frontend/src/app/__tests__/archive-entry/route.test.tsx",
+        "frontend/src/features/archive/__tests__/fixtures/data.ts",
+        "frontend/src/shared/styles/base.css",
+        "frontend/src/app/__tests__/fixtures/ports.ts",
+        "frontend/src/features/event-feed/contract.ts",
+        "frontend/src/shared/api/domain.ts",
+        "frontend/pnpm-lock.yaml",
+        "frontend/package.json",
+        "frontend/tsconfig.json",
+        "frontend/src/features/archive/ArchivePage.tsx",
+        "frontend/src/features/archive/archive.css",
+        "frontend/src/features/archive/context.ts",
+        "frontend/src/features/archive/contract.ts",
+        "frontend/src/features/archive/controller.ts",
+        "frontend/src/features/archive/http.ts",
+        "frontend/src/features/archive/index.ts"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/app/PublicBoundary.tsx",
+        "frontend/src/app/router.tsx",
+        "frontend/src/app/ports.ts",
+        "frontend/src/main.tsx",
+        "frontend/src/app/routes.ts",
+        "frontend/src/app/shell.css",
+        "frontend/src/shared/api/domain-operations.generated.ts",
+        "contracts/generated/mcr-domain.openapi.json"
+      ],
+      "missingOrEphemeralPins": [],
+      "newRuntime": "NONE_REUSE_ONLY"
+    },
+    "operations": {
+      "ias": [
+        "O04",
+        "O05",
+        "O06"
+      ],
+      "artifact": "docs/mcr/evidence/operations-fe37-fe38-current/runs/native-02/native.json",
+      "artifactSha256": "3b486483c22652ef6838ae9a371c3d0f30a4d3aa529c658a6cac770d2bdf2141",
+      "exactQualification": "Existing27syntheticnativecases across360/390/430, failure/status/confirmation/privacy; no realrole/evidence/downstream/termination producer or liveflow.",
+      "reportedResult": "SYNTHETIC_FE37_PASS",
+      "matchingCurrentPins": [],
+      "changedCurrentPins": [],
+      "missingOrEphemeralPins": [],
+      "newRuntime": "NONE_REUSE_ONLY"
+    },
+    "eventAudit": {
+      "ias": [
+        "O02",
+        "O03",
+        "O08"
+      ],
+      "artifact": "docs/mcr/evidence/operations-fe38-current/native-01/report.json",
+      "artifactSha256": "38c1dd6f1f549a56b6596a52e3bd362360f75bc51949afc38e125d3d2abed38b",
+      "exactQualification": "Actual FE38 production components and canonical Auth; explicitly fictional operator/clock/place/HTTP. No root producer/live/device/operator-publication proof.",
+      "reportedResult": "PASS_PENDING_OWNER_IMAGE_INSPECTION",
+      "pinSchema": [
+        "frontend/src/features/admin/event/model/controller.ts",
+        "frontend/src/features/admin/event/model/ports.ts",
+        "frontend/src/features/admin/event/model/lease.ts",
+        "frontend/src/features/admin/event/ui/EventOperations.tsx",
+        "frontend/src/features/admin/event/ui/common.tsx",
+        "frontend/src/features/admin/event/ui/operations.css",
+        "frontend/src/features/admin/places/PlacesOperations.tsx",
+        "frontend/src/features/admin/audit/AuditOperations.tsx",
+        "frontend/src/features/admin/event/__tests__/fixtures/data.ts",
+        "frontend/src/features/admin/event/__tests__/current/producer-fixture.ts"
+      ],
+      "newRuntime": "NONE_REUSE_ONLY",
+      "baselineExpectedFailurePreserved": true,
+      "matchingCurrentPins": [
+        "frontend/src/features/admin/event/model/controller.ts",
+        "frontend/src/features/admin/event/model/ports.ts",
+        "frontend/src/features/admin/event/model/lease.ts",
+        "frontend/src/features/admin/event/ui/EventOperations.tsx",
+        "frontend/src/features/admin/event/ui/common.tsx",
+        "frontend/src/features/admin/event/ui/operations.css",
+        "frontend/src/features/admin/places/PlacesOperations.tsx",
+        "frontend/src/features/admin/audit/AuditOperations.tsx",
+        "frontend/src/features/admin/event/__tests__/fixtures/data.ts",
+        "frontend/src/features/admin/event/__tests__/current/producer-fixture.ts",
+        "frontend/src/features/admin/event/__tests__/current/preview.tsx",
+        "contracts/domain/v1/admin.schema.json",
+        "contracts/domain/v1/operations.json",
+        "frontend/pnpm-lock.yaml"
+      ],
+      "changedCurrentPins": []
+    },
+    "partyAuthoring": {
+      "ias": [
+        "M02"
+      ],
+      "artifact": "frontend/src/features/party-authoring/__tests__/evidence/browser/report.json",
+      "artifactSha256": "08e804e7b66ee2f29ba3a742f6f6139fb2233c5fe27d4f9384e1696fe345624a",
+      "exactQualification": "FE22 isolated UI with deterministic C04 fetch fixtures through canonical Auth/privacy. No real backend/world/multiuser/device acceptance.",
+      "reportedResult": "PASS",
+      "widths": [
+        360,
+        390,
+        430,
+        1280
+      ],
+      "checks": [
+        "RHF invalid input sends no request",
+        "session draft explicit restore",
+        "server error preserves draft",
+        "unknown write locks submit",
+        "receipt recovery never replays POST",
+        "logout scrubs input",
+        "no horizontal overflow at all widths",
+        "no browser errors"
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/party-authoring/model/time.ts",
+        "frontend/src/features/party-authoring/model/controller.ts",
+        "frontend/src/features/party-authoring/ui/PartyAuthoring.tsx",
+        "frontend/src/features/party-authoring/ui/authoring.css",
+        "frontend/src/features/party-authoring/__tests__/fixtures/preview.tsx",
+        "frontend/src/features/party-authoring/__tests__/fixtures/harness.ts"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/features/party-authoring/model/contract.ts"
+      ],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; no currentroot/live/physical promotion"
+    },
+    "partyManagement": {
+      "ias": [
+        "M04",
+        "M05"
+      ],
+      "artifact": "frontend/src/features/party-management/__tests__/evidence/browser/report.json",
+      "artifactSha256": "71bde6b3f5cb39c37c8d5e28a33d99cac443f8296dc4609cfca8040804f4e874",
+      "exactQualification": "FE23 isolated native UI against deterministic C04 fetch fixture and canonical Auth/privacy; no real backend/world/device/physical authority acceptance.",
+      "reportedResult": "PASS",
+      "widths": [
+        360,
+        390,
+        430,
+        1280
+      ],
+      "checks": [
+        "confirmation cancel makes no write",
+        "explicit rally acknowledgement required",
+        "last-slot conflict refreshes full count",
+        "moved meeting removes old authority",
+        "unknown cancellation locks all mutations",
+        "logout clears private rows",
+        "no horizontal overflow",
+        "no browser errors"
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/party-management/../party-authoring/model/time.ts",
+        "frontend/src/features/party-management/model/controller.ts",
+        "frontend/src/features/party-management/ui/PartyManagement.tsx",
+        "frontend/src/features/party-management/ui/management.css",
+        "frontend/src/features/party-management/__tests__/harness.ts",
+        "frontend/src/features/party-management/__tests__/preview.tsx"
+      ],
+      "changedCurrentPins": [],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; no currentroot/live/physical promotion"
+    },
+    "beacon": {
+      "ias": [
+        "M06"
+      ],
+      "artifact": "frontend/src/features/meet-beacon/__tests__/evidence/browser/report.json",
+      "artifactSha256": "eb6fa1aebb7cd135df3fb2e385b7ae34b887834b96434dd1af2a85e3bf7f17f2",
+      "exactQualification": "FE20 synthetic fixtures using canonical HTTP/privacy and actual FE19 controller; no real venue, server, device or multiplayer acceptance",
+      "reportedResult": "PASS",
+      "widths": [
+        {
+          "width": 360,
+          "result": "PASS",
+          "minimumTouchTarget": 44,
+          "horizontalOverflow": false
+        },
+        {
+          "width": 390,
+          "result": "PASS",
+          "minimumTouchTarget": 44,
+          "horizontalOverflow": false
+        },
+        {
+          "width": 430,
+          "result": "PASS",
+          "minimumTouchTarget": 44,
+          "horizontalOverflow": false
+        }
+      ],
+      "checks": [
+        "Keyboard acknowledgement and explicit self-report only",
+        "Moved revision confirmation",
+        "Expiry/revocation/denied scrubbing",
+        "Unknown write status check without mutation replay",
+        "Canonical privacy draft cleanup",
+        "360/390/430 widths, >=44px controls, no page errors, owner disposal"
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/meet-beacon/__tests__/browser-smoke.mjs",
+        "frontend/src/features/meet-beacon/__tests__/controller.test.ts",
+        "frontend/src/features/meet-beacon/__tests__/fixtures/preview.html",
+        "frontend/src/features/meet-beacon/__tests__/fixtures/preview.tsx",
+        "frontend/src/features/meet-beacon/__tests__/ui.test.tsx",
+        "frontend/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/features/meet-beacon/__tests__/fixtures/harness.ts",
+        "frontend/src/features/meet-beacon/index.ts",
+        "frontend/src/features/meet-beacon/model/contract.ts",
+        "frontend/src/features/meet-beacon/model/controller.ts",
+        "frontend/src/features/meet-beacon/model/ports.ts",
+        "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx",
+        "frontend/src/features/meet-beacon/ui/meeting-beacon.css"
+      ],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; no currentroot/live/physical promotion"
+    },
+    "meetingEntry": {
+      "ias": [
+        "W07",
+        "M06"
+      ],
+      "artifact": "frontend/src/app/meeting-entry/__tests__/evidence/root-browser/report.json",
+      "artifactSha256": "48a9a143f58a5c6f25c2ddc0d97f1037072aec05d0aaa58abd4793d99cd7abec",
+      "exactQualification": "Actual default createAppRoutes/WorldShell with canonical Auth and instrumented fake world. release=null; no live server, authority, venue, real Phaser/socket, device or IN02 acceptance.",
+      "reportedResult": "PASS",
+      "widths": [
+        {
+          "width": 360,
+          "directEntries": [
+            "W07",
+            "M06"
+          ],
+          "result": "PASS",
+          "strictMode": true,
+          "navigationWorldHostStable": true,
+          "peakGames": 1,
+          "peakConnections": 1,
+          "meetingRequests": 0,
+          "writes": 0,
+          "cleanup": "PASS"
+        },
+        {
+          "width": 390,
+          "directEntries": [
+            "W07",
+            "M06"
+          ],
+          "result": "PASS",
+          "strictMode": true,
+          "navigationWorldHostStable": true,
+          "peakGames": 1,
+          "peakConnections": 1,
+          "meetingRequests": 0,
+          "writes": 0,
+          "cleanup": "PASS"
+        },
+        {
+          "width": 430,
+          "directEntries": [
+            "W07",
+            "M06"
+          ],
+          "result": "PASS",
+          "strictMode": true,
+          "navigationWorldHostStable": true,
+          "peakGames": 1,
+          "peakConnections": 1,
+          "meetingRequests": 0,
+          "writes": 0,
+          "cleanup": "PASS"
+        }
+      ],
+      "checks": null,
+      "matchingCurrentPins": [
+        "frontend/src/app/meeting-entry/__tests__/bridge.test.ts",
+        "frontend/src/app/meeting-entry/__tests__/browser.mjs",
+        "frontend/src/app/meeting-entry/__tests__/fixtures.ts",
+        "frontend/src/app/meeting-entry/__tests__/preview.html",
+        "frontend/src/app/meeting-entry/__tests__/preview.tsx",
+        "frontend/src/app/meeting-entry/__tests__/root-browser.mjs",
+        "frontend/src/app/meeting-entry/__tests__/root-preview.html",
+        "frontend/src/app/meeting-entry/__tests__/root-preview.tsx",
+        "frontend/src/app/meeting-entry/__tests__/routes.test.tsx",
+        "frontend/src/app/meeting-entry/bridge.ts",
+        "frontend/src/app/meeting-entry/index.ts",
+        "frontend/src/app/meeting-entry/ports.ts",
+        "frontend/src/app/meeting-entry/routes.tsx",
+        "frontend/src/app/__tests__/fixtures/ports.ts",
+        "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx",
+        "frontend/src/app/WorldShell.tsx",
+        "frontend/src/app/router.tsx",
+        "frontend/src/app/ports.ts",
+        "frontend/src/app/shell.css",
+        "frontend/src/shared/styles/base.css"
+      ],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; no currentroot/live/physical promotion"
+    },
+    "pickup": {
+      "ias": [
+        "G06"
+      ],
+      "artifact": "frontend/src/features/gift-pickup/__tests__/evidence/browser/report.json",
+      "artifactSha256": "ca44abba8b20318da6a11edd2f9b2435e165a67e43c7d4e71f0dbf14a404c71c",
+      "exactQualification": "FE26 deterministic C04 native UI through canonical Auth/privacy and real sessionStorage/reload; synthetic server state only. No live backend/device/multiuser/IN02 acceptance.",
+      "reportedResult": "PASS",
+      "widths": [
+        360,
+        390,
+        430,
+        1280
+      ],
+      "checks": [
+        "unknown reserve journal contains identity metadata only",
+        "real reload does not replay command",
+        "original-key recovery confirms held resource",
+        "private pickup requires reviewed map/place fixture",
+        "plaintext code appears only for successful response",
+        "reload does not recover lost plaintext",
+        "owner confirms one-time pickup and repeat action disappears",
+        "logout removes private view",
+        "no page overflow/browser errors"
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/gift-pickup/../party-authoring/model/time.ts",
+        "frontend/src/features/gift-pickup/model/controller.ts",
+        "frontend/src/features/gift-pickup/model/journal.ts",
+        "frontend/src/features/gift-pickup/ui/GiftPickup.tsx",
+        "frontend/src/features/gift-pickup/ui/pickup.css",
+        "frontend/src/features/gift-pickup/__tests__/harness.ts",
+        "frontend/src/features/gift-pickup/__tests__/preview.tsx"
+      ],
+      "changedCurrentPins": [],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; no currentroot/live/physical promotion"
+    },
+    "giveawayAuthoring": {
+      "ias": [
+        "G02",
+        "G04"
+      ],
+      "artifact": "frontend/src/features/giveaway-authoring/__tests__/evidence/browser/report.json",
+      "artifactSha256": "faca014380334754ffcab26d4cd3a926f017533c0eaf7b3c01fa3fc160e60dc3",
+      "reportedResult": "PASS",
+      "exactQualification": "FE25 isolated C04 fixture/native UI via canonical auth/privacy. No production upload/backend/device or IN02 acceptance.",
+      "widths": [
+        360,
+        390,
+        430,
+        1280
+      ],
+      "checks": [
+        "loaded edit values",
+        "missing upload honest",
+        "stock conflict keeps form",
+        "explicit rebase keeps edits",
+        "unknown write locks resubmit",
+        "authorized inventory shown",
+        "logout scrubs draft and inventory",
+        "no horizontal overflow or browser errors"
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/giveaway-authoring/../party-authoring/model/time.ts",
+        "frontend/src/features/giveaway-authoring/model/controller.ts",
+        "frontend/src/features/giveaway-authoring/model/contract.ts",
+        "frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx",
+        "frontend/src/features/giveaway-authoring/ui/giveaway-authoring.css",
+        "frontend/src/features/giveaway-authoring/__tests__/harness.ts",
+        "frontend/src/features/giveaway-authoring/__tests__/preview.tsx"
+      ],
+      "changedCurrentPins": [],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; ownerfeaturefixture, not currentwholeApp/live/physical"
+    },
+    "feedThread": {
+      "ias": [
+        "F03"
+      ],
+      "artifact": "frontend/src/features/feed-thread/__tests__/evidence/browser-report.json",
+      "artifactSha256": "23d0432b5c54d277c9548d70ce0c2fa64f0608b2eac246a8ef69c30b6d4526e5",
+      "reportedResult": null,
+      "exactQualification": "Test-only native HTTP fixtures; no live backend/device acceptance",
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "checks": null,
+      "matchingCurrentPins": [],
+      "changedCurrentPins": [],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; ownerfeaturefixture, not currentwholeApp/live/physical",
+      "sourcePinLimit": "Native artifact has no source hashes. Historical state evidence only until matching source provenance is supplied; do not infer current source equality."
+    },
+    "sharing": {
+      "ias": [
+        "U04",
+        "U05"
+      ],
+      "artifact": "frontend/src/features/social-sharing/__tests__/evidence/browser-report.json",
+      "artifactSha256": "8580526dcc405566a4b22b59d8b335be65df4dd0d0a980d1f6ed6b147277ccb1",
+      "reportedResult": "PASS",
+      "exactQualification": "FE31 isolated UI + canonical session/privacy + native same-origin deterministic HTTP. No real backend, reciprocal authority, device, QA04 or IN03 acceptance.",
+      "widths": [
+        {
+          "width": 360,
+          "requests": 33,
+          "writes": 7,
+          "reveals": 3
+        },
+        {
+          "width": 390,
+          "requests": 33,
+          "writes": 7,
+          "reveals": 3
+        },
+        {
+          "width": 430,
+          "requests": 33,
+          "writes": 7,
+          "reveals": 3
+        }
+      ],
+      "checks": [
+        "no prechecked consent",
+        "metadata-only create payload",
+        "no automatic reveal",
+        "subset approval with reciprocal consent",
+        "explicit protected reveal by keyboard",
+        "hide clears plaintext",
+        "revoke confirmation and immediate scrub",
+        "uncertain command status without replay",
+        "expiry clears plaintext and disables reveal",
+        "handle normalization/replacement/removal",
+        "policy scrub",
+        "no private Query/storage entries",
+        "no overflow or browser errors"
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/social-sharing/model/controller.ts",
+        "frontend/src/features/social-sharing/model/runtime.ts",
+        "frontend/src/features/social-sharing/model/contract.ts",
+        "frontend/src/features/social-sharing/ui/SocialSharing.tsx",
+        "frontend/src/features/social-sharing/ui/sharing.css",
+        "frontend/src/features/social-sharing/__tests__/fixtures/preview.tsx",
+        "frontend/src/features/social-sharing/__tests__/browser-smoke.mjs"
+      ],
+      "changedCurrentPins": [],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY; ownerfeaturefixture, not currentwholeApp/live/physical"
+    },
+    "people": {
+      "ias": [
+        "M07",
+        "M08",
+        "M09",
+        "U06"
+      ],
+      "artifact": "frontend/src/features/people/__tests__/evidence/native-01/report.json",
+      "artifactSha256": "a55cc22145a62fedd47c9225ab28fc93c2ee0f1894708c465790bd39629b8189",
+      "reportedResult": "MOCK_READY",
+      "exactQualification": [
+        "Test-only HTTP fixtures with canonical Auth/shared transport; real backend and persistence NOT_RUN.",
+        "C06 synthetic metadata is deliberately rejected by shared production compositor. No product artwork rendered or approved.",
+        "Root routes/access/bootstrap/provider callback composition, two-account IN03, physical iOS/Android and production verification NOT_RUN."
+      ],
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "matchingCurrentPins": [
+        "frontend/src/features/age-status/AgeStatus.tsx",
+        "frontend/src/features/age-status/__tests__/age.test.ts",
+        "frontend/src/features/age-status/controller.ts",
+        "frontend/src/features/age-status/index.ts",
+        "frontend/src/features/intro/__tests__/intro.test.ts",
+        "frontend/src/features/intro/command.ts",
+        "frontend/src/features/intro/controller.ts",
+        "frontend/src/features/intro/index.ts",
+        "frontend/src/features/people/__tests__/browser-smoke.mjs",
+        "frontend/src/features/people/__tests__/fixtures/harness.ts",
+        "frontend/src/features/people/__tests__/fixtures/preview.html",
+        "frontend/src/features/people/__tests__/fixtures/preview.tsx",
+        "frontend/src/features/people/__tests__/people.test.ts",
+        "frontend/src/features/people/__tests__/ui.test.tsx",
+        "frontend/src/features/people/index.ts",
+        "frontend/src/features/people/people.css",
+        "frontend/src/features/people/runtime.ts",
+        "frontend/src/features/profile/index.ts"
+      ],
+      "changedCurrentPins": [
+        "frontend/src/features/intro/IntroEditor.tsx",
+        "frontend/src/features/intro/contract.ts",
+        "frontend/src/features/people/People.tsx",
+        "frontend/src/features/people/contract.ts",
+        "frontend/src/features/people/controller.ts",
+        "frontend/src/features/profile/Avatar.tsx",
+        "frontend/src/features/profile/PublicProfile.tsx"
+      ],
+      "missingOrSparsePins": [],
+      "newRuntime": "NONE_REUSE_ONLY"
+    }
+  },
+  "physical": "NOT_RUN, originalconnectionquestionpendingnoRepeat",
+  "newRuntime": "NONE; folded into nextsubstantive softwarehandoff, not a separate completion packet"
+}

@@ -1,0 +1,17 @@
+{
+  "allocation": "FE209-PRODUCTION-READINESS-20261104T1847Z",
+  "status": "DECLINED_NOT_ACCEPTED",
+  "utc": "2026-11-04T18:47:32.807874+00:00",
+  "source": "80aa3de601a300de89a2251479e9c90519589d37",
+  "firstPreflightFreeBytes": 12795965440,
+  "currentFreeBytes": 12799905792,
+  "requiredInitialFreeBytes": 12884901888,
+  "otherMaxNewBytes": 3087007744,
+  "ownMaxNewBytes": 134217728,
+  "heldResources": 0,
+  "validationChildrenStarted": 0,
+  "dependencyLinkPresent": false,
+  "qualification": "NOT_RUN",
+  "residualAfterAllMaxNewBytes": 9578680320,
+  "requiredResidualBytes": 9663676416
+}

@@ -210,6 +210,42 @@ def migration_inputs(root, pins):
     return result
 
 
+def verify_migration_package(directory, expected):
+    """Check the actual SQL files consumed by the operator directory override."""
+    require(directory.is_absolute() and directory.is_dir() and not directory.is_symlink(),
+            "migration-package-directory-invalid")
+    info = directory.stat()
+    require(info.st_uid == os.getuid() and info.st_mode & 0o077 == 0,
+            "migration-package-directory-custody")
+    actual = {}
+    for path in directory.iterdir():
+        match = re.fullmatch(r"([0-9]+)_[^/]+\.sql", path.name)
+        require(match is not None, "migration-package-inventory-invalid")
+        version = int(match[1])
+        require(version not in actual, "migration-package-version-duplicate")
+        raw, _ = read_owned(path, private=True, limit=2 * 1024 * 1024)
+        actual[version] = hashlib.sha384(raw).hexdigest()
+    require(actual == expected, "migration-package-source-mismatch")
+
+
+def package_concert_migrations(root, pin, cluster, expected):
+    """Materialize only pinned SQL in the existing owned ephemeral cluster."""
+    cluster.assert_owned()
+    config = source_bytes(root, pin.source, "backend/services/concert-service/src/config/mod.rs")
+    require(b"CONCERT_MIGRATION_DIRECTORY" in config, "migration-package-override-source-required")
+    directory = cluster.root / "concert-migration-package"
+    directory.mkdir(mode=0o700)
+    prefix = "backend/services/concert-service/migrations"
+    for name in git_paths(root, pin.source, prefix):
+        require(Path(name).parent.as_posix() == prefix, "migration-package-source-path-invalid")
+        raw = source_bytes(root, pin.source, name)
+        with os.fdopen(os.open(directory / Path(name).name,
+                               os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600), "wb") as stream:
+            stream.write(raw)
+    verify_migration_package(directory, expected)
+    return directory
+
+
 def admitted_cohort(records):
     require(isinstance(records, dict) and set(records) == SERVICES, "exact-seven-service-cohort-required")
     pins, evidence = {}, {}
@@ -397,6 +433,8 @@ def run(args):
     pins, provenance = admitted_cohort(config["binaries"])
     advanced_sources(root, pins)
     manifests = migration_inputs(root, pins)
+    require(b"CONCERT_MIGRATION_DIRECTORY" in source_bytes(root, pins["concert-service"].source,
+            "backend/services/concert-service/src/config/mod.rs"), "migration-package-override-source-required")
     world, prep, dev = load_helpers(root)
     dev.local_origin(args.browser_origin)
     require(args.report.is_absolute() and args.report.parent.is_dir(), "explicit-report-required")
@@ -418,6 +456,8 @@ def run(args):
     def check_inputs():
         require(admitted_cohort(config["binaries"])[1] == provenance, "binary-cohort-changed")
         require(validate_sources(root, revision) == sources, "helper-source-changed")
+        if "migration_package" in context:
+            verify_migration_package(context["migration_package"], manifests["concert-service"])
         guard.check()
 
     def preflight(_bin_dir, pg_dir):
@@ -458,14 +498,19 @@ def run(args):
             PROFILE_SELF_FRIEND_GRPC_ENDPOINT=urls["friend"], PROFILE_SELF_CONCERT_GRPC_ENDPOINT=urls["concert"])
         # Reuse the existing two-room owned catalog profile (2+2 seats) for three
         # real actors. This launches no QA05 probe and makes no QA05 claim.
+        packaged_sql = package_concert_migrations(root, pins["concert-service"], cluster,
+                                                 manifests["concert-service"])
+        context["migration_package"] = packaged_sql
         path = prep.seed_concert(stack, pins["concert-service"].path, report, True,
-                                 profile="qa05", runtime_manifest=manifests["concert-service"])
+                                 profile="qa05", runtime_manifest=manifests["concert-service"],
+                                 runtime_migration_directory=packaged_sql)
         inputs = json_object(private_input(path))
         release = inputs.pop("release_inputs")
         inputs.pop("world_activation")
         event, owner, rooms = (inputs.pop(k) for k in
             ("CONCERT_WORLD_EVENT_ID", "CONCERT_WORLD_OWNER_ID", "CONCERT_WORLD_ROOMS_JSON"))
         concert = {**cluster.env, **credentials, **inputs, **world.tls(cluster, "concert"),
+            "CONCERT_MIGRATION_DIRECTORY": str(packaged_sql),
             **{k: v for k, v in release.items() if k.startswith("CONCERT_")},
             "ACTOR_DELEGATION_VERIFYING_KEYS": keys["ACTOR_DELEGATION_VERIFYING_KEYS"],
             "CONCERT_GRPC_ADDR": ports.address("concert-service:grpc"),
@@ -569,6 +614,7 @@ def run(args):
         end = min(guard.deadline, time.monotonic() + args.hold_seconds)
         while time.monotonic() < end and not control.stopping:
             guard.check()
+            verify_migration_package(context["migration_package"], manifests["concert-service"])
             with patch.object(runtime, "readiness_value", readiness):
                 stack.health()
                 control.handle_request()

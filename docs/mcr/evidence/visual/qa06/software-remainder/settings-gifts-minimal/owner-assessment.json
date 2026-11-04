@@ -1,0 +1,118 @@
+{
+  "task": "QA06",
+  "candidate": "7f48a3e12efd9e1b6302a12710963607fd16216d",
+  "basePublication": "fcac0bed033b3f0bca336df6417d3ff617ffb637 responsibleRoot153receipt for prior9states; no proof-only audit",
+  "status": "MOCK_READY",
+  "states": [
+    {
+      "id": "settings-cancel-revenge-360",
+      "era": "REVENGE",
+      "width": 360,
+      "result": "PASS",
+      "capture": {
+        "path": "settings-cancel-revenge-360.png",
+        "capturedAt": "2026-11-04T19:39:02.189Z",
+        "sha256": "d3d22ad27739d571fbc4333897c4f271100dd0ad399d8d6ca572b8f61fdc1e7a",
+        "bytes": 109213
+      }
+    },
+    {
+      "id": "settings-cancel-danger-430",
+      "era": "DANGER",
+      "width": 430,
+      "result": "PASS",
+      "capture": {
+        "path": "settings-cancel-danger-430.png",
+        "capturedAt": "2026-11-04T19:39:05.095Z",
+        "sha256": "8796c2685c52d537f337c957c3058ae01ba40b52a443eabf2eb954df61607b98",
+        "bytes": 118853
+      }
+    },
+    {
+      "id": "gifts-empty-revenge-390",
+      "era": "REVENGE",
+      "width": 390,
+      "result": "PASS",
+      "capture": {
+        "path": "gifts-empty-revenge-390.png",
+        "capturedAt": "2026-11-04T19:39:08.377Z",
+        "sha256": "7ddbeb5b55a20824f179553847940f61f5733778d96dd9bdabbed7d358d9c61f",
+        "bytes": 75826
+      }
+    },
+    {
+      "id": "gifts-empty-parade-360",
+      "era": "PARADE",
+      "width": 360,
+      "result": "PASS",
+      "capture": {
+        "path": "gifts-empty-parade-360.png",
+        "capturedAt": "2026-11-04T19:39:11.721Z",
+        "sha256": "87cc3f2d642b28bc86d92ae53c808a0fa5f148dad1aca23d7cab10bd7b2b82b2",
+        "bytes": 72076
+      }
+    },
+    {
+      "id": "gifts-empty-danger-430",
+      "era": "DANGER",
+      "width": 430,
+      "result": "PASS",
+      "capture": {
+        "path": "gifts-empty-danger-430.png",
+        "capturedAt": "2026-11-04T19:39:15.070Z",
+        "sha256": "114918fd01508e83b0f94ed2140806c8ba67fd70f528067936e22a044152ba77",
+        "bytes": 79590
+      }
+    }
+  ],
+  "settings": "Actual canonicaldefaultApp enabledform, real44px labeltargets for22px checkboxglyphs, lowpower/reducedmotion draft+differentera, Saveenabled/reachable but notclicked, EnterCancel restores all original savedvalues/soundoff, Save/Canceldisabled afterrevert, unsavedera notapplied, Backworldsamecanvas/socket/noextradomainwrite. Does not replace ownerruntimeapply/performancequalification.",
+  "myGifts": "Existing unchangedserverfixture actually empty owncollections. Giving/Receiving44px controls/pressedstate, no privatepickup/recipient/history invented, togglereturn/Browseactualroute, samecanvas/socket/noextradomainwrite. Detailed paging/error/denial/statequalification reused from featureowner, not rerun.",
+  "selection": "Five representative width/era pairs plus existing390Settings/sharedlayout and MyGiftscomponent owner evidence; no549freshscreenshotrequirement or untestedindividualcombinationPASS.",
+  "failedAttempt": {
+    "round": "01",
+    "exit": 1,
+    "PNG": 0,
+    "cause": "Own exactlabel locator failed because wrappedselect name includes itsoptiontext. ActualSettingsrendered in rawreport.",
+    "fix": "Actual namedcombobox/^Preferred era/; no product/fixture/cohort change, sameoriginalclock/caps. HelperSHA now bound beforechild and in report.",
+    "preserved": true
+  },
+  "inspection": "All5 finalnativePNG directlyviewed: legiblelabels/emptycopy, expectedscroll forlowerSettingscontent and responsivepagination. At430 CHOOSEANERA continues belowbody; this is scrolling, notdocumentoverflow. No fullreference acceptance.",
+  "custody": {
+    "sourcePins": 416,
+    "assets": 23,
+    "all70OriginalsByteIdentical": true,
+    "allProductSourceUntouched": true,
+    "allPNGs": 5,
+    "allPNGBytes": 455558,
+    "helperSha256": "16ab70b1a019800e48148dce8f3ed180ac2188ad862856c74e1fd8c95aadb784",
+    "runnerSha256": "e94084298dc82c53a7f3b7fb5399ea790be91277b6da2c9197db2d924efb1b1b"
+  },
+  "release": {
+    "FULL": true,
+    "actual": 1793821156.096234,
+    "workDeadline": 1793821398.5505521,
+    "cleanupDeadline": 1793821458.5505521,
+    "NEWreservation": 0,
+    "allOwnedPIDs": 0,
+    "port19878Closed": true,
+    "ownLinkTMPAbsent": true,
+    "peaks": {
+      "temp": 30302362,
+      "durable": 761856,
+      "allPids": 11,
+      "rss": 2609037312,
+      "pngs": 5,
+      "new": 30896282,
+      "whole": 1320857754
+    }
+  },
+  "limits": [
+    "Incumbent canonical Auth/router/providers/default production Phaser; own headless derivative adds exact existing Auth admission() test-server response. Explicit synthetic HTTP/C05/map/policy authority, not live server/admission/physical proof.",
+    "Virtual scenario keeps incumbent virtual place facts; no physical verification/provider/age/bootstrap/renderer or source override.",
+    "Only exact cohort states, not the ten-surface/Wall/reflow replay, whole61IA or full-reference acceptance.",
+    "No domain write; era persistence is the actual account/event-scoped LOCAL preference, explicitly not server synchronization.",
+    "All61IA/fullreference/live/backend/multiuser/physicalSafariAndroid/actualkeyboard/safearea remainopen",
+    "Originalgoal1793759287BLOCKED/unfinished; pendingphysicalconnectionquestionnotrepeated/polled"
+  ],
+  "next": "HelpminimalPARADE360/DANGER430 aftersafelyconsumingpublishedW08pin, and WallremainingPARADE390/DANGER430; no repeatedowner390Help or oldWallREVENGE widths/shortheight."
+}

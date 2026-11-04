@@ -1,0 +1,90 @@
+{
+  "task": "QA06",
+  "status": "MOCK_READY",
+  "candidate": "32cb7933179777ae7cceaf7886190edb3de872d5",
+  "canonicalIntake": "7ba6de456949136c33a068bdeee8bebb8e7822fd plus own31path scoped986cf05f reappliedas32cb7933; no product modifications or source overlay",
+  "states": [
+    {
+      "id": "help-parade-360",
+      "era": "PARADE",
+      "width": 360,
+      "status": "PASS",
+      "capture": {
+        "path": "help-parade-360.png",
+        "capturedAt": "2026-11-04T20:06:59.007Z",
+        "sha256": "82c5987128be72114e0b53fc8c1a98b5495b2b97a0f1fbb257c278b89f7eb9e6",
+        "bytes": 170676
+      }
+    },
+    {
+      "id": "help-danger-430",
+      "era": "DANGER",
+      "width": 430,
+      "status": "PASS",
+      "capture": {
+        "path": "help-danger-430.png",
+        "capturedAt": "2026-11-04T20:07:02.519Z",
+        "sha256": "5c965ac67c0d03cb124d081ba72d4e7d8187f1dd04900635bddb82257fa52dd3",
+        "bytes": 197852
+      }
+    }
+  ],
+  "behavior": "ActualWorldtools\u2192Help, realregisteredproductionWorldHelp; heading plus all4safetysections individuallyfullyinviewport, both44px/min reachablelinks, actualReturnWorld, samecanvas/socketpeak1/noextradomainwrite and disposal. Owner390headerBack evidence reused; no newheaderBack claim here.",
+  "reuse": {
+    "owner": "21e source34b922f1ba4a63c6a66911c087b4efacb42184db \u2192canonicala40d6944a65091b93381fa96767357eb2941b74a",
+    "report": "docs/mcr/evidence/sharing-safety-default-app/combinedD-browser/report.json",
+    "reportSha256": "524a89b6ee78a6ab5b45892c3f91bc20dbbb31faddc4420be6ee914fc3df4b94",
+    "unchangedCurrentOwnerPins": {
+      "frontend/src/features/world-help/WorldHelp.tsx": "db09b1ac62ce21696e2ad51968ebf7e6cb86aada569249406f712aef602a7baf",
+      "frontend/src/features/world-help/world-help.css": "dc65af4c4067531154868d5f6ce6d774cd65e1d8f0bf18c610b87095ce9bf347",
+      "frontend/src/app/router.tsx": "31a2ea3a7bdf57e1f135782f6177c128d1c1319194cfcd5e09e7506a3a651598"
+    },
+    "exactLimit": "Owneractualmain390journey not rerun; onlyPARADE360/DANGER430 new. No untestedindividualcombination or549freshscreenshotgate."
+  },
+  "inspection": "Both finalPNGs directlyviewed. LowerLookaround paragraphs, Virtualisnotphysical, Meetwithcare and bothlinks are legible;360capture begins midpreviousparagraph due realinternal scroll. Upperheading/Move/Look sections individuallyassertedfullyvisible, not simultaneouslypresent in bottom capture. No horizontaloverflow or boundedpanelclippingfailure.",
+  "foregroundDisposition": "Existing already-inspectedten-surface and laterSettings/MyGifts observations establish no new screen-specificforeground source defect; expectedscroll/emptyfixturestates, historicalheader/fixture drift, World/backgroundexceptions and separatelyownedMap/Theme/Profile/avatar/admin not reopened. Fullreference acceptance remainsopen; no broad audit/evidence-onlypatch/newruntime for this disposition.",
+  "custody": {
+    "loadedSources": 406,
+    "publicAssets": 19,
+    "PNGs": 2,
+    "PNGBytes": 368528,
+    "all70OriginalsByteIdentical": true,
+    "productSourceUntouched": true,
+    "runnerSha256": "e94084298dc82c53a7f3b7fb5399ea790be91277b6da2c9197db2d924efb1b1b",
+    "helperSha256": "16ab70b1a019800e48148dce8f3ed180ac2188ad862856c74e1fd8c95aadb784"
+  },
+  "validation": {
+    "nativeExit": 0,
+    "syntaxExit": 0,
+    "repairs": "NONE; firstattempt2PASS",
+    "planning": "separate planningcheck, notapplicationacceptance"
+  },
+  "allocationUpdate": "allocation-update.json retains exact supersedingmessage/currentnumericinventory and strictermonitor reserve without rewritingadmission",
+  "release": {
+    "FULL": true,
+    "actual": 1793822826.451442,
+    "workDeadline": 1793823112.8706172,
+    "cleanupDeadline": 1793823172.8706172,
+    "NEWreservation": 0,
+    "ownedPIDs": 0,
+    "port19878Closed": true,
+    "ownLinkTMPAbsent": true,
+    "peaks": {
+      "temp": 30273690,
+      "durable": 442368,
+      "allPids": 11,
+      "rss": 2545500160,
+      "pngs": 2,
+      "new": 30507162,
+      "whole": 1336914074
+    }
+  },
+  "limits": [
+    "Incumbent canonical Auth/router/providers/default production Phaser; own headless derivative adds exact existing Auth admission() test-server response. Explicit synthetic HTTP/C05/map/policy authority, not live server/admission/physical proof.",
+    "Virtual scenario keeps incumbent virtual place facts; no physical verification/provider/age/bootstrap/renderer or source override.",
+    "Only exact cohort states, not the ten-surface/Wall/reflow replay, whole61IA or full-reference acceptance.",
+    "No domain write; era persistence is the actual account/event-scoped LOCAL preference, explicitly not server synchronization.",
+    "PhysicalSafariAndroid/realkeyboard/hardwareSafeArea/livebackend/multiuser/fullreference/all61IA remainopen; originalgoal1793759287BLOCKED/unfinished; existingphysicalquestionpendingnoRepeat/poll"
+  ],
+  "next": "ExistingpreparedWallremaining-era pair PARAdE390/DANGER430; priorREVENGE3width+short390 reused; fresh finite allocation required, no additionalcurrentworkload."
+}

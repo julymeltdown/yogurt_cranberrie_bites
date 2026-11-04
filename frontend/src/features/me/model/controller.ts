@@ -49,7 +49,9 @@ export function createMeController(auth: Pick<SessionController, 'request' | 'pr
   async function save(section: Section) {
     if (disposed || busy() || state.blocked || !state.participant || !dirty(section) || !auth.privacy.isCurrent(scope)) return
     const parsed = section === 'profile' ? profileSchema.safeParse({ display_name: state.draft.display_name, bio: state.draft.bio }) : preferencesSchema.safeParse(state.draft.preferences)
-    if (!parsed.success) { publish({ message: 'Use a display name of 1–40 characters and a bio of at most 160 characters. Preferences must use the available choices.' }); return }
+    if (!parsed.success) { publish({ message: section === 'profile'
+      ? parsed.error.issues[0]?.message ?? 'Use a display name of 1–40 characters and a bio of at most 160 characters.'
+      : 'Preferences must use the available choices.' }); return }
     const otherDirty = dirty(section === 'profile' ? 'preferences' : 'profile')
     const before = state.participant, draft = state.draft, id = ++revision, controller = new AbortController(); flight = controller
     const body = section === 'profile' ? { expected_revision: before.revision, ...profileSchema.parse(parsed.data) }

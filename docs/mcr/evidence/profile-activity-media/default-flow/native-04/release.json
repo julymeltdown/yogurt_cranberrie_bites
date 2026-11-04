@@ -1,0 +1,51 @@
+{
+  "status": "FULL",
+  "job": "PROFILE-CHANGED-MAIN-20261104T1845Z",
+  "result": "PASS",
+  "finishedAt": "2026-11-04T18:47:07.327421+00:00",
+  "contexts": [
+    [
+      "loaded",
+      "PASS"
+    ],
+    [
+      "denied-media",
+      "PASS"
+    ],
+    [
+      "cold",
+      "PASS"
+    ]
+  ],
+  "remainingRecordedOwnResources": 0,
+  "port": 5324,
+  "absentBindCloseReuseAddr": true,
+  "commands": [
+    [
+      "syntax-driver",
+      0
+    ],
+    [
+      "lint",
+      0
+    ],
+    [
+      "native",
+      0
+    ]
+  ],
+  "peakProcesses": 11,
+  "peakRssKiB": 2548336,
+  "peakPhysicalWholeBytes": 1501327360,
+  "accountedWholeBytes": 1501327360,
+  "peakTempBytes": 29964397,
+  "peakOutputBytes": 1426837,
+  "newPngBytes": 206802,
+  "cumulativePngCount": 12,
+  "freeBytesAfter": 12801601536,
+  "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "browser": "156.0.8078.80",
+  "beforeOriginalCleanupDeadline": true,
+  "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE_IN03",
+  "remaining": "Visual comparison and scoped committed handoff/publication; no further runtime lease needed."
+}

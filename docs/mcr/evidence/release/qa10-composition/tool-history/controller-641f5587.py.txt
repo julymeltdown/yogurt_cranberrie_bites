@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+"""Fixed actual-candidate SOURCE plan with the already qualified native guardian."""
+import argparse
+import importlib.util
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import subprocess
+import sys
+import time
+import hashlib
+
+HERE = Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location('qa10_source_guard', HERE / 'source_round.py')
+guard_api = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(guard_api)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root', type=Path, required=True)
+    parser.add_argument('--candidate', required=True)
+    parser.add_argument('--offer', required=True)
+    parser.add_argument('--all-new-bytes', type=int, required=True)
+    args = parser.parse_args()
+    root = args.root.resolve()
+    free, whole = shutil.disk_usage(root).free, guard_api.size(root)
+    if free < 12 * guard_api.GIB or free - args.all_new_bytes < 9 * guard_api.GIB or whole > 6 * guard_api.GIB:
+        print(json.dumps({'status': 'PREFLIGHT_DECLINE', 'at': guard_api.stamp(), 'free': free, 'whole': whole}), flush=True)
+        return 3
+    start, accepted = time.monotonic(), guard_api.stamp()
+    out = HERE / args.offer
+    out.mkdir(exist_ok=False)
+    configuration = {'root': str(root), 'out': str(out), 'supervisor': os.getpid(), 'baseline': whole,
+                     'work_end': start + 180, 'full_end': start + 210}
+    guard_api.write(out / 'config.json', configuration)
+    admission = {'status': 'ACTUAL_ACCEPT', 'offer': args.offer, 'at': accepted, 'candidate': args.candidate,
+        'free': free, 'all_new_bytes': args.all_new_bytes, 'reserved_free': free - args.all_new_bytes,
+        'whole_baseline': whole, 'work_seconds': 180, 'full_seconds': 210, 'new_cap': 32 * guard_api.MIB,
+        'whole_cap': 6 * guard_api.GIB, 'process_cap': 4, 'rss_cap': 512 * guard_api.MIB,
+        'tool_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in
+                       [Path(__file__).resolve(), HERE / 'candidate_probe.py', HERE / 'source_round.py']}}
+    guard_api.write(out / 'admission.json', admission)
+    print(json.dumps(admission), flush=True)
+    guardian = subprocess.Popen([sys.executable, '-B', str(HERE / 'source_round.py'), '--guardian', str(out / 'config.json')])
+    results = []
+    try:
+        while not (out / 'guardian-ready.json').exists():
+            if guardian.poll() is not None or time.monotonic() >= start + 5:
+                raise RuntimeError('guardian failed')
+            time.sleep(0.02)
+        environment = {**os.environ, 'PYTHONDONTWRITEBYTECODE': '1', 'LC_ALL': 'C',
+            'GIT_CONFIG_GLOBAL': '/dev/null', 'GIT_CONFIG_NOSYSTEM': '1', 'GIT_CONFIG_COUNT': '2',
+            'GIT_CONFIG_KEY_0': 'maintenance.auto', 'GIT_CONFIG_VALUE_0': 'false',
+            'GIT_CONFIG_KEY_1': 'gc.auto', 'GIT_CONFIG_VALUE_1': '0'}
+
+        def run(name, argv):
+            if guardian.poll() is not None or time.monotonic() >= start + 175:
+                raise RuntimeError('guardian stopped or deadline')
+            with (out / (name + '.log')).open('wb') as log:
+                child = subprocess.Popen(argv, cwd=root, env=environment, stdout=log, stderr=subprocess.STDOUT,
+                                         start_new_session=True)
+                guard_api.write(out / 'worker.json', {'pid': child.pid})
+                try:
+                    code = child.wait(timeout=max(0.1, start + 180 - time.monotonic()))
+                except subprocess.TimeoutExpired:
+                    os.killpg(child.pid, signal.SIGKILL)
+                    child.wait()
+                    raise
+                finally:
+                    (out / 'worker.json').unlink(missing_ok=True)
+            result = {'name': name, 'argv': argv, 'exit': code}
+            results.append(result)
+            print(json.dumps(result), flush=True)
+            return code
+
+        code = run('actual-inventory', [sys.executable, '-B', str(HERE / 'candidate_probe.py'), '--root', str(root),
+                                       '--candidate', args.candidate, '--out', str(out / 'candidate')])
+        if code == 0:
+            checker = str(root / 'scripts/mcr/release_checks/check.py')
+            common = [sys.executable, '-B', checker, '--root', str(root), '--candidate', args.candidate,
+                      '--mode', 'composition', '--manifest']
+            for name in ['input', 'stale-frontend-input']:
+                run('cli-' + name, common + [(out / 'candidate' / (name + '.json')).relative_to(root).as_posix()])
+    except Exception as error:
+        results.append({'controller_error': type(error).__name__})
+    finally:
+        (out / 'stop').touch()
+        guardian.wait(timeout=max(0.1, start + 210 - time.monotonic()))
+        result = {'status': 'ACTUAL_FULL', 'offer': args.offer, 'at': guard_api.stamp(),
+            'elapsed_seconds': time.monotonic() - start, 'results': results, 'retained_bytes': guard_api.size(out),
+            'temporary_app_resources': 'NONE_CREATED',
+            'guardian': json.loads((out / 'guardian-result.json').read_text())}
+        guard_api.write(out / 'result.json', result)
+        print(json.dumps(result), flush=True)
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

@@ -1,5 +1,5 @@
 import { useEffect, useSyncExternalStore } from 'react'
-import { createSocialSharingController, HandleSettings, SharingRequest, SharingRequests } from '../../features/social-sharing'
+import { createSocialSharingController, HandleSettings, SharingOffer, SharingRequest, SharingRequests } from '../../features/social-sharing'
 import { ShellLink } from '../navigation'
 import { canonicalId } from '../routes'
 import type { RequestsModule, SocialOptions } from './ports'
@@ -12,7 +12,7 @@ export const canonicalSharingRequests: NonNullable<SocialOptions['requests']> = 
       ...(typeof auth.requestSensitive === 'function' ? { sensitiveRead: auth.requestSensitive } : {}),
     })
     let disposed = false, started = false
-    let view: Readonly<{ path: '/me/social' | '/me/requests'; detail: string | null; locked: boolean; version: number }> = Object.freeze({ path: '/me/requests', detail: null, locked: false, version: 0 })
+    let view: Readonly<{ path: '/me/social' | '/me/requests'; detail: string | null; offer: { readonly introId: string; readonly recipientId: string; readonly revision: number } | null; locked: boolean; version: number }> = Object.freeze({ path: '/me/requests', detail: null, offer: null, locked: false, version: 0 })
     const listeners = new Set<() => void>()
     const publish = (patch: Partial<typeof view> = {}) => {
       if (disposed) return
@@ -28,17 +28,23 @@ export const canonicalSharingRequests: NonNullable<SocialOptions['requests']> = 
       useEffect(() => {
         if (state.available) {
           if (current.path === '/me/social') { if (controller.read().handles.phase === 'idle') void controller.loadHandles() }
+          else if (current.offer) { void controller.loadHandles(); void controller.loadOffer(current.offer.introId) }
           else if (current.detail) void controller.loadRequest(current.detail)
           else void controller.loadRequests()
         }
         return controller.hideSecret
-      }, [current.path, current.detail, state.available])
+      }, [current.path, current.detail, current.offer, state.available])
       return <div className="social-sharing-entry">
         <nav aria-label="Private sharing sections">
           <ShellLink id="sharing-handles" to="/me/social" aria-current={current.path === '/me/social' ? 'page' : undefined}>Social links</ShellLink>
           <ShellLink id="sharing-requests" to="/me/requests" aria-current={current.path === '/me/requests' ? 'page' : undefined}>Requests</ShellLink>
         </nav>
-        {current.path === '/me/social' ? <HandleSettings controller={controller} /> : current.detail ? <>
+        {current.path === '/me/social' ? <HandleSettings controller={controller} /> : current.offer ? <>
+          <button type="button" disabled={current.locked} onClick={() => { if (!view.locked) { controller.hideSecret(); publish({ offer: null }) } }}>Back to requests</button>
+          {state.offer.phase !== 'ready' || state.offer.data?.intro_id === current.offer.introId && state.offer.data.recipient_id === current.offer.recipientId && state.offer.data.intro_revision === current.offer.revision
+            ? <SharingOffer controller={controller} retry={() => { void controller.loadOffer(current.offer!.introId) }} />
+            : <p role="status">This introduction changed. Return to the current profile before requesting sharing.</p>}
+        </> : current.detail ? <>
           <button type="button" disabled={current.locked} onClick={() => { if (!view.locked && !disposed) { controller.hideSecret(); publish({ detail: null }) } }}>Back to requests</button>
           <SharingRequest controller={controller} retry={() => { void controller.loadRequest(current.detail) }} />
         </> : <SharingRequests controller={controller} onRequest={id => {
@@ -49,7 +55,12 @@ export const canonicalSharingRequests: NonNullable<SocialOptions['requests']> = 
     const module: RequestsModule = {
       read, subscribe, Panel,
       start() { if (!disposed && !started) { started = true; controller.start() } },
-      enter(path) { if (!disposed && !view.locked && view.path !== path) { controller.hideSecret(); publish({ path, detail: null }) } },
+      enter(path) { if (!disposed && !view.locked && view.path !== path) { controller.hideSecret(); publish({ path, detail: null, offer: null }) } },
+      offer(target) {
+        if (!disposed && !view.locked && canonicalId(target.introId) && canonicalId(target.recipientId) && target.recipientId !== scope.userId && Number.isSafeInteger(target.revision) && target.revision > 0) {
+          controller.hideSecret(); publish({ path: '/me/requests', detail: null, offer: Object.freeze({ ...target }) })
+        }
+      },
       dispose() { if (disposed) return; disposed = true; stop(); listeners.clear(); controller.dispose() },
     }
     return module

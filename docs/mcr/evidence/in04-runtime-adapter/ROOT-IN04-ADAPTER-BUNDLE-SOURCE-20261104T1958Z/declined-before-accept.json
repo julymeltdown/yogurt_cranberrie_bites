@@ -1,0 +1,18 @@
+{
+  "allocation": "ROOT-IN04-ADAPTER-BUNDLE-SOURCE-20261104T1958Z",
+  "state": "DECLINED_BEFORE_ACCEPT",
+  "observedAt": "2026-11-04T20:03:39.570758+00:00",
+  "source": "8a822994349e051a60d29c0267d15371baf9896c",
+  "readsetSha256": "b028fc4d7da7d1624c6edce9e810522b0b0c9c79491e53463ab60858bd48278f",
+  "guardianSha256": "6aa54216c33cffecdceb7e9ded3bf550d8f7eb1ea7247bd75e053cf2012e25f4",
+  "actualWholeBytes": 2604455423,
+  "freeBytes": 12384534528,
+  "otherMaximumNewBytes": 2818572288,
+  "ownMaximumNewBytes": 134217728,
+  "residualAfterAllMaximumNewBytes": 9431744512,
+  "requiredResidualBytes": 9663676416,
+  "workloadStarted": false,
+  "resourcesHeld": false,
+  "predecessor": "CORE-OWNACCESS-C07-SOURCE-20261104T1955Z DECLINED before ACCEPT; World actual FULL20:01:30.458294",
+  "reason": "Fresh reserved-space floor"
+}

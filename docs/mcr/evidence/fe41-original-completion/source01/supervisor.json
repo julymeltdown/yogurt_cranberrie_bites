@@ -1,0 +1,98 @@
+{
+  "slot": "FE41-CHANGED-CHAIN-20261104T1901Z",
+  "pin": "86204a3b2d340b0ba30ea0812871fab00e590ad7",
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "mode": "source",
+  "deadlineUTC": "2026-11-04T19:06:14.810013+00:00",
+  "startedUTC": "2026-11-04T19:02:58.238530+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "entries": 65536,
+    "new": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8,
+    "childSeconds": 90
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806785875,
+        "files": 8262,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2041885,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "86204a3b2d340b0ba30ea0812871fab00e590ad7",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1590342739,
+    "historyObjects": 41691,
+    "wholeBytes": 2807433833,
+    "entries": 61527
+  },
+  "carry": 2807433833,
+  "otherReserve": 1744830464,
+  "temporary": "/private/tmp/mcr-fe41-n6q37cwv",
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe41-original-completion/vitest.config.mjs"
+      ],
+      "pid": 19204,
+      "startedEpoch": 1793818978.2580621,
+      "exit": 1,
+      "endedEpoch": 1793818980.822813
+    }
+  ],
+  "ownedPids": {
+    "19204": "Thu Nov  5 04:02:58 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "19214": "Thu Nov  5 04:02:58 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "19220": "Thu Nov  5 04:02:58 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "19230": "Thu Nov  5 04:02:59 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "19245": "Thu Nov  5 04:02:59 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "19269": "Thu Nov  5 04:03:00 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+  },
+  "externalTargets": [],
+  "wholePeak": 2815749412,
+  "newPeak": 8315579,
+  "tmpPeak": 8315451,
+  "durablePeak": 128,
+  "rssPeak": 721027072,
+  "processPeak": 4,
+  "entryPeak": 61679,
+  "failure": "AssertionError: tests failed; immutable output retained",
+  "alivePids": [],
+  "externalRemaining": [],
+  "temporaryAbsent": true,
+  "linkAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "status": "FAIL",
+  "finishedUTC": "2026-11-04T19:03:00.897702+00:00",
+  "finalFree": 20478320640
+}

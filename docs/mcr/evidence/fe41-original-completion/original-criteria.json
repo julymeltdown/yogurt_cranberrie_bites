@@ -1,0 +1,48 @@
+{
+  "task": "FE41",
+  "status": "IN_PROGRESS",
+  "criteria": [
+    {
+      "criterion": "Offline/reconnect/404 and usable keyboard/reconnect navigation",
+      "status": "REUSED_CONTROLLED_DEFAULT_ROOT_PASS",
+      "evidence": "Retained actual main/default ports/router controlled three-width native report and18captures pinned in reconciliation.json. No repeated matrix."
+    },
+    {
+      "criterion": "Stale labels and no endless spinner",
+      "status": "REUSED_SOURCE_AND_CONTROLLED_ROOT_PASS",
+      "evidence": "Existing bounded observer/default-entry phases retained; changed terminal version path source-qualified with no generic-state promotion."
+    },
+    {
+      "criterion": "Foreground resync, single Phaser/world connection, privacy withdrawal and teardown",
+      "status": "REUSED_CLIENT_EVIDENCE",
+      "evidence": "FE17 original source/five native scenarios and retained actual-App/Phaser journey; old root teardown and preference evidence pinned. No real OS/device/Auth-server claim."
+    },
+    {
+      "criterion": "Low power, render throttling and reduced motion",
+      "status": "REUSED_FUNCTIONAL_EVIDENCE",
+      "evidence": "Original adapter35/source206 and retained controlled default runtime preferences evidence. QA08 performance deferred, no repetition."
+    },
+    {
+      "criterion": "No silent offline pickup or non-replayable-command replay",
+      "status": "REUSED_ACTUAL_CONTROLLER_SOURCE_EVIDENCE",
+      "evidence": "Unchanged gift-pickup no-second-POST/uncertain journal reconstruction and original FE26 source results; no new pickup write lease."
+    },
+    {
+      "criterion": "Typed map-version admission and terminal reload-only recovery",
+      "status": "CONTROLLED_CLIENT_SOURCE_NATIVE_PASS",
+      "evidence": "Eleven new chain/authority +31affected cases PASS; full types1022/0diagnostics, scoped lint, syntax, whitespace andplan0. One changed390actualdefault-main typed409\u2192reload-only\u2192keyboardreload/accessgatePASS; source productTSunchanged afterqualification."
+    },
+    {
+      "criterion": "Validated operational maintenance/minimum application version producer",
+      "status": "NOT_AVAILABLE_FROM_CURRENT_PUBLIC_CONTRACTS",
+      "evidence": "World20f and BackendRoot1fc confirm no frozen public producer/authority. Existing observer accepts explicit exact-release decisions only. New local lifecycle status never invents maintenance/app-version from503, navigator, capabilities or wire/kernel versions."
+    },
+    {
+      "criterion": "Developer validation/fixes, final documentation, committed handoff and canonical publication",
+      "status": "IN_PROGRESS",
+      "evidence": "Source42PASS; native-retry02PASS aftertwo ownharnessfixes, full resource release. Exactscope committed handoff andcanonicalRoot153publication remain next."
+    }
+  ],
+  "limits": "Controlled client evidence does not establish actual backend outages/Auth admission/multiuser/device/OS-backgrounding/physical pickup/operational producer/full reference acceptance. No task/IA scope cut.",
+  "resource": "Source and native FULL released, resource0. Exact committed handoff/publication pending."
+}

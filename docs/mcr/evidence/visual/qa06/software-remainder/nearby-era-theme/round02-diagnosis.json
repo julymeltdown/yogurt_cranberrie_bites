@@ -1,0 +1,13 @@
+{
+  "round02Exit": 1,
+  "sixNearbyCases": "PASS, retained source/fixture/readset/screenshot pins reused not replayed",
+  "theme360": "Own assertion incorrectly required live during blocking panel; suspended is expected safety behavior",
+  "repair": "Explicit panel-aware phase check plus actual joystick disabled, unchanged camera/skin/storage/retained lifetime assertions",
+  "remainingThemeCases": 3,
+  "newPNGsPlanned": 1,
+  "allExistingPNGs": 7,
+  "maxTotalPNG": 8,
+  "noSourceOverride": true,
+  "sameWorkDeadline": 1793820451.271807,
+  "remainingSeconds": 170.5909299850464
+}
