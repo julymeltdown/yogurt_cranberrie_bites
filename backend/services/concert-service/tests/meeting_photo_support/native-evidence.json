@@ -1,0 +1,128 @@
+{
+  "scope": "BE09/FE20 synthetic remote-owner photo adapter qualification",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "tests": [
+    {
+      "binary": "meeting_photo_contract",
+      "phase": "before-restart",
+      "binary_sha256": "1e7139522b3a6215e7d6562aa739145ba733c991aa1a05eb012c9bc7c21b1ee9",
+      "exit_code": 0,
+      "output_sha256": "1341e473a279d61e5c311ecdf98a6939dd66e8b0d5731f6e478b0555632b55d7",
+      "test_result": "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    },
+    {
+      "binary": "meeting_photo",
+      "phase": "before-restart",
+      "binary_sha256": "8526e52093713be3290af0056c3644dc9ee2af8a18655d57ffb2c049724d3b4e",
+      "exit_code": 0,
+      "output_sha256": "f3a76e77ae62886a31d4ad00c93917774cdd5d5e900f2f069ad7784088554d34",
+      "test_result": "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.15s"
+    },
+    {
+      "binary": "meeting_photo_migrations",
+      "phase": "before-restart",
+      "binary_sha256": "1b7666bb2c7c81041dd86ec3bf6170609a714ab58e07cca6f65074acc55816a2",
+      "exit_code": 0,
+      "output_sha256": "874cb84fc6134585f4fb2fcb992629c24f29b99e17137bdb53307a851de78ebd",
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s"
+    },
+    {
+      "binary": "meeting_photo_contract",
+      "phase": "after-restart",
+      "binary_sha256": "1e7139522b3a6215e7d6562aa739145ba733c991aa1a05eb012c9bc7c21b1ee9",
+      "exit_code": 0,
+      "output_sha256": "1341e473a279d61e5c311ecdf98a6939dd66e8b0d5731f6e478b0555632b55d7",
+      "test_result": "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    },
+    {
+      "binary": "meeting_photo",
+      "phase": "after-restart",
+      "binary_sha256": "8526e52093713be3290af0056c3644dc9ee2af8a18655d57ffb2c049724d3b4e",
+      "exit_code": 0,
+      "output_sha256": "5a1e43e730c11143ba406dbb42a92604be544afec1f9f785f89a4a64a90742cd",
+      "test_result": "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.11s"
+    },
+    {
+      "binary": "meeting_photo_migrations",
+      "phase": "after-restart",
+      "binary_sha256": "1b7666bb2c7c81041dd86ec3bf6170609a714ab58e07cca6f65074acc55816a2",
+      "exit_code": 0,
+      "output_sha256": "dc85e085c2240f42f92d6984bf965db71169ed5b7662af2b2fc9b3fcd299dd18",
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s"
+    }
+  ],
+  "native": "PASS",
+  "canonical_owner_rpc": "NOT_RUN",
+  "http": "NOT_RUN",
+  "rights": "NOT_ESTABLISHED",
+  "source_revision": "b41cf49bd65f9d6c678c194d744a5322c9facd1e",
+  "source_sha256": {
+    "backend/services/concert-service/src/meeting_photo/authority.rs": "d5b26e75ba5429c618fa36265f0ac46f838e63190391d230d4a38f28414740c5",
+    "backend/services/concert-service/src/meeting_photo/canonical.rs": "6217440a8d0d996843bf75f74356be164307b1ecab012ce759c6324a01f34c0b",
+    "backend/services/concert-service/src/meeting_photo/mod.rs": "9d21eca7f647ecb4ce2b2db50ad3286864189c92a4b1394d0179bebcad7252f8",
+    "backend/services/concert-service/src/meeting_photo/producer.rs": "352472c05a45dcb01a63e9e68e0cbbd3a866112aa4271877e683994f878b25a3",
+    "backend/services/concert-service/src/meeting_photo/wire.rs": "12164dad0c39b57a58b692233163f50d421ed6fdd4a9d8506a1408f3fad16451",
+    "backend/services/concert-service/tests/meeting_photo.rs": "73c82e9c16105fedc0d016827db610aecdd91af125c79b48a827cd4869c71d32",
+    "backend/services/concert-service/tests/meeting_photo_contract.rs": "53d58594494be73fe6aff1f9749379020f607f9ec127f00cd0bfbdf21f7b6729",
+    "backend/services/concert-service/tests/meeting_photo_migrations.rs": "df57e563f1d775d334e3e4560a6086a63fe7372512a28f5150021b7fbe6e6a94",
+    "backend/services/concert-service/tests/meeting_photo_support/contract-fixtures.json": "0a8b39b3c4fb36170a5d3a2d7082e15d809482983800d3474f1d7bf75792340e",
+    "backend/services/concert-service/tests/meeting_photo_support/mod.rs": "40757a3eec3c202bf09968f8712dc837f09ef4bf9b81d6cb13d52a8de13a1927",
+    "backend/services/concert-service/src/meeting/commands.rs": "6be9de515535e2b23460017101b2f52d4e2a846a267632806aeaeee359b190f5",
+    "backend/services/concert-service/src/adapters/out/media/mod.rs": "ceb0a71e20cf1b39f47213853b42c4ab31aa8d185e013b608192bab6dfce4296",
+    "backend/crates/concert-application/src/media/mod.rs": "674a2aadbc406bce690216ec6811b887ca74c161fc1d53cb482e8d55799b9e8d",
+    "backend/scripts/mcr/meeting_photo_smoke.py": "51890c2f2d48a81879d95b4bc88df65ab7cfe8c152a2ba1a37f9c40d88413f5d"
+  },
+  "migration_sha256": {
+    "0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+    "0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+    "0004_bootstrap_admission.sql": "cb1c0093eeaef79dbe783052447c34c78aad5c6daebdc2f6f3dc7f4b17112ac9",
+    "0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+    "0007_community.sql": "6c22de4cbfc51db3b3bc23b151d19e5ad43ddc36a794ffdf7cf4507e19090930",
+    "0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+    "0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+    "0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+    "0012_media.sql": "aae18779fda409d5a9de1844336c3e58d3705197346ce94b9b5e0a926e119224",
+    "0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d",
+    "0029_meeting_photo.sql": "9f21086838a25664cea110cc9c48dd921d6894f5bc6d4fd4ba82af11865cb2bc"
+  },
+  "sql_migrations": "PASS",
+  "sql_guard_cases": 5,
+  "postgres_version": "16.14 (Homebrew)",
+  "restart": "PASS",
+  "build": {
+    "result": "PASS",
+    "exit_code": 0,
+    "toolchain": "Rust 1.88.0",
+    "settings": {
+      "locked": true,
+      "offline": true,
+      "jobs": 2,
+      "dev_debug": 0,
+      "test_debug": 0,
+      "incremental": 0
+    },
+    "source_revision": "b41cf49bd65f9d6c678c194d744a5322c9facd1e",
+    "cargo_json_sha256": "fa79c28fe9af868125b1865f304f9794383f935f2ec21a6f40ea8eb02bc3a58d",
+    "full_source_pins": 1714,
+    "full_source_pins_sha256": "a09c32e925f0a95497c452b6621115b57f70d73a6b2559d1b4a3d1815247d569",
+    "binaries": {
+      "meeting_photo": {
+        "sha256": "8526e52093713be3290af0056c3644dc9ee2af8a18655d57ffb2c049724d3b4e"
+      },
+      "meeting_photo_migrations": {
+        "sha256": "1b7666bb2c7c81041dd86ec3bf6170609a714ab58e07cca6f65074acc55816a2"
+      },
+      "meeting_photo_contract": {
+        "sha256": "1e7139522b3a6215e7d6562aa739145ba733c991aa1a05eb012c9bc7c21b1ee9"
+      }
+    },
+    "initial_failures": [
+      "stale contracts-build helper worktree path; refreshed helper mtime without source edit",
+      "owned JSON fixture macro syntax corrected in b41cf49b"
+    ],
+    "target_released_before_postgres": true
+  },
+  "coverage": "15 distinct native tests executed twice (30 total), plus five SQL guards; actual remote owner proof synthetic only"
+}

@@ -1,7 +1,7 @@
 # BE-MEETING-PHOTO execution evidence
 
 Original scope: optional authorized physical-beacon photo, BE09 / FE20 / §5.4.
-Status: IN_PROGRESS; public port proposal and deterministic fixtures authored.
+Status: IN_PROGRESS; frozen contract and bounded photo adapter are native-qualified; final publication is being prepared. Historical checkpoints below retain their original evidence limits.
 No full BE09/FE20/IN02 or giveaway-BE20 completion is asserted.
 
 Checkout `/Users/lhs/Desktop/mcr-worktrees/be-meeting-photo`, branch
@@ -131,3 +131,60 @@ this worker. Actual Cargo/native qualification is still pending the resource
 queue, with three test targets ready. Additional security regressions bind the
 actual raw request/type/key and prevent a retained old content URL from being
 substituted with a newly attached image argument.
+
+
+## Qualified native checkpoint
+
+Implementation/hardening is committed through `b41cf49bd65f9d6c678c194d744a5322c9facd1e`,
+after peer reconciliation `c1cf15a2c18b0a5dfe224597eb3a795241f3b814`. The explicit
+MEDIA lease was accepted only after 65.25 GiB free-space and process preflight.
+Build command (exit 0):
+
+```sh
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml -p concert-service --test meeting_photo_contract --test meeting_photo --test meeting_photo_migrations --no-run --locked --offline --message-format=json
+```
+
+The first attempt exposed a stale contracts-build helper path from the prior
+worktree, corrected by refreshing its mtime without source changes. The second
+reported an owned JSON macro fixture syntax error, corrected in `b41cf49b`.
+The third compile succeeded. Actual SDK/v2 and current imported Post IDL compiled;
+no unrelated generation fix or full-wave barrier was required for this slice.
+All three artifacts, Cargo JSON and 1,714 source pins were frozen/hash-checked in
+`/tmp/mcr-meeting-photo-native-c1cf15a2`; MEDIA was explicitly released before PG.
+No second target, install, target deletion or global cleanup was used.
+
+Native command (exit 0), solely from immutable copied artifacts:
+
+```sh
+python3 backend/scripts/mcr/meeting_photo_smoke.py --binary /tmp/mcr-meeting-photo-native-c1cf15a2/meeting_photo_contract --binary /tmp/mcr-meeting-photo-native-c1cf15a2/meeting_photo --binary /tmp/mcr-meeting-photo-native-c1cf15a2/meeting_photo_migrations --report /tmp/mcr-meeting-photo-native-c1cf15a2/native-a.json
+```
+
+PostgreSQL 16.14: **6 contract + 8 producer + 1 SQLx migration test PASS before
+and after a real process restart**, 30 executions, zero ignored/failed. All five
+SQL binding/proof negative cases, migration application, persisted association
+snapshot and marker/inode-owned cluster cleanup PASS. The committed durable
+receipt is `backend/services/concert-service/tests/meeting_photo_support/native-evidence.json`.
+
+The producer tests executed real bounded image decoding/upload/finalize,
+owner/event/purpose/READY checks, private sanitized bytes and no-store headers,
+current audience/block/outage/place authorization, retained-photo explicit
+reconfirmation, same-key safe replay, replace/remove/revoke byte erasure,
+competing CAS updates, forced late erase failure with complete transaction and
+receipt rollback, actual blocked-reader root/media/budget ordering, expiry
+cleanup, and restart receipt/content persistence. SQLx fresh installation and
+pre-0029 upgrade preserved real existing POST media byte-for-byte at row level;
+ledger replay/checksums and immutable published 0008/0012 hashes passed.
+
+The imported BE24 helper and Purpose source blobs are byte-identical to media
+owner's qualified `c32f4c74` for the exact two source paths, independently checked
+with `git diff`. This worker's real photo composition now also qualifies those
+ports; it does not claim the owner's separate canonical adapter or live RPC join.
+Remote owner proof in these tests remains explicitly synthetic. Actual canonical
+Auth/Friend exclusion, MEETING_PHOTO settlement dispatch, qualified HTTP delivery,
+root routing/capability activation, device flow, production photo rights and IN02
+remain NOT_RUN here. No full BE09/FE20/IN02 acceptance or scope cut is inferred.
+
+The actual persistent-goal API still returned BLOCKED after explicit assignment
+resumption; its available mutation API cannot set ACTIVE. This administrative
+state was reported to BackendSL while the complete authorized work resumed; no
+replacement goal or false completion was used to bypass it.
