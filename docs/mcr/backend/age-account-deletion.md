@@ -1,9 +1,10 @@
 # BE42 Age account-deletion owner
 
-Status: source implementation in progress. The allocated Rust build failed on
-reused upstream artifacts; PostgreSQL and restart validation are **NOT_RUN**.
-This document does not
-reopen accepted BE26 provider verification or certify whole PrivateData deletion.
+Status: the scoped Age owner compiled and passed its populated native scenario,
+including a physical PostgreSQL restart and a fresh test/RPC process. Production
+aggregate composition and the complete Auth deletion worker remain unverified.
+This document does not reopen accepted BE26 provider verification or certify
+whole PrivateData deletion.
 
 ## Source and ownership
 
@@ -95,7 +96,8 @@ independent guardian before children. The target must be unconditionally release
 before `run.py` starts copied tests. The runner owns a new socket-only PostgreSQL
 cluster, verifies both migration ledgers, restarts it, checks prepared transactions
 and removes only its marker/inode-validated cluster. Resource receipts and final
-command results are recorded below; current native status is NOT_RUN.
+command results are recorded below. The first failed attempt is retained as
+history; the later copied-native allocation passed.
 
 ### First actual qualification attempt
 
@@ -139,12 +141,74 @@ processes 7 and RSS 1,749,893,120 bytes. Retained historical target charge advan
 from 896,724,992 to 1,099,165,696 bytes for the next lease. These figures are the
 failed qualification's resource outcome, not functional acceptance.
 
-## Separate BE41 trace
+### Successful compile and freeze
 
-Read-only tracing found retained `event_lifecycle/http.rs` START/RESUME/job-response
-logic and durable initiating actor, but no public ProductRPC/Gateway lifecycle
-mount or production `FencedLifecycleAuthority`. The proposed public remainder
-requires exact routing/closed bodies, current event/settings revision and phase,
-the canonical operations-role fence, reviewed retention and public tests. There
-is no lifecycle source grant in this Age assignment. Accepted bounded BE41 effects
-are not evidence that the public lifecycle flow works.
+The fresh `AGE-DELETION-RETRY-MEDIA-20261104T1831Z` turn actually accepted at
+2026-11-04 19:59:56.579451 UTC on source
+`feed4f801e15279d0ac7b4c4a69a9a9af01e2e32`. Its first build failed because
+shared Auth application artifacts came from another checkout and exposed a
+different `ReadError`. Failed logs were retained. A permitted byte-identical
+timestamp refresh of the local Auth domain/application inputs made Cargo rebuild
+those artifacts; source bytes, the original acceptance, target baseline and
+growth accounting were preserved. Rust 1.88, locked/offline, jobs 2, debug and
+incremental disabled, and contracts-build opt-level 2 then compiled successfully.
+
+The frozen executable is 33,324,736 bytes with SHA256
+`a0127e7139c5837f71fbfa1f48be94e3afa43156e7e22d5a689d354fe0319461`.
+The target was unconditionally released with zero handles/compiler children at
+20:03:03.124601 UTC. Native work did not start in this turn: subtracting the
+original outstanding reservations and full own growth cap left 9,464,688,640
+bytes, below the accepted 9 GiB residual floor. The guard was preserved and the
+turn reached FULL at 20:05:00.897089 UTC, with reservations and workflows zero.
+
+Evidence is `/private/tmp/mcr-age-deletion-native-hjhvzr36/FULL.json`, including
+the failed build, exact source/tool pins, successful compile, frozen executable
+and unconditional target release. Positive target growth was 617,508,864 bytes;
+peak whole storage was 7,301,935,104 bytes, minimum free 12,452,483,072 bytes,
+maximum processes 7 and RSS 2,986,016,768 bytes. Cumulative retained target growth
+became 1,716,674,560 bytes. This closed turn was not reused for native work.
+
+### Successful copied-native qualification
+
+Fresh allocation `AGE-DELETION-COPIED-NATIVE-20261104T2010Z` accepted at
+20:09:04.493663 UTC, using that same source and existing executable. It permitted
+no target access, Cargo, installation or new executable copy. The immutable
+executable and migration inputs were linked into private evidence. Accepted
+limits were 640 MiB total new storage, including 512 MiB PostgreSQL and 128 MiB
+outside output; 10 GiB whole storage; 48 processes and 4 GiB RSS; 11 GiB start,
+9 GiB after all outstanding growth, and an 8 GiB continuous floor. Work had
+240 seconds with a separate 240-second cleanup reserve. An independent guardian
+preceded children.
+
+The runner exited zero and recorded PASS at 20:09:30.844601 UTC. Both FIRST and
+RESTARTED executed `age_deletion_populated_auth_retry_cancel_restart`: one passed,
+zero failed in each process. PostgreSQL 17.10 physically restarted from PID
+31323 to 32744. Auth's 18 migrations and Concert's 51 migrations matched their
+ledgers, and prepared transactions were zero. The marker-owned cluster was
+removed. Fresh verification found no controller, guardian, native child or
+PostgreSQL process; FULL was recorded at 20:12:19.502925 UTC, with workflows and
+remaining growth reservations zero. The next owner and allocator received that
+literal release before this documentation update.
+
+Evidence is `/private/tmp/mcr-age-copied-native-yjl5vsg2/FULL.json`, with
+`frozen/native.json`, `frozen/native/FIRST.stdout`,
+`frozen/native/RESTARTED.stdout` and `run-result.json`. Peak whole storage was
+7,382,155,264 bytes, sampled peak new output including PostgreSQL 80,220,160
+bytes, and positive carry growth 135,168 bytes. Minimum free space was
+18,810,568,704 bytes; maximum observed processes 16 and RSS 281,395,200 bytes.
+All previous evidence and the 1,716,674,560-byte retained target charge remain.
+
+This proves the scoped populated Age behavior described above, using the actual
+Auth repository and mTLS source. It does not exercise dispatch by the complete
+Auth deletion worker, commercial age-provider acceptance, all PrivateData
+categories or production aggregate wiring. This document-only descendant does
+not claim that the frozen executable was rebuilt from its updated document.
+
+## Separate BE41 work
+
+The separately authorized public Lifecycle implementation is retained on
+`codex/mcr-be41-lifecycle-public-production` at
+`f6ed155080c72454e5a1eafc521878a4895076b3`. Its Rust compilation, native restart
+scenario and Gateway runtime remain NOT_RUN. Production integration still lacks
+actual cleanup/retention handles in the Operations composition. The original
+BE41 blocked result remains blocked; Age qualification does not resolve it.
