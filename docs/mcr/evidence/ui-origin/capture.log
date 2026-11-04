@@ -1,0 +1,182 @@
+route 1 /
+route 2 /login
+route 3 /signup
+route 4 /verify-email
+route 5 /reset-password
+route 6 /auth/callback
+route 7 /legal/:document
+route 8 /account/deleted
+route 9 /archive
+route 10 /world
+route 11 /world/map
+route 12 /world/places/:placeId
+route 13 /world/rooms
+route 14 /world/nearby
+route 15 /world/theme
+route 16 /world/check-in
+route 17 /world/help
+route 18 /feed
+route 19 /feed/new
+route 20 /feed/:postId
+route 21 /feed/:postId/edit
+route 22 /notices/:noticeId
+route 23 /meet
+route 24 /meet/parties/new
+route 25 /meet/parties/:partyId
+route 26 /meet/parties/:partyId/manage
+route 27 /meet/parties/:partyId/rally
+route 28 /meet/beacons/:beaconId
+route 29 /meet/people
+route 30 /meet/intro/edit
+route 31 /people/:userId
+route 32 /gifts
+route 33 /gifts/new
+route 34 /gifts/mine
+route 35 /gifts/:giveawayId
+route 36 /gifts/:giveawayId/manage
+route 37 /gifts/:giveawayId/reservation
+route 38 /gifts/pickups/:reservationId
+route 39 /wall
+route 40 /me
+route 41 /me/avatar
+route 42 /me/profile
+route 43 /me/social
+route 44 /me/requests
+route 45 /me/age
+route 46 /me/settings
+route 47 /me/blocks
+route 48 /me/account
+route 49 /notifications
+route 50 /report
+route 51 /admin
+route 52 /admin/event
+route 53 /admin/places
+route 54 /admin/reports
+route 55 /admin/users/:userId
+route 56 /admin/content
+route 57 /admin/mural
+route 58 /admin/audit
+route 59 /admin/archive
+feature 1 frontend/e2e/reference-integrated/whole/preview.html
+feature 2 frontend/e2e/reference-integrated/preview.html
+feature 3 frontend/src/entities/avatar/whole-character/__tests__/native/preview.html
+feature 4 frontend/src/app/social-composition/__tests__/preview.html
+feature 5 frontend/src/app/mural-entry/__tests__/preview.html
+feature 6 frontend/src/shared/ui/__tests__/fixtures/preview.html
+feature 7 frontend/src/app/errors/__tests__/preview.html
+feature 8 frontend/src/app/places-entry/__tests__/preview.html
+feature 9 frontend/src/features/giveaway-authoring/__tests__/preview.html
+feature 10 frontend/src/app/meeting-entry/__tests__/preview.html
+feature 11 frontend/src/app/meeting-entry/__tests__/root-preview.html
+feature 12 frontend/src/app/__tests__/fixtures/preview.html
+feature 13 frontend/src/shared/ui/concert-window/__tests__/preview.html
+feature 14 frontend/src/app/__tests__/reference-root/preview.html
+feature 15 frontend/src/app/account-entry/__tests__/asset-leases/preview.html
+10:08:58 AM [vite] (client) [Unhandled error] Error: Synthetic login unavailable
+ > src/app/account-entry/__tests__/preview.tsx:14:71
+    12 |  auth.start()
+    13 |  await new Promise<void>(resolve=>{if(auth.read().capabilities!=='loading')resolve();else{const stop=auth.subscribe(()...
+    14 |  if(!await auth.login('synthetic@example.org','fixture-password'))throw new Error('Synthetic login unavailable')
+       |                                                                         ^
+    15 |  const candidate=new URL(location.href).searchParams.get('route'),initial=['/world','/me','/me/profile','/me/settings'...
+    16 |  history.replaceState(null,'',initial)
+
+feature 16 frontend/src/app/account-entry/__tests__/preview.html
+feature 17 frontend/src/app/world-entry/__tests__/reference-scene-root/preview.html
+feature 18 frontend/src/features/party-authoring/__tests__/fixtures/preview.html
+10:09:09 AM [vite] (client) [Unhandled error] Error: Synthetic login unavailable
+ > src/app/account-deletion-entry/__tests__/preview.tsx:14:102
+    12 |  auth.start()
+    13 |  if (auth.read().capabilities === 'loading') await new Promise<void>(resolve => { const stop = auth.subscribe(() => { ...
+    14 |  ...h.login('synthetic@example.org', 'fixture-password')) throw new Error('Synthetic login unavailable')
+       |                                                                 ^
+    15 |  const initial = ['/me/settings', '/me/account', '/account/deleted', '/world'].includes(params.get('route') ?? '') ? p...
+    16 |  history.replaceState(null, '', initial)
+
+feature 19 frontend/src/app/account-deletion-entry/__tests__/preview.html
+feature 20 frontend/src/features/mural/editor/__tests__/reference-target/preview.html
+feature 21 frontend/src/app/community-entry/__tests__/preview.html
+feature 22 frontend/src/features/party-discovery/__tests__/reference/preview.html
+feature 23 frontend/src/features/account/__tests__/deletion-preview.html
+feature 24 frontend/src/features/party-discovery/__tests__/fixtures/preview.html
+feature 25 frontend/src/features/admin/reports/__tests__/fixtures/preview.html
+feature 26 frontend/src/world/__tests__/controls-layout/preview.html
+feature 27 frontend/src/app/__tests__/default-shell/preview.html
+feature 28 frontend/src/features/mural/editor/__tests__/visual-adoption/preview.html
+feature 29 frontend/src/features/social-sharing/__tests__/fixtures/preview.html
+feature 30 frontend/src/features/mural/editor/__tests__/preview.html
+feature 31 frontend/src/features/gift-pickup/__tests__/preview.html
+10:09:35 AM [vite] (client) [Unhandled error] Error: Canonical fixture login failed
+ > src/features/avatar/__tests__/fixtures/preview.tsx:23:73
+    21 |  auth.start()
+    22 |  await new Promise<void>(resolve => { if (auth.read().capabilities !== 'loading') { resolve(); return }; const stop = ...
+    23 |  if (!await auth.login('fixture@example.test', 'fixture-password')) throw new Error('Canonical fixture login failed')
+       |                                                                           ^
+    24 |  const resources = createAssetResources({ origin: location.origin, allow: [{ path: document.atlas.texture.path!, sha25...
+    25 |  let production = false, atlasDisposed = 0, slow = false
+
+feature 32 frontend/src/features/avatar/__tests__/fixtures/preview.html
+feature 33 frontend/src/features/inbox/__tests__/preview.html
+feature 34 frontend/src/features/meet-beacon/__tests__/fixtures/preview.html
+feature 35 frontend/src/features/mural/sync/__tests__/visual-adoption/preview.html
+feature 36 frontend/src/features/admin/event/__tests__/fixtures/preview.html
+feature 37 frontend/src/features/archive/__tests__/fixtures/preview.html
+feature 38 frontend/src/app/media-entry/__tests__/preview.html
+feature 39 frontend/src/features/me/__tests__/reference-target/preview.html
+feature 40 frontend/src/features/world-rooms/__tests__/fixtures/preview.html
+10:09:50 AM [vite] (client) [Unhandled error] Error: Script error.
+ > ../../../../../../@vite/client:531:50
+
+feature 41 frontend/src/features/avatar/__tests__/reference-target/preview.html
+feature 42 frontend/src/features/auth/__tests__/fixtures/recovery-preview.html
+feature 43 frontend/src/features/auth/__tests__/fixtures/enrollment-preview.html
+feature 44 frontend/src/features/auth/__tests__/fixtures/preview.html
+feature 45 frontend/src/features/mural/sync/__tests__/preview.html
+feature 46 frontend/src/app/media-entry/__tests__/root-binding/preview.html
+feature 47 frontend/src/features/party-management/__tests__/preview.html
+feature 48 frontend/src/features/meet-beacon/__tests__/photo-client/preview.html
+feature 49 frontend/src/features/me/__tests__/visual-adoption/preview.html
+feature 50 frontend/src/features/me/__tests__/preview.html
+feature 51 frontend/src/features/feed-thread/__tests__/fixtures/media-preview.html
+feature 52 frontend/src/features/feed-thread/__tests__/fixtures/preview.html
+feature 53 frontend/src/features/auth/__tests__/reference-target/preview.html
+feature 54 frontend/src/features/auth/__tests__/visual-adoption/preview.html
+feature 55 frontend/src/features/avatar/__tests__/visual-adoption/preview.html
+feature 56 frontend/src/app/media-entry/__tests__/profile-composition/preview.html
+feature 57 frontend/src/features/gift-discovery/__tests__/reference-native/preview.html
+feature 58 frontend/src/features/gift-discovery/__tests__/fixtures/preview.html
+feature 59 frontend/src/features/intro/__tests__/evidence/unicode-length/preview.html
+feature 60 frontend/src/features/theme/__tests__/preview.html
+10:10:14 AM [vite] (client) [Unhandled error] Error: Script error.
+ > ../../../../../../@vite/client:531:50
+
+feature 61 frontend/src/features/avatar/__tests__/option-previews/preview.html
+feature 62 frontend/src/features/event-feed/__tests__/reference/preview.html
+feature 63 frontend/src/features/admin/mural/__tests__/preview.html
+10:10:24 AM [vite] (client) [Unhandled error] Error: Script error.
+ > ../../../../../../@vite/client:531:50
+
+feature 64 frontend/src/features/avatar/__tests__/compact-layout/preview.html
+feature 65 frontend/src/app/shell-chrome/__tests__/preview.html
+feature 66 frontend/src/features/places/__tests__/fixtures/preview.html
+feature 67 frontend/src/features/event-feed/__tests__/character-port/preview.html
+feature 68 frontend/src/features/event-feed/__tests__/visual-adoption/preview.html
+feature 69 frontend/src/features/places/__tests__/visual-adoption/preview.html
+feature 70 frontend/src/features/admin/closure/__tests__/resume/preview.html
+feature 71 frontend/src/features/avatar/whole-character/__tests__/preview.html
+feature 72 frontend/src/features/safety/__tests__/preview.html
+10:10:32 AM [vite] (client) [Unhandled error] Error: Canonical fixture login failed
+ > src/features/people/__tests__/fixtures/preview.tsx:19:73
+    17 |  const auth = createSessionController({ eventId: source.event_id, cookiePolicy: isolatedCookiePolicy() }); auth.start()
+    18 |  await new Promise<void>(resolve => { const stop = auth.subscribe(() => { if (auth.read().capabilities !== 'loading') ...
+    19 |  if (!await auth.login('fixture@example.test', 'fixture-password')) throw new Error('Canonical fixture login failed')
+       |                                                                           ^
+    20 |  let readOnly = false, resolves = 0
+    21 |  const listeners = new Set<() => void>(), access = { read: () => ({ available: true, readOnly }), subscribe(fn: () => ...
+
+feature 73 frontend/src/features/people/__tests__/fixtures/preview.html
+feature 74 frontend/src/features/public/__tests__/fixtures/preview.html
+feature 75 frontend/src/features/public/__tests__/visual-adoption/preview.html
+feature 76 frontend/src/features/public/__tests__/reference-target/preview.html
+feature 77 frontend/src/features/people/__tests__/evidence/unicode-length/preview.html
+{"routes":59,"features":81,"errors":7,"failed":[{"id":"feature-05","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n"},{"id":"feature-15","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n"},{"id":"feature-18","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n"},{"id":"feature-25","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n"},{"id":"feature-31","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n"},{"id":"feature-40","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n"},{"id":"feature-60","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n"},{"id":"feature-72","error":"locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n"}]}
