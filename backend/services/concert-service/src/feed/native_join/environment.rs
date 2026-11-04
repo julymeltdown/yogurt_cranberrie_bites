@@ -74,8 +74,8 @@ pub(super) async fn pool(owner: &str) -> anyhow::Result<PgPool> {
             && row.get::<String, _>("system") == std::env::var("MCR_CANONICAL_SYSTEM")?,
         "Foreign PostgreSQL identity"
     );
-    let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("..")
+    let path = PathBuf::from(std::env::var("MCR_FEED_NATIVE_SOURCE_ROOT")?)
+        .join("backend/services")
         .join(format!("{owner}-service"))
         .join("migrations");
     sqlx::migrate::Migrator::new(path.as_path())

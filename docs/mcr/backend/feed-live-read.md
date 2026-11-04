@@ -332,3 +332,30 @@ executables: nine Concert facade/filter, eight Post adapter and three wire cases
 This will also compile the newly exported real policy/resources/read composition.
 No shared target has been accessed while queued. Real guarded/HTTP checks remain
 NOT_RUN, and the unpublished SDK/PublicProfile denial fixes are not yet consumed.
+
+
+## Real native join staged
+
+Root's published `95afbfc9` is now consumed by merge `ca35b63c`. Its actual
+source-bound operator constructor qualification is separate from Feed acceptance.
+Duplicate source-cherry conflicts were resolved by retaining the root's published
+operator files verbatim. Feed/Post source was unchanged by that merge.
+
+Own commit `635d7efe` stages a real five-owner native component case under
+`feed/native_join`: actual signed Gateway parent, canonical Auth/Friend mTLS owner
+stores, root ledger and subject callback, local Concert prepared transactions,
+actual Profile projection, and qualified Post runtime/settlement. The fixture uses
+the public source-bound ProductReleaseBundle constructor and real
+PublicProfileReader::connect; it does not copy the private product-art bypass.
+Copied helpers retain source SHA-256 provenance from PublicProfile `db92f895` and
+canonical `3e22615e`. The signed parent uses the actual release event.
+
+The task-owned native controller creates five exact databases and private mTLS
+certificates under one marker/token/inode-bound PostgreSQL instance. It pins the
+copied library and complete relevant source/resource hashes, runs the exact
+ignored case, requires zero remaining prepared work and verifies migrations,
+then stops/removes only its owned cluster. Its report always marks live HTTP
+NOT_RUN. The Rust case and controller have not executed: **NOT_RUN**; formatting,
+Python syntax and diff checks alone are not compilation or native evidence.
+A separate library-test compile is needed for this cfg(test) component in
+addition to the queued 20-case adapter build. No target or PostgreSQL lease is held.
