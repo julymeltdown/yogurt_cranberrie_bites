@@ -35,14 +35,14 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const zoomControls = useRef<HTMLDivElement>(null), caption = useRef<HTMLDivElement>(null)
   const [obstacles, setObstacles] = useState<AnnotationRect[]>([])
   const returnFocus = useRef<HTMLElement | null>(null), drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null)
-  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState(1)
+  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(1)
   const saved = selections.get(controller), navigation = useNavigationType(), restored = useRef(false)
   const [loaded, setLoaded] = useState(''), [failed, setFailed] = useState(''), [selected, setSelected] = useState<string | null>(saved?.mapHash === map.content_hash ? saved.id : null)
   const [panel, setPanel] = useState<'places' | 'legend' | null>(null), [search, setSearch] = useState('')
   const [reset, setReset] = useState(0)
   const [scroll, setScroll] = useState({ left: 0, top: 0 })
   const ready = loaded === image.imageUrl && failed !== image.imageUrl
-  const { minZoom, effectiveZoom, width, height, offsetX, offsetY } = mapViewport(size, image, zoom)
+  const { minZoom, effectiveZoom, width, height, offsetX, offsetY } = mapViewport(size, image, zoom === 'fit' ? -1 : zoom)
   const candidate = getReferenceOverviewMetadata(image)
   // This metadata changes label placement only; the existing controller/root still
   // admits the image, catalog, geometry and exact release identity together.
@@ -149,7 +149,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
     <div className="places-map-tools">
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('places') }}><ConcertIcon name="world" />Places</button>
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('legend') }}>Legend</button>
-      <button type="button" disabled={!ready} onClick={() => { setZoom(minZoom); setReset(r => r + 1) }}>Fit map</button>
+      <button type="button" disabled={!ready} onClick={() => { setZoom('fit'); setReset(r => r + 1) }}>Fit map</button>
       <button type="button" disabled={!ready} onClick={() => { setZoom(1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
     </div>
     <dialog ref={sheet} className="places-map-sheet" aria-labelledby="places-map-sheet-title"

@@ -1,5 +1,5 @@
 // TEST ONLY coherent geometry/catalog. No release admission or review is granted.
-import proposal from '../../../../../public/world/reference-scene-v2/geometry-proposal.json'
+import proposal from '../../../../world/reference-scene/source-inputs.json'
 import template from '../../../../../../contracts/fixtures/assets/map-manifest.json'
 import { contentHash, digest } from '../../../../world/map/json'
 import type { MapManifest } from '../../../../world/map/manifest'
