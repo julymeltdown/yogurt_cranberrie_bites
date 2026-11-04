@@ -139,3 +139,22 @@ still NOT_RUN. The runner records any nonempty accepted offer name; actual
 authorization comes from the fresh offer and explicit acceptance, not inferred
 task words or a timestamp format. Root has separately mapped worker `f7c4b899` to `19e4c22e` and
 report-only `3f69299b` to `ca7909b8`, preserving the shared producer inputs.
+
+Second fresh offer `ARCHIVE-ROOT-204-202611040859Z` was explicitly accepted
+08:59:16Z at clean `2bdc353d68880e6a2f6b761800bba00a69306719`, pinned
+Node v24.22.2, 4,388 bytes carried and 28.79361 GiB free. Corrected runner syntax
+passed. Chrome 156.0.8078.80 rendered the public archive and confirmed zero world
+mounts, then the harness failed because its blanket socket count included Vite's
+development socket. No viewport was certified and no screenshot was produced.
+This is preserved in `logs/native-qualified.log` and
+`failures/native-development-socket.json`.
+
+Full release at 09:00:35Z removed the owned dependency directory; browser,
+server, profile, temporary/cache tree and runtime processes were gone. Sampled
+peak whole output was 29,287,936 bytes (temporary 29,283,548), minimum free space
+28.76659 GiB, final free space 28.78579 GiB. See `native-second-release.json`.
+No automatic retry occurred. Commit `07f68aa9` separates only the qualified
+Vite `vite-hmr` fixture protocol, records no socket URLs/tokens, and still
+requires zero other sockets before and after all flows. All product/TypeScript
+test/Root bytes remain unchanged. A fresh native allocation is required for that
+correction; Root's focused capture has the current slot.
