@@ -1,10 +1,10 @@
 # BE-GIFTS-LIVE production producer
 
-Status: IN_PROGRESS. Published baseline `2363d2cc` has a compiled 20-test local proof. Current business/status source remains uncompiled; canonical-owner business flows and live HTTP acceptance remain NOT_RUN.
+Status: IN_PROGRESS. Business/status source compiles at `e9b761fb`; all 29 focused checks pass. Canonical-owner Gift business flows and live HTTP acceptance remain NOT_RUN.
 
-The later runtime/media/query candidate described below is not covered by that
-20-test proof. Its compilation and 29 planned focused checks are NOT_RUN pending
-another explicitly allocated existing target. Published baseline: `2363d2cc`.
+The current 29-test proof is pinned to `e9b761fb90bc02db570c2aee8f999d3a8b48f993`,
+with exact executable and 1,639 source hashes. It supersedes the earlier local
+20-test proof for baseline `2363d2cc`; neither proof certifies real HTTP delivery.
 
 ## Assignment and source
 
@@ -112,7 +112,7 @@ dedicated cursor key, sanitizer and mandatory `GiftProfiles` port accepting only
 sealed `GuardedSubject`. No default profile, UUID-only authority or positive
 canonical fixture is supplied. `gift_live/profile.rs` implements the port directly
 for the actual published Concert `PublicProfileReader`; no independent client or
-fallback projection is constructed. The new combined Gifts adapter is uncompiled.
+fallback projection is constructed. The combined Gifts adapter compiles at `e9b761fb`.
 Actual joined canonical/local-child and final HTTP qualification remains an
 external prerequisite before activation.
 
@@ -170,8 +170,9 @@ changes, the complete Concert migration set was rerun at clean committed source
 Committed `target-sql-evidence.json` records that source and all exact migration
 hashes; 0033 SHA-256 is
 `f3f07358a78b7d515788f6fe289b6a42bb9b0951035d26cb754278c44844bb12`.
-This is SQL proof, not compilation of the Rust caller. Rust correlation/status
-tests remain NOT_RUN pending allocation.
+This is standalone SQL proof. Separately, the Rust correlation/status caller
+compiles at `e9b761fb`, and its three native correlation tests and status-query
+test pass as part of the 29-test focused run below.
 
 The candidate media adapter captures the uploader's exact admission/security
 semantics, durably registers the same transaction, validates actual self interaction
@@ -195,11 +196,52 @@ filtering and projecting; large-page/deadline behavior still requires native pro
 
 The candidate incorporates published canonical SDK2 `c4ad561c`, whose exact full
 acknowledged transaction deduplication replaces repeated network tracking; no local
-PID/connection cache is added. Five planned frozen binaries cover 8 protocol,
+PID/connection cache is added. Five compiled/frozen binaries cover 8 protocol,
 5 cursor, 5 response, 4 local resource, 3 native query, 3 native correlation and
 1 status-query test (29 total). Native query/correlation tests
 exercise actual SQL plus retained Gift mutations with synthetic test-only policy;
 they do not construct canonical scope/subject fixtures or certify Auth/Friend.
+
+### Current runtime/local SQL qualification
+
+At exact clean source `e9b761fb90bc02db570c2aee8f999d3a8b48f993`, Rust 1.88.0
+compiled the four Gift integration-test binaries and Concert's lib-test binary
+with locked/offline dependencies, two jobs, debug 0 and incremental 0. Build
+command: `cargo +1.88.0 test --locked --offline -j 2 -p concert-service --lib
+--test gift_live_protocol --test gift_live_cursor --test gift_live_response
+--test gift_live_resources --no-run --message-format=json-render-diagnostics`.
+The build exited 0 in 27.3 seconds and produced no Gift-owned warnings. Inherited
+Concert lib/lib-test warnings remain outside this assignment.
+
+The initial build failed because the shared target's cached `contracts-build`
+embedded the previous Browser checkout's protobuf include root. Package-only
+cleanup on the explicitly allocated MEDIA target removed 20 files / 816.4 KiB;
+the unchanged command then passed. An earlier cleanup dry run omitted
+`CARGO_TARGET_DIR` and created rustc metadata, a cache tag and an empty lock under
+the checkout's default target path. Their exact metadata-only tree was verified
+created during this run and removed; no compilation used that directory. All
+compilation used the one allocated MEDIA target. No toolchain was installed.
+All five executables, full Cargo JSON/diagnostics and 1,639 source hashes were
+frozen privately before explicit target release, with zero target handles.
+Native execution used only those copies after release.
+
+Results (all command exits 0): protocol 8, cursor 5, safe response projection 5,
+status-query 1, actual local PG resource 4, native query 3, and native correlation
+3: **29 PASS**. PostgreSQL 16.14 used only a marker/inode-owned socket directory,
+all current Concert migrations and synthetic policy explicitly confined to the
+local query/correlation tests. The latter exercise all seven parsed mutation
+contexts, atomic receipt mapping, absent/disabled migration, context rebinding and
+reset, current creation-order pagination and durable readiness. Strict private-PG
+cleanup passed. `runtime-evidence.json` records sanitized commands, outputs,
+executable hashes and limits; `runtime-source-pins.json` records exact source pins.
+
+These checks compile the real canonical/Profile/media adapters but do not execute
+the actual Auth/Friend service chain, joined Profile children, image linking,
+Gift-specific reviewed-place closure race, HTTP terminal settlement or IN02.
+Private pickup/code gates remain closed and Claim still requires root's actual
+signed trusted-network context.
+
+### Earlier baseline qualification (historical)
 
 Authored protocol tests cover all thirteen route/body shapes, authority injection,
 missing/duplicate fields, method/event/identity mismatch, strict queries, mutation
@@ -231,33 +273,33 @@ Python `ast.parse` on the new runner and `git diff --check` exit 0. The default
 stable rustfmt fails because its rustc-driver dylib is absent; the already-installed
 1.95.0 formatter succeeds. No toolchain installation or default change was made.
 
-Remaining implementation: dispatch/business orchestration, actual request-scoped
-canonical guard/settlement qualification, mandatory Gift media authority and
-public-profile assembly, wire-up of the validated cursor/response helpers, real
-PostgreSQL stock/expiry/idempotency/claim interleavings, and real owner/server-entry
-qualification. The physical-place positive path is compiled but has not received
+Remaining qualification: actual request-scoped canonical guard/settlement,
+real Gift media linking and joined public-profile assembly, SDK3 Gift-private
+prepare/recovery and root before-byte clipping, signed Claim network context,
+real PostgreSQL stock/expiry/idempotency/claim interleavings, and actual HTTP entry.
+The physical-place positive path is compiled but has not received
 a new native Gift-specific reviewed-place/closure race test in this slice.
 Mocks or isolated units will not certify live Gifts or the two-user IN02 journey.
 
 Current source additionally wraps actual SDK `GuardedAuthority` with same-connection
 `register_transaction_in` before every policy check. The SDK requires BOTH owner
 Track acknowledgements and durable confirmation before returning. Current SDK
-repeated registration is owner-idempotent; SDK-owned full-identity deduplication
-is pending, with no local PID/connection cache invented here. Exact actor/event/
+full-identity deduplication is published in SDK2 `c4ad561c` and incorporated here,
+with no local PID/connection cache invented here. Exact actor/event/
 session/request/operation/method/target/body digest and nonextended deadline are
 checked against the actual root-supplied scope. Safety cancellation applies the
 retained Safety field at receipt authorization as well as apply, preventing the
 retained generic ReadGifts callback from accidentally blocking that exact safety
-operation after feature shutdown. This adapter is not yet runtime-qualified.
+operation after feature shutdown. Actual canonical-owner execution remains unrun.
 
 Root temporary single-line module-export grant was returned after source checkpoint
 `92821595`; the registered export and actual module were subsequently compiled at
 `2590d998`. No further lib.rs changes are owned or planned by this worker.
 
-Publication reconciliation incorporates peers’ later Avatar/Bootstrap/participant-
+Earlier baseline publication reconciliation incorporated peers’ Avatar/Bootstrap/participant-
 proto changes, plus their published SELF artifacts. The native proof remains
 explicitly pinned to `2590d998`; no final-whole-tree rebuild is claimed after those
 peer merges. Gift source, retained Gift/domain/receipt/relationship code, Concert
 migrations, canonical SDK, media adapter and frozen contracts are checked unchanged
-against the frozen hashes. The next producer/runtime qualification must build its
-actual reconciled dependency tree. This checkpoint enables no route or flag.
+against those earlier frozen hashes. The newer `e9b761fb` build above qualifies its
+own reconciled dependency tree independently. This checkpoint enables no route or flag.
