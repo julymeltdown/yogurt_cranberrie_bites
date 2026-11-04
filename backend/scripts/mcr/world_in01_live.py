@@ -34,6 +34,9 @@ POST_RUNTIME_MIGRATION_ROOT = Path("/Users/lhs/Desktop/mcr-worktrees/be-media-co
 CONCERT_RUNTIME_MIGRATION_SOURCE = "efcd865121e8a8db4db482b661a878c1f56071e0"
 CONCERT_RUNTIME_MIGRATION_PATH = "backend/services/concert-service/migrations/0049_intro_native_witness.sql"
 CONCERT_RUNTIME_MIGRATION_SHA384 = "2c292352935615e7569206712ff88c001e6a64e35d32ac135b26b86999d710468492248df2a3338c08bbe2811bc05bca"
+CONCERT_NOTIFICATION_MIGRATION_SOURCE = "4394b409684d87a33eb3e4504268d395f813ff34"
+CONCERT_NOTIFICATION_MIGRATION_PATH = "backend/services/concert-service/migrations/0050_notification_target_child_intents.sql"
+CONCERT_NOTIFICATION_MIGRATION_SHA384 = "5b1d2e9830dfc946cd591e3498555fb7e2d5ffcf27242c06cae2d84c862cd33ce65ef3c0688cbd8bc78ca57caf0199d4"
 
 
 class QualificationGuard:
@@ -231,9 +234,15 @@ def qualified_runtime_migrations(manifests):
         prep.auth.require(len(raw) == 8384 and hashlib.sha384(raw).hexdigest() == CONCERT_RUNTIME_MIGRATION_SHA384,
                           "qualification-concert-runtime-source")
         concert = dict(manifests["concert-service"])
-        prep.auth.require(len(concert) in (37, 38) and (49 not in concert or concert[49] == CONCERT_RUNTIME_MIGRATION_SHA384),
+        prep.auth.require(len(concert) in (37, 38, 39) and (49 not in concert or concert[49] == CONCERT_RUNTIME_MIGRATION_SHA384)
+                          and (50 not in concert or concert[50] == CONCERT_NOTIFICATION_MIGRATION_SHA384),
                           "qualification-concert-runtime-versions")
         concert[49] = CONCERT_RUNTIME_MIGRATION_SHA384
+        raw50 = subprocess.run(["/usr/bin/git", "show", CONCERT_NOTIFICATION_MIGRATION_SOURCE + ":" + CONCERT_NOTIFICATION_MIGRATION_PATH],
+            cwd=ROOT, env={"PATH": "/usr/bin:/bin"}, capture_output=True, timeout=5, check=True).stdout
+        prep.auth.require(len(raw50) == 409 and hashlib.sha384(raw50).hexdigest() == CONCERT_NOTIFICATION_MIGRATION_SHA384,
+                          "qualification-concert-notification-runtime-source")
+        concert[50] = CONCERT_NOTIFICATION_MIGRATION_SHA384
         directory = POST_RUNTIME_MIGRATION_ROOT.parents[1] / "concert-service/migrations"
         prep.auth.require(directory.is_dir() and directory.resolve() == directory, "qualification-concert-runtime-directory")
         for path in directory.glob("*.sql"):
@@ -244,8 +253,10 @@ def qualified_runtime_migrations(manifests):
         receipt["concert_runtime_input"] = {"compiled_source_unchanged": "7cd1e900d6bd1b4994482819486c828e43736822",
             "runtime_input_source_revision": CONCERT_RUNTIME_MIGRATION_SOURCE, "runtime_input_path": CONCERT_RUNTIME_MIGRATION_PATH,
             "runtime_input_sha384": CONCERT_RUNTIME_MIGRATION_SHA384, "runtime_input_bytes": len(raw),
-            "actual_runtime_directory": str(directory), "actual_all_38_disk_checksums": "MATCH_EXPECTED",
-            "expected_migrations": 38, "expected_manifest_sha384": concert, "generic_ledger_check": "UNCHANGED_EXACT_MATCH"}
+            "notification_runtime_input": {"source_revision": CONCERT_NOTIFICATION_MIGRATION_SOURCE,
+                "path": CONCERT_NOTIFICATION_MIGRATION_PATH, "bytes": len(raw50), "sha384": CONCERT_NOTIFICATION_MIGRATION_SHA384},
+            "actual_runtime_directory": str(directory), "actual_all_39_disk_checksums": "MATCH_EXPECTED",
+            "expected_migrations": 39, "expected_manifest_sha384": concert, "generic_ledger_check": "UNCHANGED_EXACT_MATCH"}
     return bound, receipt
 
 
@@ -780,7 +791,7 @@ def main():
     parser.add_argument("--arrival-concurrency", type=int, default=4)
     parser.add_argument("--restart-world", action="store_true", help="QA05 only: restart this producer's direct Concert child")
     parser.add_argument("--qa08-provisioning-budget", choices=("signup=400,login=200",),
-                        help="QA08 only; requires separately authorized normal configuration in the resource offer")
+                        help="QA08 only: normal ephemeral test budget coordinated with Auth/runtime owners; execution needs a fresh resource offer")
     parser.add_argument("--whole-timeout-seconds", type=float, default=600)
     parser.add_argument("--whole-byte-limit", type=int, help="whole carry plus outputs cap from the fresh resource offer")
     parser.add_argument("--retained-carry-bytes", type=int, help="measured reusable cohort/source/proof carry from the fresh offer")
