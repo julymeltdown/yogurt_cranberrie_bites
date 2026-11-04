@@ -1,5 +1,5 @@
-//! Live request orchestration. Staged until coherent root/SELF generated types
-//! are consumed; no default producer or implicit startup registration.
+//! Live request orchestration over coherent root/SELF types. Compilation and
+//! native qualification remain separate from explicit product registration.
 use super::{
     auth::GrpcCanonicalAuth,
     coordinator::{ParticipantProfileJournal, ProfileTerminalOutcome},
@@ -35,6 +35,15 @@ pub trait ParticipantDeliveryPublisher: Send + Sync {
         &self,
         scope: Arc<OwnerGuardScope>,
     ) -> Result<(ResponseDelivery, ResponseScopeToken), Status>;
+}
+#[async_trait::async_trait]
+impl ParticipantDeliveryPublisher for crate::product_rpc::delivery::DeliveryPublisher {
+    async fn publish(
+        &self,
+        scope: Arc<OwnerGuardScope>,
+    ) -> Result<(ResponseDelivery, ResponseScopeToken), Status> {
+        crate::product_rpc::delivery::DeliveryPublisher::publish(self, scope).await
+    }
 }
 
 #[derive(Clone)]
@@ -127,18 +136,28 @@ impl GuardedParticipantService {
         }
         context.check()?;
         let profile = self.profile.bind(authority.clone());
-        let document = self
-            .produce(context, &auth, authority.as_ref(), &profile)
-            .await
-            .map_err(status)?;
-        validate_response(&document, context.operation())?;
-        authority.check_live(context).await.map_err(status)?;
-        auth.check(context).map_err(status)?;
-        let bytes = serde_json::to_vec(&document).map_err(|_| status(AvatarError::InvalidState))?;
+        let outcome = async {
+            let document = self
+                .produce(context, &auth, authority.as_ref(), &profile)
+                .await
+                .map_err(status)?;
+            validate_response(&document, context.operation())?;
+            authority.check_live(context).await.map_err(status)?;
+            auth.check(context).map_err(status)?;
+            serde_json::to_vec(&document).map_err(|_| status(AvatarError::InvalidState))
+        }
+        .await;
+        // Only completed work still inside the original deadline can carry an
+        // error envelope. Cancellation/timeout before this point remains unknown.
         context.check()?;
+        let (bytes, failure) = match outcome {
+            Ok(bytes) => (bytes, None),
+            Err(error) => (Vec::new(), Some(failure(error))),
+        };
         let mut response = Response::new(proto::ParticipantResponse {
             response_json: bytes,
             delivery: Some(delivery),
+            failure,
         });
         response.extensions_mut().insert(token);
         response
@@ -317,6 +336,86 @@ impl GuardedParticipantService {
         authority.check_live(context).await?;
         auth.check(context)?;
         Ok(document(snapshot, fresh.current))
+    }
+}
+
+fn failure(error: Status) -> proto::ParticipantFailure {
+    let error = crate::participant::normalize_status(error);
+    let reason = error
+        .metadata()
+        .get("x-mcr-core-reason")
+        .and_then(|value| value.to_str().ok());
+    let pair = match (error.code(), reason) {
+        (tonic::Code::InvalidArgument, Some("INVALID_INPUT")) => {
+            (tonic::Code::InvalidArgument, "INVALID_INPUT")
+        }
+        (tonic::Code::Unauthenticated, Some("AUTHENTICATION_REQUIRED")) => {
+            (tonic::Code::Unauthenticated, "AUTHENTICATION_REQUIRED")
+        }
+        (tonic::Code::PermissionDenied, Some("PERMISSION_DENIED")) => {
+            (tonic::Code::PermissionDenied, "PERMISSION_DENIED")
+        }
+        (tonic::Code::NotFound, Some("RESOURCE_UNAVAILABLE")) => {
+            (tonic::Code::NotFound, "RESOURCE_UNAVAILABLE")
+        }
+        (tonic::Code::Aborted, Some("VERSION_CONFLICT")) => {
+            (tonic::Code::Aborted, "VERSION_CONFLICT")
+        }
+        (tonic::Code::FailedPrecondition, Some("EVENT_READ_ONLY")) => {
+            (tonic::Code::FailedPrecondition, "EVENT_READ_ONLY")
+        }
+        (tonic::Code::Unavailable, Some("DEPENDENCY_UNAVAILABLE")) => {
+            (tonic::Code::Unavailable, "DEPENDENCY_UNAVAILABLE")
+        }
+        (tonic::Code::DeadlineExceeded, Some("DEADLINE_EXCEEDED")) => {
+            (tonic::Code::DeadlineExceeded, "DEADLINE_EXCEEDED")
+        }
+        _ => (tonic::Code::Internal, "INTERNAL_ERROR"),
+    };
+    proto::ParticipantFailure {
+        grpc_code: pair.0 as u32,
+        core_reason: pair.1.into(),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn delivery_failures_keep_only_closed_code_reason_pairs() {
+        for (input, expected) in [
+            (
+                status(AvatarError::Conflict),
+                (tonic::Code::Aborted, "VERSION_CONFLICT"),
+            ),
+            (
+                status(AvatarError::Denied),
+                (tonic::Code::PermissionDenied, "PERMISSION_DENIED"),
+            ),
+            (
+                Status::unavailable("private owner diagnostic"),
+                (tonic::Code::Unavailable, "DEPENDENCY_UNAVAILABLE"),
+            ),
+            (
+                Status::data_loss("private storage diagnostic"),
+                (tonic::Code::Internal, "INTERNAL_ERROR"),
+            ),
+        ] {
+            let result = failure(input);
+            assert_eq!(
+                (result.grpc_code, result.core_reason.as_str()),
+                (expected.0 as u32, expected.1)
+            );
+        }
+        let mut error = Status::aborted("private diagnostic");
+        error
+            .metadata_mut()
+            .insert("x-mcr-core-reason", "PERMISSION_DENIED".parse().unwrap());
+        let result = failure(error);
+        assert_eq!(
+            (result.grpc_code, result.core_reason.as_str()),
+            (tonic::Code::Internal as u32, "INTERNAL_ERROR")
+        );
     }
 }
 struct LocalAuthority<'a> {

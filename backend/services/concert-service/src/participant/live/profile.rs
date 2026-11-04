@@ -1,5 +1,5 @@
-//! Actual typed canonical SELF client. Staged until the SELF producer and root
-//! generation checkpoint are qualified; this file is not exported yet.
+//! Actual typed canonical SELF client. Native joined qualification is separate
+//! from compilation against the published producer and root-generated contract.
 use super::{
     coordinator::*,
     guarded::BoundParticipantAuthority,
@@ -384,4 +384,61 @@ fn terminal_reply(
         native,
         outcome,
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    type Identity = crate::adapters::out::relationship_authority::guarded::proto::TransactionIdentity;
+    fn identity(operation: Uuid) -> Identity {
+        Identity { producer: 3, system_identifier: "12345".into(), database_oid: 17, full_xid: "54321".into(), backend_pid: 18,
+            backend_started_unix_micros: 1_000_000, effect_binding_digest: vec![44;32],
+            producer_instance_id: Uuid::from_u128(19).to_string(), settlement_reference: operation.as_bytes().to_vec() }
+    }
+    #[test]
+    fn prepared_native_identity_requires_exact_effect_operation_and_canonical_numbers() {
+        let operation = Uuid::new_v4();
+        assert!(native_profile(&identity(operation), [44;32], operation).is_ok());
+        for fault in ["role", "effect", "reference", "instance", "system", "xid", "database", "pid", "started"] {
+            let mut value = identity(operation);
+            match fault {
+                "role" => value.producer = 1,
+                "effect" => value.effect_binding_digest = vec![45;32],
+                "reference" => value.settlement_reference = Uuid::new_v4().as_bytes().to_vec(),
+                "instance" => value.producer_instance_id = Uuid::nil().to_string(),
+                "system" => value.system_identifier = "+12345".into(),
+                "xid" => value.full_xid = "054321".into(),
+                "database" => value.database_oid = 0,
+                "pid" => value.backend_pid = 0,
+                "started" => value.backend_started_unix_micros = 0,
+                _ => unreachable!(),
+            }
+            assert!(native_profile(&value, [44;32], operation).is_err(), "{fault}");
+        }
+    }
+    #[test]
+    fn terminal_replies_cannot_rebind_prepared_identity_or_resolve_unknowns() {
+        let operation = Uuid::new_v4();
+        let expected = ExpectedProfileEffect { version: CanonicalProfileVersion { epoch: Uuid::from_u128(20), revision: Revision::initial() }, gid: format!("mcr_sp_{}",operation.simple()), digest: [44;32] };
+        let wire = identity(operation);
+        let (native, instance) = native_profile(&wire, expected.digest(), operation).unwrap();
+        let prepared = PreparedSelfProfile { native, instance, effect: expected.digest() };
+        let valid = proto::SelfOperationResponse { operation_id: operation.to_string(), status: proto::SelfOperationStatus::Committed as i32, transaction: Some(wire), effect_binding_digest: expected.digest().to_vec() };
+        assert!(terminal_reply(valid.clone(), operation, &expected, Some(&prepared)).unwrap().outcome() == ProfileTerminalOutcome::Committed);
+        for fault in ["operation", "effect", "transaction", "instance", "reference", "prepared", "in-progress", "unknown"] {
+            let mut reply = valid.clone();
+            match fault {
+                "operation" => reply.operation_id = Uuid::new_v4().to_string(),
+                "effect" => reply.effect_binding_digest = vec![45;32],
+                "transaction" => reply.transaction.as_mut().unwrap().full_xid = "54322".into(),
+                "instance" => reply.transaction.as_mut().unwrap().producer_instance_id = Uuid::new_v4().to_string(),
+                "reference" => reply.transaction.as_mut().unwrap().settlement_reference = Uuid::new_v4().as_bytes().to_vec(),
+                "prepared" => reply.status = proto::SelfOperationStatus::Prepared as i32,
+                "in-progress" => reply.status = proto::SelfOperationStatus::InProgress as i32,
+                "unknown" => reply.status = proto::SelfOperationStatus::Unknown as i32,
+                _ => unreachable!(),
+            }
+            assert!(terminal_reply(reply, operation, &expected, Some(&prepared)).is_err(), "{fault}");
+        }
+    }
 }

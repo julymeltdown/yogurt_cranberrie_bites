@@ -6,15 +6,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let product_proto = contracts_build::proto_root().join("concert/v1/product.proto");
     let public_profile_proto =
         contracts_build::proto_root().join("profile/v1/concert_public_profile.proto");
+    let self_profile_proto =
+        contracts_build::proto_root().join("profile/v1/concert_self_profile.proto");
     let post_concert_proto = contracts_build::proto_root().join("post/v1/concert_feed.proto");
     let protoc = protoc_bin_vendored::protoc_bin_path()?;
     unsafe {
         std::env::set_var("PROTOC", protoc);
     }
     let lease_proto = contracts_build::proto_root().join("authority/v1/lease.proto");
+    let authority_output =
+        std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("owner_authority");
+    std::fs::create_dir_all(&authority_output)?;
     tonic_prost_build::configure()
         .build_server(true)
         .build_client(true)
+        .out_dir(&authority_output)
         .compile_protos(&[lease_proto.clone()], &[contracts_build::proto_root()])?;
     println!("cargo:rerun-if-changed={}", lease_proto.display());
     tonic_prost_build::configure()
@@ -33,6 +39,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 relationship.clone(),
                 profile.clone(),
                 public_profile_proto.clone(),
+                self_profile_proto.clone(),
             ],
             &[contracts_build::proto_root()],
         )?;
@@ -40,6 +47,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("cargo:rerun-if-changed={}", world_proto.display());
     println!("cargo:rerun-if-changed={}", product_proto.display());
     println!("cargo:rerun-if-changed={}", public_profile_proto.display());
+    println!("cargo:rerun-if-changed={}", self_profile_proto.display());
     println!("cargo:rerun-if-changed={}", post_concert_proto.display());
     println!("cargo:rerun-if-changed={}", relationship.display());
     println!("cargo:rerun-if-changed={}", profile.display());

@@ -225,6 +225,8 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
             "Concert commit alone must not expose a partially committed Profile"
         );
         Ok(Response::new(proto::ParticipantResponse {
+            delivery: None,
+            failure: None,
             response_json: next.get().to_string().into_bytes(),
         }))
     }

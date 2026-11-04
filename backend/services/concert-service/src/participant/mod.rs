@@ -100,6 +100,8 @@ impl ParticipantService {
         context.check()?;
         let mut response = Response::new(proto::ParticipantResponse {
             response_json: bytes,
+            delivery: None,
+            failure: None,
         });
         response
             .metadata_mut()

@@ -169,3 +169,39 @@ refusal. These additions are NOT_RUN until the next allocated compile/native
 turn. Neither synthetic terminal metadata nor an endpoint fixture qualifies the
 actual canonical Profile producer. The SELF generated include now uses Prost's
 escaped filename `profile.self_.v1`, while the wire package stays `profile.self.v1`.
+
+## Coherent generation and typed producer checkpoint
+
+Published root `21d0ac95` and canonical SELF runtime `4e9c57e3` are consumed.
+The root owner explicitly transferred only Concert `build.rs` generation changes
+and the SDK owner transferred only `guarded/mod.rs`'s generated include. The
+canonical lease pass now writes `OUT_DIR/owner_authority`; its include matches.
+SELF generation joins the existing canonical second pass, preserving Product
+extern mapping. SELF itself imports lease and exercises the previous service-code
+overwrite condition. The pair must be qualified and published together.
+
+The typed client, service and recovery worker are now exported for compilation;
+product startup registration remains unchanged. The service delegates publication
+to the actual root DeliveryPublisher. `ParticipantResponse` adds internal delivery
+field 2 and failure field 3. Completed post-publication errors inside the original
+deadline carry only a closed gRPC-code/core-reason pair, empty response JSON, the
+same delivery capability and the same retained response token. The Gateway owner
+projects the existing public C03 error. Cancellation/timeout before an envelope
+remains quarantined; EOF alone cannot prove an unknown native transaction terminal.
+These additions are NOT_RUN until the standing allocated full compile/native turn.
+
+The external decision host/client now supports explicit private mTLS using real
+Concert/Profile workload identities and canonical owned certificate paths. Missing
+or partial mTLS configuration fails, with no downgrade. Native qualification will
+run this mode. New pure receiving checks reject noncanonical native numbers,
+foreign transaction/effect/operation/instance, and unresolved Profile statuses.
+The legacy participant integration policy assertion also now includes the additive
+Profile-only decision RPC without widening the three Gateway methods.
+
+Actual joined-driver ownership belongs to this participant chat: real Journal,
+BoundParticipantAuthority/OwnerGuardScope, typed SELF client, and actual Auth/Friend/
+Profile processes must prove commit and abort. A raw-SQL synthetic Concert decision
+cannot stand in for that driver. The independent native checkpoint below uses
+explicit Profile/eligibility fixtures only. A concrete root guard-digest/effect-
+digest conflation was reported and its owner supplied a separate source fix;
+producer-specific commit witnesses and the actual join remain open.

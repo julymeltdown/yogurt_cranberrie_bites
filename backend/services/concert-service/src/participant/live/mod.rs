@@ -4,6 +4,9 @@ pub mod auth;
 pub mod coordinator;
 pub mod decision_rpc;
 pub mod guarded;
+pub mod profile;
+pub mod recovery;
+pub mod service;
 pub mod update;
 
 #[cfg(test)]
