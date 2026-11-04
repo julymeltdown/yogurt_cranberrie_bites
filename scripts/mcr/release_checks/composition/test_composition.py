@@ -1,7 +1,9 @@
 """Synthetic parser fixtures only. No MCR acceptance, app, Cargo or devices run."""
 import copy
+import contextlib
 import hashlib
 import json
+import io
 import os
 from pathlib import Path
 import subprocess
@@ -370,10 +372,12 @@ class Composition(unittest.TestCase):
         self.run_check()
         executable = ROOT / "scripts/mcr/release_checks/check.py"
         for flags, key in [([], "source_checks"), (["--mode", "composition"], "composition_checks")]:
-            result = subprocess.run([sys.executable, "-B", str(executable), "--root", str(self.root),
-                                     "--candidate", self.sha, *flags], capture_output=True, text=True)
-            self.assertEqual(result.returncode, 2, result.stderr)
-            self.assertEqual(json.loads(result.stdout)[key], "NOT_RUN")
+            output = io.StringIO()
+            with patch.object(sys, "argv", [str(executable), "--root", str(self.root),
+                                            "--candidate", self.sha, *flags]), contextlib.redirect_stdout(output):
+                result = source.main()
+            self.assertEqual(result, 2)
+            self.assertEqual(json.loads(output.getvalue())[key], "NOT_RUN")
 
 
 if __name__ == "__main__":
