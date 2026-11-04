@@ -5,7 +5,7 @@ root = Path(__file__).resolve().parents[4]
 evidence = root / 'docs/mcr/evidence/signup-consent-admission'
 ready = json.loads((evidence / 'main-browser-ready.json').read_text())
 identifier, expires, other = sys.argv[1], datetime.datetime.fromisoformat(sys.argv[2].replace('Z', '+00:00')), int(sys.argv[3])
-assert identifier.startswith('FE10-ACTUAL-MAIN-') and expires.tzinfo is not None
+assert identifier.startswith('AUTH-JOINT-207-204-') and expires.tzinfo is not None
 assert other >= 0
 assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip() == ready['head']
 for relative, digest in ready['controllerAndSourceSha256'].items():
@@ -14,6 +14,11 @@ assert not (root / 'frontend/node_modules').exists() and not (root / 'frontend/n
 assert not Path(ready['newScratchOnly']).exists() and not (evidence / 'browser-main-01').exists()
 backend = Path(ready['pairedBackendOutput'])
 assert backend == Path('/private/tmp/mcr-enrollment207-pair-4mnomt5v')
+shared = json.loads((backend / 'acceptance.json').read_text())
+assert shared['state'] == 'ACCEPTED'
+shared_work = datetime.datetime.fromtimestamp(shared['work_stop'], datetime.timezone.utc)
+shared_accepted = shared_work - datetime.timedelta(seconds=300)
+shared_full = shared_work + datetime.timedelta(seconds=60)
 serving = json.loads((backend / 'browser-ready.json').read_text())
 assert serving['sourceRevision'] == ready['backendSource'] and serving['binarySha256'] == ready['backendBinarySha256']
 assert serving['authOnly'] is True and serving['syntheticPolicyOnly'] is True
@@ -35,8 +40,11 @@ v = os.statvfs(root); free = v.f_bavail * v.f_frsize
 assert free >= 11 * 1024**3 and free - other - ready['maxBytes'] >= 9 * 1024**3
 now = datetime.datetime.now(datetime.timezone.utc)
 assert now < expires, 'Expired offer; not accepted'
+assert now + datetime.timedelta(seconds=150) < shared_work, 'Insufficient original shared work clock; release/requeue'
+assert not subprocess.run(['lsof', '-nP', '-iTCP:3000', '-sTCP:LISTEN'], capture_output=True).stdout.strip(), 'Port3000 is occupied'
 lease = {**ready, 'id': identifier, 'accepted': True, 'acceptedAt': now.isoformat(),
-    'workDeadline': (now + datetime.timedelta(seconds=300)).isoformat(), 'hardDeadline': (now + datetime.timedelta(seconds=360)).isoformat(),
+    'sharedAcceptedAt': shared_accepted.isoformat(), 'workDeadline': shared_work.isoformat(), 'hardDeadline': shared_full.isoformat(),
+    'pairedBackendAcceptance': str(backend / 'acceptance.json'),
     'scratch': ready['newScratchOnly'], 'maxRepairRounds': 2, 'measuredFreeBytes': free, 'otherReservationsBytes': other,
     'remainingAfterReservationsBytes': free - other - ready['maxBytes'],
     'measuredWholeBytes': max(size, ready['measuredWholeBytes']), 'measuredWholeEntries': max(entries, ready['measuredWholeEntries'])}
