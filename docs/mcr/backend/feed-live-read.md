@@ -2,22 +2,24 @@
 
 Status: IN_PROGRESS. No live read acceptance is claimed.
 
-Current gate: clean 2d7f1b3a passed the two-library build, three dedicated
-callback security regressions, the Post denial regression and the actual
-five-owner PostgreSQL/mTLS Feed list component join. Guards stayed held after
-JSON assembly and settled on explicit component response completion. Gateway
-HTTP completion, actual detail/comments and remaining negative/restart coverage
-are not yet qualified. No target or PostgreSQL instance is held. Master routing
-belongs to the designated integrator; no SL/King acknowledgment is a gate.
+Current gate: clean db25c4fa passed the single Concert library-test build and
+all eight actual five-owner PostgreSQL/mTLS native cases: list, detail, comments,
+privacy, Post outage, sealed root, lost actor admission and cursor-limit tampering.
+The comments case also rejects another parent before a new Post transaction.
+Each case used its own fresh five-database cluster, verified the exact migration
+ledgers and zero prepared work, and removed its owned root. Gateway HTTP body
+completion, media/links and additional restart/concurrency coverage remain open.
+No target or PostgreSQL instance is held. Master routing belongs to the designated
+integrator; no SL/King acknowledgment is a gate.
 
 ## Objective and completion criteria
 
 BE-PUBLIC-FEED-READ delivers event-scoped post list/detail and comment reads
 through the existing Post owner store, current actor/subject/event authority and
 actual C03 public-author projection. Completion requires implementation,
-meaningful guarded/native/HTTP validation, documented evidence, committed direct
-non-force master publication, remote ancestry verification and concrete review
-fixes. Post, comment and reaction writes remain required later work.
+meaningful guarded/native/HTTP validation, documented evidence, developer branch
+publication followed by designated-integrator non-force master routing, remote
+ancestry verification and concrete review fixes. Post, comment and reaction writes remain required later work.
 
 The chat has an incompatible unfinished historical BE13/BE14 goal. It remains
 truthfully blocked; this objective does not reset or falsely complete it.
@@ -639,3 +641,67 @@ Evidence: `/private/tmp/mcr-feed-root-capture-v2-20261104/`.
   `4924f9fa32766b92ac3c9a305514f0157e63cb95b2eb0b111ad54e3556f1bc9a`.
 - Native checkpoint SHA-256:
   `0efa47fee7bec4ff6ae359322a318fd731634ad81b093af6d36ad73808045cd3`.
+
+
+## Eight actual native read and denial cases
+
+Exact clean source `db25c4fa7db65f5f20b53ee995326b00aec029d3` passed the freshly
+allocated single Concert library-test build with Rust 1.88, locked/offline jobs 2,
+dev/test debug 0 and incremental 0. Preflight recorded 9,897,947,136 free bytes,
+no Cargo/rustc processes and zero target handles. The first attempt evidenced a
+cached contracts-build helper pointing at be-social-remaining. Package-only
+cleanup removed 20 files, 816.4 KiB. The same one-library retry passed in 35.04
+seconds with zero owned Feed warnings and 11 peer World/Party warnings. There
+was no platform test target, workspace expansion, dependency install or broad
+cleanup.
+
+The Cargo-selected Concert executable, 2,449 source/resource files and compiler
+JSON were frozen outside the target. Actual lsof returned exit 1 with no handles
+or stderr; MEDIA was unconditionally released before the copied native runner.
+Free disk at release was 9,055,817,728 bytes. No target access followed release.
+
+The copied controller ran eight exact cases, each in a separately initialized
+owned PostgreSQL 16.14 five-database cluster with its own marker, inode, socket and
+PKI. Every case reports one passed, zero failed and zero ignored; the other 83
+library cases are explicitly filtered by the exact-case invocation. Aggregate:
+**eight passed, zero failed, zero ignored**. These are component cases rather
+than a claim that all library tests ran.
+
+- List returns actual Post content, current C03 author and same-transaction owner
+  tracking, with Auth/Friend/local/Profile exclusions held after C04 assembly.
+- Detail returns the actual parent and its stored comment with current authors.
+- Comments returns the current parent-bound comment and rejects a different
+  parent without another tracked Post transaction.
+- A private author is filtered only after an actual Post scan; the stored row
+  remains present, so the empty result is a current privacy decision.
+- An unavailable Post endpoint fails the whole read, rather than yielding an
+  empty page, and performs no protected Post transaction.
+- An already finished/sealed root cannot authorize a subsequent read.
+- Removing the actor's actual admission fails before protected Post work.
+- Actual Post lookahead produces an opaque cursor; changing its limit is rejected
+  before another Post transaction.
+
+Each case verifies zero prepared transactions after explicit component response
+completion and all five exact migration ledgers: Auth 17, Friend 17, Concert 24,
+Profile 9 and Post 32. Each controller stops and removes only its owned cluster.
+All eight root paths were independently checked absent after return. No target
+or PostgreSQL instance remains held. The earlier three platform callback and
+Post-denial regression receipts remain tied to their unchanged 2d7f1b3a source;
+that platform seam was already returned to the root composer.
+
+Evidence: `/private/tmp/mcr-feed-native-eight-v2-20261104/` contains frozen
+source, executable, Cargo JSON, build/handle receipts, checkpoint, native report
+and an independently verified eight-case receipt.
+
+- Native report SHA-256:
+  `f5e904b3386a34b5f4266ba6d4414b131d920c402d62bdb92d8c73bf097ce4a2`.
+- Concert executable SHA-256:
+  `b69d1442fc49c61be1ee9d533b43994c45ac6bb7a5db04a23c5ace95e50a6d49`.
+- Native checkpoint SHA-256:
+  `3fc1dab72ded00c746a8a8dd87fc07deaaaca925ab43b721bcb5120b9dc0c94b`.
+
+Actual Gateway HTTP body completion and main-process startup remain unqualified
+by this runner. Media, links, non-ALL filter authority, further concurrency and
+process/PostgreSQL restart qualification remain separate obligations. Neither
+the native component finish hook nor these passing tests enables product flags,
+legacy handlers, writes, reactions or receipts.
