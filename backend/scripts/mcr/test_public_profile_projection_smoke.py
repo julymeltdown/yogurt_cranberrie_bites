@@ -26,6 +26,16 @@ class Artifacts(unittest.TestCase):
     def test_similarly_named_foreign_artifact_cannot_replace_exact(self):
         items=self.fixtures();items[0]["target"]["name"]+="_old"
         with self.assertRaises(ValueError):smoke.select_artifacts(items)
+    def test_joined_requires_exact_lib_artifact_and_cannot_be_profile_only(self):
+        items=self.fixtures()
+        unit={"reason":"compiler-artifact","executable":"/tmp/unused-concert-unit",
+              "manifest_path":str(smoke.ROOT/"backend/services/concert-service/Cargo.toml"),
+              "target":{"name":"concert_service","kind":["lib"]},"profile":{"test":True,"debuginfo":0}}
+        self.assertEqual(set(smoke.select_artifacts(items+[unit],joined=True)),set(smoke.TARGETS)|{"concert_service"})
+        with self.assertRaises(ValueError):smoke.select_artifacts(items,joined=True)
+        with self.assertRaises(ValueError):smoke.select_artifacts(items+[unit],joined=True,profile_only=True)
+        wrong=copy.deepcopy(unit);wrong["target"]["kind"]=["test"]
+        with self.assertRaises(ValueError):smoke.select_artifacts(items+[wrong],joined=True)
     def test_source_pin_excludes_build_targets_and_private_runtime_files(self):
         pins=smoke.source_pins()
         self.assertTrue(any(p.endswith("concert_public_profile.proto") for p in pins))

@@ -398,3 +398,49 @@ Controller regressions (5), planning provenance check and `git diff --check`
 passed again, all exit 0. The intended direct non-force publication carries the
 independently qualified producer and CONTRACT_READY compiled adapter; actual
 merged build and joined response acceptance remain explicit open gates.
+
+
+### Joined core follow-up source (qualification pending)
+
+The qualified component was published non-force at
+`9119073a4dfd954798a59276ad971cc729a21c3c`; fresh fetch verified both that
+commit and `52000b75` in remote ancestry. Master advanced to `22f97715` before
+the ancestry fetch, so this is an ancestry verification, not an assertion that
+9119073a remained remote HEAD.
+
+Feed peer review found that generic PermissionDenied was mapped to skippable
+ResourceUnavailable. Follow-up `41ea9f68` reserves skippable mapping for explicit
+NotFound and makes authority denial, cancellation and transport failures fail
+the whole request. Its focused regression awaits the fresh combined build.
+The SDK owner separately owns normalization of upstream owner/child NotFound
+and true subject denial; this adapter cannot infer validity from a status alone.
+
+Own `adapters/out/public_profile/native.rs` plus `native/{capture,environment,owners}.rs`
+compose an actual signed Gateway parent, production Auth/Friend guard services,
+real Profile public RPC over mTLS, production private root ledger and actual
+local Concert prepared-child methods. The three helper source copies are from
+`owner_authority_support/{capture,environment,owners}.rs` at qualified owner
+source `3e22615eb39a8912c71c7bbcb003930cfc24f373`, published through `ea7ccaf4`.
+Each copy records its original SHA-256. Changes are crate-local references and
+the fourth exact-owned Profile database in the ownership checker. The original
+helpers remain read-only and exclusively owned by the authority developer.
+Dependencies are retained service dev-dependencies, platform, root SDK/ledger,
+SQLx, tonic, Tokio, futures, JSON and the unchanged selected avatar catalog.
+
+Two ignored native cases exercise shared viewer/author holds, repeated author
+reuse, held privacy/avatar updates through internal serialization, direct core
+terminal settlement, and actual local missing-avatar/admission/participant/block
+and private-Profile denials without fallback data. The viewer has no public
+Profile or avatar. `--joined` requires the exact debug-zero Concert lib artifact
+in addition to the two existing test artifacts. Six controller-selection
+regressions pass, exit 0. Rust/native execution of these new cases is NOT_RUN.
+
+The private cfg(test) constructor skips product release/art construction only.
+The root owner confirmed that no complete admitted product bundle currently
+exists: map engineering/source records alone do not supply admitted Bootstrap
+and ThemeManifest composition. Production `connect` remains unchanged and
+fail-closed. These core tests cannot certify product construction, approved
+map/theme art, final Gateway HTTP bytes or complete Feed/C04 routes. No positive
+GuardedSubject is fabricated. Failed native runs remain failures even if exact
+private fixture teardown rolls back known child/owner GIDs; unknown quarantine
+retains its owned root. All follow-up work remains IN_PROGRESS.

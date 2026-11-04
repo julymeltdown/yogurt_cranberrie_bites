@@ -362,3 +362,6 @@ mod tests {
         ));
     }
 }
+
+#[cfg(test)]
+mod native;
