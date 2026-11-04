@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "browser": "156.0.8078.80",
+  "widths": [
+    {
+      "width": 360,
+      "errors": [],
+      "checks": "explicit fill/erase/undo, snapshot reset, keyboard/touch, server budget, stale draft, exact original reload recovery, frozen/privacy, no overflow/44px"
+    },
+    {
+      "width": 390,
+      "errors": [],
+      "checks": "explicit fill/erase/undo, snapshot reset, keyboard/touch, server budget, stale draft, exact original reload recovery, frozen/privacy, no overflow/44px"
+    },
+    {
+      "width": 430,
+      "errors": [],
+      "checks": "explicit fill/erase/undo, snapshot reset, keyboard/touch, server budget, stale draft, exact original reload recovery, frozen/privacy, no overflow/44px"
+    }
+  ]
+}

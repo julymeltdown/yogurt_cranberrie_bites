@@ -1,0 +1,59 @@
+{
+  "id": "C04-B-WALL-PROTECTED-WIRE-BROWSER1-202611041615Z",
+  "task": "C04-B-FE-WALL-TOOLS",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T16:18:00.598408+00:00",
+  "hardDeadline": "2026-11-04T16:28:00.598408+00:00",
+  "cleanupSeconds": 60,
+  "head": "5ff1ea131a3f052b918a0abad81b40fad2dd9138",
+  "guardianSha256": "328db9119d277c404f106756d713308febc9bfe2df598d39a0195e033bfe5a0f",
+  "nativeRunnerSha256": "b151a5fb6f4dc34bfc5774b1f950443304904ce2711ca4201579419b7f0101c2",
+  "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-native-round01",
+  "maxBytes": 33554432,
+  "maxRssBytes": 2684354560,
+  "maxProcesses": 24,
+  "dependencyLink": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "files": {
+    "vitest.config.mts": "export default {\"cacheDir\": \"/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-native-round01/vite\", \"test\": {\"pool\": \"forks\", \"maxWorkers\": 1, \"fileParallelism\": false, \"passWithNoTests\": false, \"include\": [\"src/features/mural/**/*.test.{ts,tsx}\", \"src/app/mural-entry/__tests__/*.test.{ts,tsx}\"]}}\n"
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-native-round01/vitest.config.mts",
+      "--maxWorkers",
+      "1",
+      "--no-file-parallelism"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--allowImportingTsExtensions",
+      "-p",
+      "tsconfig.json",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/oxlint/bin/oxlint",
+      "src/features/mural/editor",
+      "src/features/mural/sync"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs"
+    ]
+  ],
+  "freshAvailableBytes": 17553698816,
+  "carryBytesBeforeLease": 35867,
+  "sourceDelta": "aad1d0c4 to5ff1ea13 includes BE202 literal5srequest-startcapsfreshness, existingfeature fix notscopeexpansion; no root/defaultApp/backend/C05 execution. Allfailures/carry preserved."
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "source": "contracts/fixtures/domain/wall-tools-b/tools-qualified.json",
+    "destination": "frontend/src/features/mural/sync/__tests__/wall-tools-b-wire/tools-qualified.json",
+    "sourceCommit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+    "sourceBlob": "52cbf41779bd4b17138b6a5d86d2fc6f45a19e9d",
+    "sha256": "929e6e0fbfd7c600fed6277f415a8b54a258d06d98a2fcda3e28e549a9bf8a93"
+  },
+  {
+    "source": "contracts/fixtures/domain/wall-tools-b/own-fill-256.json",
+    "destination": "frontend/src/features/mural/sync/__tests__/wall-tools-b-wire/own-fill-256.json",
+    "sourceCommit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+    "sourceBlob": "1f4395a7e5b1ccf2c0d49cd54e4c7d24ce406d30",
+    "sha256": "d21a8014938fb7d8a3fbd3a9f747d97af0c1349e79903bf935f9e29b386dba3a"
+  }
+]

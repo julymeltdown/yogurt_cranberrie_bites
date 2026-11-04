@@ -1,0 +1,6 @@
+/* Option B owns this addition; the incumbent editor.css remains unchanged. */
+.mcr-mural--tools-b .mcr-mural__tools:last-child button:last-child { position:static; }
+.mcr-mural__view-tools { display:flex; gap:4px; align-items:center; padding:3px 6px; }
+.mcr-mural__view-tools p { flex:1; min-inline-size:0; font-size:11px; }
+.mcr-mural__view-tools button { display:grid; place-items:center; flex:0 0 44px; inline-size:44px; block-size:44px; padding:11px; }
+.mcr-mural__view-tools svg { inline-size:20px; block-size:20px; }

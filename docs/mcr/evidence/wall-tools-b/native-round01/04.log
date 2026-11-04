@@ -1,0 +1,50 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toContainText(expected) failed
+
+Locator: getByRole('status', { name: 'Wall command status' })
+Expected substring: "Server confirmed"
+Received string:    "Select a pixel and color. Confirm when ready."
+Timeout: 5000ms
+
+Call log:
+  - Expect "to.have.text" with timeout 5000ms
+  - waiting for getByRole('status', { name: 'Wall command status' })
+    14 × locator resolved to <p role="status" aria-live="polite" aria-label="Wall command status">Select a pixel and color. Confirm when ready.</p>
+       - unexpected value "Select a pixel and color. Confirm when ready."
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toContainText (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs:98:26 {
+  matcherResult: {
+    name: 'toContainText',
+    expected: 'Server confirmed',
+    message: 'expect(locator).toContainText(expected) failed\n' +
+      '\n' +
+      "Locator: getByRole('status', { name: 'Wall command status' })\n" +
+      'Expected substring: "Server confirmed"\n' +
+      'Received string:    "Select a pixel and color. Confirm when ready."\n' +
+      'Timeout: 5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.have.text" with timeout 5000ms\n' +
+      "  - waiting for getByRole('status', { name: 'Wall command status' })\n" +
+      '    14 × locator resolved to <p role="status" aria-live="polite" aria-label="Wall command status">Select a pixel and color. Confirm when ready.</p>\n' +
+      '       - unexpected value "Select a pixel and color. Confirm when ready."\n',
+    pass: false,
+    actual: 'Select a pixel and color. Confirm when ready.',
+    log: [
+      '  - Expect "to.have.text" with timeout 5000ms',
+      "  - waiting for getByRole('status', { name: 'Wall command status' })",
+      '    14 × locator resolved to <p role="status" aria-live="polite" aria-label="Wall command status">Select a pixel and color. Confirm when ready.</p>',
+      '       - unexpected value "Select a pixel and color. Confirm when ready."'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- status "Wall command status": Select a pixel and color. Confirm when ready.'
+  }
+}
+
+Node.js v24.22.2

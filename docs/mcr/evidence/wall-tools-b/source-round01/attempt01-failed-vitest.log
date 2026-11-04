@@ -1,0 +1,534 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend
+
+ ❯ src/features/mural/editor/__tests__/reference-target/presentation.test.tsx (4 tests | 1 failed) 263ms
+   × unknown command recovery remains visible outside collapsed help and privacy removes canvas and previews 42ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/mural/editor/__tests__/reference-target/presentation.test.tsx > unknown command recovery remains visible outside collapsed help and privacy removes canvas and previews
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Check original command"
+
+Here are the accessible roles:
+
+  region:
+
+  Name "Wall editor":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Wall editor"[39m
+    [33mclass[39m=[32m"mcr-mural mcr-mural--tools-b"[39m
+  [36m/>[39m
+
+  Name "Wall":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"_r_7_"[39m
+    [33mclass[39m=[32m"concert-kit concert-window"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"concert-window__titlebar"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Wall":
+  [36m<h2[39m
+    [33mid[39m=[32m"_r_7_"[39m
+  [36m/>[39m
+
+  Name "THE BLACK PARADE":
+  [36m<h3[39m
+    [33mclass[39m=[32m"mcr-mural__heading"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "Mural pixel preview":
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"_r_6_-help _r_6_-keyboard"[39m
+    [33maria-label[39m=[32m"Mural pixel preview"[39m
+    [33mclass[39m=[32m"mcr-mural__surface mcr-mural__surface--pencil"[39m
+    [33mrole[39m=[32m"group"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Wall view controls":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Wall view controls"[39m
+    [33mclass[39m=[32m"mcr-mural__toolbar"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  Name "Additional wall view controls":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Additional wall view controls"[39m
+    [33mclass[39m=[32m"mcr-mural__view-tools"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  Name "Palette · color 0":
+  [36m<fieldset[39m
+    [33mclass[39m=[32m"mcr-mural__palette-frame"[39m
+  [36m/>[39m
+
+  Name "Wall palette":
+  [36m<div[39m
+    [33maria-describedby[39m=[32m"_r_6_-palette-help"[39m
+    [33maria-label[39m=[32m"Wall palette"[39m
+    [33mclass[39m=[32m"mcr-mural__palette"[39m
+    [33mrole[39m=[32m"group"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<details[39m
+    [33mclass[39m=[32m"mcr-mural__details"[39m
+  [36m/>[39m
+
+  Name "Pixel coordinates · 0–127":
+  [36m<fieldset />[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Pencil preview":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Pencil preview"[39m
+    [33maria-pressed[39m=[32m"true"[39m
+    [33mtitle[39m=[32m"Pencil preview"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Erase preview":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Erase preview"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Erase preview"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Fill preview":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Fill preview"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Fill preview"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Preview undo of my last action":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Preview undo of my last action"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Preview undo of my last action"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Zoom in":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Zoom in"[39m
+    [33mtitle[39m=[32m"Zoom in"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Zoom out":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Zoom out"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Zoom out"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Pan wall":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Pan wall"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Pan wall"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Fit wall":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Fit wall"[39m
+    [33mtitle[39m=[32m"Fit wall"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 0 #FAF6ED":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 0 #FAF6ED"[39m
+    [33maria-pressed[39m=[32m"true"[39m
+    [33mtitle[39m=[32m"Color 0 #FAF6ED"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 1 #201D1D":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 1 #201D1D"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 1 #201D1D"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 2 #A22635":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 2 #A22635"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 2 #A22635"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 3 #605952":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 3 #605952"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 3 #605952"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 4 #E5DFD4":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 4 #E5DFD4"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 4 #E5DFD4"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 5 #713B70":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 5 #713B70"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 5 #713B70"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 6 #244C69":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 6 #244C69"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 6 #244C69"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 7 #42736B":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 7 #42736B"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 7 #42736B"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 8 #7E8245":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 8 #7E8245"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 8 #7E8245"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 9 #BD8E46":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 9 #BD8E46"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 9 #BD8E46"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 10 #CF6845":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 10 #CF6845"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 10 #CF6845"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 11 #D4A2AC":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 11 #D4A2AC"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 11 #D4A2AC"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 12 #938EB0":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 12 #938EB0"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 12 #938EB0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 13 #8EBDD0":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 13 #8EBDD0"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 13 #8EBDD0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 14 #ACCB96":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 14 #ACCB96"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 14 #ACCB96"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Color 15 #FFFFFF":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Color 15 #FFFFFF"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mtitle[39m=[32m"Color 15 #FFFFFF"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Preview pixel":
+  [36m<button[39m
+    [33mtype[39m=[32m"submit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "Zoom level":
+  [36m<output[39m
+    [33maria-label[39m=[32m"Zoom level"[39m
+  [36m/>[39m
+
+  Name "Wall command status":
+  [36m<p[39m
+    [33maria-label[39m=[32m"Wall command status"[39m
+    [33maria-live[39m=[32m"polite"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"mcr-mural__sr-only"[39m
+    [33mid[39m=[32m"_r_6_-palette-help"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mid[39m=[32m"_r_6_-help"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mid[39m=[32m"_r_6_-keyboard"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  spinbutton:
+
+  Name "X":
+  [36m<input[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mmax[39m=[32m"127"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "Y":
+  [36m<input[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mmax[39m=[32m"127"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-label[39m=[32m"Wall editor"[39m
+      [33mclass[39m=[32m"mcr-mural mcr-mural--tools-b"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33maria-labelledby[39m=[32m"_r_7_"[39m
+        [33mclass[39m=[32m"concert-kit concert-window"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"concert-window__titlebar"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"concert-icon"[39m
+            [33mfill[39m=[32m"none"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-linecap[39m=[32m"square"[39m
+            [33mstroke-linejoin[39m=[32m"miter"[39m
+            [33mstroke-width[39m=[32m"2"[39m
+            [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m6 7 7-4 7 12-7 4ZM8 6l-2-3M17 4l2-2M5 11 2 13M12 18l1 4M9 20l-3 2"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m"m11 8 5 8"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [36m<h2[39m
+            [33mid[39m=[32m"_r_7_"[39m
+          [36m>[39m
+            [0mWall[0m
+          [36m</h2>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"concert-window__body"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"mcr-mural__heading"[39m
+          [36m>[39m
+            [0mTHE BLACK PARADE[0m
+          [36m</h3>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mcr-mural__workspace"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33maria-describedby[39m=[32m"_r_6_-help _r_6_-keyboard"[39m
+              [33maria-label[39m=[32m"Mural pixel preview"[39m
+              [33mclass[39m=[32m"mcr-mural__surface mcr-mural__surface--pencil"[39m
+              [33mrole[39m=[32m"group"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<canvas[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mheight[39m=[32m"564"[39m
+                [33mwidth[39m=[32m"512"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Wall view controls"[39m
+              [33mclass[39m=[32m"mcr-mural__toolbar"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mcr-mural__tools"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Pencil preview"[39m
+                  [33maria-pressed[39m=[32m"true"[39m
+                  [33mtitle[39m=[32m"Pencil preview"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mfocusable[39m=[32m"false"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"square"[39m
+                    [33mstroke-linejoin[39m=[32m"miter"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m4 15 11-11 5 5L9 20l-6 1 1-6Zm9-9 5 5M4 15l5 5"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Erase preview"[39m
+                  [33maria-pressed[39m=[32m"false"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtitle[39m=[32m"Erase preview"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mfocusable[39m=[32m"false"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"square"[39m
+                    [33mstroke-linejoin[39m=[32m"miter"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m3 14 9-10 9 8-7 8H8l-5-6Zm4-4 9 8M8 20h13"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Fill preview"[39m
+                  [33maria-pressed[39m=[32m"false"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtitle[39m=[32m"Fill preview"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mfocusable[39m=[32m"false"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"square"[39m
+                    [33mstroke-linejoin[39m=[32m"miter"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m3 12 9-9 8 8-9 9-8-8Zm9-9-2-2M4 12h15M21 15s-2 3-2 4a2 2 0 0 0 4 0c0-1-2-4-2-4Z"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Preview undo of my last action"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtitle[39m=[32m"Preview undo of my last action"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mfocusable[39m=[32m"false"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"square"[39m
+                    [33mstroke-linejoin[39m=[32m"miter"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [36m>[39m
+                    [36m<path[39m
+   ...
+ ❯ Object.getElementError ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/mural/editor/__tests__/reference-target/presentation.test.tsx:61:24
+     59|   const { container } = render(<MuralEditor controller={f.controller} …
+     60|   await act(async () => f.controller.confirm())
+     61|   const check = screen.getByRole('button', { name: 'Check original com…
+       |                        ^
+     62|   expect(check.closest('details')).toBeNull()
+     63|   expect((screen.getByRole('button', { name: 'Confirm pixel' }) as HTM…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 14 passed (15)
+      Tests  1 failed | 170 passed (171)
+   Start at  00:46:20
+   Duration  7.67s (transform 1.16s, setup 0ms, import 1.72s, tests 3.14s, environment 1.74s)
+

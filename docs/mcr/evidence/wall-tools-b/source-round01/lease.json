@@ -1,0 +1,52 @@
+{
+  "id": "C04-B-WALL-TOOLS-SOURCE-A-202611041545Z",
+  "task": "C04-B-FE-WALL-TOOLS",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T15:46:19.504976+00:00",
+  "hardDeadline": "2026-11-04T15:56:19.504976+00:00",
+  "cleanupSeconds": 60,
+  "head": "c4359321936009c42ff89a6c31f51830b4381829",
+  "guardianSha256": "ec6ebcad1fbec2021248d42fb9399c90a6de39748cbde49f57a3ffd4bf29fd64",
+  "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-source-round01",
+  "maxBytes": 33554432,
+  "maxRssBytes": 2684354560,
+  "maxProcesses": 12,
+  "dependencyLink": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "files": {
+    "vitest.config.mts": "export default {\"cacheDir\": \"/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-source-round01/vite\", \"test\": {\"pool\": \"forks\", \"maxWorkers\": 1, \"fileParallelism\": false, \"passWithNoTests\": false, \"include\": [\"src/features/mural/**/*.test.{ts,tsx}\", \"src/app/mural-entry/__tests__/*.test.{ts,tsx}\"]}}\n"
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-source-round01/vitest.config.mts",
+      "--maxWorkers",
+      "1",
+      "--no-file-parallelism"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.json",
+      "--noEmit",
+      "--incremental",
+      "--tsBuildInfoFile",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-source-round01/tsconfig.tsbuildinfo",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/oxlint/bin/oxlint",
+      "src/features/mural/editor",
+      "src/features/mural/sync"
+    ]
+  ],
+  "carry": "All wall-tools-b evidence/failures plus own scratch; no baseline reset. One untracked browser.mjs harness draft is not loaded by these tests/typecheck and was disclosed before acceptance. No public wire freeze or integrated claim."
+}

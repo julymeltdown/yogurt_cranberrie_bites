@@ -1,0 +1,28 @@
+{
+  "lease": "C04-B-WALL-PROTECTED-WIRE-BROWSER1-202611041615Z",
+  "releasedAt": 1793809204.0424519,
+  "result": "PASS",
+  "sourceHead": "5ff1ea131a3f052b918a0abad81b40fad2dd9138",
+  "vitest": "exit0;197/197 tests,17files",
+  "typecheck": "exit0;fullapp noEmit incrementalfalse allowImportingTsExtensions, no exclusions",
+  "lint": "exit0;empty output",
+  "native": "native-round02 PASS;installedChrome156.0.8078.80;360/390/430+420short;18captures;zero pageerrors",
+  "initialNativeFailure": "native-round01 preserves transient-status assertion failure; durable result assertions repaired in browser.mjs; no app source changed after source checks",
+  "peak": {
+    "bytes": 31264587,
+    "rss": 2058797056,
+    "processes": 10
+  },
+  "retainedEvidenceBytesBeforeReceipt": 1231989,
+  "liveObservedDescendants": [],
+  "dependencyLinkAbsent": true,
+  "scratchAbsent": true,
+  "port5299ReuseBind": true,
+  "freshAvailableBytes": 17341972480,
+  "allFailuresPreserved": true,
+  "limitations": [
+    "Deterministic frozen-wire HTTP fixture, not actual BE or default-App",
+    "Memory scene sink, not live Phaser/two-client IN04",
+    "Exact full target appearance not certified; authoritative fixture raster differs from target imagery; global production visual acceptance remains open."
+  ]
+}

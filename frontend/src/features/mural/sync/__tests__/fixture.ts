@@ -7,6 +7,7 @@ import { createMuralTextureSink } from '../../../../world/mural/sink'
 import type { MuralScenePort } from '../../../../world/mural/sink'
 import type { Clock, MuralAuthority, MuralAuthorityPort, MuralDelta, PublicPixel } from '../contract'
 import type { MuralCommandPort, MuralSnapshot, PixelCommand, PixelOperation } from '../../editor/contract'
+import type { WallToolPort } from '../../editor/tools'
 import { snapshot as editorSnapshot, ids as editorIds } from '../../editor/__tests__/fixture'
 export const ids = { ...editorIds, other: '00000000-0000-4000-8000-000000000005', room: '00000000-0000-4000-8000-000000000006',
   epoch: '00000000-0000-4000-8000-000000000007', stream: '00000000-0000-4000-8000-000000000008', next: '00000000-0000-4000-8000-000000000009' }
@@ -40,12 +41,13 @@ export function memoryScene() {
     object() { objects++; return { dispose() { objects-- } } }, onFrame(listener) { listeners.add(listener); return () => { listeners.delete(listener) } } }
   return { port, frame() { Array.from(listeners).forEach(f => f()) }, read: () => ({ textures, objects, uploads, listeners: listeners.size, rgba }) }
 }
-export function fixture(options: { reads?: { snapshot: () => Promise<unknown>; delta: () => Promise<unknown> }; commands?: MuralCommandPort; actor?: string } = {}) {
+export function fixture(options: { reads?: { snapshot: () => Promise<unknown>; delta: () => Promise<unknown> }; commands?: MuralCommandPort; actor?: string; tools?: WallToolPort } = {}) {
   const session = createMemorySession(), client = new QueryClient(), clock = testClock(), authority = authorityPort(), scene = memoryScene(), sink = createMuralTextureSink(scene.port)
   session.replace(0, { userId: options.actor ?? ids.user, eventId: ids.event, accessToken: 'fixture-only-memory-token' })
   const privacy = createQueryPrivacy({ client, session }), requests: { kind: string; signal: AbortSignal; command?: PixelCommand }[] = []
   let server = snapshot(), key = options.actor === ids.other ? 200 : 100
   const sync = createMuralSync({ privacy, authority, clock, sink, newKey: () => `00000000-0000-4000-8000-${String(++key).padStart(12, '0')}`,
+    ...(options.tools ? { tools: options.tools } : {}),
     reads: { snapshot: async r => { requests.push({ kind: 'snapshot', signal: r.signal }); return options.reads ? options.reads.snapshot() : structuredClone(server) },
       delta: async r => { requests.push({ kind: 'delta', signal: r.signal }); return options.reads ? options.reads.delta() : delta(r.afterRevision, []) } },
     commands: { place: async (c, s) => { requests.push({ kind: 'place', command: c, signal: s }); return options.commands ? options.commands.place(c, s) : { kind: 'unknown' } },

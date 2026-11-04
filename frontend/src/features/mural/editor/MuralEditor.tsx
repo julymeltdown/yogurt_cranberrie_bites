@@ -3,12 +3,14 @@ import type { KeyboardEvent, PointerEvent, ReactNode } from 'react'
 import type { MuralEditorController } from './controller'
 import { boundView, createPointerInput, fitView, pixelAt, zoomView } from './input'
 import type { View } from './input'
+import type { DrawingTool } from './tools'
 import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
 import './editor.css'
+import './tools-b.css'
 
 export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { controller: MuralEditorController; onRefresh?: () => void; synchronizationStatus?: ReactNode }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
-  const { snapshot, selection } = state
+  const { snapshot, selection, draft } = state
   const id = useId(), canvas = useRef<HTMLCanvasElement>(null), surface = useRef<HTMLDivElement>(null)
   const [view, setView] = useState<View>(fitView), [size, setSize] = useState(256), [height, setHeight] = useState(281.6), [, tick] = useState(0)
   const viewRef = useRef(view), sizeRef = useRef(size), heightRef = useRef(height)
@@ -22,8 +24,12 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
     const old = viewRef.current, next = zoomView(old, zoom, sizeRef.current), factor = next.zoom / old.zoom
     return boundViewport({ ...next, y: heightRef.current / 2 - (heightRef.current / 2 - old.y) * factor })
   }
-  const [tool, setTool] = useState<'pencil' | 'pan'>('pencil'), toolRef = useRef(tool)
-  const chooseTool = (next: 'pencil' | 'pan') => { input.cancel(); toolRef.current = next; setTool(next) }
+  const [tool, setTool] = useState<DrawingTool | 'pan'>('pencil'), toolRef = useRef(tool)
+  const chooseTool = (next: DrawingTool | 'pan') => {
+    input.cancel()
+    if (next !== 'pan' && !controller.chooseTool(next)) return
+    toolRef.current = next; setTool(next)
+  }
   const updateView = (next: View) => { viewRef.current = next; setView(next) }
   const [x, setX] = useState('0'), [y, setY] = useState('0'), [invalid, setInvalid] = useState(false)
   const input = useMemo(() => createPointerInput({ cancel: () => controller.cancelSelection(),
@@ -31,7 +37,7 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
       const next = boundViewport({ ...viewRef.current, x: viewRef.current.x + delta.x, y: viewRef.current.y + delta.y })
       viewRef.current = next; setView(next)
     },
-    select: point => { const pixel = pixelAt(point, viewRef.current, sizeRef.current); if (pixel && toolRef.current === 'pencil') controller.select(pixel.x, pixel.y) },
+    select: point => { const pixel = pixelAt(point, viewRef.current, sizeRef.current); if (pixel && toolRef.current !== 'pan') controller.select(pixel.x, pixel.y) },
   }), [controller])
   const hasSnapshot = snapshot !== null
   useEffect(() => {
@@ -49,11 +55,12 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
   }, [hasSnapshot])
   useEffect(() => {
     const cancel = () => input.cancel()
-    const hidden = () => { if (document.hidden) cancel() }
+    const hidden = () => { if (document.hidden) cancel(); controller.setVisible(!document.hidden) }
+    hidden()
     window.addEventListener('blur', cancel)
     document.addEventListener('visibilitychange', hidden)
     return () => { window.removeEventListener('blur', cancel); document.removeEventListener('visibilitychange', hidden); input.cancel() }
-  }, [input])
+  }, [input, controller])
   useEffect(() => {
     const timer = window.setInterval(() => tick(n => n + 1), 250)
     return () => window.clearInterval(timer)
@@ -63,8 +70,8 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
       input.cancel(); setX('0'); setY('0'); setInvalid(false)
       toolRef.current = 'pan'; setTool('pan')
       const next = boundViewport(fitView()); viewRef.current = next; setView(next)
-    } else { toolRef.current = 'pencil'; setTool('pencil') }
-  }, [controller, input, hasSnapshot, state.availability, snapshot?.state])
+    } else { controller.chooseTool('pencil'); toolRef.current = 'pencil'; setTool('pencil') }
+  }, [controller, input, hasSnapshot, state.availability, state.toolStatus, snapshot?.state])
   useEffect(() => { if (selection) { setX(String(selection.x)); setY(String(selection.y)); setInvalid(false) } }, [selection])
   // The offscreen raster is bounded at 128², with no image URLs, bitmaps, workers, or per-pixel DOM.
   const raster = useMemo(() => {
@@ -99,13 +106,16 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
       context.stroke()
     }
     if (selection) {
-      const left = view.x + selection.x * cell, top = view.y + selection.y * cell
+      const cells = draft ? draft.cells : [selection.y * 128 + selection.x]
       context.fillStyle = snapshot.palette[selection.color_index]!
-      context.globalAlpha = 0.6; context.fillRect(left, top, cell, cell); context.globalAlpha = 1
+      context.globalAlpha = 0.6
+      for (const index of cells) context.fillRect(view.x + index % 128 * cell, view.y + Math.floor(index / 128) * cell, cell, cell)
+      context.globalAlpha = 1
+      const left = view.x + selection.x * cell, top = view.y + selection.y * cell
       context.strokeStyle = '#FFFFFF'; context.lineWidth = 4; context.strokeRect(left - 1, top - 1, cell + 2, cell + 2)
       context.strokeStyle = '#000000'; context.lineWidth = 2; context.setLineDash([3, 2]); context.strokeRect(left - 1, top - 1, cell + 2, cell + 2); context.setLineDash([])
     }
-  }, [raster, snapshot, view, selection, size, height])
+  }, [raster, snapshot, view, selection, draft, size, height])
   const point = (event: PointerEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
     return { x: event.clientX - rect.left, y: event.clientY - rect.top }
@@ -129,8 +139,11 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
   }
   const cooldown = Math.ceil(controller.remaining() / 1000)
   const busy = state.phase === 'sending' || state.phase === 'checking'
-  const recovery = !!state.command || state.availability !== 'writable' || snapshot?.state !== 'EDITABLE'
-  return <section className="mcr-mural" aria-label="Wall editor"><ConcertWindow title="Wall" icon="wall">
+  const unresolved = !!state.command || !!state.action
+  const recovery = unresolved || state.availability !== 'writable' || snapshot?.state !== 'EDITABLE'
+  const confirmLabel = draft?.operation === 'fill' ? 'Confirm fill' : draft?.operation === 'erase' ? 'Confirm erase' : draft?.operation === 'undo' ? 'Confirm undo' : 'Confirm pixel'
+  const refresh = () => { onRefresh?.(); void controller.refreshTools() }
+  return <section className="mcr-mural mcr-mural--tools-b" aria-label="Wall editor"><ConcertWindow title="Wall" icon="wall">
     {snapshot && <>
       <h3 className="mcr-mural__heading">THE BLACK PARADE</h3>
       <div className="mcr-mural__workspace">
@@ -143,14 +156,15 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
         </div>
         <div className="mcr-mural__toolbar" role="group" aria-label="Wall view controls">
           <div className="mcr-mural__tools">
-            <button type="button" aria-label="Pencil preview" title="Pencil preview" aria-pressed={tool === 'pencil'} disabled={!controller.canEdit()} onClick={() => chooseTool('pencil')}><ToolIcon name="pencil" /></button>
-            <button type="button" aria-label="Pan wall" title="Pan wall" aria-pressed={tool === 'pan'} onClick={() => chooseTool('pan')}><ToolIcon name="pan" /></button>
+            <button type="button" aria-label="Pencil preview" title="Pencil preview" aria-pressed={tool === 'pencil'} disabled={!controller.canUseTool('pencil')} onClick={() => chooseTool('pencil')}><ToolIcon name="pencil" /></button>
+            <button type="button" aria-label="Erase preview" title="Erase preview" aria-pressed={tool === 'erase'} disabled={!controller.canUseTool('erase')} onClick={() => chooseTool('erase')}><ToolIcon name="erase" /></button>
+            <button type="button" aria-label="Fill preview" title="Fill preview" aria-pressed={tool === 'fill'} disabled={!controller.canUseTool('fill')} onClick={() => chooseTool('fill')}><ToolIcon name="fill" /></button>
+            <button type="button" aria-label="Preview undo of my last action" title="Preview undo of my last action" disabled={!controller.canUseTool('undo')} onClick={() => { input.cancel(); controller.previewUndo() }}><ToolIcon name="undo" /></button>
           </div>
           <div className="mcr-mural__tools">
             <output aria-label="Zoom level">{view.zoom}×</output>
             <button type="button" aria-label="Zoom in" title="Zoom in" onClick={() => { input.cancel(); updateView(zoomViewport(view.zoom * 2)) }} disabled={view.zoom >= 8}><ToolIcon name="plus" /></button>
             <button type="button" aria-label="Zoom out" title="Zoom out" onClick={() => { input.cancel(); updateView(zoomViewport(view.zoom / 2)) }} disabled={view.zoom <= 1}><ToolIcon name="minus" /></button>
-            <button type="button" aria-label="Fit wall" title="Fit wall" onClick={() => { input.cancel(); updateView(boundViewport(fitView())) }}><ToolIcon name="fit" /></button>
           </div>
         </div>
       </div>
@@ -165,21 +179,28 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
         </div>
       </fieldset>
       <p id={`${id}-palette-help`} className="mcr-mural__sr-only">{snapshot.palette.length} server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.</p>
-      {(selection || state.command) && <div className="mcr-mural__preview" aria-label="Selection preview">
-        <div><strong>PREVIEW ONLY</strong><p>{selection ? `Pixel (${selection.x}, ${selection.y}) · color ${selection.color_index}` : 'No pixel selected.'}</p>
+      <div className="mcr-mural__view-tools" role="group" aria-label="Additional wall view controls">
+        <p>{state.toolContext ? `${state.toolContext.budget.remaining} / 512 changed cells available · shared across all tools and tabs` : state.toolStatus === 'loading' ? 'Checking server tools…' : 'Additional tools unavailable until verified by the server.'}</p>
+        <button type="button" aria-label="Pan wall" title="Pan wall" aria-pressed={tool === 'pan'} onClick={() => chooseTool('pan')}><ToolIcon name="pan" /></button>
+        <button type="button" aria-label="Fit wall" title="Fit wall" onClick={() => { input.cancel(); updateView(boundViewport(fitView())) }}><ToolIcon name="fit" /></button>
+      </div>
+      {(selection || draft || unresolved) && <div className="mcr-mural__preview" aria-label="Selection preview">
+        <div><strong>PREVIEW ONLY</strong><p>{draft ? `${draft.operation.toUpperCase()} · ${draft.count} changed ${draft.count === 1 ? 'cell' : 'cells'} · revision ${draft.revision}`
+          : selection ? `Pixel (${selection.x}, ${selection.y}) · color ${selection.color_index}` : 'Original command unresolved.'}</p>
+          {draft?.operation === 'undo' && <p>Your latest eligible action only. Any newer global revision prevents undo.</p>}
           {selection && <p>Confirmed color: {snapshot.pixels[selection.y * 128 + selection.x]}.</p>}</div>
-        <ConcertAction className="mcr-mural__confirm" pending={state.phase === 'sending'} disabled={!controller.canConfirm()} onClick={() => void controller.confirm()}>Confirm pixel</ConcertAction>
-        <button type="button" aria-label="Cancel preview" title="Cancel preview" disabled={!selection || busy} onClick={() => controller.cancelSelection()}><span aria-hidden="true">×</span></button>
+        <ConcertAction className="mcr-mural__confirm" pending={state.phase === 'sending'} disabled={!controller.canConfirm()} onClick={() => void controller.confirm()}>{confirmLabel}</ConcertAction>
+        <button type="button" aria-label="Cancel preview" title="Cancel preview" disabled={!(selection || draft) || busy} onClick={() => controller.cancelSelection()}><span aria-hidden="true">×</span></button>
       </div>}
     </>}
     <div className="mcr-mural__meta"><span>{snapshot ? `REV ${snapshot.revision} · ${snapshot.state}` : 'No confirmed wall'}</span>
-      <span>{state.command ? 'Placement unresolved' : state.availability !== 'writable' ? state.availability : cooldown > 0 ? `Cooldown: ${cooldown}s` : snapshot ? `${snapshot.palette.length} colors · scroll →` : 'Loading'}</span></div>
+      <span>{unresolved ? 'Command unresolved' : state.availability !== 'writable' ? state.availability : cooldown > 0 ? `Cooldown: ${cooldown}s` : snapshot ? `${snapshot.palette.length} colors · scroll →` : 'Loading'}</span></div>
     <div className="mcr-mural__status"><p role="status" aria-label="Wall command status" aria-live="polite">{state.message}</p>{synchronizationStatus}</div>
-    {recovery && <div className="mcr-mural__recovery">{state.command && <button type="button" disabled={busy} onClick={() => void controller.check()}>Check original command</button>}
-      {onRefresh && <button type="button" disabled={busy} onClick={onRefresh}>Refresh confirmed wall</button>}</div>}
+    {recovery && <div className="mcr-mural__recovery">{unresolved && <button type="button" disabled={busy} onClick={() => void controller.check()}>Check original command</button>}
+      {onRefresh && <button type="button" disabled={busy} onClick={refresh}>Refresh confirmed wall</button>}</div>}
     {snapshot && <details className="mcr-mural__details"><summary>Coordinates &amp; help</summary>
-      <p id={`${id}-help`}>This wall is {snapshot.width} × {snapshot.height} pixels. Pencil previews one pixel; drag to pan. Pan mode never selects. Only Confirm pixel sends a placement.</p>
-      <p id={`${id}-keyboard`}>In Pencil mode, arrow keys select a pixel. In Pan mode, arrow keys move the view. Escape cancels. Coordinates work without the canvas.</p>
+      <p id={`${id}-help`}>This wall is {snapshot.width} × {snapshot.height} pixels. Every cell stays opaque. Pencil and erase preview one cell. Fill previews a four-connected region of at most 256 changed cells. Dragging pans. Only explicit confirmation sends an action.</p>
+      <p id={`${id}-keyboard`}>In a drawing tool, arrow keys select a pixel. In Pan mode, arrow keys move the view. Escape cancels the preview, never an original command. Coordinates work without the canvas.</p>
       <fieldset disabled={!controller.canEdit()}><legend>Pixel coordinates · 0–127</legend>
         <form className="mcr-mural__coordinates" onSubmit={e => { e.preventDefault();
           const valid = /^\d{1,3}$/.test(x) && /^\d{1,3}$/.test(y) && Number(x) <= 127 && Number(y) <= 127
@@ -191,15 +212,18 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
         </form>
         {invalid && <p role="alert">Use whole coordinates from 0 to 127.</p>}
       </fieldset>
-      <p>The server decides cooldown and region permissions. Completed pixels cannot be undone here.</p>
-      {!recovery && onRefresh && <button type="button" disabled={busy} onClick={onRefresh}>Refresh confirmed wall</button>}
+      <p>The server decides every capability, region permission and cooldown. The 512-cell budget rolls over 10 minutes and includes undo; undo never refunds it. Erase uses the server-qualified opaque background color. Undo is limited to your latest eligible action within 10 minutes and requires an unchanged global revision.</p>
+      {!recovery && onRefresh && <button type="button" disabled={busy} onClick={refresh}>Refresh confirmed wall</button>}
     </details>}
   </ConcertWindow></section>
 }
 
-function ToolIcon({ name }: { name: 'pencil' | 'pan' | 'plus' | 'minus' | 'fit' }) {
+function ToolIcon({ name }: { name: 'pencil' | 'erase' | 'fill' | 'undo' | 'pan' | 'plus' | 'minus' | 'fit' }) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true" focusable="false">
     {name === 'pencil' ? <path d="m4 15 11-11 5 5L9 20l-6 1 1-6Zm9-9 5 5M4 15l5 5" />
+      : name === 'erase' ? <path d="m3 14 9-10 9 8-7 8H8l-5-6Zm4-4 9 8M8 20h13" />
+      : name === 'fill' ? <><path d="m3 12 9-9 8 8-9 9-8-8Zm9-9-2-2M4 12h15M21 15s-2 3-2 4a2 2 0 0 0 4 0c0-1-2-4-2-4Z" /></>
+      : name === 'undo' ? <path d="M8 4 2 10l6 6M3 10h11a7 7 0 0 1 0 14" />
       : name === 'pan' ? <><path d="M8 13V5a2 2 0 0 1 4 0v7-9a2 2 0 0 1 4 0v9-6a2 2 0 0 1 4 0v10c0 5-3 6-7 6-3 0-5-2-7-5l-3-4c-1-2 1-4 3-2l2 2Z" /></>
       : name === 'plus' ? <path d="M12 4v16M4 12h16" /> : name === 'minus' ? <path d="M4 12h16" />
       : <path d="M3 9V3h6M15 3h6v6M21 15v6h-6M9 21H3v-6M8 8h8v8H8Z" />}

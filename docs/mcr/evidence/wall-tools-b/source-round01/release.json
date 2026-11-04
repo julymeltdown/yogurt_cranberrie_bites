@@ -1,0 +1,19 @@
+{
+  "lease": "C04-B-WALL-TOOLS-SOURCE-A-202611041545Z",
+  "releasedAt": 1793807466.9382222,
+  "result": "PARTIAL",
+  "vitest": "171/171 pass",
+  "typecheck": "exit2; only incumbent feed-entry vite.config.ts:4 TS5097 remains",
+  "lint": "src/features/mural/editor/__tests__/wall-tools-b/fixture.ts:18:36: warning unicorn(no-new-array): Do not use `new Array(singleArgument)`. help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.\nsrc/features/mural/editor/__tests__/wall-tools-b/tools.test.ts:7:36: warning unicorn(no-new-array): Do not use `new Array(singleArgument)`. help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.\n",
+  "peak": {
+    "bytes": 19786240,
+    "rss": 1540718592,
+    "processes": 5
+  },
+  "retainedEvidenceBytes": 33194,
+  "liveObservedDescendants": [],
+  "dependencyLinkAbsent": true,
+  "scratchAbsent": true,
+  "failuresPreserved": true,
+  "sourceFixes": "Idempotent same-tool selection preserves incumbent preview at mount; recover original action without breaking discriminated union; remove unused schema local."
+}

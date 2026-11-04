@@ -5,6 +5,8 @@ import { bindingSchema, clock as defaultClock, matchesPixel, sameBinding, sameSc
 import type { Clock, MuralAuthorityPort, MuralBinding, MuralReadLease, MuralReadPort } from './contract'
 import { createMuralProjection } from './projection'
 import type { MuralSink } from '../../../world/mural/sink'
+import { matchActionReceipt } from '../editor/tools'
+import type { WallActionCommand, WallToolPort } from '../editor/tools'
 
 export interface MuralSyncState {
   readonly phase: 'idle' | 'loading' | 'ready' | 'gap' | 'unavailable' | 'error' | 'disposed'
@@ -13,8 +15,9 @@ export interface MuralSyncState {
   readonly problem: 'authority' | 'snapshot' | 'delta' | 'gap' | 'reset' | 'overflow' | 'timeout' | 'sink' | null
 }
 /** One shell-owned mural consumer; HTTP polling uses the incumbent world's authority, never a second socket. */
-export function createMuralSync({ privacy, authority, reads, commands, sink, clock = defaultClock, pollMs = 2000, gapMs = 200, timeoutMs = 8000, newKey }: {
+export function createMuralSync({ privacy, authority, reads, commands, tools, sink, clock = defaultClock, pollMs = 2000, gapMs = 200, timeoutMs = 8000, newKey }: {
   privacy: PrivacyPort; authority: MuralAuthorityPort; reads: MuralReadPort; commands: MuralCommandPort; sink: MuralSink
+  tools?: WallToolPort
   clock?: Clock; pollMs?: number; gapMs?: number; timeoutMs?: number; newKey?: () => string
 }) {
   if (![pollMs, gapMs, timeoutMs].every(Number.isInteger) || pollMs < 1000 || pollMs > 60000 || gapMs < 1 || gapMs > 1000 || timeoutMs < 1 || timeoutMs > 60000) throw new Error('Invalid mural timing')
@@ -43,7 +46,18 @@ export function createMuralSync({ privacy, authority, reads, commands, sink, clo
     place: (command, signal) => runCommand(command, signal, false),
     check: (command, signal) => runCommand(command, signal, true),
   }
-  const editor = createMuralEditor({ privacy, commands: commandPort, now: clock.now, ...(newKey ? { newKey } : {}) })
+  const toolPort: WallToolPort | undefined = tools ? {
+    async load(expected, signal) {
+      const candidate = lease()
+      if (!valid(candidate) || !sameScope(expected, scope) || signal.aborted) throw new Error('Mural tool authority unavailable')
+      const context = await tools.load(expected, signal)
+      if (!valid(candidate) || signal.aborted) throw new Error('Mural tool authority changed')
+      return context
+    },
+    submit: (command, signal) => runToolCommand(command, signal, false),
+    check: (command, signal) => runToolCommand(command, signal, true),
+  } : undefined
+  const editor = createMuralEditor({ privacy, commands: commandPort, ...(toolPort ? { tools: toolPort, toolTimers: clock } : {}), now: clock.now, ...(newKey ? { newKey } : {}) })
   function withdraw() {
     projection.invalidate(); lastSnapshot = ''
     // FE32's closed DTO boundary atomically removes the confirmed raster while retaining unknown commands.
@@ -146,6 +160,20 @@ export function createMuralSync({ privacy, authority, reads, commands, sink, clo
       if (!p) return { kind: 'unknown' as const }
       if (projection.own(p)) { serverAnchor = Math.max(serverAnchor + Math.max(0, clock.now() - localAnchor), Date.parse(p.committed_at)); localAnchor = clock.now(); render() }
       else { projection.invalidate(); void refresh(true) }
+    }
+    return response
+  }
+  async function runToolCommand(command: WallActionCommand, signal: AbortSignal, check: boolean) {
+    const candidate = lease()
+    if (!tools || !valid(candidate) || !sameScope(command.scope, scope) || signal.aborted
+      || !check && (phase !== 'ready' || !writable)) return { kind: 'unknown' as const }
+    const response = await (check ? tools.check(command, signal) : tools.submit(command, signal))
+    if (!valid(candidate) || signal.aborted) return { kind: 'unknown' as const }
+    if (response.kind === 'acknowledged') {
+      if (!matchActionReceipt(response.receipt, command)) return { kind: 'unknown' as const }
+      // Action receipts are never projected as fabricated single-pixel deltas.
+      // All B actions cross the existing reset/snapshot/world-sink boundary.
+      projection.invalidate(); void refresh(true)
     }
     return response
   }

@@ -1,0 +1,8 @@
+{
+  "sourceCommit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+  "sourceBlob": "69546e8f5ddf0dc4fc7e0acd6c0980646bfe2ad5",
+  "sha256": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+  "destination": "frontend/src/shared/api/domain-operations.generated.ts",
+  "authorization": "Root153 exact dependency-import grant; BE202 retains sole generated-registry authorship. No regeneration or whole backend commit import.",
+  "runtimeStatus": "NOT_RUN"
+}

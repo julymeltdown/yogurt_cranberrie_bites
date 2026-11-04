@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend
+
+
+ Test Files  15 passed (15)
+      Tests  171 passed (171)
+   Start at  00:49:44
+   Duration  7.84s (transform 1.26s, setup 0ms, import 1.89s, tests 3.14s, environment 1.74s)
+

@@ -1,0 +1,27 @@
+{
+  "id": "FE204-FAILED-RECEIPT-NATIVE-DIRECT-202611041654Z",
+  "task": "C04-B-FE-WALL-TOOLS",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T16:53:51.650919+00:00",
+  "hardDeadline": "2026-11-04T16:59:51.650919+00:00",
+  "cleanupSeconds": 60,
+  "head": "2645b579abae1097327b84452fdde3381f50f7e7",
+  "guardianSha256": "d09c534f3a281d88aa4cc23c0da7a9dd82e0900035ba3f1662507f9fded5a45a",
+  "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-corrective-native-round01",
+  "maxBytes": 33554432,
+  "maxRssBytes": 2684354560,
+  "maxProcesses": 24,
+  "gitCarryBytes": 1917025,
+  "dependencyLink": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "freshAvailableBytes": 29309644800,
+  "carryEvidenceBytes": 1244555,
+  "files": {},
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs"
+    ]
+  ],
+  "nativeRunnerSha256": "9886f4d65be4e9f03ef27060b9bbbedbd80fd377417eb23ed86b4706b129edae"
+}

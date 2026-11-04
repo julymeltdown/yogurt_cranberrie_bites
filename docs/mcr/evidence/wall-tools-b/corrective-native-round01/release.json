@@ -1,0 +1,18 @@
+{
+  "status": "FULL",
+  "releasedAt": "2026-11-04T16:54:37.038027+00:00",
+  "head": "2645b579abae1097327b84452fdde3381f50f7e7",
+  "result": "PASS",
+  "journey": "390px POST409 -> PENDING retains original -> verified FAILED retires attempt -> different key/operation/body GET recovery -> authoritative snapshot; one local POST",
+  "peak": {
+    "bytes": 32483316,
+    "rss": 1892646912,
+    "processes": 10
+  },
+  "observedPidsRemaining": [],
+  "dependencyLinkAbsent": true,
+  "scratchAbsent": true,
+  "port5299ListenerAbsent": true,
+  "port5299ReuseBind": "PASS",
+  "freeBytes": 29119287296
+}

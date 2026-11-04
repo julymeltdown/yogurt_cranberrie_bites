@@ -1,0 +1,20 @@
+{
+  "status": "FULL",
+  "releasedAt": "2026-11-04T16:52:38.972743+00:00",
+  "head": "2645b579abae1097327b84452fdde3381f50f7e7",
+  "checks": {
+    "parentSuites": "39/39 across2 files",
+    "fullTypeScript": 0,
+    "scopedLint": 0,
+    "browserSyntax": 0
+  },
+  "peak": {
+    "bytes": 4523875,
+    "rss": 1525694464,
+    "processes": 4
+  },
+  "observedPidsRemaining": [],
+  "dependencyLinkAbsent": true,
+  "scratchAbsent": true,
+  "freeBytes": 29300813824
+}

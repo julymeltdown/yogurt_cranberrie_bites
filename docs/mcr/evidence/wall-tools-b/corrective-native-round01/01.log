@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "browser": "156.0.8078.80",
+  "widths": [
+    {
+      "width": 390,
+      "errors": [],
+      "checks": "ambiguous POST/pending retention, terminal FAILED-receipt retirement, different original key/operation/body GET recovery, one local POST, authoritative reset, no overflow/44px"
+    }
+  ]
+}

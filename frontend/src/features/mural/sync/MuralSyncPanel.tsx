@@ -12,6 +12,8 @@ export function MuralSyncPanel({ sync }: { sync: MuralSyncController }) {
       : 'Wall synchronization unavailable. Reconnect the world and refresh before editing.'}</p>
     {editor.command && <p role="status" aria-label="Original placement status">{editor.phase === 'sending' || editor.phase === 'checking'
       ? 'Waiting for the original placement result.' : 'Original placement unresolved. Check its status; no new placement or automatic replay is allowed.'}</p>}
+    {editor.action && <p role="status" aria-label="Original wall action status">{editor.phase === 'sending' || editor.phase === 'checking'
+      ? 'Waiting for the original action result.' : 'Original action unresolved. Check its status; no new action or automatic replay is allowed.'}</p>}
     </>} />
   </div>
 }

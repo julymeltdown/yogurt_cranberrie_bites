@@ -1,0 +1,4 @@
+{"time": 1793811255.9645078, "lease": "FE204-FAILED-RECEIPT-NATIVE-DIRECT-202611041654Z", "head": "2645b579abae1097327b84452fdde3381f50f7e7", "guardianPid": 89002, "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-corrective-native-round01", "status": "accepted"}
+{"time": 1793811255.967107, "stage": 1, "argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs"], "pid": 89082, "status": "started"}
+{"time": 1793811258.391417, "stage": 1, "exit": 0, "status": "finished"}
+{"time": 1793811258.403842, "status": "released", "peak": {"bytes": 32483316, "rss": 1892646912, "processes": 10}, "observedPids": [89082, 89083, 89099, 89101, 89129, 89130, 89135, 89142, 89200, 89202, 89203, 89212, 89290, 89304, 89317, 89325], "dependencyLinkRemoved": true}

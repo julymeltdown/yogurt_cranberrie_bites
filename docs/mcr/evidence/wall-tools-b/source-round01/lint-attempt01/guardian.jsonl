@@ -1,0 +1,4 @@
+{"time": 1793807451.577795, "lease": "C04-B-WALL-TOOLS-SOURCE-A-202611041545Z", "head": "c4359321936009c42ff89a6c31f51830b4381829", "guardianPid": 51883, "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-source-round01", "status": "accepted"}
+{"time": 1793807451.5816162, "stage": 1, "argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/oxlint/bin/oxlint", "src/features/mural/editor", "src/features/mural/sync"], "pid": 51964, "status": "started"}
+{"time": 1793807451.896563, "stage": 1, "exit": 0, "status": "finished"}
+{"time": 1793807451.9019048, "status": "released", "peak": {"bytes": 32192, "rss": 25755648, "processes": 3}, "observedPids": [51964, 51965], "dependencyLinkRemoved": true}

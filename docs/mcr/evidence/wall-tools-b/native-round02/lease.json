@@ -1,0 +1,33 @@
+{
+  "id": "C04-B-WALL-PROTECTED-WIRE-BROWSER1-202611041615Z",
+  "task": "C04-B-FE-WALL-TOOLS",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T16:18:00.598408+00:00",
+  "hardDeadline": "2026-11-04T16:28:00.598408+00:00",
+  "cleanupSeconds": 60,
+  "head": "5ff1ea131a3f052b918a0abad81b40fad2dd9138",
+  "guardianSha256": "328db9119d277c404f106756d713308febc9bfe2df598d39a0195e033bfe5a0f",
+  "nativeRunnerSha256": "3c7110e7fee706c8e9d1fc5a2d71c8e9a81924333064122328db5719b961e057",
+  "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-native-round01",
+  "maxBytes": 33554432,
+  "maxRssBytes": 2684354560,
+  "maxProcesses": 24,
+  "dependencyLink": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "files": {},
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/oxlint/bin/oxlint",
+      "src/features/mural/editor",
+      "src/features/mural/sync"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs"
+    ]
+  ],
+  "freshAvailableBytes": 17553698816,
+  "carryBytesBeforeLease": 35867,
+  "sourceDelta": "Same original acceptedclock/caps;197tests/fulltypes/lintPASS. Harness onlyrepair tests durablephase+originalcleared+snapshotrevision+onePOST insteadtransientstatuscopy. Allnative-round01failures/captures/logsretained. No clock/baseline reset."
+}

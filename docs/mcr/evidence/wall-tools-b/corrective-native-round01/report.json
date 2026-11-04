@@ -1,0 +1,38 @@
+{
+  "result": "PASS",
+  "candidate": "2645b579abae1097327b84452fdde3381f50f7e7",
+  "scope": "Changed production editor/sync/tools-http, shared protected transport and incumbent world sink against a deterministic HTTP fixture using the frozen C04 wire. No actual BE, full production composition, physical-device or live IN04 claim.",
+  "widths": [
+    {
+      "width": 390,
+      "errors": [],
+      "checks": "ambiguous POST/pending retention, terminal FAILED-receipt retirement, different original key/operation/body GET recovery, one local POST, authoritative reset, no overflow/44px"
+    }
+  ],
+  "sourceHashes": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447",
+    "frontend/src/features/mural/editor/controller.ts": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795",
+    "frontend/src/features/mural/editor/tools.ts": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c",
+    "frontend/src/features/mural/editor/tools-b.css": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71",
+    "frontend/src/features/mural/editor/editor.css": "b8bb2cb3c4e12a9719742c2636a035473f9b521531ffad70ff4626fcb98dbfea",
+    "frontend/src/features/mural/editor/input.ts": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+    "frontend/src/features/mural/sync/controller.ts": "67a4a15cec45cbd43d334c0c338cb87eba19b8820eb7685c0ddfa623f7be4fac",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "48b9eea42bfe30ba21ad7eeda9bca47bb7a0d36f2ddd59863cd6396d73f6492b",
+    "frontend/src/features/mural/sync/tools-http.ts": "ba77893b3ce635d7e10e6731660ed4fd01d4580b83c6d89f3bc763937217e6e5",
+    "frontend/src/features/mural/sync/http.ts": "737d8b55542c772f7b9631c092fb529bd3d4d41d4bbb16b67cb65a8fa9dc71ed",
+    "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx": "fb1eb455afdee326d43dba0557ddeef603e415cbac81a63884a2658ac2431aa8",
+    "frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs": "9886f4d65be4e9f03ef27060b9bbbedbd80fd377417eb23ed86b4706b129edae",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/shared/api/domain-operations.generated.ts": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117"
+  },
+  "checks": [
+    {
+      "width": 390,
+      "captured": "competing-original"
+    }
+  ],
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "focusedRecovery": true,
+  "browser": "156.0.8078.80"
+}

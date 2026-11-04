@@ -8,7 +8,7 @@ import { bindingSchema, deltaSchema, matchesPixel, pixelOperationSchema, revisio
 import type { MuralAuthorityPort, MuralReadLease, MuralReadPort } from './contract'
 
 const utc = pixelOperationSchema.shape.committed_at
-const receiptSchema = z.strictObject({ receipt_id: uuid, event_id: uuid.nullable(), actor_id: uuid,
+export const receiptSchema = z.strictObject({ receipt_id: uuid, event_id: uuid.nullable(), actor_id: uuid,
   operation_id: z.string().min(1).max(100), idempotency_key: uuid, state: z.enum(['PENDING', 'SUCCEEDED', 'FAILED', 'RETIRED']),
   resource_id: uuid.nullable(), resource_revision: revision.nullable(), failure_reason: z.string().max(100).nullable(),
   created_at: utc, expires_at: utc, result_status: z.number().int().min(200).max(299).nullable() })

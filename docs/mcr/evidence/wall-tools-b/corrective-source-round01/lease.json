@@ -1,0 +1,59 @@
+{
+  "id": "C04-FAILED-RECEIPT-SOURCE-B-202611041651Z",
+  "task": "C04-B-FE-WALL-TOOLS",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T16:51:47+00:00",
+  "hardDeadline": "2026-11-04T17:01:47+00:00",
+  "cleanupSeconds": 60,
+  "head": "2645b579abae1097327b84452fdde3381f50f7e7",
+  "guardianSha256": "d09c534f3a281d88aa4cc23c0da7a9dd82e0900035ba3f1662507f9fded5a45a",
+  "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-corrective-source-round01",
+  "maxBytes": 33554432,
+  "maxRssBytes": 2684354560,
+  "maxProcesses": 24,
+  "gitCarryBytes": 1917025,
+  "dependencyLink": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "freshAvailableBytes": 29646471168,
+  "carryEvidenceBytes": 1238885,
+  "files": {
+    "vitest.config.mts": "export default {\"cacheDir\": \"/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-corrective-source-round01/vite\", \"test\": {\"pool\": \"forks\", \"maxWorkers\": 1, \"fileParallelism\": false, \"passWithNoTests\": false, \"include\": [\"src/features/mural/editor/__tests__/wall-tools-b/tools.test.ts\", \"src/features/mural/sync/__tests__/tools-http.test.ts\"]}}\n"
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.wall-tools-b-corrective-source-round01/vitest.config.mts",
+      "--maxWorkers",
+      "1",
+      "--no-file-parallelism"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--allowImportingTsExtensions",
+      "-p",
+      "tsconfig.json",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/node_modules/oxlint/bin/oxlint",
+      "src/features/mural/editor",
+      "src/features/mural/sync"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/mural/editor/__tests__/wall-tools-b/browser.mjs"
+    ]
+  ]
+}
