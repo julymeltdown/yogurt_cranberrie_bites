@@ -1,0 +1,107 @@
+✔ clean original code and prose containing library/import words pass (10.343875ms)
+✔ renamed byte-identical legacy UI fails (4.9955ms)
+✔ copied asset bytes under public or tests fail regardless of extension (5.652417ms)
+✔ static prohibited dependency and legacy namespace import forms fail (19.784333ms)
+✔ CSS and HTML loading references fail (4.568ms)
+✔ prohibited manifest dependency fails even without a source import (3.889417ms)
+✔ modified allowlist cannot approve a legacy visual source (4.362417ms)
+✔ candidate bytes require reviewed source revision/hash, destination hash, and tests (31.034042ms)
+✔ visual destination hash cannot be approved using a headless source (3.798834ms)
+✔ inventory hash, exact schema versions, source revision and counts fail closed (10.219208ms)
+✔ dependencies and build outputs are excluded; source symlinks fail closed (5.809416ms)
+✔ no frontend content reports NOT_RUN rather than a passing application check (4.081042ms)
+✔ portable CLI --root, invalid flags, and missing inventory (223.00675ms)
+✖ shipped policy pins the audited inventory and starts empty (1.5275ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 382.101667
+
+✖ failing tests:
+
+test at scripts/mcr/tests/ui-origin.test.mjs:215:1
+✖ shipped policy pins the audited inventory and starts empty (1.5275ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + [
+  +   {
+  +     destination: 'frontend/src/shared/validation/text.ts',
+  +     destination_sha256: 'f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61',
+  +     kind: 'headless-extract',
+  +     reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification',
+  +     source_path: 'frontend/src/lib/api/real/canonical-social-intro-schema-core.ts',
+  +     source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a',
+  +     source_sha256: '5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165',
+  +     symbols: [
+  +       'codePointLength',
+  +       'boundedText',
+  +       'tagSchema',
+  +       'tagArray'
+  +     ],
+  +     tests: [
+  +       'frontend/src/shared/validation/__tests__/text.test.ts'
+  +     ]
+  +   },
+  +   {
+  +     destination: 'frontend/src/shared/validation/tags.ts',
+  +     destination_sha256: '187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e',
+  +     kind: 'headless-extract',
+  +     reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification',
+  +     source_path: 'frontend/src/features/social-intro/social-intro-model.ts',
+  +     source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a',
+  +     source_sha256: '9f83535790e8882a0565330b89296b162fa609bf4c3a67b2128e49816b9f276f',
+  +     symbols: [
+  +       'parseTagInput'
+  +     ],
+  +     tests: [
+  +       'frontend/src/shared/validation/__tests__/text.test.ts'
+  +     ]
+  +   },
+  +   {
+  +     destination: 'frontend/src/entities/intro/model/publication-contact.ts',
+  +     destination_sha256: '31aefa77596f710eebe311018de07a88ce1e2ceeb888c968ab4580b96254b6c4',
+  +     kind: 'headless-extract',
+  +     reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification',
+  +     source_path: 'frontend/src/lib/api/real/canonical-social-intro-schema-core.ts',
+  +     source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a',
+  +     source_sha256: '5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165',
+  +     symbols: [
+  +       'introContactBypass (renamed contactBypass)'
+  +     ],
+  +     tests: [
+  +       'frontend/src/entities/intro/model/__tests__/policy.test.ts'
+  +     ]
+  +   },
+  +   {
+  +     destination: 'frontend/src/entities/intro/model/age.ts',
+  +     destination_sha256: '1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5',
+  +     kind: 'headless-extract',
+  +     reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification',
+  +     source_path: 'frontend/src/lib/api/real/canonical-social-intro-schema-core.ts',
+  +     source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a',
+  +     source_sha256: '5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165',
+  +     symbols: [
+  +       'ageBoundsSchema (adapted socialIntroVisibilitySchema)'
+  +     ],
+  +     tests: [
+  +       'frontend/src/entities/intro/model/__tests__/policy.test.ts'
+  +     ]
+  +   }
+  + ]
+  - []
+
+      at TestContext.<anonymous> (file:///Users/lhs/Desktop/mcr-worktrees/fe-ref-public/scripts/mcr/tests/ui-origin.test.mjs:220:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'headless-extract', source_path: 'frontend/src/lib/api/real/canonical-social-intro-schema-core.ts', source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a', source_sha256: '5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165', destination: 'frontend/src/shared/validation/text.ts', destination_sha256: 'f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61', symbols: [Array], tests: [Array], reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification' }, { kind: 'headless-extract', source_path: 'frontend/src/features/social-intro/social-intro-model.ts', source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a', source_sha256: '9f83535790e8882a0565330b89296b162fa609bf4c3a67b2128e49816b9f276f', destination: 'frontend/src/shared/validation/tags.ts', destination_sha256: '187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e', symbols: [Array], tests: [Array], reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification' }, { kind: 'headless-extract', source_path: 'frontend/src/lib/api/real/canonical-social-intro-schema-core.ts', source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a', source_sha256: '5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165', destination: 'frontend/src/entities/intro/model/publication-contact.ts', destination_sha256: '31aefa77596f710eebe311018de07a88ce1e2ceeb888c968ab4580b96254b6c4', symbols: [Array], tests: [Array], reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification' }, { kind: 'headless-extract', source_path: 'frontend/src/lib/api/real/canonical-social-intro-schema-core.ts', source_revision: '5eecdcaffd1a9d505b9ab2a974f8d5623217e90a', source_sha256: '5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165', destination: 'frontend/src/entities/intro/model/age.ts', destination_sha256: '1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5', symbols: [Array], tests: [Array], reviewed_by: 'mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification' } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

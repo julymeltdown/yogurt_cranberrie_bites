@@ -194,7 +194,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     const setVisible = () => {
       if (!current()) return
       const show = visible && !document.hidden
-      owned.replication?.setVisible(show)
+      // A panel covers the engine; only document backgrounding withdraws presence.
+      owned.replication?.setVisible(!document.hidden)
       if (!current()) return
       runtime?.setVisible(show); refreshControls()
     }

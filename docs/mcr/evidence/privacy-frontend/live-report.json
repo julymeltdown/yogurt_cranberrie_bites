@@ -1,0 +1,10 @@
+{
+  "task": "QA04",
+  "result": "NOT_RUN",
+  "originalTask": "IN_PROGRESS",
+  "HTTP": "NOT_RUN",
+  "WS": "NOT_RUN",
+  "cachedProductUI": "NOT_RUN",
+  "credentialOrPayloadLogging": false,
+  "reason": "Missing MCR_QA04_REAL_PLAN and qualified principals/seed/public services"
+}

@@ -264,3 +264,134 @@ No mutable target was used or claimed for another build. The planning check exit
 0 with original archive checksums intact; its first sparse-checkout invocation
 refused missing planning files, then passed after materializing those tracked
 inputs. The planning result certifies no application runtime gate.
+
+The runtime component was delivered as `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`
+and fetched remote ancestry was verified. Exact Profile manifest/lock slot was
+returned to ProductAPIroot after that publication. Existing Profile registration
+ownership remains with owner205.
+
+## Prepare probe source before qualification
+
+A separate ignored `native_prepare` probe and `concert_self_profile_rpc.py --case
+prepare` are staged for the next allocated target. They use actual Auth/Friend
+guards and production Profile MAIN to check exact-body refusal, Prepare identity
+and digest, invisible proposed content, duplicate-operation refusal, and fresh
+signed recovery after the original scope expires. With Concert unavailable, the
+probe must retain the Profile prepared effect and actual owner guards; altered
+binding recovery must fail. This probe supplies no terminal decision, has not
+compiled or run yet, and cannot accept the actual Journal/HTTP flow.
+
+The same pending probe also covers `--case conflict`: a syntactically valid but
+stale internal Profile version reaches the actual registered transaction, is
+refused by server CAS, and must resolve through the actual retained PostgreSQL
+XID as ABORTED. Fresh signed status/reconcile after expiry must preserve that
+proof without a fabricated write receipt or coordinator decision. This is still
+NOT_RUN until the queued native qualification; an RPC conflict alone is not
+settlement evidence.
+
+## Imported Product delivery contract repair
+
+Participant owner209's updated IDL imports `concert/v1/product.proto` and adds
+`concert.product.v1.ResponseDelivery` to the internal Participant response. The
+generated Participant Rust type refers to its sibling `concert::product::v1`;
+Profile's local wire tree originally omitted that sibling. Exact owner fix
+`2500b18098020a57b2b44c9215cc95d53f0fae87` adds only that generated module, with
+no implementation import or shared build-script edit. Owner209 consumed it as
+`54a9f571` alongside the updated Participant IDL. The wire file SHA-256 matches
+in both checkouts: `fc53255599f5e2b56d9efdd6b8e18ef7e4da1f24dccae6021d5246817372c311`.
+
+Combined source `726c6da708100fba1b88833d4003790790f7c373` compiled successfully
+in the owner's allocated BACKEND slot using Rust 1.88, locked/offline, two jobs,
+debug 0 and incremental disabled. Its retained `compiler-fixed.jsonl` shows a
+new Profile library artifact (`fresh=false`), followed by an unrelated Concert
+recovery dependency error; `compiler-final.jsonl` then records build success
+and the same cached Profile dependency. Owner209 fixed its own recovery source.
+The frozen Concert lib SHA-256 was independently checked as
+`4ce26434dd9425eaec2f47cda920dbe92a80751371f4118477dd3baf53b3b652`.
+Receipts are under `/private/tmp/mcr-participant-live-ca73fb71/`; the final Cargo
+JSON has `build-finished.success=true` and no compiler errors. No shared target
+was accessed by this chat. This proves the contract composition compiles; it
+does not prove the actual multi-store or HTTP flow.
+
+The module repair requires that updated Participant IDL in the same generation
+pass. Owner209 will publish the coherent IDL/generation/wire patch after its
+checks; the wire repair is not published alone against the older IDL. This chat's
+pending Prepare/CAS tests still need their allocated build and native run.
+
+## Coherent Participant publication consumed
+
+Published `cb057d43fb4535c4a9b5867f228caef64e5b556b` is fetched and verified
+as an ancestor of remote master, then merged into this checkout. Its updated
+Participant IDL and Profile wire module match exactly after merge; the pending
+Prepare/CAS test source remains preserved. The imported Product delivery module
+now has its required generation input for the next Profile build.
+
+The published participant component receipts qualify source `726c6da7`: seven
+focused tests, eight integration tests, four Python checks, one actual native
+Journal test, eight SQL/restart/cleanup checks, and a separate dedicated signed
+mTLS decision host/client. The native report explicitly retains synthetic
+Profile/eligibility metadata for its Journal test and an unknown-operation query
+for its endpoint test. It cannot substitute for actual Profile Prepare or
+terminal cross-store delivery. Relevant source-bound receipts are in
+`docs/mcr/backend/participant-live-evidence/`; the full real owner/Profile Journal
+join remains assigned to owner209. No Cargo target or private PG was used by
+this chat to consume the publication.
+
+## Actual Prepare and CAS-abort qualification
+
+Source `a8776a61f853f4552825eb41e965f29f2274625e` consumes the coherent
+`cb057d43` Participant contract and unchanged published Party compatibility fix
+`f0d0663a` (local cherry-pick `6229c543`). It built both the Profile integration
+test target and production binary with Rust 1.88, locked/offline, one job, debug
+0 and incremental disabled; both exited 0 with no warnings. The first test
+compile found a concrete alias-induced double interceptor in the new probe;
+`a8776a61` fixes only that test constructor. The first preflight refused an
+incorrect source root before Cargo ran. Artifact freezing also refused duplicate
+production-bin emissions across the test/build commands, then verified that both
+refer to the same exact executable and source before copying. Failed attempts
+are retained alongside the successful receipts.
+
+The MEDIA allocation was explicitly released after copies and hashes, with no
+Cargo-lock handles and over 56 GiB free, before any PostgreSQL fixture started.
+All native work ran from private copies. Eight deterministic tests passed. The
+current binary passed three native storage tests, all nine migration checksums,
+empty-store refusal, migrate/verify/reapply, prepared persistence across restart,
+post-restart verification and owned-cluster cleanup.
+
+Three independent actual Auth/Friend/Profile MAIN mTLS fixtures passed. Each
+used exact frozen owner publication `dc70d620`, fresh private identities, separate
+keys, explicit endpoints and socket-only PostgreSQL 16.14:
+
+- `--case prepare`: actual Acquire/Check/Track and protected Read/Prepare;
+  body-digest mismatch refused before registration; prepared content and receipt
+  invisible outside the native transaction; exact native identity/GID/effect;
+  duplicate operation refused; fresh signed ReadOperation after original expiry;
+  altered original binding refused; unavailable Concert decision retains Profile
+  preparation and both actual owner guards. No rollback decision is guessed.
+- `--case conflict`: a valid stale internal Profile CAS token reaches the actual
+  registered/Tracked transaction, whose native XID is then observed ABORTED.
+  Fresh status and Reconcile after original expiry preserve that native proof,
+  with no write receipt and no invented Concert decision. The RPC error alone
+  never supplies settlement proof. Root unavailability still retains both guards.
+- `--case read`: the prior real-owner read/Track/native rollback settlement probe
+  passes against the current binary and migrations, including wrong subject and
+  wrong Friend credential refusal, one durable read reference and no write receipt.
+
+All migrate/verify commands and exact native test invocations exited 0. Each
+fixture's three production services shut down normally with exit 0 and no forced
+stops; all marker/inode-owned PG roots were removed. Evidence:
+`/private/tmp/mcr-profile-self-6229c543-20261104/qualification-summary.json`,
+`prepare-report-1.json`, `conflict-report-1.json`, `read-report-1.json`,
+`native-report-1.json`, Cargo command/JSON/exit receipts and 1559 compile-input hashes.
+Frozen test SHA-256:
+`b4543d45944064e08edd6fac4854f3586ee5d345ae3ad26c99ae34a5bc3bfd17`;
+production Profile SHA-256:
+`b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32`.
+
+Status remains IN_PROGRESS for the full BE-PROFILE-SELF objective. These probes
+use trusted fixture root envelopes and intentionally unavailable Concert root/
+decision endpoints. Actual ParticipantProfileJournal terminal commit/abort join,
+root HTTP body completion/release and signed-in HTTP save/reload remain NOT_RUN.
+Owner209 retains the actual joined driver; it has received the current frozen
+Profile binary and receipts. Goal API still reports BLOCKED after the explicit
+resource-resume message; no false ACTIVE/reset/complete transition is asserted.

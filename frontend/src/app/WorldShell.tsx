@@ -81,6 +81,10 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
   const positions = useRef(new Map<string, number>())
   const key = scopeKey(scope)
   useLayoutEffect(() => {
+    // Removing a focused panel field need not dispatch blur. Read the committed focus.
+    setTyping(typingTarget(document.activeElement))
+  }, [location.key])
+  useLayoutEffect(() => {
     const viewport = window.visualViewport
     const update = () => root.current?.style.setProperty('--shell-viewport-height', `${viewport?.height ?? window.innerHeight}px`)
     update()
