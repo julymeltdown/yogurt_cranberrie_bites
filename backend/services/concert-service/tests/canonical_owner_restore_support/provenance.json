@@ -6,7 +6,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/capture.rs",
     "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
     "dependencies": "Existing locked Concert dev dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/environment.rs",
@@ -15,7 +18,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/environment.rs",
     "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
     "dependencies": "Existing locked Concert dev dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/owners.rs",
@@ -24,7 +30,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/owners.rs",
     "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
     "dependencies": "Existing locked Concert dev dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/release.rs",
@@ -33,7 +42,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/release.rs",
     "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
     "dependencies": "Existing locked Concert dev dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/notification.rs",
@@ -42,7 +54,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/notification.rs",
     "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
     "dependencies": "Existing locked Concert dev dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/fixture.rs",
@@ -51,7 +66,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/fixture.rs",
     "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
     "dependencies": "Existing locked Concert dev dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/process_child_recovery_support/fault.rs",
@@ -60,7 +78,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/fault.rs",
     "changes": "Unchanged negative-only exact Complete fault wrapper",
     "dependencies": "Existing locked tonic/tower/axum dependencies",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition.rs",
@@ -69,7 +90,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore.rs",
     "changes": "Retained-body/guarded typed delivery helpers only, new physical restore process scenarios",
     "dependencies": "Existing locked dependencies plus standard-library Python and existing owned-PG scripts, read-only imported",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/qualify.py",
@@ -78,7 +102,10 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/qualify.py",
     "changes": "Frozen checkpoint/source pin and PKI patterns adapted; restore runner/controller newly authored",
     "dependencies": "Existing locked dependencies plus standard-library Python and existing owned-PG scripts, read-only imported",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   },
   {
     "source_path": "backend/services/concert-service/tests/process_child_recovery_support/controller.py",
@@ -87,6 +114,9 @@
     "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/controller.py",
     "changes": "Owned private handoff/exact child protocol patterns adapted; cold physical backup/restore newly authored",
     "dependencies": "Existing locked dependencies plus standard-library Python and existing owned-PG scripts, read-only imported",
-    "qualification": "NOT_RUN"
+    "qualification": "PASS",
+    "qualified_source_revision": "1f1b60769e9c3387c70b80707ea33e0179902f8c",
+    "qualification_evidence_sha256": "75d2a1be3b3f752ff4da6a1bfdfe731418fd8aa0f14bed8aca062e503f276046",
+    "qualification_limits": "Supporting three-case PG16 physical restore only; controller terse-output helper successor and evidence metadata are documented separately."
   }
 ]
