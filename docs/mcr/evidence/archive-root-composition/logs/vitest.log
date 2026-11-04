@@ -1,5 +1,5 @@
 
- RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-archive-root-204/frontend
+ RUN  v4.1.9 <worktree>/frontend
 
 
  Test Files  3 passed (3)

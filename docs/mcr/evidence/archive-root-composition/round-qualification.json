@@ -1,0 +1,20 @@
+{
+  "slot": "ARCHIVE-ROOT-204-202611040909Z",
+  "sourceHead": "7909a45a6f0344299550d9c54ecd9d4fd1243fd2",
+  "acceptClock": "2026-11-04T09:09:21Z",
+  "activeDeadline": "2026-11-04T09:14:21Z",
+  "releaseDeadline": "2026-11-04T09:15:21Z",
+  "carryBytes": 11498,
+  "attempts": [
+    {
+      "stage": "syntax-final",
+      "exit": 0,
+      "sourceHead": "7909a45a6f0344299550d9c54ecd9d4fd1243fd2"
+    },
+    {
+      "stage": "native-final-attempt1",
+      "exit": 0,
+      "sourceHead": "7909a45a6f0344299550d9c54ecd9d4fd1243fd2"
+    }
+  ]
+}
