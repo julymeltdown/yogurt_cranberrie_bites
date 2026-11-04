@@ -462,3 +462,35 @@ This closes the bounded available-width portrait correction for integration;
 actual public Root/runtime, service persistence, live multiuser, device and full
 AR03 acceptance remain unfinished. Goal metadata was checked and remains BLOCKED;
 no goal reset or false completion was performed.
+
+
+## Portrait delivery and ownership readback
+
+The bounded portrait payload is published at
+`a93d91b1ed0db15de43e5b00e1d56c17adcaf475`. Fresh owner fetch and independent
+`ls-remote` agree on that exact commit. All seven serialized source/integration
+mappings, changed-path sets, per-commit postimages and ancestry were verified;
+all 17 latest distinct payload files, eight indexed artifact hashes/sizes and
+four handoff source pins match. The published native report SHA-256 is
+`6bcc367f524787f0501d051f37033df5306432af828ef2756e70cfd1ef95727c`.
+`portrait-responsive/publication.json` records the complete mappings and state.
+
+Publisher independently passed 290 tests across 11 suites, full application
+types and path/whitespace checks. QA06 independently checked the saved source,
+artifacts, unchanged reference and remote payload; the bounded fixed-192px
+scale/aspect finding is resolved, with no additional concrete issue established.
+No runtime/test/build/capture was repeated for this documentation readback.
+
+The exact three-file portrait grant is delivered; no further portrait application
+writes or resources are held. Owned portrait processes, temporary caches and local
+dependency links are absent. Other interactive/peer browsers remain untouched;
+no global zero-browser claim is made. The approved screenshot set retains its
+original capture times/source and privacy review; World confirms one actual image
+was sent to King under the explicit hourly screenshot requirement. No duplicate
+capture or screenshot-only job was started.
+
+Any next assignment or ownership transfer is explicit. Fresh `get_goal` returned
+the original AR03 goal as BLOCKED and unfinished; the goal was not reset, replaced
+or completed. The bounded delivery does not certify positive production Root/
+runtime adoption, public service persistence, live multiuser, physical devices,
+full AR03 or whole-screen QA06 acceptance.
