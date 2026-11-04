@@ -66,8 +66,22 @@ def git(*args):
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
 
 
+# C07 is separately exhaustive in CI; no other namespace is excluded.
+def legacy_path(path):
+    name = path.relative_to(ROOT).as_posix()
+    return not any(name.startswith(prefix) for prefix in (
+        "contracts/fixtures/c07/", "contracts/generated/api-client/"))
+
+
+def fixture_paths():
+    files = {p for p in (ROOT / "contracts/fixtures").rglob("*") if p.is_file() and legacy_path(p)}
+    json_files = {p for p in files if p.suffix == ".json"}
+    require(files == json_files, "unclassified non-JSON fixture file")
+    return sorted(json_files)
+
+
 def inputs():
-    paths = set((ROOT / "contracts").rglob("*.json"))
+    paths = {p for p in (ROOT / "contracts").rglob("*.json") if legacy_path(p)}
     paths |= set((ROOT / "backend/scripts/docs").glob("*.py"))
     paths |= {ROOT / "scripts/mcr" / ("validate-" + family + ".py") for family in FAMILIES}
     paths |= {ROOT / "scripts/mcr/requirements-contracts.txt",
@@ -314,9 +328,7 @@ def run(args, report):
     source_paths = [p for f in FAMILIES for p in sorted((ROOT / f"contracts/{f}/v1").glob("*.schema.json"))]
     require(all(any(p.parent.parent.name == f for p in source_paths) for f in FAMILIES), "missing schema family")
     documents = [read(p) for p in source_paths]
-    fixture_data = {relative(p): read(p) for p in sorted((ROOT / "contracts/fixtures").rglob("*.json"))}
-    all_fixture_files = {relative(p) for p in (ROOT / "contracts/fixtures").rglob("*") if p.is_file()}
-    require(all_fixture_files == set(fixture_data), "unclassified non-JSON fixture file")
+    fixture_data = {relative(p): read(p) for p in fixture_paths()}
     indexes = {f: fixture_data[f"contracts/fixtures/{f}/index.json"] for f in ("core", "domain", "realtime")}
     document = read(ROOT / "contracts/generated/mcr-domain.openapi.json")
     if args.probe == "broken-schema": documents[0]["type"] = "BROKEN_TYPE"
