@@ -722,6 +722,13 @@ async fn native_preconsumed_admission_switch_and_disconnect_obey_first_user_fenc
     let proof = verify_source(&authority, &command, deadline())
         .await
         .map_err(|_| anyhow::anyhow!("canonical source missing"))?;
+    // Hold the event row separately: requests must reach the common USER lock
+    // first and deny a committed fence without waiting for this event lock.
+    let mut event_gate = pool.begin().await?;
+    sqlx::query("select event_id from concert_events where event_id=$1 for update")
+        .bind(a.event_id.uuid())
+        .execute(&mut *event_gate)
+        .await?;
     let mut deletion_tx = pool.begin().await?;
     establish_fence_in(&mut deletion_tx, &command, &proof)
         .await
@@ -756,9 +763,15 @@ async fn native_preconsumed_admission_switch_and_disconnect_obey_first_user_fenc
     });
     wait_user_locks(&pool, 3).await?;
     deletion_tx.commit().await?;
-    assert_eq!(admit.await?, Ok(AdmissionOutcome::Denied));
-    assert_eq!(switch.await?, Ok(SwitchOutcome::Denied));
-    assert_eq!(disconnect.await?, Ok(LeaseState::Gone));
+    let (admitted, switched, disconnected) =
+        tokio::time::timeout(WallDuration::from_secs(1), async {
+            tokio::join!(admit, switch, disconnect)
+        })
+        .await?;
+    assert_eq!(admitted?, Ok(AdmissionOutcome::Denied));
+    assert_eq!(switched?, Ok(SwitchOutcome::Denied));
+    assert_eq!(disconnected?, Ok(LeaseState::Gone));
+    event_gate.rollback().await?;
     let after: serde_json::Value = sqlx::query_scalar(
         "select to_jsonb(m) from concert_world_memberships m where event_id=$1 and user_id=$2",
     )
