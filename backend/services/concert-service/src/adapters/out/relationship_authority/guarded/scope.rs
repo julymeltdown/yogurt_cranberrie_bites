@@ -198,9 +198,13 @@ impl OwnerGuardScope {
             .child_intents
             .values()
             .chain(state.children.iter().map(|(reference, _)| reference))
-            .fold(original.expires_micros(), |until, reference| {
-                until.min(reference.content_expires_unix_micros())
-            });
+            .fold(
+                original
+                    .expires_micros()
+                    .min(self.auth_view.expires_unix_micros)
+                    .min(self.friend_view.expires_unix_micros),
+                |until, reference| until.min(reference.content_expires_unix_micros()),
+            );
         AuthorityRpcDeadline::within_original(
             expires,
             original.stop().into_std(),
