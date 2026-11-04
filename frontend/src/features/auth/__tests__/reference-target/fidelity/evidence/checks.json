@@ -1,15 +1,16 @@
 {
-  "task": "FE-REF-AUTH-FIDELITY",
+  "task": "FE-REF-AUTH-ARTWORK-MATCH",
   "status": "MOCK_READY",
-  "sourceCandidate": "8cf4d29c928bafb9fe9dd8991db132901d9a3179",
-  "reconciledParent": "1cbb1823c506e7fe04d6754f9698ee855f98bc40",
+  "staticReferenceMatch": "PASS",
+  "sourceCandidate": "4c76934825a129e3430031678b75f3967ce80317",
+  "qualifiedParent": "969b3b2fe45030cfad90e34f224797196ba3bdc8",
   "node": "24.22.2",
   "commands": [
     {
       "cwd": "frontend",
       "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/auth/__tests__/reference-target/fidelity/checks.ts --configLoader runner",
       "exitCode": 0,
-      "result": "156/156 tests in 8 files"
+      "result": "156/156 in8 relevant files"
     },
     {
       "cwd": "frontend",
@@ -18,20 +19,25 @@
     },
     {
       "cwd": "frontend",
-      "command": "NODE node_modules/oxlint/bin/oxlint src/features/auth/ui src/features/auth/__tests__/reference-target/fidelity/{app.tsx,native.mjs,build.mjs,checks.ts}",
+      "command": "NODE node_modules/oxlint/bin/oxlint src/features/auth/ui/sign-in.css src/features/auth/ui/reference-sign-in src/features/auth/__tests__/reference-target/fidelity/native.mjs",
       "exitCode": 0
     },
     {
       "cwd": "frontend",
       "command": "NODE src/features/auth/__tests__/reference-target/fidelity/build.mjs",
       "exitCode": 0,
-      "result": "455 modules; existing >500kB chunk warnings retained; public asset copying disabled"
+      "result": "473 modules; real root/lazy graph; public copying disabled; large-chunk warnings retained"
     },
     {
       "cwd": "frontend",
       "command": "NODE src/features/auth/__tests__/reference-target/fidelity/native.mjs",
       "exitCode": 0,
-      "result": "Actual app router on /login at 360/390/430; zero page errors; synthetic HTTP/cookie policy"
+      "result": "Actual /login app router/ports at360/390/430; all fonts and two decorative PNG assets loaded/decoded; zero page errors"
+    },
+    {
+      "cwd": "repository",
+      "command": "python3 frontend/src/features/auth/__tests__/reference-target/fidelity/artwork/check-assets.py",
+      "exitCode": 0
     },
     {
       "cwd": "repository",
@@ -42,32 +48,14 @@
       "cwd": "repository",
       "command": "NODE scripts/mcr/check-ui-origin.mjs",
       "exitCode": 0
-    },
-    {
-      "cwd": "repository",
-      "command": "python3 scripts/mcr/check-boundaries.py --base 1cbb1823c506e7fe04d6754f9698ee855f98bc40 --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md",
-      "exitCode": 0
-    },
-    {
-      "cwd": "repository",
-      "command": "git diff --cached --check",
-      "exitCode": 0
     }
   ],
-  "resolvedFindings": [
-    {
-      "finding": "Native footer clearance failed at 390px when small graves intruded into the final row",
-      "fix": "Reserve 66px below content; place large side crosses outside the centered form; final three-width clearance and foreground-control hit checks pass"
-    },
-    {
-      "finding": "Regular dot grain and a continuous dark side treatment diverged from the requested treatment",
-      "fix": "Irregular original SVG noise; retain ordinary symmetric frame without decorative vertical rails"
-    }
-  ],
+  "reproducibility": "reproducibility.json",
+  "visualInspection": "artwork-review.json",
+  "sourceProvenance": "frontend/src/features/auth/ui/reference-sign-in/artwork/provenance.json",
+  "unmodifiedLicenseWhitespace": "Upstream OFL bytes intentionally preserved, including its existing trailing space on line21; authored whitespace check excludes only that pinned unmodified file.",
   "limitations": [
-    "Synthetic Auth fetch/cookie policy, deliberately denied world bootstrap; no live backend/provider or hardware qualification",
-    "360 and 390px require normal vertical scrolling at reference-aspect heights; no horizontal overflow or target shrinking",
-    "Original target pixels remain unchanged; new cemetery vectors and grain are not pixel-identical artwork"
-  ],
-  "cleanup": "Owned caches removed; temporary dependency symlink removed; no installed or copied dependencies"
+    "Synthetic Auth HTTP/cookie policy and denied bootstrap, not live provider/device qualification",
+    "Actual UI remains semantic and functional; no screenshot or source reference image is shipped as product UI"
+  ]
 }
