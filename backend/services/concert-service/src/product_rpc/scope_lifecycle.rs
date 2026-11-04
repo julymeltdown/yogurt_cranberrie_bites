@@ -151,6 +151,15 @@ impl ScopeLifecycle for PgScopeLedger {
     async fn seal(&self, scope: &proto::ProducerScope) -> Result<(), Status> {
         PgScopeLedger::seal(self, &key(scope)?).await
     }
+    async fn finish_cancelled_root_work(&self, scope: &proto::ProducerScope) -> Result<(), Status> {
+        PgScopeLedger::finish_cancelled_root_work(self, &key(scope)?).await
+    }
+    async fn record_cancellation_settled(
+        &self,
+        scope: &proto::ProducerScope,
+    ) -> Result<(), Status> {
+        PgScopeLedger::record_cancellation_settled(self, &key(scope)?).await
+    }
     async fn finish_root_work(&self, scope: &proto::ProducerScope) -> Result<(), Status> {
         PgScopeLedger::finish_root_work(self, &key(scope)?).await
     }
