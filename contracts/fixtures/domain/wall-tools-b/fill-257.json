@@ -1,0 +1,23 @@
+{
+  "action_id": "40000000-0000-4000-8000-000000000004",
+  "receipt_id": "50000000-0000-4000-8000-000000000005",
+  "event_id": "20000000-0000-4000-8000-000000000002",
+  "actor_id": "10000000-0000-4000-8000-000000000001",
+  "command": {
+    "operation_id": "fillConcertMuralRegion",
+    "body": {
+      "expected_revision": 1,
+      "x": 0,
+      "y": 0,
+      "color_index": 2
+    }
+  },
+  "idempotency_key": "30000000-0000-4000-8000-000000000003",
+  "kind": "FILL",
+  "revision": 2,
+  "changed_cells": 257,
+  "committed_at": "2026-11-05T00:00:00Z",
+  "next_allowed_at": "2026-11-05T00:00:00Z",
+  "undo_expires_at": "2026-11-05T00:10:00Z",
+  "reset_required": true
+}

@@ -194,7 +194,15 @@
                 "DUPLICATE_APPLICATION",
                 "MEDIA_NOT_READY",
                 "MURAL_REGION_LOCKED",
-                "PROVIDER_UNAVAILABLE"
+                "PROVIDER_UNAVAILABLE",
+                "MURAL_NO_CHANGE",
+                "MURAL_FILL_TOO_LARGE",
+                "MURAL_BUDGET_EXCEEDED",
+                "MURAL_UNDO_EXPIRED",
+                "MURAL_UNDO_NOT_LATEST",
+                "MURAL_UNDO_UNAVAILABLE",
+                "MURAL_TOOL_UNAVAILABLE",
+                "MURAL_ACTION_UNRESOLVED"
               ]
             },
             {
@@ -675,6 +683,102 @@
               "properties": {
                 "reason": {
                   "const": "PROVIDER_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_NO_CHANGE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_FILL_TOO_LARGE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_BUDGET_EXCEEDED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_UNDO_EXPIRED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_UNDO_NOT_LATEST"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_UNDO_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_TOOL_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_ACTION_UNRESOLVED"
                 }
               },
               "required": [

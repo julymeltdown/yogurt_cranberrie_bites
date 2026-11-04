@@ -1157,6 +1157,32 @@
         "Fresh reauthorization is required after read/read-all, invalidation or identity/policy changes; count is an observation and never target authority",
         "Unavailable count remains unavailable; loaded unread rows never substitute for total"
       ]
+    },
+    "mural_tools_b_read": {
+      "preconditions": [
+        "Fresh canonical actor/event authorization and ACTIVE event admission",
+        "Actor-owned read, one locked global mural revision; no client history authority"
+      ],
+      "result": [
+        "Version 1 private capabilities: confirmed immutable background index 0 only when provisioned; fill cap 256; durable 512 changed cells per rolling 600 DB seconds shared by all tools",
+        "Own latest action and unresolved exact command/key correlation, no before-colors or other authors; missing correlation fails closed",
+        "Recheck undo global revision, latest own non-undo action, receipt/history expiry, cooldown and budget; reload never renews them"
+      ]
+    },
+    "mural_tools_b_write": {
+      "preconditions": [
+        "Original canonical scope held through actual native commit and response; current ACTIVE member; OPEN/LIVE event and EDITABLE mural",
+        "Closed body <=1024 bytes, exact expected_revision, original idempotency key/body; recover unresolved action before another mutation",
+        "Erase requires configured immutable opaque background index 0; fill four-connected region <=256 actual changed cells; no change rejected",
+        "Undo same actor latest non-undo action only, global revision unchanged, all original after-cells match; expires min(commit+600seconds, original receipt expiry); history-less targets fail closed",
+        "Every changed cell unlocked; unchanged server cooldown once per action; sum changed cells in (DBnow-600seconds,DBnow] plus actual cost <=512, undo costs restored cells without refund"
+      ],
+      "result": [
+        "Atomic cells/private before-after history/durable cell charge/receipt/audit/outbox; one revision per success; rollback all effects on any failure",
+        "Multi-cell actions advance reset baseline and return reset_required; no invented single-pixel delta or author leakage",
+        "Pencil retains old strict endpoint/result, gains same durable budget/history; old errors remain INVALID_INPUT/RATE_LIMITED compatible",
+        "Same key exact replay spends no additional quota/cooldown; changed body conflicts; retained charges independent of receipt retirement"
+      ]
     }
   },
   "remaining_before_freeze": [
@@ -1198,7 +1224,15 @@
     "MURAL_COOLDOWN": 429,
     "MURAL_PAUSED": 409,
     "MURAL_FROZEN": 409,
-    "MURAL_REGION_LOCKED": 409
+    "MURAL_REGION_LOCKED": 409,
+    "MURAL_NO_CHANGE": 409,
+    "MURAL_FILL_TOO_LARGE": 409,
+    "MURAL_BUDGET_EXCEEDED": 429,
+    "MURAL_UNDO_EXPIRED": 409,
+    "MURAL_UNDO_NOT_LATEST": 409,
+    "MURAL_UNDO_UNAVAILABLE": 409,
+    "MURAL_TOOL_UNAVAILABLE": 503,
+    "MURAL_ACTION_UNRESOLVED": 409
   },
   "request_targets": {
     "query_max_encoded_bytes": 8192,
