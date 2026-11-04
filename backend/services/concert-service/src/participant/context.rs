@@ -15,6 +15,7 @@ use tonic::{Request, Status};
 use uuid::Uuid;
 
 pub const BUDGET: Duration = Duration::from_secs(2);
+#[derive(Clone)]
 pub struct VerifiedParticipantRequest {
     key: ParticipantKey,
     session: Uuid,

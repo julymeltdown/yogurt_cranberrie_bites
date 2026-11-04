@@ -172,6 +172,9 @@ def run(pg_bin, binary=None, receipt=None):
         committed = Session(cluster)
         sessions.append(committed)
         operation, identity = register(cluster, committed)
+        cluster.sql(DATABASE, f"INSERT INTO public.concert_participant_profile_prepare_attempts(operation_id) VALUES('{operation}');")
+        cluster.sql(DATABASE, denied_sql(f"UPDATE public.concert_participant_profile_prepare_attempts SET attempted_at=clock_timestamp() WHERE operation_id='{operation}';"))
+        report["checks"]["prepare_attempt_is_durable_and_immutable"] = "PASS"
         # A second connection is not allowed to write the native decision.
         cluster.sql(DATABASE, denied_sql(decide_sql(operation)))
         require(cluster.sql(DATABASE, f"SELECT decision FROM public.concert_participant_profile_operations WHERE operation_id='{operation}';") == "PENDING", "wrong connection changed decision")
@@ -198,11 +201,25 @@ def run(pg_bin, binary=None, receipt=None):
         cluster.sql(DATABASE, denied_sql(f"UPDATE public.concert_participant_profile_operations SET profile_prepared_gid='foreign' WHERE operation_id='{aborted_operation}';"))
         cluster.sql(DATABASE, denied_sql(f"UPDATE public.concert_participant_profile_operations SET decision='PENDING',committed_revision=NULL,decided_at=NULL WHERE operation_id='{operation}';"))
         report["checks"]["original_binding_profile_receipt_and_terminal_decision_immutable"] = "PASS"
+        # SQL structural fixture ONLY: these metadata are explicitly synthetic
+        # Profile receipt data, not a canonical owner attestation or live grant.
+        cluster.sql(DATABASE, f"""INSERT INTO public.concert_participant_profile_terminal_receipts(
+          operation_id,profile_prepared_gid,profile_effect_digest,outcome,
+          profile_system_identifier,profile_database_oid,profile_full_xid,
+          profile_backend_pid,profile_backend_started)
+          SELECT operation_id,profile_prepared_gid,profile_effect_digest,'COMMITTED',
+          concert_system_identifier,concert_database_oid,concert_full_xid,
+          concert_backend_pid,concert_backend_started
+          FROM public.concert_participant_profile_operations WHERE operation_id='{operation}';""")
+        cluster.sql(DATABASE, denied_sql(f"UPDATE public.concert_participant_profile_terminal_receipts SET outcome='ABORTED' WHERE operation_id='{operation}';"))
+        report["checks"]["terminal_receipt_structural_fixture_immutable"] = "PASS"
         cluster.stop()
         cluster.start()
         require(cluster.sql(DATABASE, f"SELECT decision FROM public.concert_participant_profile_operations WHERE operation_id='{operation}';") == "COMMIT", "restart lost decision")
         require(cluster.sql(DATABASE, f"SELECT count(*) FROM public.coordinator_sql_effect_probe WHERE operation_id='{operation}';") == "1", "restart lost effect")
         require(cluster.sql(DATABASE, f"SELECT pg_xact_status('{aborted_identity['full_xid']}'::xid8);") == "aborted", "restart lost actual abort outcome")
+        require(cluster.sql(DATABASE, f"SELECT count(*) FROM public.concert_participant_profile_prepare_attempts WHERE operation_id='{operation}';") == "1", "restart lost prepare marker")
+        require(cluster.sql(DATABASE, f"SELECT outcome FROM public.concert_participant_profile_terminal_receipts WHERE operation_id='{operation}';") == "COMMITTED", "restart lost terminal fixture")
         report["checks"]["restart_retains_decision_effect_and_abort_outcome"] = "PASS"
         report["state"] = "PASS"
     except (migration.SmokeError, OSError, ValueError, subprocess.SubprocessError) as error:

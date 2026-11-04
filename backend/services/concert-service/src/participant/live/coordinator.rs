@@ -69,6 +69,51 @@ pub struct ExpectedProfileEffect {
     pub(crate) gid: String,
     pub(crate) digest: [u8; 32],
 }
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub(crate) enum ProfileTerminalOutcome {
+    Committed,
+    Aborted,
+}
+pub(crate) struct ProfileTerminalReceipt {
+    operation: Uuid,
+    gid: String,
+    digest: [u8; 32],
+    native: NativeTransaction,
+    outcome: ProfileTerminalOutcome,
+}
+impl ProfileTerminalReceipt {
+    /// The owning client calls this ONLY after authenticating and validating the
+    /// bounded canonical Profile response. No HTTP/request field supplies it.
+    pub(crate) fn from_owner_response(
+        operation: Uuid,
+        expected: &ExpectedProfileEffect,
+        returned_gid: &str,
+        returned_effect: [u8; 32],
+        native: NativeTransaction,
+        outcome: ProfileTerminalOutcome,
+    ) -> Result<Self, AvatarError> {
+        let decimal = |text: &str| text.parse::<u64>().ok().is_some_and(|value| value > 0);
+        if operation.is_nil()
+            || expected.gid != format!("mcr_sp_{}", operation.simple())
+            || returned_gid != expected.gid
+            || returned_effect != expected.digest
+            || !decimal(&native.system_identifier)
+            || !decimal(&native.full_xid)
+            || native.database_oid == 0
+            || native.backend_pid <= 0
+        {
+            return Err(AvatarError::Denied);
+        }
+        Ok(Self {
+            operation,
+            gid: expected.gid.clone(),
+            digest: expected.digest,
+            native,
+            outcome,
+        })
+    }
+}
 impl ExpectedProfileEffect {
     pub fn for_request(
         request: &VerifiedParticipantRequest,
@@ -176,6 +221,7 @@ pub struct ParticipantProfileJournal {
 }
 pub struct ParticipantProfileTransaction {
     tx: Transaction<'static, Postgres>,
+    pool: PgPool,
     binding: Binding,
     native: NativeTransaction,
     update: ParticipantUpdate,
@@ -223,12 +269,51 @@ impl ParticipantProfileJournal {
         authority.check(request).await?;
         Ok(ParticipantProfileTransaction {
             tx,
+            pool: self.pool.clone(),
             binding,
             native,
             update,
             expected_profile,
             preferences: None,
         })
+    }
+
+    /// Call after a local snapshot and again after the fresh canonical Profile
+    /// read. A later coordinated revision cannot be joined to an older snapshot.
+    pub async fn ensure_visible(
+        &self,
+        request: &VerifiedParticipantRequest,
+        snapshot_revision: Option<Revision>,
+    ) -> Result<(), AvatarError> {
+        request.check().map_err(|_| AvatarError::Unauthenticated)?;
+        ensure_visible(&self.pool, request, snapshot_revision).await?;
+        request.check().map_err(|_| AvatarError::Unauthenticated)
+    }
+
+    /// Recovery appends only an authenticated actual Profile terminal receipt,
+    /// and only if Concert's independently resolved native decision agrees.
+    pub(crate) async fn record_terminal(
+        &self,
+        receipt: &ProfileTerminalReceipt,
+    ) -> Result<(), AvatarError> {
+        let outcome = match receipt.outcome {
+            ProfileTerminalOutcome::Committed => "COMMITTED",
+            ProfileTerminalOutcome::Aborted => "ABORTED",
+        };
+        let native = &receipt.native;
+        let changed=sqlx::query("insert into public.concert_participant_profile_terminal_receipts(operation_id,profile_prepared_gid,profile_effect_digest,outcome,profile_system_identifier,profile_database_oid,profile_full_xid,profile_backend_pid,profile_backend_started) select op.operation_id,op.profile_prepared_gid,op.profile_effect_digest,$4,$5,$6,$7,$8,$9 from public.concert_participant_profile_operations op where op.operation_id=$1 and op.profile_prepared_gid=$2 and op.profile_effect_digest=$3 and op.concert_system_identifier=(select system_identifier::text from pg_control_system()) and op.concert_database_oid=(select oid::bigint from pg_database where datname=current_database()) and (($4='COMMITTED' and op.decision='COMMIT' and pg_xact_status(op.concert_full_xid::xid8)='committed') or ($4='ABORTED' and op.decision='PENDING' and pg_xact_status(op.concert_full_xid::xid8)='aborted')) on conflict(operation_id) do nothing")
+            .bind(receipt.operation).bind(&receipt.gid).bind(receipt.digest.as_slice()).bind(outcome).bind(&native.system_identifier).bind(i64::from(native.database_oid)).bind(&native.full_xid).bind(native.backend_pid).bind(native.backend_started)
+            .execute(&self.pool).await.map_err(unavailable)?.rows_affected();
+        if changed == 1 {
+            return Ok(());
+        }
+        let matches:bool=sqlx::query_scalar("select exists(select 1 from public.concert_participant_profile_terminal_receipts where operation_id=$1 and profile_prepared_gid=$2 and profile_effect_digest=$3 and outcome=$4 and profile_system_identifier=$5 and profile_database_oid=$6 and profile_full_xid=$7 and profile_backend_pid=$8 and profile_backend_started=$9)")
+            .bind(receipt.operation).bind(&receipt.gid).bind(receipt.digest.as_slice()).bind(outcome).bind(&native.system_identifier).bind(i64::from(native.database_oid)).bind(&native.full_xid).bind(native.backend_pid).bind(native.backend_started).fetch_one(&self.pool).await.map_err(unavailable)?;
+        if matches {
+            Ok(())
+        } else {
+            Err(AvatarError::Unavailable)
+        }
     }
 }
 impl ParticipantProfileTransaction {
@@ -297,7 +382,24 @@ impl ParticipantProfileTransaction {
             reduced_motion: row.try_get("reduced_motion").map_err(unavailable)?,
             sound_enabled: row.try_get("sound_enabled").map_err(unavailable)?,
         });
+        ensure_visible(&self.pool, request, None).await?;
+        self.check(request, authority).await?;
         Ok(())
+    }
+    /// This independent durable append MUST precede dispatch of PrepareUpdate.
+    /// A missing/unknown Profile reply keeps this operation gated for recovery.
+    pub async fn mark_prepare_attempt(
+        &self,
+        request: &VerifiedParticipantRequest,
+        authority: &dyn CoordinatorAuthority,
+    ) -> Result<(), AvatarError> {
+        self.check(request, authority).await?;
+        if self.preferences.is_none() {
+            return Err(AvatarError::Unavailable);
+        }
+        sqlx::query("insert into public.concert_participant_profile_prepare_attempts(operation_id) values($1) on conflict(operation_id) do nothing")
+            .bind(self.binding.operation).execute(&self.pool).await.map_err(unavailable)?;
+        self.check(request, authority).await
     }
     /// The live adapter must verify the actual prepared Profile receipt before
     /// invoking this method. This method itself never tells Profile to commit.
@@ -313,6 +415,12 @@ impl ParticipantProfileTransaction {
             || prepared_effect != self.expected_profile.digest
         {
             return Err(AvatarError::Denied);
+        }
+        let attempted: bool = sqlx::query_scalar("select exists(select 1 from public.concert_participant_profile_prepare_attempts where operation_id=$1)")
+            .bind(self.binding.operation).fetch_one(&mut *self.tx).await.map_err(unavailable)?;
+        self.check(request, authority).await?;
+        if !attempted {
+            return Err(AvatarError::Unavailable);
         }
         let current = self.preferences.ok_or(AvatarError::Unavailable)?;
         let preferences = match self.update.preferences {
@@ -347,6 +455,19 @@ impl ParticipantProfileTransaction {
         // never by issuing another mutation or inferring rollback from an error.
         authority.check(request).await?;
         Ok(next)
+    }
+}
+async fn ensure_visible(
+    pool: &PgPool,
+    request: &VerifiedParticipantRequest,
+    snapshot_revision: Option<Revision>,
+) -> Result<(), AvatarError> {
+    let blocked: bool = sqlx::query_scalar("select exists(select 1 from public.concert_participant_profile_operations op where op.event_id=$1 and op.actor_id=$2 and (((op.decision='COMMIT' or exists(select 1 from public.concert_participant_profile_prepare_attempts a where a.operation_id=op.operation_id)) and not exists(select 1 from public.concert_participant_profile_terminal_receipts r where r.operation_id=op.operation_id)) or ($3::bigint is not null and op.decision='COMMIT' and op.committed_revision>$3)))")
+        .bind(request.key().event_id.uuid()).bind(request.key().user_id.uuid()).bind(snapshot_revision.map(Revision::get)).fetch_one(pool).await.map_err(unavailable)?;
+    if blocked {
+        Err(AvatarError::Unavailable)
+    } else {
+        Ok(())
     }
 }
 fn unavailable(_: sqlx::Error) -> AvatarError {

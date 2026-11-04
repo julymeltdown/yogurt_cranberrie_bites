@@ -57,6 +57,16 @@ prepared effects and owner exclusion. The SQL trigger additionally requires the
 COMMIT writer's full XID, system identifier, database OID, PID and backend start
 to match the registered native transaction.
 
+The registry now also records an immutable prepare-attempt marker durably before
+the actual Profile RPC, after locking and checking the participant revision.
+Attempted/unsettled operations and committed decisions without an authenticated
+Profile terminal receipt gate subsequent participant access. An aborted stale CAS
+without a prepare attempt cannot have changed Profile. Visibility checks reject a
+snapshot older than a later coordinated committed revision. Live reads still need
+the local-snapshot, fresh-Profile, final-gate ordering when composed. The real
+Profile client alone will construct the internal terminal receipt after validating
+the canonical response; an HTTP boolean cannot clear this gate.
+
 The new Rust journal captures that identity from its own actual transaction,
 registers it before protected effects, durably inserts PENDING on a separate
 connection, and locks event/admission/participant before the stale-revision check.
@@ -83,12 +93,30 @@ Both C03 parser tests PASS, including frozen-schema comparisons and duplicate ke
 
 SQL-only command `python3 backend/scripts/mcr/participant_coordinator_sql_smoke.py
 --pg-bin /opt/homebrew/opt/postgresql@16/bin`: exit 0 on actual private PG16.14,
-six checks PASS and owned cluster cleanup PASS. All current Concert SQL applied;
+eight checks PASS and owned cluster cleanup PASS. All current Concert SQL applied;
 another connection could not decide; the exact registered transaction committed
 effect and decision together; rollback retained PENDING but neither effect nor
 decision; binding/Profile receipt/terminal decision were immutable; restart retained
-the decision/effect and actual aborted status. This exercises SQL using an explicit
-effect-probe table, not the Rust participant implementation or actual Profile.
+the decision/effect and actual aborted status. The prepare marker and terminal
+receipt tables also refused UPDATE. Their Profile identity metadata are explicitly
+synthetic structural fixtures. This exercises SQL using an explicit effect-probe
+table, not the Rust participant implementation or actual Profile. Exact migration
+and driver hashes are in `participant-live-evidence/coordinator-sql.json`.
+
+Decision IDL at `3bb9c295`: standalone vendored protoc exit 0; source SHA256
+`8f5df61f1cdce1ed7e386da17a7ed8e3ea914eb24a117a39a85ec17cae26d6b9`, descriptor
+SHA256 `639b449a2f27eee0d221cef74435afd14cc1389f6b77a1e91a445130cf7ae2e0`.
+This is syntax qualification, not server execution. The root-owned response
+delivery extension is agreed but not imported into this checkpoint.
+
+Canonical avatar hook source `2561baa7` was consumed locally as `7a8fab63`.
+Its owner still owes native qualification. Participant MutationPermit and
+CheckedAuthority now forward its effect fence; default None is refused by product
+writes. The actual BoundParticipantAuthority adapter is staged in `live/guarded.rs`
+but deliberately unexported pending the compiled SDK. It binds the exact sealed
+parent, request, release and original deadline to the real OwnerGuardScope and
+registers the repository's actual transaction. It owns no completion/release API.
+This source is not a qualified real authority adapter yet.
 
 New journal/resolver Rust compile and native application test: NOT_RUN. Actual live
 owner mutation, root/Gateway composition, browser and full signed-in multiuser

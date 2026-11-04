@@ -159,6 +159,9 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
             .map_err(crate::participant::status)?;
         // Explicitly synthetic Profile receipt. Only the Concert CAS/journal
         // path is qualified here; no actual Profile producer was invoked.
+        tx.mark_prepare_attempt(&context, self.authority.as_ref())
+            .await
+            .map_err(crate::participant::status)?;
         self.prepared_calls.fetch_add(1, Ordering::SeqCst);
         let next = tx
             .commit_after_prepared(
@@ -169,6 +172,11 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
             )
             .await
             .map_err(crate::participant::status)?;
+        assert_eq!(
+            journal.ensure_visible(&context, Some(next)).await,
+            Err(AvatarError::Unavailable),
+            "Concert commit alone must not expose a partially committed Profile"
+        );
         Ok(Response::new(proto::ParticipantResponse {
             response_json: next.get().to_string().into_bytes(),
         }))
@@ -301,24 +309,24 @@ async fn owned_pool() -> anyhow::Result<PgPool> {
 async fn native_guarded_coordinator_cas_rollback_and_decision_recovery() -> anyhow::Result<()> {
     let pool = owned_pool().await?;
     sqlx::raw_sql("create sequence public.participant_live_effect_probe; create function public.participant_live_effect_probe_fn() returns trigger language plpgsql as $$begin perform nextval('public.participant_live_effect_probe');return NEW;end$$; create trigger participant_live_effect_probe after update on public.concert_participants for each row execute function public.participant_live_effect_probe_fn();").execute(&pool).await?;
-    let event = Uuid::new_v4();
-    let user = Uuid::new_v4();
-    sqlx::query("insert into public.concert_events(event_id,slug,title,phase)values($1,$2,'Coordinator native fixture','OPEN')").bind(event).bind(format!("coordinator-{}",event.simple())).execute(&pool).await?;
-    sqlx::query(
+    for mode in ["commit", "stale", "rollback"] {
+        let event = Uuid::new_v4();
+        let user = Uuid::new_v4();
+        sqlx::query("insert into public.concert_events(event_id,slug,title,phase)values($1,$2,'Coordinator native fixture','OPEN')").bind(event).bind(format!("coordinator-{}",event.simple())).execute(&pool).await?;
+        sqlx::query(
         "insert into public.concert_event_admissions(event_id,user_id,state)values($1,$2,'ACTIVE')",
     )
     .bind(event)
     .bind(user)
     .execute(&pool)
     .await?;
-    sqlx::query(
+        sqlx::query(
         "insert into public.concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled)values($1,$2,'REVENGE',false,false,true)",
     )
     .bind(event)
     .bind(user)
     .execute(&pool)
     .await?;
-    for mode in ["commit", "stale", "rollback"] {
         sqlx::query("select setval('public.participant_live_effect_probe',1,false)")
             .execute(&pool)
             .await?;

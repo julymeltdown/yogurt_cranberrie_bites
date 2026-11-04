@@ -211,6 +211,9 @@ struct CheckedAuthority<'a> {
     permit: Option<&'a dyn MutationPermit>,
 }
 impl AvatarAuthority for CheckedAuthority<'_> {
+    fn effect_fence(&self) -> Option<&dyn concert_application::avatar::AvatarEffectFence> {
+        self.permit.and_then(|permit| permit.effect_fence())
+    }
     fn check(&self) -> Result<AvatarGrant, AvatarError> {
         self.context
             .check()

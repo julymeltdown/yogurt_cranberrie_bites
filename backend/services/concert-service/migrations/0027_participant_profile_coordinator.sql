@@ -79,3 +79,39 @@ FOR EACH ROW EXECUTE FUNCTION public.concert_participant_profile_operation_immut
 CREATE INDEX concert_participant_profile_operations_pending
 ON public.concert_participant_profile_operations (registered_at)
 WHERE decision = 'PENDING';
+
+-- Persist before dispatching Profile PrepareUpdate, after the participant CAS
+-- precondition has been locked/checked. An aborted stale CAS with no attempt
+-- cannot have changed Profile; an attempted unknown operation stays gated.
+CREATE TABLE public.concert_participant_profile_prepare_attempts (
+    operation_id uuid PRIMARY KEY REFERENCES public.concert_participant_profile_operations(operation_id),
+    attempted_at timestamptz NOT NULL DEFAULT clock_timestamp()
+);
+
+-- Appended only from the actual authenticated canonical Profile terminal reply,
+-- matched against its registered GID/effect and Concert's actual terminal XID.
+-- Caller booleans, expiry, and absent replies never create this receipt.
+CREATE TABLE public.concert_participant_profile_terminal_receipts (
+    operation_id uuid PRIMARY KEY REFERENCES public.concert_participant_profile_operations(operation_id),
+    profile_prepared_gid text NOT NULL,
+    profile_effect_digest bytea NOT NULL CHECK (octet_length(profile_effect_digest) = 32),
+    outcome text NOT NULL CHECK (outcome IN ('COMMITTED', 'ABORTED')),
+    profile_system_identifier text NOT NULL CHECK (profile_system_identifier ~ '^[1-9][0-9]{0,19}$'),
+    profile_database_oid bigint NOT NULL CHECK (profile_database_oid BETWEEN 1 AND 4294967295),
+    profile_full_xid text NOT NULL CHECK (profile_full_xid ~ '^[1-9][0-9]{0,19}$'),
+    profile_backend_pid integer NOT NULL CHECK (profile_backend_pid > 0),
+    profile_backend_started timestamptz NOT NULL,
+    settled_at timestamptz NOT NULL DEFAULT clock_timestamp()
+);
+CREATE FUNCTION public.concert_participant_profile_receipt_immutable()
+RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    RAISE EXCEPTION 'participant profile receipt is immutable' USING ERRCODE = '23514';
+END;
+$$;
+CREATE TRIGGER concert_participant_profile_prepare_immutable
+BEFORE UPDATE ON public.concert_participant_profile_prepare_attempts
+FOR EACH ROW EXECUTE FUNCTION public.concert_participant_profile_receipt_immutable();
+CREATE TRIGGER concert_participant_profile_terminal_immutable
+BEFORE UPDATE ON public.concert_participant_profile_terminal_receipts
+FOR EACH ROW EXECUTE FUNCTION public.concert_participant_profile_receipt_immutable();
