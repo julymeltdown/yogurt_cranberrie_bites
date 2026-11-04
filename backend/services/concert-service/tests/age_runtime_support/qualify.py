@@ -90,6 +90,48 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
                 cluster, db, migration_manifest(ROOT / "backend", f"{owner}-service"))
             if cluster.sql(db, "select count(*) from pg_prepared_xacts where database=current_database();") != "0":
                 raise SmokeError("cleanup", "prepared transactions remain")
+        retained = checkpoint.get("retained", {})
+        if set(retained) != {"age_claims", "age_claim_reader", "age_verification"}:
+            raise SmokeError("inventory", "all three retained artifacts required")
+        report["retained"] = {}
+        for name in ("age_verification", "age_claims", "age_claim_reader"):
+            artifact = retained[name]
+            owned_binary = frozen_binary(Path(artifact["binary"]), artifact["binary_sha256"])
+            owned_env = dict(env)
+            if name != "age_verification":
+                db = "mcr_concert_be_" + name
+                execute([str(tools["createdb"]), "--no-password", "--maintenance-db=postgres", db],
+                        env=cluster.client_env("postgres"), phase=f"retained-create-{name}", cwd=cluster.root)
+                for path in sorted((ROOT / "backend/services/concert-service/migrations").glob("*.sql")):
+                    execute([str(tools["psql"]), "-X", "--no-password", "-v", "ON_ERROR_STOP=1", "-1", "-f", str(path)],
+                            env=cluster.client_env(db), phase=f"retained-schema-{name}-{path.name}", cwd=cluster.root)
+                owned_env.update(CONCERT_TEST_DATABASE_URL=cluster.url(db), CONCERT_TEST_OWNER_ROOT=str(cluster.root),
+                    CONCERT_TEST_OWNER_TOKEN=cluster.token, CONCERT_TEST_OWNER_IDENTITY=f"{cluster.identity[0]}:{cluster.identity[1]}",
+                    CONCERT_TEST_OWNER_PORT="5432")
+            result = execute([str(owned_binary), "--test-threads=1", "--nocapture"], env=owned_env,
+                             phase=f"retained-{name}", cwd=ROOT / "backend", timeout=60)
+            if "0 failed;" not in result.stdout or "0 passed;" in result.stdout:
+                raise SmokeError("inventory", "retained tests did not execute")
+            report["retained"][name] = {"status":"PASS", "exit_code":result.returncode, "stdout":result.stdout,
+                "binary_sha256":artifact["binary_sha256"]}
+        before_pid = cluster.assert_postmaster()
+        before_start = cluster.sql("postgres", "select pg_postmaster_start_time();")
+        cluster.stop()
+        cluster.start()
+        after_pid = cluster.assert_postmaster()
+        after_start = cluster.sql("postgres", "select pg_postmaster_start_time();")
+        if before_pid == after_pid or before_start == after_start:
+            raise SmokeError("restart", "postmaster identity unchanged")
+        artifact = retained["age_claims"]
+        owned_env.update(CONCERT_TEST_DATABASE_URL=cluster.url("mcr_concert_be_age_claims"))
+        result = execute([str(frozen_binary(Path(artifact["binary"]), artifact["binary_sha256"])), "--ignored", "--exact", "durable_restart_verify", "--test-threads=1"],
+                         env=owned_env, phase="retained-restart", cwd=ROOT / "backend", timeout=60)
+        if "1 passed; 0 failed;" not in result.stdout:
+            raise SmokeError("restart", "exact durable restart case missing")
+        report["restart"] = {"status":"PASS", "before_pid":before_pid, "after_pid":after_pid,
+            "before_start":before_start, "after_start":after_start, "stdout":result.stdout}
+        if source_manifest() != checkpoint["source_sha256"] or sha(binary) != checkpoint["binary_sha256"]:
+            raise SmokeError("provenance", "source or frozen artifact drifted")
     finally:
         cluster.cleanup()
         report["cleanup"] = {"status": "PASS", "owned_root_absent": not cluster.root.exists()}
