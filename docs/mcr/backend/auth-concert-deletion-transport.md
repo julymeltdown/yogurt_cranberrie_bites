@@ -30,8 +30,11 @@ Owner232 exclusively owns its Notification receipt hunk in
 The existing unfinished `BE-CANONICAL-OWNER-AUTHORITY` goal is aligned. Its
 historical `BLOCKED` metadata is retained; no reset, replacement, completion
 or token budget is introduced. RootBE is the publishing developer. This owner
-implements, validates, fixes and supplies the committed handoff and its own
-remote publication proof. No king/SL/QA review or acknowledgment stage applies.
+implements, validates, fixes and supplies the committed handoff. One canonical
+publisher receipt establishes remote delivery; no repeated consumer readback,
+proof-only commit or ACK is required under the latest human direction.
+No king/SL/QA review or acknowledgment stage applies. QA08/load/performance
+qualification is **DEFERRED_BY_USER**, not PASS; functional validation continues.
 
 Production transport/protocol and tests are newly authored. Existing platform,
 Tonic/Prost, Tokio, SQLx, UUID, Chrono and Serde dependencies are retained.
