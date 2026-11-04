@@ -66,6 +66,7 @@ async fn main() -> anyhow::Result<()> {
             match (runtime, bootstrap) {
                 (Some(runtime), Some(release)) => {
                     let mut server = tonic::transport::Server::builder()
+                        .layer(platform::actor_delegation::response_scope::RetainedScopeLayer)
                         .layer(platform::correlation::CorrelationLayer)
                         .layer(platform::call_deadline::CallDeadlineLayer)
                         .layer(platform::trace_context::TraceContextLayer);
@@ -97,11 +98,21 @@ async fn main() -> anyhow::Result<()> {
                         runtime.callers.clone(),
                         runtime.actors.clone(),
                     )?;
-                    let product = product_owner.map(|owner| {
+                    let delivery = product_owner.as_ref().map(|owners| {
+                        platform::grpc_method_policy::guard(
+                            &concert_service::product_rpc::delivery::POLICY,
+                            concert_service::product_rpc::proto::product_delivery_service_server::ProductDeliveryServiceServer::new(
+                                concert_service::product_rpc::delivery::DeliveryService::new(owners.delivery.clone()),
+                            ).max_decoding_message_size(4096).max_encoding_message_size(4096),
+                            runtime.callers.clone(),
+                            runtime.actors.clone(),
+                        )
+                    }).transpose()?;
+                    let product = product_owner.map(|owners| {
                         platform::grpc_method_policy::guard(
                             &concert_service::product_rpc::POLICY,
                             concert_service::product_rpc::proto::product_service_server::ProductServiceServer::new(
-                                concert_service::product_rpc::ProductRpcService::new(owner),
+                                concert_service::product_rpc::ProductRpcService::new(owners.product),
                             )
                             .max_decoding_message_size(concert_service::product_rpc::MAX_FRAME)
                             .max_encoding_message_size(concert_service::product_rpc::MAX_FRAME),
@@ -113,6 +124,7 @@ async fn main() -> anyhow::Result<()> {
                         .add_service(bootstrap)
                         .add_service(world)
                         .add_optional_service(product)
+                        .add_optional_service(delivery)
                         .serve_with_shutdown(
                             runtime.address,
                             platform::shutdown::global().cancelled(),

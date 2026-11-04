@@ -36,6 +36,9 @@ pub struct GrpcConcertProductClient {
     client: proto::product_service_client::ProductServiceClient<
         InterceptedService<ActorDelegationClient<Channel>, ServiceIdentityClientInterceptor>,
     >,
+    delivery: proto::product_delivery_service_client::ProductDeliveryServiceClient<
+        InterceptedService<Channel, ServiceIdentityClientInterceptor>,
+    >,
 }
 impl GrpcConcertProductClient {
     pub fn connect(
@@ -52,11 +55,17 @@ impl GrpcConcertProductClient {
         )?;
         Ok(Self {
             client: proto::product_service_client::ProductServiceClient::with_interceptor(
-                ActorDelegationClient::new(channel, signer, Workload::Concert),
+                ActorDelegationClient::new(channel.clone(), signer, Workload::Concert),
                 ServiceIdentityClientInterceptor::new(Workload::Gateway, token)?,
             )
             .max_decoding_message_size(MAX_BODY + 16 * 1024)
             .max_encoding_message_size(MAX_BODY + 16 * 1024),
+            delivery: proto::product_delivery_service_client::ProductDeliveryServiceClient::with_interceptor(
+                channel,
+                ServiceIdentityClientInterceptor::new(Workload::Gateway, token)?,
+            )
+            .max_decoding_message_size(4096)
+            .max_encoding_message_size(4096),
         })
     }
     pub async fn dispatch(
@@ -165,5 +174,76 @@ impl GrpcConcertProductClient {
                 .map_err(|_| Status::deadline_exceeded("Product deadline expired"))?
         })
         .await
+    }
+
+    /// Internal capability only. It never enters browser JSON, headers, caches
+    /// or logs. The outermost HTTP body layer invokes it only after body EOF.
+    pub fn delivery_token(
+        &self,
+        capability: proto::ResponseDelivery,
+    ) -> Result<platform::actor_delegation::response_scope::ResponseScopeToken, Status> {
+        validate_delivery(&capability)?;
+        Ok(
+            platform::actor_delegation::response_scope::ResponseScopeToken::new(
+                std::sync::Arc::new(HttpDelivery {
+                    client: self.clone(),
+                    capability,
+                }),
+            ),
+        )
+    }
+}
+
+fn validate_delivery(value: &proto::ResponseDelivery) -> Result<(), Status> {
+    for text in [&value.instance_id, &value.scope_id] {
+        if !Uuid::parse_str(text)
+            .ok()
+            .is_some_and(|id| !id.is_nil() && id.to_string() == *text)
+        {
+            return Err(Status::internal("Invalid product delivery capability"));
+        }
+    }
+    if value.binding_digest.len() != 32
+        || value.binding_digest.iter().all(|byte| *byte == 0)
+        || value.completion_secret.len() != 32
+    {
+        return Err(Status::internal("Invalid product delivery capability"));
+    }
+    Ok(())
+}
+struct HttpDelivery {
+    client: GrpcConcertProductClient,
+    capability: proto::ResponseDelivery,
+}
+impl platform::actor_delegation::response_scope::ResponseScope for HttpDelivery {
+    fn finish_response(
+        self: std::sync::Arc<Self>,
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<(), Status>> + Send + 'static>>
+    {
+        Box::pin(async move {
+            // A separate system operation has a fresh settlement-only budget.
+            // Spawning avoids inheriting/renewing an expired content deadline.
+            // No content access, actor delegation or retry is performed here.
+            tokio::spawn(async move {
+                let stop = tokio::time::Instant::now() + BUDGET;
+                platform::call_deadline::scope(stop.into_std(), async move {
+                    let mut request = tonic::Request::new(self.capability.clone());
+                    request.set_timeout(BUDGET);
+                    let mut client = self.client.delivery.clone();
+                    let result = tokio::time::timeout_at(stop, client.complete_response(request))
+                        .await
+                        .map_err(|_| {
+                            Status::deadline_exceeded("Product delivery completion unknown")
+                        })??;
+                    if !result.into_inner().completed {
+                        return Err(Status::unavailable("Product delivery completion unknown"));
+                    }
+                    Ok(())
+                })
+                .await
+            })
+            .await
+            .map_err(|_| Status::unavailable("Product delivery completion interrupted"))?
+        })
     }
 }

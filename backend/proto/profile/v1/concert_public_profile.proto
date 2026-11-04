@@ -19,6 +19,9 @@ message PublicProfileReadRequest {
   string request_id = 5;
   PublicProfilePurpose purpose = 6;
   int64 expires_unix_micros = 7;
+  // Caller durably registers this exact private intent BEFORE dispatch.
+  string child_id = 8;
+  string completion_secret = 9;
 }
 // Only current, PUBLIC, nondeleted Profile-owned content. No avatar or Auth facts.
 message PublicProfileObservation {

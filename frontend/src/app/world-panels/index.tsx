@@ -30,8 +30,9 @@ export function createPlacesPresentationSource(source: WorldPresentationPort): P
 export function WorldPanels({ source, scope, children }: { source: WorldPresentationPort | null; scope: PrivacyScope | null; children: ReactNode }) {
   const { auth } = usePorts(), ownership = useWorldPanelOwnership()
   const current = useSyncExternalStore(source?.subscribe ?? noop, source?.read ?? empty, empty)
+  const mural = useSyncExternalStore(current?.mural?.subscribe ?? noop, current?.mural?.read ?? empty, empty)
   const places = useMemo(() => source ? createPlacesPresentationSource(source) : null, [source])
-  const wall = ownership.mural ? <MuralEntryProvider auth={auth ?? null} scope={scope} release={null}>{children}</MuralEntryProvider> : children
+  const wall = ownership.mural ? <MuralEntryProvider auth={auth ?? null} scope={scope} release={mural}>{children}</MuralEntryProvider> : children
   return <Context value={current}>{ownership.places ? <PlacesEntryProvider auth={auth ?? null} source={places}>{wall}</PlacesEntryProvider> : wall}</Context>
 }
 export function ProductionEraControls() { const release = useContext(Context); return <EraControls controller={release?.theme ?? null} /> }

@@ -17,6 +17,7 @@ import { createThemeLoader } from '../theme/loader'
 import type { PlaceMapRelease } from '../../features/places/model/controller'
 import type { AvatarScenePort } from '../avatar/scene'
 import type { SceneryOverviewPort } from '../illustrated/overview'
+import { attachMuralEntrySource, type MuralEntryReleaseSource, type MuralQualificationFactory } from '../mural-entry-lifecycle/source'
 
 export type { WorldReleaseResolver, ResolvedWorldRelease, WorldReleaseRequest } from './release'
 export type WorldRendererStatus = 'loading' | 'ready' | 'unavailable'
@@ -48,6 +49,8 @@ export interface WorldReplicationRelease {
 }
 /** Read-only capabilities of this exact live engine/release, withdrawn before any resource cleanup. */
 export interface WorldPresentationRelease {
+  /** Explicit qualified mural source on this incumbent world; absent stays unavailable. */
+  readonly mural?: MuralEntryReleaseSource
   readonly overview?: SceneryOverviewPort
   readonly request: import('./release').WorldReleaseRequest
   readonly map: PlaceMapRelease
@@ -56,6 +59,7 @@ export interface WorldPresentationRelease {
 }
 export interface WorldPresentationPort { read(): WorldPresentationRelease | null; subscribe(listener: () => void): () => void }
 export interface WorldCompositionOptions {
+  readonly mural?: MuralQualificationFactory
   readonly auth: SessionController
   readonly resolveRelease: WorldReleaseResolver
   readonly renderer?: WorldRendererPort
@@ -98,6 +102,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     let runtime: WorldRuntime | null = null
     let renderer: WorldRendererLease | null = null, camera: WorldCamera | null = null, foot: Point | null = null, zoom = 1, inputPaused: boolean | null = null
     let themeController: ThemeController | null = null
+    let muralEntry: ReturnType<typeof attachMuralEntrySource> | null = null
     let movement: MovementAttachment | null = null, presentationAbort: AbortController | null = null
     let removeRendererStatus = () => {}
     let controller = new AbortController(), bootRevision = 0
@@ -150,6 +155,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     }
     function stopResources() {
       ++bootRevision
+      muralEntry?.dispose(); muralEntry = null
       presented = null
       presentationAbort?.abort(); presentationAbort = null
       themeController?.dispose(); themeController = null
@@ -259,6 +265,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
                   if (!isBootCurrent()) remove(); else removeRendererStatus = remove
                 }
               }
+              if (options.mural && control.muralScene) muralEntry = attachMuralEntrySource({ privacy: auth.privacy,
+                context: { scope: privacyScope, signal: control.signal, scene: control.muralScene, world: release, release: prepared }, factory: options.mural })
               return attachment
             } catch (error) { attachment.dispose(); throw error }
           } })
@@ -285,6 +293,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
           read: () => livePresentation() ? attachment.camera.read() : { following: true, camera: null },
         })
         presented = Object.freeze({ request: Object.freeze({ ...request, signal: presentationAbort.signal }),
+          ...(muralEntry ? { mural: Object.freeze({ read: muralEntry.read, subscribe: muralEntry.subscribe }) } : {}),
           map: Object.freeze({ scope: context.scope, manifest: prepared.map,
             expected: Object.freeze({ mapId: prepared.resources.mapId, revision: prepared.resources.mapRevision, contentHash: prepared.mapInput.pin.mapHash, geometryHash: prepared.map.geometry_hash }) }),
           camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }),

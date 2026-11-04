@@ -1,18 +1,20 @@
 //! Explicit independent product modes; a requested mode requires real producers.
-use crate::product_rpc::ProductOwner;
+use crate::product_rpc::{delivery::DeliveryPublisher, ProductOwner};
 use std::sync::Arc;
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct ProductSettings {
     pub public_feed_read: bool,
     pub owner_media: bool,
 }
+pub struct ProductOwners {
+    pub product: Arc<dyn ProductOwner>,
+    pub delivery: DeliveryPublisher,
+}
 
 /// Production constructor, deliberately without a successful fallback. Owner
 /// adapters are attached here only after their canonical fences are available.
 /// An explicit unsupported opt-in fails before database/listener composition.
-pub fn production_owners(
-    settings: ProductSettings,
-) -> anyhow::Result<Option<Arc<dyn ProductOwner>>> {
+pub fn production_owners(settings: ProductSettings) -> anyhow::Result<Option<ProductOwners>> {
     anyhow::ensure!(
         !settings.public_feed_read,
         "Concert public Feed requires qualified canonical read fences and public-author projection"

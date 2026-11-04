@@ -3,10 +3,11 @@
 Status: **IN_PROGRESS**. The dedicated internal protocol is published at
 `493b05cb18052ead6690bdbf000ae1b967b49e4d`, with protocol commit `86cb76e5` in its
 verified remote ancestry. The Profile producer is compiled and independently qualified as recorded below.
-Concert adapter compilation and joined Feed response qualification remain
-**NOT_RUN**. This delivery contains only the qualified Profile producer, its
-registrations, tests and controller; the Concert adapter remains on the isolated
-`codex/mcr-be-public-profile` branch.
+The caller-intent recovery increment is independently qualified at source
+`52000b758da0fd96ab0a4bccbedb6feb31a0d8c2`. The Concert adapter compiles against
+SDK2 and its closed C03 schema tests pass: **CONTRACT_READY**. Its actual local
+prepared child, joined canonical Auth/Friend flow and final HTTP response
+qualification remain **NOT_RUN**; this is not joined acceptance.
 No production capability flag is enabled by this work.
 
 The original assignment base was `8430cd57`; current source incorporated avatar
@@ -132,7 +133,8 @@ regression tests are `backend/scripts/mcr/public_profile_projection_smoke.py` an
 The Profile `src/lib.rs`, `build.rs`, `src/main.rs`, and grpc `mod.rs` registrations
 have one writer in this assignment. The separate SELF producer supplies new module/
 proto/constructor pins for narrow additions to those files. SELF owns its new
-`0008_concert_self_profile.sql`; this public producer owns no migration. Concert
+`0008_concert_self_profile.sql`; this public producer exclusively owns
+`0009_concert_public_profile_children.sql`. Concert
 build/generation and final root composition stay with the root composer. Auth/
 Friend guard, lease proto, platform method policy and exchange registration stay
 with their canonical authority owner. No manifest/lockfile, frontend, World,
@@ -208,7 +210,7 @@ Production TLS, browser and full multiuser release acceptance are not certified 
 unit or loopback owner tests.
 
 
-### Independent producer receipt
+### Initial independent producer receipt
 
 | Check | Actual result | Exit |
 | --- | --- | --- |
@@ -237,3 +239,162 @@ Native report SHA-256: `d7693d2dda4b133f48abab0fbc2056924f16a6437f34596a9df5df9c
 | native-capacity | `0dc886b5c8de2b4563a437c6f3d2d82a6025684ae28d6025ea1b88681972615f` |
 | native-owner-before-restart | `dadad92b659eea5d77dec47d001efa5a2372b13c3c0e8dd9ff6e1765495212bb` |
 | native-settlement-after-restart | `1e880cd4e9c93a7fc766aa7ca8f9a12eb2b27f9248a2e700cbd5f4e94fea021f` |
+
+### Qualified recovery increment and compiled adapter contract
+
+The independently qualified producer above is not joined restart acceptance.
+The qualified recovery increment adds caller-preallocated `child_id` and
+`completion_secret` to ReadCurrent. The root must durably register that exact
+private intent before dispatch. New owner migration 0009 is exclusively allocated
+for minimal child control receipts; no Profile content or plaintext key is stored.
+A receipt captures the actual full transaction ID, immutable cluster/database and
+role identity before PREPARE. Cancellation before dispatch reserves a terminal
+nonce so a late read cannot create a child. Completion accepts only an exact
+scope/key receipt and either its durable terminal state or proof that its actual
+recorded transaction aborted; missing prepared state alone is insufficient.
+PostgreSQL documents [transaction status and its unknown-state limits](https://www.postgresql.org/docs/16/functions-info.html).
+
+The recovery increment's signed transport and nine native PostgreSQL phases
+passed at `52000b75`, including lost read replies, rollback-before-ack loss,
+idempotent retries, pre-dispatch cancellation, and active/committed/misbound
+receipts. The original-budget test also recovers an actual expired pre-PREPARE
+transaction from its durable receipt. Durable root child registration and Concert restart reconstruction
+remain coordinated with the canonical authority and root owners; no automatic
+TTL/Drop cleanup or joined capability is enabled.
+
+The compiled consumer increment also adds
+`PublicProfileReader::recover_one(&ChildRecoveryReference) -> Result<(), Status>`.
+It uses the configured Profile channel or actual Concert pool and returns no
+content or admission. PROFILE_PUBLIC preallocates its exact child/key, persists
+and attaches that reference before dispatch, and rejects a differently echoed
+capability. LOCAL_PUBLIC captures full native identity and persists its exact
+nonce-derived reference before PREPARE. Its live checks require actual database
+identity and matching prepared XID; idempotent settlement requires that exact
+transaction's aborted status. The root authenticates the encrypted saved reference
+and records child completion durably only after this proof. Missing, expired or
+unknown metadata cannot independently release a child or close a root scope.
+
+| Remaining original assignment criterion | Current state and owner |
+| --- | --- |
+| Dedicated canonical arbitrary-subject Profile read, minimal content, privacy exclusion, native restart primitive | Independently qualified and published `d4ee53f5` via `b09db61e` |
+| Pre-dispatch intents and idempotent Profile owner completion | Independently qualified at `52000b75`: 9 transport and 9 native phases pass; public Profile developer owns joined follow-through |
+| Exact C03 assembly, canonical avatar union and shared local policy | CONTRACT_READY at `52000b75`: compile and 3 schema tests pass against SDK2; actual local SQL/held policy and joined response qualification NOT_RUN |
+| Durable child intent API and native canonical Auth/Friend producer availability | SDK base `888cb6bd` and additive SDK2 `c4ad561c` consumed. Authority owner published native-qualified stores at `dc70d620`; frozen artifact hashes independently verified, actual public-reader joined run NOT_RUN |
+| Root private ledger, HTTP completion, actual joined Feed/C04 response and restart cleanup | Root developer owns ledger/HTTP; public Profile developer validates this adapter in the actual joined flow with consumer owners |
+| Final combined validation, documentation, qualified committed publication and remote ancestry | Independent producer and compiled-contract receipt below; publication and actual combined joined validation remain tracked separately, without an additional main-chat or scrum-lead approval stage |
+
+The separately assigned SELF producer registrations are authored in isolated
+commit `d88751fd`, consumed by that owner as `e2ca87e0`. The SELF developer
+reports production Profile binary and test compilation exit 0 without warnings
+at `5c921e28`, plus eight deterministic and three current native PostgreSQL /
+migration-CLI / restart cases passing with exact cleanup. A fresh Git comparison
+confirmed that all three registration files at that compiled source are byte
+identical to `d88751fd`; no registration correction was requested. These are
+peer-owned qualification results for the SELF composition, not a run of the
+public recovery or Concert tests. The SELF owner subsequently published `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`
+with an actual Auth/Friend/Profile MAIN mTLS read/Track/abort probe passing.
+Concert decision / root HTTP acceptance remains separate. The public recovery
+compile source `52000b75` predates those SELF registrations. The public Profile developer
+remains sole writer of the four existing registration paths; no ownership
+transfer was implied.
+
+
+SDK2 `c4ad561cd813f0f7f1e14f21cb2ee90592e09eea` was fetched from actual
+master and merged without conflicts. Its actual `HeldChildGuard` reference
+method, subject intent/capture methods and required lifecycle hooks match this
+reader's source. The authority owner's 40 passing Concert library tests and 202
+platform tests qualify that SDK checkpoint; they are not a new run of this
+reader's tests. This removes the SDK source prerequisite for the combined
+Profile/Concert compile. The fresh allocated two-artifact build below qualified reader compilation.
+Joined native acceptance remains NOT_RUN.
+
+
+### Recovery and adapter qualification receipt (2026-11-04)
+
+Exact compiled and executed source: `52000b758da0fd96ab0a4bccbedb6feb31a0d8c2`.
+The fresh named BACKEND allocation had 66 GiB free and no open target handles.
+Both builds used Rust 1.88.0, locked offline dependencies, jobs 2, debug 0 and
+incremental 0. The initial Concert build exposed an adapter client-constructor
+type-inference error (fixed in `52000b75`) and a stale contracts-build output
+from another checkout. A scoped `cargo clean -p contracts-build -p auth-service`
+in the allocated target removed only those package outputs; no source, global
+cache, installation or second target changed. The final Concert build exited 0
+in 14.87 seconds with inherited World warnings and no adapter warnings. The final
+Profile rebuild after that refresh exited 0 in 6.26 seconds without warnings.
+
+```sh
+CARGO_TARGET_DIR=<leased-backend-target> CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --locked --offline -p profile-service --test concert_public_profile --no-run --message-format=json
+CARGO_TARGET_DIR=<leased-backend-target> CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --locked --offline -p concert-service --test public_profile_projection --no-run --message-format=json
+PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/public_profile_projection_smoke.py --cargo-json <profile-json> --cargo-json <concert-json>
+PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/public_profile_projection_smoke.py --pinned <private-frozen-directory>/pin.json
+```
+
+Both exact emitted test executables and 1,747 source hashes were frozen before
+the target was explicitly released with no handles. Native execution used only
+those copies, after release. PostgreSQL 16.14 was socket-only in an exact-owned
+private cluster, `max_prepared_transactions=256`, with current Profile migrations
+0001 through 0009. No target was reacquired for the native run.
+
+| Check | Actual result | Exit |
+| --- | --- | --- |
+| Signed arbitrary-subject transport, exact caller intent, malformed owner data, caller/proof/replay/scope rejection, cancellation and original deadline | 9 passed | 0 |
+| Closed C03 fields, required nullable bio and canonical 1.0/1.1 avatar schema/parser/serializer | 3 passed | 0 |
+| Native privacy/minimal wire, held mutation exclusion, original budget/pre-PREPARE recovery, 101 children/overflow, pre-dispatch cancellation, lost read/completion replies, missing-state refusal, before-restart persistence, after-restart settlement | 9 individually selected phases passed | 0 |
+| Exact-owned cleanup | zero prepared quarantine; owned server stopped; exact owned root removed | 0 |
+
+The nine ignored native cases were explicitly selected and executed. The three
+Concert tests execute schema/parser/catalog/serializer behavior; they do not
+execute the actual local prepared SQL methods. No actual canonical Auth/Friend
+joined public read, root lifetime through final HTTP bytes, production TLS for
+this dedicated public RPC or real multiuser Feed/C04 flow is certified here.
+The task remains IN_PROGRESS, with no capability enabled.
+
+| Frozen item | SHA-256 |
+| --- | --- |
+| `pin.json` | `dcfb701e5b135685b0f73422bf197911dc900bd50e1f988ea18707e034af6877` |
+| `native-report.json` | `2905ee78298d3b55f1fcc9cde38c2e6195869e5aa82066a4268c441d8ca04e99` |
+| `concert_public_profile` executable | `1e65db732850ea31d0e9b312984517b3a517b0b0866aea0ca494f19b1c93369f` |
+| `public_profile_projection` executable | `097168f4c3a4522739d7f243a3530e24594f4693e90a5b0f418ebf5195c15690` |
+| `0008_concert_self_profile.sql` | `056fe8d0eb15f352fc8cbd6b07f4562ebca937fa857cd03fe129f319716cf544` |
+| `0009_concert_public_profile_children.sql` | `756bbfe4cf70d13765f580c28e5ba1bd147ebfd5a8970df4cb1d1829dbe90afa` |
+
+| Phase | Passed | Exit | Log SHA-256 |
+| --- | --- | --- | --- |
+| signed-profile | 9 | 0 | `7eac03124dc9d8d3c8e7f76e9ef2d4d485c40a855714b20bc08e8f2c1035aa2f` |
+| closed-c03-union | 3 | 0 | `98e926bd68eac539cedf395535c6d457fea75256c6b7306b4ab057bb5ee37693` |
+| native-privacy | 1 | 0 | `6466e76d05193051803bc4a1fe333a312a024408589dd3adc09617e21dccf1ee` |
+| native-held-exclusion | 1 | 0 | `4dac38cfb1a91c27f411fcf60662838f12ae0949044b2086c2f493d86bccb3ae` |
+| native-original-budget | 1 | 0 | `121c4a1bb9d16942340d8b0e30327d7b40205dbe58005b16404ba4257e25ad05` |
+| native-capacity | 1 | 0 | `ade576dd6ddba84a804098710da2e3a126495f35417fcb7d4c76c479edc8a175` |
+| native-pre-dispatch-cancel | 1 | 0 | `3bdb945b006af3cf942606aa20d152a0bc3e86ca5bf64abb9e9c19a01208bb61` |
+| native-lost-ack | 1 | 0 | `1349ef601726bc10ca60a80cc218c305f0a19007a2a162452909351daea26b12` |
+| native-absence-not-proof | 1 | 0 | `790c898ae82812aca612b5421c9984b2225d9e52d62add8682ecfd5be60d5e7e` |
+| native-owner-before-restart | 1 | 0 | `70b55030918478ad5d61e146d5cb303c41be6f33b9ca76f489e4f3715d9d16a3` |
+| native-settlement-after-restart | 1 | 0 | `90c4a41b7e91de232cd93374b1e7f8b002455f4684155d6a7d7b43529d87d0c8` |
+
+
+### Qualified publication boundary
+
+Integration merge `edbbabdd3259437664011c9308f9941bbec04ce5` consumes published
+master `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`, including the SELF registration
+handoff and owner stores. Every public-producer, dedicated proto, controller,
+new migration, adapter and projection-test source remains byte-identical to the
+compiled `52000b75` checkpoint. Comparison against the frozen manifest found
+31 changed pre-existing peer inputs, including central lock/Profile manifest,
+SELF registration, Auth/Friend registration and root composition. Thus the
+52000 receipt certifies its exact source snapshot; it does not certify a build
+of this merged HEAD. A fresh bounded two-target combined compile has been queued
+with the resource lead. No target remains held.
+
+The net implementation paths against that published master are exclusively the
+dedicated public proto/controller, Concert `adapters/out/mod.rs` export and
+`adapters/out/public_profile/{mod,profile,local}.rs`,
+`tests/public_profile_projection.rs`, Profile public grpc/module/persistence,
+public transport/support tests, owner migration 0009 and this receipt. No
+frontend, World/Feed subtree, central manifest, lockfile or root composition
+change is authored by this increment. Cross-directory import inspection found no
+frontend or SELF/World implementation dependency in the new projection.
+Controller regressions (5), planning provenance check and `git diff --check`
+passed again, all exit 0. The intended direct non-force publication carries the
+independently qualified producer and CONTRACT_READY compiled adapter; actual
+merged build and joined response acceptance remain explicit open gates.
