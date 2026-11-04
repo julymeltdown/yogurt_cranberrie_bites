@@ -4,7 +4,72 @@ use crate::adapters::out::repository::receipt::{CommandProducer, PgCommandReposi
 use concert_application::{commands::*, relationship::social::*};
 use concert_domain::{relationship::social::*, AuthUserId, EventId, ParticipantKey, MAX_REVISION};
 use sha2::{Digest, Sha256};
+use std::sync::Arc;
 use uuid::Uuid;
+
+/// Safe outcome identity only. Never include a handle, ciphertext, key ID or
+/// handle fingerprint. Projection witnesses attest completed authorization and
+/// projection, not a new aggregate mutation.
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub struct SocialEffect {
+    pub operation: &'static str,
+    pub resource: Uuid,
+    pub revision: i64,
+    pub projection: bool,
+}
+/// Trusted runtime observer on the retained service's actual transaction.
+/// Registration must complete before policy/effects. A success witness belongs
+/// to this same transaction and rolls back with every failed commit.
+#[async_trait]
+pub trait SocialTransactionHooks: Send + Sync {
+    async fn register(&self, c: &mut PgConnection) -> Result<(), RelationshipError>;
+    async fn succeeded(
+        &self,
+        c: &mut PgConnection,
+        effect: SocialEffect,
+    ) -> Result<(), RelationshipError>;
+}
+
+/// Trusted BE27 write adapter only; this does not authorize an introduction edit.
+/// Call after its actual Event FOR UPDATE -> Intro FOR UPDATE/mutation, inside
+/// PgCommandRepository::execute. That retained producer must return the exact
+/// Intro SafeReference/Invalidation: the kernel queues the existing BE15 outbox
+/// after this hook, in this same transaction. No extra receipt/queue is created.
+pub async fn revoke_intro_consent_in(
+    c: &mut PgConnection,
+    event: EventId,
+    intro_id: Uuid,
+    owner: AuthUserId,
+    new_revision: Revision,
+) -> Result<(), RelationshipError> {
+    // Idempotent for the required caller-held root. NOWAIT prevents a misplaced
+    // caller from introducing an Intro -> waiting Event lock-order cycle.
+    sqlx::query("select event_id from concert_events where event_id=$1 for update nowait")
+        .bind(event.uuid())
+        .fetch_optional(&mut *c)
+        .await
+        .map_err(unavailable)?
+        .ok_or(RelationshipError::Denied)?;
+    let actual: bool = sqlx::query_scalar("select exists(select 1 from concert_intros where event_id=$1 and intro_id=$2 and owner_id=$3 and revision=$4 and public.concert_social_own_visible_xmin(xmin))")
+        .bind(event.uuid()).bind(intro_id).bind(owner.uuid()).bind(new_revision.get())
+        .fetch_one(&mut *c).await.map_err(unavailable)?;
+    let receipt: bool = sqlx::query_scalar("select exists(select 1 from concert_command_receipts where actor_id=$1 and event_id=$2 and target_id=$3 and operation_id in ('setConcertIntro','publishConcertIntro','closeConcertIntro') and state='PENDING' and xmin::text=mod(pg_current_xact_id()::text::numeric,4294967296)::text)")
+        .bind(owner.uuid()).bind(event.uuid()).bind(intro_id).fetch_one(&mut *c).await.map_err(unavailable)?;
+    if !actual || !receipt {
+        return Err(RelationshipError::Unavailable);
+    }
+    // The event root excludes every retained Social write/read before these
+    // request/grant locks. There is no pair lock or independent transaction.
+    let ids: Vec<Uuid> = sqlx::query_scalar("select request_id from concert_social_requests where event_id=$1 and intro_id=$2 and recipient_id=$3 and intro_revision<$4 order by request_id for update")
+        .bind(event.uuid()).bind(intro_id).bind(owner.uuid()).bind(new_revision.get()).fetch_all(&mut *c).await.map_err(unavailable)?;
+    for id in ids {
+        sqlx::query("update concert_social_grants set state='REVOKED',revision=revision+1 where event_id=$1 and request_id=$2 and state='ACTIVE'")
+            .bind(event.uuid()).bind(id).execute(&mut *c).await.map_err(unavailable)?;
+        sqlx::query("update concert_social_requests set state='REVOKED',revision=revision+1 where event_id=$1 and request_id=$2 and state in ('PENDING','APPROVED')")
+            .bind(event.uuid()).bind(id).execute(&mut *c).await.map_err(unavailable)?;
+    }
+    Ok(())
+}
 
 /// Current intro/claim eligibility, bound to exact users/event/intro revision and fenced
 /// through commit. No client claim or profile existence can implement this port.
@@ -35,6 +100,7 @@ pub struct SocialService<A, E> {
     eligibility: E,
     keys: HandleKeys,
     ttl_seconds: i64,
+    hooks: Option<Arc<dyn SocialTransactionHooks>>,
 }
 impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
     pub fn new(
@@ -53,7 +119,28 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
             eligibility,
             keys,
             ttl_seconds,
+            hooks: None,
         })
+    }
+    pub fn with_transaction_hooks(mut self, hooks: Arc<dyn SocialTransactionHooks>) -> Self {
+        self.hooks = Some(hooks);
+        self
+    }
+    async fn register_transaction(&self, c: &mut PgConnection) -> Result<(), RelationshipError> {
+        if let Some(hooks) = &self.hooks {
+            hooks.register(c).await?;
+        }
+        Ok(())
+    }
+    async fn record_effect(
+        &self,
+        c: &mut PgConnection,
+        effect: SocialEffect,
+    ) -> Result<(), RelationshipError> {
+        if let Some(hooks) = &self.hooks {
+            hooks.succeeded(c, effect).await?;
+        }
+        Ok(())
     }
     /// Owner-only metadata. No ciphertext, key identifiers or plaintext in this result.
     pub async fn own_handles(
@@ -61,6 +148,7 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
         actor: ParticipantKey,
     ) -> Result<Vec<HandleState>, RelationshipError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        self.register_transaction(&mut tx).await?;
         let query = PolicyQuery {
             event: actor.event_id,
             actor: actor.user_id,
@@ -85,6 +173,16 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
                 }
             })
             .collect();
+        self.record_effect(
+            &mut tx,
+            SocialEffect {
+                operation: "listOwnConcertHandles",
+                resource: actor.user_id.uuid(),
+                revision: 0,
+                projection: true,
+            },
+        )
+        .await?;
         tx.commit().await.map_err(unavailable)?;
         Ok(result)
     }
@@ -261,6 +359,7 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
         platform: Platform,
     ) -> Result<PrivateReveal, RelationshipError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        self.register_transaction(&mut tx).await?;
         // Event first; shared lock serializes closure and every social mutation before reads.
         lock_event(&mut tx, actor.event_id, false)
             .await
@@ -274,7 +373,9 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
             event: actor.event_id,
             actor: actor.user_id,
             subject: peer,
-            field: Field::Interaction,
+            // Frozen reveal is READ, including READ_ONLY. This relationship
+            // read never grants private access; reciprocal checks below do.
+            field: Field::PublicProfile,
         };
         let decision = self.policy.authorize_in(&mut tx, q, None).await?;
         let sharing = self
@@ -363,6 +464,16 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> SocialService<A, E> {
         if !ready {
             return Err(RelationshipError::Denied);
         }
+        self.record_effect(
+            &mut tx,
+            SocialEffect {
+                operation: "revealConcertSocialHandle",
+                resource: id,
+                revision: output.grant_revision.get(),
+                projection: true,
+            },
+        )
+        .await?;
         tx.commit().await.map_err(unavailable)?;
         Ok(output)
     }
@@ -597,6 +708,36 @@ struct Producer<'a, A, E> {
 }
 #[async_trait]
 impl<A: FencedRelationshipAuthority, E: SocialEligibility> CommandProducer for Producer<'_, A, E> {
+    async fn completed(
+        &self,
+        c: &mut PgConnection,
+        s: Scope,
+        target: Uuid,
+        receipt: &SafeReceipt,
+    ) -> Result<(), CommandError> {
+        if receipt.scope != s || receipt.state != ReceiptState::Succeeded {
+            return Err(CommandError::Unavailable);
+        }
+        let reference = receipt.reference.ok_or(CommandError::InvalidState)?;
+        if reference.resource != target || s.operation.id() != self.action.operation() {
+            return Err(CommandError::InvalidState);
+        }
+        // A replay projects an already verified receipt; it does not attest a
+        // second aggregate mutation. The hook retains an existing same-TX
+        // mutation witness when apply already wrote one.
+        self.service
+            .record_effect(
+                c,
+                SocialEffect {
+                    operation: self.action.operation(),
+                    resource: target,
+                    revision: reference.revision,
+                    projection: true,
+                },
+            )
+            .await
+            .map_err(error)
+    }
     async fn authorize(
         &self,
         c: &mut PgConnection,
@@ -606,6 +747,7 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> CommandProducer for P
         if s.operation.id() != self.action.operation() {
             return Err(CommandError::Denied);
         }
+        self.service.register_transaction(c).await.map_err(error)?;
         lock_event(c, EventId::from_uuid(s.event), true).await?;
         let actor = AuthUserId::from_uuid(s.actor);
         let event = EventId::from_uuid(s.event);
@@ -737,6 +879,18 @@ impl<A: FencedRelationshipAuthority, E: SocialEligibility> CommandProducer for P
             resource: target,
             revision,
         };
+        self.service
+            .record_effect(
+                c,
+                SocialEffect {
+                    operation: self.action.operation(),
+                    resource: target,
+                    revision,
+                    projection: false,
+                },
+            )
+            .await
+            .map_err(error)?;
         Ok((
             Completion::Succeeded {
                 reference,

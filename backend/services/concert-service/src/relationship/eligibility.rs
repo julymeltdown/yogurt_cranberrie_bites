@@ -14,9 +14,10 @@ use concert_domain::{
 };
 use sqlx::{PgConnection, Row};
 
-/// Trusted verifier configuration/availability, not a browser assertion. The
-/// source implementation must bind the exact request and retain any revocation
-/// fence through this transaction. No positive production fallback is provided.
+/// Trusted accepted-claim provenance configuration, not a browser assertion or
+/// verification-start availability. An operational provider outage does not
+/// invalidate an already verified canonical claim. Mutable trust sources must
+/// retain their revocation fence through this transaction.
 #[async_trait]
 pub trait SharingVerifierStatus: Send + Sync {
     async fn current_in(
@@ -32,6 +33,47 @@ pub struct VerifierStatus {
     pub valid_until: DateTime<Utc>,
 }
 pub struct UnavailableSharingVerifier;
+/// Explicit immutable server configuration recognizing an already persisted
+/// claim's issuer/revision. This creates no claim or verification proof. Keep
+/// this snapshot for the whole producer lifetime; replacing trust configuration
+/// requires draining its held scopes, not mutating this object in place.
+pub struct ConfiguredSharingVerifier {
+    verifier: String,
+    source_revision: String,
+}
+impl ConfiguredSharingVerifier {
+    pub fn new(verifier: String, source_revision: String) -> Result<Self, RelationshipError> {
+        validate_status(
+            &VerifierStatus {
+                verifier: verifier.clone(),
+                source_revision: source_revision.clone(),
+                valid_until: DateTime::<Utc>::MAX_UTC,
+            },
+            Utc::now(),
+        )?;
+        Ok(Self {
+            verifier,
+            source_revision,
+        })
+    }
+}
+#[async_trait]
+impl SharingVerifierStatus for ConfiguredSharingVerifier {
+    async fn current_in(
+        &self,
+        _: &mut PgConnection,
+        request: Context,
+    ) -> Result<VerifierStatus, RelationshipError> {
+        request
+            .check(Utc::now())
+            .map_err(|_| RelationshipError::Unavailable)?;
+        Ok(VerifierStatus {
+            verifier: self.verifier.clone(),
+            source_revision: self.source_revision.clone(),
+            valid_until: request.expires_at,
+        })
+    }
+}
 #[async_trait]
 impl SharingVerifierStatus for UnavailableSharingVerifier {
     async fn current_in(
