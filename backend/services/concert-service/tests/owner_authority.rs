@@ -10,3 +10,6 @@ mod fixture;
 mod native;
 #[path = "owner_authority_support/owners.rs"]
 mod owners;
+
+#[path = "owner_authority_support/product.rs"]
+mod product;

@@ -147,6 +147,14 @@ impl Fixture {
             root_task,
         })
     }
+    pub(super) fn delivery_publisher(
+        &self,
+    ) -> concert_service::product_rpc::delivery::DeliveryPublisher {
+        concert_service::product_rpc::delivery::DeliveryPublisher::new(
+            self.ledger.clone(),
+            self.registry.clone(),
+        )
+    }
     pub(super) async fn bind_delivery(&self, scope: &OwnerGuardScope) -> anyhow::Result<()> {
         let value = scope.producer_scope();
         self.ledger
