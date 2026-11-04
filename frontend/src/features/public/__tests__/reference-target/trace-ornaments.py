@@ -60,7 +60,12 @@ def paths(mask):
             if (p[0]-before[0])*(after[1]-p[1]) != (p[1]-before[1])*(after[0]-p[0]):
                 turns.append(p)
         if len(turns) >= 3:
-            contours.append('M'+' '.join(f'{x},{y}' for x, y in turns)+'Z')
+            d = f'M{turns[0][0]},{turns[0][1]}'
+            for a, b in zip(turns, turns[1:]):
+                dx, dy = b[0]-a[0], b[1]-a[1]
+                assert dx == 0 or dy == 0
+                d += f'h{dx}' if dy == 0 else f'v{dy}'
+            contours.append(d+'Z')
     return ''.join(contours)
 
 
