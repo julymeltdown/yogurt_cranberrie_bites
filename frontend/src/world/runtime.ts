@@ -1,3 +1,6 @@
+import { createRuntimeEffects } from './preferences/runtime'
+import type { RuntimeEffects } from './preferences/contract'
+export type { RuntimeEffects, RuntimeEffectLease, RuntimeEffectValue } from './preferences/contract'
 import type { WorldCamera } from './camera/port'
 import type { createPhaserMuralScene } from './mural/phaser'
 import type { MuralScenePort } from './mural/sink'
@@ -18,6 +21,8 @@ export interface EngineLease {
   destroy(): void
   /** Synchronous atomic visual commit. Throws with the old skin intact. */
   replaceSkin?(map: LoadedMap): void
+  /** Real effects on this engine only; absent implementations remain unavailable. */
+  readonly effects?: RuntimeEffects | undefined
   readonly camera?: WorldCamera
   readonly avatarScene?: AvatarScenePort
   /** Existing scene only. Caller must independently qualify the anchor and C04 policy. */
@@ -53,6 +58,8 @@ export function createWorldRuntime(options: RuntimeOptions) {
   let active: { controller: AbortController; mount: HTMLDivElement; engine: EngineLease | null; map: LoadedMap | null; controls: ControlAttachment | null;
     observer: ResizeObserver | null; resize: (() => void) | null; frame: number | null; detach: () => void; claim: { owner: object }; creating: boolean; finish: () => void } | null = null
   let flight: Promise<RuntimeState> | null = null, drain = Promise.resolve()
+  const effects = createRuntimeEffects(() => state.phase === 'ready' && active?.engine?.effects
+    ? { effects: active.engine.effects, signal: active.controller.signal } : null, options.timeoutMs ?? limits.deadlineMs)
   let skinFlight: AbortController | null = null
   let skinCommitting = false
   const owner = {}, listeners = new Set<() => void>()
@@ -210,7 +217,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
     }
   }
   return {
-    start, stop, replaceSkin,
+    start, stop, replaceSkin, effects,
     overview: Object.freeze({ read: overview.read, subscribe: overview.subscribe }),
     readSkin: () => active?.map?.theme.theme_id ?? null,
     read: () => state,

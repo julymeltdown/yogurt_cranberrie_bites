@@ -1,3 +1,4 @@
+import { createEnginePreferenceEffects, type EnginePreferenceEffects } from '../preferences/engine'
 import { createPhaserMuralScene } from '../mural/phaser'
 import type { MuralSceneTexture } from '../mural/sink'
 import type { IncumbentMuralScene } from '../runtime'
@@ -34,7 +35,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       return Object.freeze({ textures: keys.length, decodedBytes, objects, peakTextures, peakDecodedBytes })
     }
     type Skin = { show(): void; remove(): void }
-    let skin: Skin | null = null
+    let skin: Skin | null = null, effects: EnginePreferenceEffects | null = null
     let sceneReady = false, cameraFoot: Point | null = null, cameraZoom: number | null = null
     let avatarRevision = 0
     const avatarTextures = new Map<AvatarSceneTexture, () => void>(), avatarSprites = new Map<AvatarSceneSprite, () => void>(), avatarListeners = new Set<() => void>()
@@ -51,7 +52,8 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
           sceneReady = true
           skin = this.prepareSkin(loaded)
           skin.show()
-          const remove = () => { sceneReady = false; closeMural(); clearAvatars(); skin?.remove(); skin = null }
+          effects = createEnginePreferenceEffects(game.renderer as PhaserType.Renderer.Canvas.CanvasRenderer, this.tweens)
+          const remove = () => { effects?.dispose(); effects = null; sceneReady = false; closeMural(); clearAvatars(); skin?.remove(); skin = null }
           this.events.once(Phaser.Scenes.Events.SHUTDOWN, remove)
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
           // Phaser Canvas roundPixels expands every frame by half a source pixel.
@@ -243,7 +245,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       }
     }
     const spriteTextures = new Map<AvatarSceneSprite, AvatarSceneTexture>()
-    return { ready, closed, camera: cameraView, avatarScene, muralScene, readScenery,
+    return { ready, closed, get effects() { return effects ?? undefined }, camera: cameraView, avatarScene, muralScene, readScenery,
       replaceSkin(next) {
         if (stopped || !sceneReady) throw new Error('Map scene unavailable')
         assertSameWorld(loaded, next)
@@ -263,7 +265,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       setVisible(value) { visible = value; if (!stopped && game.isRunning) { if (value) game.loop.wake(); else game.loop.sleep() } },
       destroy() {
         if (stopped) return
-        stopped = true; closeMural(); clearAvatars(); game.canvas?.remove()
+        stopped = true; effects?.dispose(); effects = null; closeMural(); clearAvatars(); game.canvas?.remove()
         flushDestroy() // Boot in progress is fenced by postBoot; its mount has already been detached.
       },
     }
