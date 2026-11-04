@@ -1,4 +1,5 @@
 //! Canonical scope adapters. No cached observation can construct a positive grant.
+use super::trust::ClaimTrust;
 use super::{
     claim_reader::{AuthorityDecision, ProjectionAuthority},
     Access, Authority,
@@ -22,17 +23,34 @@ use std::sync::Arc;
 pub struct ScopedProjectionAuthority {
     scope: Arc<OwnerGuardScope>,
     verification_available: bool,
+    trust: ClaimTrust,
 }
 impl ScopedProjectionAuthority {
     pub fn new(scope: Arc<OwnerGuardScope>, verification_available: bool) -> Self {
         Self {
             scope,
             verification_available,
+            trust: ClaimTrust::none(),
+        }
+    }
+    pub fn with_claim_trust(
+        scope: Arc<OwnerGuardScope>,
+        verification_available: bool,
+        trust: ClaimTrust,
+    ) -> Self {
+        Self {
+            scope,
+            verification_available,
+            trust,
         }
     }
 }
 #[async_trait]
 impl ProjectionAuthority for ScopedProjectionAuthority {
+    fn accepts_claim(&self, verifier: &str, revision: &str) -> bool {
+        self.trust.accepts(verifier, revision)
+    }
+
     async fn authorize_in(
         &self,
         c: &mut PgConnection,

@@ -3,6 +3,7 @@
 use super::{
     claim_reader::PgClaimProjection,
     scoped::{ScopedAgeAuthority, ScopedProjectionAuthority},
+    trust::ClaimTrust,
     PgAgeClaims,
 };
 use crate::{
@@ -46,6 +47,7 @@ pub struct AgeRuntime {
     clock: Arc<dyn Clock>,
     keys: Arc<FingerprintKeys>,
     mode: ProviderMode,
+    trust: ClaimTrust,
 }
 impl AgeRuntime {
     pub fn new(
@@ -54,26 +56,40 @@ impl AgeRuntime {
         keys: Arc<FingerprintKeys>,
         mode: ProviderMode,
     ) -> Self {
+        let trust = match &mode {
+            ProviderMode::Unavailable => ClaimTrust::none(),
+            ProviderMode::Configured { config, .. } => ClaimTrust::configured(config),
+        };
         Self {
             pool,
             clock,
             keys,
             mode,
+            trust,
         }
+    }
+    /// Accepted persisted sources may remain trusted while new proof is disabled.
+    /// Replacing this set explicitly revokes omitted sources for later projections.
+    pub fn with_claim_trust(mut self, trust: ClaimTrust) -> Self {
+        self.trust = trust;
+        self
     }
     pub fn verification_available(&self) -> bool {
         match &self.mode {
             ProviderMode::Unavailable => false,
-            ProviderMode::Configured { verifier, .. } => verifier.available(),
+            ProviderMode::Configured { config, verifier } => {
+                self.trust.accepts(&config.verifier, &config.revision) && verifier.available()
+            }
         }
     }
     /// Intro supplies its original held scope and registers its own native TX.
     pub fn projection(&self, scope: Arc<OwnerGuardScope>) -> PgClaimProjection {
         PgClaimProjection::new(
             self.pool.clone(),
-            Arc::new(ScopedProjectionAuthority::new(
+            Arc::new(ScopedProjectionAuthority::with_claim_trust(
                 scope,
                 self.verification_available(),
+                self.trust.clone(),
             )),
             self.clock.clone(),
         )
@@ -81,9 +97,12 @@ impl AgeRuntime {
     pub fn claims(&self, scope: Arc<OwnerGuardScope>) -> PgAgeClaims {
         let (config, verifier): (_, Arc<dyn Verifier>) = match &self.mode {
             ProviderMode::Unavailable => (None, Arc::new(UnavailableVerifier)),
-            ProviderMode::Configured { config, verifier } => {
-                (Some(config.clone()), verifier.clone())
-            }
+            ProviderMode::Configured { config, verifier } => (
+                self.trust
+                    .accepts(&config.verifier, &config.revision)
+                    .then(|| config.clone()),
+                verifier.clone(),
+            ),
         };
         // Missing provider never removes canonical own-status read authority.
         PgAgeClaims::new(

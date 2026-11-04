@@ -22,6 +22,11 @@ pub struct AuthorityDecision {
 }
 #[async_trait]
 pub trait ProjectionAuthority: Send + Sync {
+    /// Immutable accepted source policy, independent of new-proof availability.
+    /// Unknown provenance denies the canonical newest record, never falls back.
+    fn accepts_claim(&self, _verifier: &str, _revision: &str) -> bool {
+        false
+    }
     /// Called before claim locks and again AFTER private projection. Resolve exact
     /// canonical actor/subject/session/event/request/deadline and current policy;
     /// hold participating owner/session/scope fences through the final COMMIT.
@@ -194,10 +199,14 @@ impl PgClaimProjection {
         // Crucially no status/expiry/event predicate before the canonical LIMIT.
         let row = sqlx::query("select * from concert_age_claims where user_id=$1 order by verified_at desc,expires_at desc,claim_id desc limit 1 for share")
             .bind(query.subject.uuid()).fetch_optional(&mut *connection).await.map_err(unavailable)?;
-        let claims = row
-            .map(owner_claim)
-            .transpose()?
+        // Select FIRST; an untrusted newest record cannot reveal an older claim.
+        let newest = row.map(owner_claim).transpose()?;
+        let claims = newest
             .into_iter()
+            .filter(|claim| {
+                self.authority
+                    .accepts_claim(&claim.verifier_id, &claim.source_revision)
+            })
             .collect::<Vec<_>>();
         let now = self.clock.now();
         validate(query, now)?;
