@@ -69,7 +69,7 @@ must be outside any target directory. Build and target release precede native ru
 
 | Case ID | Current executable support / remaining evidence |
 |---|---|
-| `QA09-DB-RESTART` | Read-only owner snapshots can compare durable state. Actual same-candidate application restart boundary remains NOT_RUN. |
+| `QA09-DB-RESTART` | Read-only owner snapshots can compare durable state. Same-owned-cluster restart helper verifies physical lineage and actual prepared work; actual same-candidate application/business restart remains NOT_RUN. |
 | `QA09-BACKUP-RESTORE` | Existing runner's FINISHED/ACTIVE/MISSING_WITNESS physical restore segment is delegated unchanged. Segment PASS only changes its case to IN_PROGRESS; actual domain recovery remains open. |
 | `QA09-OUTBOX-REPLAY` | Observer detects loss/change of delivered outbox rows. Actual downstream deduplication and consumer/business receipt binding remain NOT_RUN. |
 | `QA09-PENDING-PICKUP` | Observer detects lost/reverted CLAIMED rows, claimed-quantity loss and inventory overflow. Actual pickup bridge and authorized pending/committed pickup recovery remain NOT_RUN. |
@@ -110,6 +110,15 @@ They do not establish an actual fault boundary, authority, downstream dedup,
 cleanup completion or browser recovery. Retention/pruning windows require their
 actual owner's interpretation; a missing committed row is never silently excused.
 
+`restart_owner_cluster(cluster, private_key)` orchestrates the original owned
+Cluster stop/start methods, requires a distinct postmaster, and compares physical
+system lineage plus actual prepared GID/XID/database state across that boundary.
+Only run-local HMAC bindings, a prepared count, booleans and actual UTC phase
+timestamps are returned. No prepared transaction is manually settled; negative
+quarantine must remain identical. This is physical restart support, not business
+receipt/pickup preservation or original-case acceptance. The caller must run it
+within the same accepted native resource guardian and preserve cleanup on failure.
+
 ## Coordination envelope
 
 Version 1 is evidence coordination, not a new public/product contract. Fields are
@@ -126,7 +135,7 @@ Browser and backend HMAC keys remain independent and private.
 
 Source-only command:
 `PYTHONDONTWRITEBYTECODE=1 python3 scripts/mcr/recovery/test_qa09_backend.py`
-passed 19 tests, exit 0. These regressions exercise observer loss/overflow,
+passed 20 tests, exit 0. These regressions exercise observer loss/overflow,
 redaction, binding drift, read-only SQL construction, unsupported metadata,
 exclusive private reports and both-script checkpoint pins. Dictionary fixtures
 are pure algorithm checks, never native/runtime or product acceptance evidence.

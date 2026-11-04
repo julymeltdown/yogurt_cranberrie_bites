@@ -151,6 +151,10 @@ class ObserverTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             qa.capture(object(), "concert", "mcr_concert", SCOPE, KEY)
 
+    def test_restart_refuses_foreign_cluster_without_process_or_sql_access(self):
+        with self.assertRaises(ValueError):
+            qa.restart_owner_cluster(object(), KEY)
+
     def test_restore_checkpoint_must_pin_both_new_orchestration_sources(self):
         pins = qa.script_pins()
         qa.verify_checkpoint_scripts({"qa09_source_sha256": pins})
