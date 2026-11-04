@@ -423,6 +423,7 @@ fn production_config() -> AppConfig {
         seed_enabled: false,
         auth_grpc_endpoint: "http://auth.internal:50051".into(),
         concert_grpc_endpoint: None,
+        concert_release_digest: None,
         profile_grpc_endpoint: "http://profile.internal:50052".into(),
         friend_grpc_endpoint: "http://friend.internal:50053".into(),
         notification_grpc_endpoint: "http://notification.internal:50054".into(),

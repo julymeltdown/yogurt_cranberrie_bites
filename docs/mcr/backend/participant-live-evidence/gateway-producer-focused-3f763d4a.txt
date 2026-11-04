@@ -1,0 +1,16 @@
+
+running 12 tests
+test participant::live::auth_tests::actual_read_client_requires_current_exact_no_store_owner_reply ... ok
+test participant::live::auth_tests::original_deadline_and_real_credentials_bound_auth_call ... ok
+test participant::live::coordinator_tests::native_guarded_coordinator_cas_rollback_and_decision_recovery ... ignored, requires marker/inode-owned private PG16.14 fixture with migration 0027
+test participant::live::decision_endpoint_tests::native_decision_service_client ... ignored, external join only: requires owned private fixture and running decision endpoint
+test participant::live::decision_endpoint_tests::native_decision_service_endpoint ... ignored, external join only: requires owned private Concert PG16.14 and explicit production-format keys
+test participant::live::decision_rpc::tests::recovery_query_clips_larger_producer_ceiling_without_renewing_proof ... ok
+test participant::live::joined_tests::native_actual_owner_profile_participant_save_reload_and_abort ... ignored, actual external Auth/Friend/Profile binaries and owned PG16.14 join harness only
+test participant::live::profile::tests::prepared_native_identity_requires_exact_effect_operation_and_canonical_numbers ... ok
+test participant::live::profile::tests::terminal_replies_cannot_rebind_prepared_identity_or_resolve_unknowns ... ok
+test participant::live::service::tests::delivery_failures_keep_only_closed_code_reason_pairs ... ok
+test participant::live::update::tests::duplicate_patch_fields_and_transport_overflow_fail_closed ... ok
+test participant::live::update::tests::full_patch_matches_frozen_c03_shape_and_preserves_null_vs_absent ... ok
+
+test result: ok. 8 passed; 0 failed; 4 ignored; 0 measured; 80 filtered out; finished in 0.31s

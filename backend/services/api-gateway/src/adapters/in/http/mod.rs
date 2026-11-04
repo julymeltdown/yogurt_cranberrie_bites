@@ -233,6 +233,9 @@ pub fn router(state: Arc<AppState>) -> Router {
             high_risk_session_middleware,
         ))
         .layer(from_fn_with_state(state.clone(), admin_audit_middleware));
+    let participant = state.concert_participant_client.as_ref().map(|client| {
+        concert_participant::router(state.clone(), client.clone())
+    }).unwrap_or_default();
     let router = Router::new()
         .merge(api_docs_routes::router(
             state.runtime_mode,
@@ -240,6 +243,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         ))
         .merge(browser_auth::router(state.clone()))
         .merge(concert_bootstrap::router(state.clone()))
+        .merge(participant)
         .merge(concert_product::router(state.clone()))
         .merge(concert_world::router_with_boundary(state.clone()))
         .merge(profile_routes::router(state.clone()))

@@ -20,6 +20,7 @@ fn config(origins: Vec<String>) -> AppConfig {
         seed_enabled: false,
         auth_grpc_endpoint: "http://127.0.0.1:50051".into(),
         concert_grpc_endpoint: None,
+        concert_release_digest: None,
         profile_grpc_endpoint: "http://127.0.0.1:50052".into(),
         friend_grpc_endpoint: "http://127.0.0.1:50053".into(),
         notification_grpc_endpoint: "http://127.0.0.1:50054".into(),
@@ -67,6 +68,27 @@ fn config(origins: Vec<String>) -> AppConfig {
         // These cases exercise HTTP hardening, not the internal transport.
         tls_material: None,
     }
+}
+
+#[test]
+fn participant_release_requires_an_explicit_endpoint_and_canonical_digest() {
+    let mut candidate = config(Vec::new());
+    candidate.concert_release_digest = Some("a".repeat(64));
+    assert!(candidate.validate().is_err());
+    candidate.concert_grpc_endpoint = Some("http://127.0.0.1:55099".into());
+    for invalid in [
+        "0".repeat(64),
+        "A".repeat(64),
+        "a".repeat(63),
+        "g".repeat(64),
+    ] {
+        candidate.concert_release_digest = Some(invalid);
+        assert!(candidate.validate().is_err());
+    }
+    candidate.concert_release_digest = Some("a".repeat(64));
+    candidate
+        .validate()
+        .expect("explicit trusted release input");
 }
 
 #[test]

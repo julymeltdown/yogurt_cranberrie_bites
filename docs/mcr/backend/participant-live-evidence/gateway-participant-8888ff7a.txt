@@ -1,0 +1,11 @@
+
+running 7 tests
+test actual_sealed_http_access_and_signed_identity_forward_original_c03_bytes ... ok
+test auth_browser_origin_body_limits_and_noncanonical_paths_refuse_before_owner_dispatch ... ok
+test eof_after_valid_data_still_settles_when_content_ceiling_has_expired ... ok
+test gateway_support::tests::route_harness_reuses_single_jwt_key_material ... ok
+test response_allowlist_rejects_cross_identity_private_content_and_mismatched_failure_pairs ... ok
+test response_wide_earlier_expiry_withholds_unpolled_data_without_completing_owner ... ok
+test typed_conflict_keeps_delivery_but_dropped_and_invalid_bodies_never_complete ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.87s

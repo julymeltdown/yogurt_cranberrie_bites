@@ -337,6 +337,7 @@ fn test_config(jwks_json: &str) -> AppConfig {
         seed_enabled: false,
         auth_grpc_endpoint: "http://127.0.0.1:50051".into(),
         concert_grpc_endpoint: None,
+        concert_release_digest: None,
         profile_grpc_endpoint: "http://127.0.0.1:50052".into(),
         friend_grpc_endpoint: "http://127.0.0.1:50053".into(),
         notification_grpc_endpoint: "http://127.0.0.1:50054".into(),

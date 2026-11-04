@@ -308,6 +308,8 @@ pub struct AppConfig {
     pub auth_grpc_endpoint: String,
     /// Explicit opt-in; absent Concert configuration keeps bootstrap unavailable.
     pub concert_grpc_endpoint: Option<String>,
+    /// Operator-selected digest of the same validated release served by Concert.
+    pub concert_release_digest: Option<String>,
     pub profile_grpc_endpoint: String,
     pub friend_grpc_endpoint: String,
     pub notification_grpc_endpoint: String,
@@ -486,6 +488,9 @@ impl AppConfig {
             )?,
             auth_grpc_endpoint: env_or("GATEWAY_AUTH_GRPC_ENDPOINT", "http://127.0.0.1:50051"),
             concert_grpc_endpoint: platform::config::optional_env("GATEWAY_CONCERT_GRPC_ENDPOINT"),
+            concert_release_digest: platform::config::optional_env(
+                "GATEWAY_CONCERT_RELEASE_DIGEST",
+            ),
             profile_grpc_endpoint: env_or(
                 "GATEWAY_PROFILE_GRPC_ENDPOINT",
                 "http://127.0.0.1:50052",
@@ -710,6 +715,17 @@ impl AppConfig {
             require_production_safe_url(production, "GATEWAY_CONCERT_GRPC_ENDPOINT", endpoint)?;
         }
 
+        if let Some(digest) = &self.concert_release_digest {
+            anyhow::ensure!(
+                self.concert_grpc_endpoint.is_some()
+                    && digest.len() == 64
+                    && digest
+                        .bytes()
+                        .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+                    && digest.bytes().any(|b| b != b'0'),
+                "GATEWAY_CONCERT_RELEASE_DIGEST requires Concert endpoint and exact release digest"
+            );
+        }
         require_production_safe_urls(
             production,
             "GATEWAY_CORS_ALLOWED_ORIGINS",
@@ -813,8 +829,11 @@ pub struct AppState {
     /// absent; only the configured concrete clients populate it.
     pub concert_identity: Option<crate::adapters::out::concert_identity::ConcertIdentityReader>,
     pub concert_client: Option<crate::adapters::out::concert_client::GrpcConcertClient>,
-    pub concert_product_client: Option<crate::adapters::out::concert_product::GrpcConcertProductClient>,
+    pub concert_product_client:
+        Option<crate::adapters::out::concert_product::GrpcConcertProductClient>,
     pub concert_world_client: Option<crate::adapters::out::concert_world::GrpcConcertWorldClient>,
+    pub concert_participant_client:
+        Option<Arc<crate::adapters::out::concert_participant::GrpcConcertParticipantClient>>,
     pub auth_service: AuthGatewayService,
     pub profile_service: ProfileGatewayService,
     pub friend_service: FriendGatewayService,
@@ -1688,6 +1707,23 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
             )
         })
         .transpose()?;
+    state.concert_participant_client = config
+        .concert_release_digest
+        .as_ref()
+        .map(|digest| {
+            crate::adapters::out::concert_participant::GrpcConcertParticipantClient::connect(
+                config
+                    .concert_grpc_endpoint
+                    .as_deref()
+                    .ok_or_else(|| anyhow::anyhow!("Concert endpoint required"))?,
+                &config.outbound_identity,
+                config.tls_material.as_ref(),
+                config.actor_delegation_signer.clone(),
+                digest,
+            )
+            .map(Arc::new)
+        })
+        .transpose()?;
     state.auth_service = state
         .auth_service
         .with_verification_client(verification_client);
@@ -1815,6 +1851,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
         concert_client: None,
         concert_product_client: None,
         concert_world_client: None,
+        concert_participant_client: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(
             auth_client.clone(),
             Duration::from_secs(config.high_risk_session_freshness_seconds),
