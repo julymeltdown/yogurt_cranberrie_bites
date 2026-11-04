@@ -6,7 +6,7 @@ This bounded repair allows a current, clean social owner to leave the world shel
 
 - Assignment: original FE07 boundary-exit defect only. Whole FE07 qualification remains with the shell-journey owner `01a1a1fe-1ab7-79b0-adbc-d4c025701acb`.
 - Fresh clean base: `a978d4ed57d7f7eac28b494e3e8550812791f1da`; branch `codex/mcr-fe-FE07-boundary-exits`, reusing the isolated checkout while preserving the completed FE36 branch.
-- Commit-ready source/regression commit: `daa1c757aba7a48f6841abfc6dbc815089e55c9d`, reconciled onto `e227d12ef4bb3ac92b9fdbbfaf954d4a56050081`. Original local source commit: `ba4fb095`. This documentation follows that source commit. Publication is assigned to the existing designated delivery integrator; this worker has not pushed this increment to master. Required publication remains pending until the integrator confirms its actual ancestry.
+- Original handoff source/regression commit: `daa1c757aba7a48f6841abfc6dbc815089e55c9d`, reconciled onto `e227d12ef4bb3ac92b9fdbbfaf954d4a56050081`. Original local source commit: `ba4fb095`. The designated delivery integrator published it as `a572b101b67c07c75fda1fa9be359c264ff7d3e8`; this worker did not push master.
 - Exact production write: `frontend/src/app/social-composition/owner.ts`, navigation policy and necessary same-file helper/imports only. New tests/evidence: `frontend/src/app/social-composition/__tests__/fe07-boundary-exits/**`. New documentation: this file.
 - No edits to the shared route policy, root router, SocialNavigationBoundary, WorldShell, Auth, other owners, old tests, manifests, lockfile, backend, source archives or artwork.
 
@@ -52,8 +52,14 @@ Native reports pin owner, provider, blocker, route registry, router, WorldShell,
 
 ## Disposition and limits
 
-The bounded boundary-exit repair meets its source/fixture/native behavior checks and is commit-ready (`MOCK_READY`); integration/publication is pending. It does not complete original FE07: its original criteria still include persistent shell/socket behavior across panels and direct gift entry, and the shell-journey owner independently qualifies that whole task on the published candidate. This document claims no original task or IA scope cut.
+The bounded boundary-exit repair is `ACCEPTED` within its source/fixture/native scope and is integrated/published. It does not complete original FE07: its original criteria still include persistent shell/socket behavior across panels and direct gift entry, and the shell-journey owner independently qualifies that whole task on the published candidate. This document claims no original task or IA scope cut.
 
 The shell-journey owner explicitly clarified that its safe-draft case concerns retention through same-shell panel/history/resizing. The exit cases here use fresh World or a profile restored through its real editor. Cross-owner unsaved Me-profile exit guarding is neither added nor claimed; no account/root lease was expanded. Existing social draft/uncertain-command protection is retained and exercised.
 
 Private controller observations and subscriptions are cleared on owner disposal in tests, while native routing proves actual shell/game/socket teardown. These receipts do not certify arbitrary application-wide cache eviction. Real backend/provider administration permission, real server multiuser flows, physical devices, production admission and release/IN decisions remain `NOT_RUN` by this repair. The synthetic canonical session and C05 producers are identified in the fixture and native report.
+
+## Publication receipt
+
+On 2026-11-04 the designated integrator published the increment normally to `julymeltdown/mcr:master`, checkpoint `4052d709fef976d14653351cd8bf78ef85bd1579`. Mapping: source `daa1c757` → `a572b101b67c07c75fda1fa9be359c264ff7d3e8`, documentation `08510287` → `c049ddbc7bdf1c95762dd31fbb3b297ae188e49b`, handoff manifest `c705ccb9` → `77115679ad2f2657891065ea7e4840828b9d8eca`. The integrator reported no source conflict and reran all 87 affected tests successfully after peer reconciliation.
+
+The implementation owner freshly fetched and independently verified all four published commits as ancestors of `origin/master`. All 27 payload hashes from the historical handoff manifest and every native input pin matched checkpoint `4052d709`. The manifest records the original committed handoff, not subsequent documentation receipts. The whole-FE07 owner received the actual source checkpoint directly for its independent final journey. This receipt adds no production change or further review gate.
