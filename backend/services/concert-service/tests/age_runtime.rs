@@ -432,3 +432,61 @@ async fn accepted_claim_survives_outage_but_untrusted_newest_never_falls_back() 
     finish(&s).await?;
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "frozen private PG16 and actual canonical mTLS owners required"]
+async fn age_expiry_shortens_actual_root_disclosure_ceiling() -> anyhow::Result<()> {
+    // Explicit synthetic stored input; no external provider proof is asserted.
+    let f = fixture::Fixture::new().await?;
+    let (actor, family, event) = seed(&f).await?;
+    let id = Uuid::new_v4();
+    sqlx::query("insert into concert_age_owners(user_id) values($1)")
+        .bind(actor)
+        .execute(&f.concert)
+        .await?;
+    sqlx::query("insert into concert_age_verifications(verification_id,user_id,event_id,session_id,verifier_id,source_revision,state_digest,return_target,created_at,expires_at,state) select $1,$2,$3,$4,'synthetic','synthetic-v1',decode(repeat('63',32),'hex'),'AGE_PRIVACY',t,t+interval '10 minutes','PENDING' from(select clock_timestamp() t)n")
+        .bind(id).bind(actor).bind(event).bind(family).execute(&f.concert).await?;
+    let expires: DateTime<Utc> = sqlx::query_scalar("insert into concert_age_claims(claim_id,user_id,event_id,verifier_id,source_revision,status,verified_at,expires_at,age_at_verification,next_birthday_at) values($1,$2,$3,'synthetic','synthetic-v1','VERIFIED',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '1 second',26,(clock_timestamp() at time zone 'Asia/Seoul')::date+1) returning expires_at")
+        .bind(id).bind(actor).bind(event).fetch_one(&f.concert).await?;
+    let s = scope(&f, actor, family, event, "getConcertAgeStatus").await?;
+    let c = context(&s);
+    let r = trusted_outage(&f);
+    assert_eq!(
+        r.claims(s.clone()).status(c).await?.status,
+        AgeStatus::Verified
+    );
+    assert_eq!(
+        s.disclosure_ceiling()?.expires_micros(),
+        expires.timestamp_micros()
+    );
+    let mut tx = f.concert.begin().await?;
+    ScopedAgeAuthority::new(s.clone())
+        .authorize_in(&mut tx, c, Access::Read)
+        .await?;
+    let pending = r
+        .projection(s.clone())
+        .project_in(
+            &mut tx,
+            ClaimQuery {
+                context: c,
+                subject: c.actor,
+                requested_at: Utc::now(),
+            },
+            |_, age| {
+                Box::pin(async move {
+                    Ok(age.permits(AgeBounds::new(Some(18), Some(30)).unwrap(), false))
+                })
+            },
+        )
+        .await?;
+    tx.commit().await?;
+    assert!(pending.after_commit()?);
+    tokio::time::sleep((expires - Utc::now() + Duration::milliseconds(30)).to_std()?).await;
+    s.binding().check()?; // Original source authority is still live.
+    assert!(
+        s.disclosure_ceiling().is_err(),
+        "Age-expired representation cannot pass the root disclosure boundary"
+    );
+    finish(&s).await?;
+    Ok(())
+}

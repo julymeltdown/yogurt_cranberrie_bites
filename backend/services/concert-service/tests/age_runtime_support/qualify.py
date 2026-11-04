@@ -23,7 +23,8 @@ CASES = ("configured_canonical_callback_replay_and_unavailable_status",
          "projection_uses_same_registered_transaction_and_retains_claim_locks",
          "foreign_context_and_unregistered_projection_are_denied",
          "unavailable_mode_and_closed_event_erasure",
-         "accepted_claim_survives_outage_but_untrusted_newest_never_falls_back")
+         "accepted_claim_survives_outage_but_untrusted_newest_never_falls_back",
+         "age_expiry_shortens_actual_root_disclosure_ceiling")
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
