@@ -204,8 +204,16 @@ async fn exact_handle_and_intro_families_ack_after_sealed_policy_only() {
     ] {
         jobs.push(f.source(op, 1, None).await);
     }
-    let batch = f.runtime().run_batch().await.unwrap();
-    assert_eq!((batch.claimed, batch.acknowledged, batch.failed), (5, 5, 0));
+    let first = f.runtime().run_batch().await.unwrap();
+    let second = f.runtime().run_batch().await.unwrap();
+    assert_eq!(
+        (
+            first.claimed + second.claimed,
+            first.acknowledged + second.acknowledged,
+            first.failed + second.failed
+        ),
+        (5, 5, 0)
+    );
     for e in jobs {
         assert_eq!(f.state(e).await, ("DELIVERED".into(), 1));
     }

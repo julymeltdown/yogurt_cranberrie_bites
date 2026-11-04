@@ -54,7 +54,7 @@ safe to retry under the original immutable identity; no synthetic baseline or
 successful fallback is installed. Final success/failure uses the unchanged
 repository's live lease-token/attempt fencing and bounded retries.
 
-Claim uses PostgreSQL clock, 30-second lease, at most eight concurrent jobs,
+Claim uses PostgreSQL clock, 30-second lease, at most four concurrent jobs,
 at most eight total attempts, SKIP LOCKED and the retained 2..128-second retry
 backoff. Exhaustion touches only included sealed families. Classification plus
 all delivery legs are bounded to ten seconds, with five-second claim and final
@@ -102,3 +102,9 @@ uses its actual bridge event, with a bound UUID in SQL at all three stages.
 The foreign-job case executes the exact production claim predicate to show a
 current-event block is selected and a foreign exhausted lease remains untouched;
 this is not actual World-application evidence. All seven test cases remain.
+
+The claim batch is four, preserving headroom in AppConfig's actual eight-slot
+pool for the publisher's membership check and independent expiry/HTTP work.
+No connection-limit configuration is changed. This bounds concurrency rather
+than holding eight source transactions while their publishers request the same
+exhausted pool. The five-family test spans two actual claim rounds.
