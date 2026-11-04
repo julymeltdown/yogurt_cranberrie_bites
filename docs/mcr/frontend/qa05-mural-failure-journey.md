@@ -108,3 +108,82 @@ review or approval stage.
 
 Final execution, committed handoff and publication results are recorded below
 when actually observed. No planned command is counted as a result.
+
+## Executed qualification and ready handoff
+
+Source commits: `a2b926b8b1188f00a2de211aeff1902148d49cbb` then
+`7195d78cc72078d4f0403566bee01f47f9a85edf`. The exact final native candidate is
+**`7195d78cc72078d4f0403566bee01f47f9a85edf`**, tree
+`5b5b196d606d4cc90cf36dd5750f6b754f07d9d6`. Its tracked source was clean and
+all 1,261 recorded input hashes matched the committed candidate before execution
+and were checked again after it. All five supplied module/caller/app/C04 source
+commits are actual ancestors (`inputs.json`). The retained pnpm lock digest is
+`47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6`, identical
+to the borrowed installed lock. No dependencies were installed.
+
+`provenance.json` records source base, Git blobs, SHA-256 and destinations for
+MCR fixture adaptations: existing `assembly-data.ts` to `data.ts`, actual caller
+native pattern to `preview.tsx`, the synthetic editor palette/DTO seed to
+`peer.mjs`, and the focused compiler pattern to `check-types.mjs`. The World QA05
+`browser.mjs` is imported read-only for real native visibility. This is MCR test
+reuse, not legacy rendering reuse or a second implementation of production sync.
+The actual HTTP/editor/projection/lifecycle/Phaser implementation is imported
+unchanged and remains the subject under test.
+
+| Executed command | Actual exit/result |
+| --- | --- |
+| `node e2e/realtime/mural/check-types.mjs` | 0; retained strict compiler options and actual transitive imports, private temporary compiler configuration. |
+| `node --test e2e/realtime/mural/peer.node.mjs` | 0; 2/2 meaningful peer control-boundary/bounded-hold tests, no skipped cases. |
+| `node node_modules/oxlint/bin/oxlint --deny-warnings e2e/realtime/mural` | 0; no warnings. |
+| Vitest six explicit lifecycle/journey/entry-owner/sync-controller/projection/HTTP test files, `--configLoader runner --no-cache --maxWorkers=2 --reporter=json` | 0; **124/124 tests across 6 files**, zero failures/skips, exact paths in `consumer-tests.json`. |
+| `node e2e/realtime/mural/native.mjs --candidate 7195d78cc72078d4f0403566bee01f47f9a85edf` | 0; **Chrome 156.0.8078.80**, 360/390/430px at 844px height, 11/12/11 recorded checkpoints, plus independent native hidden/visible and omitted-source cases; zero page errors. |
+| `python3 scripts/mcr/check-plan.py` | 0; planning integrity only. |
+| `git diff --check` and exact staged-path check | 0; assigned new paths only. |
+
+The final native report is
+`docs/mcr/evidence/realtime/mural/candidate-7195d78c/native.json`; three
+`recovered-{360,390,430}.png` captures have recorded SHA-256. The 390px capture was
+visually inspected to confirm the real fixture editor and scene rendered. This is
+functional fixture inspection, not product visual fidelity/QA06 acceptance.
+
+Each width reached confirmed revision **532** after separate pause 530, restore
+531 and resume 532 boundaries. Both clients' confirmed pixels and actual scene
+RGBA hashes equal the peer. The first client's observed projection queue peaked
+at **512**, then reset to zero on overflow. Each shell created exactly one game
+with peak one, and ordinary foreground cases retained exactly one world socket.
+Client HTTP peak was one in the actual run (asserted ceiling two); the peer's
+peak active HTTP was at most two and held reads at most one. Per width, exactly
+two placement POSTs occurred: one definitively rejected, one committed with a lost
+acknowledgement. Recovery used the original key/result; **zero replayed POSTs**.
+
+The 390px held delta hit the actual 8s timeout and cleared the texture before
+fresh snapshot recovery. Cancellation also removed a held HTTP snapshot. At final
+privacy/disposal, both clients had disposed sync, null confirmed/selection/command,
+zero queue, zero game/socket/source/socket listeners, and zero inflight HTTP;
+scene texture/object were gone. The peer had zero pending/active reads/holds.
+
+The dedicated native tab case observed `hidden`/World `suspended` with zero live
+socket, no mural release/texture, then `visible`/World `live`. It kept one game,
+created a replacement world socket sequentially (two lifetime sockets, **one live**),
+and required fresh mural qualification before revision 11 appeared. The old lease
+was rejected. The omitted-supplier control stayed live with no mural factory,
+release or HTTP request. These are observable native states, not a dispatched
+synthetic visibility event.
+
+An initial frozen preflight exited 1 when shared free disk fell to 7.55 GiB, below
+the 8 GiB entry floor. The log remains `candidate-preflight-disk.log`. The current
+storage owner reclaimed only its own retired executable copies; this developer
+performed no cross-owner cleanup. Fresh local `statvfs` measured 9.533 GiB, then
+the unchanged final candidate passed preflight and executed. The earlier corrected
+development PASS remains explicitly uncommitted evidence, not substituted for the
+final candidate. All initial failure records remain intact.
+
+The assigned **native fixture contribution is qualified**. Original QA05 remains
+partial: real ticket replay, actual service restart, authoritative room switching,
+no ghost players/duplicate membership, device/runtime load and live IN04 are not
+promoted by this packet. Production mural supply/anchors/eligibility remain closed
+as before. No backend or device prerequisite was imposed on the frozen-capable work.
+
+The designated integrator Root153 publishes the scoped handoff. Actual remote
+ancestry/payload verification and final cleanup/goal closure follow publication;
+no developer push or king/SL review gate is required.

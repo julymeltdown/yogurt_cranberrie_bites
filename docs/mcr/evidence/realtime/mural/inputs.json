@@ -1,0 +1,27 @@
+{
+  "base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+  "inputs": [
+    {
+      "commit": "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e",
+      "ancestor_exit": 0
+    },
+    {
+      "commit": "ebf0473dd8f2123b74d77ca3f4de3da5abd0df9a",
+      "ancestor_exit": 0
+    },
+    {
+      "commit": "eeae69be3ebb7fafafa92f5e6b8f4141797ed102",
+      "ancestor_exit": 0
+    },
+    {
+      "commit": "aedbb020e637993fe9ef1831e31bd6ae5316ae0c",
+      "ancestor_exit": 0
+    },
+    {
+      "commit": "bff7e53c0638d5462af819bf560468a1f857c88e",
+      "ancestor_exit": 0
+    }
+  ],
+  "lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "dependencies_read_only": true
+}
