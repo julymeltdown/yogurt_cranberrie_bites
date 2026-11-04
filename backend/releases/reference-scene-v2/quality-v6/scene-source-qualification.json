@@ -23,6 +23,11 @@
   },
   "scenes": [
     {
+      "artist_provenance_source": {
+        "bytes": 8900,
+        "path": "world/reference-scene-v2/quality-v6/revenge/provenance.json",
+        "sha256": "sha256:030052b9f6d2285b42cd6d1c0654ef0c94deea8578e949475aa9ae4dc6286aca"
+      },
       "runtime_resources": [
         {
           "bytes": 531480,
@@ -65,6 +70,11 @@
       "theme_id": "REVENGE"
     },
     {
+      "artist_provenance_source": {
+        "bytes": 8895,
+        "path": "world/reference-scene-v2/quality-v6/parade/provenance.json",
+        "sha256": "sha256:f7512a4959f6515910d17d823d94e7be3f8a5ada3f2c49c541eed0c6c669707c"
+      },
       "runtime_resources": [
         {
           "bytes": 531480,
@@ -107,6 +117,11 @@
       "theme_id": "PARADE"
     },
     {
+      "artist_provenance_source": {
+        "bytes": 8893,
+        "path": "world/reference-scene-v2/quality-v6/danger/provenance.json",
+        "sha256": "sha256:2ae398cc9cd4143b44299deb0c0d1c7fb9b436f6378a3b4d60a6918c6324c54c"
+      },
       "runtime_resources": [
         {
           "bytes": 531480,
