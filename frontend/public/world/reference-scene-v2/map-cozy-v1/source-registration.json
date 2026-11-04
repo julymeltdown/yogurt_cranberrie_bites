@@ -1,0 +1,709 @@
+{
+  "format": "MCR_COZY_ENVIRONMENT_SOURCE_REGISTRATION_V1",
+  "source_base_commit": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "raw": {
+    "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-original.png",
+    "bytes": 2120690,
+    "sha256": "sha256:db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514"
+  },
+  "raw_dimensions": [
+    1254,
+    1254
+  ],
+  "tool": "Built-in image_gen; one image-edit call with existing environment atlas reference",
+  "model_version": "NOT_EXPOSED",
+  "allocation": "ART-COZY-SOURCE-202611040621Z",
+  "preserved_frames": [
+    "park_plaque",
+    "stage"
+  ],
+  "registered_frames": 14,
+  "frames": [
+    {
+      "frame": "stage",
+      "policy": "EXACT_ORIGINAL_RGBA",
+      "source_crop_unused": [
+        8,
+        13,
+        330,
+        301
+      ],
+      "frame_rect": {
+        "x": 7,
+        "y": 6,
+        "width": 242,
+        "height": 244
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        241,
+        243
+      ],
+      "original_core_base_y": 242,
+      "output_core_bbox": [
+        1,
+        1,
+        241,
+        243
+      ],
+      "output_core_base_y": 242,
+      "rgba_sha256": "sha256:77a1604e41b4011c4471144f330b81ade9e93c99785faa9947dadd956c9a6a6b"
+    },
+    {
+      "frame": "white_merch_booth",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        346,
+        31,
+        610,
+        298
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.8181818181818182,
+      "resized_dimensions": [
+        216,
+        218
+      ],
+      "destination_xy": [
+        2,
+        6
+      ],
+      "crop_alpha_1_to_31_pixels": 6554,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 274,
+        "y": 16,
+        "width": 220,
+        "height": 224
+      },
+      "original_core_bbox": [
+        2,
+        2,
+        218,
+        224
+      ],
+      "original_core_base_y": 223,
+      "output_core_bbox": [
+        2,
+        6,
+        218,
+        224
+      ],
+      "output_core_base_y": 223,
+      "rgba_sha256": "sha256:2a04d91132e8e16ef29ad2cbc35c613bab542f3acf4e9c3c43ca1b8cbd462a24"
+    },
+    {
+      "frame": "white_food_booth",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        644,
+        31,
+        914,
+        298
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.8239700374531835,
+      "resized_dimensions": [
+        222,
+        220
+      ],
+      "destination_xy": [
+        2,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 7689,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "original_core_bbox": [
+        2,
+        2,
+        225,
+        222
+      ],
+      "original_core_base_y": 221,
+      "output_core_bbox": [
+        2,
+        2,
+        224,
+        222
+      ],
+      "output_core_base_y": 221,
+      "rgba_sha256": "sha256:dfb76e1b0ccc57846919ba8f501188d2fe899afb0de3b57b45dfdf33f20ee899"
+    },
+    {
+      "frame": "park_plaque",
+      "policy": "EXACT_ORIGINAL_RGBA",
+      "source_crop_unused": [
+        947,
+        57,
+        1238,
+        295
+      ],
+      "frame_rect": {
+        "x": 781,
+        "y": 28,
+        "width": 230,
+        "height": 199
+      },
+      "original_core_bbox": [
+        1,
+        2,
+        229,
+        197
+      ],
+      "original_core_base_y": 196,
+      "output_core_bbox": [
+        1,
+        2,
+        229,
+        197
+      ],
+      "output_core_base_y": 196,
+      "rgba_sha256": "sha256:585652aa6d1f8af074a11cf86caba30697f0d176cf7410a14dd188bdd50084ff"
+    },
+    {
+      "frame": "tree_green",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        15,
+        349,
+        311,
+        611
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.732824427480916,
+      "resized_dimensions": [
+        217,
+        192
+      ],
+      "destination_xy": [
+        13,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 7039,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "original_core_bbox": [
+        0,
+        1,
+        243,
+        194
+      ],
+      "original_core_base_y": 193,
+      "output_core_bbox": [
+        13,
+        2,
+        230,
+        194
+      ],
+      "output_core_base_y": 193,
+      "rgba_sha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a"
+    },
+    {
+      "frame": "tree_yellow",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        327,
+        346,
+        611,
+        610
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7348484848484849,
+      "resized_dimensions": [
+        209,
+        194
+      ],
+      "destination_xy": [
+        17,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 8552,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        243,
+        196
+      ],
+      "original_core_base_y": 195,
+      "output_core_bbox": [
+        17,
+        2,
+        226,
+        196
+      ],
+      "output_core_base_y": 195,
+      "rgba_sha256": "sha256:272672f92436a2a481e1f74dd1154fe0004fbda62ae3a6d083129131bd75a21b"
+    },
+    {
+      "frame": "tree_dark",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        634,
+        349,
+        928,
+        610
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7203065134099617,
+      "resized_dimensions": [
+        212,
+        188
+      ],
+      "destination_xy": [
+        16,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 7532,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        243,
+        190
+      ],
+      "original_core_base_y": 189,
+      "output_core_bbox": [
+        16,
+        2,
+        228,
+        190
+      ],
+      "output_core_base_y": 189,
+      "rgba_sha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37"
+    },
+    {
+      "frame": "tree_red",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        942,
+        346,
+        1243,
+        610
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7348484848484849,
+      "resized_dimensions": [
+        221,
+        194
+      ],
+      "destination_xy": [
+        11,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 6732,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        244,
+        196
+      ],
+      "original_core_base_y": 195,
+      "output_core_bbox": [
+        11,
+        2,
+        232,
+        196
+      ],
+      "output_core_base_y": 195,
+      "rgba_sha256": "sha256:635fe197e906e1eca7c7a669e45370a2f53c5caca1b5823373c863e59a5ecfb1"
+    },
+    {
+      "frame": "meeting_pavilion",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        9,
+        646,
+        306,
+        901
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.6862745098039216,
+      "resized_dimensions": [
+        204,
+        175
+      ],
+      "destination_xy": [
+        20,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 3817,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "original_core_bbox": [
+        13,
+        3,
+        231,
+        177
+      ],
+      "original_core_base_y": 176,
+      "output_core_bbox": [
+        20,
+        2,
+        224,
+        177
+      ],
+      "output_core_base_y": 176,
+      "rgba_sha256": "sha256:5367400ec9518305373c114b43d00ee86e4cf4e8a8a910b19e07b40b9860ec23"
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        325,
+        651,
+        603,
+        899
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7096774193548387,
+      "resized_dimensions": [
+        197,
+        176
+      ],
+      "destination_xy": [
+        23,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 3708,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "original_core_bbox": [
+        17,
+        3,
+        226,
+        178
+      ],
+      "original_core_base_y": 177,
+      "output_core_bbox": [
+        23,
+        2,
+        220,
+        178
+      ],
+      "output_core_base_y": 177,
+      "rgba_sha256": "sha256:fdfc59a56069d300890ad6ad92ad824f0eacb40d1e9cdb0b0c946ad3cc858418"
+    },
+    {
+      "frame": "north_hall",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        625,
+        674,
+        930,
+        897
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7847533632286996,
+      "resized_dimensions": [
+        239,
+        175
+      ],
+      "destination_xy": [
+        2,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 2882,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "original_core_bbox": [
+        3,
+        14,
+        241,
+        177
+      ],
+      "original_core_base_y": 176,
+      "output_core_bbox": [
+        2,
+        2,
+        241,
+        177
+      ],
+      "output_core_base_y": 176,
+      "rgba_sha256": "sha256:594ded455f5925f95d61063dc087826c0d690370b3534e9fc7c1bb695841c65f"
+    },
+    {
+      "frame": "west_hall",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        944,
+        653,
+        1242,
+        899
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7113821138211383,
+      "resized_dimensions": [
+        212,
+        175
+      ],
+      "destination_xy": [
+        16,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 3888,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "original_core_bbox": [
+        23,
+        3,
+        220,
+        177
+      ],
+      "original_core_base_y": 176,
+      "output_core_bbox": [
+        16,
+        2,
+        228,
+        177
+      ],
+      "output_core_base_y": 176,
+      "rgba_sha256": "sha256:9790228e378f1595affa5d57911c589c526894beee39ca5854fb85989a499716"
+    },
+    {
+      "frame": "food_counter",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        18,
+        991,
+        291,
+        1205
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.8241758241758241,
+      "resized_dimensions": [
+        225,
+        176
+      ],
+      "destination_xy": [
+        2,
+        5
+      ],
+      "crop_alpha_1_to_31_pixels": 3371,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 13,
+        "y": 805,
+        "width": 229,
+        "height": 182
+      },
+      "original_core_bbox": [
+        2,
+        1,
+        229,
+        181
+      ],
+      "original_core_base_y": 180,
+      "output_core_bbox": [
+        2,
+        5,
+        227,
+        181
+      ],
+      "output_core_base_y": 180,
+      "rgba_sha256": "sha256:dc3b438d717e7ab754bc32b9b8be3ab37f39812ceabc4c65d4c43a3bd40c15d8"
+    },
+    {
+      "frame": "plaza_furniture",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        324,
+        1004,
+        619,
+        1205
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7694915254237288,
+      "resized_dimensions": [
+        227,
+        155
+      ],
+      "destination_xy": [
+        2,
+        5
+      ],
+      "crop_alpha_1_to_31_pixels": 4891,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 268,
+        "y": 815,
+        "width": 231,
+        "height": 161
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        229,
+        160
+      ],
+      "original_core_base_y": 159,
+      "output_core_bbox": [
+        2,
+        5,
+        229,
+        160
+      ],
+      "output_core_base_y": 159,
+      "rgba_sha256": "sha256:3e969812a402cb3f8e8199159a8307c52d51cfa5c9d802771aba565cdd97288a"
+    },
+    {
+      "frame": "cross_banner",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        683,
+        953,
+        854,
+        1228
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.6900584795321637,
+      "resized_dimensions": [
+        118,
+        190
+      ],
+      "destination_xy": [
+        2,
+        37
+      ],
+      "crop_alpha_1_to_31_pixels": 5149,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 579,
+        "y": 781,
+        "width": 122,
+        "height": 229
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        121,
+        227
+      ],
+      "original_core_base_y": 226,
+      "output_core_bbox": [
+        2,
+        37,
+        120,
+        227
+      ],
+      "output_core_base_y": 226,
+      "rgba_sha256": "sha256:bf8e8793250b70714516c23299e08fe2bd32463a1586c32341782a0717c8ff65"
+    },
+    {
+      "frame": "shrub_bed",
+      "policy": "SOURCE_RECT_RGBA_NEAREST_UNIFORM_FIT",
+      "source_crop_xyxy": [
+        938,
+        1003,
+        1238,
+        1201
+      ],
+      "source_component_rule": "largest alpha>=128 connected component bounding rectangle; no alpha threshold applied to pixels",
+      "scale_limit": 0.7727272727272727,
+      "resized_dimensions": [
+        232,
+        153
+      ],
+      "destination_xy": [
+        6,
+        2
+      ],
+      "crop_alpha_1_to_31_pixels": 3927,
+      "alpha_cleanup": false,
+      "repaint": false,
+      "frame_rect": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "original_core_bbox": [
+        1,
+        1,
+        243,
+        155
+      ],
+      "original_core_base_y": 154,
+      "output_core_bbox": [
+        6,
+        2,
+        238,
+        155
+      ],
+      "output_core_base_y": 154,
+      "rgba_sha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f"
+    }
+  ],
+  "character_inputs": [],
+  "character_changes": false,
+  "limits": [
+    "Original sheet retained byte for byte. Rectangle crops omit exterior faint residue.",
+    "RGBA inside each crop is unchanged before nearest sampling; faint edge residue can remain.",
+    "Integer resize rounding is recorded; no canonical coordinates/feet/camera are changed.",
+    "Source packing checks do not prove native occlusion, visual cuteness or human acceptance."
+  ]
+}
