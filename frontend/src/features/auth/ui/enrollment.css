@@ -24,3 +24,4 @@
 .auth-enrollment .enrollment-policy { min-width: 0; border: 1px solid #8a8178; border-radius: 6px; padding: .75rem; margin: .75rem 0; }
 .auth-enrollment .enrollment-policy legend { font-weight: 650; padding-inline: .25rem; }
 .auth-enrollment .enrollment-policy a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-underline-offset: .2em; }
+.auth-enrollment .enrollment-consent-back { display: flex; width: fit-content; }

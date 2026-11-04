@@ -138,5 +138,27 @@
     "receipt": "browser-02/release.json",
     "qualification": "Controlled native through canonical client; no actual Auth/mail/legal/World claim",
     "visualInspection": "Form360/390/430 and verified390 captures inspected; text/controls legible. Does not certify all-ten-screen visual acceptance."
+  },
+  "nativeFeaturePublication": {
+    "source": "c4224fc8759187a933793b424a0c732f53d733d8",
+    "published": "47ec660d5c77008d168d785b6043326c9a2ed02f",
+    "reportedMaster": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+    "receipt": "/private/tmp/mcr-root-fe10-native-social-readiness-publication-receipt.json",
+    "receiptSha256": "e7721fff84c4cdd8d925cb360fb746f6d9de9ad1a8e8e883109baf8a0a46e459",
+    "disposition": "Responsible publisher verified exact22 scoped modes/blobs; borrowed Root ports/policy excluded; no repeated validation or whole-FE10 acceptance"
+  },
+  "actualMainBrowserPreparation": {
+    "status": "SOURCE_AUTHORED_NOT_RUN",
+    "runner": "frontend/src/features/auth/__tests__/enrollment-main-browser.mjs",
+    "plan": "main-journey-plan.json",
+    "scope": "Actual expiry422, predeadline202/no mail, real server countdown/fresh resend/latest captured mail, policy rotation/current explicit consent and fresh admission. BE control source frozen; needs fresh compiled/boot-qualified serving cohort plus paired allocations.",
+    "world": "OPEN; no coherent actual World runtime descriptor available",
+    "backendControlSource": "e7123c412283ad6d0f95d7404e23922790e628fc"
+  },
+  "actualMainBrowser1955": {
+    "state": "IN_PROGRESS",
+    "qualification": "browser-main-01/qualification.json",
+    "disposition": "Actualcanonical main/Auth/mail/expiry422/server60s/latestverify/renewedconsent/admission/bootstrap503 reached; finalunclassifiedsocket3vs0FAILED, nooverallPASS. Repairsourceauthored; freshfixture/rerunrequired.",
+    "resources": "BothactorsFULL19:59:37.371093Z latest; resource0, nohold"
   }
 }

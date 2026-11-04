@@ -42,6 +42,6 @@ export function ConsentAdmission({ onAdmitted }: { onAdmitted?(receipt: Enrollme
     {wait > 0 && <p>Try again in {wait} seconds.</p>}
     {state?.unknown ? <button type="button" disabled={pending || wait > 0} onClick={() => void continueAccount(true)}>Retry original request</button>
       : <button className="enrollment-submit" type="button" disabled={pending || wait > 0 || !policy || expired || !exactAcknowledgements(policy, ids)} onClick={() => void continueAccount()}>Agree and continue</button>}
-    <Link className="enrollment-link" to="/">Back to home</Link>
+    <Link className="enrollment-link enrollment-consent-back" to="/">Back to home</Link>
   </main>
 }

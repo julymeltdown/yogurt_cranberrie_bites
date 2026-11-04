@@ -1,0 +1,60 @@
+{
+  "task": "FE10",
+  "status": "SOURCE_AUTHORED_NOT_RUN",
+  "runner": "frontend/src/features/auth/__tests__/enrollment-main-browser.mjs",
+  "runnerSha256": "bea7c22945cc989e71bd32abad469b85cb4b498bc6cee878bc375037e1283073",
+  "contractRevision": "ed50c2f1",
+  "backendOwner": "developer207",
+  "backendControlSource": "e7123c412283ad6d0f95d7404e23922790e628fc",
+  "origin": "http://localhost:3000",
+  "proxy": "Actual descriptor gatewayLoopbackOrigin; changeOrigin false; canonical browser Origin/cookie/intent protections unchanged",
+  "stages": [
+    "Real signup with double submit yielding one attempt and one signup POST; canonical mail-worker capture only",
+    "Wrong browser without bound capability cannot verify",
+    "Negative-only expiry of actual pending challenge; original correct code returns422 VERIFICATION_FAILED, no completion",
+    "Real predeadline resend202 leaves same deadline and emits no additional mail; actual UI countdown enables explicit new resend; no automatic POST or attempt extension",
+    "Latest newer real mail capture only; opaque link scrub; actual verification200",
+    "Publish new explicitly synthetic operator policy after verification; actual canonical login returns CONSENT_REQUIRED before bootstrap",
+    "Explicit exact current acknowledgement set; duplicate click yields one protected consent POST; fresh ADMITTED; original SignIn Continue opens requested World destination"
+  ],
+  "controls": [
+    {
+      "input": "browser-expire.json",
+      "body": {
+        "attemptId": "actual browser-created attempt UUID"
+      },
+      "receipt": "browser-challenge-expired.json",
+      "constraints": "Only current canonical challenge expiry moved into past; no positive identity/consent/receipt/attempt writes"
+    },
+    {
+      "input": "browser-rotate.json",
+      "body": {
+        "expectedRevision": "initial descriptor policy UUID"
+      },
+      "receipt": "browser-policy-rotated.json",
+      "constraints": "Real EnrollmentStore.publish of explicit synthetic operator metadata only; no accepted-consent insert"
+    }
+  ],
+  "controlPublication": "Private0600 once via own .fe204-<exact-input>-<UUID>.tmp and atomic no-replace hardlink; exact input/temp grant required in fresh paired allocation",
+  "mailSelection": "Actual browser-mail-N.json sorted descending; post-resend index must exceed original; exact attemptId/code keys; no code equality/inequality assumption",
+  "resourceState": "NO_ACTIVE_WORKLOAD_OR_LEASE; backend compile offer withdrawn pre-accept for critical startup priority; fresh allocation required",
+  "futureResourceClass": {
+    "frontend": "One bounded native browser with existing qualified guardian; no installs, builds, databases or targets",
+    "port": 3000,
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "startFloorBytes": 11811160064,
+    "liveFloorBytes": 8589934592,
+    "remainingAfterAllReservationsBytes": 9663676416,
+    "caveat": "Planning bounds only, not an accepted offer; fresh exact source/custody/byte/RSS/process/clock census and allocation required"
+  },
+  "notClaimed": [
+    "Real World/bootstrap/canvas/socket acceptance from an Auth-only fixture",
+    "External mailbox delivery",
+    "Approved production legal publication",
+    "Provider or verified-age success"
+  ],
+  "unchangedEvidence": "191 feature/transport tests;63 affected canonical tests;7 controlled native cases remain scoped historical qualification and are not replayed for this test-only source change",
+  "backendControlStatus": "Responsible owner frozen source report; NOT_COMPILED/NOT_RUN",
+  "authOnlyBoundary": "Descriptor authOnly:true required; non-/api/auth/ returns503. After explicit Continue actual bootstrap must503, unavailable heading rendered, zero canvas/socket. No synthetic foundation success."
+}

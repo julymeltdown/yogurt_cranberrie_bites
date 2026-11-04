@@ -34,12 +34,20 @@
   "nativeReportSha256": "4fd95bb8dc771191f2e3fbeb1d39e75d6aa2a79e815808e97258bb63006c28c6",
   "pairedBrowserFixture": {
     "source": "9f5cfc0f",
-    "status": "SOURCE_ONLY_NOT_COMPILED",
+    "status": "SOURCE_FROZEN_NOT_COMPILED_NOT_RUN",
     "actualMailLinkKeys": [
       "attemptId",
       "code"
     ],
     "handoffCorrection": "Producer example attempt was a typo; actual unchanged published store emits attemptId; no alias permitted",
-    "world": "Not provided by Auth-only fixture; coherent seven-service producer required separately"
+    "world": "Not provided by Auth-only fixture; coherent seven-service producer required separately",
+    "controlSource": "e7123c412283ad6d0f95d7404e23922790e628fc",
+    "controlPublication": "Once-only0600 temp plus atomic no-replace hardlink compatible; exact future joint input/temp scope still required",
+    "controls": {
+      "negativeExpiry": "Only actual captured PENDING canonical challenge expires; original mail timestamp retained",
+      "policyRotation": "Requires actual VERIFIED attempt and ACTIVE canonical user; actual EnrollmentStore synthetic v2 publication, no consent acceptance insert"
+    },
+    "authOnly": "Explicit authOnly:true; non-/api/auth/ responds503; no synthetic foundation/bootstrap",
+    "resource": "Replacement ENROLLMENT-BROWSER-FIXTURE-MEDIA-20261104T1902Z QUEUED after16e/Ops/Wall/Party, NOT_ACCEPTED; no backend/frontend runtime hold"
   }
 }

@@ -1,14 +1,19 @@
 // Actual main-entry Auth/Gateway/mail pairing. This runner starts no DB/service/build.
 // World acceptance remains open until a coherent real concert producer is paired.
 import assert from 'node:assert/strict'
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, readdir, writeFile, link as linkFile, unlink, realpath } from 'node:fs/promises'
 import path from 'node:path'
+import { execFileSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+import react from '@vitejs/plugin-react'
+import tailwind from '@tailwindcss/vite'
 import { createServer } from 'vite'
 import { chromium } from '@playwright/test'
 const evidence = process.env.MCR_FE10_EVIDENCE, serving = process.env.MCR_FE10_BACKEND_OUTPUT
 assert(evidence && serving, 'Allocated private evidence and independently owned backend output required')
 const ready = JSON.parse(await readFile(path.join(serving, 'browser-ready.json'), 'utf8'))
 assert.equal(ready.frontendOrigin, 'http://localhost:3000'); assert.equal(ready.syntheticPolicyOnly, true)
+assert.equal(ready.authOnly, true, 'No fixture foundation/bootstrap success may substitute for real World producers')
 assert.match(ready.gatewayOrigin, /^http:\/\/localhost:\d+$/)
 assert.match(ready.gatewayLoopbackOrigin, /^http:\/\/127\.0\.0\.1:\d+$/)
 assert.equal(new URL(ready.gatewayOrigin).port, new URL(ready.gatewayLoopbackOrigin).port)
@@ -22,31 +27,107 @@ for (const service of ['auth-service', 'api-gateway']) {
 }
 assert.match(ready.policyRevision, /^[a-f0-9-]{36}$/)
 assert.equal(ready.verdict, 'SERVING_FIXTURE_ONLY_BROWSER_ACCEPTANCE_REMAINS_FE_OWNED')
+const frontendRepo = process.env.MCR_FE10_FRONTEND_REPO, frontendRevision = process.env.MCR_FE10_FRONTEND_SOURCE
+assert(frontendRepo && path.isAbsolute(frontendRepo), 'Explicit allocated read-only frontend source root required')
+assert.match(frontendRevision ?? '', /^[a-f0-9]{40}$/)
+const loaderRevision = '6d5863097c46d7ecd3d1633fd1423500e17b8867'
+const loaderPath = 'frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs'
+const loaderSha256 = '511808e9963f81a187280c8593280d583852ac13b5e7460e6e1937b0d0d1b09d'
+const loader = execFileSync('git', ['show', `${loaderRevision}:${loaderPath}`], { cwd: frontendRepo, maxBuffer: 1024 ** 2 })
+assert.equal(createHash('sha256').update(loader).digest('hex'), loaderSha256, 'Qualified read-only loader bytes changed')
+const { pinnedSource } = await import(`data:text/javascript;base64,${loader.toString('base64')}`)
+const source = pinnedSource(frontendRepo, frontendRevision), frontendRoot = path.join(frontendRepo, 'frontend')
+const dependencies = await realpath(path.resolve('node_modules'))
+for (const name of ['package.json', 'pnpm-lock.yaml']) {
+  assert((await readFile(path.join(dependencies, '..', name))).equals(source.bytes(`frontend/${name}`)), 'Frontend dependency declarations differ')
+}
+const manifest = JSON.parse(source.bytes('frontend/package.json'))
+const aliases = Object.keys(manifest.dependencies).map(name => ({ find: name, replacement: path.join(dependencies, name) }))
+const mime = { '.svg': 'image/svg+xml', '.json': 'application/json', '.png': 'image/png', '.ttf': 'font/ttf', '.woff2': 'font/woff2', '.webp': 'image/webp', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg' }
+
 const eventId = process.env.MCR_FE10_EVENT_ID
 assert.match(eventId ?? '', /^[a-f0-9-]{36}$/, 'Explicit event only; does not fabricate a concert producer')
 await mkdir(evidence, { recursive: true })
 const suffix = crypto.randomUUID(), email = `fe10-${suffix}@example.invalid`, password = `  Synthetic-${suffix}  `
-const calls = [], decisions = [], errors = [], results = []
-let browser, dev
+const calls = [], decisions = [], wireOutcomes = [], socketObservations = [], errors = [], results = []
+let browser, dev, sockets = 0
 const boundedEnd = Date.now() + 150_000
-async function mailFor(attemptId) {
+async function mailFor(attemptId, afterCapture = -1) {
   while (Date.now() < boundedEnd) {
-    for (const file of (await readdir(serving)).filter(f => /^browser-mail-\d+\.json$/.test(f))) {
+    const captures = (await readdir(serving)).flatMap(file => {
+      const match = /^browser-mail-(\d+)\.json$/.exec(file)
+      return match && Number.isSafeInteger(Number(match[1])) && Number(match[1]) > afterCapture ? [{ file, index: Number(match[1]) }] : []
+    }).sort((a, b) => b.index - a.index)
+    for (const { file, index } of captures) {
       const mail = JSON.parse(await readFile(path.join(serving, file), 'utf8'))
-      if (mail.attemptId === attemptId) return mail
+      if (mail.attemptId === attemptId) return { mail, index }
     }
     await new Promise(resolve => setTimeout(resolve, 100))
   }
   throw new Error('Real mail-worker capture was not available inside the original bound')
 }
-function observe(page) {
+async function control(name, body) {
+  assert(['browser-expire.json', 'browser-rotate.json'].includes(name))
+  const temporary = path.join(serving, `.fe204-${name}-${crypto.randomUUID()}.tmp`)
+  await writeFile(temporary, JSON.stringify(body) + '\n', { flag: 'wx', mode: 0o600 })
+  // Atomic no-replace publication. Only these exact private test inputs are writable.
+  try { await linkFile(temporary, path.join(serving, name)) } finally { await unlink(temporary) }
+}
+async function receipt(name) {
+  assert(['browser-challenge-expired.json', 'browser-policy-rotated.json'].includes(name))
+  while (Date.now() < boundedEnd) {
+    try { return JSON.parse(await readFile(path.join(serving, name), 'utf8')) }
+    catch (error) { if (error.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error }
+    await new Promise(resolve => setTimeout(resolve, 100))
+  }
+  throw new Error(`Missing bounded private fixture receipt: ${name}`)
+}
+async function submitVerification(page, expectedStatus) {
+  const pending = page.waitForResponse(r => new URL(r.url()).pathname === '/api/auth/enrollment/verify' && r.request().method() === 'POST')
+  await page.getByRole('button', { name: 'Verify email', exact: true }).click()
+  const response = await pending; assert.equal(response.status(), expectedStatus)
+  return response.json()
+}
+async function resendDisabled(page) {
+  await page.waitForFunction(() => [...document.querySelectorAll('button')].some(button => button.textContent === 'Request another code' && button.disabled))
+}
+async function resend(page) {
+  const pending = page.waitForResponse(r => new URL(r.url()).pathname === '/api/auth/enrollment/resend' && r.request().method() === 'POST')
+  await page.getByRole('button', { name: 'Request another code' }).click()
+  const response = await pending; assert.equal(response.status(), 202)
+  return response.json()
+}
+
+async function observe(page) {
+  // Observe transport handshakes without replacing WebSocket or application state.
+  // Vite8's actual dev client still connects with server.hmr:false; only an exact
+  // nonce-bound vite-hmr handshake is development infrastructure. Every other
+  // attempted socket remains unknown and fails the Auth-only World invariant.
+  const cdp = await page.context().newCDPSession(page), byId = new Map()
+  cdp.on('Network.webSocketCreated', ({ requestId, url }) => {
+    const parsed = new URL(url), row = { kind: 'UNKNOWN', origin: parsed.origin, path: parsed.pathname }
+    byId.set(requestId, { parsed, row }); socketObservations.push(row)
+  })
+  cdp.on('Network.webSocketWillSendHandshakeRequest', ({ requestId, request }) => {
+    const observed = byId.get(requestId); if (!observed) return
+    const { parsed, row } = observed
+    const protocol = Object.entries(request.headers).find(([name]) => name.toLowerCase() === 'sec-websocket-protocol')?.[1]
+    const exactDevTransport = parsed.protocol === 'ws:' && parsed.host === 'localhost:3000' && parsed.pathname === '/'
+      && parsed.hash === '' && [...parsed.searchParams.keys()].length === 1
+      && parsed.searchParams.get('token') === dev.config.webSocketToken && protocol === 'vite-hmr'
+    if (exactDevTransport) Object.assign(row, { kind: 'VITE_HMR', protocol: 'vite-hmr', sameServerNonceMatched: true })
+  })
+  await cdp.send('Network.enable')
   page.on('pageerror', error => errors.push(String(error)))
+  page.on('websocket', () => { sockets += 1 })
   page.on('request', request => {
     const url = new URL(request.url())
     if (url.pathname.startsWith('/api/')) calls.push({ path: url.pathname, method: request.method() })
   })
   page.on('response', async response => {
     const url = new URL(response.url())
+    if (!url.pathname.startsWith('/api/')) return
+    wireOutcomes.push({ path: url.pathname, method: response.request().method(), status: response.status() })
     if (!url.pathname.endsWith('/api/auth/enrollment/admission')) return
     try {
       const receipt = await response.json()
@@ -64,31 +145,64 @@ async function clean(page, code = '') {
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Horizontal overflow')
 }
 try {
-  dev = await createServer({ configLoader: 'runner', cacheDir: process.env.MCR_FE10_CACHE,
+  dev = await createServer({ root: frontendRoot, configFile: false, envFile: false, publicDir: false,
+    cacheDir: process.env.MCR_FE10_CACHE, clearScreen: false, logLevel: 'warn', resolve: { alias: aliases },
+    plugins: [source.plugin, react(), tailwind(), {
+      name: 'fe10-canonical-entry-and-assets',
+      configureServer(instance) {
+        instance.middlewares.use(async (req, res, next) => {
+          try {
+            const pathname = decodeURIComponent(new URL(req.url, ready.frontendOrigin).pathname)
+            if (pathname.startsWith('/api/')) return next()
+            if (req.method !== 'GET' && req.method !== 'HEAD') return next()
+            const publicPath = 'frontend/public' + pathname
+            if (source.files.has(publicPath)) {
+              const body = source.bytes(publicPath)
+              res.setHeader('Content-Type', mime[path.extname(publicPath)] ?? 'application/octet-stream')
+              res.setHeader('Content-Length', body.length); res.setHeader('Cache-Control', 'no-store')
+              res.end(req.method === 'HEAD' ? undefined : body); return
+            }
+            if (pathname === '/index.html' || req.headers.accept?.includes('text/html')) {
+              res.setHeader('Content-Type', 'text/html'); res.setHeader('Cache-Control', 'no-store')
+              const html = await instance.transformIndexHtml(pathname, source.bytes('frontend/index.html').toString())
+              res.end(req.method === 'HEAD' ? undefined : html); return
+            }
+            if (!['/src/', '/@', '/node_modules/'].some(prefix => pathname.startsWith(prefix))) {
+              res.statusCode = 404; res.end(); return
+            }
+            next()
+          } catch { res.statusCode = 503; res.end('Pinned frontend input unavailable') }
+        })
+      },
+    }],
     define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(eventId) },
-    server: { host: 'localhost', port: 3000, strictPort: true,
+    optimizeDeps: { include: [...Object.keys(manifest.dependencies).filter(name => name !== '@tailwindcss/vite' && name !== 'tailwindcss'), 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod'], noDiscovery: true },
+    server: { host: 'localhost', port: 3000, strictPort: true, hmr: false, watch: null, cors: false,
+      fs: { strict: true, allow: [frontendRoot, dependencies, process.env.MCR_FE10_CACHE] },
       proxy: { '/api': { target: ready.gatewayLoopbackOrigin, changeOrigin: false } } } })
   await dev.listen()
   browser = await chromium.launch({ channel: 'chrome', headless: true,
     args: ['--disable-background-networking', '--disable-component-update'] })
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' }), page = await context.newPage()
-  observe(page); await page.goto('http://localhost:3000/signup')
+  await observe(page); await page.goto('http://localhost:3000/signup')
   await page.getByRole('heading', { name: 'Create account' }).waitFor()
   assert(await page.getByRole('button', { name: 'Create account' }).isDisabled())
   await page.getByRole('button', { name: 'Load current agreements' }).click()
   await page.getByRole('checkbox').first().waitFor()
   for (const checkbox of await page.getByRole('checkbox').all()) await checkbox.check()
   await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password)
+  const signupResponse = page.waitForResponse(r => new URL(r.url()).pathname === '/api/auth/enrollment/signup' && r.request().method() === 'POST')
   await page.getByRole('form', { name: 'Create account' }).evaluate(form => {
     form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })); form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
   })
   await page.getByText(/Account creation and email delivery are not confirmed/).waitFor()
+  const signupReceipt = await (await signupResponse).json()
   assert.equal(calls.filter(c => c.path.endsWith('/enrollment/signup')).length, 1)
   assert.equal(calls.filter(c => c.path.endsWith('/enrollment/attempts')).length, 1)
   await clean(page); await page.screenshot({ path: path.join(evidence, 'main-signup-accepted-390.png') })
   await page.getByRole('link', { name: 'Continue to email verification' }).click()
   const attemptId = await page.getByLabel('Signup attempt').inputValue(); assert.match(attemptId, /^[a-f0-9-]{36}$/)
-  const mail = await mailFor(attemptId), link = new URL(mail.verificationLink)
+  const captured = await mailFor(attemptId); let mail = captured.mail, link = new URL(mail.verificationLink)
   assert.equal(link.origin, 'http://localhost:3000'); assert.equal(link.pathname, '/verify-email'); assert.equal(link.hash, '')
   assert.deepEqual([...link.searchParams.keys()].sort(), ['attemptId', 'code'])
   assert.equal(link.searchParams.get('attemptId'), attemptId); assert.equal(link.searchParams.get('code'), mail.verificationCode)
@@ -98,37 +212,124 @@ try {
   assert(binding?.httpOnly); assert.equal(binding.sameSite, 'Strict')
   // A second browser has no bound capability. Its real denial must not verify the account.
   const other = await browser.newContext({ viewport: { width: 360, height: 844 } }), foreign = await other.newPage()
-  await foreign.goto(link.href); await foreign.waitForURL('http://localhost:3000/verify-email')
+  await observe(foreign); await foreign.goto(link.href); await foreign.waitForURL('http://localhost:3000/verify-email')
   await foreign.getByRole('button', { name: 'Verify email', exact: true }).click()
   await foreign.getByText(/This attempt is unavailable in this browser/).waitFor(); await clean(foreign, mail.verificationCode)
   assert.equal(await foreign.getByText('Email verified. Sign in to continue.').count(), 0); await other.close()
   results.push({ case: 'real-bound-cookie-rejects-second-browser', passed: true })
+  // The private fixture may only expire a current challenge produced by this real signup.
+  await control('browser-expire.json', { attemptId })
+  const expired = await receipt('browser-challenge-expired.json')
+  assert.equal(expired.attemptId, attemptId); assert.equal(expired.negativeOnly, true)
+  assert(Number.isFinite(Date.parse(expired.actualChallengeExpiresAt)) && Date.parse(expired.actualChallengeExpiresAt) < Date.parse(expired.serverTime))
   await page.goto(link.href); await page.waitForURL('http://localhost:3000/verify-email')
   assert.equal(await page.getByLabel('Signup attempt').inputValue(), attemptId)
   assert.equal(await page.getByLabel('Verification code').inputValue(), mail.verificationCode)
-  await page.getByRole('button', { name: 'Verify email', exact: true }).click()
+  const rejection = await submitVerification(page, 422)
+  assert.equal(rejection.details.reason, 'VERIFICATION_FAILED')
+  await page.getByText(/It may be invalid, expired or already used/).waitFor()
+  assert.equal(await page.getByText('Email verified. Sign in to continue.').count(), 0)
+  await clean(page, mail.verificationCode)
+  await page.screenshot({ path: path.join(evidence, 'main-expired-code-rejected-390.png') })
+  results.push({ case: 'actual-expired-challenge-cannot-verify-negative-only-fixture', passed: true })
+  const beforeResend = calls.filter(c => c.path.endsWith('/enrollment/resend')).length
+  const firstResend = await resend(page)
+  assert.equal(firstResend.attemptId, attemptId)
+  assert(Date.parse(firstResend.expiresAt) <= Date.parse(signupReceipt.expiresAt))
+  assert(Date.parse(firstResend.resendAvailableAt) > Date.parse(firstResend.serverTime))
+  assert.equal(firstResend.resendAvailableAt, signupReceipt.resendAvailableAt, 'This case requires a real predeadline neutral resend')
+  await resendDisabled(page)
+  // Predeadline is neutral202 without new mail. Wait the actual displayed deadline;
+  // no automatic POST or artificial production TTL change.
+  await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent === 'Request another code' && !b.disabled), undefined, { timeout: 70_000 })
+  await new Promise(resolve => setTimeout(resolve, 350))
+  assert.equal(calls.filter(c => c.path.endsWith('/enrollment/resend')).length, beforeResend + 1)
+  for (const file of await readdir(serving)) {
+    const match = /^browser-mail-(\d+)\.json$/.exec(file)
+    if (match && Number(match[1]) > captured.index) {
+      const extra = JSON.parse(await readFile(path.join(serving, file), 'utf8'))
+      assert.notEqual(extra.attemptId, attemptId, 'Predeadline resend unexpectedly dispatched mail')
+    }
+  }
+  const fresh = await resend(page)
+  assert(Date.parse(fresh.resendAvailableAt) > Date.parse(firstResend.resendAvailableAt))
+  assert(Date.parse(fresh.expiresAt) <= Date.parse(signupReceipt.expiresAt))
+  await resendDisabled(page)
+  results.push({ case: 'real-server-resend-deadline-without-automatic-replay', passed: true })
+  const latest = await mailFor(attemptId, captured.index); mail = latest.mail; link = new URL(mail.verificationLink)
+  assert.equal(link.origin, 'http://localhost:3000'); assert.equal(link.pathname, '/verify-email'); assert.equal(link.hash, '')
+  assert.match(mail.verificationCode, /^\d{6}$/)
+  assert(Date.parse(mail.expiresAt) > Date.parse(expired.serverTime))
+  assert.deepEqual([...link.searchParams.keys()].sort(), ['attemptId', 'code'])
+  assert.equal(link.searchParams.get('attemptId'), attemptId); assert.equal(link.searchParams.get('code'), mail.verificationCode)
+  await page.goto(link.href); await page.waitForURL('http://localhost:3000/verify-email')
+  const verified = await submitVerification(page, 200); assert.equal(verified.status, 'VERIFIED')
   await page.getByText('Email verified. Sign in to continue.').waitFor(); await clean(page, mail.verificationCode)
   await page.screenshot({ path: path.join(evidence, 'main-mail-link-verified-390.png') })
-  results.push({ case: 'actual-main-signup-mailworker-bound-link-verification', passed: true })
+  results.push({ case: 'actual-main-signup-mailworker-latest-bound-link-verification', passed: true })
+  await control('browser-rotate.json', { expectedRevision: ready.policyRevision })
+  const rotated = await receipt('browser-policy-rotated.json')
+  assert.equal(rotated.previousRevision, ready.policyRevision); assert.equal(rotated.syntheticPolicyOnly, true)
+  assert.match(rotated.policyRevision, /^[a-f0-9-]{36}$/); assert.notEqual(rotated.policyRevision, ready.policyRevision)
+  assert(Array.isArray(rotated.requiredAcknowledgementIds) && rotated.requiredAcknowledgementIds.length > 0)
   await page.getByRole('link', { name: 'Sign in', exact: true }).click()
   await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password)
   await page.getByRole('form', { name: 'Email sign-in' }).evaluate(form => {
     form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })); form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
   })
+  await page.getByRole('heading', { name: 'Review current agreements' }).waitFor()
+  assert(decisions.some(d => d.status === 200 && d.decision === 'CONSENT_REQUIRED' && d.policyRevision === rotated.policyRevision))
+  assert(!calls.some(c => c.path.endsWith('/bootstrap')), 'Bootstrap dispatched before required current consent')
+  await page.getByRole('button', { name: 'Load current agreements' }).click()
+  await page.getByRole('checkbox').first().waitFor()
+  assert((await page.getByRole('group', { name: 'Required agreements' }).innerText()).includes(rotated.policyRevision))
+  assert.equal(await page.getByRole('checkbox').count(), rotated.requiredAcknowledgementIds.length)
+  for (const checkbox of await page.getByRole('checkbox').all()) await checkbox.check()
+  await clean(page, mail.verificationCode)
+  await page.screenshot({ path: path.join(evidence, 'main-current-consent-required-390.png') })
+  const consentResponse = page.waitForResponse(r => new URL(r.url()).pathname === '/api/auth/enrollment/consent' && r.request().method() === 'POST')
+  await page.getByRole('button', { name: 'Agree and continue' }).evaluate(button => { button.click(); button.click() })
+  const acceptedConsent = await consentResponse
+  assert.equal(acceptedConsent.status(), 200)
+  const consentCommand = acceptedConsent.request().postDataJSON()
+  assert.equal(consentCommand.policyRevision, rotated.policyRevision)
+  assert.deepEqual([...consentCommand.acknowledgementIds].sort(), [...rotated.requiredAcknowledgementIds].sort())
+  await page.getByRole('link', { name: 'Continue', exact: true }).waitFor()
+  assert.equal(calls.filter(c => c.path.endsWith('/enrollment/consent')).length, 1)
+  assert(!calls.some(c => c.path.endsWith('/bootstrap')), 'Private destination opened before explicit continuation')
+  await page.getByRole('link', { name: 'Continue', exact: true }).click()
   await page.waitForURL('http://localhost:3000/world')
-  await page.waitForFunction(() => ![...document.querySelectorAll('[role="status"],h1')].some(e => /Opening your event|Checking account entry/.test(e.textContent)))
+  await page.getByRole('heading', { name: 'Your event is unavailable', exact: true }).waitFor()
+  assert(wireOutcomes.some(r => r.path === `/api/concert/events/${eventId}/bootstrap` && r.status === 503), 'Auth-only fixture must deny real bootstrap')
+  assert.equal(await page.locator('canvas').count(), 0)
+  assert.equal(socketObservations.length, sockets, 'Every attempted socket must have a retained classification')
+  assert(socketObservations.every(row => row.kind === 'VITE_HMR'), 'Auth-only run attempted a World or unclassified socket')
   assert.equal(calls.filter(c => c.path === '/api/auth/login').length, 1)
-  assert(decisions.some(d => d.status === 200 && d.decision === 'ADMITTED' && d.policyRevision === ready.policyRevision && d.acceptedRevision === ready.policyRevision))
+  assert(decisions.some(d => d.status === 200 && d.decision === 'ADMITTED' && d.policyRevision === rotated.policyRevision && d.acceptedRevision === rotated.policyRevision))
   await clean(page, mail.verificationCode); await page.screenshot({ path: path.join(evidence, 'main-authorized-world-continuation-pending-390.png') })
-  results.push({ case: 'canonical-sign-in-and-real-current-admission', passed: true })
+  results.push({ case: 'canonical-login-renewed-explicit-consent-and-real-current-admission', passed: true })
   assert.deepEqual(errors, [])
   await writeFile(path.join(evidence, 'main-browser-report.json'), JSON.stringify({
     qualification: 'Actual main entry; real Auth RPC/Gateway/private DB and canonical mail-worker local capture; explicit synthetic test policy only',
+    frontendRevision, frontendRepo, loaderRevision, loaderSha256, frontendSourceReceipts: source.receipts(),
     frontendOrigin: ready.frontendOrigin, backendOrigin: ready.gatewayOrigin, upstream: ready.gatewayLoopbackOrigin,
-    backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision, runtimeMigrationSha256: ready.runtimeMigrationSha256, policyRevision: ready.policyRevision,
-    node: process.version, browser: browser.version(), results, calls, decisions, errors,
+    backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision, runtimeMigrationSha256: ready.runtimeMigrationSha256, initialPolicyRevision: ready.policyRevision, policyRevision: rotated.policyRevision,
+    node: process.version, browser: browser.version(), results, calls, wireOutcomes, decisions, errors, sockets, socketObservations,
     worldContinuation: 'OPEN: Auth-only fixture does not contain coherent Concert/Profile/Friend producers; no World/canvas/socket success claimed',
     externalMail: 'NOT_RUN', productionLegalPublication: 'ABSENT_NOT_CLAIMED'
   }, null, 2) + '\n')
   await context.close()
+} catch (error) {
+  const sanitize = value => String(value).replaceAll(password, '[redacted-password]')
+    .replace(/\b[0-9]{6}\b/g, '[redacted-six-digit]')
+    .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, '[redacted-jwt]')
+  await writeFile(path.join(evidence, 'main-browser-failure-report.json'), JSON.stringify({
+    qualification: 'FAILED_NO_OVERALL_ACCEPTANCE', frontendRevision, loaderRevision, loaderSha256,
+    backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision,
+    results, calls, wireOutcomes, decisions, sockets, socketObservations,
+    errors: errors.map(sanitize), sourceReceipts: source.receipts(),
+    failure: { name: error.name, stack: sanitize(error.stack ?? error.message) },
+    worldContinuation: 'OPEN; no World/canvas/socket success inferred from Auth-only fixture'
+  }, null, 2) + '\n')
+  throw new Error(sanitize(error.stack ?? error.message))
 } finally { await browser?.close(); await dev?.close() }

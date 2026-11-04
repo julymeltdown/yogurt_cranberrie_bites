@@ -1,0 +1,51 @@
+{
+  "binary_sha256": "8c0c8f06e290717ac877c6d068d023ee58f2e60434327850180d1171c31a2e55",
+  "browser_verdict": "FE_OWNED_NOT_CLAIMED_BY_SERVING_FIXTURE",
+  "compiled_source_revision": "857a69559631db52f1febdb7692888f089a9575c",
+  "owned_root_absent": true,
+  "prepared_transactions": 0,
+  "runtime_migration_sha256": {
+    "api-gateway": {
+      "backend/services/api-gateway/migrations/0001_init_gateway.sql": "d5f92091085eeadfdfcbaab4593fe92301bc8e70e1f728a9c2898c56308d3377",
+      "backend/services/api-gateway/migrations/0002_governance.sql": "30f45d0e0eaa1892aac84fc123241e092ca2c71d7694435a751a5075599daa86",
+      "backend/services/api-gateway/migrations/0003_moderation.sql": "f5e6556c12ce2f04af0c26c5f937e1f4a30707e79b9f4a20aaa50ddef84f2e3b",
+      "backend/services/api-gateway/migrations/0004_shared_rate_limit_and_journal.sql": "0e3ec01639ac19992276984f22846708931a3803bde4b8a09d11b7226f895d79",
+      "backend/services/api-gateway/migrations/0005_route_class_admission.sql": "7b95f740523f3a70c711359d5430a148df79ae7b46488083e0aff7deb459e441",
+      "backend/services/api-gateway/migrations/0006_admission_lock_wait.sql": "049172b20ce4fe355291d81120115f7d01ef9d1583b89040420290bf2f5b1ca6",
+      "backend/services/api-gateway/migrations/0007_moderation_report_operation_receipts.sql": "969e70b316475a1afd1f3d2f2470d2e29fecb8346dd9f04d357461b343101c86",
+      "backend/services/api-gateway/migrations/0008_gateway_operation_manual_reconciliation.sql": "518fdc333bec22bbb0271a8e99da8ead5cf397fd4eb211ef336fb4094cacfe28",
+      "backend/services/api-gateway/migrations/0009_gateway_async_operation_queue.sql": "1087497b6ecf46ab1f6e36677b1e516505a976c11a5ee63e6f9902cfd56d8148",
+      "backend/services/api-gateway/migrations/0010_gateway_journal_queued_state.sql": "d42d6307cfff2b1980166efd0fb72f328265687df730e74018a763871933a54f",
+      "backend/services/api-gateway/migrations/0011_moderation_content_decision_outbox.sql": "f90673b1b32bdf36e9e6e7d8e9d5eb974bb0cdbcac4d0c3b8ba33c85beb57c63",
+      "backend/services/api-gateway/migrations/0012_moderation_unavailable_resolution.sql": "b33f55d11cb25b39377cefdc1e1efa4b867700458309b20a9548f406a2c531c1",
+      "backend/services/api-gateway/migrations/0013_moderation_content_decision_retry_exhaustion.sql": "3a2d432f3322476c68f654d1aa45a77641e569816c15fc213ce970762c0f26f5",
+      "backend/services/api-gateway/migrations/0014_gateway_operation_outcome_evidence.sql": "2513f8e073bf75396c19f43306b93e7701e8b4e568b06a7924a7715d430fa297",
+      "backend/services/api-gateway/migrations/0015_gateway_async_operation_trace_context.sql": "cd0b552d43a58cb393defbdd5918244d0e554bf2d010424c5f07111a9c71b7e1",
+      "backend/services/api-gateway/migrations/0016_gateway_owner_receipt_reconciliation.sql": "5fd4f053c7f86842e3aa1183cf1efbbca5cf6cbed5b21dfc77eb5bf9f92ab888",
+      "backend/services/api-gateway/migrations/0017_gateway_owner_receipt_retry_schedule.sql": "f41a9db37fe4b582ff450e9f6b829a5888afec3365b032bd07b80e582c89808e"
+    },
+    "auth-service": {
+      "backend/services/auth-service/migrations/0001_init_auth.sql": "a4af04e2d91b4ebbcad2b4d1e31724030492b859a16627d576f235203f75d1e6",
+      "backend/services/auth-service/migrations/0002_oauth_identities.sql": "902c977960e9d3c85ee7b4e96d355e8bbea5af92cad27855a53e1e8944bdf2d2",
+      "backend/services/auth-service/migrations/0003_governance.sql": "a0a47910510fc53fa218c7303bb3411f2a22f75af504061d913677875d3379b9",
+      "backend/services/auth-service/migrations/0004_oauth_authorizations.sql": "8da1c9adefd84cf22e9566c77fc0b180b4a8ce50fe2baa5a262653076dab2c30",
+      "backend/services/auth-service/migrations/0005_user_deletion_sagas.sql": "286811b445dae24dbeb87e79075c27d62936caa04b8c1c8708aa8494aef774b4",
+      "backend/services/auth-service/migrations/0006_atomic_auth_and_delivery.sql": "a1d72adc0b0fc558f6d20615198ca511a06c8eaaad6e0a95ccdc59e7bc81d5cc",
+      "backend/services/auth-service/migrations/0007_login_attempt_classification.sql": "ad3f0604a1c831cb7999337f564d6350aeca3cc691c185bdff26b3d63c011eb5",
+      "backend/services/auth-service/migrations/0008_refresh_token_families.sql": "8e06bf45a6082e63666e95fe2993d27e15b341ca4535e2ebe9793388d0e6e535",
+      "backend/services/auth-service/migrations/0009_user_deletion_operator_retries.sql": "7422660c10813cf3a4d64d85b30c53749cab41be4b22c05bc3daafdf2ea2c0ff",
+      "backend/services/auth-service/migrations/0010_user_deletion_dead_letter_cursor.sql": "27fcd1c9d7fccc206b78499b570e1b5fc5b711842c965aed3f815654e00ebe24",
+      "backend/services/auth-service/migrations/0011_user_deletion_trace_context.sql": "1b068d731b3959f276fde68ad2ed6dd6bb75500404d62f06a37cc4fed803168a",
+      "backend/services/auth-service/migrations/0012_mail_outbox_trace_context.sql": "3d98845e8e5b0ee12f9150d5ef1deb42b88013478165a02be3b9ff0f7c585404",
+      "backend/services/auth-service/migrations/0013_identity_binding_epoch.sql": "0062e550ad7895389f9e49175795db73e1e4b8b4fd4be5e3bcf2a6b083dcfc9a",
+      "backend/services/auth-service/migrations/0014_concert_relationship_revision.sql": "ab2b935a378a6c1f0a2a9339edfcc057ec4e74092c38410e8fb8a6225358b6a7",
+      "backend/services/auth-service/migrations/0015_concert_deletion_steps.sql": "6b5ad5b41e145dab76b41569f225d0f38f3db304e9b9c8e7e649af87a465f751",
+      "backend/services/auth-service/migrations/0016_concert_invalidation_journal.sql": "4224d8d0aee0704eb34ee5ef279f546d2fbdb9772b78c09526dafa63ed328622",
+      "backend/services/auth-service/migrations/0017_concert_owner_guard_leases.sql": "5f76cdde832a53f0a1e3f291190ee2c5bff8d7dc5e1927de8bf51e8d3efc7bfc",
+      "backend/services/auth-service/migrations/0018_notification_producer.sql": "524f6ffc3ad9d8f1dadfd8fa8fa04b5c6df3dcc9ec594cbdc6fd79154eeddd28",
+      "backend/services/auth-service/migrations/0019_enrollment_policy.sql": "7c408a6c16f9b3a2586466f39828c372c98af7964e8589091aa002ff3a6f97a9"
+    }
+  },
+  "status": "SERVING_STOPPED",
+  "test_exit_code": 0
+}
