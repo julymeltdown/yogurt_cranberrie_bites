@@ -13,3 +13,11 @@ grant select, insert, update, delete on
     public.notification_user_deletion_receipts,
     public.notifications
 to :"runtime_role";
+
+-- BE33 v1 deletion proofs are insert-only; no mutation/deletion privileges.
+grant select, insert on
+    public.notification_deletion_fences_v1,
+    public.notification_deletion_receipts_v1
+to :"runtime_role";
+grant usage on sequence public.notification_deletion_fences_v1_fence_revision_seq
+to :"runtime_role";
