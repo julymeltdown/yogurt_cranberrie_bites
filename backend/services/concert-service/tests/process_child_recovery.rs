@@ -66,6 +66,14 @@ struct Handoff {
     root_view: Vec<u8>,
     delivery: Vec<u8>,
     prepared: Vec<Prepared>,
+    intents: Vec<Intent>,
+}
+#[derive(Serialize, Deserialize, PartialEq, Eq)]
+struct Intent {
+    kind: String,
+    id: Uuid,
+    key_id: String,
+    ciphertext: Vec<u8>,
 }
 #[derive(Serialize, Deserialize)]
 struct Prepared {
@@ -394,6 +402,28 @@ async fn pending(f: &fixture::Fixture, key: &ScopeKey) -> anyhow::Result<(i64, i
     Ok(sqlx::query_as("select count(*) filter(where completed_at is null),count(*) filter(where completed_at is not null) from concert_product_child_intents where instance_id=$1 and scope_id=$2 and binding_digest=$3")
         .bind(key.instance).bind(key.scope).bind(key.binding_digest.as_slice()).fetch_one(&f.concert).await?)
 }
+async fn intents(f: &fixture::Fixture, key: &ScopeKey) -> anyhow::Result<Vec<Intent>> {
+    let rows: Vec<(String,Uuid,String,Vec<u8>)> = sqlx::query_as(
+        "select kind,intent_id,key_id,sealed_reference from concert_product_child_intents where instance_id=$1 and scope_id=$2 and binding_digest=$3 order by kind,intent_id")
+        .bind(key.instance).bind(key.scope).bind(key.binding_digest.as_slice()).fetch_all(&f.concert).await?;
+    Ok(rows
+        .into_iter()
+        .map(|(kind, id, key_id, ciphertext)| Intent {
+            kind,
+            id,
+            key_id,
+            ciphertext,
+        })
+        .collect())
+}
+async fn acknowledgements(
+    f: &fixture::Fixture,
+    key: &ScopeKey,
+) -> anyhow::Result<Vec<(String, Uuid, Option<String>)>> {
+    Ok(sqlx::query_as(
+        "select kind,intent_id,completed_at::text from concert_product_child_intents where instance_id=$1 and scope_id=$2 and binding_digest=$3 order by kind,intent_id")
+        .bind(key.instance).bind(key.scope).bind(key.binding_digest.as_slice()).fetch_all(&f.concert).await?)
+}
 async fn invariant(f: &fixture::Fixture, key: &ScopeKey) -> anyhow::Result<()> {
     anyhow::ensure!(
         f.ledger.resolve_scope(key).await? == ScopePhase::RootFinished,
@@ -476,7 +506,11 @@ async fn old(run: Uuid, instance: Uuid) -> anyhow::Result<()> {
     let response = service.oneshot(req).await?;
     let headers = response.headers().clone();
     // Actual Concert gRPC body EOF marks serialization through production Serialized.
-    let body = response.into_body().collect().await?;
+    let body = response
+        .into_body()
+        .collect()
+        .await
+        .map_err(|_| anyhow::anyhow!("actual retained Product body failed"))?;
     anyhow::ensure!(
         grpc_code(&headers, body.trailers())? == 0,
         "guarded Product RPC denied"
@@ -537,6 +571,39 @@ async fn old(run: Uuid, instance: Uuid) -> anyhow::Result<()> {
         "terminal callback did not return Unavailable"
     );
     invariant(&f, &key).await?;
+    // The binding contract requires child settlement itself to fail, after
+    // genuine terminal Root proof. ReadCurrent/acquisition already used the
+    // real Profile service. Now only its exact Complete method returns a
+    // negative transport fault; Local settlement is negatively unavailable.
+    // All replacement-process settlement paths use the actual adapters.
+    let before_fault = intents(&f, &key).await?;
+    f.make_child_settlement_unavailable();
+    let mut unavailable_worker = ChildRecoveryWorker::new(
+        f.ledger.clone(),
+        ChildRecoverySettings::new(
+            2,
+            Duration::from_secs(2),
+            Duration::from_secs(6),
+            Duration::from_millis(100),
+        )?,
+    )?;
+    let unavailable = unavailable_worker.tick().await?;
+    anyhow::ensure!(
+        unavailable.selected == 2
+            && unavailable.attempted == 2
+            && unavailable.completed == 0
+            && unavailable.pending == 2,
+        "both actual children must survive unavailable settlement"
+    );
+    anyhow::ensure!(
+        f.profile_completion_failures.load(Ordering::SeqCst) == 1,
+        "actual Profile Complete transport fault was not exercised"
+    );
+    anyhow::ensure!(
+        intents(&f, &key).await? == before_fault,
+        "unavailable child settlement changed immutable encrypted references"
+    );
+    invariant(&f, &key).await?;
     anyhow::ensure!(
         pending(&f, &key).await? == (2, 0),
         "both real children must remain pending"
@@ -581,6 +648,7 @@ async fn old(run: Uuid, instance: Uuid) -> anyhow::Result<()> {
         root_view: view.encode_to_vec(),
         delivery: capability.encode_to_vec(),
         prepared: saved,
+        intents: before_fault,
     })?;
     line("MCR_CR01_OLD_READY")?;
     // Keep f, its actual Arc scopes, reader and servers alive until controller SIGKILL.
@@ -669,6 +737,10 @@ async fn restart(run: Uuid, instance: Uuid) -> anyhow::Result<()> {
     )?;
     invariant(&f, &key).await?;
     anyhow::ensure!(
+        intents(&f, &key).await? == state.intents,
+        "physical restart changed immutable encrypted references"
+    );
+    anyhow::ensure!(
         pending(&f, &key).await? == (2, 0),
         "pending children lost at restart"
     );
@@ -715,6 +787,22 @@ async fn restart(run: Uuid, instance: Uuid) -> anyhow::Result<()> {
     anyhow::ensure!(
         completed == 2 && pending(&f, &key).await? == (0, 2),
         "actual production recovery did not ACK both children"
+    );
+    let acknowledged = acknowledgements(&f, &key).await?;
+    for _ in 0..2 {
+        let repeated = worker.tick().await?;
+        anyhow::ensure!(
+            repeated.selected == 0
+                && repeated.attempted == 0
+                && repeated.completed == 0
+                && repeated.pending == 0,
+            "completed intent was reselected on repeated production drain"
+        );
+    }
+    anyhow::ensure!(
+        intents(&f, &key).await? == state.intents
+            && acknowledgements(&f, &key).await? == acknowledged,
+        "repeated production drain changed immutable references or ACK receipts"
     );
     for pool in [&f.concert, &f.profile] {
         anyhow::ensure!(

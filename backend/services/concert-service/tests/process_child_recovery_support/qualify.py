@@ -83,6 +83,7 @@ def run(args, report):
             raise core.SmokeError("physical-root-restart","one exact private handoff required")
         saved = json.loads(handoffs[0].read_text())
         report["saved_root_view_sha256"] = hashlib.sha256(bytes(saved["root_view"])).hexdigest()
+        report["encrypted_intents_sha256"] = hashlib.sha256(json.dumps(saved["intents"],sort_keys=True,separators=(",",":")).encode()).hexdigest()
         report["prepared_before_sha256"] = hashlib.sha256(json.dumps(saved["prepared"],sort_keys=True,separators=(",",":")).encode()).hexdigest()
         report["migration_receipts"] = {owner:core.check_ledger(cluster,"mcr_canonical_"+owner,
             core.migration_manifest(repo/"backend",owner+"-service")) for owner in OWNERS}

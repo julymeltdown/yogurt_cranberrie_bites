@@ -149,6 +149,7 @@
   "kind": "Historical source provenance; not a build or runtime checkpoint",
   "private_draft_manifest_sha256": "5bbbbaab0519a1ef60e9d2dc691be5228890b6b1a3e1260ba37ba057774a6835",
   "review_source_head_observed": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9",
-  "scope": "Actual Product/Delivery, Auth/Friend stores, Profile public service, native children, strict fixture mTLS and production worker. Negative-only Auth Complete fault. Root process is physically killed and replaced; fixture owner RPC servers share each Root child PID.",
+  "scope": "Actual Product/Delivery, Auth/Friend stores, Profile public service, native children, strict fixture mTLS and production worker. Negative-only Auth Complete fault. Root process is physically killed and replaced; fixture owner RPC servers share each Root child PID. After genuine RootFinished, an enabled exact Profile Complete negative transport and negative Local settler exercise the old production worker with zero ACKs; replacement restores actual adapters. Repeated new-process drains must preserve encrypted identity/key/ciphertext and original ACK timestamps.",
+  "six_case_contract_source": "f4a15ba981a327ee22aff0c59eed5885ffab9fd5:backend/services/concert-service/tests/owner_authority_support/restart_contract.json (byte-exact)",
   "validation": "Authored and static-reviewed. Compile and physical CR01 NOT_RUN at initial source commit. Qualified build checkpoints capture the full committed source and selected-art/runtime-resource manifest separately."
 }

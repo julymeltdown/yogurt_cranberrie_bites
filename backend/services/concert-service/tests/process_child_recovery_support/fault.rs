@@ -1,8 +1,12 @@
-//! Negative-only transport fault around the actual guarded Auth owner server.
-//! Every method except exact Auth /Complete delegates to the original service.
+//! Negative-only transport fault around actual guarded owner servers.
+//! Every method except exact /Complete delegates to the original service.
 use std::{
     future::Future,
     pin::Pin,
+    sync::{
+        atomic::{AtomicBool, AtomicUsize, Ordering},
+        Arc,
+    },
     task::{Context, Poll},
 };
 use tonic::server::NamedService;
@@ -11,11 +15,27 @@ use tower::Service;
 #[derive(Clone)]
 pub(super) struct NegativeComplete<S> {
     inner: S,
-    enabled: bool,
+    enabled: Arc<AtomicBool>,
+    failures: Arc<AtomicUsize>,
 }
 impl<S> NegativeComplete<S> {
     pub(super) fn new(inner: S, enabled: bool) -> Self {
-        Self { inner, enabled }
+        Self::controlled(
+            inner,
+            Arc::new(AtomicBool::new(enabled)),
+            Arc::new(AtomicUsize::new(0)),
+        )
+    }
+    pub(super) fn controlled(
+        inner: S,
+        enabled: Arc<AtomicBool>,
+        failures: Arc<AtomicUsize>,
+    ) -> Self {
+        Self {
+            inner,
+            enabled,
+            failures,
+        }
     }
 }
 impl<S: NamedService> NamedService for NegativeComplete<S> {
@@ -38,10 +58,13 @@ where
         self.inner.poll_ready(cx)
     }
     fn call(&mut self, request: axum::http::Request<B>) -> Self::Future {
-        if self.enabled && request.uri().path() == format!("/{}/Complete", S::NAME) {
+        if self.enabled.load(Ordering::SeqCst)
+            && request.uri().path() == format!("/{}/Complete", S::NAME)
+        {
+            self.failures.fetch_add(1, Ordering::SeqCst);
             return Box::pin(async {
                 Ok(
-                    tonic::Status::unavailable("CR01 injected Auth Complete failure")
+                    tonic::Status::unavailable("CR01 injected Complete unavailability")
                         .into_http()
                         .map(|_| R::default()),
                 )

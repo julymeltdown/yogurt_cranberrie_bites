@@ -161,7 +161,8 @@ def execute(args: argparse.Namespace) -> None:
                   "runtime_observation": "completed_by_explicit_operator_execution",
                   "old_pid": old_pid, "new_pid": new_pid, "old_reaped_after_sigkill": True,
                   "native_prepared_zero_after_recovery": ["auth", "friend", "concert", "profile"],
-                  "durable_owner_completed": ["auth", "friend"], "delivery_completed": False,
+                  "durable_owner_completed": ["auth", "friend"], "delivery_completed": False, "immutable_intents_and_repeated_ACKs_unchanged": True,
+                  "old_process_worker": {"attempted":2,"completed":0,"pending":2,"actual_profile_complete_unavailable":True},
                   "main_activation": "INTEGRATOR_OWNED_EXTERNAL_GATE",
                   "source_commit": source_commit, "binary_sha256": binary_sha256}
         report_path = root / f"process-cr01-{run.hex}-observations.json"

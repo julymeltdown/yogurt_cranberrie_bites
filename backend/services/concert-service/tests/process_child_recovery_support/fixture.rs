@@ -20,14 +20,27 @@ use platform::{
     grpc_method_policy::{guard, guard_without_delegation},
 };
 use sqlx::PgPool;
-use std::sync::Arc;
+use std::sync::{
+    atomic::{AtomicBool, AtomicUsize, Ordering},
+    Arc,
+};
 use uuid::Uuid;
 
-struct Settle(Arc<PublicProfileReader>);
+struct Settle {
+    reader: Arc<PublicProfileReader>,
+    local_unavailable: Arc<AtomicBool>,
+}
 #[async_trait::async_trait]
 impl ChildIntentSettler for Settle {
     async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), tonic::Status> {
-        self.0.recover_one(reference).await
+        if self.local_unavailable.load(Ordering::SeqCst)
+            && matches!(reference, ChildRecoveryReference::LocalPublic { .. })
+        {
+            return Err(tonic::Status::unavailable(
+                "CR01 negative Local settlement fault",
+            ));
+        }
+        self.reader.recover_one(reference).await
     }
 }
 fn incoming(
@@ -53,6 +66,8 @@ pub(super) struct Fixture {
     pub registry: Arc<ScopeRegistry>,
     pub fence: CanonicalOwnerFence,
     pub event: Uuid,
+    child_unavailable: Arc<AtomicBool>,
+    pub profile_completion_failures: Arc<AtomicUsize>,
     root_url: String,
     _auth: owners::Running,
     _friend: owners::Running,
@@ -97,6 +112,13 @@ impl Fixture {
             )?
             .into_inner(),
         )?;
+        let child_unavailable = Arc::new(AtomicBool::new(false));
+        let profile_completion_failures = Arc::new(AtomicUsize::new(0));
+        let profile_service = super::fault::NegativeComplete::controlled(
+            profile_service,
+            child_unavailable.clone(),
+            profile_completion_failures.clone(),
+        );
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
         let profile_url = format!("https://{}", listener.local_addr()?);
         let profile_task = spawn(
@@ -123,7 +145,10 @@ impl Fixture {
             concert.clone(),
             instance,
             keys,
-            Arc::new(Settle(reader.clone())),
+            Arc::new(Settle {
+                reader: reader.clone(),
+                local_unavailable: child_unavailable.clone(),
+            }),
         )?;
         // Always construct a NEW registry. Restart never activates/rebuilds a lost scope.
         let registry = ScopeRegistry::new(instance, Arc::new(ledger.clone()))?;
@@ -166,11 +191,16 @@ impl Fixture {
             registry,
             fence,
             event,
+            child_unavailable,
+            profile_completion_failures,
             root_url,
             _auth: running_auth,
             _friend: running_friend,
             tasks: vec![profile_task, root_task],
         })
+    }
+    pub fn make_child_settlement_unavailable(&self) {
+        self.child_unavailable.store(true, Ordering::SeqCst);
     }
     /// Actual post-restart owner reconciliation. Call only after children ACK
     /// and the saved original root deadline has passed; expiry selects a sweep,
