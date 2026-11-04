@@ -98,6 +98,9 @@ BEGIN
      OLD.fence_revision,OLD.ordinal,OLD.created_at)
     OR (NEW.state IS DISTINCT FROM OLD.state AND NEW.state<>'COMPLETE')
     OR (OLD.owner_revision IS NOT NULL AND NEW.owner_revision IS NULL)
+    OR (OLD.completed_at IS NOT NULL AND NEW.completed_at IS DISTINCT FROM OLD.completed_at)
+    OR (OLD.completed_at IS NULL AND NEW.completed_at IS NOT NULL
+        AND NEW.state<>'COMPLETE')
     OR (NEW.state='COMPLETE' AND NEW.owner_revision IS NULL)
     OR (NEW.state='INCOMPLETE' AND OLD.owner_revision IS NOT NULL)
     OR (OLD.owner_revision IS NULL AND NEW.owner_revision IS NOT NULL
