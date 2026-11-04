@@ -1,6 +1,7 @@
 # C07 generated client and deterministic contract harness
 
-Status: IN_PROGRESS. Original C07 criteria implementation; qualification and publication pending.
+Status: IN_PROGRESS. C07 source qualification passed; full QA01 is blocked by
+historical pin drift. Combined CI and publication are pending.
 
 The generator consumes the canonical `contracts/generated/mcr-domain.openapi.json`
 and the existing contract/fixture corpus without changing those inputs. It emits
@@ -82,5 +83,45 @@ the same checks after frozen dependency installation in an ephemeral CI runner.
 
 ## Qualification record
 
-Not run yet. This section will record actual source/contract revisions, commands,
-exit codes, evidence paths, limits and publishing ancestry before handoff.
+The source-only round `C07-ORIGINAL-SOURCE-B-202611041514Z` began at
+2026-11-04 15:14:21 UTC on source
+`5b9e6f4a3903a886bec03beb3465fcfcf477aee9`, with a 600-second work deadline
+and 120-second cleanup allowance. Input/runtime/guardian SHA-256 pins and the
+original cutoffs are retained in the local round's `accept.json`. The local
+artifact directory is `mcr-tools/c07-20261104T1514Z` beside the delivery checkout;
+machine-specific absolute paths are deliberately omitted from committed prose.
+
+Initial generator execution exited 0 and produced 14 inventoried artifacts:
+135 operations, 243 named schemas, 1,528 operation/status/media witnesses, and
+28,290 independent Python compatibility decisions. No fixture claims live
+business-rule or multiuser acceptance. The seven C07 harness checks passed:
+generator drift exit 0; schema-mismatch, missing-operation and output-drift probes
+each exit 1 with the expected drift diagnostic; inventory regression exit 0;
+strict TypeScript compilation exit 0; five Node runtime tests exit 0.
+`checks/receipt.json` records exact argv and exit codes, with separate logs.
+
+Full QA01 `run.py` exited 1 at its unchanged exact pin comparison. Its public
+unittest suite exited 1 because the required positive setup failed, so none of
+its twelve legacy negative probes is claimed as executed. The two newly granted
+namespace regressions pass independently. Logs retain both the initial failure
+and the subsequent suite result after isolating those two new tests in their
+own class; no old negative test or setup requirement was weakened.
+
+The frozen pin file names canonical candidate
+`d042638789bc84587be7bbbe09b32c324570c75f`. Sixteen already-pinned files have
+different bytes at delivery base `bcbcf3ed`; additional legacy canonical inputs
+are also absent from that old pin inventory. `legacy-integrity.json` records the
+base/current/pinned hashes. All 231 pre-generation canonical/source snapshots,
+including `docs/source/` and the old pin file, remain byte-identical to the
+pre-generation snapshot. This failure predates C07 output generation.
+
+The initial exec launcher encountered `setsid` EPERM because the execution tool
+already supplied an isolated process group. The corrected launcher retains that
+group only when its PGID equals its own PID; both versions and the failure are
+retained. No application/runtime failure is hidden by this launcher correction.
+
+Root subsequently authorized an exact, separate audited forward-baseline scope:
+the active QA01 pin file, provenance-only README changes, and two new immutable
+archive records. That work starts after this round releases its resources. It
+does not authorize canonical input changes, silent repinning, unqualified
+producer deltas, global exclusions or a passing CI claim before full rerun.

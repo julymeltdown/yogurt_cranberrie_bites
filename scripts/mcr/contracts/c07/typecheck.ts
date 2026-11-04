@@ -5,6 +5,10 @@ const client = createClient({ baseUrl: 'https://fixture.invalid' })
 client.call('__UNKNOWN__', {})
 // @ts-expect-error unknown named schema must not compile
 schema('__UNKNOWN__')
+// @ts-expect-error required login body must be present
+client.operations.login({})
+// @ts-expect-error required provider path parameter must be present
+client.operations.receiveAppleOAuthFormPost({ body: {} })
 const parsed: Schemas['Bootstrap'] = schema('Bootstrap').parse({})
 void parsed
 function typed<K extends keyof Operations>(id: K, request: Operations[K]['request']) {

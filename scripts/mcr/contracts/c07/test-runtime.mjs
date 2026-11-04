@@ -21,6 +21,8 @@ test('every registered operation/status/media witness runs through the real gene
       const spec = contract.operations[row.operation]
       assert.equal(init.method, spec.method)
       assert.equal(init.redirect, 'manual')
+      assert.equal(init.credentials, 'same-origin')
+      assert.equal(init.headers.get('Authorization'), spec.security?.some(s => Object.hasOwn(s, 'BearerAuth')) ? 'Bearer test-only-access-token' : null)
       let expected = spec.path
       for (const p of spec.parameters.filter(p => p.in === 'path')) expected = expected.replace(`{${p.name}}`, encodeURIComponent(String(input.path[p.name])))
       assert.equal(new URL(url).pathname, expected)
@@ -49,6 +51,8 @@ test('every registered operation/status/media witness runs through the real gene
 
 test('Zod agrees with retained independent Python JSON Schema decisions for every differential case', () => {
   assert.ok(compatibility.length > 500)
+  const named = new Set(compatibility.filter(r => r.schema.$ref?.startsWith('#/components/schemas/')).map(r => r.schema.$ref.split('/').at(-1)))
+  assert.deepEqual([...named].sort(), Object.keys(contract.components.schemas).sort())
   let accepted = 0, rejected = 0
   for (const row of compatibility) {
     assert.equal(api.accepts(row.schema, row.value), row.accept, JSON.stringify(row.schema) + ' / ' + JSON.stringify(row.value).slice(0, 120))
@@ -82,6 +86,15 @@ test('request/response drift, malformed media, aborts and unexpected mock calls 
   let calls = 0
   const client = api.createClient({ baseUrl: 'https://fixture.invalid', fetch: async () => { calls++; return new Response('{', { status: 200, headers: { 'content-type': 'application/json' } }) } })
   await assert.rejects(() => client.call(row.operation, { ...row.request, unknown: true }), api.ContractError)
+  assert.equal(calls, 0)
+  const parameterRow = rows.find(r => contract.operations[r.operation].parameters.some(p => p.in === 'path' && p.required))
+  const missingPath = structuredClone(parameterRow.request)
+  const parameter = contract.operations[parameterRow.operation].parameters.find(p => p.in === 'path' && p.required)
+  delete missingPath.path[parameter.name]
+  await assert.rejects(() => client.call(parameterRow.operation, missingPath), api.ContractError)
+  const bodyRow = rows.find(r => contract.operations[r.operation].requestBody?.required && r.request.mediaType === 'application/json')
+  const missingBody = structuredClone(bodyRow.request); delete missingBody.body
+  await assert.rejects(() => client.call(bodyRow.operation, missingBody), api.ContractError)
   assert.equal(calls, 0)
   await assert.rejects(() => client.call(row.operation, row.request), api.ContractError)
   await assert.rejects(() => client.call('__UNKNOWN__', {}), api.ContractError)

@@ -66,35 +66,6 @@ class CoverageTests(unittest.TestCase):
                 self.assertEqual(receipt["result"], "FAIL")
                 self.assertIn(errors[probe], receipt["error"])
 
-    def test_c07_separation_is_exact_not_a_global_exclusion(self):
-        for name in ("contracts/fixtures/c07/a.json", "contracts/generated/api-client/nested/a.json"):
-            self.assertFalse(coverage.legacy_path(ROOT / name))
-        for name in ("contracts/fixtures/c07-other/a.json", "contracts/generated/api-client-other/a.json",
-                     "contracts/fixtures/domain/c07/a.json", "contracts/core/v1/core.schema.json"):
-            self.assertTrue(coverage.legacy_path(ROOT / name))
-
-    def test_non_c07_unclassified_files_still_fail_discovery(self):
-        import tempfile
-        with tempfile.TemporaryDirectory(prefix="mcr-c07-qa01-") as directory:
-            root = Path(directory)
-            for name in ("contracts/fixtures/c07/catalog.json", "contracts/fixtures/c07/unknown.txt",
-                         "contracts/fixtures/domain/valid.json"):
-                path = root / name
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text("{}")
-            with patch.object(coverage, "ROOT", root):
-                self.assertEqual(coverage.fixture_paths(), [root / "contracts/fixtures/domain/valid.json"])
-                # A new canonical JSON input remains visible and therefore fails
-                # the unchanged exact pins comparison in the ordinary run.
-                canonical = root / "contracts/fixtures/domain/new.json"
-                canonical.write_text("{}")
-                self.assertIn(canonical, coverage.fixture_paths())
-                bad = root / "contracts/fixtures/c07-other/unknown.txt"
-                bad.parent.mkdir(parents=True)
-                bad.write_text("unclassified")
-                with self.assertRaisesRegex(ValueError, "unclassified non-JSON fixture file"):
-                    coverage.fixture_paths()
-
     def test_missing_dependencies_are_not_silent_success(self):
         process = subprocess.run([sys.executable, "-B", "-S", str(HERE / "run.py")],
                                  cwd=ROOT, capture_output=True, text=True, timeout=30)
@@ -126,6 +97,38 @@ class CoverageTests(unittest.TestCase):
         for payload in ('{"x":1,"x":2}', '{"x":NaN}', '{"x":Infinity}'):
             with self.subTest(payload=payload), self.assertRaises(ValueError):
                 coverage.read(Source(payload))
+
+
+class C07NamespaceTests(unittest.TestCase):
+    def test_c07_separation_is_exact_not_a_global_exclusion(self):
+        for name in ("contracts/fixtures/c07/a.json", "contracts/generated/api-client/nested/a.json"):
+            self.assertFalse(coverage.legacy_path(ROOT / name))
+        for name in ("contracts/fixtures/c07-other/a.json", "contracts/generated/api-client-other/a.json",
+                     "contracts/fixtures/domain/c07/a.json", "contracts/core/v1/core.schema.json"):
+            self.assertTrue(coverage.legacy_path(ROOT / name))
+
+    def test_non_c07_unclassified_files_still_fail_discovery(self):
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="mcr-c07-qa01-") as directory:
+            root = Path(directory)
+            for name in ("contracts/fixtures/c07/catalog.json", "contracts/fixtures/c07/unknown.txt",
+                         "contracts/fixtures/domain/valid.json"):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("{}")
+            with patch.object(coverage, "ROOT", root):
+                self.assertEqual(coverage.fixture_paths(), [root / "contracts/fixtures/domain/valid.json"])
+                # A new canonical JSON input remains visible and therefore fails
+                # the unchanged exact pins comparison in the ordinary run.
+                canonical = root / "contracts/fixtures/domain/new.json"
+                canonical.write_text("{}")
+                self.assertIn(canonical, coverage.fixture_paths())
+                bad = root / "contracts/fixtures/c07-other/unknown.txt"
+                bad.parent.mkdir(parents=True)
+                bad.write_text("unclassified")
+                with self.assertRaisesRegex(ValueError, "unclassified non-JSON fixture file"):
+                    coverage.fixture_paths()
+
 
 
 if __name__ == "__main__":
