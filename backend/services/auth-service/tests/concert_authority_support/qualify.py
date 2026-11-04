@@ -40,9 +40,11 @@ def qualify(metadata, pg, report):
         cluster.start();pki(cluster)
         # Reuse the audited private fixture PKI creation, then issue Post for the
         # workload-authorization test using that same short-lived authority.
-        cert=cluster.root/'pki';ext=cert/'post.ext';ext.write_text('basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth,clientAuth\nsubjectAltName=DNS:post.svc.internal,URI:spiffe://internal/post\n')
-        for command in [['req','-new','-newkey','rsa:2048','-nodes','-keyout','post.key','-out','post.csr','-subj','/CN=post.svc.internal'],['x509','-req','-in','post.csr','-CA','ca.crt','-CAkey','ca.key','-CAcreateserial','-out','post.crt','-days','2','-extfile','post.ext']]:execute(['/usr/bin/openssl',*command],env=cluster.env,phase='pki-post',cwd=cert)
-        (cert/'post.key').chmod(0o600)
+        cert=cluster.root/'pki'
+        for role in ['post','profile']:
+            ext=cert/f'{role}.ext';ext.write_text(f'basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth,clientAuth\nsubjectAltName=DNS:{role}.svc.internal,URI:spiffe://internal/{role}\n')
+            for command in [['req','-new','-newkey','rsa:2048','-nodes','-keyout',f'{role}.key','-out',f'{role}.csr','-subj',f'/CN={role}.svc.internal'],['x509','-req','-in',f'{role}.csr','-CA','ca.crt','-CAkey','ca.key','-CAcreateserial','-out',f'{role}.crt','-days','2','-extfile',f'{role}.ext']]:execute(['/usr/bin/openssl',*command],env=cluster.env,phase=f'pki-{role}',cwd=cert)
+            (cert/f'{role}.key').chmod(0o600)
         version=cluster.sql('postgres','show server_version_num;')
         if int(version)//10000!=16:raise SmokeError('preflight','PG16 required')
         report['postgres_version']=cluster.sql('postgres','show server_version;')

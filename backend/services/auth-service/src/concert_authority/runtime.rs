@@ -105,3 +105,15 @@ pub async fn run_recovery(store: Option<PgOwnerAuthority>) -> anyhow::Result<()>
     )
     .await
 }
+
+/// This new service accepts its own bounded caller set. Retained root-service
+/// registries intentionally remain unchanged; Auth's excludes Post/Profile.
+/// Authority opt-in always requires real credentials, including in TLS dev runs.
+pub fn owner_caller_registry() -> anyhow::Result<platform::grpc_auth::CallerRegistry> {
+    use platform::grpc_auth::Workload;
+    platform::config::build_caller_registry(
+        true,
+        &[Workload::Concert, Workload::Post, Workload::Profile],
+        &[Workload::Concert],
+    )
+}

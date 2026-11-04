@@ -118,9 +118,10 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
     let signer = RelationshipReadSigner::from_seed(&[19; 32], &gateway)?;
     let verifier =
         RelationshipReadVerifier::new(Workload::Friend, &[signer.public_key()], &gateway)?;
-    let registry = CallerRegistry::new()
-        .register(Workload::Concert, "concert-fixture")?
-        .register(Workload::Post, "post-fixture")?;
+    std::env::set_var("CONCERT_SERVICE_CREDENTIAL", "concert-fixture");
+    std::env::set_var("POST_SERVICE_CREDENTIAL", "post-fixture");
+    std::env::set_var("PROFILE_SERVICE_CREDENTIAL", "profile-fixture");
+    let registry = friend_service::concert_authority::owner_caller_registry()?;
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let url = format!("https://{}", listener.local_addr()?);
     let service = friend_service::adapters::r#in::grpc::concert_authority::guarded_server(
@@ -177,6 +178,22 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
         .await
         .is_ok());
     assert!(post.complete(native::completion(&b, &g)).await.is_err());
+    let channel = tls(Workload::Profile)?
+        .endpoint(&url, Workload::Friend)?
+        .connect()
+        .await?;
+    let mut profile = Client::with_interceptor(
+        channel,
+        ServiceIdentityClientInterceptor::new(Workload::Profile, "profile-fixture")?,
+    );
+    assert!(profile
+        .check(proto::CheckRequest {
+            view: g.view.clone(),
+            binding: Some(b.clone())
+        })
+        .await
+        .is_ok());
+    assert!(profile.complete(native::completion(&b, &g)).await.is_err());
     let mut forged = g.view.clone().unwrap();
     forged.view_secret[0] ^= 1;
     assert!(post

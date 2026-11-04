@@ -55,7 +55,7 @@ async fn main() -> anyhow::Result<()> {
         .map(|store| {
             auth_service::adapters::r#in::grpc::concert_authority::guarded_server(
                 store,
-                config.caller_registry.clone(),
+                auth_service::concert_authority::owner_caller_registry()?,
                 relationship_verifier
                     .clone()
                     .expect("configured owner verifier"),

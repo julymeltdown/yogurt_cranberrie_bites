@@ -53,7 +53,7 @@ async fn main() -> anyhow::Result<()> {
         .map(|store| {
             friend_service::adapters::r#in::grpc::concert_authority::guarded_server(
                 store,
-                config.caller_registry.clone(),
+                friend_service::concert_authority::owner_caller_registry()?,
                 relationship_verifier
                     .clone()
                     .expect("configured owner verifier"),

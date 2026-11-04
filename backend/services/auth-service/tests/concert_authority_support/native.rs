@@ -611,6 +611,11 @@ async fn actual_security_generation_distinguishes_rotation_and_invalidation() ->
         family_id: Uuid::new_v4(),
         ..next.clone()
     };
+    // The retained store rejects sessions for suspended accounts.
+    sqlx::query("update users set status='ACTIVE' where id=$1")
+        .bind(actor)
+        .execute(&p)
+        .await?;
     sessions.store(&(&fake).into()).await?;
     let before_fake = generation(&p, actor).await?;
     sqlx::query("update refresh_tokens set revoked_at=transaction_timestamp(),rotated_at=transaction_timestamp(),revoked_reason='ROTATED',successor_jti=$2 where jti=$1").bind(&fake.jti).bind(Uuid::new_v4().to_string()).execute(&p).await?;
@@ -621,10 +626,11 @@ async fn actual_security_generation_distinguishes_rotation_and_invalidation() ->
         .await?;
     let deleted = generation(&p, actor).await?;
     assert!(deleted > suspended);
-    sqlx::query("insert into users(id,primary_email,password_hash,status) values($1,$2,'recreated','ACTIVE')").bind(actor).bind(format!("{actor}@example.invalid")).execute(&p).await?;
-    assert!(
-        generation(&p, actor).await? > deleted,
-        "UUID reuse cannot reset tombstone"
+    assert!(sqlx::query("insert into users(id,primary_email,password_hash,status) values($1,$2,'recreated','ACTIVE')").bind(actor).bind(format!("{actor}@example.invalid")).execute(&p).await.is_err(),"Retained hard-delete retirement must forbid UUID reuse");
+    assert_eq!(
+        generation(&p, actor).await?,
+        deleted,
+        "Failed UUID reuse cannot reset tombstone"
     );
     assert!(
         sqlx::query("delete from auth_concert_user_security_generation where user_id=$1")
@@ -641,18 +647,23 @@ async fn actual_security_generation_distinguishes_rotation_and_invalidation() ->
     );
     assert_eq!(generation(&p, other).await?, other_initial);
     let active = RefreshTokenRecord {
-        user_id: actor,
+        user_id: other,
         jti: Uuid::new_v4().to_string(),
         family_id: Uuid::new_v4(),
         ..next.clone()
     };
     sessions.store(&(&active).into()).await?;
-    let before_truncate = generation(&p, actor).await?;
+    let before_truncate = generation(&p, other).await?;
     sqlx::query("truncate refresh_tokens").execute(&p).await?;
-    assert!(generation(&p, actor).await? > before_truncate);
-    let before_users = generation(&p, actor).await?;
+    assert!(generation(&p, other).await? > before_truncate);
+    let before_users = generation(&p, other).await?;
     sqlx::query("truncate users cascade").execute(&p).await?;
-    assert!(generation(&p, actor).await? > before_users);
+    let truncated = generation(&p, other).await?;
+    assert!(truncated > before_users);
+    // Retained TRUNCATE does not run row DELETE retirement; permanent new
+    // security provenance must nevertheless survive a permitted reinsert.
+    sqlx::query("insert into users(id,primary_email,password_hash,status) values($1,$2,'recreated-after-truncate','ACTIVE')").bind(other).bind(format!("{other}@example.invalid")).execute(&p).await?;
+    assert!(generation(&p, other).await? > truncated);
     println!("Auth per-user generations: actual rotation/login stable; logout/password/suspension/delete/recreate monotonic; rollback and unrelated user stable; tamper rejected PASS");
     p.close().await;
     prod.close().await;

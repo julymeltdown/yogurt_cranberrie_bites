@@ -23,4 +23,4 @@ fn unavailable(error: sqlx::Error) -> tonic::Status {
 }
 
 mod runtime;
-pub use runtime::{configured_store, readiness_probe, run_recovery};
+pub use runtime::{configured_store, owner_caller_registry, readiness_probe, run_recovery};
