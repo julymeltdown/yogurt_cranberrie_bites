@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "task": "NB03-L",
+  "status": "INTEGRATED",
+  "recorded_at": "2026-11-04T09:19:16.807741+00:00",
+  "worker_base": "cde817b2ade8caabcf8c3a96508121053997873e",
+  "worker_handoff": "955bb2e32b92a49f53a6087a36b6842b3b53695a",
+  "worker_tested_source": "fa2fbdef26fd087c0810a5c318ea221e9522b202",
+  "integration_base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "integration_checkpoint": "a1954363c066cf622018e03a57f66fa031fca3ad",
+  "commit_mapping": {
+    "edfe6cd2b2ae39a35228410e6f9c978dc40a8301": "e7c3c2ca2ad6212cf6c7079aeefbbba131dddba2",
+    "f59d56c96a4f5ffe44528bb58de8308ee71dcfc0": "1f42137a9cd46cee3741201fb70cb91e0041718c",
+    "fa2fbdef26fd087c0810a5c318ea221e9522b202": "f8c7531f3413e55dc715460913bc61b11bad467f",
+    "955bb2e32b92a49f53a6087a36b6842b3b53695a": "a1954363c066cf622018e03a57f66fa031fca3ad"
+  },
+  "owned_postimages_sha256": {
+    "backend/scripts/mcr/notification_target_policy_smoke.py": "61f688bc5458e882a93e1aae75020bf9d2a8ac4d943f2a47b626d101f4d9dd09",
+    "backend/services/concert-service/src/notification_target_policy/gift.rs": "6cc6b66dba4b51d770429566711236bbcf5d4426e3a20d2b3783b8ed5e5b6fb8",
+    "backend/services/concert-service/src/notification_target_policy/local.rs": "fa3840cb1e27d063898743ad26ed2509715428006f159bf3bcb6463ddc7c4efc",
+    "backend/services/concert-service/src/notification_target_policy/mod.rs": "c194f3d19493f1de5983493f1e47f9bda569cb4ccf7c67ce0d5dbdbf8be9b1be",
+    "backend/services/concert-service/src/notification_target_policy/operations.rs": "052f56e711af60547962f5570d7e6e2f5d12166eb152b3ce8a968957bc0e3f0c",
+    "backend/services/concert-service/src/notification_target_policy/party.rs": "867fb4067347efd80b567eb9bff15e28f13e5323f9882bc7165cbe93342701fa",
+    "backend/services/concert-service/src/notification_target_policy/social.rs": "c3847a5b6fe23aa4b26035e3d7a30319209ca4796a45b93987c6a6f6078f3991",
+    "backend/services/concert-service/tests/notification_target_policy.rs": "df5e5948f70286bb4ea66fc87fe79ec0eea9185cbab7d3ec22fd5421cdcb7eb9",
+    "backend/services/concert-service/tests/notification_target_policy_support/fixture.rs": "ff3157815ba608129852f3be4b5e7fff51f379fae82b895204ce940215a7c3dd",
+    "backend/services/concert-service/tests/notification_target_policy_support/mod.rs": "e747ee91ae81f9f925ac4b8904c6cce475ef9b66c00d4e8f12a9e68141f49ee1",
+    "docs/mcr/backend/notification-target-policy.md": "76277c0a39f6af23972ffef60bdd3ee579d59e2996a591e9091e6dfe7eed403a"
+  },
+  "source_compatibility": {
+    "all_11_postimages_exact": true,
+    "all_paths_new": true,
+    "production_export": "NOT_RUN; module remains unexported",
+    "source_docs_changes": false,
+    "schema_or_dependency_change": false
+  },
+  "implementation_owner_evidence": {
+    "native_report_sha256": "e0a29a6d620fb30bf6effffe5e37ec4afa2f07eb6cdb6c99cca1621d0c2c0b8a",
+    "copied_executable_sha256": "292d355142d4cc92c00e338856f6405f8750846e572b769fa679c837a6d02851",
+    "native_cases": 6,
+    "actual_writer_probes": 7,
+    "native_exit": 0,
+    "migration_receipts": 37,
+    "postgres_version": "16.14 (Homebrew)",
+    "prepared_after": 0,
+    "protected_fixture_rows_committed": 0,
+    "cleanup": {
+      "owned_root_absent": true,
+      "status": "PASS"
+    },
+    "earlier_failures": "Compile 101 and immediate expired-round orchestration abort preserved in worker documentation/evidence; distinct explicit extension passed."
+  },
+  "publisher_checks": [
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0,
+      "scope": "planning only"
+    },
+    {
+      "command": "rustfmt 1.88 --check --edition 2021 <nine exact owned Rust paths>",
+      "exit": 0
+    },
+    {
+      "command": "Python ast.parse notification_target_policy_smoke.py",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check 54320d71 HEAD",
+      "exit": 0
+    },
+    {
+      "command": "all eleven worker/published blob byte comparisons and cross-directory import inspection",
+      "exit": 0
+    }
+  ],
+  "fresh_combined_native": "NOT_RUN; no Root Cargo/PG allocation consumed for source-only unexported intake",
+  "remaining": [
+    "Context and SQL metadata fixtures are not canonical Auth/Friend grants or owning command acceptance.",
+    "Protected settings/notice/social/pair rows stay uncommitted and roll back; their committed-owner revocation interleavings are NOT_RUN.",
+    "Observed writer exclusions cover only committed event, party, giveaway, application, reservation, admission and participant rows.",
+    "Report/Post/None remain unavailable. RootReadView binding, canonical owner fences, native registration/recovery, retained child completion/Root EOF and actual inbox/public HTTP are NOT_RUN.",
+    "Root-owned actual target provider, callback, private capability/original candidate binding, canonical source authority, native persistence/recovery and delivery retention remain unfinished.",
+    "No full BE33/NB03/IN03 acceptance or successful production inbox claim."
+  ]
+}
