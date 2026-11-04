@@ -1,5 +1,5 @@
 .mcr-chrome-header, .mcr-chrome-eras, .mcr-chrome-bottom, .mcr-chrome-panel-header { --concert-ink:#191817; --concert-paper:#e9e1d4; --concert-red:#a2232b; min-width:0; }
-.mcr-chrome-header { display:flex; align-items:center; justify-content:space-between; gap:4px; min-height:58px; padding:2px 3px; background:#191817; color:#f2eadf; border:3px solid #191817; }
+.mcr-chrome-header { display:flex; align-items:center; justify-content:space-between; gap:4px; min-height:58px; padding:2px 3px; background:#614252; color:#f2eadf; border:3px solid #191817; }
 .mcr-chrome-brand { display:flex; align-items:center; gap:8px; min-height:44px; min-width:44px; flex:1; overflow:hidden; padding:0 2px; text-decoration:none; }
 .mcr-chrome-identity-visual { display:grid; place-items:center; width:44px; height:44px; flex:0 0 44px; border:2px double #d4c8b5; background:#171615; }
 .mcr-chrome-identity-visual > .concert-icon { width:21px; height:21px; }
@@ -27,7 +27,7 @@
 .mcr-chrome-bottom a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-width:44px; min-height:58px; padding:3px 0; border:1px solid #2d2721; border-radius:2px; text-decoration:none; background:#e9e1d4; color:#191817; font:15px/1.1 Impact,'Arial Narrow',Arial,sans-serif; text-transform:uppercase; }
 .mcr-chrome-bottom .concert-icon { width:24px; height:24px; }
 .mcr-chrome-bottom a[aria-current='page'] { background:#ddbc58; color:#191817; box-shadow:inset 0 0 0 1px #7b652e; }
-.mcr-chrome-panel-header { position:relative; display:grid; grid-template-columns:minmax(0,1fr) 44px 44px 44px; align-items:center; gap:0; padding:0 2px 0 8px; min-height:46px; border:3px solid #191817; background:#191817; color:#f2eadf; }
+.mcr-chrome-panel-header { position:relative; display:grid; grid-template-columns:minmax(0,1fr) 44px 44px 44px; align-items:center; gap:0; padding:0 2px 0 8px; min-height:46px; border:3px solid #191817; background:#614252; color:#f2eadf; }
 .mcr-chrome-panel-header h1 { margin:0; font:23px/1 Impact,'Arial Narrow',sans-serif; text-transform:uppercase; letter-spacing:.01em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .mcr-chrome-panel-header button { display:grid; place-items:center; min-height:44px; min-width:44px; padding:0; color:inherit; background:transparent; border:0; border-radius:0; font:19px/1 Arial,sans-serif; cursor:pointer; }
 .mcr-chrome-panel-header button > span { display:grid; place-items:center; width:22px; height:22px; border:1px solid #d4c8b5; }
