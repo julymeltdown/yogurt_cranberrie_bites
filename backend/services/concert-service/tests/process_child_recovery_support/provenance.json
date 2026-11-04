@@ -16,7 +16,47 @@
     "scope": "Actual omitted-key production drain then new-active plus retained-original key restoration across three physical Root PIDs. Full shared CR01 restart verifier and actual adapters; no direct ACK/phase/native release fixture shortcut.",
     "static_validation": "Rustfmt, Python AST, focused actual API/controller review. Both concrete controller findings fixed: omitted-key protocol token is accepted, public case PASS attribution is CR04. No additional concrete Rust/API source finding; compile/native NOT_RUN."
   },
+  "CR06_extension": {
+    "base_commit": "e34b90dd8616bc2c51a66d1acaf3521d4dd142c7",
+    "compile": "NOT_RUN",
+    "native": "NOT_RUN",
+    "scope": "Two real canonical terminal roots, eight actual native guards, physical restart, same composed ledger/typed settlers, concurrent batch-one production workers, actual hung adapter and rollback-only NOWAIT probe, four unique ACKs, real owner RPC reconciliation.",
+    "static_review": "Focused actual API/ownership/native/cursor review found no concrete source defect. Receiver corrected inherited controller default and added exact executing-script hash checks. Rustfmt/Python AST only; compilation/native NOT_RUN."
+  },
   "authoring_source_head_historical": "2ee8ac6dc4d42fc8a63e0f2fba68130c7248d632",
+  "cr02_cr05_private_source_draft": {
+    "authoring_core": "e34b90dd8616bc2c51a66d1acaf3521d4dd142c7",
+    "canonical_sources": {
+      "backend/proto/authority/v1/lease.proto": "e0d1d839bbf3e6be2070236c04253ba77b963f59aef19cbc796ff250b68f1b1a",
+      "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+      "backend/services/concert-service/src/adapters/out/public_profile/mod.rs": "d99e638f7c86b6960799d6378cf157e7170cf64540338ce8080ca201acfe4a01",
+      "backend/services/concert-service/src/adapters/out/public_profile/profile.rs": "c3896273b1c6297602b39abae1a21279d0dbdbda681f60ad539d7f173918e766",
+      "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/child.rs": "28a3faddb1393e0ef24dbfcd8aa13d8cea1f731a980e1b255a9353b1e6f16454",
+      "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs": "5d4e6a64396a32daf46535bfb94bf34c5a6846142aacf2a6d2352ea105344b8b",
+      "backend/services/concert-service/src/product_rpc/child_recovery.rs": "aa8fba57bf86c7528d25ee22ba254b5b71005ff618735b463892e9965de391a0",
+      "backend/services/concert-service/src/product_rpc/scope_ledger/children.rs": "cc838859066d502493c9c65b123e517baad66e7af6311c9fe0a7bd24a1a8227a",
+      "backend/services/concert-service/src/product_rpc/scoped.rs": "e1a632ab3b80d06e1d816a86e599ba2242f9baaeaffaab0e184057666ae6816e",
+      "backend/services/concert-service/tests/owner_authority_support/qualify.py": "7891352ae8d272c04671b60dca34e149865c1aee6df4fa4a20cfbd2c885bcea8",
+      "backend/services/concert-service/tests/owner_authority_support/restart_contract.json": "7b37cd98980b64259561d5c18093a5aad6d71a532a5b3556a50b928b5a3e1b7c",
+      "backend/services/profile-service/migrations/0009_concert_public_profile_children.sql": "756bbfe4cf70d13765f580c28e5ba1bd147ebfd5a8970df4cb1d1829dbe90afa",
+      "backend/services/profile-service/src/concert_public_profile/mod.rs": "cfa6ef8a6eb4259048044186680a0bec63f2890de02535538f2ea5b6042ddff2",
+      "backend/services/profile-service/src/concert_public_profile/persistence.rs": "c7ea92bae50e514772b1a96b4f888b1e0301b44cb9a3175accf3c6c1e0af4a75"
+    },
+    "cases": [
+      "CR02",
+      "CR05"
+    ],
+    "changes": "Negative transport faults, explicit SDK future cancellation, shared physical outcome parameters, exact real Profile/native receipts, case-specific controllers and owned socket PG runner; no application changes.",
+    "compilation": "NOT_RUN",
+    "dependencies": "Existing integration target dependencies and unchanged selected release constructor/assets; no manifest or lock changes.",
+    "runtime": "NOT_RUN",
+    "starting_point_only": {
+      "README.md": "3dd3ba95e80a537f509471f097c14b1c14f4b63d61a3402c29a0f5151ccf43ef",
+      "profile_read_fault.rs": "a9c04bba2adfe1484650c675f7e2db92945ec0558be2b9209417f2cc57bf28f5",
+      "uncertain_producer.rs": "da3bc6f828c935480982d40a1d0df921c9091a02bc21a43258f688d03896854c"
+    },
+    "validation": "Private static source/patch/Python AST checks only; compiler/native qualification remains NOT_RUN."
+  },
   "dependencies": "Existing concert-service development dependencies only; no manifest or lockfile changes.",
   "destination_paths": [
     "backend/services/concert-service/tests/process_child_recovery.rs",
@@ -168,38 +208,5 @@
   "review_source_head_observed": "8bb61f854aab29e32129f4fb46d2693d8c7ce7e9",
   "scope": "Actual Product/Delivery, Auth/Friend stores, Profile public service, native children, strict fixture mTLS and production worker. Negative-only Auth Complete fault. Root process is physically killed and replaced; fixture owner RPC servers share each Root child PID. After genuine RootFinished, an enabled exact Profile Complete negative transport and negative Local settler exercise the old production worker with zero ACKs; replacement restores actual adapters. Repeated new-process drains must preserve encrypted identity/key/ciphertext and original ACK timestamps.",
   "six_case_contract_source": "f4a15ba981a327ee22aff0c59eed5885ffab9fd5:backend/services/concert-service/tests/owner_authority_support/restart_contract.json (byte-exact)",
-  "validation": "Authored and static-reviewed. Compile and physical CR01 NOT_RUN at initial source commit. Qualified build checkpoints capture the full committed source and selected-art/runtime-resource manifest separately.",
-  "cr02_cr05_private_source_draft": {
-    "authoring_core": "e34b90dd8616bc2c51a66d1acaf3521d4dd142c7",
-    "compilation": "NOT_RUN",
-    "runtime": "NOT_RUN",
-    "cases": [
-      "CR02",
-      "CR05"
-    ],
-    "starting_point_only": {
-      "profile_read_fault.rs": "a9c04bba2adfe1484650c675f7e2db92945ec0558be2b9209417f2cc57bf28f5",
-      "uncertain_producer.rs": "da3bc6f828c935480982d40a1d0df921c9091a02bc21a43258f688d03896854c",
-      "README.md": "3dd3ba95e80a537f509471f097c14b1c14f4b63d61a3402c29a0f5151ccf43ef"
-    },
-    "canonical_sources": {
-      "backend/services/concert-service/src/adapters/out/public_profile/profile.rs": "c3896273b1c6297602b39abae1a21279d0dbdbda681f60ad539d7f173918e766",
-      "backend/services/concert-service/src/adapters/out/public_profile/mod.rs": "d99e638f7c86b6960799d6378cf157e7170cf64540338ce8080ca201acfe4a01",
-      "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/child.rs": "28a3faddb1393e0ef24dbfcd8aa13d8cea1f731a980e1b255a9353b1e6f16454",
-      "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs": "5d4e6a64396a32daf46535bfb94bf34c5a6846142aacf2a6d2352ea105344b8b",
-      "backend/services/concert-service/src/product_rpc/scoped.rs": "e1a632ab3b80d06e1d816a86e599ba2242f9baaeaffaab0e184057666ae6816e",
-      "backend/services/concert-service/src/product_rpc/child_recovery.rs": "aa8fba57bf86c7528d25ee22ba254b5b71005ff618735b463892e9965de391a0",
-      "backend/services/concert-service/src/product_rpc/scope_ledger/children.rs": "cc838859066d502493c9c65b123e517baad66e7af6311c9fe0a7bd24a1a8227a",
-      "backend/services/profile-service/src/concert_public_profile/mod.rs": "cfa6ef8a6eb4259048044186680a0bec63f2890de02535538f2ea5b6042ddff2",
-      "backend/services/profile-service/src/concert_public_profile/persistence.rs": "c7ea92bae50e514772b1a96b4f888b1e0301b44cb9a3175accf3c6c1e0af4a75",
-      "backend/services/profile-service/migrations/0009_concert_public_profile_children.sql": "756bbfe4cf70d13765f580c28e5ba1bd147ebfd5a8970df4cb1d1829dbe90afa",
-      "backend/proto/authority/v1/lease.proto": "e0d1d839bbf3e6be2070236c04253ba77b963f59aef19cbc796ff250b68f1b1a",
-      "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
-      "backend/services/concert-service/tests/owner_authority_support/qualify.py": "7891352ae8d272c04671b60dca34e149865c1aee6df4fa4a20cfbd2c885bcea8",
-      "backend/services/concert-service/tests/owner_authority_support/restart_contract.json": "7b37cd98980b64259561d5c18093a5aad6d71a532a5b3556a50b928b5a3e1b7c"
-    },
-    "changes": "Negative transport faults, explicit SDK future cancellation, shared physical outcome parameters, exact real Profile/native receipts, case-specific controllers and owned socket PG runner; no application changes.",
-    "dependencies": "Existing integration target dependencies and unchanged selected release constructor/assets; no manifest or lock changes.",
-    "validation": "Private static source/patch/Python AST checks only; compiler/native qualification remains NOT_RUN."
-  }
+  "validation": "Authored and static-reviewed. Compile and physical CR01 NOT_RUN at initial source commit. Qualified build checkpoints capture the full committed source and selected-art/runtime-resource manifest separately."
 }

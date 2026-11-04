@@ -14,8 +14,8 @@ TARGET = "process_child_recovery"
 SUPPORT = "backend/services/concert-service/tests/process_child_recovery_support"
 REQUIRED = {f"backend/services/concert-service/tests/{TARGET}.rs"}
 REQUIRED.update(f"{SUPPORT}/{name}.rs" for name in
-                ("environment", "capture", "owners", "release", "fixture", "fault", "unfinished", "missing_key", "profile_read_fault", "uncertain_producer", "uncertain"))
-REQUIRED.update(f"{SUPPORT}/{name}.py" for name in ("controller", "checkpoint", "qualify", "controller_cr04", "qualify_cr04", "controller_uncertain", "qualify_uncertain"))
+                ("environment", "capture", "owners", "release", "fixture", "fault", "unfinished", "missing_key", "fairness", "profile_read_fault", "uncertain_producer", "uncertain"))
+REQUIRED.update(f"{SUPPORT}/{name}.py" for name in ("controller", "checkpoint", "qualify", "controller_cr04", "qualify_cr04", "controller_cr06", "qualify_cr06", "controller_uncertain", "qualify_uncertain"))
 SOURCE_SUFFIXES = {".rs", ".sql", ".toml", ".proto", ".py", ".json"}
 EXCLUDED_DIRS = {"target", "targets", "node_modules", ".git", "__pycache__"}
 

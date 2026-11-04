@@ -5,6 +5,8 @@
 mod capture;
 #[path = "process_child_recovery_support/environment.rs"]
 mod environment;
+#[path = "process_child_recovery_support/fairness.rs"]
+mod fairness;
 #[path = "process_child_recovery_support/fault.rs"]
 mod fault;
 #[path = "process_child_recovery_support/fixture.rs"]

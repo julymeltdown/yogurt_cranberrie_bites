@@ -22,18 +22,42 @@ use platform::{
 use sqlx::PgPool;
 use std::sync::{
     atomic::{AtomicBool, AtomicUsize, Ordering},
-    Arc,
+    Arc, Mutex,
 };
 use uuid::Uuid;
 
 struct Settle {
     reader: Arc<PublicProfileReader>,
     local_unavailable: Arc<AtomicBool>,
+    hung_intent: Arc<Mutex<Option<([u8; 32], Uuid)>>>,
+    hung_entered: Arc<tokio::sync::Notify>,
+    hung_attempts: Arc<AtomicUsize>,
+    hung_reference: Arc<Mutex<Option<ChildRecoveryReference>>>,
     observed_references: Arc<std::sync::Mutex<Vec<ChildRecoveryReference>>>,
 }
 #[async_trait::async_trait]
 impl ChildIntentSettler for Settle {
     async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), tonic::Status> {
+        let hung = self
+            .hung_intent
+            .lock()
+            .map_err(|_| tonic::Status::internal("fixture fault state"))?
+            .as_ref()
+            .is_some_and(|(digest, id)| {
+                *digest == reference.query().binding_digest
+                    && reference.intent_id().ok() == Some(*id)
+            });
+        if hung {
+            *self
+                .hung_reference
+                .lock()
+                .map_err(|_| tonic::Status::internal("fixture reference state"))? =
+                Some(reference.clone());
+            self.hung_attempts.fetch_add(1, Ordering::SeqCst);
+            self.hung_entered.notify_one();
+            return std::future::pending().await;
+        }
+
         {
             let mut saved = self
                 .observed_references
@@ -76,6 +100,10 @@ pub(super) struct Fixture {
     pub registry: Arc<ScopeRegistry>,
     pub fence: CanonicalOwnerFence,
     pub event: Uuid,
+    pub hung_intent: Arc<Mutex<Option<([u8; 32], Uuid)>>>,
+    pub hung_entered: Arc<tokio::sync::Notify>,
+    pub hung_attempts: Arc<AtomicUsize>,
+    pub hung_reference: Arc<Mutex<Option<ChildRecoveryReference>>>,
     child_unavailable: Arc<AtomicBool>,
     pub profile_completion_failures: Arc<AtomicUsize>,
     root_url: String,
@@ -187,6 +215,10 @@ impl Fixture {
             owners::signer()?,
         )?);
         let observed_references = Arc::new(std::sync::Mutex::new(Vec::new()));
+        let hung_intent = Arc::new(Mutex::new(None));
+        let hung_entered = Arc::new(tokio::sync::Notify::new());
+        let hung_attempts = Arc::new(AtomicUsize::new(0));
+        let hung_reference = Arc::new(Mutex::new(None));
         let ledger = PgScopeLedger::new(
             concert.clone(),
             instance,
@@ -194,6 +226,11 @@ impl Fixture {
             Arc::new(Settle {
                 reader: reader.clone(),
                 local_unavailable: child_unavailable.clone(),
+                hung_intent: hung_intent.clone(),
+                hung_entered: hung_entered.clone(),
+                hung_attempts: hung_attempts.clone(),
+                hung_reference: hung_reference.clone(),
+
                 observed_references: observed_references.clone(),
             }),
         )?;
@@ -238,6 +275,10 @@ impl Fixture {
             registry,
             fence,
             event,
+            hung_intent,
+            hung_entered,
+            hung_attempts,
+            hung_reference,
             child_unavailable,
             profile_completion_failures,
             root_url,
