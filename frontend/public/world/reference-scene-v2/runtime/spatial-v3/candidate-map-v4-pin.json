@@ -1,0 +1,68 @@
+{
+  "format": "MCR_REFERENCE_SCENE_CANONICAL_MAP_PIN",
+  "version": 1,
+  "status": "NOT_ADMITTED",
+  "authority": "Published canonical map identity and engineering source pins only; no Product bootstrap, live, physical or fidelity acceptance.",
+  "candidate_map": {
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 4,
+    "content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+    "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+  },
+  "dimensions": {
+    "width_px": 768,
+    "height_px": 1296
+  },
+  "backend_map_manifest": {
+    "revision": "e66597df4a8f8010b66eea97464115328ea0fc5f",
+    "path": "backend/releases/reference-scene-v2/quality-v6/map-manifest.json",
+    "bytes": 28839,
+    "sha256": "sha256:81f6890b114a75a2885032c4f5c38a7fac685203fbde9a4481eef6b9c2bbb632"
+  },
+  "backend_source_binding": {
+    "revision": "e66597df4a8f8010b66eea97464115328ea0fc5f",
+    "path": "backend/releases/reference-scene-v2/quality-v6/source-binding.json",
+    "bytes": 11519,
+    "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+  },
+  "backend_readiness": {
+    "revision": "e66597df4a8f8010b66eea97464115328ea0fc5f",
+    "path": "backend/releases/reference-scene-v2/quality-v6/readiness.json",
+    "bytes": 1433,
+    "sha256": "sha256:470a465998be38f0c78167e4d0f970469e28f72b538961b2a5e4023df56943ff",
+    "state": "NOT_ADMITTED"
+  },
+  "backend_engineering_source_review": {
+    "revision": "e66597df4a8f8010b66eea97464115328ea0fc5f",
+    "path": "backend/releases/reference-scene-v2/quality-v6/engineering-source-review.json",
+    "bytes": 1802,
+    "sha256": "sha256:eea0269aa9596cd275efb638e4bce9282a659e482905459d24d4467b12758854",
+    "scope": "Engineering qualification of the derived virtual map and pinned source inputs only"
+  },
+  "tilemap": {
+    "path": "world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+    "sha256": "sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9",
+    "bytes": 24058,
+    "format": "TILED_JSON",
+    "source_revision": "48cf47e9b2c922de42673d1a29c1758a55fcf883"
+  },
+  "frontend_consumer": {
+    "source_revision": "8d7cff5dbf749f336682cdbf64ee162f5d25f2ff",
+    "artist_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+    "theme_ids": [
+      "REVENGE",
+      "PARADE",
+      "DANGER"
+    ],
+    "binding": "Exact geometry, original virtual places, public Tiled and all three quality-v6 source projections match."
+  },
+  "place_scope": "Four original VIRTUAL_CONCEPT / CONCEPT_ONLY / UNREVIEWED places unchanged; no physical eligibility.",
+  "limitations": [
+    "No art fidelity acceptance",
+    "No physical place qualification",
+    "Published Tiled resource binds the same canonical grids",
+    "No event-current map publication or production admission",
+    "Backend Rust/runtime qualification is a separate receipt; inspect its current status, never infer it from this static pin.",
+    "Frontend isolated native evidence is not real multiuser or physical device evidence."
+  ]
+}
