@@ -231,6 +231,10 @@ async fn write_membership(
 impl TicketRepository for PgWorldRepository {
     async fn issue(&self, record: TicketRecord) -> Result<IssueOutcome, WorldError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)? {
+            return Err(WorldError::Denied);
+        }
         closure::lock_event_open_in(&mut tx,record.pin.event_id.uuid()).await?;
         // Issuance observes availability/capacity but reserves no membership.
         // Share the room with live publication permits; admission below keeps
@@ -388,16 +392,23 @@ impl WorldRepository for PgWorldRepository {
         // keeps the outcome stable across concurrent transactions and preserves the row predicate
         // as a second atomic guard against accidental reintroduction of a reusable update path.
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
-        let actual:Option<Uuid>=sqlx::query_scalar("select event_id from public.concert_world_tickets where ticket_digest=$1").bind(claim.digest.as_bytes().as_slice()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
-        let Some(actual)=actual else {return Ok(ConsumeOutcome::Unknown)};
-        closure::lock_event_open_in(&mut tx,actual).await?;
+        let actual = sqlx::query("select event_id,user_id from public.concert_world_tickets where ticket_digest=$1")
+            .bind(claim.digest.as_bytes().as_slice()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
+        let Some(actual) = actual else { return Ok(ConsumeOutcome::Unknown) };
+        let actual_event: Uuid = actual.try_get("event_id").map_err(invalid)?;
+        let actual_user: Uuid = actual.try_get("user_id").map_err(invalid)?;
+        account_deletion::lock_user(&mut tx, actual_user).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, actual_user).await.map_err(unavailable)? {
+            return Err(WorldError::Denied);
+        }
+        closure::lock_event_open_in(&mut tx,actual_event).await?;
 
         sqlx::query("select pg_advisory_xact_lock(hashtextextended('mcr-world-ticket:' || encode($1::bytea,'hex'), 0))")
             .bind(claim.digest.as_bytes().as_slice())
             .execute(&mut *tx)
             .await
             .map_err(unavailable)?;
-        let existing = sqlx::query("select event_id,consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
+        let existing = sqlx::query("select event_id,user_id,consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
             .bind(claim.digest.as_bytes().as_slice())
             .fetch_optional(&mut *tx)
             .await
@@ -406,7 +417,10 @@ impl WorldRepository for PgWorldRepository {
             tx.commit().await.map_err(unavailable)?;
             return Ok(ConsumeOutcome::Unknown);
         };
-        if existing.try_get::<Uuid,_>("event_id").map_err(invalid)?!=actual {return Err(WorldError::CredentialInvalid)}
+        if existing.try_get::<Uuid,_>("event_id").map_err(invalid)? != actual_event
+            || existing.try_get::<Uuid,_>("user_id").map_err(invalid)? != actual_user {
+            return Err(WorldError::CredentialInvalid);
+        }
         if existing
             .try_get::<Option<DateTime<Utc>>, _>("consumed_at")
             .map_err(invalid)?
@@ -471,6 +485,10 @@ impl WorldRepository for PgWorldRepository {
             return Ok(AdmissionOutcome::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, record.subject.key.user_id.uuid()).await.map_err(unavailable)? {
+            return Ok(AdmissionOutcome::Denied);
+        }
         closure::lock_event_open_in(&mut tx,record.subject.key.event_id.uuid()).await?;
         lock_event_user(
             &mut tx,
@@ -547,6 +565,10 @@ impl WorldRepository for PgWorldRepository {
             return Ok(SwitchOutcome::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, current.key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, current.key.user_id.uuid()).await.map_err(unavailable)? {
+            return Ok(SwitchOutcome::Denied);
+        }
         closure::lock_event_open_in(&mut tx,current.key.event_id.uuid()).await?;
         lock_event_user(&mut tx, current.key.event_id, current.key.user_id).await?;
         let status = lock_room(&mut tx, &record.pin).await?;
@@ -655,13 +677,20 @@ impl WorldRepository for PgWorldRepository {
             return Err(WorldError::Invalid);
         }
         let until = now.checked_add_signed(grace).ok_or(WorldError::Invalid)?;
+        let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        account_deletion::lock_user(&mut tx, key.user_id.uuid()).await.map_err(unavailable)?;
+        if account_deletion::is_fenced_in(&mut tx, key.user_id.uuid()).await.map_err(unavailable)? {
+            return Ok(LeaseState::Gone);
+        }
         let row = sqlx::query(&format!("update public.concert_world_memberships set disconnected=true,lease_until=least(access_expires_at,$4) where event_id=$1 and user_id=$2 and connection_id=$3 and session_id=$5 and lease_until>$6 returning {MEMBERSHIP_COLUMNS}"))
             .bind(key.event_id.uuid()).bind(key.user_id.uuid()).bind(connection_id.uuid()).bind(until)
             .bind(session_uuid(session_id)?).bind(now)
-            .fetch_optional(&self.pool).await.map_err(unavailable)?;
-        row.map(|row| membership(&row).map(LeaseState::Disconnected))
-            .transpose()
-            .map(|value| value.unwrap_or(LeaseState::Gone))
+            .fetch_optional(&mut *tx).await.map_err(unavailable)?;
+        let state = row.map(|row| membership(&row).map(LeaseState::Disconnected))
+            .transpose()?
+            .unwrap_or(LeaseState::Gone);
+        tx.commit().await.map_err(unavailable)?;
+        Ok(state)
     }
 
     async fn leave(

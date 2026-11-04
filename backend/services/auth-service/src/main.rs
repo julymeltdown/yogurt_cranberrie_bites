@@ -62,6 +62,11 @@ async fn main() -> anyhow::Result<()> {
             )
         })
         .transpose()?;
+    let deletion_source_service =
+        auth_service::adapters::r#in::grpc::concert_deletion_source::configured_server(
+            pool.clone(),
+            config.tls_material.as_ref(),
+        )?;
     let readiness = readiness(pool.clone()).with_dependencies(vec![
         auth_service::concert_authority::readiness_probe(authority_store.clone()),
         Probe::grpc(
@@ -135,6 +140,7 @@ async fn main() -> anyhow::Result<()> {
                 )).transpose()?)
                 .add_optional_service(invalidation_service)
                 .add_optional_service(authority_service)
+                .add_optional_service(deletion_source_service)
                 .add_service(platform::grpc_method_policy::guard(
                     &auth_service::adapters::r#in::grpc::method_policy::AUTH_METHOD_POLICY,
                     AuthServiceServer::new(grpc_service),

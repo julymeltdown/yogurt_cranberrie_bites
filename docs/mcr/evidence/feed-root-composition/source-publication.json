@@ -1,0 +1,203 @@
+{
+  "verifiedUTC": "2026-11-04T14:31:46.318898+00:00",
+  "base": "654974128a27c948a449fa9e58f466b8e612361d",
+  "worker": "4cb4ac7239ce324e582aa50e8dbc2d124e2719aa",
+  "publication": "e56a1442351de67031579f04b29abf840b2f4146",
+  "freshFetchedRemote": "6c9c6b5fc044c4647daa4581d8213eff2c529628",
+  "independentLsRemote": "6c9c6b5fc044c4647daa4581d8213eff2c529628",
+  "changedPaths": 30,
+  "qualifiedCodePostimages": 13,
+  "historicalC07PathsPreserved": 20,
+  "postimages": [
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source1-summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "fd71d1d646e89881b939b692528d341c426ff51c"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source1-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source1-unit.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "afd563168701c42e4dc0c59525c957d2e8e12fb5"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source2-summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "a76f9ba3b24ad6260a0f4c92e82f1f9b7138af81"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source2-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/feed-source2-unit.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "afd563168701c42e4dc0c59525c957d2e8e12fb5"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-1/receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "26428399c8f591c07933be4f7770845199f256be"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-admission-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-admission.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "90ff6914ef66d99a76767ce70634adf8abde5bad"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-lint.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-native-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8538304c6b2c40064cf2495859c395a7c1691b8f"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/feed-source3-unit.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9e9c7cecc7918277d85858b04f917e28cad808d4"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-round-2/receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "dbd9e4955991f36c515902333c73636b727178ac"
+    },
+    {
+      "path": "docs/mcr/frontend/feed-root-composition.md",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8d812582cb48ad1404ca3c8a6302192ef825e37c"
+    },
+    {
+      "path": "docs/mcr/frontend/in03-public-journey.md",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "aefeab7d6deb46452eb33282b37a1f0ee5b230be"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission-original.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "63d8c905f1c8d2f28381285da2ef8b1d78875f7c"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.d.mts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ae5dbbf07f77e0a8105d942c13010969ce97d5db"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "bb25ad05bab9ff4a73b74097d6759b5a7aff5a9c"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/fixture.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "73387ddb607ca52d30db6edb73aba20836132923"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/native.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "cb6b2227da2af5b97b884b288dddd809c9c5be74"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/preview.html",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8afb3892d2f4ca54b486b1c612825b59bbdebae1"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/preview.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "71ab16b60d09d8d5e5b444e42064baad47fc9b12"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/production.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5418ba0fdac31e3d9c258caa46e33f593c77bb46"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "695224465376e5c516f74b5230db2fe54c2ba9de"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "7ea450c13df348f0854816a3c491ec81bc0b9aed"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "d7fac465a66d11de92feac3173bc31d0bf878bf7"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/vitest.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9e3d9c3b82152cc5f74344d630ea0cb44274b05e"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/production.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9f388084d935c392ffbcfb0dc211c03782d03393"
+    }
+  ],
+  "ancestry": {
+    "baseToWorker": true,
+    "baseToPublication": true,
+    "publicationToRemote": true
+  },
+  "limitations": [
+    "Read-only Git delivery proof for the qualified source-only contribution.",
+    "Newer native continuation commits are excluded from this publication claim.",
+    "Native shell/media/character browser acceptance and original real IN03 remain NOT_RUN."
+  ]
+}

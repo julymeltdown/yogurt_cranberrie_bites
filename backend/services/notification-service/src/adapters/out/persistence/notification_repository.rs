@@ -822,123 +822,31 @@ impl NotificationRepositoryPort for PgNotificationRepository {
         actor_id: Uuid,
         retention_until: DateTime<Utc>,
     ) -> crate::application::errors::NotificationResult<()> {
+        let command = crate::concert::deletion_owner::DeletionCommand::new(
+            saga_id, user_id, actor_id, retention_until,
+        )?;
+        self.apply_user_deletion_receipt(command).await.map(|_| ())
+    }
+}
+
+impl PgNotificationRepository {
+    /// Internal Notification-owner proof for the existing authenticated Auth
+    /// saga. Transport must retain its Auth-only policy; this grants no public
+    /// caller capability and is not the complete BE42 acknowledgement contract.
+    pub async fn apply_user_deletion_receipt(
+        &self,
+        command: crate::concert::deletion_owner::DeletionCommand,
+    ) -> crate::application::errors::NotificationResult<crate::concert::deletion_owner::CommittedDeletionReceipt> {
         let result: anyhow::Result<_> = async {
-
-        let mut tx = self.pool.begin().await?;
-        Self::lock_subjects(&mut tx, &[user_id]).await?;
-
-        // Bind the retry identity before applying any effect. Reusing one saga
-        // id with different inputs is rejected and the whole transaction rolls
-        // back; an exact retry remains idempotent.
-        sqlx::query(
-            r#"
-            insert into notification_user_deletion_receipts (
-                saga_id, user_id, actor_id, retention_until, applied_at
-            ) values ($1, $2, $3, $4, now())
-            on conflict (saga_id) do nothing
-            "#,
-        )
-        .bind(saga_id)
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-        let receipt_matches: bool = sqlx::query_scalar(
-            r#"
-            select user_id = $2 and actor_id = $3 and retention_until = $4
-            from notification_user_deletion_receipts
-            where saga_id = $1
-            "#,
-        )
-        .bind(saga_id)
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .fetch_one(&mut *tx)
-        .await?;
-        if !receipt_matches { return Err(NotificationError::InvalidInput(NotificationInvalidInput::DeletionSagaInputMismatch).into()); }
-
-        // Recipient and actor suppression are separate rules even though an
-        // account deletion enables both. The permanent state row is the common
-        // serialization point used by creation and deletion.
-        sqlx::query(
-            r#"
-            update notification_subject_states
-            set suppress_as_recipient = true,
-                suppress_as_actor = true,
-                reason = 'account_deletion',
-                suppressed_at = least(coalesce(suppressed_at, now()), now()),
-                retention_until = $2
-            where subject_id = $1
-            "#,
-        )
-        .bind(user_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-
-        // Keep the applied legacy table synchronized for older binaries during
-        // a rolling deployment. New creation decisions use subject states.
-        sqlx::query(
-            r#"
-            insert into notification_recipient_suppressions (
-                user_id, reason, suppressed_at, retention_until
-            ) values ($1, 'account_deletion', now(), $2)
-            on conflict (user_id) do update
-            set reason = excluded.reason,
-                suppressed_at = least(notification_recipient_suppressions.suppressed_at, excluded.suppressed_at),
-                retention_until = excluded.retention_until
-            "#,
-        )
-        .bind(user_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-
-        sqlx::query(
-            r#"
-            update notifications
-            set deleted_at = coalesce(deleted_at, now()),
-                deleted_by = coalesce(deleted_by, $2),
-                delete_reason = coalesce(delete_reason, 'account_deletion'),
-                retention_until = $3
-            where user_id = $1 or actor_id = $1
-            "#,
-        )
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-
-        sqlx::query(
-            r#"
-            insert into notification_audit_events (
-                id, actor_id, notification_id, user_id, action, outcome,
-                request_id, ip_address, user_agent, metadata_json, occurred_at
-            ) values (
-                $1, $2, null, $3, 'USER_DELETION_APPLIED', 'SUCCESS',
-                null, null, null, $4, now()
-            ) on conflict (id) do nothing
-            "#,
-        )
-        .bind(saga_id)
-        .bind(actor_id)
-        .bind(user_id)
-        .bind(
-            json!({
-                "sagaId": saga_id,
-                "retentionUntil": retention_until
-            })
-            .to_string(),
-        )
-        .execute(&mut *tx)
-        .await?;
-
-        tx.commit().await?;
-        Ok(())
-
+            let mut tx = self.pool.begin().await?;
+            // Keep the exact shared absent-row/create/delete serialization and
+            // UUID order. No independent receipt transaction may acknowledge it.
+            Self::lock_subjects(&mut tx, &[command.user_id()]).await?;
+            let pending = crate::concert::deletion_owner::apply_locked(&mut tx, &command).await?;
+            // Failure/uncertainty here returns no typed committed receipt.
+            // A retry uses the same command and recovers the durable proof.
+            tx.commit().await?;
+            Ok(pending.after_commit())
         }.await;
         result.map_err(crate::adapters::out::errors::boundary_error)
     }

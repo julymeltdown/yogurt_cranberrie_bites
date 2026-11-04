@@ -23,6 +23,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .out_dir(&authority_output)
         .compile_protos(&[lease_proto.clone()], &[contracts_build::proto_root()])?;
     println!("cargo:rerun-if-changed={}", lease_proto.display());
+    let deletion_source_proto = contracts_build::proto_root().join("authority/v1/deletion_source.proto");
+    let deletion_source_output =
+        std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("deletion_source");
+    std::fs::create_dir_all(&deletion_source_output)?;
+    tonic_prost_build::configure()
+        .build_server(true)
+        .build_client(true)
+        .out_dir(&deletion_source_output)
+        .compile_protos(
+            &[deletion_source_proto.clone()],
+            &[contracts_build::proto_root()],
+        )?;
+    println!("cargo:rerun-if-changed={}", deletion_source_proto.display());
     tonic_prost_build::configure()
         .build_server(true)
         .build_client(true)

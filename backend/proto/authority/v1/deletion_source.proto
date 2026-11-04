@@ -1,0 +1,36 @@
+syntax = "proto3";
+package authority.deletion.v1;
+
+// Auth-owned source provenance only. This service never acknowledges Concert
+// cleanup, a worker attempt, a downstream owner receipt or saga completion.
+enum DeletionTarget {
+  DELETION_TARGET_UNSPECIFIED = 0;
+  DELETION_TARGET_TICKETS = 1;
+  DELETION_TARGET_SESSIONS = 2;
+  DELETION_TARGET_SHARING = 3;
+  DELETION_TARGET_PRIVATE_DATA = 4;
+}
+message DeletionCommand {
+  string saga_id = 1;
+  string user_id = 2;
+  string actor_id = 3;
+  DeletionTarget target = 4;
+  int64 retention_seconds = 5;
+  int32 retention_nanos = 6;
+}
+message VerifyDeletionSourceRequest {
+  DeletionCommand command = 1;
+  bytes request_nonce = 2; // Exact 16-byte, nonzero per-call challenge.
+  int64 expires_unix_micros = 3; // Original call expiry; never renewed by Auth.
+}
+message VerifyDeletionSourceResponse {
+  DeletionCommand command = 1; // Exact canonical stored tuple, including nanos.
+  bytes source_binding = 2; // Stable source identity, not portable authority.
+  bytes request_nonce = 3;
+  int64 expires_unix_micros = 4;
+}
+service AuthDeletionSourceService {
+  // CA-signed Concert workload certificate + its registered credential only.
+  // Background work carries no fabricated Gateway actor delegation.
+  rpc VerifySource(VerifyDeletionSourceRequest) returns (VerifyDeletionSourceResponse);
+}

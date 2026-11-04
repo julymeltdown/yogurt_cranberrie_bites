@@ -2,15 +2,15 @@
   "version": "map4-reference-composition-v1",
   "layout": {
     "path": "world/map-reference-composition-v1/layout.json",
-    "bytes": 45370,
-    "sha256": "sha256:418af3bf14ee2e8b79eeb2b038f64b48713de17967993aa4e7fa3ce22c8d26b9"
+    "bytes": 101203,
+    "sha256": "sha256:3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792"
   },
   "assets": [
     {
       "themeId": "REVENGE",
       "path": "world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 508321,
-      "sha256": "sha256:9a9a117a18159c422354c1967957dc0c6f1f82554055a2c88a29aa9f80951b06",
+      "bytes": 677852,
+      "sha256": "sha256:b503fde72ebd8c46181609cd1256809bd58eaf34b24f8811781246abbef675bc",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -18,8 +18,8 @@
     {
       "themeId": "PARADE",
       "path": "world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 522044,
-      "sha256": "sha256:c14b06dd0763fef26746cb6f7b7b5fcc24d482272251c844a1365a0f4aef5269",
+      "bytes": 697466,
+      "sha256": "sha256:0a25503095d2ed62960e5ff23731a35d87159301e9a3993a12ead671c057ac06",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -27,8 +27,8 @@
     {
       "themeId": "DANGER",
       "path": "world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 512256,
-      "sha256": "sha256:58b3a9a8b71cd02d044a68fb596bf5cbbf5a383fdbee2eb2706fc8d2dc5527e0",
+      "bytes": 686555,
+      "sha256": "sha256:8cc354d6666e48d183173bc73ed5c459286bdc8e28a11cce3bc2bdb0f852fbd1",
       "width": 768,
       "height": 1296,
       "mime": "image/png"

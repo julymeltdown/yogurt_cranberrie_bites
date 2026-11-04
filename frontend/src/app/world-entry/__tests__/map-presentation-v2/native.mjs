@@ -11,7 +11,7 @@ const root = resolve(import.meta.dirname, '../../../../../..'), frontend = resol
 const output = process.env.MCR_MAP4_OUTPUT, lease = process.env.MCR_MAP4_LEASE, temporary = process.env.MCR_MAP4_TEMP
 const port = Number(process.env.MCR_MAP4_PORT ?? '5298')
 assert(Number.isSafeInteger(port) && port > 1023 && port < 65536, 'Named local Vite port')
-const deadline = Date.parse(process.env.MCR_MAP4_DEADLINE ?? ''), cap = 64 * 1024 ** 2
+const deadline = Date.parse(process.env.MCR_MAP4_DEADLINE ?? ''), cap = 32 * 1024 ** 2
 assert(output?.startsWith('/') && temporary?.startsWith('/private/tmp/mcr-root-map4-') && lease && Number.isFinite(deadline), 'Set fresh Root output/private TMP/lease/deadline')
 assert(deadline > Date.now() + 120_000, 'Reserve useful execution plus cleanup')
 const hash = bytes => 'sha256:' + createHash('sha256').update(bytes).digest('hex')
@@ -37,7 +37,9 @@ for (const path of [relativeFactory, 'frontend/src/world/reference-scene/overvie
   'frontend/src/world/reference-scene/map4-service-v1/annotations.ts',
   'frontend/src/app/world-entry/map-presentation-v1/descriptor.ts',
   'frontend/src/app/world-entry/map-presentation-v2/loader.ts',
-  ...['contract.ts', 'current.ts', 'registration.ts', 'resources.json', 'layout-source.json', 'model.ts', 'labels.ts', 'semantics.ts', 'style.ts'].map(p => `frontend/src/world/reference-scene/map4-service-v2/${p}`),
+  ...['contract.ts', 'current.ts', 'registration.ts', 'resources.json', 'layout-source.json', 'model.ts', 'labels.ts', 'semantics.ts', 'style.ts', 'style-source.json'].map(p => `frontend/src/world/reference-scene/map4-service-v2/${p}`),
+  'frontend/src/features/places/ui/places.css',
+  'frontend/src/features/places/ui/IllustratedMap.tsx',
   'frontend/public/world/map-reference-composition-v1/layout.json',
   'frontend/public/world/map-reference-composition-v1/source-provenance.json',
   ...['revenge', 'parade', 'danger'].map(era => `frontend/public/world/map-reference-composition-v1/${era}-scene.png`),
@@ -55,7 +57,7 @@ async function guard() {
   const disk = await statfs(root)
   assert(disk.bavail * disk.bsize >= 8 * 1024 ** 3, '8GiB continuous disk floor')
   assert(Date.now() < deadline - 60_000, 'Preserve cleanup minute')
-  assert(await directoryBytes(output) < cap, '64MiB output cap')
+  assert(await directoryBytes(output) < cap, '32MiB output cap')
 }
 const startDisk = await statfs(root); assert(startDisk.bavail * startDisk.bsize >= 8 * 1024 ** 3, '8GiB accepted-allocation continuous disk floor')
 await mkdir(output, { recursive: true, mode: 0o700 })
@@ -137,6 +139,36 @@ try {
       const result = { phase, era, width, height, world, worldCamera, initial, screenshot, captureStartedAt, captureFinishedAt: new Date().toISOString(), screenshotHash: hash(await readFile(resolve(output, screenshot))),
         virtualActions: [], controls: {}, requests, errors }
       if (phase === 'after') {
+        result.foreground = await page.evaluate(() => {
+          const toolbar = document.querySelector('.places-map-tools button'), css = getComputedStyle(toolbar)
+          const image = document.querySelector('.places-map-plane > img'), box = image.getBoundingClientRect()
+          return { family: css.fontFamily, weight: css.fontWeight, fontSize: css.fontSize,
+            loadedFaces: [...document.fonts].map(face => ({family:face.family,status:face.status,weight:face.weight})),
+            labelFontCssPx: 40 * box.width / 768, image:{x:box.x,y:box.y,width:box.width,height:box.height},
+            viewport: (() => {const el=document.querySelector('.places-map-viewport'); return {clientHeight:el.clientHeight,scrollHeight:el.scrollHeight,clientWidth:el.clientWidth,scrollWidth:el.scrollWidth}})() }
+        })
+        assert(result.foreground.family.startsWith('"Arial Narrow"'))
+        assert.equal(result.foreground.weight,'800')
+        result.foreground.runtimeFontDisposedAfterRaster = !result.foreground.loadedFaces.some(face => face.family.replaceAll('\"','') === 'MCR Map4 Composition Labels')
+        assert(result.foreground.runtimeFontDisposedAfterRaster, 'Raster encoding releases its temporary FontFace; toolbar uses explicit bold fallback')
+        // Exact original 40-unit text size, including the local-scroll short mode.
+        assert(result.foreground.labelFontCssPx >= 13.8)
+        result.foreground.actualLabelInk = await page.evaluate(async () => {
+          const {currentComposition}=await import('/src/world/reference-scene/map4-service-v2/current.ts')
+          const {compositionLabelPaintRect}=await import('/src/world/reference-scene/map4-service-v2/labels.ts')
+          const model=currentComposition();if(!model)throw Error('Frozen composition unavailable')
+          // Independent bounded metric probe over the exact retained original font.
+          // Production rasterization has already retired its own temporary face.
+          const response=await fetch('/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf'),bytes=await response.arrayBuffer()
+          const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(b=>b.toString(16).padStart(2,'0')).join('')
+          if(digest!=='f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b')throw Error('Original font bytes changed')
+          const face=await new FontFace('MCR Map4 Composition Labels',bytes).load();document.fonts.add(face)
+          try {const canvas=document.createElement('canvas'),context=canvas.getContext('2d');context.font='40px "MCR Map4 Composition Labels"'
+            return model.labels.map(label=>{const metrics=context.measureText(label.label),paint=compositionLabelPaintRect(label,metrics);return {label:label.label,font:context.font,advance:metrics.width,inkLeft:metrics.actualBoundingBoxLeft,inkRight:metrics.actualBoundingBoxRight,ascent:metrics.actualBoundingBoxAscent,descent:metrics.actualBoundingBoxDescent,paint,exclusion:label.rect,fontProbeQualification:'Independent original-byte metrics; not a persistent production font owner'}})
+          } finally {document.fonts.delete(face)}
+        })
+        assert.equal(result.foreground.actualLabelInk.length,6)
+        for(const row of result.foreground.actualLabelInk) { assert(row.advance>0);assert(row.paint.width<=row.exclusion.width);assert(row.paint.height<=row.exclusion.height);assert(row.paint.textX+row.inkRight<=row.paint.x+row.paint.width) }
         for (const intent of ['wall', 'feed', 'meet', 'gifts']) {
           const link = page.locator(`#map-feature-${intent}`)
           await link.scrollIntoViewIfNeeded(); const box = await link.boundingBox()
@@ -147,6 +179,13 @@ try {
             return document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)?.closest('a') === element
           })
           assert(unobstructed, 'Feature target must not be blocked by controls/canonical markers')
+          const controlOverlaps = await link.evaluate(element => {
+            const a=element.getBoundingClientRect()
+            return [...document.querySelectorAll('.places-map-zoom button,.places-map-tools button')].filter(control => {
+              const b=control.getBoundingClientRect(); return Math.min(a.right,b.right)-Math.max(a.left,b.left)>.5 && Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>.5
+            }).map(control => control.getAttribute('aria-label') || control.textContent)
+          })
+          assert.deepEqual(controlOverlaps,[], 'Full virtual hit rectangle must avoid fixed zoom/toolbar controls')
           await expect(link).toHaveAttribute('href', '/' + intent)
           await link.focus(); await page.keyboard.press('Enter')
           await expect.poll(async () => (await state(page)).path).toBe('/' + intent)
@@ -166,6 +205,17 @@ try {
       await page.getByRole('button', { name: 'Reset view', exact: true }).click()
       result.controls = { localZoomFitReset: true, cameraUnchanged: JSON.stringify((await state(page)).camera) === JSON.stringify(cameraBefore) }
       assert(result.controls.cameraUnchanged)
+      if (phase === 'after') {
+        const controls=page.locator('.places-map-tools button,.places-map-zoom button')
+        result.controls.bounds=await controls.evaluateAll(elements=>elements.map(element=>{const r=element.getBoundingClientRect();return {name:element.getAttribute('aria-label')||element.textContent,width:r.width,height:r.height}}))
+        for(const box of result.controls.bounds) assert(box.width>=44 && box.height>=44)
+        const fit=page.getByRole('button',{name:'Fit map',exact:true})
+        await page.emulateMedia({forcedColors:'active'});await fit.focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');await expect(fit).toBeFocused()
+        result.controls.forcedFocus=await fit.evaluate(element=>{const css=getComputedStyle(element);return {style:css.outlineStyle,width:css.outlineWidth,offset:css.outlineOffset,color:css.outlineColor}})
+        assert.equal(result.controls.forcedFocus.style,'solid');assert(parseFloat(result.controls.forcedFocus.width)>=3)
+        if(era==='PARADE' && width===390) { const file=`forced-focus-parade-390${height===420?'-short':''}.png`;await page.screenshot({path:resolve(output,file),fullPage:false});result.controls.forcedFocus.screenshot=file }
+        await page.emulateMedia({forcedColors:'none'});await fit.evaluate(element=>element.blur())
+      }
       const stable = await state(page)
       assert.equal(stable.canvases, 1); assert.equal(stable.sockets, 1); assert.equal(stable.sameCamera, true)
       assert.deepEqual(stable.entities, initial.entities)

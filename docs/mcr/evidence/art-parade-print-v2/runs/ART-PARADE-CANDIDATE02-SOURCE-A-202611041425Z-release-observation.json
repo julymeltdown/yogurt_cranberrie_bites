@@ -1,0 +1,37 @@
+{
+  "offer": "ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z",
+  "observedAt": "2026-11-04T14:32:10.902054+00:00",
+  "beforeOriginalDeadline": true,
+  "receiptSha256": "1e2c8dd384ee562c495cd71faa88e5e515d8d11c6066cb4ca10acbc5e0f85d70",
+  "rawStatus": "PASS_SOURCE_ONLY",
+  "release": "FULL",
+  "liveRecordedChildPids": [],
+  "temporaryAbsent": true,
+  "frozenCarryUnchanged": true,
+  "finalCarryFilesIncludingRawReceiptLog": 30,
+  "finalCarryBytesIncludingRawReceiptLog": 289014,
+  "wholeIncludingReadOnlyReferencesAndPrivateGitReserve": 5836029,
+  "privateGitBaseline": {
+    "path": "/Users/lhs/Desktop/mcr/.git/worktrees/mcr5",
+    "actualBytes": 1648286,
+    "wholeReserveBytes": 2097152,
+    "policy": "Private Git baseline counted only in WHOLE. Shared common Git and foreign checkouts are read-only/excluded; no recursive common-store scan."
+  },
+  "timing": {
+    "startedAt": "2026-11-04T14:31:47.187514+00:00",
+    "finishedAt": "2026-11-04T14:31:47.837636+00:00",
+    "elapsedSeconds": 0.6219977499858942,
+    "cleanupSeconds": 0.000684083002852276,
+    "acceptanceToFinishedSeconds": 14.527531862258911
+  },
+  "peaks": {
+    "wholeBytes": 5887864,
+    "tempBytes": 64428,
+    "durableBytes": 276421,
+    "rssBytes": 91226112,
+    "processCount": 3
+  },
+  "childMaxRssBytes": 65536000,
+  "minimumFreeBytes": 27076902912,
+  "note": "Independent postwrite observation, not a new outputjob. Raw workphase durable peak excludes its subsequently written receipt; finalcarry includes it. This observation file itself is authored after measurement."
+}

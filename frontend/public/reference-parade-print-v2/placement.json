@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "task": "ART-PARADE-PRINT-02",
+  "sourceBase": "654974128a27c948a449fa9e58f466b8e612361d",
+  "qualification": "SOURCE_QUALIFIED_SUCCESSOR_NATIVE_NOT_RUN",
+  "publicUrl": "/reference-parade-print-v2/parade-print.svg",
+  "rootId": "parade-print-v2",
+  "inkGroupId": "parade-print-ink",
+  "intrinsicSize": [
+    360,
+    96
+  ],
+  "viewBox": [
+    0,
+    0,
+    360,
+    96
+  ],
+  "aspectRatio": 3.75,
+  "files": [
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "url": "/reference-parade-print-v2/parade-print.svg",
+      "bytes": 5894,
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10"
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print-preview.png",
+      "url": "/reference-parade-print-v2/parade-print-preview.png",
+      "bytes": 9936,
+      "sha256": "48e3145b5675081376ab5cc1a5cf92b8abe85bc14ee47034cc58a36dbb6c2351"
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print@2x.png",
+      "url": "/reference-parade-print-v2/parade-print@2x.png",
+      "bytes": 21210,
+      "sha256": "27c087442ff29576901765f6dcfed3d0c2ee668044ac9593b733cd6d9b38fe6a"
+    }
+  ],
+  "composition": {
+    "figures": 9,
+    "paths": 14,
+    "derivedFromPlayerArt": false,
+    "livePresence": false,
+    "animation": false,
+    "groundEdgeYApprox": [
+      67,
+      75
+    ],
+    "groundBottom": 96,
+    "inkColor": "#191817",
+    "standaloneColorSource": "SVG root color + ink group fill=currentColor",
+    "alphaPolicy": "No paper rectangle; ground and all marchers are ink; gaps, drum ring, and ground nicks transparent",
+    "opaqueNative2xInkFraction": 0.476244212962963,
+    "alphaWeightedNative2xInkFraction": 0.5014487166394336
+  },
+  "consumer": {
+    "ownerThread": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+    "publisherThread": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "element": "img",
+    "alt": "",
+    "wrapperAriaHidden": true,
+    "interactive": false,
+    "flow": "Normal in-flow footer, width100%, intrinsic360/96 aspect",
+    "crop": "No intentional crop in primary integration; first/last figure contours deliberately bleed at source edges",
+    "background": "Transparent; consumer paper shows through",
+    "fallback": "No legacy or player art; on asset loss preserve functioning controls and decorative flow",
+    "placedHeightOwner": "Consumer; artist changes no CSS or flow",
+    "illustrativeWidthPredictions": [
+      {
+        "viewportWidth": 360,
+        "exampleInnerWidth": 342,
+        "height": 91.2
+      },
+      {
+        "viewportWidth": 390,
+        "exampleInnerWidth": 372,
+        "height": 99.2
+      },
+      {
+        "viewportWidth": 430,
+        "exampleInnerWidth": 412,
+        "height": 109.86666666666666
+      }
+    ],
+    "predictionLimit": "Viewport-minus18 is an illustrative calculation, NOT an actual measured runtime box"
+  },
+  "sizeJustification": {
+    "native2x": [
+      720,
+      192
+    ],
+    "exceedsDefault140Height": true,
+    "reason": "Canonical Gifts/Profile inspected bottom regions normalize to109.3/110.3px at372px inner width. Their ink extents and ground need more than70 source units;360x96 gives99.2px at372 width. Meet includes overlapping CTA and is taller; its flow remains consumer-owned. Root153 and consumer accepted96 source height as sizing input, not native acceptance."
+  },
+  "references": [
+    {
+      "id": "canonical",
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "id": "supplied-jpeg",
+      "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+      "bytes": 482737,
+      "size": [
+        1280,
+        853
+      ],
+      "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+    }
+  ],
+  "evidence": {
+    "sourceValidation": "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01/source-validation.json",
+    "referenceMeasurements": "docs/mcr/evidence/art-parade-print-v2/reference-measurements.json",
+    "sourceRenderOnly": "docs/mcr/evidence/art-parade-print-v2/candidate-02/qualified-01/source-review-paper.png",
+    "native": "SUCCESSOR_NOT_RUN; NativeB b68 observed separately, does not qualify these new bytes",
+    "resourceOffer": "Source candidate02 A FULL released; successor native requires sole213 fresh offer",
+    "priorNativeAssessment": "docs/mcr/evidence/art-parade-print-v2/native-01-assessment.json"
+  },
+  "limits": [
+    "Original hand-authored angular print informed by reference proportions, no traced/copied reference pixels or contours.",
+    "Source PNG renderer resolves currentColor to declared#191817 for export; actual browser SVG color/load/forced modes NOT_RUN.",
+    "No actual selected-avatar/member/sourcepack/WorldMap modification or identity/arrival/movement semantics.",
+    "Not full reference parity, device, live service or accessibility acceptance."
+  ],
+  "revision": {
+    "supersedesCommit": "b68d40a906ac98f8dd3da86d4136fbbe425be8d9",
+    "reason": "NativeB art-owner material differences: smaller independently reauthored angular varied marchers, heavier irregular ground, fine scattered transparent nicks",
+    "sourceQualificationOffer": "ART-PARADE-CANDIDATE02-SOURCE-A-202611041425Z",
+    "publicPromotion": "Exact retained qualified source/PNG bytes copied after FULL release; no new render/browser/job"
+  }
+}

@@ -79,7 +79,9 @@ def main():
     status = 'FAIL'
     try:
         link.symlink_to(DEPS, target_is_directory=True)
-        for label, argv in [('types', [str(NODE), '--max-old-space-size=2048', str(DEPS / 'typescript/bin/tsc'), '--noEmit', '--incremental', 'false', '-p', 'tsconfig.json']), ('syntax', [str(NODE), '--check', str(driver)]), ('native', [str(NODE), str(driver)])]:
+        commands = [('types', [str(NODE), '--max-old-space-size=2048', str(DEPS / 'typescript/bin/tsc'), '--noEmit', '--incremental', 'false', '-p', 'tsconfig.json']), ('syntax', [str(NODE), '--check', str(driver)]), ('native', [str(NODE), str(driver)])]
+        if os.environ.get('MCR_MAP4_NATIVE_RETRY_ONLY') == '1': commands = commands[1:]
+        for label, argv in commands:
             assert time.time() < deadline - 60
             with (output / (label + '.log')).open('wb') as log:
                 child = sp.Popen(argv, cwd=ROOT / 'frontend', env=env, stdout=log, stderr=sp.STDOUT, start_new_session=True)

@@ -1,0 +1,17 @@
+{
+  "slot": "ROOT-MAP4-COMPOSITION-NATIVE-202611041450Z",
+  "pin": "9a9b54587a4e2032424d542130fc52f7a8b286d3",
+  "accepted": "2026-11-04T14:49:35.617315+00:00",
+  "workDeadline": "2026-11-04T14:55:35.617315+00:00",
+  "hardDeadline": "2026-11-04T14:56:35.617315+00:00",
+  "carryBytes": 151161232,
+  "freshFree": 25875017728,
+  "sourceChecks": {
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/native.mjs": "3df04f1ae69310f669266e243abb446137bd34a24bb3fa09f0be01f023253380",
+    "docs/mcr/evidence/map-production-binding/root-v2-native-supervisor.py": "b4a175294cdb99f2e7d81fb04005ad1cb74bc13094593c8a642801e18eee3eab",
+    "docs/mcr/evidence/map-production-binding/composition-art03-native-carry.json": "45c241f51750e24632bb43db41260cd5f5d3cd5a21537323aea8bbeab5ca3068",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "output": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01",
+  "observedOwnedTempPaths": []
+}

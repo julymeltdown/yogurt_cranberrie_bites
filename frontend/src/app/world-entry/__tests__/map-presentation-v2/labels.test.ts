@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { afterEach, expect, it, vi } from 'vitest'
 import { compositionFixture } from './fixture'
-import { prepareCompositionLabels } from '../../../../world/reference-scene/map4-service-v2/labels'
+import { compositionLabelPaintRect, prepareCompositionLabels } from '../../../../world/reference-scene/map4-service-v2/labels'
 
 const originalFonts = Object.getOwnPropertyDescriptor(document, 'fonts')
 afterEach(() => {
@@ -49,4 +49,31 @@ it('withdraws label drawing rather than publishing cropped text when actual font
   const s = await setup(), owner = await prepareCompositionLabels(s.model, new AbortController().signal, { origin: location.origin, fetch: s.fetch })
   const context = { save: vi.fn(), restore: vi.fn(), measureText: vi.fn(() => ({ width: 999 })) } as unknown as CanvasRenderingContext2D
   expect(() => owner.draw(context)).toThrow(); owner.dispose(); expect(s.fonts.size).toBe(0)
+})
+
+
+it('compacts measured paint while retaining all authored hit/exclusion areas and null authority', async () => {
+  const f = await compositionFixture(), before = JSON.stringify({ labels: f.model.labels, parsed: f.model.parsed })
+  for (const label of f.model.labels) {
+    const metrics = { width: 80, actualBoundingBoxLeft: -1, actualBoundingBoxRight: 79,
+      actualBoundingBoxAscent: 27, actualBoundingBoxDescent: -1 }
+    const paint = compositionLabelPaintRect(label, metrics)
+    expect(paint.width).toBeLessThan(label.rect.width); expect(paint.height).toBeLessThan(label.rect.height)
+    expect(paint.x + paint.width / 2).toBe(label.x); expect(paint.y + paint.height / 2).toBe(label.y)
+    expect(paint.textX - Math.max(0, metrics.actualBoundingBoxLeft)).toBeGreaterThan(paint.x)
+    expect(paint.textX + metrics.actualBoundingBoxRight).toBeLessThan(paint.x + paint.width)
+    expect(paint.textBaseline - metrics.actualBoundingBoxAscent).toBeGreaterThan(paint.y)
+    expect(paint.textBaseline + metrics.actualBoundingBoxDescent).toBeLessThan(paint.y + paint.height)
+    expect(label.rect.height).toBe(78); expect(label.exclusionRect.height).toBe(112)
+    expect(label.placeId).toBeNull(); expect(label.interactionId).toBeNull()
+  }
+  expect(JSON.stringify({ labels: f.model.labels, parsed: f.model.parsed })).toBe(before)
+})
+
+it('rejects ink overhang, nonfinite metrics and excessive ink height rather than clipping a compact plaque', async () => {
+  const f = await compositionFixture(), label = f.model.labels[0]!
+  for (const metrics of [{ width: 50, actualBoundingBoxRight: 999 }, { width: Number.NaN },
+    { width: 50, actualBoundingBoxAscent: 100, actualBoundingBoxDescent: 10 }]) {
+    expect(() => compositionLabelPaintRect(label, metrics)).toThrow()
+  }
 })

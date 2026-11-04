@@ -1,6 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { expect, it, vi } from 'vitest'
+import compactStyle from '../../../../world/reference-scene/map4-service-v2/style-source.json'
+import originalStyle from '../../../../world/reference-scene/map4-service-v1/style-source.json'
 import { currentComposition } from '../../../../world/reference-scene/map4-service-v2/current'
 import { compositionDigest } from '../../../../world/reference-scene/map4-service-v2/model'
 import { canonicalPresentationJson } from '../../../../world/reference-scene/map4-service-v2/presentation-json'
@@ -18,7 +20,7 @@ it('binds the real corrected ART layout and three scene resources to the indepen
   if (!model) throw Error('Allocated registration must run before source qualification')
   expect(await compositionDigest(model.registration)).toBe(model.registration.presentationHash)
   const raw = await bytes(model.registration.layout.path)
-  expect(raw.length).toBe(45370); expect(await sha256(raw)).toBe(model.registration.layout.sha256)
+  expect(raw.length).toBe(101203); expect(await sha256(raw)).toBe(model.registration.layout.sha256)
   expect(model.source).toBe(canonicalPresentationJson(JSON.parse(new TextDecoder().decode(raw))))
   const snapshot = await readFile('src/world/reference-scene/map4-service-v2/layout-source.json')
   expect(new Uint8Array(snapshot)).toEqual(raw)
@@ -66,4 +68,15 @@ it('keeps the real four canonical display mappings and virtual semantics separat
     expect(target.width).toBeGreaterThanOrEqual(44); expect(target.height).toBeGreaterThanOrEqual(44)
     expect(target.left).toBeGreaterThanOrEqual(0); expect(target.top + target.height).toBeLessThanOrEqual(width * 1296 / 768)
   }
+})
+
+
+it('keeps the historical v1 style and original font/icons exact while independently binding compact v2 paint', async () => {
+  expect(compactStyle.font).toEqual(originalStyle.font)
+  expect(compactStyle.icons).toEqual(originalStyle.icons); expect(compactStyle.icon_cutouts).toEqual(originalStyle.icon_cutouts)
+  expect(originalStyle.style).toMatchObject({ font_size: 40, single_height: 78, icon_size: 55 })
+  expect(compactStyle.style).toMatchObject({ font_size: 40, single_height: 64, icon_size: 44, paint_mode: 'MEASURED_CENTERED_V1' })
+  const model = currentComposition(); if (!model) throw Error('Fresh compact-paint registration required')
+  expect(model.registration.presentationHash).not.toBe('sha256:9fcddca91030aaff0f3c3efaa1018fdeddb4708c56c9eea80024deb0bee9f522')
+  expect(await compositionDigest(model.registration)).toBe(model.registration.presentationHash)
 })
