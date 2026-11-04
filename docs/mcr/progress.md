@@ -1,6 +1,6 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T03:24:00+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
+Updated **2026-11-05T03:25:55+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
 
 ## Current progress
 
@@ -8,22 +8,22 @@ Updated **2026-11-05T03:24:00+09:00** for the user's full 112-task replan. The [
 | --- | --- |
 | Original required tasks | 112 |
 | Active functional-delivery tasks | 111 |
-| Complete under revised scope | **39/111 (35.1%)** |
-| Remaining active tasks | **72** |
+| Complete under revised scope | **40/111 (36.0%)** |
+| Remaining active tasks | **71** |
 | Deferred by user | **QA08: 1; not passed or complete** |
 | Historical original-task criteria baseline | 39/112, preserved |
-| Current original-task criteria outcomes | 46/112, including seven newly published closures |
+| Current original-task criteria outcomes | 47/112, including eight newly published closures |
 | Historically closed IDs with current deltas | 7 |
 | Required IA entries | 61, all retained; full readiness reconciliation remains open |
 | Integrated outcomes | IN01 historically accepted; IN02/IN04/IN05 open; IN03 awaiting authorized provider/claims input |
 | Product delivery decision | NOT_READY |
 
-This is an unweighted task-count fraction, not an effort estimate or a claim that 35.1% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Seven affected historical IDs retain current work. Seven new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35) bring the current revised count to 39. No completed work was erased, and bounded helper deliveries did not inflate the total.
+This is an unweighted task-count fraction, not an effort estimate or a claim that 36.0% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Seven affected historical IDs retain current work. Eight new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06) bring the current revised count to 40. No completed work was erased, and bounded helper deliveries did not inflate the total.
 
 | Revised state | Count |
 | --- | ---: |
-| DONE | 39 |
-| IN_PROGRESS | 58 |
+| DONE | 40 |
+| IN_PROGRESS | 57 |
 | WAITING_INPUT | 3 |
 | OPEN | 4 |
 | REOPENED | 7 |
@@ -57,6 +57,8 @@ QA01 and QA07 need targeted coverage for new Wall B contracts and controls, not 
 | Operations/recovery | Bounded Auth, deletion, report and lifecycle increments published | Full category convergence, populated business recovery, authorization/races/abuse/configuration and release evidence |
 
 The latest canonical publication snapshot used here is `a9c04eb256e7b50e6efc99bfd076eca9a8293100`. AR03 original artwork is explicitly accepted and published at `3198cc8d`; C07 is published at `679adb7d`; FE16 at `72a3a067`; FE03/FE04/FE11 at `bc75182e`. Their responsible developers explicitly closed the original client/contract criteria. Canonical publisher receipts establish delivery; no extra king readback or proof-only commit is required. QA01's changed-contract cohort passed, but its revised task disposition remains conservatively open. QA10 and real IN02–IN05 remain open.
+
+Original **C06** is now accepted and published at `6504448f` through the responsible owner's [disposition](c06-original-disposition.md). All five original criteria are covered; the existing six golden assets and qualified consumers remain the evidence basis. This does not close separate live, visual or device gates.
 
 Hosted CI is **qualified and published**. The responsible developer reports successful frozen installation, full QA01 and all eight C07 checks in runs [41883941337](https://github.com/julymeltdown/mcr/actions/runs/41883941337) and [41883753649](https://github.com/julymeltdown/mcr/actions/runs/41883753649). Repair `28a3716e` preserved pinned resolutions and every check; final evidence is published at `13baed63`. Historical failures remain recorded. This is scoped hosted contract qualification, not application, device, multiuser or release acceptance. New enrollment contract inputs receive their own generated-output update.
 

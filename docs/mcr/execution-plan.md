@@ -14,7 +14,7 @@ Use the supplied ten-screen reference and selected character pack. Retro styling
 
 | Queue | Immediate outcome | Current routing |
 | --- | --- | --- |
-| Contracts | Hosted installation/QA01/C07 repair qualified; enrollment generated-input refresh and C04/C06 changed-contract work remain | Existing50a8 owns the enrollment generator follow-up after fresh checkout custody; World20f/C05, Wall202 and exact shared delegates retain their scopes |
+| Contracts | Original C06 accepted and hosted installation/QA01/C07 repair qualified; enrollment generated-input refresh and remaining C04/C05 changes continue | Existing50a8 owns the enrollment generator follow-up after fresh checkout custody; World20f/C05, Wall202 and exact shared delegates retain their scopes |
 | Meet/Gifts | Real party, beacon, reservation and pickup through IN02; protected Gifts detail images | Party 19f83/backend 1fc; Gifts 53d/frontend 153; backend lead allocates remaining giveaway/media scope |
 | Social/Feed | Real consent, privacy and notifications through IN03; remaining FE31/36 default entry; original FE35 client acceptance closed | Backend Social16e/Auth207; frontend21e; Feed209; scoped Root caller owner |
 | Wall B | Controlled tools/default lifecycle delivered; live integration and IN04 remain | Backend202 and Root153; Existing53d owns default Admin composition; duplicate735 retired |
