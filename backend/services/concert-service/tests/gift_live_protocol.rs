@@ -1,8 +1,6 @@
-//! Tests the exact new headless source before root-owned module registration.
-#[path = "../src/gift_live/protocol.rs"]
-mod protocol;
+//! Tests the registered production Gift protocol source.
+use concert_service::gift_live::protocol::*;
 use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
-use protocol::*;
 use serde_json::{json, Value};
 use std::time::Duration;
 use uuid::Uuid;

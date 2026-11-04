@@ -1,7 +1,5 @@
-#[path = "../src/gift_live/cursor.rs"]
-mod cursor;
 use chrono::{Duration, Utc};
-use cursor::*;
+use concert_service::gift_live::cursor::*;
 use std::collections::BTreeMap;
 use uuid::Uuid;
 
