@@ -1,7 +1,8 @@
 # FE12/FE13 avatar integration continuity
 
-Status: IN_PROGRESS. The explicit Cancel action and focused source/client
-qualification are authored; execution and canonical publication are NOT_RUN.
+Status: IN_PROGRESS. The explicit Cancel action and focused source qualification
+are delivered. The new native client journey and canonical publication remain
+NOT_RUN, pending the separately allocated native phase and publisher handoff.
 This is a new integration goal. Completed AR03 artwork and C06 remain preserved.
 
 ## Scope and behavior
@@ -70,8 +71,8 @@ committed validated handoff; there is no king/SL review or acknowledgement gate.
 Fresh allocator offer and explicit acceptance are required before execution.
 Source/browser jobs, command exits, source pins, original failed attempts, byte
 and process bounds, cleanup and exact publication ancestry will be recorded in
-`docs/mcr/evidence/avatar-integration-continuity/`. Execution remains NOT_RUN
-until those actual results exist.
+`docs/mcr/evidence/avatar-integration-continuity/`. Native execution remains
+NOT_RUN until its actual results exist.
 
 The source round also checks the full application with the pinned retained type
 helper (SHA256 `4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1`).
@@ -87,3 +88,28 @@ the separate 9 GiB reserve. No worker, guardian, temporary root, dependency link
 or application process started. The declined offer is not reused or weakened;
 the same candidate remains queued for a fresh eligible offer. The exact declined
 disposition was sent directly to 21d and the named FE34 resource successor.
+
+The fresh `AVATAR-CANCEL-SOURCE-20261104T2002Z` offer was actually accepted at
+20:01:07.408862 UTC on November 4 (05:01:07 KST on November 5), source
+`73542e304f999d8bb8743fe1d36a1b3b4c583493`. Its explicitly offered start floor
+was 11 GiB, with 9 GiB after all outstanding/proposed growth and 8 GiB live.
+Fresh free space was 12,872,318,976 bytes; conservative after-ALL free space
+was 9,982,443,520 bytes. The original work/FULL clocks were 420/480 seconds;
+no clock, footprint, process or ownership limit was extended.
+
+All four sequential commands exited 0: 35 tests across three files (the seven
+new cases plus 28 affected retained cases), scoped lint with zero warnings,
+full application types across 1,036 files with zero diagnostics, and the new
+native driver's JavaScript syntax. Test output retains React act warnings;
+these do not substitute for the still-pending native journey.
+
+Supervisor and independent guardian both reported no breach. Peak aggregate
+usage was six processes, 1,748,238,336 bytes RSS, 5,931,963 bytes inclusive NEW,
+and 93,085,611 bytes WHOLE; temporary peak was 3,557,320 bytes. The fixed caps
+were eight processes/2.5 GiB RSS, 68 MiB inclusive NEW, 224 MiB WHOLE,
+48 MiB temporary and 20 MiB durable. Independent final process/path checks
+proved all owned PIDs ended, private temporary files were removed, no dependency
+link existed, and no application/browser/target resources were held. Literal
+FULL was sent directly to the FE34 successor and 21d at 20:01:59.665985 UTC.
+The source release does not authorize a browser run; the same feature queue
+now awaits its separate 390px native offer.
