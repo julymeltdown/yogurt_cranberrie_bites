@@ -142,6 +142,8 @@ class QualityV6Tests(unittest.TestCase):
             self.assertEqual(qualified['theme_id'], source['theme_id'])
             self.assertEqual(qualified['scenery_source'], source['scenery_source'])
             self.assertEqual(qualified['runtime_resources'], source['runtime_resources'])
+            self.assertIn(qualified['artist_provenance_source'], source['scene_sources'])
+            self.assertTrue(qualified['artist_provenance_source']['path'].endswith('/provenance.json'))
             provenance = qualified['source_provenance']
             self.assertEqual(provenance['review_state'], 'REVIEWED')
             self.assertIn(source['scenery_source']['sha256'], provenance['source_revision'])

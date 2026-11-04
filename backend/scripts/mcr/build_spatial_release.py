@@ -301,6 +301,7 @@ def build(inputs=BASELINE):
                                         'components': api['components']}).validate(provenance)
             qualified.append({'theme_id': theme_id, 'source_provenance': provenance,
                 'scenery_source': scene['scenery_source'], 'runtime_resources': scene['runtime_resources'],
+                'artist_provenance_source': next(pin for pin in scene['scene_sources'] if pin['path'].endswith('/provenance.json')),
                 'scenery_budget': budgets[theme_id]})
         outputs['scene-source-qualification.json'] = {
             'format': 'MCR_SPATIAL_SCENE_SOURCE_QUALIFICATION', 'version': 1,
