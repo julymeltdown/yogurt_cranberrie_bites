@@ -42,6 +42,21 @@ CONCERT_SOCIAL_MIGRATION_PATH = "backend/services/concert-service/migrations/005
 CONCERT_SOCIAL_MIGRATION_SHA384 = "d9672f6fbdbfc363a1624b69f3e26e7dd260b5d1426a9e674983ab8157c2ef7b3253ff13c63864a8bf64c4ebaadc5091"
 
 
+def qualification_failure_code(error):
+    """Only fixed producer assertions; never arbitrary exception/private text."""
+    if not isinstance(error, prep.auth.CheckFailure):
+        return "UNCLASSIFIED"
+    label = str(error)
+    fixed = {"principal-provision-deadline", "principal-provision-cancelled",
+             "distinct-canonical-principals", "canonical-principal", "private-inbox",
+             "real-verification-delivery", "verified-principal", "real-login-identity",
+             "refresh-cookie-attributes"}
+    return label if label in fixed or re.fullmatch(
+        r"principal-[1-9][0-9]{0,2}-(signup|verify|login):"
+        r"(status|body-limit|no-store|correlation|referrer|unexpected-redirect|error-correlation)",
+        label) else "UNCLASSIFIED"
+
+
 class QualificationGuard:
     """Fresh offer bounds over retained carry plus only this producer's outputs."""
     def __init__(self, args, stack):
@@ -766,6 +781,7 @@ def run(args):
     except BaseException as error:
         if profile != "in01":
             report["failure_type"] = type(error).__name__
+            report["failure_code"] = qualification_failure_code(error)
             if isinstance(error, dev.SmokeError):
                 phase = error.detail.get("phase", "")
                 if re.fullmatch(r"[a-z][a-z0-9:_-]{0,80}", phase): report["failure_phase"] = phase

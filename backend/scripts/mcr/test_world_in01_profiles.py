@@ -3,6 +3,7 @@ import copy
 import json
 import re
 import tempfile
+import threading
 import time
 from pathlib import Path
 from types import SimpleNamespace as NS
@@ -65,10 +66,74 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(create.call_count, 1)
 
     def test_provisioning_deadline_stops_before_next_account(self):
-        with patch.object(prep.time, "monotonic", side_effect=[0, 0, 2]), patch.object(prep, "principal", return_value=(str(uuid4()), None, "token")) as create:
+        barrier, clock = threading.Barrier(4), [0]
+        def finish(*args, **kwargs):
+            barrier.wait(timeout=2)
+            clock[0] = 2
+            return str(uuid4()), None, "token"
+        with patch.object(prep, "time", NS(monotonic=lambda: clock[0])), patch.object(prep, "principal", side_effect=finish) as create:
             with self.assertRaisesRegex(prep.auth.CheckFailure, "principal-provision-deadline"):
                 prep.provision_principals(None, None, "qa08", 1)
-        self.assertEqual(create.call_count, 1)
+        self.assertEqual(create.call_count, 4)
+
+    def test_real200_scheduler_bounds_overlap_and_preserves_ordinal_order(self):
+        barrier, lock = threading.Barrier(4), threading.Lock()
+        active, peak, ordinals = 0, 0, []
+        def finish(stack, browser, ordinal, **kwargs):
+            nonlocal active, peak
+            with lock:
+                active += 1
+                peak = max(peak, active)
+                ordinals.append(ordinal)
+            try:
+                barrier.wait(timeout=2)
+                return str(ordinal), None, "RAM-TOKEN-" + str(ordinal)
+            finally:
+                with lock: active -= 1
+        browser = NS(report={})
+        with patch.object(prep, "principal", side_effect=finish):
+            result = prep.provision_principals(None, browser, "qa08")
+        self.assertEqual([p[0] for p in result], [str(n) for n in range(1, 201)])
+        self.assertEqual(sorted(ordinals), list(range(1, 201)))
+        self.assertEqual((peak, active), (4, 0))
+        self.assertEqual(browser.report["principal_provisioning"],
+                         {"concurrency": 4, "started": 200, "completed": 200})
+        self.assertNotIn("RAM-TOKEN", json.dumps(browser.report))
+
+    def test_concurrent_refusal_drains_current_batch_and_starts_no_next_batch(self):
+        barrier, lock, ordinals = threading.Barrier(4), threading.Lock(), []
+        active = 0
+        def refuse(stack, browser, ordinal, *, cancel_event, **kwargs):
+            nonlocal active
+            with lock:
+                active += 1
+                ordinals.append(ordinal)
+            try:
+                barrier.wait(timeout=2)
+                if ordinal == 1:
+                    raise prep.auth.CheckFailure("principal-1-signup:status")
+                self.assertTrue(cancel_event.wait(timeout=2))
+                raise prep.auth.CheckFailure("principal-provision-cancelled")
+            finally:
+                with lock: active -= 1
+        with patch.object(prep, "principal", side_effect=refuse):
+            with self.assertRaisesRegex(prep.auth.CheckFailure, "principal-1-signup:status"):
+                prep.provision_principals(None, None, "qa08")
+        self.assertEqual(sorted(ordinals), [1, 2, 3, 4])
+        self.assertEqual(active, 0)
+
+    def test_cancelled_principal_makes_no_http_request(self):
+        stop, browser = threading.Event(), Mock()
+        stop.set()
+        with self.assertRaisesRegex(prep.auth.CheckFailure, "principal-provision-cancelled"):
+            prep.principal(None, browser, 1, cancel_event=stop)
+        browser.request.assert_not_called()
+
+    def test_failure_code_never_retains_arbitrary_exception_text(self):
+        for label in ("principal-provision-deadline", "principal-200-login:status"):
+            self.assertEqual(live.qualification_failure_code(prep.auth.CheckFailure(label)), label)
+        for error in (ValueError("PRIVATE-TOKEN"), prep.auth.CheckFailure("principal-1-login:PRIVATE-TOKEN")):
+            self.assertEqual(live.qualification_failure_code(error), "UNCLASSIFIED")
 
     def test_real_principal_sequence_does_not_persist_token(self):
         user, token = str(uuid4()), "PRIVATE-TEST-TOKEN"
@@ -92,6 +157,49 @@ class ProfileTests(unittest.TestCase):
         self.assertNotIn(token, json.dumps(persist.call_args.args[1]))
         self.assertEqual(persist.call_args.args[1]["access_token"], "MEMORY_ONLY")
         self.assertEqual([c.args[1] for c in browser.request.call_args_list], ["/api/auth/email/signup", "/api/auth/email/verify", "/api/auth/login"])
+
+    def test_concurrent_real_principal_flows_keep_email_code_password_token_bindings(self):
+        barrier, lock, accounts, messages, persisted = threading.Barrier(4), threading.Lock(), {}, [], []
+        def request(label, path, payload):
+            email = payload["email"]
+            if path.endswith("signup"):
+                ordinal = int(label.split("-")[1])
+                user, code, token = str(uuid4()), str(100000 + ordinal), "PRIVATE-TOKEN-" + str(ordinal)
+                mail = Mock()
+                mail.is_symlink.return_value = False
+                mail.stat.return_value = NS(st_mode=0o600)
+                mail.read_bytes.return_value = json.dumps({"kind": "VERIFY_EMAIL", "payload":
+                    {"email": email, "verification_code": code}}).encode()
+                with lock:
+                    accounts[email] = (user, code, payload["password"], token)
+                    messages.append(mail)
+                barrier.wait(timeout=2)
+                return {}, {"userId": user}
+            user, code, password, token = accounts[email]
+            if path.endswith("verify"):
+                self.assertEqual(payload["code"], code)
+                return {}, {"userId": user}
+            self.assertEqual(payload["password"], password)
+            return {"set-cookie": "refresh=private; HttpOnly; SameSite=Lax; Path=/"}, {
+                "userId": user, "accessToken": token, "refreshToken": ""}
+        def inbox(_):
+            with lock: return list(messages)
+        def persist(path, value):
+            with lock: persisted.append((path, value))
+        browser = NS(request=request)
+        stack = NS(cluster=NS(root=Path("/fixture-only"), assert_owned=Mock()),
+                   mail=NS(directory=NS(glob=inbox)))
+        with patch.object(prep, "private_json", side_effect=persist), prep.ThreadPoolExecutor(max_workers=4) as pool:
+            futures = [pool.submit(prep.principal, stack, browser, ordinal) for ordinal in range(1, 5)]
+            results = [future.result(timeout=3) for future in futures]
+        self.assertEqual(len({item[0] for item in results}), 4)
+        self.assertEqual(len({path for path, _ in persisted}), 4)
+        for email, (user, _, password, token) in accounts.items():
+            self.assertIn((user, stack.cluster.root / f"in01-principal-{token.rsplit('-', 1)[1]}.json", token), results)
+            saved = next(value for _, value in persisted if value["user_id"] == user)
+            self.assertEqual((saved["email"], saved["password"], saved["access_token"]),
+                             (email, password, "MEMORY_ONLY"))
+        self.assertNotIn("PRIVATE-TOKEN", json.dumps([value for _, value in persisted]))
 
     def test_operator_seed_only_changes_room_configuration(self):
         bootstrap = configuration()["bootstrap"]

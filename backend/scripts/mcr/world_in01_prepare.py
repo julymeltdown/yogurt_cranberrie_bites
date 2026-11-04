@@ -8,12 +8,14 @@ directory; stdout and the external report contain paths and sanitized results.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import http.client
 import json
 import os
 from pathlib import Path
 import secrets
 import signal
+import threading
 import time
 from unittest.mock import patch
 from uuid import UUID, uuid4
@@ -36,19 +38,75 @@ def producer_profile(name="in01"):
 
 
 def provision_principals(stack, browser, profile, timeout_seconds=120):
-    """Real signup/mail/verify/login only; fail on normal admission refusal."""
+    """Real signup/mail/verify/login; bounded batches, no admission retries."""
     from world_capacity_support.report import number
     number(timeout_seconds, 1, 3600, "provision-deadline")
     spec = producer_profile(profile)
     deadline = time.monotonic() + timeout_seconds
     principals, canonical = [], set()
-    for ordinal in range(1, spec["principals"] + 1):
-        auth.require(time.monotonic() < deadline, "principal-provision-deadline")
-        item = principal(stack, browser, ordinal, deadline=deadline)
+    concurrency = 4 if profile == "qa08" else 1
+    progress = {"concurrency": concurrency, "started": 0, "completed": 0}
+    if browser is not None and isinstance(getattr(browser, "report", None), dict):
+        browser.report["principal_provisioning"] = progress
+
+    def retain(item):
         auth.require(item[0] not in canonical, "distinct-canonical-principals")
         canonical.add(item[0])
         principals.append(item)
         auth.require(time.monotonic() < deadline, "principal-provision-deadline")
+
+    if concurrency == 1:
+        for ordinal in range(1, spec["principals"] + 1):
+            auth.require(time.monotonic() < deadline, "principal-provision-deadline")
+            progress["started"] += 1
+            item = principal(stack, browser, ordinal, deadline=deadline)
+            progress["completed"] += 1
+            retain(item)
+        return principals
+
+    stop, lock, failures = threading.Event(), threading.Lock(), []
+
+    def create(ordinal):
+        try:
+            with lock:
+                auth.require(not stop.is_set(), "principal-provision-cancelled")
+                auth.require(time.monotonic() < deadline, "principal-provision-deadline")
+                progress["started"] += 1
+            # Browser.request owns a fresh connection and local headers/body;
+            # it has no cookie jar. Only distinct ordinal/status keys are shared.
+            item = principal(stack, browser, ordinal, deadline=deadline, cancel_event=stop)
+            with lock:
+                progress["completed"] += 1
+            return item
+        except BaseException as error:
+            with lock:
+                if not failures:
+                    failures.append(error)
+                stop.set()
+            raise
+
+    # Never queue the remaining 200 accounts. Drain each at-most-four batch
+    # before another starts, including on failure or an outer resource signal.
+    with ThreadPoolExecutor(max_workers=concurrency, thread_name_prefix="mcr-real-auth") as pool:
+        try:
+            for first in range(1, spec["principals"] + 1, concurrency):
+                auth.require(time.monotonic() < deadline, "principal-provision-deadline")
+                batch = [pool.submit(create, ordinal) for ordinal in
+                         range(first, min(first + concurrency, spec["principals"] + 1))]
+                results = []
+                for future in batch:
+                    try:
+                        results.append(future.result())
+                    except Exception:
+                        stop.set()
+                        if not failures:
+                            raise
+                if failures:
+                    raise failures[0]
+                for item in results:
+                    retain(item)
+        finally:
+            stop.set()
     return principals
 
 
@@ -79,8 +137,9 @@ def release_inputs():
     }
 
 
-def principal(stack, browser, ordinal, *, deadline=None):
+def principal(stack, browser, ordinal, *, deadline=None, cancel_event=None):
     def budget():
+        auth.require(cancel_event is None or not cancel_event.is_set(), "principal-provision-cancelled")
         auth.require(deadline is None or time.monotonic() < deadline, "principal-provision-deadline")
     budget()
     email = f"mcr-in01-{secrets.token_hex(12)}@example.test"
@@ -92,6 +151,7 @@ def principal(stack, browser, ordinal, *, deadline=None):
     delivery_deadline = min(time.monotonic() + 20, deadline) if deadline is not None else time.monotonic() + 20
     code = None
     while time.monotonic() < delivery_deadline and code is None:
+        budget()
         stack.cluster.assert_owned()
         for path in stack.mail.directory.glob("*.json"):
             auth.require(not path.is_symlink() and path.stat().st_mode & 0o077 == 0, "private-inbox")
