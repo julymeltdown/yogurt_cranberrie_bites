@@ -14,6 +14,16 @@ import { spatialV4LabelObstacles, spatialV4ZoomBottom } from './reference-scene/
 import { isMap4Presentation, map4LabelObstacles } from '../../../world/reference-scene/map4-service-v1/annotations'
 import { map4LocalZoom, map4ServiceTargets, packMap4Markers } from '../../../world/reference-scene/map4-service-v1/layout'
 import { currentComposition } from '../../../world/reference-scene/map4-service-v2/current'
+import approvedComposition from '../../../world/reference-scene/map4-service-v2/layout-source.json'
+
+const architecturalFrames = new Set(['meeting_pavilion', 'giveaway_pavilion', 'north_hall', 'west_hall', 'white_food_booth', 'white_merch_booth'])
+/** Map-only decoration footprints from the approved composition, never World collision bounds. */
+export function mapCompositionArchitectureObstacles(width: number, height: number) {
+  return approvedComposition.decorations.filter(row => architecturalFrames.has(row.frame)).map(({ rect: [x, y, w, h] }) => ({
+    left: x! / approvedComposition.dimensions.width * width, top: y! / approvedComposition.dimensions.height * height,
+    width: w! / approvedComposition.dimensions.width * width, height: h! / approvedComposition.dimensions.height * height,
+  }))
+}
 
 function LandmarkIcon({ interaction }: { interaction: string }) {
   if (/gifts?/.test(interaction)) return <ConcertIcon name="gifts" />
@@ -88,9 +98,10 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
     const interaction = map.geometry.interactions.find(p => p.place_id === id)
     return labelObstacles.find(label => label.interactionId !== null && label.interactionId === interaction?.interaction_id)
   }
-  const excluded = [...labelObstacles, ...obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top }))]
+  const excluded = [...labelObstacles, ...(qualifiedComposition ? mapCompositionArchitectureObstacles(width, height) : []),
+    ...obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top }))]
   const plaques = qualifiedMap4
-    ? packMap4Markers(annotationAnchors, width, height, [...excluded, ...(qualifiedComposition ? composition!.targets(image, width, height) : map4ServiceTargets(image, width, height))])
+    ? packMap4Markers(annotationAnchors, width, height, [...excluded, ...(qualifiedComposition ? composition!.targets(image, width, height) : map4ServiceTargets(image, width, height))], { preferAnchorProximity: qualifiedComposition })
     : referenceAnnotations(annotationAnchors.filter(point => !paintedLabel(point.id)), view, excluded)
   function select(id: string) { virtualOpeners.delete(controller); selections.set(controller, { mapHash: map.content_hash, id }); setSelected(id) }
   useEffect(() => {

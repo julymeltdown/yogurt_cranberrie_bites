@@ -1,0 +1,5 @@
+{
+  "extends": "../map-presentation-v2/tsconfig.json",
+  "include": ["./placement.test.ts", "../../../../features/places/ui/IllustratedMap.tsx"],
+  "exclude": []
+}

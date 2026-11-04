@@ -1,0 +1,19 @@
+{
+  "base": "d8c59c65bf563e7f270e4ca24d2011e4d9d48e22",
+  "paths": [
+    {
+      "path": "frontend/src/features/places/ui/IllustratedMap.tsx",
+      "baseSha256": "a655570fcaef239ee8ec72b876a881c2b76b03815b0a7fa08125588b7f076112",
+      "baseBytes": 19526,
+      "deliveredSha256": "eca4ef93e7a1d77a9e2334162be50783e78225bf6736c66b8cee44eb9bccff2e",
+      "deliveredBytes": 20472
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v1/layout.ts",
+      "baseSha256": "dca736587b618c04875616eecac1f6a6103fbb825295542fc941026cb685416b",
+      "baseBytes": 2288,
+      "deliveredSha256": "ca47c7aa2e5cda1c0679ffe6277f227a53f5c9781f1537fc9e7f19e4f0e9246a",
+      "deliveredBytes": 5241
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend
+
+ ❯ src/app/world-entry/__tests__/map-stage-placement/placement.test.ts (21 tests | 3 failed) 36ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 326×96 zoom -1 5ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 356×96 zoom -1 3ms
+   × keeps every canonical marker clear of approved buildings, labels, routes and controls at 396×96 zoom -1 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 326×96 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 356×96 zoom -1
+ FAIL  src/app/world-entry/__tests__/map-stage-placement/placement.test.ts > keeps every canonical marker clear of approved buildings, labels, routes and controls at 396×96 zoom -1
+Error: Map4 marker space unavailable
+ ❯ packMap4Markers src/world/reference-scene/map4-service-v1/layout.ts:45:23
+     43|       point = edges.find(available)
+     44|     }
+     45|     if (!point) throw Error('Map4 marker space unavailable')
+       |                       ^
+     46|     result.set(anchor.id, point); placed.push({ left: point.x - 22, to…
+     47|   }
+ ❯ src/app/world-entry/__tests__/map-stage-placement/placement.test.ts:54:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  3 failed | 29 passed (32)
+   Start at  03:03:51
+   Duration  1.68s (transform 317ms, setup 0ms, import 655ms, tests 380ms, environment 411ms)
+

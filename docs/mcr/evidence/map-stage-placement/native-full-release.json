@@ -1,0 +1,42 @@
+{
+  "lease": "MAP-STAGE-BROWSER2-20261104T1811Z",
+  "actualFullAt": "2026-11-04T18:12:27.797160+00:00",
+  "lastWorkAt": "2026-11-04T18:12:08.574Z",
+  "cleanupAt": "2026-11-04T18:12:09.313496+00:00",
+  "candidate": "1269f938dd34d427ebdcdf29e987662d5bbc6def",
+  "readsetSha256": "ea79170e49790415b6d5073deca007bd901a633ca9e6bebe9ba1356e6d0597ab",
+  "reportSha256": "7abeada6b23fdd2cb15c3410750b1e894d8a48a854f0cd1428a51678ecaea476",
+  "status": "FULL_RELEASED_ONE_NATIVE_CONTEXT_QUALIFIED",
+  "allKnownPids": [
+    89055,
+    89176,
+    89180,
+    89229,
+    89323,
+    89326,
+    89331,
+    89332,
+    89341,
+    89343,
+    89344,
+    89651
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "port": 5323,
+  "portReuseAddrBindPassed": true,
+  "peak": {
+    "processes": 10,
+    "rssBytes": 2315059200,
+    "newBytes": 72536747,
+    "tmpBytes": 29947185,
+    "wholeBytes": 1359849106
+  },
+  "final": {
+    "newBytes": 42618451,
+    "tmpBytes": 0,
+    "wholeBytes": 1329930810
+  },
+  "freeBytes": 18276249600
+}

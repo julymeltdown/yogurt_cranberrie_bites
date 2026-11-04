@@ -14,12 +14,12 @@ Use the supplied ten-screen reference and selected character pack. Retro styling
 
 | Queue | Immediate outcome | Current routing |
 | --- | --- | --- |
-| Contracts | C07 local outcome retained; hosted CI repair qualification, C04/C06 and changed-contract dispositions remain | CI50a8; World motion20f with Root C05 grants; Wall202; exact shared transfers through publishers |
+| Contracts | Hosted installation/QA01/C07 repair qualified; enrollment generated-input refresh and C04/C06 changed-contract work remain | Existing50a8 owns the enrollment generator follow-up after fresh checkout custody; World20f/C05, Wall202 and exact shared delegates retain their scopes |
 | Meet/Gifts | Real party, beacon, reservation and pickup through IN02; protected Gifts detail images | Party 19f83/backend 1fc; Gifts 53d/frontend 153; backend lead allocates remaining giveaway/media scope |
-| Social/Feed | Real consent, privacy and notifications through IN03; original FE31/35/36 completion | Backend Social16e/Auth207; frontend21e; Feed209; scoped Root caller owner |
-| Wall B | Controlled tools/default lifecycle delivered; live integration and IN04 remain | Backend202 and Root153; Community lead assigns returned FE39 leaves; duplicate735 retired |
+| Social/Feed | Real consent, privacy and notifications through IN03; remaining FE31/36 default entry; original FE35 client acceptance closed | Backend Social16e/Auth207; frontend21e; Feed209; scoped Root caller owner |
+| Wall B | Controlled tools/default lifecycle delivered; live integration and IN04 remain | Backend202 and Root153; Existing53d owns default Admin composition; duplicate735 retired |
 | Reference/World | AR03 original artwork closed; ART06 delivered; remaining map/reference and mobile fidelity | World/Map lead, art231/Map26e; FE17 Motion83 and backend20f; restored original QA06 developer; Profile213 owns FE34 |
-| Operations/recovery | Reports/settings, lifecycle, deletion and functional recovery | BE205/207 and deletion owners; FE37 owner230, FE38 owner092f; Community lead assigns FE39 and Root153 owns remaining caller integration |
+| Operations/recovery | Reports/settings, lifecycle, deletion and functional recovery | BE205/207 and deletion owners; FE37 owner230, FE38 owner092f; FE39/default Admin owner53d; Root153 delegates independent remaining callers |
 
 These are routing facts, not blanket file leases. Leads assign unowned remaining scope to capable existing developers. Independent composition pieces may be delegated after the previous writer stops; shared files are not reserved as one indivisible integration assignment. Backend and frontend use separate commits, exact paths and isolated worktrees. Contracts, manifests, lockfiles, root composition, CI and shared artifacts require explicit single-writer ownership.
 

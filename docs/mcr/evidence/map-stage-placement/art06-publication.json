@@ -1,0 +1,13 @@
+{
+  "receiptPath": "/private/tmp/mcr-root-art06-lifetime-publication-receipt.json",
+  "receiptSha256": "79d0d3a91c955c19cf1d4ab8c2702b4f05973cba27f68d8fbe7416d1d69309e2",
+  "source": "d8c59c65bf563e7f270e4ca24d2011e4d9d48e22",
+  "published": "609ae3932f22e3689637eb43074b6236ccb6c64f",
+  "remoteMaster": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+  "pathCount": 65,
+  "allScopedModesAndBlobsExact": true,
+  "map36PinsExactOnCanonicalRemote": true,
+  "presentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+  "verificationOwner": "Root153 publishing developer; no owner replay/ACK/proof commit required",
+  "scope": "Prior ART06 handoff only; current placement delta not yet qualified/published"
+}

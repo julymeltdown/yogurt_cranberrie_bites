@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-04T18:19:40.674402+00:00",
+  "reason": "Honor offered scoped deny-lint; remove retained unnecessary quote escape; include exact owned packing algorithm in lint paths. No product behavior/caps/clock/workload count change.",
+  "guardianSha256": "16474f41e46babe152be8782883deb21db8f3a7b35bb921264ef0bb40318ee7b",
+  "driverSha256": "ce4b06b7b2d76342858798ed908d61178a7728597f5cac07998e8adc1b4963eb",
+  "readsetSha256": "d9cd8b367f6a923240e35864b260ade1faf11db6aca9265b3134663e804790ef",
+  "originalAcceptance": "qualification-acceptance.json unchanged; same fixed300+60 lease; five serial commands"
+}

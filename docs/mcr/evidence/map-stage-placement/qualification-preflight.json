@@ -1,0 +1,21 @@
+{
+  "candidate": "7f62ac3dee65744c08a1496dc01a4564431c1faf",
+  "guardianSha256": "9324bc5020ad629820c1825cbfaeb48e1daa1d4b1f3ebb92c148512bc85dfb44",
+  "driverSha256": "eefe67d1a4fa4609ed721f4d12ca2e4ef0fb59e29a89f51a819ce12b207d63a8",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "readsetSha256": "d922f53cd53974ce1018d1ef1390a94140833e218873019543afda9ea4604ddf",
+  "checkoutBytes": 807936221,
+  "readOnlyDepsBytes": 408236853,
+  "gitReserveBytes": 33554432,
+  "wholeNonshrinkingFloorBytes": 1359849106,
+  "freeBytes": 17041281024,
+  "otherOutstandingWorstNewBytes": 2818572288,
+  "ownWorstNewBytes": 209715200,
+  "remainingMarginBytes": 14012993536,
+  "port": 5323,
+  "portFreeBind": true,
+  "tmp": "/private/tmp/mcr-stage-qualification-1818",
+  "checkedAt": "2026-11-04T18:19:17.506233+00:00",
+  "mode": "qualification",
+  "commands": 5
+}

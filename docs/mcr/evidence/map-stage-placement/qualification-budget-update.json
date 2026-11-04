@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-04T18:20:59.085709+00:00",
+  "lease": "MAP-STAGE-QUALIFICATION-B2-20261104T1818Z",
+  "otherOutstandingWorstNewBytes": 4429185024,
+  "source": "Social update: retained BE00c2GiB+Age2GiB immediatepotential,distinct-portProfile213128MiB; Root512unadmitted",
+  "freeBytes": 16886460416,
+  "ownWorstNewBytes": 209715200,
+  "remainingMarginBytes": 12247560192,
+  "minimumRemainingBytes": 9663676416,
+  "sameOriginalClock": true
+}
