@@ -36,6 +36,7 @@ tonic-prost-build.workspace = true
 [dev-dependencies]
 api-gateway = { path = "../api-gateway" }
 notification-service = { path = "../notification-service" }
+post-service = { path = "../post-service" }
 profile-service = { path = "../profile-service" }
 auth-service = { path = "../auth-service" }
 friend-service = { path = "../friend-service" }

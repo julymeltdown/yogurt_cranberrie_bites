@@ -2,14 +2,24 @@
 
 Status: IN_PROGRESS. No live read acceptance is claimed.
 
+Current gate: clean db25c4fa passed the single Concert library-test build and
+all eight actual five-owner PostgreSQL/mTLS native cases: list, detail, comments,
+privacy, Post outage, sealed root, lost actor admission and cursor-limit tampering.
+The comments case also rejects another parent before a new Post transaction.
+Each case used its own fresh five-database cluster, verified the exact migration
+ledgers and zero prepared work, and removed its owned root. Gateway HTTP body
+completion, media/links and additional restart/concurrency coverage remain open.
+No target or PostgreSQL instance is held. Master routing belongs to the designated
+integrator; no SL/King acknowledgment is a gate.
+
 ## Objective and completion criteria
 
 BE-PUBLIC-FEED-READ delivers event-scoped post list/detail and comment reads
 through the existing Post owner store, current actor/subject/event authority and
 actual C03 public-author projection. Completion requires implementation,
-meaningful guarded/native/HTTP validation, documented evidence, committed direct
-non-force master publication, remote ancestry verification and concrete review
-fixes. Post, comment and reaction writes remain required later work.
+meaningful guarded/native/HTTP validation, documented evidence, developer branch
+publication followed by designated-integrator non-force master routing, remote
+ancestry verification and concrete review fixes. Post, comment and reaction writes remain required later work.
 
 The chat has an incompatible unfinished historical BE13/BE14 goal. It remains
 truthfully blocked; this objective does not reset or falsely complete it.
@@ -104,3 +114,594 @@ Post qualified read admission/transaction settlement, actual public author
 producer integration and root HTTP composition remain required. Post/comment/
 reaction writes remain later required scope. This checkpoint is not C04 live
 feed acceptance, BE31/BE32 completion or IN01 acceptance.
+
+## Unpublished qualified producer source
+
+The branch now contains a concrete Post production composition, compiled at the
+checkpoint below. Concert policy/resources and the joined production path remain
+unqualified. The earlier 19 Rust cases cover only the published adapter checkpoint.
+
+Post request admission requires the sealed verified read proof, independently
+verified Concert caller, exact original actor/event/session/request/deadline and
+mandatory Auth/Friend views plus the opaque Concert root capability. Real mTLS
+clients check that root capability, enroll actual authors through the root's
+held local subject policy, and check actual independent Auth/Friend epochs,
+revisions, per-user security generations and block state. Every successful remote
+reply must carry cache-control:no-store. Missing metadata fails unavailable.
+The actual compiled canonical SDK prerequisite is published at `888cb6bd`.
+
+The four read query bodies now accept an already-open SQLx transaction. Existing
+public wrappers preserve validation and transaction ownership. Qualified reads
+capture PostgreSQL full xid, PID, backend start, cluster system identifier and
+database OID on the exact transaction passed into those query bodies. Existing
+row SHARE locks, per-row admission and checked_commit fences remain in place.
+No write or receipt access is granted by the concrete read authority.
+
+The new, exclusively allocated Post migration is
+`0032_concert_feed_read_tracking.sql`; its module source is `read_tracking.sql`.
+A separate committed control transaction records the exact actual identity and
+root binding before Track. Each owner's attempt is committed before its call,
+and each received acknowledgement is committed before continuing to the next
+owner. Protected reads and the same-transaction witness start only after both
+acknowledgements are durable. The producer pool needs at least two connections.
+The producer role needs explicit permission to read pg_control_system. Missing
+schema/permission fails closed; there is no runtime DDL or URL identity fallback.
+
+A lost Track acknowledgement remains an attempted registration, not an abort.
+Only the authenticated actual owner may request settlement, using the exact
+stored identity/binding and its durable registration reference. Actual PostgreSQL
+ABORTED can resolve a lost acknowledgement without requiring the locally
+received UUID. COMMITTED additionally requires the exact committed witness.
+Missing witness, forgotten xid, unavailable or different store, different process
+instance and any uncertain outcome remain UNKNOWN. Post never supplies positive
+scope-absence evidence: the separately retained Concert root must seal its exact
+scope and finish the actual Gateway HTTP response before owner release.
+
+The positive generated services have a guarded-only constructor. The dedicated
+four-method service requires whole-envelope Concert-to-Post actor delegation;
+the shared settlement service admits only Auth/Friend. The original six-method
+PostConcertFeedService remains unavailable. No fixture authority constructor or
+configuration fallback is introduced. Links/media remain unavailable until their
+actual owner authority is qualified; that gap cannot be filtered into false empty
+success.
+
+Concert feed policy/resources source remains unexported and uncompiled, pending
+the actual joined PublicProfile reader. The generic comment filtering adapter
+is exported for its independent adapter test, but is not compiled yet. Policy and projection
+share the same retained local child guard; they do not open a second relationship
+pair transaction. Comment filtering validates the complete raw owner batch before
+filtering authors and retains the original scan boundary. The viewing actor's own
+profile need not be public. Actual public-author projection is still required.
+
+The qualified importing IDL and Post two-pass build are on this task branch.
+The composer delegated the exact Post build path and owns matching Concert/root
+composition. Remaining Concert exports/compilation, real guarded transport,
+joined HTTP acceptance and final direct publication remain open. The Post
+compilation and native storage-only results are recorded below. No live Feed,
+BE31/BE32 or IN01 acceptance is claimed by these source changes.
+
+The task also contains a scoped Concert-to-Post transport using the dedicated
+signer, fixed Post mTLS identity, all four qualified envelopes and the original
+scope deadline. It supplies the actual scope views/root capability and requires
+no-store responses. Mutation and receipt methods retain unavailable defaults.
+
+Five authored native Post storage cases cover a lost Track acknowledgement
+followed by actual rollback, committed-without-witness refusal, and durable
+acknowledgement ordering plus exact same-transaction committed witness, and
+expiry maintenance that preserves live/unknown outcomes. These
+explicitly use fixture acknowledgements to test the producer store; they cannot
+qualify real owner exclusion or guarded HTTP. They require an explicitly leased
+PostgreSQL controller; their actual storage-only execution is recorded below. The frozen runner's
+--post-native-storage mode pins one exact library binary/source inventory and
+executes all five exact cases, refusing zero execution or skipped success.
+Its ten Python preflight cases pass. Concurrent qualified reads reserve a
+bounded half-pool permit before opening their protected connection, leaving
+control connections for durable acknowledgement writes.
+
+Owner Check/Track transport failures and invalid root capabilities fail the whole
+read. Only explicit checked eligibility/block facts or the root callback's
+reserved NOT_FOUND subject-denial response are filterable; an invalid guard
+cannot manufacture an empty successful page. Qualified comment scans reserve
+one nonactor subject slot for the parent author, scanning at most 99 rows with
+real SQL lookahead while keeping the public requested limit/cursor binding.
+Expired pending records are examined in bounded batches against actual owned
+PostgreSQL status; only proven aborts or commits with the exact witness free
+pending capacity. Expiry never supplies an outcome or releases an owner guard.
+Different producer instances remain unknown and require explicit recovery.
+
+The fifth authored storage case uses 101 distinct comment authors at equal
+creation timestamps, with denied authors at both the first row and scan boundary.
+It checks actual SQL 99-row scans plus lookahead and continuation for no skipped
+or duplicate eligible records; the public requested limit remains 100. Its
+cfg(test)-only lock-holding policy fixture does not qualify canonical exclusion.
+Future before dates are accepted under the frozen query schema: cursor AAD keeps
+the original value, while the first internal snapshot is clipped to current time.
+The adapter case verifies fixed-snapshot continuation and rejects changed before
+bindings. These new Rust assertions still require actual execution.
+
+The pending adapter inventory is now 20 Rust cases (9 facade/filter, 8 Post
+codec/registry, 3 wire), distinct from the historical 19-case published receipt.
+The additional case preserves a filtered comment scan boundary and checks that
+a projection outage, malformed public author or foreign-parent raw batch cannot
+be hidden by author filtering. No new Rust PASS claim is made before execution.
+The native runner requires --native-config private JSON tied to the disposable
+controller marker/token, directory inode and exact socket-only database URL.
+Rust fixtures independently check those bindings and actual server directories
+before creating their isolated schema.
+
+SDK2 prerequisite `c4ad561c` is now consumed from published master. Static
+comparison confirms the scope/view/subject APIs used by this Feed slice retain
+their signatures. SDK2 adds durable child recovery intents and separates its
+settlement mutex from admission; this Feed slice does not implement HeldChildGuard
+or supply a ScopeLifecycle. Those root/Profile implementations remain with their
+owners. The merge changed no owned Feed/Post producer source. No Cargo target or
+PostgreSQL controller was allocated or accessed for this compatibility check;
+this compatibility check itself did not execute Rust, native or joined HTTP checks.
+
+
+## Qualified Post compilation and native storage checkpoint
+
+Exact clean source: `4552ccf95695d8a3ff311a3a65b9a767e27ecba0`.
+The Post build isolates canonical authority messages in `OUT_DIR/owner_authority`
+before generating importing services. This prevents tonic's imported service pass
+from overwriting the canonical message output. The transport can access its
+crate-private read admission module. No default toolchain, dependency install or
+additional target was used.
+
+Rust 1.88 with the existing MEDIA target, locked/offline jobs 2, dev/test debug 0
+and incremental 0 compiled Post's library and `concert_feed_live_read` integration
+binary with **zero warnings**. The copied executables passed the exact eight Post
+adapter cases and three owner-client cases. This is not the unexecuted 20-case
+Concert/Post/wire inventory. MEDIA was unconditionally released after copying
+both binaries and 1,511 pinned source files and verifying zero open target
+handles. Native execution subsequently used only the external copies.
+
+The five exact ignored native storage cases then executed individually against
+an exclusively owned PostgreSQL 16.14 socket-only instance: **5 passed, zero
+failed or skipped**. Actual full-xid status, missing/exact committed witness,
+lost acknowledgement, durable owner acknowledgements, expiry maintenance and
+the filtered 99-row comment continuation were exercised. Fixture owner
+acknowledgements and the test-only policy do not qualify real canonical owner
+RPCs, exclusions, root composition or Gateway HTTP response completion.
+
+The controller verified zero prepared transactions and zero leftover test schemas,
+stopped and removed its marker/token/inode-bound instance, and removed its private
+connection configuration. Cleanup: **PASS**. No shared PostgreSQL instance or
+foreign data directory was used.
+
+External evidence: `/private/tmp/mcr-feed-qualified-20261104/` contains
+`post-v3-cargo.jsonl`, `post-v3-cargo.stderr`, `post-binaries.json`,
+`source-manifest.json`, `post-checkpoint.json`, `native-binaries.json`,
+`native-report.json` and `native-controller-report.json`. Native report SHA-256:
+`e73c97c6f92222c1ba61bb0e27c5f733c0ff6b11e14dd34e76a37114d1064f31`.
+The copied library SHA-256 is
+`522912cbd9e50159fb0afc7920022ab647a38fc3d59722ced6f0e94702d76c74`;
+the copied integration binary SHA-256 is
+`3495bc1b7c518ebe9828b0cbfbe10d0f7b2db04dc967b93c97358ac2a0e3be79`.
+
+Real guarded integration and live HTTP remain **NOT_RUN**. Before publication,
+the importing Post IDL also requires the coherent Concert build/include fix owned
+by participant `01a1a209-80da-7e53-a295-b64cfe09c1d7`; publishing it alone would
+expose the same canonical overwrite in Concert. The remaining independent
+Concert nine adapter cases and three wire cases need their own fresh target lease.
+No live Feed, BE31/BE32 or IN01 acceptance is claimed.
+
+
+## PublicProfile dependency consumption
+
+Published PublicProfile increment `9119073a` is consumed by merge `067e18e6`.
+The merge preserved the owned Feed/Post source byte-for-byte. Feed policy and
+resources are now exported with `QualifiedReadFeed::connect`, which composes the
+actual scoped Post transport, current PublicProfile reader and author-filtering
+adapter. This is source only until a fresh Concert compile and joined checks.
+The constructor accepts a real retained OwnerGuardScope, fixed Post mTLS identity,
+its dedicated read signer, current reader and dedicated cursor codec. Root still
+owns actual HTTP completion and settlement; this constructor does not register
+or enable a product capability.
+
+A denial ambiguity was found during integration: the SDK uses PermissionDenied
+for both ineligible subjects and sealed/stale/mismatched scopes. Feed now treats
+PermissionDenied from the SDK as a whole dependency failure; only reserved
+NotFound may filter an unavailable nonactor subject. SDK owner `01a1a207` has the
+request for a distinct true-subject-denial result. PublicProfile owner `01a1a205`
+has the matching correction request for its current broad PermissionDenied to
+ResourceUnavailable conversion. Until corrected, that upstream mapping remains
+a qualification blocker. No invalid whole scope may become an empty successful
+feed response.
+
+
+## Native Post join dependency
+
+Root composer `01a1a1fc` granted exactly one Concert dev-dependency and its
+existing lockfile dependency edge. Commit
+`8496730c9abb93cdb0b1cd4d9d4f18b36e954386` adds
+`post-service = { path = "../post-service" }` under Concert dev-dependencies and
+`post-service` to Concert's existing Cargo.lock package entry. No package,
+version, feature or other manifest/lock input changed. TOML parsing, existing
+package/path checks and `git diff --check` passed; no Cargo target was accessed.
+This enables source composition of the actual Post runtime in the owned native
+Feed tests. It is not compile or joined runtime evidence. The actual root
+callback implementation and coherent participant-owned three-pass Concert
+generation fix remain prerequisites. No substitute positive authority or root
+constructor is claimed.
+
+
+## Concert generation prerequisite consumed
+
+Merge `afa7cc2e44bf0c4c982459b807ae32da4449548e` consumes participant owner's
+published `cb057d43fb4535c4a9b5867f228caef64e5b556b` generation fix. Canonical
+lease output and its guarded include both use `OUT_DIR/owner_authority`; the
+main pass generates SELF alongside the importing Post service, and the separate
+Participant pass uses its own output directory with explicit external package
+paths. Static inspection and ancestry verification passed. The merge preserved
+all owned Feed/Post producer and adapter test source bytes. The participant
+owner's compilation does not qualify this branch's importing Post IDL.
+
+A short existing-target lease is requested for the exact three integration
+executables: nine Concert facade/filter, eight Post adapter and three wire cases.
+This will also compile the newly exported real policy/resources/read composition.
+No shared target has been accessed while queued. Real guarded/HTTP checks remain
+NOT_RUN, and the unpublished SDK/PublicProfile denial fixes are not yet consumed.
+
+
+## Real native join staged
+
+Root's published `95afbfc9` is now consumed by merge `ca35b63c`. Its actual
+source-bound operator constructor qualification is separate from Feed acceptance.
+Duplicate source-cherry conflicts were resolved by retaining the root's published
+operator files verbatim. Feed/Post source was unchanged by that merge.
+
+Own commit `635d7efe` stages a real five-owner native component case under
+`feed/native_join`: actual signed Gateway parent, canonical Auth/Friend mTLS owner
+stores, root ledger and subject callback, local Concert prepared transactions,
+actual Profile projection, and qualified Post runtime/settlement. The fixture uses
+the public source-bound ProductReleaseBundle constructor and real
+PublicProfileReader::connect; it does not copy the private product-art bypass.
+Copied helpers retain source SHA-256 provenance from PublicProfile `db92f895` and
+canonical `3e22615e`. The signed parent uses the actual release event.
+
+The task-owned native controller creates five exact databases and private mTLS
+certificates under one marker/token/inode-bound PostgreSQL instance. It pins the
+copied library and complete relevant source/resource hashes, runs the exact
+ignored case, requires zero remaining prepared work and verifies migrations,
+then stops/removes only its owned cluster. Its report always marks live HTTP
+NOT_RUN. The Rust case and controller have not executed: **NOT_RUN**; formatting,
+Python syntax and diff checks alone are not compilation or native evidence.
+A separate library-test compile is needed for this cfg(test) component in
+addition to the queued 20-case adapter build. No target or PostgreSQL lease is held.
+
+
+## Canonical denial dependency evidence
+
+The current consumed SDK `scope.rs` is byte-identical to both published status
+fix `b0c95de3` and the owner's compiled clean `e5f922dd` snapshot. Direct inspection
+of `/private/tmp/mcr-canonical-denial-swldhben/native-report-1.json` confirms five
+actual native phases passed, including `subject_denial_never_masks_whole_scope_failure`.
+Owned-cluster cleanup passed and its root was absent. Report SHA-256:
+`6e1242c2f81e20a4282521942574fbb168b08b00e7e8d6c602e606426656be9c`.
+
+The overall report is **FAIL**, because a sixth Product error fixture did not
+reach producer dispatch; that owner is diagnosing it. The five bounded passing
+phases do not qualify that error wrapper, outer HTTP, or this Feed join. Our
+three adapter executables and five-owner native component still need fresh
+compilation/execution; no PASS is inferred from unchanged dependency bytes.
+Native Feed source inventory now also explicitly pins the character registry;
+a read-only check found 1,945 source/resource hashes including the real release,
+map/source binding, PNGs and Post tracking migration, with no database started.
+
+
+## Current PublicProfile join failure
+
+The PublicProfile owner compiled exact `d8eb13bf` and reports 22 copied component
+checks passing, but its first actual reader join failed with exit 101 at the
+viewer's local policy (`DependencyUnavailable`), before author projection. The
+second joined case did not run. Direct inspection confirms the overall report
+is FAIL, `joined-owner-reader-hold` exited 101, and the owned server stopped and
+root was removed. The report is
+`/private/tmp/mcr-public-profile-frozen-y3epk5s_/native-report.json`, SHA-256
+`812bd19d77adfde991e9506bcc9959c68eebbde82c38e1b3dbc5a1bb899a7d0c`.
+
+The configured prepared-transaction capacity was 256, so a lower controller limit
+has not explained this failure. PublicProfile owner `01a1a205` owns the focused
+cfg(test) diagnostics at source `31691c4d` and the actual fix/qualification.
+This is a concrete shared-path blocker for our five-owner native Feed case,
+which uses the same real local-policy reader. Its failure has not been
+reproduced or diagnosed by this Feed task. No Profile, Post/callback or HTTP join
+acceptance is inferred from the constructor or 22 component checks. The separate
+three-target adapter build remains ready; no resource is held awaiting this fix.
+
+
+## Failed reader reproduced without a rebuild
+
+Feed reran only the failed reader case from the owner's exact copied `d8eb13bf`
+library (SHA-256
+`7de7960a470bd48b9eafaed769b60e8dde5a652b6fcc0da086a64756f27b57fa`).
+All 665 runtime migration/resource inputs selected from the owner's pin were
+verified unchanged. A fresh owned socket-only PostgreSQL instance used capacity
+256 and logged error statements. The same case exited 101; cleanup passed.
+No shared target or foreign database was accessed.
+
+PostgreSQL reported SQLSTATE `23514`, `relationship authority expired`, at
+PREPARE TRANSACTION. Its context was the deferred
+`concert_relationship_deadline_guard()` in migration 0006. That trigger requires
+the transaction-local `mcr.relationship_authority_until`; current PublicProfile
+local budget setup only installs `statement_timeout`. The fix belongs to owner
+`01a1a205`: bind the owning transaction setting to the already-held original
+scope/owner deadline, preserving the guard and migration. No new deadline,
+trigger bypass or migration edit is authorized by this finding.
+
+Diagnostic receipt and private logs are external at
+`/private/tmp/mcr-feed-qualified-20261104/profile-sql-diagnostic/`. This is an exact
+failure reproduction, not passing qualification. Its controller removed only its
+marker/inode-bound owned cluster. The five-owner Feed join remains NOT_RUN until
+the owner's real fix and a fresh Feed build/execution.
+
+
+## Current 20-case adapter checkpoint
+
+Exact clean source `236a283937b391104fe4ba09222edf4c134a2cef` compiled the three
+integration targets with Rust 1.88, locked/offline jobs 2, dev/test debug 0 and
+incremental 0. This includes the importing Post protocol and exported real Feed
+policy/resources/read composition against consumed root and PublicProfile source.
+The compile passed with zero errors and zero Feed/Post warnings; 16 warnings
+belong to peer World/Party paths and are recorded separately in `warnings.json`.
+The lib unit-test target was not compiled by this narrowly allocated run.
+
+Fresh free disk was 52,446,256 KiB. Within the explicitly allocated BACKEND target,
+only the stale contracts-build package was cleaned (20 files, 816.3 KiB), then the
+build finished in 28.64 seconds. Cargo JSON, 1,584 source files and all three
+executables were copied outside the target. An actual zero-open-handle check
+preceded unconditional release; there was no subsequent target access.
+
+The frozen runner then executed exactly **20 passed, zero failed/ignored/filtered**:
+nine Concert facade/filter cases, eight Post adapter cases and three wire cases.
+Future-before fixed snapshots and the raw-batch author-filter boundary case are
+now executed, superseding their previous NOT_RUN labels for this exact snapshot.
+The actual owner/HTTP/native join remains NOT_RUN in this adapter report; it does
+not qualify the staged cfg(test) five-owner library case or PublicProfile's
+uncompiled local deadline correction.
+
+External evidence: `/private/tmp/mcr-feed-adapter-current-20261104/` contains
+`cargo.jsonl`, `cargo.stderr`, `binaries.json`, `source/`, `source-manifest.json`,
+`warnings.json`, `target-handles.json` and `adapter-report.json`. Report SHA-256:
+`ba8ed3a5731574fedaf32b23f65c438cb9faef863842831d579570551b2c4c47`.
+The historical Post-only native five-case result remains tied to `4552ccf9`.
+No positive native/HTTP acceptance or target ownership is carried forward.
+
+
+## Narrow deadline fix consumed
+
+PublicProfile owner `01a1a205` explicitly granted the exact eight production
+lines from `c04070be` with the existing unavailable error mapping for this
+consumer. Commit `6d9ef8c436732e208a51142429e4659f0443c4e4` changes only
+`public_profile/local.rs`: it pins the exact sealed absolute expiry through the
+existing relationship::pin_deadline helper before PREPARE. The existing SQL
+helper takes the least of current and supplied deadlines. No diagnostics,
+private fixture, migration or trigger change was imported, and ongoing path
+ownership remains with the PublicProfile owner.
+
+Consumer file SHA-256:
+`328a355ec2782e27208e2044c25447fea142654fcb013493efdbb99823f5ba22`.
+Formatting and diff checks passed. Rust/native checks for this changed source are
+NOT_RUN; the earlier adapter result qualifies the unchanged `236a2839` snapshot.
+The next bounded request is a single Concert library-test build, followed by
+frozen copies and a separate owned PostgreSQL run after unconditional target
+release. No prior target grant is retained or reused.
+
+
+## Fixed PublicProfile dependency now qualified
+
+The owner's fresh focused `c04070be4219e381bd2bf2d132ac1a17a4adc73e` report and
+pin were read and hash-verified. Real PostgreSQL 16.14/mTLS with the production
+reader passed the authority mapper, actual held-reader case and the nine-scenario
+local/Profile denial case: three exact cases, exit 0. Cleanup reports the owned
+server stopped and root absent; the owner reports zero prepared work and zero
+forced rollbacks. This resolves the owner's earlier PREPARE deadline failure for
+that exact snapshot; our consumer adaptation still needs its own build/run.
+
+Evidence: `/private/tmp/mcr-public-profile-frozen-dy94cel9/pin.json`, SHA-256
+`d779cf1f00da7447d0976381fd6b3101263fc9ac9099e5a60202b338cdb6d4ba`;
+`native-report.json`, SHA-256
+`47d795fc75696236ad0544ef3e792f94806bb60333dcfe41807ba381d1facf55`.
+No full Feed/C04/Gateway HTTP acceptance follows from those dependency cases.
+
+The Feed native signed-parent fixture now uses an empty HTTP GET body and its
+matching digest, preserving the release event and actual Gateway signature
+verification. The single Concert library-test build remains queued under a fresh
+explicit target allocation; no target or PostgreSQL instance is retained.
+
+
+## Published PublicProfile handoff consumed
+
+Merge `049540cce327feba88543434e0861a5d679963f5` consumes the published
+PublicProfile handoff `5ca13d4493ee9eb78675256cb2f6e58f7ac59a48`. The one local
+budget conflict was resolved by retaining the owner's published local.rs bytes,
+including its existing diagnostics and exact sealed-deadline fix. Its SHA-256 is
+`3e5929ebe1a84ba7ad7ea6964add410f939ba1f29bbdfbfc72fe840518ed8d4c`;
+comparison against the published owner commit passed. All owned Feed/Post source
+and test bytes were unchanged by the merge.
+
+The fresh dependency runtime receipt remains tied to the owner's `c04070be`
+snapshot. The merged source is not a new compile or runtime result. It is ready
+for the separately requested one-library Feed build and frozen native execution;
+no target grant or PostgreSQL instance is held. Peer evidence-log whitespace
+was preserved during reconciliation and is outside this task's authored paths.
+
+
+## Five-owner library build and first real Feed attempt
+
+Exact clean source `404499731b2d2ff11dafc1402cb0bcc95a11e595` passed the
+single Concert library-test build with Rust 1.88, locked/offline jobs 2,
+dev/test debug 0 and incremental 0. The retry after the evidenced stale
+contracts-build helper was cleaned completed in 40.82 seconds with zero owned
+Feed/PublicProfile warnings and 11 peer World/Party warnings. The compiler
+receipt and executable were frozen outside the allocated target; zero open
+handles and unconditional BACKEND release preceded PostgreSQL execution.
+No target lease remains.
+
+Evidence directory: `/private/tmp/mcr-feed-native-current-20261104/`.
+Copied executable SHA-256:
+`50e567e96d4dd223b4f328e0efbdc73d60b47cf242390bae28fd9ea73d96571b`.
+The first native attempt failed at actual source-bound release construction;
+its manifest omitted two Markdown provenance inputs. Cleanup passed, with the
+owned root absent. That failed report remains unchanged, SHA-256
+`f26d95810400f5c4f3200836a1fa4c46d257300f009698cd3e288b62afb4cfc3`.
+
+Controller fix `037e3ce5ff941f306cbc5d76f4831828333709eb` inventories every
+resource named by source-binding.json, verifies its byte count and SHA-256,
+and rejects paths escaping the public root regardless of extension. Four
+controller preflight regressions pass. The corrected frozen set has 2,447
+files, including the two omitted Markdown files. Comparison against all 2,445
+original inputs confirms only the two controller Python files changed; no
+Rust, manifest, protocol, migration or embedded resource changed. The same
+40449973 executable was reused, with separate binary/controller source pins.
+
+The corrected attempt reached the actual Feed read and failed with
+DependencyUnavailable, exit 101. This is a real failure, not native acceptance.
+Private PostgreSQL 16.14 was removed successfully. Evidence directory:
+`/private/tmp/mcr-feed-native-packaging-20261104/`. The diagnostic runs retain
+private PostgreSQL logs outside the removed cluster. They show the actual actor
+local PREPARE succeeds before the request fails; there is no protected Post
+read SQL. Report SHA-256:
+`1fa714fa388a9d10708509f5518e9aa87659d526af8cfd1fc7309665b33dacb7`.
+Further RPC diagnostics are required to identify the rejecting boundary.
+Actual Gateway HTTP completion remains NOT_RUN.
+
+## Delegated exact callback frame repair
+
+The root composer explicitly granted the single platform capture seam and a
+new tightly scoped regression file after confirming the mismatch: the root
+callback requires VerifiedParentAuthority, but the verifier previously installed
+that extension only for Gateway calls. Commit
+`2b6499654da1b1ba611ded38979b0bff3e332268` captures the exact already-verified
+Post-to-Concert CheckSubject frame only for nonforwarded calls with a live
+VerifiedReadAuthority and original caller deadline. Existing Gateway capture
+rules and the root handler remain unchanged. Additional regression commit
+aef031b4 confirms other signed Post paths receive no callback extension.
+
+The three focused platform cases use the existing reserved method policy,
+workload guard and dedicated callback verifier. They cover exact frame/actor/
+original deadline, wrong caller/path/body/actor, forwarded proofs, missing
+original deadline, and noncallback Post routes. Formatting and diff checks pass;
+Rust execution remains NOT_RUN until a fresh bounded platform plus Concert
+library build. Test-only Feed diagnostics distinguish actor policy from complete
+Post transport failure. The Post adapter now treats PermissionDenied as a whole
+read dependency failure; only explicit NotFound remains resource absence.
+
+
+## Qualified callback repair and real five-owner list read
+
+Exact clean source `2d7f1b3a29a5fca3abe7d05b529312558868d602` compiled exactly
+platform and Concert library tests with Rust 1.88, locked/offline jobs 2,
+dev/test debug 0 and incremental 0. Fresh preflight found 22,090,956,800 free
+bytes, no Cargo/rustc processes and zero handles in the freshly accepted MEDIA
+target. The first attempt evidenced an old be-age-runtime contracts-build
+absolute proto path. Package-only cleanup removed 20 files, 816.4 KiB; the same
+two-library retry passed in 42.11 seconds with zero owned Feed/platform warnings
+and 11 peer World/Party warnings. No source fix or target expansion was needed.
+
+Both Cargo JSON-selected executables, 2,448 source/resource files, compiler JSON
+and warnings were frozen outside the target. Actual lsof reported exit 1 with
+no handles or stderr. MEDIA was unconditionally released before any copied
+executable or PostgreSQL run; no subsequent target access occurred.
+
+Exactly three copied platform callback cases passed: signed dedicated callback
+with exact frame/actor/original deadline; wrong caller/path/body/actor rejection;
+and forwarded/unbounded/noncallback proof rejection. The copied Concert Post
+error-mapping regression passed too: explicit NotFound remains resource absence,
+while PermissionDenied, unauthenticated, unavailable and expired authority fail
+the whole read. All four exact cases report zero failures and zero ignored cases.
+
+The copied Concert native case then passed against the owned five-database
+PostgreSQL 16.14 cluster using actual mTLS services, real Auth/Friend stores,
+actual Concert root callback, real current PublicProfile reader and qualified
+Post producer. It verifies actual stored Post content/current C03 author with no
+private URL canary, same-transaction Post tracking, and Auth/Friend/Concert/Profile
+prepared exclusions still present after C04 JSON assembly. Explicit component
+serialization/response completion settles the guards and leaves zero prepared
+transactions. All five exact migration ledgers match: Auth 17, Friend 17,
+Concert 24, Profile 9 and Post 32. The controller stopped and removed only its
+owned cluster; root absence was independently verified after return.
+
+This supersedes the preceding failed native attempt only for the exact new
+snapshot and list component path. It does not qualify actual Gateway HTTP body
+completion, detail/comments, media/links, other filters, negative-path or process/
+PostgreSQL restart behavior. The temporary platform capture seam was returned
+directly to the root composer with these qualified source commits and receipts.
+
+Evidence: `/private/tmp/mcr-feed-root-capture-v2-20261104/`.
+
+- Focused four-case report SHA-256:
+  `fc51d4228fc4b1f1dc3939a44844db128ade22e54b95a47e9d80d7bd028d2cb7`.
+- Native report SHA-256:
+  `df22917d0f7089687d59eb303efbf49e69f326c053daf2b2a3f61a41aa962dc4`.
+- Platform executable SHA-256:
+  `bd34d902377b500342075acea3a68167e76b76bf2b92e9dc243d9f0718332ced`.
+- Concert executable SHA-256:
+  `4924f9fa32766b92ac3c9a305514f0157e63cb95b2eb0b111ad54e3556f1bc9a`.
+- Native checkpoint SHA-256:
+  `0efa47fee7bec4ff6ae359322a318fd731634ad81b093af6d36ad73808045cd3`.
+
+
+## Eight actual native read and denial cases
+
+Exact clean source `db25c4fa7db65f5f20b53ee995326b00aec029d3` passed the freshly
+allocated single Concert library-test build with Rust 1.88, locked/offline jobs 2,
+dev/test debug 0 and incremental 0. Preflight recorded 9,897,947,136 free bytes,
+no Cargo/rustc processes and zero target handles. The first attempt evidenced a
+cached contracts-build helper pointing at be-social-remaining. Package-only
+cleanup removed 20 files, 816.4 KiB. The same one-library retry passed in 35.04
+seconds with zero owned Feed warnings and 11 peer World/Party warnings. There
+was no platform test target, workspace expansion, dependency install or broad
+cleanup.
+
+The Cargo-selected Concert executable, 2,449 source/resource files and compiler
+JSON were frozen outside the target. Actual lsof returned exit 1 with no handles
+or stderr; MEDIA was unconditionally released before the copied native runner.
+Free disk at release was 9,055,817,728 bytes. No target access followed release.
+
+The copied controller ran eight exact cases, each in a separately initialized
+owned PostgreSQL 16.14 five-database cluster with its own marker, inode, socket and
+PKI. Every case reports one passed, zero failed and zero ignored; the other 83
+library cases are explicitly filtered by the exact-case invocation. Aggregate:
+**eight passed, zero failed, zero ignored**. These are component cases rather
+than a claim that all library tests ran.
+
+- List returns actual Post content, current C03 author and same-transaction owner
+  tracking, with Auth/Friend/local/Profile exclusions held after C04 assembly.
+- Detail returns the actual parent and its stored comment with current authors.
+- Comments returns the current parent-bound comment and rejects a different
+  parent without another tracked Post transaction.
+- A private author is filtered only after an actual Post scan; the stored row
+  remains present, so the empty result is a current privacy decision.
+- An unavailable Post endpoint fails the whole read, rather than yielding an
+  empty page, and performs no protected Post transaction.
+- An already finished/sealed root cannot authorize a subsequent read.
+- Removing the actor's actual admission fails before protected Post work.
+- Actual Post lookahead produces an opaque cursor; changing its limit is rejected
+  before another Post transaction.
+
+Each case verifies zero prepared transactions after explicit component response
+completion and all five exact migration ledgers: Auth 17, Friend 17, Concert 24,
+Profile 9 and Post 32. Each controller stops and removes only its owned cluster.
+All eight root paths were independently checked absent after return. No target
+or PostgreSQL instance remains held. The earlier three platform callback and
+Post-denial regression receipts remain tied to their unchanged 2d7f1b3a source;
+that platform seam was already returned to the root composer.
+
+Evidence: `/private/tmp/mcr-feed-native-eight-v2-20261104/` contains frozen
+source, executable, Cargo JSON, build/handle receipts, checkpoint, native report
+and an independently verified eight-case receipt.
+
+- Native report SHA-256:
+  `f5e904b3386a34b5f4266ba6d4414b131d920c402d62bdb92d8c73bf097ce4a2`.
+- Concert executable SHA-256:
+  `b69d1442fc49c61be1ee9d533b43994c45ac6bb7a5db04a23c5ace95e50a6d49`.
+- Native checkpoint SHA-256:
+  `3fc1dab72ded00c746a8a8dd87fc07deaaaca925ab43b721bcb5120b9dc0c94b`.
+
+Actual Gateway HTTP body completion and main-process startup remain unqualified
+by this runner. Media, links, non-ALL filter authority, further concurrency and
+process/PostgreSQL restart qualification remain separate obligations. Neither
+the native component finish hook nor these passing tests enables product flags,
+legacy handlers, writes, reactions or receipts.

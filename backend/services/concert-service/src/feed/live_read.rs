@@ -112,13 +112,10 @@ impl<R: PostReader + CommentReader, P: FeedPolicy, S: FeedResources, C: Clock>
         cursor: Option<&str>,
         now: DateTime<Utc>,
     ) -> Result<Window, FeedError> {
-        if binding.before.is_some_and(|before| before > now) {
-            return Err(FeedError::InvalidInput);
-        }
         match cursor {
             Some(cursor) => self.cursors.open(binding, cursor, now),
             None => Ok(Window {
-                upper: binding.before.unwrap_or(now),
+                upper: binding.before.unwrap_or(now).min(now),
                 after: None,
             }),
         }

@@ -226,7 +226,8 @@ async fn caller_cancellation_drops_pending_owner_read_before_deadline() {
     assert!(state.dropped.load(Ordering::SeqCst));
 }
 #[tokio::test]
-async fn invalid_limit_and_future_before_do_not_call_owner() {
+async fn invalid_limits_deny_before_owner_and_future_before_preserves_snapshot_and_cursor_binding()
+{
     let context = context();
     let state = State::new(context);
     let service = facade(state.clone());
@@ -239,10 +240,6 @@ async fn invalid_limit_and_future_before_do_not_call_owner() {
             limit: Some(101),
             ..Default::default()
         },
-        FeedQuery {
-            before: Some(chrono::Utc::now() + chrono::Duration::seconds(1)),
-            ..Default::default()
-        },
     ] {
         assert_eq!(
             service.page(context, query).await,
@@ -250,4 +247,97 @@ async fn invalid_limit_and_future_before_do_not_call_owner() {
         );
     }
     assert_eq!(state.calls.load(Ordering::SeqCst), 0);
+    state.more.store(true, Ordering::SeqCst);
+    let before = chrono::Utc::now() + chrono::Duration::days(1);
+    let start = chrono::Utc::now();
+    let first = service
+        .page(
+            context,
+            FeedQuery {
+                before: Some(before),
+                ..Default::default()
+            },
+        )
+        .await
+        .unwrap();
+    let snapshot = state.last_window.lock().unwrap().unwrap();
+    assert!(
+        snapshot.upper >= start && snapshot.upper <= chrono::Utc::now() && snapshot.upper < before
+    );
+    let cursor = first["next_cursor"].as_str().unwrap().to_owned();
+    state.more.store(false, Ordering::SeqCst);
+    service
+        .page(
+            context,
+            FeedQuery {
+                before: Some(before),
+                cursor: Some(cursor.clone()),
+                ..Default::default()
+            },
+        )
+        .await
+        .unwrap();
+    assert_eq!(
+        state.last_window.lock().unwrap().unwrap().upper,
+        snapshot.upper
+    );
+    let calls = state.calls.load(Ordering::SeqCst);
+    assert_eq!(
+        service
+            .page(
+                context,
+                FeedQuery {
+                    before: Some(before + chrono::Duration::seconds(1)),
+                    cursor: Some(cursor),
+                    ..Default::default()
+                }
+            )
+            .await,
+        Err(FeedError::InvalidInput)
+    );
+    assert_eq!(state.calls.load(Ordering::SeqCst), calls);
+}
+
+#[tokio::test]
+async fn comment_author_filter_retains_scan_boundary_and_cannot_hide_outage_or_malformed_owner_batch(
+) {
+    use concert_application::feed::CommentReader;
+    use concert_domain::feed::Window;
+    use concert_service::feed::author_filter::AuthorFilteredReader;
+    let ctx = context();
+    let state = State::new(ctx);
+    state.more.store(true, Ordering::SeqCst);
+    state.deny_author.store(true, Ordering::SeqCst);
+    let reader = AuthorFilteredReader::new(Reader(state.clone()), Resources(state.clone()));
+    let window = Window {
+        upper: chrono::Utc::now(),
+        after: None,
+    };
+    let page = reader
+        .comments(ctx, state.post.id, window, 20)
+        .await
+        .unwrap();
+    assert!(page.items.is_empty());
+    assert!(page.has_more);
+    assert_eq!(page.scanned_through, Some(state.comment.position()));
+    state.deny_author.store(false, Ordering::SeqCst);
+    state.missing_author.store(true, Ordering::SeqCst);
+    assert!(matches!(
+        reader.comments(ctx, state.post.id, window, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+    state.missing_author.store(false, Ordering::SeqCst);
+    state.invalid_author.store(true, Ordering::SeqCst);
+    assert!(matches!(
+        reader.comments(ctx, state.post.id, window, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+    let mut foreign = State::new(ctx);
+    Arc::get_mut(&mut foreign).unwrap().comment.post = Uuid::from_u128(999);
+    foreign.deny_author.store(true, Ordering::SeqCst);
+    let reader = AuthorFilteredReader::new(Reader(foreign.clone()), Resources(foreign.clone()));
+    assert!(matches!(
+        reader.comments(ctx, foreign.post.id, window, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
 }

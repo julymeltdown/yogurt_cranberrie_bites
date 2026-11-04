@@ -24,6 +24,20 @@ struct TestAuthority {
     policy: Arc<RwLock<Policy>>,
     reject_commit: Arc<AtomicBool>,
 }
+/// Storage pagination fixture only; this module is entirely cfg(test). This
+/// constructor is never available to production RPC/root configuration.
+pub(super) fn paging_owner(pool: PgPool, blocked: Vec<(Uuid, Uuid)>) -> Owner {
+    Owner {
+        pool,
+        authority: Arc::new(TestAuthority {
+            policy: Arc::new(RwLock::new(Policy {
+                blocked: blocked.into_iter().collect(),
+                ..Default::default()
+            })),
+            reject_commit: Arc::default(),
+        }),
+    }
+}
 struct TestFence {
     context: Context,
     binding: [u8; 32],

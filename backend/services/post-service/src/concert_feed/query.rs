@@ -11,7 +11,21 @@ impl Owner {
         if id.is_nil() {
             return Err(Error::Invalid);
         }
-        let mut tx = self.pool.begin().await.map_err(storage)?;
+        self.post_in(context, id, self.pool.begin().await.map_err(storage)?)
+            .await
+    }
+    // Qualified production reads pass the SAME captured and registered SQL
+    // transaction here. These helpers cannot manufacture a second transaction.
+    pub(crate) async fn post_in(
+        &self,
+        context: &Context,
+        id: Uuid,
+        mut tx: Transaction<'_, Postgres>,
+    ) -> Result<Option<PostView>, Error> {
+        context.validate(Utc::now())?;
+        if id.is_nil() {
+            return Err(Error::Invalid);
+        }
         let Some(p) = load_post(&mut tx, context.event_id, id).await? else {
             return Ok(None);
         };
@@ -28,7 +42,17 @@ impl Owner {
     pub async fn page(&self, context: &Context, window: &Window) -> Result<Page<PostView>, Error> {
         context.validate(Utc::now())?;
         window.validate()?;
-        let mut tx = self.pool.begin().await.map_err(storage)?;
+        self.page_in(context, window, self.pool.begin().await.map_err(storage)?)
+            .await
+    }
+    pub(crate) async fn page_in(
+        &self,
+        context: &Context,
+        window: &Window,
+        mut tx: Transaction<'_, Postgres>,
+    ) -> Result<Page<PostView>, Error> {
+        context.validate(Utc::now())?;
+        window.validate()?;
         let list_guard = self
             .admit(
                 context,
@@ -96,7 +120,32 @@ impl Owner {
         {
             return Err(Error::Invalid);
         }
-        let mut tx = self.pool.begin().await.map_err(storage)?;
+        self.comments_in(
+            context,
+            post_id,
+            upper,
+            after,
+            limit,
+            self.pool.begin().await.map_err(storage)?,
+        )
+        .await
+    }
+    pub(crate) async fn comments_in(
+        &self,
+        context: &Context,
+        post_id: Uuid,
+        upper: DateTime<Utc>,
+        after: Option<Position>,
+        limit: u32,
+        mut tx: Transaction<'_, Postgres>,
+    ) -> Result<Page<Comment>, Error> {
+        context.validate(Utc::now())?;
+        if !(1..=100).contains(&limit)
+            || post_id.is_nil()
+            || after.is_some_and(|a| a.id.is_nil() || a.created_at > upper)
+        {
+            return Err(Error::Invalid);
+        }
         let p = load_post(&mut tx, context.event_id, post_id)
             .await?
             .ok_or(Error::NotFound)?;
@@ -142,7 +191,19 @@ impl Owner {
         if id.is_nil() {
             return Err(Error::Invalid);
         }
-        let mut tx = self.pool.begin().await.map_err(storage)?;
+        self.comment_in(context, id, self.pool.begin().await.map_err(storage)?)
+            .await
+    }
+    pub(crate) async fn comment_in(
+        &self,
+        context: &Context,
+        id: Uuid,
+        mut tx: Transaction<'_, Postgres>,
+    ) -> Result<Option<Comment>, Error> {
+        context.validate(Utc::now())?;
+        if id.is_nil() {
+            return Err(Error::Invalid);
+        }
         let post_id: Option<Uuid> = sqlx::query_scalar(
             "select post_id from post_concert_comments where event_id=$1 and comment_id=$2",
         )

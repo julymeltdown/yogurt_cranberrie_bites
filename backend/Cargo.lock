@@ -753,6 +753,7 @@ dependencies = [
  "migration-runtime",
  "notification-service",
  "platform",
+ "post-service",
  "profile-service",
  "prost",
  "protoc-bin-vendored",

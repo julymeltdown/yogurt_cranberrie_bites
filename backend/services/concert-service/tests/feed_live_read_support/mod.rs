@@ -183,6 +183,9 @@ pub struct Resources(pub Arc<State>);
 #[async_trait]
 impl FeedResources for Resources {
     async fn author(&self, _: Context, user_id: Uuid) -> Result<PublicAuthor, FeedError> {
+        if self.0.deny_author.load(Ordering::SeqCst) {
+            return Err(FeedError::ResourceUnavailable);
+        }
         if self.0.missing_author.load(Ordering::SeqCst) {
             return Err(FeedError::DependencyUnavailable);
         }

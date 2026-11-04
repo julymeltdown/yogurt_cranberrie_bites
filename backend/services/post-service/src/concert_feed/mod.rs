@@ -2,7 +2,20 @@
 //! fail-closed until a real cross-owner authority fence is qualified.
 mod persistence;
 mod query;
+pub(crate) mod read_admission;
+mod read_authority;
+mod read_clients;
 pub mod read_registry;
+pub mod read_runtime;
+mod read_tracking;
+mod read_transaction;
+/// Canonical crate-local owner protocol, generated before importing Feed IDL.
+pub mod authority_proto {
+    include!(concat!(
+        env!("OUT_DIR"),
+        "/owner_authority/authority.lease.v1.rs"
+    ));
+}
 #[cfg(test)]
 mod tests;
 

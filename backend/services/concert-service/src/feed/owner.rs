@@ -16,7 +16,8 @@ pub mod proto {
 
 /// Trusted transport seam. Implementations must authenticate Post, apply qualified
 /// workload/delegated-actor metadata and preserve the original absolute deadline.
-/// Current platform forwarding cannot qualify Concert as a Post actor presenter.
+/// Production uses qualified_transport::QualifiedPostTransport and its dedicated
+/// whole-envelope signer plus actual retained canonical scope views.
 #[async_trait]
 pub trait PostTransport: Send + Sync {
     async fn post(&self, _: proto::GetPostRequest) -> Result<proto::GetPostResponse, Status> {
@@ -174,7 +175,7 @@ fn comment(c: Context, p: proto::CommentRecord) -> Result<Comment, FeedError> {
 }
 fn failure(s: Status) -> FeedError {
     match s.code() {
-        Code::NotFound | Code::PermissionDenied => FeedError::ResourceUnavailable,
+        Code::NotFound => FeedError::ResourceUnavailable,
         Code::Aborted | Code::AlreadyExists => FeedError::VersionConflict,
         _ => FeedError::DependencyUnavailable,
     }
@@ -479,5 +480,26 @@ impl<T: PostTransport> PostOwner<T> {
             .receipt
             .map(|v| committed(p, r, v))
             .transpose()
+    }
+}
+
+#[cfg(test)]
+mod qualified_failure_tests {
+    use super::*;
+
+    #[test]
+    fn only_explicit_post_resource_absence_is_filterable() {
+        assert_eq!(
+            failure(Status::not_found("subject absent")),
+            FeedError::ResourceUnavailable
+        );
+        for status in [
+            Status::permission_denied("scope sealed"),
+            Status::unauthenticated("invalid proof"),
+            Status::unavailable("owner unavailable"),
+            Status::deadline_exceeded("original deadline"),
+        ] {
+            assert_eq!(failure(status), FeedError::DependencyUnavailable);
+        }
     }
 }

@@ -749,9 +749,20 @@ where
             .extensions
             .get::<read_authority::VerifiedReadAuthority>()
             .is_some();
+    // The dedicated Post callback needs its exact verified frame for the root
+    // handler. Preserve its original caller deadline; no other Post route gets
+    // this capability and forwarded proofs never become parent authority.
+    let root_callback = caller == Workload::Post
+        && verifier.audience() == Workload::Concert
+        && parts.uri.path() == "/authority.lease.v1.ConcertRootReadService/CheckSubject"
+        && parts
+            .extensions
+            .get::<read_authority::VerifiedReadAuthority>()
+            .is_some_and(|proof| proof.deadline(std::time::Duration::from_secs(2)).is_ok());
     if !forwarded
-        && caller == Workload::Gateway
-        && (verifier.audience() == Workload::Post || product_parent)
+        && ((caller == Workload::Gateway
+            && (verifier.audience() == Workload::Post || product_parent))
+            || root_callback)
     {
         parts
             .extensions
@@ -1299,3 +1310,6 @@ mod tests {
         );
     }
 }
+
+#[cfg(test)]
+mod root_read_capture_tests;

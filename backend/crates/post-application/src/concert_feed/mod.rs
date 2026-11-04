@@ -3,8 +3,10 @@
 //! A transport-authenticated caller/actor is necessary but never sufficient.
 //! A real implementation must hold relationship, eligibility, linked-object and
 //! READY media revisions stable until the returned fence is dropped. Observe-only
-//! relationship snapshots cannot implement this contract. Runtime currently uses
-//! DenyAuthority; the test implementation is compiled only into owner unit tests.
+//! relationship snapshots cannot implement this contract. The public owner
+//! constructor remains DenyAuthority. The dedicated read runtime installs only
+//! its concrete scoped authority after actual durable owner registrations.
+//! Fixture authorities are compiled only into owner unit tests.
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use post_domain::concert_feed::{Command, Comment, Error, Post};
