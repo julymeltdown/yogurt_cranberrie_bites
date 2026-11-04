@@ -394,12 +394,23 @@ impl OwnerGuardScope {
     }
 
     pub async fn check_subject(&self, query: PolicyQuery) -> Result<(), Status> {
-        let fresh = self.fresh(query, Utc::now()).await?;
-        if !fresh.actor_allowed
-            || (!matches!(query.field, Field::SafetySelf | Field::SafetyInteraction)
-                && (!fresh.subject_allowed || fresh.inherited_block))
+        // NotFound is reserved at this API boundary for an actual subject-only
+        // denial. An unknown owner view or child handle must fail the whole read,
+        // never become a skippable author or a success-shaped empty page.
+        let fresh = self.fresh(query, Utc::now()).await.map_err(|status| {
+            if status.code() == tonic::Code::NotFound {
+                Status::unavailable("Owner or child authority unresolved")
+            } else {
+                status
+            }
+        })?;
+        if !fresh.actor_allowed {
+            return Err(Status::permission_denied("Actor is not eligible"));
+        }
+        if !matches!(query.field, Field::SafetySelf | Field::SafetyInteraction)
+            && (!fresh.subject_allowed || fresh.inherited_block)
         {
-            return Err(Status::permission_denied("Subject is not eligible"));
+            return Err(Status::not_found("Subject is unavailable"));
         }
         Ok(())
     }

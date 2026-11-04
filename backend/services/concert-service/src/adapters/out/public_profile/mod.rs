@@ -328,9 +328,37 @@ fn unavailable() -> Status {
 
 fn feed_error(status: Status) -> concert_domain::feed::FeedError {
     match status.code() {
-        tonic::Code::NotFound | tonic::Code::PermissionDenied => {
-            concert_domain::feed::FeedError::ResourceUnavailable
-        }
+        // Only the dedicated owner's explicit absence/privacy result is skippable.
+        // Guard/caller PermissionDenied also covers sealed or rebound scopes.
+        tonic::Code::NotFound => concert_domain::feed::FeedError::ResourceUnavailable,
         _ => concert_domain::feed::FeedError::DependencyUnavailable,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::feed_error;
+    use concert_domain::feed::FeedError;
+    use tonic::{Code, Status};
+
+    #[test]
+    fn guard_or_transport_failure_cannot_become_a_skippable_author() {
+        for code in [
+            Code::PermissionDenied,
+            Code::Unauthenticated,
+            Code::DeadlineExceeded,
+            Code::Cancelled,
+            Code::Unavailable,
+            Code::FailedPrecondition,
+        ] {
+            assert!(matches!(
+                feed_error(Status::new(code, "authority failure")),
+                FeedError::DependencyUnavailable
+            ));
+        }
+        assert!(matches!(
+            feed_error(Status::not_found("Public Profile unavailable")),
+            FeedError::ResourceUnavailable
+        ));
     }
 }

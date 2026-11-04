@@ -1,0 +1,13 @@
+{
+  "task": "QA01",
+  "result": "FAIL",
+  "candidate": "d042638789bc84587be7bbbe09b32c324570c75f",
+  "probe": null,
+  "qualification": "OFFLINE_CONTRACT_COVERAGE_ONLY",
+  "live_services": "NOT_RUN",
+  "devices": "NOT_RUN",
+  "IN_gates": "NOT_RUN",
+  "schema_definitions": 225,
+  "fixtures": [],
+  "error": "AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment"
+}
