@@ -16,16 +16,18 @@ async fn main() -> anyhow::Result<()> {
         arguments
     };
     let command = migration_runtime::parse_command(command_arguments.iter().cloned())?;
+    let mut migration_directory = std::path::PathBuf::new();
     if matches!(
         command,
         migration_runtime::Command::Migrate | migration_runtime::Command::Verify
     ) {
         config::database_options(std::env::var("CONCERT_DATABASE_URL").ok().as_deref())?;
+        migration_directory = config::migration_directory()?;
     }
     if migration_runtime::handle_command(
         command_arguments.iter().cloned(),
         "CONCERT_DATABASE_URL",
-        &config::migration_directory(),
+        &migration_directory,
     )
     .await?
     {
