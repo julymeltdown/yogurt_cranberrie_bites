@@ -1,0 +1,72 @@
+{
+  "task": "QA06",
+  "originalGoal": {
+    "createdAt": 1793759287,
+    "status": "BLOCKED",
+    "aligned": true,
+    "unchanged": true
+  },
+  "base": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+  "checkout": "fe-ref-public",
+  "branch": "codex/mcr-qa-QA06-mobile-20261105",
+  "originalBranchRetained": "codex/mcr-qa-QA06-mobile-visual@5b96b995e904ed0798c26206ca86e3c1b68d1010",
+  "preservedLocalFiles": 70,
+  "preservedLocalBytes": 7239136,
+  "ownership": [
+    "frontend/e2e/visual/qa06/**",
+    "docs/mcr/evidence/visual/qa06/**",
+    "docs/mcr/frontend/mobile-visual-qa06.md"
+  ],
+  "pathCorrection": "Root explicitly corrected nonexistentvisual-mcr/mobile aliases to actual original prefixes and stopped writing them; UI confirmed report path",
+  "guardProvenance": {
+    "path": "frontend/src/app/__tests__/shared-chrome-ref/guard.py",
+    "revision": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+    "sha256": "2a44bcdcb0f6774bda340f2d0c9b9c74687e23ae4739797946172cd6d0cad3fc",
+    "destination": "frontend/e2e/visual/qa06/reflow-guard.py",
+    "adaptation": "Existing ownQA06 project only; narrow round/candidate/prefix/caps/runner changes, original owner guard read-only"
+  },
+  "scope": "Six current editable-panel reduced viewport cases, not replay of shared-chrome18 list cases; actualunmodifiedexistingfixture/defaultRoot, syntheticHTTP/C05/clock explicit; no rendered-form qualification ifactualguard/disabledfields",
+  "reuse": [
+    "SharedCSS390493\u219279665f76 andRoot61f3\u2192bf2ed2fa18qualifiedcases",
+    "ART06published609ae393/d8handoff/9523native10contexts12captures all3skins3widths; no replay",
+    "AR03reviewed-motion controlledsave/reload/World/Profile390; no physical/fullatlas assumption"
+  ],
+  "devices": {
+    "ios": {
+      "physical": true,
+      "model": "iPhone17",
+      "osVersion": "27.2",
+      "osBuild": "24B5099f",
+      "pairedConnected": true,
+      "discoveryOnly": true,
+      "SafariKeyboardSafeArea": "NOT_RUN",
+      "reason": "Paired CoreDevice discovery does not prove usable Safari/Mirroring interaction. Prior user connection question pending; no retry/poll/question or settings changes."
+    },
+    "android": {
+      "existingToolDiscovered": true,
+      "enumerationExit": 0,
+      "deviceCount": 0,
+      "serialsOrNamesStored": false,
+      "ChromeKeyboardSafeArea": "NOT_RUN"
+    }
+  },
+  "runtime": "MOCK_READY: round-02 exit0/six desktop resize cases; wholeQA06 unfinished",
+  "noNewAppAssetsManifestsDependencies": true,
+  "readyPreflight": {
+    "wholeCarryBytes": 1282748416,
+    "limits": {
+      "WHOLE": 2147483648,
+      "NEW": 268435456,
+      "TEMP": 209715200,
+      "DURABLE": 33554432,
+      "ALLDescendantPIDs": 24,
+      "RSS": 4294967296
+    },
+    "guardPythonAST": "PASS",
+    "nodeSyntaxAndRuntime": "PASS under accepted finite job QA06-REFLOW-BROWSER1-20261104T1807Z; round01 owned Back assertion exit1 retained",
+    "sourceProductUnchanged": true
+  },
+  "executedAdmission": "admission-round-01.json",
+  "runtimeReport": "round-02/report.json",
+  "resourceReceipt": "round-02/supervisor.json"
+}

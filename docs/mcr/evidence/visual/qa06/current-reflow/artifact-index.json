@@ -1,0 +1,174 @@
+{
+  "task": "QA06",
+  "scope": "Current editable-panel reflow checkpoint, not whole QA06",
+  "canonicalBase": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+  "sourcePreparationCommit": "e4e118c474fb79277e2f86c02f41797e2c8ae1ce",
+  "runtimeCandidate": "e4e118c474fb79277e2f86c02f41797e2c8ae1ce",
+  "runtimeSourceNote": "Only own guard/driver Back assertion, capture reuse and aggregate accounting changed after prep; report/assessment pin their actual bytes. Product and fixture source remained unchanged. Final handoff commit is provided to publisher outside its own self-referential index.",
+  "publisher": "Root153",
+  "files": [
+    {
+      "path": "frontend/e2e/visual/qa06/reflow-guard.py",
+      "sha256": "330d9e491a002446e89b7caeb655cd36b1fee003922289c7e2cee69e8825e681",
+      "bytes": 7750
+    },
+    {
+      "path": "frontend/e2e/visual/qa06/reflow.mjs",
+      "sha256": "cca6584995c32941a41329d3d9186520701eb17f0406c5a7052a9bff260a7d4c",
+      "bytes": 11665
+    },
+    {
+      "path": "docs/mcr/frontend/mobile-visual-qa06.md",
+      "sha256": "ed91480f4cd407dc2685535598d18523c9175010220eec0a834fe49d01dd96cf",
+      "bytes": 45163
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/admission-round-01.json",
+      "sha256": "8e39f792139b31d500abf44f07ee5bd3fd4451fdcf77bfce87c890d59cb85ad7",
+      "bytes": 537
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/coverage-reuse.json",
+      "sha256": "d87837fb1f41d2611f61da7d581aeece5f67883d89092447d45b4d2862bb6efb",
+      "bytes": 5142
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/intake.json",
+      "sha256": "01f7c173ba9c1ef23f9a87acd75801a9191de2b8628323305a4962543339fff7",
+      "bytes": 3082
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/owner-assessment.json",
+      "sha256": "962478a4bae708cfd681027df12ec6357d260fe271ba197e54b71463d08d7cdf",
+      "bytes": 11055
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/plan-check.log",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/preservation.json",
+      "sha256": "b2c47c5b782348026d7b11706752010f1cda678ac086f3ad632717b0c3f890be",
+      "bytes": 13212
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/release.json",
+      "sha256": "9a5c19350459da986c05eebb2b1d3bfd3347f80fca82da62a232d89f1c6ba1a6",
+      "bytes": 632
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/native.log",
+      "sha256": "d7616afecb3ec4e0e4c4a5cea843198a8ae307e350e95f7ff550117590cabca5",
+      "bytes": 269
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/profile-360-420.png",
+      "sha256": "49adeeb2640f6b8efcca660ea38c4f6cbb378dc26c91e6eb24301c6782fd744a",
+      "bytes": 43460
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/profile-360-844.png",
+      "sha256": "213776a15a4e866fc9f648c3380d2269a2452a7c289c777da4f66b4365825636",
+      "bytes": 85281
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/report.json",
+      "sha256": "4454c86bb80e42d8063c3d8e1a000d313213492db87f9c330b6fd4accd488f85",
+      "bytes": 63471
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/report.partial.json",
+      "sha256": "cd8d02a9f6b6bf20f07a734143cec858d71010654c635fe0c27fbd88462a2707",
+      "bytes": 63315
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/supervisor.json",
+      "sha256": "eb930de3fd6253b78241b97ff103866d7c1796fd3dc37c2ee05524ba44ca3add",
+      "bytes": 1375
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-360-420.png",
+      "sha256": "de6df1781b6b399d98df74ba4ac0ab4e38b060fa92c22a0e2894c59eef3e908d",
+      "bytes": 30888
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-360-844.png",
+      "sha256": "a1ef8f2b09431c94b34f8938afdf5df9986d483b2433aff1ad7637b256ef8d9f",
+      "bytes": 48010
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-390-420.png",
+      "sha256": "6853cf0cb05fe11bc725c4a1556d87ce5918c0f1c0c9fbe92fcd2b9e1d81e247",
+      "bytes": 31488
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-390-844.png",
+      "sha256": "475dd6dda38f76252d316e7ff59dbed73c4da2eff2c83b9c73f486e3d0b4919c",
+      "bytes": 48850
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-430-420.png",
+      "sha256": "febf934935e43bb28a9af34e11fd79baeed02dbab4f6aaa3f5e7c782ec310cad",
+      "bytes": 31178
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-430-844.png",
+      "sha256": "772a9a07e9f82aaab74b0c6e97d48d703baac1273a52f37964918f6bb81f75a1",
+      "bytes": 48529
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/native.log",
+      "sha256": "7e66ed209435a5d81c1cedc0c3b644a927cc49e28d5a45967df04ad970b0ecdf",
+      "bytes": 46
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-390-420.png",
+      "sha256": "1865bc2482114f4589e5e95d98f9fea14b5ab85570a69f08ba72a667c87756cc",
+      "bytes": 44736
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-390-844.png",
+      "sha256": "fb5363a6eee4391af55a12e7b7b9a3eb7c291e23eae8909facfb16e1b1d059d9",
+      "bytes": 88002
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-430-420.png",
+      "sha256": "7ab53b0ab86fa608a45864ae1cb0c0fa373fe4723bf20116e1074de5e3b75d8a",
+      "bytes": 46372
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-430-844.png",
+      "sha256": "50d19b8686c7399566cb586f0083bb121233624bd988e282ac4adca0eea9ee18",
+      "bytes": 92194
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/report.json",
+      "sha256": "8da413d0184eb5572317d8149c68aef40697cf45e19b087e0bc6f77c9b0f3baa",
+      "bytes": 110883
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/report.partial.json",
+      "sha256": "069bef7a2c2d16b0bb02bd425195290b0fe6201fe4e1a8334886541a9d267562",
+      "bytes": 110737
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/supervisor.json",
+      "sha256": "1a7462a3a1bf53a86f8dbd5bcfc7b06c979308068af0981931d4a180fb294011",
+      "bytes": 1415
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "totalBytes": 1090172,
+  "physicalPNGs": 12,
+  "originalGoalUnfinished": true
+}

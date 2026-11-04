@@ -1,0 +1,23 @@
+{
+  "job": "QA06-REFLOW-BROWSER1-20261104T1807Z",
+  "releasedEpoch": 1793815736.3281689,
+  "FULL": true,
+  "remainingOwnedPids": [],
+  "port19876Closed": true,
+  "ownDependencyLinkAbsent": true,
+  "ownTemporaryAbsent": true,
+  "cleanupWithinDeadline": true,
+  "freeBytes": 19190423552,
+  "currentNewReservationBytes": 0,
+  "slotHeld": false,
+  "peaks": {
+    "temp": 30302361,
+    "durable": 1060864,
+    "allPids": 11,
+    "rss": 2496217088,
+    "new": 31117465,
+    "whole": 1313902745
+  },
+  "sameLeaseRepair": "round01 owned Back assertion exit1; round02 exit0, unchanged absolute deadlines",
+  "publicationIndependent": true
+}

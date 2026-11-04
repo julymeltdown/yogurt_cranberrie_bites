@@ -1,0 +1,16 @@
+{
+  "job": "QA06-REFLOW-BROWSER1-20261104T1807Z",
+  "admissionEpoch": 1793815654.178505,
+  "workDeadline": 1793815954.178505,
+  "cleanupDeadline": 1793816014.178505,
+  "freeBytes": 19345604608,
+  "aggregateNewReserveBytes": 3087007744,
+  "otherAcceptedConservativeReserveBytes": 2818572288,
+  "afterReserveBytes": 16258596864,
+  "carryBytes": 1282781184,
+  "original70ByteIdentical": true,
+  "port19876Free": true,
+  "candidate": "e4e118c474fb79277e2f86c02f41797e2c8ae1ce",
+  "dependencyLinkAbsent": true,
+  "ownTemporaryAbsent": true
+}

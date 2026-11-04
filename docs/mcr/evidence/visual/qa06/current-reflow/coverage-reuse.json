@@ -1,0 +1,105 @@
+{
+  "task": "QA06",
+  "canonicalBase": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "currentPolicy": "Exact functioning component/layout/type/density/imagery/icon/control target; palette alone insufficient. Preserve suppliedoriginal and selectedpack; truthful states, no invented provider/age/media."
+  },
+  "reuse": [
+    {
+      "scope": "Shared chrome",
+      "ownerDelivery": "79665f76+bf2ed2fa",
+      "sourceDocument": "docs/mcr/evidence/css-shared-chrome-ref-01/owner-assessment.json",
+      "documentSha256": "21f3cff78de2c495b7ee3ff6565d98b78ab16fd2abe51cf6b0e9b47d7ef568fb",
+      "disposition": "OWNER_QUALIFIED_PUBLISHED",
+      "reusedCoverage": "18synthetic baseline/candidate360/390/430 list cases, short/input/focus/forced/nav/unavailable",
+      "limits": "Othereras/fullten/physicalkeyboard/safearea not certified",
+      "independentQARuntimeRerun": false
+    },
+    {
+      "scope": "ART06 Map",
+      "ownerDelivery": "609ae3932f22e3689637eb43074b6236ccb6c64f",
+      "sourceDocument": "docs/mcr/evidence/map-art06-default-app/handoff.json",
+      "documentSha256": "810d4e74c6ec450b5c884bf21ac6c4afd39267326f948aaff4a180b6a7ad6932",
+      "disposition": "OWNER_QUALIFIED_PUBLISHED",
+      "reusedCoverage": "10contexts/12captures all3eras\u00d73widths plus390short andforcedfocus",
+      "limits": "Syntheticeligibleattendee HTTP/C05; realdevices/fullreference gaps open; stageocclusion separate unqualified delta",
+      "independentQARuntimeRerun": false
+    },
+    {
+      "scope": "AR03 reviewed persistence",
+      "ownerDelivery": "3b91525d",
+      "sourceDocument": "docs/mcr/evidence/reviewed-persistence-motion/handoff.json",
+      "documentSha256": "c5a7a79befd12f182ea395a7657dc602448077a2bbd6a5996c2344933fcca954",
+      "disposition": "OWNER_QUALIFIED_PUBLISHED_BOUNDED",
+      "reusedCoverage": "Controlled actualApp390 save/reload/Profile/World/natural movement/signout",
+      "limits": "Not fullatlas/layers/walk qualification, live backend or physicaldevices",
+      "independentQARuntimeRerun": false
+    },
+    {
+      "scope": "AR03 original selected-character artwork completion",
+      "ownerSource": "0a43bc6b",
+      "ownerDelivery": "3198cc8d6ec9b5d03c8bc778fd2ab9a0a8e69758",
+      "sourceDocuments": [
+        {
+          "path": "docs/mcr/art/selected-character-original-completion.md",
+          "sha256": "789f067d9387e12aa4d1f0002cc479a9e0594197e01e8c77a4591b9e1a33b20e",
+          "bytes": 9256
+        },
+        {
+          "path": "docs/mcr/art/evidence/selected-character-original-completion/criterion-disposition.json",
+          "sha256": "ed06eb6947e0b57da829a064706caf225b61eafb41415c3c32114f60c87046d4",
+          "bytes": 23417
+        }
+      ],
+      "disposition": "OWNER_ACCEPTED_ORIGINAL_ART_CRITERIA_PUBLISHED",
+      "ownerGoal": "COMPLETE reported by WorldSL after canonical publication receipt",
+      "originMasterAncestryVerified": true,
+      "reusedCoverage": "Current reviewed-v2 category/frame/anchor/theme/mobile-scale disposition binds existing source/atlas/retained qualification; no new art or capture suite",
+      "limits": "Not whole FE12, live persistence, physical devices, full-reference or release acceptance. Historical pending publication/goal paragraphs in source document are superseded by the actual publication and later responsible-owner disposition.",
+      "independentQARuntimeRerun": false
+    }
+  ],
+  "additionalOwnerDispositions": {
+    "Profile": "Root reports c2\u2192f8e5e796+callerdf7ab280 sevenleafcases; neweractualmain213pending, not silently qualified",
+    "Gifts": "Root reports cb41\u2192dd05/0624 actualdefaultmedia and9d67density; no unrelated replay",
+    "Wall": "Root reports3f81fouractualmain+targetedretry; ARTmotifcf806a63 is art-only, not liveprovision"
+  },
+  "newQualification": {
+    "routes": [
+      "/me/profile",
+      "/gifts/new"
+    ],
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "era": "PARADE",
+    "heights": [
+      420,
+      844
+    ],
+    "maximumCases": 6,
+    "maximumViewportImages": 12,
+    "reason": "Current nested editable-panel focusedfield/value/reach aftersharedchrome and RootviewportDOMseam not covered by reusedlistcases",
+    "status": "MOCK_READY: six cases PASS/round-02 exit0, bounded desktop only",
+    "guards": "Guard-only or disabledinput never implies form qualification",
+    "notClaimed": [
+      "actualsoftwarekeyboard",
+      "hardwareSafeArea",
+      "iOSSafari",
+      "AndroidChrome",
+      "alltenfullfidelity",
+      "liveauthorization"
+    ],
+    "report": "round-02/report.json",
+    "images": "12 PNGs total including two explicitly reused same-source diagnostic captures"
+  },
+  "physical": {
+    "iPhone": "Connected pairedphysicaliPhone17/iOS27.2; discoveryonly, priorMirroringconnectionquestionpending, no reconnect/poll/duplicatequestion",
+    "Android": "Existing standardSDKadb enumeration exit0/no connecteddevice; no serials/names stored"
+  },
+  "noExtraApprovalGate": true
+}
