@@ -1,6 +1,6 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T08:20:03+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
+Updated **2026-11-05T08:27:57+09:00** from current lead dispositions and canonical delivery records. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) remain the execution and progress references. Original scope and historical acceptance evidence are preserved.
 
 ## Current priority: Parade Ink design delivery
 
@@ -16,9 +16,9 @@ Developers compare fixed geometry, type, spacing, borders, icons, assets and con
 
 | Design family | Scope | Current status |
 | --- | --- | --- |
-| PI01 | Shared foundation and chrome | NOT_STARTED |
-| PI02 | Feed and notices | NOT_STARTED |
-| PI03 | Thread, replies and composer | NOT_STARTED |
+| PI01 | Shared foundation and chrome | NOT_STARTED; developer26e preparing custody |
+| PI02 | Feed and notices | NOT_STARTED; developer213 preparing custody |
+| PI03 | Thread, replies and composer | NOT_STARTED; developer213 preparing custody |
 | PI04 | Giveaway and reservation | NOT_STARTED |
 | PI05 | Meet, party and people | NOT_STARTED |
 | PI06 | Profile, activity and preferences | NOT_STARTED |
@@ -30,6 +30,17 @@ Developers compare fixed geometry, type, spacing, borders, icons, assets and con
 | PI12 | Supporting safety, operations and archive | NOT_STARTED |
 
 These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
+
+## Latest management update — 2026-11-05T08:27:57+09:00
+
+Both lead reports confirm **no additional original-task closure**:49/111 functional tasks are DONE,62 remain, and Parade Ink acceptance remains0/12. The plan and its original reference provenance are published at `f025bdb6fb409f3b7706e475dfabb5f3d21fe168`. Publishing the plan does not establish implemented design parity.
+
+- **Design:** Root153/UI533 are finalizing the exclusive shared-foundation versus Feed/Thread path transfers. Developer26e is named for PI01; developer213 for PI02/PI03. Their objectives are activated, but actual source starts are not yet confirmed in the receiving records. PI04–PI12 are planned only. Independent ready family/art work may proceed after real custody without waiting for a complete foundation wave or another king acknowledgment.
+- **Published increments:** Map viewport-fit source (`3aefd3dd0`), lawn source overlays (`1e2e3a328`), and QA05/IN04 source assembly (`11473eaad`) remain credited. They do not close changed Map visual checks, real QA05/IN04 journeys or whole original tasks.
+- **Execution:** Gift released its build round after an unqualified control failure. Resource21d routes Root next, then Party; Gift repairs controls in its source scope. FE41's functional browser round is running. Map's changed-browser attempt failed its driver check and released; retry is queued. Clock and QA04 source rounds are dispatched, with art231 following actual release. These are scheduling/owner reports, not passing test claims or new standing resource limits.
+- **Remaining delivery constraints:** composed real-service/cohort flows, required native/device/privacy/recovery checks and all12 design families. Physical-place, notification-audience, U03 visibility and genuine provider/claim inputs affect only their dependent outcomes; independent development continues.
+
+The immediate visible milestone is functioning Parade Ink **Feed → Thread/replies/composer**, using approved art and developer-owned360/390/430 comparison/fixes. No approval or ledger update from Main is required. Current product readiness remains **NOT_READY**.
 
 ## Current functional progress
 
@@ -87,7 +98,7 @@ Original **QA07** and its required changed-control delta are now **DONE**, based
 | Wall B | Tools/C18 and default lifecycle `3f81baea` published with controlled source/native qualification | Live C04/C05, moderation and real two-client IN04; full visual/device acceptance open |
 | Operations/recovery | Bounded Auth, deletion, report and lifecycle increments published | Full category convergence, populated business recovery, authorization/races/abuse/configuration and release evidence |
 
-The latest observed canonical publication snapshot is `60831ca3b`. The actual Enrollment browser retry passed its five cases, while live World continuation and the broader integration obligations remain open. Avatar Cancel/conflict, QA05 source-driver and scoped PrivateData/Age/legacy-deletion results are published; their limitations remain attached and they do not close whole parent tasks. Earlier original-task closures and hosted CI outcomes remain credited. One canonical publisher receipt establishes delivery; no extra king readback or proof-only commit is required. QA01, QA10 and real IN02–IN05 remain open.
+The earlier historical publication snapshot was `60831ca3b`; the latest snapshot is recorded above. The actual Enrollment browser retry passed its five cases, while live World continuation and the broader integration obligations remain open. Avatar Cancel/conflict, QA05 source-driver and scoped PrivateData/Age/legacy-deletion results are published; their limitations remain attached and they do not close whole parent tasks. Earlier original-task closures and hosted CI outcomes remain credited. One canonical publisher receipt establishes delivery; no extra king readback or proof-only commit is required. QA01, QA10 and real IN02–IN05 remain open.
 
 Original **C06** is now accepted and published at `6504448f` through the responsible owner's [disposition](c06-original-disposition.md). All five original criteria are covered; the existing six golden assets and qualified consumers remain the evidence basis. This does not close separate live, visual or device gates.
 
@@ -112,9 +123,9 @@ Original **BE04 and BE07 are accepted and published** at `df244a715`. The respon
 - Resource owners report about5.67GiB of released outputs reclaimed, preserving the warm target and unique evidence; the runtime-package repair started. These dated reports establish queue movement, not standing capacity or a native pass.
 - All 112 task IDs and61 IA entries remain. QA08 stays DEFERRED_BY_USER. Existing owner evidence and original outcomes remain in the register and Git history; generated exports stay PLANNING_ONLY.
 
-Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Existing Party12cc/Gift267 have finite build offers; BE06 executables are built and database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
+Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Gift267 has released its unqualified control round; Resource21d routes the actual target to Root next, then Party12cc. BE06 database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
-The staffing routing was reconciled on 2026-11-05T08:20:03+09:00 from current owner records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately published BE04/BE07 dispositions add two.
+The staffing routing was reconciled on 2026-11-05T08:27:57+09:00 from current lead records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately published BE04/BE07 dispositions add two.
 
 ## Next outcomes
 

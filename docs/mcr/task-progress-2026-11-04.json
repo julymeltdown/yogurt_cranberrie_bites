@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T08:20:03+09:00",
+  "updated_at": "2026-11-05T08:27:57+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -97,7 +97,7 @@
       "BE07"
     ],
     "current_original_criteria_outcomes": 55,
-    "progress_updated_at": "2026-11-05T08:20:03+09:00",
+    "progress_updated_at": "2026-11-05T08:27:57+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -215,15 +215,37 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T06:31:51+09:00",
-      "canonical_publication": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
-      "original_closures": [],
-      "current_scope_closures": [
-        "QA07"
+      "recorded_at": "2026-11-05T08:27:57+09:00",
+      "source": "Current Backend/resource SL21d and Frontend King385 management dispositions; canonical publisher receipt and Git publication metadata only. No king implementation review or rerun.",
+      "canonical_publication": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+      "new_original_closures": [],
+      "done_tasks": 49,
+      "active_tasks": 111,
+      "remaining_active_tasks": 62,
+      "original_criteria_outcomes": 55,
+      "design_accepted_families": 0,
+      "design_total_families": 12,
+      "design_dispatch": "PI01 developer26e and PI02/PI03 developer213 are named and preparing exclusive custody; Root153 exact path/STOP grants and actual source start are not confirmed in receiving records. PI04-PI12 remain planned, not dispatched or accepted.",
+      "delivered_increments": [
+        "3aefd3dd0 Map viewport foreground-fit source",
+        "1e2e3a328 garden-edge lawn source",
+        "11473eaad QA05 assembly and restart-aware IN04 source adapters",
+        "f025bdb6fb409f3b7706e475dfabb5f3d21fe168 Parade Ink plan and reference provenance"
       ],
-      "closure_publication": "f3d1a93cd6ebe265550596c9a016f47995b0e829",
-      "task_count_change": 1,
-      "reason": "QA07 was already among the 39 historical original outcomes. Its explicitly completed current delta increases active DONE to49, while original criteria outcomes remain55/112. Source/helper/runtime preparation packets do not count as original-task completion."
+      "resource_movement": "Gift released build target/FULL after an unqualified control failure. Resource21d routes Root next, then Party round5. Gift repairs controls in source scope. FE41 accepted functional browser round is running; Map browser retry is queued after driver failure/release. Clock and QA04 source rounds are dispatched; art231 follows actual release. These are dated owner reports, not standing leases or passing outcomes.",
+      "remaining_boundaries": [
+        "All12 Parade Ink design families and developer comparison/fixes",
+        "Composed real services/cohorts and IN02-IN05",
+        "Actual native/device, privacy, recovery and production avatar/catalog criteria",
+        "Affected user inputs: physical-place provenance, Party notification audience, profile U03 visibility, genuine IN03 claims/provider provenance"
+      ],
+      "next_owners": {
+        "design_custody": "Root153 with UI533; then26e PI01 and213 PI02/PI03",
+        "resource_chain": "Resource21d and actual implementation owners",
+        "publication": "Standing publisher412e; no king/SL acknowledgment"
+      },
+      "readiness": "NOT_READY",
+      "accounting": "No added task closure from source packets, chat resumption, plan publication or design-owner preparation. QA08 remains deferred and all112 tasks/61 IA remain."
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -246,7 +268,7 @@
         "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
       }
     },
-    "staffing_updated_at": "2026-11-05T08:20:03+09:00",
+    "staffing_updated_at": "2026-11-05T08:27:57+09:00",
     "delivery_checkpoint_history": [
       {
         "recorded_at": "2026-11-05T04:37:28+09:00",
@@ -300,6 +322,17 @@
         ],
         "task_count_change": 2,
         "reason": "Only the explicit original BE04/BE07 dispositions close tasks. The dedicated publisher normally pushed seven exact-path packets and supplied one verified canonical receipt. BE06, whole BE42, live IN02/IN03/IN04/QA05 and visual/device/release boundaries remain open."
+      },
+      {
+        "recorded_at": "2026-11-05T06:31:51+09:00",
+        "canonical_publication": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+        "original_closures": [],
+        "current_scope_closures": [
+          "QA07"
+        ],
+        "closure_publication": "f3d1a93cd6ebe265550596c9a016f47995b0e829",
+        "task_count_change": 1,
+        "reason": "QA07 was already among the 39 historical original outcomes. Its explicitly completed current delta increases active DONE to49, while original criteria outcomes remain55/112. Source/helper/runtime preparation packets do not count as original-task completion."
       }
     ],
     "reopened_historical_tasks_at_replan": [
@@ -363,13 +396,15 @@
             "supporting_states"
           ],
           "coordinator": "Frontend King385 through existing functional/UI leads",
-          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "implementation_owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
           "prerequisites": [
             "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PREPARING_CUSTODY",
+          "dispatch_note": "Objective activated after plan publication; exclusive Root153 path/STOP grant and actual source-start acceptance not yet confirmed by Frontend King385 receiving records. No king/SL acknowledgment required."
         },
         {
           "id": "PI02",
@@ -387,13 +422,15 @@
             "photo2"
           ],
           "coordinator": "Frontend King385 through existing functional/UI leads",
-          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "implementation_owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
           "prerequisites": [
             "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PREPARING_CUSTODY",
+          "dispatch_note": "Objective activated after plan publication; exclusive Root153 path/STOP grant and actual source-start acceptance not yet confirmed by Frontend King385 receiving records. No king/SL acknowledgment required."
         },
         {
           "id": "PI03",
@@ -415,13 +452,15 @@
             "photo4_anatomy"
           ],
           "coordinator": "Frontend King385 through existing functional/UI leads",
-          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "implementation_owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
           "prerequisites": [
             "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PREPARING_CUSTODY",
+          "dispatch_note": "Objective activated after plan publication; exclusive Root153 path/STOP grant and actual source-start acceptance not yet confirmed by Frontend King385 receiving records. No king/SL acknowledgment required."
         },
         {
           "id": "PI04",
@@ -452,7 +491,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI05",
@@ -486,7 +526,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI06",
@@ -514,7 +555,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI07",
@@ -540,7 +582,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI08",
@@ -569,7 +612,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI09",
@@ -594,7 +638,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI10",
@@ -628,7 +673,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI11",
@@ -660,7 +706,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         },
         {
           "id": "PI12",
@@ -710,7 +757,8 @@
           ],
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
-          "canonical_commit": null
+          "canonical_commit": null,
+          "dispatch_state": "PLANNED"
         }
       ],
       "accounting": "Child design groups under existing QA06; not new original tasks, not blended into functional percentage. Existing49/111 and55original outcomes retained. Presentation-only changes do not reopen closed behavior; concrete changed/failing original criteria are separately recorded.",
@@ -839,8 +887,15 @@
         "World and Community leads via Frontend King"
       ],
       "preservation": "No changes to original112 task scopes/acceptance/completion criteria,61 IA/source originals,accepted code or existing exclusive writer custody. Keep validated queued patches.",
-      "publication_route": "Standing publisher412e; design dispatch starts on canonical plan publication without another king/SL ACK."
-    }
+      "publication_route": "Standing publisher412e; design dispatch starts on canonical plan publication without another king/SL ACK.",
+      "progress_updated_at": "2026-11-05T08:27:57+09:00",
+      "plan_canonical_commit": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+      "dispatch_counts": {
+        "PREPARING_CUSTODY": 3,
+        "PLANNED": 9
+      }
+    },
+    "current_staffing_snapshot": "Gift released build target/FULL after an unqualified control failure. Resource21d routes Root next, then Party round5. Gift repairs controls in source scope. FE41 accepted functional browser round is running; Map browser retry is queued after driver failure/release. Clock and QA04 source rounds are dispatched; art231 follows actual release. These are dated owner reports, not standing leases or passing outcomes."
   },
   "historical_accounting": {
     "baseline_revision": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
