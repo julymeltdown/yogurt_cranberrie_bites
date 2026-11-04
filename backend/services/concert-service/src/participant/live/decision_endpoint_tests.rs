@@ -19,7 +19,7 @@ use std::{
 };
 use uuid::Uuid;
 
-fn fixture_tls(root: &Path, role: &str) -> anyhow::Result<Option<platform::grpc_tls::TlsMaterial>> {
+pub(super) fn fixture_tls(root: &Path, role: &str) -> anyhow::Result<Option<platform::grpc_tls::TlsMaterial>> {
     match std::env::var("MCR_PARTICIPANT_DECISION_TLS_MODE")?.as_str() {
         "plaintext" => Ok(None),
         "mtls" => {
