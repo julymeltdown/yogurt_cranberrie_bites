@@ -1,0 +1,40 @@
+{
+  "job": "WALL-MOTIF-ART-128-01-SOURCE-B-202611041724Z",
+  "acceptUtc": "2026-11-04T17:24:53.151439+00:00",
+  "workDeadlineUtc": "2026-11-04T17:26:53.151439+00:00",
+  "cleanupDeadlineUtc": "2026-11-04T17:27:53.151439+00:00",
+  "roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "/Users/lhs/Desktop/mcr/.git"
+  ],
+  "privateGitIncludedInSharedGit": true,
+  "tempRoots": [],
+  "baselineBytes": 1086503889,
+  "baselineRootBytes": {
+    "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1": 59551,
+    "/Users/lhs/Desktop/mcr/.git": 1086444338
+  },
+  "wholeCapBytes": 1099086801,
+  "otherReservedBytes": 17179869184,
+  "ownWorstCaseGrowthBytes": 12582912,
+  "startFreeBytes": 29116645376,
+  "startAfterWorstCaseReserveBytes": 11924193280,
+  "guardianPid": 95714,
+  "workerPids": [
+    97190
+  ],
+  "peakWorkerAndGuardianRssBytes": 39780352,
+  "peakGrowthBytes": 23982,
+  "minFreeBytes": 28911734784,
+  "maxGuardIntervalSeconds": 0.03189808301976882,
+  "checks": [],
+  "result": "FAIL",
+  "error": "cannot measure live process RSS",
+  "finishUtc": "2026-11-04T17:25:02.773010+00:00",
+  "elapsedSeconds": 9.589,
+  "finalWholeBytes": 1086607193,
+  "finalDurableBytes": 115481,
+  "tempBytes": 0,
+  "portsCreated": [],
+  "workerIdentitiesAlive": []
+}

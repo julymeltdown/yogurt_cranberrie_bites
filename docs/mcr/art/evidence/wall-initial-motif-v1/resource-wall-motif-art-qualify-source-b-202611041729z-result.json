@@ -1,0 +1,45 @@
+{
+  "job": "WALL-MOTIF-ART-QUALIFY-SOURCE-B-202611041729Z",
+  "acceptUtc": "2026-11-04T17:29:40.523321+00:00",
+  "workDeadlineUtc": "2026-11-04T17:31:40.523321+00:00",
+  "cleanupDeadlineUtc": "2026-11-04T17:32:40.523321+00:00",
+  "roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "/Users/lhs/Desktop/mcr/.git"
+  ],
+  "privateGitIncludedInSharedGit": true,
+  "tempRoots": [],
+  "baselineBytes": 1088065693,
+  "baselineRootBytes": {
+    "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1": 143634,
+    "/Users/lhs/Desktop/mcr/.git": 1087922059
+  },
+  "wholeCapBytes": 1100648605,
+  "otherReservedBytes": 17179869184,
+  "ownWorstCaseGrowthBytes": 12582912,
+  "startFreeBytes": 27044765696,
+  "startAfterWorstCaseReserveBytes": 9852313600,
+  "guardianPid": 23934,
+  "workerPids": [
+    25920
+  ],
+  "peakWorkerAndGuardianRssBytes": 50249728,
+  "peakGrowthBytes": 130913,
+  "minFreeBytes": 27044765696,
+  "maxGuardIntervalSeconds": 0.14434187501319684,
+  "checks": [
+    {
+      "script": "qualify.py",
+      "exit": 0,
+      "output": "{\"result\": \"SOURCE_FORMAT_PASS_VISUAL_INSPECTION_SEPARATE\", \"manifest_sha256\": \"3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce\", \"negative_probes\": 7}"
+    }
+  ],
+  "result": "PASS",
+  "finishUtc": "2026-11-04T17:29:49.687436+00:00",
+  "elapsedSeconds": 9.125,
+  "finalWholeBytes": 1088196606,
+  "finalDurableBytes": 122148,
+  "tempBytes": 0,
+  "portsCreated": [],
+  "workerIdentitiesAlive": []
+}

@@ -1,0 +1,29 @@
+{
+  "job": "WALL-MOTIF-ART-QUALIFY-SOURCE-B-202611041729Z",
+  "acceptUtc": "2026-11-04T17:29:40.523321+00:00",
+  "workDeadlineUtc": "2026-11-04T17:31:40.523321+00:00",
+  "cleanupDeadlineUtc": "2026-11-04T17:32:40.523321+00:00",
+  "roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "/Users/lhs/Desktop/mcr/.git"
+  ],
+  "privateGitIncludedInSharedGit": true,
+  "tempRoots": [],
+  "baselineBytes": 1088065693,
+  "baselineRootBytes": {
+    "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1": 143634,
+    "/Users/lhs/Desktop/mcr/.git": 1087922059
+  },
+  "wholeCapBytes": 1100648605,
+  "otherReservedBytes": 17179869184,
+  "ownWorstCaseGrowthBytes": 12582912,
+  "startFreeBytes": 27044765696,
+  "startAfterWorstCaseReserveBytes": 9852313600,
+  "guardianPid": 23934,
+  "workerPids": [],
+  "peakWorkerAndGuardianRssBytes": 0,
+  "peakGrowthBytes": 0,
+  "minFreeBytes": 27044765696,
+  "maxGuardIntervalSeconds": 0,
+  "checks": []
+}

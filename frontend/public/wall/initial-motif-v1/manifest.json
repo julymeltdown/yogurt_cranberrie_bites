@@ -1,0 +1,35 @@
+{
+  "format": "mcr-mural-initial-seed-art/1",
+  "asset_id": "wall-initial-motif-art-01",
+  "asset_revision": 1,
+  "event_binding": "OPERATOR_BOUND_AT_PROVISION",
+  "width": 128,
+  "height": 128,
+  "layout": "ROW_MAJOR_TOP_LEFT_U8",
+  "background_index": 0,
+  "files": {
+    "source": {
+      "path": "source.svg",
+      "sha256": "d61e130214820d959158a012d691ef5edfcb7bbfab52e46296a72eddea476be2"
+    },
+    "pixels": {
+      "path": "pixels.bin",
+      "sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721"
+    },
+    "palette": {
+      "path": "palette.json",
+      "sha256": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d"
+    },
+    "preview": {
+      "path": "preview.png",
+      "sha256": "05a0d8b1f974675ea93b601b5c7403d198be6aab94fc9aad9bb7960306e96432"
+    }
+  },
+  "provenance": {
+    "origin": "ORIGINAL_MCR_ARTWORK",
+    "reference_path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "reference_sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "rights_statement": "Original geometric pixel artwork authored for this MCR task. The supplied reference informed contrast and pixel rhythm only; no reference pixels, lettering, logos, figures or character assets were copied. No third-party approval, exclusive rights warranty, operator identity or provisioning authority is claimed.",
+    "qualification_evidence": "README.md"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "result": "SOURCE_FORMAT_PASS_VISUAL_INSPECTION_SEPARATE",
+  "contract_revision": "1607fbf8",
+  "manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+  "files": {
+    "README.md": {
+      "bytes": 4406,
+      "sha256": "58bc04bc0f527f2212199ad2ea13fd343b9d1df1bd3af2681ec0beb12514be37"
+    },
+    "manifest.json": {
+      "bytes": 1424,
+      "sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce"
+    },
+    "palette.json": {
+      "bytes": 211,
+      "sha256": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d"
+    },
+    "pixels.bin": {
+      "bytes": 16384,
+      "sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721"
+    },
+    "preview.png": {
+      "bytes": 1390,
+      "sha256": "05a0d8b1f974675ea93b601b5c7403d198be6aab94fc9aad9bb7960306e96432"
+    },
+    "source.svg": {
+      "bytes": 55012,
+      "sha256": "d61e130214820d959158a012d691ef5edfcb7bbfab52e46296a72eddea476be2"
+    }
+  },
+  "opaque_native_dimensions": [
+    128,
+    128
+  ],
+  "proof_dimensions": [
+    390,
+    566
+  ],
+  "editable_svg_rectangles": 1243,
+  "svg_binary_index_identity": true,
+  "preview_rgb_identity": true,
+  "proof_2x_rgb_identity": true,
+  "background_index": 0,
+  "background_color": "#171617",
+  "index_counts": {
+    "0": 11628,
+    "1": 2681,
+    "2": 1013,
+    "4": 349,
+    "5": 442,
+    "6": 174,
+    "9": 93,
+    "11": 4
+  },
+  "negative_rejection_probes": [
+    "short binary",
+    "out-of-range index",
+    "lowercase palette",
+    "reordered palette/source mismatch",
+    "extra manifest key",
+    "corrupt preview CRC",
+    "external SVG resource"
+  ],
+  "limits": [
+    "ART-PACK ONLY; no authoritative or live Wall capture.",
+    "No event/operator/rights approval or server provisioning is asserted.",
+    "Visual inspection is recorded separately after viewing actual preview and proof."
+  ]
+}
