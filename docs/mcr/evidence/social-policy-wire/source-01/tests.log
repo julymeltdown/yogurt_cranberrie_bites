@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  195 passed (195)
+   Start at  20:03:17
+   Duration  2.50s (transform 132ms, setup 0ms, import 274ms, tests 1.99s, environment 0ms)
+

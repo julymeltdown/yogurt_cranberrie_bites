@@ -1,8 +1,9 @@
 # Social policy production integration
 
-Source checkpoint, 2026-11-04 10:56 UTC. Generated types, source checks and actual
-runtime qualification are pending a fresh named resource allocation. This document
-does not establish IN03, production availability or live privacy acceptance.
+Source qualification, 2026-11-04 11:03 UTC. The existing generator and drift check,
+195 tests across three files, scoped types and lint all passed. Actual runtime
+qualification remains NOT_RUN. This document does not establish IN03, production
+availability or live privacy acceptance.
 
 ## Contract and strict transport boundary
 
@@ -14,7 +15,7 @@ canonical actor/event and bound to its existing World stream. No new socket,
 credential, private content, handle or completion capability is introduced.
 
 The frontend consumes the canonical JSON schema through its existing strict
-decoder. The existing type generator must regenerate `wire-types.ts` under the
+decoder. The existing type generator regenerated `wire-types.ts` under the
 allocated source workflow. Transport requires an actual accepted World snapshot
 before policy metadata and checks its current stream and event before forwarding.
 Metadata remains deliverable during a room or resync transition: it cannot be
@@ -22,8 +23,17 @@ silently dropped merely because movement is paused. It does not grant HTTP acces
 
 The source workflow covers strict variant/field/revision rejection, missing or
 mismatched snapshot binding, one incumbent connection, and the existing transport
-and replication regressions. The workflow also checks generated drift, scoped
-types and lint. No result is asserted before the actual command receipts exist.
+and replication regressions. The actual workflow passed generated drift, scoped
+types and lint. Receipts are in `../evidence/social-policy-wire/source-01/`.
+
+The accepted job `ROOT-SOCIAL-WIRE-SOURCE-202611041103Z` ran on source
+`2d7a42e7d9fc645a3d956cd552304539be602be7`, producing the generated type
+postimage. It fully released at 11:03:21.640133 UTC after 4.770289 seconds.
+Peak whole accounting was 57,417,728 bytes including 55,574,528 carry bytes;
+temporary output peaked at 1,830,912 bytes. No server, browser, HTTP or PostgreSQL
+job ran. The owned dependency link and private temporary/cache tree were removed.
+This qualifies wire compatibility, not a working private Social availability or
+identity-lifetime adapter.
 
 ## Unfinished shell lifetime and availability work
 
