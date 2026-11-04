@@ -238,3 +238,70 @@ async fn cancelled_unexposed_acquisition_recovers_from_actual_root_proof() -> an
     println!("actual partial-owner acquisition cancellation, durable unexposed root closure, no expiry release and fresh owner-object authenticated recovery PASS; no physical process/PG restart claim");
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "requires frozen owned PG16/mTLS canonical controller"]
+async fn subject_denial_never_masks_whole_scope_failure() -> anyhow::Result<()> {
+    use concert_domain::{
+        relationship::{Field, PolicyQuery},
+        AuthUserId, EventId,
+    };
+    let f = Fixture::new().await?;
+    let (actor, family, subjects) = environment::identities(&f.auth, 1).await?;
+    sqlx::query(
+        "insert into user_blocks(blocker_id,blocked_id,created_at) values($1,$2,clock_timestamp())",
+    )
+    .bind(actor)
+    .bind(subjects[0])
+    .execute(&f.friend)
+    .await?;
+    let scope = f
+        .fence
+        .acquire(capture::binding(actor, family).await?)
+        .await?;
+    f.bind_delivery(&scope).await?;
+    let actor_subject = scope.public_profile_subject(actor).await?;
+    assert_eq!(
+        scope
+            .public_profile_subject(subjects[0])
+            .await
+            .err()
+            .unwrap()
+            .code(),
+        tonic::Code::NotFound,
+        "Real blocked subject alone is skippable"
+    );
+    assert_eq!(
+        scope
+            .public_profile_subject(Uuid::new_v4())
+            .await
+            .err()
+            .unwrap()
+            .code(),
+        tonic::Code::NotFound,
+        "Real missing Auth subject alone is skippable"
+    );
+    actor_subject.check().await?;
+    let wrong = PolicyQuery {
+        actor: AuthUserId::from_uuid(Uuid::new_v4()),
+        event: EventId::from_uuid(scope.binding().event()),
+        subject: AuthUserId::from_uuid(actor),
+        field: Field::PublicProfile,
+    };
+    assert_eq!(
+        scope.check_subject(wrong).await.unwrap_err().code(),
+        tonic::Code::PermissionDenied,
+        "Wrong whole scope must not become missing author"
+    );
+    actor_subject.check().await?;
+    scope.mark_serialized().await?;
+    scope.finish_response().await?;
+    assert_eq!(
+        actor_subject.check().await.unwrap_err().code(),
+        tonic::Code::PermissionDenied,
+        "Sealed whole scope must not become missing author"
+    );
+    assert_eq!((pending(&f.auth).await?, pending(&f.friend).await?), (0, 0));
+    f.assert_no_recovery_calls();
+    Ok(())
+}
