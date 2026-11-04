@@ -211,8 +211,10 @@ class Client:
         self.ticket_message = None
         self.allowed_rooms = {self.room_index}
         self.counted = self.expected_restart = self.peer_disconnected = False
+        self.operation_stage = "not-started"
 
     async def bootstrap(self):
+        self.operation_stage = "bootstrap-http"
         status, document = await self.runner.http("bootstrap", self.token)
         integer(status, 100, 599, "public-bootstrap-status")
         check(status == 200, f"public-bootstrap-status-{status}")
@@ -221,8 +223,10 @@ class Client:
         expected = self.runner.config["bootstrap"]
         check(all(document[k] == expected[k] for k in ("map_manifest", "avatar_manifest", "theme_manifests")), "release-mismatch")
         self.actor = actor
+        self.operation_stage = "bootstrap-validated"
 
     async def ticket(self, room_index):
+        self.operation_stage = "ticket-http"
         room = self.runner.config["rooms"][room_index]["room_id"]
         request = {"room_id": room, **dict(zip(PIN_HTTP, self.runner.pins))}
         status, value = await self.runner.http("world-tickets", self.token, request)
@@ -232,6 +236,7 @@ class Client:
         check(value["event_id"] == self.runner.config["event_id"] and all(value[k] == v for k, v in request.items()), "ticket-binding")
         expiry = datetime.fromisoformat(value["expires_at"])
         check(expiry > datetime.now(timezone.utc) and value["auth_timeout_ms"] == 3000 and value["ws_path"] == "/world-ws", "ticket-expired")
+        self.operation_stage = "ticket-validated"
         return {"protocolVersion": "1.0.0", "type": "authenticate", "ticket": value["ticket"],
                 "eventId": self.runner.config["event_id"], "roomId": room, **dict(zip(PIN_WS, self.runner.pins))}
 
@@ -240,6 +245,7 @@ class Client:
         old_stream = self.state.stream if self.state else None
         await self.bootstrap()
         self.ticket_message = await self.ticket(self.room_index)
+        self.operation_stage = "websocket-upgrade"
         self.ws = await self.runner.network.websocket()
         self.reader_task = None
         self.runner.opened += 1
@@ -251,12 +257,15 @@ class Client:
         self.pause_until = 0
         room = self.runner.config["rooms"][self.room_index]["room_id"]
         self.state = StreamState(self.actor, self.runner.config["event_id"], room, self.runner.pins, self.runner.contracts)
+        self.operation_stage = "authenticate-send"
         await self.ws.send(self.ticket_message)
         self.reader_task = asyncio.create_task(self.read())
+        self.operation_stage = "initial-snapshot"
         await self.runner.wait(lambda: self.state.stream is not None, "snapshot-deadline")
         check(old_stream is None or self.state.stream != old_stream, "reconnect-reused-stream")
         self.runner.connect_seconds.add(time.monotonic() - start)
         self.sender_task = asyncio.create_task(self.send_inputs())
+        self.operation_stage = "connected"
 
     async def read(self):
         try:
@@ -367,6 +376,7 @@ class Runner:
         self.http_lock = asyncio.Lock()
         self.next_http = 0
         self.full_room_auth = None
+        self.phase = "constructed"
 
     async def http(self, suffix, token, payload=None):
         start = time.monotonic()
@@ -413,9 +423,11 @@ class Runner:
             await asyncio.gather(*tasks, return_exceptions=True)
 
     async def prepare(self):
+        self.phase = "prepare-bootstrap"
         await self.parallel(self.clients, lambda c: c.bootstrap())
         self.by_actor = {c.actor: c for c in self.clients}
         check(len(self.by_actor) == len(self.clients), "distinct-canonical-principals")
+        self.phase = "prepare-catalog"
         for client in self.clients:
             status, catalog = await self.http("rooms", client.token)
             integer(status, 100, 599, "public-rooms-status")
@@ -427,6 +439,7 @@ class Runner:
                 actual = rooms.get(requested["room_id"])
                 check(actual is not None and actual["capacity"] == requested["capacity"]
                       and actual["availability"] == "AVAILABLE", "registered-room-capacity")
+        self.phase = "initial-admission"
         if self.capacity:
             # Public ticket issuance itself refuses a full target. Issue while
             # its final slot is free, then fill that slot through normal Auth.
@@ -436,7 +449,9 @@ class Runner:
             await self.parallel([final], lambda c: c.connect())
         else:
             await self.parallel(self.clients, lambda c: c.connect())
+        self.phase = "initial-roster-convergence"
         await self.converge()
+        self.phase = "prepared"
 
     async def converge(self):
         def complete():
@@ -487,6 +502,7 @@ class Runner:
         return elapsed(start)
 
     async def measure(self, report):
+        self.phase = "measurement"
         schedule = self.config["schedule"]
         start = time.monotonic()
         actions = sorted(schedule.get("reconnect", []), key=lambda r: r["after_seconds"])
@@ -614,9 +630,11 @@ async def run(config, *, capacity=True, network=None, contracts=None, restart_ho
             report["registered_rooms_verified"] = len(config["rooms"])
             report["initial_admitted_sockets"] = runner.active
             if capacity:
+                runner.phase = "full-room-switch"
                 seconds = await runner.switch(runner.clients[0], 1, True, auth=runner.full_room_auth)
                 report["steps"].append({"kind": "full-room-switch-keeps-old-membership", "seconds": seconds, "status": "OBSERVED"})
             else:
+                runner.phase = "fault-scenarios"
                 await runner.failures(report, restart_hook)
             await runner.measure(report)
             runner.check_errors()
@@ -629,6 +647,15 @@ async def run(config, *, capacity=True, network=None, contracts=None, restart_ho
         report["failure"] = "transport-or-input-unavailable"
     finally:
         if runner:
+            if report["result"] != "COMPLETED":
+                # Fixed code-owned stages and counts only, before stop mutates
+                # client handles. No ordinal/identity/token/frame/endpoint.
+                stages = {}
+                for client in runner.clients:
+                    stages[client.operation_stage] = stages.get(client.operation_stage, 0) + 1
+                report["failure_context"] = {"phase": runner.phase,
+                    "client_stage_counts": stages, "active_sockets_before_cleanup": runner.active,
+                    "operation_timeout_seconds": config["schedule"]["operation_timeout_seconds"]}
             # Cancellation/deadline does not abandon another client's socket.
             outcomes = await asyncio.gather(*(c.stop() for c in runner.clients), return_exceptions=True)
             report["cleanup"] = {"status": "CLIENT_HANDLES_CLOSED" if not any(isinstance(x, BaseException) for x in outcomes) else "FAILED",

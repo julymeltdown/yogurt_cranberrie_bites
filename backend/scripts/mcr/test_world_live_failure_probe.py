@@ -254,6 +254,41 @@ class DriverTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(all(s.closed for s in network.sockets))
         self.assertEqual(result["cleanup"]["status"], "CLIENT_HANDLES_CLOSED")
 
+    async def test_deadline_context_distinguishes_initial_snapshot_and_keeps_no_private_values(self):
+        config, contracts = configuration(), Contracts()
+        config["schedule"]["operation_timeout_seconds"] = .5
+        network = FixtureNetwork(config, contracts)
+        original = network.websocket
+        async def silent_snapshot():
+            socket = await original()
+            socket.snapshot = lambda *args, **kwargs: None
+            return socket
+        network.websocket = silent_snapshot
+        result = await run(config, capacity=False, network=network, contracts=contracts)
+        self.assertEqual(result["failure"], "whole-or-operation-deadline")
+        context = result["failure_context"]
+        self.assertEqual(context["phase"], "initial-admission")
+        self.assertEqual(context["client_stage_counts"], {"initial-snapshot": 2})
+        self.assertEqual(context["active_sockets_before_cleanup"], 2)
+        self.assertEqual(context["operation_timeout_seconds"], .5)
+        self.assertTrue(all(socket.closed for socket in network.sockets))
+        for private in [*network.actors, *network.actors.values(), config["gateway_url"], config["ws_url"]]:
+            self.assertNotIn(private, json.dumps(context))
+
+    async def test_deadline_context_distinguishes_public_bootstrap_before_sockets(self):
+        config, contracts = configuration(), Contracts()
+        config["schedule"]["operation_timeout_seconds"] = .2
+        network = FixtureNetwork(config, contracts)
+        async def stalled(*args, **kwargs):
+            await asyncio.sleep(2)
+        network.http = stalled
+        result = await run(config, capacity=False, network=network, contracts=contracts)
+        self.assertEqual(result["failure"], "whole-or-operation-deadline")
+        self.assertEqual(result["failure_context"]["phase"], "prepare-bootstrap")
+        self.assertEqual(result["failure_context"]["client_stage_counts"], {"bootstrap-http": 2})
+        self.assertEqual(result["failure_context"]["active_sockets_before_cleanup"], 0)
+        self.assertFalse(network.sockets)
+
     async def test_producer_oracle_whitelist(self):
         async def valid(): return {"memberships": 0, "prepared_transactions": 0}
         result, _ = await self.execute(configuration(), observation_hook=valid)
