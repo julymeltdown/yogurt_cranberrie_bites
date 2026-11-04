@@ -211,6 +211,21 @@ async fn native_seed_atomic_operator_binding_and_conflicts() -> anyhow::Result<(
         ));
         assert_eq!(before, fingerprint(&pool, ev).await?);
     }
+    // Matching pixels alone cannot authorize a different complete manifest.
+    let mut changed = Bytes::read()?;
+    let mut manifest: Value = serde_json::from_slice(&changed.manifest)?;
+    manifest["provenance"]["rights_statement"] = Value::String(format!(
+        "{} Test-only metadata mutation.",
+        manifest["provenance"]["rights_statement"].as_str().unwrap()
+    ));
+    changed.manifest = serde_json::to_vec(&manifest)?;
+    let different_pack = changed.validate(changed.new_hash())?;
+    assert_eq!(different_pack.pixels(), p.pixels());
+    assert!(matches!(
+        provision(&pool, &different_pack, &s).await,
+        Err(SeedError::NotPristine)
+    ));
+    assert_eq!(before, fingerprint(&pool, ev).await?);
     let row = sqlx::query("select pixels,palette from concert_mural_state where event_id=$1")
         .bind(ev)
         .fetch_one(&pool)
