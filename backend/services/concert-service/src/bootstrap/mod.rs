@@ -27,6 +27,8 @@ pub struct BootstrapFeatures {
     pub gifts: bool,
     pub wall: bool,
     pub social_sharing: bool,
+    /// Configured canonical mutation producer, never user or age authorization.
+    pub mutations: bool,
 }
 impl Default for BootstrapFeatures {
     fn default() -> Self {
@@ -37,6 +39,7 @@ impl Default for BootstrapFeatures {
             gifts: false,
             wall: false,
             social_sharing: false,
+            mutations: false,
         }
     }
 }

@@ -37,7 +37,7 @@ async fn main() -> anyhow::Result<()> {
     // listeners. Absence retains the explicit health-only operational mode.
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
     let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
-    let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
+    let mut world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
     anyhow::ensure!(
         world_settings.is_none() || runtime.is_some(),
         "World requires the guarded Concert bootstrap listener"
@@ -59,15 +59,17 @@ async fn main() -> anyhow::Result<()> {
             .map_err(|_| anyhow::anyhow!("Concert product release is unavailable"))
         })
         .transpose()?;
-    if inspect_release {
-        let release = bootstrap
+    let participant_settings = if inspect_release {
+        let source = bootstrap
             .as_ref()
             .ok_or_else(|| anyhow::anyhow!("Product release inspection requires bootstrap"))?;
-        println!("CONCERT_PRODUCT_RELEASE_DIGEST={}", release.source_digest());
-        return Ok(());
-    }
-    let participant_settings =
-        config::participant_runtime::ParticipantRuntimeSettings::load(runtime.is_some())?;
+        config::participant_runtime::ParticipantRuntimeSettings::load_for_release_inspection(
+            runtime.is_some(),
+            source,
+        )?
+    } else {
+        config::participant_runtime::ParticipantRuntimeSettings::load(runtime.is_some())?
+    };
     let intro_settings = config::intro_runtime::IntroRuntimeSettings::load(
         runtime.is_some(),
         participant_settings.is_some(),
@@ -97,6 +99,33 @@ async fn main() -> anyhow::Result<()> {
         inbox_settings.enabled() && target_settings.is_some(),
         runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
     )?;
+    let features = config::bootstrap_features::ConfiguredBootstrapFeatures::from_settings(
+        runtime.as_ref(),
+        world_settings.as_ref(),
+        participant_settings.as_ref(),
+        intro_settings.as_ref(),
+        feed_settings.as_ref(),
+        social_settings.as_ref(),
+    )?;
+    // Keep one computed Arc/digest for C03, Participant and the incumbent World.
+    let bootstrap = match world_settings.take() {
+        Some(world) => {
+            let world = world.with_bootstrap_features(&features)?;
+            let release = world.validated_release();
+            world_settings = Some(world);
+            Some(release)
+        }
+        None => bootstrap
+            .map(|source| features.bind_release(source))
+            .transpose()?,
+    };
+    if inspect_release {
+        let release = bootstrap
+            .as_ref()
+            .ok_or_else(|| anyhow::anyhow!("Product release inspection requires bootstrap"))?;
+        println!("CONCERT_PRODUCT_RELEASE_DIGEST={}", release.source_digest());
+        return Ok(());
+    }
     // The standalone constructor still rejects unsupported Feed composition.
     // Only the validated shared settings above consume the explicit read mode.
     let mut product_owner =

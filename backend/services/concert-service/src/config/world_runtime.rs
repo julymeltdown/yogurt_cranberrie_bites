@@ -195,6 +195,19 @@ impl WorldRuntimeSettings {
     ) -> Arc<concert_application::bootstrap::ValidatedProductRelease> {
         self.release.clone()
     }
+    /// Preserve the validated source-bound World release and all owner/listener/
+    /// replay identity. C03 and World receive this same final Arc and digest.
+    pub fn with_bootstrap_features(
+        mut self,
+        features: &super::bootstrap_features::ConfiguredBootstrapFeatures,
+    ) -> anyhow::Result<Self> {
+        anyhow::ensure!(
+            features.world_enabled(),
+            "Configured World availability is required"
+        );
+        self.release = features.bind_release(self.release)?;
+        Ok(self)
+    }
     /// Composes the actual DB bridge, 20Hz owner and socket server with supplied
     /// qualified live owner ports. Absence is rejected before binding a listener.
     pub async fn serve(
