@@ -84,6 +84,31 @@ def c03_database_checks(cluster, principals, report):
     return {label: "PASS" for label in checks}
 
 
+def world_database_checks(cluster, event, report):
+    cluster.assert_owned()
+    event = prep.quote(event)
+    checks = {
+        "issued_tickets_2": ("mcr_concert", "SELECT count(*) FROM concert_world_tickets "
+            "WHERE event_id=" + event, "2"),
+        "consumed_tickets_2": ("mcr_concert", "SELECT count(*) FROM concert_world_tickets "
+            "WHERE event_id=" + event + " AND consumed_at IS NOT NULL", "2"),
+        "released_memberships_0": ("mcr_concert", "SELECT count(*) FROM concert_world_memberships "
+            "WHERE event_id=" + event, "0"),
+        "no_prepared_transactions": ("postgres", "SELECT count(*) FROM pg_prepared_xacts", "0"),
+    }
+    deadline = time.monotonic() + 3
+    while True:
+        observed = {label: cluster.sql(database, query)
+                    for label, (database, query, _) in checks.items()}
+        report["world_database_observed"] = observed
+        if all(observed[label] == expected for label, (_, _, expected) in checks.items()):
+            return {label: "PASS" for label in checks}
+        if time.monotonic() >= deadline:
+            for label, (_, _, expected) in checks.items():
+                prep.auth.require(observed[label] == expected, "world-" + label)
+        time.sleep(0.05)
+
+
 def run(args):
     fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     report = {"result": "FAIL", "scope": "actual real-Auth mTLS C03/World startup",
@@ -204,6 +229,15 @@ def run(args):
         report["public_c03"] = probe.run_pair(descriptor["gateway_url"], context["event"],
             args.browser_origin, [{"user_id": user, "access_token": token} for user, _, token in principals])
         report["c03_database"] = c03_database_checks(stack.cluster, principals, report)
+        if args.world:
+            from world_two_principal_probe import run_probe
+            report["world_probe"] = run_probe(descriptor["gateway_url"], args.browser_origin,
+                context["event"], context["rooms"][0]["room_id"],
+                [token for _, _, token in principals],
+                "ws://" + stack.ports.address("concert-service:world") + "/world-ws", value)
+            report["world_two_client"] = report["world_probe"]["result"]
+            prep.auth.require(report["world_two_client"] == "PASS", "actual-world-two-client")
+            report["world_database"] = world_database_checks(stack.cluster, context["event"], report)
         private = {"gateway_url": descriptor["gateway_url"], "browser_origin": args.browser_origin,
             "event_id": context["event"], "rooms": context["rooms"],
             "release_digest": context["digest"], "release_inputs": context["release"],
@@ -217,7 +251,7 @@ def run(args):
             world_activation="ACTUAL_LISTENER_READY" if args.world else "OFF",
             concert_binary_sha256=dev.runtime.digest(args.concert_bin))
         print(json.dumps({"result": "PARTIAL", "private_inputs": str(inputs),
-                          "world_two_client": "NOT_RUN"}), flush=True)
+                          "world_two_client": report["world_two_client"]}), flush=True)
         deadline = time.monotonic() + args.hold_seconds
         while time.monotonic() < deadline:
             stack.health()
