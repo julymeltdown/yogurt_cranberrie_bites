@@ -1,0 +1,29 @@
+{
+  "lease": "CORE-ENROLLMENT-C07-20261104T1854Z",
+  "status": "FAIL",
+  "error": "AssertionError('qualification child failed; original logs retained')",
+  "actualFullAt": 1793818458.2512388,
+  "source": "e2f313e2b723067d14ecbe05d5d4fb8c058c2116",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "peak": {
+    "processes": 3,
+    "rssBytes": 141852672,
+    "wholeBytes": 1403879248,
+    "newBytes": 4096,
+    "tmpBytes": 0,
+    "durableBytes": 4096
+  },
+  "allObservedPids": [
+    74518,
+    74697,
+    74699,
+    74751,
+    74759
+  ],
+  "liveOwnedPids": [],
+  "privateTmpAbsent": true,
+  "compileScratchAbsent": true,
+  "readonlyInputsUnchanged": true,
+  "portsCreated": [],
+  "freeBytes": 12116234240
+}

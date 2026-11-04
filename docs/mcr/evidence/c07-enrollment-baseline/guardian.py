@@ -122,6 +122,14 @@ finally:
             shutil.rmtree(path)
     remaining = sorted((set(table()) & seen) - {os.getpid()})
     assert not remaining, 'owned descendants must drain before FULL'
+    # Capture terminal disk growth even when a child fails between 1s samples.
+    storage = allocated(ROOT) + allocated(GIT)
+    terminal = dict(wholeBytes=max(BASE, storage)+RETAINED, newBytes=max(0, storage-BASE),
+                    tmpBytes=0, durableBytes=allocated(OUT))
+    for key, value in terminal.items():
+        peak[key] = max(peak[key], value)
+    if peak['wholeBytes'] > 2*GIB or peak['newBytes'] > 128*MIB or peak['durableBytes'] > 24*MIB:
+        status = 'FAIL'; error = 'terminal disk allocation cap'
     mutable = {'contracts/generated/mcr-domain.openapi.json', 'backend/docs/api/mcr-domain.openapi.json',
                'scripts/mcr/contracts/qa01-coverage/pins.json',
                *('contracts/fixtures/c07/' + name + '.json' for name in ('responses', 'compatibility', 'index'))}

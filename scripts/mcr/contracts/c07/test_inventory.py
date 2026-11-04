@@ -44,8 +44,14 @@ class InventoryTests(unittest.TestCase):
                     path.write_text(content)
 
     def test_unsupported_schema_extensions_fail_generation(self):
-        for rule in ({'not': {}}, {'format': 'unimplemented'}, {'type': 'unimplemented'}):
+        for rule in ({'contains': {}}, {'format': 'unimplemented'}, {'type': 'unimplemented'},
+                     {'not': {'contains': {}}}):
             with self.assertRaises(ValueError): generator.check_schema(rule)
+
+    def test_negation_children_are_admitted_recursively(self):
+        for rule in ({'not': True}, {'not': False}, {'not': {'const': 0}},
+                     {'not': {'not': {'type': 'integer'}}}):
+            generator.check_schema(rule)
 
 
 if __name__ == '__main__':

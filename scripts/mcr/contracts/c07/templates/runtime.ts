@@ -62,9 +62,12 @@ function format(kind: string, value: string): boolean {
   return kind === 'password' || kind === 'int64' || kind === 'binary'
 }
 function matches(s: Rule, v: any, depth: number, budget: { left: number }): boolean {
-  if (--budget.left < 0 || depth > 96) return false
+  // Exhaustion aborts the complete decision: negation must never turn a
+  // bounded traversal failure into an accepted instance.
+  if (--budget.left < 0 || depth > 96) throw new Error('C07 schema traversal bound')
   if (typeof s === 'boolean') return s
   if (s.$ref && !matches(resolve(s.$ref), v, depth + 1, budget)) return false
+  if (s.not !== undefined && matches(s.not, v, depth + 1, budget)) return false
   if (s.allOf && !s.allOf.every((r: Rule) => matches(r, v, depth + 1, budget))) return false
   if (s.anyOf && !s.anyOf.some((r: Rule) => matches(r, v, depth + 1, budget))) return false
   if (s.oneOf && s.oneOf.filter((r: Rule) => matches(r, v, depth + 1, budget)).length !== 1) return false

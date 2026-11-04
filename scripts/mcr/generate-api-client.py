@@ -13,7 +13,7 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[2]
 HERE = ROOT / 'scripts/mcr/contracts/c07'
 CLIENTS = ('contracts/generated/api-client', 'frontend/src/shared/api/generated')
-SCHEMA_KEYS = {'$ref','type','properties','required','additionalProperties','items','const','enum','anyOf','oneOf','allOf','if','then','else','minimum','maximum','minLength','maxLength','pattern','format','minItems','maxItems','minProperties','uniqueItems','description','default','example','readOnly','x-mcr-utf8-bytes'}
+SCHEMA_KEYS = {'$ref','type','properties','required','additionalProperties','items','const','enum','anyOf','oneOf','allOf','not','if','then','else','minimum','maximum','minLength','maxLength','pattern','format','minItems','maxItems','minProperties','uniqueItems','description','default','example','readOnly','x-mcr-utf8-bytes'}
 
 def dump(v): return json.dumps(v, sort_keys=True, ensure_ascii=False, allow_nan=False, indent=2)+'\n'
 def sha(raw): return hashlib.sha256(raw).hexdigest()
@@ -64,7 +64,7 @@ def check_schema(s):
     for k in ('anyOf','oneOf','allOf'):
         for v in s.get(k,[]):check_schema(v)
     for v in s.get('properties',{}).values():check_schema(v)
-    for k in ('items','additionalProperties','if','then','else'):
+    for k in ('items','additionalProperties','not','if','then','else'):
         if k in s and isinstance(s[k],(dict,bool)):check_schema(s[k])
 
 def ts(s):

@@ -44,3 +44,24 @@ eight existing C07 checks then run using retained dependencies. No freeze mode
 or assertion bypass is used. A fresh finite Social allocation is required
 before generation or qualification. Results and publication receipt follow
 below when delivered.
+
+The first admitted attempt, `CORE-ENROLLMENT-C07-20261104T1854Z`, accepted
+at 18:54:17.732755 UTC and fully released at 18:54:18.251239 UTC. Its original
+failure and all resource records are retained in `evidence/c07-enrollment-baseline/round01/`.
+The unchanged C07 generator rejected the new Enrollment `not` assertions
+before rendering or any qualification command. Active pins remained unchanged;
+only the two explicitly granted DOMAIN projections had been computed. The
+first disk peak is sampled evidence, since this failure occurred between the
+one-second samples; the guardian now also samples terminal disk growth.
+
+Root153 granted the precise generator keyword/recursive validation, runtime
+negation and additive runtime regression changes. Schema negation must reject
+the published sixteen nil-UUID exclusions. Depth/node exhaustion aborts the
+whole decision through the existing public rejection boundary, so negation
+cannot turn an exhausted traversal into acceptance. Canonical CORE schemas
+and the independent Python validator/witness implementation remain unchanged.
+The five existing runtime tests and all original negative probes are retained.
+Root153 also granted the fourth C07 inventory-test file: the obsolete
+unsupported-`not` probe becomes an unsupported-`contains` probe, with additive
+negation-child admission and nested unsupported-keyword rejection cases.
+The repair requires a new frozen readset and fresh finite allocation.

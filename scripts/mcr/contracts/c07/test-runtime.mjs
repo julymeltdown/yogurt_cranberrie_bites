@@ -133,3 +133,47 @@ test('clock and seed drive reproducible mock IDs, timestamps, expiry and scripte
   assert.equal(mock.requests[0].at, '2030-01-01T00:00:00.000Z'); assert.equal(mock.requests[1].at, '2030-01-01T00:00:00.200Z')
   mock.assertComplete()
 })
+
+test('Enrollment negation excludes nil UUIDs and bounded traversal cannot invert into acceptance', () => {
+  for (const [rule, value, expected] of [
+    [{ not: true }, 0, false], [{ not: false }, 0, true],
+    [{ not: { const: 0 } }, 0, false], [{ not: { const: 0 } }, 1, true],
+    [{ type: 'string', not: { const: 'forbidden' } }, 'allowed', true],
+    [{ type: 'string', not: { const: 'forbidden' } }, 'forbidden', false],
+    [{ type: 'string', not: { const: 'forbidden' } }, 1, false],
+    [{ type: 'object', not: { required: ['secret'] } }, {}, true],
+    [{ type: 'object', not: { required: ['secret'] } }, { secret: null }, false],
+    [{ anyOf: [{ not: { type: 'number' } }, { const: 1 }] }, 1, true],
+    [{ anyOf: [{ not: { type: 'number' } }, { const: 1 }] }, 2, false],
+    [{ if: { type: 'number' }, then: { not: { const: 0 } }, else: { not: { const: '' } } }, 0, false],
+    [{ if: { type: 'number' }, then: { not: { const: 0 } }, else: { not: { const: '' } } }, 'x', true],
+  ]) assert.equal(api.accepts(rule, value), expected)
+  const nil = '00000000-0000-0000-0000-000000000000'
+  const uuid = '00000000-0000-4000-8000-000000000001'
+  const begin = { policyRevision: uuid }
+  assert.equal(api.schemas.EnrollmentBeginRequest.safeParse(begin).success, true)
+  assert.equal(api.schemas.EnrollmentBeginRequest.safeParse({ policyRevision: nil }).success, false)
+  const ref = { not: { $ref: '#/components/schemas/EnrollmentBeginRequest' } }
+  assert.equal(api.accepts(ref, begin), false)
+  assert.equal(api.accepts(ref, { policyRevision: nil }), true)
+  let exclusions = 0
+  function walk(rule) {
+    if (!rule || typeof rule !== 'object') return
+    if (rule.not?.const === nil) {
+      exclusions++
+      assert.equal(api.accepts(rule, uuid), true)
+      assert.equal(api.accepts(rule, nil), false)
+    }
+    for (const child of Object.values(rule)) walk(child)
+  }
+  for (const [name, rule] of Object.entries(contract.components.schemas)) if (name.startsWith('Enrollment')) walk(rule)
+  assert.equal(exclusions, 16)
+  let nested = { const: 0 }
+  for (let index = 0; index < 40; index++) nested = { not: nested }
+  assert.equal(api.accepts(nested, 0), true)
+  for (let index = 0; index < 60; index++) nested = { not: nested }
+  assert.equal(api.accepts(nested, 1), false)
+  assert.equal(api.accepts({ not: { allOf: Array(100001).fill(true) } }, 0), false)
+  const recursive = {}; recursive.not = recursive
+  assert.equal(api.accepts(recursive, 0), false)
+})
