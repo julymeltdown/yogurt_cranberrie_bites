@@ -9,7 +9,7 @@ import { validDateTime, validUri, validUuid } from '../map/formats'
 import { schemaValid } from '../map/schema'
 import { abortable, createAssetResources, loadMap, pngDimensions, type AssetResources, type LoadedMap } from '../map/resources'
 import { validateTiled } from '../map/tiled'
-import { createWorldRuntime, type ControlContext, type EngineFactory, type WorldRuntime } from '../runtime'
+import { createWorldRuntime, type ControlContext, type EngineFactory, type RuntimeOptions, type WorldRuntime } from '../runtime'
 import { rehash, synthetic } from './fixtures/synthetic'
 import type { AvatarScenePort } from '../avatar/scene'
 function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }
@@ -154,7 +154,7 @@ async function loaded() {
     resources: { read: async r => r.kind === 'png' ? f.png : f.tiledBytes }, decode: async () => ({ image: { naturalWidth: 96, naturalHeight: 32 } as HTMLImageElement, dispose }) }, new AbortController().signal)
   return { map, dispose }
 }
-function owner(load: (signal: AbortSignal) => Promise<LoadedMap>, factory?: EngineFactory) {
+function owner(load: (signal: AbortSignal) => Promise<LoadedMap>, factory?: EngineFactory, createOverview?: RuntimeOptions['createOverview']) {
   const host = document.createElement('div'); document.body.append(host)
   const stats = { created: 0, destroyed: 0, active: 0, peak: 0, sizes: [] as number[][], visible: [] as boolean[] }
   const engine: EngineFactory = (host) => {
@@ -165,9 +165,29 @@ function owner(load: (signal: AbortSignal) => Promise<LoadedMap>, factory?: Engi
       destroy() { if (stopped) return; stopped = true; stats.destroyed++; stats.active--; canvas.remove(); closed.resolve() } }
   }
   const importer = vi.fn(async () => factory ?? engine)
-  const runtime = createWorldRuntime({ host, load, importEngine: importer, timeoutMs: 60 }); runtimes.push(runtime)
+  const runtime = createWorldRuntime({ host, load, importEngine: importer, timeoutMs: 60, ...(createOverview ? { createOverview } : {}) }); runtimes.push(runtime)
   return { runtime, host, stats, engine, importer }
 }
+it('owns one custom overview, receives only ready map leases and withdraws before engine destruction', async () => {
+  const data = await loaded(), next = await loaded(), maps: (LoadedMap | null)[] = []
+  const overview = { read: () => null, subscribe: () => () => {}, replace: vi.fn((map: LoadedMap | null) => { maps.push(map) }), dispose: vi.fn() }
+  const createOverview = vi.fn(() => overview), replaceSkin = vi.fn(), destroy = vi.fn(() => expect(maps.at(-1)).toBeNull())
+  const f = owner(async () => data.map, () => ({ ready: Promise.resolve(), closed: Promise.resolve(), resize() {}, setVisible() {}, destroy, replaceSkin }), createOverview)
+  expect(createOverview).toHaveBeenCalledOnce(); expect(maps).toEqual([])
+  await f.runtime.start(); expect(maps).toEqual([data.map]); expect(f.runtime.overview.read()).toBeNull()
+  await f.runtime.replaceSkin(async () => next.map)
+  expect(replaceSkin).toHaveBeenCalledWith(next.map); expect(maps).toEqual([data.map, next.map]); expect(data.dispose).toHaveBeenCalledOnce()
+  f.runtime.stop(); await f.runtime.settled(); expect(maps.at(-1)).toBeNull(); expect(destroy).toHaveBeenCalledOnce()
+  expect(overview.dispose).not.toHaveBeenCalled(); expect(next.dispose).toHaveBeenCalledOnce()
+  f.runtime.dispose(); f.runtime.dispose(); expect(overview.dispose).toHaveBeenCalledOnce(); expect(createOverview).toHaveBeenCalledOnce()
+})
+it('still releases the engine and decoded map when an injected projection fails during withdrawal', async () => {
+  const data = await loaded(), projection = { read: () => null, subscribe: () => () => {}, replace() { throw Error('Projection failure') }, dispose() { throw Error('Projection teardown failure') } }
+  const f = owner(async () => data.map, undefined, () => projection)
+  expect((await f.runtime.start()).phase).toBe('ready')
+  f.runtime.dispose(); await f.runtime.settled()
+  expect(f.stats.destroyed).toBe(1); expect(data.dispose).toHaveBeenCalledOnce(); expect(f.runtime.read().phase).toBe('disposed')
+})
 it('reserves one start, renders geometry and releases canvas/observer/frame/image on repeated stop/dispose', async () => {
   const { map, dispose } = await loaded(), { runtime, stats } = owner(async () => map)
   const a = runtime.start(), b = runtime.start(); expect(a).toBe(b)

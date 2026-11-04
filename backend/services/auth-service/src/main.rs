@@ -43,7 +43,27 @@ async fn main() -> anyhow::Result<()> {
             )
         })
         .transpose()?;
+    let authority_store = auth_service::concert_authority::configured_store(
+        pool.clone(),
+        config.tls_material.as_ref(),
+        &config.outbound_identity,
+        relationship_verifier.as_ref(),
+    )
+    .await?;
+    let authority_service = authority_store
+        .clone()
+        .map(|store| {
+            auth_service::adapters::r#in::grpc::concert_authority::guarded_server(
+                store,
+                auth_service::concert_authority::owner_caller_registry()?,
+                relationship_verifier
+                    .clone()
+                    .expect("configured owner verifier"),
+            )
+        })
+        .transpose()?;
     let readiness = readiness(pool.clone()).with_dependencies(vec![
+        auth_service::concert_authority::readiness_probe(authority_store.clone()),
         Probe::grpc(
             platform::edge::Edge::AuthProfile,
             &config.profile_grpc_endpoint,
@@ -114,6 +134,7 @@ async fn main() -> anyhow::Result<()> {
                     config.caller_registry.clone(), verifier.into_inner(),
                 )).transpose()?)
                 .add_optional_service(invalidation_service)
+                .add_optional_service(authority_service)
                 .add_service(platform::grpc_method_policy::guard(
                     &auth_service::adapters::r#in::grpc::method_policy::AUTH_METHOD_POLICY,
                     AuthServiceServer::new(grpc_service),
@@ -149,7 +170,8 @@ async fn main() -> anyhow::Result<()> {
             grpc,
             lifecycle_cleanup,
             user_deletion,
-            mail_worker.run()
+            mail_worker.run(),
+            auth_service::concert_authority::run_recovery(authority_store)
         )?;
         Ok(())
     })

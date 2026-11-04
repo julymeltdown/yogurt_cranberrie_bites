@@ -1,5 +1,17 @@
 # Reference-scene World adoption
 
+## FE-SPATIAL-V3-WORLD — active delivery
+
+Status `IN_PROGRESS`; NEW active unbudgeted goal, retained isolated checkout/branch `codex/mcr-fe-scene-spatial-v3`, base `67e7ecabeac661edd2f327b37a02f072d5e97dca`. This required original FE14/FE15/FE19 geometry/fidelity increment consumes exact published artist `bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9`: spatial-v3 geometry `sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f` and all three distinct quality-v6 skins. Existing v4/map2 delivery below remains immutable historical evidence, not qualification of this new scene.
+
+The same exclusive code/doc lease is retained; new public outputs are only `frontend/public/world/reference-scene-v2/runtime/spatial-v3/**`. Root retains runtime/composition, their tests and app/world-entry; this writer changes none of those paths.
+
+First independent source handoff: `runtime/spatial-v3/build-tiled.py` reproduces finite48×81×16 three-layer `canonical-map-v4.json` from exact artist proposal bytes, with inert `mcr-theme.png` compatibility marker and 768×1296 texture grid. Actual URL `/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json`, 24,058 bytes, raw hash `sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9`. `source-binding-v4.json` pins artist manifest/projection and all three scenery/layout/resources/provenance inputs, with proposed map identity `mcr_reference_scene_r3` revision4 agreed directly with BE. It deliberately asserts `NOT_RELEASE_BOUND` / `NOT_ADMITTED`, with no guessed canonical backend content hash.
+
+Generator and independent byte/grid/source-pin checks exit0: all3,888 cells per layer equal the new canonical grids, collision differs from old geometry20168, all three transfer/pixel budgets remain unchanged and old public artifacts remain byte-identical. Application implementation, original task-local disposition and new native evidence follow independently; the static handoff alone does not complete them or grant product/visual/live/physical acceptance.
+
+---
+
 Task `FE-SCENE-R3-WORLD`, isolated branch `codex/mcr-fe-scene-r3-world`, initial master base `8f89d1905a86143d34ff77d2951fc60651ab2497`. Status: `INTEGRATED` for the bounded loader/draw/native qualification below. Production activation, live multiplayer and target visual acceptance remain separate and unqualified. The metadata handoff was published at `6510c3af`; the loader/Map producer/public Tiled handoff at `aa3e2f3d` (source `6491aa47`). The final scene implementation commit containing this record follows that ancestry.
 
 Exclusive ownership is new `frontend/src/world/reference-scene/**`, `frontend/src/world/scenes/MapScene.ts` and this document. Artist public inputs, backend/contracts, root, runtime/composition, existing illustrated/map modules, avatar and Places implementation remain separately owned. Developer verification and direct non-force scoped publication do not require a king/SL review.

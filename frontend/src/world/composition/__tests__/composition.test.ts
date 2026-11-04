@@ -23,6 +23,7 @@ vi.mock('../../map/resources', async original => {
 const releases: (() => void)[] = []
 afterEach(() => { releases.splice(0).reverse().forEach(release => release()); vi.restoreAllMocks(); vi.unstubAllGlobals(); document.body.replaceChildren() })
 async function fixture(options: { resolve?: WorldCompositionOptions['resolveRelease']; renderer?: WorldRendererPort; closed?: Promise<void>;
+  createOverview?: WorldCompositionOptions['createOverview'];
   handler?: (request: Request) => Promise<Response> | Response } = {}) {
   decoded.calls = decoded.releases = 0
   const data = await testData(), requests: Request[] = [], sockets: MockSocket[] = []
@@ -61,6 +62,7 @@ async function fixture(options: { resolve?: WorldCompositionOptions['resolveRele
   }
   const resolveRelease = options.resolve ?? resolverFor(auth, data)
   const composition = createWorldComposition({ auth, resolveRelease, importEngine: async () => engine,
+    ...(options.createOverview ? { createOverview: options.createOverview } : {}),
     ...(options.renderer ? { renderer: options.renderer } : {}) })
   releases.push(() => composition.dispose())
   const host = document.createElement('div'); document.body.append(host)
@@ -70,6 +72,21 @@ async function fixture(options: { resolve?: WorldCompositionOptions['resolveRele
   return { auth, data, requests, sockets, composition, stats, host, controller, context, mount, resolveRelease, engine }
 }
 const live = async (f: Awaited<ReturnType<typeof fixture>>) => { const lease = f.mount(); await waitFor(() => expect(f.composition.replication.read()?.phase, JSON.stringify({ state: f.composition.read(), stats: f.stats })).toBe('live')); return lease }
+
+it('forwards one runtime overview factory and withdraws its public port on canonical privacy cleanup', async () => {
+  const replace = vi.fn(), dispose = vi.fn(), listener = vi.fn(), stops = vi.fn()
+  const createOverview = vi.fn(() => ({ read: () => null, subscribe: vi.fn(() => stops), replace, dispose }))
+  const f = await fixture({ createOverview })
+  expect(createOverview).not.toHaveBeenCalled()
+  const lease = await live(f), presentation = f.composition.presentation.read()!
+  expect(createOverview).toHaveBeenCalledOnce(); expect(replace.mock.calls[0]?.[0]).toMatchObject({ map: f.data.map })
+  const stop = presentation.overview!.subscribe(listener)
+  expect(presentation.overview!.read()).toBeNull()
+  f.auth.privacy.changePolicy(f.context.privacyScope, 'suspended')
+  expect(f.composition.presentation.read()).toBeNull(); expect(presentation.overview!.read()).toBeNull()
+  expect(replace.mock.calls.at(-1)?.[0]).toBeNull(); expect(dispose).toHaveBeenCalledOnce()
+  stop(); expect(stops).toHaveBeenCalledOnce(); lease.dispose(); expect(dispose).toHaveBeenCalledOnce()
+})
 
 it('composes existing runtime, canonical login/ticket HTTP, real transport engine and replication with one owner', async () => {
   const f = await fixture(), lease = await live(f)

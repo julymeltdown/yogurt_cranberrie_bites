@@ -41,12 +41,34 @@ async fn main() -> anyhow::Result<()> {
             )
         })
         .transpose()?;
-    let readiness = readiness(pool.clone()).with_dependencies(vec![Probe::grpc(
-        platform::edge::Edge::FriendProfile,
-        &config.profile_grpc_endpoint,
-        &config.outbound_identity,
+    let authority_store = friend_service::concert_authority::configured_store(
+        pool.clone(),
         config.tls_material.as_ref(),
-    )?])?;
+        &config.outbound_identity,
+        relationship_verifier.as_ref(),
+    )
+    .await?;
+    let authority_service = authority_store
+        .clone()
+        .map(|store| {
+            friend_service::adapters::r#in::grpc::concert_authority::guarded_server(
+                store,
+                friend_service::concert_authority::owner_caller_registry()?,
+                relationship_verifier
+                    .clone()
+                    .expect("configured owner verifier"),
+            )
+        })
+        .transpose()?;
+    let readiness = readiness(pool.clone()).with_dependencies(vec![
+        friend_service::concert_authority::readiness_probe(authority_store.clone()),
+        Probe::grpc(
+            platform::edge::Edge::FriendProfile,
+            &config.profile_grpc_endpoint,
+            &config.outbound_identity,
+            config.tls_material.as_ref(),
+        )?,
+    ])?;
     let health = health_router(readiness.clone());
     let state = Arc::new(build_state(&config, pool).await?);
     let (http_listener, metrics_listener) =
@@ -98,6 +120,7 @@ async fn main() -> anyhow::Result<()> {
                     config.caller_registry.clone(), verifier.into_inner(),
                 )).transpose()?)
                 .add_optional_service(invalidation_service)
+                .add_optional_service(authority_service)
                 .add_service(platform::grpc_method_policy::guard_with_forwarding(
                     &friend_service::adapters::r#in::grpc::method_policy::FRIEND_METHOD_POLICY,
                     friend_service::adapters::r#in::grpc::method_policy::FRIEND_FORWARDING,
@@ -148,7 +171,7 @@ async fn main() -> anyhow::Result<()> {
                 platform::shutdown::idle().await
             }
         };
-        tokio::try_join!(http, grpc, refresh, retention, mutation_receipt_retention)?;
+        tokio::try_join!(http, grpc, refresh, retention, mutation_receipt_retention, friend_service::concert_authority::run_recovery(authority_store))?;
         Ok(())
     })
     .await;
