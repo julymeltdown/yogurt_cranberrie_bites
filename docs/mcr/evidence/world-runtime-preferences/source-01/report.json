@@ -1,0 +1,86 @@
+{
+  "slot": "WORLD-PREFERENCES-SOURCE-202611040644Z",
+  "base": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "startedAtUTC": "2026-11-04T06:44:28Z",
+  "goal": 1793774015,
+  "commands": [
+    {
+      "name": "tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/world/preferences/__tests__/vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "src/world/preferences/__tests__",
+        "src/features/theme/__tests__",
+        "src/world/__tests__/runtime.test.ts",
+        "--maxWorkers=1",
+        "--no-file-parallelism",
+        "--cache=false"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend",
+      "exitCode": 0
+    },
+    {
+      "name": "types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend",
+      "exitCode": 2
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/world/preferences",
+        "src/world/runtime.ts",
+        "src/world/scenes/MapScene.ts",
+        "src/features/theme/model/controller.ts",
+        "src/features/theme/__tests__/runtime-preferences"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend",
+      "exitCode": 0
+    },
+    {
+      "name": "plan",
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "exitCode": 0
+    }
+  ],
+  "sourcePins": {
+    "frontend/src/features/theme/__tests__/runtime-preferences/cancellation.test.ts": "2e3cc969c6d42a195dc30d59a295329d9b0dc1af673edb34bdbbcab31e512b94",
+    "frontend/src/features/theme/model/controller.ts": "879105b2e39a63b6b206c9955a650b7867bcc9ada76c5c350c1286e38da2ac96",
+    "frontend/src/world/preferences/__tests__/effects.test.ts": "3bc6d332d88c6a91f75a46c598bd21f1e7abb10fde01d71901c31da46d80633c",
+    "frontend/src/world/preferences/__tests__/runtime-owner.test.ts": "f2895fb262d72d8ed9407eda57f07906514c8e68ce33feeaeb98188f70680489",
+    "frontend/src/world/preferences/__tests__/vitest.config.ts": "c3e154c6ef5a109ab7b5264546cbc998b87eca9831e48e98dfd74310affe406b",
+    "frontend/src/world/preferences/contract.ts": "39817923bc33e0e8b44eb27805678377b8468c18766404df97fd99f072641948",
+    "frontend/src/world/preferences/engine.ts": "1df592101e20678eb43d710d51d20d317e93a501b3c8ed13f58604cdb745c913",
+    "frontend/src/world/preferences/runtime.ts": "8aca495286342baf294ff4f0c141766899f4b73307e75493a84c397aa4553e97",
+    "frontend/src/world/runtime.ts": "b869c23d64c0114e4a84c84ba87dbc6395bb0ec5d68ecd3dc51df9ea040adfd9",
+    "frontend/src/world/scenes/MapScene.ts": "91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258"
+  },
+  "peakBytes": 1716224,
+  "status": "FAIL",
+  "cleanup": {
+    "ownTemporaryRemoved": true,
+    "ownLinkAbsent": true,
+    "ownedProcessFinished": true
+  },
+  "elapsedSeconds": 12.25
+}

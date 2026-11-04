@@ -1,0 +1,80 @@
+--- a/frontend/src/world/composition/index.ts
++++ b/frontend/src/world/composition/index.ts
+@@ -56,6 +56,8 @@
+   readonly map: PlaceMapRelease
+   readonly camera: Pick<MovementAttachment['camera'], 'lookAt' | 'recenter' | 'setZoom' | 'read'>
+   readonly theme: Pick<ThemeController, 'read' | 'subscribe' | 'select'>
++  /** Same ready runtime; capabilities are withdrawn with this presentation release. */
++  readonly runtimePreferences?: { readonly effects: WorldRuntime['effects'] }
+ }
+ export interface WorldPresentationPort { read(): WorldPresentationRelease | null; subscribe(listener: () => void): () => void }
+ export interface WorldCompositionOptions {
+@@ -298,6 +300,7 @@
+           map: Object.freeze({ scope: context.scope, manifest: prepared.map,
+             expected: Object.freeze({ mapId: prepared.resources.mapId, revision: prepared.resources.mapRevision, contentHash: prepared.mapInput.pin.mapHash, geometryHash: prepared.map.geometry_hash }) }),
+           camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }),
++          runtimePreferences: Object.freeze({ effects: runtime.effects }),
+           overview: Object.freeze({ read: () => livePresentation() ? runtime?.overview.read() ?? null : null,
+             subscribe: runtime.overview.subscribe }) })
+         void theme.restore()
+--- a/frontend/src/app/world-panels/index.tsx
++++ b/frontend/src/app/world-panels/index.tsx
+@@ -35,6 +35,7 @@
+   const wall = ownership.mural ? <MuralEntryProvider auth={auth ?? null} scope={scope} release={mural}>{children}</MuralEntryProvider> : children
+   return <Context value={current}>{ownership.places ? <PlacesEntryProvider auth={auth ?? null} source={places}>{wall}</PlacesEntryProvider> : wall}</Context>
+ }
++export function useWorldPresentation() { return useContext(Context) }
+ export function ProductionEraControls() { const release = useContext(Context); return <EraControls controller={release?.theme ?? null} /> }
+ export function ProductionThemePanel() { return <><ProductionEraControls /><p>Era preferences are saved on this device for this account and event. Server preference synchronization is unavailable.</p></> }
+ export function ProductionMapPanel() { return <div className="mcr-root-map"><PlacesOverviewRoute /></div> }
+--- a/frontend/src/app/account-entry/panels.tsx
++++ b/frontend/src/app/account-entry/panels.tsx
+@@ -2,6 +2,8 @@
+ import { AvatarEditor } from '../../features/avatar'
+ import { MeHub, ProfileForm } from '../../features/me'
+ import { SettingsPage } from '../../features/settings'
++import { useRuntimePreferences } from '../../features/settings/runtime-adoption/useRuntimePreferences'
++import { useWorldPresentation } from '../world-panels'
+ import { useAccountOwner } from './provider'
+ import { useCharacterRuntime } from '../character-entry/provider'
+ import { WholeCharacterView } from '../../entities/avatar/whole-character'
+@@ -11,13 +13,16 @@
+ export type AccountView = 'me' | 'profile' | 'avatar' | 'settings'
+ export default function AccountPanel({ view }: { view: AccountView }) {
+   const owner = useAccountOwner()
++  const presentation = useWorldPresentation()
++  const runtimePreferences = useRuntimePreferences(owner?.auth ?? null, owner?.scope ?? null, presentation)
+   const runtime = useCharacterRuntime()
+   const activity = useLoadedProfileActivity(owner?.scope.userId ?? '')
+   useEffect(() => { if (owner && view !== 'avatar' && owner.me.read().phase === 'idle') void owner.me.load() }, [owner, view])
+   if (!owner) return <p role="status">Account access is unavailable until your current event and session are verified.</p>
+   if (view === 'avatar') return owner.wholeAvatar ? <WholeCharacterEditor controller={owner.wholeAvatar} /> : <AvatarEditor controller={owner.avatar} />
+   if (view === 'profile') return <ProfileForm controller={owner.me} />
+-  if (view === 'settings') return <SettingsPage controller={owner.me} auth={owner.auth} />
++  if (view === 'settings') return <SettingsPage controller={owner.me} auth={owner.auth}
++    {...(runtimePreferences && presentation ? { runtime: runtimePreferences, theme: presentation.theme } : {})} />
+   return <MeHub controller={owner.me} auth={owner.auth} {...(owner.source ? { thumbnailSource: owner.source } : {})}
+     {...(activity ? { activity } : {})}
+     {...(runtime ? { renderAvatar: (avatar, label) => avatar.config.contract_version === '1.1.0'
+--- a/frontend/src/features/settings/SettingsPage.tsx
++++ b/frontend/src/features/settings/SettingsPage.tsx
+@@ -11,7 +11,7 @@
+ /** Existing shell adapter: honor signal for the entire applied lifetime, stop audio/release effects on abort.
+  * Begin with sound off; apply is only invoked by an explicit click after a saved value. Never allocate a second runtime. */
+ export interface RuntimePreferencesPort { apply(preferences: Readonly<Preferences>, scope: PrivacyScope, signal: AbortSignal): Promise<void> }
+-export function SettingsPage({ controller, auth, runtime, theme }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; runtime?: RuntimePreferencesPort; theme?: ThemeController }) {
++export function SettingsPage({ controller, auth, runtime, theme }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; runtime?: RuntimePreferencesPort; theme?: Pick<ThemeController, 'read' | 'subscribe' | 'select'> }) {
+   const s = useMe(controller), [application, setApplication] = useState(''), [applying, setApplying] = useState(false)
+   const disabled = !s.participant || ['loading', 'saving', 'expired', 'disposed'].includes(s.phase)
+   const [lifetime] = useState(() => ({ current: new AbortController() }))
+--- a/frontend/src/features/theme/ui/ThemeSelector.tsx
++++ b/frontend/src/features/theme/ui/ThemeSelector.tsx
+@@ -3,7 +3,7 @@
+ import { themeIds } from '../model/preferences'
+ import './theme-selector.css'
+
+-export function ThemeSelector({ controller }: { controller: ThemeController }) {
++export function ThemeSelector({ controller }: { controller: Pick<ThemeController, 'read' | 'subscribe' | 'select'> }) {
+   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), id = useId()
+   return <section className="mcr-theme-selector" aria-labelledby={`${id}-title`}>
+     <h2 id={`${id}-title`}>CHOOSE AN ERA</h2>

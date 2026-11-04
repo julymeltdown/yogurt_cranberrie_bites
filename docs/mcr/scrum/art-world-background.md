@@ -3,6 +3,20 @@
 Status: **IN_PROGRESS** coordination, 2026-11-04 KST. This record does not
 accept AR02, AR04, W01, W02, W06, or an integration/release gate.
 
+## Goal completion audit
+
+This is an owner-evidence/dependency audit, not implementation review. All rows
+must close for this coordination goal; a source-only milestone cannot close it.
+
+| Requirement | Authoritative owner evidence / current outcome |
+| --- | --- |
+| Disjoint ownership and persistent goals | Source/export grants and actual receiving readbacks recorded below; cancelled duplicate stopped clean and archived. Artist original goal remains honestly unfinished/BLOCKED metadata; Root goal ACTIVE. |
+| Background-only source and provenance | PARADE `70f22a68` published/verified; all three source tuples closed and pushed at `aa7d09a4` with thirteen payload pins and owner checks. Three-era source publication receipt still pending. |
+| Actual rendered character/function/accessibility preservation | Root native-02 PARADE reports six actual character sprite texture/frame/position/size/origin/camera matches, four semantic labels/hrefs/44px target rectangles, independent 51-object Map oracle, one game/socket and disposal PASS. Source-owner checks preserve geometry, baselines and original baked text. New-era/corrected-paint runtime and applicable accessibility qualification remain open; no live/device acceptance. |
+| Actual 390px World and Map before/after | Corrected native-02 packet captured; Root runtime invariants PASS. Artist231 actually compared both 390px pairs and reports clearly warmer/cuter, no new atlas defect; olive Map fit bands were corrected by Root in a separately allocated two-color paint patch; corrected-paint capture/publication verification remains open. Synthetic fixtures, not live/device acceptance. |
+| 360/430px and three-era follow-through | Root all eight PARADE captures PASS; Artist actually viewed/pinned all four retained 360/430px images, warm cue preserved/no new crop defect. Revenge/Danger source complete; actual consumer/adoption/capture still open. |
+| Committed publication and fixes | PARADE source published on master `716b7496` and independently verified by Artist231 (twelve files, ten payloads, ancestry). Consumer/native cohort publication, derivatives, fit-band correction verification and this management document's publication remain pending. |
+
 ## Direction and boundaries
 
 The human's 2026-11-04 direction, relayed at approximately 06:10 UTC
@@ -41,17 +55,21 @@ queries or tests, rerun checks, or create a review/approval stage.
 
 | ID | Deliverable | Actual state and next dependency |
 | --- | --- | --- |
-| ART-BG-MAP-01 | Character-free cozy PARADE source and immutable provenance | **IN_PROGRESS**, generation and packing completed, source slot actually released. Pinned SVG/atlas handed directly to Root; source metadata/commit awaits actual ground PNG export. World binding grants `9153d3e5` / `022730e5` / `af01689f` record the exact ten source files and art document below. Artist's original goal metadata remains **BLOCKED**, not reset or completed. |
-| ART-BG-MAP-02 | Shared consumer adoption and first actual 390px World/Map comparison | **IN_PROGRESS** interface preparation by Root, reported actual goal `1793770394` **ACTIVE**. New closed adapter/compiler/pins plus limited `model.ts` descriptor wrapper; exact functional consumer grant recorded separately by World SL. Cute native output remains **NOT_RUN**. |
+| ART-BG-MAP-01 | Character-free cozy PARADE source and immutable provenance | **CONTRACT_READY** source only: `70f22a683ab029751548331df5cf46f2ad16baf8` published on master `716b7496`, fresh owner twelve-file/ten-payload/ancestry verification PASS, source branch clean. Actual PARADE native comparison is owner-positive at 360/390/430px; corrected paint and new-era comparison remain open. PNG pair 2,051,967 bytes under 2 MiB. Artist's original goal metadata remains **BLOCKED**, not reset or completed. |
+| ART-BG-MAP-02 | Shared consumer adoption and first actual 390px World/Map comparison | **IN_PROGRESS**, PARADE consumer integrated and source-qualified by Root at `fb0d82be479a15c6eb6098074a4d6cde4fa85084`; 120 tests/full TypeScript/scoped lint reported PASS. Corrected native-02 actual PARADE comparison and preserved-runtime checks reported PASS, evidence retained as `a49e18ef`; all-era extension and corrected fit-band qualification remain open. Root goal `1793770394` remains ACTIVE; minimum descriptor wrapper scope only. |
 | ART-BG-WORLD-01 | Cuter World background, same geometry and character identity | **IN_PROGRESS** with Artist231/Root shared Map-and-World source tuple. The king's final corrected roster stops the separate World534 pack before writes. Three-era coverage remains required; no separate pack/import. |
-| ART-BG-MATRIX-01 | Owner comparison at 360/390/430px and relevant eras | **NOT_RUN** for cute backgrounds. Start with actual 390px before/after, then complete relevant widths/eras under coordinator allocation. No full-wave barrier for a ready representative result. |
+| ART-BG-ERA-01 | Revenge/Danger cozy derivatives and era-correct source closure | **CONTRACT_READY** source only, closed/pushed `aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`, thirteen payload pins, exact seven paths/three new files; branch remote readback exact/clean. Source publication and actual three-era consumer/captures remain open. |
+| ART-BG-MATRIX-01 | Owner comparison at 360/390/430px and relevant eras | **IN_PROGRESS**, actual first PARADE 390px before/after plus 360/430px captures completed in native-02. Root invariants PASS; Artist comparison positive across all three widths; Root implemented the fit-band correction under an exact two-color grant, follow-up pending. Other-era actual comparison and final publication/fixes remain open. |
 
-Root's current source format proposal is a PARADE 1024×1024 PNG atlas
-with the existing sixteen frame rectangles and a 768×1296 ground PNG; combined
-PNG budget at most 2,097,152 bytes for that era. Proposed source retains all
-51 overview placements, labels, original topology and existing stage/plaque
-pixels. REVENGE/DANGER remain unchanged until separately delivered. These are
-owner interface proposals, not SL technical approval or proof of implementation.
+The closed source uses era-keyed 1024×1024 PNG atlases and the shared 768×1296
+ground PNG. Each tuple retains its own original sixteen frame rectangles,
+baselines and stage/plaque artwork; REVENGE/DANGER coordinates differ from
+PARADE and cannot inherit a renamed PARADE layout. Actual PNG-plus-ground
+sizes reported by Artist231 are PARADE 2,051,967 bytes, REVENGE 2,027,630 bytes
+and DANGER 2,029,289 bytes, each below 2,097,152. Source closure is distinct
+from actual consumer/native qualification. Root's accepted new compiler,
+source/pins, adapter and new test extension use `presentation.eras` tuples;
+World records the unchanged exact existing model/test hunks before edits.
 
 The exact source files are relative to
 `frontend/public/world/reference-scene-v2/map-cozy-v1/`:
@@ -67,7 +85,7 @@ the stated fresh branch/worktree and absent new prefix before writes, with the
 old `a519` checkout clean/preserved. Earlier broad retained-prefix coordination does not
 expand these exact source/export rights.
 
-Root temporarily owns **only** new `map-cozy-v1/parade/ground.png` for export
+The original temporary export grant gave Root **only** new `map-cozy-v1/parade/ground.png` for export
 from the pinned Artist SVG under a separate accepted coordinator allocation.
 Root must return immutable output bytes, source hash and export provenance,
 then explicitly stop/release that output path. Artist then closes its own
@@ -128,6 +146,234 @@ additional paths, immutable inputs, palette operations, era identity/budgets and
 consumer format before an exact follow-up grant. It need not wait for the full
 ten-screen matrix, and it does not replace first-PARADE actual capture/fixes.
 
+That proposal is now delivered directly to Root/World. The ART SL recorded an
+exact source extension: new `map-cozy-v1/revenge/atlas.png`,
+`map-cozy-v1/danger/atlas.png`, and `map-cozy-v1/era-derivatives.json`, with recipe,
+tuple and provenance updates only in already-owned `build.py`,
+`source-registration.json`, `presentation.json`, `handoff.json`, `README.md` and
+the art document. Same sole writer/worktree/goal; no other-lane consumer rights.
+First PARADE closure stays first; code/provenance preparation can proceed while
+waiting for the ground, but derivative pixel packing requires a fresh finite
+coordinator allocation, not the released generation offer.
+
+The source owner found five Revenge and seven Danger frame rectangles differ
+from Parade. It must therefore register the preserved generated crops against
+each immutable era layout, preserve that era's two baked-text frames and verify
+all sixteen frames/baselines. The proposed shared actual warm ground avoids new
+ground exports. Era-keyed descriptor integration remains Root/World's technical
+scope. Palette recipes and source checks do not establish actual era distinction
+or cute-background acceptance; native owner comparisons/fixes remain open.
+Root subsequently confirmed its prepared compiler/adapter is explicitly
+PARADE-only and **NOT_ADMITTED**. World must record the exact three-file source
+extension before derivative packing; the ART SL requested that binding record
+without another proposal/review cycle. Fresh coordinator allocation is also
+required before new derivative pixels. No cross-era descriptor reuse is implied.
+
+Root's first non-World panel job completed all sixteen captures and fully
+released resources in 40.9s. Its ground export request is now READY, with exact
+command/hash already sent to coordinator; the finite FE34 source check precedes
+the export. The SL requested the actual named export offer after that release,
+or the current live holder/finite release condition, to unblock source closure.
+The first panel packet's HTML-image comparison did not cover canvas/CSS-rendered
+characters; Root is adding direct pixel checks. That packet does not establish
+World/Map rendered-character preservation or this lane's visual acceptance.
+
+### Ground dependency resolved — 2026-11-04 15:38 KST
+
+Coordinator's actual receipt supersedes the earlier queued/FE34-wait notes:
+`COZY-GROUND-PNG-202611040637Z` passed in 1.3 seconds at
+**06:38:25.796 UTC / 15:38:25.796 KST**. Immutable output:
+`/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/frontend/public/world/reference-scene-v2/map-cozy-v1/parade/ground.png`,
+768×1296, **850,849 bytes**, SHA-256
+`09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45`,
+exported from the pinned SVG `e52f9acdaf4bc491664125585776ae42fe34848a59f5edc0205880095a19de40`.
+Root explicitly stopped/released the output path back to Artist; Chrome,
+temporary directory, profile and dependency link are absent, reported peak
+7,601,112 bytes. The later FE34 check started after this release and does not
+block source closure.
+
+Artist confirms receipt and is importing the immutable PNG, closing metadata,
+verifying and committing PARADE before derivative pixels. The actual PNG pair
+is 2,051,967 bytes, leaving 45,185 bytes under the 2,097,152-byte cap. This
+unblocks source closure only: sealed commit/publication, admitted consumer tuple,
+first actual 390px World/Map comparison, affected widths/eras and owner fixes
+remain open. No duplicate export, artist output job or native allocation is needed
+for the metadata closure.
+
+### Closed PARADE committed source handoff
+
+Artist's exact delivered SHA is
+`70f22a683ab029751548331df5cf46f2ad16baf8`, pushed to
+`codex/mcr-art-map-cozy-v1`, base
+`7c25078f118da53dd9a524d0a58e707cca190f0f`; owner `ls-remote` readback exact and
+checkout clean. Exactly twelve changed paths: the ten granted source files,
+Root-released ground PNG and existing art document. No original/character/UI,
+runtime, geometry, layout or label writes were reported.
+
+Owner-reported successful commands (exit 0) include initial source build/verify,
+metadata-only `--close` / `--close --verify`, ten payload digests, two preserved
+RGBA frames, sixteen baselines/rectangles, 43 polygon number round-trips,
+embedded original ground equality, exact twelve-path boundary, AST/whitespace,
+commit/push and remote readback. Presentation: 5,836 bytes, SHA-256
+`0b2be1fa5773f9c98f221ac83d1fd729fee89f0e0c3a8bf2bf71c81d2bf35217`.
+Handoff: 2,528 bytes, SHA-256
+`c11b404958d8332732c1335cbc137c29ab5ba623eec0b68b4e3c824eb31079ab`,
+closing all ten payloads. The artist viewed actual ground/atlas. These are source
+validation receipts, not SL validation or actual-screen acceptance.
+
+Artist also accepted World binding era extension `7dcbc0e2` under its same
+branch/worktree and aligned unfinished original goal. Future era code preparation
+is included in `70f22a68`; derivative PNGs/recipe record remain absent. The owner
+requested one fresh finite two-atlas Python/Pillow packing allocation: under two
+minutes, 16 MiB total / 4 MiB temporary / 12 MiB durable, start at least 16 GiB
+free and stop at 8 GiB; no imagegen, browser, ground export, server or dependency
+change. No slot or derivative pixels claimed yet. Root's first PARADE
+publication/actual 390px World+Map cue stays independent priority. Artist will
+verify its own published postimages/pins/ancestry when Root supplies the receipt.
+
+### Actual PARADE consumer readiness
+
+Root accepted and fully released source-check allocation
+`ROOT-PARADE-SOURCE-202611040646Z`: immutable source cohort
+`fb0d82be479a15c6eb6098074a4d6cde4fa85084`, 120 tests across eight files pass in
+3.48s, full TypeScript and scoped lint exit 0. Total 10.86s, peak 3,452,831 bytes,
+minimum free 39,703,724,032 bytes; own temporary directory/link/children removed.
+Root reports all 34 World objects, 51 Map placements, character sources and
+closed 2 MiB tuple preserved. These are developer validation receipts, not an SL
+rerun or actual native acceptance.
+
+Root's next READY finite native workflow requests eight screenshots: baseline
+390px World+Map using exact complete `7c25078f` source/public files; candidate
+390px World+Map first; candidate 360/430px World+Map afterward. Planned checks
+include rendered sprite textures/frames/positions/camera, independent 51-row Map
+composition, four service actions/44px targets, one game/socket and disposal.
+One Chrome/Vite workflow, at most 120s / 0.2 GiB total / 100 MiB temporary /
+30 MiB durable, start at least 16 GiB free and stop at 8 GiB. Evidence prefix:
+`docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-01`. Actual fresh named
+offer/acceptance and results are still required. Final native candidate/driver
+metadata follows Root's nonrendering driver cleanup; no more ART inputs or era
+extension is a prerequisite for this first PARADE cue.
+
+Artist subsequently verified actual master publication at `716b7496`: all twelve
+source postimages, ten payload hashes and source commit ancestry match exactly;
+source branch clean. This closes the first source publication requirement only.
+It does not publish or validate unfinished era derivatives or prove an actual
+native consumer cohort. The SL also routed the ready bounded derivative request
+to coordinator: if the first native candidate is not ready and the slot is
+actually free, use the ready packing job rather than reserve idle capacity;
+otherwise keep first-PARADE native cue priority and hand off after its release.
+
+Root is the sole retention/recovery owner of the shared cozy capture packet,
+including original sixteen panel PNGs and targeted follow-ups. Implementation
+owners receive immutable read-only paths/manifest context for their comparisons;
+they do not independently restore sparse evidence or duplicate browser jobs.
+World/Map Artist231's separate source/derivative work remains in this lane.
+
+### First native attempt — no screenshots
+
+Coordinator confirms Root explicitly accepted
+`PARADE-WORLD-MAP-202611040651Z`, source candidate `c1352d14` and driver
+`6c8186`, for the bounded eight-capture workflow. This was an actual allocation,
+not idle reservation or an ART-input wait. Artist's ready two-atlas packing job
+is queued for a fresh 16 MiB allocation after Root's actual full release.
+
+Root's first attempt failed in its diagnostic before any screenshot: the probe
+imported a separate Phaser build and could not find the fixture's loaded game.
+Root retains the failed report and is correcting the probe to use the app's
+module. This is a developer-reported diagnostic failure, not evidence of an
+asset/product defect or character changes. Actual 390px before/after and
+360/430px output remain **NOT_RUN**; no new native offer/retry or resource release
+is inferred from an observation timeout. Owner fixes and explicit coordinator
+handoffs remain required.
+
+### Corrected actual PARADE native comparison
+
+Fresh allocation `PARADE-WORLD-MAP2-202611040654Z` ran candidate
+`4e491a4509e9cab6a3e28364db616bdab9c157f5`, driver `b7ca0841…`, against full
+baseline `7c25078f` source/public files plus the same neutral read-only character
+probe. Original evidence prefix:
+`/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/`.
+
+| Actual 390×844 PNG | UTC capture time (KST = UTC+09:00) | Bytes / SHA-256 |
+| --- | --- | --- |
+| `baseline-world-parade-390.png` | 06:54:17.942Z / 15:54:17.942 KST | 481,182 / `769a0a014e7df8e1027ded36ed38a9361446e39bef01ea05e8aa3cd511c872b4` |
+| `candidate-world-parade-390.png` | 06:54:23.954Z / 15:54:23.954 KST | 449,001 / `ff25b45a3d9f05729705fe628a82ea8ecfcda3392dde63b6951de754c2c829a8` |
+| `baseline-map-parade-390.png` | 06:54:18.856Z / 15:54:18.856 KST | 410,326 / `87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01` |
+| `candidate-map-parade-390.png` | 06:54:24.864Z / 15:54:24.864 KST | 386,020 / `62114b928572cb7462f877f828c2b5ba2c7130b36181632d231eb8673a52a473` |
+
+Root reports actual six sprite texture RGBA, frame, position, size and origin,
+camera geometry, service labels/hrefs and four 44px Map targets exactly match the
+baseline. Independent 51-object Map composition has zero differing channels;
+one game/socket and disposal pass. Final workflow exit 0 in 29.87s: all eight
+World/Map screenshots across four contexts (390 before/after, candidate 360 and
+430), no runtime errors. Root independently pinned all eight original PNGs and
+loaded source Git blobs, and copied exact retained evidence to the canonical
+publisher at evidence commit `a49e18ef`. Actual full release reports peak
+33,398,504 bytes, minimum free 41,638,060,032 bytes, browser/Vite closed and own
+temporary/cache/profile/link/children absent. Original failed native-01 remains
+separate and is not used as visual evidence.
+
+These are actual default-root/Places/Phaser screens with synthetic C03/C05
+transport fixtures (map 7005, not an admitted live release), no private-account
+or token dumps. They do not prove live authority, real devices or IN01.
+
+Artist231 actually consumed the fresh 390px before/after packet and compared it
+with the human collage: both views read clearly warmer/cuter and no new atlas
+defect was found. Olive Map fit bands remain a bounded background-color
+observation, to be dispositioned by Root; character/camera equality is supported
+by Root's runtime evidence. The SL did not view, inspect or validate the images.
+Three-era follow-through and final consumer/evidence publication remain open.
+
+### Actual era packing and comparison handoffs
+
+Artist accepted `ART-ERA-PACK-202611040658Z` at **06:58:47 UTC /
+15:58:47 KST**, free 40,341,176,320 bytes (37.571 GiB), no previous jobs/pending
+media, clean checkout and all three new output paths absent. Exact retained
+script was 19,955 bytes, SHA-256
+`6f9c122c97ceab201202a9693575edcd4f1989fb1c4b95324a21574cdf54937f`;
+raw/ground/Parade atlas pins were unchanged. Accepted 120s / 16 MiB total /
+4 MiB temporary / 12 MiB durable and continuous 8 GiB stop floor; no imagegen,
+browser, ground export, server or dependencies.
+
+Both atlases are now packed and the slot explicitly released. Owner reports
+Revenge+ground **2,027,630 bytes**, Danger+ground **2,029,289 bytes**; each
+preserves its own sixteen frame rectangles/baselines, two original text frames
+and all pixels outside fourteen replacement slots. The source owner is sealing
+and committing the three-era handoff, then inspecting the retained PARADE
+360/430px screenshots without another browser. Fresh era-colored source PNGs
+are not actual adopted three-era screenshots.
+
+QA06 also delivered a bounded 390px comparison at
+`5b96b995e904ed0798c26206ca86e3c1b68d1010`, with document
+`/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/visual/qa06/map-cozy-v1-comparison/comparison.md`,
+pinned metadata, offline HTML and exact PNG copies. Its owner reports materially
+warmer/playful scenery against both before and the dark collage, with muted olive
+Map fit bands and dark plum outer areas remaining observations. Root runtime
+results are explicitly attributed to Root, not independently rerun by QA/SL.
+This report is not an approval gate or all-era/live/device acceptance. Root has
+the direct committed publication handoff; concrete source findings remain with
+Root/Artist/213 in their exact scopes.
+
+Artist's final three-era handoff is
+`aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`, pushed/remote-readback exact and clean.
+Exactly seven changed paths include the three granted new era files and owned
+metadata/document updates; thirteen closed payload pins, original raw/Parade
+PNG/source inputs unchanged. Root and World received the full technical packet
+directly. Revenge atlas 1,176,781 bytes plus shared ground = 2,027,630 bytes;
+Danger atlas 1,178,440 plus ground = 2,029,289 bytes. Actual output full release
+was **07:01:02 UTC / 16:01:02 KST**, packing 0.657s plus independent checks,
+2,405,246 changed PNG/JSON bytes, temporary bytes zero and owned process/jobs zero.
+
+After committing, Artist actually viewed all four retained PARADE 360/430px
+World/Map images and checked their hashes/dimensions: warm dominant treatment
+preserved, no additional crop/atlas defect; earlier olive fit-band observation
+remains bounded. The artist stopped the unchanged packet loop. Next useful
+inputs are Root's source publication receipt and a **new** actual adopted
+Revenge/Danger packet; no additional writer/job/PNG copy or invented fix. Root
+owns actual remaining source/consumer integration and developer validation;
+World records any additional exact existing-file hunks before edits. No SL
+runtime ownership, review or approval stage is introduced.
+
 Root subsequently reported its existing goal `1793770394` **ACTIVE**, with no new
 goal or native launch. Root then **withdrew the unwritten image-pool, loader,
 overview and Phaser proposal**. Its revised minimum is a new closed asset
@@ -142,6 +388,42 @@ World SL records the exact grant before implementation. Root reports
 213's former decorative styling stopped; no post-steering writes or new SVG
 ornament changes. 26e and 204 still have their existing publication work and
 are not available for reassignment.
+
+
+### All-era consumer and fit-band follow-through
+
+World SL records Root's actual receiving acceptance `4d8ecb4d`: only existing
+background values for `.places-map-full .places-map-surface` and
+`.places-map-viewport` in `frontend/src/features/places/ui/places.css` change
+from `#a5ad72` to `#9fba8c`. No property, rule, layout, fit/camera/geometry,
+control, type, character or source rights are added. Root reports implementation
+`e24af74e` transferred to publisher `186d9b24`; remote publication/fresh owner
+verification and corrected native follow-through remain open. Original olive
+native-02 images are preserved. This exact grant belongs to Root, not 213.
+
+World also records Root's acceptance of the `7dcbc0e2` era-keyed new compiler,
+source/pins/adapter and new map-cozy test extension. Existing model wrapping
+and the three previously allocated test hunks remain unchanged; no extra
+existing-file scope or silent PARADE layout substitution. Root owns combined
+checks, fixes, serial publication and actual new-era qualification without
+an SL review or a ten-panel barrier.
+
+### Idle source-owner lifecycle
+
+After actual completed source commit `aa7d09a4`, clean remote readback, full
+packing release and PARADE 360/390/430 comparison, Artist231 has no ready
+related assignment. ART SL archived its same chat
+`01a1a231-0dc4-7b50-92bd-c0f0f56bd970`; the tool confirmed `archived: true`.
+Preserve the isolated source checkout/branch, exact source commits and original
+unfinished/BLOCKED goal metadata. Archival does not complete that goal or the
+original tasks. No writer or resource slot is held waiting on unchanged input.
+
+ART SL will reactivate this same context for a concrete `aa7d09a4` master
+publication receipt (fresh own postimage/thirteen-pin/ancestry verification),
+a fresh retained Root era-native packet (actual visual comparison), or a
+specific source defect. Root has the direct technical handoff and continues
+independently; no replacement artist, duplicate capture or approval stage.
+UI integration and World SL were informed of this lifecycle disposition.
 
 ## Resolved duplicate assignment
 
@@ -196,10 +478,11 @@ fixture captured before cute-background work. It does not establish current
 master pixels, live service content or visual acceptance. The earlier functional
 MAP validation/publication is distinct from this background change.
 
-No cute Map/World after capture or committed cute-background handoff has been
-reported to this SL yet. The responsible owners must supply candidate/source
-revisions, capture time, dimensions, fixture/runtime limitations, comparison
-findings, validation commands/exits, committed paths and publication ancestry.
+The first PARADE actual after packet and committed source handoff are recorded
+above. Remaining owner handoffs must supply new-era/corrected-paint candidate
+and source revisions, capture times, dimensions, fixture/runtime limitations,
+comparison findings, validation commands/exits, committed paths and publication
+ancestry. The original native-02 cohort remains immutable.
 An image-generation result or palette-only source change cannot close actual
 rendered comparison, relevant era coverage or real multiuser gates.
 

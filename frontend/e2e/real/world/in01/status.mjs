@@ -1,4 +1,4 @@
-export const requiredRuntimeChecks=Object.freeze(['independentAccounts','authorizedWorld','bidirectionalMovementAndAck','persistentPanels','themeRuntimeAndLocalPersistence','customization','realBrowserReconnect','singleActualPhaserGame','finalWorldInvariants'])
+export const requiredRuntimeChecks=Object.freeze(['independentAccounts','authorizedWorld','bidirectionalMovementAndAck','persistentPanels','themeRuntimeAndLocalPersistence','customization','realBrowserReconnect','singleActualPhaserGame','finalWorldInvariants','sustainedCurrentAuthWorld'])
 /** Runtime qualification is fail-closed; successful captures still need explicit art inspection. */
 export function runtimeStatus(checks,faults=[]){
  if(faults.length)return 'FAIL'

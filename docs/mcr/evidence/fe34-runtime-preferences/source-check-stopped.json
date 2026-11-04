@@ -1,0 +1,26 @@
+{
+  "workflow": "FE34-SOURCE-CHECKS-202611040636Z",
+  "status": "STOPPED_OUTPUT_BOUND",
+  "result": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs run --config src/features/settings/runtime-adoption/__tests__/vitest.config.ts --configLoader runner src/features/settings/runtime-adoption/__tests__ src/features/me/__tests__/controller.test.ts src/features/theme/__tests__/controller.test.tsx",
+      "exit": 143,
+      "stop": "time/output/disk bound",
+      "log": "/private/tmp/mcr-fe34-runtime-source/check-0.log"
+    }
+  ],
+  "actual_temporary_bytes": 12814847,
+  "limitation": "Vitest client/SSR module output exceeded8MiB between300ms monitor samples; no tests completed, type/lint not run",
+  "owned_source_sha256": {
+    "frontend/src/features/settings/runtime-adoption/useRuntimePreferences.ts": "dff13b18c6667c6e6b38f348efc73e8d293c2041bf6d0fd319c95d3d67bad83a",
+    "frontend/src/features/settings/runtime-adoption/index.ts": "5c2e09f28a09c504274cea06d08f2477fb3b26273fbdfb95499d2ac9588ed2e8",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.html": "10d7dc1cee370ca8ba22060f93d49d21a32c4f32063a5142890b63eb4d5d56f1",
+    "frontend/src/features/settings/runtime-adoption/__tests__/settings.test.tsx": "db14ffb01cbfed54b1f20d9cfb13c3be8933046b01a6baab0b6047a1b50d4c83",
+    "frontend/src/features/settings/runtime-adoption/__tests__/binding.test.tsx": "f62de22a81a56b158ff3fcd9c344aeed0be1086d7c173dab7e0e49eada1ca0c6",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.tsx": "0f549a1c6b9620a3561fb8ccd65afd74a54e8ea295786c267c052c5dc5575fe0",
+    "frontend/src/features/settings/runtime-adoption/__tests__/adapter.test.ts": "c2858f0d053859714bd6bac20789c613d3d2fd89e887a51031c2c9e243155ff5",
+    "frontend/src/features/settings/runtime-adoption/__tests__/native.mjs": "fb8a1951bae28c3c8ec557fd05c8011360ffc96d9acc958a01e6203ba4063e63",
+    "frontend/src/features/settings/runtime-adoption/__tests__/vitest.config.ts": "bf3242696beab929911aa5ae09f5d00616b1f3d9d3bd7275960cffe3a9f35086",
+    "frontend/src/features/settings/runtime-adoption/__tests__/fixture.ts": "56c4d8f483d97586f3042ec47e348c01240333f2fb4a1a5fa0a3ee51cd7ef4c7"
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "task": "QA06 shared paint qualified World/Map reuse",
+  "status": "INTEGRATED",
+  "reviewedAt": "2026-11-04T06:57:39.987207+00:00",
+  "candidate": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+  "job": "PARADE-WORLD-MAP2-202611040654Z",
+  "startedAt": "2026-11-04T06:54:12.310Z",
+  "finishedAt": "2026-11-04T06:54:41.696Z",
+  "report": {
+    "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/report.json",
+    "copiedByteForByte": true,
+    "sha256": "b3c95586c94dfd696ffb034bb19f7fd239907d60687090fa1deb10a1de18a7fb"
+  },
+  "qualification": "Actual root/Places/Phaser/selected whole-character renderer. Existing explicit source fixture, synthetic C03/C05 map7005, NOT_ADMITTED provenance retained. First PARADE only; other eras unchanged. No live authority or physical-device acceptance.",
+  "sharedPostimagesExact": {
+    "frontend/src/app/shell-chrome/shell-chrome.css": {
+      "revision": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d",
+      "bytes": 5451
+    },
+    "frontend/src/app/shell.css": {
+      "revision": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee",
+      "bytes": 12105
+    },
+    "frontend/src/shared/ui/concert-window/concert-window.css": {
+      "revision": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+      "sha256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+      "bytes": 7210
+    },
+    "frontend/src/app/shell-chrome/parade-footer.tsx": {
+      "revision": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+      "sha256": "6f3b1f838987dbe470e1c92e589718d60de8d70ff7a1d369b0dc0607df3b9b41",
+      "bytes": 3030
+    }
+  },
+  "screenshots": [
+    {
+      "id": "world",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-world-parade-390.png",
+      "bytes": 481182,
+      "sha256": "769a0a014e7df8e1027ded36ed38a9361446e39bef01ea05e8aa3cd511c872b4",
+      "time": "2026-11-04T06:54:17.942Z",
+      "mode": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "map",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-map-parade-390.png",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01",
+      "time": "2026-11-04T06:54:18.856Z",
+      "mode": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "world",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-390.png",
+      "bytes": 449001,
+      "sha256": "ff25b45a3d9f05729705fe628a82ea8ecfcda3392dde63b6951de754c2c829a8",
+      "time": "2026-11-04T06:54:23.954Z",
+      "mode": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "map",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-390.png",
+      "bytes": 386020,
+      "sha256": "62114b928572cb7462f877f828c2b5ba2c7130b36181632d231eb8673a52a473",
+      "time": "2026-11-04T06:54:24.864Z",
+      "mode": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "id": "world",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-360.png",
+      "bytes": 427242,
+      "sha256": "c41e1e7b035d83ddd5865056fd471289e7af95024d8e9a678bb7406256bf6edb",
+      "time": "2026-11-04T06:54:30.212Z",
+      "mode": "candidate",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      }
+    },
+    {
+      "id": "map",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-360.png",
+      "bytes": 341441,
+      "sha256": "77cdb1d97dd80766fa106ac072b858cf6f0928b3cd2e2b13355c095befead3f6",
+      "time": "2026-11-04T06:54:31.118Z",
+      "mode": "candidate",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      }
+    },
+    {
+      "id": "world",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-430.png",
+      "bytes": 496509,
+      "sha256": "4783bc10b6bc79b9f8cd27fffbe8a1087b50aff8dc378d20f9077b6a463ed2cb",
+      "time": "2026-11-04T06:54:32.621Z",
+      "mode": "candidate",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      }
+    },
+    {
+      "id": "map",
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-430.png",
+      "bytes": 450543,
+      "sha256": "b079040d09b6ac0f6928e860bec82cbf36000c5e211d32f4cd07a5ed5b866c6e",
+      "time": "2026-11-04T06:54:33.514Z",
+      "mode": "candidate",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      }
+    }
+  ],
+  "independentChecks": {
+    "all8ScreenshotPinsAndViewports": true,
+    "directlyViewedAll8Images": true,
+    "exact390SpriteCameraLabelPairs": true,
+    "sprites": 6,
+    "mapObjects": 51,
+    "differentMapPixelChannels": 0,
+    "viewportWidths": [
+      360,
+      390,
+      430
+    ],
+    "height": 844
+  },
+  "visualReview": {
+    "world": "Pastel flowering trees, mint lawn, warm cafe/stall and purple-roof buildings are visibly cuter. Stage, baked labels, six selected actors, controls and truthful virtual-position notice retained.",
+    "map": "Same familiar service labels and routes over pastel environmental scenery. Labels and controls remain readable at all three widths; no new ornament covers characters or controls.",
+    "frame": "Pastel masked perimeter is visible on all sides; dark berry header keeps frozen foregrounds. No left accent bars or geometry changes."
+  },
+  "focusFinding": {
+    "id": "BG-FOCUS-01",
+    "status": "RENDERED_FIX_VERIFIED_FOR_MAP",
+    "samplePoints": {
+      "ring": [
+        21,
+        22
+      ],
+      "header": [
+        230,
+        30
+      ],
+      "perimeter": [
+        6,
+        6
+      ]
+    },
+    "actualPixels": {
+      "baseline": {
+        "focusRing": [
+          162,
+          35,
+          43
+        ],
+        "headerBackground": [
+          25,
+          24,
+          23
+        ],
+        "perimeter": [
+          25,
+          24,
+          23
+        ]
+      },
+      "candidate": {
+        "focusRing": [
+          162,
+          35,
+          43
+        ],
+        "headerBackground": [
+          37,
+          16,
+          23
+        ],
+        "perimeter": [
+          241,
+          204,
+          217
+        ]
+      }
+    },
+    "ringContrast": {
+      "baseline": 2.3739162164624363,
+      "candidate": 2.4130529038019013
+    },
+    "limit": "Preserves baseline visibility; original ring is below3:1. No full accessibility certification."
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "tempAbsent": true
+  },
+  "failedAttempt": {
+    "candidate": "c1352d14e1ae5e89847715f28de4132bc8cb650d",
+    "job": "PARADE-WORLD-MAP-202611040651Z",
+    "status": "OPEN_FAILURES",
+    "screenshots": 0,
+    "reason": "Separate Phaser module in diagnostic could not find incumbent game; retained failure is not acceptance"
+  },
+  "limits": [
+    "Only PARADE source-fixture world/map7005; no live authority, physical device or other-era acceptance",
+    "360/430 are candidate captures, not new paired baseline captures; 390 has exact before/after metrics",
+    "World/Map cohort4e491a45 is distinct from first8panel cohortc8a731e5 and future responsive cohort; source and original capture times retained",
+    "Background contrast tests remain NOT_RUN pending Root source-check receipt",
+    "Root master publication and fresh owner remote verification remain pending",
+    "No owner browser/install/build/export job launched; these are inspections of Root saved evidence"
+  ]
+}

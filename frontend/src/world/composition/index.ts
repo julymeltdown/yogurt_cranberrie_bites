@@ -56,6 +56,8 @@ export interface WorldPresentationRelease {
   readonly map: PlaceMapRelease
   readonly camera: Pick<MovementAttachment['camera'], 'lookAt' | 'recenter' | 'setZoom' | 'read'>
   readonly theme: Pick<ThemeController, 'read' | 'subscribe' | 'select'>
+  /** Same ready runtime; capabilities are withdrawn with this presentation release. */
+  readonly runtimePreferences?: { readonly effects: WorldRuntime['effects'] }
 }
 export interface WorldPresentationPort { read(): WorldPresentationRelease | null; subscribe(listener: () => void): () => void }
 export interface WorldCompositionOptions {
@@ -298,6 +300,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
           map: Object.freeze({ scope: context.scope, manifest: prepared.map,
             expected: Object.freeze({ mapId: prepared.resources.mapId, revision: prepared.resources.mapRevision, contentHash: prepared.mapInput.pin.mapHash, geometryHash: prepared.map.geometry_hash }) }),
           camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }),
+          runtimePreferences: Object.freeze({ effects: runtime.effects }),
           overview: Object.freeze({ read: () => livePresentation() ? runtime?.overview.read() ?? null : null,
             subscribe: runtime.overview.subscribe }) })
         void theme.restore()

@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[4]
 CSS = ROOT / 'frontend/src/shared/styles/cozy-identity-backgrounds-v1.css'
 ENTRY = '9a962ea6f8c20fe59846cbcf4f468b902e3f280e'
-ME = '8ff3a58f556bf2811ad1415cd31c5ba1953ccd58'
+ME = '77d8e2608a28286bcce18df000eeea4069c826d1'
 
 def git_bytes(revision, path):
     return subprocess.check_output(['git', 'show', f'{revision}:{path}'], cwd=ROOT)
@@ -18,7 +18,7 @@ manifest = json.loads(git_bytes(ENTRY, 'frontend/public/backgrounds/cute-entry-v
 pins = [{**item, 'revision': ENTRY} for item in manifest['assets']]
 for filename, size, digest in [
     ('me-scrapbook.svg', 2728, '98c351c141e372d8d7e0d6879556105c551fbdf7478d66afe76d360a59a7aae1'),
-    ('me-night-ribbon.svg', 1895, '1519b1b125190be901e1119105eafd057532ff98d1f091cf450f0f31f72b62bc'),
+    ('me-night-ribbon.svg', 2298, '29ad1cb9d04101399e2483fef9de6a3d710c6bf7f08cb1cb4501fb746152932d'),
 ]:
     pins.append({'file': filename, 'url': f'/backgrounds/cute-wall-me-v1/{filename}',
                  'bytes': size, 'sha256': digest, 'revision': ME})
@@ -29,6 +29,9 @@ for item in pins:
     assert hashlib.sha256(data).hexdigest() == item['sha256'], item['file']
     element = ET.fromstring(data)
     assert element.tag.endswith('svg'), item['file']
+    if item['file'] == 'me-night-ribbon.svg':
+        assert element.attrib['viewBox'] == '0 0 390 180'
+        assert element.attrib['preserveAspectRatio'] == 'none'
     for node in element.iter():
         assert node.tag.rsplit('}', 1)[-1] not in {'script', 'foreignObject', 'image', 'text', 'filter', 'animate', 'animateTransform'}, item['file']
         for key, value in node.attrib.items():
@@ -89,6 +92,8 @@ for selector_list, body in rules:
         used = re.findall(r"url\(['\"]?([^'\")]+)['\"]?\)", value)
         if key == 'background-image':
             assert all(used == [image_mapping[s]] for s in selectors), selectors
+        if selectors == ['.me-hub--reference .me-profile-header'] and key == 'background-color':
+            assert value == '#1c1a18', 'Preserve former Me header fallback contrast'
         urls.update(used)
 assert seen == background_selectors | opacity_selectors
 assert urls == {item['url'] for item in pins}
@@ -101,7 +106,7 @@ report = {'task': 'ART-SCREEN-ID01', 'status': 'IN_PROGRESS',
                      'svgLocalInertSource': 'PASS', 'allSevenAssetsConsumed': 'PASS'},
           'limits': ['Static source validation only; no SVG decode or actual rendered contrast evidence',
                      'Root alone integrates assets/imports and publishes; no root imports authored here',
-                     'Before/after390,360/430,focus/geometry/character invariance NOT_RUN',
+                     'Corrected paint before/after390,360/430 and four focused Me links NOT_RUN; original390 evidence is separate',
                      'Visual acceptance and physical-device/live-flow qualification remain unproven']}
 (ROOT / 'docs/mcr/evidence/art-screen-id01/source-validation.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps({'selectors': len(seen), 'assets': len(pins), 'checks': report['checks']}))

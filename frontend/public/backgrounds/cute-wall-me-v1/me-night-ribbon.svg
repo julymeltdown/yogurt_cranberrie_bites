@@ -1,20 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="390" height="180" viewBox="0 0 390 180" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="180" viewBox="0 0 390 180" preserveAspectRatio="none" fill="none">
   <title>Me night ribbon background</title>
-  <desc>Original warm berry paper with broad mauve cloud shapes, stitched hearts, a soft bow and a blush scalloped lower edge. No character imagery.</desc>
+  <desc>Original warm berry quilt and bow above an opaque cream paper shelf with blush scallops and soft clouds. The lower paper preserves contrast for the unchanged red keyboard focus outline. No character imagery.</desc>
   <defs>
     <pattern id="quilt" width="32" height="32" patternUnits="userSpaceOnUse">
       <path d="m16 0 16 16-16 16L0 16Z" stroke="#694352" stroke-width=".6"/>
       <path d="M12 15c0-3 4-3 4-1 0-2 4-2 4 1s-4 5-4 5-4-2-4-5Z" fill="#704454"/>
     </pattern>
     <pattern id="lace" width="26" height="12" patternUnits="userSpaceOnUse">
-      <path d="M0 12V9c0-6 6-8 13-8s13 2 13 8v3Z" fill="#805362"/>
-      <circle cx="13" cy="7" r="1.5" fill="#573344"/>
+      <path d="M0 12V9c0-6 6-8 13-8s13 2 13 8v3Z" fill="#efc3c9"/>
+      <circle cx="13" cy="7" r="1.5" fill="#fff0e7"/>
     </pattern>
+    <clipPath id="paper-shelf"><path d="M0 120h390v60H0z"/></clipPath>
   </defs>
   <path fill="#573344" d="M0 0h390v180H0z"/>
   <path fill="url(#quilt)" d="M0 0h390v180H0z"/>
-  <path d="M0 180v-52c17-15 40-6 45 11 11-27 51-24 60 4 29-4 46 14 43 37Z" fill="#6c4355"/>
-  <path d="M221 180c-8-32 22-55 49-45-4-32 38-50 60-29 18-26 56-13 60 11v63Z" fill="#75495d"/>
+  <path d="M0 125V73c17-15 40-6 45 11 11-27 51-24 60 4 29-4 46 14 43 37Z" fill="#6c4355"/>
+  <path d="M221 125c-8-32 22-55 49-45-4-32 38-50 60-29 18-26 56-13 60 11v63Z" fill="#75495d"/>
   <g stroke="#875a69" stroke-width="1.4" stroke-linejoin="round" opacity=".7" transform="translate(352 32) rotate(14) scale(1.75)">
     <path d="M-2 1C-19-12-22 12-3 7l-5 14 6-3 2 4 2-15c20 6 19-20 2-6Z" fill="#704353"/>
     <rect x="-4" y="0" width="8" height="8" rx="2" fill="#805060"/>
@@ -28,6 +29,10 @@
     <ellipse cx="33" cy="134" rx="3" ry="2"/>
     <ellipse cx="42" cy="131" rx="3" ry="2"/>
   </g>
-  <path fill="url(#lace)" d="M0 168h390v12H0z"/>
-  <path d="M0 179h390" stroke="#805362"/>
+  <path fill="#fff0e7" d="M0 120h390v60H0z"/>
+  <g clip-path="url(#paper-shelf)">
+    <path d="M0 180v-29c17-15 40-6 45 11 11-27 51-24 60 4 29-4 46 14 43 37Z" fill="#ead9ea"/>
+    <path d="M221 180c-8-20 22-39 49-29-4-24 38-42 60-21 18-19 56-6 60 18v32Z" fill="#dce5d0"/>
+    <path fill="url(#lace)" d="M0 120h390v12H0z"/>
+  </g>
 </svg>

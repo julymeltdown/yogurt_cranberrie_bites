@@ -1,0 +1,41 @@
+{
+  "slot": "WORLD-PREFERENCES-TYPEFIX-202611040649Z",
+  "sourceWIPDigest": "43524a9bc123014e6ba2fa538b3828f8083e88ab274c340f9602e940e02a75ee",
+  "commands": [
+    {
+      "name": "types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/world/preferences",
+        "src/world/runtime.ts",
+        "src/world/scenes/MapScene.ts",
+        "src/features/theme/model/controller.ts",
+        "src/features/theme/__tests__/runtime-preferences"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "peakBytes": 1380352,
+  "status": "PASS",
+  "cleanup": {
+    "ownTemporaryRemoved": true,
+    "ownLinkAbsent": true,
+    "ownedChildFinished": true
+  },
+  "elapsedSeconds": 7.03
+}

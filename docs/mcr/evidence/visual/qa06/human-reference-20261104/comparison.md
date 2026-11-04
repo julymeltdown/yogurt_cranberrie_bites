@@ -150,3 +150,10 @@ Owner evidence: `docs/mcr/frontend/fe32-client-delivery.md` and `docs/mcr/eviden
 The original selected QA06 Wall guard frame remains **NOT_RUN for editor comparison**. FE32 supplies separate valid component+canonical HTTP/C04 synthetic qualification; no new task/capture is needed merely because the default guard remains visible. Public root admission, live service, physical Safari/Chrome, whole-reference fidelity and IN04 remain open. Shared frame/footer was unchanged in these captures. No shared-style adoption is inferred.
 
 Owner reports fresh remote ancestry/payload verification and full resource release. QA06 did not repeat that audit, run tests, launch a browser, recapture, reserve capacity or change source ownership. Pending-publication prose in the sealed delivery document is historical relative to the owner's newer publication report; neither that report nor this note proves clean STOP or goal completion.
+
+
+## New saved semantic Map cohort and superseding human direction
+
+[New6ca52f88 Map comparison](../map-service-v1-comparison/comparison.md) independently pins and compares the actual390×844/754 frames and four truthful route guards. The original49-object Map frame remains historical. The latest human direction changes all-ten background criteria to warm/playful/cozy backgrounds and ornaments only; character art/rendering/UV/anchors/profile crop/framing/sizing and actual layout/function are frozen. Old dark-collage backdrop requirements and portrait crop/per-preset/proportional-fit interventions are superseded/withdrawn. Artist reports faithful WholeCharacterView128/full64×64 input; the earlier AvatarThumbnail pointer is historical, not the diagnosed1.1path. See new record for exact cohort, corrected provenance and remaining criteria; no new capture or acceptance is implied.
+
+Latest precise steering: controls/text/typography are also frozen for this correction. The newest attachment is byte-identical to the preserved JPEG (sameSHA2b3988…); backgrounds must be cuter than BOTH it and current UI. [NewMap record](../map-service-v1-comparison/comparison.md) is explicitly BEFORE; actual Map+World390 AFTER is not yet supplied.

@@ -1,0 +1,13 @@
+src/features/theme/__tests__/runtime-preferences/cancellation.test.ts(12,133): error TS2322: Type 'string' is not assignable to type '"REVENGE" | "PARADE" | "DANGER"'.
+src/world/preferences/__tests__/vitest.config.ts(3,29): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type '{ cacheDir: string | undefined; test: { exclude: string[]; }; }' is not assignable to parameter of type 'ViteUserConfigExport'.
+      Type '{ cacheDir: string | undefined; test: { exclude: string[]; }; }' is not assignable to type 'UserConfig' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+        Types of property 'cacheDir' are incompatible.
+          Type 'string | undefined' is not assignable to type 'string'.
+            Type 'undefined' is not assignable to type 'string'.
+src/world/scenes/MapScene.ts(19,3): error TS2322: Type '(host: HTMLElement, loaded: LoadedMap) => { ready: Promise<void>; closed: Promise<void>; readonly effects: ({ motion: boolean; lowPower: boolean; acquire(value: Readonly<...>, signal: AbortSignal): RuntimeEffectLease; } & { ...; }) | undefined; ... 7 more ...; destroy(): void; }' is not assignable to type 'EngineFactory'.
+  Call signature return types '{ ready: Promise<void>; closed: Promise<void>; readonly effects: ({ motion: boolean; lowPower: boolean; acquire(value: Readonly<{ reducedMotion: boolean; lowPower: boolean; }>, signal: AbortSignal): RuntimeEffectLease; } & { ...; }) | undefined; ... 7 more ...; destroy(): void; }' and 'EngineLease' are incompatible.
+    The types of 'effects' are incompatible between these types.
+      Type '({ motion: boolean; lowPower: boolean; acquire(value: Readonly<{ reducedMotion: boolean; lowPower: boolean; }>, signal: AbortSignal): RuntimeEffectLease; } & { ...; }) | undefined' is not assignable to type 'RuntimeEffects'.
+        Type 'undefined' is not assignable to type 'RuntimeEffects'.

@@ -134,7 +134,15 @@
       },
       "observedAgainstActualHumanPhoto": "Revised brick architecture, six clear labels, winding paths and planting are visible. Central building mass/width, enclosed courtyard feel and populated landscape density still differ from the supplied target.",
       "sourceFixtureCapabilitySeparation": "FOOD/MERCH/etc in this old image are superseded semantic presentation, not desired fictional features. New51-object wings and correctedMCRservice labels/actions are not adopted or proved by this49-object capture.",
-      "responsibleNextAction": "Root+Artist already own semanticMap+wings work. Reuse their next qualified corrected frame naturally; do not duplicate capture/source ownership or rename canonical authority IDs."
+      "responsibleNextAction": "Root+Artist already own semanticMap+wings work. Reuse their next qualified corrected frame naturally; do not duplicate capture/source ownership or rename canonical authority IDs.",
+      "latestComparison": {
+        "path": "docs/mcr/evidence/visual/qa06/map-service-v1-comparison/comparison.json",
+        "candidate": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+        "new51ObjectCohort": true,
+        "original49FramePreserved": true,
+        "fullTargetFidelity": "OPEN",
+        "role": "BEFORE baseline; no new warm-background AFTER yet"
+      }
     },
     {
       "screen": "customize",
@@ -411,7 +419,14 @@
       },
       "observedAgainstActualHumanPhoto": "Black profile header, selected avatar, bio/actions/tabs preserve hierarchy. Current portrait shows more full-body figure inside its square than the target\u2019s close portrait; footer is repeated geometric marchers and type/chrome remain different.",
       "sourceFixtureCapabilitySeparation": "Some portrait/hair/body occupancy is selected artwork/configuration, not a client bug. Diagnose local profile presentation before changing it; never crop/replace approved art blindly or alter shared/world thumbnails. Cold activity, level/currency and private provider handles must not be fabricated.",
-      "responsibleNextAction": "Social receives a bounded profile-framing diagnosis with unchanged-art constraints, not an unconditional crop mandate. Root shared frame/footer fix proceeds. Existing real profile options/privacy/consent links remain reachable."
+      "responsibleNextAction": "Social receives a bounded profile-framing diagnosis with unchanged-art constraints, not an unconditional crop mandate. Root shared frame/footer fix proceeds. Existing real profile options/privacy/consent links remain reachable.",
+      "latestDisposition": {
+        "actualRenderer": "WholeCharacterView128; approved full64x64 source faithfully rendered (Artist reported)",
+        "priorAvatarThumbnailPointer": "Historical proposed provenance; not the diagnosed1.1path",
+        "portraitInterventions": "WITHDRAWN under newer human background-only direction",
+        "characterFramingSizing": "FROZEN",
+        "newSourceFixOrCaptureRequested": false
+      }
     }
   ],
   "semanticMapRequirements": {
@@ -509,5 +524,21 @@
     "Root/Artist semanticMAP+51wings corrected capture pending their one existing BackendSL queue; old49/currentWorld/portrait contexts are not combined automatically"
   ],
   "workPerformed": "Read-only direct viewing of exact humanJPEG and all ten selected existing frames, source hunk diagnosis, byte-preserved copies and QA06-only comparison artifacts. No application/art/source/contract write, new browser/native/build/test/device request, payload review rerun, or slot claim.",
-  "delivery": "Commit owned artifacts, direct packets to Root/Artist/Social/Community actual source owners plus World for staffing/context. No KingCC or QA/SLapproval gate; sourceowners implement/validate/publish independently."
+  "delivery": "Commit owned artifacts, direct packets to Root/Artist/Social/Community actual source owners plus World for staffing/context. No KingCC or QA/SLapproval gate; sourceowners implement/validate/publish independently.",
+  "latestHumanDirection": {
+    "authority": "Latest human background-only direction relayed by Social during this comparison; supersedes older dark-collage/portrait interventions",
+    "requirement": "All ten screens visibly cuter through warm/playful/cozy backgrounds and ornaments only",
+    "frozen": "All character pixels/pack/atlases/renderers/UV/anchors/profile crop/framing/sizing; controls, text, typography, layout, routes, focus, contrast and truthful guards/states",
+    "withdrawn": "Profile per-preset/upper-body framing and proportional wrapper/canvas-fit interventions; no new crop/renderer/sizing fixes under the old direction",
+    "validationBoundary": "When actually supplied, compare real390 before/after then affected widths in the existing21d single-capture allocation; no immediate parallel workflow",
+    "ownership": "Artist background source proposal; Root consumer;213 exact shared decorative hunks; Social/Community disjoint panel backgrounds later. QA06 owns evidence only.",
+    "referenceIdentity": {
+      "latestAttachmentPath": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/120DC5EC-1683-42AB-AF36-0DA8EB43CDE0/1-Photo-1.jpg",
+      "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+      "byteIdenticalToPreservedReference": true,
+      "instructionSupersedesDarkParity": true
+    },
+    "controlsTextTypography": "FROZEN for this specific correction",
+    "afterEvidence": "NOT_RUN; exact Map+World390 AFTER cohort not supplied"
+  }
 }

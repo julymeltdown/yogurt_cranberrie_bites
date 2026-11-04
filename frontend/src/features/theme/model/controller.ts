@@ -23,17 +23,31 @@ export function createThemeController(options: ThemeOptions) {
   const scope = Object.freeze({ ...options.scope })
   requireMap(Boolean(scope.userId && scope.eventId) && isThemeId(options.initial))
   let state: ThemeState = Object.freeze({ selected: options.initial, pending: null, phase: 'ready', message: '', saved: false })
-  let flight: AbortController | null = null, disposed = false, revision = 0
+  let flight: AbortController | null = null, detachFlight = () => {}, disposed = false, revision = 0
   const listeners = new Set<() => void>()
   const publish = (value: ThemeState) => {
     state = Object.freeze(value)
     for (const listener of Array.from(listeners)) { try { listener() } catch { /* Observer does not own the transaction. */ } }
   }
-  async function select(theme: ThemeId) {
-    if (disposed || !isThemeId(theme)) return
-    flight?.abort()
-    const controller = new AbortController(), ticket = ++revision
+  async function select(theme: ThemeId, signal?: AbortSignal) {
+    if (disposed || !isThemeId(theme) || signal?.aborted) return
+    const ticket = ++revision
+    detachFlight(); flight?.abort()
+    if (disposed || revision !== ticket) return
+    const controller = new AbortController()
     flight = controller
+    const detach = () => signal?.removeEventListener('abort', cancel)
+    const cancel = () => {
+      controller.abort(); detach()
+      if (disposed || revision !== ticket) return
+      const actual = options.runtime.readSkin(), selected = isThemeId(actual) ? actual : state.selected
+      publish({ ...state, selected, pending: null, phase: 'ready', saved: state.saved && selected === state.selected,
+        message: `Selection cancelled. ${selected} remains selected.` })
+      if (flight === controller) { flight = null; detachFlight = () => {} }
+    }
+    detachFlight = detach
+    signal?.addEventListener('abort', cancel, { once: true })
+    if (signal?.aborted) { cancel(); return }
     const current = () => !disposed && revision === ticket && !controller.signal.aborted
     const active = options.runtime.readSkin()
     publish({ ...state, selected: isThemeId(active) ? active : state.selected, phase: 'loading', pending: theme, message: `Loading ${theme}…` })
@@ -42,6 +56,7 @@ export function createThemeController(options: ThemeOptions) {
       if (options.runtime.readSkin() !== theme) {
         await options.runtime.replaceSkin(async signal => {
           const candidate = await options.load(theme, signal)
+          if (!current() || signal.aborted) { candidate.dispose(); throw new MapError('cancelled') }
           if (candidate.theme.theme_id !== theme) { candidate.dispose(); throw new MapError('invalid') }
           return candidate
         }, controller.signal)
@@ -62,7 +77,7 @@ export function createThemeController(options: ThemeOptions) {
         ? `${theme} artwork is unavailable. ${selected} remains selected.`
         : `Could not load ${theme}. ${selected} remains selected. Try again.`
       publish({ ...state, selected, saved: state.saved && selected === state.selected, pending: null, phase: 'error', message })
-    } finally { if (flight === controller) flight = null }
+    } finally { detach(); if (flight === controller) { flight = null; detachFlight = () => {} } }
   }
   return {
     read: () => state,
@@ -77,7 +92,7 @@ export function createThemeController(options: ThemeOptions) {
     },
     dispose() {
       if (disposed) return
-      disposed = true; ++revision; flight?.abort(); flight = null
+      disposed = true; ++revision; detachFlight(); detachFlight = () => {}; flight?.abort(); flight = null
       publish({ ...state, pending: null, phase: 'disposed', message: '' }); listeners.clear()
     },
   }
