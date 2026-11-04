@@ -258,6 +258,17 @@ fresh checks required before every native/build run.
 Exact exclusive writes: Party Discovery CSS feature-action/container selectors
 corresponding to packet lines 12/23/44–48, and `PartyDiscovery.tsx` Create
 Party action/availability block corresponding to 124–143 only if needed;
+Receiving owner independently reproduced 390×637 and reports both feature
+source hashes exactly match the packet. Its precise additional allocation is
+ONLY a new `.party-browse .meet-discovery` container selector in the same
+already-owned CSS file, limited to `min-height`/`overflow-y` declarations,
+plus existing `.party-browse` height/min-height/grid-template-rows geometry
+and the already granted footer flex/spacing hunks as needed. This resolves
+the literal new-selector boundary; it is an ownership clarification, not
+manager source inspection or technical approval. Developer owns the actual
+diagnosis/implementation/native validation. No root/shared/row-height/
+capability or additional TSX hunk is transferred. Existing row data/heights
+are outside the repair; the original frozen inputs and qualification remain.
 NEW `frontend/src/features/party-discovery/__tests__/qa06-meet-cta/**`, NEW
 `docs/mcr/evidence/visual/qa06-meet-cta/**`, NEW
 `docs/mcr/frontend/qa06-meet-cta-repair.md`. The three new paths must be
