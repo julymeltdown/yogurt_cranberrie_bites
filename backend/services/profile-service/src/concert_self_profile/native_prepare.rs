@@ -42,13 +42,13 @@ async fn profile() -> anyhow::Result<Profile> {
         )?
         .connect()
         .await?;
-    Ok(Profile::with_interceptor(
+    Ok(Profile::new(InterceptedService::new(
         signer.client(channel),
         ServiceIdentityClientInterceptor::new(
             Workload::Concert,
             &required("CONCERT_SERVICE_CREDENTIAL")?,
         )?,
-    ))
+    )))
 }
 
 async fn acquire(actor: Uuid) -> anyhow::Result<proto::SelfScope> {
