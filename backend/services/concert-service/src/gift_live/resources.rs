@@ -32,6 +32,13 @@ pub struct PgGiftResources<M> {
     media: M,
 }
 impl<M: GiftMediaLink> PgGiftResources<M> {
+    pub(crate) fn for_status(identity: GiftIdentity, operation: GiftOperation, media: M) -> Self {
+        Self {
+            identity,
+            operation,
+            media,
+        }
+    }
     pub fn new(request: &GiftRequest, media: M) -> Result<Self, CommandError> {
         let identity = request.identity();
         identity.check().map_err(|_| CommandError::Denied)?;

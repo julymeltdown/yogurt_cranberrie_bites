@@ -97,18 +97,18 @@ impl GiftAuthority for SyntheticPolicy {
         self.place_in(c, event, m.place_id).await
     }
 }
-struct Fixture {
-    pool: PgPool,
+pub(crate) struct Fixture {
+    pub(crate) pool: PgPool,
     authority: SyntheticPolicy,
     gifts: PgGifts<SyntheticPolicy>,
-    owner: Uuid,
-    recipients: Vec<Uuid>,
-    event: Uuid,
+    pub(crate) owner: Uuid,
+    pub(crate) recipients: Vec<Uuid>,
+    pub(crate) event: Uuid,
     keys: FingerprintKeys,
     codes: PickupKeys,
 }
 impl Fixture {
-    async fn new() -> anyhow::Result<Self> {
+    pub(crate) async fn new() -> anyhow::Result<Self> {
         let pool = owned::owned_pool().await?;
         let event = Uuid::new_v4();
         let owner = Uuid::new_v4();
@@ -148,7 +148,7 @@ impl Fixture {
             .map_err(|e| anyhow::anyhow!("{e:?}"))?;
         Ok(())
     }
-    async fn gift(&self, starts: DateTime<Utc>) -> anyhow::Result<Uuid> {
+    pub(crate) async fn gift(&self, starts: DateTime<Utc>) -> anyhow::Result<Uuid> {
         let fields = GiftFields {
             title: "Synthetic query gift".into(),
             description: String::new(),
@@ -190,7 +190,7 @@ impl Fixture {
         .await?;
         Ok(id)
     }
-    async fn reserve(&self, id: Uuid, recipient: Uuid) -> anyhow::Result<Uuid> {
+    pub(crate) async fn reserve(&self, id: Uuid, recipient: Uuid) -> anyhow::Result<Uuid> {
         let g = self
             .gifts
             .detail(self.owner, self.event, id)
@@ -207,7 +207,7 @@ impl Fixture {
         self.execute(&c).await?;
         Ok(r)
     }
-    fn identity(&self, actor: Uuid) -> GiftIdentity {
+    pub(crate) fn identity(&self, actor: Uuid) -> GiftIdentity {
         GiftIdentity {
             actor,
             event: self.event,

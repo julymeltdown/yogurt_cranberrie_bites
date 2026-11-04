@@ -37,7 +37,7 @@ def pins():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-test", type=Path, required=True)
-    parser.add_argument("--queries-test", type=Path, help="frozen Concert lib test binary; only Gift native query tests run")
+    parser.add_argument("--queries-test", type=Path, help="frozen Concert lib test binary; only Gift native query/correlation tests run")
     parser.add_argument("--pg-bin", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
@@ -73,13 +73,14 @@ def main():
         if args.queries_test is not None:
             queries = migration.executable(args.queries_test)
             report["query_binary_sha256"] = sha(queries)
-            command = [str(queries), "--ignored", "--test-threads=1", "gift_live::queries::native_tests"]
-            result = subprocess.run(command, cwd=ROOT, env=env, capture_output=True, text=True, timeout=60)
-            report["query_run"] = {"command": command, "exit_code": result.returncode, "stdout": result.stdout, "stderr": result.stderr,
-                                   "authority": "synthetic test policy only; canonical owner acceptance NOT_RUN"}
-            require(result.returncode == 0, "native Gift query tests failed")
-            match = re.search(r"test result: ok\. (\d+) passed", result.stdout)
-            require(match is not None and int(match[1]) == 3, "expected all three exact Gift query tests")
+            for kind, namespace in [("query", "queries"), ("target", "correlation")]:
+                command = [str(queries), "--ignored", "--test-threads=1", f"gift_live::{namespace}::native_tests"]
+                result = subprocess.run(command, cwd=ROOT, env=env, capture_output=True, text=True, timeout=60)
+                report[f"{kind}_run"] = {"command": command, "exit_code": result.returncode, "stdout": result.stdout, "stderr": result.stderr,
+                                       "authority": "synthetic test policy only; canonical owner acceptance NOT_RUN"}
+                require(result.returncode == 0, f"native Gift {kind} tests failed")
+                match = re.search(r"test result: ok\. (\d+) passed", result.stdout)
+                require(match is not None and int(match[1]) == 3, f"expected all three exact Gift {kind} tests")
             require(report["query_binary_sha256"] == sha(queries), "query binary changed during native validation")
         require(report["source_sha256"] == pins(), "source changed during native validation")
         require(report["binary_sha256"] == sha(binary), "binary changed during native validation")

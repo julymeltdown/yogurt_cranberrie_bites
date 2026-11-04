@@ -38,7 +38,7 @@ pub trait GiftProfiles: Send + Sync {
     async fn read(&self, subject: &GuardedSubject) -> Result<PublicAuthor, FeedError>;
 }
 pub struct GiftRuntime {
-    pool: PgPool,
+    pub(crate) pool: PgPool,
     receipts: Arc<FingerprintKeys>,
     pickup: Arc<PickupKeys>,
     profiles: Arc<dyn GiftProfiles>,
@@ -100,6 +100,13 @@ impl GiftRuntime {
         let op = request.operation();
         let key = request.idempotency_key();
 
+        // These disclose private meeting text or a plaintext one-shot code.
+        // SDK3 GiftPrivate/native recovery and root's before-byte clip are not
+        // qualified yet. Ordinary snapshot/business operations remain separate.
+        if matches!(op, GiftOperation::Pickup | GiftOperation::IssueCode) {
+            return Err(CommandError::Unavailable.into());
+        }
+
         if op == GiftOperation::Claim && network.is_none() {
             return Err(CommandError::Unavailable.into());
         }
@@ -154,6 +161,7 @@ impl GiftRuntime {
                 let result = gifts
                     .execute(&cmd, &self.receipts, &self.pickup, network)
                     .await?;
+                super::correlation::require_receipt(&self.pool, &cmd, &result.receipt).await?;
                 if result.receipt.state == ReceiptState::Pending {
                     let body = response::receipt(i, op.id(), cmd.key, &result.receipt)
                         .map_err(projection)?;

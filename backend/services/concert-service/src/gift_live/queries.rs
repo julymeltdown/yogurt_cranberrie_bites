@@ -21,7 +21,7 @@ pub(crate) struct Page<T> {
 
 #[cfg(test)]
 #[path = "native_queries.rs"]
-mod native_tests;
+pub(crate) mod native_tests;
 pub(crate) struct ReservationItem {
     pub giveaway: Uuid,
     pub value: Reservation,
@@ -50,7 +50,7 @@ fn cursor(e: CursorError) -> GiftServiceError {
     }
     .into()
 }
-fn parse(row: &PgRow, event: Uuid) -> Result<Giveaway, GiftServiceError> {
+pub(crate) fn parse(row: &PgRow, event: Uuid) -> Result<Giveaway, GiftServiceError> {
     let g: Giveaway = serde_json::from_value(row.try_get("aggregate").map_err(db)?)
         .map_err(|_| CommandError::Unavailable)?;
     g.validate().map_err(|_| CommandError::Unavailable)?;
@@ -329,6 +329,16 @@ impl<'a, A: GiftAuthority> GiftReads<'a, A> {
         };
         let row=sqlx::query("select * from concert_community_giveaways where event_id=$1 and giveaway_id=$2 and owner_id=$3 for share").bind(i.event).bind(id).bind(i.actor).fetch_optional(&mut *tx).await.map_err(db)?.ok_or(CommandError::Denied)?;
         let g = parse(&row, i.event)?;
+        let now = self.now(&mut tx).await?;
+        if g.reservations.iter().any(|r| {
+            r.state.active()
+                && (r.expires_at <= now
+                    || (r.state == ReservationState::Held && g.fields.pickup_starts_at <= now))
+        }) {
+            // The bounded maintenance loop must not silently certify stale
+            // counts/state when another reservation becomes due at its edge.
+            return Err(CommandError::Unavailable.into());
+        }
         let mut selected = g
             .reservations
             .iter()

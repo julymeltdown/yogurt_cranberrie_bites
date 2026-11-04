@@ -70,6 +70,26 @@ pub(crate) struct TrackedCanonical {
     reference: Arc<Vec<u8>>,
 }
 impl TrackedCanonical {
+    pub(crate) fn for_status(
+        context: &super::status::StatusContext,
+        scope: Arc<OwnerGuardScope>,
+    ) -> Result<Self, Status> {
+        let mut h = Sha256::new();
+        h.update(b"MCR-gift-status-transaction-v1\0");
+        h.update(scope.binding().digest());
+        h.update(context.receipt_scope.operation.id().as_bytes());
+        h.update(context.receipt_scope.key.as_bytes());
+        let reference = serde_json::to_vec(&serde_json::json!({
+            "kind":"GIFT_STATUS_V1", "actor_id":context.identity.actor,
+            "event_id":context.identity.event,"request_id":context.identity.request_id,
+            "operation_id":context.receipt_scope.operation.id(),"idempotency_key":context.receipt_scope.key,
+        })).map_err(|_| Status::unavailable("Gift status settlement binding"))?;
+        Ok(Self {
+            scope,
+            effect: h.finalize().into(),
+            reference: Arc::new(reference),
+        })
+    }
     pub(crate) fn new(request: &GiftRequest, scope: Arc<OwnerGuardScope>) -> Result<Self, Status> {
         validate_binding(request, &scope)?;
         // The signed parent covers exact transport payload; additionally bind the
@@ -126,8 +146,25 @@ impl FencedRelationshipAuthority for TrackedCanonical {
 pub struct ScopedGiftAuthority<M> {
     inner: Arc<SharedCommunityAuthority<TrackedCanonical, PgGiftResources<M>>>,
     safety: bool,
+    target: Option<super::correlation::CommandTarget>,
 }
 impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
+    pub(crate) fn for_status(
+        pool: PgPool,
+        context: &super::status::StatusContext,
+        scope: Arc<OwnerGuardScope>,
+        media: M,
+    ) -> Result<Self, CommandError> {
+        let canonical = TrackedCanonical::for_status(context, scope).map_err(command)?;
+        Ok(Self {
+            inner: Arc::new(SharedCommunityAuthority::new(
+                PgRelationshipPolicy::new(pool, canonical),
+                PgGiftResources::for_status(context.identity, context.operation, media),
+            )),
+            safety: context.operation == GiftOperation::Cancel,
+            target: None,
+        })
+    }
     pub fn new(
         pool: PgPool,
         request: &GiftRequest,
@@ -141,6 +178,7 @@ impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
                 PgGiftResources::new(request, media)?,
             )),
             safety: request.operation() == GiftOperation::Cancel,
+            target: super::correlation::CommandTarget::from_request(request)?,
         })
     }
     fn access(&self, access: CommunityAccess) -> CommunityAccess {
@@ -158,6 +196,7 @@ impl<M> Clone for ScopedGiftAuthority<M> {
         Self {
             inner: self.inner.clone(),
             safety: self.safety,
+            target: self.target.clone(),
         }
     }
 }
@@ -184,7 +223,11 @@ impl<M: GiftMediaLink> CommunityAuthority for ScopedGiftAuthority<M> {
     ) -> Result<(), CommandError> {
         self.inner
             .authorize_in(c, actor, event, subject, self.access(access))
-            .await
+            .await?;
+        if let Some(target) = &self.target {
+            target.install_in(c).await?;
+        }
+        Ok(())
     }
     async fn place_in(
         &self,

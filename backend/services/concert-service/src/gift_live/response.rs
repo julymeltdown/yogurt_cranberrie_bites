@@ -59,6 +59,10 @@ pub fn checked_reply(
     validate(schema, &body)?;
     Ok(GiftReply::Json { status, body })
 }
+pub(crate) fn status_reply(body: Value) -> Result<GiftReply, ProjectionError> {
+    validate("Domain_common_CommandReceipt", &body)?;
+    Ok(GiftReply::Json { status: 200, body })
+}
 fn validate(name: &'static str, value: &Value) -> Result<(), ProjectionError> {
     static CONTRACT: OnceLock<Value> = OnceLock::new();
     static VALIDATORS: OnceLock<Mutex<HashMap<&'static str, Arc<jsonschema::Validator>>>> =
