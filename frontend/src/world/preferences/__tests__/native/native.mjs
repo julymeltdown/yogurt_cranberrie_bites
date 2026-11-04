@@ -32,6 +32,8 @@ const report = { status: 'IN_PROGRESS', source, slot, branch: execFileSync('git'
  limits: ['Controlled frozen C03/C05/C06/selected-source fixtures, not live backend or production art admission', 'Actual production Root/Settings/adopter/composition/default Phaser and ThemeController from one checkout', 'Reduced motion covers nonessential tweens; character artwork/manual walk renderer unchanged', 'Low power caps actual canvas paints, not updates/network/authoritative physics; no battery or physical-device claim', 'No real eligible audio source; enable-sound is explicitly unavailable', 'Pending ignored-abort theme candidate disposal qualified by source tests; fixture lacks alternate admitted theme assets'] }
 await mkdir(output)
 const temporary = await mkdtemp('/private/tmp/mcr-world-preferences-native-'), profile = resolve(temporary, 'profile')
+// Keep browser/framework default temporary artifacts inside the monitored owned tree.
+process.env.TMPDIR = temporary; process.env.TMP = temporary; process.env.TEMP = temporary
 let server, context, peak = 0, monitorTimer, monitorBusy = false, monitorFlight = Promise.resolve(), resourceFailure = null
 async function budget() {
  const durable = await bytes(resolve(root, 'docs/mcr/evidence/world-runtime-preferences')), working = await bytes(temporary), link = await lstat(resolve(frontend, 'node_modules'))

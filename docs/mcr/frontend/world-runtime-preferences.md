@@ -152,7 +152,10 @@ no 206-test repeat, browser, Vite or build ran. The named allocation completed
 2026-11-04 07:52:22.929–07:52:30.044 UTC in 7.159 seconds, with a measured
 1,384,492-byte whole-workflow peak including all retained producer evidence,
 new logs, private temporary/cache paths and the borrowed dependency symlink.
-Its owned child, link and temporary/cache tree were fully released.
+Its owned child, link and temporary/cache tree were fully released. A later
+resource-only native-driver successor also points TMPDIR/TMP/TEMP at its own
+monitored tree before browser/server creation; its Node syntax check passed.
+The original source-03 hashes remain historical evidence and are not rewritten.
 
 The one composed native job remains NOT_RUN until Root publishes the actual
 motion-rule loading and latest adopter cleanup fix. Exact overlapping evidence
