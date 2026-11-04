@@ -211,3 +211,15 @@ lease reference and closed object target, then uses equivalent `anyOf` only ther
 Every other public schema and private-field rejection remains intact. The three
 new source cases include a null response, preserved closed-field rejection and
 refusal of a non-disjoint replacement union; this supplies no producer evidence.
+
+The real-driver source round at `556f5f06c` passed all three new input-boundary
+cases. TypeScript then rejected the strict `getOwnConcertOperationsAccess` literal
+against that checkout's old generated registry union; lint did not run. C07's
+qualified148 cohort was published during the immutable accepted round as canonical
+`9e5e286b4bad44c5f41843df60af1432766e2a15`, included in
+`2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c`. Its normal canonical intake supplies the
+actual registered type; no cast, local registration or caller fallback is added.
+Original3-case PASS remains bound to its recorded source without replay. Raw logs
+and FULL20:12:41.733206Z are retained under `actual-source-01-old-registry`.
+Root also identified the actual settings-read producer join and Gateway28 mount
+as necessary open backend work; frontend cannot manufacture that response.
