@@ -1,0 +1,27 @@
+{
+  "version": 10,
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "source_pins": [
+    {
+      "path": "../../quality-v8/revenge/atlas.png",
+      "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd"
+    },
+    {
+      "path": "../ground.png",
+      "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887"
+    },
+    {
+      "path": "../route-edges.json",
+      "sha256": "sha256:b1720b5c2ecfa019b0d2ca58246408cf31d00b915e9816d01914e11149eb8b52"
+    },
+    {
+      "path": "../map-label-presentation.json",
+      "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
+    }
+  ],
+  "atlas": "Byte-identical original v8 atlas/native padding. No source image regeneration or character art.",
+  "ground": "Original v6 texture quadrants on 121 native editable material layers clipped to the new paving; then native vector union edges. Source pixels unchanged.",
+  "geometry": "New spatial-v5 terrain and geometry hash; exact 34 WORLD props, footprints, collision, places, spawns, interactions and cameras. Eight MAP representations are identical to v9.",
+  "source_review": "No C06 REVIEWED state or physical qualification is conferred. Original source/place provenance remains unchanged."
+}

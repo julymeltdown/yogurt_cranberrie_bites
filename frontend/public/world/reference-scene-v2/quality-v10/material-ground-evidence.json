@@ -1,0 +1,83 @@
+{
+  "commands": [
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "create",
+        "--project",
+        "quality-v10/material-ground.tsrct"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "quality-v10/material-ground.tsrct",
+        "--file",
+        "quality-v10/surface-native.png",
+        "--asset-id",
+        "original-materials",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "quality-v10/material-ground.tsrct",
+        "--output",
+        "quality-v10/material-ground-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "quality-v10/material-ground.tsrct",
+        "--file",
+        "quality-v10/material-ground-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "quality-v10/material-ground.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "quality-v10/material-ground-native.png"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "source": {
+    "path": "../quality-v6/sources/surface-sheet.png",
+    "sha256": "sha256:695ddcdd0d895d01445df545035ae21de3db12c5c17fdfb47b244b2b3c616dae"
+  },
+  "native_source": {
+    "path": "surface-native.png",
+    "sha256": "sha256:d5f4e8fd42cab7d0524a7553eb2056dc197e106ee382ffb62ea58f6cf958a40b",
+    "method": "ExactRGBAoriginal pixels at0,0 with transparent native-only padding; no resampling or source changes."
+  },
+  "layers": 121,
+  "native_rgb_export": {
+    "path": "material-ground.png",
+    "sha256": "sha256:d21c4efb881d747605dcc0c89a71aeb5acdda273dc5a0d767ae50abc6457f9bc"
+  },
+  "method": "Native image layers sample original627pxgrass/cobble quadrants into128pxmaterial tiles; same scale and tile origin as v6. Editable masks clip paving to the new polygon union. No decorative ellipses, new textures from reference or characters."
+}

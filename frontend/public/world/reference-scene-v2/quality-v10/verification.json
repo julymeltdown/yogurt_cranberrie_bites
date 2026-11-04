@@ -1,0 +1,161 @@
+{
+  "status": "PASS_V10_SOURCE_COMPOSITION_ONLY",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "ground_changed_pixels": 47704,
+  "ground_change_scope": "Only within7px independent raster-union edge neighborhood; lossless native-RGB parity.",
+  "only_terrain_changed_from_spatial_v4": true,
+  "themes": [
+    {
+      "era": "revenge",
+      "schema": "PASS",
+      "world_props": 34,
+      "map_representations": 8,
+      "runtime_pngs": 2,
+      "bytes": 1752996,
+      "pixels": 2043904,
+      "native_projects": 2
+    },
+    {
+      "era": "parade",
+      "schema": "PASS",
+      "world_props": 34,
+      "map_representations": 8,
+      "runtime_pngs": 2,
+      "bytes": 1764183,
+      "pixels": 2043904,
+      "native_projects": 2
+    },
+    {
+      "era": "danger",
+      "schema": "PASS",
+      "world_props": 34,
+      "map_representations": 8,
+      "runtime_pngs": 2,
+      "bytes": 1750488,
+      "pixels": 2043904,
+      "native_projects": 2
+    }
+  ],
+  "north_facade_probes": [
+    {
+      "era": "revenge",
+      "id": "north_west_facade_representation",
+      "near_opaque_source_samples": 306,
+      "v10_visible_matches": 262,
+      "v8_same_region_matches": 57,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "revenge",
+      "id": "north_east_facade_representation",
+      "near_opaque_source_samples": 326,
+      "v10_visible_matches": 248,
+      "v8_same_region_matches": 50,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "parade",
+      "id": "north_west_facade_representation",
+      "near_opaque_source_samples": 324,
+      "v10_visible_matches": 270,
+      "v8_same_region_matches": 58,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "parade",
+      "id": "north_east_facade_representation",
+      "near_opaque_source_samples": 342,
+      "v10_visible_matches": 238,
+      "v8_same_region_matches": 37,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "danger",
+      "id": "north_west_facade_representation",
+      "near_opaque_source_samples": 305,
+      "v10_visible_matches": 244,
+      "v8_same_region_matches": 41,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "danger",
+      "id": "north_east_facade_representation",
+      "near_opaque_source_samples": 315,
+      "v10_visible_matches": 224,
+      "v8_same_region_matches": 37,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    }
+  ],
+  "lower_venue_probes": [
+    {
+      "era": "REVENGE",
+      "view": "WORLD",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 463,
+      "samples_with_max_channel_error_le40": 463,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. MAP label rectangles excluded from visible-source samples. Original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "REVENGE",
+      "view": "MAP",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 273,
+      "samples_with_max_channel_error_le40": 273,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. MAP label rectangles excluded from visible-source samples. Original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "PARADE",
+      "view": "WORLD",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 460,
+      "samples_with_max_channel_error_le40": 460,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. MAP label rectangles excluded from visible-source samples. Original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "PARADE",
+      "view": "MAP",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 245,
+      "samples_with_max_channel_error_le40": 245,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. MAP label rectangles excluded from visible-source samples. Original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "DANGER",
+      "view": "WORLD",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 445,
+      "samples_with_max_channel_error_le40": 445,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. MAP label rectangles excluded from visible-source samples. Original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "DANGER",
+      "view": "MAP",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 243,
+      "samples_with_max_channel_error_le40": 243,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. MAP label rectangles excluded from visible-source samples. Original source alpha is preserved, never rewritten to255."
+    }
+  ],
+  "material_probes": [
+    {
+      "terrain_id": 1,
+      "samples": 6582,
+      "matches_within25_per_channel": 6582
+    },
+    {
+      "terrain_id": 2,
+      "samples": 5686,
+      "matches_within25_per_channel": 5686
+    }
+  ],
+  "limits": [
+    "Manual road-center anchor distances are not a whole-target fidelity score.",
+    "No fourth critic score, application, source qualification, backend admission, physical or multiuser acceptance."
+  ]
+}

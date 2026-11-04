@@ -10,7 +10,7 @@ import shutil
 import subprocess
 
 HERE=Path(__file__).resolve().parent
-parser=argparse.ArgumentParser();parser.add_argument('era',choices=['revenge','danger','parade']);parser.add_argument('--revision',type=int,choices=[6,7,8,9],default=6);args=parser.parse_args();era=args.era
+parser=argparse.ArgumentParser();parser.add_argument('era',choices=['revenge','danger','parade']);parser.add_argument('--revision',type=int,choices=[6,7,8,9,10],default=6);args=parser.parse_args();era=args.era
 OUT=HERE/f'quality-v{args.revision}'/era
 CLI=os.environ.get('MCR_TSRCT') or shutil.which('tsrct') or str(Path.home()/'Library/Application Support/Tesseract/bin/tsrct')
 layout=json.loads((OUT/'layout.json').read_text());proposal=json.loads((HERE/f'spatial-v{layout["geometry_revision"]}/geometry-proposal.json').read_text())
@@ -31,7 +31,7 @@ for view in ['world','map']:
         if asset_id not in cached:
             run(['project','import-asset','--project',str(project),'--file',str(OUT/asset),'--asset-id',asset_id,'--kind','image'])
             cached.append(asset_id);cache_file.write_text(json.dumps(cached,indent=2)+'\n')
-    if args.revision==9 and view=='map':
+    if args.revision in [9,10] and view=='map':
         font=HERE/'map-labels-v1/map-labels-bold.ttf';font_id='font-'+hashlib.sha256(font.read_bytes()).hexdigest()
         if font_id not in cached:
             run(['project','import-font','--project',str(project),'--file',str(font)])
@@ -61,14 +61,14 @@ for view in ['world','map']:
     for o in sorted(props,key=lambda o:o['depth_y']):
         f=layout['frames'][o['frame']];rect={k:f[k] for k in ['x','y','width','height']}
         image(o['id'],'scenery',rect,o['x'],o['y'],o['width'],o['height'])
-    if args.revision==9 and view=='map':
+    if args.revision in [9,10] and view=='map':
         original=json.loads((HERE/f'quality-v8/{era}/{era}-map-editable.json').read_text())['composition']['layers']
         labeled=json.loads((HERE/f'map-labels-v1/{era}-map-labels-editable.json').read_text())['composition']['layers']
         overlay=copy.deepcopy(labeled[:-len(original)])
         for n,l in enumerate(overlay,start=max(l['id'] for l in layers)+1):l['id']=n
         composed=overlay+list(reversed(layers))
     else:composed=list(reversed(layers))
-    doc['composition']={'id':'main','name':f'{era.upper()} {view.upper()} editable scenery'+(' with original vector destination labels' if args.revision==9 and view=='map' else ', no characters or baked map labels'),'layers':composed}
+    doc['composition']={'id':'main','name':f'{era.upper()} {view.upper()} editable scenery'+(' with original vector destination labels' if args.revision in [9,10] and view=='map' else ', no characters or baked map labels'),'layers':composed}
     editable.write_text(json.dumps(doc,indent=2)+'\n')
     run(['project','commit','--project',str(project),'--file',str(editable)])
     output=OUT/f'{era}-{view}-native.png';output.unlink(missing_ok=True)

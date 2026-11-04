@@ -1,0 +1,72 @@
+{
+  "execution_base": "4af00fdb5048bb080e49dcfbddcc2cee61b45478",
+  "python": "3.14.3",
+  "pillow": "12.2.0",
+  "tesseract": "0.4.0 d7ccb4bc20fc69f2356c53b80336e52cff31dcc5",
+  "browser": "156.0.8078.80",
+  "new_dependencies": [],
+  "source_reference_sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "commands": [
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/build-diagonal-spatial.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/build-diagonal-ground.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/build-route-edges.py --geometry-revision 5 --quality-revision 10 --base-ground quality-v10/material-ground.png",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/build-route-composition.py --revision 10",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/editable-quality.py revenge --revision 10",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/editable-quality.py parade --revision 10",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/editable-quality.py danger --revision 10",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-diagonal-spatial.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-diagonal-composition.py",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_ART_REVISION=10 MCR_PLAYWRIGHT_PACKAGE=<existing installed package> node frontend/public/world/reference-scene-v2/check-quality.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-route-composition.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-quality.py --revision 8",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "initial_probe_findings": [
+    "Technical verifier variable shadowing corrected.",
+    "Lower-venue MAP sample coverage now excludes the explicit label rectangles; original visible-source threshold retained."
+  ],
+  "limits": "Native viewer open queued; actual PNGs inspected. Source/native/browser evidence only; no new critic score, app/server/source-review/physical/device/multiuser acceptance."
+}

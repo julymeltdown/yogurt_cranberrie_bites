@@ -1,0 +1,4080 @@
+{
+  "status": "PASS_V10_REFERENCE_ASSET_COMPARISON_ONLY",
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "width": 360,
+      "cycle": 0,
+      "era": "parade",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 1
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "cycle": 0,
+      "era": "parade",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 1
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 360,
+      "cycle": 0,
+      "era": "revenge",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 2
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "cycle": 0,
+      "era": "revenge",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 2
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 360,
+      "cycle": 0,
+      "era": "danger",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "cycle": 0,
+      "era": "danger",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 360,
+      "cycle": 1,
+      "era": "parade",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "cycle": 1,
+      "era": "parade",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 360,
+      "cycle": 1,
+      "era": "revenge",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "cycle": 1,
+      "era": "revenge",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 360,
+      "cycle": 1,
+      "era": "danger",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "cycle": 1,
+      "era": "danger",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "cycle": 0,
+      "era": "parade",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 1
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "cycle": 0,
+      "era": "parade",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 1
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "cycle": 0,
+      "era": "revenge",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 2
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "cycle": 0,
+      "era": "revenge",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 2
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "cycle": 0,
+      "era": "danger",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "cycle": 0,
+      "era": "danger",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "cycle": 1,
+      "era": "parade",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "cycle": 1,
+      "era": "parade",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "cycle": 1,
+      "era": "revenge",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "cycle": 1,
+      "era": "revenge",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "cycle": 1,
+      "era": "danger",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "cycle": 1,
+      "era": "danger",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "cycle": 0,
+      "era": "parade",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 1
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "cycle": 0,
+      "era": "parade",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 1
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "cycle": 0,
+      "era": "revenge",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 2
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "cycle": 0,
+      "era": "revenge",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 2
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "cycle": 0,
+      "era": "danger",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "cycle": 0,
+      "era": "danger",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "cycle": 1,
+      "era": "parade",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "cycle": 1,
+      "era": "parade",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "parade",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "cycle": 1,
+      "era": "revenge",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "cycle": 1,
+      "era": "revenge",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "revenge",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "cycle": 1,
+      "era": "danger",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "world",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "cycle": 1,
+      "era": "danger",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "era": "danger",
+        "view": "map",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ],
+        "physicalObjects": 34,
+        "mapRepresentations": 8,
+        "resources": 2,
+        "cacheEntries": 3
+      },
+      "feet": [
+        {
+          "id": "courtyard_entry",
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1,
+      "labels": {
+        "fontLoaded": true,
+        "fontFamily": "MCR Map Labels",
+        "labels": [
+          {
+            "label": "MAIN STAGE",
+            "rect": {
+              "x": 179,
+              "y": 108,
+              "width": 312,
+              "height": 78
+            },
+            "icon": "stage",
+            "interaction_id": "stage_info",
+            "lines": [
+              {
+                "text": "MAIN STAGE",
+                "width": 207.5390625
+              }
+            ],
+            "availableTextWidth": 214
+          },
+          {
+            "label": "PLAZA",
+            "rect": {
+              "x": 298,
+              "y": 422,
+              "width": 143,
+              "height": 78
+            },
+            "icon": null,
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "PLAZA",
+                "width": 112.05078125
+              }
+            ],
+            "availableTextWidth": 115
+          },
+          {
+            "label": "MERCH",
+            "rect": {
+              "x": 8,
+              "y": 711,
+              "width": 221,
+              "height": 78
+            },
+            "icon": "merch",
+            "interaction_id": "gifts_info",
+            "lines": [
+              {
+                "text": "MERCH",
+                "width": 119.62890625
+              }
+            ],
+            "availableTextWidth": 123
+          },
+          {
+            "label": "FOOD",
+            "rect": {
+              "x": 562,
+              "y": 719,
+              "width": 192,
+              "height": 78
+            },
+            "icon": "food",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "FOOD",
+                "width": 89.84375
+              }
+            ],
+            "availableTextWidth": 94
+          },
+          {
+            "label": "MEETUP ZONE",
+            "rect": {
+              "x": 252,
+              "y": 971,
+              "width": 240,
+              "height": 108
+            },
+            "icon": "people",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "MEETUP",
+                "width": 137.65625
+              },
+              {
+                "text": "ZONE",
+                "width": 88.90625
+              }
+            ],
+            "availableTextWidth": 142
+          },
+          {
+            "label": "GIVEAWAY BOOTH",
+            "rect": {
+              "x": 400,
+              "y": 1183,
+              "width": 280,
+              "height": 108
+            },
+            "icon": "gift",
+            "interaction_id": null,
+            "lines": [
+              {
+                "text": "GIVEAWAY",
+                "width": 172.6953125
+              },
+              {
+                "text": "BOOTH",
+                "width": 115.64453125
+              }
+            ],
+            "availableTextWidth": 182
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Canvas2D static asset/skin cycling review, not Phaser, server release or multiplayer acceptance.",
+    "No characters/moving-avatar occlusion; six named feet only.",
+    "No new critic score or target-fidelity acceptance."
+  ]
+}
