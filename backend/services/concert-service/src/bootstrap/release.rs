@@ -39,6 +39,9 @@ pub fn validate_product_files(
     super::schema::validate(doc)?;
     validate_template(doc)?;
     validate_avatar(avatar)?;
+    if avatar["contract_version"] == "2.0.0" {
+        validate_motion_files(avatar_path, avatar)?;
+    }
     validate_map(map)?;
     validate_themes(themes, avatar, map)?;
     validate_release_provenance(&documents, policy)?;
@@ -90,7 +93,8 @@ pub fn validate_product_files(
             return Err(super::BootstrapServiceError::ReleaseUnavailable);
         }
     }
-    let world_resources = avatar["atlas"]["texture"]["image_state"] == "PROVIDED"
+    let world_resources = (avatar["contract_version"] == "2.0.0"
+        || avatar["atlas"]["texture"]["image_state"] == "PROVIDED")
         && map["tilemap"]["resource_state"] == "PROVIDED"
         && themes
             .iter()
@@ -286,7 +290,7 @@ fn parse_avatar_config(value: &Value) -> Result<AvatarSelection, super::Bootstra
         .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
 }
 fn default_preset_key(avatar: &Value) -> &'static str {
-    if avatar["representation"] == "whole_character" {
+    if avatar["representation"] == "whole_character" || avatar["contract_version"] == "2.0.0" {
         "default_preset_id"
     } else {
         "fallback_preset_id"
@@ -318,6 +322,13 @@ fn validate_template(value: &Value) -> Result<(), super::BootstrapServiceError> 
     Ok(())
 }
 pub(super) fn validate_avatar(value: &Value) -> Result<(), super::BootstrapServiceError> {
+    if value["contract_version"] == "2.0.0" {
+        return concert_domain::avatar_motion_v2::reviewed::VisuallyReviewedCatalog::from_manifest(
+            value,
+        )
+        .map(|_| ())
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable);
+    }
     if string(value, "kind")? != "avatar_manifest"
         || !matches!(string(value, "contract_version")?, "1.0.0" | "1.1.0")
     {
@@ -472,7 +483,9 @@ fn validate_release_provenance(
         check(value, policy)?;
     }
     if policy == ReleasePolicy::Product
-        && if values[1]["representation"] == "whole_character" {
+        && if values[1]["contract_version"] == "2.0.0" {
+            string(&values[1]["source"], "pack_id")? != "mcr_user_characters_20261103"
+        } else if values[1]["representation"] == "whole_character" {
             string(&values[1]["source"], "source_pack_id")? != "mcr_user_characters_20261103"
         } else {
             string(&values[1]["provenance"], "source_id")? != "mcr_user_characters_20261103"
@@ -702,4 +715,39 @@ mod tests {
         );
         assert!(canonical_bytes(&json!(0.5)).is_err());
     }
+}
+
+// The reviewed release uses a closed repository-relative resource allowlist.
+// A deployment bundle must preserve that layout; arbitrary configured/client
+// asset roots cannot turn into filesystem authority. No map validation changes.
+pub(super) fn validate_motion_files(
+    avatar_path: &Path,
+    avatar: &Value,
+) -> Result<(), super::BootstrapServiceError> {
+    use concert_domain::avatar_motion_v2::{reviewed::VisuallyReviewedCatalog, MotionError};
+    let actual = fs::canonicalize(avatar_path)
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?;
+    let root = actual
+        .ancestors()
+        .nth(5)
+        .ok_or(super::BootstrapServiceError::ReleaseUnavailable)?;
+    if root.join("backend/releases/selected-character-motion-v2/reviewed/manifest.json") != actual {
+        return Err(super::BootstrapServiceError::ReleaseUnavailable);
+    }
+    VisuallyReviewedCatalog::from_manifest(avatar)
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?
+        .verify_resources(|path| {
+            let resolved =
+                fs::canonicalize(root.join(path)).map_err(|_| MotionError::UnknownResource)?;
+            if !resolved.starts_with(root) {
+                return Err(MotionError::UnknownResource);
+            }
+            let metadata = fs::metadata(&resolved).map_err(|_| MotionError::ResourceMismatch)?;
+            if !metadata.is_file() || metadata.len() > 4 * 1024 * 1024 {
+                return Err(MotionError::ResourceMismatch);
+            }
+            fs::read(resolved).map_err(|_| MotionError::ResourceMismatch)
+        })
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?;
+    Ok(())
 }

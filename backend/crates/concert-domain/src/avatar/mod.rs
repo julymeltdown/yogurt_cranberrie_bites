@@ -41,10 +41,24 @@ enum WireConfig {
     },
 }
 #[derive(Deserialize)]
+#[serde(untagged)]
+enum AllWireConfig {
+    Legacy(WireConfig),
+    Reviewed(crate::avatar_motion_v2::reviewed::Config),
+}
+impl AllWireConfig {
+    fn selection(self) -> Result<AvatarSelection, ConfigError> {
+        match self {
+            Self::Legacy(v) => v.selection(),
+            Self::Reviewed(v) => Ok(v.into_selection()),
+        }
+    }
+}
+#[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct WireRequest {
     expected_revision: i64,
-    config: WireConfig,
+    config: AllWireConfig,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct SetAvatar {
@@ -58,6 +72,7 @@ impl SetAvatar {
         }
         // Struct deserialization rejects duplicate fields, unknown keys, floats,
         // booleans as integers, and missing required (including nullable) slots.
+        crate::avatar_motion_v2::strict_json::parse(bytes).map_err(|_| ConfigError::Invalid)?;
         let wire: WireRequest = serde_json::from_slice(bytes).map_err(|_| ConfigError::Invalid)?;
         Ok(Self {
             expected: revision(wire.expected_revision)?,
@@ -148,12 +163,22 @@ pub fn parse_config(bytes: &[u8]) -> Result<AvatarSelection, ConfigError> {
     if bytes.is_empty() || bytes.len() > MAX_REQUEST_BYTES {
         return Err(ConfigError::Invalid);
     }
-    serde_json::from_slice::<WireConfig>(bytes)
+    crate::avatar_motion_v2::strict_json::parse(bytes).map_err(|_| ConfigError::Invalid)?;
+    serde_json::from_slice::<AllWireConfig>(bytes)
         .map_err(|_| ConfigError::Invalid)?
         .selection()
 }
 pub fn config_value(s: &AvatarSelection) -> Value {
     match &s.appearance {
+        AvatarAppearance::ReviewedMotion(appearance) => {
+            let mut value = serde_json::to_value(
+                crate::avatar_motion_v2::reviewed::Config::from_appearance(appearance.clone()),
+            )
+            .expect("closed config serialization");
+            value["manifest_id"] = json!(s.manifest_id.as_str());
+            value["manifest_version"] = json!(s.manifest_version.get());
+            value
+        }
         AvatarAppearance::Layered {
             body,
             eyes,
@@ -177,6 +202,7 @@ pub fn config_value(s: &AvatarSelection) -> Value {
 /// intentionally not a replacement for its schema, hash and resource checks.
 #[derive(Clone, Debug)]
 pub struct AvatarCatalog {
+    motion: Option<crate::avatar_motion_v2::reviewed::VisuallyReviewedCatalog>,
     manifest_id: AssetId,
     version: Revision,
     items: BTreeMap<String, String>,
@@ -185,6 +211,19 @@ pub struct AvatarCatalog {
 }
 impl AvatarCatalog {
     pub fn from_validated_manifest(value: &Value) -> Result<Self, ConfigError> {
+        if value["contract_version"] == "2.0.0" {
+            let motion =
+                crate::avatar_motion_v2::reviewed::VisuallyReviewedCatalog::from_manifest(value)
+                    .map_err(|_| ConfigError::Catalog)?;
+            return Ok(Self {
+                motion: Some(motion),
+                manifest_id: asset(crate::avatar_motion_v2::reviewed::MANIFEST_ID.into())?,
+                version: revision(2)?,
+                items: BTreeMap::new(),
+                tones: BTreeSet::new(),
+                presets: None,
+            });
+        }
         if value["contract_version"] == "1.1.0"
             && value["kind"] == "avatar_manifest"
             && value["representation"] == "whole_character"
@@ -213,6 +252,7 @@ impl AvatarCatalog {
                 return Err(ConfigError::Catalog);
             }
             return Ok(Self {
+                motion: None,
                 manifest_id: asset(SELECTED_MANIFEST_ID.into())?,
                 version: revision(1)?,
                 items: BTreeMap::new(),
@@ -263,6 +303,7 @@ impl AvatarCatalog {
             return Err(ConfigError::Catalog);
         }
         Ok(Self {
+            motion: None,
             manifest_id: asset(text(value, "manifest_id")?)?,
             version: revision(
                 value["manifest_version"]
@@ -275,6 +316,11 @@ impl AvatarCatalog {
         })
     }
     pub fn validate(&self, s: &AvatarSelection) -> Result<(), ConfigError> {
+        if let Some(motion) = &self.motion {
+            return motion
+                .validate_selection(s)
+                .map_err(|_| ConfigError::Invalid);
+        }
         if s.manifest_id != self.manifest_id || s.manifest_version != self.version {
             return Err(ConfigError::Invalid);
         }

@@ -60,8 +60,17 @@ impl AvatarPersistence {
         }
         if !synthetic {
             let whole = avatar["representation"] == "whole_character";
+            let motion = if avatar["contract_version"] == "2.0.0" {
+                concert_domain::avatar_motion_v2::reviewed::VisuallyReviewedCatalog::from_manifest(
+                    avatar,
+                )
+                .map_err(invalid)?;
+                true
+            } else {
+                false
+            };
             let mut resources = vec![&doc["map_manifest"]];
-            if !whole {
+            if !whole && !motion {
                 resources.push(avatar);
             }
             if whole
@@ -75,12 +84,12 @@ impl AvatarPersistence {
                     .as_array()
                     .ok_or(AvatarError::Unavailable)?,
             );
-            if resources.len() != if whole { 4 } else { 5 }
+            if resources.len() != if whole || motion { 4 } else { 5 }
                 || resources.iter().any(|v| {
                     v["provenance"]["review_state"] != "REVIEWED"
                         || v["provenance"]["source_kind"] != "ORIGINAL_ART"
                 })
-                || avatar["atlas"]["texture"]["image_state"] != "PROVIDED"
+                || (!motion && avatar["atlas"]["texture"]["image_state"] != "PROVIDED")
                 || doc["map_manifest"]["tilemap"]["resource_state"] != "PROVIDED"
                 || doc["theme_manifests"]
                     .as_array()
@@ -458,6 +467,33 @@ pub(crate) struct AvatarStorage<'a> {
 }
 pub(crate) fn storage_columns(s: &AvatarSelection) -> AvatarStorage<'_> {
     match &s.appearance {
+        AvatarAppearance::ReviewedMotion(appearance) => {
+            use concert_domain::avatar_motion_v2::reviewed::Appearance;
+            match appearance {
+                Appearance::Preset(id) => AvatarStorage {
+                    contract_version: "2.0.0",
+                    representation: "motion_preset",
+                    preset_id: Some(id.as_str()),
+                    body: None,
+                    eyes: None,
+                    hair: None,
+                    outfit: None,
+                    accessory: None,
+                    skin_tone: None,
+                },
+                Appearance::Layered(ids) => AvatarStorage {
+                    contract_version: "2.0.0",
+                    representation: "motion_layered",
+                    preset_id: None,
+                    body: Some(ids.body.as_str()),
+                    eyes: Some(ids.eyes.as_str()),
+                    hair: Some(ids.hair.as_str()),
+                    outfit: ids.outfit.map(|v| v.as_str()),
+                    accessory: ids.accessory.map(|v| v.as_str()),
+                    skin_tone: None,
+                },
+            }
+        }
         AvatarAppearance::Layered {
             body,
             eyes,
@@ -504,6 +540,19 @@ pub fn selection_from_row(row: &PgRow) -> Result<AvatarSelection, AvatarError> {
     let skin_tone = optional("skin_tone_id")?;
     let preset = optional("preset_id")?;
     match text("representation")?.as_str() {
+        "motion_preset"
+            if [&body, &eyes, &hair, &outfit, &accessory, &skin_tone]
+                .iter()
+                .all(|v| v.is_none()) =>
+        {
+            config["representation"] = json!("motion_preset");
+            config["preset_id"] = json!(preset);
+        }
+        "motion_layered" if preset.is_none() && skin_tone.is_none() => {
+            config["representation"] = json!("motion_layered");
+            config["item_ids"] =
+                json!({"body":body,"eyes":eyes,"hair":hair,"outfit":outfit,"accessory":accessory});
+        }
         "layered" if preset.is_none() => {
             config["item_ids"] =
                 json!({"body":body,"eyes":eyes,"hair":hair,"outfit":outfit,"accessory":accessory});

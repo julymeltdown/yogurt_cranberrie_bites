@@ -240,6 +240,7 @@ pub struct AvatarSelection {
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum AvatarAppearance {
+    ReviewedMotion(avatar_motion_v2::reviewed::Appearance),
     Layered {
         body: AssetId,
         eyes: AssetId,

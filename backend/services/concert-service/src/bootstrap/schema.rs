@@ -168,6 +168,22 @@ fn string_set(v: &Value) -> Result<BTreeSet<String>, Error> {
     array(v)?.iter().map(|v| Ok(text(v)?.to_owned())).collect()
 }
 fn avatar_semantics(avatar: &Value, config: &Value) -> Result<(), Error> {
+    if avatar["contract_version"] == "2.0.0" {
+        let catalog = concert_domain::avatar::AvatarCatalog::from_validated_manifest(avatar)
+            .map_err(|_| Error::ReleaseUnavailable)?;
+        for value in
+            std::iter::once(config).chain(array(&avatar["presets"])?.iter().map(|v| &v["config"]))
+        {
+            let selection = concert_domain::avatar::parse_config(
+                &serde_json::to_vec(value).map_err(|_| Error::ReleaseUnavailable)?,
+            )
+            .map_err(|_| Error::ReleaseUnavailable)?;
+            catalog
+                .validate(&selection)
+                .map_err(|_| Error::ReleaseUnavailable)?;
+        }
+        return Ok(());
+    }
     if avatar["representation"] == "whole_character" {
         let presets = unique(&avatar["presets"], "preset_id")?;
         ensure(presets.contains_key(text(&avatar["default_preset_id"])?))?;

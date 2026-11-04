@@ -345,3 +345,138 @@ fn every_slot_boundary_is_closed_and_optional_means_explicit_null_only() {
         );
     }
 }
+
+// Reviewed successor checks deliberately exercise the public selection parser,
+// not only deserialization of the new leaf enum.
+#[test]
+fn reviewed_fixtures_round_trip_through_public_selection_and_commands() {
+    use concert_domain::avatar::{config_value, parse_config, AvatarCatalog, SetAvatar};
+    let manifest: Value = serde_json::from_str(reviewed::MANIFEST_JSON).unwrap();
+    let catalog = AvatarCatalog::from_validated_manifest(&manifest).unwrap();
+    for (kind, expected, count) in [("valid", true, 15), ("invalid", false, 16)] {
+        let mut seen = 0;
+        for entry in fs::read_dir(fixture_dir("reviewed").join(kind)).unwrap() {
+            let path = entry.unwrap().path();
+            let bytes = fs::read(&path).unwrap();
+            let result = parse_config(&bytes);
+            assert_eq!(result.is_ok(), expected, "{}", path.display());
+            assert_eq!(reviewed::Config::decode(&bytes).is_ok(), expected);
+            if let Ok(selection) = result {
+                catalog.validate(&selection).unwrap();
+                let original: Value = serde_json::from_slice(&bytes).unwrap();
+                assert_eq!(config_value(&selection), original);
+                let wire = json!({"expected_revision":1,"config":original});
+                assert_eq!(
+                    SetAvatar::parse(&serde_json::to_vec(&wire).unwrap())
+                        .unwrap()
+                        .selection,
+                    selection
+                );
+            }
+            seen += 1;
+        }
+        assert_eq!(seen, count);
+    }
+    // The immutable candidate remains structurally usable only in its own API.
+    for entry in fs::read_dir(fixture_dir("valid")).unwrap() {
+        assert!(parse_config(&fs::read(entry.unwrap().path()).unwrap()).is_err());
+    }
+    assert!(AvatarCatalog::from_validated_manifest(&value()).is_err());
+}
+
+#[test]
+fn reviewed_public_parser_refuses_duplicate_headers_and_nested_nullable_slots() {
+    use concert_domain::avatar::{parse_config, SetAvatar};
+    let raw =
+        fs::read_to_string(fixture_dir("reviewed/valid").join("layered-body-0.json")).unwrap();
+    for key in [
+        "contract_version",
+        "representation",
+        "body",
+        "outfit",
+        "accessory",
+    ] {
+        let v: Value = serde_json::from_str(&raw).unwrap();
+        let item = if ["body", "outfit", "accessory"].contains(&key) {
+            &v["item_ids"][key]
+        } else {
+            &v[key]
+        };
+        let token = format!("\"{key}\": {}", serde_json::to_string(item).unwrap());
+        assert!(raw.contains(&token));
+        let duplicate = raw.replacen(&token, &format!("{token}, {token}"), 1);
+        assert!(parse_config(duplicate.as_bytes()).is_err(), "{key}");
+        let request = format!("{{\"expected_revision\":1,\"config\":{duplicate}}}");
+        assert!(
+            SetAvatar::parse(request.as_bytes()).is_err(),
+            "command {key}"
+        );
+    }
+    for key in ["body", "eyes", "hair", "outfit", "accessory"] {
+        let mut v: Value = serde_json::from_str(&raw).unwrap();
+        v["item_ids"].as_object_mut().unwrap().remove(key);
+        assert!(parse_config(&serde_json::to_vec(&v).unwrap()).is_err());
+    }
+    assert!(parse_config(
+        raw.replace("\"manifest_version\": 2", "\"manifest_version\": 2.0")
+            .as_bytes()
+    )
+    .is_err());
+}
+
+#[test]
+fn reviewed_admission_requires_exact_manifest_review_and_actual_resource_bytes() {
+    let structure =
+        reviewed::StructuralCatalog::decode(reviewed::MANIFEST_JSON.as_bytes()).unwrap();
+    let mut review = reviewed::REVIEW_JSON.as_bytes().to_vec();
+    review[0] ^= 1;
+    assert!(structure.clone().bind_visual_review(&review).is_err());
+    let reviewed = structure
+        .bind_visual_review(reviewed::REVIEW_JSON.as_bytes())
+        .unwrap();
+    let mut paths = std::collections::BTreeSet::new();
+    let eligible = reviewed
+        .clone()
+        .verify_resources(|path| {
+            paths.insert(path.to_owned());
+            fs::read(root().join(path)).map_err(|_| MotionError::UnknownResource)
+        })
+        .unwrap();
+    assert!(paths.len() >= 30);
+    assert_eq!(
+        eligible.reviewed().document()["manifest_id"],
+        reviewed::MANIFEST_ID
+    );
+    for target in paths {
+        assert!(
+            reviewed
+                .clone()
+                .verify_resources(|path| {
+                    let mut bytes =
+                        fs::read(root().join(path)).map_err(|_| MotionError::UnknownResource)?;
+                    if path == target {
+                        bytes[0] ^= 1;
+                    }
+                    Ok(bytes)
+                })
+                .is_err(),
+            "tampered {target}"
+        );
+    }
+    for (pointer, replacement) in [
+        ("/manifest_id", json!(MANIFEST_ID)),
+        ("/manifest_version", json!(1)),
+        ("/production_eligible", json!(false)),
+        ("/content_hash", json!("sha256:0000")),
+        ("/review/sha256", json!("0".repeat(64))),
+        ("/atlas/width", json!(64)),
+        ("/items/0/item_id", json!("legacy")),
+    ] {
+        let mut v: Value = serde_json::from_str(reviewed::MANIFEST_JSON).unwrap();
+        *v.pointer_mut(pointer).unwrap() = replacement;
+        assert!(
+            reviewed::StructuralCatalog::decode(&serde_json::to_vec(&v).unwrap()).is_err(),
+            "{pointer}"
+        );
+    }
+}
