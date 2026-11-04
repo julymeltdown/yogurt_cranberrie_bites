@@ -1,0 +1,307 @@
+{
+  "allocation": "FE209-IN03-SOURCE-B-NEXT-202611041656Z",
+  "acceptedUTC": "2026-11-04T17:01:12.420217+00:00",
+  "workUntil": "2026-11-04T17:04:12.420217+00:00",
+  "hardUntil": "2026-11-04T17:05:12.420217+00:00",
+  "fullUTC": "2026-11-04T17:03:37.199120+00:00",
+  "source": "cc3090bc083e0a1641eb325698449f628fe38c85",
+  "status": "SOURCE_PASS_AFTER_TWO_RETAINED_FAILURES",
+  "actualPublicIN03": "NOT_RUN",
+  "browser": "NOT_RUN",
+  "AuthHelperReplay": false,
+  "commands": [
+    {
+      "name": "in03-scoped-types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/in03-entry/__tests__/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:02.750Z",
+      "milliseconds": 3207
+    },
+    {
+      "name": "in03-availability-unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/in03-entry/__tests__/vitest.config.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:05.990Z",
+      "milliseconds": 1214
+    },
+    {
+      "name": "in03-source-lint",
+      "args": [
+        "node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/app/in03-entry",
+        "e2e/real/social",
+        "e2e/real/social.spec.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:07.244Z",
+      "milliseconds": 75
+    },
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:07.357Z",
+      "milliseconds": 29
+    }
+  ],
+  "tests": {
+    "files": 2,
+    "passed": 16,
+    "availabilityCases": 14,
+    "responseDelayCases": 2,
+    "transport": "SYNTHETIC_UNIT_ONLY"
+  },
+  "failureHistory": [
+    {
+      "source": "449f0a92cb413fd04c91e1eec90e82884ce17c41",
+      "result": "FAIL",
+      "typesExit": 0,
+      "unitPassed": 11,
+      "unitFailed": 5,
+      "cause": "Node test fixture lacked browser origin; canonical HTTP refused before dispatch."
+    },
+    {
+      "source": "88fedc7eeec5463f3ad4bb56d27bd9b912460fcb",
+      "result": "FAIL",
+      "typesExit": 0,
+      "unitPassed": 16,
+      "lintExit": 1,
+      "cause": "Deny-warnings lint rejected unnecessary spread in observer snapshot."
+    }
+  ],
+  "repairSource": "cc3090bc083e0a1641eb325698449f628fe38c85",
+  "clockAndCapsReset": false,
+  "codePins": [
+    {
+      "path": "frontend/src/app/in03-entry/availability.ts",
+      "sha256": "554afbc1fe03229fbf7658452946826646aea01deac86c03ef437c18289d8a83"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/response-delay.test.ts",
+      "sha256": "9bd8bb7afddcf2348f808d2a844ae15705932ddf47e3b79dc976fc9769954487"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/availability.test.ts",
+      "sha256": "5271fe6759de1308d1c48dbd05cdf04ff5f4af25068fe9633241fcce5c7f4749"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/tsconfig.json",
+      "sha256": "66d1468bb06e06587d2efd39bd66e4c934c476b754cf4116b1771eff1f15b765"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/vitest.config.ts",
+      "sha256": "c871793a3d6d0dc37adfe8144cfb25abcff4cb7af3b19307cd2395a387fd63fb"
+    },
+    {
+      "path": "frontend/e2e/real/social.spec.ts",
+      "sha256": "f2354342a302376a483e3e780ada71fe1c53a34ecc4dcbce25cae0ea49dfdbce"
+    },
+    {
+      "path": "frontend/e2e/real/social/real-entry.ts",
+      "sha256": "ad92eaf49020817fbc2e80c88ef0090cd7e05f59c850047e00a6ebdb2693f266"
+    },
+    {
+      "path": "frontend/e2e/real/social/browser-state.ts",
+      "sha256": "81e4c8660460e48937e3bdf07df5f6a152ce8d6295aec5d388c96a890597c7cf"
+    },
+    {
+      "path": "frontend/e2e/real/social/journey.ts",
+      "sha256": "4cdc41a0fa14a8a5efe7e67676b8ddbe64e065a3d98ea27d0eca61c2d5bd0ed6"
+    },
+    {
+      "path": "frontend/e2e/real/social/observations.ts",
+      "sha256": "6bfc6cd6a2d5c744eb258fdbd1e0f9b90dc2cb8885ceff8f1e277fdb9c2c4e9c"
+    },
+    {
+      "path": "frontend/e2e/real/social/run-input.example.json",
+      "sha256": "4c23ed2ca2e4ba68e3a1731080cb25a177d623c5df045e272a97a0d979b463ea"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "sha256": "951ac1db21270fa6a9889bdab8cc3202a340f5813c6382ca634e79a54508e969"
+    }
+  ],
+  "limits": {
+    "wholeFiles": 1400,
+    "wholeBytes": 134217728,
+    "temporaryBytes": 104857600,
+    "durableGrowthBytes": 8388608,
+    "allProcesses": 24,
+    "rssBytes": 4294967296,
+    "guardianMs": 250,
+    "initialFreeBytes": 17179869184,
+    "liveFreeBytes": 8589934592
+  },
+  "peakAllProcesses": 5,
+  "peakAllRssBytes": 1085571072,
+  "violations": [],
+  "limitations": [
+    "No actual service, browser, provider, positive sharing or multiuser validation.",
+    "Root production composition must AND HTTP readability with actual incumbent matching SOCIAL policy.baseline authority.",
+    "Peer WS/reconnect/full-cache/restricted-age requirements remain NOT_RUN; no invented messages or manual policy injection."
+  ],
+  "artifacts": [
+    {
+      "path": "accept.json",
+      "bytes": 3803,
+      "rawSha256": "fb0939972e3b70a3c5a165a0c0ee1ca4c2d4dfef21c315c378b1039a52931acf",
+      "portableSha256": "fb0939972e3b70a3c5a165a0c0ee1ca4c2d4dfef21c315c378b1039a52931acf"
+    },
+    {
+      "path": "full.json",
+      "bytes": 2018,
+      "rawSha256": "49c372ed535bdb2d373acb0efc2a4014cd959b813b1365d4085c84243955d8a8",
+      "portableSha256": "49c372ed535bdb2d373acb0efc2a4014cd959b813b1365d4085c84243955d8a8"
+    },
+    {
+      "path": "guardian.py",
+      "bytes": 6434,
+      "rawSha256": "a8fa25de96ad5fae40bfe522146a8e72f122fc1834be5e550198f2103b4accd4",
+      "portableSha256": "b32d3663d64b642b7e608f813169bc7fed9c6dd771ab99f2e268cf15cc4ad41d"
+    },
+    {
+      "path": "attempt-1/cleanup.json",
+      "bytes": 291,
+      "rawSha256": "105052bb60a1de4fd155045f4c0fe030faa98c4d45e5e4d6024a9f42d975c8ea",
+      "portableSha256": "105052bb60a1de4fd155045f4c0fe030faa98c4d45e5e4d6024a9f42d975c8ea"
+    },
+    {
+      "path": "attempt-1/external.log",
+      "bytes": 668,
+      "rawSha256": "19143af220f435338333152d2919d2e214572fd837ced35a558cd61fce996719",
+      "portableSha256": "19143af220f435338333152d2919d2e214572fd837ced35a558cd61fce996719"
+    },
+    {
+      "path": "attempt-1/guardian.json",
+      "bytes": 849,
+      "rawSha256": "7498e26bde326d21c060130acb1456ed376a7ed70ff80f18d14dd38cef81b85f",
+      "portableSha256": "7498e26bde326d21c060130acb1456ed376a7ed70ff80f18d14dd38cef81b85f"
+    },
+    {
+      "path": "attempt-1/in03-availability-unit.log",
+      "bytes": 5505,
+      "rawSha256": "be075290366e02fa9541023f8f80b18c8368d3880f950644cd1399f6b70ebdb5",
+      "portableSha256": "1a6d7bc1997d199897138edede1abb1350cdd84935b11fb0baf1198c56592082"
+    },
+    {
+      "path": "attempt-1/in03-scoped-types.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attempt-1/summary.json",
+      "bytes": 1608,
+      "rawSha256": "deb5fa64ff744b1de1fb6d1063d65b5766a9e190047e2258c15a04e866190520",
+      "portableSha256": "deb5fa64ff744b1de1fb6d1063d65b5766a9e190047e2258c15a04e866190520"
+    },
+    {
+      "path": "attempt-2/cleanup.json",
+      "bytes": 284,
+      "rawSha256": "0c488795e880a36f8482bfae8676aef1a11e30e939d472322acf621566e021f1",
+      "portableSha256": "0c488795e880a36f8482bfae8676aef1a11e30e939d472322acf621566e021f1"
+    },
+    {
+      "path": "attempt-2/external.log",
+      "bytes": 900,
+      "rawSha256": "f7a37b61fe505500fe6c18730ce2d2d3914061f24681ecb1f24a17b636dc8ff0",
+      "portableSha256": "f7a37b61fe505500fe6c18730ce2d2d3914061f24681ecb1f24a17b636dc8ff0"
+    },
+    {
+      "path": "attempt-2/guardian.json",
+      "bytes": 816,
+      "rawSha256": "d45ab4615efe516f7b354086ed59f48cae37bf126475246eba4baaf122d02b81",
+      "portableSha256": "d45ab4615efe516f7b354086ed59f48cae37bf126475246eba4baaf122d02b81"
+    },
+    {
+      "path": "attempt-2/in03-availability-unit.log",
+      "bytes": 205,
+      "rawSha256": "61cda58d5d290fef7a65c401e374e9b7e2c4feee844344bd54de46623b3fbe42",
+      "portableSha256": "63863479fa73b2b05c21f1d61d6ad92d7ab2d49887e996c144747dd59fa34f93"
+    },
+    {
+      "path": "attempt-2/in03-scoped-types.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attempt-2/in03-source-lint.log",
+      "bytes": 227,
+      "rawSha256": "34b6df6de832595de2ce6c0bed3734e4480721c36f5a424e6b271cf12e564ccf",
+      "portableSha256": "34b6df6de832595de2ce6c0bed3734e4480721c36f5a424e6b271cf12e564ccf"
+    },
+    {
+      "path": "attempt-2/summary.json",
+      "bytes": 1944,
+      "rawSha256": "99e0081ba35300f6193d3d173e6c43837fd8c2fb37780356a111a7bc1f853689",
+      "portableSha256": "99e0081ba35300f6193d3d173e6c43837fd8c2fb37780356a111a7bc1f853689"
+    },
+    {
+      "path": "attempt-3/external.log",
+      "bytes": 1084,
+      "rawSha256": "0a562b51e369152da0b7ce8037d22a36194a244ec42d4a488dc99a01ac5acf0c",
+      "portableSha256": "0a562b51e369152da0b7ce8037d22a36194a244ec42d4a488dc99a01ac5acf0c"
+    },
+    {
+      "path": "attempt-3/guardian.json",
+      "bytes": 871,
+      "rawSha256": "6beb6d499d0c926c557fa4e01d142af3d64a681a036ef6c09d71e08d2ff24f07",
+      "portableSha256": "6beb6d499d0c926c557fa4e01d142af3d64a681a036ef6c09d71e08d2ff24f07"
+    },
+    {
+      "path": "attempt-3/in03-availability-unit.log",
+      "bytes": 205,
+      "rawSha256": "a6240a730ebeb43bebe8c41ceafac7905eb91a3f050cc7e5107703548708d192",
+      "portableSha256": "dcb85ac40675528bae9fc7c49032e291e6d710eae592df15481579a145449317"
+    },
+    {
+      "path": "attempt-3/in03-scoped-types.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attempt-3/in03-source-lint.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attempt-3/summary.json",
+      "bytes": 2114,
+      "rawSha256": "71fcfb829f53e089e640865b2179ddb8dfa6faa23b21fdcc5306f0fa1addc373",
+      "portableSha256": "71fcfb829f53e089e640865b2179ddb8dfa6faa23b21fdcc5306f0fa1addc373"
+    },
+    {
+      "path": "attempt-3/supervisor-syntax.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

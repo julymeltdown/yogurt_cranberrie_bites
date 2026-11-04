@@ -2,7 +2,7 @@
   "mode": "UNCONFIGURED",
   "origin": "",
   "eventId": "",
-  "availabilityModule": "",
+  "availabilityModule": "/src/app/in03-entry/availability.ts",
   "availabilityRevision": "",
   "qualifiedRefresh": false,
   "principals": {
@@ -10,5 +10,9 @@
     "recipient": { "userId": "", "email": "", "password": "" },
     "restricted": { "userId": "", "email": "", "password": "" }
   },
-  "resources": { "introId": "", "postId": "", "approvedRequestId": "" }
+  "resources": { "introId": "", "postId": "", "expiredRequestId": "" },
+  "denials": { "unrelated": [], "expired": [], "revoked": [], "blocked": [] },
+  "source": { "frontendRevision": "", "backendRevision": "", "contractRevision": "", "authProducerRevision": "", "authBinaryRevision": "" },
+  "runtime": { "controlOwner": "", "origin": "", "eventId": "", "expiresAt": "", "private": true },
+  "authProducer": null
 }

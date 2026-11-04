@@ -1,0 +1,5 @@
+{"name":"in03-scoped-types","args":["node_modules/typescript/bin/tsc","-p","src/app/in03-entry/__tests__/tsconfig.json","--noEmit","--incremental","false","--pretty","false"],"exit":0,"signal":null,"startUTC":"2026-11-04T17:03:02.750Z","milliseconds":3207}
+{"name":"in03-availability-unit","args":["node_modules/vitest/vitest.mjs","run","--configLoader","native","--config","src/app/in03-entry/__tests__/vitest.config.ts"],"exit":0,"signal":null,"startUTC":"2026-11-04T17:03:05.990Z","milliseconds":1214}
+{"name":"in03-source-lint","args":["node_modules/oxlint/bin/oxlint","--deny-warnings","src/app/in03-entry","e2e/real/social","e2e/real/social.spec.ts"],"exit":0,"signal":null,"startUTC":"2026-11-04T17:03:07.244Z","milliseconds":75}
+{"name":"supervisor-syntax","args":["--check","src/app/feed-entry/__tests__/qualify.mjs"],"exit":0,"signal":null,"startUTC":"2026-11-04T17:03:07.357Z","milliseconds":29}
+{"status":"SOURCE_CHECKS_PASSED","final":{"files":1146,"bytes":16359694,"temporaryBytes":0,"freeBytes":26995527680},"releasedUTC":"2026-11-04T17:03:07.391Z","linkRemoved":true}

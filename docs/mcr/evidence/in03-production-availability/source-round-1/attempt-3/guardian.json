@@ -1,0 +1,53 @@
+{
+  "utc": "2026-11-04T17:03:07.496038+00:00",
+  "allocation": "FE209-IN03-SOURCE-B-NEXT-202611041656Z",
+  "source": "cc3090bc083e0a1641eb325698449f628fe38c85",
+  "exit": 0,
+  "initial": {
+    "files": 1141,
+    "bytes": 16358537,
+    "temporaryBytes": 0,
+    "freeBytes": 26991951872
+  },
+  "final": {
+    "files": 1147,
+    "bytes": 16361985,
+    "temporaryBytes": 0,
+    "freeBytes": 26997600256
+  },
+  "peakAllProcesses": 5,
+  "peakAllRssBytes": 1069514752,
+  "violations": [],
+  "ownedPidsObserved": [
+    76696,
+    77013,
+    77067,
+    77075,
+    77483,
+    77487,
+    77494,
+    77539,
+    77548,
+    77554,
+    77600,
+    77604,
+    77607,
+    77609,
+    77618,
+    77625,
+    77628,
+    77683,
+    77710,
+    77712,
+    77817,
+    77818,
+    77840,
+    77844,
+    77869,
+    77922,
+    77923,
+    77928,
+    77936
+  ],
+  "independentGuardianIntervalMs": 250
+}

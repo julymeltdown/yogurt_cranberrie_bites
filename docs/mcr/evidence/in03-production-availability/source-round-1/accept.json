@@ -1,0 +1,101 @@
+{
+  "allocation": "FE209-IN03-SOURCE-B-NEXT-202611041656Z",
+  "acceptedUTC": "2026-11-04T17:01:12.420217+00:00",
+  "activeUntil": "2026-11-04T17:04:12.420217+00:00",
+  "hardUntil": "2026-11-04T17:05:12.420217+00:00",
+  "source": "449f0a92cb413fd04c91e1eec90e82884ce17c41",
+  "files": 1112,
+  "bytes": 16320481,
+  "freeBytes": 27259609088,
+  "outstandingReservationBytes": 2717908992,
+  "freeAfterReservations": 24541700096,
+  "nodeSHA256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSHA256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "codePins": [
+    {
+      "path": "frontend/src/app/in03-entry/availability.ts",
+      "sha256": "14be87d6d781bc03629d9ef1707b25f59dad350f4d2389bb62c4853d7070a2a8"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/response-delay.test.ts",
+      "sha256": "9bd8bb7afddcf2348f808d2a844ae15705932ddf47e3b79dc976fc9769954487"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/availability.test.ts",
+      "sha256": "af792644d2a4debdfb6203b537eede003553df53d65bacdcb0a1dda077298acc"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/tsconfig.json",
+      "sha256": "66d1468bb06e06587d2efd39bd66e4c934c476b754cf4116b1771eff1f15b765"
+    },
+    {
+      "path": "frontend/src/app/in03-entry/__tests__/vitest.config.ts",
+      "sha256": "c871793a3d6d0dc37adfe8144cfb25abcff4cb7af3b19307cd2395a387fd63fb"
+    },
+    {
+      "path": "frontend/e2e/real/social.spec.ts",
+      "sha256": "f2354342a302376a483e3e780ada71fe1c53a34ecc4dcbce25cae0ea49dfdbce"
+    },
+    {
+      "path": "frontend/e2e/real/social/validate.mjs",
+      "sha256": "96544c3a3bded39c3836eb1f7738fc5217592a1e37ab644256c661edcb1fd28f"
+    },
+    {
+      "path": "frontend/e2e/real/social/browser-state.ts",
+      "sha256": "81e4c8660460e48937e3bdf07df5f6a152ce8d6295aec5d388c96a890597c7cf"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission-original.test.mjs",
+      "sha256": "fbdca142448f04d1f8019e6e4bb273e80204d139bc866bafb8f74b79002b251f"
+    },
+    {
+      "path": "frontend/e2e/real/social/real-entry.ts",
+      "sha256": "ad92eaf49020817fbc2e80c88ef0090cd7e05f59c850047e00a6ebdb2693f266"
+    },
+    {
+      "path": "frontend/e2e/real/social/journey.ts",
+      "sha256": "4cdc41a0fa14a8a5efe7e67676b8ddbe64e065a3d98ea27d0eca61c2d5bd0ed6"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.mjs",
+      "sha256": "b5f1e0cf374885801b36a7391d331cdb17a2199a31a49a8f3e03b2ef6502d4ac"
+    },
+    {
+      "path": "frontend/e2e/real/social/run-input.example.json",
+      "sha256": "4c23ed2ca2e4ba68e3a1731080cb25a177d623c5df045e272a97a0d979b463ea"
+    },
+    {
+      "path": "frontend/e2e/real/social/observations.ts",
+      "sha256": "6bfc6cd6a2d5c744eb258fdbd1e0f9b90dc2cb8885ceff8f1e277fdb9c2c4e9c"
+    },
+    {
+      "path": "frontend/e2e/real/social/tsconfig.json",
+      "sha256": "f241bd50f9ee92e17e15bdf8c6c9249123c53d5893a9fa704fcd0e6949cd0b32"
+    },
+    {
+      "path": "frontend/e2e/real/social/cohort.mjs",
+      "sha256": "cb357e6ab0793d1f101e16c47000aa7a2e493aae88cc10603686e7b661fa4541"
+    },
+    {
+      "path": "frontend/e2e/real/social/playwright.config.ts",
+      "sha256": "539abab156cd829464f53e201493c2279ed9828eff12b1f4ccf7d17ef33e0420"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "sha256": "951ac1db21270fa6a9889bdab8cc3202a340f5813c6382ca634e79a54508e969"
+    },
+    {
+      "path": "<carry>/in03-source-guardian.py",
+      "sha256": "a8fa25de96ad5fae40bfe522146a8e72f122fc1834be5e550198f2103b4accd4"
+    }
+  ],
+  "linkAbsent": true,
+  "browser": "NOT_RUN",
+  "admissionReplay": false,
+  "jobs": [
+    "scoped-types",
+    "two-focused-vitest-files",
+    "scoped-lint-deny-warnings",
+    "supervisor-syntax"
+  ]
+}

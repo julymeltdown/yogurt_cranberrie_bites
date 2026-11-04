@@ -1,0 +1,80 @@
+{
+  "utc": "2026-11-04T17:03:37.199120+00:00",
+  "allocation": "FE209-IN03-SOURCE-B-NEXT-202611041656Z",
+  "status": "FULL_RELEASED_AFTER_SOURCE_PASS",
+  "source": "cc3090bc083e0a1641eb325698449f628fe38c85",
+  "ownedProcesses": [],
+  "dependencyLinkPresent": false,
+  "cacheTMPPresent": [],
+  "freeBytes": 26925088768,
+  "peakAllProcesses": 5,
+  "peakAllRssBytes": 1085571072,
+  "violations": [],
+  "finalCustody": {
+    "files": 1147,
+    "bytes": 16361985,
+    "temporaryBytes": 0,
+    "freeBytes": 26997600256
+  },
+  "lastCommands": [
+    {
+      "name": "in03-scoped-types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/in03-entry/__tests__/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:02.750Z",
+      "milliseconds": 3207
+    },
+    {
+      "name": "in03-availability-unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/in03-entry/__tests__/vitest.config.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:05.990Z",
+      "milliseconds": 1214
+    },
+    {
+      "name": "in03-source-lint",
+      "args": [
+        "node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/app/in03-entry",
+        "e2e/real/social",
+        "e2e/real/social.spec.ts"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:07.244Z",
+      "milliseconds": 75
+    },
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:03:07.357Z",
+      "milliseconds": 29
+    }
+  ],
+  "scope": "Source only; no browser/server/provider/actual IN03 workflow was launched",
+  "retainedFailedAttempts": 2
+}

@@ -13,7 +13,7 @@ test('IN03 actual public controller segments (full WS/cache gate remains NOT_RUN
   await testInfo.attach('admission', { body: JSON.stringify(admission), contentType: 'application/json' })
   if (admission.status !== 'INPUTS_PRESENT') throw new Error('NOT_RUN: redacted original IN03 prerequisites are missing')
   if (!process.env.MCR_IN03_PUBLIC_ALLOCATION) throw new Error('NOT_RUN: actual public workflow requires an accepted named allocation')
-  const browser = await playwright.chromium.launch()
+  const browser = await playwright.chromium.launch({ channel: 'chrome' })
   const contexts: BrowserContext[] = [], pages = new Map<Role, Page>()
   const coverage: Record<string, string> = { IN03: 'NOT_RUN', policyWS: 'NOT_RUN', block: 'NOT_RUN', staleResponse: 'NOT_RUN', clientCache: 'NOT_RUN',
     restrictedAgeHTTP: 'NOT_RUN', unknownEligibility: 'NOT_RUN', providerUnavailable: 'NOT_RUN' }
@@ -33,7 +33,7 @@ test('IN03 actual public controller segments (full WS/cache gate remains NOT_RUN
         const state = await import(/* @vite-ignore */ module)
         const producer = await import(/* @vite-ignore */ path)
         if (producer.sourceRevision !== revision || typeof producer.availability !== 'function') throw new Error('NOT_RUN: production availability export/revision mismatch')
-        state.bind(producer.availability)
+        await state.bind(producer.availability)
       }, { module: stateModule, path: config.availabilityModule, revision: config.availabilityRevision })
     }
     coverage.canonicalIdentity = 'EXECUTED'
@@ -93,6 +93,43 @@ test('IN03 actual public controller segments (full WS/cache gate remains NOT_RUN
       return state.current().denyReveal(requestId, 'INSTAGRAM', statuses)
     }, { module: stateModule, requestId: request.requestId, statuses: config.denials.revoked })
     expect(denial.denied).toBe(true); coverage.revokedHTTP = 'EXECUTED'
+    // A second grant keeps revoke and block as separate real server scenarios.
+    // Missing scenario authority remains NOT_RUN; no default denial set is invented.
+    if (Array.isArray(config.denials.blocked) && config.denials.blocked.length > 0
+      && config.denials.blocked.every((status: number) => [403, 404, 410].includes(status))) {
+      for (const role of ['requester', 'recipient'] as const) await pageFor(role).evaluate(async ({ module, path, revision }) => {
+        const state = await import(/* @vite-ignore */ module), producer = await import(/* @vite-ignore */ path)
+        if (producer.sourceRevision !== revision) throw new Error('NOT_RUN: production availability revision changed')
+        await state.rebind(producer.availability)
+      }, { module: stateModule, path: config.availabilityModule, revision: config.availabilityRevision })
+      const second = await pageFor('requester').evaluate(async ({ module, introId, recipientId }) => {
+        const state = await import(/* @vite-ignore */ module)
+        return state.current().request(introId, recipientId, 'INSTAGRAM')
+      }, { module: stateModule, introId: config.resources.introId, recipientId: config.principals.recipient.userId })
+      expect(second.state).toBe('PENDING')
+      await testInfo.attach('block-grant-private', { body: JSON.stringify({ requestId: second.requestId }), contentType: 'application/json' })
+      await pageFor('recipient').evaluate(async ({ module, requestId }) => {
+        const state = await import(/* @vite-ignore */ module)
+        return state.current().decide(requestId, 'INSTAGRAM')
+      }, { module: stateModule, requestId: second.requestId })
+      const beforeBlock = await pageFor('requester').evaluate(async ({ module, targetId }) => {
+        const state = await import(/* @vite-ignore */ module)
+        return state.current().prepareBlockPrivacy(targetId)
+      }, { module: stateModule, targetId: config.principals.recipient.userId })
+      expect(beforeBlock.actualUpstreamStatus).toBe(200)
+      const blocked = await pageFor('requester').evaluate(async ({ module, targetId }) => {
+        const state = await import(/* @vite-ignore */ module)
+        return state.current().blockWithPrivacy(targetId)
+      }, { module: stateModule, targetId: config.principals.recipient.userId })
+      expect(blocked.actualBlockPersisted).toBe(true)
+      expect(blocked.delayedActual200Rejected).toBe(true); expect(blocked.privateCacheCleared).toBe(true)
+      const blockedDenial = await pageFor('requester').evaluate(async ({ module, requestId, statuses }) => {
+        const state = await import(/* @vite-ignore */ module)
+        return state.current().denyReveal(requestId, 'INSTAGRAM', statuses)
+      }, { module: stateModule, requestId: second.requestId, statuses: config.denials.blocked })
+      expect(blockedDenial.denied).toBe(true)
+      coverage.block = 'EXECUTED_HTTP_LOCAL'; coverage.staleResponse = 'EXECUTED_LOCAL_BLOCK_ONLY'; coverage.clientCache = 'EXECUTED_LOCAL_BLOCK_ONLY'
+    }
   } finally {
     try {
       for (const [role, page] of pages) {

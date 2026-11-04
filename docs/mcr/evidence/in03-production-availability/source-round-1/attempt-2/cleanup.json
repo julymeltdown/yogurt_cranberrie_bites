@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-04T17:02:55.000637+00:00",
+  "attempt": "in03source2",
+  "ownedProcesses": [],
+  "dependencyLinkPresent": false,
+  "cacheTMPPresent": [],
+  "status": "FAILED_LINT_WARNING",
+  "typesExit": 0,
+  "testsPassed": 16,
+  "lintExit": 1,
+  "retryUsesOriginalClock": true
+}

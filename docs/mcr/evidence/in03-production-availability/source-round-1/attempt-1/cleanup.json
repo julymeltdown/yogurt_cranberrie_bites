@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-04T17:02:14.351148+00:00",
+  "attempt": "in03source1",
+  "ownedProcesses": [],
+  "dependencyLinkPresent": false,
+  "cacheTMPPresent": [],
+  "status": "FAILED_TEST_ENVIRONMENT",
+  "typesExit": 0,
+  "testsFailed": 5,
+  "testsPassed": 11,
+  "retryUsesOriginalClock": true
+}

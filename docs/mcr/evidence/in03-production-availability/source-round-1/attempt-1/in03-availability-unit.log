@@ -1,0 +1,134 @@
+
+ RUN  v4.1.9 <worktree>/frontend
+
+ ❯ src/app/in03-entry/__tests__/availability.test.ts (14 tests | 5 failed) 14ms
+     × starts unavailable despite capable C03, then qualifies only validated reads without retaining bodies 6ms
+     × keeps a malformed or failed service false while independent successful services remain readable 2ms
+     × respects explicit C03 service denials without dispatching their probes 1ms
+     × withdraws old readiness before refreshing and does not preserve a failed prior success 1ms
+     × withdraws prepared readiness when its caller lifetime aborts later 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/in03-entry/__tests__/availability.test.ts > actual scoped read readiness (synthetic transport only) > starts unavailable despite capable C03, then qualifies only validated reads without retaining bodies
+AssertionError: expected [] to have a length of 7 but got +0
+
+- Expected
++ Received
+
+- 7
++ 0
+
+ ❯ src/app/in03-entry/__tests__/availability.test.ts:27:30
+     25|       expect(Object.values(value.port.read()!.services)).not.toContain…
+     26|       await value.port.prepare()
+     27|       expect(value.requests).toHaveLength(7)
+       |                              ^
+     28|       expect(value.requests.every(request => request.method === 'GET')…
+     29|       expect(value.port.read()).toEqual({ bootstrap: value.bootstrap, …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/app/in03-entry/__tests__/availability.test.ts > actual scoped read readiness (synthetic transport only) > keeps a malformed or failed service false while independent successful services remain readable
+AssertionError: expected { feed: false, people: false, …(4) } to deeply equal { feed: false, people: true, …(4) }
+
+- Expected
++ Received
+
+  {
+-   "age": true,
++   "age": false,
+    "feed": false,
+-   "inbox": true,
+-   "intro": true,
+-   "people": true,
+-   "requests": true,
++   "inbox": false,
++   "intro": false,
++   "people": false,
++   "requests": false,
+  }
+
+ ❯ src/app/in03-entry/__tests__/availability.test.ts:37:75
+     35|   it('keeps a malformed or failed service false while independent succ…
+     36|     const value = setup(request => new URL(request.url).pathname.endsW…
+     37|     try { await value.port.prepare(); expect(value.port.read()!.servic…
+       |                                                                           ^
+     38|     finally { value.port.dispose(); value.dispose() }
+     39|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/app/in03-entry/__tests__/availability.test.ts > actual scoped read readiness (synthetic transport only) > respects explicit C03 service denials without dispatching their probes
+AssertionError: expected { feed: false, people: false, …(4) } to deeply equal { feed: false, people: true, …(4) }
+
+- Expected
++ Received
+
+  {
+-   "age": true,
++   "age": false,
+    "feed": false,
+-   "inbox": true,
+-   "intro": true,
+-   "people": true,
++   "inbox": false,
++   "intro": false,
++   "people": false,
+    "requests": false,
+  }
+
+ ❯ src/app/in03-entry/__tests__/availability.test.ts:53:37
+     51|     try {
+     52|       await port.prepare()
+     53|       expect(port.read()!.services).toEqual({ ...all, feed: false, req…
+       |                                     ^
+     54|       expect(value.requests.some(request => /\/(feed|social-handles|so…
+     55|     } finally { port.dispose(); value.port.dispose(); value.dispose() }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/app/in03-entry/__tests__/availability.test.ts > actual scoped read readiness (synthetic transport only) > withdraws old readiness before refreshing and does not preserve a failed prior success
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/in03-entry/__tests__/availability.test.ts:76:76
+     74|     const value = setup(request => failed && new URL(request.url).path…
+     75|     try {
+     76|       await value.port.prepare(); expect(value.port.read()!.services.f…
+       |                                                                            ^
+     77|       failed = true
+     78|       const next = value.port.prepare()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/app/in03-entry/__tests__/availability.test.ts > actual scoped read readiness (synthetic transport only) > withdraws prepared readiness when its caller lifetime aborts later
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/in03-entry/__tests__/availability.test.ts:109:93
+    107|     const value = setup(), controller = new AbortController()
+    108|     try {
+    109|       await value.port.prepare(controller.signal); expect(value.port.r…
+       |                                                                                             ^
+    110|       controller.abort(); expect(value.port.read()).toBeNull()
+    111|     } finally { value.port.dispose(); value.dispose() }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  5 failed | 11 passed (16)
+   Start at  02:01:27
+   Duration  1.05s (transform 508ms, setup 0ms, import 744ms, tests 130ms, environment 0ms)
+

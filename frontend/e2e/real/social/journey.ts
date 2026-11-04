@@ -2,9 +2,13 @@ import type { openRealIdentity } from './real-entry'
 import { waitForController } from './real-entry'
 import { decode, reveal, socialRequest, type Platform } from '../../../src/features/social-sharing/model/contract'
 import { TransportError } from '../../../src/shared/api/errors'
+import { decodeProfile } from '../../../src/features/people/contract'
+import { createSafetyController } from '../../../src/features/safety/controller'
+import { blockListSchema } from '../../../src/features/safety/contract'
+import { isPublicQueryKey, privateQueryKey } from '../../../src/shared/query/keys'
 
 type Identity = Awaited<ReturnType<typeof openRealIdentity>>
-type BoundSocial = ReturnType<Identity['bindSocial']>
+type BoundSocial = Awaited<ReturnType<Identity['bindSocial']>>
 function requireResult(value: unknown, message: string): asserts value { if (!value) throw new Error(message) }
 const pause = () => new Promise<void>(resolve => setTimeout(resolve, 250))
 
@@ -25,11 +29,77 @@ async function confirmMutation(read: () => { phase: string; key: string | null }
 /** Uses only canonical production controllers and the actor's existing real HTTP client. */
 export function createPublicJourney(identity: Identity, social: BoundSocial) {
   const { owner, sharing } = social
+  let delayed: { targetId: string; scope: Identity['scope']; key: ReturnType<typeof privateQueryKey>;
+    hold: ReturnType<Identity['holdNextProfileRead']>; pending: Promise<void> } | null = null
   const checkSharing = () => confirmMutation(() => sharing.read().mutation, sharing.checkStatus)
   function requireService(service: Parameters<typeof owner.available>[0]) {
     requireResult(owner.available(service), `NOT_RUN: production ${service} producer unavailable`)
   }
   return {
+    dispose() { delayed?.hold.release(); delayed = null },
+    async prepareBlockPrivacy(targetId: string) {
+      requireService('people')
+      requireResult(!delayed && targetId !== identity.scope.userId, 'IN03 block privacy probe unavailable')
+      const scope = identity.auth.privacy.capture(), path = `/api/concert/events/${scope.eventId}/people/${targetId}`
+      const options = identity.auth.privacy.options({ resource: 'profile', entityIds: [targetId],
+        read: async ({ signal }) => (await identity.auth.request({ path, method: 'GET', access: 'protected', errorFamily: 'core', signal,
+          decode(value, response) { requireResult(response.status === 200, 'IN03 private cache prime requires actual HTTP 200'); return decodeProfile(value, targetId) } })).data })
+      await identity.auth.queryClient.fetchQuery(options)
+      const key = privateQueryKey({ ...scope, userId: scope.userId! }, 'profile', [targetId])
+      requireResult(identity.auth.queryClient.getQueryData(key) !== undefined, 'IN03 actual private profile cache did not populate')
+      const hold = identity.holdNextProfileRead(path)
+      const pending = owner.people.openProfile(targetId)
+      delayed = { targetId, scope, key, hold, pending }
+      try {
+        for (let attempt = 0; !hold.read().received && attempt < 48; attempt++) await pause()
+        requireResult(hold.read().received && hold.read().status === 200, 'IN03 delayed profile needs an actual upstream 200 response')
+        return { actualUpstreamStatus: 200, responseDeliveryHeld: true, privateCachePrimed: true }
+      } catch (error) { hold.release(); await pending; delayed = null; throw error }
+    },
+    async blockWithPrivacy(targetId: string) {
+      const probe = delayed
+      requireResult(probe?.targetId === targetId && identity.auth.privacy.isCurrent(probe.scope), 'IN03 block requires the live delayed profile probe')
+      const path = `/api/concert/events/${probe.scope.eventId}/me/blocks`
+      const loadBlocks = (scope: Identity['scope']) => identity.auth.privacy.run(scope, async ({ signal }) => {
+        const result = await identity.auth.request({ path, method: 'GET', access: 'protected', errorFamily: 'domain', domainOperation: 'listConcertBlocks',
+          query: { limit: 100 }, signal, decode(value, context) {
+            if (context.status !== 200) throw Error('IN03 block list unavailable')
+            const page = blockListSchema.parse(value)
+            requireResult(page.items.every(row => row.blocked_by_me && row.target_user_id !== scope.userId)
+              && new Set(page.items.map(row => row.target_user_id)).size === page.items.length, 'IN03 block list context unavailable')
+            return page
+          } })
+        return result.data
+      })
+      let safety: ReturnType<typeof createSafetyController> | null = null
+      try {
+        const previous = await loadBlocks(probe.scope)
+        requireResult(previous.next_cursor === null && !previous.items.some(row => row.target_user_id === targetId), 'IN03 target must be initially unblocked in the isolated scenario')
+        // This service readiness follows an actual validated read; the server still authorizes the command.
+        safety = createSafetyController({ auth: identity.auth, blocksAvailable: true })
+        const before = identity.http().length
+        await safety.block(targetId)
+        for (let attempt = 0; identity.auth.privacy.isCurrent(probe.scope) && attempt < 12; attempt++) {
+          requireResult(['pending', 'unknown', 'failed'].includes(safety.read().phase), 'IN03 block command was not confirmed')
+          await pause(); await safety.checkStatus()
+        }
+        const after = identity.auth.privacy.capture()
+        requireResult(after.generation === probe.scope.generation && after.policyGeneration === probe.scope.policyGeneration + 1,
+          'IN03 confirmed local block did not withdraw its original privacy generation')
+        const writes = identity.http().slice(before).filter(row => row.method === 'PUT' && row.path === `${path}/${targetId}`)
+        requireResult(writes.length === 1 && [200, 202].includes(writes[0]!.status), 'IN03 block did not use one actual command attempt')
+        const persisted = await loadBlocks(after)
+        requireResult(persisted.items.some(row => row.target_user_id === targetId && row.blocked_by_me), 'IN03 actual block did not persist')
+        probe.hold.release(); await probe.pending
+        requireResult(owner.read().phase === 'withdrawn' && owner.people.read().profile.data === null
+          && owner.feed.read().feed.data === null && owner.thread.read().detail.data === null && sharing.read().secret.data === null,
+        'IN03 delayed old response restored a withdrawn controller')
+        requireResult(identity.auth.queryClient.getQueryData(probe.key) === undefined
+          && identity.auth.queryClient.getQueryCache().findAll({ predicate: query => !isPublicQueryKey(query.queryKey) }).length === 0,
+        'IN03 block left private query data after withdrawal')
+        return { actualBlockPersisted: true, delayedActual200Rejected: true, privateCacheCleared: true, peerWS: 'NOT_RUN' as const }
+      } finally { probe.hold.release(); await probe.pending; delayed = null; safety?.dispose() }
+    },
     async discover(introId: string, authorId: string) {
       requireService('people')
       owner.people.start()

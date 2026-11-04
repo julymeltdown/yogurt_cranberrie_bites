@@ -14,19 +14,34 @@ export interface HttpObservation {
 export function observePublicHTTP() {
   const observations: HttpObservation[] = []
   let overflow = false
+  let held: { path: string; claimed: boolean; received: boolean; status: number | null; released: boolean; gate: Promise<void>; release(): void } | null = null
   const fetch: typeof globalThis.fetch = async (input, init) => {
-    const response = await globalThis.fetch(input, init)
     const url = new URL(input instanceof Request ? input.url : String(input), location.origin)
+    const method = (init?.method ?? (input instanceof Request ? input.method : 'GET')).toUpperCase()
+    const delayed = url.origin === location.origin && method === 'GET' && held?.path === url.pathname && !held.claimed ? held : null
+    if (delayed) delayed.claimed = true
+    const response = await globalThis.fetch(input, init)
     if (url.origin === location.origin && url.pathname.startsWith('/api/concert/')) {
       if (observations.length >= 1024) overflow = true
       else observations.push(Object.freeze({ sequence: observations.length + 1,
-        method: (init?.method ?? (input instanceof Request ? input.method : 'GET')).toUpperCase(),
+        method,
         path: url.pathname, status: response.status,
         noStore: (response.headers.get('cache-control') ?? '').split(',').some(v => v.trim().toLowerCase() === 'no-store') }))
     }
+    // Delay delivery only after the real upstream response arrives. No body/status is replaced.
+    if (delayed && !delayed.released) { delayed.received = true; delayed.status = response.status; await delayed.gate }
     return response
   }
-  return { fetch, read() {
+  return { fetch,
+    holdNextProfileRead(path: string) {
+      if (held || !/^\/api\/concert\/events\/[0-9a-f-]{36}\/people\/[0-9a-f-]{36}$/.test(path)) throw Error('IN03 delayed read unavailable')
+      let resume = () => {}
+      const gate = new Promise<void>(resolve => { resume = resolve })
+      const current = { path, claimed: false, received: false, status: null as number | null, released: false, gate,
+        release() { if (current.released) return; current.released = true; if (held === current) held = null; resume() } }
+      held = current
+      return { read: () => ({ received: current.received, status: current.status }), release: current.release }
+    }, dispose() { held?.release() }, read() {
     if (overflow) throw new Error('IN03 HTTP observation limit exceeded; evidence is incomplete')
     return observations.slice()
   } }

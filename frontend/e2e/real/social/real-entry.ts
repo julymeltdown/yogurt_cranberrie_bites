@@ -1,7 +1,8 @@
 import { createSessionController } from '../../../src/features/auth/model/session'
 import { createSocialOwner, sameScope } from '../../../src/app/social-composition/owner'
 import { canonicalSharingRequests } from '../../../src/app/social-composition/sharing'
-import type { SocialContext, SocialAvailabilityPort } from '../../../src/app/social-composition/ports'
+import type { SocialContext } from '../../../src/app/social-composition/ports'
+import type { IN03AvailabilityPort } from '../../../src/app/in03-entry/availability'
 import { createSocialSharingController } from '../../../src/features/social-sharing/model/controller'
 import { captureBootstrap, observePublicHTTP, type SourcePins } from './observations'
 
@@ -25,22 +26,33 @@ export async function openRealIdentity(input: { eventId: string; userId: string;
   const http = observePublicHTTP()
   const auth = createSessionController({ eventId: input.eventId, qualifiedRefresh: false, fetch: http.fetch })
   let social: BoundSocial | null = null
-  let disposed = false
-  const dispose = () => { if (disposed) return; disposed = true; social?.dispose(); auth.dispose() }
-  function bindSocial(availability: (context: SocialContext) => SocialAvailabilityPort | null): BoundSocial {
-    if (disposed || social) throw new Error('IN03 identity already bound or disposed')
+  let disposed = false, binding = false, pendingPort: IN03AvailabilityPort | null = null
+  const lifetime = new AbortController()
+  const dispose = () => { if (disposed) return; disposed = true; lifetime.abort(); http.dispose(); pendingPort?.dispose(); social?.dispose(); auth.dispose() }
+  async function bindSocial(availability: (context: SocialContext) => IN03AvailabilityPort | null): Promise<BoundSocial> {
+    if (disposed || social || binding) throw new Error('IN03 identity already bound or disposed')
     const scope = auth.privacy.capture()
     if (!sameScope(scope, initialScope)) throw new Error('NOT_RUN: identity changed before social binding')
     const context = { auth, scope, bootstrap }
     // Borrow the production producer; C03 capabilities do not imply service readiness.
-    const port = availability(context), lease = port?.read()
-    if (!port || !lease || lease.bootstrap !== bootstrap || !sameScope(lease.scope, scope)) throw new Error('NOT_RUN: availability is not bound to this bootstrap and privacy scope')
-    const owner = createSocialOwner({ ...context, availability: port, requests: canonicalSharingRequests, navigate: () => {} })
-    const access = { read: () => ({ available: owner.available('requests'), readOnly: bootstrap.event.phase === 'READ_ONLY' || !bootstrap.capabilities.mutations.available }), subscribe: port.subscribe.bind(port) }
-    const sharing = createSocialSharingController({ auth, access, sensitiveRead: auth.requestSensitive })
-    sharing.start()
-    social = { owner, sharing, dispose() { sharing.dispose(); owner.dispose() } }
-    return social
+    const port = availability(context)
+    if (!port || typeof port.prepare !== 'function') throw new Error('NOT_RUN: asynchronous production availability is unavailable')
+    binding = true; pendingPort = port
+    let owner: ReturnType<typeof createSocialOwner> | null = null
+    let sharing: ReturnType<typeof createSocialSharingController> | null = null
+    try {
+      await port.prepare(lifetime.signal)
+      const lease = port.read()
+      if (disposed || !auth.privacy.isCurrent(scope) || !lease || lease.bootstrap !== bootstrap || !sameScope(lease.scope, scope)) throw new Error('NOT_RUN: availability is not bound to this bootstrap and privacy scope')
+      const createdOwner = createSocialOwner({ ...context, availability: port, requests: canonicalSharingRequests, navigate: () => {} })
+      owner = createdOwner
+      const access = { read: () => ({ available: createdOwner.available('requests'), readOnly: bootstrap.event.phase === 'READ_ONLY' || !bootstrap.capabilities.mutations.available }), subscribe: port.subscribe.bind(port) }
+      const createdSharing = createSocialSharingController({ auth, access, sensitiveRead: auth.requestSensitive })
+      sharing = createdSharing; createdSharing.start()
+      social = { owner: createdOwner, sharing: createdSharing, dispose() { createdSharing.dispose(); createdOwner.dispose(); port.dispose() } }
+      return social
+    } catch (error) { sharing?.dispose(); owner?.dispose(); port.dispose(); throw error }
+    finally { pendingPort = null; binding = false }
   }
   let bootstrap: Awaited<ReturnType<typeof auth.loadBootstrap>>
   let initialScope: ReturnType<typeof auth.privacy.capture>
@@ -62,7 +74,18 @@ export async function openRealIdentity(input: { eventId: string; userId: string;
     if (session.userId !== input.userId || session.eventId !== input.eventId) throw new Error('NOT_RUN: principal context mismatch')
     bootstrap = await auth.loadBootstrap({ generation: session.generation, userId: input.userId, eventId: input.eventId }, new AbortController().signal)
     initialScope = auth.privacy.capture()
-    return { auth, bootstrap, scope: initialScope, bindSocial, http: http.read,
+    return { auth, get bootstrap() { return bootstrap }, get scope() { return initialScope }, bindSocial, http: http.read,
+      holdNextProfileRead: http.holdNextProfileRead,
+      async reopenSocial(availability: (context: SocialContext) => IN03AvailabilityPort | null) {
+        if (disposed || binding) throw new Error('NOT_RUN: canonical actor cannot rebind')
+        social?.dispose(); social = null
+        const captured = auth.privacy.capture(), session = auth.session.read()
+        if (!auth.privacy.isCurrent(captured) || session.userId !== input.userId || session.eventId !== input.eventId) throw new Error('NOT_RUN: canonical actor changed before rebind')
+        const next = await auth.loadBootstrap({ generation: session.generation, userId: input.userId, eventId: input.eventId }, lifetime.signal)
+        if (disposed || !auth.privacy.isCurrent(captured)) throw new Error('NOT_RUN: stale bootstrap rebind')
+        bootstrap = next; initialScope = captured
+        return bindSocial(availability)
+      },
       async bootstrapPacket(source: SourcePins) {
         if (disposed || !auth.privacy.isCurrent(initialScope)) throw new Error('NOT_RUN: stale bootstrap evidence lease')
         return captureBootstrap(bootstrap, initialScope, http.read(), source)
@@ -72,8 +95,8 @@ export async function openRealIdentity(input: { eventId: string; userId: string;
 
 /** Compatibility entry for the retained controller preparation harness. */
 export async function openRealSocial(input: { eventId: string; userId: string; email: string; password: string },
-  availability: (context: SocialContext) => SocialAvailabilityPort | null) {
+  availability: (context: SocialContext) => IN03AvailabilityPort | null) {
   const identity = await openRealIdentity(input)
-  try { return { ...identity.bindSocial(availability), auth: identity.auth, http: identity.http, dispose: identity.dispose } }
+  try { return { ...await identity.bindSocial(availability), auth: identity.auth, http: identity.http, dispose: identity.dispose } }
   catch (error) { identity.dispose(); throw error }
 }
