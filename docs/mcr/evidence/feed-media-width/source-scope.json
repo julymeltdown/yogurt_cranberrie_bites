@@ -1,0 +1,46 @@
+{
+  "task": "FEED-MEDIA-WIDTH-01",
+  "status": "MOCK_READY",
+  "native": "PASS; owner209 six synthetic Feed/Thread contexts; same immutable PNGs assessed by CSS owner",
+  "publication": "NOT_RUN",
+  "baselineSource": "1e07321cede694b66aae06184fd05c624a5a0ccb",
+  "publishedBaseline": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+  "baselineCssSha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+  "candidateCssSha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb",
+  "paths": [
+    "frontend/src/features/event-feed/feed.css",
+    "docs/mcr/frontend/feed-media-width.md",
+    "docs/mcr/evidence/feed-media-width/**"
+  ],
+  "widthChange": {
+    "selector": ":root :is(.event-feed.feed-browse .feed-post, .event-feed[aria-label=\"Post thread\"] > article) .feed-media figure",
+    "before": "min(100%, 228px)",
+    "after": "min(100%, 298px)",
+    "expectedUncappedImageWidth": 290,
+    "frameBorderAndPadding": 8,
+    "responsiveLimit": "100% of actual media container; no viewport or source-specific ratio"
+  },
+  "sourceBoundary": "Exact qualified baseline except one228\u2192298px figure-width declaration; ratio/18rem/offscreen states/privacy/focus/actions/characters/nonpost UI untouched.",
+  "expectedGeometryNotObserved": {
+    "197x67": {
+      "width": 290,
+      "height": 98.62944162436548
+    },
+    "197x46": {
+      "width": 290,
+      "height": 67.71573604060913
+    }
+  },
+  "validation": "Exact one-declaration baseline byte comparison passed. Owner209 single coupled capture passed6/6, errors[], native/syntax exit0. Same-image CSS assessment PASS; no own browser or duplicate tests.",
+  "completionCriteria": [
+    "Implement width-only responsive candidate",
+    "One coupled360/390/430 actual Feed and relevant Thread geometry/privacy/focus run with frozen inputs",
+    "CSS-owner assessment of same saved images and necessary scoped fixes",
+    "Record honest evidence/limitations and committed direct Root handoff",
+    "Reuse canonical Root verified publication receipt; no own readback/proof commit/ACK"
+  ],
+  "goal": "Existing Feed foreground goal aligned under latest clarification; tool metadataBLOCKED preserved because no exposed resume API. Do not reset or falsely complete.",
+  "candidateCommit": "ac399c44074a157a7d6bfe9475382672997cc109",
+  "nativePacketCommit": "449f0a92cb413fd04c91e1eec90e82884ce17c41",
+  "assessmentPath": "docs/mcr/evidence/feed-media-width/native-assessment.json"
+}

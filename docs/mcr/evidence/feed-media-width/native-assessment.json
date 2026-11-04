@@ -1,0 +1,700 @@
+{
+  "task": "FEED-MEDIA-WIDTH-01",
+  "status": "MOCK_READY",
+  "nativeResult": "PASS",
+  "savedImageAssessment": "PASS",
+  "synthetic": true,
+  "candidate": "ac399c44074a157a7d6bfe9475382672997cc109",
+  "cssSha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb",
+  "packetCommit": "449f0a92cb413fd04c91e1eec90e82884ce17c41",
+  "packetDirectory": "docs/mcr/evidence/feed-root-composition/media-width-round-1/",
+  "receiptSha256": "644175f068c1a26afdb4141ebca1805fb9d29b9416929abcff3d20090f901ee2",
+  "nativeSha256": "ad0539c16342baa90003b61aae243bc9a6d2d112dc1de31a27299cb0c63fc8fd",
+  "allocation": "FE209-WIDTH-POSTMEDIA-NATIVE-202611041649Z",
+  "fixtureSource": "8eee70df2956fffc37c7b3ef30ef3411fefefdbb",
+  "ownerInputs": [
+    {
+      "revision": "ac399c44074a157a7d6bfe9475382672997cc109",
+      "sha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "375c73dfebf778a8949403001662b33bada4345e",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "5447e338f7b1cf70cc10f6e1628ae61dec0f10b7",
+      "sha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce",
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "readonlyBorrow": true
+    }
+  ],
+  "commandsExecutedByOwner209": [
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.049Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.101Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.475Z",
+      "milliseconds": 12760
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.153Z",
+      "milliseconds": 13104
+    }
+  ],
+  "imageAssessment": [
+    "All six immutable full Feed/Thread captures inspected by CSS implementation owner using the same owner209 images; byte identity to committed packet confirmed. No browser rerun or image copy.",
+    "Feed360/390/430: larger complete media fits post card with thin symmetric frame; selected48px characters, complete15px post text,44px action layout, established red tabs/pink body/centered composer remain readable and unchanged.",
+    "Thread360: image contracts to268px inside actual276px available frame; no horizontal clipping. Thread390/430:290px image inside298px frame. Selected approved character is visibly rendered through responsible owner caller/Thread fix.",
+    "Post/comment paper treatment remains bounded; Thread heading/reply form retain established UI. Lower reply controls remain in normal scrolling flow.",
+    "No material width-scoped difference remains against requested roughly290px interior media target. Whole ten-screen reference acceptance is not implied."
+  ],
+  "measurements": [
+    {
+      "name": "feed-360x843",
+      "images": [
+        {
+          "width": 290,
+          "height": 98.625,
+          "naturalWidth": 197,
+          "naturalHeight": 67
+        },
+        {
+          "width": 290,
+          "height": 67.703125,
+          "naturalWidth": 197,
+          "naturalHeight": 46
+        }
+      ],
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -396,
+          "scrollHeight": 2358,
+          "scrollTop": 634,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "horizontalOverflow": false,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-390x843",
+      "images": [
+        {
+          "width": 290,
+          "height": 98.625,
+          "naturalWidth": 197,
+          "naturalHeight": 67
+        },
+        {
+          "width": 290,
+          "height": 67.703125,
+          "naturalWidth": 197,
+          "naturalHeight": 46
+        }
+      ],
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -396,
+          "scrollHeight": 2358,
+          "scrollTop": 634,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "horizontalOverflow": false,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-430x843",
+      "images": [
+        {
+          "width": 290,
+          "height": 98.625,
+          "naturalWidth": 197,
+          "naturalHeight": 67
+        },
+        {
+          "width": 290,
+          "height": 67.703125,
+          "naturalWidth": 197,
+          "naturalHeight": 46
+        }
+      ],
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -396,
+          "scrollHeight": 2358,
+          "scrollTop": 634,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "horizontalOverflow": false,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "thread-360x843",
+      "images": [
+        {
+          "width": 268,
+          "height": 91.140625,
+          "naturalWidth": 197,
+          "naturalHeight": 67
+        }
+      ],
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 91.140625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2530,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 91.140625,
+          "frameTop": -387.8125,
+          "scrollHeight": 2530,
+          "scrollTop": 630,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 91.140625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2530,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "horizontalOverflow": false,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "thread-390x843",
+      "images": [
+        {
+          "width": 290,
+          "height": 98.625,
+          "naturalWidth": 197,
+          "naturalHeight": 67
+        }
+      ],
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -395.8125,
+          "scrollHeight": 2538,
+          "scrollTop": 638,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "horizontalOverflow": false,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "thread-430x843",
+      "images": [
+        {
+          "width": 290,
+          "height": 98.625,
+          "naturalWidth": 197,
+          "naturalHeight": 67
+        }
+      ],
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -395.8125,
+          "scrollHeight": 2538,
+          "scrollTop": 638,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "horizontalOverflow": false,
+      "disposedBlobUrls": 0
+    }
+  ],
+  "errors": [],
+  "fullRelease": {
+    "utc": "2026-11-04T16:53:42.611437+00:00",
+    "allocation": "FE209-WIDTH-POSTMEDIA-NATIVE-202611041649Z",
+    "ownedProcesses": [],
+    "listener5279": "",
+    "bind5279": "PASS",
+    "dependencyLinkPresent": false,
+    "cacheTMPPresent": [],
+    "freeBytes": 29325647872,
+    "peakAllProcesses": 13,
+    "peakAllRssBytes": 2587918336,
+    "summaryStatus": "SYNTHETIC_NATIVE_PASSED",
+    "cases": 6,
+    "errors": [],
+    "geometry": [
+      {
+        "name": "feed-360x843",
+        "images": [
+          [
+            290,
+            98.625,
+            298,
+            308
+          ],
+          [
+            290,
+            67.703125,
+            298,
+            308
+          ]
+        ],
+        "scroll": {
+          "driverOnlySpacer": true,
+          "observerMargin": 200,
+          "before": {
+            "frameHeight": 98.625,
+            "frameTop": 238,
+            "scrollHeight": 2358,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "outside": {
+            "frameHeight": 98.625,
+            "frameTop": -396,
+            "scrollHeight": 2358,
+            "scrollTop": 634,
+            "imagePresent": false
+          },
+          "returned": {
+            "frameHeight": 98.625,
+            "frameTop": 238,
+            "scrollHeight": 2358,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "geometryPreservedOnExit": true,
+          "geometryRestoredOnReturn": true
+        }
+      },
+      {
+        "name": "feed-390x843",
+        "images": [
+          [
+            290,
+            98.625,
+            298,
+            338
+          ],
+          [
+            290,
+            67.703125,
+            298,
+            338
+          ]
+        ],
+        "scroll": {
+          "driverOnlySpacer": true,
+          "observerMargin": 200,
+          "before": {
+            "frameHeight": 98.625,
+            "frameTop": 238,
+            "scrollHeight": 2358,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "outside": {
+            "frameHeight": 98.625,
+            "frameTop": -396,
+            "scrollHeight": 2358,
+            "scrollTop": 634,
+            "imagePresent": false
+          },
+          "returned": {
+            "frameHeight": 98.625,
+            "frameTop": 238,
+            "scrollHeight": 2358,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "geometryPreservedOnExit": true,
+          "geometryRestoredOnReturn": true
+        }
+      },
+      {
+        "name": "feed-430x843",
+        "images": [
+          [
+            290,
+            98.625,
+            298,
+            378
+          ],
+          [
+            290,
+            67.703125,
+            298,
+            378
+          ]
+        ],
+        "scroll": {
+          "driverOnlySpacer": true,
+          "observerMargin": 200,
+          "before": {
+            "frameHeight": 98.625,
+            "frameTop": 238,
+            "scrollHeight": 2358,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "outside": {
+            "frameHeight": 98.625,
+            "frameTop": -396,
+            "scrollHeight": 2358,
+            "scrollTop": 634,
+            "imagePresent": false
+          },
+          "returned": {
+            "frameHeight": 98.625,
+            "frameTop": 238,
+            "scrollHeight": 2358,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "geometryPreservedOnExit": true,
+          "geometryRestoredOnReturn": true
+        }
+      },
+      {
+        "name": "thread-360x843",
+        "images": [
+          [
+            268,
+            91.140625,
+            276,
+            276
+          ]
+        ],
+        "scroll": {
+          "driverOnlySpacer": true,
+          "observerMargin": 200,
+          "before": {
+            "frameHeight": 91.140625,
+            "frameTop": 242.1875,
+            "scrollHeight": 2530,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "outside": {
+            "frameHeight": 91.140625,
+            "frameTop": -387.8125,
+            "scrollHeight": 2530,
+            "scrollTop": 630,
+            "imagePresent": false
+          },
+          "returned": {
+            "frameHeight": 91.140625,
+            "frameTop": 242.1875,
+            "scrollHeight": 2530,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "geometryPreservedOnExit": true,
+          "geometryRestoredOnReturn": true
+        }
+      },
+      {
+        "name": "thread-390x843",
+        "images": [
+          [
+            290,
+            98.625,
+            298,
+            306
+          ]
+        ],
+        "scroll": {
+          "driverOnlySpacer": true,
+          "observerMargin": 200,
+          "before": {
+            "frameHeight": 98.625,
+            "frameTop": 242.1875,
+            "scrollHeight": 2538,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "outside": {
+            "frameHeight": 98.625,
+            "frameTop": -395.8125,
+            "scrollHeight": 2538,
+            "scrollTop": 638,
+            "imagePresent": false
+          },
+          "returned": {
+            "frameHeight": 98.625,
+            "frameTop": 242.1875,
+            "scrollHeight": 2538,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "geometryPreservedOnExit": true,
+          "geometryRestoredOnReturn": true
+        }
+      },
+      {
+        "name": "thread-430x843",
+        "images": [
+          [
+            290,
+            98.625,
+            298,
+            346
+          ]
+        ],
+        "scroll": {
+          "driverOnlySpacer": true,
+          "observerMargin": 200,
+          "before": {
+            "frameHeight": 98.625,
+            "frameTop": 242.1875,
+            "scrollHeight": 2538,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "outside": {
+            "frameHeight": 98.625,
+            "frameTop": -395.8125,
+            "scrollHeight": 2538,
+            "scrollTop": 638,
+            "imagePresent": false
+          },
+          "returned": {
+            "frameHeight": 98.625,
+            "frameTop": 242.1875,
+            "scrollHeight": 2538,
+            "scrollTop": 0,
+            "imagePresent": true
+          },
+          "geometryPreservedOnExit": true,
+          "geometryRestoredOnReturn": true
+        }
+      }
+    ]
+  },
+  "reusedNotRerun": [
+    "sealed Feed/Notice negative and short-height cases",
+    "legacy author case",
+    "unchanged passed types/unit/lint and C07 guards"
+  ],
+  "limitations": [
+    "Synthetic declared fixtures only; no actual multiuser/provider acceptance.",
+    "HTTP/WS/cache IN03 source bundle is unexecuted and unrelated to this width result.",
+    "Native widths exercise frozen197x67/197x46 media; arbitrary-ratio source coverage remains shared implementation owner evidence.",
+    "Previous short-height and negative receipts are reused within their sealed scope, not represented as freshly executed for this width.",
+    "Broader persistent Feed parity goal remains unfinished with BLOCKED tool metadata preserved; bounded delivery is not a false whole-goal completion."
+  ],
+  "publication": "Pending canonical verified Root153 same-candidate receipt; no own remote readback or proof-only successor.",
+  "images": [
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/media-width-round-1/native/feed-360x843.png",
+      "sha256": "db9e164619d85b58fc25a048c5b4d0cc325f68c53f5f66cf47f6f85a7b246433"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/media-width-round-1/native/feed-390x843.png",
+      "sha256": "14c256605a38c75999971076b08b5e1c59ffbad502d350d737e165c9d18200bf"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/media-width-round-1/native/feed-430x843.png",
+      "sha256": "670c98ebbf9eec03a0f8108aa91725037315bf4df6a4c93d7a40a729bf6619e3"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/media-width-round-1/native/thread-360x843.png",
+      "sha256": "bb62af4380539ca93be1c042736bc804ec32520d7a636d252fe6e373974721f0"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/media-width-round-1/native/thread-390x843.png",
+      "sha256": "59ea76b73c000be53b3cfabd3438458ab0884107faaca140dedf9613c5f3469f"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/media-width-round-1/native/thread-430x843.png",
+      "sha256": "283f663a9f505775e0cbb741503a5c23d2bd661dabc845aab5788889d3b3f004"
+    }
+  ]
+}
