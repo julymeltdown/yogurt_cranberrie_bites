@@ -1,6 +1,6 @@
 # Original QA04 — frontend implementation receipt
 
-Date: 2026-11-04 (Asia/Seoul). Original QA04: **IN_PROGRESS**. This implementation increment: **MOCK_READY**, with actual native-browser execution of synthetic client scenarios. Real-service HTTP, WS and cached product UI: **NOT_RUN**. The persistent original-QA04 goal remains **ACTIVE**; this fixture delivery does not complete it.
+Date: 2026-11-04 (Asia/Seoul). Original QA04: **IN_PROGRESS**. This implementation increment: **MOCK_READY**, with actual native-browser execution of synthetic client scenarios. Real-service HTTP, WS and cached product UI: **NOT_RUN**. The persistent original-QA04 goal is **unfinished**; this fixture delivery does not complete it.
 
 ## Original criterion and delivered scope
 
@@ -28,7 +28,7 @@ The prior goal turn published the independent scaffold. This continuation adds s
 
 The remaining 63 domain cells are exactly seven roles × (five domain WS operations + raw private-claim list/detail/mutation + beacon list). `getConcertAgeStatus` and its verification operations exist, but they do not expose a browser raw PrivateAgeClaim list/detail API. Existing public DTO rejection probes cover claim leakage; a raw-claim endpoint is not fabricated. The actual backend matrix/runtime owners must bind the applicable public/aggregate response cases and WS/cache semantics. The original no-disclosure criterion remains required across real services.
 
-ProductRoot and social backend threads were polled during this continuation: runtime constructor/component work progressed, but a qualified seven-principal HTTP/WS/seed handoff remains absent. The seed script and runtime-input document are not yet published in the merged candidate. The original goal stays active; actual HTTP/WS/cached product UI remains NOT_RUN.
+ProductRoot and social backend threads were polled during this continuation: runtime constructor/component work progressed, but a qualified seven-principal HTTP/WS/seed handoff remains absent. The seed script and runtime-input document are not yet published in the merged candidate. The original goal remains unfinished; actual HTTP/WS/cached product UI remains NOT_RUN.
 
 ## Executed qualification
 
@@ -62,8 +62,14 @@ Concrete harness fixes were qualified before delivery: package resolution stays 
 | Full frontend domain role scenarios and actual live HTTP | This QA04 frontend owner, once the actual seed/public-policy catalog is supplied. Needs same-candidate service/contract revisions, isolated environment ID, seven canonical principal local file/env references, resource IDs, approved/denied/expired/blocked state, role-specific forbidden canaries, authorized positive values and mutation idempotency keys. No secrets are requested in chat or written to evidence. Existing DTO contracts alone do not supply those authorization facts. |
 | Actual WS revocation and stale cached product UI | ProductRoot supplies the frozen registered transport/lifetime handoff; this frontend owner implements the concrete adapter and executes it. `contracts/realtime/v1/world.schema.json` is the C05 world schema. Its world `revoke` cannot be invented into a social-grant event. Current seven social WS cells remain UNSUPPORTED; all real WS/cache cells remain NOT_RUN. |
 
-Direct counterpart replies confirm no qualified full public role/seed/HTTP/WS bundle at this handoff. The actual real-service entry was run and refused missing input, rather than recording a mock as real. Remaining implementation and execution stay on the original active goal. This handoff does not wait for management inspection and does not silently scope out the 63 unsupported fixture cells or any live requirement.
+Direct counterpart replies confirm no qualified full public role/seed/HTTP/WS bundle at this handoff. The actual real-service entry was run and refused missing input, rather than recording a mock as real. Remaining implementation and execution stay within the original unfinished goal. This handoff does not wait for management inspection and does not silently scope out the 63 unsupported fixture cells or any live requirement.
 
 ## Publication and preservation
 
 Peer changes are merged serially, with the qualified imported-source hashes checked unchanged after reconciliation. Exact owned-path and frontend/backend import checks, whitespace, command exits and cleanup are in `checks.json`. The temporary directory-local dependency link and owned cache are removed at handoff; the existing shared installation is untouched. Direct publication uses a non-force master push and verifies the remote commit/ancestry. Evidence is an implementation checkpoint, not original QA04 acceptance.
+
+## External dependency audit after three goal turns
+
+The original scaffold checkpoint (`cb9abce4`), expanded feature checkpoint (`c5664550`) and mounted-component checkpoint (`ca0d2d7b`) each found the same unavailable prerequisite: qualified public services, seven canonical principal/seed inputs, and the registered privacy WS/cache handoff. Each turn delivered independent implementation progress; those frontend fixture and fail-closed gate increments are now committed and published. Further real-service adapter implementation and execution require the named runtime/matrix owners to deliver their public interfaces and local credential/seed references. More synthetic results cannot resolve that prerequisite or complete original QA04.
+
+The persistent goal can therefore be marked **BLOCKED**, preserving all unfinished criteria. This is an external input boundary, not an acceptance waiver or a review/approval gate. ProductRoot `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` owns the runtime/seed/transport handoff; Social matrix owner `01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c` owns backend matrix/policy inputs. Resume on their concrete handoff and execute the original real-service matrix. IN03 stays inactive.

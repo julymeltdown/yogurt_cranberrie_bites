@@ -2,7 +2,7 @@
   "task": "QA04",
   "originalDisposition": "IN_PROGRESS",
   "increment": "MOCK_READY",
-  "goal": "ACTIVE; original live requirements unfinished",
+  "goal": "UNFINISHED; external prerequisite audit supports BLOCKED; no completion claim",
   "assignmentBase": "22f9771544d9c0d09ac5819e77377e7524fad0d0",
   "sourceCandidate": "ad5e2eb9038fba67c606f89705f1bd64a8d5dc50",
   "compilerHarnessCommit": "5c3b7499",
@@ -135,7 +135,7 @@
       "beaconList": 7
     },
     "liveRuntimeHandoff": "Not published in merged candidate; ProductRoot constructor qualification is not actual seven-principal public service handoff",
-    "originalGoal": "ACTIVE; no completion claim",
+    "originalGoal": "UNFINISHED; awaiting real-service handoff",
     "runtimePoll": "ProductRoot still resolving SDK3 and routing ownership; Social runtime/test sources authored but not yet compiled/executed. No seven-principal HTTP/WS seed handoff."
   },
   "mountedComponentQualification": {
@@ -154,5 +154,17 @@
     "reason": "serial peer-preserving reconciliation before publication",
     "mergedRemote": "6f390a46e91d7eb89e4e1d25d5b1a59ccdab3b4d",
     "qualifiedSourcePins": "all118 unchanged; no test rerun or new runtime claim"
+  },
+  "externalDependencyAudit": {
+    "consecutiveGoalTurns": 3,
+    "checkpoints": [
+      "cb9abce4",
+      "c5664550",
+      "ca0d2d7b"
+    ],
+    "repeatedMissingInput": "Qualified public runtime and seven canonical principal/seed inputs with registered privacy WS/cache handoff",
+    "independentFrontendProgress": "Committed scaffold, expanded feature lifetime matrix and mounted private component qualification published",
+    "nextMeaningfulWork": "Implement concrete real-service adapters and execute original HTTP/WS/cache matrix after named implementation owners supply the frozen handoff",
+    "disposition": "Supports BLOCKED goal; original QA04 unfinished, no scope waiver"
   }
 }
