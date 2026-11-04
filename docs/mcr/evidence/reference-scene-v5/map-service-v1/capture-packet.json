@@ -1,0 +1,507 @@
+{
+  "format": "MCR_MAP_SERVICE_V1_CAPTURE_PACKET",
+  "status": "PASS_BOUNDED_NOT_ADMITTED",
+  "capturedCandidate": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+  "sourceCommit": "4b49129c5df77874415e86aaa1f8ef38cb70c605",
+  "historyMerge": "53283b6257cf5bec106ad249f453e45fafe05c46",
+  "captureStartedAt": "2026-11-04T06:05:11.002Z",
+  "captureFinishedAt": "2026-11-04T06:05:58.929Z",
+  "sourcePins": {
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "frontend/src/app/WorldShell.tsx": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/app/world-entry/resolver.ts": "bb49ed5c1d9c6d1985ada6dd9d53c8e1b579c6303cdcb30fb88e38a5c80a6d80",
+    "frontend/src/app/world-panels/index.tsx": "4c99a2746715940524cc1a7ad1e2a002f99707f02bfedc9faf4fb3f028c35d69",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "ad579f6068843f1a0d8217ef85e5d4dc6738dd2c8514253e331f11fe0b2a1018",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "fbc4f1f88f45eae6b1c1db581c6354bee79f3423cb31537153c537045090976e",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/presentation.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/handoff.json": "a3cfaf56d880bca913f34e91fea72c70aefa8b8c8e3bc8aa8b30f76e3b473686",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf": "f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/OFL.txt": "0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "frontend/src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "frontend/src/world/reference-scene/overview.ts": "919218fd36390ba379def36772c46e15946b877b72295753a71a885293768a8e",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "18d8a1742a22487c971721b68265588ac3ef11d713a38b046e1f0b7590806f1a",
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/reference-scene/spatial-v5/build-source-inputs.py": "5a69bce8b29ce8068c679e7a1d9a4163164cef893b342647df1134a78a3a5c57",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "4cc20165e13491861d71b3a8654f6300f0492b1dd9dcdf3b4ce99575c9927889",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json": "77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json": "9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c",
+    "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py": "47f07eaabfa3ebf2d1baf88f506e09d5975412eabb76e0a312b1f8c1f974e7e6",
+    "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json": "6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "d236e2769abbda946444fb8eda64cf525f48a1c830e42a0715ce8f812e518599",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.html": "6218d6246ad676d54bef02368359b33c82894caafd0b0d1adc9ffe511e2c095e",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/native.mjs": "f07870b29e8dfa3c5cf7330df1319f7c0ce5ec064045f4a80388663c1038d38b",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/contracts.test.ts": "37e0f0252a32b2a98c1ee7c55f335678838e22fd49baa954c77d79a442b67789",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json": "e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/source-binding.json": "8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2.mjs": "f19985b2005ef2c1a2feed85fcbe06775211edc39073fd6e7cf54a75add3ab4c",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2-probe.ts": "ebe7a46becfc56fe96f7d600891505b871c0e9651df6b666c29f27565cf24047",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2-editable.mjs": "d4775b07b0e29c351e1c314e65ae29dcc4dc21a517bacedf8af851406791ed89",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/handoff.json": "f4094dffd71a661663f34b94874f2a908aaaa7bdf0dbf587a6bee291e8c107c0",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/target-measurements.json": "7a9e6315c90c47adb9ab17037ba3af992bb2c957b7a0f3fcc670c9e229a88142",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/verification.json": "f6a5872b1fbe6f288237a8a6e1913cd76c75861866356b97a40e7a16140e4154",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts": "0d984d19a1677da11c9401541ff5714fe4c634b117ab3c37ff2f262ca86844cc",
+    "frontend/src/world/reference-scene/spatial-v5/build-architecture-inputs.py": "d148343f2e084e453efa3141e90cce4d7c449636418323997fd19f4a8c3860ca",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-source.json": "4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-pin.json": "072e32f442257e54e271c485304779de0ce8ff6f6165c163e23bce1452d1e99b",
+    "frontend/src/world/reference-scene/spatial-v5/architecture.ts": "e4565a2fd80bfcb5ca8756511aa26bd83a66800fdf5cd90d2e345af75d72eab4",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs": "4aa45330ea333b63bf305f735ef279d30d27e80c8e5e09d4c7c1462a12ff4726",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/renderer.ts": "a7e6642c20c6c99e73a84204ece2b323699562486f56047b1f1841e2d8b2b0ed",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/renderer.html": "8047ffefe9e5381bbef8e65a9a63cb08feafc8ca3d442deafdd941328d00f038",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/editable.mjs": "5d23f2093e89096aa7d6ce4a5f96660c3f4d93bcce74196e6c5df3bbd96ef6c8",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/probe.ts": "82cb9e9ce15eb44ed8b5bf6ddfaa4e61ff230e0c378a039bdf6f2bdda304fa63",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/architecture.test.ts": "c45cf1126d6ed32e20e153237c04aacb97da3a9920e40bbe200611535010ab8c",
+    "frontend/public/world/reference-scene-v2/runtime/architecture-v2/source-binding.json": "17ae9c7c16862123a5ba56a4a5b106eed839819aae7187cd6b173f965bd5e336",
+    "frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json": "98484ffd7c3301f7ba3b8cc5221be29d48386ec1dcc2eb67015c2dffc76a5fc0",
+    "frontend/src/world/reference-scene/spatial-v5/build-map-service-inputs.py": "304b53f8aa711adf47cdfaedfc3c76cb9a1f91ec62cd21b3e76b33666e01a3ba",
+    "frontend/src/world/reference-scene/spatial-v5/map-service-source.json": "dbf628ed48d8cd7c85e13c633a48c6bf42b257047b11775b429b968af3714b5f",
+    "frontend/src/world/reference-scene/spatial-v5/map-service-pins.json": "5cc09e3800007d2ef49511d1555e037a87fe2f1ce7e6cc79c4c70165c6be657d",
+    "frontend/src/world/reference-scene/spatial-v5/map-service.ts": "73f6de00c3cd0a7e4d7f6e79669f51f0580a8d743c37a86fd2afad5a526db166",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-service-v1/native.mjs": "bcb28e0aff127402d4e2ed7c9966f947226c52cc2516f7332e61853965980b13",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-service-v1/preview.tsx": "392dba94e75a26058e76991ad1fc5fd3211b3761cde953f9065f4d70150cc2e8",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-service-v1/preview.html": "ef75344e5f7f6dbbc63c565643942cd72fce237aa93f6c0382e810728b0b0681",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-service-v1/editable.mjs": "3fe76e56d0110e69b9c8e40dc797302d716efd02086b0104ff1c031617759b45",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-service-v1/probe.ts": "781572d36abe7bf6ae97881a6af9c8fc0bb26d2ac21e466b9849c06e60e428a4",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-service-v1/label-reference.js": "e9eac2a69e25a35d2f9f037bff4c0bf66b7e3f6ccd9a0f8a6927921779ee1b2f",
+    "frontend/src/features/places/ui/reference-scene/map-service-links.tsx": "3f19f80a84b148fa088889dea5237f62edcd3a7b12069d313a44eaf3a625db93",
+    "frontend/src/app/shell.css": "ddf7accccc638552a902995a6f83c1e84a25158437424144a1c65d4590ba6eea",
+    "frontend/src/shared/styles/base.css": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "frontend/src/app/social-composition/index.ts": "914a68b6c45aa00012bfd85c322bb0dea59e54fc00a3b82c8ffbb4df29949cd4",
+    "frontend/src/app/social-composition/panels.tsx": "2df58c368ec9813f7ee8a7c90ee7c48f8cced00f5bb0011b61150ff11c3e65ba",
+    "frontend/src/app/social-composition/provider.tsx": "21a3c2d3660ffc27f7953436782a6d050bc2cc9fb051f040558c522f77dda219",
+    "frontend/src/app/community-entry/routes.tsx": "3b7cd3b75cb584a727877034a7e57065d5a7a9bdbe2ec104199fcfc7563e2549",
+    "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
+    "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+    "frontend/src/app/shell-chrome/index.tsx": "00deddbac5415012836b8efbafa7d5acfe586c6002076eb6f4cf3b91d817eded",
+    "frontend/src/app/shell-chrome/parade-footer.tsx": "6f3b1f838987dbe470e1c92e589718d60de8d70ff7a1d369b0dc0607df3b9b41",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "3dca2fe0cc22f1dd3b21c1e3fc738d90d4f17c7da6fa09e047729c34ba27679a",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "848f6d00a6738071e890ba83ae13d5033782ac1f399c81270d0042ec2b68f9f7",
+    "frontend/public/world/reference-scene-v2/map-service-labels-v1/build.py": "e28c2ab038dea35431134d632cb4375f8bc2d6fdd36060af1ca05397c5454d66",
+    "frontend/public/world/reference-scene-v2/map-service-labels-v1/verify.py": "aab8175266851304010f0b8f38ad777d53fef112e599a4e979155e92ff63b214",
+    "frontend/public/world/reference-scene-v2/map-service-labels-v1/README.md": "03826bc46207c532739bb9d9be1f75d0f72d7db1c826573c151b777f4488c073",
+    "frontend/public/world/reference-scene-v2/map-service-labels-v1/original-target.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "frontend/public/world/reference-scene-v2/map-service-labels-v1/label-presentation.json": "3869218ae5c1c54c001e533f9a405a7f9fbfe6d5078e765daf51132aeab0aa26",
+    "frontend/public/world/reference-scene-v2/map-service-labels-v1/qualification.json": "95015e7ec024551eacfaed93dfca87cac42421a7ff86106c0f2f4a3f6dcf9cd8",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/atlas.png": "108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/native-atlas.png": "d93cee0b2a1a68f4e8933b5969a5d5fedd5048d10b85559ba95b0847a3a5ec6f",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/layout.json": "7769f6b6ef754f2c64fccc000ce995a4d0d87d1423e87f9bd8aacc4776b2f043",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/scenery.json": "68e23383ac162d2bcfe0a28019a9aa7685da6a81edb8d304c69a8d306b0388dd",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/resource-inputs.json": "0cbb8451b04afe87bdbc16188a438d11d3c774fe1f0d0bf86e0258980a0b9fea",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/provenance.json": "732a9587dc11d09f9e0dae41611f7fcd2c0716ef6b9749062610fa6f1a7cc220",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/atlas.png": "aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/native-atlas.png": "e8cf8eb7e1b073f93ebbeda06b2095390f1508136effa95e33e70fc6c945be59",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/layout.json": "1dabdcd979ae3d64ebfdb834ce0319f25869d20f6d354e69f0f2c2e8d68f619d",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/scenery.json": "11241a53b1ccd5e11a70e920d0a9e90e34213ded5174684fba34daf93e41fe18",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/resource-inputs.json": "da49d22a143ff5d57631b9dc8b8bf5e18f3ef8405ddfe226a710e4b9cb26046e",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/provenance.json": "e59c51c9504d41dc5277b7f6e804732d3afba4c8b25ffd0589f1ec25b2ca35d0",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/atlas.png": "20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/native-atlas.png": "4fb8ea46a44803416abebe436f34c94f6ec1099ccb6d5f6db49d8b923eaac4d3",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/layout.json": "1dbea3beddbba01f62fae1170b3f626a5b65eae138e1aab2c0171c85888b2b9a",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/scenery.json": "60595eceb1207e91eaca34cc5868fadd10d51be3b99aabd344abe7dc99ee7255",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/resource-inputs.json": "ee5e2f4389cde753cdb6a79599dd9aaf6ad708047f8395b59ea81964e8c5406b",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/provenance.json": "a2de9c8598cb3c1b23658169235de63621c621daa2c69eb4b25d49b02a5ac377",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-revenge.svg": "4ff8f0e6a987eb1b917ced7404b77b429e5e787a79defd18d918e2180f9ee8dc",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-parade.svg": "ce7527927525bbf3339d7880a67ddd7dd955832fa50a4f56a605c18b5bdc4566",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-danger.svg": "39b7de9a3b2f10fd5e9f3eca77587b17c124b3cd685c6da6c002fdfdd46262aa"
+  },
+  "artifacts": {
+    "fourth-types.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/fourth-types.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "capturedAt": "2026-11-04T06:08:19.401300+00:00"
+    },
+    "frame-combined.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/frame-combined.log.gz",
+      "bytes": 199,
+      "sha256": "1391b474ec589a069d1a291cab2c66ed421399a46f1cb4fb429d7b2b7c1768b0",
+      "capturedAt": "2026-11-04T06:08:19.402320+00:00"
+    },
+    "frame-footer-reuse.json": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/frame-footer-reuse.json",
+      "bytes": 7027,
+      "sha256": "e04082c6468057f9f4f9d2183a16ce1c533cc5f643c31472b684dc0dca794921",
+      "capturedAt": "2026-11-04T06:08:19.399495+00:00"
+    },
+    "frame-lint.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/frame-lint.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "capturedAt": "2026-11-04T06:08:19.402560+00:00"
+    },
+    "frame-types.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/frame-types.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "capturedAt": "2026-11-04T06:08:19.402449+00:00"
+    },
+    "initial-focused.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/initial-focused.log.gz",
+      "bytes": 197,
+      "sha256": "12eb337451aeedffea4fcc6a915b2c2a2512e27f87501eaf751839562e6ed12c",
+      "capturedAt": "2026-11-04T06:08:19.399882+00:00"
+    },
+    "initial-types.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/initial-types.log.gz",
+      "bytes": 246,
+      "sha256": "09324782e669a87b96e5b3a35e1305866d1b53da34adff7ce2d419b88bfc0378",
+      "capturedAt": "2026-11-04T06:08:19.400152+00:00"
+    },
+    "lint.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/lint.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "capturedAt": "2026-11-04T06:08:19.402089+00:00"
+    },
+    "native-01/action-feed-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-feed-390.png",
+      "bytes": 61470,
+      "sha256": "08ddd67a94edd6de5e56e852fc4807bf2cde485318d6a9ec489ea840e88c7599",
+      "capturedAt": "2026-11-04T06:05:14.954905+00:00"
+    },
+    "native-01/action-gifts-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-gifts-390.png",
+      "bytes": 64246,
+      "sha256": "7ea3ceea686ce0269a7e27bb8c4009df08299f1218a350f8a54fbbdc59d4c192",
+      "capturedAt": "2026-11-04T06:05:15.304613+00:00"
+    },
+    "native-01/action-meet-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-meet-390.png",
+      "bytes": 73400,
+      "sha256": "29abde21f4f5b21f3bef2cbc92ddf2ad488571a8756193bfc4302b5d76559b7c",
+      "capturedAt": "2026-11-04T06:05:15.222576+00:00"
+    },
+    "native-01/action-wall-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-wall-390.png",
+      "bytes": 62077,
+      "sha256": "b7873a37928b512e2bd62a635528ba188391b15f84245dc36ec9022d0f60308f",
+      "capturedAt": "2026-11-04T06:05:15.104791+00:00"
+    },
+    "native-01/editable-danger.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/editable-danger.png",
+      "bytes": 1488314,
+      "sha256": "95cd622bb91f410cfd215efbf2c7736832e635fd759cd737e2cd5be5a48e9dcb",
+      "capturedAt": "2026-11-04T06:05:46.835938+00:00"
+    },
+    "native-01/editable-danger.svg": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/editable-danger.svg",
+      "bytes": 2641388,
+      "sha256": "db5738534be41800c16a20b6d4bef86ebef35aff12b82a0edad83c49635e3ea4",
+      "capturedAt": "2026-11-04T06:05:46.503189+00:00"
+    },
+    "native-01/editable-parade.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/editable-parade.png",
+      "bytes": 1489610,
+      "sha256": "29686e9fa58db0af23e40f52ad701e8f3a2a947fd94c56fe424364f70abb58fb",
+      "capturedAt": "2026-11-04T06:05:46.437260+00:00"
+    },
+    "native-01/editable-parade.svg": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/editable-parade.svg",
+      "bytes": 2658684,
+      "sha256": "a93afdd87d84848efc0d9f1b0e59a903dcffc85d61b6b0364612981a7cfe6908",
+      "capturedAt": "2026-11-04T06:05:46.110775+00:00"
+    },
+    "native-01/editable-revenge.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/editable-revenge.png",
+      "bytes": 1485316,
+      "sha256": "bc2af8f57f236ce1b48ab4b9458f260666d0b00ce88df357b19e8083e22227bd",
+      "capturedAt": "2026-11-04T06:05:46.044965+00:00"
+    },
+    "native-01/editable-revenge.svg": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/editable-revenge.svg",
+      "bytes": 2642246,
+      "sha256": "b17f25e1f40f2f1e0d7548e90c45adca2b42e603b497336ea5b452d97cd0e537",
+      "capturedAt": "2026-11-04T06:05:45.719754+00:00"
+    },
+    "native-01/map-danger-360.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-danger-360.png",
+      "bytes": 361268,
+      "sha256": "a66f426a14ed82cd79c112f0074f77d5ef3ecd9ae1c726eb8413b37d55e2b396",
+      "capturedAt": "2026-11-04T06:05:30.719462+00:00"
+    },
+    "native-01/map-danger-390-h754.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-danger-390-h754.png",
+      "bytes": 408897,
+      "sha256": "6db6aad27f08217a3306d8942aa76d2a079ef7162b8158293aaba3fa338c1850",
+      "capturedAt": "2026-11-04T06:05:22.154856+00:00"
+    },
+    "native-01/map-danger-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-danger-390.png",
+      "bytes": 410308,
+      "sha256": "e49978115643047240bd45796a5ff99f6f8ecfb0863e1fbdc5853f38cb902ee0",
+      "capturedAt": "2026-11-04T06:05:21.120592+00:00"
+    },
+    "native-01/map-danger-430.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-danger-430.png",
+      "bytes": 482478,
+      "sha256": "5fb1292f9af7934a0136116641c31321b4c4ce4d87b922e980d69ab4e004d96d",
+      "capturedAt": "2026-11-04T06:05:40.071095+00:00"
+    },
+    "native-01/map-parade-360.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-360.png",
+      "bytes": 361118,
+      "sha256": "26871060ff95555d3258fab486812ed8927bb64ab94f544018aad108593cfa37",
+      "capturedAt": "2026-11-04T06:05:24.384704+00:00"
+    },
+    "native-01/map-parade-390-h754.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-390-h754.png",
+      "bytes": 408790,
+      "sha256": "0b52e8502a5efa0339f640ff526e61e0a72b51a7ba49a83f282d82a3299c79ba",
+      "capturedAt": "2026-11-04T06:05:15.518352+00:00"
+    },
+    "native-01/map-parade-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-390.png",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01",
+      "capturedAt": "2026-11-04T06:05:14.291358+00:00"
+    },
+    "native-01/map-parade-430.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-430.png",
+      "bytes": 483148,
+      "sha256": "b76e8a3fe2c7c2b1104e6642ae94046cac1f20f312b794a7f4df6e8bedfb118c",
+      "capturedAt": "2026-11-04T06:05:33.781232+00:00"
+    },
+    "native-01/map-revenge-360.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-revenge-360.png",
+      "bytes": 360466,
+      "sha256": "dca6b8d318b510c55cad00ea9b1df08bc3a1d537722e34c9651f609871e292fd",
+      "capturedAt": "2026-11-04T06:05:27.565018+00:00"
+    },
+    "native-01/map-revenge-390-h754.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-revenge-390-h754.png",
+      "bytes": 408227,
+      "sha256": "430b7e74efc3e9b109dfaf365ed76e22ab6f576bccc3bf537cc2ebb3f034ae07",
+      "capturedAt": "2026-11-04T06:05:18.899833+00:00"
+    },
+    "native-01/map-revenge-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-revenge-390.png",
+      "bytes": 409286,
+      "sha256": "d936ca969414b7c5fb8fcbfc8775b2e54c76962920070ca0569b375fd5f0f4ae",
+      "capturedAt": "2026-11-04T06:05:17.788526+00:00"
+    },
+    "native-01/map-revenge-430.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-revenge-430.png",
+      "bytes": 481970,
+      "sha256": "6b0bb1835adc8dd2326d22a5dedf4ac264f62f33582d409e10024b1ac63e9c43",
+      "capturedAt": "2026-11-04T06:05:36.898425+00:00"
+    },
+    "native-01/marker-closed-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/marker-closed-390.png",
+      "bytes": 409101,
+      "sha256": "5f795ff39ea6d6914bd800088ee8357f1843ab5100ef386b3b20b507148d9ba9",
+      "capturedAt": "2026-11-04T06:05:43.246150+00:00"
+    },
+    "native-01/marker-unavailable-390.png": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/marker-unavailable-390.png",
+      "bytes": 410188,
+      "sha256": "44f0eabadd927fca4b50a68b62a158f4f7ec4555d53b7a2e664b939a37468575",
+      "capturedAt": "2026-11-04T06:05:45.636404+00:00"
+    },
+    "native-01/native.json": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/native.json",
+      "bytes": 284696,
+      "sha256": "56783b58d6ddcf180c22edf57220da4a2702d06e7de4e362505cd3232f09d1ad",
+      "capturedAt": "2026-11-04T06:05:58.930348+00:00"
+    },
+    "native-01.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01.log.gz",
+      "bytes": 1256,
+      "sha256": "ea63bac2b9d481dac880d0e5decd6c20ddaa7a0ba461d98dbbc68c77ebe8a886",
+      "capturedAt": "2026-11-04T06:08:19.402716+00:00"
+    },
+    "regressions.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/regressions.log.gz",
+      "bytes": 311,
+      "sha256": "d59f5f0ef5e9955da4065d20789a9fc697b47577fcc388d8aefae5d64f923d94",
+      "capturedAt": "2026-11-04T06:08:19.401515+00:00"
+    },
+    "root-corrected.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/root-corrected.log.gz",
+      "bytes": 198,
+      "sha256": "db3bcf4898c2a6b2bff396ea235fc3c5a6f0696c1d28b6b7a505fdfe5e22d102",
+      "capturedAt": "2026-11-04T06:08:19.401982+00:00"
+    },
+    "root.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/root.log.gz",
+      "bytes": 1147,
+      "sha256": "b726250fdf3f79b68d4e38d3ef879227cb3f6d04bfe59917630cb35a50a72904",
+      "capturedAt": "2026-11-04T06:08:19.401768+00:00"
+    },
+    "second-focused.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/second-focused.log.gz",
+      "bytes": 199,
+      "sha256": "2a5443bd9c346dadc98c85f2e57ffdedcc82b05eb74f6144c97df03762e4a9b3",
+      "capturedAt": "2026-11-04T06:08:19.400432+00:00"
+    },
+    "second-types.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/second-types.log.gz",
+      "bytes": 246,
+      "sha256": "09324782e669a87b96e5b3a35e1305866d1b53da34adff7ce2d419b88bfc0378",
+      "capturedAt": "2026-11-04T06:08:19.400689+00:00"
+    },
+    "third-focused.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/third-focused.log.gz",
+      "bytes": 199,
+      "sha256": "52a0b908140c1eb23098ef2f98e4384e68a7e731e394de69aedc57609d4ca9b0",
+      "capturedAt": "2026-11-04T06:08:19.400947+00:00"
+    },
+    "third-types.log.gz": {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/third-types.log.gz",
+      "bytes": 649,
+      "sha256": "2dc5e34dae41ad4da3e663680dfd7273eaba820fbbaadd717c06d0a1d76b47f4",
+      "capturedAt": "2026-11-04T06:08:19.401204+00:00"
+    }
+  },
+  "results": {
+    "mapCases": 9,
+    "strictDifferentChannels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "featureActions": 36,
+    "reducedHeightCases": 3,
+    "placeStatusCases": 2,
+    "editableObjects": [
+      51,
+      51,
+      51
+    ],
+    "referencePlacesTests": 288,
+    "rootTests": 46,
+    "footerChromeTests": 19,
+    "typescript": 0,
+    "lint": 0
+  },
+  "privacy": "Only explicit synthetic fixture identity/map/positions. Saved MAP and destination frames visually inspected; no credentials/tokens/real account names/real positions in output. Source originals remain unchanged.",
+  "limits": [
+    "Synthetic map7005 is not an allocated backend release",
+    "No invented REVIEWED provenance; optional skins remain guarded",
+    "Desktop Chrome viewports and reduced height, not iOS Safari/Android device or actual software keyboard/notch acceptance",
+    "Destination smoke checks actual route and mounted production panel or its honest guard; no invented service content/editor availability",
+    "No live Auth/server/multiuser/physical/fidelity or release admission",
+    "Original JPEG landscape density, roof/massing proportions and palette distribution remain different; strict composition parity is not full target fidelity.",
+    "Postcapture0ee restores one standalone titlebar border property. Raw capture remains6ca; exact normalization and embedded override provenance in frame-footer-reuse.json. No recapture or standalone claim."
+  ],
+  "resources": {
+    "samples": [
+      {
+        "freeBytes": 33278574592,
+        "outputBytes": 0,
+        "headlessChromeMains": 0
+      },
+      {
+        "freeBytes": 33276313600,
+        "outputBytes": 1307015,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33243324416,
+        "outputBytes": 30718133,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33241858048,
+        "outputBytes": 31542197,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33241014272,
+        "outputBytes": 32378520,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33239539712,
+        "outputBytes": 32739651,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33251131392,
+        "outputBytes": 33100117,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33246556160,
+        "outputBytes": 33461385,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33249226752,
+        "outputBytes": 33944557,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33254363136,
+        "outputBytes": 34426527,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33228234752,
+        "outputBytes": 34909005,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33245081600,
+        "outputBytes": 35272490,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33259798528,
+        "outputBytes": 35682678,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33254584320,
+        "outputBytes": 39810240,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33250390016,
+        "outputBytes": 43958534,
+        "headlessChromeMains": 1
+      },
+      {
+        "freeBytes": 33246277632,
+        "outputBytes": 48088236,
+        "headlessChromeMains": 1
+      }
+    ],
+    "minimumFreeBytes": 33228234752,
+    "maximumNewBytes": 48088236
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "ownedCacheAndBrowserTempRemoved": true,
+    "borrowedDependencyLinkRemoved": true
+  },
+  "sourceEquivalentReuse": {
+    "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/frame-footer-reuse.json",
+    "bytes": 7027,
+    "sha256": "e04082c6468057f9f4f9d2183a16ce1c533cc5f643c31472b684dc0dca794921",
+    "capturedAt": "2026-11-04T06:08:19.399495+00:00"
+  }
+}
