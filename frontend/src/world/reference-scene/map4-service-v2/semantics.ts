@@ -1,5 +1,5 @@
 /** Product semantics are authored by the consumer, never taken from decorative art. */
-export const compositionVersion = 'map-density-derived-v1'
+export const compositionVersion = 'map-roof-street-derived-v2'
 export const serviceSemantics = Object.freeze(([
   { key: 'main_stage', label: 'MAIN STAGE', icon: 'stage', intent: null, path: null },
   { key: 'plaza', label: 'PLAZA', icon: null, intent: null, path: null },

@@ -1,0 +1,283 @@
+{
+  "task": "FE19-MAP-ROOF-STREET-UPTAKE-01",
+  "status": "MOCK_READY_PUBLICATION_PENDING",
+  "publisher": "Root153 routing to current designated serialized publishing developer (Root1fc)",
+  "canonicalIntake": "2492e35bb9fb61380bf97fa936983ec16c0722f4",
+  "artistSource": "da33467cd084ecba071244a1939b6217f4b0de02",
+  "artistPublished": "efa9d95653de7595273c903741fb283bcfe3d90f",
+  "qualifiedProductCandidate": "6358763fc9387421235e0fe3df27fccf138efa07",
+  "qualifiedNativeCandidate": "7468f1fe03f6fe667f41975467fabb385caa218a",
+  "presentationHash": "sha256:348f1969deeaca05c16087f7ae5c7060f49c3c8fbd934ffc7aef195c937f2d24",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility-admission.json",
+      "bytes": 1339,
+      "sha256": "4073fb5b774c27028b1d47617bad041f10318b05ce85ae658ad46e5001949f14"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility-intake.json",
+      "bytes": 315,
+      "sha256": "3e0bfad9d41cf99f92d0175f519452d369f5b7152e8f65fab2b54de8ad30a422"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility01-controller.jsonl",
+      "bytes": 796,
+      "sha256": "08e37a0cd8d7a44c278d266e62698a422b4237cd0416ef80b30f58153412808e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility01/command-00.log",
+      "bytes": 249,
+      "sha256": "5ec30fdf619e933271709f425421d6612d25959ecaa44e8e9588ca556e532ef0"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility01/command-01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility01/guardian.jsonl",
+      "bytes": 1723,
+      "sha256": "dcffbd8ed074332c09f9039c591b93cb716a22d9cedc039a2cce647e0e99b009"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/compatibility01/release.json",
+      "bytes": 518,
+      "sha256": "43b7259b236119b3c457000101d903eb326dcefc8c0e45051d9d9da37c742285"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/intake.json",
+      "bytes": 1810,
+      "sha256": "fbf36afc379370616ff8da4dd0278515f15e0ed0bdad3079ffe354d2886e3f6c"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native-assessment.json",
+      "bytes": 5014,
+      "sha256": "a76c0c72a3e88be607b7d92aa0ef1f9a4d0233ca57f4ebec639a625a655b04af"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01-controller.jsonl",
+      "bytes": 1551,
+      "sha256": "3c37c31ba97f86b9cc007d8b63cb7b72a24fdb118915e0a0f882c54ea24c378e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/command-00.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/forced-focus-parade-390.png",
+      "bytes": 220108,
+      "sha256": "3736c4a73060e421a9113857da620e3abf0cba6f41a8e984e020a39bfffcdc69"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/guardian.jsonl",
+      "bytes": 1292,
+      "sha256": "fa62b2f09af961bb3183f16aa33d73dc9de9b44df23efa1aa40fa61f34228258"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/release.json",
+      "bytes": 695,
+      "sha256": "7a473e0079b17e370d1c2f60ab2ee5c789eab70b206736fbbf72804e9f900ac9"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/report.json",
+      "bytes": 220834,
+      "sha256": "15c9d2db309eadedd9fdef2dae7b1adcfbe18c180b10f17a909902aee6739c64"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/roof-street-danger-430.png",
+      "bytes": 263175,
+      "sha256": "93fc4675ed12af27c9b0e89c9b713ca1e764dcd8babdacea9649f17a98565c7a"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/roof-street-parade-390.png",
+      "bytes": 224940,
+      "sha256": "0ebdec1326e19b08095ddb82123a1acd3467e5d8e045f30e1002a3ae9cddda75"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/native01/roof-street-revenge-360.png",
+      "bytes": 199058,
+      "sha256": "7a4c4c59075ed2a86bdff4392adcc8f01ed813b89d1b9cf50493ff5214a5c2ae"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/readset.json",
+      "bytes": 500719,
+      "sha256": "73bfdc27ed3a4c64cd6ce0869839c888ab64657fb77901595d10cbcf05dca6a8"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01-controller.jsonl",
+      "bytes": 831,
+      "sha256": "599eb19e3f6b97f5c25cbb1158422f7904b47012d053b7b2f80941afb66278dc"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/command-00.log",
+      "bytes": 1936,
+      "sha256": "cf058ddb75ac78b8080992655d07757af6735762ba0915554fd5fced75f90aac"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/command-01.log",
+      "bytes": 250,
+      "sha256": "1ed21f750913880b309eef858d68cc3ea292e25af6ab6b120c8ab9f7477a6e9d"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/command-02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/command-03.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/command-04.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/guardian.jsonl",
+      "bytes": 2889,
+      "sha256": "89c5130f33b2723343e525559578bd25e57d38d4daf24327682b7873308c1be9"
+    },
+    {
+      "path": "docs/mcr/evidence/map-roof-street-uptake/source01/release.json",
+      "bytes": 571,
+      "sha256": "019d53bd8b374ae6f53d7bcf58bfff2c7016e467c3bc1ce6107afbb6e076c673"
+    },
+    {
+      "path": "docs/mcr/frontend/map-roof-street-uptake.md",
+      "bytes": 11694,
+      "sha256": "7a7f712cbec580611264fb723b67d91dc49cc8a2a2074b7f9559dece4cfcd707"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "bytes": 3499,
+      "sha256": "9e63596eaa583fbbb2a6b20962af448e4963a98d65d328092073dad97f25f7f6"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "bytes": 7446,
+      "sha256": "49c67b24054ba703fd514f17a850fdc69681cffa969f1e381ee6294e214d1459"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "bytes": 6719,
+      "sha256": "3b14fe9dc9614e03715cb20a7201617a05b0604ff3eb99641e4de34d3a812eb9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/compatibility-vitest.config.ts",
+      "bytes": 458,
+      "sha256": "ec1431c28c9c89ee974f0172f7df34bacc1dc30ec47b2b89ce2933be14d050b7"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/controller.py",
+      "bytes": 6851,
+      "sha256": "f0850e457886cb0e56b32432484f4cde4c1e3d9f3fa043ed46bc7fe6911804f7"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/guardian.py",
+      "bytes": 10227,
+      "sha256": "de6a3e9c0467b1e095960c6736142c8e8b09d9c6292339eff59e9ac5e9c9c752"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/native.mjs",
+      "bytes": 20695,
+      "sha256": "79492aa6e47c772c667a6c93d59dcb7f20915cccd774293818d7be1ab68b9bf9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/preview.html",
+      "bytes": 325,
+      "sha256": "7e9e391e4339ff738b915f3aa2e06a467269a31e30eab825fddf9209d8531fc4"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/preview.ts",
+      "bytes": 1287,
+      "sha256": "cde383b4571b2f22e9f5701288e33f9b6047d326767ce297668406087449103b"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/register.mjs",
+      "bytes": 2646,
+      "sha256": "3801d882efe39dcd1b98441d40009eb72452df53bdaf9d7e56617e7791b45fb7"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/vitest.config.ts",
+      "bytes": 610,
+      "sha256": "3a3e3267702520df3d397e3b648e470a6f5c404f95fdd2e148e95973534a8f43"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map-density-uptake/adoption.test.ts",
+      "bytes": 4117,
+      "sha256": "57b7e9f86bf3c60c6d1d2dca72d4c0a84edc8c553c4477ef8c38b90de24fd6e7"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map-roof-street-uptake/adoption.test.ts",
+      "bytes": 2814,
+      "sha256": "7850ee24f81db20c8608e7683ea8fe4eb64a0fa92047e7f00fb13e6c65458b0b"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "bytes": 7032,
+      "sha256": "5195a30009efb6892079f57249f94ca6f6c1db103c216d5a59ffc3c63ac8ef1b"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "bytes": 157579,
+      "sha256": "d9e401f6254df05530174b04b16655aa5f89fed68fa02c90f6a653e6a8010e91"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "bytes": 454,
+      "sha256": "34ad41f0e38b3148232d6b95c348b5f40e5d67536cc096120e793bbd6bcf746f"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "bytes": 1121,
+      "sha256": "b5fa8509a316c07608a358889cc7599b328437f2d80c6e5f11876e72401fabd9"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "bytes": 1065,
+      "sha256": "c722a2636c090255234863679f7d143c68e949ab98dd381ff7416f77b2f062d1"
+    }
+  ],
+  "manifestSelfExclusion": "This publication-packet.json does not hash itself; publish it with these exact owned postimages.",
+  "validation": [
+    "source01 all5commands0; registration/pins+23tests/3files+fullnonincrementaltypes+scopedlint+syntax",
+    "native01 exact3changedactualmainHTTP/C05eras/widthsPASS plus4owner-inspectedPNGs and World/canvas/socket/privacy/controls proof",
+    "compatibility01 exact10cases/1file +2filedenylint commands0; bothindependentFULL0; no product/nativeinput changes",
+    "Existingdensityv1 functional eight-route/photo-refusal/70-source proof reused where unchanged; sourceartist12/build/previews not replayed"
+  ],
+  "frozen": [
+    "docs/source",
+    "Density-v1 original implementation/source/evidence branch and published pack; current importing adoption test has exact two v2 expectation updates",
+    "Exactroof/streetv2sourcepack",
+    "World/map/theme/geometry/character/C06authority",
+    "CSS/sharedcomposition/manifests/lockfiles"
+  ],
+  "openAcceptance": [
+    "WholeFE19 exactreference fidelity",
+    "Actualdevices",
+    "Liveoperator/admission/realserverflows",
+    "AuthoritativeMap5binding",
+    "Physicalvenueprovenance/photos",
+    "FutureFE41 policy and v3 combinedart adoption"
+  ],
+  "provenance": {
+    "driverSource": "frontend/src/app/world-entry/__tests__/map-density-uptake/native.mjs",
+    "driverSourceCommit": "d95b84b1b1cb53d87661a744ce7ea3d19bc8bf78",
+    "destination": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/native.mjs",
+    "newDependencies": []
+  },
+  "qualifiedNativeReadsetSha256": "sha256:079bdafe3b204333ef25b69c8fb1c777948f6e845bc89dcf7d8257dacf161296",
+  "qualifiedCompatibilityCandidate": "e21672402e000addf316a91c3fb04ed55c41ca53",
+  "readsetSha256": "sha256:73bfdc27ed3a4c64cd6ce0869839c888ab64657fb77901595d10cbcf05dca6a8",
+  "supersedesHeldUnpublishedHandoff": "110068af2ebd229ec6244745008b08b4a3a51222",
+  "temporaryExistingFileGrant": {
+    "intake": "docs/mcr/evidence/map-roof-street-uptake/compatibility-intake.json",
+    "path": "frontend/src/world/reference-scene/map-density-uptake/adoption.test.ts",
+    "changes": "Exactly two expectation literals: active version and mixed-era v2 path",
+    "release": "Sole temporary writer released with committed handoff; other eight consumer hunks remain STOP"
+  },
+  "totalPublishedPathsIncludingSelf": 47,
+  "rawEvidenceWhitespace": "Whole-range git diff --check flags the preserved source01/command-01.log trailing blank line; raw tool output remains byte-exact. Authored frontend and document prose are checked separately."
+}

@@ -1,0 +1,41 @@
+{
+  "base": "2492e35bb9fb61380bf97fa936983ec16c0722f4",
+  "artistSource": "da33467cd084ecba071244a1939b6217f4b0de02",
+  "artistPublished": "efa9d95653de7595273c903741fb283bcfe3d90f",
+  "previousConsumerSource": "d95b84b1b1cb53d87661a744ce7ea3d19bc8bf78",
+  "previousConsumerPublished": "f0fae9befd1dbba558beb865a3ccb8c32afe1fde",
+  "preimages": [
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "sha256": "f778dfcca01995277bfaf840e63c0aa3c11af7bbfda586acab9efc13e8f60cdc"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "sha256": "971c9a94cd1aa01c771f3defa8cede70754c87f43eb4f7fb0ed4cf98921096eb"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "sha256": "aef5546ae8b62c4dfcbf6dfb5b22e1cd2afb910ac062a713693329de9c167043"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "sha256": "74e76b0d1008ba6817b1178dffd2bfb0d0b81e28ece77eb5376eed06bc647880"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "sha256": "e39864e8ff94c66cc569d62947fd39aee638067920b107b3b650b975a0a4af93"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "sha256": "a769685492be64f41caa41d40a8d321985608984c695752b85ca7b7058d23b57"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "sha256": "18864f1f014a44087966f611a78f399bc79f867c55cbc6d5ed3e78451896850c"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "sha256": "a5480db914fd9e798ee5d3722721a61985db65896acb5dfc9312728d101ca362"
+    }
+  ]
+}

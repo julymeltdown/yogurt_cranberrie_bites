@@ -1,0 +1,36 @@
+{
+  "lease": "FE19-V2-COMPATIBILITY-SOURCE-20261104T2130Z",
+  "candidate": "e21672402e000addf316a91c3fb04ed55c41ca53",
+  "readsetCount": 2521,
+  "readsetSha256": "73bfdc27ed3a4c64cd6ce0869839c888ab64657fb77901595d10cbcf05dca6a8",
+  "preAcceptDecline": {
+    "workloadStarted": false,
+    "guardStarted": false,
+    "resource0": true,
+    "reason": "Stale conservative OTHER4.125GiB failed afterALL9; no clock accepted",
+    "subsequentObservationAt": "2026-11-04T21:09:16.631892+00:00",
+    "freeBytes": 13207756800,
+    "otherNewBytes": 4429185024,
+    "afterAllFreeBytes": 8644354048
+  },
+  "actualAccept": {
+    "at": "2026-11-04T21:11:47.677868+00:00",
+    "workDeadline": "2026-11-04T21:12:47.677868+00:00",
+    "fullDeadline": "2026-11-04T21:13:17.677868+00:00",
+    "predecessorFull": "2026-11-04T21:07:54.011847Z",
+    "freeBytes": 23075049472,
+    "otherNewBytes": 2147483648,
+    "actualOtherClaimsUpper": 1955727700,
+    "afterAllFreeBytes": 20793348096,
+    "sourceUpper": 2,
+    "globalUpper": 3,
+    "browserUpper": 0,
+    "claims": "Auth232 eligible1GiB; Worldhooks B source128MiB; ordinary747768148; D0; obsolete holds closed"
+  },
+  "cleanupIndependentOwnerCheck": {
+    "controllersAndSeenPidsAbsent": true,
+    "linkTmpAbsent": true,
+    "resources": 0,
+    "literalBothFullSentAllocatorBeforeDocumentation": true
+  }
+}

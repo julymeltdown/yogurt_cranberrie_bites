@@ -41,13 +41,13 @@ function rectangle(value: unknown): Rect {
 }
 export function validateCompositionRegistration(value: CompositionRegistration) {
   requireMap(value.version === compositionVersion && sha(value.presentationHash)
-    && value.layout.path === 'world/map-density-derived-v1/layout.json'
+    && value.layout.path === 'world/map-roof-street-derived-v2/layout.json'
     && integer(value.layout.bytes, 524_288) && sha(value.layout.sha256))
   const themes = new Set<string>()
   requireMap(value.assets.length === 3)
   for (const asset of value.assets) {
     requireMap(Object.hasOwn(map4ThemeHashes, asset.themeId) && !themes.has(asset.themeId)
-      && asset.path === `world/map-density-derived-v1/${asset.themeId.toLowerCase()}-scene.png`
+      && asset.path === `world/map-roof-street-derived-v2/${asset.themeId.toLowerCase()}-scene.png`
       && integer(asset.bytes, 2_097_152) && sha(asset.sha256) && asset.width === 768 && asset.height === 1296 && asset.mime === 'image/png')
     themes.add(asset.themeId)
   }

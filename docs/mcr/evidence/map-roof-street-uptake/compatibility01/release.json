@@ -1,0 +1,25 @@
+{
+  "type": "FULL",
+  "lease": "FE19-V2-COMPATIBILITY-SOURCE-20261104T2130Z",
+  "mode": "source",
+  "at": "2026-11-04T21:11:49.797341+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 3,
+    "rssBytes": 274595840,
+    "newBytes": 37569583,
+    "tmpBytes": 145,
+    "wholeBytes": 1707605005
+  },
+  "minimumFreeBytes": 23074918400,
+  "finalFreeBytes": 23064166400,
+  "seenPids": [
+    8154,
+    8310
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

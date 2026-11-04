@@ -19,7 +19,7 @@ it('replaces presentation only, keeping exact ART06 authority, paths, labels and
   }
   expect(next.decorations).toHaveLength(old.decorations.length + 15)
   for (const row of old.decorations) expect(next.decorations.find((d: { id: string }) => d.id === row.id)).toEqual(row)
-  expect(model.registration.version).toBe('map-density-derived-v1')
+  expect(model.registration.version).toBe('map-roof-street-derived-v2')
   expect(await compositionDigest(model.registration)).toBe(model.registration.presentationHash)
   expect(model.registration.presentationHash).not.toBe(priorHash)
 })
@@ -42,7 +42,7 @@ it.each(['old-path', 'old-version', 'external-path', 'mixed-era'] as const)('rej
   if (kind === 'old-path') Object.assign(pin.layout, { path: 'world/map-reference-composition-v1/layout.json' })
   if (kind === 'old-version') Object.assign(pin, { version: 'map4-reference-composition-v1' })
   if (kind === 'external-path') Object.assign(pin.assets[0]!, { path: 'https://foreign.test/revenge-scene.png' })
-  if (kind === 'mixed-era') Object.assign(pin.assets[0]!, { path: 'world/map-density-derived-v1/parade-scene.png' })
+  if (kind === 'mixed-era') Object.assign(pin.assets[0]!, { path: 'world/map-roof-street-derived-v2/parade-scene.png' })
   expect(() => validateCompositionRegistration(pin)).toThrow()
 })
 

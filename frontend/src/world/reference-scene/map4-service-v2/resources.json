@@ -1,34 +1,34 @@
 {
-  "version": "map-density-derived-v1",
+  "version": "map-roof-street-derived-v2",
   "layout": {
-    "path": "world/map-density-derived-v1/layout.json",
-    "bytes": 107019,
-    "sha256": "sha256:971c9a94cd1aa01c771f3defa8cede70754c87f43eb4f7fb0ed4cf98921096eb"
+    "path": "world/map-roof-street-derived-v2/layout.json",
+    "bytes": 157579,
+    "sha256": "sha256:d9e401f6254df05530174b04b16655aa5f89fed68fa02c90f6a653e6a8010e91"
   },
   "assets": [
     {
       "themeId": "REVENGE",
-      "path": "world/map-density-derived-v1/revenge-scene.png",
-      "bytes": 726491,
-      "sha256": "sha256:7d657d5cd22ceafa4edf4bff7df5b75843927208ae8a8704747c4a645b51e071",
+      "path": "world/map-roof-street-derived-v2/revenge-scene.png",
+      "bytes": 709817,
+      "sha256": "sha256:5669a7861851a1b95bd1f2ad48e222f2e73dcd471622405f48000a33419f1606",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
     },
     {
       "themeId": "PARADE",
-      "path": "world/map-density-derived-v1/parade-scene.png",
-      "bytes": 744044,
-      "sha256": "sha256:a8ac1c806adfc3cd36af21c655131b3c19e80034528632c23001eb49adcae9e1",
+      "path": "world/map-roof-street-derived-v2/parade-scene.png",
+      "bytes": 727171,
+      "sha256": "sha256:d820853d14efe04f84cd8b8f08da5bc8c67850f3b19c43170b237207583a93c2",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
     },
     {
       "themeId": "DANGER",
-      "path": "world/map-density-derived-v1/danger-scene.png",
-      "bytes": 733466,
-      "sha256": "sha256:b54be823fe26b659b7223f4d2baacbdc2a232d8b1b78926540b87e790a05ec1b",
+      "path": "world/map-roof-street-derived-v2/danger-scene.png",
+      "bytes": 716634,
+      "sha256": "sha256:b4dbf3f41e392e2f37ce78f907336055938c4b6611925c79ad13f41b15d2e931",
       "width": 768,
       "height": 1296,
       "mime": "image/png"

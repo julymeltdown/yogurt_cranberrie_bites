@@ -11,7 +11,7 @@ export async function compositionFixture() {
     const bytes = new Uint8Array(33), view = new DataView(bytes.buffer)
     bytes.set([137, 80, 78, 71, 13, 10, 26, 10]); view.setUint32(8, 13)
     bytes.set([73, 72, 68, 82], 12); view.setUint32(16, 768); view.setUint32(20, 1296); bytes[30] = i
-    const path = `world/map-density-derived-v1/${themeId.toLowerCase()}-scene.png`; images.set(path, bytes)
+    const path = `world/map-roof-street-derived-v2/${themeId.toLowerCase()}-scene.png`; images.set(path, bytes)
     return { themeId, path, bytes: bytes.byteLength, sha256: await sha256(bytes), width: 768 as const, height: 1296 as const, mime: 'image/png' as const }
   }))
   const rows = [
@@ -36,7 +36,7 @@ export async function compositionFixture() {
   }
   const layoutBytes = new TextEncoder().encode(JSON.stringify(document))
   const registration = { version: compositionVersion,
-    layout: { path: 'world/map-density-derived-v1/layout.json', bytes: layoutBytes.byteLength, sha256: await sha256(layoutBytes) },
+    layout: { path: 'world/map-roof-street-derived-v2/layout.json', bytes: layoutBytes.byteLength, sha256: await sha256(layoutBytes) },
     assets, presentationHash: 'sha256:' + '0'.repeat(64) } satisfies CompositionRegistration
   registration.presentationHash = await compositionDigest(registration)
   return { document, registration, images, layoutBytes, model: createCompositionModel(document, registration) }

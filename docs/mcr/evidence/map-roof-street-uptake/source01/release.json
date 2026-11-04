@@ -1,0 +1,29 @@
+{
+  "type": "FULL",
+  "lease": "FE19-ROOF-STREET-UPTAKE-SOURCE-20261104T2055Z",
+  "mode": "source",
+  "at": "2026-11-04T20:49:16.391474+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 1825079296,
+    "newBytes": 37775557,
+    "tmpBytes": 1363121,
+    "wholeBytes": 1676554347
+  },
+  "minimumFreeBytes": 13889032192,
+  "finalFreeBytes": 16209350656,
+  "seenPids": [
+    61872,
+    62078,
+    62090,
+    62118,
+    63421,
+    63436
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

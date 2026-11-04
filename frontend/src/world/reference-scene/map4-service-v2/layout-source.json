@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "map-density-derived-v1",
-  "recipeRevision": "lawn-shoulders-and-junction-banks-01",
+  "version": "map-roof-street-derived-v2",
+  "recipeRevision": "connected-roofs-and-readable-paving-01",
   "coordinateSpace": "MAP_ILLUSTRATION_ONLY",
   "renderMode": "full-composition",
   "dimensions": {
@@ -155,27 +155,27 @@
   "assets": [
     {
       "themeId": "REVENGE",
-      "path": "world/map-density-derived-v1/revenge-scene.png",
-      "bytes": 726491,
-      "sha256": "sha256:7d657d5cd22ceafa4edf4bff7df5b75843927208ae8a8704747c4a645b51e071",
+      "path": "world/map-roof-street-derived-v2/revenge-scene.png",
+      "bytes": 709817,
+      "sha256": "sha256:5669a7861851a1b95bd1f2ad48e222f2e73dcd471622405f48000a33419f1606",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
     },
     {
       "themeId": "PARADE",
-      "path": "world/map-density-derived-v1/parade-scene.png",
-      "bytes": 744044,
-      "sha256": "sha256:a8ac1c806adfc3cd36af21c655131b3c19e80034528632c23001eb49adcae9e1",
+      "path": "world/map-roof-street-derived-v2/parade-scene.png",
+      "bytes": 727171,
+      "sha256": "sha256:d820853d14efe04f84cd8b8f08da5bc8c67850f3b19c43170b237207583a93c2",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
     },
     {
       "themeId": "DANGER",
-      "path": "world/map-density-derived-v1/danger-scene.png",
-      "bytes": 733466,
-      "sha256": "sha256:b54be823fe26b659b7223f4d2baacbdc2a232d8b1b78926540b87e790a05ec1b",
+      "path": "world/map-roof-street-derived-v2/danger-scene.png",
+      "bytes": 716634,
+      "sha256": "sha256:b4dbf3f41e392e2f37ce78f907336055938c4b6611925c79ad13f41b15d2e931",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -5470,5 +5470,2320 @@
     "canonicalClearancePx": 34,
     "architecturePolicy": "UNCHANGED_NO_OVERPAINT",
     "foliagePolicy": "WHOLE_ORIGINAL_RGBA_UNIFORM_NEAREST_GLOBAL_FOOT_ORDER"
+  },
+  "roofStreetDerivation": {
+    "sourceCommit": "7acfac3aed91f1eb06fa48eee63ce3da1431fadc",
+    "canonicalBase": "7ba6de456949136c33a068bdeee8bebb8e7822fd",
+    "baselinePins": [
+      {
+        "path": "frontend/public/world/map-density-derived-v1/README.md",
+        "bytes": 2973,
+        "sha256": "sha256:96098bb840fb4e047d5149571b2a6e64723c516c5784271042a41d1ff464c7ff"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/build.py",
+        "bytes": 16809,
+        "sha256": "sha256:4f4f6eede3413d7fb0502103f543a563fb88e69e26600fd177c71648d2ff7539"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/layout.json",
+        "bytes": 107019,
+        "sha256": "sha256:971c9a94cd1aa01c771f3defa8cede70754c87f43eb4f7fb0ed4cf98921096eb"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/source-provenance.json",
+        "bytes": 51807,
+        "sha256": "sha256:66b18e7c0f235f46828b87811ba344da3a4dc1c6025ae5622493026444b9d617"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/revenge-scene.png",
+        "bytes": 726491,
+        "sha256": "sha256:7d657d5cd22ceafa4edf4bff7df5b75843927208ae8a8704747c4a645b51e071"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/parade-scene.png",
+        "bytes": 744044,
+        "sha256": "sha256:a8ac1c806adfc3cd36af21c655131b3c19e80034528632c23001eb49adcae9e1"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/danger-scene.png",
+        "bytes": 733466,
+        "sha256": "sha256:b54be823fe26b659b7223f4d2baacbdc2a232d8b1b78926540b87e790a05ec1b"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/revenge-scene.svg",
+        "bytes": 1909263,
+        "sha256": "sha256:40b1bbe84a3857861f4079563ef5cc10b80f2e564f1902d008c1bcfef8203aa2"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/parade-scene.svg",
+        "bytes": 1941711,
+        "sha256": "sha256:b66ed2c2c4ad70a109e3a5f2b4d9bb26c5ed849f05e1b800a1b9ba1e30ef4b7d"
+      },
+      {
+        "path": "frontend/public/world/map-density-derived-v1/danger-scene.svg",
+        "bytes": 1911475,
+        "sha256": "sha256:197249431cccf8b50741f494da88f1283140cc28ee4a70141869ce5a35da57b1"
+      }
+    ],
+    "roofPlansByTheme": {
+      "REVENGE": [
+        {
+          "id": "map_only_edge_venue_01",
+          "renderedRect": [
+            260,
+            -51,
+            201,
+            148
+          ],
+          "roofDomain": [
+            260,
+            -51,
+            201,
+            107
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_01_volume_0",
+              "rect": [
+                0,
+                15,
+                86,
+                79
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_01_volume_1",
+              "rect": [
+                76,
+                0,
+                81,
+                94
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_01_volume_2",
+              "rect": [
+                147,
+                28,
+                54,
+                66
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_00",
+          "renderedRect": [
+            -40,
+            -33,
+            207,
+            153
+          ],
+          "roofDomain": [
+            -40,
+            -33,
+            207,
+            111
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_00_volume_0",
+              "rect": [
+                0,
+                16,
+                89,
+                81
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_00_volume_1",
+              "rect": [
+                79,
+                0,
+                82,
+                97
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_00_volume_2",
+              "rect": [
+                151,
+                29,
+                56,
+                68
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_02",
+          "renderedRect": [
+            600,
+            -18,
+            193,
+            142
+          ],
+          "roofDomain": [
+            600,
+            -18,
+            193,
+            103
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_02_volume_0",
+              "rect": [
+                0,
+                14,
+                83,
+                76
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_02_volume_1",
+              "rect": [
+                73,
+                0,
+                78,
+                90
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_02_volume_2",
+              "rect": [
+                141,
+                27,
+                52,
+                63
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_north_east_annex",
+          "renderedRect": [
+            576,
+            137,
+            86,
+            63
+          ],
+          "roofDomain": [
+            576,
+            137,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_north_east_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_north_west_annex",
+          "renderedRect": [
+            8,
+            137,
+            86,
+            63
+          ],
+          "roofDomain": [
+            8,
+            137,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_north_west_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing",
+          "renderedRect": [
+            159,
+            273,
+            164,
+            121
+          ],
+          "roofDomain": [
+            159,
+            273,
+            164,
+            88
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_west_wing_volume_0",
+              "rect": [
+                0,
+                17,
+                75,
+                59
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_stage_west_wing_volume_1",
+              "rect": [
+                66,
+                0,
+                98,
+                76
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing",
+          "renderedRect": [
+            456,
+            276,
+            161,
+            119
+          ],
+          "roofDomain": [
+            456,
+            276,
+            161,
+            86
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_east_wing_volume_0",
+              "rect": [
+                0,
+                16,
+                74,
+                59
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_stage_east_wing_volume_1",
+              "rect": [
+                64,
+                0,
+                97,
+                75
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall",
+          "renderedRect": [
+            307,
+            255,
+            199,
+            147
+          ],
+          "roofDomain": [
+            307,
+            255,
+            199,
+            106
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_central_hall_volume_0",
+              "rect": [
+                0,
+                15,
+                86,
+                78
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_stage_central_hall_volume_1",
+              "rect": [
+                76,
+                0,
+                79,
+                93
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_stage_central_hall_volume_2",
+              "rect": [
+                145,
+                28,
+                54,
+                65
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_03",
+          "renderedRect": [
+            -68,
+            332,
+            174,
+            128
+          ],
+          "roofDomain": [
+            -68,
+            332,
+            174,
+            93
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_03_volume_0",
+              "rect": [
+                0,
+                13,
+                75,
+                68
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_03_volume_1",
+              "rect": [
+                66,
+                0,
+                70,
+                81
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_03_volume_2",
+              "rect": [
+                127,
+                24,
+                47,
+                57
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_04",
+          "renderedRect": [
+            687,
+            328,
+            182,
+            134
+          ],
+          "roofDomain": [
+            687,
+            328,
+            182,
+            97
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_04_volume_0",
+              "rect": [
+                0,
+                14,
+                78,
+                71
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_04_volume_1",
+              "rect": [
+                69,
+                0,
+                73,
+                85
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_04_volume_2",
+              "rect": [
+                133,
+                26,
+                49,
+                59
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_east_arcade",
+          "renderedRect": [
+            648,
+            473,
+            86,
+            63
+          ],
+          "roofDomain": [
+            648,
+            473,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_east_arcade_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_east_courtyard",
+          "renderedRect": [
+            552,
+            521,
+            86,
+            63
+          ],
+          "roofDomain": [
+            552,
+            521,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_east_courtyard_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_central_workshop",
+          "renderedRect": [
+            440,
+            617,
+            86,
+            63
+          ],
+          "roofDomain": [
+            440,
+            617,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_central_workshop_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_central_kiosk",
+          "renderedRect": [
+            360,
+            681,
+            86,
+            63
+          ],
+          "roofDomain": [
+            360,
+            681,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_central_kiosk_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_meet_east_annex",
+          "renderedRect": [
+            584,
+            889,
+            86,
+            63
+          ],
+          "roofDomain": [
+            584,
+            889,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_meet_east_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_10",
+          "renderedRect": [
+            488,
+            1012,
+            123,
+            91
+          ],
+          "roofDomain": [
+            488,
+            1012,
+            123,
+            66
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_10_volume_0",
+              "rect": [
+                0,
+                0,
+                75,
+                58
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_10_volume_1",
+              "rect": [
+                68,
+                14,
+                55,
+                44
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_07",
+          "renderedRect": [
+            -61,
+            951,
+            231,
+            170
+          ],
+          "roofDomain": [
+            -61,
+            951,
+            231,
+            123
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_07_volume_0",
+              "rect": [
+                0,
+                17,
+                99,
+                90
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_07_volume_1",
+              "rect": [
+                88,
+                0,
+                92,
+                107
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_07_volume_2",
+              "rect": [
+                169,
+                32,
+                62,
+                75
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_south_courtyard",
+          "renderedRect": [
+            248,
+            1177,
+            86,
+            63
+          ],
+          "roofDomain": [
+            248,
+            1177,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_south_courtyard_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_11",
+          "renderedRect": [
+            728,
+            1138,
+            178,
+            131
+          ],
+          "roofDomain": [
+            728,
+            1138,
+            178,
+            95
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_11_volume_0",
+              "rect": [
+                0,
+                13,
+                77,
+                70
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_11_volume_1",
+              "rect": [
+                68,
+                0,
+                71,
+                83
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_11_volume_2",
+              "rect": [
+                130,
+                25,
+                48,
+                58
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_09",
+          "renderedRect": [
+            -21,
+            1160,
+            195,
+            144
+          ],
+          "roofDomain": [
+            -21,
+            1160,
+            195,
+            104
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_09_volume_0",
+              "rect": [
+                0,
+                15,
+                84,
+                76
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_09_volume_1",
+              "rect": [
+                74,
+                0,
+                78,
+                91
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_09_volume_2",
+              "rect": [
+                142,
+                27,
+                53,
+                64
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        }
+      ],
+      "PARADE": [
+        {
+          "id": "map_only_edge_venue_01",
+          "renderedRect": [
+            260,
+            -51,
+            201,
+            148
+          ],
+          "roofDomain": [
+            260,
+            -51,
+            201,
+            107
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_01_volume_0",
+              "rect": [
+                0,
+                15,
+                86,
+                79
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_01_volume_1",
+              "rect": [
+                76,
+                0,
+                81,
+                94
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_01_volume_2",
+              "rect": [
+                147,
+                28,
+                54,
+                66
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_00",
+          "renderedRect": [
+            -40,
+            -33,
+            207,
+            153
+          ],
+          "roofDomain": [
+            -40,
+            -33,
+            207,
+            111
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_00_volume_0",
+              "rect": [
+                0,
+                16,
+                89,
+                81
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_00_volume_1",
+              "rect": [
+                79,
+                0,
+                82,
+                97
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_00_volume_2",
+              "rect": [
+                151,
+                29,
+                56,
+                68
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_02",
+          "renderedRect": [
+            600,
+            -18,
+            193,
+            142
+          ],
+          "roofDomain": [
+            600,
+            -18,
+            193,
+            103
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_02_volume_0",
+              "rect": [
+                0,
+                14,
+                83,
+                76
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_02_volume_1",
+              "rect": [
+                73,
+                0,
+                78,
+                90
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_02_volume_2",
+              "rect": [
+                141,
+                27,
+                52,
+                63
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_north_east_annex",
+          "renderedRect": [
+            576,
+            137,
+            86,
+            63
+          ],
+          "roofDomain": [
+            576,
+            137,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_north_east_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_north_west_annex",
+          "renderedRect": [
+            8,
+            137,
+            86,
+            63
+          ],
+          "roofDomain": [
+            8,
+            137,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_north_west_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing",
+          "renderedRect": [
+            159,
+            273,
+            164,
+            121
+          ],
+          "roofDomain": [
+            159,
+            273,
+            164,
+            88
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_west_wing_volume_0",
+              "rect": [
+                0,
+                17,
+                75,
+                59
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_stage_west_wing_volume_1",
+              "rect": [
+                66,
+                0,
+                98,
+                76
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing",
+          "renderedRect": [
+            456,
+            276,
+            161,
+            119
+          ],
+          "roofDomain": [
+            456,
+            276,
+            161,
+            86
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_east_wing_volume_0",
+              "rect": [
+                0,
+                16,
+                74,
+                59
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_stage_east_wing_volume_1",
+              "rect": [
+                64,
+                0,
+                97,
+                75
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall",
+          "renderedRect": [
+            307,
+            255,
+            199,
+            147
+          ],
+          "roofDomain": [
+            307,
+            255,
+            199,
+            106
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_central_hall_volume_0",
+              "rect": [
+                0,
+                15,
+                86,
+                78
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_stage_central_hall_volume_1",
+              "rect": [
+                76,
+                0,
+                79,
+                93
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_stage_central_hall_volume_2",
+              "rect": [
+                145,
+                28,
+                54,
+                65
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_03",
+          "renderedRect": [
+            -68,
+            332,
+            174,
+            128
+          ],
+          "roofDomain": [
+            -68,
+            332,
+            174,
+            93
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_03_volume_0",
+              "rect": [
+                0,
+                13,
+                75,
+                68
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_03_volume_1",
+              "rect": [
+                66,
+                0,
+                70,
+                81
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_03_volume_2",
+              "rect": [
+                127,
+                24,
+                47,
+                57
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_04",
+          "renderedRect": [
+            687,
+            328,
+            182,
+            134
+          ],
+          "roofDomain": [
+            687,
+            328,
+            182,
+            97
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_04_volume_0",
+              "rect": [
+                0,
+                14,
+                78,
+                71
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_04_volume_1",
+              "rect": [
+                69,
+                0,
+                73,
+                85
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_04_volume_2",
+              "rect": [
+                133,
+                26,
+                49,
+                59
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_east_arcade",
+          "renderedRect": [
+            648,
+            473,
+            86,
+            63
+          ],
+          "roofDomain": [
+            648,
+            473,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_east_arcade_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_east_courtyard",
+          "renderedRect": [
+            552,
+            521,
+            86,
+            63
+          ],
+          "roofDomain": [
+            552,
+            521,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_east_courtyard_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_central_workshop",
+          "renderedRect": [
+            440,
+            617,
+            86,
+            63
+          ],
+          "roofDomain": [
+            440,
+            617,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_central_workshop_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_central_kiosk",
+          "renderedRect": [
+            360,
+            681,
+            86,
+            63
+          ],
+          "roofDomain": [
+            360,
+            681,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_central_kiosk_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_meet_east_annex",
+          "renderedRect": [
+            584,
+            889,
+            86,
+            63
+          ],
+          "roofDomain": [
+            584,
+            889,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_meet_east_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_10",
+          "renderedRect": [
+            488,
+            1012,
+            123,
+            91
+          ],
+          "roofDomain": [
+            488,
+            1012,
+            123,
+            66
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_10_volume_0",
+              "rect": [
+                0,
+                0,
+                75,
+                58
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_10_volume_1",
+              "rect": [
+                68,
+                14,
+                55,
+                44
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_07",
+          "renderedRect": [
+            -61,
+            951,
+            231,
+            170
+          ],
+          "roofDomain": [
+            -61,
+            951,
+            231,
+            123
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_07_volume_0",
+              "rect": [
+                0,
+                17,
+                99,
+                90
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_07_volume_1",
+              "rect": [
+                88,
+                0,
+                92,
+                107
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_07_volume_2",
+              "rect": [
+                169,
+                32,
+                62,
+                75
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_south_courtyard",
+          "renderedRect": [
+            248,
+            1177,
+            86,
+            63
+          ],
+          "roofDomain": [
+            248,
+            1177,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_south_courtyard_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_11",
+          "renderedRect": [
+            728,
+            1138,
+            178,
+            131
+          ],
+          "roofDomain": [
+            728,
+            1138,
+            178,
+            95
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_11_volume_0",
+              "rect": [
+                0,
+                13,
+                77,
+                70
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_11_volume_1",
+              "rect": [
+                68,
+                0,
+                71,
+                83
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_11_volume_2",
+              "rect": [
+                130,
+                25,
+                48,
+                58
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_09",
+          "renderedRect": [
+            -21,
+            1160,
+            195,
+            144
+          ],
+          "roofDomain": [
+            -21,
+            1160,
+            195,
+            104
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_09_volume_0",
+              "rect": [
+                0,
+                15,
+                84,
+                76
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_09_volume_1",
+              "rect": [
+                74,
+                0,
+                78,
+                91
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_09_volume_2",
+              "rect": [
+                142,
+                27,
+                53,
+                64
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        }
+      ],
+      "DANGER": [
+        {
+          "id": "map_only_edge_venue_01",
+          "renderedRect": [
+            260,
+            -51,
+            201,
+            148
+          ],
+          "roofDomain": [
+            260,
+            -51,
+            201,
+            107
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_01_volume_0",
+              "rect": [
+                0,
+                15,
+                86,
+                79
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_01_volume_1",
+              "rect": [
+                76,
+                0,
+                81,
+                94
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_01_volume_2",
+              "rect": [
+                147,
+                28,
+                54,
+                66
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_00",
+          "renderedRect": [
+            -40,
+            -33,
+            207,
+            153
+          ],
+          "roofDomain": [
+            -40,
+            -33,
+            207,
+            111
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_00_volume_0",
+              "rect": [
+                0,
+                16,
+                89,
+                81
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_00_volume_1",
+              "rect": [
+                79,
+                0,
+                82,
+                97
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_00_volume_2",
+              "rect": [
+                151,
+                29,
+                56,
+                68
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_02",
+          "renderedRect": [
+            600,
+            -18,
+            193,
+            142
+          ],
+          "roofDomain": [
+            600,
+            -18,
+            193,
+            103
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_02_volume_0",
+              "rect": [
+                0,
+                14,
+                83,
+                76
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_02_volume_1",
+              "rect": [
+                73,
+                0,
+                78,
+                90
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_02_volume_2",
+              "rect": [
+                141,
+                27,
+                52,
+                63
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_north_east_annex",
+          "renderedRect": [
+            576,
+            137,
+            86,
+            63
+          ],
+          "roofDomain": [
+            576,
+            137,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_north_east_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_north_west_annex",
+          "renderedRect": [
+            8,
+            137,
+            86,
+            63
+          ],
+          "roofDomain": [
+            8,
+            137,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_north_west_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_west_wing",
+          "renderedRect": [
+            159,
+            273,
+            164,
+            121
+          ],
+          "roofDomain": [
+            159,
+            273,
+            164,
+            88
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_west_wing_volume_0",
+              "rect": [
+                0,
+                17,
+                75,
+                59
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_stage_west_wing_volume_1",
+              "rect": [
+                66,
+                0,
+                98,
+                76
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_east_wing",
+          "renderedRect": [
+            456,
+            276,
+            161,
+            119
+          ],
+          "roofDomain": [
+            456,
+            276,
+            161,
+            86
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_east_wing_volume_0",
+              "rect": [
+                0,
+                16,
+                74,
+                59
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_stage_east_wing_volume_1",
+              "rect": [
+                64,
+                0,
+                97,
+                75
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_stage_central_hall",
+          "renderedRect": [
+            307,
+            255,
+            199,
+            147
+          ],
+          "roofDomain": [
+            307,
+            255,
+            199,
+            106
+          ],
+          "volumes": [
+            {
+              "id": "map_only_stage_central_hall_volume_0",
+              "rect": [
+                0,
+                15,
+                86,
+                78
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_stage_central_hall_volume_1",
+              "rect": [
+                76,
+                0,
+                79,
+                93
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_stage_central_hall_volume_2",
+              "rect": [
+                145,
+                28,
+                54,
+                65
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_03",
+          "renderedRect": [
+            -68,
+            332,
+            174,
+            128
+          ],
+          "roofDomain": [
+            -68,
+            332,
+            174,
+            93
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_03_volume_0",
+              "rect": [
+                0,
+                13,
+                75,
+                68
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_03_volume_1",
+              "rect": [
+                66,
+                0,
+                70,
+                81
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_03_volume_2",
+              "rect": [
+                127,
+                24,
+                47,
+                57
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_04",
+          "renderedRect": [
+            687,
+            328,
+            182,
+            134
+          ],
+          "roofDomain": [
+            687,
+            328,
+            182,
+            97
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_04_volume_0",
+              "rect": [
+                0,
+                14,
+                78,
+                71
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_04_volume_1",
+              "rect": [
+                69,
+                0,
+                73,
+                85
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_04_volume_2",
+              "rect": [
+                133,
+                26,
+                49,
+                59
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_east_arcade",
+          "renderedRect": [
+            648,
+            473,
+            86,
+            63
+          ],
+          "roofDomain": [
+            648,
+            473,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_east_arcade_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_east_courtyard",
+          "renderedRect": [
+            552,
+            521,
+            86,
+            63
+          ],
+          "roofDomain": [
+            552,
+            521,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_east_courtyard_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_central_workshop",
+          "renderedRect": [
+            440,
+            617,
+            86,
+            63
+          ],
+          "roofDomain": [
+            440,
+            617,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_central_workshop_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_central_kiosk",
+          "renderedRect": [
+            360,
+            681,
+            86,
+            63
+          ],
+          "roofDomain": [
+            360,
+            681,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_central_kiosk_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_meet_east_annex",
+          "renderedRect": [
+            584,
+            889,
+            86,
+            63
+          ],
+          "roofDomain": [
+            584,
+            889,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_meet_east_annex_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_10",
+          "renderedRect": [
+            488,
+            1012,
+            123,
+            91
+          ],
+          "roofDomain": [
+            488,
+            1012,
+            123,
+            66
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_10_volume_0",
+              "rect": [
+                0,
+                0,
+                75,
+                58
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_10_volume_1",
+              "rect": [
+                68,
+                14,
+                55,
+                44
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_07",
+          "renderedRect": [
+            -61,
+            951,
+            231,
+            170
+          ],
+          "roofDomain": [
+            -61,
+            951,
+            231,
+            123
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_07_volume_0",
+              "rect": [
+                0,
+                17,
+                99,
+                90
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_07_volume_1",
+              "rect": [
+                88,
+                0,
+                92,
+                107
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_07_volume_2",
+              "rect": [
+                169,
+                32,
+                62,
+                75
+              ],
+              "profile": "hip"
+            }
+          ]
+        },
+        {
+          "id": "map_only_south_courtyard",
+          "renderedRect": [
+            248,
+            1177,
+            86,
+            63
+          ],
+          "roofDomain": [
+            248,
+            1177,
+            86,
+            46
+          ],
+          "volumes": [
+            {
+              "id": "map_only_south_courtyard_volume_0",
+              "rect": [
+                0,
+                2,
+                86,
+                38
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_11",
+          "renderedRect": [
+            728,
+            1138,
+            178,
+            131
+          ],
+          "roofDomain": [
+            728,
+            1138,
+            178,
+            95
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_11_volume_0",
+              "rect": [
+                0,
+                13,
+                77,
+                70
+              ],
+              "profile": "saltbox"
+            },
+            {
+              "id": "map_only_edge_venue_11_volume_1",
+              "rect": [
+                68,
+                0,
+                71,
+                83
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_11_volume_2",
+              "rect": [
+                130,
+                25,
+                48,
+                58
+              ],
+              "profile": "front_gable"
+            }
+          ]
+        },
+        {
+          "id": "map_only_edge_venue_09",
+          "renderedRect": [
+            -21,
+            1160,
+            195,
+            144
+          ],
+          "roofDomain": [
+            -21,
+            1160,
+            195,
+            104
+          ],
+          "volumes": [
+            {
+              "id": "map_only_edge_venue_09_volume_0",
+              "rect": [
+                0,
+                15,
+                84,
+                76
+              ],
+              "profile": "hip"
+            },
+            {
+              "id": "map_only_edge_venue_09_volume_1",
+              "rect": [
+                74,
+                0,
+                78,
+                91
+              ],
+              "profile": "front_gable"
+            },
+            {
+              "id": "map_only_edge_venue_09_volume_2",
+              "rect": [
+                142,
+                27,
+                53,
+                64
+              ],
+              "profile": "saltbox"
+            }
+          ]
+        }
+      ]
+    },
+    "policy": "UNCHANGED_285_PLACEMENTS_ORIGINAL_RGBA_NO_WORLD_AUTHORITY"
   }
 }
