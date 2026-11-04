@@ -133,6 +133,7 @@ async fn complete(f: &Fixture, capability: proto::ResponseDelivery) -> anyhow::R
         ),
         CallerRegistry::new().register(Workload::Gateway, "gateway-fixture")?,
     )?;
+    let service = platform::call_deadline::CallDeadlineLayer.layer(service);
     for _ in 0..2 {
         let r = axum::http::Request::builder()
             .method("POST")

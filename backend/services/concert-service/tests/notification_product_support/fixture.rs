@@ -117,6 +117,7 @@ impl Fixture {
                 .register(Workload::Friend, "friend-fixture")?,
         )?;
         let server = tonic::transport::Server::builder()
+            .layer(platform::call_deadline::CallDeadlineLayer)
             .tls_config(tls.server_config()?)?
             .add_service(n_service)
             .add_service(n_settle);
@@ -155,6 +156,7 @@ impl Fixture {
                 .register(Workload::Friend, "friend-fixture")?,
         )?;
         let server = tonic::transport::Server::builder()
+            .layer(platform::call_deadline::CallDeadlineLayer)
             .tls_config(environment::tls(Workload::Concert)?.server_config()?)?
             .add_service(root);
         let root_task = tokio::spawn(async move {

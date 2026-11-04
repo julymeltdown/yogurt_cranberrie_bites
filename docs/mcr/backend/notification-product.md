@@ -206,3 +206,12 @@ No cleanup, extra artifact, migration, schema or operation scope is acquired.
 The earlier source pin is superseded for the fresh allocation. Runtime fixture
 migration paths still need actual native verification; the proto-path fix
 alone is not evidence that those baked paths point to the current checkout.
+
+A subsequent source review before the queued rerun found a fixture composition
+omission: the Notification endpoint explicitly requires the production
+`CallDeadlineLayer` task-local deadline, while the copied low-level server
+fixture had only method/workload guards. The scope-specific fixture now installs
+that same production layer on its owner/Notification/Root servers and Delivery
+component. This prevents an unrelated missing-deadline 400 from masquerading
+as the expected missing-target-provider 503. No runtime or shared target was
+active while this correction was made; the pending pin is superseded.

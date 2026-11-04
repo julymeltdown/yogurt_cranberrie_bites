@@ -83,6 +83,7 @@ pub(super) async fn auth_for_gateway(
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let url = format!("https://{}", listener.local_addr()?);
     let server = tonic::transport::Server::builder()
+        .layer(platform::call_deadline::CallDeadlineLayer)
         .tls_config(tls.server_config()?)?
         .add_service(server);
     let task = tokio::spawn(async move {
@@ -131,6 +132,7 @@ pub(super) async fn friend_for_gateway(
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let url = format!("https://{}", listener.local_addr()?);
     let server = tonic::transport::Server::builder()
+        .layer(platform::call_deadline::CallDeadlineLayer)
         .tls_config(tls.server_config()?)?
         .add_service(server);
     let task = tokio::spawn(async move {
