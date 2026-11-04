@@ -181,8 +181,9 @@ each response through EOF using a new HTTP client. It checks selected-pack avata
 CAS, preference CAS, canonical display-name/bio CAS, fresh reload, stale-write
 conflict, unauthenticated refusal, refusal-state preservation and isolation after
 both principals write. It requires private-response headers on success and error.
-Syntax validation passes. Actual public execution passes all 18 HTTP checks but
-fails native EOF settlement in the pre-fix runs recorded below. The launcher must
+Syntax validation passes. Actual public execution passes all 18 HTTP checks and
+the post-fix native settlement oracles recorded below. The earlier failing EOF
+runs remain preserved. The launcher must
 separately inspect native owner/root settlement and clean process/database
 shutdown. The probe explicitly cannot certify those from HTTP status alone.
 
@@ -209,7 +210,7 @@ exits/owned-PG cleanup. This join uses its existing guarded native composition;
 it does not execute Root's production factory mount or public HTTP journey.
 No build target or PG resources remain held.
 
-Actual production C03 qualification remains IN_PROGRESS. Root integrated the
+The pre-fix production C03 qualification below was IN_PROGRESS. Root integrated the
 factory at `161a3bd6` and production startup at
 `f2898a642848cbf015cb32664ce3a41b9d83314d`. Its copied production executable
 built successfully, and both startup supervision tests passed. With the retained
@@ -249,3 +250,50 @@ fresh Gateway executable and exact public rerun. Full C03 acceptance requires
 and Concert-native COMMIT proofs, no remaining prepared transactions and clean
 shutdown in the corrected production run. World and browser acceptance remain
 separate and NOT_RUN.
+
+Post-fix qualification is INTEGRATED for the actual public C03 HTTP journey and
+the recorded native settlement oracles. Root's shared framing fix is
+`3710a029d083e4b5123df45b82867056f64b3c8b`. With Rust 1.88.0, locked/offline jobs 2,
+incremental 0 and debug 0, the platform lib, real-HTTP test target and production
+Gateway built successfully in 5.77 s, 21.44 s and 15.64 s. The named build target was
+released with zero handles at 03:49:26 UTC on 2026-11-04 before copied tests or
+PostgreSQL execution. All three copied platform response-scope tests and all
+three actual HTTP/1 tests passed. The HTTP tests cover fixed-length and empty
+scoped bodies, terminal completion, and unchanged unscoped framing.
+
+The resulting Gateway SHA256 is
+`857e0874dd6a62544e9104c79fc0701f0300b55772828cc978d4c5dcc6e6512b`.
+The new retained cohort uses that Gateway, the same actual Auth/Friend/Profile
+and Post/Notification MAIN binaries, and the same production Concert f289
+executable. Both principals were again created through actual signup, email
+verification and login, then Profile update and participant bootstrap. All 18
+public C03 checks passed. Both canonical Profile rows contained the exact new
+nickname and the cleared empty-string bio; the public representation retained
+`bio: null`. Fresh clients reloaded the saved avatar, preferences and full
+Profile; stale and anonymous refusals preserved state and principal isolation.
+
+The independent database observations now record 16 ROOT_FINISHED scopes with
+delivery completion, 16 persisted Auth scope-settlement proofs, 16 persisted Friend
+scope-settlement proofs, two COMMITTED Profile terminal receipts, two committed
+Concert-native Profile operations and zero prepared transactions. The Auth/Friend
+oracle counts `scope_settlement IS NOT NULL`; this report does not separately
+count each lease's `state='COMPLETED'` or pending participant rows. These are the
+precise observed oracles, rather than an inferred observation of those columns.
+The framing fix was exercised through actual HTTP terminal consumption, without
+manual completion RPCs, fabricated root finishes or mutation retries.
+
+Concert and every retained peer stopped unforced with exit 0. Owned database
+cleanup passed; independent inspection confirmed the owned directory and all
+recorded process IDs were absent. The original launcher result remains PARTIAL:
+World was OFF, and World multi-client/browser IN01 checks were NOT_RUN. No overall
+IN01, production deployment or release acceptance follows from this C03 result.
+
+`public-c03-3710a029-after-eof-fix.json` preserves sanitized original report,
+cohort, Cargo receipt and test-log hashes, all 1945 build source pins, exact
+commands/results, the target release record, all 18 HTTP steps, database counts,
+canonical-storage oracle and cleanup observations. It binds the tested driver
+to its 3710 source revision; later World-driver edits do not amend the old run.
+The pre-fix evidence remains unchanged. Root owns serial integration and remote
+master publication; those delivery checks remain required before completing the
+assigned persistent goal. This handoff changes only this document and its new
+passing evidence JSON; no Cargo/PG or shared-file writes are performed here.
