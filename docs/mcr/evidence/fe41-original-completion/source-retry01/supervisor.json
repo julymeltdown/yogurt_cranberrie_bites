@@ -1,0 +1,189 @@
+{
+  "slot": "FE41-CHANGED-CHAIN-20261104T1901Z",
+  "pin": "49df4add5df4645d716c73eac35a5e00c8ad2bb4",
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "mode": "source",
+  "deadlineUTC": "2026-11-04T19:06:14.810013+00:00",
+  "startedUTC": "2026-11-04T19:04:21.149967+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "entries": 65536,
+    "new": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8,
+    "childSeconds": 90
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806791513,
+        "files": 8264,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2042089,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "49df4add5df4645d716c73eac35a5e00c8ad2bb4",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1590627486,
+    "historyObjects": 41699,
+    "wholeBytes": 2807724422,
+    "entries": 61537
+  },
+  "carry": 2807724422,
+  "otherReserve": 1744830464,
+  "temporary": "/private/tmp/mcr-fe41-z0wguxk0",
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe41-original-completion/vitest.config.mjs"
+      ],
+      "pid": 35228,
+      "startedEpoch": 1793819061.160864,
+      "exit": 0,
+      "endedEpoch": 1793819062.70018
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--input-type=module",
+        "--eval",
+        "import assert from 'node:assert/strict'; import {readFileSync} from 'node:fs';\nimport {createHash} from 'node:crypto'; import {dirname} from 'node:path';\nconst helper=\"/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs\"; const original=readFileSync(helper,'utf8');\nassert.equal(createHash('sha256').update(original).digest('hex'),'4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1');\nconst source=original.replace('...parsed.options, incremental:','...parsed.options, allowImportingTsExtensions: true, incremental:')\n.replaceAll('import.meta.dirname',JSON.stringify(dirname(helper))); process.argv.push('--application');\nawait import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));"
+      ],
+      "pid": 35314,
+      "startedEpoch": 1793819062.779308,
+      "exit": 0,
+      "endedEpoch": 1793819071.78074
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/default-entry.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/authority.test.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/status.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/version.test.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/observer.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/ports.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/world-entry/production.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/composition/index.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/replication.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/transport/contract.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/transport/engine.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe41-original-completion/vitest.config.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe41-original-completion/setup.ts"
+      ],
+      "pid": 37105,
+      "startedEpoch": 1793819071.8533309,
+      "exit": 0,
+      "endedEpoch": 1793819072.113392
+    },
+    {
+      "label": "native-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs"
+      ],
+      "pid": 37232,
+      "startedEpoch": 1793819072.18492,
+      "exit": 0,
+      "endedEpoch": 1793819072.439169
+    },
+    {
+      "label": "config-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe41-original-completion/vitest.config.mjs"
+      ],
+      "pid": 37256,
+      "startedEpoch": 1793819072.5258482,
+      "exit": 0,
+      "endedEpoch": 1793819072.7817442
+    },
+    {
+      "label": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "ba314a2c96639b05b6c15c1ead57353719004ffa",
+        "--",
+        ".",
+        ":(glob,exclude)docs/mcr/evidence/fe41-original-completion/**/*.log"
+      ],
+      "pid": 37286,
+      "startedEpoch": 1793819072.863364,
+      "exit": 0,
+      "endedEpoch": 1793819073.1150699
+    },
+    {
+      "label": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "pid": 37293,
+      "startedEpoch": 1793819073.184653,
+      "exit": 0,
+      "endedEpoch": 1793819073.440392
+    }
+  ],
+  "ownedPids": {
+    "35228": "Thu Nov  5 04:04:21 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "35257": "Thu Nov  5 04:04:21 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "35314": "Thu Nov  5 04:04:22 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "37105": "Thu Nov  5 04:04:31 2026     /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "37232": "Thu Nov  5 04:04:32 2026     <defunct>",
+    "37256": "Thu Nov  5 04:04:32 2026     <defunct>",
+    "37286": "Thu Nov  5 04:04:32 2026     git",
+    "37293": "Thu Nov  5 04:04:33 2026     /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+  },
+  "externalTargets": [],
+  "wholePeak": 2812371814,
+  "newPeak": 4647392,
+  "tmpPeak": 4647324,
+  "durablePeak": 272,
+  "rssPeak": 2004664320,
+  "processPeak": 4,
+  "entryPeak": 61645,
+  "alivePids": [],
+  "externalRemaining": [],
+  "temporaryAbsent": true,
+  "linkAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "status": "PASS",
+  "finishedUTC": "2026-11-04T19:04:33.573055+00:00",
+  "finalFree": 18912751616
+}

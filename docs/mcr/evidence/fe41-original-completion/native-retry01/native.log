@@ -1,0 +1,65 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toContainText(expected) failed
+
+Locator: getByRole('region', { name: 'World connection status' })
+Expected substring: "Reload to update the world"
+Received string:    "World connection unavailableA fresh world view could not be confirmed. You can keep browsing or reload.Reload pageBack to worldBack to home"
+Timeout: 5000ms
+
+Call log:
+  - Expect "to.have.text" with timeout 5000ms
+  - waiting for getByRole('region', { name: 'World connection status' })
+    2 × locator resolved to <div role="region" class="connection-status" aria-label="World connection status">…</div>
+      - unexpected value "Connecting to the worldWaiting for a fresh world view. You can keep browsing.Waiting for the world…Back to worldBack to home"
+    7 × locator resolved to <div role="region" class="connection-status" aria-label="World connection status">…</div>
+      - unexpected value "World connection unavailableA fresh world view could not be confirmed. You can keep browsing or reload.Reload pageBack to worldBack to home"
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toContainText (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/native.mjs:59:24 {
+  matcherResult: {
+    name: 'toContainText',
+    expected: 'Reload to update the world',
+    message: 'expect(locator).toContainText(expected) failed\n' +
+      '\n' +
+      "Locator: getByRole('region', { name: 'World connection status' })\n" +
+      'Expected substring: "Reload to update the world"\n' +
+      'Received string:    "World connection unavailableA fresh world view could not be confirmed. You can keep browsing or reload.Reload pageBack to worldBack to home"\n' +
+      'Timeout: 5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.have.text" with timeout 5000ms\n' +
+      "  - waiting for getByRole('region', { name: 'World connection status' })\n" +
+      '    2 × locator resolved to <div role="region" class="connection-status" aria-label="World connection status">…</div>\n' +
+      '      - unexpected value "Connecting to the worldWaiting for a fresh world view. You can keep browsing.Waiting for the world…Back to worldBack to home"\n' +
+      '    7 × locator resolved to <div role="region" class="connection-status" aria-label="World connection status">…</div>\n' +
+      '      - unexpected value "World connection unavailableA fresh world view could not be confirmed. You can keep browsing or reload.Reload pageBack to worldBack to home"\n',
+    pass: false,
+    actual: 'World connection unavailableA fresh world view could not be confirmed. You can keep browsing or reload.Reload pageBack to worldBack to home',
+    log: [
+      '  - Expect "to.have.text" with timeout 5000ms',
+      "  - waiting for getByRole('region', { name: 'World connection status' })",
+      '    2 × locator resolved to <div role="region" class="connection-status" aria-label="World connection status">…</div>',
+      '      - unexpected value "Connecting to the worldWaiting for a fresh world view. You can keep browsing.Waiting for the world…Back to worldBack to home"',
+      '    7 × locator resolved to <div role="region" class="connection-status" aria-label="World connection status">…</div>',
+      '      - unexpected value "World connection unavailableA fresh world view could not be confirmed. You can keep browsing or reload.Reload pageBack to worldBack to home"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- region "World connection status":\n' +
+      '  - region "World connection unavailable":\n' +
+      '    - heading "World connection unavailable" [level=2]\n' +
+      '    - status:\n' +
+      '      - paragraph: A fresh world view could not be confirmed. You can keep browsing or reload.\n' +
+      '    - button "Reload page"\n' +
+      '    - link "Back to world":\n' +
+      '      - /url: /world\n' +
+      '    - link "Back to home":\n' +
+      '      - /url: /'
+  }
+}
+
+Node.js v24.22.2

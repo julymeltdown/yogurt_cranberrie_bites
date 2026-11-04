@@ -1,0 +1,49 @@
+{
+  "observedUTC": "2026-11-04T18:49:48.024271+00:00",
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806767778,
+        "files": 8256,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2039699,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "ba314a2c96639b05b6c15c1ead57353719004ffa",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1589572834,
+    "historyObjects": 41633,
+    "wholeBytes": 2806643645,
+    "entries": 61463
+  },
+  "freeBytes": 12541337600,
+  "proposedSource": {
+    "processes": 8,
+    "rssBytes": 2684354560,
+    "wholeBytes": 4294967296,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 33554432,
+    "entries": 65536,
+    "childSeconds": 90,
+    "workSeconds": 180,
+    "cleanupSeconds": 60
+  },
+  "noRuntimeStarted": true
+}

@@ -1,0 +1,33 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+ ❯ src/app/errors/fe41-lifecycle/version.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/errors/fe41-lifecycle/version.test.ts [ src/app/errors/fe41-lifecycle/version.test.ts ]
+Error: Failed to resolve import "@testing-library/react" from "frontend/src/app/errors/fe41-lifecycle/version.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors/fe41-lifecycle/version.test.ts:3:0
+  19 |  	};
+  20 |  });
+  21 |  const __vi_import_0__ = await import("@testing-library/react");
+     |                                       ^
+  22 |  const __vi_import_1__ = await import("../../world-entry/production");
+  23 |  const __vi_import_2__ = await import("../default-entry");
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  32 passed (32)
+   Start at  04:02:58
+   Duration  2.28s (transform 391ms, setup 28ms, import 701ms, tests 50ms, environment 1.14s)
+

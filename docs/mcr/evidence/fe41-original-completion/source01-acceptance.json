@@ -1,0 +1,48 @@
+{
+  "status": "ACTUAL_ACCEPT",
+  "slot": "FE41-CHANGED-CHAIN-20261104T1901Z",
+  "pin": "86204a3b2d340b0ba30ea0812871fab00e590ad7",
+  "acceptedUTC": "2026-11-04T19:02:14.810013+00:00",
+  "workStopUTC": "2026-11-04T19:05:14.810013+00:00",
+  "deadlineUTC": "2026-11-04T19:06:14.810013+00:00",
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 806784276,
+        "files": 8261,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 2041885,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "historyRefs": [
+      "86204a3b2d340b0ba30ea0812871fab00e590ad7",
+      "8ca330d8966e4551ef0fade957e5ce907646108b",
+      "defdc8fc429e658c7f53523304208056477c6a88",
+      "f543d43a96848d47021eaa4b0736a27e548ebadc"
+    ],
+    "historyBytes": 1590342739,
+    "historyObjects": 41691,
+    "wholeBytes": 2807432234,
+    "entries": 61526
+  },
+  "freeBytes": 20810219520,
+  "otherReserveBytes": 1744830464,
+  "ownNewBytes": 134217728,
+  "freeAfterAllReservations": 18931171328,
+  "guardianSHA256": "f3382e28636cdb5147683a9d780a3d291dd90d1f013f98267534024e9f275385",
+  "readsetSHA256": "258a5b07f85abeeaf246e78b05c295b9fc075023d75a2e204009dbcae6378cb4",
+  "readonlyNodeSHA256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "noRuntimeStartedAtAcceptance": true
+}

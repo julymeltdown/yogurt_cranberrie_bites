@@ -133,7 +133,7 @@ export function createWorldReplication(options: ReplicationOptions) {
     if (!current() || withdrawing) return
     if (event.type === 'resync-needed') { requestResync(event.reason); return }
     if (event.type === 'error') {
-      ++generation; clear(); resume = false; phase = 'closed'; problem = problem === 'map-version' ? problem : 'connection'; publish(); return
+      ++generation; clear(); resume = false; phase = 'closed'; problem = event.kind === 'map-version' || problem === 'map-version' ? 'map-version' : 'connection'; publish(); return
     }
     if (event.type === 'state') {
       if (event.state === 'live') {

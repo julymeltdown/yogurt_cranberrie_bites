@@ -1,0 +1,65 @@
+{
+  "base": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+  "branch": "codex/mcr-fe-FE41-original-completion",
+  "priorHead": "8ca330d8966e4551ef0fade957e5ce907646108b",
+  "preservedRefs": {
+    "codex/mcr-fe-FE17-original-completion": "8ca330d8966e4551ef0fade957e5ce907646108b",
+    "codex/mcr-fe-AR03-persistence-motion": "defdc8fc429e658c7f53523304208056477c6a88"
+  },
+  "preservedReadonlyStash": "f543d43a96848d47021eaa4b0736a27e548ebadc",
+  "method": "Normal switch initially refused dirty input; exact13 readonly materializations individually matched publicbase before scoped stash; normal switch then matched every byte. Snapshot retained, no force-clean/drop/newclone/target.",
+  "readonlyInputs": [
+    {
+      "path": "contracts/fixtures/realtime/index.json",
+      "sha256": "e2888ccd54c4a95fd43e734980e7902713acf507814f340a2a5886365d26dfeb"
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "sha256": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734"
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "sha256": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx",
+      "sha256": "1160d0678c399dc3570d81d4ea6a0983ae106c6e97fc5f3678bbad2cb839fafb"
+    },
+    {
+      "path": "frontend/src/world/network/transport/wire-types.ts",
+      "sha256": "f5edb775204f7bd01b7c278d565f046405102b10c662684e3a45593897ac5db2"
+    },
+    {
+      "path": "scripts/mcr/tests/test_realtime.py",
+      "sha256": "67336945ffbe0dee39f8123652aa9a09a3a8cf413260aab0ea3ec1f161d9aa26"
+    },
+    {
+      "path": "scripts/mcr/validate-realtime.py",
+      "sha256": "f16597d77d7110c417dc610b54aa8a40951da7ad656198139df4770e60c1be09"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/boolean-version.json",
+      "sha256": "c6e6498ffc33ac305d542ff83273e4b62098799143f741d26c39415f51651025"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/negotiated.json",
+      "sha256": "871eebcd1adc4d0d16c6c059f1f5908abde2259baa71610e73437bc99f9585b6"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/null-version.json",
+      "sha256": "993b3f8e81e1c77b5cbb0b6d87fbfbc2e0e7dd6e77b3999e519b522137c36ded"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/unsupported-version.json",
+      "sha256": "524baa6e7d9e61f93ff6d82458322bce1f21f29e50d622fa75193ba6270b20b6"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/vectors.json",
+      "sha256": "4929a4ff10b33c7bf8286f5e2208f3a044ed73d5780d242ceb4a40629c457c6a"
+    },
+    {
+      "path": "frontend/src/world/composition/policy.ts",
+      "sha256": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd"
+    }
+  ]
+}

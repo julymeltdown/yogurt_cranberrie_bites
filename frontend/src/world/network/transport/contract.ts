@@ -9,7 +9,7 @@ import policy from '../../../../../contracts/realtime/v1/policy.json'
 import type { ClientMessage, ServerMessage, WorldTicketResponse } from './wire-types'
 export { policy }
 export class WorldTransportError extends Error {
-  constructor(readonly kind: 'invalid-frame' | 'invalid-context' | 'unavailable' | 'timeout' | 'cancelled' | 'backpressure' | 'rate-limited' | 'closed' | 'disposed', readonly code = 4400) {
+  constructor(readonly kind: 'invalid-frame' | 'invalid-context' | 'unavailable' | 'map-version' | 'timeout' | 'cancelled' | 'backpressure' | 'rate-limited' | 'closed' | 'disposed', readonly code = 4400) {
     super(kind); this.name = 'WorldTransportError'
   }
 }

@@ -39,7 +39,7 @@ export interface WorldCompositionState {
   readonly phase: 'idle' | 'loading' | 'ready' | 'unavailable' | 'disposed'
   readonly runtime: RuntimeState | null
   readonly renderer: WorldRendererStatus
-  readonly problem: 'release' | 'runtime' | 'renderer' | null
+  readonly problem: 'release' | 'runtime' | 'renderer' | 'map-version' | null
 }
 /** Stable FE18 release; null withdraws all prior membership/presence immediately. */
 export interface WorldReplicationRelease {
@@ -148,7 +148,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     function replace(view: ReplicationView) {
       if (!current()) return
       if (view.phase === 'unavailable' && (view.problem === 'authority' || view.problem === 'sink')) { dispose(); return }
-      if (view.problem === 'map-version') { fail('release'); return }
+      if (view.problem === 'map-version') { fail('map-version'); return }
       const self = view.entities.find(entity => entity.self)
       foot = self?.player.position ?? null
       if (foot && movement?.camera.read().following !== false) camera?.center(foot, zoom)
@@ -194,8 +194,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     const fail = (problem: NonNullable<WorldCompositionState['problem']>) => {
       if (!current()) return
       failed = true; stopResources(); inputs.replaceChildren()
-      status.textContent = 'The world is unavailable. You can try opening it again.'
-      retry.hidden = false; retry.textContent = 'Try opening world again'
+      status.textContent = problem === 'map-version' ? 'Reload the page to use the current world version.' : 'The world is unavailable. You can try opening it again.'
+      retry.hidden = problem === 'map-version'; retry.textContent = 'Try opening world again'
       state = Object.freeze({ phase: 'unavailable', runtime: null, renderer: 'unavailable', problem }); notify()
     }
     const setVisible = () => {

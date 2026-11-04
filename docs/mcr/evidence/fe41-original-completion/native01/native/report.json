@@ -1,0 +1,17 @@
+{
+  "result": "FAIL",
+  "revision": "d8449efa44a32cfc24d68c19f1ab5a6141ba956b",
+  "port": 64379,
+  "fixtureSHA256": "9fbe4315dcda687c902111456c15d832f38251591137e364943e7a7104d62d72",
+  "fixtureTransform": {
+    "needle": "if (path.endsWith('/world-tickets')) return Response.json(ticket(await request.json() as WorldTicketRequest, ++serial))",
+    "replacement": "if (path.endsWith('/world-tickets')) return Response.json({ code: 'GATEWAY_409', message: 'Untrusted remote text', details: { reason: 'MAP_VERSION_MISMATCH' } }, { status: 409 })"
+  },
+  "scope": "Actual main/default production/HTTP decoder/transport/composition/status and native keyboard reload; synthetic409fixture, no backend/device/fullvisual acceptance",
+  "checks": [],
+  "errors": [
+    "The requested module '/@fs/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/build/modern/index.cjs?import&v=e5a3520f' does not provide an export named 'queryOptions'"
+  ],
+  "browser": "156.0.8078.80",
+  "cleanup": "Browser and Vite awaited closed; independent guardian owns final PID/TMP/socket census"
+}
