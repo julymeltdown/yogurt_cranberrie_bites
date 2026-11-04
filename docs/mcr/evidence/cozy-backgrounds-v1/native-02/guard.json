@@ -1,0 +1,21 @@
+{
+  "job": "PANEL-CORRECTED-202611040733Z",
+  "candidate": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+  "driver_sha256": "58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde",
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "src/app/__tests__/cozy-backgrounds-v1/responsive.mjs"
+  ],
+  "exit_code": 0,
+  "failure": null,
+  "elapsed_seconds": 110.48882008298824,
+  "peaks": {
+    "whole": 40697856,
+    "temp": 34136064,
+    "durable": 6631424
+  },
+  "minimum_free_bytes": 40884080640,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T07:40:02.268253+00:00"
+}
