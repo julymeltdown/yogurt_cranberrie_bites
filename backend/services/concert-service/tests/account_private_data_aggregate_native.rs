@@ -191,8 +191,18 @@ async fn aggregate_native() -> Result<()> {
         .ok_or_else(|| anyhow::anyhow!("progress"))?;
     anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len());
     anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
-    anyhow::ensure!(progress.completed == vec![PrivateDataCategory::CorePreferencesAndAvatar]);
-    anyhow::ensure!(progress.missing.len() == 6);
+    let expected_progress = if restart {
+        vec![
+            PrivateDataCategory::CorePreferencesAndAvatar,
+            PrivateDataCategory::IntroText,
+        ]
+    } else {
+        vec![PrivateDataCategory::CorePreferencesAndAvatar]
+    };
+    anyhow::ensure!(progress.completed == expected_progress);
+    anyhow::ensure!(
+        progress.missing.len() == PrivateDataCategory::ALL.len() - expected_progress.len()
+    );
     anyhow::ensure!(progress.command.retention_until == c.retention_until);
     anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
     anyhow::ensure!(progress.fence_revision > 0);
