@@ -1,6 +1,6 @@
 # QA06 mobile visual qualification
 
-QA06 is **IN_PROGRESS**, not accepted. Desktop evidence is available; actual iOS Safari, actual Android Chrome, software-keyboard/hardware-safe-area checks, qualified Wall visuals, and product art/release admission remain open. This report preserves the original task rather than closing a desktop fixture contribution as the whole task.
+QA06 is **BLOCKED**, not accepted. The original scope remains unfinished. Desktop evidence is available; actual iOS Safari, actual Android Chrome, software-keyboard/hardware-safe-area checks, qualified Wall visuals, and product art/release admission remain open. This report preserves the original task rather than closing a desktop fixture contribution as the whole task.
 
 ## Authority, scope and provenance
 
@@ -120,3 +120,12 @@ The installed Android SDK exists outside PATH. One read-only enumeration returne
 Capture priority is Root153's existing v10 Map/World consumer validation first, then QA06 focused fresh post-fix reference qualification after that validated input is published. A single browser/native workflow may run, with at most0.2GiB new output. BackendSL is the sole capacity coordinator; an explicit release plus fresh own≥8GiB/process preflight is required before claiming the QA06 slot. The estimate sent directly to BackendSL and WorldSL uses actual existing evidence sizes:36 Feed/Me/Meet PNGs=2,373,548bytes and24 v10 World/Map PNGs=9,589,741bytes. The staged scope expects about15MiB evidence, reserves20MiB output and100MiB temporary cache. No unrelated successful87-case matrix or consumer run is queued by default. Required checks remain recorded, with staged/pending status honest.
 
 `published.mjs` is an owned focused driver for frozen published Git blobs, with no new checkout, install, peer source write, or app renderer replacement. It serves the corrected own fixture boundary over actual published product sources. `QA06_PUBLISHED_SCOPE=repairs` covers Feed/Me/Meet360/390/430×three skins, reduced420, same3-row390×637 Meet and account-control navigation. `QA06_PUBLISHED_SCOPE=scene` covers actual published v10 source fixture at three widths/skins and390×554/754 reference aspects, image fit/reset, all six painted-label-versus-caption/zoom intersections, real six-character Phaser scene, and unchanged synthetic/UNREVIEWED admission status. Both remain **NOT_RUN** pending the queue inputs, despite passing syntax/lint checks. This preparation does not certify the new Map source fix.
+
+
+## Current blocked audit
+
+The same external prerequisite condition persisted across three consecutive goal turns. The current fresh fetch still points at `54e1325fce20e3abc98da50c68de0bd72dfd1a33`; direct published-source inspection confirms neither v5 initial fit nor the new own-flow caption is present. Fresh free disk8.491GiB passes the numeric floor, but no explicit coordinator release or validated published Map input has arrived. QA06 remains second after Root153's first consumer run. No new browser/native workflow was launched. `blocked-audit.json` records the current evidence, turn classification, exact input owners and resume sequence.
+
+Source preparation is committed as `a85aaf4f` and `1da9d7df`, with syntax/lint passing and focused runtime **NOT_RUN**. Original whole-scope implementation acceptance is unchanged: physical Safari/Chrome, real keyboard/safe area, qualified Wall/productart/admission, independent published repair captures, fixes and final delivery audit remain required. The goal's blocked disposition is not COMPLETE, a scope cut, clean STOP, lease return, or IN02 activation. Original baseline evidence and diagnostic artifacts are preserved. The temporary task-created dependency link is removed while quiescent; retained dependencies are unchanged.
+
+The iPhone connection instruction comes from the [phone-harness skill](/Users/lhs/.codex/skills/phone-harness/SKILL.md): “Retry once *after they confirm they've done it*, not before.” The original connection question remains pending; no repeated question, Connect/Continue tap, or connection polling is performed.
