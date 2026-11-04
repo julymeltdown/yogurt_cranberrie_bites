@@ -6,6 +6,8 @@ use concert_service::{
     adapters::out::repository::avatar::*, bootstrap::BootstrapPostgresRepository,
 };
 use serde_json::{json, Value};
+use sha2::{Digest, Sha256};
+use sqlx::Row;
 use std::sync::Arc;
 use uuid::Uuid;
 const EVENT: &str = "00000000-0000-4000-8000-000000000701";
@@ -711,16 +713,44 @@ async fn native_selected_avatar_restart_persistence() {
             .unwrap_err(),
         AvatarError::ReadOnly
     );
+    let witness: Value = serde_json::from_slice(
+        &std::fs::read(
+            std::path::PathBuf::from(std::env::var("MCR_BOOTSTRAP_ROOT").unwrap())
+                .join("avatar-witness-state.json"),
+        )
+        .unwrap(),
+    )
+    .unwrap();
+    let rows: Value = sqlx::query_scalar("select jsonb_agg(to_jsonb(w) order by operation_id) from concert_participant_effect_witnesses w where event_id=$1 and actor_id=$2")
+        .bind(witness["event"].as_str().unwrap().parse::<Uuid>().unwrap())
+        .bind(witness["actor"].as_str().unwrap().parse::<Uuid>().unwrap())
+        .fetch_one(&pool).await.unwrap();
+    assert_eq!(rows, witness["rows"]);
     pool.close().await;
 }
 
 // Component-only fence. It observes a real native transaction but is not the
 // external Auth/Friend scope adapter and never claims distributed settlement.
+#[derive(Clone, Copy)]
+enum WitnessFault {
+    Healthy,
+    MissingDescriptor,
+    WrongRelease,
+    WrongBody,
+    WrongScope,
+    Unpublished,
+    Unconfirmed,
+    AfterWitness,
+    AfterCommit,
+}
 struct NativeEffectFence {
     pool: sqlx::PgPool,
     registered: std::sync::Mutex<Option<AvatarTransactionIdentity>>,
     reject_registration: bool,
     reject_after_effect: bool,
+    witness: AvatarEffectWitnessBinding,
+    owner_binding: Value,
+    fault: WitnessFault,
 }
 #[async_trait::async_trait]
 impl AvatarEffectFence for NativeEffectFence {
@@ -743,10 +773,54 @@ impl AvatarEffectFence for NativeEffectFence {
         assert_eq!(identity.system_identifier, sysid);
         *self.registered.lock().unwrap() = Some(identity);
         if self.reject_registration {
-            Err(AvatarError::Unavailable)
-        } else {
-            Ok(())
+            return Err(AvatarError::Unavailable);
         }
+        // Explicit component fixture: real SQL scope/identity constraints, not
+        // real Auth/Friend registration or a production admission capability.
+        let identity = self.registered.lock().unwrap().clone().unwrap();
+        let transaction = concert_service::product_rpc::scope_ledger::ProducerTransaction {
+            producer: "CONCERT".into(),
+            system_identifier: identity.system_identifier,
+            database_oid: identity.database_oid,
+            full_xid: identity.full_xid,
+            backend_pid: identity.backend_pid,
+            backend_started_unix_micros: identity.backend_started.timestamp_micros(),
+            effect_binding_digest: self.witness.effect_binding_digest,
+            producer_instance: self.witness.producer_instance_id,
+            settlement_reference: self.witness.operation_id.as_bytes().to_vec(),
+        };
+        let digest = transaction.digest().unwrap();
+        let delivery = if matches!(self.fault, WitnessFault::Unpublished) {
+            None
+        } else {
+            Some(vec![77u8; 32])
+        };
+        sqlx::query("insert into concert_product_owner_scopes(instance_id,scope_id,binding_digest,binding,delivery_secret_hash) values($1,$2,$3,$4,$5)")
+            .bind(self.witness.producer_instance_id).bind(self.witness.scope_id)
+            .bind(self.witness.guard_binding_digest.as_slice()).bind(&self.owner_binding).bind(delivery)
+            .execute(&self.pool).await.unwrap();
+        let confirmed = if matches!(self.fault, WitnessFault::Unconfirmed) {
+            None
+        } else {
+            Some(chrono::Utc::now())
+        };
+        sqlx::query("insert into concert_product_owner_transactions(instance_id,scope_id,binding_digest,identity_digest,identity,auth_registration_id,friend_registration_id,confirmed_at) values($1,$2,$3,$4,$5,$6,$7,$8)")
+            .bind(self.witness.producer_instance_id).bind(self.witness.scope_id)
+            .bind(self.witness.guard_binding_digest.as_slice()).bind(digest.as_slice())
+            .bind(serde_json::to_value(transaction).unwrap()).bind(Uuid::new_v4()).bind(Uuid::new_v4())
+            .bind(confirmed).execute(&self.pool).await.unwrap();
+        Ok(())
+    }
+    fn witness_binding(&self) -> Result<AvatarEffectWitnessBinding, AvatarError> {
+        let mut value = self.witness.clone();
+        match self.fault {
+            WitnessFault::MissingDescriptor => return Err(AvatarError::Unavailable),
+            WitnessFault::WrongRelease => value.release_digest = "b".repeat(64),
+            WitnessFault::WrongBody => value.body_digest = [99; 32],
+            WitnessFault::WrongScope => value.scope_id = Uuid::from_u128(42),
+            _ => (),
+        }
+        Ok(value)
     }
     async fn check(&self) -> Result<(), AvatarError> {
         let identity = self
@@ -755,14 +829,24 @@ impl AvatarEffectFence for NativeEffectFence {
             .unwrap()
             .clone()
             .expect("registered before checks");
-        if self.reject_after_effect {
+        if matches!(self.fault, WitnessFault::AfterCommit) {
+            let committed: bool = sqlx::query_scalar("select exists(select 1 from concert_participant_effect_witnesses where operation_id=$1)")
+                .bind(self.witness.operation_id).fetch_one(&self.pool).await.unwrap();
+            if committed {
+                return Err(AvatarError::Unavailable);
+            }
+        }
+        if self.reject_after_effect || matches!(self.fault, WitnessFault::AfterWitness) {
             let query: String =
                 sqlx::query_scalar("select query from pg_stat_activity where pid=$1")
                     .bind(identity.backend_pid)
                     .fetch_one(&self.pool)
                     .await
                     .unwrap();
-            if query.starts_with("update public.concert_") {
+            if self.reject_after_effect && query.starts_with("update public.concert_")
+                || matches!(self.fault, WitnessFault::AfterWitness)
+                    && query.starts_with("insert into public.concert_participant_effect_witnesses")
+            {
                 return Err(AvatarError::Denied);
             }
         }
@@ -838,14 +922,54 @@ async fn native_actual_effect_fence(
     // The actual update's trigger records its identity in the same transaction.
     sqlx::raw_sql("create table mcr_avatar_effect_probe (table_name text,system_identifier text,database_oid bigint,full_xid text,backend_pid int,backend_started timestamptz); create function mcr_avatar_effect_probe_fn() returns trigger language plpgsql as $$ begin insert into mcr_avatar_effect_probe select TG_TABLE_NAME,c.system_identifier::text,d.oid::bigint,pg_current_xact_id()::text,a.pid,a.backend_start from pg_control_system() c join pg_database d on d.datname=current_database() join pg_stat_activity a on a.pid=pg_backend_pid(); return NEW; end $$; create trigger mcr_avatar_effect_probe_avatar after update on concert_avatar_settings for each row execute function mcr_avatar_effect_probe_fn(); create trigger mcr_avatar_effect_probe_preferences after update on concert_participants for each row execute function mcr_avatar_effect_probe_fn();")
         .execute(pool).await.unwrap();
-    let authority = |op, reject_registration, reject_after_effect| FencedAvatarAuthority {
-        base: support::Authority::new(own, op, release.source_digest()),
-        fence: NativeEffectFence {
-            pool: pool.clone(),
-            registered: std::sync::Mutex::new(None),
-            reject_registration,
-            reject_after_effect,
-        },
+    let authority = |op, reject_registration, reject_after_effect| {
+        let body = if op == AvatarOperation::SetAvatar {
+            command(1, config_value(&selection))
+        } else {
+            prefs(1)
+        };
+        let owner_binding = platform::actor_delegation::owner_binding::OwnerBinding {
+            actor_id: user,
+            event_id: event,
+            session_family_id: Uuid::new_v4(),
+            request_id: Uuid::new_v4(),
+            operation: "component_avatar_witness".into(),
+            expires_unix_micros: (chrono::Utc::now() + chrono::Duration::minutes(5))
+                .timestamp_micros(),
+            parent_digest: [11; 32],
+            parent_body_digest: [12; 32],
+            parent_method: if op == AvatarOperation::SetAvatar {
+                "/concert.participant.v1.ConcertParticipantService/SetAvatar".into()
+            } else {
+                "/concert.participant.v1.ConcertParticipantService/UpdatePreferences".into()
+            },
+            http_method: "PUT".into(),
+            http_target: format!("/api/concert/events/{event}/component-witness"),
+            body_digest: Sha256::digest(&body).into(),
+        };
+        let witness = AvatarEffectWitnessBinding {
+            producer_instance_id: Uuid::new_v4(),
+            scope_id: Uuid::new_v4(),
+            operation_id: owner_binding.request_id,
+            session_family_id: owner_binding.session_family_id,
+            parent_digest: owner_binding.parent_digest,
+            guard_binding_digest: owner_binding.digest().unwrap(),
+            body_digest: owner_binding.body_digest,
+            release_digest: release.source_digest().into(),
+            effect_binding_digest: [44; 32],
+        };
+        FencedAvatarAuthority {
+            base: support::Authority::new(own, op, release.source_digest()),
+            fence: NativeEffectFence {
+                pool: pool.clone(),
+                registered: std::sync::Mutex::new(None),
+                reject_registration,
+                reject_after_effect,
+                witness,
+                owner_binding: serde_json::to_value(owner_binding).unwrap(),
+                fault: WitnessFault::Healthy,
+            },
+        }
     };
     for (registration, after, error) in [
         (true, false, AvatarError::Unavailable),
@@ -882,12 +1006,58 @@ async fn native_actual_effect_fence(
             "registration/precommit rejection must roll back effects and trigger evidence"
         );
     }
+    for fault in [
+        WitnessFault::MissingDescriptor,
+        WitnessFault::WrongRelease,
+        WitnessFault::WrongBody,
+        WitnessFault::WrongScope,
+        WitnessFault::Unpublished,
+        WitnessFault::Unconfirmed,
+        WitnessFault::AfterWitness,
+    ] {
+        let mut fence = authority(AvatarOperation::SetAvatar, false, false);
+        fence.fence.fault = fault;
+        let error = repository
+            .execute(own, mutation(), &catalog, release.source_digest(), &fence)
+            .await
+            .unwrap_err();
+        assert_eq!(
+            error,
+            if matches!(fault, WitnessFault::AfterWitness) {
+                AvatarError::Denied
+            } else {
+                AvatarError::Unavailable
+            }
+        );
+        assert_eq!(
+            repository
+                .execute(
+                    own,
+                    AvatarMutation::Read,
+                    &catalog,
+                    release.source_digest(),
+                    &reader
+                )
+                .await
+                .unwrap(),
+            before
+        );
+        let count: i64 = sqlx::query_scalar("select count(*) from concert_participant_effect_witnesses where event_id=$1 and actor_id=$2")
+            .bind(event).bind(user).fetch_one(pool).await.unwrap();
+        assert_eq!(count, 0, "failure must roll back both effect and witness");
+        let effects: i64 = sqlx::query_scalar("select count(*) from mcr_avatar_effect_probe")
+            .fetch_one(pool)
+            .await
+            .unwrap();
+        assert_eq!(effects, 0);
+    }
     let fence = authority(AvatarOperation::SetAvatar, false, false);
     let changed = repository
         .execute(own, mutation(), &catalog, release.source_digest(), &fence)
         .await
         .unwrap();
     assert_eq!(changed.avatar.revision.get(), 2);
+    assert_native_witness(pool, &fence.fence, own, "AVATAR", 1, 2).await;
     let identity = fence.fence.registered.lock().unwrap().clone().unwrap();
     let actual:(String,String,i64,String,i32,chrono::DateTime<chrono::Utc>)=sqlx::query_as("select table_name,system_identifier,database_oid,full_xid,backend_pid,backend_started from mcr_avatar_effect_probe").fetch_one(pool).await.unwrap();
     assert_eq!(
@@ -925,6 +1095,7 @@ async fn native_actual_effect_fence(
         .await
         .unwrap();
     assert_eq!(changed.participant.revision.get(), 2);
+    assert_native_witness(pool, &fence.fence, own, "PREFERENCES", 1, 2).await;
     let identity = fence.fence.registered.lock().unwrap().clone().unwrap();
     let actual:(String,String,i64,String,i32,chrono::DateTime<chrono::Utc>)=sqlx::query_as("select table_name,system_identifier,database_oid,full_xid,backend_pid,backend_started from mcr_avatar_effect_probe").fetch_one(pool).await.unwrap();
     assert_eq!(
@@ -938,5 +1109,119 @@ async fn native_actual_effect_fence(
             identity.backend_started
         )
     );
+    let mut late = authority(AvatarOperation::SetAvatar, false, false);
+    late.fence.fault = WitnessFault::AfterCommit;
+    // Bind the actual second request body for this separate operation.
+    let mut binding: platform::actor_delegation::owner_binding::OwnerBinding =
+        serde_json::from_value(late.fence.owner_binding.clone()).unwrap();
+    binding.body_digest = Sha256::digest(command(2, config_value(&selection))).into();
+    late.fence.witness.body_digest = binding.body_digest;
+    late.fence.witness.guard_binding_digest = binding.digest().unwrap();
+    late.fence.owner_binding = serde_json::to_value(binding).unwrap();
+    assert_eq!(
+        repository
+            .execute(
+                own,
+                AvatarMutation::Avatar(concert_domain::avatar::SetAvatar {
+                    expected: Revision::new(2).unwrap(),
+                    selection: selection.clone(),
+                }),
+                &catalog,
+                release.source_digest(),
+                &late
+            )
+            .await
+            .unwrap_err(),
+        AvatarError::Unavailable
+    );
+    assert_native_witness(pool, &late.fence, own, "AVATAR", 2, 3).await;
+    let committed = repository
+        .execute(
+            own,
+            AvatarMutation::Read,
+            &catalog,
+            release.source_digest(),
+            &reader,
+        )
+        .await
+        .unwrap();
+    assert_eq!(committed.avatar.revision.get(), 3);
+    for statement in [
+        "update concert_participant_effect_witnesses set committed_revision=committed_revision where operation_id=$1",
+        "delete from concert_participant_effect_witnesses where operation_id=$1",
+        "insert into concert_participant_effect_witnesses select * from concert_participant_effect_witnesses where operation_id=$1",
+    ] {
+        let error = sqlx::query(statement).bind(late.fence.witness.operation_id).execute(pool).await.unwrap_err();
+        assert_eq!(error.as_database_error().unwrap().code().as_deref(), Some("23514"));
+    }
+    let witnesses: Value = sqlx::query_scalar("select jsonb_agg(to_jsonb(w) order by operation_id) from concert_participant_effect_witnesses w where event_id=$1 and actor_id=$2")
+        .bind(event).bind(user).fetch_one(pool).await.unwrap();
+    assert_eq!(witnesses.as_array().unwrap().len(), 3);
+    std::fs::write(
+        std::path::PathBuf::from(std::env::var("MCR_BOOTSTRAP_ROOT").unwrap())
+            .join("avatar-witness-state.json"),
+        serde_json::to_vec(&json!({"event":event,"actor":user,"rows":witnesses})).unwrap(),
+    )
+    .unwrap();
     sqlx::raw_sql("drop trigger mcr_avatar_effect_probe_avatar on concert_avatar_settings; drop trigger mcr_avatar_effect_probe_preferences on concert_participants; drop function mcr_avatar_effect_probe_fn(); drop table mcr_avatar_effect_probe;").execute(pool).await.unwrap();
+}
+
+async fn assert_native_witness(
+    pool: &sqlx::PgPool,
+    fence: &NativeEffectFence,
+    key: ParticipantKey,
+    kind: &str,
+    expected: i64,
+    committed: i64,
+) {
+    let w = &fence.witness;
+    let identity = fence.registered.lock().unwrap().clone().unwrap();
+    let row =
+        sqlx::query("select * from concert_participant_effect_witnesses where operation_id=$1")
+            .bind(w.operation_id)
+            .fetch_one(pool)
+            .await
+            .unwrap();
+    for (name, expected) in [
+        ("operation_id", w.operation_id),
+        ("actor_id", key.user_id.uuid()),
+        ("event_id", key.event_id.uuid()),
+        ("session_family_id", w.session_family_id),
+        ("producer_instance_id", w.producer_instance_id),
+        ("scope_id", w.scope_id),
+    ] {
+        assert_eq!(row.get::<Uuid, _>(name), expected);
+    }
+    for (name, expected) in [
+        ("parent_digest", w.parent_digest),
+        ("guard_binding_digest", w.guard_binding_digest),
+        ("body_digest", w.body_digest),
+        ("effect_binding_digest", w.effect_binding_digest),
+    ] {
+        assert_eq!(row.get::<Vec<u8>, _>(name), expected);
+    }
+    assert_eq!(row.get::<String, _>("release_digest"), w.release_digest);
+    assert_eq!(row.get::<String, _>("mutation_kind"), kind);
+    assert_eq!(row.get::<i64, _>("expected_revision"), expected);
+    assert_eq!(row.get::<i64, _>("committed_revision"), committed);
+    assert_eq!(
+        row.get::<String, _>("concert_system_identifier"),
+        identity.system_identifier
+    );
+    assert_eq!(
+        row.get::<i64, _>("concert_database_oid"),
+        i64::from(identity.database_oid)
+    );
+    assert_eq!(row.get::<String, _>("concert_full_xid"), identity.full_xid);
+    assert_eq!(
+        row.get::<i32, _>("concert_backend_pid"),
+        identity.backend_pid
+    );
+    assert_eq!(
+        row.get::<chrono::DateTime<chrono::Utc>, _>("concert_backend_started"),
+        identity.backend_started
+    );
+    let digest: Vec<u8> = sqlx::query_scalar("select identity_digest from concert_product_owner_transactions where instance_id=$1 and scope_id=$2")
+        .bind(w.producer_instance_id).bind(w.scope_id).fetch_one(pool).await.unwrap();
+    assert_eq!(row.get::<Vec<u8>, _>("identity_digest"), digest);
 }

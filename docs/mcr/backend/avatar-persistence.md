@@ -420,7 +420,7 @@ no target/native cluster remains held. Actual external 207 SDK, participant
 adapter, root-held distributed guard and unknown-settlement quarantine remain
 separate owner obligations. No live authority or multiuser acceptance is claimed.
 
-## Successful-commit witness follow-up — assigned, not implemented
+## Successful-commit witness follow-up — source implementation
 
 Base `0a8c422645458c9397af9289e15089ee3f9cb0ad`; isolated branch
 `codex/mcr-be-avatar-witness`. The previously qualified actual-transaction
@@ -453,6 +453,39 @@ Participant209 before repository SQL edits. The matching proposed application AB
 now has a source draft: typed descriptor, redacted Debug, exact release/nil UUID
 validation and default Unavailable fence method, plus a regression for missing or
 malformed metadata. Formatting/diff checks pass; compilation and native checks
-remain NOT_RUN for this follow-up. No repository witness insert is implemented
-yet. Actual joined commit/abort qualification and full Product/participant
-admission remain open.
+remain NOT_RUN for this follow-up. The repository now has the exact frozen
+witness insert and native regressions in source; the separate joined commit/abort
+qualification and full Product/participant admission remain open.
+
+
+### Frozen 0035 contract and authored hook
+
+Participant209 froze migration0035 in `48b3ec737e209adb6f505afd3f96f84fd1026707`,
+SHA256 `113900167fdc2806a9f5126c508b8ae737bcc9ca718ce7dbf408e913d1c3bebc`.
+It remains their owned migration; this owner consumes its exact twenty-parameter
+INSERT contract without editing the schema. Mutation tokens are AVATAR and
+PREFERENCES. The descriptor also carries nonnil producer-instance/scope UUIDs.
+Identity digest uses the existing platform `identity_digest` with CONCERT,
+the actual captured tuple, exact effect digest, producer instance and **operation
+UUID bytes** as settlement reference. Scope UUID is joined separately and is not
+substituted into that digest recipe.
+
+The repository obtains the descriptor once after actual transaction registration,
+validates original release/IDs/digests before effects, then inserts exact actor,
+event, scope/request/effect bindings, native tuple and expected/next revision in
+the same SQLx transaction after UPDATE. Fence checks surround the insert and
+precede commit. Exactly one inserted row is required; no conflict shortcut or
+external commit boolean is accepted. Reads and synthetic None retain their old
+checkpoint behavior. Successful production mutations, including equal values,
+require the witness. No request/profile payload is persisted.
+
+Authored native regressions use explicitly synthetic component scope/Track rows
+with the real SQL constraints and captured transaction identity; they do not
+pretend to be real Auth/Friend registrations. They cover descriptor refusal,
+foreign release/body/scope, unpublished or unconfirmed scope, rejection after
+UPDATE and after witness insertion, successful avatar/preferences rows,
+postcommit uncertainty retaining a durable witness, immutable/cross-transaction
+reuse rejection and exact witness restart persistence. Actual sealed
+BoundParticipantAuthority/owner-protocol qualification remains Participant209's
+separate joined proof. These new native cases remain NOT_RUN at this source
+checkpoint, pending coherent migration consumption and a named build lease.
