@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "failure": "Generated fake content",
+  "diagnosis": "Initial probe matched the suffix of justify-content; false positive. Changed to a complete CSS property-name boundary.",
+  "productChangeRequired": false
+}

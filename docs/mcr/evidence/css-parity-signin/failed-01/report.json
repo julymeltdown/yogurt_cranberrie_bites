@@ -1,0 +1,293 @@
+{
+  "task": "CSS-PARITY-SIGNIN",
+  "job": "CSS-PARITY-SIGNIN-202611041019Z",
+  "round": "first",
+  "base": "29a42ca1f5d86262ee18141d2bab75996af7e6fd",
+  "candidate": "304344b078d016d68c134224a2e015ec8827237a",
+  "cssSha256": "cddd9a3a8831f89e3a947b8eed9a6a90fd27bcbbd08fd3cfa59c50c5e061b6a4",
+  "targetSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "fixture": "Existing cozy-backgrounds-v1 actual root, canonical Auth, synthetic HTTP/C05; not live admission or device acceptance",
+  "startedAt": "2026-11-04T10:20:12.109Z",
+  "limits": {
+    "durable": 25165824,
+    "temp": 125829120,
+    "whole": 150994944
+  },
+  "cases": [
+    {
+      "mode": "baseline",
+      "width": 390,
+      "errors": [],
+      "geometry": {
+        "heading": {
+          "x": 55.5,
+          "y": 169.875,
+          "width": 286.4375,
+          "height": 40.75,
+          "top": 169.875,
+          "right": 341.9375,
+          "bottom": 210.625,
+          "left": 55.5
+        },
+        "email": {
+          "x": 55.5,
+          "y": 244.109375,
+          "width": 286.4375,
+          "height": 44,
+          "top": 244.109375,
+          "right": 341.9375,
+          "bottom": 288.109375,
+          "left": 55.5
+        },
+        "password": {
+          "x": 55.5,
+          "y": 327.59375,
+          "width": 286.4375,
+          "height": 44,
+          "top": 327.59375,
+          "right": 341.9375,
+          "bottom": 371.59375,
+          "left": 55.5
+        },
+        "submit": {
+          "x": 55.5,
+          "y": 431.59375,
+          "width": 286.4375,
+          "height": 45.4375,
+          "top": 431.59375,
+          "right": 341.9375,
+          "bottom": 477.03125,
+          "left": 55.5
+        },
+        "providers": {
+          "x": 55.5,
+          "y": 577.671875,
+          "width": 286.4375,
+          "height": 48,
+          "top": 577.671875,
+          "right": 341.9375,
+          "bottom": 625.671875,
+          "left": 55.5
+        },
+        "create": {
+          "x": 45.5,
+          "y": 642.96875,
+          "width": 306.4375,
+          "height": 44,
+          "top": 642.96875,
+          "right": 351.9375,
+          "bottom": 686.96875,
+          "left": 45.5
+        },
+        "frame": {
+          "x": 6,
+          "y": 6,
+          "width": 378,
+          "height": 749.96875,
+          "top": 6,
+          "right": 384,
+          "bottom": 755.96875,
+          "left": 6
+        },
+        "overflow": false,
+        "text": "SIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+        "decorative": [
+          {
+            "selector": ".concert-window",
+            "background": "rgb(251, 242, 223) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-paper.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg\") repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 372,
+                "height": 195
+              },
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 372,
+                "height": 152.09375
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--top",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-clouds-top.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 372,
+                "height": 195
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--bottom",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 372,
+                "height": 152.09375
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "label": "Close sign-in and return home",
+            "disabled": false,
+            "rect": {
+              "x": 337,
+              "y": 7.5,
+              "width": 44,
+              "height": 44,
+              "top": 7.5,
+              "right": 381,
+              "bottom": 51.5,
+              "left": 337
+            }
+          },
+          {
+            "label": "email",
+            "disabled": false,
+            "rect": {
+              "x": 55.5,
+              "y": 244.109375,
+              "width": 286.4375,
+              "height": 44,
+              "top": 244.109375,
+              "right": 341.9375,
+              "bottom": 288.109375,
+              "left": 55.5
+            }
+          },
+          {
+            "label": "password",
+            "disabled": false,
+            "rect": {
+              "x": 55.5,
+              "y": 327.59375,
+              "width": 286.4375,
+              "height": 44,
+              "top": 327.59375,
+              "right": 341.9375,
+              "bottom": 371.59375,
+              "left": 55.5
+            }
+          },
+          {
+            "label": "Sign in with email",
+            "disabled": false,
+            "rect": {
+              "x": 55.5,
+              "y": 431.59375,
+              "width": 286.4375,
+              "height": 45.4375,
+              "top": 431.59375,
+              "right": 341.9375,
+              "bottom": 477.03125,
+              "left": 55.5
+            }
+          },
+          {
+            "label": "Forgot password?",
+            "disabled": false,
+            "rect": {
+              "x": 55.5,
+              "y": 477.03125,
+              "width": 286.4375,
+              "height": 44,
+              "top": 477.03125,
+              "right": 341.9375,
+              "bottom": 521.03125,
+              "left": 55.5
+            }
+          },
+          {
+            "label": "Continue with X",
+            "disabled": true,
+            "rect": {
+              "x": 89.71875,
+              "y": 577.671875,
+              "width": 66,
+              "height": 48,
+              "top": 577.671875,
+              "right": 155.71875,
+              "bottom": 625.671875,
+              "left": 89.71875
+            }
+          },
+          {
+            "label": "Continue with Discord",
+            "disabled": true,
+            "rect": {
+              "x": 165.71875,
+              "y": 577.671875,
+              "width": 66,
+              "height": 48,
+              "top": 577.671875,
+              "right": 231.71875,
+              "bottom": 625.671875,
+              "left": 165.71875
+            }
+          },
+          {
+            "label": "Continue with Google",
+            "disabled": true,
+            "rect": {
+              "x": 241.71875,
+              "y": 577.671875,
+              "width": 66,
+              "height": 48,
+              "top": 577.671875,
+              "right": 307.71875,
+              "bottom": 625.671875,
+              "left": 241.71875
+            }
+          },
+          {
+            "label": "Create an account",
+            "disabled": false,
+            "rect": {
+              "x": 179.53125,
+              "y": 642.96875,
+              "width": 130.390625,
+              "height": 44,
+              "top": 642.96875,
+              "right": 309.921875,
+              "bottom": 686.96875,
+              "left": 179.53125
+            }
+          }
+        ]
+      },
+      "screenshot": {
+        "path": "baseline-390.png",
+        "sha256": "c8d74794b59ea9674662b73dd857e51ad3737a8ed042918bfd491b20d5b0f7e5",
+        "bytes": 60783
+      },
+      "status": "PASS"
+    }
+  ],
+  "errors": [
+    {
+      "workflow": "Error: ENOENT: no such file or directory, stat '/private/tmp/mcr-css-signin-1019/playwright_chromiumdev_profile-TXven4/RunningChromeVersion'\n    at async stat (node:internal/fs/promises:1750:18)\n    at async size (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-parity-signin/native.mjs:31:197)\n    at async size (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-parity-signin/native.mjs:31:180)\n    at async budget (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-parity-signin/native.mjs:36:68)\n    at async run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-parity-signin/native.mjs:120:139)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-parity-signin/native.mjs:124:53"
+    }
+  ],
+  "minFree": 19273605120,
+  "peaks": {
+    "durable": 74559,
+    "temp": 22493629,
+    "whole": 22568188
+  },
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T10:20:13.991Z",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "ownTempRemoved": true
+  },
+  "status": "FAIL"
+}

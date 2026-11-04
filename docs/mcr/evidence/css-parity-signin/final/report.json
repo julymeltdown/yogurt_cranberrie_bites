@@ -1,0 +1,875 @@
+{
+  "task": "CSS-PARITY-SIGNIN",
+  "job": "CSS-SIGNIN-FINAL-202611041234Z",
+  "round": "final",
+  "base": "29a42ca1f5d86262ee18141d2bab75996af7e6fd",
+  "candidate": "ec616c4022bd0d6325cf900a4d43816a20147c4f",
+  "cssSha256": "ab114b93c3ab4834c2394a037a62f66984b2d15123611978388d8d18c3602c33",
+  "targetSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "fixture": "Existing cozy-backgrounds-v1 actual root, canonical Auth, synthetic HTTP/C05; not live admission or device acceptance",
+  "startedAt": "2026-11-04T12:35:01.322Z",
+  "limits": {
+    "durable": 25165824,
+    "temp": 125829120,
+    "whole": 150994944
+  },
+  "cases": [
+    {
+      "mode": "candidate",
+      "width": 390,
+      "errors": [],
+      "geometry": {
+        "heading": {
+          "x": 57.171875,
+          "y": 162.875,
+          "width": 277.125,
+          "height": 40.75,
+          "top": 162.875,
+          "right": 334.296875,
+          "bottom": 203.625,
+          "left": 57.171875
+        },
+        "email": {
+          "x": 57.171875,
+          "y": 244.109375,
+          "width": 277.125,
+          "height": 44,
+          "top": 244.109375,
+          "right": 334.296875,
+          "bottom": 288.109375,
+          "left": 57.171875
+        },
+        "password": {
+          "x": 57.171875,
+          "y": 325.59375,
+          "width": 277.125,
+          "height": 44,
+          "top": 325.59375,
+          "right": 334.296875,
+          "bottom": 369.59375,
+          "left": 57.171875
+        },
+        "submit": {
+          "x": 57.171875,
+          "y": 427.59375,
+          "width": 277.125,
+          "height": 45.4375,
+          "top": 427.59375,
+          "right": 334.296875,
+          "bottom": 473.03125,
+          "left": 57.171875
+        },
+        "providers": {
+          "x": 57.171875,
+          "y": 565.671875,
+          "width": 277.125,
+          "height": 48,
+          "top": 565.671875,
+          "right": 334.296875,
+          "bottom": 613.671875,
+          "left": 57.171875
+        },
+        "create": {
+          "x": 47.171875,
+          "y": 630.96875,
+          "width": 297.125,
+          "height": 44,
+          "top": 630.96875,
+          "right": 344.296875,
+          "bottom": 674.96875,
+          "left": 47.171875
+        },
+        "frame": {
+          "x": 6,
+          "y": 6,
+          "width": 378,
+          "height": 737.96875,
+          "top": 6,
+          "right": 384,
+          "bottom": 743.96875,
+          "left": 6
+        },
+        "overflow": false,
+        "text": "SIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+        "decorative": [
+          {
+            "selector": ".concert-window",
+            "background": "rgb(251, 242, 223) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-paper.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg\") repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 372,
+                "height": 195
+              },
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 372,
+                "height": 152.09375
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--top",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-clouds-top.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 372,
+                "height": 195
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--bottom",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 372,
+                "height": 152.09375
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "label": "Close sign-in and return home",
+            "disabled": false,
+            "rect": {
+              "x": 337,
+              "y": 7.5,
+              "width": 44,
+              "height": 44,
+              "top": 7.5,
+              "right": 381,
+              "bottom": 51.5,
+              "left": 337
+            }
+          },
+          {
+            "label": "email",
+            "disabled": false,
+            "rect": {
+              "x": 57.171875,
+              "y": 244.109375,
+              "width": 277.125,
+              "height": 44,
+              "top": 244.109375,
+              "right": 334.296875,
+              "bottom": 288.109375,
+              "left": 57.171875
+            }
+          },
+          {
+            "label": "password",
+            "disabled": false,
+            "rect": {
+              "x": 57.171875,
+              "y": 325.59375,
+              "width": 277.125,
+              "height": 44,
+              "top": 325.59375,
+              "right": 334.296875,
+              "bottom": 369.59375,
+              "left": 57.171875
+            }
+          },
+          {
+            "label": "Sign in with email",
+            "disabled": false,
+            "rect": {
+              "x": 57.171875,
+              "y": 427.59375,
+              "width": 277.125,
+              "height": 45.4375,
+              "top": 427.59375,
+              "right": 334.296875,
+              "bottom": 473.03125,
+              "left": 57.171875
+            }
+          },
+          {
+            "label": "Forgot password?",
+            "disabled": false,
+            "rect": {
+              "x": 57.171875,
+              "y": 473.03125,
+              "width": 277.125,
+              "height": 44,
+              "top": 473.03125,
+              "right": 334.296875,
+              "bottom": 517.03125,
+              "left": 57.171875
+            }
+          },
+          {
+            "label": "Continue with X",
+            "disabled": true,
+            "rect": {
+              "x": 86.734375,
+              "y": 565.671875,
+              "width": 66,
+              "height": 48,
+              "top": 565.671875,
+              "right": 152.734375,
+              "bottom": 613.671875,
+              "left": 86.734375
+            }
+          },
+          {
+            "label": "Continue with Discord",
+            "disabled": true,
+            "rect": {
+              "x": 162.734375,
+              "y": 565.671875,
+              "width": 66,
+              "height": 48,
+              "top": 565.671875,
+              "right": 228.734375,
+              "bottom": 613.671875,
+              "left": 162.734375
+            }
+          },
+          {
+            "label": "Continue with Google",
+            "disabled": true,
+            "rect": {
+              "x": 238.734375,
+              "y": 565.671875,
+              "width": 66,
+              "height": 48,
+              "top": 565.671875,
+              "right": 304.734375,
+              "bottom": 613.671875,
+              "left": 238.734375
+            }
+          },
+          {
+            "label": "Create an account",
+            "disabled": false,
+            "rect": {
+              "x": 176.546875,
+              "y": 630.96875,
+              "width": 130.390625,
+              "height": 44,
+              "top": 630.96875,
+              "right": 306.9375,
+              "bottom": 674.96875,
+              "left": 176.546875
+            }
+          }
+        ]
+      },
+      "screenshot": {
+        "path": "candidate-390.png",
+        "sha256": "73446b50ba840af84f458b85dd1b0681e89f07466913aa06e78d62b76b87955a",
+        "bytes": 60178
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      },
+      "focusScreenshot": {
+        "path": "focus-390.png",
+        "sha256": "13f13612ff0672b6a4b74b711519144df480fec4720ca4c6032fb4642226f665",
+        "bytes": 60908
+      },
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px"
+      },
+      "forcedScreenshot": {
+        "path": "forced-focus-390.png",
+        "sha256": "78fda3ebeff299a0ae2aa2d400d6b7ed7162f81830e8c74e131f857be1e32ab5",
+        "bytes": 54069
+      },
+      "errorScreenshot": {
+        "path": "error-390.png",
+        "sha256": "15d95d276126d3336a1b776a266dd1e08ceaca7bdc94f0a89267245f499a1a4e",
+        "bytes": 67973
+      },
+      "pendingScreenshot": {
+        "path": "pending-390.png",
+        "sha256": "6fce714a342c5eb6c9f310ac3fd95b24f34274a00cae07de2e32645afe59ea78",
+        "bytes": 56676
+      },
+      "unavailableScreenshot": {
+        "path": "options-unavailable-390.png",
+        "sha256": "3559641bec61b21e59258462c90eca1c4ff6e4c01504414c4d06863e1e9e87c8",
+        "bytes": 60061
+      },
+      "shortHeight": {
+        "viewport": 568,
+        "reachable": true,
+        "overflow": false
+      },
+      "shortScreenshot": {
+        "path": "short-height-390.png",
+        "sha256": "5a3d003a4edaf6067f366d0e76650e658559566b65aa6a9614fb3e66ce3c8e71",
+        "bytes": 59614
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "errors": [],
+      "geometry": {
+        "heading": {
+          "x": 53.28125,
+          "y": 153,
+          "width": 254.78125,
+          "height": 37.625,
+          "top": 153,
+          "right": 308.0625,
+          "bottom": 190.625,
+          "left": 53.28125
+        },
+        "email": {
+          "x": 53.28125,
+          "y": 229.359375,
+          "width": 254.78125,
+          "height": 44,
+          "top": 229.359375,
+          "right": 308.0625,
+          "bottom": 273.359375,
+          "left": 53.28125
+        },
+        "password": {
+          "x": 53.28125,
+          "y": 309.09375,
+          "width": 254.78125,
+          "height": 44,
+          "top": 309.09375,
+          "right": 308.0625,
+          "bottom": 353.09375,
+          "left": 53.28125
+        },
+        "submit": {
+          "x": 53.28125,
+          "y": 411.09375,
+          "width": 254.78125,
+          "height": 45.4375,
+          "top": 411.09375,
+          "right": 308.0625,
+          "bottom": 456.53125,
+          "left": 53.28125
+        },
+        "providers": {
+          "x": 53.28125,
+          "y": 549.171875,
+          "width": 254.78125,
+          "height": 48,
+          "top": 549.171875,
+          "right": 308.0625,
+          "bottom": 597.171875,
+          "left": 53.28125
+        },
+        "create": {
+          "x": 43.28125,
+          "y": 614.46875,
+          "width": 274.78125,
+          "height": 44,
+          "top": 614.46875,
+          "right": 318.0625,
+          "bottom": 658.46875,
+          "left": 43.28125
+        },
+        "frame": {
+          "x": 6,
+          "y": 6,
+          "width": 348,
+          "height": 721.46875,
+          "top": 6,
+          "right": 354,
+          "bottom": 727.46875,
+          "left": 6
+        },
+        "overflow": false,
+        "text": "SIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+        "decorative": [
+          {
+            "selector": ".concert-window",
+            "background": "rgb(251, 242, 223) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-paper.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg\") repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 342,
+                "height": 180
+              },
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 342,
+                "height": 140.390625
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--top",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-clouds-top.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 342,
+                "height": 180
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--bottom",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 342,
+                "height": 140.390625
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "label": "Close sign-in and return home",
+            "disabled": false,
+            "rect": {
+              "x": 307,
+              "y": 7.5,
+              "width": 44,
+              "height": 44,
+              "top": 7.5,
+              "right": 351,
+              "bottom": 51.5,
+              "left": 307
+            }
+          },
+          {
+            "label": "email",
+            "disabled": false,
+            "rect": {
+              "x": 53.28125,
+              "y": 229.359375,
+              "width": 254.78125,
+              "height": 44,
+              "top": 229.359375,
+              "right": 308.0625,
+              "bottom": 273.359375,
+              "left": 53.28125
+            }
+          },
+          {
+            "label": "password",
+            "disabled": false,
+            "rect": {
+              "x": 53.28125,
+              "y": 309.09375,
+              "width": 254.78125,
+              "height": 44,
+              "top": 309.09375,
+              "right": 308.0625,
+              "bottom": 353.09375,
+              "left": 53.28125
+            }
+          },
+          {
+            "label": "Sign in with email",
+            "disabled": false,
+            "rect": {
+              "x": 53.28125,
+              "y": 411.09375,
+              "width": 254.78125,
+              "height": 45.4375,
+              "top": 411.09375,
+              "right": 308.0625,
+              "bottom": 456.53125,
+              "left": 53.28125
+            }
+          },
+          {
+            "label": "Forgot password?",
+            "disabled": false,
+            "rect": {
+              "x": 53.28125,
+              "y": 456.53125,
+              "width": 254.78125,
+              "height": 44,
+              "top": 456.53125,
+              "right": 308.0625,
+              "bottom": 500.53125,
+              "left": 53.28125
+            }
+          },
+          {
+            "label": "Continue with X",
+            "disabled": true,
+            "rect": {
+              "x": 71.671875,
+              "y": 549.171875,
+              "width": 66,
+              "height": 48,
+              "top": 549.171875,
+              "right": 137.671875,
+              "bottom": 597.171875,
+              "left": 71.671875
+            }
+          },
+          {
+            "label": "Continue with Discord",
+            "disabled": true,
+            "rect": {
+              "x": 147.671875,
+              "y": 549.171875,
+              "width": 66,
+              "height": 48,
+              "top": 549.171875,
+              "right": 213.671875,
+              "bottom": 597.171875,
+              "left": 147.671875
+            }
+          },
+          {
+            "label": "Continue with Google",
+            "disabled": true,
+            "rect": {
+              "x": 223.671875,
+              "y": 549.171875,
+              "width": 66,
+              "height": 48,
+              "top": 549.171875,
+              "right": 289.671875,
+              "bottom": 597.171875,
+              "left": 223.671875
+            }
+          },
+          {
+            "label": "Create an account",
+            "disabled": false,
+            "rect": {
+              "x": 161.484375,
+              "y": 614.46875,
+              "width": 130.390625,
+              "height": 44,
+              "top": 614.46875,
+              "right": 291.875,
+              "bottom": 658.46875,
+              "left": 161.484375
+            }
+          }
+        ]
+      },
+      "screenshot": {
+        "path": "candidate-360.png",
+        "sha256": "e5d3deee12dcb860fbad5812f509eb314c28adbe653cb83ff10520f6f33d794c",
+        "bytes": 57710
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      },
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px"
+      },
+      "shortHeight": {
+        "viewport": 568,
+        "reachable": true,
+        "overflow": false
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "errors": [],
+      "geometry": {
+        "heading": {
+          "x": 62.34375,
+          "y": 176,
+          "width": 306.9375,
+          "height": 44.390625,
+          "top": 176,
+          "right": 369.28125,
+          "bottom": 220.390625,
+          "left": 62.34375
+        },
+        "email": {
+          "x": 62.34375,
+          "y": 262.8125,
+          "width": 306.9375,
+          "height": 44,
+          "top": 262.8125,
+          "right": 369.28125,
+          "bottom": 306.8125,
+          "left": 62.34375
+        },
+        "password": {
+          "x": 62.34375,
+          "y": 346.234375,
+          "width": 306.9375,
+          "height": 44,
+          "top": 346.234375,
+          "right": 369.28125,
+          "bottom": 390.234375,
+          "left": 62.34375
+        },
+        "submit": {
+          "x": 62.34375,
+          "y": 448.234375,
+          "width": 306.9375,
+          "height": 45.4375,
+          "top": 448.234375,
+          "right": 369.28125,
+          "bottom": 493.671875,
+          "left": 62.34375
+        },
+        "providers": {
+          "x": 62.34375,
+          "y": 586.3125,
+          "width": 306.9375,
+          "height": 48,
+          "top": 586.3125,
+          "right": 369.28125,
+          "bottom": 634.3125,
+          "left": 62.34375
+        },
+        "create": {
+          "x": 52.34375,
+          "y": 651.609375,
+          "width": 326.9375,
+          "height": 44,
+          "top": 651.609375,
+          "right": 379.28125,
+          "bottom": 695.609375,
+          "left": 52.34375
+        },
+        "frame": {
+          "x": 6,
+          "y": 6,
+          "width": 418,
+          "height": 791.59375,
+          "top": 6,
+          "right": 424,
+          "bottom": 797.59375,
+          "left": 6
+        },
+        "overflow": false,
+        "text": "SIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+        "decorative": [
+          {
+            "selector": ".concert-window",
+            "background": "rgb(251, 242, 223) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-paper.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg\") repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 412,
+                "height": 215
+              },
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 412,
+                "height": 167.6875
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--top",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-clouds-top.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png",
+                "width": 412,
+                "height": 215
+              }
+            ]
+          },
+          {
+            "selector": ".auth-cemetery--bottom",
+            "background": "rgba(0, 0, 0, 0) url(\"http://127.0.0.1:5295/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "images": [
+              {
+                "href": "/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png",
+                "width": 412,
+                "height": 167.6875
+              }
+            ]
+          }
+        ],
+        "controls": [
+          {
+            "label": "Close sign-in and return home",
+            "disabled": false,
+            "rect": {
+              "x": 377,
+              "y": 7.5,
+              "width": 44,
+              "height": 44,
+              "top": 7.5,
+              "right": 421,
+              "bottom": 51.5,
+              "left": 377
+            }
+          },
+          {
+            "label": "email",
+            "disabled": false,
+            "rect": {
+              "x": 62.34375,
+              "y": 262.8125,
+              "width": 306.9375,
+              "height": 44,
+              "top": 262.8125,
+              "right": 369.28125,
+              "bottom": 306.8125,
+              "left": 62.34375
+            }
+          },
+          {
+            "label": "password",
+            "disabled": false,
+            "rect": {
+              "x": 62.34375,
+              "y": 346.234375,
+              "width": 306.9375,
+              "height": 44,
+              "top": 346.234375,
+              "right": 369.28125,
+              "bottom": 390.234375,
+              "left": 62.34375
+            }
+          },
+          {
+            "label": "Sign in with email",
+            "disabled": false,
+            "rect": {
+              "x": 62.34375,
+              "y": 448.234375,
+              "width": 306.9375,
+              "height": 45.4375,
+              "top": 448.234375,
+              "right": 369.28125,
+              "bottom": 493.671875,
+              "left": 62.34375
+            }
+          },
+          {
+            "label": "Forgot password?",
+            "disabled": false,
+            "rect": {
+              "x": 62.34375,
+              "y": 493.671875,
+              "width": 306.9375,
+              "height": 44,
+              "top": 493.671875,
+              "right": 369.28125,
+              "bottom": 537.671875,
+              "left": 62.34375
+            }
+          },
+          {
+            "label": "Continue with X",
+            "disabled": true,
+            "rect": {
+              "x": 106.8125,
+              "y": 586.3125,
+              "width": 66,
+              "height": 48,
+              "top": 586.3125,
+              "right": 172.8125,
+              "bottom": 634.3125,
+              "left": 106.8125
+            }
+          },
+          {
+            "label": "Continue with Discord",
+            "disabled": true,
+            "rect": {
+              "x": 182.8125,
+              "y": 586.3125,
+              "width": 66,
+              "height": 48,
+              "top": 586.3125,
+              "right": 248.8125,
+              "bottom": 634.3125,
+              "left": 182.8125
+            }
+          },
+          {
+            "label": "Continue with Google",
+            "disabled": true,
+            "rect": {
+              "x": 258.8125,
+              "y": 586.3125,
+              "width": 66,
+              "height": 48,
+              "top": 586.3125,
+              "right": 324.8125,
+              "bottom": 634.3125,
+              "left": 258.8125
+            }
+          },
+          {
+            "label": "Create an account",
+            "disabled": false,
+            "rect": {
+              "x": 196.625,
+              "y": 651.609375,
+              "width": 130.390625,
+              "height": 44,
+              "top": 651.609375,
+              "right": 327.015625,
+              "bottom": 695.609375,
+              "left": 196.625
+            }
+          }
+        ]
+      },
+      "screenshot": {
+        "path": "candidate-430.png",
+        "sha256": "5a53df76685f238322df84474c3adbc937e7f049b7b8f2205b959fb7740f6bc8",
+        "bytes": 63398
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      },
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px"
+      },
+      "shortHeight": {
+        "viewport": 568,
+        "reachable": true,
+        "overflow": false
+      },
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "minFree": 17352744960,
+  "peaks": {
+    "durable": 5738871,
+    "temp": 29679685,
+    "whole": 34099514
+  },
+  "browser": "156.0.8078.80",
+  "comparison": {
+    "path": "comparison-390.png",
+    "sha256": "15539536201f24df7bad5e7bfd91319041cc02c61c73201a094fc2c957f10555",
+    "bytes": 505324
+  },
+  "finishedAt": "2026-11-04T12:35:47.887Z",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "ownTempRemoved": true
+  },
+  "status": "PASS_PENDING_OWNER_VISUAL_INSPECTION"
+}
