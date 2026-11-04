@@ -150,3 +150,23 @@ completion and both successful hosted CI recovery runs are preserved; this
 follow-up adds no original-task completion count. Future OwnOperationsAccess
 contract work is outside this frozen input and requires its actual publication
 and a separate coherent input update.
+
+## Canonical delivery and OwnAccess continuation
+
+The normal publisher delivered source
+`154b239826d908a5909f78239a90715feefe604b` at canonical
+`7ba6de456949136c33a068bdeee8bebb8e7822fd`, parent
+`3491e9c77e9747f48b4dfd109f3c107d703c1e86`. The publisher receipt
+confirms exact scoped modes and blobs for all 86 paths and preserved private
+Root state; its relevant cohort is retained in `enrollment-publication.json`.
+This consumes the required delivery receipt for the qualified 147-operation
+cohort. It does not expose OwnAccess.
+
+The same assigned goal now includes the separately published OwnAccess input
+and its necessary coherent generation. The machine-writer grant covers the
+transport metadata leaf under the unchanged generator. The owner-local driver
+adds an explicit OwnAccess mode: exactly one new bodyless GET registry entry,
+unchanged existing operations and unrelated query/error exports, and only the
+two corresponding source-hash comment updates. Existing frozen rounds remain
+immutable. The new cohort waits for actual canonical source publication and
+a fresh finite resource offer; no compute reservation is held while waiting.
