@@ -5,6 +5,53 @@ runtime or task acceptance. Existing immutable qualifications retain their own
 source pins. Fresh coherent compilation and relevant native/public checks remain
 required before these changes are published as qualified runtime work.
 
+## Current checkpoint after the serialized-response incident
+
+The [source intake receipt](root-source-intake-20261104.json) records six later
+packets over 80 distinct paths: CR09 Product cancellation, CR01–CR06 physical
+recovery, Party runtime, NB01/NB02 Notification binding, Operations, and V10
+spatial qualification. It lists each original handoff, delivered local ancestry,
+source/destination blobs and SHA256, and the two deliberate Operations composition
+changes. The original Operations document hash is retained; its machine-local
+evidence prefixes are now portable. Source originals are unchanged. Eighteen
+Python files parse, and eleven imported JSON files parse. These checks do not
+compile or qualify the combined runtime.
+
+CR09's ten actual PostgreSQL/mTLS cases and its public HTTP check passed on its
+original compiled source `c1fd3ec8`. NB02's seven integration and three private
+library tests passed with actual PostgreSQL on `d7ca2faf`. The other component
+results retain their original source pins and limitations in their own documents.
+None is relabeled as a passing build or public journey on this combined source.
+V10 remains `CONTRACT_READY` / `NOT_ADMITTED`; the canonical World input remains
+map four with the selected static avatar representation.
+
+The [participant incident receipt](participant-delivery-incident-20261104.json)
+records a distinct failure during the fresh current-master frontend replay.
+Initial real Auth/Profile/C03 and two-client World probes passed. Later, a C03
+GET returned 401 and a genuine Auth refresh returned 504. Read-only inspection
+found two `ACTIVE` roots already serialized but lacking delivery completion, with
+two Auth and two Friend prepared fences. Auth refresh rotation timed out waiting
+for the canonical relationship revision row. No live blocking backend PID was
+present in the later snapshot; that does not release a prepared fence.
+
+The owned runtime expired normally at `2026-11-04T06:09:03.072023Z`, with exit zero,
+no guard abort, exact private PostgreSQL root absent and owner process absent.
+Its sampled additional allocation was 146,251,776 bytes below a 1.5 GiB ceiling.
+There was no manual prepared rollback or runtime extension. This proves cleanup,
+not recovery. The initial backend checks and earlier frontend-cohort pass cannot
+accept the failed current-master replay; IN01 remains unfinished.
+
+CR10 owns the isolated Gateway participant delivery-retention correction. Source
+inspection identified post-gRPC identity/context checks and a route access check
+that can reject a serialized reply before retaining its delivery capability.
+This is a concrete hypothesis requiring a deterministic regression. The fix must
+retain only authenticated valid capabilities, hide expired content, and complete
+only after a genuine terminal HTTP response EOF. Dropped, partial, unknown, or
+unwitnessed work must remain fenced. A real subsequent Auth refresh and negative
+body-loss cases are required before another allocated browser replay. The
+production typed resolver union, complete factory composition and relevant fresh
+combined validation also remain open.
+
 ## Reviewed motion avatar v2
 
 Producer base `980fc4d8`, required candidate Rust prerequisite `83b23afd`, and
