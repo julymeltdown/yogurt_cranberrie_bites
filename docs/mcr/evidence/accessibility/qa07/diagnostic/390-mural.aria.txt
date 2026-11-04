@@ -1,0 +1,4 @@
+- paragraph: SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server.
+- button "Withdraw fixture qualification"
+- button "Supply fresh fixture qualification"
+- button "Invalidate fixture privacy"

@@ -1,0 +1,33 @@
+PASS 360 sheet
+FAIL 360 safety: Error: expect(locator).toBeEnabled() failed
+PASS 360 social
+PASS 360 safety-block
+PASS 360 account
+PASS 360 pickup-recipient
+PASS 360 pickup-reservation
+PASS 360 pickup-owner
+PASS 360 mural
+FAIL 360 root: Error: expect(locator).toBeVisible() failed
+FAIL 360 profile-return: Error: expect(locator).toBeEnabled() failed
+PASS 390 sheet
+FAIL 390 safety: Error: expect(locator).toBeEnabled() failed
+PASS 390 social
+PASS 390 safety-block
+PASS 390 account
+PASS 390 pickup-recipient
+PASS 390 pickup-reservation
+PASS 390 pickup-owner
+PASS 390 mural
+FAIL 390 root: Error: expect(locator).toBeVisible() failed
+FAIL 390 profile-return: Error: expect(locator).toBeEnabled() failed
+PASS 430 sheet
+FAIL 430 safety: Error: expect(locator).toBeEnabled() failed
+PASS 430 social
+PASS 430 safety-block
+PASS 430 account
+PASS 430 pickup-recipient
+PASS 430 pickup-reservation
+PASS 430 pickup-owner
+PASS 430 mural
+FAIL 430 root: Error: expect(locator).toBeVisible() failed
+FAIL 430 profile-return: Error: expect(locator).toBeEnabled() failed

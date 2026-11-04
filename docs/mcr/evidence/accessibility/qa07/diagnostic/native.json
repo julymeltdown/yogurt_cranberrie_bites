@@ -1,0 +1,22 @@
+{
+  "candidate": "cf706882ed91a2708f3ef1e514b1fc81886cffc5",
+  "qualification": "MOCK_READY_NATIVE_CLIENT_FIXTURES",
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "name": "mural",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual FE32 editor through frozen FE33 provider/adapter/default MapScene: trusted touchcancel makes no preview/write, keyboard arrows/Escape, labeled DOM coordinates and explicit confirmation, live status"
+      ]
+    }
+  ],
+  "limits": [
+    "Synthetic HTTP/WS, consent, pickup place/admission authority; no live server or two-principal journey",
+    "Native headless macOS Chrome at CSS widths, not physical iOS/Android or hardware keyboard",
+    "Browser accessibility tree and DOM labels, not real screen-reader announcements",
+    "All original 112 tasks/61 IA remain required; this is original QA07 evidence only"
+  ],
+  "status": "PASS"
+}
