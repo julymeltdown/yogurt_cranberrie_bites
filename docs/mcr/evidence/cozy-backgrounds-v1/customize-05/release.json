@@ -1,0 +1,24 @@
+{
+  "job": "ROOT-CUSTOMIZE-BG05-202611041016Z",
+  "acceptedAt": "2026-11-04T10:17:06+00:00",
+  "releasedAt": "2026-11-04T10:18:52.330253+00:00",
+  "totalElapsedSeconds": 106.330253,
+  "hardDeadline": "2026-11-04T10:20:06+00:00",
+  "measuredNativeAndChecksElapsedSeconds": 30.546476957999403,
+  "nativeCommandsExit": [
+    0,
+    0,
+    0
+  ],
+  "totalWithin180Seconds": true,
+  "remainingBeforeHardDeadlineSeconds": 73.669747,
+  "ownBrowserServerContextHandles": 0,
+  "tempAbsent": true,
+  "receiptAbsent": true,
+  "ownDependencyLinkAbsent": true,
+  "retainedOutputBytesBeforeRelease": 769794,
+  "nativePeakWholeBytes": 33226339,
+  "carryBytes": 7417443,
+  "minimumFreeBytes": 19277062144,
+  "qualifiedVisualDisposition": "PENDING_OWNER_INSPECTION"
+}

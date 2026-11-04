@@ -1,0 +1,75 @@
+{
+  "status": "MEASURED_PASS_PENDING_ARTIST_VISUAL_INSPECTION",
+  "qualification": "Actual default router/Auth/Phaser; QA06 DEV synthetic HTTP/C05/local admission only. Guarded Wall remains guarded; no live service or physical device acceptance.",
+  "candidate": "6820b8757b8c39132fdbd2e2445409a7dee63b9c",
+  "job": "ROOT-CUSTOMIZE-BG05-202611041016Z",
+  "contexts": 6,
+  "pngs": 6,
+  "canvasComparisons": 12,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "lowerFieldChangedFractions": {
+    "390": 0.9405787818795854,
+    "360": 0.9404437688686216,
+    "430": 0.9338438891030808
+  },
+  "rawReportSha256": "fdbaeb2f5534319985b63caa66588581e6edcffb62e2a5bf884ddded5e0633c9",
+  "finishedAt": "2026-11-04T10:18:25.944613+00:00",
+  "limits": [
+    "No live service, physical-device, original layered-customization or foreground-reference-parity acceptance.",
+    "Same-source baseline restores only the declared old Customize background stylesheet."
+  ],
+  "resource": {
+    "job": "ROOT-CUSTOMIZE-BG05-202611041016Z",
+    "candidate": "6820b8757b8c39132fdbd2e2445409a7dee63b9c",
+    "driver_sha256": "349c9dc4e7f162fec33e834913bc5934ce098229848625c969d449e163158d1f",
+    "commands": [
+      {
+        "command": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "src/app/__tests__/customize-background-02/native.mjs"
+        ],
+        "exit_code": 0,
+        "started_at": "2026-11-04T10:17:06.683826+00:00",
+        "log": "1.log"
+      },
+      {
+        "command": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "node_modules/oxlint/bin/oxlint",
+          "src/app/__tests__/customize-background-02"
+        ],
+        "exit_code": 0,
+        "started_at": "2026-11-04T10:17:06.946878+00:00",
+        "log": "2.log"
+      },
+      {
+        "command": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "src/app/__tests__/customize-background-02/native.mjs"
+        ],
+        "exit_code": 0,
+        "started_at": "2026-11-04T10:17:07.210342+00:00",
+        "log": "3.log"
+      }
+    ],
+    "failure": null,
+    "elapsed_seconds": 30.546476957999403,
+    "peaks": {
+      "whole": 33226339,
+      "temp": 25219072,
+      "durable": 606208
+    },
+    "carried_art_bytes": 7417443,
+    "minimum_free_bytes": 19277062144,
+    "temp_absent": true,
+    "owned_link_absent": true,
+    "started_at": "2026-11-04T10:17:06.625707+00:00",
+    "finished_at": "2026-11-04T10:17:37.172182+00:00",
+    "absolute_deadline": "2026-11-04T10:20:06+00:00"
+  }
+}
