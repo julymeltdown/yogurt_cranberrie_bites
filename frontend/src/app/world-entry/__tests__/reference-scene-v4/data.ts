@@ -28,8 +28,11 @@ export function snapshot(data: SceneData, roomId: string): Snapshot {
   const { geometry: g } = data.map
   const cells: { x: number; y: number }[] = []
   const spawn = g.spawns.find(s => s.spawn_id === g.default_spawn_id)!
-  for (let y = spawn.cell_y; y < spawn.cell_y + 6 && cells.length < 6; y++) for (let x = spawn.cell_x - 1; x < spawn.cell_x + 6 && cells.length < 6; x++) {
-    if (!g.collision_grid[y]![x]) cells.push({ x: (x + .5) * 16, y: (y + .5) * 16 })
+  // TEST_ONLY: keep all selected source characters separately legible; no C05/server placement claim.
+  for (const [dx, dy] of [[0, 1], [-5, -3], [5, -3], [0, -3], [-5, 1], [5, 1]]) {
+    const x = spawn.cell_x + dx!, y = spawn.cell_y + dy!
+    if (g.collision_grid[y]![x]) throw Error('Synthetic roster feet must remain canonical clear cells')
+    cells.push({ x: (x + .5) * 16, y: (y + .5) * 16 })
   }
   return validate<Snapshot>('Snapshot', { ...movement.messages[1]!.message, eventId, roomId,
     mapId: data.map.map_id, mapRevision: data.map.map_revision, avatarManifestId: data.avatar.manifest_id,

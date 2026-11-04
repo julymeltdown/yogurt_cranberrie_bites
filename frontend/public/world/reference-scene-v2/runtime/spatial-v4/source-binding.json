@@ -6,10 +6,15 @@
   "source_revision": "492160b15465818eca172f4017f3816d58c989a9",
   "candidate_map": {
     "map_id": "mcr_reference_scene_r3",
-    "map_revision": null,
+    "map_revision": 5,
     "minimum_map_revision": 5,
-    "allocation": "PENDING_ACTUAL_BACKEND_PRODUCER",
+    "allocation": "ALLOCATED_BY_CANONICAL_BACKEND_PRODUCER_NOT_RELEASED",
     "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f"
+  },
+  "backend_allocation": {
+    "commit": "ed34331cac41d1997335b5f6dc93f33429005a91",
+    "evidence_path": "docs/mcr/backend/spatial-release.md",
+    "authority": "Source identity reservation only; producer qualification, release and admission pending."
   },
   "source_inputs": [
     {
@@ -480,5 +485,5 @@
     },
     "authority": "MAP-only decoration; no third PNG, C06 extension, admission or invented hit target."
   },
-  "authority": "Exact public source bytes only; actual server revision is producer-owned. No release/source-review/physical admission."
+  "authority": "Exact public source bytes only; Server revision5 allocated by the producer; no release/source-review/physical admission."
 }

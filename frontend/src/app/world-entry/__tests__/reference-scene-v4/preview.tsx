@@ -84,7 +84,7 @@ const ports = createProductionPorts(auth, { origin: location.origin, localInput,
    caches.push(files); request.signal.addEventListener('abort', files.dispose, { once: true })
    const themeId = data.theme.theme_id
    if (!isThemeId(themeId)) throw Error('Invalid fixture era')
-   // Only separately derived and validated descriptors carry the real published source qualification.
+   // Original UNREVIEWED source only; optional eras remain disabled pending genuine producer qualification.
    return { bootstrap: request.bootstrap.document!, privacyScope: request.privacyScope, themeId, availableThemeIds: [themeId],
     rooms: rooms(), roomId: rooms().default_room_id, resources: files.resources, movementPolicy: localInput.movementPolicy, zoom: localInput.zoom }
   },

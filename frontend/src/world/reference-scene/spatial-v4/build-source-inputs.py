@@ -125,11 +125,13 @@ def build():
     (HERE / 'map-labels-pins.json').write_text(json.dumps(labels_pin, indent=2) + '\n')
     binding = dict(format='MCR_REFERENCE_SCENE_SPATIAL4_PUBLIC_INPUTS', version=1, status='NOT_RELEASE_BOUND',
                    production_status='NOT_ADMITTED', source_revision=SOURCE_REVISION,
-                   candidate_map=dict(map_id=output['map_id'], map_revision=None, minimum_map_revision=5,
-                                      allocation='PENDING_ACTUAL_BACKEND_PRODUCER', geometry_hash=source['geometry_hash']),
+                   candidate_map=dict(map_id=output['map_id'], map_revision=5, minimum_map_revision=5,
+                                      allocation='ALLOCATED_BY_CANONICAL_BACKEND_PRODUCER_NOT_RELEASED', geometry_hash=source['geometry_hash']),
+                   backend_allocation=dict(commit='ed34331cac41d1997335b5f6dc93f33429005a91', evidence_path='docs/mcr/backend/spatial-release.md',
+                                           authority='Source identity reservation only; producer qualification, release and admission pending.'),
                    source_inputs=[dict(path='world/reference-scene-v2/' + path, sha256=pin) for path, pin in pins.items()],
                    tilemap=tile, scenes=binding_scenes, map_presentation=labels_pin,
-                   authority='Exact public source bytes only; actual server revision is producer-owned. No release/source-review/physical admission.')
+                   authority='Exact public source bytes only; Server revision5 allocated by the producer; no release/source-review/physical admission.')
     (runtime / 'source-binding.json').write_text(json.dumps(binding, indent=2) + '\n')
     print(json.dumps(dict(map=binding['candidate_map'], tilemap=tile, source_pins=len(pins), world_objects=34, changed_cells=len(changed))))
 

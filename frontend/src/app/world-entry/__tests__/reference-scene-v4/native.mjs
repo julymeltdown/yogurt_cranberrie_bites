@@ -93,7 +93,7 @@ try {
         const rectangles = labels.map(({ rect: r }) => ({ left: image.left + r.x / 768 * image.width, top: image.top + r.y / 1296 * image.height, width: r.width / 768 * image.width, height: r.height / 1296 * image.height }))
         const overlap = (a, b) => a.left < b.left + b.width && a.left + a.width > b.left && a.top < b.top + b.height && a.top + a.height > b.top
         return { duplicatePlaques: document.querySelectorAll('[data-map-painted-label] svg').length,
-          overlaps: [...document.querySelectorAll('.places-map-plaque:not([data-map-painted-label])')].flatMap(node => rectangles.filter(r => overlap(node.getBoundingClientRect(), r)).map(() => node.getAttribute('aria-label'))) }
+          overlaps: [...document.querySelectorAll('.places-map-plaque:not([data-map-painted-label]), .places-map-zoom')].flatMap(node => rectangles.filter(r => overlap(node.getBoundingClientRect(), r)).map(() => node.getAttribute('aria-label'))) }
       }, labelSource.labels)
       assert.equal(labelLayout.duplicatePlaques, 0); assert.deepEqual(labelLayout.overlaps, [])
       await page.locator('[data-map-painted-label=stage_info]').focus(); await expect(page.locator('[data-map-painted-label=stage_info]')).toBeFocused()

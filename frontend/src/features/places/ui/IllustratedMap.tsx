@@ -7,7 +7,7 @@ import { physicalStatus } from '../model/contract'
 import { getReferenceOverviewMetadata } from '../../../world/reference-scene'
 import { mapViewport, overviewIdentity } from './reference-scene/viewport'
 import { referenceAnnotations, type AnnotationRect } from './reference-scene/annotations'
-import { spatialV4LabelObstacles } from './reference-scene/spatial-v4-label-obstacles'
+import { spatialV4LabelObstacles, spatialV4ZoomBottom } from './reference-scene/spatial-v4-label-obstacles'
 
 function LandmarkIcon({ interaction }: { interaction: string }) {
   if (/gifts?/.test(interaction)) return <ConcertIcon name="gifts" />
@@ -155,7 +155,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
         </span>}
       </div>
     </div>
-    <div ref={zoomControls} className="places-map-zoom" aria-label="Map view zoom">
+    <div ref={zoomControls} className="places-map-zoom" style={labelObstacles.length ? { bottom: spatialV4ZoomBottom(view, labelObstacles) } : undefined} aria-label="Map view zoom">
       <button type="button" aria-label="Zoom in map view" disabled={effectiveZoom >= 3 || !ready} onClick={() => setZoom(clamp(effectiveZoom + .25, minZoom, 3))}>+</button>
       <button type="button" aria-label="Zoom out map view" disabled={effectiveZoom <= minZoom || !ready} onClick={() => setZoom(clamp(effectiveZoom - .25, minZoom, 3))}>−</button>
     </div>

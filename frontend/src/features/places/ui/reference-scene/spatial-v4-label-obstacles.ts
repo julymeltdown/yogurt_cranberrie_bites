@@ -13,3 +13,17 @@ export function spatialV4LabelObstacles(identity: ReferenceOverviewIdentity, wid
     height: label.rect.height / presentation.dimensions.height * height,
   }))
 }
+
+/** Keep the existing 44px controls above the caption, inside a short viewport and off label ink. */
+export function spatialV4ZoomBottom(view: { left: number; top: number; width: number; height: number }, labels: ReturnType<typeof spatialV4LabelObstacles>) {
+  if (!labels.length) return undefined
+  const max = Math.max(105, view.height - 60)
+  const choices = [Math.min(200, max)]
+  for (let bottom = 105; bottom <= max; bottom += 16) choices.push(bottom)
+  function covered(bottom: number) {
+    const left = view.left + view.width - 56, top = view.top + view.height + 44 - bottom - 92
+    return labels.reduce((area, label) => area + Math.max(0, Math.min(left + 48, label.left + label.width) - Math.max(left, label.left))
+      * Math.max(0, Math.min(top + 92, label.top + label.height) - Math.max(top, label.top)), 0)
+  }
+  return choices.sort((a, b) => covered(a) - covered(b))[0]
+}
