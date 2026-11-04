@@ -20,8 +20,8 @@ const PRODUCER_POLICY: MethodPolicy = MethodPolicy {
     service: "authority.lease.v1.ProducerSettlementService",
     workload: Some(Workload::Concert),
     methods: &[
-        ("ResolveScope", &[Workload::Auth, Workload::Friend]),
         ("ResolveTransaction", &[Workload::Auth, Workload::Friend]),
+        ("ResolveScope", &[Workload::Auth, Workload::Friend]),
     ],
     actor_fields: &[],
 };

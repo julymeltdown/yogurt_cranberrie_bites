@@ -104,10 +104,15 @@ where
         }
         let future = self.0.call(request);
         Box::pin(platform::call_deadline::scope(stop, async move {
-            match tokio::time::timeout_at(stop.into(), future).await {
-                Ok(result) => result.map(|r| r.map(Body::new)),
-                Err(_) => Ok(Status::deadline_exceeded("Owner operation expired").into_http()),
-            }
+            let mut response = match tokio::time::timeout_at(stop.into(), future).await {
+                Ok(result) => result?.map(Body::new),
+                Err(_) => Status::deadline_exceeded("Owner operation expired").into_http(),
+            };
+            response.headers_mut().insert(
+                http::header::CACHE_CONTROL,
+                http::HeaderValue::from_static("no-store"),
+            );
+            Ok(response)
         }))
     }
 }

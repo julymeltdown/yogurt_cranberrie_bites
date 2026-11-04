@@ -314,6 +314,41 @@ async fn actual_transactions_enrollment_sealing_and_quarantine() -> anyhow::Resu
         .bind(digest(&b))
         .execute(&prod)
         .await?;
+    let mut aborting = prod.begin().await?;
+    let row=sqlx::query("select pg_current_xact_id()::text xid,pg_backend_pid() pid,(extract(epoch from backend_start)*1000000)::bigint started from pg_stat_activity where pid=pg_backend_pid()").fetch_one(&mut *aborting).await?;
+    let aborted_identity = proto::TransactionIdentity {
+        full_xid: row.get("xid"),
+        backend_pid: row.get("pid"),
+        backend_started_unix_micros: row.get("started"),
+        settlement_reference: Uuid::new_v4().as_bytes().to_vec(),
+        ..identity.clone()
+    };
+    let aborted = store
+        .track(
+            proto::TrackRequest {
+                transaction: Some(aborted_identity.clone()),
+                ..q.clone()
+            },
+            Workload::Concert,
+            &clock(),
+        )
+        .await?;
+    sqlx::query("insert into fixture_registrations(id,identity,digest) values($1,$2,$3)")
+        .bind(Uuid::parse_str(&aborted.registration_id)?)
+        .bind(aborted_identity.encode_to_vec())
+        .bind(digest(&b))
+        .execute(&prod)
+        .await?;
+    let mut forged_completion = completion(&b, &g);
+    forged_completion.completion_secret[0] ^= 1;
+    assert_eq!(
+        store
+            .complete(forged_completion, &clock())
+            .await
+            .unwrap_err()
+            .code(),
+        tonic::Code::PermissionDenied
+    );
     // Root is still assembling: even zero committed effects cannot release.
     assert!(
         !store
@@ -348,6 +383,7 @@ async fn actual_transactions_enrollment_sealing_and_quarantine() -> anyhow::Resu
         .execute(&mut *effect)
         .await?;
     effect.commit().await?;
+    aborting.rollback().await?;
     assert!(
         store
             .complete(completion(&b, &g), &clock())

@@ -322,6 +322,41 @@ async fn actual_transactions_enrollment_sealing_and_quarantine() -> anyhow::Resu
         .bind(digest(&b))
         .execute(&prod)
         .await?;
+    let mut aborting = prod.begin().await?;
+    let row=sqlx::query("select pg_current_xact_id()::text xid,pg_backend_pid() pid,(extract(epoch from backend_start)*1000000)::bigint started from pg_stat_activity where pid=pg_backend_pid()").fetch_one(&mut *aborting).await?;
+    let aborted_identity = proto::TransactionIdentity {
+        full_xid: row.get("xid"),
+        backend_pid: row.get("pid"),
+        backend_started_unix_micros: row.get("started"),
+        settlement_reference: Uuid::new_v4().as_bytes().to_vec(),
+        ..identity.clone()
+    };
+    let aborted = store
+        .track(
+            proto::TrackRequest {
+                transaction: Some(aborted_identity.clone()),
+                ..q.clone()
+            },
+            Workload::Concert,
+            &clock(),
+        )
+        .await?;
+    sqlx::query("insert into fixture_registrations(id,identity,digest) values($1,$2,$3)")
+        .bind(Uuid::parse_str(&aborted.registration_id)?)
+        .bind(aborted_identity.encode_to_vec())
+        .bind(digest(&b))
+        .execute(&prod)
+        .await?;
+    let mut forged_completion = completion(&b, &g);
+    forged_completion.completion_secret[0] ^= 1;
+    assert_eq!(
+        store
+            .complete(forged_completion, &clock())
+            .await
+            .unwrap_err()
+            .code(),
+        tonic::Code::PermissionDenied
+    );
     // Root is still assembling: even zero committed effects cannot release.
     assert!(
         !store
@@ -356,6 +391,7 @@ async fn actual_transactions_enrollment_sealing_and_quarantine() -> anyhow::Resu
         .execute(&mut *effect)
         .await?;
     effect.commit().await?;
+    aborting.rollback().await?;
     assert!(
         store
             .complete(completion(&b, &g), &clock())
@@ -568,7 +604,7 @@ async fn actual_security_generation_distinguishes_rotation_and_invalidation() ->
     assert!(suspended > password);
     // A ROTATED label with no real same-family successor cannot bypass it.
     let before_fake = generation(&p, actor).await?;
-    sqlx::query("update refresh_tokens set revoked_at=clock_timestamp(),rotated_at=clock_timestamp(),revoked_reason='ROTATED',successor_jti=$2 where jti=$1").bind(&login.jti).bind(Uuid::new_v4().to_string()).execute(&p).await?;
+    sqlx::query("update refresh_tokens set revoked_at=transaction_timestamp(),rotated_at=transaction_timestamp(),revoked_reason='ROTATED',successor_jti=$2 where jti=$1").bind(&login.jti).bind(Uuid::new_v4().to_string()).execute(&p).await?;
     assert!(generation(&p, actor).await? > before_fake);
     sqlx::query("delete from users where id=$1")
         .bind(actor)
@@ -595,6 +631,19 @@ async fn actual_security_generation_distinguishes_rotation_and_invalidation() ->
             .is_err()
     );
     assert_eq!(generation(&p, other).await?, other_initial);
+    let active = RefreshTokenRecord {
+        user_id: actor,
+        jti: Uuid::new_v4().to_string(),
+        family_id: Uuid::new_v4(),
+        ..next.clone()
+    };
+    sessions.store(&(&active).into()).await?;
+    let before_truncate = generation(&p, actor).await?;
+    sqlx::query("truncate refresh_tokens").execute(&p).await?;
+    assert!(generation(&p, actor).await? > before_truncate);
+    let before_users = generation(&p, actor).await?;
+    sqlx::query("truncate users cascade").execute(&p).await?;
+    assert!(generation(&p, actor).await? > before_users);
     println!("Auth per-user generations: actual rotation/login stable; logout/password/suspension/delete/recreate monotonic; rollback and unrelated user stable; tamper rejected PASS");
     p.close().await;
     prod.close().await;

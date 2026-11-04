@@ -338,8 +338,27 @@ impl PgOwnerAuthority {
             sqlx::query("update public.concert_owner_guard_leases set scope_settlement=$2 where guard_id=$1").bind(id).bind(model::json(&result)?).execute(&mut *tx).await.map_err(super::unavailable)?;
         }
         let pending=sqlx::query("select registration_id,identity from public.concert_owner_guard_participants where guard_id=$1 and state='PENDING' order by registration_id").bind(id).fetch_all(&mut *tx).await.map_err(super::unavailable)?;
+        // Commit scope proof and each terminal participant independently. A
+        // slow later participant cannot discard earlier durable progress on the
+        // two-second cleanup budget. The sealed lease serializes each step.
+        tx.commit().await.map_err(super::unavailable)?;
         for row in pending {
+            let mut tx = self.transaction(budget).await?;
+            let current = self
+                .lock(&mut tx, id, false)
+                .await?
+                .ok_or_else(model::unavailable)?;
+            if current.state == "COMPLETED" {
+                return Ok(true);
+            }
+            if current.state != "SEALED" || current.scope_settlement.is_none() {
+                return Err(model::unavailable());
+            }
             let registration: Uuid = row.try_get("registration_id").map_err(super::unavailable)?;
+            let state:String=sqlx::query_scalar("select state from public.concert_owner_guard_participants where registration_id=$1 and guard_id=$2").bind(registration).bind(id).fetch_one(&mut *tx).await.map_err(super::unavailable)?;
+            if state != "PENDING" {
+                continue;
+            }
             let identity: proto::TransactionIdentity =
                 model::decode(row.try_get("identity").map_err(super::unavailable)?)?;
             let result = self
@@ -373,9 +392,9 @@ impl PgOwnerAuthority {
             };
             budget.sql(&mut tx).await?;
             sqlx::query("update public.concert_owner_guard_participants set state=$2,settlement=$3,settled_at=clock_timestamp() where registration_id=$1").bind(registration).bind(state).bind(model::json(&result)?).execute(&mut *tx).await.map_err(super::unavailable)?;
+            tx.commit().await.map_err(super::unavailable)?;
         }
-        // Persist all actual terminal evidence BEFORE releasing the source lock.
-        tx.commit().await.map_err(super::unavailable)?;
+        // Every actual terminal proof is durable BEFORE releasing source locks.
         let mut tx = self.transaction(budget).await?;
         let lease = self
             .lock(&mut tx, id, false)
