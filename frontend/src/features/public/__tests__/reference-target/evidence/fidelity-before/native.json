@@ -1,0 +1,60 @@
+{
+  "result": "PASS",
+  "qualification": "Actual Landing/PublicFrame and createAppRoutes, explicit synthetic MemorySession/document fixtures; actual production unavailable route also checked. No live auth/world/physical-device or all-ten-screen acceptance.",
+  "cases": [
+    {
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 378,
+          "height": 630
+        },
+        "wordmark": {
+          "x": 32.1875,
+          "y": 87.546875,
+          "width": 333,
+          "height": 174.234375
+        },
+        "scene": {
+          "x": 10,
+          "y": 181.453125,
+          "width": 370,
+          "height": 246.65625
+        },
+        "crowd": {
+          "x": 13.6875,
+          "y": 325.4375,
+          "width": 362.59375,
+          "height": 162.75
+        },
+        "copy": {
+          "x": 24.796875,
+          "y": 501.546875,
+          "width": 340.40625,
+          "height": 80.5625
+        },
+        "cta": {
+          "x": 39.59375,
+          "y": 594.453125,
+          "width": 310.8125,
+          "height": 44
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": null,
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    }
+  ],
+  "screenshots": [
+    "landing-390.png",
+    "poster-390.png"
+  ],
+  "errors": []
+}

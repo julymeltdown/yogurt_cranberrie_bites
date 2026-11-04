@@ -81,3 +81,19 @@ impl ParticipantDecisionVerifier {
         self.0
     }
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn decision_keys_are_separate_from_gateway_and_wrong_audiences() {
+        let old = ActorDelegationSigner::from_seed(Workload::Gateway, &[41; 32]).unwrap();
+        let gateway = ActorDelegationVerifier::new(Workload::Concert, &[old.public_key()]).unwrap();
+        assert!(ParticipantDecisionSigner::from_seed(&[41; 32], &gateway).is_err());
+        let signer = ParticipantDecisionSigner::from_seed(&[39; 32], &gateway).unwrap();
+        assert!(ParticipantDecisionVerifier::new(&[signer.public_key()], &gateway).is_ok());
+        assert!(ParticipantDecisionVerifier::new(&[], &gateway).is_err());
+        assert!(ParticipantDecisionVerifier::new(&[old.public_key()], &gateway).is_err());
+        let wrong = ActorDelegationVerifier::new(Workload::Profile, &[old.public_key()]).unwrap();
+        assert!(ParticipantDecisionVerifier::new(&[signer.public_key()], &wrong).is_err());
+    }
+}

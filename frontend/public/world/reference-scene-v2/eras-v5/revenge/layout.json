@@ -1,0 +1,831 @@
+{
+  "format": "MCR_PAINTED_SCENE_LAYOUT",
+  "version": 5,
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "theme_id": "REVENGE",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "ground": "../../runtime-v4/parade-ground.png",
+  "atlas": "atlas.png",
+  "frames": {
+    "stage": {
+      "x": 13,
+      "y": 15,
+      "width": 230,
+      "height": 226
+    },
+    "white_merch_booth": {
+      "x": 276,
+      "y": 19,
+      "width": 216,
+      "height": 217
+    },
+    "white_food_booth": {
+      "x": 529,
+      "y": 19,
+      "width": 221,
+      "height": 217
+    },
+    "park_plaque": {
+      "x": 783,
+      "y": 31,
+      "width": 225,
+      "height": 193
+    },
+    "tree_green": {
+      "x": 16,
+      "y": 274,
+      "width": 224,
+      "height": 219
+    },
+    "tree_yellow": {
+      "x": 278,
+      "y": 276,
+      "width": 211,
+      "height": 216
+    },
+    "tree_dark": {
+      "x": 528,
+      "y": 288,
+      "width": 223,
+      "height": 192
+    },
+    "tree_red": {
+      "x": 792,
+      "y": 285,
+      "width": 208,
+      "height": 198
+    },
+    "meeting_pavilion": {
+      "x": 15,
+      "y": 555,
+      "width": 226,
+      "height": 169
+    },
+    "giveaway_pavilion": {
+      "x": 275,
+      "y": 555,
+      "width": 218,
+      "height": 169
+    },
+    "north_hall": {
+      "x": 528,
+      "y": 561,
+      "width": 223,
+      "height": 158
+    },
+    "west_hall": {
+      "x": 780,
+      "y": 557,
+      "width": 232,
+      "height": 166
+    },
+    "food_counter": {
+      "x": 16,
+      "y": 806,
+      "width": 223,
+      "height": 180
+    },
+    "plaza_furniture": {
+      "x": 272,
+      "y": 817,
+      "width": 224,
+      "height": 157
+    },
+    "cross_banner": {
+      "x": 580,
+      "y": 784,
+      "width": 120,
+      "height": 224
+    },
+    "shrub_bed": {
+      "x": 774,
+      "y": 819,
+      "width": 244,
+      "height": 154
+    }
+  },
+  "placements": [
+    {
+      "id": "main_stage",
+      "frame": "stage",
+      "x": 160,
+      "y": 216,
+      "depth_y": 539,
+      "footprint": [
+        [
+          176.96,
+          463.2
+        ],
+        [
+          413.57,
+          400.8
+        ],
+        [
+          451.07,
+          472.8
+        ],
+        [
+          218.93,
+          538.8
+        ]
+      ],
+      "interaction_id": "stage_info",
+      "width": 300,
+      "height": 336
+    },
+    {
+      "id": "north_white_food",
+      "frame": "white_food_booth",
+      "x": 665,
+      "y": 210,
+      "width": 100,
+      "height": 120,
+      "depth_y": 329,
+      "footprint": [
+        [
+          677.5,
+          301.88
+        ],
+        [
+          752.5,
+          298.12
+        ],
+        [
+          757.86,
+          323.44
+        ],
+        [
+          678.39,
+          329.06
+        ]
+      ],
+      "interaction_id": null
+    },
+    {
+      "id": "west_white_merch",
+      "frame": "white_merch_booth",
+      "x": 160,
+      "y": 560,
+      "depth_y": 709,
+      "footprint": [
+        [
+          177.42,
+          677.38
+        ],
+        [
+          273.67,
+          671.74
+        ],
+        [
+          281.92,
+          700.85
+        ],
+        [
+          178.33,
+          709.3
+        ]
+      ],
+      "interaction_id": null,
+      "width": 132,
+      "height": 154
+    },
+    {
+      "id": "culture_park_plaque",
+      "frame": "park_plaque",
+      "x": 585,
+      "y": 498,
+      "depth_y": 590,
+      "footprint": [
+        [
+          603,
+          567
+        ],
+        [
+          723,
+          567
+        ],
+        [
+          723,
+          591
+        ],
+        [
+          603,
+          591
+        ]
+      ],
+      "interaction_id": "park_info",
+      "width": 156,
+      "height": 96
+    },
+    {
+      "id": "cross_banner_east",
+      "frame": "cross_banner",
+      "x": 522,
+      "y": 320,
+      "depth_y": 450,
+      "footprint": [
+        [
+          543,
+          439
+        ],
+        [
+          552,
+          439
+        ],
+        [
+          552,
+          452
+        ],
+        [
+          543,
+          452
+        ]
+      ],
+      "interaction_id": null,
+      "width": 50,
+      "height": 134
+    },
+    {
+      "id": "meeting_pavilion",
+      "frame": "meeting_pavilion",
+      "x": 256,
+      "y": 886,
+      "depth_y": 1092,
+      "footprint": [
+        [
+          280.14,
+          1025.12
+        ],
+        [
+          478.59,
+          995.69
+        ],
+        [
+          478.59,
+          1077.29
+        ],
+        [
+          316.34,
+          1092.0
+        ]
+      ],
+      "interaction_id": null,
+      "width": 236,
+      "height": 206
+    },
+    {
+      "id": "giveaway_pavilion",
+      "frame": "giveaway_pavilion",
+      "x": 440,
+      "y": 1060,
+      "depth_y": 1266,
+      "footprint": [
+        [
+          464.14,
+          1199.12
+        ],
+        [
+          662.59,
+          1169.69
+        ],
+        [
+          662.59,
+          1251.29
+        ],
+        [
+          500.34,
+          1266.0
+        ]
+      ],
+      "interaction_id": null,
+      "width": 236,
+      "height": 206
+    },
+    {
+      "id": "rooted_tree_01",
+      "frame": "tree_red",
+      "x": 146,
+      "y": 157,
+      "depth_y": 316,
+      "footprint": [
+        [
+          216,
+          301
+        ],
+        [
+          248,
+          301
+        ],
+        [
+          250,
+          319
+        ],
+        [
+          213,
+          319
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 159
+    },
+    {
+      "id": "rooted_tree_02",
+      "frame": "tree_green",
+      "x": 328,
+      "y": 154,
+      "depth_y": 316,
+      "footprint": [
+        [
+          398,
+          301
+        ],
+        [
+          430,
+          301
+        ],
+        [
+          432,
+          319
+        ],
+        [
+          395,
+          319
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 162
+    },
+    {
+      "id": "rooted_tree_03",
+      "frame": "tree_yellow",
+      "x": 558,
+      "y": 151,
+      "depth_y": 316,
+      "footprint": [
+        [
+          628,
+          301
+        ],
+        [
+          660,
+          301
+        ],
+        [
+          662,
+          319
+        ],
+        [
+          625,
+          319
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 165
+    },
+    {
+      "id": "rooted_tree_04",
+      "frame": "tree_green",
+      "x": 2,
+      "y": 399,
+      "depth_y": 561,
+      "footprint": [
+        [
+          72,
+          546
+        ],
+        [
+          104,
+          546
+        ],
+        [
+          106,
+          564
+        ],
+        [
+          69,
+          564
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 162
+    },
+    {
+      "id": "rooted_tree_05",
+      "frame": "tree_yellow",
+      "x": 634,
+      "y": 399,
+      "depth_y": 533,
+      "footprint": [
+        [
+          690.51,
+          520.67
+        ],
+        [
+          716.34,
+          520.67
+        ],
+        [
+          717.95,
+          532.67
+        ],
+        [
+          688.08,
+          532.67
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 134,
+      "height": 134
+    },
+    {
+      "id": "rooted_tree_06",
+      "frame": "tree_green",
+      "x": 640,
+      "y": 634,
+      "depth_y": 759,
+      "footprint": [
+        [
+          693.98,
+          743.25
+        ],
+        [
+          718.65,
+          743.25
+        ],
+        [
+          720.19,
+          759.49
+        ],
+        [
+          691.66,
+          759.49
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 128,
+      "height": 125
+    },
+    {
+      "id": "rooted_tree_07",
+      "frame": "tree_green",
+      "x": 5,
+      "y": 714,
+      "depth_y": 876,
+      "footprint": [
+        [
+          75,
+          861
+        ],
+        [
+          107,
+          861
+        ],
+        [
+          109,
+          879
+        ],
+        [
+          72,
+          879
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 162
+    },
+    {
+      "id": "rooted_tree_08",
+      "frame": "tree_yellow",
+      "x": 40,
+      "y": 1034,
+      "depth_y": 1199,
+      "footprint": [
+        [
+          110.0,
+          1181.0
+        ],
+        [
+          142.0,
+          1181.0
+        ],
+        [
+          144.0,
+          1199.0
+        ],
+        [
+          107.0,
+          1199.0
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 165
+    },
+    {
+      "id": "rooted_tree_09",
+      "frame": "tree_dark",
+      "x": 594,
+      "y": 927,
+      "depth_y": 1071,
+      "footprint": [
+        [
+          664,
+          1056
+        ],
+        [
+          696,
+          1056
+        ],
+        [
+          698,
+          1074
+        ],
+        [
+          661,
+          1074
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 144
+    },
+    {
+      "id": "rooted_tree_10",
+      "frame": "tree_dark",
+      "x": 8,
+      "y": 1142,
+      "depth_y": 1286,
+      "footprint": [
+        [
+          78,
+          1271
+        ],
+        [
+          110,
+          1271
+        ],
+        [
+          112,
+          1289
+        ],
+        [
+          75,
+          1289
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 144
+    },
+    {
+      "id": "rooted_tree_11",
+      "frame": "tree_green",
+      "x": 410,
+      "y": 634,
+      "depth_y": 796,
+      "footprint": [
+        [
+          480,
+          781
+        ],
+        [
+          512,
+          781
+        ],
+        [
+          514,
+          799
+        ],
+        [
+          477,
+          799
+        ]
+      ],
+      "interaction_id": null,
+      "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+      "width": 166,
+      "height": 162
+    },
+    {
+      "id": "food_counters",
+      "frame": "food_counter",
+      "x": 568,
+      "y": 790,
+      "depth_y": 954,
+      "footprint": [
+        [
+          603.06,
+          913.0
+        ],
+        [
+          736.51,
+          892.5
+        ],
+        [
+          750.08,
+          940.33
+        ],
+        [
+          612.11,
+          954.0
+        ]
+      ],
+      "interaction_id": null,
+      "width": 190,
+      "height": 164
+    },
+    {
+      "id": "northern_hall",
+      "frame": "north_hall",
+      "x": 12,
+      "y": 12,
+      "depth_y": 202,
+      "footprint": [
+        [
+          37.36,
+          140.31
+        ],
+        [
+          245.91,
+          113.17
+        ],
+        [
+          245.91,
+          188.43
+        ],
+        [
+          75.41,
+          202.0
+        ]
+      ],
+      "interaction_id": null,
+      "width": 248,
+      "height": 190
+    },
+    {
+      "id": "north_eastern_hall",
+      "frame": "west_hall",
+      "x": 472,
+      "y": 12,
+      "depth_y": 202,
+      "footprint": [
+        [
+          497.36,
+          140.31
+        ],
+        [
+          705.91,
+          113.17
+        ],
+        [
+          705.91,
+          188.43
+        ],
+        [
+          535.41,
+          202.0
+        ]
+      ],
+      "interaction_id": null,
+      "width": 248,
+      "height": 190
+    },
+    {
+      "id": "merch_venue_hall",
+      "frame": "north_hall",
+      "x": 8,
+      "y": 730,
+      "width": 212,
+      "height": 180,
+      "depth_y": 910,
+      "footprint": [
+        [
+          30,
+          852
+        ],
+        [
+          208,
+          826
+        ],
+        [
+          208,
+          897
+        ],
+        [
+          62,
+          910
+        ]
+      ],
+      "interaction_id": "gifts_info"
+    }
+  ],
+  "source_atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "world_camera": {
+    "x": 160,
+    "y": 192,
+    "width": 584,
+    "height": 584,
+    "notes": "Stage-led close courtyard; no backend position/admission meaning."
+  },
+  "overview_camera": {
+    "x": 0,
+    "y": 0,
+    "width": 768,
+    "height": 1296
+  },
+  "raster_source_policy": "Source atlas bytes unchanged. Frame rectangles are non-destructive sampling metadata. Scaled instances and editable SVG layout reconstruct the scene. Map labels are runtime text, never baked into textures.",
+  "skins": "Distinct original three-era variants; geometry/visual destinations use the explicit frozen PARADE v4 integer projection.",
+  "overview_representations": [
+    {
+      "id": "stage_venue_representation",
+      "replaces_prop_id": "main_stage",
+      "frame": "west_hall",
+      "x": 132,
+      "y": 260,
+      "width": 406,
+      "height": 292,
+      "depth_y": 552,
+      "interaction_id": "stage_info",
+      "kind": "semantic_map_landmark_not_a_world_solid"
+    },
+    {
+      "id": "plaza_seating_representation",
+      "frame": "plaza_furniture",
+      "x": 292,
+      "y": 630,
+      "width": 144,
+      "height": 94,
+      "depth_y": 724,
+      "interaction_id": null,
+      "kind": "unbound_map_illustration_not_a_world_solid"
+    },
+    {
+      "id": "west_edge_venue_illustration",
+      "frame": "north_hall",
+      "x": -75,
+      "y": 500,
+      "width": 200,
+      "height": 180,
+      "depth_y": 680,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    },
+    {
+      "id": "east_edge_venue_illustration",
+      "frame": "north_hall",
+      "x": 710,
+      "y": 430,
+      "width": 210,
+      "height": 160,
+      "depth_y": 590,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    },
+    {
+      "id": "south_west_venue_illustration",
+      "frame": "west_hall",
+      "x": -75,
+      "y": 1050,
+      "width": 240,
+      "height": 220,
+      "depth_y": 1270,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    },
+    {
+      "id": "south_east_venue_illustration",
+      "frame": "north_hall",
+      "x": 700,
+      "y": 1110,
+      "width": 220,
+      "height": 180,
+      "depth_y": 1290,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    }
+  ],
+  "overview_zone_policy": "Green Plaza is a semantic gathering-zone overlay on the overview, not a second terrain/collision map or a claim of physical lawn. WORLD shows its walkable paved surface. Map hall art represents the same stage_info venue; only WORLD prop footprints are solid.",
+  "runtime_derivative": "Original built-in imagegen era source, non-destructive measured 4x4 frames, declared nearest-neighbor packing. Physical geometry and integer destination rectangles are unchanged.",
+  "native_atlas": "native-atlas.png",
+  "native_atlas_dimensions": [
+    2048,
+    2048
+  ]
+}
