@@ -140,7 +140,14 @@ def verify_catalog(rows, files, family):
     declared = []
     for row in rows:
         name = row["file"]
-        require(Path(name).name == name and name.endswith(".json"), "unsafe fixture path")
+        path = Path(name)
+        flat = path.name == name and name.endswith(".json")
+        nested = (family == "domain" and len(path.parts) == 2 and path.parts[0] == "wall-tools-b"
+                  and path.as_posix() == name and "\\" not in name and path.name.endswith(".json"))
+        require(flat or nested, "unsafe fixture path")
+        if nested:
+            actual = ROOT / "contracts/fixtures/domain" / path
+            require(actual.resolve() == actual, "unsafe fixture path alias")
         declared.append(name)
     require(len(declared) == len(set(declared)), "duplicate indexed fixture")
     require(set(declared) == set(files), "unindexed/missing fixture: " + family)
@@ -353,7 +360,10 @@ def run(args, report):
     if args.probe == "drift": document["info"]["title"] += " DRIFT"
     report["schema_definitions"] = check_schemas(documents)
     for family, rows in indexes.items():
-        files = [Path(p).name for p in fixture_data if str(Path(p).parent) == f"contracts/fixtures/{family}" and Path(p).name != "index.json"]
+        prefix = f"contracts/fixtures/{family}"
+        directories = {prefix} | ({prefix + "/wall-tools-b"} if family == "domain" else set())
+        files = [Path(p).relative_to(prefix).as_posix() for p in fixture_data
+                 if str(Path(p).parent) in directories and Path(p).name != "index.json"]
         verify_catalog(rows, files, family)
     verify_operations(document, expected)
     generator = load("domain_generator", "backend/scripts/docs/generate-mcr-domain.py")

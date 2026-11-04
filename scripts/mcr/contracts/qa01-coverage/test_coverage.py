@@ -163,5 +163,35 @@ class C07MotionCoverageTests(unittest.TestCase):
         with self.assertRaises(SchemaError): coverage.check_schemas([broken])
 
 
+class C18NestedCatalogTests(unittest.TestCase):
+    def test_published_domain_nested_catalog_is_exact(self):
+        rows = coverage.read(ROOT / "contracts/fixtures/domain/index.json")
+        files = [p.relative_to(ROOT / "contracts/fixtures/domain").as_posix()
+                 for p in (ROOT / "contracts/fixtures/domain").rglob("*.json") if p.name != "index.json"]
+        coverage.verify_catalog(rows, files, "domain")
+        self.assertEqual(sum(r["file"].startswith("wall-tools-b/") for r in rows), 8)
+        with self.assertRaisesRegex(ValueError, "unindexed/missing"):
+            coverage.verify_catalog(rows, files + ["wall-tools-b/unindexed.json"], "domain")
+
+    def test_nested_admission_rejects_traversal_aliases_and_other_families(self):
+        for name in ("../outside.json", "/absolute.json", "wall-tools-b/../outside.json",
+                     "wall-tools-b//own-fill-256.json", "wall-tools-b/./own-fill-256.json",
+                     "wall-tools-b/subdir/a.json", "unknown/a.json", "wall-tools-b/a\\b.json"):
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "unsafe"):
+                coverage.verify_catalog([{"file": name}], [name], "domain")
+        name = "wall-tools-b/own-fill-256.json"
+        for family in ("core", "realtime", "test"):
+            with self.subTest(family=family), self.assertRaisesRegex(ValueError, "unsafe"):
+                coverage.verify_catalog([{"file": name}], [name], family)
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="mcr-c18-catalog-") as directory:
+            root = Path(directory); folder = root / "contracts/fixtures/domain/wall-tools-b"
+            folder.mkdir(parents=True)
+            (root / "target.json").write_text("{}")
+            (folder / "alias.json").symlink_to(root / "target.json")
+            with patch.object(coverage, "ROOT", root), self.assertRaisesRegex(ValueError, "unsafe"):
+                coverage.verify_catalog([{"file": "wall-tools-b/alias.json"}], ["wall-tools-b/alias.json"], "domain")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
