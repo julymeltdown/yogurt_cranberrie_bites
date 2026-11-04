@@ -17,8 +17,8 @@ follows the superseding human direction; its old wording is historical.
 
 Root's first World/MAP proposal is implemented in four explicitly granted
 background declarations: `.mcr-chrome-header` and `.mcr-chrome-panel-header`
-use warm berry `#614252`, and `.world-shell` uses peach `#fff3ec`. Existing
-`#f2eadf` header text is unchanged; calculated sRGB contrast is7.31:1. Dark
+use dark berry `#251017`, and `.world-shell` uses peach `#fff3ec`. Existing
+`#f2eadf` header text is unchanged; calculated sRGB contrast is15.11:1. Dark
 `#191817` text against peach is16.28:1 where that pairing is actually used.
 These are arithmetic source checks, not browser-computed style evidence.
 The existing `.world-shell::after` now has a pastel rose/lavender/mint
@@ -28,6 +28,21 @@ overridden. All other CSS declarations, foreground colors, control state backgro
 typography, borders, masks, layout and artwork remain unchanged. In particular
 `parade-footer.tsx` is READONLY for this stage. No source pack, avatar pixel,
 portrait crop, world actor, landscape image or renderer is edited.
+
+The first actual390px eight-panel capture cohort is Root candidate
+`c8a731e5c7f03c3fbcbd0581c6e872429806fa22`, job
+`PANEL-COZY-202611040632Z`,06:33:32.440–06:34:13.328UTC. It contains the initial
+three paints (`#614252` headers), not the later perimeter gradient. Direct
+owner inspection of its before/after saved images found that the unchanged
+focused-title red outline became less distinct. RGB samples from the saved
+ME pair identify the ring as `#a2232b`, original background `#191817`, and
+candidate background `#614252`. Calculated contrast drops from2.37:1 to1.17:1.
+The owner therefore corrected only the two header backgrounds to `#251017`:
+ring contrast becomes2.41:1 and header text15.11:1, preserving or improving
+both original pairings. Focus styles, text and control foregrounds stay frozen.
+The original red ring itself remains below3:1; this is baseline preservation,
+not a claim of full focus-contrast compliance. New corrected-source rendered
+verification remains pending and the c8a images keep their actual old palette.
 
 The fourth paint was left untouched until World explicitly recorded the exact
 `.world-shell::after` background-color/image/size extension at `2ccf628c`.
