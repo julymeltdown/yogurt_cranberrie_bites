@@ -127,13 +127,14 @@ def run(metadata, pg_bin, pinned_binaries=None):
         report['selected_manifest_pin'] = write_selected_release(cluster.root, document)
         bootstrap.run_test(cluster, binary, 'native_avatar_transactions', report)
         bootstrap.run_test(cluster, binary, 'native_selected_avatar_transactions', report)
+        bootstrap.run_test(cluster, binary, 'native_avatar_reads_share_presence_fences_and_writes_still_wait', report)
         report['response_sha256'] = hashlib.sha256((cluster.root / 'avatar-state.json').read_bytes()).hexdigest()
         before = cluster.assert_postmaster(); cluster.stop(); cluster.start()
         after = cluster.assert_postmaster(); bootstrap.require(before != after, 'postmaster did not restart')
         report['restart'] = {'before_pid': before, 'after_pid': after}
         bootstrap.run_test(cluster, binary, 'native_avatar_restart_persistence', report)
         bootstrap.run_test(cluster, binary, 'native_selected_avatar_restart_persistence', report)
-        report['native_tests'] = 4
+        report['native_tests'] = 5
         report['state'] = 'PASS'
     except (migration.SmokeError, OSError, ValueError, subprocess.SubprocessError) as error:
         report['error'] = error.detail if isinstance(error, migration.SmokeError) else type(error).__name__

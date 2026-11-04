@@ -24,6 +24,91 @@ fn command(expected: i64, config: Value) -> Vec<u8> {
 fn prefs(expected: i64) -> Vec<u8> {
     serde_json::to_vec(&json!({"expected_revision":expected,"preferences":{"theme":"DANGER","low_power":true,"reduced_motion":true,"sound_enabled":false}})).unwrap()
 }
+
+/// Persistence-only lock regression. The selected character is combined with
+/// fixture map/themes; this does not simulate canonical Auth or World admission.
+#[tokio::test]
+#[ignore = "requires avatar_smoke.py owned PostgreSQL cluster"]
+async fn native_avatar_reads_share_presence_fences_and_writes_still_wait() {
+    use std::time::Duration;
+    let pool = support::pool().await;
+    let release = support::selected_release();
+    let event = Uuid::new_v4();
+    let user = Uuid::new_v4();
+    let own = key(event, user);
+    support::seed(&pool, event).await;
+    BootstrapPostgresRepository::new(pool.clone())
+        .bootstrap(
+            &support::admission(event, user),
+            release.release().defaults(),
+        )
+        .await
+        .unwrap();
+    let service = Arc::new(
+        AvatarPersistence::from_synthetic_test(pool.clone(), release.clone(), true).unwrap(),
+    );
+    let mut revision = 1;
+    for table in [
+        "concert_events",
+        "concert_event_admissions",
+        "concert_participants",
+        "concert_avatar_settings",
+    ] {
+        let mut held = pool.begin().await.unwrap();
+        let holder: i32 = sqlx::query_scalar("select pg_backend_pid()")
+            .fetch_one(&mut *held)
+            .await
+            .unwrap();
+        let query = format!("select event_id from {table} where event_id=$1 for share");
+        sqlx::query(&query)
+            .bind(event)
+            .fetch_one(&mut *held)
+            .await
+            .unwrap();
+        let authority =
+            support::Authority::new(own, AvatarOperation::Read, service.release_digest());
+        let read =
+            tokio::time::timeout(Duration::from_secs(2), service.read(own, &authority)).await;
+        if !matches!(&read, Ok(Ok(_))) {
+            held.rollback().await.unwrap();
+            pool.close().await;
+            panic!("read could not finish while the compatible {table} SHARE fence remained held");
+        }
+        let snapshot = read.unwrap().unwrap();
+        assert_eq!(snapshot.avatar.revision.get(), revision);
+        let writer = service.clone();
+        let bytes = command(revision, config_value(&release.release().defaults().avatar));
+        let task = tokio::spawn(async move {
+            let authority =
+                support::Authority::new(own, AvatarOperation::SetAvatar, writer.release_digest());
+            writer.set_avatar(own, &bytes, &authority).await
+        });
+        // Observe an actual PostgreSQL lock wait, rather than inferring one from
+        // a task not having been scheduled. The held fence remains authoritative.
+        let blocked = tokio::time::timeout(Duration::from_secs(2), async {
+            loop {
+                let count: i64 = sqlx::query_scalar(
+                    "select count(*) from pg_stat_activity where datname=current_database() and $1=any(pg_blocking_pids(pid))",
+                )
+                .bind(holder)
+                .fetch_one(&pool)
+                .await
+                .unwrap();
+                if count > 0 {
+                    break;
+                }
+                tokio::time::sleep(Duration::from_millis(10)).await;
+            }
+        })
+        .await;
+        held.rollback().await.unwrap();
+        let saved = task.await.unwrap();
+        assert!(blocked.is_ok(), "mutation bypassed the {table} SHARE fence");
+        assert_eq!(saved.unwrap()["revision"], revision + 1);
+        revision += 1;
+    }
+    pool.close().await;
+}
 #[test]
 fn witness_metadata_defaults_to_unavailable_and_binds_the_exact_release() {
     struct LegacyFence;
