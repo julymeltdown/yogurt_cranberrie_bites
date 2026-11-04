@@ -28,7 +28,19 @@ fn fingerprint(body: &CanonicalValue, query: &[(&str, &str)]) -> Fingerprint {
 }
 #[test]
 fn registry_rejects_arbitrary_reads_and_operations() {
-    assert_eq!(OPERATIONS.len(), 59);
+    assert_eq!(OPERATIONS.len(), 62);
+    for (id, tool) in [
+        ("eraseConcertMuralPixel", "erase"),
+        ("fillConcertMuralRegion", "fill"),
+        ("undoConcertMuralAction", "undo"),
+    ] {
+        let operation = RegisteredOperation::find(id).unwrap();
+        assert_eq!(operation.method(), "POST");
+        assert_eq!(
+            operation.path(&[("eventId", EVENT)]).unwrap(),
+            format!("/api/concert/events/{EVENT}/mural/{tool}")
+        );
+    }
     for id in [
         "unregistered",
         "getConcertParty",

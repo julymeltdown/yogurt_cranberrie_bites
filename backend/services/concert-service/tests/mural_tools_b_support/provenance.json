@@ -1,0 +1,30 @@
+[
+  {
+    "source": "backend/services/concert-service/tests/intro_product_support/environment.rs",
+    "source_revision": "7d5d91bd1121b1a95b2302ca02e9224019a5deaa",
+    "source_sha256": "63d95f5cddbd226961b43d1334d525db0cfe372678a0cf1a9500b8c7607bf871",
+    "destination": "backend/services/concert-service/tests/mural_tools_b_support/environment.rs",
+    "changes": "Wall owned database name and provenance only; canonical mTLS fixture unchanged"
+  },
+  {
+    "source": "backend/services/concert-service/tests/intro_product_support/owners.rs",
+    "source_revision": "7d5d91bd1121b1a95b2302ca02e9224019a5deaa",
+    "source_sha256": "0d9c52e710823bd936d36daf46da25dae08226efeb5db96dd4209dde2280a9ce",
+    "destination": "backend/services/concert-service/tests/mural_tools_b_support/owners.rs",
+    "changes": "Wall owned database name and provenance only; canonical mTLS fixture unchanged"
+  },
+  {
+    "source": "backend/services/concert-service/tests/intro_product_support/capture.rs",
+    "source_revision": "7d5d91bd1121b1a95b2302ca02e9224019a5deaa",
+    "source_sha256": "040d073bd05c4006f603ef77bb3510d1d03b88453c549d1212266639a43ddb81",
+    "destination": "backend/services/concert-service/tests/mural_tools_b_support/capture.rs",
+    "changes": "Wall owned database name and provenance only; canonical mTLS fixture unchanged"
+  },
+  {
+    "source": "backend/services/concert-service/tests/intro_product_support/fixture.rs",
+    "source_revision": "7d5d91bd1121b1a95b2302ca02e9224019a5deaa",
+    "source_sha256": "83238ba29fb6f9fc567e9748f20526eb395869ac4699785ff0a11d6adff0b3b1",
+    "destination": "backend/services/concert-service/tests/mural_tools_b_support/fixture.rs",
+    "changes": "Wall owned database name and provenance only; canonical mTLS fixture unchanged"
+  }
+]

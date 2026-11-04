@@ -444,6 +444,14 @@ pub enum SafeFailure {
     MuralFrozen,
     MuralCooldown,
     MuralRegionLocked,
+    MuralNoChange,
+    MuralFillTooLarge,
+    MuralBudgetExceeded,
+    MuralUndoExpired,
+    MuralUndoNotLatest,
+    MuralUndoUnavailable,
+    MuralToolUnavailable,
+    MuralActionUnresolved,
 }
 impl SafeFailure {
     pub fn as_str(self) -> &'static str {
@@ -466,6 +474,14 @@ impl SafeFailure {
             Self::MuralFrozen => "MURAL_FROZEN",
             Self::MuralCooldown => "MURAL_COOLDOWN",
             Self::MuralRegionLocked => "MURAL_REGION_LOCKED",
+            Self::MuralNoChange => "MURAL_NO_CHANGE",
+            Self::MuralFillTooLarge => "MURAL_FILL_TOO_LARGE",
+            Self::MuralBudgetExceeded => "MURAL_BUDGET_EXCEEDED",
+            Self::MuralUndoExpired => "MURAL_UNDO_EXPIRED",
+            Self::MuralUndoNotLatest => "MURAL_UNDO_NOT_LATEST",
+            Self::MuralUndoUnavailable => "MURAL_UNDO_UNAVAILABLE",
+            Self::MuralToolUnavailable => "MURAL_TOOL_UNAVAILABLE",
+            Self::MuralActionUnresolved => "MURAL_ACTION_UNRESOLVED",
         }
     }
     pub fn parse(v: &str) -> Result<Self, CommandError> {
@@ -488,6 +504,14 @@ impl SafeFailure {
             "MURAL_FROZEN" => Ok(Self::MuralFrozen),
             "MURAL_COOLDOWN" => Ok(Self::MuralCooldown),
             "MURAL_REGION_LOCKED" => Ok(Self::MuralRegionLocked),
+            "MURAL_NO_CHANGE" => Ok(Self::MuralNoChange),
+            "MURAL_FILL_TOO_LARGE" => Ok(Self::MuralFillTooLarge),
+            "MURAL_BUDGET_EXCEEDED" => Ok(Self::MuralBudgetExceeded),
+            "MURAL_UNDO_EXPIRED" => Ok(Self::MuralUndoExpired),
+            "MURAL_UNDO_NOT_LATEST" => Ok(Self::MuralUndoNotLatest),
+            "MURAL_UNDO_UNAVAILABLE" => Ok(Self::MuralUndoUnavailable),
+            "MURAL_TOOL_UNAVAILABLE" => Ok(Self::MuralToolUnavailable),
+            "MURAL_ACTION_UNRESOLVED" => Ok(Self::MuralActionUnresolved),
             _ => Err(CommandError::InvalidState),
         }
     }

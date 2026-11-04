@@ -29,6 +29,7 @@ pub enum NativeResolverDomain {
     Social,
     Operations,
     Age,
+    Wall,
     AbortOnly,
 }
 
@@ -41,6 +42,7 @@ pub struct NativeResolverUnion {
     social: SocialNativeResolver,
     operations: OperationsNativeResolver,
     age: AgeTransactionResolver,
+    wall: crate::mural_tools_b::MuralToolsNativeResolver,
     aborts: PgNativeAbortResolver,
 }
 impl NativeResolverUnion {
@@ -66,6 +68,7 @@ impl NativeResolverUnion {
             social: SocialNativeResolver::new(pool.clone(), instance)?,
             operations: OperationsNativeResolver::new(pool.clone(), instance)?,
             age: AgeTransactionResolver::new(pool.clone(), instance)?,
+            wall: crate::mural_tools_b::MuralToolsNativeResolver::new(pool.clone(), instance)?,
             aborts: PgNativeAbortResolver::new(pool, instance)?,
         })
     }
@@ -92,6 +95,7 @@ impl NativeResolverUnion {
         if binding.parent_method != PRODUCT {
             return Ok(NativeResolverDomain::AbortOnly);
         }
+        if crate::mural_tools_b::protocol::WallOperation::parse(binding.event_id, method, &binding.http_target).is_ok_and(|route| route.id() == operation) { return Ok(NativeResolverDomain::Wall); }
         // The operation arms are disjoint. There is no first-success chain and
         // no second adapter after the selected adapter returns UNKNOWN/error.
         let domain = match operation {
@@ -196,6 +200,7 @@ impl NativeTransactionResolver for NativeResolverUnion {
             NativeResolverDomain::Social => &self.social,
             NativeResolverDomain::Operations => &self.operations,
             NativeResolverDomain::Age => &self.age,
+            NativeResolverDomain::Wall => &self.wall,
             NativeResolverDomain::AbortOnly => &self.aborts,
         };
         selected.resolve(binding, identity).await

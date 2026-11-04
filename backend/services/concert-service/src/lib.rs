@@ -41,3 +41,5 @@ pub mod intro_live;
 
 pub mod notification_target_policy;
 pub mod account_private_data;
+
+pub mod mural_tools_b;

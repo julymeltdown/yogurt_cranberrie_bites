@@ -13,6 +13,7 @@ pub mod canonical_runtime;
 pub mod inbox_runtime;
 pub mod intro_runtime;
 pub mod native_resolver;
+pub mod mural_tools_b;
 pub mod notification_target_runtime;
 pub mod participant_runtime;
 pub mod product_runtime;

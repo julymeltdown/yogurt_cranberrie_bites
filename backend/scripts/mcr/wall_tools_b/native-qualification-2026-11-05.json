@@ -1,0 +1,443 @@
+{
+  "binary_sha256": "d711b161e5ecbb75dec518cbeb1646ccadf5ee7a90fece592c67f46d44f55d69",
+  "build_resource": {
+    "guardian_reaped": true,
+    "max_processes": 7,
+    "max_rss": 2042970112,
+    "peak_new_bytes": 739631104,
+    "status": "PASS"
+  },
+  "cleanup": {
+    "owned_root_absent": true,
+    "status": "PASS"
+  },
+  "compile_commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-domain",
+        "--lib",
+        "mural::tools_b",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "domain",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-application",
+        "--test",
+        "commands",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 101,
+      "name": "commands",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-application",
+        "--test",
+        "commands",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "commands",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--lib",
+        "config::mural_tools_b",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 101,
+      "name": "config",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--lib",
+        "config::mural_tools_b",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "config",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "mural_tools_b",
+        "--no-run",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "native-build",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--bin",
+        "concert-service",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "startup",
+      "round": "mcr-wall-compile-gu7d9h2_"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "mural_tools_b",
+        "--no-run",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 101,
+      "name": "native-build",
+      "round": "mcr-wall-retry-ifm40w2y"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "mural_tools_b",
+        "--no-run",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "native-build",
+      "round": "mcr-wall-retry-ifm40w2y"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "api-gateway",
+        "--lib",
+        "concert_product",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "gateway",
+      "round": "mcr-wall-retry-ifm40w2y"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "mural_tools_b",
+        "--no-run",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "native-build",
+      "round": "mcr-wall-race-fix-2x7_ll20"
+    }
+  ],
+  "format": "mcr-wall-tools-b-native-qualification/1",
+  "limitations": [
+    "Canonical Wall Product facade and actual Auth/Friend native transaction coverage; no fabricated MuralAuthority success.",
+    "Actual startup/Gateway HTTP, persistent Phaser, two-client world and complete IN04 remain NOT_RUN.",
+    "Performance/load qualification is DEFERRED_BY_USER."
+  ],
+  "migration_counts_per_case": {
+    "canonical_activation_cannot_forgive_recent_unaccounted_pencil": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    },
+    "canonical_actor_budget_and_private_recovery_are_isolated": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    },
+    "canonical_fill_257_noop_region_lock_and_failures_are_atomic": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    },
+    "canonical_fill_undo_budget_recovery_and_restart": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    },
+    "canonical_pencil_shares_undo_budget_and_storage_failure_rolls_back": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    },
+    "canonical_receipt_expiry_and_history_retirement_never_refund_budget": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    },
+    "canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned": {
+      "auth": 18,
+      "concert": 44,
+      "friend": 18,
+      "profile": 9
+    }
+  },
+  "native_status": "PASS",
+  "phases": {
+    "canonical_activation_cannot_forgive_recent_unaccounted_pencil": {
+      "contract_responses": 2,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "canonical_actor_budget_and_private_recovery_are_isolated": {
+      "contract_responses": 7,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "canonical_fill_257_noop_region_lock_and_failures_are_atomic": {
+      "contract_responses": 4,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "canonical_fill_undo_budget_recovery_and_restart": {
+      "contract_responses": 8,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "canonical_pencil_shares_undo_budget_and_storage_failure_rolls_back": {
+      "contract_responses": 4,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "canonical_receipt_expiry_and_history_retirement_never_refund_budget": {
+      "contract_responses": 5,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned": {
+      "contract_responses": 5,
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    }
+  },
+  "postgres_restart": {
+    "after_pid": 94179,
+    "after_start": "2026-11-05 02:24:40.700566+09",
+    "before_pid": 90734,
+    "before_start": "2026-11-05 02:24:13.832133+09",
+    "durable_state_digest": "766287a13b0bf41d0ed6e4dbc60d2376",
+    "status": "PASS"
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "prior_failures_retained": [
+    "First build exceeded original 1 GiB NEW budget; guardian stopped it. No PostgreSQL ran.",
+    "Concurrent native fixture asserted global zero-prepared before the other request settled. Source cd7f6584 moves global assertion after join; all per-scope settlement remains.",
+    "Metadata-only refresh of byte-identical owned sources was required for stale cross-checkout Cargo artifacts. No cache deletion or dependency change."
+  ],
+  "private_evidence_sha256": {
+    "accepted.json": "30d2530a73a07f844aab82b9b0798ff03a386c493eccdd93a6d9644bae62fd1a",
+    "checkpoint.json": "de18e838d0da72e3c98ea3baefc1476fb48ee24bda0aad51b98e359a2b631198",
+    "native-report.json": "354a261155af68d3c090f279426c312614eea84810e2349f68ed605e3853383a",
+    "native-resource-report.json": "d0d5d67d15320dbad8da92670fab8cc093aec4419e5a40e3a231047bc11a8df9",
+    "resource-report.json": "46b6795c131a6015879690f1f192726c891fa801938420967d8a4b16d47bc653",
+    "target-release.json": "fce246686cab0037d5aa2d4ed221d9fa085576079db17f54768fcac3ad3b424c"
+  },
+  "pure_exit_code": 0,
+  "resource": {
+    "exit_code": 0,
+    "full_release_unix": 1793813082.1617541,
+    "guardian_reaped": true,
+    "max_processes": 21,
+    "max_rss": 511508480,
+    "peak_new_bytes": 837779456,
+    "pg_root_absent": true,
+    "status": "PASS"
+  },
+  "source_commit": "cd7f658407c1c0a9cda9687226e23cde7758b3c8",
+  "source_manifest_entries": 3637,
+  "strict_c04_response_total": 35,
+  "target_release": {
+    "no_target_access_after_release": true,
+    "unix": 1793813036.544961,
+    "utc": "2026-11-04T17:23:56Z",
+    "zero_handles": true
+  }
+}
