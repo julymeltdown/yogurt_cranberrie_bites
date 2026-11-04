@@ -167,7 +167,7 @@ impl ExpectedProfileEffect {
     }
 }
 
-fn profile_effect_digest(
+pub(super) fn profile_effect_digest(
     binding: [u8; 32],
     operation: Uuid,
     version: CanonicalProfileVersion,
