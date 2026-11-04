@@ -1,0 +1,324 @@
+{
+  "status": "PASS",
+  "synthetic": true,
+  "browser": "156.0.8078.80",
+  "base": "72685ad98f26437ce88ec7a51ffde0aa2bc29539",
+  "sources": {
+    "frontend/src/world/mural-entry-lifecycle/index.ts": "505dd55a69a68ad99806ec5950abe83a3a2593771aa4f4067d196a2959467da1",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/native.ts": "77a43bd85664f2c83f647e9a766cfb6d1d359a23c6a441f9584b45054ca83078",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/native.html": "40b7936dab3dce2f1af4651f6a38d14fdfd8bd1938175f7c6e4526c0861b583c",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/native.mjs": "d8909899e777585b91874509c25a14f5194bc480fccfd548e0f60f2fedf1ced4",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/fixture.ts": "5be6f80c081b16702317d732eb27472fe6694a701b178c6ac48ba12174e083fa",
+    "frontend/src/app/mural-entry/ports.ts": "1031c444a4f632bb35e5aacb8c791591c73a348b0c3702f2e1bcee3fbcc7f038",
+    "frontend/src/app/mural-entry/owner.ts": "d798f2804ebd569a422da17692b9b0f3764053bceaca98488b156a00ef31a4c9",
+    "frontend/src/world/mural/phaser.ts": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+    "frontend/src/world/mural/sink.ts": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/editor/controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "frontend/src/shared/api/errors.ts": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",
+    "contracts/domain/v1/common.schema.json": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca"
+  },
+  "results": [
+    {
+      "width": 360,
+      "initial": {
+        "available": true,
+        "revision": 10,
+        "phase": "idle",
+        "commandKey": null,
+        "posts": [],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "unknown": {
+        "available": true,
+        "revision": 10,
+        "phase": "unknown",
+        "commandKey": "2d165e40-bbb7-4b1e-b760-3ec8933e7b45",
+        "posts": [
+          "2d165e40-bbb7-4b1e-b760-3ec8933e7b45"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "withdrawn": {
+        "available": false,
+        "revision": null,
+        "phase": null,
+        "commandKey": null,
+        "posts": [
+          "2d165e40-bbb7-4b1e-b760-3ec8933e7b45"
+        ],
+        "texturePresent": false,
+        "objects": 0,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 0,
+        "disposed": false
+      },
+      "recovered": {
+        "available": true,
+        "revision": 11,
+        "phase": "unknown",
+        "commandKey": "2d165e40-bbb7-4b1e-b760-3ec8933e7b45",
+        "posts": [
+          "2d165e40-bbb7-4b1e-b760-3ec8933e7b45"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "confirmed": {
+        "available": true,
+        "revision": 11,
+        "phase": "confirmed",
+        "commandKey": null,
+        "posts": [
+          "2d165e40-bbb7-4b1e-b760-3ec8933e7b45"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "revoked": {
+        "available": false,
+        "revision": null,
+        "phase": null,
+        "commandKey": null,
+        "posts": [
+          "2d165e40-bbb7-4b1e-b760-3ec8933e7b45"
+        ],
+        "texturePresent": false,
+        "objects": 0,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 0,
+        "timers": 0,
+        "disposed": true
+      },
+      "screenshot": "recovered-360.png",
+      "sha256": "b4658261be9819cc5765e589fa3f21bedb6ac2efdaf198b723942dd69d40044e"
+    },
+    {
+      "width": 390,
+      "initial": {
+        "available": true,
+        "revision": 10,
+        "phase": "idle",
+        "commandKey": null,
+        "posts": [],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "unknown": {
+        "available": true,
+        "revision": 10,
+        "phase": "unknown",
+        "commandKey": "d22c3453-2b8c-4fa0-88c9-46eb857370eb",
+        "posts": [
+          "d22c3453-2b8c-4fa0-88c9-46eb857370eb"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "withdrawn": {
+        "available": false,
+        "revision": null,
+        "phase": null,
+        "commandKey": null,
+        "posts": [
+          "d22c3453-2b8c-4fa0-88c9-46eb857370eb"
+        ],
+        "texturePresent": false,
+        "objects": 0,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 0,
+        "disposed": false
+      },
+      "recovered": {
+        "available": true,
+        "revision": 11,
+        "phase": "unknown",
+        "commandKey": "d22c3453-2b8c-4fa0-88c9-46eb857370eb",
+        "posts": [
+          "d22c3453-2b8c-4fa0-88c9-46eb857370eb"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "confirmed": {
+        "available": true,
+        "revision": 11,
+        "phase": "confirmed",
+        "commandKey": null,
+        "posts": [
+          "d22c3453-2b8c-4fa0-88c9-46eb857370eb"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "revoked": {
+        "available": false,
+        "revision": null,
+        "phase": null,
+        "commandKey": null,
+        "posts": [
+          "d22c3453-2b8c-4fa0-88c9-46eb857370eb"
+        ],
+        "texturePresent": false,
+        "objects": 0,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 0,
+        "timers": 0,
+        "disposed": true
+      },
+      "screenshot": "recovered-390.png",
+      "sha256": "dd28a0f777b67b6358756c4f53c17b9dc8c310099a7be54477f409b0db90fb63"
+    },
+    {
+      "width": 430,
+      "initial": {
+        "available": true,
+        "revision": 10,
+        "phase": "idle",
+        "commandKey": null,
+        "posts": [],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "unknown": {
+        "available": true,
+        "revision": 10,
+        "phase": "unknown",
+        "commandKey": "29445f4f-5d3e-425f-b520-67efc308be99",
+        "posts": [
+          "29445f4f-5d3e-425f-b520-67efc308be99"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "withdrawn": {
+        "available": false,
+        "revision": null,
+        "phase": null,
+        "commandKey": null,
+        "posts": [
+          "29445f4f-5d3e-425f-b520-67efc308be99"
+        ],
+        "texturePresent": false,
+        "objects": 0,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 0,
+        "disposed": false
+      },
+      "recovered": {
+        "available": true,
+        "revision": 11,
+        "phase": "unknown",
+        "commandKey": "29445f4f-5d3e-425f-b520-67efc308be99",
+        "posts": [
+          "29445f4f-5d3e-425f-b520-67efc308be99"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "confirmed": {
+        "available": true,
+        "revision": 11,
+        "phase": "confirmed",
+        "commandKey": null,
+        "posts": [
+          "29445f4f-5d3e-425f-b520-67efc308be99"
+        ],
+        "texturePresent": true,
+        "objects": 1,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 1,
+        "timers": 1,
+        "disposed": false
+      },
+      "revoked": {
+        "available": false,
+        "revision": null,
+        "phase": null,
+        "commandKey": null,
+        "posts": [
+          "29445f4f-5d3e-425f-b520-67efc308be99"
+        ],
+        "texturePresent": false,
+        "objects": 0,
+        "created": 1,
+        "games": 1,
+        "worldListeners": 0,
+        "timers": 0,
+        "disposed": true
+      },
+      "screenshot": "recovered-430.png",
+      "sha256": "89f028b454ed256b824df76676ae67f4fa5c4e1863423452ddeedc55e40598d1"
+    }
+  ],
+  "errors": [],
+  "limits": "Actual incumbent Phaser scene/sink/entry and injected C04 fixture HTTP; no product anchor, admission, live WebSocket or real producer."
+}
