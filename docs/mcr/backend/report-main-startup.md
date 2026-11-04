@@ -1,7 +1,7 @@
 # REPORT-STARTUP-01 — explicit USER report startup leaf
 
-Status: IN_PROGRESS; source and pure configuration tests authored, Rust execution
-NOT_RUN pending a fresh allocated build round. This is a new three-file task,
+Status: developer build and seven pure/transport checks PASS; publication and
+Root main mounting pending. This is a new three-file task,
 not renewed ownership of the preceding qualified nine report-product paths.
 
 Base: `beffe4975d5d702bbdf1d3d96458bd7846c7b70a`. Existing isolated worktree:
@@ -130,10 +130,76 @@ All recording owners refuse; those tests cannot certify canonical authority or
 database success.
 
 New Rust files were formatted; `git diff --check` and the planning provenance
-check passed (exit 0, all 13 source archive checksums unchanged). Build and copied test
-execution are NOT_RUN until a fresh finite resource offer is accepted. The earlier
+check passed (exit 0, all 13 source archive checksums unchanged). The earlier
 report-product five admission/four native passing cases remain their own pinned
 qualification; they do not certify this new startup leaf or a public main path.
 Root export/main mounting, combined service execution, public Gateway behavior,
 whole BE36/BE38/BE39 and IN03 remain separate obligations. The named Root developer
 publishes the validated committed handoff; this owner verifies remote delivery.
+
+## Fresh bounded build and copied execution
+
+Validated code source: `834aaa6b1bba047a3b01783ecde3f32b3079d4eb`, parent
+`beffe4975d5d702bbdf1d3d96458bd7846c7b70a`. The evidence successor changes only
+this document; no Rust changed after the frozen execution.
+
+Fresh offer `REPORT-STARTUP-BACKEND-202611041342Z` was accepted at
+2026-11-04 22:44:41.424446 KST (13:44:41.424446 UTC), with actual free space
+30,783,242,240 bytes, above the 16 GiB start floor. Historical carry was fully
+charged at 2,324,127,744 bytes with no deletion or reset. Hard new-output limit:
+268,435,456 bytes; hard whole-output limit: 2,684,354,560 bytes.
+
+Exact build, from the assigned `backend/` directory:
+
+```sh
+env -u RUSTFLAGS -u CARGO_ENCODED_RUSTFLAGS \
+  RUSTUP_TOOLCHAIN=1.88.0 CARGO_INCREMENTAL=0 \
+  CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  /Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo \
+  test --locked --offline -p concert-service --test report_runtime \
+  --no-run --message-format=json -j 2
+```
+
+The controller selected the same toolchain's rustc/rustdoc and PATH. No profile
+optimization override, cache deletion or build.rs refresh was needed. Exit 0,
+2.808 seconds. Actual positive target output: 146,296,832 bytes.
+
+Exactly one Cargo JSON test artifact was selected, copied and frozen in 0.338
+seconds outside the target, alongside 2,381 complete tracked backend/contract/
+planning readset hashes, unchanged helper hashes, runtime hashes and Cargo JSON:
+`/private/tmp/mcr-report-startup-8upc2hu4/pin.json`.
+Pin SHA-256: `d4dcd44dc2458a753192721144dd120a4a651106cdb1b625de518b97bd1245cf`.
+Executable size: 7,731,648 bytes, below the 96 MiB copy limit; executable SHA-256:
+`a0a59539f5c29503ca08ece00adba46e93d403e7cae9d35b26290a3d128e7b87`.
+
+Unconditional zero-handle compiler/target release was recorded at
+22:46:22.964812 KST, before every copied check. No target access followed.
+The independent source/runtime/binary pin and 8 GiB live-space guards passed
+before launching the copied executable:
+
+```text
+/private/tmp/mcr-report-startup-8upc2hu4/report_runtime --nocapture --test-threads=1
+exit 0; 7 passed; 0 failed; 0.390 seconds
+```
+
+All seven checks fit the 30-second whole-binary bound, hence each individual
+check also fit its bound. Copied child PID 73143 was reaped and confirmed absent.
+No PostgreSQL, browser or native workflow was started. New whole-output peak:
+160,186,368 bytes, including a conservative 1 MiB source/Git/proof allowance;
+historical-inclusive peak: 2,484,314,112 bytes. Both output caps held. Completion
+free space: 30,827,905,024 bytes; no time, space or cap cutoff fired.
+
+Full release: 22:47:09.142026 KST, 46.177 seconds after target release, below
+90 seconds and before every original cutoff (compile/freeze 22:52:11.424446,
+work stop 22:53:41.424446, hard release 22:54:41.424446 KST).
+No resources remain held. Commands, exit codes, full pin inventory and release
+receipts are in `/private/tmp/mcr-report-startup-8upc2hu4`.
+Copied log SHA-256:
+`66361eace60f58b987ddd85ce002497d03a6b2952125cd5c438cec1c164cabeb`.
+
+These results qualify the settings parser, compiled actual constructor interface
+and typed dispatch overlay. Recording refusals are not successful owner proof;
+executing the exported startup in the actual composed service remains Root's
+implementation validation duty. No public-route or multiuser acceptance follows
+from this bounded leaf qualification.
