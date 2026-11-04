@@ -28,6 +28,28 @@ genuinely unattended critical work or human-required product/access decisions.
 
 ## Current original FE33 disposition and delivered caller assignment
 
+### Current avatar admission hunk release to World/Motion
+
+World requested exact incumbent resolution for its SAME ACTIVE Motion consumer.
+No current Community writer retains a live claim. Historical avatar-union
+writer `01a1a204-c583-7670-965a-4891b8b1289e`'s latest actual bounded FE07
+repair is COMPLETE then fresh null/clean STOP/exact case+doc leases returned;
+its later assignments do not inherit old canonical avatar rights. Community's
+other former writers are completed/released, not concurrent decoder owners.
+
+Community explicitly released the historical reservation to World allocator for
+Motion `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c`, ONLY
+`frontend/src/entities/avatar/whole-admission/index.ts` five public decoder
+function hunks `parseConfig`, `decodeAvatarState`, `validateConfig`,
+`decodeConfig`, `validateManifest`, and necessary `AvatarConfig`/
+`AvatarManifest` types/imports. World records exact receiving transfer before
+Motion edits within the existing aligned goal; this release alone is not proof
+of an accepted edit or result. No whole-file/general prefix, runtime/schema,
+runtime contract, generated wire types/generator or old whole-character
+contract grant is implied. Provider/account root additions remain separately
+allocated by World. Direct World/Motion notice sent, no King CC, SL source
+inspection, code review or validation gate.
+
 **Original FE33 frontend criteria: SATISFIED in frozen contract/fixture scope**,
 reported by developer `01a1a230-6acc-7e82-9e4b-92506decc745` at published
 `7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e`. Its explicit criterion receipt covers
