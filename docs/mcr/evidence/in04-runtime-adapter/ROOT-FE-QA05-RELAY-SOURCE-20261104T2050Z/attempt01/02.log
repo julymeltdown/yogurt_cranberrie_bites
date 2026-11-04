@@ -1,0 +1,13 @@
+✔ opaque original bytes survive arbitrary TCP boundaries, multiple frames and controls (0.948333ms)
+✔ extended lengths retain exact 126 and 65536 byte application messages (1.001334ms)
+✔ masked, compressed, fragmented, binary, noncanonical and oversized server frames retire without forwarding (0.708042ms)
+✔ UTF-8, canonical decoder, expired guard and fallible sink are fail closed (3.18525ms)
+✔ actual loopback raw upgrade, principal binding, one delta drop and abort use the same sockets (30.562583ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.17925

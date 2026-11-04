@@ -1,0 +1,1 @@
+frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.mjs:178:25: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.

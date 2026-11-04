@@ -182,10 +182,49 @@ were reused. Exact commands, source hashes, guardian and release are retained in
 `docs/mcr/evidence/in04-runtime-adapter/`.
 
 The original source helper is published at `d0f27b108b1ab8e9d66afdb1faf0b6826dc0dff7`.
-The next implementation steps are publication of the qualified concrete
-deferred artifact and relevant actual-runtime validation
+The concrete deferred artifact is published at
+`f897ef3ada6528bee6e2193f3aae6af5fb660329`. The next implementation step is actual-runtime validation
 when the isolated coherent service window/three actors/event/current operator
 routes are available. Any resulting frontend correction remains part of this
 objective. Existing unrelated owner matrices are reused; they are not replayed
 to create a new receipt. No legal/provider/physical-place prerequisite is added
 for the virtual Wall.
+
+## QA05 transport attachment source
+
+`qa05-relay.mjs` provides `installQa05WorldRelay` for the same Vite HTTP server,
+with Vite's ordinary `/world-ws` proxy omitted by the future actual caller. It
+forwards the real upstream upgrade and preserves request Host, Origin, target,
+query, authentication and original server WebSocket frame bytes. It creates no
+actor, ticket, role, fault HTTP endpoint, replacement backend or second App.
+Only a validated canonical C05 snapshot can associate an existing connection
+with either of the two expected principals and event. The caller supplies the
+actual canonical C05 decoder, qualified opaque-frame fault factory, current
+managed-window guard and abort signal. Binary, fragmented, compressed, masked
+server frames and messages over 65,536 bytes are refused. Control frames bypass
+the fault queue unchanged. The attachment caps live pairs at two, lifetime
+connections at four, and socket writable bytes at 262,144; uncertain writes
+close the same pair without retry. Evidence reports sink handling, not peer
+receipt, membership or convergence.
+
+The `ROOT-FE-QA05-RELAY-SOURCE-20261104T2050Z` round accepted at
+20:44:04.788030 UTC and fully released at 20:44:41.368911 UTC. Five new component
+cases, two syntax checks and two-file deny-warning lint passed. The controlled
+loopback case used two ephemeral HTTP listeners and actual raw sockets to prove
+upgrade/header preservation, observed-principal binding, one-delta drop, byte
+preservation of the next delta and abort cleanup. Its decoded messages and
+backend are explicitly synthetic source fixtures. The existing 19-case fault
+factory qualification was reused through exact Git bytes at `74475934a0e53a937b9a0620cf49c9584872979a`;
+those cases and the existing IN04/FE41 matrices were not replayed. Attempt one
+passed all five cases but failed lint on an unnecessary Set spread. That raw
+failure is retained; the cleanup iteration was corrected and qualified within
+the original clock and caps. Both live guardians passed, descendants drained,
+scratch was removed and both test listeners closed before the direct release.
+
+Actual `server.mjs` wiring, canonical decoder binding, managed checkpoint
+composition, ticket-replay probe, World replacement, real principals and shared
+browser execution remain **NOT_RUN**. The existing IN04 server and private
+seven-field frontend handoff are unchanged. This source attachment is not an
+executed QA05 or IN04 acceptance result. Accepted clocks, exact per-attempt
+readsets, raw failures, success logs and guardian releases are retained under
+`docs/mcr/evidence/in04-runtime-adapter/ROOT-FE-QA05-RELAY-SOURCE-20261104T2050Z/`.

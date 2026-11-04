@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "finishedAt": "2026-11-04T20:44:41.368911+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-relay.test.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "peak": {
+    "ownedBytes": 2605855900,
+    "positiveNewBytes": 26874,
+    "pids": 3,
+    "rssBytes": 103333888
+  },
+  "observedPids": [
+    35363,
+    35564,
+    35592,
+    35634,
+    35797,
+    35824
+  ],
+  "remainingDescendants": [],
+  "scratchRemaining": false
+}

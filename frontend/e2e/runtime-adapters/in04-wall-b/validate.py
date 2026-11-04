@@ -4,6 +4,7 @@ Counts the whole checkout, shared Git store, retained dependency/tool trees and
 this round's scratch. Never starts Vite, a browser, a backend or an installer.
 """
 import argparse
+import base64
 import datetime
 import hashlib
 import json
@@ -22,8 +23,8 @@ TAIL = Path('/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/errors
 TAIL_SHA256 = 'c8ee10c427f023a9a7622dd6320729b6ff5488d6a97c1df52d7ed3e3f8878122'
 
 
-def inventory(bases):
-    seen, total = set(), 0
+def inventory_records(bases):
+    records = {}
     for base in bases:
         for directory, dirs, files in os.walk(base, followlinks=False):
             dirs[:] = [d for d in dirs if not Path(directory, d).is_symlink()]
@@ -36,17 +37,19 @@ def inventory(bases):
                 except FileNotFoundError:
                     continue
                 key = stat.st_dev, stat.st_ino
-                if key not in seen:
-                    total += stat.st_size
-                    seen.add(key)
-    return total
+                records[key] = stat.st_size
+    return records
 
 
-def processes():
+def inventory(bases):
+    return sum(inventory_records(bases).values())
+
+
+def processes(root_pid=None):
     observer = subprocess.Popen(['ps', '-axo', 'pid=,ppid=,rss='], stdout=subprocess.PIPE, text=True)
     rows = [tuple(map(int, line.split())) for line in observer.communicate()[0].splitlines()]
     assert observer.returncode == 0
-    mine = {os.getpid()}
+    mine = {root_pid or os.getpid()}
     while True:
         more = mine | {pid for pid, parent, _ in rows if parent in mine}
         if more == mine:
@@ -56,10 +59,43 @@ def processes():
     return mine, sum(rss * 1024 for pid, _, rss in rows if pid in mine)
 
 
+def independent_watch(offer, out, bases, root_pid):
+    assert os.getppid() == root_pid
+    baseline = inventory_records(bases)
+    highwater = {}
+    peak = dict(ownedBytes=sum(baseline.values()), positiveNewBytes=0, pids=0, rssBytes=0)
+    failure = None
+    try:
+        while not (out / 'watch-stop').exists():
+            ids, rss = processes(root_pid)
+            current = inventory_records(bases)
+            for key, value in current.items():
+                highwater[key] = max(highwater.get(key, 0), max(0, value - baseline.get(key, 0)))
+            data = dict(time=time.time(), ownedBytes=sum(current.values()), positiveNewBytes=sum(highwater.values()),
+                        pids=len(ids), rssBytes=rss, freeBytes=os.statvfs(ROOT).f_bavail * os.statvfs(ROOT).f_frsize)
+            for name in peak:
+                peak[name] = max(peak[name], data[name])
+            with (out / 'independent.jsonl').open('a') as stream:
+                stream.write(json.dumps(data) + '\n')
+            assert data['time'] < offer['work_deadline_epoch'] and data['freeBytes'] >= offer['live_floor_bytes']
+            assert max(peak['ownedBytes'], offer.get('carry_bytes', peak['ownedBytes'])) + data['positiveNewBytes'] <= offer['max_owned_bytes']
+            assert data['positiveNewBytes'] <= offer['max_new_bytes']
+            assert len(ids) <= offer['max_pids'] and rss <= offer['max_rss_bytes']
+            (out / 'watch-ready').touch()
+            time.sleep(.1)
+    except BaseException as error:
+        failure = type(error).__name__
+        os.kill(root_pid, signal.SIGTERM)
+    finally:
+        (out / 'independent-release.json').write_text(json.dumps(dict(peak=peak, failure=failure)) + '\n')
+    return failure is None
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--accepted-offer', required=True, type=Path)
     parser.add_argument('--attempt', required=True)
+    parser.add_argument('--watch-pid', type=int)
     args = parser.parse_args()
     offer = json.loads(args.accepted_offer.read_text())
     assert offer['accepted'] is True and time.time() < offer['work_deadline_epoch'] < offer['hard_deadline_epoch']
@@ -68,12 +104,16 @@ def main():
     assert offer['all_new_bytes'] >= offer['max_new_bytes']
     out = OUT / offer['allocation'] / args.attempt
     assert out.parent.parent == OUT and out.parent.name == offer['allocation'] and out.name == args.attempt
-    assert not out.exists()
     common = Path(subprocess.check_output(['git', 'rev-parse', '--path-format=absolute', '--git-common-dir'], cwd=ROOT, text=True).strip())
     bases = [ROOT, common, DEPS, NODE.parent.parent]
+    if args.watch_pid:
+        return independent_watch(offer, out, bases, args.watch_pid)
+    assert not out.exists()
     free = os.statvfs(ROOT).f_bavail * os.statvfs(ROOT).f_frsize
     assert free >= offer['start_floor_bytes'] and free - offer['all_new_bytes'] >= 9 * 1024**3
-    initial = inventory(bases)
+    baseline = inventory_records(bases)
+    initial = sum(baseline.values())
+    highwater = {}
     assert initial <= offer['max_owned_bytes']
     out.mkdir(parents=True)
     scratch = out / 'scratch'
@@ -90,30 +130,45 @@ def main():
     env = {**os.environ, 'TMPDIR': str(scratch), 'NO_COLOR': '1', 'PATH': str(NODE.parent) + ':' + os.environ['PATH'],
            'MCR_IN04_SOURCE_REPO': str(ROOT), 'MCR_IN04_SOURCE_CANDIDATE': offer['candidate']}
     env.pop('NODE_COMPILE_CACHE', None)
+    relay_only = offer.get('qa05_relay', False)
     commands = ([[str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(TAIL)],
                  [str(NODE), '--check', str(TAIL)]] if include_tail else [])
     if offer.get('deferred_bundle', False):
         commands += [[str(NODE), str(HERE / 'deferred.mjs'), str(ROOT), offer['backend_source'], offer['backend_sha256'], str(HERE / 'qualified-runtime.mjs')],
                      [str(NODE), '--check', str(HERE / 'qualified-runtime.mjs')]]
-    commands += [[str(NODE), '--check', str(p)] for p in sorted(HERE.glob('*.mjs'))]
-    commands += [[str(NODE), '--test', '--test-isolation=none', str(HERE / 'source.test.mjs'), str(HERE / 'deferred.test.mjs')],
-                 [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(HERE)]]
+    if relay_only:
+        assert not include_tail and not offer.get('deferred_bundle', False)
+        factory = subprocess.check_output(['git', 'show', offer['frame_factory_source'] + ':frontend/e2e/qa05-functional-recovery/frame-faults.mjs'], cwd=ROOT)
+        assert hashlib.sha256(factory).hexdigest() == 'ad76fd4be3702d90676ed5b156c8831e2b5f5f016595f5c8130ec8020e975a05'
+        env['MCR_QA05_FRAME_FACTORY'] = 'data:text/javascript;base64,' + base64.b64encode(factory).decode()
+        paths = [str(HERE / name) for name in ['qa05-relay.mjs', 'qa05-relay.test.mjs']]
+        commands += [[str(NODE), '--check', path] for path in paths]
+        commands += [[str(NODE), '--test', '--test-isolation=none', paths[1]],
+                     [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', *paths]]
+    else:
+        commands += [[str(NODE), '--check', str(p)] for p in sorted(HERE.glob('*.mjs'))]
+        commands += [[str(NODE), '--test', '--test-isolation=none', str(HERE / 'source.test.mjs'), str(HERE / 'deferred.test.mjs')],
+                     [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(HERE)]]
     child, history, observed = None, [], set()
     peak = dict(ownedBytes=initial, positiveNewBytes=0, pids=0, rssBytes=0)
     status = 'FAIL'
 
     def sample():
-        owned = inventory(bases)
         ids, rss = processes()
+        current = inventory_records(bases)
+        owned = sum(current.values())
+        for key, value in current.items():
+            highwater[key] = max(highwater.get(key, 0), max(0, value - baseline.get(key, 0)))
         observed.update(ids)
-        data = dict(time=time.time(), ownedBytes=owned, positiveNewBytes=max(0, owned - initial), pids=len(ids), rssBytes=rss,
+        data = dict(time=time.time(), ownedBytes=owned, positiveNewBytes=sum(highwater.values()), pids=len(ids), rssBytes=rss,
                     freeBytes=os.statvfs(ROOT).f_bavail * os.statvfs(ROOT).f_frsize)
         for name in peak:
             peak[name] = max(peak[name], data[name])
         with (out / 'guardian.jsonl').open('a') as stream:
             stream.write(json.dumps(data) + '\n')
         assert data['time'] < offer['work_deadline_epoch'] and data['freeBytes'] >= offer['live_floor_bytes']
-        assert owned <= offer['max_owned_bytes'] and data['positiveNewBytes'] <= offer['max_new_bytes']
+        assert max(peak['ownedBytes'], offer.get('carry_bytes', initial)) + data['positiveNewBytes'] <= offer['max_owned_bytes']
+        assert data['positiveNewBytes'] <= offer['max_new_bytes']
         assert len(ids) <= offer['max_pids'] and rss <= offer['max_rss_bytes']
 
     def stop(signum, _):
@@ -121,7 +176,15 @@ def main():
 
     signal.signal(signal.SIGTERM, stop)
     signal.signal(signal.SIGINT, stop)
+    watcher = None
     try:
+        if relay_only:
+            watcher = subprocess.Popen([str(Path(os.sys.executable)), '-B', str(HERE / 'validate.py'),
+                '--accepted-offer', str(args.accepted_offer), '--attempt', args.attempt, '--watch-pid', str(os.getpid())], start_new_session=True)
+            ready_deadline = time.monotonic() + 10
+            while not (out / 'watch-ready').exists():
+                assert watcher.poll() is None and time.monotonic() < ready_deadline
+                time.sleep(.05)
         for index, argv in enumerate(commands):
             sample()
             with (out / f'{index:02}.log').open('wb') as stream:
@@ -145,6 +208,15 @@ def main():
             except subprocess.TimeoutExpired:
                 os.killpg(child.pid, signal.SIGKILL)
                 child.wait(timeout=3)
+        if watcher is not None:
+            (out / 'watch-stop').touch()
+            try:
+                watcher.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                os.killpg(watcher.pid, signal.SIGTERM)
+                watcher.wait(timeout=3)
+            if watcher.returncode:
+                status = 'FAIL'
         for path in scratch.iterdir():
             assert path.is_file() and not path.is_symlink(), 'Unexpected scratch custody; retain for owner cleanup'
             path.unlink()
