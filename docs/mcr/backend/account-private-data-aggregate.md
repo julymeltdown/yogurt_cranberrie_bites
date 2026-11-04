@@ -1,6 +1,6 @@
 # BE42 PrivateData aggregate coordinator
 
-Status: **SOURCE IN PROGRESS**. The qualified core leaf remains a separate
+Status: **SOURCE IN PROGRESS; CURRENT NATIVE NOT_RUN**. The qualified core leaf remains a separate
 published component. This coordinator makes its success one category of a
 closed Concert target and withholds whole PrivateData acknowledgement until
 every required category has an exact durable owner receipt.
@@ -94,6 +94,15 @@ completed category or acknowledging hidden work. The cursor does not exclude a
 missing category from later selection: every incomplete category is retried,
 so a real owner configured after an earlier round can supply the one exact
 terminal receipt rather than being stranded behind the cursor.
+
+The current native fixture leaves six missing categories durable in its first
+process. After a physical PostgreSQL restart it constructs an empty-owner
+coordinator, reads those six incompletes, and replays without rerunning core.
+It then applies one guarded missing-to-complete transition and requires five
+remaining incompletes, no whole ACK, and an unchanged core fence. The test
+postimage is
+`a38578995d203a96b8c88ca6fb16a104043b23ee858474140febc4c20e765379`;
+this corrected restart sequence is **NOT_RUN** and inherits no native result.
 
 A missing core owner returns `Unavailable`; a missing non-core owner remains
 retryable `Incomplete`. No empty registry or synthetic category receipt can
