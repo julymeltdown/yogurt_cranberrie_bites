@@ -1,0 +1,61 @@
+{
+  "kind": "QA09-frontend-source-preparation-v1",
+  "recordedAt": "2026-11-04T12:58:37.605109+00:00",
+  "sourceBase": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "branch": "codex/mcr-fe-QA09",
+  "status": "IN_PROGRESS",
+  "goal": "active",
+  "qualification": "Source preparation only. No tests/build/native/browser/database/restore/relay workload has run. No live QA09 acceptance.",
+  "checks": {
+    "sourceUnitTests": "NOT_RUN",
+    "syntax": "NOT_RUN",
+    "lint": "NOT_RUN",
+    "actualAppRecovery": "NOT_RUN"
+  },
+  "caseStates": {
+    "QA09-DB-RESTART": "NOT_RUN",
+    "QA09-BACKUP-RESTORE": "NOT_RUN",
+    "QA09-OUTBOX-REPLAY": "NOT_RUN",
+    "QA09-PENDING-PICKUP": "NOT_RUN",
+    "QA09-DELETION": "NOT_RUN",
+    "QA09-PARTIAL-CLOSURE": "NOT_RUN"
+  },
+  "sourcePins": {
+    "frontend/e2e/real/qa09-recovery/actions.mjs": "bb2e2900fa046965e6511d4c1fbdfb2c315b0fe49507fd0ddaaa16933188a077",
+    "frontend/e2e/real/qa09-recovery/actions.test.mjs": "7ed2c0b04c67cf709a362181eca5de28a531f5e74611b8914cd1b18f0aad108c",
+    "frontend/e2e/real/qa09-recovery/cases.mjs": "8f0e2d1ecad59c74bcb3143232ce7b86c5aa439dba9c5f7ab48405c3da029d78",
+    "frontend/e2e/real/qa09-recovery/journey.mjs": "a4fa840f7dae511d88d7649680247e39b9618feacbfe7eb0a7154a15a005b701",
+    "frontend/e2e/real/qa09-recovery/observer.mjs": "7c595d2f9677a752dcb190ab543e1cf66eb666f706436986b8ff343222cb2943",
+    "frontend/e2e/real/qa09-recovery/observer.test.mjs": "c4565702252ef2e100d0ba8c06bd55529440bc3ab98bb6e123e415a8ce56197b"
+  },
+  "consumerPins": {
+    "frontend/src/main.tsx": "0755c5c6c3217ca898ebe685f39207f1a350bd7f27d5c19e8252541f67bb5870",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/app/ports.ts": "b2491a31d92e1fa7419fa3d17a682aa01a913ca230984c6ee98937462a8778ed",
+    "frontend/src/app/AdminBoundary.tsx": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+    "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
+    "frontend/src/app/account-deletion-entry/owner.ts": "85cf502994d7e89dce9a3eebe0560c7c94993409a48cee093b1a6af6d3d573b1",
+    "frontend/src/app/account-deletion-entry/recovery.tsx": "3af2295c507cdc82a7617991d9bbe12de9199bcd9c5bc78f7bc7d5bf88ac2bcc",
+    "frontend/src/features/auth/model/account-deletion.ts": "803f860024f373d5751769a3de6c0c53174694461a4e230334fea81d09c1c008",
+    "frontend/src/features/admin/closure/EventClosure.tsx": "fd4b11be8c59a332c475ae03f1799891793bde147c8b4935257f4ee62e826cd1",
+    "frontend/src/features/admin/closure/http.ts": "6ab2abb003e2c80c1683c5cd7d81231dcbc3ccf3bcafd4ead5fb72fb63f467e9",
+    "frontend/src/features/gift-pickup/model/controller.ts": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
+    "frontend/src/features/gift-pickup/model/journal.ts": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+    "frontend/src/features/gift-pickup/ui/GiftPickup.tsx": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+    "docs/mcr/contracts/event-closure-resume.md": "7a47264d6141810dd2b1028089edf7f4ea6256e074a60df615e7a55ac09729a4"
+  },
+  "resources": {
+    "held": false,
+    "newTemporaryDirectories": 0,
+    "newDependencyLinks": 0,
+    "preExistingDependencies": "Preserved physical frontend/node_modules; no install/copy/replacement.",
+    "freeBytesAtRecord": 17236451328,
+    "startFloorBytes": 17179869184
+  },
+  "prerequisites": [
+    "Fresh resource offer and explicit acceptance before validation",
+    "Same-candidate actual backend QA09 producer metadata and qualified faults/effects",
+    "Root-owned pickup consumer and operator/FE39 production integration",
+    "Actual independent frontend/backend run evidence; source and synthetic tests do not certify recovery"
+  ]
+}

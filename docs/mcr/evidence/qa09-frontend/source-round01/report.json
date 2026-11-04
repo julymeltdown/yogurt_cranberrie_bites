@@ -1,0 +1,176 @@
+{
+  "slot": "QA09-FE-SOURCE-202611041339Z",
+  "source": "a857130f925b19da01280e603d318ea5811933ed",
+  "startedAt": "2026-11-04T13:40:26.869433+00:00",
+  "qualification": "Source/synthetic guards only; six original live QA09 cases NOT_RUN. Goal BLOCKED metadata preserved.",
+  "carryBytes": 9830262,
+  "carryInventorySha256": "13b463df888341f97ab82f700d0ef236a97b441d28f9a1aaff8823627167d27e",
+  "sourcePins": {
+    "frontend/e2e/real/qa09-recovery/actions.mjs": "bb2e2900fa046965e6511d4c1fbdfb2c315b0fe49507fd0ddaaa16933188a077",
+    "frontend/e2e/real/qa09-recovery/actions.test.mjs": "6de5aff34eb2aaaca3978583181b2a0818b8aacf16385ecfd967610052dca8ce",
+    "frontend/e2e/real/qa09-recovery/cases.mjs": "8f0e2d1ecad59c74bcb3143232ce7b86c5aa439dba9c5f7ab48405c3da029d78",
+    "frontend/e2e/real/qa09-recovery/journey.mjs": "e9e5bb184d7e4b534fc6e75ac453974381c6307d974b42138d737d571cd67a64",
+    "frontend/e2e/real/qa09-recovery/observer.mjs": "7c595d2f9677a752dcb190ab543e1cf66eb666f706436986b8ff343222cb2943",
+    "frontend/e2e/real/qa09-recovery/observer.test.mjs": "c4565702252ef2e100d0ba8c06bd55529440bc3ab98bb6e123e415a8ce56197b",
+    "frontend/e2e/real/qa09-recovery/producer-binding.mjs": "ca9761cd8a3e7a5a49b22df646671e64296ccb7dac1f5eafde5ee233d6e79eb4",
+    "frontend/e2e/real/qa09-recovery/producer-binding.test.mjs": "c67c9b52467f79f1f07af42027377e68452ef8256f9bbe3a49b89c3026dc4b20"
+  },
+  "commands": [
+    {
+      "name": "unit",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/actions.test.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/observer.test.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/producer-binding.test.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:26.870277+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:27.298919+00:00"
+    },
+    {
+      "name": "syntax-actions",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/actions.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:27.298985+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:27.441718+00:00"
+    },
+    {
+      "name": "syntax-actions.test",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/actions.test.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:27.441745+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:27.584366+00:00"
+    },
+    {
+      "name": "syntax-cases",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/cases.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:27.584396+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:27.722889+00:00"
+    },
+    {
+      "name": "syntax-journey",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/journey.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:27.722917+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:27.863463+00:00"
+    },
+    {
+      "name": "syntax-observer",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/observer.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:27.863497+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:28.007340+00:00"
+    },
+    {
+      "name": "syntax-observer.test",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/observer.test.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:28.007363+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:28.151079+00:00"
+    },
+    {
+      "name": "syntax-producer-binding",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/producer-binding.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:28.151107+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:28.294007+00:00"
+    },
+    {
+      "name": "syntax-producer-binding.test",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/producer-binding.test.mjs"
+      ],
+      "startedAt": "2026-11-04T13:40:28.294038+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:28.437411+00:00"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery"
+      ],
+      "startedAt": "2026-11-04T13:40:28.437437+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:28.723392+00:00"
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+        "HEAD"
+      ],
+      "startedAt": "2026-11-04T13:40:28.723428+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-11-04T13:40:28.864077+00:00"
+    }
+  ],
+  "peakRssBytes": 130285568,
+  "peakProcesses": 4,
+  "peakWholeBytes": 9858719,
+  "lowestFreeBytes": 31136481280,
+  "failure": null,
+  "status": "PASS",
+  "release": {
+    "ownedPids": [
+      48429,
+      48440,
+      48443,
+      48447,
+      48449,
+      48451,
+      48466,
+      48532,
+      48537,
+      48539,
+      48541,
+      48548
+    ],
+    "aliveOwnedPids": [],
+    "temporaryDirectoriesCreated": 0,
+    "dependencyLinksCreated": 0,
+    "preExistingPhysicalDependenciesPreserved": true,
+    "heldResources": false
+  },
+  "finishedAt": "2026-11-04T13:40:28.887133+00:00",
+  "finalWholeBytes": 9858719
+}
