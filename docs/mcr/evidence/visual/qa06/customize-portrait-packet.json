@@ -1,0 +1,70 @@
+{
+  "packet": "QA06-CUSTOMIZE-PORTRAIT-01",
+  "status": "IN_PROGRESS",
+  "sourceCommit": "04ea146e65a7e6730b9ce5846380ece57bc638c2",
+  "evidenceCommit": "e3173efb095f7d8d329f822993a4d88ae21cd81b",
+  "routeTo": "AR03 Motion owner83 and WorldSL for exact ownership/review, not a new implicit lease",
+  "reference": {
+    "artifact": {
+      "path": "docs/mcr/evidence/visual/qa06/reference-target.png",
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "bytes": 2967126
+    },
+    "crop": {
+      "x": 1240,
+      "y": 3,
+      "width": 294,
+      "height": 526
+    },
+    "referenceAspectViewport": {
+      "width": 390,
+      "height": 698
+    }
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-motion-04ea/report.json",
+      "sha256": "195086ceed3886b71c9ad0ee2ab514cc5d09e0f3f0dbe9e636f53565ae36f5bd",
+      "bytes": 430116
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-motion-04ea/customize-component-390.png",
+      "sha256": "eb45e2341d96061fb2912809347a90b02f0abddabc9acab079a11c89d913edfc",
+      "bytes": 55951
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-customize.png",
+      "sha256": "ac82168437123c0f4fc6618c0e5c8e3b1aba231b269f682f0fe4c7fc8963bc1e",
+      "bytes": 455127
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+      "revision": "04ea146e65a7e6730b9ce5846380ece57bc638c2",
+      "sha256": "086e081eb9f63729fca1641f63baf5eb07e5db64eb95f32f16b9823216eca2ae"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/motion.css",
+      "revision": "04ea146e65a7e6730b9ce5846380ece57bc638c2",
+      "sha256": "e876d73bc32bba8fb674c618dbbdf06ce0ff102bcacf86ed60720fbcd5a5d214"
+    }
+  ],
+  "finding": "Actual pinned component fixes right category rail, but fixed192px draft preview is visibly smaller than required reference portrait hierarchy. Existing capture is350x610 component within390 viewport, not public390x698 Root. Comparison preserves component dimensions; do not stretch it or infer Root fit.",
+  "pointers": [
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+      "lines": "57-60",
+      "symbol": "MotionView size={192}"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/motion.css",
+      "lines": "3-6;17",
+      "symbol": "mcr-motion-stage / figure / preview / categories"
+    }
+  ],
+  "boundedRequest": "Review component preview scale/available-space allocation against unchanged reference; if allocator grants an exact next lease, preserve real five-layer controls, selected artwork,44px category targets, draft/reset/save, pose/mode and all error/loading states. No imposed pixel size or implementation design.",
+  "notProductDefects": "Reference six icons, palette/random, different portrait/pose and data options alone do not establish missing supported capability. Do not fabricate layers or recolor/replace approved character art.",
+  "qualification": "Three-width actual Phaser component evidence only; positive public Root/actual runtime admission, service save/reload and physical-device acceptance remain NOT_RUN. Application bundle success is not that proof. Ready client presentation review does not wait on those gates.",
+  "resource": "Existing evidence/source inspection only; no new browser/build or allocation claimed."
+}
