@@ -1,0 +1,61 @@
+{
+  "revision": "2026-11-05-parade-ink",
+  "recorded_at": "2026-11-05T08:18:44+09:00",
+  "authority": "Latest direct human correction: use Parade Ink, not the black version.",
+  "selected": "parade-ink.jpg",
+  "superseded_selection": "after-dark.jpg",
+  "appearance_count": 1,
+  "world_eras": "REVENGE/PARADE/DANGER unchanged and independently persisted",
+  "files": [
+    {
+      "source_attachment": "9FC49E03-6C0E-4776-A954-2CA5C12CB495/1-Photo-1.jpg",
+      "path": "silver-web.jpg",
+      "role": "supporting_component_anatomy",
+      "sha256": "c2af15948299caf1c2c0905ffd89a84963975d8078298e6050f5cdd5ca344dbc",
+      "bytes": 259898,
+      "dimensions": [
+        1280,
+        853
+      ],
+      "transform": "none; original bytes preserved"
+    },
+    {
+      "source_attachment": "9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg",
+      "path": "parade-ink.jpg",
+      "role": "primary_selected_appearance",
+      "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+      "bytes": 321008,
+      "dimensions": [
+        1280,
+        853
+      ],
+      "transform": "none; original bytes preserved"
+    },
+    {
+      "source_attachment": "9FC49E03-6C0E-4776-A954-2CA5C12CB495/3-Photo-3.jpg",
+      "path": "after-dark.jpg",
+      "role": "supporting_component_anatomy_only_not_selected",
+      "sha256": "dbe2aff3208e4a82b67f887e308b4aeb3aeba79c2e0a315f03d07e784f3f97e6",
+      "bytes": 252196,
+      "dimensions": [
+        1280,
+        853
+      ],
+      "transform": "none; original bytes preserved"
+    },
+    {
+      "source_attachment": "9FC49E03-6C0E-4776-A954-2CA5C12CB495/4-Photo-4.jpg",
+      "path": "bone-crimson.jpg",
+      "role": "supporting_component_anatomy",
+      "sha256": "1b782e6b28128bdd877bc714b86dfa9fe9c1a2fc74b5ce77807dcf7cafd38217",
+      "bytes": 246926,
+      "dimensions": [
+        1280,
+        853
+      ],
+      "transform": "none; original bytes preserved"
+    }
+  ],
+  "precedence": "Photo2 fixed visual target; Photos1/3/4 unpictured anatomy/states translated to Parade Ink; previous ten-screen target supplies remaining structure.",
+  "product_use": "Reference/provenance only; not a static screenshot replacement for functional UI."
+}

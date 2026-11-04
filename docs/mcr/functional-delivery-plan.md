@@ -2,9 +2,39 @@
 
 This is the current user-authorized execution amendment to the original [112-task specification](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md). It revises each remaining task, scheduling, ownership and progress while preserving all original IDs and all 61 required IA entries. The source archive and generated planning exports remain unchanged. Historical analysis and task outcomes do not silently override this amendment.
 
-Snapshot: **2026-11-05T06:31:51+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `bd087fde2`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
+Snapshot: **2026-11-05T08:20:03+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `bd087fde2`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
 
 Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
+
+## Current priority: Parade Ink design delivery
+
+The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It supersedes After Dark. Light surfaces, black headers and black selected tabs, strong symmetric borders and crimson primary actions are the fixed visual direction. REVENGE/PARADE/DANGER remain independent World eras.
+
+Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
+
+**Functional baseline:49/111 (44.1%),62 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and55 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+
+First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
+
+Developers compare fixed geometry, type, spacing, borders, icons, assets and control states at360/390/430. Only named authorized data fields may vary; masks cannot conceal layout or missing controls. Actual device/live requirements and all original behavior remain. Kings/SLs manage delivery and staffing without reviewing implementation or screenshots. See the amendment for explicit level/guestbook/Say hi/quantity/Wall semantic conflicts and their truthful handling.
+
+| Design family | Scope | Current status |
+| --- | --- | --- |
+| PI01 | Shared foundation and chrome | NOT_STARTED |
+| PI02 | Feed and notices | NOT_STARTED |
+| PI03 | Thread, replies and composer | NOT_STARTED |
+| PI04 | Giveaway and reservation | NOT_STARTED |
+| PI05 | Meet, party and people | NOT_STARTED |
+| PI06 | Profile, activity and preferences | NOT_STARTED |
+| PI07 | Avatar framing, popover and editor | NOT_STARTED |
+| PI08 | World HUD and era controls | NOT_STARTED |
+| PI09 | Wall B editor and states | NOT_STARTED |
+| PI10 | Public, authentication and legal | NOT_STARTED |
+| PI11 | Map, places, rooms and check-in | NOT_STARTED |
+| PI12 | Supporting safety, operations and archive | NOT_STARTED |
+
+These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
+
 
 ## Progress under the revised scope
 
@@ -40,9 +70,9 @@ Original **BE04 and BE07 are accepted and published** at `df244a715`. The respon
 
 ## Decisions applied to every task
 
-1. Functional completion first. Defer QA08 capacity, FPS/bundle/memory benchmarks and stress qualification, including 200 concurrent users. Keep ordinary functional multiuser behavior, small-cohort races, authorization, privacy, inventory, idempotency, persistence, recovery, accessibility and visual correctness.
+1. Deliver the functioning Parade Ink Feed/Thread milestone first in the frontend queue while existing backend and integration work continue. Defer QA08 capacity, FPS/bundle/memory benchmarks and stress qualification, including 200 concurrent users. Keep ordinary functional multiuser behavior, small-cohort races, authorization, privacy, inventory, idempotency, persistence, recovery, accessibility and visual correctness.
 2. Implement selected Wall B completely: opaque erase to server-qualified immutable palette index 0; four-connected fill of at most 256 changed cells; undo of the latest own non-undo action within 10 database minutes only if no global write intervened; shared 512 changed-cell actor/event/rolling 10-minute budget including undo; existing cooldown. Preserve revision pinning, confirmation, idempotency, atomic cells/history/receipt/quota/outbox and authenticated reload/unknown-result recovery. No transparency, full-wall fill, redo or undo across intervening writes.
-3. Match the supplied ten-screen reference in functioning components, with supplied character assets and preserved originals. Apply the retro change only to post-shaped portions. Keep surrounding controls and other screens on the reference direction. No decorative left accent bars or legacy character fallbacks. Use reusable client atlases/static caches and protected media IDs to avoid unnecessary server requests without changing the art or authority model.
+3. Match the selected Photo2/Parade Ink fixed components in functioning UI. Translate missing anatomy from the other supplied sheets into that one appearance and use the earlier ten-screen structure for unpictured surfaces. Preserve selected character assets and originals; post/reply styling must remain coherent with Parade Ink controls. No decorative left accent bars or legacy character fallbacks. Use reusable client atlases/static caches and protected media IDs to avoid unnecessary server requests without changing the art or authority model.
 4. Assign coherent features through implementation, relevant validation, fixes, documentation and committed delivery. Keep BE/FE patches, worktrees and exact paths separate. Frozen contracts enable parallel source work; live gates need actual producers.
 5. Developers own validation. SLs manage feature context, dependencies and people; kings manage major outcomes and conflicts. No king/SL review, acknowledgment or ledger update gates delivery. One canonical publisher receipt and reusable relevant captures replace repeated proof/readback commits.
 6. Delegate independent composition pieces to capable developers with exact single-writer transfers. Use named publishers and short serialized non-force master publication turns; independent completed features do not wait for an unrelated feature bundle. Preserve concurrent changes and verify remote delivery once through the publisher.
@@ -209,7 +239,7 @@ The original specification remains the full baseline. Every row below preserves 
 | QA03 — Database race suite | IN_PROGRESS / 0 | RELEASE | Complete remaining real PostgreSQL interleavings for party capacity, stock reservation/release/claim, idempotent receipts and restart; Add atomic Wall B action/quota/history/undo races, including all-or-nothing bounded fills. | Invariants hold with forced transaction interleavings and worker restarts. | BE17, BE22, BE23, BE34 |
 | QA04 — Privacy and authorization matrix | IN_PROGRESS / 0 | RELEASE | Complete owner/member/stranger/blocked/suspended/expired/admin cases across HTTP, websocket and caches; Cover the newly added Wall history/recovery and Gifts protected-media paths; preserve access withdrawal and deletion behavior. | No unauthorized handle, claim, evidence, beacon or recipient data in responses or cached UI. | BE30, BE37, BE39, FE31, FE36 |
 | QA05 — Realtime failure suite | IN_PROGRESS / 1 | RELEASE | Complete outstanding functional packet delay/gap, slow-client, foreground, ticket replay, restart and room-switch cases; Use the real pair/appropriate small functional cohort; keep200-user stress and capacity measurements out of this queue. | Bounded queues, no ghost player or duplicated room membership, eventual state convergence. | BE14, BE35, FE17, FE33 |
-| QA06 — Mobile visual acceptance | IN_PROGRESS / 1 | VISUAL | Finish developer-owned comparison of all ten reference surfaces and all 61 IA states at360/390/430px in all three skins; Preserve exact supplied character designs and post-shaped-only retro treatment; resolve remaining map, avatar, Meet density and Thread presentation differences; Run actual iOS Safari and Android Chrome keyboard/safe-area/control checks when device access is available. | Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions. | AR02, AR03, AR04, FE13, FE23, FE26, FE30, FE33 |
+| QA06 — Mobile visual acceptance | IN_PROGRESS / 1 | VISUAL | Complete developer-owned Parade Ink fixed-region/component comparisons for all12 mapped families and all61 retained IA entries; Photo2 is primary, supporting anatomy is translated, and original ten-screen structure fills unpictured surfaces.; Use source-pinned deterministic visual fixtures at360/390/430 and applicable long-content/state/era/keyboard/safe-area cases. Name narrow dynamic fields; do not hide layout differences with whole-card masks or certify palette-only adoption.; Preserve selected artwork and functioning controllers/World geometry; record reference semantic conflicts openly and fix material fixed-region differences before claiming the affected family accepted.; Complete actual iOS Safari and Android Chrome requirements when device access is available. Preserve live IN gates and reuse unchanged valid evidence; QA08 remains deferred. | Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions. | AR02, AR03, AR04, FE13, FE23, FE26, FE30, FE33 |
 | QA07 — Accessibility and input suite | DONE / 1 | RELEASE | None: original baseline and changed-control delta explicitly complete; separate device/live/release criteria remain with their own tasks. | Essential social/pickup tasks work without precise canvas interaction; focus returns on sheet close. | FE18, FE19, FE32, FE36 |
 | QA08 — Capacity and performance qualification | DEFERRED_BY_USER / 3 | PERFORMANCE_LATER | After functional delivery, measure200 sockets/four rooms, mobile FPS/bundle/memory, slow-network stress and reconnect-storm ceilings; Retain partial historical results; publish measured ceilings before making any capacity claim. | Publish measured ceilings and chosen caps; no claim of 200-user support without results. | BE44, FE41 |
 | QA09 — Recovery and lifecycle rehearsal | IN_PROGRESS / 1 | RELEASE | Complete six real recovery scenarios covering database restart/backup restore, outbox replay, pending pickup, deletion convergence and partial event closure; Use populated business state and same-candidate services; synthetic helpers and empty rows do not close recovery criteria. | Restored state is consistent; no lost committed pickup; shutdown and cleanup are resumable. | BE44, BE42, FE39 |

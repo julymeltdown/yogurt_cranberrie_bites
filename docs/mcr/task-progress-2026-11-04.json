@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T06:31:51+09:00",
+  "updated_at": "2026-11-05T08:20:03+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -97,7 +97,7 @@
       "BE07"
     ],
     "current_original_criteria_outcomes": 55,
-    "progress_updated_at": "2026-11-05T06:31:51+09:00",
+    "progress_updated_at": "2026-11-05T08:20:03+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -156,7 +156,9 @@
       "service_policy": "Developer207 exclusively owns whole BE38/FE41 backend production composition after Root literal STOP and205 overlap withdrawal. Developer21e owns frontend FE41;16e retains its separately owned status/recovery leaf. Actual combined route/runtime criteria remain open.",
       "direct_dispatch": "Resource, Community and World SLs plus Frontend King directly resume ready ended turns, assign coherent remaining feature scopes, and wake consumers on actual dependency release. Main has no acknowledgment/review/dispatch gate. Completed redundant chats retire after returned custody; no busywork or task inflation.",
       "native_queue": "Resource lead issued finite Party12cc and Gift267 build offers after the already-ready coherent Root build and ahead of new helper work. BE06 built both executables; three-case database/restart validation remains pending. An offer or build does not imply runtime acceptance.",
-      "publisher": "Developer412e is the standing sole master publisher; Roots1fc/153 retain implementation. Serialized normal non-force exact-path publication, one receipt, no per-batch custody return/reacquisition or king/SL ACK."
+      "publisher": "Developer412e is the standing sole master publisher; Roots1fc/153 retain implementation. Serialized normal non-force exact-path publication, one receipt, no per-batch custody return/reacquisition or king/SL ACK.",
+      "design_first_revision": "Both kings and UI/resource/functional leads contributed to the latest Photo2/Parade Ink plan. One shared writer and disjoint screen families are allocated by FrontendKing385 after canonical publication; current functional, art, runtime and publisher assignments remain protected.",
+      "resume_first": "22 failed chats received continuations;3unfinishedQA restored with exact custody restrictions; existing active jobs untouched. Fresh inventory32active/8idle/1notLoaded/no systemError is activity only, not acceptance. ca12 cannot be steered without active turn id;385/21d fallback retained."
     },
     "capacity_history": [
       {
@@ -244,7 +246,7 @@
         "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
       }
     },
-    "staffing_updated_at": "2026-11-05T06:31:51+09:00",
+    "staffing_updated_at": "2026-11-05T08:20:03+09:00",
     "delivery_checkpoint_history": [
       {
         "recorded_at": "2026-11-05T04:37:28+09:00",
@@ -320,6 +322,524 @@
       "question": "Approved real event/venue, official map/location source, permitted meetup/pickup spots, audience and validity dates/times.",
       "basis": "Root explicitly reported no fresh approved physical place and no identified prior question custodian. Main submitted one async question; no answer inferred.",
       "boundary": "Source/native/clock/caller/correlation and independent criteria continue. Only affected physical-location positive checks require this input. Separate Party notification audience question remains pending."
+    },
+    "design_delivery": {
+      "revision": "2026-11-05-parade-ink",
+      "recorded_at": "2026-11-05T08:20:03+09:00",
+      "authority": "Latest direct human choice: Parade Ink, not the black version. User requested joint king/PM planning, progress update, commit/push before new design dispatch, with interrupted sessions resumed first.",
+      "appearance": "PARADE_INK",
+      "selected_reference": "docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg",
+      "selected_reference_sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+      "superseded_selection": "AFTER_DARK",
+      "appearance_count": 1,
+      "world_eras_unchanged": [
+        "REVENGE",
+        "PARADE",
+        "DANGER"
+      ],
+      "plan": "docs/mcr/design/parade-ink-delivery-plan-2026-11-05.md",
+      "reference_manifest": "docs/mcr/design/parade-ink-2026-11-05/reference-manifest.json",
+      "accepted_families": 0,
+      "total_families": 12,
+      "family_counts": {
+        "NOT_STARTED": 12
+      },
+      "families": [
+        {
+          "id": "PI01",
+          "title": "Shared foundation and chrome",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE05",
+            "FE06",
+            "FE07",
+            "FE41",
+            "QA06",
+            "QA07"
+          ],
+          "primary_required_ia": [],
+          "reference_authority": [
+            "photo2",
+            "supporting_states"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI02",
+          "title": "Feed and notices",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE27",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "F01",
+            "F05"
+          ],
+          "reference_authority": [
+            "photo2"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI03",
+          "title": "Thread, replies and composer",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE28",
+            "FE04",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "reference_authority": [
+            "photo2",
+            "photo3_anatomy",
+            "photo4_anatomy"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI04",
+          "title": "Giveaway and reservation",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE24",
+            "FE25",
+            "FE26",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "G05",
+            "G06",
+            "G07"
+          ],
+          "reference_authority": [
+            "photo1_anatomy"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI05",
+          "title": "Meet, party and people",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE21",
+            "FE22",
+            "FE23",
+            "FE29",
+            "FE30",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "M01",
+            "M02",
+            "M03",
+            "M04",
+            "M05",
+            "M06",
+            "M07",
+            "M08"
+          ],
+          "reference_authority": [
+            "photo4_anatomy"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI06",
+          "title": "Profile, activity and preferences",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE30",
+            "FE34",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "M09",
+            "U01",
+            "U03",
+            "U07"
+          ],
+          "reference_authority": [
+            "photo3_anatomy",
+            "photo2_popover"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI07",
+          "title": "Avatar framing, popover and editor",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE12",
+            "FE13",
+            "FE18",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "U02"
+          ],
+          "reference_authority": [
+            "photo2",
+            "photo3_editor_anatomy"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI08",
+          "title": "World HUD and era controls",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE06",
+            "FE07",
+            "FE14",
+            "FE15",
+            "FE18",
+            "AR04",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "W01",
+            "W06"
+          ],
+          "reference_authority": [
+            "photo2"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI09",
+          "title": "Wall B editor and states",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE32",
+            "FE33",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "R01"
+          ],
+          "reference_authority": [
+            "photo2",
+            "approved_wall_b"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI10",
+          "title": "Public, authentication and legal",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE08",
+            "FE09",
+            "FE10",
+            "FE11",
+            "FE36",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "A05",
+            "A06",
+            "A07",
+            "A08"
+          ],
+          "reference_authority": [
+            "previous_ten_screen_structure"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI11",
+          "title": "Map, places, rooms and check-in",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE18",
+            "FE19",
+            "FE20",
+            "AR02",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "W02",
+            "W03",
+            "W04",
+            "W05",
+            "W07",
+            "W08"
+          ],
+          "reference_authority": [
+            "previous_ten_screen_structure",
+            "photo2_world_language"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        },
+        {
+          "id": "PI12",
+          "title": "Supporting safety, operations and archive",
+          "state": "NOT_STARTED",
+          "original_task_ids": [
+            "FE30",
+            "FE31",
+            "FE35",
+            "FE36",
+            "FE37",
+            "FE38",
+            "FE39",
+            "FE40",
+            "FE41",
+            "QA06"
+          ],
+          "primary_required_ia": [
+            "U04",
+            "U05",
+            "U06",
+            "U08",
+            "U09",
+            "U10",
+            "X01",
+            "S01",
+            "S02",
+            "S03",
+            "O01",
+            "O02",
+            "O03",
+            "O04",
+            "O05",
+            "O06",
+            "O07",
+            "O08",
+            "O09"
+          ],
+          "reference_authority": [
+            "previous_structure",
+            "parade_ink_shared_components"
+          ],
+          "coordinator": "Frontend King385 through existing functional/UI leads",
+          "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+          "prerequisites": [
+            "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+          ],
+          "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+          "evidence": [],
+          "canonical_commit": null
+        }
+      ],
+      "accounting": "Child design groups under existing QA06; not new original tasks, not blended into functional percentage. Existing49/111 and55original outcomes retained. Presentation-only changes do not reopen closed behavior; concrete changed/failing original criteria are separately recorded.",
+      "primary_ia_map": {
+        "F01": "PI02",
+        "F05": "PI02",
+        "F02": "PI03",
+        "F03": "PI03",
+        "F04": "PI03",
+        "G01": "PI04",
+        "G02": "PI04",
+        "G03": "PI04",
+        "G04": "PI04",
+        "G05": "PI04",
+        "G06": "PI04",
+        "G07": "PI04",
+        "M01": "PI05",
+        "M02": "PI05",
+        "M03": "PI05",
+        "M04": "PI05",
+        "M05": "PI05",
+        "M06": "PI05",
+        "M07": "PI05",
+        "M08": "PI05",
+        "M09": "PI06",
+        "U01": "PI06",
+        "U03": "PI06",
+        "U07": "PI06",
+        "U02": "PI07",
+        "W01": "PI08",
+        "W06": "PI08",
+        "R01": "PI09",
+        "A01": "PI10",
+        "A02": "PI10",
+        "A03": "PI10",
+        "A04": "PI10",
+        "A05": "PI10",
+        "A06": "PI10",
+        "A07": "PI10",
+        "A08": "PI10",
+        "W02": "PI11",
+        "W03": "PI11",
+        "W04": "PI11",
+        "W05": "PI11",
+        "W07": "PI11",
+        "W08": "PI11",
+        "U04": "PI12",
+        "U05": "PI12",
+        "U06": "PI12",
+        "U08": "PI12",
+        "U09": "PI12",
+        "U10": "PI12",
+        "X01": "PI12",
+        "S01": "PI12",
+        "S02": "PI12",
+        "S03": "PI12",
+        "O01": "PI12",
+        "O02": "PI12",
+        "O03": "PI12",
+        "O04": "PI12",
+        "O05": "PI12",
+        "O06": "PI12",
+        "O07": "PI12",
+        "O08": "PI12",
+        "O09": "PI12"
+      },
+      "required_ia_count": 61,
+      "implementation_validation_owner": "Responsible developer; kings/SLs do not inspect code, queries, tests, runtime or screenshots.",
+      "fixed_regions": [
+        "bounds",
+        "spacing",
+        "type metrics and line heights",
+        "borders",
+        "icons",
+        "tabs and control alignment",
+        "image/portrait frames and crops",
+        "density"
+      ],
+      "variable_fields": [
+        "authorized names and text",
+        "timestamps and counts",
+        "stock/capacity/status/permissions",
+        "selected approved avatar and authorized media",
+        "World actors/positions",
+        "mural content"
+      ],
+      "variable_mask_rule": "Never mask whole cards/containers or fixed geometry to hide differences; deterministic visual fixtures preferred.",
+      "screen_sizes": [
+        360,
+        390,
+        430
+      ],
+      "acceptance_limit": "Material fixed-region deviations remain open. JPEG/raster noise is not a layout exemption. Physical devices and real IN gates remain separate and required.",
+      "semantic_conflicts": [
+        "No fabricated level or new XP system",
+        "No implicit guestbook API or fake guestbook entries",
+        "No general DM from Say hi",
+        "No new quantity parameter without actual reservation semantics",
+        "Original Hair/Eyes/Outfit catalog remains required",
+        "128x128/16-color bounded Wall B retained",
+        "Every visible window/menu/refresh control needs named real behavior"
+      ],
+      "first_milestone": [
+        "PI01",
+        "PI02",
+        "PI03"
+      ],
+      "parallel_next": [
+        "PI04",
+        "PI05",
+        "PI06",
+        "PI07",
+        "PI08",
+        "PI09"
+      ],
+      "remaining_coverage": [
+        "PI10",
+        "PI11",
+        "PI12"
+      ],
+      "planning_contributors": [
+        "Main King01a19e5c-e9c6-7973-a53b-a6d19141620f",
+        "Frontend King01a1a385-9f32-73c2-8715-ff54bd1e0497",
+        "UI lead01a1a533-0644-7ef0-9ee8-9f1755817fb9",
+        "Resource lead01a1a21d-39ec-7912-84cb-910058e7a110",
+        "World and Community leads via Frontend King"
+      ],
+      "preservation": "No changes to original112 task scopes/acceptance/completion criteria,61 IA/source originals,accepted code or existing exclusive writer custody. Keep validated queued patches.",
+      "publication_route": "Standing publisher412e; design dispatch starts on canonical plan publication without another king/SL ACK."
     }
   },
   "historical_accounting": {
@@ -826,7 +1346,11 @@
           "U_MAP",
           "609ae393"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI11"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -947,7 +1471,11 @@
           "U_MAP",
           "609ae393"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI08"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4064,7 +4592,11 @@
           "published_commit": "bc75182e8f552e3621fcb5b033f22dafdcacc009",
           "basis": "Original headless upload-controller criteria explicitly satisfied by implementation owner and exact foundation handoff published. Existing FE04 owner history is preserved; protected-media consumers and live recovery remain separately assigned.",
           "manager_technical_review": false
-        }
+        },
+        "design_family_ids": [
+          "PI03"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4105,7 +4637,11 @@
           "U_SCOPE",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI01"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4180,7 +4716,12 @@
           "completed": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them.",
           "remaining": "No identified original FE06 remainder; separate FE41/live/visual/device work remains.",
           "source": "Published developer completion record and current receiving-chat assignment."
-        }
+        },
+        "design_family_ids": [
+          "PI01",
+          "PI08"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4229,7 +4770,12 @@
           "docs/mcr/scrum/world.md:1671",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI01",
+          "PI08"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4275,7 +4821,11 @@
           "docs/mcr/frontend/reference-public.md:112",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI10"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4322,7 +4872,11 @@
           "docs/mcr/scrum/world.md:1672",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI10"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4379,7 +4933,11 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "design_family_ids": [
+          "PI10"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4437,7 +4995,11 @@
           "published_commit": "bc75182e8f552e3621fcb5b033f22dafdcacc009",
           "basis": "Original password-recovery client criteria explicitly satisfied by implementation owner and exact foundation handoff published. Existing real-email evidence reused; broader Auth/provider and live-system scope remains separate.",
           "manager_technical_review": false
-        }
+        },
+        "design_family_ids": [
+          "PI10"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4498,7 +5060,11 @@
           "coordinator": "World SLc276",
           "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
           "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
-        }
+        },
+        "design_family_ids": [
+          "PI07"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4564,7 +5130,11 @@
           "coordinator": "World SLc276",
           "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
           "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
-        }
+        },
+        "design_family_ids": [
+          "PI07"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4612,7 +5182,11 @@
           "U_MAP",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI08"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4659,7 +5233,11 @@
           "docs/mcr/scrum/world.md:1675",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI08"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4822,7 +5400,13 @@
           "docs/mcr/scrum/world.md:1677",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI07",
+          "PI08",
+          "PI11"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4892,7 +5476,11 @@
           "recorded_at": "2026-11-05T04:37:28+09:00",
           "state": "ACTIVE_CHAT_PREPARATION",
           "scope": "ActualMap/World adoption of published densitypacket7acfac3a; preserve qualified stage/focus behavior and truthful physical-place limitations."
-        }
+        },
+        "design_family_ids": [
+          "PI11"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -4937,7 +5525,11 @@
           "docs/mcr/scrum/community.md:699",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI11"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5002,7 +5594,11 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "design_family_ids": [
+          "PI05"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5051,7 +5647,11 @@
           "U_BODY",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI05"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5099,7 +5699,11 @@
           "docs/mcr/scrum/community.md:702",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI05"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5160,7 +5764,11 @@
           "0624d581325946c593b5bbe00c4cfde0213ad538",
           "19da2317162e38a192d5f4604f78609c0bcea62c"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI04"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5208,7 +5816,11 @@
           "U_GIFTS",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI04"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5254,7 +5866,11 @@
           "docs/mcr/scrum/community.md:705",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI04"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5309,7 +5925,11 @@
           "U_FEED",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI02"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5368,7 +5988,11 @@
           "U_RECONCILIATION",
           "8fea3b43dfef2859e144e7aead4739a1834cd6c6 canonical publisher receipt"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI03"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5415,7 +6039,11 @@
           "U_THREAD",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI05"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5461,7 +6089,13 @@
           "U_BODY",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI05",
+          "PI06",
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5523,7 +6157,11 @@
           "basis": "Responsible developer explicitly closed the original client row: handle settings, explicit request consent and decisions, protected no-store reveal, revoke/expiry, no handle before approval, revoked UI/cache cleanup and no auto-follow. Default-app composition is published at a40d6944 and retained private-social evidence is reused. Controlled HTTP/C05 client completion does not certify live IN03, genuine providers, multiuser or device outcomes.",
           "evidence_basis": "Retained private-social384 regressions; deletion15 new plus274 Auth/538 affected;18 default-route cases;390px actual-main combined sharing/report/block/unblock/Help journey; types/lint and exact95-path publication. Counts are owner-reported scoped evidence, not summed into a fabricated test total.",
           "manager_technical_review": false
-        }
+        },
+        "design_family_ids": [
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:10:54+09:00",
@@ -5585,7 +6223,11 @@
           "U_RECONCILIATION",
           "3f81baea9d127b106e24c26280ea6dfd92350815"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI09"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5647,7 +6289,11 @@
           "U_RECONCILIATION",
           "3f81baea9d127b106e24c26280ea6dfd92350815"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI09"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -5706,7 +6352,11 @@
           "U_BODY",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI06"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T02:28:19+09:00",
@@ -5767,7 +6417,11 @@
           "published_commit": "be6af4e9970aa0175df0b72ea24293e370b1b2df",
           "basis": "Responsible developer explicitly reconciled original client criteria: FE35 acceptance is satisfied by the published inbox implementation and privacy hardening. Dedicated server unread totals, deduplication, original-key read recovery, protected stale-target handling and observer-isolated cleanup are retained. Original live IN03 remains a separate integration requirement; FE31 sharing creation and FE36 report/block default entry remain open with their active owner. No manager technical review or new duplicate check was performed.",
           "manager_technical_review": false
-        }
+        },
+        "design_family_ids": [
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:24:00+09:00",
@@ -5828,7 +6482,12 @@
           "basis": "Responsible developer explicitly closed the original client row: report dialog, block list/confirmed unblock, canonical logout/delete confirmation and progress, private-state cleanup, affected-panel closure on block, a new consent baseline on unblock and truthful failed/partial deletion. Default-app composition is published at a40d6944 and retained account/deletion evidence is reused. Missing COMMENT/MURAL authorization and REPORT attachment producers remain explicit backend/media integration work; unavailable UI is truthful, not a producer qualification.",
           "evidence_basis": "Retained private-social384 regressions; deletion15 new plus274 Auth/538 affected;18 default-route cases;390px actual-main combined sharing/report/block/unblock/Help journey; types/lint and exact95-path publication. Counts are owner-reported scoped evidence, not summed into a fabricated test total.",
           "manager_technical_review": false
-        }
+        },
+        "design_family_ids": [
+          "PI10",
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:10:54+09:00",
@@ -5889,7 +6548,11 @@
           "9a44bc29",
           "cf1ca629"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T02:28:19+09:00",
@@ -5955,7 +6618,11 @@
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher.",
           "remaining_ownership_action": "Former worker40c576 now owns QA07. Root/Community route the original production remainder and confirm the next exclusive FE38 developer; finished FE41 developer83 is a candidate, not an accepted new owner."
-        }
+        },
+        "design_family_ids": [
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T02:28:19+09:00",
@@ -6015,7 +6682,11 @@
           "U_RECONCILIATION",
           "a9c04eb256e7b50e6efc99bfd076eca9a8293100"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:10:54+09:00",
@@ -6069,7 +6740,11 @@
           "docs/mcr/scrum/community.md:713",
           "U_RECONCILIATION"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "design_family_ids": [
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -6137,7 +6812,12 @@
           "state": "ACTIVE_IMPLEMENTATION",
           "scope": "Developer21e owns trusted pre-World service-policy consumer;50a8 owns explicitly transferred application-release identity and generated150 inputs; Root153 retains shared app integration and backend16e owns the policy producer. Source qualification does not establish the remaining production/browser journey.",
           "manager_technical_review": false
-        }
+        },
+        "design_family_ids": [
+          "PI01",
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -6423,9 +7103,10 @@
         "original_acceptance": "Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions.",
         "updated_scope": "Test widths 360/390/430, actual iOS Safari and Android Chrome, keyboard, safe area and all three skins.",
         "remaining_work": [
-          "Finish developer-owned comparison of all ten reference surfaces and uncovered software states, covering360/390/430 widths and all three skins with justified reuse of valid common-layout evidence. All61IA functionality and release traceability remain required; no universal fresh61x3x3 screenshot matrix is added.",
-          "Preserve exact supplied character designs and post-shaped-only retro treatment; resolve remaining map, avatar, Meet density and Thread presentation differences.",
-          "Run actual iOS Safari and Android Chrome keyboard/safe-area/control checks when device access is available."
+          "Complete developer-owned Parade Ink fixed-region/component comparisons for all12 mapped families and all61 retained IA entries; Photo2 is primary, supporting anatomy is translated, and original ten-screen structure fills unpictured surfaces.",
+          "Use source-pinned deterministic visual fixtures at360/390/430 and applicable long-content/state/era/keyboard/safe-area cases. Name narrow dynamic fields; do not hide layout differences with whole-card masks or certify palette-only adoption.",
+          "Preserve selected artwork and functioning controllers/World geometry; record reference semantic conflicts openly and fix material fixed-region differences before claiming the affected family accepted.",
+          "Complete actual iOS Safari and Android Chrome requirements when device access is available. Preserve live IN gates and reuse unchanged valid evidence; QA08 remains deferred."
         ],
         "complete_when": "Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions.",
         "reason": "Published Map/Feed/Community/BODY cohorts are bounded contributions; full parity and physical-device outcomes remain open.",
@@ -6461,7 +7142,23 @@
           "coordinator": "UI lead533",
           "scope": "Remaining original task behavior, developer-owned validation and direct committed publication; unchanged evidence reused.",
           "persistent_goal": "Owned by receiving developer; chat activity alone does not certify actual goal state."
-        }
+        },
+        "design_family_ids": [
+          "PI01",
+          "PI02",
+          "PI03",
+          "PI04",
+          "PI05",
+          "PI06",
+          "PI07",
+          "PI08",
+          "PI09",
+          "PI10",
+          "PI11",
+          "PI12"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "current_design_plan": "docs/mcr/design/parade-ink-delivery-plan-2026-11-05.md"
       }
     },
     {
@@ -6531,7 +7228,11 @@
           "qualified_delta_publication": "d1964efb2",
           "basis": "Retained original SATISFIED baseline plus 15 changed input observations and qualified guard shutdown, explicitly reconciled by responsible owners. Management consumes the disposition without rerunning or reviewing tests.",
           "limits": "Controlled inputs and historical failures preserved. QA06 devices/reference, live integration and release remain independently open."
-        }
+        },
+        "design_family_ids": [
+          "PI01"
+        ],
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
       }
     },
     {
@@ -8332,7 +9033,8 @@
         "FE09"
       ],
       "required_behavior": "New landing; signed-in redirect; no old homepage.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A02",
@@ -8343,7 +9045,8 @@
         "BE03"
       ],
       "required_behavior": "Email/provider entry; invalid credentials, throttling, provider unavailable.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A03",
@@ -8354,7 +9057,8 @@
         "BE03"
       ],
       "required_behavior": "Eligibility/consent, signup; duplicate and throttled outcomes without unsafe enumeration.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A04",
@@ -8365,7 +9069,8 @@
         "BE03"
       ],
       "required_behavior": "Verify and resend; expiry and resend cooldown.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A05",
@@ -8376,7 +9081,8 @@
         "BE03"
       ],
       "required_behavior": "Request and complete reset; expired link and neutral account-existence response.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A06",
@@ -8387,7 +9093,8 @@
         "BE03"
       ],
       "required_behavior": "Callback completion, denial, invalid state, safe return target.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A07",
@@ -8398,7 +9105,8 @@
         "BE38"
       ],
       "required_behavior": "Versioned notices, operator contact, independent fan-service disclosure.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "A08",
@@ -8409,7 +9117,8 @@
         "BE42"
       ],
       "required_behavior": "Completion or pending deletion; clear private client state.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI10"
     },
     {
       "id": "W01",
@@ -8429,7 +9138,8 @@
         "BE14"
       ],
       "required_behavior": "Movement, camera, interaction; loading, live, reconnecting, low power, full room.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI08"
     },
     {
       "id": "W02",
@@ -8441,7 +9151,8 @@
         "BE08"
       ],
       "required_behavior": "Overview, camera and place legend; incompatible map version.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI11"
     },
     {
       "id": "W03",
@@ -8452,7 +9163,8 @@
         "BE08"
       ],
       "required_behavior": "Photo and instructions; verified, concept-only, closed, removed.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI11"
     },
     {
       "id": "W04",
@@ -8463,7 +9175,8 @@
         "BE11"
       ],
       "required_behavior": "Capacity, room switch, party invitation; full and denied.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI11"
     },
     {
       "id": "W05",
@@ -8475,7 +9188,8 @@
         "BE37"
       ],
       "required_behavior": "Accessible nearby-user list; block-filtered presence.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI11"
     },
     {
       "id": "W06",
@@ -8487,7 +9201,8 @@
         "AR04"
       ],
       "required_behavior": "Skin selection; loading, fallback, persisted selection.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI08"
     },
     {
       "id": "W07",
@@ -8498,7 +9213,8 @@
         "BE09"
       ],
       "required_behavior": "Explicit place/audience/expiry selection; active, expired, revoked.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI11"
     },
     {
       "id": "W08",
@@ -8509,7 +9225,8 @@
         "FE19"
       ],
       "required_behavior": "Controls, virtual/physical distinction, meeting safety.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI11"
     },
     {
       "id": "F01",
@@ -8520,7 +9237,8 @@
         "BE31"
       ],
       "required_behavior": "Latest-first event feed, filters, cursor loading; stale and read-only.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI02"
     },
     {
       "id": "F02",
@@ -8533,7 +9251,8 @@
         "BE31"
       ],
       "required_behavior": "Text and image draft; upload failure, retry, published receipt.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI03"
     },
     {
       "id": "F03",
@@ -8544,7 +9263,8 @@
         "BE32"
       ],
       "required_behavior": "Post, comments, reaction, report, linked entity; deleted/unavailable.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI03"
     },
     {
       "id": "F04",
@@ -8555,7 +9275,8 @@
         "BE31"
       ],
       "required_behavior": "Owner editing and deletion; version conflict.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI03"
     },
     {
       "id": "F05",
@@ -8566,7 +9287,8 @@
         "BE38"
       ],
       "required_behavior": "Source and confirmation time; superseded or withdrawn.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI02"
     },
     {
       "id": "M01",
@@ -8577,7 +9299,8 @@
         "FE29"
       ],
       "required_behavior": "PARTIES / PEOPLE / MY PLAN; filters and restricted states.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M02",
@@ -8588,7 +9311,8 @@
         "BE16"
       ],
       "required_behavior": "Capacity, ticket section, time, place, requirements; validation.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M03",
@@ -8599,7 +9323,8 @@
         "BE17"
       ],
       "required_behavior": "Apply/cancel; requested, accepted, full, cancelled, closed.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M04",
@@ -8610,7 +9335,8 @@
         "BE18"
       ],
       "required_behavior": "Review applications, remove member, edit meeting, close/cancel.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M05",
@@ -8621,7 +9347,8 @@
         "BE19"
       ],
       "required_behavior": "Approved-members-only gathering state; moved, expired, cancelled.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M06",
@@ -8632,7 +9359,8 @@
         "BE09"
       ],
       "required_behavior": "Physical meeting description, identification, status; stale/revoked.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M07",
@@ -8643,7 +9371,8 @@
         "BE27"
       ],
       "required_behavior": "Introduction discovery; no results and verification-required.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M08",
@@ -8654,7 +9383,8 @@
         "BE27"
       ],
       "required_behavior": "Intro draft, private eligibility conditions, publish/close.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI05"
     },
     {
       "id": "M09",
@@ -8666,7 +9396,8 @@
         "BE30"
       ],
       "required_behavior": "Large avatar, public profile, request sharing, report/block; private/unavailable.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI06"
     },
     {
       "id": "G01",
@@ -8677,7 +9408,8 @@
         "BE20"
       ],
       "required_behavior": "Discover by time/place; remaining count and no-stock state.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "G02",
@@ -8689,7 +9421,8 @@
         "BE24"
       ],
       "required_behavior": "Item, photo, quantity, pickup window, place; invalid/upload-failed.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "G03",
@@ -8700,7 +9433,8 @@
         "BE20"
       ],
       "required_behavior": "Owner and public details; open, paused, sold-out, completed, cancelled.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "G04",
@@ -8712,7 +9446,8 @@
         "BE23"
       ],
       "required_behavior": "Owner reservations and stock, pause, confirm pickup; version conflict.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "G05",
@@ -8723,7 +9458,8 @@
         "BE21"
       ],
       "required_behavior": "Atomic reservation confirmation; held, exhausted, duplicate, expired.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "G06",
@@ -8735,7 +9471,8 @@
         "BE23"
       ],
       "required_behavior": "Authorized place, time, confirmation code, status; claimed/expired/cancelled.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "G07",
@@ -8747,7 +9484,8 @@
         "BE21"
       ],
       "required_behavior": "GIVING / RECEIVING and history.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI04"
     },
     {
       "id": "R01",
@@ -8760,7 +9498,8 @@
         "BE35"
       ],
       "required_behavior": "Pan/zoom, pixel preview, palette, explicit commit; cooldown/paused/frozen.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI09"
     },
     {
       "id": "U01",
@@ -8771,7 +9510,8 @@
         "BE06"
       ],
       "required_behavior": "Avatar, profile completion, party and giveaway activity.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI06"
     },
     {
       "id": "U02",
@@ -8783,7 +9523,8 @@
         "BE07"
       ],
       "required_behavior": "Layer selections, presets, preview and save; invalid/version-conflict.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI07"
     },
     {
       "id": "U03",
@@ -8794,7 +9535,8 @@
         "BE04"
       ],
       "required_behavior": "Nickname, bio, optional ticket section, visibility; validation.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI06"
     },
     {
       "id": "U04",
@@ -8805,7 +9547,8 @@
         "BE28"
       ],
       "required_behavior": "Private-by-default handles; configure, replace, remove.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "U05",
@@ -8817,7 +9560,8 @@
         "BE30"
       ],
       "required_behavior": "Sharing requests; pending, approved, rejected, revoked, expired.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "U06",
@@ -8828,7 +9572,8 @@
         "BE26"
       ],
       "required_behavior": "Unknown, verified, expired, unsupported, provider unavailable.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "U07",
@@ -8839,7 +9584,8 @@
         "FE06"
       ],
       "required_behavior": "Theme, reduced motion, low power, sound off by default.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI06"
     },
     {
       "id": "U08",
@@ -8850,7 +9596,8 @@
         "BE37"
       ],
       "required_behavior": "List and unblock; prior sharing grants do not return automatically.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "U09",
@@ -8861,7 +9608,8 @@
         "BE42"
       ],
       "required_behavior": "Logout, deletion request and status, failure recovery.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "U10",
@@ -8872,7 +9620,8 @@
         "BE33"
       ],
       "required_behavior": "Read state and authorized deep links; stale target.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "X01",
@@ -8883,7 +9632,8 @@
         "BE41"
       ],
       "required_behavior": "Read-only permitted posts and final wall; no private locations or handles.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "S01",
@@ -8894,7 +9644,8 @@
         "BE36"
       ],
       "required_behavior": "Reason, evidence, receipt; reporter identity hidden from target.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "S02",
@@ -8905,7 +9656,8 @@
         "FE41"
       ],
       "required_behavior": "Safe 401/403/404/410/429/503 states; return to world.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "S03",
@@ -8916,7 +9668,8 @@
         "FE41"
       ],
       "required_behavior": "Offline/stale/version mismatch; no silent offline reservation replay.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O01",
@@ -8927,7 +9680,8 @@
         "BE38"
       ],
       "required_behavior": "Operational summary and kill switches; degraded state.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O02",
@@ -8938,7 +9692,8 @@
         "BE38"
       ],
       "required_behavior": "Event phase, feature flags, notices; publish confirmation.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O03",
@@ -8950,7 +9705,8 @@
         "AR01"
       ],
       "required_behavior": "Source review, verification, closure, accessibility notes, map version.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O04",
@@ -8962,7 +9718,8 @@
         "BE39"
       ],
       "required_behavior": "Review, action, status; moderator access only.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O05",
@@ -8973,7 +9730,8 @@
         "BE39"
       ],
       "required_behavior": "Minimal necessary data, suspension, connection termination.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O06",
@@ -8984,7 +9742,8 @@
         "BE39"
       ],
       "required_behavior": "Hide/restore posts, parties, giveaways, and comments.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O07",
@@ -8995,7 +9754,8 @@
         "BE40"
       ],
       "required_behavior": "Pause, region lock, restore, freeze; revision reset.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O08",
@@ -9006,7 +9766,8 @@
         "BE39"
       ],
       "required_behavior": "Search actions and outcomes; redact sensitive contents.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     },
     {
       "id": "O09",
@@ -9017,7 +9778,8 @@
         "BE41"
       ],
       "required_behavior": "Freeze, export, expire grants, cleanup; partial-failure recovery.",
-      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage."
+      "acceptance": "Retained required IA entry; complete readiness reconciled inQA06/IN05, not inferred from a task checkbox or origin-audit coverage.",
+      "design_family": "PI12"
     }
   ],
   "owner_reconciliation_1600": {

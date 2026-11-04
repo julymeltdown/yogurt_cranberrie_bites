@@ -6,18 +6,31 @@ Current delivered-task count: **49/111 active tasks (44.1%)**, with 62 active ta
 
 Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
 
+## Current priority: Parade Ink design delivery
+
+The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It supersedes After Dark. Light surfaces, black headers and black selected tabs, strong symmetric borders and crimson primary actions are the fixed visual direction. REVENGE/PARADE/DANGER remain independent World eras.
+
+Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
+
+**Functional baseline:49/111 (44.1%),62 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and55 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+
+First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
+
+Developers compare fixed geometry, type, spacing, borders, icons, assets and control states at360/390/430. Only named authorized data fields may vary; masks cannot conceal layout or missing controls. Actual device/live requirements and all original behavior remain. Kings/SLs manage delivery and staffing without reviewing implementation or screenshots. See the amendment for explicit level/guestbook/Say hi/quantity/Wall semantic conflicts and their truthful handling.
+
 ## Priority and scope
 
-Complete working meetup/pickup, social/privacy flows, selected Wall B and remaining reference UI defects first. QA08 performance qualification, including 200 concurrent users, is **DEFERRED_BY_USER** and does not gate current functional delivery. This is not a passing result or capacity claim. Functional races, privacy, authorization, persistence, recovery, accessibility, actual mobile usability and visual fidelity remain required.
+Prioritize the first functioning Parade Ink Feed/Thread delivery while existing meetup/pickup, social/privacy, selected Wall B and real runtime work continue in parallel. QA08 performance qualification, including 200 concurrent users, is **DEFERRED_BY_USER** and does not gate current functional delivery. This is not a passing result or capacity claim. Functional races, privacy, authorization, persistence, recovery, accessibility, actual mobile usability and visual fidelity remain required.
 
 Wall B includes opaque erase, four-connected fill of at most 256 changed cells, latest-own-action undo within 10 database minutes only on an unchanged global revision, and a shared 512 changed-cell budget per actor/event/rolling 10 database minutes, including undo. Keep cooldown, confirmation, revision/idempotency, atomic writes, private history and server-owned recovery. Transparency, redo and full-wall fill remain excluded. The approved proposal and revised task definitions govern implementation.
 
-Use the supplied ten-screen reference and selected character pack. Retro styling applies only to post-shaped portions; surrounding Feed controls and other screens retain the reference. No decorative left accent bars, old character fallbacks or static screenshot substitutes for functioning components. Reusable client assets and caches should minimize redundant requests without weakening server authority.
+Use Photo2/Parade Ink as the primary component target, supporting sheets for unpictured anatomy, the earlier ten-screen target for remaining structure, and the selected character pack. Retro post/reply treatment must fit the Parade Ink controls; do not restore the superseded After Dark choice. No decorative left accent bars, old character fallbacks or static screenshot substitutes for functioning components. Reusable client assets and caches should minimize redundant requests without weakening server authority.
 
 ## Feature queues and ownership
 
 | Queue | Immediate outcome | Current routing |
 | --- | --- | --- |
+| Parade Ink design | First functioning shared-component plus Feed/Thread family, then disjoint screen families;0/12 accepted | FrontendKing385 and existing UI/functional leads allocate exact writers after this plan is published; developers compare/fix,412e publishes |
 | Contracts | Original C06 accepted and hosted installation/QA01/C07 repair qualified; enrollment generated-input refresh and remaining C04/C05 changes continue | Existing50a8 owns trusted application-release identity and changed generated inputs after actual Root transfer; World20f/C05, Wall202 and exact shared delegates retain their scopes |
 | Meet/Gifts | Real party, beacon, reservation and pickup through IN02; protected Gifts detail images | Party 19f83/backend 1fc; Gifts 53d/frontend 153; backend lead allocates remaining giveaway/media scope |
 | Social/Feed | Real consent, privacy and notifications through IN03; original FE31/35/36 client acceptance closed; real producer integration remains | Backend Auth207 and Notification6ec9 with direct producer counterparts; Profile213; Feed209; scoped Root caller owner;21e now FE41 |

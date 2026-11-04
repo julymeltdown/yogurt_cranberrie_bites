@@ -1,14 +1,43 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T06:31:51+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
+Updated **2026-11-05T08:20:03+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
 
-## Current progress
+## Current priority: Parade Ink design delivery
+
+The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It supersedes After Dark. Light surfaces, black headers and black selected tabs, strong symmetric borders and crimson primary actions are the fixed visual direction. REVENGE/PARADE/DANGER remain independent World eras.
+
+Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
+
+**Functional baseline:49/111 (44.1%),62 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and55 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+
+First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
+
+Developers compare fixed geometry, type, spacing, borders, icons, assets and control states at360/390/430. Only named authorized data fields may vary; masks cannot conceal layout or missing controls. Actual device/live requirements and all original behavior remain. Kings/SLs manage delivery and staffing without reviewing implementation or screenshots. See the amendment for explicit level/guestbook/Say hi/quantity/Wall semantic conflicts and their truthful handling.
+
+| Design family | Scope | Current status |
+| --- | --- | --- |
+| PI01 | Shared foundation and chrome | NOT_STARTED |
+| PI02 | Feed and notices | NOT_STARTED |
+| PI03 | Thread, replies and composer | NOT_STARTED |
+| PI04 | Giveaway and reservation | NOT_STARTED |
+| PI05 | Meet, party and people | NOT_STARTED |
+| PI06 | Profile, activity and preferences | NOT_STARTED |
+| PI07 | Avatar framing, popover and editor | NOT_STARTED |
+| PI08 | World HUD and era controls | NOT_STARTED |
+| PI09 | Wall B editor and states | NOT_STARTED |
+| PI10 | Public, authentication and legal | NOT_STARTED |
+| PI11 | Map, places, rooms and check-in | NOT_STARTED |
+| PI12 | Supporting safety, operations and archive | NOT_STARTED |
+
+These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
+
+## Current functional progress
 
 | Measure | Current value |
 | --- | --- |
 | Original required tasks | 112 |
 | Active functional-delivery tasks | 111 |
-| Complete under revised scope | **49/111 (44.1%)** |
+| Recorded functional task outcomes | **49/111 (44.1%)** |
 | Remaining active tasks | **62** |
 | Deferred by user | **QA08: 1; not passed or complete** |
 | Historical original-task criteria baseline | 39/112, preserved |
@@ -16,6 +45,7 @@ Updated **2026-11-05T06:31:51+09:00** for the user's full 112-task replan. The [
 | Historically closed IDs with current deltas | 6 |
 | Required IA entries | 61, all retained; full readiness reconciliation remains open |
 | Integrated outcomes | IN01 historically accepted; IN02/IN04/IN05 open; IN03 awaiting authorized provider/claims input |
+| Parade Ink design acceptance | 0/12 families; distinct from functional accounting |
 | Product delivery decision | NOT_READY |
 
 This is an unweighted task-count fraction, not an effort estimate or a claim that 44.1% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Six affected historical IDs retain current work; QA07's required current delta is now closed. Sixteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07) and closure of QA07's reopened delta bring the current revised count to 49. No completed work was erased, and bounded helper deliveries did not inflate the total.
@@ -84,14 +114,15 @@ Original **BE04 and BE07 are accepted and published** at `df244a715`. The respon
 
 Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Existing Party12cc/Gift267 have finite build offers; BE06 executables are built and database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
-The staffing routing was reconciled on 2026-11-05T06:31:51+09:00 from current owner records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately published BE04/BE07 dispositions add two.
+The staffing routing was reconciled on 2026-11-05T08:20:03+09:00 from current owner records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately published BE04/BE07 dispositions add two.
 
 ## Next outcomes
 
-1. Finish the ready runtime/Operations/Wall chain and real IN04, with frontend adapter and QA runner work in parallel.
-2. Complete Party/Gifts/physical meetup through IN02 using real services and authorized place inputs.
-3. Complete social/privacy/notifications through IN03 as genuine inputs become available; independent profile/sharing source work continues.
-4. Close remaining reference, device, recovery, operations and61IA evidence, then publish the IN05 functional decision with QA08 explicitly deferred.
+1. Deliver the Parade Ink shared foundation and functioning Feed/Thread family, then parallel disjoint screen families with developer-owned exact comparisons.
+2. Continue the ready runtime/Operations/Wall chain and real IN04 alongside the design work.
+3. Complete Party/Gifts/physical meetup through IN02 using real services and authorized place inputs.
+4. Complete social/privacy/notifications through IN03 as genuine inputs become available; independent profile/sharing source work continues.
+5. Close all12 design families and remaining device, recovery, operations and61IA evidence, then publish the IN05 decision with QA08 explicitly deferred.
 
 See the [complete 112-row remaining plan](functional-delivery-plan.md#revised-register-for-all-112-tasks) for each task's current state, package, remaining work, dependencies and completion rule. Known owners and current owner reports are recorded in the JSON. The prior management snapshot is retained in Git at `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; it is historical rather than the active queue.
 
