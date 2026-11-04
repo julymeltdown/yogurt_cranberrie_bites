@@ -269,7 +269,11 @@ impl Fixture {
         };
         let response = service.oneshot(wire).await?;
         let headers = response.headers().clone();
-        let body = response.into_body().collect().await?;
+        let body = response
+            .into_body()
+            .collect()
+            .await
+            .map_err(|_| anyhow::anyhow!("Root gRPC body collection failed"))?;
         let status = Status::from_header_map(&headers)
             .or_else(|| body.trailers().and_then(Status::from_header_map))
             .ok_or_else(|| anyhow::anyhow!("Missing terminal status"))?;
