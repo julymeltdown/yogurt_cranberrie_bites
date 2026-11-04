@@ -199,7 +199,7 @@ impl ScopedProductProducer for AgeRuntime {
             request: b.request_id(),
             expires_at,
         };
-        let base = format!("/api/concerts/{}/me", c.event.uuid());
+        let base = format!("/api/concert/events/{}/me", c.event.uuid());
         let operation = b.operation().to_owned();
         let claims = self.claims(scope);
         let outcome: Result<ProductRepresentation,Error> = async {
