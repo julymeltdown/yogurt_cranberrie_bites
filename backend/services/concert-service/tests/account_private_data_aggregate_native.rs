@@ -159,16 +159,16 @@ async fn aggregate_native() -> Result<()> {
         .iter()
         .any(|x| x.0 == "CORE_PREFERENCES_AND_AVATAR" && x.1 == "COMPLETE"));
     anyhow::ensure!(rows.len() == PrivateDataCategory::ALL.len());
-    // The first process admits one exact missing-to-complete transition below.
-    // Restart therefore requires the other five missing categories to remain
-    // incomplete rather than assuming every non-core category is untouched.
     let initially_completed = rows
         .iter()
         .filter(|x| x.1 == "COMPLETE")
         .map(|x| x.0.as_str())
         .collect::<Vec<_>>();
-    anyhow::ensure!(initially_completed == vec!["CORE_PREFERENCES_AND_AVATAR", "INTRO_TEXT"]);
-    anyhow::ensure!(rows.iter().filter(|x| x.1 == "INCOMPLETE").count() == 5);
+    anyhow::ensure!(initially_completed == vec!["CORE_PREFERENCES_AND_AVATAR"]);
+    anyhow::ensure!(rows.iter().filter(|x| x.1 == "INCOMPLETE").count() == 6);
+    anyhow::ensure!(rows
+        .iter()
+        .any(|x| x.0 == "INTRO_TEXT" && x.1 == "INCOMPLETE"));
     let completed: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
         "select completed_at from concert_private_data_owner_progress where user_id=$1",
     )
@@ -186,14 +186,8 @@ async fn aggregate_native() -> Result<()> {
         .ok_or_else(|| anyhow::anyhow!("progress"))?;
     anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len());
     anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
-    anyhow::ensure!(
-        progress.completed
-            == vec![
-                PrivateDataCategory::CorePreferencesAndAvatar,
-                PrivateDataCategory::IntroText,
-            ]
-    );
-    anyhow::ensure!(progress.missing.len() == 5);
+    anyhow::ensure!(progress.completed == vec![PrivateDataCategory::CorePreferencesAndAvatar]);
+    anyhow::ensure!(progress.missing.len() == 6);
     anyhow::ensure!(progress.command.retention_until == c.retention_until);
     anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
     anyhow::ensure!(progress.fence_revision > 0);
