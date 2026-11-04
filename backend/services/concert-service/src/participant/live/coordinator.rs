@@ -100,7 +100,11 @@ impl ProfileTerminalReceipt {
         native: NativeTransaction,
         outcome: ProfileTerminalOutcome,
     ) -> Result<Self, AvatarError> {
-        let decimal = |text: &str| text.parse::<u64>().ok().is_some_and(|value| value > 0);
+        let decimal = |text: &str| {
+            text.parse::<u64>()
+                .ok()
+                .is_some_and(|value| value > 0 && value.to_string() == text)
+        };
         if operation.is_nil()
             || expected.gid != format!("mcr_sp_{}", operation.simple())
             || returned_gid != expected.gid
@@ -109,6 +113,7 @@ impl ProfileTerminalReceipt {
             || !decimal(&native.full_xid)
             || native.database_oid == 0
             || native.backend_pid <= 0
+            || native.backend_started.timestamp_micros() <= 0
         {
             return Err(AvatarError::Denied);
         }
@@ -140,17 +145,15 @@ impl ExpectedProfileEffect {
         if !update.changes_profile() {
             return Err(AvatarError::InvalidInput);
         }
-        let mut digest = Sha256::new();
-        digest.update(b"mcr profile self effect v1\0");
-        digest.update(binding_digest);
-        digest.update(request.request_id().as_bytes());
-        digest.update(version.epoch.as_bytes());
-        digest.update(version.revision.get().to_be_bytes());
-        digest.update(request.body_sha256());
         Ok(Self {
             version,
             gid: format!("mcr_sp_{}", request.request_id().simple()),
-            digest: digest.finalize().into(),
+            digest: profile_effect_digest(
+                binding_digest,
+                request.request_id(),
+                version,
+                request.body_sha256(),
+            ),
         })
     }
     pub fn gid(&self) -> &str {
@@ -162,6 +165,22 @@ impl ExpectedProfileEffect {
     pub fn version(&self) -> CanonicalProfileVersion {
         self.version
     }
+}
+
+fn profile_effect_digest(
+    binding: [u8; 32],
+    operation: Uuid,
+    version: CanonicalProfileVersion,
+    body: [u8; 32],
+) -> [u8; 32] {
+    let mut digest = Sha256::new();
+    digest.update(b"mcr profile self effect v1\0");
+    digest.update(binding);
+    digest.update(operation.as_bytes());
+    digest.update(version.epoch.as_bytes());
+    digest.update(version.revision.get().to_be_bytes());
+    digest.update(body);
+    digest.finalize().into()
 }
 
 /// Implement only using the actual held canonical owner scope. No account read,
@@ -339,7 +358,16 @@ impl ParticipantProfileJournal {
         };
         let effect: Vec<u8> = row.try_get("profile_effect_digest").map_err(unavailable)?;
         let gid: String = row.try_get("profile_prepared_gid").map_err(unavailable)?;
-        if version.epoch.is_nil() || gid != format!("mcr_sp_{}", operation.simple()) {
+        if version.epoch.is_nil()
+            || gid != format!("mcr_sp_{}", operation.simple())
+            || effect.as_slice()
+                != profile_effect_digest(
+                    actual,
+                    operation,
+                    version,
+                    body.try_into().map_err(|_| AvatarError::InvalidState)?,
+                )
+        {
             return Err(AvatarError::InvalidState);
         }
         Ok(RecoveryOperation {

@@ -45,7 +45,6 @@ pub struct ObservedSelfProfile {
     pub version: CanonicalProfileVersion,
 }
 pub struct PreparedSelfProfile {
-    pub(crate) content: proto::SelfContent,
     pub(crate) native: NativeTransaction,
     pub(crate) effect: [u8; 32],
     pub(crate) instance: Uuid,
@@ -225,6 +224,7 @@ impl BoundCanonicalSelfProfile {
         let (native, instance) = native_profile(
             reply.transaction.as_ref().ok_or(AvatarError::Unavailable)?,
             expected.digest(),
+            context.request_id(),
         )?;
         let content = reply.proposed_content.ok_or(AvatarError::Unavailable)?;
         let update = ParticipantUpdate::parse(context.raw_body())?;
@@ -259,7 +259,6 @@ impl BoundCanonicalSelfProfile {
             return Err(AvatarError::InvalidState);
         }
         Ok(PreparedSelfProfile {
-            content,
             native,
             effect: expected.digest(),
             instance,
@@ -313,17 +312,22 @@ fn canonical(value: &str) -> Result<Uuid, AvatarError> {
 fn native_profile(
     value: &crate::adapters::out::relationship_authority::guarded::proto::TransactionIdentity,
     effect: [u8; 32],
+    operation: Uuid,
 ) -> Result<(NativeTransaction, Uuid), AvatarError> {
     let instance = canonical(&value.producer_instance_id)?;
-    let decimal = |text: &str| text.parse::<u64>().ok().is_some_and(|number| number > 0);
+    let decimal = |text: &str| {
+        text.parse::<u64>()
+            .ok()
+            .is_some_and(|number| number > 0 && number.to_string() == text)
+    };
     if value.producer != 3
         || value.effect_binding_digest.as_slice() != effect
         || !decimal(&value.system_identifier)
         || !decimal(&value.full_xid)
         || value.database_oid == 0
         || value.backend_pid <= 0
-        || value.settlement_reference.is_empty()
-        || value.settlement_reference.len() > 256
+        || value.backend_started_unix_micros <= 0
+        || value.settlement_reference.as_slice() != operation.as_bytes()
     {
         return Err(AvatarError::Unavailable);
     }
@@ -355,6 +359,7 @@ fn terminal_reply(
     let (native, instance) = native_profile(
         reply.transaction.as_ref().ok_or(AvatarError::Unavailable)?,
         expected.digest(),
+        operation,
     )?;
     if let Some(prepared) = prepared {
         if native != prepared.native

@@ -161,6 +161,49 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
         tx.lock_participant(&context, self.authority.as_ref())
             .await
             .map_err(crate::participant::status)?;
+        // Observe the real registered transaction while it is still live. A
+        // fresh signed recovery query must not turn "in progress" into ABORT.
+        let mut pending = self
+            .captured
+            .lock()
+            .unwrap()
+            .as_ref()
+            .unwrap()
+            .query
+            .clone();
+        pending.authority_expires_unix_micros = chrono::Utc::now().timestamp_micros() + 900_000;
+        let profile = ActorDelegationSigner::from_seed(Workload::Profile, &[62; 32]).unwrap();
+        let decision = guard(
+            &DECISION_POLICY,
+            ParticipantDecisionService::new(self.pool.clone()).server(),
+            CallerRegistry::new()
+                .register(Workload::Profile, "native-profile")
+                .unwrap(),
+            ActorDelegationVerifier::new(Workload::Concert, &[profile.public_key()]).unwrap(),
+        )
+        .unwrap();
+        let response = platform::call_deadline::scope(
+            std::time::Instant::now() + Duration::from_millis(900),
+            decision.oneshot(signed(
+                &pending,
+                &profile,
+                "/concert.participant.v1.ConcertParticipantDecisionService/ResolveDecision",
+                context.key().user_id.uuid(),
+                "profile",
+                "native-profile",
+            )),
+        )
+        .await
+        .unwrap();
+        let (code, bytes) = collected(response.map(tonic::body::Body::new)).await;
+        assert_eq!(code, tonic::Code::Ok);
+        let pending_reply = proto::ParticipantDecisionResponse::decode(&bytes[5..]).unwrap();
+        assert_eq!(
+            pending_reply.decision,
+            proto::ParticipantDecision::Unresolved as i32
+        );
+        assert_eq!(pending_reply.committed_revision, 0);
+        assert!(pending_reply.concert_transaction.is_some());
         // Explicitly synthetic Profile receipt. Only the Concert CAS/journal
         // path is qualified here; no actual Profile producer was invoked.
         tx.mark_prepare_attempt(&context, self.authority.as_ref())
