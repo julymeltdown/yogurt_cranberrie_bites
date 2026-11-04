@@ -85,6 +85,30 @@ FE17 prediction/reconciliation; hidden server constants are not a negotiated
 public contract. Current map4 startup does not depend on new art or map5.
 # Supervised World and C03 composition followup
 
+Fresh source `f2898a642848cbf015cb32664ce3a41b9d83314d` compiled both the
+Concert main test executable and production executable. Both supervision tests
+passed after the build target was released. The actual mTLS launcher
+`backend/scripts/mcr/world_in01_live.py` then created two real Auth principals,
+initialized Profile through public HTTP, bootstrapped them, and exercised the
+public C03 probe. All 18 HTTP steps passed, including stale-CAS 409 and anonymous
+401. Two canonical Profile native commits were present.
+
+The overall serving proof FAILED: after a bounded three-second read-only
+observation, all 16 Root scopes were ACTIVE/serialized with no delivery
+completion, both owner completion counts were zero, and 32 prepared owner
+transactions remained. All owned processes stopped and the private cluster was
+removed; this cleanup is not settlement acceptance. The exact sanitized receipt
+is [root-startup-f2898a64.json](root-startup-f2898a64.json). An earlier harness-only
+failure incorrectly expected SQL NULL for `profiles.bio`; the retained NOT NULL
+column stores an empty string for the public `bio:null` projection.
+
+The actual Gateway retained-body layer is mounted. The identified defect is that
+its exact inner size hint allows HTTP/1 transport to finish after the declared
+DATA byte count without polling the terminal completion future. The followup
+must mask scoped size hints and remove scoped Content-Length, then qualify real
+HTTP framing and rerun this same two-principal public/DB proof. No manual scope
+completion or SQL owner settlement is an acceptable workaround.
+
 The Root entrypoint now mounts the opt-in Participant factory, exact C03 method
 policy, Profile-only Decision verifier, Auth/Friend-only settlement, one shared
 Delivery publisher, and a supervised Participant recovery loop. It refuses

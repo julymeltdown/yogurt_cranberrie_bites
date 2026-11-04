@@ -1,0 +1,175 @@
+{
+  "status": "PARTIAL",
+  "compiled_source": "f2898a642848cbf015cb32664ce3a41b9d83314d",
+  "builds": [
+    {
+      "phase": "concert-bin-tests",
+      "exit_code": 0,
+      "seconds": 21.03,
+      "artifact_sha256": "1179dd54552442645fe83bd4bbec0e23233778393a49cd7583dc4f6827ab6209",
+      "cargo_json_sha256": "463e5ef0d18f28a0f8f0f5b363c28dd86909c2fb359c8b0fe21d0f62c89045f8"
+    },
+    {
+      "phase": "concert-bin",
+      "exit_code": 0,
+      "seconds": 17.65,
+      "artifact_sha256": "35167d39524ee19e8dd34272e7bd925b762022c8860c1f74acd81ca57068c3ac",
+      "cargo_json_sha256": "c22bef04bcf8cefcfe598545bb2d203d0fd1d8bba319ca5d3033cd0b226c20c5"
+    }
+  ],
+  "configuration": {
+    "rust": "1.88.0",
+    "locked": true,
+    "offline": true,
+    "jobs": 2,
+    "debug": 0,
+    "incremental": false
+  },
+  "first_attempt": {
+    "exit": 101,
+    "cause": "stale contracts-build foreign Age worktree proto include",
+    "repair": "Only contracts-build/Auth/Profile cache entries removed; unchanged source retry passed."
+  },
+  "release_before_tests": {
+    "released_at": "2026-11-04T03:08:22.824717+00:00",
+    "handles": 0,
+    "free_bytes": 11211018240
+  },
+  "main_tests": {
+    "exit_code": 0,
+    "summary": [
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    ]
+  },
+  "actual_public_probe": {
+    "state": "PASS",
+    "principals": 2,
+    "http_steps": [
+      [
+        {
+          "operation": "initial GET",
+          "http_status": 200
+        },
+        {
+          "operation": "avatar PUT",
+          "http_status": 200
+        },
+        {
+          "operation": "preferences PATCH",
+          "http_status": 200
+        },
+        {
+          "operation": "canonical Profile PATCH",
+          "http_status": 200
+        },
+        {
+          "operation": "fresh reload GET",
+          "http_status": 200
+        },
+        {
+          "operation": "stale CAS refusal",
+          "http_status": 409
+        },
+        {
+          "operation": "unauthenticated refusal",
+          "http_status": 401
+        },
+        {
+          "operation": "reload after refused writes",
+          "http_status": 200
+        },
+        {
+          "operation": "cross-principal isolation reload",
+          "http_status": 200
+        }
+      ],
+      [
+        {
+          "operation": "initial GET",
+          "http_status": 200
+        },
+        {
+          "operation": "avatar PUT",
+          "http_status": 200
+        },
+        {
+          "operation": "preferences PATCH",
+          "http_status": 200
+        },
+        {
+          "operation": "canonical Profile PATCH",
+          "http_status": 200
+        },
+        {
+          "operation": "fresh reload GET",
+          "http_status": 200
+        },
+        {
+          "operation": "stale CAS refusal",
+          "http_status": 409
+        },
+        {
+          "operation": "unauthenticated refusal",
+          "http_status": 401
+        },
+        {
+          "operation": "reload after refused writes",
+          "http_status": 200
+        },
+        {
+          "operation": "cross-principal isolation reload",
+          "http_status": 200
+        }
+      ]
+    ],
+    "setup_statuses": {
+      "principal-1-signup": 200,
+      "principal-1-verify": 200,
+      "principal-1-login": 200,
+      "principal-2-signup": 200,
+      "principal-2-verify": 200,
+      "principal-2-login": 200,
+      "principal-1-profile": 200,
+      "principal-2-profile": 200,
+      "principal-1-bootstrap": 200,
+      "principal-2-bootstrap": 200
+    },
+    "database_observed": {
+      "root_delivery_16": "0",
+      "profile_commit_2": "2",
+      "concert_native_commit_2": "2",
+      "auth_settlement_16": "0",
+      "friend_settlement_16": "0",
+      "no_prepared_transactions": "32"
+    },
+    "root_phase_counts": [
+      {
+        "phase": "ACTIVE",
+        "serialized": true,
+        "completed": false,
+        "count": 16
+      }
+    ],
+    "overall_result": "FAIL",
+    "cleanup": "PASS",
+    "concert_stop": {
+      "forced": false,
+      "exit_code": 0
+    }
+  },
+  "prior_failures": [
+    {
+      "attempt": 1,
+      "failure": "Incorrect harness SQL bio IS NULL; retained canonical storage uses empty string and wire null."
+    },
+    {
+      "attempt": 2,
+      "failure": "Immediate delivery observation found no completed roots; bounded attempt3 confirmed actual failure."
+    }
+  ],
+  "limits": [
+    "Actual public HTTP CAS/reload and two Profile native COMMITs passed, but delivery/root/owner settlement failed; not complete C03 acceptance.",
+    "No actual World two-client or frontend browser journey.",
+    "The separate HTTP framing fix has not yet been compiled or rerun in this receipt."
+  ]
+}
