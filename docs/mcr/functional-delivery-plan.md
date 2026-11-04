@@ -2,22 +2,24 @@
 
 This is the current user-authorized execution amendment to the original [112-task specification](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md). It revises each remaining task, scheduling, ownership and progress while preserving all original IDs and all 61 required IA entries. The source archive and generated planning exports remain unchanged. Historical analysis and task outcomes do not silently override this amendment.
 
-Snapshot: **2026-11-05T05:59:44+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `60831ca3b`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
+Snapshot: **2026-11-05T06:31:51+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `bd087fde2`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
+
+Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
 
 ## Progress under the revised scope
 
-- **48/111 active tasks complete (43.2%)**; **63 active tasks remain**.
+- **49/111 active tasks complete (44.1%)**; **62 active tasks remain**.
 - **1 task deferred: QA08**. Original total remains 112; performance qualification is neither passed nor completed.
-- The frozen replan baseline remains **39/112** original-task outcomes. Sixteen newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07) bring the current original-criteria total to **55/112**. **7** historically closed IDs have explicit new or unresolved current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01, QA07**.
+- The frozen replan baseline remains **39/112** original-task outcomes. Sixteen newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07) bring the current original-criteria total to **55/112**. **6** historically closed IDs retain current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01**. The original seven reopened IDs remain preserved in register history; QA07's current delta is now closed.
 - This is an unweighted task fraction, not a product-readiness or time estimate. IN02–IN05, full reference/device acceptance and61-entry IA reconciliation remain open.
 
 | Revised state | Tasks |
 | --- | ---: |
-| DONE | 48 |
+| DONE | 49 |
 | IN_PROGRESS | 50 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
-| REOPENED | 7 |
+| REOPENED | 6 |
 | DEFERRED_BY_USER | 1 |
 
 `DONE` records an explicit original-task closure and canonical publication with no identified current remainder. `REOPENED` preserves that history but has a specific current delta. `IN_PROGRESS` includes partial delivered implementation and its remaining work. `OPEN` does not mean no code exists. `WAITING_INPUT` identifies a necessary external decision. Resource/publication waits are queue facts rather than fake review states. The machine register retains old evidence states such as MOCK_READY, CONTRACT_READY and ACCEPTED separately.
@@ -67,7 +69,7 @@ Packages are parallel work queues, not new task IDs or additional managers. Lead
 
 The OPERATIONS package spans both lanes. Its backend owners provide server interfaces; they do not own frontend implementation. Frontend delivery assigns the remaining FE37, FE38, FE39 and FE41 outcomes to frontend developers, preserving active Wall/Root leases and the completed FE40 archive outcome. Empty owner-chat fields require a concrete lead assignment; they do not authorize a second writer or a backend-to-frontend ownership transfer. Developers resolve implementation and validation directly with their counterparts and named publisher.
 
-Existing developer6b5d now owns BE10/BE11 World admission after an actual exclusive transfer;6ec9 owns BE33 Notification production routing after the former writer returned custody. Developer232 retains BE42 Auth transport. Dedicated publisher412e delivered seven ready packets at `60831ca3b`, freeing Root1fc for coherent runtime implementation. Developer50a8 owns trusted application-release identity and generated inputs, while21e owns its FE41 consumer. Frontend83/backend20f retain QA05 recovery;1eed continues avatar portrait integration and53d owns Community clock composition. Former QA07 software-delta developer40c576 now implements resource-accounting reliability in exclusive QA paths. Leads assign ready follow-up work directly and preserve real runtime/input waits; developers validate and publish without king/SL acknowledgment.
+Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Existing Party12cc/Gift267 have finite build offers; BE06 executables are built and database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
 ### Next dispatch order
 
@@ -208,7 +210,7 @@ The original specification remains the full baseline. Every row below preserves 
 | QA04 — Privacy and authorization matrix | IN_PROGRESS / 0 | RELEASE | Complete owner/member/stranger/blocked/suspended/expired/admin cases across HTTP, websocket and caches; Cover the newly added Wall history/recovery and Gifts protected-media paths; preserve access withdrawal and deletion behavior. | No unauthorized handle, claim, evidence, beacon or recipient data in responses or cached UI. | BE30, BE37, BE39, FE31, FE36 |
 | QA05 — Realtime failure suite | IN_PROGRESS / 1 | RELEASE | Complete outstanding functional packet delay/gap, slow-client, foreground, ticket replay, restart and room-switch cases; Use the real pair/appropriate small functional cohort; keep200-user stress and capacity measurements out of this queue. | Bounded queues, no ghost player or duplicated room membership, eventual state convergence. | BE14, BE35, FE17, FE33 |
 | QA06 — Mobile visual acceptance | IN_PROGRESS / 1 | VISUAL | Finish developer-owned comparison of all ten reference surfaces and all 61 IA states at360/390/430px in all three skins; Preserve exact supplied character designs and post-shaped-only retro treatment; resolve remaining map, avatar, Meet density and Thread presentation differences; Run actual iOS Safari and Android Chrome keyboard/safe-area/control checks when device access is available. | Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions. | AR02, AR03, AR04, FE13, FE23, FE26, FE30, FE33 |
-| QA07 — Accessibility and input suite | REOPENED / 1 | RELEASE | Qualify keyboard, focus, labels and DOM alternatives for newly added Wall B tools and changed Gifts/Thread/Meet controls; Reuse unchanged passing baseline coverage; verify pointer cancellation and reduced-motion behavior only where affected. | Essential social/pickup tasks work without precise canvas interaction; focus returns on sheet close. | FE18, FE19, FE32, FE36 |
+| QA07 — Accessibility and input suite | DONE / 1 | RELEASE | None: original baseline and changed-control delta explicitly complete; separate device/live/release criteria remain with their own tasks. | Essential social/pickup tasks work without precise canvas interaction; focus returns on sheet close. | FE18, FE19, FE32, FE36 |
 | QA08 — Capacity and performance qualification | DEFERRED_BY_USER / 3 | PERFORMANCE_LATER | After functional delivery, measure200 sockets/four rooms, mobile FPS/bundle/memory, slow-network stress and reconnect-storm ceilings; Retain partial historical results; publish measured ceilings before making any capacity claim. | Publish measured ceilings and chosen caps; no claim of 200-user support without results. | BE44, FE41 |
 | QA09 — Recovery and lifecycle rehearsal | IN_PROGRESS / 1 | RELEASE | Complete six real recovery scenarios covering database restart/backup restore, outbox replay, pending pickup, deletion convergence and partial event closure; Use populated business state and same-candidate services; synthetic helpers and empty rows do not close recovery criteria. | Restored state is consistent; no lost committed pickup; shutdown and cleanup are resumable. | BE44, BE42, FE39 |
 | QA10 — Candidate provenance and release checks | IN_PROGRESS / 1 | RELEASE | Finish backend/service/device and full task-to-commit trace coverage for the original same-candidate release checker; reuse the published frontend contribution; Bind genuine evidence to the release candidate, label missing gates NOT_RUN, and represent QA08 as an explicit nonblocking user deferral. | Missing evidence is NOT_RUN/BLOCKED, not PASS; no stale revision substituted for current candidate. | BE43, QA01, QA02 |
@@ -301,3 +303,5 @@ This inventory is a required coverage map, not61 newly accepted screens. The pre
 - Preserve six optional EX tasks outside this delivery. Keep actual device access, approved eligibility/legal and consent configuration, the external age-provider choice, and unresolved W04 invitation semantics explicit; resolve those dependencies without parking unrelated work.
 
 Authoritative progress data: [112-row register](task-progress-2026-11-04.json). Current operating queue: [execution plan](execution-plan.md). Concise status: [progress](progress.md). Original immutable source: [source delivery](../source/).
+
+The physical-place input question is now owned by Main and pending: approved real event/venue, official map/location source, permitted spots, audience and validity window. Only the affected physical-location checks await that answer; independent development continues.

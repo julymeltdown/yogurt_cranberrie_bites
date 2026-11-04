@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T05:59:44+09:00",
+  "updated_at": "2026-11-05T06:31:51+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 48,
+      "DONE": 49,
       "IN_PROGRESS": 50,
       "WAITING_INPUT": 3,
-      "REOPENED": 7,
+      "REOPENED": 6,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 48,
-    "remaining_active_tasks": 63,
-    "task_completion_percentage": 43.2,
+    "done_tasks": 49,
+    "remaining_active_tasks": 62,
+    "task_completion_percentage": 44.1,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -34,8 +34,7 @@
       "FE24",
       "FE32",
       "FE33",
-      "QA01",
-      "QA07"
+      "QA01"
     ],
     "percentage_interpretation": "Unweighted completed-task fraction for the revised active plan, not effort, feature completeness or a prediction of remaining time. DeferredQA08 is excluded explicitly, not counted done.",
     "product_release_state": "NOT_READY",
@@ -71,7 +70,12 @@
       },
       "successor_dispatch": "On actual release, wake the accepted ready successor directly even when its earlier chat turn ended; no Main/SL acknowledgment or hourly digest dependency.",
       "lightweight_work": "The resource owner classifies actual Git/JSON collection costs separately where safe; this does not grant blanket execution or alter accepted growth, custody, cleanup or reservations.",
-      "goal_accounting": "Preserve an incompatible unfinished goal truthfully. Record the newly authorized objective and completion criteria in the assignment and worker handoff; old goal status alone does not prohibit implementation after actual ownership and technical prerequisites are met. Never falsely complete, reset or pause the old goal."
+      "goal_accounting": "Preserve an incompatible unfinished goal truthfully. Record the newly authorized objective and completion criteria in the assignment and worker handoff; old goal status alone does not prohibit implementation after actual ownership and technical prerequisites are met. Never falsely complete, reset or pause the old goal.",
+      "source_validation_jobs": 3,
+      "global_execution_jobs": 4,
+      "rust_target_jobs": 1,
+      "source_capacity_change": "Resource lead applied the third source validation slot to prospective/unaccepted work after fresh measurements; global4, browser2 and Rust1 retained. First extra assignment FE41 factory checks. Accepted offers/budgets stay unchanged; this register grants no execution admission.",
+      "heartbeat_routing": "Existing hourly automation prompts now use publisher412e, allocator21d and FrontendKing385 as Social staffing fallback; no new automation, model override or per-packet reporting."
     },
     "reporting": "SLs reconcile individual task state hourly from existing owner records. Kings receive major outcomes and real allocation/product exceptions. Delivery and next assignments do not await the ledger or king acknowledgment.",
     "new_original_closures_since_replan": [
@@ -93,7 +97,7 @@
       "BE07"
     ],
     "current_original_criteria_outcomes": 55,
-    "progress_updated_at": "2026-11-05T05:59:44+09:00",
+    "progress_updated_at": "2026-11-05T06:31:51+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -126,10 +130,10 @@
       "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
     },
     "staffing_changes": {
-      "recorded_at": "2026-11-05T05:59:44+09:00",
+      "recorded_at": "2026-11-05T06:31:51+09:00",
       "sharing_safety": "OriginalFE31 andFE36 client criteria explicitly closed by21e at publisheda40d6944; actual IN03/moderation/report/media/deletion producers remain separate open scopes.",
       "operations": "Existing53d owns default Admin composition;230 retains blocked feature goal pending actual producers.",
-      "contracts": "Existing50a8 owns trusted application-release identity and changed generated contract inputs after Root actual STOP/transfer; current qualification and FE41 production adoption remain open.",
+      "contracts": "Existing developer50a8 actually accepted a fresh unbudgeted QA01/C04 goal and exclusive coverage/docs custody from Root; overlap with proposed operator UI work was withdrawn before writes. Existing schemas/generators remain read-only absent a specific transfer.",
       "backend_age": "Resource lead has allocated Age corrected sourcef309 after actual predecessor target release and removed source-pin-only reissue approval. Actual compile/native results are not inferred from allocation.",
       "manager_ack_required": false,
       "manager_technical_review": false,
@@ -138,7 +142,7 @@
       "visual_software": "Original QA06 developer1ab7 is actively implementing uncovered software IA/era/preference cases from retained coverage; device-only gaps remain separate. It reported a missing default Help route directly to the implementation owner.",
       "profile": "Profile213 actively resumes originalFE34 ticket/visibility/persistence/preferences. Its prior media goal remains completed; settled CSS no-defect follow-up is not replayed.",
       "avatar": "Native Cancel/conflict packet published1adf8006b;1eed continues original FE12/FE13 completeness with WorldSL/FrontendKING, without publication-only waiting.",
-      "accessibility": "Former QA07 software-delta developer40c576 now has an actual active resource-accounting reliability goal and exclusiveqa/resource-accounting/**, docs/mcr/qa/resource-accounting.md anddocs/mcr/evidence/resource-accounting/**. Separate full QA07 device/live criteria remain open.",
+      "accessibility": "Original QA07 current delta explicitly DONE. Developer40c576 subsequently completed resource-accounting reliability at f203d30c7, returned resources/custody and is archived. Separate QA06/device/live/release requirements are not QA07 prerequisites.",
       "runtime_priority": "Qualified Wall native-admin increment and portableSQL startup repair are delivered. Root owns combined runtime and actualOwnAccess composition; frontendadapterd0f27b108 source and originalIN04runner2b2d4de6 are published, while combined liveIN04 remains NOT_RUN.",
       "next_assignment": "Leads resume unfinished ready objectives and assign independent whole-feature work on actual completion/release. Genuine runtime/input waits retain an owner; no idle ACK campaign, duplicate harness or activity-only assignment.",
       "themes": "Original FE06 delivered at0ff6b459f;21e now implements FE41 trusted pre-World service-policy consumer with Root153 and backend16e.",
@@ -147,7 +151,12 @@
       "backend_identity": "Original BE04/BE07 accepted and published atdf244a715. The frozen BE06 deletion-fence correction171379761 remains queued for its actual native run. Developer6b5d has also received exclusive BE10/BE11 source ownership and is implementing their remaining behavior.",
       "resource_reliability": "Dedicated developer40c576 implements the recurring resource scan/shutdown reliability fixes;21d schedules capacity and actual adoption owners qualify their use. Main/SL do not inspect helper implementation or relax runtime limits.",
       "notifications": "Existing Intro developer6ec9 received exclusive BE33 production routing after232 andRoot STOP;232 retains BE42 Auth transport. Original Notification whole-task criteria remain open.",
-      "publication": "Existing412e now performs dedicated mechanical publication. Its first seven-packet batch is delivered at60831ca3b, and the empty-queue turn was returned toRoot1fc. Owners route ready qualified packets directly to the named publisher with one actual Git writer; Root can keep implementing the runtime. No Main acknowledgment or semantic re-review."
+      "publication": "Existing412e now performs dedicated mechanical publication. Its first seven-packet batch is delivered at60831ca3b, and the empty-queue turn was returned toRoot1fc. Owners route ready qualified packets directly to the named publisher with one actual Git writer; Root can keep implementing the runtime. No Main acknowledgment or semantic re-review.",
+      "in02": "Existing developer204/c583 actually accepted whole original IN02 in fe-wall-tools-b-204, branch codex/mcr-fe-IN02-meetup-pickup, after actual former-writer STOP and Root no-incumbent confirmation. Existing 7f05f596 spec/helpers/docs and own evidence only; source work active, actual backend cohort not yet serving. CommunitySL owns direct staffing and counterpart wakeups.",
+      "service_policy": "Developer207 exclusively owns whole BE38/FE41 backend production composition after Root literal STOP and205 overlap withdrawal. Developer21e owns frontend FE41;16e retains its separately owned status/recovery leaf. Actual combined route/runtime criteria remain open.",
+      "direct_dispatch": "Resource, Community and World SLs plus Frontend King directly resume ready ended turns, assign coherent remaining feature scopes, and wake consumers on actual dependency release. Main has no acknowledgment/review/dispatch gate. Completed redundant chats retire after returned custody; no busywork or task inflation.",
+      "native_queue": "Resource lead issued finite Party12cc and Gift267 build offers after the already-ready coherent Root build and ahead of new helper work. BE06 built both executables; three-case database/restart validation remains pending. An offer or build does not imply runtime acceptance.",
+      "publisher": "Developer412e is the standing sole master publisher; Roots1fc/153 retain implementation. Serialized normal non-force exact-path publication, one receipt, no per-batch custody return/reacquisition or king/SL ACK."
     },
     "capacity_history": [
       {
@@ -204,21 +213,15 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T05:59:44+09:00",
-      "canonical_publication": "60831ca3b05cc698973c6296b2722b14cfde9d25",
-      "original_closures": [
-        "BE04",
-        "BE07"
+      "recorded_at": "2026-11-05T06:31:51+09:00",
+      "canonical_publication": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+      "original_closures": [],
+      "current_scope_closures": [
+        "QA07"
       ],
-      "closure_publication": "df244a715a7a7d109282029dee78df4bf65de10d",
-      "published_increments": [
-        "9bea73f31: Intro deletion native/provider increment; full BE27/IN03 remains separately open",
-        "d52aec156 and5aad280b4: operator documentation and managed-role helper; actual joined runtime remains open",
-        "f0c73e066: corrected operations result/custody limits; no original-task closure",
-        "4f32121de and60831ca3b: QA05 relay and failure-cleanup source/evidence; actual C05/Vite/App cohort remains NOT_RUN"
-      ],
-      "task_count_change": 2,
-      "reason": "Only the explicit original BE04/BE07 dispositions close tasks. The dedicated publisher normally pushed seven exact-path packets and supplied one verified canonical receipt. BE06, whole BE42, live IN02/IN03/IN04/QA05 and visual/device/release boundaries remain open."
+      "closure_publication": "f3d1a93cd6ebe265550596c9a016f47995b0e829",
+      "task_count_change": 1,
+      "reason": "QA07 was already among the 39 historical original outcomes. Its explicitly completed current delta increases active DONE to49, while original criteria outcomes remain55/112. Source/helper/runtime preparation packets do not count as original-task completion."
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -241,7 +244,7 @@
         "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
       }
     },
-    "staffing_updated_at": "2026-11-05T05:59:44+09:00",
+    "staffing_updated_at": "2026-11-05T06:31:51+09:00",
     "delivery_checkpoint_history": [
       {
         "recorded_at": "2026-11-05T04:37:28+09:00",
@@ -278,8 +281,46 @@
         ],
         "task_count_change": 1,
         "reason": "Only original FE06 closes here from its developer completion record and canonical delivery. All112 tasks/61 required IA and functional criteria remain."
+      },
+      {
+        "recorded_at": "2026-11-05T05:59:44+09:00",
+        "canonical_publication": "60831ca3b05cc698973c6296b2722b14cfde9d25",
+        "original_closures": [
+          "BE04",
+          "BE07"
+        ],
+        "closure_publication": "df244a715a7a7d109282029dee78df4bf65de10d",
+        "published_increments": [
+          "9bea73f31: Intro deletion native/provider increment; full BE27/IN03 remains separately open",
+          "d52aec156 and5aad280b4: operator documentation and managed-role helper; actual joined runtime remains open",
+          "f0c73e066: corrected operations result/custody limits; no original-task closure",
+          "4f32121de and60831ca3b: QA05 relay and failure-cleanup source/evidence; actual C05/Vite/App cohort remains NOT_RUN"
+        ],
+        "task_count_change": 2,
+        "reason": "Only the explicit original BE04/BE07 dispositions close tasks. The dedicated publisher normally pushed seven exact-path packets and supplied one verified canonical receipt. BE06, whole BE42, live IN02/IN03/IN04/QA05 and visual/device/release boundaries remain open."
       }
-    ]
+    ],
+    "reopened_historical_tasks_at_replan": [
+      "FE19",
+      "FE21",
+      "FE24",
+      "FE32",
+      "FE33",
+      "QA01",
+      "QA07"
+    ],
+    "physical_input_question": {
+      "state": "PENDING_HUMAN_INPUT",
+      "custodian": "Main King",
+      "affected_tasks": [
+        "IN02",
+        "FE19"
+      ],
+      "submitted_at": "2026-11-05T06:31:51+09:00",
+      "question": "Approved real event/venue, official map/location source, permitted meetup/pickup spots, audience and validity dates/times.",
+      "basis": "Root explicitly reported no fresh approved physical place and no identified prior question custodian. Main submitted one async question; no answer inferred.",
+      "boundary": "Source/native/clock/caller/correlation and independent criteria continue. Only affected physical-location positive checks require this input. Separate Party notification audience question remains pending."
+    }
   },
   "historical_accounting": {
     "baseline_revision": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
@@ -479,13 +520,22 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Backend implementation lead; exact shared-file delegates",
         "coordination_owner": "backend_staffing",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a533-50a8-7fb2-b3ed-96b941b96bbf"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [
           "docs/mcr/domain-contract.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_assignment": {
+          "recorded_at": "2026-11-05T06:31:51+09:00",
+          "state": "ACTUALLY_ACCEPTED_SOURCE_ACTIVE",
+          "owner_chat": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+          "scope": "Existing developer50a8 actually accepted a fresh unbudgeted QA01/C04 goal and exclusive coverage/docs custody from Root; overlap with proposed operator UI work was withdrawn before writes. Existing schemas/generators remain read-only absent a specific transfer.",
+          "manager_ack_required": false
+        }
       }
     },
     {
@@ -6128,8 +6178,7 @@
         "owner_role": "Backend implementation lead; exact shared-file delegates",
         "coordination_owner": "joint_feature_leads",
         "known_current_owner_chats": [
-          "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
-          "01a1a153-1227-7e72-801f-a2a6b91981e1"
+          "01a1a533-50a8-7fb2-b3ed-96b941b96bbf"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
@@ -6141,6 +6190,13 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
+        },
+        "current_assignment": {
+          "recorded_at": "2026-11-05T06:31:51+09:00",
+          "state": "ACTUALLY_ACCEPTED_SOURCE_ACTIVE",
+          "owner_chat": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+          "scope": "Existing developer50a8 actually accepted a fresh unbudgeted QA01/C04 goal and exclusive coverage/docs custody from Root; overlap with proposed operator UI work was withdrawn before writes. Existing schemas/generators remain read-only absent a specific transfer.",
+          "manager_ack_required": false
         }
       }
     },
@@ -6425,20 +6481,17 @@
         "ced8ec124a3c9fb3443a2bc69d69055d64a6fd7b"
       ],
       "revised_plan": {
-        "state": "REOPENED",
+        "state": "DONE",
         "package": "RELEASE",
         "priority": 1,
         "original_scope": "Keyboard/focus/screen-reader labels, DOM alternatives, reduced motion and pointer cancellation.",
         "original_acceptance": "Essential social/pickup tasks work without precise canvas interaction; focus returns on sheet close.",
         "updated_scope": "Keyboard/focus/screen-reader labels, DOM alternatives, reduced motion and pointer cancellation.",
-        "remaining_work": [
-          "Qualify keyboard, focus, labels and DOM alternatives for newly added Wall B tools and changed Gifts/Thread/Meet controls.",
-          "Reuse unchanged passing baseline coverage; verify pointer cancellation and reduced-motion behavior only where affected."
-        ],
+        "remaining_work": [],
         "complete_when": "Essential social/pickup tasks work without precise canvas interaction; focus returns on sheet close.",
-        "reason": "Original baseline accessibility criteria were closed; new interactive scope needs a targeted delta, not a repeated unchanged full matrix.",
+        "reason": "Responsible implementation-owner disposition and World/Community lane reconciliation close the original QA07 baseline plus the required changed-control delta. No literal QA07 criterion remains; separate physical-device, spoken-assistive-output and live integration criteria remain with their original tasks.",
         "historical_criteria_closed": true,
-        "reopened_for_current_scope": true,
+        "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
           "FE18",
           "FE19",
@@ -6457,15 +6510,27 @@
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [
           "docs/mcr/evidence/accessibility/qa07/README.md",
-          "docs/mcr/evidence/accessibility/qa07/publication.json"
+          "docs/mcr/evidence/accessibility/qa07/publication.json",
+          "docs/mcr/scrum/community.md#original-qa07-accepteddone--responsible-owner-criteria-disposition-after0600-cutoff"
         ],
         "active_delivery_requirement": true,
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:08:18+09:00",
-          "state": "ACTIVE_CHAT_WORK",
-          "coordinator": "Community SLc5f1",
-          "scope": "Remaining original task behavior, developer-owned validation and direct committed publication; unchanged evidence reused.",
-          "persistent_goal": "Owned by receiving developer; chat activity alone does not certify actual goal state."
+          "recorded_at": "2026-11-05T06:31:51+09:00",
+          "state": "COMPLETED_ARCHIVED",
+          "owner_chat": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "scope": "Original QA07 changed-control delta completed. Later resource-accounting helper separately completed and published f203d30c7; chat archived after returned custody/resources. No receipt-only wakeup or new goal."
+        },
+        "prior_reopened_remaining_work": [
+          "Qualify keyboard, focus, labels and DOM alternatives for newly added Wall B tools and changed Gifts/Thread/Meet controls.",
+          "Reuse unchanged passing baseline coverage; verify pointer cancellation and reduced-motion behavior only where affected."
+        ],
+        "current_disposition": {
+          "recorded_at": "2026-11-05T06:31:51+09:00",
+          "state": "DONE",
+          "owner_record_publication": "f3d1a93cd6ebe265550596c9a016f47995b0e829",
+          "qualified_delta_publication": "d1964efb2",
+          "basis": "Retained original SATISFIED baseline plus 15 changed input observations and qualified guard shutdown, explicitly reconciled by responsible owners. Management consumes the disposition without rerunning or reviewing tests.",
+          "limits": "Controlled inputs and historical failures preserved. QA06 devices/reference, live integration and release remain independently open."
         }
       }
     },
@@ -6760,11 +6825,20 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Party developer19f83 + shared backend1fc; Meet frontend213 and existing Community owners",
         "coordination_owner": "joint_feature_leads",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a204-c583-7670-965a-4891b8b1289e"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_assignment": {
+          "recorded_at": "2026-11-05T06:31:51+09:00",
+          "state": "ACTUALLY_ACCEPTED_SOURCE_ACTIVE",
+          "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
+          "scope": "Existing developer204/c583 actually accepted whole original IN02 in fe-wall-tools-b-204, branch codex/mcr-fe-IN02-meetup-pickup, after actual former-writer STOP and Root no-incumbent confirmation. Existing 7f05f596 spec/helpers/docs and own evidence only; source work active, actual backend cohort not yet serving. CommunitySL owns direct staffing and counterpart wakeups.",
+          "manager_ack_required": false
+        }
       }
     },
     {

@@ -2,7 +2,9 @@
 
 The [revised functional delivery plan](functional-delivery-plan.md) is the current user-authorized amendment. Its 112-row register replaces outdated staffing, wave and status descriptions in earlier versions of this document. Preserve the original specification/source, all 112 task IDs, 61 IA entries and six excluded optional tasks. Read progress from the [current register](task-progress-2026-11-04.json), not generated planning exports.
 
-Current delivered-task count: **48/111 active tasks (43.2%)**, with 63 active tasks remaining. This is task accounting, not full-product readiness.
+Current delivered-task count: **49/111 active tasks (44.1%)**, with 62 active tasks remaining. This is task accounting, not full-product readiness.
+
+Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
 
 ## Priority and scope
 
@@ -25,7 +27,7 @@ Use the supplied ten-screen reference and selected character pack. Retro styling
 
 These are routing facts, not blanket file leases. Leads assign unowned remaining scope to capable existing developers. Independent composition pieces may be delegated after the previous writer stops; shared files are not reserved as one indivisible integration assignment. Backend and frontend use separate commits, exact paths and isolated worktrees. Contracts, manifests, lockfiles, root composition, CI and shared artifacts require explicit single-writer ownership.
 
-Existing developer6b5d now owns BE10/BE11 World admission after an actual exclusive transfer;6ec9 owns BE33 Notification production routing after the former writer returned custody. Developer232 retains BE42 Auth transport. Dedicated publisher412e delivered seven ready packets at `60831ca3b`, freeing Root1fc for coherent runtime implementation. Developer50a8 owns trusted application-release identity and generated inputs, while21e owns its FE41 consumer. Frontend83/backend20f retain QA05 recovery;1eed continues avatar portrait integration and53d owns Community clock composition. Former QA07 software-delta developer40c576 now implements resource-accounting reliability in exclusive QA paths. Leads assign ready follow-up work directly and preserve real runtime/input waits; developers validate and publish without king/SL acknowledgment.
+Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Existing Party12cc/Gift267 have finite build offers; BE06 executables are built and database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
 ## Complete feature assignments and direct delivery
 
@@ -50,3 +52,5 @@ The lead reports that owners reclaimed about5.67GiB of released outputs and the 
 Each SL reconciles individual task progress hourly from existing records: state, remaining outcome, owner/action, material blocker and publication. Consolidate these into ordinary feature digests; avoid per-packet reporting to kings. Preserve historical outcomes and record new scope as explicit deltas on affected IDs. Helper-goal completion is not whole-task completion.
 
 IN05 accounts for all 112 original IDs and 61 required IA entries. Current functional delivery requires 111 active tasks; QA08 remains explicitly deferred with its original scope/history retained and no capacity claim. Actual devices, provider/product inputs, functional safety/privacy/integrity/recovery and reference fidelity remain requirements. The original source and historical records stay available; the revised plan governs current ordering and approved scope changes.
+
+The physical-place input question is now owned by Main and pending: approved real event/venue, official map/location source, permitted spots, audience and validity window. Only the affected physical-location checks await that answer; independent development continues.
