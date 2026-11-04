@@ -53,3 +53,4 @@
 .party-browse .party-command { margin: 0; padding: 9px 0; }
 @media (min-width: 760px) { .party-browse { padding: 0; } }
 @media (prefers-reduced-motion: reduce) { .party-browse, .party-browse * { animation: none; transition: none; scroll-behavior: auto; } }
+.party-browse .party-filters > summary:focus-visible { outline-offset: -3px; }
