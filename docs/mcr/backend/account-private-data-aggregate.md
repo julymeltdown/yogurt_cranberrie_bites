@@ -190,3 +190,12 @@ with Gift cleanup `37b61bd2`, Mural `8f7013d6`, and Meeting `cc4770dd`. These
 are composition inputs and are not counted as coordinator native evidence.
 The Party/Gift composite becomes terminal only when both actual child effects
 are terminal; Meeting remains a separate `BEACONS_AND_RALLY` category.
+
+The serving-composition branch at `915fca43` imported an earlier aggregate
+postimage (`af2d67ac`) that still moved `source_binding` into the query before
+the asynchronous replay read. The owner source at default `ea0b7ca94` keeps
+`&source_binding` there, matching the already-qualified `04a51b2b` aggregate
+postimage and avoiding an ownership change during cancellation. The
+serving-composition source has not been qualified for this coordinator and
+must not replace the current owner copy without a coherent intake and a fresh
+native run. Composition source status is **NOT_RUN**.
