@@ -441,7 +441,12 @@ async fn become_peer(f: &mut fixture::Fixture) -> anyhow::Result<()> {
         .bind(Uuid::new_v4().to_string()).bind(Uuid::new_v4().to_string()).bind(f.actor).bind(f.family).execute(&f.auth).await?;
     Ok(())
 }
-async fn hidden(f: &fixture::Fixture, r: &IntroRuntime, id: Uuid) -> anyhow::Result<()> {
+async fn hidden(
+    f: &fixture::Fixture,
+    r: &IntroRuntime,
+    id: Uuid,
+    stage: &str,
+) -> anyhow::Result<()> {
     let (status, page) = call(
         f,
         r,
@@ -449,7 +454,7 @@ async fn hidden(f: &fixture::Fixture, r: &IntroRuntime, id: Uuid) -> anyhow::Res
         raw(f, "GET", "intros", Value::Null, None),
     )
     .await?;
-    assert_eq!(status, 200, "{page}");
+    assert_eq!(status, 200, "{stage}: {page}");
     assert!(page["items"].as_array().unwrap().is_empty(), "{page}");
     let (status, detail) = call(
         f,
@@ -483,7 +488,7 @@ async fn canonical_block_departure_suspension_and_profile_outage() -> anyhow::Re
     .bind(f.subject)
     .execute(&f.friend)
     .await?;
-    hidden(&f, &r, id).await?;
+    hidden(&f, &r, id, "inherited Friend block").await?;
     sqlx::query(
         "update user_blocks set deleted_at=clock_timestamp() where blocker_id=$1 and blocked_id=$2",
     )
@@ -496,7 +501,7 @@ async fn canonical_block_departure_suspension_and_profile_outage() -> anyhow::Re
         .bind(f.subject)
         .execute(&f.concert)
         .await?;
-    hidden(&f, &r, id).await?;
+    hidden(&f, &r, id, "local admission departure").await?;
     sqlx::query(
         "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
     )
@@ -508,7 +513,7 @@ async fn canonical_block_departure_suspension_and_profile_outage() -> anyhow::Re
         .bind(f.subject)
         .execute(&f.auth)
         .await?;
-    hidden(&f, &r, id).await?;
+    hidden(&f, &r, id, "Auth suspension").await?;
     sqlx::query("update users set status='ACTIVE' where id=$1")
         .bind(f.subject)
         .execute(&f.auth)
