@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T05:15:01+09:00",
+  "updated_at": "2026-11-05T05:28:00+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 45,
-      "IN_PROGRESS": 53,
+      "DONE": 46,
+      "IN_PROGRESS": 52,
       "WAITING_INPUT": 3,
       "REOPENED": 7,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 45,
-    "remaining_active_tasks": 66,
-    "task_completion_percentage": 40.5,
+    "done_tasks": 46,
+    "remaining_active_tasks": 65,
+    "task_completion_percentage": 41.4,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -87,10 +87,11 @@
       "FE31",
       "FE36",
       "BE13",
-      "BE14"
+      "BE14",
+      "FE06"
     ],
-    "current_original_criteria_outcomes": 52,
-    "progress_updated_at": "2026-11-05T05:15:01+09:00",
+    "current_original_criteria_outcomes": 53,
+    "progress_updated_at": "2026-11-05T05:28:00+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -123,24 +124,26 @@
       "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
     },
     "staffing_changes": {
-      "recorded_at": "2026-11-05T04:37:28+09:00",
+      "recorded_at": "2026-11-05T05:28:00+09:00",
       "sharing_safety": "OriginalFE31 andFE36 client criteria explicitly closed by21e at publisheda40d6944; actual IN03/moderation/report/media/deletion producers remain separate open scopes.",
       "operations": "Existing53d owns default Admin composition;230 retains blocked feature goal pending actual producers.",
       "contracts": "Existing50a8 actively qualifies new Enrollment/C05 inputs; previous C07 and hosted CI acceptance preserved. No new current-input PASS is inferred.",
       "backend_age": "Resource lead has allocated Age corrected sourcef309 after actual predecessor target release and removed source-pin-only reissue approval. Actual compile/native results are not inferred from allocation.",
       "manager_ack_required": false,
       "manager_technical_review": false,
-      "lifecycle": "Original FE17 complete; same developer83 reassigned original FE41 with exact shared scope transferred by Root153.",
+      "lifecycle": "Frontend83 retains QA05 recovery and now implements the explicitly delegated bounded frame-fault utility; Root153 retains actual Vite integration.",
       "wall_integration": "Original Wall QA e2a9 restored and accepted missing B live-runner source preparation; actual live gate remains NOT_RUN.",
       "visual_software": "Original QA06 developer1ab7 is actively implementing uncovered software IA/era/preference cases from retained coverage; device-only gaps remain separate. It reported a missing default Help route directly to the implementation owner.",
       "profile": "Profile213 actively resumes originalFE34 ticket/visibility/persistence/preferences. Its prior media goal remains completed; settled CSS no-defect follow-up is not replayed.",
-      "avatar": "Restored priorAR03 developer1eed has actual Root scope and is implementing originalFE12/FE13 remainder, including the uncovered Cancel behavior;213 exclusivelyFE34,83FE41.",
+      "avatar": "Native Cancel/conflict packet published1adf8006b;1eed continues original FE12/FE13 completeness with WorldSL/FrontendKING, without publication-only waiting.",
       "accessibility": "FormerFE38 bounded owner40c576 is now active as QA07 changed input accessibility, covering only uncovered WallB/Gifts/Thread/Meet software deltas in isolated QA ownership.",
       "runtime_priority": "Qualified Wall native-admin increment and portableSQL startup repair are delivered. Root owns combined runtime and actualOwnAccess composition; frontendadapterd0f27b108 source and originalIN04runner2b2d4de6 are published, while combined liveIN04 remains NOT_RUN.",
       "next_assignment": "Leads transition developers directly to a ready coherent feature, or record a genuine resource/input wait. No king acknowledgment, technical review or disposition-only busywork.",
-      "themes": "The same completed developer21e is restored as originalFE06 owner on a fresh branch, preserving the old completed goal and publication; exact theme scope is coordinated with Root.",
-      "world_recovery": "World20f completed its negotiated-motion goal at1e20c294 and immediately accepted originalBE13/BE14 and small-cohort backendQA05; actual scope transfer confirmed, resynchronization defect under repair.",
-      "map": "Mapdensity packet7acfac3a published; artist completed three full/nine scaled assessments, and existingMap26e resumed actual consumer adoption. No fullAR02/AR04 closure inferred."
+      "themes": "Original FE06 delivered at0ff6b459f;21e now implements FE41 trusted pre-World service-policy consumer with Root153 and backend16e.",
+      "world_recovery": "Original BE13/BE14 complete;20f implements QA05 backend controls and corrects its resource-controller qualification gap before the actual combined run.",
+      "map": "Mapdensity packet7acfac3a published; artist completed three full/nine scaled assessments, and existingMap26e resumed actual consumer adoption. No fullAR02/AR04 closure inferred.",
+      "backend_identity": "6b5d has committed bootstrap/deletion-fence fix1289d90e9; its matching warm-target qualification is queued with21d.",
+      "resource_reliability": "21d coordinates actual guard defects with their developers: QA07 shutdown race, BE38 heartbeat-rename scan race and QA05 primary-control live-limit gap. Existing limits stay; unaffected feature matrices are not replayed for paperwork."
     },
     "capacity_history": [
       {
@@ -197,23 +200,21 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T04:37:28+09:00",
-      "canonical_publication": "fcac0bed0",
+      "recorded_at": "2026-11-05T05:28:00+09:00",
+      "canonical_publication": "80de53f327c90db21955eb63d3b74aa41ec62514",
       "original_closures": [
-        "FE31",
-        "FE36"
+        "FE06"
       ],
-      "closure_publication": "a40d6944a65091b93381fa96767357eb2941b74a",
+      "closure_publication": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
       "published_increments": [
-        "1e20c294: World motion with realAuth pair qualification; broader launcher limits retained",
-        "6d351502: QA10 checker implementation,37 focused tests; actual candidate report pending",
-        "7acfac3a: Map density source packet; consumer adoption active",
-        "d099e016: FE41 version/reload recovery; operational producer and wider validation remain separate",
-        "d0f27b108: IN04 frontendadapter source qualification; combined live journey NOT_RUN",
-        "fcac0bed0: nine uncovered QA06 software states, remaining prepared/device/reference cases open"
+        "1adf8006b: avatar Cancel/conflict native journey; original FE12/FE13 full disposition remains in progress",
+        "af625380c: QA05 frontend recovery driver source; live combined recovery remains open",
+        "919284b1f: scoped two-phase PrivateData; whole BE42 remains incomplete",
+        "192cc3f5f and318b14c5c: scoped Age/legacy deletion provider results; explicit PostgreSQL17.10/PG16 limits retained",
+        "80de53f32: actual Enrollment browser retry five cases; World continuation and broader FE10/IN04 scope remain open"
       ],
-      "task_count_change": 2,
-      "reason": "Only explicit originalFE31/FE36 client outcomes close rows. All112tasks/61IA and original requirements remain."
+      "task_count_change": 1,
+      "reason": "Only original FE06 closes here from its developer completion record and canonical delivery. All112 tasks/61 required IA and functional criteria remain."
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -236,7 +237,28 @@
         "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
       }
     },
-    "staffing_updated_at": "2026-11-05T05:15:01+09:00"
+    "staffing_updated_at": "2026-11-05T05:28:00+09:00",
+    "delivery_checkpoint_history": [
+      {
+        "recorded_at": "2026-11-05T04:37:28+09:00",
+        "canonical_publication": "fcac0bed0",
+        "original_closures": [
+          "FE31",
+          "FE36"
+        ],
+        "closure_publication": "a40d6944a65091b93381fa96767357eb2941b74a",
+        "published_increments": [
+          "1e20c294: World motion with realAuth pair qualification; broader launcher limits retained",
+          "6d351502: QA10 checker implementation,37 focused tests; actual candidate report pending",
+          "7acfac3a: Map density source packet; consumer adoption active",
+          "d099e016: FE41 version/reload recovery; operational producer and wider validation remain separate",
+          "d0f27b108: IN04 frontendadapter source qualification; combined live journey NOT_RUN",
+          "fcac0bed0: nine uncovered QA06 software states, remaining prepared/device/reference cases open"
+        ],
+        "task_count_change": 2,
+        "reason": "Only explicit originalFE31/FE36 client outcomes close rows. All112tasks/61IA and original requirements remain."
+      }
+    ]
   },
   "historical_accounting": {
     "baseline_revision": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
@@ -1086,10 +1108,10 @@
           "remaining_ownership_action": "Actual next owner is identity6b5d under the explicit Root transfer; additional repository leaves require their own custody census."
         },
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:15:01+09:00",
-          "state": "ACTUAL_ROOT_TRANSFER_ACCEPTED_IMPLEMENTING",
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "SOURCE_COMMITTED_QUALIFICATION_QUEUED",
           "scope": "Original identity/bootstrap/avatar persistence remainder in the existing developer context after QA10 handoff freeze. Root stopped the exact participant/bootstrap/projection leaves; shared configuration/main/contracts remain Root-owned.",
-          "current_gap": "The owner is implementing a real bootstrap/account-deletion fence gap and relevant validation.",
+          "current_gap": "Bootstrap deletion-fence fix/native regression committed through1289d90e9; matching warm-target qualification awaits the allocated slot. Original BE04/BE07 disposition is being reconciled by the owner; no new closure is inferred.",
           "goal": "Prior unfinished Profile goal preserved; new authorized scope is recorded without a false reset or completion."
         }
       }
@@ -1212,10 +1234,10 @@
           "remaining_ownership_action": "Actual next owner is identity6b5d under the explicit Root transfer; additional repository leaves require their own custody census."
         },
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:15:01+09:00",
-          "state": "ACTUAL_ROOT_TRANSFER_ACCEPTED_IMPLEMENTING",
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "SOURCE_COMMITTED_QUALIFICATION_QUEUED",
           "scope": "Original identity/bootstrap/avatar persistence remainder in the existing developer context after QA10 handoff freeze. Root stopped the exact participant/bootstrap/projection leaves; shared configuration/main/contracts remain Root-owned.",
-          "current_gap": "The owner is implementing a real bootstrap/account-deletion fence gap and relevant validation.",
+          "current_gap": "Bootstrap deletion-fence fix/native regression committed through1289d90e9; matching warm-target qualification awaits the allocated slot. Original BE04/BE07 disposition is being reconciled by the owner; no new closure is inferred.",
           "goal": "Prior unfinished Profile goal preserved; new authorized scope is recorded without a false reset or completion."
         }
       }
@@ -1289,10 +1311,10 @@
           "remaining_ownership_action": "Actual next owner is identity6b5d under the explicit Root transfer; additional repository leaves require their own custody census."
         },
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:15:01+09:00",
-          "state": "ACTUAL_ROOT_TRANSFER_ACCEPTED_IMPLEMENTING",
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "SOURCE_COMMITTED_QUALIFICATION_QUEUED",
           "scope": "Original identity/bootstrap/avatar persistence remainder in the existing developer context after QA10 handoff freeze. Root stopped the exact participant/bootstrap/projection leaves; shared configuration/main/contracts remain Root-owned.",
-          "current_gap": "The owner is implementing a real bootstrap/account-deletion fence gap and relevant validation.",
+          "current_gap": "Bootstrap deletion-fence fix/native regression committed through1289d90e9; matching warm-target qualification awaits the allocated slot. Original BE04/BE07 disposition is being reconciled by the owner; no new closure is inferred.",
           "goal": "Prior unfinished Profile goal preserved; new authorized scope is recorded without a false reset or completion."
         }
       }
@@ -3984,31 +4006,26 @@
       "id": "FE06",
       "title": "Three-theme token system",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "ACCEPTED",
       "evidence": [
-        "docs/mcr/frontend/theme-system.md"
+        "docs/mcr/frontend/theme-system.md",
+        "docs/mcr/frontend/original-fe06-completion.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "New Revenge/Parade/Danger tokens, selection persistence, asset-loading fallback, reduced-motion transitions.",
         "original_acceptance": "Theme switch preserves geometry, room and avatar identity; failed asset load restores previous skin.",
         "updated_scope": "Complete same-world three-theme selection, scoped persistence, fallback and reduced-motion behavior using approved reference packs.",
-        "remaining_work": [
-          "Reconcile all-era Root adoption and delivered preference effects against the original theme criteria; finish remaining concrete reference/token/skin differences.",
-          "Keep geometry, room, camera and avatar identity stable and recover failed asset loads without synthetic production fallback; obtain the owner whole-task disposition."
-        ],
+        "remaining_work": [],
         "complete_when": "Theme switch preserves geometry, room and avatar identity; failed asset load restores previous skin.",
-        "reason": "No original FE06 closure. Newer ART04 controlled adoption supersedes old native-pending prose, while full reference and release-binding limits remain.",
+        "reason": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "FE05",
-          "C06"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "AR04",
           "FE14",
@@ -4033,9 +4050,30 @@
         ],
         "active_delivery_requirement": true,
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:37:28+09:00",
-          "state": "ACTIVE_CHAT_PREPARATION",
-          "scope": "Whole original theme tokens/persistence/failed-load rollback/reduced-motion behavior; existing evidence reused, fresh Root single-writer grant before edits."
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "DELIVERED_ORIGINAL_TASK_SCOPE",
+          "scope": "Original FE06 delivered; same developer now implements the separate FE41 trusted pre-World policy consumer under Root grants.",
+          "manager_technical_review": false
+        },
+        "prior_remaining_work_before_closure": [
+          "Reconcile all-era Root adoption and delivered preference effects against the original theme criteria; finish remaining concrete reference/token/skin differences.",
+          "Keep geometry, room, camera and avatar identity stable and recover failed asset loads without synthetic production fallback; obtain the owner whole-task disposition."
+        ],
+        "current_completion": {
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "owner_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+          "published_commit": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
+          "source_commit": "99b5bbf9392b903afeac3ba435d77feb077a1bb6",
+          "basis": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them.",
+          "evidence_basis": "Developer-reported10 new tests/full types/scoped lint/planning/syntax and one390 actual-main cohort; retained theme integration/native-03/W06 evidence reused only after owner source reconciliation. Main read the owner disposition and publication metadata, not implementation or test outputs.",
+          "manager_technical_review": false
+        },
+        "latest_owner_report": {
+          "owner": "Theme developer21e",
+          "status": "Original criteria developer-qualified and canonical publication complete",
+          "completed": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them.",
+          "remaining": "No identified original FE06 remainder; separate FE41/live/visual/device work remains.",
+          "source": "Published developer completion record and current receiving-chat assignment."
         }
       }
     },
@@ -4314,7 +4352,7 @@
         "original_acceptance": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
         "updated_scope": "Complete deterministic shared character composition/cache and matching World/Profile/other authorized portraits using selected-source assets.",
         "remaining_work": [
-          "Finish explicit reload and movement-driven peer-update coverage with Root/character owner, preserving already-passed Save/Profile/World-self, unchanged-peer and signout cases.",
+          "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
           "Reconcile original frame/anchor/layer/thumbnail coverage and qualified production admission; an unavailable asset must never fall back to legacy or synthetic product art."
         ],
         "complete_when": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
@@ -4348,12 +4386,12 @@
         "active_delivery_requirement": true,
         "previous_owner_chats": [],
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:37:28+09:00",
-          "state": "ACTIVE_CHAT_WITH_SCOPE_TRANSFER",
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "ORIGINAL_SCOPE_COMPLETENESS_IN_PROGRESS",
           "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
           "coordinator": "World SLc276",
-          "scope": "Original avatar reload/moving-peer and uncovered editor behavior; developer reports fresh Root grant and active Cancel/recovery implementation.",
-          "ownership": "Fresh exact Root transfer required before writing;213 remainsFE34 and83 remainsFE41."
+          "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
+          "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
         }
       }
     },
@@ -4375,7 +4413,7 @@
         "original_acceptance": "Save changes world and profile consistently; cancelling retains persisted outfit.",
         "updated_scope": "Finish the selected-source editor with complete supported presets/layers, preview, save/cancel and revision-conflict draft retention.",
         "remaining_work": [
-          "Complete the outstanding reload/peer-update follow-up around the delivered default editor and verify only uncovered original cancel/conflict/catalog criteria.",
+          "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
           "Resolve any original layer/preset/animation coverage omitted by the whole-character path through AR03/C06 owners, without relabeling static previews as complete atlases."
         ],
         "complete_when": "Save changes world and profile consistently; cancelling retains persisted outfit.",
@@ -4414,12 +4452,12 @@
           "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
         ],
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:37:28+09:00",
-          "state": "ACTIVE_CHAT_WITH_SCOPE_TRANSFER",
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "ORIGINAL_SCOPE_COMPLETENESS_IN_PROGRESS",
           "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
           "coordinator": "World SLc276",
-          "scope": "Original avatar reload/moving-peer and uncovered editor behavior; developer reports fresh Root grant and active Cancel/recovery implementation.",
-          "ownership": "Fresh exact Root transfer required before writing;213 remainsFE34 and83 remainsFE41."
+          "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
+          "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
         }
       }
     },
@@ -5971,6 +6009,7 @@
         "owner_role": "Frontend lifecycle implementation owner and frontend Root composition delegate; backend realtime/operations owners provide lifecycle inputs.",
         "coordination_owner": "frontend_delivery",
         "known_current_owner_chats": [
+          "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
           "01a1a153-1227-7e72-801f-a2a6b91981e1"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
@@ -5988,9 +6027,10 @@
           "QA08"
         ],
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:15:01+09:00",
-          "state": "CONTROLLED_CLIENT_DELIVERED_PRODUCER_INTEGRATION_REMAINS",
-          "scope": "83 delivered its scoped client fix and now owns QA05. Root routes the remaining genuine pre-World service-policy consumer with backend16e/205; no implicit reuse of returned FE41 grants."
+          "recorded_at": "2026-11-05T05:28:00+09:00",
+          "state": "ACTIVE_IMPLEMENTATION",
+          "scope": "Trusted pre-World service-policy consumer after FE06 delivery; Root153 retains app-release identity and shared composition; backend16e owns policy producer. Frontend83 remains QA05, not FE41.",
+          "manager_technical_review": false
         }
       }
     },
@@ -7020,6 +7060,13 @@
       "owner_chat": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
       "receipt_commit": "9e4ace4dc9e7d8c019c5f149bc048304029b48bd",
       "disposition": "Epoch, expiry, removal, suspension, typed close/resync and motion clearing are covered. Retained actual Auth/runtime child restart, renewed epoch/reconnect, ticket replay/switch, PostgreSQL/Auth-Friend revocation and genuine browser foreground evidence establish the original recovery criteria without claiming the separate combined QA05 journey. Responsible World developer explicitly accepts the original task-local criteria at canonical9e4ace4d using current and retained qualified evidence. Four current PostgreSQL bridge cases remain NOT_RUN on b966; the owner states unchanged bridge/admission paths have prior qualified real PostgreSQL/native/runtime coverage and these are not missing original criteria. Combined default-App/Rust/Auth QA05, IN04 and device acceptance remain separate and open; QA08 stays deferred."
+    },
+    {
+      "recorded_at": "2026-11-05T05:28:00+09:00",
+      "task": "FE06",
+      "owner_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+      "receipt_commit": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
+      "disposition": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them."
     }
   ],
   "coverage_updates": [
@@ -9040,6 +9087,12 @@
       "state": "DONE",
       "commit": "9e4ace4dc9e7d8c019c5f149bc048304029b48bd",
       "basis": "Epoch, expiry, removal, suspension, typed close/resync and motion clearing are covered. Retained actual Auth/runtime child restart, renewed epoch/reconnect, ticket replay/switch, PostgreSQL/Auth-Friend revocation and genuine browser foreground evidence establish the original recovery criteria without claiming the separate combined QA05 journey. Responsible World developer explicitly accepts the original task-local criteria at canonical9e4ace4d using current and retained qualified evidence. Four current PostgreSQL bridge cases remain NOT_RUN on b966; the owner states unchanged bridge/admission paths have prior qualified real PostgreSQL/native/runtime coverage and these are not missing original criteria. Combined default-App/Rust/Auth QA05, IN04 and device acceptance remain separate and open; QA08 stays deferred."
+    },
+    {
+      "task": "FE06",
+      "state": "DONE",
+      "commit": "0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401",
+      "basis": "The responsible developer documents all original FE06 criteria as qualified in docs/mcr/frontend/original-fe06-completion.md. The missing default-app semantic-palette binding is implemented; three palettes, scoped persistence, failed-load retention/retry, reduced motion and stable geometry/room/avatar identity are covered by the changed default-app cohort plus explicitly reconciled retained evidence. Its only remaining delivery requirement was normal canonical publication, now complete at 0ff6b459ffa3ebe3e0d8fd263e3867b2b2657401. Live backend preference synchronization and full reference/device/integration gates remain separate and open; this does not waive them."
     }
   ]
 }
