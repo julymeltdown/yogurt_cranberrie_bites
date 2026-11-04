@@ -125,25 +125,28 @@ impl PostTransport for QualifiedPostTransport {
         &self,
         query: proto::ListPostsRequest,
     ) -> Result<proto::ListPostsResponse, Status> {
-        let authority = Some(self.authority(query.context.as_ref())?);
-        let r = self
-            .client
-            .clone()
-            .list_posts(self.request(proto::QualifiedListPostsRequest {
-                query: Some(query),
-                authority,
-            })?)
-            .await
-            .map_err(|status| {
-                #[cfg(test)]
-                eprintln!(
-                    "native qualified Post list failure: {:?}: {}",
-                    status.code(),
-                    status.message()
-                );
-                status
-            })?;
-        self.reply(r)
+        let result = async {
+            let authority = Some(self.authority(query.context.as_ref())?);
+            let r = self
+                .client
+                .clone()
+                .list_posts(self.request(proto::QualifiedListPostsRequest {
+                    query: Some(query),
+                    authority,
+                })?)
+                .await?;
+            self.reply(r)
+        }
+        .await;
+        #[cfg(test)]
+        if let Err(status) = &result {
+            eprintln!(
+                "native qualified Post list failure: {:?}: {}",
+                status.code(),
+                status.message()
+            );
+        }
+        result
     }
     async fn comment(
         &self,

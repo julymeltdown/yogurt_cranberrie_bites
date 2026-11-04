@@ -346,6 +346,16 @@ async fn actual_post_reads_use_current_public_author_and_same_transaction_owner_
     let body = f
         .scope
         .run(async {
+            use concert_application::feed::{Action, FeedPolicy};
+            super::policy::GuardedPolicy::new(f.scope.clone(), f.reader.clone())
+                .map_err(|e| {
+                    Status::unavailable(format!("native actor policy construction: {e:?}"))
+                })?
+                .observe(context, context.actor, Action::Read)
+                .await
+                .map_err(|e| {
+                    Status::unavailable(format!("native actor policy observation: {e:?}"))
+                })?;
             feed.page(context, FeedQuery::default())
                 .await
                 .map_err(|e| Status::unavailable(format!("native Feed read: {e:?}")))
