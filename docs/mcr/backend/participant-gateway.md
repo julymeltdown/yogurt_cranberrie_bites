@@ -444,3 +444,33 @@ preserves the original artifact/report hashes, observed Fresh metadata and the
 bounded follow-up. This goal remains active through the qualified successor,
 concrete consumer fixes if any, and verified Root publication. No additional
 Cargo, PostgreSQL or shared-target work is started by this documentation patch.
+
+### Clean-platform consumer checkpoint
+
+Root rebuilt the seven requested artifacts at unchanged source
+`d0f063d18a0549935f80a536077c30962d89f9e9` under named allocation
+`ROOT-SEVEN-CACHE-REPAIR-D0F-20261104`. The earlier copied core failure
+(reserved owner-authority policy mismatch, exit 101) remains preserved. Only
+the platform package was cleaned; no Participant, fixture, policy or other
+source change was needed. The first compile observer raced temporary metadata
+removal, stopped its exact owned process group and received no validation
+credit. The repaired observer retained that interruption and completed the
+requested builds within the original allocation. Platform metadata was rebuilt
+in that lease before subsequent same-pin reuse. All seven frozen artifacts
+were verified and the target released before copied tests or PostgreSQL work.
+
+All nine actual CR08 cancellation cases passed with exact report hashes and
+owned-cluster cleanup. This resolves the reproduced policy mismatch for the
+clean core consumer. The fresh C03 HTTP attempt did not reach service startup:
+current source expected 18 Auth migrations while the retained historical 3710
+Auth executable predates that manifest. Its migrate and verify commands exited
+0, but the independent exact ledger check failed; HTTP statuses were empty,
+prepared transactions were zero and owned cleanup passed. This is preserved as
+a failed pre-service cohort attempt, with no Participant behavior claim.
+
+The portable [consumer platform qualification](../../../backend/services/concert-service/tests/participant_cancellation_support/consumer_platform_qualification.json)
+records the unchanged input pin, build/observer failures, clean metadata, seven
+artifact hashes, nine core results, and failed HTTP preflight separately. Root
+owns rebuilding coherent current peer MAINs and rerunning actual C03 HTTP.
+The original f8a behavior PASS and its compiled-cache provenance limit remain
+unchanged. No additional resource lease or test run was taken by this worker.
