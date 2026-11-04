@@ -3,7 +3,7 @@
   "sourceHead": "325644e603e8a5478e414887a9b1eaed0098d213",
   "policy": "Pins owned changed source/docs/new evidence; excludes this manifest. Evidence commit must descend from sourceHead. Final remote ancestry is checked after nonforce publication.",
   "files": {
-    "docs/mcr/frontend/reference-scene-map.md": "e9f54b42bb1bbae37ba2d21b960362b2600abeea9325541fdcdb1f57e3d47048",
+    "docs/mcr/frontend/reference-scene-map.md": "3553c8eb8ae1773d0f2c89e7670a97ba2abf7ee48f9b65ffccfca08d63c16c0e",
     "frontend/src/features/places/__tests__/reference-map/admission.test.ts": "71488d009bfa38c965fab85c56ff358d9b6286d71624983063e1e8872f357631",
     "frontend/src/features/places/__tests__/reference-map/native.mjs": "155c7dc9e3e1e8e435f91311eadb91b3ddf6276f9aad41ac7e01683fe82131df",
     "frontend/src/features/places/__tests__/reference-map/portrait.test.ts": "a72ccfb16702efc26b30df721610115c2a982903d37fe391818f439bd6f0eae9",
