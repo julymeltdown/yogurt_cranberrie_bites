@@ -37,6 +37,58 @@ where
         }
     }
 
+    /// Prepare using the same admitted password worker and identity/entropy owner.
+    /// The MCR adapter commits this result together with durable consent; preparing
+    /// alone creates no account, challenge, mail or acceptance.
+    pub async fn prepare_email_signup(
+        &self,
+        email: &str,
+        password: &str,
+    ) -> crate::errors::AuthResult<(
+        crate::dto::repository_dto::AuthUserRecordDto,
+        crate::dto::verification_code_dto::VerificationCodeDto,
+        Option<crate::dto::repository_dto::AuthUserRecordDto>,
+    )> {
+        let normalized_email = User::normalized_email(email);
+        validate_email(&normalized_email)?;
+        validate_password(password)?;
+        let snapshot = self
+            .user_repository
+            .find_by_email(&normalized_email)
+            .await?;
+        let resume = if let Some(record) = snapshot {
+            let pending =
+                record.status == crate::dto::repository_dto::AuthUserStatusDto::PendingVerification;
+            if pending {
+                if self
+                    .password_work
+                    .verify_login(password, &record.password_hash)
+                    .await?
+                {
+                    Some(record)
+                } else {
+                    None
+                }
+            } else {
+                self.password_work.equalize_login(password).await?;
+                None
+            }
+        } else {
+            self.password_work.equalize_login(password).await?;
+            None
+        };
+        let password_hash = self.password_work.hash_for_signup(password).await?;
+        let code = self.verification_crypto.generate()?;
+        let user = User {
+            id: self.runtime.new_id(),
+            primary_email: normalized_email,
+            password_hash,
+            status: UserStatus::PendingVerification,
+            last_login_at: Some(self.runtime.now()),
+        };
+        Ok(((&user).into(), code, resume))
+    }
+
     pub async fn signup_email(
         &self,
         email: &str,

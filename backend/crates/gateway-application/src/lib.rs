@@ -20,3 +20,5 @@ pub mod queue_operation_ports;
 pub mod service_error;
 
 pub mod authority_exchange;
+
+pub mod enrollment_policy;

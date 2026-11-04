@@ -88,6 +88,10 @@ pub enum AdmissionReadError {
     Denied,
     #[error("Admission read capacity unavailable")]
     CapacityExhausted,
+    #[error("Global service consent required")]
+    ConsentRequired,
+    #[error("Global enrollment policy unavailable")]
+    PolicyUnavailable,
     #[error("Admission owner unavailable")]
     Unavailable,
     #[error("Invalid admission owner response")]
@@ -243,6 +247,8 @@ impl GrpcAuthClient {
         }
         let response = result
             .map_err(|status| match status.code() {
+                Code::FailedPrecondition if status.message() == "CONSENT_REQUIRED" => AdmissionReadError::ConsentRequired,
+                Code::Unavailable if status.message() == "POLICY_UNAVAILABLE" => AdmissionReadError::PolicyUnavailable,
                 Code::DeadlineExceeded => AdmissionReadError::DeadlineExceeded,
                 Code::Unauthenticated | Code::PermissionDenied => AdmissionReadError::Denied,
                 Code::ResourceExhausted => AdmissionReadError::CapacityExhausted,

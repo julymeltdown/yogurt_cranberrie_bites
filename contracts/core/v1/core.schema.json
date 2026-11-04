@@ -732,6 +732,102 @@
           "required": [
             "reason"
           ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "POLICY_UNAVAILABLE"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "POLICY_STALE"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "ATTEMPT_EXPIRED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "ATTEMPT_INVALID"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "ACKNOWLEDGEMENTS_REQUIRED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "IDEMPOTENCY_CONFLICT"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "VERIFICATION_FAILED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "ACCOUNT_INACTIVE"
+            }
+          },
+          "required": [
+            "reason"
+          ]
         }
       ]
     },
@@ -870,6 +966,399 @@
         {
           "$ref": "#/$defs/OriginErrorResponse"
         }
+      ]
+    },
+    "EnrollmentPolicyDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9_.-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "maxLength": 2048
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "requiredAcknowledgementId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9_.-]+$"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "sha256",
+        "requiredAcknowledgementId"
+      ]
+    },
+    "EnrollmentPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contractVersion": {
+          "const": "1.0"
+        },
+        "revision": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EnrollmentPolicyDocument"
+          },
+          "minItems": 1,
+          "maxItems": 8
+        },
+        "publishedAt": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "serverTime": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "contractVersion",
+        "revision",
+        "documents",
+        "publishedAt",
+        "expiresAt",
+        "serverTime"
+      ]
+    },
+    "EnrollmentBeginRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policyRevision": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "required": [
+        "policyRevision"
+      ]
+    },
+    "EnrollmentAttempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "policyRevision": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "serverTime": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "attemptId",
+        "policyRevision",
+        "expiresAt",
+        "serverTime"
+      ]
+    },
+    "EnrollmentSignupRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "policyRevision": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "acknowledgementIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[A-Za-z0-9_.-]+$"
+          },
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "idempotencyKey": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 254
+        },
+        "password": {
+          "type": "string",
+          "x-mcr-utf8-bytes": {
+            "minimum": 8,
+            "maximum": 128
+          }
+        }
+      },
+      "required": [
+        "attemptId",
+        "policyRevision",
+        "acknowledgementIds",
+        "idempotencyKey",
+        "email",
+        "password"
+      ]
+    },
+    "EnrollmentVerifyRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[0-9]{6}$"
+        }
+      },
+      "required": [
+        "attemptId",
+        "code"
+      ]
+    },
+    "EnrollmentResendRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "idempotencyKey": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "required": [
+        "attemptId",
+        "idempotencyKey"
+      ]
+    },
+    "EnrollmentConsentRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policyRevision": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "acknowledgementIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[A-Za-z0-9_.-]+$"
+          },
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "idempotencyKey": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "required": [
+        "policyRevision",
+        "acknowledgementIds",
+        "idempotencyKey"
+      ]
+    },
+    "EnrollmentAccepted": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "ACCEPTED"
+        },
+        "attemptId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "resendAvailableAt": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "serverTime": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "status",
+        "attemptId",
+        "expiresAt",
+        "resendAvailableAt",
+        "serverTime"
+      ]
+    },
+    "EnrollmentVerified": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "VERIFIED"
+        },
+        "attemptId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "serverTime": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "status",
+        "attemptId",
+        "serverTime"
+      ]
+    },
+    "EnrollmentAdmission": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "enum": [
+            "ADMITTED",
+            "CONSENT_REQUIRED",
+            "POLICY_UNAVAILABLE",
+            "ACCOUNT_INACTIVE"
+          ]
+        },
+        "policyRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acceptedRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "serverTime": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "decision",
+        "policyRevision",
+        "acceptedRevision",
+        "serverTime"
       ]
     }
   }

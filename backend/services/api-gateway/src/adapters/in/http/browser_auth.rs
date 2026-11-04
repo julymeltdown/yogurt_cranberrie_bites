@@ -17,6 +17,7 @@ pub fn router(state: Arc<AppState>) -> Router {
     // OAuth, availability and parity/shadow routes are deliberately not composed.
     auth_routes::browser_router(state.clone())
         .merge(refresh_routes::browser_router(state.clone()))
+        .merge(super::enrollment_policy::router(state.clone()))
         .merge(verification_routes::browser_router(state))
         .route("/api/auth/capabilities", get(capabilities))
 }

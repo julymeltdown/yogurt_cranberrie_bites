@@ -6,3 +6,5 @@ pub mod concert_invalidation;
 pub mod domain;
 
 pub mod concert_authority;
+
+pub mod enrollment_policy;

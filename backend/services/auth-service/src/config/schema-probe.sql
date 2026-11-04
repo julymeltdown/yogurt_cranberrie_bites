@@ -16,7 +16,13 @@ WITH required_tables(name) AS (
         ('user_deletion_sagas'),
         ('user_deletion_steps'),
         ('user_identities'),
-        ('users')
+        ('users'),
+        ('mcr_enrollment_policies'),
+        ('mcr_enrollment_current'),
+        ('mcr_enrollment_attempts'),
+        ('mcr_enrollment_acceptances'),
+        ('mcr_enrollment_resend_requests'),
+        ('mcr_enrollment_consent_requests')
 ), required_columns(relation, name, kind) AS (
     VALUES ('users', 'id', 'uuid'),
         ('users', 'primary_email', 'text'),
@@ -25,7 +31,17 @@ WITH required_tables(name) AS (
         ('refresh_tokens', 'jti', 'text'),
         ('refresh_tokens', 'user_id', 'uuid'),
         ('auth_mail_outbox', 'id', 'uuid'),
-        ('auth_user_tombstones', 'user_id', 'uuid')
+        ('auth_user_tombstones', 'user_id', 'uuid'),
+        ('mcr_enrollment_policies','revision','uuid'),
+        ('mcr_enrollment_policies','publication','jsonb'),
+        ('mcr_enrollment_policies','expires_at','timestamptz'),
+        ('mcr_enrollment_current','revision','uuid'),
+        ('mcr_enrollment_attempts','binding_hash','bytea'),
+        ('mcr_enrollment_attempts','signup_receipt','jsonb'),
+        ('mcr_enrollment_acceptances','user_id','uuid'),
+        ('mcr_enrollment_acceptances','revision','uuid'),
+        ('mcr_enrollment_resend_requests','receipt','jsonb'),
+        ('mcr_enrollment_consent_requests','receipt','jsonb')
 ), required_triggers(relation, name, function_name, kind) AS (
     VALUES ('users', 'auth_retire_user_id', 'auth_retire_user_id', 11),
         ('users', 'auth_reject_retired_user_id', 'auth_reject_retired_user_id', 7),

@@ -128,84 +128,17 @@ impl AuthOnboardingPort for PgUserRepository {
         code: &str,
     ) -> crate::application::errors::AuthResult<()> {
         let result: anyhow::Result<_> = async {
-        validate_email(email)?;
-        anyhow::ensure!(
-            code.len() == 6 && code.bytes().all(|byte| byte.is_ascii_digit()),
-            "Invalid verification code"
-        );
-        let mut tx = begin(self).await?;
-        let owner: Option<Uuid> = sqlx::query_scalar(
-            "select id from users where primary_email = $1 and status = 'PENDING_VERIFICATION' and deleted_at is null for update",
-        )
-        .bind(email)
-        .fetch_optional(&mut *tx)
-        .await?;
-        let Some(user_id) = owner else {
-            return Ok(());
-        };
-        let eligible: bool = sqlx::query_scalar(
-            "select exists(select 1 from user_identities where user_id = $1 and provider_type = 'EMAIL' and email = $2 and email_verified = false and deleted_at is null)",
-        )
-        .bind(user_id)
-        .bind(email)
-        .fetch_one(&mut *tx)
-        .await?;
-        if !eligible {
-            return Ok(());
+            validate_email(email)?;
+            anyhow::ensure!(
+                code.len() == 6 && code.bytes().all(|byte| byte.is_ascii_digit()),
+                "Invalid verification code"
+            );
+            let mut tx = begin(self).await?;
+            resend_verification_connection(&mut tx, email, code).await?;
+            tx.commit().await?;
+            Ok(())
         }
-        let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
-            .fetch_one(&mut *tx)
-            .await?;
-        let limited: bool = sqlx::query_scalar(
-            "select exists(select 1 from auth_mail_outbox where user_id = $1 and kind = 'VERIFY_EMAIL' and created_at > $2 - interval '1 minute') or (select count(*) from auth_mail_outbox where user_id = $1 and kind = 'VERIFY_EMAIL' and created_at > $2 - interval '1 day') >= 20",
-        )
-        .bind(user_id)
-        .bind(now)
-        .fetch_one(&mut *tx)
-        .await?;
-        if limited {
-            return Ok(());
-        }
-        sqlx::query("delete from email_verifications where user_id = $1")
-            .bind(user_id)
-            .execute(&mut *tx)
-            .await?;
-        sqlx::query(
-            "update auth_mail_outbox set dead_lettered_at = $2, payload_json = null, origin_traceparent = null, last_error_code = 'superseded' where user_id = $1 and kind = 'VERIFY_EMAIL' and delivered_at is null and dead_lettered_at is null",
-        )
-        .bind(user_id)
-        .bind(now)
-        .execute(&mut *tx)
-        .await?;
-        let expires_at = now + Duration::hours(1);
-        sqlx::query(
-            "insert into email_verifications (id, user_id, email, code, expires_at) values ($1, $2, $3, $4, $5)",
-        )
-        .bind(Uuid::new_v4())
-        .bind(user_id)
-        .bind(email)
-        .bind(code)
-        .bind(expires_at)
-        .execute(&mut *tx)
-        .await?;
-        let payload = serde_json::json!({"email": email, "code": code}).to_string();
-        let origin_traceparent =
-            platform::trace_context::current().map(|context| context.traceparent());
-        sqlx::query(
-            "insert into auth_mail_outbox (id, user_id, kind, payload_json, expires_at, created_at, origin_traceparent) values ($1, $2, 'VERIFY_EMAIL', $3, $4, $5, $6)",
-        )
-        .bind(Uuid::new_v4())
-        .bind(user_id)
-        .bind(payload)
-        .bind(expires_at)
-        .bind(now)
-        .bind(origin_traceparent)
-        .execute(&mut *tx)
-        .await?;
-        audit(&mut tx, user_id, "EMAIL_VERIFICATION_RESENT").await?;
-        tx.commit().await?;
-        Ok(())
-    }.await;
+        .await;
         result.map_err(crate::adapters::out::errors::boundary_error)
     }
 }
@@ -278,4 +211,86 @@ mod tests {
         assert!(validate_provider_subject("subject-1").is_ok());
         assert!(validate_provider_subject(" \n ").is_err());
     }
+}
+
+pub(crate) async fn resend_verification_connection(
+    connection: &mut PgConnection,
+    email: &str,
+    code: &str,
+) -> anyhow::Result<()> {
+    validate_email(email)?;
+    anyhow::ensure!(
+        code.len() == 6 && code.bytes().all(|byte| byte.is_ascii_digit()),
+        "Invalid verification code"
+    );
+    let owner: Option<Uuid> = sqlx::query_scalar(
+            "select id from users where primary_email = $1 and status = 'PENDING_VERIFICATION' and deleted_at is null for update",
+        )
+        .bind(email)
+        .fetch_optional(&mut *connection)
+        .await?;
+    let Some(user_id) = owner else {
+        return Ok(());
+    };
+    let eligible: bool = sqlx::query_scalar(
+            "select exists(select 1 from user_identities where user_id = $1 and provider_type = 'EMAIL' and email = $2 and email_verified = false and deleted_at is null)",
+        )
+        .bind(user_id)
+        .bind(email)
+        .fetch_one(&mut *connection)
+        .await?;
+    if !eligible {
+        return Ok(());
+    }
+    let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+        .fetch_one(&mut *connection)
+        .await?;
+    let limited: bool = sqlx::query_scalar(
+            "select exists(select 1 from auth_mail_outbox where user_id = $1 and kind = 'VERIFY_EMAIL' and created_at > $2 - interval '1 minute') or (select count(*) from auth_mail_outbox where user_id = $1 and kind = 'VERIFY_EMAIL' and created_at > $2 - interval '1 day') >= 20",
+        )
+        .bind(user_id)
+        .bind(now)
+        .fetch_one(&mut *connection)
+        .await?;
+    if limited {
+        return Ok(());
+    }
+    sqlx::query("delete from email_verifications where user_id = $1")
+        .bind(user_id)
+        .execute(&mut *connection)
+        .await?;
+    sqlx::query(
+            "update auth_mail_outbox set dead_lettered_at = $2, payload_json = null, origin_traceparent = null, last_error_code = 'superseded' where user_id = $1 and kind = 'VERIFY_EMAIL' and delivered_at is null and dead_lettered_at is null",
+        )
+        .bind(user_id)
+        .bind(now)
+        .execute(&mut *connection)
+        .await?;
+    let expires_at = now + Duration::hours(1);
+    sqlx::query(
+            "insert into email_verifications (id, user_id, email, code, expires_at) values ($1, $2, $3, $4, $5)",
+        )
+        .bind(Uuid::new_v4())
+        .bind(user_id)
+        .bind(email)
+        .bind(code)
+        .bind(expires_at)
+        .execute(&mut *connection)
+        .await?;
+    let payload = serde_json::json!({"email": email, "code": code}).to_string();
+    let origin_traceparent =
+        platform::trace_context::current().map(|context| context.traceparent());
+    sqlx::query(
+            "insert into auth_mail_outbox (id, user_id, kind, payload_json, expires_at, created_at, origin_traceparent) values ($1, $2, 'VERIFY_EMAIL', $3, $4, $5, $6)",
+        )
+        .bind(Uuid::new_v4())
+        .bind(user_id)
+        .bind(payload)
+        .bind(expires_at)
+        .bind(now)
+        .bind(origin_traceparent)
+        .execute(&mut *connection)
+        .await?;
+    audit(connection, user_id, "EMAIL_VERIFICATION_RESENT").await?;
+    Ok(())
 }

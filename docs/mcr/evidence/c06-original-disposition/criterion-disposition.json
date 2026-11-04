@@ -1,0 +1,80 @@
+{
+  "task": "C06",
+  "status": "ACCEPTED",
+  "original_task_disposition": "ALL_ORIGINAL_CRITERIA_SATISFIED",
+  "canonical_source": "13baed63000b2c058e31e35ce60ab49602f39d94",
+  "observed_at_utc": "2026-11-04T18:15:25.776261+00:00",
+  "authority": "MCR_IMPLEMENTATION_PLAN_V2_EN.md section10 C06",
+  "criteria": {
+    "atlas_frames_anchor": "SATISFIED",
+    "layer_ids": "SATISFIED",
+    "map_version_collisions": "SATISFIED",
+    "interactions_place_source_metadata": "SATISFIED",
+    "small_goldens_align_all_themes": "SATISFIED"
+  },
+  "fresh_validation": {
+    "command": [
+      "python",
+      "-B",
+      "scripts/mcr/validate-assets.py"
+    ],
+    "python_environment": "retained strict contracts environment with URI/date-time validators",
+    "exit_code": 0,
+    "documents_validated": 6,
+    "themes": [
+      "DANGER",
+      "PARADE",
+      "REVENGE"
+    ],
+    "validator_bundle_result": "CONTRACT_READY",
+    "reason": "Validator gained reviewed-v2/scenery support after historical integrated run; only the original golden CLI was refreshed.",
+    "new_tests_authored": 0
+  },
+  "original_six_golden_hashes_unchanged": true,
+  "historical_validation": {
+    "assets_tests": 27,
+    "integrated_contract_tests": 144,
+    "fresh_rerun_claimed": false
+  },
+  "source_and_receipt_sha256": {
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "contracts/assets/v1/common.schema.json": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/theme-manifest.schema.json": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d",
+    "contracts/assets/v2/avatar-config.schema.json": "3cbfd3185113d7f4913de89b0e04d67046dbab64b3f90c0b5f14a261afc6a78b",
+    "contracts/assets/v2/avatar-manifest.schema.json": "8fc206f00d263ed9465cad932768075a1a0ca61d927e98ccc2aa8e9e7ef0d54f",
+    "contracts/assets/v2/reviewed/avatar-config.schema.json": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+    "contracts/assets/v2/reviewed/avatar-manifest.schema.json": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+    "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
+    "contracts/fixtures/assets/avatar-manifest.json": "375527f8e8228a1c1025813dd9b441e6bad6ce84b603e321d4eca0d7a4e16c48",
+    "contracts/fixtures/assets/map-manifest.json": "0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7",
+    "contracts/fixtures/assets/theme-danger.json": "58df8efb622ddd1a6c344ae5b0fd2f89ae825dedafefcd947d8c411bcd80133b",
+    "contracts/fixtures/assets/theme-parade.json": "e356e97a66ed7b0c9bd288781821a542b5dd0d12d7d44ec15b85949477afe1a4",
+    "contracts/fixtures/assets/theme-revenge.json": "29c7021569309b741936645b1350c9789c213fc6b729a8650257561b278c892c",
+    "docs/mcr/art/evidence/selected-character-original-completion/criterion-disposition.json": "ed06eb6947e0b57da829a064706caf225b61eafb41415c3c32114f60c87046d4",
+    "docs/mcr/evidence/asset-format-validation/golden.log": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2",
+    "docs/mcr/evidence/asset-format-validation/integration.json": "517a2195db19ed3f10ebac0804d0fcabcd610bc993e016cbd0b1a996d1587c74",
+    "docs/mcr/evidence/asset-format-validation/result.json": "81c09b41f91bfedd4d75c03d0bcac4956499b0e5b98d33ab0c7dfa843ff7f8e1",
+    "docs/mcr/evidence/map-art06-default-app/source-pins.json": "46ffd8a0fd5cd55b817bda05d325cec330304d1540ca31a8047d0f8ebb04e0c5",
+    "docs/mcr/evidence/theme-integration/index.json": "4c94961bdb3e2dd2da228cfb4dedc1b43ba154c1b4845522b61fb91381c4628e",
+    "frontend/src/app/world-entry/production.ts": "bd3b199b680f0df417763679ac85a680efd8022eec1c94946882f92001877967",
+    "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "ff0a901e62f572aa406d5916f741dd771956ec767c3585cf0ce5aa6ec1b81701",
+    "scripts/mcr/requirements-contracts.txt": "fc6c67bbfd66de4a6fa8e5521823a733cedff5ea56657cbd49ca03a619504782",
+    "scripts/mcr/tests/test_assets.py": "f9001dfa2d58fbd7aa311f09ae98856f36dbe73c4de81ed35f8b56677f8686f8",
+    "scripts/mcr/validate-assets.py": "a4fb1f8cd579031c585f458fe7eb6607116afdc41c90113007ab60de3ccb023c"
+  },
+  "uncovered_original_criteria": [],
+  "implementation_owner": "Root backend integration",
+  "consumer_counterpart": "Root frontend153",
+  "source_originals_archives_unchanged": true,
+  "new_application_contract_or_art_changes": false,
+  "limits": [
+    "Synthetic golden fixtures are metadata tests only, not product fallback art.",
+    "Retained controlled HTTP/C05 consumers are not live-service or device proof.",
+    "Original C06 does not add C07, QA06, complete visual reference, IN03/IN04, physical venue or release gates.",
+    "AR03 owner artwork completion alone is not this whole C06 disposition."
+  ],
+  "publication": "PENDING_NORMAL_SERIAL_PUBLISHER_RECEIPT"
+}
