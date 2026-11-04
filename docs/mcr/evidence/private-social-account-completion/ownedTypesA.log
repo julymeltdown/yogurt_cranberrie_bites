@@ -1,0 +1,109 @@
+{"rootFiles":39,"programFiles":571,"diagnostics":27,"scope":["social-sharing","inbox","safety","account"]}
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'vite/client'.
+  The file is in the program because:
+    Entry point of type library 'vite/client' specified in compilerOptions
+[96msrc/app/community-adoption/bootstrap.ts[0m:[93m49[0m:[93m65[0m - [91merror[0m[90m TS2339: [0mProperty 'env' does not exist on type 'ImportMeta'.
+
+[7m49[0m       || profile.classification === 'TEST_ONLY' && !import.meta.env.PROD)
+[7m  [0m [91m                                                                ~~~[0m
+[96msrc/app/media-entry/RootMediaView.tsx[0m:[93m8[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './root-media.css'.
+
+[7m8[0m import './root-media.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/app/social-composition/navigation.tsx[0m:[93m4[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './composition.css'.
+
+[7m4[0m import './composition.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/app/social-composition/panels.tsx[0m:[93m19[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './composition.css'.
+
+[7m19[0m import './composition.css'
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/app/world-panels/social.tsx[0m:[93m8[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './social.css'.
+
+[7m8[0m import './social.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~[0m
+[96msrc/features/account/panel.tsx[0m:[93m6[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of '../safety/safety.css'.
+
+[7m6[0m import '../safety/safety.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/age-status/AgeStatus.tsx[0m:[93m4[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of '../people/people.css'.
+
+[7m4[0m import '../people/people.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/event-feed/EventFeed.tsx[0m:[93m8[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './feed.css'.
+
+[7m8[0m import './feed.css'
+[7m [0m [91m       ~~~~~~~~~~~~[0m
+[96msrc/features/feed-thread/FeedThread.tsx[0m:[93m6[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of '../event-feed/feed.css'.
+
+[7m6[0m import '../event-feed/feed.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/gift-discovery/ui/Gifts.tsx[0m:[93m9[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './gifts.css'.
+
+[7m9[0m import './gifts.css'
+[7m [0m [91m       ~~~~~~~~~~~~~[0m
+[96msrc/features/gift-discovery/ui/Gifts.tsx[0m:[93m10[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './reference-gifts.css'.
+
+[7m10[0m import './reference-gifts.css'
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/inbox/ui/Inbox.tsx[0m:[93m4[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './inbox.css'.
+
+[7m4[0m import './inbox.css'
+[7m [0m [91m       ~~~~~~~~~~~~~[0m
+[96msrc/features/intro/IntroEditor.tsx[0m:[93m5[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of '../people/people.css'.
+
+[7m5[0m import '../people/people.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/me/ui/MePages.tsx[0m:[93m10[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './me.css'.
+
+[7m10[0m import './me.css'
+[7m  [0m [91m       ~~~~~~~~~~[0m
+[96msrc/features/me/ui/reference-profile/ProfileActivity.tsx[0m:[93m1[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of '../../../profile/reference-presentation/activity.css'.
+
+[7m1[0m import '../../../profile/reference-presentation/activity.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/meet-beacon/ui/ExplicitArrivalControls.tsx[0m:[93m5[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './meeting-beacon.css'.
+
+[7m5[0m import './meeting-beacon.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/meet-beacon/ui/MeetingBeacon.tsx[0m:[93m4[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './meeting-beacon.css'.
+
+[7m4[0m import './meeting-beacon.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/mural/editor/MuralEditor.tsx[0m:[93m8[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './editor.css'.
+
+[7m8[0m import './editor.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~[0m
+[96msrc/features/mural/editor/MuralEditor.tsx[0m:[93m9[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './tools-b.css'.
+
+[7m9[0m import './tools-b.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~[0m
+[96msrc/features/people/People.tsx[0m:[93m7[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './people.css'.
+
+[7m7[0m import './people.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~[0m
+[96msrc/features/profile/PublicProfile.tsx[0m:[93m9[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './profile.css'.
+
+[7m9[0m import './profile.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~[0m
+[96msrc/features/safety/panels.tsx[0m:[93m5[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './safety.css'.
+
+[7m5[0m import './safety.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~[0m
+[96msrc/features/social-sharing/ui/SocialSharing.tsx[0m:[93m5[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './sharing.css'.
+
+[7m5[0m import './sharing.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~[0m
+[96msrc/features/world-rooms/ui/WorldRooms.tsx[0m:[93m4[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './world-access.css'.
+
+[7m4[0m import './world-access.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/shared/ui/concert-window/index.tsx[0m:[93m3[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './concert-window.css'.
+
+[7m3[0m import './concert-window.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/world/input/controller.ts[0m:[93m6[0m:[93m8[0m - [91merror[0m[90m TS2882: [0mCannot find module or type declarations for side-effect import of './controls.css'.
+
+[7m6[0m import './controls.css'
+[7m [0m [91m       ~~~~~~~~~~~~~~~~[0m
+

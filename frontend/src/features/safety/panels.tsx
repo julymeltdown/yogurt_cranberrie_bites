@@ -26,24 +26,26 @@ export function ReportDialog({controller,search,evidenceChoices=[],onDismiss}:{c
  </SafetyDialog>
 }
 export function BlocksPanel({controller,onBack}:{controller:SafetyController;onBack:()=>void}){
- const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState<string|null>(null)
- useEffect(()=>{void controller.loadBlocks()},[controller])
+ const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState<{owner:SafetyController;id:string;revision:number}|null>(null)
+ useEffect(()=>{setConfirm(null);void controller.loadBlocks()},[controller])
+ useEffect(()=>{setConfirm(value=>value?.owner===controller&&s.blocks?.items.some(item=>item.target_user_id===value.id&&item.revision===value.revision)?value:null)},[controller,s.blocks])
  const locked=!controller.blocksAvailable||['submitting','pending','unknown','failed','closed'].includes(s.phase)
  return <section className="mcr-safety-panel" aria-labelledby="mcr-blocks-title">
   <button type="button" onClick={onBack}>Back</button><h1 id="mcr-blocks-title">Blocked users</h1>
   <p>Blocking closes affected private views. Unblocking never restores previous consent or social access.</p>
   {s.blocksPhase==='loading'&&<p role="status">Loading blocked users…</p>}
   {s.blocksPhase==='ready'&&s.blocks?.items.length===0&&<p>No blocked users on this page.</p>}
-  <ul>{s.blocks?.items.map(item=><li key={item.target_user_id}><span className="mcr-safety-id">{item.target_user_id}</span> <button type="button" disabled={locked} onClick={()=>setConfirm(item.target_user_id)}>Unblock user</button></li>)}</ul>
+  <ul>{s.blocks?.items.map(item=><li key={item.target_user_id}><span className="mcr-safety-id">{item.target_user_id}</span> <button type="button" disabled={locked} onClick={()=>setConfirm({owner:controller,id:item.target_user_id,revision:item.revision})}>Unblock user</button></li>)}</ul>
   {s.blocks?.next_cursor&&<button disabled={locked} onClick={()=>void controller.loadBlocks(s.blocks!.next_cursor!)}>Next page</button>}
   {s.blocksPhase==='error'&&<button type="button" onClick={()=>void controller.loadBlocks()}>Reload blocked users</button>}
   <p role="status">{s.message}</p>
   {['pending','unknown','failed'].includes(s.phase)&&<button onClick={()=>void controller.checkStatus()}>Check original request status</button>}
-  {confirm&&!locked&&<SafetyDialog title="Unblock this user?" onDismiss={()=>setConfirm(null)}><p>Previous consent remains revoked. New permission is required before sharing private information again.</p><button data-initial-focus onClick={()=>setConfirm(null)}>Keep blocked</button><button onClick={()=>{const id=confirm;setConfirm(null);void controller.unblock(id)}}>Confirm unblock</button></SafetyDialog>}
+  {confirm?.owner===controller&&s.blocks?.items.some(item=>item.target_user_id===confirm.id&&item.revision===confirm.revision)&&!locked&&<SafetyDialog title="Unblock this user?" onDismiss={()=>setConfirm(null)}><p>Previous consent remains revoked. New permission is required before sharing private information again.</p><button data-initial-focus onClick={()=>setConfirm(null)}>Keep blocked</button><button onClick={()=>{const intent=confirm;setConfirm(null);if(intent.owner===controller&&controller.read().blocks?.items.some(item=>item.target_user_id===intent.id&&item.revision===intent.revision))void controller.unblock(intent.id)}}>Confirm unblock</button></SafetyDialog>}
  </section>
 }
 export function BlockUserButton({controller,userId}:{controller:SafetyController;userId:string}){
- const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState(false)
+ const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState<{owner:SafetyController;id:string}|null>(null)
+ useEffect(()=>setConfirm(null),[controller,userId])
  const locked=!controller.blocksAvailable||['submitting','pending','unknown','failed','closed'].includes(s.phase)
- return <><button disabled={locked} onClick={()=>setConfirm(true)}>Block user</button>{confirm&&!locked&&<SafetyDialog title="Block this user?" onDismiss={()=>setConfirm(false)}><p>This ends access to affected private interactions. Previous consent will not return if you unblock later.</p><button data-initial-focus onClick={()=>setConfirm(false)}>Cancel block</button><button onClick={()=>{setConfirm(false);void controller.block(userId)}}>Confirm block</button></SafetyDialog>}<p role="status">{s.message}</p>{['pending','unknown','failed'].includes(s.phase)&&<button onClick={()=>void controller.checkStatus()}>Check original request status</button>}</>
+ return <><button disabled={locked} onClick={()=>setConfirm({owner:controller,id:userId})}>Block user</button>{confirm?.owner===controller&&confirm.id===userId&&!locked&&<SafetyDialog title="Block this user?" onDismiss={()=>setConfirm(null)}><p>This ends access to affected private interactions. Previous consent will not return if you unblock later.</p><button data-initial-focus onClick={()=>setConfirm(null)}>Cancel block</button><button onClick={()=>{const intent=confirm;setConfirm(null);if(intent.owner===controller&&intent.id===userId)void controller.block(intent.id)}}>Confirm block</button></SafetyDialog>}<p role="status">{s.message}</p>{['pending','unknown','failed'].includes(s.phase)&&<button onClick={()=>void controller.checkStatus()}>Check original request status</button>}</>
 }

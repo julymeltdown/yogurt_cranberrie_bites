@@ -40,7 +40,8 @@ export function createInboxController(options: InboxOptions) {
   let binding: CommandBinding | null = null, currentReceipt: Receipt | null = null
   const listeners = new Set<() => void>(), flights = new Map<string, AbortController>(), cursors = new Set<string>(), attempts = new Set<string>()
   let removers: (() => void)[] = []
-  const publish = (patch: Partial<InboxState>) => { state = freeze({ ...state, ...patch }); for (const listener of listeners) listener() }
+  const notify = () => { for (const listener of Array.from(listeners)) { try { listener() } catch { /* One observer must not prevent private-view cleanup. */ } } }
+  const publish = (patch: Partial<InboxState>) => { state = freeze({ ...state, ...patch }); notify() }
   const usable = () => started && !disposed && scope !== null && auth.privacy.isCurrent(scope) && access.read() && uuid(scope.eventId) && uuid(scope.userId)
   function cancel(lane?: string) {
     if (lane) { const c = flights.get(lane); flights.delete(lane); c?.abort() }
@@ -48,7 +49,7 @@ export function createInboxController(options: InboxOptions) {
   }
   function clear() {
     cancel(); listVersion++; targetVersion++; countVersion++; scope = null; binding = null; currentReceipt = null; cursors.clear(); attempts.clear()
-    state = freeze(blank()); for (const listener of listeners) listener()
+    state = freeze(blank()); notify()
   }
   function sync() {
     if (disposed || !started) return
@@ -61,7 +62,7 @@ export function createInboxController(options: InboxOptions) {
         const command = state.command
         cancel(); listVersion++; targetVersion++; countVersion++; cursors.clear()
         state = freeze({ ...blank(), command: { ...command, phase: ['sending', 'checking'].includes(command.phase) ? 'uncertain' : command.phase } })
-        for (const listener of listeners) listener()
+        notify()
         return
       }
       publish({ available: true, scope }); void load(); return

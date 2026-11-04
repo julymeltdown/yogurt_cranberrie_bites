@@ -1,0 +1,932 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/app/account-deletion-entry/__tests__/routes.test.tsx (6 tests | 1 failed) 1850ms
+   × default Settings reaches account controls and Back restores opener without replacing the world 1031ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/account-deletion-entry/__tests__/routes.test.tsx > default Settings reaches account controls and Back restores opener without replacing the world
+TestingLibraryElementError: Unable to find role="link" and name "Account controls"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mcr-root-social"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"world-shell"[39m
+        [33mdata-mcr-shell[39m=[32m""[39m
+        [33mdata-panel-size[39m=[32m"half"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"skip-link"[39m
+          [33mhref[39m=[32m"#shell-content"[39m
+        [36m>[39m
+          [0mSkip to content[0m
+        [36m</a>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"MCR Concert World"[39m
+            [33mclass[39m=[32m"mcr-chrome-brand"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/world"[39m
+            [33mid[39m=[32m"shell-brand"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"concert-icon"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"square"[39m
+                [33mstroke-linejoin[39m=[32m"miter"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+            [36m>[39m
+              [36m<strong>[39m
+                [0mFixture fan[0m
+              [36m</strong>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mcr-chrome-event"[39m
+                [33mtitle[39m=[32m"Synthetic contract fixture"[39m
+              [36m>[39m
+                [0mSynthetic contract fixture[0m
+              [36m</span>[39m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"Inbox"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/notifications"[39m
+              [33mid[39m=[32m"shell-inbox"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"concert-icon"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"square"[39m
+                [33mstroke-linejoin[39m=[32m"miter"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</a>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"Settings"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/me/settings"[39m
+              [33mid[39m=[32m"shell-settings"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"concert-icon"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"square"[39m
+                [33mstroke-linejoin[39m=[32m"miter"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"12"[39m
+                  [33mr[39m=[32m"3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</a>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-era-region"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"World era"[39m
+            [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33maria-describedby[39m=[32m"_r_1_-status"[39m
+              [33maria-label[39m=[32m"Choose an era"[39m
+              [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Revenge"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mREVENGE[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Parade"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mPARADE[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Danger"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mDANGER[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                [36m/>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<p[39m
+              [33maria-atomic[39m=[32m"true"[39m
+              [33maria-live[39m=[32m"polite"[39m
+              [33mclass[39m=[32m"mcr-chrome-eras__status"[39m
+              [33mid[39m=[32m"_r_1_-status"[39m
+              [33mrole[39m=[32m"status"[39m
+            [36m>[39m
+              [0mEras unavailable.[0m
+            [36m</p>[39m
+          [36m</section>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-stage"[39m
+          [33mdata-panel-size[39m=[32m"half"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"World viewport"[39m
+            [33mclass[39m=[32m"shell-world"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shell-world-host"[39m
+              [33mdata-world-host[39m=[32m""[39m
+              [33minert[39m=[32m""[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"fixture-host-label"[39m
+              [36m>[39m
+                [0mInstrumented test host · no live world[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</section>[39m
+          [36m<main[39m
+            [33maria-labelledby[39m=[32m"panel-title"[39m
+            [33mclass[39m=[32m"shell-panel"[39m
+            [33mid[39m=[32m"shell-content"[39m
+            [33mtabindex[39m=[32m"-1"[39m
+          [36m>[39m
+            [36m<header[39m
+              [33mclass[39m=[32m"concert-kit mcr-chrome-panel-header"[39m
+            [36m>[39m
+              [36m<h1[39m
+                [33mid[39m=[32m"panel-title"[39m
+                [33mtabindex[39m=[32m"-1"[39m
+              [36m>[39m
+                [0mSettings[0m
+              [36m</h1>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand panel"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m""[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-reference-window-ink "[39m
+                  [33mdraggable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33msrc[39m=[32m"/reference-window-controls-v2/expand.svg"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-controls[39m=[32m"shell-panel-body"[39m
+                [33maria-expanded[39m=[32m"true"[39m
+                [33maria-label[39m=[32m"Minimize panel"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m""[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-reference-window-ink mcr-reference-window-ink--collapse"[39m
+                  [33mdraggable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33msrc[39m=[32m"/reference-window-controls-v2/back.svg"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Back to previous panel"[39m
+                [33mclass[39m=[32m"mcr-chrome-panel-close"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m""[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-reference-window-ink "[39m
+                  [33mdraggable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33msrc[39m=[32m"/reference-window-controls-v2/close.svg"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                [36m/>[39m
+              [36m</button>[39m
+            [36m</header>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shell-panel-body"[39m
+              [33mid[39m=[32m"shell-panel-body"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mrole[39m=[32m"status"[39m
+              [36m>[39m
+                [0mOpening settings…[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</main>[39m
+        [36m</div>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Main navigation"[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-bottom"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/world"[39m
+            [33mid[39m=[32m"tab-world"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m3 11 9-8 9 8M6 10v11h12V10M10 21v-7h4v7"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mWorld[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/feed"[39m
+            [33mid[39m=[32m"tab-feed"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 12v9M8 21h8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mfill[39m=[32m"currentColor"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mFeed[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/meet"[39m
+            [33mid[39m=[32m"tab-meet"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"8"[39m
+                [33mcy[39m=[32m"7"[39m
+                [33mr[39m=[32m"3"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"17"[39m
+                [33mcy[39m=[32m"9"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M2 21v-4a6 6 0 0 1 12 0v4M16 14a5 5 0 0 1 6 5v2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mMeet[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/gifts"[39m
+            [33mid[39m=[32m"tab-gifts"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M3 9h18v5H3zM5 14v7h14v-7M12 9v12"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 9C2 9 7-1 12 9c5-10 10 0 0 0Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mGifts[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/wall"[39m
+            [33mid[39m=[32m"tab-wall"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m6 7 7-4 7 12-7 4ZM8 6l-2-3M17 4l2-2M5 11 2 13M12 18l1 4M9 20l-3 2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m11 8 5 8"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mWall[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-current[39m=[32m"page"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me"[39m
+            [33mid[39m=[32m"tab-me"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"7"[39m
+                [33mr[39m=[32m"4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M4 22v-3a8 8 0 0 1 16 0v3Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mMe[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</nav>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mcr-root-social"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"world-shell"[39m
+        [33mdata-mcr-shell[39m=[32m""[39m
+        [33mdata-panel-size[39m=[32m"half"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"skip-link"[39m
+          [33mhref[39m=[32m"#shell-content"[39m
+        [36m>[39m
+          [0mSkip to content[0m
+        [36m</a>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"MCR Concert World"[39m
+            [33mclass[39m=[32m"mcr-chrome-brand"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/world"[39m
+            [33mid[39m=[32m"shell-brand"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"concert-icon"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"square"[39m
+                [33mstroke-linejoin[39m=[32m"miter"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+            [36m>[39m
+              [36m<strong>[39m
+                [0mFixture fan[0m
+              [36m</strong>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mcr-chrome-event"[39m
+                [33mtitle[39m=[32m"Synthetic contract fixture"[39m
+              [36m>[39m
+                [0mSynthetic contract fixture[0m
+              [36m</span>[39m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"Inbox"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/notifications"[39m
+              [33mid[39m=[32m"shell-inbox"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"concert-icon"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"square"[39m
+                [33mstroke-linejoin[39m=[32m"miter"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</a>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"Settings"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/me/settings"[39m
+              [33mid[39m=[32m"shell-settings"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"concert-icon"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"square"[39m
+                [33mstroke-linejoin[39m=[32m"miter"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"12"[39m
+                  [33mr[39m=[32m"3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</a>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-era-region"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"World era"[39m
+            [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33maria-describedby[39m=[32m"_r_1_-status"[39m
+              [33maria-label[39m=[32m"Choose an era"[39m
+              [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Revenge"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mREVENGE[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Parade"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mPARADE[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Danger"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mDANGER[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                [36m/>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<p[39m
+              [33maria-atomic[39m=[32m"true"[39m
+              [33maria-live[39m=[32m"polite"[39m
+              [33mclass[39m=[32m"mcr-chrome-eras__status"[39m
+              [33mid[39m=[32m"_r_1_-status"[39m
+              [33mrole[39m=[32m"status"[39m
+            [36m>[39m
+              [0mEras unavailable.[0m
+            [36m</p>[39m
+          [36m</section>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-stage"[39m
+          [33mdata-panel-size[39m=[32m"half"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"World viewport"[39m
+            [33mclass[39m=[32m"shell-world"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shell-world-host"[39m
+              [33mdata-world-host[39m=[32m""[39m
+              [33minert[39m=[32m""[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"fixture-host-label"[39m
+              [36m>[39m
+                [0mInstrumented test host · no live world[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</section>[39m
+          [36m<main[39m
+            [33maria-labelledby[39m=[32m"panel-title"[39m
+            [33mclass[39m=[32m"shell-panel"[39m
+            [33mid[39m=[32m"shell-content"[39m
+            [33mtabindex[39m=[32m"-1"[39m
+          [36m>[39m
+            [36m<header[39m
+              [33mclass[39m=[32m"concert-kit mcr-chrome-panel-header"[39m
+            [36m>[39m
+              [36m<h1[39m
+                [33mid[39m=[32m"panel-title"[39m
+                [33mtabindex[39m=[32m"-1"[39m
+              [36m>[39m
+                [0mSettings[0m
+              [36m</h1>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand panel"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m""[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-reference-window-ink "[39m
+                  [33mdraggable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33msrc[39m=[32m"/reference-window-controls-v2/expand.svg"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-controls[39m=[32m"shell-panel-body"[39m
+                [33maria-expanded[39m=[32m"true"[39m
+                [33maria-label[39m=[32m"Minimize panel"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m""[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-reference-window-ink mcr-reference-window-ink--collapse"[39m
+                  [33mdraggable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33msrc[39m=[32m"/reference-window-controls-v2/back.svg"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                [36m/>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Back to previous panel"[39m
+                [33mclass[39m=[32m"mcr-chrome-panel-close"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m""[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"mcr-reference-window-ink "[39m
+                  [33mdraggable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33msrc[39m=[32m"/reference-window-controls-v2/close.svg"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                [36m/>[39m
+              [36m</button>[39m
+            [36m</header>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shell-panel-body"[39m
+              [33mid[39m=[32m"shell-panel-body"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mrole[39m=[32m"status"[39m
+              [36m>[39m
+                [0mOpening settings…[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</main>[39m
+        [36m</div>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Main navigation"[39m
+          [33mclass[39m=[32m"concert-kit mcr-chrome-bottom"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/world"[39m
+            [33mid[39m=[32m"tab-world"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m3 11 9-8 9 8M6 10v11h12V10M10 21v-7h4v7"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mWorld[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/feed"[39m
+            [33mid[39m=[32m"tab-feed"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 12v9M8 21h8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"11"[39m
+                [33mfill[39m=[32m"currentColor"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mFeed[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/meet"[39m
+            [33mid[39m=[32m"tab-meet"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"8"[39m
+                [33mcy[39m=[32m"7"[39m
+                [33mr[39m=[32m"3"[39m
+              [36m/>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"17"[39m
+                [33mcy[39m=[32m"9"[39m
+                [33mr[39m=[32m"2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M2 21v-4a6 6 0 0 1 12 0v4M16 14a5 5 0 0 1 6 5v2"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mMeet[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/gifts"[39m
+            [33mid[39m=[32m"tab-gifts"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M3 9h18v5H3zM5 14v7h14v-7M12 9v12"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 9C2 9 7-1 12 9c5-10 10 0 0 0Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mGifts[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/wall"[39m
+            [33mid[39m=[32m"tab-wall"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m6 7 7-4 7 12-7 4ZM8 6l-2-3M17 4l2-2M5 11 2 13M12 18l1 4M9 20l-3 2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m11 8 5 8"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mWall[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-current[39m=[32m"page"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me"[39m
+            [33mid[39m=[32m"tab-me"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"concert-icon"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"square"[39m
+              [33mstroke-linejoin[39m=[32m"miter"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+            [36m>[39m
+              [36m<circle[39m
+                [33mcx[39m=[32m"12"[39m
+                [33mcy[39m=[32m"7"[39m
+                [33mr[39m=[32m"4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M4 22v-3a8 8 0 0 1 16 0v3Z"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+            [36m<span>[39m
+              [0mMe[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</nav>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/account-deletion-entry/__tests__/routes.test.tsx:41:56
+     39| }
+     40| it('default Settings reaches account controls and Back restores opener…
+     41|   const h = await setup(); const opener = await screen.findByRole('lin…
+       |                                                        ^
+     42|   const mounts = h.stats.mounts; fireEvent.click(opener)
+     43|   await screen.findByRole('heading', { name: 'Account controls' }); ex…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 15 passed (16)
+      Tests  1 failed | 383 passed (384)
+   Start at  02:45:47
+   Duration  19.29s (transform 1.88s, setup 0ms, import 3.62s, tests 11.01s, environment 3.41s)
+

@@ -1,0 +1,67 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/features/account/__tests__/controller.test.ts (0 test)
+ ❯ src/features/social-sharing/__tests__/ui.test.tsx (0 test)
+ ❯ src/features/safety/__tests__/controller.test.ts (0 test)
+ ❯ src/app/social-composition/__tests__/provider.test.tsx (0 test)
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts (0 test)
+ ❯ src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts (0 test)
+ ❯ src/features/account/__tests__/deletion-targets.test.ts (0 test)
+ ❯ src/app/account-deletion-entry/__tests__/routes.test.tsx (0 test)
+ ❯ src/features/safety/__tests__/completion.test.tsx (0 test)
+ ❯ src/features/account/__tests__/completion.test.tsx (0 test)
+ ❯ src/features/inbox/__tests__/completion.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 11 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/account-deletion-entry/__tests__/routes.test.tsx [ src/app/account-deletion-entry/__tests__/routes.test.tsx ]
+Error: Cannot find module '/src/app/account-deletion-entry/__tests__/routes.test.tsx'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  src/app/social-composition/__tests__/provider.test.tsx [ src/app/social-composition/__tests__/provider.test.tsx ]
+Error: Cannot find module '/src/app/social-composition/__tests__/provider.test.tsx'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  src/features/account/__tests__/completion.test.tsx [ src/features/account/__tests__/completion.test.tsx ]
+Error: Cannot find module '/src/features/account/__tests__/completion.test.tsx'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  src/features/account/__tests__/controller.test.ts [ src/features/account/__tests__/controller.test.ts ]
+Error: Cannot find module '/src/features/account/__tests__/controller.test.ts'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  src/features/account/__tests__/deletion-targets.test.ts [ src/features/account/__tests__/deletion-targets.test.ts ]
+Error: Cannot find module '/src/features/account/__tests__/deletion-targets.test.ts'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  src/features/inbox/__tests__/completion.test.tsx [ src/features/inbox/__tests__/completion.test.tsx ]
+Error: Cannot find module '/src/features/inbox/__tests__/completion.test.tsx'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  src/features/safety/__tests__/completion.test.tsx [ src/features/safety/__tests__/completion.test.tsx ]
+Error: Cannot find module '/src/features/safety/__tests__/completion.test.tsx'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  src/features/safety/__tests__/controller.test.ts [ src/features/safety/__tests__/controller.test.ts ]
+Error: Cannot find module '/src/features/safety/__tests__/controller.test.ts'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  src/features/social-sharing/__tests__/ui.test.tsx [ src/features/social-sharing/__tests__/ui.test.tsx ]
+Error: Cannot find module '/src/features/social-sharing/__tests__/ui.test.tsx'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts [ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts ]
+Error: Cannot find module '/src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts [ src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts ]
+Error: Cannot find module '/src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  11 failed | 5 passed (16)
+      Tests  180 passed (180)
+   Start at  02:49:03
+   Duration  12.85s (transform 512ms, setup 532ms, import 1.19s, tests 6.69s, environment 3.22s)
+

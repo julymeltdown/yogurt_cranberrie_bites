@@ -1,0 +1,22 @@
+{
+  "offer": "PRIVATE-SOCIAL-ACCOUNT-SOURCE-A-20261104T1743Z",
+  "head": "2b1fc8b3423338a87e2089fdb6eb4abe143eebfb",
+  "sourceFiles": 13712,
+  "sourceBytes": 1362864668,
+  "gitFiles": 633,
+  "gitBytes": 926892934,
+  "metadataFiles": 8,
+  "metadataBytes": 1915770,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "outFiles": 1,
+  "outBytes": 8583,
+  "free": 27262283776,
+  "otherNew": 134217728,
+  "ownWorstGrowth": 167772160,
+  "freshReserve": 26960293888,
+  "conservativeReserve": 23873286144,
+  "accepted": 1793814251.400866,
+  "cutoff": 1793814851,
+  "release": 1793814911
+}

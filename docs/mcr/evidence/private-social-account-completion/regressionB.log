@@ -1,0 +1,71 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/features/social-sharing/__tests__/controller.test.ts (0 test)
+ ❯ src/features/inbox/__tests__/controller.test.ts (0 test)
+ ❯ src/features/account/__tests__/controller.test.ts (0 test)
+ ❯ src/features/social-sharing/__tests__/ui.test.tsx (0 test)
+ ❯ src/features/safety/__tests__/controller.test.ts (0 test)
+ ❯ src/app/social-composition/__tests__/provider.test.tsx (0 test)
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts (0 test)
+ ❯ src/app/social-composition/__tests__/owner.test.ts (0 test)
+ ❯ src/features/inbox/__tests__/count.test.ts (0 test)
+ ❯ src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts (0 test)
+ ❯ src/features/account/__tests__/deletion-targets.test.ts (0 test)
+ ❯ src/features/inbox/__tests__/targets.test.ts (0 test)
+ ❯ src/app/account-deletion-entry/__tests__/routes.test.tsx (0 test)
+ ❯ src/features/safety/__tests__/completion.test.tsx (0 test)
+ ❯ src/features/account/__tests__/completion.test.tsx (0 test)
+ ❯ src/features/inbox/__tests__/completion.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 16 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/account-deletion-entry/__tests__/routes.test.tsx [ src/app/account-deletion-entry/__tests__/routes.test.tsx ]
+ FAIL  src/features/account/__tests__/completion.test.tsx [ src/features/account/__tests__/completion.test.tsx ]
+ FAIL  src/features/account/__tests__/controller.test.ts [ src/features/account/__tests__/controller.test.ts ]
+ FAIL  src/features/account/__tests__/deletion-targets.test.ts [ src/features/account/__tests__/deletion-targets.test.ts ]
+ FAIL  src/app/social-composition/__tests__/provider.test.tsx [ src/app/social-composition/__tests__/provider.test.tsx ]
+ FAIL  src/features/inbox/__tests__/completion.test.tsx [ src/features/inbox/__tests__/completion.test.tsx ]
+ FAIL  src/features/safety/__tests__/completion.test.tsx [ src/features/safety/__tests__/completion.test.tsx ]
+ FAIL  src/features/safety/__tests__/controller.test.ts [ src/features/safety/__tests__/controller.test.ts ]
+ FAIL  src/features/social-sharing/__tests__/ui.test.tsx [ src/features/social-sharing/__tests__/ui.test.tsx ]
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts [ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts ]
+ FAIL  src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts [ src/features/safety/__tests__/qa07-report-dismissal/dismissal.test.ts ]
+TypeError: The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received URL {
+  href: 'http://localhost:3000/package.json',
+  origin: 'http://localhost:3000',
+  protocol: 'http:',
+  username: '',
+  pa...
+ ❯ ../docs/mcr/evidence/private-social-account-completion/test-setup.mjs:2:17
+      1| import { createRequire } from 'node:module'
+      2| const require = createRequire(new URL('../../../../frontend/package.js…
+       |                 ^
+      3| // Cold lazy settings imports exceed Testing Library's default one-sec…
+      4| // under retained-runner transforms. Preserve actual routes and assert…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/16]⎯
+
+ FAIL  src/app/social-composition/__tests__/owner.test.ts [ src/app/social-composition/__tests__/owner.test.ts ]
+ FAIL  src/features/inbox/__tests__/controller.test.ts [ src/features/inbox/__tests__/controller.test.ts ]
+ FAIL  src/features/inbox/__tests__/count.test.ts [ src/features/inbox/__tests__/count.test.ts ]
+ FAIL  src/features/inbox/__tests__/targets.test.ts [ src/features/inbox/__tests__/targets.test.ts ]
+ FAIL  src/features/social-sharing/__tests__/controller.test.ts [ src/features/social-sharing/__tests__/controller.test.ts ]
+Error: Cannot find module '@testing-library/dom'
+Require stack:
+- /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/package.json
+ ❯ ../docs/mcr/evidence/private-social-account-completion/test-setup.mjs:5:1
+      3| // Cold lazy settings imports exceed Testing Library's default one-sec…
+      4| // under retained-runner transforms. Preserve actual routes and assert…
+      5| require('@testing-library/dom').configure({ asyncUtilTimeout: 5000 })
+       | ^
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/16]⎯
+
+
+ Test Files  16 failed (16)
+      Tests  no tests
+   Start at  02:47:52
+   Duration  4.28s (transform 8ms, setup 0ms, import 0ms, tests 0ms, environment 3.05s)
+
