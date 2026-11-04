@@ -177,7 +177,7 @@ async fn aggregate_native() -> Result<()> {
         .await
         .map_err(|e| anyhow::anyhow!("progress: {e:?}"))?
         .ok_or_else(|| anyhow::anyhow!("progress"))?;
-    anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len() - 1);
+    anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len());
     anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
     anyhow::ensure!(progress.completed == vec![PrivateDataCategory::CorePreferencesAndAvatar]);
     anyhow::ensure!(progress.missing.len() == 6);
