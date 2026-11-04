@@ -229,3 +229,17 @@ preserves them; all 14 photo qualification pins remained byte-identical. A short
 final combined build has been requested specifically for those newly compiled
 inputs. The earlier native receipt retains its exact `b41cf49b` claim; it is not
 relabeled as evidence for a later uncompiled source.
+
+
+## Media dependency publication transfer
+
+At clean photo checkpoint `091f63c93c782224caa27206bc7687e6dd0c3b45`, media owner
+213 completed its newer canonical/v2 dependency recheck and requested publication
+coordination. This worker explicitly returned **only unchanged d4ce03b1/65f90e08
+port publication** to 213; no new source-writing authority or broader media scope
+was transferred. No photo push was in progress. The local unchanged `ab9af08e` /
+`b54abe4c` dependency copies remain preserved; this worker will reconcile the
+media owner's actual published pin before publishing its separate photo producer
+and 0029 migration. This removes a dependency publication collision without making
+media publication wait for the queued final photo combined build. The b41 native
+qualification and full photo scope are unchanged.
