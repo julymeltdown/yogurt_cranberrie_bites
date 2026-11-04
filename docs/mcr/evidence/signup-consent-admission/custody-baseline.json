@@ -1,0 +1,35 @@
+{
+  "measuredAt": 1793814651.8514,
+  "method": "full lstat census, no symlink following; declared borrowed dependencies and complete common Git independently counted; symlink entries counted and external targets enumerated",
+  "roots": [
+    {
+      "root": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204",
+      "logicalBytes": 1363191824,
+      "entries": 15303,
+      "symlinks": 0,
+      "externalSymlinks": [],
+      "measurementSeconds": 0.245
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "logicalBytes": 408810470,
+      "entries": 13419,
+      "symlinks": 460,
+      "externalSymlinks": [],
+      "measurementSeconds": 0.178
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/.git",
+      "logicalBytes": 1098645083,
+      "entries": 3859,
+      "symlinks": 0,
+      "externalSymlinks": [],
+      "measurementSeconds": 0.046
+    }
+  ],
+  "wholeBytes": 2870647377,
+  "wholeEntries": 32581,
+  "proposedWholeCapBytes": 4294967296,
+  "proposedEntryCap": 50000,
+  "newGrowthCapBytes": 33554432
+}

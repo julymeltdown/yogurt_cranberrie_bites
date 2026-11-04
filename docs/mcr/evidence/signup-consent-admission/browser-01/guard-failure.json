@@ -1,0 +1,23 @@
+{
+  "failure": "Undeclared reachable symlink target during Chrome profile creation; killed/removed own declared runtime roots",
+  "remainingOwnedPids": [],
+  "externalChromeCandidatesReadOnly": [],
+  "externalOwnershipNotAssumed": true,
+  "remainingRecentChromeSystemTempCandidates": [
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.chrome_chrome_url_fetcher_.NFA2MT",
+      "mtime": 1793815991.9054043,
+      "isDirectory": true,
+      "entries": []
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.LtSaIg",
+      "mtime": 1793815991.3456025,
+      "isDirectory": true,
+      "entries": [
+        "SingletonSocket",
+        "SingletonCookie"
+      ]
+    }
+  ]
+}

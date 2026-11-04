@@ -1,0 +1,112 @@
+{
+  "task": "FE10-CONSENT-ADMISSION",
+  "status": "BROWSER_READY_NOT_ACCEPTED_NOT_RUN",
+  "head": "4f2ff8e4b129d396dfc50440c19aee7fa8e70e4d",
+  "guard": "docs/mcr/evidence/signup-consent-admission/guard.py",
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "src/features/auth/__tests__/enrollment-browser-smoke.mjs"
+    ]
+  ],
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend",
+  "carryRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/evidence/signup-consent-admission",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/frontend/signup-consent-admission.md",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/fixtures.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/tsconfig.json",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/view.test.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/vitest.config.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment.test.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/fixtures/enrollment-preview.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/model/enrollment-contract.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/model/enrollment.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/ConsentAdmission.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/EnrollmentPolicy.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/SignUp.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/enrollment.css",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/shared/api/__tests__/enrollment-transport/transport.test.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/shared/api/http.ts"
+  ],
+  "newScratchOnly": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.fe10-browser-round-01",
+  "sourceActualBytes": 103624,
+  "gitIndexBytes": 1904551,
+  "gitCarryBytes": 2097152,
+  "sourceCarryBytes": 262144,
+  "maxBytes": 167772160,
+  "maxRssBytes": 2684354560,
+  "maxProcesses": 24,
+  "workSeconds": 300,
+  "cleanupSeconds": 60,
+  "dependencyLink": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "dependencyLinkStatus": "ABSENT; temporary absent-only symlink; remove after job",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "guardian": "independent process;0.25s; all descendants/group/private scratch marker orphans; bytecarry/RSS/process/free-space/deadline; owned PID/group/link/scratch cleanup; full WHOLE census before/after and independent 2s thread while0.25s resource guardian continues; independent pre-child sample,100ms nominal fast guard",
+  "retainedOutput": "docs/mcr/evidence/signup-consent-admission/browser-01/",
+  "noInstallsBuildsDatabasesNewTargets": true,
+  "custodyRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr/.git"
+  ],
+  "maxWholeBytes": 4294967296,
+  "maxWholeEntries": 50000,
+  "measuredWholeBytes": 2881183921,
+  "measuredWholeEntries": 32795,
+  "maxBytesMeaning": "bounded NEW/growth+task output/failure carry, separate from full WHOLE custody census",
+  "taskCarryRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/evidence/signup-consent-admission",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/frontend/signup-consent-admission.md",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/fixtures.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/tsconfig.json",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/view.test.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment-consent/vitest.config.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/enrollment.test.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/__tests__/fixtures/enrollment-preview.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/model/enrollment-contract.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/model/enrollment.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/ConsentAdmission.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/EnrollmentPolicy.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/SignUp.tsx",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/features/auth/ui/enrollment.css",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/shared/api/__tests__/enrollment-transport/transport.test.ts",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend/src/shared/api/http.ts"
+  ],
+  "guardSha256": "b4742f467b21cc5494c7ee55a61a22e9b2e11199f1775e2a5a3849c56e56cb32",
+  "boundedRepairSupport": "max3 same-command repair rounds only within one immutable clock; all failures retained",
+  "measuredAt": 1793815458.9447832,
+  "fullCensus": [
+    {
+      "root": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204",
+      "logicalBytes": 1363238502,
+      "entries": 15318
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "logicalBytes": 408810470,
+      "entries": 13419
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/.git",
+      "logicalBytes": 1107276911,
+      "entries": 4058
+    }
+  ],
+  "sourceQualification": "191tests4files/scopedtypes/oxlint passed; subsequent product delta only visible wording Publication revision instead of incorrectly calling API contractVersion a policy version; browser validation covers this literal-text correction",
+  "browserScope": "Installed Chrome controlled same-origin API through actual Auth/http;360/390/430signup/double-submit/verify;390resendservercountdown/explicitidenticalunknownretry/expiryrestart/no-policy;no real Auth/mail/provider/legal claim",
+  "failedSourceCarryRetained": "source-01 includes all failed/repaired logs, initial offers, accepted guard and FULL receipt; included WHOLE/task carry",
+  "id": "FE10-CONSENT-BROWSER1-20261104T1812Z",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T18:13:01.972816+00:00",
+  "workDeadline": "2026-11-04T18:18:01.972816+00:00",
+  "hardDeadline": "2026-11-04T18:19:01.972816+00:00",
+  "scratch": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/.fe10-browser-round-01",
+  "maxRepairRounds": 3,
+  "measuredFreeBytes": 17581211648,
+  "otherReservationsBytes": 2894069760,
+  "ownGrowthReservationBytes": 167772160,
+  "remainingAfterReservationsBytes": 14519369728,
+  "portCustody": "No prior owned listener; port0 allocated atomically by this job, no borrowed port"
+}

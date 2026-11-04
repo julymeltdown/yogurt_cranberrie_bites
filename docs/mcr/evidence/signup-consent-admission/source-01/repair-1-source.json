@@ -1,0 +1,7 @@
+{
+  "time": 1793815334.2753038,
+  "base": "b13ed1592ba2e68a0f739a6c6717bc146bb49344",
+  "path": "frontend/src/shared/api/__tests__/enrollment-transport/transport.test.ts",
+  "sha256": "3261b16a9cf5ecd7b4ada6fdac3216ee70e286f3161a324defd807c02a46fd5f",
+  "reason": "Clone the observed request before Ky finalizes its body; test observation only, cancellation is not inferred from this clone; production transport unchanged."
+}

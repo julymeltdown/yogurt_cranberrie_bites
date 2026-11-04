@@ -1,0 +1,7 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": { "incremental": false, "types": ["vite/client", "node"] },
+  "include": ["./*.ts", "./*.tsx", "../enrollment.test.tsx", "../../PublicBoundary.tsx", "../../WorldShell.tsx",
+    "../../../features/auth/model/session.ts", "../../../features/auth/ui/AdmissionBoundary.tsx",
+    "../../../features/auth/__tests__/session.test.ts", "../../../features/auth/__tests__/sensitive-read.test.ts"]
+}

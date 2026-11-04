@@ -1,0 +1,33 @@
+{
+  "id": "FE10-CENTRAL-SOURCE-20261104T1844Z",
+  "status": "FULL",
+  "releasedAt": "2026-11-04T18:44:54.134302+00:00",
+  "head": "28f564fde314ec331fadd44b0788a76b65846a5d",
+  "tests": 63,
+  "testFiles": 5,
+  "typesExit": 0,
+  "lintExit": 0,
+  "repairs": 0,
+  "ownedPidsRemaining": [],
+  "guardianRemaining": false,
+  "dependencyLinkRemaining": false,
+  "scratchRemaining": false,
+  "cacheRemaining": false,
+  "ownedPortsRemaining": false,
+  "peakNew": {
+    "bytes": 17470873,
+    "rss": 994803712,
+    "processes": 4
+  },
+  "peakWhole": {
+    "bytes": 2900552014,
+    "entries": 33142
+  },
+  "freeBytes": 13979648000,
+  "retainedUnconfirmedExternalCarry": {
+    "bytes": 208,
+    "entries": 4,
+    "ownership": "readonly/unconfirmed; not deleted; no all-system-TMP-zero claim"
+  },
+  "qualification": "Affected canonical Auth/central fixtures only; no real backend/browser/World/legal acceptance"
+}
