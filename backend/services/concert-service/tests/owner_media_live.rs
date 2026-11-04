@@ -710,3 +710,50 @@ async fn native_internal_resolver_binds_actual_instance_cluster_request_and_rece
     );
     p.close().await;
 }
+
+#[tokio::test]
+async fn native_shared_context_uses_admission_revision_and_preserves_read_only() {
+    let (p, i, _) = fixture().await;
+    let mut tx = p.begin().await.unwrap();
+    let original = capture_owner_context_in(&mut tx, i, 37, OwnerMediaContextMode::Mutation)
+        .await
+        .unwrap();
+    assert_eq!(
+        original.policy,
+        PolicyFence {
+            event_revision: 1,
+            relationship_revision: 1,
+            authority_revision: 37
+        }
+    );
+    tx.rollback().await.unwrap();
+    sqlx::query("update concert_event_admissions set restriction_revision=restriction_revision+1 where event_id=$1 and user_id=$2").bind(i.event).bind(i.actor).execute(&p).await.unwrap();
+    let mut tx = p.begin().await.unwrap();
+    let current = capture_owner_context_in(&mut tx, i, 37, OwnerMediaContextMode::Mutation)
+        .await
+        .unwrap();
+    assert_eq!(current.policy.relationship_revision, 2);
+    assert_eq!(current.policy.authority_revision, 37);
+    tx.rollback().await.unwrap();
+    sqlx::query(
+        "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+    )
+    .bind(i.event)
+    .execute(&p)
+    .await
+    .unwrap();
+    let mut tx = p.begin().await.unwrap();
+    assert!(matches!(
+        capture_owner_context_in(&mut tx, i, 37, OwnerMediaContextMode::Mutation).await,
+        Err(CommandError::Denied)
+    ));
+    tx.rollback().await.unwrap();
+    let mut tx = p.begin().await.unwrap();
+    let read = capture_owner_context_in(&mut tx, i, 37, OwnerMediaContextMode::OwnerReadOrRecovery)
+        .await
+        .unwrap();
+    assert_eq!(read.policy.event_revision, 2);
+    assert_eq!(read.policy.relationship_revision, 2);
+    tx.rollback().await.unwrap();
+    clean(p, i).await;
+}
