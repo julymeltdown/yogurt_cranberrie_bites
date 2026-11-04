@@ -243,6 +243,29 @@ class Composition(unittest.TestCase):
         self.write(self.node, b"changed")
         self.rule("candidate.worktree-dirty")
 
+    def test_final_candidate_fence_is_rechecked_after_evidence(self):
+        original = source.Repository.git
+        outer, calls = [], []
+        def changed(repo, *args):
+            if args == ("rev-parse", "HEAD"):
+                if not outer:
+                    outer.append(repo)
+                if repo is outer[0]:
+                    calls.append(True)
+                    if len(calls) == 2:
+                        return b"0000000000000000000000000000000000000000\n"
+            return original(repo, *args)
+        with patch.object(source.Repository, "git", changed):
+            self.rule("candidate.end-changed")
+
+    def test_no_recorded_command_is_executed_by_consumer(self):
+        original = source.subprocess.run
+        def git_only(argv, *args, **kwargs):
+            self.assertEqual(argv[0], "git", "Receipt command must never execute")
+            return original(argv, *args, **kwargs)
+        with patch.object(source.subprocess, "run", git_only):
+            self.assertEqual(self.run_check()["composition_checks"], "PASS")
+
     def test_failed_or_unexecuted_command_cannot_pass(self):
         self.reports["live"]["command"]["attempted"] = False
         self.rule("command.false-pass")
