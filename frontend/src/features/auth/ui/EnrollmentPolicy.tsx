@@ -8,7 +8,7 @@ export function EnrollmentPolicy({ policy, disabled, onChange }: {
   useEffect(() => { setIds([]); onChange([]) }, [policy.revision, onChange])
   return <fieldset className="enrollment-policy" disabled={disabled}>
     <legend>Required agreements</legend>
-    <p className="enrollment-help">Read each published document before agreeing. Policy version {policy.contractVersion} · revision {policy.revision}</p>
+    <p className="enrollment-help">Read each published document before agreeing. Publication revision {policy.revision}</p>
     {policy.documents.map(document => <label className="enrollment-choice" key={document.id}>
       <input type="checkbox" checked={ids.includes(document.requiredAcknowledgementId)} onChange={event => {
         const next = event.target.checked ? [...ids, document.requiredAcknowledgementId] : ids.filter(id => id !== document.requiredAcknowledgementId)
