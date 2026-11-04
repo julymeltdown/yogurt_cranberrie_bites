@@ -1,5 +1,7 @@
 //! BE15 at-least-once consumer. Ownership transport is injected by Delivery.
 //! No database access across service boundaries and no raw payload forwarding.
+pub mod delivery;
+pub mod routing;
 pub mod source;
 use crate::{
     adapters::out::repository::outbox::{Delivery, DeliveryFailure},
