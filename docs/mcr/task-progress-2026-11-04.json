@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-04T10:23:44+09:00",
-  "published_snapshot": "289b227fe81cf800e5695e3808a7fd447cbb959e",
+  "updated_at": "2026-11-04T10:34:05+09:00",
+  "published_snapshot": "a1f70c8aad14ac049d61c5072d67447d80e095c2",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 70,
+    "IMPLEMENTATION_EVIDENCED": 69,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 16,
+    "TASK_CRITERIA_SATISFIED": 17,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 28,
+  "recorded_task_criteria_outcomes": 29,
   "implementation_percentage": null,
   "limitations": [
     "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance; 10 additional task-local SATISFIED dispositions comprise the previous nine frontend records plus original BE25. No new king/SL technical acceptance is asserted.",
@@ -752,13 +752,17 @@
       "id": "FE09",
       "title": "Session controller and sign-in",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/reference-auth.md"
+        "docs/mcr/frontend/reference-auth.md",
+        "docs/mcr/frontend/production-refresh.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
-      "known_followup": "Required reference artwork/glyph fidelity remains active; previous bounded checkpoints do not close it."
+      "note": "The implementation owner explicitly declares original FE09 frontend criteria SATISFIED in published 62b4bf80: the remaining production refresh caller is activated and qualified, retaining truthful login/provider states, safe bootstrap, in-memory authority and private cleanup. Source dc88c248 and receipts f96ea11b distinguish deterministic frontend browser cases from the backend owner actual-service receipt. Goal complete, no active goal, and clean checkout are reported. No king or SL technical review was performed.",
+      "known_followup": "Actual combined frontend-to-service, external OAuth, multiuser World, physical-device and IN requirements remain separate. The owner records broader unfiltered Vitest failures (8 files/10 tests) rather than claiming the whole application suite green; responsible developers retain these fixes. The earlier Origin diagnosis was an HTTP/2 fixture Host issue, retracted; no shared HTTP product edit was needed or made.",
+      "published_integration_commits": [
+        "62b4bf80dc24d72984d16f0db4e03fce44e3f750"
+      ]
     },
     {
       "id": "FE10",
@@ -1390,6 +1394,13 @@
       "owner_chat": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
       "receipt_commit": "11ca3a3ea7f6a514f581f43fe979a8af11c1755d",
       "disposition": "SATISFIED, original zero-legacy-UI audit at pinned candidate; owner goal complete and clean STOP"
+    },
+    {
+      "recorded_at": "2026-11-04T10:34:05+09:00",
+      "task": "FE09",
+      "owner_chat": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "receipt_commit": "62b4bf80dc24d72984d16f0db4e03fce44e3f750",
+      "disposition": "SATISFIED, original frontend task criteria; production caller delivered, actual goal complete and clean STOP; combined live journey separate"
     }
   ]
 }
