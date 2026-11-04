@@ -1,8 +1,10 @@
 # CSS-PARITY-LANDING — foreground spacing
 
-Status: **MOCK_READY**, bounded CSS correction validated. Exact whole-panel visual
-acceptance remains open. The persistent goal stays ACTIVE through publication
-readback and resolution of the non-CSS differences below.
+Status: **MOCK_READY**, bounded CSS correction validated and published. The bounded
+CSS task and publication readback are complete; exact whole-panel visual
+acceptance remains open under the non-CSS limits below. Root153's explicit
+closure instruction permits those limits to remain documented without extending
+this CSS-only task into unrelated artwork or product implementation.
 
 ## Scope and provenance
 
@@ -91,5 +93,10 @@ are retained. There were no failed attempts.
 Direct committed handoff and the exact remaining differences go to frontend
 publisher Root153 (`01a1a153-1227-7e72-801f-a2a6b91981e1`). Root publishes to
 `julymeltdown/mcr/master`; there is no king/SL review or acknowledgment gate.
-The handoff message records the actual commit. Remote ancestry is recorded only
-after publication, rather than treating the local commit as delivered master.
+Worker commit: `2c8d8476b9acd14f1b8d1d06ab8ac0c25a0fe254`.
+Published commit: `baad4944f4cf3e6ee3156436d8044c543a780d44`.
+Fresh owner fetch/readback on 2026-11-04 at 09:31 UTC verified that the published
+commit is in `origin/master`, its exact 28-path set equals the worker handoff,
+and all 28 postimages equal both the worker and current remote master byte for
+byte. The published CSS hash equals the tested CSS hash above. See
+`publication-readback.json`. No peer file or unvalidated product edit was added.

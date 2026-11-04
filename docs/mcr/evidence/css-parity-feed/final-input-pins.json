@@ -1,0 +1,14 @@
+{
+  "frontend/src/features/event-feed/feed.css": "60a55f5e4f3493dfe2ffad49f26772e8703e5ea21d49c5f7036ace950edba178",
+  "frontend/src/features/event-feed/EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+  "frontend/src/features/feed-thread/FeedThread.tsx": "4a6c5ba6839c0229554453c58059e4865bb3b49367f2417ea5a6ef460c40bbbd",
+  "frontend/src/features/event-feed/controller.ts": "0d528342c21b6d1e3c9a7038c6a243d2fb4d32e9f2e00beda6ac7c3091d83c5b",
+  "frontend/src/features/feed-thread/controller.ts": "712d7b6449c4cb4a263f42fb3ccc7ac04553221ffceb42569e9d4e871c2efa22",
+  "frontend/src/features/event-feed/__tests__/reference/preview.tsx": "697b2a457d07a003127b031a62d21ecf5bccbd7f1f1e47a531fef00ee02d07d9",
+  "frontend/src/features/event-feed/__tests__/reference/preview.css": "ecb6f8c839ae8697e166b8441bee9f3afc1ea023acedebddd811f71972278fe7",
+  "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+  "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+  "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+  "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "docs/mcr/evidence/css-parity-feed/native.mjs": "6c24ef7c43f47d73b7c3d293d6fa723ec1faa9e037d6fe9f8e239dc6b8d36950"
+}

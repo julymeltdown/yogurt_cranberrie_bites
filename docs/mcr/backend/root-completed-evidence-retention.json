@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "scope": "Completed private evidence and exact owner-retired isolated checkouts only",
+  "root_evidence": {
+    "bundles": 9,
+    "files_verified": 289,
+    "members_verified": 295,
+    "archives": [
+      {
+        "original_basename": "mcr-root-seven-repair-d0f063d1-5fp4vkh7",
+        "archive_basename": "mcr-root-seven-repair-d0f063d1-5fp4vkh7.root-closed-evidence.tar.gz",
+        "archive_sha256": "379893607d0977b6e88cf373809bb5d46235b86ece2f0ce5ff80c212041752c9",
+        "archive_bytes": 186612304,
+        "inventory_basename": "mcr-root-seven-repair-d0f063d1-5fp4vkh7.root-closed-inventory.json",
+        "inventory_sha256": "914d4870e3c2d7ceb49056677a023758a5bc3efa22234da24cb0cf161dcd8968"
+      },
+      {
+        "original_basename": "mcr-root-canonical-seven-d0f063d1-yetdzylc",
+        "archive_basename": "mcr-root-canonical-seven-d0f063d1-yetdzylc.root-closed-evidence.tar.gz",
+        "archive_sha256": "8fe27e0c0611e7c3d748200ff99439f983f422693885916c474d60cf0960e76c",
+        "archive_bytes": 185928000,
+        "inventory_basename": "mcr-root-canonical-seven-d0f063d1-yetdzylc.root-closed-inventory.json",
+        "inventory_sha256": "a600d003f12ff22318ec4f5339d259f5f25525d13a4bb355adac471eb7720419"
+      },
+      {
+        "original_basename": "mcr-root-five-main-d0f063d1-qagfqfze",
+        "archive_basename": "mcr-root-five-main-d0f063d1-qagfqfze.root-closed-evidence.tar.gz",
+        "archive_sha256": "f9776a7e10b908cbac2fb964b11bd0b0a0ff852f3d4635ae78c25c62cc752b29",
+        "archive_bytes": 109190216,
+        "inventory_basename": "mcr-root-five-main-d0f063d1-qagfqfze.root-closed-inventory.json",
+        "inventory_sha256": "764124543733e0a4b9eecb1a4987492c75b0c4fdd0ee536405187aa66a54cc53"
+      },
+      {
+        "original_basename": "mcr-root-in01-live-3710",
+        "archive_basename": "mcr-root-in01-live-3710.root-closed-evidence.tar.gz",
+        "archive_sha256": "1799a3c2457ee9566a45e892bdcdff60587b22b6cdeda222774bfd36d6c0a965",
+        "archive_bytes": 94209326,
+        "inventory_basename": "mcr-root-in01-live-3710.root-closed-inventory.json",
+        "inventory_sha256": "32b07823f173c19fcea790b066ea6078591330e135f0ade7b4ea635c4fe65746"
+      },
+      {
+        "original_basename": "mcr-root-in01-live-f289",
+        "archive_basename": "mcr-root-in01-live-f289.root-closed-evidence.tar.gz",
+        "archive_sha256": "1779944f6ca75b2ed01089f550181ed9764a698e0a1561ee4b85771eb7c6ce56",
+        "archive_bytes": 94197652,
+        "inventory_basename": "mcr-root-in01-live-f289.root-closed-inventory.json",
+        "inventory_sha256": "d780cd50b65e69f09c058e7fd3007c8feef73dfd3f6f21a9736eeda1d5afe1e2"
+      },
+      {
+        "original_basename": "mcr-root-native-e6921cf2-20261104",
+        "archive_basename": "mcr-root-native-e6921cf2-20261104.root-closed-evidence.tar.gz",
+        "archive_sha256": "0ddcd8b01c8ff75daecc6b0dbd64dc32bbdd97b8712da4e274ede4c28e91b2ee",
+        "archive_bytes": 64183133,
+        "inventory_basename": "mcr-root-native-e6921cf2-20261104.root-closed-inventory.json",
+        "inventory_sha256": "07df544c19c4025b2bc828aacc69170e729626c1c6e6fd81c2c318592025c18f"
+      },
+      {
+        "original_basename": "mcr-root-native-3710a029-20261104",
+        "archive_basename": "mcr-root-native-3710a029-20261104.root-closed-evidence.tar.gz",
+        "archive_sha256": "e6bc0adec5a36cf0cf688a9043f3ef01c9d6a7d298924a557b1149c5aba71086",
+        "archive_bytes": 31620969,
+        "inventory_basename": "mcr-root-native-3710a029-20261104.root-closed-inventory.json",
+        "inventory_sha256": "746586ee5dc15d3dc6cf1b8ce451e55bc7cd224e17d21ee9e658179c48feb7a6"
+      },
+      {
+        "original_basename": "mcr-root-native-f2898a64-20261104",
+        "archive_basename": "mcr-root-native-f2898a64-20261104.root-closed-evidence.tar.gz",
+        "archive_sha256": "d4208ee96f15426078dd9c8b6e582e6cad5df4b85312a09da281a415b2da21d3",
+        "archive_bytes": 18404630,
+        "inventory_basename": "mcr-root-native-f2898a64-20261104.root-closed-inventory.json",
+        "inventory_sha256": "f836bbb80104d2422f1be145731f618782c966c47cd69882fffccc61662115f1"
+      },
+      {
+        "original_basename": "mcr-root-native-3bdc49c6-20261104",
+        "archive_basename": "mcr-root-native-3bdc49c6-20261104.root-closed-evidence.tar.gz",
+        "archive_sha256": "897fe6829f65111196ebacd4ca99d87e503532259460cd68ac241b8bb99e9514",
+        "archive_bytes": 37802544,
+        "inventory_basename": "mcr-root-native-3bdc49c6-20261104.root-closed-inventory.json",
+        "inventory_sha256": "323055007d478c39b2d278dcc71dffdded6f9d0594662e363ec45d37fcf669ba"
+      }
+    ],
+    "observed_free_delta": 1039802368,
+    "verification_repair": "First verifier rejected a legitimate intra-archive hardlink before any deletion. Revised verifier reads/resolves only internal links, checks actual full length/hash and unchanged source inventory before exact removal. Original archive and failure history preserved."
+  },
+  "completed_owner_checkouts": {
+    "owner": "01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e",
+    "removed": [
+      "be-intro-product",
+      "be-notification-target-policy"
+    ],
+    "retained_branches": {
+      "codex/mcr-be-BE27-product": "b0418437d67e035be963456e228cd3d8c15a4bf0",
+      "codex/mcr-be-NB03-local-target-policy": "955bb2e32b92a49f53a6087a36b6842b3b53695a"
+    },
+    "commands": "ordinary nonforce git worktree remove; both exit0",
+    "tracked_source_git_matches": [
+      9986,
+      10639
+    ],
+    "ignored_files_archived_verified": 9,
+    "untracked_files": 0,
+    "open_handles": 0,
+    "retention_sha256": "554a679cda21fb693bea6803635cb2373b2edebba9f27dbcbe4045e1deeb2d17",
+    "cleanup_result_sha256": "0996061129c8f3cd502ba7886c0f7340874efa92317f768eee4e72c6f08ed936",
+    "owner_observed_free_gain": 2237915136,
+    "native_proof": "Retained with complete inventories and documented hashes. Reconstruct original baked source paths from retained Git/archive before a separately authorized historical rerun."
+  },
+  "preserved": [
+    "Git history/branches and supplied source/art originals",
+    "all shared build targets and retained dependencies",
+    "active CF02/CF03 and other worktrees",
+    "six standalone ROOT18 peer binaries, current component/Intro-union/Mural evidence and GREEN Concert",
+    "original failed runs/provenance in verified archives"
+  ],
+  "free_bytes_at_recording": 17257484288,
+  "measurement_limit": "df deltas are observed system-wide values; concurrent allocation and APFS sharing prevent exclusive block attribution. No resource threshold or allocation was implicitly waived."
+}

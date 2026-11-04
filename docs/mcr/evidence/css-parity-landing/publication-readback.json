@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "checkedUTC": "2026-11-04T09:31:36.284609+00:00",
+  "worker": "2c8d8476b9acd14f1b8d1d06ab8ac0c25a0fe254",
+  "published": "baad4944f4cf3e6ee3156436d8044c543a780d44",
+  "currentOriginMaster": "baad4944f4cf3e6ee3156436d8044c543a780d44",
+  "publishedAncestorExitCode": 0,
+  "pathCount": 28,
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/baseline-attempt.log",
+      "identicalGitBlob": "bc9bd79adfd2979e0faa388d9c3f01c08099f9e5"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/baseline-landing-390.png",
+      "identicalGitBlob": "8fd1a70f3972359c753834617ec504b7cc796d98"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/baseline-poster-390.png",
+      "identicalGitBlob": "5271cf61249b137283f5ee56902302ec783e38b0"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/baseline.json",
+      "identicalGitBlob": "d417c401267008fee0f7b136a6c9d2932943aaa0"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-attempt.log",
+      "identicalGitBlob": "05a1f31ef74a36619fad64bff3b5120d5d7b769f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-focused-390.png",
+      "identicalGitBlob": "3ee24519c3dc3278a2c6a7befef84b21705ec27d"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-landing-360.png",
+      "identicalGitBlob": "1f6671469c7835ac935bf91dc71379a3b2f19c65"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-landing-390.png",
+      "identicalGitBlob": "cc35510f71c8d767378c0c6bd42cd4c82945d90f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-landing-430.png",
+      "identicalGitBlob": "f7e9715610305414218a3f7d82ef43952499ea9d"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-poster-360.png",
+      "identicalGitBlob": "55309e004719e350b20906a096b9a02b8dbec7e5"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-poster-390.png",
+      "identicalGitBlob": "4dfdf49a90d858c7f662f8143a45d6721f8edc68"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-poster-430.png",
+      "identicalGitBlob": "f91d27dc321469e94660cb9148019b40d2cf2982"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate-unavailable-390.png",
+      "identicalGitBlob": "c2f32d91f7a534078af4c25a8046dd9916f01fdd"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/candidate.json",
+      "identicalGitBlob": "4a1a547a13c7610acfb37a55d821a4e8981255d5"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/checks.json",
+      "identicalGitBlob": "55268a2b45c5c2392aa642f316d1d2fddd0f6fbe"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/cleanup.json",
+      "identicalGitBlob": "8197cc21ed8c0b6861f2b07aed40f2b7d34c8603"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/comparison-baseline-390.png",
+      "identicalGitBlob": "905fcd971215b0736dd558f8c386850ff1405818"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/comparison-candidate-390.png",
+      "identicalGitBlob": "8ce331596579bbe3dacfc03b3a4a33b257135aa2"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/diff-check.txt",
+      "identicalGitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/foreground-bounds.json",
+      "identicalGitBlob": "386f2a5ea892addce7804c90289f341ce8701a75"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/measure.py",
+      "identicalGitBlob": "0e70633a42a5a985250cf52828412151cfa79234"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/planning-check.json",
+      "identicalGitBlob": "c80edf3cf7227190a43b2e94943b9d21c3afb99b"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/reference-landing-native.png",
+      "identicalGitBlob": "33d185eab399487201402d6b545e71b397a4d138"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/reference-original.jpg",
+      "identicalGitBlob": "a162c0db658ace9f69a92c2aafe6148811b4a0c0"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/supervise.py",
+      "identicalGitBlob": "0c28d6d949538ff9016f2f9ae8c2f41fe4ba7f8b"
+    },
+    {
+      "path": "docs/mcr/frontend/css-parity-landing.md",
+      "identicalGitBlob": "a2c567e4b4f795c1378964bfb556efa0b74d3c3c"
+    },
+    {
+      "path": "frontend/src/features/public/ui/__tests__/css-parity-landing/native.mjs",
+      "identicalGitBlob": "0a0028941c80b967eda56544a8d388801a0d82a0"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "identicalGitBlob": "112471605d4a06855a6f4130727729fb7509dcfe"
+    }
+  ],
+  "scope": "Owner readback of the published bounded CSS handoff, not whole-panel visual acceptance or real-backend/device acceptance."
+}

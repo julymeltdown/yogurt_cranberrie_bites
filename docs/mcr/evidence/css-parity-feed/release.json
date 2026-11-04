@@ -1,0 +1,26 @@
+{
+  "slot": "CSS-PARITY-FEED-202611040938Z",
+  "releasedAtEpoch": 1793785352.8835871,
+  "originalSupervisorStarted": 1793785108.973363,
+  "elapsedSinceOriginalStart": 243.91022419929504,
+  "peakMeasuredWholeBytes": 22851772,
+  "minimumMeasuredFreeBytes": 16797978624,
+  "durableEvidenceBytes": 3240390,
+  "wholeCapBytes": 193273528,
+  "durableCapBytes": 20971520,
+  "allBrowsersServersClosed": true,
+  "port5292Bindable": true,
+  "privateSlotTmpRemoved": true,
+  "ownedDependencySymlinkRemoved": true,
+  "finalCssSha256": "60a55f5e4f3493dfe2ffad49f26772e8703e5ea21d49c5f7036ace950edba178",
+  "phaseResults": {
+    "failed-before-1": "FAIL: evidence Playwright CJS import, fixed",
+    "before": "PASS",
+    "round1": "PASS, typography refined after visual comparison",
+    "round2": "PASS",
+    "focusedVitest": "PASS 37 tests/4files",
+    "gitDiffCheck": "PASS exit0",
+    "checkPlan": "PASS exit0 planning only",
+    "backgroundPortraitDeclarationPreservation": "PASS exit0"
+  }
+}
