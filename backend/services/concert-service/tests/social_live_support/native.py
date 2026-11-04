@@ -18,6 +18,11 @@ Cluster,PG_TOOLS,SmokeError,execute,executable=adapter.Cluster,adapter.PG_TOOLS,
 
 def source_manifest():
     result=adapter.source_manifest()
+    # Freeze every tracked backend/contract dependency, including the sibling
+    # services linked as dev dependencies. Build caches and Python bytecode are
+    # not source. This reads only this isolated checkout, never a peer target.
+    for name in subprocess.check_output(['git','ls-files','-z','--','backend','contracts'],cwd=ROOT).decode().split('\0'):
+        if name and (ROOT/name).is_file():result[name]=adapter.sha(ROOT/name)
     for name in ['social.schema.json','feed.schema.json','common.schema.json','operations.json','policy.json']:
         p=ROOT/'contracts/domain/v1'/name;result[str(p.relative_to(ROOT))]=adapter.sha(p)
     # Pin the implementation, migration and focused test sources as well.
@@ -42,7 +47,7 @@ def run(args,report):
     try:
         cluster.init()
         # Owned cluster only; exercise actual read-only prepared exclusions.
-        with (cluster.data/'postgresql.conf').open('a') as config:config.write('\nmax_prepared_transactions=256\n')
+        with (cluster.data/'postgresql.conf').open('a') as config:config.write('\nmax_prepared_transactions=256\nmax_connections=24\nshared_buffers=32MB\nwork_mem=2MB\nmax_worker_processes=0\nmax_parallel_workers=0\nmax_wal_senders=0\nautovacuum=off\n')
         cluster.start()
         report['postgres_version']=cluster.sql('postgres','show server_version;')
         if int(cluster.sql('postgres','show server_version_num;'))//10000!=16:raise SmokeError('preflight','PG16 required')
@@ -50,8 +55,8 @@ def run(args,report):
         schema=ROOT/'backend/services/concert-service'
         files=[schema/'migrations'/n for n in ['0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0006_relationship_policy.sql','0009_receipt_domain_failures.sql','0011_outbox_maintenance.sql','0028_product_owner_scope_lifecycle.sql','0036_social_effect_witness.sql','0037_gift_private_child_intents.sql','0042_social_read_child_intents.sql']]
         files += [schema/'src/adapters/out/repository/intro_schema_v1.sql',schema/'src/adapters/out/age_provider/schema-v1.sql']
-        report['isolated_prerequisite_sha256']={str(p.relative_to(ROOT)):adapter.sha(p) for p in files}
         files += [schema/'migrations/0051_social_policy_invalidation.sql']
+        report['isolated_prerequisite_sha256']={str(p.relative_to(ROOT)):adapter.sha(p) for p in files}
         for database in ['mcr_social_concert','mcr_concert_be_commands']:
             execute([str(cluster.tools['createdb']),'--no-password','--maintenance-db=postgres',database],env=cluster.client_env('postgres'),phase='createdb',cwd=cluster.root)
             for p in files:cluster.sql(database,p.read_text())
@@ -76,6 +81,11 @@ def run(args,report):
                 if r.returncode:raise SmokeError(f'{phase}-{name}','native test failure; see sanitized check output',r.returncode)
                 if f'test result: ok. {count} passed; 0 failed;' not in r.stdout:raise SmokeError('inventory',f'{name} exact test inventory required')
         tests('before-restart')
+        def prepared_zero(phase):
+            n=int(cluster.sql('postgres','select count(*) from pg_prepared_xacts;'))
+            report.setdefault('prepared_checks',{})[phase]={'count':n,'status':'PASS' if n==0 else 'FAIL'}
+            if n:raise SmokeError('prepared-cleanup','residual prepared transactions before owned stop')
+        prepared_zero('before-restart-stop')
         persisted={database:cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses),(select count(*) from concert_social_policy_signals),(select coalesce(sum(revision),0) from concert_social_policy_generations);') for database in ['mcr_social_concert','mcr_concert_be_commands']}
         before=cluster.assert_postmaster();cluster.stop();cluster.start();after=cluster.assert_postmaster()
         if before==after:raise SmokeError('restart','postmaster unchanged')
@@ -83,6 +93,7 @@ def run(args,report):
             if cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses),(select count(*) from concert_social_policy_signals),(select coalesce(sum(revision),0) from concert_social_policy_generations);')!=value:raise SmokeError('restart','persisted evidence changed')
         report['restart']={'status':'PASS','before_pid':before,'after_pid':after,'persisted_counts':persisted}
         tests('after-restart')
+        prepared_zero('before-final-stop')
         if source_manifest()!=meta['source_sha256']:raise SmokeError('source','source changed during run')
     finally:
         cluster.cleanup();report['cleanup']={'status':'PASS','owned_root_absent':not cluster.root.exists()}
