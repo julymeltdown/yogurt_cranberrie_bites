@@ -171,16 +171,18 @@ is queued next after the active IN01 browser job's actual FULL RELEASE; that
 message was queue placement, not an offer or acceptance.
 
 Resource21d subsequently offered `TITLE-FOCUS-PAINT-SOURCE-202611040841Z`;
-the owner explicitly **ACCEPTED** at 2026-11-04T08:43:27.858611Z with the exact
-CSS/checker/input pins, three WIP paths, 39,204-byte carry and 31,960,649,728
+the owner explicitly **ACCEPTED**, referencing the preflight timestamp
+2026-11-04T08:43:27.858611Z with the exact CSS/checker/input pins, three WIP
+paths, 39,204-byte carry and 31,960,649,728
 bytes free. The exact command
 `python3 docs/mcr/evidence/title-focus-01/check-paint.py` exited **0** in
 **0.376160125 seconds**, without timeout. Result:
 `SOURCE_MODEL_PASS_ACTUAL_RENDER_NOT_RUN`. Output was **4,626 bytes**; all
 assigned durable source/scripts/docs/proofs/report totaled **43,830 bytes**
 within 64 KiB. Observed free floor: **31,821,676,544 bytes**. The owned process
-group was absent, with no temporary files or app processes. FULL RELEASE was
-reported immediately at 2026-11-04T08:43:55.558450Z.
+group was absent, with no temporary files or app processes. The job completed
+at 2026-11-04T08:43:55.558450Z; its result and FULL RELEASE were reported in
+the next coordination call.
 
 All nine retained Map cases passed the authored-gradient model, including every
 retained red ring/visible glyph pixel, four exposed outer paper edges, dark
@@ -194,3 +196,22 @@ This result does **not** prove actual CSS parsing/rasterization, selector/focus
 transitions, native/browser geometry, forced colors, live/multiuser behavior or
 design/accessibility acceptance. Those targeted runtime checks and Root
 publication remain open; the persistent goal remains **ACTIVE**.
+
+## Delivery and actual-evidence continuation
+
+Owned committed sequence: historical proof
+`f0d587c1430b9ee7b051c6f736d8ae8fd3496842`, then conditional implementation
+`c7f5f654d1da859ee9cbca7a6107eb5e3c2b882d`. Root integrated them respectively
+as `df0769e5` and `2ea7fd4e07aebb8b4d58938e8cba9d378c5fb855`.
+The implementation owner read back the integrated CSS SHA-256 and confirmed
+the expected `5c9e194e` bytes; the proof integration is an ancestor of the
+implementation integration (`git merge-base --is-ancestor`, exit 0).
+These are integration facts, not remote publication or runtime acceptance.
+
+Root authored combined focus driver `f8de2622`, currently **NOT_RUN**, and
+requested a fresh 180-second Resource21d allocation after the archive job.
+The bounded cohort covers before/after Map, Me and the separately owned Meet
+fix at 360/390/430 plus representative forced colors, focused/unfocused glyphs
+and the existing Me profile first-link focus. Root owns that capture checkout;
+this developer owns interpretation, title-paint fixes and final documentation.
+No independent duplicate browser/native cohort is launched here.
