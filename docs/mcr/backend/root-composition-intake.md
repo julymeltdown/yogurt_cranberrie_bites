@@ -65,3 +65,21 @@ Post/media/archive privacy or World/community convergence. Full BE41 remains
 BLOCKED. Root Python syntax and whitespace checks pass; coherent compilation and
 actual production composition remain open. No main, public route, manifests or
 existing owner lifecycle files were changed by this intake.
+
+## CR08 and C03 cancellation
+
+CR08 source `2e721109` is locally integrated as `e589f10e`; eight postimages are
+exact and two preserve only the separate Notification subject/producer additions.
+The implementation owner independently verified that composition. Documentation
+receipt `8dd9c136` and the byte-exact portable `canonical-cancellation-core.json`
+record nine actual isolated PostgreSQL/mTLS regressions at the original CR08 pin.
+Four positive cases released actual fences; five negative cases retained actual
+Auth/Friend prepared exclusions before owned cleanup. No expired, panicked,
+unresolved, or lost-body case is relabeled as successful delivery.
+
+C03 producer/test checkpoints `16f017f8`, `128ed564` and `f8aeca1f` were integrated
+as `799ba5c6`, `30672f24` and `3654a72d`; all five assigned postimages match the
+last owner checkpoint. The duplicate CR08 cherry-pick was omitted. Actual public
+HTTP disconnect/fresh-login and unknown-work qualification is still in progress.
+Root's combined compiler/native cohort and any fresh serving/browser evidence
+remain NOT_RUN at this intake.
