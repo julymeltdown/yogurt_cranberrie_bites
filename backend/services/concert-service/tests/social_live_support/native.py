@@ -20,6 +20,9 @@ def source_manifest():
     result=adapter.source_manifest()
     for name in ['social.schema.json','feed.schema.json','common.schema.json','operations.json','policy.json']:
         p=ROOT/'contracts/domain/v1'/name;result[str(p.relative_to(ROOT))]=adapter.sha(p)
+    # Pin the implementation, migration and focused test sources as well.
+    for name in ['backend/services/concert-service/src/social_live/invalidation.rs','backend/services/concert-service/tests/social_live_support/invalidation.rs','backend/services/concert-service/migrations/0051_social_policy_invalidation.sql']:
+        p=ROOT/name;result[name]=adapter.sha(p)
     return result
 
 def run(args,report):
@@ -32,7 +35,7 @@ def run(args,report):
     if shutil.disk_usage(ROOT).free<8*1024**3:raise SmokeError('preflight','8 GiB free required')
     report.update(source_commit=commit,source_sha256=meta['source_sha256'],artifacts=meta['artifacts'],checks={})
     pure=execute([str(binaries['live']),'--test-threads=1'],env={},phase='pure-input-tests',cwd=ROOT,timeout=30)
-    if 'test result: ok. 8 passed; 0 failed; 10 ignored;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
+    if 'test result: ok. 8 passed; 0 failed; 15 ignored;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
     report['checks']['pure-input-tests']={'exit_code':pure.returncode,'stdout':pure.stdout}
     cluster=Cluster({name:executable(args.pg_bin/name) for name in PG_TOOLS})
     report['owned_root']=str(cluster.root)
@@ -48,6 +51,7 @@ def run(args,report):
         files=[schema/'migrations'/n for n in ['0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0006_relationship_policy.sql','0009_receipt_domain_failures.sql','0011_outbox_maintenance.sql','0028_product_owner_scope_lifecycle.sql','0036_social_effect_witness.sql','0037_gift_private_child_intents.sql','0042_social_read_child_intents.sql']]
         files += [schema/'src/adapters/out/repository/intro_schema_v1.sql',schema/'src/adapters/out/age_provider/schema-v1.sql']
         report['isolated_prerequisite_sha256']={str(p.relative_to(ROOT)):adapter.sha(p) for p in files}
+        files += [schema/'migrations/0051_social_policy_invalidation.sql']
         for database in ['mcr_social_concert','mcr_concert_be_commands']:
             execute([str(cluster.tools['createdb']),'--no-password','--maintenance-db=postgres',database],env=cluster.client_env('postgres'),phase='createdb',cwd=cluster.root)
             for p in files:cluster.sql(database,p.read_text())
@@ -55,7 +59,7 @@ def run(args,report):
         env={**cluster.env,'MCR_SOCIAL_ROOT':str(cluster.root),'MCR_SOCIAL_TOKEN':cluster.token,'MCR_SOCIAL_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}','MCR_SOCIAL_SYSTEM':system,'MCR_SOCIAL_CONCERT_URL':cluster.url('mcr_social_concert'),
              'CONCERT_TEST_DATABASE_URL':cluster.url('mcr_concert_be_commands'),'CONCERT_TEST_OWNER_ROOT':str(cluster.root),'CONCERT_TEST_OWNER_TOKEN':cluster.token,'CONCERT_TEST_OWNER_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}'}
         def tests(phase):
-            for name,count in [('live',10),('remaining',8),('receipts',17)]:
+            for name,count in [('live',15),('remaining',8),('receipts',17)]:
                 command=[str(binaries[name]),'--test-threads=1','--nocapture']
                 if name!='receipts':command.append('--ignored')
                 if name=='remaining':command+=['--skip','actual_qa04_http_authorization_matrix']
@@ -72,11 +76,11 @@ def run(args,report):
                 if r.returncode:raise SmokeError(f'{phase}-{name}','native test failure; see sanitized check output',r.returncode)
                 if f'test result: ok. {count} passed; 0 failed;' not in r.stdout:raise SmokeError('inventory',f'{name} exact test inventory required')
         tests('before-restart')
-        persisted={database:cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses);') for database in ['mcr_social_concert','mcr_concert_be_commands']}
+        persisted={database:cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses),(select count(*) from concert_social_policy_signals),(select coalesce(sum(revision),0) from concert_social_policy_generations);') for database in ['mcr_social_concert','mcr_concert_be_commands']}
         before=cluster.assert_postmaster();cluster.stop();cluster.start();after=cluster.assert_postmaster()
         if before==after:raise SmokeError('restart','postmaster unchanged')
         for database,value in persisted.items():
-            if cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses);')!=value:raise SmokeError('restart','persisted evidence changed')
+            if cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses),(select count(*) from concert_social_policy_signals),(select coalesce(sum(revision),0) from concert_social_policy_generations);')!=value:raise SmokeError('restart','persisted evidence changed')
         report['restart']={'status':'PASS','before_pid':before,'after_pid':after,'persisted_counts':persisted}
         tests('after-restart')
         if source_manifest()!=meta['source_sha256']:raise SmokeError('source','source changed during run')

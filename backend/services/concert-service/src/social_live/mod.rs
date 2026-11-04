@@ -1,5 +1,6 @@
 //! BE28–30/37 product producer. Root owns dispatch registration and delivery.
 mod cursor;
+pub mod invalidation;
 pub mod keys;
 mod producer;
 pub mod protocol;

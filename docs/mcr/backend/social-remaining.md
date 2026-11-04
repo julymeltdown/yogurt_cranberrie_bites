@@ -722,3 +722,83 @@ QA04, full-lifetime EOF/cancellation/restart, global Friend blocking, WebSockets
 or cached UI. Those runtime gates and the original goal remain unfinished.
 
 Root serial intake preserves the above worker source/hashes and all previous Root history. This appended qualification is from handoff `66197e2459caddb5dbd43928c9060a6c563384ee`; only the local artifact prefix is made portable. Coherent Root compile and the remaining public gates are NOT_RUN.
+
+## BE28–30/37 Social policy invalidation — 0051 candidate
+
+Status: **IN_PROGRESS; compilation/native qualification NOT_RUN**. Source base is
+published `145a8e939fb7bede7e46931d6559adb2c51f62a7`, in the same isolated Social
+worktree on `codex/mcr-social-invalidation-0051`. The old `66197e24` handoff is
+retained as `codex/mcr-social-retained-66197e24`. Root explicitly stopped writing
+the transferred paths, including the exact integration-test workers reexport.
+This is newly authored MCR logic; no additional Bigyeting rendering or logic was
+copied. Existing receipt/outbox, relationship, Intro and age schemas are retained
+dependencies. Source policy still requires both accepted verified claims even
+for unbounded sharing; absence of provenance is never converted into permission.
+
+Owned source is `src/social_live/invalidation.rs`, its module export,
+`migrations/0051_social_policy_invalidation.sql`,
+`tests/social_live_support/invalidation.rs`, the exact `tests/social_live.rs`
+module/reexport lines and the existing Social native/HTTP drivers and guide.
+Shared config/main, resolver union, Gateway, contracts, World and common
+receipt/outbox files remain with their named owners.
+
+The migration adds actor/event generations beginning at one and metadata-only
+durable signals. A successful retained command transition creates signals in
+the same transaction, requiring the exact same-transaction outbox record,
+receipt/event/resource/revision tuple and recognized operation. Handle and Intro
+changes include affected active or same-transaction revoked peers; historical
+unrelated peers are excluded. Consent operations bind both actual request
+parties. Block/unblock binds the canonical actor/target pair. Generation overflow
+or audience capacity failure rolls back the command; no success is fabricated.
+No private handle, ciphertext, key or body is copied into a signal.
+
+`SocialInvalidationSink::new(pool, Arc<dyn SocialPolicyPublisher>)` exposes
+`supports`, `IdempotentInvalidationSink::deliver`, `emit_expired`,
+`drain_pending`, `baseline` and `held_baseline`. `supports=false` is not an ACK:
+Root dispatches other families to their owners, rather than forcing Social
+through the World-only resolver. Delivery rechecks all actual lease dimensions
+and the original successful receipt snapshot (including after ordinary receipt
+retirement). Published markers commit only after actual publisher success;
+failed writes/redelivery require monotonic dedup at the socket owner. Bounded
+rounds retain unprocessed rows and return retryable, never queue-completion ACK.
+
+The sealed publisher input exposes canonical actor/event, positive policy
+revision, reason and an internal signal ID. Only event/revision/reason enter
+Root's frozen public metadata frame; Root supplies the current stream ID and
+SOCIAL scope. Internal signal/outbox/receipt/resource/actor IDs never enter that
+frame. The publisher must hand off to every actual matching current stream or
+durably withdraw its private view; queue acceptance alone is insufficient.
+
+Socket bootstrap order is gated registration, `held_baseline(event, actor)`,
+install that exact tuple/revision, arm publication under the same local gate,
+then commit the guard before permitting private HTTP reads. Its transaction
+holds the generation row `FOR SHARE`, excluding a concurrent generation commit.
+The guard must be short: statement timeout is two seconds, lock timeout 500 ms,
+idle transaction timeout three seconds. Drop/commit failure requires stream
+withdrawal. `baseline()` is an observation alone, not a registration permit.
+Root's `policy.baseline` follows the unchanged World snapshot; absence keeps
+private Social unavailable. Reconnect clears old private state. Older/equal
+revisions are ignored; a newer revision invalidates all, and a gap/unknown stream
+requires a fresh baseline and authoritative availability before private reads.
+
+Expiry polling reads actual PostgreSQL deadlines for retained requests, active
+grants, Intro expiry and both latest canonical claims (including Seoul birthday
+boundaries). It selects canonical claims before validity, never resurrects an
+older claim, and durably deduplicates each request/deadline. It only emits removal
+signals and does not mutate consent/grants or create authorization receipts.
+`drain_pending` cannot bypass a command outbox lease: it handles deadline signals
+only. Root must schedule both bounded expiry methods. Canonical remote Auth/
+Friend policy events still need their genuine qualified owner path; this module
+does not invent that source or claim a complete BE37 flow.
+
+Five new owned-PG native cases cover successful/rolled-back source atomicity,
+idempotent transition replay, every Delivery dimension, failed publisher retry,
+expired leases, held-baseline/writer concurrency, actual database-time deadline
+emission, durable dedup/sink recreation and unsupported family isolation. The
+fixture publisher/command source is explicitly synthetic. The runner pins all
+source/migration hashes, retains existing Social/kernel regression cases and
+compares signal/generation state across its physical database restart.
+Standalone Rust 1.88 formatting, Python AST parsing and `git diff --check`
+passed. Cargo and owned PostgreSQL execution await a fresh SL21d allocation;
+there is no king/SL review or approval gate. Actual public Gateway, provider,
+WebSocket, cached UI and IN03 acceptance remain **NOT_RUN** here.

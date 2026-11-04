@@ -130,7 +130,7 @@ class Flow:
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--repo',type=Path,required=True);parser.add_argument('--plan',type=Path,required=True);parser.add_argument('--report',type=Path,required=True);args=parser.parse_args()
     require(args.report.is_absolute() and not args.report.exists())
-    report={'result':'NOT_RUN','HTTP':'NOT_RUN','WS':'NOT_RUN','cachedProductUI':'NOT_RUN','limitations':['No provider qualification is inferred from a selected synthetic acceptance fixture.','Canonical global-Friend block, age-expiry/unsupported cases, seven roles, WS/cache, process ancestry and schema qualification remain separate gates.']}
+    report={'result':'NOT_RUN','HTTP':'NOT_RUN','WS':'NOT_RUN','policyBaseline':'NOT_RUN','serverExpiryInvalidation':'NOT_RUN','cachedProductUI':'NOT_RUN','limitations':['No provider qualification is inferred from a selected synthetic acceptance fixture.','Canonical global-Friend block, age-expiry/unsupported cases, seven roles, WS/cache, process ancestry and schema qualification remain separate gates.','0051 database generation/native publisher fixtures do not certify actual policy.baseline or policy.invalidate socket delivery and synchronous product-cache withdrawal.']}
     try:
         repo=args.repo.resolve();plan=load_matrix(repo).private_plan(args.plan);Flow(repo,plan,report).run()
     except Exception:report.update(result='NOT_RUN' if report['HTTP']=='NOT_RUN' else 'FAIL',HTTP='NOT_RUN' if report['HTTP']=='NOT_RUN' else 'FAIL',reason='Private setup unavailable or actual HTTP assertion failed; no private detail emitted')

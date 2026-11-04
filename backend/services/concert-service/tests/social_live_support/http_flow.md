@@ -71,3 +71,30 @@ exit 2; failed assertions produce `FAIL`, exit 1. Overall success is deliberatel
 unavailable: seven-role authorization, canonical global Friend blocking,
 provider qualification, Root EOF/cancellation/restart, WebSockets, cached product
 UI and full migration/process qualification remain separate obligations.
+
+## Social policy stream qualification (0051)
+
+The HTTP driver does not open a World socket and cannot certify this gate. The
+startup/socket and frontend owners run it against the same actual principals,
+event and serving revision used above. Basic World retains its existing snapshot;
+private Social views additionally require an explicit matching `policy.baseline`
+frame after that snapshot, with protocol version 1.0.0, current stream/event,
+scope SOCIAL and server policyRevision >= 1. There is no client default baseline.
+
+With both streams active, reveal only after fresh authoritative availability and
+the current baseline. Revoke consent, replace/remove a handle and block the peer;
+observe metadata-only `policy.invalidate` with the affected canonical actor/event
+generation. The counterpart must synchronously withdraw the full private tuple,
+cancel pending reads and media URLs, and prevent older responses from refilling
+the cache. The stream frame must contain no handle, resource ID, actor ID, receipt,
+outbox ID or internal signal ID. A generation jump invalidates all private views;
+an unknown stream/gap also requires a fresh baseline before private reads resume.
+
+Use a real server-generated request/grant/Intro/claim deadline and wait for
+PostgreSQL time to pass it. The startup owner must poll `emit_expired` then
+`drain_pending`; an advancing browser clock is insufficient. Restart the server
+with its database retained, reconnect, and verify the durable baseline rejects
+the old private state. Overflow, unavailable publisher and baseline failure must
+close/withdraw private views while basic World remains independently usable.
+These observations require real WS and cached-UI evidence from their owners;
+the native publisher fixture proves neither.
