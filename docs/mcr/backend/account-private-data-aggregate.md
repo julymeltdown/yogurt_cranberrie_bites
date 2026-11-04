@@ -123,14 +123,33 @@ core category completion, leaves missing categories `INCOMPLETE`, verifies the
 aggregate is not acknowledged, checks guard rejection and proves the existing
 core fence remains. The regression also checks the retained timestamp to the
 nanosecond and exercises one direct missing-to-complete SQL transition followed
-by rejected revision and binding rewrites. A fresh allocation must still run
-those checks and add physical restart/replay plus migration provenance; this
-source alone does not qualify that run.
+by rejected revision and binding rewrites.
+
+A fresh named allocation ran the ignored test on source `04a51b2b` against an
+owned PostgreSQL 16 cluster, then physically restarted the server and ran the
+restart phase through a newly constructed empty-owner coordinator. Both phases
+exited `0`. The first process erased the actual core rows, committed Core
+`COMPLETE` with six `INCOMPLETE` category rows, retained the common and core
+fences, and withheld the whole receipt. The restart process read those exact
+category, cursor and fence values from durable state without invoking the core
+owner again. It then admitted one exact guarded `INCOMPLETE` to `COMPLETE`
+transition and required the other four categories to remain incomplete. The
+rewrite, deletion, source rebinding, terminal transition and premature
+whole-ACK checks all passed. The frozen test executable was
+`5448a70c0d41a7af6713ec02a1891ffee9f911ceeadac3c0cca0b19f58eb416b`.
+
+The owned evidence is under
+`/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-rebased-202611041802Z`.
+Earlier failed receipts are retained there as separate failure directories;
+they are not counted as qualification. The test ran with an owned cluster and
+the controlled test authority. This result does not claim the canonical Auth
+transport, the real production non-core owner effects, or a complete
+PrivateData deletion.
 
 The native fixture is intentionally narrow: it runs the actual core adapter and
-expects the remaining six categories to remain `INCOMPLETE`. It does not
-simulate successful non-core owners. Whole PrivateData remains **INCOMPLETE**,
-canonical Auth-to-Concert transport is **NOT_RUN**, and no real other-category
-owner has been claimed here. Source authoring does not imply runtime
-qualification or publication; those await a fresh named allocation and Root's
-canonical publication receipt.
+does not simulate successful non-core owners. Whole PrivateData remains
+**INCOMPLETE**, canonical Auth-to-Concert transport is **NOT_RUN**, and the
+Intro, age, media, beacon/rally, Party/Gift and Mural production owners remain
+unintegrated here. The source has native coordinator qualification on
+`04a51b2b`; publication and the complete multiuser target remain separate
+Root and provider-owner handoffs.
