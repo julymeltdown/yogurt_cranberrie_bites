@@ -1,0 +1,6 @@
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+{"result":"PASS","browser":"156.0.8078.80","widths":[{"width":360,"lane":"reports","result":"PASS"},{"width":360,"lane":"members","result":"PASS"},{"width":360,"lane":"content","result":"PASS"},{"width":390,"lane":"reports","result":"PASS"},{"width":390,"lane":"members","result":"PASS"},{"width":390,"lane":"content","result":"PASS"},{"width":430,"lane":"reports","result":"PASS"},{"width":430,"lane":"members","result":"PASS"},{"width":430,"lane":"content","result":"PASS"}],"report":"<checkout>/docs/mcr/evidence/mural-admin-regressions/native/report.json"}
