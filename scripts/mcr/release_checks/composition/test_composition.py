@@ -186,7 +186,7 @@ class Composition(unittest.TestCase):
             commands.append({**self.command, "id": gate, "argv": argv, "log": log, "status": "PASS",
                              "nonempty_count": 1, "report_hash": source.digest(values[log])})
         for path, data in values.items():
-            self.ref(path, data)
+            self.ref("frontend/" + path, data)
         return {"schema": "mcr.qa10.frontend.v1", "candidate": self.candidate, "same_candidate_end": True,
                 "status": "PARTIAL", "unsupported": [{"criterion": "actual product", "status": "NOT_RUN"}],
                 "source_pins": self.pins, "contract_pins": {"contracts/parser-fixture.json": self.pin("contracts/parser-fixture.json")},
@@ -194,7 +194,8 @@ class Composition(unittest.TestCase):
 
     def run_check(self):
         self.manifest["source_manifest"] = self.ref("source-manifest.json", self.bytes(self.source_manifest))
-        self.manifest["receipts"] = [self.ref(k + ".json", self.bytes(v)) for k, v in self.reports.items()]
+        self.manifest["receipts"] = [self.ref(("frontend/" if v["schema"] == "mcr.qa10.frontend.v1" else "")
+                                             + k + ".json", self.bytes(v)) for k, v in self.reports.items()]
         self.ref("composition.json", self.bytes(self.manifest))
         return evaluate(self.root, self.sha, FOLDER + "/composition.json")
 
