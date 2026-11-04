@@ -4,5 +4,5 @@ if (!cacheDir) throw new Error('C07 targeted validation requires its named priva
 export default defineConfig({
   cacheDir,
   test: { environment: 'node', include: ['src/shared/api/__tests__/c07-social-client/*.test.ts'],
-    maxWorkers: 1, fileParallelism: false, isolate: true },
+    pool: 'threads', maxWorkers: 1, fileParallelism: false, isolate: true },
 })
