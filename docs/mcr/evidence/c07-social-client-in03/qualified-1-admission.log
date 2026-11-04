@@ -1,0 +1,65 @@
+{
+  "status": "NOT_RUN",
+  "claim": "HTTP controller preparation only",
+  "missing": [
+    {
+      "input": "explicit real mode",
+      "owner": "IN03 runtime owner"
+    },
+    {
+      "input": "same-origin deployment URL",
+      "owner": "Root153 / infrastructure"
+    },
+    {
+      "input": "non-fixture event UUID",
+      "owner": "backend social owner"
+    },
+    {
+      "input": "reviewed production availability module",
+      "owner": "Root153 frontend composition"
+    },
+    {
+      "input": "availability source revision",
+      "owner": "Root153 frontend composition"
+    },
+    {
+      "input": "requester provisioned login",
+      "owner": "Auth / backend social owner"
+    },
+    {
+      "input": "recipient provisioned login",
+      "owner": "Auth / backend social owner"
+    },
+    {
+      "input": "restricted provisioned login",
+      "owner": "Auth / backend social owner"
+    },
+    {
+      "input": "three distinct principals",
+      "owner": "backend social owner"
+    },
+    {
+      "input": "admitted introId",
+      "owner": "backend social owner"
+    },
+    {
+      "input": "admitted postId",
+      "owner": "backend social owner"
+    },
+    {
+      "input": "admitted approvedRequestId",
+      "owner": "backend social owner"
+    }
+  ],
+  "IN03": "NOT_RUN",
+  "unavailable": [
+    {
+      "input": "admitted social block/revoke WS producer and public message contract",
+      "owner": "Root153 / C05 backend owner"
+    },
+    {
+      "input": "reviewed age-provider restricted-principal provenance",
+      "owner": "age provider / backend social owner"
+    }
+  ]
+}

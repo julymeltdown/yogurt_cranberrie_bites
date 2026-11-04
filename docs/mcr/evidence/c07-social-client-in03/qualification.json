@@ -1,0 +1,109 @@
+{
+  "allocation": "C07-IN03-209-PINNED-ROUND-202611040913Z",
+  "source": "1fb5a8fad770cf2405b8efc263b8bb230c324a28",
+  "base": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "status": "MOCK_READY",
+  "C07": "UNRECONCILED",
+  "IN03": "NOT_RUN",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "dependencyLockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "qualification": {
+    "normalTests": 43,
+    "normalExit": 0,
+    "deliberateMethodDriftExit": 1,
+    "scopedTypeScriptExit": 0,
+    "absentConfigAdmissionExit": 2,
+    "liveBrowserServerDatabaseProviderWebSocket": "NOT_RUN"
+  },
+  "logNormalization": "Known absolute prefixes replaced; trailing terminal blank lines trimmed; raw hashes and private raw files retained",
+  "logs": [
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/qualified-1-admission.log",
+      "rawSha256": "6019aca793e547fb09f0dca22cfc01ad3becd66267dcd4d8095563e44bc5f0a9",
+      "portableSha256": "6019aca793e547fb09f0dca22cfc01ad3becd66267dcd4d8095563e44bc5f0a9"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/qualified-1-drift.log",
+      "rawSha256": "36ea60f3b091dc4fd417b946041c9db5f28d05ca091f72728cfdcaedd8ff6ed6",
+      "portableSha256": "2f92dad79ed4602d9e9d75b841edadd20c378fec88b0ff3ef9fcaa5f374728e1"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/qualified-1-normal.log",
+      "rawSha256": "63f347ff04be552799266cd885c6c311de408f66759af8999974b5d631029999",
+      "portableSha256": "d5b6263989b02e17242afe4c338da27490a973fe326877fd8a4c18329999c43c"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/qualified-1-summary.json",
+      "rawSha256": "e671ea32db71a0d5f1fc04491f21303a4d4b58f46a7fe2a725777012bb4e1c6e",
+      "portableSha256": "9aa636ae7acf665e17b0e1780ca8687eef2773b9577d6dd065ec0f1b018deb7e"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/qualified-1-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourcePostimages": [
+    {
+      "path": "frontend/e2e/real/social.spec.ts",
+      "sha256": "3c44ab7ace67843b7a5ad18edc3143c1e6558ea7d45453797627d461084e8c88"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.d.mts",
+      "sha256": "0b4e34ba825f504540fe8fc910aa20989e51c5aed9f3348d973613426f9b6f8c"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.mjs",
+      "sha256": "52afa7e68c895b96173c46d67cbb438bb59b011f88d2be64202462de05e00723"
+    },
+    {
+      "path": "frontend/e2e/real/social/cohort.d.mts",
+      "sha256": "ef46319ef594a774b305f5d429316d743a594656e22ab7d29efd275c4bb8fc6f"
+    },
+    {
+      "path": "frontend/e2e/real/social/cohort.mjs",
+      "sha256": "cb357e6ab0793d1f101e16c47000aa7a2e493aae88cc10603686e7b661fa4541"
+    },
+    {
+      "path": "frontend/e2e/real/social/real-entry.ts",
+      "sha256": "415329478d594f39f7e43dc787e230bb5b53cd8391e7ff7070b24d8543892815"
+    },
+    {
+      "path": "frontend/e2e/real/social/run-input.example.json",
+      "sha256": "34ef403db500c7deb4353f77af165606ef7aafee9916fe76f013461784321afa"
+    },
+    {
+      "path": "frontend/e2e/real/social/validate.mjs",
+      "sha256": "dd4b5a0a8b586be46a95e49505c954aec2cec2248343915cd5055d3fed8d9d37"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/admission.test.ts",
+      "sha256": "73e7eb6d532ba968be1e5e2b200ba272cbda547b4dd177233c06f3de84c719ec"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/compatibility.test.ts",
+      "sha256": "a89069c9df3fb6dddc1d30658ea62e05cc01cd24a8a6d5977e7435388200a59e"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/drift-probe.test.ts",
+      "sha256": "caa8723048f43339870608308372eec9bb695c3a8bc02167a50821c2b66dfec3"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/fixture.ts",
+      "sha256": "0a2703ae5660bf66939d02c102c3b251ab348d2d5dc6f5d27cc81913c7d36049"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/journey.test.ts",
+      "sha256": "ef72fb3f0b7201876727179a085703bb008b816730039b0240860e74a9ad9d5b"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/tsconfig.json",
+      "sha256": "2ed0ee2a8877ab15b795919e0859713529b24ca636172845770d234033e3e36b"
+    },
+    {
+      "path": "frontend/src/shared/api/__tests__/c07-social-client/vitest.config.ts",
+      "sha256": "bed670c2459f49575957f4592829e5a57a1ab856beddad2678df63b81a91e088"
+    }
+  ]
+}

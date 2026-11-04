@@ -1,0 +1,117 @@
+{
+  "allocation": "C07-IN03-209-PINNED-ROUND-202611040913Z",
+  "runId": "qualified-1",
+  "source": "1fb5a8fad770cf2405b8efc263b8bb230c324a28",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "activeUntil": "2026-11-04T09:18:46.000Z",
+  "initial": {
+    "files": 41,
+    "bytes": 102474,
+    "freeBytes": 30059368448
+  },
+  "jobs": [
+    {
+      "name": "normal",
+      "command": [
+        "${PINNED_NODE}",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/shared/api/__tests__/c07-social-client/vitest.config.ts"
+      ],
+      "environment": {
+        "PATH_PREFIX": "${PINNED_NODE_BIN}",
+        "TMPDIR": "${ALLOCATION_ROOT}/tmp",
+        "MCR_C07_CACHE": "${ALLOCATION_ROOT}/cache"
+      },
+      "startUTC": "2026-11-04T09:14:07.427Z",
+      "milliseconds": 1702,
+      "exit": 0,
+      "signal": null,
+      "expected": 0,
+      "stopped": false
+    },
+    {
+      "name": "drift",
+      "command": [
+        "${PINNED_NODE}",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/shared/api/__tests__/c07-social-client/drift-probe.test.ts",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/shared/api/__tests__/c07-social-client/vitest.config.ts"
+      ],
+      "environment": {
+        "PATH_PREFIX": "${PINNED_NODE_BIN}",
+        "TMPDIR": "${ALLOCATION_ROOT}/tmp",
+        "MCR_C07_CACHE": "${ALLOCATION_ROOT}/cache",
+        "MCR_C07_DRIFT_PROBE": "method"
+      },
+      "startUTC": "2026-11-04T09:14:09.130Z",
+      "milliseconds": 296,
+      "exit": 1,
+      "signal": null,
+      "expected": 1,
+      "stopped": false
+    },
+    {
+      "name": "tsc",
+      "command": [
+        "${PINNED_NODE}",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/shared/api/__tests__/c07-social-client/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "environment": {
+        "PATH_PREFIX": "${PINNED_NODE_BIN}",
+        "TMPDIR": "${ALLOCATION_ROOT}/tmp",
+        "MCR_C07_CACHE": "${ALLOCATION_ROOT}/cache"
+      },
+      "startUTC": "2026-11-04T09:14:09.426Z",
+      "milliseconds": 2789,
+      "exit": 0,
+      "signal": null,
+      "expected": 0,
+      "stopped": false
+    },
+    {
+      "name": "admission",
+      "command": [
+        "${PINNED_NODE}",
+        "e2e/real/social/admission.mjs"
+      ],
+      "environment": {
+        "PATH_PREFIX": "${PINNED_NODE_BIN}",
+        "TMPDIR": "${ALLOCATION_ROOT}/tmp",
+        "MCR_C07_CACHE": "${ALLOCATION_ROOT}/cache"
+      },
+      "startUTC": "2026-11-04T09:14:12.215Z",
+      "milliseconds": 25,
+      "exit": 2,
+      "signal": null,
+      "expected": 2,
+      "stopped": false
+    }
+  ],
+  "status": "FIXTURE_CHECKS_PASSED",
+  "IN03": "NOT_RUN",
+  "C07": "UNRECONCILED",
+  "releasedUTC": "2026-11-04T09:14:12.241Z",
+  "final": {
+    "files": 45,
+    "bytes": 105678,
+    "freeBytes": 30059544576
+  },
+  "ownedLinkRemoved": true
+}
