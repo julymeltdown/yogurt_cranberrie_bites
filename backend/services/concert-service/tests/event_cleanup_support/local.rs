@@ -506,6 +506,18 @@ async fn event_cleanup_local_native_witness_requires_engine_append_and_is_immuta
         owner(own).verify_in(&mut tx, &r, receipt).await.unwrap();
         assert!(tx.commit().await.is_err());
         assert_eq!(counts(&pool, &f).await, (0, 0));
+        // Even an exact bound ledger append cannot outlive its caller's fence.
+        let mut tx = pool.begin().await.unwrap();
+        let r = request(&mut tx, &f, own).await;
+        let (receipt, next) = match owner(own).apply_in(&mut tx, &r).await.unwrap() {
+            Outcome::Page { receipt, next } => (receipt, next),
+            _ => panic!("bounded first page"),
+        };
+        sqlx::query("insert into concert_event_cleanup_batches(operation_id,job_id,event_id,actor_id,step,owner,ordinal,binding,cursor_in,cursor_out,outcome,receipt_id,owner_revision,processed,cumulative) values($1,$2,$3,$4,$5,$6,0,$7,NULL,$8,'PAGE',$9,1,$10,$10)")
+            .bind(r.operation()).bind(f.job).bind(f.actor.event).bind(f.actor.actor).bind(step.name()).bind(own.name()).bind(r.binding().to_vec()).bind(next.bytes()).bind(receipt.id).bind(receipt.processed as i16).execute(&mut *tx).await.unwrap();
+        sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()-interval '1 second')::text,true)").execute(&mut *tx).await.unwrap();
+        assert!(tx.commit().await.is_err());
+        assert_eq!(counts(&pool, &f).await, (0, 0));
         run(&pool, owner(own), true)
             .run_owner(f.actor, f.job, own)
             .await
