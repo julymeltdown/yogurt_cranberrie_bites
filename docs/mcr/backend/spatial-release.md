@@ -286,3 +286,21 @@ are **NOT_RUN**, pending a fresh named resource grant. No target or PostgreSQL
 lease is held at this source checkpoint. Actual operator bundle/admission and
 all-three frontend fidelity acceptance remain open; this candidate is
 **NOT_ADMITTED**, with no full Product or multiuser claim.
+
+### Persistent-goal reconciliation
+
+The previous goal's actual objective was the bounded **BE04 canonical identity
+adapter increment**: source-grounded design, implementation, relevant validation,
+documentation, committed handoff and concrete review fixes. Its original worker
+`9fb1c933` and integrated `eba858f2` satisfy that bounded scope. The source review
+`docs/mcr/evidence/identity-integration.md` records 30 passing tests, matching
+source/contract hashes, exact seven-path ownership and no remaining actionable
+finding. The integrated commit is an ancestor of current master. The earlier
+worker receipt's PENDING review was superseded by that actual integration review.
+
+The old goal was therefore completed against its own increment criteria, and a
+new unbudgeted spatial follow-up goal was created and tool-confirmed active.
+This does **not** complete original task BE04 or its real Product admission
+criteria. Current public participant/owner-grant composition remains with
+Participant209 and the Product API root; their actual owner/admission evidence
+must qualify those separate flows. Whole-task and release status are unchanged.
