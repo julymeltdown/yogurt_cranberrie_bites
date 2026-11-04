@@ -1,6 +1,6 @@
 # BE27 Product Intro runtime
 
-Status: **IN_PROGRESS**. Source and owned native harness are prepared. Rust compilation, pure/native execution and public HTTP acceptance are **NOT_RUN**. Planning checks do not certify runtime behavior.
+Status: **CONTRACT_READY** component handoff. Source `868d9db276b7f704ebeb675c7d2d96bc88b019a2` compiled successfully; two pure cases, all seven canonical native cases, four retained engine cases and PG restart persistence passed. Root integration/publication is pending. Public HTTP acceptance is **NOT_RUN**. These component results do not certify IN03 or product acceptance.
 
 Base: `a7f3989d9c40c53a9c2982bced938f8b4853f627`; branch `codex/mcr-be-BE27-product`. The former consumer writer stopped before this isolated checkout began. Changes stay within BE27-PRODUCT ownership: `src/intro_live/**`, needed retained `repository/intro.rs` hooks, only `pub mod intro_live;` in `lib.rs`, exclusively reserved migration 0049, `tests/intro_product.rs`, `tests/intro_product_support/**` and this document. Root owns global Operation/HTTP/main and union resolver composition. No manifest, lockfile, contract, configuration, CI, old migration or `docs/source/` changes. Root explicitly transferred `backend/crates/concert-application/src/intro/mod.rs` for the single additive `IntroError::Expired` variant only, after the base lacked the historical adapter variant. This preserves the frozen 409 IDEMPOTENCY_EXPIRED reason; no broader application rewrite is included.
 
@@ -25,7 +25,7 @@ Current checks:
 - `rustfmt +1.88.0 --edition 2021` on owned Rust: exit 0, parsing/formatting only.
 - Python compile of the owned qualifier: exit 0.
 - `python3 scripts/mcr/check-plan.py`: exit 0, PASS; original source checksums remain intact.
-- Rust build, pure/native tests and retained engine execution: **NOT_RUN** pending a fresh named allocation.
+- Rust build and the complete owned pure/native/retained/restart suite: exit 0, **PASS** at source `868d9db276b7f704ebeb675c7d2d96bc88b019a2`; exact evidence below.
 
 Build request: Rust 1.88, `--locked --offline`, jobs <=2, debug 0, incremental 0, exact `cargo test -p concert-service --test intro_product --test intro --no-run --message-format=json`. Freeze source inventory/archive, Cargo JSON and exact executable copies/hashes outside the target, then release the target before private PG. No target or PG is currently held.
 
@@ -50,13 +50,13 @@ Pinned contract bytes at the base (no amendments):
 - `contracts/domain/v1/operations.json`: `f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112`.
 - `contracts/generated/mcr-domain.openapi.json`: `905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887`.
 
-Actual build/native artifact IDs and exit codes will be appended after execution. Source readiness is not acceptance.
+Exact build/native artifact identities and exit codes are recorded below. Component proof is not public HTTP acceptance.
 
 Coordinated prerequisite intake before any accepted build: Root explicitly authorized serial `cherry-pick -x 591d908a85a01fe0a494e04c0109bb0bec64a3e1`, producing `d8a841acd1e05eef7af2de89c3cdb46a5317a985`. Its exact outside-assignment paths are Auth/Friend/Notification/Concert `build.rs` and `docs/mcr/backend/build-script-worktree-paths.md`. These replace compile-time protocol/include worktree paths with the existing runtime contracts-build helper to fix Root's observed cache/protoc shadowing. No target cleanup or additional artifact scope was granted. This prerequisite is already Root-owned delivery; the BE27 handoff must avoid duplicating it. Runtime migration inputs still require live source and baked-path pins.
 
-## Executed component evidence and open repair
+## Historical failures and repairs
 
-The previous NOT_RUN entries describe initial readiness. The latest repair source remains **IN_PROGRESS**, with no complete native acceptance or public HTTP claim.
+The following failures were preserved and corrected before the final coherent run. They do not supersede the final result or establish public HTTP acceptance.
 
 - Committed source `c34e561513a3252339248024ec2941d760231e03` first failed compilation because the shared target reused a `concert_application` artifact as FRESH despite the committed Expired variant. Live source SHA-256 was `2a6f1d0a58dca05fe749da25bcc684b4c3c153ccde22bd8ca476399ea0723f23`. Under a separate explicit named repair lease, cleaning only that package removed 21 files/15.4 MiB. The identical-source rebuild passed, exit 0 in 23.46 seconds, establishing cache causality. Root's protocol-path prerequisite avoided the previous protoc failure.
 - Two pure protocol/cursor cases passed. Early native attempts exposed an omitted actual Profile workload certificate, the unoptimized four-service test thread's default stack limit, and inconsistent fixture timestamps. Owned fixture fixes issue the real Profile mTLS certificate, specify `RUST_MIN_STACK=16777216` and derive the expired receipt's times from one SQL timestamp. These conditions are test evidence, not production HTTP or stack qualification.
@@ -65,3 +65,65 @@ The previous NOT_RUN entries describe initial readiness. The latest repair sourc
 - The repair adds stage-specific native assertions and a negative-only current local admission/participant/block filter on the same registered transaction before PublicProfile acquisition. The shared reader intentionally uses generic unavailability for local missing policy; Intro must filter known absence without weakening generic owner/guard failures. Positive observations still require actual canonical enrollment and held Profile children. The outage harness also retains unknown child quarantine while Profile is down, restarts the same actual mTLS owner at the same endpoint/store, and retries only Test Root's system settlement. These repairs await the next explicitly allocated build/native window.
 
 All failed attempts and immutable copies remain in the private `/tmp/mcr-be27-product-ffb4b491` evidence directory. The cumulative storage cap includes them; no byte or time budget is silently renewed. The first target window expired after explicit release. A separate bounded repair window was approved as queued, with no resources held while awaiting its named offer. No other service's implementation was edited to hide a failed assertion, and no partial run is labeled ACCEPTED.
+
+
+## Final coherent component qualification
+
+Run on 2026-11-04 under explicit named allocation `BE27-PRIVACY4-BACKEND-202611040727Z`: additional <=2 minutes target build/freeze plus <=6 minutes copied execution, with no cumulative byte-baseline reset. Previous target windows were explicitly released and their expiry recorded; no old allocation was reused. Clean committed source was `868d9db276b7f704ebeb675c7d2d96bc88b019a2`. Initial free space was 38.09 GiB, kernel handles 14721/368640; final free space was 38.02 GiB. All retained source archives, failed/current binary copies and logs totalled 1986 MiB under the 2 GiB archive/executable cap. The whole workflow retained its 8 GiB hard cap and 8 GiB free-space floor. No resource remains held.
+
+Build command, from `backend/`, exit 0 in 4.44 seconds:
+
+```sh
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test -p concert-service --test intro_product --test intro --no-run --locked --offline -j2 --message-format=json
+```
+
+Exactly two requested executable artifacts were frozen outside the shared target. Cargo reported `intro_product` newly compiled and retained `intro` FRESH; the latter's byte identity matched its previous committed-source copy. No clean was run in this allocation. The actual Cargo manifest/source paths and the baked fixture checkout were verified, not inferred from a tab or filename. A fresh `lsof -nP -F pn` scan found zero target handles, recorded in `target-release-6.json`; the target was unconditionally released before any copied executable or PG process and was never reread.
+
+Copied execution command, exit 0 in 24.20 seconds:
+
+```sh
+python3 backend/services/concert-service/tests/intro_product_support/qualify.py --checkpoint /tmp/mcr-be27-product-ffb4b491/checkpoint.json --pg-bin-dir /opt/homebrew/opt/postgresql@16/bin --report /tmp/mcr-be27-product-ffb4b491/native-6.json
+```
+
+The qualifier supplies `RUST_MIN_STACK=16777216` for the unoptimized four-service test thread. This was PG16.14 (Homebrew), socket-only, with four isolated actual owner stores and actual Auth/Friend/Profile mTLS services. Each canonical case recreated all stores and verified source-bound central migration receipts: Auth 18, Friend 18, Concert 38, Profile 9. Live SQL migration SHA-384 inventories are frozen in the checkpoint, including migration 0049 SHA-384 `2c292352935615e7569206712ff88c001e6a64e35d32ac135b26b86999d710468492248df2a3338c08bbe2811bc05bca`.
+
+| Exact test | Result | Prepared transactions afterward |
+| --- | --- | --- |
+| `closed_protocol_rejects_ambiguous_target_query_and_write_shape` | PASS, exit 0 | Pure case |
+| `cursor_encryption_binding_and_original_fence_expiry` | PASS, exit 0 | Pure case |
+| `canonical_authoring_discovery_detail_idempotency_and_close` | PASS, exit 0 | 0 |
+| `canonical_restricted_age_outage_trust_and_expiry_parity` | PASS, exit 0 | 0 |
+| `canonical_full_frame_rebinding_and_missing_parent_fail_closed` | PASS, exit 0 | 0 |
+| `canonical_block_departure_suspension_and_profile_outage` | PASS, exit 0 | 0 |
+| `canonical_claim_expiry_bounds_root_delivery_after_commit` | PASS, exit 0 | 0 |
+| `canonical_intro_edit_revokes_consent_atomically_with_receipt_outbox` | PASS, exit 0 | 0 |
+| `canonical_native_witness_requires_exact_registered_transaction` | PASS, exit 0 | 2, deliberately quarantined UNKNOWN |
+
+The privacy case verified inherited Friend blocks, local admission departure and Auth suspension each yield an empty discovery list and 404 detail. Merely aborting the Tonic accept task had left HTTP/2 connections alive in the prior failed attempt; the final fixture sends graceful shutdown and awaits actual server termination. Real Profile outage now returns 503, retains unknown child exclusion while unavailable, and settles to zero prepared transactions after restarting the same mTLS owner at the same endpoint/store. No cached DTO replaces the failure.
+
+The final native witness case verifies COMMITTED only with an exact registered same-transaction witness, IN_PROGRESS during a live actual transaction, ABORTED after rollback, UNKNOWN for wrong producer/reference or a committed effect without a witness, and immutable witness update/delete/truncate rejection. Its two prepared guards deliberately preserve owner exclusion for the last UNKNOWN effect. This is the sole nonzero case; deleting the entire marker/inode-owned disposable cluster removes the quarantined fixture afterward.
+
+All four retained engine cases passed, exit 0: `empty_publish_close_expiry_and_event_isolation`, `foreign_profile_and_projection_failure_return_no_value`, `pagination_filter_profile_and_projection_fail_closed`, `receipts_revision_conflicts_and_invalidation_failure_roll_back`. They used the unchanged retained synthetic prerequisite schema in a separate database; they are regression evidence, not canonical authorization proof. Actual postmaster PID changed 61823 -> 63865 and startup time changed across restart; the retained Intro row stayed `PUBLISHED|1`. Final cleanup passed, and `/private/tmp/mcr-pg-ae_jg6e3` no longer exists.
+
+### Immutable local evidence identities
+
+All evidence resides in private `/tmp/mcr-be27-product-ffb4b491`; no sensitive fixture state or large binary/archive is added to Git. `source-b30b9e20.tar.gz` plus the binary Git delta `source-868.patch` reconstruct the final tested source; the full 2901-file inventory additionally pins actual releases, selected static assets, contracts, build inputs and fixture source. Source and copied binary hashes were rechecked after execution.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| Full source archive, base `b30b9e208d59d636a8198dee99657658f14632b8` | `87f5c0c7d7bad9d9e58811dda28cfb26ba9325e9fea19118f34ba5018974e5d3` |
+| `source-868.patch` | `af47f3d4c70c15180c55857a39af42f718c3db77445f046354e5187f3aaf718e` |
+| `source-manifest-868.json` | `982fd9babd66f494f5ec08663c182a5f01a00e3b1b9c26ac8d9c89dc5b66988b` |
+| `cargo-6.jsonl` | `7aa8d4cc002c1eb21c1ae5a2f32a4f14dc5afb1bf02db3df8c1ad8f92f925436` |
+| `v868/intro_product`, 49,929,696 bytes | `deff7cf58aa4bd43ceaf638f2c81c7193df5876f1270cf356ccffe912889c22b` |
+| `v868/intro`, 24,109,248 bytes | `4fd10cc86c1f1b5e2535b026dcb03884442941bf0254a049e8ba8f4f343d8ed6` |
+| `checkpoint.json` | `34518b188068ffb87e7011f72908329ad4a6d2546cb1d621a3e3b3b0d481489b` |
+| `native-6.json` | `4e618d9e99c23797a48f508b3249ba319aabc189a60b6987bf0742846707cf1f` |
+
+### Delivery ancestry and remaining owner
+
+The base-to-source diff contains exactly 22 paths: 17 BE27-owned paths and five explicitly coordinated Root prerequisite paths. No application imports a frontend implementation; only the fixture reads approved source-bound static release assets. `docs/source/` is unchanged byte for byte. `git diff --check` and `python3 scripts/mcr/check-plan.py` passed, exit 0, after native execution. Planning provenance is separate from the runtime result.
+
+Root should integrate the BE27 commits in order while excluding `d8a841acd1e05eef7af2de89c3cdb46a5317a985`, the already Root-owned `591d908a85a01fe0a494e04c0109bb0bec64a3e1` prerequisite. Own commits through the tested source: `296557ea`, `76dca41c`, `ffb4b491`, `c34e5615`, `b30b9e20`, `1473d345`, `12d0ddfb`, `d30ad9f0`, `8e14fc25`, `cf67c1a9`, `6828ad0f`, `868d9db2`; this final documentation commit follows them. The frozen source predates only documentation; no Rust/SQL/fixture changes follow qualification.
+
+Single-writer ownership of the `lib.rs` export is released to Root upon this committed handoff. Root owns global Operation/HTTP/main composition and the union native resolver. Restore the original sealed parent inside the `run_owned` future, construct typed runtime dependencies, route the exact six closed operations, and dispatch the `intro_native_v1` reference kind to the Intro resolver. No feature code acquires authority, marks serialization or settles Root delivery. Root's combined checks, normal master publication and fresh delivered-ancestry verification remain required before this chat's assignment/goal is complete. Public HTTP, two-client IN03, browser cache invalidation, operator admission and commercial provider activation remain NOT_RUN here.
