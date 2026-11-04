@@ -9,7 +9,7 @@ use crate::{
         relationship_authority::guarded::{CanonicalOwnerFence, ScopeRegistry},
     },
     gift_live::private::GiftPrivateRuntime,
-    notification_live::NotificationClient,
+    notification_live::{target_authority::TargetReadSettler, NotificationClient},
     product_rpc::{
         child_recovery::{ChildRecoverySettings, ChildRecoveryWorker},
         child_settlement::CompositeChildIntentSettler,
@@ -92,10 +92,12 @@ impl CanonicalOwnerComposition {
             Some(&config.tls),
             Some(notification_binding),
         )?);
+        let target_read = Arc::new(TargetReadSettler::new(pool.clone(), config.instance)?);
         let children = Arc::new(
             CompositeChildIntentSettler::new(public_profile.clone(), gift_private.clone())
                 .with_social(social_read.clone())
-                .with_notification(notification.clone()),
+                .with_notification(notification.clone())
+                .with_target(target_read),
         );
         let core = CanonicalRuntimeCore::new(pool, config.instance, config.child_keys, children)?;
         let fence = Arc::new(core.owner_fence(
