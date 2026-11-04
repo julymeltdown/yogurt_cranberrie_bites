@@ -18,6 +18,7 @@ import type { PlaceMapRelease } from '../../features/places/model/controller'
 import type { AvatarScenePort } from '../avatar/scene'
 import type { SceneryOverviewPort } from '../illustrated/overview'
 import { attachMuralEntrySource, type MuralEntryReleaseSource, type MuralQualificationFactory } from '../mural-entry-lifecycle/source'
+import { attachWorldSocialPolicy, type WorldSocialPolicyPort } from './policy'
 
 export type { WorldReleaseResolver, ResolvedWorldRelease, WorldReleaseRequest } from './release'
 export type WorldRendererStatus = 'loading' | 'ready' | 'unavailable'
@@ -61,6 +62,7 @@ export interface WorldPresentationRelease {
 }
 export interface WorldPresentationPort { read(): WorldPresentationRelease | null; subscribe(listener: () => void): () => void }
 export interface WorldCompositionOptions {
+  readonly motionProfileVersion?: '1.0.0'
   readonly mural?: MuralQualificationFactory
   readonly auth: SessionController
   readonly resolveRelease: WorldReleaseResolver
@@ -80,7 +82,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
   const { auth } = options, listeners = new Set<() => void>()
   const authority = sessionOwners.get(auth) ?? { owner: null, drain: Promise.resolve() }
   sessionOwners.set(auth, authority)
-  let owner: { dispose(): void; replication: WorldReplication | null; rooms: ReadonlySet<string> } | null = null
+  let owner: { dispose(): void; replication: WorldReplication | null; policy: ReturnType<typeof attachWorldSocialPolicy> | null; rooms: ReadonlySet<string> } | null = null
   let state: WorldCompositionState = Object.freeze({ phase: 'idle', runtime: null, renderer: 'unavailable', problem: null })
   let presented: WorldPresentationRelease | null = null
   const presentation: WorldPresentationPort = { read: () => presented && !presented.request.signal.aborted && auth.privacy.isCurrent(presented.request.privacyScope) && auth.session.isCurrent(presented.request.scope) ? presented : null, subscribe: listener => release.subscribe(listener) }
@@ -92,6 +94,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     switchRoom: roomId => owner?.rooms.has(roomId) ? owner.replication?.switchRoom(roomId) ?? Promise.resolve(false) : Promise.resolve(false),
     reconnect: () => owner?.replication?.reconnect() ?? Promise.resolve(false),
   }
+  const policy: WorldSocialPolicyPort = { read: () => owner?.policy?.read() ?? null, subscribe: release.subscribe }
   function mount(host: HTMLElement, context: WorldMountContext): WorldLease {
     const suppliedScope = context.privacyScope
     if (closed || owner || authority.owner || !suppliedScope || !auth.privacy.isCurrent(suppliedScope)
@@ -157,6 +160,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     }
     function stopResources() {
       ++bootRevision
+      owned.policy?.dispose(); owned.policy = null
       muralEntry?.dispose(); muralEntry = null
       presented = null
       presentationAbort?.abort(); presentationAbort = null
@@ -183,7 +187,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       if (authority.owner === owned) authority.owner = null
       if (owner === owned) { owner = null; state = Object.freeze({ phase: 'disposed', runtime: null, renderer: 'unavailable', problem: null }); notify() }
     }
-    const owned = { dispose, replication: null as WorldReplication | null, rooms: new Set<string>() }
+    const owned = { dispose, replication: null as WorldReplication | null,
+      policy: null as ReturnType<typeof attachWorldSocialPolicy> | null, rooms: new Set<string>() }
     owner = owned
     authority.owner = owned
     const fail = (problem: NonNullable<WorldCompositionState['problem']>) => {
@@ -236,8 +241,12 @@ export function createWorldComposition(options: WorldCompositionOptions) {
         zoom = prepared.zoom
         owned.rooms = new Set(prepared.rooms.items.map(room => room.room_id))
         const transport = new WebSocketWorldTransport({ session: auth.session, origin: location.origin,
+          ...(options.motionProfileVersion ? { motionProfileVersion: options.motionProfileVersion } : {}),
           acquireTicket: createTicketAcquirer(auth, privacyScope) })
-        owned.replication = createWorldReplication({ session: auth.session, transport, resources: prepared.resources, sink: { replace } })
+        owned.policy = attachWorldSocialPolicy({ auth, scope: privacyScope, transport, signal: attempt.signal })
+        cleanup.push(owned.policy.subscribe(notify))
+        owned.replication = createWorldReplication({ session: auth.session, transport, resources: prepared.resources, sink: { replace },
+          ...(options.motionProfileVersion ? { motion: { version: options.motionProfileVersion, map: prepared.map } } : {}) })
         step = 'runtime'
         runtime = createWorldRuntime({ host: stage, load: signal => loadMap(prepared.mapInput, signal),
           ...(options.createOverview ? { createOverview: options.createOverview } : {}),
@@ -321,10 +330,11 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       setVisible(value) { if (disposed) return; visible = value; setVisible() },
     }
   }
-  return { mount, replication: release, presentation, read: () => state, subscribe: release.subscribe,
+  return { mount, replication: release, presentation, policy, read: () => state, subscribe: release.subscribe,
     dispose() { if (closed) return; closed = true; owner?.dispose(); listeners.clear() },
     /** Admission of a replacement game waits for the previous FE14 engine's closed promise. */
     settled: () => drain,
   }
 }
-export type WorldComposition = Omit<ReturnType<typeof createWorldComposition>, 'presentation'> & { readonly presentation?: WorldPresentationPort }
+export type WorldComposition = Omit<ReturnType<typeof createWorldComposition>, 'presentation' | 'policy'> & {
+  readonly presentation?: WorldPresentationPort; readonly policy?: WorldSocialPolicyPort }

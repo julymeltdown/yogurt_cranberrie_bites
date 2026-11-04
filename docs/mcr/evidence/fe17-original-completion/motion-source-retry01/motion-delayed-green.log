@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed | 162 skipped (164)
+   Start at  03:16:50
+   Duration  780ms (transform 237ms, setup 54ms, import 453ms, tests 25ms, environment 0ms)
+

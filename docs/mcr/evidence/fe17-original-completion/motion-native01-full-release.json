@@ -1,0 +1,56 @@
+{
+  "status": "FULL_RELEASE",
+  "slot": "FE17-MOTION-NATIVE-B1-20261104T1823Z",
+  "releasedUTC": "2026-11-04T18:26:20.848203+00:00",
+  "originalWorkStopUTC": "2026-11-04T18:27:18.467021+00:00",
+  "originalDeadlineUTC": "2026-11-04T18:28:18.467021+00:00",
+  "finalSource": "62f1c3a37eb755ef4cf9292db65443ed2001589b",
+  "qualification": "Native Chrome realWebCrypto/nativeWS changed5scenarios PASS; synthetic C05 peer, noRust/Phaser/art/visualacceptance claim",
+  "firstFailure": "Guardian rejected macOS externalSingleton target naming beforejourney. Exactown19Bsocket/cookie directory censused/nohandles then removed; immutablefailure preserved; guardfixedwithinoriginalclock.",
+  "peakProcesses": 10,
+  "peakRssBytes": 1491894272,
+  "peakWholeChargedBytes": 2775387857,
+  "peakTmpBytes": 6788036,
+  "peakEntries": 59213,
+  "aggregateNewBoundBytes": 7050450,
+  "currentInventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801937129,
+        "files": 7814,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1949510,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551759986,
+    "reachableGitObjects": 39696,
+    "wholeCarryBytes": 2763909959,
+    "chargedFiles": 59084
+  },
+  "freeBytes": 17042210816,
+  "recordedExternalTargets": [
+    "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.3gGB4F",
+    "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.6SPRcr"
+  ],
+  "externalTargetsRemaining": [],
+  "liveRecordedPids": [],
+  "temporaryPaths": [],
+  "dependencyLinks": [],
+  "borrowedViteTemp": [],
+  "evidenceHandles": [],
+  "port": 64377,
+  "portReuse": "PASS freshindependentbind",
+  "resourceReservation": "Released independentlydocumentation/publication; no implicit next job"
+}

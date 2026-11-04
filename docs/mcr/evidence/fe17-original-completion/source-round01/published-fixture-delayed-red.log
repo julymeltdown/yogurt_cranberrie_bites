@@ -1,0 +1,24 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+ ❯ src/world/network/__tests__/replication.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/network/__tests__/replication.test.ts [ src/world/network/__tests__/replication.test.ts ]
+Error: Cannot find package 'ky' imported from /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/shared/api/http.ts
+ ❯ src/shared/api/http.ts:1:1
+      1| import ky from 'ky'
+       | ^
+      2| import { domainOperation, matchesDomainRequest } from './domain'
+      3| import type { DomainOperationId } from './domain-operations.generated'
+ ❯ src/world/network/__tests__/replication.test.ts:2:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  02:51:38
+   Duration  105ms (transform 24ms, setup 10ms, import 0ms, tests 0ms, environment 0ms)
+

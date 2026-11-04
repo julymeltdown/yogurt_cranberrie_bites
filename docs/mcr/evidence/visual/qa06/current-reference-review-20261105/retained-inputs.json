@@ -1,0 +1,237 @@
+{
+  "task": "QA06",
+  "canonicalEvidenceSnapshot": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+  "selectionPurpose": "Personally compare all ten retained, source-bound surfaces; not a new native run or silently current full-stack qualification",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+  },
+  "images": [
+    {
+      "screen": "landing",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/landing-390.png",
+      "sourceBlob": "7dcce2464ffd9b8a3c862cfd94587e4bce3e7184",
+      "sha256": "1ca2519f3170287211b1252f33d9a3ba86bd75a4d3f52008c1bc87861ee14983",
+      "bytes": 205572,
+      "width": 390,
+      "height": 684,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/landing.png",
+      "report": {
+        "path": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/report.json",
+        "sha256": "92feccc7be2622283838f934e6d7cf83e2ed73a520f54f9f00e5530df264d662"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "login",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/css-parity-signin/final/candidate-390.png",
+      "sourceBlob": "cbe0d42093c25a1d86db8ff8c622423b9604826e",
+      "sha256": "73446b50ba840af84f458b85dd1b0681e89f07466913aa06e78d62b76b87955a",
+      "bytes": 60178,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/login.png",
+      "report": {
+        "path": "docs/mcr/evidence/css-parity-signin/final/report.json",
+        "sha256": "a8d7c9b888788054c7717846744bbaf71f6fb778e295d0da77472387255d205a"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "world",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-actual-world-peer-walk-after-reload-390.png",
+      "sourceBlob": "896c4e8b7654b1fa7b15c213c6eae142e88e6a18",
+      "sha256": "10ecb9ae3f24ddc97872d9a5b2e72d253f93fc4527220d7bc229efacd83a227e",
+      "bytes": 229856,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/world.png",
+      "report": {
+        "path": "docs/mcr/evidence/reviewed-persistence-motion/native-image-assessment.json",
+        "sha256": "656c82c2958b1282ec11c6c8ab9d109c1c7c4c429268e8595e9b59baf48154a1"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "map",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-390.png",
+      "sourceBlob": "0629f3c22062b501e4c88f9dc7ea7e791ee3b1b8",
+      "sha256": "d2b3cbc7d77c12f8538919d339c3ece8ffaa085d0710c5c3d16bd62c40d38092",
+      "bytes": 223205,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/map.png",
+      "report": {
+        "path": "docs/mcr/evidence/map-art06-default-app/native02/report.json",
+        "sha256": "e2303d374f70f1e3531e50c4bbde716fae32925fdfb5d98c1b6b94b6ed5392ab"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "customize",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/frontend-combined-adoption/reviewed-round01/reviewed/2026-11-04T15-46-44-984Z-reviewed-all-layer-draft-390.png",
+      "sourceBlob": "0b592601214a53820ed00cc527bbf7a2e56e356c",
+      "sha256": "0a17816b3e5bfb6c95e6d0d14aa959dda7d88a79a2d669a656eb0c7f4ee5b2c9",
+      "bytes": 48535,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/customize.png",
+      "report": {
+        "path": "docs/mcr/evidence/frontend-combined-adoption/reviewed-round01/reviewed/2026-11-04T15-46-44-984Z-native.json",
+        "sha256": "dd59913991048ed93fde44a68dcda814792d59a93cc5cca1dd3c5cb83eb8b0b3"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "feed",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/feed-390x843.png",
+      "sourceBlob": "4c75fe24717b6751dbe13441aea281a4b208024d",
+      "sha256": "b842355a93b5b773aac450ea651210463a5cece6d4a1c8b28ecef186bf0e3eb0",
+      "bytes": 100600,
+      "width": 390,
+      "height": 843,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/feed.png",
+      "report": {
+        "path": "docs/mcr/evidence/feed-root-composition/native-round-3/native/native.json",
+        "sha256": "8e999787766d8d777a695fafbdf00bdc24c52f9bd1aabf6c50edf4d951322788"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "meet",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/css-shared-chrome-ref-01/round-02/candidate-meet-390.png",
+      "sourceBlob": "6e7a088413f2c1b884a4b6c7e7e6ee7406437b6e",
+      "sha256": "7197520baaea4ef1f8ac79efea3607a013b1e12aea18f54aea9b0fc0a0ec36d2",
+      "bytes": 74342,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/meet.png",
+      "report": {
+        "path": "docs/mcr/evidence/css-shared-chrome-ref-01/round-02/report.json",
+        "sha256": "7daf41dc5d4d2c6cb9cfa3c1cca69a72bf00a59469f108ba31c15af197100e65"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "gifts",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/css-shared-chrome-ref-01/round-01/candidate-gifts-390.png",
+      "sourceBlob": "04faf5876dc58055a3c891e08dd8c586d60453d2",
+      "sha256": "177daf956144c30dcc9e792909c1bb5b270812e212501a49029e10019bb9d637",
+      "bytes": 56276,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/gifts.png",
+      "report": {
+        "path": "docs/mcr/evidence/css-shared-chrome-ref-01/round-01/report.json",
+        "sha256": "d05ad4df432b7be0d0ad7cbbb844c65b8cafde4c145b24fe7afdeed22bccb66b"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "wall",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/mural-production-binding/backoff-native-01/run/capture/390x844-backoff-recovered.png",
+      "sourceBlob": "b70f0f138502f9e8c985a271f6538c5cf849ff75",
+      "sha256": "bdd5c3dec50e647bf01a69befed0cbb72bd237133e4401ab870a93fd3f244fbf",
+      "bytes": 40085,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/wall.png",
+      "report": {
+        "path": "docs/mcr/evidence/mural-production-binding/backoff-native-01/run/capture/report.json",
+        "sha256": "cec3d134320c1012dc708dcdefac83d5445fb4215323f28ae859da17257bec3d"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    },
+    {
+      "screen": "me",
+      "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+      "sourcePath": "docs/mcr/evidence/css-shared-chrome-ref-01/round-02/candidate-me-390.png",
+      "sourceBlob": "a8427bd7df111ebde6876e54b495abfceea27062",
+      "sha256": "0d63de1c562724af09594d0b5de846fd476b684190174ad6de4124d2aef16d22",
+      "bytes": 58546,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/me.png",
+      "report": {
+        "path": "docs/mcr/evidence/css-shared-chrome-ref-01/round-02/report.json",
+        "sha256": "7daf41dc5d4d2c6cb9cfa3c1cca69a72bf00a59469f108ba31c15af197100e65"
+      },
+      "newCapture": false,
+      "assessment": "PERSONALLY_VIEWED_WITH_ORIGINAL_TARGET; bounded retained-source interpretation, not current full-stack acceptance"
+    }
+  ],
+  "copiedBytes": 1596254,
+  "fullReferenceAcceptance": false,
+  "originalGoalUnfinished": true,
+  "priorSelectionDiagnostic": {
+    "screen": "login",
+    "sourceRepositoryCommit": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+    "sourcePath": "docs/mcr/evidence/css-parity-signin/revised/candidate-390.png",
+    "sourceBlob": "1c8a34e64f1ad50888babfa10522b100f391e954",
+    "sha256": "3a7e9bfea2cd3a7763a93535be0e20d66922aa72b8b41077ddc01ebd6b29d190",
+    "bytes": 60398,
+    "width": 390,
+    "height": 844,
+    "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/login-revised-diagnostic.png",
+    "report": {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/report.json",
+      "sha256": "f6992f4d59c136498d21855f764fa7eda19c0479f48fc56b82582d178b1c3cbc"
+    },
+    "newCapture": false,
+    "assessment": "PENDING_DIRECT_INSPECTION_AND_SOURCE_DRIFT_CLASSIFICATION",
+    "reason": "Initial lookup selected revised instead of later final published CSS evidence; retained and superseded before assessment/handoff.",
+    "personallyViewed": true
+  },
+  "additionalMapPlacementEvidence": [
+    {
+      "screen": "map",
+      "sourceCommit": "1d34b5af06016058ca8d40d71ed62ea0d440be02",
+      "canonicalPublication": "PENDING at owner handoff; no approval barrier",
+      "sourcePath": "docs/mcr/evidence/map-stage-placement/native02/stage-placement-parade-390.png",
+      "sha256": "10c4f85fd8293e3132d84aa5ddd18c9e21a66b01f4b3ec7b70061982e78ebf69",
+      "bytes": 227460,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/map-stage-placement-parade-390.png",
+      "report": "docs/mcr/evidence/map-stage-placement/native02/report.json",
+      "reportSha256": "af1e02398c0928e090aa0af64a0de93533bd7722c59536e3d63a3e27a33795fa",
+      "newCapture": false,
+      "scope": "Final native02 changed-placement case only; native01 owner-rejected, prior ART06 all-era matrix separate",
+      "personallyViewed": true
+    },
+    {
+      "screen": "map",
+      "sourceCommit": "1d34b5af06016058ca8d40d71ed62ea0d440be02",
+      "canonicalPublication": "PENDING at owner handoff; no approval barrier",
+      "sourcePath": "docs/mcr/evidence/map-stage-placement/native02/forced-focus-parade-390.png",
+      "sha256": "ee6e728bfcc3b87661ae606894e714a4ee46c9ed73db880f3dfa1d12c09662a0",
+      "bytes": 211201,
+      "width": 390,
+      "height": 844,
+      "localByteIdenticalCopy": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/map-forced-focus-parade-390.png",
+      "report": "docs/mcr/evidence/map-stage-placement/native02/report.json",
+      "reportSha256": "af1e02398c0928e090aa0af64a0de93533bd7722c59536e3d63a3e27a33795fa",
+      "newCapture": false,
+      "scope": "Final native02 changed-placement case only; native01 owner-rejected, prior ART06 all-era matrix separate",
+      "personallyViewed": true
+    }
+  ]
+}

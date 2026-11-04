@@ -1,0 +1,155 @@
+{
+  "slot": "FE17-ORIGINAL-SOURCE-B-20261104T1750Z",
+  "pin": "2fa2539ab0a7dd41aeb5e59c662f32a511a9c1fb",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "mode": "source",
+  "startedUTC": "2026-11-04T17:53:30.076656+00:00",
+  "deadlineUTC": "2026-11-04T17:55:21.453728+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8,
+    "files": 65536,
+    "new": 134217728
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801501391,
+        "files": 7767,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1938985,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1548826470,
+    "reachableGitObjects": 39443,
+    "wholeCarryBytes": 2760530180,
+    "chargedFiles": 58784
+  },
+  "carryBytes": 2760530180,
+  "newPeak": 0,
+  "commands": [
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/replication.test.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/prediction.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/prediction.test.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/delayed-digest.ts"
+      ],
+      "pid": 37740,
+      "startedEpoch": 1793814810.085505,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814810.375207
+    },
+    {
+      "label": "config-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      "pid": 37749,
+      "startedEpoch": 1793814810.444994,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814810.728917
+    },
+    {
+      "label": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "ff96d53eb817c93dd1bafb5c4f125630f995413b"
+      ],
+      "pid": 37757,
+      "startedEpoch": 1793814810.8121111,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814811.102783
+    },
+    {
+      "label": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "pid": 37780,
+      "startedEpoch": 1793814811.19238,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793814811.482625
+    }
+  ],
+  "wholePeak": 2760530180,
+  "temporaryPeak": 0,
+  "durablePeak": 0,
+  "rssPeak": 48119808,
+  "processPeak": 3,
+  "sourcePins": {
+    "docs/mcr/evidence/fe17-original-completion/delayed-digest.ts": "49f9916080770c6b845c3854fd12588b9bb2e2826a15edb01a727c31ae96ca1c",
+    "docs/mcr/evidence/fe17-original-completion/full-carry-preflight.json": "e1c94effb75cd4996c99db1edec6dddb1376805b53c835c40da5d6c865445b96",
+    "docs/mcr/evidence/fe17-original-completion/original-criteria.json": "36c4c7580d066d5149a26f8e5b2f3630a375a30a6edb3b291f62cc71fe766985",
+    "docs/mcr/evidence/fe17-original-completion/point-kernel-provenance.json": "d0d3f22c56500a03f6d538f59269bcf7334cd3fde172a7d67d4c1cd561f1a3dd",
+    "docs/mcr/evidence/fe17-original-completion/qualify-source.py": "c0cce2e4ba61c0ecc1340fbe25b4afcb2cfdbfaaca81b9829fd25a8a798ff737",
+    "docs/mcr/evidence/fe17-original-completion/source-context.json": "2240ef035ca18b6715b88dc72a5fab4a3e111c5b942b36c084b498e2291675eb",
+    "docs/mcr/evidence/fe17-original-completion/vitest.config.mjs": "e781c65b2d5c918fca08af305fd94bb6d730fa6ce8abaab8ff794c81c749a5a1",
+    "docs/mcr/frontend/fe17-original-completion.md": "7b0219f8956b495fc2129a9033ca2f62e8c6a5bb66a5d28e949e22412ac3e3d2",
+    "frontend/src/world/network/__tests__/prediction.test.ts": "8455f0bd7bc2bea0d50a3f8bf3a860730996b6593a64f83b3119f2ed5e2d815b",
+    "frontend/src/world/network/__tests__/replication.test.ts": "4ab5672ba8d4eef55c45abb9979379c66ec8ea51a567721957b63268ca39dcc3",
+    "frontend/src/world/network/prediction.ts": "869dc310190cd425c1089fb9090f20efddc2916a17952d158bf2efda159b0f4f"
+  },
+  "minimumFree": 25603166208,
+  "finalInventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801502826,
+        "files": 7771,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1938985,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1548826470,
+    "reachableGitObjects": 39443,
+    "wholeCarryBytes": 2760531615,
+    "chargedFiles": 58788
+  },
+  "aliveOwnedPids": [],
+  "status": "PARTIAL_FULL_APPLICATION_TYPES_FAILED",
+  "finishedUTC": "2026-11-04T17:53:31.900589+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 25606762496
+}

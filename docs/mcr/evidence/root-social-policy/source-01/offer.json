@@ -1,0 +1,60 @@
+{
+  "id": "ROOT-SOCIAL-POLICY-SOURCE-B-20261104T1746Z",
+  "task": "ROOT-SOCIAL-POLICY",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T17:48:08.970427+00:00",
+  "head": "75a2332d8324a7f6dd4f8f0e77a1992cd5a5e7b8",
+  "kind": "source",
+  "startupFloorBytes": 12884901888,
+  "hardDeadline": "2026-11-04T17:53:08.970427+00:00",
+  "cleanupSeconds": 60,
+  "limits": {
+    "processes": 16,
+    "rssBytes": 3758096384,
+    "wholeBytes": 2147483648,
+    "tempBytes": 100663296,
+    "outputBytes": 25165824,
+    "newTotalBytes": 134217728
+  },
+  "preflight": {
+    "freeBytes": 26351894528,
+    "otherWholeConservativeBytes": 4294967296,
+    "ownNewBytes": 134217728,
+    "remainingBytes": 21922709504,
+    "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "counterpart": "0fd3846914e82ddefc3cc7352ebac234ecbd1a91",
+    "fixtureFix": "7aecd87b5ea61f5bd54aeacdbe97e86e6f888f59"
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "src/world/composition/__tests__/social-policy/vitest.config.ts"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.json",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--allowImportingTsExtensions",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+      "--deny-warnings",
+      "src/main.tsx",
+      "src/app/ports.ts",
+      "src/app/world-entry/production.ts",
+      "src/app/world-entry/social-availability.ts",
+      "src/world/composition/index.ts",
+      "src/world/composition/policy.ts",
+      "src/world/composition/__tests__/social-policy"
+    ]
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "slot": "FE17-ORIGINAL-SOURCE-B-20261104T1750Z",
+  "status": "ACCEPT",
+  "source": "a49d2212c20defc73b17c2666e2170f5c3968239",
+  "acceptedUTC": "2026-11-04T17:51:21.453728+00:00",
+  "workStopUTC": "2026-11-04T17:54:21.453728+00:00",
+  "deadlineUTC": "2026-11-04T17:55:21.453728+00:00",
+  "outerArgv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/qualify-source.py"
+  ],
+  "commands": [
+    [
+      "runtime",
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      0
+    ],
+    [
+      "published-fixture-delayed-red",
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      1
+    ],
+    [
+      "lifecycle-delayed-green",
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      0
+    ],
+    [
+      "types",
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--input-type=module",
+        "--eval",
+        "import assert from 'node:assert/strict';\nimport {readFileSync} from 'node:fs';\nimport {createHash} from 'node:crypto';\nimport {dirname} from 'node:path';\nconst helper=\"/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs\";\nconst original=readFileSync(helper,'utf8');\nassert.equal(createHash('sha256').update(original).digest('hex'),'4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1');\nassert(original.includes('...parsed.options, incremental:'));\nconst source=original.replace('...parsed.options, incremental:','...parsed.options, allowImportingTsExtensions: true, incremental:')\n  .replaceAll('import.meta.dirname',JSON.stringify(dirname(helper)));\nprocess.argv.push('--application');\nawait import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));\n"
+      ],
+      0
+    ],
+    [
+      "lint",
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/replication.test.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/prediction.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/prediction.test.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/delayed-digest.ts"
+      ],
+      0
+    ],
+    [
+      "config-syntax",
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/fe17-original-completion/vitest.config.mjs"
+      ],
+      0
+    ],
+    [
+      "whitespace",
+      [
+        "git",
+        "diff",
+        "--check",
+        "ff96d53eb817c93dd1bafb5c4f125630f995413b"
+      ],
+      0
+    ],
+    [
+      "plan",
+      [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      0
+    ]
+  ],
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801159608,
+        "files": 7757,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1938555,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1548784984,
+    "reachableGitObjects": 39429,
+    "wholeCarryBytes": 2760146481,
+    "chargedFiles": 58760
+  },
+  "freeBytes": 26534879232,
+  "otherReservationConservativeBytes": 4294967296,
+  "otherActualNewBytes": 167772160,
+  "ownNewReservationBytes": 134217728,
+  "postReservationFreeBytes": 22105694208,
+  "rootList": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+    "all reachable HEAD+preserved AR03 logical Git objects",
+    "private TMP allocated only after child admission"
+  ],
+  "supervisorSHA256": "7032663a7f5ddd7629eb3f6593ac602b307f6e5e753c6043425ca3960c297956",
+  "nodePath": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "nodeSHA256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSHA256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "readsetSHA256": "a0cce3a1d0fab7eb2dc43171fea2d0ddd75d9a2659c2969ed2ffba63ba462e05",
+  "readsetCount": 2336,
+  "caps": {
+    "totalSeconds": 240,
+    "workSeconds": 180,
+    "cleanupSeconds": 60,
+    "maxChildSeconds": 90,
+    "allProcesses": 8,
+    "rssBytes": 2684354560,
+    "wholeBytes": 4294967296,
+    "entries": 65536,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 33554432,
+    "sampleMs": 250
+  },
+  "predecessorFullUTC": "2026-11-04T17:48:26.989275Z",
+  "nextOwner": "01a1a53d-36b8-7522-ae11-646f5e6f0b30",
+  "preflightCorrection": "First local argv-extraction lacked BASE in evaluation context; failed before ACCEPT/readset/child/TMP/link. Corrected preflight only, same frozen guardian."
+}

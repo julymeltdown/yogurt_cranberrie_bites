@@ -1,0 +1,288 @@
+{
+  "slot": "FE17-MOTION-SOURCE-A-20261104T1814Z",
+  "pin": "1a3cfba2bc98ee7e3a9199eab4e2c80b1f37626d",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "mode": "source",
+  "startedUTC": "2026-11-04T18:18:20.670604+00:00",
+  "deadlineUTC": "2026-11-04T18:19:23.909659+00:00",
+  "caps": {
+    "whole": 4294967296,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8,
+    "files": 65536,
+    "new": 134217728
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801875716,
+        "files": 7802,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1945112,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551102464,
+    "reachableGitObjects": 39632,
+    "wholeCarryBytes": 2763186626,
+    "chargedFiles": 59008
+  },
+  "carryBytes": 2763186626,
+  "newPeak": 0,
+  "commands": [
+    {
+      "label": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+        "--",
+        ".",
+        ":(glob,exclude)docs/mcr/evidence/fe17-original-completion/**/*.log"
+      ],
+      "pid": 35976,
+      "startedEpoch": 1793816300.679801,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793816300.973019
+    },
+    {
+      "label": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "pid": 36034,
+      "startedEpoch": 1793816301.051326,
+      "expectedExit": 0,
+      "exit": 0,
+      "endedEpoch": 1793816301.3328059
+    }
+  ],
+  "wholePeak": 2763186626,
+  "temporaryPeak": 0,
+  "durablePeak": 0,
+  "rssPeak": 172933120,
+  "processPeak": 3,
+  "sourcePins": {
+    "contracts/fixtures/realtime/index.json": "e2888ccd54c4a95fd43e734980e7902713acf507814f340a2a5886365d26dfeb",
+    "contracts/realtime/v1/policy.json": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734",
+    "contracts/realtime/v1/world.schema.json": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85",
+    "docs/mcr/evidence/fe17-original-completion/delayed-digest.ts": "1f7fd615dfa2c94f66f897696c693e5fbf8cc9e72ad49a5a2278c5c1cfd6a64c",
+    "docs/mcr/evidence/fe17-original-completion/full-carry-preflight.json": "e1c94effb75cd4996c99db1edec6dddb1376805b53c835c40da5d6c865445b96",
+    "docs/mcr/evidence/fe17-original-completion/motion-readonly-inputs.json": "45f56be875a325bb383c1e994234e6d582afa8dce0770a65b8b189353f0e0e12",
+    "docs/mcr/evidence/fe17-original-completion/motion-readset.json": "4732da6fcb082a01be432703506f445b718d18d67305111a016d616ffd94624e",
+    "docs/mcr/evidence/fe17-original-completion/original-criteria.json": "51f61efa3e6c40eee3e871cf896bdf9b5d6fe8bb9a7a0f0ab8cb251ebccea287",
+    "docs/mcr/evidence/fe17-original-completion/point-kernel-provenance.json": "d0d3f22c56500a03f6d538f59269bcf7334cd3fde172a7d67d4c1cd561f1a3dd",
+    "docs/mcr/evidence/fe17-original-completion/qualify-browser.py": "08d81473625efb55973b9d796599e439b3038185c6c70866451a963c1fdc3cfc",
+    "docs/mcr/evidence/fe17-original-completion/qualify-source.py": "59a0fff69227b73ad4cb900738f1adbd431282bbbc5ade4f77be398f96c132fe",
+    "docs/mcr/evidence/fe17-original-completion/shared-transfer.json": "99775ca179a3518f9c8da2bf04b5d361b045ded04ee11ce4f2cceb5a534318d7",
+    "docs/mcr/evidence/fe17-original-completion/source-context.json": "2240ef035ca18b6715b88dc72a5fab4a3e111c5b942b36c084b498e2291675eb",
+    "docs/mcr/evidence/fe17-original-completion/source-remainder01/config-syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/fe17-original-completion/source-remainder01/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/fe17-original-completion/source-remainder01/plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "docs/mcr/evidence/fe17-original-completion/source-remainder01/supervisor.json": "7628b6880d19ade8b5c3422aee89e7297a988d3a414107bb54b012f22d554209",
+    "docs/mcr/evidence/fe17-original-completion/source-remainder01/whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/fe17-original-completion/source-retry01/lifecycle-delayed-green.log": "d71e775dc9584c908d51871a3a0aefc72fefeab5cbcc83fae656148645f47eb4",
+    "docs/mcr/evidence/fe17-original-completion/source-retry01/published-fixture-delayed-red.log": "aee711772abf8403468d3e506f060a64a32590230920e32bdf7e54f69a03b144",
+    "docs/mcr/evidence/fe17-original-completion/source-retry01/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/fe17-original-completion/source-retry01/supervisor.json": "ea63be2d0ca28f42dea97cadcefc9d6cd8430a6879d97ef4f4a91a2bf9d59c73",
+    "docs/mcr/evidence/fe17-original-completion/source-retry01/types.log": "a8f7b1d8d6d471da7a4f3739a4630c13595a88a3fe627a80c3459de3332754ba",
+    "docs/mcr/evidence/fe17-original-completion/source-round01-acceptance.json": "cda6e01604dc5b154ca3d5b1c2011e0a44dd00f797a86945680182e2bc560784",
+    "docs/mcr/evidence/fe17-original-completion/source-round01-full-release.json": "dc59822920e64c1ae6542d352d4f765585e4ab370cb341cea327a1bd10e95516",
+    "docs/mcr/evidence/fe17-original-completion/source-round01-readset.json": "a0cce3a1d0fab7eb2dc43171fea2d0ddd75d9a2659c2969ed2ffba63ba462e05",
+    "docs/mcr/evidence/fe17-original-completion/source-round01/published-fixture-delayed-red.log": "3bc39e3121ab02c2417e9e268c13735e8d1f9891d5b2714822eae3b35925cdba",
+    "docs/mcr/evidence/fe17-original-completion/source-round01/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/fe17-original-completion/source-round01/supervisor.json": "92fc6cc498e885d7b3b285f75a6eab0323c07aa47a2d671a4aedfcaf0ea6adb0",
+    "docs/mcr/evidence/fe17-original-completion/vitest.config.mjs": "3c6b26d2cb6dfdeefa11a8a86e233a717e5513612d7159e3fbab36a4aee4545a",
+    "docs/mcr/frontend/fe17-original-completion.md": "577a523a15c54489a2a44ccf336bd070f4c50fb5f78afe95cdb8081dbad63bec",
+    "frontend/src/app/world-entry/production.ts": "3cb320cee99ffcf3b039bce35173e422b2cccede3d6a428c1a7d3645945b7257",
+    "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx": "1160d0678c399dc3570d81d4ea6a0983ae106c6e97fc5f3678bbad2cb839fafb",
+    "frontend/src/world/composition/index.ts": "f139b37872968aff16235b0816cf6c3f573f81020a8a5047197f11099fcbc30c",
+    "frontend/src/world/entities/replicated.ts": "c4f517d64fc862d033e81b14405d879545961988fd6b45b4f6ca97364122bb9d",
+    "frontend/src/world/network/WorldTransport.ts": "bb2d81d2a857ee803702edc7d59d1d2c3706a174c6faa226f13bb7c27fe19708",
+    "frontend/src/world/network/__tests__/fixtures/replication-browser.ts": "f72322917fc7f479f45ab8b3db2f9a23b2ad8b112e3179fef09f3b544b741dff",
+    "frontend/src/world/network/__tests__/motion-transport/composition.test.ts": "643528f81a0dcbbb2ba85237039812ff780d60b90056c79782a0d77b9cdc1b43",
+    "frontend/src/world/network/__tests__/motion-transport/production.test.ts": "41bae52a2d800dab73ca2601a2752affb5a65dff42b5e716daf50b9f3873a794",
+    "frontend/src/world/network/__tests__/motion-transport/transport.test.ts": "7814300313278bd31b7324ba9db3d229f40c13565fcf10e4ce5c517f0f554756",
+    "frontend/src/world/network/__tests__/prediction.test.ts": "7a92b66f9edef90256564e9b7e476f6040cb1e055fa161ad454c44e62ccb6638",
+    "frontend/src/world/network/__tests__/replication-browser.mjs": "420373c5b82231c80f7fa5436eec89c41b343c6903fdc457cccf5fafbd8de3c9",
+    "frontend/src/world/network/__tests__/replication.test.ts": "6fe6ce0005604b108de11a42e483ee0e111a2acd4a336574c64764795bfeb1d5",
+    "frontend/src/world/network/prediction.ts": "e11ebca3012d4002958e5d0ff97cef569f382f4be2ec5b980fe569f1376ff01f",
+    "frontend/src/world/network/replication.ts": "23a1d227fb66837cdabff76e723689c2bb58de93b0363361d26769c7d6f69951",
+    "frontend/src/world/network/transport/contract.ts": "5dca79e4627decb98828a1f323c408fbbe98fa32c1e0ff3bce6dec8d4d4ecb1b",
+    "frontend/src/world/network/transport/engine.ts": "347b796a9270250c0fe2573bce4c456932f0bac1e84111984a33769977ca80e0",
+    "frontend/src/world/network/transport/wire-types.ts": "f5edb775204f7bd01b7c278d565f046405102b10c662684e3a45593897ac5db2",
+    "scripts/mcr/tests/test_realtime.py": "67336945ffbe0dee39f8123652aa9a09a3a8cf413260aab0ea3ec1f161d9aa26",
+    "scripts/mcr/validate-realtime.py": "f16597d77d7110c417dc610b54aa8a40951da7ad656198139df4770e60c1be09"
+  },
+  "readonlyInputs": [
+    {
+      "path": "contracts/fixtures/realtime/index.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "e2888ccd54c4a95fd43e734980e7902713acf507814f340a2a5886365d26dfeb",
+      "preimageSha256": "cb4133e389293820230bf234fbc16051fe76691e8aae30201f9467a8919fa13b",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/boolean-version.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "c6e6498ffc33ac305d542ff83273e4b62098799143f741d26c39415f51651025",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/negotiated.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "871eebcd1adc4d0d16c6c059f1f5908abde2259baa71610e73437bc99f9585b6",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/null-version.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "993b3f8e81e1c77b5cbb0b6d87fbfbc2e0e7dd6e77b3999e519b522137c36ded",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/unsupported-version.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "524baa6e7d9e61f93ff6d82458322bce1f21f29e50d622fa75193ba6270b20b6",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/fixtures/realtime/motion-v1/vectors.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "4929a4ff10b33c7bf8286f5e2208f3a044ed73d5780d242ceb4a40629c457c6a",
+      "preimageSha256": null,
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734",
+      "preimageSha256": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85",
+      "preimageSha256": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "frontend/src/world/network/transport/wire-types.ts",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "f5edb775204f7bd01b7c278d565f046405102b10c662684e3a45593897ac5db2",
+      "preimageSha256": "78657e0a50e19a6a0e567149a23bb5cbca2ba20eb60488769b65cbdd240dbc85",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "scripts/mcr/tests/test_realtime.py",
+      "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "sha256": "67336945ffbe0dee39f8123652aa9a09a3a8cf413260aab0ea3ec1f161d9aa26",
+      "preimageSha256": "fcc229afc69e7bef62416e894f5f8b605d7c04b1eb41e8c1c80432d87a068c80",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact11-path readonly dependency intake grant; BE World20f public CONTRACT_READY input; no edits or FE17 publication of these paths",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "scripts/mcr/validate-realtime.py",
+      "commit": "9c12e1cbdd42bf48aadd3f99d2721a2eeb10f041",
+      "sha256": "f16597d77d7110c417dc610b54aa8a40951da7ad656198139df4770e60c1be09",
+      "preimageSha256": "31ee92c619fae378c03a6ed25339dae9bd1dfeee7b8cb986cc38bd34c4400ee9",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "BackendWorld20f exact corrected oracle intake9c12: complete anchor without upsert updatescachedself; conflicting same-frame upsert rejected. Root exactread-only input authority persists.",
+      "custody": "Readonly input; excluded from FE17 authored/published patch",
+      "priorInputCommit": "b9244f869e69a2a7d7929c030790a9623904c904",
+      "priorInputSha256": "e8c388aa6c00aa41a41ce78a65a21e3e44c8e96c260b9bad0631b8929805fbef"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/gift-detail-media/native/preview.tsx",
+      "commit": "7aecd87b5ea61f5bd54aeacdbe97e86e6f888f59",
+      "sha256": "1160d0678c399dc3570d81d4ea6a0983ae106c6e97fc5f3678bbad2cb839fafb",
+      "preimageSha256": "4af3e2d4286ec1b082f61dd548c956a3b85108d6ff106458636dbe538098d63a",
+      "preimageHead": "2de9eb70904c0d9ebf8db7c3fd1a146bd7ed270a",
+      "authority": "Root153 explicit exact fixture postimage intake after original source FULL; fresh remaining type qualification only",
+      "custody": "Readonly input; excluded from FE17 authored/published patch"
+    },
+    {
+      "path": "frontend/src/world/composition/policy.ts",
+      "commit": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+      "sha256": "d41642f7c666d6f206d9d95aa4b152cee1c7fe0fc669d037301b88d61387d2fd",
+      "preimageSha256": null,
+      "authority": "Root153 exact frozen composition integration preimage; preserve policy attachment; only three motion hunks transferred",
+      "custody": "Readonly dependency"
+    }
+  ],
+  "otherReserveBytes": 2852126720,
+  "minimumFree": 17130577920,
+  "finalInventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "logicalBytes": 801877151,
+        "files": 7804,
+        "symlinks": 0
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "logicalBytes": 408263334,
+        "files": 11104,
+        "symlinks": 460
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "logicalBytes": 1945112,
+        "files": 10,
+        "symlinks": 0
+      }
+    ],
+    "reachableGitLogicalBytes": 1551102464,
+    "reachableGitObjects": 39632,
+    "wholeCarryBytes": 2763188061,
+    "chargedFiles": 59010
+  },
+  "aliveOwnedPids": [],
+  "status": "PASS",
+  "finishedUTC": "2026-11-04T18:18:21.723410+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 17130512384
+}

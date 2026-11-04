@@ -1,0 +1,33 @@
+{
+  "observedUTC": "2026-11-04T18:25:12.226789+00:00",
+  "guardian": "motion-native01/supervisor.json",
+  "ownedTargets": [
+    {
+      "path": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.3gGB4F",
+      "origin": "Only observed SingletonSocket link from this guardian-created private Chrome profile; browser aborted before journey, all recorded descendants dead",
+      "entries": [
+        {
+          "name": "SingletonSocket",
+          "bytes": 0,
+          "type": "socket"
+        },
+        {
+          "name": "SingletonCookie",
+          "bytes": 19,
+          "type": "symlink"
+        }
+      ],
+      "bytes": 19,
+      "lsofExit": 1,
+      "handles": []
+    }
+  ],
+  "scope": "No external glob scan or peer folder deletion; exact directory observed from own fresh profile only",
+  "cleanup": {
+    "removedExactConfirmedOwnedTargets": [
+      "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/com.google.Chrome.3gGB4F"
+    ],
+    "remaining": [],
+    "completedUTC": "2026-11-04T18:25:12.227578+00:00"
+  }
+}
