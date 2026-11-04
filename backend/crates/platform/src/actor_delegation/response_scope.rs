@@ -60,6 +60,11 @@ where
                 .extensions
                 .remove::<ResponseScopeToken>()
                 .map(|token| token.0);
+            if scope.is_some() {
+                // A fixed HTTP length lets the transport finish after the last
+                // DATA byte without polling the completion boundary below.
+                parts.headers.remove(http::header::CONTENT_LENGTH);
+            }
             Ok(http::Response::from_parts(
                 parts,
                 ScopeBody::new(body, scope),
@@ -160,7 +165,16 @@ where
         self.ended && self.trailers.is_none()
     }
     fn size_hint(&self) -> SizeHint {
-        self.inner.size_hint()
+        if self.failed || self.ended {
+            SizeHint::with_exact(0)
+        } else if self.scope.is_some() || self.completion.is_some() {
+            // Preserve terminal polling even when the serializer is a Full
+            // body. HTTP/1 uses chunked framing; completion precedes its final
+            // chunk. HTTP/2 likewise cannot infer EOS from a fixed byte count.
+            SizeHint::new()
+        } else {
+            self.inner.size_hint()
+        }
     }
 }
 #[cfg(test)]
@@ -215,5 +229,21 @@ mod tests {
         assert!(body.frame().await.unwrap().is_err());
         assert!(body.frame().await.is_none());
         assert_eq!(scope.0.load(Ordering::SeqCst), 0);
+    }
+
+    #[tokio::test]
+    async fn exact_serialized_length_does_not_replace_the_completion_boundary() {
+        let scope = Arc::new(Scope(AtomicUsize::new(0)));
+        let mut body = ScopeBody::new(Full::new(Bytes::from_static(b"data")), Some(scope.clone()));
+        assert_eq!(body.size_hint().exact(), None);
+        assert!(body.frame().await.unwrap().unwrap().is_data());
+        assert_eq!(body.size_hint().exact(), None);
+        assert!(!body.is_end_stream());
+        assert_eq!(scope.0.load(Ordering::SeqCst), 0);
+        assert!(body.frame().await.is_none());
+        assert_eq!(scope.0.load(Ordering::SeqCst), 1);
+        assert_eq!(body.size_hint().exact(), Some(0));
+        let plain = ScopeBody::new(Full::new(Bytes::from_static(b"data")), None);
+        assert_eq!(plain.size_hint().exact(), Some(4));
     }
 }
