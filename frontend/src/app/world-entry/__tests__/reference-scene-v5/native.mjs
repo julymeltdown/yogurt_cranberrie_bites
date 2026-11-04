@@ -57,6 +57,7 @@ function assertFit({ image, viewport }) {
   assert(image.top >= viewport.top - 1 && image.bottom <= viewport.bottom + 1)
 }
 async function open(width, era, suffix = '') {
+  const space = await statfs(root); assert(space.bavail * space.bsize >= 8 * 1024 ** 3, 'Disk floor before next browser context')
   const context = await browser.newContext({ viewport: { width, height: 844 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
   const page = await context.newPage(), errors = [], requests = []
   page.on('pageerror', error => errors.push(error.message)); page.on('request', r => requests.push(new URL(r.url()).pathname))
@@ -210,6 +211,7 @@ try {
     assert.deepEqual(bounds, { width: 44, height: 44, badgeInside: true })
     assert.equal(await page.locator('.places-map-plaque').count(), 4)
     assert.deepEqual(fixture.errors, [])
+    await page.screenshot({ path: resolve(output, `marker-${status}-390.png`) })
     report.checks.push({ name: `Bounded ${status} marker retains full semantics and four targets`, status: 'PASS', bounds, cleanup: await close(fixture) })
   }
   // Actual Places mismatch/reload controls; only the fixture catalog response is deliberately inconsistent.

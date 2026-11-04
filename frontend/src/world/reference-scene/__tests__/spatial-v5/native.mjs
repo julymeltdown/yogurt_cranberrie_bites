@@ -15,6 +15,7 @@ const cache=await mkdtemp(join(tmpdir(),'mcr-reference-world-')),server=await cr
 let browser,page,stage='start'
 try{browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});report.browser=browser.version()
 for(const [width,height]of[[360,800],[390,844],[430,932]]){
+ const space=await statfs(root);assert(space.bavail*space.bsize>=8*1024**3,'Disk floor before next width')
  stage=`${width}/boot`;page=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'});page.on('pageerror',e=>report.errors.push(e.message))
  await page.addInitScript(()=>{const urls=new Set(),create=URL.createObjectURL.bind(URL),revoke=URL.revokeObjectURL.bind(URL);URL.createObjectURL=blob=>{const u=create(blob);urls.add(u);return u};URL.revokeObjectURL=u=>{urls.delete(u);return revoke(u)};window.liveReferenceUrls=urls;window.referenceEncodes=[];const toBlob=HTMLCanvasElement.prototype.toBlob;HTMLCanvasElement.prototype.toBlob=function(callback,...args){return toBlob.call(this,blob=>{window.referenceEncodes.push({width:this.width,height:this.height,bytes:blob?.size});callback(blob)},...args)}})
  await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/src/world/reference-scene/__tests__/spatial-v5/native.html`)
