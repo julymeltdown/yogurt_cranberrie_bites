@@ -39,5 +39,12 @@
     "release": "native-01-entry-failure/release.json",
     "productProof": false,
     "repair": "Harness loads existing Vite config and captures failure evidence; exact initial page cause unproven"
+  },
+  "nativeSecondAttempt": {
+    "pin": "758a950abbe7ba99c961ce2611e08f55858fd87d",
+    "result": "FAIL_BLANK_ENTRY_SOURCE_MODULES_INTERCEPTED",
+    "release": "native-02-interception-failure/release.json",
+    "visual": "390 failure PNG individually viewed; blank page",
+    "repair": "Restrict route interceptor to URL pathname starting /api/; no product change"
   }
 }

@@ -36,7 +36,7 @@ try {
   const context = await browser.newContext({ viewport:report.viewport,hasTouch:true,isMobile:true,deviceScaleFactor:1,reducedMotion:'reduce' })
   const page = await context.newPage();activePage=page;page.on('pageerror',e=>report.errors.push(e.message))
   report.consoleErrors=[];page.on('console',message=>{if(message.type()==='error')report.consoleErrors.push(message.text())})
-  await page.route('**/api/**',async route=>{
+  await page.route(url=>url.pathname.startsWith('/api/'),async route=>{
     const input=route.request()
     try {
       const response=await controlled.handle(new Request(input.url(),{method:input.method(),headers:input.headers(),...(input.postData() ? {body:input.postData()} : {})}))

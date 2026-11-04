@@ -102,3 +102,14 @@ and Tailwind plugins. The retry loads the existing configuration with its runner
 loader and adds failure-page, console and request capture. This is a harness-only
 repair; no product, CSS or Auth source changes or passing-suite replay. The initial
 failure lacks a page capture, so its exact browser-visible cause remains unproven.
+
+The second native attempt (`758a950ab`) supplied the missing diagnosis. Its raw
+requests show source-module requests `/src/shared/api/http.ts` and
+`/src/shared/api/errors.ts` intercepted as API calls and answered with synthetic
+401 responses. The individually viewed failure PNG is blank and the document
+body has no text. The broad `**/api/**` interceptor matched these source paths.
+The owned harness now restricts interception to URL paths starting `/api/`, so
+source modules load normally. This concrete harness defect explains the blank
+entry; loading the existing Vite plugins alone did not resolve it. No product
+source or private authorization rule changes. Raw failure, PNG and FULL release
+at 19:28:43.225681Z remain in `native-02-interception-failure`.
