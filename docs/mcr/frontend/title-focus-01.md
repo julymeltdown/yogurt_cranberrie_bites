@@ -1,9 +1,12 @@
 # TITLE-FOCUS-01 — title focus backing feasibility
 
-Status: **IN_PROGRESS**. The original static lease is proven **NO_PATCH**.
-Root subsequently granted a state-dependent background-only continuation.
-Implementation, actual validation and publication remain unfinished. This is
-implementation-owner evidence, not a king/SL review gate.
+Status: **DELIVERED / OWNER-QUALIFIED** for the pinned TITLE-FOCUS-01 cohort.
+Implementation, actual validation and remote publication were independently
+verified at `4d501d92bc2a00bdce29d33988203a957f790175`; the final audit below
+is authoritative. Earlier sections retain the intermediate planning, blocked
+and execution states as historical evidence. The raw native exit 1 and its two
+forced-color point failures remain preserved with the owner's scoped
+qualification. This is implementation-owner evidence, not a king/SL review gate.
 
 ## Assignment and ownership
 
@@ -339,3 +342,48 @@ path was no longer materialized; the immutable Git blobs remained present and
 all 43 PNGs were independently verified in the allocated readback. No packet
 was restored/copied to work around that change. Publication and exact own remote
 proof are the remaining delivery boundary.
+
+## Final publication audit
+
+Root published `master` at **`4d501d92bc2a00bdce29d33988203a957f790175`**.
+The implementation owner independently ran fresh `git ls-remote origin
+refs/heads/master` and `git fetch origin master`; both exited **0**, and the
+advertised remote SHA matched that delivery exactly. The own checkout was clean.
+
+`git diff --exit-code` between own validated handoff
+`81b11df97bfda92f3d48b8c18f76ee96a710d762` and that remote delivery exited **0**
+for all **eight owned postimages**: `shell-chrome.css`, this document and the six
+reader/result files under `docs/mcr/evidence/title-focus-01/`. The entire
+`docs/mcr/evidence/cozy-backgrounds-v1/focus-04/` subtree also compared byte-exact
+against original seal `4591f927023d8fb5f5afa3e8d2f11a501543cae4` with exit **0**.
+Thus the independently verified 53 artifact, 688 declared source/asset and 43 PNG
+pins, including the raw native failure and resource record, are retained on the
+remote. No packet was materialized to perform these ordinary Git checks.
+
+Every `git merge-base --is-ancestor` check below exited **0** against the
+published delivery:
+
+| Evidence | Remote ancestor |
+| --- | --- |
+| Historical static-lease proof | `df0769e5` |
+| Validated conditional background implementation | `2ea7fd4e07aebb8b4d58938e8cba9d378c5fb855` |
+| Immutable actual capture seal | `4591f927023d8fb5f5afa3e8d2f11a501543cae4` |
+| Integration/provenance documentation (`53d5e6f3`) | `34da4a29` |
+| Initial immutable packet reader (`e1db0e3e`) | `01ed0a23` |
+| Executed owner qualification and result (`81b11df9`) | `9a32a98a` |
+
+The completion audit covers the original bounded requirements: exclusive
+ownership and explicit expanded lease; static feasibility proof; the compliant
+conditional paint with frozen foreground/outline/layout and unchanged unfocused
+state; meaningful source and actual 360/390/430 validation; honest forced-color
+qualification and failure retention; scoped committed documentation/handoffs;
+and exact remote postimage/ancestry proof. No assigned implementation or
+validation fix remains. No broad design, device, live/multiuser or full WCAG
+conformance is inferred from this cohort.
+
+Application CSS ownership was already STOP/RETURN to Root for subsequent work.
+This audit is the sole documentation follow-up to the verified delivery; its
+publication and final document readback require no application test/capture
+rerun. The owner returns the remaining task documentation/evidence leases after
+that readback and records actual goal completion, without creating a new goal
+or treating publisher notification as technical approval.
