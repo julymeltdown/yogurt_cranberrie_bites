@@ -3,6 +3,13 @@
 Status: IN_PROGRESS. This is implementation of the canonical spatial release;
 source art is a proposal and is not accepted product artwork.
 
+Current delivery: published `60991c53` contains the qualified all-three map2
+component and actual-transaction avatar hook (tested source `6c700f04`). The local
+map3/virtual-aware policy follow-up `a80ac2c2` has source/Python/PNG qualification;
+its fresh Rust/native checks are queued, NOT_RUN. No build target or native
+cluster is held. Current map3/source-review details are in the final section.
+Historical checkpoints below retain their exact source and evidence boundaries.
+
 ## Objective and completion criteria
 
 Deliver a source-bound canonical spatial geometry and product-release/bootstrap
@@ -31,8 +38,9 @@ Product API root confirmed the exact scope directly; World confirmed no overlap:
 
 No World/config/0026, frontend, art originals, shared schemas/contracts/protos,
 manifests/lockfiles, migrations, root bindings or static URL mapping is owned here.
-BACKEND was explicitly granted and accepted for the source-ready compile/freeze slice;
-no native database has started. No MEDIA or third target is used. The separate bounded avatar
+BACKEND was explicitly returned after each frozen compile slice. All scoped native
+clusters were cleaned up; no target or database is currently held. No MEDIA or
+third target is used. The separate bounded avatar
 transaction hook is coordinated with participant and authority owners, not granted
 implicitly by this spatial scope.
 
@@ -46,20 +54,20 @@ The four existing interaction/place UUID pairs and place qualification are copie
 unchanged. MAP representations have no collision footprints or new backend IDs.
 Virtual movement and illustrative routes establish no physical arrival or safety.
 
-## Source-bound candidate
+## Initial source-bound candidate (historical)
 
 `build_spatial_release.py` freezes exact published artist bytes, detects checkout
 drift, validates the actual C06 MapManifest and geometry semantics, and emits
 canonical map bytes plus source/resource pins and explicit readiness. It does not
 publish an event-current map or produce an admitted bootstrap by implication.
 
-Candidate map: `mcr_reference_scene_r3`, revision 1, content hash
+Initial candidate map: `mcr_reference_scene_r3`, revision 1, content hash
 `sha256:d455e77ddeadeaf120fefad4d2eaec6d92d4c0ccc7c091688b5471598776950a`.
 Places retain VIRTUAL_CONCEPT / CONCEPT_ONLY and original UNREVIEWED provenance;
 the new map provenance is also UNREVIEWED. The missing Tiled resource is
 NOT_PROVIDED with null path/hash. No frontend URL is fabricated for backend output.
 
-Readiness is NOT_ADMITTED: painted REVENGE and DANGER are unavailable; PARADE is
+At that initial checkpoint readiness was NOT_ADMITTED: painted REVENGE and DANGER were unavailable; PARADE is
 only a source proposal; source provenance is unreviewed; the Tiled resource and
 product bootstrap/operator configuration are missing. The compact PARADE runtime input
 is 1,947,817 bytes and 2,043,904 pixels, below existing C06 per-scene limits of
