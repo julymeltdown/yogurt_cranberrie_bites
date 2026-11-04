@@ -84,33 +84,6 @@ pub fn validate_product_files(
         return Err(super::BootstrapServiceError::ReleaseUnavailable);
     }
     let mut capability_template = doc.clone();
-    let capabilities = object(&capability_template, "capabilities")?;
-    for capability in capabilities.keys() {
-        if !matches!(
-            capability.as_str(),
-            "world" | "feed" | "meet" | "gifts" | "wall" | "social_sharing" | "mutations"
-        ) {
-            return Err(super::BootstrapServiceError::ReleaseUnavailable);
-        }
-    }
-    let world_resources = (avatar["contract_version"] == "2.0.0"
-        || avatar["atlas"]["texture"]["image_state"] == "PROVIDED")
-        && map["tilemap"]["resource_state"] == "PROVIDED"
-        && themes
-            .iter()
-            .all(|theme| theme["texture"]["image_state"] == "PROVIDED");
-    let feature = |_name: &str, enabled: bool| json!({"available": enabled, "reason": if enabled { Value::Null } else { Value::String("FEATURE_DISABLED".into()) }});
-    capability_template["capabilities"] = json!({
-        "world": if features.world && !world_resources {
-            json!({"available":false,"reason":"DEPENDENCY_UNAVAILABLE"})
-        } else { feature("world", features.world) },
-        "feed": feature("feed", features.feed),
-        "meet": feature("meet", features.meet),
-        "gifts": feature("gifts", features.gifts),
-        "wall": feature("wall", features.wall),
-        "social_sharing": feature("social_sharing", features.social_sharing),
-        "mutations": feature("mutations", false),
-    });
     capability_template["event"]["event_id"] = Value::String(template_event_id.clone());
     capability_template["map_manifest"] = map.clone();
     capability_template["avatar_manifest"] = avatar.clone();
@@ -118,6 +91,7 @@ pub fn validate_product_files(
     ordered.sort_by_key(|v| string(v, "theme_id").unwrap_or_default().to_owned());
     capability_template["theme_manifests"] = Value::Array(ordered);
     capability_template["participant"]["age_status"] = Value::String("UNKNOWN".into());
+    apply_features(&mut capability_template, &features)?;
     super::schema::validate(&capability_template)?;
     let mut bound_sources = documents.clone();
     bound_sources.push(capability_template.clone());
@@ -129,6 +103,80 @@ pub fn validate_product_files(
     ValidatedProductRelease::from_validated(release, digest)
         .map(Arc::new)
         .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
+}
+
+/// Keep the exact validated source/resources and bind configured server features
+/// into the same release/digest used by C03 and the canonical core. No disk,
+/// environment, actor, provider or socket grant is read or manufactured here.
+pub(crate) fn with_features(
+    source: Arc<ValidatedProductRelease>,
+    features: &BootstrapFeatures,
+) -> Result<Arc<ValidatedProductRelease>, super::BootstrapServiceError> {
+    let original: Value = serde_json::from_slice(source.release().bootstrap_json())
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?;
+    super::schema::validate(&original)?;
+    let mut document = original.clone();
+    apply_features(&mut document, features)?;
+    if document == original {
+        return Ok(source);
+    }
+    super::schema::validate(&document)?;
+    let digest = release_digest(&[
+        json!({"validated_source_digest": source.source_digest()}),
+        document.clone(),
+    ])?;
+    let release = BootstrapRelease::new(
+        source.release().defaults().clone(),
+        serde_json::to_vec(&document)
+            .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?,
+    )
+    .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?;
+    ValidatedProductRelease::from_validated(release, digest)
+        .map(Arc::new)
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
+}
+
+fn apply_features(
+    document: &mut Value,
+    features: &BootstrapFeatures,
+) -> Result<(), super::BootstrapServiceError> {
+    for capability in object(document, "capabilities")?.keys() {
+        if !matches!(
+            capability.as_str(),
+            "world" | "feed" | "meet" | "gifts" | "wall" | "social_sharing" | "mutations"
+        ) {
+            return Err(super::BootstrapServiceError::ReleaseUnavailable);
+        }
+    }
+    let avatar = &document["avatar_manifest"];
+    let map = &document["map_manifest"];
+    let themes = document["theme_manifests"]
+        .as_array()
+        .ok_or(super::BootstrapServiceError::ReleaseUnavailable)?;
+    let world_resources = (avatar["contract_version"] == "2.0.0"
+        || avatar["atlas"]["texture"]["image_state"] == "PROVIDED")
+        && map["tilemap"]["resource_state"] == "PROVIDED"
+        && themes
+            .iter()
+            .all(|theme| theme["texture"]["image_state"] == "PROVIDED");
+    let feature = |enabled: bool| {
+        json!({"available": enabled,
+        "reason": if enabled { Value::Null } else { json!("FEATURE_DISABLED") }})
+    };
+    let writable = matches!(document["event"]["phase"].as_str(), Some("OPEN" | "LIVE"));
+    document["capabilities"] = json!({
+        "world": if features.world && !world_resources {
+            json!({"available":false,"reason":"DEPENDENCY_UNAVAILABLE"})
+        } else { feature(features.world) },
+        "feed": feature(features.feed),
+        "meet": feature(features.meet),
+        "gifts": feature(features.gifts),
+        "wall": feature(features.wall),
+        "social_sharing": feature(features.social_sharing),
+        "mutations": if writable { feature(features.mutations) }
+            else { json!({"available":false,"reason":"EVENT_READ_ONLY"}) }
+    });
+    Ok(())
 }
 
 fn read_document(path: &Path) -> Result<Value, super::BootstrapServiceError> {
@@ -621,6 +669,13 @@ pub fn bind_response(
         "sound_enabled".into(),
         Value::Bool(result.record.preferences.sound_enabled),
     );
+    if !matches!(
+        result.record.phase,
+        concert_domain::EventPhase::Open | concert_domain::EventPhase::Live
+    ) {
+        document["capabilities"]["mutations"] =
+            json!({"available":false,"reason":"EVENT_READ_ONLY"});
+    }
     document["server_time"] = Value::String(
         result
             .record

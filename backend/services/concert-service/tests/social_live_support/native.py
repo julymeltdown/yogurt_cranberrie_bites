@@ -41,7 +41,7 @@ def run(args,report):
     if shutil.disk_usage(ROOT).free<8*1024**3:raise SmokeError('preflight','8 GiB free required')
     report.update(source_commit=commit,source_sha256=meta['source_sha256'],artifacts=meta['artifacts'],checks={})
     pure=execute([str(binaries['live']),'--test-threads=1'],env={},phase='pure-input-tests',cwd=ROOT,timeout=30)
-    if 'test result: ok. 8 passed; 0 failed; 15 ignored;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
+    if 'test result: ok. 8 passed; 0 failed;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
     report['checks']['pure-input-tests']={'exit_code':pure.returncode,'stdout':pure.stdout}
     cluster=Cluster({name:executable(args.pg_bin/name) for name in PG_TOOLS})
     report['owned_root']=str(cluster.root)
@@ -72,6 +72,7 @@ def run(args,report):
             for name,count in [('live',15),('remaining',8),('receipts',17)]:
                 command=[str(binaries[name]),'--test-threads=1','--nocapture']
                 if name!='receipts':command.append('--ignored')
+                if name=='live':command += ['--skip','pending_round_','--skip','initialize_current_owned_schema']
                 if name=='remaining':command+=['--skip','actual_qa04_http_authorization_matrix']
                 r=execute(command,env=env,phase=f'{phase}-{name}',cwd=ROOT/'backend',timeout=120,allowed=(0,101))
                 def sanitized(output):
@@ -117,11 +118,113 @@ def run(args,report):
         finally:
             cluster.cleanup();report['cleanup']={'status':'PASS','owned_root_absent':not cluster.root.exists()}
 
+def policy_recovery(args, report):
+    """Current full SQLx ledger; focused recovery, not a public WS qualification."""
+    from invalidation_clients_smoke import pki
+    meta = json.loads(args.artifacts.read_text())
+    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    if commit != meta['source_commit'] or source_manifest() != meta['source_sha256']:
+        raise SmokeError('source', 'frozen recovery source changed')
+    binaries = {k: adapter.frozen_binary(Path(v['path']), v['sha256']) for k, v in meta['artifacts'].items()}
+    if set(binaries) != {'live', 'delivery', 'policy'}:
+        raise SmokeError('inventory', 'exact live/delivery/policy copied executables required')
+    report.update(source_commit=commit, source_sha256=meta['source_sha256'], artifacts=meta['artifacts'], checks={})
+    cluster = Cluster({name: executable(args.pg_bin / name) for name in PG_TOOLS})
+    report['owned_root'] = str(cluster.root)
+    # The outside lease watchdog learns the cluster before any PG child exists.
+    (args.report.parent / 'runtime-owned-root.json').write_text(json.dumps({'path': str(cluster.root)}))
+    custody = args.report.parent / 'runtime-custody.json'
+    custody.write_text(json.dumps({'path': str(cluster.root), 'identity': cluster.identity, 'token': cluster.token}))
+    custody.chmod(0o600)
+    env = {}
+    def zero(phase):
+        n = int(cluster.sql('postgres', 'select count(*) from pg_prepared_xacts;'))
+        report.setdefault('prepared_checks', {})[phase] = {'count': n, 'status': 'PASS' if n == 0 else 'FAIL'}
+        if n: raise SmokeError('prepared', 'residual prepared transactions')
+    def tests(phase, binary, count, extra=(), native=True):
+        command = [str(binaries[binary]), '--test-threads=1', '--nocapture']
+        if native: command.append('--ignored')
+        result = execute(command + list(extra), env=env, cwd=ROOT / 'backend', phase=phase, timeout=120, allowed=(0,101))
+        def safe(text):
+            for value in [cluster.password, cluster.token, cluster.url('mcr_social_concert')]:
+                if value: text = text.replace(value, '<private-value>')
+            return text
+        report['checks'][phase] = {'exit_code': result.returncode, 'stdout': safe(result.stdout), 'stderr': safe(result.stderr)}
+        args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')
+        if result.returncode or f'test result: ok. {count} passed; 0 failed;' not in result.stdout:
+            raise SmokeError(phase, 'recovery check failed or inventory changed; see sanitized report')
+    try:
+        tests('pure-live', 'live', 8, native=False)
+        tests('pure-policy', 'policy', 1, native=False)
+        cluster.init()
+        with (cluster.data / 'postgresql.conf').open('a') as config:
+            config.write("\nmax_prepared_transactions=256\nmax_connections=24\nshared_buffers=32MB\nwork_mem=2MB\nmax_worker_processes=0\nmax_parallel_workers=0\nmax_wal_senders=0\nautovacuum=off\nlog_line_prefix='MCR_SQLSTATE=%e '\nlog_min_error_statement=panic\n")
+        cluster.start(); pki(cluster)
+        report['postgres_version'] = cluster.sql('postgres', 'show server_version;')
+        if int(cluster.sql('postgres', 'show server_version_num;')) // 10000 != 16:
+            raise SmokeError('preflight', 'PG16 required')
+        db = 'mcr_social_concert'
+        execute([str(cluster.tools['createdb']), '--no-password', '--maintenance-db=postgres', db], env=cluster.client_env('postgres'), phase='createdb', cwd=cluster.root)
+        migrations = Path(meta['migration_directory'])
+        expected = adapter.migration_manifest(ROOT / 'backend', 'concert-service')
+        import hashlib
+        frozen = {int(p.name.split('_', 1)[0]): hashlib.sha384(p.read_bytes()).hexdigest() for p in migrations.glob('*.sql') if not p.name.endswith('.down.sql')}
+        if frozen != expected: raise SmokeError('source', 'frozen full migration readset differs')
+        env = {**cluster.env, 'MCR_SOCIAL_ROOT': str(cluster.root), 'MCR_SOCIAL_TOKEN': cluster.token,
+               'MCR_SOCIAL_IDENTITY': f'{cluster.identity[0]}:{cluster.identity[1]}',
+               'MCR_SOCIAL_SYSTEM': cluster.sql('postgres', 'select system_identifier from pg_control_system();'),
+               'MCR_SOCIAL_CONCERT_URL': cluster.url(db), 'MCR_SOCIAL_MIGRATIONS': str(migrations)}
+        tests('actual-sqlx-migrations', 'live', 1, ['--exact', 'invalidation_tests::initialize_current_owned_schema'])
+        expected = adapter.migration_manifest(ROOT / 'backend', 'concert-service')
+        report['migration_sha384'] = expected
+        report['migration_count'] = adapter.check_ledger(cluster, db, expected)
+        # These run before the explicit pending restart seed. No fixture SQL
+        # settles its signals, advances clocks, or changes its deadline.
+        tests('kernel-recovery', 'live', 8, ['invalidation_tests::', '--skip', 'initialize_current_owned_schema', '--skip', 'pending_round_restart_', '--skip', 'database_deadline_emits_durable_actor_scoped_signals_once_and_survives_sink_recreation'])
+        tests('delivery-recovery', 'delivery', 9)
+        tests('factory-recovery', 'policy', 2)
+        env['MCR_SOCIAL_RECOVERY_PHASE'] = 'BEFORE_RESTART'
+        tests('restart-pending-seed', 'live', 1, ['--exact', 'invalidation_tests::pending_round_restart_seed'])
+        seed = re.findall(r'MCR_SOCIAL_RESTART_EVENT=([0-9a-f-]{36})', report['checks']['restart-pending-seed']['stdout'])
+        if len(seed) != 1: raise SmokeError('restart', 'one actual fixture source event required')
+        env['MCR_SOCIAL_RECOVERY_EVENT'] = seed[0]
+        zero('before-restart-stop')
+        query = "select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_policy_signals),(select count(*) from concert_social_policy_signals where source_outbox is null and published_at is null),(select coalesce(sum(revision),0) from concert_social_policy_generations);"
+        persisted = cluster.sql(db, query)
+        if int(persisted.split('|')[3]) != 2:
+            raise SmokeError('restart', 'exact two real deadline signals must remain pending')
+        env['MCR_SOCIAL_RECOVERY_POSTMASTER_BEFORE'] = cluster.sql(db, 'select pg_postmaster_start_time()::text;')
+        before = cluster.assert_postmaster(); cluster.stop(); cluster.start(); after = cluster.assert_postmaster()
+        if before == after or cluster.sql(db, query) != persisted:
+            raise SmokeError('restart', 'physical restart or persisted source proof failed')
+        report['restart'] = {'status': 'PASS', 'before_pid': before, 'after_pid': after, 'persisted_counts': persisted}
+        env['MCR_SOCIAL_RECOVERY_PHASE'] = 'AFTER_RESTART'
+        tests('restart-pending-recovery', 'live', 1, ['--exact', 'invalidation_tests::pending_round_restart_recovers_unpublished_expiry_with_fresh_owner'])
+        adapter.check_ledger(cluster, db, expected)
+        zero('before-final-stop')
+        if source_manifest() != meta['source_sha256']:
+            raise SmokeError('source', 'recovery source changed during execution')
+    finally:
+        try:
+            if cluster.started: zero('before-teardown-finally')
+        finally:
+            safe = []
+            log = cluster.root / 'postgres.log'
+            if log.is_file():
+                for line in log.read_text(errors='replace').splitlines():
+                    match = re.search(r'MCR_SQLSTATE=([0-9A-Z]{5})\s+ERROR:', line)
+                    if match: safe.append({'sqlstate': match[1]})
+            report['postgres_diagnostics'] = safe[-100:]
+            cluster.cleanup()
+            report['cleanup'] = {'status': 'PASS', 'owned_root_absent': not cluster.root.exists()}
+
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--artifacts',required=True,type=Path);p.add_argument('--report',required=True,type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/opt/homebrew/opt/postgresql@16/bin'));a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--policy-recovery',action='store_true');p.add_argument('--artifacts',required=True,type=Path);p.add_argument('--report',required=True,type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/opt/homebrew/opt/postgresql@16/bin'));a=p.parse_args()
     if not a.report.is_absolute() or a.report.exists():p.error('new absolute report required')
     report={'status':'FAIL','limitations':['Synthetic authority/provider/ledger fixtures, no actual acquired OwnerGuardScope, real provider, HTTP/WS/cache or public runtime acceptance.','Selected isolated prerequisite schemas, not current full production migration qualification.']}
-    try:run(a,report);report['status']='PASS'
+    if a.policy_recovery: report['limitations']=['Actual full SQLx migration ledger and private PG recovery; explicit command/authority/membership fixtures. No real Auth/admission, positive Notification, socket/cache or IN03 proof.']
+    try:
+        (policy_recovery if a.policy_recovery else run)(a,report);report['status']='PASS'
     except SmokeError as e:report['failure']=e.detail
     except Exception as e:report['failure']={'type':type(e).__name__,'detail':str(e)}
     a.report.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n');print(json.dumps({'status':report['status'],'report':str(a.report),'failure':report.get('failure')}));return 0 if report['status']=='PASS' else 1

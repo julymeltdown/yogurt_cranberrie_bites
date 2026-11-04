@@ -18,19 +18,26 @@ use uuid::Uuid;
 pub struct SocialWorldPolicy {
     pub transport: SocketTransport,
     pub sink: SocialInvalidationSink,
+    /// The SAME sealed publisher/registry used by `sink`, for canonical deletion
+    /// composition. Cloning this Arc creates no fallback transport or authority.
+    pub publisher: Arc<dyn SocialPolicyPublisher>,
 }
 impl SocialWorldPolicy {
     pub fn compose(pool: PgPool) -> Self {
         let transport = SocketTransport::default();
         // The publisher retains only the shared socket registry. Create it
         // before attaching the baseline owner to avoid an ownership cycle.
-        let publisher = Arc::new(SealedPublisher {
+        let publisher: Arc<dyn SocialPolicyPublisher> = Arc::new(SealedPublisher {
             world: transport.policy_publisher(),
             pool: pool.clone(),
         });
-        let sink = SocialInvalidationSink::new(pool, publisher);
+        let sink = SocialInvalidationSink::new(pool, publisher.clone());
         let transport = transport.with_policy_baseline(Arc::new(HeldBaseline(sink.clone())));
-        Self { transport, sink }
+        Self {
+            transport,
+            sink,
+            publisher,
+        }
     }
 }
 
