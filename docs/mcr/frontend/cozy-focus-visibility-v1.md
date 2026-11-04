@@ -35,8 +35,13 @@ reveals a black title glyph at that sample; the system outline composites to
 the baseline. The other three samples use white backing and measure 11.3098:1;
 all four stroke samples match the actual composited outline color. Original
 screenshots and outline-suppressed backing probes are retained. The responsible
-title owner is qualifying the sample interpretation and complete affected
-evidence; the raw failure is not rewritten as a passing run. No additional
+title owner independently verified all 53 artifact hashes, 688 declared source
+and asset pins and 43 PNGs, and qualified the assigned visible-focus backing
+and text treatment. The unchanged forced-color glyph overlap is excluded from
+the adjacent-canvas stroke comparison: all four outer edges measure at least
+11.3098:1, and the qualifying changed-stroke area exceeds the reference area.
+The owner found no CSS repair or recapture justified. The raw failure is not
+rewritten as a passing run. No additional
 foreground, outline, geometry or forced-color override has been introduced.
 
 Direct selected-character canvas RGBA/geometry and CSS sprite source/UV/size
