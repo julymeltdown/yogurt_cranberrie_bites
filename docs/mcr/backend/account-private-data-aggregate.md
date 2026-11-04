@@ -162,6 +162,8 @@ The native fixture is intentionally narrow: it runs the actual core adapter and
 does not simulate successful non-core owners. Whole PrivateData remains
 **INCOMPLETE**, canonical Auth-to-Concert transport is **NOT_RUN**, and the
 Intro, age, media, beacon/rally, Party/Gift and Mural production owners remain
-unintegrated here. The source has native coordinator qualification on
-`04a51b2b`; publication and the complete multiuser target remain separate
-Root and provider-owner handoffs.
+unintegrated here. The earlier native result on `04a51b2b` remains bound only
+to that executable and fixture sequence. The current restart-order, cursor and
+other-user negatives are **NOT_RUN** pending a fresh named allocation; the
+source-level changes do not inherit the earlier result. Publication and the
+complete multiuser target remain separate Root and provider-owner handoffs.
