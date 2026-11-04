@@ -1,6 +1,6 @@
 # NB03-L notification target local policy
 
-Status: **IN_PROGRESS**, source prepared; Cargo compilation and PostgreSQL execution **NOT_RUN** pending a named allocation from 21d and explicit ACCEPT. This is a partial NB03 component, not inbox, public HTTP or global notification acceptance.
+Status: **CONTRACT_READY** local component handoff. Clean source `fa2fbdef26fd087c0810a5c318ea221e9522b202` compiled successfully; all six actual PostgreSQL component cases and seven committed-row writer probes passed. This is partial NB03, not inbox, public HTTP or global notification acceptance. Root integration/review fixes remain assigned.
 
 ## Assignment and boundary
 
@@ -14,7 +14,7 @@ Exactly eleven new writable paths:
 - `backend/scripts/mcr/notification_target_policy_smoke.py`.
 - `docs/mcr/backend/notification-target-policy.md`.
 
-Actual persistent goal inspection still reports the unfinished historical BE27 goal as BLOCKED, with an incompatible old objective. It was reported to Root, neither replaced nor falsely completed. NB03-L remains assigned through implementation, meaningful validation, documentation, clean committed handoff and concrete review fixes; its completion must not be inferred from that stale metadata.
+At assignment, actual goal inspection reported an unfinished incompatible historical BE27 BLOCKED objective, which was reported honestly and left unchanged. After Root published BE27, a fresh remote/readback verification confirmed `master=6724e5932151918cf3fed334cdbeafdcc91fc50f`, all thirteen mapped delivery commits in its ancestry, all seventeen BE27 postimages byte-identical to `b0418437`, and fresh combined Intro qualification PASS. Only then was the BE27 goal legitimately completed and an explicit unbudgeted NB03-L goal created. That NB03-L goal remains active through committed handoff and concrete review fixes; no incompatible goal was silently reset or replaced.
 
 ## Frozen private API and caller obligations
 
@@ -65,7 +65,7 @@ Source-only checks executed (all exit 0):
 - Python `compile()` on `backend/scripts/mcr/notification_target_policy_smoke.py`: syntax only, no PG import/execution.
 - `python3 scripts/mcr/check-plan.py`: PASS, planning provenance only; original archives untouched.
 
-Pending named allocation, exact proposed build:
+Initial proposed build (historical; final allocated command below also pins contracts-build optimization):
 
 ```sh
 CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test -p concert-service --test notification_target_policy --no-run --locked --offline -j2 --message-format=json
@@ -77,7 +77,7 @@ Only that one test artifact is requested, no extra binary/library test inventory
 python3 backend/scripts/mcr/notification_target_policy_smoke.py --checkpoint /absolute/private/checkpoint.json --pg-bin-dir /opt/homebrew/opt/postgresql@16/bin --report /absolute/private/new-report.json
 ```
 
-Compilation, all six SQL cases, all seven writer probes, central migration receipts and cleanup: **NOT_RUN** until actual execution. Full inbox/public HTTP/global notification acceptance: **NOT_RUN**, requires Root's actual composition and separate qualification. Resource sizes/deadlines and target identity will follow 21d's actual named offer, not a self-created allocation.
+Compilation, all six SQL cases, all seven writer probes, central migration receipts and cleanup: **PASS**, exact evidence below. Full inbox/public HTTP/global notification acceptance: **NOT_RUN**, requires Root's actual composition and separate qualification.
 
 ## Provenance and dependencies
 
@@ -112,3 +112,61 @@ A read-only peer review of `edfe6cd2` found one concrete fixture bug: notice con
 ## First allocated compilation and exact repair
 
 Under `NB03-L-TARGET-POLICY-BACKEND-202611040854Z`, clean `f59d56c96a4f5ffe44528bb58de8308ee71dcfc0` failed compilation (exit 101, 40.37 seconds): the retained SQLx feature set exposes no `sqlx::migrate!` macro. Only the owned fixture was affected. The repair uses the existing `migration_runtime::prepare_database` with Startup mode and the actual `env!("CARGO_MANIFEST_DIR")/migrations` path; no manifest/lock/feature change or schema repair. The fixture still migrates the central owner directory and the qualifier still requires exact ledger checksums. Failed Cargo JSON/stderr, full source inventory and 919.63 MiB source archive are preserved in private `/tmp/mcr-nb03-local-f59d56c9`. Fresh lsof found zero target handles before unconditional release; no PG process or copied test ran. Retry requires a fresh named offer, preserving the same original time/byte baseline and failure evidence.
+
+
+## Final executed component evidence
+
+Tested source `fa2fbdef26fd087c0810a5c318ea221e9522b202`, with final documentation-only commit following it. All eleven assigned NEW paths are preserved; no existing source/export/migration/manifest/lock/contract/frontend file changed. Runtime source inventory is rechecked after final documentation and remains byte-identical to the tested source.
+
+Allocation history stays explicit:
+
+1. `NB03-L-TARGET-POLICY-BACKEND-202611040854Z`: compile failed 101 on missing SQLx macro. Full source archive, Cargo JSON/stderr, source inventory and zero-handle release preserved.
+2. `NB03-L-TARGET-POLICY-REPAIR-BACKEND-202611040858Z`: fresh preflight found only 14.10 seconds of original target time left and failed its required >=20-second assertion. My orchestration incorrectly continued to send ACCEPT/start the old runner; its unchanged original deadline guard immediately terminated Cargo (-15, 0.002 seconds), without an actual new compilation. This was an orchestration error. Fresh zero-handle release followed; no PG or copied test started. The failed preflight/abort were reported rather than reclassified as a successful repair. No original time/byte baseline was silently renewed.
+3. Distinct explicit extension `NB03-L-TARGET-POLICY-EXTENSION-BACKEND-202611040900Z`: <=60 seconds target build/freeze, <=180 seconds copied including >=60 seconds cleanup reserve, <=240 seconds additional total. Original byte baseline and whole hard 4 GiB cap were preserved, including every prior archive/log/source delta/target growth. Before ACCEPT, the owned workflow guard was changed to this explicitly authorized clock, compiled for syntax and checked to fail **before Popen** on failed preflight/remaining time. Guard SHA-256 `c6373ac9d4f22d10232f1584fb23951dd185d4cda9d86b57f606a0a8083ef311`; actual ACCEPT epoch `1793782836.0470378`, target deadline `1793782896.0470378`, whole deadline `1793783076.0470378`. Fresh free space 28.784 GiB, handles 13063/368640, all carried evidence 965352702 bytes. The preflight passed before dependent work proceeded.
+
+Final actual build, exit 0 in 0.92 seconds, from `backend/`:
+
+```sh
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 --config profile.dev.package.contracts-build.opt-level=2 --config profile.test.package.contracts-build.opt-level=2 test -p concert-service --test notification_target_policy --no-run --locked --offline -j2 --message-format=json
+```
+
+Exactly one test executable was newly compiled. Actual Cargo manifest/target source paths and the absolute baked fixture manifest literal were checked. The full live migration SHA-384 inventory was pinned before release. Frozen executable, original full archive plus exact source delta, full input inventory and Cargo JSON stayed outside the shared target. Fresh `lsof -nP -F pn` found zero target handles; target RELEASE at epoch `1793782861.767679` preceded all copied tests/PG. No target path was read afterward. Cumulative target growth was 14397440 bytes; all outside evidence 979858728 bytes, within the 1 GiB source/executable subcap. Final free space was 28.757 GiB. No broad/narrow clean, install, dependency feature or target change was performed.
+
+Actual copied run, exit 0 in 2.55 seconds:
+
+```sh
+python3 backend/scripts/mcr/notification_target_policy_smoke.py --checkpoint /tmp/mcr-nb03-local-f59d56c9/checkpoint.json --pg-bin-dir /opt/homebrew/opt/postgresql@16/bin --report /tmp/mcr-nb03-local-f59d56c9/native.json
+```
+
+One private marker/inode-owned socket-only PostgreSQL 16.14 (Homebrew), one database. The compiled fixture's baked manifest directory was used by the retained migration runtime to read central migrations; actual 37 SQLx ledger receipts matched the frozen live SHA-384 inventory exactly. These are runtime-source migrations, not statically embedded SQL, and the executable path alone was not treated as migration-byte proof. No Auth/Friend/service/RPC/HTTP/browser process was started or impersonated.
+
+| Exact executed case | Result |
+| --- | --- |
+| `local_targets_use_actual_current_owner_rows` | PASS, actual same caller backend/XID retained and candidate unchanged |
+| `missing_foreign_and_unsupported_targets_fail_unavailable` | PASS, missing/foreign rows, source/pair dependency, Post/Report/None all fail closed |
+| `explicit_local_restrictions_hide_without_dependency_downgrade` | PASS, private audience, suspended/local block, feature stop, withdrawn/draft and closed event |
+| `terminal_metadata_never_creates_a_private_action_grant` | PASS, explicit owning expired/revoked metadata policy only; no reveal/pickup output |
+| `retained_row_exclusions_block_actual_writers` | PASS, all seven actual writers blocked on observer PID after component return, resumed after caller rollback |
+| `original_deadline_and_dependency_failures_remain_errors` | PASS, untracked TX, overlong/expired context, real lock wait bounded by 150 ms original deadline, actual killed DB dependency |
+
+Writer exclusion proof covers committed **event, Party root, Giveaway root, Application child, Reservation child, admission and participant** rows. It does not claim committed notice/social/settings/pair revocation interleavings. All protected fixtures rolled back, with the actual final combined row count **0**. Prepared transactions: **0**. Entire disposable cluster cleanup: **PASS**, owned root absent. Whole workflow RELEASE was sent immediately; no build or PG resource remains held.
+
+Private immutable evidence directory: `/tmp/mcr-nb03-local-f59d56c9`. Large binaries/archives and private fixture data are not committed.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| Full source archive at `f59d56c96a4f5ffe44528bb58de8308ee71dcfc0` | `35487e1b586c797ec5143f81cd59a601f96de05a4ef9eadca0c7d8589a35806d` |
+| `repair-fa2.patch`, exact binary Git delta to final tested source | `1691c0863c3ab607a041ac08294425191d02ee76b54080e0fcc711db0602d45f` |
+| `source-manifest-fa2.json` | `9d9ff1c631f70ef70db733223d65596cba92b99c519b9c70131b881c7d263c07` |
+| `cargo3.jsonl` | `70b07f96312b1058f18a12b74117e92430c658dfbed323d93656bdf8e9709017` |
+| Copied `notification_target_policy`, 14100560 bytes | `292d355142d4cc92c00e338856f6405f8750846e572b769fa679c837a6d02851` |
+| `checkpoint.json` | `8729910916cd104cbc6f871b9885536e2b1028271cfb916a80cb4d2383d29a6d` |
+| `native.json` | `e0a29a6d620fb30bf6effffe5e37ec4afa2f07eb6cdb6c99cca1621d0c2c0b8a` |
+| Extension preflight | `3e2c55ec771a56e52d80d5269775d98d7038da23244d94044af3bc0bebe5e391` |
+| `target-release3.json` | `3a4dc20caeb5af2d6dbc9a7acd8926dad145a579cb958b316cc30444e008a721` |
+
+## Handoff ancestry and remaining Root work
+
+Own commits in order from the exact published base: `edfe6cd2b2ae39a35228410e6f9c978dc40a8301` implementation/harness/provenance, `f59d56c96a4f5ffe44528bb58de8308ee71dcfc0` reviewed notice timestamp fixture fix, `fa2fbdef26fd087c0810a5c318ea221e9522b202` retained migration-runtime fix, followed by this final documentation-only commit. No prerequisite or other-lane commit is bundled.
+
+Root may serially integrate this validated component without a main/SL technical review gate. Root alone owns export/composition and must retain actual operation-bound target/source/canonical/native/RootReadView/EOF exclusions. Report needs a future typed operation/role-capability policy; remote Post needs its actual owner; None needs an actual owning policy. Protected owner commit/revocation interleavings and full actual inbox/public HTTP/global notification acceptance remain **NOT_RUN**. This component does not turn on the absent RootTargetSnapshotOwner, manufacture a positive provider, or close whole BE33/NB03 acceptance.
