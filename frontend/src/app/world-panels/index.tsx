@@ -5,6 +5,7 @@ import type { PlacesEntryPort, PlacesEntryRelease } from '../places-entry'
 import { PlacesEntryProvider, PlacesOverviewRoute, PlaceDetailRoute } from '../places-entry'
 import { MuralEntryProvider, MuralWallPanel } from '../mural-entry'
 import { EraControls } from '../shell-chrome'
+import { useShellTheme } from '../../features/theme/original-fe06/useShellTheme'
 import './presentation.css'
 import { useWorldPanelOwnership } from './ownership'
 import { usePorts } from '../access'
@@ -30,6 +31,7 @@ export function createPlacesPresentationSource(source: WorldPresentationPort): P
 export function WorldPanels({ source, scope, children }: { source: WorldPresentationPort | null; scope: PrivacyScope | null; children: ReactNode }) {
   const { auth } = usePorts(), ownership = useWorldPanelOwnership()
   const current = useSyncExternalStore(source?.subscribe ?? noop, source?.read ?? empty, empty)
+  useShellTheme(current?.theme, current?.request.signal)
   const mural = useSyncExternalStore(current?.mural?.subscribe ?? noop, current?.mural?.read ?? empty, empty)
   const places = useMemo(() => source ? createPlacesPresentationSource(source) : null, [source])
   const wall = ownership.mural ? <MuralEntryProvider auth={auth ?? null} scope={scope} release={mural}>{children}</MuralEntryProvider> : children
