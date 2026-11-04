@@ -1,0 +1,218 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "status": "390_INSPECTED_WITH_REQUIRED_FIXES",
+  "captureJob": "PANEL-COZY-202611040632Z",
+  "candidate": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "reportPath": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/report.json",
+  "reportSha256": "59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1",
+  "baselinePolicy": "Same candidate and fixture, restoring ONLY four background integration files to exact base bytes. Meet typography identical in both captures.",
+  "qualification": "Actual default router/Auth/Phaser; QA06 DEV synthetic HTTP/C05/local admission only. Guarded Wall remains guarded; no live service or physical device acceptance.",
+  "browser": "156.0.8078.80",
+  "captureStartedAt": "2026-11-04T06:33:32.440Z",
+  "captureFinishedAt": "2026-11-04T06:34:13.328Z",
+  "driverExitCode": 0,
+  "driverCleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "tempRemoved": true
+  },
+  "ownImagesDirectlyInspected": 8,
+  "cases": [
+    {
+      "screen": "feed",
+      "cases": [
+        {
+          "mode": "baseline",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-feed-390.png",
+          "pin": {
+            "bytes": 63839,
+            "sha256": "e4d99d561d4c3b2ee5c52a60682920190885fea104efe286faf22e3d7f183851"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 16,
+          "imageCount": 0
+        },
+        {
+          "mode": "candidate",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-feed-390.png",
+          "pin": {
+            "bytes": 59392,
+            "sha256": "40420f102f2cefc4fae6e9dad0fe3a6314425176f1e0238a1cd0a6ac5c4d7022"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 16,
+          "imageCount": 0,
+          "controlsPreserved": true,
+          "imagesPreserved": true,
+          "textPreserved": true,
+          "focus": {
+            "tag": "BUTTON",
+            "outline": "solid"
+          }
+        }
+      ],
+      "visualFinding": "NEEDS_FIX: narrow central artwork strip on short rows/footer; default SVG preserveAspectRatio causes letterboxing under 100% 100% CSS size. Asset owner notified."
+    },
+    {
+      "screen": "meet",
+      "cases": [
+        {
+          "mode": "baseline",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-meet-390.png",
+          "pin": {
+            "bytes": 100776,
+            "sha256": "2d2fa482226c4b39f4c8ea958376957372c84c25c303d2819e37ab4a36a1e9cc"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 21,
+          "imageCount": 0
+        },
+        {
+          "mode": "candidate",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-meet-390.png",
+          "pin": {
+            "bytes": 64736,
+            "sha256": "8cb3333b58838bc6cc73e08dd85f43198480d4eb603436d6bb081a0f004c97d7"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 21,
+          "imageCount": 0,
+          "controlsPreserved": true,
+          "imagesPreserved": true,
+          "textPreserved": true,
+          "focus": {
+            "tag": "BUTTON",
+            "outline": "solid"
+          }
+        }
+      ],
+      "visualFinding": "INITIAL_390_IMPROVEMENT: broad soft container paper visible; content and guard remain truthful. Responsive/contrast checks still required."
+    },
+    {
+      "screen": "gifts",
+      "cases": [
+        {
+          "mode": "baseline",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-gifts-390.png",
+          "pin": {
+            "bytes": 98202,
+            "sha256": "a9c8c7dff188c9262d132caec9302f40e2c3426ba4dd271447ed1df7cdd51f02"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 19,
+          "imageCount": 0
+        },
+        {
+          "mode": "candidate",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-gifts-390.png",
+          "pin": {
+            "bytes": 81454,
+            "sha256": "d9a42c33136e67d4ae6ca60bf3caa95811e55bbbad3309ffee36493b54c24679"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 19,
+          "imageCount": 0,
+          "controlsPreserved": true,
+          "imagesPreserved": true,
+          "textPreserved": true,
+          "focus": {
+            "tag": "BUTTON",
+            "outline": "solid"
+          }
+        }
+      ],
+      "visualFinding": "NEEDS_FIX: narrow central artwork strip on short rows/footer; default SVG preserveAspectRatio causes letterboxing under 100% 100% CSS size. Asset owner notified."
+    },
+    {
+      "screen": "wall",
+      "cases": [
+        {
+          "mode": "baseline",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-wall-390.png",
+          "pin": {
+            "bytes": 61924,
+            "sha256": "6ee53f544d8b1619e23c2fda7dba413afb19b9ce6b7c4509fdf1419904bb4bea"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 7,
+          "imageCount": 0
+        },
+        {
+          "mode": "candidate",
+          "screenshot": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-wall-390.png",
+          "pin": {
+            "bytes": 23249,
+            "sha256": "bd085e3bbab0b848a77f3c7e3ac76207aa7b37c64e336cd4289edc2f42397b40"
+          },
+          "errors": [],
+          "overflow": false,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "controlsCount": 7,
+          "imageCount": 0,
+          "controlsPreserved": true,
+          "imagesPreserved": true,
+          "textPreserved": true,
+          "focus": {
+            "tag": "BUTTON",
+            "outline": "solid"
+          }
+        }
+      ],
+      "visualFinding": "INITIAL_390_IMPROVEMENT: broad soft container paper visible; content and guard remain truthful. Responsive/contrast checks still required."
+    }
+  ],
+  "remaining": [
+    "Feed/Gifts aspect-ratio fix and actual fresh 390 inspection",
+    "360/430 actual responsive capture",
+    "Rendered contrast, sufficient focus/44px coverage, relevant real states",
+    "Root master publication and exact remote proof"
+  ],
+  "limits": "Actual default router with deterministic QA06 synthetic HTTP/C05/local admission, not live service or physical device acceptance. Guarded Wall only, not mural editor. Shared213 fourth paint arrived after this candidate and is not qualified by this packet."
+}

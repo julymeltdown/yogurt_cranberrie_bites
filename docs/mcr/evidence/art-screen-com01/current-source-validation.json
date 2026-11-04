@@ -1,0 +1,115 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "status": "SOURCE_READY_FIXED_ASSETS_AND_EXACT_LIST_BODY_COVERAGE",
+  "priorCssCommit": "8824401dec061102c9af33ba302855e48563170a",
+  "stylesheetSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+  "exactRules": 7,
+  "boundary": "PASS: only five granted background declaration types, no other selectors, foreground or layout",
+  "assetPins": "PASS",
+  "sources": [
+    {
+      "selector": ":root .feed-browse .feed-post",
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "assetCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991,
+      "paint": {
+        "background-color": "#f5d9df",
+        "background-image": "url('/backgrounds/cute-community-v1/feed-backdrop.svg')",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100%"
+      }
+    },
+    {
+      "selector": ":root .feed-browse .feed-footer",
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "assetCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991,
+      "paint": {
+        "background-color": "#f5d9df",
+        "background-image": "url('/backgrounds/cute-community-v1/feed-backdrop.svg')",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100%"
+      }
+    },
+    {
+      "selector": ":root .party-browse",
+      "url": "/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "assetCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "bytes": 989,
+      "paint": {
+        "background-color": "#f5dccd",
+        "background-image": "url('/backgrounds/cute-community-v1/meet-backdrop.svg')",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100%"
+      }
+    },
+    {
+      "selector": ":root .gifts-reference .gift-reference-row",
+      "url": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "assetCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "bytes": 1011,
+      "paint": {
+        "background-color": "#e9dfee",
+        "background-image": "url('/backgrounds/cute-community-v1/gifts-backdrop.svg')",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100%"
+      }
+    },
+    {
+      "selector": ":root .shell-panel[data-mcr-panel='feed'] > .shell-panel-body",
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "assetCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991,
+      "paint": {
+        "background-color": "#f5d9df",
+        "background-image": "url('/backgrounds/cute-community-v1/feed-backdrop.svg')",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100%"
+      }
+    },
+    {
+      "selector": ":root .shell-panel[data-mcr-panel='gifts'] > .shell-panel-body",
+      "url": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "assetCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "bytes": 1011,
+      "paint": {
+        "background-color": "#e9dfee",
+        "background-image": "url('/backgrounds/cute-community-v1/gifts-backdrop.svg')",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100%"
+      }
+    },
+    {
+      "selector": ":root .shell-panel[data-mcr-panel='wall'] > .shell-panel-body",
+      "url": "/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "assetCommit": "8ff3a58f556bf2811ad1415cd31c5ba1953ccd58",
+      "sha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+      "bytes": 2639,
+      "paint": {
+        "background-color": "#fff0de",
+        "background-image": "url('/backgrounds/cute-wall-me-v1/wall-stationery.svg')",
+        "background-position": "center top",
+        "background-repeat": "no-repeat",
+        "background-size": "100% auto"
+      }
+    }
+  ],
+  "rootAttributeWiring": "PENDING_RECAPTURE_PROOF",
+  "390FixValidation": "NOT_RUN",
+  "360430": "NOT_RUN",
+  "computedAccessibility": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "commandExitCode": 0
+}

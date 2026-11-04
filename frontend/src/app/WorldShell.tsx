@@ -142,7 +142,7 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
   }, [location.key, location.pathname, location.search, navigation])
   // A destination includes its query target. Reopen on navigation, not on a user size change.
   useLayoutEffect(() => { if (window.matchMedia?.('(max-width: 799px)').matches) onSize('full'); else if (size === 'peek') onSize('half') }, [location.key])
-  return <main id="shell-content" tabIndex={-1} className="shell-panel" data-mcr-panel={location.pathname === '/wall' ? 'wall' : undefined} aria-labelledby="panel-title"
+  return <main id="shell-content" tabIndex={-1} className="shell-panel" data-mcr-panel={location.pathname === '/wall' ? 'wall' : location.pathname === '/me/avatar' ? 'customize' : location.pathname === '/feed' ? 'feed' : location.pathname === '/gifts' ? 'gifts' : location.pathname === '/me' ? 'me' : undefined} aria-labelledby="panel-title"
     onKeyDown={event => {
       if (event.key === 'Escape' && !event.defaultPrevented && !typingTarget(event.target)) { event.preventDefault(); back() }
     }}>

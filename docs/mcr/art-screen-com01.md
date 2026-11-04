@@ -1,7 +1,10 @@
 # ART-SCREEN-COM01 — Community background adoption
 
-Status: **IN_PROGRESS**. Background source adoption is implemented; rendered adoption,
-responsive checks, publication and visual acceptance are **NOT_RUN**.
+Status: **IN_PROGRESS**. Background source adoption and the first actual 390px
+comparison are implemented. Feed/Gifts' SVG aspect-ratio fix is source-verified
+and requires fresh rendered validation.
+Responsive checks, complete rendered contrast, publication and final visual
+acceptance remain open.
 
 ## Authority and baseline
 
@@ -27,8 +30,10 @@ Allowed declarations are `background-color`, `background-image`,
 | --- | --- | --- |
 | F01 | `.feed-browse .feed-post` | Post paper only; exclude portraits and media |
 | F01 | `.feed-browse .feed-footer` | Footer paper only; preserve all controls |
+| F01 | `.shell-panel[data-mcr-panel='feed'] > .shell-panel-body` | Exact `/feed` list route; surrounding blank paper only |
 | M01 | `.party-browse` | Container background only; existing Meet typography belongs to its owner |
 | G01 | `.gifts-reference .gift-reference-row` | Row background only; exclude item images and actions |
+| G01 | `.shell-panel[data-mcr-panel='gifts'] > .shell-panel-body` | Exact `/gifts` list route; surrounding blank paper only |
 | R01 | `.shell-panel[data-mcr-panel='wall'] > .shell-panel-body` | Surrounding paper only; Root supplies the semantic attribute |
 
 Root explicitly permits a `:root` specificity prefix on these exact selectors
@@ -67,16 +72,17 @@ without a further per-URL permission flow. Source commits and usage:
 
 | Surface | URL | Source commit |
 | --- | --- | --- |
-| Feed post/footer | `/backgrounds/cute-community-v1/feed-backdrop.svg` | `2a5c67e5` |
-| Meet container | `/backgrounds/cute-community-v1/meet-backdrop.svg` | `2a5c67e5` |
-| Gifts rows | `/backgrounds/cute-community-v1/gifts-backdrop.svg` | `2a5c67e5` |
+| Feed post/footer | `/backgrounds/cute-community-v1/feed-backdrop.svg` | `124f3ed8217acfff33ffcc7904c6ff000e33b013` |
+| Meet container | `/backgrounds/cute-community-v1/meet-backdrop.svg` | `124f3ed8217acfff33ffcc7904c6ff000e33b013` |
+| Gifts rows | `/backgrounds/cute-community-v1/gifts-backdrop.svg` | `124f3ed8217acfff33ffcc7904c6ff000e33b013` |
 | Wall surrounding body | `/backgrounds/cute-wall-me-v1/wall-stationery.svg` | `8ff3a58f556bf2811ad1415cd31c5ba1953ccd58` |
 
 The three community SVGs are opaque 390×640 editable vector source; Wall is
 opaque 390×180. The community surfaces use Root's granted `center`, `100% 100%`,
 `no-repeat` mapping and matching solid fallbacks. Wall uses `center top` and
 `100% auto` with its matching solid fill. Exact bytes and hashes are
-in [source evidence](evidence/art-screen-com01/source-preparation.json).
+in the [initial source evidence](evidence/art-screen-com01/source-preparation.json)
+and [current aspect-ratio fix evidence](evidence/art-screen-com01/asset-fit-fix.json).
 No old artwork, fonts or dependencies are copied into this task. Asset files
 are integrated separately by Root and are absent from this patch.
 
@@ -111,9 +117,12 @@ the Wall screenshot still proves only its unavailable state.
    resources, scripts, text/characters and expected quiet regions.
 2. Check the stylesheet's selectors and declarations against the exact grant;
    preserve all original character/feature source bytes.
-3. After the first actual World/Map 390px cue and an explicit coordinator21d
-   lease, capture actual mounted components before/after at 390px in identical
-   states. Capture 360/430px only after inspecting the 390px result.
+3. Under coordinator21d's explicit exclusive slot, Root captures actual mounted
+   components before/after at 390px in identical states. The latest scheduling
+   correction allows ready panel/entry comparisons independently of the
+   World/Map pack after the active artist releases its output slot. No worker
+   starts an individual browser job. Capture 360/430px only after inspecting
+   the 390px result; an initial staged packet does not waive those checks.
 4. Verify broad visual improvement, computed contrast, visible focus, unchanged
    typography/control bounds, no horizontal overflow, truthful unavailable and
    disabled states, and no change to avatars, media or mural pixels. Keep
@@ -122,9 +131,9 @@ the Wall screenshot still proves only its unavailable state.
    commands/exit codes, evidence and limits to Root. Verify published ancestry
    after Root publication and address concrete fixes before goal completion.
 
-No browser, native, build or export workflow has been started for this task.
-The reserved Wall CSS does not prove adoption until Root's semantic hook and
-import are present in the rendered candidate. Real multiuser flows, physical
+This developer starts no separate browser, native, build or export workflow.
+Root's one allocated shared capture has now exercised the semantic Wall hook
+and imports in the actual default router. Real multiuser flows, physical
 devices, and release gates remain separate obligations.
 
 ## Committed handoff and source checks
@@ -150,3 +159,73 @@ Meet 12.287:1, Gifts 12.089:1 with the default ink token, and Wall 7.362:1.
 Meet's existing hint ink has a 4.882:1 bound; the lowest focus-color bound is
 Wall 3.286:1. This calculation does not establish actual theme inheritance,
 rendered text contrast, control contrast, visual acceptance or device behavior.
+
+## Actual first 390px owner inspection
+
+Root's shared job `PANEL-COZY-202611040632Z` completed with exit 0 on
+`c8a731e5c7f03c3fbcbd0581c6e872429806fa22`. The capture ran from
+2026-11-04 15:33:32.440 to 15:34:13.328 KST in desktop Chrome 156.0.8078.80.
+The same candidate/fixtures were used for both modes; the baseline restored
+only four paint-integration files to exact `7c25078f` bytes. Meet typography
+was identical in both modes. This is deterministic QA06 synthetic HTTP/C05 and
+local admission through the actual default router, not live service or device
+qualification.
+
+All eight owned PNGs were opened and visually inspected. Their hashes/bytes,
+the report hash, observed findings and remaining checks are recorded in
+[owner evidence](evidence/art-screen-com01/owner-390-native-01.json).
+
+- Feed and Gifts need a concrete fix: their short row surfaces show a narrow
+  central vertical strip of artwork over the matching pink/lilac fallback.
+  SVG's default `preserveAspectRatio` letterboxes the 390×640 source within the
+  short `100% 100%` background viewport. The intended broad cloud shapes do not
+  span those rows. This was routed directly to the asset owner and Root;
+  no asset edits or additional browser job were made here.
+- Meet shows a visibly broader, softer cream/peach/lilac container background
+  while preserving the three party rows and truthful unavailable create state.
+- Wall shows the warm scalloped stationery around the same unavailable guard.
+  No mural editor was mounted or substituted to produce this view.
+
+The driver recorded no page errors or horizontal overflow on these four routes.
+For each pair, controls retained rect/font/color/state, text remained exact and
+the visible image source/rect/RGBA comparison passed. Browser/server cleanup and
+temporary removal passed. These observations do not prove complete focus,
+44px target, computed contrast, responsive, physical-device or live-flow gates.
+360/430px were not run in this first finite job. The later shared213 fourth
+paint is also outside this packet's candidate and needs its own relevant proof.
+
+## Community asset fit correction
+
+The asset owner delivered `124f3ed8217acfff33ffcc7904c6ff000e33b013` after
+independently inspecting the same first capture. It adds
+`preserveAspectRatio="none"` to the three broad backdrop SVG roots. Direct Git
+byte comparison proves that removing this one attribute recovers each original
+SVG byte for byte: geometry, colors, opacity, dimensions and resources are
+unchanged. The manifest's new hashes/bytes/viewBoxes match the actual files.
+This deliberately scales only decorative background shapes to the granted
+paint surface; no character, layout or object geometry is changed.
+
+The CSS and URLs remain unchanged. Root integrates the separate asset commit;
+this branch owns only the updated provenance and evidence. Existing source
+contrast bounds remain applicable because paint colors are byte-identical.
+The old `native-01` images remain pre-fix evidence. Fresh 390px inspection,
+360/430px rendering and computed accessibility checks are still required.
+
+## Dominant list-route paper correction
+
+The first rendered packet also exposed large untouched paper regions below the
+single Feed post and below Gifts' available content. The card-only initial
+scope could not establish the requested dominant at-a-glance change across
+those screens. Root explicitly extended the grant to the two exact list-route
+body selectors above before writes. They consume the same fixed Feed/Gifts
+backdrops, `100% 100%`, `center`, `no-repeat`, with their matching opaque fills.
+All original row/footer rules remain. Detail, new-post/giveaway, reservation and
+pickup routes do not receive these body backgrounds.
+
+Root owns adding `feed` and `gifts` values to the existing main's semantic
+attribute only for exact `/feed` and `/gifts`, while retaining Wall and the
+other assigned developer's Customize scope. This changes no DOM structure,
+layout, list/scroll geometry, type, controls or character pixels. The seven-rule
+source patch is validated separately; the old five-rule first packet cannot
+prove the new body coverage. One Root follow-up must inspect fixed 390px first,
+then 360/430px, computed contrast/focus/44px behavior and preservation evidence.
