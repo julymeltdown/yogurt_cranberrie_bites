@@ -281,10 +281,18 @@ unknown metadata cannot independently release a child or close a root scope.
 | Final combined validation, documentation, qualified committed publication and remote ancestry | Still required for the unpublished increments; no main-chat or scrum-lead approval stage |
 
 The separately assigned SELF producer registrations are authored in isolated
-commit `d88751fd` and sent to that owner for combined compilation with its exact
-new module and protocol. They are not part of this public recovery branch or an
-acceptance claim. The public Profile developer remains sole writer of the four
-existing Profile registration paths; no ownership transfer was implied.
+commit `d88751fd`, consumed by that owner as `e2ca87e0`. The SELF developer
+reports production Profile binary and test compilation exit 0 without warnings
+at `5c921e28`, plus eight deterministic and three current native PostgreSQL /
+migration-CLI / restart cases passing with exact cleanup. A fresh Git comparison
+confirmed that all three registration files at that compiled source are byte
+identical to `d88751fd`; no registration correction was requested. These are
+peer-owned qualification results for the SELF composition, not a run of the
+public recovery or Concert tests. Real Auth/Friend/Profile component probing and
+Concert decision / root HTTP acceptance remain separate. This public recovery
+branch does not contain those SELF registrations. The public Profile developer
+remains sole writer of the four existing registration paths; no ownership
+transfer was implied.
 
 
 SDK2 `c4ad561cd813f0f7f1e14f21cb2ee90592e09eea` was fetched from actual
