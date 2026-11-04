@@ -190,6 +190,15 @@ PostgreSQL process; FULL was recorded at 20:12:19.502925 UTC, with workflows and
 remaining growth reservations zero. The next owner and allocator received that
 literal release before this documentation update.
 
+Version conformance limitation: the original offer specified PostgreSQL 16.
+Both actual acceptance receipts instead pinned the PostgreSQL 17.10 tool path,
+and the native result reports that actual version. This is a deviation from the
+original offered environment, not evidence of PostgreSQL 16 conformance. The
+responsible developer's disposition is a scoped runtime PASS on PostgreSQL 17.10;
+PostgreSQL 16 qualification remains NOT_RUN. The version difference must remain
+visible in publication and cannot be resolved by relabeling the result. No
+additional run or acknowledgment is required merely to correct the handoff.
+
 Evidence is `/private/tmp/mcr-age-copied-native-yjl5vsg2/FULL.json`, with
 `frozen/native.json`, `frozen/native/FIRST.stdout`,
 `frozen/native/RESTARTED.stdout` and `run-result.json`. Peak whole storage was
