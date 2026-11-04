@@ -744,6 +744,25 @@ async fn native_party_failed_receipt_replay_and_changed_body_remain_truthful() -
         Some("23503"),
         "original command receipt must not be replaceable"
     );
+    // Resolve through a separately configured connection pool, retaining the
+    // verified private connection options but changing only presentation timezone.
+    let timezone_pool = sqlx::postgres::PgPoolOptions::new()
+        .max_connections(1)
+        .after_connect(|c, _| {
+            Box::pin(async move {
+                sqlx::query("set time zone 'Asia/Seoul'").execute(c).await?;
+                Ok(())
+            })
+        })
+        .connect_with(f.concert.connect_options().as_ref().clone())
+        .await?;
+    assert_eq!(
+        sqlx::query_scalar::<_, String>("show TimeZone")
+            .fetch_one(&timezone_pool)
+            .await?,
+        "Asia/Seoul"
+    );
+    let timezone_resolver = PartyNativeResolver::new(timezone_pool.clone(), f.instance)?;
     // Retained receipt retirement clears business outcome fields, not the actual
     // earlier native commit. Exercise this metadata lifecycle directly; this is
     // not a claim that a 24-hour expiry worker elapsed in the fixture.
@@ -755,7 +774,7 @@ async fn native_party_failed_receipt_replay_and_changed_body_remain_truthful() -
     for row in committed {
         let owner: OwnerBinding = serde_json::from_value(row.try_get("binding")?)?;
         let identity: ProducerTransaction = serde_json::from_value(row.try_get("identity")?)?;
-        let proof = f.resolver().resolve(&owner, &identity).await?;
+        let proof = timezone_resolver.resolve(&owner, &identity).await?;
         assert_eq!(proof.status, proto::TransactionStatus::Committed);
         let value: Value = serde_json::from_slice(&proof.receipt_evidence)?;
         assert_eq!(value["receipt"]["state"], "RETIRED");
@@ -767,6 +786,7 @@ async fn native_party_failed_receipt_replay_and_changed_body_remain_truthful() -
         assert!(value.get("success").is_none());
     }
 
+    timezone_pool.close().await;
     Ok(())
 }
 

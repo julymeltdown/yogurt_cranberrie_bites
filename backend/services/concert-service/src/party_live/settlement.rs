@@ -271,7 +271,9 @@ impl NativeTransactionResolver for PartyNativeResolver {
                 receipt_evidence: vec![],
             });
         }
-        let row=sqlx::query("select w.binding,w.identity,w.request_digest,w.idempotency_key,w.native_role,w.settlement_reference,to_jsonb(r) receipt,c.receipt committed_receipt from public.concert_party_native_witnesses w left join public.concert_party_native_command_receipts c using(instance_id,scope_id,identity_digest) left join public.concert_command_receipts r on r.receipt_id=c.receipt_id and w.native_role='COMMAND' and r.actor_id=(w.binding->>'actor_id')::uuid and r.event_id=(w.binding->>'event_id')::uuid and r.operation_id=w.binding->>'operation' and r.idempotency_key=w.idempotency_key where w.instance_id=$1 and w.scope_id=$2 and w.binding_digest=$3 and w.identity_digest=$4")
+        // Compare receipt instants as timestamptz, not timezone-formatted JSON
+        // strings. The same committed receipt survives session timezone changes.
+        let row=sqlx::query("select w.binding,w.identity,w.request_digest,w.idempotency_key,w.native_role,w.settlement_reference,to_jsonb(r) receipt,c.receipt committed_receipt from public.concert_party_native_witnesses w left join public.concert_party_native_command_receipts c using(instance_id,scope_id,identity_digest) left join public.concert_command_receipts r on r.receipt_id=c.receipt_id and w.native_role='COMMAND' and r.actor_id=(w.binding->>'actor_id')::uuid and r.event_id=(w.binding->>'event_id')::uuid and r.operation_id=w.binding->>'operation' and r.idempotency_key=w.idempotency_key and r.created_at=(c.receipt->>'created_at')::timestamptz and r.expires_at=(c.receipt->>'expires_at')::timestamptz where w.instance_id=$1 and w.scope_id=$2 and w.binding_digest=$3 and w.identity_digest=$4")
             .bind(self.instance).bind(reference.scope_id).bind(binding.digest()?.as_slice()).bind(digest.as_slice()).fetch_optional(&mut *tx).await.map_err(unresolved)?;
         let Some(row) = row else { return Ok(unknown()) };
         let receipt: Option<serde_json::Value> = row.try_get("receipt").map_err(unresolved)?;
@@ -320,8 +322,6 @@ impl NativeTransactionResolver for PartyNativeResolver {
                             "idempotency_key",
                             "request_hash",
                             "target_id",
-                            "created_at",
-                            "expires_at",
                         ]
                         .iter()
                         .all(|k| current[*k] == committed[*k])

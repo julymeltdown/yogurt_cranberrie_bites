@@ -46,7 +46,10 @@ requires the immutable witness and, for commands, its current actual receipt.
 COMMITTED describes the transaction; FAILED and PENDING receipts are not
 business success. Private correlation evidence exposes the actual receipt state
 at resolution, including later RETIRED metadata, alongside the actual immutable
-commit-time receipt snapshot. Neither state becomes a fabricated success flag. No raw request body or owner registration secrets are returned.
+commit-time receipt snapshot. Neither state becomes a fabricated success flag.
+Receipt instants are compared as timestamps, independent of the resolver session
+time zone; a separate Asia/Seoul pool is included in the native regression.
+No raw request body or owner registration secrets are returned.
 
 Root retains config/native resolver routing, runtime/main, actual Profile and
 community resource factory composition, manifests, contracts and infrastructure.
