@@ -1,0 +1,1395 @@
+{
+  "offer": "ADMIN-390-RETRY-20261104T1928Z",
+  "finished_at": "2026-11-04T19:28:43.225681+00:00",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/operations-composition/__tests__/native.mjs"
+      ],
+      "exit_code": 1,
+      "finished_at": "2026-11-04T19:28:42.736470+00:00"
+    }
+  ],
+  "failure": "command1 failed",
+  "signal_errors": [],
+  "remaining_owned": [],
+  "dependency_link_absent": true,
+  "own_tmp_removed": true,
+  "port": 52624,
+  "rebind": true,
+  "guard": {
+    "peaks": {
+      "pids": 12,
+      "rss": 1990344704,
+      "temporary": 30302208,
+      "durable": 77824,
+      "other": 0,
+      "new_total": 91575696,
+      "whole": 2245847475
+    },
+    "reason": null,
+    "minimum_free_bytes": 16731824128,
+    "observed_processes": {
+      "2123": {
+        "parent": 49590,
+        "group": 2123,
+        "uid": 501,
+        "rss": 28080,
+        "started": "Thu Nov 5 04:28:09 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-admin-admit.py ADMIN-390-RETRY-20261104T1928Z 2026-11-04T19:38:00+00:00 1342177280 native /private/tmp/mcr-default-admin-native-02"
+      },
+      "2595": {
+        "parent": 2123,
+        "group": 2123,
+        "uid": 501,
+        "rss": 29648,
+        "started": "Thu Nov 5 04:28:10 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/operations-composition/__tests__/round.py guard /private/tmp/mcr-default-admin-native-02 2123 1793820610.331637 1793820670.331637"
+      },
+      "2596": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2608": {
+        "parent": 2123,
+        "group": 2608,
+        "uid": 501,
+        "rss": 0,
+        "started": "Thu Nov 5 04:28:10 2026",
+        "command": "<defunct>"
+      },
+      "2613": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2619": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2627": {
+        "parent": 2608,
+        "group": 2627,
+        "uid": 501,
+        "rss": 236624,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disable-dev-shm-usage --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --remote-debugging-pipe --no-startup-window"
+      },
+      "2629": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2653": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 6176,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/usr/bin/profiles status -type enrollment"
+      },
+      "2698": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2723": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 145120,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708988185955192"
+      },
+      "2724": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 118944,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708989122997041"
+      },
+      "2726": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 83792,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708990060038890"
+      },
+      "2727": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 90480,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Alerts).app/Contents/MacOS/Google Chrome Helper (Alerts) --type=utility --utility-sub-type=mac_notifications.mojom.MacNotificationProvider --lang=en-US --service-sandbox-type=none --no-sandbox --mute-audio --message-loop-type-ui --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708990997080739"
+      },
+      "2728": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2730": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 187248,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=164059434289 --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708991934122588"
+      },
+      "2732": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 103728,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=164059463433 --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708993808206286"
+      },
+      "2734": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 183104,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-default-admin-native-02/work/playwright_chromiumdev_profile-3qdnBa --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=164059463818 --shared-files --field-trial-handle=1718379636,r,3233440638029374073,5988557810649289628,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,6510523621820631732,3766642419021095102,4 --trace-process-track-uuid=3190708992871164437"
+      },
+      "2743": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2764": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 04:28:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2854": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2959": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "2993": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3012": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:13 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3020": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:13 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3023": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:13 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3034": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:13 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3037": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 04:28:13 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3038": {
+        "parent": 2627,
+        "group": 2627,
+        "uid": 501,
+        "rss": 656,
+        "started": "Thu Nov 5 04:28:13 2026",
+        "command": "(Google Chrome He)"
+      },
+      "3044": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3114": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 04:28:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3215": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3220": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3223": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3229": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 04:28:15 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3249": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 04:28:15 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3258": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:15 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3261": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:15 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3268": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:15 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3271": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:16 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3283": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:16 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3297": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:16 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3299": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:16 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3377": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:16 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3540": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:17 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3612": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:17 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3613": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:17 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3618": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:17 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3635": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:18 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3636": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:18 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3637": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:18 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3644": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:18 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3647": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:18 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3650": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:19 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3830": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:19 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3842": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:19 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3847": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:19 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3848": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:19 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3851": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:20 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3863": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:20 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3864": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:20 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3865": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:20 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3866": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:20 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3867": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:21 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3870": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:21 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3884": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 04:28:21 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3886": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:21 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3887": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:21 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3892": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:22 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3893": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:22 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3894": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:22 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3895": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:22 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3912": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2160,
+        "started": "Thu Nov 5 04:28:22 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3913": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:23 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3918": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:23 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3923": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:23 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3924": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:23 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3927": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:24 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3928": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:24 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3929": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:24 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3936": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:24 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3937": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:24 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3940": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:25 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3951": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:25 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3952": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2160,
+        "started": "Thu Nov 5 04:28:25 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3953": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:25 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "3954": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:25 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4046": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:26 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4105": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:26 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4152": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 04:28:26 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4261": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:26 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4273": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 04:28:26 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4360": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:27 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4450": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:27 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4596": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:27 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4616": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:27 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4633": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:27 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4634": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:28 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4635": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:28 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4640": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:28 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4645": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:28 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4648": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:29 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4649": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:29 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4650": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:29 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4655": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:29 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4656": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:29 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4664": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:30 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4678": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:30 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4696": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:30 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4762": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:30 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4766": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:30 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4845": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:31 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4923": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:31 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4936": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:31 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "4937": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:31 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5013": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:31 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5096": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:32 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5143": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 04:28:32 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5224": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 04:28:32 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5245": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:32 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5262": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:32 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5263": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:33 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5264": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:33 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5270": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:33 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5347": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:33 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5423": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:33 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5426": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:34 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5427": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:34 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5432": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:34 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5433": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:34 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5598": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2240,
+        "started": "Thu Nov 5 04:28:35 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5671": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2160,
+        "started": "Thu Nov 5 04:28:35 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5672": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:35 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5673": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:35 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5674": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2160,
+        "started": "Thu Nov 5 04:28:35 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5675": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:36 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5736": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2336,
+        "started": "Thu Nov 5 04:28:36 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5755": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 04:28:36 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5770": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:36 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5771": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:36 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5776": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:37 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5777": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:37 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5834": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:37 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5859": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:37 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5869": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:37 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5886": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:38 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5887": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:38 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5892": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:38 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5893": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:38 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5894": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:38 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5901": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:39 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5902": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:39 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5907": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:39 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "5910": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:39 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6018": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:40 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6049": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:40 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6050": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:40 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6051": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:40 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6052": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:40 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6053": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:41 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6138": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:41 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6235": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:41 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6304": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:41 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6305": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:41 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6310": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:42 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6311": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:42 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6313": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:42 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6315": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:42 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "6319": {
+        "parent": 2595,
+        "group": 2123,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 04:28:42 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      }
+    },
+    "live_pids": [
+      "2123",
+      "2595",
+      "6319"
+    ],
+    "sampled_at": "2026-11-04T19:28:43.076411+00:00",
+    "sample_seconds": 0.15587962500285357
+  }
+}

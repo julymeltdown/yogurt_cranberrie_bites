@@ -1,0 +1,10 @@
+{
+  "rootDiagnosticActualAccept": "2026-11-04T18:35:10.058873Z",
+  "rootDiagnosticActualFull": "2026-11-04T18:35:25.019816Z",
+  "sourceActualAccept": "2026-11-04T18:36:06.959560Z",
+  "sourceActualFull": "2026-11-04T18:36:18.866649Z",
+  "overlap": false,
+  "source": "Community routed exact counterpart timestamps after sourceFULL",
+  "originalOtherReservationBytes": 3087007744,
+  "originalCapsAndClocksUnchanged": true
+}

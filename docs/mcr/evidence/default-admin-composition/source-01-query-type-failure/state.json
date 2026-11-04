@@ -1,0 +1,29 @@
+{
+  "at": "2026-11-04T18:36:07.110588+00:00",
+  "pin": "97befb78e7f3d04b9d226fb6529dcacd1baf1b6a",
+  "clean": true,
+  "source_bytes": 1412964352,
+  "deps_bytes": 789164032,
+  "git_bytes": 4920173,
+  "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+  "git_dir_bytes": 2011136,
+  "owned_object_ranges": [
+    "5da644264ee354f63e609db64d65a7c5e63c9c11..codex/mcr-fe-gifts-media-detail",
+    "ff96d53eb817c93dd1bafb5c4f125630f995413b..codex/mcr-fe-FE39-current-20261105",
+    "306626d49cd8b55916cf973ab6eea06569ec98d4..HEAD"
+  ],
+  "owned_object_count": 529,
+  "free_bytes": 14968680448,
+  "limits": {
+    "pids": 8,
+    "rss": 3221225472,
+    "whole": 2684354560,
+    "temporary": 83886080,
+    "durable": 25165824,
+    "other": 16777216,
+    "new_total": 134217728
+  },
+  "running": false,
+  "work_done": true,
+  "new_offset": 22523841
+}

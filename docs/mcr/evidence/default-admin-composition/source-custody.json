@@ -1,0 +1,75 @@
+{
+  "base": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+  "branch": "codex/mcr-fe-default-admin-composition",
+  "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
+  "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
+  "qualification": "OWN_COMPOSITION_QUALIFIED_CONTROLLED_HTTP_CURRENT_MAIN_NATIVE_PASS_PUBLICATION_PENDING",
+  "scope": "Default Admin canonical consumer composition and changed boundary only",
+  "actualProducer205": "NOT_QUALIFIED",
+  "productionRoleRegistration": "ABSENT_FAIL_CLOSED_NO_FALLBACK",
+  "placeWriteRelease": "ABSENT_NO_ROLE_DERIVED_GRANT",
+  "missingReviewProducers": "Operations205",
+  "wholeTaskLiveAcceptance": "OPEN_SEPARATE",
+  "firstSource": {
+    "pin": "97befb78e7f3d04b9d226fb6529dcacd1baf1b6a",
+    "tests": 21,
+    "result": "PASS",
+    "fullTypes": "FAILED_6_TEST_ONLY_UNSUPPORTED_BYROLE_EXACT_OPTIONS",
+    "lint": "NOT_RUN",
+    "nativeSyntax": "NOT_RUN",
+    "release": "source-01-query-type-failure/release.json",
+    "repair": "Remove only6 unsupported optional exact flags; ByRole string matching remains exact by default. No product change or passing suite replay."
+  },
+  "canonicalIntake": "1a1db34065a190790459e4be41891750ab46d882",
+  "currentAdmission": "Registered canonical Auth admission; existing AdmissionBoundary borrowed; controlledHTTP only/noidentityinjection",
+  "old21CaseDisposition": "PASS only at97befb78 immutable readset; no current-cut21 replay",
+  "remainingSource": {
+    "pin": "321a44dffce8ec2f9f261ab84d850228d196557e",
+    "offer": "ADMIN-THREE-SOURCE-20261104T1910Z",
+    "types": "PASS",
+    "lint": "PASS_DENY_WARNINGS",
+    "nativeSyntax": "PASS",
+    "release": "source-02-current-types-lint-syntax/release.json",
+    "passingSuiteReplay": false,
+    "accountedWholeHighwaterBytes": 2216676560
+  },
+  "nativeFirstAttempt": {
+    "pin": "fc28781e7178a6fd8fe38b8a35f71bd4e5f90264",
+    "result": "FAILED_BEFORE_LOGIN_EMAIL_FIELD_TIMEOUT",
+    "release": "native-01-entry-failure/release.json",
+    "productProof": false,
+    "repair": "Harness loads existing Vite config and captures failure evidence; exact initial page cause unproven"
+  },
+  "nativeSecondAttempt": {
+    "pin": "758a950abbe7ba99c961ce2611e08f55858fd87d",
+    "result": "FAIL_BLANK_ENTRY_SOURCE_MODULES_INTERCEPTED",
+    "release": "native-02-interception-failure/release.json",
+    "visual": "390 failure PNG individually viewed; blank page",
+    "repair": "Restrict route interceptor to URL pathname starting /api/; no product change"
+  },
+  "ownAccessDiscovery": {
+    "classification": "PRODUCER_COMPOSITION_AND_CANONICAL_CONTRACT_EXPOSURE",
+    "consumer": "Existing registered getOwnConcertOperationsAccess and closed lease DTO; no demonstrated caller defect",
+    "contract": "3a089a3b6b98f01d301a69c02020d77519fa3a2b",
+    "producerAndMountOwner": "Backend Root1fc / Backend205",
+    "generatedOwner": "C07 01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+    "integrationOwner": "Root153",
+    "actualPublicHTTP": "NOT_QUALIFIED",
+    "controlledNativeDoesNotCloseActualProducer": true,
+    "latestProducerReport": "Root2653376e5 sameCore/PublishedRoles/publication overlay source authored; canonical exposure/generation/actual HTTP not yet qualified. C07 frozen147operation baseline still absent route."
+  },
+  "nativeQualified": {
+    "pin": "7d95145a6854a6178dcf191b8db9fe5c3b99f5a0",
+    "readsetSha256": "05ddf685665b150e6aa05d1db52fee04b19f776efa3dea601c46d2aa7b5af39b",
+    "guardSha256": "fb7c33c13a6852ac7a680548a05fd0963171f0965841d115dc7bde0b5568443e",
+    "offer": "ADMIN-ROUTEPREDICATE-390-RETRY-20261104T1943Z",
+    "result": "PASS",
+    "release": "native-03-qualified/release.json",
+    "visual": "visual-assessment.json",
+    "canonicalAdmissionBeforeAdmin": true,
+    "identityInjected": false,
+    "singleMutationRetainedOriginalKey": true,
+    "withdrawal": true,
+    "accountedWholeHighwaterBytes": 2246411068
+  }
+}

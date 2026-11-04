@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+   Start at  03:36:07
+   Duration  1.73s (transform 449ms, setup 0ms, import 719ms, tests 505ms, environment 439ms)
+

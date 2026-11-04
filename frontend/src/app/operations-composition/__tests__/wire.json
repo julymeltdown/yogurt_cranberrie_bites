@@ -1,0 +1,64 @@
+{
+  "auth": {
+    "userId": "00000000-0000-4000-8000-000000000101",
+    "accessToken": "TEST_ONLY_default_admin_memory",
+    "refreshToken": "",
+    "tokenType": "Bearer",
+    "expiresIn": 900,
+    "linkedProviders": [
+      "EMAIL"
+    ]
+  },
+  "capabilities": {
+    "contract_version": "0.1.0",
+    "providers": [
+      {
+        "provider": "EMAIL",
+        "enabled": true,
+        "disabled_reason": null
+      },
+      {
+        "provider": "GOOGLE",
+        "enabled": false,
+        "disabled_reason": "HANDOFF_NOT_QUALIFIED"
+      },
+      {
+        "provider": "APPLE",
+        "enabled": false,
+        "disabled_reason": "HANDOFF_NOT_QUALIFIED"
+      },
+      {
+        "provider": "X",
+        "enabled": false,
+        "disabled_reason": "HANDOFF_NOT_QUALIFIED"
+      }
+    ],
+    "server_time": "2026-11-03T00:00:00Z"
+  },
+  "event": "00000000-0000-4000-8000-000000000201",
+  "actor": "00000000-0000-4000-8000-000000000101",
+  "settings": {
+    "event": {
+      "event_id": "00000000-0000-4000-8000-000000000201",
+      "slug": "synthetic-admin",
+      "title": "SYNTHETIC operations event",
+      "phase": "LIVE",
+      "timezone": "Asia/Seoul",
+      "revision": 8
+    },
+    "revision": 8,
+    "features": {
+      "parties": true,
+      "giveaways": true,
+      "intros": true,
+      "social": true,
+      "mural": true
+    },
+    "beacon_ttl_seconds": 900,
+    "pickup_grace_seconds": 300,
+    "social_grant_ttl_seconds": 3600,
+    "mural_cooldown_ms": 1000
+  },
+  "snapshot": "00000000-0000-4000-8000-000000000003",
+  "job": "00000000-0000-4000-8000-000000000050"
+}

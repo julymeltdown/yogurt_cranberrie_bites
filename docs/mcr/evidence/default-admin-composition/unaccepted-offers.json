@@ -1,0 +1,28 @@
+{
+  "reserveDecline": {
+    "offer": "ADMIN-REMAINING-SOURCE-20261104T1855Z",
+    "actualAccept": false,
+    "reason": "Pre-admission reserve shortfall",
+    "at": "2026-11-04T18:55:14.696202Z",
+    "freeBytes": 11984982016,
+    "otherReservedBytes": 2281701376,
+    "ownNewBytes": 134217728,
+    "remainingBytes": 9569062912,
+    "requiredReserveBytes": 9663676416,
+    "noPrefixOrLinkOrChild": true
+  },
+  "expired": {
+    "offer": "ADMIN-REMAINING-SOURCE-20261104T1859Z",
+    "actualAccept": false,
+    "expiry": "2026-11-04T19:02:00Z",
+    "recoveredAt": "2026-11-04T19:03:27Z",
+    "reason": "Literal inventory recovered after expiry; message delivery errors to sole frontend allocator reproduced by Community",
+    "resourceHeld": false
+  },
+  "continuity": {
+    "offer": "ADMIN-THREE-SOURCE-20261104T1910Z",
+    "authority": "Global capacity controller21d finite exception only",
+    "acceptedAt": "2026-11-04T19:08:33.192288Z",
+    "fullAt": "2026-11-04T19:08:43.247576Z"
+  }
+}
