@@ -1,0 +1,346 @@
+{
+  "status": "INTEGRATED",
+  "scope": "Current-published backend serving, native readiness, actual external App replay and normal resource release; source/art audit and committed consumer publication remain separate.",
+  "backend_source": "cde817b2ade8caabcf8c3a96508121053997873e",
+  "frontend_candidate": "1722a81734947764996590b94a63aa001501df28",
+  "qualified_concert_source": "7cd1e900d6bd1b4994482819486c828e43736822",
+  "concert_binary_sha256": "b1ea0a07eab66aa2c1c313476b063b61cf54ee678ad0a0e44633944815f65433",
+  "runtime_cohort_sha256": "dd43f3f629a958f3b126bacc039f6d3413f012b4e42c7f59528b0f3e617b8da5",
+  "accepted_at": "2026-11-04T08:30:35.498019+00:00",
+  "source_preflight": {
+    "old_count": 3555,
+    "new_count": 3558,
+    "changed": [
+      "frontend/public/backgrounds/cute-community-v1/manifest.json",
+      "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/handoff.json",
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json"
+    ],
+    "added": [
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png"
+    ]
+  },
+  "pre_and_post_source_hashes_match": true,
+  "canonical_runtime": "map mcr_reference_scene_r3 revision4; selected static avatar manifest revision1; no V10 admission",
+  "c03_database_checks": {
+    "root_delivery_16": "PASS",
+    "profile_commit_2": "PASS",
+    "concert_native_commit_2": "PASS",
+    "auth_settlement_16": "PASS",
+    "friend_settlement_16": "PASS",
+    "auth_pending_participants_0": "PASS",
+    "friend_pending_participants_0": "PASS",
+    "no_prepared_transactions": "PASS"
+  },
+  "world_two_client": "PASS",
+  "world_database": {
+    "issued_tickets_2": "PASS",
+    "consumed_tickets_2": "PASS",
+    "released_memberships_0": "PASS",
+    "no_prepared_transactions": "PASS"
+  },
+  "consumer": {
+    "source": "619256f1da3f72045adea2cd170ae4380765796f",
+    "status_at_intake": "RUNTIME_PASS_PENDING_ART_REVIEW",
+    "started_at": "2026-11-04T08:35:46.452Z",
+    "finished_at": "2026-11-04T08:37:33.606Z",
+    "runtime_exit_code": 0,
+    "checks": {
+      "independentAccounts": {
+        "status": "PASS",
+        "detail": {
+          "independentContexts": 2,
+          "freshLogins": 2
+        }
+      },
+      "authorizedWorld": {
+        "status": "PASS",
+        "detail": [
+          {
+            "active": 1,
+            "peak": 1,
+            "opens": 1,
+            "snapshots": 1,
+            "invalid": 0,
+            "inputs": 0,
+            "ack": 1,
+            "lastInput": 1,
+            "players": 2,
+            "frames": 3,
+            "privacyFields": 0,
+            "map": "mcr_reference_scene_r3",
+            "mapRevision": 4,
+            "avatarManifest": "mcr_selected_static_20261103",
+            "avatarRevision": 1
+          },
+          {
+            "active": 1,
+            "peak": 1,
+            "opens": 1,
+            "snapshots": 1,
+            "invalid": 0,
+            "inputs": 0,
+            "ack": 1,
+            "lastInput": 1,
+            "players": 2,
+            "frames": 2,
+            "privacyFields": 0,
+            "map": "mcr_reference_scene_r3",
+            "mapRevision": 4,
+            "avatarManifest": "mcr_selected_static_20261103",
+            "avatarRevision": 1
+          }
+        ]
+      },
+      "bidirectionalMovementAndAck": {
+        "status": "PASS",
+        "detail": [
+          {
+            "active": 1,
+            "peak": 1,
+            "opens": 1,
+            "snapshots": 1,
+            "invalid": 0,
+            "inputs": 7,
+            "ack": 9,
+            "lastInput": 9,
+            "players": 2,
+            "frames": 11,
+            "privacyFields": 0,
+            "map": "mcr_reference_scene_r3",
+            "mapRevision": 4,
+            "avatarManifest": "mcr_selected_static_20261103",
+            "avatarRevision": 1
+          },
+          {
+            "active": 1,
+            "peak": 1,
+            "opens": 1,
+            "snapshots": 1,
+            "invalid": 0,
+            "inputs": 7,
+            "ack": 9,
+            "lastInput": 9,
+            "players": 2,
+            "frames": 10,
+            "privacyFields": 0,
+            "map": "mcr_reference_scene_r3",
+            "mapRevision": 4,
+            "avatarManifest": "mcr_selected_static_20261103",
+            "avatarRevision": 1
+          }
+        ]
+      },
+      "persistentPanels": {
+        "status": "PASS",
+        "detail": {
+          "independentContexts": 2,
+          "panelsPerContext": 6,
+          "sameHostAndCanvas": true,
+          "noNewSocket": true,
+          "coveredMovementSuppressed": true
+        }
+      },
+      "themeRuntimeAndLocalPersistence": {
+        "status": "PASS",
+        "detail": {
+          "selected": "PARADE",
+          "renderedCanvasChanged": true,
+          "localIdentityAndEventScoped": true,
+          "otherContextIsolated": true,
+          "roomPositionAvatarUnchanged": true,
+          "socketUnchanged": true,
+          "canvasBeforeSha256": "7e7f7226b6faedf31d88180af437dbd85cacec1542114da7d757f24b2441a76e",
+          "canvasAfterSha256": "971d04abe0d807d9a68350d54db1f96c54ca9c75d721b020f317547f088b69fa",
+          "persistence": "Local storage only; server preference synchronization is explicitly unavailable"
+        }
+      },
+      "customization": {
+        "status": "PASS",
+        "detail": {
+          "realSave": true,
+          "peerAuthorizedAvatarChanged": true,
+          "choices": 3,
+          "realServerReadAfterReentry": true,
+          "selectedCharacterPersisted": true,
+          "cleanSavedDraft": true
+        }
+      },
+      "sustainedCurrentAuthWorld": {
+        "status": "PASS",
+        "detail": {
+          "durationMs": 91284,
+          "cycles": 6,
+          "independentLiveIdentities": 2,
+          "sameRoom": true,
+          "realProfileNavigations": 12,
+          "refreshObservation": {
+            "status": "NOT_RUN",
+            "reason": "Actual deployment token TTL900s exceeds the immutable runtime window; no actual App reload-resume path or owned401trigger. No expiry/token/clock manipulation."
+          },
+          "successfulRefreshRequests": 0,
+          "refreshPrincipals": [],
+          "noAuthInjectionOrMock": true,
+          "oneSocketPerContext": true,
+          "protocolPrivacyAndLateErrors": 0
+        }
+      },
+      "realBrowserReconnect": {
+        "status": "PASS",
+        "detail": {
+          "realProxyTransportCut": {
+            "method": "Destroyed exactly one own real Vite proxy client/upstream TCP pair; no synthetic WebSocket frames or backend control",
+            "principal": 0
+          },
+          "peerWithdrawal": true,
+          "newAuthorizedStream": true,
+          "freshSnapshot": true,
+          "bothPlayersRestored": true,
+          "sameCanvas": true,
+          "peakWorldSockets": 1
+        }
+      },
+      "singleActualPhaserGame": {
+        "status": "PASS",
+        "detail": {
+          "readOnlyHeapQuery": true,
+          "contexts": [
+            {
+              "live": 1,
+              "total": 2,
+              "ownedCanvas": true
+            },
+            {
+              "live": 1,
+              "total": 2,
+              "ownedCanvas": true
+            }
+          ]
+        }
+      },
+      "finalWorldInvariants": {
+        "status": "PASS",
+        "detail": {
+          "independentIdentities": 2,
+          "liveStreams": 2,
+          "playersPerStream": 2,
+          "peakSocketsPerContext": 1,
+          "invalidFrames": 0,
+          "privateFields": 0,
+          "lateErrors": 0
+        }
+      }
+    },
+    "error_count": 0,
+    "source_art_audit": "PENDING_CONSUMER_COMMITTED_PACKET",
+    "publication": "PENDING_CONSUMER_COMMITTED_PACKET"
+  },
+  "after_browser_readonly": {
+    "checked_at": "2026-11-04T08:38:56.175562+00:00",
+    "scope": "Owned after-browser aggregate READ ONLY snapshot; no settlement or target inspection",
+    "prepared_transactions": 0,
+    "roots": [
+      {
+        "phase": "ROOT_FINISHED",
+        "serialized": true,
+        "delivered": true,
+        "n": 22
+      }
+    ],
+    "owners": {
+      "mcr_auth": [
+        {
+          "state": "COMPLETED",
+          "settled": true,
+          "n": 22
+        }
+      ],
+      "mcr_friend": [
+        {
+          "state": "COMPLETED",
+          "settled": true,
+          "n": 22
+        }
+      ]
+    },
+    "active_lock_waits": 0
+  },
+  "release": {
+    "offer": "IN01-READ-SHARE-LIVE-202611040819Z",
+    "state": "RELEASED",
+    "runtime_exit_code": 0,
+    "result": "PARTIAL",
+    "cleanup": "PASS",
+    "all_owned_roots_absent": true,
+    "guard_aborted": null,
+    "max_sampled_whole_additional": 248348035,
+    "minimum_sampled_free_bytes": 31416082432,
+    "finished_at": "2026-11-04T08:40:58.649373+00:00"
+  },
+  "concert_stop": {
+    "pid": 65524,
+    "forced": false,
+    "exit_code": 0
+  },
+  "owner_and_descriptor_absent": true,
+  "guard": {
+    "aborted": null,
+    "max_sampled_whole_additional": 248348035,
+    "hard_whole_bytes": 1610612736,
+    "fixed_target_growth": 0,
+    "retained_evidence_carry": 104217987,
+    "minimum_sampled_free_bytes": 31416082432,
+    "owned_roots_absent": [
+      true
+    ],
+    "sampling_limit": "Sampled allocation; no released target read, no peak inferred between samples"
+  },
+  "retained_evidence": {
+    "offer-acceptance.json": {
+      "sha256": "92ae93991fa96b130b925a93b9a512f7d79347738ce3ce515558528de597062b",
+      "bytes": 1216
+    },
+    "source-preflight.json": {
+      "sha256": "dd23cb16ab69d73d2437551a9f5dfff164f60481ced4c0fea278c98c17c8d4f7",
+      "bytes": 516835
+    },
+    "report.json": {
+      "sha256": "e1aaed14f4a3b3c3362293498e52b5baf7bc84ba50aea945f7a8ccc23f51dbae",
+      "bytes": 19364
+    },
+    "report.ready.json": {
+      "sha256": "5786b4e70135bcfbd77a36d8daf5a410deba32eadfcd1b9a9ef5e5f82a5c296b",
+      "bytes": 1883
+    },
+    "runtime-guard.json": {
+      "sha256": "2b9268b35fb17d77c96b11e6239c45727c5e97f2b9be0fcdbd6ce9a9cb30d19d",
+      "bytes": 820
+    },
+    "fullworkflow-release.json": {
+      "sha256": "8abd7730d3cbdcc1a8ea77432638ec3d6e5b838909f28982e89a163539de4b8a",
+      "bytes": 347
+    },
+    "after-browser-readonly.json": {
+      "sha256": "771c2cbebfe9bc1194f85b05bffe60c650adf83960ebda3cfc79fead3df2db97",
+      "bytes": 581
+    },
+    "mcr-readshare-live-workflow.py": {
+      "sha256": "922c4bbd993aad39d9a11c7e56583285fb1464371a6cfdc8f08616c70a84727e",
+      "bytes": 5567
+    },
+    "mcr-readshare-live-guard.py": {
+      "sha256": "3ec575ff1bfb58574d2fe8742d9a1dea27ee39de7488317dba0d112ddbf0f331",
+      "bytes": 4730
+    }
+  },
+  "limits": [
+    "Backend driver PARTIAL denotes separately owned browser evaluation; it is not falsely promoted to whole application acceptance.",
+    "Current App runtime checks passed; consumer art/source audit, exact committed packet and publication proof still required.",
+    "Actual room fixture capacity is two. No 200-user/four-room capacity, mobile qualification or World server process restart is claimed.",
+    "Expiry-triggered refresh is informational NOT_RUN; no 900-second duration or automatic renewal requirement added.",
+    "No target/Cargo access, extra executable copy, manual prepared settlement, TTL fault, extension, reset or second browser run."
+  ]
+}

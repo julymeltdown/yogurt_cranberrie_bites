@@ -2,8 +2,38 @@
 
 Status: IN_PROGRESS. Combined component qualification passed at `34fa7a6d`.
 Full production composition, complete IN01 and project acceptance remain open.
-The actual sustained two-player/reconnect slice passed; customization remains open.
+The current App runtime passed customization, persistence and peer appearance,
+as well as the sustained two-player/reconnect slice. Consumer audit/publication
+remains separate from this runtime qualification.
 Existing immutable qualifications retain their exact source pins.
+
+## Current-published replay after Participant read-lock repair
+
+The [fresh attempt-eleven receipt](root-world-read-share-attempt11.json) pins
+published backend `cde817b2`, actual App candidate `1722a817`, native-qualified
+Concert `7cd1e900` and the six previously qualified peer mains. All backend,
+contract and canonical map/selected-avatar inputs remained unchanged before and
+after runtime; the exact five differing public candidate/presentation inputs and
+three additive candidate assets are recorded separately.
+
+All ten actual browser runtime checks passed. Both `/me` reads, avatar PUT and
+fresh editor re-entry GET returned 200; three choices, the saved selection, clean
+draft state and the specific actor's peer appearance passed. The same run passed
+91.284 seconds with two genuine Auth identities, real transport-cut reconnect,
+new ticket/stream, peer withdrawal/restoration, the same canvas, one live Phaser
+instance and one peak World socket per context. There were no invalid frames,
+private-field disclosures or late errors. The exact consumer art/source audit
+and committed publication are still pending and receive no inferred credit.
+
+After browser release, a read-only database snapshot found all 22 roots finished,
+serialized and delivered, all 22 Auth/Friend scopes completed and settled, zero
+prepared transactions and zero active lock waiters. Backend serving ended at its
+original fixed expiry, 08:40:58.649373Z, exit zero, graceful unforced Concert stop
+and cleanup PASS. The private descriptor, owned database root and owner process
+are absent. Maximum sampled whole allocation, including cumulative retained
+evidence, was 248,348,035 bytes; minimum sampled free space was 31,416,082,432
+bytes. No target, Cargo, manual settlement, deadline reset or runtime extension
+was used. Expiry/automatic renewal remains informational NOT_RUN.
 
 ## Current-published World replay after CR10
 
@@ -19,7 +49,7 @@ Phaser instance and World socket per context. Fresh login, room entry, movement,
 six panels and theme changes passed. The committed consumer packet is
 `0793aaa20cfe2c4741fa5a9367fde6c43fbb758c`; its report hash is in the receipt.
 
-IN01 remains incomplete. Actor A received two actual GET `/me` 504 responses at
+The historical attempt ten remained incomplete. Actor A received two actual GET `/me` 504 responses at
 07:28:57.125Z and 07:28:57.171Z; the character editor offered no choices and sent
 no avatar PUT. Actor B's later `/me` returned 200. Response bodies were not
 retained, so there is no evidence of a malformed successful DTO. Existing logs
