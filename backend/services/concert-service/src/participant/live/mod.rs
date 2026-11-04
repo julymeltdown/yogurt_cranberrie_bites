@@ -7,6 +7,7 @@ pub mod guarded;
 pub mod profile;
 pub mod recovery;
 pub mod service;
+pub mod settlement;
 pub mod update;
 
 #[cfg(test)]
