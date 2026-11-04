@@ -183,6 +183,40 @@ def capture(cluster, owner, database, scope, key):
     return result
 
 
+def restart_owner_cluster(cluster, private_key):
+    """Restart the same already-owned cluster; preserve actual native quarantine.
+
+    This observes physical lineage and prepared work, not business pickup or
+    producer recovery. Caller supplies its accepted native allocation/guardian.
+    """
+    sys.path.insert(0, str(ROOT / "backend/scripts/mcr"))
+    core = importlib.import_module("migration_smoke")
+    if type(cluster) is not core.Cluster:
+        raise ValueError("original live marker/inode-owned Cluster required")
+    label(private_key, "restart", "validate-key")
+    cluster.assert_owned()
+    old_pid = cluster.assert_postmaster()
+    query = "SELECT coalesce(json_agg(row_to_json(q)), '[]'::json)::text FROM (SELECT gid, transaction::text AS xid, database FROM pg_prepared_xacts ORDER BY gid) q;"
+    lineage_query = "SELECT (pg_control_system()).system_identifier::text;"
+    before = cluster.sql("postgres", query)
+    lineage = cluster.sql("postgres", lineage_query)
+    before_at = now()
+    cluster.stop()
+    boundary_at = now()
+    cluster.start()
+    distinct = cluster.assert_postmaster() != old_pid
+    after = cluster.sql("postgres", query)
+    same = before == after and cluster.sql("postgres", lineage_query) == lineage
+    if not distinct or not same:
+        raise RuntimeError("owned restart lineage/prepared-work mismatch")
+    return {"kind": "OWNED_CLUSTER_RESTART_SUPPORT_ONLY", "originalCaseCredit": False,
+            "phases": {"before": before_at, "boundary": boundary_at, "recovered": now()},
+            "distinctPostmaster": distinct, "preparedWorkUnchanged": same,
+            "preparedCount": len(json.loads(before)),
+            "preparedBinding": label(private_key, "prepared", before),
+            "lineageBinding": label(private_key, "system", lineage)}
+
+
 def compare(case_id, before, after):
     """Invariant observations only; even a clean comparison never certifies QA09."""
     if case_id not in CASES:
