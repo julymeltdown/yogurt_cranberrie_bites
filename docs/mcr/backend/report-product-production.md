@@ -274,3 +274,23 @@ exact executable/source freeze, developer-owned execution and cleanup, committed
 handoff to the named Root publisher and fresh remote proof remain required.
 These checks do not establish moderator/evidence routes, operator authority,
 public Gateway delivery, multiuser IN03 or whole BE36/BE38 acceptance.
+
+The first bounded build at source `9211e8a04d82d91d66de77756a2a68da506de21d`
+failed before test compilation (exit 101, 1.616 seconds): a newer cached Concert
+build-script executable in the shared MEDIA target requested
+`authority/v1/deletion_source.proto` from this older checkout. The pinned local
+build script did not reference that file. Fresh published master
+`fa6f3f72addedd8a8d9b9486a4e2ed8be56e0ec6` contains both the newer reference and
+the tracked proto. The developer refreshed only this task branch onto that
+published revision; no shared source, target cache or peer worktree was repaired
+or deleted. The failed source and evidence remain preserved.
+
+Attempt evidence: `/private/tmp/mcr-report-original-85d8fxhs`. Actual ACCEPT:
+`2026-11-04T15:05:05.219515Z`; target release with zero handles:
+`2026-11-04T15:05:09.003812Z`; FULL release:
+`2026-11-04T15:05:09.047179Z`. No executable was frozen and no PostgreSQL/native
+or browser work started. The independent guardian was reaped. Positive target
+output was 86,495,232 bytes; new peak was 92,999,680 bytes. Full current common
+Git (1,085,927,424 bytes) was charged in addition to all retained historical
+output/failed-proof carry, giving a whole peak of 3,663,241,216 bytes below the
+explicit 4 GiB ceiling. A fresh allocation is required before any target reentry.
