@@ -1,0 +1,10 @@
+
+ RUN  v4.1.9 <checkout>/frontend
+
+(node:4030) [DEP0129] DeprecationWarning: _channel is deprecated. Use ChildProcess.channel instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+ Test Files  25 passed (25)
+      Tests  258 passed (258)
+   Start at  13:27:09
+   Duration  2.38s (transform 3.16s, setup 0ms, import 5.94s, tests 10.70s, environment 3.18s)

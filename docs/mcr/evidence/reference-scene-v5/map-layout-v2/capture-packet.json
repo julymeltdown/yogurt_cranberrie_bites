@@ -1,0 +1,110 @@
+{
+  "status": "PASS_BOUNDED_MAP_LAYOUT_V2",
+  "runtimeCandidate": "765a40538c9ec90170461906d8966e071b942165",
+  "finalSourceCandidate": "6d2a51cdb983d181d547dcb846ade64d0a124db0",
+  "artistSourceCommit": "196cd0a2f5e006b4e14b1867b8c51b9a91dbaf19",
+  "artistPublication": "d1a5deaae0f6b79b365cb4c451d921711573ab8c",
+  "artifacts": {
+    "qualified-v2/map-danger-360.png": {
+      "bytes": 352853,
+      "sha256": "34e02a252bb0f066f2a67029bdd5e648b739508197b8e95222d8d35b9b50674d"
+    },
+    "qualified-v2/editable-parade.svg": {
+      "bytes": 2564276,
+      "sha256": "ce7527927525bbf3339d7880a67ddd7dd955832fa50a4f56a605c18b5bdc4566"
+    },
+    "qualified-v2/editable-revenge.png": {
+      "bytes": 1438771,
+      "sha256": "bcaa7b26f2d8866e75febecd12c4d087573340f0db1edb31a2cd70e301d504ad"
+    },
+    "qualified-v2/editable-danger.png": {
+      "bytes": 1440513,
+      "sha256": "cb26b10488e2c81c743794a88392bc4d32b32475bc363eb03092f2e4a909c69c"
+    },
+    "qualified-v2/map-parade-360.png": {
+      "bytes": 352952,
+      "sha256": "8dc2113a335efb5cc6372598d21ccee939d75962ca207dd9dd05fede722a2631"
+    },
+    "qualified-v2/marker-closed-390.png": {
+      "bytes": 402835,
+      "sha256": "3c29a41f822db059b3fde9dbc7c90ebb8c914ec86af7df845bd20b25a5c62896"
+    },
+    "qualified-v2/marker-unavailable-390.png": {
+      "bytes": 403853,
+      "sha256": "fa5d0633bfc7e40648017e7b499f3d72f812e0ea2726f432caa2a13cfb5f1c42"
+    },
+    "qualified-v2/map-revenge-390.png": {
+      "bytes": 401414,
+      "sha256": "fc9282dbb583ee0ff8bb11105af94601173f381314210b1c97fd0c3a17e3365f"
+    },
+    "qualified-v2/editable-danger.svg": {
+      "bytes": 2546016,
+      "sha256": "39b7de9a3b2f10fd5e9f3eca77587b17c124b3cd685c6da6c002fdfdd46262aa"
+    },
+    "qualified-v2/editable-revenge.svg": {
+      "bytes": 2549361,
+      "sha256": "4ff8f0e6a987eb1b917ced7404b77b429e5e787a79defd18d918e2180f9ee8dc"
+    },
+    "qualified-v2/map-danger-390-h754.png": {
+      "bytes": 400717,
+      "sha256": "25d3ac0cb6f9bb8d3e31f148b3dbbb98ecbad9220c989afdd0c38930af4af25a"
+    },
+    "qualified-v2/map-revenge-390-h754.png": {
+      "bytes": 400194,
+      "sha256": "9459afe58b9f10870aea61a701d005b550bfe48c8b2f28d9d4a74102c180a683"
+    },
+    "qualified-v2/editable-parade.png": {
+      "bytes": 1440219,
+      "sha256": "0620fb35f579655a10a8553d1f18bea37e3256b145bbde02be3e60a6eb1b524e"
+    },
+    "qualified-v2/map-revenge-430.png": {
+      "bytes": 470994,
+      "sha256": "941090453e495a2df621b766f7fdc9077d9f18c562e9987e4ab42884ff37c5b5"
+    },
+    "qualified-v2/native.json": {
+      "bytes": 196111,
+      "sha256": "e09103d83a8805c32c04e7bf16a536d6f03fcc4d241f0d299448b713e5c1f2e3"
+    },
+    "qualified-v2/map-parade-430.png": {
+      "bytes": 472064,
+      "sha256": "34988f5a605437be9fe4097294864f07ed0ddc7b3e5bd870dc7823c3c7805964"
+    },
+    "qualified-v2/map-parade-390.png": {
+      "bytes": 402122,
+      "sha256": "592a7859129fce4e3aeba6398173b3fc65164bf0b1c889fbfd0c29a0325e7df9"
+    },
+    "qualified-v2/map-revenge-360.png": {
+      "bytes": 352256,
+      "sha256": "7fd081c6088a1d3d843bc1881918e60aca2565e13e311e325b288a64b06952f2"
+    },
+    "qualified-v2/map-danger-430.png": {
+      "bytes": 471590,
+      "sha256": "6fe3610174cccd2125eadb06a57c644a0eeb1647cef65bb82bfbfe2938a2cb41"
+    },
+    "qualified-v2/map-danger-390.png": {
+      "bytes": 401744,
+      "sha256": "a61bbf41773233647d9589ac6fc8ad2a2f8f8d5d52a52518e111950fdfbea5b5"
+    },
+    "qualified-v2/map-parade-390-h754.png": {
+      "bytes": 400982,
+      "sha256": "96b2ed81776c5e515fc38b31ac13c3ce72044380bea48163dbe10778fd48426a"
+    }
+  },
+  "nativeSourcePins": 49,
+  "unchangedRuntimeAndSourceDataPins": 46,
+  "postCaptureChanges": {
+    "paths": [
+      "frontend/src/world/reference-scene/spatial-v5/build-source-inputs.py",
+      "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py",
+      "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts"
+    ],
+    "scope": "Generator CLI defaults now write only granted MAP files; historical ART doc pin reads immutable d1a5 publication; repro regression also exercises no-arg mode. No runtime, source sidecar, editable or native-driver change. Final focused tests and full types qualify these changes."
+  },
+  "targetHash": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "mapCases": 9,
+  "markerCases": 2,
+  "editableCompositions": 3,
+  "pixelChannelDifferences": 0,
+  "physicalDevices": "NOT_RUN",
+  "admission": "NOT_ADMITTED"
+}

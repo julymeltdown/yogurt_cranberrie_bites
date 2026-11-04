@@ -1,0 +1,48 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
+    camera: {
++     height: 791,
+-     height: 570,
+      scrollX: 278,
++     scrollY: 268.2126436781608,
+-     scrollY: 193.27586206896547,
+      width: 348,
+      zoom: 0.5958904109589042
+    },
+    following: true
+  }
+
+    at file://<checkout>/frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2.mjs:118:158 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    following: true,
+    camera: {
+      zoom: 0.5958904109589042,
+      scrollX: 278,
+      scrollY: 268.2126436781608,
+      width: 348,
+      height: 791
+    }
+  },
+  expected: {
+    following: true,
+    camera: {
+      zoom: 0.5958904109589042,
+      scrollX: 278,
+      scrollY: 193.27586206896547,
+      width: 348,
+      height: 570
+    }
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

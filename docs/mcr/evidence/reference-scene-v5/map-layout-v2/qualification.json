@@ -1,0 +1,136 @@
+{
+  "status": "BOUNDED_LAYOUT_V2_QUALIFIED",
+  "originalWork": [
+    "AR02",
+    "AR04",
+    "FE06 bounded",
+    "FE14/FE19 prior outcomes preserved",
+    "QA06 input only"
+  ],
+  "base": "d1a5deaae0f6b79b365cb4c451d921711573ab8c",
+  "sourceCandidate": "6d2a51cdb983d181d547dcb846ade64d0a124db0",
+  "runtimeCandidate": "765a40538c9ec90170461906d8966e071b942165",
+  "lease": "50f9f41fef63ff56cbefe876e5d8585f72ebb599",
+  "sourceCommits": [
+    "24ba5f65",
+    "765a4053",
+    "6d2a51cd"
+  ],
+  "node": "24.22.2",
+  "checks": {
+    "regressions": {
+      "cases": 258,
+      "files": 25,
+      "exit": 0
+    },
+    "finalFocused": {
+      "cases": 67,
+      "files": 6,
+      "exit": 0
+    },
+    "fullApplicationTypeScript": {
+      "diagnostics": 0,
+      "exit": 0
+    },
+    "scopedLint": {
+      "warnings": 0,
+      "exit": 0
+    },
+    "planArchive": {
+      "archives": 13,
+      "exit": 0
+    },
+    "actualRootMap": {
+      "cases": 9,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "eras": [
+        "REVENGE",
+        "PARADE",
+        "DANGER"
+      ],
+      "shortHeight": 754,
+      "differentRgbaChannels": 0,
+      "exit": 0
+    },
+    "markers": {
+      "cases": 2,
+      "statuses": [
+        "closed",
+        "unavailable"
+      ],
+      "exit": 0
+    },
+    "editable": {
+      "files": 3,
+      "objectsEach": 49,
+      "labelsEach": 6,
+      "actualBrowserFontAndGeometry": true,
+      "svgVersusCanvasPixelIdentity": "NOT_CLAIMED",
+      "exit": 0
+    }
+  },
+  "capturePacketSha256": "82ccca2f1159e450fb41e775b1603158cffa1472daf10a376587477cce261f45",
+  "postCaptureGeneratorTestOnlyPaths": [
+    "frontend/src/world/reference-scene/spatial-v5/build-source-inputs.py",
+    "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts"
+  ],
+  "protectedInputs": {
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json": "6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json": "e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/source-binding.json": "8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/app/WorldShell.tsx": "4e9f90a76c20b6bdb405f4d30add4ec0b45f0468c61a4fc9ef1092db746f53d3"
+  },
+  "resource": {
+    "namedAllocation": "FE153-LAYOUT-V2-20261104T0417Z",
+    "freshDiskFloorGiB": 8,
+    "estimatedPeakGiB": 0.18,
+    "hardCapGiB": 0.2,
+    "durableCapMiB": 20,
+    "browserClosed": true,
+    "serverClosed": true,
+    "cacheRemoved": true,
+    "allocationReleased": true
+  },
+  "limits": [
+    "Synthetic map7005/source resolver/HTTP+C05; actualbackend6 sourceidentityonly",
+    "No live Auth/server/multiuser or production release/admission",
+    "No physicaldevice/softwarekeyboard/notch acceptance",
+    "Target paper-center registration is bounded; wholearchitecture/artfidelity remainsopen",
+    "Later Artistarchitecture-v2 and separateWORLDpresentationwriter are not adopted"
+  ],
+  "logs": {
+    "checks/types.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "checks/plan.log": {
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    "checks/lint.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "checks/focused-final.log": {
+      "bytes": 206,
+      "sha256": "3223afbffdf2e862875f834e7edad414284bbf177a3a854df70784bbfeb468f7"
+    },
+    "checks/diagnostic-camera-resize.log": {
+      "bytes": 987,
+      "sha256": "0dc28803003f770066c42554fee5122016c4e40e46b28e8d744d02052a018dc0"
+    },
+    "checks/regressions.log": {
+      "bytes": 386,
+      "sha256": "4c4c46f16dcda613dfa2b16cc9fecbbeb8a98c93e17b940602011f70fadbcf26"
+    }
+  }
+}

@@ -29,7 +29,7 @@ The narrowly granted camera helper applies a presentation scale derived from the
 
 ## Qualification and reproducibility
 
-Use the retained Node 24.22.2 frontend dependencies and `MCR_FE14_PYTHON` pointing to the existing contracts-validation Python. No dependency install or lockfile change is required. Both derivation scripts live under `frontend/src/world/reference-scene/spatial-v5/` and reproduce the finite input/44 source pins and separate 30-pin MAP-only sidecar.
+Use the retained Node 24.22.2 frontend dependencies and `MCR_FE14_PYTHON` pointing to the existing contracts-validation Python. No dependency install or lockfile change is required. The original finite input/44 source pins and separate 30-pin planting baseline remain frozen. The current builder commands under `frontend/src/world/reference-scene/spatial-v5/` now emit only the paired layout-v2 MAP sidecars; see the current adoption section below.
 
 The final regression run passes **437 tests in 35 files** after merging the published canonical reviewed-motion parser/Auth inputs at `0b824329`. Full application TypeScript has zero diagnostics, scoped lint has zero warnings, and planning/exporter checks preserve the 13 original archives. The optimized actual `index.html`/`main.tsx` React/Tailwind application build passes using the retained dependencies, `copyPublicDir:false` and a temporary output directory removed in `finally`. Its exact command, candidate and log hash are in `docs/mcr/evidence/reference-scene-v5/qualification.json`.
 
@@ -44,3 +44,33 @@ Historical failures are identified in `historical-diagnostics.json`; their image
 The original criterion mapping above remains bounded: source/runtime delivery and these repairs are complete, while independent artist source comparison and QA06's next separately allocated capture remain external follow-ups. Those are not code-review or publication approval gates. The final frozen packet is the handoff input.
 
 All fixture map revisions are synthetic **7005**, separate from actual backend allocation6. These are desktop Chrome source fixtures with actual production Root/default Phaser and synthetic HTTP/C05 peers. Live Auth/Gateway, server admission, two real accounts, physical iOS/Android, software keyboard/notch behavior, artist/product fidelity acceptance and release readiness are not claimed.
+
+
+## Current MAP layout-v2 adoption
+
+Status: **BOUNDED_LAYOUT_V2_QUALIFIED** for original AR02/AR04 and bounded FE06, preserving the prior FE14/FE19 client outcomes and supplying a new QA06 input. Exact World lease `50f9f41f` grants eight named spatial-v5 generator/data/model/label files plus matching v5 tests, this document and the new `docs/mcr/evidence/reference-scene-v5/map-layout-v2/` subtree. The new branch starts at published `d1a5deaae0f6b79b365cb4c451d921711573ab8c`; previous v10 sources, branches and evidence remain unchanged.
+
+Artist source `196cd0a2f5e006b4e14b1867b8c51b9a91dbaf19`, published as `d1a5deaa`, supplies BOTH additive inputs:
+
+| Input | Bytes | SHA256 |
+|---|---:|---|
+| map-layout-v2/label-presentation.json | 14,099 | f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54 |
+| map-layout-v2/landscape-presentation.json | 13,276 | 789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf |
+
+Both generated consumer pins contain the same exact two-file hash pair. The planting input must require that precise label pin. Structural validation rejects mixed layout versions/pairs, foreign geometry, changed labels/bindings, malformed or off-center anchors/rectangles, duplicate/bound planting and invalid extents. Before font fetching/publication, SHA256 of both bundled JSON documents must match the independently generated compact-document pins. Cancellation during hashing fetches no font; a late decode/fetch remains fenced.
+
+Public display metadata uses the new nominal anchors: MAIN STAGE422,201; PLAZA327,529; MERCH177,700; FOOD652,685; MEETUP ZONE371,918; GIVEAWAY BOOTH518,1159. Painting, hit/obstacle bounds use the **explicit integer rectangles**, preserving the permitted 0.5px anchor/rectangle-center difference. Only two null-bound shrub beds move: southwest240,468 at30×20; southeast405,539 at36×23. The other eight decorations, all 34 WORLD props, canonical geometry/feet/collision/Tiled, four catalog IDs, fonts/icons/strings, denials and previous scene versions remain fixed. The source proposal's old anchors are intentionally untouched.
+
+Run either builder with no arguments or `--map-layout-v2`; each writes only its two granted MAP outputs. Both modes reproduce byte-identical files without modifying source-inputs, tile-pin, backend-allocation, camera or runtime bundles. The source handoff's ART-document pin is verified against immutable source publication `d1a5deaa`, allowing the lane's current notes to advance independently. No source/art/runtime bundle is rewritten.
+
+Qualification: **258 affected regression tests in 25 files**, followed by **67 focused tests in six files** after the final generator-only refinement; full application TypeScript has zero diagnostics and scoped lint has zero warnings. The original plan/archive check passes. Source-pin tests verify both artist files, mixed/malformed anchors/pairs and structurally plausible tampering; paired regeneration checks both CLI modes and excluded byte preservation.
+
+The actual Root/default-Phaser focused runner qualifies runtime candidate `765a40538c9ec90170461906d8966e071b942165`: **nine MAP cases** (360/390/430 × REVENGE/PARADE/DANGER), **two closed/unavailable marker cases**, and **three matching editable SVG compositions rendered in Chrome**. Each MAP overview matches an independent source composition with **zero differing RGBA channels**, including the paired plant moves. The four existing place links work through keyboard focus/detail/back; fit/reset, all six label/zoom/caption clearances, moved-bed visibility, two painted hit rectangles and 390×754 views pass. MAP controls preserve the World camera at a fixed viewport; authoritative feet, one game/socket peak, and private font/URL/cache cleanup pass. Desktop mobile viewports do not imply physical-device or software-keyboard acceptance.
+
+The editable SVG derivatives embed the unchanged pinned art/font and independently editable source crops, props, labels and paired metadata. All49 object nodes/six explicit rectangles and loaded fonts are checked in actual browser renders; three full-resolution PNGs were inspected. They represent this new layout rather than the older editable projects. Their native rendering is qualified for data/geometry/source registration; no unsupported SVG-versus-canvas pixel-equivalence or whole-scene fidelity score is claimed.
+
+`capture-packet.json` freezes21 native/editable artifacts and49 represented source pins. After capture, only **two generator scripts and their reproduction test** changed to constrain CLI writes and close the historical lane-document pin; the46 runtime/data/driver pins remain byte-identical. Fresh focused tests/type checking qualify those changes. This distinction is explicit in the packet; the native report remains untouched. The first failed driver's full-camera equality assertion is preserved separately: opening a full panel legitimately changes hidden-canvas size, so the corrected driver isolates MAP controls at the same viewport and checks unchanged authoritative feet across panel/viewport changes.
+
+Named allocation `FE153-LAYOUT-V2-20261104T0417Z` used one Chrome/one Vite workflow, fresh8GiB guards, estimated peak≤0.18GiB/hard0.2GiB and durable≤20MiB. Browser/server/cache are closed; final21-artifact capture is17,861,837bytes, with the diagnostic retained within the durable budget. The capture slot was explicitly returned before publication.
+
+Source paper-panel registration remains within0.484source pixels of the measured original target centers; that is not full artwork/architecture/fidelity acceptance. Artist's later architecture-v2 source and the separately assigned WORLD scene-budget correction are not adopted by this patch. Original UNREVIEWED/CONCEPT_ONLY status, actual backend allocation6 versus synthetic fixture7005, production admission, live Auth/Gateway/multiuser and physical-device limits remain unchanged.
