@@ -377,7 +377,7 @@ exited 0. Initial startup probes omitted required local metrics configuration;
 those refusals were not credited, and corrected explicit-local probes were run.
 
 
-## SDK3 private Gift composition: source checkpoint only
+## SDK3 private Gift composition: qualification history
 
 Unpublished source consumes SDK `0576c359` and response-wide ceiling
 `f646f015`, plus PublicProfile's explicit unsupported-Gift recovery arm
@@ -421,3 +421,38 @@ physical restart and owned cleanup PASS. No Cargo, owner RPC or Rust binary was
 used by these SQL runs. Full SDK3 Rust compilation, cipher regression, Gateway
 boundary tests, actual private-child recovery and HTTP remain **NOT_RUN**.
 Do not apply the earlier SDK2/native/operator evidence to these new sources.
+
+### Fresh SDK3 compilation and bounded validation
+
+The source-only statements above describe the earlier checkpoint. Exact clean
+source `5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395` now has fresh successful
+Concert library, product_runtime, product_scope_ledger and Gateway library test
+builds. Rust1.88, locked/offline, two jobs, debug0 and incremental0 were used.
+The receipt is `docs/mcr/backend/product-sdk3-qualification.json`; full Cargo
+JSON and 1,885 source hashes remain with the immutable private artifacts.
+
+The first stale cross-worktree protobuf include failure was repaired by cleaning
+only contracts-build/Auth/Friend/Profile artifacts. A stale platform artifact
+required a platform-only clean. Gateway then found a real missing
+HttpConcertAccess::rpc_deadline forwarding method; source `5329d3f4` adds the
+delegate to the existing sealed context, preserving both original limits.
+No Party-transferred route file was changed for that fix.
+
+After all four executables were copied, the MEDIA target was explicitly released
+with zero handles and 56,209,567,744 free bytes, before any copied tests or PG run.
+Actual copied results: Gateway product boundary/network/receipt tests6,
+typed-address1, Concert product7, child-reference3 and runtime constructor5 all
+PASS (22 total). The disclosure completion tests use an explicit counter double;
+they do not prove a joined canonical owner HTTP lifecycle. The fresh native
+ledger executable passes five tests, including distinct guard/effect bindings;
+the combined runner passes30 recorded commands, PostgreSQL16 physical restart
+and owned cleanup. Private ciphertext/expired-reference regression now passes.
+
+This cohort includes SDK4b306's minimum actual Auth/Friend view expiry and Gift
+ad9's SQL budget clipping to that same root-wide ceiling. Public local deadline
+pinning uses the exact c040 production fix with its pre-existing closed error
+mapper. Gift's six ignored native cases are compiled, not credited by these22
+tests; the Gift owner received the immutable executable only after target release
+for its independent prepared-read/restart proof. Actual public Gateway HTTP,
+production producer registration, and enablement remain open. The new IN01
+catalog binary command is not compiled by these library/test targets.
