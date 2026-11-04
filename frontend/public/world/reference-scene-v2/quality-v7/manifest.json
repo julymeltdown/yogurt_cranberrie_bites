@@ -1,0 +1,146 @@
+{
+  "format": "MCR_REFERENCE_SCENE_SPATIAL3_QUALITY7",
+  "version": 7,
+  "status": "CONTRACT_READY_CANDIDATE_NOT_RELEASE_BOUND",
+  "visual_acceptance": "IN_PROGRESS_NOT_ACCEPTED",
+  "geometry_revision": 3,
+  "geometry": {
+    "path": "../spatial-v3/geometry-proposal.json",
+    "sha256": "sha256:373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc",
+    "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+  },
+  "integer_projection": {
+    "path": "../spatial-v3/integer-projection.json",
+    "sha256": "sha256:da7d0f0023a314b7d20572f403cc2deedda31f5389c4d5dff1f38d47ab73303c"
+  },
+  "source_metadata": {
+    "path": "source-metadata.json",
+    "sha256": "sha256:43c8f9d5c9c202158c9db472904dfb2a79dbb99f51cf9a6ff5f103b5f8443fc6"
+  },
+  "sources": [
+    {
+      "path": "sources/venue-sheet.png",
+      "sha256": "sha256:051a063e048f50e1abd3ec143e8c74f0cfb61545f927aeb08e6eb640f5aed122",
+      "bytes": 2110439
+    },
+    {
+      "path": "sources/prompt.md",
+      "sha256": "sha256:f3ad782b22884fd314be3c057b2548293cc32d5a1dc0b1d5c8785b3533e657c4",
+      "bytes": 3388
+    }
+  ],
+  "themes": [
+    {
+      "theme_id": "REVENGE",
+      "files": [
+        {
+          "path": "revenge/scenery.json",
+          "sha256": "sha256:68bf32dfa2bcf9dbb5d5a1f0942cf96dce4a10663ab399d405fc61ac5df40dd0",
+          "bytes": 6966
+        },
+        {
+          "path": "revenge/layout.json",
+          "sha256": "sha256:497af09d18fdc3bc40e7dc2c260068e09d72fe87f9cb5599b5a5b86223b83a64",
+          "bytes": 17118
+        },
+        {
+          "path": "revenge/map-metadata.json",
+          "sha256": "sha256:361ef6548751b507b033dd77e2a12c05d2e197c4cea56ede27db5ef2c776379e",
+          "bytes": 7419
+        },
+        {
+          "path": "revenge/resource-inputs.json",
+          "sha256": "sha256:99f753ec357c8fe9516f622d5c739982989b6b24aefe05b15ec865e799f0d7fd",
+          "bytes": 1095
+        },
+        {
+          "path": "revenge/provenance.json",
+          "sha256": "sha256:d10e1a5eded2c60396634f6fdfeaf9b6a65ae905b50336e0a3544d54b32aad13",
+          "bytes": 9300
+        },
+        {
+          "path": "revenge/atlas.png",
+          "sha256": "sha256:7cb3dc89ef4afd11914141ac14cf748b84c28b0acc42fc3de615477e42492dcf",
+          "bytes": 1181137
+        }
+      ]
+    },
+    {
+      "theme_id": "PARADE",
+      "files": [
+        {
+          "path": "parade/scenery.json",
+          "sha256": "sha256:85e483d3920571d98c780ef7b7d910eceafab5ea785f757365bc8e63f5cb568f",
+          "bytes": 6942
+        },
+        {
+          "path": "parade/layout.json",
+          "sha256": "sha256:8af7cd8c44a88b16c91844c855d692eda27df47f43c007be9cee6b11ef3bdd72",
+          "bytes": 17117
+        },
+        {
+          "path": "parade/map-metadata.json",
+          "sha256": "sha256:361ef6548751b507b033dd77e2a12c05d2e197c4cea56ede27db5ef2c776379e",
+          "bytes": 7419
+        },
+        {
+          "path": "parade/resource-inputs.json",
+          "sha256": "sha256:b03837d9c1b608eadbb0b37b965eebf4e2dd51c5c8c089fa31a5441b45302c67",
+          "bytes": 1092
+        },
+        {
+          "path": "parade/provenance.json",
+          "sha256": "sha256:c7190da997b746a0f557623ff7a79965303b2b7ce1877b6a152de3f1285bda7f",
+          "bytes": 9265
+        },
+        {
+          "path": "parade/atlas.png",
+          "sha256": "sha256:99fd6891a0e8b6fba627e6c92e3aba24726cffe84500169f5f4b8e766d8ccbdf",
+          "bytes": 1201643
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "files": [
+        {
+          "path": "danger/scenery.json",
+          "sha256": "sha256:2ac8d6175d415bcf011452ea6ab35d0945eb0df97ccf3332bd798ca662a5d317",
+          "bytes": 6942
+        },
+        {
+          "path": "danger/layout.json",
+          "sha256": "sha256:c28e67dd790c9ee5850f9c1527ef9cc6fe2d63e3e24ddde9df24652f929b157c",
+          "bytes": 17117
+        },
+        {
+          "path": "danger/map-metadata.json",
+          "sha256": "sha256:361ef6548751b507b033dd77e2a12c05d2e197c4cea56ede27db5ef2c776379e",
+          "bytes": 7419
+        },
+        {
+          "path": "danger/resource-inputs.json",
+          "sha256": "sha256:427964156cdffdb1f53741e5f6c76b583fd08fab1c88de3a946b5a60e5f85209",
+          "bytes": 1092
+        },
+        {
+          "path": "danger/provenance.json",
+          "sha256": "sha256:a8d5f4f1d689453222e1c328552e3b20c9277eb6a95e813495cd01c26c90acdd",
+          "bytes": 9293
+        },
+        {
+          "path": "danger/atlas.png",
+          "sha256": "sha256:589def1802e6c7ab240b3766465de18ce214c9dc14811ed27e5c460c83819942",
+          "bytes": 1184121
+        }
+      ]
+    }
+  ],
+  "base_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+  "base_manifest": {
+    "path": "../quality-v6/manifest.json",
+    "sha256": "sha256:a78fbd045e9123e18ffa01efc669dfef9965bbeccb1cd378b886b9b975247aed"
+  },
+  "adoption": "Source-only alternative for the exact spatial-v3 geometry. Does not change the published map4/v6 producer or any release binding; explicit new theme resource publication and matching consumer pins are required. No new Tiled or collision revision.",
+  "provenance_scope": "Existing virtual-concept place data unchanged. No physical source qualification or release approval claimed."
+}

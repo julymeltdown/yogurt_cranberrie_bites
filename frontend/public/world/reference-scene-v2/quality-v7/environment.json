@@ -1,0 +1,48 @@
+{
+  "native_cli": "tsrct 0.4.0 (d7ccb4bc20fc69f2356c53b80336e52cff31dcc5)",
+  "browser": "156.0.8078.80",
+  "python": "Python 3.14.3",
+  "node": "v26.7.0",
+  "runtime_packages": "Existing @playwright/test from the current pinned frontend environment; no install/upgrade or lockfile edit.",
+  "native_viewer": "open_in_codex returned queued; native actual PNG exports and editable .tsrct files are provided.",
+  "checks": [
+    {
+      "command": "python3 build-urban.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 editable-quality.py <era> --revision 7",
+      "runs": 3,
+      "projects": 6,
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_ART_REVISION=7 node check-quality.mjs",
+      "exit_code": 0,
+      "cases": 36,
+      "clear_feet": 216
+    },
+    {
+      "command": "Compare saved source bytes with original generated output",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 verify-quality.py --revision 7",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 verify-quality.py (default v6 regression)",
+      "exit_code": 0,
+      "frozen_v6_files_changed": false
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0,
+      "scope": "Planning/provenance only; 13 original archives unchanged."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ]
+}

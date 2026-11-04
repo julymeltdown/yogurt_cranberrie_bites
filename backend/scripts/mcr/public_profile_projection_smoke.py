@@ -31,6 +31,7 @@ def source_pins():
         "backend/services/profile-service/src/adapters/in/grpc/concert_public_profile.rs",
         "backend/services/profile-service/tests/concert_public_profile.rs",
         "backend/services/profile-service/tests/support/public_profile",
+        "backend/services/profile-service/migrations",
         "backend/services/concert-service/src/adapters/out/public_profile",
         "backend/services/concert-service/tests/public_profile_projection.rs",
         "backend/scripts/mcr/public_profile_projection_smoke.py"], cwd=ROOT, text=True).splitlines()
@@ -146,6 +147,9 @@ def qualify(path, pg_bin):
         run("native-held-exclusion", "concert_public_profile", ["--exact", "native_prepared_child_excludes_privacy_and_direct_tombstone_until_settled", "--ignored"], fixture)
         run("native-original-budget", "concert_public_profile", ["--exact", "native_original_budget_bounds_owner_lock_wait_and_recovers", "--ignored"], fixture)
         run("native-capacity", "concert_public_profile", ["--exact", "native_full_hundred_child_capacity_and_fail_closed_overflow", "--ignored"], fixture)
+        run("native-pre-dispatch-cancel", "concert_public_profile", ["--exact", "native_pre_dispatch_cancellation_prevents_late_read", "--ignored"], fixture)
+        run("native-lost-ack", "concert_public_profile", ["--exact", "native_lost_read_and_completion_replies_recover_from_actual_receipt", "--ignored"], fixture)
+        run("native-absence-not-proof", "concert_public_profile", ["--exact", "native_gid_absence_never_settles_active_committed_or_misbound_receipt", "--ignored"], fixture)
         run("native-owner-before-restart", "concert_public_profile", ["--exact", "native_prepare_restart_quarantine", "--ignored"], fixture)
         assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "1"
         cluster.stop()
