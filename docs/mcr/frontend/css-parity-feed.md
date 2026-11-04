@@ -3,7 +3,8 @@
 Task: CSS-FEED, related F01/FE27 and shared F03/FE28 styling. Bounded CSS status:
 MOCK_READY. Full foreground/photo parity: IN_PROGRESS with exact constraints below.
 The intrinsic-media follow-up passed its bounded native/fixture validation;
-its publication and the separate reference-media comparison remain pending.
+its publication is independently verified. The separate reference-media
+comparison and later selected-tab correction remain pending validation.
 The published first pass and all immutable raw reports remain separately identified.
 Owner: `01a1a5d9-332b-7822-a8f7-412e295fa211`. Persistent goal metadata: BLOCKED; the aligned objective remains unfinished.
 The latest intrinsic round ran after capacity recovery; reference comparison remains queued.
@@ -79,8 +80,8 @@ widths. The final CSS SHA-256 is
 `60a55f5e4f3493dfe2ffad49f26772e8703e5ea21d49c5f7036ace950edba178`;
 the final browser report and [input pins](../evidence/css-parity-feed/final-input-pins.json)
 bind the tested source and existing fixtures. Those reports describe the
-published first pass; the later intrinsic-image candidate is separately
-unvalidated.
+published first pass; the later intrinsic-image validation and publication
+are recorded separately below, followed by the unvalidated tab correction.
 
 At 390px, the first iteration placed the first card at `(14,108)`, width 362px,
 height 238.70px, with media at `(99,210.48)`, 260×91.22px. These align closely
@@ -284,10 +285,19 @@ Root153 published it through `24fdc624` and `333767f3`, contained in
 `bb1345b5302eead08c65deab9423e52344fe58fe`. Own fresh fetch and `ls-remote` matched
 that master SHA; all 49 delivered file contents and all 12 qualified input pins
 match exactly at that publication. [Own remote proof](../evidence/css-parity-feed/publication.json).
-The intrinsic-media candidate is a separate unpublished follow-up. Root153 alone
-publishes master. The original goal remains unfinished and currently BLOCKED for resource
-capacity; full parity constraints and candidate delivery remain open; no separate
-king/SL review or acknowledgment is required.
+Root153 subsequently published the intrinsic-media follow-up at
+`416051c984c403a0bd4cede94bd410d027440c30`, parent
+`c0ed4243862cd4ec110fa591921e070eabd79c38`, from validated source
+`8d39ce8c45e9d2f60065f04ae7e4aeb0fb17c643`. Own fresh fetch and
+`ls-remote` agree on that master commit; **all 83 owned postimages** match the
+validated source byte for byte, including the unchanged raw Vitest log EOF.
+[Intrinsic delivery proof](../evidence/css-parity-feed/publication-intrinsic.json).
+Artist assets and Root fixture paths are excluded from this worker's delivery
+scope. The later `6543ba4c` selected-tab correction is not part of that published
+validation or this receipt. Root153 remains the named publisher; no separate
+king/SL review or acknowledgment is required. The original goal remains
+unfinished, with BLOCKED metadata preserved; the next reference comparison waits
+for its separately declared named allocation.
 
 
 ## Latest allocation preflight
@@ -349,3 +359,30 @@ specificity than the earlier generic Feed text-decoration reset. This requires
 a separate scoped CSS correction, to be exercised in the queued reference-media
 round. The intrinsic validation above binds CSS SHA-256
 `a1cd9c28e90cf05155ae4786a9e749a4655bd881077e950f62af9ddb3a07527e`.
+
+
+## Selected-tab follow-up awaiting reference round
+
+After preserving the validated intrinsic packet at `8d39ce8c`, the Feed-only
+selected-tab selector now explicitly sets `text-decoration: none`. This beats
+the shared selected-tab rule without changing shared CSS or focus indicators.
+The new reference-media driver asserts the computed selected-tab decoration is
+`none` at all three widths. This one-property correction and that new assertion
+are source-prepared, **NOT_RUN**, until the separately queued named round.
+The immutable intrinsic report/pins above continue to bind its earlier exact
+stylesheet, not this later correction. Root received the validated intrinsic
+handoff directly for normal publication; no correctness acknowledgment is needed.
+
+
+## Current delivery mapping
+
+| Scope | Validated source | Published master | Owner proof |
+| --- | --- | --- | --- |
+| First foreground pass | `654bbb16` | contained in `bb1345b5` | 49 exact postimages / 12 pins |
+| Intrinsic media follow-up | `8d39ce8c` | `416051c9` | 83 exact owned postimages; fresh fetch equals ls-remote |
+| Selected-tab underline correction | `6543ba4c` | NOT_RUN / unpublished | awaits reference-media browser round |
+
+The latest remote proof establishes delivery of the tested intrinsic scope only.
+It does not prove the pending correction, approved-thumbnail card/detail flow,
+full photo parity, live services or real multiuser acceptance. No new runtime,
+browser, extraction, test or output job was run for this Git publication proof.
