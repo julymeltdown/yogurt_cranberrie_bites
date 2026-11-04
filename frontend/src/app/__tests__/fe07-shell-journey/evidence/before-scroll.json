@@ -1,0 +1,109 @@
+{
+  "candidate": "5dbb99a041195ec751ea141ca3c03ede100c70d1",
+  "result": "FAIL",
+  "qualification": "Actual createAppRouter/browser history, canonical Auth, default production composition/real Phaser. Synthetic HTTP/C05, isolated map/place admission, immutable selected-character data. No production admission, live/backend, device, movement/physical-arrival or IN02 proof.",
+  "cases": [],
+  "errors": [],
+  "sources": {
+    "src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "src/app/WorldShell.tsx": "a0ca5d43d4bb1a862284eee2f879f6cafaa900d792dc2defa0e15b821c68615d",
+    "src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+    "src/app/WorldHost.tsx": "8438ad02ad8d21b3fc0e64d76ea2e47fdfb89d8f7ca5db86e57516678170a491",
+    "src/world/composition/index.ts": "0e33fb2d11207b81a7354b82ea5270dffa2c7f9c63ce12e279ff1d7092bf40f9",
+    "src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "src/features/auth/ui/SignIn.tsx": "cb1d6a52d8cec34f8b149d2037212996a6e1627eaf06f2cbcb432d5f297ab7ea",
+    "src/app/__tests__/fe07-shell-journey/preview.tsx": "f53f7ec62d3fa1b431e3adf03d5251a60784db17cf306e8d63f4b45d00c1dece",
+    "src/app/__tests__/fe07-shell-journey/native.mjs": "59ae94d5eec007c9f97a3b002ef15fce775b94812191436790e02679a0432eb1"
+  },
+  "scrollObservation": {
+    "before": 1894,
+    "after": 0
+  },
+  "failure": {
+    "stage": "390/native history and scroll",
+    "message": "list scroll restoration",
+    "state": {
+      "path": "/gifts",
+      "search": "",
+      "action": "POP",
+      "historyLength": 6,
+      "auth": "ready",
+      "bootstrapHeld": false,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET",
+          "protected": false
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "protected": false
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET",
+          "protected": true
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET",
+          "protected": true
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+          "method": "GET",
+          "protected": true
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000005",
+          "method": "GET",
+          "protected": true
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET",
+          "protected": true
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST",
+          "protected": true
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000205",
+          "method": "GET",
+          "protected": true
+        }
+      ],
+      "games": 1,
+      "knownGames": 1,
+      "peakGames": 1,
+      "sameGame": true,
+      "sockets": 1,
+      "activeSockets": 0,
+      "peakSockets": 1,
+      "sameCamera": true,
+      "camera": {
+        "following": false,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 61,
+          "scrollY": 64.5,
+          "width": 378,
+          "height": 791
+        }
+      },
+      "phase": "suspended",
+      "canvases": 1,
+      "inputTypes": [
+        "authenticate",
+        "input"
+      ],
+      "userId": "00000000-0000-4000-8000-000000000101"
+    },
+    "text": "Skip to content\nGIFTS\n−\n▾\nBROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSynthetic shell gift 1\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 2\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 3\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 4\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 5\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 6\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 7\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 8\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 9\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 10\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 11\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 12\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 13\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 14\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 15\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 16\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 17\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nSynthetic shell gift 18\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →\nMy gifts\n→\nCreate giveaway\n→"
+  }
+}

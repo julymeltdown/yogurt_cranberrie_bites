@@ -1,0 +1,3 @@
+Command: node frontend/node_modules/typescript/bin/tsc --project frontend/tsconfig.json --incremental --tsBuildInfoFile /tmp/mcr-fe07-journey.tsbuildinfo --pretty false
+Exit: 0
+Qualification: Strict TypeScript
