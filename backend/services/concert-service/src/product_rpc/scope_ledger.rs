@@ -11,7 +11,8 @@ use tonic::Status;
 use uuid::Uuid;
 
 mod children;
-pub use children::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys};
+pub(crate) use children::ChildRecoveryCursor;
+pub use children::{ChildIntentSettler, ChildRecoveryCounts, ChildRecoveryKey, ChildRecoveryKeys};
 use std::sync::Arc;
 
 const CAPACITY: i64 = 16;
@@ -160,7 +161,10 @@ impl PgScopeLedger {
             }
         } else {
             let count: i64 = sqlx::query_scalar(
-                "SELECT count(*) FROM concert_product_owner_scopes WHERE instance_id=$1 AND phase<>'ROOT_FINISHED'",
+                // A lost registry is not a terminal owner/delivery receipt.
+                // Only the already-proven, never-published NoWork branch can
+                // retire without a delivery receipt and without protected work.
+                "SELECT count(*) FROM concert_product_owner_scopes s WHERE instance_id=$1 AND NOT (phase='ROOT_FINISHED' AND (delivery_completed_at IS NOT NULL OR (delivery_secret_hash IS NULL AND serialized_at IS NULL AND NOT EXISTS (SELECT 1 FROM concert_product_owner_transactions t WHERE t.instance_id=s.instance_id AND t.scope_id=s.scope_id) AND NOT EXISTS (SELECT 1 FROM concert_product_child_intents c WHERE c.instance_id=s.instance_id AND c.scope_id=s.scope_id))))",
             ).bind(key.instance).fetch_one(&mut *tx).await.map_err(unavailable)?;
             if count >= CAPACITY {
                 return Err(Status::resource_exhausted(
