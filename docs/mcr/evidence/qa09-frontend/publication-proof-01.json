@@ -1,0 +1,237 @@
+{
+  "kind": "QA09-FE-independent-publication-proof-v1",
+  "recordedAt": "2026-11-04T13:49:05.483115+00:00",
+  "status": "PASS",
+  "qualification": "Git delivery/source postimages only; original QA09 live recovery is not accepted. Goal API remains BLOCKED. No runtime/resource allocation used.",
+  "repository": "julymeltdown/mcr",
+  "deliveryBranch": "master",
+  "workerBase": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "workerCommit": "2fb112c9a96e82fc6a3ffefbdb645a3b9c55c77d",
+  "publishedParent": "89f26e6edf916cfd5bcdae481c24091597027448",
+  "publishedCommit": "da9b8a98377c4ba7b0f44b7e8f62d8174901d02d",
+  "fetchedRemote": "da9b8a98377c4ba7b0f44b7e8f62d8174901d02d",
+  "independentLsRemote": "da9b8a98377c4ba7b0f44b7e8f62d8174901d02d",
+  "ancestry": {
+    "workerBaseToWorker": true,
+    "workerBaseToPublication": true,
+    "publicationToRemote": true,
+    "workerToPublication": false
+  },
+  "ancestryExplanation": "Publication replays the scoped contribution as a new commit; exact changed paths and all postimages bind it to the worker handoff. Worker ancestry is recorded without assuming a merge.",
+  "changedPathSetsExact": true,
+  "changedPaths": [
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-preparation.json",
+      "workerBlob": "f5042d8b1aab8092385d3222081abdd34c3b88c5",
+      "publishedBlob": "f5042d8b1aab8092385d3222081abdd34c3b88c5",
+      "remoteBlob": "f5042d8b1aab8092385d3222081abdd34c3b88c5",
+      "bytes": 3834,
+      "sha256": "1c833ab6b72037572ae3d4f4847faf9d17ec92c6661f00a3792c002190107b14"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/allocation-release.json",
+      "workerBlob": "63e1dbb830798bba82de14d94c8806452e509d91",
+      "publishedBlob": "63e1dbb830798bba82de14d94c8806452e509d91",
+      "remoteBlob": "63e1dbb830798bba82de14d94c8806452e509d91",
+      "bytes": 3938,
+      "sha256": "8b2e37b5a35b655c92711a71014f62f2e67e8aafed5bdae2e843832075d97f30"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/carry-inventory.json",
+      "workerBlob": "003c4ccbae8d99adc4315d7825f016d490bec5ca",
+      "publishedBlob": "003c4ccbae8d99adc4315d7825f016d490bec5ca",
+      "remoteBlob": "003c4ccbae8d99adc4315d7825f016d490bec5ca",
+      "bytes": 26016,
+      "sha256": "6f7c23c723f5f4f90b8169e80f08f848e936cb9fe6de4fb84321a262a7e8f069"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/diff.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/lint.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/report.json",
+      "workerBlob": "bbe3ef2b35041efc551b1293d27c336298df3a78",
+      "publishedBlob": "bbe3ef2b35041efc551b1293d27c336298df3a78",
+      "remoteBlob": "bbe3ef2b35041efc551b1293d27c336298df3a78",
+      "bytes": 6746,
+      "sha256": "00fa188aa9ae3cb82ecb6b56e09ec765657794332ad0e0307cce71d44454fc27"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-actions.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-actions.test.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-cases.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-journey.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-observer.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-observer.test.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-producer-binding.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/syntax-producer-binding.test.log",
+      "workerBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/source-round01/unit.log",
+      "workerBlob": "eb0e79ba6aef87067f6f06ca33df7ca465ca8273",
+      "publishedBlob": "eb0e79ba6aef87067f6f06ca33df7ca465ca8273",
+      "remoteBlob": "eb0e79ba6aef87067f6f06ca33df7ca465ca8273",
+      "bytes": 2441,
+      "sha256": "c4e30ca800807aa7223615e1e8ea84cfbc5a07744be99847cbd52955f819f5d5"
+    },
+    {
+      "path": "docs/mcr/frontend/qa09-recovery.md",
+      "workerBlob": "7d0a24146e8e20178566121a2682911eb657244b",
+      "publishedBlob": "7d0a24146e8e20178566121a2682911eb657244b",
+      "remoteBlob": "7d0a24146e8e20178566121a2682911eb657244b",
+      "bytes": 13153,
+      "sha256": "487eba840c57d4241584ac001968a3e68f0d7afb9bde1fb575aa0191815de30c"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/actions.mjs",
+      "workerBlob": "493edc41b61bbc112c9ea2180c5e50b8f37e3e3c",
+      "publishedBlob": "493edc41b61bbc112c9ea2180c5e50b8f37e3e3c",
+      "remoteBlob": "493edc41b61bbc112c9ea2180c5e50b8f37e3e3c",
+      "bytes": 3357,
+      "sha256": "bb2e2900fa046965e6511d4c1fbdfb2c315b0fe49507fd0ddaaa16933188a077"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/actions.test.mjs",
+      "workerBlob": "0d48cbfe9a7835e15b949ed1b7de7c88659f3c78",
+      "publishedBlob": "0d48cbfe9a7835e15b949ed1b7de7c88659f3c78",
+      "remoteBlob": "0d48cbfe9a7835e15b949ed1b7de7c88659f3c78",
+      "bytes": 4201,
+      "sha256": "6de5aff34eb2aaaca3978583181b2a0818b8aacf16385ecfd967610052dca8ce"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/cases.mjs",
+      "workerBlob": "b07497b4c1213953be838c95d701639ac623064c",
+      "publishedBlob": "b07497b4c1213953be838c95d701639ac623064c",
+      "remoteBlob": "b07497b4c1213953be838c95d701639ac623064c",
+      "bytes": 1709,
+      "sha256": "8f0e2d1ecad59c74bcb3143232ce7b86c5aa439dba9c5f7ab48405c3da029d78"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/journey.mjs",
+      "workerBlob": "32489228893536328232a62df32aca7c20bd0850",
+      "publishedBlob": "32489228893536328232a62df32aca7c20bd0850",
+      "remoteBlob": "32489228893536328232a62df32aca7c20bd0850",
+      "bytes": 2581,
+      "sha256": "e9e5bb184d7e4b534fc6e75ac453974381c6307d974b42138d737d571cd67a64"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/observer.mjs",
+      "workerBlob": "82154b735906793d0da757df062d085375174676",
+      "publishedBlob": "82154b735906793d0da757df062d085375174676",
+      "remoteBlob": "82154b735906793d0da757df062d085375174676",
+      "bytes": 4782,
+      "sha256": "7c595d2f9677a752dcb190ab543e1cf66eb666f706436986b8ff343222cb2943"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/observer.test.mjs",
+      "workerBlob": "4c112043afe1a21121d8c33b697895fc1380a052",
+      "publishedBlob": "4c112043afe1a21121d8c33b697895fc1380a052",
+      "remoteBlob": "4c112043afe1a21121d8c33b697895fc1380a052",
+      "bytes": 5586,
+      "sha256": "c4565702252ef2e100d0ba8c06bd55529440bc3ab98bb6e123e415a8ce56197b"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/producer-binding.mjs",
+      "workerBlob": "87d4c429d4ff20937264c2f5c3d844722551e566",
+      "publishedBlob": "87d4c429d4ff20937264c2f5c3d844722551e566",
+      "remoteBlob": "87d4c429d4ff20937264c2f5c3d844722551e566",
+      "bytes": 5476,
+      "sha256": "ca9761cd8a3e7a5a49b22df646671e64296ccb7dac1f5eafde5ee233d6e79eb4"
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/producer-binding.test.mjs",
+      "workerBlob": "5f785f33ed9ac8fb300d0a884c3fdcf62bba3cf6",
+      "publishedBlob": "5f785f33ed9ac8fb300d0a884c3fdcf62bba3cf6",
+      "remoteBlob": "5f785f33ed9ac8fb300d0a884c3fdcf62bba3cf6",
+      "bytes": 4687,
+      "sha256": "c67c9b52467f79f1f07af42027377e68452ef8256f9bbe3a49b89c3026dc4b20"
+    }
+  ],
+  "testedSource": "a857130f925b19da01280e603d318ea5811933ed",
+  "testedSourcePinsMatchRemote": {
+    "frontend/e2e/real/qa09-recovery/actions.mjs": "bb2e2900fa046965e6511d4c1fbdfb2c315b0fe49507fd0ddaaa16933188a077",
+    "frontend/e2e/real/qa09-recovery/actions.test.mjs": "6de5aff34eb2aaaca3978583181b2a0818b8aacf16385ecfd967610052dca8ce",
+    "frontend/e2e/real/qa09-recovery/cases.mjs": "8f0e2d1ecad59c74bcb3143232ce7b86c5aa439dba9c5f7ab48405c3da029d78",
+    "frontend/e2e/real/qa09-recovery/journey.mjs": "e9e5bb184d7e4b534fc6e75ac453974381c6307d974b42138d737d571cd67a64",
+    "frontend/e2e/real/qa09-recovery/observer.mjs": "7c595d2f9677a752dcb190ab543e1cf66eb666f706436986b8ff343222cb2943",
+    "frontend/e2e/real/qa09-recovery/observer.test.mjs": "c4565702252ef2e100d0ba8c06bd55529440bc3ab98bb6e123e415a8ce56197b",
+    "frontend/e2e/real/qa09-recovery/producer-binding.mjs": "ca9761cd8a3e7a5a49b22df646671e64296ccb7dac1f5eafde5ee233d6e79eb4",
+    "frontend/e2e/real/qa09-recovery/producer-binding.test.mjs": "c67c9b52467f79f1f07af42027377e68452ef8256f9bbe3a49b89c3026dc4b20"
+  },
+  "sourceReportSha256": "00fa188aa9ae3cb82ecb6b56e09ec765657794332ad0e0307cce71d44454fc27",
+  "actualCases": {
+    "QA09-DB-RESTART": "NOT_RUN",
+    "QA09-BACKUP-RESTORE": "NOT_RUN",
+    "QA09-OUTBOX-REPLAY": "NOT_RUN",
+    "QA09-PENDING-PICKUP": "NOT_RUN",
+    "QA09-DELETION": "NOT_RUN",
+    "QA09-PARTIAL-CLOSURE": "NOT_RUN"
+  },
+  "resourcesHeld": false
+}

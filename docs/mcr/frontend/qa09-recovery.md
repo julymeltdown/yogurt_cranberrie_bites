@@ -1,7 +1,7 @@
 # QA09 frontend recovery and lifecycle contribution
 
 Status: **BLOCKED** on actual production bindings/producers. The source and
-synthetic guard contribution is validated and ready for normal Root publication.
+synthetic guard contribution is published and independently remote-verified.
 This is not executed business recovery evidence. All six actual cases remain
 **NOT_RUN**.
 
@@ -196,8 +196,34 @@ actual six-case report interface; actual domain faults/effects remain unrun.
 
 The same external prerequisites persisted across three goal turns. The source
 and API goal disposition are BLOCKED, with full original scope preserved.
-The fresh source round above has now passed and released. Source publication is
-a separate normal developer handoff; the remaining original cases require current
+The fresh source round above has now passed and released. Source publication and
+independent remote proof are complete; the remaining original cases require current
 production consumers and qualified backend business producers. The backend's
 reported physical restore/restart support, including empty business rows, does
 not close these cases or establish candidate-bound browser recovery.
+
+## Published source contribution
+
+The clean worker handoff `2fb112c9a96e82fc6a3ffefbdb645a3b9c55c77d`, based on
+`d62ce6979d6a3326f2da7271c3ae1eba54c6a22f`, was normally published by Root as
+`da9b8a98377c4ba7b0f44b7e8f62d8174901d02d`, parent
+`89f26e6edf916cfd5bcdae481c24091597027448`. The worker's six source/evidence
+commits are `1188be4f`, `07d85878`, `ab3b5b98`, `a857130f`, `becbdecd` and
+`2fb112c9`. Publication replays their exact scoped contribution; it is not a
+merge of the worker branch.
+
+This implementation owner independently fetched master and queried `ls-remote`:
+both returned `da9b8a98377c4ba7b0f44b7e8f62d8174901d02d`. The worker base is
+an ancestor of both branches, and the published commit is an ancestor of remote
+master. All 24 changed paths match the assignment and the publication diff;
+all 24 Git blob postimages are identical in worker, published and remote trees.
+All eight tested source SHA-256 values and the qualified source report hash
+match remote bytes. No App/shared/backend/manifest/lock/router edit is part of
+this publication. This is delivery proof, not another runtime test.
+
+The complete path/blob/SHA/ancestry record is
+`docs/mcr/evidence/qa09-frontend/publication-proof-01.json`, SHA-256
+`4cd4f03f8f44fb89730981544682a12ee1fae93989e60b68db0414388d16045f`.
+No extra runtime or resource was acquired for this readback. Original QA09's
+six actual business recovery cases remain NOT_RUN and the full goal remains
+BLOCKED; source publication does not close it.
