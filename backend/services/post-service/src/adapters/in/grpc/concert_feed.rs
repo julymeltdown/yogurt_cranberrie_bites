@@ -11,6 +11,250 @@ use tonic::{Request, Response, Status};
 pub mod proto {
     tonic::include_proto!("post.concert.v1");
 }
+/// The positive implementation has no public raw constructor. Root composition
+/// receives both generated services only behind their exact method policies.
+pub mod qualified {
+    use super::{proto, read_wire, POST_CONCERT_FEED_READ_POLICY, POST_READ_SETTLEMENT_POLICY};
+    use crate::concert_feed::{
+        authority_proto as wire,
+        read_admission::ReadAdmission,
+        read_runtime::{QualifiedReadRuntime, ReadResult},
+    };
+    use platform::{
+        actor_delegation::{
+            concert_read::ConcertPostReadVerifier, read_authority::VerifiedReadAuthority,
+        },
+        grpc_auth::{CallerRegistry, VerifiedCaller, Workload},
+        grpc_method_policy::{self, GuardedService},
+    };
+    use tonic::{Request, Response, Status};
+
+    #[derive(Clone)]
+    pub struct QualifiedPostReadGrpcServer {
+        runtime: QualifiedReadRuntime,
+    }
+    #[derive(Clone)]
+    pub struct PostReadSettlementGrpcServer {
+        runtime: QualifiedReadRuntime,
+    }
+    pub type Services = (
+        GuardedService<
+            proto::post_concert_feed_read_service_server::PostConcertFeedReadServiceServer<
+                QualifiedPostReadGrpcServer,
+            >,
+        >,
+        GuardedService<
+            wire::producer_settlement_service_server::ProducerSettlementServiceServer<
+                PostReadSettlementGrpcServer,
+            >,
+        >,
+    );
+    pub fn services(
+        runtime: QualifiedReadRuntime,
+        registry: CallerRegistry,
+        verifier: ConcertPostReadVerifier,
+    ) -> anyhow::Result<Services> {
+        let read =
+            proto::post_concert_feed_read_service_server::PostConcertFeedReadServiceServer::new(
+                QualifiedPostReadGrpcServer {
+                    runtime: runtime.clone(),
+                },
+            )
+            .max_decoding_message_size(65536)
+            .max_encoding_message_size(1048576);
+        let settlement =
+            wire::producer_settlement_service_server::ProducerSettlementServiceServer::new(
+                PostReadSettlementGrpcServer { runtime },
+            )
+            .max_decoding_message_size(65536)
+            .max_encoding_message_size(65536);
+        Ok((
+            grpc_method_policy::guard(
+                &POST_CONCERT_FEED_READ_POLICY,
+                read,
+                registry.clone(),
+                verifier.into_inner(),
+            )?,
+            grpc_method_policy::guard_without_delegation(
+                &POST_READ_SETTLEMENT_POLICY,
+                settlement,
+                registry,
+            )?,
+        ))
+    }
+    fn verified<T>(r: &Request<T>) -> Result<(VerifiedCaller, VerifiedReadAuthority), Status> {
+        let caller = *r
+            .extensions()
+            .get::<VerifiedCaller>()
+            .ok_or_else(|| Status::unauthenticated("verified caller required"))?;
+        if caller.0 != Workload::Concert {
+            return Err(Status::permission_denied("read caller denied"));
+        }
+        let proof = *r
+            .extensions()
+            .get::<VerifiedReadAuthority>()
+            .ok_or_else(|| Status::unauthenticated("verified read authority required"))?;
+        Ok((caller, proof))
+    }
+    fn response<T>(value: T) -> Response<T> {
+        let mut r = Response::new(value);
+        r.metadata_mut().insert(
+            "cache-control",
+            "no-store".parse().expect("static metadata"),
+        );
+        r
+    }
+    fn missing() -> Status {
+        Status::invalid_argument("qualified read envelope required")
+    }
+    fn mismatch() -> Status {
+        Status::unavailable("read response unavailable")
+    }
+    #[tonic::async_trait]
+    impl proto::post_concert_feed_read_service_server::PostConcertFeedReadService
+        for QualifiedPostReadGrpcServer
+    {
+        async fn get_post(
+            &self,
+            r: Request<proto::QualifiedGetPostRequest>,
+        ) -> Result<Response<proto::GetPostResponse>, Status> {
+            let (caller, proof) = verified(&r)?;
+            let r = r.into_inner();
+            let q = read_wire::DecodedRead::try_from(r.query.ok_or_else(missing)?)?;
+            let a = ReadAdmission::from_verified(
+                caller,
+                proof,
+                q.context,
+                r.authority.ok_or_else(missing)?,
+            )
+            .map_err(read_wire::status)?;
+            match self
+                .runtime
+                .run(a, q.query)
+                .await
+                .map_err(read_wire::status)?
+            {
+                ReadResult::Post(v) => Ok(response(v)),
+                _ => Err(mismatch()),
+            }
+        }
+        async fn list_posts(
+            &self,
+            r: Request<proto::QualifiedListPostsRequest>,
+        ) -> Result<Response<proto::ListPostsResponse>, Status> {
+            let (caller, proof) = verified(&r)?;
+            let r = r.into_inner();
+            let q = read_wire::DecodedRead::try_from(r.query.ok_or_else(missing)?)?;
+            let a = ReadAdmission::from_verified(
+                caller,
+                proof,
+                q.context,
+                r.authority.ok_or_else(missing)?,
+            )
+            .map_err(read_wire::status)?;
+            match self
+                .runtime
+                .run(a, q.query)
+                .await
+                .map_err(read_wire::status)?
+            {
+                ReadResult::Posts(v) => Ok(response(v)),
+                _ => Err(mismatch()),
+            }
+        }
+        async fn get_comment(
+            &self,
+            r: Request<proto::QualifiedGetCommentRequest>,
+        ) -> Result<Response<proto::GetCommentResponse>, Status> {
+            let (caller, proof) = verified(&r)?;
+            let r = r.into_inner();
+            let q = read_wire::DecodedRead::try_from(r.query.ok_or_else(missing)?)?;
+            let a = ReadAdmission::from_verified(
+                caller,
+                proof,
+                q.context,
+                r.authority.ok_or_else(missing)?,
+            )
+            .map_err(read_wire::status)?;
+            match self
+                .runtime
+                .run(a, q.query)
+                .await
+                .map_err(read_wire::status)?
+            {
+                ReadResult::Comment(v) => Ok(response(v)),
+                _ => Err(mismatch()),
+            }
+        }
+        async fn list_comments(
+            &self,
+            r: Request<proto::QualifiedListCommentsRequest>,
+        ) -> Result<Response<proto::ListCommentsResponse>, Status> {
+            let (caller, proof) = verified(&r)?;
+            let r = r.into_inner();
+            let q = read_wire::DecodedRead::try_from(r.query.ok_or_else(missing)?)?;
+            let a = ReadAdmission::from_verified(
+                caller,
+                proof,
+                q.context,
+                r.authority.ok_or_else(missing)?,
+            )
+            .map_err(read_wire::status)?;
+            match self
+                .runtime
+                .run(a, q.query)
+                .await
+                .map_err(read_wire::status)?
+            {
+                ReadResult::Comments(v) => Ok(response(v)),
+                _ => Err(mismatch()),
+            }
+        }
+    }
+    fn owner<T>(r: &Request<T>) -> Result<Workload, Status> {
+        match r.extensions().get::<VerifiedCaller>() {
+            Some(VerifiedCaller(w @ (Workload::Auth | Workload::Friend))) => Ok(*w),
+            Some(_) => Err(Status::permission_denied("settlement caller denied")),
+            None => Err(Status::unauthenticated("verified owner required")),
+        }
+    }
+    #[tonic::async_trait]
+    impl wire::producer_settlement_service_server::ProducerSettlementService
+        for PostReadSettlementGrpcServer
+    {
+        async fn resolve_transaction(
+            &self,
+            r: Request<wire::ResolveTransactionRequest>,
+        ) -> Result<Response<wire::ResolveTransactionResponse>, Status> {
+            let caller = owner(&r)?;
+            let original = platform::call_deadline::current()
+                .ok_or_else(|| Status::invalid_argument("settlement deadline required"))?;
+            let stop = tokio::time::Instant::from_std(original)
+                .min(tokio::time::Instant::now() + std::time::Duration::from_secs(5));
+            let work = self
+                .runtime
+                .tracking()
+                .resolve(caller, r.into_inner(), stop);
+            let value = tokio::time::timeout_at(stop, work)
+                .await
+                .map_err(|_| Status::unavailable("settlement unavailable"))?
+                .map_err(read_wire::status)?;
+            Ok(response(value))
+        }
+        async fn resolve_scope(
+            &self,
+            r: Request<wire::ResolveScopeRequest>,
+        ) -> Result<Response<wire::ResolveScopeResponse>, Status> {
+            owner(&r)?;
+            // Acquire.response_scope belongs to Concert, whose actual HTTP
+            // completion handler seals it. Absence at Post is never evidence.
+            Ok(response(wire::ResolveScopeResponse {
+                scope: r.into_inner().scope,
+                sealed_and_finished: false,
+            }))
+        }
+    }
+}
 const CONCERT: &[Workload] = &[Workload::Concert];
 pub static POST_CONCERT_FEED_POLICY: MethodPolicy = MethodPolicy {
     service: "post.concert.v1.PostConcertFeedService",

@@ -105,46 +105,64 @@ producer integration and root HTTP composition remain required. Post/comment/
 reaction writes remain later required scope. This checkpoint is not C04 live
 feed acceptance, BE31/BE32 completion or IN01 acceptance.
 
-## Unpublished follow-up source
+## Unpublished qualified producer source
 
-The task branch additionally preserves unexported, uncompiled drafts:
-`feed/policy.rs`, `feed/resources.rs`, `feed/author_filter.rs` and
-`post-service/src/concert_feed/read_transaction.rs`. They target the real sealed
-OwnerGuardScope and PublicProfileReader::policy/read APIs, share one local guard
-per request binding and subject, and never open a second pair transaction.
-The comment adapter validates the complete owner batch before filtering currently
-unavailable authors, preserving the original internal scan boundary. The Post
-transaction draft captures identity on the actual SQLx transaction and queries
-its owning PostgreSQL store; its terminal status alone cannot release authority.
-The producer role requires explicit permission to read pg_control_system.
+The branch now contains a concrete production composition, not yet compiled or
+qualified. The earlier 19 Rust cases cover only the published adapter checkpoint.
 
-The dedicated Post read service will use four signed request envelopes, each
-wrapping the unchanged legacy query and ReadAuthority. Shared lease producer
-settlement handles outcome lookup. ReadAuthority additionally needs the canonical
-root scope capability and deferred Post-to-Concert subject callback; those are
-not yet frozen or implemented here. Auth/Friend views or a root actor assertion
-cannot attest local relationship restrictions for unknown scan authors. The
-qualified protocol remains pending outside the published adapter checkpoint.
+Post request admission requires the sealed verified read proof, independently
+verified Concert caller, exact original actor/event/session/request/deadline and
+mandatory Auth/Friend views plus the opaque Concert root capability. Real mTLS
+clients check that root capability, enroll actual authors through the root's
+held local subject policy, and check actual independent Auth/Friend epochs,
+revisions, per-user security generations and block state. Every successful remote
+reply must carry cache-control:no-store. Missing metadata fails unavailable.
+The actual compiled canonical SDK prerequisite is published at `888cb6bd`.
 
-These drafts are not part of the 19 passing Rust cases or the live acceptance
-claim. Export, combined compilation, guarded/native/HTTP qualification and final
-publication remain required after the real producer implementations land.
+The four read query bodies now accept an already-open SQLx transaction. Existing
+public wrappers preserve validation and transaction ownership. Qualified reads
+capture PostgreSQL full xid, PID, backend start, cluster system identifier and
+database OID on the exact transaction passed into those query bodies. Existing
+row SHARE locks, per-row admission and checked_commit fences remain in place.
+No write or receipt access is granted by the concrete read authority.
 
-The shared owner IDL was subsequently published by its owner at `79f7bc87`.
-The task branch now contains the four qualified Post envelopes with mandatory
-ReadAuthority.root field 4. Descriptor generation using the retained vendored
-protoc passes. The root composer explicitly delegated only
-`backend/services/post-service/build.rs` for two-pass owner-IDL generation and
-an extern_path to `crate::concert_feed::authority_proto`; all existing inputs,
-rerun tracking and settings are retained. That build glue and crate-local module
-are source-only follow-up work. Concert's matching generation and canonical
-guard module remain with their owners; publishing the importing IDL before
-those are coherent would break combined compilation.
+The new, exclusively allocated Post migration is
+`0032_concert_feed_read_tracking.sql`; its module source is `read_tracking.sql`.
+A separate committed control transaction records the exact actual identity and
+root binding before Track. Each owner's attempt is committed before its call,
+and each received acknowledgement is committed before continuing to the next
+owner. Protected reads and the same-transaction witness start only after both
+acknowledgements are durable. The producer pool needs at least two connections.
+The producer role needs explicit permission to read pg_control_system. Missing
+schema/permission fails closed; there is no runtime DDL or URL identity fallback.
 
-Feed's follow-up policy reads actual per-user Auth security revisions from the
-sealed subject, while retaining both independent global epoch/revision vectors
-inside the actual owner scope. No global scalar substitutes for per-user facts.
-The Post request admission draft requires verified signed read context, both
-owner views, original bindings, and the root capability; its constructor alone
-never grants a storage read. Real owner checks, subject callbacks, transaction
-registration, final fences and settlement remain required before enabling it.
+A lost Track acknowledgement remains an attempted registration, not an abort.
+Only the authenticated actual owner may request settlement, using the exact
+stored identity/binding and its durable registration reference. Actual PostgreSQL
+ABORTED can resolve a lost acknowledgement without requiring the locally
+received UUID. COMMITTED additionally requires the exact committed witness.
+Missing witness, forgotten xid, unavailable or different store, different process
+instance and any uncertain outcome remain UNKNOWN. Post never supplies positive
+scope-absence evidence: the separately retained Concert root must seal its exact
+scope and finish the actual Gateway HTTP response before owner release.
+
+The positive generated services have a guarded-only constructor. The dedicated
+four-method service requires whole-envelope Concert-to-Post actor delegation;
+the shared settlement service admits only Auth/Friend. The original six-method
+PostConcertFeedService remains unavailable. No fixture authority constructor or
+configuration fallback is introduced. Links/media remain unavailable until their
+actual owner authority is qualified; that gap cannot be filtered into false empty
+success.
+
+Concert feed policy/resources/comment filtering source remains unexported and
+uncompiled, pending the actual joined PublicProfile reader. Policy and projection
+share the same retained local child guard; they do not open a second relationship
+pair transaction. Comment filtering validates the complete raw owner batch before
+filtering authors and retains the original scan boundary. The viewing actor's own
+profile need not be public. Actual public-author projection is still required.
+
+The qualified importing IDL and Post two-pass build are on this task branch.
+The composer delegated the exact Post build path and owns matching Concert/root
+composition. Export, compilation, actual native PostgreSQL/guarded transport,
+joined HTTP acceptance and final direct publication remain open. No live Feed,
+BE31/BE32 or IN01 acceptance is claimed by these source changes.

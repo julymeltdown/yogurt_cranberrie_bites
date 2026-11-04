@@ -2,8 +2,10 @@
 //! A terminal PostgreSQL status is necessary, never sufficient: the caller must
 //! also authenticate owner registration and seal/drain the matching read scope.
 //! PostgreSQL semantics: https://www.postgresql.org/docs/16/functions-info.html#FUNCTIONS-TXID-SNAPSHOT
+use super::authority_proto as wire;
 use chrono::{DateTime, Utc};
 use post_domain::concert_feed::Error;
+use prost::Message;
 use sqlx::{PgPool, Postgres, Row, Transaction};
 use uuid::Uuid;
 
@@ -62,6 +64,56 @@ impl CapturedReadTransaction {
         }
         Ok(result)
     }
+    pub(crate) fn wire(&self) -> wire::TransactionIdentity {
+        wire::TransactionIdentity {
+            producer: wire::Producer::Post as i32,
+            full_xid: self.full_xid.clone(),
+            backend_pid: self.backend_pid,
+            backend_started_unix_micros: self.backend_started.timestamp_micros(),
+            effect_binding_digest: self.effect_binding.to_vec(),
+            system_identifier: self.system_identifier.clone(),
+            database_oid: self.database_oid,
+            settlement_reference: self.settlement_reference.to_vec(),
+            producer_instance_id: self.instance.to_string(),
+        }
+    }
+    // Only decode a record retrieved from the producer's durable pre-Track
+    // table. A request identity must never be passed here as captured evidence.
+    pub(crate) fn from_record(bytes: &[u8]) -> Result<Self, Error> {
+        let value = wire::TransactionIdentity::decode(bytes).map_err(|_| Error::Unavailable)?;
+        let instance =
+            Uuid::parse_str(&value.producer_instance_id).map_err(|_| Error::Unavailable)?;
+        let result = Self {
+            instance,
+            full_xid: value.full_xid,
+            backend_pid: value.backend_pid,
+            backend_started: DateTime::from_timestamp_micros(value.backend_started_unix_micros)
+                .ok_or(Error::Unavailable)?,
+            system_identifier: value.system_identifier,
+            database_oid: value.database_oid,
+            effect_binding: value
+                .effect_binding_digest
+                .try_into()
+                .map_err(|_| Error::Unavailable)?,
+            settlement_reference: value
+                .settlement_reference
+                .try_into()
+                .map_err(|_| Error::Unavailable)?,
+        };
+        if value.producer != wire::Producer::Post as i32
+            || instance.is_nil()
+            || !canonical_number(&result.full_xid)
+            || !canonical_number(&result.system_identifier)
+            || result.backend_pid <= 0
+            || result.database_oid == 0
+            || result.effect_binding == [0; 32]
+            || result.settlement_reference == [0; 32]
+            || result.wire().encode_to_vec() != bytes
+        {
+            return Err(Error::Unavailable);
+        }
+        Ok(result)
+    }
     pub fn instance(&self) -> Uuid {
         self.instance
     }
@@ -108,7 +160,7 @@ pub async fn resolve(
     }
     let work = async {
         let mut tx = pool.begin().await.map_err(|_| Error::Unavailable)?;
-        let row=sqlx::query("select (select system_identifier::text from pg_control_system()) as system_identifier,(select oid::bigint from pg_database where datname=current_database()) as database_oid,pg_xact_status($1::xid8) as transaction_status")
+        let row=sqlx::query("select (select system_identifier::text from pg_control_system()) as system_identifier,(select oid::bigint from pg_database where datname=current_database()) as database_oid,pg_xact_status($1::text::xid8) as transaction_status")
             .bind(&identity.full_xid).fetch_one(&mut *tx).await.map_err(|_|Error::Unavailable)?;
         let system: String = row
             .try_get("system_identifier")
