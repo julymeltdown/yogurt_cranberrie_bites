@@ -102,6 +102,10 @@ function assertLayout(layout) {
 for (const path of [...['build-architecture-inputs.py','architecture-source.json','architecture-pin.json','architecture.ts'].map(p=>'frontend/src/world/reference-scene/spatial-v5/'+p), ...['native.mjs','renderer.ts','renderer.html','editable.mjs','probe.ts'].map(p=>'frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/'+p),'frontend/src/world/reference-scene/__tests__/spatial-v5/architecture.test.ts','frontend/public/world/reference-scene-v2/runtime/architecture-v2/source-binding.json','frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json']) report.sourcePins[path] = hash(await readFile(resolve(root,path)))
 const architecturePins=JSON.parse(await readFile(resolve(frontend,'src/world/reference-scene/spatial-v5/architecture-pin.json'),'utf8'))
 for(const pin of architecturePins.outputs) report.sourcePins[pin.path]=hash(await readFile(resolve(root,pin.path)))
+for(const era of ['revenge','parade','danger']) {
+ const path='docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-'+era+'.svg'
+ report.sourcePins[path]=hash(await readFile(resolve(root,path)))
+}
 async function rendererCases() {
  report.renderer=[]
  for(const [width,height] of [[360,800],[390,844],[430,932]]) {
