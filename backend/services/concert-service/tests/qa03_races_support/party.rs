@@ -141,6 +141,32 @@ async fn last_slot_and_identical_replay_are_forced() -> anyhow::Result<()> {
         .iter()
         .any(|(_, r)| matches!(r, Err(CommunityError::Party(PartyError::VersionConflict)))));
     let (winner, result) = outcomes.iter().find(|(_, r)| r.is_ok()).unwrap();
+    let loser = &outcomes.iter().find(|(_, r)| r.is_err()).unwrap().0;
+    let application = match loser.action {
+        PartyAction::Decide { application, .. } => application,
+        _ => unreachable!(),
+    };
+    let full = command(
+        owner,
+        event,
+        party,
+        PartyAction::Decide {
+            application,
+            expected: 1,
+            party_revision: 2,
+            approve: true,
+        },
+    );
+    let service = PgCommunity::new(pool.clone(), IsolatedAuthority);
+    assert_eq!(
+        service.execute_party(&full, &keys()).await,
+        Err(CommunityError::Party(PartyError::Full))
+    );
+    assert_eq!(
+        service.execute_party(&full, &keys()).await,
+        Err(CommunityError::Party(PartyError::Full)),
+        "failed receipt replay keeps capacity full"
+    );
     let before: i64 = sqlx::query_scalar("select count(*) from concert_outbox where event_id=$1")
         .bind(event)
         .fetch_one(&pool)
