@@ -74,6 +74,8 @@ test('conditionals, exclusive branches, sibling assertions, UTF-8 bytes and JSON
     [{ type: 'string', format: 'date-time' }, '2026-02-30T00:00:00Z', false],
     [{ type: 'string', format: 'date-time' }, '2026-02-28T23:59:59.123456789+09:00', true],
     [{ type: 'number' }, NaN, false], [{ type: 'object' }, new Date(), false],
+    [{ type: 'integer', minimum: 1, format: 'int64' }, 9007199254740992, true],
+    [{ type: 'integer' }, 0.5, false],
     [{ type: 'object' }, { hidden: undefined }, false],
   ]) assert.equal(api.accepts(rule, value), expected)
   const schema = Object.keys(contract.components.schemas).find(n => contract.components.schemas[n].type === 'object' && contract.components.schemas[n].additionalProperties === false)

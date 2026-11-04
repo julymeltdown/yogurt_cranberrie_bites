@@ -149,9 +149,11 @@ def render(include_fixtures=True, probe=None):
         def differential(rule):
             value=witnesses.make(rule)
             mutations=[value,None,False,42,"UNKNOWN_C07",{},[],{**value,'__c07_unknown':True} if isinstance(value,dict) else None]
+            mutations += [9007199254740992, -9007199254740992, 0.5]
             if isinstance(value,dict):
                 mutations += [{k:v for k,v in value.items() if k!=name} for name in value]
                 mutations += [{**value,name:'UNKNOWN_C07'} for name in value]
+                mutations += [{**value,name:9007199254740992} for name,child in value.items() if isinstance(child,int) and not isinstance(child,bool)]
             for mutated in mutations:compatibility.append({'schema':rule,'value':mutated,'accept':validator(rule).is_valid(mutated)})
         for name in sorted(source['components']['schemas']):differential({'$ref':'#/components/schemas/'+name})
         for identity,op in doc['operations'].items():

@@ -49,9 +49,10 @@ There is no automatic refresh, retry, application router change or live backend.
 Structural TypeScript types represent wire shapes. Zod adapters enforce the
 canonical schema refinements using bounded local-reference resolution, boolean
 and composed schemas, conditionals, enum/const, object/array constraints, formats,
-UTF-8 password byte limits and finite JSON values. Integers outside JavaScript's
-safe range fail closed; exact large-integer transport requires a future explicit
-contract representation. Unsupported canonical keywords/types/formats fail
+UTF-8 password byte limits and finite JSON values. Integer validation follows
+JSON Schema for representable JavaScript numbers, including values above the
+safe-integer range; exact preservation of arbitrary 64-bit integers requires an
+explicit future wire representation. Unsupported canonical keywords/types/formats fail
 generation. Zod errors contain a schema name, not private response values.
 
 Fixtures are schema witnesses and mock transport evidence, not server responses

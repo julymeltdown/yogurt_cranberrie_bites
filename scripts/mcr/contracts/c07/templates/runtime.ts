@@ -57,7 +57,7 @@ function matches(s: Rule, v: any, depth: number, budget: { left: number }): bool
   if (s.enum && !s.enum.some((x: unknown) => canonical(x) === canonical(v))) return false
   if (s.type) {
     const kinds = Array.isArray(s.type) ? s.type : [s.type]
-    if (!kinds.some((t: string) => t === 'null' ? v === null : t === 'object' ? object(v) : t === 'array' ? Array.isArray(v) : t === 'integer' ? Number.isSafeInteger(v) : t === 'number' ? typeof v === 'number' && Number.isFinite(v) : typeof v === t)) return false
+    if (!kinds.some((t: string) => t === 'null' ? v === null : t === 'object' ? object(v) : t === 'array' ? Array.isArray(v) : t === 'integer' ? Number.isInteger(v) : t === 'number' ? typeof v === 'number' && Number.isFinite(v) : typeof v === t)) return false
   }
   if (typeof v === 'number' && ((s.minimum !== undefined && v < s.minimum) || (s.maximum !== undefined && v > s.maximum))) return false
   if (typeof v === 'string') {
