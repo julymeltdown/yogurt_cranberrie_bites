@@ -303,6 +303,10 @@ where
         let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
         self.clock(now)?;
         self.scope(&b)?;
+        // Absence may have been confirmed since the preceding owner tick.
+        // Drain only acknowledged exact generations before reserving cleanup
+        // capacity; unresolved obligations still reject the new installation.
+        self.retry_cleanup();
         let old = self.members.get(&member_key(&b)).cloned();
         let target = &self.rooms[&b.room_id];
         let already_here = old.as_ref().is_some_and(|old| old.room_id == b.room_id);

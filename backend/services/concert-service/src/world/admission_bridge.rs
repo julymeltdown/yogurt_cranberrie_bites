@@ -274,6 +274,15 @@ fn safe(error: WorldError) -> SafeClose {
         _ => SafeClose::UNAVAILABLE,
     }
 }
+// Static phase labels are exposed only by cfg(test); public close codes stay unchanged.
+fn admission_failure(stage: &'static str) -> impl FnOnce(WorldError) -> SafeClose {
+    move |error| {
+        #[cfg(test)]
+        eprintln!("native admission failure {stage}: {error:?}");
+        let _ = stage;
+        safe(error)
+    }
+}
 /// Real production bridge once a qualified live-owner implementation is supplied.
 /// All I/O occurs outside the shared publication fence; only bounded snapshots are read at 20Hz.
 pub struct AdmissionBridge {
@@ -293,6 +302,7 @@ pub struct AdmissionBridge {
     views: Mutex<Views>,
     admission_gate: tokio::sync::Mutex<()>,
     invalidation_delivery_gate: tokio::sync::Mutex<()>,
+    remote: Mutex<Option<Arc<super::invalidation::remote::RemoteReadiness>>>,
     owner_until: Mutex<DateTime<Utc>>,
 }
 /// Reserve cleanup before the first durable admission mutation. Cancellation
@@ -313,6 +323,60 @@ impl Drop for AdmissionAttempt<'_> {
     }
 }
 impl AdmissionBridge {
+    pub(crate) fn bind_remote(
+        &self,
+        readiness: Arc<super::invalidation::remote::RemoteReadiness>,
+    ) -> Result<(), WorldError> {
+        let _f = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        let mut remote = self.remote.lock().map_err(|_| WorldError::Unavailable)?;
+        if remote.is_some() {
+            return Err(WorldError::Unavailable);
+        }
+        *remote = Some(readiness);
+        Ok(())
+    }
+    /// Full bootstrap has already removed all views and persistent generations.
+    /// Retire only remote retry markers; Concert outbox/closure obligations stay.
+    pub(crate) fn reset_remote_removals(&self) -> Result<(), WorldError> {
+        let _f = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        self.views
+            .lock()
+            .map_err(|_| WorldError::Unavailable)?
+            .invalidations
+            .retain(|_, removal| {
+                !matches!(
+                    removal,
+                    super::invalidation::Removal::RemoteScope(_)
+                        | super::invalidation::Removal::RemoteVictims(_)
+                )
+            });
+        Ok(())
+    }
+    fn remote_generation(&self) -> Result<Option<Uuid>, WorldError> {
+        self.remote
+            .lock()
+            .map_err(|_| WorldError::Unavailable)?
+            .as_ref()
+            .map(|state| state.snapshot().ok_or(WorldError::Unavailable))
+            .transpose()
+    }
+    #[cfg(test)]
+    pub(crate) fn native_view_state(&self, b: &Binding, now: u64) -> String {
+        let Ok(views) = self.views.lock() else {
+            return "poisoned".into();
+        };
+        let Some(e) = views.entries.get(&key(b)) else {
+            return "absent".into();
+        };
+        format!(
+            "exact={} remaining_ms={} parent_current={} permit_ready={} remote_ready={}",
+            e.binding == *b,
+            e.valid_until_ms as i128 - now as i128,
+            e.parent.as_ref().is_none_or(|p| p.check().is_ok()),
+            self.owners.ready(e.parent.as_ref()),
+            self.remote_generation().is_ok()
+        )
+    }
     pub(crate) fn invalidation_context(&self) -> (sqlx::PgPool, Uuid, Uuid, Uuid) {
         (
             self.pool.clone(),
@@ -385,19 +449,17 @@ impl AdmissionBridge {
             removed.insert(*a);
             removed.insert(*b);
         }
+        if let super::invalidation::Removal::RemoteScope(scope) = &removal {
+            removed.extend(scope.public_users());
+        }
+        // These are removal-only changes to surviving exact subscriptions.
+        // Every handoff reprojects pending bytes against this masked view;
+        // changing their baseline generation would revoke an unrelated member.
         for e in views.entries.values_mut() {
-            let n = e.visible.len();
             e.visible.retain(|u| !removed.contains(u));
-            if e.visible.len() != n {
-                e.generation = Uuid::new_v4();
-            }
         }
         for e in views.pending.values_mut() {
-            let n = e.visible.len();
             e.visible.retain(|u| !removed.contains(u));
-            if e.visible.len() != n {
-                e.generation = Uuid::new_v4();
-            }
         }
         drop(views);
         if let OwnerPorts::Production(p) = &self.owners {
@@ -539,6 +601,7 @@ impl AdmissionBridge {
             views: Mutex::new(Views::default()),
             admission_gate: tokio::sync::Mutex::new(()),
             invalidation_delivery_gate: tokio::sync::Mutex::new(()),
+            remote: Mutex::new(None),
             owner_until: Mutex::new(anchor.utc),
         }))
     }
@@ -682,6 +745,7 @@ impl AdmissionBridge {
         stream: Uuid,
         mut auth: AuthWindow,
     ) -> Result<Binding, WorldError> {
+        let remote_generation = self.remote_generation()?;
         let generation = self.owners.generation();
         if generation.is_nil() {
             return Err(WorldError::Unavailable);
@@ -815,7 +879,10 @@ impl AdmissionBridge {
             .deadline(expires)
             .map_err(|_| WorldError::Unavailable)?;
         let _fence = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
-        if valid_until_ms <= self.now_ms()? || self.owners.generation() != generation {
+        if valid_until_ms <= self.now_ms()?
+            || self.owners.generation() != generation
+            || self.remote_generation()? != remote_generation
+        {
             return Err(WorldError::Unavailable);
         }
         auth.check(&expected, membership.access_expires_at)?;
@@ -839,9 +906,7 @@ impl AdmissionBridge {
             }
         }
         for removal in views.invalidations.values() {
-            if let super::invalidation::Removal::Scope(scope) = removal {
-                visible.retain(|u| !scope.matches(binding.key.event_id.uuid(), *u));
-            }
+            visible.retain(|u| !removal.masks_user(binding.key.event_id.uuid(), *u));
         }
         if views.entries.len() >= MAX_MEMBERS && !views.entries.contains_key(&key(&binding)) {
             return Err(WorldError::RoomFull);
@@ -861,6 +926,13 @@ impl AdmissionBridge {
         } else {
             &mut views.pending
         };
+        // Refreshing bounded observations does not replace the native stream.
+        // A known victim has already been removed under the handoff fence, so
+        // only an existing exact binding can retain its baseline generation.
+        let projection_generation = destination
+            .get(&key(&binding))
+            .filter(|entry| entry.binding == binding)
+            .map_or_else(Uuid::new_v4, |entry| entry.generation);
         destination.insert(
             key(&binding),
             Entry {
@@ -870,7 +942,7 @@ impl AdmissionBridge {
                 auth_until: auth.valid_until,
                 valid_until_ms,
                 visible,
-                generation: Uuid::new_v4(),
+                generation: projection_generation,
                 owner_generation: generation,
                 parent: auth.parent.clone(),
             },
@@ -900,7 +972,25 @@ impl AdmissionBridge {
     }
     /// Bounded maintenance, called by the supervised async authority task, never by a socket heartbeat.
     pub async fn maintain(&self) -> Result<(), WorldError> {
+        // A known-removal page may close and reopen readiness during typed I/O.
+        // Give that interrupted refresh one bounded fresh attempt, under the
+        // caller's existing whole-operation timeout, without revoking others.
+        for _ in 0..2 {
+            let generation = self.remote_generation().ok();
+            self.maintain_once().await?;
+            if self.remote_generation().ok() == generation {
+                break;
+            }
+        }
+        Ok(())
+    }
+    async fn maintain_once(&self) -> Result<(), WorldError> {
         let _gate = self.admission_gate.lock().await;
+        // A catch-up pause suppresses handoff without treating unrelated cached
+        // members as newly revoked. No lease is extended while unavailable.
+        if self.remote_generation().is_err() {
+            return Ok(());
+        }
         self.owners.pause().await?;
         let mut until = Utc::now() + TimeDelta::milliseconds(5000);
         for room in self.rooms.keys() {
@@ -929,6 +1019,9 @@ impl AdmissionBridge {
             .cloned()
             .collect();
         for entry in entries {
+            let Ok(refresh_generation) = self.remote_generation() else {
+                break;
+            };
             let b = &entry.binding;
             let result=async {
                 // Bind fresh Auth to the exact current DB owner, canonical family
@@ -948,11 +1041,18 @@ impl AdmissionBridge {
                 let mut m=m; m.lease_until=lease; self.publish(m,b.connection_id,b.stream_id,auth).await.map(|_|())
             }.await;
             if result.is_err() {
+                // A concurrent catch-up pause is not evidence that an unrelated
+                // member lost authority. Its existing lease remains bounded.
+                if self.remote_generation().ok() != Some(refresh_generation) {
+                    break;
+                }
                 self.invalidate(b);
                 let _ = self.request_cleanup(b);
             }
         }
-        self.owners.activate().await?;
+        if self.remote_generation().is_ok() {
+            self.owners.activate().await?;
+        }
         Ok(())
     }
     fn request_cleanup(&self, b: &Binding) -> Result<(), AuthorityError> {
@@ -976,7 +1076,14 @@ impl AdmissionBridge {
     pub async fn cleanup(&self) -> Result<usize, WorldError> {
         let _gate = self.admission_gate.lock().await;
         self.owners.pause().await?;
-        self.cleanup_inner().await
+        let remaining = self.cleanup_inner().await?;
+        // A departed generation cannot leave every surviving member's permit
+        // paused until the next maintenance tick. Recheck retained plans under
+        // the real SQL fence; this creates no new authority or expiry extension.
+        if self.remote_generation().is_ok() {
+            self.owners.activate().await?;
+        }
+        Ok(remaining)
     }
     async fn cleanup_inner(&self) -> Result<usize, WorldError> {
         let pending: Vec<_> = self
@@ -1037,6 +1144,9 @@ impl AdmissionBridge {
 }
 impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
     fn publication_ready(&self, b: &Binding) -> bool {
+        if self.remote_generation().is_err() {
+            return false;
+        }
         self.views.lock().is_ok_and(|views| {
             views.entries.get(&key(b)).is_some_and(|entry| {
                 entry.binding == *b && self.owners.ready(entry.parent.as_ref())
@@ -1132,7 +1242,15 @@ impl RecipientPolicy for Arc<AdmissionBridge> {
             binding: b.clone(),
             checked_at_ms: now,
             valid_until_ms: e.valid_until_ms,
-            visible_users: e.visible.clone(),
+            // Cached visibility can include a member whose native stream has
+            // already left or is temporarily unavailable. Intersect with this
+            // exact qualified frame; absence only removes a projection and must
+            // not turn an unrelated recipient into a policy failure.
+            visible_users: e
+                .visible
+                .intersection(&subjects.iter().map(|s| s.key.user_id.uuid()).collect())
+                .copied()
+                .collect(),
             invalidation_id: e.generation,
         })
     }
@@ -1140,41 +1258,52 @@ impl RecipientPolicy for Arc<AdmissionBridge> {
 #[async_trait]
 impl AdmissionPort for AdmissionBridge {
     async fn admit(&self, intent: AdmissionIntent, connection: Uuid) -> Result<Binding, SafeClose> {
+        self.remote_generation()
+            .map_err(admission_failure("readiness-before-gate"))?;
         let _gate = self.admission_gate.lock().await;
-        let requested = self.requested(&intent).map_err(safe)?;
+        self.remote_generation()
+            .map_err(admission_failure("readiness-after-gate"))?;
+        let requested = self
+            .requested(&intent)
+            .map_err(admission_failure("requested-pin"))?;
         let ticket =
             AdmissionTicket::from_secret(intent.ticket.expose_for_consumption().to_owned())
-                .map_err(safe)?;
+                .map_err(admission_failure("ticket-shape"))?;
         // Consume first, even when later pin/authority/capacity checks deny admission.
         // The typed repository claim reveals the subject before a takeover mutates DB.
         let claim = self
             .repository
             .consume(ConsumeClaim {
                 digest: ticket.digest(),
-                connection_id: ConnectionId::from_uuid(connection).map_err(safe)?,
+                connection_id: ConnectionId::from_uuid(connection)
+                    .map_err(admission_failure("connection-shape"))?,
                 requested: requested.clone(),
                 now: Utc::now(),
             })
             .await
-            .map_err(safe)?;
+            .map_err(admission_failure("consume"))?;
         let ConsumeOutcome::Consumed(claim) = claim else {
             return Err(SafeClose::AUTH_REQUIRED);
         };
         if claim.record.pin != requested {
             return Err(SafeClose::AUTH_REQUIRED);
         }
-        self.validate_requested(&intent).map_err(safe)?;
+        self.validate_requested(&intent)
+            .map_err(admission_failure("requested-resources"))?;
         let auth = self
             .auth_consumed(&claim, Uuid::new_v4())
             .await
-            .map_err(safe)?;
+            .map_err(admission_failure("auth-consumed"))?;
         self.authority
             .reauthorize(&claim.record.subject, Utc::now())
             .await
-            .map_err(safe)?;
+            .map_err(admission_failure("fresh-admission-authority"))?;
         auth.check(&claim.record.subject, claim.record.access_expires_at)
-            .map_err(safe)?;
-        self.owners.pause().await.map_err(safe)?;
+            .map_err(admission_failure("captured-auth"))?;
+        self.owners
+            .pause()
+            .await
+            .map_err(admission_failure("pause-permit"))?;
         // Known takeover invalidation precedes the durable commit. Upstream I/O
         // never holds the synchronous publication fence across an await.
         {
@@ -1220,7 +1349,7 @@ impl AdmissionPort for AdmissionBridge {
             .repository
             .admit(&self.owner, &claim, Utc::now())
             .await
-            .map_err(safe)?
+            .map_err(admission_failure("admit-row"))?
         {
             AdmissionOutcome::Admitted(a) | AdmissionOutcome::Replaced(a) => a,
             _ => return Err(SafeClose::UNAVAILABLE),
@@ -1228,14 +1357,19 @@ impl AdmissionPort for AdmissionBridge {
         let result = self
             .publish(admitted.membership, connection, stream, auth)
             .await
-            .map_err(safe)?;
+            .map_err(admission_failure("publish-view"))?;
         self.views
             .lock()
             .map_err(|_| SafeClose::UNAVAILABLE)?
             .cleanup
             .remove(&cleanup_key(&pending));
-        self.owners.activate().await.map_err(safe)?;
+        self.owners
+            .activate()
+            .await
+            .map_err(admission_failure("activate-permit"))?;
         attempt.binding = None;
+        #[cfg(test)]
+        eprintln!("native admission committed");
         Ok(result)
     }
     async fn switch(

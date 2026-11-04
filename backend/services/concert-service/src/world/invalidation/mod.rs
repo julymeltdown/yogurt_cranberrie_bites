@@ -1,5 +1,8 @@
 //! Removal-only local application of verified metadata from the retained Concert outbox.
 //! Remote source authentication and complete deployment fanout remain unavailable.
+mod checkpoint;
+pub(crate) mod remote;
+pub(crate) mod runtime;
 mod store;
 use super::{admission_bridge::AdmissionBridge, simulation::Binding};
 use crate::adapters::out::repository::outbox::{Delivery, DeliveryFailure};
@@ -57,6 +60,8 @@ impl Victim {
 pub(crate) enum Removal {
     Scope(Scope),
     Victims { event: Uuid, victims: Vec<Victim> },
+    RemoteScope(remote::RemoteScope),
+    RemoteVictims(Vec<remote::RemoteVictim>),
 }
 impl Removal {
     pub(crate) fn matches(&self, b: &Binding, epoch: Uuid) -> bool {
@@ -65,6 +70,17 @@ impl Removal {
             Self::Victims { event, victims } => {
                 *event == b.key.event_id.uuid() && victims.iter().any(|v| v.matches(b, epoch))
             }
+            Self::RemoteScope(scope) => scope.matches(b.key.user_id.uuid(), b.session_id),
+            Self::RemoteVictims(victims) => victims
+                .iter()
+                .any(|v| v.event == b.key.event_id.uuid() && v.victim.matches(b, epoch)),
+        }
+    }
+    pub(crate) fn masks_user(&self, event: Uuid, user: Uuid) -> bool {
+        match self {
+            Self::Scope(scope) => scope.matches(event, user),
+            Self::RemoteScope(scope) => scope.public_users().contains(&user),
+            _ => false,
         }
     }
 }
@@ -75,6 +91,12 @@ pub enum ApplyError {
     StaleLease,
     Unavailable,
 }
+impl std::fmt::Display for ApplyError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "World invalidation failed: {self:?}")
+    }
+}
+impl std::error::Error for ApplyError {}
 impl From<ApplyError> for DeliveryFailure {
     fn from(_: ApplyError) -> Self {
         Self::Retryable

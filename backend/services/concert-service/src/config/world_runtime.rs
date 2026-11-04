@@ -4,6 +4,7 @@ use crate::{
     adapters::out::{
         relationship_authority::{
             grpc::GrpcRelationshipAuthority,
+            invalidation::{InvalidationOwner, InvalidationSource},
             world_auth::{GrpcWorldAuthReader, WorldAuthRead},
         },
         world_profile::GrpcWorldProfileReader,
@@ -13,6 +14,7 @@ use crate::{
     world::{
         admission_bridge::AdmissionBridge,
         ingress::OriginPolicy,
+        invalidation::runtime::RemoteInvalidationRuntime,
         membership::ClockAnchor,
         production_owners::ProductionOwners,
         recipient_owners::WorldRecipientReader,
@@ -46,11 +48,14 @@ pub struct WorldProductionPorts {
     profile: GrpcWorldProfileReader,
     relationship: GrpcRelationshipAuthority,
     auth: Arc<dyn WorldAuthRead>,
+    auth_invalidation: InvalidationSource,
+    friend_invalidation: InvalidationSource,
 }
 pub struct WorldRuntimeSettings {
     pub address: SocketAddr,
     origins: OriginPolicy,
     owner: Uuid,
+    consumer: Uuid,
     event: EventId,
     rooms: Vec<ConfiguredRoom>,
     release: Arc<concert_application::bootstrap::ValidatedProductRelease>,
@@ -75,6 +80,9 @@ impl WorldRuntimeSettings {
             "CONCERT_WORLD_OWNER_ID",
             "CONCERT_WORLD_EVENT_ID",
             "CONCERT_WORLD_ROOMS_JSON",
+            "CONCERT_WORLD_INVALIDATION_CONSUMER_ID",
+            "CONCERT_WORLD_RESOURCE_ROOT",
+            "CONCERT_WORLD_SOURCE_BINDING_FILE",
         ];
         let values: Vec<_> = names
             .iter()
@@ -126,6 +134,11 @@ impl WorldRuntimeSettings {
             Ok(id)
         };
         let owner = canonical(&values[1])?;
+        let consumer = canonical(&values[4])?;
+        anyhow::ensure!(
+            consumer == owner,
+            "World replay consumer must equal the stable World owner identity"
+        );
         let event = EventId::from_uuid(canonical(&values[2])?);
         anyhow::ensure!(
             values[3].len() <= 8192,
@@ -152,7 +165,7 @@ impl WorldRuntimeSettings {
                     .ok_or_else(|| anyhow::anyhow!("{n} is required for World product serving"))
             })
             .collect::<anyhow::Result<_>>()?;
-        let release = ProductReleaseBundle::from_product_files(
+        let release = ProductReleaseBundle::from_source_bound_files(
             &files[0],
             &files[1],
             &files[2],
@@ -161,12 +174,15 @@ impl WorldRuntimeSettings {
                 world: true,
                 ..Default::default()
             },
+            std::path::Path::new(&values[5]),
+            std::path::Path::new(&values[6]),
         )
         .map_err(|_| anyhow::anyhow!("World product release is unavailable"))?;
         Ok(Some(Self {
             address,
             origins,
             owner,
+            consumer,
             event,
             rooms,
             release,
@@ -179,7 +195,6 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        ports.require_publication_qualification()?;
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
         anyhow::ensure!(
@@ -237,7 +252,7 @@ impl WorldRuntimeSettings {
                 .map_err(|_| anyhow::anyhow!("World avatar catalog is invalid"))?,
         );
         let bridge = AdmissionBridge::new_production(
-            pool,
+            pool.clone(),
             bootstrap,
             owners,
             ports.auth,
@@ -248,6 +263,18 @@ impl WorldRuntimeSettings {
             anchor.clone(),
             started,
         )?;
+        let mut remote = RemoteInvalidationRuntime::new(
+            pool,
+            self.consumer,
+            ports.auth_invalidation,
+            ports.friend_invalidation,
+            vec![bridge.clone()],
+        )
+        .map_err(|_| anyhow::anyhow!("World replay construction failed"))?;
+        remote
+            .bootstrap()
+            .await
+            .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
         tokio::time::timeout(Duration::from_secs(2), bridge.claim_rooms()).await??;
         let transport = SocketTransport::default();
         let runtime = WorldRuntime::new(
@@ -282,7 +309,12 @@ impl WorldRuntimeSettings {
         };
         let server = axum::serve(listener, world_ws::router(state))
             .with_graceful_shutdown(platform::shutdown::global().cancelled());
-        let result = tokio::select! {result=async { server.await }=>result.map_err(anyhow::Error::from),result=authority=>result};
+        let result = tokio::select! {
+            result=async { server.await }=>result.map_err(anyhow::Error::from),
+            result=authority=>result,
+            result=remote.run()=>result.map_err(|_|anyhow::anyhow!("World replay readiness lost")),
+        };
+        let remote_cleanup = remote.shutdown().await;
         // Dropping all listener states closes sockets and the final handle stops
         // the owner independently of a full command queue. Await its cleanup report.
         transport.close_all(crate::world::ingress::SafeClose::UNAVAILABLE);
@@ -297,16 +329,8 @@ impl WorldRuntimeSettings {
             pending == 0,
             "World shutdown has pending persistent membership cleanup"
         );
+        remote_cleanup.map_err(|_| anyhow::anyhow!("World replay shutdown incomplete"))?;
         result
-    }
-}
-/// Current owner reads are concrete; none of these ports supplies a distributed
-/// known-invalidation delivery and acknowledgment before further sends. This is a qualification
-/// failure, not a missing-client placeholder, and cannot be bypassed by a flag.
-const PUBLICATION_GAP: &str = "World production publication unavailable: bounded owner reads are configured, but reliable known-invalidation delivery and local publication acknowledgment for Auth, Friend and Profile are unavailable";
-impl WorldProductionPorts {
-    fn require_publication_qualification(&self) -> anyhow::Result<()> {
-        anyhow::bail!(PUBLICATION_GAP)
     }
 }
 fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
@@ -323,9 +347,9 @@ fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
     platform::config::require_production_https_url(production, name, value)?;
     Ok(())
 }
-/// Validate explicit typed owner configuration before any DB or listener opens.
-/// Even correctly configured clients remain unavailable for production sends
-/// until their owning services provide the missing publication contract.
+/// Validate explicit typed owner and sealed replay configuration before any DB
+/// or listener opens. Serving bootstraps durable replay with publication closed;
+/// only caught-up readiness and exact live SQL permits allow native handoffs.
 pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
     use platform::{
         actor_delegation::{relationship_read::RelationshipReadSigner, ActorDelegationVerifier},
@@ -356,7 +380,24 @@ pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
     let tls = platform::config::resolve_tls_material(production, "concert")?;
     let gateway = ActorDelegationVerifier::from_env(production, Workload::Concert)?;
     let signer = RelationshipReadSigner::from_env(&gateway)?;
+    let replay_tls = tls
+        .as_ref()
+        .ok_or_else(|| anyhow::anyhow!("World replay requires explicit mutual TLS material"))?;
     let ports = WorldProductionPorts {
+        auth_invalidation: InvalidationSource::new(
+            InvalidationOwner::Auth,
+            &auth_endpoint,
+            &credential,
+            replay_tls,
+        )
+        .map_err(|_| anyhow::anyhow!("World Auth replay source is unavailable"))?,
+        friend_invalidation: InvalidationSource::new(
+            InvalidationOwner::Friend,
+            &friend_endpoint,
+            &credential,
+            replay_tls,
+        )
+        .map_err(|_| anyhow::anyhow!("World Friend replay source is unavailable"))?,
         auth: Arc::new(GrpcWorldAuthReader::connect(
             &auth_endpoint,
             &credential,
@@ -377,7 +418,6 @@ pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
             signer,
         )?,
     };
-    ports.require_publication_qualification()?;
     Ok(ports)
 }
 #[cfg(test)]
