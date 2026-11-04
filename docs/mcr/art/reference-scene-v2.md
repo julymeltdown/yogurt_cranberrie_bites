@@ -1,8 +1,6 @@
 # FE-REF-SCENE: original WORLD/MAP scenery proposal
 
-Status: **IN_PROGRESS**. This is a reviewable PARADE illustration and geometry
-proposal, not reference acceptance, a current asset release, backend spatial
-authority, a physical venue map, or a multiuser acceptance result.
+Status: **IN_PROGRESS** visual fidelity. Original painted REVENGE, PARADE and DANGER v5 inputs are now **CONTRACT_READY** with shared geometry and six native editable projects. This is not reference acceptance, a current asset release, backend spatial authority, a physical venue map or a multiuser acceptance result. See the latest v5 section below; earlier sections document the frozen v3/v4 checkpoints.
 
 ## Source and scope
 
@@ -18,7 +16,7 @@ The review page clips its unmodified third WORLD and fourth MAP panels above
 actual candidate renders. The reference is never a runtime scenery texture.
 The previous illustrated scenery was inspected but no pixels were reused.
 
-## Deliverables
+## Frozen v3 deliverables
 
 All following paths are relative to `frontend/public/world/reference-scene-v2/`.
 
@@ -217,3 +215,19 @@ Artist-owned integer projection is explicit for 22 WORLD props and six MAP-only 
 `pack-runtime.py` and `verify-runtime.py` exited 0. Closed current C06 schema validation, source/PNG hashes, exact nearest-neighbor crops, ground pixel equality, frame bounds/nonoverlap, unchanged footprint metadata, stable object order and explicit projection all pass. `check-runtime.mjs` exited 0: six WORLD/MAP cases at 360/390/430px, 72 clear-foot samples across source and derivative, no page errors/overflow. Actual 390px WORLD and MAP comparisons were visually inspected. These are asset checks; application/Phaser/server, moving-avatar and multiuser acceptance remain separate.
 
 This derivative is CONTRACT_READY art input, still PROPOSAL_NOT_RELEASE_BOUND. The third/final scored panel applies to frozen v3; the packing comparison is not a fourth fidelity score. Painted REVENGE and DANGER and further reference-fidelity work remain required in the active goal. PARADE-first publication neither cuts those eras nor authorizes their aliasing or polygon fallback.
+
+## Three-era original painted inputs v5
+
+Current art availability is now **CONTRACT_READY for all three eras**, under the new sibling `eras-v5/`. Earlier PARADE-only availability statements describe their frozen checkpoints. Overall reference fidelity remains **IN_PROGRESS**, product admission remains **NOT_ADMITTED**, and the persistent goal remains active for actual fidelity and concrete review fixes. No old source/pin was overwritten.
+
+Original REVENGE and DANGER sheets were generated as character-free edits of our own frozen v3 source. A new neutral PARADE v5 sheet derives from the new REVENGE sheet, preserving its broader, lower urban venue architecture. All three source PNGs remain byte-identical to the built-in tool outputs; exact prompts and generation references are preserved. REVENGE uses claret/ivory with petal-diamond banner, PARADE bone/silver/charcoal with marching chevrons, and DANGER cyan/yellow with lightning. Broad quiet terrain is intentionally shared, while all three atlases and source hashes are distinct. No character, supplied original or old scenery was sampled or changed.
+
+Each theme supplies a 1024x1024 atlas plus the frozen 768x1296 RGB ground. Combined bytes are REVENGE **1,820,481**, PARADE **1,839,826**, DANGER **1,819,166**; combined pixels are **2,043,904** per theme. Existing byte/pixel limits remain unchanged. Every closed C06 object uses exactly the v4 integer destinations and original footprints; all six MAP-only representations, labels, place values and shared geometry hash remain identical. Source alpha varies by art skin and does not change collision.
+
+`eras-v5/manifest.json` pins exact scenery/layout/MAP metadata/resource-inputs/provenance/source/prompt files and the shared integer projection. `eras-v5/ADOPTION.md` gives the consumer contract and limitations. Six new native WORLD/MAP projects, editable JSON, named SVG layouts and native renders are included. The native CLI 0.4.0 initially clipped image masks below the packed atlas's 1024px source height, omitting lower-map buildings despite exit 0. Actual image inspection caught it. Native-only transparent 2048px padding now fixes those masks without rewriting any runtime or original source pixel. Projects were recreated fresh; ZIP contents contain exactly two image files whose actual packaged hashes match the padded native atlas and shared ground. A lower-giveaway pixel regression prevents repeating the missing-building result.
+
+Actual validation exits: `build-eras.py` 0; `editable-eras.py` for each of three eras 0, with six native exports; `verify-eras.py` 0 against the current closed C06 schema and exact source/resource/metadata/packaged-native hashes, nearest crops, transparent padding, unchanged prop/MAP geometry and distinct original sources. `check-eras.mjs` 0: **36 cases / 216 clear-foot samples**, at 360/390/430px with two full era cycles, one canvas, no overflow/page errors. Mobile WORLD/MAP and native renders were visually inspected, including the repaired lower-map objects. No fourth critic panel, new fidelity score, dynamic-avatar proof or current app/server acceptance is claimed.
+
+A concrete static-map dependency was handed directly to WORLD. It exclusively owns NEW `frontend/public/world/reference-scene-v2/runtime/**`; art retains all other source/fidelity paths and does not write that prefix. WORLD published canonical static Tiled in its own checkpoint; the art lane removed its unpublished provisional duplicate serializer after confirmed reproduction. No competing canonical map remains. Root application activation has not been transferred to this art lane.
+
+All four nested place/source provenance objects remain exactly **UNREVIEWED**, with virtual-concept semantics. This lane has no genuine newly reviewed place/operator evidence and has not acquired that review ownership. Art creation, technical schema validation and source availability cannot satisfy the backend's recursive provenance policy or operator bundle. A real separately assigned provenance review is still required; no review state was upgraded to fit admission. Product/Phaser/server/device/multiuser gates remain separate, and this handoff is not final visual acceptance.
