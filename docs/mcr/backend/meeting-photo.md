@@ -1,7 +1,7 @@
 # BE-MEETING-PHOTO execution evidence
 
 Original scope: optional authorized physical-beacon photo, BE09 / FE20 / §5.4.
-Status: IN_PROGRESS; frozen contract and bounded photo adapter are native-qualified; final publication is being prepared. Historical checkpoints below retain their original evidence limits.
+Status: IN_PROGRESS; frozen contract and bounded photo adapter are qualified at final combined source 3394edc6; publication is being prepared. Historical checkpoints below retain their original evidence limits.
 No full BE09/FE20/IN02 or giveaway-BE20 completion is asserted.
 
 Checkout `/Users/lhs/Desktop/mcr-worktrees/be-meeting-photo`, branch
@@ -283,3 +283,40 @@ physical destination still requires genuine provenance/current review and closur
 state; virtual motion never establishes arrival. Broader original BE09/BE19
 production work is the planned following increment, after bounded photo delivery
 and its exact new ownership assignment. No parent criterion was removed.
+
+
+## Final combined qualification at 3394edc6
+
+The standing short final MEDIA lease was explicitly accepted on clean source
+`3394edc6440cf6b626c20a433f9d03dc8c41b0b3`, with the actual published media
+`15e7bd8a`, PublicProfile, Spatial and intervening peer source reconciled.
+Resource preflight found 53.36 GiB free and no compiler process. The same exact
+three-target Rust1.88 locked/offline/jobs2/debug0/incremental0 no-run command
+exited **0 in 21.51 seconds** on the successful rerun. The initial attempt used a
+stale shared-target platform crate omitting two modules present in this checkout;
+refreshing the platform source mtimes fixed the identical rerun without a source
+edit, install, target cleanup or second target.
+
+All three binaries, exact Cargo JSON and **1,764 source inputs** were copied and
+hash-verified in `/tmp/mcr-meeting-photo-native-3394edc6`. MEDIA was explicitly
+released immediately and before native PG. The earlier b41 receipt remains its
+own historical snapshot and is referenced separately in the updated committed
+`tests/meeting_photo_support/native-evidence.json`; it is not relabeled.
+
+The final native command replaces the previous artifact directory with
+`/tmp/mcr-meeting-photo-native-3394edc6` for all three binaries and report.
+It exited **0** on private PostgreSQL16.14: **6 contract + 8 producer + 1 SQLx
+migration test passed before and after a real server restart (30 executions,
+zero ignored/failed)**, all five negative SQL binding/proof guards passed,
+persisted content/receipt/association and fresh/upgrade/checksum ledger checks
+passed, and marker/inode-owned cluster cleanup passed. Binary hashes and output
+hashes are in the committed receipt. The final source and all recorded inputs
+were unchanged at freeze. Required offline schema17, planning, Rust formatting
+and scoped whitespace checks are run for publication below.
+
+This is qualification of the bounded photo adapter and migration at the exact
+3394 snapshot. Subsequent peer publication retains its own component evidence;
+this receipt does not assert new whole-master/native/IN02 proof. Real canonical
+Auth/Friend joined photo authority, MEETING_PHOTO root settlement and HTTP terminal
+delivery, public routes, device flow and genuine physical provenance/rights
+remain separately owned and unverified here. No production flags are enabled.
