@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-04T11:27:19+09:00",
-  "published_snapshot": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "updated_at": "2026-11-04T12:37:23+09:00",
+  "published_snapshot": "54e1325fce20e3abc98da50c68de0bd72dfd1a33",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 65,
+    "IMPLEMENTATION_EVIDENCED": 64,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 21,
+    "TASK_CRITERIA_SATISFIED": 22,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 33,
+  "recorded_task_criteria_outcomes": 34,
   "implementation_percentage": null,
   "limitations": [
-    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 21 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
-    "65 denotes other evidence-bearing tasks, not 65 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 22 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
+    "64 denotes other evidence-bearing tasks, not 64 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
     "9 unreconciled task statuses are not assumed NOT_STARTED.",
     "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
     "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
@@ -461,12 +461,13 @@
       "id": "BE26",
       "title": "Verified-age claim persistence",
       "lane": "BE-CORE",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "SATISFIED",
       "evidence": [
-        "docs/mcr/backend/age-verification-combined.md"
+        "docs/mcr/backend/age-verification-combined.md",
+        "docs/mcr/backend/age-runtime-composition.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The implementation owner explicitly closes all original BE26 verified-age persistence criteria with no original remainder; Backend SL hourly register 2026-11-04 03:35 UTC confirms actual goal COMPLETE and a subsequent separately accepted BE41 goal. Published receipt 763257c66eab0247f1aa8837784312fd7505e130 and master ef2000a5 ancestry are retained. External provider, public HTTP/browser composition and IN03 remain separate; no manager technical review."
     },
     {
       "id": "BE27",
@@ -1449,6 +1450,13 @@
       "owner_chat": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
       "receipt_commit": "629a9f840a819d1ffa8679a95ce50ae9a81db868",
       "disposition": "Whole original FE07 client criteria explicitly SATISFIED at INTEGRATED. Source/evidence map from009327ca/c19ad5b1 to19ad4ca0/59de1ac9; final receipt629a9f84 and integrator-confirmed master980fc4d8 preserve24payloadpins. Separate live/device/production/IN limits retained; no manager review. Same goal COMPLETE then fresh null/clean STOP and all owned leases returned confirmed by the final implementation-owner receipt."
+    },
+    {
+      "recorded_at": "2026-11-04T12:37:23+09:00",
+      "task": "BE26",
+      "owner_chat": "01a1a232-b91d-78f1-a13a-1361788ba51c",
+      "receipt_commit": "763257c66eab0247f1aa8837784312fd7505e130",
+      "disposition": "SATISFIED, all original verified-age persistence criteria; remaining NONE per implementation owner and Backend SL hourly register. Actual goal COMPLETE; published master ef2000a5 is an ancestor of the current snapshot. Provider/public HTTP/browser and IN03 remain separate."
     }
   ]
 }

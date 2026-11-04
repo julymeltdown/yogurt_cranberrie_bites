@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T11:27:19+09:00**, from published history through `980fc4d8` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T12:37:23+09:00**, from published history through `54e1325f` and the 02:33–03:35 UTC hourly digests and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -9,13 +9,13 @@ Updated **2026-11-04T11:27:19+09:00**, from published history through `980fc4d8`
 | Original-task disposition | Count | Meaning |
 | --- | ---: | --- |
 | Recorded acceptance dispositions | **12** | Eleven historical ACCEPTED records plus the implementation owner's explicit original FE08 acceptance. |
-| Additional task-local criteria closed | **21** | Existing dispositions plus original BE12 movement and FE07 shell criteria; exact owner states are preserved, with no new king/SL technical sign-off. |
-| Other implementation evidence | **65** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Additional task-local criteria closed | **22** | Existing dispositions plus original BE26 verified-age persistence; exact owner states are preserved, with no new king/SL technical sign-off. |
+| Other implementation evidence | **64** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
 | Status not yet reconciled | **9** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
 | Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
 | **Required total** | **112** | Every original required ID appears once in the linked register. |
 
-There are **33 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 21 additional task-local closures), **not only 11 tasks with implementation**. The latest reconciliation adds original **BE12 and FE07**, following FE14, FE19, QA01, QA02, FE09, FE15 and QA07, from explicit implementation-owner dispositions and published receipts. FE07 and FE15 retain their exact **INTEGRATED** states and explicit original-criterion closure; they are not relabeled as formal ACCEPTED dispositions. This is not a claim that 33 tasks were newly accepted today, nor an effort-weighted completion percentage. The 65 other evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+There are **34 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 22 additional task-local closures), **not only 11 tasks with implementation**. The latest hourly reconciliation adds original **BE26**, following the previously recorded BE12 and FE07 closures, from explicit implementation-owner dispositions and published receipts. FE07 and FE15 retain their exact **INTEGRATED** states and explicit original-criterion closure; they are not relabeled as formal ACCEPTED dispositions. This is not a claim that 34 tasks were newly accepted today, nor an effort-weighted completion percentage. The 64 other evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
 
 The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
 
@@ -49,6 +49,8 @@ The [112-row task register](task-progress-2026-11-04.json) records each original
 
 | **FE07** | The [whole-shell journey owner record](frontend/fe07-shell-journey.md) explicitly declares original client criteria **SATISFIED at INTEGRATED**, at pinned candidate `8cd20466`. Source `009327ca` and evidence `c19ad5b1` were published as `19ad4ca0` / `59de1ac9`, with final receipt `629a9f84`; integrator-confirmed `980fc4d8` preserves all 24 payload pins. The owner confirms the same goal COMPLETE then fresh null/clean STOP and returned ownership. The actual browser router, canonical client Auth ownership and default Phaser qualify the full shell/history/direct-gift journey. Live services, physical devices, art admission and IN/release work remain separate. |
 
+| **BE26** | The [age persistence owner record](backend/age-runtime-composition.md), published `763257c6` through `ef2000a5`, and Backend SL's 03:35 UTC individual register explicitly close all original persistence criteria as **SATISFIED**, with no original remainder and actual goal COMPLETE. The owner has accepted a separate BE41 assignment. External-provider activation, public HTTP/browser composition and IN03 remain separate; no manager review or extra prerequisite is introduced. |
+
 This reconciliation preserves the owners' actual dispositions: FE08 is explicitly owner-declared ACCEPTED, FE07 and FE15 retain their explicit INTEGRATED states and original-criterion closures, and other SATISFIED records are not relabeled as new formal acceptances. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
 
 ## Current major feature delivery
@@ -65,35 +67,68 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 | World revocation and event closure | Owner replay components and bounded closure `a93a70ec` are published; remote invalidation/combined owner integration continues. | Actual two-account world/revocation, operator/retention and owning-adapter composition, remaining lifecycle/deletion flows. |
 | Release | Existing lane-level source/native/browser receipts are preserved. | **IN01–IN05: 0 completed gate receipts established.** Real devices, accessibility, capacity/recovery, qualified real-stack startup, remaining physical-place/operator inputs and full 61-entry IA accounting remain open. |
 
-## Next integrated milestone: authenticated World
+## Hourly milestone and dependency snapshot
 
-Management dependency snapshot **2026-11-04T10:40:12+09:00**, from current implementation-owner and SL receipts. No king/SL code, query, test or visual review was performed. The original IN01 journey remains open; component readiness below does not certify it.
+The 02:33–03:35 UTC frontend and backend digests establish one new original
+closure, BE26. Frontend helper repairs do not add original task IDs. The mural
+failure journey, Feed/Me and Party clipping repairs, and QA06 desktop/ten-screen
+checkpoint are published per the responsible delivery reports. Whole QA05,
+QA06, QA08 and QA10 remain open within their original scopes. QA06's existing
+physical-device access question remains pending; no duplicate request is made.
 
-| Required input or journey | Current owner-reported position | Responsible implementation owners / next action |
-| --- | --- | --- |
-| Browser session and refresh | Backend `86cf6bcb` / `8d283459` is qualified; frontend original FE09 is delivered in `62b4bf80`. Frontend fixtures and backend actual-service evidence remain separate. | Root frontend owner `01a1a153-1227-7e72-801f-a2a6b91981e1` and stack owner `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` coordinate the genuine joined browser/service journey through a fresh explicit handoff. |
-| Participant, Profile and avatar persistence | Typed/generation components and Profile preparation/abort increments are delivered; the joined participant save/recovery flow and avatar transaction witness still need their current validation. Participant is compiling; avatar retry is queued after its build-cache correction. | Participant `01a1a209-80da-7e53-a295-b64cfe09c1d7`, Profile `01a1a1fd-6b5d-75b0-8d42-01ade79b9393`, avatar `01a19f83-12cc-7f21-8ad3-55749f012d9b`; finish the actual owner/journal/write-witness handoff. |
-| Current selected assets, map and three themes | The current source-bound bundle constructor has an owner-reported passing result using actual resource files. This is an input receipt, not operator admission or full visual acceptance. | Spatial/avatar owner and stack owner retain the current map4 bundle for the first real World journey. |
-| World runtime | Last owner report retains 109 passing regressions and 9/11 native cases. The ticket-issuance/member-preservation correction `c13d7799` awaits its fresh allocation and validation. Production startup remains disabled. | World `01a1a20f-8d37-71c3-a429-8a55bb6d6c49` resolves the two remaining cases and hands its concrete startup inputs to the stack owner. |
-| Isolated service startup and two-client journey | No completed real two-user World startup/journey receipt has been supplied. | Stack owner prepares the actual isolated configuration and two-account seed; assigned frontend/World developers execute the original IN01 flow when the concrete inputs are ready. No manager test stage is added. |
+The actual Auth → Profile → public-bootstrap milestone above is retained.
+Root's newer actual C03 client steps passed, but terminal settlement failed;
+the owner has the correction and next resource allocation. Actual public World
+two-user qualification and IN01 remain unproven. Root and World developers own
+that joined flow; optional Age, Intro, Gifts and new-art activation are not
+prerequisites for the currently valid basic World entry.
 
-The next free backend allocations prioritize ready World/participant/avatar-witness dependencies without preempting accepted holders or starving other work. BE26, BE27, social, Gifts, Feed, Wall and optional capability activation are not prerequisites for basic World entry; their required implementation continues independently. Unavailable capabilities stay unavailable.
+Map v10 source is committed with owner-reported non-native checks complete;
+marker/caption/framing/parity qualification and publication remain pending.
+Canonical avatar production admission and C06/motion integration retain actual
+writers and are still unqualified. Source publication or a desktop fixture does
+not establish final reference fidelity, product admission or an IN gate.
 
-The artist's new scenery source `492160b1` (`spatial-v4` / `quality-v8`) is separately published. Its 72 additional collision cells and 12 solid props require a new canonical map revision greater than 4 and versioned client adoption; old map4 bytes remain immutable. Frontend root has an actual new active adoption goal under World SL. The backend spatial adoption follows the current avatar-witness work. This visual delivery must not delay the valid current-map IN01 work, and source publication is not final reference fidelity or an original art-task closure.
+Backend SL's individual register covers all 44 BE tasks and 12 backend QA/IN
+rows. BE39, QA03, v10 and C06 have current writers. The actually completed BE26
+owner accepted a new isolated BE41 goal after the former owner stopped. BE42
+still needs its durable deletion fence, typed owner composition, World/cache
+and retention inputs; it is not ready for a blind assignment. QA04's unfinished
+goal retains its actual principal/seed/HTTP/WS dependencies. Frontend SLs report
+no ready unattended scope and manage the freed contexts directly.
 
-FE07, FE15 and QA07 continue with disjoint developer ownership. The conflicting IN02 dispatch to the FE07 developer was withdrawn: FE07 is its sole active assignment, with IN02 queued for an actual later transfer. Reported typing/visibility and Back-scroll defects are assigned to the incumbent frontend source writer; the report-dismissal/block-control defect is separately assigned through Social. The broader FE09 diagnostic failures are routed to the responsible lanes, with fixture, collection and environment issues kept distinct from confirmed product defects.
-
-QA04 remains unfinished. Its developer reports publication `129f37ad`, 112 passing fixture cells and 63 unsupported cells, and a blocked persistent goal awaiting the actual principal/seed/HTTP/WS inputs from the social-runtime and stack owners. This is not QA04 or IN03 completion and does not block unrelated frontend work. The existing Social SL retains the concrete dependency and lifecycle follow-up; no goal reset or speculative restart is required.
+Disk headroom is the recurring shared constraint. Backend SL is the single
+recovery coordinator, with one executor and owner-confirmed restorable archives
+of retired generated artifacts. The explicitly retired private meeting target
+may be archived and retired with source/WIP/Git/evidence preserved; both shared
+targets and current runtime inputs remain protected. After recovery, the queue
+combines one Rust workflow with one bounded frontend capture. Map validation is
+the first frontend capture and QA06 post-fix captures follow, subject to fresh
+capacity and process checks. Resource recovery is not product validation.
 
 ## Staffing and delivery policy
 
-[Current coordination roles](king-coordination.md) remain authoritative: developers implement, validate, resolve technical interfaces and non-force publish their exclusive scopes directly to master. Kings manage priorities, staffing escalation and major delivery; SLs manage feature dependencies, ready work and worker lifecycle. No king/SL technical review or approval stage is introduced by this report.
+Developers own implementation, technical interfaces, validation, fixes and
+committed handoffs. While the publishing-policy clarification is unresolved,
+backend Root `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` and frontend/art Root
+`01a1a153-1227-7e72-801f-a2a6b91981e1` are the designated delivery integrators;
+normal non-force publication proceeds without king or SL technical approval.
+Earlier owner-direct publishing text is not authority to bypass this route.
 
-Backend staffing/resources SL owns both existing target queues and actual handoffs. Current holders must come from live receipts, not old snapshots in this file. Frontend/art staffing belongs to the frontend king and its three SLs. Finished chats are reused only for ready disjoint scopes or archived with work and unfinished requirements preserved. No chat quota is imposed.
+SLs independently manage broad feature dependencies, exact ownership, resource
+queues and compatible next assignments. Kings manage major milestones and
+unresolved cross-lane issues. Neither performs code, query, test, runtime or
+visual reviews. A review request receives: "I don't perform reviews. The
+responsible developer owns validation; please resolve this with the
+implementation owner."
 
-The backend meeting-photo owner has accepted an isolated active assignment supporting original BE09/FE20; Social coordinates the frontend photo continuation. This is assignment progress, not task completion. Contract and fixture work can proceed independently of physical-venue live qualification.
-
-Named future backlog ownership covers the remaining beacon/rally scope, age/introduction/mutual sharing, Feed mutations/comments, notifications, operations/moderation, closure/deletion and real-stack startup. These future assignments are not counted as active or complete. The planning exports remain untouched.
+Developers send routine handoffs to their SL, technical counterpart or delivery
+integrator. No main acknowledgment, per-handoff ledger edit or approval is
+required. Leads supply one hourly digest; main batches the central record.
+Immediate escalation is limited to unresolved cross-lane conflicts, genuinely
+unattended critical work or a required human decision. Routine/duplicate
+receipts receive no reply. Finished chats are reused for ready disjoint work or
+preserved/archived; no arbitrary chat quota or forced model setting is imposed.
 
 ## Historical task acceptance ledger
 
