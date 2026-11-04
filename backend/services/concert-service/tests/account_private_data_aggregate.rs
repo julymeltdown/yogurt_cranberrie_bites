@@ -42,6 +42,9 @@ fn registry_is_closed_and_core_is_never_a_whole_ack() {
     let mut other = c.clone();
     other.saga_id = Uuid::from_u128(14);
     assert!(!receipt.verifies(&other, &[1; 32]));
+    let mut other_user = c.clone();
+    other_user.user_id = Uuid::from_u128(15);
+    assert!(!receipt.verifies(&other_user, &[1; 32]));
 }
 
 #[test]
@@ -75,9 +78,15 @@ fn aggregate_debug_and_full_receipt_are_redacted() {
 
 #[test]
 fn production_core_only_registry_is_explicitly_incomplete() {
-    let owners = PrivateDataCategoryOwners::default();
-    assert_eq!(owners.configured(), 0);
-    for category in PrivateDataCategory::ALL {
+    let core: Arc<dyn PrivateDataCategoryOwner> = Arc::new(FixtureCategoryOwner::new(
+        PrivateDataCategory::CorePreferencesAndAvatar,
+    ));
+    let owners = PrivateDataCategoryOwners::core_only(core);
+    assert_eq!(owners.configured(), 1);
+    assert!(owners
+        .get(PrivateDataCategory::CorePreferencesAndAvatar)
+        .is_some());
+    for category in PrivateDataCategory::ALL.into_iter().skip(1) {
         assert!(owners.get(category).is_none());
     }
 }
