@@ -102,7 +102,7 @@ impl PartyLiveOwnerGuard for ScopePartyLiveGuard {
             .read(&guarded)
             .await
             .map_err(|_| PartyLiveError::DependencyUnavailable)?;
-        if author.user_id.uuid() != subject || author.json.is_empty() {
+        if author.user_id != subject || author.json.is_empty() {
             return Err(PartyLiveError::DependencyUnavailable);
         }
         let profile: serde_json::Value = serde_json::from_slice(&author.json)
