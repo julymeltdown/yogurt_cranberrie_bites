@@ -111,7 +111,7 @@ fn read_requires_shared_owners_tls_and_dedicated_keys() -> anyhow::Result<()> {
         None
     )
     .is_err());
-    let bad = TlsMaterial::from_pem(b"bad".to_vec(), b"bad".to_vec(), b"bad".to_vec())?;
+    let bad = TlsMaterial::from_pem(b"bad".to_vec(), b"bad".to_vec(), b"bad".to_vec());
     assert!(parse(&v, &bad).is_err());
     Ok(())
 }
