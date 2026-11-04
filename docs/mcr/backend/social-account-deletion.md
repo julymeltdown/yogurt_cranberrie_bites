@@ -1,6 +1,6 @@
 # BE42 Sharing deletion owner
 
-Status: **IN_PROGRESS**. Source and test authoring checkpoint. Rust 1.88 formatting and whitespace checks pass; Cargo, SQLx migration execution, native tests and physical PostgreSQL restart are **NOT_RUN** at this checkpoint. No full BE42, public reveal/WS/cache or production Auth-to-Concert transport acceptance is claimed.
+Status: **IN_PROGRESS — component qualification PASS; normal Root publication pending**. Rust 1.88 build, two lightweight cases, actual SQLx migration initialization, four native behavior cases and replay after a physical PostgreSQL restart pass at source `9523b0baa01f752bafceb53739dec69aaf005b32`. No full BE42, mounted public reveal/WS/cache or production Auth-to-Concert transport acceptance is claimed.
 
 ## Ownership and source boundaries
 
@@ -13,7 +13,7 @@ The exact authored scope is:
 - Existing `src/social_live/invalidation.rs`: source verification and bounded draining of sealed account-deletion signals only.
 - This new document.
 
-Root separately granted own-worktree-only dependency composition: byte-exact common `src/world/account_deletion.rs` and `0052_world_account_deletion.sql`, plus exactly `pub mod account_deletion;` in `world/mod.rs` and `social_live/mod.rs`. This is isolated dependency commit `fa650038`, not a transfer of common ownership. Root must omit that local composition commit from the leaf publication and use the common owner's qualified handoff and Root-owned export disposition. No other World, Auth, proto, config, main, manifest, lockfile, frontend, migration 0051 or source archive is modified. Developers own validation and fixes; there is no king/SL review or acknowledgment gate.
+Root separately granted own-worktree-only dependency composition: byte-exact common `src/world/account_deletion.rs` and `0052_world_account_deletion.sql`, plus exactly `pub mod account_deletion;` in `world/mod.rs` and `social_live/mod.rs`. These are isolated dependency commits `fa650038` and export-placement correction `5fe6792f`, not a transfer of common ownership. Root must omit both local composition commits from the leaf publication and use the common owner's qualified handoff and Root-owned export disposition. No other World, Auth, proto, config, main, manifest, lockfile, frontend, migration 0051 or source archive is modified. Developers own validation and fixes; there is no king/SL review or acknowledgment gate.
 
 ## Common identity and reuse provenance
 
@@ -43,7 +43,7 @@ Leaf receipts and audience source identities cannot be changed, deleted or trunc
 
 ## Test plan and runtime boundary
 
-There are two lightweight cases and six explicit native setup/qualification cases. They are authored, not executed at this source checkpoint:
+There are two lightweight cases and six explicit native setup/qualification cases. All eight pass in the allocated component qualification:
 
 - Raw/missing authority, wrong target and expired/extended original dispatch refuse before touching a database.
 - Actual Auth-created users and persisted deletion saga feed the labelled component test transport.
@@ -56,6 +56,59 @@ Social aggregate SQL setup is explicitly a storage fixture using the actual cano
 
 The native initializer invokes actual SQLx Auth and Concert runtime migrators over the exact copied/frozen migration directories, producing real migration ledgers; there is no manually forged ledger. The retained workspace enables `migrate` but not SQLx macros, so no manifest change is necessary. The runner must create only fresh marker/inode-owned PG16 databases `mcr_world_deletion_auth` and `mcr_world_deletion_concert`, Unix socket only, using the existing Cluster helper. `BE42_OWNER_ROOT`, identity/token, the two explicit DB URLs and `BE42_MIGRATIONS_ROOT` identify the owned fixture and frozen inputs. All six native cases are ignored by default and require explicit qualification invocation; initializer and restart each require their own named phase. The restart phase additionally requires `BE42_SHARING_PHASE=AFTER_RESTART` and an actual prior `BE42_SHARING_BEFORE_POSTMASTER` observation. Merely invoking it without physical restart fails.
 
-Expected developer verification requires a fresh finite 21d allocation: one exact Rust 1.88 locked/offline jobs-two build, freeze/copy the Cargo-JSON-selected executable and source/SQL manifests, release the physical target before copied tests, run the two lightweight cases, initialize owned schemas, run four native pre-restart cases, physically stop/start the same owned PG, run the explicit post-restart case, verify zero prepared transactions and stop/remove only owned resources. Allocation deadlines, fair queue, historical byte carry, process/PG limits, disk floors and cleanup reserve remain binding. No native resource or target access has occurred at this checkpoint.
+The completed developer verification used finite 21d allocation `BE42-SHARING-BACKEND-202611041433Z`: one exact Rust 1.88 locked/offline jobs-two build, freeze/copy the Cargo-JSON-selected executable and source/SQL manifests, release the physical target before copied tests, run the two lightweight cases, initialize owned schemas, run four native pre-restart cases, physically stop/start the same owned PG, run the explicit post-restart case, verify zero prepared transactions and stop/remove only owned resources. Allocation deadlines, fair queue, historical byte carry, process/PG limits, disk floors and cleanup reserve remain binding. The target was released before copied tests, followed by full resource release; no access to the target occurred after its release.
 
-Source checks: `rustup run 1.88.0 rustfmt --edition 2021` on the four authored Rust files and `git diff --check`, both exit 0. These are syntax/style evidence only. Exact Cargo/native commands, exit codes, frozen source/binary/SQL hashes, failures/fixes, physical restart and complete release evidence will be appended after the responsible developer's allocated qualification. The original full BE42 bridge, actual reveal/reconnect denial and multi-target end-to-end saga remain open.
+Source checks: `rustup run 1.88.0 rustfmt --edition 2021` on the four authored Rust files and `git diff --check`, both exit 0. These are syntax/style evidence only. Exact commands, source/binary/SQL hashes, failures/fixes, restart and complete release evidence follow. The original full BE42 bridge, actual reveal/reconnect denial and multi-target end-to-end saga remain open.
+
+
+## Qualified source, commands and evidence
+
+The exact qualified source is `9523b0baa01f752bafceb53739dec69aaf005b32`. The later handoff changes this document only. Frozen readset: 2,385 source/contract files, complete source archive and copied SQL inputs outside the mutable target. No frozen target executable was used in place.
+
+```text
+cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 \
+  --config profile.dev.package.contracts-build.opt-level=2 \
+  -p concert-service --test social_account_deletion --no-run --message-format=json
+# Exit 0. Dev/test debug=0, incremental=0, both Rust flags unset.
+
+$FROZEN_EXE --test-threads=1
+# Exit 0: 2 passed, 6 deliberately ignored native cases.
+$FROZEN_EXE --ignored --exact native_initialize_owned_schemas --test-threads=1 --nocapture
+# Exit 0: 1 passed. Actual SQLx: Auth 18 migrations, Concert 42 migrations;
+# every successful ledger checksum matches the frozen SQL source.
+$FROZEN_EXE --ignored native_ --skip native_initialize_owned_schemas \
+  --skip native_replay_after_external_physical_postmaster_restart --test-threads=1 --nocapture
+# Exit 0: 4 passed, including actual Auth source-loss pre-commit rollback.
+# Physical owned postmaster stop/start, then explicit AFTER_RESTART environment:
+$FROZEN_EXE --ignored --exact native_replay_after_external_physical_postmaster_restart \
+  --test-threads=1 --nocapture
+# Exit 0: 1 passed. Four exact completed saga receipts replay without publication.
+```
+
+The two retained compile failures are part of the evidence: the local one-line exports initially preceded inner module documentation (`E0753`, fixed only in dependency commit `5fe6792f`); the initializer initially used SQLx macros disabled by the retained dependency (`E0433`, replaced with its existing runtime migrator and exact frozen SQL copies). Both failed commands exited 101. No manifest/lockfile, common-source byte, SQL migration history or build cache was altered to conceal a failure. The final build exited 0 in 1.29 seconds; all original deadlines and failure outputs were retained.
+
+Native behavior proves one 32-request page leaves exactly 108 of the 140 requests active before retry; eventual completion revokes all 140 requests and 280 grants, removes only the deleted user's encrypted material and preserves 140 consent bindings and two handle tombstones. Empty/held publishers cannot complete an unfinished operation. Actual source loss rolls the first fence back. Direct binding deletion, TRUNCATE, source mutation, event cascade and new-platform recreation are refused under the permanent fence. These are component/database assertions; real retained guarded read/reconnect behavior through Root remains unqualified here.
+
+Physical restart changed postmaster PID `63960` to `64847` and start time from `2026-11-04 23:39:14.59525+09` to `2026-11-04 23:39:32.757863+09`. Counts of common fences, completed leaf receipts, audience rows and deletion signals remained `4|4|9|9`. Prepared transactions were zero before the restart stop, after restart, before the final stop and in teardown.
+
+Local evidence directory: `/private/tmp/mcr-sharing-deletion-rg8zi9hw`. All previous Social outputs and both compile failures remain preserved. The frozen executable is 16,973,984 bytes, SHA-256 `32cb3633aed296c3481f0623e708b519490e9ae57af4e269554b17c5e092978c`; artifact/source manifest SHA-256 `bbb1aef96aa44e0c33218b945f1407b232946a24697507955400445bac73abd1`; full-source archive SHA-256 `c1d2442936269d816b2899229b1ac57a8bf1c3c5a8536a71e5567e4854f16659`. Native report SHA-256 `72fad579c1ddd66adc9bdd0ecdcf93a2209bb165005bff429894d220d139c4c6`; full-release receipt SHA-256 `4e09aecf93c1ae3d4f9f75533daf9d1c08fb489dc9505b18af1128d10fca9a04`.
+
+Qualified authored source SHA-256:
+
+| Concert-service path | SHA-256 |
+| --- | --- |
+| `migrations/0054_social_account_deletion.sql` | `06615a4ef00102ac26e735616490afb810f4b80c4d0e87c6184122255e383ad0` |
+| `src/social_live/account_deletion.rs` | `fed95c3407274d6e51f5e5446e40c2d189ce680f3cf2baa982261aab312783cd` |
+| `src/social_live/producer.rs` | `128f5cdb7b9ce0ad429d706b79b2c7a5a9596592d9f738035090d03ddf0732a9` |
+| `src/social_live/invalidation.rs` | `ee5d992f2f4ca91db8aab41c98a7cd2b9386dfab15947e9f0a9548e3f140c6e5` |
+| `tests/social_account_deletion.rs` | `e59fee93de180b4e44e439a4cea4382dcf2d3d361da13da2c4767b7a138b35df` |
+
+## Resource release and publication routing
+
+Allocation accepted at `2026-11-04T14:34:53.673768Z`. Original compile/work/full cutoffs were `14:44:52.764924Z`, `14:47:52.764924Z`, `14:50:52.764924Z`. An independent watchdog existed before compiler/runtime children and enforced disk/deadline cleanup. Full initial carry was 4,120,969,216 bytes including physical checkout, shared source Git, historical native copies and 221,478,912 bytes of prior target growth. All 6 GiB whole, 1 GiB new-target, 384 MiB new-outside, executable/process/disk bounds remained satisfied; the parent observed peak was 4,253,192,192 bytes, with an independent physical-source-growth check as well. New target growth was 24,776,704 bytes, so known historical growth for future rounds is 246,255,616 bytes, without a reset or history deletion.
+
+The literal assigned backend target was unconditionally released with zero handles/compiler processes at `14:38:39.666940Z`, before any copied executable or PG startup. The native round took 20.33 seconds. Full release at `14:40:12.382204Z` was 92.72 seconds after target release, inside the shortened 180-second work/360-second full window. Owned PG root, native/controller processes and watchdog are absent; no target read/rebuild occurred after release. The read-only slot observation was zero actual postmasters; 21d subsequently confirmed usable capacity under the three-native aggregate limit. No PKI, application services, installation, new target or new worktree was used.
+
+Root is the named publishing developer. Publish the six authored paths using leaf commits `22a17d5e`, `483e2da6`, `922ffc64`, `10711bcd`, `9523b0ba` plus this documentation handoff, preserving their provenance. Omit local-only dependency commits `fa650038` and `5fe6792f`; use the sole common owner's qualified handoff and place the Root-owned exports after existing inner module documentation. The Sharing writer stops those six paths at handoff; no king/SL inspection or acknowledgment is a prerequisite. Root owns non-fast-forward reconciliation and combined composition validation; this implementation owner verifies remote postimages and mapped ancestry after normal publication.
+
+Remaining original product gates: actual canonical Auth private transport into the required typed verifier; Root's actual sealed publisher/private-cache withdrawal and guarded reveal/reconnect denial; multi-target saga completion and required real vertical flow. No default positive verifier, empty-registry fallback or component fixture is offered as production composition. The broader historical persistent goal is not falsely completed by this prerequisite handoff.
