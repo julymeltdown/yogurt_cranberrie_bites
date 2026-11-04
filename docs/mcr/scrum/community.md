@@ -123,10 +123,22 @@ documentation change will route only to Root153 for serialized publication.
 QA06 owner `1ab7` now reports independently captured FE26 route fixtures at
 three widths and the actual FE33 caller at three widths with zero POSTs.
 These are owner-reported fixture captures, not default Wall, physical-device
-or artwork admission acceptance. Its current target comparison separates
-missing member-public-avatar/photo fixture inputs from reported tall Party/
-Gifts rows and navigation differences; equal-aspect qualification is still
-in progress. Community performs no visual or technical review of that report.
+or artwork admission acceptance. After actual equal-aspect comparison, the
+developer explicitly RETRACTED the initial tall Party/Gifts row impression:
+heights are near target at equal 390px width/reference aspect. Do not staff
+a row-height fix. Actionable reported Party discrepancy is the Create Party
+action/availability copy clipped by the scroll-body at 390×637, with
+`party-discovery/ui/party-discovery.css:23,44-48` and actual PanelFrame/
+ParadeFooter geometry relevant. Exact current pins/full paths/minimum repair
+scope await the developer's final bounded repair JSON. Disabled capability
+itself is separate. Gifts disabled Reserve was the QA06 fixture binding a
+foreign owner to the actor, being corrected inside QA06 only; it is not a
+production/backend defect. Missing member/public-photo data remain explicit
+optional fixture limits. Generic extra `/gifts` links involve reported
+`app/WorldShell.tsx` PanelScreen 170–173 and `routes.ts` 42–43 and require
+separate exact shared-hunk ownership, not a feature-CSS grant. Comparison
+artifacts are owner evidence in `fidelity-v1/compare-{meet,gifts}-390.png`;
+Community does not inspect or technically review them.
 
 No current accepted Party/Meet or Gifts visual-fix source writer is recorded
 in this lane. Former Meet `6ec9` and Gifts `230` are Backend allocator-owned;
@@ -149,6 +161,22 @@ geometry/navigation from missing fixture content. No fix is assigned or falsely
 ACTIVE before that concrete scope and exact incumbent clearance; no former
 worker was awakened. This is source-owner routing, not an approval gate or a
 reason to stop the existing QA06 work.
+
+The corrected cause/real defect split was sent directly to QA06 and Frontend
+King so the retracted height impression cannot become a new assignment.
+World was asked whether its actually completed/archived `202` has any later
+accepted scope or can be explicitly released to Community as sole next
+allocator once the concrete Party repair packet is ready. No release, goal,
+reservation or worker acceptance is inferred; no archived-worker status wake,
+goal pause/reset or diversion of active QA05 owner `26e` occurred.
+Frontend King subsequently confirmed its registry has no current Party/Gifts
+writer or reservation and identified completed/archived `204` as a possible
+compatible context, with explicit next-allocation release owned by Social.
+Community requested that release/current lifecycle truth directly from Social;
+no accepted scope or availability is inferred from dispatch. `204` will not
+be awakened or given a new goal until the concrete repair packet and exact
+feature/shared-hunk ownership are ready. Any separate World-to-Social Feed/Me
+handoff remains undisturbed; no Community reservation on that context exists.
 
 ### Current avatar admission hunk release to World/Motion
 
