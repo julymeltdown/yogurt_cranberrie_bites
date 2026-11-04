@@ -110,6 +110,22 @@ diagnostic and produced zero screenshots; it remains a failure, not evidence
 of success. These source-specific cohorts are retained separately from the
 first eight-panel captures and are not relabeled as one simultaneous run.
 
+## Partial source publication receipt
+
+Fresh `git fetch origin master` and `git ls-remote origin refs/heads/master`
+both resolve published master to `49ac314e4cc8cae26a032618743274eb21d26567`.
+The owner independently verified delivered ancestry for the original frame,
+separator correction, warm paint, perimeter gradient and dark-berry contrast
+fix. All four assigned application files match current owner postimages byte
+for byte. Commands and hashes are recorded in
+[`publication-49ac314e.json`](../evidence/reference-frame-footer/publication-49ac314e.json).
+
+This verifies publication of application source. The new regression/review
+handoff is integrated asb4258353 but is not yet on that master; the World/Map
+review handoff afa20482 also awaits publication. Targeted test execution and
+remaining panel follow-up are still pending. The goal and CSS lease remain
+active until those gates and final remote evidence/doc verification complete.
+
 ## Superseding human direction — 2026-11-04 06:10 UTC
 
 The human now requires noticeably cuter **backgrounds only**. Characters,

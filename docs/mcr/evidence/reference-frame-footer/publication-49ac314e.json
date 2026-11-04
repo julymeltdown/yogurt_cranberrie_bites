@@ -1,0 +1,65 @@
+{
+  "status": "IN_PROGRESS",
+  "verifiedAt": "2026-11-04T07:00:51.036116+00:00",
+  "remote": "julymeltdown/mcr",
+  "branch": "master",
+  "master": "49ac314e4cc8cae26a032618743274eb21d26567",
+  "freshCommands": [
+    {
+      "command": "git fetch origin master",
+      "exitCode": 0
+    },
+    {
+      "command": "git ls-remote origin refs/heads/master",
+      "exitCode": 0,
+      "oid": "49ac314e4cc8cae26a032618743274eb21d26567"
+    },
+    {
+      "command": "git rev-parse origin/master",
+      "exitCode": 0,
+      "oid": "49ac314e4cc8cae26a032618743274eb21d26567"
+    },
+    {
+      "command": "git diff HEAD origin/master -- <four assigned application paths>",
+      "exitCode": 0,
+      "output": "empty"
+    }
+  ],
+  "deliveredAncestorChecks": {
+    "6f2d289bdce8154a3aa42b981c6ee6d9f5923448": 0,
+    "bfa0193939c3eebd6c80ade85083c6530c6875e1": 0,
+    "bdc1ef6eb8b391ea980ae684bb5164954d895e13": 0,
+    "650b1148": 0,
+    "de1fda2b": 0,
+    "894f7599": 0
+  },
+  "postimages": {
+    "frontend/src/app/shell.css": {
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee",
+      "bytes": 12105,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/app/shell-chrome/shell-chrome.css": {
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d",
+      "bytes": 5451,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/shared/ui/concert-window/concert-window.css": {
+      "sha256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+      "bytes": 7210,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/app/shell-chrome/parade-footer.tsx": {
+      "sha256": "6f3b1f838987dbe470e1c92e589718d60de8d70ff7a1d369b0dc0607df3b9b41",
+      "bytes": 3030,
+      "exactOwnerPostimage": true
+    }
+  },
+  "limits": [
+    "Partial publication receipt: shared paint/fix source is delivered; goal is not complete",
+    "a0aa7cc9 test/review integrated atb4258353 but not an ancestor of this master",
+    "afa20482 World/Map review handoff publication pending",
+    "Targeted contrast test execution and remaining responsive panel evidence pending",
+    "Final delivered evidence/docs must receive a later fresh remote verification before lease return"
+  ]
+}
