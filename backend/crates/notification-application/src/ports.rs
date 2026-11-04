@@ -93,6 +93,17 @@ pub trait NotificationRepositoryPort: Send + Sync {
         actor_id: Uuid,
         retention_until: DateTime<Utc>,
     ) -> Result<()>;
+
+    /// A legacy implementation returning unit cannot produce COMMIT evidence.
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        _saga_id: Uuid,
+        _user_id: Uuid,
+        _actor_id: Uuid,
+        _retention_until: DateTime<Utc>,
+    ) -> Result<crate::dto::notification_dto::NotificationDeletionReceiptDto> {
+        Err(crate::errors::NotificationError::DependencyUnavailable)
+    }
 }
 
 #[async_trait]
@@ -236,6 +247,18 @@ where
     ) -> Result<()> {
         (**self)
             .apply_user_deletion(saga_id, user_id, actor_id, retention_until)
+            .await
+    }
+
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        saga_id: Uuid,
+        user_id: Uuid,
+        actor_id: Uuid,
+        retention_until: DateTime<Utc>,
+    ) -> Result<crate::dto::notification_dto::NotificationDeletionReceiptDto> {
+        (**self)
+            .apply_user_deletion_with_receipt(saga_id, user_id, actor_id, retention_until)
             .await
     }
 }

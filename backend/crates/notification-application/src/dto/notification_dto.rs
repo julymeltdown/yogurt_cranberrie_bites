@@ -111,6 +111,20 @@ pub struct ApplyUserDeletionResponseDto {
     pub applied: bool,
 }
 
+/// Internal transport data from the owning committed transaction. This DTO is
+/// not a caller capability and cannot substitute for the owning repository.
+#[derive(Clone, PartialEq, Eq)]
+pub struct NotificationDeletionReceiptDto {
+    pub version: u32,
+    pub saga_id: uuid::Uuid,
+    pub user_id: uuid::Uuid,
+    pub actor_id: uuid::Uuid,
+    pub retention_until: chrono::DateTime<chrono::Utc>,
+    pub fence_revision: i64,
+    pub effect_xid: String,
+    pub recorded_at: chrono::DateTime<chrono::Utc>,
+}
+
 impl From<Notification> for NotificationDto {
     fn from(value: Notification) -> Self {
         Self {

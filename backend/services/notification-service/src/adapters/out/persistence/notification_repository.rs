@@ -827,6 +827,39 @@ impl NotificationRepositoryPort for PgNotificationRepository {
         )?;
         self.apply_user_deletion_receipt(command).await.map(|_| ())
     }
+
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        saga_id: Uuid,
+        user_id: Uuid,
+        actor_id: Uuid,
+        retention_until: DateTime<Utc>,
+    ) -> crate::application::errors::NotificationResult<
+        crate::application::dto::notification_dto::NotificationDeletionReceiptDto,
+    > {
+        let command = crate::concert::deletion_owner::DeletionCommand::new(
+            saga_id,
+            user_id,
+            actor_id,
+            retention_until,
+        )?;
+        let receipt = self.apply_user_deletion_receipt(command).await?;
+        let command = receipt.command();
+        Ok(
+            crate::application::dto::notification_dto::NotificationDeletionReceiptDto {
+                version: u32::from(
+                    crate::concert::deletion_owner::CommittedDeletionReceipt::VERSION,
+                ),
+                saga_id: command.saga_id(),
+                user_id: command.user_id(),
+                actor_id: command.actor_id(),
+                retention_until: command.retention_until(),
+                fence_revision: receipt.fence_revision(),
+                effect_xid: receipt.effect_xid().to_owned(),
+                recorded_at: receipt.recorded_at(),
+            },
+        )
+    }
 }
 
 impl PgNotificationRepository {
