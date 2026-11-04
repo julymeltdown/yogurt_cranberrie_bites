@@ -1,10 +1,9 @@
 {
-  "art_commit": "e3af146ae4757794ca153363fd1408300ffde29e",
+  "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
   "blockers": [
-    "MISSING_PAINTED_REVENGE",
-    "MISSING_PAINTED_DANGER",
     "UNREVIEWED_SOURCE_PROVENANCE",
-    "PRODUCT_BOOTSTRAP_NOT_CONFIGURED"
+    "PRODUCT_BOOTSTRAP_NOT_CONFIGURED",
+    "ART_FIDELITY_NOT_ACCEPTED"
   ],
   "bootstrap": null,
   "fractional_depth_count": 0,
@@ -21,15 +20,29 @@
     "map_revision": 2
   },
   "scenery_budget": {
-    "bytes": 1947817,
-    "max_bytes": 2097152,
-    "max_pixels": 2097152,
-    "pixels": 2043904
+    "DANGER": {
+      "bytes": 1819166,
+      "max_bytes": 2097152,
+      "max_pixels": 2097152,
+      "pixels": 2043904
+    },
+    "PARADE": {
+      "bytes": 1839826,
+      "max_bytes": 2097152,
+      "max_pixels": 2097152,
+      "pixels": 2043904
+    },
+    "REVENGE": {
+      "bytes": 1820481,
+      "max_bytes": 2097152,
+      "max_pixels": 2097152,
+      "pixels": 2043904
+    }
   },
   "skins": {
-    "DANGER": "UNAVAILABLE",
-    "PARADE": "SOURCE_PROPOSAL",
-    "REVENGE": "UNAVAILABLE"
+    "DANGER": "CONTRACT_READY",
+    "PARADE": "CONTRACT_READY",
+    "REVENGE": "CONTRACT_READY"
   },
   "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497",
   "state": "NOT_ADMITTED",

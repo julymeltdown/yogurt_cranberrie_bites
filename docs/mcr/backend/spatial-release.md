@@ -118,3 +118,38 @@ art is not treated as a delivered input. Product state remains NOT_ADMITTED.
 The separately assigned operator-bundle owner is Product API root; provenance
 review/source ownership was escalated as a project decision. Neither an art schema
 check nor component/native database evidence silently upgrades REVIEWED metadata.
+
+### All-three source binding v2
+
+The subsequent frozen artist handoff is
+`023201343a452b859759e02039d367c11d1ff8ad`, with three distinct sources under
+`world/reference-scene-v2/eras-v5/`. Its manifest is 6,138 bytes,
+`sha256:65d3d8ecbdd7263b343a492aa78cb0ccb6422af50d17398571fef78be8a9dfd4`.
+The source-binding format is now version **2**, with exactly named per-theme
+`scenes` records and exact scenery/source/resource pins. Product admission requires
+all three names, exact per-theme source scenery, actual PNG signature/IHDR dimensions
+and bytes/hash, and the existing complete Product policy. Duplicate/aliased scenes
+fail closed. Read-only candidate inspection remains separate from admission.
+
+| Era | Runtime bytes | Runtime pixels |
+| --- | ---: | ---: |
+| REVENGE | 1,820,481 | 2,043,904 |
+| PARADE | 1,839,826 | 2,043,904 |
+| DANGER | 1,819,166 | 2,043,904 |
+
+The 2,097,152 byte/pixel limits apply independently to each scene. The candidate's
+aggregate counters sum all three scenes, including the same frozen ground once
+per scene; they are not a new aggregate cap or measured network transfer. Source
+atlases/provenance/prompts are pinned as source files, not runtime resources.
+All 22 integer WORLD destinations and footprints match across skins; six MAP
+representations remain separate. The original v3/v4 bytes are preserved; selecting
+the new optional v5 PARADE is an explicit source pin change, not a mutation of v4.
+The canonical map revision-2 hash above stays unchanged because its geometry,
+places and actual Tiled input did not change. Existing FE World v4 qualification
+does not qualify adoption of this v5 artwork; consumers must update explicitly.
+
+Six Python source tests and exact builder check pass for these all-three inputs.
+Rust compilation/native reruns remain pending a fresh named resource grant.
+Current readiness accurately removes the missing-era blockers but retains
+UNREVIEWED_SOURCE_PROVENANCE, PRODUCT_BOOTSTRAP_NOT_CONFIGURED and
+ART_FIDELITY_NOT_ACCEPTED. No source review state was upgraded or invented.

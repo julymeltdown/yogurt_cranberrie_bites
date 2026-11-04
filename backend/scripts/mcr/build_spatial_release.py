@@ -12,10 +12,10 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_COMMIT = '8f89d1905a86143d34ff77d2951fc60651ab2497'
-ART_COMMIT = 'e3af146ae4757794ca153363fd1408300ffde29e'
+ART_COMMIT = '023201343a452b859759e02039d367c11d1ff8ad'
 TILED_COMMIT = 'aa3e2f3d67afc1f288aee63f994dc829fcc81e7b'
 BASE = 'world/reference-scene-v2/'
-RUNTIME = BASE + 'runtime-v4/'
+RUNTIME = BASE + 'eras-v5/'
 TILED_PATH = BASE + 'runtime/canonical-map-v2.json'
 TILED_HASH = 'sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f'
 GEOMETRY_HASH = 'sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5'
@@ -92,11 +92,8 @@ def candidate_map(proposal):
 def build():
     geometry_path = BASE + 'geometry-proposal.json'
     geometry_data = published_input(geometry_path)
-    names = ['parade-layout.json', 'parade-resource-inputs.json',
-             'parade-scenery.json', 'parade-integer-projection.json',
-             'parade-map-metadata.json']
-    data = {RUNTIME + name: published_input(RUNTIME + name, ART_COMMIT) for name in names}
     proposal = json.loads(geometry_data)
+    manifest = candidate_map(proposal)
     tiled_data = published_input(TILED_PATH, TILED_COMMIT)
     require(sha(tiled_data) == TILED_HASH and len(tiled_data) == 24058, 'published Tiled pin mismatch')
     geometry = proposal['geometry']
@@ -114,71 +111,97 @@ def build():
                       'tileheight': 16, 'tilecount': 3888, 'columns': 48, 'margin': 0, 'spacing': 0}],
     }
     require(json.loads(tiled_data) == expected_tiled, 'published Tiled differs from canonical finite grids')
-    layout = json.loads(data[RUNTIME + 'parade-layout.json'])
-    resources = json.loads(data[RUNTIME + 'parade-resource-inputs.json'])
-    scenery = json.loads(data[RUNTIME + 'parade-scenery.json'])
-    require(layout['version'] == resources['version'] == 4
-            and layout['geometry_hash'] == resources['geometry_hash'] == GEOMETRY_HASH,
-            'scene/geometry version mismatch')
-    require(resources['source_revision'] == SOURCE_COMMIT
-            and resources['theme_id'] == 'PARADE'
-            and resources['status'] == 'PROPOSAL_NOT_RELEASE_BOUND', 'runtime source mismatch')
-    # Validate the exact closed public Scenery definition without manufacturing
-    # a theme manifest or upgrading the source's review state.
+    manifest_path = RUNTIME + 'manifest.json'
+    manifest_data = published_input(manifest_path, ART_COMMIT)
+    require(sha(manifest_data) == 'sha256:65d3d8ecbdd7263b343a492aa78cb0ccb6422af50d17398571fef78be8a9dfd4'
+            and len(manifest_data) == 6138, 'three-era source manifest pin mismatch')
+    art = json.loads(manifest_data)
+    require(art['version'] == 5 and art['geometry']['source_revision'] == SOURCE_COMMIT
+            and art['geometry']['geometry_hash'] == GEOMETRY_HASH
+            and art['geometry']['sha256'] == sha(geometry_data), 'three-era geometry mismatch')
+    require({t['theme_id'] for t in art['themes']} == {'REVENGE', 'PARADE', 'DANGER'}
+            and len(art['themes']) == 3, 'all three distinct era inputs required')
+    projection_path = BASE + 'runtime-v4/parade-integer-projection.json'
+    projection_data = published_input(projection_path, ART_COMMIT)
+    require(sha(projection_data) == art['integer_projection']['sha256'], 'integer source projection mismatch')
+    projection = json.loads(projection_data)
+    scenes = []
+    budgets = {}
+    reference = None
+    atlas_hashes = set()
     api = assets.read_json(ROOT / 'backend/docs/api/mcr-core.openapi.json')
-    assets.Draft202012Validator({'$ref': '#/components/schemas/Scenery',
-                                'components': api['components']}).validate(scenery)
-    assets.validate_scenery(scenery, proposal['geometry'])
-    require(len(scenery['objects']) == 22, 'unexpected WORLD object projection')
-    manifest = candidate_map(proposal)
-    runtime = []
-    for declared in resources['resources']:
-        path = RUNTIME + declared['path']
-        raw = published_input(path, ART_COMMIT)
-        require(sha(raw) == declared['sha256'] and len(raw) == declared['bytes'],
-                'artist runtime resource pin mismatch: ' + path)
-        width, height = png_size(raw)
-        require((width, height) == (declared['width'], declared['height']), 'runtime dimensions mismatch')
-        runtime.append({**file_pin(path, raw), 'width_px': width, 'height_px': height})
-    require([r['path'] for r in runtime] == [scenery['ground']['path']]
-            + [a['path'] for a in scenery['atlases']], 'scenery/resource path mismatch')
-    for pin, descriptor in zip(runtime, [scenery['ground']] + scenery['atlases']):
-        require(all(pin[k] == descriptor[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px']),
-                'scenery/resource pin mismatch')
-    byte_count = sum(r['bytes'] for r in runtime)
-    pixels = sum(r['width_px'] * r['height_px'] for r in runtime)
+    for theme in art['themes']:
+        theme_id = theme['theme_id']
+        prefix = RUNTIME + theme_id.lower() + '/'
+        files = {}
+        for pin in theme['files']:
+            path = RUNTIME + pin['path']
+            require(path.startswith(prefix) and '..' not in path.split('/') and path not in files,
+                    'invalid or duplicate era source path')
+            raw = published_input(path, ART_COMMIT)
+            require(sha(raw) == pin['sha256'] and len(raw) == pin['bytes'], 'era source pin mismatch: ' + path)
+            files[path] = raw
+        scenery_path = prefix + 'scenery.json'
+        scenery = json.loads(files[scenery_path])
+        layout = json.loads(files[prefix + 'layout.json'])
+        resources = json.loads(files[prefix + 'resource-inputs.json'])
+        require(layout['version'] == resources['version'] == 5
+                and resources['theme_id'] == theme_id
+                and layout['geometry_hash'] == resources['geometry_hash'] == GEOMETRY_HASH,
+                'era source version/geometry mismatch')
+        assets.Draft202012Validator({'$ref': '#/components/schemas/Scenery',
+                                    'components': api['components']}).validate(scenery)
+        assets.validate_scenery(scenery, geometry)
+        require(len(scenery['objects']) == len(layout['placements']) == 22
+                and len(layout['overview_representations']) == 6, 'unexpected WORLD/MAP projection')
+        for obj, placement in zip(scenery['objects'], layout['placements']):
+            require(all(obj[k] == placement[k] for k in ['id', 'x', 'y', 'width', 'height', 'depth_y']),
+                    'scenery placement differs from authored integer source')
+            source = next(p for p in proposal['placements'] if p['id'] == obj['id'])
+            require(source['footprint'] == placement['footprint'], 'era changes collision footprint')
+        for pin in projection['objects']:
+            obj = layout[pin['group']][pin['index']]
+            require(obj['id'] == pin['id'] and all(type(obj[k]) is int and obj[k] == v
+                    for k, v in pin['runtime'].items()), 'era changes canonical integer projection')
+        destinations = [{k: obj[k] for k in ['id', 'x', 'y', 'width', 'height', 'depth_y']}
+                        for obj in scenery['objects']]
+        if reference is None:
+            reference = destinations
+        require(destinations == reference, 'era changes shared visual destinations')
+        runtime = []
+        descriptors = [scenery['ground']] + scenery['atlases']
+        require(len(resources['resources']) == len(descriptors) == 2, 'unexpected runtime resources')
+        for pin, descriptor in zip(resources['resources'], descriptors):
+            raw = published_input(pin['path'], ART_COMMIT)
+            require(all(pin[k] == descriptor[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px'])
+                    and sha(raw) == pin['sha256'] and len(raw) == pin['bytes'], 'runtime scenery/resource mismatch')
+            require(png_size(raw) == (pin['width_px'], pin['height_px']), 'runtime dimension mismatch')
+            runtime.append({k: pin[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px']})
+        require(runtime[1]['sha256'] not in atlas_hashes, 'distinct eras must not alias the same atlas')
+        atlas_hashes.add(runtime[1]['sha256'])
+        count = sum(p['bytes'] for p in runtime)
+        pixels = sum(p['width_px'] * p['height_px'] for p in runtime)
+        require(count <= MAX_SCENERY and pixels <= MAX_SCENERY, 'era exceeds incumbent C06 budget')
+        budgets[theme_id] = {'bytes': count, 'pixels': pixels, 'max_bytes': MAX_SCENERY, 'max_pixels': MAX_SCENERY}
+        scenes.append({'theme_id': theme_id, 'scenery_source': file_pin(scenery_path, files[scenery_path]),
+            'scene_sources': [file_pin(manifest_path, manifest_data), file_pin(projection_path, projection_data)]
+                + [file_pin(path, raw) for path, raw in files.items()
+                   if path not in [scenery_path, runtime[1]['path']]],
+            'runtime_resources': runtime})
     binding = {
-        'format': 'MCR_SOURCE_BOUND_SPATIAL_RELEASE', 'version': 1,
+        'format': 'MCR_SOURCE_BOUND_SPATIAL_RELEASE', 'version': 2,
         'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
-        'map_id': MAP_ID, 'map_revision': 2,
-        'map_content_hash': manifest['content_hash'], 'geometry_hash': GEOMETRY_HASH,
-        'geometry_source': file_pin(geometry_path, geometry_data),
-        'tilemap_source': file_pin(TILED_PATH, tiled_data),
-        'scenery_source': file_pin(RUNTIME + 'parade-scenery.json', data[RUNTIME + 'parade-scenery.json']),
-        'scene_sources': [file_pin(RUNTIME + name, data[RUNTIME + name]) for name in names
-                          if name != 'parade-scenery.json'],
-        'runtime_resources': runtime,
+        'map_id': MAP_ID, 'map_revision': 2, 'map_content_hash': manifest['content_hash'],
+        'geometry_hash': GEOMETRY_HASH, 'geometry_source': file_pin(geometry_path, geometry_data),
+        'tilemap_source': file_pin(TILED_PATH, tiled_data), 'scenes': scenes,
     }
-    blockers = ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER',
-                'UNREVIEWED_SOURCE_PROVENANCE',
-                'PRODUCT_BOOTSTRAP_NOT_CONFIGURED']
-    if byte_count > MAX_SCENERY:
-        blockers.append('C06_SCENERY_BYTE_BUDGET')
-    if pixels > MAX_SCENERY:
-        blockers.append('C06_SCENERY_PIXEL_BUDGET')
-    fractional_depths = sum(type(p['depth_y']) is not int for p in layout['placements'])
-    if fractional_depths:
-        blockers.append('C06_INTEGER_SCENERY_PROJECTION_REQUIRED')
     readiness = {
         'task': 'BE-SPATIAL-RELEASE', 'state': 'NOT_ADMITTED',
         'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
-        'map': {key: manifest[key] for key in
-            ['map_id', 'map_revision', 'content_hash', 'geometry_hash']},
-        'skins': {'PARADE': 'SOURCE_PROPOSAL', 'REVENGE': 'UNAVAILABLE', 'DANGER': 'UNAVAILABLE'},
-        'blockers': blockers,
-        'scenery_budget': {'bytes': byte_count, 'pixels': pixels,
-                           'max_bytes': MAX_SCENERY, 'max_pixels': MAX_SCENERY},
-        'fractional_depth_count': fractional_depths,
+        'map': {key: manifest[key] for key in ['map_id', 'map_revision', 'content_hash', 'geometry_hash']},
+        'skins': {theme: 'CONTRACT_READY' for theme in budgets},
+        'blockers': ['UNREVIEWED_SOURCE_PROVENANCE', 'PRODUCT_BOOTSTRAP_NOT_CONFIGURED', 'ART_FIDELITY_NOT_ACCEPTED'],
+        'scenery_budget': budgets, 'fractional_depth_count': 0,
         'bootstrap': None, 'theme_manifests': None,
         'limits': ['No art fidelity acceptance', 'No physical place qualification',
                    'Published Tiled resource binds the same canonical grids',

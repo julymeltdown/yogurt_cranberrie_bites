@@ -109,9 +109,11 @@ fn real_spatial_candidate_preserves_canonical_geometry_without_product_admission
     assert_eq!(geometry.interactions.len(), 4);
     assert_eq!(
         (candidate.scenery_bytes, candidate.scenery_pixels),
-        (1_947_817, 2_043_904)
+        (5_479_473, 6_131_712)
     );
     assert!(candidate.scenery_within_budget);
+    assert_eq!(candidate.scenes.len(), 3);
+    assert!(candidate.scenes.iter().all(|scene| scene.within_budget));
     assert!(candidate
         .catalog
         .manifest
@@ -163,7 +165,7 @@ fn spatial_actual_byte_and_dimension_pins_fail_closed() {
         serde_json::from_slice(&std::fs::read(index).unwrap()).unwrap();
     for field in ["sha256", "bytes", "width_px", "height_px"] {
         let mut binding = original.clone();
-        binding["runtime_resources"][0][field] = if field == "sha256" {
+        binding["scenes"][0]["runtime_resources"][0][field] = if field == "sha256" {
             serde_json::json!("sha256:invalid")
         } else {
             serde_json::json!(1)
@@ -231,4 +233,21 @@ fn spatial_binding_rejects_symlinked_source() {
     std::fs::create_dir_all(link.parent().unwrap()).unwrap();
     std::os::unix::fs::symlink(root.join(path), link).unwrap();
     assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).is_err());
+}
+#[test]
+fn spatial_binding_rejects_duplicate_or_aliased_themes() {
+    let (map, index, root) = spatial_paths();
+    let scratch = SpatialScratch::new();
+    let original: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(index).unwrap()).unwrap();
+    let mut duplicate = original.clone();
+    duplicate["scenes"][1]["theme_id"] = duplicate["scenes"][0]["theme_id"].clone();
+    let index = scratch.write("binding.json", &duplicate);
+    assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).is_err());
+    let mut aliased = original;
+    let theme = aliased["scenes"][1]["theme_id"].clone();
+    aliased["scenes"][1] = aliased["scenes"][0].clone();
+    aliased["scenes"][1]["theme_id"] = theme;
+    let index = scratch.write("binding.json", &aliased);
+    assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).is_err());
 }

@@ -1,5 +1,5 @@
 {
-  "art_commit": "e3af146ae4757794ca153363fd1408300ffde29e",
+  "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
   "format": "MCR_SOURCE_BOUND_SPATIAL_RELEASE",
   "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
   "geometry_source": {
@@ -10,49 +10,206 @@
   "map_content_hash": "sha256:3090185136d5e22138318831d230a7ce6581866a12dc3309df8ebf37825de9f5",
   "map_id": "mcr_reference_scene_r3",
   "map_revision": 2,
-  "runtime_resources": [
+  "scenes": [
     {
-      "bytes": 693939,
-      "height_px": 1296,
-      "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
-      "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
-      "width_px": 768
+      "runtime_resources": [
+        {
+          "bytes": 693939,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+          "width_px": 768
+        },
+        {
+          "bytes": 1126542,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/eras-v5/revenge/atlas.png",
+          "sha256": "sha256:3692e79621a812bfe5e56d21e3ea44c05f59708a851ba548e18b846a0ddf350e",
+          "width_px": 1024
+        }
+      ],
+      "scene_sources": [
+        {
+          "bytes": 6138,
+          "path": "world/reference-scene-v2/eras-v5/manifest.json",
+          "sha256": "sha256:65d3d8ecbdd7263b343a492aa78cb0ccb6422af50d17398571fef78be8a9dfd4"
+        },
+        {
+          "bytes": 17116,
+          "path": "world/reference-scene-v2/runtime-v4/parade-integer-projection.json",
+          "sha256": "sha256:0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde"
+        },
+        {
+          "bytes": 2032361,
+          "path": "world/reference-scene-v2/eras-v5/revenge/source-atlas.png",
+          "sha256": "sha256:0b45b757048b36b46e9fcd07273db97b4487145f08b9d709186a645113d483a5"
+        },
+        {
+          "bytes": 16928,
+          "path": "world/reference-scene-v2/eras-v5/revenge/layout.json",
+          "sha256": "sha256:8a4076e25b31540c04543922009e46a4280da5cee116f330de86bac7ed2d986c"
+        },
+        {
+          "bytes": 7405,
+          "path": "world/reference-scene-v2/eras-v5/revenge/map-metadata.json",
+          "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf"
+        },
+        {
+          "bytes": 1932,
+          "path": "world/reference-scene-v2/eras-v5/revenge/resource-inputs.json",
+          "sha256": "sha256:cf9517afe426bd9beeb1af8482088d97f97d1fe6957d76a6e9efb3715bea25e8"
+        },
+        {
+          "bytes": 11150,
+          "path": "world/reference-scene-v2/eras-v5/revenge/provenance.json",
+          "sha256": "sha256:8565a8218d9986623e683c5975cdc9e9a581c70caf422b6e5d6f858b23481b21"
+        },
+        {
+          "bytes": 272,
+          "path": "world/reference-scene-v2/eras-v5/revenge/prompt.md",
+          "sha256": "sha256:be768c6559ddbdc3ece8cda63b841b23066a6b4cde37c9a1b7693d77df885333"
+        }
+      ],
+      "scenery_source": {
+        "bytes": 6793,
+        "path": "world/reference-scene-v2/eras-v5/revenge/scenery.json",
+        "sha256": "sha256:17f582dce53c589638c8c1ee9ec6e4d766da170044644b42e7809683917f6f34"
+      },
+      "theme_id": "REVENGE"
     },
     {
-      "bytes": 1253878,
-      "height_px": 1024,
-      "path": "world/reference-scene-v2/runtime-v4/parade-atlas.png",
-      "sha256": "sha256:ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe",
-      "width_px": 1024
+      "runtime_resources": [
+        {
+          "bytes": 693939,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+          "width_px": 768
+        },
+        {
+          "bytes": 1145887,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/eras-v5/parade/atlas.png",
+          "sha256": "sha256:e27587a0de0bde6eb63b83e2689ac22ed8040a415851d1877a13826ce7b7b274",
+          "width_px": 1024
+        }
+      ],
+      "scene_sources": [
+        {
+          "bytes": 6138,
+          "path": "world/reference-scene-v2/eras-v5/manifest.json",
+          "sha256": "sha256:65d3d8ecbdd7263b343a492aa78cb0ccb6422af50d17398571fef78be8a9dfd4"
+        },
+        {
+          "bytes": 17116,
+          "path": "world/reference-scene-v2/runtime-v4/parade-integer-projection.json",
+          "sha256": "sha256:0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde"
+        },
+        {
+          "bytes": 2098979,
+          "path": "world/reference-scene-v2/eras-v5/parade/source-atlas.png",
+          "sha256": "sha256:881afb5cbf1c7db96b92feb164b69ce1181f625750ca6eba96a80a89b7f33b18"
+        },
+        {
+          "bytes": 16927,
+          "path": "world/reference-scene-v2/eras-v5/parade/layout.json",
+          "sha256": "sha256:a4a78b94a3d66d41b94237a38549eb244b364afa08b99fb331aba32719a0c45f"
+        },
+        {
+          "bytes": 7405,
+          "path": "world/reference-scene-v2/eras-v5/parade/map-metadata.json",
+          "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf"
+        },
+        {
+          "bytes": 1929,
+          "path": "world/reference-scene-v2/eras-v5/parade/resource-inputs.json",
+          "sha256": "sha256:cd11255630460fc20e672242747f22d2e010e2849b3461f3ae0ded257303bbc9"
+        },
+        {
+          "bytes": 11140,
+          "path": "world/reference-scene-v2/eras-v5/parade/provenance.json",
+          "sha256": "sha256:00286dec6c4d0409d537a7a774a9dc2541743a978f0071380a2028457fb96e46"
+        },
+        {
+          "bytes": 333,
+          "path": "world/reference-scene-v2/eras-v5/parade/prompt.md",
+          "sha256": "sha256:5a629ca5033e894a8f334fd0234b4f63d5acb224a0c48df0f7e2325a49f2c6ce"
+        }
+      ],
+      "scenery_source": {
+        "bytes": 6769,
+        "path": "world/reference-scene-v2/eras-v5/parade/scenery.json",
+        "sha256": "sha256:3e5ff5b185dedddb1fb2270b90bc9922f59163b5f458166d27c6734b650dd3b8"
+      },
+      "theme_id": "PARADE"
+    },
+    {
+      "runtime_resources": [
+        {
+          "bytes": 693939,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+          "width_px": 768
+        },
+        {
+          "bytes": 1125227,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/eras-v5/danger/atlas.png",
+          "sha256": "sha256:32d0b99c95798f8d329e7394a9f590c687a448497b9e40e36997b761338406ec",
+          "width_px": 1024
+        }
+      ],
+      "scene_sources": [
+        {
+          "bytes": 6138,
+          "path": "world/reference-scene-v2/eras-v5/manifest.json",
+          "sha256": "sha256:65d3d8ecbdd7263b343a492aa78cb0ccb6422af50d17398571fef78be8a9dfd4"
+        },
+        {
+          "bytes": 17116,
+          "path": "world/reference-scene-v2/runtime-v4/parade-integer-projection.json",
+          "sha256": "sha256:0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde"
+        },
+        {
+          "bytes": 2023523,
+          "path": "world/reference-scene-v2/eras-v5/danger/source-atlas.png",
+          "sha256": "sha256:8473efaf6b25b8547d7fe46b673c7fe5279437c7e42dbb015cfda32fa22fe80f"
+        },
+        {
+          "bytes": 16927,
+          "path": "world/reference-scene-v2/eras-v5/danger/layout.json",
+          "sha256": "sha256:c922442e1f161d79d3344fff6b7897be6849030faa7b289e4b7b0bb4ac829881"
+        },
+        {
+          "bytes": 7405,
+          "path": "world/reference-scene-v2/eras-v5/danger/map-metadata.json",
+          "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf"
+        },
+        {
+          "bytes": 1930,
+          "path": "world/reference-scene-v2/eras-v5/danger/resource-inputs.json",
+          "sha256": "sha256:0fcaad674636ced0c2ebb440688ebaeafd7d040c8ca8c344a5f8c59687640d31"
+        },
+        {
+          "bytes": 11149,
+          "path": "world/reference-scene-v2/eras-v5/danger/provenance.json",
+          "sha256": "sha256:6876293ffbd5977e4e54944aaffe7a946e59813382411d49e06a4f670f5fd03b"
+        },
+        {
+          "bytes": 2637,
+          "path": "world/reference-scene-v2/eras-v5/danger/prompt.md",
+          "sha256": "sha256:232a0828baf10326c229ef45c5afa90b0930e573eedb65a1c8c42662a216a7ee"
+        }
+      ],
+      "scenery_source": {
+        "bytes": 6769,
+        "path": "world/reference-scene-v2/eras-v5/danger/scenery.json",
+        "sha256": "sha256:220e318a663ef491ee5ef15f389350f1ab2151312c628a05c0fac10d7283b934"
+      },
+      "theme_id": "DANGER"
     }
   ],
-  "scene_sources": [
-    {
-      "bytes": 16795,
-      "path": "world/reference-scene-v2/runtime-v4/parade-layout.json",
-      "sha256": "sha256:99bb3318fbfed6f82b88f05d0c501c9dd7667b8426bbf6ec661765b5cfc72985"
-    },
-    {
-      "bytes": 7969,
-      "path": "world/reference-scene-v2/runtime-v4/parade-resource-inputs.json",
-      "sha256": "sha256:e75180cd99cca6ac3b32592188061aee32a8dd71994e40141d981f80821549ae"
-    },
-    {
-      "bytes": 17116,
-      "path": "world/reference-scene-v2/runtime-v4/parade-integer-projection.json",
-      "sha256": "sha256:0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde"
-    },
-    {
-      "bytes": 7419,
-      "path": "world/reference-scene-v2/runtime-v4/parade-map-metadata.json",
-      "sha256": "sha256:0c02f23d572b521ca19d06c168aa77a09377eaf4b2825435dcf9d4e21a25c184"
-    }
-  ],
-  "scenery_source": {
-    "bytes": 6952,
-    "path": "world/reference-scene-v2/runtime-v4/parade-scenery.json",
-    "sha256": "sha256:53d4b4cf6e580de724053cd1d6ff11b87ef77b56fa4d5399f294a63c0a4b4594"
-  },
   "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497",
   "tilemap_commit": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b",
   "tilemap_source": {
@@ -60,5 +217,5 @@
     "path": "world/reference-scene-v2/runtime/canonical-map-v2.json",
     "sha256": "sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f"
   },
-  "version": 1
+  "version": 2
 }

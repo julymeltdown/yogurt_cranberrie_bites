@@ -54,15 +54,20 @@ class SpatialReleaseTests(unittest.TestCase):
 
     def test_actual_runtime_bytes_dimensions_and_budgets_are_truthful(self):
         binding = self.outputs['source-binding.json']
-        resources = binding['runtime_resources']
-        for pin in resources:
-            raw = builder.published_input(pin['path'], builder.ART_COMMIT)
-            self.assertEqual((builder.sha(raw), len(raw)), (pin['sha256'], pin['bytes']))
-            self.assertEqual(builder.png_size(raw), (pin['width_px'], pin['height_px']))
-        budget = self.outputs['readiness.json']['scenery_budget']
-        self.assertEqual((budget['bytes'], budget['pixels']), (1947817, 2043904))
-        self.assertLessEqual(budget['bytes'], budget['max_bytes'])
-        self.assertLessEqual(budget['pixels'], budget['max_pixels'])
+        expected = {'REVENGE': 1820481, 'PARADE': 1839826, 'DANGER': 1819166}
+        atlas_hashes = set()
+        for scene in binding['scenes']:
+            resources = scene['runtime_resources']
+            for pin in resources:
+                raw = builder.published_input(pin['path'], builder.ART_COMMIT)
+                self.assertEqual((builder.sha(raw), len(raw)), (pin['sha256'], pin['bytes']))
+                self.assertEqual(builder.png_size(raw), (pin['width_px'], pin['height_px']))
+            budget = self.outputs['readiness.json']['scenery_budget'][scene['theme_id']]
+            self.assertEqual((budget['bytes'], budget['pixels']), (expected[scene['theme_id']], 2043904))
+            self.assertLessEqual(budget['bytes'], budget['max_bytes'])
+            self.assertLessEqual(budget['pixels'], budget['max_pixels'])
+            atlas_hashes.add(resources[1]['sha256'])
+        self.assertEqual(len(atlas_hashes), 3)
         with self.assertRaises(ValueError):
             builder.png_size(b'not a PNG')
 
@@ -71,11 +76,11 @@ class SpatialReleaseTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'source changed'):
                 builder.published_input(builder.BASE + 'geometry-proposal.json')
 
-    def test_missing_skins_and_review_gates_cannot_be_reported_as_admitted(self):
+    def test_all_three_source_skins_do_not_waive_review_and_operator_gates(self):
         report = self.outputs['readiness.json']
         self.assertEqual(report['state'], 'NOT_ADMITTED')
-        self.assertEqual(report['skins'], {'PARADE': 'SOURCE_PROPOSAL', 'REVENGE': 'UNAVAILABLE', 'DANGER': 'UNAVAILABLE'})
-        for reason in ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER', 'UNREVIEWED_SOURCE_PROVENANCE']:
+        self.assertEqual(report['skins'], {theme: 'CONTRACT_READY' for theme in ['PARADE', 'REVENGE', 'DANGER']})
+        for reason in ['UNREVIEWED_SOURCE_PROVENANCE', 'PRODUCT_BOOTSTRAP_NOT_CONFIGURED', 'ART_FIDELITY_NOT_ACCEPTED']:
             self.assertIn(reason, report['blockers'])
         self.assertEqual(report['fractional_depth_count'], 0)
         self.assertFalse(any(b.startswith('C06_') for b in report['blockers']))

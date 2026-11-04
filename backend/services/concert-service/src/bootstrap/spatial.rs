@@ -7,7 +7,6 @@ use serde::Deserialize;
 use serde_json::Value;
 use sha2::{Digest, Sha256};
 use std::{
-    collections::BTreeMap,
     fs,
     io::Read,
     path::{Component, Path},
@@ -45,6 +44,12 @@ struct Binding {
     geometry_hash: String,
     geometry_source: FilePin,
     tilemap_source: FilePin,
+    scenes: Vec<SceneBinding>,
+}
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct SceneBinding {
+    theme_id: String,
     scenery_source: FilePin,
     scene_sources: Vec<FilePin>,
     runtime_resources: Vec<ImagePin>,
@@ -61,9 +66,18 @@ pub struct SourceBoundSpatialCandidate {
     pub catalog: CatalogRelease,
     pub source_commit: String,
     pub art_commit: String,
+    pub scenes: Vec<SpatialSceneBudget>,
+    /// Sum across theme scenes, including a shared ground once per scene.
     pub scenery_bytes: u64,
     pub scenery_pixels: u64,
     pub scenery_within_budget: bool,
+}
+#[derive(Clone, Debug)]
+pub struct SpatialSceneBudget {
+    pub theme_id: String,
+    pub bytes: u64,
+    pub pixels: u64,
+    pub within_budget: bool,
 }
 fn ensure(value: bool) -> Result<(), Error> {
     if value {
@@ -148,14 +162,12 @@ fn load(
     let binding: Binding = serde_json::from_slice(&index).map_err(invalid)?;
     ensure(
         binding.format == "MCR_SOURCE_BOUND_SPATIAL_RELEASE"
-            && binding.version == 1
+            && binding.version == 2
             && revision(&binding.source_commit)
             && revision(&binding.art_commit)
             && revision(&binding.tilemap_commit)
-            && !binding.scene_sources.is_empty()
-            && !binding.runtime_resources.is_empty()
-            && binding.scene_sources.len() <= 32
-            && binding.runtime_resources.len() <= 32,
+            && !binding.scenes.is_empty()
+            && binding.scenes.len() <= 3,
     )?;
     let map_bytes = read(map)?;
     super::json::parse(&map_bytes).map_err(invalid)?;
@@ -182,13 +194,6 @@ fn load(
             && proposal.geometry_hash == binding.geometry_hash
             && digest(&geometry) == binding.geometry_hash,
     )?;
-    let mut paths = BTreeMap::new();
-    paths.insert(
-        binding.geometry_source.path.clone(),
-        binding.geometry_source.sha256.clone(),
-    );
-    let scenery =
-        super::json::parse(&verify_file(root, &binding.scenery_source)?).map_err(invalid)?;
     let tiled =
         super::json::parse(&verify_file(root, &binding.tilemap_source)?).map_err(invalid)?;
     ensure(
@@ -196,30 +201,77 @@ fn load(
             && map_value["tilemap"]["path"] == binding.tilemap_source.path
             && map_value["tilemap"]["sha256"] == binding.tilemap_source.sha256,
     )?;
+    let mut names = std::collections::BTreeSet::new();
+    let mut visual_sets = std::collections::BTreeSet::new();
+    let mut scenes = Vec::new();
+    let (mut bytes, mut pixels) = (0u64, 0u64);
+    for scene in &binding.scenes {
+        ensure(
+            matches!(scene.theme_id.as_str(), "PARADE" | "REVENGE" | "DANGER")
+                && names.insert(scene.theme_id.clone())
+                && !scene.scene_sources.is_empty()
+                && scene.scene_sources.len() <= 32
+                && scene.runtime_resources.len() >= 2
+                && scene.runtime_resources.len() <= 32,
+        )?;
+        let mut atlas_hashes = scene
+            .runtime_resources
+            .iter()
+            .skip(1)
+            .map(|pin| pin.sha256.clone())
+            .collect::<Vec<_>>();
+        atlas_hashes.sort();
+        ensure(visual_sets.insert(atlas_hashes))?;
+        let budget = verify_scene(scene, root, &map_value, &tiled, &binding)?;
+        bytes = bytes
+            .checked_add(budget.bytes)
+            .ok_or(Error::ReleaseUnavailable)?;
+        pixels = pixels
+            .checked_add(budget.pixels)
+            .ok_or(Error::ReleaseUnavailable)?;
+        scenes.push(budget);
+    }
+    let within_budget = scenes.iter().all(|scene| scene.within_budget);
+    let candidate = SourceBoundSpatialCandidate {
+        catalog,
+        source_commit: binding.source_commit.clone(),
+        art_commit: binding.art_commit.clone(),
+        scenes,
+        scenery_bytes: bytes,
+        scenery_pixels: pixels,
+        scenery_within_budget: within_budget,
+    };
+    Ok((candidate, binding))
+}
+fn verify_scene(
+    scene: &SceneBinding,
+    root: &Path,
+    map: &Value,
+    tiled: &Value,
+    binding: &Binding,
+) -> Result<SpatialSceneBudget, Error> {
+    let mut paths = std::collections::BTreeSet::new();
+    for pin in [
+        &binding.geometry_source,
+        &binding.tilemap_source,
+        &scene.scenery_source,
+    ] {
+        ensure(paths.insert(pin.path.clone()))?;
+    }
+    let scenery =
+        super::json::parse(&verify_file(root, &scene.scenery_source)?).map_err(invalid)?;
     validate_tiled(
-        &tiled,
-        &map_value["geometry"],
+        tiled,
+        &map["geometry"],
         &[serde_json::json!({"texture": {
             "width_px": scenery["ground"]["width_px"], "height_px": scenery["ground"]["height_px"],
             "path": scenery["ground"]["path"]
         }})],
     )?;
-    ensure(
-        paths
-            .insert(
-                binding.tilemap_source.path.clone(),
-                binding.tilemap_source.sha256.clone(),
-            )
-            .is_none(),
-    )?;
-    ensure(
-        paths
-            .insert(
-                binding.scenery_source.path.clone(),
-                binding.scenery_source.sha256.clone(),
-            )
-            .is_none(),
-    )?;
+    for pin in &scene.scene_sources {
+        ensure(paths.insert(pin.path.clone()))?;
+        verify_file(root, pin)?;
+    }
     let descriptors = std::iter::once(&scenery["ground"])
         .chain(
             scenery["atlases"]
@@ -228,21 +280,17 @@ fn load(
                 .iter(),
         )
         .collect::<Vec<_>>();
-    ensure(descriptors.len() == binding.runtime_resources.len())?;
-    for pin in &binding.scene_sources {
-        ensure(paths.insert(pin.path.clone(), pin.sha256.clone()).is_none())?;
-        verify_file(root, pin)?;
-    }
+    ensure(descriptors.len() == scene.runtime_resources.len())?;
     let (mut bytes, mut pixels) = (0u64, 0u64);
-    for (pin, descriptor) in binding.runtime_resources.iter().zip(descriptors) {
+    for (pin, descriptor) in scene.runtime_resources.iter().zip(descriptors) {
         ensure(
-            descriptor["path"] == pin.path
+            paths.insert(pin.path.clone())
+                && descriptor["path"] == pin.path
                 && descriptor["sha256"] == pin.sha256
                 && descriptor["bytes"] == pin.bytes
                 && descriptor["width_px"] == pin.width_px
                 && descriptor["height_px"] == pin.height_px,
         )?;
-        ensure(paths.insert(pin.path.clone(), pin.sha256.clone()).is_none())?;
         let raw = verify_file(
             root,
             &FilePin {
@@ -263,15 +311,12 @@ fn load(
             )
             .ok_or(Error::ReleaseUnavailable)?;
     }
-    let candidate = SourceBoundSpatialCandidate {
-        catalog,
-        source_commit: binding.source_commit.clone(),
-        art_commit: binding.art_commit.clone(),
-        scenery_bytes: bytes,
-        scenery_pixels: pixels,
-        scenery_within_budget: bytes <= SCENERY_BUDGET && pixels <= SCENERY_BUDGET,
-    };
-    Ok((candidate, binding))
+    Ok(SpatialSceneBudget {
+        theme_id: scene.theme_id.clone(),
+        bytes,
+        pixels,
+        within_budget: bytes <= SCENERY_BUDGET && pixels <= SCENERY_BUDGET,
+    })
 }
 /// Inspects real source/resource bytes and the owning canonical map domain.
 /// This type deliberately does not contain a ValidatedProductRelease.
@@ -301,29 +346,16 @@ pub(super) fn validate_product(
     let themes = doc["theme_manifests"]
         .as_array()
         .ok_or(Error::ReleaseUnavailable)?;
-    let supplied_scenery =
-        super::json::parse(&verify_file(root, &binding.scenery_source)?).map_err(invalid)?;
-    let parade = themes
-        .iter()
-        .find(|t| t["theme_id"] == "PARADE")
-        .ok_or(Error::ReleaseUnavailable)?;
-    ensure(parade["scenery"] == supplied_scenery)?;
-    let mut scenery_resources = BTreeMap::new();
-    for theme in themes {
+    ensure(binding.scenes.len() == 3 && themes.len() == 3)?;
+    for scene in &binding.scenes {
+        let supplied =
+            super::json::parse(&verify_file(root, &scene.scenery_source)?).map_err(invalid)?;
+        let theme = themes
+            .iter()
+            .find(|theme| theme["theme_id"] == scene.theme_id)
+            .ok_or(Error::ReleaseUnavailable)?;
+        ensure(theme["scenery"] == supplied)?;
         textures.push(&theme["texture"]);
-        let scenery = theme.get("scenery").ok_or(Error::ReleaseUnavailable)?;
-        for texture in std::iter::once(&scenery["ground"]).chain(
-            scenery["atlases"]
-                .as_array()
-                .ok_or(Error::ReleaseUnavailable)?
-                .iter(),
-        ) {
-            let path = texture["path"].as_str().ok_or(Error::ReleaseUnavailable)?;
-            let raw = resource(root, path)?;
-            verify_texture(texture, &raw)?;
-            ensure(texture["bytes"].as_u64() == Some(raw.len() as u64))?;
-            scenery_resources.insert(path.to_owned(), texture.clone());
-        }
     }
     for texture in textures {
         ensure(texture["image_state"] == "PROVIDED")?;
@@ -332,16 +364,6 @@ pub(super) fn validate_product(
             texture["path"].as_str().ok_or(Error::ReleaseUnavailable)?,
         )?;
         verify_texture(texture, &raw)?;
-    }
-    for pin in &binding.runtime_resources {
-        let texture = scenery_resources
-            .get(&pin.path)
-            .ok_or(Error::ReleaseUnavailable)?;
-        ensure(
-            texture["sha256"] == pin.sha256
-                && texture["width_px"] == pin.width_px
-                && texture["height_px"] == pin.height_px,
-        )?;
     }
     let tiled = &doc["map_manifest"]["tilemap"];
     ensure(tiled["resource_state"] == "PROVIDED")?;
