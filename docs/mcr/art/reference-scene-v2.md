@@ -385,3 +385,40 @@ production/release, live-server, physical, device or multiuser acceptance is
 claimed. Only the new source folder and this lane document change. Any consumer
 follow-up needs an explicit new exact lease because the former v10 owner has
 returned its implementation paths.
+
+## Independent architecture source correction
+
+QA06's immutable comparison pair `postfix-12a5-review/compare-map.png`, SHA
+`f2bcae9c2dd87f75d19c59c20e1f2c82c68e3a4de9290bb1debc6ffde28b3338`,
+confirms that the published12a5d394 baseline still has low, roof-heavy venue
+forms and sparse masses relative to the target. This is a source-art finding;
+the separately assigned World viewport correction and MAP layout-v2 adoption
+do not resolve it by themselves. The QA pair is not evidence for either new
+patch. Full reference fidelity remains open.
+
+Named BackendSL allocation ART-ARCH-SOURCE-01 allowed exactly one cloud imagegen
+sheet plus a byte-exact owned copy and small metadata, hard128MiB net peak,
+without browser/native/atlas output. Own immediate pre-call capacity was
+10,962,501,632B, above the8GiB+128MiB guard. Additive `architecture-v2/` now
+retains an original1254×1254 RGBA sheet:2,759,982B, SHA
+`ef8f0a5c05702940bae39b0e4661f6a5223f8afd1e351a96f9d28186e0d4769a`.
+The old sheet and target are reference inputs only; their bytes are unchanged.
+The final prompt and built-in generation provenance are recorded beside it.
+
+Actual visual inspection finds two visible façade floors in the first three
+rows and three in `west_hall`, preserving the existing four frame identities
+and three era palettes. Reproducible source analysis finds12 separate major
+alpha cores, none touching sheet edges. Faint raw sub32-alpha residue reaches
+the left/bottom sheet edges; it is retained in the original and disclosed.
+Proposed crops enclose each core with2px margins. No repaint, alpha cleanup,
+packing or raster derivative was performed. Actual façades in several rows
+are narrower than requested; projected uniform letterboxing is recorded,
+not presented as a map-render or fidelity pass.
+
+Only the new source folder and this ART document change. All canonical geometry,
+feet, original source/character packs, resources, runtime and release bindings
+remain frozen. Atlas/native composition, frame occupancy, occlusion, actual
+consumer adoption and mobile target comparisons are **NOT_RUN**. These require
+separate resource allocations and exact consumer ownership. The original goal
+metadata remains **BLOCKED**, reused without reset or false completion while
+explicitly resumed source corrections proceed.
