@@ -48,6 +48,9 @@ pub(super) fn intro_route(
 }
 
 pub(super) fn request(request: &ProductRequest, expected: Operation) -> Result<(), Status> {
+    if request.http_target.ends_with('?') {
+        return Err(invalid());
+    }
     match expected {
         Operation::Intro(operation) => intro_request(request, operation),
         Operation::Notification(operation)

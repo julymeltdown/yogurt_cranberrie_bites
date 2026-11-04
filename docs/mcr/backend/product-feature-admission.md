@@ -30,6 +30,8 @@ DTO, authority constructor, dependency or generated artifact was introduced.
 Intro adds only missing wire-shape checks at Product admission: JSON top-level
 and age bounds must be objects, UTC expiry strings must end in `Z`, and decoded
 query controls/length are rejected before the existing parser trims `q`.
+Both feature families reject a bare trailing query separator; the underlying
+Notification parser otherwise treats it as an absent query.
 The existing Product form decoder provides lexical validation; the original
 query is independently passed to the feature parser without recursively
 decoding it or replacing signed bytes. Command bytes go to the real typed
