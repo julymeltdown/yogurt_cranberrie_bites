@@ -116,6 +116,11 @@ async fn main() -> anyhow::Result<()> {
     let mut notification_target = None;
     let mut feed_callback = None;
     let mut social_delivery = None;
+    // Populated only by the incumbent configured Social runtime. The single
+    // deletion composer owns consuming this typed handle and mounting Apply.
+    let mut deletion_sharing_publisher: Option<
+        std::sync::Arc<dyn concert_service::social_live::invalidation::SocialPolicyPublisher>,
+    > = None;
     let mut world_transport = None;
     let mut world_local = None;
     let participant_runtime = participant_settings
@@ -154,6 +159,7 @@ async fn main() -> anyhow::Result<()> {
                             let policy = config::social_policy_runtime::SocialWorldPolicy::compose(
                                 pool.clone(),
                             );
+                            deletion_sharing_publisher = Some(policy.publisher.clone());
                             let (sender, receiver) = tokio::sync::oneshot::channel();
                             social_delivery = Some(
                                 config::social_delivery::SocialDeliveryRuntime::new(
