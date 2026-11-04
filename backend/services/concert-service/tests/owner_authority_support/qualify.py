@@ -21,7 +21,8 @@ OWNERS = ("auth", "friend", "concert")
 CASES = ("native::both_owners_exclude_writers_through_actual_scope_settlement",
          "native::full_page_and_callback_drain_obey_original_scope",
          "native::registered_actual_transaction_quarantines_until_native_abort",
-         "native::cancelled_unexposed_acquisition_recovers_from_actual_root_proof")
+         "native::cancelled_unexposed_acquisition_recovers_from_actual_root_proof",
+         "native::subject_denial_never_masks_whole_scope_failure")
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()

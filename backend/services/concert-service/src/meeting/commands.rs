@@ -91,11 +91,11 @@ pub(crate) fn canonical(value: &Value) -> Result<CanonicalValue, CommandError> {
         ),
     })
 }
-struct BeaconProducer<'a, A> {
-    authority: &'a A,
-    actor: MeetingActor,
-    id: Uuid,
-    mutation: &'a BeaconMutation,
+pub(crate) struct BeaconProducer<'a, A> {
+    pub(crate) authority: &'a A,
+    pub(crate) actor: MeetingActor,
+    pub(crate) id: Uuid,
+    pub(crate) mutation: &'a BeaconMutation,
 }
 #[async_trait]
 impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
@@ -144,30 +144,24 @@ impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
             if value.owner_id != self.actor.actor {
                 return Err(CommandError::Denied);
             }
-            let expected_party = beacon::stored_fence(c, self.actor.event, target)
+            // An explicit owner replacement is authorized against the fresh new
+            // audience below, not a stale Read fence for superseded guidance.
+            // Reads retain their stored fence; revoke remains privacy-reducing.
+            if matches!(self.mutation, BeaconMutation::Revoke { .. }) {
+                grant(
+                    self.authority,
+                    c,
+                    AudienceQuery {
+                        actor: self.actor,
+                        owner: value.owner_id,
+                        audience: value.meeting.audience,
+                        expected_party: None,
+                        operation: MeetingOperation::Revoke,
+                    },
+                )
                 .await
                 .map_err(command_error)?;
-            grant(
-                self.authority,
-                c,
-                AudienceQuery {
-                    actor: self.actor,
-                    owner: value.owner_id,
-                    audience: value.meeting.audience,
-                    expected_party: if matches!(self.mutation, BeaconMutation::Revoke { .. }) {
-                        None
-                    } else {
-                        expected_party
-                    },
-                    operation: if matches!(self.mutation, BeaconMutation::Revoke { .. }) {
-                        MeetingOperation::Revoke
-                    } else {
-                        MeetingOperation::Read
-                    },
-                },
-            )
-            .await
-            .map_err(command_error)?;
+            }
         }
         let meeting = match self.mutation {
             BeaconMutation::Create(v) => Some((&v.meeting, MeetingOperation::Create)),

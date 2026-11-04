@@ -26,3 +26,4 @@ pub mod gift_live;
 pub mod party_live;
 
 pub use concert_application::age_verification;
+pub mod meeting_photo;

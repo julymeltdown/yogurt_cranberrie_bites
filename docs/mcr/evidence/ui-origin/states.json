@@ -1,0 +1,173 @@
+{
+  "candidate": "f0d0663a4d95361eea74040a8dee28598e9a7ff9",
+  "rows": [
+    {
+      "id": "route-error",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=/world/missing&anonymous=0",
+      "file": "snapshots/route-error.jpg",
+      "text": "Skip to content\nUNAVAILABLE\n−\n▾\nThis page is unavailable\n\nWe could not open this page. You can return safely and try another section.\n\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "report-query",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Freport%3FtargetType%3DUSER%26targetId%3D00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/report-query.jpg",
+      "text": "Skip to content\nREPORT\n−\n▾\n\nSTILL TAKING SHAPE\n\nReport is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "errors": []
+    },
+    {
+      "id": "primitives",
+      "path": "/src/shared/ui/__tests__/fixtures/preview.html",
+      "file": "snapshots/primitives.jpg",
+      "text": "MCR primitives\n\nInteraction fixture only. No account, network or world simulation.\n\nDraft title (required)\n\nA short name for your plan.\n\nOpen dialog\nOpen sheet\nOpen stacked dialogs\nBusy action\nShow notifications\nPlans\nUnavailable\nUpdates\nNo plans yet\nAdd your first plan.\nCould not load\nYour draft has been kept.\nTry again\nLoading fixture",
+      "errors": []
+    },
+    {
+      "id": "controls-layout",
+      "path": "/src/world/__tests__/controls-layout/preview.html",
+      "file": "snapshots/controls-layout.jpg",
+      "text": "TEST ONLY — local movement\n\nSynthetic geometry. No character art, server prediction or physical arrival.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.",
+      "errors": []
+    },
+    {
+      "id": "document-terms",
+      "path": "/src/features/public/__tests__/reference-target/preview.html?route=/legal/terms",
+      "file": "snapshots/document-terms.jpg",
+      "text": "Skip to content\nMCR\nConcert World\nSign in\n\nPUBLIC INFORMATION\n\nTerms\n\nSynthetic document preview for UI testing. This is not approved policy or operator contact information.\n\nVersion\nTEST-2026.11.03\nPublished\n03 Nov 2026\nEffective\n04 Nov 2026\n\nDates shown in Korea Standard Time.\n\nSynthetic UI qualification document\n\nSYNTHETIC_FE08_DOCUMENT — this text only tests layout, navigation and version presentation. It is not legal advice, approved terms, privacy policy, safety guidance or operator contact information.\n\nNo real retention duration, contact identity, venue directions or eligibility rule is stated by this fixture.\n\nOpen the synthetic privacy page\nBack to home\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDifferent eras. Same crowd.",
+      "errors": []
+    },
+    {
+      "id": "document-privacy",
+      "path": "/src/features/public/__tests__/reference-target/preview.html?route=/legal/privacy",
+      "file": "snapshots/document-privacy.jpg",
+      "text": "Skip to content\nMCR\nConcert World\nSign in\n\nPUBLIC INFORMATION\n\nPrivacy\n\nSynthetic document preview for UI testing. This is not approved policy or operator contact information.\n\nVersion\nTEST-2026.11.03\nPublished\n03 Nov 2026\nEffective\n04 Nov 2026\n\nDates shown in Korea Standard Time.\n\nSynthetic UI qualification document\n\nSYNTHETIC_FE08_DOCUMENT — this text only tests layout, navigation and version presentation. It is not legal advice, approved terms, privacy policy, safety guidance or operator contact information.\n\nNo real retention duration, contact identity, venue directions or eligibility rule is stated by this fixture.\n\nOpen the synthetic privacy page\nBack to home\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDifferent eras. Same crowd.",
+      "errors": []
+    },
+    {
+      "id": "document-safety",
+      "path": "/src/features/public/__tests__/reference-target/preview.html?route=/legal/safety",
+      "file": "snapshots/document-safety.jpg",
+      "text": "Skip to content\nMCR\nConcert World\nSign in\n\nPUBLIC INFORMATION\n\nSafety\n\nSynthetic document preview for UI testing. This is not approved policy or operator contact information.\n\nVersion\nTEST-2026.11.03\nPublished\n03 Nov 2026\nEffective\n04 Nov 2026\n\nDates shown in Korea Standard Time.\n\nSynthetic UI qualification document\n\nSYNTHETIC_FE08_DOCUMENT — this text only tests layout, navigation and version presentation. It is not legal advice, approved terms, privacy policy, safety guidance or operator contact information.\n\nNo real retention duration, contact identity, venue directions or eligibility rule is stated by this fixture.\n\nOpen the synthetic privacy page\nBack to home\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDifferent eras. Same crowd.",
+      "errors": []
+    },
+    {
+      "id": "document-contact",
+      "path": "/src/features/public/__tests__/reference-target/preview.html?route=/legal/contact",
+      "file": "snapshots/document-contact.jpg",
+      "text": "Skip to content\nMCR\nConcert World\nSign in\n\nPUBLIC INFORMATION\n\nContact\n\nSynthetic document preview for UI testing. This is not approved policy or operator contact information.\n\nVersion\nTEST-2026.11.03\nPublished\n03 Nov 2026\nEffective\n04 Nov 2026\n\nDates shown in Korea Standard Time.\n\nSynthetic UI qualification document\n\nSYNTHETIC_FE08_DOCUMENT — this text only tests layout, navigation and version presentation. It is not legal advice, approved terms, privacy policy, safety guidance or operator contact information.\n\nNo real retention duration, contact identity, venue directions or eligibility rule is stated by this fixture.\n\nOpen the synthetic privacy page\nBack to home\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDifferent eras. Same crowd.",
+      "errors": []
+    },
+    {
+      "id": "operations-summary",
+      "path": "/src/features/admin/event/__tests__/fixtures/preview.html?surface=summary",
+      "file": "snapshots/operations-summary.jpg",
+      "text": "SYNTHETIC FE38 FIXTURE ONLY\n\nFictional event, operator, clock and venue. No real publication.\n\nsummary\nevent\nplaces\naudit\nCONTROL ROOM\nRefresh event information\nOperational summary\nHealth\nDEGRADED\nOpen reports\n1\nPending jobs\n2\nOverview revision\n2\nSYNTHETIC operations event\nEvent\n00000000-0000-4000-8000-000000000002\nPhase\nDRAFT\nSettings revision\n2\n\nInputs remain a draft after refresh. Compare them with the current revision before reviewing another change.\n\nRead-only transition, freeze, archive, expiry and cleanup use the separate event closure job. No closure action runs here.\n\nCapability switches and limits\n\nSwitching off a feature must also be enforced by its owning server. Hidden controls alone do not disable a feature.\n\nparties\ngiveaways\nintros\nsocial\nmural\nBeacon lifetime (seconds)\nPickup grace (seconds)\nSocial grant lifetime (seconds)\nWall cooldown (milliseconds)\nReason for settings or phase change\nReview settings change\nReview phase change to OPEN",
+      "errors": []
+    },
+    {
+      "id": "operations-places",
+      "path": "/src/features/admin/event/__tests__/fixtures/preview.html?surface=places",
+      "file": "snapshots/operations-places.jpg",
+      "text": "SYNTHETIC FE38 FIXTURE ONLY\n\nFictional event, operator, clock and venue. No real publication.\n\nsummary\nevent\nplaces\naudit\nVENUE AND PLACES\n\nConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.\n\nWrite map revision: 7. The place revision below is separate from a catalog/map revision.\n\nRefresh places\nCurrent place review and closure\nPlace\tState\tReview\nSYNTHETIC landmark\nRevision 4\tOPEN\nVERIFIED\tReview SYNTHETIC landmark",
+      "errors": []
+    },
+    {
+      "id": "operations-audit",
+      "path": "/src/features/admin/event/__tests__/fixtures/preview.html?surface=audit",
+      "file": "snapshots/operations-audit.jpg",
+      "text": "SYNTHETIC FE38 FIXTURE ONLY\n\nFictional event, operator, clock and venue. No real publication.\n\nsummary\nevent\nplaces\naudit\nAUDIT LOG\n\nMinimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.\n\nSearch action metadata\nActor UUID\nOperation ID\nOutcome\nAll\nPENDING\nSUCCEEDED\nFAILED\nFrom (inclusive UTC)\nUntil (exclusive UTC)\nSearch audit log\nAction outcomes\nOperation\tOutcome\tDetails\nsetConcertSettings\n2026-11-04T03:59:59.000Z\tSUCCEEDED\tView audit entry",
+      "errors": []
+    },
+    {
+      "id": "moderation-members",
+      "path": "/src/features/admin/reports/__tests__/fixtures/preview.html?lane=members",
+      "file": "snapshots/moderation-members.jpg",
+      "text": "Event moderation\n\nMember review\n\nPrivate review. Use only the information needed for this action.\n\nSuspension applies only to this event. It does not delete an account or change access to other events.\n\nRefresh records\n\nThe request failed. No applied action has been confirmed.",
+      "errors": []
+    },
+    {
+      "id": "moderation-content",
+      "path": "/src/features/admin/reports/__tests__/fixtures/preview.html?lane=content",
+      "file": "snapshots/moderation-content.jpg",
+      "text": "Event moderation\n\nContent review\n\nPrivate review. Use only the information needed for this action.\n\nRefresh records\nContent review records\nRecord\tState\tReview\nPOST content\nRef 00000400 · v1\n\tVISIBLE\tReview\n00000000-0000-4000-8000-000000000400",
+      "errors": []
+    },
+    {
+      "id": "degraded-offline",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=offline",
+      "file": "snapshots/degraded-offline.jpg",
+      "text": "YOU ARE OFFLINE\n\nCheck your connection. Pickup and other actions are not queued here.\n\nPreviously shown world information may be out of date.\n\nRECONNECT\nRELOAD PAGE\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "degraded-reconnecting",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=reconnecting",
+      "file": "snapshots/degraded-reconnecting.jpg",
+      "text": "CONNECTING TO THE WORLD\n\nWaiting for a fresh world view. You can keep browsing.\n\nPreviously shown world information may be out of date.\n\nRELOAD PAGE\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "degraded-resync",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=resync",
+      "file": "snapshots/degraded-resync.jpg",
+      "text": "UPDATING THE WORLD\n\nLive movement is paused while the world catches up.\n\nPreviously shown world information may be out of date.\n\nRELOAD PAGE\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "degraded-suspended",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=suspended",
+      "file": "snapshots/degraded-suspended.jpg",
+      "text": "WORLD IS PAUSED\n\nThe world will recover when its viewport is visible again.\n\nPreviously shown world information may be out of date.\n\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "degraded-unavailable",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=unavailable",
+      "file": "snapshots/degraded-unavailable.jpg",
+      "text": "WORLD CONNECTION UNAVAILABLE\n\nA fresh world view could not be confirmed. You can keep browsing or reload.\n\nPreviously shown world information may be out of date.\n\nRELOAD PAGE\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "degraded-maintenance",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=maintenance",
+      "file": "snapshots/degraded-maintenance.jpg",
+      "text": "WORLD IS UNDER MAINTENANCE\n\nLive world access is temporarily unavailable. You can return to home.\n\nPreviously shown world information may be out of date.\n\nRELOAD PAGE\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "degraded-version",
+      "path": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?notice=version",
+      "file": "snapshots/degraded-version.jpg",
+      "text": "RELOAD TO UPDATE THE WORLD\n\nThis world version cannot be used for live actions. Reload to get the current version.\n\nPreviously shown world information may be out of date.\n\nRELOAD PAGE\nBack to world\nBack to home",
+      "errors": []
+    },
+    {
+      "id": "reference-scene-current",
+      "path": "/src/app/world-entry/__tests__/reference-scene-root/preview.html",
+      "file": "snapshots/reference-scene-current.jpg",
+      "text": "Skip to content\nScene fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nParade selected.\n\nInteract: Virtual stage\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "errors": []
+    },
+    {
+      "id": "world-revenge",
+      "path": "/e2e/reference-integrated/whole/preview.html",
+      "file": "snapshots/world-revenge.jpg",
+      "text": "Skip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "errors": []
+    },
+    {
+      "id": "world-parade",
+      "path": "/e2e/reference-integrated/whole/preview.html",
+      "file": "snapshots/world-parade.jpg",
+      "text": "Skip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nParade selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "errors": []
+    },
+    {
+      "id": "world-danger",
+      "path": "/e2e/reference-integrated/whole/preview.html",
+      "file": "snapshots/world-danger.jpg",
+      "text": "Skip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nDanger selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "errors": []
+    }
+  ]
+}
