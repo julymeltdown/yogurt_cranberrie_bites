@@ -4,6 +4,43 @@ Status: IN_PROGRESS. Combined component qualification passed at `34fa7a6d`.
 Full production composition, sustained IN01 and project acceptance remain open.
 Existing immutable qualifications retain their exact source pins.
 
+## Current-published World replay after CR10
+
+The [fresh World receipt](root-world-eb02-attempt10.json) records published backend
+`eb02a2e1`, qualified binaries `34fa7a6d` and actual browser App `e2375727`.
+All 3,524 recorded inputs remained unchanged, including actual baked migration
+paths. Genuine signup, verification, login, C03 and the two-principal native World
+probe passed before the browser received fresh private inputs.
+
+Browser attempt ten passed 91.4 seconds with two live players, real transport-cut
+recovery, peer withdrawal, a new ticket/stream, the same canvas, and one active
+Phaser instance and World socket per context. Fresh login, room entry, movement,
+six panels and theme changes passed. The committed consumer packet is
+`0793aaa20cfe2c4741fa5a9367fde6c43fbb758c`; its report hash is in the receipt.
+
+IN01 remains incomplete. Actor A received two actual GET `/me` 504 responses at
+07:28:57.125Z and 07:28:57.171Z; the character editor offered no choices and sent
+no avatar PUT. Actor B's later `/me` returned 200. Response bodies were not
+retained, so there is no evidence of a malformed successful DTO. Existing logs
+do not identify the timed-out stage. A read-only owned-database snapshot at
+07:31:41Z found no prepared transactions or active waiters, all 19 Auth/Friend
+scopes completed and settled, 17 serialized/delivered roots finished and two
+unserialized failed roots finished. This differs from the earlier incident.
+
+Expiry-triggered refresh was NOT_RUN: a fresh login's actual 900-second access
+lifetime exceeded the remaining window, and neither a one-shot 401 control nor
+an App reload-resume path existed. No clocks, TTLs or tokens were changed. A
+separate finite allocation must cover genuine access expiry and refresh after
+the actual `/me` availability prerequisite is resolved.
+
+The browser fully released its resources at 07:31:23Z. The backend ended normally
+at its original expiry, 07:36:38.785173Z, with exit zero, graceful Concert stop,
+cleanup PASS, its exact owned PostgreSQL root absent and owner process absent.
+Maximum sampled whole additional allocation was 143,589,376 bytes below the
+1.5 GiB bound. No target was accessed, prepared transaction manually settled,
+lease extended or retry silently launched. Cleanup does not accept the failed
+customization flow or prove recovery.
+
 ## Current qualified checkpoint
 
 The [combined receipt](root-native-34fa7a6d.json) records 18 frozen Rust artifacts,

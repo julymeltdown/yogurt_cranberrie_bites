@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "status": "IN_PROGRESS",
+  "scope": "Fresh current-published real Auth/C03/World startup; sustained browser tracked separately",
+  "offer": "IN01-CURRENT-WORLD-EB02-202611040716Z",
+  "runtime_source": "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc",
+  "qualified_binary_source": "34fa7a6d60f6e771f63db54f4a91e8fd1ebf2f8c",
+  "frontend_candidate": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+  "accepted_at": "2026-11-04T07:18:19.740394+00:00",
+  "absolute_deadline": "2026-11-04T07:38:19.740394+00:00",
+  "descriptor_expires_at": "2026-11-04T07:36:38.211875+00:00",
+  "descriptor_sha256": "5daa2d88650c9c4045440860561e42454e3d68ac7b8297bb720bb2804b746570",
+  "source_equivalence": {
+    "recorded_pins": 3524,
+    "all_recorded_inputs_unchanged": true,
+    "actual_6_peers_and_concert_hashes_match": true,
+    "live_baked_migration_paths_match": true,
+    "backend_contracts_source_diff_eb02_to_e237": "ZERO"
+  },
+  "startup": {
+    "c03_database": {
+      "root_delivery_16": "PASS",
+      "profile_commit_2": "PASS",
+      "concert_native_commit_2": "PASS",
+      "auth_settlement_16": "PASS",
+      "friend_settlement_16": "PASS",
+      "auth_pending_participants_0": "PASS",
+      "friend_pending_participants_0": "PASS",
+      "no_prepared_transactions": "PASS"
+    },
+    "c03_database_observed": {
+      "root_delivery_16": "16",
+      "profile_commit_2": "2",
+      "concert_native_commit_2": "2",
+      "auth_settlement_16": "16",
+      "friend_settlement_16": "16",
+      "auth_pending_participants_0": "0",
+      "friend_pending_participants_0": "0",
+      "no_prepared_transactions": "0"
+    },
+    "world_two_client": "PASS",
+    "world_probe": {
+      "result": "PASS",
+      "scope": "public-two-principal-world",
+      "phase": "complete",
+      "credential_values_recorded": false,
+      "cleanup": {
+        "opened": 2,
+        "close_acknowledged": 2
+      },
+      "actor_count": 2,
+      "mutual_membership": "PASS",
+      "movement": "PASS",
+      "consumed_input_ack": 2,
+      "source_bound_speed_check": "PASS; 8px/serverTick (BE12), not a negotiated prediction profile",
+      "peer_observed_removal": "PASS",
+      "stream_frames": [
+        4,
+        4
+      ]
+    },
+    "world_database": {
+      "issued_tickets_2": "PASS",
+      "consumed_tickets_2": "PASS",
+      "released_memberships_0": "PASS",
+      "no_prepared_transactions": "PASS"
+    },
+    "world_database_observed": {
+      "issued_tickets_2": "2",
+      "consumed_tickets_2": "2",
+      "released_memberships_0": "0",
+      "no_prepared_transactions": "0"
+    }
+  },
+  "browser_in01": {
+    "status": "INCOMPLETE",
+    "frontend_source": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+    "consumer_history_merge": "05b9f9aeca4135042c1420081fe02fa6019d0e70",
+    "run": "attempt-10",
+    "exit_code": 1,
+    "started_at": "2026-11-04T07:28:46.622Z",
+    "finished_at": "2026-11-04T07:30:31.799Z",
+    "sustained_two_players_seconds": 91.4,
+    "sustained_world": "PASS",
+    "transport_cut_reconnect_new_ticket_stream_same_canvas": "PASS",
+    "one_phaser_one_active_world_socket_per_context": "PASS",
+    "fresh_login_room_movement_panels_theme": "PASS",
+    "customization": "FAIL; two actorA GET/me 504, no save PUT; actorB GET/me 200",
+    "failed_reads_at": [
+      "2026-11-04T07:28:57.125Z",
+      "2026-11-04T07:28:57.171Z"
+    ],
+    "refresh": "NOT_RUN; default900s access TTL outside remaining window, no one-shot401fault or App reload resume",
+    "response_payloads": "NOT_CAPTURED; malformed200 DTO not established",
+    "browser_resource_release": "2026-11-04T07:31:23Z; consumer confirmed ownChrome/Vite/profile/cache/temp/link/processes absent and5173free",
+    "consumer_evidence_relative": "docs/mcr/evidence/in01-world-browser/attempt-10/report.json",
+    "limitations": "Exact timeout stage unresolved; no additional replay, token injection, deadline reset or database mutation",
+    "handoff_commit": "0793aaa20cfe2c4741fa5a9367fde6c43fbb758c",
+    "report_sha256": "213192e48b867963b155318b266b189f781993b3649abe4fbd7c367ed435bea3"
+  },
+  "cleanup": {
+    "result": "PASS",
+    "runtime_exit_code": 0,
+    "guard_abort": null,
+    "cleanup_notes": [],
+    "all_recorded_owned_roots_absent": true,
+    "runtime_owner_absent": true,
+    "concert_stop": {
+      "pid": 21188,
+      "forced": false,
+      "exit_code": 0
+    },
+    "finished_at": "2026-11-04T07:36:38.785173+00:00",
+    "max_sampled_whole_additional": 143589376,
+    "hard_whole_bytes": 1610612736,
+    "fixed_target_growth": 0,
+    "sampling_limit": "Sampled allocation; no released target read, no peak inferred between samples",
+    "settlement_credit": "Cleanup is not recovery or settlement evidence"
+  },
+  "limits": {
+    "hard_whole_bytes": 1610612736,
+    "target_access": "NONE",
+    "runtime_extension": "NONE",
+    "prepared_rollback": "NONE",
+    "expiry_driven_refresh": "NOT_RUN; live Auth defaults900s, no401fault controller",
+    "future_refresh_requirement": "Separate fresh finite allocation long enough for genuine900s access expiry after actual/me504 prerequisite is resolved; no shorterTTL/synthetic401/clock change"
+  },
+  "guard_sha256": "30a244f4da61e909e90b0e47b528fe840653b7c4784f6b15c079a71e2175f228",
+  "created_at": "2026-11-04T07:27:51.261356+00:00",
+  "after_browser_readonly": {
+    "observed_at": "2026-11-04T07:31:41.515342+00:00",
+    "scope": "owned exact live cluster readonly aggregate diagnostics; no rollback/retry/SQLmutation",
+    "owner_pid": 20500,
+    "pg_pid": 20703,
+    "prepared": [],
+    "activity": [
+      {
+        "datname": "mcr_api_gateway",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 6
+      },
+      {
+        "datname": "mcr_auth",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 4
+      },
+      {
+        "datname": "mcr_concert",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 4
+      },
+      {
+        "datname": "mcr_friend",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 1
+      },
+      {
+        "datname": "mcr_notification",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 1
+      },
+      {
+        "datname": "mcr_post",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 5
+      },
+      {
+        "datname": "mcr_profile",
+        "state": "idle",
+        "wait_event_type": "Client",
+        "wait_event": "ClientRead",
+        "n": 2
+      }
+    ],
+    "root_phases": [
+      {
+        "phase": "ROOT_FINISHED",
+        "serialized": false,
+        "delivered": false,
+        "n": 2
+      },
+      {
+        "phase": "ROOT_FINISHED",
+        "serialized": true,
+        "delivered": true,
+        "n": 17
+      }
+    ],
+    "mcr_auth_leases": [
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "n": 19
+      }
+    ],
+    "mcr_auth_participants": [
+      {
+        "state": "COMMITTED",
+        "n": 8
+      },
+      {
+        "state": "ABORTED",
+        "n": 25
+      }
+    ],
+    "mcr_friend_leases": [
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "n": 19
+      }
+    ],
+    "mcr_friend_participants": [
+      {
+        "state": "COMMITTED",
+        "n": 8
+      },
+      {
+        "state": "ABORTED",
+        "n": 25
+      }
+    ]
+  },
+  "after_browser_readonly_sha256": "499d828cfa8019482204246314ed468a14f908701e3da27b7f47b87e96b60732",
+  "native_driver_result": "PARTIAL",
+  "native_driver_browser_field": {
+    "value": "NOT_RUN",
+    "scope": "Driver covers initial native probes; separate consumer ran actual browser and failed customization"
+  },
+  "evidence_sha256": {
+    "report.ready.json": "07ed58c1be35d841675e94d5e36291b99c196466d28d6744e1ea30f6078fb29a",
+    "report.json": "142972384a18696275755ed0e7c317df035e336944800fba9331bd60fc33be3e",
+    "runtime-guard.json": "87ff0a7b22a406c94371ff49a5723f751bbd20711e4168f738f5e4675034b319",
+    "offer-acceptance.json": "91565854872eef9aa492b33eb778ed7cb1f860e321c78272321083414ff85215"
+  }
+}
