@@ -132,7 +132,7 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
   const recovery = !!state.command || state.availability !== 'writable' || snapshot?.state !== 'EDITABLE'
   return <section className="mcr-mural" aria-label="Wall editor"><ConcertWindow title="Wall" icon="wall">
     {snapshot && <>
-      <h3 className="mcr-mural__heading">{snapshot.width} × {snapshot.height} PIXEL WALL</h3>
+      <h3 className="mcr-mural__heading">THE BLACK PARADE</h3>
       <div className="mcr-mural__workspace">
         <div ref={surface} className={`mcr-mural__surface mcr-mural__surface--${tool}`} role="group" aria-label="Mural pixel preview" aria-describedby={`${id}-help ${id}-keyboard`} tabIndex={0}
           onKeyDown={keyboard} onContextMenu={e => { e.preventDefault(); input.cancel() }}
@@ -178,7 +178,7 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
     {recovery && <div className="mcr-mural__recovery">{state.command && <button type="button" disabled={busy} onClick={() => void controller.check()}>Check original command</button>}
       {onRefresh && <button type="button" disabled={busy} onClick={onRefresh}>Refresh confirmed wall</button>}</div>}
     {snapshot && <details className="mcr-mural__details"><summary>Coordinates &amp; help</summary>
-      <p id={`${id}-help`}>Pencil previews one pixel; drag to pan. Pan mode never selects. Only Confirm pixel sends a placement.</p>
+      <p id={`${id}-help`}>This wall is {snapshot.width} × {snapshot.height} pixels. Pencil previews one pixel; drag to pan. Pan mode never selects. Only Confirm pixel sends a placement.</p>
       <p id={`${id}-keyboard`}>In Pencil mode, arrow keys select a pixel. In Pan mode, arrow keys move the view. Escape cancels. Coordinates work without the canvas.</p>
       <fieldset disabled={!controller.canEdit()}><legend>Pixel coordinates · 0–127</legend>
         <form className="mcr-mural__coordinates" onSubmit={e => { e.preventDefault();
