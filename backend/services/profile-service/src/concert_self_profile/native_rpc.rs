@@ -76,22 +76,16 @@ async fn actual_owner_read_track_and_native_abort_settlement() -> anyhow::Result
         )?
         .connect()
         .await?;
-    let mut auth = lease::auth_owner_authority_service_client::AuthOwnerAuthorityServiceClient::new(
-        root_signer.client(
-            InterceptedService::new(auth_channel, interceptor()?),
-            Workload::Auth,
-        )?,
+    let mut auth = lease::auth_owner_authority_service_client::AuthOwnerAuthorityServiceClient::with_interceptor(
+        root_signer.client(auth_channel,Workload::Auth)?,interceptor()?,
     );
     let mut friend =
-        lease::friend_owner_authority_service_client::FriendOwnerAuthorityServiceClient::new(
-            root_signer.client(
-                InterceptedService::new(friend_channel, interceptor()?),
-                Workload::Friend,
-            )?,
+        lease::friend_owner_authority_service_client::FriendOwnerAuthorityServiceClient::with_interceptor(
+            root_signer.client(friend_channel,Workload::Friend)?,interceptor()?,
         );
     let mut profile =
-        proto::concert_self_profile_service_client::ConcertSelfProfileServiceClient::new(
-            self_signer.client(InterceptedService::new(profile_channel, interceptor()?)),
+        proto::concert_self_profile_service_client::ConcertSelfProfileServiceClient::with_interceptor(
+            self_signer.client(profile_channel),interceptor()?,
         );
     let binding = lease::GuardBinding {
         actor_id: actor.to_string(),

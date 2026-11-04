@@ -18,7 +18,7 @@ use prost::Message;
 use std::time::Duration;
 use tonic::{service::interceptor::InterceptedService, transport::Channel, Status};
 type Transport =
-    ActorDelegationClient<InterceptedService<Channel, ServiceIdentityClientInterceptor>>;
+    InterceptedService<ActorDelegationClient<Channel>, ServiceIdentityClientInterceptor>;
 #[derive(Clone)]
 pub(super) struct Coordinator {
     client:decision::concert_participant_decision_service_client::ConcertParticipantDecisionServiceClient<Transport>,
@@ -43,10 +43,10 @@ impl Coordinator {
             edge_budget("profile-self->concert-decision"),
         )?;
         let transport = InterceptedService::new(
-            channel,
+            signer.client(channel),
             ServiceIdentityClientInterceptor::new(Workload::Profile, token)?,
         );
-        Ok(Self{client:decision::concert_participant_decision_service_client::ConcertParticipantDecisionServiceClient::new(signer.client(transport))})
+        Ok(Self{client:decision::concert_participant_decision_service_client::ConcertParticipantDecisionServiceClient::new(transport)})
     }
     pub async fn query(
         &self,
