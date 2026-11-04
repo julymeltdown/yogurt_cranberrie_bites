@@ -159,7 +159,7 @@ def check_schemas(documents):
         for node in nodes(doc):
             if isinstance(node, dict) and "$ref" in node:
                 registry.resolver(doc["$id"]).lookup(node["$ref"])
-    return sum(len(doc["$defs"]) for doc in documents)
+    return sum(len(doc.get("$defs", {})) for doc in documents)
 
 
 def fixture_checks(modules, indexes, fixture_data, inventory):
@@ -239,6 +239,8 @@ def fixture_checks(modules, indexes, fixture_data, inventory):
     inventory.append({"file": path, "family": "asset-semantics", "cases": len(cases), "result": "PASS",
                       "case_inventory": [{"name": c["name"], "expected": "accept" if c["valid"] else "reject",
                                           "result": "PASS"} for c in cases]})
+    motion = load("qa01_c07_motion", "scripts/mcr/contracts/c07/motion_coverage.py")
+    motion.check_motion_fixtures(ROOT, read, fixture_data, inventory)
     covered = {entry["file"] for entry in inventory}
     actual = set(fixture_data) - {f"contracts/fixtures/{f}/index.json" for f in indexes}
     require(covered == actual, "unclassified fixture files: " + str(sorted(covered ^ actual)))
@@ -326,6 +328,11 @@ def run(args, report):
     require(pins["inputs"] == hashes, "pinned input drift: " + str(sorted(k for k in set(hashes) | set(pins["inputs"]) if hashes.get(k) != pins["inputs"].get(k))))
     require(pins["operations"] == {k: list(v) for k, v in sorted(expected.items())}, "frozen operation drift")
     source_paths = [p for f in FAMILIES for p in sorted((ROOT / f"contracts/{f}/v1").glob("*.schema.json"))]
+    source_paths.extend(ROOT / name for name in (
+        "contracts/assets/v2/avatar-config.schema.json",
+        "contracts/assets/v2/avatar-manifest.schema.json",
+        "contracts/assets/v2/reviewed/avatar-config.schema.json",
+        "contracts/assets/v2/reviewed/avatar-manifest.schema.json"))
     require(all(any(p.parent.parent.name == f for p in source_paths) for f in FAMILIES), "missing schema family")
     documents = [read(p) for p in source_paths]
     fixture_data = {relative(p): read(p) for p in fixture_paths()}

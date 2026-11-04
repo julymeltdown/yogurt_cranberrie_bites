@@ -131,5 +131,37 @@ class C07NamespaceTests(unittest.TestCase):
 
 
 
+class C07MotionCoverageTests(unittest.TestCase):
+    def test_candidate_and_reviewed_fixtures_are_explicitly_classified(self):
+        motion = coverage.load("qa01_motion_regression", "scripts/mcr/contracts/c07/motion_coverage.py")
+        fixtures = {coverage.relative(p): coverage.read(p) for p in
+                    (ROOT / "contracts/fixtures/assets/motion-v2").rglob("*.json")}
+        inventory = []
+        motion.check_motion_fixtures(ROOT, coverage.read, fixtures, inventory)
+        self.assertEqual({row["file"] for row in inventory}, set(fixtures))
+        for qualification in ("candidate_SCHEMA_ONLY", "reviewed_SCHEMA_ONLY"):
+            rows = [r for r in inventory if r["qualification"] == qualification]
+            self.assertEqual(sum(r["expected"] == "accept" for r in rows), 15)
+            self.assertEqual(sum(r["expected"] == "reject" for r in rows), 16)
+            positive = next(r["file"] for r in rows if r["expected"] == "accept")
+            negative = next(r["file"] for r in rows if r["expected"] == "reject")
+            tampered = dict(fixtures); tampered[positive] = {"__unknown": True}
+            with self.assertRaisesRegex(ValueError, "expectation mismatch"):
+                motion.check_motion_fixtures(ROOT, coverage.read, tampered, [])
+            tampered = dict(fixtures); tampered[negative] = fixtures[positive]
+            with self.assertRaisesRegex(ValueError, "expectation mismatch"):
+                motion.check_motion_fixtures(ROOT, coverage.read, tampered, [])
+
+    def test_root_only_schemas_are_checked_without_definitions(self):
+        motion = coverage.load("qa01_motion_roots", "scripts/mcr/contracts/c07/motion_coverage.py")
+        documents = [coverage.read(p) for p in motion.motion_schema_paths(ROOT)]
+        self.assertEqual(len(documents), 4)
+        self.assertEqual(sum("$defs" not in d for d in documents), 2)
+        self.assertGreater(coverage.check_schemas(documents), 0)
+        broken = dict(documents[0]); broken["type"] = "UNKNOWN_TYPE"
+        from jsonschema.exceptions import SchemaError
+        with self.assertRaises(SchemaError): coverage.check_schemas([broken])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
