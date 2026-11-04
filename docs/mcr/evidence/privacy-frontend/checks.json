@@ -149,5 +149,10 @@
       "beacon"
     ],
     "realProductShell": "NOT_RUN"
+  },
+  "publicationRetry": {
+    "reason": "serial peer-preserving reconciliation before publication",
+    "mergedRemote": "6f390a46e91d7eb89e4e1d25d5b1a59ccdab3b4d",
+    "qualifiedSourcePins": "all118 unchanged; no test rerun or new runtime claim"
   }
 }
