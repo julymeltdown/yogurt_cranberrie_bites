@@ -10,6 +10,14 @@ Preserved checkout: `/Users/lhs/Desktop/mcr-worktrees/fe-ref-auth-profile`. Fres
 
 The [harness documentation](../../../../frontend/e2e/privacy/README.md) describes executable commands and the private seed-plan format. All harness code is newly authored. Existing public client/contract modules, supplied fixture JSON and the retained synthetic meeting-beacon/places harness are imported read-only; their source hashes are recorded. No implementation source is copied or changed. No legacy rendering or art is reused. The test page has no new product styling.
 
+## Continuation: mounted private component qualification
+
+Source commit `ad5e2eb9038fba67c606f89705f1bd64a8d5dc50` adds **28 mounted component/role scenarios and 80 DOM assertions** against the actual social sharing, moderation, pickup and beacon components. Chrome executes explicit social reveal through the real button, observes authorized private text and pickup code, checks the evidence Blob URL assigned to an image element, and confirms removal after consent, suspension, context or authority loss and delayed responses. Checks include DOM text, attributes, input/textarea values, code removal and private image-element cleanup. Each fixture host is unmounted before completion. No rendered-image decoding is claimed.
+
+Native execution, strict transitive types and lint pass on that committed candidate. The native source record now pins **118** imported TypeScript/JSON/CSS and contract/harness files. The full domain ledger remains **175 cells = 112 fixture PASS / 63 UNSUPPORTED**. These mounted results are explicitly `SYNTHETIC_MOUNTED_COMPONENT_ONLY`; the authenticated product shell and real HTTP/WS-driven cache flow remain **NOT_RUN**. The earlier nine gate selftests are retained unchanged; this continuation did not change the live gate or its tests.
+
+The mounted host initially exposed two QA setup issues: React DOM's CommonJS client entry needed explicit prebundling/automatic JSX, and mount-triggered pickup reads had to be joined before assertions. Both fixes are confined to the QA harness. No production defect or source change is asserted. A prior receipt's stale “119 unsupported” limitation is corrected to the current 63.
+
 ## Continuation: actual feature lifetime coverage
 
 The prior goal turn published the independent scaffold. This continuation adds source `43e657b1` (moderator evidence) and `e225f15f` (recipient and beacon lifetimes). The expanded native candidate is `e251a5af2845b990dce07820fd4971422d5fb80f`, after peer-preserving merge; it passes strict types and Chrome execution with **112 fixture PASS / 63 UNSUPPORTED** domain cells. This is progress toward original QA04, not its completion.
@@ -38,7 +46,7 @@ ProductRoot and social backend threads were polled during this continuation: run
 | Real gate's own tests | **9/9 PASS**. Missing setup, duplicate/missing principals/cells, unregistered operations/query, cross-event/malformed IDs, malformed body, mutation authorization, schema/status/no-store mismatch, private markers including JSON escapes, oversized bodies, empty-success false passes and published leak fixtures are exercised. Injected transport rows are explicitly labelled `SYNTHETIC_GATE_SELFTEST`. |
 | Real-service entry | Missing `MCR_QA04_REAL_PLAN` exits **2**, records **NOT_RUN**, and makes no service request. Default full gate refuses unavailable WS/cache setup before seed mutations. A future explicit HTTP-only run remains PARTIAL/exit 2. |
 
-The native runner intercepts actual `/api/` network dispatch as an error; its passing run records **zero actual API network calls** and **zero page errors**. It executes client objects in an isolated test shell, not the mounted product app, a deployed frontend or a physical mobile device. The chosen viewport is 390×844; this task changes no visual product surface.
+The native runner intercepts actual `/api/` network dispatch as an error; its passing run records **zero actual API network calls** and **zero page errors**. It executes actual client objects and 28 mounted feature-component scenarios in an isolated test shell. The authenticated product app, deployed frontend and physical mobile device remain unqualified. The chosen viewport is 390×844; this task changes no visual product surface.
 
 The SELF collection boundary matters: an active stranger/admin can correctly receive **200 with an empty own `/me/social-requests` collection**. Actual per-resource/per-actor expectations must come from the real seed catalog. A role name does not replace canonical Auth, event membership, block, suspension, expiry or consent checks. Expired and blocked scenarios are not real Auth/relationship qualification merely because the fixture bears those labels.
 
