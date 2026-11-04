@@ -1,0 +1,43 @@
+{
+  "status": "SOURCE_READY_NATIVE_PENDING",
+  "sourceCommit": "fe9269a1ea6fde054a8f2074bfc6bd4b2ce5f467",
+  "mergedParent": "8bb8141721e3b7093c8985138c988cbf1dc18eb7",
+  "publishedInput": "54e1325fce20e3abc98da50c68de0bd72dfd1a33",
+  "sourcePins": {
+    "docs/mcr/frontend/reference-scene-v5.md": "81de09c0eea7a979f73256e16c2c1e61d3d8e235179407db477340d9b196ed23",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/contracts.test.ts": "0e910a19b85a8a48ce4d9b6b3bb8ef9f3e0ad1a831d4d73cc6678f4167c90caa",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/native.mjs": "35268b28f3b32bbe04480e9a7c7154d212e5f6470496f9f58ab9e69bb3a11350",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.html": "6218d6246ad676d54bef02368359b33c82894caafd0b0d1adc9ffe511e2c095e",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "ef986573f544278ee891602305d56e7a0b72bd3f2cb6d886e454afa7088659db",
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "c12d25ec4f468ff46112b4021ea50aa02e8d30433990a9ec63320f27722a154c",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "6edc8834d182da57de8a07c0fde87bc154a2add7e1a7b7b4115b5aad84d5d819",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/camera.test.ts": "89f9db8d9e7112b9d6c4af43abf6e33a53959e22884e74648ab3c00cd0381d74",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/fixture.ts": "4704dae0aac11dcdfe4c9618738c3b063cad84e26991d1dd4caa1b7c2c13cebe",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/label-reference.js": "a596930fde934140a3c6b4c4adc029575bb256929b6348147484db64a3877255",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-labels.test.ts": "64e5b72f22853e86547862e7f9af4b49d5acd806f8a12ae3b1cf747f323cd770",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/model.test.ts": "5b2ee23623841ed6cee62c3d5c202252af2362295fe86746eff64f3638f0266d",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/native.html": "d4325f55c1978102ae9d9ed8c3f896c3807498f7573967ee77c253d461405ce5",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/native.mjs": "c5d34ec3cac7c6d1a4ac4414ce7401ea5f69b396a5976626e813c86c5a514cec",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/native.ts": "5ebd471c4c63aa114f128da6995ad35f1551d66ef2d716d43989ad81b2425fb9",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/theme-gate.test.ts": "4b6a5d34ef4997904e2326c4ab788f2b8731d97f88e23a056bb44b136edb591c",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/overview.ts": "919218fd36390ba379def36772c46e15946b877b72295753a71a885293768a8e",
+    "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py": "d5b5dcfb420efe9ec8ab540d066ee5af0b30f5663c2c4dce3697a88635e9f587",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "cf9cce688f3b2b17939ce52fbe67184577e4100486fd6d0b28b6514eb9fc01fd",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json": "e2dc864c635e6bfbe2ce70cfcdc6b5b4909278dc3a996c65934754c32481ddbe",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "20875536ef60e1a564d6bcb5a750a2b942f8d7b44eeca9cf6a2f13733f8a13c9",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f"
+  },
+  "limits": [
+    "No final compact-marker/caption or double-mask oracle native result yet",
+    "First native Root14PASS predates those final repairs",
+    "Native8GiB/resource-slot guard remains required",
+    "No production admission, live service, physical device or full fidelity claim"
+  ]
+}

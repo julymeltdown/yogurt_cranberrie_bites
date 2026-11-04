@@ -1,0 +1,233 @@
+{
+  "status": "PASS_SOURCE_FIXTURE_QUALIFICATION",
+  "candidate": "d5c0c9d188f68acb749d7ed2940706f34b2a8be1",
+  "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "tiledHash": "sha256:e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078",
+  "actualBackendSourceAllocation": 6,
+  "syntheticFixtureMapRevision": 7005,
+  "viewportWidths": [
+    360,
+    390,
+    430
+  ],
+  "eras": [
+    "REVENGE",
+    "PARADE",
+    "DANGER"
+  ],
+  "rendererCases": 3,
+  "rendererEraCycles": 2,
+  "rootCases": 16,
+  "fixes": [
+    "Authored584square World projection/fullstage/CulturePark sign framing",
+    "V10 initialfit/reset",
+    "32px compactunpaintedmarker ink inside44px targets/fullsemantics",
+    "Caption inownrow",
+    "Zoomcontrols positionagainstimageviewport andsixlabelrects",
+    "Closed/unavailable boundedstatusbadges"
+  ],
+  "limits": [
+    "Sourcefixture resolver andsyntheticHTTP/C05; no liveAuth/server/multiuser",
+    "OriginalUNREVIEWED provenance andproductiondenials preserved",
+    "No physicaliOS/Android/softwarekeyboard/notch/fidelityacceptance",
+    "Notreleasebound/notadmitted"
+  ],
+  "artifacts": {
+    "renderer-qualified/landmark1-390.jpg": {
+      "bytes": 125554,
+      "sha256": "8fec423c70a2525559471bcd4b2000aea8eeb4a6c7eb8c68435b9aab5a3ddfe5"
+    },
+    "renderer-qualified/landmark2-390.jpg": {
+      "bytes": 123032,
+      "sha256": "f859bcc282833172eb21e320b16956f7eb1acdfa1010454e3a0223aedd3275a0"
+    },
+    "renderer-qualified/landmark3-390.jpg": {
+      "bytes": 116505,
+      "sha256": "d0411cf6ad4e2c4bb28e34da002f10d16dd64d487bb521db592d49e2732b410e"
+    },
+    "renderer-qualified/map-danger-360.jpg": {
+      "bytes": 90180,
+      "sha256": "4653a95e2e89686be8ee440408b08a9d6ad617723b291e385507b42925339ab2"
+    },
+    "renderer-qualified/map-danger-390.jpg": {
+      "bytes": 102461,
+      "sha256": "38ddb5c9829743ce475d69a4dd1e31acb34df1902d8c5557152cf2bb7c572d2d"
+    },
+    "renderer-qualified/map-danger-430.jpg": {
+      "bytes": 122103,
+      "sha256": "2b6c7eeb2dd4b57a3b05217f8fe60d718e46d65f874c2c229134119cf9879cac"
+    },
+    "renderer-qualified/map-parade-360.jpg": {
+      "bytes": 88825,
+      "sha256": "c889f32c6a2596af37d654c8755854e5aa68262058f3d482ecab0b19a7c5136d"
+    },
+    "renderer-qualified/map-parade-390.jpg": {
+      "bytes": 100637,
+      "sha256": "ab95ba85d58d421b3ea64383bf661bfe57c7c9482250abe78be5a59f18579873"
+    },
+    "renderer-qualified/map-parade-430.jpg": {
+      "bytes": 120229,
+      "sha256": "297e95439404ccb2aacce5379f61798d3eb4709032dc38b3937065d54c67c706"
+    },
+    "renderer-qualified/map-revenge-360.jpg": {
+      "bytes": 88698,
+      "sha256": "cd076effc16c9c03847a3fd2a06d406d985d553fe6ffe91f62b21214e0236f2b"
+    },
+    "renderer-qualified/map-revenge-390.jpg": {
+      "bytes": 100555,
+      "sha256": "f1b7eed3d9f8b88c6e7492862aa0fcc8f95dd07bbf10af19005e57d90a216e64"
+    },
+    "renderer-qualified/map-revenge-430.jpg": {
+      "bytes": 120082,
+      "sha256": "9becfbdee1b2feadfe02ccb64d55991192a59d49f85cf60471ed993c99c03e94"
+    },
+    "renderer-qualified/native.json": {
+      "bytes": 135793,
+      "sha256": "e0249c9176b2800475ac7eff95f04bd558f5b68cecfbba176f4c4465d084f050"
+    },
+    "renderer-qualified/world-danger-360.jpg": {
+      "bytes": 117069,
+      "sha256": "c04eee8e49c5c49ec4c8ea8417ed4af5fd068a2cb4895a8c2cd2b6826e713e80"
+    },
+    "renderer-qualified/world-danger-390.jpg": {
+      "bytes": 128501,
+      "sha256": "6489a280f39d639a8de604c083bf98b5881330d730481c2dcf85e0f972cee4a1"
+    },
+    "renderer-qualified/world-danger-430.jpg": {
+      "bytes": 155573,
+      "sha256": "d0631b318e3e937c628f99e96398083e01edc6aa221f9d0ca06c1927edd43c6b"
+    },
+    "renderer-qualified/world-parade-360.jpg": {
+      "bytes": 115149,
+      "sha256": "8d7f0bc26f837ce55df8e5481f33f72952d1dce838bd4206afdafdf3fb059135"
+    },
+    "renderer-qualified/world-parade-390.jpg": {
+      "bytes": 126431,
+      "sha256": "d86c8f8525cb596377e5fd274bbf596c24260ac0c016e4480a4840a0c6db1039"
+    },
+    "renderer-qualified/world-parade-430.jpg": {
+      "bytes": 153338,
+      "sha256": "70cdb966892256c0b7f2d7b55f708395fce9ad8360dbe92ea40104f73eadc443"
+    },
+    "renderer-qualified/world-revenge-360.jpg": {
+      "bytes": 115512,
+      "sha256": "f5d882309e0dd82494179dac05ddbdf68810872e0abc9f330c815ad981c13bb2"
+    },
+    "renderer-qualified/world-revenge-390.jpg": {
+      "bytes": 126885,
+      "sha256": "888ae414ed0cac56b20ab6d0c9a015ac8a46191a736230a4f3abf0f59f4c876c"
+    },
+    "renderer-qualified/world-revenge-430.jpg": {
+      "bytes": 153632,
+      "sha256": "3ce718f389c59e78e70288ec5ec2a3749994c366f6f2aa7ef25d641001a41020"
+    },
+    "root-verified/map-danger-360.png": {
+      "bytes": 370824,
+      "sha256": "4c4beb2f4435c31436e7697a3195d022a7b464dd364c5a6481372810b230e624"
+    },
+    "root-verified/map-danger-390-h754.png": {
+      "bytes": 410761,
+      "sha256": "727829cfb21530d862b04409e24219eae927935599af58eae677086b3b4842ea"
+    },
+    "root-verified/map-danger-390.png": {
+      "bytes": 423015,
+      "sha256": "5b1d68084333dec1653007aba06988eafbe02dcd1c2cdc60d0adf8d1168cee72"
+    },
+    "root-verified/map-danger-430.png": {
+      "bytes": 486607,
+      "sha256": "8fc5f5b2f83e46f60464fe0b8b49e73c6b6227d2c682073750ce8467d446d114"
+    },
+    "root-verified/map-parade-360.png": {
+      "bytes": 371246,
+      "sha256": "fcc986a6ed2bcdb069f2cccf1772074f12b594548758d4d388e29da6f58070c3"
+    },
+    "root-verified/map-parade-390-h754.png": {
+      "bytes": 411140,
+      "sha256": "48685783de881504a7bb6653175eb0d9c656a3b3127e72a1eb4a16b6a60eb55d"
+    },
+    "root-verified/map-parade-390.png": {
+      "bytes": 423187,
+      "sha256": "919a0c0a2a751b9c0c29cf0d800c6f0d93d8bddc960a1d195b757a0eff615d58"
+    },
+    "root-verified/map-parade-430.png": {
+      "bytes": 487602,
+      "sha256": "0e7ea035e6f896076207df9cfa9a4fac47f11f1ec84bdeaab074339471de0716"
+    },
+    "root-verified/map-revenge-360.png": {
+      "bytes": 369922,
+      "sha256": "1e27afe576c416c76a0c1a92fb363085a91a70cb4528c38c3f28a2030f7fad02"
+    },
+    "root-verified/map-revenge-390-h754.png": {
+      "bytes": 410058,
+      "sha256": "d929c7b4953919d0a9c7328c366cec8d132bc5210ac419582f655166b8b7ab85"
+    },
+    "root-verified/map-revenge-390.png": {
+      "bytes": 422227,
+      "sha256": "c0aebb9134286cda5b677cdff73a6c8f623a17d19f2b0ffa3abbce2a1b71a415"
+    },
+    "root-verified/map-revenge-430.png": {
+      "bytes": 485565,
+      "sha256": "58c3734197ecca5ac4cce41a18df7d79cf4f81c6c80016e08f745f774bfefd34"
+    },
+    "root-verified/marker-closed-390.png": {
+      "bytes": 411368,
+      "sha256": "462a743e1c02ad8ea7b9ada34424ff3785063aa3cc7f9e4b9bf448aec995f1b2"
+    },
+    "root-verified/marker-unavailable-390.png": {
+      "bytes": 412367,
+      "sha256": "a305651b64a4114d73487c97a717b4a01b57c7895ff07f96c36d05009d1329cd"
+    },
+    "root-verified/native.json": {
+      "bytes": 663937,
+      "sha256": "27a9dad326f60f8da806dcea4b1e44b36abe9ae2764ca56e7468cf069acd9cb8"
+    },
+    "root-verified/world-danger-360.png": {
+      "bytes": 413364,
+      "sha256": "e2e602a9b655f4535e6589a8cec173da9b3ef3dbdd8d8058cca694583669a466"
+    },
+    "root-verified/world-danger-390-h554.png": {
+      "bytes": 231688,
+      "sha256": "99ac3b49a6e481664fac07882252275e2112e614bdaa00e41e91d4efcb6be939"
+    },
+    "root-verified/world-danger-390.png": {
+      "bytes": 432549,
+      "sha256": "c24ed3ccdcfc9ed42bd8e40805e8927c30baf27a464826d4543ac288c12b06ed"
+    },
+    "root-verified/world-danger-430.png": {
+      "bytes": 482561,
+      "sha256": "d2e4f48a263647551e6aee7ec58bde3999c86c6d6f5364ff9a7d515864f7cf94"
+    },
+    "root-verified/world-parade-360.png": {
+      "bytes": 412099,
+      "sha256": "4f60ed107b298172468da6b5ea271844793e7f625d78f55259216b365b172b97"
+    },
+    "root-verified/world-parade-390-h554.png": {
+      "bytes": 231564,
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db"
+    },
+    "root-verified/world-parade-390.png": {
+      "bytes": 431399,
+      "sha256": "6ad98424e84c5d0b355e9b7b23caba4cd0ca35a970faa6998ba6139a6c7201c1"
+    },
+    "root-verified/world-parade-430.png": {
+      "bytes": 481268,
+      "sha256": "b9d891c83c8f00a9938ff0f8320c29f679fd413b7fbd8e151583aad9033707ca"
+    },
+    "root-verified/world-revenge-360.png": {
+      "bytes": 413091,
+      "sha256": "7bdaa455926fde94c8161ae2b418c6b8683a3f195087fa712554f8396ee1e3c6"
+    },
+    "root-verified/world-revenge-390-h554.png": {
+      "bytes": 231652,
+      "sha256": "888f677f482240f6cea88766deaa4758830b3005489f6edb02c875b7194d66dc"
+    },
+    "root-verified/world-revenge-390.png": {
+      "bytes": 432845,
+      "sha256": "ef97e6e6bc8617f8317a1340d85826b080fd53b0cef2f7791f587f9fb6f82c08"
+    },
+    "root-verified/world-revenge-430.png": {
+      "bytes": 482695,
+      "sha256": "fcdcc543941d98c0aaf48b2819b07c7b3c4c8dfa7b4da4e44e267e33a2d233ab"
+    }
+  }
+}

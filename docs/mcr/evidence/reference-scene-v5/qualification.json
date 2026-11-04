@@ -1,0 +1,129 @@
+{
+  "status": "BOUNDED_DELIVERY_QUALIFIED",
+  "candidate": "d5c0c9d188f68acb749d7ed2940706f34b2a8be1",
+  "sourceCommits": [
+    "fe9269a1ea6fde054a8f2074bfc6bd4b2ce5f467",
+    "d1ccdb4c465ffdb603b8e1657691e3e5e6ffaf4e",
+    "7821019a"
+  ],
+  "node": "24.22.2",
+  "checks": {
+    "regressions": {
+      "exit": 0,
+      "tests": 437,
+      "files": 35
+    },
+    "fullApplicationTypeScript": {
+      "exit": 0,
+      "diagnostics": 0,
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false -p tsconfig.json"
+    },
+    "scopedOxlint": {
+      "exit": 0,
+      "warnings": 0
+    },
+    "checkPlan": {
+      "exit": 0,
+      "archives": 13
+    },
+    "checkUiOrigin": {
+      "exit": 0,
+      "violations": 0
+    },
+    "actualApplicationBuild": {
+      "exit": 0,
+      "command": "node frontend/src/world/avatar/__tests__/motion-adoption/build.mjs --application",
+      "dependencyEnvironment": "MCR_FRONTEND_DEPENDENCIES points to retained frontend install",
+      "copyPublicDir": false,
+      "temporaryOutputCleaned": true,
+      "logSha256": "3547a653632242465a6b95978d31784c1db6fdd67bbd67158ea41ab7840051a5"
+    },
+    "renderer": {
+      "exit": 0,
+      "differentChannels": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "eraCycles": 2,
+      "cases": 3
+    },
+    "actualRoot": {
+      "exit": 0,
+      "cases": 16,
+      "browserClosed": true,
+      "serverClosed": true
+    }
+  },
+  "sourcePinsVerifiedAgainstFinalCandidate": true,
+  "backendSourceAllocation": 6,
+  "fixtureRevision": 7005,
+  "protectedVersionsUnchanged": [
+    "spatial-v3",
+    "spatial-v4",
+    "runtime/spatial-v4",
+    "quality-v8",
+    "docs/mcr/source"
+  ],
+  "limits": [
+    "Bounded assigned contribution only; original FE06/FE14/FE19/AR02/AR04/QA06 acceptance not inferred",
+    "Synthetic source fixture resolver, HTTP and C05 peers",
+    "No production release/admission, live Auth/Gateway, real multiuser or physical device proof",
+    "Original UNREVIEWED provenance unchanged; production optional eras denied"
+  ],
+  "logs": {
+    "checks/regressions-canonical-merged.log": {
+      "bytes": 427,
+      "sha256": "f7c0cb28befcde0831cfeffa8228b36846094e94231d7a7926296d403883838e"
+    },
+    "checks/regressions-merged.log": {
+      "bytes": 427,
+      "sha256": "caf82fe511b4a337ed4db8c1341d28b061c91da5ad5e69cc80018526f10a81c7"
+    },
+    "checks/types-final.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "checks/ui-origin-final.json": {
+      "bytes": 395,
+      "sha256": "9dab40185c5b572c1c68d0d83e71457e685887b65ca5ba917daf27b2e6a82f79"
+    },
+    "checks/application-build.log": {
+      "bytes": 193,
+      "sha256": "3547a653632242465a6b95978d31784c1db6fdd67bbd67158ea41ab7840051a5"
+    },
+    "checks/regressions-before-master-merge.log": {
+      "bytes": 427,
+      "sha256": "ac93b1a3d1dc162399d98913afe02233863b9714a8f928b4831a77c2298fb921"
+    },
+    "checks/root-half-open-edge-failure.log": {
+      "bytes": 1184,
+      "sha256": "f832e6d5f38a3c3db356bdf0a80d00d8e0042350c8b88da47f1ef9f9ea341903"
+    },
+    "checks/plan-final.log": {
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    "checks/ui-origin.json": {
+      "bytes": 395,
+      "sha256": "97bc31c7db94581929743bf1f5593e360402b2a0314c530290fa6f98ded3cf72"
+    },
+    "checks/lint-final.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "checks/source-checkpoint.json": {
+      "bytes": 4548,
+      "sha256": "2e84e850083b015fe2b2b713293e9816d9de66e3ed4cf580f3a908405065b50f"
+    },
+    "checks/regressions-final.log": {
+      "bytes": 387,
+      "sha256": "98a6848fcd82a085f736d2a5b8f282a35c73d867fced803f87f244e21a4966ed"
+    },
+    "checks/renderer-single-row-failure.log": {
+      "bytes": 440,
+      "sha256": "634cbae06a14e6a7fa63c347710f6eff25c1876e42ff6e9216d49ffc0dcadc6e"
+    }
+  }
+}
