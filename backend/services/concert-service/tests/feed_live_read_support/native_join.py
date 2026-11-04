@@ -39,6 +39,26 @@ def pki(cluster):
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+
+def resource_inputs(public: Path, binding: Path) -> set[Path]:
+    document = json.loads(binding.read_text())
+    pins = [document["geometry_source"], document["tilemap_source"]]
+    for scene in document["scenes"]:
+        pins.extend([scene["scenery_source"], *scene["scene_sources"], *scene["runtime_resources"]])
+    if len(pins) > 1024:
+        raise SmokeError("preflight", "bounded source binding required")
+    paths = set()
+    for pin in pins:
+        relative = Path(pin["path"])
+        path = public / relative
+        if relative.is_absolute() or ".." in relative.parts or not path.resolve().is_relative_to(public.resolve()):
+            raise SmokeError("preflight", "source binding escapes resource root")
+        data = path.read_bytes()
+        if len(data) != pin["bytes"] or "sha256:" + hashlib.sha256(data).hexdigest() != pin["sha256"]:
+            raise SmokeError("preflight", "source-bound resource changed")
+        paths.add(path)
+    return paths
+
 def source_manifest() -> dict[str, str]:
     paths = {ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock", Path(__file__).resolve(),
              ROOT / "frontend/src/entities/avatar/character-source-pack.json"}
@@ -49,6 +69,7 @@ def source_manifest() -> dict[str, str]:
                    "frontend/public"):
         paths.update(p for p in (ROOT / prefix).rglob("*")
                      if p.is_file() and p.suffix in {".rs", ".sql", ".toml", ".proto", ".py", ".json", ".png", ".jpg", ".webp", ".svg"})
+    paths.update(resource_inputs(ROOT / "frontend/public", ROOT / "backend/releases/reference-scene-v2/quality-v6/source-binding.json"))
     for config in (".cargo/config.toml", "backend/.cargo/config.toml", "rust-toolchain.toml", "backend/rust-toolchain.toml"):
         if (ROOT / config).is_file():
             paths.add(ROOT / config)
@@ -68,7 +89,8 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
         raise SmokeError("preflight", "8 GiB free required")
     tools = {name: executable(pg / name) for name in PG_TOOLS}
     cluster = Cluster(tools)
-    report.update(source_commit=commit, source_sha256=checkpoint["source_sha256"],
+    report.update(source_commit=commit, binary_source_commit=checkpoint.get("binary_source_commit", commit),
+                  source_sha256=checkpoint["source_sha256"],
                   binary_sha256=checkpoint["binary_sha256"], owned_root=str(cluster.root), phases={})
     try:
         cluster.init()
