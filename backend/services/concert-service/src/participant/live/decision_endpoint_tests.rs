@@ -22,6 +22,7 @@ async fn native_decision_service_endpoint() -> anyhow::Result<()> {
     let pool = owned_pool().await?;
     let root = PathBuf::from(std::env::var("MCR_PARTICIPANT_COORDINATOR_ROOT")?);
     let ready = root.join("participant-decision-ready.json");
+    let ready_temporary = root.join(".participant-decision-ready.tmp");
     let stop = root.join("participant-decision-stop");
     anyhow::ensure!(
         !ready.try_exists()? && !stop.try_exists()?,
@@ -57,7 +58,7 @@ async fn native_decision_service_endpoint() -> anyhow::Result<()> {
         .create_new(true)
         .write(true)
         .mode(0o600)
-        .open(&ready)?;
+        .open(&ready_temporary)?;
     serde_json::to_writer(
         &mut file,
         &serde_json::json!({
@@ -70,6 +71,7 @@ async fn native_decision_service_endpoint() -> anyhow::Result<()> {
     file.write_all(b"\n")?;
     file.sync_all()?;
     drop(file);
+    std::fs::rename(&ready_temporary, &ready)?;
     // Bounded lifetime, including a crashed orchestrator. No timeout can decide
     // a mutation or settle a Profile prepared transaction.
     let stopped = tokio::time::timeout(Duration::from_secs(180), async move {

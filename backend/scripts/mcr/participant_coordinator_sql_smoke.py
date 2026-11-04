@@ -176,6 +176,8 @@ def decision_endpoint_probe(cluster, binary, env, repo):
                 require(process.poll() is None, "actual decision endpoint failed before readiness")
                 require(time.monotonic() < deadline, "decision readiness exceeded bound")
                 time.sleep(0.025)
+            endpoint_info = json.loads(ready.read_text())
+            require(endpoint_info["pid"] == process.pid, "foreign decision endpoint readiness")
             result = migration.execute([str(binary), "--ignored", "--exact", CLIENT_TEST, "--nocapture"],
                                        env=private_env, phase="decision-client", cwd=repo, timeout=10)
             require("1 passed; 0 failed; 0 ignored" in result.stdout, "exact decision client test required")
