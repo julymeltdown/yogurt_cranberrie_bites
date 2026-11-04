@@ -378,3 +378,24 @@ compilation/execution; no PASS is inferred from unchanged dependency bytes.
 Native Feed source inventory now also explicitly pins the character registry;
 a read-only check found 1,945 source/resource hashes including the real release,
 map/source binding, PNGs and Post tracking migration, with no database started.
+
+
+## Current PublicProfile join failure
+
+The PublicProfile owner compiled exact `d8eb13bf` and reports 22 copied component
+checks passing, but its first actual reader join failed with exit 101 at the
+viewer's local policy (`DependencyUnavailable`), before author projection. The
+second joined case did not run. Direct inspection confirms the overall report
+is FAIL, `joined-owner-reader-hold` exited 101, and the owned server stopped and
+root was removed. The report is
+`/private/tmp/mcr-public-profile-frozen-y3epk5s_/native-report.json`, SHA-256
+`812bd19d77adfde991e9506bcc9959c68eebbde82c38e1b3dbc5a1bb899a7d0c`.
+
+The configured prepared-transaction capacity was 256, so a lower controller limit
+has not explained this failure. PublicProfile owner `01a1a205` owns the focused
+cfg(test) diagnostics at source `31691c4d` and the actual fix/qualification.
+This is a concrete shared-path blocker for our five-owner native Feed case,
+which uses the same real local-policy reader. Its failure has not been
+reproduced or diagnosed by this Feed task. No Profile, Post/callback or HTTP join
+acceptance is inferred from the constructor or 22 component checks. The separate
+three-target adapter build remains ready; no resource is held awaiting this fix.
