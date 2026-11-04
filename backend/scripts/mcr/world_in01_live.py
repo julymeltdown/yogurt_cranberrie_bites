@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timedelta, timezone
 import importlib.util
 import json
 import os
@@ -61,9 +62,13 @@ def c03_database_checks(cluster, principals, report):
         "concert_native_commit_2": ("mcr_concert", "SELECT count(*) FROM concert_participant_profile_operations "
             "WHERE decision='COMMIT' AND pg_xact_status(concert_full_xid::xid8)='committed'", "2"),
         "auth_settlement_16": ("mcr_auth", "SELECT count(*) FROM concert_owner_guard_leases "
-            "WHERE scope_settlement IS NOT NULL", "16"),
+            "WHERE scope_settlement IS NOT NULL AND state='COMPLETED'", "16"),
         "friend_settlement_16": ("mcr_friend", "SELECT count(*) FROM concert_owner_guard_leases "
-            "WHERE scope_settlement IS NOT NULL", "16"),
+            "WHERE scope_settlement IS NOT NULL AND state='COMPLETED'", "16"),
+        "auth_pending_participants_0": ("mcr_auth", "SELECT count(*) FROM "
+            "concert_owner_guard_participants WHERE state='PENDING'", "0"),
+        "friend_pending_participants_0": ("mcr_friend", "SELECT count(*) FROM "
+            "concert_owner_guard_participants WHERE state='PENDING'", "0"),
         "no_prepared_transactions": ("postgres", "SELECT count(*) FROM pg_prepared_xacts", "0"),
     }
     deadline = time.monotonic() + 3
@@ -244,12 +249,26 @@ def run(args):
             "principals": [str(path) for _, path, _ in principals],
             "world_ws_url": ("ws://" + stack.ports.address("concert-service:world") + "/world-ws")
                 if args.world else None,
-            "lifetime": "REMOVED_ON_OWNED_SHUTDOWN", "fault_control": "OWNER_STOP_ONLY"}
+            "lifetime": "REMOVED_ON_OWNED_SHUTDOWN", "fault_control": "OWNER_STOP_ONLY",
+            "expires_at": (datetime.now(timezone.utc) + timedelta(seconds=args.hold_seconds)).isoformat(),
+            "runtime_owner_pid": os.getpid(), "source_revision": stack.report["source_revision"],
+            "binary_cohort_manifest": str(args.bin_dir.parent / "cohort.json"),
+            "gateway_binary_sha256": dev.runtime.digest(args.bin_dir / "api-gateway"),
+            "concert_binary_sha256": dev.runtime.digest(args.concert_bin),
+            "world_probe_sha256": dev.runtime.digest(Path(__file__).with_name("world_two_principal_probe.py"))}
         inputs = stack.cluster.root / "in01-live-inputs.json"
         prep.private_json(inputs, private)
         report.update(result="PARTIAL", private_inputs=str(inputs),
             world_activation="ACTUAL_LISTENER_READY" if args.world else "OFF",
             concert_binary_sha256=dev.runtime.digest(args.concert_bin))
+        if args.hold_seconds:
+            ready = {key: report[key] for key in ("result", "scope", "world_two_client", "browser_in01",
+                "driver_sha256", "private_inputs", "c03_database", "c03_database_observed")}
+            ready.update(cleanup="PENDING_HELD_RUNTIME", expires_at=private["expires_at"])
+            for key in ("world_probe", "world_database", "world_database_observed"):
+                if key in report:
+                    ready[key] = report[key]
+            prep.private_json(args.report.with_suffix(".ready.json"), ready)
         print(json.dumps({"result": "PARTIAL", "private_inputs": str(inputs),
                           "world_two_client": report["world_two_client"]}), flush=True)
         deadline = time.monotonic() + args.hold_seconds
