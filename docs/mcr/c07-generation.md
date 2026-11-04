@@ -1,8 +1,10 @@
 # C07 generated client and deterministic contract harness
 
-Status: INTEGRATED locally. Full QA01, its original negative probes, and all
-eight C07 checks pass after audited forward-baseline reconciliation. Publication
-is pending with the named publishing owner. GitHub Actions has not been run.
+Status: IN_PROGRESS for the subsequent published C18 contract delta. The prior
+coherent cohort at `46050bb9` passed full QA01, its original negative probes,
+and all eight C07 checks. Its evidence remains valid for that frozen source.
+Current-source regeneration and publication follow the C18 intake recorded
+below. GitHub Actions has not been run.
 
 The generator consumes the canonical `contracts/generated/mcr-domain.openapi.json`
 and the existing contract/fixture corpus without changing those inputs. It emits
@@ -306,3 +308,35 @@ Python/Node/Zod/TypeScript dependencies are used without local installation.
 These results establish generated contract and offline transport compatibility;
 they do not establish live multiuser, browser, art, backend, load, release or
 GitHub-hosted CI acceptance. Application adoption remains a separate FE task.
+
+## Subsequent published C18 intake
+
+Root published contract-only C18 as
+`e7bd68cfa35fb620e2eed060a71a72e50718b9dc` after the preceding coherent
+qualification. Its canonical publisher receipt qualifies exactly 21 paths from
+producer `c18d5ba9fd27a73356d9be68614863172303c81f`, with 106 producer checks
+and exact generation reproduction. This receipt is the delivery fact; it does
+not require another consumer remote-proof loop. Intake is committed as
+`267a040ac8d33c312aa87a5a2f22bc418b3895f2`; these already published prerequisite
+paths are excluded from this owner's eventual publication patch.
+
+The C18 successor audit records 17 pinned input deltas and only five added HTTP
+operations: own-action lookup, erase, fill, tool capabilities, and undo. The full
+inventory advances from 135 to 140 with no removed or changed routes. The prior
+qualified active pins are archived byte for byte as
+`archive/pins-6dd22ede377df1bf2c1d1de55275f80277af839a.json`; the additive audit is
+`archive/forward-baseline-267a040ac8d33c312aa87a5a2f22bc418b3895f2.json`.
+The original 84-delta audit and all failed/passing qualification records remain
+unchanged. C18 is a real canonical input change; unrelated documentation updates
+do not invalidate those records or create regeneration prerequisites.
+
+Root explicitly transferred only the necessary nested-catalog hunks in
+`scripts/mcr/contracts/qa01-coverage/run.py` and `test_coverage.py`. The domain
+catalog now admits direct `wall-tools-b/*.json` entries, retaining exact inventory
+comparison, other-family rules, exhaustive fixture coverage, and alias/traversal
+rejection. Two additive regressions cover all eight published nested fixtures,
+missing/unindexed files, traversal, absolute paths, unknown prefixes, extra path
+segments, aliases and other-family rejection. The full old suite and all twelve
+negative probes remain intact. At this intake commit these additions and the
+new canonical candidate remain pending a fresh bounded source qualification;
+active pins still identify the preceding qualified cohort.
