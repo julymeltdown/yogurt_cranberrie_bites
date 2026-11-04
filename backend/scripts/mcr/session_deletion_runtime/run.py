@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import in03_stack_runtime as inherited
 from session_deletion_runtime.enrollment import adapters
 from session_deletion_runtime.scenario import exercise, survivors_after_restart
+from session_deletion_runtime.runtime_sql import RuntimeSqlPins
 
 
 def main(argv=None):
@@ -29,6 +30,7 @@ def main(argv=None):
     parser.add_argument('--publisher-binary', type=Path, required=True)
     parser.add_argument('--publisher-sha256', required=True)
     parser.add_argument('--sessions-report', type=Path, required=True)
+    parser.add_argument('--runtime-sql-pins', type=Path, required=True)
     parser.add_argument('--scenario-seconds', type=int, default=60)
     options, forwarded = parser.parse_known_args(argv)
     # Parse only fixed inherited arguments here; its main validates the entire
@@ -44,12 +46,23 @@ def main(argv=None):
     root = Path(inputs['helper_source']['root'])
     revision = inherited.source_revision(inputs['helper_source']['revision'])
     inherited.validate_sources(root, revision)
+    sql_pins = RuntimeSqlPins(inherited,root,inputs,options.runtime_sql_pins)
     world, prep, dev = inherited.load_helpers(root)
     mail, principal, provenance = adapters(prep, world, dev,
         options.publisher_binary, options.publisher_sha256, revision, argument('--browser-origin'))
     context, principals, outcome, launches = {}, [], {}, {}
     original_features, original_control = inherited.managed_features, dev.Control
     original_child = dev.runtime.Child
+    original_guard = world.QualificationGuard
+
+    class SessionsGuard(original_guard):
+        def __init__(self,*args,**kwargs):
+            super().__init__(*args,**kwargs)
+            context['guard'] = self
+
+        def check(self):
+            super().check()
+            sql_pins.verify()
 
     class RestartPorts(dev.runtime.Ports):
         def reserve(self,name,port=0):
@@ -104,6 +117,7 @@ def main(argv=None):
             browser.origin = argument('--browser-origin')
             deadline = min(time.monotonic() + options.scenario_seconds,
                 time.monotonic() + float(argument('--allocation-work-deadline-epoch')) - time.time())
+            context['guard'].phase('actual-serving-sessions-source-restart',options.scenario_seconds)
             probe_report = {'statuses': {}}
             async def bounded():
                 async with asyncio.timeout(max(.001, deadline-time.monotonic())):
@@ -189,7 +203,7 @@ def main(argv=None):
                 (inherited,'managed_features',features),
                 (inherited,'auth_provenance',provenance),
                 (prep,'principal',provision),(dev,'MailSink',mail),(dev,'Control',SessionsControl),
-                (dev.runtime,'Child',CapturedChild)):
+                (dev.runtime,'Child',CapturedChild),(world,'QualificationGuard',SessionsGuard)):
                 scoped.enter_context(patch.object(obj,name,replacement))
             result = inherited.main(forwarded)
         inherited.require(result == 0 and outcome.get('result') == 'SOURCE_AND_PHYSICAL_RESTART_PASS',
@@ -199,6 +213,7 @@ def main(argv=None):
         # disposition. A scenario source pass never overrides its failure.
         value = {'scope':'ACTUAL_SERVING_SESSIONS_SOURCE_ROUND','inherited_exit_code':result,
             'source_revision':revision,'scenario':outcome,'whole_be42':'NOT_CLAIMED',
+            'runtime_sql':sql_pins.services,
             'physical_restart':outcome.get('physical_restart','NOT_RUN'),
             'cancellation':outcome.get('cancellation','NOT_RUN')}
         prep.private_json(options.sessions_report,value)
