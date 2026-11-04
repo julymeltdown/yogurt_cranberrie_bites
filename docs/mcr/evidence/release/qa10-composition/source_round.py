@@ -109,7 +109,7 @@ def main():
     root = Path(args.root).resolve()
     free = shutil.disk_usage(root).free
     baseline = size(root)
-    if free < 11 * GIB or free - args.all_new_bytes < 9 * GIB or baseline > 6 * GIB:
+    if free < 12 * GIB or free - args.all_new_bytes < 9 * GIB or baseline > 6 * GIB:
         print(json.dumps({'status': 'PREFLIGHT_DECLINE', 'at': stamp(), 'free': free, 'whole': baseline}), flush=True)
         return 3
     start = time.monotonic()
