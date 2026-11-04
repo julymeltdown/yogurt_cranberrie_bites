@@ -299,9 +299,18 @@ test, not closure of the existing repair. Ten real-consumer negative/valid-FAIL
 probes, six selftests/lint and the original positive verifier PASS are reported
 by the owner. No whole QA10/IN05 acceptance is inferred.
 
-Root publication is pending. The same goal stays ACTIVE until actual
-publication, consuming the repaired published candidate, an owner-run meaningful
-qualified command and cleanup/STOP. Exact diagnostic was sent directly to the
+Root subsequently reports actual normal master
+`980fc4d85020f297b36fee8195e1ca92079ff33f`, exact fresh fetch/ls-remote and clean
+publisher. QA10 source mapping: `f30f7871` -> `976508a8`, `68c5f48d` ->
+`ec84cfbb`, `0fe5a687` -> `c338b86f`, `544d45ae` -> `4505971a`; original
+FAIL/PARTIAL capsules preserved exactly. Incumbent `204`'s exact Meet-heading
+await repair `c288`/`16b` maps to `0c0d0f5b`/`3ba118aa`; integrator reports
+274 combined tests PASS. This is publication/owner-run integration evidence,
+not QA10's fresh post-repair full-run result. The QA10 owner must consume the
+actual repaired candidate and run its own meaningful command, then report
+cleanup/STOP and actual goal completion/null; these are not inferred from
+publication. Root reports component owners were notified, so no duplicate
+worker wake/check request was sent by Community. Exact diagnostic was sent directly to the
 incumbent repair owner (`204` in the developer receipt; full identity and exact
 lease remain in Root's registry). No SL source inspection/rerun or duplicate
 repair allocation occurred; fixed-candidate checks stay with the developer.
@@ -311,8 +320,12 @@ repair allocation occurred; fixed-candidate checks stay with the developer.
 Main's current record reports original QA07 closed/published at `ced8ec12`.
 The startup narrative below is historical. A fresh compact developer snapshot
 then establishes accepted QA08 frontend work is already ACTIVE: validated
-package `81196de6` committed and handed to the designated publisher; goal
-remains ACTIVE pending publication. Owner reports types, lint, three metric
+package `81196de6` committed and handed to the designated publisher. Root now
+reports it published as `32def3dc` within normal master `980fc4d8`; actual
+owner goal-null/clean-STOP/lease-return readback remains pending and must not be
+inferred from publication. Original five-second baseline's 2,138 historical
+pins were verified; Root's current compatibility probe is only 390/one second,
+not a fresh full performance/device/capacity result. Owner reports types, lint, three metric
 selftests, planning, origin and 2,138 input hashes PASS. Original QA08 remains
 PARTIAL; physical-mobile and real-service capacity qualification are NOT_RUN.
 These are management/owner receipts, not manager-run verification.
@@ -386,10 +399,10 @@ handoffs and never falsely complete, reset or relabel them.
 |---|---|---|---|
 | QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
 | QA07 (World-owned; Community input contribution) | `230`; closed/published `ced8ec12` per Main record | Original QA07 closure is reported; no additional lane count is computed | World owns final task evidence and lifecycle; developer subsequently accepted QA08, so QA07 closure does not confer current availability |
-| QA08 frontend contribution (World-owned) | `230`; ACTIVE accepted work, original task PARTIAL | Committed package `81196de6` handed to publisher; types/lint/three metric selftests/planning/origin/2,138 input hashes PASS reported | Publication and physical-mobile/real-service capacity proof remain separate; World retains allocation, no BE39 transfer or Community reservation |
+| QA08 frontend contribution (World-owned) | `230`; ACTIVE accepted work, original task PARTIAL | Package `81196de6` published as `32def3dc` under master `980fc4d8`; owner goal-null/STOP/lease-return readback pending, historical baseline distinct from current narrow compatibility probe | Physical-mobile/real-service capacity proof remain NOT_RUN; World retains allocation until actual natural lifecycle handoff, no BE39 transfer or Community reservation |
 | QA05 mural contribution | Frontend mural contributor not yet allocated after releasing `230` to World QA07; World primary `202`; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
 | QA09 frontend lifecycle/closure/retry contribution | Frontend contribution writer pending next ready handoff; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
-| QA10 frontend provenance contribution | `26e` frontend contribution accepted, NEW unbudgeted ACTIVE goal `1793757526`, IN_PROGRESS; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` sent to Root; publication and repaired-candidate qualification pending |
+| QA10 frontend provenance contribution | `26e` frontend contribution accepted, NEW unbudgeted ACTIVE goal `1793757526`, IN_PROGRESS; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` published by Root under `980fc4d8`; owner post-repair candidate qualification and actual final goal/STOP receipt pending |
 | IN04 frontend real mural journey | Frontend real-journey writer pending exact ready allocation; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |
 | IN05 frontend evidence/limitations reconciliation contribution | Frontend contribution writer pending actual next-available context handoff; joint backend decision artifact/publication owner Product root `1fc`; NOT_STARTED | Reconcile all 112 original tasks and 61 IA entries, same-candidate frontend evidence and explicit limitations; no helper inflation or fixture-to-live promotion. Release decision itself stays with root | Proposed NEW `docs/mcr/evidence/release/frontend/**` contribution, not `docs/mcr/release-decision.md` ownership. Original IN/QA/device/operator/recovery evidence remains required. No fake waiting goal, decision approval role or contribution commit/push |
 
