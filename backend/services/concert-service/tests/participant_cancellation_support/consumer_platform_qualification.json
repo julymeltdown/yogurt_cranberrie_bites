@@ -1,0 +1,359 @@
+{
+  "task": "C03-CANCEL01",
+  "status": "IN_PROGRESS",
+  "root_compiled_source": "d0f063d18a0549935f80a536077c30962d89f9e9",
+  "input_pins": {
+    "count": 2151,
+    "source_pins_json_sha256": "da1057e2e3a5d77292e91926cc006f3aba6a8c6e2fdf3b0561e888383ff08692",
+    "prior_core_report_subset_count": 1515,
+    "prior_core_report_subset_unchanged": true,
+    "boundary": "Pinned inputs plus same-lease explicit platform package rebuild; not a retrospective upgrade of original f8a artifact"
+  },
+  "prior_consumer_failure": {
+    "status": "FAIL",
+    "report_sha256": "a7eb14c9155923b0482e52c3ec55459f18800c286a63003053dc8e09862508a0",
+    "binary_sha256": "b71d1627733633b52b617a98a1c9b563de55536ee1deddc6a392267350b8888c",
+    "case": "returned_error_records_abandonment_without_delivery",
+    "failure": {
+      "diagnostic": "\nrunning 1 test\ntest cases::returned_error_records_abandonment_without_delivery ... FAILED\n\nfailures:\n\n---- cases::returned_error_records_abandonment_without_delivery stdout ----\nError: reserved owner authority policy must match exact owner, methods, callers and Acquire actor field\n\n\nfailures:\n    cases::returned_error_records_abandonment_without_delivery\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.24s\n\n",
+      "exit_code": 101,
+      "phase": "cancellation-case"
+    },
+    "owned_root_absent": true
+  },
+  "repair": {
+    "allocation": "ROOT-SEVEN-CACHE-REPAIR-D0F-20261104",
+    "source_changes": "NONE",
+    "exact_clean": {
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "clean",
+        "--manifest-path",
+        "<root>/backend/Cargo.toml",
+        "-p",
+        "platform"
+      ],
+      "exit_code": 0,
+      "path_normalization": "Local checkout prefix replaced by <root>; original complete receipt is pinned by clean_receipt_sha256"
+    },
+    "clean_receipt_sha256": "6e1e8829d8f826a608f98b2226570f920768cf79e5058c95fcefe10a6a221488",
+    "builds": [
+      {
+        "phase": "concert-tests",
+        "exit_code": 0,
+        "elapsed_seconds": 22.5,
+        "receipt_sha256": "8375a8c94f2a84e03d429f4917ffc207d1a2f31c1970176d78f95a61776aa7bf",
+        "copied_artifacts": [
+          {
+            "target": "concert_service",
+            "file": "concert-lib-tests",
+            "bytes": 93802432,
+            "sha256": "ef1b9fb92f0abc4d9494e3281660e5427cd13519ff24c300c3c7b31e3e46dbdd"
+          },
+          {
+            "target": "canonical_runtime_config",
+            "file": "canonical-runtime-tests",
+            "bytes": 14194240,
+            "sha256": "466ad9550b0968729970b23d05fc7782ce0d17ec74f11885f18128377c31b635"
+          },
+          {
+            "target": "owner_authority_cancellation",
+            "file": "owner-cancellation-tests",
+            "bytes": 33332448,
+            "sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96"
+          },
+          {
+            "target": "participant_cancellation",
+            "file": "participant-cancellation-tests",
+            "bytes": 40749328,
+            "sha256": "f4efc9e3579d71361cf54b36a5e3a025f2b4d71ff545292da9818b8d487ec272"
+          }
+        ]
+      },
+      {
+        "phase": "concert-main",
+        "exit_code": 0,
+        "elapsed_seconds": 19.33,
+        "receipt_sha256": "a2a9fb574fdea292fb5fa8227c4695434f08d2fdd39c5d0f8eee0155b9ce89f9",
+        "copied_artifacts": [
+          {
+            "target": "concert-service",
+            "file": "concert-service",
+            "bytes": 50151936,
+            "sha256": "ea0bb95afff806c8965ec2517e0cee6e5153b3bd0c35cde2f8a23470438fd4d0"
+          }
+        ]
+      },
+      {
+        "phase": "gateway-tests",
+        "exit_code": 0,
+        "elapsed_seconds": 19.42,
+        "receipt_sha256": "7c1aeaa117a75ae8cd52268ccc887d0a9a3f1afcea75a9d60add9fc190611b19",
+        "copied_artifacts": [
+          {
+            "target": "api_gateway",
+            "file": "gateway-lib-tests",
+            "bytes": 38728736,
+            "sha256": "c5ad6ce500b2f787d63d16ba67a624d900574b9c3095525817bd5c410718ba84"
+          }
+        ]
+      },
+      {
+        "phase": "gateway-main",
+        "exit_code": 0,
+        "elapsed_seconds": 15.52,
+        "receipt_sha256": "8ed49246d1af1570d61e2718b746b8836d66c9b0b56b4b37f7a1fc5145808376",
+        "copied_artifacts": [
+          {
+            "target": "api-gateway",
+            "file": "api-gateway",
+            "bytes": 57225248,
+            "sha256": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470"
+          }
+        ]
+      }
+    ],
+    "platform_metadata": [
+      {
+        "phase": "concert-tests-1",
+        "cargo_json_sha256": "0a26ed68858f140edfb37a2a967a4fffaa3c2e6483a56c2ba91e32672c2d12be",
+        "fresh": false,
+        "dependency_profile_test": false,
+        "files": [
+          "libplatform-eec4ca7d15f3db56.rlib",
+          "libplatform-eec4ca7d15f3db56.rmeta"
+        ]
+      },
+      {
+        "phase": "concert-tests-2",
+        "cargo_json_sha256": "8a386c5a5ec4b8c844ae60cbae823b5ed0994cb427c7d78695199507534e79cc",
+        "fresh": true,
+        "dependency_profile_test": false,
+        "files": [
+          "libplatform-eec4ca7d15f3db56.rlib",
+          "libplatform-eec4ca7d15f3db56.rmeta"
+        ]
+      },
+      {
+        "phase": "concert-main-1",
+        "cargo_json_sha256": "0e3826b3ce86d0e34c0ce3b2befb24742e0811b89443be4e792fbb9f6cae1f55",
+        "fresh": false,
+        "dependency_profile_test": false,
+        "files": [
+          "libplatform-5980b112c5bb565f.rlib",
+          "libplatform-5980b112c5bb565f.rmeta"
+        ]
+      },
+      {
+        "phase": "gateway-tests-1",
+        "cargo_json_sha256": "5aae4b6c191def8e491216df77c395c45d71792e7fb9a253a26ec46991cd1ca7",
+        "fresh": false,
+        "dependency_profile_test": false,
+        "files": [
+          "libplatform-10651f420c1931a0.rlib",
+          "libplatform-10651f420c1931a0.rmeta"
+        ]
+      },
+      {
+        "phase": "gateway-main-1",
+        "cargo_json_sha256": "26d69ea651c0db1d7a3fa26cfe12dbe40e526335b6622b1bf39cbcfc119b8104",
+        "fresh": false,
+        "dependency_profile_test": false,
+        "files": [
+          "libplatform-a4f073c7366fa93e.rlib",
+          "libplatform-a4f073c7366fa93e.rmeta"
+        ]
+      }
+    ],
+    "observer_interruption": {
+      "phase": "concert-tests-1",
+      "failure": "du raced ephemeral compiler rmeta deletion; observer exited before compile",
+      "validation_credit": "NONE",
+      "owned_process_group": 7571,
+      "action": "stop exact owned compile group before tooling repair"
+    },
+    "observer_repair": "Bounded du retries and unconditional owned process cleanup; first interruption preserved with no validation credit",
+    "final_build_guard": {
+      "source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+      "target_baseline_allocated": 13055131648,
+      "hard_whole_bytes": 2147483648,
+      "floor_bytes": 8589934592,
+      "phases": [
+        {
+          "phase": "concert-tests",
+          "attempt": "2",
+          "exit_code": 0
+        },
+        {
+          "phase": "concert-main",
+          "attempt": "1",
+          "exit_code": 0
+        },
+        {
+          "phase": "gateway-tests",
+          "attempt": "1",
+          "exit_code": 0
+        },
+        {
+          "phase": "gateway-main",
+          "attempt": "1",
+          "exit_code": 0
+        }
+      ],
+      "max_sampled_additional": 330788864,
+      "aborted": false,
+      "started_at": "2026-11-04T05:31:11.158130+00:00",
+      "observer_repair": "bounded du retries and unconditional owned-process cleanup",
+      "sampling_interruption_preserved": true,
+      "elapsed_since_acceptance": 165.703429,
+      "finished_at": "2026-11-04T05:33:56.372586+00:00",
+      "target_final_allocated": 12979675136,
+      "out_final_allocated": 330788864
+    },
+    "target_release": {
+      "offer": "ROOT-SEVEN-CACHE-REPAIR-D0F-20261104",
+      "state": "RELEASED",
+      "source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+      "released_at": "2026-11-04T05:34:09.719291+00:00",
+      "target_open_handles": 0,
+      "lsof_exit_code": 1,
+      "lsof_stderr_empty": true,
+      "compiler_processes": [],
+      "free_bytes": 36904308736,
+      "before_copied_tests_or_pg": true,
+      "target_access_after_this_receipt": "NONE_PERMITTED",
+      "all_seven_compile_pass": true
+    },
+    "target_release_sha256": "2e7185253fd539348ebb89c4256cff724407bcf8513ab6916c266d8cdd3f49db"
+  },
+  "actual_core_cases": [
+    {
+      "case": "returned_error_records_abandonment_without_delivery",
+      "result": "PASS",
+      "report_sha256": "3b42047dc0469b185ff8acb9ada169ea676fa0b95860e7fafa58d23109103d62",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 614879232
+    },
+    {
+      "case": "caller_cancellation_destroys_actual_work_before_owner_release",
+      "result": "PASS",
+      "report_sha256": "8dd3830d170a5558bfbeb826d9eed04b35cec0615410089226d7fa2b77ff71a2",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 622174208
+    },
+    {
+      "case": "unresolved_callback_and_expiry_never_prove_abandonment",
+      "result": "PASS",
+      "report_sha256": "b83b6ae657f0ce4ef4268a68f1384f1158476111fe7555448f59ee8283feac1a",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 622223360
+    },
+    {
+      "case": "active_native_transaction_prevents_cancellation_settlement",
+      "result": "PASS",
+      "report_sha256": "faed3c52dd4268ca6ea7a0b0a0cc5803acb2d17892a563d40d28afd30fc320fe",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 575827968
+    },
+    {
+      "case": "successful_handoff_retains_existing_unserialized_quarantine",
+      "result": "PASS",
+      "report_sha256": "300587355866389a62f559d12f5402e190b00c85ee2a1c7bc6ac87ca74fa5f5f",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 622665728
+    },
+    {
+      "case": "drained_late_callback_allows_true_abandonment",
+      "result": "PASS",
+      "report_sha256": "198bf7d6705014a38a19bd2959195a2664debcbb8f1094efde5976b5b3071cd8",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 603197440
+    },
+    {
+      "case": "expired_original_deadline_never_polls_ready_producer",
+      "result": "PASS",
+      "report_sha256": "2184de0c409d052d4b721dfcdd2555e62dff9afa8372dc638763192a884f2c78",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 623144960
+    },
+    {
+      "case": "failed_work_destruction_never_reaches_terminal_proof",
+      "result": "PASS",
+      "report_sha256": "2f7a6ec10eea9a3b37e8e7825d21adb925db54450a47cc4d0aaae478aede7ecc",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 623538176
+    },
+    {
+      "case": "unpublished_unsettled_abandonment_remains_in_durable_capacity",
+      "result": "PASS",
+      "report_sha256": "e591bd1c95e497544747ab4ba8e7dab72fa4fb58b6047230475d8ac9d47d2d42",
+      "remaining_prepared_before_disposable_cleanup": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "owned_root_absent": true,
+      "sampled_whole_additional_bytes": 623579136
+    }
+  ],
+  "fresh_c03_attempt": {
+    "result": "FAIL",
+    "stage": "Migration qualification before services, Participant host or Auth flow",
+    "report_sha256": "aeee8e5fb757f9230553925dafb2efcdae30ad375d90dd3bc64dbea99c0ca8d4",
+    "guard_sha256": "80da9a83b2712a10194730d7dd875d29187ac5a662c4c7222a93dacd4ab7888f",
+    "host_binary_sha256": "f4efc9e3579d71361cf54b36a5e3a025f2b4d71ff545292da9818b8d487ec272",
+    "statuses": {},
+    "current_auth_expected_migrations": 18,
+    "retained_auth_binary_cohort": "Historical 3710 MAIN; not rebuilt from Root d0f",
+    "prepared_at_failure": 0,
+    "owned_cleanup": "PASS",
+    "owned_root_absent": true,
+    "source_trace": "DevStack.open -> migration.qualify -> check_ledger compares exact migration version, checksum and count against current source manifests; Auth migrate and verify returned 0, but exact ledger_before verification did not complete",
+    "finding": "No Participant code behavior was exercised or failed; current peer MAIN rebuild and rerun required"
+  },
+  "original_f8a_behavior": "PASS against original frozen3710 cohort; unchanged original receipt and platform provenance limit",
+  "required_followup": "Root coherent current peer MAINs and actual fresh C03 HTTP run; exact scoped handoff publication to master",
+  "resources_held_by_participant_worker": false,
+  "browser_in01": "Root/FE owned; NOT_RUN by this worker"
+}

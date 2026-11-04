@@ -22,10 +22,10 @@ pub mod child_settlement;
 mod owner_media;
 mod query;
 pub use query::CommandStatusQuery;
+pub mod root_read;
 pub mod scope_ledger;
 mod scope_lifecycle;
 pub mod scoped;
-pub mod root_read;
 pub mod settlement;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_BODY: usize = 10 * 1024 * 1024;
@@ -45,12 +45,18 @@ pub enum Operation {
     ListParties,
     GetParty(Uuid),
     CreateParty,
+    ApplyParty(Uuid),
+    DecidePartyApplication(Uuid),
+    CancelPartyApplication(Uuid),
+    RemovePartyMember(Uuid, Uuid),
+    CancelParty(Uuid),
     InitializeUpload,
     MediaMetadata(Uuid),
     UploadBytes(Uuid),
     FinalizeUpload(Uuid),
     PrivateContent(Uuid),
     CommandStatus,
+    Social(crate::social_live::protocol::SocialOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
@@ -61,12 +67,18 @@ impl Operation {
             Self::ListParties => "listConcertParties",
             Self::GetParty(_) => "getConcertParty",
             Self::CreateParty => "createConcertParty",
+            Self::ApplyParty(_) => "applyConcertParty",
+            Self::DecidePartyApplication(_) => "decideConcertApplication",
+            Self::CancelPartyApplication(_) => "cancelConcertApplication",
+            Self::RemovePartyMember(_, _) => "removeConcertMember",
+            Self::CancelParty(_) => "cancelConcertParty",
             Self::InitializeUpload => "initConcertUpload",
             Self::MediaMetadata(_) => "getConcertMedia",
             Self::UploadBytes(_) => "putConcertUploadBytes",
             Self::FinalizeUpload(_) => "finalizeConcertUpload",
             Self::PrivateContent(_) => "readConcertMedia",
             Self::CommandStatus => "getConcertCommandStatus",
+            Self::Social(operation) => operation.id(),
         }
     }
 }
@@ -88,6 +100,11 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     let suffix = path
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
+    // The Social parser owns exactly thirteen frozen operations. No unknown
+    // route, platform or method falls through to a generic producer.
+    if let Ok(social) = crate::social_live::protocol::route(event, method, target) {
+        return Ok(Operation::Social(social));
+    }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
         ("GET", "parties") => Operation::ListParties,
@@ -96,18 +113,34 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
         ("POST", "media/uploads") => Operation::InitializeUpload,
         _ => {
             let pieces: Vec<_> = suffix.split('/').collect();
-            if !(2..=3).contains(&pieces.len()) {
+            if !(1..=4).contains(&pieces.len()) {
                 return Err(Status::permission_denied("Unsupported product operation"));
             }
-            let id = canonical_uuid(pieces[1])?;
-            match (method, pieces[0], pieces.get(2).copied()) {
-                ("GET", "posts", None) => Operation::Post(id),
-                ("GET", "posts", Some("comments")) => Operation::Comments(id),
-                ("GET", "parties", None) => Operation::GetParty(id),
-                ("GET", "media", None) => Operation::MediaMetadata(id),
-                ("GET", "media", Some("content")) => Operation::PrivateContent(id),
-                ("PUT", "media", Some("bytes")) => Operation::UploadBytes(id),
-                ("POST", "media", Some("finalize")) => Operation::FinalizeUpload(id),
+            match (method, pieces.as_slice()) {
+                ("POST", ["parties", party, "applications"]) => {
+                    Operation::ApplyParty(canonical_uuid(party)?)
+                }
+                ("POST", ["party-applications", application, "decision"]) => {
+                    Operation::DecidePartyApplication(canonical_uuid(application)?)
+                }
+                ("DELETE", ["party-applications", application]) => {
+                    Operation::CancelPartyApplication(canonical_uuid(application)?)
+                }
+                ("DELETE", ["parties", party, "members", user]) => {
+                    Operation::RemovePartyMember(canonical_uuid(party)?, canonical_uuid(user)?)
+                }
+                ("POST", ["parties", party, "cancel"]) => {
+                    Operation::CancelParty(canonical_uuid(party)?)
+                }
+                ("GET", ["posts", id]) => Operation::Post(canonical_uuid(id)?),
+                ("GET", ["posts", id, "comments"]) => Operation::Comments(canonical_uuid(id)?),
+                ("GET", ["parties", id]) => Operation::GetParty(canonical_uuid(id)?),
+                ("GET", ["media", id]) => Operation::MediaMetadata(canonical_uuid(id)?),
+                ("GET", ["media", id, "content"]) => Operation::PrivateContent(canonical_uuid(id)?),
+                ("PUT", ["media", id, "bytes"]) => Operation::UploadBytes(canonical_uuid(id)?),
+                ("POST", ["media", id, "finalize"]) => {
+                    Operation::FinalizeUpload(canonical_uuid(id)?)
+                }
                 _ => return Err(Status::permission_denied("Unsupported product operation")),
             }
         }
@@ -119,10 +152,13 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
                 | Operation::Comments(_)
                 | Operation::ListParties
                 | Operation::CommandStatus
+                | Operation::CancelPartyApplication(_)
+                | Operation::RemovePartyMember(_, _)
         )
     {
         return Err(Status::invalid_argument("Unexpected product query"));
     }
+    query::party_command(target, result)?;
     Ok(result)
 }
 
@@ -235,22 +271,39 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
+    if let Operation::Social(social) = operation {
+        query::social_request(m, social)?;
+    }
     let mutation = matches!(
         operation,
         Operation::InitializeUpload
             | Operation::UploadBytes(_)
             | Operation::FinalizeUpload(_)
             | Operation::CreateParty
+            | Operation::ApplyParty(_)
+            | Operation::DecidePartyApplication(_)
+            | Operation::CancelPartyApplication(_)
+            | Operation::RemovePartyMember(_, _)
+            | Operation::CancelParty(_)
     );
-    if mutation {
+    if matches!(operation, Operation::Social(_)) {
+        // The exact Social decoder above validates keyed bodyless DELETE and
+        // read query forms as well as JSON commands. Never classify DELETE as read.
+    } else if mutation {
         canonical_uuid(&m.idempotency_key)?;
-        let valid_type = if matches!(operation, Operation::UploadBytes(_)) {
+        let bodyless = matches!(
+            operation,
+            Operation::CancelPartyApplication(_) | Operation::RemovePartyMember(_, _)
+        );
+        let valid_type = if bodyless {
+            m.http_body.is_empty() && m.content_type.is_empty()
+        } else if matches!(operation, Operation::UploadBytes(_)) {
             matches!(
                 m.content_type.as_str(),
                 "image/jpeg" | "image/png" | "image/webp"
             )
         } else {
-            m.content_type == "application/json"
+            !m.http_body.is_empty() && m.content_type == "application/json"
         };
         if !valid_type {
             return Err(Status::invalid_argument("Invalid product content type"));

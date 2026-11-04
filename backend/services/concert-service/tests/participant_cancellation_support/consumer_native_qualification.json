@@ -1,0 +1,557 @@
+{
+  "task": "C03-CANCEL01",
+  "status": "INTEGRATED",
+  "qualification_scope": "Actual public HTTP cancellation/fence/login recovery and retained unknown work in dedicated native fixture; clean coherent Root d0f binaries",
+  "compiled_source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+  "participant_source_commits": [
+    "16f017f8",
+    "128ed564",
+    "f8aeca1f"
+  ],
+  "root_runtime_intake_commits": [
+    "799ba5c6",
+    "30672f24",
+    "3654a72d"
+  ],
+  "canonical_dependency": {
+    "source_commit": "2e721109",
+    "participant_consumed_commit": "c43b9bce",
+    "root_intake": "Original 2e721109; do not duplicate participant consumed cherry-pick"
+  },
+  "source_pins": {
+    "tracked_backend_and_contract_files": 2151,
+    "json_sha256": "da1057e2e3a5d77292e91926cc006f3aba6a8c6e2fdf3b0561e888383ff08692",
+    "same_as_clean_platform_cohort": true,
+    "exact_owned_source_sha256": {
+      "backend/services/concert-service/src/participant/live/service.rs": "2b6f05469d48f08a1f885f7fac61e0894e1a1442179f4fba2a81896598bf254a",
+      "backend/services/concert-service/tests/participant_cancellation.rs": "d764d70f77e17b3ed959bf112b216b8a47bbc8034fe84d433022d60be2311b51",
+      "backend/services/concert-service/tests/participant_cancellation_support/host.rs": "75f1fb6f17fdf172259ae5311f218e796c36cfc82e8bd3906de4532b35dc7d43",
+      "backend/services/concert-service/tests/participant_cancellation_support/native.py": "8c8e040f951f0c6e524f10eb5e7cd0126e2f9a8aefb4d7d0ed986d6f24616ca8"
+    },
+    "selected_contract_sha256": {
+      "backend/proto/authority/v1/authority.proto": "79718b22e885e3261b1397e1bffe0dd21983d1b67f9da3648c80abaeee6f6de1",
+      "backend/proto/authority/v1/lease.proto": "bca667976a0e463f7b916e64a4476a5bd4d3d2944d7abe396d0c42905b202286",
+      "backend/proto/concert/v1/participant.proto": "ccc90e9c9ccf5aee22a139cd617026f3681a643a4bffe806d734cc591a5d021e",
+      "contracts/fixtures/core/private-participant.json": "c1c7373656cde682a4fd706d7b1d6f8e0c97192e093fbaee0862e9c6802e11db",
+      "contracts/fixtures/core/update-participant-request.json": "e56664ad5f369628c271203453f85dd8b20c0b3b01b3d6be711da9791e36cd48",
+      "contracts/generated/mcr-core.openapi.json": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "contracts/generated/mcr-domain.openapi.json": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887"
+    }
+  },
+  "previous_checkpoints": {
+    "original_f8a": "qualification.json, original behavior PASS remains scoped to original frozen3710 peers; platform_provenance_followup.json preserves input/cache provenance boundary",
+    "clean_core_and_failed_preflight": "consumer_platform_qualification.json preserves first reserved-policy exit101, observer interruption, nine clean core passes and aeee8e5f migration-preflight failure; no previous report overwritten"
+  },
+  "allocation": "ROOT-D0F-FIVE-MAINS-20261104",
+  "offer_acceptance_sha256": "678c06731a487bde815cf6bfb5b36a9cbf534baf4da3ec01e663d83d421c4b3b",
+  "source_edits": "NONE for platform repair and coherent current peers",
+  "peer_package_clean": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "clean",
+      "--manifest-path",
+      "<root>/backend/Cargo.toml",
+      "-p",
+      "auth-service",
+      "-p",
+      "friend-service",
+      "-p",
+      "notification-service"
+    ],
+    "exit_code": 0
+  },
+  "peer_package_clean_receipt_sha256": "1fa3948c4d7210cd93350ab9363d210079f2c54ff761de5f97d9aecd5b244560",
+  "path_normalization": "Local checkout prefix replaced by <root>; exact original receipts are separately hashed",
+  "five_peer_builds": [
+    {
+      "service": "auth-service",
+      "receipt_sha256": "a05e078c1785643a1f212ddf4cd67caeb822318c9ead0d18ab3df8f6b28f69ec",
+      "cargo_json_sha256": "40fd0b03d3486ab80aaa549896d3c4cbc7028cbe243c921e403ce7430918e17f",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "<root>/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "auth-service",
+        "--bin",
+        "auth-service"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 9.1,
+      "binary_sha256": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7",
+      "bytes": 46112128,
+      "cargo_fresh": false
+    },
+    {
+      "service": "friend-service",
+      "receipt_sha256": "80212a962f2160f4e5871d571292b3d21893ee0f734429b3af426cb42fb4cf22",
+      "cargo_json_sha256": "fb532d36f27a6bf06991aafe98c18e191d0250155522bda7d53653a0935b6cb0",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "<root>/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "friend-service",
+        "--bin",
+        "friend-service"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.83,
+      "binary_sha256": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509",
+      "bytes": 37830288,
+      "cargo_fresh": false
+    },
+    {
+      "service": "profile-service",
+      "receipt_sha256": "fd0126c38e0e24ad7ed87ff622823fddb3831ce21af00976c9300e592aad80de",
+      "cargo_json_sha256": "185b759f0cd2b836948ba9c7091c5496847fd1c48eb77730efd8e5ac85db0427",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "<root>/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "profile-service",
+        "--bin",
+        "profile-service"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 4.99,
+      "binary_sha256": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35",
+      "bytes": 39884656,
+      "cargo_fresh": false
+    },
+    {
+      "service": "post-service",
+      "receipt_sha256": "bdbfc68d62d049e317e8149821304ccbfa4fc74c3cd546b961388560869cb085",
+      "cargo_json_sha256": "0a0f5bdb7887c3cd7dec1322d2fcc65d52243501e28cb68bbd33ff5193ff1b07",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "<root>/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "post-service",
+        "--bin",
+        "post-service"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 17.17,
+      "binary_sha256": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0",
+      "bytes": 47215664,
+      "cargo_fresh": false
+    },
+    {
+      "service": "notification-service",
+      "receipt_sha256": "69a903401ba76a7912ec4fcecde367e17944e3a70a4dcbb61885c7dcc6dfbc32",
+      "cargo_json_sha256": "851c4618b5a5e14b087fed69a05770fd0cdaaa1b7fd5c3dddd84dfb9c01b5715",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "<root>/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "notification-service",
+        "--bin",
+        "notification-service"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 4.52,
+      "binary_sha256": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8",
+      "bytes": 31537776,
+      "cargo_fresh": false
+    }
+  ],
+  "existing_same_pin_gateway_and_host": {
+    "participant_binary_sha256": "f4efc9e3579d71361cf54b36a5e3a025f2b4d71ff545292da9818b8d487ec272",
+    "participant_receipt_sha256": "62b2dd8224e48203fa29ff0a8ff5949023f9b32dd02dbc68e5afcb81813e2cef",
+    "api_gateway_sha256": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470",
+    "origin": "Clean-platform seven-artifact Root d0f cohort; exact artifacts frozen before five-peer lease"
+  },
+  "coherent_peer_binary_sha256": {
+    "profile-service": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35",
+    "notification-service": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8",
+    "friend-service": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509",
+    "post-service": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0",
+    "auth-service": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7",
+    "api-gateway": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470"
+  },
+  "cohort_receipt_sha256": "90a7e7fb4231471ea02cb3b1639a72e0c18be413d582aa561e7913b2b4efb058",
+  "target_release": {
+    "offer": "ROOT-D0F-FIVE-MAINS-20261104",
+    "state": "RELEASED",
+    "source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+    "released_at": "2026-11-04T05:38:18.554160+00:00",
+    "target_open_handles": 0,
+    "lsof_exit_code": 1,
+    "lsof_stderr_empty": true,
+    "compiler_processes": [],
+    "free_bytes": 36387938304,
+    "before_copied_tests_or_pg": true,
+    "target_access_after_this_receipt": "NONE_PERMITTED",
+    "all_five_compile_pass": true
+  },
+  "target_release_sha256": "69e13ca81febf9b53b5911c56f7c68b85344d634e7b63288c22ed2053b87c005",
+  "build_guard": {
+    "source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+    "phases": [
+      {
+        "phase": "auth-service",
+        "attempt": "1",
+        "exit_code": 0
+      },
+      {
+        "phase": "friend-service",
+        "attempt": "1",
+        "exit_code": 0
+      },
+      {
+        "phase": "profile-service",
+        "attempt": "1",
+        "exit_code": 0
+      },
+      {
+        "phase": "post-service",
+        "attempt": "1",
+        "exit_code": 0
+      },
+      {
+        "phase": "notification-service",
+        "attempt": "1",
+        "exit_code": 0
+      }
+    ],
+    "aborted": false,
+    "max_sampled_additional": 386379776,
+    "hard_whole_bytes": 1610612736,
+    "floor_bytes": 8589934592,
+    "target_baseline_allocated": 12979675136,
+    "elapsed_since_acceptance": 49.827429,
+    "finished_at": "2026-11-04T05:38:03.170490+00:00",
+    "target_final_allocated": 13161480192,
+    "out_final_allocated": 204574720
+  },
+  "native_report_sha256": "03e2f66b29051104a959629a779454c4aa2794b86a66b81cfb02b7a146980dac",
+  "driver_sha256": "8c8e040f951f0c6e524f10eb5e7cd0126e2f9a8aefb4d7d0ed986d6f24616ca8",
+  "native_exit_code": 0,
+  "native_result": "PASS",
+  "http_statuses": {
+    "principal-1-signup": 200,
+    "principal-1-verify": 200,
+    "principal-1-login": 200,
+    "principal-2-signup": 200,
+    "principal-2-verify": 200,
+    "principal-2-login": 200,
+    "principal-3-signup": 200,
+    "principal-3-verify": 200,
+    "principal-3-login": 200,
+    "principal-1-profile": 200,
+    "principal-2-profile": 200,
+    "principal-3-profile": 200,
+    "principal-1-bootstrap": 200,
+    "principal-2-bootstrap": 200,
+    "principal-3-bootstrap": 200,
+    "normal-c03-read": 200,
+    "fresh-login-after-cancellation": 200
+  },
+  "normal_public_c03": "PASS",
+  "positive": {
+    "abandoned": true,
+    "delivered": false,
+    "serialized": false,
+    "settled": true
+  },
+  "owners_after_positive": {
+    "auth": [
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "count": 2
+      }
+    ],
+    "friend": [
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "count": 2
+      }
+    ]
+  },
+  "positive_prepared_transactions": {
+    "value": 0,
+    "evidence": "Actual driver assertion required zero before continuing to fresh real login; complete native report PASS"
+  },
+  "fresh_real_login": "PASS",
+  "unknown_callback": {
+    "abandoned": false,
+    "delivered": false,
+    "expired_callback_did_not_release": true,
+    "phase": "SEALED",
+    "serialized": false,
+    "settled": false
+  },
+  "unknown_native": {
+    "abandoned": true,
+    "delivered": false,
+    "native_status": "committed",
+    "phase": "ROOT_FINISHED",
+    "receipt_evidence": false,
+    "registered_transactions": 1,
+    "resolution": "UNKNOWN",
+    "serialized": false,
+    "settled": false
+  },
+  "owners_after_unknown": {
+    "auth": [
+      {
+        "state": "SEALED",
+        "settled": false,
+        "count": 1
+      },
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "count": 2
+      },
+      {
+        "state": "SEALED",
+        "settled": true,
+        "count": 1
+      }
+    ],
+    "friend": [
+      {
+        "state": "SEALED",
+        "settled": false,
+        "count": 1
+      },
+      {
+        "state": "COMPLETED",
+        "settled": true,
+        "count": 2
+      },
+      {
+        "state": "SEALED",
+        "settled": true,
+        "count": 1
+      }
+    ]
+  },
+  "prepared_before_owned_shutdown": 4,
+  "native_host": "PASS",
+  "migration_restart_qualification": [
+    {
+      "service": "api-gateway",
+      "expected_migrations": 17,
+      "ledger_before": 17,
+      "ledger_after": 17,
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "verify_after_restart_exit_code": 0,
+      "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7"
+    },
+    {
+      "service": "auth-service",
+      "expected_migrations": 18,
+      "ledger_before": 18,
+      "ledger_after": 18,
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "verify_after_restart_exit_code": 0,
+      "migration_manifest_sha256": "4d726b386497d0546bc30be37b677392cc94aa5a946222d05bceed87ba369aeb"
+    },
+    {
+      "service": "profile-service",
+      "expected_migrations": 9,
+      "ledger_before": 9,
+      "ledger_after": 9,
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "verify_after_restart_exit_code": 0,
+      "migration_manifest_sha256": "d93496d70d2f6f8996a56c66e945486a371ad7beb275cdc0390e27fd074536ed"
+    },
+    {
+      "service": "friend-service",
+      "expected_migrations": 18,
+      "ledger_before": 18,
+      "ledger_after": 18,
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "verify_after_restart_exit_code": 0,
+      "migration_manifest_sha256": "396294d80cf0c139654c5a71de05cff34384e9b5b3272da9df57bc21463151c4"
+    },
+    {
+      "service": "post-service",
+      "expected_migrations": 31,
+      "ledger_before": 31,
+      "ledger_after": 31,
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "verify_after_restart_exit_code": 0,
+      "migration_manifest_sha256": "0a48d09908b891612a771e40e3ac08422c0c6774dbad8aae505aae913e07fd42"
+    },
+    {
+      "service": "notification-service",
+      "expected_migrations": 6,
+      "ledger_before": 6,
+      "ledger_after": 6,
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "verify_after_restart_exit_code": 0,
+      "migration_manifest_sha256": "6aeadad2ce246bdb3a7754ae679904b5111524a5f0bd0149885d418015662665"
+    }
+  ],
+  "native_guard": {
+    "exit_code": 0,
+    "aborted": null,
+    "max_sampled_whole_additional": 625954816,
+    "hard_whole_bytes": 1610612736,
+    "fixed_target_growth": 181805056,
+    "owned_roots_absent": [
+      true
+    ],
+    "sampling_limit": "Sampled allocation; no released target read, no peak inferred between samples",
+    "finished_at": "2026-11-04T05:38:45.875582+00:00"
+  },
+  "native_guard_sha256": "7fc1483ff65225790f34f5e2f588fe2ff0c91263d49df7ecac38ad6c8e0e0485",
+  "cleanup": {
+    "result": "PASS",
+    "process_stops": [
+      {
+        "service": "local-mail",
+        "resource": "in_process_mail_sink",
+        "exit_code": 0,
+        "forced": false
+      },
+      {
+        "service": "api-gateway",
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "auth-service",
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "post-service",
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "friend-service",
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "notification-service",
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "profile-service",
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "redis",
+        "forced": false,
+        "exit_code": 0
+      }
+    ],
+    "copied_workflow_release": {
+      "state": "RELEASED",
+      "copied_workflow": "C03-CANCEL01 coherent d0f peer cohort",
+      "released_at": "2026-11-04T05:39:07.070606+00:00",
+      "report_sha256": "03e2f66b29051104a959629a779454c4aa2794b86a66b81cfb02b7a146980dac",
+      "guard_sha256": "7fc1483ff65225790f34f5e2f588fe2ff0c91263d49df7ecac38ad6c8e0e0485",
+      "owned_directory_absent": true,
+      "owned_processes_absent": true,
+      "target_access_since_release": "NONE",
+      "fresh_real_login": "PASS",
+      "native_host": "PASS",
+      "whole_guard_aborted": null
+    },
+    "copied_workflow_release_sha256": "d02c16881b6c413cbbf8ad2ea7b42537c614c213dfe65ab31b5df12218aa3edb",
+    "participant_worker_independent_readback": "Owned directory absent and all seven recorded peer/Redis process IDs absent; read-only observation after Root release"
+  },
+  "limitations": [
+    "Controlled gate after actual durable publication; spontaneous browser timing is not qualified.",
+    "Real Auth/Friend and all six peer MAINs are Root d0f; Participant runs as dedicated native test host, not full production Concert main composition.",
+    "Retained callback/native unknown negative fences disappear only at whole owned cluster teardown; teardown is not settlement evidence.",
+    "No fabricated HTTP EOF, completion RPC, TTL release, manual prepared rollback or SQL identity provisioning.",
+    "Original failures and original f8a pass remain separately pinned; this result does not retrospectively upgrade them."
+  ],
+  "production_main_composition": "Root owned; NOT_RUN by this worker",
+  "browser_in01": "Root/FE owned; NOT_RUN",
+  "release_acceptance": "Not inferred",
+  "publication": "PENDING_ROOT_NON_FORCE_MASTER_POSTIMAGE_VERIFICATION",
+  "resources_held_by_participant_worker": false
+}

@@ -297,3 +297,223 @@ The pre-fix evidence remains unchanged. Root owns serial integration and remote
 master publication; those delivery checks remain required before completing the
 assigned persistent goal. This handoff changes only this document and its new
 passing evidence JSON; no Cargo/PG or shared-file writes are performed here.
+
+## C03-CANCEL01: interrupted producer work (2026-11-04)
+
+This is a new regression assignment after the prior C03 delivery goal completed.
+Its implementation baseline is Root `a0730a4e1cadd288a2137bf2e16bbb0bb7857aef`.
+Status is IN_PROGRESS; the previously recorded normal-response qualification
+does not certify cancellation. The two private Root incident reports show one
+published `getConcertParticipant` scope still ACTIVE and unserialized, with no
+tracked transaction or child intent, and one expired SEALED lease in each owner.
+Two prepared owner transactions remained, and a subsequent Auth login timed out.
+The old runtime's normal shutdown is cleanup, not cancellation recovery evidence.
+
+The Participant handler installs Canonical CR08 `OwnerGuardScope::run_owned`
+immediately after successful acquisition, before another suspension point. It
+moves the verified context, current Auth observation, service clone and exact
+scope into the owned future. All subsequent checks, authority construction,
+durable delivery publication, local/Profile work, final checks and response
+construction run there. Successful responses keep the existing retained body
+lifetime. The Participant patch adds no global lifecycle, Drop release, TTL
+release, synthetic EOF or DeliveryCompleted path.
+
+CR08 owns the supervisor and migration 0048. Caller interruption only signals
+that supervisor. Actual destruction of its owned work future, closed admission,
+and drained callbacks precede durable `response_abandoned_at`; actual owner and
+child settlement precedes `cancellation_settled_at`. Neither is HTTP delivery:
+`serialized_at` and `delivery_completed_at` remain NULL. Unknown callbacks or
+native outcomes retain exclusions and capacity rather than obtaining a receipt.
+
+Dedicated tests are `tests/participant_cancellation.rs` and
+`tests/participant_cancellation_support/{host.rs,native.py}` under Concert.
+The host composes the actual canonical core, Participant handler, native resolver,
+Bootstrap handler, settlement and delivery services. A deterministic publisher
+fixture calls the real durable publisher, then pauses before handing its token
+to serialization. The controller uses actual Auth signup, private email delivery,
+verification, login, Profile update and public Bootstrap. It resets an actual
+public Gateway C03 TCP connection after publication, checks root/owner state and
+prepared transactions, then performs a new real Auth login. Separate admitted
+callback and registered-native-COMMIT-without-witness fixtures must stay held.
+The latter deliberately violates the producer witness contract to test refusal;
+it is not a product write path or an invented positive native receipt.
+
+The new controller reuses the audited local helpers from the baseline:
+`backend/scripts/mcr/{dev_stack,migration_smoke,runtime_smoke,world_in01_prepare,
+world_in01_live,participant_live_join_smoke}.py`. It preserves their owned
+directory, marker/inode, PostgreSQL identity, mTLS, real principal, PID/port and
+shutdown checks. Build receipts pin the controller dependencies and all Rust,
+manifest, proto and migration inputs. The selected product release still uses
+the source-bound constructor and supplied source pack. No source artwork,
+`docs/source/`, shared contract, manifest, router or production composition is
+changed by this patch.
+
+Validation so far: Python driver AST parse and Rust 1.88.0 formatting pass;
+`python3 scripts/mcr/check-plan.py` exits 0 for planning/provenance only. Cargo
+compilation, native cancellation/login qualification and committed handoff remain
+NOT_RUN pending the CR08 dependency and named resource allocation. Root owns
+production composition, serial master publication and the browser IN01 rerun.
+
+### C03-CANCEL01 native qualification
+
+The qualification status is now INTEGRATED for the dedicated real native HTTP
+fixture. The earlier NOT_RUN checkpoint above remains historical. Compiled
+source is `f8aeca1f541fbb82777089e9281c333479c25f74`, containing Participant commits
+`16f017f8`, `128ed564`, `f8aeca1f` and Canonical `2e721109` consumed as `c43b9bce`.
+Root takes the Participant commits separately; it must not duplicate CR08.
+
+Under named lease `C03-CANCEL01-BACKEND-202611040509Z`, the exact command was
+`cargo +1.88.0 test -p concert-service --test participant_cancellation --no-run --locked --offline --message-format=json`
+with jobs 2, incremental 0, and dev/test debug 0. Attempt one exited 101 in 4.37 s:
+borrowed target artifacts retained another worktree's absolute proto paths and
+old application metadata, despite the required exports existing in current
+source. The failed Cargo JSON and stderr remain preserved. The authorized repair
+cleaned only `contracts-build`, `concert-domain` and `concert-application` (66
+files, 39 MiB), with no source changes. Attempt two exited 0 in 30.74 s. Exactly
+one requested test executable was copied and verified outside the build target;
+its SHA256 is
+`9a0bb77d3bef921a5302c656e99804ef6d6ec4b372bec3d1a9d92612d20f0f73`.
+The target was explicitly released with zero handles/processes before native
+execution. The portable [qualification receipt](../../../backend/services/concert-service/tests/participant_cancellation_support/qualification.json)
+contains all 1772 build/controller source hashes, exact contract hashes, peer
+binary hashes, command results, incident/report hashes, and limitations.
+
+The copied native controller exited 0 in 23.73 s against the frozen 3710 Gateway
+and actual Auth, Friend, Profile, Post and Notification MAIN processes, using a
+new owned PostgreSQL 16.14 cluster and fresh mTLS keys. Three independent users
+completed actual signup, delivered email verification, login, Profile update and
+public Bootstrap. The normal public C03 GET returned 200 and completed its
+original HTTP EOF/owner path, with serialization and delivery recorded and no
+abandonment. The first gated GET was interrupted by a real public TCP reset
+after actual delivery publication. Its supervisor recorded abandonment and
+settlement while both serialization and delivery remained NULL. Auth and Friend
+each held two COMPLETED scopes (normal plus interrupted), with zero prepared
+transactions. A subsequent real `/api/auth/login` returned 200 with the same
+canonical principal and a fresh access token; no SQL identity or refresh-token
+insertion substituted for login.
+
+The second actual GET retained an admitted callback for 4.5 s, beyond both the
+original request TTL and CR08's two-second cleanup budget. It remained SEALED
+with neither cancellation proof and with both owner fences held. Releasing the
+actual callback after that bounded cleanup did not invent a later receipt. The
+third actual PATCH registered and committed a real Concert transaction without
+a Participant effect witness, using the exact request settlement reference.
+The native resolver returned UNKNOWN with empty receipt evidence. Its root
+could truthfully finish abandoned work, but cancellation settlement remained
+NULL and both owner fences stayed held. Four prepared fences remained across
+the two negative cases before disposable shutdown. Owner `scope_settlement`
+alone was not treated as completion: the unknown-native leases remained SEALED
+even after their root-work proof existed.
+
+The Rust host passed its exact ignored test. Every retained MAIN and Redis
+stopped unforced with exit 0; owned cleanup passed, and independent checks found
+all recorded process IDs and the owned root absent. No prepared rollback,
+manual completion RPC, synthetic EOF, mutation retry, or TTL-based release was
+used. Expected negative fences disappeared only with whole-cluster teardown;
+that teardown is not recovery proof. Measured whole-workflow growth peaked at
+220,311,552 bytes under the 1.4 GiB bound, with about 39.2 GB free afterward. The
+private capacity observer raced with directory removal during successful final
+cleanup; its last sampled peak and this limitation are preserved separately
+from the passing product/host results and independently verified cleanup.
+
+Planning/provenance, Python AST, Rust 1.88 formatting, changed-path checks and
+`git diff --check` pass. This demonstrates cancellation handling at a controlled
+post-publication interruption point through actual HTTP and native owners.
+Spontaneous browser timing, production runtime activation, the same-candidate
+IN01 browser rerun, release acceptance and final master publication remain
+Root/FE obligations; none are inferred from this dedicated integration fixture.
+
+### Consumer cache-provenance follow-up
+
+The original C03 native behavior result above remains PASS for its exact frozen
+peer cohort. Its 1772 hashes pin the input snapshot; they do not independently
+establish that reused platform metadata came from those same source bytes.
+The successful Cargo JSON records `platform` as `fresh=true`. Earlier in that
+same lease, other borrowed local packages demonstrably retained foreign proto
+paths or stale application exports. This does not establish that the original
+C03 platform artifact itself was stale, and no original report is relabelled.
+
+Root subsequently reported a copied owner-policy mismatch in combined consumer
+qualification. Canonical's source readback found the current owner policies
+aligned with the current platform policy, while Root's frozen compile log
+recorded reused test-profile platform metadata. A clean, named-allocation
+platform rebuild and exact copied consumer rerun remain required to resolve that
+provenance boundary; they are Root/Canonical owned. No Participant handler fix
+has been established by this finding. The [successor provenance note](../../../backend/services/concert-service/tests/participant_cancellation_support/platform_provenance_followup.json)
+preserves the original artifact/report hashes, observed Fresh metadata and the
+bounded follow-up. This goal remains active through the qualified successor,
+concrete consumer fixes if any, and verified Root publication. No additional
+Cargo, PostgreSQL or shared-target work is started by this documentation patch.
+
+### Clean-platform consumer checkpoint
+
+Root rebuilt the seven requested artifacts at unchanged source
+`d0f063d18a0549935f80a536077c30962d89f9e9` under named allocation
+`ROOT-SEVEN-CACHE-REPAIR-D0F-20261104`. The earlier copied core failure
+(reserved owner-authority policy mismatch, exit 101) remains preserved. Only
+the platform package was cleaned; no Participant, fixture, policy or other
+source change was needed. The first compile observer raced temporary metadata
+removal, stopped its exact owned process group and received no validation
+credit. The repaired observer retained that interruption and completed the
+requested builds within the original allocation. Platform metadata was rebuilt
+in that lease before subsequent same-pin reuse. All seven frozen artifacts
+were verified and the target released before copied tests or PostgreSQL work.
+
+All nine actual CR08 cancellation cases passed with exact report hashes and
+owned-cluster cleanup. This resolves the reproduced policy mismatch for the
+clean core consumer. The fresh C03 HTTP attempt did not reach service startup:
+current source expected 18 Auth migrations while the retained historical 3710
+Auth executable predates that manifest. Its migrate and verify commands exited
+0, but the independent exact ledger check failed; HTTP statuses were empty,
+prepared transactions were zero and owned cleanup passed. This is preserved as
+a failed pre-service cohort attempt, with no Participant behavior claim.
+
+The portable [consumer platform qualification](../../../backend/services/concert-service/tests/participant_cancellation_support/consumer_platform_qualification.json)
+records the unchanged input pin, build/observer failures, clean metadata, seven
+artifact hashes, nine core results, and failed HTTP preflight separately. Root
+owns rebuilding coherent current peer MAINs and rerunning actual C03 HTTP.
+The original f8a behavior PASS and its compiled-cache provenance limit remain
+unchanged. No additional resource lease or test run was taken by this worker.
+
+### Coherent native consumer qualification
+
+C03-CANCEL01 is INTEGRATED in the dedicated native fixture at Root source
+`d0f063d18a0549935f80a536077c30962d89f9e9`. Root rebuilt five current peer
+MAINs under `ROOT-D0F-FIVE-MAINS-20261104`, retaining the same-pin clean Gateway
+and Participant host. Exact Auth, Friend and Notification packages were cleaned
+for their embedded migration inputs. All five builds exited 0 with freshly
+compiled executables. The 2151 tracked backend/contract input hashes match the
+clean-platform cohort; all six peer hashes and the host hash were verified.
+The target was released at 05:38:18 UTC, before any copied native PostgreSQL
+work at 05:38:19 UTC. No Participant Rust or Python edit was required.
+
+The actual public HTTP run passed all 17 recorded statuses: three real users
+completed signup, delivered-email verification, login, Profile update and
+Bootstrap; normal C03 GET returned 200 through its original EOF path. The real
+post-publication TCP reset left serialization and delivery false, recorded true
+abandonment and cancellation settlement, completed both Auth/Friend owners
+(two scopes each including the normal control), and left zero prepared
+transactions. Subsequent real Auth login returned 200 with the same canonical
+identity and a fresh token. The retained callback remained SEALED without
+abandonment after expiry and delayed callback release. The registered, actually
+committed native transaction resolved UNKNOWN without witness; abandonment
+was truthful but cancellation settlement stayed false. Four expected negative
+fences remained held until whole disposable-cluster teardown.
+
+All six source-exact migration ledgers survived restart and independent
+verification: Gateway 17, Auth 18, Profile 9, Friend 18, Post 31 and
+Notification 6. The Rust host passed; owned cleanup passed; every peer and
+Redis stopped unforced with exit 0. Independent readback found the owned
+directory and all recorded peer/Redis PIDs absent. The whole-workflow guard
+recorded 625,954,816 additional sampled bytes under its 1.5 GiB bound, with no
+abort. The native report SHA256 is
+`03e2f66b29051104a959629a779454c4aa2794b86a66b81cfb02b7a146980dac`.
+
+The portable [coherent native qualification](../../../backend/services/concert-service/tests/participant_cancellation_support/consumer_native_qualification.json)
+records source/contract and artifact pins, exact build commands and exit codes,
+positive and negative behavior, migration/restart checks, resource release,
+cleanup and limitations. Earlier failed and passing attempts remain unchanged.
+This resolves the concrete cache/cohort consumer follow-up without weakening
+authority checks. Root's non-force master publication remains to be verified;
+full production Concert main composition, browser IN01 and release acceptance
+remain separate Root/FE obligations. No resource is held by this worker.

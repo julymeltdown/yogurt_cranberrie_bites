@@ -1,0 +1,190 @@
+{
+  "task_id": "C06-MOTION-V2",
+  "producer_status": "IN_PROGRESS",
+  "shape_status": "CONTRACT_READY",
+  "qualification": "CANDIDATE_ONLY",
+  "production_eligible": false,
+  "production_admission": "DENIED",
+  "branch": "codex/mcr-be-avatar-motion-v2",
+  "base_commit": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "source_commits": [
+    "ae41db9db2493c259c72ef461844a3ff1019a1f6",
+    "83b23afd6891bdc9509aae54fc214a9a77039535",
+    "5da616f8e0dd5b42501dd8374765862ddf007acc"
+  ],
+  "changed_paths": [
+    "backend/crates/concert-domain/src/avatar_motion_v2/mod.rs",
+    "backend/crates/concert-domain/src/lib.rs",
+    "backend/crates/concert-domain/tests/avatar_motion_v2.rs",
+    "backend/releases/selected-character-motion-v2/manifest.json",
+    "contracts/assets/v2/avatar-config.schema.json",
+    "contracts/assets/v2/avatar-manifest.schema.json",
+    "contracts/fixtures/assets/motion-v2/invalid/body-overflow.json",
+    "contracts/fixtures/assets/motion-v2/invalid/float-revision.json",
+    "contracts/fixtures/assets/motion-v2/invalid/legacy-id.json",
+    "contracts/fixtures/assets/motion-v2/invalid/missing-outfit.json",
+    "contracts/fixtures/assets/motion-v2/invalid/mixed-representation.json",
+    "contracts/fixtures/assets/motion-v2/invalid/null-body.json",
+    "contracts/fixtures/assets/motion-v2/invalid/preset-mixed-items.json",
+    "contracts/fixtures/assets/motion-v2/invalid/skin-tone.json",
+    "contracts/fixtures/assets/motion-v2/invalid/unknown-manifest.json",
+    "contracts/fixtures/assets/motion-v2/invalid/unknown-nested.json",
+    "contracts/fixtures/assets/motion-v2/invalid/unknown-preset.json",
+    "contracts/fixtures/assets/motion-v2/invalid/url.json",
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-kind.json",
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-revision.json",
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-slot.json",
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-version.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-0.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-1.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-2.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-3.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-4.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-5.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-6.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-7.json",
+    "contracts/fixtures/assets/motion-v2/valid/layered-max.json",
+    "contracts/fixtures/assets/motion-v2/valid/preset-01.json",
+    "contracts/fixtures/assets/motion-v2/valid/preset-02.json",
+    "contracts/fixtures/assets/motion-v2/valid/preset-03.json",
+    "contracts/fixtures/assets/motion-v2/valid/preset-04.json",
+    "contracts/fixtures/assets/motion-v2/valid/preset-05.json",
+    "contracts/fixtures/assets/motion-v2/valid/preset-06.json",
+    "docs/mcr/contracts/avatar-motion-v2/README.md",
+    "docs/mcr/contracts/avatar-motion-v2/build_catalog.py",
+    "docs/mcr/contracts/avatar-motion-v2/eligibility-boundary.md",
+    "docs/mcr/contracts/avatar-motion-v2/handoff.json",
+    "docs/mcr/contracts/avatar-motion-v2/validate.py",
+    "docs/mcr/contracts/avatar-motion-v2/validation.md"
+  ],
+  "shared_hunk": {
+    "path": "backend/crates/concert-domain/src/lib.rs",
+    "addition": "pub mod avatar_motion_v2;"
+  },
+  "frozen_art_source_commit": "bb7d21b3e931a9dc88056c1c1c436eb9817292da",
+  "copied_code": false,
+  "mapping_provenance": "README.md: Authorship and provenance; canonical manifest source pointers/resources and source_frames",
+  "dependencies": {
+    "rust": [
+      "serde",
+      "serde_json",
+      "sha2",
+      "thiserror"
+    ],
+    "python": [
+      "jsonschema",
+      "Pillow"
+    ],
+    "manifest_or_lockfile_changes": false
+  },
+  "frozen_files": [
+    {
+      "path": "backend/releases/selected-character-motion-v2/manifest.json",
+      "bytes": 95128,
+      "sha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6"
+    },
+    {
+      "path": "contracts/assets/v2/avatar-config.schema.json",
+      "bytes": 3543,
+      "sha256": "3cbfd3185113d7f4913de89b0e04d67046dbab64b3f90c0b5f14a261afc6a78b"
+    },
+    {
+      "path": "contracts/assets/v2/avatar-manifest.schema.json",
+      "bytes": 102672,
+      "sha256": "8fc206f00d263ed9465cad932768075a1a0ca61d927e98ccc2aa8e9e7ef0d54f"
+    }
+  ],
+  "validation": [
+    {
+      "command": "python3 docs/mcr/contracts/avatar-motion-v2/build_catalog.py --check",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 docs/mcr/contracts/avatar-motion-v2/validate.py",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "rustfmt +1.88.0 --check --edition 2021 backend/crates/concert-domain/src/avatar_motion_v2/mod.rs backend/crates/concert-domain/tests/avatar_motion_v2.rs",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "cargo +1.88.0 test --locked -p concert-domain --test avatar_motion_v2",
+      "status": "NOT_RUN",
+      "reason": "Awaiting fresh named existing-target allocation; no target or process held"
+    }
+  ],
+  "consumer_coordination": {
+    "Motion83": "Exact frozen config sent before consumer implementation; committed schemas/catalog/fixtures and stable hashes sent directly. Independent consumer reports rendering and production-denial checks; not claimed as producer execution.",
+    "Root153": "Frozen shape delivered; existing V8 source leases returned. Serial delivery integration only; no duplicate decoder requested."
+  },
+  "outside_producer_scope": [
+    "Old AvatarSelection/parser/persistence changes, public HTTP/WS and generated DTO unions, registry and root dispatch activation remain root owned.",
+    "No reviewed-production art claim, fallback art, source editing or image regeneration.",
+    "Overall C06/AR03/IN01/IN04/IN05 acceptance is not established by this packet."
+  ],
+  "remaining_producer_work": [
+    "Allocated Rust execution; fix any failures; commit actual evidence; deliver qualified packet to designated integrator."
+  ],
+  "integration": "Serial cherry-picks from the base in source_commits order, followed by evidence commit(s). Integrator-only publication; preserve concurrent exports and protected files.",
+  "consumer_evidence": {
+    "source_commit": "df0522fa7fa93fd9f66db3a8b0ec38b95db0d6ee",
+    "path": "docs/mcr/evidence/avatar-motion-adoption/v2-checkpoint.json",
+    "sha256": "ad2165c2db48d338ce87414a103b5a2e436c6b378bf9cace83b3912e13b7efb6",
+    "inspected_by_producer": true,
+    "executed_by_producer": false,
+    "result": "MOCK_READY_CANONICAL_V2_CANDIDATE",
+    "checks": {
+      "commands": 8,
+      "exitCodes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unitCases": 60,
+      "sourcePins": 28,
+      "scopedTsFiles": 19,
+      "fullApplicationTsFiles": 758,
+      "tsDiagnostics": 0,
+      "lintWarnings": 0,
+      "optimizedBuild": "actual consumer/Phaser fixture, not full production application"
+    },
+    "native": {
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "themes": [
+        "REVENGE",
+        "PARADE",
+        "DANGER"
+      ],
+      "presetRgbaPerWidth": 120,
+      "wardrobePairwiseRgba": 1176,
+      "wireContract": "2.0.0",
+      "gamesPerWidth": 1,
+      "liveSocketsPerWidth": 0,
+      "initialAvatarResourceRequests": 2,
+      "additionalInteractionAvatarRequests": 0,
+      "screenshots": 12,
+      "browser": "156.0.8078.80",
+      "cleanup": "zero textures/sprites/listeners/leases/decoded atlas; one game destroyed per width"
+    },
+    "reported_no_mapping_mismatch": true,
+    "limitation": "Independent consumer fixture evidence, not producer Rust execution or public production admission; exact producer34pins retained."
+  },
+  "eligibility_boundary": "docs/mcr/contracts/avatar-motion-v2/eligibility-boundary.md"
+}

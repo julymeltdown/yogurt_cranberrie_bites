@@ -156,3 +156,96 @@ fn closed_routes_reject_cross_event_forwarding_and_noncanonical_media_ids() {
         );
     }
 }
+
+#[test]
+fn five_party_mutation_routes_bind_exact_c04_targets_and_queries() {
+    let event = Uuid::new_v4();
+    let party = Uuid::new_v4();
+    let application = Uuid::new_v4();
+    let user = Uuid::new_v4();
+    let prefix = format!("/api/concert/events/{event}");
+    assert_eq!(
+        operation(
+            event,
+            "POST",
+            &format!("{prefix}/parties/{party}/applications")
+        )
+        .unwrap(),
+        Operation::ApplyParty(party)
+    );
+    assert_eq!(
+        operation(
+            event,
+            "POST",
+            &format!("{prefix}/party-applications/{application}/decision")
+        )
+        .unwrap(),
+        Operation::DecidePartyApplication(application)
+    );
+    assert_eq!(
+        operation(
+            event,
+            "DELETE",
+            &format!("{prefix}/party-applications/{application}?expected_revision=2")
+        )
+        .unwrap(),
+        Operation::CancelPartyApplication(application)
+    );
+    assert_eq!(
+        operation(
+            event,
+            "DELETE",
+            &format!(
+                "{prefix}/parties/{party}/members/{user}?expected_revision=1&party_revision=3"
+            )
+        )
+        .unwrap(),
+        Operation::RemovePartyMember(party, user)
+    );
+    assert_eq!(
+        operation(event, "POST", &format!("{prefix}/parties/{party}/cancel")).unwrap(),
+        Operation::CancelParty(party)
+    );
+    for (method, target) in [
+        ("POST", format!("{prefix}/parties/{party}/applications?extra=true")),
+        ("GET", format!("{prefix}/parties/{party}/applications")),
+        ("DELETE", format!("{prefix}/party-applications/{application}")),
+        (
+            "DELETE",
+            format!("{prefix}/party-applications/{application}?expected_revision=0"),
+        ),
+        (
+            "DELETE",
+            format!(
+                "{prefix}/party-applications/{application}?expected_revision=2&expected_revision=3"
+            ),
+        ),
+        (
+            "DELETE",
+            format!("{prefix}/parties/{party}/members/{user}?expected_revision=1"),
+        ),
+        (
+            "DELETE",
+            format!(
+                "{prefix}/parties/{party}/members/{user}?expected_revision=1&party_revision=3&extra=1"
+            ),
+        ),
+        (
+            "DELETE",
+            format!("{prefix}/parties/{party}/members/{user}?expected_revision=1&party_revision=03"),
+        ),
+        (
+            "POST",
+            format!("{prefix}/party-applications/{application}/decision?extra=true"),
+        ),
+        (
+            "GET",
+            format!("{prefix}/party-applications/{application}"),
+        ),
+    ] {
+        assert!(
+            operation(event, method, &target).is_err(),
+            "{method} {target}"
+        );
+    }
+}

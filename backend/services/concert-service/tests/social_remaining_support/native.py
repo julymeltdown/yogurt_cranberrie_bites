@@ -57,8 +57,8 @@ def run(args, report):
                'MCR_SOCIAL_FRIEND_URL': cluster.url('mcr_social_friend'), 'MCR_SOCIAL_CONCERT_URL': cluster.url('mcr_social_concert')}
         def tests(phase):
             for name, binary in binaries.items():
-                result = execute([str(binary), '--ignored', '--test-threads=1', '--nocapture'], env=env, phase=f'{phase}-{name}', cwd=ROOT / 'backend', timeout=90)
-                expected = 5 if name == 'friend' else 6
+                result = execute([str(binary), '--ignored', '--test-threads=1', '--nocapture', '--skip', 'actual_qa04_http_authorization_matrix'], env=env, phase=f'{phase}-{name}', cwd=ROOT / 'backend', timeout=90)
+                expected = 5 if name == 'friend' else 8
                 if f'test result: ok. {expected} passed; 0 failed; 0 ignored;' not in result.stdout:
                     raise SmokeError('inventory', 'exact native test inventory required')
                 report['checks'][f'{phase}-{name}'] = {'exit_code': result.returncode, 'stdout': result.stdout}

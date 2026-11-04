@@ -7,6 +7,25 @@ use concert_domain::feed::Filter;
 use tonic::Status;
 use uuid::Uuid;
 
+pub(super) fn social_request(
+    request: &super::proto::ProductRequest,
+    expected: crate::social_live::protocol::SocialOperation,
+) -> Result<(), Status> {
+    let decoded = crate::social_live::protocol::SocialRequest::parse(
+        super::canonical_uuid(&request.user_id)?,
+        super::canonical_uuid(&request.event_id)?,
+        &request.http_method,
+        &request.http_target,
+        &request.http_body,
+        &request.content_type,
+        &request.idempotency_key,
+    )?;
+    if decoded.operation() != expected {
+        return Err(invalid());
+    }
+    Ok(())
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct CommandStatusQuery {
     pub operation: RegisteredOperation,
@@ -34,6 +53,54 @@ pub(super) fn command_status(target: &str) -> Result<CommandStatusQuery, Status>
         operation: operation.ok_or_else(invalid)?,
         key: key.ok_or_else(invalid)?,
     })
+}
+
+/// Strict C04 form query for the two bodyless DELETE commands. Query presence
+/// is required and every expected revision appears exactly once.
+pub(super) fn party_command(target: &str, operation: super::Operation) -> Result<(), Status> {
+    let fields: &[&str] = match operation {
+        super::Operation::CancelPartyApplication(_) => &["expected_revision"],
+        super::Operation::RemovePartyMember(_, _) => &["expected_revision", "party_revision"],
+        _ => return Ok(()),
+    };
+    let query = target
+        .split_once('?')
+        .map(|(_, value)| value)
+        .ok_or_else(invalid)?;
+    let mut seen = 0u8;
+    for pair in query.split('&') {
+        let (name, value) = pair.split_once('=').ok_or_else(invalid)?;
+        let name = decode_without_plus(name)?;
+        let value = decode_without_plus(value)?;
+        let bit = fields
+            .iter()
+            .position(|field| *field == name)
+            .filter(|position| seen & (1 << position) == 0)
+            .ok_or_else(invalid)?;
+        seen |= 1 << bit;
+        if value.is_empty()
+            || (value.len() > 1 && value.starts_with('0'))
+            || !value.bytes().all(|byte| byte.is_ascii_digit())
+            || value
+                .parse::<i64>()
+                .ok()
+                .is_none_or(|revision| !(1..=9_007_199_254_740_991).contains(&revision))
+        {
+            return Err(invalid());
+        }
+    }
+    if (seen as usize) == (1usize << fields.len()) - 1 {
+        Ok(())
+    } else {
+        Err(invalid())
+    }
+}
+
+fn decode_without_plus(value: &str) -> Result<String, Status> {
+    if value.contains('+') {
+        return Err(invalid());
+    }
+    decode(value)
 }
 
 fn invalid() -> Status {
@@ -154,6 +221,33 @@ fn hex(byte: u8) -> Option<u8> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn social_delete_and_reveal_use_actual_frame_queries_without_key_or_body_fallback() {
+        use crate::social_live::protocol::SocialOperation;
+        let event = Uuid::new_v4();
+        let actor = Uuid::new_v4();
+        let id = Uuid::new_v4();
+        let mut input = super::super::proto::ProductRequest {
+            user_id: actor.to_string(),
+            event_id: event.to_string(),
+            http_method: "DELETE".into(),
+            http_target: format!(
+                "/api/concert/events/{event}/social-requests/{id}?expected_revision=1"
+            ),
+            idempotency_key: Uuid::new_v4().to_string(),
+            ..Default::default()
+        };
+        assert!(social_request(&input, SocialOperation::Cancel(id)).is_ok());
+        input.idempotency_key.clear();
+        assert!(social_request(&input, SocialOperation::Cancel(id)).is_err());
+        input.http_method = "GET".into();
+        input.http_target =
+            format!("/api/concert/events/{event}/social-requests/{id}/reveal?platform=INSTAGRAM");
+        assert!(social_request(&input, SocialOperation::Reveal(id)).is_ok());
+        input.http_target.push_str("&platform=X");
+        assert!(social_request(&input, SocialOperation::Reveal(id)).is_err());
+    }
 
     #[test]
     fn accepts_frozen_fields_and_single_decoding_without_changing_target() {

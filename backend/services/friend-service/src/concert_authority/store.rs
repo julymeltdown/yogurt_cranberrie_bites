@@ -259,7 +259,7 @@ impl PgOwnerAuthority {
         budget.run(async {
             let binding=request.binding.as_ref().ok_or_else(model::invalid)?;let view=request.view.as_ref().ok_or_else(model::invalid)?;let identity=request.transaction.as_ref().ok_or_else(model::invalid)?;model::identity(identity)?;
             let producer=proto::Producer::try_from(identity.producer).map_err(|_|model::invalid())?;
-            if !matches!((producer,caller),(proto::Producer::Concert,Workload::Concert)|(proto::Producer::Post,Workload::Post)|(proto::Producer::Profile,Workload::Profile)){return Err(model::denied());}
+            if !matches!((producer,caller),(proto::Producer::Concert,Workload::Concert)|(proto::Producer::Post,Workload::Post)|(proto::Producer::Profile,Workload::Profile)|(proto::Producer::Notification,Workload::Notification)){return Err(model::denied());}
             if !self.resolver.configured(producer){return Err(model::unavailable());}
             let mut tx=self.transaction(budget).await?;let lease=self.active(&mut tx,view,binding,budget).await?;let digest=model::identity_digest(identity)?;
             let existing:Option<(Uuid,serde_json::Value)>=sqlx::query_as("select registration_id,identity from public.concert_owner_guard_participants where guard_id=$1 and producer=$2 and identity_digest=$3")

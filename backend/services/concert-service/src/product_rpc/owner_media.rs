@@ -51,12 +51,20 @@ impl ProductOwner for OwnerMediaRuntime {
             Operation::MediaMetadata(_) => "getConcertMedia",
             Operation::PrivateContent(_) => "readConcertMedia",
             Operation::CommandStatus => "getConcertCommandStatus",
-            Operation::Feed
+            Operation::Social(_)
+            | Operation::Feed
             | Operation::Post(_)
             | Operation::Comments(_)
             | Operation::ListParties
             | Operation::GetParty(_)
             | Operation::CreateParty => {
+                return Err(Status::unavailable("Product producer unavailable"));
+            }
+            Operation::ApplyParty(_)
+            | Operation::DecidePartyApplication(_)
+            | Operation::CancelPartyApplication(_)
+            | Operation::RemovePartyMember(_, _)
+            | Operation::CancelParty(_) => {
                 return Err(Status::unavailable("Product producer unavailable"));
             }
         };

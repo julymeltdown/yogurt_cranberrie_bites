@@ -123,6 +123,11 @@ impl ChildNativeIdentity {
 #[derive(Clone, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(tag = "kind", rename_all = "SCREAMING_SNAKE_CASE", deny_unknown_fields)]
 pub enum ChildRecoveryReference {
+    NotificationInbox {
+        query: ChildQuery,
+        child_id: String,
+        completion_secret: String,
+    },
     ProfilePublic {
         query: ChildQuery,
         child_id: String,
@@ -152,6 +157,7 @@ pub enum ChildRecoveryReference {
 impl ChildRecoveryReference {
     pub fn kind_name(&self) -> &'static str {
         match self {
+            Self::NotificationInbox { .. } => "NOTIFICATION_INBOX",
             Self::ProfilePublic { .. } => "PROFILE_PUBLIC",
             Self::LocalPublic { .. } => "LOCAL_PUBLIC",
             Self::GiftPrivate { .. } => "GIFT_PRIVATE",
@@ -161,6 +167,7 @@ impl ChildRecoveryReference {
     pub(super) fn key(&self) -> Result<(u8, Uuid), Status> {
         Ok((
             match self {
+                Self::NotificationInbox { .. } => 5,
                 Self::ProfilePublic { .. } => 1,
                 Self::LocalPublic { .. } => 2,
                 Self::GiftPrivate { .. } => 3,
@@ -171,7 +178,8 @@ impl ChildRecoveryReference {
     }
     pub fn query(&self) -> &ChildQuery {
         match self {
-            Self::ProfilePublic { query, .. }
+            Self::NotificationInbox { query, .. }
+            | Self::ProfilePublic { query, .. }
             | Self::LocalPublic { query, .. }
             | Self::GiftPrivate { query, .. }
             | Self::SocialRead { query, .. } => query,
@@ -179,6 +187,23 @@ impl ChildRecoveryReference {
     }
     pub fn intent_id(&self) -> Result<Uuid, Status> {
         match self {
+            Self::NotificationInbox {
+                query,
+                child_id,
+                completion_secret,
+            } => {
+                if query.subject != query.actor
+                    || completion_secret.len() != 64
+                    || !completion_secret
+                        .bytes()
+                        .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+                    || completion_secret.bytes().all(|b| b == b'0')
+                {
+                    return Err(invalid());
+                }
+                wire::canonical_uuid(child_id)
+            }
+
             Self::ProfilePublic {
                 query, child_id, ..
             } => simple_uuid(
@@ -201,6 +226,7 @@ impl ChildRecoveryReference {
         self.query().validate_for(binding)?;
         self.intent_id()?;
         match self {
+            Self::NotificationInbox { .. } => {}
             Self::ProfilePublic {
                 completion_secret, ..
             } => {
@@ -326,6 +352,55 @@ mod tests {
             expires_unix_micros: 1_000_000,
             binding_digest: [7; 32],
         }
+    }
+    #[test]
+    fn notification_inbox_intent_is_private_actor_owned_and_canonical() {
+        let mut q = query();
+        q.subject = q.actor;
+        let good = ChildRecoveryReference::NotificationInbox {
+            query: q.clone(),
+            child_id: Uuid::from_u128(0xab).to_string(),
+            completion_secret: "01".repeat(32),
+        };
+        assert_eq!(good.key().unwrap(), (5, Uuid::from_u128(0xab)));
+        assert_eq!(good.kind_name(), "NOTIFICATION_INBOX");
+        assert!(good.local_prepared_gid().is_err());
+        for key in ["gid", "native", "callback_url", "owner_completion_secret"] {
+            let mut value = serde_json::to_value(&good).unwrap();
+            value[key] = serde_json::json!("forbidden");
+            assert!(serde_json::from_value::<ChildRecoveryReference>(value).is_err());
+        }
+        for cap in [
+            "".to_string(),
+            "01".repeat(31),
+            "00".repeat(32),
+            "AB".repeat(32),
+        ] {
+            let wrong = ChildRecoveryReference::NotificationInbox {
+                query: q.clone(),
+                child_id: Uuid::from_u128(0xab).to_string(),
+                completion_secret: cap,
+            };
+            assert!(wrong.intent_id().is_err());
+        }
+        for id in [
+            Uuid::nil().to_string(),
+            Uuid::from_u128(0xab).to_string().to_uppercase(),
+        ] {
+            let wrong = ChildRecoveryReference::NotificationInbox {
+                query: q.clone(),
+                child_id: id,
+                completion_secret: "01".repeat(32),
+            };
+            assert!(wrong.intent_id().is_err());
+        }
+        q.subject = Uuid::from_u128(3);
+        let foreign = ChildRecoveryReference::NotificationInbox {
+            query: q,
+            child_id: Uuid::from_u128(0xab).to_string(),
+            completion_secret: "01".repeat(32),
+        };
+        assert!(foreign.intent_id().is_err());
     }
     #[test]
     fn preallocated_profile_child_matches_actual_owner_wire_syntax() {

@@ -1,4 +1,5 @@
 //! Pure Concert values. Auth UUIDs are references, never a second identity store.
+pub mod avatar_motion_v2;
 pub mod report;
 pub mod place;
 use chrono::{DateTime, Utc};
@@ -239,6 +240,7 @@ pub struct AvatarSelection {
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum AvatarAppearance {
+    ReviewedMotion(avatar_motion_v2::reviewed::Appearance),
     Layered {
         body: AssetId,
         eyes: AssetId,
@@ -285,3 +287,5 @@ pub mod age_policy;
 pub mod event_lifecycle;
 
 pub mod mural;
+
+pub mod notification;

@@ -1,10 +1,9 @@
 //! Explicit C03 composition. Root mounts guarded services and supervises recovery.
 //! No optional public product, synthetic release, parity key or successful fallback.
+use super::canonical_runtime::CanonicalRuntimeCore;
 use crate::{
     adapters::out::{
-        relationship_authority::guarded::{
-            CanonicalOwnerFence, ChildRecoveryReference, ScopeRegistry,
-        },
+        relationship_authority::guarded::{CanonicalOwnerFence, ChildRecoveryReference},
         repository::avatar::AvatarPersistence,
     },
     participant::live::{
@@ -15,7 +14,7 @@ use crate::{
     },
     product_rpc::{
         delivery::DeliveryPublisher,
-        scope_ledger::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys, PgScopeLedger},
+        scope_ledger::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys},
         settlement::ProducerSettlementService,
     },
 };
@@ -290,21 +289,19 @@ impl ParticipantRuntimeSettings {
             release.source_digest() == self.settings.release,
             "Participant and active product release differ"
         );
-        let ledger = PgScopeLedger::new(
+        let canonical = CanonicalRuntimeCore::new(
             pool.clone(),
             self.settings.instance,
             self.settings.keys,
             Arc::new(ParticipantOnlyChildren),
         )?;
-        let scopes = ScopeRegistry::new(self.settings.instance, Arc::new(ledger.clone()))?;
-        let delivery = DeliveryPublisher::new(ledger.clone(), scopes.clone());
-        let fence = Arc::new(CanonicalOwnerFence::connect(
+        let delivery = canonical.delivery();
+        let fence = Arc::new(canonical.owner_fence(
             &self.settings.endpoints[0],
             &self.settings.endpoints[1],
             &self.settings.credential,
             &self.tls,
             self.relationship.clone(),
-            scopes,
         )?);
         let auth = GrpcCanonicalAuth::connect(
             &self.settings.endpoints[0],
@@ -333,19 +330,18 @@ impl ParticipantRuntimeSettings {
                 store,
                 auth,
                 profile.clone(),
-                fence,
+                fence.clone(),
                 journal.clone(),
                 Arc::new(delivery.clone()),
             ),
             decision: ParticipantDecisionService::new(pool.clone()),
             decision_verifier: self.decision,
-            settlement: ProducerSettlementService::new(
-                ledger,
-                Arc::new(ParticipantNativeResolver::new(
-                    pool,
-                    self.settings.instance,
-                )?),
-            ),
+            settlement: canonical.settlement_service(Arc::new(ParticipantNativeResolver::new(
+                pool,
+                self.settings.instance,
+            )?)),
+            canonical,
+            fence,
             delivery,
             recovery: ParticipantRecovery::new(journal, profile),
             callers: self.settings.callers,
@@ -357,6 +353,10 @@ impl ParticipantRuntimeSettings {
 /// decision_verifier, never gateway_verifier. Mount one shared Delivery service,
 /// retain original response EOF middleware, and supervise recovery.run(receiver).
 pub struct ParticipantRuntime {
+    /// Share these exact instances with other feature factories. Their real
+    /// typed settlers and closed native resolver union must be installed first.
+    pub canonical: CanonicalRuntimeCore,
+    pub fence: Arc<CanonicalOwnerFence>,
     pub participant: GuardedParticipantService,
     pub decision: ParticipantDecisionService,
     pub decision_verifier: ActorDelegationVerifier,

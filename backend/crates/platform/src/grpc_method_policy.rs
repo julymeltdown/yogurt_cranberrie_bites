@@ -339,15 +339,30 @@ impl MethodPolicy {
                     ("Acquire", &[Workload::Concert][..]),
                     (
                         "Check",
-                        &[Workload::Concert, Workload::Post, Workload::Profile][..],
+                        &[
+                            Workload::Concert,
+                            Workload::Post,
+                            Workload::Profile,
+                            Workload::Notification,
+                        ][..],
                     ),
                     (
                         "Enroll",
-                        &[Workload::Concert, Workload::Post, Workload::Profile][..],
+                        &[
+                            Workload::Concert,
+                            Workload::Post,
+                            Workload::Profile,
+                            Workload::Notification,
+                        ][..],
                     ),
                     (
                         "Track",
-                        &[Workload::Concert, Workload::Post, Workload::Profile][..],
+                        &[
+                            Workload::Concert,
+                            Workload::Post,
+                            Workload::Profile,
+                            Workload::Notification,
+                        ][..],
                     ),
                     ("Complete", &[Workload::Concert][..]),
                 ]
@@ -358,7 +373,9 @@ impl MethodPolicy {
         let settlement = reserved_settlement
             && matches!(
                 self.workload,
-                Some(Workload::Concert | Workload::Post | Workload::Profile)
+                Some(
+                    Workload::Concert | Workload::Post | Workload::Profile | Workload::Notification
+                )
             )
             && self.methods
                 == [
@@ -372,6 +389,20 @@ impl MethodPolicy {
         anyhow::ensure!(
             !reserved_settlement || settlement,
             "reserved producer settlement policy accepts only Auth/Friend system queries"
+        );
+        let reserved_inbox = self.service == "notification.concert.v1.ConcertInboxService";
+        let inbox = reserved_inbox
+            && self.workload == Some(Workload::Notification)
+            && self.methods
+                == [
+                    ("Execute", &[Workload::Concert][..]),
+                    ("Check", &[Workload::Concert][..]),
+                    ("Complete", &[Workload::Concert][..]),
+                ]
+            && self.actor_fields.is_empty();
+        anyhow::ensure!(
+            !reserved_inbox || inbox,
+            "reserved Notification inbox requires exact dedicated Concert capability transport"
         );
         let reserved_decision =
             self.service == "concert.participant.v1.ConcertParticipantDecisionService";

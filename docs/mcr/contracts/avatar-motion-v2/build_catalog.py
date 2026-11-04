@@ -57,7 +57,6 @@ def make():
     assert candidate['presets']['foot'] == candidate['wardrobe']['foot'] == [32, 60]
     assert candidate['presets']['directions'] == candidate['wardrobe']['directions'] == SOURCE_DIRECTIONS
     components = load(EVIDENCE + 'component-source-inputs.json')
-    authored = load(EVIDENCE + 'authored-reconstruction.json')
     # Preserve the source evidence verbatim as pinned resources, with explicit per-item pointers.
     resources = [resource(pin['path']) for pin in handoff['pins']]
     resources.append(resource(pack_path))

@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "source_commit": "2e721109c2d30d8413e5be0c36ca64391ad05db3",
+  "cases": [
+    {
+      "case": "returned_error_records_abandonment_without_delivery",
+      "receipt_sha256": "39af133615ca440fa3cb639fd67e948946c05cd1b97e71608695ebb3c51eae08",
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "normal_native_settlement": true,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "caller_cancellation_destroys_actual_work_before_owner_release",
+      "receipt_sha256": "db96b0ed974e2ce93274845c520886f2ed19772dfa8b5f1e7702924fb3b051fd",
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "normal_native_settlement": true,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "unresolved_callback_and_expiry_never_prove_abandonment",
+      "receipt_sha256": "6cc1b85c8e9493b7b0c49036c9d83eb8f11079a139b3f830eb8c90ef04ef92a3",
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "normal_native_settlement": false,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "active_native_transaction_prevents_cancellation_settlement",
+      "receipt_sha256": "dfa6ed13e403af119761b40cd3d39ff253b178db6f279c942566184cb7202e21",
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "normal_native_settlement": false,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "successful_handoff_retains_existing_unserialized_quarantine",
+      "receipt_sha256": "e0b10352201e0f88d9dfbcd77aaeb9007f3a381bd7d82cfcd6daba3dac52131f",
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "normal_native_settlement": false,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "drained_late_callback_allows_true_abandonment",
+      "receipt_sha256": "51373a344f72278890e8cbf9e8e5756ca0dc1fe38e9c7a4a2305763c00b1c987",
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "normal_native_settlement": true,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "expired_original_deadline_never_polls_ready_producer",
+      "receipt_sha256": "bd16b142922cdde5906cd94192109755af36e4d8ab0c830bdf6dc924048dc4ba",
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "normal_native_settlement": true,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "failed_work_destruction_never_reaches_terminal_proof",
+      "receipt_sha256": "6dba81f2297aa362d680f46b7ef4e47e8092e8d36dc8d7df121659d891b37964",
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "normal_native_settlement": false,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    },
+    {
+      "case": "unpublished_unsettled_abandonment_remains_in_durable_capacity",
+      "receipt_sha256": "75b69919ecc4af740c0ba25455008954dc1a25ca8b6f9077ede50013b859403c",
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "normal_native_settlement": false,
+      "migration_receipt_counts": {
+        "auth": 17,
+        "concert": 33,
+        "friend": 17
+      }
+    }
+  ],
+  "build_receipt_sha256": "56a6fd66ad80dcdcd79a6593b55443676e7a4c9f78807b161214cc1cd41565e2",
+  "checkpoint_sha256": "efdf8385409dc6225b2cd3a2111e91ee2da07aff8246a812adfd8254268b6ff6",
+  "release_receipt_sha256": "7f36b6300710916f9fa31a1155e63e148cdf33818a82575aec7907c28f3af89e",
+  "native_summary_sha256": "4ca70ea2dcf27c9e404d788db3fff829c4d049171e0123601a34bd5f16599427",
+  "free_bytes": 39184240640,
+  "physical_restart": "NOT_RUN",
+  "participant_http": "SEPARATE_OWNER",
+  "production_main": "NOT_RUN"
+}

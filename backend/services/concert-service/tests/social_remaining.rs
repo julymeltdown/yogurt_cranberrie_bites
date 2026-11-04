@@ -1,5 +1,7 @@
 //! Native local-source qualification with explicitly synthetic owner/provider
 //! fences. Never constructs a positive GuardedSubject or certifies a real join.
+#[path = "authorization/social_matrix.rs"]
+mod authorization_social_matrix;
 #[path = "social_remaining_support/owned.rs"]
 mod owned;
 use async_trait::async_trait;
@@ -67,6 +69,11 @@ struct Fixture {
 impl Fixture {
     async fn new() -> Self {
         let p = owned::pool().await;
+        // The private runner is serial. Each synthetic case starts with its
+        // own initial trust-source state; an outage in an earlier case must not
+        // become an accidental prerequisite for this case or the restart run.
+        sqlx::query("update fixture_social_verifier set verifier='fixture',revision='v1',available=true,expires_at=clock_timestamp()+interval '1 hour' where id=1")
+            .execute(&p).await.unwrap();
         let (event, a, b, intro) = (
             Uuid::new_v4(),
             Uuid::new_v4(),
@@ -201,7 +208,7 @@ async fn newest_unsupported_claim_never_falls_back_to_older_verified_proof() {
 
 #[tokio::test]
 #[ignore = "private social_remaining_support/native.py fixture required"]
-async fn unbounded_offer_still_requires_both_verified_ages_and_live_verifier() {
+async fn unbounded_offer_requires_both_verified_ages_and_trusted_provenance_source() {
     let f = Fixture::new().await;
     sqlx::query("update concert_intros set minimum_age=null,maximum_age_exclusive=null,revision=revision+1 where intro_id=$1").bind(f.sharing.intro_id).execute(&f.p).await.unwrap();
     let mut sharing = f.sharing;
@@ -300,9 +307,20 @@ async fn lock_wait_cannot_outlive_original_request_deadline() {
     f.p.close().await;
 }
 
-#[tokio::test]
-#[ignore = "private social_remaining_support/native.py fixture required"]
-async fn retained_social_service_rechecks_canonical_claims_on_reveal() {
+type FixtureSocial = concert_service::relationship::social::SocialService<
+    FixtureAuthority,
+    PgSocialEligibility<FixtureAuthority, FixtureVerifier>,
+>;
+struct ApprovedSocial {
+    f: Fixture,
+    a: concert_domain::ParticipantKey,
+    b: concert_domain::ParticipantKey,
+    id: Uuid,
+    requester: FixtureSocial,
+    recipient: FixtureSocial,
+    keys: concert_application::commands::FingerprintKeys,
+}
+async fn approved_social(ttl_seconds: i64) -> ApprovedSocial {
     use concert_application::{
         commands::{FingerprintKeys, SigningKey},
         relationship::social::{CreateSharing, SharingDecision},
@@ -335,7 +353,7 @@ async fn retained_social_service_rechecks_canonical_claims_on_reveal() {
             FixtureAuthority,
             PgSocialEligibility::new(request, FixtureAuthority, FixtureVerifier),
             HandleKeys::new(ManagedHandleKey::new("fixture", &[71; 32]).unwrap(), vec![]).unwrap(),
-            3600,
+            ttl_seconds,
         )
         .unwrap()
     };
@@ -391,6 +409,29 @@ async fn retained_social_service_rechecks_canonical_claims_on_reveal() {
         )
         .await
         .unwrap();
+    ApprovedSocial {
+        f,
+        a,
+        b,
+        id,
+        requester,
+        recipient,
+        keys,
+    }
+}
+
+#[tokio::test]
+#[ignore = "private social_remaining_support/native.py fixture required"]
+async fn retained_social_service_rechecks_canonical_claims_on_reveal() {
+    let ApprovedSocial {
+        f,
+        a,
+        b,
+        id,
+        requester,
+        recipient,
+        ..
+    } = approved_social(3600).await;
     assert_eq!(
         requester
             .reveal(a, id, Platform::Instagram)
@@ -419,5 +460,180 @@ async fn retained_social_service_rechecks_canonical_claims_on_reveal() {
     .await;
     assert!(requester.reveal(a, id, Platform::Instagram).await.is_err());
     assert!(recipient.reveal(b, id, Platform::Instagram).await.is_err());
+    f.p.close().await;
+}
+
+#[tokio::test]
+#[ignore = "private social_remaining_support/native.py fixture required"]
+async fn readonly_reveal_is_a_read_but_mutations_block_revocation_and_expiry_remain_enforced() {
+    use concert_application::commands::*;
+    use concert_domain::relationship::{Field, PolicyQuery};
+    use concert_service::{
+        adapters::out::repository::receipt::PgCommandRepository,
+        relationship::{commands::BlockCommand, PgRelationshipPolicy},
+    };
+    for case in ["block", "revoke", "expiry"] {
+        let ApprovedSocial {
+            f,
+            a,
+            b,
+            id,
+            requester,
+            recipient,
+            keys,
+        } = approved_social(if case == "expiry" { 1 } else { 3600 }).await;
+        sqlx::query(
+            "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+        )
+        .bind(a.event_id.uuid())
+        .execute(&f.p)
+        .await
+        .unwrap();
+        assert_eq!(
+            requester
+                .reveal(a, id, Platform::Instagram)
+                .await
+                .unwrap()
+                .handle
+                .expose_for_reveal(),
+            "recipient.handle"
+        );
+        assert_eq!(
+            recipient
+                .reveal(b, id, Platform::Instagram)
+                .await
+                .unwrap()
+                .handle
+                .expose_for_reveal(),
+            "requester.handle"
+        );
+        assert!(requester
+            .set_handle(
+                a,
+                Platform::Instagram,
+                1,
+                PrivateHandle::normalize(Platform::Instagram, "forbidden.write").unwrap(),
+                Uuid::new_v4(),
+                &keys
+            )
+            .await
+            .is_err());
+        let version:i64=sqlx::query_scalar("select revision from concert_social_handles where event_id=$1 and user_id=$2 and platform='INSTAGRAM'")
+            .bind(a.event_id.uuid()).bind(a.user_id.uuid()).fetch_one(&f.p).await.unwrap();
+        assert_eq!(
+            version, 1,
+            "READ_ONLY denied a real current-version mutation"
+        );
+        match case {
+            "block" => {
+                let policy = PgRelationshipPolicy::new(f.p.clone(), FixtureAuthority);
+                for blocked in [true, false] {
+                    let scope = Scope {
+                        actor: a.user_id.uuid(),
+                        event: a.event_id.uuid(),
+                        operation: RegisteredOperation::find(if blocked {
+                            "blockConcertUser"
+                        } else {
+                            "unblockConcertUser"
+                        })
+                        .unwrap(),
+                        key: Uuid::new_v4(),
+                    };
+                    let event = a.event_id.uuid().to_string();
+                    let target = b.user_id.uuid().to_string();
+                    let empty = CanonicalValue::Object(vec![]);
+                    let canonical = CanonicalRequest::json(
+                        scope,
+                        &[("eventId", &event), ("userId", &target)],
+                        &[],
+                        if blocked { Some(&empty) } else { None },
+                    )
+                    .unwrap();
+                    PgCommandRepository::new(f.p.clone())
+                        .execute(
+                            &canonical,
+                            b.user_id.uuid(),
+                            &keys,
+                            &BlockCommand {
+                                policy: &policy,
+                                query: PolicyQuery {
+                                    actor: a.user_id,
+                                    event: a.event_id,
+                                    subject: b.user_id,
+                                    field: Field::SafetyInteraction,
+                                },
+                                blocked,
+                            },
+                        )
+                        .await
+                        .unwrap();
+                    assert!(
+                        requester.reveal(a, id, Platform::Instagram).await.is_err(),
+                        "block denies; unblock cannot restore consent"
+                    );
+                }
+            }
+            "revoke" => {
+                requester
+                    .revoke(a, id, Revision::new(2).unwrap(), Uuid::new_v4(), &keys)
+                    .await
+                    .unwrap();
+            }
+            _ => {
+                tokio::time::timeout(std::time::Duration::from_secs(3),async { loop {
+                    let expired:bool=sqlx::query_scalar("select expires_at<=clock_timestamp() from concert_social_requests where event_id=$1 and request_id=$2")
+                        .bind(a.event_id.uuid()).bind(id).fetch_one(&f.p).await.unwrap();
+                    if expired {break;}tokio::time::sleep(std::time::Duration::from_millis(10)).await;
+                }}).await.unwrap();
+            }
+        }
+        assert!(requester.reveal(a, id, Platform::Instagram).await.is_err());
+        assert!(recipient.reveal(b, id, Platform::Instagram).await.is_err());
+        f.p.close().await;
+    }
+}
+
+#[tokio::test]
+#[ignore = "private social_remaining_support/native.py fixture required"]
+async fn persisted_valid_claims_survive_new_verification_outage_but_not_canonical_replacement() {
+    let f = Fixture::new().await;
+    sqlx::query("update fixture_social_verifier set available=false where id=1")
+        .execute(&f.p)
+        .await
+        .unwrap();
+    let adapter = PgSocialEligibility::new(
+        f.request,
+        FixtureAuthority,
+        ConfiguredSharingVerifier::new("fixture".into(), "v1".into()).unwrap(),
+    );
+    let mut tx = f.p.begin().await.unwrap();
+    let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+        .fetch_one(&mut *tx)
+        .await
+        .unwrap();
+    assert!(
+        adapter
+            .check_in(&mut tx, f.sharing, now)
+            .await
+            .unwrap()
+            .allowed,
+        "accepted persisted provenance is independent of new-verification activation"
+    );
+    tx.rollback().await.unwrap();
+    Fixture::claim(
+        &f.p,
+        f.request.event.uuid(),
+        f.sharing.requester.uuid(),
+        "UNSUPPORTED",
+        Utc::now(),
+    )
+    .await;
+    let mut tx = f.p.begin().await.unwrap();
+    let now = sqlx::query_scalar("select clock_timestamp()")
+        .fetch_one(&mut *tx)
+        .await
+        .unwrap();
+    assert!(adapter.check_in(&mut tx, f.sharing, now).await.is_err());
+    tx.rollback().await.unwrap();
     f.p.close().await;
 }

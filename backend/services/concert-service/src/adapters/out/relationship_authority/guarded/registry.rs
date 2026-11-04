@@ -59,6 +59,24 @@ pub trait ScopeLifecycle: Send + Sync {
     /// and all admitted callbacks finish. Owners resolve producer transactions
     /// independently AFTER this transition, before releasing their guards.
     async fn finish_root_work(&self, scope: &proto::ProducerScope) -> Result<(), Status>;
+    /// Called only with the supervisor's private destroyed-producer proof and
+    /// sealed/drained callback admission. Older lifecycle adapters fail closed.
+    async fn finish_cancelled_root_work(
+        &self,
+        _scope: &proto::ProducerScope,
+    ) -> Result<(), Status> {
+        Err(Status::unavailable(
+            "Durable cancellation proof unsupported",
+        ))
+    }
+    async fn record_cancellation_settled(
+        &self,
+        _scope: &proto::ProducerScope,
+    ) -> Result<(), Status> {
+        Err(Status::unavailable(
+            "Durable cancellation settlement unsupported",
+        ))
+    }
 }
 struct Entry {
     digest: [u8; 32],

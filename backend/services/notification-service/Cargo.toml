@@ -13,6 +13,8 @@ name = "notification-service"
 path = "src/main.rs"
 
 [dependencies]
+concert-domain = { path = "../../crates/concert-domain" }
+concert-application = { path = "../../crates/concert-application" }
 migration-runtime = { path = "../../crates/migration-runtime" }
 notification-domain = { path = "../../crates/notification-domain" }
 notification-application = { path = "../../crates/notification-application" }
@@ -24,6 +26,7 @@ platform = { path = "../../crates/platform" }
 prost.workspace = true
 serde.workspace = true
 serde_json.workspace = true
+sha2.workspace = true
 sqlx.workspace = true
 tonic.workspace = true
 tonic-prost.workspace = true

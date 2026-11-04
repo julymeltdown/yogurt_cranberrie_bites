@@ -24,7 +24,7 @@ The two new `contracts/assets/v2/reviewed/avatar-{config,manifest}.schema.json`
 paths were explicitly granted separately. Root then granted only exact reviewed
 schema registration in `generate-mcr-core.py::load_schemas` and
 `generate-mcr-domain.py::add_schemas`; no other generator behavior is changed.
-Root remains the integrator. FE153 is the separate generated/public parser consumer.
+Root remains the integrator. FE153 coordinates publication; 26e owns the four public registry/generator/bootstrap files and Motion83 owns admission/parser helpers.
 
 ## Artifact and hash rules
 
@@ -55,7 +55,7 @@ report/checker. It records concrete visual decisions and limits. It does not
 claim all 4800 cases were visually inspected, turn fixture parity into identity
 review, or certify live sockets, devices or public HTTP/WS flows.
 
-## Current evidence and remaining work
+## Pre-build evidence and remaining work (historical checkpoint)
 
 - Visual inspection and independently computed 4800 composition cases: PASS;
   actual receipt `review/visual-review.json`, bounds result `review/seams.json`.
@@ -77,3 +77,84 @@ The offered media target was immediately released without Cargo after a fresh
 preflight found 7.33 GiB available, below the mandatory 8 GiB floor. No target is
 held. The expanded backend source must receive a fresh bounded allocation after
 it is ready; no cache cleanup or extra target is implied.
+
+## Backend source checkpoint (qualification pending)
+
+The successor now has three separate private-construction proof types: structural
+catalog, visual-review binding, and resource-verified eligible catalog. The public
+selection parser accepts only the reviewed identity/revision and closed IDs;
+required nullable keys remain required. Strict raw JSON parsing runs before the
+serde union so union buffering cannot erase duplicate-key evidence. Old v1.0 and
+v1.1 dispatch and database readers remain available.
+
+Migration 0044 preserves the old two constraint branches verbatim and appends the
+two closed reviewed-v2 representations. No existing migration is changed. Avatar
+storage, bootstrap projection, catalog checks and serialization have typed v2
+branches. The existing mutation effect fence, authority checks, CAS transaction,
+witness and commit implementation are unchanged.
+
+Root explicitly transferred the single avatar texture initialization hunk in
+`bootstrap/spatial.rs::validate_product` (the initially reported helper name was
+corrected before editing). The reviewed branch requires exact typed visual proof
+and repeats the existing full resource hash verification through the canonical
+repository layout. The legacy atlas branch and all map/theme/geometry/source
+binding code are preserved. The runtime tests call `from_source_bound_files`,
+not a synthetic release constructor.
+
+New `runtime-fixture/` documents bind the avatar into the existing quality-v6
+bootstrap/themes. `build_runtime_fixture.py` changes only avatar references and
+recomputes theme hashes; map bytes and art/source reviews are unchanged. C03
+Bootstrap and complete six-document C06 validation pass. This is a native test
+fixture and does not admit a real event or enable mutations. Initial one-off
+validation probes supplied the wrong Python container shape and omitted the
+required config document; the corrected real six-document validation passes.
+
+The new runtime test and support namespace covers actual product construction,
+all 15 positive shared configs through Bootstrap/production reads, unfenced-write
+refusal, precommit rollback, 12-way CAS, closed SQL constraint negatives, committed
+witness count, repository reopen, PostgreSQL restart and persisted Bootstrap
+projection. Auth/Friend scope registrations are explicitly component fixtures,
+copied with provenance from the existing native avatar test at 980fc4d; they do
+not establish real Auth/Friend/public HTTP admission. These Rust tests remain
+NOT_RUN until the allocated build and native runner execute.
+
+The native runner uses only frozen Cargo artifacts outside the allocated target
+and the existing marker/inode/Unix-socket-owned PG16.14 harness. It never invokes
+Cargo, installs dependencies, attaches an external database or deletes caches.
+Initial helper path calculations failed before any database creation and were
+corrected; `--help`, Python compilation and rustfmt pass.
+
+Root also granted a narrow Gateway response patch against committed baseline
+`3710a029d083e4b5123df45b82867056f64b3c8b`, file blob
+`c1d01237207c4287c4a089c2151145bcc4efb302`, first introduced at
+`96e6c513eb58cbbeb8e1e884d24662e6bbdc850e`. This old producer checkout lacks the
+Gateway module prerequisites, so the exact patch is delivered as
+`backend/releases/selected-character-motion-v2/reviewed/gateway-response-v2.patch`.
+It changes only `avatar()` and adds three dedicated test groups. Actual patch
+application passes against that baseline; all non-avatar response/status logic
+is byte preserved. Gateway compilation/execution is NOT_RUN and belongs to the
+coherent downstream integration. The staged Boolean is not an allowlist shortcut.
+
+Current frontend ownership: 26e owns the four explicit public schema registry,
+generator output and bootstrap files; Motion83 owns admission/parser helpers.
+FE153 has the explicit exact 53-path 0dd source publication assignment and will
+publish with its necessary FE consumers to preserve existing schema compilation.
+There is no inferred frontend write or publication authority for this producer.
+
+
+## Executed qualification after the source checkpoint
+
+The exact clean source `917b2d8042e622e4b09a8d66f9fad39a4606b4c8` now has an actual
+Rust and PG16.14 qualification receipt: 19 normal Rust tests, two new native v2
+tests and four existing legacy native tests PASS. Both fresh clusters apply all
+28 available migrations, restart their real postmaster and clean up successfully.
+The new SQL negatives assert the exact representation constraint; legacy 1.0/1.1
+rows remain unchanged through 0044. Source-bound product construction and all
+resource/hash checks execute. Details and initial build-cache failure evidence
+are in [qualification.md](qualification.md) and `qualification/`.
+
+The MEDIA target was released with zero handles before any copied test/PG run.
+The goal API's historical BLOCKED status was not reset. Gateway patch execution,
+coherent master integration, public Auth/HTTP/WS and registry activation remain
+outside the completed producer runtime proof; no ACCEPTED/full-release claim is
+made. The exact committed packet is [reviewed-handoff.json](reviewed-handoff.json).

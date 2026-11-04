@@ -433,7 +433,29 @@ pub(super) fn validate_product(
     let expected: Value =
         serde_json::from_slice(&candidate.catalog.canonical_bytes).map_err(invalid)?;
     ensure(doc["map_manifest"] == expected)?;
-    let mut textures = vec![&doc["avatar_manifest"]["atlas"]["texture"]];
+    let mut textures = if doc["avatar_manifest"]["contract_version"] == "2.0.0" {
+        // Avatar-only consumer adaptation: the closed reviewed family has a
+        // pinned atlas Resource, not the legacy atlas.texture wire shape.
+        // Revalidate its typed proof and every exact resource from the same
+        // repository layout; map/theme/source validation below is unchanged.
+        concert_domain::avatar_motion_v2::reviewed::VisuallyReviewedCatalog::from_manifest(
+            &doc["avatar_manifest"],
+        )
+        .map_err(invalid)?;
+        let public = fs::canonicalize(root).map_err(invalid)?;
+        let repository = public
+            .parent()
+            .and_then(Path::parent)
+            .ok_or(Error::ReleaseUnavailable)?;
+        super::release::validate_motion_files(
+            &repository
+                .join("backend/releases/selected-character-motion-v2/reviewed/manifest.json"),
+            &doc["avatar_manifest"],
+        )?;
+        Vec::new()
+    } else {
+        vec![&doc["avatar_manifest"]["atlas"]["texture"]]
+    };
     let themes = doc["theme_manifests"]
         .as_array()
         .ok_or(Error::ReleaseUnavailable)?;

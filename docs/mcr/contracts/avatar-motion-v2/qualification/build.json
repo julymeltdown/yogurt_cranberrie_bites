@@ -1,0 +1,80 @@
+{
+  "source_commit": "917b2d8042e622e4b09a8d66f9fad39a4606b4c8",
+  "source_archive_sha256": "c3ef218d4394b45e913238540f3b934168d9ae328e43bfd7a1a8940d152f3173",
+  "source_archive_bytes": 4335486,
+  "rust": "1.88.0",
+  "flags": {
+    "Rust": "1.88.0",
+    "locked": true,
+    "offline": true,
+    "jobs": 1,
+    "debug": 0,
+    "incremental": false,
+    "service_extra_config": "profile.dev.package.contracts-build.opt-level=1"
+  },
+  "commands": [
+    {
+      "operation": "domain avatar + avatar_motion_v2 no-run",
+      "exit_code": 0
+    },
+    {
+      "operation": "initial Concert no-run; stale cached protobuf root",
+      "exit_code": 101
+    },
+    {
+      "operation": "direct contracts-build lib refresh",
+      "exit_code": 0
+    },
+    {
+      "operation": "Concert retry; cached build-dependency variant still stale",
+      "exit_code": 101
+    },
+    {
+      "operation": "Concert no-run with package-specific contracts-build opt-level=1",
+      "exit_code": 0
+    }
+  ],
+  "build_elapsed_seconds": 124.8,
+  "target_growth_mib": 338.2,
+  "frozen_logs_and_source_mib": 61.03,
+  "hard_total_new_allowance_gib": 1,
+  "artifacts": [
+    {
+      "package": "concert-domain",
+      "target": "avatar",
+      "sha256": "dc749ab7d0115b09944d48cf73209773bc4d64e21482be4b3f0409c33950ed87"
+    },
+    {
+      "package": "concert-domain",
+      "target": "avatar_motion_v2",
+      "sha256": "d19ee56167f6ad9af220a017417106ee0b18fc78c42f30bb36c16df004ffcfda"
+    },
+    {
+      "package": "concert-service",
+      "target": "avatar",
+      "sha256": "d2d0e9c54b6e8692d107275c8405f48fd117cc42ea327c3f9eefcfb7c84788be"
+    },
+    {
+      "package": "concert-service",
+      "target": "avatar_motion_v2_runtime",
+      "sha256": "a1a1b9cd75c29ca7acdec169fe7078e4d6814b6dde6c11c4dd9377dc4abf7cdd"
+    }
+  ],
+  "target_released_before_tests": true,
+  "release_target_open_handles": 0,
+  "source_or_cache_cleanup_for_build": false,
+  "cargo_metadata_sha256": "52c82799b58170d94d71f2030d4cf96f57359e47ed693d8d92a6fb1805abb127",
+  "initial_failure": "cached contracts-build provenance root caused protoc shadowing; direct rustc refresh did not invalidate build-dependency variant; package-specific compile setting refreshed it without source change or cleanup",
+  "implicit_extra_build_artifact": {
+    "target": "concert-service",
+    "kind": [
+      "bin"
+    ],
+    "profile_test": false,
+    "fresh": false,
+    "explicitly_requested": false,
+    "frozen": false,
+    "executed": false,
+    "disclosure": "Cargo automatically builds this binary for selected integration tests; reported to allocator/integrator after final metadata audit. All growth remained guarded."
+  }
+}

@@ -175,7 +175,7 @@ pub fn identity_digest(
     settlement_reference: &[u8],
 ) -> Result<[u8; 32], Status> {
     let canonical_decimal = |v: &str| v.parse::<u64>().is_ok_and(|n| n > 0 && n.to_string() == v);
-    if !matches!(producer, "CONCERT" | "POST" | "PROFILE")
+    if !matches!(producer, "CONCERT" | "POST" | "PROFILE" | "NOTIFICATION")
         || !canonical_decimal(system_identifier)
         || !canonical_decimal(full_xid)
         || database_oid == 0
@@ -319,6 +319,26 @@ mod tests {
         assert!(header_fields(&[0x80; 11]).is_err());
         let fields = header_fields(&[10, 1, b'a', 64, 1]).unwrap();
         assert_eq!(fields[0], Some(&b"a"[..]));
+    }
+    #[test]
+    fn notification_native_identity_is_a_distinct_closed_producer() {
+        let id = Uuid::from_u128(1);
+        let digest =
+            |producer| identity_digest(producer, "123", 1, "99", 7, 100, &[2; 32], id, b"receipt");
+        let notification = digest("NOTIFICATION").unwrap();
+        for old in ["CONCERT", "POST", "PROFILE"] {
+            assert_ne!(notification, digest(old).unwrap());
+        }
+        for unsupported in [
+            "notification",
+            "NOTIFICATION ",
+            "AUTH",
+            "FRIEND",
+            "GATEWAY",
+            "",
+        ] {
+            assert!(digest(unsupported).is_err());
+        }
     }
     #[test]
     fn capabilities_and_producer_identity_are_not_interchangeable() {

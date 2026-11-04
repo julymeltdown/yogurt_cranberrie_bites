@@ -144,6 +144,7 @@ impl CanonicalOwnerFence {
                 attached_children: BTreeSet::new(),
                 registered: Vec::new(),
                 policy_disclosure_deadline: None,
+                owned_work_started: false,
                 serialized: false,
                 sealed: false,
                 complete: false,
@@ -153,6 +154,8 @@ impl CanonicalOwnerFence {
         Ok(scope)
     }
 }
+// Constructed only after the supervised actual producer future is destroyed.
+struct CancelledRootWork(());
 struct State {
     auth: BTreeMap<Uuid, proto::SubjectState>,
     friend: BTreeMap<Uuid, proto::SubjectState>,
@@ -163,6 +166,7 @@ struct State {
     attached_children: BTreeSet<(u8, Uuid)>,
     registered: Vec<ProducerTransaction>,
     policy_disclosure_deadline: Option<AuthorityRpcDeadline>,
+    owned_work_started: bool,
     serialized: bool,
     sealed: bool,
     complete: bool,
@@ -480,6 +484,13 @@ impl OwnerGuardScope {
         self.binding.check()?;
         reference.validate_for(&self.binding)?;
         reference.check_content_time()?;
+        if let super::ChildRecoveryReference::NotificationInbox { query, .. } = reference {
+            if query.subject != self.binding.actor() {
+                return Err(Status::permission_denied(
+                    "Notification inbox child is not actor-owned",
+                ));
+            }
+        }
         if let super::ChildRecoveryReference::LocalPublic { native, .. }
         | super::ChildRecoveryReference::GiftPrivate { native, .. }
         | super::ChildRecoveryReference::SocialRead { native, .. } = reference
@@ -674,8 +685,82 @@ impl OwnerGuardScope {
             .await
             .map_err(|_| Status::deadline_exceeded("Root request deadline"))?
     }
+    /// Own the entire post-acquisition producer future, including delivery
+    /// publication. No independent task may retain producer work outside it;
+    /// remote work must have its durable pre-dispatch registration. Caller Drop
+    /// only closes the supervisor channel. The supervisor explicitly destroys
+    /// the actual future before obtaining the private cancellation proof.
+    pub async fn run_owned<T, F>(self: &Arc<Self>, future: F) -> Result<T, Status>
+    where
+        T: Send + 'static,
+        F: Future<Output = Result<T, Status>> + Send + 'static,
+    {
+        {
+            let mut state = self.state.lock().map_err(unavailable)?;
+            if state.owned_work_started || state.sealed || state.serialized {
+                return Err(Status::failed_precondition(
+                    "Root producer work already owned",
+                ));
+            }
+            state.owned_work_started = true;
+        }
+        let stop = platform::call_deadline::current()
+            .map(tokio::time::Instant::from_std)
+            .map_or(self.binding.deadline().stop(), |outer| {
+                outer.min(self.binding.deadline().stop())
+            });
+        let scope = self.clone();
+        let (mut sender, receiver) = tokio::sync::oneshot::channel();
+        tokio::spawn(async move {
+            let mut work = Box::pin(platform::call_deadline::scope(stop.into_std(), future));
+            let result = tokio::select! {
+                biased;
+                _ = sender.closed() => None,
+                _ = tokio::time::sleep_until(stop) => {
+                    Some(Err(Status::deadline_exceeded("Root producer deadline")))
+                }
+                result = &mut work => Some(result),
+            };
+            // This is the actual owned future, not an observation that a caller
+            // disappeared. Panics bypass the proof and preserve quarantine.
+            drop(work);
+            match result {
+                Some(Ok(value)) if tokio::time::Instant::now() < stop => {
+                    // A successful send transfers response ownership to the
+                    // existing serialization/HTTP path. A subsequent lost body
+                    // remains quarantined under the existing rules.
+                    if let Err(undelivered) = sender.send(Ok(value)) {
+                        drop(undelivered);
+                        let _ = scope.finish_cancelled(CancelledRootWork(())).await;
+                    }
+                }
+                Some(Ok(expired)) => {
+                    drop(expired);
+                    let _ = scope.finish_cancelled(CancelledRootWork(())).await;
+                    let _ = sender.send(Err(Status::deadline_exceeded("Root producer deadline")));
+                }
+                failure => {
+                    let _ = scope.finish_cancelled(CancelledRootWork(())).await;
+                    let error = match failure {
+                        Some(Err(error)) => error,
+                        _ => Status::cancelled("Root producer caller cancelled"),
+                    };
+                    let _ = sender.send(Err(error));
+                }
+            }
+        });
+        receiver
+            .await
+            .map_err(|_| Status::unavailable("Root producer supervisor unresolved"))?
+    }
     /// Marks only Concert-to-Gateway serialization. It cannot release authority.
     pub async fn mark_serialized(&self) -> Result<(), Status> {
+        let _serial = tokio::time::timeout(Duration::from_secs(2), self.serial.lock())
+            .await
+            .map_err(|_| Status::unavailable("Serialization admission busy"))?;
+        if self.state.lock().map_err(unavailable)?.sealed {
+            return Err(Status::failed_precondition("Root scope sealed"));
+        }
         let registry = self
             .registry
             .upgrade()
@@ -693,6 +778,12 @@ impl OwnerGuardScope {
     /// handler. Internal gRPC serialization, run-return, deadline and Drop are
     /// never callers of this transition.
     pub async fn finish_response(&self) -> Result<(), Status> {
+        self.settle_terminal(false).await
+    }
+    async fn finish_cancelled(&self, _proof: CancelledRootWork) -> Result<(), Status> {
+        self.settle_terminal(true).await
+    }
+    async fn settle_terminal(&self, cancelled: bool) -> Result<(), Status> {
         let budget = AuthorityRpcDeadline::new(
             Utc::now().timestamp_micros() + 2_000_000,
             Duration::from_secs(2),
@@ -705,11 +796,11 @@ impl OwnerGuardScope {
             .map_err(|_| Status::unavailable("Scope settlement busy"))?;
         {
             let mut state = self.state.lock().map_err(unavailable)?;
+            if cancelled == state.serialized {
+                return Err(Status::failed_precondition("Root terminal proof mismatch"));
+            }
             if state.complete {
                 return Ok(());
-            }
-            if !state.serialized {
-                return Err(Status::unavailable("Internal response not serialized"));
             }
             state.sealed = true;
         }
@@ -726,7 +817,14 @@ impl OwnerGuardScope {
             while inflight.load(Ordering::Acquire) != 0 {
                 tokio::time::sleep(Duration::from_millis(1)).await;
             }
-            registry.lifecycle.finish_root_work(&self.producer).await?;
+            if cancelled {
+                registry
+                    .lifecycle
+                    .finish_cancelled_root_work(&self.producer)
+                    .await?;
+            } else {
+                registry.lifecycle.finish_root_work(&self.producer).await?;
+            }
             for (owner, view, secret) in [
                 (Owner::Auth, &self.auth_view, &self.auth_completion),
                 (Owner::Friend, &self.friend_view, &self.friend_completion),
@@ -763,6 +861,12 @@ impl OwnerGuardScope {
                 .lifecycle
                 .settle_child_intents(&self.producer)
                 .await?;
+            if cancelled {
+                registry
+                    .lifecycle
+                    .record_cancellation_settled(&self.producer)
+                    .await?;
+            }
             self.state.lock().map_err(unavailable)?.complete = true;
             registry.retire(&self.producer)?;
             Ok(())
