@@ -72,6 +72,10 @@ async fn main() -> anyhow::Result<()> {
         runtime.is_some(),
         participant_settings.is_some(),
     )?;
+    let report_settings = config::report_runtime::ReportStartupSettings::load(
+        runtime.is_some(),
+        intro_settings.is_some(),
+    )?;
     let inbox_settings =
         config::inbox_runtime::InboxRuntimeSettings::load(intro_settings.is_some())?;
     let target_settings =
@@ -145,7 +149,7 @@ async fn main() -> anyhow::Result<()> {
                         }
                         None => owners,
                     };
-                    product_owner = Some(match social_settings {
+                    let owners = match social_settings {
                         Some(settings) => {
                             let policy = config::social_policy_runtime::SocialWorldPolicy::compose(
                                 pool.clone(),
@@ -164,6 +168,12 @@ async fn main() -> anyhow::Result<()> {
                             settings
                                 .config
                                 .compose_shared(pool.clone(), &shared.owners, owners)?
+                        }
+                        None => owners,
+                    };
+                    product_owner = Some(match report_settings {
+                        Some(settings) => {
+                            settings.compose_shared(pool.clone(), &shared.owners, owners)?
                         }
                         None => owners,
                     });

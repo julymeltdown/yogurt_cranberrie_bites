@@ -203,3 +203,9 @@ and typed dispatch overlay. Recording refusals are not successful owner proof;
 executing the exported startup in the actual composed service remains Root's
 implementation validation duty. No public-route or multiuser acceptance follows
 from this bounded leaf qualification.
+
+## Root startup mount, pending combined qualification
+
+After the exact three-path validated handoff, Root exports `config::report_runtime` and loads its settings before connecting the database. The shared Intro/Participant composition retains its existing native resolver union and guarded settlement/delivery services. The Report overlay attaches after the existing Inbox, Feed and Social overlays with that same core/fence and pool; off mode preserves the prior producer. Only USER/no-media Report create is activated by explicit `CONCERT_REPORT_MODE=user` with its managed inputs. No privileged role, review/media provider, new listener, background worker or child-read settler is added.
+
+The owner's seven copied tests qualify its unchanged leaf. The modified Root main still requires a fresh current combined compilation and actual pre-database refusal checks; no prior Social startup or owner-only result is being reused as proof for this changed main. Public Gateway Report and full-stack behavior remain NOT_RUN.

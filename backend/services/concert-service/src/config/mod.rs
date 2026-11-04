@@ -9,16 +9,17 @@ use std::{net::SocketAddr, path::PathBuf, str::FromStr, time::Duration};
 
 pub mod bootstrap_runtime;
 pub mod canonical_runtime;
-pub mod intro_runtime;
 pub mod inbox_runtime;
+pub mod intro_runtime;
 pub mod native_resolver;
 pub mod notification_target_runtime;
-pub mod product_runtime;
 pub mod participant_runtime;
-pub mod social_runtime;
-pub mod social_policy_runtime;
-pub mod social_startup;
+pub mod product_runtime;
+pub mod report_runtime;
 pub mod social_delivery;
+pub mod social_policy_runtime;
+pub mod social_runtime;
+pub mod social_startup;
 
 pub struct AppConfig {
     pub database: PgConnectOptions,
