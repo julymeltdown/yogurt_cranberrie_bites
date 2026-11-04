@@ -18,6 +18,7 @@ import os
 from pathlib import Path
 import re
 import secrets
+import signal
 import subprocess
 import sys
 from types import SimpleNamespace
@@ -295,10 +296,10 @@ def main(argv=None):
     try:
         if args.action == "restore-segment":
             restore_segment(args.checkpoint, args.pg_bin_dir, args.native_evidence, report)
-    except Exception as error:
+    except BaseException as error:
         # Class only: driver diagnostics may contain private owner material.
         report["failure"] = type(error).__name__
-        code = 1
+        code = 130 if isinstance(error, KeyboardInterrupt) else 1
     finally:
         write_report(args.report, report)
     print(json.dumps({"state": report["state"], "wholeQa09Accepted": False, "exitCode": code}))
@@ -306,4 +307,8 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    def interrupted(*_):
+        # Unwind the existing runner's exact-owned cleanup before reporting failure.
+        raise KeyboardInterrupt()
+    signal.signal(signal.SIGTERM, interrupted)
     sys.exit(main())
