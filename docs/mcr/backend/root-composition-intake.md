@@ -1,7 +1,8 @@
 # Root composition intake
 
 Status: IN_PROGRESS. Combined component qualification passed at `34fa7a6d`.
-Full production composition, sustained IN01 and project acceptance remain open.
+Full production composition, complete IN01 and project acceptance remain open.
+The actual sustained two-player/reconnect slice passed; customization remains open.
 Existing immutable qualifications retain their exact source pins.
 
 ## Current-published World replay after CR10
@@ -59,9 +60,21 @@ it increased to 675–924 ms. Closed query-class and blocker sampling identified
 `FOR UPDATE` on `concert_events`, blocked by actual World transactions holding
 share locks across event, participant, admission, avatar and membership rows.
 This is observed unnecessary contention, not reproduction or resolution of the
-original browser 504. A persistence-only shared-lock regression and repair are
-being prepared; mutations and the World revocation fences retain their locking
-requirements. No deadline widening or frontend decoder change is justified.
+original browser 504. The [RED/GREEN qualification](root-participant-read-share.json) now records an
+actual failing regression at `c39a74ab` and passing repair at `7cd1e900`. Read-only
+Participant checks use share locks across four checked rows; mutations and World
+revocation fences retain their existing locking requirements. All five native
+cases passed, including observed blocking of writers on each retained fence and
+actual PostgreSQL restart persistence. Three pure tests passed separately.
+
+The fresh production Concert main then passed genuine Auth/C03 and two-principal
+World checks with 15 concurrent public `/me` reads, all 200, header latency
+150.560–328.729 ms, no sampled lock waits, 31 delivered/finished roots and zero
+prepared transactions. Each actor sent 264 zero-axis inputs at an achieved
+14.9852 Hz after actual movement. Both named resource workflows fully released.
+This qualifies the native repair; the current App customization replay is still
+NOT_RUN and IN01 remains incomplete. No deadline widening or frontend decoder
+change was made.
 
 ## Current qualified checkpoint
 

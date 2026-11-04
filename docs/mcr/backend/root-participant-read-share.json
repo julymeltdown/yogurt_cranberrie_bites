@@ -1,0 +1,298 @@
+{
+  "status": "INTEGRATED",
+  "scope": "Native Participant read/write lock regression, actual restart persistence and real two-principal HTTP/World qualification. Current App replay remains NOT_RUN.",
+  "change": {
+    "commits": [
+      "53e56cc729846338251efd60a318cd1988a187b2",
+      "c39a74abb84bc3ae93b26f740d24f922eb0e5f6f",
+      "7cd1e900d6bd1b4994482819486c828e43736822"
+    ],
+    "paths": [
+      "backend/services/concert-service/src/adapters/out/repository/avatar.rs",
+      "backend/services/concert-service/tests/avatar.rs",
+      "backend/scripts/mcr/avatar_smoke.py"
+    ],
+    "behavior": "Read uses FOR SHARE for event, admission, participant and avatar checks; mutations retain FOR UPDATE and existing authority, CAS and witness semantics. World retains its existing revocation fences."
+  },
+  "runs": {
+    "red": {
+      "source_revision": "c39a74abb84bc3ae93b26f740d24f922eb0e5f6f",
+      "native": {
+        "state": "FAIL",
+        "commands": {
+          "0001_concert_core.sql": 0,
+          "0002_command_receipts_outbox.sql": 0,
+          "0003_places_map_releases.sql": 0,
+          "0004_bootstrap_admission.sql": 0,
+          "0005_world_admission.sql": 0,
+          "0006_relationship_policy.sql": 0,
+          "0007_community.sql": 0,
+          "0008_meeting_beacons.sql": 0,
+          "0009_receipt_domain_failures.sql": 0,
+          "0010_feed.sql": 0,
+          "0011_outbox_maintenance.sql": 0,
+          "0012_media.sql": 0,
+          "0016_meeting_deadline_guards.sql": 0,
+          "0018_event_lifecycle.sql": 0,
+          "0019_mural.sql": 0,
+          "0020_mural_receipt_failures.sql": 0,
+          "0021_moderation_operations.sql": 0,
+          "0022_world_invalidation_receipts.sql": 0,
+          "0023_world_read_only_barrier.sql": 0,
+          "0024_event_read_only_barrier.sql": 0,
+          "0025_whole_character_avatar.sql": 0,
+          "0026_world_remote_invalidation.sql": 0,
+          "0027_participant_profile_coordinator.sql": 0,
+          "0028_product_owner_scope_lifecycle.sql": 0,
+          "0029_meeting_photo.sql": 0,
+          "0033_gift_command_targets.sql": 0,
+          "0035_participant_effect_witness.sql": 0,
+          "0036_social_effect_witness.sql": 0,
+          "0037_gift_private_child_intents.sql": 0,
+          "0038_age_runtime.sql": 0,
+          "0042_social_read_child_intents.sql": 0,
+          "0043_moderation_runtime.sql": 0,
+          "0044_avatar_motion_v2.sql": 0,
+          "0045_notification_child_intents.sql": 0,
+          "0046_event_cleanup_runtime.sql": 0,
+          "0047_operations_native_witness.sql": 0,
+          "0048_root_response_cancellation.sql": 0
+        },
+        "cleanup": "PASS",
+        "test_exit_code": 101,
+        "expected_assertion": true,
+        "expected_red_observed": true
+      },
+      "resource_release": {
+        "offer": "C03-READ-SHARE-RED-202611040802Z",
+        "state": "RELEASED",
+        "runtime_exit_code": 0,
+        "finished_at": "2026-11-04T08:05:32.797858+00:00",
+        "elapsed_seconds": 9.44780629199522,
+        "max_sampled_whole_additional": 105662253,
+        "minimum_sampled_free_bytes": 38289485824,
+        "all_owned_roots_absent": true,
+        "target_release_before_runtime": true,
+        "expected_red_observed": true
+      },
+      "retained_evidence": {
+        "source-pins.json": {
+          "sha256": "aea03dc9b25ca73212e8e091f785d6738c6aa0094a0c885a4cfb67b1806b50db",
+          "bytes": 508531
+        },
+        "pinned-artifacts.json": {
+          "sha256": "e0359f1b9a6f95c39847f50f486617f68a9971e6bee306e9896e4fc4eb5ce0df",
+          "bytes": 552
+        },
+        "native-red.json": {
+          "sha256": "d1ef88bab680c132c9538c921ba9ff945b5a1c5a77b90b7048047da664c4fe43",
+          "bytes": 7070
+        },
+        "target-release.json": {
+          "sha256": "c3e0ee87f54737a2bd06e8db9c4aeecda63b883150accc440a958fd014debfab",
+          "bytes": 2655
+        },
+        "fullworkflow-release.json": {
+          "sha256": "a036665aed594cbea0a4ad2a0a1f4188962f38fe00eb6818d3a729258d6b9555",
+          "bytes": 389
+        },
+        "runtime-guard.json": {
+          "sha256": "56754bb0b76a880068cded9abfa774716888f288b2ad2f26798738f30735bc20",
+          "bytes": 825
+        },
+        "build-guard.json": {
+          "sha256": "de48e7acfbccdbe2fbb4c1a7cddebfc6e2ef931fab10d3a18f25a38f8aa1b68e",
+          "bytes": 589
+        },
+        "assertion.stdout": {
+          "sha256": "63e467bbba4d7207daf85536d82d7c40f4a2d215f790fec15cf656c6d6fd6da3",
+          "bytes": 665
+        },
+        "assertion.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    "green": {
+      "source_revision": "7cd1e900d6bd1b4994482819486c828e43736822",
+      "native": {
+        "state": "PASS",
+        "commands": {
+          "0001_concert_core.sql": 0,
+          "0002_command_receipts_outbox.sql": 0,
+          "0003_places_map_releases.sql": 0,
+          "0004_bootstrap_admission.sql": 0,
+          "0005_world_admission.sql": 0,
+          "0006_relationship_policy.sql": 0,
+          "0007_community.sql": 0,
+          "0008_meeting_beacons.sql": 0,
+          "0009_receipt_domain_failures.sql": 0,
+          "0010_feed.sql": 0,
+          "0011_outbox_maintenance.sql": 0,
+          "0012_media.sql": 0,
+          "0016_meeting_deadline_guards.sql": 0,
+          "0018_event_lifecycle.sql": 0,
+          "0019_mural.sql": 0,
+          "0020_mural_receipt_failures.sql": 0,
+          "0021_moderation_operations.sql": 0,
+          "0022_world_invalidation_receipts.sql": 0,
+          "0023_world_read_only_barrier.sql": 0,
+          "0024_event_read_only_barrier.sql": 0,
+          "0025_whole_character_avatar.sql": 0,
+          "0026_world_remote_invalidation.sql": 0,
+          "0027_participant_profile_coordinator.sql": 0,
+          "0028_product_owner_scope_lifecycle.sql": 0,
+          "0029_meeting_photo.sql": 0,
+          "0033_gift_command_targets.sql": 0,
+          "0035_participant_effect_witness.sql": 0,
+          "0036_social_effect_witness.sql": 0,
+          "0037_gift_private_child_intents.sql": 0,
+          "0038_age_runtime.sql": 0,
+          "0042_social_read_child_intents.sql": 0,
+          "0043_moderation_runtime.sql": 0,
+          "0044_avatar_motion_v2.sql": 0,
+          "0045_notification_child_intents.sql": 0,
+          "0046_event_cleanup_runtime.sql": 0,
+          "0047_operations_native_witness.sql": 0,
+          "0048_root_response_cancellation.sql": 0,
+          "native_avatar_transactions": 0,
+          "native_selected_avatar_transactions": 0,
+          "native_avatar_reads_share_presence_fences_and_writes_still_wait": 0,
+          "native_avatar_restart_persistence": 0,
+          "native_selected_avatar_restart_persistence": 0
+        },
+        "cleanup": "PASS",
+        "native_tests": 5,
+        "restart": {
+          "before_pid": 3809,
+          "after_pid": 4078
+        }
+      },
+      "resource_release": {
+        "offer": "C03-READ-SHARE-GREEN-202611040809Z",
+        "state": "RELEASED",
+        "runtime_exit_code": 0,
+        "finished_at": "2026-11-04T08:13:06.136815+00:00",
+        "elapsed_seconds": 64.10951316700084,
+        "max_sampled_whole_additional": 248123572,
+        "minimum_sampled_free_bytes": 38166085632,
+        "all_owned_roots_absent": true,
+        "target_release_before_runtime": true,
+        "green_qualified": true
+      },
+      "retained_evidence": {
+        "source-pins.json": {
+          "sha256": "0b671719eb83fe13e586e8d59748ee6173e8ed71e2698f70bac772ee8df0abbc",
+          "bytes": 508531
+        },
+        "pinned-artifacts.json": {
+          "sha256": "38172bd74ac2d55ba8fe69e8d90dadf8f18e5e75934a5d16a93525a158e0f815",
+          "bytes": 1143
+        },
+        "native-green.json": {
+          "sha256": "0df774560063a85e396353002700ec77d8689375641177075f0f26b4eb70e01f",
+          "bytes": 6479
+        },
+        "target-release.json": {
+          "sha256": "a0160ac06f8b38a2013a8cc476f6e78267fc51f5e27b22274997491d121c4ba8",
+          "bytes": 2656
+        },
+        "fullworkflow-release.json": {
+          "sha256": "90cc776173e134e5630620ca47ce59e79a6094ad6cf3207068200ee05144cb18",
+          "bytes": 386
+        },
+        "runtime-guard.json": {
+          "sha256": "94405d816db298d71618a5c3e33b3b61240df615bc5b77386fa0d2e3459c3546",
+          "bytes": 998
+        },
+        "build-guard.json": {
+          "sha256": "1d06513888746a10b4698e0499e5b003b2db11fa453a3fd3ab08f986df1a5859",
+          "bytes": 588
+        },
+        "normal-green.json": {
+          "sha256": "678dbf7404d0dd75bb40443bd3b2241677b36b73957b1066ec1e5410d7734550",
+          "bytes": 56
+        },
+        "combined-green.json": {
+          "sha256": "2bac27017067f0b0429e42de68abad8523098fdcc7f10287ed7391ad637c32a1",
+          "bytes": 970
+        },
+        "world15-concurrent-reads.json": {
+          "sha256": "625a5a466718583aad48c5e2be092f93fb6a17812c32c6f1a9e8ce90f1548bdb",
+          "bytes": 301853
+        },
+        "world-report.json": {
+          "sha256": "420b8c73d5fafa84c4eb1adda84dfe8c3be7bc4645c7ce67bb5b66376b4763f6",
+          "bytes": 19577
+        }
+      }
+    }
+  },
+  "red_explanation": "Actual new regression exited 101 after 2.11 seconds: read could not finish while the compatible concert_events SHARE fence remained held. External workflow exit zero records expected RED, not a passing native test. Earlier two native cases were skipped and restart was not reached.",
+  "green_summary": {
+    "source_revision": "7cd1e900d6bd1b4994482819486c828e43736822",
+    "three_pure_five_ignored": {
+      "exit_code": 0,
+      "three_pure_five_ignored": true
+    },
+    "native_case_count": 5,
+    "native_state": "PASS",
+    "native_cleanup": "PASS",
+    "world_exit_code": 0,
+    "world_result": "PASS",
+    "world_cleanup": "PASS",
+    "http_request_count": 15,
+    "http_failure_count": 0,
+    "achieved_inputs": {
+      "configured_hz": 15,
+      "sent_per_actor": [
+        264,
+        264
+      ],
+      "observed_average_hz": [
+        14.985200582848325,
+        14.985200582848325
+      ],
+      "max_gap_seconds": [
+        0.10881125000014435,
+        0.10881125000014435
+      ],
+      "scope": "Two owned normal zero-axis C05 input streams, after actual movement; no synthetic server frames"
+    },
+    "qualified": true,
+    "limitations": "Actual current App replay NOT_RUN; original504/customization not accepted. Metadata-selected native fixture is persistence-only. Expiry observation adds no requirement."
+  },
+  "green_artifacts": {
+    "concert-service": "b1ea0a07eab66aa2c1c313476b063b61cf54ee678ad0a0e44633944815f65433",
+    "avatar-green-tests": "625e21e032f6159e0c404a426977fcf2611fa6585249b68c372a58525fe8adfa"
+  },
+  "green_http": {
+    "count": 15,
+    "status_200": 15,
+    "header_latency_ms_range": [
+      150.56,
+      328.729
+    ],
+    "sampled_lock_waits": 0,
+    "delivered_finished_roots": 31,
+    "prepared_transactions": 0
+  },
+  "checks": {
+    "rust_1_88_locked_offline_j2_avatar_no_run": 0,
+    "three_pure_tests": 0,
+    "five_native_cases": 0,
+    "actual_world_and_http": 0,
+    "rust_1_88_format_check": 0,
+    "python_ast": 0,
+    "diff_check": 0,
+    "planning_check": 0
+  },
+  "limits": [
+    "Native selected-avatar synthetic fixtures prove persistence and locking only; canonical selected art is qualified separately by real World inputs.",
+    "No original browser 504 was reproduced; unnecessary contention is corrected and native latency improved. Actual App choices, PUT, persistence and peer-avatar replay still required.",
+    "No TTL, clock, authorization or disclosure deadline widening; no manual prepared settlement; no released target access.",
+    "Expiry/automatic renewal remains informational NOT_RUN, not an added IN01 acceptance gate.",
+    "Resource values are sampled, not inferred unsampled peaks. Both workflows released target before copied runtime and left no owned PostgreSQL roots."
+  ]
+}
