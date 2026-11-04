@@ -1,25 +1,6 @@
 import assert from 'node:assert/strict'
-import { open } from 'node:fs/promises'
-import { constants } from 'node:fs'
-import { isAbsolute } from 'node:path'
-import { sha256 } from './pinned-source.mjs'
-
-export async function ownedBytes(path, { maximum = 32768, privateOnly = false, hash } = {}) {
-  assert(typeof path === 'string' && isAbsolute(path), 'Input path must be absolute')
-  const file = await open(path, constants.O_RDONLY | constants.O_NOFOLLOW)
-  try {
-    const before = await file.stat()
-    assert(before.isFile() && before.uid === process.getuid() && (before.mode & (privateOnly ? 0o077 : 0o022)) === 0,
-      'Input must be an owned regular file with restricted permissions')
-    assert(before.size > 0 && before.size <= maximum, 'Input size bound')
-    const bytes = await file.readFile()
-    const after = await file.stat()
-    assert(before.ino === after.ino && before.size === after.size && before.mtimeMs === after.mtimeMs && bytes.length === before.size,
-      'Input changed during read')
-    if (hash !== undefined) { assert.match(hash, /^[a-f0-9]{64}$/); assert.equal(sha256(bytes), hash, 'Input hash mismatch') }
-    return bytes
-  } finally { await file.close() }
-}
+import { ownedBytes } from './private-file.mjs'
+export { ownedBytes } from './private-file.mjs'
 
 export function exactKeys(value, names) {
   assert(value && typeof value === 'object' && !Array.isArray(value))

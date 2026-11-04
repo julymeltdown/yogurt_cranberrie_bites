@@ -8,6 +8,14 @@ import { pathToFileURL } from 'node:url'
 import { pinnedSource, sha256 } from './pinned-source.mjs'
 import { ownedBytes, readSettings } from './inputs.mjs'
 
+export function browserDependencyIncludes(manifest) {
+  // Tailwind runs in the Vite server. Optimizing its native Oxide plugin as a
+  // browser dependency attempts to decode a .node binary as JavaScript.
+  const serverOnly = new Set(['@tailwindcss/vite', 'tailwindcss'])
+  return [...Object.keys(manifest.dependencies).filter(name => !serverOnly.has(name)),
+    'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod']
+}
+
 export async function startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath }) {
   const source = pinnedSource(repo, candidate)
   const settingsBytes = await ownedBytes(settingsPath, { privateOnly: true })
@@ -80,7 +88,7 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
     },
     // Freeze discovery to this dependency set so a later lazy route cannot
     // change Phaser's browser hash after QA captures the actual import URL.
-    optimizeDeps: { include: [...Object.keys(manifest.dependencies), 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod'], noDiscovery: true },
+    optimizeDeps: { include: browserDependencyIncludes(manifest), noDiscovery: true },
     server: { host: origin.hostname === '[::1]' ? '::1' : origin.hostname, port: Number(origin.port), strictPort: true,
       hmr: false, watch: null, cors: false,
       proxy: {

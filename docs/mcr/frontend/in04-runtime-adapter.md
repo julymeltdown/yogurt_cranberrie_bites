@@ -98,6 +98,66 @@ pathname cannot represent a private cache. QA compares the actual
 C05 map and actual one-game/one-canvas/one-image texture, anchor/depth and all
 65,536 RGBA bytes against the real snapshot. It does not use a simulated texture.
 
+### Prepare source before the live window
+
+`deferred.mjs` prepares the same self-contained adapter without requiring a live
+frontend handoff yet. It extracts the genuine backend module from an exact Git
+source and verifies its SHA256 before embedding it with the frontend adapter and
+owned-file reader. The backend protocol-qualified source is
+`2653376e5d8d68f65e05c644e1397a38c6bc02a4`, path
+`backend/scripts/mcr/in04_wall_runtime/runtime.mjs`, SHA256
+`7d29fee99b5eab4b3e3320ba5a4513f803d6d2b450da33246fa467767deba6ad`.
+This establishes source provenance and protocol behavior only. Actual managed
+runtime attachment and live acceptance remain **NOT_RUN**.
+
+```text
+node deferred.mjs REPO EXACT_BACKEND_SOURCE SHA256 NEW_PRIVATE_ADAPTER.mjs
+```
+
+At QA import time this artifact requires `MCR_IN04_FRONTEND_HANDOFF` to identify
+the new private handoff written by the actual frontend server. The backend
+module independently requires its actual `MCR_IN04_BACKEND_DESCRIPTOR`. Missing,
+unsafe or mismatched inputs fail closed. Neither private input is bundled or
+committed. Supply the generated artifact's absolute path and SHA256 through the
+same QA adapter environment variables described above. Source preparation does
+not start Vite, provision accounts, inject faults or restart a service.
+
+The deferred artifact, its two integration source cases and the optimizer
+regression passed the fresh `ROOT-IN04-ADAPTER-BUNDLE-SOURCE-20261104T2010Z`
+round. `deferred.test.mjs` imports the actual pinned
+backend bytes through the QA data-URL mechanism, using a labelled synthetic
+frontend observation to check missing managed-runtime refusal. It makes no live
+backend claim. The next source round omits the already completed FE41 tail checks.
+
+The paired FE10 owner found that including every manifest dependency in Vite's
+browser optimizer incorrectly includes `@tailwindcss/vite` and its native Oxide
+binary. This server now excludes both Tailwind packages from browser prebundling
+while retaining the actual server plugin and explicit lazy browser dependencies,
+including Phaser. Its focused canonical-manifest regression passed alongside
+the deferred source cases; actual IN04 Vite startup is still **NOT_RUN**.
+
+The concrete artifact is
+`frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime.mjs` (14,316 bytes),
+SHA256 `7b1807be10b7a6a717bb10e66b1395ef12a6c06fa047db8ccb0a53059408283c`.
+Set `MCR_IN04_B_RUNTIME_ADAPTER` to its absolute owned-file path and
+`MCR_IN04_B_RUNTIME_ADAPTER_SHA256` to that hash, together with the genuine
+private frontend handoff, backend descriptor and QA configuration. The artifact
+contains pinned implementation bytes only. Its missing-input refusals are source
+checks, not evidence of an available deployment.
+
+The new round accepted at 20:10:02.756841 UTC and fully released at
+20:10:16.426831 UTC. All 13 commands exited zero: artifact generation, 10 syntax
+checks, 11 focused cases and scoped deny-warning lint. The original work/hard
+cutoffs were 20:15:02.756835 and 20:16:02.756835; neither was extended. Sampled
+raw whole retained bytes peaked at 2,596,754,848 and positive new bytes at 22,422;
+the separate nonshrinking carry of 2,604,455,423 plus positive growth charges
+2,604,477,845 bytes. Sampled RSS was 35,766,272 bytes and aggregate process count
+two. All descendants drained and scratch was absent before the direct successor
+handoff. The earlier 1958 offer was declined before acceptance because its fresh
+reserved-space margin failed; that record is retained. No workload ran on that
+declined offer. Exact source readset, accepted clocks, commands, generated-byte
+metadata and release remain under this document's evidence prefix.
+
 ## Focused checks and remaining work
 
 `source.test.mjs` covers source pinning/no physical fallback, exact loopback
@@ -121,8 +181,9 @@ both exit zero with the input hash unchanged. Its existing source/native results
 were reused. Exact commands, source hashes, guardian and release are retained in
 `docs/mcr/evidence/in04-runtime-adapter/`.
 
-The next implementation steps are exact publication,
-composition with BE Root's genuine module, and relevant actual-runtime validation
+The original source helper is published at `d0f27b108b1ab8e9d66afdb1faf0b6826dc0dff7`.
+The next implementation steps are publication of the qualified concrete
+deferred artifact and relevant actual-runtime validation
 when the isolated coherent service window/three actors/event/current operator
 routes are available. Any resulting frontend correction remains part of this
 objective. Existing unrelated owner matrices are reused; they are not replayed

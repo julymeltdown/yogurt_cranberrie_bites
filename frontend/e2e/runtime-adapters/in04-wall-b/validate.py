@@ -80,17 +80,23 @@ def main():
     scratch.mkdir()
     (out / 'offer.json').write_text(json.dumps(offer, indent=2) + '\n')
     source = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.iterdir() if p.suffix in ('.mjs', '.py')}
-    assert hashlib.sha256(TAIL.read_bytes()).hexdigest() == TAIL_SHA256
+    include_tail = offer.get('include_fe41_tail', True)
+    if include_tail:
+        assert hashlib.sha256(TAIL.read_bytes()).hexdigest() == TAIL_SHA256
     (out / 'readset.json').write_text(json.dumps(source, indent=2) + '\n')
-    (out / 'fe41-readonly-input.json').write_text(json.dumps({'path': str(TAIL), 'sha256': TAIL_SHA256,
-        'source': '4d49d95e6f221cbcc8040f31b0499aa2151ad7ff', 'mode': 'read-only final harness checks; no product test replay'}, indent=2) + '\n')
+    if include_tail:
+        (out / 'fe41-readonly-input.json').write_text(json.dumps({'path': str(TAIL), 'sha256': TAIL_SHA256,
+            'source': '4d49d95e6f221cbcc8040f31b0499aa2151ad7ff', 'mode': 'read-only final harness checks; no product test replay'}, indent=2) + '\n')
     env = {**os.environ, 'TMPDIR': str(scratch), 'NO_COLOR': '1', 'PATH': str(NODE.parent) + ':' + os.environ['PATH'],
            'MCR_IN04_SOURCE_REPO': str(ROOT), 'MCR_IN04_SOURCE_CANDIDATE': offer['candidate']}
     env.pop('NODE_COMPILE_CACHE', None)
-    commands = [[str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(TAIL)],
-                [str(NODE), '--check', str(TAIL)]]
+    commands = ([[str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(TAIL)],
+                 [str(NODE), '--check', str(TAIL)]] if include_tail else [])
+    if offer.get('deferred_bundle', False):
+        commands += [[str(NODE), str(HERE / 'deferred.mjs'), str(ROOT), offer['backend_source'], offer['backend_sha256'], str(HERE / 'qualified-runtime.mjs')],
+                     [str(NODE), '--check', str(HERE / 'qualified-runtime.mjs')]]
     commands += [[str(NODE), '--check', str(p)] for p in sorted(HERE.glob('*.mjs'))]
-    commands += [[str(NODE), '--test', '--test-isolation=none', str(HERE / 'source.test.mjs')],
+    commands += [[str(NODE), '--test', '--test-isolation=none', str(HERE / 'source.test.mjs'), str(HERE / 'deferred.test.mjs')],
                  [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(HERE)]]
     child, history, observed = None, [], set()
     peak = dict(ownedBytes=initial, positiveNewBytes=0, pids=0, rssBytes=0)
@@ -128,7 +134,8 @@ def main():
                 child = None
         sample()
         assert source == {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in source}
-        assert hashlib.sha256(TAIL.read_bytes()).hexdigest() == TAIL_SHA256
+        if include_tail:
+            assert hashlib.sha256(TAIL.read_bytes()).hexdigest() == TAIL_SHA256
         status = 'PASS'
     finally:
         if child and child.poll() is None:
