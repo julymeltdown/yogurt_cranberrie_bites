@@ -299,3 +299,125 @@ async fn lock_wait_cannot_outlive_original_request_deadline() {
     assert!(task.await.unwrap().is_err());
     f.p.close().await;
 }
+
+#[tokio::test]
+#[ignore = "private social_remaining_support/native.py fixture required"]
+async fn retained_social_service_rechecks_canonical_claims_on_reveal() {
+    use concert_application::{
+        commands::{FingerprintKeys, SigningKey},
+        relationship::social::{CreateSharing, SharingDecision},
+    };
+    use concert_domain::ParticipantKey;
+    use concert_service::relationship::{
+        crypto::{HandleKeys, ManagedHandleKey},
+        social::SocialService,
+    };
+    let f = Fixture::new().await;
+    let a = ParticipantKey {
+        event_id: f.sharing.event,
+        user_id: f.sharing.requester,
+    };
+    let b = ParticipantKey {
+        event_id: f.sharing.event,
+        user_id: f.sharing.recipient,
+    };
+    for actor in [a, b] {
+        sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)")
+            .bind(actor.event_id.uuid()).bind(actor.user_id.uuid()).execute(&f.p).await.unwrap();
+    }
+    let keys =
+        FingerprintKeys::new(SigningKey::new("fixture", &[37; 32]).unwrap(), vec![]).unwrap();
+    let build = |actor: AuthUserId| {
+        let mut request = f.request;
+        request.actor = actor;
+        SocialService::new(
+            f.p.clone(),
+            FixtureAuthority,
+            PgSocialEligibility::new(request, FixtureAuthority, FixtureVerifier),
+            HandleKeys::new(ManagedHandleKey::new("fixture", &[71; 32]).unwrap(), vec![]).unwrap(),
+            3600,
+        )
+        .unwrap()
+    };
+    let requester = build(a.user_id);
+    let recipient = build(b.user_id);
+    for (actor, handle, service) in [
+        (a, "requester.handle", &requester),
+        (b, "recipient.handle", &recipient),
+    ] {
+        service
+            .set_handle(
+                actor,
+                Platform::Instagram,
+                0,
+                PrivateHandle::normalize(Platform::Instagram, handle).unwrap(),
+                Uuid::new_v4(),
+                &keys,
+            )
+            .await
+            .unwrap();
+    }
+    let receipt = requester
+        .create(
+            a,
+            CreateSharing {
+                context: f.sharing,
+                consents: vec![ConsentBinding {
+                    platform: Platform::Instagram,
+                    requester_version: Revision::initial(),
+                    recipient_version: Revision::initial(),
+                    requester_consents: true,
+                }],
+            },
+            Uuid::new_v4(),
+            &keys,
+        )
+        .await
+        .unwrap();
+    let id = receipt.reference.unwrap().resource;
+    assert!(requester.reveal(a, id, Platform::Instagram).await.is_err());
+    recipient
+        .decide(
+            b,
+            id,
+            SharingDecision {
+                expected: Revision::initial(),
+                approve: true,
+                approved_platforms: vec![Platform::Instagram],
+                recipient_consents: true,
+            },
+            Uuid::new_v4(),
+            &keys,
+        )
+        .await
+        .unwrap();
+    assert_eq!(
+        requester
+            .reveal(a, id, Platform::Instagram)
+            .await
+            .unwrap()
+            .handle
+            .expose_for_reveal(),
+        "recipient.handle"
+    );
+    assert_eq!(
+        recipient
+            .reveal(b, id, Platform::Instagram)
+            .await
+            .unwrap()
+            .handle
+            .expose_for_reveal(),
+        "requester.handle"
+    );
+    Fixture::claim(
+        &f.p,
+        f.request.event.uuid(),
+        a.user_id.uuid(),
+        "UNSUPPORTED",
+        Utc::now(),
+    )
+    .await;
+    assert!(requester.reveal(a, id, Platform::Instagram).await.is_err());
+    assert!(recipient.reveal(b, id, Platform::Instagram).await.is_err());
+    f.p.close().await;
+}

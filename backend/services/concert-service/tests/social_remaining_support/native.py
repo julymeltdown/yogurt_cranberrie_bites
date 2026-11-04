@@ -58,8 +58,9 @@ def run(args, report):
         def tests(phase):
             for name, binary in binaries.items():
                 result = execute([str(binary), '--ignored', '--test-threads=1', '--nocapture'], env=env, phase=f'{phase}-{name}', cwd=ROOT / 'backend', timeout=90)
-                if 'test result: ok. 5 passed; 0 failed; 0 ignored;' not in result.stdout:
-                    raise SmokeError('inventory', 'exact five native tests required per executable')
+                expected = 5 if name == 'friend' else 6
+                if f'test result: ok. {expected} passed; 0 failed; 0 ignored;' not in result.stdout:
+                    raise SmokeError('inventory', 'exact native test inventory required')
                 report['checks'][f'{phase}-{name}'] = {'exit_code': result.returncode, 'stdout': result.stdout}
             check_ledger(cluster, 'mcr_social_friend', migration_manifest(ROOT / 'backend', 'friend-service'))
         tests('before-restart')
