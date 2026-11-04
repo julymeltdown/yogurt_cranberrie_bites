@@ -4,6 +4,7 @@ CREATE TABLE public.concert_age_deletion_progress (
     saga_id uuid NOT NULL UNIQUE,
     command_binding bytea NOT NULL CHECK (octet_length(command_binding)=32),
     source_binding bytea NOT NULL CHECK (octet_length(source_binding)=32),
+    cursor_verification uuid,
     erased_claims bigint NOT NULL DEFAULT 0 CHECK (erased_claims>=0),
     erased_verifications bigint NOT NULL DEFAULT 0 CHECK (erased_verifications>=0),
     progress_revision bigint NOT NULL DEFAULT 0 CHECK (progress_revision>=0),
@@ -14,7 +15,7 @@ CREATE TABLE public.concert_age_deletion_progress (
 CREATE FUNCTION public.concert_age_deletion_progress_guard() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
     IF TG_OP='INSERT' THEN
-        IF NEW.progress_revision<>0 OR NEW.erased_claims<>0 OR NEW.erased_verifications<>0 OR NEW.completed_at IS NOT NULL THEN
+        IF NEW.progress_revision<>0 OR NEW.erased_claims<>0 OR NEW.erased_verifications<>0 OR NEW.completed_at IS NOT NULL OR NEW.cursor_verification IS NOT NULL THEN
             RAISE EXCEPTION 'Age deletion must begin without a terminal receipt' USING ERRCODE='23514';
         END IF;
         RETURN NEW;
@@ -26,7 +27,8 @@ BEGIN
        (NEW.user_id,NEW.saga_id,NEW.command_binding,NEW.source_binding) IS DISTINCT FROM
        (OLD.user_id,OLD.saga_id,OLD.command_binding,OLD.source_binding) OR
        NEW.erased_claims<OLD.erased_claims OR NEW.erased_verifications<OLD.erased_verifications OR
-       NEW.progress_revision<>OLD.progress_revision+1 THEN
+       NEW.progress_revision<>OLD.progress_revision+1 OR
+       (OLD.cursor_verification IS NOT NULL AND (NEW.cursor_verification IS NULL OR NEW.cursor_verification<OLD.cursor_verification)) THEN
         RAISE EXCEPTION 'Age deletion progress must be exact and monotonic' USING ERRCODE='23514';
     END IF;
     IF NEW.completed_at IS NOT NULL AND

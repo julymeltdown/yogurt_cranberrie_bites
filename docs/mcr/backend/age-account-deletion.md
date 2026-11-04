@@ -37,7 +37,7 @@ witnesses and command receipts remain with their existing audit owners and
 retention policy; this adapter never rewrites their trust or settlement meaning.
 
 Forward migration 0066 stores exact command/source binding, saga, bounded erasure
-counters and revision in `concert_age_deletion_progress`, referencing the existing
+counters, monotonic verification UUID cursor and revision in `concert_age_deletion_progress`, referencing the existing
 common fence. This is category progress, not another authorization/fence store.
 An incomplete page commits real progress and returns revision zero/complete false.
 A terminal page proves absence of all Age private/owner rows in the same native

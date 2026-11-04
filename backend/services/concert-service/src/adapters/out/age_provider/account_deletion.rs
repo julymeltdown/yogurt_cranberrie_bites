@@ -56,7 +56,7 @@ impl AgeAccountDeletion {
         sqlx::query("insert into public.concert_age_deletion_progress(user_id,saga_id,command_binding,source_binding) values($1,$2,$3,$4) on conflict do nothing")
             .bind(command.user_id).bind(command.saga_id).bind(command.binding()?.as_slice())
             .bind(source.source_binding().as_slice()).execute(&mut *tx).await.map_err(db)?;
-        let row = sqlx::query("select saga_id,command_binding,source_binding,progress_revision,completed_at is not null as complete from public.concert_age_deletion_progress where user_id=$1 for update")
+        let row = sqlx::query("select saga_id,command_binding,source_binding,progress_revision,cursor_verification,completed_at is not null as complete from public.concert_age_deletion_progress where user_id=$1 for update")
             .bind(command.user_id).fetch_one(&mut *tx).await.map_err(db)?;
         if row.try_get::<Uuid, _>("saga_id").map_err(db)? != command.saga_id
             || row.try_get::<Vec<u8>, _>("command_binding").map_err(db)? != command.binding()?
@@ -66,10 +66,11 @@ impl AgeAccountDeletion {
         }
         let mut complete: bool = row.try_get("complete").map_err(db)?;
         let mut revision: i64 = row.try_get("progress_revision").map_err(db)?;
+        let cursor: Option<Uuid> = row.try_get("cursor_verification").map_err(db)?;
         if !complete {
             bound_transaction_in(&mut tx, deadline).await?;
-            let ids: Vec<Uuid> = sqlx::query_scalar("select verification_id from public.concert_age_verifications where user_id=$1 order by verification_id limit $2 for update")
-                .bind(command.user_id).bind(AGE_DELETION_PAGE).fetch_all(&mut *tx).await.map_err(db)?;
+            let ids: Vec<Uuid> = sqlx::query_scalar("select verification_id from public.concert_age_verifications where user_id=$1 and ($3::uuid is null or verification_id>$3) order by verification_id limit $2 for update")
+                .bind(command.user_id).bind(AGE_DELETION_PAGE).bind(cursor).fetch_all(&mut *tx).await.map_err(db)?;
             // Claims reference verification rows; erase children first. Neither
             // command receipts nor immutable native witnesses are touched.
             let claims = sqlx::query(
@@ -92,8 +93,8 @@ impl AgeAccountDeletion {
                     .await
                     .map_err(db)?;
             }
-            revision = sqlx::query_scalar("update public.concert_age_deletion_progress set erased_claims=erased_claims+$2,erased_verifications=erased_verifications+$3,progress_revision=progress_revision+1,completed_at=case when $4 then clock_timestamp() else null end where user_id=$1 returning progress_revision")
-                .bind(command.user_id).bind(claims as i64).bind(verifications as i64).bind(complete)
+            revision = sqlx::query_scalar("update public.concert_age_deletion_progress set erased_claims=erased_claims+$2,erased_verifications=erased_verifications+$3,progress_revision=progress_revision+1,cursor_verification=coalesce($5,cursor_verification),completed_at=case when $4 then clock_timestamp() else null end where user_id=$1 returning progress_revision")
+                .bind(command.user_id).bind(claims as i64).bind(verifications as i64).bind(complete).bind(ids.last().copied())
                 .fetch_one(&mut *tx).await.map_err(db)?;
         }
         if verify_source(self.authority.as_ref(), command, deadline).await? != *source {
