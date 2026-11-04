@@ -12,6 +12,14 @@ is `acee2fac57847ec42656c991f4db7170a552d8fd` (00c aggregate source and migratio
 0072 on its canonical seed). Its six aggregate paths are dependency intake,
 not authored Age changes. Root is the serial backend publisher.
 
+Root also authorized the unchanged coordinator correction
+`cfa8793e1697d886d875a5d59a1912a5daa12c0b`, applied here as
+`bb0fb785802bdf5a609cb78aef88f359c5aa04a4`. Its only hunk borrows the SQL
+`source_binding` bind so that the later reauthentication can still read it.
+The aggregate file SHA256 is
+`0763d58008a6ff688db6deea690068249e420430a8e3b1efcda8c7b250cca841`.
+This is unchanged owner dependency intake, excluded from authored Age scope.
+
 The Age owner authors `age_provider/account_deletion.rs`, its module export,
 the necessary `scoped.rs` user-fence checks, forward migration 0066, new
 `age_deletion_native.rs`, scripts under `backend/scripts/mcr/age_deletion`,
