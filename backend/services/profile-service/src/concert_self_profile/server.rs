@@ -153,12 +153,7 @@ impl proto::concert_self_profile_service_server::ConcertSelfProfileService for S
             )
             .await?;
         let binding = scope.binding();
-        if !matches!(
-            binding.operation.as_str(),
-            "getConcertParticipant" | "updateConcertParticipant"
-        ) || binding.http_target != format!("/api/concert/events/{}/me", scope.event())
-            || !matches!(binding.http_method.as_str(), "GET" | "PATCH")
-        {
+        if !allowed_read(binding, scope.event()) {
             return Err(denied());
         }
         let deadline = scope.deadline();
@@ -387,4 +382,80 @@ pub(super) fn status(error: Error) -> Status {
 }
 fn denied() -> Status {
     Status::permission_denied("Canonical SELF Profile scope denied")
+}
+fn allowed_read(binding: &lease::GuardBinding, event: Uuid) -> bool {
+    let base = format!("/api/concert/events/{event}/me");
+    match (binding.operation.as_str(), binding.http_method.as_str()) {
+        ("getConcertParticipant", "GET") | ("updateConcertParticipant", "PATCH") => {
+            binding.http_target == base
+        }
+        ("setConcertAvatar", "PUT") => binding.http_target == format!("{base}/avatar"),
+        _ => false,
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn only_exact_c03_read_parent_triples_are_admitted() {
+        let event = Uuid::new_v4();
+        for (operation, method, suffix) in [
+            ("getConcertParticipant", "GET", ""),
+            ("updateConcertParticipant", "PATCH", ""),
+            ("setConcertAvatar", "PUT", "/avatar"),
+        ] {
+            let mut binding = lease::GuardBinding {
+                operation: operation.into(),
+                http_method: method.into(),
+                http_target: format!("/api/concert/events/{event}/me{suffix}"),
+                ..Default::default()
+            };
+            assert!(allowed_read(&binding, event));
+            assert!(!allowed_read(&binding, Uuid::new_v4()));
+            for wrong in ["POST", "DELETE", "GET", "PATCH", "PUT"]
+                .into_iter()
+                .filter(|v| *v != method)
+            {
+                binding.http_method = wrong.into();
+                assert!(!allowed_read(&binding, event));
+            }
+            binding.http_method = method.into();
+            binding.http_target.push_str("?other=1");
+            assert!(!allowed_read(&binding, event));
+        }
+    }
+    #[test]
+    fn self_policy_matches_owned_idl_and_denies_other_workloads() {
+        let source = include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../proto/profile/v1/concert_self_profile.proto"
+        ));
+        let body = source
+            .split_once("service ConcertSelfProfileService {")
+            .unwrap()
+            .1;
+        let mut actual = platform::grpc_method_policy::proto_rpc_names(body);
+        let mut expected = SELF_POLICY
+            .method_names()
+            .map(str::to_owned)
+            .collect::<Vec<_>>();
+        actual.sort();
+        expected.sort();
+        assert_eq!(actual, expected);
+        for method in expected {
+            for caller in Workload::ALL {
+                assert_eq!(
+                    SELF_POLICY.allows(
+                        &format!("/profile.self.v1.ConcertSelfProfileService/{method}"),
+                        caller
+                    ),
+                    caller == Workload::Concert
+                );
+            }
+        }
+        assert!(!SELF_POLICY.allows(
+            "/profile.self.v1.ConcertSelfProfileService/Commit",
+            Workload::Concert
+        ));
+    }
 }

@@ -64,9 +64,28 @@ Concert issuer and dedicated base64 key variables. It rejects Gateway trust and
 Gateway/Concert/Profile parity keys. Its exact new-file ownership was transferred
 by canonical authority; the parent module export and method policy remain theirs.
 
-These new RPC modules and the added read/recovery tables in unpublished 0008 are
-source-only, NOT_RUN. The historical storage qualification below precedes these
-changes and cannot certify their amended schema or runtime behavior.
+The new RPC modules remain source-only, NOT_RUN. Amended 0008 has separate SQL
+qualification below; the historical binary qualification cannot certify new RPCs.
+
+## Amended schema SQL qualification
+
+`concert_self_profile_schema.py` applies the exact current migration SQL to its
+own marker/inode-checked PostgreSQL 16.14 instance. The first attempt applied all
+DDL then refused a missing exact test match caused by a doubled prefix; its
+cleanup passed. After fixing that runner filter, `schema-report-2.json` passed
+three historical frozen storage tests plus a direct native read-reference test.
+The read connection's actual full XID is live while an independent reference
+commits; positive content is read afterward, rollback proves ABORTED, the control
+reference remains and no write receipt exists. Prepared write effects survive a
+controlled restart; exact native commit/abort and receipt behavior pass. Cleanup
+passed. Amended migration 0008 SHA-384:
+`302533481e533b98362d2452db7f91f85eb6d08fe13a8d307877de05de57588e6358547f577f3d910418d48f7f61afa3`.
+
+This is source SQL qualification using the private historical storage test binary
+SHA-256 `1564b5f50ab484ba14dfd36c4af9aba798e460570904aa942e415ef2497bdf0a`,
+selected through its exact Cargo JSON/frozen-artifact receipt. New Rust RPCs and
+the amended binary migration CLI remain NOT_RUN. No build target was accessed.
+Receipt: `/private/tmp/mcr-profile-self-8f89d190-20261104/schema-report-2.json`.
 
 ## Qualified storage prerequisite
 
