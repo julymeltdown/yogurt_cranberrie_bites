@@ -25,6 +25,7 @@ use concert_service::{
             runtime::{AgeRuntime, ProviderMode},
             scoped::{ScopedAgeAuthority, ScopedProjectionAuthority},
             settlement::AgeTransactionResolver,
+            trust::ClaimTrust,
             Access, Authority,
         },
         relationship_authority::guarded::OwnerGuardScope,
@@ -84,6 +85,9 @@ fn runtime(f: &fixture::Fixture, verifier: Option<Arc<SyntheticVerifier>>) -> Ag
         ),
         mode,
     )
+}
+fn trusted_outage(f: &fixture::Fixture) -> AgeRuntime {
+    runtime(f, None).with_claim_trust(ClaimTrust::new(&[("synthetic", "synthetic-v1")]).unwrap())
 }
 fn context(s: &OwnerGuardScope) -> Context {
     let b = s.binding();
@@ -164,7 +168,7 @@ async fn configured_canonical_callback_replay_and_unavailable_status() -> anyhow
         .await?;
     assert_eq!(done.status.unwrap().status, AgeStatus::Verified);
     assert_eq!(v.0.load(Ordering::SeqCst), 1);
-    let replay = runtime(&f, None)
+    let replay = trusted_outage(&f)
         .claims(s.clone())
         .callback(
             c,
@@ -178,7 +182,7 @@ async fn configured_canonical_callback_replay_and_unavailable_status() -> anyhow
     assert_eq!(v.0.load(Ordering::SeqCst), 1);
     finish(&s).await?;
     let s = scope(&f, a, family, event, "getConcertAgeStatus").await?;
-    let status = runtime(&f, None)
+    let status = trusted_outage(&f)
         .claims(s.clone())
         .status(context(&s))
         .await?;
@@ -331,6 +335,100 @@ async fn unavailable_mode_and_closed_event_erasure() -> anyhow::Result<()> {
         .await?;
     let s = scope(&f, a, family, event, "eraseConcertAgePrivateData").await?;
     r.claims(s.clone()).expire_states(context(&s), 10).await?;
+    finish(&s).await?;
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "frozen private PG16 and actual canonical mTLS owners required"]
+async fn accepted_claim_survives_outage_but_untrusted_newest_never_falls_back() -> anyhow::Result<()>
+{
+    // SQL records here are explicit synthetic policy inputs, not provider proof.
+    // The configured callback proof path is qualified by the first native case.
+    let f = fixture::Fixture::new().await?;
+    let (a, family, event) = seed(&f).await?;
+    sqlx::query("insert into concert_age_owners(user_id) values($1)")
+        .bind(a)
+        .execute(&f.concert)
+        .await?;
+    let older = Uuid::new_v4();
+    sqlx::query("insert into concert_age_verifications(verification_id,user_id,event_id,session_id,verifier_id,source_revision,state_digest,return_target,created_at,expires_at,state) select $1,$2,$3,$4,'synthetic','synthetic-v1',decode(repeat('61',32),'hex'),'AGE_PRIVACY',t,t+interval '10 minutes','PENDING' from(select clock_timestamp() t)n")
+        .bind(older).bind(a).bind(event).bind(family).execute(&f.concert).await?;
+    sqlx::query("insert into concert_age_claims(claim_id,user_id,event_id,verifier_id,source_revision,status,verified_at,expires_at,age_at_verification,next_birthday_at) values($1,$2,$3,'synthetic','synthetic-v1','VERIFIED',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '30 days',26,(clock_timestamp() at time zone 'Asia/Seoul')::date+1)")
+        .bind(older).bind(a).bind(event).execute(&f.concert).await?;
+    let s = scope(&f, a, family, event, "getConcertAgeStatus").await?;
+    let c = context(&s);
+    let untrusted = runtime(&f, None).claims(s.clone()).status(c).await?;
+    assert_eq!(untrusted.status, AgeStatus::ProviderUnavailable);
+    let r = trusted_outage(&f);
+    let current = r.claims(s.clone()).status(c).await?;
+    assert_eq!(current.status, AgeStatus::Verified);
+    assert!(!current.verification_available);
+    let mut tx = f.concert.begin().await?;
+    ScopedAgeAuthority::new(s.clone())
+        .authorize_in(&mut tx, c, Access::Read)
+        .await?;
+    let pending = r
+        .projection(s.clone())
+        .project_in(
+            &mut tx,
+            ClaimQuery {
+                context: c,
+                subject: c.actor,
+                requested_at: Utc::now(),
+            },
+            |_, age| {
+                Box::pin(async move {
+                    assert!(!age.verification_available());
+                    Ok(age.permits(AgeBounds::new(Some(18), Some(30)).unwrap(), false))
+                })
+            },
+        )
+        .await?;
+    tx.commit().await?;
+    assert!(pending.after_commit()?);
+    finish(&s).await?;
+    // A newer unaccepted source must hide the older accepted record completely.
+    let newer = Uuid::new_v4();
+    sqlx::query("update concert_age_claims set status='REPLACED' where claim_id=$1")
+        .bind(older)
+        .execute(&f.concert)
+        .await?;
+    sqlx::query("insert into concert_age_verifications(verification_id,user_id,event_id,session_id,verifier_id,source_revision,state_digest,return_target,created_at,expires_at,state) select $1,$2,$3,$4,'unaccepted','unaccepted-v1',decode(repeat('62',32),'hex'),'AGE_PRIVACY',t,t+interval '10 minutes','PENDING' from(select clock_timestamp() t)n")
+        .bind(newer).bind(a).bind(event).bind(family).execute(&f.concert).await?;
+    sqlx::query("insert into concert_age_claims(claim_id,user_id,event_id,verifier_id,source_revision,status,verified_at,expires_at,age_at_verification,next_birthday_at) values($1,$2,$3,'unaccepted','unaccepted-v1','VERIFIED',clock_timestamp(),clock_timestamp()+interval '30 days',26,(clock_timestamp() at time zone 'Asia/Seoul')::date+1)")
+        .bind(newer).bind(a).bind(event).execute(&f.concert).await?;
+    let s = scope(&f, a, family, event, "getConcertAgeStatus").await?;
+    let c = context(&s);
+    let healthy = runtime(&f, Some(Arc::new(SyntheticVerifier(AtomicUsize::new(0)))));
+    assert!(healthy.verification_available());
+    assert_eq!(
+        healthy.claims(s.clone()).status(c).await?.status,
+        AgeStatus::Unknown
+    );
+    let mut tx = f.concert.begin().await?;
+    ScopedAgeAuthority::new(s.clone())
+        .authorize_in(&mut tx, c, Access::Read)
+        .await?;
+    let pending = healthy
+        .projection(s.clone())
+        .project_in(
+            &mut tx,
+            ClaimQuery {
+                context: c,
+                subject: c.actor,
+                requested_at: Utc::now(),
+            },
+            |_, age| {
+                Box::pin(async move {
+                    assert_eq!(age.status(), AgeStatus::Unknown);
+                    Ok(age.permits(AgeBounds::new(Some(18), Some(30)).unwrap(), false))
+                })
+            },
+        )
+        .await?;
+    tx.commit().await?;
+    assert!(!pending.after_commit()?);
     finish(&s).await?;
     Ok(())
 }
