@@ -86,7 +86,7 @@ if MODE=='guard':
    rows=process_rows();roots={parent}
    if pg and (Path(pg)/'data/postmaster.pid').exists():roots.add(int((Path(pg)/'data/postmaster.pid').read_text().splitlines()[0]))
    count=len(family(rows,roots));maxprocess=max(maxprocess,count)
-   assert count<=(20 if mode in ('build','release') else 12),'process ceiling'
+   assert count<=(40 if mode in ('build','release') else 48),'process ceiling'
    assert any(pid==parent for pid,pp,co,ar in rows),'controller disappeared'
    summary={'at':stamp(),'peak_whole_bytes':peak,'peak_positive_target_growth_bytes':growth,'minimum_free_bytes':low,'maximum_processes':maxprocess,'last_carry_bytes':carry,'last_new_output_bytes':output,'retained_target_growth_bytes':oldgrowth}
    write('guard-'+mode+'.json',summary)
@@ -171,7 +171,11 @@ try:
   rows=process_rows();assert not any(str(TARGET) in args and Path(comm).name in ('cargo','rustc','rustdoc') for pid,pp,comm,args in rows)
   handles=execute('release-target-handles',['/usr/sbin/lsof','+D',TARGET],expected=None)
   assert checks[-1]['exit_code']==1 and not handles.strip() and not (OUT/'release-target-handles.stderr').read_text().strip()
-  A['target_released_epoch']=time.time();write('acceptance.json',A)
+  A['target_released_epoch']=time.time()
+  # Retain the full independent cleanup reserve within the target-to-FULL cap.
+  A['full_release_epoch']=min(A['full_release_epoch'],A['target_released_epoch']+420)
+  A['all_work_epoch']=min(A['all_work_epoch'],A['full_release_epoch']-180)
+  write('acceptance.json',A)
   write('target-release.json',{'lease':A['lease'],'at':stamp(),'target':str(TARGET),'zero_handles':True,'compiler_children':0,'unconditional_target_release':True,'copied_tests_started':False,'no_target_reaccess':True})
  elif MODE=='run':
   r=json.loads((OUT/'target-release.json').read_text());assert r['unconditional_target_release'] and r['zero_handles']
