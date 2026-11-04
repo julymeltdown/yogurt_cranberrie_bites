@@ -106,6 +106,11 @@ def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
     start=dt.datetime.fromisoformat(accepted).timestamp(); work_end=start+work_seconds; hard_end=start+total_seconds
     assert time.time()<work_end and not prefix.exists()
     p=preflight(); assert p['clean'] and p['pin']==pin and p['free_bytes']>=START_FLOOR_BYTES
+    if kind=='actual':
+        inputs=[Path(os.environ[name]) for name in ['MCR_IN04_CONFIG','MCR_ADMIN_FRONTEND_HANDOFF','MCR_ADMIN_BACKEND_OBSERVER','MCR_IN04_BACKEND_DESCRIPTOR']]
+        assert all(path.is_absolute() and path.is_file() and not path.is_symlink() for path in inputs), 'actual borrowed inputs unavailable'
+        p['borrowed_actual_input_bytes']=sum(footprint(path) for path in inputs)
+        p['deps_bytes']+=p['borrowed_actual_input_bytes']
     limits=dict(pids=8 if kind=='source' else 32,rss=(3 if kind=='source' else 4)*1024**3,whole=2560*MIB,
                 temporary=(80 if kind=='source' else 200)*MIB,durable=24*MIB,other=16*MIB,new_total=(128 if kind=='source' else 240)*MIB)
     assert p['source_bytes']+p['deps_bytes']+p['git_bytes']<limits['whole']
