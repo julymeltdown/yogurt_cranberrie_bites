@@ -1,0 +1,524 @@
+{
+  "offer": "ADMIN-ACTUAL-REMAINING-TWO-SOURCE-20261104T2015Z",
+  "finished_at": "2026-11-04T20:19:12.934460+00:00",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--pretty",
+        "false"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-11-04T20:19:12.245772+00:00"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/operations-composition",
+        "src/app/AdminBoundary.tsx",
+        "src/app/ports.ts"
+      ],
+      "exit_code": 1,
+      "finished_at": "2026-11-04T20:19:12.384155+00:00"
+    }
+  ],
+  "failure": "command2 failed",
+  "signal_errors": [],
+  "remaining_owned": [],
+  "dependency_link_absent": true,
+  "own_tmp_removed": true,
+  "port": 52624,
+  "rebind": true,
+  "guard": {
+    "peaks": {
+      "pids": 4,
+      "rss": 1687437312,
+      "temporary": 1363968,
+      "durable": 36864,
+      "other": 0,
+      "new_total": 69800310,
+      "whole": 2254325026
+    },
+    "reason": null,
+    "minimum_free_bytes": 19968946176,
+    "observed_processes": {
+      "84784": {
+        "parent": 49590,
+        "group": 84784,
+        "uid": 501,
+        "rss": 62944,
+        "started": "Thu Nov 5 05:18:59 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-admin-actual-source-admit.py ADMIN-ACTUAL-REMAINING-TWO-SOURCE-20261104T2015Z 2026-11-04T20:40:00+00:00 2495840256 source /private/tmp/mcr-default-admin-real-source-02"
+      },
+      "85082": {
+        "parent": 84784,
+        "group": 84784,
+        "uid": 501,
+        "rss": 24688,
+        "started": "Thu Nov 5 05:19:00 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/operations-composition/__tests__/round.py guard /private/tmp/mcr-default-admin-real-source-02 84784 1793823660.265675 1793823720.265675"
+      },
+      "85103": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 05:19:00 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85258": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 05:19:01 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85260": {
+        "parent": 84784,
+        "group": 85260,
+        "uid": 501,
+        "rss": 0,
+        "started": "Thu Nov 5 05:19:01 2026",
+        "command": "(node)"
+      },
+      "85283": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 05:19:01 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85430": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2288,
+        "started": "Thu Nov 5 05:19:01 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85548": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 05:19:01 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85557": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:02 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85564": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:02 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85730": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:02 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85878": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85896": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "85947": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86074": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86182": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 05:19:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86338": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2240,
+        "started": "Thu Nov 5 05:19:04 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86425": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:04 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86493": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:04 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86533": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:04 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86617": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 05:19:04 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86702": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2272,
+        "started": "Thu Nov 5 05:19:05 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86740": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:05 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86790": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:05 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86943": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:05 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86944": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "86972": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2240,
+        "started": "Thu Nov 5 05:19:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87139": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87177": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87184": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87231": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 05:19:07 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87252": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:07 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87291": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:07 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87308": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2256,
+        "started": "Thu Nov 5 05:19:07 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87479": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:07 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87598": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2208,
+        "started": "Thu Nov 5 05:19:08 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87655": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2240,
+        "started": "Thu Nov 5 05:19:08 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87677": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:08 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87684": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:08 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87726": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87773": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2288,
+        "started": "Thu Nov 5 05:19:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87825": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87845": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "87992": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2336,
+        "started": "Thu Nov 5 05:19:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88000": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88001": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88002": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88036": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88037": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:10 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88062": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2224,
+        "started": "Thu Nov 5 05:19:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88066": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2240,
+        "started": "Thu Nov 5 05:19:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88075": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88077": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88078": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88080": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88088": {
+        "parent": 84784,
+        "group": 84784,
+        "uid": 0,
+        "rss": 4080,
+        "started": "Thu Nov 5 05:19:12 2026",
+        "command": "(ps)"
+      },
+      "88089": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "88093": {
+        "parent": 85082,
+        "group": 84784,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 05:19:12 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      }
+    },
+    "live_pids": [
+      "84784",
+      "85082",
+      "88093"
+    ],
+    "sampled_at": "2026-11-04T20:19:12.777532+00:00",
+    "sample_seconds": 0.16078520799055696
+  }
+}

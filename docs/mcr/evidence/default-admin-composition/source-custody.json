@@ -3,10 +3,10 @@
   "branch": "codex/mcr-fe-default-admin-composition",
   "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
   "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
-  "qualification": "OWN_COMPOSITION_QUALIFIED_CONTROLLED_HTTP_CURRENT_MAIN_NATIVE_PASS_PUBLICATION_PENDING",
+  "qualification": "OWN_COMPOSITION_PUBLISHED_CONTROLLED_NATIVE_PASS_ACTUAL_DRIVER_SOURCE_QUALIFIED",
   "scope": "Default Admin canonical consumer composition and changed boundary only",
   "actualProducer205": "NOT_QUALIFIED",
-  "productionRoleRegistration": "ABSENT_FAIL_CLOSED_NO_FALLBACK",
+  "productionRoleRegistration": "CANONICAL148_REGISTERED_ACTUAL_RUNTIME_UNQUALIFIED",
   "placeWriteRelease": "ABSENT_NO_ROLE_DERIVED_GRANT",
   "missingReviewProducers": "Operations205",
   "wholeTaskLiveAcceptance": "OPEN_SEPARATE",
@@ -56,7 +56,7 @@
     "integrationOwner": "Root153",
     "actualPublicHTTP": "NOT_QUALIFIED",
     "controlledNativeDoesNotCloseActualProducer": true,
-    "latestProducerReport": "Root2653376e5 sameCore/PublishedRoles/publication overlay source authored; canonical exposure/generation/actual HTTP not yet qualified. C07 frozen147operation baseline still absent route."
+    "latestProducerReport": "Canonical148 public registration published9e5e286/2cc7. Operations205 settings-read SOURCE15c6186 ready; Root coherent Gateway/Concert/current private runtime still required."
   },
   "nativeQualified": {
     "pin": "7d95145a6854a6178dcf191b8db9fe5c3b99f5a0",
@@ -71,5 +71,43 @@
     "singleMutationRetainedOriginalKey": true,
     "withdrawal": true,
     "accountedWholeHighwaterBytes": 2246411068
+  },
+  "actualDriverSource": {
+    "pin": "556f5f06c159ca0928736ca4ee71703f35c217a6",
+    "inputBoundaryCases": 3,
+    "inputBoundaryResult": "PASS",
+    "types": "FAIL_OLD_GENERATED_OWNACCESS_UNION",
+    "lint": "NOT_RUN",
+    "release": "actual-source-01-old-registry/release.json",
+    "canonical148Intake": "2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c",
+    "actualRuntime": "NOT_RUN_NO_CURRENT_DESCRIPTOR_OR_OPERATOR_FIXTURE",
+    "remaining": "SOURCE_QUALIFIED_AT_RECORDED_CUTS; actualruntime future coherent settings/Gateway/Concert/operator/privateinputs/window"
+  },
+  "actualDriverRemainingTwo": {
+    "pin": "dc5062824cbc89aa15bbb72741c4a8c8506e3b0d",
+    "types": "PASS",
+    "lint": "FAIL_NO_UNSAFE_FINALLY_ACTUAL_DRIVER_CLEANUP",
+    "release": "actual-source-02-cleanup-lint/release.json",
+    "repair": "Retain sanitized original error; cleanup records failure; throw after finally",
+    "accountedWholeHighwaterBytes": 2254325026,
+    "newHighwaterBytes": 69800310,
+    "actualRuntime": "NOT_RUN"
+  },
+  "actualDriverQualifiedLint": {
+    "pin": "87021dd196ded2b617640271ad8adbe80472c187",
+    "readsetSha256": "3972df2d7a67c330e615f6570d93991af24f5488de66ea98d9992bbe4b6fafb1",
+    "guardSha256": "94b3fbab617d1d666c5454f4ba31f80615e1fd7d5f1f397df3fedc75c573f347",
+    "lint": "PASS_DENY_WARNINGS",
+    "release": "actual-source-03-qualified-lint/release.json",
+    "testsOrTypesReplayed": false,
+    "accountedWholeHighwaterBytes": 2254325026,
+    "inclusiveNewHighwaterBytes": 69820790,
+    "actualRuntime": "NOT_RUN"
+  },
+  "publishedConsumer": {
+    "leafCommit": "331a8820ad2b1c358700669614d0419e8eba0ec1",
+    "adminPortsOnlyCommit": "863ea6358b0f5386afae598e11f1c4ddc4df512b",
+    "includedCanonical": "64947bbfb0b63c26856dbb65bb3244d07ae21523",
+    "receiptScopedModesBlobsAndFE41PreservationVerified": true
   }
 }

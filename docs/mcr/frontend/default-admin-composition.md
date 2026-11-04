@@ -170,3 +170,97 @@ and their publication receipts remain intact. OwnAccess's genuine producer and
 canonical generated exposure remain independently owned and open; no proof-only
 consumer remote replay or successor commit is required after Root's canonical
 publication receipt.
+
+The genuine discovery continuation remains in the same goal and source custody.
+`__tests__/actual-main.spec.ts` prepares one read-only 390px actual producer check,
+using the existing private `MCR_IN04_CONFIG` parser (three independently bound
+actors), Root153's private frontend handoff and Root1fc's hash-pinned observer.
+Required inputs are `MCR_ADMIN_FRONTEND_HANDOFF`, `MCR_ADMIN_BACKEND_OBSERVER` and
+`MCR_IN04_BACKEND_DESCRIPTOR`; none are committed or given defaults. The observer
+source is Backend Root `2653376e5`, SHA-256
+`7d29fee99b5eab4b3e3320ba5a4513f803d6d2b450da33246fa467767deba6ad`.
+This reuses the existing managed-runtime protocol and shared frontend, and never
+launches another stack, seeds SQL roles or publishes an operator assignment.
+
+Before Chrome, the driver requires the genuine registered operation, canonical
+contract hashes, current frontend candidate/event/environment/settings binding,
+and an actual owner observation with matching actors and scope. It logs in via
+the existing UI. The actual protected OwnAccess response must supply the operator
+lease; the subsequent genuine settings read must bind the same event and its
+revision before the default Event panel mounts. A separate genuine member login
+must return null access, mount the unavailable boundary and issue no operator
+settings read. It writes only sanitized status/request metadata and two Admin
+PNGs. It does not record credentials, tokens, raw response bodies or private
+input paths, intercept HTTP, inject identity, override registry or repeat the
+controlled retained-command journey. Missing prerequisites remain NOT_RUN and a
+nonzero result, never PASS. The accepted work deadline also bounds Playwright.
+
+The new `actual-inputs.config.ts` isolates three new input-boundary checks from
+the already passed 21-case suite. Its three input cases passed at the recorded
+source below. Actual runtime qualification is NOT_RUN: Root1fc explicitly reported no live descriptor or
+operator fixture at preparation time. C07 canonical148 is now published; the real
+current Concert/settings/OwnAccess cohort remains a prerequisite. Root owns private ephemeral
+issuer keys and signed OPERATOR publication after normal Enrollment; frontend
+configuration labels grant no role. Run only within a fresh joint owner window
+using the actual shared frontend/backend and a separate finite browser allocation.
+
+The actual driver also qualifies one existing decoder compatibility boundary:
+shared `Contracts` predates `oneOf`, while the agreed OwnAccess access field is
+exactly null-or-closed-lease. It verifies that exact two-branch public union, its
+lease reference and closed object target, then uses equivalent `anyOf` only there.
+Every other public schema and private-field rejection remains intact. The three
+new source cases include a null response, preserved closed-field rejection and
+refusal of a non-disjoint replacement union; this supplies no producer evidence.
+
+The real-driver source round at `556f5f06c` passed all three new input-boundary
+cases. TypeScript then rejected the strict `getOwnConcertOperationsAccess` literal
+against that checkout's old generated registry union; lint did not run. C07's
+qualified148 cohort was published during the immutable accepted round as canonical
+`9e5e286b4bad44c5f41843df60af1432766e2a15`, included in
+`2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c`. Its normal canonical intake supplies the
+actual registered type; no cast, local registration or caller fallback is added.
+Original3-case PASS remains bound to its recorded source without replay. Raw logs
+and FULL20:12:41.733206Z are retained under `actual-source-01-old-registry`.
+Root also identified the actual settings-read producer join and Gateway28 mount
+as necessary open backend work; frontend cannot manufacture that response.
+
+Canonical148/runtime-adapter intake completed after FULL by normal merge of
+`2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c`. Three add/add conflicts were exact
+previously published4170208b copies of the owned docs/guardian; later owned
+real-driver additions were preserved. Ports now match the canonical file exactly,
+including FE41; no central integration hunk was rewritten. The next source stage
+`actual-remaining` runs only full TypeScript and scoped lint, preserving the new
+three-case PASS without replay. Actual runtime remains NOT_RUN until the shared
+owner supplies the current settings producer, Gateway28, Concert, private
+descriptor and genuine operator fixture.
+
+On canonical148, full TypeScript passed at `dc5062824` in the fresh two-command
+round. Scoped deny-warning lint failed only on `no-unsafe-finally` in the new
+actual driver: an explicit cleanup throw could replace the original failure.
+The driver now retains the sanitized original error, records cleanup failure,
+and throws after cleanup. Raw failure and FULL20:19:12.934460Z are retained under
+`actual-source-02-cleanup-lint`. The independent guard recorded four processes,
+1,687,437,312 bytes aggregate RSS, WHOLE2,254,325,026 and NEW69,800,310 including
+retained carry; all resources were released before this edit. Only remaining
+scoped lint is requested next (`actual-lint`); neither passed test suite nor the
+passed TypeScript command is replayed. This source repair adds no runtime claim.
+
+The final lint-only round at `87021dd196ded2b617640271ad8adbe80472c187`
+passed scoped `oxlint --deny-warnings` with no tests or TypeScript replay.
+Actual ACCEPT20:24:05.666866Z and FULL20:24:06.768934Z are retained under
+`actual-source-03-qualified-lint`. Peak usage was four processes, 230,080,512
+bytes aggregate RSS, WHOLE2,254,325,026 and inclusive NEW69,820,790; minimum free
+space was 18,036,965,376 bytes. No remaining owned process or signal error,
+removed private TMP and dependency link, and successful port52624 rebind were
+recorded. Resources were returned before evidence retention and documentation.
+
+Real-driver source qualification is complete at the recorded cuts: three new
+input cases PASS at `556f5f06c`, canonical148 full TypeScript PASS at `dc5062824`,
+and repaired-driver scoped lint PASS at `87021dd196`. The original controlled
+consumer packet is already published as `331a8820ad2b1c358700669614d0419e8eba0ec1`
+plus admin-only ports `863ea6358b0f5386afae598e11f1c4ddc4df512b`, included in
+`64947bbfb0b63c26856dbb65bb3244d07ae21523`; its receipt was verified separately.
+This successor contains only the new actual-driver source, owned guardian and
+owned evidence/docs against canonical `2cc7f5de`; it excludes all normal upstream
+intake. Actual Admin runtime remains NOT_RUN, with the original active objective
+retained for the real managed cohort, private inputs and fresh joint allocation.

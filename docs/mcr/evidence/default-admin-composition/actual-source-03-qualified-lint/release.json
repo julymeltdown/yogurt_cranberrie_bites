@@ -1,0 +1,94 @@
+{
+  "offer": "ADMIN-ACTUAL-LINT-ONLY-SOURCE-20261104T2020Z",
+  "finished_at": "2026-11-04T20:24:06.768934+00:00",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/operations-composition",
+        "src/app/AdminBoundary.tsx",
+        "src/app/ports.ts"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-11-04T20:24:06.353135+00:00"
+    }
+  ],
+  "failure": null,
+  "signal_errors": [],
+  "remaining_owned": [],
+  "dependency_link_absent": true,
+  "own_tmp_removed": true,
+  "port": 52624,
+  "rebind": true,
+  "guard": {
+    "peaks": {
+      "pids": 4,
+      "rss": 230080512,
+      "temporary": 0,
+      "durable": 20480,
+      "other": 0,
+      "new_total": 69820790,
+      "whole": 2254325026
+    },
+    "reason": null,
+    "minimum_free_bytes": 18036965376,
+    "observed_processes": {
+      "10384": {
+        "parent": 49590,
+        "group": 10384,
+        "uid": 501,
+        "rss": 147904,
+        "started": "Thu Nov 5 05:24:04 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-admin-actual-source-admit.py ADMIN-ACTUAL-LINT-ONLY-SOURCE-20261104T2020Z 2026-11-04T21:00:00+00:00 3804463104 source /private/tmp/mcr-default-admin-real-source-03"
+      },
+      "10627": {
+        "parent": 10384,
+        "group": 10384,
+        "uid": 501,
+        "rss": 28176,
+        "started": "Thu Nov 5 05:24:06 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/operations-composition/__tests__/round.py guard /private/tmp/mcr-default-admin-real-source-03 10384 1793823965.666866 1793824025.666866"
+      },
+      "10628": {
+        "parent": 10627,
+        "group": 10384,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 05:24:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "10630": {
+        "parent": 10384,
+        "group": 10630,
+        "uid": 501,
+        "rss": 47824,
+        "started": "Thu Nov 5 05:24:06 2026",
+        "command": "(node)"
+      },
+      "10636": {
+        "parent": 10627,
+        "group": 10384,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 05:24:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "10645": {
+        "parent": 10627,
+        "group": 10384,
+        "uid": 0,
+        "rss": 2176,
+        "started": "Thu Nov 5 05:24:06 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      }
+    },
+    "live_pids": [
+      "10384",
+      "10627",
+      "10645"
+    ],
+    "sampled_at": "2026-11-04T20:24:06.596716+00:00",
+    "sample_seconds": 0.12978166702669114
+  }
+}
