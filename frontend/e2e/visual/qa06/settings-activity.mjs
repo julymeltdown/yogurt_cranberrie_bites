@@ -4,7 +4,7 @@ import {expect} from '@playwright/test'
 
 export async function settingsCase({page,c,navigate,state,selected,hit,bounds,shot,retained}){
  await navigate(page,'/me/settings')
- const settings=page.getByRole('region',{name:'Settings',exact:true}),era=settings.getByLabel('Preferred era',{exact:true})
+ const settings=page.getByRole('region',{name:'Settings',exact:true}),era=settings.getByRole('combobox',{name:/^Preferred era/})
  await expect(era).toBeEnabled()
  const low=settings.getByRole('checkbox',{name:'Low power',exact:true}),motion=settings.getByRole('checkbox',{name:'Reduced motion',exact:true}),sound=settings.getByRole('checkbox',{name:'Enable sound',exact:true})
  c.savedDraft={era:await era.inputValue(),lowPower:await low.isChecked(),reducedMotion:await motion.isChecked(),sound:await sound.isChecked()}

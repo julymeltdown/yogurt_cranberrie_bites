@@ -22,13 +22,14 @@ const admission=JSON.parse(await readFile(process.env.QA06_SOFTWARE_ADMISSION,'u
 assert(admission.job===job&&admission.candidate===pin&&admission.cohort===cohort.id&&Date.now()/1000<admission.workDeadline)
 assert.equal(admission.runnerSha256,hash(await readFile(new URL(import.meta.url))))
 assert.equal(admission.guardSha256,hash(await readFile(resolve(import.meta.dirname,'software-guard.py'))))
+assert.equal(admission.helperSha256,hash(await readFile(resolve(import.meta.dirname,'settings-activity.mjs'))))
 git('diff','--quiet','HEAD','--','frontend/src','frontend/public','contracts','frontend/package.json','frontend/pnpm-lock.yaml')
 const fixture='/e2e/visual/qa06/software-preview.html',origin='http://127.0.0.1:'+port
 const tracked=new Set(git('ls-files','frontend/public').toString().trim().split('\n')),assets=new Map()
 const report={task:'QA06',job,candidate:pin,cohort:cohort.id,startedAt:new Date().toISOString(),status:'IN_PROGRESS',
  qualification:'EXISTING_DEFAULT_APP_CANONICAL_AUTH_SYNTHETIC_HTTP_C05_DESKTOP_SOFTWARE_ONLY',
  physicalIOS:'NOT_RUN',physicalAndroid:'NOT_RUN',softwareKeyboard:'NOT_RUN',hardwareSafeArea:'NOT_RUN',
- admission,runnerSha256:hash(await readFile(new URL(import.meta.url))),cohortSha256:hash(await readFile(resolve(import.meta.dirname,'cohorts',cohort.id+'.json'))),
+ admission,helperSha256:hash(await readFile(resolve(import.meta.dirname,'settings-activity.mjs'))),runnerSha256:hash(await readFile(new URL(import.meta.url))),cohortSha256:hash(await readFile(resolve(import.meta.dirname,'cohorts',cohort.id+'.json'))),
  fixture:{path:fixture,sha256:hash(await readFile(resolve(frontend,fixture.slice(1)))),scriptPath:'frontend/e2e/visual/qa06/software-preview.tsx',scriptSha256:hash(await readFile(resolve(import.meta.dirname,'software-preview.tsx'))),authAdmissionFixtureSha256:hash(await readFile(resolve(frontend,'src/features/auth/__tests__/enrollment-consent/fixtures.ts')))},sourceReadset:{},assetReadset:{},cases:[],errors:[],
  limits:['Incumbent canonical Auth/router/providers/default production Phaser; own headless derivative adds exact existing Auth admission() test-server response. Explicit synthetic HTTP/C05/map/policy authority, not live server/admission/physical proof.',
  'Virtual scenario keeps incumbent virtual place facts; no physical verification/provider/age/bootstrap/renderer or source override.',

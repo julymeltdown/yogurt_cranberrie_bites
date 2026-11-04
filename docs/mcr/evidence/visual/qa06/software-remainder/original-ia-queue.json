@@ -61,8 +61,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#signup"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "A04",
@@ -77,8 +80,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#signup"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "A05",
@@ -93,8 +99,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#recovery"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "A06",
@@ -109,8 +118,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#recovery"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "A07",
@@ -271,8 +283,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#meetingEntry"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "W08",
@@ -339,8 +354,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#feedThread"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "F04",
@@ -405,8 +423,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#partyAuthoring"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "M03",
@@ -437,8 +458,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#partyManagement"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "M05",
@@ -453,8 +477,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#partyManagement"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "M06",
@@ -469,8 +496,12 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#beacon",
+        "reuse-source-bindings.json#meetingEntry"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "M07",
@@ -485,7 +516,9 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
+      "reuse": [
+        "reuse-source-bindings.json#people"
+      ],
       "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
     },
     {
@@ -501,7 +534,9 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
+      "reuse": [
+        "reuse-source-bindings.json#people"
+      ],
       "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
     },
     {
@@ -517,7 +552,9 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
+      "reuse": [
+        "reuse-source-bindings.json#people"
+      ],
       "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
     },
     {
@@ -552,9 +589,11 @@
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
       "reuse": [
-        "current-reflow PARADE360/390/430 actualeditable844\u2192420\u2192844 no submit"
+        "current-reflow PARADE360/390/430 actualeditable844\u2192420\u2192844 no submit",
+        "reuse-source-bindings.json#giveawayAuthoring"
       ],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "G03",
@@ -585,8 +624,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#giveawayAuthoring"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "G05",
@@ -617,8 +659,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#pickup"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "G07",
@@ -632,9 +677,11 @@
         430
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
-      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "disposition": "MOCK_READY exact minimal cohort states; unexecutedcombinations/live/device/fulloriginal notblanketaccepted",
+      "reuse": [
+        "settings-gifts-minimal/owner-assessment.json"
+      ],
+      "next": "Retain exact exercisedstate limits and source-boundowner evidence; no unchanged matrix replay."
     },
     {
       "ia": "R01",
@@ -722,8 +769,12 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#privateSocial",
+        "reuse-source-bindings.json#sharing"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "U05",
@@ -738,8 +789,12 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#privateSocial",
+        "reuse-source-bindings.json#sharing"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "U06",
@@ -754,7 +809,9 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
+      "reuse": [
+        "reuse-source-bindings.json#people"
+      ],
       "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
     },
     {
@@ -769,11 +826,12 @@
         430
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
-      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "disposition": "MOCK_READY exact minimal cohort states; unexecutedcombinations/live/device/fulloriginal notblanketaccepted",
       "reuse": [
-        "world-runtime-preferences/native03 actual390; runtimeproducer cohortnotwidth360/430visual"
+        "world-runtime-preferences/native03 actual390; runtimeproducer cohortnotwidth360/430visual",
+        "settings-gifts-minimal/owner-assessment.json"
       ],
-      "next": "READY_NEXT: unchangedSettings draft/cancel/no-write360/430 readability; reuse owner390 runtime effects, no duplicate producer performance test"
+      "next": "Retain exact exercisedstate limits and source-boundowner evidence; no unchanged matrix replay."
     },
     {
       "ia": "U08",
@@ -788,8 +846,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#privateSocial"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "U09",
@@ -804,8 +865,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#privateSocial"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "U10",
@@ -820,8 +884,12 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#inbox",
+        "reuse-source-bindings.json#privateSocial"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "X01",
@@ -836,8 +904,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#archive"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "S01",
@@ -852,8 +923,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#privateSocial"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "S02",
@@ -916,8 +990,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#eventAudit"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "O03",
@@ -932,8 +1009,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#eventAudit"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "O04",
@@ -948,8 +1028,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#operations"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "O05",
@@ -964,8 +1047,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#operations"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "O06",
@@ -980,8 +1066,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#operations"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "O07",
@@ -1012,8 +1101,11 @@
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
       "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
-      "reuse": [],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "reuse": [
+        "reuse-source-bindings.json#eventAudit"
+      ],
+      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices",
+      "sourceReuseQualification": "Exact per-artifact source/body/model deltas and synthetic/root/era limits in reused binding. No unexecuted combination/live/device pass."
     },
     {
       "ia": "O09",
