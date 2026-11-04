@@ -29,6 +29,39 @@ impl DeletionAuthority for TestAuthority {
         VerifiedDeletionSource::from_verified_auth_source(c, d, h.finalize().into())
     }
 }
+
+/// Test-only cancellation owner. It opens a real transaction, writes a
+/// sentinel, then waits indefinitely. Dropping the coordinator future must
+/// roll back the transaction and cannot create a category receipt or ACK.
+struct CancelOwner {
+    pool: PgPool,
+}
+
+#[async_trait]
+impl PrivateDataCategoryOwner for CancelOwner {
+    async fn apply_category(
+        &self,
+        command: &WorldDeletionCommand,
+        source: &VerifiedDeletionSource,
+        deadline: Instant,
+    ) -> Result<PrivateDataCategoryReceipt, DeletionFailure> {
+        source.check(command, deadline)?;
+        let mut tx = self
+            .pool
+            .begin()
+            .await
+            .map_err(|_| DeletionFailure::Unavailable)?;
+        sqlx::query(
+            "insert into public.be42_cancel_probe(user_id) values($1) on conflict do nothing",
+        )
+        .bind(command.user_id)
+        .execute(&mut *tx)
+        .await
+        .map_err(|_| DeletionFailure::Unavailable)?;
+        std::future::pending::<()>().await;
+        Err(DeletionFailure::Unavailable)
+    }
+}
 async fn pool() -> Result<PgPool> {
     let options = PgConnectOptions::from_str(&std::env::var("CONCERT_TEST_DATABASE_URL")?)?;
     anyhow::ensure!(
@@ -49,6 +82,11 @@ async fn pool() -> Result<PgPool> {
     Migrator::new(std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("migrations"))
         .await?
         .run(&p)
+        .await?;
+    // Test-only witness for cancellation rollback. It is not a product schema
+    // object and is created only in the marker-owned native database.
+    sqlx::query("create table if not exists public.be42_cancel_probe(user_id uuid primary key)")
+        .execute(&p)
         .await?;
     Ok(p)
 }
@@ -324,6 +362,63 @@ async fn aggregate_native() -> Result<()> {
         .fetch_one(&p)
         .await?;
         anyhow::ensure!(no_ack_after_guarded_transition.is_none());
+    }
+    if !fenced {
+        let cancel_user = Uuid::from_u128(4202);
+        let cancel_event = Uuid::from_u128(4302);
+        sqlx::query(
+            "insert into concert_events(event_id,slug,title,phase) values($1,$2,$3,'OPEN') on conflict(event_id) do nothing",
+        )
+        .bind(cancel_event)
+        .bind(format!("private-data-cancel-{cancel_event}"))
+        .bind("Cancel aggregate")
+        .execute(&p)
+        .await?;
+        sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'DANGER',true,true,true) on conflict do nothing")
+            .bind(cancel_event).bind(cancel_user).execute(&p).await?;
+        let cancel_command = cmd(cancel_user);
+        let cancel_authority: Arc<dyn DeletionAuthority> = Arc::new(TestAuthority);
+        let core: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CorePrivateDataOwner::new(
+            PrivateDataCoreDeletion::new(p.clone(), cancel_authority.clone()),
+        ));
+        let cancel: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CancelOwner { pool: p.clone() });
+        let owners = PrivateDataCategoryOwners::new([
+            (PrivateDataCategory::CorePreferencesAndAvatar, core),
+            (PrivateDataCategory::IntroText, cancel),
+        ]);
+        let coordinator = PrivateDataAggregateCoordinator::new(p.clone(), cancel_authority, owners);
+        let cancelled = coordinator
+            .apply(
+                cancel_command,
+                Instant::now() + WallDuration::from_millis(120),
+            )
+            .await;
+        anyhow::ensure!(matches!(cancelled, Err(DeletionFailure::Unavailable)));
+        tokio::time::sleep(WallDuration::from_millis(100)).await;
+        let cancel_whole: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
+            "select completed_at from concert_private_data_owner_progress where user_id=$1",
+        )
+        .bind(cancel_user)
+        .fetch_one(&p)
+        .await?;
+        anyhow::ensure!(cancel_whole.is_none());
+        let cancel_complete: i64 = sqlx::query_scalar(
+            "select count(*) from concert_private_data_category_progress where user_id=$1 and state='COMPLETE'",
+        )
+        .bind(cancel_user)
+        .fetch_one(&p)
+        .await?;
+        anyhow::ensure!(cancel_complete == 1);
+        let probe_left: bool = tokio::time::timeout(
+            WallDuration::from_secs(2),
+            sqlx::query_scalar(
+                "select exists(select 1 from public.be42_cancel_probe where user_id=$1)",
+            )
+            .bind(cancel_user)
+            .fetch_one(&p),
+        )
+        .await??;
+        anyhow::ensure!(!probe_left, "cancelled owner transaction committed");
     }
     Ok(())
 }
