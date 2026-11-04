@@ -113,3 +113,19 @@ source modules load normally. This concrete harness defect explains the blank
 entry; loading the existing Vite plugins alone did not resolve it. No product
 source or private authorization rule changes. Raw failure, PNG and FULL release
 at 19:28:43.225681Z remain in `native-02-interception-failure`.
+
+OwnAccess discovery is part of this current goal. Direct Backend205 and Root153
+interface confirmation identifies the missing boundary as producer composition and
+canonical contract exposure, with no demonstrated caller-binding defect. Existing
+endpoint and closed DTO match the common consumer: protected GET
+`/api/concert/events/{eventId}/me/operations-access`, server clock plus null access
+or a signed MODERATOR/OPERATOR lease. OwnAccess-only contract source
+`3a089a3b6b98f01d301a69c02020d77519fa3a2b` adds the admin schema, operation and
+policy hunks. Backend Root1fc owns same-Core/PublishedRoles/publication composition
+and HTTP mount; C07 sole machine writer owns generated transport/registry output
+after canonical publication. Root153 owns shared integration. This worker owns
+the existing default Admin caller composition only. No common/generated override,
+header grant or production test registration is introduced. At frozen canonical
+`1a1db340`, the absent registered operation correctly yields unavailable; actual
+public HTTP/default Admin acceptance remains unqualified pending that genuine
+producer and canonical intake. The controlled browser journey cannot close it.

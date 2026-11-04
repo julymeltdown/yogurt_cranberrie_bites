@@ -46,5 +46,15 @@
     "release": "native-02-interception-failure/release.json",
     "visual": "390 failure PNG individually viewed; blank page",
     "repair": "Restrict route interceptor to URL pathname starting /api/; no product change"
+  },
+  "ownAccessDiscovery": {
+    "classification": "PRODUCER_COMPOSITION_AND_CANONICAL_CONTRACT_EXPOSURE",
+    "consumer": "Existing registered getOwnConcertOperationsAccess and closed lease DTO; no demonstrated caller defect",
+    "contract": "3a089a3b6b98f01d301a69c02020d77519fa3a2b",
+    "producerAndMountOwner": "Backend Root1fc / Backend205",
+    "generatedOwner": "C07 01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+    "integrationOwner": "Root153",
+    "actualPublicHTTP": "NOT_QUALIFIED",
+    "controlledNativeDoesNotCloseActualProducer": true
   }
 }
