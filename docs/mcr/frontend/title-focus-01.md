@@ -22,12 +22,13 @@ no foreign branch/checkout was overwritten. The old 2251 ID01 checkout remains
 untouched. Startup was clean.
 
 Root confirmed the former writer and shared-CSS incumbents stopped before
-transferring sole write ownership. The application grant is only the existing
+transferring sole write ownership. The initial application grant was only the existing
 `.mcr-chrome-panel-header` rule's `background-color`, `background-image` and
 `background-size` in `frontend/src/app/shell-chrome/shell-chrome.css`.
 Background position/repeat, new selectors, focus/outline/foreground/text,
 TSX, controls, layout, geometry, character/scenery and producer paint changes
-are excluded. Decorative left bars are excluded. Exact additional owned paths:
+were excluded under that initial lease. The later exact selector expansion is
+recorded below. Decorative left bars remain excluded. Exact additional owned paths:
 this document, `docs/mcr/evidence/title-focus-01/**`, and new meaningful source
 fixtures under `frontend/src/app/__tests__/title-focus-01/**` if needed.
 
@@ -123,3 +124,73 @@ original goal stays ACTIVE. Root will capture the finite affected focus/unfocus
 Map and Me profile-link states at 360/390/430 plus representative forced colors,
 under a fresh Resource21d allocation. The historical static result neither fixes
 the issue nor certifies the conditional continuation.
+
+## Conditional paint candidate
+
+The continuation adds only the authorized direct-child focus-visible selector.
+It declares `background-image`, `background-size` and `background-repeat`.
+All other CSS bytes, including the original unfocused header and focus rules,
+remain unchanged. Candidate CSS SHA-256:
+`5c9e194e62eaf438f8b98436b4e8d7315702ead3307e60684fe4f61800d067c4`.
+The earlier `c2f4a488` proposal was
+superseded before execution/capture to expose the backing outside the ring.
+
+The three hard-stop gradient layers cover the control zone in dark, paint the
+top/bottom ring backing, and paint the two side-ring backings. They use the
+existing 8px left padding, three 44px controls and 2px right padding. The native
+padding-origin coordinates are x12/y10; the focused ring's retained raster rows
+are 21–23 and 41–43. The image size is the header's full padding box. This is
+background paint behind the existing symmetric focus outline, not a new border,
+outline or decorative rail. It extends one pixel outward from each ring edge:
+otherwise opaque red would conceal the entire backing and leave visible
+contrast unchanged. The right exposed pixel occupies blank transparent control
+padding; control icons/text and the remaining interior retain dark backing.
+When the heading loses focus-visible, the selector
+stops matching and every backing pixel returns to the original dark color.
+
+No URL images or `forced-color-adjust` opt-out are introduced. The
+[CSS Color Adjustment specification](https://www.w3.org/TR/css-color-adjust-1/#forced-colors-properties)
+forces non-URL background images to none in forced-colors mode. Thus the paint
+defers to the system palette; actual browser forced-color legibility/focus is
+still required and is not inferred from that specification.
+
+`check-paint.py` independently parses the authored gradient stops and applies CSS
+stop-position fixup. It checks every retained red ring and visible glyph pixel,
+all four exposed outer paper edges, the control interiors and unfocused padding
+box, the actual unfocused
+Me cream-core counterexample, and byte equality outside the exact selector.
+It writes only `paint-check.json`; it does not render or synthesize a candidate
+image. Formal source-model execution **PASS** is recorded below. Actual
+candidate Map focus/unfocus, Me profile-link focus at
+360/390/430, forced colors and publication remain **NOT_RUN**.
+
+The frozen checker SHA-256 is
+`9aecba785bad64663bdc0d122ab574879523d708394cdcac6bc2db29ae924f77`.
+Resource21d confirmed the exact 10-second / 64-KiB total task allocation request
+is queued next after the active IN01 browser job's actual FULL RELEASE; that
+message was queue placement, not an offer or acceptance.
+
+Resource21d subsequently offered `TITLE-FOCUS-PAINT-SOURCE-202611040841Z`;
+the owner explicitly **ACCEPTED** at 2026-11-04T08:43:27.858611Z with the exact
+CSS/checker/input pins, three WIP paths, 39,204-byte carry and 31,960,649,728
+bytes free. The exact command
+`python3 docs/mcr/evidence/title-focus-01/check-paint.py` exited **0** in
+**0.376160125 seconds**, without timeout. Result:
+`SOURCE_MODEL_PASS_ACTUAL_RENDER_NOT_RUN`. Output was **4,626 bytes**; all
+assigned durable source/scripts/docs/proofs/report totaled **43,830 bytes**
+within 64 KiB. Observed free floor: **31,821,676,544 bytes**. The owned process
+group was absent, with no temporary files or app processes. FULL RELEASE was
+reported immediately at 2026-11-04T08:43:55.558450Z.
+
+All nine retained Map cases passed the authored-gradient model, including every
+retained red ring/visible glyph pixel, four exposed outer paper edges, dark
+control interiors, full unfocused dark padding box and the actual Me cream-core
+counterexample. All source outside the exact leased selector is byte-exact.
+There is no API/contract, cross-lane import, dependency, artwork or geometry
+change. The original source comes from the published base above; all added CSS
+and checker logic are newly authored for this assignment.
+
+This result does **not** prove actual CSS parsing/rasterization, selector/focus
+transitions, native/browser geometry, forced colors, live/multiuser behavior or
+design/accessibility acceptance. Those targeted runtime checks and Root
+publication remain open; the persistent goal remains **ACTIVE**.
