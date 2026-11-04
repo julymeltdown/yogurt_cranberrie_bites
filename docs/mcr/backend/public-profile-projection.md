@@ -507,3 +507,50 @@ It records exact-owned cleanup PASS and the owned root absent. Five passing
 phases remain bounded evidence; there is no six-case suite PASS, physical
 restart, committed-effect, actual Profile/Post child or HTTP acceptance claim.
 The public fixture's own joined Rust/native execution remains NOT_RUN.
+
+
+### Fresh three-artifact run: compiled, joined failure retained
+
+A fresh named BACKEND allocation was accepted at clean source
+`d8eb13bfe623a711447426849c5e2a6adc351cc5`. Preflight showed 56 GiB free and
+no open target handles. An initial Concert build failed because cached
+contracts-build paths shadowed this checkout's authority proto with the prior
+authority checkout. Scoped cleanup of contracts-build only removed 20 files /
+816.3 KiB; no source workaround, second target or installation was used.
+All final locked/offline Rust 1.88 jobs2/debug0/incremental0 builds exited 0:
+Profile transport 7.39s, Concert schema test 20.51s and Concert lib 17.78s.
+Profile had zero warnings; Concert test/lib had 16/11 inherited warnings and
+zero warnings in this public adapter's paths.
+
+The exact three outputs, Cargo JSON hashes and 2,379 source/resource pins were
+frozen, then BACKEND was unconditionally released after an empty lsof check.
+Only the private copies were executed. Pin SHA-256
+`29a53e6cc0040a11ca081748afe31586a28282db51afec93666e77771b2bd7fc`.
+
+| Frozen executable | SHA-256 |
+| --- | --- |
+| Profile concert_public_profile | `c77e12646694b5f049c979a700cd97f712f0c07c97dbe61e024ea9e5ed28c39e` |
+| Concert public_profile_projection | `ca4218aea019310147b374fa9352327026ab73c8265ab3520df2cccbb102e267` |
+| Concert lib tests | `7de7960a470bd48b9eafaed769b60e8dde5a652b6fcc0da086a64756f27b57fa` |
+
+Nine signed Profile tests, three C03 tests, the new whole-scope denial mapper
+regression and all nine explicit owner PG phases passed, exit 0 (22 checks).
+The first actual joined reader case then failed, exit 101, at viewer local
+policy with DependencyUnavailable; the second joined case was NOT_RUN. The
+overall native report remains FAIL. Exact report SHA-256
+`812bd19d77adfde991e9506bcc9959c68eebbde82c38e1b3dbc5a1bb899a7d0c`
+at private receipt `mcr-public-profile-frozen-y3epk5s_`.
+
+Failure teardown rolled back two known private owner holds, verified zero
+prepared transactions, stopped the owned server and removed the exact root.
+These rollbacks are cleanup, not successful runtime settlement or a passing
+joined flow. No target or PostgreSQL fixture remains held.
+
+Diagnostic source `31691c4d` separates the actual viewer scope check, local
+acquisition, native prepared check and reused public policy. Underlying local
+SQL/type failures are printed only under cfg(test); product errors remain
+closed. Controller `2d0d00e7` adds --joined-only so a fresh one-lib focused
+build cannot claim older owner/schema artifacts against changed source. Seven
+controller regressions pass, exit 0. The focused Rust/native run is NOT_RUN
+until a fresh allocation. This task remains IN_PROGRESS; no new joined, final
+HTTP or multiuser acceptance is claimed.
