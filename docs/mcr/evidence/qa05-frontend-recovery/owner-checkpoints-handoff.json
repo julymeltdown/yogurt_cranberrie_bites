@@ -1,0 +1,104 @@
+{
+  "task": "QA05 owner checkpoint translation",
+  "sourceBase": "c1f2e609681cc069d680fb4a4b0929a24301da53",
+  "sourceImplementationCommits": [
+    "01cec029e",
+    "11adc42ad91cfd52b905fbcac93442bb5f716af3"
+  ],
+  "sourceQualification": "PASS45_NEW_SYNTHETIC_ONLY",
+  "actualCombinedCases": {
+    "packet-gap": "NOT_RUN",
+    "packet-delay": "NOT_RUN",
+    "slow-client": "NOT_RUN",
+    "foreground": "NOT_RUN",
+    "ticket-replay": "NOT_RUN",
+    "world-restart": "NOT_RUN",
+    "room-switch": "NOT_RUN"
+  },
+  "qualificationCommit": "11adc42ad91cfd52b905fbcac93442bb5f716af3",
+  "offer": "QA05-OWNER-CHECKPOINTS-SOURCE-20261104T2140Z",
+  "acceptUTC": "2026-11-04T21:10:37.125161+00:00",
+  "fullUTC": "2026-11-04T21:10:40.040463+00:00",
+  "resourcesRemaining": 0,
+  "guardianSHA256": "4f6a22f61e55b2c23e29895a4a851ffd81529301084741ee762ab84abb22ced2",
+  "readsetSHA256": "862746aa58cb5e4c2109a3ceb84d4713b3e3935be1fbb80905ffb02646a5c8e5",
+  "commands": [
+    {
+      "label": "owner-checkpoints",
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "exit": 0
+    },
+    {
+      "label": "syntax-0",
+      "exit": 0
+    },
+    {
+      "label": "syntax-1",
+      "exit": 0
+    },
+    {
+      "label": "whitespace",
+      "exit": 0
+    }
+  ],
+  "scope": "Only new owner-checkpoints.mjs/.test.mjs plus owned QA05 docs/evidence; returned frame utility unchanged. No production paths, backend or shared relay changed.",
+  "delivery": "Direct Root153 publishing route; current publication turn Root1fc/412e. Normal non-force master publication, exact scoped postimages, no king/SL inspection or ACK.",
+  "remaining": "Root real Vite/cohort/decoder/socket/ticket capture-or-probe/managed descriptors; each real case group requires fresh explicit current binding and finite allocation. Developer owns actual combined checks/fixes.",
+  "paths": {
+    "docs/mcr/evidence/qa05-frontend-recovery/owner-checkpoints-abi.json": {
+      "mode": "100644",
+      "sha256": "903d3623d9ce6ed624d305aabadb2c11546a7ed5f0b1a9a9da5d6635c1f62957"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/owner-checkpoints-readset.json": {
+      "mode": "100644",
+      "sha256": "862746aa58cb5e4c2109a3ceb84d4713b3e3935be1fbb80905ffb02646a5c8e5"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/qualify-source.py": {
+      "mode": "100644",
+      "sha256": "277d0b4ae4ef20b52b602f174b5c9d23371d6b3f7fa8a3c2a0913cb4b67de605"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/guardian.json": {
+      "mode": "100644",
+      "sha256": "4f6a22f61e55b2c23e29895a4a851ffd81529301084741ee762ab84abb22ced2"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/lint.log": {
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/owner-checkpoints.log": {
+      "mode": "100644",
+      "sha256": "bcbad46192876a0d7e9bef9b07ed34ea2ff6732406e960745bf97cc48613782a"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/supervisor.json": {
+      "mode": "100644",
+      "sha256": "fee2017ed9bc9f7acf300a563fdac98df510426d2d402dec27fa7b399c713248"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/syntax-0.log": {
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/syntax-1.log": {
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa05-frontend-recovery/source-checkpoints-01/whitespace.log": {
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/qa/qa05-frontend-recovery.md": {
+      "mode": "100644",
+      "sha256": "3f76e264ef497488d40589ff1088c160fc8cab057797396e3ad454589a649a1c"
+    },
+    "frontend/e2e/qa05-functional-recovery/owner-checkpoints.mjs": {
+      "mode": "100644",
+      "sha256": "1aac98ec09c2e7d863ba3d5371e1467029d09cbb42bea570ab7f15b06b3890d3"
+    },
+    "frontend/e2e/qa05-functional-recovery/owner-checkpoints.test.mjs": {
+      "mode": "100644",
+      "sha256": "93f4a8633c47b63ecfec0e381dad734739c4ebd8b7778e7d01553f70cead552c"
+    }
+  }
+}

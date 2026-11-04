@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "kind": "PRIVATE_IN_PROCESS_OWNER_CHECKPOINT_TRANSLATION",
+  "factory": "createOwnerCheckpoints({binding,config,principalIds,relay,ownerControl,probeConsumedTicket?,guard,signal,now?,sleep?}) -> checkpoint(request,{signal?})",
+  "consumer": "frontend/e2e/qa05-functional-recovery/checkpoints.mjs exact version1 request/response",
+  "groups": [
+    [
+      "packet-gap",
+      "packet-delay",
+      "slow-client"
+    ],
+    [
+      "foreground",
+      "ticket-replay"
+    ],
+    [
+      "world-restart"
+    ],
+    [
+      "room-switch"
+    ]
+  ],
+  "freshWindowPerGroup": true,
+  "relayLimit": {
+    "liveConnections": 2,
+    "lifetimeConnections": 4,
+    "packetGroupLifetimeConnections": 2,
+    "foregroundGroupLifetimeConnections": 3
+  },
+  "backendMethods": [
+    "inspect(config)",
+    "requestWorldRestart(config,{requestId,beforeGeneration})",
+    "checkpoint(config,requestId)"
+  ],
+  "restart": {
+    "requestId": "sha256(windowId+\":world-restart\").slice(0,32)",
+    "reserveMs": 65000,
+    "pollMaximumMs": 60000,
+    "naturalLeaseWaitMinimumSeconds": 5.1,
+    "frontendReady": "ARMED only after real accepted request",
+    "producerReady": "APPLIED only after actual World-only COMPLETE, before ordinary App UI reconnect",
+    "afterObservation": "fresh current pair memberships + same replacement generation"
+  },
+  "ticket": {
+    "hook": "Root private executed genuine already-consumed App-ticket probe only",
+    "maximumConnections": 1,
+    "maximumAuthenticateMessages": 1,
+    "maximumMs": 3000,
+    "requiredCloseCode": 4401,
+    "requiredSnapshots": 0,
+    "beforeAndAfter": {
+      "connected": 2,
+      "duplicates": 0
+    },
+    "missingHook": "UNAVAILABLE; actual NOT_RUN",
+    "testFixtures": "TEST ONLY, never actual capability evidence",
+    "routing": "One Root direct worldOrigin connection with actual frontend Origin, counted with at most three foreground-group relay connections: total <=4. Relay active cap stays2."
+  },
+  "failure": "Bounded signal/expiry checks; uncertain operation retires with fixed error, no retry or secret diagnostic. Root retains every actual handle and cleanup duty.",
+  "durableOutput": "Fixed action/state/count summaries; no raw backend generations, user/room/process identity, credential, payload or descriptor.",
+  "status": "SOURCE_QUALIFIED_ACTUAL_NOT_RUN",
+  "now": "Nondecreasing epoch milliseconds (default Date.now), separate from relay monotonic frame times."
+}
