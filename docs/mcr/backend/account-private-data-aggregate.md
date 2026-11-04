@@ -103,7 +103,7 @@ coordinator, reads those six incompletes, and replays without rerunning core.
 It then applies one guarded missing-to-complete transition and requires five
 remaining incompletes, no whole ACK, and an unchanged core fence. The test
 postimage is
-`bf6f236645ece4c8de2b0a2964134055de5e363d019aa15e745c50af26b02dac`;
+`331bd48ec27b7f7927c8700302c3daec3a252d804e6a38aaed2f8d9e29967052`;
 this corrected restart sequence is **NOT_RUN** and inherits no native result.
 
 The same native fixture now includes a cancellation witness. A test-only owner
