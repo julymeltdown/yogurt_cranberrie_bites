@@ -1,0 +1,1491 @@
+{
+  "status": "PASS",
+  "source": "f9781febcd3784f7beeff862bc0939f243018803",
+  "slot": "WORLD-PREFERENCES-NATIVE3-202611040829Z",
+  "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+  "startedAtUTC": "2026-11-04T08:30:16.846Z",
+  "startedAtKST": "2026-11-04T17:30:16.849+09:00",
+  "preflight": {
+    "availableBytes": 33424576512,
+    "validationBrowsers": 0,
+    "interactiveMCPPreserved": 1
+  },
+  "pins": {
+    "contracts/fixtures/core/auth-capabilities-disabled.json": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb",
+    "contracts/fixtures/core/auth-error-rate-limited.json": "17da9f69ea63a7589a914dcb8972437c80cc9e82aab469ea6de93ccde569016f",
+    "contracts/fixtures/core/auth-error-unauthenticated.json": "f3f70fab31feba06a8c4a70c62186b2dc02ec72221d32f5e5e393535a32b1777",
+    "contracts/fixtures/core/auth-success.json": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+    "contracts/fixtures/core/avatar-state.json": "5cadc0418962438f869748a252fe9f3c75eb07c544bb11cad12b0fe335b2d841",
+    "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+    "contracts/fixtures/core/bootstrap-read-only.json": "46d8c76e7d11aed80daa0788b2c563f084e242a595f12b325f2dc1b27c8edfdf",
+    "contracts/fixtures/core/core-transport-413.json": "f1576bed08418c6ff2cc9d8d02d75828d756a10dec627c85071d8c78e2a5832b",
+    "contracts/fixtures/core/core-transport-415.json": "1034ad5ffb961570a6883dcd1b0860221a66ebae5df88f8774ad205c7f659c8b",
+    "contracts/fixtures/core/core-transport-422.json": "3cda72f36b083020a48f8f3683b63811f0594cba868d2f286f4d27084aa86b25",
+    "contracts/fixtures/core/core-transport-500.json": "3392e739207d68ffc18cf5959bb04e7dc1b366d54baf9f22bd796f993552ef6e",
+    "contracts/fixtures/core/core-transport-502.json": "ef4271eebc231ea8bd346e5b5524fad293f76b79f19a6b8f6c21283e1913501a",
+    "contracts/fixtures/core/core-transport-504.json": "be301eb6f310208e5226029641673a2a78d9d0e73a005d3366b26a9774fdfa53",
+    "contracts/fixtures/core/error-browser-intent-required.json": "8b060e9eb5df5b6aa747d4e67410bba7232c4200d6be2da4c2c351288b6af8e0",
+    "contracts/fixtures/core/error-consent-required.json": "2b69aa1a1a1a3961d016d557425ac1bb835e8cd7ac075c0d8df55ef11edb08e1",
+    "contracts/fixtures/core/error-event-read-only.json": "b66d3181fef4e869d3061ac1b3b895e30530a6d70ed0358e06ac5f40fadd8ee8",
+    "contracts/fixtures/core/error-giveaway-sold-out.json": "39716a0989c440c68786eb01fce2d3e314f492a30814d82ad62640fd397a83ee",
+    "contracts/fixtures/core/error-map-version-mismatch.json": "efe2b69d1553d67ff67579fa0c29bb341d3631651b0364df6648fc7abbd89026",
+    "contracts/fixtures/core/error-mural-cooldown.json": "27b1dd5e1b1bd4ee7c322149a3f3598058fbe132463ebaf1e60760de1f02b023",
+    "contracts/fixtures/core/error-origin-not-allowed.json": "76b4af5b91c4507cae4280b978eeb9db90eafd9863c9840d5579170c2b1db9e5",
+    "contracts/fixtures/core/error-party-full.json": "4232c8ae25e255b367db277aebe24247bf859d69740565f357dd6d80fa61c468",
+    "contracts/fixtures/core/error-reservation-expired.json": "0f9fc05bb350d54fc1a3c920cef9e19a82059e5573f0a8c3f5710af662ab5d20",
+    "contracts/fixtures/core/error-resource-unavailable.json": "f6f804faa67b1328a73f8da168ef0e6adab8ea7ac5d3a21bf530050f5d31817d",
+    "contracts/fixtures/core/error-version-conflict.json": "ac1b2cc68b41d199002d31c57a3fec47551e1497dc8f748db5782710e1fdf99c",
+    "contracts/fixtures/core/index.json": "c9cb88267aed7f93d4a81c947703d0abc39ba22297bfb011079af8c0301035f2",
+    "contracts/fixtures/core/password-reset-neutral.json": "1c8cd3a46922a723857cb2c1c04ee6ab86309ef5936b40e1f458e00d479cee8a",
+    "contracts/fixtures/core/place-list.json": "550cc344a3256bc96e5dd0152696cb721774ea4d67a27c2349b11d687bf45c3c",
+    "contracts/fixtures/core/place.json": "b7f4999b1d9486e7228976b5f817a7b39da33387af4ba5590c11a54f3b945cd6",
+    "contracts/fixtures/core/private-participant.json": "c1c7373656cde682a4fd706d7b1d6f8e0c97192e093fbaee0862e9c6802e11db",
+    "contracts/fixtures/core/public-profile.json": "fd32142a3122ea7252b50487cbffd53a49e0e65d70199c0d812812555c30ed62",
+    "contracts/fixtures/core/set-avatar-request.json": "6e81fe22a67315cd9bd641b1ba02bdb967fb35d173cbb6b2845e36a5e7931b2e",
+    "contracts/fixtures/core/signup-pending.json": "e3be39408098f0ba2b0cc5a173ec6731f2adf99682a9697117454aee50a7f4b3",
+    "contracts/fixtures/core/signup-unicode.json": "e7039d441d3875df26942ebf683e8e45fc56470c431e29d1c7672e75f2b85d3f",
+    "contracts/fixtures/core/update-participant-request.json": "e56664ad5f369628c271203453f85dd8b20c0b3b01b3d6be711da9791e36cd48",
+    "contracts/fixtures/realtime/auth-required.json": "3b38eecf227d1533e5fadb6df547d89bc32b0119a01a3e91395c297fb6c6e673",
+    "contracts/fixtures/realtime/binary-message.json": "cb80a452a0e3b5061bbdb6cb8bfa2cffb37b3cd0c3d040a1d749df3d4737609b",
+    "contracts/fixtures/realtime/duplicate-key.json": "8b33760b6ad7600fa12c80b6c9da5da95da602e0fe9dd8adb7c64613f8b095bb",
+    "contracts/fixtures/realtime/epoch-replacement.json": "ddbefa0e69b3ba517839e514e8fb81aa70fce03300f777d906018a9bb02fe30d",
+    "contracts/fixtures/realtime/event-closed.json": "b7a64f553fb25ab73ba579867e2a6f87adac1de796d0018463b8c9af9c7f62a4",
+    "contracts/fixtures/realtime/filtered-viewers.json": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36",
+    "contracts/fixtures/realtime/forbidden.json": "a709e04d1523090ee4bcc00a75ba28568c35c35211af9a368267ea9e272deb8f",
+    "contracts/fixtures/realtime/index.json": "ad10d9c9a15a009da70982f4c586ff446546e17c634d3127d26e69a66f623b0b",
+    "contracts/fixtures/realtime/map-conflict.json": "7e714f731954de73b01d043a40d60a9169093265a8f69ff10de70f36deecfad0",
+    "contracts/fixtures/realtime/movement-heartbeat.json": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+    "contracts/fixtures/realtime/non-finite.json": "6e3a91e3a5ed3ce13ea78f6d24199ff22c57fcac26be6f070c24d27a7107a6a6",
+    "contracts/fixtures/realtime/origin-denied.json": "2ceb4f9383e3e9ab9577900ef395cc876dfd75fbbaa6f0098a3390a4db00cf1f",
+    "contracts/fixtures/realtime/oversized-client.json": "f2024c38568f2cb6c970da4c1d8696c673be0d6f015d043a27924933e663a680",
+    "contracts/fixtures/realtime/resync.json": "0d50b1cc8577c4f57aab9c6bd4225a2d2f7d82c37d753551abfe536ab5f4823a",
+    "contracts/fixtures/realtime/revoke.json": "1b635f1522cae3c88d3106cf6eb0b3822251aa895d5783d09c6e1f55a93791bf",
+    "contracts/fixtures/realtime/room-switch.json": "5cf116eb8c37d11ed83c8b43d00b2236a46245511c74e30af2a0707d6f72b3fd",
+    "contracts/fixtures/realtime/rooms-unavailable.json": "6d99daf7fde42e24294c39ec7233baa28b2c2c5026a17c330a5d51ffbc079e05",
+    "contracts/fixtures/realtime/rooms.json": "d04837604d57a40106e823596bc7f7c9d6eb07d8d8829ef0675849348d332529",
+    "contracts/fixtures/realtime/throttled.json": "310b2862431a89c6d463286361cd2c968c8fdf49f14ac539b528d93992dfb552",
+    "contracts/fixtures/realtime/ticket-request.json": "328891197cae3cae596e433ebf555ef6e9a94656b408fa1ce837349d3a94da3b",
+    "contracts/fixtures/realtime/ticket-response.json": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54",
+    "contracts/fixtures/realtime/unavailable.json": "4245d83f0f3742764fe69b995eb1c492ab6a695b2e091210d27a5cf4cb58e522",
+    "contracts/fixtures/realtime/unknown-field.json": "eb3a3149475d46c501e700d8f091ef15d856a72b578805e6b564b885a8f19502",
+    "contracts/fixtures/realtime/unknown-message.json": "49cade3b71aeeab5eb511fd1799af0342df9c541792ac4194576f5a2e809ae27",
+    "contracts/fixtures/realtime/wrong-version.json": "d325eaf29d7c694d50393b2995d222a1a1bc382237f22c3a127b2d56b7b692eb",
+    "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+    "contracts/realtime/v1/policy.json": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+    "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "frontend/src/app/account-entry/__tests__/asset-leases/catalog.ts": "41da5319f2ea58f75fd314ef3a25ced7cb069c86a1c0e8fd0ee289fa3bfb6508",
+    "frontend/src/app/account-entry/__tests__/asset-leases/fixture.ts": "ac298c352c107b2fd7e73c10271b2de318a381865b9ff03f72179d123d25e6b1",
+    "frontend/src/app/account-entry/__tests__/asset-leases/leases.test.tsx": "ef97cf86c2dc6474ac4e49accf10b0c9c5dc9d2839c6c66a638396d798ce1b81",
+    "frontend/src/app/account-entry/__tests__/asset-leases/native.mjs": "d6cb9665202f385a9a976abd52984997c05ec81ffdde50e16616825b804fa3ec",
+    "frontend/src/app/account-entry/__tests__/asset-leases/preview.html": "1863d9578e37133e13a0dad6a420ab081c67aa0865aaa9775fbda1311c4ec7d0",
+    "frontend/src/app/account-entry/__tests__/asset-leases/preview.tsx": "c4bbfc69a4de2755159686f08007d1192c7ed69f3acd27f0beb4876167e0954c",
+    "frontend/src/app/account-entry/__tests__/browser-smoke.mjs": "6e661b97d2635750806e8260f5bb289f8c63f1db41601c5fe0ed9a78573a804a",
+    "frontend/src/app/account-entry/__tests__/owner.test.ts": "03ae6a266ae69b5cdca7e0b4e533ce0d227cbc2e35ccbfe9653d02d40252249c",
+    "frontend/src/app/account-entry/__tests__/preview.html": "e6c9f6f44fab8914b0ff983d41b633b30a237c35599dfb7be0c7fbbcaafcb88e",
+    "frontend/src/app/account-entry/__tests__/preview.tsx": "79c2eb34925ebf9975fc42ff4d822dca13001f6d809d436655da295f72b88bb7",
+    "frontend/src/app/account-entry/__tests__/root.test.tsx": "428050fff2db55c89303102fa5a94f54004bf1fa3e5b23c0d7156d11a54103c8",
+    "frontend/src/app/account-entry/assets.ts": "e3868e19ddc67cde161cf3378958f16a9a3b57441406d49b4a6a7b30e014dd6a",
+    "frontend/src/app/account-entry/index.ts": "58d4ea084373953029c2d2529f9cef369ef1c80f5f391cae37b8d56efcc8bb63",
+    "frontend/src/app/account-entry/owner.ts": "b92e9f9cb7884949677fb6f58a160f6382b0ce482f3afb546003c3b430a330ae",
+    "frontend/src/app/account-entry/panels.tsx": "36690626b74954098a15e4a3be7b49558f7d70f7de0929dc5825756d557cab94",
+    "frontend/src/app/account-entry/provider.tsx": "fcecedc44476e61ba9723be555ec912ea9af0fb7758c1688afaca4f05e138313",
+    "frontend/src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-panels/index.tsx": "8c3876c5bed12aa1a2c2f53a2b592115a97e1fb4bb18e793fdeae24d6b3e6467",
+    "frontend/src/app/world-panels/ownership.tsx": "796e5c0e1fdcbcc3e9f0dc4a2e969ac2bb69d773191709a71843d4a3db65a4ef",
+    "frontend/src/app/world-panels/presentation.css": "a554c436ab7ac0169faef4c65d22ff5ee08f08ea4d11e9087d6c4b353f5f27e7",
+    "frontend/src/app/world-panels/social.css": "e7063785972419110220609b090600a68cc1cb1d0a01a93248847d73fee5adfa",
+    "frontend/src/app/world-panels/social.tsx": "d6b5d8a6f10ce392145cf67e0c092458a600ecac900af1cf34e2a9aa2b2cb317",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/features/me/__tests__/browser-smoke.mjs": "9513312ac1a6465b8b08069d6f0256c3fd2222a2ee1e55ec2cb440dfe44f9eda",
+    "frontend/src/features/me/__tests__/controller.test.ts": "3aa31f12becfd671a7e686591e11320dcf58b53c0341cc8222e786a799d853d3",
+    "frontend/src/features/me/__tests__/fixtures.ts": "3f16bd102028e3a1f6a82e87eb786e7e348491c3c6b0903da830b5d4d8ab6745",
+    "frontend/src/features/me/__tests__/preview.html": "95e5729c151b6054ae8fb074950217d0c3279bfffe627aa446b60de771842b19",
+    "frontend/src/features/me/__tests__/preview.tsx": "bc37d156afe141dc6a40245c0e6f673ccfacb0508fe31e1fd793753fed46f86b",
+    "frontend/src/features/me/__tests__/qa06-fidelity/presentation.test.tsx": "3923f9faf9912c2fced7f7db5c25e011e0e09903409b0bbde77d4079af04ce3b",
+    "frontend/src/features/me/__tests__/reference-target/browser.mjs": "3cf7d42beb87b3ae76e8eebade85f31b2ad2b064e9b001f8271c1951be3d8aae",
+    "frontend/src/features/me/__tests__/reference-target/build.mjs": "2ce5c94e0196b4e74812bf5a9829a6144c9c208296c7d09d6e95b971675e0ea5",
+    "frontend/src/features/me/__tests__/reference-target/combined-runner.ts": "7637811d77a3f7000eba2dffd3814a4ad5c6aa110d7234c825e4f4f624b00b77",
+    "frontend/src/features/me/__tests__/reference-target/data.ts": "1189a55c032110b376ee192368baff1e27b51509163816cf595b0a4b444d240f",
+    "frontend/src/features/me/__tests__/reference-target/preimages.json": "6e1be076d200e1e102ff3fdcf75b813147786db47baaa8a17f1e70afa09b50fe",
+    "frontend/src/features/me/__tests__/reference-target/presentation.test.tsx": "58faa29eba5962ec9801886e420eeaacd9245a2ee26baee587d96e41d56f890d",
+    "frontend/src/features/me/__tests__/reference-target/preview.css": "f0f6111d5871648f1d3aa84541c45bdd9e2d0899985aa029d6c2d4341218f600",
+    "frontend/src/features/me/__tests__/reference-target/preview.html": "d7d77cc0b927db68dbbc8978b0ff30915304a6472ee0dc8b0c53f8e471b5db9c",
+    "frontend/src/features/me/__tests__/reference-target/preview.tsx": "18139ed0df0938fa7d680b71578e8554c15a58505ce769d147b08d1e1f2442f0",
+    "frontend/src/features/me/__tests__/reference-target/runner.ts": "228fd668ad2cf31f48fbe612ecb7c2184b61f1b3078579ea179e0f9c6d8f4aeb",
+    "frontend/src/features/me/__tests__/thumbnail.test.tsx": "fd090910d950cd01b8d0ce54970a6d5e6a5e144193034451938eb2d9986904ec",
+    "frontend/src/features/me/__tests__/ui.test.tsx": "efe7af142371965cd2c303c82ee8e087237b91e0c34853d179295d71743e476c",
+    "frontend/src/features/me/__tests__/visual-adoption/browser.mjs": "c6d23ca8b4c2114cc646069532cd5a589458c1d94a8374f25106a58073e16448",
+    "frontend/src/features/me/__tests__/visual-adoption/presentation.test.tsx": "d28157ac86b82be7197fee818d187ad9ac90a19a4c905423e5137cb85dfd38e8",
+    "frontend/src/features/me/__tests__/visual-adoption/preview.html": "9619f4ab8a0c4fee5411300965e85e294c2995baf8b58b52e41302af466c3811",
+    "frontend/src/features/me/__tests__/visual-adoption/preview.tsx": "03432c0aa58e87f45fc38d799b27d00eb78885f6b6a147df2664214b726dd8b0",
+    "frontend/src/features/me/index.ts": "9ec0847cc92f3e947c3b52d5a720322a5827434732ec83f5eed02b3372ecf834",
+    "frontend/src/features/me/model/contract.ts": "d419b356ff330f7f1a5745c2a2ebefe3e88b8e609b8100dabc29b9c5a5fcd0e8",
+    "frontend/src/features/me/model/controller.ts": "13eb8ef9b3db8b3a89dc4bb8c994192d2419bf0c59c2daaaa89368899dc1f177",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "829748940d147959bf8656e9448d00b7f9ba49305a9d5e8ac17acb0de72cfdd0",
+    "frontend/src/features/me/ui/MePages.tsx": "66879fb5d848716032625c53da57d4f305b897cf223183a05df86320e0cafc06",
+    "frontend/src/features/me/ui/me.css": "037a55c87cc72e6b06cba8fb4d4b35a7ac8356ac98919d1db237d54fa2931a48",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "e86c800a108330aac355a41a3af64bfc3e892d162e2fc24d63560cca5c82416e",
+    "frontend/src/features/settings/SettingsPage.tsx": "c609c3aa42f3bc6176c8b8d2138f703223a1463bd378afe7c0138f230f324a48",
+    "frontend/src/features/settings/index.ts": "6c3a6ffce1012d3c3c35b205590b2857a1147501f673d4f156883228a84a8b15",
+    "frontend/src/features/settings/runtime-adoption/__tests__/adapter.test.ts": "5eaba79dc70119787920ee89109b429ffd909631f37702985e4cceefb3cb6009",
+    "frontend/src/features/settings/runtime-adoption/__tests__/binding.test.tsx": "14b994157273f30006bdc8dc388edf5ead291181780f6e3baf6382f2a8479da1",
+    "frontend/src/features/settings/runtime-adoption/__tests__/fixture.ts": "56c4d8f483d97586f3042ec47e348c01240333f2fb4a1a5fa0a3ee51cd7ef4c7",
+    "frontend/src/features/settings/runtime-adoption/__tests__/motionProjection.test.ts": "d3b2b18d2ebe0c7e3b37a9129e6f3e4e3c4b758dd04dc255b497d2c806f7d6b9",
+    "frontend/src/features/settings/runtime-adoption/__tests__/native.mjs": "fb8a1951bae28c3c8ec557fd05c8011360ffc96d9acc958a01e6203ba4063e63",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.html": "10d7dc1cee370ca8ba22060f93d49d21a32c4f32063a5142890b63eb4d5d56f1",
+    "frontend/src/features/settings/runtime-adoption/__tests__/preview.tsx": "0f549a1c6b9620a3561fb8ccd65afd74a54e8ea295786c267c052c5dc5575fe0",
+    "frontend/src/features/settings/runtime-adoption/__tests__/settings.test.tsx": "b884ba3c43e8cbc34bbdc5695c4676e5119aebf3596a177b5a022f9f95bce040",
+    "frontend/src/features/settings/runtime-adoption/__tests__/vitest.config.ts": "bf3242696beab929911aa5ae09f5d00616b1f3d9d3bd7275960cffe3a9f35086",
+    "frontend/src/features/settings/runtime-adoption/index.ts": "139301c0e57a56d09f7e9d2cad2c201ccf2f3b7cbdd537153018d9be5fed0b11",
+    "frontend/src/features/settings/runtime-adoption/motion.css": "c19e737030975e3d7e859c6b4574dabafb8b8c84810b8c4f9ce2bd91329216cb",
+    "frontend/src/features/settings/runtime-adoption/motionProjection.ts": "7e3d8c2457726c7aa6e24dfc5dec00a28aeb5f13c00e8b2ebcb6aa2b12d66cd2",
+    "frontend/src/features/settings/runtime-adoption/useRuntimePreferences.ts": "4753fd60eddb0caaaa27b26c1e2e4b0df30e100cbd2349b568cf28b58ecfed3a",
+    "frontend/src/features/theme/__tests__/browser-smoke.mjs": "a2c12220e7675272f2ec180e6578734cdbe29373858fd67ecb3622cf79b1b1dc",
+    "frontend/src/features/theme/__tests__/contrast.test.ts": "5f90de3729d9801ad8b474275b44503158785558e8e94b1ec5d1e1f63b4986e8",
+    "frontend/src/features/theme/__tests__/controller.test.tsx": "418f7081073622cc50f60f5b4c86c82f105d191404cc0105a310572d007328cb",
+    "frontend/src/features/theme/__tests__/preview.html": "c9e88dd3c9302785c108b7d6fc16225be28bebb20ee924a6549e953ccdb7ae72",
+    "frontend/src/features/theme/__tests__/preview.tsx": "e104a2055fd3228df1003c75461f9ad15bffe44ca023ad1091d9376e2a559ca1",
+    "frontend/src/features/theme/__tests__/runtime-preferences/cancellation.test.ts": "0c6277a3ff38309ad0431f9a49f1ef445c41ab0acf99f7b21869513bcfea5e43",
+    "frontend/src/features/theme/model/controller.ts": "879105b2e39a63b6b206c9955a650b7867bcc9ada76c5c350c1286e38da2ac96",
+    "frontend/src/features/theme/model/preferences.ts": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+    "frontend/src/features/theme/ui/ThemeScope.tsx": "04e39f4f89c9608dc5aacfe9c37322ec16736f8361755348d908dabeaab8c17b",
+    "frontend/src/features/theme/ui/ThemeSelector.tsx": "a7b51a8e0b39e182e66003045e01ed7fd0901612b6da94dae5ede7723e9e4f64",
+    "frontend/src/features/theme/ui/theme-selector.css": "efa98f8c022f8aab0e722423def1a4b273bb8b00548aebaf4ea2c604bcc7a30c",
+    "frontend/src/world/__tests__/controls-layout.test.ts": "4899e51a7aea54bf28db055e1b144c65b0bf8234243580d8d305dd475a915a2c",
+    "frontend/src/world/__tests__/controls-layout/native.mjs": "3674456edd8f06ccd646c9c53e5928283dff8c3b0547935abf26cb33d57b8dde",
+    "frontend/src/world/__tests__/controls-layout/preview.html": "a42825b2e0b1436bb296a2c28c5171acf60ddf6156e8c4129f5b3ec1bcf00bd2",
+    "frontend/src/world/__tests__/controls-layout/preview.ts": "9f7cb0327e311fb04dd73e6597f6989372ede55a1c84916b8d4e8becff8ce754",
+    "frontend/src/world/__tests__/fe15-application-input/native.mjs": "207df2db84171481d6e545ed7a2d2d6030c689820e1b6935d601e1914ffa6843",
+    "frontend/src/world/__tests__/fe15-application-input/preview.html": "1ecf1c81df3da371579277fe9abc8dc680b4205e44355115da8d277a8adb8f7c",
+    "frontend/src/world/__tests__/fe15-application-input/preview.tsx": "5788a165ceb0c2b16cc43343209e3d8db552fb9e06420009e61e9a8bc0367db3",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-native.mjs": "75094c87970a4980d595706d98a22eb20673f0b21f973c4cb3f70983ec08133e",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-preview.html": "b1e7809a256c643a404e8719c77de108fbce3a07ba7091f178c35d6b1a9ab1d4",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-preview.tsx": "2a0312b9ec33dbb9da37f02310d7a2faf0758d0dc9a94afdcd1c2f0b4a426583",
+    "frontend/src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "frontend/src/world/__tests__/fixtures/movement-preview.html": "93fcb9756fc0d7ea17ab5e198b82ef9ffa945663ab3b463a60e52fd4b66e7b00",
+    "frontend/src/world/__tests__/fixtures/movement-preview.ts": "622f0542b7956a2eb71c4587ae6684988d618a2e7a07dae096c834745247bd0a",
+    "frontend/src/world/__tests__/fixtures/png.ts": "13bc13762daa32a956fb08f7fd10698572ac41e2a210e3b140770b22ef295aa5",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.html": "85def9f9a77d25c5642932949dad01662aaf977d16372581d665e484c72d08f8",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.tsx": "2cd3f574642965547718a04915ce6b3706f625e910e1be8ff1cac2cb92567e66",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/world/__tests__/illustrated/contract.test.ts": "1d243ba795baf272f48cb475390ee8be30c91cede59d2b2e8b0cdf71f812222b",
+    "frontend/src/world/__tests__/illustrated/export.mjs": "ad9eedc2897cec570994d3ac52253c53796403ac2a75532c13fd5e4fc1ebb27c",
+    "frontend/src/world/__tests__/illustrated/fixtures.ts": "077bb07d2edd29436677b8f6823ac1fce426786ce52647e0e472676dd0a083fc",
+    "frontend/src/world/__tests__/illustrated/loader.test.ts": "37d085424f3ae9963607e36169b39e1da900ed9ae7cfe87918189597ae14bdd9",
+    "frontend/src/world/__tests__/illustrated/native.html": "9e63f67ade49c7c9a0505155170bbf0b2616390daf82cd92c2016b0d5e6a99ac",
+    "frontend/src/world/__tests__/illustrated/native.mjs": "bbf0c5f9ee0f9f06ae2f4d62d0b9883fe4de5f836669d21e944a8b4d23a48543",
+    "frontend/src/world/__tests__/illustrated/native.ts": "120ab44969b8ed7bdbaa6ce4260d94582571dd13e3e9b1228f9144e656608c9a",
+    "frontend/src/world/__tests__/illustrated/preparation.test.ts": "8a520baebf044c393d1ba08ee59348612e821cd3a67cdac330dca3d16ffe36ca",
+    "frontend/src/world/__tests__/illustrated/resolver.test.ts": "8891d9e58e00b18d32611e007dd3b6d4f134d3018a34f7e9fd2e4578e1c1cb8a",
+    "frontend/src/world/__tests__/illustrated/shared-semantics.test.ts": "8bea21955768db12a71a988958b68e7d79d71c8ddf87e86144ca34d4b38871d0",
+    "frontend/src/world/__tests__/movement-browser-smoke.mjs": "3396fda707046c1b52fe11d161e86614460930336da47ac8bcdce27a819143b9",
+    "frontend/src/world/__tests__/movement.test.ts": "86f3f6fd645728f037c7f11a58f34e7939d08bae391f1e00184a7c5e8a741d94",
+    "frontend/src/world/__tests__/reference-world/controls.test.ts": "e25ede0aff537bfe146194972a401382046ba65e0ddd75596e6dcf97e8a2827a",
+    "frontend/src/world/__tests__/reference-world/native.html": "15d3749611780aceac09049a1ff879968fc9faeaa455314b7eea2db1dfeec9d5",
+    "frontend/src/world/__tests__/reference-world/native.mjs": "b6aeb5a63d4e329702332e485952d89c8f6c6e888799162a0cfadeb1d23c2aea",
+    "frontend/src/world/__tests__/reference-world/native.ts": "c0c182a6b1c900eac2ddf4d960aa1f7da233e61b78229df190012e10fa6bbb0e",
+    "frontend/src/world/__tests__/runtime-browser-smoke.mjs": "98e9e1b329004c5f38c457d66b6b959239fc577915d04609ec11c901c3ed26e4",
+    "frontend/src/world/__tests__/runtime.test.ts": "71ed3ec4ba17d8a4af40b1042481159adba9306d65dc8b03dfbd8d4d8b34cb7a",
+    "frontend/src/world/avatar/__tests__/contract.test.ts": "d851b910984cfea7e88350525eac63dfca7f437d2c8827fe4273afd43240900e",
+    "frontend/src/world/avatar/__tests__/fixtures/data.ts": "c5791242658def399af016bdcb752a4250f747e2c96d78fc7162bf3e359ff9cd",
+    "frontend/src/world/avatar/__tests__/fixtures/native.html": "743feecb93d570720d600c0f8891d94291ebc35421fb8fd7ae75e4297f4379d6",
+    "frontend/src/world/avatar/__tests__/fixtures/native.tsx": "3baf3b0101f2a6f26aff4d8aefd5b84354b24bb09ff5735c7cd083829b160de0",
+    "frontend/src/world/avatar/__tests__/fixtures/png.mjs": "661960ae8958bd4453fb30dea0da205d676f902d15d9ab4a964275a5f7a9b642",
+    "frontend/src/world/avatar/__tests__/motion-adoption/art.test.ts": "f18c432790522ff6c25dd4143ec81726032acda127f62608f6aa026707f46534",
+    "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "f71df7efab72d592498885075cd44a7195a251ed71c856ed2b3a4f13a2e6d7be",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json": "9dfe89ee8597452a26bc7b14ebc6a2c0f17d8dd93964daebea668e461654a0aa",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.ts": "e842597a36803de08a23e1abc2622bc9de9a457198aa2e8019e2611b3d9e6e31",
+    "frontend/src/world/avatar/__tests__/motion-adoption/public-reviewed.test.ts": "129110b7ddc5b68fd1ba94ef1b3e87779a4ab3f47e77e1ecb90832ae3f30780a",
+    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "033e73491bb7cdd48b08761f4bd4004a2e3bbcd94ba5c769132f06b50f795023",
+    "frontend/src/world/avatar/__tests__/motion-adoption/renderer.test.ts": "9a0e72545ce54d296114dd3847d9b249b98b22c35f623f3584dac41dbfffb665",
+    "frontend/src/world/avatar/__tests__/motion-adoption/reviewed-inputs.json": "0f5b0dd962be2ff9e162cb6b7f9e0453a653a0f09a06acd89bb0023e9230ad87",
+    "frontend/src/world/avatar/__tests__/motion-adoption/reviewed.test.ts": "da0f5ac7b793ed7f7c3adea945a7c27556e76deb6c01b8a006d64799bc30e8a1",
+    "frontend/src/world/avatar/__tests__/motion-adoption/test-authority.ts": "88a37fcccf152f6e03c8a6a13909f070892686cb4df4047254af9a5fffde97e0",
+    "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs": "4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1",
+    "frontend/src/world/avatar/__tests__/motion-adoption/v2-producer.test.ts": "77160adcd097bcf14d3aa7804dc58d99e10f63fbebdc616b71e3230344b7dc72",
+    "frontend/src/world/avatar/__tests__/motion-adoption/v2.test.ts": "dc78fa64dc98276958c7df67a08e7891c047cd7931dd748f00e0c1ed28862fd2",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "a11c86d4d237a08854d4104ae461c89830061a9da6ce7b43a36c1f7d94d2ab9b",
+    "frontend/src/world/avatar/__tests__/native.mjs": "a6f2e5d2de5bafdbe9a767dbedce35e9de808c6d20b09d1830e60692a02a4c21",
+    "frontend/src/world/avatar/__tests__/renderer.test.ts": "f9d2d359044788bc0f871332ac5f1785fab86e90bb34efcc092707f3802b3fd0",
+    "frontend/src/world/avatar/__tests__/whole-character/native.html": "fc0bfd3c4ced662e9e9ab3a4b8be8a9424234219f9d5cbdf97944e7698175609",
+    "frontend/src/world/avatar/__tests__/whole-character/native.mjs": "d4d82a774f31fc164447eda12d85ea20b02807dc549df9fa44357014303fddac",
+    "frontend/src/world/avatar/__tests__/whole-character/native.ts": "7e54ad527b21f7c20d24277ed71ecf8f453e47fd417a5a203de7bf0af7f48fb9",
+    "frontend/src/world/avatar/__tests__/whole-character/renderer.test.ts": "22fa802ef96098d86fd8284e3819121b7e0022f854813a3ded9639aa27f104b2",
+    "frontend/src/world/avatar/index.ts": "57a2becf137c2977df21b0cb2b36e40c4fab4651a201f255795ab0b042ba1614",
+    "frontend/src/world/avatar/motion-adoption/renderer.ts": "c577561c2f051390ae4d2f1340391f68a3ab92d7b965698598d6408ca3b07f2c",
+    "frontend/src/world/avatar/renderer.ts": "0e28514071b410c46d29f3cf525591cb83475a139730dd352e46f174428f64d0",
+    "frontend/src/world/avatar/scene.ts": "0c8e155683d0e50a4cdd17604843b79d24d5401e699e5830927afc926408e55f",
+    "frontend/src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "frontend/src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "frontend/src/world/composition/__tests__/composition.test.ts": "f36523b76caba7cb97dfd73a6f85a8c4bf31dfa37716c9e782a2fc17b039e497",
+    "frontend/src/world/composition/__tests__/fixtures/data.ts": "6a14367edb48c1150e443ae18d7fedf4e421241982560f43c617ee2d14af872a",
+    "frontend/src/world/composition/__tests__/fixtures/native.html": "834d0d4c5af1399e21f59ce39d43d6b34d6ad7952e3b9f1f6faca5d3f131ca45",
+    "frontend/src/world/composition/__tests__/fixtures/native.tsx": "06aba61f5a18d9b44675555a4f545382a0e0588f2ffdc7887c606ed35579a7a0",
+    "frontend/src/world/composition/__tests__/native.mjs": "8ad52be820117afb0b038f7bff7dc0336ba33d986782fc0b38e91f6811c7532f",
+    "frontend/src/world/composition/__tests__/presentation-release.test.ts": "9735c4a42581eef84410da7e658ae07c5e6b7e0720090c30b7473320d2ed518a",
+    "frontend/src/world/composition/index.ts": "8242e0a878742b7d31dfb1f947741b534a97b79bb18391b493d3dbec4eb492fc",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/world/composition/ticket.ts": "50198263b8abc42d3fe666d61e1048bf49c1a7399282338c591f9a4aa7152e0c",
+    "frontend/src/world/entities/replicated.ts": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700",
+    "frontend/src/world/illustrated/model.ts": "a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e",
+    "frontend/src/world/illustrated/overview.ts": "fd56872a8697c54c5e6ef36885a97dce40520e5bb061ba31b97359a0d95c19e3",
+    "frontend/src/world/illustrated/phaser.ts": "c602992cba72af1918968ef74b8d96cc2cbc2e5fd23c1e596af08119b19eda8d",
+    "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+    "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+    "frontend/src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "frontend/src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "frontend/src/world/interaction/selection.ts": "bb1e330b398016dfffd6a8da79f7b4eabfd2f9de81ef96592fea7332e8fcdd85",
+    "frontend/src/world/map/__tests__/resource-cache.test.ts": "0635daa6629efa377b0e9458a93acd72af76c7783d9ab3714fdd68a9faacba23",
+    "frontend/src/world/map/formats.ts": "0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770",
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/map/manifest.ts": "d765ce6b7e47a76a2763fde32c6a9e4bde244beb872e761d2c6f73b757cd033c",
+    "frontend/src/world/map/resource-cache.ts": "9bbfaf042ea6f13d52db9dc0bab730314b605c43f19a9a7781a39f747bc230a9",
+    "frontend/src/world/map/resources.ts": "106a01f56832bea0fc37facdbe51a44a548bf7765233773f90b38143718e8e2d",
+    "frontend/src/world/map/schema.ts": "88ce36b375a00ea23a28b86efe70c03154e1707dbd2a6cc2ae580c6c81de2c3e",
+    "frontend/src/world/map/tiled.ts": "65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-data.ts": "8a041798cefd3492cb9f3ec8f1e508ed3700718bb8598681c2ccc7e35b3f56f5",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.html": "4dca787a68f818c813550b4a69c1dd9816e435c1172a4c903d0529101618ff69",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.mjs": "7262171545f07b6bcbfd7f0de438d16b5f5501cd22091de81434922b59873eac",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.tsx": "562353a7d1795fc335ca4a980897dc7a33d73bd0cbcb5b7e04d94a0551779e65",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx": "b05dd43079ebd60fef52debc49656555bc6f612a62fb325c5bac53a19ff01dcf",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/fixture.ts": "5be6f80c081b16702317d732eb27472fe6694a701b178c6ac48ba12174e083fa",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/journey.test.ts": "e6482a5faeeb979feb102682b7b328bbe47474a3674f169103bcd9be64921199",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/lifecycle.test.ts": "95f00763161b826e3dd6597a4150e52a9e29e868c9e54a24caa483464e678403",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/native.html": "40b7936dab3dce2f1af4651f6a38d14fdfd8bd1938175f7c6e4526c0861b583c",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/native.mjs": "d8909899e777585b91874509c25a14f5194bc480fccfd548e0f60f2fedf1ced4",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/native.ts": "77a43bd85664f2c83f647e9a766cfb6d1d359a23c6a441f9584b45054ca83078",
+    "frontend/src/world/mural-entry-lifecycle/index.ts": "505dd55a69a68ad99806ec5950abe83a3a2593771aa4f4067d196a2959467da1",
+    "frontend/src/world/mural-entry-lifecycle/source.ts": "dc564b568228413226d510995029c1334cc17bb6bf93f58cca18fcc3a3675458",
+    "frontend/src/world/mural/__tests__/authority.test.ts": "c2a3241a6e826820d8b98d84461359d1181f73b89d2f4212b1b74f9e0c05b25d",
+    "frontend/src/world/mural/__tests__/sink.test.ts": "7341e2ee865ceb800c1fe4cbe204962364bf7adac44e2a6a0caafe80319a8857",
+    "frontend/src/world/mural/authority.ts": "f08a51650603fc0f0e6b6049df27e7fb20d554c07768ec89c82958cbc9f8b078",
+    "frontend/src/world/mural/index.ts": "9cf37c047ab317839bf0707aaf88ca437fe5f35c39c636114ff93292c26b9567",
+    "frontend/src/world/mural/phaser.ts": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+    "frontend/src/world/mural/sink.ts": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+    "frontend/src/world/network/WorldTransport.ts": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e",
+    "frontend/src/world/network/__tests__/browser-smoke.mjs": "d80ebc55a8ebada890bea4efaaeda217b4d9add0df9042a7ba9ae7540808a44d",
+    "frontend/src/world/network/__tests__/fe17-baseline-recovery/delayed-digest.config.ts": "dcd37ba92f42d05f128970a4d94db014bccefd9d608798a5c86cef5d7dbbc024",
+    "frontend/src/world/network/__tests__/fe17-baseline-recovery/delayed-digest.ts": "c6d2f87dbe5e6d75522a8708d0df42e3dec60f984ce295ff6bcbeb6cf9901485",
+    "frontend/src/world/network/__tests__/fixtures/browser.html": "ab3414ce55cc04f6332fb5833e974cdfb90b8c62b580d95d170f7ca5df3f45b5",
+    "frontend/src/world/network/__tests__/fixtures/browser.ts": "13205d1ecb35d341a175dfdac6873dbfd317738a6268f18f37e8bdac9bcbbc80",
+    "frontend/src/world/network/__tests__/fixtures/replication-browser.html": "7c9d194dc4b25d07b01af84131f03ae96f4ae2e889c3f2e58e9af8a980075c8e",
+    "frontend/src/world/network/__tests__/fixtures/replication-browser.ts": "f33a6363787eafe8086eaa52be9a2373cbeedecc5f108b5e674d15932ab6e96b",
+    "frontend/src/world/network/__tests__/generate-types.mjs": "d25c8c6d97e8a96099d944f9696152e18d64d758e3dabd6303f9742f6756b7d0",
+    "frontend/src/world/network/__tests__/replication-browser.mjs": "5176e98a8ff930e2e8344bed479af91559f0bd0a6874d0dab38fb47417e4d255",
+    "frontend/src/world/network/__tests__/replication.test.ts": "250c937446c6322ba4c40c66fd5ea96fde2e08716d18c23da10ed245ba099b79",
+    "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts": "a3038b9bea67b2c8ded4e48860d67264c8a002faee091c4719f6ea2b9886fc2f",
+    "frontend/src/world/network/__tests__/transport.test.ts": "6ddf89bba4b5c46857ee3e9dbb16c22fd8d0c0588c90e8f27a2510c8158003e0",
+    "frontend/src/world/network/mock.ts": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/world/network/transport/contract.ts": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+    "frontend/src/world/network/transport/engine.ts": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+    "frontend/src/world/network/transport/wire-types.ts": "95c99ff1f253176fc7ed8a977e9bd8f71e72820e4eef27becd23a54c6e639b54",
+    "frontend/src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226",
+    "frontend/src/world/preferences/__tests__/effects.test.ts": "7c0dbc7c96576a38aeaef98dfc9bcd5bcfc7462695425338c40b309a4d1ffab3",
+    "frontend/src/world/preferences/__tests__/native/native.mjs": "35fed61355b78bc268f1d727bd8c86e95d7804140136ca84e0505f5421dd93af",
+    "frontend/src/world/preferences/__tests__/native/preview.html": "8746c2f5808c4a763319ca43326debc730b15bcf5ffe36398a722c51f91bd78a",
+    "frontend/src/world/preferences/__tests__/native/preview.tsx": "ba2ed7105acc92488fa555ed254af4cecf0bfad17f201dbfabba9f1ec70feef0",
+    "frontend/src/world/preferences/__tests__/runtime-owner.test.ts": "f2895fb262d72d8ed9407eda57f07906514c8e68ce33feeaeb98188f70680489",
+    "frontend/src/world/preferences/__tests__/vitest.config.ts": "3c41cdc88604ae234e81de09e59273d62d52c9fefe65f24f7d9c8f1ba0b24851",
+    "frontend/src/world/preferences/contract.ts": "39817923bc33e0e8b44eb27805678377b8468c18766404df97fd99f072641948",
+    "frontend/src/world/preferences/engine.ts": "22fbee961c46f7161276e61cab71bf29d8669ced70d291c364efc79d7a81e3bd",
+    "frontend/src/world/preferences/runtime.ts": "8aca495286342baf294ff4f0c141766899f4b73307e75493a84c397aa4553e97",
+    "frontend/src/world/reference-scene/__tests__/fixture.ts": "1bb3ee7097687970c8b0b6830dd7e20c0d3c71a3b09a464e32ed8d55d6df8cb1",
+    "frontend/src/world/reference-scene/__tests__/lease-fixture.ts": "261e8936e775c78f893b5df589ecb51eabeeab0619536bdfabe1b88dd3403081",
+    "frontend/src/world/reference-scene/__tests__/legacy.mjs": "8c7e704b24ce48e9b5915fa174eb6fa5e088cbfeebc7e8864efcc6ba9513ec0f",
+    "frontend/src/world/reference-scene/__tests__/metadata.test.ts": "c08a28dd007de9a0f1d35f903200b06452e46476e5dbdd3e23f3805f832a0a03",
+    "frontend/src/world/reference-scene/__tests__/model.test.ts": "646a24e79d224ff4ed01c38394944b2bd0a002c3c0574d597a2859bc4d02908f",
+    "frontend/src/world/reference-scene/__tests__/native.html": "b4deb094224a15d93e1e67edf9a35c57e0931b77fb1a1156701bbf6e19b585d6",
+    "frontend/src/world/reference-scene/__tests__/native.mjs": "af5af9545bfd16a17e0d1167add04ae76b02d2877399d77a75e57795614ca7e8",
+    "frontend/src/world/reference-scene/__tests__/native.ts": "41efaf82deaa309a3279a0f7573fbdce1f6401d9c150752cb2492a9e0ef5450d",
+    "frontend/src/world/reference-scene/__tests__/overview.test.ts": "8d6a9857df61e11e2a52bd3af5e368db8799ec0c1cdc4765afc28e078040f62a",
+    "frontend/src/world/reference-scene/__tests__/phaser.test.ts": "fe6ac849be712373d8721f644321f0f6977c9f6b83290e0f5940675e4fedda7e",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/fixture.ts": "0bd7d9672e141cc1dbef28167e68905cfac118effcd64e3fa1b6297a3d3c7333",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/model.test.ts": "9b910425ec8ae4ab5902bd5ab1072d693e5ad111945ec6b245465500f89a6a9d",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/native.html": "f5f05a58ec3f029d464e7e09a99f337f4316729700b1e70580226ecd74ff2698",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/native.mjs": "d3c6c8a3976bb81689e33346be9d816c07328dcadb602513988338f0f2d1e281",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/native.ts": "5974d6b83c8db47b8c12ae32bb9e990c6913c048d5cd3251309b6fab54bc0aff",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/theme-gate.test.ts": "be2a253d922440e9934aa8030875382153d9449208f735f08a7907f5e0e15f47",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/fixture.ts": "d081656eda4ff84c1cc1854aa2df6dda10acf3f3866b78612a5bef3f8f3b5ca7",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/label-reference.js": "17b62791d7d3c49ab929ddd9511abf333dfde1d3c8243166dd25bc6b3eda757f",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/map-labels.test.ts": "71a1a652ab17be26cca7e2d41e63612edbb102b01c561968ed2f3a9a391072e7",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/model.test.ts": "5a8dbf097574cb7b50dbe9f3f8c8156ffccbf449520e38ce0f0df03b72e79499",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/native.html": "4c1a8770ebfa67c88b61c8e8e03327e32833229319f4752a30a07fb166bba878",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/native.mjs": "c3ccb7dca0f65202ecaed623fe87397692146b612e1581ab4734cf79e4f0b026",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/native.ts": "58455aaf347ef473ef57961f68d8b9f2ccdb25858109fb566aa8ecd1e9e1bec9",
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/theme-gate.test.ts": "0d54e9e64138500d6e2f738126fcb4b5519637bec41bb49faf4f7e18195cb067",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/architecture.test.ts": "5f4e2ab663462cd45e9978d465eb9a4dadd485f763e9430fca4962737f8a01aa",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/camera.test.ts": "89f9db8d9e7112b9d6c4af43abf6e33a53959e22884e74648ab3c00cd0381d74",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/fixture.ts": "4704dae0aac11dcdfe4c9618738c3b063cad84e26991d1dd4caa1b7c2c13cebe",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/label-reference.js": "a596930fde934140a3c6b4c4adc029575bb256929b6348147484db64a3877255",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-cozy.test.ts": "c314eb8a08ba789dd3d80754fea45d1c004d8eb9cb478d9c1d0a5db30553475d",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-labels.test.ts": "70737e366f194b74d4434f6e72867b75ed7753024f794593afa9cdf1ee292fbc",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts": "0d984d19a1677da11c9401541ff5714fe4c634b117ab3c37ff2f262ca86844cc",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-service.test.ts": "1161b85d9e9cd77d897f80565133da000d5ee7e0b092e7d1f1dc3ef2f41b5108",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/model.test.ts": "970154774b7c6f0148b75cceb1ecb239b1ca56f0637d828592f8fb949c79cc1d",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/native.html": "d4325f55c1978102ae9d9ed8c3f896c3807498f7573967ee77c253d461405ce5",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/native.mjs": "5002997d09a00706dc8a0d58f952f44c836ec7e742192f1dfc3aa0facc292f23",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/native.ts": "24b0892b74ae3bd5771b00e39b4b0d30b2ad2443e4af169c88e6fca0bf780b00",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/theme-gate.test.ts": "4b6a5d34ef4997904e2326c4ab788f2b8731d97f88e23a056bb44b136edb591c",
+    "frontend/src/world/reference-scene/__tests__/tiled.test.ts": "7abfbc52d58df453297e396bbafe69405255ceb61aad149e4fac53f2545e32fb",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/overview.ts": "919218fd36390ba379def36772c46e15946b877b72295753a71a885293768a8e",
+    "frontend/src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "frontend/src/world/reference-scene/source-inputs.json": "b25ee458e987912f91a4b3c55b87f53be5e0baada96a8372e5225fb8ada909aa",
+    "frontend/src/world/reference-scene/spatial-v3/model.ts": "d4c1c74ca1f92777812af90cdc5a4dcc5bc8411ac6626ebee1fcb95ada90783f",
+    "frontend/src/world/reference-scene/spatial-v3/source-inputs.json": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9",
+    "frontend/src/world/reference-scene/spatial-v3/tile-pin.json": "f20d50e9daa3026972728b8be6dd5d3f84d8c15ad74ac2a75e85edca0651bd48",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels-pins.json": "7716d7a7a8efb4aef30e70de902ccaa580848775ef3676953abb4f3aa9f0b4e0",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels-source.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+    "frontend/src/world/reference-scene/spatial-v4/map-labels.ts": "b3357634e374698b343c61206dd94d51585de84e8adadfca36382263cf09c77f",
+    "frontend/src/world/reference-scene/spatial-v4/model.ts": "849525ccc5fdc690a5e9b2125502a3a07abcea758c717b93279285eb12ccbd9d",
+    "frontend/src/world/reference-scene/spatial-v4/source-inputs.json": "0b686546056ba75591b1d5c32258bd73fd22ca0767686c12aff197d58f8f0beb",
+    "frontend/src/world/reference-scene/spatial-v4/tile-pin.json": "96766e0cdbe185e375fdced89e757013b1765e5790560faaab02fa6caec7129a",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-pin.json": "072e32f442257e54e271c485304779de0ce8ff6f6165c163e23bce1452d1e99b",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-source.json": "4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a",
+    "frontend/src/world/reference-scene/spatial-v5/architecture.ts": "e4565a2fd80bfcb5ca8756511aa26bd83a66800fdf5cd90d2e345af75d72eab4",
+    "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json": "6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/world/reference-scene/spatial-v5/map-cozy-pins.json": "00c8606f967297afb75ab8ba2e7d3e85402b16f90d787f160dc79908695c1425",
+    "frontend/src/world/reference-scene/spatial-v5/map-cozy-source.json": "56934998d331b11bf65ca68a1187b4c1d87cfd3ccd89dea0fb2572bb86a1893c",
+    "frontend/src/world/reference-scene/spatial-v5/map-cozy.ts": "c724ed547432aaa3f03b84dc145b6de3eefae2396f3a4f640fa5042e375791e1",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json": "77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "4cc20165e13491861d71b3a8654f6300f0492b1dd9dcdf3b4ce99575c9927889",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json": "9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/src/world/reference-scene/spatial-v5/map-service-pins.json": "5cc09e3800007d2ef49511d1555e037a87fe2f1ce7e6cc79c4c70165c6be657d",
+    "frontend/src/world/reference-scene/spatial-v5/map-service-source.json": "dbf628ed48d8cd7c85e13c633a48c6bf42b257047b11775b429b968af3714b5f",
+    "frontend/src/world/reference-scene/spatial-v5/map-service.ts": "73f6de00c3cd0a7e4d7f6e79669f51f0580a8d743c37a86fd2afad5a526db166",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "37aedff40afe5be4d8065f98d0d261057f448f312981a6621b2909c129ea9a00",
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/runtime.ts": "47fc58ab147702a4e90cf9a28aa101a999177b9af86f6bc0815ecbe36424776f",
+    "frontend/src/world/scenes/MapScene.ts": "91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258",
+    "frontend/src/world/theme/__tests__/fixtures/png.ts": "3c4e83221e18d1c74f59fb9fdc665fbad04e9bace2d8fbf3d1275980bd3f9929",
+    "frontend/src/world/theme/__tests__/fixtures/releases.ts": "4cb2ca615447615a19a8e48a9ec82a9ea8d07f9a3b11b046c76b4d3ed91f2269",
+    "frontend/src/world/theme/__tests__/replacement.test.ts": "64a15a3f097ceca02c4b6a09a2f6b6aca7c967c39f5e4e1ac43741038722b2dd",
+    "frontend/src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "frontend/src/world/theme/loader.ts": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053"
+  },
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/world-runtime-preferences/native-03/settings-saved-only.png",
+      "screen": "Actual Settings saved values remain separate from incumbent engine application",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "f9781febcd3784f7beeff862bc0939f243018803",
+      "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+      "capturedAtUTC": "2026-11-04T08:30:20.984Z",
+      "capturedAtKST": "2026-11-04T17:30:20.984+09:00",
+      "privacy": "Synthetic source-controlled identity/preferences/characters only; no real person, account, message, credential or location"
+    },
+    {
+      "path": "docs/mcr/evidence/world-runtime-preferences/native-03/settings-applied-low-power.png",
+      "screen": "Actual production adapter applies a paint-only limit to the same Phaser game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "f9781febcd3784f7beeff862bc0939f243018803",
+      "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+      "capturedAtUTC": "2026-11-04T08:30:22.302Z",
+      "capturedAtKST": "2026-11-04T17:30:22.302+09:00",
+      "privacy": "Synthetic source-controlled identity/preferences/characters only; no real person, account, message, credential or location"
+    },
+    {
+      "path": "docs/mcr/evidence/world-runtime-preferences/native-03/settings-privacy-withdrawn.png",
+      "screen": "Privacy withdrawal clears private presentation and restores the actual incumbent effects",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "f9781febcd3784f7beeff862bc0939f243018803",
+      "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+      "capturedAtUTC": "2026-11-04T08:30:23.548Z",
+      "capturedAtKST": "2026-11-04T17:30:23.548+09:00",
+      "privacy": "Synthetic source-controlled identity/preferences/characters only; no real person, account, message, credential or location"
+    }
+  ],
+  "errors": [],
+  "checks": {
+    "initial": {
+      "counts": {
+        "updates": 0,
+        "pre": 0,
+        "render": 0,
+        "post": 0
+      },
+      "tweenValue": 0,
+      "tweenScale": 1,
+      "shellMotionAttribute": null,
+      "shellConnected": true,
+      "cssProbeTransition": "0.12s",
+      "normalMethods": true,
+      "sameLoopCallback": true,
+      "sameCamera": true,
+      "camera": {
+        "x": 263,
+        "y": 168.39682539682536,
+        "zoom": 0.6472602739726028
+      },
+      "noAudio": true,
+      "audioElements": 0
+    },
+    "initialWorld": {
+      "path": "/me/settings",
+      "entities": 6,
+      "theme": {
+        "selected": "PARADE",
+        "pending": null,
+        "phase": "ready",
+        "message": "",
+        "saved": false
+      },
+      "map": {
+        "mapId": "mcr_reference_scene_r3",
+        "revision": 7005,
+        "contentHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395"
+      },
+      "activeSockets": 1,
+      "socketPeak": 1,
+      "games": 1,
+      "peakGames": 1,
+      "totalGames": 1,
+      "sameGame": true,
+      "sprites": 6,
+      "referenceObjects": 35
+    },
+    "savedOnly": {
+      "engine": {
+        "counts": {
+          "updates": 8,
+          "pre": 8,
+          "render": 8,
+          "post": 8
+        },
+        "tweenValue": 1.16,
+        "tweenScale": 1,
+        "shellMotionAttribute": null,
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": true,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      },
+      "state": {
+        "path": "/me/settings",
+        "entities": 6,
+        "theme": {
+          "selected": "PARADE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "map": {
+          "mapId": "mcr_reference_scene_r3",
+          "revision": 7005,
+          "contentHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+          "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395"
+        },
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "games": 1,
+        "peakGames": 1,
+        "totalGames": 1,
+        "sameGame": true,
+        "sprites": 6,
+        "referenceObjects": 35
+      },
+      "preferences": {
+        "theme": "PARADE",
+        "low_power": true,
+        "reduced_motion": false,
+        "sound_enabled": false
+      },
+      "writes": 1
+    },
+    "normal": {
+      "elapsed": 803,
+      "updates": 48,
+      "pre": 48,
+      "render": 48,
+      "post": 48,
+      "tweenDelta": 8.010000000000002,
+      "before": {
+        "counts": {
+          "updates": 8,
+          "pre": 8,
+          "render": 8,
+          "post": 8
+        },
+        "tweenValue": 1.16,
+        "tweenScale": 1,
+        "shellMotionAttribute": null,
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": true,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      },
+      "after": {
+        "counts": {
+          "updates": 56,
+          "pre": 56,
+          "render": 56,
+          "post": 56
+        },
+        "tweenValue": 9.170000000000002,
+        "tweenScale": 1,
+        "shellMotionAttribute": null,
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": true,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      }
+    },
+    "lowPower": {
+      "elapsed": 1203,
+      "updates": 72,
+      "pre": 16,
+      "render": 16,
+      "post": 16,
+      "tweenDelta": 12.01,
+      "before": {
+        "counts": {
+          "updates": 62,
+          "pre": 62,
+          "render": 62,
+          "post": 62
+        },
+        "tweenValue": 10.33,
+        "tweenScale": 1,
+        "shellMotionAttribute": "false",
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": false,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      },
+      "after": {
+        "counts": {
+          "updates": 134,
+          "pre": 78,
+          "render": 78,
+          "post": 78
+        },
+        "tweenValue": 22.34,
+        "tweenScale": 1,
+        "shellMotionAttribute": "false",
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": false,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      }
+    },
+    "applied": {
+      "path": "/me/settings",
+      "entities": 6,
+      "theme": {
+        "selected": "PARADE",
+        "pending": null,
+        "phase": "ready",
+        "saved": true,
+        "message": "PARADE selected. Saved on this device for this account and event."
+      },
+      "map": {
+        "mapId": "mcr_reference_scene_r3",
+        "revision": 7005,
+        "contentHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395"
+      },
+      "activeSockets": 1,
+      "socketPeak": 1,
+      "games": 1,
+      "peakGames": 1,
+      "totalGames": 1,
+      "sameGame": true,
+      "sprites": 6,
+      "referenceObjects": 35
+    },
+    "osReduced": {
+      "elapsed": 303,
+      "updates": 19,
+      "pre": 4,
+      "render": 4,
+      "post": 4,
+      "tweenDelta": 0,
+      "before": {
+        "counts": {
+          "updates": 146,
+          "pre": 81,
+          "render": 81,
+          "post": 81
+        },
+        "tweenValue": 23.16,
+        "tweenScale": 0,
+        "shellMotionAttribute": "true",
+        "shellConnected": true,
+        "cssProbeTransition": "0s",
+        "normalMethods": false,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      },
+      "after": {
+        "counts": {
+          "updates": 165,
+          "pre": 85,
+          "render": 85,
+          "post": 85
+        },
+        "tweenValue": 23.16,
+        "tweenScale": 0,
+        "shellMotionAttribute": "true",
+        "shellConnected": true,
+        "cssProbeTransition": "0s",
+        "normalMethods": false,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      }
+    },
+    "osRestored": {
+      "elapsed": 303,
+      "updates": 18,
+      "pre": 4,
+      "render": 4,
+      "post": 4,
+      "tweenDelta": 2.9999999999999964,
+      "before": {
+        "counts": {
+          "updates": 171,
+          "pre": 86,
+          "render": 86,
+          "post": 86
+        },
+        "tweenValue": 24.17,
+        "tweenScale": 1,
+        "shellMotionAttribute": "false",
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": false,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      },
+      "after": {
+        "counts": {
+          "updates": 189,
+          "pre": 90,
+          "render": 90,
+          "post": 90
+        },
+        "tweenValue": 27.169999999999998,
+        "tweenScale": 1,
+        "shellMotionAttribute": "false",
+        "shellConnected": true,
+        "cssProbeTransition": "0.12s",
+        "normalMethods": false,
+        "sameLoopCallback": true,
+        "sameCamera": true,
+        "camera": {
+          "x": 263,
+          "y": 168.39682539682536,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      }
+    },
+    "soundUnavailable": {
+      "counts": {
+        "updates": 197,
+        "pre": 92,
+        "render": 92,
+        "post": 92
+      },
+      "tweenValue": 28.51,
+      "tweenScale": 1,
+      "shellMotionAttribute": null,
+      "shellConnected": true,
+      "cssProbeTransition": "0.12s",
+      "normalMethods": true,
+      "sameLoopCallback": true,
+      "sameCamera": true,
+      "camera": {
+        "x": 263,
+        "y": 168.39682539682536,
+        "zoom": 0.6472602739726028
+      },
+      "noAudio": true,
+      "audioElements": 0
+    },
+    "userReduced": {
+      "path": "/me/settings",
+      "entities": 6,
+      "theme": {
+        "selected": "PARADE",
+        "pending": null,
+        "phase": "ready",
+        "saved": true,
+        "message": "PARADE selected. Saved on this device for this account and event."
+      },
+      "map": {
+        "mapId": "mcr_reference_scene_r3",
+        "revision": 7005,
+        "contentHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395"
+      },
+      "activeSockets": 1,
+      "socketPeak": 1,
+      "games": 1,
+      "peakGames": 1,
+      "totalGames": 1,
+      "sameGame": true,
+      "sprites": 6,
+      "referenceObjects": 35
+    },
+    "navigation": {
+      "path": "/world",
+      "entities": 6,
+      "theme": {
+        "selected": "PARADE",
+        "pending": null,
+        "phase": "ready",
+        "saved": true,
+        "message": "PARADE selected. Saved on this device for this account and event."
+      },
+      "map": {
+        "mapId": "mcr_reference_scene_r3",
+        "revision": 7005,
+        "contentHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+        "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395"
+      },
+      "activeSockets": 1,
+      "socketPeak": 1,
+      "games": 1,
+      "peakGames": 1,
+      "totalGames": 1,
+      "sameGame": true,
+      "sprites": 6,
+      "referenceObjects": 35
+    },
+    "callerAbort": {
+      "counts": {
+        "updates": 208,
+        "pre": 103,
+        "render": 103,
+        "post": 103
+      },
+      "tweenValue": 30.170000000000005,
+      "tweenScale": 1,
+      "shellMotionAttribute": null,
+      "shellConnected": true,
+      "cssProbeTransition": "0.12s",
+      "normalMethods": true,
+      "sameLoopCallback": true,
+      "sameCamera": true,
+      "camera": {
+        "x": 263,
+        "y": 168.39682539682536,
+        "zoom": 0.6472602739726028
+      },
+      "noAudio": true,
+      "audioElements": 0
+    },
+    "themeUnavailable": {
+      "selected": "PARADE",
+      "pending": null,
+      "phase": "error",
+      "saved": true,
+      "message": "DANGER artwork is unavailable. PARADE remains selected."
+    },
+    "privacy": {
+      "state": {
+        "version": "spatial-v5",
+        "derived": false,
+        "originalThemeProvenance": [
+          {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        ],
+        "suppliedThemeProvenance": [
+          {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        ],
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "suppliedThemePins": [
+          {
+            "themeId": "REVENGE",
+            "hash": "sha256:c497d49703b4a5f02dd235c90fab8b39bbc9b498c3bf980b1c66bb49d403e2d1",
+            "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+            "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          {
+            "themeId": "PARADE",
+            "hash": "sha256:c3a2456effe23a7b7e6b34eb0a37efd2f42b8e4e2223c64d917d032e0c05e54e",
+            "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+            "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          {
+            "themeId": "DANGER",
+            "hash": "sha256:816a85c212316bee4bafa73bda861dd2ad6fcd79cb7d305db8d1ac8f9cfb4816",
+            "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+            "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          }
+        ],
+        "framesByType": {
+          "authenticate": 1,
+          "input": 1,
+          "pong": 10
+        },
+        "preferenceWrites": 3,
+        "savedPreferences": {
+          "theme": "PARADE",
+          "low_power": true,
+          "reduced_motion": true,
+          "sound_enabled": false
+        },
+        "path": "/me/settings",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "PATCH"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "PATCH"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "PATCH"
+          }
+        ],
+        "sameCamera": null,
+        "metadata": null,
+        "sourceCaches": [
+          {
+            "loads": 3,
+            "hits": 1,
+            "coalesced": 0,
+            "residentBytes": 2076025,
+            "entries": 3,
+            "disposed": false
+          }
+        ],
+        "socketPeak": 1,
+        "sockets": 1,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/7d291fe6-13bf-4e14-9677-63ce50340442",
+            "blob:http://127.0.0.1:5173/0d599e8a-044a-4ad3-adef-fc47c169e1c4",
+            "blob:http://127.0.0.1:5173/ce68ddb1-c9fb-46d0-a8b4-2407bb6a791f",
+            "blob:http://127.0.0.1:5173/578fb59c-2445-4327-b3ea-55426b216429",
+            "blob:http://127.0.0.1:5173/4a8d84fc-c74e-491d-836d-3f5c17b07a87"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/7d291fe6-13bf-4e14-9677-63ce50340442",
+            "blob:http://127.0.0.1:5173/4a8d84fc-c74e-491d-836d-3f5c17b07a87",
+            "blob:http://127.0.0.1:5173/0d599e8a-044a-4ad3-adef-fc47c169e1c4",
+            "blob:http://127.0.0.1:5173/ce68ddb1-c9fb-46d0-a8b4-2407bb6a791f",
+            "blob:http://127.0.0.1:5173/578fb59c-2445-4327-b3ea-55426b216429"
+          ]
+        },
+        "disposed": false
+      },
+      "engine": {
+        "counts": {
+          "updates": 211,
+          "pre": 106,
+          "render": 106,
+          "post": 106
+        },
+        "tweenValue": 30.67,
+        "tweenScale": 1,
+        "shellMotionAttribute": null,
+        "shellConnected": false,
+        "cssProbeTransition": "",
+        "normalMethods": true,
+        "sameLoopCallback": false,
+        "sameCamera": false,
+        "camera": {
+          "x": 263,
+          "y": 215.53703703703695,
+          "zoom": 0.6472602739726028
+        },
+        "noAudio": true,
+        "audioElements": 0
+      }
+    },
+    "final": {
+      "version": "spatial-v5",
+      "derived": false,
+      "originalThemeProvenance": [
+        {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        }
+      ],
+      "suppliedThemeProvenance": [
+        {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        }
+      ],
+      "sourceOnly": true,
+      "productionAdmitted": false,
+      "originalMapProvenance": {
+        "source_id": "ar02_original_courtyard",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+        "source_uri": null,
+        "author": "MCR AR02 map author",
+        "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      },
+      "originalPlaces": [
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "label": "Virtual Culture Park lawn",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        },
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "label": "Virtual stage",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        },
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "label": "Virtual gift corner",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        },
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "label": "Virtual pixel wall",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        }
+      ],
+      "suppliedThemePins": [
+        {
+          "themeId": "REVENGE",
+          "hash": "sha256:c497d49703b4a5f02dd235c90fab8b39bbc9b498c3bf980b1c66bb49d403e2d1",
+          "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+          "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        {
+          "themeId": "PARADE",
+          "hash": "sha256:c3a2456effe23a7b7e6b34eb0a37efd2f42b8e4e2223c64d917d032e0c05e54e",
+          "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+          "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        {
+          "themeId": "DANGER",
+          "hash": "sha256:816a85c212316bee4bafa73bda861dd2ad6fcd79cb7d305db8d1ac8f9cfb4816",
+          "mapHash": "sha256:d4e6408d3b54f3b193af77410f307fa5c1944048be4ef57f9d88355a9f2f7f63",
+          "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      ],
+      "framesByType": {
+        "authenticate": 1,
+        "input": 1,
+        "pong": 10
+      },
+      "preferenceWrites": 3,
+      "savedPreferences": {
+        "theme": "PARADE",
+        "low_power": true,
+        "reduced_motion": true,
+        "sound_enabled": false
+      },
+      "path": "/me/settings",
+      "published": false,
+      "factoryCalls": 1,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+          "method": "PATCH"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+          "method": "PATCH"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+          "method": "PATCH"
+        }
+      ],
+      "sameCamera": null,
+      "metadata": null,
+      "sourceCaches": [
+        {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        }
+      ],
+      "socketPeak": 1,
+      "sockets": 1,
+      "activeSockets": 0,
+      "canvasPeak": 1,
+      "canvases": 0,
+      "urls": {
+        "created": [
+          "blob:http://127.0.0.1:5173/7d291fe6-13bf-4e14-9677-63ce50340442",
+          "blob:http://127.0.0.1:5173/0d599e8a-044a-4ad3-adef-fc47c169e1c4",
+          "blob:http://127.0.0.1:5173/ce68ddb1-c9fb-46d0-a8b4-2407bb6a791f",
+          "blob:http://127.0.0.1:5173/578fb59c-2445-4327-b3ea-55426b216429",
+          "blob:http://127.0.0.1:5173/4a8d84fc-c74e-491d-836d-3f5c17b07a87"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/7d291fe6-13bf-4e14-9677-63ce50340442",
+          "blob:http://127.0.0.1:5173/4a8d84fc-c74e-491d-836d-3f5c17b07a87",
+          "blob:http://127.0.0.1:5173/0d599e8a-044a-4ad3-adef-fc47c169e1c4",
+          "blob:http://127.0.0.1:5173/ce68ddb1-c9fb-46d0-a8b4-2407bb6a791f",
+          "blob:http://127.0.0.1:5173/578fb59c-2445-4327-b3ea-55426b216429"
+        ]
+      },
+      "disposed": true
+    }
+  },
+  "limits": [
+    "Controlled frozen C03/C05/C06/selected-source fixtures, not live backend or production art admission",
+    "Actual production Root/Settings/adopter/composition/default Phaser and ThemeController from one checkout",
+    "Reduced motion covers nonessential tweens; character artwork/manual walk renderer unchanged",
+    "Low power caps actual canvas paints, not updates/network/authoritative physics; no battery or physical-device claim",
+    "No real eligible audio source; enable-sound is explicitly unavailable",
+    "Pending ignored-abort theme candidate disposal qualified by source tests; fixture lacks alternate admitted theme assets"
+  ],
+  "applicationBuild": {
+    "result": "PASS",
+    "entry": "frontend/index.html/src/main.tsx",
+    "afterBrowserServerProfileCleanup": true,
+    "copyPublicDir": false
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryRemoved": true
+  },
+  "peakMeasuredWorkflowBytes": 78586053,
+  "minimumFreeBytes": 33324589056,
+  "completedAtUTC": "2026-11-04T08:30:24.409Z",
+  "completedAtKST": "2026-11-04T17:30:24.409+09:00",
+  "resourceLimits": {
+    "expectedMiB": 160,
+    "earlyStopGiB": 0.18,
+    "hardGiB": 0.2,
+    "accumulatedDurableMiB": 40,
+    "launchFreeGiB": 16,
+    "stopFreeGiB": 8,
+    "borrowedLinkIncluded": true
+  }
+}

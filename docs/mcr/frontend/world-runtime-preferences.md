@@ -1,13 +1,17 @@
 # FE06 / FE34 incumbent runtime preferences
 
-The producer source is INTEGRATED in published master `e2375727`. Its composed
-source qualification passed 206 tests, full TypeScript checking and scoped lint.
-The composed Settings/Phaser native qualification is NOT_RUN. The new harness has
-passed full TypeScript checking, scoped lint and Node syntax checks.
-The persistent producer goal remains ACTIVE through the remaining validation,
-fixes, committed handoff, publication verification and cleanup. This report does
-not accept whole FE06/FE34, W04, IN01/IN05, device behavior, an audio source or art
-admission.
+The producer source is INTEGRATED in published master `9e7952fc`. Composed
+source checks and the final controlled Settings/Phaser native gate PASS. Saving,
+actual runtime application, reduced motion, paint limiting and lifetime cleanup
+are implemented and verified. The actual application Vite build also passed
+after browser cleanup. The bounded proof uses controlled HTTP/C05/assets;
+it does not accept whole FE06/FE34, W04, IN01/IN05, live server behavior, device
+behavior, an audio source or production art admission.
+
+At this committed handoff, the remaining delivery steps are Root's serialized
+publication, fresh owner readback and lease return. The aligned goal stays active
+until those steps finish; they do not require another test, build or receipt-only
+commit.
 
 ## Authority and ownership
 
@@ -118,7 +122,7 @@ add/add conflict was this producer document, resolved by retaining the truthful
 new harness preparation; no shared application source was authored during the
 merge.
 
-## Composed native preparation
+## Composed native preparation and source qualification
 
 The new `world/preferences/__tests__/native/` harness is TEST ONLY, derived from
 Root's `app/world-entry/__tests__/reference-scene-v5/preview.tsx` at `c8a731e5`.
@@ -157,7 +161,7 @@ resource-only native-driver successor also points TMPDIR/TMP/TEMP at its own
 monitored tree before browser/server creation; its Node syntax check passed.
 The original source-03 hashes remain historical evidence and are not rewritten.
 
-The one composed native job remains NOT_RUN until Root publishes the actual
+At preparation, the composed native gate was NOT_RUN pending Root publishing the actual
 motion-rule loading and latest adopter cleanup fix. Exact overlapping evidence
 from Root's World/Map job will be reused; no duplicate destination screenshot
 matrix is requested. Browser/server/profile/cache will be removed before the
@@ -190,7 +194,7 @@ The owned harness fix excludes archived screenshot evidence and pins tracked
 source/contract formats, with the complete committed tree still identified by
 HEAD. An initial budget sample now precedes pinning, and minimum available disk
 is retained. No product code, fixture behavior, assertion or acceptance threshold
-was weakened. The corrected native attempt requires a fresh allocation.
+was weakened. The corrected attempt required a fresh allocation; the result is recorded below.
 
 
 The second named attempt passed scoped helper lint and reached the actual live
@@ -208,4 +212,57 @@ accessible-name prefix, asserts its PARADE value, and retains the original
 timeout and all behavior checks. Initial probe results are now retained before
 later actions, and the saved-only check also verifies the controlled server's
 actual preference value and PATCH count. No production UI or application code
-was changed. A fresh native allocation is required again.
+was changed. A fresh native allocation was required; native-03 below records it.
+
+
+## Final controlled native result
+
+`native-03/report.json`, `qualification.json` and `capture-packet.json` retain
+the original successful run on worker source
+`f9781febcd3784f7beeff862bc0939f243018803`, frozen production `9e7952fc`.
+Root's final source cohort `7d4c5234` supplied the existing motion-only CSS rule
+and adopter cancellation fix; 35 affected tests, full types, scoped lint and
+Node syntax passed before publication. Producer mappings and all 26 then-current
+postimages were freshly checked against that publication before native execution.
+
+The new named native allocation passed scoped helper lint, the actual combined
+flow and the application Vite build. The driver ran 2026-11-04
+08:30:16.846–08:30:24.409 UTC (17:30:16.846–17:30:24.409 KST), 7.563 seconds.
+It measured 78,586,053 bytes whole-workflow peak and 33,324,589,056 bytes minimum
+free space. The dependency link was removed at 08:30:57.464 UTC, before the
+08:33:15.964 UTC total deadline. Browser, server, profile, cache and build
+temporary paths were removed; the owning Node process ended. No output slot is
+held. Both original failed attempts remain retained and are not treated as passes.
+
+| Boundary | Actual observation |
+| --- | --- |
+| Save versus apply | One controlled PATCH stored PARADE/low-power=true; engine methods and tween scale stayed normal until explicit Apply. |
+| Normal painting | 48 paired pre/render/post phases and 48 scene updates in 803 ms. |
+| Low power | 16 paired paint phases and 72 scene updates in 1,203 ms; same loop callback and camera. |
+| OS motion reduction | Actual tween delta zero with 19 scene updates continuing; computed transition duration zero. |
+| OS restoration | Tween scale restored to one and value advanced by about three units. |
+| User motion under OS no-preference | Actual tween scale zero and shell CSS transition zero. |
+| Caller/navigation release | Original renderer methods, tween scale one, original shell attribute and 120-ms transition restored. |
+| Runtime identity/transport | Same one game, camera and socket; six sprites; actual strict production transport ping/pong continued. |
+| Unavailable sound/theme | No audio source/element started; alternate unavailable theme retained PARADE with truthful error/no pending state. |
+| Privacy/teardown | Zero private sockets/canvases; exact original effects restored; all five object URLs revoked. |
+
+The controlled scene is `mcr_reference_scene_r3`, revision 7005. Source and
+contract hashes for 360 inputs are retained. The actual build bundles
+`frontend/index.html` / `src/main.tsx` with `copyPublicDir=false`; it deliberately
+does not certify deployment packaging or copied public-asset completeness.
+The browser/server/profile/cache had fully closed before that serial build.
+
+All three original 390×844 PNGs were opened and inspected. The first two show
+Settings in its existing half panel, scrolled around sound/apply controls, with
+the same visible selected-source characters. They do not show the complete form
+and every status simultaneously; mechanical observations establish effect
+behavior. The privacy PNG shows the generic unavailable-event screen with
+private world content cleared. Original capture times, hashes and privacy scope
+are in the capture packet. No general accessibility or visual/art acceptance is
+inferred and no UI/background source was changed for these captures.
+
+The committed handoff contains only the granted producer paths. Root153 remains
+the sole publisher. Its final mapping and the owner's fresh remote blob/ancestry
+readback close delivery; no additional scrum-lead acknowledgment or output job
+is a completion gate.
