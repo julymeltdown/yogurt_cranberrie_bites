@@ -1,5 +1,6 @@
 //! Durable BE10/BE11 PostgreSQL adapter. No HTTP, WebSocket or public DTO is exposed here.
 pub mod rpc;
+pub mod account_deletion;
 pub(crate) mod recipient_owners;
 pub mod simulation;
 pub mod interest;
