@@ -1,13 +1,19 @@
 //! Exact C04 feature admission. Canonical owners still authorize every request.
 use super::*;
-use std::collections::BTreeMap;
 use serde::Deserialize;
+use std::collections::BTreeMap;
 
 pub(super) fn router() -> Router<Arc<AppState>> {
     Router::new()
         .route("/api/concert/events/:event_id/me/age-status", get(dispatch))
-        .route("/api/concert/events/:event_id/me/age-verifications", post(dispatch))
-        .route("/api/concert/events/:event_id/me/age-verifications/callback", post(dispatch))
+        .route(
+            "/api/concert/events/:event_id/me/age-verifications",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/me/age-verifications/callback",
+            post(dispatch),
+        )
         .route("/api/concert/events/:event_id/intros", get(dispatch))
         .route(
             "/api/concert/events/:event_id/intros/:intro_id",
@@ -75,7 +81,10 @@ impl FeatureRoute {
     pub(super) fn body_limit(self) -> usize {
         match self {
             Self::SetIntro | Self::PublishIntro | Self::CloseIntro => 16 * 1024,
-            Self::MarkRead | Self::MarkAllRead | Self::StartAgeVerification | Self::CompleteAgeVerification => 8192,
+            Self::MarkRead
+            | Self::MarkAllRead
+            | Self::StartAgeVerification
+            | Self::CompleteAgeVerification => 8192,
             _ => 0,
         }
     }
@@ -206,19 +215,26 @@ struct AgeCallback {
 /// Mirror frozen C04/B91 admission without changing the original signed bytes.
 /// Typed parsing of the original object rejects duplicate and escaped-alias keys.
 pub(super) fn valid_body(route: FeatureRoute, bytes: &[u8]) -> bool {
-    if !matches!(route, FeatureRoute::StartAgeVerification | FeatureRoute::CompleteAgeVerification) {
+    if !matches!(
+        route,
+        FeatureRoute::StartAgeVerification | FeatureRoute::CompleteAgeVerification
+    ) {
         return true;
     }
-    if bytes.len() > 8192 || !serde_json::from_slice::<serde_json::Value>(bytes).is_ok_and(|v| v.is_object()) {
+    if bytes.len() > 8192
+        || !serde_json::from_slice::<serde_json::Value>(bytes).is_ok_and(|v| v.is_object())
+    {
         return false;
     }
     match route {
         FeatureRoute::StartAgeVerification => serde_json::from_slice::<AgeStart>(bytes)
             .is_ok_and(|body| body.return_target == "AGE_PRIVACY"),
         FeatureRoute::CompleteAgeVerification => serde_json::from_slice::<AgeCallback>(bytes)
-            .is_ok_and(|body| uuid(&body.verification_id).is_some()
-                && age_token(&body.state_token, 512)
-                && age_token(&body.provider_response_token, 4096)),
+            .is_ok_and(|body| {
+                uuid(&body.verification_id).is_some()
+                    && age_token(&body.state_token, 512)
+                    && age_token(&body.provider_response_token, 4096)
+            }),
         _ => false,
     }
 }
