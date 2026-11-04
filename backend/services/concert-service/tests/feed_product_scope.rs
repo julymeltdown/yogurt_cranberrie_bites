@@ -31,6 +31,7 @@ fn refuses_ambient_plaintext_or_retargetable_post_addresses() {
         "https://post.svc.internal:50055/read",
         "https://post.svc.internal:50055/?owner=other",
         "https://post.svc.internal:50055#fragment",
+        "https://post.svc.internal:50055/#fragment",
         " https://post.svc.internal:50055",
         "https://post.svc.internal:50055\n",
     ] {

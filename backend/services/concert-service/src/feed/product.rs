@@ -43,6 +43,8 @@ impl FeedProductConfig {
             .map_err(|_| anyhow::anyhow!("Invalid Feed Post endpoint"))?;
         anyhow::ensure!(
             endpoint.len() <= 4096
+                && !endpoint.contains('#')
+                && !endpoint.chars().any(char::is_control)
                 && uri.scheme_str() == Some("https")
                 && uri.host().is_some_and(|host| !host.is_empty())
                 && uri.port_u16().is_some_and(|port| port > 0)

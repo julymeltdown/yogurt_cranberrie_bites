@@ -104,6 +104,11 @@ endpoint rejection, missing/placeholder/malformed credentials, zero cursor key,
 and the closed scoped read operation set. They do not construct a substitute
 positive authority or claim a real held scope/HTTP test.
 
+Source review found that retained `http` URI parsing can discard a fragment.
+The adapter explicitly rejects raw fragments and control characters before accepting
+the endpoint, including both authority-only and slash-prefixed fragment cases.
+This is a source-based correction; no failing or passing executable test is implied.
+
 Executable validation: **NOT_RUN pending fresh Backend SL OFFER/ACCEPT**. Start
 floor 16 GiB, continuous stop floor 8 GiB; Rust 1.88 locked/offline, jobs <=2,
 debug=0, incremental=0. No target is held. Required bounded test target is
@@ -229,9 +234,9 @@ history. Root owns only central conflict resolution and composition.
 
 ## Exact adapter source hashes
 
-- `backend/services/concert-service/src/feed/product.rs` SHA-256 `bf59b4d01c706c96c613cf3833cdcaaf2ec41ced5df9976fbf4c3c48689eadfa`.
+- `backend/services/concert-service/src/feed/product.rs` SHA-256 `8bd858dd9ee92e77b2f53b73b4fda512e3921a0b2d9cdcaece88c8829f4f18ea`.
 - `backend/services/concert-service/src/feed/mod.rs` SHA-256 `357d12ae27c042670e9e08d02efb7846af646ca029a2fe979c470887c3d790ed`.
-- `backend/services/concert-service/tests/feed_product_scope.rs` SHA-256 `285fd8bd9e37e3b3cb2940d0de1857fb69de6a9de14dec767c0a7a49408ebf54`.
+- `backend/services/concert-service/tests/feed_product_scope.rs` SHA-256 `42d93ca4c352c6a62eb64007aced04722f91b4ac7ff692ed29191c1dbd64f7d7`.
 
 ## Preserved native evidence inventory
 
