@@ -102,6 +102,10 @@ async fn root(pool: &PgPool, event: Uuid, gift: Uuid) -> anyhow::Result<Giveaway
     assert_eq!(g.quantity_claimed, row.get::<i32, _>("quantity_claimed"));
     assert_eq!(g.fields.quantity_total, row.get::<i32, _>("quantity_total"));
     assert!(g.available() >= 0);
+    if g.reserved_unclaimed == 0 {
+        let due:Option<chrono::DateTime<Utc>>=sqlx::query_scalar("select next_action_at from concert_community_giveaways where event_id=$1 and giveaway_id=$2").bind(event).bind(gift).fetch_one(pool).await?;
+        assert_eq!(due, None, "terminal root must leave no pending expiry scan");
+    }
     assert_eq!(
         g.reservations.iter().filter(|r| r.state.active()).count() as i32,
         g.reserved_unclaimed
@@ -420,6 +424,36 @@ async fn duplicate_claim_and_negative_actors_codes() -> anyhow::Result<()> {
     let a = jobs.remove(0).await?.unwrap();
     let b = jobs.remove(0).await?.unwrap();
     assert_eq!(a.receipt, b.receipt);
+    let attempts_before:i64=sqlx::query_scalar("select coalesce(sum(attempts),0)::bigint from concert_community_pickup_attempts where event_id=$1").bind(event).fetch_one(&pool).await?;
+    let admissions_before: i64 = sqlx::query_scalar(
+        "select count(*) from concert_community_pickup_admissions where event_id=$1",
+    )
+    .bind(event)
+    .fetch_one(&pool)
+    .await?;
+    let mut replay = command(
+        owner,
+        event,
+        gift,
+        GiftAction::Claim {
+            reservation,
+            expected: 2,
+        },
+    );
+    replay.key = key;
+    replay.code = Some(PickupCode::parse(raw).unwrap());
+    assert_eq!(execute(&pool, &replay).await.unwrap().receipt, a.receipt);
+    let attempts_after:i64=sqlx::query_scalar("select coalesce(sum(attempts),0)::bigint from concert_community_pickup_attempts where event_id=$1").bind(event).fetch_one(&pool).await?;
+    let admissions_after: i64 = sqlx::query_scalar(
+        "select count(*) from concert_community_pickup_admissions where event_id=$1",
+    )
+    .bind(event)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(
+        (attempts_before, admissions_before),
+        (attempts_after, admissions_after)
+    );
     let g = root(&pool, event, gift).await?;
     assert_eq!((g.reserved_unclaimed, g.quantity_claimed), (0, 1));
     let count:i64=sqlx::query_scalar("select count(*) from concert_command_receipts where event_id=$1 and operation_id='claimConcertReservation' and state='SUCCEEDED'").bind(event).fetch_one(&pool).await?;
