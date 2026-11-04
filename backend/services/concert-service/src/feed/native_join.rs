@@ -35,7 +35,6 @@ use platform::{
     grpc_auth::{CallerRegistry, Workload},
     grpc_method_policy::{guard, guard_without_delegation},
 };
-use std::time::{Duration, Instant};
 use uuid::Uuid;
 
 struct Settle(Arc<PublicProfileReader>);
