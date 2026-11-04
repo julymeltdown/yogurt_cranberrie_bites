@@ -1,0 +1,15 @@
+{
+  "status": "FULL",
+  "job": "PROFILE-DEFAULT-RETRY-B1-20261104T1819Z",
+  "result": "FAIL_OWN_EXPECTED_COPY",
+  "finishedAt": "2026-11-04T18:21:00.774341+00:00",
+  "remainingOwnResources": 0,
+  "port": 5324,
+  "absentBindCloseReuseAddr": true,
+  "peakProcesses": 11,
+  "peakRssKiB": 2407696,
+  "peakWholeBytes": 1500876800,
+  "peakTempBytes": 29964170,
+  "freeBytesAfter": 16885743616,
+  "diagnosis": "Actual main login/World/Feed route ran, Feed correctly gated before SOCIAL baseline with0Feed/media reads and oneWorld. Driver expected leaf unavailable copy, but Root gate renders This section is unavailable for the current account or event. No baseline sent; remaining flow NOT_RUN, no PNG, one failed context. Existing Root behavior unchanged."
+}

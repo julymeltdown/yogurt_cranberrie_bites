@@ -1,0 +1,14 @@
+{
+  "job": "PROFILE-DEFAULT-BROWSER2-20261104T1813Z",
+  "status": "FULL",
+  "result": "FAIL_NEW_HARNESS_SCHEMA",
+  "finishedAt": "2026-11-04T18:14:18.515598+00:00",
+  "resources": 0,
+  "rebindClose": true,
+  "rebindSocketReuseAddr": true,
+  "initialPlainBind": "Refused EADDRINUSE after closed HTTP connections; lsof confirmed no listener. Actual server-compatible SO_REUSEADDR bind/close passed.",
+  "freeBytesAfter": 17542995968,
+  "originalWorkDeadline": 1793816300.662837,
+  "originalCleanupDeadline": 1793816360.662837,
+  "diagnosis": "Controlled Feed author omitted required bio property; strict existing schema refused before actual-main import/login. Own fixture bug, no product conclusion. One failed context created; denied/cold NOT_RUN; no PNG. No extra contexts or clock extension."
+}

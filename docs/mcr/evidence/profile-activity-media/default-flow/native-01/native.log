@@ -1,0 +1,10 @@
+3:13:31 AM [vite] (client) [Unhandled error] Error: Invalid feed response
+ > parse src/features/event-feed/contract.ts:73:75
+    71 |  /** Validate the pinned generated public schemas, including rejection of private/unknown fields. */
+    72 |  export function parse<T>(name: string, value: unknown): T {
+    73 |    if (!Object.hasOwn(schemas, name) || !valid(schemas[name], value)) throw new Error('Invalid feed response')
+       |                                                                             ^
+    74 |    return freeze(structuredClone(value)) as T
+    75 |  }
+ > src/app/__tests__/profile-default-flow/preview.ts:28:13
+

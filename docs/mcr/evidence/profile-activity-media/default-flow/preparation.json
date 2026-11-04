@@ -1,0 +1,64 @@
+{
+  "status": "NOT_READY; no source/browser executed or reserved",
+  "asOf": "2026-11-04T17:43:22.778631+00:00",
+  "goal": "Existing active FE34 aligned continuation, no reset",
+  "boundedPublication": {
+    "worker": "c2c973284e0429528118649f2825f7a2589fbf58",
+    "exact50": "f8e5e796e71df3855084cd4b95897ad11dba4fd7",
+    "caller": "df7ab280e4659aa1b6e344b343f1745626a0beb9",
+    "verifiedMaster": "cf1ca629a33ece977f8b5b1b6faf6152b35e5dbd",
+    "provenance": "Responsible publisher canonical fresh fetch+independent ls-remote/modes/blob receipt; no owner proof-only readback"
+  },
+  "readOnlyInitialCandidate": "26227920f3b51d4bec810e97c84413eca763846c",
+  "pins": [
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "c00854a39578fc0f6e4a50413685edcb02c113de609e860281e96de5d6f73a76"
+    },
+    {
+      "path": "frontend/src/app/ports.ts",
+      "sha256": "5899fa5568808149fd04ad14c151f08367baaf0888146a3c4b5792edde1f5565"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "sha256": "4d5bb4644423b32529b629d4e6c0fcb53620253a8b424888b7191c6c0ea72904"
+    },
+    {
+      "path": "frontend/src/app/account-entry/panels.tsx",
+      "sha256": "ae64e8f12cb973cee01bb7b36a4b24e3154e19f571f9c3513c1ee902c99ad965"
+    },
+    {
+      "path": "frontend/src/app/character-entry/activity.ts",
+      "sha256": "bdde34c4bd8bda70baad74b98d8e58200e2f8cf926fe590fa88be039cb98756b"
+    },
+    {
+      "path": "frontend/src/app/world-panels/social.tsx",
+      "sha256": "d6b5d8a6f10ce392145cf67e0c092458a600ecac900af1cf34e2a9aa2b2cb317"
+    },
+    {
+      "path": "frontend/src/world/network/transport/engine.ts",
+      "sha256": "2bc640aa283b9d1586e5b19f3d0eff05d5e19303fdc78d928a1e2a0855de513d"
+    },
+    {
+      "path": "frontend/src/world/network/replication.ts",
+      "sha256": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/art05-default-entry/preview.ts",
+      "sha256": "9c1ad11d76256f35e0767541d9b481ea7f0f4cbeaafb9d894671d3b16be13353"
+    }
+  ],
+  "ownership": "NEW app/__tests__/profile-default-flow only; own existing doc/evidence append/newsubdirectory. Old four production leaves returned; main/ports/providers/AccountPanel/policy/shared composition remain Root. FE209 owns lifetime/no-probe availability counterpart.",
+  "missingSeam": "Actual main third social argument is undefined. Existing strict transport forwards policy metadata but no incumbent World SOCIAL reader is consumed by default availability. C03 or HTTP200 alone cannot enable it. Root is authoring policy.ts/read-only WorldAccessBinding/production callback;209 pure productionAvailability(context,incumbent?) handles lifecycle without /feed probes.",
+  "harness": "Actual frozen main after controlled canonical HTTP/C05, strict delayed policy.baseline/invalidate. Three390px loaded/denied-media/cold contexts with exact Feed->Me Blob URL reuse/noextraFeedmediareads/oneWorld/signout. No replacement providers/private activity or source readiness flags.",
+  "execution": "NOT_RUN until exact qualified Root+209 successor and fresh finite source/native offers; reuse earlier25/45/7 and Root caller qualification, no replay.",
+  "harnessPins": {
+    "frontend/src/app/__tests__/profile-default-flow/README.md": "50228cf876fbf378e0a40fd8b5e5209918e3af0762db68082ce7f10cfa42ddd3",
+    "frontend/src/app/__tests__/profile-default-flow/frozen-source.mjs": "cfda366e4be3904222a0b4b74677551139fe47852a9d2d6548c97854e381248b",
+    "frontend/src/app/__tests__/profile-default-flow/native.mjs": "29576b3f596d1885750dcac6d1b3699477eba458d189716e60495604d680e2c8",
+    "frontend/src/app/__tests__/profile-default-flow/preview.html": "6b3b3a653e619e9266e916d459c73c2a721d7635a5c69e1038fa68c7ac11d418",
+    "frontend/src/app/__tests__/profile-default-flow/preview.ts": "bda5dafa10763c3681a2120c5da828833357d931b769accfc0fc493495242a8c",
+    "frontend/src/app/__tests__/profile-default-flow/round.py": "df693c1e7c028d3f9832a2a4736e2ef669e75c9debc27c39a2d3e4bf1450cec9",
+    "frontend/src/app/__tests__/profile-default-flow/tsconfig.json": "8e7b32d8bfec56f923c491950d5d10949f1d241d54716ac4718520f92f04ac0f"
+  }
+}

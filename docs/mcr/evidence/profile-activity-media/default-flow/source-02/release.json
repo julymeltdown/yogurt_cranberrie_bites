@@ -1,0 +1,24 @@
+{
+  "status": "FULL",
+  "job": "PROFILE-FIXTURE-TAIL-SOURCE-B-20261104T1816Z",
+  "finishedAt": "2026-11-04T18:17:31.758347+00:00",
+  "sourceStatus": "PASS",
+  "commands": [
+    [
+      "types",
+      0
+    ],
+    [
+      "lint",
+      0
+    ]
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 994864,
+  "peakWholeBytes": 1470566400,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 968486,
+  "remainingOwnResources": 0,
+  "portAbsentRebindCloseReuseAddr": true,
+  "freeBytesAfter": 17227517952
+}

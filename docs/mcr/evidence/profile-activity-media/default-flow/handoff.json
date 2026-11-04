@@ -1,0 +1,453 @@
+{
+  "task": "FE34-PROFILE-ACTIVITY-MEDIA-01 actual-main continuation",
+  "status": "VALIDATED_COMMITTED_HANDOFF_READY_FOR_ROOT_PUBLICATION",
+  "persistentGoal": "Same active unbudgeted goal; complete only after canonical Root publisher receipt.",
+  "implementationOwner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+  "publisher": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "exclusiveCheckout": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+  "branch": "codex/mcr-fe-FE34-profile-activity-media",
+  "originalBranchBase": "30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694",
+  "continuationAfterOwnHandoff": "c2c973284e0429528118649f2825f7a2589fbf58",
+  "testedHarness": "23c4f8d8156410313076fcda84f178eb66afd3c3",
+  "frozenRoot": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "guardSha256": "05ffaeb69c0769a4648f0d666240eba9b978b30e094e3fdf594f067b359d5151",
+  "paths": [
+    "docs/mcr/evidence/profile-activity-media/default-flow/authoring-assumptions.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/handoff.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-01/capture/report.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-01/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-01/native.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-01/release.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-02-admission.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-02/capture/report.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-02/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-02/native.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-02/release.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03-admission.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03/capture/report.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03/lint.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03/native.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03/release.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-03/syntax-driver.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04-admission.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-cold-390.png",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-denied-media-390.png",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-loaded-390.png",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/report.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/report.partial.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/lint.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/native.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/release.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-04/syntax-driver.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/native-admission.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/outcome.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/preparation.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/root-input.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01-tail/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01-tail/lint.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01-tail/syntax-driver.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/lint.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/release.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/syntax-driver.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/syntax-inputs.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/syntax-types.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/types-inputs.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-01/types.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-02/guardian.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-02/lint.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-02/release.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-02/types-inputs.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/source-02/types.log",
+    "docs/mcr/evidence/profile-activity-media/default-flow/tail-admission.json",
+    "docs/mcr/evidence/profile-activity-media/default-flow/visual-assessment.json",
+    "docs/mcr/frontend/profile-activity-media.md",
+    "frontend/src/app/__tests__/profile-default-flow/README.md",
+    "frontend/src/app/__tests__/profile-default-flow/frozen-source.mjs",
+    "frontend/src/app/__tests__/profile-default-flow/native.mjs",
+    "frontend/src/app/__tests__/profile-default-flow/preview.html",
+    "frontend/src/app/__tests__/profile-default-flow/preview.ts",
+    "frontend/src/app/__tests__/profile-default-flow/round.py",
+    "frontend/src/app/__tests__/profile-default-flow/tsconfig.json",
+    "frontend/src/app/__tests__/profile-default-flow/types.mjs"
+  ],
+  "filePostimagesExcludingSelf": [
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/authoring-assumptions.json",
+      "sha256": "c6447f0ddc41fc3364cea92e8d0404e6739d5d53e6be6225dc73304e814dd2b6",
+      "bytes": 3598
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-01/capture/report.json",
+      "sha256": "c496ab2d42ae187a27be8c52e363dad8998fc33cc10ec84e9eba603b579e27ac",
+      "bytes": 5915
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-01/guardian.json",
+      "sha256": "cb20c37ad8e41bacfb30220d86ee337a837825bed923a6b476702e3e725119cf",
+      "bytes": 1478
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-01/native.log",
+      "sha256": "2ef7bfb4b63c31afcb1a17fce43872fa04e7945060b49fbe9f5c9bf03dbdd4a0",
+      "bytes": 639
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-01/release.json",
+      "sha256": "bf739282736ba469d5f9ae29c4dd47a8a23ef75b835ae3237229487d9042c187",
+      "bytes": 797
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-02-admission.json",
+      "sha256": "f5d1a41c4d7b2deadd111359b82b2198130cd18246ba19e17464e8003e69e342",
+      "bytes": 825
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-02/capture/report.json",
+      "sha256": "d3cea885c24819d27631096bb16dff3d9062121779709211b3f94b42334afef9",
+      "bytes": 87275
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-02/guardian.json",
+      "sha256": "2bb2d7af24105cf70dea3349316965e2a3a50a20a8823079e3f5b4a17776a350",
+      "bytes": 1482
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-02/native.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-02/release.json",
+      "sha256": "2dc269b2bf104b9bcb780da0ff430228b5a5d6557c9d4fef05652e8f819bb8bb",
+      "bytes": 754
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03-admission.json",
+      "sha256": "fa400c2f39c172fc3e3a88052095aa1790a820d4ddf4ce6628e736b7b9541a82",
+      "bytes": 912
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03/capture/report.json",
+      "sha256": "f917b2a98adf1fe0fd9f3987858994a2eef7f01acd11efe9dbc5efed452d2c74",
+      "bytes": 95217
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03/guardian.json",
+      "sha256": "1bd8fc8f21c9000468cc618a368b71879b7a40dc7e5b76eda9db45cae60d2afd",
+      "bytes": 2125
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03/native.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03/release.json",
+      "sha256": "9c8c3b552fde821839c4c2847e2a88f787d748111af381c9cc1e55fde5fff4af",
+      "bytes": 816
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-03/syntax-driver.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04-admission.json",
+      "sha256": "488beb2d38369cf2ddc87f31028f62f058f47d4bc66deac2d23a8b082461dc84",
+      "bytes": 1346
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-cold-390.png",
+      "sha256": "7401ccfe569865e3e8f4355765d0818f38a1d39ae525bd45bb8004357d5e4f0c",
+      "bytes": 55175
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-denied-media-390.png",
+      "sha256": "66d6ef18a078df75fc10e9fbaa69224348e179d54526a5b77b446670e8dc84e7",
+      "bytes": 70671
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/default-loaded-390.png",
+      "sha256": "a108706fb3b45817d32ab830b774a650b786bb09a906b308aa1860a8a003918c",
+      "bytes": 80956
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/report.json",
+      "sha256": "a006da1a098c8c69b4318d082d1f6cde82034d8feb4558195d45df3c9745c987",
+      "bytes": 143292
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/capture/report.partial.json",
+      "sha256": "51a800dc392a1282ab3db4ad392a27d608b7561c4ab35381988f8d20f47c3aa2",
+      "bytes": 54977
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/guardian.json",
+      "sha256": "4ff7558a6c85c0b63a8df91aa7065199408ee3bdb76d81fef3f954423768ce38",
+      "bytes": 2072
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/native.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/release.json",
+      "sha256": "4fff56e904cd9cbcdfe67e9a32a7768eb6c035990818a93526667a29f06f8f47",
+      "bytes": 1113
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-04/syntax-driver.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/native-admission.json",
+      "sha256": "e5444f84716c0c908a8a6b41400ff5b99338bc7518e409a1e278728c6b3bae09",
+      "bytes": 773
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/outcome.json",
+      "sha256": "7a6ac199568f38901f8dd5538b30650b4201e360a73048be1750b9543cc9f888",
+      "bytes": 3029
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/preparation.json",
+      "sha256": "f6faca002420fc004580447c42bc3dd809f52c6bec79f006130651ffe4366875",
+      "bytes": 4182
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/root-input.json",
+      "sha256": "60e308fb176f5c3b8639fd43b2011651a1486c1ad73939489974e681a0e583b8",
+      "bytes": 2818
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01-tail/guardian.json",
+      "sha256": "b29e5e3ffbf95fef0fe9244767d060dc12d799ce6e56f128bf562963a5cb4b4f",
+      "bytes": 1747
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01-tail/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01-tail/syntax-driver.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/guardian.json",
+      "sha256": "b0ab6526784d48a350ccf41b6861f41000a2a190d5f21ef5acc65ea6f02176aa",
+      "bytes": 2693
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/lint.log",
+      "sha256": "97738bd1a0c76629946387b35c9d5edf0ddb3a78e9f32da976f9213dfa1ab763",
+      "bytes": 216
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/release.json",
+      "sha256": "9229cb28b840bd4c1ff151cf2ededaf5c9958ff4a7e5861616aa28f4da29de2d",
+      "bytes": 916
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/syntax-driver.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/syntax-inputs.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/syntax-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/types-inputs.json",
+      "sha256": "b428330fb9a99c50bea84bfda5d171eef272fd62cbc7ad1d69282e28c5b5989d",
+      "bytes": 80076
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-01/types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-02/guardian.json",
+      "sha256": "85362911d9fe3f323b46502a1154e3aade0dec5885d0b77db9e4ac668502baeb",
+      "bytes": 1739
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-02/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-02/release.json",
+      "sha256": "5d7e85e939e7039ecd40f66532e1bcd92eff74acc003455e344b131de53b957e",
+      "bytes": 483
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-02/types-inputs.json",
+      "sha256": "b428330fb9a99c50bea84bfda5d171eef272fd62cbc7ad1d69282e28c5b5989d",
+      "bytes": 80076
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/source-02/types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/tail-admission.json",
+      "sha256": "5838cd8da7b4a836a98c62d108fe17155638f4a716786f5d758177dbf5bc4aa9",
+      "bytes": 723
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/default-flow/visual-assessment.json",
+      "sha256": "ea1bc7584d579e8bc1f2339b53d154163b72b25eff884de1571d3d5de59fcbaa",
+      "bytes": 4425
+    },
+    {
+      "path": "docs/mcr/frontend/profile-activity-media.md",
+      "sha256": "028a6b8a08c09e358929ad2ef9a1ce3242c8e8ae5ec21edb00b473dba6adaae8",
+      "bytes": 31663
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/README.md",
+      "sha256": "8c8c7e3029438837fd6736f73b643e27a3c774a26621ecf629e9286791a16356",
+      "bytes": 7009
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/frozen-source.mjs",
+      "sha256": "cfda366e4be3904222a0b4b74677551139fe47852a9d2d6548c97854e381248b",
+      "bytes": 3221
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/native.mjs",
+      "sha256": "f641532c8c03027a108728aea140e35d7e7aede293c31a280eb17cf58aeb9afd",
+      "bytes": 11764
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/preview.html",
+      "sha256": "6b3b3a653e619e9266e916d459c73c2a721d7635a5c69e1038fa68c7ac11d418",
+      "bytes": 319
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/preview.ts",
+      "sha256": "ca1c062ffd3387af8705268337594a9f01cb412561f218aa2e02a5c1ef640d96",
+      "bytes": 10361
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/round.py",
+      "sha256": "05ffaeb69c0769a4648f0d666240eba9b978b30e094e3fdf594f067b359d5151",
+      "bytes": 10605
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/tsconfig.json",
+      "sha256": "8e7b32d8bfec56f923c491950d5d10949f1d241d54716ac4718520f92f04ac0f",
+      "bytes": 204
+    },
+    {
+      "path": "frontend/src/app/__tests__/profile-default-flow/types.mjs",
+      "sha256": "8282a30d838deca845f315b92e9bfaeb0b60c0110975d7ee98b2e4192aeabcf8",
+      "bytes": 3235
+    }
+  ],
+  "scope": "Only NEW default-flow harness + append to own Profile media doc + new default-flow evidence. Previous product file leases returned/read-only. No Root/provider/CSS/art/contracts/manifests/backend changes.",
+  "validation": "Source01 exactRootgraph/newsyntax/types; source02 narrowly correctedfixturetypes/deny-lint; final native04 changeddriver syntax/deny-lint +3actualmaincontexts PASS. Old25/45/7/75 reused, no replay.",
+  "outcome": "outcome.json",
+  "visual": "visual-assessment.json; scoped mediaPASS/full referenceOPEN",
+  "allPriorFailuresPreserved": [
+    "native-01",
+    "native-02",
+    "native-03"
+  ],
+  "resourceRelease": {
+    "status": "FULL",
+    "job": "PROFILE-CHANGED-MAIN-20261104T1845Z",
+    "result": "PASS",
+    "finishedAt": "2026-11-04T18:47:07.327421+00:00",
+    "contexts": [
+      [
+        "loaded",
+        "PASS"
+      ],
+      [
+        "denied-media",
+        "PASS"
+      ],
+      [
+        "cold",
+        "PASS"
+      ]
+    ],
+    "remainingRecordedOwnResources": 0,
+    "port": 5324,
+    "absentBindCloseReuseAddr": true,
+    "commands": [
+      [
+        "syntax-driver",
+        0
+      ],
+      [
+        "lint",
+        0
+      ],
+      [
+        "native",
+        0
+      ]
+    ],
+    "peakProcesses": 11,
+    "peakRssKiB": 2548336,
+    "peakPhysicalWholeBytes": 1501327360,
+    "accountedWholeBytes": 1501327360,
+    "peakTempBytes": 29964397,
+    "peakOutputBytes": 1426837,
+    "newPngBytes": 206802,
+    "cumulativePngCount": 12,
+    "freeBytesAfter": 12801601536,
+    "sourceRevision": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+    "browser": "156.0.8078.80",
+    "beforeOriginalCleanupDeadline": true,
+    "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE_IN03",
+    "remaining": "Visual comparison and scoped committed handoff/publication; no further runtime lease needed."
+  },
+  "qualificationLimits": [
+    "Controlled canonical HTTP/C05 only; no live IN03 or actual Rust/Auth/device claim",
+    "Whole FE34/ten-screen acceptance remains open; preserve retained responsible-owner disposition",
+    "Frozen cf0 footer SVG absent; publishing owner verified current canonical1a1db340 SVGblob4f00f8e364b5738edb5449f42157d714867ac312 present, no current missingassetdefect or replay.",
+    "Later canonical main/Auth changes not credited to frozen cf0 proof"
+  ],
+  "publication": "Root imports exact new prefix/evidence and reconciles own doc append if concurrent; normal publication directly, no review/ACK, old suite replay or owner readback/proof-only commit.",
+  "currentFooterAssetDisposition": {
+    "evidenceKind": "Responsible publishing developer Root153 current Git disposition; no owner replay",
+    "canonicalCommit": "1a1db340",
+    "svgPath": "frontend/public/reference-parade-print-v2/parade-print.svg",
+    "svgGitBlob": "4f00f8e364b5738edb5449f42157d714867ac312",
+    "present": true,
+    "relatedHistory": [
+      "d2867709a",
+      "ec40e5317",
+      "4d297ce65"
+    ],
+    "conclusion": "Frozen cf0 lacks asset; current canonical asset and component path match. No current missing-asset defect established; no fix or replay required."
+  }
+}

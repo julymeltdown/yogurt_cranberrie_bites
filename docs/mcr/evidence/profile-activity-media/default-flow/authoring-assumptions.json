@@ -1,0 +1,42 @@
+{
+  "qualification": "AUTHORING_SOURCE_INSPECTION_NOT_RUNTIME",
+  "candidate": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "inspected": {
+    "frontend/src/app/social-composition/panels.tsx": "Actual Root closed-gate unavailable presentation precedes EventFeed mounting; driver does not expect leaf copy.",
+    "frontend/src/features/event-feed/EventFeed.tsx": "feed-posts direct li; feed-post/media figure; first ID per post is stable DOM order.",
+    "frontend/src/app/media-entry/RootMediaView.tsx": "IntersectionObserver demand, feed-image Blob presentation and real POST failure text.",
+    "frontend/src/app/media-entry/RootProfilePostImage.tsx": "Cached-only first-ID POST consumer, decorative image, icon fallback, <=52px cover.",
+    "frontend/src/app/media-entry/index.ts": "Ready readers remain retained after final route consumer releases; cached acquisition cannot initiate request.",
+    "frontend/src/app/character-entry/activity.ts": "Observes existing ready authorized Feed only; no load on Profile.",
+    "frontend/src/app/account-entry/panels.tsx": "Real MeHub activity/media caller, Me controller explicit load.",
+    "frontend/src/features/me/ui/MePages.tsx": "me-hub and real Profile options -> Account control; cold activity source unavailable.",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "Bounded two own-author post links, privacy subscription, actual cold notice.",
+    "frontend/src/features/account/panel.tsx": "Real Sign out -> Confirm sign out UI; existing canonical privacy scope.",
+    "frontend/src/app/WorldShell.tsx": "Same providers and WorldHost surround panel navigation.",
+    "frontend/src/app/WorldHost.tsx": "data-world-host/shell-world-host observation targets incumbent host.",
+    "frontend/src/app/shell.css": "Full mobile panel intentionally hides header/era/BottomNavigation. Use actual PanelHeader Reduce panel before Mainnav Me, not force click or router injection."
+  },
+  "functionalAssertions": [
+    "No Feed/media read before actual matching SOCIAL baseline",
+    "Exactly one actual Feed read; no Profile-triggered Feed/media reads",
+    "Two exact cached first-ID Blob URLs or two existing icons, truthful cold fallback",
+    "Policy invalidate clears rows/images and revokes old Profile URLs",
+    "Same incumbent host, socket/canvas peak1 on navigation; UI signout releases all"
+  ],
+  "runtimeStatus": "PARTIAL_FEED_BASELINE_AND_IMAGES_PASS_PROFILE_NOT_RUN",
+  "scope": "Same FE34 media continuation only; no broad criteria redefinition, old suite replay, readiness port or provider injection.",
+  "retainedFE34Disposition": {
+    "references": [
+      "docs/mcr/frontend/profile-preferences.md",
+      "docs/mcr/frontend/account-entry.md",
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "docs/mcr/frontend/fe34-runtime-preferences.md",
+      "docs/mcr/frontend/runtime-preferences-root-integration.md"
+    ],
+    "source": "Responsible Root153 disposition received2026-11-04; retained developer evidence, no new revalidation",
+    "producer26ePublished": "f08821890",
+    "producerEarlierIntegrated": "9e7952fc",
+    "rootComposed": "7d4c5234",
+    "preserved": "Optional fields do not gate World; own fullscope canonical profile GET/PATCH and activity links retained; actual incumbent lowpower/motion/theme producer qualification retained. Sound defaults OFF/no implicit apply; no authorized audio source means honestly unavailable. Ticket-section/visibility remain unavailable absent qualified C03 fields/owner extension. Full FE34/live/device/ten-screen limitations remain open."
+  }
+}

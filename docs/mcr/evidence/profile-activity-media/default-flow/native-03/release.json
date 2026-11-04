@@ -1,0 +1,16 @@
+{
+  "status": "FULL",
+  "job": "PROFILE-COALESCED-RETRY-B1-20261104T1830Z",
+  "result": "FAIL_NAVIGATION_UNRESOLVED",
+  "finishedAt": "2026-11-04T18:32:47.620372+00:00",
+  "remainingOwnResources": 0,
+  "port": 5324,
+  "absentBindCloseReuseAddr": true,
+  "peakProcesses": 12,
+  "peakRssKiB": 2203664,
+  "peakPhysicalWholeBytes": 1500942336,
+  "accountedWholeBytes": 1500942336,
+  "peakTempBytes": 29964229,
+  "freeBytesAfter": 16108740608,
+  "diagnosis": "Changed driver syntax/deny-lint0; actualmain pre-policy0Feed/media then actualwirebaseline enabled2Feedrows/firstimages197px and oneFeedread,5mediareads. Main navigation Me link was not accessible after Feed render. No policy invalidation/Profile yet; no PNG, denied/coldNOT_RUN. Root counterpart receives exact trace; not silently treated as fixture issue."
+}

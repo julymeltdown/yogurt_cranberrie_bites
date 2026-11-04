@@ -1,0 +1,63 @@
+{
+  "job": "PROFILE-FIXTURE-TAIL-SOURCE-B-20261104T1816Z",
+  "status": "PASS",
+  "startedEpoch": 1793816229.5518541,
+  "workDeadline": 1793816340.6598558,
+  "cleanupDeadline": 1793816400.6598558,
+  "frozenRoot": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+  "mode": "source",
+  "head": "35122fcf81b58b2590a4c9a685c05e2fdaf54359",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 4,
+    "rssMiB": 2560,
+    "pngs": 12,
+    "pngBytes": 4194304
+  },
+  "otherReservedBytesAtAdmission": 2818572288,
+  "commands": [
+    {
+      "label": "types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/__tests__/profile-default-flow/types.mjs"
+      ],
+      "startedEpoch": 1793816229.729517,
+      "exitCode": 0,
+      "finishedEpoch": 1793816239.7851331
+    },
+    {
+      "label": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/__tests__/profile-default-flow/"
+      ],
+      "startedEpoch": 1793816239.7851882,
+      "exitCode": 0,
+      "finishedEpoch": 1793816240.365243
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 994864,
+  "peakWholeBytes": 1470566400,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 968486,
+  "initialWholeBytes": 1470484480,
+  "pngCount": 9,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793816240.534477,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true,
+    "portAbsent": true
+  }
+}

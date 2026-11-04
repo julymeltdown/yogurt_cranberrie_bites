@@ -1,0 +1,20 @@
+{
+  "acceptEpoch": 1793816000.662837,
+  "workDeadlineEpoch": 1793816300.662837,
+  "cleanupDeadlineEpoch": 1793816360.662837,
+  "freeBytes": 17509908480,
+  "otherReservedBytes": 2852126720,
+  "ownNewBytes": 134217728,
+  "remainingHeadroomBytes": 14523564032,
+  "wholeBytes": 1470451712,
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "guardSha256": "c5b58d7673924afb9abd0b4b4973cee3660471a8a15e0b2926b7363dc4292f34",
+  "linkAbsent": true,
+  "portAbsent": true,
+  "portBindClose": true,
+  "head": "c6ba8c95317da012c2e1e2e5361c62322f4be115",
+  "pins": {
+    "package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  }
+}

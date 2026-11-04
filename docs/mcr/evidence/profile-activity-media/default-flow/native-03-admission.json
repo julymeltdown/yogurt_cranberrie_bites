@@ -1,0 +1,23 @@
+{
+  "job": "PROFILE-COALESCED-RETRY-B1-20261104T1830Z",
+  "acceptEpoch": 1793817059.048945,
+  "workDeadlineEpoch": 1793817359.048945,
+  "cleanupDeadlineEpoch": 1793817419.048945,
+  "port": 5324,
+  "freeBytes": 16775131136,
+  "otherReservedBytes": 5167382528,
+  "remainingHeadroomBytes": 11473530880,
+  "physicalWholeBytes": 1470681088,
+  "historicalPeakChargeBytes": 1500876800,
+  "accountedWholeBytes": 1500876800,
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "guardSha256": "05ffaeb69c0769a4648f0d666240eba9b978b30e094e3fdf594f067b359d5151",
+  "linkAbsent": true,
+  "portAbsent": true,
+  "portBindCloseReuseAddr": true,
+  "head": "70b116478153584732a7f29e0c11b60ab303afae",
+  "pins": {
+    "package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  }
+}
