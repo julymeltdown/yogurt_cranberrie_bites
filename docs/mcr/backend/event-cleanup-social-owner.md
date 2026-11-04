@@ -1,8 +1,9 @@
 # BE41 bounded SocialGrants local owner
 
-Status: IN_PROGRESS. Native qualification NOT_RUN. Full EXPIRE_GRANTS and BE41
-acceptance remain open: local SQL revocation does not certify private withdrawal,
-World policy fanout, production authority, or composition.
+Status: IN_PROGRESS for production integration; bounded component native
+qualification PASS. Full EXPIRE_GRANTS and BE41 acceptance remain open: local
+SQL revocation does not certify private withdrawal, World policy fanout,
+production authority, or composition. The original full BE41 goal remains BLOCKED.
 
 Base: `5f72fcf00fa7ba12599d6417d2f4744c5c49fbcb`. Sole new paths are
 `src/event_cleanup_social_owner/mod.rs`, `tests/event_cleanup_social_owner.rs`
@@ -76,9 +77,51 @@ frozen migration directory. The test authority and retention are synthetic;
 preceding mural/snapshot owners are explicit prerequisite fixtures. READ_ONLY
 uses the retained native helper, not a receipt returned by this leaf.
 
-Planned probes cover SQLx migration receipts/replay, bounded multiple pages,
+Completed probes cover SQLx migration receipts/replay, bounded multiple pages,
 cross-event isolation, handle/binding preservation, empty and terminal resources,
 exact terminal replay, apply-before-verify-before-append rollback, stable retry
 operation, absent authority/deadline/transaction, forged receipts, wrong scope
-and retention, concurrent workers, actual database restart and resume. Native
-checks await a fresh resource allocation; no old target lease is reused.
+and retention, concurrent workers, actual database restart and resume.
+
+The compiled source is `66f14795ca728f57da2c7363874ccdef833f8c53`; only this
+document changes after qualification. The command was `cargo +1.88.0 test
+--locked --offline -p concert-service --test event_cleanup_social_owner --no-run
+--message-format=json --config profile.dev.package.contracts-build.opt-level=2`,
+with jobs 2, dev/test debug 0, incremental 0, both Rust flag variables and compiler
+wrappers unset. Compilation exited 0 in 51.46 seconds. No dependency or source
+repair, cache deletion, install, SQL edit or ignored-file cleanup was needed.
+
+Under fresh lease `BE41-SOCIAL-GRANTS-MEDIA-202611041343B-Z`, the copied executable
+ran one source-pin check plus all 11 required database probes: **12 PASS, 0 FAIL**.
+Every ignored database probe was invoked explicitly with its exact name. Native
+work exited 0 in 5.35 seconds. All 40 frozen SQLx migrations ran against a fresh
+socket-only installed PostgreSQL 17.10; replay preserved their actual receipts.
+The actual postmaster restarted from PID 82441 to 82618 and resumed the committed
+page without duplicating its operation. Prepared transactions remained zero.
+Authority, retention and preceding mural/snapshot fixture limitations above apply.
+
+Evidence is retained locally at
+`/private/tmp/mcr-social-owner-qualification-89urj7wm`:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `qualification-audit.json` | `a226d7d466d088a7e30ac0d3264d0918dcaea30cc527bbfc553cb12bf5535441` |
+| `full-release.json` | `032f08e034ebc6b0a5bacf8be86f79c272c22625464aec5abdd50532f15ab832` |
+| `frozen.json` | `9c6dec72ebe4730fc346bf7e8ef9698a03b57d1450a7ac063c940e766758f7e9` |
+| Frozen executable | `63c854feceafdb6312b5a598bd93dad31259992a7e36add4e6f14d7522802725` |
+| Full selected source archive | `d62815f97d7bbf9ba1dffe3dac77a977c0aebc47f44b107fbacb3b83b97ce0b9` |
+
+The archive matches all 2,375 selected source files, including the unchanged
+schema, manifests, lockfile and retained engine. The adapter/test source pin is
+`f7217fb5377d843959a7c2312628565edd693190d5cd8c028d87f3b8e8c0ed47`.
+Frozen and runtime receipts pin the installed tools, migration files, executable,
+source archive, test commands, guardian accounting, actual restart and cleanup.
+
+The shared target was unconditionally released with zero handles before even
+the copied source-pin test. There was no subsequent target access. The owned
+cluster and TMP were removed; no owned compiler, copied test, database process,
+listener or artifact handle remained at full release, 22:49:48 KST on 2026-11-04.
+Whole peak was 3,318,857,728 bytes including both preserved worktrees and all old
+artifacts; target positive growth was 83,238,912 bytes. Minimum free space was
+30,728,523,776 bytes. The 5 GiB whole cap, 1 GiB target growth cap, 384 MiB new
+output cap and 8 GiB continuous free floor were preserved. No old lease was reused.
