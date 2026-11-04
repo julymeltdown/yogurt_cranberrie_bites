@@ -5,9 +5,12 @@ Status: **IN_PROGRESS**. The dedicated internal protocol is published at
 verified remote ancestry. The Profile producer is compiled and independently qualified as recorded below.
 The caller-intent recovery increment is independently qualified at source
 `52000b758da0fd96ab0a4bccbedb6feb31a0d8c2`. The Concert adapter compiles against
-SDK2 and its closed C03 schema tests pass: **CONTRACT_READY**. Its actual local
-prepared child, joined canonical Auth/Friend flow and final HTTP response
-qualification remain **NOT_RUN**; this is not joined acceptance.
+SDK2 and its closed C03 schema tests pass: **CONTRACT_READY**. At exact source
+`c04070be4219e381bd2bf2d132ac1a17a4adc73e`, the actual local prepared child,
+canonical Auth/Friend enrollment, production reader construction, Profile mTLS
+read, serialization hold and nine denial scenarios pass the focused joined-core
+qualification below. Final Gateway HTTP delivery and complete Feed/C04 response
+remain **NOT_RUN**; whole-feature acceptance remains open.
 No production capability flag is enabled by this work.
 
 The original assignment base was `8430cd57`; current source incorporated avatar
@@ -579,3 +582,82 @@ Rustfmt and diff checks pass; all seven Python controller regressions pass,
 exit 0. The corrected Rust source and focused joined native run are NOT_RUN
 until a fresh named one-lib allocation and immutable artifact freeze. Overall
 joined acceptance remains open.
+
+
+### Focused actual joined-core qualification: PASS
+
+The deferred-guard correction is compiled and executed at exact clean source
+`c04070be4219e381bd2bf2d132ac1a17a4adc73e` on the SDK2 qualification branch.
+This is a new passing focused result; the prior failed report is retained above.
+No SDK3 candidate or subsequently merged master snapshot is certified by it.
+
+A fresh named BACKEND allocation was accepted before target access. Preflight
+showed 41 GiB free, no target handles and no existing Cargo/rustc process. The
+first no-run attempt exited 101 on stale contracts-build proto paths from the
+previous checkout. Scoped cleanup of contracts-build only removed 20 files /
+816.3 KiB. The identical command then exited 0 in 29.29 seconds. There were
+11 inherited compiler warnings and zero warnings in public_profile paths.
+
+```sh
+CARGO_TARGET_DIR=<allocated-backend-target> CARGO_BUILD_JOBS=2 \
+CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+cargo +1.88.0 test --locked --offline -p concert-service --lib \
+  --no-run --message-format=json
+
+python3 backend/scripts/mcr/public_profile_projection_smoke.py \
+  --joined-only --cargo-json <outside-target>/concert-lib-2.jsonl
+# Freeze exit 0, then unconditional target release with lsof empty (exit 1).
+python3 backend/scripts/mcr/public_profile_projection_smoke.py \
+  --pinned <private-frozen-directory>/pin.json
+# Native controller exit 0. No target access during native execution.
+```
+
+The frozen inventory contains only the fresh Concert lib executable, the exact
+Cargo JSON digest, and 2,379 source/resource hashes. Its private receipt directory
+is `mcr-public-profile-frozen-dy94cel9`. Hashes:
+
+| Receipt | SHA-256 |
+| --- | --- |
+| pin.json | `d779cf1f00da7447d0976381fd6b3101263fc9ac9099e5a60202b338cdb6d4ba` |
+| Concert lib executable | `be49b6d562e481e39de136ad6977dd7b4c7379b0e5937238e73299b311c2a22b` |
+| native-report.json | `47d795fc75696236ad0544ef3e792f94806bb60333dcfe41807ba381d1facf55` |
+
+All three explicit commands passed with exit 0:
+
+| Check | Executed tests | Duration |
+| --- | --- | --- |
+| Whole-scope denial mapper | 1 | 0.74s |
+| Actual owner/public reader hold through serialization | 1 | 1.33s |
+| Actual local denials and failed Profile intent settlement | 1, looping nine scenarios | 8.23s |
+
+The owned PostgreSQL host was 16.14, max_prepared_transactions 256. Actual Auth,
+Friend, Concert and Profile databases were migrated from the pinned source.
+The first joined test uses the production source-bound ProductReleaseBundle and
+PublicProfileReader::connect, real sealed Auth/Friend scopes and the real Profile
+mTLS service. It proves the viewer needs neither avatar nor public Profile,
+repeated author enrichment reuses exactly three child intents, C03 contains the
+canonical name/bio/selected avatar without the private URL canary, Profile
+privacy and Concert avatar writers stay blocked through serialization, actual
+settlement releases both writers, and a sealed root is a whole-read dependency
+failure. No alternate positive grant or private reader constructor is used.
+
+The second joined test covers missing avatar, missing admission, suspended
+admission, missing participant, each direction of local blocking, DRAFT event,
+ARCHIVED event and private Profile. Every scenario rejects a fallback author
+and finishes actual root settlement with no prepared children left. The
+blocked-pair fixture writes obey the same enabled deferred deadline trigger.
+
+The controller reports PASS and **zero forced cleanup rollbacks**. Actual test
+settlement left zero prepared transactions; the owned server stopped and its
+exact private root was removed. No shared target or PostgreSQL fixture remains
+held. This focused run does not rerun or silently promote the historical signed
+Profile/schema/restart checks to the new source. Actual Gateway HTTP terminal
+callbacks, the complete Feed/C04/Post route, SDK3 compilation, art fidelity and
+production capability activation remain outside this receipt. Assignment status
+remains IN_PROGRESS for the required consumer/delivery gates.
+
+Feed accepted the exact eight-line production fix as source-only consumer commit
+`6d9ef8c436732e208a51142429e4659f0443c4e4`, using its existing closed unavailable
+error mapping because the diagnostic helper is absent on that base. Root
+reported its analogous production-only consumption; neither consumer imports
+this private fixture or inherits this run's qualification for its own snapshot.
