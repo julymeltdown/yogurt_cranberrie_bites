@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T03:10:54+09:00",
+  "updated_at": "2026-11-05T03:24:00+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 38,
-      "IN_PROGRESS": 59,
+      "DONE": 39,
+      "IN_PROGRESS": 58,
       "WAITING_INPUT": 3,
-      "OPEN": 4,
       "REOPENED": 7,
+      "OPEN": 4,
       "DEFERRED_BY_USER": 1
     },
-    "done_tasks": 38,
-    "remaining_active_tasks": 73,
-    "task_completion_percentage": 34.2,
+    "done_tasks": 39,
+    "remaining_active_tasks": 72,
+    "task_completion_percentage": 35.1,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -93,13 +93,14 @@
       "FE03",
       "FE04",
       "FE11",
-      "AR03"
+      "AR03",
+      "FE35"
     ],
-    "current_original_criteria_outcomes": 45,
-    "progress_updated_at": "2026-11-05T03:10:54+09:00",
+    "current_original_criteria_outcomes": 46,
+    "progress_updated_at": "2026-11-05T03:24:00+09:00",
     "hosted_ci": {
-      "state": "REPAIR_PUBLISHED_QUALIFICATION_PENDING",
-      "observed_at": "2026-11-04T18:11:00Z",
+      "state": "QUALIFIED_PUBLISHED",
+      "observed_at": "2026-11-04T18:18:00Z",
       "workflow": "MCR contract generation",
       "original_failed_run": 41880082996,
       "failure_boundary": "Frontend frozen dependency installation; QA01/C07 steps skipped on the inspected failing run. Latest ten runs at initial discovery were failures.",
@@ -107,11 +108,12 @@
       "repair_commit": "28a3716e",
       "owner_diagnosis": "Corepack selected repository-root pnpm instead of the existing frontend package-manager pin; owner authored a working-directory-only workflow repair without changing fixed dependency resolutions or weakening checks.",
       "current_runs_observed": [
-        41883753649,
-        41883730056
+        41883941337,
+        41883753649
       ],
-      "current_result": "Owner reports run41883753649/1be2c687 has passed frozen installation and full QA01; C07 step still running. Whole hosted PASS unverified.",
-      "accounting": "Prior original-task local criteria and receipts remain preserved. Current hosted execution is an open release obligation; developer owns diagnosis, remaining fixes and task-level impact. No manager code/log/test review."
+      "current_result": "Responsible CI developer reports both hosted push runs SUCCESS: frozen installation, full QA01 and all eight C07 checks executed and passed. Final evidence is published; the bounded goal is actually COMPLETE and its checkout loan is returned.",
+      "accounting": "Original local task outcomes and historical failures remain preserved. This closes the hosted installation/contract repair at the two qualified candidates, not whole application/backend/device/multiuser/release acceptance. New enrollment contract changes receive developer-owned generated-output maintenance without repeating unchanged CI solely for acknowledgment.",
+      "evidence_commit": "13baed63000b2c058e31e35ce60ab49602f39d94"
     },
     "external_input_boundary_update": {
       "reported_by": "Root1fc from actual Social owner16e",
@@ -126,6 +128,15 @@
       ],
       "existing_claims": "Still-current genuine claims may qualify while verification-start provider is unavailable; none is presently supplied.",
       "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
+    },
+    "staffing_changes": {
+      "recorded_at": "2026-11-05T03:24:00+09:00",
+      "sharing_safety": "Existing21e owns default FE31/FE36 composition; FE35 original client scope closed.",
+      "operations": "Existing53d owns default Admin composition;230 retains blocked feature goal pending actual producers.",
+      "contracts": "Completed CI50a8 reassigned by Root to enrollment-related C07 generated-input refresh; fresh exclusive checkout custody is required because the old loan was returned.",
+      "backend_age": "Resource lead has allocated Age corrected sourcef309 after actual predecessor target release and removed source-pin-only reissue approval. Actual compile/native results are not inferred from allocation.",
+      "manager_ack_required": false,
+      "manager_technical_review": false
     }
   },
   "historical_accounting": {
@@ -661,7 +672,7 @@
           "01a1a1fe-1eed-7d12-a247-879cd521e0ec"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
-        "validation_owner": "AR03 art/character implementation owner83 with FE consumer developers",
+        "validation_owner": "Restored AR03 art owner01a1a1fe-1eed-7d12-a247-879cd521e0ec with responsible character consumer developers",
         "current_scope_evidence": [
           "MCR_IMPLEMENTATION_PLAN_V2_EN.md:449",
           "docs/mcr/task-progress-2026-11-04.json#/tasks/10",
@@ -4903,11 +4914,11 @@
         "original_acceptance": "Network payload before approval contains no handle; revocation clears UI/cache; no auto-follow claim.",
         "updated_scope": "Finish handle settings, explicit mutual consent, decisions, no-store reveal/revoke/expiry and synchronous privacy cleanup.",
         "remaining_work": [
-          "Reconcile the original full FE31 disposition from delivered feature/default-shell evidence; finish uncovered handle replacement, consent/reveal/revoke/expiry cases.",
-          "Complete current policy-invalidation/authorized-reveal integration with counterpart owners and repair resulting client defects; preserve no-handle-before-consent and no automatic-follow claim."
+          "Complete the default-app sharing-request creation entry from an authorized introduction, including explicit consent, current recipient/revision binding and original-command recovery.",
+          "Preserve published no-store reveal/revoke/expiry and privacy cleanup; actual positive and revoked/blocked multiuser flows remain under IN03."
         ],
         "complete_when": "Network payload before approval contains no handle; revocation clears UI/cache; no auto-follow claim.",
-        "reason": "Original private-sharing client scope accepted by the existing developer with returned exclusive leases; source-qualified work published in the social/account packet. Full original task disposition is being reconciled by that developer; no completion inferred from assertion counts.",
+        "reason": "Owner reconciled component behavior as delivered but identified the default-app offer creation entry as the original client remainder. The same developer accepted the disjoint production composition scope and a new unbudgeted goal; source implementation is active.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5141,25 +5152,18 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "SOCIAL",
         "priority": 2,
         "original_scope": "New unread count/list, mark-read/all-read and safe deep-link routing with stale-target handling.",
         "original_acceptance": "Duplicate notification event does not duplicate UI; inaccessible target never exposes cached details.",
         "updated_scope": "Finish durable inbox/read state and canonical unread total with safe authorized deep links and privacy invalidation.",
-        "remaining_work": [
-          "Complete or reconcile U10/badge composition against actual producer availability; loaded unread rows must never substitute for the server total.",
-          "Qualify original-key mark-read/read-all recovery, concurrent cutoff, deduplication, stale-target denial and identity/block/revoke cleanup with the actual BE33 producer."
-        ],
+        "remaining_work": [],
         "complete_when": "Duplicate notification event does not duplicate UI; inaccessible target never exposes cached details.",
-        "reason": "Original inbox scope has an actual implementation owner, qualified source fixes and published packet. Responsible-owner original/current criterion disposition remains pending; live IN03 remains separate.",
+        "reason": "Responsible developer explicitly reconciled original client criteria: FE35 acceptance is satisfied by the published inbox implementation and privacy hardening. Dedicated server unread totals, deduplication, original-key read recovery, protected stale-target handling and observer-isolated cleanup are retained. Original live IN03 remains a separate integration requirement; FE31 sharing creation and FE36 report/block default entry remain open with their active owner. No manager technical review or new duplicate check was performed.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "FE02",
-          "FE07",
-          "C04"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "BE33"
         ],
@@ -5178,14 +5182,24 @@
           "docs/mcr/frontend/inbox.md",
           "docs/mcr/frontend/inbox.md:40",
           "U_RECONCILIATION",
-          "be6af4e9"
+          "be6af4e9",
+          "be6af4e9970aa0175df0b72ea24293e370b1b2df",
+          "docs/mcr/frontend/private-social-account-completion.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_completion": {
+          "recorded_at": "2026-11-05T03:24:00+09:00",
+          "owner_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+          "owner_disposition_turn": "01a1a7bd-d853-7ec2-92b6-edb637f302a9",
+          "published_commit": "be6af4e9970aa0175df0b72ea24293e370b1b2df",
+          "basis": "Responsible developer explicitly reconciled original client criteria: FE35 acceptance is satisfied by the published inbox implementation and privacy hardening. Dedicated server unread totals, deduplication, original-key read recovery, protected stale-target handling and observer-isolated cleanup are retained. Original live IN03 remains a separate integration requirement; FE31 sharing creation and FE36 report/block default entry remain open with their active owner. No manager technical review or new duplicate check was performed.",
+          "manager_technical_review": false
+        }
       },
       "latest_owner_activity": {
-        "reported_at": "2026-11-05T03:10:54+09:00",
+        "reported_at": "2026-11-05T03:24:00+09:00",
         "source_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
-        "scope": "Original inbox scope has an actual implementation owner, qualified source fixes and published packet. Responsible-owner original/current criterion disposition remains pending; live IN03 remains separate."
+        "scope": "Responsible developer explicitly reconciled original client criteria: FE35 acceptance is satisfied by the published inbox implementation and privacy hardening. Dedicated server unread totals, deduplication, original-key read recovery, protected stale-target handling and observer-isolated cleanup are retained. Original live IN03 remains a separate integration requirement; FE31 sharing creation and FE36 report/block default entry remain open with their active owner. No manager technical review or new duplicate check was performed."
       }
     },
     {
@@ -5206,11 +5220,11 @@
         "original_acceptance": "Blocking closes affected panels; unblock does not restore old consent; failed deletion is not displayed as complete.",
         "updated_scope": "Finish report/block/unblock/logout/deletion surfaces with private-state cleanup and truthful partial/failed deletion.",
         "remaining_work": [
-          "Reconcile original report/block/deletion criteria across delivered feature and canonical account-entry composition; finish only uncovered route/lifecycle behavior.",
-          "Carry real authorization and multi-target deletion recovery with BE36/BE37/BE42 counterparts; pending/partial/unknown is never complete, and unblock never restores old consent."
+          "Complete default report and block-list routes with working authorized block/unblock controls and stale-target cancellation.",
+          "Preserve delivered account/logout/deletion recovery and original-command retry; real server deletion convergence remains with backend and integration owners."
         ],
         "complete_when": "Blocking closes affected panels; unblock does not restore old consent; failed deletion is not displayed as complete.",
-        "reason": "Original report/block/account controls have an actual implementation owner and published privacy/account fixes. Full original/current criterion disposition remains pending; real deletion convergence is not inferred from client checks.",
+        "reason": "Owner explicitly separated delivered account/logout/deletion client recovery from the remaining default report/block route composition. The existing developer is actively implementing that remainder with FE31 in an isolated checkout.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5266,7 +5280,7 @@
           "Bind current authorized role/evidence providers for production and carry server denial/downstream-failure cases without exposing reporter/private data."
         ],
         "complete_when": "Nonmoderator direct route blocked; failed action remains pending/failed rather than successful.",
-        "reason": "Moderator frontend owner actually accepted a persistent goal; FE38 custody was stopped and transferred. BE205 owns public authority interfaces; Root153 caller composition.",
+        "reason": "Frontend fixes, common adapter and delivery report are published; the clean feature checkout has no independent remaining work within its grant. Actual production moderation/linked-evidence providers and app integration remain with BE205 and Root/delegated composition owners. The bounded worker goal is blocked, not a new external-input or king-approval gate for the project.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5387,7 +5401,7 @@
           "Resolve current actual admin authorization/closure entry with the owning backend/root developers and qualify recovery from partial failure; do not repeat the fixed retry-contract implementation."
         ],
         "complete_when": "Restore confirmation names snapshot; partial closure failure is visible and recoverable.",
-        "reason": "Exact returned admin/closure leaves accepted with active goal. Qualified control/closure packet published a9c04eb2; owner found a terminal-disposal callback inconsistency and is correcting it. Production Admin composition remains open.",
+        "reason": "Qualified controls and the terminal-disposal cleanup correction are published. The same developer has accepted disjoint default Admin composition scope, retaining current authorization and unavailable-provider boundaries. Full original FE39 and live moderation acceptance remain open.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
