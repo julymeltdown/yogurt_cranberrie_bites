@@ -1,0 +1,68 @@
+{
+  "status": "CONTRACT_READY",
+  "provider_source": "8e2a42a8867f1a7ba4bf7dd714b729910fee3934",
+  "qualified_source": "ef0f0785145fcf44f9a46a7160fb0d96f62dc5da",
+  "commits": {
+    "4394b409684d87a33eb3e4504268d395f813ff34": "4a40b127",
+    "59ced6601ec0b7341d6c68679984c5b0ad589e6b": "b8146e9f",
+    "ef0f0785145fcf44f9a46a7160fb0d96f62dc5da": "353a2829",
+    "8e2a42a8867f1a7ba4bf7dd714b729910fee3934": "027adc7a"
+  },
+  "paths": [
+    "backend/services/concert-service/migrations/0050_notification_target_child_intents.sql",
+    "backend/services/concert-service/src/adapters/out/public_profile/mod.rs",
+    "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/child.rs",
+    "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs",
+    "backend/services/concert-service/src/lib.rs",
+    "backend/services/concert-service/src/notification_live/mod.rs",
+    "backend/services/concert-service/src/notification_live/target_authority/mod.rs",
+    "backend/services/concert-service/src/notification_live/target_authority/native.rs",
+    "backend/services/concert-service/src/notification_live/target_authority/protocol.rs",
+    "backend/services/concert-service/src/product_rpc/child_settlement.rs",
+    "backend/services/concert-service/src/product_rpc/scope_ledger/children.rs",
+    "backend/services/concert-service/tests/notification_target_authority.rs",
+    "backend/services/concert-service/tests/notification_target_authority_support/fixture.rs",
+    "backend/services/concert-service/tests/notification_target_authority_support/mod.rs",
+    "backend/services/notification-service/tests/concert_target_client.rs",
+    "docs/mcr/backend/notification-target-authority.md"
+  ],
+  "postimages_sha256": {
+    "backend/services/concert-service/migrations/0050_notification_target_child_intents.sql": "10adba7ff862859093e4f51c840d16ef3e86b63a4277c5ea1224a25572ba3146",
+    "backend/services/concert-service/src/adapters/out/public_profile/mod.rs": "b850225495d05314e7d46bbad7ad3feb177fef66c25f058a791a6f095407604e",
+    "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/child.rs": "6247e4e7db6de30ee0614328dd1c01b086bfc5970190dbc3f723b18ee3b11772",
+    "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs": "f7514e348bd271c8738753c9a5b3b3f490274c7f22218d0004bb0ae55e6fe507",
+    "backend/services/concert-service/src/lib.rs": "d58f5031e3dc568cc9c3a6b787ec5196bf68bf9a6cb0ad976eb2a2438335096f",
+    "backend/services/concert-service/src/notification_live/mod.rs": "bb4cb71ba52e7e01629e4f76463ee97132758bda2c51b1315542db7d7c9ac82f",
+    "backend/services/concert-service/src/notification_live/target_authority/mod.rs": "c362084618c93c13b6043edc1f97b3f76cf97460ebf8032ccb69d1c9f79ecb94",
+    "backend/services/concert-service/src/notification_live/target_authority/native.rs": "25b9cef19e04ec7b5adf775bcff3321392e8831660da1e62e683cbf082b4de09",
+    "backend/services/concert-service/src/notification_live/target_authority/protocol.rs": "7c2b4551e181461511ffe6beb5bc2362c84fe42a2df778919aa30a33a3a697e8",
+    "backend/services/concert-service/src/product_rpc/child_settlement.rs": "25206c73fc8ea87b8f4d6ae4cd9ef2c66be4f34d47db459402b5b1de82bc16aa",
+    "backend/services/concert-service/src/product_rpc/scope_ledger/children.rs": "f873514552aeed147322ef60aaca2429cca436510ae23558a514e307ab964cb6",
+    "backend/services/concert-service/tests/notification_target_authority.rs": "7024fb258ea54783d3ddb34dd3f94a5e8bf86492432669867aa6e2812fbe22bd",
+    "backend/services/concert-service/tests/notification_target_authority_support/fixture.rs": "b4fdeedea0f4b0b5dd96ab195f5cfd5c39e543405cd02cff3f6e2c05e2224ea5",
+    "backend/services/concert-service/tests/notification_target_authority_support/mod.rs": "2909de308200fc523c4b1c1d1cd366ff3eb560ad4ddf171ba01a971aa021737a",
+    "backend/services/notification-service/tests/concert_target_client.rs": "5b143de0114c7141fb68c20979ad0d80be37f939fe3bcee423d21ee9a27e3557",
+    "docs/mcr/backend/notification-target-authority.md": "10608ca7d30f8240c0a040b7ca892615a18c19fc727f2cb853fce0442f940a32"
+  },
+  "owner_validation": {
+    "pure_passed": 4,
+    "native_passed": 1,
+    "native_seconds": 5.37,
+    "full_release_sha256": "de9c5ee2c4f29ed7f6dd5b430580fd467c27fe9c37ea02accfceedb71d0434bf"
+  },
+  "migration": {
+    "path": "backend/services/concert-service/migrations/0050_notification_target_child_intents.sql",
+    "original_commit": "4394b409684d87a33eb3e4504268d395f813ff34",
+    "bytes": 409,
+    "sha384": "5b1d2e9830dfc946cd591e3498555fb7e2d5ffcf27242c06cae2d84c862cd33ce65ef3c0688cbd8bc78ca57caf0199d4"
+  },
+  "limitations": [
+    "Root actual shared composition/mount/composite+combined checks",
+    "six-kind nonempty target/inbox/count/mask qualification",
+    "actual Post owner and operation-bound EventRoleFence for Report",
+    "public Gateway outerEOF/vertical IN03",
+    "normal master publication and own readback/review fixes"
+  ],
+  "source_originals_preserved": true,
+  "root_validation": "Exact 16 provider postimages and all 15 supplied original-source hashes matched; combined startup qualification remains separate."
+}
