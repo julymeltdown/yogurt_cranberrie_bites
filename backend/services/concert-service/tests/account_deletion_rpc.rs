@@ -661,7 +661,7 @@ async fn actual_auth_to_ticket_apply_restart_and_cancellation() -> anyhow::Resul
             assert!(pending.await.unwrap_err().is_cancelled());
             let limit = Instant::now() + Duration::from_secs(1);
             loop {
-                let idle:i64=sqlx::query_scalar("select count(*) from pg_stat_activity where datname=current_database() and state='idle in transaction'")
+                let idle:i64=sqlx::query_scalar("select count(*) from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid() and xact_start is not null")
                     .fetch_one(&concert).await?;
                 if idle == 0 {
                     break;
