@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "kind": "read-only Git publication proof; no extraction/image/browser/job or pixel requalification",
+  "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+  "reportedPublishedCommit": "5879fc485f226f08ddb84d1b9517cb2cfece198c",
+  "fetchedMaster": "145a8e939fb7bede7e46931d6559adb2c51f62a7",
+  "lsRemoteMaster": "145a8e939fb7bede7e46931d6559adb2c51f62a7",
+  "fetchedEqualsObservedRemote": true,
+  "publishedAncestorOfFetched": true,
+  "files": [
+    {
+      "path": "frontend/public/reference-feed-media-v1/extract.py",
+      "gitBlob": "4c39155686f6f73314965366fa93505267b70025",
+      "sha256": "3b7fb08cdba9bbd1397c7dba6c445382f5265b58e4d8c030d6b6f71e3483bb15",
+      "bytes": 4508,
+      "exactPostimageMatches": true
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/source-provenance.json",
+      "gitBlob": "5a222507102bbe4b0b892665cde4ab887a51878a",
+      "sha256": "ad5c5baab4131fb26236aa1ed866d00b0f8e713103fe9417fb1dd73ef25efd32",
+      "bytes": 3145,
+      "exactPostimageMatches": true
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-1.png",
+      "gitBlob": "c813f8bb95c43170f2144cdd4ceda0f4c31ba55e",
+      "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+      "bytes": 25007,
+      "exactPostimageMatches": true
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-2.png",
+      "gitBlob": "06fddc54559d08462a14bb2d200501a2ef632983",
+      "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+      "bytes": 20007,
+      "exactPostimageMatches": true
+    },
+    {
+      "path": "docs/mcr/art/reference-feed-media-v1.md",
+      "gitBlob": "228876a99aabae8a9a13d1a69f7a70f87665f311",
+      "sha256": "9ebccb5068e5c3ed972a96a524483998b432d2dcef2f9d24e90b264f5dea8afa",
+      "bytes": 7771,
+      "exactPostimageMatches": true
+    }
+  ],
+  "scope": "All five exact asset/provenance/document postimages, including artist timing exception. Root owns fixture wiring; CSS candidate remains NOT_RUN."
+}

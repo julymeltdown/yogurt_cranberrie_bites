@@ -1,0 +1,14 @@
+{
+  "head": "146c950f3814cf8d185090cdc045352ffd8de793",
+  "freeBytes": 22347096064,
+  "carryBytes": 3343082,
+  "node": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "portFree": true,
+  "linkAbsent": true,
+  "cwd": "/Users/lhs/.codex/worktrees/d51f/mcr",
+  "slot": "CSS-FEED-INTRINSIC-202611041121Z",
+  "epoch": 1793791355.634,
+  "activeCutoff": 1793791465.634,
+  "deadline": 1793791535.634
+}

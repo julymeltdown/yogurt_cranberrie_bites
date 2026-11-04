@@ -1,0 +1,40 @@
+{
+  "slot": "CSS-FEED-INTRINSIC-202611041121Z",
+  "acceptedEpoch": 1793791355.634,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native-intrinsic.mjs"
+      ],
+      "phase": "intrinsic1",
+      "exit": 0,
+      "elapsedSinceAccept": 9.668213129043579
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--maxWorkers",
+        "1",
+        "src/features/event-feed/__tests__/presentation.test.tsx",
+        "src/features/feed-thread/__tests__/ui.test.tsx"
+      ],
+      "phase": null,
+      "exit": 0,
+      "elapsedSinceAccept": 41.6332790851593
+    }
+  ],
+  "freeMinimum": 22310961152,
+  "wholePeak": 34403285,
+  "temporaryPeak": 29648699,
+  "durablePeak": 4812233,
+  "retainedInputBytes": 60438,
+  "activeEndedEpoch": 1793791397.267356,
+  "elapsedSinceAccept": 41.63335680961609,
+  "privateTmpRemoved": true
+}

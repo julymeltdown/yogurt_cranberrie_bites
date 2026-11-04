@@ -1,0 +1,22 @@
+{
+  "offer": "CSS-FEED-INTRINSIC-202611041043Z",
+  "status": "NOT_RUN",
+  "accepted": false,
+  "reason": "Fresh free space below required 16 GiB starting floor",
+  "preflightEpoch": 1793789115.383071,
+  "freeBytes": 17049772032,
+  "startFloorBytes": 17179869184,
+  "shortfallBytes": 130097152,
+  "head": "7483b2fd7f55d1d2fcb483c1f1ad36405d5a65d6",
+  "carryBeforeThisRecordBytes": 3342058,
+  "absoluteNode": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "nodeVersion": "v24.22.2",
+  "retainedLockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "port5292Bindable": true,
+  "dependencyLinkAbsent": true,
+  "jobsStarted": false,
+  "temporaryDirectoriesCreated": false,
+  "privateBrowserOrServerCreated": false,
+  "allocationReturned": true,
+  "limitations": "No native CSS evidence, test execution or fixture qualification produced. Initial preflight referenced nonexistent package-lock.json; corrected to the retained pnpm-lock.yaml before the actual capacity failure."
+}

@@ -1,0 +1,102 @@
+// CSS-worker evidence only. Root owns the immutable fixture; artist owns its PNGs.
+import assert from 'node:assert/strict'
+import { createRequire } from 'node:module'
+import { pathToFileURL } from 'node:url'
+import { readFile, writeFile, mkdir, mkdtemp, rm, statfs } from 'node:fs/promises'
+import { resolve } from 'node:path'
+import { execFileSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+
+const repo = process.env.MCR_FEED_REPO, phase = process.env.MCR_FEED_PHASE
+assert(repo && phase && process.env.MCR_FEED_SLOT, 'explicit named allocation required')
+const frontend = resolve(repo, 'frontend'), evidence = resolve(repo, 'docs/mcr/evidence/css-parity-feed', phase)
+const req = createRequire(resolve(frontend, 'package.json'))
+const hash = bytes => createHash('sha256').update(bytes).digest('hex')
+const git = (...args) => execFileSync('git', args, { cwd: repo, maxBuffer: 16 * 1024 ** 2 })
+const fixtureCommit = '008248295c120c75c08c8a4bb8fa2ca2c1c6026a'
+const assetCommit = '8f6fe07f389f73f09d9fc61a6012b49846b24ce6'
+const cssPath = 'frontend/src/features/event-feed/feed.css'
+const baselineCss = git('show', '654bbb16a045c3ce6306066eb66a36f6c34f471e:' + cssPath).toString()
+const inputs = []
+for (const [commit, paths] of [
+  [fixtureCommit, ['preview.tsx', 'preview.css', 'preview.html'].map(name => 'frontend/src/features/event-feed/__tests__/css-parity-feed/' + name)],
+  [assetCommit, ['extract.py', 'source-provenance.json', 'reference-card-1.png', 'reference-card-2.png'].map(name => 'frontend/public/reference-feed-media-v1/' + name).concat('docs/mcr/art/reference-feed-media-v1.md')],
+]) for (const path of paths) {
+  const bytes = await readFile(resolve(repo, path))
+  assert.deepEqual(bytes, git('show', commit + ':' + path), 'immutable external input: ' + path)
+  inputs.push({ path, sourceCommit: commit, sha256: hash(bytes) })
+}
+const disk = await statfs(repo); assert(disk.bavail * disk.bsize >= 8 * 1024 ** 3)
+await mkdir(evidence, { recursive: false })
+const tmp = await mkdtemp(resolve(process.env.TMPDIR ?? '/tmp', 'mcr-css-feed-reference-'))
+const { createServer } = await import(pathToFileURL(req.resolve('vite')))
+const { default: react } = await import(pathToFileURL(req.resolve('@vitejs/plugin-react')))
+const { chromium, expect } = req('@playwright/test')
+const server = await createServer({ root: frontend, configFile: false, plugins: [react()], cacheDir: resolve(tmp, 'cache'), logLevel: 'error', server: { host: '127.0.0.1', port: 5292, strictPort: true, hmr: false } })
+const report = { status: 'FAIL', phase, slot: process.env.MCR_FEED_SLOT, head: git('rev-parse', 'HEAD').toString().trim(), cssSha256: hash(await readFile(resolve(repo, cssPath))), baselineCssSha256: hash(baselineCss), inputs, cases: [], errors: [], qualification: 'Actual Feed/FeedImage/FeedThread over Root synthetic fixture. Complete approved screenshot thumbnails at native size; no original photographs, live posts, real HTTP acceptance or full parity certification.' }
+const geometry = async page => page.locator('.reference-frame').evaluate(frame => {
+  const rect = element => { const r = element.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height } }
+  return { viewport: innerWidth, documentWidth: document.documentElement.scrollWidth, frame: rect(frame), cards: [...frame.querySelectorAll('.feed-post')].map(rect), portraits: [...frame.querySelectorAll('.feed-portrait')].map(rect), images: [...frame.querySelectorAll('.feed-media img')].map(e => ({ ...rect(e), naturalWidth: e.naturalWidth, naturalHeight: e.naturalHeight, declaredWidth: e.getAttribute('width'), declaredHeight: e.getAttribute('height'), blob: e.src.startsWith('blob:') })), figures: [...frame.querySelectorAll('.feed-media figure')].map(rect) }
+})
+const capture = async (page, name) => {
+  const path = resolve(evidence, name + '.png'), bytes = await page.screenshot({ path, fullPage: true })
+  return { path: path.slice(repo.length + 1), sha256: hash(bytes) }
+}
+const readyImages = async (page, count) => {
+  await expect(page.locator('.feed-media img')).toHaveCount(count)
+  await page.locator('.feed-media img').evaluateAll(es => Promise.all(es.map(e => e.decode())))
+  await page.evaluate(() => document.fonts.ready)
+}
+const assertNative = (images, heights) => {
+  assert.equal(images.length, heights.length)
+  images.forEach((image, i) => {
+    assert.equal(image.naturalWidth, 197); assert.equal(image.naturalHeight, heights[i])
+    assert.equal(image.declaredWidth, '197'); assert.equal(image.declaredHeight, String(heights[i])); assert(image.blob)
+    assert(image.width <= 197.1 && image.height <= heights[i] + .1, 'no upscaled display')
+    assert(Math.abs(image.width / image.height - 197 / heights[i]) < .01, 'complete native crop retains ratio')
+  })
+}
+let browser, page, stage = 'boot'
+try {
+  await server.listen(); browser = await chromium.launch({ channel: 'chrome', headless: true }); report.browser = browser.version()
+  for (const width of [360, 390, 430]) for (const variant of ['published', 'candidate']) {
+    stage = variant + '/' + width
+    const context = await browser.newContext({ viewport: { width, height: 844 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true, reducedMotion: 'reduce', locale: 'en-GB', timezoneId: 'Asia/Seoul' })
+    page = await context.newPage(); page.on('pageerror', error => report.errors.push(error.message))
+    if (variant === 'published') await page.route('**/src/features/event-feed/feed.css*', route => route.fulfill({ contentType: 'text/javascript', body: 'import { updateStyle } from "/@vite/client"; updateStyle("feed-published-comparison", ' + JSON.stringify(baselineCss) + ');' }))
+    await page.goto('http://127.0.0.1:5292/src/features/event-feed/__tests__/css-parity-feed/preview.html')
+    await expect(page.locator('.feed-post')).toHaveCount(2); await readyImages(page, 2)
+    const row = { width, variant, feed: await geometry(page), capture: await capture(page, variant + '-feed-' + width), detail: [] }
+    report.cases.push(row); assert.equal(row.feed.documentWidth, width); assertNative(row.feed.images, [67, 46])
+    row.qualification = await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.qualification)
+    assert.equal(row.qualification.inputCommit, assetCommit); assert.equal(row.qualification.productionMedia, false)
+    for (const [index, height] of [67, 46].entries()) {
+      await page.locator('.feed-post-actions button[aria-label^="Open thread"]').nth(index).click()
+      await expect(page.getByRole('region', { name: 'Post thread' })).toBeVisible(); await readyImages(page, 1)
+      const detail = { index, geometry: await geometry(page), capture: await capture(page, variant + '-thread-' + index + '-' + width) }
+      row.detail.push(detail); assert.equal(detail.geometry.documentWidth, width); assertNative(detail.geometry.images, [height])
+      await page.locator('.concert-window__close').click(); await expect(page.locator('.feed-post')).toHaveCount(2); await readyImages(page, 2)
+    }
+    if (variant === 'candidate') {
+      const previous = report.cases.find(item => item.width === width && item.variant === 'published')
+      row.threadGeometryUnchanged = row.detail.every((item, i) => JSON.stringify(item.geometry) === JSON.stringify(previous.detail[i].geometry))
+      assert(row.threadGeometryUnchanged, 'Feed-only CSS must preserve actual Thread geometry')
+      await page.getByRole('button', { name: 'Write a post' }).focus()
+      row.focus = await page.getByRole('button', { name: 'Write a post' }).evaluate(e => getComputedStyle(e).outline)
+      assert.match(row.focus, /3px/)
+      await page.keyboard.press('Enter'); await expect(page.locator('#destination')).toHaveText('Fixture compose destination')
+      await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.invalidate()); await expect(page.locator('.feed-media img')).toHaveCount(0)
+      assert.equal(await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.resources()), 0)
+    }
+    await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.dispose()); assert.equal(await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.resources()), 0)
+    await context.close()
+  }
+  assert.deepEqual(report.errors, []); report.status = 'PASS'
+} catch (error) {
+  report.failure = { stage, error: String(error.stack) }; await page?.screenshot({ path: resolve(evidence, 'failure.png') }).catch(() => {}); throw error
+} finally {
+  await browser?.close(); await server.close(); await rm(tmp, { recursive: true, force: true })
+  report.cleanup = { browserClosed: true, viteClosed: true, privateCacheRemoved: true }
+  await writeFile(resolve(evidence, 'report.json'), JSON.stringify(report, null, 2) + '\n')
+}
+console.log(JSON.stringify({ status: report.status, phase, cases: report.cases.length }))
