@@ -12,9 +12,11 @@ const allocation = need('MCR_FEED_ALLOCATION'), run = need('MCR_FEED_RUN')
 const cutoff = Date.parse(need('MCR_FEED_ACTIVE_UNTIL')), native = process.env.MCR_FEED_NATIVE === '1'
 const maxFiles = Number(need('MCR_FEED_MAX_FILES')), maxBytes = Number(need('MCR_FEED_MAX_BYTES'))
 const maxProcesses = Number(need('MCR_FEED_MAX_PROCESSES'))
+const maxRssBytes = Number(need('MCR_FEED_MAX_RSS_BYTES'))
 assert([output, pinned, dependencies].every(isAbsolute)); assert(/^[a-z0-9-]{1,50}$/.test(run))
 assert(Number.isSafeInteger(maxFiles) && maxFiles > 0 && Number.isSafeInteger(maxBytes) && maxBytes > 0)
 assert(Number.isSafeInteger(maxProcesses) && maxProcesses >= 2)
+assert(Number.isSafeInteger(maxRssBytes) && maxRssBytes > 0)
 assert(existsSync(output) && !output.startsWith(root + '/'))
 assert(cutoff > Date.now() + 45_000 && cutoff < Date.now() + 900_000)
 const link = join(frontend, 'node_modules'), cache = join(output, `feed-${run}-cache`), tmp = join(output, `feed-${run}-tmp`)
@@ -56,6 +58,10 @@ const jobs = [
   ['lint', ['node_modules/oxlint/bin/oxlint', 'src/app/feed-entry']],
   ['native-syntax', ['--check', prefix + 'native.mjs']],
 ]
+if (native) jobs.splice(0, jobs.length,
+  ...(process.env.MCR_FEED_REMAINING === '1' || process.env.MCR_FEED_SKIP_PASSED_TYPES === '1' ? [] : [['changed-fixture-tsc', ['node_modules/typescript/bin/tsc', '-p', prefix + 'tsconfig.json', '--noEmit', '--incremental', 'false', '--pretty', 'false']]]),
+  ['supervisor-syntax', ['--check', prefix + 'qualify.mjs']],
+  ['native-syntax', ['--check', prefix + 'native.mjs']])
 if (process.env.MCR_FEED_ADMISSION === '1') jobs.push(['admission', ['--test', 'e2e/real/social/admission-original.test.mjs']],
   ['admission-tsc', ['node_modules/typescript/bin/tsc', '-p', 'e2e/real/social/tsconfig.json', '--noEmit', '--incremental', 'false', '--pretty', 'false']])
 const summary = { allocation, run, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
@@ -80,7 +86,7 @@ function enforce() {
   const state = usage(), processes = processCount()
   const allowed = Date.now() < cutoff && state.freeBytes >= 8 * 1024 ** 3 && state.files <= maxFiles && state.bytes <= maxBytes
     && state.temporaryBytes <= 100 * 1024 ** 2 && state.bytes - state.temporaryBytes - initial.bytes <= 8 * 1024 ** 2
-    && processes.count <= maxProcesses && processes.rssBytes <= 2.5 * 1024 ** 3
+    && processes.count <= maxProcesses && processes.rssBytes <= maxRssBytes
   if (!allowed) { summary.guardViolation = { utc: new Date().toISOString(), state, processes }; console.log(JSON.stringify({ guardViolation: summary.guardViolation })) }
   return allowed
 }
@@ -112,13 +118,19 @@ try {
     const port = Number(need('MCR_FEED_PORT'))
     assert(Number.isInteger(port) && port > 1024 && port < 65536)
     env.MCR_FEED_ORIGIN = `http://127.0.0.1:${port}/`
-    const cssRevision = need('MCR_FEED_CSS_REVISION'), cssHash = need('MCR_FEED_CSS_SHA256')
-    assert(/^[0-9a-f]{40}$/.test(cssRevision) && /^[0-9a-f]{64}$/.test(cssHash))
-    const css = execFileSync('git', ['show', `${cssRevision}:frontend/src/features/event-feed/feed.css`], { cwd: root, maxBuffer: 256 * 1024 })
-    assert.equal(createHash('sha256').update(css).digest('hex'), cssHash)
-    env.MCR_FEED_CSS_FILE = join(output, `feed-${run}-owner.css`)
-    writeFileSync(env.MCR_FEED_CSS_FILE, css, { flag: 'wx', mode: 0o444 })
-    summary.cssInput = { revision: cssRevision, sha256: cssHash, path: env.MCR_FEED_CSS_FILE, readonlyBorrow: true }
+    summary.cssInputs = []
+    for (const [name, prefixEnv, path] of [
+      ['feed', 'MCR_FEED_CSS', 'frontend/src/features/event-feed/feed.css'],
+      ['root', 'MCR_FEED_ROOT_CSS', 'frontend/src/shared/styles/cozy-community-backgrounds-v1.css'],
+    ]) {
+      const revision = need(prefixEnv + '_REVISION'), sha256 = need(prefixEnv + '_SHA256')
+      assert(/^[0-9a-f]{40}$/.test(revision) && /^[0-9a-f]{64}$/.test(sha256))
+      const css = execFileSync('git', ['show', `${revision}:${path}`], { cwd: root, maxBuffer: 256 * 1024 })
+      assert.equal(createHash('sha256').update(css).digest('hex'), sha256)
+      const file = join(output, `feed-${run}-${name}-owner.css`)
+      writeFileSync(file, css, { flag: 'wx', mode: 0o444 }); env[prefixEnv + '_FILE'] = file
+      summary.cssInputs.push({ revision, sha256, path, file, readonlyBorrow: true })
+    }
     const server = await launch('vite', ['node_modules/vite/bin/vite.js', '--configLoader', 'native', '--config', prefix + 'vite.config.ts', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], true)
     try {
       let ready = false

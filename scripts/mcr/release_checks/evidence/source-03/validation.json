@@ -1,0 +1,102 @@
+{
+  "assignment": "QA10-RELEASE-SOURCE-01",
+  "candidate": "52ac02cdf9ed1e5588c12e2993e7be7ae2d0f2fe",
+  "tree": "7cb1a6f580d9e28aba8dab48c887fd39bb8f74a7",
+  "scope": "Offline checker validation only; no application/live/release acceptance.",
+  "python": "3.14.3",
+  "status": "PASS_FOR_DECLARED_CHECKER_REGRESSIONS",
+  "commands": [
+    {
+      "id": "selftests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/mcr/release_checks",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:13:24.833855+00:00",
+      "elapsedSeconds": 7.622854,
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "selftests.log",
+      "logSha256": "b2ee8884fb57ad9d51cc7e55f923a300b26b7c7b0ac1bf0ff43e6c93cb696715"
+    },
+    {
+      "id": "no-manifest",
+      "argv": [
+        "scripts/mcr/release-check.sh",
+        "--candidate",
+        "52ac02cdf9ed1e5588c12e2993e7be7ae2d0f2fe"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:13:32.456893+00:00",
+      "elapsedSeconds": 0.125816,
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "log": "no-manifest.log",
+      "logSha256": "580c15c0ac624201ba2458bed944ad1bd8e845c3895e9827bbb1b387be5b9932",
+      "status": "INCOMPLETE",
+      "findings": [
+        "manifest.NOT_RUN"
+      ]
+    },
+    {
+      "id": "stale-frontend",
+      "argv": [
+        "scripts/mcr/release-check.sh",
+        "--candidate",
+        "52ac02cdf9ed1e5588c12e2993e7be7ae2d0f2fe",
+        "--manifest",
+        "scripts/mcr/release_checks/evidence/source-03/stale-frontend-input.json"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:13:32.582808+00:00",
+      "elapsedSeconds": 0.118719,
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "log": "stale-frontend.log",
+      "logSha256": "ca7df9a8fac9b3ea9f3e09fe507abda0153f4519c1fe28ae087eba15fffdf2f3",
+      "status": "FAIL",
+      "findings": [
+        "candidate.mismatch"
+      ]
+    },
+    {
+      "id": "shell-syntax",
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/mcr/release-check.sh"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:13:32.701621+00:00",
+      "elapsedSeconds": 0.004566,
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "shell-syntax.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checks": {
+    "unitTests": 31,
+    "quotedJsonCredentialAndNamedMockCases": true,
+    "boundedFrontendArchiveRegression": true,
+    "missingManifestRemainsIncomplete": true,
+    "historicalFrontendCannotQualifyCurrentCandidate": true,
+    "historicalAdapterAssertions": 3525
+  },
+  "sourceSha256": {
+    "scripts/mcr/release-check.sh": "f7d20712a3900f1bedc1e07acebe4bd617f9a6e9de527b17cb4c268ae449f3fd",
+    "scripts/mcr/release_checks/check.py": "a443c084dbf31a0d4d2dfdeaf43349e6dd4ccda5a81ce1a41076718d53ced271",
+    "scripts/mcr/release_checks/test_check.py": "ee66710b5c1d3076a11ac2cfa7219350d06ce2001f6a05138b4b14d2a3e50c8e"
+  },
+  "releaseStatus": "INCOMPLETE",
+  "originalQA08": "PARTIAL"
+}

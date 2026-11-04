@@ -1,6 +1,6 @@
 # Reference Gifts content v1
 
-Task: ART-GIFTS-CONTENT-02. Status: SOURCE_AND_NATIVE_FIXTURE_QUALIFIED; production binding remains NOT_READY. The active goal remains unfinished pending authorized binding, publication and exact remote readback. The latest Main and Root product-source clarification supersedes the earlier hold on all drawing: the user-supplied reference authorizes bounded original reference/fixture motif assets before live catalog identities exist. It does not authorize production catalog binding.
+Task: ART-GIFTS-CONTENT-02. Status: SOURCE_AND_NATIVE_FIXTURE_QUALIFIED_AND_PUBLISHED; production binding remains NOT_READY. The active goal remains unfinished pending authorized production binding. The latest Main and Root product-source clarification supersedes the earlier hold on all drawing: the user-supplied reference authorizes bounded original reference/fixture motif assets before live catalog identities exist. It does not authorize production catalog binding.
 
 ## Reference and measurements
 
@@ -73,5 +73,11 @@ Both attempts armed the independent guardian before releasing the workload. The 
 `native-disposition.json` seals the saved-image hashes, report pin, actual sizes and artist finding. This is `TEST_ONLY_REFERENCE_FIXTURE` evidence with `productionBinding: null`, retained synthetic identities/quantities and the expressly disclosed composite fixture mapping. It does not prove `RootGiftImage` authorization/cache identity, live stock, reservation/claim journeys, detail rendering or physical-device behavior. Approved production catalog/media mapping, Root publication and independent exact postimage readback remain open.
 
 After FULL release, the runtime-input status was reconciled with the actual successful receipt. A source-only checker maintenance change removes its unconditional write of `SOURCE_VALIDATED_RENDER_AND_NATIVE_PENDING`: a source rerun must preserve the separately owned native qualification. This one-line removal has not been executed after release and changes no SVG, captured consumer input, runtime loader or successful native evidence. The original dated source-validation report remains immutable and its `NOT_RUN` fields describe that earlier source-only run.
+
+## Publication and remaining binding dependency
+
+Root153 published the bounded reference/test artifact packet through source candidate `a6349dcda12431575e0b4bb58443142bb0d78ee7` at `fccee9369ff8929db699f2f09af4d639e4be35e6`. At `2026-11-04T15:09:11.244799Z`, this owner independently fetched `master` and checked `ls-remote`; both reported `cf395c2223d90a907b7a556c59a8bed40e657c17`. All 58 files in the six granted Gifts/Controls roots matched exact Git blobs, bytes, SHA-256 and modes, with no missing, different or unexpected files. The publication commit is an ancestor of that observed remote. `publication-readback.json` records every file. This proof and its documentation successor are authored after publication and are not included in their own comparison; no repeat capture or new runtime check occurred.
+
+Root explicitly confirmed that no approved authoritative production giveaway/media/motif mapping or applicable rights decision had arrived in its active handoffs. This is a known handoff-state confirmation, not a global absence audit. Keep `productionBinding: null` and `NOT_READY`; the retained single fixture media ID must not be treated as production stock or an actual catalog mapping. Root remains the binding/media/cache/privacy owner. Earlier publication-pending statements above describe their historical stages and are superseded by this exact readback. The goal remains unfinished until the authorized production binding requirement is satisfied.
 
 The separately authorized ART-WINDOW-CONTROLS-02 work is tracked in `reference-window-controls-v2.md`. Completing it will not complete this Gifts goal.

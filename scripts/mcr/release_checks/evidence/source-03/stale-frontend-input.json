@@ -1,0 +1,17 @@
+{
+  "schema": "mcr.qa10.release-source.v1",
+  "candidate": {
+    "commit": "52ac02cdf9ed1e5588c12e2993e7be7ae2d0f2fe",
+    "tree": "7cb1a6f580d9e28aba8dab48c887fd39bb8f74a7",
+    "dirty": false
+  },
+  "release_status": "INCOMPLETE",
+  "receipts": [
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-980fc4d8/receipt.json",
+      "sha256": "ccf53dc75694099f667f841b38d4d82aec02be704c23e3197c821c8dc27c7133"
+    }
+  ],
+  "production": null,
+  "task_links": []
+}

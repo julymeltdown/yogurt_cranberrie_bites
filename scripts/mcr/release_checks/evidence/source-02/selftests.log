@@ -1,0 +1,36 @@
+test_absent_manifest_is_incomplete_not_pass (test_check.ReleaseChecks.test_absent_manifest_is_incomplete_not_pass) ... ok
+test_boolean_vitest_count_is_rejected (test_check.ReleaseChecks.test_boolean_vitest_count_is_rejected) ... ok
+test_cli_exit_codes_distinguish_partial_incomplete_and_fail (test_check.ReleaseChecks.test_cli_exit_codes_distinguish_partial_incomplete_and_fail) ... ok
+test_dirty_candidate_is_rejected (test_check.ReleaseChecks.test_dirty_candidate_is_rejected) ... ok
+test_duplicate_json_keys_are_rejected (test_check.ReleaseChecks.test_duplicate_json_keys_are_rejected) ... ok
+test_duplicate_receipts_and_false_global_pass_are_rejected (test_check.ReleaseChecks.test_duplicate_receipts_and_false_global_pass_are_rejected) ... ok
+test_existing_frontend_schema_is_consumed_and_archived_json_checked (test_check.ReleaseChecks.test_existing_frontend_schema_is_consumed_and_archived_json_checked) ... ok
+test_extra_or_unbound_production_assets_are_rejected (test_check.ReleaseChecks.test_extra_or_unbound_production_assets_are_rejected) ... ok
+test_fabricated_pass_count_is_rejected (test_check.ReleaseChecks.test_fabricated_pass_count_is_rejected) ... ok
+test_fabricated_tap_pass_with_no_test_points_is_rejected (test_check.ReleaseChecks.test_fabricated_tap_pass_with_no_test_points_is_rejected) ... ok
+test_failed_unattempted_signalled_or_boolean_exit_cannot_pass (test_check.ReleaseChecks.test_failed_unattempted_signalled_or_boolean_exit_cannot_pass) ... ok
+test_frontend_archives_remain_bounded_after_format_allowance (test_check.ReleaseChecks.test_frontend_archives_remain_bounded_after_format_allowance) ... ok
+test_frontend_claim_cannot_hide_failed_command_or_renamed_tests (test_check.ReleaseChecks.test_frontend_claim_cannot_hide_failed_command_or_renamed_tests) ... ok
+test_frontend_inventory_cannot_drop_a_candidate_test_file (test_check.ReleaseChecks.test_frontend_inventory_cannot_drop_a_candidate_test_file) ... ok
+test_hash_tampering_is_rejected (test_check.ReleaseChecks.test_hash_tampering_is_rejected) ... ok
+test_legitimate_not_run_receipt_stays_incomplete (test_check.ReleaseChecks.test_legitimate_not_run_receipt_stays_incomplete) ... ok
+test_mismatched_receipt_candidate_is_rejected (test_check.ReleaseChecks.test_mismatched_receipt_candidate_is_rejected) ... ok
+test_missing_production_remains_incomplete (test_check.ReleaseChecks.test_missing_production_remains_incomplete) ... ok
+test_mock_module_rejected_even_with_rehashed_build_report (test_check.ReleaseChecks.test_mock_module_rejected_even_with_rehashed_build_report) ... ok
+test_old_ancestor_cannot_stand_in_for_current_candidate (test_check.ReleaseChecks.test_old_ancestor_cannot_stand_in_for_current_candidate) ... ok
+test_positive_exact_candidate_test_artifacts_production_and_task_link (test_check.ReleaseChecks.test_positive_exact_candidate_test_artifacts_production_and_task_link) ... ok
+test_secret_file_is_refused_without_reading_its_content (test_check.ReleaseChecks.test_secret_file_is_refused_without_reading_its_content) ... ok
+test_shell_command_cannot_masquerade_as_node_tests (test_check.ReleaseChecks.test_shell_command_cannot_masquerade_as_node_tests) ... ok
+test_skipped_test_remains_an_incomplete_gap (test_check.ReleaseChecks.test_skipped_test_remains_an_incomplete_gap) ... ok
+test_source_pin_and_dispatched_inventory_are_verified (test_check.ReleaseChecks.test_source_pin_and_dispatched_inventory_are_verified) ... ok
+test_stale_task_source_commit_is_rejected_even_when_ancestor (test_check.ReleaseChecks.test_stale_task_source_commit_is_rejected_even_when_ancestor) ... ok
+test_synthetic_secret_marker_is_rejected_without_value_disclosure (test_check.ReleaseChecks.test_synthetic_secret_marker_is_rejected_without_value_disclosure) ... ok
+test_task_id_path_commit_and_evidence_link_are_not_just_labels (test_check.ReleaseChecks.test_task_id_path_commit_and_evidence_link_are_not_just_labels) ... ok
+test_unsafe_path_and_symlink_cannot_read_outside_evidence (test_check.ReleaseChecks.test_unsafe_path_and_symlink_cannot_read_outside_evidence) ... ok
+test_vitest_report_counts_files_and_failures_are_checked (test_check.ReleaseChecks.test_vitest_report_counts_files_and_failures_are_checked) ... ok
+test_wrong_tree_dirty_and_missing_end_fence_are_rejected (test_check.ReleaseChecks.test_wrong_tree_dirty_and_missing_end_fence_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 6.553s
+
+OK

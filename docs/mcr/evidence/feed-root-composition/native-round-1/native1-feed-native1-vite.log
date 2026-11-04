@@ -1,0 +1,14 @@
+
+  VITE v8.1.3  ready in 228 ms
+
+  ➜  Local:   http://127.0.0.1:5279/
+11:40:48 PM [vite] (client) [Unhandled error] Error: Invalid feed response
+ > parse src/features/event-feed/contract.ts:73:75
+    71 |  /** Validate the pinned generated public schemas, including rejection of private/unknown fields. */
+    72 |  export function parse<T>(name: string, value: unknown): T {
+    73 |    if (!Object.hasOwn(schemas, name) || !valid(schemas[name], value)) throw new Error('Invalid feed response')
+       |                                                                             ^
+    74 |    return freeze(structuredClone(value)) as T
+    75 |  }
+ > src/app/feed-entry/__tests__/fixture.ts:18:20
+

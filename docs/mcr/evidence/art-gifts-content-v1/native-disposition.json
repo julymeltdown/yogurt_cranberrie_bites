@@ -93,5 +93,12 @@
     "No live stock, reservation/claim journey, detail image integration, physical device or full accessibility acceptance."
   ],
   "cleanup": "allocation-native-04.json and native-04-guardian.json: NORMAL_STOP, no owned PIDs/link/TMP/cache, no listener and reusable bind PASS before original work cutoff.",
-  "publication": "PENDING_ROOT153_AND_OWN_FRESH_EXACT_READBACK"
+  "publication": {
+    "result": "PASS",
+    "sourceCandidate": "a6349dcda12431575e0b4bb58443142bb0d78ee7",
+    "publicationCommit": "fccee9369ff8929db699f2f09af4d639e4be35e6",
+    "proof": "publication-readback.json",
+    "scope": "Published source candidate including original native disposition; this post-publication proof successor is outside its own comparison.",
+    "productionBinding": "NOT_READY"
+  }
 }

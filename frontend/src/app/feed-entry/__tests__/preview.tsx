@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createAppRoutes } from '../../router'
 import { createProductionPorts } from '../../ports'
-import { createFeedFixture, inputRevision, mediaInputs, type FixtureMode } from './fixture'
+import { createFeedFixture, inputRevision, mediaInputs, selectedPin, type FixtureMode } from './fixture'
 import '../../../shared/styles/base.css'
 import '../../shell.css'
 
@@ -31,6 +31,7 @@ const dispose = () => {
 window.__FEED_SHELL__ = {
   qualification: { synthetic: true, mode: modeInput, inputRevision, mediaInputs, liveIN03: 'NOT_RUN', world: 'DISABLED', selectedStatic: '1.1.0' },
   calls: fixture.calls, resources: () => objectUrls.size,
+  characterDiagnostics: () => ports.characters?.read(fixture.auth.privacy.capture(), selectedPin)?.diagnostics() ?? null,
   setReady: fixture.setReady, invalidate: fixture.invalidate,
   navigate: path => router.navigate(path), dispose,
 }
@@ -39,4 +40,5 @@ window.addEventListener('pagehide', dispose, { once: true })
 declare global { interface Window { __FEED_SHELL__: {
   qualification: unknown; calls: { method: string; path: string; status: number }[]
   resources(): number; setReady(value: boolean): void; invalidate(): void; navigate(path: string): Promise<void>; dispose(): void
+  characterDiagnostics(): Readonly<{ disposed: boolean; leases: number; pending: number; cleanupFailures: number; decodedAtlases: number }> | null
 } } }

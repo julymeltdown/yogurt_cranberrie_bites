@@ -1,0 +1,432 @@
+{
+  "task": "ART-GIFTS-CONTENT-02 and ART-WINDOW-CONTROLS-02 bounded artifact publication",
+  "result": "PASS",
+  "verifiedAtUtc": "2026-11-04T15:09:11.244799+00:00",
+  "sourceCandidate": "a6349dcda12431575e0b4bb58443142bb0d78ee7",
+  "remote": "origin",
+  "branch": "refs/heads/master",
+  "fetchedHead": "cf395c2223d90a907b7a556c59a8bed40e657c17",
+  "independentLsRemoteHead": "cf395c2223d90a907b7a556c59a8bed40e657c17",
+  "scopedPublicationCommit": "fccee9369ff8929db699f2f09af4d639e4be35e6",
+  "publicationAncestorOfObservedRemote": true,
+  "matchedFiles": 58,
+  "missingFiles": [],
+  "differentFiles": [],
+  "unexpectedFilesInSixRoots": [],
+  "files": [
+    {
+      "path": "docs/mcr/art/reference-gifts-content-v1.md",
+      "mode": "100644",
+      "blob": "51f3edc8b171eeba0cba30fc0413752780eaa1e4",
+      "bytes": 17408,
+      "sha256": "7976f9c79701b27813f86199f37b3fb31a4cb8cc7ca45664d0be84201b29a33b"
+    },
+    {
+      "path": "docs/mcr/art/reference-window-controls-v2.md",
+      "mode": "100644",
+      "blob": "868294f2eccfb2b70bb576c945f0fb77bee74411",
+      "bytes": 10033,
+      "sha256": "a86a3b58234830fc2ea85cf66e684caa2c98e97b4856a0e3405454d65c610b3a"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/allocation-native-01.json",
+      "mode": "100644",
+      "blob": "823df435e3be02926558ea6f9b31fa7b5bae75f1",
+      "bytes": 8690,
+      "sha256": "e0b5a0c6ea3b5468953c16ee032b495408396cdcfbcc46b47b7f1ddf5a3db7cf"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/allocation-native-02.json",
+      "mode": "100644",
+      "blob": "72814bb46efb482e562564c3bc56175fe0ea93d0",
+      "bytes": 75267,
+      "sha256": "13b098ce90b91ac346fad70a9ebb7892675ae0aa0ded7b4fa33d98776b803ce0"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/allocation-native-03.json",
+      "mode": "100644",
+      "blob": "0ee3ff0dc519872e982a9d95241804be13af38c1",
+      "bytes": 12258,
+      "sha256": "ff04ebbb3f07c3ed4190888cefcce321b191a645401ef95f3dfce130d63ff39d"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/allocation-native-04.json",
+      "mode": "100644",
+      "blob": "235251ec844d1178beb03c5a9a2f12970282a969",
+      "bytes": 10989,
+      "sha256": "20a7a3a813e02c5ad775464f6b1d301ab988b06ad51e5c00b7ebe3978a386428"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/allocation-source90.json",
+      "mode": "100644",
+      "blob": "872a733bbd8cb7bb83cd9900e4fc402fdde9c14c",
+      "bytes": 5830,
+      "sha256": "0e1f7b578be72cdac247f52a64eec4c818611a2a5c4681be62175876642b9fac"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/capture.mjs",
+      "mode": "100644",
+      "blob": "985d809946aaf022d479ee5de8a8c00e1cdadddc",
+      "bytes": 5077,
+      "sha256": "f38fcf48fd328e407b28de47cc1140829ffa4e3c9c05946efff38198eeba6a87"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/check_assets.py",
+      "mode": "100644",
+      "blob": "af2c41060b1bc0c149fb5a5f1aa8bb3eda968a6d",
+      "bytes": 5426,
+      "sha256": "e368d8f0af269bfb009fff77313d2e0356a9a88a907d4ad7bafecb717300c789"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/fixture-derivation.json",
+      "mode": "100644",
+      "blob": "7a0c21aad18b2efd67e0533057b0059488355a3b",
+      "bytes": 2235,
+      "sha256": "74ca1c48adcc587be1a39b50c0e43435dd66531160c7ebb81035e7fd4e12da63"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/grammar-source.json",
+      "mode": "100644",
+      "blob": "1849fce0cd9ce08f53af0068aec52d97b561f33e",
+      "bytes": 1746,
+      "sha256": "949cd25f64190718d6e6ea9481054bc51d5045c85fe966fb0cf7859c0665628e"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-01/report.json",
+      "mode": "100644",
+      "blob": "24894eb9975589f866a21f13248535ee6aa49157",
+      "bytes": 324,
+      "sha256": "a15b3e50cc19c740b75aea70dbd6e8b64de8f3b9dda0a3354a38b10379d7bfb6"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-03-guardian.json",
+      "mode": "100644",
+      "blob": "366bd227dcdf7a68eb7c5bee15ebc4b787ae8ce4",
+      "bytes": 394,
+      "sha256": "869c5e6fc8746a6599ee03af2a409c03868a55c7fb7ae8353042d0c081184d31"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-03.stderr.log",
+      "mode": "100644",
+      "blob": "973145f0eee7a27c5e7eae56bc05dcf0d97505b0",
+      "bytes": 2686,
+      "sha256": "7b13d3de1d325977691f8178d512eba04bcb897e280253ab66e802e2f814465c"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-03.stdout.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-03/report.json",
+      "mode": "100644",
+      "blob": "563662e8b49947eaa9e33a63dbca7727e12442df",
+      "bytes": 4235,
+      "sha256": "7e3a954e55db6679feb84596ea30194eaac5c0790ea1c039c090ec99160bc609"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04-guardian.json",
+      "mode": "100644",
+      "blob": "796da31ff70f639beeb060f6bdae9bad92330311",
+      "bytes": 394,
+      "sha256": "a70bb1706cd479db3c106f0ccea5c4f48df7f3bad3bab3b0b8f00e00813ea3fc"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04-working.diff",
+      "mode": "100644",
+      "blob": "bc7ef68d3cff0721a359b81275fac38d77cb9271",
+      "bytes": 1960,
+      "sha256": "68487b57a6b88172d1a8a88531154cfadb207ade7427c0ee1059da161da6bf8f"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04.stderr.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04.stdout.log",
+      "mode": "100644",
+      "blob": "0affcf0655da6306abd95f54a202092886ee6c97",
+      "bytes": 90,
+      "sha256": "333ae879ee927c9dd13d716e0ab6d08330dc56fafbd1ff37d6e5f213cb181a9c"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04/context-withdrawn-390.png",
+      "mode": "100644",
+      "blob": "1dce1c762bca8b9ef2eaea6ac8885205464583e9",
+      "bytes": 82798,
+      "sha256": "c763511aea17d2299d75c36b45330ccc4f0c7e8c4727d2b8ba5c61515830f38c"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04/gifts-360.png",
+      "mode": "100644",
+      "blob": "f6ae1a384c1a23abfab8d221b4580fc9f6614edd",
+      "bytes": 107187,
+      "sha256": "31a0c0db061855cefc4bf5ec369914361d6a0b33709d758bb3a789317ce81862"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04/gifts-390.png",
+      "mode": "100644",
+      "blob": "e382077ad923cde3976a54bb5fa412a6eae5009f",
+      "bytes": 115086,
+      "sha256": "e9d969689f21837724449b0f361b4cf0791497a2b776794a3b30d8153650fe88"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04/gifts-430.png",
+      "mode": "100644",
+      "blob": "6e15f590d49d6c0faaf87ec476a589ad802c3286",
+      "bytes": 123555,
+      "sha256": "85f158c4ef42f25e215e43cbabd1ddf200fc1824c64199a09861e20cbe1524c4"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04/report.json",
+      "mode": "100644",
+      "blob": "27d5cb15bc52d39b23a2311a43678c729e9d3b2f",
+      "bytes": 33634,
+      "sha256": "a6a1f5e0bdbceae867c9c3523c321eb212a364f1bf6c69bc0ecfbec28992b9b6"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-04/source-specimen.png",
+      "mode": "100644",
+      "blob": "0e25d62f4f75408dc15b6ff04caf9519c1e75007",
+      "bytes": 141691,
+      "sha256": "9531041b19ae383f53017289b12ef15d68502eee76d71ea0137bed6e4eb598fd"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-01.stderr.log",
+      "mode": "100644",
+      "blob": "cea4a1f0c75bce4db3e699a0c31509869ca17f7b",
+      "bytes": 1333,
+      "sha256": "83cf49aa5efe87bf4616fa7b5d8dab9c556f33d56dc07931ece2be2f74c14a49"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-01.stdout.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-02-working.diff",
+      "mode": "100644",
+      "blob": "13c532f6a7bafb33ba451ee037c3e155df6eace7",
+      "bytes": 2142,
+      "sha256": "06e0314ad8620dcd5d26a2eb9ff72a00a27c40d1cd5a8b33ad4d9180109d246c"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-02.stderr.log",
+      "mode": "100644",
+      "blob": "842e26bae34c16899d3b863a62f8877dc89c9bbb",
+      "bytes": 70439,
+      "sha256": "3ae9ac6da289464d6f62cdcb8917f3b29c6ab3ebaddc9d6d4974cebcd34ccf30"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-attempt-02.stdout.log",
+      "mode": "100644",
+      "blob": "48e9fba7e67e1df258c93a10cbb85ff9a6b41d85",
+      "bytes": 189,
+      "sha256": "899dedf2964bfed9338e7f835fdf56b38ef080af7679dc5db34cb4ef8e01e05b"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-disposition.json",
+      "mode": "100644",
+      "blob": "77e6be64c0968ae0251da7398aa4a12727cfa29f",
+      "bytes": 3703,
+      "sha256": "f001447c9a56c0a448c4e73d464d6bc95d9119cae6373e2166f7e9e05515c53d"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-full-release.json",
+      "mode": "100644",
+      "blob": "0e72f4e45345ee28b3afb6cfeaec61973f39556e",
+      "bytes": 917,
+      "sha256": "56c65643d1ddbd48db59a6aef902b351f42844c11ea0d78302db3c610e8f0a1d"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-guardian-02.json",
+      "mode": "100644",
+      "blob": "9eb8aa221706500af5199c5320beaa0dcfbb2229",
+      "bytes": 358,
+      "sha256": "fbb02ab7fc7c215e121816f5f7eafac76a2fcca9c2bf5e515c8d5c34d05647c5"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native-guardian.json",
+      "mode": "100644",
+      "blob": "7358b46f4cb0ad2ec13847a34c13ea2fa34e0401",
+      "bytes": 386,
+      "sha256": "0c4ea03284d7b82a73a97e628823a19e48dedf898e00f9a426de69916a24c8ae"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native.css",
+      "mode": "100644",
+      "blob": "4049f27c9c720c3e22c0ee85d4777fd03861ee1a",
+      "bytes": 176,
+      "sha256": "64015ae7b2f9937a1186ebda03fbe5d7be5ec79968534ba328130b9e7eb27d5b"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native.html",
+      "mode": "100644",
+      "blob": "36c33a510cbdcebefaa70ca5bc49f965487e69d9",
+      "bytes": 282,
+      "sha256": "6777af179a2cffd4df9f64c1890683de1ca707a450ff64236f78fd65884b49c5"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/native.tsx",
+      "mode": "100644",
+      "blob": "6461811429a75bda5e46ef4db0a04f97a8a19829",
+      "bytes": 3438,
+      "sha256": "4c3758dbc0e63acdbd73a5653e13458e2ac5cae9aca33cb8347115d33e135ed8"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/preview.html",
+      "mode": "100644",
+      "blob": "e0610e9bbf67997120a3d3b94a79f9c4de693eb7",
+      "bytes": 2799,
+      "sha256": "9392a8dfb54ccc8a79aba5ca336fd4bbbd7954ae51126f1a80b3b11c8ccc8b86"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/run-native.py",
+      "mode": "100644",
+      "blob": "0765a454d2f6084db58b9a9e0bde4a7e8b9d8eeb",
+      "bytes": 12385,
+      "sha256": "aefdca70d8b70e0aec36d2b1bc146c6324c955ae7eae3d79e5e19b8e271f3290"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/runtime-inputs.json",
+      "mode": "100644",
+      "blob": "90f723b5b139484c38542082d55397b11aac7775",
+      "bytes": 1315,
+      "sha256": "37da358296f44e5fa4a1cff2dc8b9c6ae7b915601629bad9ba4beba9a992cb95"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/serve.mjs",
+      "mode": "100644",
+      "blob": "9f39e39068d7668a4a52b123e71f3b1253b6eb9f",
+      "bytes": 5485,
+      "sha256": "cd5ac6ef712b06306fb17fa9c8f1588d41f5043f46d1448c123e07a0c070af71"
+    },
+    {
+      "path": "docs/mcr/evidence/art-gifts-content-v1/source-validation.json",
+      "mode": "100644",
+      "blob": "e68735641fef23244f3c687577c8936def2b94a1",
+      "bytes": 1477,
+      "sha256": "1b4c03a0104b85c59efbc08bfe9623e3d7b951589c1148ecf4c3c7956ac371b9"
+    },
+    {
+      "path": "docs/mcr/evidence/art-window-controls-v2/allocation-source90.json",
+      "mode": "100644",
+      "blob": "f28fa2169b68eb23e646ed745f50af2559e96a8d",
+      "bytes": 2935,
+      "sha256": "0e773b329381683e2c6ad8d3c520c3a66d094f30eb981d520d07f67b7abcf8dd"
+    },
+    {
+      "path": "docs/mcr/evidence/art-window-controls-v2/check_assets.py",
+      "mode": "100644",
+      "blob": "af1d38686c7e053c29e06357022ec59d00cac67b",
+      "bytes": 5051,
+      "sha256": "a58ba1a442967276c52fa9470db51a3d7875cbec6a4a3f5dff416c1f20ed62d4"
+    },
+    {
+      "path": "docs/mcr/evidence/art-window-controls-v2/native-disposition.json",
+      "mode": "100644",
+      "blob": "63270816769dcd9dd3a85d2235f985ef3afcc609",
+      "bytes": 4882,
+      "sha256": "8199706fc8b98f4915e3a443e80a21dfce1d27720704a2432ae2df90f92ba617"
+    },
+    {
+      "path": "docs/mcr/evidence/art-window-controls-v2/preview.html",
+      "mode": "100644",
+      "blob": "5bb08a06b17f2b090373e8925ed21d4ca8053986",
+      "bytes": 3092,
+      "sha256": "33204e8dec922689b1f4a2f2de6925ca768876f75f583d9f1bf25e4f7fb0254b"
+    },
+    {
+      "path": "docs/mcr/evidence/art-window-controls-v2/source-validation.json",
+      "mode": "100644",
+      "blob": "39604aaafab082e612a85691eaeef4e9edbf41f7",
+      "bytes": 1651,
+      "sha256": "c0a0aeee44a76a5ac84dd36d66d24ffea0ec3ba033a783c83b9b0af306a04b88"
+    },
+    {
+      "path": "frontend/public/reference-gifts-content-v1/diy-buttons.svg",
+      "mode": "100644",
+      "blob": "495af2659a5dc188102f17e78f35dc3a2217b770",
+      "bytes": 1300,
+      "sha256": "d16d01d7822192687496477dc2946b7f4db7e42059512c86408d12ba24cb8d90"
+    },
+    {
+      "path": "frontend/public/reference-gifts-content-v1/hand-banner.svg",
+      "mode": "100644",
+      "blob": "b4bad301ec935e1912e04416b1c030b1ad99a6e8",
+      "bytes": 1054,
+      "sha256": "2e1229c95ba56831980295f98f4059f0e9a85533df44be524387b8be0c4b41eb"
+    },
+    {
+      "path": "frontend/public/reference-gifts-content-v1/source-provenance.json",
+      "mode": "100644",
+      "blob": "5ca98329dfd56a281c636db7ac998ef601ee7439",
+      "bytes": 4387,
+      "sha256": "fedf864b8e9f0fbb0ecff233f403806151a86293dcaf1c837fe28a1c5ba2d0b2"
+    },
+    {
+      "path": "frontend/public/reference-gifts-content-v1/sticker-pack.svg",
+      "mode": "100644",
+      "blob": "41c80bc81e49ea16fd6aa2b79deb2a670958a4ca",
+      "bytes": 1621,
+      "sha256": "067b2f4153158f1a914a2b257c539d954a26d82dbd814272f0d367b53330ae7d"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/back.svg",
+      "mode": "100644",
+      "blob": "83ad1bee637e83567be766bd533a8e88c25825d2",
+      "bytes": 223,
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/close.svg",
+      "mode": "100644",
+      "blob": "524f320f785f17c75d44bcaed8a5665d1b0ea439",
+      "bytes": 198,
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/expand.svg",
+      "mode": "100644",
+      "blob": "a9941f46185032febc15b0986be3a65ce03d633b",
+      "bytes": 232,
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/manifest.json",
+      "mode": "100644",
+      "blob": "909ddee022c622c6d0bc7a68088fdd27a98ae3b8",
+      "bytes": 4765,
+      "sha256": "9b6f7918f88ec8190aead5398ded9c4961e140e9ab47e507329c48eb6c2c53fb"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "mode": "100644",
+      "blob": "22cc35effe810f2c7ea5fafb4a4e467122cac365",
+      "bytes": 257,
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5"
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/stars.svg",
+      "mode": "100644",
+      "blob": "4c026e6bcc268cccaa3dc69dfb62dbb91c77c933",
+      "bytes": 402,
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2"
+    }
+  ],
+  "scope": "Exact source-candidate files in the six granted Gifts/Controls roots, including prior failures, native reports, captures and artist assessments. This proof and its documentation successor are authored after the observed publication and are not included in their own comparison.",
+  "productionBinding": null,
+  "productionBindingStatus": "NOT_READY",
+  "bindingEvidence": "Root153 confirmed no approved authoritative production giveaway/media/motif/rights mapping has arrived in its active handoffs; this is not a global absence audit.",
+  "limits": [
+    "No production binding or live media/cache/stock acceptance.",
+    "Window-controls public palette followup remains separately pending; publication does not certify later consumer changes."
+  ]
+}

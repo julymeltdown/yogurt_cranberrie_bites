@@ -1,0 +1,113 @@
+{
+  "allocation": "FE209-NATIVE-202611041440Z",
+  "run": "native1",
+  "source": "5095f18a6e02b52c63ca75923d3a82ae23d49dce",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 388,
+    "bytes": 2727822,
+    "temporaryBytes": 0,
+    "freeBytes": 26493632512
+  },
+  "jobs": [
+    {
+      "name": "changed-fixture-tsc",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/feed-entry/__tests__/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:40:43.425Z",
+      "milliseconds": 3566
+    },
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:40:47.018Z",
+      "milliseconds": 28
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T14:40:47.072Z",
+      "milliseconds": 25
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 1,
+      "signal": null,
+      "startUTC": "2026-11-04T14:40:47.513Z",
+      "milliseconds": 31286
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T14:40:47.144Z",
+      "milliseconds": 31688
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "FAILED",
+  "cssInputs": [
+    {
+      "revision": "1a90734394540b2f4ba7303c02e973a730baa2c6",
+      "sha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "file": "<PRIVATE_CARRY>/feed-native1-feed-owner.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+      "sha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "file": "<PRIVATE_CARRY>/feed-native1-root-owner.css",
+      "readonlyBorrow": true
+    }
+  ],
+  "error": "Failed native; retain evidence and repair only inside the accepted lease",
+  "final": {
+    "files": 396,
+    "bytes": 2742426,
+    "temporaryBytes": 0,
+    "freeBytes": 26486824960
+  },
+  "releasedUTC": "2026-11-04T14:41:18.836Z",
+  "linkRemoved": true,
+  "peakProcesses": 11,
+  "peakRssBytes": 2282684416
+}

@@ -1,0 +1,100 @@
+{
+  "assignment": "QA10-RELEASE-SOURCE-01",
+  "candidate": "24fa26b7a9f4934bf8f02e59c1cdd6d3cc039a02",
+  "tree": "e7cebb424ffe7ce5211ed671ca808d70573deb42",
+  "scope": "Offline source checker validation only; no application/live/release acceptance.",
+  "python": "3.14.3",
+  "status": "PASS_FOR_DECLARED_CHECKER_REGRESSIONS",
+  "commands": [
+    {
+      "id": "selftests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/mcr/release_checks",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:06:53.190792+00:00",
+      "elapsedSeconds": 6.621801,
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "log": "selftests.log",
+      "logSha256": "19d9dbae2e0950aee26af5ab2159743d6b16a313009539bdea8d555b7a430acd"
+    },
+    {
+      "id": "no-manifest",
+      "argv": [
+        "scripts/mcr/release-check.sh",
+        "--candidate",
+        "24fa26b7a9f4934bf8f02e59c1cdd6d3cc039a02"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:06:59.812845+00:00",
+      "elapsedSeconds": 0.525733,
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "log": "no-manifest.log",
+      "logSha256": "7af4a3c88e49c9adf923a5a82291044233e956329dba2324a8e2dcb47d5eaefa",
+      "status": "INCOMPLETE",
+      "findings": [
+        "manifest.NOT_RUN"
+      ]
+    },
+    {
+      "id": "stale-frontend",
+      "argv": [
+        "scripts/mcr/release-check.sh",
+        "--candidate",
+        "24fa26b7a9f4934bf8f02e59c1cdd6d3cc039a02",
+        "--manifest",
+        "scripts/mcr/release_checks/evidence/source-01/stale-frontend-input.json"
+      ],
+      "cwd": ".",
+      "startedUtc": "2026-11-04T15:07:00.338701+00:00",
+      "elapsedSeconds": 0.126525,
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "log": "stale-frontend.log",
+      "logSha256": "46d9efa8687bd6f4105bdfdf4f15db14b0b70f62cf7476e13767f55573a49c29",
+      "status": "FAIL",
+      "findings": [
+        "candidate.mismatch"
+      ]
+    }
+  ],
+  "checks": {
+    "unitTests": 30,
+    "missingManifestRemainsIncomplete": true,
+    "historicalFrontendCannotQualifyCurrentCandidate": true
+  },
+  "sourceSha256": {
+    "scripts/mcr/release-check.sh": "f7d20712a3900f1bedc1e07acebe4bd617f9a6e9de527b17cb4c268ae449f3fd",
+    "scripts/mcr/release_checks/check.py": "35ef0d454fd771624a9c34278ee4b5ffdcc2df49c996a143383110d9398d274f",
+    "scripts/mcr/release_checks/test_check.py": "5dc83a9fc71f84c73841bf8c92994ecf12e589a8e9dbef3a58437ec9ec059179"
+  },
+  "releaseStatus": "INCOMPLETE",
+  "originalQA08": "PARTIAL",
+  "earlierValidation": [
+    {
+      "command": "python3 -B -m unittest discover -s scripts/mcr/release_checks -p test_*.py -v",
+      "exitCode": 1,
+      "finding": "Intermediate Python indentation error during inventory hardening; corrected before this frozen source."
+    },
+    {
+      "command": "bash -n scripts/mcr/release-check.sh",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 -B scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "scope": "Planning provenance only;112required/61IA, no application validation."
+    }
+  ]
+}
