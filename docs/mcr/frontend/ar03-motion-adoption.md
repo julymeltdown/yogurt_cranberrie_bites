@@ -9,7 +9,7 @@ Assignment base: `6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd`.
 Checkout branch: `codex/mcr-fe-AR03-motion-adoption`. The preceding art branch is
 preserved. Publication is through the designated frontend delivery integrator,
 chat `01a1a153-1227-7e72-801f-a2a6b91981e1`; the implementation owner does not
-directly push master. A queued checkpoint does not complete the active goal.
+directly push master. A queued checkpoint does not complete the original goal, whose recorded status is BLOCKED on production admission dependencies.
 
 ## Implemented consumer core
 
@@ -244,3 +244,56 @@ match the source commits exactly, and all 34 published producer inputs match
 the consumer's byte/hash pins. The source candidate remains ineligible and
 has no admitted content hash. The QA06 layout follow-up requires its own
 subsequent committed handoff and publication receipt.
+
+
+## Reviewed-successor consumer checkpoint
+
+Producer commit `0dd9f443945e6d6232728280d03e83933ac0eef2` supplies a
+separate reviewed identity, `mcr_selected_motion_reviewed_20261104`, revision 2,
+contract 2.0.0. It does not amend the immutable version-1 candidate. The actual
+new config and manifest schemas are under `contracts/assets/v2/reviewed/`, with
+unique `ReviewedMotionAvatarConfig` and `ReviewedMotionAvatarManifest` definitions.
+`reviewed-inputs.json` pins all 36 consumed schema, manifest, fixture and review
+inputs by byte length and SHA-256. Tests use those exact Git objects until the
+paths are published, then require the same hashes from the checkout.
+
+The manifest's raw SHA-256 is
+`1342f2b640a8135c2f128713fe1f59adc0b6da8b925a0ac84808b2d8d1ec884d`;
+its distinct canonical `content_hash` is
+`sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018`.
+The consumer verifies the complete canonical body against that fixed expected
+identity/revision/hash, including review, originals, art, palettes and UV maps.
+Object, pretty JSON and canonical JSON forms produce the same verification.
+Private fields, duplicate keys, altered resources, flags, inventory, and
+self-rehashed replacement documents are rejected. Strict configuration decoding
+preserves required nullable outfit/accessory keys and rejects candidate-family
+aliases. No independent skin identifier is introduced.
+
+`reviewed-manifest.ts` returns only an opaque `STAGED_NOT_ADMITTED` value.
+Its fixture authority is explicitly `TEST_ONLY`, including when the manifest
+contains `production_eligible:true` and `qualification:VISUALLY_REVIEWED`.
+Those staged fields cannot allocate a production runtime or certify backend
+resource/persistence/bootstrap/PostgreSQL gates. Each of the six actual embedded
+preset configs is checked against the frozen artwork and reviewed identity;
+all 6,720 layered combinations round-trip independently of the old candidate.
+
+The latest checkpoint passed seven commands: 97 unit cases, 22 scoped TS files
+and 761 application TS files with zero diagnostics, lint, fixture bundle,
+planning, and UI-origin checks. Commands and exit codes are in `checks.json`;
+`reviewed-successor-checkpoint.json` records precise scope and limits. No native
+browser run was repeated for this decoder-only change. Earlier candidate native
+captures remain historical evidence of that unchanged fixture, not reviewed
+production captures. No public parser, generated wire type, bootstrap validator,
+root registry, artwork, backend or shared contract changed in this checkpoint.
+
+World allocated the four-file canonical frontend boundary to the separate
+Community26e writer. This owner retains the five assigned whole-admission
+functions and will consume the committed generated canonical type before editing
+them. The exact generated `AvatarState['config']` equality guard stays intact.
+Production Root integration, save/reload against the real service, two-account
+World and device checks remain NOT_RUN; the original AR03 goal is unfinished.
+
+The prior QA06 source `228e1cd4` is now verified published as
+`6518d793921bf86854837a5d81cf174f01b5d969`, with all 23 payload blobs matching
+source and all 28 source pins intact. That receipt does not publish this newer
+reviewed-successor helper checkpoint.

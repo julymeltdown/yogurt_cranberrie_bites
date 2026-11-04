@@ -43,17 +43,13 @@
       "command": "<node24> <checkout>/scripts/mcr/check-ui-origin.mjs",
       "exit": 0,
       "error": null
-    },
-    {
-      "name": "native",
-      "command": "<node24> <checkout>/frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs",
-      "exit": 0,
-      "error": null
     }
   ],
   "sourcePins": {
     "frontend/src/entities/avatar/runtime/motion-adoption/art.ts": "3bc23478c870cf61894d99c735d38ec9ea76a981ee3582bb1fa7e7ad666f4d47",
     "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts": "450a5f52f167e062edbabf6f49cded29c2c7791a937942640ba318092eba6283",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "e0ef0a99005364a7b77a177b1ff15b1101e3cad4a7f5d7af3843382332628eb0",
     "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts": "29a5d283ff994a006893ab5bae52752aac88214324c79ff8ee1b8c789d6f9dc2",
     "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts": "f807e183cfb529e953c4a01f57c3ba2ec4c2aca3d36bd0d02b5ba2de5246dee5",
     "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts": "6e12736e28fed01b20c0a309b6e8a15d05c439f65af5ba77fbe4b8a884b13167",
@@ -66,9 +62,11 @@
     "frontend/src/world/avatar/__tests__/motion-adoption/art.test.ts": "f18c432790522ff6c25dd4143ec81726032acda127f62608f6aa026707f46534",
     "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "f71df7efab72d592498885075cd44a7195a251ed71c856ed2b3a4f13a2e6d7be",
     "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json": "9dfe89ee8597452a26bc7b14ebc6a2c0f17d8dd93964daebea668e461654a0aa",
-    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.ts": "fbbd27d5fa3b9ccf1bb06dbd3eaedc2457114919c2e55da460e17c39d8f82e02",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.ts": "e842597a36803de08a23e1abc2622bc9de9a457198aa2e8019e2611b3d9e6e31",
     "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "d9c1e0e203ab586e387ef6f2af29c7b0797547a94951c12bb8f5f7fd0774d556",
     "frontend/src/world/avatar/__tests__/motion-adoption/renderer.test.ts": "9a0e72545ce54d296114dd3847d9b249b98b22c35f623f3584dac41dbfffb665",
+    "frontend/src/world/avatar/__tests__/motion-adoption/reviewed-inputs.json": "0f5b0dd962be2ff9e162cb6b7f9e0453a653a0f09a06acd89bb0023e9230ad87",
+    "frontend/src/world/avatar/__tests__/motion-adoption/reviewed.test.ts": "da0f5ac7b793ed7f7c3adea945a7c27556e76deb6c01b8a006d64799bc30e8a1",
     "frontend/src/world/avatar/__tests__/motion-adoption/test-authority.ts": "88a37fcccf152f6e03c8a6a13909f070892686cb4df4047254af9a5fffde97e0",
     "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs": "4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1",
     "frontend/src/world/avatar/__tests__/motion-adoption/v2-producer.test.ts": "77160adcd097bcf14d3aa7804dc58d99e10f63fbebdc616b71e3230344b7dc72",
