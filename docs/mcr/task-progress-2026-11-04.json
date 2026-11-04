@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-04T10:52:38+09:00",
-  "published_snapshot": "18b6155081fbd7529cbd32d49eb12fd5d7606353",
+  "updated_at": "2026-11-04T10:55:41+09:00",
+  "published_snapshot": "047d892cc6ad5eec6125322b84cf1efc2380078f",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 68,
+    "IMPLEMENTATION_EVIDENCED": 67,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 18,
+    "TASK_CRITERIA_SATISFIED": 19,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 30,
+  "recorded_task_criteria_outcomes": 31,
   "implementation_percentage": null,
   "limitations": [
-    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 18 original-task criteria closures preserve the owners' exact dispositions, including FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
-    "68 denotes other evidence-bearing tasks, not 68 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 19 original-task criteria closures preserve the owners' exact dispositions, including FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
+    "67 denotes other evidence-bearing tasks, not 67 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
     "9 unreconciled task statuses are not assumed NOT_STARTED.",
     "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
     "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
@@ -1259,13 +1259,18 @@
       "id": "QA07",
       "title": "Accessibility and input suite",
       "lane": "QA",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/ui-primitives.md",
-        "docs/mcr/qa/reference-integrated.md"
+        "docs/mcr/evidence/accessibility/qa07/README.md",
+        "docs/mcr/evidence/accessibility/qa07/publication.json"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "Implementation owner explicitly declares original QA07 criteria SATISFIED at task-local MOCK_READY. Original keyboard/focus/screen-reader labels, DOM alternatives, reduced motion, pointer cancellation and essential social/pickup interactions are delivered. Three actual FE15/FE36 defects were fixed by their implementation owners and requalified. Actual goal COMPLETE followed by null, clean STOP and returned ownership; no king/SL validation.",
+      "known_followup": "Actual screen-reader announcements, physical-device and real two-principal/service/production/IN release checks remain NOT_RUN under separate criteria; they are not invented prerequisites for original QA07 screen-reader labels and client input requirements.",
+      "published_integration_commits": [
+        "41f7c64c1c4bea6615c5eb1058e42d703fb77541",
+        "ced8ec124a3c9fb3443a2bc69d69055d64a6fd7b"
+      ]
     },
     {
       "id": "QA08",
@@ -1413,6 +1418,13 @@
       "owner_chat": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
       "receipt_commit": "a84885f26b973a5cd49afbb29c86888563265924",
       "disposition": "INTEGRATED; implementation owner explicitly closes original FE15 client/application remainder, no FE15-owned behavior remains; actual goal complete, null/clean STOP and leases returned. Separate live/device/QA/IN criteria are not added to this task."
+    },
+    {
+      "recorded_at": "2026-11-04T10:55:41+09:00",
+      "task": "QA07",
+      "owner_chat": "01a1a230-6acc-7e82-9e4b-92506decc745",
+      "receipt_commit": "ced8ec124a3c9fb3443a2bc69d69055d64a6fd7b",
+      "disposition": "SATISFIED at task-local MOCK_READY; original accessibility/input criteria explicitly closed by implementation owner, published artifact 41f7c64c and receipt ced8ec12, actual goal COMPLETE then null/clean STOP and ownership returned. Separate live/device/release limits preserved."
     }
   ]
 }

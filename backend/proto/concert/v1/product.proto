@@ -17,6 +17,10 @@ message ProductRequest {
   int64 auth_observed_at_unix_micros = 11;
   int64 profile_observed_at_unix_micros = 12;
   int64 access_expires_unix_micros = 13;
+  // Optional stable privacy HMAC, derived only from Gateway's typed actual
+  // transport address using a dedicated key. The exact signed request binds it.
+  // Empty means unavailable; raw IP and browser-selected buckets are forbidden.
+  bytes trusted_network_bucket = 14;
 }
 
 message ProductResponse {
@@ -24,6 +28,10 @@ message ProductResponse {
   string content_type = 2;
   bytes body = 3;
   ResponseDelivery delivery = 4; // Internal only; NEVER serialize into HTTP JSON/headers.
+  // Actual root-wide disclosure ceiling, clipped by every retained private
+  // child. Gateway checks it before each HTTP data frame, using the original
+  // access monotonic stop as an additional ceiling. Zero is not authority.
+  int64 content_expires_unix_micros = 5;
 }
 
 // Completion is a separate bounded system operation, never renewed content

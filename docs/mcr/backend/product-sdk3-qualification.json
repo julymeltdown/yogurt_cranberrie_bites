@@ -1,0 +1,131 @@
+{
+  "binaries": [
+    {
+      "name": "concert_service",
+      "sha256": "2686efa3fd2c35b2ad69c201bb495de07863510fc7e485eb50c3c69334bfc06d"
+    },
+    {
+      "name": "product_scope_ledger",
+      "sha256": "21423a6c824927b58baec8fa9df5cdd40ce1aeeb5f33d3515016a7c371634ca1"
+    },
+    {
+      "name": "product_runtime",
+      "sha256": "0373d3e7160604d83e889ab74ed975258a8da0025467bbabac448cafe220591f"
+    },
+    {
+      "name": "api_gateway",
+      "sha256": "e4173fa474cb0e8b8852a17c05630aaf5f8e03ef5ae6223d6d0c109b9111e3cc"
+    }
+  ],
+  "flags": {
+    "debug": "0",
+    "incremental": "0",
+    "jobs": 2,
+    "locked": true,
+    "offline": true,
+    "rust": "1.88.0"
+  },
+  "focused": [
+    {
+      "exit_code": 0,
+      "label": "gateway-product",
+      "summary": [
+        "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 126 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "label": "gateway-typed-address",
+      "summary": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 131 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "label": "concert-product",
+      "summary": [
+        "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 81 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "label": "concert-child-shape",
+      "summary": [
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 85 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "label": "product-runtime",
+      "summary": [
+        "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.70s"
+      ]
+    }
+  ],
+  "format": "MCR_SDK3_QUALIFICATION_V1",
+  "ledger_native": {
+    "artifact_receipt_sha256": "da0aea873041a2c4c5c96006f40716320cd3d78e09d1d3edb8f770229153e546",
+    "artifact_sha256": "21423a6c824927b58baec8fa9df5cdd40ce1aeeb5f33d3515016a7c371634ca1",
+    "canonical_owner_rpc": "NOT_RUN",
+    "cleanup": "PASS",
+    "commands": {
+      "active-cannot-finish": 1,
+      "apply-gift-child-migration": 0,
+      "apply-migration": 0,
+      "binding-immutable": 1,
+      "child-cannot-complete-before-root": 1,
+      "child-cannot-rebind": 1,
+      "child-evidence-cannot-delete": 1,
+      "closed-gift-child-kind": 0,
+      "completed-child-cannot-change-ciphertext": 1,
+      "completed-child-cannot-reopen": 1,
+      "confirmed-transaction-immutable": 1,
+      "delivery-cannot-clear": 1,
+      "delivery-cannot-rotate": 1,
+      "delivery-needs-all-children": 1,
+      "finished-cannot-reopen": 1,
+      "late-child-denied": 1,
+      "late-transaction-denied": 1,
+      "native-rust-ledger": 0,
+      "partial-tracking-cannot-confirm": 1,
+      "restart-and-unknown-retention": 0,
+      "restart-retains-child-intent": 0,
+      "scope-evidence-cannot-delete": 1,
+      "sealed-cannot-reopen": 1,
+      "serialization-does-not-finish": 0,
+      "serialization-needs-delivery": 1,
+      "settled-child-allows-completion": 0,
+      "tracking-cannot-relabel": 1,
+      "transaction-evidence-cannot-delete": 1,
+      "unexposed-acquisition-cleanup": 0,
+      "unknown-child-kind-denied": 1
+    },
+    "gateway_http": "NOT_RUN",
+    "gift_migration_sha256": "f04b84163337152c63a71867d5d07550c6c1d7f4d2f6c97ac0c1466ba2cf5a97",
+    "migration_sha256": "8cbd027b83a7438e8e99578b8b8179944786ca399e0509f64cc2fbc48d0e28e9",
+    "native_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "passed": 5
+    },
+    "postgres_version": "16.14 (Homebrew)",
+    "result": "PASS",
+    "rust_ledger": "PASS",
+    "scope": "durable scope SQL invariants only"
+  },
+  "limits": [
+    "Gateway disclosure tests use explicit completion counter double, not canonical owner HTTP.",
+    "Root/Gateway actual public flow and opt-in production modes remain closed.",
+    "In01 catalog binary command was not compiled by these four targets.",
+    "Gift private native qualification is owned by Gift and not inferred from this build."
+  ],
+  "release": {
+    "artifact_count": 4,
+    "free_bytes": 56209567744,
+    "released_at_unix": 1793757337.819044,
+    "source_commit": "5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395",
+    "target_handles": 0
+  },
+  "source_commit": "5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395",
+  "source_count": 1885
+}

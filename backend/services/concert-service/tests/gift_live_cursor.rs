@@ -3,20 +3,24 @@ use concert_service::gift_live::cursor::*;
 use std::collections::BTreeMap;
 use uuid::Uuid;
 
-fn fixture() -> (CursorCodec, CursorBinding, Position) {
+fn fixture() -> (CursorCodec, CursorBinding, Window) {
     (
         CursorCodec::new(&[37; 32]).unwrap(),
         CursorBinding {
             actor: Uuid::new_v4(),
             event: Uuid::new_v4(),
             collection: Collection::Public,
+            operation: "listConcertGiveaways".into(),
             giveaway: None,
             filters: BTreeMap::from([("state".into(), "OPEN".into())]),
             limit: 20,
         },
-        Position::Gift {
-            created_at: Utc::now() - Duration::seconds(1),
-            id: Uuid::new_v4(),
+        Window {
+            upper: Utc::now(),
+            position: Position::Gift {
+                created_at: Utc::now() - Duration::seconds(1),
+                id: Uuid::new_v4(),
+            },
         },
     )
 }
@@ -103,10 +107,17 @@ fn management_target_and_position_types_cannot_be_substituted() {
     let (codec, mut b, p) = fixture();
     let now = Utc::now();
     b.collection = Collection::Management;
+    b.operation = "getConcertGiveawayManagement".into();
     b.filters.clear();
     b.giveaway = Some(Uuid::new_v4());
     assert!(codec.seal(&b, p, now).is_err());
-    let reservation = Position::Reservation { id: Uuid::new_v4() };
+    let reservation = Window {
+        upper: now,
+        position: Position::Reservation {
+            created_at: now - Duration::seconds(1),
+            id: Uuid::new_v4(),
+        },
+    };
     let token = codec.seal(&b, reservation, now).unwrap();
     assert_eq!(codec.open(&b, &token, now).unwrap(), reservation);
     b.giveaway = Some(Uuid::new_v4());
@@ -114,7 +125,29 @@ fn management_target_and_position_types_cannot_be_substituted() {
     b.giveaway = None;
     assert!(codec.seal(&b, reservation, now).is_err());
     b.collection = Collection::Receiving;
+    b.operation = "getConcertGiftActivity".into();
     assert!(codec.seal(&b, reservation, now).is_ok());
     b.filters.insert("cursor".into(), "nested".into());
     assert!(codec.seal(&b, reservation, now).is_err());
+}
+
+#[test]
+fn snapshot_boundary_is_preserved_and_future_positions_are_rejected() {
+    let (codec, binding, mut window) = fixture();
+    let now = Utc::now();
+    let token = codec.seal(&binding, window, now).unwrap();
+    let opened = codec
+        .open(&binding, &token, now + Duration::seconds(10))
+        .unwrap();
+    assert_eq!(
+        opened.upper, window.upper,
+        "pagination never slides its snapshot"
+    );
+    window.position = Position::Gift {
+        created_at: window.upper + Duration::microseconds(1),
+        id: Uuid::new_v4(),
+    };
+    assert!(codec.seal(&binding, window, now).is_err());
+    window.upper = now + Duration::seconds(1);
+    assert!(codec.seal(&binding, window, now).is_err());
 }

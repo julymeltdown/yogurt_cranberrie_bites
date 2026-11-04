@@ -49,6 +49,16 @@ impl HttpConcertAccess {
             .map_err(|_| GatewayError::unauthorized("Invalid bearer token"))
     }
 
+    /// Preserve the sealed access expiry and original monotonic request stop
+    /// when checking the final product body. This cannot renew either limit.
+    pub fn rpc_deadline(
+        &self,
+    ) -> Result<platform::actor_delegation::authority_deadline::AuthorityRpcDeadline, GatewayError> {
+        self.0
+            .rpc_deadline()
+            .map_err(|_| GatewayError::unauthorized("Invalid bearer token"))
+    }
+
     /// Borrow the original sealed input for configured owner composition. Every
     /// owner read and observation still checks the same original context.
     pub fn borrowed(&self) -> Result<&ConcertAccessContext, GatewayError> {

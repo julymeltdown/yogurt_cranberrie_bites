@@ -1,0 +1,2643 @@
+{
+  "$schema": "https://jerboa.dev/schemas/fx-composition/editable/v1/document.schema.json",
+  "formatVersion": 1,
+  "dimensions": {
+    "width": 768,
+    "height": 1296
+  },
+  "colorManagement": {
+    "workingSpace": "legacyDisplay"
+  },
+  "duration": 3,
+  "composition": {
+    "id": "main",
+    "name": "PARADE WORLD editable scenery, no characters or baked map labels",
+    "layers": [
+      {
+        "id": 35,
+        "name": "rooted_tree_10",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10034,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 8,
+                  "y": 1137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 174,
+                  "y": 1137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 174,
+                  "y": 1281
+                },
+                {
+                  "type": "lineTo",
+                  "x": 8,
+                  "y": 1281
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.7539267015706806
+              ],
+              "contentCenter": [
+                352.24590163934425,
+                1691.890052356021
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 34,
+        "name": "giveaway_pavilion",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10033,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 440,
+                  "y": 1044
+                },
+                {
+                  "type": "lineTo",
+                  "x": 676,
+                  "y": 1044
+                },
+                {
+                  "type": "lineTo",
+                  "x": 676,
+                  "y": 1250
+                },
+                {
+                  "type": "lineTo",
+                  "x": 440,
+                  "y": 1250
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.9672131147540983,
+                1.1444444444444444
+              ],
+              "contentCenter": [
+                1177.0163934426228,
+                1586.4666666666667
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 33,
+        "name": "grove_east_exit",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10032,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 643,
+                  "y": 1070
+                },
+                {
+                  "type": "lineTo",
+                  "x": 807,
+                  "y": 1070
+                },
+                {
+                  "type": "lineTo",
+                  "x": 807,
+                  "y": 1224
+                },
+                {
+                  "type": "lineTo",
+                  "x": 643,
+                  "y": 1224
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6721311475409836,
+                0.7817258883248731
+              ],
+              "contentCenter": [
+                1155.1639344262294,
+                1647.6954314720813
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 32,
+        "name": "grove_south_lawn",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10031,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 261,
+                  "y": 1018
+                },
+                {
+                  "type": "lineTo",
+                  "x": 451,
+                  "y": 1018
+                },
+                {
+                  "type": "lineTo",
+                  "x": 451,
+                  "y": 1192
+                },
+                {
+                  "type": "lineTo",
+                  "x": 261,
+                  "y": 1192
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7786885245901639,
+                0.8923076923076924
+              ],
+              "contentCenter": [
+                1053.7049180327867,
+                1676.523076923077
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 31,
+        "name": "rooted_tree_08",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10030,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 40,
+                  "y": 983
+                },
+                {
+                  "type": "lineTo",
+                  "x": 206,
+                  "y": 983
+                },
+                {
+                  "type": "lineTo",
+                  "x": 206,
+                  "y": 1148
+                },
+                {
+                  "type": "lineTo",
+                  "x": 40,
+                  "y": 1148
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8375634517766497
+              ],
+              "contentCenter": [
+                558.4098360655737,
+                1601.959390862944
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 30,
+        "name": "grove_east_lower",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10029,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 636,
+                  "y": 868
+                },
+                {
+                  "type": "lineTo",
+                  "x": 812,
+                  "y": 868
+                },
+                {
+                  "type": "lineTo",
+                  "x": 812,
+                  "y": 1032
+                },
+                {
+                  "type": "lineTo",
+                  "x": 636,
+                  "y": 1032
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7213114754098361,
+                0.8586387434554974
+              ],
+              "contentCenter": [
+                1000.983606557377,
+                1499.958115183246
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 29,
+        "name": "meeting_pavilion",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10028,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 256,
+                  "y": 779
+                },
+                {
+                  "type": "lineTo",
+                  "x": 492,
+                  "y": 779
+                },
+                {
+                  "type": "lineTo",
+                  "x": 492,
+                  "y": 985
+                },
+                {
+                  "type": "lineTo",
+                  "x": 256,
+                  "y": 985
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.9672131147540983,
+                1.1444444444444444
+              ],
+              "contentCenter": [
+                1240.622950819672,
+                1321.4666666666667
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 28,
+        "name": "grove_west_bottom",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10027,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -49,
+                  "y": 804
+                },
+                {
+                  "type": "lineTo",
+                  "x": 123,
+                  "y": 804
+                },
+                {
+                  "type": "lineTo",
+                  "x": 123,
+                  "y": 968
+                },
+                {
+                  "type": "lineTo",
+                  "x": -49,
+                  "y": 968
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7049180327868853,
+                0.8586387434554974
+              ],
+              "contentCenter": [
+                307.6885245901639,
+                1435.958115183246
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 27,
+        "name": "rooted_tree_09",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10026,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 594,
+                  "y": 809
+                },
+                {
+                  "type": "lineTo",
+                  "x": 760,
+                  "y": 809
+                },
+                {
+                  "type": "lineTo",
+                  "x": 760,
+                  "y": 953
+                },
+                {
+                  "type": "lineTo",
+                  "x": 594,
+                  "y": 953
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.7539267015706806
+              ],
+              "contentCenter": [
+                938.2459016393443,
+                1363.890052356021
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 26,
+        "name": "grove_west_lower",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10025,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -55,
+                  "y": 682
+                },
+                {
+                  "type": "lineTo",
+                  "x": 127,
+                  "y": 682
+                },
+                {
+                  "type": "lineTo",
+                  "x": 127,
+                  "y": 856
+                },
+                {
+                  "type": "lineTo",
+                  "x": -55,
+                  "y": 856
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7459016393442623,
+                0.8923076923076924
+              ],
+              "contentCenter": [
+                704.3278688524591,
+                1340.523076923077
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 25,
+        "name": "grove_east_connector",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10024,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 654,
+                  "y": 678
+                },
+                {
+                  "type": "lineTo",
+                  "x": 796,
+                  "y": 678
+                },
+                {
+                  "type": "lineTo",
+                  "x": 796,
+                  "y": 824
+                },
+                {
+                  "type": "lineTo",
+                  "x": 654,
+                  "y": 824
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.5819672131147541,
+                0.7487179487179487
+              ],
+              "contentCenter": [
+                1246.4426229508197,
+                1230.5538461538463
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 24,
+        "name": "food_counters",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10023,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 568,
+                  "y": 611
+                },
+                {
+                  "type": "lineTo",
+                  "x": 758,
+                  "y": 611
+                },
+                {
+                  "type": "lineTo",
+                  "x": 758,
+                  "y": 775
+                },
+                {
+                  "type": "lineTo",
+                  "x": 568,
+                  "y": 775
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.8296943231441049,
+                0.9010989010989011
+              ],
+              "contentCenter": [
+                1406.82096069869,
+                808.3406593406594
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 23,
+        "name": "merch_venue_hall",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10022,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 8,
+                  "y": 551
+                },
+                {
+                  "type": "lineTo",
+                  "x": 220,
+                  "y": 551
+                },
+                {
+                  "type": "lineTo",
+                  "x": 220,
+                  "y": 731
+                },
+                {
+                  "type": "lineTo",
+                  "x": 8,
+                  "y": 731
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.8688524590163934,
+                1.0
+              ],
+              "contentCenter": [
+                447.6393442622951,
+                1025.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 22,
+        "name": "rooted_tree_07",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10021,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 5,
+                  "y": 535
+                },
+                {
+                  "type": "lineTo",
+                  "x": 171,
+                  "y": 535
+                },
+                {
+                  "type": "lineTo",
+                  "x": 171,
+                  "y": 697
+                },
+                {
+                  "type": "lineTo",
+                  "x": 5,
+                  "y": 697
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8307692307692308
+              ],
+              "contentCenter": [
+                697.5737704918032,
+                1148.1076923076923
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 21,
+        "name": "rooted_tree_11",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10020,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 410,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 576,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 576,
+                  "y": 617
+                },
+                {
+                  "type": "lineTo",
+                  "x": 410,
+                  "y": 617
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8307692307692308
+              ],
+              "contentCenter": [
+                1102.5737704918033,
+                1068.1076923076923
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 20,
+        "name": "grove_east_middle",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10019,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 649,
+                  "y": 472
+                },
+                {
+                  "type": "lineTo",
+                  "x": 801,
+                  "y": 472
+                },
+                {
+                  "type": "lineTo",
+                  "x": 801,
+                  "y": 616
+                },
+                {
+                  "type": "lineTo",
+                  "x": 649,
+                  "y": 616
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6229508196721312,
+                0.7384615384615385
+              ],
+              "contentCenter": [
+                1283.1639344262294,
+                1016.9846153846154
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 19,
+        "name": "rooted_tree_06",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10018,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 640,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 580
+                },
+                {
+                  "type": "lineTo",
+                  "x": 640,
+                  "y": 580
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.5245901639344263,
+                0.6410256410256411
+              ],
+              "contentCenter": [
+                1174.032786885246,
+                928.0769230769231
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 18,
+        "name": "west_white_merch",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10017,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 160,
+                  "y": 381
+                },
+                {
+                  "type": "lineTo",
+                  "x": 292,
+                  "y": 381
+                },
+                {
+                  "type": "lineTo",
+                  "x": 292,
+                  "y": 535
+                },
+                {
+                  "type": "lineTo",
+                  "x": 160,
+                  "y": 535
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6,
+                0.6875
+              ],
+              "contentCenter": [
+                610.0,
+                1074.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 17,
+        "name": "grove_west_middle",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10016,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -40,
+                  "y": 334
+                },
+                {
+                  "type": "lineTo",
+                  "x": 144,
+                  "y": 334
+                },
+                {
+                  "type": "lineTo",
+                  "x": 144,
+                  "y": 504
+                },
+                {
+                  "type": "lineTo",
+                  "x": -40,
+                  "y": 504
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7540983606557377,
+                0.8629441624365483
+              ],
+              "contentCenter": [
+                534.622950819672,
+                971.7157360406092
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 16,
+        "name": "culture_park_plaque",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10015,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 585,
+                  "y": 319
+                },
+                {
+                  "type": "lineTo",
+                  "x": 741,
+                  "y": 319
+                },
+                {
+                  "type": "lineTo",
+                  "x": 741,
+                  "y": 415
+                },
+                {
+                  "type": "lineTo",
+                  "x": 585,
+                  "y": 415
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6782608695652174,
+                0.4824120603015075
+              ],
+              "contentCenter": [
+                749.8173913043478,
+                799.4824120603015
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 15,
+        "name": "rooted_tree_04",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10014,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 2,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 168,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 168,
+                  "y": 382
+                },
+                {
+                  "type": "lineTo",
+                  "x": 2,
+                  "y": 382
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8307692307692308
+              ],
+              "contentCenter": [
+                694.5737704918032,
+                833.1076923076923
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 14,
+        "name": "main_stage",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10013,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 160,
+                  "y": 37
+                },
+                {
+                  "type": "lineTo",
+                  "x": 460,
+                  "y": 37
+                },
+                {
+                  "type": "lineTo",
+                  "x": 460,
+                  "y": 373
+                },
+                {
+                  "type": "lineTo",
+                  "x": 160,
+                  "y": 373
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                1.2396694214876034,
+                1.3770491803278688
+              ],
+              "contentCenter": [
+                1420.7438016528927,
+                1438.8360655737704
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 13,
+        "name": "rooted_tree_05",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10012,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 634,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 354
+                },
+                {
+                  "type": "lineTo",
+                  "x": 634,
+                  "y": 354
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.5491803278688525,
+                0.6802030456852792
+              ],
+              "contentCenter": [
+                1052.4754098360656,
+                722.6700507614214
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 12,
+        "name": "cross_banner_east",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10011,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 522,
+                  "y": 141
+                },
+                {
+                  "type": "lineTo",
+                  "x": 572,
+                  "y": 141
+                },
+                {
+                  "type": "lineTo",
+                  "x": 572,
+                  "y": 275
+                },
+                {
+                  "type": "lineTo",
+                  "x": 522,
+                  "y": 275
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.4098360655737705,
+                0.5851528384279476
+              ],
+              "contentCenter": [
+                704.3770491803278,
+                283.1921397379913
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 11,
+        "name": "grove_west_upper",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10010,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -50,
+                  "y": 98
+                },
+                {
+                  "type": "lineTo",
+                  "x": 124,
+                  "y": 98
+                },
+                {
+                  "type": "lineTo",
+                  "x": 124,
+                  "y": 264
+                },
+                {
+                  "type": "lineTo",
+                  "x": -50,
+                  "y": 264
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7131147540983607,
+                0.8512820512820513
+              ],
+              "contentCenter": [
+                675.9508196721312,
+                726.2461538461538
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 10,
+        "name": "grove_east_court",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10009,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 645,
+                  "y": 74
+                },
+                {
+                  "type": "lineTo",
+                  "x": 805,
+                  "y": 74
+                },
+                {
+                  "type": "lineTo",
+                  "x": 805,
+                  "y": 232
+                },
+                {
+                  "type": "lineTo",
+                  "x": 645,
+                  "y": 232
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6557377049180327,
+                0.8020304568527918
+              ],
+              "contentCenter": [
+                1144.672131147541,
+                666.7005076142132
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 9,
+        "name": "north_white_food",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10008,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 665,
+                  "y": 31
+                },
+                {
+                  "type": "lineTo",
+                  "x": 765,
+                  "y": 31
+                },
+                {
+                  "type": "lineTo",
+                  "x": 765,
+                  "y": 151
+                },
+                {
+                  "type": "lineTo",
+                  "x": 665,
+                  "y": 151
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.44052863436123346,
+                0.5357142857142857
+              ],
+              "contentCenter": [
+                884.3832599118942,
+                571.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 8,
+        "name": "rooted_tree_03",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10007,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 558,
+                  "y": -28
+                },
+                {
+                  "type": "lineTo",
+                  "x": 724,
+                  "y": -28
+                },
+                {
+                  "type": "lineTo",
+                  "x": 724,
+                  "y": 137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 558,
+                  "y": 137
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8375634517766497
+              ],
+              "contentCenter": [
+                1076.4098360655737,
+                590.9593908629441
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 7,
+        "name": "rooted_tree_02",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10006,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 328,
+                  "y": -25
+                },
+                {
+                  "type": "lineTo",
+                  "x": 494,
+                  "y": -25
+                },
+                {
+                  "type": "lineTo",
+                  "x": 494,
+                  "y": 137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 328,
+                  "y": 137
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8223350253807107
+              ],
+              "contentCenter": [
+                498.08196721311475,
+                582.7055837563452
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "name": "rooted_tree_01",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10005,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 146,
+                  "y": -22
+                },
+                {
+                  "type": "lineTo",
+                  "x": 312,
+                  "y": -22
+                },
+                {
+                  "type": "lineTo",
+                  "x": 312,
+                  "y": 137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 146,
+                  "y": 137
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8071065989847716
+              ],
+              "contentCenter": [
+                316.08196721311475,
+                574.4517766497462
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "name": "grove_north_gap",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10004,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 428,
+                  "y": -30
+                },
+                {
+                  "type": "lineTo",
+                  "x": 604,
+                  "y": -30
+                },
+                {
+                  "type": "lineTo",
+                  "x": 604,
+                  "y": 136
+                },
+                {
+                  "type": "lineTo",
+                  "x": 428,
+                  "y": 136
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7213114754098361,
+                0.8426395939086294
+              ],
+              "contentCenter": [
+                608.327868852459,
+                592.7106598984772
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "name": "grove_north_west",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10003,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 8,
+                  "y": -34
+                },
+                {
+                  "type": "lineTo",
+                  "x": 192,
+                  "y": -34
+                },
+                {
+                  "type": "lineTo",
+                  "x": 192,
+                  "y": 136
+                },
+                {
+                  "type": "lineTo",
+                  "x": 8,
+                  "y": 136
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7540983606557377,
+                0.8629441624365483
+              ],
+              "contentCenter": [
+                196.52459016393442,
+                603.7157360406092
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "name": "north_eastern_hall",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10002,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 472,
+                  "y": -94
+                },
+                {
+                  "type": "lineTo",
+                  "x": 720,
+                  "y": -94
+                },
+                {
+                  "type": "lineTo",
+                  "x": 720,
+                  "y": 96
+                },
+                {
+                  "type": "lineTo",
+                  "x": 472,
+                  "y": 96
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                1.0163934426229508,
+                1.0555555555555556
+              ],
+              "contentCenter": [
+                726.0983606557377,
+                406.33333333333337
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "name": "northern_hall",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10001,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 12,
+                  "y": -94
+                },
+                {
+                  "type": "lineTo",
+                  "x": 260,
+                  "y": -94
+                },
+                {
+                  "type": "lineTo",
+                  "x": 260,
+                  "y": 96
+                },
+                {
+                  "type": "lineTo",
+                  "x": 12,
+                  "y": 96
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                1.0163934426229508,
+                1.0555555555555556
+              ],
+              "contentCenter": [
+                526.2950819672132,
+                406.33333333333337
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 1,
+        "name": "Original material ground",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10000,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 0
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 1296
+                },
+                {
+                  "type": "lineTo",
+                  "x": 0,
+                  "y": 1296
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "ground-20cecda630d633f2",
+          "fit": {
+            "custom": {
+              "scale": [
+                1.0,
+                1.0
+              ],
+              "contentCenter": [
+                384.0,
+                648.0
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

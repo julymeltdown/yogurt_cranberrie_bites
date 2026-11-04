@@ -14,7 +14,9 @@ use crate::{
         Operation,
     },
 };
-use concert_application::avatar::{AvatarEffectFence, AvatarError, AvatarTransactionIdentity};
+use concert_application::avatar::{
+    AvatarEffectFence, AvatarEffectWitnessBinding, AvatarError, AvatarTransactionIdentity,
+};
 use concert_domain::relationship::{Field, PolicyQuery};
 use sha2::{Digest, Sha256};
 use std::sync::Arc;
@@ -117,6 +119,14 @@ impl BoundParticipantAuthority {
             .filter(|id| !id.is_nil())
             .ok_or(AvatarError::Unavailable)
     }
+    fn avatar_effect(&self) -> [u8; 32] {
+        let mut digest = Sha256::new();
+        digest.update(b"mcr participant avatar effect v1\0");
+        digest.update(self.scope.binding().digest());
+        digest.update(self.request.release_digest().as_bytes());
+        digest.update(self.request.body_sha256());
+        digest.finalize().into()
+    }
     async fn track(
         &self,
         identity: AvatarTransactionIdentity,
@@ -168,12 +178,32 @@ impl MutationAuthorityPort for BoundParticipantAuthority {
 impl AvatarEffectFence for BoundParticipantAuthority {
     async fn register(&self, transaction: AvatarTransactionIdentity) -> Result<(), AvatarError> {
         MutationPermit::check(self, &self.request)?;
-        let mut digest = Sha256::new();
-        digest.update(b"mcr participant avatar effect v1\0");
-        digest.update(self.scope.binding().digest());
-        digest.update(self.request.release_digest().as_bytes());
-        digest.update(self.request.body_sha256());
-        self.track(transaction, digest.finalize().into()).await
+        self.track(transaction, self.avatar_effect()).await
+    }
+    fn witness_binding(&self) -> Result<AvatarEffectWitnessBinding, AvatarError> {
+        MutationPermit::check(self, &self.request)?;
+        let scope = self.scope.producer_scope();
+        let scope_id = Uuid::parse_str(&scope.scope_id)
+            .ok()
+            .filter(|id| !id.is_nil() && id.to_string() == scope.scope_id)
+            .ok_or(AvatarError::Unavailable)?;
+        let value = AvatarEffectWitnessBinding {
+            producer_instance_id: self.instance()?,
+            scope_id,
+            operation_id: self.request.request_id(),
+            session_family_id: self.request.session_family_id(),
+            parent_digest: self
+                .request
+                .parent_authority()
+                .map_err(owner_error)?
+                .parent_digest(),
+            guard_binding_digest: self.scope.binding().digest(),
+            body_digest: self.request.body_sha256(),
+            release_digest: self.request.release_digest().to_owned(),
+            effect_binding_digest: self.avatar_effect(),
+        };
+        value.validate_for_release(self.request.release_digest())?;
+        Ok(value)
     }
     async fn check(&self) -> Result<(), AvatarError> {
         self.check_live(&self.request).await?;

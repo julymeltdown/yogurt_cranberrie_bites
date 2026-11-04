@@ -4,6 +4,7 @@ import type { LoadedMap } from '../map/resources'
 import { validateLoadedScenery, type Scenery, type SceneryObject, type LoadedScenery } from '../illustrated/model'
 import { referenceSceneIdentity } from './metadata'
 import { isSpatialReferenceClaim, validateSpatialMetadata, requireSpatialScene } from './spatial-v3/model'
+import { isSpatialV4ReferenceClaim, validateSpatialV4Metadata, requireSpatialV4Scene } from './spatial-v4/model'
 
 /** Source and packed metadata are immutable public inputs, not release admission authority. */
 function freeze<T>(value: T): T {
@@ -31,6 +32,7 @@ export interface ReferenceSceneBinding {
 
 /** A matching hash label alone cannot pair these pixels with unrelated collision or visual metadata. */
 export function validateReferenceMetadata(map: Pick<LoadedMap, 'map' | 'theme' | 'widthPx' | 'heightPx' | 'spawn'>) {
+  if (isSpatialV4ReferenceClaim(map)) { validateSpatialV4Metadata(map); return }
   if (isSpatialReferenceClaim(map)) { validateSpatialMetadata(map); return }
   const expected = referenceSceneIdentity
   requireMap(map.map.map_id === expected.mapId && map.map.map_revision === expected.mapRevision
@@ -45,6 +47,7 @@ export function validateReferenceMetadata(map: Pick<LoadedMap, 'map' | 'theme' |
 }
 
 export function requireReferenceScene(map: LoadedMap): ReferenceSceneBinding {
+  if (isSpatialV4ReferenceClaim(map)) return requireSpatialV4Scene(map)
   if (isSpatialReferenceClaim(map)) return requireSpatialScene(map)
   validateReferenceMetadata(map); validateLoadedScenery(map)
   requireMap(map.scenery && map.image.naturalWidth === map.theme.texture.width_px && map.image.naturalHeight === map.theme.texture.height_px)
@@ -53,7 +56,7 @@ export function requireReferenceScene(map: LoadedMap): ReferenceSceneBinding {
 
 /** Unknown ordinary releases retain their incumbent path; malformed/stale reference candidates fail closed. */
 export function referenceSceneFor(map: LoadedMap): ReferenceSceneBinding | null {
-  const candidate = isSpatialReferenceClaim(map) || map.map.map_id === referenceSceneIdentity.mapId || map.map.geometry_hash === referenceSceneIdentity.geometryHash
+  const candidate = isSpatialV4ReferenceClaim(map) || isSpatialReferenceClaim(map) || map.map.map_id === referenceSceneIdentity.mapId || map.map.geometry_hash === referenceSceneIdentity.geometryHash
     || [map.theme.scenery?.ground.path, ...map.theme.scenery?.atlases.map(a => a.path) ?? []].some(p => p?.startsWith('world/reference-scene-v2/runtime-v4/'))
   return candidate ? requireReferenceScene(map) : null
 }

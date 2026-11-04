@@ -128,3 +128,10 @@ fn safe_errors_match_frozen_status_policy_and_do_not_include_input() {
         assert_eq!(source["http_error_status"][f.reason], f.status);
     }
 }
+
+#[test]
+fn completed_receipt_cannot_be_reported_as_pending() {
+    use concert_service::gift_live::protocol::GiftOperation;
+    assert!(checked_reply(GiftOperation::IssueCode, 202, json!({"state":"SUCCEEDED"})).is_err());
+    assert!(checked_reply(GiftOperation::Create, 202, json!({"state":"FAILED"})).is_err());
+}

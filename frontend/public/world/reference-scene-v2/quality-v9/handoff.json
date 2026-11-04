@@ -1,0 +1,418 @@
+{
+  "version": 9,
+  "status": "CONTRACT_READY_SOURCE_ONLY",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "files": [
+    {
+      "path": "ADOPTION.md",
+      "bytes": 6966,
+      "sha256": "sha256:695401d5d41ae76e0b322e732c81d7ee481541898945c0d712e8026a89a6b20b"
+    },
+    {
+      "path": "browser-verification.json",
+      "bytes": 92467,
+      "sha256": "sha256:250527c9f4079c5ba6c0ab70eb822bea579053cb5216245e75d1ed83f399c45b"
+    },
+    {
+      "path": "danger/atlas.png",
+      "bytes": 1201333,
+      "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12"
+    },
+    {
+      "path": "danger/danger-map-asset-ids.json",
+      "bytes": 137,
+      "sha256": "sha256:00cb69ce7c1f54604584ab07ecaedb31157cf759a233cd6e491766379a78ebf0"
+    },
+    {
+      "path": "danger/danger-map-editable.json",
+      "bytes": 153736,
+      "sha256": "sha256:39700bcf060cd73da321bed980f69211c963828aed382874911f898f69a269fd"
+    },
+    {
+      "path": "danger/danger-map-native.png",
+      "bytes": 1792248,
+      "sha256": "sha256:61d80efa4a2ace765843bdb3d11ef3d4df08d2209ca2a33755425d89b7538fae"
+    },
+    {
+      "path": "danger/danger-map.tsrct",
+      "bytes": 2105861,
+      "sha256": "sha256:b4ef751651a2452966cdebc30afe7fade02f727f6f4977bf885ae3f26b120d57"
+    },
+    {
+      "path": "danger/danger-world-asset-ids.json",
+      "bytes": 62,
+      "sha256": "sha256:457499b715436511408d67f59327e801296391899358d8dfaf0df3b4d697f1cc"
+    },
+    {
+      "path": "danger/danger-world-editable.json",
+      "bytes": 58821,
+      "sha256": "sha256:8ec9a443359bcc225e5f660ab3c0fe8f16e96d574af849ba37394a55b5221949"
+    },
+    {
+      "path": "danger/danger-world-native.png",
+      "bytes": 2028681,
+      "sha256": "sha256:18ab69029add3cc93f92634611f4cf00037cc43368ef561a60cdff727e10c309"
+    },
+    {
+      "path": "danger/danger-world.tsrct",
+      "bytes": 1864637,
+      "sha256": "sha256:1b6ad36fcc5984d21f2d0823b9317f086606bf53a7cf570a5ce3fc8b416e671d"
+    },
+    {
+      "path": "danger/layout.json",
+      "bytes": 25449,
+      "sha256": "sha256:0f6de32aaf87e4a0567ea2d77cd5e401ee756a284c0bd58a74e61ca57845e231"
+    },
+    {
+      "path": "danger/map-metadata.json",
+      "bytes": 8698,
+      "sha256": "sha256:5e001be1ba748e85176063c8115b81526e336a23176825bb628e1f4eaabd1eb1"
+    },
+    {
+      "path": "danger/native-atlas.png",
+      "bytes": 1245239,
+      "sha256": "sha256:31c7ae3bb8ddaa70e8d72eac7280843b57b9df438f5235c660f256d68cb9a1e7"
+    },
+    {
+      "path": "danger/native-evidence.json",
+      "bytes": 4189,
+      "sha256": "sha256:72004e7ec7cb8329080c290277ff09c41a72bee72683854fbfb6dfec47de2b01"
+    },
+    {
+      "path": "danger/provenance.json",
+      "bytes": 1386,
+      "sha256": "sha256:6beec45d61d2715bdd4e083479047595928c91f15cbc0fc5bd8c7a93c07275a1"
+    },
+    {
+      "path": "danger/resource-inputs.json",
+      "bytes": 1096,
+      "sha256": "sha256:c8398a64cf976777eaee5efa53d2d739ab62381974620e2e2cce749f63832b0a"
+    },
+    {
+      "path": "danger/scenery.json",
+      "bytes": 10418,
+      "sha256": "sha256:819804bbcc6c9e31fe9a1ed6cfec93874042333b6f822086455230f14cd075f7"
+    },
+    {
+      "path": "danger-map-360.png",
+      "bytes": 768605,
+      "sha256": "sha256:6d570bd64e2be0a8639588720740288c77d42d337f9d78b18a468c15f9345dc1"
+    },
+    {
+      "path": "danger-map-390.png",
+      "bytes": 878903,
+      "sha256": "sha256:3004d6921def53b706c9a2d81546293f5e32318763b9851b60ad5c6a37024b0b"
+    },
+    {
+      "path": "danger-map-430.png",
+      "bytes": 1065867,
+      "sha256": "sha256:bccddabf6ef7aa410cf3a6fbd60e8043edf3386c97246cfe32cb07fd8df1d44d"
+    },
+    {
+      "path": "danger-world-360.png",
+      "bytes": 528406,
+      "sha256": "sha256:49d3cef1de53a45824017689dccce07bee0f778cb36ac0dec31ba8008ea7898c"
+    },
+    {
+      "path": "danger-world-390.png",
+      "bytes": 607415,
+      "sha256": "sha256:d625a420dc6d225842120106fd63f3c9f507e303b110a607cfd955de2eb03eaf"
+    },
+    {
+      "path": "danger-world-430.png",
+      "bytes": 680930,
+      "sha256": "sha256:36ad5513ac6533a19692431b232a8991a00ed05ff8587d7dc70ca6d3b1282316"
+    },
+    {
+      "path": "environment.json",
+      "bytes": 1968,
+      "sha256": "sha256:f19ab2e4ff433f8f5fa413d6abf42b6223f995229e1735ad27870bd5f3f0eca7"
+    },
+    {
+      "path": "ground-editable.json",
+      "bytes": 64796,
+      "sha256": "sha256:a19dd7581d1c1cf0c7bb3c1b99acd17f281cd063e8aa0fe65d9a81ce06475851"
+    },
+    {
+      "path": "ground-layout.svg",
+      "bytes": 9693,
+      "sha256": "sha256:7c2c6f95c2299341d771ae9815198cd0e57d3d4827cd916d10623ad1627c4131"
+    },
+    {
+      "path": "ground-native-evidence.json",
+      "bytes": 1547,
+      "sha256": "sha256:5ba667a4dc13f65042853be574cc33feeb2ffa6ba42f00330d1e10e82f524d37"
+    },
+    {
+      "path": "ground-native.png",
+      "bytes": 1678510,
+      "sha256": "sha256:34c3aca3d4761f035359bf5ba9f89b20b8e5c69911699766c0109fd56ff8d3b3"
+    },
+    {
+      "path": "ground.png",
+      "bytes": 558464,
+      "sha256": "sha256:20cecda630d633f20122607d97b86fbd3f7c6c0f06483ca4d838578a9610915a"
+    },
+    {
+      "path": "ground.tsrct",
+      "bytes": 597850,
+      "sha256": "sha256:207237a61d78b8b3600dd71786c45fffd37090749d3e1c8a26fc15442d2b153f"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 6621,
+      "sha256": "sha256:8a2bbe62a31bce98e1bcab91bdde53c3ce0b6fd21943dae8d2da0e8003952d15"
+    },
+    {
+      "path": "parade/atlas.png",
+      "bytes": 1215028,
+      "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1"
+    },
+    {
+      "path": "parade/layout.json",
+      "bytes": 25449,
+      "sha256": "sha256:c0ecae647308d0f7c3fd27f57ea10d24cbc767ac524f3a7108de3ea6bcf36347"
+    },
+    {
+      "path": "parade/map-metadata.json",
+      "bytes": 8698,
+      "sha256": "sha256:5e001be1ba748e85176063c8115b81526e336a23176825bb628e1f4eaabd1eb1"
+    },
+    {
+      "path": "parade/native-atlas.png",
+      "bytes": 1259947,
+      "sha256": "sha256:f62569baaab7eecbbf236c0a7026f8c1014a438cd1f192d5366d8ed3fcaa5d32"
+    },
+    {
+      "path": "parade/native-evidence.json",
+      "bytes": 4189,
+      "sha256": "sha256:8933b07672aec19bc121178167f66673491e6a20da105efd6b197315eaf10326"
+    },
+    {
+      "path": "parade/parade-map-asset-ids.json",
+      "bytes": 137,
+      "sha256": "sha256:9ecc8b4b9a382eab6fac3c5b0f2d88b639a858ad538d2eaea65ff094b113bced"
+    },
+    {
+      "path": "parade/parade-map-editable.json",
+      "bytes": 153697,
+      "sha256": "sha256:9852a469edf27f010edf5f078a94ad90f4656f6aa7316ebadbdedb61c1871900"
+    },
+    {
+      "path": "parade/parade-map-native.png",
+      "bytes": 1798289,
+      "sha256": "sha256:68bf0c5e57c04f915a2c99847a3f35f930ade8b2fb3b039a496fb728a12a8b95"
+    },
+    {
+      "path": "parade/parade-map.tsrct",
+      "bytes": 2120530,
+      "sha256": "sha256:79afd56dbd78cbfe66cad0a54f1206db443a846238dfabaa89717c1adc532b66"
+    },
+    {
+      "path": "parade/parade-world-asset-ids.json",
+      "bytes": 62,
+      "sha256": "sha256:9e4782293b461a3774faddef0654ca35fcde3ba031b3415f554ff6e5a1ce8f6b"
+    },
+    {
+      "path": "parade/parade-world-editable.json",
+      "bytes": 58779,
+      "sha256": "sha256:099d95086c7b6dcfe1f4ae31f773af835631eecd7f420c79a18e04b8b9fb3636"
+    },
+    {
+      "path": "parade/parade-world-native.png",
+      "bytes": 2031988,
+      "sha256": "sha256:72d478e083d3c535e88185e9adbc306f451a4f59cee337e60e7c004334751245"
+    },
+    {
+      "path": "parade/parade-world.tsrct",
+      "bytes": 1879302,
+      "sha256": "sha256:d014795608761f551cbc69868e4f3d2592868a786b52b10e40791ef772616472"
+    },
+    {
+      "path": "parade/provenance.json",
+      "bytes": 1386,
+      "sha256": "sha256:84ca3990b06462d740f5cdd0fe8e27fd186851fb5f310ca0c9fad142855b6683"
+    },
+    {
+      "path": "parade/resource-inputs.json",
+      "bytes": 1096,
+      "sha256": "sha256:7735b0dd750040128f380c1f563cce3dd018b960932074d7ee2278dc49c66614"
+    },
+    {
+      "path": "parade/scenery.json",
+      "bytes": 10418,
+      "sha256": "sha256:f2632b2410cc975c8b0b626a5297761e1382ae4f103bd8a6592c206ff1136407"
+    },
+    {
+      "path": "parade-map-360.png",
+      "bytes": 769062,
+      "sha256": "sha256:9ba7e06308c43c25ebe28115cae5b515327664fadd4dee25baef95398db63193"
+    },
+    {
+      "path": "parade-map-390.png",
+      "bytes": 879146,
+      "sha256": "sha256:4e58016f095903c013d8ed2b94f6b4def27a948442c67c32bb7f29416d8a8987"
+    },
+    {
+      "path": "parade-map-430.png",
+      "bytes": 1065628,
+      "sha256": "sha256:86c2044d900709e06b0b459fbcd313af521f06615cf9dddba7be599b2530fc69"
+    },
+    {
+      "path": "parade-world-360.png",
+      "bytes": 527534,
+      "sha256": "sha256:f3bef6638bfacc3ee2b3dfa138f9aabd9f80aabf7b81f9afbb8f17f630ac4d77"
+    },
+    {
+      "path": "parade-world-390.png",
+      "bytes": 606293,
+      "sha256": "sha256:a61e6faf979219b6091679509a6611646d20f8b261e0efb9ef4516f0ad28eda1"
+    },
+    {
+      "path": "parade-world-430.png",
+      "bytes": 680076,
+      "sha256": "sha256:b3d1edcb8b7f1ccb28e74437bf3ae377562480c3d688278c081fb5842b15463c"
+    },
+    {
+      "path": "resource-summary.json",
+      "bytes": 966,
+      "sha256": "sha256:a1ad4d8322fc1d112e2ae3909283e6464a28b1faae4ed7f4043bce2325acca11"
+    },
+    {
+      "path": "revenge/atlas.png",
+      "bytes": 1203841,
+      "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd"
+    },
+    {
+      "path": "revenge/layout.json",
+      "bytes": 25450,
+      "sha256": "sha256:f1d4ba2c6ba7785f04513c8fd1c0ca4213db53067f7f58b4e5c0b869c75079a8"
+    },
+    {
+      "path": "revenge/map-metadata.json",
+      "bytes": 8698,
+      "sha256": "sha256:5e001be1ba748e85176063c8115b81526e336a23176825bb628e1f4eaabd1eb1"
+    },
+    {
+      "path": "revenge/native-atlas.png",
+      "bytes": 1248600,
+      "sha256": "sha256:5a9ee2dff0acc53a7e7f945e8dae7d992e629a192b4b3157e0c991731179e018"
+    },
+    {
+      "path": "revenge/native-evidence.json",
+      "bytes": 4231,
+      "sha256": "sha256:0f524e02516dbbc7890e80bc1f1362316e2a00bada9e1164177bd89aab3f4ccb"
+    },
+    {
+      "path": "revenge/provenance.json",
+      "bytes": 1387,
+      "sha256": "sha256:8e0c8871999d3d859eea788bf5c1f17e77734651db12ba13f47675dc02e8d09a"
+    },
+    {
+      "path": "revenge/resource-inputs.json",
+      "bytes": 1099,
+      "sha256": "sha256:38929ba9514cc300eea0a5e9e91d8e68d8824b604b26737bc9bc4b20d7d86fef"
+    },
+    {
+      "path": "revenge/revenge-map-asset-ids.json",
+      "bytes": 137,
+      "sha256": "sha256:0c9dda6a3cc366ce552c0bd67d81a8528b7fe51de18b02f943389d500bc83b72"
+    },
+    {
+      "path": "revenge/revenge-map-editable.json",
+      "bytes": 153727,
+      "sha256": "sha256:ae4d9eb072728be52fae94af9a995fee05e86ee9720c6955e27b225da1df2cfd"
+    },
+    {
+      "path": "revenge/revenge-map-native.png",
+      "bytes": 1789049,
+      "sha256": "sha256:cf1b9fd41625d687a3bd4bafae9599eba4ea2f37f30d02b5c6977281ba2dbe08"
+    },
+    {
+      "path": "revenge/revenge-map.tsrct",
+      "bytes": 2109213,
+      "sha256": "sha256:dfabbfb55d99e39c17752e6061d35c30be6df8aa7b06988c91e1c57d4be27e19"
+    },
+    {
+      "path": "revenge/revenge-world-asset-ids.json",
+      "bytes": 62,
+      "sha256": "sha256:8abe151abd092db5c3c622dfe7a4a0e93cf04d44b9a5ece29b0a8327f2916291"
+    },
+    {
+      "path": "revenge/revenge-world-editable.json",
+      "bytes": 58809,
+      "sha256": "sha256:90c1f6c5c4ac3120366120a595038e7d6293a2a248d7b101acf4dc2741ee79e4"
+    },
+    {
+      "path": "revenge/revenge-world-native.png",
+      "bytes": 2024666,
+      "sha256": "sha256:792da33ce7d008bdb77db3fe86be742ea2c91f6259979a5b0b23ac7931806dac"
+    },
+    {
+      "path": "revenge/revenge-world.tsrct",
+      "bytes": 1867986,
+      "sha256": "sha256:c1dff86b42581f909dcc2883e60a5fcc25c75e4156e2356b747c878f4269f692"
+    },
+    {
+      "path": "revenge/scenery.json",
+      "bytes": 10454,
+      "sha256": "sha256:71c4ab1468c4c759b9e74264204298aa6f16308216dc6b2620bded94a9a8a426"
+    },
+    {
+      "path": "revenge-map-360.png",
+      "bytes": 768431,
+      "sha256": "sha256:ecf31c6fa1e57b158a29543a83b90be168908b700f2f3f392513237b103a14b8"
+    },
+    {
+      "path": "revenge-map-390.png",
+      "bytes": 878171,
+      "sha256": "sha256:784ea65d484658ced4ebaf335acb49b8f5b4e8f1e17dd41438ac42387808821c"
+    },
+    {
+      "path": "revenge-map-430.png",
+      "bytes": 1064852,
+      "sha256": "sha256:4264befa55a82d7928e7f96760b15a795bbb72ec6134f38d53a68a69310d01da"
+    },
+    {
+      "path": "revenge-world-360.png",
+      "bytes": 528598,
+      "sha256": "sha256:4839df4f6695257fd7507535be7020e3de5d9625b3ec9ad4e477474119c291fd"
+    },
+    {
+      "path": "revenge-world-390.png",
+      "bytes": 607926,
+      "sha256": "sha256:17d8b0b4840947d4e2beeff374099a92972f2664114cfdd996b0c7dd3806beea"
+    },
+    {
+      "path": "revenge-world-430.png",
+      "bytes": 681663,
+      "sha256": "sha256:bf9185a57f314cbb4dd565e683fefe4a37da6e9479d10d93b362a9d924b75a12"
+    },
+    {
+      "path": "review.html",
+      "bytes": 1801,
+      "sha256": "sha256:9cae9a0a452f5fb1317f8510e2dc73988caa2ddc266c02e3581f8d294511091a"
+    },
+    {
+      "path": "review.mjs",
+      "bytes": 5380,
+      "sha256": "sha256:061b80546aa9c4780aba19f7296e78955de682620a5415f88a9e7c0719fda427"
+    },
+    {
+      "path": "route-edges.json",
+      "bytes": 16740,
+      "sha256": "sha256:c10e00a553ae2a183e4cfde96b6ac08881f6dda7e827e9c0ab55acf90ae41ed7"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 3344,
+      "sha256": "sha256:2d2cf2400861645480d1f80a7839ddd375a3a9fa9d44f904541c9b105bbbba88"
+    }
+  ],
+  "adoption": "Explicit ground descriptor +eight MAP illustrations +published MAP labels; exact old34WORLD objects/canonical geometry. No old source/consumer repin or new server revision for this presentation change.",
+  "remaining": [
+    "Full reference fidelity/geometric route hierarchy",
+    "Actual consumer application adoption",
+    "Source/release qualification by responsible owner"
+  ]
+}

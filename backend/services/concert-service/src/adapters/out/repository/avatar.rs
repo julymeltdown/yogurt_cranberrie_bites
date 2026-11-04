@@ -264,6 +264,41 @@ async fn effect_identity(
         backend_started,
     })
 }
+async fn record_effect_witness(
+    tx: &mut sqlx::Transaction<'_, sqlx::Postgres>,
+    key: ParticipantKey,
+    identity: &AvatarTransactionIdentity,
+    binding: &AvatarEffectWitnessBinding,
+    kind: &str,
+    expected: Revision,
+    committed: Revision,
+) -> Result<(), AvatarError> {
+    let identity_digest = platform::actor_delegation::owner_binding::identity_digest(
+        "CONCERT",
+        &identity.system_identifier,
+        identity.database_oid,
+        &identity.full_xid,
+        identity.backend_pid,
+        identity.backend_started.timestamp_micros(),
+        &binding.effect_binding_digest,
+        binding.producer_instance_id,
+        binding.operation_id.as_bytes(),
+    )
+    .map_err(|_| AvatarError::Unavailable)?;
+    let result = sqlx::query("insert into public.concert_participant_effect_witnesses (operation_id,actor_id,event_id,session_family_id,producer_instance_id,scope_id,parent_digest,guard_binding_digest,body_digest,release_digest,effect_binding_digest,identity_digest,mutation_kind,expected_revision,committed_revision,concert_system_identifier,concert_database_oid,concert_full_xid,concert_backend_pid,concert_backend_started) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)")
+        .bind(binding.operation_id).bind(key.user_id.uuid()).bind(key.event_id.uuid())
+        .bind(binding.session_family_id).bind(binding.producer_instance_id).bind(binding.scope_id)
+        .bind(binding.parent_digest.as_slice()).bind(binding.guard_binding_digest.as_slice())
+        .bind(binding.body_digest.as_slice()).bind(&binding.release_digest)
+        .bind(binding.effect_binding_digest.as_slice()).bind(identity_digest.as_slice())
+        .bind(kind).bind(expected.get()).bind(committed.get()).bind(&identity.system_identifier)
+        .bind(i64::from(identity.database_oid)).bind(&identity.full_xid).bind(identity.backend_pid)
+        .bind(identity.backend_started).execute(&mut **tx).await.map_err(unavailable)?;
+    if result.rows_affected() != 1 {
+        return Err(AvatarError::Unavailable);
+    }
+    Ok(())
+}
 #[async_trait]
 impl AvatarRepository for PgAvatarRepository {
     async fn execute(
@@ -294,13 +329,18 @@ impl AvatarRepository for PgAvatarRepository {
         let user = key.user_id.uuid();
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         check()?;
-        if let Some(fence) = fence {
+        let effect = if let Some(fence) = fence {
             let identity = effect_identity(&mut tx).await?;
             check()?;
-            fence.register(identity).await?;
+            fence.register(identity.clone()).await?;
             check()?;
             check_effect(authority, key, op, digest, Some(fence)).await?;
-        }
+            let binding = fence.witness_binding()?;
+            binding.validate_for_release(digest)?;
+            Some((identity, binding))
+        } else {
+            None
+        };
         let phase: Option<String> = sqlx::query_scalar(
             "select phase from public.concert_events where event_id=$1 for update",
         )
@@ -334,8 +374,8 @@ impl AvatarRepository for PgAvatarRepository {
         check_effect(authority, key, op, digest, fence).await?;
         let mut avatar = avatar(row.ok_or(AvatarError::Missing)?, key)?;
         catalog.validate(&avatar.selection).map_err(invalid)?;
-        match mutation {
-            AvatarMutation::Read => {}
+        let outcome = match mutation {
+            AvatarMutation::Read => None,
             AvatarMutation::Avatar(command) => {
                 if avatar.revision != command.expected {
                     return Err(AvatarError::Conflict);
@@ -353,6 +393,7 @@ impl AvatarRepository for PgAvatarRepository {
                 avatar.selection = s;
                 avatar.revision = next;
                 avatar.updated_at = updated;
+                Some(("AVATAR", command.expected, next))
             }
             AvatarMutation::Preferences { expected, value } => {
                 if participant.revision != expected {
@@ -366,12 +407,18 @@ impl AvatarRepository for PgAvatarRepository {
                 participant.revision = next;
                 participant.preferences = value;
                 participant.updated_at = updated;
+                Some(("PREFERENCES", expected, next))
             }
-        }
+        };
         catalog.validate(&avatar.selection).map_err(invalid)?;
         validate_times(avatar.created_at, avatar.updated_at).map_err(invalid)?;
         validate_times(participant.created_at, participant.updated_at).map_err(invalid)?;
         check_effect(authority, key, op, digest, fence).await?;
+        if let (Some((identity, binding)), Some((kind, expected, committed))) = (&effect, outcome) {
+            record_effect_witness(&mut tx, key, identity, binding, kind, expected, committed)
+                .await?;
+            check_effect(authority, key, op, digest, fence).await?;
+        }
         tx.commit().await.map_err(unavailable)?;
         check_effect(authority, key, op, digest, fence).await?;
         Ok(AvatarSnapshot {

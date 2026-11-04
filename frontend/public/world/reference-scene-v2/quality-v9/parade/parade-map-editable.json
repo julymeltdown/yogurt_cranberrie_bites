@@ -1,0 +1,6748 @@
+{
+  "$schema": "https://jerboa.dev/schemas/fx-composition/editable/v1/document.schema.json",
+  "formatVersion": 1,
+  "dimensions": {
+    "width": 768,
+    "height": 1296
+  },
+  "colorManagement": {
+    "workingSpace": "legacyDisplay"
+  },
+  "duration": 3,
+  "composition": {
+    "id": "main",
+    "name": "PARADE MAP editable scenery with original vector destination labels",
+    "layers": [
+      {
+        "id": 42,
+        "name": "GIVEAWAY BOOTH / editable text 2",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            484,
+            1269.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "BOOTH",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 43,
+        "name": "GIVEAWAY BOOTH / editable text 1",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            484,
+            1227.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "GIVEAWAY",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 44,
+        "name": "GIVEAWAY BOOTH / gift glyph part 5",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 443.7916666666667,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 459.8333333333333,
+                "y": 1227.8333333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 464.4166666666667,
+                "y": 1220.9583333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 462.125,
+                "y": 1214.0833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 452.9583333333333,
+                "y": 1211.7916666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 443.7916666666667,
+                "y": 1218.6666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 439.2083333333333,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 446.0833333333333,
+                "y": 1225.5416666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 452.9583333333333,
+                "y": 1218.6666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 457.5416666666667,
+                "y": 1218.6666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 457.5416666666667,
+                "y": 1223.25
+              },
+              {
+                "type": "lineTo",
+                "x": 446.0833333333333,
+                "y": 1227.8333333333333
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 45,
+        "name": "GIVEAWAY BOOTH / gift glyph part 4",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 439.2083333333333,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 423.1666666666667,
+                "y": 1227.8333333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 418.5833333333333,
+                "y": 1220.9583333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 420.875,
+                "y": 1214.0833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 430.0416666666667,
+                "y": 1211.7916666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 439.2083333333333,
+                "y": 1218.6666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 443.7916666666667,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 436.9166666666667,
+                "y": 1225.5416666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 430.0416666666667,
+                "y": 1218.6666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 425.4583333333333,
+                "y": 1218.6666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 425.4583333333333,
+                "y": 1223.25
+              },
+              {
+                "type": "lineTo",
+                "x": 436.9166666666667,
+                "y": 1227.8333333333333
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 46,
+        "name": "GIVEAWAY BOOTH / gift glyph part 3",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 439.2083333333333,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 446.0833333333333,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 446.0833333333333,
+                "y": 1262.2083333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 439.2083333333333,
+                "y": 1262.2083333333333
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 47,
+        "name": "GIVEAWAY BOOTH / gift glyph part 2",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 423.1666666666667,
+                "y": 1241.5833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 459.8333333333333,
+                "y": 1241.5833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 459.8333333333333,
+                "y": 1262.2083333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 423.1666666666667,
+                "y": 1262.2083333333333
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 48,
+        "name": "GIVEAWAY BOOTH / gift glyph part 1",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 418.5833333333333,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 464.4166666666667,
+                "y": 1230.125
+              },
+              {
+                "type": "lineTo",
+                "x": 464.4166666666667,
+                "y": 1239.2916666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 418.5833333333333,
+                "y": 1239.2916666666667
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 49,
+        "name": "GIVEAWAY BOOTH / semantic icon square",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 411,
+                "y": 1206.5
+              },
+              {
+                "type": "lineTo",
+                "x": 472,
+                "y": 1206.5
+              },
+              {
+                "type": "lineTo",
+                "x": 472,
+                "y": 1267.5
+              },
+              {
+                "type": "lineTo",
+                "x": 411,
+                "y": 1267.5
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.8509803921568627,
+                  0.7058823529411765,
+                  0.611764705882353,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 50,
+        "name": "GIVEAWAY BOOTH / cream label face",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 403,
+                "y": 1186
+              },
+              {
+                "type": "lineTo",
+                "x": 677,
+                "y": 1186
+              },
+              {
+                "type": "lineTo",
+                "x": 677,
+                "y": 1288
+              },
+              {
+                "type": "lineTo",
+                "x": 403,
+                "y": 1288
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.9529411764705882,
+                  0.9176470588235294,
+                  0.8470588235294118,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 51,
+        "name": "GIVEAWAY BOOTH / symmetric outer outline",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 400,
+                "y": 1183
+              },
+              {
+                "type": "lineTo",
+                "x": 680,
+                "y": 1183
+              },
+              {
+                "type": "lineTo",
+                "x": 680,
+                "y": 1291
+              },
+              {
+                "type": "lineTo",
+                "x": 400,
+                "y": 1291
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 52,
+        "name": "MEETUP ZONE / editable text 2",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            336,
+            1057.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "ZONE",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 53,
+        "name": "MEETUP ZONE / editable text 1",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            336,
+            1015.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "MEETUP",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 54,
+        "name": "MEETUP ZONE / people glyph part 6",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 314.125,
+                "y": 1034.1666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 321.0,
+                "y": 1034.1666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 321.0,
+                "y": 1050.2083333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 314.125,
+                "y": 1050.2083333333333
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 55,
+        "name": "MEETUP ZONE / people glyph part 5",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 266.0,
+                "y": 1034.1666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 272.875,
+                "y": 1034.1666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 272.875,
+                "y": 1050.2083333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 266.0,
+                "y": 1050.2083333333333
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 56,
+        "name": "MEETUP ZONE / people glyph part 4",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 282.0416666666667,
+                "y": 1025.0
+              },
+              {
+                "type": "lineTo",
+                "x": 304.9583333333333,
+                "y": 1025.0
+              },
+              {
+                "type": "lineTo",
+                "x": 311.8333333333333,
+                "y": 1034.1666666666667
+              },
+              {
+                "type": "lineTo",
+                "x": 311.8333333333333,
+                "y": 1050.2083333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 275.1666666666667,
+                "y": 1050.2083333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 275.1666666666667,
+                "y": 1034.1666666666667
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 57,
+        "name": "MEETUP ZONE / people glyph part 3",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 309.5416666666667,
+                "y": 1011.25
+              },
+              {
+                "type": "lineTo",
+                "x": 316.4166666666667,
+                "y": 1011.25
+              },
+              {
+                "type": "lineTo",
+                "x": 321.0,
+                "y": 1015.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 321.0,
+                "y": 1025.0
+              },
+              {
+                "type": "lineTo",
+                "x": 316.4166666666667,
+                "y": 1029.5833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 309.5416666666667,
+                "y": 1029.5833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 304.9583333333333,
+                "y": 1025.0
+              },
+              {
+                "type": "lineTo",
+                "x": 304.9583333333333,
+                "y": 1015.8333333333334
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 58,
+        "name": "MEETUP ZONE / people glyph part 2",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 270.5833333333333,
+                "y": 1011.25
+              },
+              {
+                "type": "lineTo",
+                "x": 277.4583333333333,
+                "y": 1011.25
+              },
+              {
+                "type": "lineTo",
+                "x": 282.0416666666667,
+                "y": 1015.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 282.0416666666667,
+                "y": 1025.0
+              },
+              {
+                "type": "lineTo",
+                "x": 277.4583333333333,
+                "y": 1029.5833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 270.5833333333333,
+                "y": 1029.5833333333333
+              },
+              {
+                "type": "lineTo",
+                "x": 266.0,
+                "y": 1025.0
+              },
+              {
+                "type": "lineTo",
+                "x": 266.0,
+                "y": 1015.8333333333334
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 59,
+        "name": "MEETUP ZONE / people glyph part 1",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 286.625,
+                "y": 999.7916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 300.375,
+                "y": 999.7916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 304.9583333333333,
+                "y": 1004.375
+              },
+              {
+                "type": "lineTo",
+                "x": 304.9583333333333,
+                "y": 1013.5416666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 300.375,
+                "y": 1018.125
+              },
+              {
+                "type": "lineTo",
+                "x": 286.625,
+                "y": 1018.125
+              },
+              {
+                "type": "lineTo",
+                "x": 282.0416666666667,
+                "y": 1013.5416666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 282.0416666666667,
+                "y": 1004.375
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 60,
+        "name": "MEETUP ZONE / semantic icon square",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 263,
+                "y": 994.5
+              },
+              {
+                "type": "lineTo",
+                "x": 324,
+                "y": 994.5
+              },
+              {
+                "type": "lineTo",
+                "x": 324,
+                "y": 1055.5
+              },
+              {
+                "type": "lineTo",
+                "x": 263,
+                "y": 1055.5
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.8509803921568627,
+                  0.7058823529411765,
+                  0.611764705882353,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 61,
+        "name": "MEETUP ZONE / cream label face",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 255,
+                "y": 974
+              },
+              {
+                "type": "lineTo",
+                "x": 489,
+                "y": 974
+              },
+              {
+                "type": "lineTo",
+                "x": 489,
+                "y": 1076
+              },
+              {
+                "type": "lineTo",
+                "x": 255,
+                "y": 1076
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.9529411764705882,
+                  0.9176470588235294,
+                  0.8470588235294118,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 62,
+        "name": "MEETUP ZONE / symmetric outer outline",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 252,
+                "y": 971
+              },
+              {
+                "type": "lineTo",
+                "x": 492,
+                "y": 971
+              },
+              {
+                "type": "lineTo",
+                "x": 492,
+                "y": 1079
+              },
+              {
+                "type": "lineTo",
+                "x": 252,
+                "y": 1079
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 63,
+        "name": "FOOD / editable text 1",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            646,
+            769.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "FOOD",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 64,
+        "name": "FOOD / food glyph part 6",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 619.5416666666666,
+                "y": 732.7916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 626.4166666666666,
+                "y": 739.6666666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 626.4166666666666,
+                "y": 755.7083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 621.8333333333334,
+                "y": 760.2916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 621.8333333333334,
+                "y": 783.2083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 614.9583333333334,
+                "y": 783.2083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 614.9583333333334,
+                "y": 760.2916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 610.375,
+                "y": 755.7083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 610.375,
+                "y": 739.6666666666666
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 65,
+        "name": "FOOD / food glyph part 5",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 592.0416666666666,
+                "y": 753.4166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 598.9166666666666,
+                "y": 753.4166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 598.9166666666666,
+                "y": 783.2083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 592.0416666666666,
+                "y": 783.2083333333334
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 66,
+        "name": "FOOD / food glyph part 4",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 582.875,
+                "y": 748.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 605.7916666666666,
+                "y": 748.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 605.7916666666666,
+                "y": 755.7083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 582.875,
+                "y": 755.7083333333334
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 67,
+        "name": "FOOD / food glyph part 3",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 601.2083333333334,
+                "y": 735.0833333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 605.7916666666666,
+                "y": 735.0833333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 605.7916666666666,
+                "y": 751.125
+              },
+              {
+                "type": "lineTo",
+                "x": 601.2083333333334,
+                "y": 751.125
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 68,
+        "name": "FOOD / food glyph part 2",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 592.0416666666666,
+                "y": 735.0833333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 596.625,
+                "y": 735.0833333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 596.625,
+                "y": 751.125
+              },
+              {
+                "type": "lineTo",
+                "x": 592.0416666666666,
+                "y": 751.125
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 69,
+        "name": "FOOD / food glyph part 1",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 582.875,
+                "y": 735.0833333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 587.4583333333334,
+                "y": 735.0833333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 587.4583333333334,
+                "y": 751.125
+              },
+              {
+                "type": "lineTo",
+                "x": 582.875,
+                "y": 751.125
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 70,
+        "name": "FOOD / semantic icon square",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 573,
+                "y": 727.5
+              },
+              {
+                "type": "lineTo",
+                "x": 634,
+                "y": 727.5
+              },
+              {
+                "type": "lineTo",
+                "x": 634,
+                "y": 788.5
+              },
+              {
+                "type": "lineTo",
+                "x": 573,
+                "y": 788.5
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.8509803921568627,
+                  0.7058823529411765,
+                  0.611764705882353,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 71,
+        "name": "FOOD / cream label face",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 565,
+                "y": 722
+              },
+              {
+                "type": "lineTo",
+                "x": 751,
+                "y": 722
+              },
+              {
+                "type": "lineTo",
+                "x": 751,
+                "y": 794
+              },
+              {
+                "type": "lineTo",
+                "x": 565,
+                "y": 794
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.9529411764705882,
+                  0.9176470588235294,
+                  0.8470588235294118,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 72,
+        "name": "FOOD / symmetric outer outline",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 562,
+                "y": 719
+              },
+              {
+                "type": "lineTo",
+                "x": 754,
+                "y": 719
+              },
+              {
+                "type": "lineTo",
+                "x": 754,
+                "y": 797
+              },
+              {
+                "type": "lineTo",
+                "x": 562,
+                "y": 797
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 73,
+        "name": "MERCH / editable text 1",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            92,
+            761.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "MERCH",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 74,
+        "name": "MERCH / semantic icon cutout",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 33.45833333333333,
+                "y": 747.7083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 65.54166666666666,
+                "y": 747.7083333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 65.54166666666666,
+                "y": 766.0416666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 33.45833333333333,
+                "y": 766.0416666666666
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.8509803921568627,
+                  0.7058823529411765,
+                  0.611764705882353,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 75,
+        "name": "MERCH / merch glyph part 2",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 38.041666666666664,
+                "y": 740.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 38.041666666666664,
+                "y": 729.375
+              },
+              {
+                "type": "lineTo",
+                "x": 42.625,
+                "y": 724.7916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 56.375,
+                "y": 724.7916666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 60.95833333333333,
+                "y": 729.375
+              },
+              {
+                "type": "lineTo",
+                "x": 60.95833333333333,
+                "y": 740.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 54.08333333333333,
+                "y": 740.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 54.08333333333333,
+                "y": 731.6666666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 44.916666666666664,
+                "y": 731.6666666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 44.916666666666664,
+                "y": 740.8333333333334
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 76,
+        "name": "MERCH / merch glyph part 1",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 31.166666666666664,
+                "y": 740.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 67.83333333333333,
+                "y": 740.8333333333334
+              },
+              {
+                "type": "lineTo",
+                "x": 72.41666666666666,
+                "y": 772.9166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 26.583333333333332,
+                "y": 772.9166666666666
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 77,
+        "name": "MERCH / semantic icon square",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 19,
+                "y": 719.5
+              },
+              {
+                "type": "lineTo",
+                "x": 80,
+                "y": 719.5
+              },
+              {
+                "type": "lineTo",
+                "x": 80,
+                "y": 780.5
+              },
+              {
+                "type": "lineTo",
+                "x": 19,
+                "y": 780.5
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.8509803921568627,
+                  0.7058823529411765,
+                  0.611764705882353,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 78,
+        "name": "MERCH / cream label face",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 11,
+                "y": 714
+              },
+              {
+                "type": "lineTo",
+                "x": 226,
+                "y": 714
+              },
+              {
+                "type": "lineTo",
+                "x": 226,
+                "y": 786
+              },
+              {
+                "type": "lineTo",
+                "x": 11,
+                "y": 786
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.9529411764705882,
+                  0.9176470588235294,
+                  0.8470588235294118,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 79,
+        "name": "MERCH / symmetric outer outline",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 8,
+                "y": 711
+              },
+              {
+                "type": "lineTo",
+                "x": 229,
+                "y": 711
+              },
+              {
+                "type": "lineTo",
+                "x": 229,
+                "y": 789
+              },
+              {
+                "type": "lineTo",
+                "x": 8,
+                "y": 789
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 80,
+        "name": "PLAZA / editable text 1",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            312,
+            472.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "PLAZA",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 81,
+        "name": "PLAZA / cream label face",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 301,
+                "y": 425
+              },
+              {
+                "type": "lineTo",
+                "x": 438,
+                "y": 425
+              },
+              {
+                "type": "lineTo",
+                "x": 438,
+                "y": 497
+              },
+              {
+                "type": "lineTo",
+                "x": 301,
+                "y": 497
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.9529411764705882,
+                  0.9176470588235294,
+                  0.8470588235294118,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 82,
+        "name": "PLAZA / symmetric outer outline",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 298,
+                "y": 422
+              },
+              {
+                "type": "lineTo",
+                "x": 441,
+                "y": 422
+              },
+              {
+                "type": "lineTo",
+                "x": 441,
+                "y": 500
+              },
+              {
+                "type": "lineTo",
+                "x": 298,
+                "y": 500
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 83,
+        "name": "MAIN STAGE / editable text 1",
+        "type": "Text",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            263,
+            158.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "sourceText": {
+          "text": "MAIN STAGE",
+          "fontFamily": "MCR Map Labels",
+          "fontStyle": "Bold",
+          "fontSize": 40,
+          "fillColor": [
+            0.12941176470588237,
+            0.11764705882352941,
+            0.12549019607843137,
+            1
+          ],
+          "strokeWidth": 0,
+          "justification": "left"
+        }
+      },
+      {
+        "id": 84,
+        "name": "MAIN STAGE / stage glyph part 7",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 215.91666666666666,
+                "y": 135.54166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 225.08333333333331,
+                "y": 135.54166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 225.08333333333331,
+                "y": 140.125
+              },
+              {
+                "type": "lineTo",
+                "x": 215.91666666666666,
+                "y": 140.125
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 85,
+        "name": "MAIN STAGE / stage glyph part 6",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 225.08333333333331,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 234.25,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 234.25,
+                "y": 151.58333333333331
+              },
+              {
+                "type": "lineTo",
+                "x": 229.66666666666666,
+                "y": 147.0
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 86,
+        "name": "MAIN STAGE / stage glyph part 5",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 206.75,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 215.91666666666666,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 211.33333333333334,
+                "y": 147.0
+              },
+              {
+                "type": "lineTo",
+                "x": 206.75,
+                "y": 151.58333333333331
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 87,
+        "name": "MAIN STAGE / stage glyph part 4",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 197.58333333333334,
+                "y": 163.04166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 243.41666666666666,
+                "y": 163.04166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 243.41666666666666,
+                "y": 169.91666666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 197.58333333333334,
+                "y": 169.91666666666666
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 88,
+        "name": "MAIN STAGE / stage glyph part 3",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 234.25,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 241.125,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 241.125,
+                "y": 163.04166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 234.25,
+                "y": 163.04166666666666
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 89,
+        "name": "MAIN STAGE / stage glyph part 2",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 199.875,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 206.75,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 206.75,
+                "y": 163.04166666666666
+              },
+              {
+                "type": "lineTo",
+                "x": 199.875,
+                "y": 163.04166666666666
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 90,
+        "name": "MAIN STAGE / stage glyph part 1",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 197.58333333333334,
+                "y": 126.375
+              },
+              {
+                "type": "lineTo",
+                "x": 243.41666666666666,
+                "y": 126.375
+              },
+              {
+                "type": "lineTo",
+                "x": 243.41666666666666,
+                "y": 133.25
+              },
+              {
+                "type": "lineTo",
+                "x": 197.58333333333334,
+                "y": 133.25
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 91,
+        "name": "MAIN STAGE / semantic icon square",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 190,
+                "y": 116.5
+              },
+              {
+                "type": "lineTo",
+                "x": 251,
+                "y": 116.5
+              },
+              {
+                "type": "lineTo",
+                "x": 251,
+                "y": 177.5
+              },
+              {
+                "type": "lineTo",
+                "x": 190,
+                "y": 177.5
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.8509803921568627,
+                  0.7058823529411765,
+                  0.611764705882353,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 92,
+        "name": "MAIN STAGE / cream label face",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 182,
+                "y": 111
+              },
+              {
+                "type": "lineTo",
+                "x": 488,
+                "y": 111
+              },
+              {
+                "type": "lineTo",
+                "x": 488,
+                "y": 183
+              },
+              {
+                "type": "lineTo",
+                "x": 182,
+                "y": 183
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.9529411764705882,
+                  0.9176470588235294,
+                  0.8470588235294118,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 93,
+        "name": "MAIN STAGE / symmetric outer outline",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 179,
+                "y": 108
+              },
+              {
+                "type": "lineTo",
+                "x": 491,
+                "y": 108
+              },
+              {
+                "type": "lineTo",
+                "x": 491,
+                "y": 186
+              },
+              {
+                "type": "lineTo",
+                "x": 179,
+                "y": 186
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.12941176470588237,
+                  0.11764705882352941,
+                  0.12549019607843137,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 41,
+        "name": "south_east_venue_illustration",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10040,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 700,
+                  "y": 1107
+                },
+                {
+                  "type": "lineTo",
+                  "x": 920,
+                  "y": 1107
+                },
+                {
+                  "type": "lineTo",
+                  "x": 920,
+                  "y": 1287
+                },
+                {
+                  "type": "lineTo",
+                  "x": 700,
+                  "y": 1287
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.9016393442622951,
+                1.0
+              ],
+              "contentCenter": [
+                1156.2295081967213,
+                1581.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 40,
+        "name": "rooted_tree_10",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10039,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 8,
+                  "y": 1137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 174,
+                  "y": 1137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 174,
+                  "y": 1281
+                },
+                {
+                  "type": "lineTo",
+                  "x": 8,
+                  "y": 1281
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.7539267015706806
+              ],
+              "contentCenter": [
+                352.24590163934425,
+                1691.890052356021
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 39,
+        "name": "south_west_venue_illustration",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10038,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -75,
+                  "y": 1036
+                },
+                {
+                  "type": "lineTo",
+                  "x": 165,
+                  "y": 1036
+                },
+                {
+                  "type": "lineTo",
+                  "x": 165,
+                  "y": 1256
+                },
+                {
+                  "type": "lineTo",
+                  "x": -75,
+                  "y": 1256
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.9836065573770492,
+                1.2222222222222223
+              ],
+              "contentCenter": [
+                170.9016393442623,
+                1615.3333333333335
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 38,
+        "name": "giveaway_pavilion",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10037,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 440,
+                  "y": 1044
+                },
+                {
+                  "type": "lineTo",
+                  "x": 676,
+                  "y": 1044
+                },
+                {
+                  "type": "lineTo",
+                  "x": 676,
+                  "y": 1250
+                },
+                {
+                  "type": "lineTo",
+                  "x": 440,
+                  "y": 1250
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.9672131147540983,
+                1.1444444444444444
+              ],
+              "contentCenter": [
+                1177.0163934426228,
+                1586.4666666666667
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 37,
+        "name": "grove_east_exit",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10036,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 643,
+                  "y": 1070
+                },
+                {
+                  "type": "lineTo",
+                  "x": 807,
+                  "y": 1070
+                },
+                {
+                  "type": "lineTo",
+                  "x": 807,
+                  "y": 1224
+                },
+                {
+                  "type": "lineTo",
+                  "x": 643,
+                  "y": 1224
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6721311475409836,
+                0.7817258883248731
+              ],
+              "contentCenter": [
+                1155.1639344262294,
+                1647.6954314720813
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 36,
+        "name": "grove_south_lawn",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10035,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 261,
+                  "y": 1018
+                },
+                {
+                  "type": "lineTo",
+                  "x": 451,
+                  "y": 1018
+                },
+                {
+                  "type": "lineTo",
+                  "x": 451,
+                  "y": 1192
+                },
+                {
+                  "type": "lineTo",
+                  "x": 261,
+                  "y": 1192
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7786885245901639,
+                0.8923076923076924
+              ],
+              "contentCenter": [
+                1053.7049180327867,
+                1676.523076923077
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 35,
+        "name": "rooted_tree_08",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10034,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 40,
+                  "y": 983
+                },
+                {
+                  "type": "lineTo",
+                  "x": 206,
+                  "y": 983
+                },
+                {
+                  "type": "lineTo",
+                  "x": 206,
+                  "y": 1148
+                },
+                {
+                  "type": "lineTo",
+                  "x": 40,
+                  "y": 1148
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8375634517766497
+              ],
+              "contentCenter": [
+                558.4098360655737,
+                1601.959390862944
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 34,
+        "name": "grove_east_lower",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10033,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 636,
+                  "y": 868
+                },
+                {
+                  "type": "lineTo",
+                  "x": 812,
+                  "y": 868
+                },
+                {
+                  "type": "lineTo",
+                  "x": 812,
+                  "y": 1032
+                },
+                {
+                  "type": "lineTo",
+                  "x": 636,
+                  "y": 1032
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7213114754098361,
+                0.8586387434554974
+              ],
+              "contentCenter": [
+                1000.983606557377,
+                1499.958115183246
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 33,
+        "name": "meeting_pavilion",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10032,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 256,
+                  "y": 779
+                },
+                {
+                  "type": "lineTo",
+                  "x": 492,
+                  "y": 779
+                },
+                {
+                  "type": "lineTo",
+                  "x": 492,
+                  "y": 985
+                },
+                {
+                  "type": "lineTo",
+                  "x": 256,
+                  "y": 985
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.9672131147540983,
+                1.1444444444444444
+              ],
+              "contentCenter": [
+                1240.622950819672,
+                1321.4666666666667
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 32,
+        "name": "grove_west_bottom",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10031,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -49,
+                  "y": 804
+                },
+                {
+                  "type": "lineTo",
+                  "x": 123,
+                  "y": 804
+                },
+                {
+                  "type": "lineTo",
+                  "x": 123,
+                  "y": 968
+                },
+                {
+                  "type": "lineTo",
+                  "x": -49,
+                  "y": 968
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7049180327868853,
+                0.8586387434554974
+              ],
+              "contentCenter": [
+                307.6885245901639,
+                1435.958115183246
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 31,
+        "name": "rooted_tree_09",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10030,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 594,
+                  "y": 809
+                },
+                {
+                  "type": "lineTo",
+                  "x": 760,
+                  "y": 809
+                },
+                {
+                  "type": "lineTo",
+                  "x": 760,
+                  "y": 953
+                },
+                {
+                  "type": "lineTo",
+                  "x": 594,
+                  "y": 953
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.7539267015706806
+              ],
+              "contentCenter": [
+                938.2459016393443,
+                1363.890052356021
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 30,
+        "name": "grove_west_lower",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10029,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -55,
+                  "y": 682
+                },
+                {
+                  "type": "lineTo",
+                  "x": 127,
+                  "y": 682
+                },
+                {
+                  "type": "lineTo",
+                  "x": 127,
+                  "y": 856
+                },
+                {
+                  "type": "lineTo",
+                  "x": -55,
+                  "y": 856
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7459016393442623,
+                0.8923076923076924
+              ],
+              "contentCenter": [
+                704.3278688524591,
+                1340.523076923077
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 29,
+        "name": "grove_east_connector",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10028,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 654,
+                  "y": 678
+                },
+                {
+                  "type": "lineTo",
+                  "x": 796,
+                  "y": 678
+                },
+                {
+                  "type": "lineTo",
+                  "x": 796,
+                  "y": 824
+                },
+                {
+                  "type": "lineTo",
+                  "x": 654,
+                  "y": 824
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.5819672131147541,
+                0.7487179487179487
+              ],
+              "contentCenter": [
+                1246.4426229508197,
+                1230.5538461538463
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 28,
+        "name": "food_counters",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10027,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 568,
+                  "y": 611
+                },
+                {
+                  "type": "lineTo",
+                  "x": 758,
+                  "y": 611
+                },
+                {
+                  "type": "lineTo",
+                  "x": 758,
+                  "y": 775
+                },
+                {
+                  "type": "lineTo",
+                  "x": 568,
+                  "y": 775
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.8296943231441049,
+                0.9010989010989011
+              ],
+              "contentCenter": [
+                1406.82096069869,
+                808.3406593406594
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 27,
+        "name": "merch_venue_hall",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10026,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 8,
+                  "y": 551
+                },
+                {
+                  "type": "lineTo",
+                  "x": 220,
+                  "y": 551
+                },
+                {
+                  "type": "lineTo",
+                  "x": 220,
+                  "y": 731
+                },
+                {
+                  "type": "lineTo",
+                  "x": 8,
+                  "y": 731
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.8688524590163934,
+                1.0
+              ],
+              "contentCenter": [
+                447.6393442622951,
+                1025.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 26,
+        "name": "rooted_tree_07",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10025,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 5,
+                  "y": 535
+                },
+                {
+                  "type": "lineTo",
+                  "x": 171,
+                  "y": 535
+                },
+                {
+                  "type": "lineTo",
+                  "x": 171,
+                  "y": 697
+                },
+                {
+                  "type": "lineTo",
+                  "x": 5,
+                  "y": 697
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8307692307692308
+              ],
+              "contentCenter": [
+                697.5737704918032,
+                1148.1076923076923
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 25,
+        "name": "rooted_tree_11",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10024,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 410,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 576,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 576,
+                  "y": 617
+                },
+                {
+                  "type": "lineTo",
+                  "x": 410,
+                  "y": 617
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8307692307692308
+              ],
+              "contentCenter": [
+                1102.5737704918033,
+                1068.1076923076923
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 24,
+        "name": "grove_east_middle",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10023,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 649,
+                  "y": 472
+                },
+                {
+                  "type": "lineTo",
+                  "x": 801,
+                  "y": 472
+                },
+                {
+                  "type": "lineTo",
+                  "x": 801,
+                  "y": 616
+                },
+                {
+                  "type": "lineTo",
+                  "x": 649,
+                  "y": 616
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6229508196721312,
+                0.7384615384615385
+              ],
+              "contentCenter": [
+                1283.1639344262294,
+                1016.9846153846154
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 23,
+        "name": "rooted_tree_06",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10022,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 640,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 455
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 580
+                },
+                {
+                  "type": "lineTo",
+                  "x": 640,
+                  "y": 580
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.5245901639344263,
+                0.6410256410256411
+              ],
+              "contentCenter": [
+                1174.032786885246,
+                928.0769230769231
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 22,
+        "name": "plaza_seating_representation",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10021,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 292,
+                  "y": 451
+                },
+                {
+                  "type": "lineTo",
+                  "x": 436,
+                  "y": 451
+                },
+                {
+                  "type": "lineTo",
+                  "x": 436,
+                  "y": 545
+                },
+                {
+                  "type": "lineTo",
+                  "x": 292,
+                  "y": 545
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6233766233766234,
+                0.5838509316770186
+              ],
+              "contentCenter": [
+                763.2727272727273,
+                573.0248447204968
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 21,
+        "name": "west_white_merch",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10020,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 160,
+                  "y": 381
+                },
+                {
+                  "type": "lineTo",
+                  "x": 292,
+                  "y": 381
+                },
+                {
+                  "type": "lineTo",
+                  "x": 292,
+                  "y": 535
+                },
+                {
+                  "type": "lineTo",
+                  "x": 160,
+                  "y": 535
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6,
+                0.6875
+              ],
+              "contentCenter": [
+                610.0,
+                1074.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 20,
+        "name": "grove_west_middle",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10019,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -40,
+                  "y": 334
+                },
+                {
+                  "type": "lineTo",
+                  "x": 144,
+                  "y": 334
+                },
+                {
+                  "type": "lineTo",
+                  "x": 144,
+                  "y": 504
+                },
+                {
+                  "type": "lineTo",
+                  "x": -40,
+                  "y": 504
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7540983606557377,
+                0.8629441624365483
+              ],
+              "contentCenter": [
+                534.622950819672,
+                971.7157360406092
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 19,
+        "name": "west_edge_venue_illustration",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10018,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -75,
+                  "y": 321
+                },
+                {
+                  "type": "lineTo",
+                  "x": 125,
+                  "y": 321
+                },
+                {
+                  "type": "lineTo",
+                  "x": 125,
+                  "y": 501
+                },
+                {
+                  "type": "lineTo",
+                  "x": -75,
+                  "y": 501
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.819672131147541,
+                1.0
+              ],
+              "contentCenter": [
+                339.75409836065575,
+                795.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 18,
+        "name": "east_edge_venue_illustration",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10017,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 710,
+                  "y": 251
+                },
+                {
+                  "type": "lineTo",
+                  "x": 920,
+                  "y": 251
+                },
+                {
+                  "type": "lineTo",
+                  "x": 920,
+                  "y": 411
+                },
+                {
+                  "type": "lineTo",
+                  "x": 710,
+                  "y": 411
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.860655737704918,
+                0.8888888888888888
+              ],
+              "contentCenter": [
+                1145.4918032786886,
+                672.3333333333333
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 17,
+        "name": "culture_park_plaque",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10016,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 585,
+                  "y": 319
+                },
+                {
+                  "type": "lineTo",
+                  "x": 741,
+                  "y": 319
+                },
+                {
+                  "type": "lineTo",
+                  "x": 741,
+                  "y": 415
+                },
+                {
+                  "type": "lineTo",
+                  "x": 585,
+                  "y": 415
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6782608695652174,
+                0.4824120603015075
+              ],
+              "contentCenter": [
+                749.8173913043478,
+                799.4824120603015
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 16,
+        "name": "rooted_tree_04",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10015,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 2,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 168,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 168,
+                  "y": 382
+                },
+                {
+                  "type": "lineTo",
+                  "x": 2,
+                  "y": 382
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8307692307692308
+              ],
+              "contentCenter": [
+                694.5737704918032,
+                833.1076923076923
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 15,
+        "name": "stage_venue_representation",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10014,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 185,
+                  "y": 163
+                },
+                {
+                  "type": "lineTo",
+                  "x": 485,
+                  "y": 163
+                },
+                {
+                  "type": "lineTo",
+                  "x": 485,
+                  "y": 373
+                },
+                {
+                  "type": "lineTo",
+                  "x": 185,
+                  "y": 373
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                1.2295081967213115,
+                1.1666666666666667
+              ],
+              "contentCenter": [
+                492.3770491803279,
+                716.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 14,
+        "name": "rooted_tree_05",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10013,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 634,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 220
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 354
+                },
+                {
+                  "type": "lineTo",
+                  "x": 634,
+                  "y": 354
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.5491803278688525,
+                0.6802030456852792
+              ],
+              "contentCenter": [
+                1052.4754098360656,
+                722.6700507614214
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 13,
+        "name": "cross_banner_east",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10012,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 522,
+                  "y": 141
+                },
+                {
+                  "type": "lineTo",
+                  "x": 572,
+                  "y": 141
+                },
+                {
+                  "type": "lineTo",
+                  "x": 572,
+                  "y": 275
+                },
+                {
+                  "type": "lineTo",
+                  "x": 522,
+                  "y": 275
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.4098360655737705,
+                0.5851528384279476
+              ],
+              "contentCenter": [
+                704.3770491803278,
+                283.1921397379913
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 12,
+        "name": "grove_west_upper",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10011,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -50,
+                  "y": 98
+                },
+                {
+                  "type": "lineTo",
+                  "x": 124,
+                  "y": 98
+                },
+                {
+                  "type": "lineTo",
+                  "x": 124,
+                  "y": 264
+                },
+                {
+                  "type": "lineTo",
+                  "x": -50,
+                  "y": 264
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7131147540983607,
+                0.8512820512820513
+              ],
+              "contentCenter": [
+                675.9508196721312,
+                726.2461538461538
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 11,
+        "name": "grove_east_court",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10010,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 645,
+                  "y": 74
+                },
+                {
+                  "type": "lineTo",
+                  "x": 805,
+                  "y": 74
+                },
+                {
+                  "type": "lineTo",
+                  "x": 805,
+                  "y": 232
+                },
+                {
+                  "type": "lineTo",
+                  "x": 645,
+                  "y": 232
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.6557377049180327,
+                0.8020304568527918
+              ],
+              "contentCenter": [
+                1144.672131147541,
+                666.7005076142132
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 10,
+        "name": "north_east_facade_representation",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10009,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 542,
+                  "y": 6
+                },
+                {
+                  "type": "lineTo",
+                  "x": 752,
+                  "y": 6
+                },
+                {
+                  "type": "lineTo",
+                  "x": 752,
+                  "y": 150
+                },
+                {
+                  "type": "lineTo",
+                  "x": 542,
+                  "y": 150
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.860655737704918,
+                0.8
+              ],
+              "contentCenter": [
+                977.4918032786885,
+                385.20000000000005
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 9,
+        "name": "north_west_facade_representation",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10008,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": -12,
+                  "y": 6
+                },
+                {
+                  "type": "lineTo",
+                  "x": 198,
+                  "y": 6
+                },
+                {
+                  "type": "lineTo",
+                  "x": 198,
+                  "y": 150
+                },
+                {
+                  "type": "lineTo",
+                  "x": -12,
+                  "y": 150
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.860655737704918,
+                0.8
+              ],
+              "contentCenter": [
+                423.4918032786885,
+                385.20000000000005
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 8,
+        "name": "north_white_food",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10007,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 665,
+                  "y": 31
+                },
+                {
+                  "type": "lineTo",
+                  "x": 765,
+                  "y": 31
+                },
+                {
+                  "type": "lineTo",
+                  "x": 765,
+                  "y": 151
+                },
+                {
+                  "type": "lineTo",
+                  "x": 665,
+                  "y": 151
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.44052863436123346,
+                0.5357142857142857
+              ],
+              "contentCenter": [
+                884.3832599118942,
+                571.0
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 7,
+        "name": "rooted_tree_03",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10006,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 558,
+                  "y": -28
+                },
+                {
+                  "type": "lineTo",
+                  "x": 724,
+                  "y": -28
+                },
+                {
+                  "type": "lineTo",
+                  "x": 724,
+                  "y": 137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 558,
+                  "y": 137
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8375634517766497
+              ],
+              "contentCenter": [
+                1076.4098360655737,
+                590.9593908629441
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "name": "rooted_tree_02",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10005,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 328,
+                  "y": -25
+                },
+                {
+                  "type": "lineTo",
+                  "x": 494,
+                  "y": -25
+                },
+                {
+                  "type": "lineTo",
+                  "x": 494,
+                  "y": 137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 328,
+                  "y": 137
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8223350253807107
+              ],
+              "contentCenter": [
+                498.08196721311475,
+                582.7055837563452
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "name": "rooted_tree_01",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10004,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 146,
+                  "y": -22
+                },
+                {
+                  "type": "lineTo",
+                  "x": 312,
+                  "y": -22
+                },
+                {
+                  "type": "lineTo",
+                  "x": 312,
+                  "y": 137
+                },
+                {
+                  "type": "lineTo",
+                  "x": 146,
+                  "y": 137
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.680327868852459,
+                0.8071065989847716
+              ],
+              "contentCenter": [
+                316.08196721311475,
+                574.4517766497462
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "name": "grove_north_gap",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10003,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 428,
+                  "y": -30
+                },
+                {
+                  "type": "lineTo",
+                  "x": 604,
+                  "y": -30
+                },
+                {
+                  "type": "lineTo",
+                  "x": 604,
+                  "y": 136
+                },
+                {
+                  "type": "lineTo",
+                  "x": 428,
+                  "y": 136
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7213114754098361,
+                0.8426395939086294
+              ],
+              "contentCenter": [
+                608.327868852459,
+                592.7106598984772
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "name": "grove_north_west",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10002,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 8,
+                  "y": -34
+                },
+                {
+                  "type": "lineTo",
+                  "x": 192,
+                  "y": -34
+                },
+                {
+                  "type": "lineTo",
+                  "x": 192,
+                  "y": 136
+                },
+                {
+                  "type": "lineTo",
+                  "x": 8,
+                  "y": 136
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "scenery-f62569baaab7eecb",
+          "fit": {
+            "custom": {
+              "scale": [
+                0.7540983606557377,
+                0.8629441624365483
+              ],
+              "contentCenter": [
+                196.52459016393442,
+                603.7157360406092
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "name": "Semantic green Plaza zone - not terrain authority",
+        "type": "Shape",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "shape": {
+          "path": {
+            "commands": [
+              {
+                "type": "moveTo",
+                "x": 238,
+                "y": 384
+              },
+              {
+                "type": "lineTo",
+                "x": 432,
+                "y": 376
+              },
+              {
+                "type": "lineTo",
+                "x": 515,
+                "y": 480
+              },
+              {
+                "type": "lineTo",
+                "x": 440,
+                "y": 575
+              },
+              {
+                "type": "lineTo",
+                "x": 303,
+                "y": 598
+              },
+              {
+                "type": "lineTo",
+                "x": 226,
+                "y": 509
+              },
+              {
+                "type": "close"
+              }
+            ]
+          },
+          "fills": [
+            {
+              "paint": {
+                "type": "solid",
+                "color": [
+                  0.48,
+                  0.53,
+                  0.26,
+                  1
+                ]
+              },
+              "fillRule": "nonZeroWinding",
+              "blendMode": "normal",
+              "opacity": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": 1,
+        "name": "Original material ground",
+        "type": "Image",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 3000
+        },
+        "transform": {
+          "anchorPoint": [
+            0,
+            0
+          ],
+          "position": [
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "masks": [
+          {
+            "id": 10000,
+            "mode": "add",
+            "opacity": 100,
+            "path": {
+              "commands": [
+                {
+                  "type": "moveTo",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 0
+                },
+                {
+                  "type": "lineTo",
+                  "x": 768,
+                  "y": 1296
+                },
+                {
+                  "type": "lineTo",
+                  "x": 0,
+                  "y": 1296
+                },
+                {
+                  "type": "close"
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "assetId": "ground-20cecda630d633f2",
+          "fit": {
+            "custom": {
+              "scale": [
+                1.0,
+                1.0
+              ],
+              "contentCenter": [
+                384.0,
+                648.0
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

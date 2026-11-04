@@ -25,6 +25,7 @@ fn failure(context: &VerifiedProduct, error: CommandError) -> proto::ProductResp
     proto::ProductResponse {
         status,
         delivery: None,
+        content_expires_unix_micros: 0,
         content_type: "application/json".into(),
         body: serde_json::to_vec(&serde_json::json!({
             "code":format!("CONCERT_{status}"), "message":"Concert media request unavailable",
@@ -85,6 +86,7 @@ impl ProductOwner for OwnerMediaRuntime {
             Ok(OwnerMediaReply::Json { status, body }) => proto::ProductResponse {
                 status: status.into(),
                 delivery: None,
+                content_expires_unix_micros: 0,
                 content_type: "application/json".into(),
                 body: serde_json::to_vec(&body)
                     .map_err(|_| Status::internal("Invalid media representation"))?,
@@ -92,6 +94,7 @@ impl ProductOwner for OwnerMediaRuntime {
             Ok(OwnerMediaReply::Image(image)) => proto::ProductResponse {
                 status: 200,
                 delivery: None,
+                content_expires_unix_micros: 0,
                 content_type: image.metadata.mime.as_str().into(),
                 body: image.bytes,
             },

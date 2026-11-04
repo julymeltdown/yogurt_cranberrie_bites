@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T10:52:38+09:00**, from published history through `18b61550` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T10:55:41+09:00**, from published history through `047d892c` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -9,13 +9,13 @@ Updated **2026-11-04T10:52:38+09:00**, from published history through `18b61550`
 | Original-task disposition | Count | Meaning |
 | --- | ---: | --- |
 | Recorded acceptance dispositions | **12** | Eleven historical ACCEPTED records plus the implementation owner's explicit original FE08 acceptance. |
-| Additional task-local criteria closed | **18** | Existing dispositions plus original FE15 at owner-declared INTEGRATED; exact owner states are preserved, with no new king/SL technical sign-off. |
-| Other implementation evidence | **68** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Additional task-local criteria closed | **19** | Existing dispositions plus original QA07 at task-local MOCK_READY; exact owner states are preserved, with no new king/SL technical sign-off. |
+| Other implementation evidence | **67** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
 | Status not yet reconciled | **9** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
 | Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
 | **Required total** | **112** | Every original required ID appears once in the linked register. |
 
-There are **30 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 18 additional task-local closures), **not only 11 tasks with implementation**. The latest reconciliation adds original **FE15**, following FE14, FE19, QA01, QA02 and FE09, from explicit implementation-owner dispositions and published receipts. FE15 retains its exact **INTEGRATED** state and explicit original-criterion closure; it is not relabeled SATISFIED or ACCEPTED. This is not a claim that 30 tasks were newly accepted today, nor an effort-weighted completion percentage. The 68 other evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+There are **31 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 19 additional task-local closures), **not only 11 tasks with implementation**. The latest reconciliation adds original **QA07**, following FE14, FE19, QA01, QA02, FE09 and FE15, from explicit implementation-owner dispositions and published receipts. FE15 retains its exact **INTEGRATED** state and explicit original-criterion closure; it is not relabeled SATISFIED or ACCEPTED. This is not a claim that 31 tasks were newly accepted today, nor an effort-weighted completion percentage. The 67 other evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
 
 The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
 
@@ -42,6 +42,8 @@ The [112-row task register](task-progress-2026-11-04.json) records each original
 | **FE09** | The [production refresh owner record](frontend/production-refresh.md), source `dc88c248`, receipts `f96ea11b` and publication `62b4bf80`, declares original frontend criteria SATISFIED. Production caller activation and browser-policy cases close the remaining original caller behavior; actual goal complete and no active goal remain. Frontend fixtures and backend real-service evidence stay separate, and broader test failures are retained rather than claiming a green full suite. |
 
 | **FE15** | The [application-input owner record](frontend/fe15-application-input.md), source `977b773d` / `50d950d7`, support `416b4e5f` / `1b4ac457`, final receipt `accc0dfe` and publication `a84885f2`, explicitly declares the original client/application remainder **INTEGRATED** and closed, with no FE15-owned behavior remaining. The owner reports native browser qualification at 360/390/430, goal COMPLETE then null/clean STOP, and returned ownership. Separate QA07, physical-device, live integration and release requirements remain open under their own tasks. FE07 scroll support is not whole FE07 closure. |
+
+| **QA07** | The [accessibility/input owner record](evidence/accessibility/qa07/README.md), artifact `41f7c64c` and final publication receipt `ced8ec12`, explicitly declares original criteria **SATISFIED at MOCK_READY**. The owner reports keyboard/focus, screen-reader labels, DOM alternatives, reduced motion, trusted pointer cancellation and essential social/pickup flows delivered, with three FE15/FE36 defects fixed by their owners and independently requalified. Actual goal COMPLETE then null/clean STOP and returned ownership are recorded. Actual screen-reader announcements, physical-device, live service and IN/release limits remain separate; no extra original prerequisite is invented. |
 
 This reconciliation preserves the owners' actual dispositions: FE08 is explicitly owner-declared ACCEPTED, FE15 retains its explicit INTEGRATED state and original-criterion closure, and other SATISFIED records are not relabeled as new formal acceptances. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
 

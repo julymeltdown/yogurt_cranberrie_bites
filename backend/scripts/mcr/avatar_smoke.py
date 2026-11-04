@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[3]
 DATABASE = bootstrap.DATABASE
 
 
-def artifacts(path):
+def artifacts(path, *, metadata_only=False):
     selected = []
     finished = False
     for line in path.read_text().splitlines():
@@ -27,9 +27,16 @@ def artifacts(path):
             bootstrap.require(row.get('success') is True, 'Cargo build failed')
             finished = True
         if (row.get('reason') == 'compiler-artifact' and row.get('executable')
-                and row['target']['name'] == 'avatar' and 'test' in row['target']['kind']
-                and Path(row['manifest_path']).resolve() == ROOT / 'backend/services/concert-service/Cargo.toml'):
-            selected.append(migration.executable(Path(row['executable'])))
+                and row['target']['name'] == 'avatar' and 'test' in row['target']['kind']):
+            manifest = Path(row['manifest_path'])
+            if (manifest if metadata_only else manifest.resolve()) != ROOT / 'backend/services/concert-service/Cargo.toml':
+                continue
+            executable = Path(row['executable'])
+            if metadata_only:
+                # The exact original Cargo path is an index into the frozen
+                # receipt, not a live resource after the target is released.
+                bootstrap.require(executable.is_absolute(), 'absolute compiler artifact metadata required')
+            selected.append(executable if metadata_only else migration.executable(executable))
     bootstrap.require(finished and len(set(selected)) == 1, 'exact service avatar compiler artifact required')
     return selected[0]
 
@@ -57,7 +64,7 @@ def write_selected_release(root, document):
 
 
 def run(metadata, pg_bin, pinned_binaries=None):
-    binary = artifacts(metadata)
+    binary = artifacts(metadata, metadata_only=pinned_binaries is not None)
     source_commit = None
     if pinned_binaries is not None:
         # Explicit copies are tied to an exact compiler artifact and checksum;
@@ -65,8 +72,8 @@ def run(metadata, pg_bin, pinned_binaries=None):
         receipt = json.loads(pinned_binaries.read_text())
         matches = [row for row in receipt['artifacts']
                    if row['package'] == 'concert-service'
-                   and Path(row['manifest_path']).resolve() == ROOT / 'backend/services/concert-service/Cargo.toml'
-                   and Path(row['compiler_executable']).resolve() == binary]
+                   and Path(row['manifest_path']) == ROOT / 'backend/services/concert-service/Cargo.toml'
+                   and Path(row['compiler_executable']) == binary]
         bootstrap.require(len(matches) == 1, 'exact pinned compiler artifact required')
         row = matches[0]
         snapshot = migration.executable(Path(row['snapshot']))

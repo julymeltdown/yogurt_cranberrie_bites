@@ -1,0 +1,11 @@
+- main:
+  - link "MCR Concert World":
+    - /url: /
+  - heading "Access denied" [level=1]
+  - alert "Event administration":
+    - heading "Event administration" [level=2]
+    - paragraph: A current authorization check is required before opening these tools.
+  - link "Back to world":
+    - /url: /world
+  - link "Back to home":
+    - /url: /

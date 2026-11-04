@@ -10,6 +10,14 @@ use std::{fmt, sync::Arc, time::Duration};
 use tonic::Status;
 use uuid::Uuid;
 
+/// Closed disclosure purpose; this is metadata, never a grant or public DTO.
+#[derive(Clone, Copy, serde::Serialize, serde::Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum GiftPrivateKind {
+    Pickup,
+    Code,
+}
+
 pub const MAX_SUBJECTS: usize = 100;
 pub const MAX_GUARD_DURATION: Duration = Duration::from_secs(5);
 /// A binding is not authority. Only acquisition against both actual owners may

@@ -419,3 +419,224 @@ Report `/tmp/mcr-spatial-6c700f04/avatar-native.json`; source/binary receipt
 no target/native cluster remains held. Actual external 207 SDK, participant
 adapter, root-held distributed guard and unknown-settlement quarantine remain
 separate owner obligations. No live authority or multiuser acceptance is claimed.
+
+## Successful-commit witness follow-up — source implementation
+
+Base `0a8c422645458c9397af9289e15089ee3f9cb0ad`; isolated branch
+`codex/mcr-be-avatar-witness`. The previously qualified actual-transaction
+registration hook does not by itself prove successful avatar/preference commit.
+An uncertain raw-commit outcome therefore correctly remains Unknown and must
+retain the owner scopes until an actual durable outcome can be established.
+
+Product API root assigned this owner the existing application AvatarEffectFence
+trait/DTO, avatar repository hook, existing service avatar tests and this document.
+Participant209 exclusively owns new migration0035, its sealed
+BoundParticipantAuthority descriptor and participant witness/settlement resolver.
+Neither side acquires the other's files. A new unbudgeted goal is tool-confirmed
+active for this follow-up; the separate spatial goal was fully delivered.
+
+The coordinated proposed ABI is a non-authoritative witness descriptor containing
+producer-instance/scope/operation/session-family UUIDs, exact nonzero 32-byte
+parent/guard/body/effect binding
+digests and the exact existing 64-character lowercase release digest. A synchronous
+`witness_binding` fence method defaults to Unavailable. Missing production witness
+metadata cannot certify commit. Read-only and explicitly synthetic unfenced
+fixtures remain distinct. The repository will attach its already captured actual
+PostgreSQL transaction identity, real actor/event, mutation kind and expected/next
+revision, and insert the immutable witness inside the effect transaction before
+commit. No plaintext profile/request payload, external boolean or new authority
+scope is proposed. The existing repository advances revision for every successful
+mutation, including equal values; there is no mutation no-op branch to waive.
+
+Exact schema/insert columns and mutation tokens are being frozen directly with
+Participant209 before repository SQL edits. The matching proposed application ABI
+now has a source draft: typed descriptor, redacted Debug, exact release/nil UUID
+validation and default Unavailable fence method, plus a regression for missing or
+malformed metadata. Formatting/diff checks pass; compilation and native checks
+remain NOT_RUN for this follow-up. The repository now has the exact frozen
+witness insert and native regressions in source; the separate joined commit/abort
+qualification and full Product/participant admission remain open.
+
+
+### Frozen 0035 contract and authored hook
+
+Participant209 froze migration0035 in `48b3ec737e209adb6f505afd3f96f84fd1026707`,
+SHA256 `113900167fdc2806a9f5126c508b8ae737bcc9ca718ce7dbf408e913d1c3bebc`.
+It remains their owned migration; this owner consumes its exact twenty-parameter
+INSERT contract without editing the schema. Mutation tokens are AVATAR and
+PREFERENCES. The descriptor also carries nonnil producer-instance/scope UUIDs.
+Identity digest uses the existing platform `identity_digest` with CONCERT,
+the actual captured tuple, exact effect digest, producer instance and **operation
+UUID bytes** as settlement reference. Scope UUID is joined separately and is not
+substituted into that digest recipe.
+
+The repository obtains the descriptor once after actual transaction registration,
+validates original release/IDs/digests before effects, then inserts exact actor,
+event, scope/request/effect bindings, native tuple and expected/next revision in
+the same SQLx transaction after UPDATE. Fence checks surround the insert and
+precede commit. Exactly one inserted row is required; no conflict shortcut or
+external commit boolean is accepted. Reads and synthetic None retain their old
+checkpoint behavior. Successful production mutations, including equal values,
+require the witness. No request/profile payload is persisted.
+
+Authored native regressions use explicitly synthetic component scope/Track rows
+with the real SQL constraints and captured transaction identity; they do not
+pretend to be real Auth/Friend registrations. They cover descriptor refusal,
+foreign release/body/scope, unpublished or unconfirmed scope, rejection after
+UPDATE and after witness insertion, successful avatar/preferences rows,
+postcommit uncertainty retaining a durable witness, immutable/cross-transaction
+reuse rejection and exact witness restart persistence. Actual sealed
+BoundParticipantAuthority/owner-protocol qualification remains Participant209's
+separate joined proof. These new native cases remain NOT_RUN at this source
+checkpoint, pending coherent migration consumption and a named build lease.
+
+### Frozen-binary controller selection
+
+At base `b7ffb3ce181a09b6413c272b3a570d628b1ec0b3`, the backend resource
+coordinator explicitly assigned this owner the sole metadata-selection edit in
+`backend/scripts/mcr/avatar_smoke.py`. In pinned mode the original absolute
+compiler executable path is now a lexical receipt key; it is never resolved,
+statted or executed after the shared target has been released. The frozen copy
+still requires an executable-file check and an exact SHA256 match. Default
+nonpinned selection retains its existing live executable validation.
+
+A hermetic Python selection check passed (exit0), trapping any resolve or
+executable validation of the released target, selecting the frozen copy, stopping
+before PostgreSQL, and refusing missing/failed/ambiguous compiler records, a
+foreign manifest and a bad snapshot checksum. It also verified legacy executable
+validation. `git diff --check` passed. These checks certify controller selection
+only; the two-target avatar build and actual native witness cases remain NOT_RUN.
+
+The coherent source checkpoint `fb0db1a9800933197ec75970fa5448dbfaaaf95d`
+consumes Participant209's exact `f42d8ae0` sealed descriptor, `753083b4` resolver
+and `275c80f6` joined-test source as `1c7f4b69`, `d15af75e` and `fb0db1a9`.
+All three owned Rust blobs still match `7322cbcf`; migration0035 retains its
+frozen checksum. The joined test remains the participant owner's validation.
+
+Its fresh named BACKEND two-target build exited101 before avatar compilation:
+friend-service protobuf generation reported an authority.proto shadow between
+this checkout and a retained be-operations-resume build path. Original compiler
+JSON, stderr, source hashes and the failure receipt are retained outside the
+target in `/tmp/mcr-avatar-witness-fb0db1a9/`. No avatar binary was frozen and
+no PG cluster started. The target was explicitly released with no handles.
+Participant209 supplied the prior successful remediation: invalidate only the
+`contracts-build` package inside a fresh allocated target turn, then repeat the
+same locked/offline two-target build. No shared-source edit or new target is
+needed. This is a build-provenance failure, not a successful witness validation.
+
+### Actual producer-consumer compatibility observed
+
+Participant209 compiled source `a7ace884d216446872f1c93a23d0e62dcf0068ff`
+with the real sealed BoundParticipantAuthority, Root journal and native resolver
+(Rust1.88, locked/offline, jobs2, debug0, incremental0; exit0). This owner
+independently verified the successful original compiler JSON, frozen executable
+SHA256 `fbfcdc36521067cd451dbbb1f71592cf4bcbc1c9adf32a2668e76aae2c8b3e14`
+and exact equality of all three avatar Rust files plus migration0035 against
+that immutable source commit. The avatar integration-test executable is a
+separate target and is not certified by this library compilation.
+
+The actual Auth/Friend/Profile-process diagnostic run recorded AVATAR revision
+1→2 in Concert xid923 and PREFERENCES revision1→2 in xid1012, each with its
+matching committed same-transaction witness. For both writes the real Root
+delivery completed, both owner leases completed and the CONCERT registration
+settled COMMITTED. This supplies concrete positive compatibility evidence for
+the owned hook through the real consumer, beyond the synthetic scope fixtures.
+
+The **whole joined test failed** on the later full Profile update: Concert
+xid1107 committed, Profile xid1144 remained in progress/PENDING and delivery did
+not complete. That separate participant/Profile settlement issue remains with
+its owners; it is not concealed by the successful avatar/preference prefix.
+No complete save/reload/abort journey, public HTTP, operator or IN01 acceptance
+is claimed. Three peer shutdowns exited0 and private cluster cleanup passed.
+
+Local peer evidence: `/private/tmp/mcr-participant-join-a7ace884/` contains
+`concert-lib-receipt.json` (SHA256
+`b05e0ba1c247f597113b5397308f25627b064f37be828ff65c385144df6cdb31`)
+and `join-2-diagnostic.json` (SHA256
+`ab163a7b3fbcfa8aa70f5acfefb2fbbc9adb2f1d4d01c273efa571206f9b4bed`).
+The own two-target avatar build/native rollback/restart qualification remains
+pending its fresh allocated retry.
+
+### Qualified avatar witness checkpoint
+
+Source `43c0e265c186f5a655d0b90688e588ec46f40a77` passed the fresh named
+BACKEND retry. The sole `contracts-build` package cache reset resolved the
+previous shadowed-proto failure; no other package clean was needed. Exact build:
+
+```sh
+CARGO_TARGET_DIR=<allocated-BACKEND> CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service -p concert-application --test avatar --no-run --message-format=json
+```
+
+Exit0 in19.55s. Exact Cargo test artifacts, source hashes and both executable
+copies were verified outside the target before its explicit release. No target
+handles remained and no second target was used. Application executable SHA256
+`e2fb507b2ac9c295d8dee942a89c91cb42f4807737142c5d0dc32e8b36cbf20e`;
+service executable SHA256
+`cd857eceb225f4b59a94ecdd3cb4657a7378b5ad74a32d924213b7fd0d511d9e`.
+The copied application2 and service3 pure tests all passed (exit0).
+
+```sh
+python3 backend/scripts/mcr/avatar_smoke.py --build-metadata /tmp/mcr-avatar-witness-43c0e265/compiler-artifacts.jsonl --pinned-binaries /tmp/mcr-avatar-witness-43c0e265/binary.json --pg-bin /opt/homebrew/opt/postgresql@16/bin
+```
+
+Exit0; all4 actual PostgreSQL16.14 cases passed. Migration0035 was applied
+unchanged. The selected case exercised all authored descriptor/scope refusals,
+both effects' exact twenty witness fields and registered native identity,
+rollback after UPDATE/after witness, durable postcommit uncertainty, immutable
+and cross-transaction reuse rejection. All3 committed witness rows matched
+exactly after postmaster restart16065→16203. Existing layered-data upgrade,
+legacy transactions, CAS and selected-character persistence also passed.
+Private cluster cleanup passed. These are actual executed native cases, not the
+four ignored entries printed by the ordinary pure-test invocation.
+
+Local receipts under `/tmp/mcr-avatar-witness-43c0e265/`: original compiler JSON
+SHA256 `534d98ac66707a72ecb32b3b0cfc255eb6a3c08712e3fa791954b994b480bc7e`,
+`binary.json` SHA256
+`8a68451599ff8f627367cc4b06596164cd1286f4c15dcf6efa73d42aaacb50be`,
+`avatar-native.json` SHA256
+`3d4720126bef0ab726157962ef63a20b2348e74576ee574479a875d02be534e9`.
+The controller consumed original compiler paths as metadata and ran only the
+frozen copy after release. The prior failed build remains a separate receipt.
+The successful real producer prefix above complements this full component
+suite; the later full Profile settlement and whole Product/IN01 flow remain
+outside this owned hook's completed validation.
+
+### Production-only delivery handoff
+
+The isolated `codex/mcr-be-avatar-witness-delivery` handoff starts from published
+base `ced8ec124a3c9fb3443a2bc69d69055d64a6fd7b` and changes exactly eleven
+paths: this owner's three avatar Rust
+files, `avatar_smoke.py` and this document; plus Participant209's explicitly
+handed-off migration0035, participant-effect-witness document, guarded adapter,
+coordinator visibility seam, module export and settlement resolver. Peer source
+commits are `48b3ec73`, `753083b4`, `f42d8ae0`, and production-only `70d2263f`
+(the actual avatar PUT/preference PATCH resolver binding extracted from275).
+All production peer bytes match the actual a7ace884 joined prefix.
+
+The later failing full-Profile joined test, its driver and its test-only module
+wiring are excluded from this delivery. All four owned Rust/controller source
+blobs and migration0035 match the qualified43c0e265 snapshot exactly.
+`docs/source/` is unchanged; no frontend, manifest, lockfile or root-composition
+edit is included. The eleven-path scope audit, plan checker and diff check passed.
+Only the designated delivery integrator publishes this handoff to master and
+records remote ancestry; the source branch alone is not completed delivery.
+
+### Subsequent joined qualification
+
+Participant209 subsequently fixed its own retained-deadline propagation and
+qualified source `6767ee8e805db17291d1d77a25c72d881e9f743a`: the actual native
+Auth/Friend/Profile/Participant save/reload/abort test passed1 case in5.28s.
+This owner independently verified its immutable copied executable SHA256
+`fc35b975663f4aa1b9061bbe2420987651df1b025c79c6a3255b74685ef5df18`,
+matching source/binary receipt, and exact equality of the three owned avatar
+Rust files plus migration0035 against that Git source. The earlier a7ace884
+failure remains valid historical evidence; the later receipt closes that
+specific joined-test failure rather than erasing it.
+
+Peer report `/private/tmp/mcr-participant-join-6767ee8e/join-1.json` SHA256
+`b1b22654dc2b92187ae27d3ab2936d33764ab63d712ff33a1297c60750649917`
+records the actual native test exit0, all three service shutdowns exit0 and
+private cluster cleanup PASS. The peer owns delivery of its separate deadline
+fix and joined tests; they are not added to this eleven-path handoff. This is
+real producer-consumer compatibility evidence for the hook, with initial rows
+still fixtures and public Gateway HTTP/operator/IN01 acceptance separate.

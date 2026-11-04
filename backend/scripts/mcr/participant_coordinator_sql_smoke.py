@@ -116,10 +116,23 @@ def required_sources(repo):
     sources = list((repo / "backend/services/concert-service/src/participant").rglob("*.rs"))
     sources += list((repo / "backend/crates/platform/src").rglob("*.rs"))
     sources += list((repo / "backend/services/concert-service/src/adapters/out/relationship_authority/guarded").rglob("*.rs"))
+    sources += list((repo / "backend/services/concert-service/src/product_rpc").rglob("*.rs"))
+    sources += list((repo / "backend/services/concert-service/src/bootstrap").rglob("*.rs"))
+    sources += list((repo / "backend/services/concert-service/migrations").glob("*.sql"))
+    sources += list((repo / "backend/crates/concert-domain/src").rglob("*.rs"))
+    sources += list((repo / "backend/crates/concert-application/src").rglob("*.rs"))
+    sources += list((repo / "backend/releases/operator-bundle/quality-v6").glob("*.json"))
+    sources += list((repo / "backend/releases/reference-scene-v2/quality-v6").glob("*.json"))
     sources += list((repo / "backend/proto").rglob("*.proto"))
     sources += [repo / relative for relative in (
         "backend/Cargo.lock", "backend/services/concert-service/Cargo.toml",
         "backend/scripts/mcr/invalidation_clients_smoke.py",
+        "backend/scripts/mcr/participant_live_join_smoke.py",
+        "backend/scripts/mcr/avatar_smoke.py",
+        "backend/scripts/mcr/runtime_smoke.py",
+        "backend/scripts/mcr/migration_smoke.py",
+        "contracts/fixtures/assets/selected-static/avatar-manifest.json",
+        "frontend/src/entities/avatar/character-source-pack.json",
         "backend/services/concert-service/build.rs",
         "backend/proto/concert/v1/participant.proto", "backend/proto/authority/v1/lease.proto",
         "backend/crates/concert-application/src/avatar/mod.rs",

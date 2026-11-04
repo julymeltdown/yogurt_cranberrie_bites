@@ -375,3 +375,84 @@ and its receipt, returning PASS/cleanup PASS. Copied library/runtime binaries ra
 with `--test-threads=1`. `python3 scripts/mcr/check-plan.py` and `git diff --check`
 exited 0. Initial startup probes omitted required local metrics configuration;
 those refusals were not credited, and corrected explicit-local probes were run.
+
+
+## SDK3 private Gift composition: qualification history
+
+Unpublished source consumes SDK `0576c359` and response-wide ceiling
+`f646f015`, plus PublicProfile's explicit unsupported-Gift recovery arm
+`56f18703`. Root `82ec8b89`/`c9a5081c` adds migration0037, the encrypted-ledger
+Gift kind and strict composite recovery dispatch. Published0028 remains unchanged.
+The 202-child cap and lifecycle/FK/immutability barriers remain in place. Gift
+shape validation is time independent for restart recovery; expiry never certifies
+rollback. `GiftPrivateIntentSettler` requires a real Gift native read-child adapter;
+public Profile/local-avatar recovery cannot substitute for it.
+
+Root `0797bdd6`/`22590db0` adds internal ProductResponse field5
+`content_expires_unix_micros`. ScopedProductOwner obtains the actual minimum
+across all durable intents and held children, preserving the original monotonic
+stop. Gateway validates that ceiling against original access authority and checks
+wall and monotonic time immediately before every HTTP data frame. Expired content
+produces a body error, leaving the retained scope unresolved. EOF after valid
+data may still settle existing work after expiry; it grants no renewed content.
+The new direct http-body manifest/lock edge reuses the workspace resolution.
+
+A privately constructible VerifiedClientAddress is minted only by the actual
+Gateway ConnectInfo/trusted-proxy normalizer. It is not a browser-header grant.
+The typed-address test and three disclosure-body boundary tests are authored,
+**NOT_RUN**. Source `a975e845` subsequently adds the privacy HMAC/network ProductRequest
+binding: internal field14 is derived only from the typed actual address and a
+dedicated nonzero32-byte `MCR_GIFT_NETWORK_BUCKET_KEY`. Missing key/address emits
+an absent bucket; malformed explicit keys fail configuration. Root accepts only
+an absent or nonzero32-byte value from the exact authenticated Gateway frame and
+exposes a typed TrustedPickupContext. Raw IP, browser body/header values and
+random/shared fallback buckets cannot substitute. Two additional network tests
+cover the real normalizer plus stable-key behavior and malformed-key refusal;
+these are **NOT_RUN**. Gift Claim remains closed pending qualification and the
+actual public producer join. Pickup/code stay closed until the
+actual native Gift adapter, coherent build and terminal boundary are qualified.
+
+The updated owned PostgreSQL16 SQL runner applies0028 then0037. Its first run
+correctly reached restart but failed an old one-row assertion after adding the
+second Gift child; cleanup passed. The assertion now checks both pending rows.
+Retry `/private/tmp/mcr-product-sdk3-child-sql-20261104-retry.json` reports PASS,
+29 recorded commands (two migration applications and27 lifecycle/kind checks),
+physical restart and owned cleanup PASS. No Cargo, owner RPC or Rust binary was
+used by these SQL runs. Full SDK3 Rust compilation, cipher regression, Gateway
+boundary tests, actual private-child recovery and HTTP remain **NOT_RUN**.
+Do not apply the earlier SDK2/native/operator evidence to these new sources.
+
+### Fresh SDK3 compilation and bounded validation
+
+The source-only statements above describe the earlier checkpoint. Exact clean
+source `5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395` now has fresh successful
+Concert library, product_runtime, product_scope_ledger and Gateway library test
+builds. Rust1.88, locked/offline, two jobs, debug0 and incremental0 were used.
+The receipt is `docs/mcr/backend/product-sdk3-qualification.json`; full Cargo
+JSON and 1,885 source hashes remain with the immutable private artifacts.
+
+The first stale cross-worktree protobuf include failure was repaired by cleaning
+only contracts-build/Auth/Friend/Profile artifacts. A stale platform artifact
+required a platform-only clean. Gateway then found a real missing
+HttpConcertAccess::rpc_deadline forwarding method; source `5329d3f4` adds the
+delegate to the existing sealed context, preserving both original limits.
+No Party-transferred route file was changed for that fix.
+
+After all four executables were copied, the MEDIA target was explicitly released
+with zero handles and 56,209,567,744 free bytes, before any copied tests or PG run.
+Actual copied results: Gateway product boundary/network/receipt tests6,
+typed-address1, Concert product7, child-reference3 and runtime constructor5 all
+PASS (22 total). The disclosure completion tests use an explicit counter double;
+they do not prove a joined canonical owner HTTP lifecycle. The fresh native
+ledger executable passes five tests, including distinct guard/effect bindings;
+the combined runner passes30 recorded commands, PostgreSQL16 physical restart
+and owned cleanup. Private ciphertext/expired-reference regression now passes.
+
+This cohort includes SDK4b306's minimum actual Auth/Friend view expiry and Gift
+ad9's SQL budget clipping to that same root-wide ceiling. Public local deadline
+pinning uses the exact c040 production fix with its pre-existing closed error
+mapper. Gift's six ignored native cases are compiled, not credited by these22
+tests; the Gift owner received the immutable executable only after target release
+for its independent prepared-read/restart proof. Actual public Gateway HTTP,
+production producer registration, and enablement remain open. The new IN01
+catalog binary command is not compiled by these library/test targets.

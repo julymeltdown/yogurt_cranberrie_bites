@@ -23,6 +23,7 @@ pub struct CursorBinding {
     pub actor: Uuid,
     pub event: Uuid,
     pub collection: Collection,
+    pub operation: String,
     /// Only management binds a specific giveaway.
     pub giveaway: Option<Uuid>,
     /// Canonical parsed filters; excludes cursor and limit keys.
@@ -34,14 +35,21 @@ pub struct CursorBinding {
 #[serde(deny_unknown_fields)]
 pub enum Position {
     Gift { created_at: DateTime<Utc>, id: Uuid },
-    Reservation { id: Uuid },
+    Reservation { created_at: DateTime<Utc>, id: Uuid },
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Window {
+    pub upper: DateTime<Utc>,
+    pub position: Position,
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct Payload {
     version: u8,
-    position: Position,
+    window: Window,
     issued: DateTime<Utc>,
     expires: DateTime<Utc>,
 }
@@ -70,18 +78,18 @@ impl CursorCodec {
     pub fn seal(
         &self,
         binding: &CursorBinding,
-        position: Position,
+        window: Window,
         now: DateTime<Utc>,
     ) -> Result<String, CursorError> {
-        validate(binding, position, now)?;
+        validate(binding, window, now)?;
         let mut nonce = [0; 12];
         SystemRandom::new()
             .fill(&mut nonce)
             .map_err(|_| CursorError::Unavailable)?;
         let aad = aad(binding)?;
         let mut bytes = serde_json::to_vec(&Payload {
-            version: 1,
-            position,
+            version: 2,
+            window,
             issued: now,
             expires: now + Duration::minutes(15),
         })
@@ -106,7 +114,7 @@ impl CursorCodec {
         binding: &CursorBinding,
         token: &str,
         now: DateTime<Utc>,
-    ) -> Result<Position, CursorError> {
+    ) -> Result<Window, CursorError> {
         let mut bytes = decode(token)?;
         if bytes.len() < 29 {
             return Err(CursorError::Invalid);
@@ -123,25 +131,25 @@ impl CursorCodec {
             .map_err(|_| CursorError::Invalid)?;
         let payload: Payload =
             serde_json::from_slice(plaintext).map_err(|_| CursorError::Invalid)?;
-        if payload.version != 1
+        if payload.version != 2
             || payload.issued > now
             || payload.expires != payload.issued + Duration::minutes(15)
             || now >= payload.expires
         {
             return Err(CursorError::Invalid);
         }
-        validate(binding, payload.position, now)?;
-        Ok(payload.position)
+        validate(binding, payload.window, now)?;
+        Ok(payload.window)
     }
 }
 
 fn aad(binding: &CursorBinding) -> Result<Vec<u8>, CursorError> {
-    let mut out = b"mcr.gift-live.cursor.v1\0".to_vec();
+    let mut out = b"mcr.gift-live.cursor.v2\0".to_vec();
     out.extend(serde_json::to_vec(binding).map_err(|_| CursorError::Invalid)?);
     Ok(out)
 }
 
-fn validate(b: &CursorBinding, p: Position, now: DateTime<Utc>) -> Result<(), CursorError> {
+fn validate(b: &CursorBinding, w: Window, now: DateTime<Utc>) -> Result<(), CursorError> {
     let allowed: &[&str] = match b.collection {
         Collection::Public => &[
             "state",
@@ -153,7 +161,14 @@ fn validate(b: &CursorBinding, p: Position, now: DateTime<Utc>) -> Result<(), Cu
         Collection::Management => &["state"],
         Collection::Giving | Collection::Receiving => &[],
     };
-    if b.actor.is_nil()
+    let operation = match b.collection {
+        Collection::Public => "listConcertGiveaways",
+        Collection::Management => "getConcertGiveawayManagement",
+        Collection::Giving | Collection::Receiving => "getConcertGiftActivity",
+    };
+    if b.operation != operation
+        || w.upper > now
+        || b.actor.is_nil()
         || b.event.is_nil()
         || !(1..=100).contains(&b.limit)
         || (b.collection == Collection::Management) != b.giveaway.is_some()
@@ -167,17 +182,16 @@ fn validate(b: &CursorBinding, p: Position, now: DateTime<Utc>) -> Result<(), Cu
     {
         return Err(CursorError::Invalid);
     }
-    match (b.collection, p) {
+    match (b.collection, w.position) {
         (Collection::Public | Collection::Giving, Position::Gift { created_at, id })
-            if !id.is_nil() && created_at <= now =>
+            if !id.is_nil() && created_at <= w.upper =>
         {
             Ok(())
         }
-        (Collection::Receiving | Collection::Management, Position::Reservation { id })
-            if !id.is_nil() =>
-        {
-            Ok(())
-        }
+        (
+            Collection::Receiving | Collection::Management,
+            Position::Reservation { created_at, id },
+        ) if !id.is_nil() && created_at <= w.upper => Ok(()),
         _ => Err(CursorError::Invalid),
     }
 }

@@ -1,0 +1,149 @@
+
+ RUN  v4.1.9 <frontend>
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts (42 tests | 19 failed) 492ms
+   × permits the clean registered boundary / without weakening participant return targets 7ms
+   × permits the clean registered boundary /legal/privacy without weakening participant return targets 1ms
+   × permits the clean registered boundary /legal/terms without weakening participant return targets 1ms
+   × permits the clean registered boundary /archive without weakening participant return targets 1ms
+   × permits the clean registered boundary /login without weakening participant return targets 1ms
+   × permits the clean registered boundary /signup without weakening participant return targets 1ms
+   × permits the clean registered boundary /verify-email without weakening participant return targets 1ms
+   × permits the clean registered boundary /reset-password without weakening participant return targets 1ms
+   × permits the clean registered boundary /auth/callback without weakening participant return targets 1ms
+   × permits the clean registered boundary /account/deleted without weakening participant return targets 1ms
+   × permits the clean registered boundary /admin without weakening participant return targets 1ms
+   × permits the clean registered boundary /admin/reports without weakening participant return targets 0ms
+   × permits the clean registered boundary /admin/event without weakening participant return targets 0ms
+   × permits the clean registered boundary /admin/users/00000000-0000-4000-8000-000000000022 without weakening participant return targets 1ms
+   × retains a composer across participant panels but blocks a lifetime exit until draft is restored 1ms
+   × protects target-specific reply/edit drafts when the shell would be destroyed 53ms
+   × compares intro drafts to saved content and permits an exactly restored value 54ms
+   × retains sending/uncertain original command identity across a refused boundary exit 53ms
+   × router-owner disposal clears private children/subscriptions without disposing canonical Auth 104ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary / without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /legal/privacy without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /legal/terms without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /archive without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /login without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /signup without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /verify-email without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /reset-password without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /auth/callback without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /account/deleted without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /admin without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /admin/reports without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /admin/event without weakening participant return targets
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > permits the clean registered boundary /admin/users/00000000-0000-4000-8000-000000000022 without weakening participant return targets
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts:21:39
+     19|     expect(safeReturnTarget(path, '')).toBe('')
+     20|     expect(socialRoute(path)).toBeNull()
+     21|     expect(f.owner.canNavigate(path)).toBe(true)
+       |                                       ^
+     22|     expect(f.owner.navigate(path)).toBe(true)
+     23|     expect(f.navigations).toEqual([path])
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > retains a composer across participant panels but blocks a lifetime exit until draft is restored
+AssertionError: expected 'unavailable' to be 'draft' // Object.is equality
+
+Expected: "draft"
+Received: "unavailable"
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts:44:35
+     42|   for (const path of ['/legal/privacy', '/admin/reports']) {
+     43|     expect(f.owner.navigate(path)).toBe(false)
+     44|     expect(f.owner.read().notice).toBe('draft')
+       |                                   ^
+     45|     expect(f.owner.thread.read().draft.text).toBe('PRIVATE unsent post…
+     46|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > protects target-specific reply/edit drafts when the shell would be destroyed
+AssertionError: expected 'unavailable' to be 'draft' // Object.is equality
+
+Expected: "draft"
+Received: "unavailable"
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts:58:33
+     56|   f.owner.thread.setReplyText('PRIVATE reply')
+     57|   expect(f.owner.navigate('/legal/privacy')).toBe(false)
+     58|   expect(f.owner.read().notice).toBe('draft')
+       |                                 ^
+     59|   f.owner.thread.setReplyText('')
+     60|   expect(f.owner.threadPanel.beginPostEdit()).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > compares intro drafts to saved content and permits an exactly restored value
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts:72:49
+     70|   const initial = structuredClone(f.owner.intro.read().draft)
+     71|   expect(initial.text).toBe(ownIntro().text)
+     72|   expect(f.owner.canNavigate('/legal/privacy')).toBe(true)
+       |                                                 ^
+     73|   f.owner.intro.edit({ ...initial, text: 'PRIVATE changed intro' })
+     74|   expect(f.owner.navigate('/legal/privacy')).toBe(false)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > retains sending/uncertain original command identity across a refused boundary exit
+AssertionError: expected 'unavailable' to be 'command' // Object.is equality
+
+Expected: "command"
+Received: "unavailable"
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts:90:33
+     88|   const key = f.owner.thread.read().mutation.key
+     89|   expect(f.owner.navigate('/legal/privacy')).toBe(false)
+     90|   expect(f.owner.read().notice).toBe('command')
+       |                                 ^
+     91|   late.resolve(new Response(null, { status: 503 }))
+     92|   await sending
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts > router-owner disposal clears private children/subscriptions without disposing canonical Auth
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts:124:49
+    122|   f.owner.enter('/meet/intro/edit')
+    123|   await vi.waitFor(() => expect(f.owner.intro.read().saved).not.toBeNu…
+    124|   expect(f.owner.canNavigate('/legal/privacy')).toBe(true)
+       |                                                 ^
+    125|   expect(f.listenerCount()).toBeGreaterThan(0)
+    126|   f.owner.dispose()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  19 failed | 23 passed (42)
+   Start at  10:54:47
+   Duration  1.29s (transform 333ms, setup 0ms, import 464ms, tests 492ms, environment 259ms)

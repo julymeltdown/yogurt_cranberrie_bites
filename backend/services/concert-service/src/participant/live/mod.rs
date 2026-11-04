@@ -7,6 +7,7 @@ pub mod guarded;
 pub mod profile;
 pub mod recovery;
 pub mod service;
+pub mod settlement;
 pub mod update;
 
 #[cfg(test)]
@@ -17,6 +18,9 @@ mod coordinator_tests;
 
 #[cfg(test)]
 mod decision_endpoint_tests;
+
+#[cfg(test)]
+mod joined_tests;
 
 use super::{context::VerifiedParticipantRequest, ports::CurrentAuth};
 use concert_application::avatar::AvatarError;

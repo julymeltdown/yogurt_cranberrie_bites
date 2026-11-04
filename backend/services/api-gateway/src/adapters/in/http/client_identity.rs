@@ -16,6 +16,16 @@ const MAX_TRUSTED_PROXIES: usize = 128;
 const MAX_TRUSTED_PROXY_CONFIG_BYTES: usize = 8 * 1024;
 const MAX_FORWARDED_HEADER_BYTES: usize = 4 * 1024;
 
+/// Transport-derived address, minted only by the normalizer after resolving the
+/// actual socket peer and explicitly trusted proxies. A header is not this type.
+#[derive(Clone, Copy)]
+pub struct VerifiedClientAddress(IpAddr);
+impl VerifiedClientAddress {
+    pub fn address(self) -> IpAddr {
+        self.0
+    }
+}
+
 /// Create a stable pseudonymous rate-limit key without persisting account PII.
 /// Normalization matches the Auth service: trim surrounding whitespace and
 /// lowercase ASCII characters before HMAC-SHA256.
@@ -156,6 +166,12 @@ pub async fn normalize_forwarded_for(mut request: Request<Body>, next: Next) -> 
         .cloned()
         .unwrap_or_default();
     let client = peer.map(|peer| proxies.resolve(peer, request.headers()));
+    request.extensions_mut().remove::<VerifiedClientAddress>();
+    if let Some(client) = client {
+        request
+            .extensions_mut()
+            .insert(VerifiedClientAddress(client));
+    }
     request.headers_mut().remove("x-forwarded-for");
     if let Some(client) = client {
         let value = HeaderValue::from_str(&client.to_string()).expect("canonical IP header");
@@ -205,6 +221,56 @@ mod tests {
         let mut headers = HeaderMap::new();
         headers.insert("x-forwarded-for", value.parse().unwrap());
         headers
+    }
+
+    #[tokio::test]
+    async fn typed_address_requires_actual_peer_and_uses_the_production_proxy_resolver() {
+        for (peer, proxies, forwarded, expected) in [
+            (None, "", "198.51.100.8", "unverified"),
+            (Some("192.0.2.10:1234"), "", "198.51.100.8", "192.0.2.10"),
+            (
+                Some("192.0.2.1:1234"),
+                "192.0.2.1,192.0.2.2",
+                "203.0.113.99,198.51.100.8,192.0.2.2",
+                "198.51.100.8",
+            ),
+        ] {
+            let app = Router::new()
+                .route(
+                    "/",
+                    get(|request: Request<Body>| async move {
+                        request
+                            .extensions()
+                            .get::<VerifiedClientAddress>()
+                            .map(|address| address.address().to_string())
+                            .unwrap_or_else(|| "unverified".into())
+                    }),
+                )
+                .layer(axum::middleware::from_fn(normalize_forwarded_for));
+            let mut request = Request::builder()
+                .uri("/")
+                .header("x-forwarded-for", forwarded)
+                .body(Body::empty())
+                .unwrap();
+            request
+                .extensions_mut()
+                .insert(TrustedProxies::parse(proxies).unwrap());
+            if let Some(peer) = peer {
+                request
+                    .extensions_mut()
+                    .insert(ConnectInfo(peer.parse::<SocketAddr>().unwrap()));
+            }
+            let body = app
+                .oneshot(request)
+                .await
+                .unwrap()
+                .into_body()
+                .collect()
+                .await
+                .unwrap()
+                .to_bytes();
+            assert_eq!(body.as_ref(), expected.as_bytes());
+        }
     }
 
     #[test]

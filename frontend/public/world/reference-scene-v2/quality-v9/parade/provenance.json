@@ -1,0 +1,27 @@
+{
+  "version": 9,
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "source_pins": [
+    {
+      "path": "../../quality-v8/parade/atlas.png",
+      "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1"
+    },
+    {
+      "path": "../ground.png",
+      "sha256": "sha256:20cecda630d633f20122607d97b86fbd3f7c6c0f06483ca4d838578a9610915a"
+    },
+    {
+      "path": "../route-edges.json",
+      "sha256": "sha256:c10e00a553ae2a183e4cfde96b6ac08881f6dda7e827e9c0ab55acf90ae41ed7"
+    },
+    {
+      "path": "../../map-labels-v1/presentation.json",
+      "sha256": "sha256:f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc"
+    }
+  ],
+  "atlas": "Byte-identical original v8 atlas/native padding. No source image regeneration or character art.",
+  "ground": "Native editable vector union-edge strokes over exact frozen v6 original ground; source/export/lossless RGB proof in ground-native-evidence.json.",
+  "geometry": "All34 WORLD objects/footprints and canonical spatial-v4 grids/places/spawns/interactions unchanged. New two MAP facade views replace existing unbound hall images; no collision, place or interaction.",
+  "source_review": "No C06 REVIEWED state or physical qualification is conferred. Original source/place provenance remains unchanged."
+}

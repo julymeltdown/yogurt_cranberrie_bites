@@ -184,6 +184,33 @@ impl OwnerGuardScope {
     pub fn binding(&self) -> &GuardBinding {
         &self.binding
     }
+    /// Response-wide disclosure ceiling. This is not a fresh authorization or a
+    /// settlement grant. Include every immutable intent (also unknown/lost ACK
+    /// children), regardless of which subject the last projection queried.
+    pub fn disclosure_ceiling(&self) -> Result<AuthorityRpcDeadline, Status> {
+        self.binding.check()?;
+        let original = self.binding.deadline();
+        let state = self.state.lock().map_err(unavailable)?;
+        if state.sealed {
+            return Err(Status::permission_denied("Root scope sealed"));
+        }
+        let expires = state
+            .child_intents
+            .values()
+            .chain(state.children.iter().map(|(reference, _)| reference))
+            .fold(
+                original
+                    .expires_micros()
+                    .min(self.auth_view.expires_unix_micros)
+                    .min(self.friend_view.expires_unix_micros),
+                |until, reference| until.min(reference.content_expires_unix_micros()),
+            );
+        AuthorityRpcDeadline::within_original(
+            expires,
+            original.stop().into_std(),
+            MAX_GUARD_DURATION,
+        )
+    }
     pub fn revision_vector(&self) -> RevisionVector {
         self.vector
     }
@@ -342,7 +369,7 @@ impl OwnerGuardScope {
             .await
             .map_err(|_| Status::deadline_exceeded("Authority serialization deadline"))?;
         self.refresh(query.subject.uuid()).await?;
-        let (authority, children) = {
+        let (mut authority, children) = {
             let state = self.state.lock().map_err(unavailable)?;
             let actor = &state.auth[&self.binding.actor()];
             let subject = &state.auth[&query.subject.uuid()];
@@ -378,16 +405,21 @@ impl OwnerGuardScope {
                                 super::ChildRecoveryReference::LocalPublic { .. }
                             ) && reference.query().subject == self.binding.actor())
                     })
-                    .map(|(_, child)| child.clone())
+                    .map(|(reference, child)| (reference.clone(), child.clone()))
                     .collect::<Vec<_>>(),
             )
         };
         // Only check existing children. Acquiring a local subject fence here
         // would recurse through PublicProfileReader.local_subject.
-        for child in children {
+        for (reference, child) in children {
+            reference.check_content_time()?;
+            let until = DateTime::from_timestamp_micros(reference.content_expires_unix_micros())
+                .ok_or_else(|| Status::unavailable("Invalid child disclosure expiry"))?;
+            authority.valid_until = authority.valid_until.min(until);
             tokio::time::timeout_at(self.binding.deadline().stop(), child.check())
                 .await
                 .map_err(|_| Status::deadline_exceeded("Child authority deadline"))??;
+            reference.check_content_time()?;
         }
         self.binding.check()?;
         Ok(authority)
@@ -420,7 +452,10 @@ impl OwnerGuardScope {
     ) -> Result<(), Status> {
         self.binding.check()?;
         reference.validate_for(&self.binding)?;
-        if let super::ChildRecoveryReference::LocalPublic { native, .. } = reference {
+        reference.check_content_time()?;
+        if let super::ChildRecoveryReference::LocalPublic { native, .. }
+        | super::ChildRecoveryReference::GiftPrivate { native, .. } = reference
+        {
             if native.producer_instance_id.to_string() != self.producer.instance_id {
                 return Err(Status::permission_denied("Child producer mismatch"));
             }
@@ -472,6 +507,7 @@ impl OwnerGuardScope {
         self.binding.check()?;
         let reference = child.recovery_reference()?;
         reference.validate_for(&self.binding)?;
+        reference.check_content_time()?;
         let key = reference.key()?;
         let mut state = self.state.lock().map_err(unavailable)?;
         if state.sealed {

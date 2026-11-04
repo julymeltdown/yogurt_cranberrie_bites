@@ -37,6 +37,9 @@ pub fn checked_reply(
 ) -> Result<GiftReply, ProjectionError> {
     use super::protocol::GiftOperation::*;
     let schema = if status == 202 && operation.mutation() {
+        if body["state"] != "PENDING" {
+            return Err(ProjectionError);
+        }
         "Domain_common_CommandReceipt"
     } else if status == 200 {
         match operation {
@@ -55,6 +58,10 @@ pub fn checked_reply(
     };
     validate(schema, &body)?;
     Ok(GiftReply::Json { status, body })
+}
+pub(crate) fn status_reply(body: Value) -> Result<GiftReply, ProjectionError> {
+    validate("Domain_common_CommandReceipt", &body)?;
+    Ok(GiftReply::Json { status: 200, body })
 }
 fn validate(name: &'static str, value: &Value) -> Result<(), ProjectionError> {
     static CONTRACT: OnceLock<Value> = OnceLock::new();
