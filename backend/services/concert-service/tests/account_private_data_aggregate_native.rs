@@ -313,7 +313,7 @@ async fn aggregate_native() -> Result<()> {
     let missing_category: String = sqlx::query_scalar("select category from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE' order by ordinal limit 1").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(missing_category != "CORE_PREFERENCES_AND_AVATAR");
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=2 where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
-    anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set completed_at=completed_at + interval '1 microsecond' where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
+    anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set completed_at=clock_timestamp() where user_id=$1 and category=$2 and state='INCOMPLETE' and completed_at is null").bind(user).bind(&missing_category).execute(&p).await.is_err());
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set source_binding=decode(repeat('aa',32),'hex') where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
     let not_whole_after_missing:i64 = sqlx::query_scalar("select count(*) from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE'").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(not_whole_after_missing == 6);
