@@ -1,0 +1,119 @@
+{
+  "result": "PASS",
+  "source": "7d95145a6854a6178dcf191b8db9fe5c3b99f5a0",
+  "scope": "Unmodified actual index.html/main.tsx/default AdminBoundary/production ports, one390 context. Controlled HTTP and explicit TEST_ONLY frozen registration injected only by this harness. No real205 producer/default live role grant or backend/liveIN04/IN05 acceptance.",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "sourceHashes": {
+    "frontend/index.html": "54ddecc6f53f2d868d33eb51790e8d265f05f28ce2acacccd83e0b0dc4ef1231",
+    "frontend/src/main.tsx": "09b4d1896c3896b1f77c316cb9efb118433a260429391d3d7ca863ee2701a6fb",
+    "frontend/src/app/AdminBoundary.tsx": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6",
+    "frontend/src/app/ports.ts": "5469b97a5c1a595a67a140583ffb692d8bf12fd7664716a3152efb37bf66d46f",
+    "frontend/src/app/operations-composition/owner.ts": "ea09fd1ad1617bc7e0d043cd9138593f28ddaa4e7749aad2843ceace82fe8cb0",
+    "frontend/src/app/operations-composition/panel.tsx": "88d218218a1f20cc7164d0fc9bda3e4e8a4d9cca6496299dad95936929895afa",
+    "frontend/src/app/operations-composition/__tests__/server.ts": "46a7f16ba4b68b04a4ab1ba2f12d9e50d980e9fa2fa75b65b11006d790650b8c",
+    "frontend/src/app/operations-composition/__tests__/wire.json": "1bbc87d42b9eb5a1059c60b9b51fff40e8ab39830c0eba2467ea28e73dc2ce9e",
+    "frontend/src/app/operations-entry/index.ts": "d6139ce9279c61b7e430495ba1f2c7a15ec6b5f4157726df5309b625769ce437",
+    "frontend/src/shared/api/domain-operations.generated.ts": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117"
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/auth/capabilities",
+      "key": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/enrollment/admission",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/enrollment/admission",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/operations-access",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/settings",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/mural",
+      "key": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/mural/control",
+      "key": "d94f0599-c602-4863-8f69-cd5a4a3e78a6"
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/settings",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/overview",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/notices",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/places",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/mural",
+      "key": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/operations-access",
+      "key": null
+    }
+  ],
+  "errors": [],
+  "captures": [
+    "390-retained-unknown.png",
+    "390-event.png",
+    "390-closure.png",
+    "390-withdrawn.png"
+  ],
+  "browser": "156.0.8078.80",
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "canonicalAdmissionBeforeAdmin": true,
+  "identityInjected": false,
+  "retainedOriginalKey": "d94f0599-c602-4863-8f69-cd5a4a3e78a6",
+  "singleMutation": true,
+  "withdrawal": true
+}

@@ -1,0 +1,31 @@
+{
+  "source": "7d95145a6854a6178dcf191b8db9fe5c3b99f5a0",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "method": "Each native PNG viewed individually after FULL release; no CSS edits or live-producer claims",
+  "images": {
+    "390-retained-unknown.png": {
+      "sha256": "e279f7393409d714c5011d5a6d6b036045eb6f2291f39746a18020eb1204e950",
+      "assessment": "Individually viewed: wrapped Admin navigation, readable unresolved-command status, original-command recovery and refresh controls fit390; no clipped UUID or status text."
+    },
+    "390-event.png": {
+      "sha256": "e187ac9b929843deb3c2bf47ed7f1ba48bec6512c617b3d0cddeb67661f31e7b",
+      "assessment": "Individually viewed: Event settings frame, operational summary, revision8, form fields and notices remain readable within390; long page scroll is expected for complete existing forms."
+    },
+    "390-closure.png": {
+      "sha256": "7ebfb12d63a55054ef29b1f5004aa938654ddbaffa07e08821185e50229a78a6",
+      "assessment": "Individually viewed: closure explanation, reason field, review button and existing-job recovery controls fit390 without clipped labels."
+    },
+    "390-withdrawn.png": {
+      "sha256": "2e907d9e334269beacf0825a7ca125da49c55ee6b42139b184b42e5a36e491cd",
+      "assessment": "Individually viewed: Administration unavailable replaces Wall controls/private progress; navigation, retry and return links remain readable within390."
+    }
+  },
+  "scopeLimits": [
+    "Controlled HTTP and TEST_ONLY frozen role registration",
+    "No whole FE37/FE38/FE39 or IN04/IN05 live acceptance",
+    "No new original21-case replay; original accepted evidence preserved"
+  ]
+}

@@ -3,7 +3,7 @@
   "branch": "codex/mcr-fe-default-admin-composition",
   "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
   "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
-  "qualification": "FOCUSED_21_PRIOR_READSET_PASS_CURRENT_TYPES_LINT_SYNTAX_PASS_NATIVE_PENDING",
+  "qualification": "OWN_COMPOSITION_QUALIFIED_CONTROLLED_HTTP_CURRENT_MAIN_NATIVE_PASS_PUBLICATION_PENDING",
   "scope": "Default Admin canonical consumer composition and changed boundary only",
   "actualProducer205": "NOT_QUALIFIED",
   "productionRoleRegistration": "ABSENT_FAIL_CLOSED_NO_FALLBACK",
@@ -55,6 +55,21 @@
     "generatedOwner": "C07 01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
     "integrationOwner": "Root153",
     "actualPublicHTTP": "NOT_QUALIFIED",
-    "controlledNativeDoesNotCloseActualProducer": true
+    "controlledNativeDoesNotCloseActualProducer": true,
+    "latestProducerReport": "Root2653376e5 sameCore/PublishedRoles/publication overlay source authored; canonical exposure/generation/actual HTTP not yet qualified. C07 frozen147operation baseline still absent route."
+  },
+  "nativeQualified": {
+    "pin": "7d95145a6854a6178dcf191b8db9fe5c3b99f5a0",
+    "readsetSha256": "05ddf685665b150e6aa05d1db52fee04b19f776efa3dea601c46d2aa7b5af39b",
+    "guardSha256": "fb7c33c13a6852ac7a680548a05fd0963171f0965841d115dc7bde0b5568443e",
+    "offer": "ADMIN-ROUTEPREDICATE-390-RETRY-20261104T1943Z",
+    "result": "PASS",
+    "release": "native-03-qualified/release.json",
+    "visual": "visual-assessment.json",
+    "canonicalAdmissionBeforeAdmin": true,
+    "identityInjected": false,
+    "singleMutationRetainedOriginalKey": true,
+    "withdrawal": true,
+    "accountedWholeHighwaterBytes": 2246411068
   }
 }

@@ -4,8 +4,8 @@ This bounded assignment replaces the default Admin placeholder with canonical
 production composition of the published Event, Places, Audit, Wall and Closure
 consumers. Source is authored from canonical
 `306626d49cd8b55916cf973ab6eea06569ec98d4` in the retained isolated checkout.
-The completed FE39 branch at `7d4b8b8b` is preserved. Source checks have passed; native qualification and publication
-are pending; this document does not claim current live producer acceptance.
+The completed FE39 branch at `7d4b8b8b` is preserved. Source and controlled native qualification have passed; publication
+is pending; this document does not claim current live producer acceptance.
 
 The production ports retain one full-privacy-scope owner above sibling Admin
 routes. Panel navigation borrows the same controllers, preserving unresolved
@@ -129,3 +129,44 @@ header grant or production test registration is introduced. At frozen canonical
 `1a1db340`, the absent registered operation correctly yields unavailable; actual
 public HTTP/default Admin acceptance remains unqualified pending that genuine
 producer and canonical intake. The controlled browser journey cannot close it.
+
+The final controlled native run passed at `7d95145a6854a6178dcf191b8db9fe5c3b99f5a0`
+using offer `ADMIN-ROUTEPREDICATE-390-RETRY-20261104T1943Z`. The same-scope guardian
+repin honors the stronger offered 12 GiB start floor in its first independent
+sample; it preserves the default 11 GiB future small-job policy and every accepted
+cap/clock. Both controls ran before workload children. Actual ACCEPT was
+19:45:47.093539Z and literal FULL 19:45:51.967469Z. All three native attempt logs
+and failures remain retained. The final run uses one 390×844 Chrome context and
+the actual unmodified main/login/AdmissionBoundary/production ports. Canonical
+registered admission was read twice under StrictMode before the Admin role request.
+The existing bootstrap read intentionally returned unavailable; no World authority
+or identity was fabricated. A lost Wall POST remained unresolved across actual
+Event, Places, Closure and Wall links; receipt lookup plus authorized Wall GET
+recovered the single original key without a second POST. Current role withdrawal
+hid the controls and private progress. No page errors occurred.
+
+All four final PNGs were individually viewed after release. Navigation wraps within
+390 px, statuses and controls remain legible, the long existing Event forms scroll
+normally, and withdrawal replaces private controls with the unavailable state.
+Raw screenshots, requests, source hashes and cleanup are under
+`native-03-qualified`; `visual-assessment.json` records each image separately.
+No CSS was edited. This proves the owned controlled composition, not a genuine
+backend role or whole original task/live IN04/IN05 acceptance.
+
+Final native admission measured 13,819,707,392 free bytes and conservatively reserved
+2 GiB for the existing backend position plus the future 416 MiB joint Auth turn,
+plus own 240 MiB, leaving 10,984,357,888 bytes. Guard minimum free space remained
+13,781,127,168 bytes; peaks were 12 processes, 2,259,746,816 RSS bytes,
+2,246,411,068 accounted WHOLE bytes and 92,096,007 inclusive NEW bytes. FULL proved
+no remaining owned PIDs, signal errors, dependency link, private workload TMP or
+52624 listener, plus successful rebind. Resources were returned before visual
+assessment, documentation and publication.
+
+The final handoff applies only assigned paths against canonical `1a1db34065a190790459e4be41891750ab46d882`;
+merged upstream files are excluded. Root153 must apply only the admin import,
+compatible admin port extension, production factory and disposal hunks in ports,
+preserving all current unrelated integration hunks. Existing FE39/Gift branches
+and their publication receipts remain intact. OwnAccess's genuine producer and
+canonical generated exposure remain independently owned and open; no proof-only
+consumer remote replay or successor commit is required after Root's canonical
+publication receipt.
