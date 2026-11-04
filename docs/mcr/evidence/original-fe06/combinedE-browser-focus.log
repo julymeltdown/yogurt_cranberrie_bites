@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  05:09:46
+   Duration  445ms (transform 27ms, setup 0ms, import 83ms, tests 20ms, environment 273ms)
+

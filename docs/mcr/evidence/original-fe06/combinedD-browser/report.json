@@ -1,0 +1,11 @@
+{
+  "result": "FAIL",
+  "head": "eacbaab508400f881447f8c7d89f65ba50f36e93",
+  "diffSha256": "896d2e7b32eb670545df1f8b2d1d22ee829c1ec9358c9430bbd7d230cc5950ad",
+  "qualification": "ONE390 actual main/default routes, canonical UI sign-in/Auth/HTTP and incumbent World/Phaser. Read-only retained sharing-safety controlled HTTP/C05 fixture and wholeData immutable selected-source art. Checks only new committed-palette projection and necessary contrast/lifetime integration. Existing persistence/rollback/geometry/avatar/native-width receipts reused. No live backend, provider, device, multiuser or full reference acceptance.",
+  "errors": [],
+  "states": [],
+  "stage": "start",
+  "failure": "Error: Port 5173 is already in use",
+  "closed": true
+}

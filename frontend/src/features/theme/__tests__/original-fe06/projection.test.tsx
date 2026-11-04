@@ -14,7 +14,7 @@ function source(selected: ThemeState['selected'] = 'REVENGE') {
   return {
     read: () => state,
     subscribe: (listener: () => void) => { listeners.add(listener); return () => { listeners.delete(listener) } },
-    publish(patch: Partial<ThemeState>) { state = { ...state, ...patch }; for (const listener of [...listeners]) listener() },
+    publish(patch: Partial<ThemeState>) { state = { ...state, ...patch }; for (const listener of listeners) listener() },
     listeners: () => listeners.size,
   }
 }

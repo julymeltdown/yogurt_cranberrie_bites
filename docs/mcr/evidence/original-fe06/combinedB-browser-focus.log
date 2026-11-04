@@ -1,0 +1,25 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/features/theme/__tests__/original-fe06/projection.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/theme/__tests__/original-fe06/projection.test.tsx [ src/features/theme/__tests__/original-fe06/projection.test.tsx ]
+Error: Cannot find module '/src/features/theme/model/controller.ts' imported from /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/src/features/theme/__tests__/original-fe06/projection.test.tsx
+ ❯ src/features/theme/__tests__/original-fe06/projection.test.tsx:6:1
+      4| import { afterEach, expect, it, vi } from 'vitest'
+      5| import type { ThemeState } from '../../model/controller'
+      6| import { createThemeController } from '../../model/controller'
+       | ^
+      7| import { projectShellTheme } from '../../original-fe06/shellProjection'
+      8| import { useShellTheme } from '../../original-fe06/useShellTheme'
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  05:08:09
+   Duration  417ms (transform 11ms, setup 0ms, import 0ms, tests 0ms, environment 282ms)
+

@@ -27,7 +27,7 @@ parser.add_argument('--start-floor', type=int, choices=[11, 12], default=12)
 args = parser.parse_args()
 assert args.attempt.isalnum() and args.cutoff < args.release
 features = ['theme']
-tests = [str(NODE), str(LINK / 'vitest/vitest.mjs'), 'run', '--root', 'frontend', '--configLoader', 'runner', '--no-cache', '--maxWorkers', '1']
+tests = [str(NODE), str(LINK / 'vitest/vitest.mjs'), 'run', '--root', str(ROOT / 'frontend'), '--configLoader', 'runner', '--no-cache', '--maxWorkers', '1']
 owned = ['frontend/src/features/theme/original-fe06', 'frontend/src/features/theme/__tests__/original-fe06', 'frontend/src/app/world-panels/index.tsx']
 jobs = {
     'focus': tests + ['--config', 'src/features/theme/__tests__/original-fe06/vitest.config.ts', 'src/features/theme/__tests__/original-fe06/projection.test.tsx'],

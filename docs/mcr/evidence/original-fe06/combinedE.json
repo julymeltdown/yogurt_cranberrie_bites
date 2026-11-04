@@ -1,0 +1,59 @@
+{
+  "offer": "FE06-THEME-COALESCED-20261104T2010Z",
+  "head": "eacbaab508400f881447f8c7d89f65ba50f36e93",
+  "job": "combined",
+  "argv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/original-fe06/combined.py"
+  ],
+  "started": 1793822986.291044,
+  "cutoff": 1793823070,
+  "release": 1793823100,
+  "carryFiles": 27178,
+  "carryBytes": 4408157214,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 4441285228,
+    "growth": 33128014,
+    "temporary": 31302858,
+    "durable": 1146002,
+    "files": 27542,
+    "processes": 10,
+    "rss": 2583019520
+  },
+  "minFree": 18718355456,
+  "exitCode": 0,
+  "sourcePins": {
+    "frontend/src/features/theme/ui/ThemeSelector.tsx": "a7b51a8e0b39e182e66003045e01ed7fd0901612b6da94dae5ede7723e9e4f64",
+    "frontend/src/features/theme/ui/theme-selector.css": "efa98f8c022f8aab0e722423def1a4b273bb8b00548aebaf4ea2c604bcc7a30c",
+    "frontend/src/features/theme/ui/ThemeScope.tsx": "04e39f4f89c9608dc5aacfe9c37322ec16736f8361755348d908dabeaab8c17b",
+    "frontend/src/features/theme/__tests__/controller.test.tsx": "418f7081073622cc50f60f5b4c86c82f105d191404cc0105a310572d007328cb",
+    "frontend/src/features/theme/__tests__/preview.html": "c9e88dd3c9302785c108b7d6fc16225be28bebb20ee924a6549e953ccdb7ae72",
+    "frontend/src/features/theme/__tests__/preview.tsx": "e104a2055fd3228df1003c75461f9ad15bffe44ca023ad1091d9376e2a559ca1",
+    "frontend/src/features/theme/__tests__/contrast.test.ts": "5f90de3729d9801ad8b474275b44503158785558e8e94b1ec5d1e1f63b4986e8",
+    "frontend/src/features/theme/__tests__/browser-smoke.mjs": "a2c12220e7675272f2ec180e6578734cdbe29373858fd67ecb3622cf79b1b1dc",
+    "frontend/src/features/theme/model/preferences.ts": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+    "frontend/src/features/theme/model/controller.ts": "879105b2e39a63b6b206c9955a650b7867bcc9ada76c5c350c1286e38da2ac96",
+    "frontend/src/features/theme/original-fe06/useShellTheme.ts": "07ada053e69befb0dc94ab864122650c807c87971f956e1f66b2c663d0e5c131",
+    "frontend/src/features/theme/original-fe06/shellProjection.ts": "a338f521930c020f25bca3e51fffa945932538ecd49428f45b64b7b3e2377045",
+    "frontend/src/features/theme/__tests__/runtime-preferences/cancellation.test.ts": "0c6277a3ff38309ad0431f9a49f1ef445c41ab0acf99f7b21869513bcfea5e43",
+    "frontend/src/features/theme/__tests__/original-fe06/projection.test.tsx": "1bb85c38cc09635e398b82feb17221dfe0c2dbbb0f2c8463729636934b8119ac",
+    "frontend/src/features/theme/__tests__/original-fe06/native.html": "f78bd342d0acfc70dbf69d08f60260bf828dce9784869720f2808573b7eb50e9",
+    "frontend/src/features/theme/__tests__/original-fe06/native.mjs": "9115029c0da4985a51939218bdb5344ab613ff351ca3c2784f9d2f4300800fbb",
+    "frontend/src/features/theme/__tests__/original-fe06/vitest.config.ts": "c312259c1012b6186d349193d32957a395a06c8a3ef337f96f72b995aa9f0da8"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "startFree": 18890866688,
+  "otherWorstGrowth": 1342177280,
+  "startFloorGiB": 11,
+  "finished": 1793823001.6465569,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 19703791616,
+  "releasedBeforeDeadline": true
+}

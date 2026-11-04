@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "scope": "Original FE06 client row with retained unchanged-scope runtime/width qualification and new actual-default-app committed palette integration",
+  "base": "fcac0bed033b3f0bca336df6417d3ff617ffb637",
+  "sourceHeadBeforeQualification": "eacbaab508400f881447f8c7d89f65ba50f36e93",
+  "qualifiedInputs": 3237,
+  "offer": "FE06-THEME-COALESCED-20261104T2010Z",
+  "acceptance": "acceptance-2010.json",
+  "finalReceipt": "combinedE.json",
+  "nativeReport": "combinedE-browser/report.json",
+  "commands": {
+    "focus": {
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --root <absolute-frontend> --configLoader runner --config src/features/theme/__tests__/original-fe06/vitest.config.ts --no-cache --maxWorkers 1 src/features/theme/__tests__/original-fe06/projection.test.tsx",
+      "exitCode": 0,
+      "tests": 10
+    },
+    "types": {
+      "command": "node frontend/node_modules/typescript/bin/tsc --noEmit --incremental false --allowImportingTsExtensions --project frontend/tsconfig.json",
+      "exitCode": 0
+    },
+    "lint": {
+      "command": "node frontend/node_modules/oxlint/bin/oxlint --deny-warnings frontend/src/features/theme/original-fe06 frontend/src/features/theme/__tests__/original-fe06 frontend/src/app/world-panels/index.tsx",
+      "exitCode": 0
+    },
+    "plan": {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0
+    },
+    "syntax": {
+      "command": "node --check frontend/src/features/theme/__tests__/original-fe06/native.mjs",
+      "exitCode": 0
+    },
+    "native": {
+      "command": "node frontend/src/features/theme/__tests__/original-fe06/native.mjs",
+      "exitCode": 0,
+      "width": 390
+    }
+  },
+  "oneBaselineNoDeadlineReset": true,
+  "attempts": {
+    "combinedA": "RED: relative Vitest root left /src import unresolved; no tests collected",
+    "combinedB": "RED: explicit config root alone did not repair relative CLI root; no tests collected",
+    "combinedC": "10 tests and full types PASS; RED three deny-lint warnings in new test/driver",
+    "combinedD": "all source stages PASS; RED occupied strict default port before app/browser boot",
+    "combinedE": "all six serial stages PASS after absolute CLI root, lint fixes and driver-local nonstrict available port"
+  },
+  "aggregatePeaks": {
+    "whole": 4441285228,
+    "growth": 33128014,
+    "temporary": 31302858,
+    "durable": 1146002,
+    "files": 27542,
+    "processes": 10,
+    "rss": 2583019520
+  },
+  "minimumFreeBytes": 17954144256,
+  "fullReleaseEpoch": 1793823001.6465569,
+  "resources": {
+    "children": 0,
+    "dependencyLinks": 0,
+    "temporaryPrefixes": 0,
+    "browserContextServerClosed": true
+  },
+  "visualInspection": {
+    "viewed": [
+      "combinedE-browser/parade-warm-panel-390.png",
+      "combinedE-browser/revenge-390.png"
+    ],
+    "assessment": "Warm Help paper/black text are legible; reference header/control/frame geometry and selected-source characters remain present; no left accent decoration. This is a changed-scope 390px assessment, not full ten-screen/native-device acceptance."
+  },
+  "limits": [
+    "Controlled HTTP/C05 fixture and actual main/Auth/World/Phaser; no live backend/provider/device/multiuser proof",
+    "Retained runtime/width evidence keeps its original source/fixture limitations",
+    "No install/build/database/target/old matrix replay"
+  ],
+  "canonicalPublication": "PENDING_ROOT153"
+}

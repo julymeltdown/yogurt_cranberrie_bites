@@ -15,7 +15,7 @@ const input = { revision: 'test-only', reviewedBy: 'test-only', movementPolicy: 
 const server = await createServer({ root: frontend, configLoader: 'runner', cacheDir: resolve(process.env.TMPDIR, 'vite'), define: {
   'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify('00000000-0000-4000-8000-000000000201'),
   'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(input)),
-}, server: { host: '127.0.0.1', port: 0, hmr: false }, logLevel: 'warn' })
+}, server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false }, logLevel: 'warn' })
 let browser, context, page, releaseParade = () => {}, stage = 'start'
 const report = { result: 'FAIL', head: git('rev-parse', 'HEAD'), diffSha256: createHash('sha256').update(git('diff', 'HEAD')).digest('hex'),
   qualification: 'ONE390 actual main/default routes, canonical UI sign-in/Auth/HTTP and incumbent World/Phaser. Read-only retained sharing-safety controlled HTTP/C05 fixture and wholeData immutable selected-source art. Checks only new committed-palette projection and necessary contrast/lifetime integration. Existing persistence/rollback/geometry/avatar/native-width receipts reused. No live backend, provider, device, multiuser or full reference acceptance.', errors: [], states: [] }
@@ -90,7 +90,7 @@ try {
   const after = await state()
   assert.equal(after.sameHost, true); assert.equal(after.sameCanvas, true)
   assert.equal(after.peakCanvases, 1); assert.equal(after.peakSockets, 1); assert.equal(after.sockets, before.sockets)
-  assert.equal(after.requests.filter(r => /world-tickets$/.test(r.path)).length, before.requests.filter(r => /world-tickets$/.test(r.path)).length)
+  assert.equal(after.requests.filter(r => r.path.endsWith('world-tickets')).length, before.requests.filter(r => r.path.endsWith('world-tickets')).length)
   assert.deepEqual(after.requests.filter(r => r.method !== 'GET').map(r => [r.path, r.method]), before.requests.filter(r => r.method !== 'GET').map(r => [r.path, r.method]))
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
   assert.deepEqual(report.errors, [])
