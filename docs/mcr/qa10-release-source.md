@@ -227,3 +227,9 @@ for normal serialized publication. There is no king/SL/QA review or ACK gate.
 The owner resolves concrete defects and independently verifies published
 ancestry plus exact owned file blobs/modes. Root retains final release
 composition and original QA10/IN05 acceptance.
+
+## Final frozen source result
+
+Final executable source is `52ac02cdf9ed1e5588c12e2993e7be7ae2d0f2fe`. The [source-03 receipt](../../scripts/mcr/release_checks/evidence/source-03/validation.json) records31 regressions passing in7.623s, shell syntax exit0, actual no-manifest CLI exit2/INCOMPLETE with112 required tasks missing, and stale frontend CLI exit1/candidate.mismatch. The read-only historical adapter validated3,525 cases while retaining production_bytes NOT_RUN; it did not qualify current HEAD. Exact logs and source SHA256 values are retained beside that receipt.
+
+The following evidence/document commit changes no executable checker/test bytes. Publication follows the designated Root1fc route; fresh own remote ancestry and exact postimages are reported in the delivery handoff after publication. Full QA10/IN05 and physical/live qualification remain INCOMPLETE/NOT_RUN.

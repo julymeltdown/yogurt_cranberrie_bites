@@ -1,0 +1,13 @@
+{
+  "consumerCandidate": "52ac02cdf9ed1e5588c12e2993e7be7ae2d0f2fe",
+  "scope": "Read-only historical protocol compatibility; not current HEAD qualification.",
+  "historicalCandidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "counts": {
+    "total": 3525,
+    "passed": 3525,
+    "skipped": 0,
+    "production_bytes": "NOT_RUN"
+  },
+  "currentCandidateQualified": false,
+  "releaseStatus": "INCOMPLETE"
+}
