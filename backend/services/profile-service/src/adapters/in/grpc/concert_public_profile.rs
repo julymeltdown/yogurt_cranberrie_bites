@@ -93,6 +93,9 @@ impl proto::concert_public_profile_service_server::ConcertPublicProfileService
             family: canonical(&m.session_family_id)?,
             request: canonical(&m.request_id)?,
         };
+        binding
+            .validate_completion(&m.child_id, &m.completion_secret)
+            .map_err(|_| Status::invalid_argument("Invalid public Profile intent"))?;
         let deadline = AuthorityRpcDeadline::within_original(
             m.expires_unix_micros.min(original.expires_micros()),
             original.stop().into_std(),
@@ -100,7 +103,11 @@ impl proto::concert_public_profile_service_server::ConcertPublicProfileService
         )?;
         let result = platform::call_deadline::scope(
             deadline.stop().into_std(),
-            tokio::time::timeout_at(deadline.stop(), self.repository.read_public(binding)),
+            tokio::time::timeout_at(
+                deadline.stop(),
+                self.repository
+                    .read_public(binding, &m.child_id, &m.completion_secret),
+            ),
         )
         .await;
         deadline.remaining(BUDGET, deadline.expires_micros())?;
