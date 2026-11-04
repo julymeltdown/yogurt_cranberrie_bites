@@ -1,0 +1,30 @@
+{
+  "job": "FE34-EXISTING-CONTRACT-RETRY-20261104T1955Z",
+  "status": "DECLINED_BEFORE_ACCEPT",
+  "atEpoch": 1793822388.355832,
+  "atKST": "2026-11-05T04:59:48.355832+09:00",
+  "candidate": "9552f51ced6347e8c2b9fd9d0f79b848ed9a54c4",
+  "guardianSha256": "b932b3f74f2be6d8c736b699a0de040e8d3f4895ad0a8b218119117b5c73c3e8",
+  "freeBytes": 12724441088,
+  "requiredStartBytes": 12884901888,
+  "otherMaximumNewBytes": 1551892480,
+  "ownNewBytes": 134217728,
+  "residualBytes": 11038330880,
+  "requiredResidualBytes": 9663676416,
+  "startPass": false,
+  "residualPass": true,
+  "predecessor": {
+    "job": "AVATAR-CANCEL-SOURCE-20261104T1955Z",
+    "disposition": "DECLINED_BEFORE_ACCEPT",
+    "actualFullClaimed": false
+  },
+  "accepted": false,
+  "childrenStarted": false,
+  "tempCreated": false,
+  "dependencyLinkCreated": false,
+  "sourceTests": "NOT_RUN",
+  "types": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "resourcesHeld": 0,
+  "nextAction": "Same candidate requeued for a fresh usable offer; no floor amendment or old allocation reuse. Artist successor and allocator notified."
+}

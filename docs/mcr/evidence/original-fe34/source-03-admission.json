@@ -1,0 +1,25 @@
+{
+  "job": "FE34-EXISTING-CONTRACT-RETRY-20261104T2005Z",
+  "acceptedEpoch": 1793822551.3881311,
+  "acceptedKST": "2026-11-05T05:02:31.388131+09:00",
+  "workDeadlineEpoch": 1793822671.3881311,
+  "cleanupDeadlineEpoch": 1793822731.3881311,
+  "head": "1d70772bcbafdfcac5fb40a3bb526095c0cd68a4",
+  "guardSha256": "7ca094d0aff5e6b71f923d2fb8ad4cf868c0f190e0325d071d1891e4e7d091e0",
+  "freeBytes": 12824477696,
+  "freshCarryIncludingDependenciesBytes": 2013048832,
+  "conservativePriorMaximumCarryBytes": 2027442176,
+  "startFloorBytes": 11811160064,
+  "otherNewBytes": 2818572288,
+  "ownNewBytes": 134217728,
+  "residualBytes": 9871687680,
+  "otherBasis": "Latest allocator2005 currentA Age2GiB, B128MiB/C256MiB conservative + ordinary256MiB; add1GiB if A actually changes to Lifecycle/Gift3",
+  "predecessor": {
+    "job": "AVATAR-CANCEL-SOURCE-20261104T2002Z",
+    "actualFullUTC": "2026-11-04T20:01:59.665985Z",
+    "resourcesHeld": 0
+  },
+  "old1955Disposition": "DECLINED_BEFORE_ACCEPT preserved; this is fresh named2005",
+  "maxGlobal": 4,
+  "maxSource": 2
+}

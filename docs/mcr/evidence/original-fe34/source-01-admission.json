@@ -1,0 +1,22 @@
+{
+  "job": "FE34-EXISTING-CONTRACT-SOURCE-20261104T1932Z",
+  "acceptedEpoch": 1793820838.236792,
+  "acceptedUTC": "2026-11-04T19:33:58.236792+00:00",
+  "workDeadlineEpoch": 1793820958.236792,
+  "cleanupDeadlineEpoch": 1793821018.236792,
+  "head": "5df308914c052da1672e138e24f44035ad26b539",
+  "guardSha256": "cd14ad8c5107b63de51b2f09a22f2bdaa78f3832dfc090521d709cd2b6b276a3",
+  "freeBytes": 14259068928,
+  "carryIncludingRetainedDependenciesBytes": 2013007872,
+  "otherNewBytes": 2348810240,
+  "ownNewBytes": 134217728,
+  "residualBytes": 11776040960,
+  "others": [
+    "OpsFOLLOWUP1920 2GiB",
+    "QA07SOURCE1927 128MiB",
+    "Party23COPIED1932 64MiB"
+  ],
+  "maxGlobal": 4,
+  "maxSource": 2,
+  "goalMetadata": "blocked retained; human-authorized same-goal resume received, no reset API used"
+}

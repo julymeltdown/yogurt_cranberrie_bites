@@ -1,0 +1,90 @@
+{
+  "scope": "Original FE34 existing-contract Profile draft validation and controlled admission fixture repair only",
+  "status": "VALIDATED_AWAITING_PUBLICATION",
+  "wholeFE34": "IN_PROGRESS; ticket section/visibility not delivered",
+  "owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+  "publisher": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "baseCommit": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+  "testedCommit": "1d70772bcbafdfcac5fb40a3bb526095c0cd68a4",
+  "implementationCommit": "7e3449319371f832f7ec99489876939fd1485b8b",
+  "fixtureRepairCommit": "9552f51ced6347e8c2b9fd9d0f79b848ed9a54c4",
+  "validatedSourceSha256": {
+    "frontend/src/features/me/model/contract.ts": "69c70ab44898f34a84a18817d670c3d84186f904ea4c5e0edbdf75a8a56eed79",
+    "frontend/src/features/me/model/controller.ts": "34c9c487f539b7781d31c6db1e453c871fa424a4bd0dd17bc14fc02f6d531e2e",
+    "frontend/src/features/me/__tests__/fixtures.ts": "5468b439d47aa871d221261a6c2ff057b1d17b28f228245b5ca087db142ed53d",
+    "frontend/src/features/me/ui/MePages.tsx": "4e2b9742c0e5b4df87290d5daf7a986c456cd9e781a76a672f2f0790afec9941",
+    "frontend/src/features/me/__tests__/original-fe34/admitted-fetch.ts": "b05f56ea5f0a1e07cb6f87e4b1297ba3817fdba338e8af9e504edf45aeaa8fd5",
+    "frontend/src/features/me/__tests__/original-fe34/profile-validation.test.tsx": "9eae2780fb104da301f52d857f4598788b4512e2d8aa9acd0b781ff487f43e61",
+    "frontend/src/features/me/__tests__/original-fe34/source-round.py": "7ca094d0aff5e6b71f923d2fb8ad4cf868c0f190e0325d071d1891e4e7d091e0",
+    "frontend/src/features/me/__tests__/original-fe34/vitest.config.mjs": "2e45d2beb176ce8ef1582be28421816718bc8a236230dd394ad4d6cfaaa3f106"
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/me/__tests__/original-fe34/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793822562.0490801,
+      "exitCode": 0,
+      "finishedEpoch": 1793822565.25436
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "startedEpoch": 1793822565.254421,
+      "exitCode": 0,
+      "finishedEpoch": 1793822573.896424
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/features/me/model/contract.ts",
+        "src/features/me/model/controller.ts",
+        "src/features/me/ui/MePages.tsx",
+        "src/features/me/__tests__/fixtures.ts",
+        "src/features/me/__tests__/original-fe34"
+      ],
+      "startedEpoch": 1793822573.896506,
+      "exitCode": 0,
+      "finishedEpoch": 1793822574.3841941
+    }
+  ],
+  "sourceReport": "docs/mcr/evidence/original-fe34/source-03/guardian.json",
+  "admission": "docs/mcr/evidence/original-fe34/source-03-admission.json",
+  "retainedFailedReport": "docs/mcr/evidence/original-fe34/source-01/guardian.json",
+  "retainedDecline": "docs/mcr/evidence/original-fe34/source-02-declined.json",
+  "planningCheck": {
+    "command": "python3 scripts/mcr/check-plan.py",
+    "exitCode": 0,
+    "scope": "planning provenance only"
+  },
+  "resourcesHeld": 0,
+  "limits": [
+    "No live public Auth/admission or GET/PATCH persistence qualification",
+    "No browser/device/visual acceptance claim",
+    "Ticket section and visibility require pending human decision and Root1fc contract; public wire unchanged",
+    "No claim of whole FE34 or goal completion"
+  ],
+  "newSource": "Newly authored MCR validation/helper code; guardian adapted from retained profile-activity-media source-round.py at base; no Bigyeting rendering copied",
+  "dependencies": "Existing package/lock and retained Node24.22.2/dependency tree unchanged; guardian compares package and lock before children",
+  "publication": "Root153 publishes normal non-force scoped commits, reconciles concurrent history and supplies one canonical delivery receipt; no king/SL review/ACK."
+}

@@ -5,8 +5,8 @@ import type { SessionScope } from '../../../shared/api/http'
 
 const integer = z.number().int().safe().min(1)
 const uuid = z.string().refine(canonicalUuid)
-const text = (min: number, max: number) => z.string().refine(s => Array.from(s).length >= min && Array.from(s).length <= max
-  && Array.from(s).every(c => { const n = c.codePointAt(0)!; return n < 0xd800 || n > 0xdfff }))
+const text = (min: number, max: number, message = 'Invalid profile text.') => z.string().refine(s => Array.from(s).length >= min && Array.from(s).length <= max
+  && Array.from(s).every(c => { const n = c.codePointAt(0)!; return n < 0xd800 || n > 0xdfff }), message)
 export const preferencesSchema = z.strictObject({ theme: z.enum(['REVENGE', 'PARADE', 'DANGER']),
   low_power: z.boolean(), reduced_motion: z.boolean(), sound_enabled: z.boolean() })
 export type Preferences = z.infer<typeof preferencesSchema>
@@ -15,7 +15,14 @@ const participantSchema = z.strictObject({ event_id: uuid, user_id: uuid, revisi
     avatar: z.unknown().transform(decodeAvatarState) }),
   preferences: preferencesSchema, age_status: z.enum(['UNKNOWN', 'VERIFIED', 'EXPIRED', 'PROVIDER_UNAVAILABLE']) })
 export type Participant = z.infer<typeof participantSchema>
-export const profileSchema = z.strictObject({ display_name: text(1, 40), bio: text(0, 160).nullable() })
+// Match the Profile owner's Rust char::is_control and Unicode trim semantics.
+// Validate drafts without normalizing or silently changing what will be saved.
+export const profileSchema = z.strictObject({
+  display_name: text(1, 40, 'Use a display name of 1–40 characters.')
+    .refine(s => /[^\p{White_Space}]/u.test(s), 'Enter a display name with at least one non-space character.')
+    .refine(s => !/\p{Cc}/u.test(s), 'Remove tabs, newlines and other control characters from your display name.'),
+  bio: text(0, 160, 'Use a bio of at most 160 characters.').refine(s => !/\p{Cc}/u.test(s), 'Remove tabs, newlines and other control characters from your bio.').nullable(),
+})
 export type ProfileDraft = z.infer<typeof profileSchema>
 export type Draft = ProfileDraft & { preferences: Preferences }
 export const defaults: Readonly<Preferences> = Object.freeze({ theme: 'REVENGE', low_power: false, reduced_motion: false, sound_enabled: false })
