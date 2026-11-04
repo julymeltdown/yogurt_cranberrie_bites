@@ -66,6 +66,8 @@ try {
     const touch=async(type,ids)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints:ids.map(i=>contacts[i-1])})
     await touch('touchStart',[1]);await touch('touchStart',[1,2]);await touch('touchStart',[1,2,3]);await touch('touchEnd',[2,3]);await touch('touchEnd',[3]);await touch('touchStart',[3,4]);await touch('touchEnd',[3]);await touch('touchEnd',[])
     await expect(page.getByLabel('Selection preview')).toHaveCount(0);assert.equal((await counts()).posts,0)
+    await touch('touchStart',[1]); contacts[0].x+=36; await touch('touchMove',[1]); contacts[0].x-=36; await touch('touchMove',[1]); await touch('touchEnd',[]); await expect(page.getByLabel('Selection preview')).toHaveCount(0); assert.equal((await counts()).posts,0)
+    await touch('touchStart',[1]); await touch('touchCancel',[]); await expect(page.getByLabel('Selection preview')).toHaveCount(0)
     await cdp.detach()
     // A clean touch tap after all contacts end is a preview, never a POST.
     await page.touchscreen.tap(bounds.x+70,bounds.y+bounds.height/2)
