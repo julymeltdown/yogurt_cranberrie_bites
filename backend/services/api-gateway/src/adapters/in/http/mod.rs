@@ -9,6 +9,7 @@ pub mod concert_access;
 pub mod concert_world;
 pub mod concert_bootstrap;
 pub mod concert_product;
+pub mod concert_participant;
 
 pub mod friend_routes;
 pub mod moderation_decision_worker;

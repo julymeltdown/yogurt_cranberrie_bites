@@ -33,5 +33,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     for proto in protos {
         println!("cargo:rerun-if-changed={}", proto.display());
     }
+    // Isolated canonical C03 pass; imported Product types keep their existing identity.
+    let participant = contracts_build::proto_root().join("concert/v1/participant.proto");
+    let output = std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("participant");
+    std::fs::create_dir_all(&output)?;
+    tonic_prost_build::configure()
+        .build_server(true)
+        .build_client(true)
+        .out_dir(&output)
+        .extern_path(
+            ".concert.product.v1",
+            "crate::adapters::out::concert_product::proto",
+        )
+        .compile_protos(&[participant.clone()], &[contracts_build::proto_root()])?;
+    println!("cargo:rerun-if-changed={}", participant.display());
     Ok(())
 }
