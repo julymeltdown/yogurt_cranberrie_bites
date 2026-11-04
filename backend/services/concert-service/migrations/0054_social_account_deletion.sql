@@ -164,8 +164,13 @@ BEGIN
  ELSIF TG_TABLE_NAME='concert_social_grants' THEN
   IF TG_OP='DELETE' THEN users:=ARRAY[OLD.owner_id,OLD.viewer_id]; ELSE users:=ARRAY[NEW.owner_id,NEW.viewer_id]; END IF;
  ELSE
-  SELECT ARRAY[requester_id,recipient_id] INTO users FROM public.concert_social_requests
-   WHERE event_id=NEW.event_id AND request_id=NEW.request_id;
+  IF TG_OP='DELETE' THEN
+   SELECT ARRAY[requester_id,recipient_id] INTO users FROM public.concert_social_requests
+    WHERE event_id=OLD.event_id AND request_id=OLD.request_id;
+  ELSE
+   SELECT ARRAY[requester_id,recipient_id] INTO users FROM public.concert_social_requests
+    WHERE event_id=NEW.event_id AND request_id=NEW.request_id;
+  END IF;
  END IF;
  -- Verified removals already hold the common deleted-user lock FIRST. Do
  -- not acquire a peer's common lock after the event lock: opposite deletions
@@ -198,7 +203,7 @@ CREATE TRIGGER concert_social_requests_deleted BEFORE INSERT OR UPDATE OR DELETE
  FOR EACH ROW EXECUTE FUNCTION public.concert_social_permanent_deletion_guard();
 CREATE TRIGGER concert_social_grants_deleted BEFORE INSERT OR UPDATE OR DELETE ON public.concert_social_grants
  FOR EACH ROW EXECUTE FUNCTION public.concert_social_permanent_deletion_guard();
-CREATE TRIGGER concert_social_bindings_deleted BEFORE INSERT OR UPDATE ON public.concert_social_bindings
+CREATE TRIGGER concert_social_bindings_deleted BEFORE INSERT OR UPDATE OR DELETE ON public.concert_social_bindings
  FOR EACH ROW EXECUTE FUNCTION public.concert_social_permanent_deletion_guard();
 
 CREATE FUNCTION public.concert_social_deletion_signal_guard() RETURNS trigger LANGUAGE plpgsql AS $$
@@ -224,6 +229,29 @@ BEGIN
 END $$;
 CREATE TRIGGER concert_social_deletion_signal_guard BEFORE UPDATE OR DELETE ON public.concert_social_policy_signals
  FOR EACH ROW EXECUTE FUNCTION public.concert_social_deletion_signal_guard();
+
+-- TRUNCATE does not fire row guards, including when a parent uses CASCADE.
+-- Refuse wholesale removal while it could erase pending discovery/publication.
+CREATE FUNCTION public.concert_social_deletion_truncate_guard() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+ IF EXISTS(SELECT 1 FROM public.concert_world_account_deletion_fences f
+           LEFT JOIN public.concert_social_account_deletions d USING(user_id,saga_id)
+           WHERE d.completed_at IS NULL)
+  OR EXISTS(SELECT 1 FROM public.concert_social_policy_signals WHERE deletion_saga IS NOT NULL) THEN
+  RAISE EXCEPTION 'Social deletion source cannot be truncated' USING ERRCODE='23514';
+ END IF;
+ RETURN NULL;
+END $$;
+CREATE TRIGGER concert_social_handles_deletion_no_truncate BEFORE TRUNCATE ON public.concert_social_handles
+ FOR EACH STATEMENT EXECUTE FUNCTION public.concert_social_deletion_truncate_guard();
+CREATE TRIGGER concert_social_requests_deletion_no_truncate BEFORE TRUNCATE ON public.concert_social_requests
+ FOR EACH STATEMENT EXECUTE FUNCTION public.concert_social_deletion_truncate_guard();
+CREATE TRIGGER concert_social_grants_deletion_no_truncate BEFORE TRUNCATE ON public.concert_social_grants
+ FOR EACH STATEMENT EXECUTE FUNCTION public.concert_social_deletion_truncate_guard();
+CREATE TRIGGER concert_social_bindings_deletion_no_truncate BEFORE TRUNCATE ON public.concert_social_bindings
+ FOR EACH STATEMENT EXECUTE FUNCTION public.concert_social_deletion_truncate_guard();
+CREATE TRIGGER concert_social_signals_deletion_no_truncate BEFORE TRUNCATE ON public.concert_social_policy_signals
+ FOR EACH STATEMENT EXECUTE FUNCTION public.concert_social_deletion_truncate_guard();
 
 CREATE INDEX concert_social_deletion_requester ON public.concert_social_requests(requester_id,event_id,request_id);
 CREATE INDEX concert_social_deletion_recipient ON public.concert_social_requests(recipient_id,event_id,request_id);
