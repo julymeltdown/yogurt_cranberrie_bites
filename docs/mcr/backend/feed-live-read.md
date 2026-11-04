@@ -516,3 +516,41 @@ snapshot. The merged source is not a new compile or runtime result. It is ready
 for the separately requested one-library Feed build and frozen native execution;
 no target grant or PostgreSQL instance is held. Peer evidence-log whitespace
 was preserved during reconciliation and is outside this task's authored paths.
+
+
+## Five-owner library build and first real Feed attempt
+
+Exact clean source `404499731b2d2ff11dafc1402cb0bcc95a11e595` passed the
+single Concert library-test build with Rust 1.88, locked/offline jobs 2,
+dev/test debug 0 and incremental 0. The retry after the evidenced stale
+contracts-build helper was cleaned completed in 40.82 seconds with zero owned
+Feed/PublicProfile warnings and 11 peer World/Party warnings. The compiler
+receipt and executable were frozen outside the allocated target; zero open
+handles and unconditional BACKEND release preceded PostgreSQL execution.
+No target lease remains.
+
+Evidence directory: `/private/tmp/mcr-feed-native-current-20261104/`.
+Copied executable SHA-256:
+`50e567e96d4dd223b4f328e0efbdc73d60b47cf242390bae28fd9ea73d96571b`.
+The first native attempt failed at actual source-bound release construction;
+its manifest omitted two Markdown provenance inputs. Cleanup passed, with the
+owned root absent. That failed report remains unchanged, SHA-256
+`f26d95810400f5c4f3200836a1fa4c46d257300f009698cd3e288b62afb4cfc3`.
+
+Controller fix `037e3ce5ff941f306cbc5d76f4831828333709eb` inventories every
+resource named by source-binding.json, verifies its byte count and SHA-256,
+and rejects paths escaping the public root regardless of extension. Four
+controller preflight regressions pass. The corrected frozen set has 2,447
+files, including the two omitted Markdown files. Comparison against all 2,445
+original inputs confirms only the two controller Python files changed; no
+Rust, manifest, protocol, migration or embedded resource changed. The same
+40449973 executable was reused, with separate binary/controller source pins.
+
+The corrected attempt reached the actual Feed read and failed with
+DependencyUnavailable, exit 101. This is a real failure, not native acceptance.
+Private PostgreSQL 16.14 was removed successfully. Evidence directory:
+`/private/tmp/mcr-feed-native-packaging-20261104/`. The diagnostic runs retain
+private PostgreSQL logs outside the removed cluster. They show the actual actor
+local PREPARE succeeds before the request fails; there is no protected Post
+read SQL. Further RPC diagnostics are required to identify the rejecting
+boundary. Actual Gateway HTTP completion remains NOT_RUN.
