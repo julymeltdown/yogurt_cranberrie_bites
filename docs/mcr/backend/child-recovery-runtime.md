@@ -1,8 +1,9 @@
 # Durable finished-root child recovery
 
-Status: **IN_PROGRESS**. Production source authored; Rust build and native
-component execution **NOT_RUN** on this revision. CR01–CR06 and actual production
-main activation are **NOT_RUN**. The persistent owner-authority goal stays active.
+Status: **IN_PROGRESS**. Production source compiled and all three native-adapter
+component cases passed on exact `8bb61f85`. CR01–CR06 physical Root restart and
+actual production main activation remain **NOT_RUN**. The persistent owner-authority
+goal stays active.
 
 ## Assigned ownership and source
 
@@ -118,3 +119,41 @@ resource bytes consumed by the public constructor, following Public's native
 controller approach. A source-bound constructor does not replace a complete
 qualification checkpoint. Static peer review found no actionable defect in the
 authorized production slice; that review did not execute native checks.
+
+## Exact-source component qualification
+
+Qualified source: `8bb61f854aab29e32129f4fb46d2693d8c7ce7e9`, carrying production
+patch `f200846208916c76475a1bfaf47b243d70e67328` and resource-checkpoint follow-up.
+The scoped production patch changes only the seven assigned production/test/doc
+paths; no entire branch ancestry is proposed for delivery.
+
+One Rust1.88 locked/offline j2 debug0/incremental0 command emitted exactly
+`owner_authority_http` and `child_recovery_runtime` (exit 0, 35.066 s). It had
+26 warnings: 16 inherited warnings and 10 dead-code warnings from reused test
+helpers; no new production warning. Both executables, source checkpoints and
+Cargo JSON were copied outside the shared target. Explicit release and zero
+remaining target handles were recorded before either native controller started.
+The earlier allocation failed the 8 GiB disk preflight before Cargo; it was
+immediately released with zero target mutation. A distinct fresh allocation
+followed operator-owned reclamation; no broad cleanup was performed by this chat.
+
+The native controller returned exit 0 on fresh owned PostgreSQL16.14 with
+256 prepared slots, all 28 actual Concert migrations matching, and all three
+exact cases passing: fairness/capacity 0.94 s, unfinished quarantine 1.22 s,
+and key rotation/timeout/concurrent retry 0.86 s. Zero prepared work remained.
+The server stopped and marker/inode-owned cleanup passed with the root absent.
+The unfinished-root case explicitly tears down its owned native fixture guards
+without ACK or root promotion; that cleanup is not reported as worker recovery.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `child_recovery_runtime` copied executable | `dd6da7339ab6851a79b316beeb611305394b54e3636b67a5b6e2861a39b44b10` |
+| Three-case native report | `d56b8c9f6dc42dee47706087e3de28039201ca4b72726a35e9492cbd1e20e4d7` |
+
+The component checkpoint contains 2462 code, migration, contract and actual
+release/resource pins. Immutable local evidence directory basename is
+`mcr-child-recovery-la1v60q4`; `child-component-native-1.json`,
+`child_recovery_runtime-checkpoint.json`, `cargo-build.jsonl`, `build-result.json`
+and `release-2.json` retain exact commands, source revisions and receipts. The
+concurrent real canonical-owner HTTP result is documented in `owner-authority.md`;
+it does not convert these component tests into CR01–CR06 restart acceptance.
