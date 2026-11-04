@@ -6,8 +6,8 @@ The intrinsic-media follow-up passed its bounded native/fixture validation;
 its publication is independently verified. The separate reference-media
 comparison and selected-tab correction also passed their bounded fixture
 validation and publication. The subsequent alignment/display enlargement
-also passed its bounded round; its publication and full reference fidelity
-remain open.
+also passed its bounded round and publication; full reference fidelity
+remains open.
 The published first pass and all immutable raw reports remain separately identified.
 Owner: `01a1a5d9-332b-7822-a8f7-412e295fa211`. Persistent goal metadata: BLOCKED; the aligned objective remains unfinished.
 The intrinsic, native-reference and columns/display rounds ran in named
@@ -385,6 +385,7 @@ handoff directly for normal publication; no correctness acknowledgment is needed
 | First foreground pass | `654bbb16` | contained in `bb1345b5` | 49 exact postimages / 12 pins |
 | Intrinsic media follow-up | `8d39ce8c` | `416051c9` | 83 exact owned postimages; fresh fetch equals ls-remote |
 | Native reference-media / selected-tab correction | `1ed6412e` | `1972ecb3` | 130 exact owned postimages; reference2 PASS |
+| Enlarged reference display / content columns | `eb6e81bd` | `fc67cf5c` | 157 exact owned postimages; reference3 PASS |
 
 The latest remote proof establishes delivery of the tested intrinsic scope only.
 It does not prove the pending correction, approved-thumbnail card/detail flow,
@@ -587,3 +588,33 @@ background/edge treatment and some control/glyph proportions also differ.
 Those observations do not certify full photo, real-service, device or multiuser
 acceptance. This worker retains its exclusive Feed CSS lease and the original
 unfinished fidelity objective; resource slots are released between rounds.
+
+
+## Enlarged-display publication and remaining composition input
+
+The exact qualified `eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da` owned
+CSS/document/evidence packet is now published at
+`fc67cf5cd723fd3a92544fcd0060e390980ecf71`, parent
+`f198147e3c07d171b72bb086c4403b87dac5356b`. Own fresh fetch and independent
+`ls-remote` both resolve to `654974128a27c948a449fa9e58f466b8e612361d`, a
+descendant of that publication and Root's reported `c02a3e55` master. All **157
+owned postimages** match the qualified source exactly at both publication and
+fetched master. CSS SHA-256 remains
+`737dc607d53807bc6fcc1be9021a04da7874df7c8c26a23b3dee754799a9c1fc`.
+[Own columns delivery proof](../evidence/css-parity-feed/publication-columns.json).
+Original crop inputs and all prior raw rounds remain separate and unchanged.
+
+Root reports that a future full-shell/selected-character fixture using the same
+approved media still needs its actual Social availability/media-lifetime seam.
+Root source `8cc6f21b` and FE41 checks are queued, while the backend Social bridge
+is unqualified. These are responsible-owner dispositions, not independently
+validated backend claims by this CSS worker. No immutable qualified full-shell
+input has been supplied; neither this Git receipt nor the isolated reference
+fixture establishes that integration. Existing frozen-fixture comparisons remain
+usable without imposing a project-wide wave or backend-completion barrier.
+
+Full near-identical fidelity remains unfinished. The exclusive Feed CSS lease is
+retained, with future composition input owned by Root and any new executable
+comparison requiring its own resource allocation. This proof ran only normal
+read-only Git fetch/blob/ancestry checks; no browser, test, API, backend or image
+job was rerun. There is no king/SL technical review or acknowledgment gate.
