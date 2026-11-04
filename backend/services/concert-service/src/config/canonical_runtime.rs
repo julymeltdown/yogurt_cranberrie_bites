@@ -4,14 +4,24 @@
 //! feature composition. The caller supplies the actual typed child settler and
 //! native resolver; this core grants no authority and starts no background task.
 use crate::{
-    adapters::out::relationship_authority::guarded::{CanonicalOwnerFence, ScopeRegistry},
+    adapters::out::{
+        public_profile::PublicProfileReader,
+        relationship_authority::guarded::{CanonicalOwnerFence, ScopeRegistry},
+    },
+    gift_live::private::GiftPrivateRuntime,
+    notification_live::NotificationClient,
     product_rpc::{
         child_recovery::{ChildRecoverySettings, ChildRecoveryWorker},
+        child_settlement::CompositeChildIntentSettler,
         delivery::DeliveryPublisher,
-        scope_ledger::{ChildIntentSettler, ChildRecoveryKeys, PgScopeLedger},
+        scope_ledger::{
+            ChildIntentSettler, ChildRecoveryKeys, PgNotificationBindingReader, PgScopeLedger,
+        },
         settlement::{NativeTransactionResolver, ProducerSettlementService},
     },
+    social_live::read_child::SocialReadSettler,
 };
+use concert_application::{bootstrap::ValidatedProductRelease, community::giveaway::PickupKeys};
 use platform::{
     actor_delegation::relationship_read::RelationshipReadSigner, grpc_tls::TlsMaterial,
 };
@@ -19,6 +29,89 @@ use sqlx::PgPool;
 use std::sync::Arc;
 use tonic::Status;
 use uuid::Uuid;
+
+/// Actual configured owner endpoints. No endpoint is inferred or optional.
+pub struct CanonicalOwnerEndpoints {
+    pub auth: String,
+    pub friend: String,
+    pub profile: String,
+    pub notification: String,
+}
+
+/// Validated key material and the producer identity are supplied by the caller.
+/// Deliberately has no Debug implementation: it contains private credentials.
+pub struct CanonicalOwnerConfig {
+    pub instance: Uuid,
+    pub child_keys: Arc<ChildRecoveryKeys>,
+    pub pickup_keys: Arc<PickupKeys>,
+    pub endpoints: CanonicalOwnerEndpoints,
+    pub credential: String,
+    pub tls: TlsMaterial,
+    pub relationship_signer: RelationshipReadSigner,
+}
+
+/// Typed owners share one pool and one canonical core. This is composition,
+/// not route activation, target-policy authority, or worker supervision.
+pub struct CanonicalOwnerComposition {
+    pub core: CanonicalRuntimeCore,
+    pub fence: Arc<CanonicalOwnerFence>,
+    pub public_profile: Arc<PublicProfileReader>,
+    pub gift_private: Arc<GiftPrivateRuntime>,
+    pub social_read: Arc<SocialReadSettler>,
+    pub notification: Arc<NotificationClient>,
+}
+
+impl CanonicalOwnerComposition {
+    pub fn compose(
+        pool: PgPool,
+        release: Arc<ValidatedProductRelease>,
+        config: CanonicalOwnerConfig,
+    ) -> anyhow::Result<Self> {
+        // This reader depends only on the supplied pool and instance. Construct
+        // it before the client/settler/core to avoid a ledger ownership cycle.
+        let notification_binding = Arc::new(PgNotificationBindingReader::new(
+            pool.clone(),
+            config.instance,
+        )?);
+        let public_profile = Arc::new(PublicProfileReader::connect(
+            pool.clone(),
+            release,
+            &config.endpoints.profile,
+            &config.credential,
+            Some(&config.tls),
+            config.relationship_signer.clone(),
+        )?);
+        let gift_private = Arc::new(GiftPrivateRuntime::new(pool.clone(), config.pickup_keys));
+        let social_read = Arc::new(SocialReadSettler::new(pool.clone()));
+        let notification = Arc::new(NotificationClient::connect(
+            &config.endpoints.notification,
+            &config.credential,
+            Some(&config.tls),
+            Some(notification_binding),
+        )?);
+        let children = Arc::new(
+            CompositeChildIntentSettler::new(public_profile.clone(), gift_private.clone())
+                .with_social(social_read.clone())
+                .with_notification(notification.clone()),
+        );
+        let core = CanonicalRuntimeCore::new(pool, config.instance, config.child_keys, children)?;
+        let fence = Arc::new(core.owner_fence(
+            &config.endpoints.auth,
+            &config.endpoints.friend,
+            &config.credential,
+            &config.tls,
+            config.relationship_signer,
+        )?);
+        Ok(Self {
+            core,
+            fence,
+            public_profile,
+            gift_private,
+            social_read,
+            notification,
+        })
+    }
+}
 
 #[derive(Clone)]
 pub struct CanonicalRuntimeCore {

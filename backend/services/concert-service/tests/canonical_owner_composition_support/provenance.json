@@ -1,0 +1,38 @@
+[
+  {
+    "source": "backend/services/concert-service/tests/process_child_recovery_support/environment.rs",
+    "source_revision": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+    "source_sha256": "adde0dc16f21112e866bea96f11334d6033f6669fad408569de492f5c392c352",
+    "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/environment.rs",
+    "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
+    "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
+    "validation": "NOT_RUN"
+  },
+  {
+    "source": "backend/services/concert-service/tests/owner_authority_support/owners.rs",
+    "source_revision": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+    "source_sha256": "b9bbf048a2d236f759ac5eb5d935d3ccb0d7e9d76343428f23415d5fd3a37a00",
+    "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/owners.rs",
+    "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
+    "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
+    "validation": "NOT_RUN"
+  },
+  {
+    "source": "backend/services/concert-service/tests/process_child_recovery_support/release.rs",
+    "source_revision": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+    "source_sha256": "7f891de7c322e586944b5f8094f5e2664ed2338eeb8102d5c5e18309570b5852",
+    "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/release.rs",
+    "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
+    "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
+    "validation": "NOT_RUN"
+  },
+  {
+    "source": "backend/services/concert-service/tests/owner_authority_support/capture.rs",
+    "source_revision": "591d908a85a01fe0a494e04c0109bb0bec64a3e1",
+    "source_sha256": "d8582d7ee9724f96592faff8e66cf3f16bec494c7f46b72746aac4373d15bada",
+    "destination": "backend/services/concert-service/tests/canonical_owner_composition_support/capture.rs",
+    "changes": "CF01 local modules; Notification owned DB allowlist / parameterized original guarded binding where applicable",
+    "dependencies": "Existing locked Concert dev dependencies; no manifest changes",
+    "validation": "NOT_RUN"
+  }
+]
