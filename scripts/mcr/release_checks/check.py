@@ -17,6 +17,7 @@ FRONTEND_GATES = {"dependencies", "python-formats", "typecheck", "lint", "vitest
 LIVE_GATES = ("QA02-manual", "QA03", "QA04", "QA05", "QA06", "QA07", "QA08", "QA09",
               "IN01", "IN02", "IN03", "IN04", "IN05")
 LIMIT = 32 * 1024 * 1024
+VITEST_LIMIT = 96 * 1024 * 1024
 HEX40 = re.compile(r"[0-9a-f]{40}\Z")
 HEX64 = re.compile(r"[0-9a-f]{64}\Z")
 ALIASES = {"CD": "backend/crates/concert-domain/src", "CA": "backend/crates/concert-application/src",
@@ -92,9 +93,9 @@ class Repository:
             require(not p.is_symlink(), "path.symlink-refused")
         return p
 
-    def read(self, name):
+    def read(self, name, limit=LIMIT):
         p = self.path(name)
-        require(p.is_file() and p.stat().st_size <= LIMIT, "artifact.missing-or-too-large")
+        require(p.is_file() and p.stat().st_size <= limit, "artifact.missing-or-too-large")
         data = p.read_bytes()
         self.read_bytes += len(data)
         require(self.read_bytes <= 128 * 1024 * 1024, "artifact.total-read-limit")
@@ -295,18 +296,19 @@ def check_frontend(repo, report, expected, folder):
     for path, sha in pins.items():
         relative_path(path)
         name = folder + "/" + path
+        limit = VITEST_LIMIT if path == "vitest.json" else LIMIT
         if not repo.path(name).exists() and path.endswith(".json"):
             packed = repo.read(name + ".gz")
             try:
                 with gzip.GzipFile(fileobj=io.BytesIO(packed)) as stream:
-                    value = stream.read(LIMIT + 1)
+                    value = stream.read(limit + 1)
             except (OSError, EOFError):
                 raise Rejected("frontend.invalid-gzip") from None
-            require(len(value) <= LIMIT, "frontend.archive-too-large")
+            require(len(value) <= limit, "frontend.archive-too-large")
             repo.read_bytes += len(value)
             require(repo.read_bytes <= 128 * 1024 * 1024, "artifact.total-read-limit")
         else:
-            value = repo.read(name)
+            value = repo.read(name, limit=limit)
         require(digest(value) == sha, "artifact.hash-mismatch")
         data[path] = value
     by_id = {c["id"]: c for c in commands}

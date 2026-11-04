@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from check import COMMAND_SCHEMA, FRONTEND_GATES, SCHEMA, Rejected, digest, evaluate, vitest_counts
 
@@ -327,6 +328,17 @@ class ReleaseChecks(unittest.TestCase):
         self.assertEqual(result["status"], "INCOMPLETE", result)
         self.assertEqual(result["receipts"][0]["counts"]["total"], 2)
         self.assertEqual(result["receipts"][0]["counts"]["production_bytes"], "NOT_RUN")
+
+    def test_frontend_archives_remain_bounded_after_format_allowance(self):
+        report, files = self.frontend_fixture()
+        self.write(EVIDENCE + "/vitest.json.gz", gzip.compress(files["vitest.json"], mtime=0))
+        (self.root / EVIDENCE / "vitest.json").unlink()
+        self.manifest.update(receipts=[self.ref("frontend.json", self.jsonbytes(report))], task_links=[], production=None)
+        self.write(EVIDENCE + "/manifest.json", self.jsonbytes(self.manifest))
+        with patch("check.VITEST_LIMIT", 16):
+            result = evaluate(self.root, self.sha, EVIDENCE + "/manifest.json")
+        self.assertEqual(result["status"], "FAIL")
+        self.assertIn("frontend.archive-too-large", result["findings"])
 
     def test_frontend_claim_cannot_hide_failed_command_or_renamed_tests(self):
         report, _ = self.frontend_fixture()

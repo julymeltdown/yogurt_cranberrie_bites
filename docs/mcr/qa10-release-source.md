@@ -82,8 +82,9 @@ sanitized reports/logs or emitted release outputs. Traversal, absolute paths,
 symlinks, `.git`, `.env*`, common credential directories and key-file names are
 refused before reading. No environment values or credential stores are read.
 Matched secret values, raw logs and arbitrary exception messages are never
-printed; findings use fixed rule identifiers. Limits are32MiB per file/blob,
-128MiB total artifact reads (including decompression),128MiB Git batch output,
+printed; findings use fixed rule identifiers. Limits are32MiB per ordinary file/blob,96MiB for the existing frontend
+Vitest JSON report only,128MiB total artifact reads (including compressed input
+and decompression),128MiB Git batch output,
 and30seconds per Git operation. These are parser bounds, not a runtime resource
 allocation or an application capacity claim.
 
@@ -151,7 +152,12 @@ therefore validate only the historical recorded inventory. The consumer checks
 that audit and known emitted mock module paths, but explicitly reports
 `production_bytes:NOT_RUN`. A fresh scan requires retained emitted bytes and a
 same-candidate build receipt; old `candidate-980fc4d8` evidence cannot qualify
-the newer current HEAD.
+the newer current HEAD. A read-only compatibility check of that historical
+receipt validated its1,941 source/contract pins and3,525 test assertions under
+the historical candidate only. It does not qualify the current candidate. The
+initial32MiB decompression guard rejected its83,822,272-byte Vitest JSON; the
+known-format96MiB allowance corrected that owned compatibility defect. Both
+failed and successful compatibility records are retained.
 
 ## Production exclusion and task trace
 
@@ -190,6 +196,21 @@ The expanded30-test suite then passed in5.957s (Python3.14.3), as did bash
 syntax and the unchanged planning-provenance check. Actual current-candidate CLI
 receipts are recorded after source freeze. No application/runtime/live validation
 is implied.
+
+Frozen source `24fa26b7a9f4934bf8f02e59c1cdd6d3cc039a02` completed30
+regressions in6.622s. Its actual CLI returned exit2/INCOMPLETE without a manifest
+and exit1/candidate.mismatch for the historical frontend envelope. These are
+recorded at [source-01 validation](../../scripts/mcr/release_checks/evidence/source-01/validation.json),
+with exact command logs and both compatibility outcomes. The later archive-bound
+correction and its new negative regression receive a new frozen-source record;
+no earlier result is overwritten.
+
+The new Python consumer is authored for this scope. Its frontend compatibility
+semantics use the read-only published `frontend/e2e/release/qa10/model.mjs` and
+`run.mjs` protocols at the assignment base (Git blobs
+`d9341cc8ba1b8c45860b7cf37b014b5bdc3a3f66` and
+`6d39dfc0a575d632a74d872f46a14e4d7a727536`). No frontend source is copied or
+modified. Task aliases and acceptance limits come from specification§§9/13/15/16.
 
 Tests create disposable miniature Git fixture repositories with fixed author
 dates and synthetic contents, not additional MCR checkouts/worktrees. They

@@ -1,0 +1,6 @@
+{
+  "scope": "Read-only historical frontend schema compatibility only",
+  "adapter": "FAIL",
+  "rule": "frontend.archive-too-large",
+  "currentCandidateQualified": false
+}
