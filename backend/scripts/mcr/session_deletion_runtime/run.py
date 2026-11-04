@@ -45,7 +45,7 @@ def main(argv=None):
         inherited.require(forwarded.count(name) == 1, 'sessions-explicit-input-required')
         return forwarded[forwarded.index(name) + 1]
     inherited.require(1 <= options.scenario_seconds <= 120, 'sessions-bounded-scenario-required')
-    inherited.require(options.start_free_bytes in (12*1024**3,16*1024**3)
+    inherited.require(options.start_free_bytes in (11*1024**3,12*1024**3,16*1024**3)
         and options.guardian_pid>1 and options.guardian_pid!=os.getpid(), 'sessions-original-allocation-guard-required')
     os.kill(options.guardian_pid,0)
     inherited.require(options.sessions_report.is_absolute()
@@ -76,7 +76,7 @@ def main(argv=None):
 
         def start(self):
             # Future admissions may use the allocator's explicit bounded warm
-            # 12GiB class. The accepted outer lease still owns ALLNEW/reserves,
+            # 11/12GiB classes. The accepted outer lease still owns ALLNEW/reserves,
             # global workflow/RSS/PID bounds and independent process cleanup.
             inherited.require(shutil.disk_usage(self.output).free>=options.start_free_bytes,
                               'sessions-actual-start-free-space')
