@@ -1,8 +1,9 @@
 # QA03 database race qualification
 
-Status: IN_PROGRESS. Runtime qualification is NOT_RUN until a source-bound copied
-binary completes the owned PostgreSQL controller below. No mock/unit result is
-counted as database acceptance.
+Status: IN_PROGRESS. Compilation passed at `e62a7025`; the first native attempt
+was refused before executing cases and cleaned up successfully. The corrected
+fixture at `eb9bb664` awaits matching compilation and native execution. No
+mock/unit result is counted as database acceptance.
 
 The original QA03 row in `MCR_IMPLEMENTATION_PLAN_V2_EN.md` requires parallel
 capacity, reservation, cancellation, expiry, claim, idempotency, and mural cooldown
@@ -102,7 +103,28 @@ a later success. Cleanup runs on success, failure, timeout, or termination.
   No additional concrete interface defect was found. Suggested assertions for
   stable claim attempt/admission counts and cleared terminal scan state were
   added. This review ran no build/database and supplies no runtime PASS claim.
-- Cargo/native PostgreSQL: NOT_RUN; fresh build slot requested from Backend SL.
+- Cargo command in step 3: exit 101 for an evidenced cached protobuf helper
+  pointing at the previous Operations worktree. Scoped
+  `cargo clean --offline -p contracts-build`: exit 0, removed 20 files/816 KiB.
+  Retry: exit 101 for ambiguous isolated test `authorize_in` trait dispatch.
+  The one-line owned fix committed at `e62a7025` compiled with exit 0 (4.26 s).
+  Both failed attempts and their Cargo JSON/stderr remain preserved.
+- The accepted BACKEND lease passed a fresh 9.01 GiB/no-Rust-process/no-target-
+  handles preflight. Binary SHA-256
+  `2c4aabe0a2d80bf6b48ec6177ce2068d8029c555aa43d02a96ce3a83ebf7cd29`,
+  Cargo JSON, and all 1,756 source/contract hashes were frozen outside the target.
+  Final `lsof +D` returned exit 1 with no output, followed by unconditional
+  release before any PostgreSQL start. No lease is retained for native work.
+- Native attempt 1: controller exit 1; PostgreSQL 16.14 initialized, exact test
+  inventory verified, zero cases executed. The retained URL guard rejected the
+  fixture name `mcr_qa03` because it permits only letters/underscores after
+  `mcr_`. Cleanup PASS. The complete observed report is retained in
+  `qa03_races_support/evidence/native-01-namespace-refusal.json`. The exact
+  namespace refusal was independently reproduced without starting another DB.
+  Commit `eb9bb664` changes only QA03's expected/created name to `mcr_qa_races`
+  and preserves structured redacted helper failure details; the shared guard
+  is unchanged. A fresh named build lease has been requested for this fix.
+- Matching corrected compilation and the 11 native cases: NOT_RUN.
 - Canonical owner/public HTTP and same-release integration gates: NOT_RUN;
   Root/feature owners supply those scopes. QA03 has no application/shared-file
   grant and does not mint an OwnerGuardScope from IDs or a fixture allow flag.
