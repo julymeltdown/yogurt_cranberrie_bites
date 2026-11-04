@@ -1,6 +1,6 @@
 # World presentation budget
 
-Status: IN_PROGRESS — validated handoff ready; Root153 publication pending.
+Status at handoff: IN_PROGRESS — validated; Root153 publication pending.
 This completes the allocated presentation correction and its focused qualification.
 Original ten-screen fidelity, public/live admission and physical devices remain
 separate open obligations.
@@ -90,11 +90,13 @@ horizontal overflow and the complete virtual-position notice.
 Native full/half/peek stage/canvas/summary/panel rectangles at 390×554 and
 390×844 have maximum before/after delta **0px**. Focused behavior covers four
 tools and Back focus, all six destinations, skip focus, Escape, reduced viewport
-with physical keyboard input, synthetic server-close/reconnect, actual runtime
+with Playwright-generated desktop key events, synthetic server-close/reconnect, actual runtime
 resource failure/retry, privacy withdrawal and complete socket/canvas/blob cleanup.
 Production-denied fixture mode still opens no game/socket and admits no production
 release. Browser exceptions are absent. These are fixture/native checks, not
-real backend multiuser acceptance.
+real backend multiuser acceptance. The retained report interaction label uses
+“physical-keyboard”; input was automated desktop key events, not a physical
+keyboard hardware or software-keyboard test.
 
 ## Review fixes and immutable evidence
 
