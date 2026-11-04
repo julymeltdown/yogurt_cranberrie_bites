@@ -199,24 +199,30 @@ impl<A: MuralAuthority> CommandProducer for Producer<'_, A> {
             "select event_id from public.concert_mural_state where event_id=$1 for update",
         )
         .bind(target)
-        .fetch_optional(c)
+        .fetch_optional(&mut *c)
         .await
         .map_err(|_| CommandError::Unavailable)?;
         if present.is_none() {
             return Err(CommandError::Denied);
+        }
+        if let Some(input) = self.input {
+            if let Err(error) = crate::mural_tools_b::correlate_in(c, self.actor, s.key,
+                concert_domain::mural::tools_b::ActionBody::Pencil(input)).await {
+                return self.fail(crate::mural_tools_b::legacy(error));
+            }
         }
         Ok(())
     }
     async fn apply(
         &self,
         c: &mut PgConnection,
-        _: Scope,
+        scope: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError> {
         let Some(input) = self.input else {
             return Err(CommandError::InvalidState);
         };
-        match mutate(c, self.actor, input).await {
+        match mutate(c, self.actor, scope.key, input).await {
             Ok(revision) => {
                 let reference = SafeReference {
                     resource: target,
@@ -238,6 +244,7 @@ impl<A: MuralAuthority> CommandProducer for Producer<'_, A> {
                     MuralError::RegionLocked => SafeFailure::MuralRegionLocked,
                     MuralError::RevisionConflict => SafeFailure::VersionConflict,
                     MuralError::EventReadOnly => SafeFailure::EventReadOnly,
+                    MuralError::InvalidInput => SafeFailure::InvalidInput,
                     _ => return self.fail(error),
                 };
                 *self.error.lock().map_err(|_| CommandError::InvalidState)? = Some(error);
@@ -245,14 +252,18 @@ impl<A: MuralAuthority> CommandProducer for Producer<'_, A> {
             }
         }
     }
+    async fn completed(&self, c: &mut PgConnection, scope: Scope, _: Uuid, receipt: &SafeReceipt) -> Result<(), CommandError> {
+        crate::mural_tools_b::complete_in(c, scope, receipt).await.map_err(|_| CommandError::Unavailable)
+    }
 }
+// The completion hook binds private pencil history to its original BE15 receipt.
 impl<A> Producer<'_, A> {
     fn fail<T>(&self, error: MuralError) -> Result<T, CommandError> {
         *self.error.lock().map_err(|_| CommandError::InvalidState)? = Some(error);
         Err(CommandError::Unavailable)
     }
 }
-async fn gate<A: MuralAuthority>(
+pub(crate) async fn gate<A: MuralAuthority>(
     a: &A,
     c: &mut PgConnection,
     actor: MuralActor,
@@ -281,6 +292,7 @@ async fn gate<A: MuralAuthority>(
 async fn mutate(
     c: &mut PgConnection,
     actor: MuralActor,
+    key: Uuid,
     input: PlacePixel,
 ) -> Result<i64, MuralError> {
     let phase: String =
@@ -329,14 +341,21 @@ async fn mutate(
     if locked {
         return Err(MuralError::RegionLocked);
     }
+    let grid: Vec<u8> = row.try_get("pixels").map_err(invalid)?;
+    let plan = crate::mural_tools_b::pencil_plan_in(c, actor, &grid, input, now).await?;
+    let operation_id = Uuid::new_v4();
     let cooldown: i64 = row.try_get("cooldown_ms").map_err(invalid)?;
     let next = now + chrono::Duration::milliseconds(cooldown);
     sqlx::query("update public.concert_mural_state set pixels=set_byte(pixels,$2,$3),revision=revision+1,snapshot_id=$4,snapshot_created_at=$5 where event_id=$1")
         .bind(actor.event).bind(input.y*128+input.x).bind(input.color_index).bind(Uuid::new_v4()).bind(now).execute(&mut *c).await.map_err(storage)?;
     sqlx::query("insert into public.concert_mural_operations(event_id,revision,operation_id,actor_id,x,y,color_index,committed_at,next_allowed_at) values($1,$2,$3,$4,$5,$6,$7,$8,$9)")
-        .bind(actor.event).bind(revision+1).bind(Uuid::new_v4()).bind(actor.actor).bind(input.x).bind(input.y).bind(input.color_index).bind(now).bind(next).execute(&mut *c).await.map_err(storage)?;
+        .bind(actor.event).bind(revision+1).bind(operation_id).bind(actor.actor).bind(input.x).bind(input.y).bind(input.color_index).bind(now).bind(next).execute(&mut *c).await.map_err(storage)?;
     sqlx::query("insert into public.concert_mural_limits(event_id,actor_id,next_allowed_at) values($1,$2,$3) on conflict(event_id,actor_id) do update set next_allowed_at=excluded.next_allowed_at")
         .bind(actor.event).bind(actor.actor).bind(next).execute(&mut *c).await.map_err(storage)?;
+    if let Some(plan) = plan {
+        crate::mural_tools_b::record_in(c, actor, key, concert_domain::mural::tools_b::ActionBody::Pencil(input), operation_id, revision+1, &plan, now, next, false, None)
+            .await.map_err(crate::mural_tools_b::legacy)?;
+    }
     Ok(revision + 1)
 }
 #[async_trait]
@@ -452,6 +471,8 @@ fn from_failure(f: SafeFailure) -> MuralError {
         SafeFailure::MuralRegionLocked => MuralError::RegionLocked,
         SafeFailure::VersionConflict => MuralError::RevisionConflict,
         SafeFailure::EventReadOnly => MuralError::EventReadOnly,
+        SafeFailure::InvalidInput => MuralError::InvalidInput,
+        SafeFailure::MuralBudgetExceeded => MuralError::Command(CommandError::Capacity),
         _ => MuralError::InvalidState,
     }
 }

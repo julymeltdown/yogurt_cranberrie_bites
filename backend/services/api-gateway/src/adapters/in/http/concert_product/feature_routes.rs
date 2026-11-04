@@ -5,6 +5,15 @@ use std::collections::BTreeMap;
 
 pub(super) fn router() -> Router<Arc<AppState>> {
     Router::new()
+        .route("/api/concert/events/:event_id/mural/snapshot", get(dispatch))
+        .route("/api/concert/events/:event_id/mural/operations", get(dispatch))
+        .route("/api/concert/events/:event_id/mural/pixels", post(dispatch))
+        .route("/api/concert/events/:event_id/mural/commands/:key/result", get(dispatch))
+        .route("/api/concert/events/:event_id/mural/tools", get(dispatch))
+        .route("/api/concert/events/:event_id/mural/actions/:key", get(dispatch))
+        .route("/api/concert/events/:event_id/mural/erase", post(dispatch))
+        .route("/api/concert/events/:event_id/mural/fill", post(dispatch))
+        .route("/api/concert/events/:event_id/mural/undo", post(dispatch))
         .route("/api/concert/events/:event_id/me/age-status", get(dispatch))
         .route(
             "/api/concert/events/:event_id/me/age-verifications",
@@ -51,6 +60,7 @@ pub(super) fn router() -> Router<Arc<AppState>> {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(super) enum FeatureRoute {
+    MuralSnapshot, MuralDelta, MuralPixel, MuralPixelResult, MuralTools, MuralActionResult, MuralErase, MuralFill, MuralUndo,
     AgeStatus,
     StartAgeVerification,
     CompleteAgeVerification,
@@ -69,7 +79,7 @@ impl FeatureRoute {
     pub(super) fn mutation(self) -> bool {
         matches!(
             self,
-            Self::StartAgeVerification
+            Self::MuralPixel | Self::MuralErase | Self::MuralFill | Self::MuralUndo | Self::StartAgeVerification
                 | Self::CompleteAgeVerification
                 | Self::SetIntro
                 | Self::PublishIntro
@@ -80,6 +90,7 @@ impl FeatureRoute {
     }
     pub(super) fn body_limit(self) -> usize {
         match self {
+            Self::MuralPixel | Self::MuralErase | Self::MuralFill | Self::MuralUndo => 1024,
             Self::SetIntro | Self::PublishIntro | Self::CloseIntro => 16 * 1024,
             Self::MarkRead
             | Self::MarkAllRead
@@ -91,6 +102,15 @@ impl FeatureRoute {
     #[cfg(test)]
     fn operation(self) -> &'static str {
         match self {
+            Self::MuralSnapshot => "getConcertMuralSnapshot",
+            Self::MuralDelta => "getConcertMuralDelta",
+            Self::MuralPixel => "placeConcertPixel",
+            Self::MuralPixelResult => "getConcertMuralOwnResult",
+            Self::MuralTools => "getConcertMuralTools",
+            Self::MuralActionResult => "getOwnConcertMuralAction",
+            Self::MuralErase => "eraseConcertMuralPixel",
+            Self::MuralFill => "fillConcertMuralRegion",
+            Self::MuralUndo => "undoConcertMuralAction",
             Self::AgeStatus => "getConcertAgeStatus",
             Self::StartAgeVerification => "startConcertAgeVerification",
             Self::CompleteAgeVerification => "completeConcertAgeVerification",
@@ -113,7 +133,7 @@ fn tail(path: &str) -> Option<(&str, &str)> {
 }
 pub(super) fn protects(path: &str) -> bool {
     tail(path).is_some_and(|(_, tail)| {
-        tail == "me/age-status"
+        tail == "mural" || tail.starts_with("mural/") || tail == "me/age-status"
             || tail.starts_with("me/age-status/")
             || tail == "me/age-verifications"
             || tail.starts_with("me/age-verifications/")
@@ -133,6 +153,15 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         method.as_str(),
         tail.split('/').collect::<Vec<_>>().as_slice(),
     ) {
+        ("GET", ["mural", "snapshot"]) => Some(MuralSnapshot),
+        ("GET", ["mural", "operations"]) => Some(MuralDelta),
+        ("POST", ["mural", "pixels"]) => Some(MuralPixel),
+        ("GET", ["mural", "commands", key, "result"]) if uuid(key).is_some() => Some(MuralPixelResult),
+        ("GET", ["mural", "tools"]) => Some(MuralTools),
+        ("GET", ["mural", "actions", key]) if uuid(key).is_some() => Some(MuralActionResult),
+        ("POST", ["mural", "erase"]) => Some(MuralErase),
+        ("POST", ["mural", "fill"]) => Some(MuralFill),
+        ("POST", ["mural", "undo"]) => Some(MuralUndo),
         ("GET", ["me", "age-status"]) => Some(AgeStatus),
         ("POST", ["me", "age-verifications"]) => Some(StartAgeVerification),
         ("POST", ["me", "age-verifications", "callback"]) => Some(CompleteAgeVerification),
@@ -155,6 +184,9 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
 pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
     if target.len() > 4096 || target.contains('#') || target.chars().any(char::is_control) {
         return false;
+    }
+    if route == FeatureRoute::MuralDelta {
+        return target.split_once('?').and_then(|(_,q)| q.strip_prefix("after_revision=")).is_some_and(|v| !v.is_empty() && (v.len()==1 || !v.starts_with('0')) && v.bytes().all(|b|b.is_ascii_digit()) && v.parse::<i64>().is_ok_and(|n|(1..=9_007_199_254_740_991).contains(&n)));
     }
     let Some((_, query)) = target.split_once('?') else {
         return true;
@@ -215,6 +247,7 @@ struct AgeCallback {
 /// Mirror frozen C04/B91 admission without changing the original signed bytes.
 /// Typed parsing of the original object rejects duplicate and escaped-alias keys.
 pub(super) fn valid_body(route: FeatureRoute, bytes: &[u8]) -> bool {
+    if matches!(route, FeatureRoute::MuralPixel | FeatureRoute::MuralErase | FeatureRoute::MuralFill | FeatureRoute::MuralUndo) { return mural_body(route,bytes); }
     if !matches!(
         route,
         FeatureRoute::StartAgeVerification | FeatureRoute::CompleteAgeVerification
@@ -290,7 +323,9 @@ mod tests {
                 .unwrap()
                 .replace("{eventId}", &event)
                 .replace("{introId}", &id)
-                .replace("{notificationId}", &id);
+                .replace("{notificationId}", &id)
+                .replace("{idempotencyKey}", &id)
+                .replace("{key}", &id);
             if let Some(r) = route(&method, &path) {
                 count += 1;
                 assert_eq!(r.operation(), row["operationId"].as_str().unwrap());
@@ -322,6 +357,42 @@ mod tests {
                 }
             }
         }
-        assert_eq!(count, 13);
+        assert_eq!(count, 22);
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MuralPixelBody { expected_revision:i64, x:i32, y:i32, color_index:i32 }
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MuralEraseBody { expected_revision:i64, x:i32, y:i32 }
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MuralUndoBody { expected_revision:i64, target_action_id:String }
+fn mural_body(route:FeatureRoute,bytes:&[u8])->bool {
+    if bytes.len()>1024 {return false;}
+    let revision=|r| (1..=9_007_199_254_740_991i64).contains(&r);
+    let position=|x,y| (0..128).contains(&x)&&(0..128).contains(&y);
+    match route {
+        FeatureRoute::MuralPixel|FeatureRoute::MuralFill=>serde_json::from_slice::<MuralPixelBody>(bytes).is_ok_and(|b|revision(b.expected_revision)&&position(b.x,b.y)&&(0..16).contains(&b.color_index)),
+        FeatureRoute::MuralErase=>serde_json::from_slice::<MuralEraseBody>(bytes).is_ok_and(|b|revision(b.expected_revision)&&position(b.x,b.y)),
+        FeatureRoute::MuralUndo=>serde_json::from_slice::<MuralUndoBody>(bytes).is_ok_and(|b|revision(b.expected_revision)&&uuid(&b.target_action_id).is_some()),
+        _=>false,
+    }
+}
+
+#[cfg(test)]
+mod wall_tests {
+    use super::*;
+    #[test]
+    fn closed_wall_body_and_delta_query_preserve_original_authority_bytes(){
+        use FeatureRoute::*;
+        assert!(valid_body(MuralFill,br#"{"expected_revision":1,"x":127,"y":127,"color_index":15}"#));
+        for body in [br#"{"expected_revision":1,"x":0,"y":0,"color_index":2,"x":1}"#.as_slice(),br#"{"expected_revision":1,"x":0,"y":0,"color_index":2,"actor_id":"other"}"#.as_slice(),br#"{"expected_revision":1,"x":128,"y":0,"color_index":2}"#.as_slice()] {assert!(!valid_body(MuralFill,body));}
+        assert!(!valid_body(MuralErase,br#"{"expected_revision":1,"x":0,"y":0,"color_index":0}"#));
+        for query in ["", "?after_revision=0", "?after_revision=1&after_revision=2", "?after_revision=+1", "?after_revision=1&actor_id=other", "?after_revision=9007199254740992"]{assert!(!valid_target(MuralDelta,&format!("/wall{query}")));}
+        assert!(valid_target(MuralDelta,"/wall?after_revision=9007199254740991"));
+        assert!(!valid_target(MuralTools,"/wall?actor_id=other"));
     }
 }

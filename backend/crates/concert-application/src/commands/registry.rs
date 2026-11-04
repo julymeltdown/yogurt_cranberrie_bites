@@ -1,6 +1,9 @@
 //! Generated once from pinned C04 candidate operations; not HTTP authority.
 use super::RegisteredOperation;
 pub const OPERATIONS: &[RegisteredOperation] = &[
+    RegisteredOperation { id: "eraseConcertMuralPixel", method: "POST", path: "/api/concert/events/{eventId}/mural/erase", binary: false },
+    RegisteredOperation { id: "fillConcertMuralRegion", method: "POST", path: "/api/concert/events/{eventId}/mural/fill", binary: false },
+    RegisteredOperation { id: "undoConcertMuralAction", method: "POST", path: "/api/concert/events/{eventId}/mural/undo", binary: false },
     RegisteredOperation {
         id: "createConcertParty",
         method: "POST",

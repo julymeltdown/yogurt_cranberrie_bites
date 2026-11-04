@@ -116,3 +116,56 @@ policy projection), retained in private evidence. After the exact output-only
 repair, unchanged generator generation and `--check` both exited 0 against a
 byte-exact public7d5 readset. Both mirrors equal the full canonical postimage.
 The source-qualified baseline was handed to Root independently of Wall work.
+
+
+## Runtime candidate (not yet qualified)
+
+The implementation extends the existing mural row and BE15 receipt transaction.
+Migration 0058 adds explicit immutable index-0 provisioning, private action/body
+correlation and before/after history, a durable charge ledger independent of
+receipts/history, and a same-transaction native witness tied to confirmed real
+Auth/Friend owner registrations. Existing grid and palette bytes are unchanged
+by the migration. Operator provisioning is an explicit insert of the qualified
+event ID into `concert_mural_tool_config(event_id, background_index)` with index
+0; no default palette, implicit migration activation or client provisioning exists.
+The production mode requires `CONCERT_WALL_TOOLS_B_MODE=live`, the incumbent
+shared canonical composition and `CONCERT_WALL_TOOLS_B_RECEIPT_KEYS_JSON` with
+one active and optional retained signing keys. Configuration values are secrets
+and must not enter product responses or evidence.
+
+The producer uses the actual original parent and its OwnerGuardScope, current
+canonical Auth/Friend policy, active event admission, root-row serialization,
+DB time, cooldown, all affected locks, exact revision and shared allowance.
+Successful new tools advance reset_revision and the snapshot identity rather
+than inserting a false single-pixel public operation. Pencil keeps its original
+ack and delta while sharing actual cell charges and private history. Read-only
+registered Wall command status reauthorizes on its own native transaction;
+lookup never executes a command or inserts a new correlation.
+
+New native test/support/controller paths record source provenance for the real
+canonical mTLS fixture adapted from Intro at the base revision. The controller
+requires committed source and an outside-target frozen binary with exact SHA,
+private socket-only PG16 identity, actual migration receipts, exact test inventory,
+no prepared transactions after each case, restart-state preservation and cleanup.
+The allocated Cargo and PG rounds have not run. Fixture source covers fill
+256/257/no-op, shared undo/pencil allowance, idempotent replay and receipt/action
+recovery after producer recreation, reset delta, and injected storage rollback.
+Additional source cases cover simultaneous same-actor tabs, stale revisions,
+shared cooldown, pause and admission suspension; these remain unexecuted.
+Remaining native coverage includes cross-actor/lock/control races, expiry and
+canonical authorization changes; actual Gateway/startup/Phaser/two-client IN04
+remains open. Current C05 has no mural server-message variant; no protocol event
+or second world connection has been added. The shared provider owner is resolving
+its existing protected polling/qualified world binding with the backend owner.
+
+
+The shared frontend provider's capability freshness ceiling is 5,000ms from
+monotonic request start, never response arrival or server_time. An already
+expired response cannot open the editor. Shorter parent/release/content deadlines
+win. Expiry or read failure, abort, visibility loss, actor/event/privacy/generation,
+room/epoch/authority change or release close withdraws the editable projection;
+visible qualified providers refresh before expiry (for example every two seconds).
+This is a client UI freshness ceiling, not a grant or a substitute for the
+atomic current server checks on every command. No new wire expiry is implied.
+Root granted one additional owner_media.rs fail-closed match arm solely to
+reject the new Wall Operation variant from the existing media producer.

@@ -72,6 +72,7 @@ async fn main() -> anyhow::Result<()> {
         runtime.is_some(),
         participant_settings.is_some(),
     )?;
+    let wall_b_settings = config::mural_tools_b::WallBSettings::load(intro_settings.is_some())?;
     let report_settings = config::report_runtime::ReportStartupSettings::load(
         runtime.is_some(),
         intro_settings.is_some(),
@@ -141,6 +142,7 @@ async fn main() -> anyhow::Result<()> {
                         .map(|settings| settings.compose(pool.clone(), &shared.owners.core));
                     let intro_owner = intro.compose(pool.clone(), &shared.owners);
                     let owners = inbox_settings.compose(&shared.owners, intro_owner);
+                    let owners = match wall_b_settings { Some(settings) => settings.compose(pool.clone(), &shared.owners, owners), None => owners };
                     let owners = match feed_settings {
                         Some(settings) => {
                             let (owners, callback) = settings.compose(&shared.owners, owners)?;

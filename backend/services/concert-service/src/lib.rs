@@ -40,3 +40,5 @@ pub mod event_cleanup_social_owner;
 pub mod intro_live;
 
 pub mod notification_target_policy;
+
+pub mod mural_tools_b;

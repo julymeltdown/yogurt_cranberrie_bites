@@ -62,6 +62,7 @@ pub enum Operation {
     FinalizeUpload(Uuid),
     PrivateContent(Uuid),
     CommandStatus,
+    Wall(crate::mural_tools_b::protocol::WallOperation),
     Social(crate::social_live::protocol::SocialOperation),
     Intro(IntroOperation),
     Notification(crate::notification_live::NotificationOperation),
@@ -88,6 +89,7 @@ impl Operation {
             Self::FinalizeUpload(_) => "finalizeConcertUpload",
             Self::PrivateContent(_) => "readConcertMedia",
             Self::CommandStatus => "getConcertCommandStatus",
+            Self::Wall(operation) => operation.id(),
             Self::Social(operation) => operation.id(),
             Self::Intro(operation) => operation.id(),
             Self::Notification(operation) => operation.id(),
@@ -114,6 +116,9 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     let suffix = path
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
+    if let Ok(wall) = crate::mural_tools_b::protocol::WallOperation::parse(event, method, target) {
+        if wall != crate::mural_tools_b::protocol::WallOperation::Status { return Ok(Operation::Wall(wall)); }
+    }
     // The Social parser owns exactly thirteen frozen operations. No unknown
     // route, platform or method falls through to a generic producer.
     if let Ok(social) = crate::social_live::protocol::route(event, method, target) {
@@ -330,6 +335,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
+    if let Operation::Wall(wall) = operation { query::wall_request(m, wall)?; }
     if let Operation::Social(social) = operation {
         query::social_request(m, social)?;
     }
@@ -357,7 +363,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Wall(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
@@ -513,3 +519,6 @@ impl proto::product_service_server::ProductService for ProductRpcService {
         Ok(response)
     }
 }
+
+/// Wall recovery uses the same closed canonical status parser as admission.
+pub(crate) fn wall_command_status_query(target: &str) -> Result<CommandStatusQuery, Status> { query::command_status(target) }
