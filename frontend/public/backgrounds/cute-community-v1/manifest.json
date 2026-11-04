@@ -20,12 +20,13 @@
       "file": "feed-backdrop.svg",
       "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
       "mime": "image/svg+xml",
-      "bytes": 964,
-      "sha256": "04665cf94e6adda3ca3137070bd35789930e7df927309e1b50a57d41722c1cb8",
+      "bytes": 991,
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
       "width": 390,
       "height": 640,
       "viewBox": "0 0 390 640",
-      "alpha": false
+      "alpha": false,
+      "preserveAspectRatio": "none"
     },
     {
       "file": "feed-corner.svg",
@@ -42,12 +43,13 @@
       "file": "gifts-backdrop.svg",
       "url": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
       "mime": "image/svg+xml",
-      "bytes": 984,
-      "sha256": "3ac5abfa9432e0feeb1f6b8db781ea1c4609f4fadb678b51636c467ceb27e86c",
+      "bytes": 1011,
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
       "width": 390,
       "height": 640,
       "viewBox": "0 0 390 640",
-      "alpha": false
+      "alpha": false,
+      "preserveAspectRatio": "none"
     },
     {
       "file": "gifts-corner.svg",
@@ -64,12 +66,13 @@
       "file": "meet-backdrop.svg",
       "url": "/backgrounds/cute-community-v1/meet-backdrop.svg",
       "mime": "image/svg+xml",
-      "bytes": 962,
-      "sha256": "9aec4b75eddf1be6eb3c2006f44aa8cfee18755d238589df5dbe9648ec7a8367",
+      "bytes": 989,
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
       "width": 390,
       "height": 640,
       "viewBox": "0 0 390 640",
-      "alpha": false
+      "alpha": false,
+      "preserveAspectRatio": "none"
     },
     {
       "file": "meet-corner.svg",
@@ -108,8 +111,9 @@
         "#5a4d43": 5.886
       },
       "note": "Darkest unblended paint across opaque tile and broad backdrop primitives. Semi-transparent dots blend toward lighter base fields. Browser-computed text and focus contrast remain adopter validation. Ornaments must not overlap text."
-    }
+    },
+    "broadSurfaceFit": "preserveAspectRatio=none; painted field fills existing CSS background viewport at row/container ratios. Actual follow-up captures required."
   },
-  "renderedInApp": "NOT_RUN",
+  "renderedInApp": "IN_PROGRESS: initial c8a731e5 390 capture inspected; broad SVG surface-fit fix pending shared recapture",
   "publication": "NOT_RUN"
 }
