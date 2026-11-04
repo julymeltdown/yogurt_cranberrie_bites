@@ -1,0 +1,55 @@
+{
+  "status": "MOCK_READY",
+  "source": "5bc12ec982e49556feeb6f2642eca599d9654930",
+  "commits": {
+    "9a2bc3ef317eef0a8eb5fbd12124f7fe43187909": "bd7a26d2",
+    "798104cc2db056588611307db734a71f0fde2d1a": "dcedbe26",
+    "5bc12ec982e49556feeb6f2642eca599d9654930": "eac93ccc"
+  },
+  "paths": [
+    "backend/scripts/mcr/test_world_capacity_probe.py",
+    "backend/scripts/mcr/test_world_in01_profiles.py",
+    "backend/scripts/mcr/world_capacity_support/transport.py",
+    "backend/scripts/mcr/world_in01_live.py",
+    "docs/mcr/backend/world-capacity-qualification.md"
+  ],
+  "postimages_sha256": {
+    "backend/scripts/mcr/test_world_capacity_probe.py": "594239e1e0200557582a75524602968e5c2fc48f4b6e14638c20777f0b511804",
+    "backend/scripts/mcr/test_world_in01_profiles.py": "1f837594ce87d3533a9c713f44f07c0b47cf57a6778367373ab071fb9542395d",
+    "backend/scripts/mcr/world_capacity_support/transport.py": "0750e01f733419710287cef0ec6d487896f8c3da7a3bf6a6838a1e7686daf477",
+    "backend/scripts/mcr/world_in01_live.py": "113b1d1a54fc72ce39dc444941f26ec4f9012e8dbfd487db9cb1dc1d64e8aca0",
+    "docs/mcr/backend/world-capacity-qualification.md": "f8c179a6bffa5e8127e463f3dad8c2ed40792f094eeb33620b2b4840380f4bb8"
+  },
+  "root_offline_checks": {
+    "passed": 57,
+    "failed": 0,
+    "seconds": 5.427,
+    "command": "PYTHONPATH=backend/scripts/mcr /private/tmp/mcr-contracts-admission/bin/python -B -m unittest test_world_capacity_probe test_world_live_failure_probe test_world_in01_profiles"
+  },
+  "actual_qa05": {
+    "overall": "FAIL",
+    "attempts": 3,
+    "final_observations": [
+      "ticket replay rejection",
+      "application-gap recovery",
+      "client read pause",
+      "room switch"
+    ],
+    "final_failure": "Owned Concert restart replacement exited 1; no full QA05 acceptance or public C03 projection.",
+    "maximum_processes": 40,
+    "offered_process_cap": 80,
+    "maximum_whole_bytes": 1831788544,
+    "cap_bytes": 2684354560,
+    "membership_zero": true,
+    "prepared_zero": true,
+    "cleanup": "PASS",
+    "full_release_utc": "2026-11-04T12:14:25.004584Z",
+    "release_sha256": "a971dd3eef5d8bda2e213425f10f33acc14157cb08ef39c7416dafe26f20643a",
+    "initial_clock_configuration_noncompliance": "First attempt configured internal deadline 2.118s beyond accepted absolute cutoff; actual run/full release finished early. Preserved, corrected by explicit absolute work/release epoch binding."
+  },
+  "privacy": "No raw authenticated C03 body/header or raw body hash retained. No public projection produced.",
+  "limitations": [
+    "57 offline checks cannot certify real QA05 or 200-principal QA08.",
+    "Next native run requires new allocation and current runtime 0051/40-migration binding."
+  ]
+}
