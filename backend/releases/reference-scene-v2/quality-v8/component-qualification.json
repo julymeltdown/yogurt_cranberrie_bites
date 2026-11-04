@@ -1,0 +1,567 @@
+{
+  "admission": "NOT_ADMITTED",
+  "candidate_files": {
+    "engineering-source-review.json": "69bd2bf70172ed38611fef11337152d9b6208e63c6ec3b726cb054de8b06d14e",
+    "map-manifest.json": "df4c8d235b408488d0f81711c86f7aa1a838287f8eb26caa56fc28c02c9514fc",
+    "readiness.json": "7616ad71847aa0023efc2ae437195f8cf5ab718d2aa43d05261a714aaa9f4584",
+    "scene-source-qualification.json": "283d4ed1153a4b0ad83d8b88caa1d78b555a0232d741b65bfe4f5a6438dce331",
+    "source-binding.json": "8413534be5034085d4a0632740c4dc2fcc1e12347443485bfcdea3bc302ffc40"
+  },
+  "compile": {
+    "cache_repair": "One package-only contracts-build clean before initial attempt; no broad clean or new target",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "concert-service",
+      "--lib",
+      "--test",
+      "bootstrap_runtime_config",
+      "--test",
+      "bootstrap",
+      "--no-run",
+      "--message-format=json-render-diagnostics"
+    ],
+    "compiler_json_sha256": "1c185ec43eaf33b17c828a32254ddc3577e167479d6ee6fa0c6c4440640c8e8b",
+    "dev_debug": 0,
+    "elapsed_seconds": 3.02715295899543,
+    "exit_code": 0,
+    "incremental": 0,
+    "initial_attempt": {
+      "compiler_json_sha256": "40e55095402856c4fabe2ca2556d088f2866d6b7126ba8d1d89264af6a48af14",
+      "error": "E0412: unqualified Value in new immutable-conflict test",
+      "exit_code": 101,
+      "fix": "Qualify serde_json::Value; no production Rust change",
+      "source_commit": "d5cb7da9b01693efd3af0b02af466e6ad4a03571"
+    },
+    "jobs": 2,
+    "locked": true,
+    "minimum_free_bytes": 20318744576,
+    "offline": true,
+    "rust_version": "1.88.0",
+    "targets": [
+      "concert-service --lib",
+      "concert-service --test bootstrap_runtime_config",
+      "concert-service --test bootstrap"
+    ],
+    "test_debug": 0
+  },
+  "contract_files": {
+    "backend/docs/api/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "contracts/assets/v1/common.schema.json": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/theme-manifest.schema.json": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d"
+  },
+  "format": "MCR_SPATIAL_COMPONENT_QUALIFICATION",
+  "frontend_source_parity": {
+    "admission": "NOT_ADMITTED",
+    "canonical_geometry_and_places_equal": true,
+    "frontend_descriptor_bytes": 54015,
+    "frontend_descriptor_path": "frontend/src/world/reference-scene/spatial-v4/source-inputs.json",
+    "frontend_descriptor_sha256": "0b686546056ba75591b1d5c32258bd73fd22ca0767686c12aff197d58f8f0beb",
+    "frontend_source_revision": "cf48c0fe01f8207f5a39e91daf238cc4c85a3980",
+    "map_labels": 6,
+    "overview_representations": 6,
+    "replaced_world_objects": 1,
+    "scenes": {
+      "DANGER": {
+        "derived_map_objects": 39,
+        "scenery_sha256": "sha256:3db7a2f3f3fdc169202ba9e9dbae8da71c8db35230311e0debcf61f906fb7914",
+        "state": "PASS",
+        "world_objects": 34
+      },
+      "PARADE": {
+        "derived_map_objects": 39,
+        "scenery_sha256": "sha256:10f8130b423795c54ceacff22d59a7bff87fb799171cef0bdb3176aad3e08062",
+        "state": "PASS",
+        "world_objects": 34
+      },
+      "REVENGE": {
+        "derived_map_objects": 39,
+        "scenery_sha256": "sha256:b7b269825e93e677752d878e2130173a42eeb0c03f8f742304edd060298cf1e3",
+        "state": "PASS",
+        "world_objects": 34
+      }
+    },
+    "state": "PASS"
+  },
+  "frozen_executables": [
+    {
+      "sha256": "2586e589ee208d38b1fcc8a72bb3b8f7b34283bfc39068f694c93fed9dd00239",
+      "target": "concert_service"
+    },
+    {
+      "sha256": "70f834c6a1c34ea0d480929cca12cf143c46454cc37bce30b289ebcddc7a72ca",
+      "target": "bootstrap_runtime_config"
+    },
+    {
+      "sha256": "86741e9c81d215afacb99d4b532d5007eb91fd09bde9b3d0bab6f1dd3dfa4ba0",
+      "target": "bootstrap"
+    }
+  ],
+  "limits": [
+    "Component/source/database qualification only",
+    "No supplied new ThemeManifest or Bootstrap and no operator release switch",
+    "No art fidelity, user acceptance, physical place verification, public multiuser proof or Product/IN01 closure",
+    "31 inherited library native cases and 2 incumbent non-spatial bootstrap native cases were not executed",
+    "No implicit C06 motion family or selected-avatar adoption",
+    "Final designated-integrator master publication remains separate from this source qualification",
+    "Changed Rust test files pass Rust1.88 formatting; an expanded check found existing formatting drift in unchanged bootstrap/mod.rs, which this patch does not rewrite"
+  ],
+  "map": {
+    "content_hash": "sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539",
+    "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 5
+  },
+  "native": {
+    "baseline": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
+      "binary_sha256": "86741e9c81d215afacb99d4b532d5007eb91fd09bde9b3d0bab6f1dd3dfa4ba0",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+      "map_revision": 3,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
+          "content_hash": "sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920",
+          "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 3,
+          "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
+          "content_hash": "sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920",
+          "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 3,
+          "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "3fd4b6cb6f31f446a22a12535e58d4d86308a31b170fb1eaab3a5766c0d302b8",
+      "restart": {
+        "after_pid": 5583,
+        "before_pid": 5490
+      },
+      "source_commit": "4ab22d5fb8f2c30658f1e0e9c0f688e5f5092c4f",
+      "state": "PASS"
+    },
+    "quality-v6": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+      "binary_sha256": "86741e9c81d215afacb99d4b532d5007eb91fd09bde9b3d0bab6f1dd3dfa4ba0",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+      "map_revision": 4,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+          "content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 4,
+          "source_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+          "content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 4,
+          "source_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "b732022f84f243040248de4c2f97a45c5a9cce125cfa8c318386094003498fa3",
+      "restart": {
+        "after_pid": 5922,
+        "before_pid": 5813
+      },
+      "source_commit": "4ab22d5fb8f2c30658f1e0e9c0f688e5f5092c4f",
+      "state": "PASS"
+    },
+    "quality-v8": {
+      "admission": "NOT_ADMITTED",
+      "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+      "binary_sha256": "86741e9c81d215afacb99d4b532d5007eb91fd09bde9b3d0bab6f1dd3dfa4ba0",
+      "cleanup": "PASS",
+      "commands": {
+        "0001_concert_core.sql": 0,
+        "0002_command_receipts_outbox.sql": 0,
+        "0003_places_map_releases.sql": 0,
+        "0004_bootstrap_admission.sql": 0,
+        "0005_world_admission.sql": 0,
+        "0006_relationship_policy.sql": 0,
+        "0007_community.sql": 0,
+        "0008_meeting_beacons.sql": 0,
+        "0009_receipt_domain_failures.sql": 0,
+        "0010_feed.sql": 0,
+        "0011_outbox_maintenance.sql": 0,
+        "0012_media.sql": 0,
+        "0016_meeting_deadline_guards.sql": 0,
+        "0018_event_lifecycle.sql": 0,
+        "0019_mural.sql": 0,
+        "0020_mural_receipt_failures.sql": 0,
+        "0021_moderation_operations.sql": 0,
+        "0022_world_invalidation_receipts.sql": 0,
+        "0023_world_read_only_barrier.sql": 0,
+        "0024_event_read_only_barrier.sql": 0,
+        "0025_whole_character_avatar.sql": 0,
+        "0027_participant_profile_coordinator.sql": 0,
+        "0028_product_owner_scope_lifecycle.sql": 0,
+        "0029_meeting_photo.sql": 0,
+        "0033_gift_command_targets.sql": 0,
+        "0035_participant_effect_witness.sql": 0,
+        "0037_gift_private_child_intents.sql": 0,
+        "native_spatial_candidate_restart": 0,
+        "native_spatial_candidate_transactions": 0
+      },
+      "exit_code": 0,
+      "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+      "map_revision": 5,
+      "migration_sha384": {
+        "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+        "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+        "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+        "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+        "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+        "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+        "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+        "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+        "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+        "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+        "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+        "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+        "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+        "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+        "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+        "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+        "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+        "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+        "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+        "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+        "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+        "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+        "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+        "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+        "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+        "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+        "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+      },
+      "native_tests": 2,
+      "observed_candidates": {
+        "native_spatial_candidate_restart": {
+          "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+          "content_hash": "sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539",
+          "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 5,
+          "source_commit": "492160b15465818eca172f4017f3816d58c989a9"
+        },
+        "native_spatial_candidate_transactions": {
+          "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+          "content_hash": "sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539",
+          "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+          "map_id": "mcr_reference_scene_r3",
+          "map_revision": 5,
+          "source_commit": "492160b15465818eca172f4017f3816d58c989a9"
+        }
+      },
+      "postgres_version": "16.14 (Homebrew)",
+      "report_sha256": "088fd5925a94620db768b9b94fe7ef9c01661e3423dfd011c1d92559b10a04f6",
+      "restart": {
+        "after_pid": 6663,
+        "before_pid": 6400
+      },
+      "source_commit": "4ab22d5fb8f2c30658f1e0e9c0f688e5f5092c4f",
+      "state": "PASS"
+    }
+  },
+  "native_command_template": [
+    "python",
+    "backend/scripts/mcr/test_spatial_release.py",
+    "--native",
+    "--candidate",
+    "<baseline|quality-v6|quality-v8>",
+    "--build-metadata",
+    "<frozen>/compiler-artifacts.jsonl",
+    "--pinned-binaries",
+    "<frozen>/binary.json",
+    "--pg-bin",
+    "<PostgreSQL16.14>/bin"
+  ],
+  "peer_source_review": {
+    "actionable_findings": 0,
+    "admission": "NOT_ADMITTED",
+    "independent_source_png_decode": "PASS",
+    "owner_builder_and_tests": "PASS_RETAINED_FORMAT_VENV",
+    "reviewer": "01a1a45c-f717-7e50-bccc-2d83ee9eb01e",
+    "reviewer_builder_check": "NOT_RUN_REQUIRED_FORMAT_EXTRAS_MISSING",
+    "rust_postgres": "NOT_RUN",
+    "scope": "source pins, v6 integer preservation, v8 new collision/props, provenance limits, native assertion source, frozen metadata selector",
+    "source_commit": "d5cb7da9b01693efd3af0b02af466e6ad4a03571"
+  },
+  "pure": {
+    "bootstrap": {
+      "exit_code": 0,
+      "ignored": 4,
+      "log_sha256": "de6910dce05b4e580d5ad2ec8ac306aa9523952d9182766efbb2a895b60a1b66",
+      "passed": 5
+    },
+    "bootstrap_runtime_config": {
+      "exit_code": 0,
+      "ignored": 0,
+      "log_sha256": "83f97d031c07b33099356c2f532119896bb957e50fddd006bf0888fb9a2a3c42",
+      "passed": 15
+    },
+    "concert_service": {
+      "exit_code": 0,
+      "ignored": 31,
+      "log_sha256": "dfa3351cbfa2ad6a65105571619e8910f7680a5316eecac3e3fca62e211713af",
+      "passed": 61
+    }
+  },
+  "source_commit": "4ab22d5fb8f2c30658f1e0e9c0f688e5f5092c4f",
+  "source_files": {
+    "backend/Cargo.lock": "28d6079b3de9474ae6b3ed866cb516b0091d8f1090b5772023f75701dd9b7fc8",
+    "backend/crates/concert-application/src/place/mod.rs": "af26f6af39d3170cb96dfc524c353daa918468e5108f32b35813bea170c4ba05",
+    "backend/crates/concert-domain/src/place/mod.rs": "0ff1efb27cddbf42ec48532c2545825e5b5643edb2b1780ab23f9b8cf581ebf5",
+    "backend/scripts/mcr/bootstrap_smoke.py": "a425f3b58954be294877638fe86a6393e9482bce94458164741988a721063ee8",
+    "backend/scripts/mcr/build_spatial_release.py": "5d4de3a3fb0eaa233c66e27963f39afebb0ba678f56bbfe8a929376cfb46a0b2",
+    "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "backend/scripts/mcr/test_spatial_release.py": "76e97c5adf9003b771fd062125e1a6aae479bd90aa7907df7e992beed01cfbf3",
+    "backend/services/concert-service/src/adapters/out/repository/place.rs": "9a21c06b36529183a60df385900ebdd85f2d259e6452ced9078375f33a925e2f",
+    "backend/services/concert-service/src/bootstrap/mod.rs": "8d3277ced6e88175bf1e35bc3b148038e4ca29996ba707940cebc93719dea02c",
+    "backend/services/concert-service/src/bootstrap/release.rs": "07dce341d130ca4298445cdb606e651beec6ddaafc016a0dc3c083f92487a11a",
+    "backend/services/concert-service/src/bootstrap/schema.rs": "79d61d8983253d5066104750bb03ffd65df46f5592813deef822e08ab987cb18",
+    "backend/services/concert-service/src/bootstrap/spatial.rs": "0c64ecc4e7b6faf3ad4e965052a834aa1866274b96e6d03d86b18d52a0b9adbe",
+    "backend/services/concert-service/tests/bootstrap.rs": "79bc96a10ec14dba5a970497da7ddff0107f58d9bfee6b0a4edd5abe953fa5ce",
+    "backend/services/concert-service/tests/bootstrap_runtime_config.rs": "9f9b7d71e7a8ce0b1f10028796858d7b8ff58c65f1e4f4d002aba3537ec321d5",
+    "scripts/mcr/validate-assets.py": "11c766b57b9ca08185641005dd9b7b5d8dea84ea4ddc48e8d929aa1abf52b18d"
+  },
+  "state": "CONTRACT_READY",
+  "target_lifecycle": {
+    "frozen_artifacts": 3,
+    "handles_before_and_after_freeze": "NONE",
+    "hash_verified_against_compiler_outputs": true,
+    "post_release_target_access": "NONE",
+    "released_before_pure_and_postgres": true
+  },
+  "validation": {
+    "baseline_generation": {
+      "argv": [
+        "/tmp/mcr-fe14-format-venv/bin/python",
+        "backend/scripts/mcr/build_spatial_release.py",
+        "--candidate",
+        "baseline",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log_sha256": "4f9adc993ba23985ebb8c3b7bae802a4e96c8b0336c54ef0088297be7efdd726"
+    },
+    "changed_rust_format": {
+      "argv": [
+        "rustfmt",
+        "+1.88.0",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/services/concert-service/tests/bootstrap.rs",
+        "backend/services/concert-service/tests/bootstrap_runtime_config.rs"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "diff": {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "inherited_four_file_format": {
+      "exit_code": 1,
+      "log_sha256": "b3d21f3a4adabea886a99c18d158eda6ae79b8f71542099b7780fed519cd1d24",
+      "reason": "Pre-existing Rust1.88 formatting drift in unchanged imports/constructor wrapping",
+      "unchanged_file": "backend/services/concert-service/src/bootstrap/mod.rs"
+    },
+    "plan": {
+      "argv": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    "python_source_tests": {
+      "argv": [
+        "/tmp/mcr-fe14-format-venv/bin/python",
+        "backend/scripts/mcr/test_spatial_release.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f1b2357cda4caa0676d4fa598c46663bdddf415bd5cd5284b912fda2c82f941b"
+    },
+    "quality-v6_generation": {
+      "argv": [
+        "/tmp/mcr-fe14-format-venv/bin/python",
+        "backend/scripts/mcr/build_spatial_release.py",
+        "--candidate",
+        "quality-v6",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log_sha256": "b10b76d1aa37aaa3d33dddc0017a1476f42594246295846314a0a015e22fa380"
+    },
+    "quality-v8_generation": {
+      "argv": [
+        "/tmp/mcr-fe14-format-venv/bin/python",
+        "backend/scripts/mcr/build_spatial_release.py",
+        "--candidate",
+        "quality-v8",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log_sha256": "58670722c2fae949159bc37c3e65443d4c400b8181e4c0a5cc2005af3d22e652"
+    }
+  },
+  "version": 1
+}

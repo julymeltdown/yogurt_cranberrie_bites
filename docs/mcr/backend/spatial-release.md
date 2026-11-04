@@ -4,10 +4,11 @@ Status: IN_PROGRESS. This is implementation of the canonical spatial release;
 source art is a proposal and is not accepted product artwork.
 
 Current producer: quality-v8, server map revision5, geometry0448, exact frontend
-Tiled c589. Its source and Python qualification passes; fresh Rust/PostgreSQL
-qualification is queued, NOT_RUN. Existing map3/map4 component qualification
+Tiled c589. Source/Python, Rust and private PostgreSQL component qualification
+pass; the final committed handoff and integrator publication remain pending.
+Existing map3/map4 component qualification
 remains intact. The bounded avatar witness goal completed after verified master
-publication; the separate v8 goal is active. Only the designated delivery
+publication; the separate v8 delivery remains unfinished. Only the designated delivery
 integrator publishes this handoff to master. Current v8 details are at the end;
 historical checkpoints below retain their original evidence boundaries.
 
@@ -474,3 +475,90 @@ ThemeManifest, Bootstrap, operator switch, art-fidelity acceptance, physical-pla
 verification, public multiuser proof, or Product/IN01 closure. Original artist
 provenance is preserved; the separate engineering packet reviews only exact
 source inputs and states complete-descriptor consumer obligations.
+
+### Qualified revision 5 component handoff
+
+The fresh exclusive BACKEND offer was accepted before access. Preflight found
+no target handles or active compiler; an unrelated system PostgreSQL process
+was left untouched. Rust 1.88 locked/offline, two jobs, dev/test debug 0 and
+incremental 0 compiled exactly the service library and the two bootstrap targets.
+A single package-only `contracts-build` clean repaired the stale shared source
+path (20 files, 816.3 KiB); no broad clean or additional target was used. The first
+build of `d5cb7da9` exited 101 with E0412 in the new test's unqualified `Value`.
+The one-line qualification as `serde_json::Value`, commit
+`4ab22d5fb8f2c30658f1e0e9c0f688e5f5092c4f`, compiled successfully in 3.03 s
+(exit 0). The first attempt took 36.34 s; both receipts are retained. The final
+compile's minimum free space was 20,318,744,576 bytes, above the 8 GiB floor.
+
+Three exact compiler-selected test executables were copied outside the shared
+target and verified against their original hashes. Fresh handle checks were
+empty before and after freezing. BACKEND was explicitly released before pure
+or PostgreSQL execution and was not accessed afterward. Full Cargo JSON,
+source hashes, copied executables, logs and receipts are retained at
+`/tmp/mcr-spatial-v8-d5cb7da9/`; its directory name refers to the initial source
+checkpoint, while the actual qualified source is the full `4ab22d5f` commit
+above. All 1,921 backend/contract input hashes remained unchanged after execution.
+
+The copied service library passed 61 pure tests, runtime configuration 15 and
+bootstrap 5: **81 PASS**, exit 0. Thirty-one inherited library native tests and
+two incumbent non-spatial bootstrap native tests were not executed by this
+spatial slice. The two spatial ignored bootstrap cases were each executed
+separately for all three candidates through the retained native harness:
+
+| Candidate | Server revision | Native cases | Postmaster restart | Cleanup |
+|---|---:|---:|---|---|
+| baseline | 3 | 2 PASS | 5490→5583 | PASS |
+| quality-v6 | 4 | 2 PASS | 5813→5922 | PASS |
+| quality-v8 | 5 | 2 PASS | 6400→6663 | PASS |
+
+Each private PostgreSQL 16.14 run applied the actual service migrations and
+reported the exact observed map/source/art/content/geometry identity. The
+revision 5 transaction first published 4, adopted 5, repeated identical 5 without
+changing immutable map bytes, rejected a fully valid conflicting same-ID/5
+release without advancing the event head, retained 4's original bytes/geometry,
+and refused stale 4 selections. Both 5's current state and 4's old canonical bytes
+survived an actual postmaster restart. All four concept places remained
+physically ineligible. Marker/inode/socket-owned cleanup passed for all clusters;
+no peer or system database was attached or modified.
+
+`quality-v8/component-qualification.json` carries the exact compile/source/test
+hashes, three binary hashes, native migration checksums, candidate observations,
+restart/cleanup receipts and explicit limits. Direct frontend parity also
+passed: the 54015-byte `cf48c0fe` source descriptor
+`frontend/src/world/reference-scene/spatial-v4/source-inputs.json`, SHA256
+`0b686546056ba75591b1d5c32258bd73fd22ca0767686c12aff197d58f8f0beb`,
+contains exactly the same three scenery bodies, canonical geometry and original
+place records. All 34 WORLD objects agree. Six overview representations replace
+one WORLD object and add five, yielding 39 MAP objects; they confer no collision
+or place authority. A bounded source peer review found no actionable findings;
+its independent decode passed, while its Python environment lacked mandatory
+format extras. The owner's retained format-enabled environment passed all 17
+source tests and exact generation checks without waiving those formats.
+
+All five original v8 candidate outputs remain byte for byte identical to
+`d5cb7da9`; map 3/map 4, spatial-v3/quality-v6, source archives, C06 contracts and
+selected-avatar sources remain unchanged. Only the two already-owned spatial
+test files changed; production Rust required no new 34-object special case.
+This is component qualification, **NOT_ADMITTED**. It supplies no new operator
+bundle/Bootstrap/ThemeManifest, art-fidelity acceptance, physical-place
+verification, public multiuser proof or Product/IN01 closure. Future art/terrain
+versions are not adopted by this handoff. The designated integrator's actual
+master publication and independent ancestry/source verification remain required.
+
+Final source checks passed again after native qualification: 17 Python tests,
+all three exact generator checks, planning, changed-test-file Rust 1.88 formatting
+and diff checks (exit 0). An expanded formatting check over all four potential
+Rust seams exited 1 solely for pre-existing import/constructor wrapping in
+unchanged `src/bootstrap/mod.rs`; that file's bytes remain exact. This is
+recorded explicitly in the component receipt. No formatting or production
+behavior changes were bundled to conceal that inherited result.
+
+The compile command was `cargo +1.88.0 test --manifest-path backend/Cargo.toml
+--locked --offline -j 2 -p concert-service --lib --test bootstrap_runtime_config
+--test bootstrap --no-run --message-format=json-render-diagnostics`. Each native
+run used `python backend/scripts/mcr/test_spatial_release.py --native --candidate`
+with one of `baseline`, `quality-v6`, `quality-v8`, plus the frozen
+`--build-metadata`/`--pinned-binaries` receipts and the PostgreSQL 16.14 `--pg-bin`.
+All six exact selected test commands exited 0. Full portable command templates
+and all source-check exit codes are in the component receipt; the two compiler
+attempts retain their distinct failure/success outcomes.
