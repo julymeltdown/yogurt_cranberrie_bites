@@ -12,7 +12,7 @@ const root = resolve(import.meta.dirname, '../../../../..'), frontend = resolve(
 const base = 'd1a5deaae0f6b79b365cb4c451d921711573ab8c'
 const slot = process.env.MCR_FRONTEND_SLOT, output = process.env.MCR_WORLD_BUDGET_OUTPUT
 const focused = process.env.MCR_WORLD_BUDGET_FOCUSED === '1'
-assert(slot?.startsWith('FE26E-WORLD-PRESENTATION-'), 'An explicitly accepted NEW allocation is required')
+assert(slot?.startsWith(focused ? 'FE26E-FOCUSED-REPLAY-' : 'FE26E-WORLD-PRESENTATION-'), 'An explicitly accepted NEW allocation is required')
 assert(!slot.endsWith('T0429Z'), 'The unaccepted 0429Z offer was returned')
 assert(output?.startsWith(resolve(root, 'docs/mcr/evidence/world-presentation-budget') + '/'))
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
