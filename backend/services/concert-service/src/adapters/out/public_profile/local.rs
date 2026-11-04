@@ -1,8 +1,8 @@
 //! Retains actual Concert event/admission/avatar locks through outer response assembly.
 use super::super::relationship_authority::guarded::ChildQuery;
 use super::{
-    profile::Content, unavailable, ChildRecoveryReference, GuardedSubject, HeldChildGuard,
-    LocalPolicySnapshot,
+    dependency_error, profile::Content, unavailable, ChildRecoveryReference, GuardedSubject,
+    HeldChildGuard, LocalPolicySnapshot,
 };
 use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use sqlx::Row;
@@ -30,7 +30,7 @@ pub(super) async fn prepare(
     let slots: i32 = sqlx::query_scalar("select current_setting('max_prepared_transactions')::int")
         .fetch_one(&mut *tx)
         .await
-        .map_err(|_| unavailable())?;
+        .map_err(dependency_error)?;
     if slots < 256 {
         return Err(unavailable());
     }
@@ -42,7 +42,7 @@ pub(super) async fn prepare(
                 .bind(slot)
                 .fetch_one(&mut *tx)
                 .await
-                .map_err(|_| unavailable())?;
+                .map_err(dependency_error)?;
         if ok {
             acquired = true;
             break;
@@ -63,8 +63,8 @@ pub(super) async fn prepare(
     sqlx::query(&format!("prepare transaction '{gid}'"))
         .execute(&mut *tx)
         .await
-        .map_err(|_| unavailable())?;
-    tx.commit().await.map_err(|_| unavailable())?;
+        .map_err(dependency_error)?;
+    tx.commit().await.map_err(dependency_error)?;
     deadline.remaining(Duration::from_secs(5), deadline.expires_micros())?;
     Ok(LocalChild {
         pool,
@@ -89,7 +89,7 @@ impl HeldChildGuard for LocalChild {
             return Err(unavailable());
         };
         let held:bool=tokio::time::timeout(remaining,sqlx::query_scalar("select exists(select 1 from pg_prepared_xacts where database=current_database() and owner=current_user and gid=$1 and transaction::text::numeric=mod($2::text::numeric,4294967296)) and (pg_control_system()).system_identifier::text=$3 and (select oid::bigint from pg_database where datname=current_database())=$4")
-            .bind(&self.gid).bind(&native.full_xid).bind(&native.system_identifier).bind(i64::from(native.database_oid)).fetch_one(&self.pool)).await.map_err(|_|unavailable())?.map_err(|_|unavailable())?;
+            .bind(&self.gid).bind(&native.full_xid).bind(&native.system_identifier).bind(i64::from(native.database_oid)).fetch_one(&self.pool)).await.map_err(dependency_error)?.map_err(dependency_error)?;
         if held {
             Ok(())
         } else {
@@ -115,7 +115,7 @@ pub(super) async fn budget(
         .bind(millis.to_string())
         .execute(&mut **tx)
         .await
-        .map_err(|_| unavailable())?;
+        .map_err(dependency_error)?;
     deadline.remaining(Duration::from_secs(5), deadline.expires_micros())?;
     Ok(())
 }
@@ -142,16 +142,16 @@ pub(super) async fn recover_one(
     )?;
     let gid = reference.local_prepared_gid()?;
     tokio::time::timeout(Duration::from_secs(2),async {
-        let current=sqlx::query("select (pg_control_system()).system_identifier::text system_identifier,(select oid::bigint from pg_database where datname=current_database()) database_oid").fetch_one(pool).await.map_err(|_|unavailable())?;
-        if current.try_get::<String,_>("system_identifier").map_err(|_|unavailable())? != native.system_identifier
-            || current.try_get::<i64,_>("database_oid").map_err(|_|unavailable())? != i64::from(native.database_oid) {return Err(unavailable());}
-        let actual:Option<String>=sqlx::query_scalar("select transaction::text from pg_prepared_xacts where database=current_database() and owner=current_user and gid=$1").bind(&gid).fetch_optional(pool).await.map_err(|_|unavailable())?;
+        let current=sqlx::query("select (pg_control_system()).system_identifier::text system_identifier,(select oid::bigint from pg_database where datname=current_database()) database_oid").fetch_one(pool).await.map_err(dependency_error)?;
+        if current.try_get::<String,_>("system_identifier").map_err(dependency_error)? != native.system_identifier
+            || current.try_get::<i64,_>("database_oid").map_err(dependency_error)? != i64::from(native.database_oid) {return Err(unavailable());}
+        let actual:Option<String>=sqlx::query_scalar("select transaction::text from pg_prepared_xacts where database=current_database() and owner=current_user and gid=$1").bind(&gid).fetch_optional(pool).await.map_err(dependency_error)?;
         if let Some(actual)=actual {
-            let low=native.full_xid.parse::<u64>().map_err(|_|unavailable())? %4_294_967_296;
+            let low=native.full_xid.parse::<u64>().map_err(dependency_error)? %4_294_967_296;
             if actual!=low.to_string(){return Err(unavailable());}
             let _=sqlx::query(&format!("rollback prepared '{gid}'")).execute(pool).await;
         }
-        let state:Option<String>=sqlx::query_scalar("select pg_xact_status($1::text::xid8)").bind(&native.full_xid).fetch_one(pool).await.map_err(|_|unavailable())?;
+        let state:Option<String>=sqlx::query_scalar("select pg_xact_status($1::text::xid8)").bind(&native.full_xid).fetch_one(pool).await.map_err(dependency_error)?;
         if state.as_deref()==Some("aborted"){Ok(())}else{Err(unavailable())}
-    }).await.map_err(|_|unavailable())?
+    }).await.map_err(dependency_error)?
 }

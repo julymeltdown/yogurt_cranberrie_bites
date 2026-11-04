@@ -206,7 +206,7 @@ impl PublicProfileReader {
         let q = subject.query();
         let b = subject.binding();
         let deadline = b.deadline();
-        let mut tx = self.pool.begin().await.map_err(|_| unavailable())?;
+        let mut tx = self.pool.begin().await.map_err(dependency_error)?;
         local::budget(&mut tx, deadline).await?;
         let event = sqlx::query(
             "select phase,revision from public.concert_events where event_id=$1 for share",
@@ -214,15 +214,15 @@ impl PublicProfileReader {
         .bind(self.event)
         .fetch_optional(&mut *tx)
         .await
-        .map_err(|_| unavailable())?;
+        .map_err(dependency_error)?;
         let event = event.ok_or_else(unavailable)?;
         let phase = event
             .try_get::<String, _>("phase")
-            .map_err(|_| unavailable())?
+            .map_err(dependency_error)?
             .parse::<concert_domain::EventPhase>()
-            .map_err(|_| unavailable())?;
-        let event_revision = Revision::new(event.try_get("revision").map_err(|_| unavailable())?)
-            .map_err(|_| unavailable())?;
+            .map_err(dependency_error)?;
+        let event_revision = Revision::new(event.try_get("revision").map_err(dependency_error)?)
+            .map_err(dependency_error)?;
         if !matches!(
             phase,
             concert_domain::EventPhase::Open
@@ -241,18 +241,18 @@ impl PublicProfileReader {
         };
         local::budget(&mut tx, deadline).await?;
         sqlx::query("insert into public.concert_relationship_pairs(event_id,low_user,high_user) values($1,$2,$3) on conflict do nothing")
-            .bind(self.event).bind(low).bind(high).execute(&mut *tx).await.map_err(|_|unavailable())?;
+            .bind(self.event).bind(low).bind(high).execute(&mut *tx).await.map_err(dependency_error)?;
         local::budget(&mut tx, deadline).await?;
         let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
-            .bind(self.event).bind(low).bind(high).fetch_optional(&mut *tx).await.map_err(|_|unavailable())?.ok_or_else(unavailable)?;
-        let pair_revision = Revision::new(pair.try_get("revision").map_err(|_| unavailable())?)
-            .map_err(|_| unavailable())?;
+            .bind(self.event).bind(low).bind(high).fetch_optional(&mut *tx).await.map_err(dependency_error)?.ok_or_else(unavailable)?;
+        let pair_revision = Revision::new(pair.try_get("revision").map_err(dependency_error)?)
+            .map_err(dependency_error)?;
         if pair
             .try_get::<bool, _>("low_blocks_high")
-            .map_err(|_| unavailable())?
+            .map_err(dependency_error)?
             || pair
                 .try_get::<bool, _>("high_blocks_low")
-                .map_err(|_| unavailable())?
+                .map_err(dependency_error)?
         {
             return Err(unavailable());
         }
@@ -262,19 +262,19 @@ impl PublicProfileReader {
         users.dedup();
         for user in users {
             local::budget(&mut tx, deadline).await?;
-            let state:Option<String>=sqlx::query_scalar("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 for share").bind(self.event).bind(user).fetch_optional(&mut *tx).await.map_err(|_|unavailable())?;
+            let state:Option<String>=sqlx::query_scalar("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 for share").bind(self.event).bind(user).fetch_optional(&mut *tx).await.map_err(dependency_error)?;
             if state.as_deref() != Some("ACTIVE") {
                 return Err(unavailable());
             }
             local::budget(&mut tx, deadline).await?;
-            let exists:Option<uuid::Uuid>=sqlx::query_scalar("select user_id from public.concert_participants where event_id=$1 and user_id=$2 for share").bind(self.event).bind(user).fetch_optional(&mut *tx).await.map_err(|_|unavailable())?;
+            let exists:Option<uuid::Uuid>=sqlx::query_scalar("select user_id from public.concert_participants where event_id=$1 and user_id=$2 for share").bind(self.event).bind(user).fetch_optional(&mut *tx).await.map_err(dependency_error)?;
             if exists != Some(user) {
                 return Err(unavailable());
             }
         }
         local::budget(&mut tx, deadline).await?;
         let row=sqlx::query("select event_id,user_id,revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2 for share")
-            .bind(self.event).bind(q.subject.uuid()).fetch_optional(&mut *tx).await.map_err(|_|unavailable())?;
+            .bind(self.event).bind(q.subject.uuid()).fetch_optional(&mut *tx).await.map_err(dependency_error)?;
         let avatar = (|| -> Result<Option<Value>, ()> {
             if let Some(row) = row {
                 if row.try_get::<uuid::Uuid, _>("event_id").map_err(|_| ())? != self.event
@@ -321,6 +321,15 @@ pub fn validate(value: &Value) -> Result<(), Status> {
     } else {
         Err(unavailable())
     }
+}
+fn dependency_error(error: impl std::fmt::Debug) -> Status {
+    // Native qualification needs the original SQL/type failure, while product
+    // callers retain the same closed dependency error and no internal detail.
+    #[cfg(test)]
+    eprintln!("Public Profile local dependency failure: {error:?}");
+    #[cfg(not(test))]
+    let _ = error;
+    unavailable()
 }
 fn unavailable() -> Status {
     Status::unavailable("Current public Profile unavailable")

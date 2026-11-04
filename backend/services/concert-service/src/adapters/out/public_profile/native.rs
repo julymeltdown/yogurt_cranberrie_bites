@@ -267,10 +267,22 @@ async fn wait_blocked(pool: &PgPool) -> anyhow::Result<()> {
 async fn actual_owner_public_read_reuses_local_hold_through_serialization() -> anyhow::Result<()> {
     let f = Fixture::new().await?;
     let viewer = f.scope.public_profile_subject(f.actor).await?;
+    viewer
+        .check()
+        .await
+        .map_err(|e| anyhow::anyhow!("viewer pre-local scope: {e}"))?;
+    let held = f
+        .reader
+        .local(&viewer)
+        .await
+        .map_err(|e| anyhow::anyhow!("viewer local acquire: {e}"))?;
+    held.check()
+        .await
+        .map_err(|e| anyhow::anyhow!("viewer actual prepared check: {e}"))?;
     f.reader
         .policy(&viewer)
         .await
-        .map_err(|e| anyhow::anyhow!("viewer policy: {e:?}"))?;
+        .map_err(|e| anyhow::anyhow!("viewer reused local policy: {e:?}"))?;
     let subject = f.scope.public_profile_subject(f.subject).await?;
     let first = f
         .reader
