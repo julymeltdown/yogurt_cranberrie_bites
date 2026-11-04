@@ -3,11 +3,11 @@ import { createServer } from 'vite'
 import { chromium, expect } from '@playwright/test'
 import { resolve } from 'node:path'
 import { mkdir,writeFile } from 'node:fs/promises'
-const frontend=resolve(import.meta.dirname,'../../../../..'),evidence=resolve(import.meta.dirname,'evidence')
+const frontend=resolve(import.meta.dirname,'../../../../..'),evidence=resolve(import.meta.dirname,process.env.MCR_MAP_EVIDENCE_DIR??'evidence')
 await mkdir(evidence,{recursive:true})
 const server=await createServer({root:frontend,configLoader:'runner',cacheDir:'/tmp/mcr-ref-map-vite-cache',server:{host:'127.0.0.1',port:0,strictPort:false},logLevel:'warn'})
 await server.listen()
-const report={result:'FAIL',qualification:'Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; Published root deb5865d (author7201b875), no preview layout override. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.',cases:[],errors:[]}
+const report={result:'FAIL',qualification:'Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; no preview layout override. Current root/module byte pins are recorded by the associated qualification. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.',cases:[],errors:[]}
 let browser,page,stage='start'
 try{
  browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});report.browser=browser.version()
@@ -42,7 +42,7 @@ try{
   await map.focus();const before=await map.evaluate(e=>e.scrollLeft);await page.keyboard.press('ArrowRight');assert((await map.evaluate(e=>e.scrollLeft))>before)
   for(let i=0;i<8;i++)await zoomIn.click();await expect(zoomIn).toBeDisabled()
   await page.getByRole('button',{name:'Fit map',exact:true}).click();await expect(zoomOut).toBeDisabled()
-  const checkLabels=async()=>{const boxes=await page.locator('.places-map-plaque').evaluateAll(elements=>elements.map(e=>e.getBoundingClientRect().toJSON()));for(let i=0;i<boxes.length;i++)for(const b of boxes.slice(i+1)){const a=boxes[i];assert(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top,'Fit map plaque labels overlap')}};await checkLabels()
+  const checkLabels=async()=>{const boxes=await page.locator('.places-map-plaque').evaluateAll(elements=>elements.map(e=>e.getBoundingClientRect().toJSON()));report.fitBoxes=boxes;for(let i=0;i<boxes.length;i++)for(const b of boxes.slice(i+1)){const a=boxes[i];assert(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top,'Fit map plaque labels overlap')}};await checkLabels()
   assert.deepEqual((await state()).camera,camera);assert.equal((await state()).requests.length,requests)
   const plaques=page.locator('.places-map-plaque'),label=await plaques.first().getAttribute('aria-label'),id=await plaques.first().getAttribute('id')
   await plaques.first().focus();await expect(page.getByRole('img',{name:/Selected virtual location/})).toBeVisible()
@@ -71,5 +71,5 @@ try{
   report.cases.push({width,mapBounds:bounds,firstPlaque:label,localGesturesRequests:0,incumbentCameraUnchanged:true,mounts:end.mounts,peak:end.peak,disposals:end.disposals,createdURLs:urls.created.length,revokedURLs:urls.revoked.length});await context.close()
  }
  assert.deepEqual(report.errors,[]);report.result='PASS'
-}catch(error){report.failure={stage,error:String(error),text:await page?.locator('body').innerText()};throw error}
+}catch(error){await page?.screenshot({path:resolve(evidence,'failure.jpg'),type:'jpeg',quality:70});report.failure={stage,error:String(error),text:await page?.locator('body').innerText()};throw error}
 finally{await writeFile(resolve(evidence,'native.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();await server.close()}

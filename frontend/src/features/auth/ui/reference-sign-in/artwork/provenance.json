@@ -1,0 +1,59 @@
+{
+  "task": "FE-REF-AUTH-ARTWORK-MATCH",
+  "base": "57682e285208e746cdb2a9400e287420b9a30970",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "panel": {
+      "x": 309,
+      "y": 3,
+      "width": 275,
+      "height": 526
+    }
+  },
+  "rasterAssets": [
+    {
+      "path": "artwork/cemetery-top-v1.png",
+      "sha256": "230480492acf6eb841c4aa1dbb66e622e8ef866aed2694f91308d50572b6b072",
+      "bytes": 2124811,
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "generator": "built-in image_gen.imagegen",
+      "operation": "reference-guided generation",
+      "transparentBackground": true,
+      "originalOutput": "exec-6982ff43-3aa1-44fb-a6d3-d604c6cb453d.png",
+      "copyPreservedBytes": true,
+      "inputRole": "Reference panel 2 style/composition only; original image unchanged; no character source used",
+      "prompt": "Use case: illustration-story. Create a production decorative cemetery PRINT asset for a functioning web login form. Input image is STYLE AND COMPOSITION REFERENCE ONLY: look exclusively at SECOND phone in top row, its upper cemetery illustration above SIGN IN. Do not edit or reproduce the whole phone/UI. Deliver one wide horizontal strip, approximately 3:1 aspect (1536 by512 ideal), transparent background. Match the reference's coarse distressed black/off-white two-ink photocopied gothic zine print: nearly black upper field, pale irregular graveyard skyline beneath it forming a low cream/transparency arch, large slim outlined cemetery cross near x30%, tiny floating plus cross near x12%, upright cream cross near x51%, scratchy five-point star near x86%, dense varied tiny gravestones and crosses rising on a rough curved skyline around lower half, spattered hand-inked right-side sloping cemetery fence. Black upper field reaches upper and side boundaries. The lower CENTER after 60% of strip height must become transparent for the real DOM heading below, with rough stippled edge and sparse black ink flecks. Natural uneven linework, rough ink erosion and paper holes; NO smooth clean vector linework, evenly repeated crosses, regular dot grid, or modern gradients. COLORS: black ink #191817 and warm off-white #eee5d6 only. TRANSPARENCY at the lower center opening and background holes. NO text, NO letters, NO logos, NO frame/titlebar, NO input/button/checkbox, NO controls, NO characters or people, NO vertical accent rails/borders. This is artwork alone, not a screenshot or mockup.",
+      "inspection": "No text, controls, characters, whole-screen rendering or accent rails; lower/central transparent areas leave the actual DOM visible"
+    },
+    {
+      "path": "artwork/cemetery-bottom-v1.png",
+      "sha256": "104e4b1acdb16ac40c671e62fd858917b1507b87935d43a80334fe7622bb4c92",
+      "bytes": 762215,
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "generator": "built-in image_gen.imagegen",
+      "operation": "reference-guided generation",
+      "transparentBackground": true,
+      "originalOutput": "exec-0c2ccfa4-43ac-4b06-b89c-e60a2a093f5e.png",
+      "copyPreservedBytes": true,
+      "inputRole": "Reference panel 2 style/composition only; original image unchanged; no character source used",
+      "prompt": "Use case: illustration-story. Production decorative cemetery FOOTER illustration asset for a real functioning login form. Use ONLY the BOTTOM cemetery artwork of the SECOND phone in the TOP row as exact style/composition reference. Generate new artwork, not a crop/screenshot/UI. One wide transparent horizontal strip, roughly 3:1 aspect ratio,1536x512 ideal. Match the coarse worn photocopied black-ink gothic zine print of the reference: large leaning worn wooden cross at far left rising from lower edge nearly to the top; upright thick irregular cross at far right rising about80% of height; one medium heavy cross near x87%; a dense irregular silhouette of MANY varied tiny crosses, old tombstones and scattered graves, clustered only along bottom15\u201328% of strip, uneven organic ground and black ink splatter, little off-white eroded holes. The middle upper65\u201375% of strip must be EMPTY TRANSPARENT space so real readable DOM text can sit above small graves; large outer crosses stay within leftmost12% and rightmost12% only. Thin broken cross edges, hand cut dark shapes, dense spatter at feet, coarse irregular print damage and tiny dots extending upward around bottom ground. Colors black #191817 ink and a few warm off-white #eee5d6 speckle holes; otherwise genuine transparency. NO writing, words, letters, logos, skulls, people, characters, controls, borders, frames, vertical accent rails or bars, no whole-phone panel, no realistic3D, no clean repeated vector primitives or regular grid. Decorative artwork only.",
+      "inspection": "No text, controls, characters, whole-screen rendering or accent rails; lower/central transparent areas leave the actual DOM visible"
+    }
+  ],
+  "vectorSurfaces": {
+    "generator": "artwork/build-surfaces.mjs",
+    "paths": [
+      "artwork/paper-print.svg",
+      "artwork/frame-print.svg",
+      "artwork/red-ink.svg"
+    ],
+    "technique": "Original seeded dust/ink SVG and multifrequency noise; preserveAspectRatio none; symmetric ordinary frame wear; no raster sampling"
+  },
+  "typographySources": "typography/sources.json",
+  "implementation": "Cemetery SVG layers use only the two decorative print PNGs. Every heading/label/input/action/state is live DOM; no reference image imported by product source. Canonical SignIn/model/root untouched."
+}

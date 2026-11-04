@@ -1,0 +1,52 @@
+{
+  "task": "FE-REF-AUTH-ARTWORK-MATCH",
+  "sourceCandidate": "4c76934825a129e3430031678b75f3967ce80317",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "result": "PASS",
+  "method": "Developer inspected the preserved enlarged panel, both generated transparent assets, actual native comparison,360/430 ready captures and390 error/pending states. This is a developer visual judgment supported by source/runtime evidence, not a unit-test or coordinate-only inference.",
+  "requiredStaticObligations": [
+    {
+      "requirement": "Coarse cemetery print artwork instead of repeated geometric silhouettes",
+      "result": "PASS",
+      "evidence": "Original Auth-scoped upper/lower transparent PNG print layers: dense varied grave silhouettes, outlined tall cross, star and sloped fence; eroded black/off-white ink; tall worn outer crosses and uneven footer ground; no characters or embedded controls."
+    },
+    {
+      "requirement": "Printed glyph forms instead of clean system sans-serif",
+      "result": "PASS",
+      "evidence": "Bundled MCR Auth Print OFL derivative: condensed bold outlines, original uppercase I terminals, deterministic ink-edge irregularity. Native FontFace status loaded at all three widths; no system-font dependence for visible Auth display labels."
+    },
+    {
+      "requirement": "Aged paper, distressed ordinary frame and worn red ink",
+      "result": "PASS",
+      "evidence": "Reproducible authored SVG surfaces and red-ink wear. Corrected preserveAspectRatio removes mid-page frame artifact. Empty-paper mean231.68 vs reference232.03,grain standard deviations3.84 vs3.63; regional tone metrics support rather than replace visual inspection."
+    },
+    {
+      "requirement": "Reference provider mark proportions and recognizable glyphs",
+      "result": "PASS",
+      "evidence": "Larger authentic-size decorative X/Google marks and newly authored curved Discord silhouette with negative eyes; actual disabled buttons stay labeled and unavailable."
+    },
+    {
+      "requirement": "Actual-entry functioning states remain readable and reachable",
+      "result": "PASS",
+      "evidence": "Unchanged real app router/ports and SignIn flow; zero page errors;44px controls, focus, validity, errors, pending, safe return, privacy cleanup, unavailable/options failure and signup/reset navigation all pass."
+    }
+  ],
+  "resolvedFindings": [
+    "Rejected overly slab-heavy font draft; used a condensed face with only the target I terminals added.",
+    "Fixed stretched SVG frame/paper viewport ratio so no horizontal mid-page frame artifact remains.",
+    "Calibrated paper tone and multiscale grain against unobstructed reference regions.",
+    "Added exact owned PNG sparse inclusion rules after rebasing removed newly tracked artwork. Final blocked build/test/native checks were rerun with actual assets present."
+  ],
+  "functionalHonestyDifferences": [
+    "Real anonymous entry starts with empty password; target illustrates entered password bullets.",
+    "Unsupported remember-session control omitted; provider buttons disabled and explained.",
+    "44px close target and semantic sign-in title retained; real account route keeps Create an account wording."
+  ],
+  "remainingAssignedStaticGaps": [],
+  "separateRequiredGates": {
+    "liveBackendCookieProvider": "NOT_RUN",
+    "mobileHardware": "NOT_RUN",
+    "wholeApplicationTenRouteAndIN05": "NOT_RUN"
+  },
+  "scope": "Only this assigned Auth artwork match is complete. No project acceptance counts or unrelated surface qualification changed."
+}

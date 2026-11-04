@@ -1,0 +1,9 @@
+{
+  "task": "FE-REF-AUTH-ARTWORK-MATCH",
+  "base": "57682e285208e746cdb2a9400e287420b9a30970",
+  "sha256": {
+    "frontend/src/features/auth/ui/sign-in.css": "bfd29a634751cf5d460e302c466f00fc91231db1d6afa273b49d0ab044bfbc4f",
+    "frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx": "9487f3e648726145a89ec460953787a01f6b8f81a20b0e8a7d8691bd2615a240",
+    "frontend/src/features/auth/ui/reference-sign-in/ProviderMark.tsx": "5121bdbae5d0ca5b6cb71d8a35c5de819a6e9ec5f42e62a2b18905c46f15c246"
+  }
+}

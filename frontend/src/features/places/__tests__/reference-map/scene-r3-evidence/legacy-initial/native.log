@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Fit map plaque labels overlap
+    at checkLabels (file://<checkout>/frontend/src/features/places/__tests__/reference-map/native.mjs:45:240)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:541:9)
+    at async file://<checkout>/frontend/src/features/places/__tests__/reference-map/native.mjs:45:349 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

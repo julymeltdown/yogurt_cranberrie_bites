@@ -2,7 +2,7 @@
 // Inputs (SHA-256):
 // contracts/core/v1/core.schema.json: 9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88
 // contracts/domain/v1/admin.schema.json: 953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640
-// contracts/domain/v1/common.schema.json: 303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35
+// contracts/domain/v1/common.schema.json: 65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584
 // contracts/domain/v1/feed.schema.json: 590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801
 // contracts/domain/v1/giveaway.schema.json: 3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d
 // contracts/domain/v1/mural.schema.json: 345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca
@@ -167,8 +167,8 @@ export const DOMAIN_ERROR_RULES = {
   "RESERVATION_EXPIRED": null,
   "PAYLOAD_TOO_LARGE": null,
   "INVALID_MEDIA_TYPE": null,
-  "RATE_LIMITED": {"type":"integer","minimum":1,"maximum":3600000},
-  "MURAL_COOLDOWN": {"type":"integer","minimum":1,"maximum":3600000},
+  "RATE_LIMITED": {"type":"integer","minimum":1,"maximum":3600000,"required":true},
+  "MURAL_COOLDOWN": {"type":"integer","minimum":1,"maximum":3600000,"required":false},
   "INTERNAL_ERROR": null,
   "UPSTREAM_ERROR": null,
   "DEPENDENCY_UNAVAILABLE": null,

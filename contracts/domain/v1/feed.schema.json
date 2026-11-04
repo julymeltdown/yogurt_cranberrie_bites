@@ -277,7 +277,8 @@
           "enum": [
             "POST",
             "GIVEAWAY",
-            "REPORT"
+            "REPORT",
+            "BEACON"
           ]
         },
         "content_type": {
@@ -379,7 +380,8 @@
           "enum": [
             "POST",
             "GIVEAWAY",
-            "REPORT"
+            "REPORT",
+            "BEACON"
           ]
         },
         "read_path": {

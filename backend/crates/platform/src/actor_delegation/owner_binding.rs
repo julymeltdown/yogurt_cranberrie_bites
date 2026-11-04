@@ -277,7 +277,7 @@ mod tests {
             event_id: event,
             session_family_id: Uuid::from_u128(3),
             request_id: Uuid::from_u128(4),
-            operation: "FEED_LIST".into(),
+            operation: "listConcertFeed".into(),
             expires_unix_micros: 1_000_000,
             parent_digest: [1; 32],
             parent_body_digest: [2; 32],
