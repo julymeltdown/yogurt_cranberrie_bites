@@ -1,0 +1,181 @@
+{
+  "task": "QA06",
+  "qualification": "SAVED_PARADE_390_WORLD_MAP_BACKGROUND_COMPARISON_ONLY",
+  "status": "IN_PROGRESS",
+  "boundedOutcome": "VISIBLE_BACKGROUND_IMPROVEMENT_WITH_RESIDUAL_DETAILS; original QA06 unfinished",
+  "goalReadback": {
+    "createdAt": 1793759287,
+    "status": "BLOCKED",
+    "alignedOriginalObjective": true,
+    "newGoalBudgetSettings": false
+  },
+  "ownerJob": "PARADE-WORLD-MAP2-202611040654Z",
+  "baselineProductionCommit": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "candidateProductionCommit": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+  "candidateNeutralCharacterProbe": "Same read-only probe for both cohorts, owner reported; not a QA source or runtime modification",
+  "frames": [
+    {
+      "file": "baseline-world-parade-390.png",
+      "sourcePath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-world-parade-390.png",
+      "repositorySourcePath": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-world-parade-390.png",
+      "screen": "world",
+      "role": "BEFORE",
+      "bytes": 481182,
+      "sha256": "769a0a014e7df8e1027ded36ed38a9361446e39bef01ea05e8aa3cd511c872b4",
+      "viewport": [
+        390,
+        844
+      ],
+      "pngDimensions": [
+        390,
+        844
+      ],
+      "ownerRecordedCaptureTimeUTC": "2026-11-04T06:54:17.942Z",
+      "ownerRecordedCaptureTimeKST": "2026-11-04T15:54:17.942+09:00",
+      "productionSource": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+      "directlyViewedByQA06": true,
+      "copyExact": true,
+      "newQACapture": false
+    },
+    {
+      "file": "candidate-world-parade-390.png",
+      "sourcePath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-390.png",
+      "repositorySourcePath": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-390.png",
+      "screen": "world",
+      "role": "AFTER",
+      "bytes": 449001,
+      "sha256": "ff25b45a3d9f05729705fe628a82ea8ecfcda3392dde63b6951de754c2c829a8",
+      "viewport": [
+        390,
+        844
+      ],
+      "pngDimensions": [
+        390,
+        844
+      ],
+      "ownerRecordedCaptureTimeUTC": "2026-11-04T06:54:23.954Z",
+      "ownerRecordedCaptureTimeKST": "2026-11-04T15:54:23.954+09:00",
+      "productionSource": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+      "directlyViewedByQA06": true,
+      "copyExact": true,
+      "newQACapture": false
+    },
+    {
+      "file": "baseline-map-parade-390.png",
+      "sourcePath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-map-parade-390.png",
+      "repositorySourcePath": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-map-parade-390.png",
+      "screen": "map",
+      "role": "BEFORE",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01",
+      "viewport": [
+        390,
+        844
+      ],
+      "pngDimensions": [
+        390,
+        844
+      ],
+      "ownerRecordedCaptureTimeUTC": "2026-11-04T06:54:18.856Z",
+      "ownerRecordedCaptureTimeKST": "2026-11-04T15:54:18.856+09:00",
+      "productionSource": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+      "directlyViewedByQA06": true,
+      "copyExact": true,
+      "newQACapture": false
+    },
+    {
+      "file": "candidate-map-parade-390.png",
+      "sourcePath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-390.png",
+      "repositorySourcePath": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-390.png",
+      "screen": "map",
+      "role": "AFTER",
+      "bytes": 386020,
+      "sha256": "62114b928572cb7462f877f828c2b5ba2c7130b36181632d231eb8673a52a473",
+      "viewport": [
+        390,
+        844
+      ],
+      "pngDimensions": [
+        390,
+        844
+      ],
+      "ownerRecordedCaptureTimeUTC": "2026-11-04T06:54:24.864Z",
+      "ownerRecordedCaptureTimeKST": "2026-11-04T15:54:24.864+09:00",
+      "productionSource": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+      "directlyViewedByQA06": true,
+      "copyExact": true,
+      "newQACapture": false
+    }
+  ],
+  "reference": {
+    "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/reference-human.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "bytes": 482737,
+    "directlyViewedByQA06": true,
+    "instruction": "All ten backgrounds visibly cuter than BOTH same-byte human collage and current UI; warm/playful/cozy backdrops and ornaments only. Exact dark/grunge palette parity superseded."
+  },
+  "frozen": [
+    "Character pixels/source pack/atlases/rendering/UV/anchors/origins/profile crop/framing/sizing",
+    "Controls/text/typography/layout/routes/focus/contrast and truthful states"
+  ],
+  "observations": {
+    "world": {
+      "assessment": "Clearly warmer, more playful and visibly cuter in this saved PARADE390 comparison; bounded qualitative improvement, not full QA06 acceptance.",
+      "improved": [
+        "Upper dark-red canopy becomes clustered pink blossom trees; right-side foliage shifts toward soft yellow and light green.",
+        "Small stalls gain peach/pink-striped canopies, warmer lit windows, flower pots and lighter decorative wood/stone colors.",
+        "Lower building gains pastel purple roof, cream facade, warm windows and flower detailing; scene lawn is softer and brighter.",
+        "A pale pink outer trim and dark plum backdrop replace the harsher scratched black surround while readable cream controls remain."
+      ],
+      "residual": [
+        "The large black concert stage remains the strongest dark foreground object. It is retained music/foreground context, not a request to repaint text, characters or controls.",
+        "Dark plum header/surround remains visually dark; this is a residual backdrop observation, not evidence that every background area now satisfies the all-ten direction."
+      ],
+      "preservationObservation": "Six visible figures, scene controls, culture-park sign, caption and dock look consistent in these saved images. Exact pixels/frame/pose/origin/size/camera invariants are attributed to Root, not independently measured here."
+    },
+    "map": {
+      "assessment": "Pastel scene background is materially cuter and cozier than the BEFORE and the dark collage. This is a two-frame qualitative judgment for PARADE390 only.",
+      "improved": [
+        "Dark/red northern canopy becomes pink blossom trees; central building changes from dark brick/roof to warm cream with pink/lilac roof and lit detailing.",
+        "Side buildings and stalls gain coral/pink/purple roofs, peach canopies and warm yellow windows; flowers and tiny ornaments add a playful setting.",
+        "Muted dark trees shift to lighter green, mint and yellow groups, making the path network feel softer.",
+        "The shared outer trim is paler and the dark surround shifts to plum; service plaques remain readable against the brighter scene."
+      ],
+      "residual": [
+        "Flat olive fit bands above and below the Map artwork remain visibly plain and comparatively muted; the exposed backdrop did not receive the same playful detail as the scene art.",
+        "The black/dark-plum surround and beige utility strip retain a restrained rather than broadly playful backdrop treatment. These residual observations do not authorize typography/control/layout changes."
+      ],
+      "preservationObservation": "The six scenery/service plaques, four semantic destinations, zoom and lower tools/caption remain visibly present. Exact labels/hrefs/44px rectangles/oracle and camera assertions are Root evidence, not new QA runtime proof."
+    }
+  },
+  "ownerEvidenceNotQARerun": {
+    "source": "Root/World ready input for SAME running owner job; QA06 did not wait for or claim a final all-width report",
+    "reportedInvariants": [
+      "All six characters fullRGBA/frame/position/origin/size exact between baseline/candidate",
+      "Camera retained; four semantic labels/hrefs/44px rectangles unchanged",
+      "Independent51-object MAP source oracle0diff",
+      "One persistent game/socket"
+    ],
+    "actualRuntime": "Actual default Root/Places/Phaser with syntheticC03/C05/map7005 NOT_ADMITTED/localfixtures; no live authority",
+    "privacy": "Owner privacy-qualified; direct QA viewing shows synthetic scene fixture identity and virtual scenery, no visible private account/tokens/real location. Header fixture label is not a real profile.",
+    "failedAttempt": "Owner retained native01 alternate Phaser-probe failure with no screenshots separately. It is not this native02 comparison; QA06 did not retry it."
+  },
+  "cohortBoundaries": [
+    "All four copies come from the supplied native02 cohort; not a new QA run",
+    "Baseline Map PNG matches earlier6ca52f88 cue SHA, but current baseline production is7c25078f; identical pixels do not imply source-tree identity",
+    "Other widths/eras/allten outputs are not qualified by these390PARADE images; Root continuing360/430 remains untouched",
+    "Earlier map-service-v1 and213 source/applicability proofs remain distinct, not inherited by filename or currentmaster assumption"
+  ],
+  "remaining": [
+    "Relevant owner width/era/runtime qualification and source-owner fixes remain their work; no wait barrier for this ready390 comparison",
+    "Other eight screens/allten cute-background and original functional fidelity not certified",
+    "Physical iOS/Android/softwarekeyboard/safearea/publicflows/live-save/multiuser/IN/admission remain open",
+    "Publication of this QA06 documentation and fresh own ancestry/postimage readback pending Root receipt; no whole-goal completion"
+  ],
+  "scope": {
+    "newPrefix": "docs/mcr/evidence/visual/qa06/map-cozy-v1-comparison/**",
+    "existingDocument": "docs/mcr/frontend/mobile-visual-qa06.md",
+    "sourceAndOtherEvidence": "READ_ONLY"
+  },
+  "workPerformed": "Independently hashed/byte-dimension checked and copied ONLY four supplied immutable PNGs, directly viewed all four plus same humanJPEG, wrote offlineHTML/JSON/prose and existing QA06document. No browser/native/capture/test/build/export/device/resource job, source changes, image edits or new resource claim."
+}

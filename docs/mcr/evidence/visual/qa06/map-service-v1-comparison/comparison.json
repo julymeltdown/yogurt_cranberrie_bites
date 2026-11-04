@@ -1,0 +1,221 @@
+{
+  "task": "QA06",
+  "status": "IN_PROGRESS",
+  "goalReadback": {
+    "createdAt": 1793759287,
+    "status": "BLOCKED",
+    "originalObjectivePreserved": true,
+    "readyOriginalWorkPerformed": true,
+    "newGoalOrBudget": false
+  },
+  "candidate": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+  "captureStartUTC": "2026-11-04T06:05:11.002Z",
+  "captureFinishUTC": "2026-11-04T06:05:58.929Z",
+  "primarySavedAtKST": "2026-11-04T15:05:14.291358+09:00",
+  "humanReference": {
+    "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/reference-human.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "dimensions": [
+      1280,
+      853
+    ],
+    "latestAttachmentPath": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/120DC5EC-1683-42AB-AF36-0DA8EB43CDE0/1-Photo-1.jpg",
+    "latestAttachmentBytesUnchanged": true,
+    "targetMeaning": "Same exact collage bytes, NEW human instruction: backgrounds visibly cuter than BOTH collage and current UI. No exact dark-palette/density parity acceptance target."
+  },
+  "latestHumanDirection": {
+    "authority": "Latest human background-only direction relayed by Social during this comparison; supersedes older dark-collage/portrait interventions",
+    "requirement": "All ten screens visibly cuter through warm/playful/cozy backgrounds and ornaments only",
+    "frozen": "All character pixels/pack/atlases/renderers/UV/anchors/profile crop/framing/sizing; controls, text, typography, layout, routes, focus, contrast and truthful guards/states",
+    "withdrawn": "Profile per-preset/upper-body framing and proportional wrapper/canvas-fit interventions; no new crop/renderer/sizing fixes under the old direction",
+    "validationBoundary": "When actually supplied, compare real390 before/after then affected widths in the existing21d single-capture allocation; no immediate parallel workflow",
+    "ownership": "Artist background source proposal; Root consumer;213 exact shared decorative hunks; Social/Community disjoint panel backgrounds later. QA06 owns evidence only."
+  },
+  "frames": [
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-390.png",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01",
+      "capturedAt": "2026-11-04T06:05:14.291358+00:00",
+      "dimensions": [
+        390,
+        844
+      ],
+      "directlyViewedByQA06": true,
+      "newCapture": false,
+      "ownedBytePreservedCopy": "docs/mcr/evidence/visual/qa06/map-service-v1-comparison/map-parade-390.png"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-390-h754.png",
+      "bytes": 408790,
+      "sha256": "0b52e8502a5efa0339f640ff526e61e0a72b51a7ba49a83f282d82a3299c79ba",
+      "capturedAt": "2026-11-04T06:05:15.518352+00:00",
+      "dimensions": [
+        390,
+        754
+      ],
+      "directlyViewedByQA06": true,
+      "newCapture": false,
+      "ownedBytePreservedCopy": "docs/mcr/evidence/visual/qa06/map-service-v1-comparison/map-parade-390-h754.png"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-feed-390.png",
+      "bytes": 61470,
+      "sha256": "08ddd67a94edd6de5e56e852fc4807bf2cde485318d6a9ec489ea840e88c7599",
+      "capturedAt": "2026-11-04T06:05:14.954905+00:00",
+      "dimensions": [
+        390,
+        844
+      ],
+      "directlyViewedByQA06": true,
+      "newCapture": false
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-wall-390.png",
+      "bytes": 62077,
+      "sha256": "b7873a37928b512e2bd62a635528ba188391b15f84245dc36ec9022d0f60308f",
+      "capturedAt": "2026-11-04T06:05:15.104791+00:00",
+      "dimensions": [
+        390,
+        844
+      ],
+      "directlyViewedByQA06": true,
+      "newCapture": false
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-meet-390.png",
+      "bytes": 73400,
+      "sha256": "29abde21f4f5b21f3bef2cbc92ddf2ad488571a8756193bfc4302b5d76559b7c",
+      "capturedAt": "2026-11-04T06:05:15.222576+00:00",
+      "dimensions": [
+        390,
+        844
+      ],
+      "directlyViewedByQA06": true,
+      "newCapture": false
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-gifts-390.png",
+      "bytes": 64246,
+      "sha256": "7ea3ceea686ce0269a7e27bb8c4009df08299f1218a350f8a54fbbdc59d4c192",
+      "capturedAt": "2026-11-04T06:05:15.304613+00:00",
+      "dimensions": [
+        390,
+        844
+      ],
+      "directlyViewedByQA06": true,
+      "newCapture": false
+    }
+  ],
+  "sourcePinsReadOnly": {
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "ad579f6068843f1a0d8217ef85e5d4dc6738dd2c8514253e331f11fe0b2a1018",
+    "frontend/src/features/places/ui/places.css": "b0dfbaeb3c764272e16d66efa11ca0b8cf5fda0be651108a701aa9d6b4e7ecdd",
+    "frontend/src/features/places/ui/reference-scene/viewport.ts": "103e8128db881eeaf146da8ea869f6260f045d6e36fc2387edc35b1682faf282",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "fbc4f1f88f45eae6b1c1db581c6354bee79f3423cb31537153c537045090976e",
+    "frontend/src/features/places/ui/reference-scene/map-service-links.tsx": "3f19f80a84b148fa088889dea5237f62edcd3a7b12069d313a44eaf3a625db93",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "3dca2fe0cc22f1dd3b21c1e3fc738d90d4f17c7da6fa09e047729c34ba27679a"
+  },
+  "nativeReport": {
+    "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/native.json",
+    "sha256": "56783b58d6ddcf180c22edf57220da4a2702d06e7de4e362505cd3232f09d1ad"
+  },
+  "capturePacket": {
+    "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/capture-packet.json",
+    "sha256": "8bf5141ff06c1d2da8efbf27f5c6eb6f6dc12e4667bf90865830eba325ec9a2e"
+  },
+  "routeReportReadback": [
+    {
+      "intent": "feed",
+      "path": "/feed",
+      "heading": "Feed",
+      "activation": "touch",
+      "backFocus": true
+    },
+    {
+      "intent": "wall",
+      "path": "/wall",
+      "heading": "Wall",
+      "activation": "touch",
+      "backFocus": true
+    },
+    {
+      "intent": "meet",
+      "path": "/meet",
+      "heading": "Meet",
+      "activation": "keyboard",
+      "backFocus": true
+    },
+    {
+      "intent": "gifts",
+      "path": "/gifts",
+      "heading": "Gifts",
+      "activation": "keyboard",
+      "backFocus": true
+    }
+  ],
+  "guardContext": {
+    "feed": "Unavailable for current account/event",
+    "wall": "Unavailable until qualified world scene; not live editor",
+    "meet": "Event access required; party creation unavailable",
+    "gifts": "Feature disabled"
+  },
+  "findings": [
+    {
+      "id": "MAP-COHORT-01",
+      "topic": "Framing and chrome",
+      "observation": "The saved390x844 image has one visible MAP titlebar with cream type, restrained weathering, cream frame and three real window controls. It no longer shows the old densely nested line motif in the same way. The red rectangle on the MAP heading is focus, not decorative accent. The human target includes an account-style header and MAP/PARADISE CITY context; current MAP title and functional controls are genuine product chrome.",
+      "disposition": "Source6ca52f88 only. Do not infer later213 0ee51c16 or current-master pixels, remove focus, invent level/currency, or alter preserved layout under background-only direction."
+    },
+    {
+      "id": "MAP-ASPECT-01",
+      "topic": "Source bounds and aspect fit",
+      "observation": "The844px frame visibly has approximately40px flat olive space above and below the scene within the map viewport. Existing754px companion of the SAME source mostly consumes that space and shows the same map composition at the target guide aspect. The target map phone is roughly390x754, so844-versus-target alone cannot diagnose a scene-scale defect.",
+      "sourceDiagnosis": "places.css portrait plane uses margin:auto; mapViewport keeps source aspect and fit bounds. This is presentation fitting, not authoritative world-camera/geometry.",
+      "disposition": "Record aspect/fit as observed. No stretch/crop, source/geometry/feet/camera/character sizing change or added objects to hide bands. Warm background treatment may be proposed only within an explicitly assigned background scope."
+    },
+    {
+      "id": "MAP-CONTROLS-01",
+      "topic": "Control presentation",
+      "observation": "Zoom is upper-right in844px and lower-right in754px. Both retain44px real controls. Places/Legend/Fit map/Reset view and explicit virtual/no-physical-arrival caption take a real lower row absent from the illustrative target.",
+      "sourceDiagnosis": "spatialV5ZoomTop chooses a position minimizing overlap with authored label obstacles; caption/tools remain separate. Native report has no covered labels or horizontal overflow in the first case and all four Back-focus checks pass.",
+      "disposition": "No new functional control defect established. Do not force target bottom placement over labels, shrink targets, remove genuine tools/caption, or treat saved screenshots as a new interaction run."
+    },
+    {
+      "id": "MAP-SERVICES-01",
+      "topic": "Type, plaques and semantic service presentation",
+      "observation": "Six labels are legible; MAIN STAGE/PLAZA remain scenery and WALL/FEED/MEET/GIFTS use grid/message/people/gift icons at intended map locations. MEET/GIFTS plaques are taller and visually bolder than the target single/split short labels; the service words are the real MCR adaptation. Links overlay authored label rectangles transparently with minimum44px targets.",
+      "disposition": "Semantic service labels and route adaptation are correct in this bounded saved cohort. Plaque/type differences from historical collage remain observations; typography/text/controls/layout are frozen for the new background-only correction, so no type/plaque correction is requested."
+    },
+    {
+      "id": "MAP-BACKGROUND-01",
+      "topic": "New warm/playful/cozy direction",
+      "observation": "This capture predates the new background-only direction: black outer surround and muted olive fit bands remain visible. The retained dark collage is a foreground/function reference, not a current background acceptance target. The saved Meet/Gifts guard frames also retain dark marching footer silhouettes.",
+      "disposition": "Route exact cohort/context to Root/shared-background incumbent and Social background allocator for their already-coordinated disjoint proposals. No QA06 application/source/asset grant, new parallel capture, blanket palette rewrite, text/contrast/geometry change, or demand to recreate cemetery/marcher backdrops."
+    },
+    {
+      "id": "MAP-ART-BOUNDARY-01",
+      "topic": "Scene art differences",
+      "observation": "Target and current scene still differ visibly in foliage/color distribution, roof and central-complex massing and landscape density.",
+      "disposition": "Artist231 already owns actual canopy/roof/density/massing diagnosis. No duplicate source diagnosis/export/proxy analysis or asset proposal here. Unadopted canopy overlay is not in this frame."
+    }
+  ],
+  "privacy": "Source owner qualified synthetic virtual-only content; QA06 directly viewed6savedframes and exacthumanJPEG. No visible credentials/tokens/realaccount/location; no physical arrival inferred. Raw request logs are not recopied.",
+  "cohortLimits": [
+    "Old49-object architecture frame is preserved and not substituted for new51-object frame",
+    "754px companion comes from same6ca52f88 run; no stretch/crop/newcapture",
+    "Later0ee51c16 property correction/currentmaster pixels not qualified here; owner reuse/applicability proof remains separate",
+    "Strict self-source RGBA parity and51object count are not actualhuman fidelity proof",
+    "FE32 componentMOCK_READY does not turn Wallguard into editor proof",
+    "Wholetenfidelity, physical iOS/Android/softwarekeyboard/safearea/publicflow/live-save criteria remain open"
+  ],
+  "workPerformed": "Direct saved-image/source/report readback, byte-preserved2PNG copies, static JSON/HTML/docs; no source change, browser/native/export/matrix/test/build/device request/slot claim or goal closure Latest exact attachment independently hash/byte-matched to preserved JPEG; target meaning updated, no new image or source pixels.",
+  "comparisonRole": "NEW_READY_BEFORE_BASELINE_FOR_SUPERSEDING_CUTE_BACKGROUND_DIRECTION",
+  "afterComparison": "NOT_RUN: exact owner390 Map+World AFTER cohorts not yet supplied; no blind fullten repeat",
+  "backgroundOnlyGuidance": [
+    "Use actual6ca52f88 Map390 as BEFORE; warm/playful/cozy backdrop and ornaments must look visibly cuter than both the preserved collage and this current UI.",
+    "Keep actual controls/text/typography/layout and character/atlas/rendering/anchors/crop/framing/sizing unchanged. Existing olive aspect-fit bands may receive assigned backdrop treatment, not geometry/fit/viewport changes.",
+    "Preserve44px/focus/contrast/virtual-caption semantics and all unavailable/access/disabled guards; no fake activity/mural/providers/media/arrival.",
+    "Do not require black cemetery or marching silhouettes to match the old collage. Shared decorative changes remain213scope; avoid decorative left accent lines/rails.",
+    "Consume owner-supplied actual390 Map+World BEFORE/AFTER first and relevant affectedwidth evidence later in21d singlequeue; record exact new source/time/viewport/hash and art/geometry invariants. No self-source pixeloracle/51count acceptance."
+  ]
+}
