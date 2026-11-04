@@ -1,0 +1,48 @@
+{
+  "result": "PASS",
+  "qualification": "Six real hand-cut garment parts; source pixels outside explicit hand windows unchanged. Unfitted: not skin/body-hand joint or production admission.",
+  "cases": [
+    {
+      "sourceLocation": "row1-col1",
+      "removedHandPixels": 2374,
+      "retained": 30164,
+      "retainedWhite": 41,
+      "outsideHandWindowPixelChanges": 0
+    },
+    {
+      "sourceLocation": "row1-col2",
+      "removedHandPixels": 2407,
+      "retained": 30116,
+      "retainedWhite": 282,
+      "outsideHandWindowPixelChanges": 0
+    },
+    {
+      "sourceLocation": "row1-col3",
+      "removedHandPixels": 340,
+      "retained": 31559,
+      "retainedWhite": 0,
+      "outsideHandWindowPixelChanges": 0
+    },
+    {
+      "sourceLocation": "row1-col4",
+      "removedHandPixels": 2341,
+      "retained": 35280,
+      "retainedWhite": 60,
+      "outsideHandWindowPixelChanges": 0
+    },
+    {
+      "sourceLocation": "row3-col2",
+      "removedHandPixels": 848,
+      "retained": 33516,
+      "retainedWhite": 446,
+      "outsideHandWindowPixelChanges": 0
+    },
+    {
+      "sourceLocation": "row4-col4",
+      "removedHandPixels": 1552,
+      "retained": 36052,
+      "retainedWhite": 0,
+      "outsideHandWindowPixelChanges": 0
+    }
+  ]
+}

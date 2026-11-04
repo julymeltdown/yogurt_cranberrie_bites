@@ -1,0 +1,434 @@
+{
+  "result": "PASS",
+  "qualification": "Original-pixel articulated FRONT-only gait, isolated Canvas consumer, no full-direction/product admission.",
+  "errors": [],
+  "cases": [
+    {
+      "width": 360,
+      "frames": 30,
+      "themes": 3,
+      "contexts": 5,
+      "themeIdentityInvariant": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "frames": 30,
+      "themes": 3,
+      "contexts": 5,
+      "themeIdentityInvariant": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 430,
+      "frames": 30,
+      "themes": 3,
+      "contexts": 5,
+      "themeIdentityInvariant": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "pixels": {
+    "frames": [
+      {
+        "preset": "photo01-front-01",
+        "pose": "idle",
+        "opaque": 2122,
+        "limbRegionPixels": 374,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "5c825f58ad9a954cdecb3f01cfec3e02fd906e40d77e857477bff03e5a5d79c6"
+      },
+      {
+        "preset": "photo01-front-01",
+        "pose": "walk-0-left-contact",
+        "opaque": 2104,
+        "limbRegionPixels": 354,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "b854429a8f5ce395b9a92437e43cc8476dd3a4635619a5433f48a22ba4ac62fb"
+      },
+      {
+        "preset": "photo01-front-01",
+        "pose": "walk-1-left-passing",
+        "opaque": 2115,
+        "limbRegionPixels": 366,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "c2f10bea6e6450024a5ed679dc8752c052f09e797383413a87c598f2b98035bb"
+      },
+      {
+        "preset": "photo01-front-01",
+        "pose": "walk-2-right-contact",
+        "opaque": 2105,
+        "limbRegionPixels": 355,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "a5da76bad396f0561b7671cd87de7ea3e7644a25e2bfb48d4b3de81fc48ec22a"
+      },
+      {
+        "preset": "photo01-front-01",
+        "pose": "walk-3-right-passing",
+        "opaque": 2114,
+        "limbRegionPixels": 365,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "40249178756e90294f191a01934d39851e5709e6d5dd1189bdf62e97617dafa0"
+      },
+      {
+        "preset": "photo01-front-02",
+        "pose": "idle",
+        "opaque": 2161,
+        "limbRegionPixels": 395,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      },
+      {
+        "preset": "photo01-front-02",
+        "pose": "walk-0-left-contact",
+        "opaque": 2136,
+        "limbRegionPixels": 369,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "1144b83ebdae36014a2c7de84a85f3da2d944827091598443df50d8d82ad6dfd"
+      },
+      {
+        "preset": "photo01-front-02",
+        "pose": "walk-1-left-passing",
+        "opaque": 2150,
+        "limbRegionPixels": 384,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "e9572993392c7d0f9e0aa35d6c34bfd1bac4d42e3b557ca91b1819c4eb714be5"
+      },
+      {
+        "preset": "photo01-front-02",
+        "pose": "walk-2-right-contact",
+        "opaque": 2135,
+        "limbRegionPixels": 369,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "4e8be9b95f8f591dca875d06f410e51e77ecee3145f6109f211bcec01ab29705"
+      },
+      {
+        "preset": "photo01-front-02",
+        "pose": "walk-3-right-passing",
+        "opaque": 2148,
+        "limbRegionPixels": 382,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "8005d5e1b26f704563a5853e06089ffd9d109377203507e72296cac9d0ef7e43"
+      },
+      {
+        "preset": "photo01-front-03",
+        "pose": "idle",
+        "opaque": 2117,
+        "limbRegionPixels": 388,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "3192f3f4bc2f5fc8cd7a8075dc25857e0acd3cfc92978ac9417c76085f3aeb51"
+      },
+      {
+        "preset": "photo01-front-03",
+        "pose": "walk-0-left-contact",
+        "opaque": 2104,
+        "limbRegionPixels": 375,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "f6add5d19e0ad1711a71e71a879c659d92d2dd328c2088374b875b1c3f838b4f"
+      },
+      {
+        "preset": "photo01-front-03",
+        "pose": "walk-1-left-passing",
+        "opaque": 2109,
+        "limbRegionPixels": 380,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "eb6a79856252b7213f44b9a159b9db3f7a88bf7828a08c6fc0a6d844c40c470a"
+      },
+      {
+        "preset": "photo01-front-03",
+        "pose": "walk-2-right-contact",
+        "opaque": 2101,
+        "limbRegionPixels": 372,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "86cb2bc75fdd91a0a1764d7e0642e6f799ddf6cea45717f8523bb7a2885bea2f"
+      },
+      {
+        "preset": "photo01-front-03",
+        "pose": "walk-3-right-passing",
+        "opaque": 2105,
+        "limbRegionPixels": 376,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "160802cdb504ff86c18ed1f4e9aaec67e44ae43ab9054a0726dffedbdc06fca1"
+      },
+      {
+        "preset": "photo01-front-04",
+        "pose": "idle",
+        "opaque": 2373,
+        "limbRegionPixels": 439,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "7d9dd74b1d5e8612797ca8d0221bf370699f4deca7e3784056b1ed11d5944e70"
+      },
+      {
+        "preset": "photo01-front-04",
+        "pose": "walk-0-left-contact",
+        "opaque": 2350,
+        "limbRegionPixels": 416,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "3ab6ca9058e20afc8c8c2276ab9cb24a96a344b7015f7dc6703a9254be767c3d"
+      },
+      {
+        "preset": "photo01-front-04",
+        "pose": "walk-1-left-passing",
+        "opaque": 2362,
+        "limbRegionPixels": 428,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "aa951d3a940c27e71db87b22f8d6364a28731f87d80129e1bad2d1b2119fac12"
+      },
+      {
+        "preset": "photo01-front-04",
+        "pose": "walk-2-right-contact",
+        "opaque": 2352,
+        "limbRegionPixels": 417,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "42657069442a7c344376c35b1c9e0646dabc08fd12fd5e598baa8cc1aa70bf44"
+      },
+      {
+        "preset": "photo01-front-04",
+        "pose": "walk-3-right-passing",
+        "opaque": 2359,
+        "limbRegionPixels": 425,
+        "bounds": [
+          4,
+          4,
+          59,
+          59
+        ],
+        "pixelSha256": "ed343185eeaf405e8ab87fb50a5857f74d112dfc70061793d0cb23875acd8fae"
+      },
+      {
+        "preset": "photo01-front-05",
+        "pose": "idle",
+        "opaque": 2216,
+        "limbRegionPixels": 434,
+        "bounds": [
+          2,
+          4,
+          61,
+          59
+        ],
+        "pixelSha256": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8"
+      },
+      {
+        "preset": "photo01-front-05",
+        "pose": "walk-0-left-contact",
+        "opaque": 2191,
+        "limbRegionPixels": 409,
+        "bounds": [
+          2,
+          4,
+          61,
+          59
+        ],
+        "pixelSha256": "47231d8cbb3741e72447e103afd0b364c3f1b2de7c19bf937bc2125665ec3856"
+      },
+      {
+        "preset": "photo01-front-05",
+        "pose": "walk-1-left-passing",
+        "opaque": 2197,
+        "limbRegionPixels": 415,
+        "bounds": [
+          2,
+          4,
+          61,
+          59
+        ],
+        "pixelSha256": "73ac71494fcc02ff079ebf4b6f1a8f1bbf820a342d2b2801297633a857b6d98d"
+      },
+      {
+        "preset": "photo01-front-05",
+        "pose": "walk-2-right-contact",
+        "opaque": 2192,
+        "limbRegionPixels": 410,
+        "bounds": [
+          2,
+          4,
+          61,
+          59
+        ],
+        "pixelSha256": "641b225df43899e3e2214658cb3b5b04fd1e2f3a112650de2583698b4eab7dc9"
+      },
+      {
+        "preset": "photo01-front-05",
+        "pose": "walk-3-right-passing",
+        "opaque": 2199,
+        "limbRegionPixels": 417,
+        "bounds": [
+          2,
+          4,
+          61,
+          59
+        ],
+        "pixelSha256": "90e9c511d400d5e5766dd9beb011518d6938516f6e2bc60863480a92e63761d5"
+      },
+      {
+        "preset": "photo01-front-06",
+        "pose": "idle",
+        "opaque": 2239,
+        "limbRegionPixels": 426,
+        "bounds": [
+          5,
+          4,
+          58,
+          59
+        ],
+        "pixelSha256": "63083758170593c022f2488a51e8afd7066e0439bb8754ee2f1aad3c2f3a2b86"
+      },
+      {
+        "preset": "photo01-front-06",
+        "pose": "walk-0-left-contact",
+        "opaque": 2215,
+        "limbRegionPixels": 402,
+        "bounds": [
+          5,
+          4,
+          58,
+          59
+        ],
+        "pixelSha256": "82d6be1981bf2dccc80ac4743da4b27a7e7e6c6ef3e632e2e3376bea76054c9a"
+      },
+      {
+        "preset": "photo01-front-06",
+        "pose": "walk-1-left-passing",
+        "opaque": 2228,
+        "limbRegionPixels": 415,
+        "bounds": [
+          5,
+          4,
+          58,
+          59
+        ],
+        "pixelSha256": "d6cd846332acbeb2fd60e4749c665422b3e7c631cfdff08a4a072938611a4473"
+      },
+      {
+        "preset": "photo01-front-06",
+        "pose": "walk-2-right-contact",
+        "opaque": 2215,
+        "limbRegionPixels": 402,
+        "bounds": [
+          5,
+          4,
+          58,
+          59
+        ],
+        "pixelSha256": "0a7724e503ce47360a1ba613177e63c12488270f730052e148df5988830502b4"
+      },
+      {
+        "preset": "photo01-front-06",
+        "pose": "walk-3-right-passing",
+        "opaque": 2228,
+        "limbRegionPixels": 415,
+        "bounds": [
+          5,
+          4,
+          58,
+          59
+        ],
+        "pixelSha256": "265e3e5efc887e532a96de771adcb70aa6c739bd73f54a2fa24ee4d4b73182e7"
+      }
+    ],
+    "sourceRgbMismatches": 0,
+    "undeclaredTransforms": 0,
+    "headIdentityStable": true,
+    "footRegistration": true
+  },
+  "animation": {
+    "actualRafPhaseChanges": 8,
+    "resetToIdle": true
+  }
+}

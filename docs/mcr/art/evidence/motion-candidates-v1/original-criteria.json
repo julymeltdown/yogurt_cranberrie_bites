@@ -1,0 +1,46 @@
+{
+  "originalTask": "AR03",
+  "status": "IN_PROGRESS",
+  "candidateState": "MOCK_READY",
+  "qualification": "Complete assigned candidate-art categories/poses locally implemented and qualified; no automatic registry/product/Phaser/device/multiuser acceptance.",
+  "counts": {
+    "presets": 6,
+    "directionsPerPreset": 4,
+    "idlePerDirection": 1,
+    "walkPhasesPerDirection": 4,
+    "completePresetFrames": 120,
+    "bodySkinChoices": 8,
+    "hairChoices": 6,
+    "eyeChoices": 4,
+    "outfitChoices": 6,
+    "accessoryChoices": 4,
+    "wardrobePhysicalCellsIncludingCuffMasks": 456,
+    "combinedPhysicalCells": 576
+  },
+  "frameAuthorship": {
+    "suppliedFrontIdleViews": 6,
+    "derivedOriginalPixelFrontWalks": 24,
+    "authoredSideRearIdleViews": 18,
+    "walksArticulatedFromAuthoredSideRearViews": 72
+  },
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    60
+  ],
+  "mobileCssSizes": [
+    56,
+    64,
+    72
+  ],
+  "remainingAssignedArtInput": null,
+  "remainingProductOwnerWork": [
+    "Version public composition/asset admission including skin palettes/cuff masks/rear-eye invisibility and per-direction phase UVs",
+    "Map local art labels to server-authorized inventory/config identities",
+    "Integrate and qualify actual Phaser/editor/application/vertical flows under existing ownership"
+  ],
+  "scopeCuts": []
+}
