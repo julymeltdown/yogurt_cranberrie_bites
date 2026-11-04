@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T17:54:17+09:00**, adding the original IN01 owner-completed milestone to the17:23/17:24KST portfolio reconciliation. Published history was checked through `41b48eb7`; IN01 evidence is delivered at `1bb911c3`. Main reconciled the published owner disposition, terminal-goal relay and publication metadata only; no technical re-review or rerun. All **112 required tasks and61 required IA entries** remain in scope; six optional EX tasks remain outside the denominator.
+Updated **2026-11-04T18:59:39+09:00** from the two 09:52Z portfolio rollups and published history through `bb1345b5`. Main records owner dispositions and publication metadata only, with no code/query/test/screenshot re-review. All **112 required tasks and 61 required IA entries** remain in scope.
 
 ## Current task accounting
 
@@ -77,6 +77,25 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 | Release | Existing lane-level source/native/browser receipts are preserved. | **IN01 completed; IN02–IN05 remain open.** Real devices, accessibility, capacity/recovery, qualified real-stack startup, remaining physical-place/operator inputs and full 61-entry IA accounting remain open. |
 
 ## Portfolio and staffing update
+
+The 09:52Z owner/SL rollups add **no new unique original-task closure**. The current total stays **39/112**:13 recorded acceptance dispositions and26 additional task-criteria outcomes. FE40's final owner closure, source `bd20356a`, publication `4d501d92` and readback `baad4944` strengthen its already-counted MOCK_READY client row. Counting that row again would inflate progress. C07 and QA10 remain unreconciled; original IN01 remains accepted and IN02–IN05 remain open.
+
+| Major work | Current owner-reported outcome | Remaining action/owner |
+| --- | --- | --- |
+| Backend production composition | CF02 and CF03 are accepted disjoint development assignments. Partial cases passed, but each full qualification result remains failed. Supporting restore/Intro/notification/mural increments are published. | Responsible developers fix and requalify; Root startup uses actual prerequisites. No supporting increment is promoted to original-task completion. |
+| Reference frontend | Landing and Feed CSS passes are published through `bb1345b5`; Archive root, C07 client/fixture and focus deliveries are published through `4d501d92`. | Whole ten-screen parity remains open. Nine foreground CSS workers use isolated ownership and hand off directly to Root153, without SL/king review. |
+| Map, Customize and Feed integration | Existing owners hold the Map-only production/ground work, approved Customize layer options, and authorized Feed attachment work. | Map owner26e/artist231 must deliver four working links across three eras and actual default-app binding while preserving World. Avatar and Social/media owners retain the other gaps. |
+| Wall tools | The reference shows controls beyond the original explicit single-pixel scope. One existing backend contract owner is preparing options with frontend204. | Proposal owner6ec9 writes `product-decisions/wall-reference-tools.md`; a bounded product choice remains pending. No fake controls or silent contract expansion. |
+| Capacity | Owners preserved history/proofs and reclaimed closed outputs plus two completed worktrees. Capacity briefly recovered16.1–17GiB, then dipped below the16GiB start gate again. | Existing owner230 continues a bounded retirement of up to two completed worktrees. Active/frozen worktrees, shared targets, user originals and resource limits stay protected. |
+| Original integration/release | C07's bounded leaf is published, while whole C07 is unreconciled. QA05/QA08 remain partial and live IN02–IN04 are not established by these receipts. | Original owners continue real-stack, multiuser, device, reference and final61-entry IA obligations. |
+
+The recent50-chat snapshot contains5 active coordinators and11 active developer/art/QA chats, plus9 idle and12 not-loaded entries. This is an activity snapshot, not a source-writer or completed-goal count. Finished owners return leases and are reused for ready related work. Required UI reference comparisons and original integration work receive fair bounded rounds; neither is optional polish and neither waits behind an entire other lane.
+
+Feed content authority is now explicit for local reference qualification: use a provenance-recorded derivative of the Feed media in the supplied target, with its wide thumbnail crop and original dimensions retained for detail. Unrelated synthetic venue overviews are not approved Feed photos. Fixture media must not become fabricated real user posts; actual production authorization and contracts stay unchanged. Existing owners still must deliver and compare the result.
+
+The foreground directive supersedes the earlier backgrounds-only description for the nine listed screens: Landing, Sign in, Map, Customize, Feed, Meet, Giveaway, Wall and My Profile. World, character artwork and separately assigned backgrounds retain their own ownership. See the published [foreground ownership correction](scrum/community.md#current-foreground-css-ownership--human-correction).
+
+## Historical portfolio and staffing update
 
 The latest milestone reconciliation records **39/112 task-criteria outcomes (34.8% by task count)**:13 recorded acceptance dispositions and26 additional original-task closures. Recorded ACCEPTED dispositions alone are13/112 (11.6%). These are separate measures, not an effort-weighted whole-product estimate. Another67 original tasks have partial implementation evidence,2 remain unreconciled, and4 integration/release gates remain open. The17:23/17:24KST portfolio snapshots had no new closures; the later owner-completed IN01 handoff adds one original outcome.
 

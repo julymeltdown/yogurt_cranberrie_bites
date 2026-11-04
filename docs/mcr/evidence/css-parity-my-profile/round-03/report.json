@@ -1,0 +1,2769 @@
+{
+  "job": "CSS-PARITY-PROFILE-202611041001Z",
+  "base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "candidate": "bf078e2038d03522f542519978338b568ba8878a",
+  "startedAt": "2026-11-04T10:03:21.585Z",
+  "status": "CAPTURED_PENDING_OWNER_VISUAL_COMPARISON",
+  "qualification": "MOCK_READY only: production components/default root with synthetic HTTP/C05; not live services or physical devices",
+  "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "sources": {
+    "frontend/src/features/me/ui/me.css": {
+      "baseline": "037a55c87cc72e6b06cba8fb4d4b35a7ac8356ac98919d1db237d54fa2931a48",
+      "candidate": "f6f49e4e87613cdffbbabbf26373020dbcc55aab90eab1cc0b5c6024db242fef"
+    },
+    "frontend/src/features/profile/reference-presentation/activity.css": {
+      "baseline": "bc19d8a9c1b2c206a32a1274350368635b3cf6b0595161b76466543506d7c998",
+      "candidate": "058c700e07d42d0c5cb27d42d9bfe0fbc519c470af0733463d052906030a3903"
+    }
+  },
+  "cases": [
+    {
+      "stage": "baseline",
+      "width": 390,
+      "errors": [],
+      "status": "PASS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 360,
+            "height": 435.578125,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 360,
+            "height": 208.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 344,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 140.390625,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 174.390625,
+            "y": 74,
+            "width": 192.609375,
+            "height": 24.5625,
+            "font": "800 23.4px / 24.57px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 174.390625,
+            "y": 131.953125,
+            "width": 192.609375,
+            "height": 49.78125,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 220.390625,
+            "width": 344,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 271.390625,
+            "width": 360,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 324.390625,
+            "width": 360,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 402.578125,
+            "width": 344,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 29.1875,
+              "y": 79.1875,
+              "width": 128,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 81,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 141,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 201,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 261,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 137,
+              "y": 275.390625,
+              "width": 116,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 256,
+              "y": 275.390625,
+              "width": 116,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 350.578125,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 403.578125,
+              "width": 344,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 451.578125,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 71.92000000000002,
+              "scrollY": 105,
+              "width": 378,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        },
+        "screenshot": {
+          "file": "baseline-root-390.png",
+          "bytes": 62073,
+          "sha256": "24fc709693f07591cacd1b2f67f2afbb61e20d00d765ebf182c168359fc67b13"
+        },
+        "foreground": {
+          "file": "baseline-root-foreground-390.png",
+          "bytes": 38707,
+          "sha256": "af54e26fd23ede1942f01184fbafb22b7807d3db4a9b4c5dd8b7ad6708ac80c6"
+        }
+      },
+      "fixture": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 6,
+            "y": 34,
+            "width": 378,
+            "height": 582.390625,
+            "font": "14px / 18.2px Arial, sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 9,
+            "y": 81,
+            "width": 372,
+            "height": 208.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 17,
+            "y": 91,
+            "width": 356,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 17,
+            "y": 91,
+            "width": 140.390625,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 168.390625,
+            "y": 92,
+            "width": 204.609375,
+            "height": 24.5625,
+            "font": "800 23.4px / 24.57px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 168.390625,
+            "y": 149.40625,
+            "width": 204.609375,
+            "height": 49.78125,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 17,
+            "y": 238.390625,
+            "width": 356,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 9,
+            "y": 289.390625,
+            "width": 372,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 9,
+            "y": 342.390625,
+            "width": 372,
+            "height": 175,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": {
+            "x": 17,
+            "y": 372.390625,
+            "width": 44,
+            "height": 44,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-options": {
+            "x": 17,
+            "y": 517.390625,
+            "width": 356,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 81,
+              "y": 238.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 141,
+              "y": 238.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 201,
+              "y": 238.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 261,
+              "y": 238.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 135,
+              "y": 293.390625,
+              "width": 120,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 258,
+              "y": 293.390625,
+              "width": 120,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedSee you at the show. Sharing a few photos after the encore.",
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "rect": {
+              "x": 69,
+              "y": 372.390625,
+              "width": 304,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedAnyone else making friendship bracelets for the queue?",
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "rect": {
+              "x": 69,
+              "y": 444.390625,
+              "width": 304,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 17,
+              "y": 518.390625,
+              "width": 356,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 17,
+              "y": 566.390625,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileAvatar preview unavailable. Your saved outfit is unchanged.Synthetic listenerREVENGEmcr / live music / the black parade\nSee you at the show.ActivityPartiesGiftsRecent posts from the loaded event feed page. This is a partial view of activity.Posted to the feedSee you at the show. Sharing a few photos after the encore.4 Nov, 10:00 UTC · 12 reactions · 3 repliesPosted to the feedAnyone else making friendship bracelets for the queue?4 Nov, 09:00 UTC · 8 reactions · 2 repliesProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "screenshot": {
+          "file": "baseline-activity-390.png",
+          "bytes": 80713,
+          "sha256": "60794b1ea5e9d114e551ad25bef91109468eba9c9fb9e72de788ac72f2493375"
+        }
+      }
+    },
+    {
+      "stage": "baseline",
+      "width": 360,
+      "errors": [],
+      "status": "PASS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 330,
+            "height": 424.78125,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 330,
+            "height": 197.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 314,
+            "height": 129.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 129.59375,
+            "height": 129.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 163.59375,
+            "y": 74,
+            "width": 173.40625,
+            "height": 22.671875,
+            "font": "800 21.6px / 22.68px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 163.59375,
+            "y": 130.0625,
+            "width": 173.40625,
+            "height": 49.78125,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 209.59375,
+            "width": 314,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 260.59375,
+            "width": 330,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 313.59375,
+            "width": 330,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 391.78125,
+            "width": 314,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 29,
+              "y": 73.796875,
+              "width": 117.59375,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 66,
+              "y": 209.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 126,
+              "y": 209.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 186,
+              "y": 209.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 246,
+              "y": 209.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 127,
+              "y": 264.59375,
+              "width": 106,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 236,
+              "y": 264.59375,
+              "width": 106,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 339.78125,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 392.78125,
+              "width": 314,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 440.78125,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 82.72000000000003,
+              "scrollY": 105,
+              "width": 348,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        },
+        "screenshot": {
+          "file": "baseline-root-360.png",
+          "bytes": 58735,
+          "sha256": "8d738d11653d7a3393a50309d5ceadf60866b73cb4129516ceae3e350d317e86"
+        },
+        "foreground": {
+          "file": "baseline-root-foreground-360.png",
+          "bytes": 37492,
+          "sha256": "2a536c38880536281fb68e0c11d7b482114becc44f938e8260ba4024ba0741b1"
+        }
+      },
+      "fixture": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 6,
+            "y": 34,
+            "width": 348,
+            "height": 571.59375,
+            "font": "14px / 18.2px Arial, sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 9,
+            "y": 81,
+            "width": 342,
+            "height": 197.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 17,
+            "y": 91,
+            "width": 326,
+            "height": 129.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 17,
+            "y": 91,
+            "width": 129.59375,
+            "height": 129.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 157.59375,
+            "y": 92,
+            "width": 185.40625,
+            "height": 22.671875,
+            "font": "800 21.6px / 22.68px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 157.59375,
+            "y": 147.515625,
+            "width": 185.40625,
+            "height": 49.78125,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 17,
+            "y": 227.59375,
+            "width": 326,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 9,
+            "y": 278.59375,
+            "width": 342,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 9,
+            "y": 331.59375,
+            "width": 342,
+            "height": 175,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": {
+            "x": 17,
+            "y": 361.59375,
+            "width": 44,
+            "height": 44,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-options": {
+            "x": 17,
+            "y": 506.59375,
+            "width": 326,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 66,
+              "y": 227.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 126,
+              "y": 227.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 186,
+              "y": 227.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 246,
+              "y": 227.59375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 125,
+              "y": 282.59375,
+              "width": 110,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 238,
+              "y": 282.59375,
+              "width": 110,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedSee you at the show. Sharing a few photos after the encore.",
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "rect": {
+              "x": 69,
+              "y": 361.59375,
+              "width": 274,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedAnyone else making friendship bracelets for the queue?",
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "rect": {
+              "x": 69,
+              "y": 433.59375,
+              "width": 274,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 17,
+              "y": 507.59375,
+              "width": 326,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 17,
+              "y": 555.59375,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileAvatar preview unavailable. Your saved outfit is unchanged.Synthetic listenerREVENGEmcr / live music / the black parade\nSee you at the show.ActivityPartiesGiftsRecent posts from the loaded event feed page. This is a partial view of activity.Posted to the feedSee you at the show. Sharing a few photos after the encore.4 Nov, 10:00 UTC · 12 reactions · 3 repliesPosted to the feedAnyone else making friendship bracelets for the queue?4 Nov, 09:00 UTC · 8 reactions · 2 repliesProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "screenshot": {
+          "file": "baseline-activity-360.png",
+          "bytes": 77381,
+          "sha256": "6ee802ce9694b271c906359c71a45362f07e300cc3891b91f35a3fa6db69914c"
+        }
+      }
+    },
+    {
+      "stage": "baseline",
+      "width": 430,
+      "errors": [],
+      "status": "PASS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 400,
+            "height": 443.1875,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 400,
+            "height": 216,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 384,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 148,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 182,
+            "y": 74,
+            "width": 225,
+            "height": 27.078125,
+            "font": "800 25.8px / 27.09px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 182,
+            "y": 134.46875,
+            "width": 225,
+            "height": 32.890625,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 228,
+            "width": 384,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 279,
+            "width": 400,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 332,
+            "width": 400,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 410.1875,
+            "width": 384,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 33,
+              "y": 83,
+              "width": 128,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 101,
+              "y": 228,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 161,
+              "y": 228,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 221,
+              "y": 228,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 281,
+              "y": 228,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 150.328125,
+              "y": 283,
+              "width": 129.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 282.65625,
+              "y": 283,
+              "width": 129.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 358.1875,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 411.1875,
+              "width": 384,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 459.1875,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 57.51999999999998,
+              "scrollY": 105,
+              "width": 418,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        },
+        "screenshot": {
+          "file": "baseline-root-430.png",
+          "bytes": 65867,
+          "sha256": "66d2dd7768c1ff2c635972283e1282691c22754dabeee1225664650bdcf15ba0"
+        },
+        "foreground": {
+          "file": "baseline-root-foreground-430.png",
+          "bytes": 41519,
+          "sha256": "12af25df45a5b134a5575d331bfad730de62d9226d77251ee85324eac4ab5a73"
+        }
+      },
+      "fixture": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 6,
+            "y": 34,
+            "width": 418,
+            "height": 590,
+            "font": "14px / 18.2px Arial, sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 9,
+            "y": 81,
+            "width": 412,
+            "height": 216,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 17,
+            "y": 91,
+            "width": 396,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 17,
+            "y": 91,
+            "width": 148,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 176,
+            "y": 92,
+            "width": 237,
+            "height": 27.078125,
+            "font": "800 25.8px / 27.09px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 176,
+            "y": 151.921875,
+            "width": 237,
+            "height": 49.78125,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 17,
+            "y": 246,
+            "width": 396,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 9,
+            "y": 297,
+            "width": 412,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 9,
+            "y": 350,
+            "width": 412,
+            "height": 175,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": {
+            "x": 17,
+            "y": 380,
+            "width": 44,
+            "height": 44,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-options": {
+            "x": 17,
+            "y": 525,
+            "width": 396,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 101,
+              "y": 246,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 161,
+              "y": 246,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 221,
+              "y": 246,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 281,
+              "y": 246,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 148.328125,
+              "y": 301,
+              "width": 133.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 284.65625,
+              "y": 301,
+              "width": 133.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedSee you at the show. Sharing a few photos after the encore.",
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "rect": {
+              "x": 69,
+              "y": 380,
+              "width": 344,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedAnyone else making friendship bracelets for the queue?",
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "rect": {
+              "x": 69,
+              "y": 452,
+              "width": 344,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 17,
+              "y": 526,
+              "width": 396,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 17,
+              "y": 574,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileAvatar preview unavailable. Your saved outfit is unchanged.Synthetic listenerREVENGEmcr / live music / the black parade\nSee you at the show.ActivityPartiesGiftsRecent posts from the loaded event feed page. This is a partial view of activity.Posted to the feedSee you at the show. Sharing a few photos after the encore.4 Nov, 10:00 UTC · 12 reactions · 3 repliesPosted to the feedAnyone else making friendship bracelets for the queue?4 Nov, 09:00 UTC · 8 reactions · 2 repliesProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "screenshot": {
+          "file": "baseline-activity-430.png",
+          "bytes": 83989,
+          "sha256": "a1c35b987af5b71a03d309c45f569fb916b92d79d0e9e18c03d0d3b21b33a739"
+        }
+      }
+    },
+    {
+      "stage": "candidate",
+      "width": 390,
+      "errors": [],
+      "status": "PASS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 360,
+            "height": 446.296875,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 360,
+            "height": 221.109375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 344,
+            "height": 151.109375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 140.390625,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 174.390625,
+            "y": 74,
+            "width": 192.609375,
+            "height": 58.9375,
+            "font": "800 28.08px / 29.484px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 174.390625,
+            "y": 171.734375,
+            "width": 192.609375,
+            "height": 52.375,
+            "font": "14px / 18.2px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 233.109375,
+            "width": 344,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 284.109375,
+            "width": 360,
+            "height": 51,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 335.109375,
+            "width": 360,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 413.296875,
+            "width": 344,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 29.1875,
+              "y": 79.1875,
+              "width": 128,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 51,
+              "y": 233.109375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 131,
+              "y": 233.109375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 211,
+              "y": 233.109375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 291,
+              "y": 233.109375,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 135,
+              "y": 287.109375,
+              "width": 120,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 255,
+              "y": 287.109375,
+              "width": 120,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 361.296875,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 414.296875,
+              "width": 344,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 462.296875,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 71.92000000000002,
+              "scrollY": 105,
+              "width": 378,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        },
+        "screenshot": {
+          "file": "candidate-root-390.png",
+          "bytes": 64104,
+          "sha256": "c75494eb0006f6159719027b33fc399f8e81209f711736192c015f2cd2e6387c"
+        },
+        "foreground": {
+          "file": "candidate-root-foreground-390.png",
+          "bytes": 40785,
+          "sha256": "955d18e9dddeafebf9265e173118430512f662a8df59e671fe1e1f4904493769"
+        }
+      },
+      "fixture": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 6,
+            "y": 34,
+            "width": 378,
+            "height": 594.921875,
+            "font": "14px / 18.2px Arial, sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 9,
+            "y": 81,
+            "width": 372,
+            "height": 210.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 17,
+            "y": 91,
+            "width": 356,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 17,
+            "y": 91,
+            "width": 140.390625,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 168.390625,
+            "y": 92,
+            "width": 204.609375,
+            "height": 29.46875,
+            "font": "800 28.08px / 29.484px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 168.390625,
+            "y": 159.65625,
+            "width": 204.609375,
+            "height": 52.375,
+            "font": "14px / 18.2px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 17,
+            "y": 240.390625,
+            "width": 356,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 9,
+            "y": 291.390625,
+            "width": 372,
+            "height": 51,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 9,
+            "y": 342.390625,
+            "width": 372,
+            "height": 187.53125,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": {
+            "x": 17,
+            "y": 377.234375,
+            "width": 52,
+            "height": 52,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-options": {
+            "x": 17,
+            "y": 529.921875,
+            "width": 356,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 47.390625,
+              "y": 240.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 129.796875,
+              "y": 240.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 212.1875,
+              "y": 240.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 294.59375,
+              "y": 240.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 133,
+              "y": 294.390625,
+              "width": 124,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 257,
+              "y": 294.390625,
+              "width": 124,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedSee you at the show. Sharing a few photos after the encore.",
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "rect": {
+              "x": 79,
+              "y": 377.234375,
+              "width": 294,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedAnyone else making friendship bracelets for the queue?",
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "rect": {
+              "x": 79,
+              "y": 453.078125,
+              "width": 294,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 17,
+              "y": 530.921875,
+              "width": 356,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 17,
+              "y": 578.921875,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileAvatar preview unavailable. Your saved outfit is unchanged.Synthetic listenerREVENGEmcr / live music / the black parade\nSee you at the show.ActivityPartiesGiftsRecent posts from the loaded event feed page. This is a partial view of activity.Posted to the feedSee you at the show. Sharing a few photos after the encore.4 Nov, 10:00 UTC · 12 reactions · 3 repliesPosted to the feedAnyone else making friendship bracelets for the queue?4 Nov, 09:00 UTC · 8 reactions · 2 repliesProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "screenshot": {
+          "file": "candidate-activity-390.png",
+          "bytes": 84451,
+          "sha256": "88ecbfdb7cf96e8a6d7d8dea55328085b56288edb015a10b38a26cb177d48627"
+        }
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgb(161, 33, 44)",
+        "shadow": "none",
+        "screenshot": {
+          "file": "candidate-keyboard-390.png",
+          "bytes": 84834,
+          "sha256": "6a44bd3f2149dec93d2146b5f3a50507104173b7830f81f3acba269c1891c507"
+        }
+      },
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgba(5, 0, 73, 0.8)"
+      },
+      "interactions": "PASS: route actions, options, keyboard/forced focus, edit cancel, privacy scrub, loading/error/empty/long/unavailable/expired"
+    },
+    {
+      "stage": "candidate",
+      "width": 360,
+      "errors": [],
+      "status": "PASS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 330,
+            "height": 441.765625,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 330,
+            "height": 216.578125,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 314,
+            "height": 146.578125,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 129.59375,
+            "height": 129.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 163.59375,
+            "y": 74,
+            "width": 173.40625,
+            "height": 54.40625,
+            "font": "800 25.92px / 27.216px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 163.59375,
+            "y": 167.203125,
+            "width": 173.40625,
+            "height": 52.375,
+            "font": "14px / 18.2px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 228.578125,
+            "width": 314,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 279.578125,
+            "width": 330,
+            "height": 51,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 330.578125,
+            "width": 330,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 408.765625,
+            "width": 314,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 29,
+              "y": 73.796875,
+              "width": 117.59375,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 45,
+              "y": 228.578125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 119,
+              "y": 228.578125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 193,
+              "y": 228.578125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 267,
+              "y": 228.578125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 125,
+              "y": 282.578125,
+              "width": 110,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 235,
+              "y": 282.578125,
+              "width": 110,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 356.765625,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 409.765625,
+              "width": 314,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 457.765625,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 82.72000000000003,
+              "scrollY": 105,
+              "width": 348,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        },
+        "screenshot": {
+          "file": "candidate-root-360.png",
+          "bytes": 61263,
+          "sha256": "6367011c8de4ce466cd628779b8a9dfb5f967a6a84000164789a02031a80cbb7"
+        },
+        "foreground": {
+          "file": "candidate-root-foreground-360.png",
+          "bytes": 39980,
+          "sha256": "e4ee81a7460f497c8dd544e8c284c7a03c760bf456c567c5133d93cf8bb57811"
+        }
+      },
+      "fixture": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 6,
+            "y": 34,
+            "width": 348,
+            "height": 591.484375,
+            "font": "14px / 18.2px Arial, sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 9,
+            "y": 81,
+            "width": 342,
+            "height": 206.953125,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 17,
+            "y": 91,
+            "width": 326,
+            "height": 136.953125,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 17,
+            "y": 91,
+            "width": 129.59375,
+            "height": 129.59375,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 157.59375,
+            "y": 92,
+            "width": 185.40625,
+            "height": 27.203125,
+            "font": "800 25.92px / 27.216px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 157.59375,
+            "y": 157.390625,
+            "width": 185.40625,
+            "height": 70.5625,
+            "font": "14px / 18.2px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 17,
+            "y": 236.953125,
+            "width": 326,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 9,
+            "y": 287.953125,
+            "width": 342,
+            "height": 51,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 9,
+            "y": 338.953125,
+            "width": 342,
+            "height": 187.53125,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": {
+            "x": 17,
+            "y": 373.796875,
+            "width": 52,
+            "height": 52,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-options": {
+            "x": 17,
+            "y": 526.484375,
+            "width": 326,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 41.390625,
+              "y": 236.953125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 117.796875,
+              "y": 236.953125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 194.1875,
+              "y": 236.953125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 270.59375,
+              "y": 236.953125,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 123,
+              "y": 290.953125,
+              "width": 114,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 237,
+              "y": 290.953125,
+              "width": 114,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedSee you at the show. Sharing a few photos after the encore.",
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "rect": {
+              "x": 79,
+              "y": 373.796875,
+              "width": 264,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedAnyone else making friendship bracelets for the queue?",
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "rect": {
+              "x": 79,
+              "y": 449.640625,
+              "width": 264,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 17,
+              "y": 527.484375,
+              "width": 326,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 17,
+              "y": 575.484375,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileAvatar preview unavailable. Your saved outfit is unchanged.Synthetic listenerREVENGEmcr / live music / the black parade\nSee you at the show.ActivityPartiesGiftsRecent posts from the loaded event feed page. This is a partial view of activity.Posted to the feedSee you at the show. Sharing a few photos after the encore.4 Nov, 10:00 UTC · 12 reactions · 3 repliesPosted to the feedAnyone else making friendship bracelets for the queue?4 Nov, 09:00 UTC · 8 reactions · 2 repliesProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "screenshot": {
+          "file": "candidate-activity-360.png",
+          "bytes": 81945,
+          "sha256": "21759626e02318dceb94a4b0dfa3913ea4ac4e3194975136bfd49d5ecff0e3d0"
+        }
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgb(161, 33, 44)",
+        "shadow": "none"
+      },
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgba(5, 0, 73, 0.8)"
+      },
+      "interactions": "PASS: route actions, options, keyboard/forced focus, edit cancel, privacy scrub, loading/error/empty/long/unavailable/expired"
+    },
+    {
+      "stage": "candidate",
+      "width": 430,
+      "errors": [],
+      "status": "PASS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 400,
+            "height": 443.1875,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 400,
+            "height": 218,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 384,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 148,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 182,
+            "y": 74,
+            "width": 225,
+            "height": 32.5,
+            "font": "800 30.96px / 32.508px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 182,
+            "y": 145.296875,
+            "width": 225,
+            "height": 34.1875,
+            "font": "14px / 18.2px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 230,
+            "width": 384,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 281,
+            "width": 400,
+            "height": 51,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 332,
+            "width": 400,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 410.1875,
+            "width": 384,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 33,
+              "y": 83,
+              "width": 128,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 59,
+              "y": 230,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 147,
+              "y": 230,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 235,
+              "y": 230,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 323,
+              "y": 230,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 148.328125,
+              "y": 284,
+              "width": 133.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 281.65625,
+              "y": 284,
+              "width": 133.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 358.1875,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 411.1875,
+              "width": 384,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 459.1875,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 57.51999999999998,
+              "scrollY": 105,
+              "width": 418,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        },
+        "screenshot": {
+          "file": "candidate-root-430.png",
+          "bytes": 66785,
+          "sha256": "3bb5ae2c8446c9c5fbbd7f79ab1937bb318887ee15359ebd66ec3c6aeabe223f"
+        },
+        "foreground": {
+          "file": "candidate-root-foreground-430.png",
+          "bytes": 42344,
+          "sha256": "fad1104d9f317c3c7fe36696f6730315a355e331212fbe6b4494b3dde066e7c9"
+        }
+      },
+      "fixture": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 6,
+            "y": 34,
+            "width": 418,
+            "height": 602.53125,
+            "font": "14px / 18.2px Arial, sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 9,
+            "y": 81,
+            "width": 412,
+            "height": 218,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 17,
+            "y": 91,
+            "width": 396,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 17,
+            "y": 91,
+            "width": 148,
+            "height": 148,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 176,
+            "y": 92,
+            "width": 237,
+            "height": 32.5,
+            "font": "800 30.96px / 32.508px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 176,
+            "y": 162.6875,
+            "width": 237,
+            "height": 52.375,
+            "font": "14px / 18.2px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 17,
+            "y": 248,
+            "width": 396,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 9,
+            "y": 299,
+            "width": 412,
+            "height": 51,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 9,
+            "y": 350,
+            "width": 412,
+            "height": 187.53125,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": {
+            "x": 17,
+            "y": 384.84375,
+            "width": 52,
+            "height": 52,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-options": {
+            "x": 17,
+            "y": 537.53125,
+            "width": 396,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 55.390625,
+              "y": 248,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 145.796875,
+              "y": 248,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 236.1875,
+              "y": 248,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 326.59375,
+              "y": 248,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 146.328125,
+              "y": 302,
+              "width": 137.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 283.65625,
+              "y": 302,
+              "width": 137.328125,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedSee you at the show. Sharing a few photos after the encore.",
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "rect": {
+              "x": 79,
+              "y": 384.84375,
+              "width": 334,
+              "height": 44
+            }
+          },
+          {
+            "label": "Posted to the feedAnyone else making friendship bracelets for the queue?",
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "rect": {
+              "x": 79,
+              "y": 460.6875,
+              "width": 334,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 17,
+              "y": 538.53125,
+              "width": 396,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 17,
+              "y": 586.53125,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileAvatar preview unavailable. Your saved outfit is unchanged.Synthetic listenerREVENGEmcr / live music / the black parade\nSee you at the show.ActivityPartiesGiftsRecent posts from the loaded event feed page. This is a partial view of activity.Posted to the feedSee you at the show. Sharing a few photos after the encore.4 Nov, 10:00 UTC · 12 reactions · 3 repliesPosted to the feedAnyone else making friendship bracelets for the queue?4 Nov, 09:00 UTC · 8 reactions · 2 repliesProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "screenshot": {
+          "file": "candidate-activity-430.png",
+          "bytes": 87373,
+          "sha256": "00f5a4496ec5f1e2bd7155eca3c3265f9cbb26402f56524840d54f84ba524422"
+        }
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgb(161, 33, 44)",
+        "shadow": "none"
+      },
+      "forcedFocus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgba(5, 0, 73, 0.8)"
+      },
+      "interactions": "PASS: route actions, options, keyboard/forced focus, edit cancel, privacy scrub, loading/error/empty/long/unavailable/expired"
+    }
+  ],
+  "errors": [],
+  "limits": {
+    "whole": 209715200,
+    "temp": 167772160,
+    "durable": 31457280
+  },
+  "peaks": {
+    "whole": 55719148,
+    "temp": 51924122,
+    "durable": 3795026
+  },
+  "minFree": 19528253440,
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T10:03:36.267Z",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "tempRemoved": true
+  }
+}

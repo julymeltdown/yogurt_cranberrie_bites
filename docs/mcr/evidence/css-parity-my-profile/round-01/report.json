@@ -1,0 +1,268 @@
+{
+  "job": "CSS-PARITY-PROFILE-202611041001Z",
+  "base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "candidate": "bf078e2038d03522f542519978338b568ba8878a",
+  "startedAt": "2026-11-04T10:01:15.479Z",
+  "status": "FAIL",
+  "qualification": "MOCK_READY only: production components/default root with synthetic HTTP/C05; not live services or physical devices",
+  "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "sources": {
+    "frontend/src/features/me/ui/me.css": {
+      "baseline": "037a55c87cc72e6b06cba8fb4d4b35a7ac8356ac98919d1db237d54fa2931a48",
+      "candidate": "a7cf53033fa4aec4179b061daf19c472c73f7f629c5e613235e8d11d85496302"
+    },
+    "frontend/src/features/profile/reference-presentation/activity.css": {
+      "baseline": "bc19d8a9c1b2c206a32a1274350368635b3cf6b0595161b76466543506d7c998",
+      "candidate": "058c700e07d42d0c5cb27d42d9bfe0fbc519c470af0733463d052906030a3903"
+    }
+  },
+  "cases": [
+    {
+      "stage": "baseline",
+      "width": 390,
+      "errors": [],
+      "status": "IN_PROGRESS",
+      "root": {
+        "geometry": {
+          ".me-hub--reference": {
+            "x": 15,
+            "y": 63,
+            "width": 360,
+            "height": 435.578125,
+            "font": "14px / 18.2px system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif"
+          },
+          ".me-profile-header": {
+            "x": 15,
+            "y": 63,
+            "width": 360,
+            "height": 208.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity": {
+            "x": 23,
+            "y": 73,
+            "width": 344,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-avatar": {
+            "x": 23,
+            "y": 73,
+            "width": 140.390625,
+            "height": 140.390625,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-identity h3": {
+            "x": 174.390625,
+            "y": 74,
+            "width": 192.609375,
+            "height": 24.5625,
+            "font": "800 23.4px / 24.57px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-bio": {
+            "x": 174.390625,
+            "y": 131.953125,
+            "width": 192.609375,
+            "height": 49.78125,
+            "font": "13px / 16.9px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".me-profile-icons": {
+            "x": 23,
+            "y": 220.390625,
+            "width": 344,
+            "height": 44,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".me-activity-navigation": {
+            "x": 15,
+            "y": 271.390625,
+            "width": 360,
+            "height": 53,
+            "font": "14px / 18.9px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          },
+          ".reference-activity": {
+            "x": 15,
+            "y": 324.390625,
+            "width": 360,
+            "height": 78.1875,
+            "font": "13px / 17.55px \"Arial Narrow\", Arial, sans-serif"
+          },
+          ".reference-activity__visual": null,
+          ".me-profile-options": {
+            "x": 23,
+            "y": 402.578125,
+            "width": 344,
+            "height": 45,
+            "font": "12px / 16.2px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif"
+          }
+        },
+        "canvases": [
+          {
+            "rect": {
+              "x": 29.1875,
+              "y": 79.1875,
+              "width": 128,
+              "height": 128
+            },
+            "width": 128,
+            "height": 128,
+            "rgba": "5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Edit profile",
+            "href": "/me/profile",
+            "rect": {
+              "x": 81,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Dress up",
+            "href": "/me/avatar",
+            "rect": {
+              "x": 141,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Manage private social links",
+            "href": "/me/social",
+            "rect": {
+              "x": 201,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Sharing requests",
+            "href": "/me/requests",
+            "rect": {
+              "x": 261,
+              "y": 220.390625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "label": "Parties and MY PLAN",
+            "href": "/meet",
+            "rect": {
+              "x": 137,
+              "y": 275.390625,
+              "width": 116,
+              "height": 44
+            }
+          },
+          {
+            "label": "My gifts",
+            "href": "/gifts/mine",
+            "rect": {
+              "x": 256,
+              "y": 275.390625,
+              "width": 116,
+              "height": 44
+            }
+          },
+          {
+            "label": "Open feed",
+            "href": "/feed",
+            "rect": {
+              "x": 23,
+              "y": 350.578125,
+              "width": 52.140625,
+              "height": 44
+            }
+          },
+          {
+            "label": "Profile options",
+            "href": null,
+            "rect": {
+              "x": 23,
+              "y": 403.578125,
+              "width": 344,
+              "height": 44
+            }
+          },
+          {
+            "label": "Back to world",
+            "href": "/world",
+            "rect": {
+              "x": 23,
+              "y": 451.578125,
+              "width": 64.53125,
+              "height": 44
+            }
+          }
+        ],
+        "overflow": false,
+        "text": "My profileSelected fixture fanPARADENo bio yet. Add one whenever you like.ActivityPartiesGiftsRecent activity is unavailable in this connection.Open feedProfile optionsSettingsAge & privacyBlocked usersAccountProfile details are optional. You can enter the world without completing them.Your profile is up to date.Discard drafts and reload saved versionBack to world",
+        "state": {
+          "path": "/me",
+          "published": false,
+          "phase": "idle",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 0,
+          "disposed": false
+        }
+      }
+    }
+  ],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at file:///Users/lhs/.codex/worktrees/66d3/mcr/docs/mcr/evidence/css-parity-my-profile/native.mjs:64:14"
+  ],
+  "limits": {
+    "whole": 209715200,
+    "temp": 167772160,
+    "durable": 31457280
+  },
+  "peaks": {
+    "whole": 29186411,
+    "temp": 29186411,
+    "durable": 0
+  },
+  "minFree": 19774808064,
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T10:01:18.041Z",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "tempRemoved": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "job": "CSS-PARITY-PROFILE-202611041001Z",
+  "releasedAt": "2026-11-04T10:05:13.171585+00:00",
+  "port5294": "FREE",
+  "ownHandles": [],
+  "ownLinkRemoved": true,
+  "privateTempsRemoved": true,
+  "guardRemoved": true,
+  "sharedDependenciesUnchanged": true,
+  "wholeDurableBytes": 5772376,
+  "tempBytes": 0,
+  "finalNative": "round-04/report.json",
+  "nativeAttempts": {
+    "round-01": 1,
+    "round-02": 0,
+    "round-03": 0,
+    "round-04": 0
+  },
+  "tests31Exit": 0,
+  "planExit": 0,
+  "sourceCheckExit": 0
+}

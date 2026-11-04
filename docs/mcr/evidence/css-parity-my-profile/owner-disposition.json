@@ -1,0 +1,62 @@
+{
+  "task": "CSS-PARITY-MY-PROFILE",
+  "status": "MOCK_READY",
+  "fullReferenceParity": "OPEN",
+  "goalMetadata": "BLOCKED remains unchanged; original objective continued under named offer, no reset/budget",
+  "review": "Developer visual comparison performed on final captures, no lead approval stage",
+  "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "finalSources": {
+    "frontend/src/features/me/ui/me.css": {
+      "baseline": "037a55c87cc72e6b06cba8fb4d4b35a7ac8356ac98919d1db237d54fa2931a48",
+      "candidate": "f6f49e4e87613cdffbbabbf26373020dbcc55aab90eab1cc0b5c6024db242fef"
+    },
+    "frontend/src/features/profile/reference-presentation/activity.css": {
+      "baseline": "bc19d8a9c1b2c206a32a1274350368635b3cf6b0595161b76466543506d7c998",
+      "candidate": "058c700e07d42d0c5cb27d42d9bfe0fbc519c470af0733463d052906030a3903"
+    }
+  },
+  "viewedFinalImages": [
+    "candidate-root-360.png",
+    "candidate-root-430.png",
+    "candidate-root-normal-focus-390.png",
+    "candidate-root-forced-focus-390.png",
+    "candidate-activity-390.png"
+  ],
+  "checks": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "normalForcedRootActionFocus": "PASS all four actions at each width",
+    "controlTargets": "PASS >=44px",
+    "noHorizontalOverflow": "PASS",
+    "portraitRawRGBAAndDOMFrameEqualityToBaseline": "PASS",
+    "backgroundAndAvatarRules": "BYTE_IDENTICAL",
+    "unitTests": 31,
+    "planExit": 0,
+    "nativeFinalExit": 0
+  },
+  "observedNativePeakBytes": {
+    "whole": 57678383,
+    "temp": 51924124,
+    "durable": 5754259
+  },
+  "minimumObservedFreeBytes": 19531862016,
+  "limitations": [
+    "Shared root title Me differs from My Profile",
+    "Authorized input is bounded own-feed posts, not reservation/join history; production root honestly shows unavailable without loaded feed",
+    "Gift/party thumbnails and external social actions have no supplied authorized profile implementation",
+    "Level/currency excluded; no invented facts",
+    "Inherited360 portrait canvas DOM117.59375x128 while backing128x128; baseline and final identical; selected framing/scale edits prohibited",
+    "Root background/footer/window and 844px viewport differ from photo composition and have separate owners",
+    "Synthetic HTTP/C05 only; live service/device/full visual acceptance NOT_RUN"
+  ],
+  "publication": "Pending direct Root153 integration; not yet published",
+  "rootSharedCopyFollowUp": {
+    "commit": "d860ae6d4e50e335d655fc011698d8895432ad66",
+    "stateAtHandoff": "SOURCE_ONLY_NOT_INTAKEN_PUBLISHED_OR_NATIVE_QUALIFIED",
+    "captures": "Old ME preserved; no recapture/shared-source refresh",
+    "portrait": "No new sizing rights"
+  }
+}

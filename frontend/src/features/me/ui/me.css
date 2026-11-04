@@ -53,15 +53,15 @@
 .me-hub--reference .me-avatar{min-height:0;aspect-ratio:1;display:grid;align-content:center;border:3px double #e1d4bc;background:#d8cdbb;padding:3px;color:#4b4238;overflow:hidden}
 .me-hub--reference .me-avatar canvas{width:100%;height:auto;image-rendering:pixelated}
 .me-hub--reference .me-avatar p{font:12px/1.3 Arial,sans-serif;margin:0;padding:5px}
-.me-hub--reference .me-identity h3{font:800 clamp(21px,6vw,27px)/1.05 'Arial Narrow',Arial,sans-serif;margin:1px 0 9px;letter-spacing:-.035em}
-.me-hub--reference .me-saved-era{font-size:11px;font-weight:800;letter-spacing:.06em;margin:0 0 9px}
-.me-hub--reference .me-bio{background:#f1e8d9;color:#211d19;border:1px solid #a99a83;border-radius:2px;padding:7px;font:13px/1.3 'Arial Narrow',Arial,sans-serif;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.me-hub--reference .me-identity h3{font:800 clamp(25px,7.2vw,31px)/1.05 'Arial Narrow',Arial,sans-serif;margin:1px 0 12px;letter-spacing:-.025em}
+.me-hub--reference .me-saved-era{font-size:12px;font-weight:800;letter-spacing:.06em;margin:0 0 10px}
+.me-hub--reference .me-bio{background:#f1e8d9;color:#211d19;border:1px solid #a99a83;border-radius:2px;padding:7px;font:14px/1.3 'Arial Narrow',Arial,sans-serif;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
 .me-hub--reference .me-identity-unavailable{min-height:112px;display:grid;place-items:center;padding:8px;font-size:14px}
-.me-hub--reference .me-profile-icons{display:flex;justify-content:center;gap:12px;margin:7px 0 0}
+.me-hub--reference .me-profile-icons{display:flex;justify-content:space-evenly;gap:12px;margin:9px 0 0;padding-inline:8px}
 .me-hub--reference .me-profile-icons a{display:grid;place-items:center;width:48px;height:44px;min-height:44px;min-width:44px;padding:8px;border:1px solid #c2b199;border-radius:2px;background:#f1e8da;color:#211d19}
 .reference-profile-icon{display:block;width:23px;height:23px;flex:none}
-.me-hub--reference .me-activity-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:4px 3px;border-bottom:1px solid #6e6050;background:#e5dac7}
-.me-hub--reference .me-activity-navigation a,.me-hub--reference .me-activity-navigation span{display:flex;justify-content:center;align-items:center;min-height:44px;min-width:44px;border:1px solid #796954;border-radius:1px;background:#f2e9d9;color:#211d19;text-decoration:none;font:800 17px/1.1 Impact,'Arial Narrow',sans-serif;text-transform:uppercase;padding:4px}
+.me-hub--reference .me-activity-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:3px 0;border-bottom:1px solid #6e6050;background:#e5dac7}
+.me-hub--reference .me-activity-navigation a,.me-hub--reference .me-activity-navigation span{display:flex;justify-content:center;align-items:center;min-height:44px;min-width:44px;border:1px solid #796954;border-radius:1px;background:#f2e9d9;color:#211d19;text-decoration:none;font:800 18px/1.1 Impact,'Arial Narrow',sans-serif;text-transform:uppercase;padding:4px}
 .me-hub--reference .me-activity-navigation [aria-current]{background:#d3c7b4;box-shadow:inset 0 0 0 1px #b7a88e}
 .me-hub--reference .me-profile-options{margin:0 8px;border-top:1px solid #ab9c85;font-size:12px}
 .me-hub--reference .me-profile-options summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-weight:700;list-style:revert}
@@ -80,3 +80,9 @@
 .me-profile-form .me-optionality{margin:3px 0 8px;font-size:12px}
 .me-profile-form fieldset{margin:10px 0 8px}
 .me-hub--reference .concert-window__footer a{color:inherit;text-underline-offset:2px}
+
+/* CSS-PARITY-MY-PROFILE: retain native keyboard focus in forced colors. */
+@media (forced-colors: active){.me-hub--reference :focus-visible{outline:3px solid Highlight;outline-offset:3px}}
+
+/* Native 390px comparison: match action glyph weight without resizing targets or art. */
+.me-hub--reference .me-profile-icons :is(.reference-profile-icon,.concert-icon){width:26px;height:26px}

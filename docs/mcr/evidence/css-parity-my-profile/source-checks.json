@@ -1,0 +1,15 @@
+{
+  "sourceBoundary": "PASS",
+  "backgroundDeclarations": "BYTE_IDENTICAL",
+  "avatarRules": "BYTE_IDENTICAL",
+  "gitDiffCheck": "PASS",
+  "tests": {
+    "files": 6,
+    "passed": 31,
+    "exitCode": 0
+  },
+  "cssHashes": {
+    "frontend/src/features/me/ui/me.css": "f6f49e4e87613cdffbbabbf26373020dbcc55aab90eab1cc0b5c6024db242fef",
+    "frontend/src/features/profile/reference-presentation/activity.css": "058c700e07d42d0c5cb27d42d9bfe0fbc519c470af0733463d052906030a3903"
+  }
+}

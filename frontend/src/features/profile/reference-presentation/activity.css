@@ -11,3 +11,12 @@
 .reference-activity__text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:pre-wrap;font-size:12px;line-height:1.25}
 .reference-activity__list li p{font-size:10px;line-height:1.3;margin:2px 0 0;color:#5a4e3f}
 .reference-activity :focus-visible{outline:3px solid #921f28;outline-offset:2px}
+
+/* CSS-PARITY-MY-PROFILE: foreground density; public profiles retain their sizing. */
+.me-hub--reference .reference-activity__scope{font-size:11px;line-height:1.35;margin-bottom:5px}
+.me-hub--reference .reference-activity__list li{grid-template-columns:52px minmax(0,1fr);gap:10px;padding:7px 0;border-bottom:0;align-items:start}
+.me-hub--reference .reference-activity__visual{width:52px;height:52px}
+.me-hub--reference .reference-activity__visual .concert-icon{width:27px;height:27px}
+.me-hub--reference .reference-activity__entry{gap:3px}
+.me-hub--reference .reference-activity__entry strong{font-size:16px;line-height:1.15}
+.me-hub--reference .reference-activity__list li p{font-size:11px;line-height:1.35;margin-top:3px}
