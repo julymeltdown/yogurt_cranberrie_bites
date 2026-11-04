@@ -1,0 +1,249 @@
+vite v8.1.3 building client environment for production...
+[2Ktransforming...
+/backgrounds/cute-entry-v1/landing-garden-night.svg referenced in /backgrounds/cute-entry-v1/landing-garden-night.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/sign-in-paper.svg referenced in /backgrounds/cute-entry-v1/sign-in-paper.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-wall-me-v1/me-night-ribbon.svg referenced in /backgrounds/cute-wall-me-v1/me-night-ribbon.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-wall-me-v1/me-scrapbook.svg referenced in /backgrounds/cute-wall-me-v1/me-scrapbook.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/customize-paper.svg referenced in /backgrounds/cute-entry-v1/customize-paper.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/customize-playful-lower.svg referenced in /backgrounds/cute-entry-v1/customize-playful-lower.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/sign-in-clouds-top.svg referenced in /backgrounds/cute-entry-v1/sign-in-clouds-top.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg referenced in /backgrounds/cute-entry-v1/sign-in-garden-bottom.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-community-v1/feed-backdrop.svg referenced in /backgrounds/cute-community-v1/feed-backdrop.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-community-v1/meet-backdrop.svg referenced in /backgrounds/cute-community-v1/meet-backdrop.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-community-v1/gifts-backdrop.svg referenced in /backgrounds/cute-community-v1/gifts-backdrop.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-wall-me-v1/wall-stationery.svg referenced in /backgrounds/cute-wall-me-v1/wall-stationery.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 543 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/index.html                                          2.02 kB │ gzip:   0.69 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/red-ink-BU4Q2PCh.svg                         7.61 kB │ gzip:   1.39 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/mcr-auth-print-pPg3st5N.woff                19.45 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/.vite/manifest.json                                19.92 kB │ gzip:   2.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/frame-print-Qa3Zbkhj.svg                    33.73 kB │ gzip:   4.43 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/image-compression.worker-5_zI3q-z.js        52.22 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/paper-print-BiNBgY89.svg                   243.45 kB │ gzip:  39.53 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/cemetery-bottom-v1-Bkd59J1m.png            762.21 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/cemetery-top-v1-OlgvrKla.png             2,124.81 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/archive-entry-DzCFyhP-.css                   1.38 kB │ gzip:   0.61 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/root-features-Cz0F4NVk.css                   1.68 kB │ gzip:   0.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/meeting-entry-CaQthYWG.css                   1.73 kB │ gzip:   0.72 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/ProfileIcon-DeZBT2Iw.css                     1.99 kB │ gzip:   0.71 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/panels-D3L_9LqB.css                          4.44 kB │ gzip:   1.44 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/activity-CQX0-Utj.css                       10.35 kB │ gzip:   2.88 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/world-panels-Du7JjFBn.css                   14.53 kB │ gzip:   3.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/provider-Bhbpgzjp.css                       15.09 kB │ gzip:   3.50 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/CommunityFeatures-BWrW_GL2.css              18.21 kB │ gzip:   4.10 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/PublicBoundary-DsSMnqet.css                 18.71 kB │ gzip:   4.48 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/index-DQvmLzIG.css                          33.43 kB │ gzip:   6.94 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/rolldown-runtime-QTnfLwEv.js                 0.69 kB │ gzip:   0.42 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/compatibility-BAEMyyvo.js                    0.96 kB │ gzip:   0.45 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/provider-p-DOY7bh.js                         0.96 kB │ gzip:   0.54 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/identity-kjgyT2UY.js                         1.02 kB │ gzip:   0.59 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/phaser-C-L-RzyC.js                           1.19 kB │ gzip:   0.62 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/AdminBoundary-D8f8nest.js                    1.37 kB │ gzip:   0.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/operations-ClTv-duQ.js                       1.45 kB │ gzip:   0.61 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/overview-BqdjoyKZ.js                         1.71 kB │ gzip:   0.91 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/contract-Dj9ImEnV.js                         2.16 kB │ gzip:   1.01 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/authority-CO51OiOl.js                        2.75 kB │ gzip:   1.18 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/contract-Dm8IG1Q6.js                         2.87 kB │ gzip:   1.31 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/contract-D1WmADg6.js                         2.98 kB │ gzip:   1.33 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/RootMediaView-CY9I6dvQ.js                    3.51 kB │ gzip:   1.49 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/provider-BO2jk5RN.js                         3.98 kB │ gzip:   1.86 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/errors-C_tviqDd.js                           4.48 kB │ gzip:   1.88 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/panel-DMt_Y8QK.js                            4.71 kB │ gzip:   1.92 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/resolver-CHP9QVaJ.js                         4.71 kB │ gzip:   2.18 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/whole-character-CXAm8-xJ.js                  5.65 kB │ gzip:   2.21 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/resources-BCBu3f8Y.js                        6.18 kB │ gzip:   2.66 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/read-media-C4PABlfn.js                       6.39 kB │ gzip:   2.87 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/reference-scene-overview-BCxyzzp-.js         6.63 kB │ gzip:   3.03 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/jsx-runtime-CIxEorsV.js                      7.89 kB │ gzip:   2.98 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/social-composition-COSCrAcc.js               8.17 kB │ gzip:   2.80 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/ProfileIcon-TQX2RD-o.js                      9.26 kB │ gzip:   3.67 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/archive-entry-DDEZbJLX.js                   11.29 kB │ gzip:   4.20 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/MapScene-DnGxMQDZ.js                        13.02 kB │ gzip:   4.98 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/capabilities-j6DOnuaE.js                    13.22 kB │ gzip:   3.72 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/annotations-BnS80zpc.js                     15.01 kB │ gzip:   5.88 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/root-features-BbSKMjgd.js                   15.81 kB │ gzip:   5.23 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/panels-0evCPkFY.js                          16.95 kB │ gzip:   5.63 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/social-CwpnuJ2w.js                          35.11 kB │ gzip:  10.27 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/provider-CV7_hmRs.js                        43.52 kB │ gzip:  13.20 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/meeting-entry-EwEbnHOE.js                   54.03 kB │ gzip:  14.94 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/composition-_Bz7BZbN.js                     55.08 kB │ gzip:  18.44 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/access-CB3qUOwf.js                          59.32 kB │ gzip:  20.10 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/CommunityFeatures-mFtlgIDU.js               68.69 kB │ gzip:  18.91 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/world-panels-D_0dDuog.js                    75.56 kB │ gzip:  24.62 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/domain-operations.generated-B4mc0sA7.js     81.70 kB │ gzip:   4.36 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/activity-Cukre9HT.js                        88.09 kB │ gzip:  25.02 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/contract-Cevj22qs.js                        88.82 kB │ gzip:  14.50 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/routes-BDFVUb4O.js                          97.68 kB │ gzip:  32.09 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/PublicBoundary-CIiH2Amu.js                 152.67 kB │ gzip:  39.98 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/mcr-core.openapi-CtvnSbp0.js               185.80 kB │ gzip:  20.87 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/model-BiltgLcI.js                          274.43 kB │ gzip:  39.90 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/index-DcsA0nUy.js                          283.95 kB │ gzip:  89.37 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/mcr-domain.openapi-D3Xj5WIb.js             824.92 kB │ gzip:  57.91 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/production/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 442ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.1.3 building client environment for qa08...
+[2Ktransforming...
+/backgrounds/cute-entry-v1/landing-garden-night.svg referenced in /backgrounds/cute-entry-v1/landing-garden-night.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/sign-in-paper.svg referenced in /backgrounds/cute-entry-v1/sign-in-paper.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-wall-me-v1/me-night-ribbon.svg referenced in /backgrounds/cute-wall-me-v1/me-night-ribbon.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-wall-me-v1/me-scrapbook.svg referenced in /backgrounds/cute-wall-me-v1/me-scrapbook.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/customize-paper.svg referenced in /backgrounds/cute-entry-v1/customize-paper.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/customize-playful-lower.svg referenced in /backgrounds/cute-entry-v1/customize-playful-lower.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/sign-in-clouds-top.svg referenced in /backgrounds/cute-entry-v1/sign-in-clouds-top.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg referenced in /backgrounds/cute-entry-v1/sign-in-garden-bottom.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-community-v1/feed-backdrop.svg referenced in /backgrounds/cute-community-v1/feed-backdrop.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-community-v1/meet-backdrop.svg referenced in /backgrounds/cute-community-v1/meet-backdrop.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-community-v1/gifts-backdrop.svg referenced in /backgrounds/cute-community-v1/gifts-backdrop.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/backgrounds/cute-wall-me-v1/wall-stationery.svg referenced in /backgrounds/cute-wall-me-v1/wall-stationery.svg didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 559 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/e2e/qa08-rendering/fixture.html                     2.78 kB │ gzip:   0.76 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/red-ink-BU4Q2PCh.svg                         7.61 kB │ gzip:   1.39 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/mcr-auth-print-pPg3st5N.woff                19.45 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/.vite/manifest.json                                25.58 kB │ gzip:   3.28 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/frame-print-Qa3Zbkhj.svg                    33.73 kB │ gzip:   4.43 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/image-compression.worker-5_zI3q-z.js        52.22 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/paper-print-BiNBgY89.svg                   243.45 kB │ gzip:  39.53 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/cemetery-bottom-v1-Bkd59J1m.png            762.21 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/cemetery-top-v1-OlgvrKla.png             2,124.81 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/archive-entry-DzCFyhP-.css                   1.38 kB │ gzip:   0.61 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/root-features-Cz0F4NVk.css                   1.68 kB │ gzip:   0.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/meeting-entry-CaQthYWG.css                   1.73 kB │ gzip:   0.72 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/ProfileIcon-DeZBT2Iw.css                     1.99 kB │ gzip:   0.71 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/panels-D3L_9LqB.css                          4.44 kB │ gzip:   1.44 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/shell-chrome-Cq5ezgQF.css                    5.35 kB │ gzip:   1.57 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/concert-window-CEMjWH25.css                  6.43 kB │ gzip:   1.96 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/activity-CQX0-Utj.css                       10.35 kB │ gzip:   2.88 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/world-panels-Du7JjFBn.css                   14.53 kB │ gzip:   3.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-Bhbpgzjp.css                       15.09 kB │ gzip:   3.50 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/CommunityFeatures-BWrW_GL2.css              18.21 kB │ gzip:   4.10 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/PublicBoundary-DsSMnqet.css                 18.71 kB │ gzip:   4.48 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/fixture-B6ce3ZMi.css                        21.64 kB │ gzip:   4.73 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-BbUJCeZE.js                         0.07 kB │ gzip:   0.08 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-DxehdD2F.js                         0.08 kB │ gzip:   0.09 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-CaExqlto.js                         0.09 kB │ gzip:   0.10 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/social-composition-CzlnDkkO.js               0.11 kB │ gzip:   0.11 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/reference-scene-overview-BhK7kpTo.js         0.17 kB │ gzip:   0.13 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/world-panels-BIEncRr4.js                     0.21 kB │ gzip:   0.15 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/preferences-CTZasJ2W.js                      0.34 kB │ gzip:   0.25 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/ownership-ChbOWedi.js                        0.38 kB │ gzip:   0.25 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/rolldown-runtime-Bh1tDfsg.js                 0.56 kB │ gzip:   0.36 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-Dz9CL67n.js                         0.91 kB │ gzip:   0.51 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/compatibility-BAEMyyvo.js                    0.96 kB │ gzip:   0.45 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/identity-z-LSe8ht.js                         1.01 kB │ gzip:   0.58 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/phaser-C-L-RzyC.js                           1.19 kB │ gzip:   0.62 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/navigation-D2J47_p3.js                       1.20 kB │ gzip:   0.67 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/AdminBoundary-DmlGvc5-.js                    1.37 kB │ gzip:   0.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/overview-BqdjoyKZ.js                         1.71 kB │ gzip:   0.91 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/contract-Dj9ImEnV.js                         2.16 kB │ gzip:   1.01 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/authority-C-i8bKoB.js                        2.80 kB │ gzip:   1.21 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/contract-Dm8IG1Q6.js                         2.87 kB │ gzip:   1.31 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/contract-D1WmADg6.js                         2.98 kB │ gzip:   1.33 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/RootMediaView-rXQ0f24Q.js                    3.51 kB │ gzip:   1.49 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/shell-chrome-BqFciRkM.js                     3.74 kB │ gzip:   1.48 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-DD9kuLQv.js                         3.89 kB │ gzip:   1.80 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/concert-window-CKoIBwIw.js                   3.92 kB │ gzip:   1.47 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/privacy-CcDojcz2.js                          4.21 kB │ gzip:   1.78 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/errors-C_tviqDd.js                           4.48 kB │ gzip:   1.88 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/panel-DbYnGnab.js                            4.71 kB │ gzip:   1.92 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/resolver-CvXA5ype.js                         4.81 kB │ gzip:   2.21 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/contract-D8ePHii6.js                         5.08 kB │ gzip:   2.16 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/whole-character-CXAm8-xJ.js                  5.65 kB │ gzip:   2.21 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/operations-CU5gEJY9.js                       5.90 kB │ gzip:   2.54 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/resources-BCBu3f8Y.js                        6.18 kB │ gzip:   2.66 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/read-media-C4PABlfn.js                       6.39 kB │ gzip:   2.87 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/reference-scene-overview-gtBIZtia.js         6.57 kB │ gzip:   3.00 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/jsx-runtime-BHz_hoGM.js                      7.89 kB │ gzip:   2.99 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/social-composition-DmD5xtnd.js               8.17 kB │ gzip:   2.80 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/context-BThVRRWA.js                          8.25 kB │ gzip:   3.38 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/ProfileIcon-BMT8aPfx.js                      9.35 kB │ gzip:   3.71 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/whole-admission-CLYC6fEl.js                 11.28 kB │ gzip:   4.14 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/archive-entry-DL7WVUbs.js                   11.29 kB │ gzip:   4.20 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/MapScene-CHY9l6jz.js                        13.02 kB │ gzip:   4.98 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/capabilities-j6DOnuaE.js                    13.22 kB │ gzip:   3.72 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/annotations-BnS80zpc.js                     15.01 kB │ gzip:   5.88 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/root-features-CvYu9zlw.js                   15.85 kB │ gzip:   5.24 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/model-Qu153Y8w.js                           16.35 kB │ gzip:   5.48 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/panels-Bhr-l0Jt.js                          17.04 kB │ gzip:   5.66 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/social-XYBX8L_x.js                          35.16 kB │ gzip:  10.28 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/composition-BVw5UEgj.js                     39.05 kB │ gzip:  13.71 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/provider-UqENXTgW.js                        43.63 kB │ gzip:  13.24 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/meeting-entry-iBei3Ucz.js                   54.03 kB │ gzip:  14.93 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/access-DiYccnqH.js                          59.20 kB │ gzip:  20.08 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/CommunityFeatures-D8Qkx_2g.js               68.73 kB │ gzip:  18.92 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/world-panels-B_OCYjqs.js                    75.58 kB │ gzip:  24.62 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/domain-operations.generated-B4mc0sA7.js     81.70 kB │ gzip:   4.36 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/activity-Dp_Gz9Lu.js                        88.10 kB │ gzip:  25.02 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/contract-Cevj22qs.js                        88.82 kB │ gzip:  14.50 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/routes-CKmgGF6m.js                          96.50 kB │ gzip:  31.68 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/PublicBoundary-wxObaoWU.js                 152.72 kB │ gzip:  39.99 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/mcr-core.openapi-CtvnSbp0.js               185.80 kB │ gzip:  20.87 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/model-BiltgLcI.js                          274.43 kB │ gzip:  39.90 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/fixture-sZ81wDy3.js                        315.54 kB │ gzip:  88.03 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/mcr-domain.openapi-D3Xj5WIb.js             824.92 kB │ gzip:  57.91 kB
+../../../../../private/tmp/mcr-qa08-current-p3o_ud7c/fixture/assets/phaser-DVTuvjT6.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 399ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+MEASURED width=360 idle=60.0Hz moving=60.0Hz
+MEASURED width=390 idle=60.0Hz moving=60.0Hz
+MEASURED width=430 idle=60.2Hz moving=60.0Hz

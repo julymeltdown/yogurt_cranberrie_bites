@@ -1,0 +1,199 @@
+{
+  "status": "MEASURED_BOUNDED_CLIENT",
+  "originalQA08": "PARTIAL",
+  "measuredCandidate": "27a01c7224da1e9677fb13460621e0e2f71c7c5e",
+  "publicBaseline": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "allocation": "QA08-FE-ROUND02-BROWSER-202611041349Z",
+  "inputVerification": {
+    "files": 2630,
+    "mismatches": []
+  },
+  "staticResourceFailures": [],
+  "commandsAllExitZero": true,
+  "fullyReleased": true,
+  "images": [
+    {
+      "file": "default-landing-390.png",
+      "bytes": 219261,
+      "sha256": "1434fdc256035b2c1bb9702cae5c62747885c9361a3eb8c908f71376bc57e646",
+      "openedAndInspected": true,
+      "observation": "Decorative landing background and selected character displayed; default world admission remains closed."
+    },
+    {
+      "file": "map-360.png",
+      "bytes": 322759,
+      "sha256": "b083ea304e37609eec1bf4d4e5089380f65a05864fd20dc9629e69edf12a14b9",
+      "openedAndInspected": true,
+      "observation": "Current map4 artwork with landmark labels, zoom/footer controls and virtual-position disclaimer."
+    },
+    {
+      "file": "map-390.png",
+      "bytes": 370881,
+      "sha256": "352445ffb7e43b9cbb7abf15a36443322ba1ad9c68d529426acb5f2daa4ad0fc",
+      "openedAndInspected": true,
+      "observation": "Current map4 artwork with landmark labels, zoom/footer controls and virtual-position disclaimer."
+    },
+    {
+      "file": "map-430.png",
+      "bytes": 430520,
+      "sha256": "4b58787b89f74e34302c00d490800a54aba7fe2093ec3706b543635ecaccf3a6",
+      "openedAndInspected": true,
+      "observation": "Current map4 artwork with landmark labels, zoom/footer controls and virtual-position disclaimer."
+    },
+    {
+      "file": "world-360.png",
+      "bytes": 330456,
+      "sha256": "9dd85ad00ee55832b5bc238b53b7d941a9e9454ed01e2cd726bfaf1e87e71962",
+      "openedAndInspected": true,
+      "observation": "Six distinct original selected characters on current PARADE World with stage/tree/controls."
+    },
+    {
+      "file": "world-390.png",
+      "bytes": 350499,
+      "sha256": "5e6a13b11feec8556aac21fd012a011d8c1fbf40dae124a85df9708d3559396e",
+      "openedAndInspected": true,
+      "observation": "Six distinct original selected characters on current PARADE World with stage/tree/controls."
+    },
+    {
+      "file": "world-430.png",
+      "bytes": 385875,
+      "sha256": "20f3c4f037441f1f8336b924bd037c560e10d47a98e4b7c27c08ff02b2f4419d",
+      "openedAndInspected": true,
+      "observation": "Six distinct original selected characters on current PARADE World with stage/tree/controls."
+    }
+  ],
+  "scenarios": [
+    {
+      "width": 360,
+      "cycles": 5,
+      "droppedDeltas": 1,
+      "resyncs": 1,
+      "mainReconnects": 3,
+      "finalCleanup": {
+        "games": 0,
+        "canvases": 0,
+        "avatarSprites": 0,
+        "activeSockets": 0,
+        "injectorQueued": 0,
+        "fixtureTimers": 0,
+        "heartbeatTimers": 0,
+        "socketListeners": 0,
+        "objectUrls": {
+          "created": 35,
+          "revoked": 35,
+          "active": 0
+        }
+      },
+      "memoryGrowth": {
+        "remountedHeap": {
+          "samples": 4,
+          "warmupCycles": 1,
+          "slopeBytesPerCycle": 247003.2,
+          "firstToLastBytes": 717588,
+          "minBytes": 19366616,
+          "maxBytes": 20084204
+        },
+        "releasedHeap": {
+          "samples": 4,
+          "warmupCycles": 1,
+          "slopeBytesPerCycle": 276097.6,
+          "firstToLastBytes": 865016,
+          "minBytes": 18114552,
+          "maxBytes": 18979568
+        }
+      }
+    },
+    {
+      "width": 390,
+      "cycles": 5,
+      "droppedDeltas": 1,
+      "resyncs": 1,
+      "mainReconnects": 3,
+      "finalCleanup": {
+        "games": 0,
+        "canvases": 0,
+        "avatarSprites": 0,
+        "activeSockets": 0,
+        "injectorQueued": 0,
+        "fixtureTimers": 0,
+        "heartbeatTimers": 0,
+        "socketListeners": 0,
+        "objectUrls": {
+          "created": 35,
+          "revoked": 35,
+          "active": 0
+        }
+      },
+      "memoryGrowth": {
+        "remountedHeap": {
+          "samples": 4,
+          "warmupCycles": 1,
+          "slopeBytesPerCycle": 228389.2,
+          "firstToLastBytes": 714864,
+          "minBytes": 19284588,
+          "maxBytes": 19999452
+        },
+        "releasedHeap": {
+          "samples": 4,
+          "warmupCycles": 1,
+          "slopeBytesPerCycle": 279628,
+          "firstToLastBytes": 873716,
+          "minBytes": 18078744,
+          "maxBytes": 18952460
+        }
+      }
+    },
+    {
+      "width": 430,
+      "cycles": 5,
+      "droppedDeltas": 1,
+      "resyncs": 1,
+      "mainReconnects": 3,
+      "finalCleanup": {
+        "games": 0,
+        "canvases": 0,
+        "avatarSprites": 0,
+        "activeSockets": 0,
+        "injectorQueued": 0,
+        "fixtureTimers": 0,
+        "heartbeatTimers": 0,
+        "socketListeners": 0,
+        "objectUrls": {
+          "created": 35,
+          "revoked": 35,
+          "active": 0
+        }
+      },
+      "memoryGrowth": {
+        "remountedHeap": {
+          "samples": 4,
+          "warmupCycles": 1,
+          "slopeBytesPerCycle": 219782,
+          "firstToLastBytes": 693736,
+          "minBytes": 19164284,
+          "maxBytes": 19858020
+        },
+        "releasedHeap": {
+          "samples": 4,
+          "warmupCycles": 1,
+          "slopeBytesPerCycle": 271323.2,
+          "firstToLastBytes": 844564,
+          "minBytes": 18098000,
+          "maxBytes": 18942564
+        }
+      }
+    }
+  ],
+  "sourceSha256": {
+    "frontend/e2e/qa08-rendering/native.mjs": "fecc0e036c8ad228fc6ca387910b247eb9d2175f874d9f571c7962dcf4c6c3c9",
+    "frontend/e2e/qa08-rendering/allocated-run.py": "be06205fd87068e302f1852f4395f5ce565581d9871fd89b7b70101ce3a9aa02"
+  },
+  "diagnosticPreservation": "Round01 raw artifacts remain unchanged; collector MEASURED is superseded for final current workload because owned server omitted required public landing background. Corrected Round02 serves complete public tree and records background status200.",
+  "limitations": [
+    "Positive post-warmup heap growth with retained fixture histories; no leak-free conclusion.",
+    "Default resolver cache internals NOT_EXPOSED; JS heap excludes complete GPU/native/process memory.",
+    "Synthetic Auth/HTTP/C05, six entities; static throttling only, application-message loss only, serial reconnects only.",
+    "Physical mid-range devices, real service, TCP packet loss, 200 principals/four rooms, reconnect storms, service ceilings/operator caps and product acceptance NOT_RUN by this leaf."
+  ],
+  "publication": "Direct Root153 normal serialized publication; owner verifies remote ancestry and exact scoped postimages separately."
+}
