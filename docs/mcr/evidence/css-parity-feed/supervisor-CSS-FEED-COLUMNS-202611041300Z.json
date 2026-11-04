@@ -1,0 +1,24 @@
+{
+  "slot": "CSS-FEED-COLUMNS-202611041300Z",
+  "acceptedEpoch": 1793797343.457,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native-reference-media.mjs"
+      ],
+      "phase": "reference3",
+      "exit": 0,
+      "elapsedSinceAccept": 6.182910919189453
+    }
+  ],
+  "freeMinimum": 17067610112,
+  "wholePeak": 40360113,
+  "temporaryPeak": 29285274,
+  "durablePeak": 11146713,
+  "retainedInputBytes": 60438,
+  "ownedSourceBytes": 42460,
+  "activeEndedEpoch": 1793797368.011355,
+  "elapsedSinceAccept": 24.55436110496521,
+  "privateTmpRemoved": true
+}

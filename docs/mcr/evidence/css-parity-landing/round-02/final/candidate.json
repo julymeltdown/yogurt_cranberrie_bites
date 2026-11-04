@@ -1,0 +1,325 @@
+{
+  "phase": "candidate",
+  "baseline": "a5c6cad52e630d61aa4ce581e7230c13cc5feb25",
+  "source": "46143c6f2ecdf0ecdeddf24e64f13026cb688518",
+  "cssSHA256": "1f3a6e9374b4f38c0fb6098f2bb6a7384574f8550f61737b16a7dd8a20d8382c",
+  "worktreeCSSSHA256": "1f3a6e9374b4f38c0fb6098f2bb6a7384574f8550f61737b16a7dd8a20d8382c",
+  "targetSHA256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "result": "PASS",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "geometry": {
+        "header": {
+          "x": 6,
+          "y": 16,
+          "width": 348,
+          "height": 34
+        },
+        "brand": {
+          "x": 19,
+          "y": 11.5,
+          "width": 66,
+          "height": 44
+        },
+        "signIn": {
+          "x": 297,
+          "y": 11.5,
+          "width": 44,
+          "height": 44
+        },
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 348,
+          "height": 584.859375
+        },
+        "wordmark": {
+          "x": 11.203125,
+          "y": 55.140625,
+          "width": 335.28125,
+          "height": 569.59375
+        },
+        "copy": {
+          "x": 75.671875,
+          "y": 473.203125,
+          "width": 216.875,
+          "height": 78.65625
+        },
+        "cta": {
+          "x": 44.015625,
+          "y": 562.59375,
+          "width": 276.671875,
+          "height": 45.71875
+        },
+        "characters": [
+          {
+            "x": 5.2312469482421875,
+            "y": 339.0406188964844,
+            "width": 127.72500610351562,
+            "height": 127.72500610351562,
+            "backgroundPosition": "0% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 79.16874694824219,
+            "y": 339.0406188964844,
+            "width": 127.72500610351562,
+            "height": 127.72500610351562,
+            "backgroundPosition": "20% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 227.0437469482422,
+            "y": 339.0406188964844,
+            "width": 127.72499084472656,
+            "height": 127.72500610351562,
+            "backgroundPosition": "40% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 153.1062469482422,
+            "y": 339.0406188964844,
+            "width": 127.72499084472656,
+            "height": 127.72500610351562,
+            "backgroundPosition": "60% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          }
+        ],
+        "background": {
+          "image": "url(\"http://127.0.0.1:5291/backgrounds/cute-entry-v1/landing-garden-night.svg\")",
+          "color": "rgb(98, 66, 80)",
+          "size": "100% 100%"
+        },
+        "sceneOpacity": "0",
+        "overflow": false
+      },
+      "screenshots": [],
+      "interactions": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "header": {
+          "x": 6,
+          "y": 16,
+          "width": 378,
+          "height": 34
+        },
+        "brand": {
+          "x": 19,
+          "y": 11.5,
+          "width": 66,
+          "height": 44
+        },
+        "signIn": {
+          "x": 327,
+          "y": 11.5,
+          "width": 44,
+          "height": 44
+        },
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 378,
+          "height": 635.28125
+        },
+        "wordmark": {
+          "x": 11.125,
+          "y": 55.59375,
+          "width": 365.21875,
+          "height": 619.203125
+        },
+        "copy": {
+          "x": 81.34375,
+          "y": 510.0625,
+          "width": 236.25,
+          "height": 85.515625
+        },
+        "cta": {
+          "x": 46.875,
+          "y": 607.15625,
+          "width": 301.375,
+          "height": 49.796875
+        },
+        "characters": [
+          {
+            "x": 4.640625,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "0% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 85.171875,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "20% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 246.234375,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "40% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 165.703125,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "60% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          }
+        ],
+        "background": {
+          "image": "url(\"http://127.0.0.1:5291/backgrounds/cute-entry-v1/landing-garden-night.svg\")",
+          "color": "rgb(98, 66, 80)",
+          "size": "100% 100%"
+        },
+        "sceneOpacity": "0",
+        "overflow": false
+      },
+      "screenshots": [
+        "candidate-poster-390.png",
+        "candidate-focused-390.png"
+      ],
+      "interactions": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "geometry": {
+        "header": {
+          "x": 6,
+          "y": 16,
+          "width": 418,
+          "height": 34
+        },
+        "brand": {
+          "x": 19,
+          "y": 11.5,
+          "width": 66,
+          "height": 44
+        },
+        "signIn": {
+          "x": 367,
+          "y": 11.5,
+          "width": 44,
+          "height": 44
+        },
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 418,
+          "height": 702.515625
+        },
+        "wordmark": {
+          "x": 11.03125,
+          "y": 56.1875,
+          "width": 405.140625,
+          "height": 685.359375
+        },
+        "copy": {
+          "x": 88.921875,
+          "y": 559.21875,
+          "width": 262.0625,
+          "height": 94.65625
+        },
+        "cta": {
+          "x": 50.6875,
+          "y": 666.5625,
+          "width": 334.3125,
+          "height": 55.234375
+        },
+        "characters": [
+          {
+            "x": 3.8421859741210938,
+            "y": 397.13751220703125,
+            "width": 154.33123779296875,
+            "height": 154.33123779296875,
+            "backgroundPosition": "0% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 93.1703109741211,
+            "y": 397.13751220703125,
+            "width": 154.33123779296875,
+            "height": 154.33123779296875,
+            "backgroundPosition": "20% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 271.8265686035156,
+            "y": 397.13751220703125,
+            "width": 154.33126831054688,
+            "height": 154.33123779296875,
+            "backgroundPosition": "40% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 182.49844360351562,
+            "y": 397.13751220703125,
+            "width": 154.33126831054688,
+            "height": 154.33123779296875,
+            "backgroundPosition": "60% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          }
+        ],
+        "background": {
+          "image": "url(\"http://127.0.0.1:5291/backgrounds/cute-entry-v1/landing-garden-night.svg\")",
+          "color": "rgb(98, 66, 80)",
+          "size": "100% 100%"
+        },
+        "sceneOpacity": "0",
+        "overflow": false
+      },
+      "screenshots": [],
+      "interactions": "PASS"
+    }
+  ],
+  "errors": [],
+  "limits": "Synthetic canonical readiness/session fixture, actual Landing/PublicFrame/routes. No live provider, backend, mobile-device, release or exact-art acceptance.",
+  "protectedInputs": {
+    "src/features/public/ui/Landing.tsx": "169591f279c818070489b8b84463df5979b010514bbc2b1ee2e5b878e15fe16f",
+    "src/features/public/ui/PublicFrame.tsx": "c21518ea7fd58779ff98ef6e88abcd044c38b349ca18d5c3b3ea04b01b797fe7",
+    "src/features/public/ui/landing-reference/PosterArtwork.tsx": "a7327343587dff347b4191d799ce2fc66959594b9dd706b04af86c7ecfbfa0f6",
+    "src/features/public/ui/landing-reference/reference-contours.json": "4fb46bfc4f4ae523e30ac20d3ee7ca99abf8b7bc7502d250baf0add6af163cde",
+    "src/entities/avatar/selected-static/index.tsx": "575ba2a5fbe59713301b7dc85d80d18f0ef42ce0f4989daba242b42fa8ad7854",
+    "src/entities/avatar/selected-static/selected-static.css": "ca3b31896f53565d6e459fb55aef74dab2bd93d0b70d1f0dfc4d08eee06f57c9",
+    "src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+    "src/shared/styles/base.css": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105",
+    "src/shared/styles/cozy-identity-backgrounds-v1.css": "aafdee7a24270e890c7916a5400a7632b4023270e3a4d0bca965bc62f98564ff"
+  },
+  "browser": "156.0.8078.80"
+}

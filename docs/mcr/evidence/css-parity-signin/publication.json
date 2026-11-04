@@ -1,0 +1,336 @@
+{
+  "task": "CSS-PARITY-SIGNIN",
+  "checkedAtUtc": "2026-11-04T12:51:44.234315+00:00",
+  "deliveryRepository": "julymeltdown/mcr",
+  "branch": "master",
+  "sourceCommit": "412d46be768e97cf653fc437a9fd602402e08f64",
+  "publishedCommit": "e74712b6717d9394b93413d5dd4e0aa87379dc38",
+  "freshFetchedMaster": "2bd046796acdf32a05e6ed04e4d95e12c9909481",
+  "independentLsRemoteMaster": "2bd046796acdf32a05e6ed04e4d95e12c9909481",
+  "publishedAncestorOfMaster": true,
+  "ownedPostimageCount": 49,
+  "allOwnedPostimagesExact": true,
+  "cssSha256": "ab114b93c3ab4834c2394a037a62f66984b2d15123611978388d8d18c3602c33",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/failed-01-command.log",
+      "gitBlob": "0884a4788bdd47082597267ef1efbe4706f40201",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/failed-01/baseline-390.png",
+      "gitBlob": "72451aee6305577860b2a19f6763d46d771a824d",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/failed-01/report.json",
+      "gitBlob": "7fc8726ae18bb6326c44a44febba496364243f66",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final-command.log",
+      "gitBlob": "50119c93c7dcdfea7388c6ed131414e95594e2cf",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/candidate-360.png",
+      "gitBlob": "9f38c24b4a325747911c25fdba23544c006f90a1",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/candidate-390.png",
+      "gitBlob": "cbe0d42093c25a1d86db8ff8c622423b9604826e",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/candidate-430.png",
+      "gitBlob": "c1685d46f3499db345ef4cab9361bbc028d8549a",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/comparison-390.png",
+      "gitBlob": "48d01e6b2b94af9fee5d03f730ba4ab9df1b6d2d",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/comparison.html",
+      "gitBlob": "23351f6fe795b90f0ffcd53b069ae513d756efd3",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/error-390.png",
+      "gitBlob": "0c7f10741bff5f3aa8b396476b0b8ad7c65e5071",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/focus-390.png",
+      "gitBlob": "bc1a3c829aaaaa234efb42ddeb9dde881a198518",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/forced-focus-390.png",
+      "gitBlob": "bbe00a8b72258a576a39f51638cc26fc85707b5f",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/options-unavailable-390.png",
+      "gitBlob": "af2469b6d59737e7ca20f65193523cc2cb555d9f",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/pending-390.png",
+      "gitBlob": "1c93e8a415a5a3be4f1fbc3d108440e5f18d2e95",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/report.json",
+      "gitBlob": "2f5f3d18bb69f13c005c7131cc8e16b60979286b",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/final/short-height-390.png",
+      "gitBlob": "8c07ed69b35f806a85af7f869c22e902730de6a0",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first-command.log",
+      "gitBlob": "1a1cfc50bc611f41e83dd19d47994f52ac0a2f3d",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/baseline-390.png",
+      "gitBlob": "72451aee6305577860b2a19f6763d46d771a824d",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/candidate-360.png",
+      "gitBlob": "561054cea2a0a6d349ea0c56d77deaa43fbcd66d",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/candidate-390.png",
+      "gitBlob": "57416748c2c6389314d7f163675e0425879692cb",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/candidate-430.png",
+      "gitBlob": "9622052622e9c769245de25b238534fd21cd8ddb",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/comparison-390.png",
+      "gitBlob": "a6ab392d1eeb54fe7713bb7788743456eead5ffe",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/comparison.html",
+      "gitBlob": "9b264785da4e1c0b7ff825987f712637798123ac",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/error-390.png",
+      "gitBlob": "f0061a00bbeb08f269afeb9e2b64a53473f48cca",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/focus-390.png",
+      "gitBlob": "85f899003f300fe751eb331b41df9a4504b223d4",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/forced-focus-390.png",
+      "gitBlob": "070d02962021cc24efd7b9f1258f24174ecba459",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/options-unavailable-390.png",
+      "gitBlob": "40c5e1d9f23d4e7664ddc82b9af487232c6ff336",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/pending-390.png",
+      "gitBlob": "5d9383dfe68d9b300f3b9e3f82a99abb9f68f06b",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/first/report.json",
+      "gitBlob": "a48393b453e0140d45585319c937f5398e8afd43",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/native.mjs",
+      "gitBlob": "caec2e9ae7d8133111033e939a907821e05a5d63",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/plan.log",
+      "gitBlob": "c80edf3cf7227190a43b2e94943b9d21c3afb99b",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised-command.log",
+      "gitBlob": "0996d4307528231a5c7b0b887ffcf23c668efc46",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/candidate-360.png",
+      "gitBlob": "1d328f5fd89244c4414fae063bc48416c2b08933",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/candidate-390.png",
+      "gitBlob": "1c8a34e64f1ad50888babfa10522b100f391e954",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/candidate-430.png",
+      "gitBlob": "5f6ebf3bfdd1d4e999d6429199f59f6db666a171",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/comparison-390.png",
+      "gitBlob": "6cc4b5ebbe31b177b971233abf0a21ce62873e3c",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/comparison.html",
+      "gitBlob": "8981e650550985010e578401f0f958d378c561c6",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/error-390.png",
+      "gitBlob": "8c27d91313a02fe0af82de946928be0219584cb1",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/focus-390.png",
+      "gitBlob": "d1eadc0efed67954d2d943006aec275227df613f",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/forced-focus-390.png",
+      "gitBlob": "8e22c223f9f20ed8f50a7c9e0405a759ab3188c9",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/options-unavailable-390.png",
+      "gitBlob": "020d83e9ebaa72ae81eb404a4f165767211359bd",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/pending-390.png",
+      "gitBlob": "4a30f78ec452ceb9dddb949608cd380640bcaace",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/report.json",
+      "gitBlob": "3633b332faea8538fe0d1d456e53af1b51476fae",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/revised/short-height-390.png",
+      "gitBlob": "cae2460dda6f0519455e90146d7ae846a2173a8c",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/source-guard-failed.json",
+      "gitBlob": "eacfbb1ab3487473fa556782197b88c3ca3fdf25",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/source-guard.json",
+      "gitBlob": "326467937216d74a6d283713a46e155d421a6d9f",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-signin/whitespace.log",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "docs/mcr/frontend/css-parity-signin.md",
+      "gitBlob": "bdb21f03eaf05c6fd10c70c2d3ebc75de2682f24",
+      "publishedMatches": true,
+      "latestMatches": true
+    },
+    {
+      "path": "frontend/src/features/auth/ui/sign-in.css",
+      "gitBlob": "a1f00515732463059bee89edb0c68ba20145c12f",
+      "publishedMatches": true,
+      "latestMatches": true
+    }
+  ],
+  "commands": [
+    {
+      "command": "git fetch origin master",
+      "exitCode": 0
+    },
+    {
+      "command": "git ls-remote origin refs/heads/master",
+      "exitCode": 0
+    },
+    {
+      "command": "git merge-base --is-ancestor e74712b6717d9394b93413d5dd4e0aa87379dc38 2bd046796acdf32a05e6ed04e4d95e12c9909481",
+      "exitCode": 0
+    },
+    {
+      "command": "Compare source/published/latest Git blobs for all 49 owned paths",
+      "exitCode": 0
+    }
+  ],
+  "scopedDisposition": "CSS foreground implementation, native iteration, interaction/focus, evidence, committed handoff and independent source publication proof COMPLETE; MOCK_READY synthetic fixture qualification only",
+  "limits": [
+    "No whole-screen pixel identity claim",
+    "Remember-me/copy/provider availability/shared art/chrome limits preserved",
+    "Live Auth/provider, physical iOS/Android and broader QA06/IN05 not qualified"
+  ],
+  "resourceState": "No browser/test rerun; output session already fully released",
+  "leases": "Returned after this receipt commit; no further source writes"
+}

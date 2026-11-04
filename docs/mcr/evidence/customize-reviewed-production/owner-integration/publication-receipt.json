@@ -1,0 +1,23 @@
+{
+  "verifiedUTC": "2026-11-04T12:51:26.842910+00:00",
+  "source": "998b11a30fd6bed271ce9e855803c90c4128df15",
+  "sourceBase": "3b34d9636a525b4248c43483e9b41a845de025ea",
+  "published": "029b445cae93237b0e8736d40788171abfb46a4f",
+  "publicationParent": "e74712b6717d9394b93413d5dd4e0aa87379dc38",
+  "fetchedMaster": "2bd046796acdf32a05e6ed04e4d95e12c9909481",
+  "independentLsRemoteMaster": "2bd046796acdf32a05e6ed04e4d95e12c9909481",
+  "publicationAncestorOfFetchedMaster": true,
+  "handoffPathCount": 15,
+  "publishedPathCount": 15,
+  "publishedPathSetExact": true,
+  "publishedBlobMismatches": [],
+  "currentMasterBlobMismatches": [],
+  "qualifiedFrontendPinCount": 3,
+  "qualifiedFrontendPinMismatches": [],
+  "fullPublishedWhitespaceExit": 2,
+  "rawWhitespaceEvidence": "docs/mcr/evidence/customize-reviewed-production/owner-integration/unit.log:9: new blank line at EOF.\n",
+  "nonLogWhitespaceExit": 0,
+  "worktreeStatusBeforeReceipt": "",
+  "featureLeaseDisposition": "Delivered and published; no new source edits or runtime resources. Retain exact leaf ownership solely for concrete Root-discovered feature fixes. Shared paths remain with Root.",
+  "remainingAcceptance": "Root shared adoption is NOT_RUN; no activation/native/shared-player acceptance claimed. Original AR03 goal remains unfinished."
+}

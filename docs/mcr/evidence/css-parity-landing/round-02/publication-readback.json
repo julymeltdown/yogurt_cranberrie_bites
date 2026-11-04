@@ -1,0 +1,157 @@
+{
+  "result": "PASS",
+  "checkedUTC": "2026-11-04T13:02:25.502514+00:00",
+  "worker": "5b704a8564645525f097287773417ba86aadaf99",
+  "comparisonBase": "a5c6cad52e630d61aa4ce581e7230c13cc5feb25",
+  "published": "7aa86b28df216b6a74ed534d752b839dfec2c95f",
+  "fetchedOriginMaster": "f198147e3c07d171b72bb086c4403b87dac5356b",
+  "independentLsRemoteMaster": "f198147e3c07d171b72bb086c4403b87dac5356b",
+  "publishedAncestorExitCode": 0,
+  "cumulativeOwnedPathCount": 35,
+  "previousPacketCountCorrection": "35 cumulative owned postimages, not 36. No missing 36th source path. This new receipt is added after publication.",
+  "sourcePublishedLatestPostimagesIdentical": true,
+  "cssSHA256": "1f3a6e9374b4f38c0fb6098f2bb6a7384574f8550f61737b16a7dd8a20d8382c",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/assess-residual.py",
+      "identicalGitBlob": "e4c9ec72753c20d992aeb378dfc27afd0f87456b"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/publication-readback.json",
+      "identicalGitBlob": "1255b94b6828d26210e73f695230a76d8fb4c924"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/assessment-attempt.log",
+      "identicalGitBlob": "3579f77235f3f23588ade8861579ceb19ef2c2b5"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/baseline-attempt.log",
+      "identicalGitBlob": "7e7a7894ed1ae9b80a637f7b3e74cef7f54bcd78"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/baseline-landing-390.png",
+      "identicalGitBlob": "cc35510f71c8d767378c0c6bd42cd4c82945d90f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/baseline-poster-390.png",
+      "identicalGitBlob": "38a747621b7c682dcc49f0cd5e5439d78d4c4df5"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/baseline.json",
+      "identicalGitBlob": "22027cd418912cde8f97dbc82f26c3dd5efd9ef8"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-attempt.log",
+      "identicalGitBlob": "635a7ad012a4b96ebdbb53a77b211d2dce794dd6"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-focused-390.png",
+      "identicalGitBlob": "b0b527c4f3d8155b46fbfe101b98201d83a54e0f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-landing-360.png",
+      "identicalGitBlob": "9a14ee053bd385b5833709c4e392a5115880f988"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-landing-390.png",
+      "identicalGitBlob": "bc62615df8c035eef9e5ad1735aa90e3799ec871"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-landing-430.png",
+      "identicalGitBlob": "f843719f58e5c66ae3b79dca312846c0cff7f552"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-poster-360.png",
+      "identicalGitBlob": "0a63645f32ce1bf78351a6aac8c818240285be98"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-poster-390.png",
+      "identicalGitBlob": "ec0c8d2e6f4ac9dccb5a325344969be45c114046"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-poster-430.png",
+      "identicalGitBlob": "cb95c9382285bcfd191fdce2dc8f479aa353649d"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate-unavailable-390.png",
+      "identicalGitBlob": "1061e484d45c0d3ec24dc769b1f30e42b21a7f2b"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/candidate.json",
+      "identicalGitBlob": "c58750d61763eec784ae26d20789bcfe690f01b0"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/checks-attempt.log",
+      "identicalGitBlob": "a74728f46b2a5e02d1d3b5935813390decd84c20"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/checks.json",
+      "identicalGitBlob": "4e161b81706e666ad8c365c91a392afa6875896f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/cleanup.json",
+      "identicalGitBlob": "a8674c1fa31707a894b75df283708a28a31be062"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/comparison-assessment-390.png",
+      "identicalGitBlob": "02aaa0eb106c816b0abf0df431390e0585d47bf5"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/comparison-candidate-390.png",
+      "identicalGitBlob": "a4fa61075875909a8da2ceecf0807da31f36eabf"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/comparison-final-390.png",
+      "identicalGitBlob": "aed10047a8846954e63d848f6025c056a6fabc38"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/final-assessment-attempt.log",
+      "identicalGitBlob": "35ca756879a27c8808d986c3743b2411b2eb2375"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/final/candidate-focused-390.png",
+      "identicalGitBlob": "c6ffe9f187a0901579745162433d227f449821f1"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/final/candidate-poster-390.png",
+      "identicalGitBlob": "5b56ec45ed91391646bfaea3e34103bbb85aefcc"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/final/candidate.json",
+      "identicalGitBlob": "e47f465833c250240e4da1f7e7812da41e202723"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/refinement-attempt.log",
+      "identicalGitBlob": "a971025943e1b66ddecf11abb5499bcccbab5129"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/refinement-proposals.json",
+      "identicalGitBlob": "1b177faa30ce74ddcd647f90c9026be3e1480448"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/residual-assessment-final.json",
+      "identicalGitBlob": "485996e54d9293fb4c0c13f85450142c98473116"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/residual-assessment.json",
+      "identicalGitBlob": "3643cdbdf61423560fd929a5822cf520a56cd6f7"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-landing/round-02/supervise.py",
+      "identicalGitBlob": "6d646cc20b9e13511effef53a35e3044cb3ab6da"
+    },
+    {
+      "path": "docs/mcr/frontend/css-parity-landing.md",
+      "identicalGitBlob": "ea642d06d008f9014b12405ca1d703ec3ddc8ccd"
+    },
+    {
+      "path": "frontend/src/features/public/ui/__tests__/css-parity-landing/native.mjs",
+      "identicalGitBlob": "dd555a7e67904b66aacce08c0ddc4043f9b92cf1"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "identicalGitBlob": "e703cd3022623dba530980fc702aab2353ab9ed5"
+    }
+  ],
+  "resourceDisposition": "Native/source PASS; HARD CLEANUP DEADLINE MISS retained. Custodian source follow-up NOT_RUN; no runtime rerun performed."
+}

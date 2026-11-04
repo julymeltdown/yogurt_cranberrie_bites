@@ -5,12 +5,13 @@ MOCK_READY. Full foreground/photo parity: IN_PROGRESS with exact constraints bel
 The intrinsic-media follow-up passed its bounded native/fixture validation;
 its publication is independently verified. The separate reference-media
 comparison and selected-tab correction also passed their bounded fixture
-validation and publication; full target convergence and the subsequent
-alignment/display candidate remain open.
+validation and publication. The subsequent alignment/display enlargement
+also passed its bounded round; its publication and full reference fidelity
+remain open.
 The published first pass and all immutable raw reports remain separately identified.
 Owner: `01a1a5d9-332b-7822-a8f7-412e295fa211`. Persistent goal metadata: BLOCKED; the aligned objective remains unfinished.
-Both later native rounds ran after capacity recovery. The full objective
-remains open despite passing the bounded checks.
+The intrinsic, native-reference and columns/display rounds ran in named
+allocations. The full objective remains open despite passing the bounded checks.
 Delivery goes directly to Root153 (`01a1a153-1227-7e72-801f-a2a6b91981e1`),
 who integrates and publishes. No king/SL technical review stage applies.
 
@@ -475,7 +476,8 @@ backgrounds, portrait framing, row data and all Thread rules remain unchanged.
 No extra height, fake wide original, post-order style or display upscale is
 introduced to disguise the native-media policy constraint.
 
-This alignment candidate is **NOT_RUN** and is not part of validated `1ed6412e`.
+This alignment checkpoint was **NOT_RUN** when prepared and is not part of
+validated `1ed6412e`; the later columns round below records its validation.
 The next declared comparison will record actual author/body/media origins,
 unchanged portrait geometry and action positions/44px targets, plus existing
 native image, Thread, keyboard focus and privacy checks at all three widths.
@@ -506,8 +508,8 @@ The evidence driver now distinguishes allowed Feed display scaling from
 unchanged intrinsic/source pins and native Thread display. It checks all three
 responsive display widths, complete image ratio, column origins, unchanged
 portrait/action geometry, actual Thread details, real keyboard focus and blob
-revocation. This amended alignment/display candidate remains **NOT_RUN** until
-a fresh named round. The existing ready CSS-FEED-COLUMNS request will be updated
+revocation. This amended alignment/display checkpoint was **NOT_RUN** when prepared;
+the named columns round below now records its validation. The existing ready CSS-FEED-COLUMNS request will be updated
 with this exact scope; no duplicate round or parent technical approval is needed.
 
 
@@ -530,3 +532,58 @@ remains source-ready, **NOT_RUN**, awaiting the amended CSS-FEED-COLUMNS named
 round. Full original fidelity scope and this worker's exclusive CSS lease remain
 open. No new browser, runtime, test, extraction or output job ran for this Git
 proof; publication is not a king/SL review or acknowledgment gate.
+
+
+## Columns and approved display enlargement validated
+
+The fresh `CSS-FEED-COLUMNS-202611041300Z` round was explicitly accepted at
+epoch 1793797343.457 on clean full source
+`fd7c71a8f8dc2176d11f9821e3a91618120089ed`. Start free space was
+17,204,948,992 bytes, above 16 GiB, and full carry was 8,986,064 bytes. The
+supervisor used the fixed 110-second work cutoff and 180-second hard deadline,
+with 8 GiB continuous/before-child floor after acceptance. A private outer
+cleanup guard independently retired resources and wrote its release receipt;
+cleanup did not depend on a later chat turn. [Acceptance](../evidence/css-parity-feed/accept-columns.json).
+
+`reference3` exited 0 at +6.18 seconds, six historical-first-pass/candidate cases
+at 360/390/430px. There were no failures, retries, page errors or in-stage source
+changes. Current Feed display widths are exactly **223 / 253 / 293px**, retaining
+the complete 197×67 and 197×46 source ratios and true intrinsic attributes.
+At 390px the images are 253×86.03125 and 253×59.0625; media figure x=102,
+author/body text x=105. Portrait x/width/height and all horizontal action
+positions/widths remain identical to the baseline, with targets at least 44px.
+Both actual Thread details retain native source display and identical geometry;
+selected-tab decoration is none, keyboard outline is solid 3px at all widths,
+and compose callback/blob revocation/disposal pass. Root's three fixture inputs
+and artist's five source/provenance/crop files remain byte-identical.
+[Source and immutable input pins](../evidence/css-parity-feed/columns-input-pins.json).
+The generic production media rules, background declarations and portrait rules
+are exact against qualified `1ed6412e`; enlargement is fixture-Feed scoped.
+No product TSX/API, fixture wiring, art, original photo or dependency changed.
+
+FULLRELEASE completed automatically at +24.703698 seconds, with active stage
+ending +24.554361. Whole peak was 40,360,113 bytes, temporary peak 29,285,274,
+durable 11,147,413 before receipt, minimum running free 17,067,610,112 bytes
+(above the 8 GiB accepted-work floor). Zero own processes remained; port 5292
+was bindable and own link/TMP/cache/profile absent. No cap/deadline exception or
+late manual cleanup. [Automatic release](../evidence/css-parity-feed/release-columns.json).
+Only saved-image reading and source/evidence documentation followed release.
+
+Owner inspected all three candidate Feed widths, both 390px Thread details and
+the real keyboard-focus capture against the unchanged supplied target. The
+permitted 253px display removes the earlier native-width mismatch at 390px, and
+text/media alignment is closer to the reference. The [columns comparison index](../evidence/css-parity-feed/columns-comparison.html)
+preserves native-only and enlarged results separately. Validated CSS SHA-256:
+`737dc607d53807bc6fcc1be9021a04da7874df7c8c26a23b3dee754799a9c1fc`.
+
+Full near-identical target acceptance is still open. At 390px, current first
+card `(14,108)` is 362×236.421875; second starts at y=349.421875 and is
+209.453125 high. The second media begins at y=453.8125, visually below the
+normalized target's roughly y=444 strip. The target estimate is not a pixel
+acceptance measurement. No post-order exception or fabricated data was added
+to force one specific card's cadence. Synthetic neutral text/counts differ
+from reference content; protected 48px portrait framing and the current shell,
+background/edge treatment and some control/glyph proportions also differ.
+Those observations do not certify full photo, real-service, device or multiuser
+acceptance. This worker retains its exclusive Feed CSS lease and the original
+unfinished fidelity objective; resource slots are released between rounds.

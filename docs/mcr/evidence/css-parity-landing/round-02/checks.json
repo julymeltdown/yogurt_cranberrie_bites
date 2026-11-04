@@ -1,0 +1,45 @@
+{
+  "result": "PASS",
+  "CSSSHA256": "1f3a6e9374b4f38c0fb6098f2bb6a7384574f8550f61737b16a7dd8a20d8382c",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "nativeExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "checkPlanExitCode": 0,
+  "diffCheckExitCode": 0,
+  "protectedInputs": {
+    "src/features/public/ui/Landing.tsx": "169591f279c818070489b8b84463df5979b010514bbc2b1ee2e5b878e15fe16f",
+    "src/features/public/ui/PublicFrame.tsx": "c21518ea7fd58779ff98ef6e88abcd044c38b349ca18d5c3b3ea04b01b797fe7",
+    "src/features/public/ui/landing-reference/PosterArtwork.tsx": "a7327343587dff347b4191d799ce2fc66959594b9dd706b04af86c7ecfbfa0f6",
+    "src/features/public/ui/landing-reference/reference-contours.json": "4fb46bfc4f4ae523e30ac20d3ee7ca99abf8b7bc7502d250baf0add6af163cde",
+    "src/entities/avatar/selected-static/index.tsx": "575ba2a5fbe59713301b7dc85d80d18f0ef42ce0f4989daba242b42fa8ad7854",
+    "src/entities/avatar/selected-static/selected-static.css": "ca3b31896f53565d6e459fb55aef74dab2bd93d0b70d1f0dfc4d08eee06f57c9",
+    "src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+    "src/shared/styles/base.css": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105",
+    "src/shared/styles/cozy-identity-backgrounds-v1.css": "aafdee7a24270e890c7916a5400a7632b4023270e3a4d0bca965bc62f98564ff"
+  },
+  "comparison": "comparison-final-390.png",
+  "coarseMaskIoU": {
+    "wordmark": [
+      0.619858552019356,
+      0.8964625625790834
+    ],
+    "copy": [
+      0.22862985685071574,
+      0.580168776371308
+    ],
+    "cta": [
+      0.36279815594307474,
+      0.8885331781140862
+    ]
+  },
+  "newPNGCount": 15,
+  "allDurableBytes": 8744296,
+  "limits": "Binary masks include unrelated reference marks/JPEG rasterization; not whole-screen visual acceptance. All protected inputs/gallery geometry unchanged and all final native interactions PASS."
+}
