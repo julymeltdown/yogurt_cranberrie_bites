@@ -135,7 +135,9 @@ def main():
                 raise RuntimeError('guardian did not start')
             time.sleep(0.02)
         environment = {**os.environ, 'TMPDIR': str(scratch), 'PYTHONDONTWRITEBYTECODE': '1', 'LC_ALL': 'C',
-                       'GIT_CONFIG_GLOBAL': '/dev/null', 'GIT_CONFIG_NOSYSTEM': '1'}
+                       'GIT_CONFIG_GLOBAL': '/dev/null', 'GIT_CONFIG_NOSYSTEM': '1',
+                       'GIT_CONFIG_COUNT': '2', 'GIT_CONFIG_KEY_0': 'maintenance.auto',
+                       'GIT_CONFIG_VALUE_0': 'false', 'GIT_CONFIG_KEY_1': 'gc.auto', 'GIT_CONFIG_VALUE_1': '0'}
 
         def run(name, command, cwd):
             if guard.poll() is not None or time.monotonic() >= start + 175:
