@@ -1,0 +1,70 @@
+{
+  "task": "AR03 reviewed feature-side Account editor owner",
+  "status": "CONTRACT_READY",
+  "sourceBase": "3b34d9636a525b4248c43483e9b41a845de025ea",
+  "previousPublication": "a4da2cb4efb59ca8e8f34fd02fda5e2b18f4fba0",
+  "qualifiedSource": "fb184de331b44fc1454115460fa32b44020d052d",
+  "sourceCommits": [
+    "5c39ae8a25f6b06f654afe0f9cf968918bf56e90",
+    "6eef0c296921383d7e276080a20741d7ea325864",
+    "5d6494c5456f00428c5dfdefa0c40942302dbdcd",
+    "fb184de331b44fc1454115460fa32b44020d052d"
+  ],
+  "sourcePaths": [
+    "docs/mcr/evidence/customize-reviewed-production/owner-integration/qualify-owner.py",
+    "docs/mcr/frontend/customize-reviewed-production.md",
+    "frontend/src/features/avatar/__tests__/reviewed-production/owner.test.tsx",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+    "frontend/src/features/avatar/motion-adoption/production-owner.ts"
+  ],
+  "qualifiedSourcePins": {
+    "docs/mcr/evidence/customize-reviewed-production/owner-integration/qualify-owner.py": "889424ab4beb7307464fdcdb19f46cc00244da213e8c8066e24e56e02a0c3ddd",
+    "docs/mcr/frontend/customize-reviewed-production.md": "5652c872c982fae4c54a91b0c567223e0d6fdccc39ef422d4fb15fd42054b5ff",
+    "frontend/src/features/avatar/__tests__/reviewed-production/owner.test.tsx": "d762115f18c6e97bf32df8a6aec87bc6b9dc2f71c81b7ed49eaccc7d938f33b1",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "60abd322f2bd8e2e32a3f7d52a02e085590e1d03bad7f61f640cf1c12c767548",
+    "frontend/src/features/avatar/motion-adoption/production-owner.ts": "242697db46552de8233c47a2a8eb80eb5eec5b9312cd147494265967637a52db"
+  },
+  "pinRule": "Qualified product/test/orchestration bytes remain unchanged; final evidence/documentation-only commit follows.",
+  "validation": {
+    "tests": 365,
+    "suites": 16,
+    "newOwnerCases": 19,
+    "applicationFiles": 857,
+    "diagnostics": 0,
+    "allSixChecksExit": 0,
+    "report": "checks-122940.json",
+    "attemptCount": 1,
+    "nativeImageCanvasMocked": true,
+    "liveBackendNativeMultiuser": "NOT_RUN"
+  },
+  "api": {
+    "create": "createReviewedMotionEditorOwner({auth,scope,authority,runtime,onCommitted})",
+    "return": "{kind,scope,controller,isCurrent,start,dispose}",
+    "controller": "MotionEditorController<PublicReviewedConfig> & {readonly lifetime: owner}",
+    "view": "<MotionEditor controller={owner.controller}/>; component start idempotent; view unmount does not stop owner controller",
+    "account": "Account calls owner.dispose() at ownership end; it disposes only controller/persistence/subscription, never borrowed runtime/authority",
+    "readSave": "Existing controller read/start/choose/selectPreset/random/reset/save/reload/resolveConflict; no additional factory/bootstrap/Auth/session/client/cache/game/socket",
+    "authority": "Same factory-minted authority and Auth object, exact runtime.authority identity, full scope/current checks before persistence creation",
+    "committed": "Current matching-scope server receipts only; callback failure surfaces saved-refresh-needed without retry"
+  },
+  "publisher": "Root153 01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "publication": "PENDING serial normal Root publication; no review/ACK gate",
+  "remainingRootScope": [
+    "Registry/provider async authority/runtime owner and static1.1 compatibility",
+    "Account/Profile/World composition and guarded production renderer adoption",
+    "Actual supported route/public release activation",
+    "Fresh 360/390/430 native and shared self-peer/Profile persistence proof"
+  ],
+  "goal": "Original aligned AR03 goal freshly verified BLOCKED and unfinished; no reset, false completion or scope cut",
+  "unchangedScopes": [
+    "app/character-entry",
+    "app/account-entry",
+    "World/Profile dispatch",
+    "root route/native canonical driver",
+    "renderer/compositor/art",
+    "backend/contracts/generated/central manifests/locks",
+    "CSS",
+    "Meet",
+    "docs/source"
+  ]
+}

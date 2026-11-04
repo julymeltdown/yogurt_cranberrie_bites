@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "slot": "AR03-REVIEWED-OWNER-SOURCE-202611041229Z",
+  "source": "fb184de331b44fc1454115460fa32b44020d052d",
+  "base": "3b34d9636a525b4248c43483e9b41a845de025ea",
+  "startedUTC": "2026-11-04T12:29:25.250534+00:00",
+  "deadlineUTC": "2026-11-04T12:39:10.402821+00:00",
+  "wholeChargedCapBytes": 134217728,
+  "rssCapBytes": 2684354560,
+  "startFloorBytes": 17179869184,
+  "stopFloorBytes": 8589934592,
+  "peakChargedBytes": 153804,
+  "peakAggregateRssBytes": 1465221120,
+  "checks": [
+    {
+      "name": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/__tests__/reviewed-production/vitest.config.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+      "exit": 0
+    },
+    {
+      "name": "application-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+        "--application"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/motion-adoption/production-owner.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/__tests__/reviewed-production/owner.test.tsx",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/__tests__/reviewed-production",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/__tests__/reviewed-production"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "3b34d9636a525b4248c43483e9b41a845de025ea"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    }
+  ],
+  "sourcePins": {
+    "docs/mcr/evidence/customize-reviewed-production/owner-integration/qualify-owner.py": "889424ab4beb7307464fdcdb19f46cc00244da213e8c8066e24e56e02a0c3ddd",
+    "docs/mcr/frontend/customize-reviewed-production.md": "5652c872c982fae4c54a91b0c567223e0d6fdccc39ef422d4fb15fd42054b5ff",
+    "frontend/src/features/avatar/__tests__/reviewed-production/owner.test.tsx": "d762115f18c6e97bf32df8a6aec87bc6b9dc2f71c81b7ed49eaccc7d938f33b1",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "60abd322f2bd8e2e32a3f7d52a02e085590e1d03bad7f61f640cf1c12c767548",
+    "frontend/src/features/avatar/motion-adoption/production-owner.ts": "242697db46552de8233c47a2a8eb80eb5eec5b9312cd147494265967637a52db"
+  },
+  "ownedTemporaryRemoved": true,
+  "localNodeModulesPresent": false,
+  "finishedUTC": "2026-11-04T12:29:40.376787+00:00"
+}

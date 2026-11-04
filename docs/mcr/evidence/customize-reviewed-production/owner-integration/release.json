@@ -1,0 +1,18 @@
+{
+  "slot": "AR03-REVIEWED-OWNER-SOURCE-202611041229Z",
+  "releasedUTC": "2026-11-04T12:30:03.153592+00:00",
+  "qualifiedSource": "fb184de331b44fc1454115460fa32b44020d052d",
+  "reportCount": 1,
+  "qualifiedReport": "checks-122940.json",
+  "peakAggregateRssBytes": 1465221120,
+  "peakChargedBytes": 153804,
+  "wholeRetainedChargedBytesBeforeReleaseRecord": 155844,
+  "retainedEvidenceBytes": 41197,
+  "freshFreeBytes": 17437556736,
+  "ownedProcesses": [],
+  "ownedTemporaryPaths": [],
+  "localNodeModulesPresent": false,
+  "borrowedViteTempAfter": [],
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "noBrowserServerNativeBuildInstallStarted": true
+}

@@ -1,0 +1,28 @@
+{
+  "slot": "AR03-REVIEWED-OWNER-SOURCE-202611041229Z",
+  "acceptedUTC": "2026-11-04T12:29:10.402821+00:00",
+  "workStopUTC": "2026-11-04T12:38:10.402821+00:00",
+  "releaseDeadlineUTC": "2026-11-04T12:39:10.402821+00:00",
+  "source": "fb184de331b44fc1454115460fa32b44020d052d",
+  "base": "3b34d9636a525b4248c43483e9b41a845de025ea",
+  "sourcePins": {
+    "docs/mcr/evidence/customize-reviewed-production/owner-integration/qualify-owner.py": "889424ab4beb7307464fdcdb19f46cc00244da213e8c8066e24e56e02a0c3ddd",
+    "docs/mcr/frontend/customize-reviewed-production.md": "5652c872c982fae4c54a91b0c567223e0d6fdccc39ef422d4fb15fd42054b5ff",
+    "frontend/src/features/avatar/__tests__/reviewed-production/owner.test.tsx": "d762115f18c6e97bf32df8a6aec87bc6b9dc2f71c81b7ed49eaccc7d938f33b1",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "60abd322f2bd8e2e32a3f7d52a02e085590e1d03bad7f61f640cf1c12c767548",
+    "frontend/src/features/avatar/motion-adoption/production-owner.ts": "242697db46552de8233c47a2a8eb80eb5eec5b9312cd147494265967637a52db"
+  },
+  "freshFreeBytes": 17457348608,
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "entireRetainedChargedBytesBeforeAllocationRecord": 148480,
+  "wholeCapBytes": 134217728,
+  "rssCapBytes": 2684354560,
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+  "outerArgv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/customize-reviewed-production/owner-integration/qualify-owner.py"
+  ],
+  "runtime": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "retainedDependencies": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "borrowedViteTempBefore": []
+}

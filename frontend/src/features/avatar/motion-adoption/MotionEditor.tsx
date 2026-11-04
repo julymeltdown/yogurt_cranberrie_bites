@@ -27,11 +27,11 @@ const categoryPaths: Record<MotionLayer, string> = {
   body: 'M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-7 18v-3a7 7 0 0 1 14 0v3',
   eyes: 'M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Zm10-3a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z',
 }
-export function MotionEditor<C>({ controller }: { readonly controller: MotionEditorController<C> }) {
+export function MotionEditor<C>({ controller }: { readonly controller: MotionEditorController<C> & { readonly lifetime?: 'owner' } }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), id = useId()
   const [direction, setDirection] = useState<MotionDirection>('down'), [walking, setWalking] = useState(false)
   const [category, setCategory] = useState<MotionLayer>('hair'), [page, setPage] = useState(0)
-  useEffect(() => { controller.start(); return () => controller.stop() }, [controller])
+  useEffect(() => { controller.start(); return () => { if (controller.lifetime !== 'owner') controller.stop() } }, [controller])
   const busy = ['loading', 'saving', 'reconciling'].includes(state.phase), editable = state.phase === 'ready' && !!state.draft
   const draft = state.draft, catalog = state.catalog
   const selected = draft ? controller.runtime.authority.selection(draft) : null
@@ -53,7 +53,7 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
     <ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<div className="mcr-motion-actions">
       <ConcertAction tone="paper" aria-label="Random character" disabled={!editable} onClick={() => void controller.random()}>Random</ConcertAction>
       <ConcertAction tone="paper" aria-label="Reset draft" disabled={!editable || !!state.candidate} onClick={() => controller.reset()}>Reset</ConcertAction>
-      <ConcertAction aria-label="Save outfit" pending={state.phase === 'saving'} disabled={!editable || !dirty || state.needsReconciliation} onClick={() => void controller.save()}>Save</ConcertAction>
+      <ConcertAction aria-label="Save outfit" pending={state.phase === 'saving'} disabled={!editable || !dirty || state.needsReconciliation || controller.runtime.authority.qualification === 'REVIEWED_PRODUCTION' && !controller.runtime.authority.canSave} onClick={() => void controller.save()}>Save</ConcertAction>
     </div>}>
       <div className="mcr-motion-stage">
       <div className="mcr-motion-figure"><div className="mcr-motion-preview">
