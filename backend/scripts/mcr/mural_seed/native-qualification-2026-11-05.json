@@ -1,0 +1,214 @@
+{
+  "art_sha256": {
+    "README.md": "58bc04bc0f527f2212199ad2ea13fd343b9d1df1bd3af2681ec0beb12514be37",
+    "manifest.json": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "palette.json": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d",
+    "pixels.bin": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721",
+    "preview.png": "05a0d8b1f974675ea93b601b5c7403d198be6aab94fc9aad9bb7960306e96432",
+    "source.svg": "d61e130214820d959158a012d691ef5edfcb7bbfab52e46296a72eddea476be2"
+  },
+  "art_source": "ca5d4bcad50d6159597309a961a29a8e4d1f3bb9",
+  "binary_sha256": "343853a2d7add4df480786b734283ca481c71b8393d5a9c3e6d8a843e879375d",
+  "bootstrap": {
+    "binary_sha256": "a15ab6773495ef22b76f8b8c281126eafb2dd1dc08ec7b8ac0b4fbad384c5839",
+    "ledger_count": 45,
+    "limits": [
+      "Owner runtime registration pending.",
+      "Participants, admissions and avatars await real authenticated bootstrap.",
+      "No World listener, ticket, or connection has been started."
+    ],
+    "migration_commands_exit": [
+      0,
+      0
+    ],
+    "principal_target": 2,
+    "producer_profile": "in01",
+    "registered_room_capacities": [
+      2
+    ],
+    "result": "PARTIAL",
+    "schema_probe": "PASS; missing avatar representation constraint refused",
+    "source_bound_catalog_publication": "PASS"
+  },
+  "build_resource": {
+    "guardian_reaped": true,
+    "max_processes": 7,
+    "max_rss": 2060156928,
+    "peak_new_bytes": 960196608,
+    "peak_outside_bytes": 91557888,
+    "peak_target_changed_bytes": 868638720,
+    "status": "PASS",
+    "target_release": {
+      "no_target_access_after_release": true,
+      "unix": 1793814629.758244,
+      "utc": "2026-11-04T17:50:29Z",
+      "zero_handles": true
+    }
+  },
+  "cleanup": {
+    "owned_root_absent": true,
+    "status": "PASS"
+  },
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "mural_seed",
+        "--no-run",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 101,
+      "name": "native-build"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "mural_seed",
+        "--no-run",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "native-build"
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline",
+        "-j",
+        "1",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--bin",
+        "concert-service",
+        "--config",
+        "profile.dev.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.test.package.api-contracts.opt-level=2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--config",
+        "profile.test.package.contracts-build.opt-level=2"
+      ],
+      "exit_code": 0,
+      "name": "concert-build"
+    }
+  ],
+  "concert_binary_sha256": "a15ab6773495ef22b76f8b8c281126eafb2dd1dc08ec7b8ac0b4fbad384c5839",
+  "format": "mcr-mural-seed-native-qualification/1",
+  "limitations": [
+    "Local operator producer and actual source-bound owning catalog only; no invented production Ops role.",
+    "Authenticated server C03/snapshot and default-App/two-client IN04 remain NOT_RUN.",
+    "Load qualification DEFERRED_BY_USER."
+  ],
+  "native_resource": {
+    "exit_code": 0,
+    "full_release_unix": 1793814661.878779,
+    "guardian_reaped": true,
+    "max_processes": 13,
+    "max_rss": 256376832,
+    "peak_new_bytes": 1043431424,
+    "pg_root_absent": true,
+    "status": "PASS"
+  },
+  "operator_provision": {
+    "cooldown_ms": 1200,
+    "initial_state": "EDITABLE",
+    "limits": [
+      "Isolated operator run, not a production Ops role grant",
+      "No authenticated server C03/snapshot or browser/two-client IN04 in this local producer test"
+    ],
+    "operator_binding": "local-owned-run:sha256:36191fc36f9bce5d3d9cdb2199eb3e103e6a9ab33467ccb65758e7f943a417c2",
+    "pixel_sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721",
+    "result": {
+      "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+      "exact_pristine_retry": false,
+      "input_digest": "2a531aa0efe8d0b3d2be3402e66f4cd65e2848b1827d2e224a3047b9db2ffca2",
+      "manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+      "provisioned_at": "2026-11-04T17:51:00.204285Z",
+      "revision": 1,
+      "snapshot_id": "082fbdd3-a349-413f-bc71-fc044d75b354"
+    },
+    "source_revision": "ca5d4bcad50d6159597309a961a29a8e4d1f3bb9"
+  },
+  "phases": {
+    "actual_pack_and_tamper_rejection": {
+      "exit_code": 0,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "native_seed_atomic_operator_binding_and_conflicts": {
+      "exit_code": 0,
+      "migration_count": 45,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "native_seed_concurrency_history_and_immutable_provenance": {
+      "exit_code": 0,
+      "migration_count": 45,
+      "prepared_after": 0,
+      "status": "PASS"
+    },
+    "operator_provision_bootstrap_event": {
+      "exit_code": 0,
+      "migration_count": 45,
+      "prepared_after": 0,
+      "status": "PASS"
+    }
+  },
+  "private_evidence_sha256": {
+    "accepted.json": "b330e57fb31d75430dcc11877d68593ba8a92ebfb0105bc2bcde455d373ca642",
+    "checkpoint.json": "d347e0c9e507a96b8be2e65187232acb87987002c5b1361d665e01defcf0479d",
+    "native-report.json": "0f1c99ae706083a4f4f48cd22ce832d5f5ef40e8e81339f181a8982dae04d4ad",
+    "native-resource-report.json": "dc51d7a1a87ebf284a480acffe6e75088ce98bedaa6549f75fd59c854d1c3ff2",
+    "resource-report.json": "ad4a5d28ab9acf062c33fd1913558a03a4a45f4c813ee18fe0f368765afb45e1",
+    "source-metadata-refresh.json": "8c27215e17afba6665668861f7b1ef089a77d87b5ffbd2327ce640291a60df49",
+    "target-release.json": "d38f49fc6f777aa434b0d2fd2228eea90c1e5160f77279ce2dad7ecff81fd600"
+  },
+  "restart": {
+    "after_pid": 13968,
+    "after_start": "2026-11-05 02:51:00.791653+09",
+    "before_pid": 12546,
+    "before_start": "2026-11-05 02:50:54.348396+09",
+    "durable_digest": "2a68f7bd9b32d1b98be54d2b4f7aa722",
+    "status": "PASS"
+  },
+  "retained_initial_failure": "First native-build exited101: cross-checkout cached build script referenced absent account_deletion.proto. Eleven own-checkout source mtimes refreshed with SHA/bytes/mode/uid/gid unchanged; exact same-step retry passed under original lease. No cache deletion, source/dependency change, or clock reset.",
+  "source_commit": "3b690326b21e1344dd4577f26797ec30151e4253",
+  "source_manifest_entries": 3748,
+  "status": "PASS"
+}

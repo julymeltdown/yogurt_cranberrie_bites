@@ -1,7 +1,8 @@
 # Initial mural seed: local producer and art input
 
-Status: IN_PROGRESS. The authoring input is frozen and the producer/controller
-are implemented; compilation and native validation of this new scope are NOT_RUN.
+Status: INTEGRATED for the source-qualified local producer; its compilation and
+four exact native qualification cases pass. Authenticated server snapshot and
+default-App/two-client IN04 remain NOT_RUN, so overall Wall acceptance stays open.
 This follows the completed Wall qualification handoff. It introduces no public
 endpoint, client write authority or startup integration. Root explicitly assigned
 `src/mural_seed/**`, its new tests, this document, only its `lib.rs` module export,
@@ -160,5 +161,81 @@ postmaster, compares state/config/provenance persistence and cleans only its
 marker-owned cluster. It requires a frozen source/two-executable/art checkpoint
 and a fresh accepted resource allocation, with an external whole-round guardian
 when required by that allocation. Syntax parsing alone passed; Rust/native
-results remain NOT_RUN until that accepted round executes. Authenticated server
-C03/snapshot, default App, two-client IN04 and production provisioning remain open.
+results from the completed accepted round are recorded below. Authenticated
+server C03/snapshot, default App, two-client IN04 and production provisioning
+remain open.
+
+## Completed source-bound qualification and runtime handoff
+
+Executed source `3b690326b21e1344dd4577f26797ec30151e4253` passed all four
+exact seed cases, exit 0, with zero prepared transactions after every case.
+Both the seed test executable and actual Concert binary compiled under Rust
+1.88, locked/offline single-job debug-0/incremental-off builds. The first cached
+build-script attempt referenced a peer proto absent from this checkout; that
+exit-101 failure is retained. Refreshing only eleven byte-identical own-checkout
+source mtimes fixed the cache selection. No dependency/source changes, target
+cleanup, cold target or clock extension was used.
+
+The native run verified the actual art pack and ten rejection checks; atomic
+rollback on an actual deferred commit failure; exact operator/source retries;
+rejection of a different manifest with identical pixels; concurrent retries;
+foreign/mutated roots and checkpoint refusal; and immutable full provenance.
+The separate SQL fixtures are explicitly test fixtures. The final operator case
+instead uses existing `world_in01_prepare.py::seed_concert`, real Concert
+`--migrate`, `--verify-migrations` and `--prepare-in01-catalog` commands, all exit 0.
+All database cases verified 45 actual Concert migrations, including 0058/0063.
+
+That owning bootstrap returned canonical event
+`f1fd7b85-d393-5410-8bc3-5ea6b71aeb77`. The actual isolated operator run inserted
+revision 1, snapshot `082fbdd3-a349-413f-bc71-fc044d75b354`, explicit cooldown
+1,200 ms and `EDITABLE` state at `2026-11-04T17:51:00.204285Z`. Full input digest:
+`2a531aa0efe8d0b3d2be3402e66f4cd65e2848b1827d2e224a3047b9db2ffca2`.
+The exact database pixels retained artist SHA-256
+`f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721`.
+The recorded local operator/run binding is derived from this run's actual owned
+marker/device/inode/uid. It is evidence of that isolated operator run, not a
+reusable production identity or Ops-role authorization. The native retry
+preserved its original snapshot and provisioning timestamp.
+
+Actual PostgreSQL restart changed postmaster PID 12546 to 13968 and server start
+time while retaining state/config/provenance digest
+`2a68f7bd9b32d1b98be54d2b4f7aa722`. Exact owned cleanup and independent guardian
+reaping passed. Actual target release was 2026-11-04 17:50:29 UTC with zero
+compiler/target handles; native FULL release was 17:51:01 UTC. Build NEW peaked
+at 960,196,608 bytes; whole native-phase NEW peaked at 1,043,431,424 bytes,
+13 processes and 256,376,832 bytes RSS. These fit the original 2 GiB NEW/14 GiB
+whole allowance, including retained failures/history. No resource remains held.
+
+Frozen executable SHA-256 values:
+
+- Seed test: `343853a2d7add4df480786b734283ca481c71b8393d5a9c3e6d8a843e879375d`.
+- Actual Concert main: `a15ab6773495ef22b76f8b8c281126eafb2dd1dc08ec7b8ac0b4fbad384c5839`.
+
+The checkpoint records 3,748 source/dependency/oracle hashes plus all six exact
+art-file hashes. Committed evidence is
+`backend/scripts/mcr/mural_seed/native-qualification-2026-11-05.json`; complete
+private round evidence remains in `/private/tmp/mcr-wall-seed-pea8v92n`.
+
+For the next owning runtime, use a freshly owned, current-schema canonical
+event from that same owning bootstrap. Freeze the selected six-file qualified
+pack and its manifest SHA. Invoke `load_pack` then `provision` with explicit
+`OperatorSelection`; the tested isolated adapter is exact ignored test
+`operator_provision_bootstrap_event`, with `MCR_MURAL_SEED_PACK` and the verified
+`MCR_CANONICAL_ROOT`, root identity/token/system and Concert URL supplied privately
+by the owning controller. It derives the real local run binding rather than
+inventing a product operator. No new main CLI or HTTP endpoint is introduced.
+The complete four-case controller accepts `--checkpoint`, `--pg-bin-dir`, new
+`--report`/`--live-owner` and the existing accepted lease ID/deadline/byte limits;
+it creates and removes its own cluster, so its completed database cannot be
+reused as the next live runtime.
+
+The responsible runtime developer must then serve the actual Wall owner with
+the same canonical core, real Auth/Friend/admission, explicit live Wall keys and
+fresh point-in-time C04 capabilities. Read the authenticated server snapshot and
+compare every pixel/palette value with the published pack before the default-App
+two-client IN04 journey. A snapshot creates a recovery checkpoint, after which
+the seed provisioner must refuse further retries. Do not overwrite an existing
+mural or add a client seed overlay. The older R7 stack lacked 0058 and is not
+valid evidence. This native producer run makes no C03/HTTP/browser/device/load
+or production Ops-role claim. Publication and the next ready work do not wait
+for manager review or acknowledgment.
