@@ -1,0 +1,6 @@
+{
+  "status": "FAILED",
+  "utc": "2026-11-04T17:04:00.476407+00:00",
+  "tool_sha256": "5ecc02bf835ad95a85045b3bc52697a2f77015eed53b9271d7c565392e515008",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/sl-world/evidence/fe16-original-parity/qualify.py\", line 240, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/sl-world/evidence/fe16-original-parity/qualify.py\", line 110, in main\n    subprocess.run(['git', 'merge-base', '--is-ancestor', commit, BASE], cwd=ROOT, check=True, timeout=10)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['git', 'merge-base', '--is-ancestor', '2d7a42e7d9fc645a3d956cd552304539be602be7', 'db661820d6af1770839cfda8d0dc6b9ada1ece1b']' returned non-zero exit status 1.\n"
+}

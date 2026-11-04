@@ -1,0 +1,29 @@
+{
+  "allocation": "FE16-PARITY-SOURCE-B-DIRECT-NEXT-202611041700Z",
+  "utc": "2026-11-04T17:04:18.081160+00:00",
+  "source40": "db661820d6af1770839cfda8d0dc6b9ada1ece1b",
+  "branch": "refs/heads/codex/mcr-fe-FE16-original-parity",
+  "tool_sha256": "1d71da13d25f895edc26000bd63e3e7c3929623d789efccb3277091747d11fff",
+  "work_deadline_utc": "2026-11-04T17:07:18.081160+00:00",
+  "total_deadline_utc": "2026-11-04T17:08:18.081160+00:00",
+  "max_processes_all": 2,
+  "max_rss_all_bytes": 268435456,
+  "new_total_limit_bytes": 8388608,
+  "output_limit_bytes": 5242880,
+  "whole_limit_bytes": 2147483648,
+  "checkout_allocated_bytes": 751992832,
+  "private_git_allocated_bytes": 1916928,
+  "shared_common_git": "Existing shared repository object storage; not an exclusive job allocation.",
+  "fresh_free_bytes": 25968635904,
+  "start_floor_bytes": 17179869184,
+  "live_floor_bytes": 8589934592,
+  "aggregate_margin_bytes": 9663676416,
+  "manifest": {
+    "read_only_source": "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+    "write_paths": [
+      "docs/mcr/frontend/fe16-original-parity.md",
+      "evidence/fe16-original-parity/**"
+    ],
+    "jobs": "Sequential standard-library Python and Git only; no tests/build/browser/server/native job."
+  }
+}

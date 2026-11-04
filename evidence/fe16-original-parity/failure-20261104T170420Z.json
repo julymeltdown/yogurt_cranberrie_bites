@@ -1,0 +1,6 @@
+{
+  "status": "FAILED",
+  "utc": "2026-11-04T17:04:20.149815+00:00",
+  "tool_sha256": "1d71da13d25f895edc26000bd63e3e7c3929623d789efccb3277091747d11fff",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/sl-world/evidence/fe16-original-parity/qualify.py\", line 246, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/sl-world/evidence/fe16-original-parity/qualify.py\", line 196, in main\n    assert resolved, (path, spec)\n           ^^^^^^^^\nAssertionError: ('frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx', './artwork/cemetery-bottom-v1.png')\n"
+}
