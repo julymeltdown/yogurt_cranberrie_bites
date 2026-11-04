@@ -1,0 +1,436 @@
+{
+  "observedAt": "2026-11-04T14:09:57.459713+00:00",
+  "freshFetchExit": 0,
+  "independentLsRemoteExit": 0,
+  "independentLsRemoteMaster": "181f35667a30393879c0ddcec26fc2c762281e98",
+  "freshFetchedRemoteTrackingMaster": "181f35667a30393879c0ddcec26fc2c762281e98",
+  "delivery": "7a1ff7081df9f021c95ad740d259e8c52c08fbad",
+  "deliveryParent": "10bde5f3f33438740f2fa8696becf4ae1aa1a09c",
+  "canonicalSeal": "0287ef191525444fb8ffe9f2be4f733253fcb9d9",
+  "deliveryAncestorOfObservedMaster": true,
+  "exact83PostimageAndModeMatches": [
+    {
+      "path": "docs/mcr/evidence/map-production-binding/composition-v2-native-carry.json",
+      "treeModeTypeOid": "100644 blob fe658a8c9d9bf6b44e36fedd73a13c1ec942acd5"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/composition-v2-native-ready.md",
+      "treeModeTypeOid": "100644 blob 1d61d837cf9b982ed8be22b7c5f6ddc4012c44b4"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/composition-v2-source-plan.md",
+      "treeModeTypeOid": "100644 blob 9afb393faa3c7986e3156daa70a1101ed5a7a6ce"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/README.md",
+      "treeModeTypeOid": "100644 blob 1954016dd9f37de6772d09efdbbe1e9c809b9cf7"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/acceptance.json",
+      "treeModeTypeOid": "100644 blob 5817c104d43d4bc871bb9a274d4b0d4b968a4fc2"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-danger-360.png",
+      "treeModeTypeOid": "100644 blob 93de40c577420b825fed2c522a667ed5d1752d14"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-danger-390.png",
+      "treeModeTypeOid": "100644 blob 543dba09ea3fab9a7aed7de17de7b7ff269af161"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-danger-430.png",
+      "treeModeTypeOid": "100644 blob 3ba79ffebc7d9533647e0dad50ed56fdbd9c8c73"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-parade-360.png",
+      "treeModeTypeOid": "100644 blob 9bbd19cc9ca744b7ec522f3bca6475d07625a8ba"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-parade-390-short.png",
+      "treeModeTypeOid": "100644 blob 0fc7dfa07172b85a6f5250eaa0428a999df1f1ff"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-parade-390.png",
+      "treeModeTypeOid": "100644 blob 54671cfb62c4d3af8a3e10953beed8f56b5be295"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-parade-430.png",
+      "treeModeTypeOid": "100644 blob d19785a51a23e1f65cf6776055950ca2f40c8803"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-revenge-360.png",
+      "treeModeTypeOid": "100644 blob 639aa734b4fa0ad55fad10c0857147325f19315b"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-revenge-390.png",
+      "treeModeTypeOid": "100644 blob 2d4aef2f54953f920115669012c793440e769e1c"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/after-revenge-430.png",
+      "treeModeTypeOid": "100644 blob 4e0a2785726dd3ce2a73c4b57eebaa4e31d915a8"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-danger-360.png",
+      "treeModeTypeOid": "100644 blob 4af846cb79e42c1470447296237af80b6ce84905"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-danger-390.png",
+      "treeModeTypeOid": "100644 blob e1bc04a50f714cb974406ff2b4e8a51811ab5011"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-danger-430.png",
+      "treeModeTypeOid": "100644 blob 54773e2b805ea1962f27ea60f8b0b048eae10569"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-parade-360.png",
+      "treeModeTypeOid": "100644 blob 6ee950dd64e650a1c6636c9bd40eeb36bcc93287"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-parade-390.png",
+      "treeModeTypeOid": "100644 blob 4eaf80b4714656fa213cebe90298b83b5069adb6"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-parade-430.png",
+      "treeModeTypeOid": "100644 blob b7385c2f88677f8aceb1ffae6c858ecfbf2b2095"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-revenge-360.png",
+      "treeModeTypeOid": "100644 blob 92f49c6483195de953f886c182625a98b3c08e3f"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-revenge-390.png",
+      "treeModeTypeOid": "100644 blob 4ca786889eac2a675a09dc310a2e926ebe868611"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/before-revenge-430.png",
+      "treeModeTypeOid": "100644 blob e740df9697a721fa30dcb5b0cd72c4386139f652"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/full-release.json",
+      "treeModeTypeOid": "100644 blob 3d4f5855c296463298082d49f36ab1eb4c917905"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/native.log",
+      "treeModeTypeOid": "100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/release-bind-attempt01.json",
+      "treeModeTypeOid": "100644 blob e2e6b0a2c4a05b3bdd76dead89eb42fc627f62f4"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/report.json",
+      "treeModeTypeOid": "100644 blob c4cf49818434e59eb1d9b609bfb6fe48b9f40d68"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/supervisor.json",
+      "treeModeTypeOid": "100644 blob ccbd2e5c1ca59f10b4b7a9c1e05ce972b6e6f212"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/syntax.log",
+      "treeModeTypeOid": "100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-round01/types.log",
+      "treeModeTypeOid": "100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/root-v2-native-supervisor.py",
+      "treeModeTypeOid": "100644 blob 761628030ed5e6a71328c6646b8f705f6d8653a4"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/README.md",
+      "treeModeTypeOid": "100644 blob d536d352b3392a382f830ce582527fa583221527"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/attempts.jsonl",
+      "treeModeTypeOid": "100644 blob 113a32900ea52a72153ce22038d7ad7d48ec4151"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/cleanup.jsonl",
+      "treeModeTypeOid": "100644 blob 702bb11b6d26392e07557c34fb6eece213dd4663"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/full-release.json",
+      "treeModeTypeOid": "100644 blob 96024b8ce2f377d4dbca4225029b65ed6448ae74"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/guardian.jsonl",
+      "treeModeTypeOid": "100644 blob 16de7b4e52c7a32886702c41beb4bb0ab5495755"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/intake-manifest.json",
+      "treeModeTypeOid": "100644 blob d9e381a9d730b63325d002f134a75f8932a3402f"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/lint-01.log",
+      "treeModeTypeOid": "100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/registration-01.log",
+      "treeModeTypeOid": "100644 blob cbda80deaf279e75fb822d95686ea2374d21cb6b"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/registration-check-01.log",
+      "treeModeTypeOid": "100644 blob 46ca56ef370b8ff6d013fb1486f42ca16c190877"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/source-pins.json",
+      "treeModeTypeOid": "100644 blob c2f38f58aaa85eebe2c83e9b0ecd6b9be4b37627"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/supervisor.py",
+      "treeModeTypeOid": "100644 blob fb75f473605a40492c7162309316509dc6770dd8"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/tests-01.log",
+      "treeModeTypeOid": "100644 blob 55a77e957ddfd42f5146529e3a798f10695732e0"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/tests-02.log",
+      "treeModeTypeOid": "100644 blob 510a726f63c00dfd6338cc59c80cc880cbdce9c1"
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round04/types-01.log",
+      "treeModeTypeOid": "100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/frontend/map-production-binding.md",
+      "treeModeTypeOid": "100644 blob d39668f431ee711f9902cc64661dabbda1dc80b5"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "treeModeTypeOid": "100644 blob c0ca6544d63c699f1e21f0ed4550dd916dc19f00"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "treeModeTypeOid": "100644 blob 23a1b99810b34468c93a590c8b8377f62ddc9d7b"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "treeModeTypeOid": "100644 blob 99be6562ad0454f77b74064cb40fe549a8b0ee2a"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "treeModeTypeOid": "100644 blob 6d7807c74846b016e566a7662b3646b1f90807d9"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "treeModeTypeOid": "100644 blob c51d95e7d927cf82621dde34fb01eb65efdcfbd4"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "treeModeTypeOid": "100644 blob b1f7457c9680f5029e39cc57ba052b2220dba21f"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "treeModeTypeOid": "100644 blob 07c9b5ddbe4f849f8f01869f5fa94285db35f1e6"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "treeModeTypeOid": "100644 blob 7a5c32f1c79da5971795cf3578527e27c8688e79"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "treeModeTypeOid": "100644 blob f93434ffdeb50bb5a56b73470d6412a2819597b7"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "treeModeTypeOid": "100644 blob 8b71ce2d7bc34d4c282a7133ee2711e2022250da"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/composition-overview.test.ts",
+      "treeModeTypeOid": "100644 blob 85fbc4b1d10dd6c5fe33e9062390741572087024"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx",
+      "treeModeTypeOid": "100644 blob 52151f8542b243065b5d6687f20250ead16ecd38"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/contract.test.ts",
+      "treeModeTypeOid": "100644 blob 4eef63fde893e49cc6109d83c394e7337eeaf0e3"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "treeModeTypeOid": "100644 blob 188eb8aa97048f5e6cd3b8c94109ce793a7690f8"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/labels.test.ts",
+      "treeModeTypeOid": "100644 blob acdc27a7b3dccb5927a0d4ad8aa7741ff935ae9b"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "treeModeTypeOid": "100644 blob 052168e8082e9cd40321dc36c2c17c800ca7251b"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/native.mjs",
+      "treeModeTypeOid": "100644 blob c11851a644d125a2eebb108e718abb3d70bb3532"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+      "treeModeTypeOid": "100644 blob 0748c1b1bad82e0d9c5ec8ebef48926d116da442"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "treeModeTypeOid": "100644 blob 39a7c7f8851cb49aaa440a23eb7eb603dc98c6c3"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/tsconfig.json",
+      "treeModeTypeOid": "100644 blob ba320916a1393e5e1cb1c6d79ab231a5a0236e31"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/vitest.config.ts",
+      "treeModeTypeOid": "100644 blob d28e923fded9be1b2d5ddca287db22331da26cec"
+    },
+    {
+      "path": "frontend/src/app/world-entry/map-presentation-v2/loader.ts",
+      "treeModeTypeOid": "100644 blob d10030063dd04ae73c91dd0f7cf2a88fdad10d37"
+    },
+    {
+      "path": "frontend/src/app/world-entry/reference-scene-overview.ts",
+      "treeModeTypeOid": "100644 blob 0cc9ce7116f0d8095badeb464851dd175e25e49c"
+    },
+    {
+      "path": "frontend/src/features/places/ui/IllustratedMap.tsx",
+      "treeModeTypeOid": "100644 blob 296c536a26771fa0d455cc5622cd71d6890d5745"
+    },
+    {
+      "path": "frontend/src/features/places/ui/reference-scene/map-service-links.tsx",
+      "treeModeTypeOid": "100644 blob c25510686ec9259dc0a5d971051df34ef18bc7d2"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "treeModeTypeOid": "100644 blob 65416fc1b712f49af5e24c8adb5b7fb5afb87ad9"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/current.ts",
+      "treeModeTypeOid": "100644 blob 90b78dadba3ffce758db27f1b81b9b3ba6dcca59"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/labels.ts",
+      "treeModeTypeOid": "100644 blob e3ad0f32de0cd97a83764f373c478c1c9f3b31f1"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "treeModeTypeOid": "100644 blob c51d95e7d927cf82621dde34fb01eb65efdcfbd4"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/model.ts",
+      "treeModeTypeOid": "100644 blob a42e56b6bfb916f43490f493844b803bc5e2380d"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/presentation-json.ts",
+      "treeModeTypeOid": "100644 blob 1fa8ae93281ac3a65b254b76c02dfd16d9871277"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "treeModeTypeOid": "100644 blob ca8bfe3499fb45bdfd3dcd5212a0a1ccc1f12e18"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "treeModeTypeOid": "100644 blob 3b74d2bb037eef52b13e775ce5eb32076fb69802"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "treeModeTypeOid": "100644 blob c182ed0bc39b86f14314f917fb7166629fee5a4f"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style.ts",
+      "treeModeTypeOid": "100644 blob 2e3f7bfbfd9632189a631d222707a401faec7842"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/overview.ts",
+      "treeModeTypeOid": "100644 blob 269c16519ce5de4c982c6e8ffebf10976d17b90b"
+    }
+  ],
+  "exactOwnSourceAndExternalPins": 35,
+  "exactOwnerSource04Files": 14,
+  "ownerMdDifferenceFrom705": "Two status paragraphs updated in Root seal: correction02 now separately qualified/unadopted; native19 PASS/release replaces NOT_RUN. Entire MD is exact canonicalSeal\u2192delivery\u2192observed master, not byte-exact owner705. Preserved in subsequent owner append.",
+  "ownerMdDiff": "diff --git a/docs/mcr/frontend/map-production-binding.md b/docs/mcr/frontend/map-production-binding.md\nindex 59a923de..d39668f4 100644\n--- a/docs/mcr/frontend/map-production-binding.md\n+++ b/docs/mcr/frontend/map-production-binding.md\n@@ -77,8 +77,8 @@ NOT_RUN: qualified before/after comparison, actual World RGBA equality, browser\n \n ## Full-composition v2 source qualification, 2026-11-04\n \n-The separately registered Map-only full-scene candidate is source-qualified at `575726966fd8b52d04e9ba1ec4d8be3129286071`; its immutable `currentComposition()` now returns the real corrected ART model instead of null. External ten-file carry remains exact `8fcd1287496aedbde12ef0d2e426855f8f8ec4d6` via `d10bc07d`, totaling 6,782,808 bytes. Presentation `map4-reference-composition-v1` has digest `sha256:9fcddca91030aaff0f3c3efaa1018fdeddb4708c56c9eea80024deb0bee9f522`. Original release identity, map/theme/geometry/avatar sources and World rendering remain unchanged by this candidate. The later artist recipe `50adff5f` is AUTHORED_NOT_BUILT and is not included.\n+The separately registered Map-only full-scene candidate is source-qualified at `575726966fd8b52d04e9ba1ec4d8be3129286071`; its immutable `currentComposition()` now returns the real corrected ART model instead of null. External ten-file carry remains exact `8fcd1287496aedbde12ef0d2e426855f8f8ec4d6` via `d10bc07d`, totaling 6,782,808 bytes. Presentation `map4-reference-composition-v1` has digest `sha256:9fcddca91030aaff0f3c3efaa1018fdeddb4708c56c9eea80024deb0bee9f522`. Original release identity, map/theme/geometry/avatar sources and World rendering remain unchanged by this candidate. The later Artist correction02 `1f2f9ff6` is separately source-qualified and remains unadopted; it is not included.\n \n Allocated source04 passed 120 tests across 18 files, types, lint and deterministic resource registration, all exit 0. The initial attempt exceeded its process ceiling and was guardian-aborted before reported cases; its failure is retained. A single threaded Vitest pool fits the four-process ceiling on the successful retry under the original clock. FULL_RELEASED at 13:47:36.175301Z with own link/TMP/cache and known processes absent; no runtime resource remains held. Exact commands, source hashes, failures, the incomplete first-abort PID inventory limitation and accounting are in `../evidence/map-production-binding/source-round04/`.\n \n-Actual canonical v2 native output, visual/reference convergence, fresh live admission and v2 remote publication remain NOT_RUN/pending. Source qualification is not browser, device or visual acceptance. Root153 exclusively owns the native driver; the responsible Map/ART/CSS developers assess and fix their actual output directly without a king/SL review or acknowledgment gate.\n+Canonical v2 native now passes at Root `6b11faca` under `ROOT-MAP4-COMPOSITION-NATIVE-202611041400Z`: full application types/syntax/native exit 0, 19 contexts, nine exact World pixels/29-object/Map identity/camera pairs, 40 real virtual routes, 44px target and focus/control/lifetime checks. FULL_RELEASE 14:03:18.639003 UTC. The immutable packet is `../evidence/map-production-binding/native-composition-round01/`. Root directly inspected saved 360/390/short captures against the reference and records remaining roof/path/lawn/density/label-framing gaps in that packet. Visual/reference convergence, fresh live admission and v2 remote publication remain pending. Source qualification is not browser, device or visual acceptance. Root153 exclusively owns the native driver; the responsible Map/ART/CSS developers assess and fix their actual output directly without a king/SL review or acknowledgment gate.\n",
+  "exactRetainedStyleAndFontPins": 2,
+  "rawReportBytes": 955578,
+  "rawReportSha256": "05e1df3a064b753c4b3a8e9b68f97d77ace91915282cc64e9087145661cd2c47",
+  "actualSavedImagesOpenedAndHashMatched": 19,
+  "reportPairReadback": [
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "worldRgba": "sha256:cbb7b4926aa3559bfdd2943f7271eef6b8bb76b2a5abf3c63624906f4cd023c1",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "worldRgba": "sha256:d04da6e0cfcb91ef2ea3ff2e6601b0d7d7e4090108496a5ad29d74fb131fd0b5",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "worldRgba": "sha256:d6f94d3a03cba49bb5659f4fb03e3dc2478bbf8f3ca1b545de800bb770b831a7",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "worldRgba": "sha256:2c547e09c3a7b9478b23e21c57abba20da0f65aeaac1a4e93d3061ec35995c8d",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "worldRgba": "sha256:1bcd5d6ab5ebe886ca6c75f1af15a27e4b321460abeb96932e75069c43809eba",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "worldRgba": "sha256:d57728cc9f162393331acded925334340bf8c2d06b694305e1765bbf40737f66",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "worldRgba": "sha256:ae4c7a74293df814ced6000a3eee8989468a4c035ae48d170542f970ae1fb113",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "worldRgba": "sha256:6e675b7807408a83d55909d38fe6b4878638aaddec07b1b63114e408f7e924fd",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "worldRgba": "sha256:a680809acdf5676e443658debce495e07f8b44a0e3f36fd50d049e8dda5f25f2",
+      "objects": 29,
+      "settledWorldAndMapCamerasEqual": true,
+      "mapIdentityEqual": true
+    }
+  ],
+  "reportVirtualActions": 40,
+  "reportMinimumTarget": [
+    66.359375,
+    44
+  ],
+  "reportAllFocusRouteLifetimeControlsDisposalReadback": true,
+  "qualification": "EXPLICIT_CONTRACT_FIXTURE_MAP_REFERENCE_COMPOSITION_DEFAULT_CLIENT_ONLY",
+  "productionAdmitted": false,
+  "scopeLimit": "Read-only Git/blob/metadata and existing-report readback, not a new runtime test; no whole-app released-tree, live/operator/device or visual convergence acceptance."
+}
