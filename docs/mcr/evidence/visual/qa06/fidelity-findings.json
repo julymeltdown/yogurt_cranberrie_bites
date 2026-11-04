@@ -311,5 +311,39 @@
     "repairCases": 27,
     "componentCases": 3,
     "wholeQA06": "UNFINISHED"
+  },
+  "latestHumanReference": {
+    "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "report": "human-reference-20261104/comparison.json",
+    "visualPresentation": "human-reference-20261104/comparison.html",
+    "screens": 10,
+    "status": "IN_PROGRESS",
+    "actualGoalStatusReadback": "BLOCKED; unchanged original objective, ready client comparison resumed",
+    "requiredSharedCorrection": "human-reference-20261104/shared-frame-footer-packet.json",
+    "semanticMapping": {
+      "FOOD": {
+        "presentation": "FEED",
+        "route": "/feed",
+        "icon": "post/message"
+      },
+      "MERCH": {
+        "presentation": "WALL",
+        "route": "/wall",
+        "icon": "mural grid/brush"
+      },
+      "MEETUP ZONE": {
+        "presentation": "MEET",
+        "route": "/meet",
+        "icon": "people"
+      },
+      "GIVEAWAY BOOTH": {
+        "presentation": "GIFTS",
+        "route": "/gifts",
+        "icon": "gift"
+      },
+      "STAGE/PLAZA": "Virtual scenery; canonicalIDs/geometry/reviewed-place/physical-arrival authority unchanged."
+    },
+    "newCapture": false,
+    "wholeAcceptance": false
   }
 }
