@@ -620,3 +620,23 @@ source blobs and migration0035 match the qualified43c0e265 snapshot exactly.
 edit is included. The eleven-path scope audit, plan checker and diff check passed.
 Only the designated delivery integrator publishes this handoff to master and
 records remote ancestry; the source branch alone is not completed delivery.
+
+### Subsequent joined qualification
+
+Participant209 subsequently fixed its own retained-deadline propagation and
+qualified source `6767ee8e805db17291d1d77a25c72d881e9f743a`: the actual native
+Auth/Friend/Profile/Participant save/reload/abort test passed1 case in5.28s.
+This owner independently verified its immutable copied executable SHA256
+`fc35b975663f4aa1b9061bbe2420987651df1b025c79c6a3255b74685ef5df18`,
+matching source/binary receipt, and exact equality of the three owned avatar
+Rust files plus migration0035 against that Git source. The earlier a7ace884
+failure remains valid historical evidence; the later receipt closes that
+specific joined-test failure rather than erasing it.
+
+Peer report `/private/tmp/mcr-participant-join-6767ee8e/join-1.json` SHA256
+`b1b22654dc2b92187ae27d3ab2936d33764ab63d712ff33a1297c60750649917`
+records the actual native test exit0, all three service shutdowns exit0 and
+private cluster cleanup PASS. The peer owns delivery of its separate deadline
+fix and joined tests; they are not added to this eleven-path handoff. This is
+real producer-consumer compatibility evidence for the hook, with initial rows
+still fixtures and public Gateway HTTP/operator/IN01 acceptance separate.
