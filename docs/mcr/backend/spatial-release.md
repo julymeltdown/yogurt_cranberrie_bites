@@ -612,3 +612,67 @@ NOT_ADMITTED with no new ThemeManifest/Bootstrap or operator switch. Source
 materialization proceeds through the frontend owner and designated publisher,
 independently of its remaining runtime feature work. No backend-authored Tiled
 serializer, implicit C06 family admission, new target or device gate is added.
+
+### V10 source-bound candidate checkpoint
+
+Published frontend sources at `29b1779e` were materialized by backend branch
+merge `32a40daec2b8694165d440813aa5c8e107c2bc33`. This merges existing published
+work; the backend producer authors no frontend path. The exact original
+`47353429` Tiled, frontend binding and generated descriptor bytes all match the
+checkout. The immutable reservation is commit
+`390bb9a57c2ede32b814e8c36f8d1c85a10a99a2`, reservation SHA256
+`771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317`.
+The retained generator verifies those reservation bytes before v10 generation.
+
+The new map ID remains `mcr_reference_scene_r3`, actual server revision 6,
+content hash
+`sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985`.
+Its raw MapManifest is 28854 bytes, SHA256
+`34369f4a84e8b27c78bdb62b25bacca8f0db550ab468f76b8a23f8f5dcdf3ac8`;
+source binding is 19471 bytes, SHA256
+`6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae`.
+The separate per-era source qualification is 8028 bytes, SHA256
+`6af6ae4374b1a9109cbe899ad16852bd087ac1a506f7db8b32e52c1be69cddcc`.
+This source-level engineering review preserves original artist provenance and
+all four original UNREVIEWED concept-place records. It supplies no complete
+new ThemeManifest or Bootstrap and accepts no art fidelity or physical venue.
+
+The generator proves exactly 560 row-major terrain changes against the pinned
+artist evidence. Every other geometry field, including the entire collision
+grid and ID, dimensions, overdraw, spawns, interactions and default spawn, is
+unchanged from map 5. All 34 WORLD placements and their fractional footprints
+are identical. Eight authored MAP representations replace three WORLD drawings
+and add five, yielding 39 displayed MAP objects; they introduce no solid
+footprints, backend place IDs or physical authority. The first source-only run
+caught an incorrect assumption of 41 MAP objects; the actual frozen descriptor
+established the three replacements, and the generator now enforces that value.
+
+Each era retains two runtime PNGs and 2,043,904 pixels. Bytes are REVENGE
+1,752,996, PARADE 1,764,183 and DANGER 1,750,488, all within the existing C06
+2,097,152-byte/pixel limits. The four unique runtime PNGs are integrity checked
+and completely decoded. Native/editable art sources are separately byte-pinned;
+that does not assert a pixel decode or visual acceptance of every source file.
+Each backend scene carries 24 source pins, below the retained limit of 32.
+
+`frontend-source-compatibility.json` pins the exact 56822-byte frontend generated
+descriptor, SHA256
+`6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b`,
+and the original 16314-byte source binding, SHA256
+`86a5cf9891b77ed31054e4696ade8ae54092d5cbe1f7e8f442643be8b4192244`.
+All 44 frontend source input pins and the exact three scenery/runtime descriptor
+bodies agree with the artist source and backend binding. The original frontend
+binding's null allocation remains historical source data, distinguished from
+actual server reservation 6. Any later frontend allocation-metadata publication
+must be frozen explicitly as a new input tuple; checkout drift is not waived.
+
+All 22 Python tests pass, covering all old candidates plus new terrain/collision
+and prop drift, missing terrain evidence, valid old map 5 Tiled resealing,
+existing-revision aliases, actual source descriptor matching and admission limits.
+All four exact generation checks pass, including byte-identical old map 3,
+map 4 and map 5 outputs. Planning, changed Rust formatting and diff checks pass
+(exit 0). Source archives, selected avatars, production Rust, contracts and
+lockfiles remain unchanged. The new native cases are authored but NOT_RUN:
+map 5→6 publication/adoption, immutable same-ID/revision conflict with no current
+head advance, stale map 5 refusal, and exact map 6 plus old map 5 bytes retained
+across a real postmaster restart. A fresh named build offer is still required;
+no target or database is held. Candidate readiness remains NOT_ADMITTED.

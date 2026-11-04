@@ -45,6 +45,7 @@ class Inputs(NamedTuple):
     map_revision: int = MAP_REVISION
     reviewed_at: str = SOURCE_REVIEWED_AT
     world_objects: int = 22
+    overview_objects: int = 6
 
 
 BASELINE = Inputs()
@@ -74,7 +75,21 @@ QUALITY_V8 = Inputs(
     tiled_hash='sha256:c589b9b01c3e9f7162ccf7443782363bc9c132dd807b5fe15557686df584cf6f',
     map_revision=5, reviewed_at='2026-11-04T02:11:03Z', world_objects=34,
 )
-CANDIDATES = {'baseline': BASELINE, 'quality-v6': QUALITY_V6, 'quality-v8': QUALITY_V8}
+QUALITY_V10 = Inputs(
+    source_commit='06562ff1962be525ed929ef431a54bb589860373',
+    art_commit='06562ff1962be525ed929ef431a54bb589860373',
+    tiled_commit='473534296490bbcd4c63a4a0eb85ce7fdd57215a',
+    geometry_path=BASE + 'spatial-v5/geometry-proposal.json',
+    geometry_hash='sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395',
+    proposal_version=5, runtime=BASE + 'quality-v10/', art_version=10,
+    manifest_hash='sha256:9048d45753f4d47828082c422061ed17418f8bfb93b51cf3e9879e821eeb0cf6',
+    manifest_bytes=7749, projection_path=BASE + 'spatial-v5/integer-projection.json',
+    tiled_path=BASE + 'runtime/spatial-v5/canonical-map.json',
+    tiled_hash='sha256:e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078',
+    map_revision=6, reviewed_at='2026-11-04T02:59:31Z', world_objects=34, overview_objects=8,
+)
+CANDIDATES = {'baseline': BASELINE, 'quality-v6': QUALITY_V6, 'quality-v8': QUALITY_V8,
+              'quality-v10': QUALITY_V10}
 spec = importlib.util.spec_from_file_location('mcr_spatial_assets', ROOT / 'scripts/mcr/validate-assets.py')
 assets = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(assets)
@@ -185,6 +200,98 @@ def verify_v8_revision(proposal, evidence):
             and len(new_props.keys() - old_props.keys()) == 12, 'v8 changes frozen props or root additions')
 
 
+def verify_v10_revision(proposal, evidence):
+    previous = json.loads(published_input(QUALITY_V8.geometry_path, QUALITY_V8.source_commit))
+    old, geometry = previous['geometry'], proposal['geometry']
+    require(proposal['placements'] == previous['placements'] and proposal['places'] == previous['places'],
+            'v10 changes frozen WORLD props, footprints or original places')
+    require({k: v for k, v in old.items() if k != 'terrain_layer'}
+            == {k: v for k, v in geometry.items() if k != 'terrain_layer'},
+            'v10 changes frozen collision, overdraw, dimensions, spawns or interactions')
+    require(len(geometry['terrain_layer']) == old['height_cells']
+            and all(len(row) == old['width_cells'] for row in geometry['terrain_layer']),
+            'v10 terrain dimensions mismatch')
+    changes = [{'cell_x': x, 'cell_y': y, 'previous': before, 'proposed': after}
+               for y, (a, b) in enumerate(zip(old['terrain_layer'], geometry['terrain_layer']))
+               for x, (before, after) in enumerate(zip(a, b)) if before != after]
+    require(len(changes) == 560 and changes == evidence['terrain_changed_cells'],
+            'v10 terrain evidence mismatch')
+    require(evidence['base_geometry_hash'] == QUALITY_V8.geometry_hash
+            and evidence['geometry_hash'] == QUALITY_V10.geometry_hash
+            and evidence['collision_changed_cells'] == evidence['world_props_changed'] == 0,
+            'v10 evidence identity or unchanged collision/props mismatch')
+
+
+def verify_v10_reservation(inputs):
+    path = ROOT / 'backend/releases/reference-scene-v2/quality-v10/revision-reservation.json'
+    raw = path.read_bytes()
+    require(sha(raw) == 'sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317',
+            'v10 committed reservation bytes changed')
+    reservation = json.loads(raw)
+    require(reservation['format'] == 'MCR_SPATIAL_REVISION_RESERVATION'
+            and reservation['version'] == 1 and reservation['reservation'] == 'SOURCE_IDENTITY_ONLY'
+            and reservation['admission'] == 'NOT_ADMITTED'
+            and reservation['map_id'] == MAP_ID and reservation['map_revision'] == inputs.map_revision == 6
+            and reservation['existing_server_revisions'] == [3, 4, 5]
+            and reservation['revision6_existing_before_reservation'] is False
+            and reservation['artist_commit'] == inputs.art_commit
+            and reservation['frontend_commit'] == inputs.tiled_commit
+            and reservation['geometry_hash'] == inputs.geometry_hash
+            and reservation['tilemap'] == {'path': inputs.tiled_path, 'sha256': inputs.tiled_hash, 'bytes': 24058},
+            'v10 requires the actual committed revision6 reservation and frozen tuple')
+    return reservation
+
+
+def verify_v10_frontend(inputs, reservation, scenes):
+    # This is a source qualification of immutable generated asset data, not an
+    # import of frontend rendering or a second Tiled/resource serializer.
+    path = 'frontend/src/world/reference-scene/spatial-v5/source-inputs.json'
+    raw = subprocess.check_output(['git', 'show', inputs.tiled_commit + ':' + path], cwd=ROOT)
+    require(raw == (ROOT / path).read_bytes()
+            and sha(raw) == reservation['frontend_descriptor_sha256'], 'v10 frontend descriptor drift')
+    descriptor = json.loads(raw)
+    binding_path = BASE + 'runtime/spatial-v5/source-binding.json'
+    binding_raw = published_input(binding_path, inputs.tiled_commit)
+    require(sha(binding_raw) == reservation['frontend_binding_sha256'], 'v10 frontend binding drift')
+    binding = json.loads(binding_raw)
+    proposal = json.loads(published_input(inputs.geometry_path, inputs.source_commit))
+    require(binding['candidate_map']['map_revision'] is None
+            and binding['candidate_map']['minimum_map_revision'] == 6
+            and binding['status'] == 'NOT_RELEASE_BOUND' and binding['production_status'] == 'NOT_ADMITTED'
+            and descriptor['geometry'] == proposal['geometry']
+            and descriptor['geometry_hash'] == inputs.geometry_hash and descriptor['places'] == proposal['places'],
+            'v10 frontend geometry, place or historical allocation mismatch')
+    require(len(binding['source_inputs']) == 44, 'v10 frontend source inventory mismatch')
+    for pin in binding['source_inputs']:
+        source = published_input(pin['path'], inputs.art_commit)
+        require(sha(source) == pin['sha256'] and ('bytes' not in pin or len(source) == pin['bytes']),
+                'v10 frontend source pin mismatch')
+    matched = []
+    for scene in scenes:
+        theme = scene['theme_id']
+        scenery = json.loads(published_input(scene['scenery_source']['path'], inputs.art_commit))
+        frontend = next(s for s in binding['scenes'] if s['theme_id'] == theme)
+        require(descriptor['scenes'][theme]['scenery'] == scenery
+                and frontend['runtime_resources'] == [scenery['ground']] + scenery['atlases'],
+                'v10 frontend/runtime resource descriptor mismatch')
+        replaced = {p['replaces_prop_id'] for p in descriptor['overview_representations'] if 'replaces_prop_id' in p}
+        map_objects = sum(obj['id'] not in replaced for obj in scenery['objects']) + len(descriptor['overview_representations'])
+        require(len(scenery['objects']) == 34 and len(descriptor['overview_representations']) == 8
+                and len(replaced) == 3 and map_objects == 39, 'v10 WORLD/MAP descriptor count mismatch')
+        matched.append({'theme_id': theme, 'world_objects': 34, 'map_objects': map_objects,
+                        'scenery_source': scene['scenery_source'], 'runtime_resources': scene['runtime_resources']})
+    return {'format': 'MCR_SPATIAL_FRONTEND_SOURCE_COMPATIBILITY', 'version': 1,
+            'state': 'CONTRACT_READY', 'admission': 'NOT_ADMITTED', 'map_id': MAP_ID,
+            'map_revision': inputs.map_revision, 'geometry_hash': inputs.geometry_hash,
+            'frontend_commit': inputs.tiled_commit, 'descriptor': file_pin(path, raw),
+            'frontend_binding': file_pin(binding_path, binding_raw), 'source_input_pins_verified': 44,
+            'reservation_commit': '390bb9a57c2ede32b814e8c36f8d1c85a10a99a2',
+            'reservation_sha256': 'sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317',
+            'frontend_candidate_revision_at_pin': None, 'scenes': matched,
+            'limits': ['Immutable source descriptor comparison only', 'No frontend/runtime or art-fidelity acceptance',
+                       'No supplied ThemeManifest, Bootstrap or Product/operator admission']}
+
+
 def candidate_map(proposal, inputs=BASELINE):
     require(proposal['format'] == 'MCR_REFERENCE_SCENE_PROPOSAL'
             and proposal['proposal_version'] == inputs.proposal_version
@@ -219,6 +326,7 @@ def candidate_map(proposal, inputs=BASELINE):
 
 
 def build(inputs=BASELINE):
+    reservation = verify_v10_reservation(inputs) if inputs.art_version == 10 else None
     geometry_path = inputs.geometry_path
     geometry_data = published_input(geometry_path, inputs.source_commit)
     proposal = json.loads(geometry_data)
@@ -247,7 +355,7 @@ def build(inputs=BASELINE):
     art = json.loads(manifest_data)
     require(art['version'] == inputs.art_version
             and (inputs.art_version != 5 or art['geometry']['source_revision'] == inputs.source_commit)
-            and art['geometry']['geometry_hash'] == inputs.geometry_hash
+            and (art['geometry_hash'] if inputs.art_version == 10 else art['geometry']['geometry_hash']) == inputs.geometry_hash
             and art['geometry']['sha256'] == sha(geometry_data), 'three-era geometry mismatch')
     require({t['theme_id'] for t in art['themes']} == {'REVENGE', 'PARADE', 'DANGER'}
             and len(art['themes']) == 3, 'all three distinct era inputs required')
@@ -275,6 +383,23 @@ def build(inputs=BASELINE):
         common_sources.append(file_pin(evidence_path, evidence_raw))
         require(projection['version'] == 4 and projection['geometry_hash'] == inputs.geometry_hash,
                 'v8 integer projection identity mismatch')
+    if inputs.art_version == 10:
+        require(art['format'] == 'MCR_REFERENCE_SCENE_SPATIAL5_QUALITY10'
+                and projection['version'] == 5 and projection['geometry_hash'] == inputs.geometry_hash,
+                'v10 source generation/projection mismatch')
+        pins = [(BASE + 'quality-v8/manifest.json', art['base_manifest']),
+                (BASE + 'spatial-v5/revision-evidence.json', art['revision_evidence']),
+                (inputs.runtime + 'map-label-presentation.json', art['map_label_sidecar'])]
+        pins += [(inputs.runtime + p['path'], p) for p in art['ground_sources']]
+        require(art['base_manifest']['sha256'] == QUALITY_V8.manifest_hash,
+                'v10 changes frozen base manifest')
+        for path, pin in pins:
+            require('..' not in path.split('/'), 'v10 unsafe common source path')
+            raw = published_input(path, inputs.art_commit)
+            require(sha(raw) == pin['sha256'] and ('bytes' not in pin or len(raw) == pin['bytes']),
+                    'v10 common source pin mismatch')
+            common_sources.append(file_pin(path, raw))
+        verify_v10_revision(proposal, json.loads(published_input(BASE + 'spatial-v5/revision-evidence.json', inputs.art_commit)))
     scenes = []
     budgets = {}
     reference = None
@@ -303,19 +428,19 @@ def build(inputs=BASELINE):
                                     'components': api['components']}).validate(scenery)
         assets.validate_scenery(scenery, geometry)
         require(len(scenery['objects']) == len(layout['placements']) == inputs.world_objects
-                and len(layout['overview_representations']) == 6, 'unexpected WORLD/MAP projection')
+                and len(layout['overview_representations']) == inputs.overview_objects, 'unexpected WORLD/MAP projection')
         for obj, placement in zip(scenery['objects'], layout['placements']):
             require(all(obj[k] == placement[k] for k in ['id', 'x', 'y', 'width', 'height', 'depth_y']),
                     'scenery placement differs from authored integer source')
             require(obj['frame'] == layout['frames'][placement['frame']], 'scenery changes authored frame')
             source = next(p for p in proposal['placements'] if p['id'] == obj['id'])
             require(source['footprint'] == placement['footprint'], 'era changes collision footprint')
-        if inputs.art_version == 8:
+        if inputs.art_version in (8, 10):
             for group in ('placements', 'overview_representations'):
-                require(layout[group] == projection[group], 'era changes v8 authored integer projection')
+                require(layout[group] == projection[group], f'era changes v{inputs.art_version} authored integer projection')
             require(all(type(p[k]) is int for group in ('placements', 'overview_representations')
                         for p in projection[group] for k in ('x', 'y', 'width', 'height', 'depth_y')),
-                    'v8 fractional runtime projection')
+                    f'v{inputs.art_version} fractional runtime projection')
         else:
             for pin in projection['objects']:
                 obj = next(obj for obj in layout[pin['group']] if obj['id'] == pin['id'])
@@ -334,7 +459,7 @@ def build(inputs=BASELINE):
             require(all(pin[k] == descriptor[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px'])
                     and sha(raw) == pin['sha256'] and len(raw) == pin['bytes'], 'runtime scenery/resource mismatch')
             require(png_size(raw) == (pin['width_px'], pin['height_px']), 'runtime dimension mismatch')
-            if inputs.art_version == 8:
+            if inputs.art_version in (8, 10):
                 decode_png(raw)
             runtime.append({k: pin[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px']})
         require(runtime[1]['sha256'] not in atlas_hashes, 'distinct eras must not alias the same atlas')
@@ -387,7 +512,10 @@ def build(inputs=BASELINE):
     }
     outputs = {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness,
                'engineering-source-review.json': review}
-    if inputs in (QUALITY_V6, QUALITY_V8):
+    if inputs.art_version == 10:
+        review['source_png_decode']['scope'] = 'Four unique runtime resources; native/editable sources are byte-pinned'
+        outputs['frontend-source-compatibility.json'] = verify_v10_frontend(inputs, reservation, scenes)
+    if inputs in (QUALITY_V6, QUALITY_V8, QUALITY_V10):
         # A separate source-level review for exact scenery/texture inputs. This
         # neither rewrites artist records nor reviews arbitrary theme/avatar DTOs.
         qualified = []

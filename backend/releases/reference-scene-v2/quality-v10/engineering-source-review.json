@@ -1,0 +1,44 @@
+{
+  "art_commit": "06562ff1962be525ed929ef431a54bb589860373",
+  "checks": {
+    "canonical_geometry_and_finite_tiled": "PASS",
+    "closed_c06_map_and_scenery": "PASS",
+    "distinct_three_era_resources_and_budgets": "PASS",
+    "integer_projection_and_unchanged_footprints": "PASS",
+    "published_source_byte_pins": "PASS",
+    "virtual_place_source_values_unchanged": "PASS"
+  },
+  "format": "MCR_VIRTUAL_SPATIAL_SOURCE_QUALIFICATION",
+  "limits": [
+    "No physical venue verification or arrival authority",
+    "No art fidelity or user acceptance",
+    "No Product bootstrap/operator admission",
+    "Rust/runtime qualification is separately recorded in docs/mcr/backend/spatial-release.md"
+  ],
+  "map": {
+    "content_hash": "sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985",
+    "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 6
+  },
+  "reviewed_at": "2026-11-04T02:59:31Z",
+  "reviewed_by": "MCR backend spatial source qualification",
+  "scope": "Engineering qualification of the derived virtual map and pinned source inputs only",
+  "source_binding_sha256": "sha256:6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae",
+  "source_commit": "06562ff1962be525ed929ef431a54bb589860373",
+  "source_png_decode": {
+    "evidence": "Developer verified PNG integrity and full pixel decoding against these exact resource pins.",
+    "scope": "Four unique runtime resources; native/editable sources are byte-pinned",
+    "state": "PASS",
+    "unique_images": 4
+  },
+  "tilemap_commit": "473534296490bbcd4c63a4a0eb85ce7fdd57215a",
+  "version": 1,
+  "virtual_places": {
+    "count": 4,
+    "physical_selection": "INELIGIBLE",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "source_review_state": "UNREVIEWED",
+    "verification_state": "CONCEPT_ONLY"
+  }
+}
