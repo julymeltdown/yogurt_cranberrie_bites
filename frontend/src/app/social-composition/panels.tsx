@@ -49,7 +49,10 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
   if (!route || !service || !owner.available(service)) return <Unavailable />
   const media = (id: string, post: { event_id: string }) => <RootPostImage auth={owner.auth} scope={owner.scope} createPreview={owner.media?.createPreview} mediaId={id} eventId={post.event_id} alt="Post attachment" />
   switch (route.kind) {
-    case 'feed': return <EventFeed controller={owner.feed} onPost={id => owner.navigate(`/feed/${id}`)} onCompose={() => owner.navigate('/feed/new')} onLink={link => { void owner.openResource(link) }} renderMedia={media} />
+    case 'feed': return <EventFeed controller={owner.feed} onPost={id => owner.navigate(`/feed/${id}`)} onCompose={() => owner.navigate('/feed/new')} onLink={link => { void owner.openResource(link) }} renderMedia={media}
+      renderAuthor={runtime ? author => author.avatar.config.contract_version === '1.1.0'
+        ? <WholeCharacterView runtime={runtime} config={author.avatar.config} label={`${author.display_name}'s avatar`} size={64} />
+        : <span className="feed-initial" role="img" aria-label={`${author.display_name}: avatar unavailable`}>{Array.from(author.display_name.trim())[0]?.toLocaleUpperCase() ?? '?'}</span> : undefined} />
     case 'compose': return <PostComposer controller={owner.thread} onPost={id => owner.navigate(`/feed/${id}`)} />
     case 'thread': return <FeedThread controller={owner.threadPanel} onLink={link => { void owner.openResource(link) }} onEditPost={() => owner.navigate(`/feed/${route.id}/edit`)} onReport={target => owner.navigate(`/report?targetType=${target.target_type}&targetId=${target.target_id}`)} renderMedia={media} />
     case 'edit': return thread.draft.edit?.id === route.id ? <PostComposer controller={owner.thread} onPost={id => owner.navigate(`/feed/${id}`)} /> : <div role="status"><p>{thread.detail.phase === 'ready' ? 'Editing has ended or is unavailable for this post.' : 'Reading the current authorized post before editing. Editing is unavailable until ownership and write access are confirmed.'}</p><button type="button" onClick={() => owner.navigate(`/feed/${route.id}`)}>Back to post</button></div>

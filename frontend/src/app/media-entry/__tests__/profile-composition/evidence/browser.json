@@ -6,11 +6,15 @@
       "width": 360,
       "result": "PASS",
       "profilePreset": "photo01_front_04",
+      "feedPreset": "photo01_front_04",
       "hostPreset": "photo01_front_02",
+      "feedThreadInteraction": "PASS",
+      "feedLayeredFallbacks": 1,
       "coldArtResponses": 2,
       "warmArtResponses": 0,
       "feedRequests": 1,
       "warm": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -73,6 +77,7 @@
         }
       },
       "revoked": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -139,11 +144,15 @@
       "width": 390,
       "result": "PASS",
       "profilePreset": "photo01_front_04",
+      "feedPreset": "photo01_front_04",
       "hostPreset": "photo01_front_02",
+      "feedThreadInteraction": "PASS",
+      "feedLayeredFallbacks": 1,
       "coldArtResponses": 2,
       "warmArtResponses": 0,
       "feedRequests": 1,
       "warm": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -206,6 +215,7 @@
         }
       },
       "revoked": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -272,11 +282,15 @@
       "width": 430,
       "result": "PASS",
       "profilePreset": "photo01_front_04",
+      "feedPreset": "photo01_front_04",
       "hostPreset": "photo01_front_02",
+      "feedThreadInteraction": "PASS",
+      "feedLayeredFallbacks": 1,
       "coldArtResponses": 2,
       "warmArtResponses": 0,
       "feedRequests": 1,
       "warm": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -339,6 +353,7 @@
         }
       },
       "revoked": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -405,6 +420,7 @@
       "mode": "layered",
       "result": "PASS",
       "state": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -443,6 +459,7 @@
       "mode": "no-runtime",
       "result": "PASS",
       "state": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
         "requests": [
           {
             "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
@@ -462,6 +479,97 @@
           "peakConnections": 1,
           "mounts": 1,
           "disposals": 0,
+          "inputBlocked": true,
+          "visible": false,
+          "scopes": [
+            "00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000001"
+          ]
+        }
+      }
+    },
+    {
+      "width": 390,
+      "mode": "feed-suspension",
+      "result": "PASS",
+      "visibleFeed": {
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/people/00000000-0000-4000-8000-000000000002",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+            "method": "GET"
+          }
+        ],
+        "current": true,
+        "sameRuntime": true,
+        "diagnostics": {
+          "disposed": false,
+          "leases": 3,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "world": {
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1,
+          "peakConnections": 1,
+          "mounts": 1,
+          "disposals": 0,
+          "inputBlocked": true,
+          "visible": false,
+          "scopes": [
+            "00000000-0000-4000-8000-000000000002/00000000-0000-4000-8000-000000000001"
+          ]
+        }
+      },
+      "revokedFeed": {
+        "path": "/feed",
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/people/00000000-0000-4000-8000-000000000002",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+            "method": "GET"
+          }
+        ],
+        "current": false,
+        "sameRuntime": false,
+        "diagnostics": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "world": {
+          "games": 0,
+          "connections": 0,
+          "peakGames": 1,
+          "peakConnections": 1,
+          "mounts": 1,
+          "disposals": 1,
           "inputBlocked": true,
           "visible": false,
           "scopes": [

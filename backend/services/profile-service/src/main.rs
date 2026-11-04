@@ -42,10 +42,26 @@ async fn main() -> anyhow::Result<()> {
         profile_service::adapters::r#in::grpc::world_identity::WorldProfileServer::from_pool(
             pool.clone(),
         );
+    let public_profile_server = profile_service::adapters::r#in::grpc::concert_public_profile::PublicProfileServer::from_pool(pool.clone());
     let state = Arc::new(build_state(&config, pool).await?);
     let world_profile_verifier = platform::actor_delegation::relationship_read::RelationshipReadVerifier::configured_from_env(
         platform::grpc_auth::Workload::Profile, &config.actor_delegation,
     )?;
+    let public_profile = world_profile_verifier
+        .clone()
+        .map(|verifier| {
+            use profile_service::adapters::r#in::grpc::concert_public_profile::{
+                proto::concert_public_profile_service_server::ConcertPublicProfileServiceServer,
+                PUBLIC_PROFILE_POLICY,
+            };
+            platform::grpc_method_policy::guard(
+                &PUBLIC_PROFILE_POLICY,
+                ConcertPublicProfileServiceServer::new(public_profile_server),
+                config.caller_registry.clone(),
+                verifier.into_inner(),
+            )
+        })
+        .transpose()?;
     let world_profile = world_profile_verifier
         .map(|verifier| {
             use profile_service::adapters::r#in::grpc::world_identity::{
@@ -98,6 +114,7 @@ async fn main() -> anyhow::Result<()> {
             builder
                 .add_service(readiness.grpc_service(config.caller_registry.clone())?)
                 .add_optional_service(world_profile)
+                .add_optional_service(public_profile)
                 .add_service(platform::grpc_method_policy::guard(
                     &profile_service::adapters::r#in::grpc::method_policy::PROFILE_METHOD_POLICY,
                     ProfileServiceServer::new(server),
