@@ -172,8 +172,12 @@ goal pause/reset or diversion of active QA05 owner `26e` occurred.
 Frontend King subsequently confirmed its registry has no current Party/Gifts
 writer or reservation and identified completed/archived `204` as a possible
 compatible context, with explicit next-allocation release owned by Social.
-Community requested that release/current lifecycle truth directly from Social;
-no accepted scope or availability is inferred from dispatch. `204` will not
+Social subsequently explicitly RELEASED `204` as UNASSIGNED, with no Social
+prospective scope/reservation; Community is SOLE NEXT allocator. Last actual
+receipt remains published `980fc4d8`, COMPLETE 9m13s then fresh null/clean STOP,
+exact old test/doc leases returned, archived; fresh metadata terminal/notLoaded.
+Social's separate `202` Feed/Me assignment is already accepted and unchanged.
+Release alone does not establish a new goal or source lease. `204` will not
 be awakened or given a new goal until the concrete repair packet and exact
 feature/shared-hunk ownership are ready. Any separate World-to-Social Feed/Me
 handoff remains undisturbed; no Community reservation on that context exists.
