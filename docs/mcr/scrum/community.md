@@ -15,6 +15,17 @@ and delivery maintenance adds no second goal. No king/SL technical review or new
 approval stage is introduced; implementation continues. Previously published
 owner receipts below remain historical facts, not future push authorization.
 
+Current reporting cadence: developers report directly to their functional SL,
+designated Root delivery integrator and actual technical counterpart. Routine
+Main/Frontend King CC, natural-handoff forwarding, per-commit/test/goal packets
+and acknowledgment waits are removed. Community autonomously owns normal
+staffing, exact checkout/source transfers, build queue, publication tracking
+and compatible next scopes. Detailed individual-task evidence/pins remain here;
+one compact hourly digest upward covers original IDs completed, broad remaining
+milestones, ready unstaffed work, blockers/decisions and links to owner records.
+Immediate escalation is limited to cross-lane conflicts unresolved directly,
+genuinely unattended critical work or human-required product/access decisions.
+
 ## Current original FE33 disposition and delivered caller assignment
 
 **Original FE33 frontend criteria: SATISFIED in frozen contract/fixture scope**,
@@ -262,7 +273,7 @@ base, changed paths, pins, commands/results and limitations to the existing
 designated delivery integrator for publication. Earlier direct-owner-push
 instructions for this new QA10 goal are withdrawn. Same ACTIVE goal
 `1793757526` continues, with required publication unfinished until the actual
-Root publication/remote-ancestry receipt; no false goal completion, feature halt
+Root publication/remote-ancestry receipt (now received below); no false goal completion, feature halt
 or king/SL review. Root's explicit identity was forwarded to the receiving
 developer, who acknowledged no self-push and preservation of the same goal.
 Already-published `047d892c` and other history are preserved without duplicate
@@ -330,6 +341,30 @@ Playwright journeys NOT_RUN and actual backend/service/device/release-owner
 gaps preserved. No full QA10/IN05 acceptance, count change or SL check follows
 from this frontend result.
 
+Final actual lifecycle receipt supersedes publication-pending state: owner
+independently fetched/ls-remote verified master
+`a9517e049f24f434d103273d535943ff464346a5`; final `d6009343` maps to published
+`d165dd7a9be217dfd69469c2d502bb7adb785629`, an actual ancestor, all 20 final
+packet files byte-identical and prior 48 payload mappings verified. Qualified
+candidate remains EXACT `980fc4d85020f297b36fee8195e1ca92079ff33f`, tree
+`4e18155702c0907782da77afc9cb442916473967`; evidence-only later publication
+does not qualify a different candidate. SAME unbudgeted goal `1793757526`
+actually COMPLETE after 34m44s, immediate fresh `get_goal: null`, no unfinished
+goal. Clean preserved checkout/branch `codex/mcr-qa-QA10-published-candidate`
+at `d6009343`, original branch `544` retained; own borrowed link removed,
+Auth PNGs unchanged, private outputs/resources cleaned, no self-push. All exact
+new harness/doc/evidence and incumbent-transferred loader-hunk leases returned.
+Frontend contribution DELIVERED, original whole QA10 still PARTIAL and all
+reported real-service/device/release gaps preserved. Context archived, no new
+assignment or waiting goal. Actual composition counterpart `1fc` received the
+receipt/returned shared hunk and was asked only to identify any genuinely ready
+remaining disjoint frontend contribution; no filler or duplicate scope assigned.
+
+Management publication receipt: `d2198414` -> `9e535ef7`, `17f964a7` ->
+`3793555d` are published under the same actual master `a9517e04` with exact
+payloads preserved. Community aligned its clean management checkout there;
+no duplicate integration or implementation verification was performed.
+
 ## World-owned QA07 closure and current QA08 context
 
 Main's current record reports original QA07 closed/published at `ced8ec12`.
@@ -356,6 +391,11 @@ The new actual QA08 completion/null/STOP receipt was relayed to World and
 Backend staffing to reassess the ready BE39 opportunity. Community has not
 transferred this World-owned context or woken the developer; actual current
 reservation truth and explicit release remain with World.
+World subsequently explicitly released the completed context and Backend
+staffing accepted sole next-allocation authority for prospective BE39. No
+World/Community frontend reservation or new rights remain; actual BE39 exact
+grant/checkout/new-goal acceptance was still pending in that receipt, not
+inferred ACTIVE from release. Remaining original QA08 requirements are not cut.
 
 Community released completed caller developer
 `01a1a230-6acc-7e82-9e4b-92506decc745` to World SL as sole next QA07 allocator.
@@ -420,10 +460,10 @@ handoffs and never falsely complete, reset or relabel them.
 |---|---|---|---|
 | QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
 | QA07 (World-owned; Community input contribution) | `230`; closed/published `ced8ec12` per Main record | Original QA07 closure is reported; no additional lane count is computed | World owns final task evidence and lifecycle; developer subsequently accepted QA08, so QA07 closure does not confer current availability |
-| QA08 frontend contribution (World-owned) | `230`; bounded goal COMPLETE then null/clean STOP/all leases returned; original task PARTIAL | Package `81196de6` published as `32def3dc` under master `980fc4d8`; owner actual COMPLETE/null/STOP receipt confirmed, historical baseline distinct from current narrow compatibility probe | Physical-mobile/real-service capacity proof remain NOT_RUN; World must confirm actual reservation/release before BE39 transfer; Community made no assignment or reservation |
+| QA08 frontend contribution (World-owned) | `230`; bounded goal COMPLETE then null/clean STOP/all leases returned; original task PARTIAL | Package `81196de6` published as `32def3dc` under master `980fc4d8`; owner actual COMPLETE/null/STOP receipt confirmed, historical baseline distinct from current narrow compatibility probe | Physical-mobile/real-service capacity proof remain NOT_RUN; World explicitly released context; Backend staffing is sole next BE39 allocator, startup pending; Community made no assignment or reservation |
 | QA05 mural contribution | Frontend mural contributor not yet allocated after releasing `230` to World QA07; World primary `202`; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
 | QA09 frontend lifecycle/closure/retry contribution | Frontend contribution writer pending next ready handoff; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
-| QA10 frontend provenance contribution | `26e` frontend contribution accepted, NEW unbudgeted ACTIVE goal `1793757526`, IN_PROGRESS pending final evidence publication; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Own published-candidate ten-gate frontend PASS/PARTIAL, 3,503 Vitest + 22 Node tests PASS; backend/service/device/three real journeys remain NOT_RUN. Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` published by Root under `980fc4d8`; owner post-repair full qualification PASS reported; final evidence `d6009343` publication/ancestry and actual final goal receipt pending |
+| QA10 frontend provenance contribution | `26e` bounded frontend contribution DELIVERED; SAME goal `1793757526` COMPLETE then null/clean STOP/all leases returned; whole original QA10 PARTIAL; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Own published-candidate ten-gate frontend PASS/PARTIAL, 3,503 Vitest + 22 Node tests PASS; backend/service/device/three real journeys remain NOT_RUN. Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` published by Root under `980fc4d8`; owner post-repair full qualification PASS reported; final evidence `d6009343` published as `d165dd7a` under `a9517e04`, actual owner ancestry and COMPLETE/null/STOP receipt confirmed |
 | IN04 frontend real mural journey | Frontend real-journey writer pending exact ready allocation; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |
 | IN05 frontend evidence/limitations reconciliation contribution | Frontend contribution writer pending actual next-available context handoff; joint backend decision artifact/publication owner Product root `1fc`; NOT_STARTED | Reconcile all 112 original tasks and 61 IA entries, same-candidate frontend evidence and explicit limitations; no helper inflation or fixture-to-live promotion. Release decision itself stays with root | Proposed NEW `docs/mcr/evidence/release/frontend/**` contribution, not `docs/mcr/release-decision.md` ownership. Original IN/QA/device/operator/recovery evidence remains required. No fake waiting goal, decision approval role or contribution commit/push |
 
@@ -536,8 +576,11 @@ The existing ACTIVE heartbeat **MCR Community and Wall hourly task progress**
 second automation was created. Each run accounts for original lane task IDs,
 owner, status, completed behavior, remaining original criteria, named blockers,
 next action and commit/push using chat lifecycle and developer reports only.
-Deduplicate parents; keep helper milestones separate. Forward material changes
-to the coordinating king and remain quiet when unchanged. Preserve the existing
+Deduplicate parents; keep helper milestones separate. Send one compact hourly
+original-task digest upward with record links, not copied commit/test/lifecycle
+packets or acknowledgment loops; remain quiet when unchanged. Escalate outside
+that digest only for directly unresolvable cross-lane conflict, unattended
+critical work or a human-required decision. Preserve the existing
 coordinator goal and model settings; no reset or false completion is authorized.
 All 112 required tasks and 61 IA entries remain in project scope. This record
 makes no replacement aggregate progress count or technical acceptance decision.
