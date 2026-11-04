@@ -149,8 +149,9 @@ an accepted task/gate binding.
 Context is closed and candidate-bound, with exactly candidate, mock_mode=false,
 synthetic=false, services, actors, database, device and operator. Unused typed
 sections are null. Services record unique IDs, exact candidate source identity,
-observed binary SHA256 and pinned deployment/process observations. Actor values
-are distinct SHA256 fingerprints rather than tokens or raw identities. Live
+observed binary SHA256 and pinned deployment/process observations. Actors are
+`{fingerprint,observation}` records with distinct SHA256 fingerprints and bound
+`{kind:"actor",fingerprint}` observation facts, rather than tokens or raw identities. Live
 flows need at least two actual actor observations; false eligibility flags or a
 fixture database do not supply provider provenance.
 

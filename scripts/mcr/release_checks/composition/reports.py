@@ -151,9 +151,15 @@ def context(repo, value, expected, level):
         bound_observation(repo, service["observation"], expected,
                           {"kind": "service", "id": service["id"], "binary_sha256": service["binary_sha256"]})
     actors = value["actors"]
-    source.require(isinstance(actors, list) and len(set(actors)) == len(actors)
-                   and all(isinstance(a, str) and source.HEX64.fullmatch(a) for a in actors),
-                   "context.actor-fingerprints")
+    source.require(isinstance(actors, list), "context.actors")
+    fingerprints = set()
+    for actor in actors:
+        closed(actor, ("fingerprint", "observation"), "context.actor-shape")
+        fingerprint = actor["fingerprint"]
+        source.require(isinstance(fingerprint, str) and source.HEX64.fullmatch(fingerprint)
+                       and fingerprint not in fingerprints, "context.actor-fingerprints")
+        fingerprints.add(fingerprint)
+        bound_observation(repo, actor["observation"], expected, {"kind": "actor", "fingerprint": fingerprint})
     if level in ("live", "device", "operator"):
         source.require(services, "context.actual-services-required")
     if level == "live":

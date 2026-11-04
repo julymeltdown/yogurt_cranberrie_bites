@@ -159,6 +159,9 @@ class Composition(unittest.TestCase):
                 "facts": facts, "artifacts": [observation]}))
         for service in context["services"]:
             service["observation"] = bound("service", {"kind": "service", "id": service["id"], "binary_sha256": service["binary_sha256"]})
+        context["actors"] = [{"fingerprint": fingerprint, "observation": bound("actor-" + str(index),
+                              {"kind": "actor", "fingerprint": fingerprint})}
+                             for index, fingerprint in enumerate(context["actors"])]
         for kind in ("database", "device"):
             if context[kind] is not None:
                 context[kind]["observation"] = bound(kind, {"kind": kind, **{k: v for k, v in context[kind].items() if k != "observation"}})
@@ -281,8 +284,12 @@ class Composition(unittest.TestCase):
         self.rule("evidence.unit-as-live")
 
     def test_live_context_requires_two_distinct_actual_actor_fingerprints(self):
-        self.reports["live"]["context"]["actors"] = ["11" * 32]
+        self.reports["live"]["context"]["actors"] = self.reports["live"]["context"]["actors"][:1]
         self.rule("context.actual-two-actors-required")
+
+    def test_actor_observation_must_match_its_fingerprint(self):
+        self.reports["live"]["context"]["actors"][0]["fingerprint"] = "33" * 32
+        self.rule("context.observation-mismatch")
 
     def test_mock_and_synthetic_contexts_refused(self):
         self.reports["live"]["context"]["synthetic"] = True
