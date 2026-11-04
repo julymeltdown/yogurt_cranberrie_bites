@@ -503,3 +503,80 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
     auth_pool.close().await;
     Ok(())
 }
+
+/// Finite operator for a caller-owned, already-migrated seven-service cluster.
+/// This does not run the paired browser fixture or create any database/identity.
+#[tokio::test]
+#[ignore = "requires an allocated owner's isolated PG16/Auth19 before provisioning"]
+async fn publish_isolated_policy_into_owned_auth() -> anyhow::Result<()> {
+    tokio::time::timeout(std::time::Duration::from_secs(10), async {
+        use std::os::unix::fs::MetadataExt;
+        let root = PathBuf::from(std::env::var("MCR_ENROLLMENT_OPERATOR_ROOT")?);
+        let info = std::fs::symlink_metadata(&root)?;
+        anyhow::ensure!(root.is_absolute() && info.is_dir() && !info.file_type().is_symlink()
+            && info.mode() & 0o077 == 0, "private owner root required");
+        anyhow::ensure!(format!("{}:{}", info.dev(), info.ino())
+            == std::env::var("MCR_ENROLLMENT_OPERATOR_IDENTITY")?, "owner inode changed");
+        let root = root.canonicalize()?;
+        let marker = root.join("mcr-owner.json");
+        let marker_info = std::fs::symlink_metadata(&marker)?;
+        anyhow::ensure!(marker_info.is_file() && !marker_info.file_type().is_symlink()
+            && marker_info.mode() & 0o077 == 0 && marker_info.uid() == info.uid()
+            && marker_info.len() <= 4096, "private owner marker required");
+        let owner: Value = serde_json::from_slice(&std::fs::read(marker)?)?;
+        let token = std::env::var("MCR_ENROLLMENT_OPERATOR_TOKEN")?;
+        anyhow::ensure!(!token.is_empty() && owner["token"].as_str() == Some(token.as_str()),
+            "owned cluster token required");
+        let output = PathBuf::from(std::env::var("MCR_ENROLLMENT_OPERATOR_OUTPUT")?);
+        anyhow::ensure!(output.parent() == Some(root.as_path())
+            && !output.try_exists()? && std::fs::symlink_metadata(&output).is_err(),
+            "new private owner output required");
+        let url = std::env::var("MCR_ENROLLMENT_OPERATOR_AUTH_URL")?;
+        let parsed = reqwest::Url::parse(&url)?;
+        let hosts: Vec<_> = parsed.query_pairs().filter(|(key, _)| key == "host")
+            .map(|(_, value)| value.into_owned()).collect();
+        anyhow::ensure!(parsed.scheme() == "postgresql" && parsed.path() == "/mcr_auth"
+            && hosts.len() == 1 && hosts[0] == root.join("socket").to_string_lossy(),
+            "owned Unix Auth socket required");
+        let pool = sqlx::postgres::PgPoolOptions::new().max_connections(2)
+            .acquire_timeout(std::time::Duration::from_secs(2)).connect(&url).await?;
+        let (directory, database, listeners, version): (String, String, String, i32) = sqlx::query_as(
+            "select current_setting('data_directory'),current_database(),current_setting('listen_addresses'),current_setting('server_version_num')::int"
+        ).fetch_one(&pool).await?;
+        anyhow::ensure!(directory == root.join("data").to_string_lossy()
+            && database == "mcr_auth" && listeners.is_empty() && version / 10000 == 16,
+            "owned isolated Auth PG16 required");
+        let (migrations, latest, failures): (i64, i64, i64) = sqlx::query_as(
+            "select count(*),coalesce(max(version),0),count(*) filter(where not success) from _sqlx_migrations"
+        ).fetch_one(&pool).await?;
+        anyhow::ensure!((migrations, latest, failures) == (19, 19, 0), "exact current Auth19 required");
+        let users: i64 = sqlx::query_scalar("select count(*) from users").fetch_one(&pool).await?;
+        anyhow::ensure!(users == 0, "pre-provisioning Auth required");
+        let document = b"ISOLATED ROOT STACK TEST DOCUMENT. NOT PRODUCTION LEGAL APPROVAL.";
+        let policy = ApprovedPublication {
+            revision: Uuid::new_v4(),
+            documents: vec![PolicyDocument {
+                id: "isolated-root-stack-terms".into(),
+                title: "Isolated Root stack test terms - not production legal approval".into(),
+                url: "https://legal.example.test/isolated-root-stack-terms-v1".into(),
+                sha256: format!("{:x}", Sha256::digest(document)),
+                required_acknowledgement_id: "isolated-root-stack-terms-v1".into(),
+            }],
+            approval_reference: "ISOLATED_ROOT_STACK_OPERATOR_TEST_INPUT_NOT_PRODUCTION_APPROVAL".into(),
+            published_at: Utc::now() - Duration::seconds(1),
+            expires_at: Utc::now() + Duration::minutes(10),
+        };
+        let store = EnrollmentStore::new(pool.clone());
+        store.publish(&policy).await?;
+        let observed = store.current_policy().await?;
+        anyhow::ensure!(observed.revision == policy.revision && observed.documents == policy.documents,
+            "actual current policy publication required");
+        private_write(&output, &json!({"policyRevision":policy.revision,
+            "acknowledgementIds":["isolated-root-stack-terms-v1"],"productionApproval":false,
+            "expiresAt":policy.expires_at,"authMigrations":19,
+            "method":"EnrollmentStore.publish/current_policy","databaseCreated":false}))?;
+        pool.close().await;
+        Ok::<(), anyhow::Error>(())
+    }).await??;
+    Ok(())
+}
