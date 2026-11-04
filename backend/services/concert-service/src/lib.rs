@@ -32,5 +32,6 @@ pub mod social_live;
 pub mod moderation_live;
 
 pub mod notification_live;
+pub mod operations_live;
 
 pub mod event_cleanup_live;
