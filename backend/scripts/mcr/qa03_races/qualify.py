@@ -49,7 +49,7 @@ def sources() -> dict[str, str]:
         ["git", "ls-files", "-z", "backend", "contracts"], cwd=ROOT
     ).decode().split("\0")
     inputs = {p for p in files if p and Path(p).suffix in {".rs", ".toml", ".lock", ".proto", ".sql"}}
-    inputs.update(str(p.relative_to(ROOT)) for p in (ROOT / "contracts/domain").rglob("*.json"))
+    inputs.update(str(p.relative_to(ROOT)) for p in (ROOT / "contracts").rglob("*.json") if "node_modules" not in p.parts)
     inputs.update(str(p.relative_to(ROOT)) for p in (ROOT / "backend/services/concert-service/tests/qa03_races_support").glob("*.rs"))
     inputs.update((
         "backend/services/concert-service/tests/qa03_races.rs",

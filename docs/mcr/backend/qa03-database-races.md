@@ -95,6 +95,13 @@ a later success. Cleanup runs on success, failure, timeout, or termination.
 - `python3 -m py_compile .../qa03_races/qualify.py`: exit 0.
 - Default `rustfmt --version`: exit 134, broken stable-toolchain dylib; resolved
   by using the existing explicit 1.88 toolchain, no install/change required.
+- Controller mismatched-binary refusal: expected exit 1, PASS; no PostgreSQL
+  started and no native case counted.
+- Gift owner static review found and resolved a fixture timestamp-precision
+  issue: deadlines are normalized to microseconds before aggregate creation.
+  No additional concrete interface defect was found. Suggested assertions for
+  stable claim attempt/admission counts and cleared terminal scan state were
+  added. This review ran no build/database and supplies no runtime PASS claim.
 - Cargo/native PostgreSQL: NOT_RUN; fresh build slot requested from Backend SL.
 - Canonical owner/public HTTP and same-release integration gates: NOT_RUN;
   Root/feature owners supply those scopes. QA03 has no application/shared-file

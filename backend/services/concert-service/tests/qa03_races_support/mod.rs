@@ -237,5 +237,7 @@ pub async fn terminal(pool: &PgPool) -> anyhow::Result<()> {
     Ok(())
 }
 pub fn future() -> chrono::DateTime<Utc> {
-    Utc::now() + Duration::hours(1)
+    // Aggregate JSON and PostgreSQL indexes use the same persisted precision.
+    chrono::DateTime::from_timestamp_micros((Utc::now() + Duration::hours(1)).timestamp_micros())
+        .unwrap()
 }
