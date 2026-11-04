@@ -3,6 +3,13 @@
 Status: IN_PROGRESS. This is implementation of the canonical spatial release;
 source art is a proposal and is not accepted product artwork.
 
+Current delivery: published `60991c53` contains the qualified all-three map2
+component and actual-transaction avatar hook (tested source `6c700f04`). The local
+map3/virtual-aware policy follow-up `a80ac2c2` has source/Python/PNG qualification;
+its fresh Rust/native checks are queued, NOT_RUN. No build target or native
+cluster is held. Current map3/source-review details are in the final section.
+Historical checkpoints below retain their exact source and evidence boundaries.
+
 ## Objective and completion criteria
 
 Deliver a source-bound canonical spatial geometry and product-release/bootstrap
@@ -31,8 +38,9 @@ Product API root confirmed the exact scope directly; World confirmed no overlap:
 
 No World/config/0026, frontend, art originals, shared schemas/contracts/protos,
 manifests/lockfiles, migrations, root bindings or static URL mapping is owned here.
-BACKEND was explicitly granted and accepted for the source-ready compile/freeze slice;
-no native database has started. No MEDIA or third target is used. The separate bounded avatar
+BACKEND was explicitly returned after each frozen compile slice. All scoped native
+clusters were cleaned up; no target or database is currently held. No MEDIA or
+third target is used. The separate bounded avatar
 transaction hook is coordinated with participant and authority owners, not granted
 implicitly by this spatial scope.
 
@@ -46,20 +54,20 @@ The four existing interaction/place UUID pairs and place qualification are copie
 unchanged. MAP representations have no collision footprints or new backend IDs.
 Virtual movement and illustrative routes establish no physical arrival or safety.
 
-## Source-bound candidate
+## Initial source-bound candidate (historical)
 
 `build_spatial_release.py` freezes exact published artist bytes, detects checkout
 drift, validates the actual C06 MapManifest and geometry semantics, and emits
 canonical map bytes plus source/resource pins and explicit readiness. It does not
 publish an event-current map or produce an admitted bootstrap by implication.
 
-Candidate map: `mcr_reference_scene_r3`, revision 1, content hash
+Initial candidate map: `mcr_reference_scene_r3`, revision 1, content hash
 `sha256:d455e77ddeadeaf120fefad4d2eaec6d92d4c0ccc7c091688b5471598776950a`.
 Places retain VIRTUAL_CONCEPT / CONCEPT_ONLY and original UNREVIEWED provenance;
 the new map provenance is also UNREVIEWED. The missing Tiled resource is
 NOT_PROVIDED with null path/hash. No frontend URL is fabricated for backend output.
 
-Readiness is NOT_ADMITTED: painted REVENGE and DANGER are unavailable; PARADE is
+At that initial checkpoint readiness was NOT_ADMITTED: painted REVENGE and DANGER were unavailable; PARADE is
 only a source proposal; source provenance is unreviewed; the Tiled resource and
 product bootstrap/operator configuration are missing. The compact PARADE runtime input
 is 1,947,817 bytes and 2,043,904 pixels, below existing C06 per-scene limits of
@@ -182,3 +190,137 @@ broader than BE08/AR01/FE19. The Product API root and this owner agreed a follow
 narrow typed virtual-place correction; physical places and fixture rejection
 retain their guards. Honest map/theme source engineering qualification remains
 separate from physical destination authorization and fidelity acceptance.
+
+## Virtual-source qualification and revision 3
+
+The original BE08, AR01 and FE19 requirements distinguish virtual concepts from
+PHYSICAL meeting places. Each of the four source records (`...0002` lawn,
+`...0003` stage, `...0004` gift corner, `...0005` pixel wall) is explicitly
+VIRTUAL_CONCEPT / CONCEPT_ONLY, ORIGINAL_ART, UNREVIEWED and OPEN. None establishes
+a physical destination; no physical-place reviewer or event layout is needed
+for these four virtual-display records. The earlier generic provenance-blocker
+wording described an overbroad implementation gate, not an external prerequisite.
+
+The Product API root and spatial owner agreed the typed correction directly:
+Product retains ORIGINAL_FIXTURE rejection and all physical-source review guards;
+only an actual VIRTUAL_CONCEPT + CONCEPT_ONLY place may retain UNREVIEWED source
+metadata. REJECTED, a physical place, an incompatible verification state and an
+unreviewed top-level source asset remain denied. Full C06 schema/domain checks
+still run first. No shared schema or physical-selection rule changed.
+
+This owner performed actual engineering source qualification of the derived
+virtual map: exact published source/Tiled/scenery/resource pins; C06 schemas and
+geometry; integer projection and footprints; all-three budgets; unchanged source
+places. A separate read-only Pillow integrity/full pixel-decode pass verified all
+four unique runtime PNGs against the pinned dimensions. This is source engineering
+review by the named backend role, not a fabricated human review, physical venue
+verification, artist-fidelity/user acceptance or Product bootstrap admission.
+
+Current map revision **3**:
+`sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920`.
+Only derived-map provenance/revision changed from map2. Original geometry/source
+and all four nested place values remain unchanged and UNREVIEWED. Map2 content
+`30901851...de9f5` is preserved in published `60991c53` history. The exact reviewed
+source scope, actor/time, map/geometry/resource source revisions and binding SHA
+are in `backend/releases/reference-scene-v2/engineering-source-review.json`,
+format `MCR_VIRTUAL_SPATIAL_SOURCE_QUALIFICATION` version1. Source-binding version2
+and `from_source_bound_files` signature remain unchanged for the operator owner.
+
+Six Python tests/builder-check and Rust formatting pass. The narrow Rust policy
+change and map3 native rerun are NOT_RUN pending a fresh named slot. Existing
+map2/avatar qualification above remains valid for its exact source. Current
+readiness no longer imposes a generic physical-review blocker on virtual display;
+operator bootstrap assembly and actual fidelity acceptance are still open.
+Physical beacon/AR01/IN02 requirements remain separately required, with no claim
+that this all-virtual source pack satisfies them.
+
+## Required spatial-v3 / quality-v6 candidate — source checkpoint
+
+This required fidelity follow-up uses the artist's published
+`bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9` and World's published
+`48cf47e9b2c922de42673d1a29c1758a55fcf883`. World remains the sole public
+runtime/Tiled writer. Artist owns the proposal/art, and this backend owner owns
+only the new `backend/releases/reference-scene-v2/quality-v6/` candidate and
+existing assigned source-binding implementation/tests/generator/documentation.
+The default map3 artifacts and historical map2 content are preserved.
+
+Generate/check the separate candidate with
+`/tmp/mcr-fe14-format-venv/bin/python backend/scripts/mcr/build_spatial_release.py --candidate quality-v6 [--check]`.
+Map identity is `mcr_reference_scene_r3`, revision **4**, content hash
+`sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8`.
+Its new canonical geometry hash is
+`sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f`.
+The actual Tiled path is
+`world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json`, 24,058 bytes,
+`sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9`.
+The file contains the exact three new finite 48x81x16 grids. The old geometry
+`20168a1d…` cannot be combined with new scenery/ground even though dimensions
+remain identical. No independently rounded coordinates are introduced.
+
+| Era | Runtime bytes | Runtime pixels |
+| --- | ---: | ---: |
+| REVENGE | 1,707,562 | 2,043,904 |
+| PARADE | 1,727,221 | 2,043,904 |
+| DANGER | 1,712,974 | 2,043,904 |
+
+All three scenes bind their exact quality-v6 manifest, integer projection,
+metadata, common source sheets/prompts, per-era source files and runtime images.
+Engineering checks cover C06/schema/geometry, all 22 WORLD destinations and
+footprints, six separate MAP representations, distinct atlases and per-scene
+budgets. A read-only Pillow integrity plus full-decode pass verified the four
+unique runtime PNGs against their exact pins. All four original nested places
+remain unchanged VIRTUAL_CONCEPT/CONCEPT_ONLY/UNREVIEWED and physically ineligible.
+The separate source-review receipt is engineering qualification only.
+
+Source-binding format2 and the existing seven-parameter
+`from_source_bound_files` constructor remain compatible. The runtime fence now
+requires one pinned layout per scene and compares its geometry hash, unique
+object set and original proposal footprints, plus exact integer destinations,
+depth and atlas frame, against the supplied scenery. This prevents a binding
+assembled from individually valid old/new source files from mixing generations.
+Regressions exercise actual old-layout substitution and resealed layout drift.
+
+Nine Python source tests, both exact builder checks, Rust formatting, planning
+and diff checks pass (exit0). New Rust tests and both map3/map4 PostgreSQL runs
+are **NOT_RUN**, pending a fresh named resource grant. No target or PostgreSQL
+lease is held at this source checkpoint. Actual operator bundle/admission and
+all-three frontend fidelity acceptance remain open; this candidate is
+**NOT_ADMITTED**, with no full Product or multiuser claim.
+
+### Persistent-goal reconciliation
+
+The previous goal's actual objective was the bounded **BE04 canonical identity
+adapter increment**: source-grounded design, implementation, relevant validation,
+documentation, committed handoff and concrete review fixes. Its original worker
+`9fb1c933` and integrated `eba858f2` satisfy that bounded scope. The source review
+`docs/mcr/evidence/identity-integration.md` records 30 passing tests, matching
+source/contract hashes, exact seven-path ownership and no remaining actionable
+finding. The integrated commit is an ancestor of current master. The earlier
+worker receipt's PENDING review was superseded by that actual integration review.
+
+The old goal was therefore completed against its own increment criteria, and a
+new unbudgeted spatial follow-up goal was created and tool-confirmed active.
+This does **not** complete original task BE04 or its real Product admission
+criteria. Current public participant/owner-grant composition remains with
+Participant209 and the Product API root; their actual owner/admission evidence
+must qualify those separate flows. Whole-task and release status are unchanged.
+
+The map4 native case also publishes the old map3 first in the same isolated
+database/event, adopts map4, then checks immutable map3 bytes/geometry remain
+stored and stale map3 selections fail. The restart case checks exact map4 state.
+This authored regression remains NOT_RUN until its frozen-binary qualification.
+
+## Published source-only checkpoint
+
+This publication contains the reproducible map3/map4 source candidates, existing
+Python generator/tests and this document only. It deliberately does not deliver
+the still-queued Rust provenance-policy/layout/native-test changes. Ten Python
+checks and exact reproduction of both candidate directories pass. The native
+runner requires the frozen test binary to report the exact actual map identity,
+source and art revisions; older binaries without that observation fail closed.
+Rust/native map3/map4 qualification remains **NOT_RUN** at this source checkpoint.
+The previously published map2 content remains immutable in `60991c53` history;
+the default source directory now describes map3, and quality-v6 describes map4.
+Consumers may pin these actual source artifacts for separate fixtures without
+claiming Product admission, backend runtime qualification or fidelity acceptance.
+The backend owner retains the queued Rust implementation and qualification goal.
