@@ -1,0 +1,22 @@
+{
+  "cwd": "frontend",
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "./node_modules/vitest/vitest.mjs",
+    "run",
+    "--configLoader",
+    "runner",
+    "--no-cache",
+    "--maxWorkers",
+    "2",
+    "src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+    "src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts",
+    "src/world/network/__tests__/transport.test.ts",
+    "src/world/network/__tests__/replication.test.ts",
+    "src/entities/avatar/whole-admission/__tests__",
+    "src/features/auth/__tests__/contract.test.ts",
+    "src/world/avatar/__tests__/motion-adoption",
+    "src/app/character-entry/__tests__/motion-adoption"
+  ],
+  "exit_code": 0
+}

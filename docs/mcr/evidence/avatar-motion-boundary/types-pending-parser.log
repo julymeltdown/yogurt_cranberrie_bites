@@ -1,0 +1,2 @@
+src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts(5,22): error TS2307: Cannot find module '../../../../../../../backend/releases/selected-character-motion-v2/reviewed/manifest.json' or its corresponding type declarations.
+src/features/auth/model/bootstrap.ts(42,18): error TS2367: This comparison appears to be unintentional because the types '"1.0.0" | "1.1.0"' and '"2.0.0"' have no overlap.

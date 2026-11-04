@@ -4,6 +4,7 @@ import { expect, expectTypeOf, it, vi } from 'vitest'
 import movement from '../../../../../../contracts/fixtures/realtime/movement-heartbeat.json'
 import layered from '../../../../../../contracts/fixtures/assets/avatar-config.json'
 import whole from '../../../../../../contracts/fixtures/assets/selected-static/avatar-manifest.json'
+import { record } from '../../../map/json'
 import { decode, WorldTransportError } from '../../transport/contract'
 import type { AvatarConfig, AvatarState, ReviewedMotionAvatarConfig, WorldPlayer } from '../../transport/wire-types'
 
@@ -49,8 +50,8 @@ it.each([...Object.entries(invalid), ...Object.entries(candidate)])('rejects mal
   expect(() => decode(JSON.stringify(frame(config)), 'server')).toThrow(WorldTransportError)
 })
 it.each([
-  { ...Object.values(valid)[0] as object, email: 'private@example.invalid' },
-  { ...Object.values(valid)[0] as object, skin_tone_id: 'independent_skin_forbidden' },
+  { ...record(Object.values(valid)[0]), email: 'private@example.invalid' },
+  { ...record(Object.values(valid)[0]), skin_tone_id: 'independent_skin_forbidden' },
   { ...whole.presets[0]!.config, representation: 'motion_preset' },
 ])('rejects private, mixed and unsupported config fields %#', config => {
   expect(() => decode(JSON.stringify(frame(config)), 'server')).toThrow(WorldTransportError)

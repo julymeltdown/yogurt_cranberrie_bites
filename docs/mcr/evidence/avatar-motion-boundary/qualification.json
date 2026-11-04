@@ -1,0 +1,112 @@
+{
+  "status": "QUALIFIED_PUBLICATION_PENDING",
+  "node": "24.22.2",
+  "candidate": "4cda0cecaf1d59c62a61b3634d539cf8dc868e99",
+  "working_tree_delta": "Only network boundary test fixture object guard; exact final content is committed in evidence handoff",
+  "producer": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+  "motion_helpers": "24c573fb6656c0a4a9ea72111907deb831ab3bf1",
+  "motion_parser": "34ef8fbbd4fd59f2f806abd1c93308567cce2008",
+  "boundary_source": [
+    "7dc84e84358275d23edf41b592bfae4ef381430b",
+    "789b84c307674812a81e67ad59badc83fab8f532"
+  ],
+  "tests": 558,
+  "test_files": 18,
+  "application_types": "PASS_ZERO_DIAGNOSTICS",
+  "review": {
+    "owner": "Motion83",
+    "reviewed_commit": "789b84c307674812a81e67ad59badc83fab8f532",
+    "scope": "Reviewed2 Auth validation ordering and absence of runtime admission authority",
+    "findings": []
+  },
+  "checks": [
+    {
+      "name": "plan",
+      "cwd": "repository",
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "ui-origin",
+      "cwd": "repository",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "scripts/mcr/check-ui-origin.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "scope-whitespace",
+      "cwd": "repository",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "./node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--maxWorkers",
+        "2",
+        "src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+        "src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts",
+        "src/world/network/__tests__/transport.test.ts",
+        "src/world/network/__tests__/replication.test.ts",
+        "src/entities/avatar/whole-admission/__tests__",
+        "src/features/auth/__tests__/contract.test.ts",
+        "src/world/avatar/__tests__/motion-adoption",
+        "src/app/character-entry/__tests__/motion-adoption"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "types",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "./node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint",
+      "cwd": "frontend",
+      "command": [
+        "./node_modules/.bin/oxlint",
+        "src/world/network/__tests__/reviewed-motion-v2",
+        "src/features/auth/model/__tests__/reviewed-motion-v2",
+        "src/world/network/transport/contract.ts",
+        "src/features/auth/model/bootstrap.ts"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "build": {
+    "status": "PENDING_PUBLISHER_SHARED_SLOT",
+    "owner": "Root153",
+    "standalone_build_started": false
+  },
+  "limits": [
+    "No backend eligibility or default-release activation",
+    "No actual device or multiuser/load qualification",
+    "No whole AR03/FE12/IN05 acceptance"
+  ]
+}

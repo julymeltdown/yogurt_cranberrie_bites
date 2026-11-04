@@ -1,0 +1,33 @@
+{
+  "observed_remote_master": "a67fc1342b351750ce766a783052c470dc9a9907",
+  "remote_check": "git fetch origin master; git ls-remote origin refs/heads/master; git rev-parse origin/master",
+  "source_boundary": "7dc84e84358275d23edf41b592bfae4ef381430b",
+  "published_boundary": "a67fc1342b351750ce766a783052c470dc9a9907",
+  "source_producer": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+  "published_producer": "d839bc20",
+  "source_helpers": "24c573fb6656c0a4a9ea72111907deb831ab3bf1",
+  "published_helpers": "fe6a7a1d",
+  "scope": "First boundary source only; bootstrap follow-up and final evidence pending",
+  "paths": [
+    {
+      "path": "frontend/src/world/network/__tests__/generate-types.mjs",
+      "sha256": "d25c8c6d97e8a96099d944f9696152e18d64d758e3dabd6303f9742f6756b7d0",
+      "byte_equal": true
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+      "sha256": "f80d39dc9aa7913332f9f70852175e5460ec5709e56459a15e5bd01e96b1347f",
+      "byte_equal": true
+    },
+    {
+      "path": "frontend/src/world/network/transport/contract.ts",
+      "sha256": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+      "byte_equal": true
+    },
+    {
+      "path": "frontend/src/world/network/transport/wire-types.ts",
+      "sha256": "95c99ff1f253176fc7ed8a977e9bd8f71e72820e4eef27becd23a54c6e639b54",
+      "byte_equal": true
+    }
+  ]
+}
