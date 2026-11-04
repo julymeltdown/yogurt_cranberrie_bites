@@ -3,7 +3,7 @@ import { createRequire } from 'node:module'
 import { resolve } from 'node:path'
 import { mkdir, mkdtemp, readFile, writeFile, rm } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawnSync } from 'node:child_process'
 import { statfsSync } from 'node:fs'
 import { aliases } from '../../../../world/avatar/__tests__/motion-adoption/vitest.config.mjs'
 import { readPinnedProducer } from '../../../../world/avatar/__tests__/motion-adoption/producer-inputs.ts'
@@ -11,19 +11,23 @@ import { readPinnedProducer } from '../../../../world/avatar/__tests__/motion-ad
 const dependencies = process.env.MCR_FRONTEND_DEPENDENCIES
 if (!dependencies || !process.env.MCR_PORTRAIT_CAPTURE_SLOT) throw Error('Set retained dependencies and the explicitly allocated portrait capture slot')
 const root = resolve(import.meta.dirname, '../../../../..'), checkout = resolve(root, '..')
-const disk = statfsSync(checkout), minimumFreeBytes = 8.25 * 1024 ** 3
-assert(disk.bavail * disk.bsize >= minimumFreeBytes, 'Capture preflight requires 8 GiB floor plus 256 MiB temporary budget')
+const disk = statfsSync(checkout), minimumFreeBytes = 8.2 * 1024 ** 3
+assert(disk.bavail * disk.bsize >= minimumFreeBytes, 'Capture preflight requires 8 GiB floor plus the 0.2 GiB whole-workflow cap')
 const require = createRequire(resolve(dependencies, 'package.json'))
 const { createServer } = require('vite'), { chromium, expect } = require('@playwright/test')
 const output = resolve(checkout, 'docs/mcr/evidence/avatar-motion-adoption/portrait-responsive')
 await mkdir(output, { recursive: true })
 const cache = await mkdtemp('/private/tmp/mcr-portrait-native-'), hash = bytes => createHash('sha256').update(bytes).digest('hex')
+// Keep browser profiles/artifacts and bundler temporaries inside the same measured workflow directory.
+process.env.TMPDIR = cache
 const candidate = readPinnedProducer('backend/releases/selected-character-motion-v2/manifest.json')
 const config = JSON.parse(new TextDecoder().decode(readPinnedProducer('contracts/fixtures/assets/motion-v2/valid/preset-01.json')))
 const report = { result: 'FAIL', qualification: 'TEST_ONLY actual MotionEditor/Phaser component geometry, not production Root/service/device admission',
   sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: checkout, encoding: 'utf8' }).trim(),
   slot: process.env.MCR_PORTRAIT_CAPTURE_SLOT, minimumFreeBytes, initialFreeBytes: disk.bavail * disk.bsize,
-  cases: [], artifacts: {}, errors: [], httpWrites: 0, peakProcessTreeRssBytes: 0, sourcePins: {} }
+  cases: [], artifacts: {}, errors: [], httpWrites: 0, peakProcessTreeRssBytes: 0, peakWorkflowBytes: 0,
+  workflowBudgetBytes: 192 * 1024 ** 2, stopAtBytes: 128 * 1024 ** 2, sourcePins: {},
+  httpObservation: 'All page HTTP requests except GET/HEAD are counted and blocked before network; server rejects non-GET/HEAD on every path. No service-save proof.' }
 for (const path of ['frontend/src/features/avatar/motion-adoption/MotionEditor.tsx', 'frontend/src/features/avatar/motion-adoption/MotionView.tsx',
   'frontend/src/features/avatar/motion-adoption/motion.css', 'frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx',
   'frontend/src/app/character-entry/__tests__/motion-adoption/portrait-native.mjs']) report.sourcePins[path] = hash(await readFile(resolve(checkout, path)))
@@ -32,14 +36,23 @@ const sampleRss = () => {
   const owned = new Set([process.pid]); let previous
   do { previous = owned.size; for (const [pid, ppid] of rows) if (owned.has(ppid)) owned.add(pid) } while (owned.size !== previous)
   report.peakProcessTreeRssBytes = Math.max(report.peakProcessTreeRssBytes, rows.reduce((sum, [pid, , rss]) => sum + (owned.has(pid) ? rss * 1024 : 0), 0))
+  const usage = spawnSync('du', ['-sk', cache, output], { encoding: 'utf8' })
+  const totals = usage.stdout.trim().split('\n').map(row => Number(row.trim().split(/\s+/)[0]))
+  if (totals.length !== 2 || totals.some(value => !Number.isFinite(value))) {
+    report.resourceStop = 'Whole-workflow disk usage could not be measured'; void browser?.close().catch(() => {}); return
+  }
+  const blocks = totals.reduce((sum, value) => sum + value * 1024, 0)
+  report.peakWorkflowBytes = Math.max(report.peakWorkflowBytes, blocks)
+  if (blocks >= report.stopAtBytes) { report.resourceStop = 'Observed workflow reached 128 MiB; stopped with 64 MiB reserve before the 192 MiB budget'; void browser?.close().catch(() => {}) }
 }
 const server = await createServer({ configFile: false, root, cacheDir: cache, logLevel: 'error',
+  optimizeDeps: { entries: ['src/app/character-entry/__tests__/motion-adoption/fixture.html'] },
   resolve: { alias: Object.entries(aliases).sort(([a], [b]) => b.length - a.length).map(([find, replacement]) => ({ find, replacement })) },
   server: { host: '127.0.0.1', port: 0, fs: { allow: [root, checkout, dependencies] } },
   plugins: [{ name: 'read-only-portrait-geometry', configureServer(server) {
     server.middlewares.use((req, res, next) => {
+      if (!['GET', 'HEAD'].includes(req.method)) { report.httpWrites++; res.writeHead(405); res.end(); return }
       if (!req.url?.startsWith('/__motion/')) return next()
-      if (req.method !== 'GET') { report.httpWrites++; res.writeHead(405); res.end(); return }
       res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' })
       res.end(req.url === '/__motion/candidate' ? candidate : JSON.stringify({ revision: 1, config }))
     })
@@ -49,9 +62,13 @@ let browser, page, timer
 try {
   await server.listen(); const origin = `http://127.0.0.1:${server.httpServer.address().port}`
   browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
-  report.browser = browser.version(); timer = setInterval(sampleRss, 500); sampleRss()
+  report.browser = browser.version(); timer = setInterval(sampleRss, 250); sampleRss()
   for (const [width, height] of [[360, 698], [390, 698], [430, 698], [320, 554], [390, 420]]) {
-    page = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce' }); page.setDefaultTimeout(12000)
+    page = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce', serviceWorkers: 'block' }); page.setDefaultTimeout(12000)
+    await page.route('**/*', route => {
+      if (!['GET', 'HEAD'].includes(route.request().method())) { report.httpWrites++; return route.abort('blockedbyclient') }
+      return route.continue()
+    })
     page.on('pageerror', error => report.errors.push(error.message))
     const state = () => page.evaluate(() => window.motionJourney.state())
     await page.goto(`${origin}/src/app/character-entry/__tests__/motion-adoption/fixture.html`)
@@ -110,7 +127,7 @@ try {
       lifecycle: { mounts: alive.mounts, worldSockets: alive.sockets, artRequests: alive.requests.length }, cleanup })
     await page.close(); page = null
   }
-  assert.equal(report.httpWrites, 0); assert.deepEqual(report.errors, []); report.result = 'PASS'
+  assert.equal(report.httpWrites, 0); assert.deepEqual(report.errors, []); assert(!report.resourceStop); report.result = 'PASS'
 } catch (error) {
   report.failure = String(error)
   if (page) { await page.screenshot({ path: resolve(output, 'failure.png'), fullPage: true }).catch(() => {}); report.failureDom = await page.locator('body').innerText().catch(() => '') }

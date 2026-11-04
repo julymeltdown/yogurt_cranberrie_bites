@@ -401,8 +401,16 @@ tree RSS; mutation requests are counted and rejected. It reuses the unchanged
 component/Phaser fixture and does not replay the full art matrix.
 
 Native reference qualification is currently NOT_RUN. A new sequential slot was
-requested directly from BackendSL/World with an estimated 256 MiB temporary-disk
-budget and 1.5 GiB process-tree RSS; no prior slot is inherited. An actually
+requested directly from BackendSL/World. The initial conservative 256 MiB
+temporary budget was corrected before any run to a 192 MiB whole-workflow
+estimate, within the coordinator's 0.2 GiB cap, with 1.5 GiB estimated process-tree
+RSS. Vite scans only the single unchanged fixture; its cache and Chrome profile/
+artifacts share one measured temporary directory. A 128 MiB observed-use stop
+leaves 64 MiB reserve; all five widths/height checks remain required. All page
+non-GET/HEAD HTTP requests are counted and blocked, with server rejection on
+every path; service workers are blocked for this bounded check. These are
+proposed budgets, not observed peaks; actual bytes/RSS will be recorded. No run
+has started; no prior slot is inherited. An actually
 runnable expiring IN01 consumer takes priority, and no live holder is preempted.
 The portrait source is committed for qualification, with publication held until
 that concrete component check and visual readback finish. Actual public Root,
