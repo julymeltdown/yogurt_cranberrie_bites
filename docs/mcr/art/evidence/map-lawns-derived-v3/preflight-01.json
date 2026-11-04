@@ -1,0 +1,15 @@
+{
+  "format": "MCR_GROUND_SOURCE_PREFLIGHT_FAILURE_V1",
+  "offer": "AR02-AR04-MAP-LAWNS-SOURCE-20261104T2115Z",
+  "sourceCommit": "5b6b749d64b400f27311ff630a15e0edd3cf340a",
+  "status": "FAILED_BEFORE_ACCEPT",
+  "exit": 1,
+  "error": "NameError: name 'Path' is not defined",
+  "location": "docs/mcr/art/evidence/map-lawns-derived-v3/supervisor.py:49",
+  "actualAcceptance": false,
+  "workChildrenStarted": 0,
+  "temporaryDirectoryCreated": false,
+  "artOutputsCreated": false,
+  "resourcesHeld": 0,
+  "repair": "Import pathlib.Path; preserve failure and repin source/control before actual admission. No accepted clock is reused or changed."
+}

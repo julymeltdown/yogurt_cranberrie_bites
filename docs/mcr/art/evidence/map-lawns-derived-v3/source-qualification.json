@@ -1,0 +1,58 @@
+{
+  "format": "MCR_GROUND_OVERLAY_QUALIFICATION_V1",
+  "status": "PASS",
+  "sourceImplementationCommit": "e9603d95a2cd01a160620a695ff48f96d5a6dff6",
+  "sourceCommit": "da33467cd084ecba071244a1939b6217f4b0de02",
+  "provenancePin": {
+    "path": "frontend/public/world/map-lawns-derived-v3/source-provenance.json",
+    "bytes": 10821,
+    "sha256": "76b9c3f3df553d7b68cc01a5b3be2b7146f5885c6006ff60452841c6500ad345"
+  },
+  "contractPin": {
+    "path": "frontend/public/world/map-lawns-derived-v3/paint-contract.json",
+    "bytes": 4788,
+    "sha256": "3ad23f1dabaf33a03b8cdb683a61692e7fc5dc5da126c511f13067174732e13c"
+  },
+  "layoutPin": {
+    "path": "frontend/public/world/map-roof-street-derived-v2/layout.json",
+    "bytes": 157579,
+    "sha256": "d9e401f6254df05530174b04b16655aa5f89fed68fa02c90f6a653e6a8010e91"
+  },
+  "incumbentRecords": 285,
+  "protectedEraLabelRectangles": 18,
+  "originalGeometryMutation": false,
+  "results": {
+    "REVENGE": {
+      "allowedPixels": 12749,
+      "changedPixels": 2945,
+      "operations": 699,
+      "rgbaReplayExact": true,
+      "svgOperationsExact": true,
+      "protectedPixelsExact": true,
+      "independentMaskExact": true
+    },
+    "PARADE": {
+      "allowedPixels": 12749,
+      "changedPixels": 2945,
+      "operations": 699,
+      "rgbaReplayExact": true,
+      "svgOperationsExact": true,
+      "protectedPixelsExact": true,
+      "independentMaskExact": true
+    },
+    "DANGER": {
+      "allowedPixels": 12730,
+      "changedPixels": 2952,
+      "operations": 701,
+      "rgbaReplayExact": true,
+      "svgOperationsExact": true,
+      "protectedPixelsExact": true,
+      "independentMaskExact": true
+    }
+  },
+  "limits": [
+    "Source overlay only, not App/native/live Map acceptance.",
+    "Owner image inspection is a separate recorded assessment.",
+    "Only Artist231 composes and qualifies the final combined source pack before later explicit consumer renewal."
+  ]
+}

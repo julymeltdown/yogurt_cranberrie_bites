@@ -1,0 +1,285 @@
+{
+  "format": "MCR_GROUND_OVERLAY_PROVENANCE_V1",
+  "sourceCommit": "da33467cd084ecba071244a1939b6217f4b0de02",
+  "sourceImplementationCommit": "e9603d95a2cd01a160620a695ff48f96d5a6dff6",
+  "dimensions": [
+    768,
+    1296
+  ],
+  "baselinePins": [
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/README.md",
+      "bytes": 2162,
+      "sha256": "5994b8074a7c201b001bb0ebe04bec6b39deb4826f5790c41b04fb83c4684311"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/build.py",
+      "bytes": 17643,
+      "sha256": "4c192b13a967bb490a1318f5a6cce0944e5d52ee91e33f1bdc233432b0ae1314"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/danger-scene.png",
+      "bytes": 716634,
+      "sha256": "b4dbf3f41e392e2f37ce78f907336055938c4b6611925c79ad13f41b15d2e931"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/danger-scene.svg",
+      "bytes": 2037405,
+      "sha256": "995d576574c0221d61599db395061f26b8a0208db97cc97775e01e764ce1c513"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/layout.json",
+      "bytes": 157579,
+      "sha256": "d9e401f6254df05530174b04b16655aa5f89fed68fa02c90f6a653e6a8010e91"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/parade-scene.png",
+      "bytes": 727171,
+      "sha256": "d820853d14efe04f84cd8b8f08da5bc8c67850f3b19c43170b237207583a93c2"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/parade-scene.svg",
+      "bytes": 2067641,
+      "sha256": "956f6a6aab8ceec3756d4ad60a45aeed9b1b67a99ebd31fcf5f08f8b867dbcc3"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/revenge-scene.png",
+      "bytes": 709817,
+      "sha256": "5669a7861851a1b95bd1f2ad48e222f2e73dcd471622405f48000a33419f1606"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/revenge-scene.svg",
+      "bytes": 2035193,
+      "sha256": "6c1d91478f8131e347f96b0a8a5c186618196d282fac366afe861e6080ce8e8b"
+    },
+    {
+      "path": "frontend/public/world/map-roof-street-derived-v2/source-provenance.json",
+      "bytes": 186313,
+      "sha256": "259a407d711e520e4abc5c0d8c3259cf118d3511d9effd9198521a5b7d996990"
+    }
+  ],
+  "helperPin": {
+    "path": "frontend/public/world/map-reference-composition-v1/build.py",
+    "sha256": "6bf696b7c3edd5adf35e0b5995ca9cd33f915e87898de0e9266f2923cffc0433"
+  },
+  "contractPin": {
+    "path": "frontend/public/world/map-lawns-derived-v3/paint-contract.json",
+    "bytes": 4788,
+    "sha256": "3ad23f1dabaf33a03b8cdb683a61692e7fc5dc5da126c511f13067174732e13c"
+  },
+  "recipePin": {
+    "path": "frontend/public/world/map-lawns-derived-v3/build.py",
+    "bytes": 11903,
+    "sha256": "149f81477ccdf0f50771f35caadc748280ed22af731e8594871b9b7f01b1a652"
+  },
+  "sourceInputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+      "bytes": 1201118,
+      "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+      "bytes": 1176781,
+      "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "bytes": 1178440,
+      "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "bytes": 32665,
+      "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+      "bytes": 16615,
+      "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
+      "bytes": 14186,
+      "sha256": "sha256:b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "bytes": 47336,
+      "sha256": "sha256:847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/source-binding.json",
+      "bytes": 11519,
+      "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+    },
+    {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    }
+  ],
+  "inheritedLicense": {
+    "newVectors": "Original project-authored roof and paving vectors; no external asset/font dependency",
+    "inheritedSources": "Immutable cozy scenery generated-source/prompt and originalCropPins; no relicensing or human review claim",
+    "sourceRecord": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+    "inputPins": [
+      {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+        "bytes": 5364,
+        "sha256": "sha256:1453f533b9a18c3554fcefeddcc08e684e00f5e2ff87fb89bba47180116b041e"
+      },
+      {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/prompt.txt",
+        "bytes": 3426,
+        "sha256": "sha256:f6e3fe63e363b7323476c8c96ed4455867e83c7b34938ed32ba301ba6cc57ac4"
+      },
+      {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-original.png",
+        "bytes": 2120690,
+        "sha256": "sha256:db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514"
+      }
+    ]
+  },
+  "eras": {
+    "REVENGE": {
+      "overlay": {
+        "path": "frontend/public/world/map-lawns-derived-v3/revenge-overlay.png",
+        "bytes": 7428,
+        "sha256": "7acfa0b1fb42ed2dd4427e449f2b1196b909dc072eb76e83b29b0b03e6da7605"
+      },
+      "svg": {
+        "path": "frontend/public/world/map-lawns-derived-v3/revenge-overlay.svg",
+        "bytes": 53964,
+        "sha256": "b92fa1bfc03a54ba5c9f37273984c47c459f2469bbb1f0ce276c21919baca31b"
+      },
+      "operationsPin": {
+        "path": "frontend/public/world/map-lawns-derived-v3/revenge-operations.json",
+        "bytes": 96481,
+        "sha256": "0d26ba20a0204984ab7eb4f6852697459c4c6e90b0a46590215f793458a962e8"
+      },
+      "allowedMaskPin": {
+        "path": "frontend/public/world/map-lawns-derived-v3/revenge-allowed-mask.png",
+        "bytes": 2649,
+        "sha256": "8886c8cc462f528e55a354ceffba40db5dcbaaa2dde5e3e6adba2ef7d3c81de6"
+      },
+      "allowedMaskEncoding": "PNG_L8_BINARY_0_255",
+      "allowedMaskSha256": "ad196d0d87da2cfb883abf3975b27d51c8185202e5e00303fe878c2ed2a7aef0",
+      "allowedPixels": 12749,
+      "changedPixels": 2945,
+      "allowedPerGarden": [
+        8268,
+        4481
+      ],
+      "changedPerGarden": [
+        2103,
+        842
+      ],
+      "design": {
+        "grain": 497,
+        "motifs": [
+          11,
+          10,
+          3,
+          11
+        ]
+      },
+      "projectionRecordsSha256": "d5ec3b34cd06d3814508454f31ec7d35c1acdd90af34006387803094a0e60405"
+    },
+    "PARADE": {
+      "overlay": {
+        "path": "frontend/public/world/map-lawns-derived-v3/parade-overlay.png",
+        "bytes": 7428,
+        "sha256": "5cfb392c6e1094a667be9fcc12aa23dd94934448adb5c6402e740282264b8ca7"
+      },
+      "svg": {
+        "path": "frontend/public/world/map-lawns-derived-v3/parade-overlay.svg",
+        "bytes": 53964,
+        "sha256": "c94b7dddc08556dc1e15d70fa91dbd0506caf315911a6a3488d7e36bb4781086"
+      },
+      "operationsPin": {
+        "path": "frontend/public/world/map-lawns-derived-v3/parade-operations.json",
+        "bytes": 96481,
+        "sha256": "9bb8b71fc79c75b2720cc6d31b31f33a69f43de3cc6c895a813fa908ef60e9b8"
+      },
+      "allowedMaskPin": {
+        "path": "frontend/public/world/map-lawns-derived-v3/parade-allowed-mask.png",
+        "bytes": 2648,
+        "sha256": "ee4dffba8f266c7cc0ab9c8324163cd9dc16b14ac4624cd5c9363c87f2959120"
+      },
+      "allowedMaskEncoding": "PNG_L8_BINARY_0_255",
+      "allowedMaskSha256": "fd4f67fbabc20ed3916ff5cd838987e64781609536794af379409296238c40eb",
+      "allowedPixels": 12749,
+      "changedPixels": 2945,
+      "allowedPerGarden": [
+        8268,
+        4481
+      ],
+      "changedPerGarden": [
+        2103,
+        842
+      ],
+      "design": {
+        "grain": 497,
+        "motifs": [
+          11,
+          10,
+          3,
+          11
+        ]
+      },
+      "projectionRecordsSha256": "d932ef89efd789612994e9cbe4774eeefe17f96e70b09cdca53e2b23829adeb7"
+    },
+    "DANGER": {
+      "overlay": {
+        "path": "frontend/public/world/map-lawns-derived-v3/danger-overlay.png",
+        "bytes": 7447,
+        "sha256": "652a87b45122d92c9468d6440653becf508f809670a5aaef7868a21b32c87dca"
+      },
+      "svg": {
+        "path": "frontend/public/world/map-lawns-derived-v3/danger-overlay.svg",
+        "bytes": 54118,
+        "sha256": "f635128e284a1342754f4dc315e9958bd9d0edaecc72a34fdec677dcbbb16c67"
+      },
+      "operationsPin": {
+        "path": "frontend/public/world/map-lawns-derived-v3/danger-operations.json",
+        "bytes": 96757,
+        "sha256": "5f181ab0b92d2336c089819b19a816229d1a3933d818daae44df21945b92ec93"
+      },
+      "allowedMaskPin": {
+        "path": "frontend/public/world/map-lawns-derived-v3/danger-allowed-mask.png",
+        "bytes": 2648,
+        "sha256": "7fe48215dd5c4dc892cbfacae2443243fde0930a7dcbffc06846d8a17a465fcd"
+      },
+      "allowedMaskEncoding": "PNG_L8_BINARY_0_255",
+      "allowedMaskSha256": "ca97d3f83c07d5d243dcc4d8f8b5ffd0cba692c255354a4cebf30523c44ed383",
+      "allowedPixels": 12730,
+      "changedPixels": 2952,
+      "allowedPerGarden": [
+        8248,
+        4482
+      ],
+      "changedPerGarden": [
+        2110,
+        842
+      ],
+      "design": {
+        "grain": 499,
+        "motifs": [
+          11,
+          10,
+          3,
+          11
+        ]
+      },
+      "projectionRecordsSha256": "cf062a31e45e907c4476163e7773005f9e89c565b45866bc2f9434256952977a"
+    }
+  },
+  "originalArt": "Original project-authored irregular ground grain, fern tufts, clover, seed heads and small flowers. No copied character, crop, text, font or external asset.",
+  "authority": "MAP_ILLUSTRATION_ONLY_NO_WORLD_OR_PHYSICAL_AUTHORITY",
+  "limits": [
+    "Overlay source only; not an App/native/live Map capture.",
+    "Artist231 alone qualifies the final combined facade+lawn composition before Map registration.",
+    "No v1/v2/original source, layout, World/C06 identity, label, collision, spawn, interaction or character mutation."
+  ]
+}

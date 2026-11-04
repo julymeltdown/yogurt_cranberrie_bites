@@ -1,0 +1,79 @@
+{
+  "format": "MCR_GROUND_SOURCE_PREVIEWS_V1",
+  "authority": "SOURCE_ONLY_NOT_APP_OR_LIVE_MAP",
+  "fullSourceSize": [
+    768,
+    1296
+  ],
+  "eachComparisonPaneMapWidths": [
+    360,
+    390,
+    430
+  ],
+  "sourceCropY": [
+    350,
+    1070
+  ],
+  "images": [
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/revenge-source-full.png",
+      "bytes": 712926,
+      "sha256": "e8052cb06239eca5bf49e23a7f58632c8f7b636d87a3987c226b8de5c0b6cf1d"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/revenge-gardens-360.png",
+      "bytes": 118167,
+      "sha256": "15362d47a1022d465763cdf60acec6b8f50109ee3dcd2845f6b5aedb68f5eab7"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/revenge-gardens-390.png",
+      "bytes": 134371,
+      "sha256": "413b97aa42030cde5a749dc4c4fa4aab224b47d6b87a4d82e262a2380e7f2498"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/revenge-gardens-430.png",
+      "bytes": 159273,
+      "sha256": "72249a8fd1b5e2ae768899abeba9eb5b6ccd07069bbaa05e8d0aed8ad647b956"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/parade-source-full.png",
+      "bytes": 730132,
+      "sha256": "f6cc3a411e74e384b76d24cbe164d0608d1dfca7b89380d17b5d08348044fe03"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/parade-gardens-360.png",
+      "bytes": 120146,
+      "sha256": "da70ba37430a15d58cd55697eb3da8190e1ddeb902ae589b8b5cf618e8b19eb5"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/parade-gardens-390.png",
+      "bytes": 136822,
+      "sha256": "a89d1b9d19e9f9bcc66d77b214cd0476867099921176af6884d027cf3c5f5ea7"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/parade-gardens-430.png",
+      "bytes": 162072,
+      "sha256": "aad18370dee4a543c34820dca2a9564b29246e515854a088e295ee9f78c58bea"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/danger-source-full.png",
+      "bytes": 719747,
+      "sha256": "56354d464df867c51e093d491db55f5f61e60ba77c84c62b723d364687944381"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/danger-gardens-360.png",
+      "bytes": 119037,
+      "sha256": "50592d13be653029bc2f4928499d5d0c782d0e23761bc00b157882b119b3857b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/danger-gardens-390.png",
+      "bytes": 135364,
+      "sha256": "2954e72ccf528740fe428093f260dcb354cd669f8501b58d681f16f40ac1f66c"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-lawns-derived-v3/danger-gardens-430.png",
+      "bytes": 160364,
+      "sha256": "2754ab7611723c2c036f2a65827d9b484ddd209d5c3626d11b7b5b0518546b2f"
+    }
+  ]
+}
