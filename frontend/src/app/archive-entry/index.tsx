@@ -33,7 +33,7 @@ function useGeneration(session: Observation) {
 /** Public route lifetime only: no private reader, second identity, world or media fallback. */
 export function ArchiveRoutePanel() {
   const ports = usePorts()
-  const eventId = canonicalId(ports.eventId) ? ports.eventId : null
+  const eventId = typeof ports.eventId === 'string' && canonicalId(ports.eventId) ? ports.eventId : null
   const session = ports.session
   const generation = useGeneration(session)
   const [owned, setOwned] = useState<OwnedArchive | null>(null)
