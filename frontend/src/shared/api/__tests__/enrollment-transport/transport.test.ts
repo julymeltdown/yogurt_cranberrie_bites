@@ -8,7 +8,7 @@ afterEach(() => vi.unstubAllGlobals())
 function setup() {
   const requests: Request[] = [], session = createMemorySession()
   session.replace(0, { userId: '33333333-3333-4333-8333-333333333333', eventId: null, accessToken: 'canonical' })
-  const http = createHttpClient({ session, fetch: async input => { requests.push(input as Request); return Response.json({ ok: true }) } })
+  const http = createHttpClient({ session, fetch: async input => { requests.push((input as Request).clone()); return Response.json({ ok: true }) } })
   return { requests, session, http }
 }
 function request(path: string): HttpRequest<unknown> { return { path: `/api/auth/enrollment/${path}`, method: method(path),
