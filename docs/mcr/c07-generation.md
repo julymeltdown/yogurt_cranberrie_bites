@@ -125,3 +125,14 @@ the active QA01 pin file, provenance-only README changes, and two new immutable
 archive records. That work starts after this round releases its resources. It
 does not authorize canonical input changes, silent repinning, unqualified
 producer deltas, global exclusions or a passing CI claim before full rerun.
+
+The follow-up producer audit records 84 published input deltas (16 changed and
+68 added), with exact published postimage hashes and six responsible producer
+groups. The route inventory advances from 134 to 135 solely by `getConcertIntro`;
+no existing route is removed or changed. Historical pins are archived exactly.
+Active pins remain unchanged until the temporary candidate passes the complete
+coverage path. A new C07 helper and two regressions cover the candidate/reviewed
+motion metadata fixtures; those follow-up additions remain NOT_RUN pending a
+fresh allocation. The old checker also needs an explicit ownership extension to
+invoke that helper and enumerate four v2 schemas. Social fixtures already use
+existing trace/wire-rejection branches and need no new dispatch logic.

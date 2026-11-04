@@ -50,8 +50,9 @@ this pin accounting grants art, runtime, privacy, service or release acceptance.
 
 The active pins are not yet changed. Fresh validation of the complete temporary
 candidate must pass before replacing them. Legacy QA01 also needs explicit
-coverage for the newly published motion and Social policy fixtures; silently
-ignoring these files or repinning around a failure is prohibited. After an
+coverage for the 62 newly published motion config fixtures and four v2 schemas.
+The Social policy fixtures use the retained trace/wire-rejection dispatch.
+Silently ignoring files or repinning around a failure is prohibited. After an
 audited forward update, the ordinary public positive command, all original
 negative probes, and the complete C07 harness must run again on the candidate.
 
