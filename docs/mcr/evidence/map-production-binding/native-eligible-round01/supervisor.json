@@ -1,0 +1,30 @@
+{
+  "job": "ROOT-MAP4-ELIGIBLE-CANONICAL-202611041110Z",
+  "candidate": "c026f36c886753ef312da3f91c21bbb02b9d1d4e",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/world-entry/__tests__/map-presentation-v1/native.mjs"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T11:10:33.548589+00:00",
+      "log": "1.log"
+    }
+  ],
+  "failure": "allocation byte cap",
+  "started_at": "2026-11-04T11:10:33.495851+00:00",
+  "finished_at": "2026-11-04T11:11:02.006028+00:00",
+  "elapsed_seconds": 28.510275125008775,
+  "peaks": {
+    "whole": 110570645,
+    "temp": 7442432,
+    "durable": 50409472
+  },
+  "carry_bytes": 52718741,
+  "minimum_free_bytes": 22471229440,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "driver_sha256": "33ad09c2f6fb1b266cfc89bad5e67d46c606ee9325fbb28d26933aa18683decb"
+}

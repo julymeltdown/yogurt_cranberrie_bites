@@ -150,3 +150,81 @@ static path. The actual supported route requires native 360/390/430 checks and
 shared self/peer/Profile/public persistence evidence under a fresh output lease.
 The prior IN01 static cohort proof is not reviewed-v2 activation or layered-option
 coverage. This source increment cannot complete FE12/FE13/AR03 or cut their scope.
+
+## Renewed feature-side Account editor owner
+
+Owner integration increment: CONTRACT_READY. Source qualification PASS at
+`fb184de331b44fc1454115460fa32b44020d052d` under accepted round
+`AR03-REVIEWED-OWNER-SOURCE-202611041229Z`. The earlier 346-test qualification
+and owner-verified 31-file publication at `a4da2cb4` remain historical evidence
+for the preceding adapter source.
+
+`createReviewedMotionEditorOwner({ auth, scope, authority, runtime, onCommitted })`
+borrows the same factory-minted authority and shared production runtime supplied
+by Root's registry. It verifies the exact authority object, Auth identity, full
+privacy scope and both owners' current status before creating the existing
+production persistence and motion controller. It performs no bootstrap/factory,
+Auth/session, game, socket or art-owner initialization of its own.
+
+Account owns the returned owner. Call `owner.start()` for explicit initialization,
+or let `MotionEditor` start its borrowed `owner.controller` idempotently. Read,
+select, choose, Random, Reset, Save, reload and reconciliation remain the existing
+controller API. The production controller carries `lifetime: 'owner'`; editor
+view unmount does not stop its work, abort a save or discard the shared Account
+draft. Existing plain controllers retain their view start/stop behavior. Save is
+disabled when the authenticated production authority disallows mutations; reads
+and drafts remain available. All catalog-backed preset/layer/body controls use
+the existing functioning component, with no new art or CSS.
+
+Call `owner.dispose()` when Account ownership ends. It removes its authority
+subscription, disposes its controller and cancels its persistence work only;
+it never disposes the borrowed runtime or authority. Authority withdrawal clears
+the feature owner synchronously, and late receipts cannot publish committed
+state. The optional committed callback receives only current matching-scope
+receipts. The existing controller reports a callback failure as saved with a
+refresh needed, without retrying the accepted mutation.
+
+Root retains every registry/provider/Account/World/Profile composition path.
+This feature-side owner does not activate a public release, migrate a static
+appearance or establish actual native or shared-player acceptance. The original
+AR03 goal remains unfinished with its actual BLOCKED metadata preserved.
+
+### Owner qualification and delivery limits
+
+The first allocated attempt passed all 365 tests across 16 suites, including
+19 new owner/component cases. The full application type check covered 857 files
+with zero diagnostics. Retained Node v24.22.2, scoped oxlint, source whitespace
+and planning checks all exited 0. Exact commands, source hashes, scope, runtime,
+start/finish times and cleanup are in `owner-integration/checks-122940.json`.
+No implementation or test fix was required after the run.
+
+Owner tests pass factory-minted public authority and the actual shared runtime
+through canonical Auth/privacy/HTTP implementations against deterministic C03
+responses. They read and hash-check the frozen descriptor and atlas bytes.
+Native image decoding and canvas drawing primitives are mocked; these are
+component/lifecycle tests, not pixel, browser, live backend or multiuser proof.
+They exercise all six presets, all 28 independent items, nullable wardrobe slots,
+Random/Reset/Save, capability-disabled Save, view remount during draft/save,
+StrictMode initialization, conflict/uncertainty reconciliation, callback failure,
+late read/save cancellation, proof/scope negatives and canonical privacy withdrawal.
+A separately acquired runtime consumer lease remains usable in the unit test
+after Account owner disposal.
+
+The round accepted at 12:29:10.402821 UTC and fully released at
+12:30:03.153592 UTC, before its 12:39:10 UTC hard deadline. Peak aggregate RSS
+was 1,465,221,120 bytes; sampled entire charged carry/output peaked at 153,804
+bytes and release accounting retained 155,844 bytes before its release record.
+This conservatively includes all retained own source/tests/evidence and every
+old attempt. Zero owned processes, TMP/cache, dependency links or borrowed
+bytecode remained. The borrowed `.vite-temp` stayed empty and lock hash unchanged.
+The raw Vitest log is preserved, including its EOF blank line. Qualified source
+whitespace exit 0 predates the documentation/evidence-only delivery commit.
+
+Root's renewed shared work owns one async registry authority/runtime per scope
+and pin, static 1.1 compatibility, actual Account/Profile/World dispatch and the
+renderer production proof guard. This leaf supplies only the Account-owned editor
+adapter and functioning existing component. Production adoption and fresh
+360/390/430 native/shared self-peer/Profile persistence acceptance remain open.
+No Meet assignment, backend, public contract, CSS, art or shared entrypoint change
+is included. Publication follows the named Root153 route without a review or
+acknowledgment gate; the implementation owner's remote proof follows publication.

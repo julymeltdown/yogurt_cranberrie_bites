@@ -1,0 +1,11 @@
+✔ missing original inputs remain NOT_RUN without requiring an unrelated approved request (0.739292ms)
+✔ dependency outage cannot be admitted as authorization-denial evidence; diagnostics stay redacted (0.110334ms)
+✔ malformed private JSON cannot expose its content in the thrown diagnostic (0.703625ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38.967167

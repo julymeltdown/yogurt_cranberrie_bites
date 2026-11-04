@@ -1,0 +1,220 @@
+{
+  "receivingCommit": "84c622efaf0676428e6507a1b05fea0747b718cf",
+  "qualifiedCommit": "43b80c915eea35a5eb46ec6dcc95dd677abae57b",
+  "lease": "FE19-MAP-SOURCE03-202611041223Z",
+  "caption": {
+    "sourceCommit": "916e67f5107b390d21a61a87798c1da789b9fc8d",
+    "exactHunkMatches": true,
+    "lineSHA256": "80888d5ab631881ba3cfe08c7e1a2b00be32cb892570f98c5df0efe47675f3ce"
+  },
+  "files": {
+    "frontend/pnpm-lock.yaml": {
+      "bytes": 80328,
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/annotations.test.ts": {
+      "bytes": 2193,
+      "sha256": "ddbd9be311bceee61888c1345abfd2ec8d019c8a6280824581286090bfb2fc92"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/eligible-attendee.mjs": {
+      "bytes": 505,
+      "sha256": "37a5cfe98bad3bc32f99034bc4b7889ef9315f5c494c06fee9f45223448df35e"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/fixture.ts": {
+      "bytes": 1373,
+      "sha256": "0dc6db0820ac9305673106f69bb3717c492a80543a8551c70f79c0b94517d214"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/input-readiness.mjs": {
+      "bytes": 1105,
+      "sha256": "15e4c4731ce2b52710e496b4c6561c6bca88bbc2beeb9e66813c20058c585fd5"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/input-readiness.test.ts": {
+      "bytes": 3864,
+      "sha256": "2952bee1ccb15e89bbfdc1981e038d2e19c3f5c980ac59d5a4c678fd3f899c2c"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts": {
+      "bytes": 2585,
+      "sha256": "d2881e1ee8a6514bff82fe7455ba892c26278b2c6713cbe627ead0304d23332b"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/layout.test.ts": {
+      "bytes": 2465,
+      "sha256": "712a55d018077c5c18b6fa14407e714d3f5d0e3b4e87976c18bf9adaeaecf1fc"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/links.test.tsx": {
+      "bytes": 1638,
+      "sha256": "cae772c4ea3baadb0541f85af4d15659fb4d0147e40fd0e0adf0b72f79312cb5"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts": {
+      "bytes": 7091,
+      "sha256": "0d5ab9a58702dd4d94042469ba0ef28202f897f45518d676998606442cdeb3a8"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/native.mjs": {
+      "bytes": 10530,
+      "sha256": "9b6bc486b2d04bc549a2fd586ac9c2558c284ab43922af61d807e01e413c4b44"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/overview.test.ts": {
+      "bytes": 4988,
+      "sha256": "4b2773709207898ab119e4cca01f76dbef889e29120641659dd42b94eb769ae0"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/pin-source.mjs": {
+      "bytes": 1588,
+      "sha256": "7c4213757b4f673fcf38ec17c1674bdebf37fcfa2f0f73806e6fba2d96c9f1c6"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/preflight.mjs": {
+      "bytes": 1694,
+      "sha256": "a82547abd15799cbd4070328d81035ea79a2658cca382ef3ca087ad97e3a798b"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/preview.tsx": {
+      "bytes": 9371,
+      "sha256": "e928238e0a39e742a7686a81009d767e99b252251a21035873f929fd56f4d57b"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/eligible-attendee-scenario.json": {
+      "bytes": 1107,
+      "sha256": "af6266c4210d7f18c6e3376683c500c61242969c7325ebec619c1d35e0f9599f"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/local-input.json": {
+      "bytes": 267,
+      "sha256": "89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json": {
+      "bytes": 204161,
+      "sha256": "11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source.test.ts": {
+      "bytes": 2780,
+      "sha256": "ef5ebb927ef7b07223c8766f47531a898ad80c5b6924c52782684670dcd2a790"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/tsconfig.json": {
+      "bytes": 181,
+      "sha256": "df8f2104370499be53bf116abf4f7576b03626310cd8195c4889c5fde3ccfa41"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/vitest.config.ts": {
+      "bytes": 723,
+      "sha256": "63a042d9434aeec11a1af481aef9ee6ace3194a828313008904970b5e07e9a56"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/composition-overview.test.ts": {
+      "bytes": 4930,
+      "sha256": "4a7b217db534327c242a1f3b0a780a636c8811af69686699bfd734a7ab811697"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx": {
+      "bytes": 7091,
+      "sha256": "93dfc152d249d1b64f0ea418318d907e28274ef010a22a84f23306ecba8f8ccd"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/contract.test.ts": {
+      "bytes": 5158,
+      "sha256": "5ca42486576aea3db187fc78d766d994402786773261dddb5f979db574c86aac"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts": {
+      "bytes": 3503,
+      "sha256": "554796ed0d28fcfd77504ec6f5d1952afc8ea579f58918db692abfccf9155673"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/labels.test.ts": {
+      "bytes": 3758,
+      "sha256": "a44d2582ae5b0bedbc275f1179f93ad36a30b66d59587b29bb79ae4b4c77a02e"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts": {
+      "bytes": 7450,
+      "sha256": "aa16c13824ace93b076267af09b347bf800ccf95b04b78f02fdb38a239a49cdd"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/tsconfig.json": {
+      "bytes": 271,
+      "sha256": "de92b0c2d06bc5e8dee256cb8cfa32b1d8218f815e73b11156efd67ccacbfaa6"
+    },
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/vitest.config.ts": {
+      "bytes": 806,
+      "sha256": "85bd82c8ff4e36cebf138b87c5137206c6d57a053d20094e1102d897b76cefff"
+    },
+    "frontend/src/app/world-entry/map-presentation-v1/descriptor.ts": {
+      "bytes": 302,
+      "sha256": "df8b39affbe728c607fd67565ce916fabced13dd59164096f866470fd03be899"
+    },
+    "frontend/src/app/world-entry/map-presentation-v1/identity.ts": {
+      "bytes": 122,
+      "sha256": "e9dceb891f6b44e25812c8623e6ac97fa43ddd474b567e822a49517594bf3a31"
+    },
+    "frontend/src/app/world-entry/map-presentation-v1/loader.ts": {
+      "bytes": 4252,
+      "sha256": "437f4fbc5bcac5b42490a14d0e8cfe4903ada222da9c14b5765e33213489e138"
+    },
+    "frontend/src/app/world-entry/map-presentation-v2/loader.ts": {
+      "bytes": 4549,
+      "sha256": "de7b0839c27726a38b7dc3b6e9e1b7603ddc05c13f73cce01e6408838e52593c"
+    },
+    "frontend/src/app/world-entry/reference-scene-overview.ts": {
+      "bytes": 3552,
+      "sha256": "5586a2e9b149b89460441db1e421a1e5ca6c09d30716ec5482916cff57c1b937"
+    },
+    "frontend/src/features/places/ui/IllustratedMap.tsx": {
+      "bytes": 19526,
+      "sha256": "a655570fcaef239ee8ec72b876a881c2b76b03815b0a7fa08125588b7f076112"
+    },
+    "frontend/src/features/places/ui/reference-scene/map-service-links.tsx": {
+      "bytes": 2368,
+      "sha256": "d1c259404fcde6ba0eba4b7e434e232f958809a4041c6872c27936122481a339"
+    },
+    "frontend/src/world/illustrated/overview.ts": {
+      "bytes": 4983,
+      "sha256": "ea615133a879ad48bf7488f862079cc4e692ecb8e4fe33905cf689a52584f5f8"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/annotations.ts": {
+      "bytes": 2851,
+      "sha256": "0df32577bcb7f797511546ac6912407ec74eac58631a8e6273f126ed443eb725"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/identity.ts": {
+      "bytes": 1542,
+      "sha256": "e77d085383475fa2457df902c155bca5e42707d6742add7fbe3aed52fbfea4ec"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/labels.ts": {
+      "bytes": 4097,
+      "sha256": "31ece5daae577f86a8f5ba1a898577b442f73944041434eb19987d58c18d221b"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/layout.ts": {
+      "bytes": 2288,
+      "sha256": "dca736587b618c04875616eecac1f6a6103fbb825295542fc941026cb685416b"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/paint-source.ts": {
+      "bytes": 381,
+      "sha256": "e9fb63f4179c13fe6b4555620a79cc95581e82a6d3f2dc7211ee057083028fec"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/pins.ts": {
+      "bytes": 199,
+      "sha256": "956f5d07093c22122252e9203b555f003c2c4431dccc5896060894dd33bdeabf"
+    },
+    "frontend/src/world/reference-scene/map4-service-v1/style-source.json": {
+      "bytes": 9131,
+      "sha256": "246562200c1379f901e08183bde53e57e03a5152eb0a03c62c4268319e890e62"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/contract.ts": {
+      "bytes": 7036,
+      "sha256": "43be2545f73c029b4b34c9f6b9035f675c2098c8953f61551a403ad2078825e6"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/current.ts": {
+      "bytes": 220,
+      "sha256": "02d65de230f804d5da0ec3b296ceeb403cb85a608266e4916675c1fe1a169b5c"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/labels.ts": {
+      "bytes": 4198,
+      "sha256": "bf8f609bd0dbfdf7a7841f4e6826570a13b4eb5313aa58a339b67a4abe3328d1"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/model.ts": {
+      "bytes": 4187,
+      "sha256": "04415b6718614ef51d69c5e35eca3a753e14ea18ded6a8c413491fa871f5dfdd"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/presentation-json.ts": {
+      "bytes": 837,
+      "sha256": "58df0486f53cf7c3a1778e7266b5f4dc88a091f585b164a72a4903f63d656939"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/semantics.ts": {
+      "bytes": 1068,
+      "sha256": "cf5ff7240e4674407ba47f247e8a64eaf91ee8dc59f6ed962b77ab752ad1dfff"
+    },
+    "frontend/src/world/reference-scene/map4-service-v2/style.ts": {
+      "bytes": 383,
+      "sha256": "fa37b14105c36a7dd8c039df606de6e7f75478bc7d6c196a684a0f4a3a3b6af3"
+    },
+    "frontend/src/world/reference-scene/overview.ts": {
+      "bytes": 7735,
+      "sha256": "1c64590a29a57071026f33d0cdd602cb601e4662d25e7476596ab6967beb3474"
+    }
+  }
+}

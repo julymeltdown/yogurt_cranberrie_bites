@@ -1,0 +1,21 @@
+{
+  "lease": "ROOT-MAP4-ELIGIBLE-NATIVE02-202611041133Z",
+  "iteration": "retry01",
+  "candidate": "4fa9b84b1ffe20c0f4793e73ab72247e77830649",
+  "originalAcceptedAt": "2026-11-04T11:33:51.054883+00:00",
+  "originalWorkCutoff": "2026-11-04T11:39:46.054883+00:00",
+  "originalReleaseDeadline": "2026-11-04T11:40:51.054883+00:00",
+  "retryPreflightAt": "2026-11-04T11:37:15.181452+00:00",
+  "carryBytes": 58031363,
+  "retainedStageDurable": {
+    "path": "docs/mcr/evidence/map-production-binding/native-eligible-round02",
+    "allocatedBytes": 7307264,
+    "accounting": "current stage durable, additional to original carry"
+  },
+  "inventorySha256": "cfc8c98c87d799ec259aab3afeb468357648c03b5b61f5db07c899cab601e4a2",
+  "driverSha256": "18d484bd575453717e29e3f622a612585b490bcfea7af1949394e8b8ad3b9ed8",
+  "supervisorSha256": "3509afb19f50f9abb2330b59e96869fb6f1fdb8420ba78efa911b8ddc89f7763",
+  "sourceFix": "916e67f5107b390d21a61a87798c1da789b9fc8d",
+  "port": 5298,
+  "freshFreeBytes": 20372791296
+}

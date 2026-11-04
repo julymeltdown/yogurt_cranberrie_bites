@@ -1,0 +1,26 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend
+
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/input-readiness.test.ts (5 tests | 1 failed) 44ms
+   × pins the frozen public capability schema, existing positive fixture source and original Map4 body 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/input-readiness.test.ts > pins the frozen public capability schema, existing positive fixture source and original Map4 body
+Error: ENOENT: no such file or directory, open '/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/backend/releases/operator-bundle/quality-v6/bootstrap.json'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/input-readiness.test.ts:19:19
+     17| it('pins the frozen public capability schema, existing positive fixtur…
+     18|   for (const [path, sha] of Object.entries(eligibleAttendeeScenario.so…
+     19|     const bytes = await readFile(resolve(process.cwd(), '..', path))
+       |                   ^
+     20|     expect(createHash('sha256').update(bytes).digest('hex'), path).toB…
+     21|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 11 passed (12)
+      Tests  1 failed | 86 passed (87)
+   Start at  19:57:56
+   Duration  5.53s (transform 481ms, setup 0ms, import 1.19s, tests 1.75s, environment 1.80s)
+

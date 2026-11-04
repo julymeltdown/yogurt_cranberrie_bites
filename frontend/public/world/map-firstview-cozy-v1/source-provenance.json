@@ -1,0 +1,404 @@
+{
+  "format": "MCR_MAP4_FIRSTVIEW_GROUND_V1",
+  "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
+  "allocation": "MAP4-FIRSTVIEW-PARADE-ART-202611040944Z",
+  "base_revision": "20682b5736838a4acbdc79e000350834cc553961",
+  "scope": "PARADE-authored shared Map4 ground; reusable only under each exact supported original theme tuple; not World/C03 asset replacement or map admission",
+  "shared_ground_role": {
+    "supported_themes": [
+      "REVENGE",
+      "PARADE",
+      "DANGER"
+    ],
+    "basis": "All three pinned map4 scene runtime_resources use the identical original ground descriptor",
+    "era_specific_props_redrawn": false,
+    "separate_era_exports": 0,
+    "consumer_adoption_and_native_all_era_validation": "REQUIRED_SEPARATELY"
+  },
+  "map_id": "mcr_reference_scene_r3",
+  "map_revision": 4,
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "dimensions": {
+    "width": 768,
+    "height": 1296
+  },
+  "inputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/ground.png",
+      "bytes": 531480,
+      "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v6/ground-layout.svg",
+      "bytes": 12748,
+      "sha256": "sha256:8b4cd3f33dcad57e980c4c0fc9067fa35fb1f0e8aaf8b72d992dedad26195187"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v3/geometry-proposal.json",
+      "bytes": 177926,
+      "sha256": "sha256:373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "bytes": 47336,
+      "sha256": "sha256:847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/source-binding.json",
+      "bytes": 11519,
+      "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+    }
+  ],
+  "output": {
+    "path": "frontend/public/world/map-firstview-cozy-v1/parade-ground.png",
+    "bytes": 469046,
+    "sha256": "sha256:ee2a1990788dc8e2d3f8e0897391fd0e95f1f29448baef58415001159ae9436d"
+  },
+  "editable_source": {
+    "path": "frontend/public/world/map-firstview-cozy-v1/parade-ground.svg",
+    "bytes": 747407,
+    "sha256": "sha256:a486652423d88870b06d3e050eeb00ae54c4e2734c1dc569663f5b245ab7638d"
+  },
+  "recipe": {
+    "path": "frontend/public/world/map-firstview-cozy-v1/paint.py",
+    "bytes": 13887,
+    "sha256": "sha256:7a891a26893bd7cd0b1017857e77edd328683f3aa40d07517b76cafde23f3928"
+  },
+  "rgb_integer_rows": [
+    [
+      88,
+      0,
+      15,
+      3700
+    ],
+    [
+      0,
+      85,
+      -25,
+      9100
+    ],
+    [
+      0,
+      0,
+      42,
+      12000
+    ]
+  ],
+  "rounding": "clamp((dot(RGB,row)+offset+50)//100)",
+  "palette": {
+    "rose": "#edb3be",
+    "lilac": "#c9b9dc",
+    "cream": "#fff0cb",
+    "center": "#dca761",
+    "leaf": "#719d78"
+  },
+  "plaza": {
+    "fill": "#9fba96",
+    "points": [
+      [
+        238,
+        384
+      ],
+      [
+        432,
+        376
+      ],
+      [
+        515,
+        480
+      ],
+      [
+        440,
+        575
+      ],
+      [
+        303,
+        598
+      ],
+      [
+        226,
+        509
+      ]
+    ],
+    "stroke": "#b4a27d",
+    "stroke_width": 6,
+    "geometry_change": false
+  },
+  "geometry": {
+    "paving_polygons": 47,
+    "paving_coordinates_sha256": "e56eba09c5a4cc12b9b02345b03f7a3a4fc2961f8a4a842b4fe81c14e0d8c7ea",
+    "plaza_coordinates_sha256": "cc8d1f9bf76128ecd5b3f47ba301b911ff56770bc8844369e8fb400805e8eaf9",
+    "exclusion_mask_sha256": "3d35d72fa4348656bedd1a01cd527dc0c68d833d8c73476937b805766000d983",
+    "safe_lawn_mask_sha256": "3f05f74fc0628bc71f2ab547df8d92b8ab2ced405fb046f54373aca959d5abf4"
+  },
+  "flat_detail": {
+    "kind": "small flat petal and leaf ellipses; no props, targets or obstacles",
+    "centers": [
+      [
+        34,
+        24
+      ],
+      [
+        300,
+        24
+      ],
+      [
+        538,
+        24
+      ],
+      [
+        174,
+        38
+      ],
+      [
+        258,
+        52
+      ],
+      [
+        496,
+        52
+      ],
+      [
+        440,
+        66
+      ],
+      [
+        412,
+        108
+      ],
+      [
+        468,
+        122
+      ],
+      [
+        370,
+        136
+      ],
+      [
+        580,
+        150
+      ],
+      [
+        20,
+        262
+      ],
+      [
+        62,
+        416
+      ],
+      [
+        20,
+        444
+      ],
+      [
+        62,
+        472
+      ],
+      [
+        90,
+        528
+      ],
+      [
+        104,
+        598
+      ],
+      [
+        552,
+        626
+      ],
+      [
+        636,
+        626
+      ],
+      [
+        76,
+        640
+      ],
+      [
+        594,
+        654
+      ],
+      [
+        34,
+        668
+      ],
+      [
+        202,
+        738
+      ],
+      [
+        356,
+        738
+      ],
+      [
+        734,
+        738
+      ],
+      [
+        160,
+        766
+      ],
+      [
+        692,
+        766
+      ],
+      [
+        398,
+        780
+      ],
+      [
+        118,
+        794
+      ],
+      [
+        342,
+        794
+      ],
+      [
+        650,
+        794
+      ],
+      [
+        734,
+        794
+      ],
+      [
+        202,
+        808
+      ],
+      [
+        440,
+        808
+      ],
+      [
+        76,
+        822
+      ],
+      [
+        692,
+        822
+      ],
+      [
+        342,
+        850
+      ],
+      [
+        496,
+        850
+      ],
+      [
+        48,
+        864
+      ],
+      [
+        174,
+        878
+      ],
+      [
+        538,
+        892
+      ],
+      [
+        342,
+        920
+      ],
+      [
+        132,
+        934
+      ],
+      [
+        496,
+        948
+      ],
+      [
+        440,
+        962
+      ],
+      [
+        104,
+        976
+      ],
+      [
+        300,
+        976
+      ],
+      [
+        384,
+        976
+      ],
+      [
+        734,
+        1018
+      ],
+      [
+        62,
+        1032
+      ],
+      [
+        580,
+        1074
+      ],
+      [
+        34,
+        1102
+      ],
+      [
+        538,
+        1102
+      ],
+      [
+        440,
+        1116
+      ],
+      [
+        384,
+        1130
+      ],
+      [
+        314,
+        1144
+      ],
+      [
+        188,
+        1158
+      ],
+      [
+        258,
+        1158
+      ],
+      [
+        160,
+        1200
+      ],
+      [
+        664,
+        1200
+      ],
+      [
+        132,
+        1242
+      ]
+    ],
+    "count": 61,
+    "painted_pixels": 9943,
+    "mask_sha256": "5f6d0946bd544479e2a1e9b07efcb3348befaa775722c08254adf3378c500866",
+    "minimum_path_clearance_px": 10
+  },
+  "preservation": {
+    "original_bytes": "exact pinned input, retained immutable",
+    "spatial_resampling": false,
+    "world_changes": false,
+    "character_changes": false,
+    "props_atlases_signage_changes": false,
+    "geometry_camera_changes": false,
+    "new_navigation_or_landmarks": false
+  },
+  "runtime": {
+    "python": "3.14.3",
+    "pillow": "12.2.0",
+    "temporary_files": 0,
+    "child_processes": 0,
+    "browser_or_generation_calls": 0
+  },
+  "limits": "Source only. No native actual-default Map4 comparison, all-era, human, live/device or parent acceptance."
+}

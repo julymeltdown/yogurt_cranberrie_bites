@@ -1,0 +1,39 @@
+{
+  "job": "ROOT-MAP4-ELIGIBLE-NATIVE02-202611041133Z",
+  "candidate": "39a3e7de1d0441aab4ab5dd2e417622f3269cc92",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/world-entry/__tests__/map-presentation-v1/native.mjs"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T11:34:13.655309+00:00",
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/world-entry/__tests__/map-presentation-v1/native.mjs"
+      ],
+      "exit_code": 1,
+      "started_at": "2026-11-04T11:34:13.918365+00:00",
+      "log": "2.log"
+    }
+  ],
+  "failure": "command-2-exit-1",
+  "started_at": "2026-11-04T11:34:13.603408+00:00",
+  "finished_at": "2026-11-04T11:35:00.949154+00:00",
+  "elapsed_seconds": 47.34591212499072,
+  "peaks": {
+    "whole": 95255811,
+    "temp": 29978624,
+    "durable": 7299072
+  },
+  "carry_bytes": 58031363,
+  "minimum_free_bytes": 20377276416,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "driver_sha256": "18d484bd575453717e29e3f622a612585b490bcfea7af1949394e8b8ad3b9ed8"
+}

@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "acceptedCleanSource": "9d493b3a8c85077c1b832ae2868f3d16d79c258b",
+  "sourceEditsDuringLiveLease": [
+    "docs/mcr/evidence/css-parity-feed/native-reference-media.mjs: strengthen keyboard-focus evidence, no product/fixture edits"
+  ],
+  "runtimePins": {
+    "frontend/src/features/event-feed/feed.css": "e744a26807021b0671e967f1595e6909e47b959a6857864f1081991330777538",
+    "docs/mcr/evidence/css-parity-feed/native-reference-media.mjs": "58ae7c150df9fdd4d285efdf624eb91874af5b8642c92b50c7cab3b856e3ba51",
+    "docs/mcr/evidence/css-parity-feed/supervisor-intrinsic.py": "d309f96627fe05e96d45796f8cc23ab51151390a4379991397b6bfc53e1c0a7a",
+    "frontend/src/shared/styles/base.css": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "immutableExternalInputs": [
+    {
+      "path": "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.tsx",
+      "sourceCommit": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "sha256": "83b55a7d2152093a0222ec909a43f462add7c783cfb2a885d8283a508c9ce294"
+    },
+    {
+      "path": "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.css",
+      "sourceCommit": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "sha256": "227da7bbfd2bbc6d99bc01682be4124e15b92e82882b3044fbd4316be6b590a1"
+    },
+    {
+      "path": "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.html",
+      "sourceCommit": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "sha256": "edd92dc9f7eb10c3e66c15e81cd1baf28101b2a1253f75cc068995b2e2812a8f"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/extract.py",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "3b7fb08cdba9bbd1397c7dba6c445382f5265b58e4d8c030d6b6f71e3483bb15"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/source-provenance.json",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "ad5c5baab4131fb26236aa1ed866d00b0f8e713103fe9417fb1dd73ef25efd32"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-1.png",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-2.png",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd"
+    },
+    {
+      "path": "docs/mcr/art/reference-feed-media-v1.md",
+      "sourceCommit": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "sha256": "9ebccb5068e5c3ed972a96a524483998b432d2dcef2f9d24e90b264f5dea8afa"
+    }
+  ],
+  "backgroundAndPortraitDeclarationsUnchanged": true,
+  "baselineFirstForegroundPass": "654bbb16a045c3ce6306066eb66a36f6c34f471e"
+}

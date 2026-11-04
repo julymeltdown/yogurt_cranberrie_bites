@@ -1,0 +1,157 @@
+{
+  "result": "PASS",
+  "qualifiedHandoff": "471fdcb6c53a9acccffecee4442ff384d8efc55a",
+  "delivered": "fb61e9c9d5372be377ef725adf2d6342f17a6551",
+  "reportedMaster": "6f609f1e2e73d44a1bff689a2d37b6a4d2646327",
+  "fetchedMaster": "6f609f1e2e73d44a1bff689a2d37b6a4d2646327",
+  "all29OwnedBlobsEqual": true,
+  "deliveredAndReportedMasterAncestors": true,
+  "blobs": {
+    "docs/mcr/evidence/css-parity-customize/attempt-01-native.log": {
+      "qualified": "5ce2b40acfac2d96eb2aefc254147381ca838838",
+      "delivered": "5ce2b40acfac2d96eb2aefc254147381ca838838",
+      "remote": "5ce2b40acfac2d96eb2aefc254147381ca838838"
+    },
+    "docs/mcr/evidence/css-parity-customize/attempt-01-node-syntax.log": {
+      "qualified": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "delivered": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/mcr/evidence/css-parity-customize/attempt-01-planning.log": {
+      "qualified": "d151d1d8ce3b52fe4d97f403deb4881ff3743c26",
+      "delivered": "d151d1d8ce3b52fe4d97f403deb4881ff3743c26",
+      "remote": "d151d1d8ce3b52fe4d97f403deb4881ff3743c26"
+    },
+    "docs/mcr/evidence/css-parity-customize/attempt-01-source-check.log": {
+      "qualified": "fb27ca795ffccde2b4583796018f5f3c6eacaee7",
+      "delivered": "fb27ca795ffccde2b4583796018f5f3c6eacaee7",
+      "remote": "fb27ca795ffccde2b4583796018f5f3c6eacaee7"
+    },
+    "docs/mcr/evidence/css-parity-customize/attempt-01-supervisor-report.json": {
+      "qualified": "597fb14a6927730f95a53ce36f3ecc87158df832",
+      "delivered": "597fb14a6927730f95a53ce36f3ecc87158df832",
+      "remote": "597fb14a6927730f95a53ce36f3ecc87158df832"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-01/report.json": {
+      "qualified": "2c9d3e8dca4c6831b0aa261a86b8989070ff253a",
+      "delivered": "2c9d3e8dca4c6831b0aa261a86b8989070ff253a",
+      "remote": "2c9d3e8dca4c6831b0aa261a86b8989070ff253a"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/baseline-360.png": {
+      "qualified": "c7dea8ddf50eef5a07eebe69e3f40f3e236be2c1",
+      "delivered": "c7dea8ddf50eef5a07eebe69e3f40f3e236be2c1",
+      "remote": "c7dea8ddf50eef5a07eebe69e3f40f3e236be2c1"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/baseline-390.png": {
+      "qualified": "f9da793e351d7beee2882c34beac1a941ca837bb",
+      "delivered": "f9da793e351d7beee2882c34beac1a941ca837bb",
+      "remote": "f9da793e351d7beee2882c34beac1a941ca837bb"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/baseline-430.png": {
+      "qualified": "1c688fd2766b31f0765994ca65e6406edbd3bce3",
+      "delivered": "1c688fd2766b31f0765994ca65e6406edbd3bce3",
+      "remote": "1c688fd2766b31f0765994ca65e6406edbd3bce3"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/candidate-360.png": {
+      "qualified": "22df0e49d9e90a167b4fafb89a9adec41d004b51",
+      "delivered": "22df0e49d9e90a167b4fafb89a9adec41d004b51",
+      "remote": "22df0e49d9e90a167b4fafb89a9adec41d004b51"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/candidate-390.png": {
+      "qualified": "06d391056637326d82b91e82c84aa2d455604d8f",
+      "delivered": "06d391056637326d82b91e82c84aa2d455604d8f",
+      "remote": "06d391056637326d82b91e82c84aa2d455604d8f"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/candidate-430.png": {
+      "qualified": "ed40f82cad23809bf4b5d61bf326e7292e9f6c8b",
+      "delivered": "ed40f82cad23809bf4b5d61bf326e7292e9f6c8b",
+      "remote": "ed40f82cad23809bf4b5d61bf326e7292e9f6c8b"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/comparison-390.png": {
+      "qualified": "f62ff7db4fcbc831873291d1f6dd5542667ae069",
+      "delivered": "f62ff7db4fcbc831873291d1f6dd5542667ae069",
+      "remote": "f62ff7db4fcbc831873291d1f6dd5542667ae069"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/focus-390.png": {
+      "qualified": "a0f18801c71b3a5714f1dd2f2d101b335509752b",
+      "delivered": "a0f18801c71b3a5714f1dd2f2d101b335509752b",
+      "remote": "a0f18801c71b3a5714f1dd2f2d101b335509752b"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/forced-focus-390.png": {
+      "qualified": "1744d8847e66f889efec3db46210ed02de964e38",
+      "delivered": "1744d8847e66f889efec3db46210ed02de964e38",
+      "remote": "1744d8847e66f889efec3db46210ed02de964e38"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/load-denied-390.png": {
+      "qualified": "593168f360ce508aeccfe7f7a952bc4138094b16",
+      "delivered": "593168f360ce508aeccfe7f7a952bc4138094b16",
+      "remote": "593168f360ce508aeccfe7f7a952bc4138094b16"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/report.json": {
+      "qualified": "b7939fe1897b85b205921c8b8be9422a32b43d04",
+      "delivered": "b7939fe1897b85b205921c8b8be9422a32b43d04",
+      "remote": "b7939fe1897b85b205921c8b8be9422a32b43d04"
+    },
+    "docs/mcr/evidence/css-parity-customize/native-02/save-denied-390.png": {
+      "qualified": "a847968c00cf2ad3fc8fc36b745ccc2da560177c",
+      "delivered": "a847968c00cf2ad3fc8fc36b745ccc2da560177c",
+      "remote": "a847968c00cf2ad3fc8fc36b745ccc2da560177c"
+    },
+    "docs/mcr/evidence/css-parity-customize/native.log": {
+      "qualified": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "delivered": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/mcr/evidence/css-parity-customize/native.mjs": {
+      "qualified": "a836925f8275aa7483562a510708f036dc4394bc",
+      "delivered": "a836925f8275aa7483562a510708f036dc4394bc",
+      "remote": "a836925f8275aa7483562a510708f036dc4394bc"
+    },
+    "docs/mcr/evidence/css-parity-customize/node-syntax.log": {
+      "qualified": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "delivered": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/mcr/evidence/css-parity-customize/planning.log": {
+      "qualified": "d151d1d8ce3b52fe4d97f403deb4881ff3743c26",
+      "delivered": "d151d1d8ce3b52fe4d97f403deb4881ff3743c26",
+      "remote": "d151d1d8ce3b52fe4d97f403deb4881ff3743c26"
+    },
+    "docs/mcr/evidence/css-parity-customize/release.json": {
+      "qualified": "a2df8c1c0a3fad6bcea8cd1b5923f346af291564",
+      "delivered": "a2df8c1c0a3fad6bcea8cd1b5923f346af291564",
+      "remote": "a2df8c1c0a3fad6bcea8cd1b5923f346af291564"
+    },
+    "docs/mcr/evidence/css-parity-customize/source-check.log": {
+      "qualified": "fb27ca795ffccde2b4583796018f5f3c6eacaee7",
+      "delivered": "fb27ca795ffccde2b4583796018f5f3c6eacaee7",
+      "remote": "fb27ca795ffccde2b4583796018f5f3c6eacaee7"
+    },
+    "docs/mcr/evidence/css-parity-customize/source-check.py": {
+      "qualified": "36d22e7e164cfd54e130951fe2bc0bb1fbfa9508",
+      "delivered": "36d22e7e164cfd54e130951fe2bc0bb1fbfa9508",
+      "remote": "36d22e7e164cfd54e130951fe2bc0bb1fbfa9508"
+    },
+    "docs/mcr/evidence/css-parity-customize/supervisor-report.json": {
+      "qualified": "ccf35de0eeaf89570ebe02750820200a6be057ac",
+      "delivered": "ccf35de0eeaf89570ebe02750820200a6be057ac",
+      "remote": "ccf35de0eeaf89570ebe02750820200a6be057ac"
+    },
+    "docs/mcr/evidence/css-parity-customize/supervisor.py": {
+      "qualified": "7f5a94fdf7cef84ae67bd91ca5a522443b8ba01e",
+      "delivered": "7f5a94fdf7cef84ae67bd91ca5a522443b8ba01e",
+      "remote": "7f5a94fdf7cef84ae67bd91ca5a522443b8ba01e"
+    },
+    "docs/mcr/frontend/css-parity-customize.md": {
+      "qualified": "c988df9d1311859587e3f71240da2bfa6007d5ba",
+      "delivered": "c988df9d1311859587e3f71240da2bfa6007d5ba",
+      "remote": "c988df9d1311859587e3f71240da2bfa6007d5ba"
+    },
+    "frontend/src/features/avatar/whole-character/whole-character.css": {
+      "qualified": "0a29c575968d71c455c7070b54a546808637cd23",
+      "delivered": "0a29c575968d71c455c7070b54a546808637cd23",
+      "remote": "0a29c575968d71c455c7070b54a546808637cd23"
+    }
+  },
+  "scope": "Bounded published Customize CSS qualification only; full part-selection/reference parity remains with owner83 and Root; captures retain historical DRESS UP"
+}

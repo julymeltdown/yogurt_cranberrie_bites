@@ -1,0 +1,91 @@
+{
+  "job": "ROOT-MAP4-ELIGIBLE-NATIVE02-202611041133Z",
+  "status": "FAILED_CAMERA_SAMPLE_COMPARISON_FULLRELEASE",
+  "acceptedAt": "2026-11-04T11:33:51.054883+00:00",
+  "releasedAt": "2026-11-04T11:40:18.062057+00:00",
+  "initialCandidate": "39a3e7de1d0441aab4ab5dd2e417622f3269cc92",
+  "retryCandidate": "4fa9b84b1ffe20c0f4793e73ab72247e77830649",
+  "rawRetryStatus": "FAIL",
+  "completedContexts": 19,
+  "pngs": 19,
+  "pairs": [
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": false
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": false
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": false
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "worldPixelsAndObjectsEqual": true,
+      "mapEqual": true,
+      "mapPhaseCameraEqual": false
+    }
+  ],
+  "retryError": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    camera: {\n+     height: 791,\n-     height: 663,\n      scrollX: 283,\n+     scrollY: 28.5,\n-     scrollY: 92.5,\n      width: 378,\n      zoom: 1\n    },\n    following: true\n  }\n",
+  "ownProcesses": [],
+  "port5298Bindable": true,
+  "ownLinkAbsent": true,
+  "ownTemporaryAndReceiptTreesAbsent": true,
+  "carryBytes": 58031363,
+  "wholeCapBytes": 193273528,
+  "durableCapBytes": 50331648,
+  "stageDurableRetainedBytes": 15917056,
+  "limitations": [
+    "First attempt15contexts failed hidden short caption, fixed by exact Map4-only TSX hunk.",
+    "Retry completed all19 actions and all9 World RGBA/object/map matches; final gate still FAIL because Map-phase camera samples differ after shell resize.",
+    "No clock/cap reset, no passing19-context gate or production/live admission claim.",
+    "Next correction must sample World camera with settled World snapshot and independently test Map-local camera stability. Fresh allocation required."
+  ]
+}

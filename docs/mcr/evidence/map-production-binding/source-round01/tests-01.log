@@ -1,0 +1,160 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend
+
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts (21 tests | 8 failed) 275ms
+   × does not fetch foreign mapRevision paint 8ms
+   × does not fetch foreign mapHash paint 7ms
+   × does not fetch foreign geometry paint 5ms
+   × does not fetch foreign theme paint 5ms
+   × does not fetch foreign themeRevision paint 5ms
+   × does not fetch foreign themeHash paint 5ms
+   × fails closed on matching-tuple contentTamper 5ms
+   × fails closed on matching-tuple geometryTamper 5ms
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts (3 tests | 3 failed) 3ms
+   × checks the real immutable font bytes and releases the independent Map-only font lease 2ms
+   × rejects font tamper before FontFace installation 0ms
+   × does not install an abort-resistant late FontFace after privacy cancellation 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts > checks the real immutable font bytes and releases the independent Map-only font lease
+TypeError: The URL must be of scheme file
+ ❯ setup src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts:13:38
+     11| })
+     12| async function setup() {
+     13|   const bytes = new Uint8Array(await readFile(new URL('../../../../../…
+       |                                      ^
+     14|   const fonts = new Set<FontFace>(), add = vi.fn((f: FontFace) => { fo…
+     15|   Object.defineProperty(document, 'fonts', { configurable: true, value…
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts:25:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts > rejects font tamper before FontFace installation
+TypeError: The URL must be of scheme file
+ ❯ setup src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts:13:38
+     11| })
+     12| async function setup() {
+     13|   const bytes = new Uint8Array(await readFile(new URL('../../../../../…
+       |                                      ^
+     14|   const fonts = new Set<FontFace>(), add = vi.fn((f: FontFace) => { fo…
+     15|   Object.defineProperty(document, 'fonts', { configurable: true, value…
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts:30:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts > does not install an abort-resistant late FontFace after privacy cancellation
+TypeError: The URL must be of scheme file
+ ❯ setup src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts:13:38
+     11| })
+     12| async function setup() {
+     13|   const bytes = new Uint8Array(await readFile(new URL('../../../../../…
+       |                                      ^
+     14|   const fonts = new Set<FontFace>(), add = vi.fn((f: FontFace) => { fo…
+     15|   Object.defineProperty(document, 'fonts', { configurable: true, value…
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/labels.test.ts:35:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > does not fetch foreign mapRevision paint
+TypeError: Cannot assign to read only property 'map_revision' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:31:41
+     29| it.each(['mapRevision', 'mapHash', 'geometry', 'theme', 'themeRevision…
+     30|   const s = await setup()
+     31|   if (kind === 'mapRevision') s.map.map.map_revision = 7005
+       |                                         ^
+     32|   if (kind === 'mapHash') s.map.map.content_hash = 'sha256:' + '0'.rep…
+     33|   if (kind === 'geometry') s.map.map.geometry_hash = 'sha256:' + '0'.r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > does not fetch foreign mapHash paint
+TypeError: Cannot assign to read only property 'content_hash' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:32:37
+     30|   const s = await setup()
+     31|   if (kind === 'mapRevision') s.map.map.map_revision = 7005
+     32|   if (kind === 'mapHash') s.map.map.content_hash = 'sha256:' + '0'.rep…
+       |                                     ^
+     33|   if (kind === 'geometry') s.map.map.geometry_hash = 'sha256:' + '0'.r…
+     34|   if (kind === 'theme') s.map.theme.theme_id = 'DANGER'
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > does not fetch foreign geometry paint
+TypeError: Cannot assign to read only property 'geometry_hash' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:33:38
+     31|   if (kind === 'mapRevision') s.map.map.map_revision = 7005
+     32|   if (kind === 'mapHash') s.map.map.content_hash = 'sha256:' + '0'.rep…
+     33|   if (kind === 'geometry') s.map.map.geometry_hash = 'sha256:' + '0'.r…
+       |                                      ^
+     34|   if (kind === 'theme') s.map.theme.theme_id = 'DANGER'
+     35|   if (kind === 'themeRevision') s.map.theme.theme_revision++
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > does not fetch foreign theme paint
+TypeError: Cannot assign to read only property 'theme_id' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:34:37
+     32|   if (kind === 'mapHash') s.map.map.content_hash = 'sha256:' + '0'.rep…
+     33|   if (kind === 'geometry') s.map.map.geometry_hash = 'sha256:' + '0'.r…
+     34|   if (kind === 'theme') s.map.theme.theme_id = 'DANGER'
+       |                                     ^
+     35|   if (kind === 'themeRevision') s.map.theme.theme_revision++
+     36|   if (kind === 'themeHash') s.map.theme.content_hash = 'sha256:' + '0'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > does not fetch foreign themeRevision paint
+TypeError: Cannot assign to read only property 'theme_revision' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:35:45
+     33|   if (kind === 'geometry') s.map.map.geometry_hash = 'sha256:' + '0'.r…
+     34|   if (kind === 'theme') s.map.theme.theme_id = 'DANGER'
+     35|   if (kind === 'themeRevision') s.map.theme.theme_revision++
+       |                                             ^
+     36|   if (kind === 'themeHash') s.map.theme.content_hash = 'sha256:' + '0'…
+     37|   if (kind === 'dimensions') s.map.widthPx++
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > does not fetch foreign themeHash paint
+TypeError: Cannot assign to read only property 'content_hash' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:36:41
+     34|   if (kind === 'theme') s.map.theme.theme_id = 'DANGER'
+     35|   if (kind === 'themeRevision') s.map.theme.theme_revision++
+     36|   if (kind === 'themeHash') s.map.theme.content_hash = 'sha256:' + '0'…
+       |                                         ^
+     37|   if (kind === 'dimensions') s.map.widthPx++
+     38|   expect(await createMapPaintProvider(s.descriptor, { origin: 'https:/…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > fails closed on matching-tuple contentTamper
+TypeError: Cannot assign to read only property 'accent' of object '[object Object]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:46:53
+     44|   if (kind === 'bytes') s.descriptor = { ...s.descriptor, bytes: 34 }
+     45|   if (kind === 'body') s.bytes[32] = 1
+     46|   if (kind === 'contentTamper') s.map.theme.palette.accent = '#ffffff'
+       |                                                     ^
+     47|   if (kind === 'geometryTamper') s.map.map.geometry.collision_grid[0]!…
+     48|   if (kind === 'mime' || kind === 'redirect') s.fetch.mockImplementati…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts > fails closed on matching-tuple geometryTamper
+TypeError: Cannot assign to read only property '0' of object '[object Array]'
+ ❯ src/app/world-entry/__tests__/map-presentation-v1/loader.test.ts:47:72
+     45|   if (kind === 'body') s.bytes[32] = 1
+     46|   if (kind === 'contentTamper') s.map.theme.palette.accent = '#ffffff'
+     47|   if (kind === 'geometryTamper') s.map.map.geometry.collision_grid[0]!…
+       |                                                                        ^
+     48|   if (kind === 'mime' || kind === 'redirect') s.fetch.mockImplementati…
+     49|     const response = new Response(s.bytes, { headers: { 'Content-Type'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  2 failed | 9 passed (11)
+      Tests  11 failed | 71 passed (82)
+   Start at  19:08:02
+   Duration  5.19s (transform 451ms, setup 0ms, import 1.08s, tests 1.63s, environment 1.76s)
+

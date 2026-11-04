@@ -1,0 +1,38 @@
+{
+  "status": "FAIL",
+  "qualification": "CONTROLLED_SUPPORTED_DEFAULT_PUBLIC_CONSTRUCTOR_NOT_NEW_LIVE_IN01",
+  "lease": "ROOT-MAP4-CANONICAL-202611041025Z",
+  "candidate": "7925c0967a7e8983a9cc700e14a2ec22f6205b2e",
+  "baseline": {
+    "commit": "a5c6cad52e630d61aa4ce581e7230c13cc5feb25",
+    "module": "frontend/src/app/world-entry/reference-scene-overview.ts",
+    "sha256": "sha256:098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "method": "BEFORE only: Vite serves exact historical factory module; actual production loader/resolver and all World sources remain current."
+  },
+  "sourcePins": {
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "sha256:ac82bd3614d2907740f4c2156602e664a93d96339bdab5a9f0328534dba6dbbd",
+    "frontend/src/world/reference-scene/overview.ts": "sha256:fac250597de73cd2c0ba30c2fc0f8ba111a5fae1ba23eaeea0eb28f197f957aa",
+    "frontend/src/world/scenes/MapScene.ts": "sha256:91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258",
+    "frontend/src/world/runtime.ts": "sha256:47fc58ab147702a4e90cf9a28aa101a999177b9af86f6bc0815ecbe36424776f",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json": "sha256:11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/local-input.json": "sha256:89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b",
+    "frontend/public/world/map-firstview-cozy-v1/parade-ground.png": "sha256:ee2a1990788dc8e2d3f8e0897391fd0e95f1f29448baef58415001159ae9436d",
+    "frontend/src/world/reference-scene/map4-service-v1/style-source.json": "sha256:246562200c1379f901e08183bde53e57e03a5152eb0a03c62c4268319e890e62",
+    "frontend/src/world/reference-scene/map4-service-v1/annotations.ts": "sha256:0df32577bcb7f797511546ac6912407ec74eac58631a8e6273f126ed443eb725",
+    "frontend/src/app/world-entry/map-presentation-v1/descriptor.ts": "sha256:df8b39affbe728c607fd67565ce916fabced13dd59164096f866470fd03be899"
+  },
+  "checks": [],
+  "limits": [
+    "Controlled HTTP/C05, original public operator manifest DTOs; participant era selected per context.",
+    "Not current live-server admission, human fidelity, physical devices, or ten-screen acceptance."
+  ],
+  "browser": "156.0.8078.80",
+  "error": "Error: expect(received).toBeTruthy()\n\nReceived: undefined\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate",
+  "finishedAt": "2026-11-04T10:27:46.089Z",
+  "cleanup": {
+    "contextClosed": true,
+    "browserClosed": true,
+    "serverClosed": true,
+    "viteCachesRemoved": true
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "status": "BOUNDED_SOURCE_DELIVERY_VERIFIED",
+  "checkedUTC": "2026-11-04T12:33:30.982356+00:00",
+  "source": "08824abf18794c692a799d149dae671b259868fe",
+  "base": "a9dd63769c6a035e6ac8938c53ece2b974afb3ac",
+  "published": "2e0a818b1e1984890e818e47fbf3ad0d559493c5",
+  "fetchedRemote": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "lsRemote": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "scopes": [
+    "frontend/e2e/real/social/",
+    "frontend/e2e/real/social.spec.ts",
+    "docs/mcr/frontend/in03-public-journey.md",
+    "docs/mcr/evidence/in03-public-journey/"
+  ],
+  "changedPaths": [
+    "docs/mcr/evidence/in03-public-journey/full-release.json",
+    "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-admission-guards.log",
+    "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-admission-syntax.log",
+    "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-runner-syntax.log",
+    "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-tsc.log",
+    "docs/mcr/evidence/in03-public-journey/in03-source-1-summary.json",
+    "docs/mcr/evidence/in03-public-journey/qualification.json",
+    "docs/mcr/frontend/in03-public-journey.md",
+    "frontend/e2e/real/social.spec.ts",
+    "frontend/e2e/real/social/admission-original.test.mjs",
+    "frontend/e2e/real/social/admission.d.mts",
+    "frontend/e2e/real/social/admission.mjs",
+    "frontend/e2e/real/social/browser-state.ts",
+    "frontend/e2e/real/social/entry.html",
+    "frontend/e2e/real/social/journey.ts",
+    "frontend/e2e/real/social/observations.ts",
+    "frontend/e2e/real/social/playwright.config.ts",
+    "frontend/e2e/real/social/real-entry.ts",
+    "frontend/e2e/real/social/tsconfig.json",
+    "frontend/e2e/real/social/validate.mjs"
+  ],
+  "ownedPaths": [
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/full-release.json",
+      "sha256": "5f12e0a18fdeacdbc53bc1864ff2780d84be0a490ba8d9be3ea9799e49b749cc",
+      "sourceBlob": "f09eec529ff8fe6d0b44d3d46721d9b2ef07bfae",
+      "publishedBlob": "f09eec529ff8fe6d0b44d3d46721d9b2ef07bfae",
+      "remoteBlob": "f09eec529ff8fe6d0b44d3d46721d9b2ef07bfae"
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-admission-guards.log",
+      "sha256": "998078218e72a1c712755c4b074f01fd560a5ed19a0c8a7a769fd57836a14718",
+      "sourceBlob": "f4726b34e275042360b249393f510131986ac3ca",
+      "publishedBlob": "f4726b34e275042360b249393f510131986ac3ca",
+      "remoteBlob": "f4726b34e275042360b249393f510131986ac3ca"
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-admission-syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-runner-syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-tsc.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "publishedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remoteBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-summary.json",
+      "sha256": "109e5f0d475d1fedaf17679d3dbc126d04f4c881ee4f87071baf67da197f3340",
+      "sourceBlob": "1e6026c6f3e6f5f1841c5a4b9a07e6c671c74c6e",
+      "publishedBlob": "1e6026c6f3e6f5f1841c5a4b9a07e6c671c74c6e",
+      "remoteBlob": "1e6026c6f3e6f5f1841c5a4b9a07e6c671c74c6e"
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/qualification.json",
+      "sha256": "b15abadf2591778e9374c2682e5c55c5c3131940cbff8aa389cf0208aa3603bb",
+      "sourceBlob": "22f0cb9068a6752b455bd64da1e06cf9e1a63315",
+      "publishedBlob": "22f0cb9068a6752b455bd64da1e06cf9e1a63315",
+      "remoteBlob": "22f0cb9068a6752b455bd64da1e06cf9e1a63315"
+    },
+    {
+      "path": "docs/mcr/frontend/in03-public-journey.md",
+      "sha256": "66219315baad72cc2ade5290c08cc8fdfe960494b6e01b9a2d4f4f226a4aba2a",
+      "sourceBlob": "75cd41c672a86021c95cb40a20c2cd77e437f437",
+      "publishedBlob": "75cd41c672a86021c95cb40a20c2cd77e437f437",
+      "remoteBlob": "75cd41c672a86021c95cb40a20c2cd77e437f437"
+    },
+    {
+      "path": "frontend/e2e/real/social.spec.ts",
+      "sha256": "199cdc14364eefa0dc3f652d3f5a2e1bfa7cba409cec3ee89fc5ee26088c3f8e",
+      "sourceBlob": "f79fcb7d14c3d82da287ba9b548e2f1f4f062821",
+      "publishedBlob": "f79fcb7d14c3d82da287ba9b548e2f1f4f062821",
+      "remoteBlob": "f79fcb7d14c3d82da287ba9b548e2f1f4f062821"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission-original.test.mjs",
+      "sha256": "f174f28980645981d9a4ee1ae3998be3b12574254130359206431a89848ed6eb",
+      "sourceBlob": "7ee6c051f3f6b042ffc7dafa9b6c33d0953ae3b6",
+      "publishedBlob": "7ee6c051f3f6b042ffc7dafa9b6c33d0953ae3b6",
+      "remoteBlob": "7ee6c051f3f6b042ffc7dafa9b6c33d0953ae3b6"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.d.mts",
+      "sha256": "a6f36a14cc2e6c836e0439b4099e27301234fb3bfce21bf0f323577e67b9b8d7",
+      "sourceBlob": "ce501e21fdf59a682a718544a6088fe18df7b8d9",
+      "publishedBlob": "ce501e21fdf59a682a718544a6088fe18df7b8d9",
+      "remoteBlob": "ce501e21fdf59a682a718544a6088fe18df7b8d9"
+    },
+    {
+      "path": "frontend/e2e/real/social/admission.mjs",
+      "sha256": "30052102e0f3c4acc7c2f6d1106d5af276709ba1b3e1f32bbfe29389b04ac0db",
+      "sourceBlob": "642f2ff97644c0a6b4b930fda88f39c0b3e83c16",
+      "publishedBlob": "642f2ff97644c0a6b4b930fda88f39c0b3e83c16",
+      "remoteBlob": "642f2ff97644c0a6b4b930fda88f39c0b3e83c16"
+    },
+    {
+      "path": "frontend/e2e/real/social/browser-state.ts",
+      "sha256": "9f60dd55ee2227e4d0eb79a42594617865ba4bf35461b69c150071beed0a7d91",
+      "sourceBlob": "e4fad4308c759830a197e69fa026856169182600",
+      "publishedBlob": "e4fad4308c759830a197e69fa026856169182600",
+      "remoteBlob": "e4fad4308c759830a197e69fa026856169182600"
+    },
+    {
+      "path": "frontend/e2e/real/social/cohort.d.mts",
+      "sha256": "ef46319ef594a774b305f5d429316d743a594656e22ab7d29efd275c4bb8fc6f",
+      "sourceBlob": "fc129db0d14c7298d4c794e056befc9c262465d1",
+      "publishedBlob": "fc129db0d14c7298d4c794e056befc9c262465d1",
+      "remoteBlob": "fc129db0d14c7298d4c794e056befc9c262465d1"
+    },
+    {
+      "path": "frontend/e2e/real/social/cohort.mjs",
+      "sha256": "cb357e6ab0793d1f101e16c47000aa7a2e493aae88cc10603686e7b661fa4541",
+      "sourceBlob": "a3985c62afdfb94c6bf135e7437fd16cd0684fa0",
+      "publishedBlob": "a3985c62afdfb94c6bf135e7437fd16cd0684fa0",
+      "remoteBlob": "a3985c62afdfb94c6bf135e7437fd16cd0684fa0"
+    },
+    {
+      "path": "frontend/e2e/real/social/entry.html",
+      "sha256": "5baf39ddca4a9b5280ecd66dccfc453870521dc19aba26f1275243515f9bc9f6",
+      "sourceBlob": "09bfdc8d79fcacec22a2d1e181a59b096c86859b",
+      "publishedBlob": "09bfdc8d79fcacec22a2d1e181a59b096c86859b",
+      "remoteBlob": "09bfdc8d79fcacec22a2d1e181a59b096c86859b"
+    },
+    {
+      "path": "frontend/e2e/real/social/journey.ts",
+      "sha256": "705be93bdfad99bcf15f69f96f1857e6c1e6ac22a96f90193f2c1674239cd53c",
+      "sourceBlob": "f3686d4118b0a0e576be450952dd116fe4fdb87b",
+      "publishedBlob": "f3686d4118b0a0e576be450952dd116fe4fdb87b",
+      "remoteBlob": "f3686d4118b0a0e576be450952dd116fe4fdb87b"
+    },
+    {
+      "path": "frontend/e2e/real/social/observations.ts",
+      "sha256": "2dcf182e6c84be388344b086217f87254c73137cd95229747bcc43b02e27a0b8",
+      "sourceBlob": "afa4e1fc40c126501725584f76d040b538629664",
+      "publishedBlob": "afa4e1fc40c126501725584f76d040b538629664",
+      "remoteBlob": "afa4e1fc40c126501725584f76d040b538629664"
+    },
+    {
+      "path": "frontend/e2e/real/social/playwright.config.ts",
+      "sha256": "539abab156cd829464f53e201493c2279ed9828eff12b1f4ccf7d17ef33e0420",
+      "sourceBlob": "b8214b346ec5fc9cbc18d964ab2de1eacb5f2423",
+      "publishedBlob": "b8214b346ec5fc9cbc18d964ab2de1eacb5f2423",
+      "remoteBlob": "b8214b346ec5fc9cbc18d964ab2de1eacb5f2423"
+    },
+    {
+      "path": "frontend/e2e/real/social/real-entry.ts",
+      "sha256": "15909d14c3f409758228e62e9d9f2d0b5eb02c1f398e5707a418e0aced9c42b0",
+      "sourceBlob": "367bb85de8ba9835c7fc6e535b4c345c3ebf2098",
+      "publishedBlob": "367bb85de8ba9835c7fc6e535b4c345c3ebf2098",
+      "remoteBlob": "367bb85de8ba9835c7fc6e535b4c345c3ebf2098"
+    },
+    {
+      "path": "frontend/e2e/real/social/run-input.example.json",
+      "sha256": "34ef403db500c7deb4353f77af165606ef7aafee9916fe76f013461784321afa",
+      "sourceBlob": "ddcf2d0166257cbebcded468b7165ef65a6a8aed",
+      "publishedBlob": "ddcf2d0166257cbebcded468b7165ef65a6a8aed",
+      "remoteBlob": "ddcf2d0166257cbebcded468b7165ef65a6a8aed"
+    },
+    {
+      "path": "frontend/e2e/real/social/tsconfig.json",
+      "sha256": "f241bd50f9ee92e17e15bdf8c6c9249123c53d5893a9fa704fcd0e6949cd0b32",
+      "sourceBlob": "28f9633878757e951a8bedd8378797e734d00d03",
+      "publishedBlob": "28f9633878757e951a8bedd8378797e734d00d03",
+      "remoteBlob": "28f9633878757e951a8bedd8378797e734d00d03"
+    },
+    {
+      "path": "frontend/e2e/real/social/validate.mjs",
+      "sha256": "96544c3a3bded39c3836eb1f7738fc5217592a1e37ab644256c661edcb1fd28f",
+      "sourceBlob": "2902547b60495043f75857e3e1aef75110d45117",
+      "publishedBlob": "2902547b60495043f75857e3e1aef75110d45117",
+      "remoteBlob": "2902547b60495043f75857e3e1aef75110d45117"
+    }
+  ],
+  "qualifiedImplementationPostimagesMatched": 12,
+  "ancestry": [
+    {
+      "ancestor": "a9dd63769c6a035e6ac8938c53ece2b974afb3ac",
+      "descendant": "08824abf18794c692a799d149dae671b259868fe"
+    },
+    {
+      "ancestor": "a9dd63769c6a035e6ac8938c53ece2b974afb3ac",
+      "descendant": "2e0a818b1e1984890e818e47fbf3ad0d559493c5"
+    },
+    {
+      "ancestor": "2e0a818b1e1984890e818e47fbf3ad0d559493c5",
+      "descendant": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f"
+    },
+    {
+      "ancestor": "7a94c5e7a4754ee178405be6682cf61218f61bcf",
+      "descendant": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f"
+    }
+  ],
+  "preservedC07ReadonlyPaths": [
+    "docs/mcr/evidence/c07-social-client-in03/admission-absent.log",
+    "docs/mcr/evidence/c07-social-client-in03/drift-negative.log",
+    "docs/mcr/evidence/c07-social-client-in03/exploratory-provenance.json",
+    "docs/mcr/evidence/c07-social-client-in03/exploratory-runs.jsonl",
+    "docs/mcr/evidence/c07-social-client-in03/inputs.json",
+    "docs/mcr/evidence/c07-social-client-in03/launch-stopped-pinned-runtime.log",
+    "docs/mcr/evidence/c07-social-client-in03/launch-stopped-pinned-vitest.log",
+    "docs/mcr/evidence/c07-social-client-in03/launch-stopped.json",
+    "docs/mcr/evidence/c07-social-client-in03/qualification.json",
+    "docs/mcr/evidence/c07-social-client-in03/qualified-1-admission.log",
+    "docs/mcr/evidence/c07-social-client-in03/qualified-1-drift.log",
+    "docs/mcr/evidence/c07-social-client-in03/qualified-1-normal.log",
+    "docs/mcr/evidence/c07-social-client-in03/qualified-1-summary.json",
+    "docs/mcr/evidence/c07-social-client-in03/qualified-1-tsc.log",
+    "docs/mcr/evidence/c07-social-client-in03/tsc-1.log",
+    "docs/mcr/evidence/c07-social-client-in03/tsc-2.log",
+    "docs/mcr/evidence/c07-social-client-in03/vitest-1.log",
+    "docs/mcr/evidence/c07-social-client-in03/vitest-2.log",
+    "docs/mcr/evidence/c07-social-client-in03/vitest-3.log",
+    "docs/mcr/frontend/c07-social-client-in03.md"
+  ],
+  "qualification": {
+    "testedSource": "f4c21ac0208045845976de1962916a077cde3e55",
+    "node": "v24.22.2",
+    "scopedTypeScriptExit": 0,
+    "nativeAdmissionGuards": {
+      "passed": 3,
+      "failed": 0
+    },
+    "admissionSyntaxExit": 0,
+    "runnerSyntaxExit": 0
+  },
+  "originalIN03": "NOT_RUN",
+  "actualPublicHTTP": "NOT_RUN",
+  "actualWS": "NOT_RUN",
+  "goal": "BLOCKED_ON_PRODUCTION_LIFETIME_API_AND_REAL_INPUTS",
+  "limitations": [
+    "This verifies publication of the bounded source-qualified contribution only.",
+    "No Node/test/browser/server/database/provider or live journey workflow ran for this Git proof.",
+    "Source qualification pins the original tested input cohort; remote publication does not create real runtime acceptance."
+  ]
+}

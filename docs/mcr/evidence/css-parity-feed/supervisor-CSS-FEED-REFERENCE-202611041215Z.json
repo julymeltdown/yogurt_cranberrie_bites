@@ -1,0 +1,33 @@
+{
+  "slot": "CSS-FEED-REFERENCE-202611041215Z",
+  "acceptedEpoch": 1793794627.255,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native-reference-media.mjs"
+      ],
+      "phase": "reference1",
+      "exit": 0,
+      "elapsedSinceAccept": 6.1825079917907715
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native-reference-media.mjs"
+      ],
+      "phase": "reference2",
+      "exit": 0,
+      "elapsedSinceAccept": 61.912996768951416
+    }
+  ],
+  "freeMinimum": 18544066560,
+  "wholePeak": 38140126,
+  "temporaryPeak": 29284281,
+  "durablePeak": 8927156,
+  "retainedInputBytes": 60438,
+  "ownedSourceBytes": 33003,
+  "activeEndedEpoch": 1793794718.553953,
+  "elapsedSinceAccept": 91.29895973205566,
+  "privateTmpRemoved": true
+}

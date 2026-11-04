@@ -1,6 +1,6 @@
 # Customize foreground CSS parity
 
-Bounded CSS qualification: **MOCK_READY**. Full reference parity remains **BLOCKED** by component/contract and frozen-frame differences described below. Publication is routed directly to Root153; no king or SL technical review or acknowledgment is required. The original goal is unfinished and its saved metadata still reports BLOCKED; no replacement goal, scope reset or new checkout was created.
+Bounded CSS qualification: **MOCK_READY**. Full reference parity remains **BLOCKED** by component/contract and frozen-frame differences described below. The bounded increment is published by Root153; no king or SL technical review or acknowledgment is required. The original goal is unfinished and its saved metadata still reports BLOCKED; no replacement goal, scope reset or new checkout was created.
 
 ## Ownership and source
 
@@ -45,10 +45,18 @@ The developer directly inspected `native-02/comparison-390.png`, candidate 360/4
 - The actual controller exposes three genuine whole-character choices per page; the reference shows five hair-only thumbnails. Count/type changes require the component/data owner. CSS cannot reveal unrendered choices or recrop approved whole-character art into hair samples.
 - The frozen portrait/frame and absent palette make the reference control positions materially different: at 390px actual actions begin at 515.5px, while the comparison reference places actions substantially lower. Moving/enlarging the preview, thumbnail grid, changing category layout or adding a palette exceeds this lease and would break the explicit character/frame freeze. Page/background paint belongs to its separate artist; this worker does not alter it to hide the difference.
 
-These are concrete non-CSS/frozen-owner blockers, not review or publication permission requests. Root153 receives the committed qualified increment and exact fix requests directly. No full-fidelity score, IN gate closure or whole-goal completion is asserted. Remote publication/ancestry is still pending the named publisher and must be separately read back.
+These are concrete non-CSS/frozen-owner blockers, not review or publication permission requests. Root153 receives the committed qualified increment and exact fix requests directly. No full-fidelity score, IN gate closure or whole-goal completion is asserted. Independent publication readback is recorded below; no whole-product closure follows from it.
 
 ## Resource release and history
 
 The earlier three-turn disk-start blocker and later explicit resumption remain in Git history at `cd9371d7`/`43aec859`; they are superseded for this completed native round. Both temporary directories, caches/profiles and the worker-created dependency link were removed; observed owned processes are gone. The initial post-close raw bind probe returned EADDRINUSE; follow-up found no LISTEN process and SO_REUSEADDR bind succeeded. The diagnostic is preserved rather than claiming the first probe passed.
 
 `release.json` records full release at **11:55:35.859717Z**, before the 11:58:11Z hard deadline with over 60 seconds remaining. No peer was terminated. Final durable carry was 1,004,243 bytes before this documentation update; observed peak temp was 29,662,762 bytes and whole was 30,192,795 bytes against 100/140 MiB limits. Eleven PNGs remain within the 20 MiB durable cap. No resource allocation or output job is retained.
+
+## Published disposition and writer-lease return — 2026-11-04
+
+Independent fetch and `git ls-remote origin refs/heads/master` both resolve master to `6f609f1e2e73d44a1bff689a2d37b6a4d2646327`. Delivered commit `fb61e9c9d5372be377ef725adf2d6342f17a6551` is its ancestor. All **29** owned postimage blobs in qualified handoff `471fdcb6c53a9acccffecee4442ff384d8efc55a` equal both the delivered commit and fetched remote master. `publication.json` records every path and all three Git blob IDs. Fetch, remote lookup and blob/ancestry assertions exited 0. This is independent delivery readback, not a new capture/execution round or a technical approval gate.
+
+Disposition: the bounded CSS increment is delivered with MOCK_READY fixture qualification. Full functional part-selection/reference parity remains unfinished with existing owner83 and Root153. The original goal is not falsely marked complete. Historical DRESS UP captures and their source pins remain unchanged; shared title copy was published separately. No product source or native artifact is rewritten for the receipt.
+
+After this documentation/proof commit, the worker returns its exact exclusive writer leases to Root153: `frontend/src/features/avatar/whole-character/whole-character.css`, `docs/mcr/frontend/css-parity-customize.md`, and `docs/mcr/evidence/css-parity-customize/**`. The checkout remains isolated and clean; all browser/Vite/Node/TMP/cache/profile/dependency-link resources were already fully released. This worker will make no further edits without a new explicit assignment.

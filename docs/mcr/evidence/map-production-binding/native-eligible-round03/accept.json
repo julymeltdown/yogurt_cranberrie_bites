@@ -1,0 +1,15 @@
+{
+  "lease": "ROOT-MAP4-ELIGIBLE-NATIVE03-202611041200Z",
+  "acceptedAt": "2026-11-04T12:00:56.889948+00:00",
+  "workCutoff": "2026-11-04T12:06:51.889948+00:00",
+  "releaseDeadline": "2026-11-04T12:07:56.889948+00:00",
+  "candidate": "ce21d2e6b285246485e16ffcf5ab319480c06782",
+  "carryBytes": 79801962,
+  "inventorySha256": "55efacbdd295888509f785a3eaf64fb13439351d44089a4ba6658bdb1a099928",
+  "driverSha256": "721ecc2c0aa3c2c34b02d1dc279ba672cd58d52201912a43bb55ceb32a38a31a",
+  "supervisorSha256": "3509afb19f50f9abb2330b59e96869fb6f1fdb8420ba78efa911b8ddc89f7763",
+  "startFreeBytes": 19402989568,
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "port": 5298,
+  "changesSinceReadiness": "Documentation/assessment/unused v2 driver; normal merge of qualified published frontend source only. No v2 artwork or reviewed production adapter activation; original v1 app cohort unchanged."
+}

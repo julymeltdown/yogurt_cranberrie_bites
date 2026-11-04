@@ -1,0 +1,69 @@
+{
+  "allocation": "IN03-CONSUMER-SOURCE-202611041207Z",
+  "acceptedUTC": "2026-11-04T12:10:16Z",
+  "activeUntilUTC": "2026-11-04T12:14:16Z",
+  "releaseDeadlineUTC": "2026-11-04T12:15:16Z",
+  "scope": "ORIGINAL_IN03_SOURCE_ONLY",
+  "source": "f4c21ac0208045845976de1962916a077cde3e55",
+  "implementationSource": "65cffdbc0cdd4afd315808adf9f4c1abe8e5419f",
+  "base": "a9dd63769c6a035e6ac8938c53ece2b974afb3ac",
+  "status": "SOURCE_CHECKS_PASSED",
+  "IN03": "NOT_RUN",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "sourcePostimages": {
+    "docs/mcr/frontend/in03-public-journey.md": "cbaf91f3ef63c011786f9cd20486df8c24ed9aa7545c270ce51e252ca762ef3b",
+    "frontend/e2e/real/social.spec.ts": "199cdc14364eefa0dc3f652d3f5a2e1bfa7cba409cec3ee89fc5ee26088c3f8e",
+    "frontend/e2e/real/social/admission-original.test.mjs": "f174f28980645981d9a4ee1ae3998be3b12574254130359206431a89848ed6eb",
+    "frontend/e2e/real/social/admission.d.mts": "a6f36a14cc2e6c836e0439b4099e27301234fb3bfce21bf0f323577e67b9b8d7",
+    "frontend/e2e/real/social/admission.mjs": "30052102e0f3c4acc7c2f6d1106d5af276709ba1b3e1f32bbfe29389b04ac0db",
+    "frontend/e2e/real/social/browser-state.ts": "9f60dd55ee2227e4d0eb79a42594617865ba4bf35461b69c150071beed0a7d91",
+    "frontend/e2e/real/social/entry.html": "5baf39ddca4a9b5280ecd66dccfc453870521dc19aba26f1275243515f9bc9f6",
+    "frontend/e2e/real/social/journey.ts": "705be93bdfad99bcf15f69f96f1857e6c1e6ac22a96f90193f2c1674239cd53c",
+    "frontend/e2e/real/social/observations.ts": "2dcf182e6c84be388344b086217f87254c73137cd95229747bcc43b02e27a0b8",
+    "frontend/e2e/real/social/playwright.config.ts": "539abab156cd829464f53e201493c2279ed9828eff12b1f4ccf7d17ef33e0420",
+    "frontend/e2e/real/social/real-entry.ts": "15909d14c3f409758228e62e9d9f2d0b5eb02c1f398e5707a418e0aced9c42b0",
+    "frontend/e2e/real/social/tsconfig.json": "f241bd50f9ee92e17e15bdf8c6c9249123c53d5893a9fa704fcd0e6949cd0b32",
+    "frontend/e2e/real/social/validate.mjs": "96544c3a3bded39c3836eb1f7738fc5217592a1e37ab644256c661edcb1fd28f"
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-summary.json",
+      "rawSha256": "0376ad0c3cf69f4c915fd8df1f4e5e200d3aa606e3bc8115166cf052a952fab2",
+      "portableSha256": "109e5f0d475d1fedaf17679d3dbc126d04f4c881ee4f87071baf67da197f3340",
+      "bytes": 19000
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-admission-guards.log",
+      "rawSha256": "998078218e72a1c712755c4b074f01fd560a5ed19a0c8a7a769fd57836a14718",
+      "portableSha256": "998078218e72a1c712755c4b074f01fd560a5ed19a0c8a7a769fd57836a14718",
+      "bytes": 423
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-admission-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/in03-source-1-in03-runner-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "limitations": [
+    "No actual public HTTP/browser/WS/provider/runtime journey executed.",
+    "No old C07 or other support suite rerun.",
+    "Production availability, canonical World lifetime and actual principals remain external prerequisites.",
+    "No authenticated C03 response or private body digest captured.",
+    "Later documentation/evidence-only commits do not change the tested implementation."
+  ]
+}

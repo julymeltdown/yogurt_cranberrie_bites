@@ -1,0 +1,1 @@
+src/app/world-entry/__tests__/map-presentation-v2/contract.test.ts(56,64): error TS2704: The operand of a 'delete' operator cannot be a read-only property.

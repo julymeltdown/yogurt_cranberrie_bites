@@ -1,0 +1,14 @@
+{
+  "lease": "ROOT-MAP4-ELIGIBLE-NATIVE02-202611041133Z",
+  "candidate": "39a3e7de1d0441aab4ab5dd2e417622f3269cc92",
+  "acceptedAt": "2026-11-04T11:33:51.054883+00:00",
+  "workCutoff": "2026-11-04T11:39:46.054883+00:00",
+  "releaseDeadline": "2026-11-04T11:40:51.054883+00:00",
+  "carryBytes": 58031363,
+  "inventorySha256": "bb5639bb5e9af97287696db28d3082fd6955a4aa46f239610ad8d3bff96b9140",
+  "driverSha256": "18d484bd575453717e29e3f622a612585b490bcfea7af1949394e8b8ad3b9ed8",
+  "supervisorSha256": "1f08969fb7de2eae1cd87d559323d514573e4c0208a8b1f3ca640224117e97cc",
+  "startFreeBytes": 20428021760,
+  "port": 5298,
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+}

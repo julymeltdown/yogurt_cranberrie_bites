@@ -1,0 +1,30 @@
+{
+  "job": "ROOT-MAP4-CANONICAL-202611041025Z",
+  "acceptedAt": "2026-11-04T10:27:15+00:00",
+  "releasedAt": "2026-11-04T10:32:18.440243+00:00",
+  "totalElapsedSeconds": 303.440243,
+  "hardDeadline": "2026-11-04T10:34:15+00:00",
+  "qualifiedPositiveContexts": 0,
+  "pngs": 0,
+  "attempts": [
+    {
+      "dir": "native-round01",
+      "candidate": "7925c0967a7e8983a9cc700e14a2ec22f6205b2e",
+      "nativeExit": 1
+    },
+    {
+      "dir": "native-round02",
+      "candidate": "8dbf209fce715551c0ad68363b824854f819c934",
+      "nativeExit": 1
+    }
+  ],
+  "reason": "Committed pre-admission operator Bootstrap explicitly disables World. Actual production shell correctly allocates no game/socket. No capability/admission flag changed. Post-admission public C03 input required.",
+  "qualifiedScope": "Retained negative-input constructor failures only; Map4 visual/route/World pixel comparison NOT_RUN.",
+  "ownLiveHandles": 0,
+  "ownDependencyLinkAbsent": true,
+  "tempAndViteCachesAbsent": true,
+  "privateReceiptsAbsent": true,
+  "chargedCarryBytes": 52521371,
+  "nativePeakWholeBytes": 82569627,
+  "minimumFreeBytes": 19166699520
+}

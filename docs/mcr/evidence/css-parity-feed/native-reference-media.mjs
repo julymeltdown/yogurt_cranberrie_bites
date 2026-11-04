@@ -34,6 +34,8 @@ const { default: react } = await import(pathToFileURL(req.resolve('@vitejs/plugi
 const { chromium, expect } = req('@playwright/test')
 const server = await createServer({ root: frontend, configFile: false, plugins: [react()], cacheDir: resolve(tmp, 'cache'), logLevel: 'error', server: { host: '127.0.0.1', port: 5292, strictPort: true, hmr: false } })
 const report = { status: 'FAIL', phase, slot: process.env.MCR_FEED_SLOT, head: git('rev-parse', 'HEAD').toString().trim(), cssSha256: hash(await readFile(resolve(repo, cssPath))), baselineCssSha256: hash(baselineCss), inputs, cases: [], errors: [], qualification: 'Actual Feed/FeedImage/FeedThread over Root synthetic fixture. Complete approved screenshot thumbnails at native size; no original photographs, live posts, real HTTP acceptance or full parity certification.' }
+report.driverSha256 = hash(await readFile(resolve(repo, 'docs/mcr/evidence/css-parity-feed/native-reference-media.mjs')))
+report.trackedChanges = git('diff', '--name-only').toString().trim().split('\n').filter(Boolean)
 const geometry = async page => page.locator('.reference-frame').evaluate(frame => {
   const rect = element => { const r = element.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height } }
   return { viewport: innerWidth, documentWidth: document.documentElement.scrollWidth, frame: rect(frame), cards: [...frame.querySelectorAll('.feed-post')].map(rect), portraits: [...frame.querySelectorAll('.feed-portrait')].map(rect), images: [...frame.querySelectorAll('.feed-media img')].map(e => ({ ...rect(e), naturalWidth: e.naturalWidth, naturalHeight: e.naturalHeight, declaredWidth: e.getAttribute('width'), declaredHeight: e.getAttribute('height'), blob: e.src.startsWith('blob:') })), figures: [...frame.querySelectorAll('.feed-media figure')].map(rect) }
@@ -78,12 +80,18 @@ try {
       await page.locator('.concert-window__close').click(); await expect(page.locator('.feed-post')).toHaveCount(2); await readyImages(page, 2)
     }
     if (variant === 'candidate') {
+      row.selectedTabDecoration = await page.getByRole('tab', { name: 'ALL', exact: true }).evaluate(e => getComputedStyle(e).textDecorationLine)
+      assert.equal(row.selectedTabDecoration, 'none', 'Feed selected-tab override beats shared underline specificity')
       const previous = report.cases.find(item => item.width === width && item.variant === 'published')
       row.threadGeometryUnchanged = row.detail.every((item, i) => JSON.stringify(item.geometry) === JSON.stringify(previous.detail[i].geometry))
       assert(row.threadGeometryUnchanged, 'Feed-only CSS must preserve actual Thread geometry')
       await page.getByRole('button', { name: 'Write a post' }).focus()
+      await page.keyboard.press('Tab'); await page.keyboard.press('Shift+Tab')
+      await expect(page.getByRole('button', { name: 'Write a post' })).toBeFocused()
       row.focus = await page.getByRole('button', { name: 'Write a post' }).evaluate(e => getComputedStyle(e).outline)
       assert.match(row.focus, /3px/)
+      assert.notEqual(await page.getByRole('button', { name: 'Write a post' }).evaluate(e => getComputedStyle(e).outlineStyle), 'none', 'keyboard focus must be visibly painted')
+      if (width === 390) row.focusCapture = await capture(page, 'candidate-keyboard-focus-390')
       await page.keyboard.press('Enter'); await expect(page.locator('#destination')).toHaveText('Fixture compose destination')
       await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.invalidate()); await expect(page.locator('.feed-media img')).toHaveCount(0)
       assert.equal(await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.resources()), 0)
