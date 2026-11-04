@@ -348,7 +348,7 @@ impl WorldRuntimeSettings {
             .bootstrap()
             .await
             .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
-        let runtime = WorldRuntime::new(
+        let mut runtime = WorldRuntime::new(
             self.event,
             self.owner,
             anchor,
@@ -358,6 +358,8 @@ impl WorldRuntimeSettings {
             transport.clone(),
         )
         .map_err(|_| anyhow::anyhow!("World owner construction failed"))?;
+        runtime.configure_motion_profile(&map.geometry_hash)
+            .map_err(|_| anyhow::anyhow!("World motion geometry binding failed"))?;
         let (clock, origin_ms) = runtime.clock_origin();
         // Claim only after geometry/runtime construction, so startup's owning
         // lease is fresh when the native owner and public barrier become ready.

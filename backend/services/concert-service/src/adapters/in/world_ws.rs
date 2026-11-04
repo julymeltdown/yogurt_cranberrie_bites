@@ -370,6 +370,7 @@ async fn owner_install(
     state: &WorldSocketState,
     b: Binding,
     cause: SnapshotCause,
+    motion: bool,
 ) -> Result<(), SafeClose> {
     // No DB guard is held across a socket/network wait. The owner command only
     // installs local state; snapshot publication happens on its later tick.
@@ -387,11 +388,13 @@ async fn owner_install(
     let (reply, answer) = oneshot::channel();
     state
         .owner
-        .try_submit(Command::Install {
+        .try_submit(if motion { Command::InstallMotion {
+            binding: b, cause, reply,
+        }} else { Command::Install {
             binding: b,
             cause,
             reply,
-        })
+        }})
         .map_err(|_| SafeClose::UNAVAILABLE)?;
     tokio::time::timeout(Duration::from_millis(100), answer)
         .await
@@ -471,6 +474,7 @@ async fn session(
     let accepted = tokio::time::Instant::now();
     let auth_deadline = accepted + Duration::from_millis(3000);
     let mut ingress = ConnectionIngress::new(state.now()?)?;
+    let mut motion = false;
     let mut timer = tokio::time::interval(Duration::from_millis(25));
     timer.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
     loop {
@@ -499,14 +503,16 @@ async fn session(
                     Message::Ping(_) | Message::Pong(_) => return Err(SafeClose::INVALID),
                 };
                 let Some(message) = ingress.receive(kind, true, &bytes, state.now()?)? else { continue; };
+                let requested_motion = matches!(&message, ClientMessage::AuthenticateMotion(_));
                 match message {
-                    ClientMessage::Authenticate(intent) => {
+                    ClientMessage::Authenticate(intent) | ClientMessage::AuthenticateMotion(intent) => {
+                        motion = requested_motion;
                         let deadline = auth_deadline;
                         let b = tokio::time::timeout_at(deadline, state.admission.admit(intent, connection)).await.map_err(|_| SafeClose::AUTH_TIMEOUT)??;
                         *bound = Some(b.clone());
                         if b.connection_id != connection { return Err(SafeClose::UNAVAILABLE); }
                         ingress.activate(b.stream_id, b.room_epoch, state.now()?)?;
-                        tokio::time::timeout_at(auth_deadline,owner_install(state,b,SnapshotCause::Initial)).await.map_err(|_| SafeClose::AUTH_TIMEOUT)??;
+                        tokio::time::timeout_at(auth_deadline,owner_install(state,b,SnapshotCause::Initial,motion)).await.map_err(|_| SafeClose::AUTH_TIMEOUT)??;
                     },
                     ClientMessage::Input(input) => {
                         let b = bound.as_ref().ok_or(SafeClose::AUTH_REQUIRED)?;
@@ -519,7 +525,7 @@ async fn session(
                         let next = tokio::time::timeout(Duration::from_millis(500),state.admission.resync(b,request.request_id)).await.map_err(|_| SafeClose::UNAVAILABLE)??;
                         if next.connection_id != connection || next.session_id != b.session_id || next.key != b.key { return Err(SafeClose::UNAVAILABLE); }
                         *bound = Some(next.clone());
-                        owner_install(state,next.clone(),SnapshotCause::Resync(request.request_id)).await?;
+                        owner_install(state,next.clone(),SnapshotCause::Resync(request.request_id),motion).await?;
                         ingress.activate(next.stream_id,next.room_epoch,state.now()?)?;
                     },
                     ClientMessage::SwitchRoom { request_id, admission, .. } => {
@@ -539,7 +545,7 @@ async fn session(
                         };
                         if next.connection_id != connection || next.session_id != b.session_id || next.key != b.key { return Err(SafeClose::UNAVAILABLE); }
                         *bound = Some(next.clone());
-                        owner_install(state,next.clone(),SnapshotCause::RoomSwitch(request_id)).await?;
+                        owner_install(state,next.clone(),SnapshotCause::RoomSwitch(request_id),motion).await?;
                         ingress.activate(next.stream_id,next.room_epoch,state.now()?)?;
                     },
                     ClientMessage::Pong(_) => {},
