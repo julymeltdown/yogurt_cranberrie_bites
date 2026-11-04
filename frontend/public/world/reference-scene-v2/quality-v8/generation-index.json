@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "image_inputs": [],
+  "transparent_background_requested": true,
+  "generated_output": "exec-054daad2-b906-45ba-98ee-006fc1e35324.png",
+  "saved_path": "sources/canopy-sheet.png",
+  "saved_sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95",
+  "original_output_byte_equality": "PASS",
+  "prompt": "sources/prompt.md",
+  "reference_role": "Unmodified supplied ten-screen reference used for composition comparison and text-described art direction, not imagegen input or sampled pixels.",
+  "reference_sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "source_preservation": "No source repaint, palette quantization or alpha resealing. Declared alpha-bounded nearest crops and transparent native-only padding.",
+  "retained_source": "Twelve non-tree atlas cells per era remain pixel-identical to original quality-v7 sources."
+}

@@ -1,0 +1,533 @@
+{
+  "version": 1,
+  "ground": {
+    "id": "quality_v6_shared_ground",
+    "path": "world/reference-scene-v2/quality-v6/ground.png",
+    "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+    "width_px": 768,
+    "height_px": 1296,
+    "bytes": 531480
+  },
+  "atlases": [
+    {
+      "id": "parade_quality_v8_atlas",
+      "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+      "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+      "width_px": 1024,
+      "height_px": 1024,
+      "bytes": 1215028
+    }
+  ],
+  "objects": [
+    {
+      "id": "main_stage",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 7,
+        "y": 6,
+        "width": 242,
+        "height": 244
+      },
+      "x": 160,
+      "y": 37,
+      "width": 300,
+      "height": 336,
+      "depth_y": 360
+    },
+    {
+      "id": "north_white_food",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "x": 665,
+      "y": 31,
+      "width": 100,
+      "height": 120,
+      "depth_y": 150
+    },
+    {
+      "id": "west_white_merch",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 274,
+        "y": 16,
+        "width": 220,
+        "height": 224
+      },
+      "x": 160,
+      "y": 381,
+      "width": 132,
+      "height": 154,
+      "depth_y": 530
+    },
+    {
+      "id": "culture_park_plaque",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 781,
+        "y": 28,
+        "width": 230,
+        "height": 199
+      },
+      "x": 585,
+      "y": 319,
+      "width": 156,
+      "height": 96,
+      "depth_y": 411
+    },
+    {
+      "id": "cross_banner_east",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 579,
+        "y": 781,
+        "width": 122,
+        "height": 229
+      },
+      "x": 522,
+      "y": 141,
+      "width": 50,
+      "height": 134,
+      "depth_y": 271
+    },
+    {
+      "id": "meeting_pavilion",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "x": 256,
+      "y": 779,
+      "width": 236,
+      "height": 206,
+      "depth_y": 985
+    },
+    {
+      "id": "giveaway_pavilion",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "x": 440,
+      "y": 1044,
+      "width": 236,
+      "height": 206,
+      "depth_y": 1250
+    },
+    {
+      "id": "rooted_tree_01",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 146,
+      "y": -22,
+      "width": 166,
+      "height": 159,
+      "depth_y": 137
+    },
+    {
+      "id": "rooted_tree_02",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 328,
+      "y": -25,
+      "width": 166,
+      "height": 162,
+      "depth_y": 137
+    },
+    {
+      "id": "rooted_tree_03",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 558,
+      "y": -28,
+      "width": 166,
+      "height": 165,
+      "depth_y": 137
+    },
+    {
+      "id": "rooted_tree_04",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 2,
+      "y": 220,
+      "width": 166,
+      "height": 162,
+      "depth_y": 382
+    },
+    {
+      "id": "rooted_tree_05",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 634,
+      "y": 220,
+      "width": 134,
+      "height": 134,
+      "depth_y": 354
+    },
+    {
+      "id": "rooted_tree_06",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 640,
+      "y": 455,
+      "width": 128,
+      "height": 125,
+      "depth_y": 580
+    },
+    {
+      "id": "rooted_tree_07",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 5,
+      "y": 535,
+      "width": 166,
+      "height": 162,
+      "depth_y": 697
+    },
+    {
+      "id": "rooted_tree_08",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 40,
+      "y": 983,
+      "width": 166,
+      "height": 165,
+      "depth_y": 1148
+    },
+    {
+      "id": "rooted_tree_09",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "x": 594,
+      "y": 809,
+      "width": 166,
+      "height": 144,
+      "depth_y": 953
+    },
+    {
+      "id": "rooted_tree_10",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "x": 8,
+      "y": 1137,
+      "width": 166,
+      "height": 144,
+      "depth_y": 1281
+    },
+    {
+      "id": "rooted_tree_11",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 410,
+      "y": 455,
+      "width": 166,
+      "height": 162,
+      "depth_y": 617
+    },
+    {
+      "id": "food_counters",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 13,
+        "y": 805,
+        "width": 229,
+        "height": 182
+      },
+      "x": 568,
+      "y": 611,
+      "width": 190,
+      "height": 164,
+      "depth_y": 775
+    },
+    {
+      "id": "northern_hall",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "x": 12,
+      "y": -94,
+      "width": 248,
+      "height": 190,
+      "depth_y": 96
+    },
+    {
+      "id": "north_eastern_hall",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "x": 472,
+      "y": -94,
+      "width": 248,
+      "height": 190,
+      "depth_y": 96
+    },
+    {
+      "id": "merch_venue_hall",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "x": 8,
+      "y": 551,
+      "width": 212,
+      "height": 180,
+      "depth_y": 731
+    },
+    {
+      "id": "grove_north_west",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 8,
+      "y": -34,
+      "width": 184,
+      "height": 170,
+      "depth_y": 136
+    },
+    {
+      "id": "grove_north_gap",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 428,
+      "y": -30,
+      "width": 176,
+      "height": 166,
+      "depth_y": 136
+    },
+    {
+      "id": "grove_east_court",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 645,
+      "y": 74,
+      "width": 160,
+      "height": 158,
+      "depth_y": 232
+    },
+    {
+      "id": "grove_east_middle",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 649,
+      "y": 472,
+      "width": 152,
+      "height": 144,
+      "depth_y": 616
+    },
+    {
+      "id": "grove_east_connector",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 654,
+      "y": 678,
+      "width": 142,
+      "height": 146,
+      "depth_y": 824
+    },
+    {
+      "id": "grove_east_lower",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "x": 636,
+      "y": 868,
+      "width": 176,
+      "height": 164,
+      "depth_y": 1032
+    },
+    {
+      "id": "grove_east_exit",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": 643,
+      "y": 1070,
+      "width": 164,
+      "height": 154,
+      "depth_y": 1224
+    },
+    {
+      "id": "grove_west_upper",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": -50,
+      "y": 98,
+      "width": 174,
+      "height": 166,
+      "depth_y": 264
+    },
+    {
+      "id": "grove_west_middle",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "x": -40,
+      "y": 334,
+      "width": 184,
+      "height": 170,
+      "depth_y": 504
+    },
+    {
+      "id": "grove_west_lower",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": -55,
+      "y": 682,
+      "width": 182,
+      "height": 174,
+      "depth_y": 856
+    },
+    {
+      "id": "grove_west_bottom",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "x": -49,
+      "y": 804,
+      "width": 172,
+      "height": 164,
+      "depth_y": 968
+    },
+    {
+      "id": "grove_south_lawn",
+      "atlas_id": "parade_quality_v8_atlas",
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "x": 261,
+      "y": 1018,
+      "width": 190,
+      "height": 174,
+      "depth_y": 1192
+    }
+  ]
+}

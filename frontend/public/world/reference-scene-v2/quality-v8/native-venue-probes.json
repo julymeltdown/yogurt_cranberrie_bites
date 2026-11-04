@@ -1,0 +1,60 @@
+{
+  "status": "PASS_ACTUAL_LOWER_VENUE_PNG_COLORS",
+  "reason": "Prevents earlier native mask clipping from being hidden by new tree pixels in a broad image-vs-ground difference test.",
+  "probes": [
+    {
+      "era": "REVENGE",
+      "view": "WORLD",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 471,
+      "samples_with_max_channel_error_le40": 471,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. Near-opaque original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "REVENGE",
+      "view": "MAP",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 471,
+      "samples_with_max_channel_error_le40": 471,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. Near-opaque original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "PARADE",
+      "view": "WORLD",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 470,
+      "samples_with_max_channel_error_le40": 470,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. Near-opaque original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "PARADE",
+      "view": "MAP",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 470,
+      "samples_with_max_channel_error_le40": 470,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. Near-opaque original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "DANGER",
+      "view": "WORLD",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 451,
+      "samples_with_max_channel_error_le40": 451,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. Near-opaque original source alpha is preserved, never rewritten to255."
+    },
+    {
+      "era": "DANGER",
+      "view": "MAP",
+      "landmark": "giveaway_pavilion",
+      "near_opaque_flat_source_samples": 451,
+      "samples_with_max_channel_error_le40": 451,
+      "pass_fraction": 1.0,
+      "threshold": "Source3x3 alpha>=248 and RGB variation<=28; at least50 samples; >=90percent within40/channel of source color; expected differs from ground by >=80 summed RGB. Near-opaque original source alpha is preserved, never rewritten to255."
+    }
+  ]
+}
