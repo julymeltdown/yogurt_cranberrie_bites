@@ -79,11 +79,13 @@ impl PgPublicProfileRepository {
         }
         // Tombstone table before profile row matches the retained deletion saga's
         // insert→profile-update order. SHARE also fences direct tombstone inserts.
+        statement_budget(&mut tx, stop).await?;
         sqlx::query("lock table public.profile_user_deletion_tombstones in share mode")
             .execute(&mut *tx)
             .await
             .map_err(unavailable)?;
         remaining(stop)?;
+        statement_budget(&mut tx, stop).await?;
         let row=sqlx::query("select p.user_id,p.nickname,p.bio,statement_timestamp() as observed_at
             from public.profiles p where p.user_id=$1 and p.deleted_at is null
             and p.account_visibility='PUBLIC'
@@ -106,6 +108,7 @@ impl PgPublicProfileRepository {
         remaining(stop)?;
         // GID uses validated compact scope, UUID nonce and SHA-256 digest (187 bytes); never
         // interpolate request strings or a caller-supplied SQL identifier here.
+        statement_budget(&mut tx, stop).await?;
         sqlx::query(&format!("prepare transaction '{gid}'"))
             .execute(&mut *tx)
             .await
@@ -229,4 +232,17 @@ fn remaining(stop: Instant) -> Result<u128, ReadError> {
 
 fn completion_bytes(child: &str, secret: &str) -> Vec<u8> {
     format!("mcr public Profile completion v1|{child}|{secret}").into_bytes()
+}
+
+async fn statement_budget(
+    tx: &mut sqlx::Transaction<'_, sqlx::Postgres>,
+    stop: Instant,
+) -> Result<(), ReadError> {
+    sqlx::query("select set_config('statement_timeout',$1,true)")
+        .bind(remaining(stop)?.to_string())
+        .execute(&mut **tx)
+        .await
+        .map_err(unavailable)?;
+    remaining(stop)?;
+    Ok(())
 }
