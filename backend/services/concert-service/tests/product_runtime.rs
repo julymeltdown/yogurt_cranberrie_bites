@@ -6,6 +6,47 @@ use platform::grpc_auth::Workload;
 use uuid::Uuid;
 
 #[test]
+fn actual_source_bound_operator_candidate_parses_without_enabling_capabilities() {
+    use concert_service::bootstrap::{BootstrapFeatures, ProductReleaseBundle};
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .ancestors()
+        .nth(3)
+        .unwrap();
+    let bundle = root.join("backend/releases/operator-bundle/quality-v6");
+    let spatial = root.join("backend/releases/reference-scene-v2/quality-v6");
+    let avatar = root.join("contracts/fixtures/assets/selected-static/avatar-manifest.json");
+    let themes = [
+        bundle.join("theme-revenge.json"),
+        bundle.join("theme-parade.json"),
+        bundle.join("theme-danger.json"),
+    ];
+    let construct = |resources: &std::path::Path| {
+        ProductReleaseBundle::from_source_bound_files(
+            &bundle.join("bootstrap.json"),
+            &avatar,
+            &spatial.join("map-manifest.json"),
+            [&themes[0], &themes[1], &themes[2]],
+            BootstrapFeatures::default(),
+            resources,
+            &spatial.join("source-binding.json"),
+        )
+    };
+    let release = construct(&root.join("frontend/public")).unwrap();
+    let document: serde_json::Value =
+        serde_json::from_slice(release.release().bootstrap_json()).unwrap();
+    assert!(document["capabilities"]
+        .as_object()
+        .unwrap()
+        .values()
+        .all(|value| value["available"] == false));
+    assert_eq!(document["avatar_manifest"]["representation"], "whole_character");
+    assert_eq!(document["map_manifest"]["map_revision"], 4);
+    assert_eq!(document["theme_manifests"].as_array().unwrap().len(), 3);
+    // A valid metadata-only bundle cannot replace actual source-byte admission.
+    assert!(construct(&root.join("contracts/fixtures/assets")).is_err());
+}
+
+#[test]
 fn product_modes_require_explicit_supported_values_and_guarded_composition() {
     assert_eq!(
         ProductSettings::from_values(None, None, false).unwrap(),
