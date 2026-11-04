@@ -319,6 +319,15 @@ impl AvatarRepository for PgAvatarRepository {
         authority: &dyn AvatarAuthority,
     ) -> Result<AvatarSnapshot, AvatarError> {
         let op = mutation.operation();
+        // Presence retains SHARE locks through actual World disclosure. A
+        // read-only snapshot must coexist with those fences; UPDATE locks here
+        // needlessly serialize /me behind World. Both modes still hold every
+        // checked row through the transaction, and mutations keep UPDATE locks.
+        let lock = if op == AvatarOperation::Read {
+            "for share"
+        } else {
+            "for update"
+        };
         let check = || authorize(authority, key, op, digest);
         check()?;
         let fence = if op == AvatarOperation::Read {
@@ -350,9 +359,9 @@ impl AvatarRepository for PgAvatarRepository {
         } else {
             None
         };
-        let phase: Option<String> = sqlx::query_scalar(
-            "select phase from public.concert_events where event_id=$1 for update",
-        )
+        let phase: Option<String> = sqlx::query_scalar(&format!(
+            "select phase from public.concert_events where event_id=$1 {lock}"
+        ))
         .bind(event)
         .fetch_optional(&mut *tx)
         .await
@@ -368,17 +377,17 @@ impl AvatarRepository for PgAvatarRepository {
         if op != AvatarOperation::Read && !phase.permits_participant_writes() {
             return Err(AvatarError::ReadOnly);
         }
-        let state: Option<String> = sqlx::query_scalar("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 for update")
+        let state: Option<String> = sqlx::query_scalar(&format!("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 {lock}"))
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         check_effect(authority, key, op, digest, fence).await?;
         if state.as_deref() != Some("ACTIVE") {
             return Err(AvatarError::Denied);
         }
-        let row = sqlx::query("select revision,theme,low_power,reduced_motion,sound_enabled,created_at,updated_at from public.concert_participants where event_id=$1 and user_id=$2 for update")
+        let row = sqlx::query(&format!("select revision,theme,low_power,reduced_motion,sound_enabled,created_at,updated_at from public.concert_participants where event_id=$1 and user_id=$2 {lock}"))
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         check_effect(authority, key, op, digest, fence).await?;
         let mut participant = participant(row.ok_or(AvatarError::Missing)?, key)?;
-        let row = sqlx::query("select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2 for update")
+        let row = sqlx::query(&format!("select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2 {lock}"))
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         check_effect(authority, key, op, digest, fence).await?;
         let mut avatar = avatar(row.ok_or(AvatarError::Missing)?, key)?;
