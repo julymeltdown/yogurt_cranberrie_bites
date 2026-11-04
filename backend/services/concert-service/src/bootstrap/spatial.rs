@@ -59,6 +59,29 @@ struct ProposalGeometry {
     geometry: Value,
     geometry_hash: String,
     places: Value,
+    placements: Vec<SourcePlacement>,
+}
+#[derive(Deserialize)]
+struct SourcePlacement {
+    id: String,
+    footprint: Value,
+}
+#[derive(Deserialize)]
+struct SourceLayout {
+    geometry_hash: String,
+    placements: Vec<LayoutPlacement>,
+    frames: std::collections::BTreeMap<String, Value>,
+}
+#[derive(Deserialize)]
+struct LayoutPlacement {
+    id: String,
+    frame: String,
+    x: i64,
+    y: i64,
+    width: i64,
+    height: i64,
+    depth_y: i64,
+    footprint: Value,
 }
 
 #[derive(Clone, Debug)]
@@ -222,7 +245,7 @@ fn load(
             .collect::<Vec<_>>();
         atlas_hashes.sort();
         ensure(visual_sets.insert(atlas_hashes))?;
-        let budget = verify_scene(scene, root, &map_value, &tiled, &binding)?;
+        let budget = verify_scene(scene, root, &map_value, &tiled, &binding, &proposal)?;
         bytes = bytes
             .checked_add(budget.bytes)
             .ok_or(Error::ReleaseUnavailable)?;
@@ -249,6 +272,7 @@ fn verify_scene(
     map: &Value,
     tiled: &Value,
     binding: &Binding,
+    proposal: &ProposalGeometry,
 ) -> Result<SpatialSceneBudget, Error> {
     let mut paths = std::collections::BTreeSet::new();
     for pin in [
@@ -268,10 +292,20 @@ fn verify_scene(
             "path": scenery["ground"]["path"]
         }})],
     )?;
+    let mut layout = None;
     for pin in &scene.scene_sources {
         ensure(paths.insert(pin.path.clone()))?;
-        verify_file(root, pin)?;
+        let raw = verify_file(root, pin)?;
+        if pin.path.ends_with("/layout.json") {
+            ensure(layout.is_none())?;
+            layout = Some(serde_json::from_slice::<SourceLayout>(&raw).map_err(invalid)?);
+        }
     }
+    verify_layout(
+        layout.as_ref().ok_or(Error::ReleaseUnavailable)?,
+        proposal,
+        &scenery,
+    )?;
     let descriptors = std::iter::once(&scenery["ground"])
         .chain(
             scenery["atlases"]
@@ -317,6 +351,63 @@ fn verify_scene(
         pixels,
         within_budget: bytes <= SCENERY_BUDGET && pixels <= SCENERY_BUDGET,
     })
+}
+// Exact hashes alone cannot prevent a binding assembled from valid sources of
+// different generations. Tie the scenery's integer projection to its pinned
+// layout and that layout's collision footprints to the canonical proposal.
+fn verify_layout(
+    layout: &SourceLayout,
+    proposal: &ProposalGeometry,
+    scenery: &Value,
+) -> Result<(), Error> {
+    let objects = scenery["objects"]
+        .as_array()
+        .ok_or(Error::ReleaseUnavailable)?;
+    ensure(
+        layout.geometry_hash == proposal.geometry_hash
+            && !layout.placements.is_empty()
+            && layout.placements.len() == proposal.placements.len()
+            && objects.len() == layout.placements.len(),
+    )?;
+    let mut source_ids = std::collections::BTreeSet::new();
+    for source in &proposal.placements {
+        ensure(source_ids.insert(&source.id))?;
+    }
+    let mut ids = std::collections::BTreeSet::new();
+    let mut object_ids = std::collections::BTreeSet::new();
+    for object in objects {
+        ensure(object_ids.insert(object["id"].as_str().ok_or(Error::ReleaseUnavailable)?))?;
+    }
+    for placement in &layout.placements {
+        ensure(ids.insert(&placement.id))?;
+        let source = proposal
+            .placements
+            .iter()
+            .find(|p| p.id == placement.id)
+            .ok_or(Error::ReleaseUnavailable)?;
+        let object = objects
+            .iter()
+            .find(|o| o["id"] == placement.id)
+            .ok_or(Error::ReleaseUnavailable)?;
+        ensure(source.footprint == placement.footprint && source.footprint.is_array())?;
+        ensure(
+            object["frame"]
+                == *layout
+                    .frames
+                    .get(&placement.frame)
+                    .ok_or(Error::ReleaseUnavailable)?,
+        )?;
+        for (key, expected) in [
+            ("x", placement.x),
+            ("y", placement.y),
+            ("width", placement.width),
+            ("height", placement.height),
+            ("depth_y", placement.depth_y),
+        ] {
+            ensure(object[key].as_i64() == Some(expected))?;
+        }
+    }
+    Ok(())
 }
 /// Inspects real source/resource bytes and the owning canonical map domain.
 /// This type deliberately does not contain a ValidatedProductRelease.

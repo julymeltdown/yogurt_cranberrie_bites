@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "assignment_base": "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e",
+  "qualified_native_base": "21d0ac95d20641f99e57bb5c943327f365cbfb37",
+  "reconciled_base": "cf5f0e44ff1034c3dedd5c9234e7136d271e01a1",
+  "scope": {
+    "existing_hunks": [
+      "frontend/src/world/composition/index.ts: lifecycle/source/presentation/early withdrawal only",
+      "frontend/src/app/world-panels/index.tsx: mural subscription/provider only"
+    ],
+    "new_prefix": "frontend/src/world/mural-entry-lifecycle/",
+    "document": "docs/mcr/frontend/mural-entry-lifecycle.md",
+    "excluded": "runtime, MapScene, production loader, resolver, overview, ports, router, main, existing tests, contracts and generated outputs"
+  },
+  "checks": {
+    "affected_tests": {
+      "exit": 0,
+      "files": 16,
+      "tests": 385,
+      "cwd": "frontend"
+    },
+    "full_typecheck": {
+      "exit": 0
+    },
+    "scoped_oxlint": {
+      "exit": 0
+    },
+    "native": {
+      "exit": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "omitted_source": "closed",
+      "page_errors": []
+    },
+    "domain_generation": {
+      "exit": 0,
+      "operations": 108,
+      "independent_provenance_fix": "65f91166"
+    },
+    "source_hashes_match": true
+  },
+  "original_FE33": "SATISFIED under frozen frontend fixture criteria, unchanged from original module receipt",
+  "production_supplier": "UNAVAILABLE; not fabricated",
+  "real_IN04": "NOT_RUN",
+  "peer_master_pin": "4e9c57e3838a8f9b3de30e0962e4d2ff01133937",
+  "post_reconcile_native_source_pins_match": true
+}
