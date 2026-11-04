@@ -1,5 +1,6 @@
 //! Bounded latest-state queue. Sequence is assigned after filtering and coalescing.
 use super::simulation::MembershipPort;
+use super::motion_profile::{MotionAnchor, MotionCapture};
 use super::{
     interest::{project, ProjectedPlayer, ProjectionError, RecipientPolicy, RoomFrame},
     session::{RevokeReason, Session, SessionError},
@@ -89,6 +90,7 @@ struct Pending {
     tick: u64,
     ack: u64,
     since: u64,
+    motion: Option<MotionAnchor>,
 }
 pub struct Replication {
     session: Session,
@@ -103,6 +105,9 @@ pub struct Replication {
     tick: u64,
     ack: u64,
     last_delta: Option<u64>,
+    motion_enabled: bool,
+    motion_capture: Option<MotionCapture>,
+    delivered_motion: Option<MotionAnchor>,
 }
 impl Replication {
     pub fn new(
@@ -126,10 +131,19 @@ impl Replication {
             tick: 0,
             ack: 0,
             last_delta: None,
+            motion_enabled: false,
+            motion_capture: None,
+            delivered_motion: None,
         })
     }
     pub fn binding(&self) -> &super::simulation::Binding {
         self.session.binding()
+    }
+    pub(crate) fn enable_motion(&mut self) {
+        self.motion_enabled = true;
+    }
+    pub(crate) fn capture_motion(&mut self, capture: Option<MotionCapture>) {
+        self.motion_capture = capture;
     }
     pub fn deadline(&self) -> &super::session::AccessDeadline {
         self.session.deadline()
@@ -236,6 +250,18 @@ impl Replication {
         let ack = players[&self.binding().key.user_id.uuid()]
             .state
             .ack_input_seq;
+        let motion = if self.motion_enabled {
+            let capture = self.motion_capture.as_ref().filter(|c| {
+                c.binding == *self.binding() && c.anchor.server_tick == frame.tick
+                    && c.anchor.position.x == players[&self.binding().key.user_id.uuid()].state.position.x
+                    && c.anchor.position.y == players[&self.binding().key.user_id.uuid()].state.position.y
+            });
+            let Some(capture) = capture else {
+                self.require_resync("GAP");
+                return Err(StreamError::Baseline);
+            };
+            Some(capture.anchor.clone())
+        } else { None };
         if frame.tick < self.tick || ack < self.ack || (self.baseline.is_none() && ack != 0) {
             self.require_resync("GAP");
             return Err(StreamError::Baseline);
@@ -248,7 +274,7 @@ impl Replication {
             self.require_resync("BACKPRESSURE");
             return Err(StreamError::Backpressure);
         }
-        let wire: Value = if let Some(base) = &self.baseline {
+        let mut wire: Value = if let Some(base) = &self.baseline {
             let upserts: Vec<_> = players
                 .iter()
                 .filter(|(id, p)| base.get(id) != Some(p))
@@ -259,7 +285,7 @@ impl Replication {
                 .filter(|id| !players.contains_key(id))
                 .copied()
                 .collect();
-            if upserts.is_empty() && removes.is_empty() && ack == self.ack {
+            if upserts.is_empty() && removes.is_empty() && ack == self.ack && motion == self.delivered_motion {
                 self.pending = None;
                 return Ok(());
             }
@@ -282,6 +308,12 @@ impl Replication {
                 "accessExpiresAt":self.deadline().utc.to_rfc3339_opts(SecondsFormat::Millis,true),
                 "players":players.iter().map(|(id,p)|p.wire(*id)).collect::<Vec<_>>()})
         };
+        if let Some(anchor) = &motion {
+            wire["selfMotion"] = serde_json::to_value(anchor).expect("finite simulation anchor");
+            if self.baseline.is_none() {
+                wire["motionProfile"] = serde_json::to_value(&self.motion_capture.as_ref().expect("capture checked").profile).expect("validated profile");
+            }
+        }
         let bytes = serde_json::to_vec(&wire).expect("validated public projection");
         if bytes.len() > self.limits.frame_bytes
             || bytes.len() > self.limits.bytes
@@ -297,6 +329,7 @@ impl Replication {
             tick: frame.tick,
             ack,
             since,
+            motion,
         });
         Ok(())
     }
@@ -327,6 +360,7 @@ impl Replication {
         }
         self.tick = p.tick;
         self.ack = p.ack;
+        self.delivered_motion = p.motion;
         self.baseline = Some(p.players);
         self.last_delta = Some(now);
         Some(Delivery {

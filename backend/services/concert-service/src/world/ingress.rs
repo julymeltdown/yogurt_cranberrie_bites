@@ -103,6 +103,7 @@ pub struct ResyncIntent {
 #[derive(Clone, Debug)]
 pub enum ClientMessage {
     Authenticate(AdmissionIntent),
+    AuthenticateMotion(AdmissionIntent),
     Input(Input),
     Resync(ResyncIntent),
     SwitchRoom {
@@ -125,6 +126,8 @@ struct AdmissionWire {
     map_revision: i64,
     avatar_manifest_id: String,
     avatar_manifest_version: i64,
+    #[serde(default)]
+    motion_profile_version: Option<String>,
 }
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
@@ -171,6 +174,7 @@ fn uuid(s: &str) -> Result<Uuid, SafeClose> {
 impl AdmissionWire {
     fn intent(self) -> Result<AdmissionIntent, SafeClose> {
         if self.protocol_version != "1.0.0"
+            || self.motion_profile_version.as_deref().is_some_and(|v| v != super::motion_profile::VERSION)
             || !matches!(self.kind.as_str(), "authenticate" | "switchRoom")
             || self.ticket.len() != 43
             || !self
@@ -303,11 +307,16 @@ pub fn decode(bytes: &[u8]) -> Result<ClientMessage, SafeClose> {
         .and_then(Value::as_str)
         .ok_or(SafeClose::INVALID)?
     {
-        "authenticate" => Ok(ClientMessage::Authenticate(
-            serde_json::from_value::<AdmissionWire>(v)
-                .map_err(|_| SafeClose::INVALID)?
-                .intent()?,
-        )),
+        "authenticate" => {
+            // Preserve duplicate, size and unknown-field rejection before negotiation.
+            if v.get("motionProfileVersion").is_some_and(|v| v.as_str() != Some(super::motion_profile::VERSION)) {
+                return Err(SafeClose::INVALID);
+            }
+            let wire = serde_json::from_value::<AdmissionWire>(v).map_err(|_| SafeClose::INVALID)?;
+            let motion = wire.motion_profile_version.is_some();
+            let intent = wire.intent()?;
+            Ok(if motion { ClientMessage::AuthenticateMotion(intent) } else { ClientMessage::Authenticate(intent) })
+        },
         "input" => Ok(ClientMessage::Input(
             serde_json::from_value(v).map_err(|_| SafeClose::INVALID)?,
         )),
@@ -345,6 +354,7 @@ pub fn decode(bytes: &[u8]) -> Result<ClientMessage, SafeClose> {
                 map_revision: w.map_revision,
                 avatar_manifest_id: w.avatar_manifest_id,
                 avatar_manifest_version: w.avatar_manifest_version,
+                motion_profile_version: None,
             }
             .intent()?;
             Ok(ClientMessage::SwitchRoom {
@@ -603,9 +613,9 @@ impl ConnectionIngress {
         self.bytes.clear();
         self.fragments = 0;
         match (&self.active, &message) {
-            (None, ClientMessage::Authenticate(_)) if !self.auth_seen => self.auth_seen = true,
+            (None, ClientMessage::Authenticate(_) | ClientMessage::AuthenticateMotion(_)) if !self.auth_seen => self.auth_seen = true,
             (None, _) => return Err(SafeClose::AUTH_REQUIRED),
-            (Some(_), ClientMessage::Authenticate(_)) => return Err(SafeClose::INVALID),
+            (Some(_), ClientMessage::Authenticate(_) | ClientMessage::AuthenticateMotion(_)) => return Err(SafeClose::INVALID),
             (Some((stream, epoch)), ClientMessage::Input(input)) => {
                 if input.stream_id() != *stream || input.room_epoch() != *epoch {
                     return Err(SafeClose {
