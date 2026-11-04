@@ -120,6 +120,31 @@ This is a committed developer-owned handoff to Root153 for publication, with no
 king/SL correctness gate. Full live admission, latest shared chrome and owner209
 combined integration remain open. The persistent goal is not falsely completed.
 
+## Retro publication independently verified
+
+The qualified handoff `684cab41fedaad37f5ea8ed737774ac20a2c04b5` was published
+at `6a5ebca208cc9fa6f8fd847cc348b981d2e25a4a`. A fresh normal fetch and independent
+`git ls-remote origin refs/heads/master` both observed
+`6c9c6b5fc044c4647daa4581d8213eff2c529628`. All 43 scoped changed files match the validated
+handoff byte for byte and mode for mode at both publication and fetched master.
+The stylesheet remains SHA-256
+`14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8`.
+Publication and the Root-reported combined commit are ancestors of that remote.
+The [publication proof](../evidence/css-parity-feed/publication-retro.json)
+records every file hash, Git blob, mode and size. No qualified matrix was rerun.
+
+Root separately reports its flat-paper shell correction and 12-case combined
+proof published at `86c352f9c5331daf7d0b3fde73c7d5bdb7732c5f`, with direct saved-image
+inspection confirming the inherited edge is gone and composer focus is visible.
+That shared-owner finding is resolved according to its implementation owner;
+this chat verified publication ancestry, without independently rerunning or
+reviewing Root's implementation/validation. Historical captures above retain
+the old edge accurately. FE41's full matrix remains incomplete with its raw
+failures preserved; owner209's newer media fixture and owner213's newer chrome
+remain separate qualifications. The broader persistent goal is not falsely
+completed. This final proof is documentation-only; Root can publish it directly
+without an acknowledgment or another receipt cycle.
+
 ---
 
 # Historical Feed CSS foreground parity

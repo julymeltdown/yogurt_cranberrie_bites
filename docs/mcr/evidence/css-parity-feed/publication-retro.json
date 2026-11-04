@@ -1,0 +1,365 @@
+{
+  "status": "PASS",
+  "verifiedAtUTC": "2026-11-04T14:30:22.287474+00:00",
+  "qualifiedProductSource": "1a90734394540b2f4ba7303c02e973a730baa2c6",
+  "qualifiedHandoff": "684cab41fedaad37f5ea8ed737774ac20a2c04b5",
+  "handoffBase": "a552b54c6da2b4ed98a93984aeb19cb69a6d2be4",
+  "publishedCommit": "6a5ebca208cc9fa6f8fd847cc348b981d2e25a4a",
+  "publishedParent": "3ce5ceda75c0df8b372c51c3b9d3d53ad2717cba",
+  "rootReportedCombinedCommit": "86c352f9c5331daf7d0b3fde73c7d5bdb7732c5f",
+  "rootReportedMaster": "6c9c6b5fc044c4647daa4581d8213eff2c529628",
+  "fetchedMaster": "6c9c6b5fc044c4647daa4581d8213eff2c529628",
+  "lsRemoteMaster": "6c9c6b5fc044c4647daa4581d8213eff2c529628",
+  "fetchedEqualsIndependentRemote": true,
+  "publicationCombinedReportedAreAncestorsOfFetched": true,
+  "ownedPostimageCount": 43,
+  "allOwnedBytesAndModesExactAtPublicationAndFetchedMaster": true,
+  "cssSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+  "verification": "Normal Git fetch, independent ls-remote, ancestry, 43 byte/mode postimages; no browser/test matrix rerun. Root combined validation and image-inspection outcomes are implementation-owner reports, not independently rerun here. FE41 full matrix remains incomplete; newer209/213 remain separate.",
+  "files": [
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/native-retro.mjs",
+      "mode": "100644",
+      "gitBlob": "c28354add63fb4c764b146ac26d1f383b88bad15",
+      "bytes": 16594,
+      "sha256": "ea9a782a8f2d47cfd0c574f630cbfcefc3b5cf6f31a9a4757676b5972c74023e",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/outer-FEED-RETRO-NATIVE-BROWSER-202611041355Z.log",
+      "mode": "100644",
+      "gitBlob": "2795d1959fd4aaa9c0984443c847da92ca0393a8",
+      "bytes": 529,
+      "sha256": "4239d258736f8d36d420eac42b0a9a6d2e05eb2c32e28463035c366811df386f",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/preflight-retro.json",
+      "mode": "100644",
+      "gitBlob": "e36b1ba8a86e7d2cde3fcacdc06b5c870666de2a",
+      "bytes": 1404,
+      "sha256": "aea81062a74aa7997c8449bdf9e7182f97ba417d0a0ead39d009fcf75dbb7702",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/release-FEED-RETRO-NATIVE-BROWSER-202611041355Z.json",
+      "mode": "100644",
+      "gitBlob": "00bd985beab255dd29a29f92d5ec13a5d497987e",
+      "bytes": 626,
+      "sha256": "62c59971777942d5acee13db4407eae07c7b6958cc01f64f9025568328ce14fa",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro-comparison.html",
+      "mode": "100644",
+      "gitBlob": "9acd58d4983a14c8d82ebaa62270edfa1626ca29",
+      "bytes": 5128,
+      "sha256": "29a3e0d8542f0f117fd4c09391146ad1ffc8a825cae973346f4c7406148be95a",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro-context-input.jpg",
+      "mode": "100644",
+      "gitBlob": "a162c0db658ace9f69a92c2aafe6148811b4a0c0",
+      "bytes": 482737,
+      "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro-rejected-input.jpg",
+      "mode": "100644",
+      "gitBlob": "9651222876643af08e66cebf4a53f7b594668778",
+      "bytes": 66687,
+      "sha256": "5402ff40b98368eb7f17f05deef170b283a6f0d21f91f124953c8179a2a3cd7a",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1.log",
+      "mode": "100644",
+      "gitBlob": "d93fbb3c67b8c75e35dba76b89d78299d0326598",
+      "bytes": 46,
+      "sha256": "a0a25cafbd90d3c1576063b21ff6f62786d1f5c5a9d12bf993d709230580b9dd",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/after-default-shell-360.png",
+      "mode": "100644",
+      "gitBlob": "418dcbaada40415e80f02695b74d4a36f78955d0",
+      "bytes": 26786,
+      "sha256": "db2a2e2e9d6f6df3b12d10ff1a9d6100681ce2e965cb7042d74361ee88aada96",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/after-default-shell-390.png",
+      "mode": "100644",
+      "gitBlob": "aeadf00ac0c712ec8fd591a78bb65ebea34f48dd",
+      "bytes": 27286,
+      "sha256": "d1017dd39605bc5e2f8405f30f82ece7d413ed68d52f65f5e9567b25f5a878ce",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/after-default-shell-430.png",
+      "mode": "100644",
+      "gitBlob": "b728ff209eaa2db9aafb970bda48f03081701cd6",
+      "bytes": 27796,
+      "sha256": "5fe8e48710e5de8c753c921517de5cd1e8f0cf607532f86b4b54a5c15006b710",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/after-fixture-360.png",
+      "mode": "100644",
+      "gitBlob": "c39a70814857c48b69ebaa54183f48afe29cd2d8",
+      "bytes": 91122,
+      "sha256": "7952037bee7918664f4461b4879694c3d80abb54a4beed6764988740cbea825a",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/after-fixture-390.png",
+      "mode": "100644",
+      "gitBlob": "a39924a45a99e0c75861fcfc40a3157fd947628c",
+      "bytes": 91795,
+      "sha256": "60fbbd3b44852193b092b48c9aa987e173e91723edf62d1c71c74fefadca4624",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/after-fixture-430.png",
+      "mode": "100644",
+      "gitBlob": "bfe0e344e2d47ec6eb8d1c2ef848ebaac90f8d3c",
+      "bytes": 92361,
+      "sha256": "e58b30b71e89323f759f3133604fd6d0750c618b880adff31383f3f67626c6cb",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/before-default-shell-360.png",
+      "mode": "100644",
+      "gitBlob": "bddb9bda06e8a6d658667df6c157b52c37b7de7f",
+      "bytes": 29832,
+      "sha256": "4456b3e54c74630e873e279e44a854e76ec9f2b9ed38235de0fc84c793340e7d",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/before-default-shell-390.png",
+      "mode": "100644",
+      "gitBlob": "92059159a60401be9e16b541835ac7354d1a51f2",
+      "bytes": 30647,
+      "sha256": "89d03e4b4abb6b2fda2f724aa3ad31f8dc20e65582312c44db6c87b6eefd68b1",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/before-default-shell-430.png",
+      "mode": "100644",
+      "gitBlob": "2e4013c4948d72921e8ec618989814191fb21412",
+      "bytes": 31076,
+      "sha256": "a2872e1ae89a89667eb28a5667ff07407271e58932730664da578598212057fb",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/before-fixture-360.png",
+      "mode": "100644",
+      "gitBlob": "9cbf279cb14fb4b0522396fdca435df8d321a4e2",
+      "bytes": 98614,
+      "sha256": "aae915c056f47fd5a821bae30459eadfd937f1bd1c4ff9ad96358ee06dd9bb19",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/before-fixture-390.png",
+      "mode": "100644",
+      "gitBlob": "32cd83138da88b10acb64800fcce606fd24d3787",
+      "bytes": 110544,
+      "sha256": "d51ca9b8b2288b9b142f313581e7636dd2ddd03706d29e153a61559e01930259",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/before-fixture-430.png",
+      "mode": "100644",
+      "gitBlob": "5104078cf58fcc918811892a6ce8afe777f165a1",
+      "bytes": 128802,
+      "sha256": "b35150d75a0c66e44ddc2874504c08e9eae871dbf1a72a7f77329a77a7ce5925",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/focus-default-shell-390.png",
+      "mode": "100644",
+      "gitBlob": "11f436d2d227707230670bf3f6abff33206c537a",
+      "bytes": 27373,
+      "sha256": "44a907edfc0c13aee3570cd93d9568bba24a34def9b3341d9a59ce83e944f090",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/focus-fixture-390.png",
+      "mode": "100644",
+      "gitBlob": "e50b9aa1bfde2850f8107621ba5cf0dcccd548a3",
+      "bytes": 91809,
+      "sha256": "b16d08f61a28a40103c26d00e85c681314cb437d7cd474602551ddc98119605b",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/forced-focus-390.png",
+      "mode": "100644",
+      "gitBlob": "36fee56cfe8caa0506cab4f81a0359ea057e32cb",
+      "bytes": 82140,
+      "sha256": "ceba4334fa3de6fe0559d489b3df602490b72980de98ff1bfef0bfe4188edbc5",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/report.json",
+      "mode": "100644",
+      "gitBlob": "090b607243589a4b538a7c1d88868de589e5c389",
+      "bytes": 414037,
+      "sha256": "f6098b2d415f59d985588cd9fb71d895cb078a15cb2a160d5e4bc9d27791b8a9",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/short-default-shell-360.png",
+      "mode": "100644",
+      "gitBlob": "269285fce73710f165585ec7a5497979b42161e9",
+      "bytes": 22964,
+      "sha256": "d0ec80ab18ddc54526f46455240a034616409a807dd60604dcab0dc95e052367",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/short-default-shell-390.png",
+      "mode": "100644",
+      "gitBlob": "4988d55fbb6b660c6e74aabd51af037c0ca8b8f5",
+      "bytes": 23385,
+      "sha256": "785162d3c68a4b83ef815e9976adc73289361ba1c2c7e541964a7f3251aa57ff",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/short-default-shell-430.png",
+      "mode": "100644",
+      "gitBlob": "9291b1475f97001488fbeb86115df8a069a96b9a",
+      "bytes": 23734,
+      "sha256": "ca57350b761f2978a65204e2063a453ce87303a3a51fcd6151532d8290117be6",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/short-fixture-360.png",
+      "mode": "100644",
+      "gitBlob": "2d7a648aadff2f75adf9bd742c1720ba71add274",
+      "bytes": 89662,
+      "sha256": "64d6b30e11c68a6029d7dbf48d48ea8c10390d3c5e6b3fcd61893b603c012427",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/short-fixture-390.png",
+      "mode": "100644",
+      "gitBlob": "a182112408d4678f03aaa2784e250627633d387e",
+      "bytes": 90315,
+      "sha256": "ab258af9b05605016d6d01f900e79fbb18fbf30b4534d16dc9674f58fdfdc5ba",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/short-fixture-430.png",
+      "mode": "100644",
+      "gitBlob": "545d380da8ab917b7d5f4c789ab910fd73e68d80",
+      "bytes": 90973,
+      "sha256": "fc0f5810dd0f0a497a5af754252701d9e3446cd50fc97adbe0307b7197d25024",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/state-empty.png",
+      "mode": "100644",
+      "gitBlob": "d24e334ef9e11bcd8fd8c879c5dfd65e64bd6226",
+      "bytes": 21972,
+      "sha256": "7bd142edc1dd8a68f9a078517b7bf182ef36b525a979290df295c6dadd2449f4",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/state-error.png",
+      "mode": "100644",
+      "gitBlob": "8e8acadd7900a737a7f83b94236f490243c8e0b9",
+      "bytes": 21658,
+      "sha256": "62be3df2fcb5438983938124fb17241623b1b407c6a67e6645edc5e51580f9ca",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/state-pending.png",
+      "mode": "100644",
+      "gitBlob": "291b121be62f8d33336cb691fc02d31138240d1e",
+      "bytes": 16221,
+      "sha256": "ae17996b44a98635870511e39a0a41814f3942a05397995b9f1a24587bbb17df",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/state-readonly.png",
+      "mode": "100644",
+      "gitBlob": "42c845de8d2b4497839c0916dc1fb10ced7c00d1",
+      "bytes": 94118,
+      "sha256": "bba3611533fbfde03f84f499a24e4f64c65c3b4e9186353ef43a44efd87f8721",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/state-unavailable.png",
+      "mode": "100644",
+      "gitBlob": "f997f8221b011750dbc7435578073d687ac046cc",
+      "bytes": 14520,
+      "sha256": "1b37a621bfe7fb6a03d0d3c7bb2c8d4fbcfb5dbc04673dab1caf5f71e75ac215",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/thread-360.png",
+      "mode": "100644",
+      "gitBlob": "76d146712f4593a8d9bfa7d22ea579615bc171c8",
+      "bytes": 114440,
+      "sha256": "20d6d73e689a5a3b2feddb36fb3c8b05639ba0b4d1b3a1e401d1044fd4c6e5cd",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/thread-390.png",
+      "mode": "100644",
+      "gitBlob": "7ce62d2431996cc699107b357443979efae5ab39",
+      "bytes": 120421,
+      "sha256": "b120b9e79e3d7b12d8bc9d68e09bcbeca73d64c91f248e2e2fb92f3c41888605",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/retro1/thread-430.png",
+      "mode": "100644",
+      "gitBlob": "9a4338dda24e75394c99ea23f6351fb0d8f9b173",
+      "bytes": 121456,
+      "sha256": "d188b61534568547bd3896c51a51fcc64507b351e71df1049ce02a6b9c7d9c90",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/run-retro-slot.py",
+      "mode": "100644",
+      "gitBlob": "f628cbc33012afca440b8c00eff8cabd937467ea",
+      "bytes": 4236,
+      "sha256": "962f1c46643bb31251906f286576278ccb1f8f07a5cd649c421e1edb86e5f3df",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor-FEED-RETRO-NATIVE-BROWSER-202611041355Z.json",
+      "mode": "100644",
+      "gitBlob": "75329bac111d2d90aa247a01a7fc804ebbf9290d",
+      "bytes": 696,
+      "sha256": "b90dd834730e09013d81b66a58fc306d2567535fc452fb2b18201e3b53f32afb",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor-intrinsic.py",
+      "mode": "100644",
+      "gitBlob": "d7c795d6cc62a477201fbcd15d7aef55676e5c48",
+      "bytes": 5059,
+      "sha256": "16e3b36d4942be62ede0c81e6790f1d90844cd6c13b343cb606bb39e038e50a5",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "docs/mcr/frontend/css-parity-feed.md",
+      "mode": "100644",
+      "gitBlob": "6fbc7de86cfffe7c23276e7f66d10c17e85953ce",
+      "bytes": 47915,
+      "sha256": "bd7504349466a0d1b8d8cc51c5b7b4a4e25814da2fc65aff5858459b40c2e673",
+      "sourcePublicationFetchedExact": true
+    },
+    {
+      "path": "frontend/src/features/event-feed/feed.css",
+      "mode": "100644",
+      "gitBlob": "324dddeca40a53bea347bffe30ba9d81c1d6cd16",
+      "bytes": 11211,
+      "sha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+      "sourcePublicationFetchedExact": true
+    }
+  ]
+}
