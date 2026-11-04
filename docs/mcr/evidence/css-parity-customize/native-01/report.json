@@ -1,0 +1,44 @@
+{
+  "job": "CSS-CUSTOMIZE-FOREGROUND-FIRST-202611041153Z",
+  "baseline": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "candidate": "43aec85986db3afe5256de39da19bf64d4fd8d5f",
+  "qualification": "MOCK_READY actual default router/components/selected-source pixels; synthetic HTTP/Auth/C05, no physical device/live backend or full visual acceptance",
+  "reference": {
+    "originalPath": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "panel": {
+      "x": 1034,
+      "y": 0,
+      "width": 246,
+      "height": 440
+    }
+  },
+  "sources": {
+    "frontend/src/features/avatar/whole-character/whole-character.css": {
+      "baseline": "ded58eb5d0666c7e5fbd92384d74a15cc0739a4b3860081b5fceb898ff343a96",
+      "candidate": "7a1f0361d5ec394557ce88bb91dad7adad1a65e704363d807ff77f01d83ce832"
+    },
+    "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261"
+  },
+  "cases": [],
+  "errors": [],
+  "caps": {
+    "temp": 104857600,
+    "durable": 20971520,
+    "whole": 146800640
+  },
+  "peaks": {
+    "temp": 0,
+    "durable": 0,
+    "whole": 0
+  },
+  "startedAt": "2026-11-04T11:53:54.557Z",
+  "result": "FAIL",
+  "failure": "TypeError: Cannot read properties of undefined (reading 'launch')",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "tempRemoved": true
+  },
+  "finishedAt": "2026-11-04T11:53:54.559Z"
+}

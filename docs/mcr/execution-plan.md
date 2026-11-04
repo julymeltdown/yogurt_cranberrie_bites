@@ -12,7 +12,7 @@ unreconciled, and 4 IN gates (IN02–IN05) remain open. IN01 has an owner-comple
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
-Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. The frontend10:50Z rollup adds no unique original closure; FE40 remains counted once. Backend original-task dispositions retain the latest complete09:52Z census pending its next ordinary digest. Subsequent owner updates report qualified combined startup and inbox/Post support, while Gateway correction, public producer/IN03, reference qualification and disk-capacity work remain open. The wrong-recipient Title/Focus retirement remains an owner-managed custody exception, with no king approval gate. BackendSL's08:52Z receipt explicitly records IN01 ACCEPTED after the full original current-cohort live run, publication and independent owner readback; the assigned goal is actually COMPLETE. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
+Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. The frontend 11:48 UTC hourly rollup adds no unique original closure; FE40 remains counted once. The backend 11:59 UTC hourly report also asserts no new original-task closure. QA05 retains its independent realtime failure suite; QA08 retains the original 200-socket/four-room, mobile/network/recovery qualification. Ordinary bounded local preparation for that already-required scope needs no new approval solely for the count. IN01 remains ACCEPTED from the responsible owner; natural-expiry observation is informational, with no added 900-second requirement. Full reference fidelity and IN02–IN05 remain open.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
@@ -30,26 +30,23 @@ digest and main updates the central register in batches. Escalate immediately
 only for an unresolved cross-lane conflict, genuinely unattended critical work
 or a necessary human decision. Routine receipts do not require replies.
 
-The current09:52Z portfolio records no additional unique original-task closure.
-FE40's client completion is already in the39 outcomes; its final publication and
-owner goal closure update that row rather than incrementing the total. C07's
-published source/fixture leaf does not close whole C07 or live IN03. Full CF02
-and CF03 qualification remains failed, with fixes/requalification owned by their
-developers. Original IN02–IN05, device/multiuser and reference acceptance remain open.
+The frontend 11:48 UTC and backend 11:59 UTC hourly reports add no unique
+original-task closure. The current portfolio records bounded native/source
+progress without claiming live-product or full visual acceptance. FE40 is counted
+once. C07 and QA10 remain unreconciled; IN02–IN05 remain open. Use the linked
+current portfolio for major outcomes, owners and remaining boundaries.
 
-Nine foreground CSS workers hand off directly to Root153 under the human's
-published ownership correction. Existing feature/art owners handle actual Map
-binding and links, approved Customize options and Feed media gaps. The recent
-50-chat inventory shows5 active coordinators and11 active developer/art/QA chats;
-activity is not source-writing or completed-goal evidence. Main tracks only major
-portfolio outcomes and publication metadata. Backend SL owns the output queue;
-required UI parity and original integration work receive fair bounded rounds.
+Nine foreground CSS workers hand off directly to Root153. Existing feature/art
+owners handle Map reference convergence, Customize options and Feed media gaps.
+Historical chat inventories are dated samples, not current writer counts.
+Backend SL schedules the existing output queue; required UI parity and original
+integration work receive fair bounded rounds without a king review stage.
 
-Owner-led cleanup preserved histories/proofs and briefly restored16.1–17GiB,
-but the latest hourly report is again below the16GiB new-start gate. Existing
-owners are reclaiming only safely preserved completed worktrees/closed outputs.
-No active/frozen/shared target/original-source deletion or threshold reduction is
-authorized. Source work continues independently of heavy output allocations.
+Owner-led cleanup reportedly restored about 20 GiB and bounded work resumed.
+Existing 16 GiB start / 8 GiB running floors and accepted workload limits remain.
+No all-cleanup-complete barrier or new permanent headroom floor is added. The
+Title/Focus custody preservation gap remains explicit; Root153's affected
+retirement-dispatch route is stopped while unrelated authorized work continues.
 
 Production composition is not a blanket single-developer reservation. Backend SL
 and the implementation owner may transfer disjoint provider/integration modules
@@ -60,7 +57,7 @@ The latest foreground direction authorizes isolated CSS work on nine screens,
 excluding World. Character artwork and separately assigned backgrounds retain
 their existing owners. Full ten-screen reference parity remains open. The Wall
 reference's erase/fill/committed-undo behavior has one developer-owned proposal
-in preparation at `product-decisions/wall-reference-tools.md`; proposal work does
+published at `product-decisions/wall-reference-tools.md` and awaiting the human choice; proposal work does
 not authorize application or contract changes. Other delivery continues.
 
 A king or SL receiving a technical review request must decline: "I don't perform

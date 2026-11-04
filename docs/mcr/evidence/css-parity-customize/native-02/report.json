@@ -1,0 +1,1573 @@
+{
+  "job": "CSS-CUSTOMIZE-FOREGROUND-FIRST-202611041153Z",
+  "baseline": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "candidate": "43aec85986db3afe5256de39da19bf64d4fd8d5f",
+  "qualification": "MOCK_READY actual default router/components/selected-source pixels; synthetic HTTP/Auth/C05, no physical device/live backend or full visual acceptance",
+  "reference": {
+    "originalPath": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "panel": {
+      "x": 1034,
+      "y": 0,
+      "width": 246,
+      "height": 440
+    }
+  },
+  "sources": {
+    "frontend/src/features/avatar/whole-character/whole-character.css": {
+      "baseline": "ded58eb5d0666c7e5fbd92384d74a15cc0739a4b3860081b5fceb898ff343a96",
+      "candidate": "7a1f0361d5ec394557ce88bb91dad7adad1a65e704363d807ff77f01d83ce832"
+    },
+    "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+    "driver": "7786149330780fc4aefd43ef37dcbb7fd65366c703c95ea2fa157576e0cf5d2d"
+  },
+  "cases": [
+    {
+      "mode": "baseline",
+      "width": 390,
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "chars": [
+          {
+            "rect": {
+              "x": 67,
+              "y": 102,
+              "width": 256,
+              "height": 256
+            },
+            "size": [
+              256,
+              256
+            ],
+            "rgba": "f3c4a50b5b594db1afdd674a57e3d6085a3776bf68f4f53c5e2ff94bd20bbcf0"
+          },
+          {
+            "rect": {
+              "x": 76.65625,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 162.984375,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+          },
+          {
+            "rect": {
+              "x": 249.328125,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Previous characters",
+            "rect": {
+              "x": 20,
+              "y": 443.5,
+              "width": 44,
+              "height": 44
+            },
+            "font": "700 28px / 33.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "true"
+          },
+          {
+            "label": "Choose Black hair / red tie",
+            "rect": {
+              "x": 67,
+              "y": 426.5,
+              "width": 83.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Pale hair / parade jacket",
+            "rect": {
+              "x": 153.328125,
+              "y": 426.5,
+              "width": 83.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Red hair / goggles",
+            "rect": {
+              "x": 239.65625,
+              "y": 426.5,
+              "width": 83.34375,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Next characters",
+            "rect": {
+              "x": 326,
+              "y": 443.5,
+              "width": 44,
+              "height": 44
+            },
+            "font": "700 28px / 33.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "false"
+          },
+          {
+            "label": "Random character",
+            "rect": {
+              "x": 20,
+              "y": 515.5,
+              "width": 113.328125,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Reset draft",
+            "rect": {
+              "x": 138.328125,
+              "y": 515.5,
+              "width": 113.328125,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Save character",
+            "rect": {
+              "x": 256.65625,
+              "y": 515.5,
+              "width": 113.34375,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": true,
+            "ariaDisabled": null
+          }
+        ],
+        "heading": {
+          "x": 20,
+          "y": 397,
+          "width": 350,
+          "height": 25.5
+        },
+        "preview": {
+          "x": 20,
+          "y": 68,
+          "width": 350,
+          "height": 324
+        },
+        "actions": {
+          "x": 20,
+          "y": 515.5,
+          "width": 350,
+          "height": 44
+        },
+        "state": {
+          "path": "/me/avatar",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 71.92000000000002,
+              "scrollY": 105,
+              "width": 378,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "screenshot": {
+        "file": "baseline-390.png",
+        "bytes": 47688,
+        "sha256": "b4f5e1744fe635ac6c21cdcb23a7f7ad50d2fc698309110dde30bf49f65f6ec1"
+      },
+      "result": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 360,
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "chars": [
+          {
+            "rect": {
+              "x": 52,
+              "y": 102,
+              "width": 256,
+              "height": 256
+            },
+            "size": [
+              256,
+              256
+            ],
+            "rgba": "f3c4a50b5b594db1afdd674a57e3d6085a3776bf68f4f53c5e2ff94bd20bbcf0"
+          },
+          {
+            "rect": {
+              "x": 71.65625,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 147.984375,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+          },
+          {
+            "rect": {
+              "x": 224.328125,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Previous characters",
+            "rect": {
+              "x": 20,
+              "y": 443.5,
+              "width": 44,
+              "height": 44
+            },
+            "font": "700 28px / 33.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "true"
+          },
+          {
+            "label": "Choose Black hair / red tie",
+            "rect": {
+              "x": 67,
+              "y": 426.5,
+              "width": 73.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Pale hair / parade jacket",
+            "rect": {
+              "x": 143.328125,
+              "y": 426.5,
+              "width": 73.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Red hair / goggles",
+            "rect": {
+              "x": 219.65625,
+              "y": 426.5,
+              "width": 73.34375,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Next characters",
+            "rect": {
+              "x": 296,
+              "y": 443.5,
+              "width": 44,
+              "height": 44
+            },
+            "font": "700 28px / 33.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "false"
+          },
+          {
+            "label": "Random character",
+            "rect": {
+              "x": 20,
+              "y": 515.5,
+              "width": 103.328125,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Reset draft",
+            "rect": {
+              "x": 128.328125,
+              "y": 515.5,
+              "width": 103.328125,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Save character",
+            "rect": {
+              "x": 236.65625,
+              "y": 515.5,
+              "width": 103.34375,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": true,
+            "ariaDisabled": null
+          }
+        ],
+        "heading": {
+          "x": 20,
+          "y": 397,
+          "width": 320,
+          "height": 25.5
+        },
+        "preview": {
+          "x": 20,
+          "y": 68,
+          "width": 320,
+          "height": 324
+        },
+        "actions": {
+          "x": 20,
+          "y": 515.5,
+          "width": 320,
+          "height": 44
+        },
+        "state": {
+          "path": "/me/avatar",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 82.72000000000003,
+              "scrollY": 149,
+              "width": 348,
+              "height": 747
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "screenshot": {
+        "file": "baseline-360.png",
+        "bytes": 45959,
+        "sha256": "3372f6130feea5634243182ff6c25bfbfa599216aa415af9df5962dff04556cc"
+      },
+      "result": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "chars": [
+          {
+            "rect": {
+              "x": 87,
+              "y": 102,
+              "width": 256,
+              "height": 256
+            },
+            "size": [
+              256,
+              256
+            ],
+            "rgba": "f3c4a50b5b594db1afdd674a57e3d6085a3776bf68f4f53c5e2ff94bd20bbcf0"
+          },
+          {
+            "rect": {
+              "x": 83.328125,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 182.984375,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+          },
+          {
+            "rect": {
+              "x": 282.65625,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Previous characters",
+            "rect": {
+              "x": 20,
+              "y": 443.5,
+              "width": 44,
+              "height": 44
+            },
+            "font": "700 28px / 33.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "true"
+          },
+          {
+            "label": "Choose Black hair / red tie",
+            "rect": {
+              "x": 67,
+              "y": 426.5,
+              "width": 96.65625,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Pale hair / parade jacket",
+            "rect": {
+              "x": 166.65625,
+              "y": 426.5,
+              "width": 96.671875,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Red hair / goggles",
+            "rect": {
+              "x": 266.328125,
+              "y": 426.5,
+              "width": 96.65625,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Next characters",
+            "rect": {
+              "x": 366,
+              "y": 443.5,
+              "width": 44,
+              "height": 44
+            },
+            "font": "700 28px / 33.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "false"
+          },
+          {
+            "label": "Random character",
+            "rect": {
+              "x": 20,
+              "y": 515.5,
+              "width": 126.65625,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Reset draft",
+            "rect": {
+              "x": 151.65625,
+              "y": 515.5,
+              "width": 126.671875,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Save character",
+            "rect": {
+              "x": 283.328125,
+              "y": 515.5,
+              "width": 126.65625,
+              "height": 44
+            },
+            "font": "800 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": true,
+            "ariaDisabled": null
+          }
+        ],
+        "heading": {
+          "x": 20,
+          "y": 397,
+          "width": 390,
+          "height": 25.5
+        },
+        "preview": {
+          "x": 20,
+          "y": 68,
+          "width": 390,
+          "height": 324
+        },
+        "actions": {
+          "x": 20,
+          "y": 515.5,
+          "width": 390,
+          "height": 44
+        },
+        "state": {
+          "path": "/me/avatar",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 57.51999999999998,
+              "scrollY": 17,
+              "width": 418,
+              "height": 879
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "screenshot": {
+        "file": "baseline-430.png",
+        "bytes": 50134,
+        "sha256": "06df2b6918e86c43c0006650dee4210ccb4bd7837e9604294518fa980c15279e"
+      },
+      "result": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "chars": [
+          {
+            "rect": {
+              "x": 67,
+              "y": 102,
+              "width": 256,
+              "height": 256
+            },
+            "size": [
+              256,
+              256
+            ],
+            "rgba": "f3c4a50b5b594db1afdd674a57e3d6085a3776bf68f4f53c5e2ff94bd20bbcf0"
+          },
+          {
+            "rect": {
+              "x": 76.65625,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 162.984375,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+          },
+          {
+            "rect": {
+              "x": 249.328125,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Previous characters",
+            "rect": {
+              "x": 20,
+              "y": 426.5,
+              "width": 44,
+              "height": 78
+            },
+            "font": "700 28px / 28px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "true"
+          },
+          {
+            "label": "Choose Black hair / red tie",
+            "rect": {
+              "x": 67,
+              "y": 426.5,
+              "width": 83.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Pale hair / parade jacket",
+            "rect": {
+              "x": 153.328125,
+              "y": 426.5,
+              "width": 83.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Red hair / goggles",
+            "rect": {
+              "x": 239.65625,
+              "y": 426.5,
+              "width": 83.34375,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Next characters",
+            "rect": {
+              "x": 326,
+              "y": 426.5,
+              "width": 44,
+              "height": 78
+            },
+            "font": "700 28px / 28px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "false"
+          },
+          {
+            "label": "Random character",
+            "rect": {
+              "x": 20,
+              "y": 515.5,
+              "width": 113.328125,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Reset draft",
+            "rect": {
+              "x": 138.328125,
+              "y": 515.5,
+              "width": 113.328125,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Save character",
+            "rect": {
+              "x": 256.65625,
+              "y": 515.5,
+              "width": 113.34375,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": true,
+            "ariaDisabled": null
+          }
+        ],
+        "heading": {
+          "x": 20,
+          "y": 397,
+          "width": 350,
+          "height": 25.5
+        },
+        "preview": {
+          "x": 20,
+          "y": 68,
+          "width": 350,
+          "height": 324
+        },
+        "actions": {
+          "x": 20,
+          "y": 515.5,
+          "width": 350,
+          "height": 44
+        },
+        "state": {
+          "path": "/me/avatar",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 71.92000000000002,
+              "scrollY": 105,
+              "width": 378,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "screenshot": {
+        "file": "candidate-390.png",
+        "bytes": 47569,
+        "sha256": "b98fc7ca57122f833bf6ec5d11ad24ed141c80c9441abf7567915764eac6dcde"
+      },
+      "characterPixelsAndGeometryPreserved": true,
+      "focus": {
+        "style": "solid",
+        "width": "3px",
+        "offset": "2px"
+      },
+      "focusScreenshot": {
+        "file": "focus-390.png",
+        "bytes": 47814,
+        "sha256": "d49ae708411fe7efde6a1dad003ab42a0a5f0fb2d64d61757a2bcda54a353b30"
+      },
+      "forcedFocus": {
+        "style": "solid",
+        "width": "3px",
+        "active": true
+      },
+      "forcedScreenshot": {
+        "file": "forced-focus-390.png",
+        "bytes": 37208,
+        "sha256": "10dfcc0999d68b4e7b8c0eb7cebefb4e05cb71fdc55b61519c44c9dc6b96b39b"
+      },
+      "interactions": {
+        "pagingKeyboard": true,
+        "choose": true,
+        "resetDraftOnly": true,
+        "randomDraftOnly": true,
+        "explicitRevisionSave": true
+      },
+      "deniedScreenshot": {
+        "file": "save-denied-390.png",
+        "bytes": 53147,
+        "sha256": "72cc03b9db6a532216e4bc6a3dbb53c3f233ca24df6012cab51ffbcfb37807e1"
+      },
+      "unavailableScreenshot": {
+        "file": "load-denied-390.png",
+        "bytes": 33934,
+        "sha256": "7661f9c5d9041f52ed6be3634b343d65ffc1bca2270bd9597a8f037f5ad7fc5e"
+      },
+      "result": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "chars": [
+          {
+            "rect": {
+              "x": 52,
+              "y": 102,
+              "width": 256,
+              "height": 256
+            },
+            "size": [
+              256,
+              256
+            ],
+            "rgba": "f3c4a50b5b594db1afdd674a57e3d6085a3776bf68f4f53c5e2ff94bd20bbcf0"
+          },
+          {
+            "rect": {
+              "x": 71.65625,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 147.984375,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+          },
+          {
+            "rect": {
+              "x": 224.328125,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Previous characters",
+            "rect": {
+              "x": 20,
+              "y": 426.5,
+              "width": 44,
+              "height": 78
+            },
+            "font": "700 28px / 28px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "true"
+          },
+          {
+            "label": "Choose Black hair / red tie",
+            "rect": {
+              "x": 67,
+              "y": 426.5,
+              "width": 73.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Pale hair / parade jacket",
+            "rect": {
+              "x": 143.328125,
+              "y": 426.5,
+              "width": 73.328125,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Red hair / goggles",
+            "rect": {
+              "x": 219.65625,
+              "y": 426.5,
+              "width": 73.34375,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Next characters",
+            "rect": {
+              "x": 296,
+              "y": 426.5,
+              "width": 44,
+              "height": 78
+            },
+            "font": "700 28px / 28px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "false"
+          },
+          {
+            "label": "Random character",
+            "rect": {
+              "x": 20,
+              "y": 515.5,
+              "width": 103.328125,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Reset draft",
+            "rect": {
+              "x": 128.328125,
+              "y": 515.5,
+              "width": 103.328125,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Save character",
+            "rect": {
+              "x": 236.65625,
+              "y": 515.5,
+              "width": 103.34375,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": true,
+            "ariaDisabled": null
+          }
+        ],
+        "heading": {
+          "x": 20,
+          "y": 397,
+          "width": 320,
+          "height": 25.5
+        },
+        "preview": {
+          "x": 20,
+          "y": 68,
+          "width": 320,
+          "height": 324
+        },
+        "actions": {
+          "x": 20,
+          "y": 515.5,
+          "width": 320,
+          "height": 44
+        },
+        "state": {
+          "path": "/me/avatar",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 82.72000000000003,
+              "scrollY": 149,
+              "width": 348,
+              "height": 747
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "screenshot": {
+        "file": "candidate-360.png",
+        "bytes": 45793,
+        "sha256": "3c45df38cb7e1dfe1fc767c0a9deff7507e63f306030532815167a062d0ca664"
+      },
+      "characterPixelsAndGeometryPreserved": true,
+      "focus": {
+        "style": "solid",
+        "width": "3px",
+        "offset": "2px"
+      },
+      "interactions": {
+        "pagingKeyboard": true,
+        "choose": true,
+        "resetDraftOnly": true,
+        "randomDraftOnly": true,
+        "explicitRevisionSave": true
+      },
+      "result": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "errors": [],
+      "metrics": {
+        "overflow": false,
+        "chars": [
+          {
+            "rect": {
+              "x": 87,
+              "y": 102,
+              "width": 256,
+              "height": 256
+            },
+            "size": [
+              256,
+              256
+            ],
+            "rgba": "f3c4a50b5b594db1afdd674a57e3d6085a3776bf68f4f53c5e2ff94bd20bbcf0"
+          },
+          {
+            "rect": {
+              "x": 83.328125,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 182.984375,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+          },
+          {
+            "rect": {
+              "x": 282.65625,
+              "y": 433.5,
+              "width": 64,
+              "height": 64
+            },
+            "size": [
+              64,
+              64
+            ],
+            "rgba": "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+          }
+        ],
+        "controls": [
+          {
+            "label": "Previous characters",
+            "rect": {
+              "x": 20,
+              "y": 426.5,
+              "width": 44,
+              "height": 78
+            },
+            "font": "700 28px / 28px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "true"
+          },
+          {
+            "label": "Choose Black hair / red tie",
+            "rect": {
+              "x": 67,
+              "y": 426.5,
+              "width": 96.65625,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Pale hair / parade jacket",
+            "rect": {
+              "x": 166.65625,
+              "y": 426.5,
+              "width": 96.671875,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Choose Red hair / goggles",
+            "rect": {
+              "x": 266.328125,
+              "y": 426.5,
+              "width": 96.65625,
+              "height": 78
+            },
+            "font": "700 13px / 15.6px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Next characters",
+            "rect": {
+              "x": 366,
+              "y": 426.5,
+              "width": 44,
+              "height": 78
+            },
+            "font": "700 28px / 28px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": "false"
+          },
+          {
+            "label": "Random character",
+            "rect": {
+              "x": 20,
+              "y": 515.5,
+              "width": 126.65625,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Reset draft",
+            "rect": {
+              "x": 151.65625,
+              "y": 515.5,
+              "width": 126.671875,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": false,
+            "ariaDisabled": null
+          },
+          {
+            "label": "Save character",
+            "rect": {
+              "x": 283.328125,
+              "y": 515.5,
+              "width": 126.65625,
+              "height": 44
+            },
+            "font": "800 14px / 16.8px \"Arial Narrow\", Arial, sans-serif",
+            "disabled": true,
+            "ariaDisabled": null
+          }
+        ],
+        "heading": {
+          "x": 20,
+          "y": 397,
+          "width": 390,
+          "height": 25.5
+        },
+        "preview": {
+          "x": 20,
+          "y": 68,
+          "width": 390,
+          "height": 324
+        },
+        "actions": {
+          "x": 20,
+          "y": 515.5,
+          "width": 390,
+          "height": 44
+        },
+        "state": {
+          "path": "/me/avatar",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 57.51999999999998,
+              "scrollY": 17,
+              "width": 418,
+              "height": 879
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "screenshot": {
+        "file": "candidate-430.png",
+        "bytes": 50299,
+        "sha256": "73e35c9be07407f99a5f5ca6f087450583fb2a752b239648386539191fcdd4b1"
+      },
+      "characterPixelsAndGeometryPreserved": true,
+      "focus": {
+        "style": "solid",
+        "width": "3px",
+        "offset": "2px"
+      },
+      "interactions": {
+        "pagingKeyboard": true,
+        "choose": true,
+        "resetDraftOnly": true,
+        "randomDraftOnly": true,
+        "explicitRevisionSave": true
+      },
+      "result": "PASS"
+    }
+  ],
+  "errors": [],
+  "caps": {
+    "temp": 104857600,
+    "durable": 20971520,
+    "whole": 146800640
+  },
+  "peaks": {
+    "temp": 29662762,
+    "durable": 496250,
+    "whole": 30159012
+  },
+  "startedAt": "2026-11-04T11:54:28.200Z",
+  "browser": "156.0.8078.80",
+  "comparison": {
+    "file": "comparison-390.png",
+    "bytes": 439418,
+    "sha256": "c9c91c48bf4d854a49649636baa02f6dd4ece2570a6cb8dea492bdf3479da42c"
+  },
+  "result": "PASS",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "tempRemoved": true
+  },
+  "finishedAt": "2026-11-04T11:54:46.725Z"
+}

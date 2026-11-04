@@ -1,0 +1,14 @@
+{
+  "job": "CSS-CUSTOMIZE-FOREGROUND-FIRST-202611041153Z",
+  "fullReleaseAt": "2026-11-04T11:55:35.859717+00:00",
+  "aliveOwnedProcesses": [],
+  "port5299Listeners": "",
+  "reuseAddressBindFree": true,
+  "rawBindDiagnostic": "First release raw bind got EADDRINUSE; no LISTEN owner, SO_REUSEADDR bind succeeds after server close (socket reuse timing). Initial failed audit preserved in transcript.",
+  "ownLinkAbsent": true,
+  "allPrivateTempAbsent": true,
+  "pngCount": 11,
+  "durableBytes": 1004243,
+  "freeBytes": 19836866560,
+  "nativeResult": "PASS"
+}

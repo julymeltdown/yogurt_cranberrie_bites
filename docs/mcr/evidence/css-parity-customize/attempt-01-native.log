@@ -1,0 +1,8 @@
+file:///Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/native.mjs:71
+try{browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version();let url=await start('baseline');for(const width of [390,360,430])await capture(url,width);await stop();url=await start('candidate');for(const width of [390,360,430])await capture(url,width);await stop()
+                           ^
+
+TypeError: Cannot read properties of undefined (reading 'launch')
+    at file:///Users/lhs/.codex/worktrees/mcr-css-customize/mcr/docs/mcr/evidence/css-parity-customize/native.mjs:71:28
+
+Node.js v24.22.2
