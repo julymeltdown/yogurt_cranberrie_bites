@@ -6,7 +6,7 @@ import { Contracts, loadContracts, hash, parseConfig } from '../real/mural-helpe
 import type { Snapshot } from '../real/mural-helpers.ts'
 import { qualifyContracts, loadWallContracts, bindAction, bindTools, connectedRegion, expectedEffect, recover, requireInputs } from './helpers.ts'
 import type { Command, OwnAction, Tools } from './helpers.ts'
-import { loadRuntimeAdapter } from './runtime.ts'
+import { loadRuntimeAdapter, qualifiedPhaserModuleUrl } from './runtime.ts'
 
 const contracts = await loadWallContracts(), id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`
 const config = parseConfig({ version: 1, isolated: true, allowDestructiveFixtureEndState: true, origin: 'http://127.0.0.1:4000',
@@ -77,6 +77,23 @@ assert.equal((await recover(reader, command)).state, 'UNKNOWN'); cases++
 await run(receipt); responses.getOwnConcertMuralAction = { status: 404, value: {} }
 assert.equal((await recover(reader, command)).state, 'UNKNOWN'); cases++
 requireInputs(config); reject(() => requireInputs({ ...config, isolated: false } as unknown as typeof config))
+// Source-only URL identity checks; these paths are not actual cache provenance.
+const phaserPath = '/@fs/private/tmp/in04-vite-cache/deps/phaser.js?v=abc012ef'
+for (const path of [phaserPath, phaserPath.replace('/@fs/', '/@fs//'), phaserPath.replace('in04-vite-cache', 'in04%20vite-cache')]) {
+  assert.equal(qualifiedPhaserModuleUrl(path, config.origin), config.origin + path); cases++
+  assert.equal(qualifiedPhaserModuleUrl(config.origin + path, config.origin), config.origin + path); cases++
+}
+for (const value of [undefined, '', '/node_modules/.vite/deps/phaser.js?v=abc012ef',
+  phaserPath.split('?')[0], phaserPath.replace('?v=abc012ef', '?v='), phaserPath.replace('abc012ef', 'ABC012EF'),
+  phaserPath.replace('abc012ef', 'not-a-hash'), phaserPath + '&v=abc012ef', phaserPath + '&raw', phaserPath + '#fragment', phaserPath + '#',
+  phaserPath.replace('phaser.js', 'phaser.js.map'), phaserPath.replace('/deps/', '/other/'),
+  phaserPath.replace('in04-vite-cache', 'cache%2fother'), phaserPath.replace('in04-vite-cache', 'cache%5cother'),
+  phaserPath.replace('in04-vite-cache', 'cache%00other'), phaserPath.replace('in04-vite-cache', '%2e%2e'),
+  phaserPath.replace('in04-vite-cache', '../in04-vite-cache'), phaserPath.replace('in04-vite-cache', 'cache\\other'),
+  ' ' + phaserPath, phaserPath + '\n', '//127.0.0.1:4000' + phaserPath, 'http://other.invalid' + phaserPath,
+  'http://user:pass@127.0.0.1:4000' + phaserPath, config.origin + phaserPath.replace('/@fs/', '/@fs///')]) {
+  reject(() => qualifiedPhaserModuleUrl(value, config.origin))
+}
 await assert.rejects(loadRuntimeAdapter('', ''), /ACTUAL_OWNER_RUNTIME_MODULE_AND_QUALIFIED_SHA_REQUIRED/); cases++
 const raw = await loadContracts()
 const union = raw.schemas.Domain_mural_ActionBody as { oneOf: unknown[] }

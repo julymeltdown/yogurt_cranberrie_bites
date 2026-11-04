@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import type { Page } from '@playwright/test'
 import type { Snapshot } from '../real/mural-helpers.ts'
 import type { QualifiedBinding } from './runtime.ts'
+import { qualifiedPhaserModuleUrl } from './runtime.ts'
 
 /** Read-only DEV observation adapted from the production-owner default-entry
  * preview.ts:137-149 at canonical 2ff0. No fetch/socket replacement, globals,
@@ -9,6 +10,7 @@ import type { QualifiedBinding } from './runtime.ts'
  */
 export async function verifyWorldTexture(page: Page, snapshot: Snapshot, binding: QualifiedBinding) {
   assert(Date.parse(binding.expiresAt) > Date.now())
+  const moduleUrl = qualifiedPhaserModuleUrl(binding.phaserModuleUrl, new URL(page.url()).origin)
   const observed = await page.evaluate(async ({ moduleUrl, key }) => {
     const Phaser = (await import(moduleUrl) as { default: typeof import('phaser') }).default
     const pool = Reflect.get(Phaser.Display.Canvas.CanvasPool, 'pool') as { parent: unknown }[]
@@ -23,7 +25,7 @@ export async function verifyWorldTexture(page: Page, snapshot: Snapshot, binding
     const image = images[0]!
     return { x: image.x, y: image.y, width: image.displayWidth, height: image.displayHeight, depth: image.depth,
       rgba: Array.from(canvas.getContext('2d')!.getImageData(0, 0, 128, 128).data) }
-  }, { moduleUrl: binding.phaserModuleUrl, key: binding.configuration.textureKey })
+  }, { moduleUrl, key: binding.configuration.textureKey })
   const { rgba, ...anchor } = observed
   assert.deepEqual(anchor, binding.configuration.anchor)
   const expected = snapshot.pixels.flatMap(color => {

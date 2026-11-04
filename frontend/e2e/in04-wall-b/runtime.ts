@@ -20,6 +20,21 @@ export interface QualifiedBinding {
   phaserModuleUrl: string
   expiresAt: string
 }
+/** The producer resolves this exact transformed import to its allocated Vite
+ * cache. Retain the version query: a different URL can create another CanvasPool.
+ */
+export function qualifiedPhaserModuleUrl(value: unknown, origin: string): string {
+  need(typeof value === 'string', 'SAME_APP_DEV_PHASER_MODULE_REQUIRED')
+  const url = new URL(value, origin)
+  need(url.origin === origin && !url.username && !url.password && !value.includes('#')
+    && /^\/@fs\/\/?(?:[^/]+\/)+deps\/phaser\.js$/.test(url.pathname)
+    && /^\?v=[a-f0-9]+$/.test(url.search)
+    && (value === url.href || value === url.pathname + url.search), 'SAME_APP_DEV_PHASER_MODULE_REQUIRED')
+  // Reject encoded separators/control bytes while retaining legitimate encoded
+  // directory names. Cache/file identity itself belongs to the source producer.
+  need(url.pathname.split('/').every(part => !/[\\/\u0000-\u001f\u007f]/.test(decodeURIComponent(part))), 'SAME_APP_DEV_PHASER_MODULE_REQUIRED')
+  return url.href
+}
 export async function loadRuntimeAdapter(path = process.env.MCR_IN04_B_RUNTIME_ADAPTER, expected = process.env.MCR_IN04_B_RUNTIME_ADAPTER_SHA256): Promise<RuntimeAdapter> {
   need(path && isAbsolute(path) && path.endsWith('.mjs') && expected && /^[a-f0-9]{64}$/.test(expected), 'ACTUAL_OWNER_RUNTIME_MODULE_AND_QUALIFIED_SHA_REQUIRED')
   const st = await lstat(path)
@@ -41,8 +56,6 @@ export async function qualifiedBinding(port: RuntimeAdapter, config: GateConfig)
   need(expiry > Date.now() && expiry <= Date.now() + 15 * 60000, 'FRESH_MURAL_BINDING_REQUIRED')
   const configuration = validateMuralProductionConfiguration(binding.configuration)
   need(configuration, 'EXACT_PRODUCTION_MURAL_CONFIGURATION_REQUIRED')
-  const url = new URL(binding.phaserModuleUrl, config.origin)
-  need(url.origin === config.origin && !url.username && !url.password && !url.hash
-    && /^\/node_modules\/\.vite\/deps\/phaser\.js$/.test(url.pathname), 'SAME_APP_DEV_PHASER_MODULE_REQUIRED')
-  return { configuration, phaserModuleUrl: url.href, expiresAt: binding.expiresAt }
+  const phaserModuleUrl = qualifiedPhaserModuleUrl(binding.phaserModuleUrl, config.origin)
+  return { configuration, phaserModuleUrl, expiresAt: binding.expiresAt }
 }

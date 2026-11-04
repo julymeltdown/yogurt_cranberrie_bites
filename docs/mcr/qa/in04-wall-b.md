@@ -1,8 +1,10 @@
 # IN04 Wall B real integration runner
 
-Status: IN_PROGRESS (source-qualified runner; publication and live execution remain).
-Source checks: PASS (53 helper checks, scoped types/lint, discovery and negative
-preflight); live IN04 is NOT_RUN. The original persistent
+Status: IN_PROGRESS (published baseline; source-qualified URL correction awaiting publication/live execution).
+Published-baseline source checks: PASS (53 helper checks, scoped types/lint,
+discovery and negative preflight). Follow-up source checks: PASS (84 helper checks,
+scoped types/lint, discovery and negative preflight; one intentional lint warning
+retained). Live IN04 is NOT_RUN. The original persistent
 IN04 goal is BLOCKED and unfinished, freshly inspected on 2026-11-05. The goal's
 historical checkout/path text does not transfer ownership or introduce an old
 review gate. This aligned continuation preserves its original real execution,
@@ -315,3 +317,129 @@ report-evidence/cleanup, whole BE41 and whole FE37 acceptance are not prerequisi
 for this virtual Wall gate. Actual functional authorization/privacy remains
 binding. Normal publication goes directly to Root153 with the tested source and
 preserved failures; it requires no king/SL review, acknowledgment or ledger step.
+
+## Allocated-cache Phaser URL correction — 2026-11-05
+
+Root153 reported publication of source `cdc6f2a844c8ed75525a6a3ffc81599414f4544e`
+as canonical `2b2d4de6f4c6948f606e0cbdc7b62445ca9aa585`, with independently verified
+master `869851ce9917004a7843e5bc1b91537414550674`. All 36 scoped new paths had exact
+modes/blobs; this runner does not duplicate the publisher's readback or rerun its
+historical source proof. The report is preserved in
+`docs/mcr/evidence/in04-wall-b/published-source-receipt.json`.
+
+The actual adapter needs an allocated private Vite cache because shared retained
+dependencies are read-only. Its optimized Phaser import therefore has the form
+`/@fs/<allocated-cache>/deps/phaser.js?v=<browserHash>`, rather than the runner's
+original fixed `/node_modules/.vite/deps/phaser.js` assumption. Omitting or
+rewriting the version query can load another Phaser instance and CanvasPool,
+preventing observation of the actual running world.
+
+Root153 and this runner's owner agreed the precise contract directly, with no
+adapter schema expansion. The producer obtains the literal import URL from the
+actual `server.transformRequest('/src/world/scenes/MapScene.ts')`, verifies that
+its decoded normalized filesystem path resolves exactly to its own allocated
+`deps/phaser.js`, and fetches that exact versioned URL before handoff. Its
+`noDiscovery` configuration and explicit canonical dependencies preserve the
+optimizer hash. Producer source `6d5863097c46d7ecd3d1633fd1423500e17b8867` was a separate
+unqualified draft when this correction was prepared. Its later source
+qualification is recorded below; it is not proof of runtime readiness.
+
+The runner shares one URL validator between binding qualification and the
+immediate pre-import observation. It accepts a canonical same-origin absolute
+or root-relative `/@fs/` path ending exactly in `/deps/phaser.js`, a single or
+doubled absolute-filesystem prefix slash, and exactly one literal
+`?v=<lowercase hex>` query. It retains the path and query without rewriting.
+Credentials, foreign origin, fragments (including an empty `#`), missing/duplicate
+or extra query fields, dot-path normalization, encoded separators/control bytes,
+other modules, the old guessed fixed path and a triple prefix slash are rejected.
+Encoded spaces in legitimate directory names remain valid. Actual allocated
+cache/file identity remains the producer's responsibility, not a claim granted
+by syntax checks or synthetic test paths.
+
+Local retained Vite 8.1.3 primary source supports this interface:
+`dist/node/chunks/node.js:26851` uses `path.posix.join(FS_PREFIX, resolved.id)`;
+`:33191` emits `${depInfo.file}?v=${depInfo.browserHash}`; `:2423` derives the
+browser hash from a SHA-256 hex substring, default length eight. These are source
+observations, not a browser or server run.
+
+Only own `runtime.ts`, `world-texture.ts`, focused `check.ts` cases and assigned
+doc/evidence paths change. No application, production import, shared helper,
+schema, manifest or lockfile changes. Before qualification, fresh source allocation was pending through
+the announced temporary reachable allocator21d route; Social's inbound request
+failed, so it created no second hold or accepted offer. The earlier source slot
+remains FULL and closed. The original persistent goal remains BLOCKED and
+unfinished, and actual IN04 remains NOT_RUN. Qualification, fixes and a committed
+handoff to the named publisher remain this developer's duties, without a
+king/SL review or acknowledgment gate.
+
+Wall202 subsequently reported qualified admin source
+`ccb42eb1da91d2020b6be7c380fc96c2424e378e`, committed/pushed handoff `3f0694ab5`:
+five policy tests, three actual signed-role/Auth/Friend/native cases and 21 C04
+responses passed, with prepared count zero and per-case cleanup. Owner evidence
+is `backend/scripts/mcr/mural_admin/native-qualification-2026-11-05.json` and
+`qualification-summary-2026-11-05.json`; this report consumes the responsible
+owner's disposition without rerunning it. The original outer-monitor marker
+removal race remains a preserved FAIL, reconciled read-only by that owner.
+Provenance correction: five original role dependency files were intaken (0061
+plus issuer/store/lifecycle/publication), with minimal module exports; the
+standalone PreparedOperationsAuthority factory was not intaken. Only `store.rs`
+was replaced by owner205's exact `bceaf556` correction (blob `eb51082e`, SHA prefix
+`a11901ed`). Root1fc still owns actual composition with the same canonical
+managed-publication Arc and existing owner scope; Gateway routing source was
+selectively intaken as `857a6955`. Combined runtime/default App/two-client
+acceptance remains NOT_RUN. Separately assigned private-data cleanup, real
+600-second retention and two restarts are not virtual-Wall IN04 prerequisites.
+
+Owner205 also distinguishes Wall server permission from the default App's role
+claim: the minimal factory does not mount the informational
+`GET /api/concert/events/{event}/me/operations-access`. Root's combined main/Gateway
+must mount that actual route through `operations_runtime` and the same managed
+publication if the default App consumes it. Owner205's four issuer/three factory
+native cases and public OwnAccess HTTP qualification remain separately queued
+or NOT_RUN; no client role header or default operator is substituted. This is a
+concrete serving-interface dependency, not an age/place/report gate.
+
+## Phaser URL correction qualification — 2026-11-04 19:28–19:29 UTC
+
+The conditional source offer `IN04-PHASER-URL-SOURCE-20261104T1928Z` became usable
+after Root153's literal actual predecessor
+`ROOT-IN04-FE41-COALESCED-SOURCE-20261104T1927Z` FULL at
+19:27:12.412989 UTC. Fresh admission and actual ACCEPT occurred at
+`1793820530.350050` (19:28:50.350050 UTC). Measured free disk was
+16,694,054,912 bytes; the conservative ALL_NEW reserve was 1,484,783,616 bytes,
+including all allocator-listed actual/eligible Auth207, CORE/QA07, QA06/Admin
+reservations plus this 8MiB. Root's released reservation was zero. The maximum
+post-start positions were global4/SOURCE2/browser1, with no duplicate source hold.
+
+Work/hard deadlines were `1793820830.350050` / `1793820890.350050`, exactly 300/360
+seconds after actual ACCEPT. The unchanged guard, 8MiB owned/NEW, 8 aggregate PIDs,
+2.5GiB RSS and 11/8/9GiB start/live/residual floors applied. FULL was returned at
+`1793820545.591665` (19:29:05.591665 UTC), without extension or reentry. This round
+used frozen clean source `abf2b5914e5fbe8178e0914166d77e21cad960a7`; all final source
+hashes still match those committed postimages. Subsequent changes are confined
+to assigned documentation/evidence.
+
+All five declared serial source commands passed with exits `0, 0, 0, 0, 2`,
+matching expected `0, 0, 0, 0, 2`. Exact argv and hashes are retained in
+`docs/mcr/evidence/in04-wall-b/IN04-PHASER-URL-SOURCE-20261104T1928Z/attempt01/release.json`.
+The helper check passed 84 cases, including 31 new URL identity cases. Scoped
+strict TypeScript passed. Scoped Oxlint exited zero with one intentional
+`eslint(no-control-regex)` warning at `runtime.ts:35`: the regex deliberately
+rejects decoded control bytes. That warning is retained, with no suppression or
+zero-warning claim. Playwright discovered the one real journey without launching
+a browser. Preflight refused the missing private config with exit2, as required.
+
+Measured peaks were 761,925 owned bytes, 529,851 positive NEW bytes, 536,870,912 RSS
+bytes and 2 aggregate PIDs. All descendants, scratch and the absent-only temporary
+dependency link were removed. The new actual offer, logs, guardian samples,
+release and `phaser-url-source-qualification.json` are retained separately from
+all earlier failures and receipts. No application, shared-helper or schema edits,
+old fixture/visual replay, runtime, browser, server, PostgreSQL, native job,
+installation or build occurred.
+
+Root153 separately reports its producer's eight source cases, six syntax checks
+and scoped lint passed in that exact predecessor round. This supports the agreed
+source interface; actual serving-app startup and combined IN04 acceptance remain
+NOT_RUN. The direct normal-publication handoff contains the tested correction
+commit and this evidence commit. The original persistent goal remains BLOCKED
+and unfinished until the genuine combined journey can execute.
