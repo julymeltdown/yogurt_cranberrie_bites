@@ -56,12 +56,15 @@ def git(*args):
 def preflight():
     source = footprint(ROOT)
     private_git = Path(git('rev-parse', '--git-dir'))
-    objects = '\n'.join(line.split()[0] for line in git('rev-list', '--objects', f'{BASE}..HEAD').splitlines())+'\n'
+    ranges = [f'{helper.BASE}..codex/mcr-fe-gifts-media-detail',
+              'ff96d53eb817c93dd1bafb5c4f125630f995413b..codex/mcr-fe-FE39-current-20261105', f'{BASE}..HEAD']
+    owned_objects = {line.split()[0] for span in ranges for line in git('rev-list', '--objects', span).splitlines()}
+    objects = '\n'.join(sorted(owned_objects))+'\n'
     sizes = sp.check_output(['git', 'cat-file', '--batch-check=%(objectsize:disk)'], input=objects, text=True, cwd=ROOT)
     charged_git = footprint(private_git)+sum(int(v) for v in sizes.splitlines() if v.isdigit())
     return dict(at=now(), pin=git('rev-parse','HEAD'), clean=not git('status','--porcelain'), source_bytes=source,
                 deps_bytes=footprint(DEPS)+sum(footprint(path) for path in helper.OLD), git_bytes=charged_git, git_dir=str(private_git),
-                git_dir_bytes=footprint(private_git), free_bytes=shutil.disk_usage(ROOT).free)
+                git_dir_bytes=footprint(private_git), owned_object_ranges=ranges, owned_object_count=len(owned_objects), free_bytes=shutil.disk_usage(ROOT).free)
 
 def guard(prefix, owner, work_end, hard_end):
     observed, peaks, reason = {}, {}, None
