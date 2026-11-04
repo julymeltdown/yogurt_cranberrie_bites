@@ -8,7 +8,7 @@ use chrono::{Duration as ChronoDuration, Utc};
 use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use post_application::concert_feed::Context;
 use sqlx::postgres::{PgConnectOptions, PgPoolOptions};
-use std::{str::FromStr, time::Duration};
+use std::{os::unix::fs::MetadataExt, path::PathBuf, str::FromStr, time::Duration};
 
 struct Database {
     pool: PgPool,
@@ -18,12 +18,46 @@ struct Database {
 impl Database {
     async fn start() -> anyhow::Result<Self> {
         let url = std::env::var("MCR_FEED_NATIVE_DATABASE_URL")?;
+        let root = PathBuf::from(std::env::var("MCR_FEED_NATIVE_OWNER_ROOT")?);
+        let info = std::fs::symlink_metadata(&root)?;
+        let marker = root.join("mcr-owner.json");
+        let marker_info = std::fs::symlink_metadata(&marker)?;
+        let proof: serde_json::Value = serde_json::from_slice(&std::fs::read(&marker)?)?;
+        anyhow::ensure!(
+            root.is_absolute()
+                && root.canonicalize()? == root
+                && info.is_dir()
+                && marker_info.is_file()
+                && info.uid() == marker_info.uid()
+                && proof
+                    == serde_json::json!({"token":std::env::var("MCR_FEED_NATIVE_OWNER_TOKEN")?,"uid":info.uid()})
+                && std::env::var("MCR_FEED_NATIVE_OWNER_IDENTITY")?
+                    == format!("{}:{}", info.dev(), info.ino()),
+            "owned native controller required"
+        );
         let options = PgConnectOptions::from_str(&url)
             .map_err(|_| anyhow::anyhow!("native PostgreSQL configuration invalid"))?;
+        anyhow::ensure!(
+            options.get_socket() == Some(&root.join("socket"))
+                && root.join("socket").canonicalize()? == root.join("socket")
+                && options.get_port() == 5432
+                && options.get_database() == Some("mcr_feed_native")
+                && options.get_username() == "mcr_owner",
+            "owned native socket required"
+        );
         let admin = PgPoolOptions::new()
             .max_connections(1)
             .connect_with(options.clone())
             .await?;
+        let settings=sqlx::query("select current_setting('data_directory') as data,current_setting('listen_addresses') as listen,current_setting('unix_socket_directories') as socket")
+            .fetch_one(&admin).await?;
+        anyhow::ensure!(
+            settings.try_get::<String, _>("data")? == root.join("data").to_string_lossy()
+                && settings.try_get::<String, _>("listen")?.is_empty()
+                && settings.try_get::<String, _>("socket")?
+                    == root.join("socket").to_string_lossy(),
+            "native PostgreSQL ownership mismatch"
+        );
         let schema = format!("feed_read_{}", Uuid::new_v4().simple());
         sqlx::query(&format!("create schema {schema}"))
             .execute(&admin)

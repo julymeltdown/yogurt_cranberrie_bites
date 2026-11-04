@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[3]
 REQUIRED = {"feed_live_read": 8, "concert_feed_live_read": 8, "feed_wire": 3}
@@ -71,12 +72,32 @@ def test_result(result, expected):
 
 def native_environment(path):
     regular(path)
-    if path.stat().st_size > 4096 or path.stat().st_mode & 0o077:
+    if path.stat().st_size > 4096 or path.stat().st_mode & 0o077 or path.stat().st_uid != os.getuid():
         raise PreflightError("bounded owner-only native configuration required")
-    value = path.read_text().strip()
-    if not value.startswith(("postgres://", "postgresql://")) or any(c.isspace() for c in value):
-        raise PreflightError("native PostgreSQL configuration invalid")
-    return {"PATH": "/usr/bin:/bin:/usr/sbin:/sbin", "MCR_FEED_NATIVE_DATABASE_URL": value}
+    try:
+        data = json.loads(path.read_text())
+        if set(data) != {"url", "root", "identity", "token"}:
+            raise ValueError()
+        root = Path(data["root"])
+        info = root.lstat()
+        marker = regular(root / "mcr-owner.json")
+        socket = root / "socket"
+        if (not root.is_absolute() or root.resolve() != root or not root.is_dir()
+                or info.st_uid != os.getuid() or [info.st_dev, info.st_ino] != data["identity"]
+                or json.loads(marker.read_text()) != {"token": data["token"], "uid": os.getuid()}
+                or not socket.is_dir() or socket.resolve() != socket):
+            raise ValueError()
+        url = urlsplit(data["url"])
+        query = parse_qs(url.query, keep_blank_values=True)
+        if (url.scheme != "postgresql" or url.hostname != "localhost" or url.port is not None
+                or url.username != "mcr_owner" or not url.password or url.path != "/mcr_feed_native"
+                or url.fragment or query != {"host": [str(socket)], "port": ["5432"], "sslmode": ["disable"]}):
+            raise ValueError()
+    except (ValueError, TypeError, KeyError):
+        raise PreflightError("exact owned socket-only native controller required") from None
+    return {"PATH": "/usr/bin:/bin:/usr/sbin:/sbin", "MCR_FEED_NATIVE_DATABASE_URL": data["url"],
+            "MCR_FEED_NATIVE_OWNER_ROOT": str(root), "MCR_FEED_NATIVE_OWNER_TOKEN": data["token"],
+            "MCR_FEED_NATIVE_OWNER_IDENTITY": ":".join(map(str, data["identity"]))}
 
 def native_checks(binary, environment):
     inventory = subprocess.run([str(binary), "--list", "--ignored", "concert_feed::read_tracking::tests::"],
@@ -103,7 +124,8 @@ def main(argv=None):
                         help="live native/HTTP qualification is a separate unfinished obligation")
     mode.add_argument("--post-native-storage", action="store_true",
                       help="actual leased PostgreSQL storage only; fixture acknowledgements are not live owner qualification")
-    parser.add_argument("--database-url-file", type=Path)
+    parser.add_argument("--native-config", type=Path,
+                        help="private JSON binding the owned controller marker, inode, socket and database URL")
     args = parser.parse_args(argv)
     if not args.report.is_absolute() or args.report.parent.resolve() != args.report.parent:
         parser.error("new canonical absolute report path required")
@@ -119,13 +141,13 @@ def main(argv=None):
         report.update(source_commit=data["source_commit"], source_state=data["source_state"],
                       metadata_sha256=digest(args.binaries_json), runner_sha256=digest(Path(__file__).resolve()))
         if args.post_native_storage:
-            if args.database_url_file is None:
+            if args.native_config is None:
                 raise PreflightError("explicit leased native configuration required")
-            report["commands"] = native_checks(binaries["post_service_lib"], native_environment(args.database_url_file))
+            report["commands"] = native_checks(binaries["post_service_lib"], native_environment(args.native_config))
             report["native_postgres"] = "PASS_STORAGE_ONLY"
             report["passed"] = len(NATIVE_CASES)
         else:
-            if args.database_url_file is not None:
+            if args.native_config is not None:
                 raise PreflightError("native configuration is not an adapter input")
             for name, binary in binaries.items():
                 result = subprocess.run([str(binary), "--test-threads=1"], cwd=ROOT,
