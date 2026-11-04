@@ -399,3 +399,29 @@ which uses the same real local-policy reader. Its failure has not been
 reproduced or diagnosed by this Feed task. No Profile, Post/callback or HTTP join
 acceptance is inferred from the constructor or 22 component checks. The separate
 three-target adapter build remains ready; no resource is held awaiting this fix.
+
+
+## Failed reader reproduced without a rebuild
+
+Feed reran only the failed reader case from the owner's exact copied `d8eb13bf`
+library (SHA-256
+`7de7960a470bd48b9eafaed769b60e8dde5a652b6fcc0da086a64756f27b57fa`).
+All 665 runtime migration/resource inputs selected from the owner's pin were
+verified unchanged. A fresh owned socket-only PostgreSQL instance used capacity
+256 and logged error statements. The same case exited 101; cleanup passed.
+No shared target or foreign database was accessed.
+
+PostgreSQL reported SQLSTATE `23514`, `relationship authority expired`, at
+PREPARE TRANSACTION. Its context was the deferred
+`concert_relationship_deadline_guard()` in migration 0006. That trigger requires
+the transaction-local `mcr.relationship_authority_until`; current PublicProfile
+local budget setup only installs `statement_timeout`. The fix belongs to owner
+`01a1a205`: bind the owning transaction setting to the already-held original
+scope/owner deadline, preserving the guard and migration. No new deadline,
+trigger bypass or migration edit is authorized by this finding.
+
+Diagnostic receipt and private logs are external at
+`/private/tmp/mcr-feed-qualified-20261104/profile-sql-diagnostic/`. This is an exact
+failure reproduction, not passing qualification. Its controller removed only its
+marker/inode-bound owned cluster. The five-owner Feed join remains NOT_RUN until
+the owner's real fix and a fresh Feed build/execution.
