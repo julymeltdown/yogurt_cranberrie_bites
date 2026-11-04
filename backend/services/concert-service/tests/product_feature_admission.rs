@@ -284,6 +284,7 @@ async fn wire_boundary_values_remain_admissible_without_normalizing_signed_bytes
     let mut inputs = vec![
         input("GET", "intros", ""),
         input("GET", "intros?limit=1", ""),
+        input("GET", "intros?q=?", ""),
         input("GET", &format!("intros?q={}", "a".repeat(100)), ""),
         input("GET", "me/notifications", ""),
         input("GET", "me/notifications?limit=1&unread_only=false", ""),
@@ -337,7 +338,7 @@ async fn wire_boundary_values_remain_admissible_without_normalizing_signed_bytes
         );
         assert_eq!(owner.admitted.lock().unwrap().last().unwrap().request, r);
     }
-    assert_eq!(owner.len(), 13);
+    assert_eq!(owner.len(), 14);
 }
 
 #[tokio::test]

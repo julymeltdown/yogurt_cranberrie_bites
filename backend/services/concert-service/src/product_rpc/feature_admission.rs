@@ -48,7 +48,11 @@ pub(super) fn intro_route(
 }
 
 pub(super) fn request(request: &ProductRequest, expected: Operation) -> Result<(), Status> {
-    if request.http_target.ends_with('?') {
+    if request
+        .http_target
+        .split_once('?')
+        .is_some_and(|(_, query)| query.is_empty())
+    {
         return Err(invalid());
     }
     match expected {
