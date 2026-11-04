@@ -1,0 +1,783 @@
+{
+  "format": "MCR_MAP_REFERENCE_COMPOSITION_SOURCE_V1",
+  "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
+  "version": "map4-reference-composition-v1",
+  "sourceBaseCommit": "6bb850755f1b6540a8d013f84106c673c5567069",
+  "previousSourceCandidate": "4618026884c1b9a846fcd2a46567ae26340bb75f",
+  "sourceInputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+      "bytes": 1201118,
+      "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+      "bytes": 1176781,
+      "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "bytes": 1178440,
+      "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "bytes": 32665,
+      "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+      "bytes": 16615,
+      "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
+      "bytes": 14186,
+      "sha256": "sha256:b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "bytes": 47336,
+      "sha256": "sha256:847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/source-binding.json",
+      "bytes": 11519,
+      "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+    },
+    {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    }
+  ],
+  "originalCropPins": [
+    {
+      "themeId": "REVENGE",
+      "frame": "west_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:c8638a36864ee081f8a5b11aabf8feff5019ad22a399c42abce1f0b6096bbab6",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 774,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:cc386ed83d28b0b84cebb650baa857b11e7e9137e38473d57e9429080c668efd"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_dark",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_yellow",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:baa9b22ea4d6b6bb0f78c08af09db453a2ff8e0237461808d0bffbf08215547e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "north_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:bbefa9f2e33075be1bd6aa7a2c5b974ef31f4fa3d4e0c5477914e7ab698f178e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 518,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:d214b484e3a064bd627a89270064a15e8c3e6bbf645767363cbcc291b0f82bb8"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "giveaway_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:34e958c1b8afa6763beb790be4b70536a0038c886ae7e2e7df3142c23123f4e3",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 262,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:98e9a7232d2e1171ed658bea3e7b994522c0703d0468a981270f2735e615a00d"
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "tree_red",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:711c1a0b9ea2810685e5e4d94ef12b715d1c739d5b6a08dca74d3ff192271e1e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "white_food_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:23c10f40880c32074173bebec1496f823bb17b315408dae0d8fc8ad364c2dcca",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "white_merch_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 273,
+        "y": 16,
+        "width": 222,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:fe8ccfaa8b18a727b65c803c3e78e63a016263dad256782115de7118db530536",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "west_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:9790228e378f1595affa5d57911c589c526894beee39ca5854fb85989a499716",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 774,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:7faacfdd69f0f63e1ccfb745605e22e6945be7134313d59022e566c5016aaf09"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_dark",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_yellow",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:272672f92436a2a481e1f74dd1154fe0004fbda62ae3a6d083129131bd75a21b",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "north_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:594ded455f5925f95d61063dc087826c0d690370b3534e9fc7c1bb695841c65f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 518,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:37a46aae78a005703e08883be08b29ced9dea3d3783468656e46dd914caab82b"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "giveaway_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:fdfc59a56069d300890ad6ad92ad824f0eacb40d1e9cdb0b0c946ad3cc858418",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 262,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:c6cb6209ae565a133b9f5bda4a8b8901e0f5d85b5a1b4443a7a57676b0443130"
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "tree_red",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:635fe197e906e1eca7c7a669e45370a2f53c5caca1b5823373c863e59a5ecfb1",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "white_food_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:dfb76e1b0ccc57846919ba8f501188d2fe899afb0de3b57b45dfdf33f20ee899",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "white_merch_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 274,
+        "y": 16,
+        "width": 220,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:2a04d91132e8e16ef29ad2cbc35c613bab542f3acf4e9c3c43ca1b8cbd462a24",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "west_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:35f149026e0d49352b50451e3b07337ef3c37719cb526d80f084e3b02060152f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 774,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:fb92e998bd4df9d3f66362e6e4f9d79decb60287c8bd8e9635ef29f928642d1b"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_green",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "rgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_dark",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "rgbaSha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_yellow",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:62a9d99553dc31dd0645ded88048f7fefd98c465a649fab789d2c594e3f6ccc8",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "north_hall",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:6f606a6d7759c0ef46b4f5f61f07e6d1fb43dd9a9092ab178aa48ecf7058c78b",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 518,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:9d35c48a1b85b56de55fa0999573ba3d41cade5c2fedce01d315731f4a0f2809"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "giveaway_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:2da47bd423a32fb4a4fc77c43b1cf2f0f752c4c826b8d64d04692b94894787e7",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 262,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:9028b7a049c429f9454c9ba6c7b9f87d7e5aa11c27923d855dd6846d07b9704f"
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "tree_red",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "rgbaSha256": "sha256:3d153d5963b10d39670ef733106e3c6a33dd145a7388e36219e283d5e1a145a6",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "white_food_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 528,
+        "y": 17,
+        "width": 224,
+        "height": 221
+      },
+      "rgbaSha256": "sha256:2209fc308e88ff452b43fe98785a8e831e1cd6ffe8e9d13b9467439aa61aa7bc",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "white_merch_booth",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 275,
+        "y": 16,
+        "width": 218,
+        "height": 224
+      },
+      "rgbaSha256": "sha256:b32695b7e05beecc890e857c847b5f1a642732df67eb15e32750ea5f22cd69a4",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null
+    }
+  ],
+  "outputs": [
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "bytes": 508321,
+      "sha256": "sha256:9a9a117a18159c422354c1967957dc0c6f1f82554055a2c88a29aa9f80951b06"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "bytes": 1702548,
+      "sha256": "sha256:f6bb4a330ce03e550f823840ffe588b69a3c395b890357371032ea6740c2cd84"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "bytes": 522044,
+      "sha256": "sha256:c14b06dd0763fef26746cb6f7b7b5fcc24d482272251c844a1365a0f4aef5269"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "bytes": 1734996,
+      "sha256": "sha256:4fecf75fd0a3e6906c1579a708dcbf617f164c3cef885676412c19e3f9bf1f4a"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "bytes": 512256,
+      "sha256": "sha256:58b3a9a8b71cd02d044a68fb596bf5cbbf5a383fdbee2eb2706fc8d2dc5527e0"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "bytes": 1704760,
+      "sha256": "sha256:ebadbc9286d7f38f42460d1d008ae4f4292e023a9c69c2820ac68788ae4b86d1"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "bytes": 45370,
+      "sha256": "sha256:418af3bf14ee2e8b79eeb2b038f64b48713de17967993aa4e7fa3ce22c8d26b9"
+    }
+  ],
+  "recipe": {
+    "path": "frontend/public/world/map-reference-composition-v1/build.py",
+    "bytes": 22329,
+    "sha256": "sha256:aae07bd39c9c2d1bfa38321645b815f459b485d5a0cf9951ba7d6545d76447a7"
+  },
+  "referenceUse": "DIRECT_VISUAL_INSPECTION_ONLY_NO_REFERENCE_PIXELS_SAMPLED",
+  "authorship": "New editable paths/gardens/placement geometry; retained original built-in generated warm atlas crops. No new generation, stock, character or font input.",
+  "transform": "Uniform nearest fit per retained frame; centered X/bottom Y; half-up destination dimensions. Original RGBA unchanged before sampling.",
+  "venueProjection": "Bottom46percent of original frame provides the exact lower facade fragment. Original authored overhead roof polygons replace the omitted upper54percent in Map only; no original atlas pixel is modified.",
+  "surfacePaletteByTheme": {
+    "REVENGE": {
+      "lawn": "#b5c4a5",
+      "lawnLight": "#becbad",
+      "lawnDark": "#adbc9e",
+      "path": "#f1d9d0",
+      "pathEdge": "#bda08f",
+      "pathMiddle": "#ead0c2",
+      "garden": "#bccb9f",
+      "ring": "#e7c2af",
+      "seam": "#d7b6a5",
+      "roof": "#cf999a",
+      "roofLight": "#efc7bc",
+      "roofDark": "#9f747e"
+    },
+    "PARADE": {
+      "lawn": "#abc49c",
+      "lawnLight": "#b3cba3",
+      "lawnDark": "#a2bd95",
+      "path": "#f4e8d6",
+      "pathEdge": "#ab9c83",
+      "pathMiddle": "#efe0c9",
+      "garden": "#b4ca95",
+      "ring": "#ead8bc",
+      "seam": "#e4d1b7",
+      "roof": "#b7a8c3",
+      "roofLight": "#dfcfde",
+      "roofDark": "#8d819d"
+    },
+    "DANGER": {
+      "lawn": "#aec8b7",
+      "lawnLight": "#b7d1bd",
+      "lawnDark": "#a4bfad",
+      "path": "#f3e6bb",
+      "pathEdge": "#ac9c76",
+      "pathMiddle": "#e9dbad",
+      "garden": "#c3ce9d",
+      "ring": "#dfd29f",
+      "seam": "#d9c98e",
+      "roof": "#9db5a8",
+      "roofLight": "#d5e0c9",
+      "roofDark": "#7a968b"
+    }
+  },
+  "svgPolicy": "Editable SVG embeds the exact era atlas; Pillow PNG is raster authority. SVG engine parity NOT_RUN.",
+  "checks": {
+    "immutableInputHashes": true,
+    "closedThreeEras": true,
+    "uniqueDecorativeIds": true,
+    "canonicalWorldCellsExact": true,
+    "architectureOutsideLabelExclusions": true,
+    "labelExclusionHeightSourcePx": 112,
+    "eachPngMaxBytes": 2097152,
+    "outputDimensions": [
+      768,
+      1296
+    ]
+  },
+  "notRun": [
+    "actual default App composition",
+    "three-width all-era native comparison",
+    "World RGBA invariance",
+    "feature link/focus/selection",
+    "human final acceptance",
+    "physical venue, devices, live multiplayer"
+  ]
+}

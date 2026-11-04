@@ -1,0 +1,96 @@
+{
+  "slot": "QA09-FE-SOURCE-202611041339Z",
+  "acceptedAt": "2026-11-04T13:40:26.000Z",
+  "workDeadline": "2026-11-04T13:41:26.000Z",
+  "cleanupDeadline": "2026-11-04T13:41:56.000Z",
+  "fullyReleasedAt": "2026-11-04T13:40:28.887133+00:00",
+  "source": "a857130f925b19da01280e603d318ea5811933ed",
+  "originalGoalApiStatus": "blocked",
+  "operationalContinuation": "Aligned source validation only; no reset/new goal/false completion.",
+  "limits": {
+    "totalSeconds": 90,
+    "workSeconds": 60,
+    "cleanupSeconds": 30,
+    "processes": 4,
+    "rssBytes": 268435456,
+    "wholeBytes": 16777216,
+    "startFreeBytes": 17179869184,
+    "liveFreeBytes": 8589934592
+  },
+  "actual": {
+    "allCommandsExitZero": true,
+    "syntheticTestsPassed": 25,
+    "syntaxChecksPassed": 8,
+    "peakRssBytes": 130285568,
+    "peakProcesses": 4,
+    "lowestFreeBytes": 31136481280,
+    "aliveOwnedPids": [],
+    "temporaryDirectoriesCreated": 0,
+    "dependencyLinksCreated": 0,
+    "heldResources": false
+  },
+  "qualification": "Only source/synthetic validation. All six actual original QA09 cases remain NOT_RUN. The run report finalWholeBytes was measured before its own report write; this receipt includes the final evidence bytes.",
+  "artifacts": {
+    "docs/mcr/evidence/qa09-frontend/source-round01/carry-inventory.json": {
+      "bytes": 26016,
+      "sha256": "6f7c23c723f5f4f90b8169e80f08f848e936cb9fe6de4fb84321a262a7e8f069"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/diff.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/lint.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/report.json": {
+      "bytes": 6746,
+      "sha256": "00fa188aa9ae3cb82ecb6b56e09ec765657794332ad0e0307cce71d44454fc27"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-actions.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-actions.test.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-cases.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-journey.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-observer.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-observer.test.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-producer-binding.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/syntax-producer-binding.test.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa09-frontend/source-round01/unit.log": {
+      "bytes": 2441,
+      "sha256": "c4e30ca800807aa7223615e1e8ea84cfbc5a07744be99847cbd52955f819f5d5"
+    }
+  },
+  "ledgerPrefixes": [
+    "docs/mcr/evidence/in01-world-browser",
+    "frontend/e2e/real/world/in01",
+    "docs/mcr/frontend/in01-browser-journey.md",
+    "frontend/e2e/real/qa09-recovery",
+    "docs/mcr/frontend/qa09-recovery.md",
+    "docs/mcr/evidence/qa09-frontend"
+  ],
+  "finalWholeBytes": 9869403
+}

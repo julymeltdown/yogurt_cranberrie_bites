@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend
+
+
+ Test Files  18 passed (18)
+      Tests  120 passed (120)
+   Start at  22:46:34
+   Duration  7.63s (transform 497ms, setup 0ms, import 1.44s, tests 2.90s, environment 2.37s)
+

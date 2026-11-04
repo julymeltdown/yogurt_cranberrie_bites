@@ -1,0 +1,7 @@
+{"lease": "FE19-MAP-V2-SOURCE04-202611041344Z", "acceptedAt": "2026-11-04T13:44:42Z", "activeDeadline": "2026-11-04T13:49:42Z", "hardDeadline": "2026-11-04T13:50:42+00:00", "guardianPid": 65856, "base": "e4967ef0ed83b313788b6ed7e47f3f47ddfdc460", "initialFree": 30783033344, "wholeInitial": 8622102}
+{"argv": ["python3", "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/map-production-binding/source-round04/supervisor.py", "registration"], "pid": 65945, "exit": 0, "at": "2026-11-04T13:45:33.195219+00:00"}
+{"argv": ["git", "add", "--", "frontend/src/world/reference-scene/map4-service-v2/registration.ts", "frontend/src/world/reference-scene/map4-service-v2/current.ts"], "pid": 66376, "exit": 0, "at": "2026-11-04T13:45:33.560176+00:00"}
+{"argv": ["git", "commit", "-m", "feat(map): register corrected full composition resources"], "pid": 66558, "exit": 0, "at": "2026-11-04T13:45:33.954559+00:00"}
+{"guardianFinishedAt": "2026-11-04T13:45:40.464249+00:00", "childPids": [65945, 66376, 66558, 66645], "peakAdditional": 10064425, "peakRss": 629211136, "peakProcessCount": 5}
+{"retry": 2, "source": "57572696", "pid": 71467, "guardianPid": 71317, "at": "2026-11-04T13:46:33.666098+00:00", "sameHardDeadline": "2026-11-04T13:50:42+00:00"}
+{"retry": 2, "finishedAt": "2026-11-04T13:46:44.667520+00:00", "exit": 0, "seenPids": [71467, 71469, 71626, 71708, 71988, 71992], "peakAdditional": 1511314, "peakRss": 631078912, "peakProcessCount": 4}

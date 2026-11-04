@@ -5,6 +5,8 @@ import type { LoadedMap } from '../../world/map/resources'
 import type { RuntimeOverview } from '../../world/runtime'
 import { createMapPaintProvider } from './map-presentation-v1/loader'
 import { map4Paint } from './map-presentation-v1/descriptor'
+import { currentComposition } from '../../world/reference-scene/map4-service-v2/current'
+import { createMapCompositionProvider } from './map-presentation-v2/loader'
 
 type Metadata = Pick<LoadedMap, 'map' | 'theme' | 'widthPx' | 'heightPx' | 'spawn'>
 /** Any reference claim must qualify as the exact coherent release, never fall back to old pixels. */
@@ -20,7 +22,10 @@ export function preflightReferenceScene(metadata: Metadata) {
 
 /** One runtime owner multiplexes its two projections, borrowing only the current loaded map. */
 export function createRootSceneOverview(): RuntimeOverview {
-  const incumbent = createSceneryOverview(), reference = createReferenceSceneOverview({ paint: createMapPaintProvider(map4Paint, { origin: location.origin }) })
+  const composition = currentComposition()
+  const paint = composition ? createMapCompositionProvider(composition, { origin: location.origin })
+    : createMapPaintProvider(map4Paint, { origin: location.origin })
+  const incumbent = createSceneryOverview(), reference = createReferenceSceneOverview({ paint })
   let active: RuntimeOverview | null = null, disposed = false, generation = 0
   const listeners = new Set<() => void>()
   const notify = () => { for (const listener of Array.from(listeners)) { try { listener() } catch { /* Independent views. */ } } }

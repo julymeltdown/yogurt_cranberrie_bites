@@ -1,0 +1,12 @@
+✔ nearest-rank tails preserve outliers without mutating raw samples (0.617583ms)
+✔ growth excludes declared warmup and preserves negative or positive observed trends (0.10425ms)
+✔ zero renders in a covered world differ from RAF activity and unknown intervals (0.097583ms)
+✔ 30 FPS reference uses the original budget and measured window, not requested duration (0.363875ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.702208

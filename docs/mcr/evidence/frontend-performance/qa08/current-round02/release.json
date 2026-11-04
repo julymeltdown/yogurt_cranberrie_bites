@@ -1,0 +1,106 @@
+{
+  "allocation": "QA08-FE-ROUND02-BROWSER-202611041349Z",
+  "candidate": "27a01c7224da1e9677fb13460621e0e2f71c7c5e",
+  "status": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/native.mjs"
+      ],
+      "startedSeconds": 0.00016441700000000004,
+      "exitCode": 0,
+      "elapsedSeconds": 0.585680292
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/metrics.node-selftest.mjs"
+      ],
+      "startedSeconds": 0.58584775,
+      "exitCode": 0,
+      "elapsedSeconds": 0.570313167
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/tsconfig.json",
+        "--incremental",
+        "--tsBuildInfoFile",
+        "/private/tmp/mcr-qa08-current-yiev1mjr/fixture.tsbuildinfo"
+      ],
+      "startedSeconds": 1.156163584,
+      "exitCode": 0,
+      "elapsedSeconds": 4.020742458
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/fixture.tsx",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/current-data.ts",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/native.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/metrics.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/metrics.node-selftest.mjs"
+      ],
+      "startedSeconds": 5.176909,
+      "exitCode": 0,
+      "elapsedSeconds": 0.5893714999999995
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/qa08-rendering/native.mjs"
+      ],
+      "startedSeconds": 5.766283167,
+      "exitCode": 0,
+      "elapsedSeconds": 132.82016116699998
+    }
+  ],
+  "startedUtc": "2026-11-04T13:50:03Z",
+  "caps": {
+    "wholeBytes": 268435456,
+    "temporaryBytes": 201326592,
+    "durableBytes": 50331648,
+    "rssBytes": 8589934592,
+    "processes": 48,
+    "workSeconds": 350,
+    "cleanupReserveSeconds": 60,
+    "initialFreeBytes": 17179869184,
+    "continuousFreeBytes": 8589934592
+  },
+  "peaks": {
+    "wholeBytes": 43755737,
+    "temporaryBytes": 27602256,
+    "durableBytes": 16077614,
+    "rssBytes": 2596503552,
+    "processes": 10
+  },
+  "freeBeforeBytes": 30806454272,
+  "offeredWorkDeadlineUtc": "2026-11-04T13:55:31.669671Z",
+  "offeredHardDeadlineUtc": "2026-11-04T13:56:41.669671Z",
+  "actualAcceptedAtUtc": "2026-11-04T13:49:41.669671Z",
+  "actualAcceptanceFreeBytes": 30798520320,
+  "temporaryPath": "/private/tmp/mcr-qa08-current-yiev1mjr",
+  "dependencyTarget": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "failure": null,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "cleanupSeconds": 0.2044055420000177,
+  "elapsedSeconds": 138.790861125,
+  "freeAfterBytes": 30641217536,
+  "finishedBeforeOfferedHardDeadline": true,
+  "released": true,
+  "logHashes": {
+    "00.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "01.log": "fa7c6400cae35337b1ed224dd53acb3df9e64ed4e13fbd7ffe975944a539d924",
+    "03.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04.log": "738be32e517bc1d6c836231cffedfc925d26fe5f77800a76165dc309218e4408"
+  }
+}

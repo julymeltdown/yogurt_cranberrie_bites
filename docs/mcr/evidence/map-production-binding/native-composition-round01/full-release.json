@@ -1,0 +1,21 @@
+{
+  "slot": "ROOT-MAP4-COMPOSITION-NATIVE-202611041400Z",
+  "releasedAt": "2026-11-04T14:03:18.639003+00:00",
+  "status": "FULL_RELEASE",
+  "originalHardDeadline": "2026-11-04T14:08:22.289007+00:00",
+  "allCommandsExit0": true,
+  "contexts": 19,
+  "pairedWorldInvariants": 9,
+  "virtualRoutes": 40,
+  "minimumTargetWidth": 66.359375,
+  "minimumTargetHeight": 44,
+  "port5298ListenerAbsent": true,
+  "port5298ReuseAddressRebound": true,
+  "aliveOwnedPids": [],
+  "ownLinkAbsent": true,
+  "ownPrivateTempAbsent": true,
+  "freeBytes": 29268021248,
+  "reportSHA256": "05e1df3a064b753c4b3a8e9b68f97d77ace91915282cc64e9087145661cd2c47",
+  "supervisorSHA256": "50d2fbd1888a64fd13256099d223df063ae8278e43dd78dd831c75e3dd35f490",
+  "limits": "Explicit eligible contract fixture/default client only, not production/operator/live/device admission or visual convergence"
+}

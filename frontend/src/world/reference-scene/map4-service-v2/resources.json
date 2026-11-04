@@ -1,0 +1,37 @@
+{
+  "version": "map4-reference-composition-v1",
+  "layout": {
+    "path": "world/map-reference-composition-v1/layout.json",
+    "bytes": 45370,
+    "sha256": "sha256:418af3bf14ee2e8b79eeb2b038f64b48713de17967993aa4e7fa3ce22c8d26b9"
+  },
+  "assets": [
+    {
+      "themeId": "REVENGE",
+      "path": "world/map-reference-composition-v1/revenge-scene.png",
+      "bytes": 508321,
+      "sha256": "sha256:9a9a117a18159c422354c1967957dc0c6f1f82554055a2c88a29aa9f80951b06",
+      "width": 768,
+      "height": 1296,
+      "mime": "image/png"
+    },
+    {
+      "themeId": "PARADE",
+      "path": "world/map-reference-composition-v1/parade-scene.png",
+      "bytes": 522044,
+      "sha256": "sha256:c14b06dd0763fef26746cb6f7b7b5fcc24d482272251c844a1365a0f4aef5269",
+      "width": 768,
+      "height": 1296,
+      "mime": "image/png"
+    },
+    {
+      "themeId": "DANGER",
+      "path": "world/map-reference-composition-v1/danger-scene.png",
+      "bytes": 512256,
+      "sha256": "sha256:58b3a9a8b71cd02d044a68fb596bf5cbbf5a383fdbee2eb2706fc8d2dc5527e0",
+      "width": 768,
+      "height": 1296,
+      "mime": "image/png"
+    }
+  ]
+}

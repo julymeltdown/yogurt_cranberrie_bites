@@ -13,6 +13,7 @@ import { spatialV5LabelObstacles, spatialV5ZoomTop } from './reference-scene/spa
 import { spatialV4LabelObstacles, spatialV4ZoomBottom } from './reference-scene/spatial-v4-label-obstacles'
 import { isMap4Presentation, map4LabelObstacles } from '../../../world/reference-scene/map4-service-v1/annotations'
 import { map4LocalZoom, map4ServiceTargets, packMap4Markers } from '../../../world/reference-scene/map4-service-v1/layout'
+import { currentComposition } from '../../../world/reference-scene/map4-service-v2/current'
 
 function LandmarkIcon({ interaction }: { interaction: string }) {
   if (/gifts?/.test(interaction)) return <ConcertIcon name="gifts" />
@@ -38,18 +39,19 @@ export function IllustratedMap(props: MapProps) {
 /** Local DOM viewport over the incumbent owner's static pixels. No world camera writes. */
 function IllustratedViewport({ controller, state, fallback, legend }: MapProps) {
   const image = state.overview!, map = state.map!, items = state.list.data?.items ?? []
+  const composition = currentComposition(), qualifiedComposition = !!composition?.matches(image)
+  const qualifiedMap4 = isMap4Presentation(image) || qualifiedComposition
   const viewport = useRef<HTMLDivElement>(null), sheet = useRef<HTMLDialogElement>(null)
   const zoomControls = useRef<HTMLDivElement>(null), caption = useRef<HTMLDivElement>(null)
   const [obstacles, setObstacles] = useState<AnnotationRect[]>([])
   const returnFocus = useRef<HTMLElement | null>(null), drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null)
-  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(() => getSpatialV5OverviewMetadata(image) || isMap4Presentation(image) ? 'fit' : 1)
+  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(() => getSpatialV5OverviewMetadata(image) || qualifiedMap4 ? 'fit' : 1)
   const saved = selections.get(controller), navigation = useNavigationType(), restored = useRef(false)
   const [loaded, setLoaded] = useState(''), [failed, setFailed] = useState(''), [selected, setSelected] = useState<string | null>(saved?.mapHash === map.content_hash ? saved.id : null)
   const [panel, setPanel] = useState<'places' | 'legend' | null>(null), [search, setSearch] = useState('')
   const [reset, setReset] = useState(0)
   const [scroll, setScroll] = useState({ left: 0, top: 0 })
   const ready = loaded === image.imageUrl && failed !== image.imageUrl
-  const qualifiedMap4 = isMap4Presentation(image)
   const requestedZoom = qualifiedMap4 ? map4LocalZoom(size, zoom === 'fit' ? -1 : zoom) : zoom === 'fit' ? -1 : zoom
   const { minZoom: baseMinZoom, effectiveZoom, width, height, offsetX, offsetY } = mapViewport(size, image, requestedZoom)
   const minZoom = qualifiedMap4 ? Math.max(baseMinZoom, map4LocalZoom(size, -1)) : baseMinZoom
@@ -61,11 +63,15 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const current = items.find(p => p.place_id === selected)
   const supported = !!current && current.closure_state === 'OPEN' && !state.unavailablePlaceIds.includes(current.place_id)
   const target = supported ? map.geometry.interactions.find(p => p.place_id === selected) : null
+  const selectedDisplay = target && qualifiedComposition ? composition!.displayPoint(image, target.interaction_id, 100, 100) : null
   const anchors = items.flatMap(place => {
     const point = map.geometry.interactions.find(p => p.place_id === place.place_id)
+    const display = point && qualifiedComposition ? composition!.displayPoint(image, point.interaction_id, width, height) : null
+    if (display) return [{ id: place.place_id, ...display }]
     return point ? [{ id: place.place_id, x: (point.cell_x + .5) / map.geometry.width_cells * width, y: (point.cell_y + .5) / map.geometry.height_cells * height }] : []
   })
   const annotationAnchors = anchors.map(point => {
+    if (qualifiedComposition) return point
     const interaction = map.geometry.interactions.find(p => p.place_id === point.id)
     const label = reference?.mapLabels.find(p => p.interactionId !== null && p.interactionId === interaction?.interaction_id)
     return label ? { id: point.id, x: label.x / image.width * width, y: label.y / image.height * height } : point
@@ -73,7 +79,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const portrait = image.height > image.width
   const view = { left: scroll.left - (portrait ? offsetX : 0), top: scroll.top - (portrait ? offsetY : 0),
     width: size.width, height: size.height }
-  const map4Obstacles = reference ? map4LabelObstacles(image, width, height) : []
+  const map4Obstacles = qualifiedComposition ? composition!.obstacles(image, width, height) : reference ? map4LabelObstacles(image, width, height) : []
   const v5LabelObstacles = map4Obstacles.length ? map4Obstacles : reference ? spatialV5LabelObstacles(image, width, height) : []
   const labelObstacles = v5LabelObstacles.length ? v5LabelObstacles : reference ? spatialV4LabelObstacles(image, width, height) : []
   function paintedLabel(id: string) {
@@ -84,7 +90,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   }
   const excluded = [...labelObstacles, ...obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top }))]
   const plaques = qualifiedMap4
-    ? packMap4Markers(annotationAnchors, width, height, [...excluded, ...map4ServiceTargets(image, width, height)])
+    ? packMap4Markers(annotationAnchors, width, height, [...excluded, ...(qualifiedComposition ? composition!.targets(image, width, height) : map4ServiceTargets(image, width, height))])
     : referenceAnnotations(annotationAnchors.filter(point => !paintedLabel(point.id)), view, excluded)
   function select(id: string) { virtualOpeners.delete(controller); selections.set(controller, { mapHash: map.content_hash, id }); setSelected(id) }
   useEffect(() => {
@@ -172,7 +178,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
         })}
         {ready && <MapServiceLinks identity={image} width={width} height={height} onOpen={intent => virtualOpeners.set(controller, { mapHash: map.content_hash, intent })} />}
         {ready && target && <span className="places-map-pin" role="img" aria-label={`Selected virtual location: ${current!.label}`}
-          style={{ left: `${(target.cell_x + .5) / map.geometry.width_cells * 100}%`, top: `${(target.cell_y + .5) / map.geometry.height_cells * 100}%` }}>
+          style={{ left: `${selectedDisplay?.x ?? (target.cell_x + .5) / map.geometry.width_cells * 100}%`, top: `${selectedDisplay?.y ?? (target.cell_y + .5) / map.geometry.height_cells * 100}%` }}>
           <svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 31S1 17 1 12a11 11 0 0 1 22 0c0 5-11 19-11 19Z" /><circle cx="12" cy="12" r="4" /></svg>
         </span>}
       </div>
@@ -186,7 +192,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('places') }}><ConcertIcon name="world" />Places</button>
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('legend') }}>Legend</button>
       <button type="button" disabled={!ready} onClick={() => { setZoom('fit'); setReset(r => r + 1) }}>Fit map</button>
-      <button type="button" disabled={!ready} onClick={() => { setZoom(getSpatialV5OverviewMetadata(image) || isMap4Presentation(image) ? 'fit' : 1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
+      <button type="button" disabled={!ready} onClick={() => { setZoom(getSpatialV5OverviewMetadata(image) || qualifiedMap4 ? 'fit' : 1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
     </div>
     <dialog ref={sheet} className="places-map-sheet" aria-labelledby="places-map-sheet-title"
       onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); setPanel(null) } }}

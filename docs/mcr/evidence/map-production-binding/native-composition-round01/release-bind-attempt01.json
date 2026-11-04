@@ -1,0 +1,5 @@
+{
+  "result": "PLAIN_REBIND_FAILED",
+  "error": "OSError [Errno48] Address already in use",
+  "retained": "First release probe used no SO_REUSEADDR after actual TCP connections. Listener and owned-process absence independently checked; retry uses SO_REUSEADDR."
+}

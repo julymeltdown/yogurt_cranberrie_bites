@@ -1,0 +1,33 @@
+✔ explicit closure resume checks exact expected job before destructive confirmation (0.9635ms)
+✔ changed review revision cannot be confirmed (0.128917ms)
+✔ missing exact revision/reason cannot even prepare a resume (0.353459ms)
+✔ correct review issues exactly one explicit resume confirmation (0.118542ms)
+✔ unqualified/missing runtime ports cannot manufacture a frontend observation (0.115ms)
+✔ expired resource signal aborts before any page access or action (0.11075ms)
+✔ resource cancellation interrupts a stalled guard without a DOM/action or fake success (0.114833ms)
+✔ upstream guard errors never export private diagnostic values and preserve partial state (0.540292ms)
+✔ classifies only exact same-origin known routes, without query/identity export (0.734ms)
+✔ matches original command within one observer but never publishes private values (6.092333ms)
+✔ request failure and browser errors are fixed safe categories; no error body retained (0.942834ms)
+✔ status query binds original command without retaining query or introducing a new intent (0.284292ms)
+✔ one report cannot correlate private command identity with another report (0.145375ms)
+✔ tracks genuine socket close/reopen and duplicate peak without reading payloads (0.147584ms)
+✔ bounded events flag overflow and idempotent detach removes every owned listener (0.142625ms)
+✔ all six original clauses remain NOT_RUN and unknown case cannot manufacture coverage (0.259083ms)
+✔ canonical deletion read is distinguished from the one-way deletion request (0.113583ms)
+✔ successful segment with missing original boundary remains NOT_RUN, opaque BE fields discarded (1.327333ms)
+✔ run, case and candidate substitution are rejected (0.710375ms)
+✔ missing actual phases cannot be replaced by malformed or out-of-order timestamps (0.116667ms)
+✔ artifact traversal, foreign paths, raw URLs and false accepted states are rejected (0.148333ms)
+✔ unknown frontend pin and all-null phase placeholders cannot qualify the original boundary (0.063083ms)
+✔ actual six-case producer container selects only the exact expected case (0.184ms)
+✔ container substitution, missing/duplicate cases and false whole acceptance are rejected (0.124334ms)
+✔ a foreign case run cannot borrow the correct enclosing report identity (0.058ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 149.901875
