@@ -88,7 +88,7 @@ interfaces, not a blanket barrier to frozen client work:
 
 | Dependency | Named implementation contact | Last handoff / next action |
 |---|---|---|
-| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Frozen C04/MuralEntryRelease handoff delivered directly to FE33; actual qualified producer publication is not established by the receipts in this record |
+| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Qualified fixture handoff at clean branch `codex/mcr-be-wall-live`, HEAD `57dc31e1`, delivered directly to Product root. Owner reports actual canonical PreparedWallFence compiled, private PostgreSQL 16.14 ten checks PASS/zero FAIL or ignored plus cleanup, harness seven PASS. Four frozen C04 wire APIs retain original-key/exact-body semantics and corrected optional cooldown hint. This receipt does not establish remote publication, production supplier/anchor/eligibility or actual root HTTP/completion; real IN04 remains NOT_RUN |
 | Product/Gateway mappings and production entry composition | `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` | Supply actual producer/configuration handoff; route existence does not confer availability |
 | Canonical held authority | `01a1a207-f012-7343-a24b-12b9c544973f` | Technical interface and qualification belong to the implementation owners |
 | Actual incumbent World binding | `01a1a20f-8d37-71c3-a429-8a55bb6d6c49` | Resolve genuine connection/binding inputs directly with implementation owners |
@@ -107,10 +107,13 @@ exact ready scope is accepted and actual goal startup is reported. No reserved
 developer has an active waiting goal. Each implementation owner qualifies,
 fixes, documents, commits and publishes its own deliverable. No new application
 checks or implementation inspection were performed by this coordinator.
+Persistent goals must not be paused for staffing or reallocation; pausing
+requires the user's explicit request. Preserve unfinished goals through ordinary
+handoffs and never falsely complete, reset or relabel them.
 
 | Original task | Named implementation owner / status | Delivered contribution and remaining original criteria | Prerequisite owner / next action / publication |
 |---|---|---|---|
-| QA01 | `6ec9`, sole Community allocation; implementation IN_PROGRESS, same goal `1793754012` actually PAUSED despite authorized resume | Implement every C07 fixture/generated shape coverage with drift, missing-operation, broken-schema and unknown-enum failures; no empty-test success. Prior visual/feature receipts do not certify QA01 | Published source/fixtures independently ready; canonical inputs owned by root `1fc`. Exact restored allocation is NEW `scripts/mcr/contracts/qa01-coverage/**` and NEW `docs/mcr/evidence/contracts/qa01-coverage/**` only. Developer continues authorized work; app/user must resume existing goal via goal control. No existing-script/schema/generator/output rights; no QA01 deliverable commit/push yet |
+| QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
 | QA05 mural contribution | Reserved `230` after its completed caller handoff; World primary `202` after current spatial work; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
 | QA09 frontend lifecycle/closure/retry contribution | Reserved `230`; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
 | QA10 frontend provenance contribution | Reserved `230` serially after ready mural/recovery work; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner; NOT_STARTED | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Proposed NEW `docs/mcr/evidence/release/frontend/**` only, pending exact lease. No release-script grant to frontend contributor and no commit/push |
@@ -131,7 +134,25 @@ waiting goal. World QA05 primary above is a different UUID from active Auth
 QA04 owner `01a1a202-3ff2-7a93-95c3-374c6df97281`; prefix similarity gives no
 ownership collision or right to divert Auth work.
 
-**Actual crossed-allocation lifecycle:** the earlier explicit frontend-king and
+**Delivered QA01 receipt:** owner reports 15 schemas/225 definitions plus 241
+generated components, 134 operations, all 124 fixture JSON inputs (121 fixtures
+and 3 indexes), 25 scenery cases and 1,519 response/media cases passing. Twelve
+deliberate CLI mutations each exit 1 with positive control passing; 1,167
+unknown-reason rejections; seven tests, three generator checks, planning,
+scope and diff checks exit 0. These are owner-run results, not manager reruns.
+Evidence: [QA01 coverage](../evidence/contracts/qa01-coverage/README.md),
+with `report.json`, `negative-results.json` and `validation.json` recording
+commands, hashes, limitations and provenance. Five new script paths and eight
+new evidence/doc paths stayed in the exact two prefixes; no canonical,
+generated, CI or application writes. Owner reports peer-merge and affected
+rerun before safe non-force publication, clean checkout, zero changed/untracked
+paths and no processes. The same goal completed and following `get_goal`
+returned null; no recreation/reset. No manual resume remains pending for this
+completed goal. No QA02/QA07/QA10/IN05 work began or new reservation was acquired.
+Original QA01 satisfaction was relayed to Main and frontend king for ledger
+reconciliation once; no replacement aggregate is computed here.
+
+**Historical crossed-allocation lifecycle:** the earlier explicit frontend-king and
 World QA01-first grant to `6ec9` was acted on before the king's newer switch to
 `1ab7` arrived. Community created isolated
 `/Users/lhs/Desktop/mcr-worktrees/qa-contract-coverage`, branch
@@ -156,11 +177,12 @@ The king's subsequent actual-start decision preserves `6ec9`'s accepted QA01
 and assigns independent QA02 to stopped `1ab7` instead. Community explicitly
 restored the exact original two new prefixes and authorized resuming the SAME
 aligned goal `1793754012`, without creating/resetting a duplicate. Developer's
-subsequent `get_goal` still reports PAUSED: available goal tools cannot resume
-it, so the app/user must resume the existing goal via its goal control.
-Developer explicitly continues authorized aligned implementation; runtime goal
-status is not falsely reported ACTIVE. No further STOP/archive/switch is
-authorized by the current allocation.
+subsequent `get_goal` then still reported PAUSED: available goal tools could
+not resume it, and user/app control was required for an ACTIVE transition.
+Developer continued expressly authorized aligned implementation with truthful
+runtime status. The final delivered receipt above supersedes that temporary
+pause: actual COMPLETE then null after all required owned work, not a staffing
+reset or false completion. No further implementation or goal is assigned.
 Root's canonical source/lease receipt was forwarded directly. No QA02/QA07
 assignment belongs to `6ec9` now. Community has never dispatched `1ab7`.
 No QA01 outcome is inferred from dispatch. Later QA07/QA10/IN05 contributions

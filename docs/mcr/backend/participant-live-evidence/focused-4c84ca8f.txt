@@ -1,0 +1,10 @@
+
+running 5 tests
+test participant::live::coordinator_tests::native_guarded_coordinator_cas_rollback_and_decision_recovery ... ignored, requires marker/inode-owned private PG16.14 fixture with migration 0027
+test participant::live::update::tests::duplicate_patch_fields_and_transport_overflow_fail_closed ... ok
+test participant::live::update::tests::full_patch_matches_frozen_c03_shape_and_preserves_null_vs_absent ... ok
+test participant::live::auth_tests::actual_read_client_requires_current_exact_no_store_owner_reply ... ok
+test participant::live::auth_tests::original_deadline_and_real_credentials_bound_auth_call ... ok
+
+test result: ok. 4 passed; 0 failed; 1 ignored; 0 measured; 53 filtered out; finished in 0.12s
+
