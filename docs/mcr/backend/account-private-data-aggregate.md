@@ -174,3 +174,10 @@ only after that provider has passed its own coherent qualification. The
 coordinator's closed registry will reject duplicate category insertion. A
 missing provider stays durable `INCOMPLETE`; the aggregate cannot turn the core
 owner or an unavailable constructor into a seven-category acknowledgement.
+
+The current provider interface pins called out by that integrator are
+Intro `40a35a60`, Age `9762780a`, Media `117e7d34`, Party composite `cc4770dd`
+with Gift cleanup `37b61bd2`, Mural `8f7013d6`, and Meeting `cc4770dd`. These
+are composition inputs and are not counted as coordinator native evidence.
+The Party/Gift composite becomes terminal only when both actual child effects
+are terminal; Meeting remains a separate `BEACONS_AND_RALLY` category.
