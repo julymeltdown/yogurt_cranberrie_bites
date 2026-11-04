@@ -1,0 +1,330 @@
+test_actor_observation_must_match_its_fingerprint (composition.test_composition.Composition.test_actor_observation_must_match_its_fingerprint) ... FAIL
+test_both_device_platforms_are_required_for_qa06 (composition.test_composition.Composition.test_both_device_platforms_are_required_for_qa06) ... FAIL
+test_complete_consistency_fixture_preserves_112_61_and_never_decides_release (composition.test_composition.Composition.test_complete_consistency_fixture_preserves_112_61_and_never_decides_release) ... FAIL
+test_default_source_and_explicit_composition_cli_stay_separate (composition.test_composition.Composition.test_default_source_and_explicit_composition_cli_stay_separate) ... ok
+test_deployment_observation_must_match_actual_binary_record (composition.test_composition.Composition.test_deployment_observation_must_match_actual_binary_record) ... FAIL
+test_dirty_current_source_refused (composition.test_composition.Composition.test_dirty_current_source_refused) ... ok
+test_duplicate_or_unknown_original_id_refused (composition.test_composition.Composition.test_duplicate_or_unknown_original_id_refused) ... FAIL
+test_failed_or_unexecuted_command_cannot_pass (composition.test_composition.Composition.test_failed_or_unexecuted_command_cannot_pass) ... FAIL
+test_fake_rust_zero_or_footer_only_results_refused (composition.test_composition.Composition.test_fake_rust_zero_or_footer_only_results_refused) ... ok
+test_final_candidate_fence_is_rechecked_after_evidence (composition.test_composition.Composition.test_final_candidate_fence_is_rechecked_after_evidence) ... FAIL
+test_gate_requires_immutable_owner_report_coverage_not_a_manifest_label (composition.test_composition.Composition.test_gate_requires_immutable_owner_report_coverage_not_a_manifest_label) ... FAIL
+test_live_context_requires_two_distinct_actual_actor_fingerprints (composition.test_composition.Composition.test_live_context_requires_two_distinct_actual_actor_fingerprints) ... FAIL
+test_mismatched_candidate_refuses_ancestor_receipt (composition.test_composition.Composition.test_mismatched_candidate_refuses_ancestor_receipt) ... ok
+test_missing_deferral_is_a_gap_not_an_implicit_pass (composition.test_composition.Composition.test_missing_deferral_is_a_gap_not_an_implicit_pass) ... FAIL
+test_missing_manifest_and_task_ia_records_remain_not_run (composition.test_composition.Composition.test_missing_manifest_and_task_ia_records_remain_not_run) ... FAIL
+test_missing_owner_evidence_is_not_qualified (composition.test_composition.Composition.test_missing_owner_evidence_is_not_qualified) ... FAIL
+test_mock_and_synthetic_contexts_refused (composition.test_composition.Composition.test_mock_and_synthetic_contexts_refused) ... FAIL
+test_native_context_requires_isolated_actual_postgres (composition.test_composition.Composition.test_native_context_requires_isolated_actual_postgres) ... ok
+test_no_recorded_command_is_executed_by_consumer (composition.test_composition.Composition.test_no_recorded_command_is_executed_by_consumer) ... FAIL
+test_omitted_end_fence_fails (composition.test_composition.Composition.test_omitted_end_fence_fails) ... ok
+test_partial_frontend_cannot_grant_live_ia_acceptance (composition.test_composition.Composition.test_partial_frontend_cannot_grant_live_ia_acceptance) ... FAIL
+test_physical_device_is_not_emulation (composition.test_composition.Composition.test_physical_device_is_not_emulation) ... FAIL
+test_physical_device_observation_must_match_version_record (composition.test_composition.Composition.test_physical_device_observation_must_match_version_record) ... FAIL
+test_playwright_counts_refuse_retries_and_fabricated_stats (composition.test_composition.Composition.test_playwright_counts_refuse_retries_and_fabricated_stats) ... ok
+test_qa08_cannot_pass_or_authorize_another_cut (composition.test_composition.Composition.test_qa08_cannot_pass_or_authorize_another_cut) ... FAIL
+test_qa08_pass_even_with_valid_deferral_is_rejected (composition.test_composition.Composition.test_qa08_pass_even_with_valid_deferral_is_rejected) ... FAIL
+test_rust_skip_is_retained_in_counts (composition.test_composition.Composition.test_rust_skip_is_retained_in_counts) ... ok
+test_service_candidate_cannot_be_an_old_build (composition.test_composition.Composition.test_service_candidate_cannot_be_an_old_build) ... FAIL
+test_tampered_artifact_rejected (composition.test_composition.Composition.test_tampered_artifact_rejected) ... ok
+test_unit_test_cannot_be_relabelled_live (composition.test_composition.Composition.test_unit_test_cannot_be_relabelled_live) ... FAIL
+test_unittest_requires_named_actual_points_not_just_ok_footer (composition.test_composition.Composition.test_unittest_requires_named_actual_points_not_just_ok_footer) ... ok
+test_unrelated_live_receipt_cannot_lend_its_level_to_native_gate_coverage (composition.test_composition.Composition.test_unrelated_live_receipt_cannot_lend_its_level_to_native_gate_coverage) ... FAIL
+test_unrelated_live_receipt_cannot_lend_its_level_to_native_ia_coverage (composition.test_composition.Composition.test_unrelated_live_receipt_cannot_lend_its_level_to_native_ia_coverage) ... FAIL
+test_wrong_original_task_path_refused (composition.test_composition.Composition.test_wrong_original_task_path_refused) ... FAIL
+test_positive_exact_candidate_test_artifacts_production_and_task_link (test_check.ReleaseChecks.test_positive_exact_candidate_test_artifacts_production_and_task_link) ... ok
+test_cli_exit_codes_distinguish_partial_incomplete_and_fail (test_check.ReleaseChecks.test_cli_exit_codes_distinguish_partial_incomplete_and_fail) ... ok
+test_existing_frontend_schema_is_consumed_and_archived_json_checked (test_check.ReleaseChecks.test_existing_frontend_schema_is_consumed_and_archived_json_checked) ... ok
+
+======================================================================
+FAIL: test_actor_observation_must_match_its_fingerprint (composition.test_composition.Composition.test_actor_observation_must_match_its_fingerprint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 292, in test_actor_observation_must_match_its_fingerprint
+    self.rule("context.observation-mismatch")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'context.observation-mismatch' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_both_device_platforms_are_required_for_qa06 (composition.test_composition.Composition.test_both_device_platforms_are_required_for_qa06)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 304, in test_both_device_platforms_are_required_for_qa06
+    self.rule("gates.both-physical-platforms-required")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'gates.both-physical-platforms-required' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_complete_consistency_fixture_preserves_112_61_and_never_decides_release (composition.test_composition.Composition.test_complete_consistency_fixture_preserves_112_61_and_never_decides_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 214, in test_complete_consistency_fixture_preserves_112_61_and_never_decides_release
+    self.assertEqual(result["composition_checks"], "PASS", result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAIL' != 'PASS'
+- FAIL
++ PASS
+ : {'schema': 'mcr.qa10.release-composition.v1', 'candidate': '1cb6f7b387762241afc59ee0226ce13e63b68668', 'status': 'FAIL', 'composition_checks': 'FAIL', 'release_decision': 'NOT_ASSESSED', 'functional_evidence': 'INCOMPLETE', 'findings': ['frontend.candidate-test-inventory'], 'receipts': [{'id': 'backend', 'status': 'PASS', 'category': 'backend', 'level': 'native', 'counts': {'total': 1, 'passed': 1, 'skipped': 0}}], 'gates': [], 'task_coverage': {'required': 112, 'bound': 0, 'missing': ['AR01', 'AR02', 'AR03', 'AR04', 'BE01', 'BE02', 'BE03', 'BE04', 'BE05', 'BE06', 'BE07', 'BE08', 'BE09', 'BE10', 'BE11', 'BE12', 'BE13', 'BE14', 'BE15', 'BE16', 'BE17', 'BE18', 'BE19', 'BE20', 'BE21', 'BE22', 'BE23', 'BE24', 'BE25', 'BE26', 'BE27', 'BE28', 'BE29', 'BE30', 'BE31', 'BE32', 'BE33', 'BE34', 'BE35', 'BE36', 'BE37', 'BE38', 'BE39', 'BE40', 'BE41', 'BE42', 'BE43', 'BE44', 'C01', 'C02', 'C03', 'C04', 'C05', 'C06', 'C07', 'C08', 'FE01', 'FE02', 'FE03', 'FE04', 'FE05', 'FE06', 'FE07', 'FE08', 'FE09', 'FE10', 'FE11', 'FE12', 'FE13', 'FE14', 'FE15', 'FE16', 'FE17', 'FE18', 'FE19', 'FE20', 'FE21', 'FE22', 'FE23', 'FE24', 'FE25', 'FE26', 'FE27', 'FE28', 'FE29', 'FE30', 'FE31', 'FE32', 'FE33', 'FE34', 'FE35', 'FE36', 'FE37', 'FE38', 'FE39', 'FE40', 'FE41', 'IN01', 'IN02', 'IN03', 'IN04', 'IN05', 'QA01', 'QA02', 'QA03', 'QA04', 'QA05', 'QA06', 'QA07', 'QA08', 'QA09', 'QA10']}, 'ia_coverage': {'required': 61, 'bound': 0, 'missing': ['A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'F01', 'F02', 'F03', 'F04', 'F05', 'G01', 'G02', 'G03', 'G04', 'G05', 'G06', 'G07', 'M01', 'M02', 'M03', 'M04', 'M05', 'M06', 'M07', 'M08', 'M09', 'O01', 'O02', 'O03', 'O04', 'O05', 'O06', 'O07', 'O08', 'O09', 'R01', 'S01', 'S02', 'S03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06', 'U07', 'U08', 'U09', 'U10', 'W01', 'W02', 'W03', 'W04', 'W05', 'W06', 'W07', 'W08', 'X01']}, 'qa08': 'NOT_RUN', 'limits': ['Offline owner-evidence consistency, not signed execution attestation.', 'No receipt command is executed. Owner acceptance is recorded, not independently decided.', 'This output cannot grant IN05, qualify performance, or replace physical/live work.'], 'catalogs': [{'path': 'generated/TASKS_EN.json', 'sha256': '44e9041251433dbe4ba9d4615b42a777a628405e68e4ae2202292514114d1611'}, {'path': 'generated/IA_EN.json', 'sha256': '9f8a191a8a85ef7b2143a61fe3ed92c2bb40c1d283186d410687a82494cb1f7d'}], 'input_manifest': {'path': 'docs/mcr/evidence/release/parser-fixture/composition.json', 'sha256': 'c8147b142ddce49fe3a38d05670d7413c95bd14cb3f0839cba60a52ca8084b0c'}, 'source_checks': 'PASS'}
+
+======================================================================
+FAIL: test_deployment_observation_must_match_actual_binary_record (composition.test_composition.Composition.test_deployment_observation_must_match_actual_binary_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 358, in test_deployment_observation_must_match_actual_binary_record
+    self.rule("context.observation-mismatch")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'context.observation-mismatch' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_duplicate_or_unknown_original_id_refused (composition.test_composition.Composition.test_duplicate_or_unknown_original_id_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 346, in test_duplicate_or_unknown_original_id_refused
+    self.rule("tasks.unknown-or-duplicate")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'tasks.unknown-or-duplicate' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_failed_or_unexecuted_command_cannot_pass (composition.test_composition.Composition.test_failed_or_unexecuted_command_cannot_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 276, in test_failed_or_unexecuted_command_cannot_pass
+    self.rule("command.false-pass")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'command.false-pass' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_final_candidate_fence_is_rechecked_after_evidence (composition.test_composition.Composition.test_final_candidate_fence_is_rechecked_after_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 264, in test_final_candidate_fence_is_rechecked_after_evidence
+    self.rule("candidate.end-changed")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'candidate.end-changed' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_gate_requires_immutable_owner_report_coverage_not_a_manifest_label (composition.test_composition.Composition.test_gate_requires_immutable_owner_report_coverage_not_a_manifest_label)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 326, in test_gate_requires_immutable_owner_report_coverage_not_a_manifest_label
+    self.rule("binding.criteria-not-qualified")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'binding.criteria-not-qualified' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_live_context_requires_two_distinct_actual_actor_fingerprints (composition.test_composition.Composition.test_live_context_requires_two_distinct_actual_actor_fingerprints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 288, in test_live_context_requires_two_distinct_actual_actor_fingerprints
+    self.rule("context.actual-two-actors-required")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'context.actual-two-actors-required' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_missing_deferral_is_a_gap_not_an_implicit_pass (composition.test_composition.Composition.test_missing_deferral_is_a_gap_not_an_implicit_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 240, in test_missing_deferral_is_a_gap_not_an_implicit_pass
+    self.assertEqual(result["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAIL' != 'INCOMPLETE'
+- FAIL
++ INCOMPLETE
+
+
+======================================================================
+FAIL: test_missing_manifest_and_task_ia_records_remain_not_run (composition.test_composition.Composition.test_missing_manifest_and_task_ia_records_remain_not_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 225, in test_missing_manifest_and_task_ia_records_remain_not_run
+    self.assertEqual(result["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAIL' != 'INCOMPLETE'
+- FAIL
++ INCOMPLETE
+
+
+======================================================================
+FAIL: test_missing_owner_evidence_is_not_qualified (composition.test_composition.Composition.test_missing_owner_evidence_is_not_qualified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 317, in test_missing_owner_evidence_is_not_qualified
+    self.assertEqual(result["status"], "INCOMPLETE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAIL' != 'INCOMPLETE'
+- FAIL
++ INCOMPLETE
+
+
+======================================================================
+FAIL: test_mock_and_synthetic_contexts_refused (composition.test_composition.Composition.test_mock_and_synthetic_contexts_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 296, in test_mock_and_synthetic_contexts_refused
+    self.rule("context.mock-or-synthetic")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'context.mock-or-synthetic' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_no_recorded_command_is_executed_by_consumer (composition.test_composition.Composition.test_no_recorded_command_is_executed_by_consumer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 272, in test_no_recorded_command_is_executed_by_consumer
+    self.assertEqual(self.run_check()["composition_checks"], "PASS")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAIL' != 'PASS'
+- FAIL
++ PASS
+
+
+======================================================================
+FAIL: test_partial_frontend_cannot_grant_live_ia_acceptance (composition.test_composition.Composition.test_partial_frontend_cannot_grant_live_ia_acceptance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 330, in test_partial_frontend_cannot_grant_live_ia_acceptance
+    self.rule("binding.criteria-not-qualified")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'binding.criteria-not-qualified' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_physical_device_is_not_emulation (composition.test_composition.Composition.test_physical_device_is_not_emulation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 300, in test_physical_device_is_not_emulation
+    self.rule("context.physical-device-required")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'context.physical-device-required' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_physical_device_observation_must_match_version_record (composition.test_composition.Composition.test_physical_device_observation_must_match_version_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 362, in test_physical_device_observation_must_match_version_record
+    self.rule("context.observation-mismatch")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'context.observation-mismatch' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_qa08_cannot_pass_or_authorize_another_cut (composition.test_composition.Composition.test_qa08_cannot_pass_or_authorize_another_cut)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 231, in test_qa08_cannot_pass_or_authorize_another_cut
+    self.rule("deferral.unauthorized-scope-cut")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'deferral.unauthorized-scope-cut' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_qa08_pass_even_with_valid_deferral_is_rejected (composition.test_composition.Composition.test_qa08_pass_even_with_valid_deferral_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 235, in test_qa08_pass_even_with_valid_deferral_is_rejected
+    self.rule("QA08.cannot-pass")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'QA08.cannot-pass' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_service_candidate_cannot_be_an_old_build (composition.test_composition.Composition.test_service_candidate_cannot_be_an_old_build)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 308, in test_service_candidate_cannot_be_an_old_build
+    self.rule("candidate.mismatch")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'candidate.mismatch' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_unit_test_cannot_be_relabelled_live (composition.test_composition.Composition.test_unit_test_cannot_be_relabelled_live)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 284, in test_unit_test_cannot_be_relabelled_live
+    self.rule("evidence.unit-as-live")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'evidence.unit-as-live' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_unrelated_live_receipt_cannot_lend_its_level_to_native_gate_coverage (composition.test_composition.Composition.test_unrelated_live_receipt_cannot_lend_its_level_to_native_gate_coverage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 342, in test_unrelated_live_receipt_cannot_lend_its_level_to_native_gate_coverage
+    self.rule("gates.unit-as-live")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'gates.unit-as-live' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_unrelated_live_receipt_cannot_lend_its_level_to_native_ia_coverage (composition.test_composition.Composition.test_unrelated_live_receipt_cannot_lend_its_level_to_native_ia_coverage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 336, in test_unrelated_live_receipt_cannot_lend_its_level_to_native_ia_coverage
+    self.rule("ia.unit-as-product")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'ia.unit-as-product' not found in ['frontend.candidate-test-inventory']
+
+======================================================================
+FAIL: test_wrong_original_task_path_refused (composition.test_composition.Composition.test_wrong_original_task_path_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 322, in test_wrong_original_task_path_refused
+    self.rule("tasks.path-outside-original-task")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/scripts/mcr/release_checks/composition/test_composition.py", line 210, in rule
+    self.assertIn(rule, result["findings"])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'tasks.path-outside-original-task' not found in ['frontend.candidate-test-inventory']
+
+----------------------------------------------------------------------
+Ran 37 tests in 46.137s
+
+FAILED (failures=24)

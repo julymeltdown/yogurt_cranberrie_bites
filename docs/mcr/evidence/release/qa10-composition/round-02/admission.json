@@ -1,0 +1,15 @@
+{
+  "status": "ACTUAL_ACCEPT",
+  "offer": "QA10-COMPOSITION-RETRY-SOURCE-20261104T1915Z",
+  "at": "2026-11-04T19:14:19.795819+00:00",
+  "free": 17592950784,
+  "all_new_bytes": 3120562176,
+  "reserved_free": 14472388608,
+  "whole_baseline": 645927702,
+  "work_seconds": 180,
+  "full_seconds": 210,
+  "new_cap": 33554432,
+  "whole_cap": 6442450944,
+  "process_cap": 4,
+  "rss_cap": 536870912
+}

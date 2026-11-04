@@ -1,6 +1,6 @@
 # QA10 same-candidate evidence composition
 
-Status: **IN_PROGRESS**. This implements the functional remainder
+Status: **IN_PROGRESS** for original QA10; this implementation slice is source-validated and ready for direct publication. This implements the functional remainder
 **QA10-COMPOSITION-01**, not a release decision or a new acceptance matrix.
 Original QA10 and IN05 remain open until their actual responsible-owner evidence
 exists. QA08 remains **DEFERRED_BY_USER**, nonblocking and uncompleted; no capacity
@@ -205,6 +205,66 @@ unit-as-live, mock contexts, actual actor/device requirements, original-path
 ownership, command truth, source hashes and fabricated test counts.
 
 Compilation/application/gates/browser/PG/device validation: **NOT_RUN** by this
-assignment. Focused source self-validation awaits its separate named allocation;
-no prior runtime/build offer is reused. Commands, exits, source pins, scoped
-commit and direct Root publication receipt will be recorded after that run.
+assignment. Parser fixtures never certify those actual product outcomes.
+
+## Executed source validation and publication handoff
+
+The final tested source is `b30749b2e039152c82c9a8472dc4e7964fb61788`, descending
+from the assignment base. The following retained results are under
+`docs/mcr/evidence/release/qa10-composition/`; `self-validation.json` pins all
+seven executable/test/controller source files, original raw record hashes and
+sanitized retained hashes. Only local checkout/Python-framework prefixes were
+replaced. Original records remain preserved locally. No earlier artifact or
+historical frontend receipt was rewritten.
+
+| Round | Actual ACCEPT / FULL (UTC, 2026-11-04) | Result |
+| --- | --- | --- |
+| SOURCE1902 / `round-01` | 19:09:47.994534 / 19:10:34.899920 | 37 tests ran; 13 passed, 24 failed on the shared synthetic frontend inventory. All three retained regressions passed. |
+| RETRY1915 / `round-02` | 19:14:19.795819 / 19:15:51.373422 | All 37 tests passed in 90.811s; process exit0. |
+
+The first fixture copied original catalog test paths but omitted those paths
+from its frontend-v1 inventory. The fix supplies the complete miniature candidate
+inventory, matching Vitest counts and dispatch paths. The production inventory
+check remains enforced. The second run reaches the intended positive and
+negative bindings: 34 new composition cases plus three relevant retained
+source-v1 positive, CLI and frontend-adapter regressions. Exact invocation:
+
+```sh
+# Working directory: scripts/mcr/release_checks
+python3 -B -m unittest -v composition.test_composition \
+  test_check.ReleaseChecks.test_positive_exact_candidate_test_artifacts_production_and_task_link \
+  test_check.ReleaseChecks.test_cli_exit_codes_distinguish_partial_incomplete_and_fail \
+  test_check.ReleaseChecks.test_existing_frontend_schema_is_consumed_and_archived_json_checked
+```
+
+Both rounds separately run the actual external Python CLI. No manifest returns
+exit2 with source/composition NOT_RUN; composition lists all112 tasks and61 IA
+as missing and leaves `release_decision=NOT_ASSESSED`. A different full candidate
+returns exit1 with `candidate.not-current-head`. `git diff --check` against the
+assignment base returns0. Exact argv, exits, reports and verbose test points are
+retained per round. There is no release-manifest PASS for actual MCR evidence.
+
+Each round had its own explicit allocation and actual epoch, with 180s work,
+210s FULL including30s cleanup, NEW32MiB, logs below2MiB, WHOLE6GiB preserving
+the prior650272KiB carry, <=4 total processes and RSS512MiB. The corrected
+continuity admission required fresh12GiB, >=9GiB after all growth reservations
+and live8GiB. Fresh free/reserved bytes were 18,349,715,456/15,497,588,736 in
+round1 and17,592,950,784/14,472,388,608 in round2. An independent native libproc
+guardian started before each work child and observed no breach. Its maxima
+were4 processes/104,742,912 RSS bytes/452,948 new bytes in round1, and4 processes/
+95,059,968 RSS bytes/441,157 new bytes in round2. Owned miniature repositories
+were removed; supervisor, worker and guardian ended before both literal FULL
+notifications. Allocator21d and named publisher Root received the releases;
+the next Ops owner received round2's release directly.
+
+The independent SOURCE controller is retained as `source_round.py`; it launches
+only these fixed self-validation commands, never commands from input receipts.
+Global Git hooks and automatic maintenance are disabled for miniature fixtures.
+The original unused1850 offer was definitively declined before children; no
+closed round or old runtime/build lease was reused.
+
+The committed handoff routes directly to Root1fc for publication into
+`julymeltdown/mcr:master`. Publication is pending until its actual publisher
+receipt. This source validation does not complete original QA10, IN05 or the
+historical incompatible Profile goal. Real responsible-owner service/device/
+operator evidence and full functional release acceptance remain open.
