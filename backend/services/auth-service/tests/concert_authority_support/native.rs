@@ -603,8 +603,17 @@ async fn actual_security_generation_distinguishes_rotation_and_invalidation() ->
     let suspended = generation(&p, actor).await?;
     assert!(suspended > password);
     // A ROTATED label with no real same-family successor cannot bypass it.
+    // Password changes correctly revoked the earlier login. Use a fresh live
+    // record so the fake rotation tests a security transition, not a no-op on
+    // an already invalid token.
+    let fake = RefreshTokenRecord {
+        jti: Uuid::new_v4().to_string(),
+        family_id: Uuid::new_v4(),
+        ..next.clone()
+    };
+    sessions.store(&(&fake).into()).await?;
     let before_fake = generation(&p, actor).await?;
-    sqlx::query("update refresh_tokens set revoked_at=transaction_timestamp(),rotated_at=transaction_timestamp(),revoked_reason='ROTATED',successor_jti=$2 where jti=$1").bind(&login.jti).bind(Uuid::new_v4().to_string()).execute(&p).await?;
+    sqlx::query("update refresh_tokens set revoked_at=transaction_timestamp(),rotated_at=transaction_timestamp(),revoked_reason='ROTATED',successor_jti=$2 where jti=$1").bind(&fake.jti).bind(Uuid::new_v4().to_string()).execute(&p).await?;
     assert!(generation(&p, actor).await? > before_fake);
     sqlx::query("delete from users where id=$1")
         .bind(actor)

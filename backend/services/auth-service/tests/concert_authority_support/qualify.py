@@ -28,6 +28,9 @@ def qualify(metadata, pg, report):
     if dirty or metadata['source_commit']!=current or metadata['source_sha256']!=source_manifest(): raise SmokeError('preflight','source checkpoint changed')
     if set(metadata['artifacts'])!={'auth','friend'}: raise SmokeError('preflight','exact two owner artifacts required')
     artifacts={k:frozen_binary(Path(v['path']),v['sha256']) for k,v in metadata['artifacts'].items()}
+    extras=metadata.get('extra_artifacts',{})
+    if not {'auth-server','friend-server','auth-unit','friend-unit'}<=set(extras):raise SmokeError('preflight','frozen production and unit binaries required')
+    for data in extras.values():frozen_binary(Path(data['path']),data['sha256'])
     if shutil.disk_usage(ROOT).free<8*1024**3: raise SmokeError('preflight','8 GiB free required')
     cluster=Cluster({n:executable(pg/n) for n in PG_TOOLS})
     report.update(source_commit=current,source_sha256=metadata['source_sha256'],artifacts_sha256={k:sha(p) for k,p in artifacts.items()},owned_root=str(cluster.root),phases={})
