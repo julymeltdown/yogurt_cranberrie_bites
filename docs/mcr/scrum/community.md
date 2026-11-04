@@ -152,6 +152,18 @@ completed goal. No QA02/QA07/QA10/IN05 work began or new reservation was acquire
 Original QA01 satisfaction was relayed to Main and frontend king for ledger
 reconciliation once; no replacement aggregate is computed here.
 
+**Post-QA01 context handoff:** Community released completed `6ec9` to Backend
+staffing `01a1a21d-39ec-7912-84cb-910058e7a110` as sole next allocator for
+prospective BE27 backend implementation. A fresh compact chat snapshot confirms
+notLoaded/latest turn completed and the QA01 COMPLETE/null/clean-STOP receipt;
+Community has sent no new assignment or goal. The chat remains archived until
+a concrete assignment. Backend staffing must first obtain actual STOP/zero-edit
+release of the prospective BE27 scope from developer `00c`, then own the exact
+ten-path lease, isolated backend worktree and truthful new-goal startup. No
+BE27 implementation or active goal is inferred from this context release, and
+no former frontend/shared-script/contract rights transfer. Community will not
+dispatch concurrent QA10/IN05/other work to this context.
+
 **Historical crossed-allocation lifecycle:** the earlier explicit frontend-king and
 World QA01-first grant to `6ec9` was acted on before the king's newer switch to
 `1ab7` arrived. Community created isolated
