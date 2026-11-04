@@ -371,3 +371,30 @@ The task remains IN_PROGRESS, with no capability enabled.
 | native-absence-not-proof | 1 | 0 | `790c898ae82812aca612b5421c9984b2225d9e52d62add8682ecfd5be60d5e7e` |
 | native-owner-before-restart | 1 | 0 | `70b55030918478ad5d61e146d5cb303c41be6f33b9ca76f489e4f3715d9d16a3` |
 | native-settlement-after-restart | 1 | 0 | `90c4a41b7e91de232cd93374b1e7f8b002455f4684155d6a7d7b43529d87d0c8` |
+
+
+### Qualified publication boundary
+
+Integration merge `edbbabdd3259437664011c9308f9941bbec04ce5` consumes published
+master `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`, including the SELF registration
+handoff and owner stores. Every public-producer, dedicated proto, controller,
+new migration, adapter and projection-test source remains byte-identical to the
+compiled `52000b75` checkpoint. Comparison against the frozen manifest found
+31 changed pre-existing peer inputs, including central lock/Profile manifest,
+SELF registration, Auth/Friend registration and root composition. Thus the
+52000 receipt certifies its exact source snapshot; it does not certify a build
+of this merged HEAD. A fresh bounded two-target combined compile has been queued
+with the resource lead. No target remains held.
+
+The net implementation paths against that published master are exclusively the
+dedicated public proto/controller, Concert `adapters/out/mod.rs` export and
+`adapters/out/public_profile/{mod,profile,local}.rs`,
+`tests/public_profile_projection.rs`, Profile public grpc/module/persistence,
+public transport/support tests, owner migration 0009 and this receipt. No
+frontend, World/Feed subtree, central manifest, lockfile or root composition
+change is authored by this increment. Cross-directory import inspection found no
+frontend or SELF/World implementation dependency in the new projection.
+Controller regressions (5), planning provenance check and `git diff --check`
+passed again, all exit 0. The intended direct non-force publication carries the
+independently qualified producer and CONTRACT_READY compiled adapter; actual
+merged build and joined response acceptance remain explicit open gates.
