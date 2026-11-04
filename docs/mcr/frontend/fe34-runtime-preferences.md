@@ -122,6 +122,19 @@ provide the full incumbent controller; a cast or fabricated controller is not a
 production adoption. Runtime producer delivery, exact root wiring and remote
 ancestry/payload verification are still outstanding at this checkpoint.
 
+The exact five-existing-file consumer proposal is preserved as text in
+`docs/mcr/evidence/fe34-runtime-preferences/root-wiring-proposal.patch`, generated
+against the full base above and **not applied** by this owner. It forwards the
+incumbent `WorldRuntime.effects`, exports the existing presentation context,
+binds the owned hook and narrows both theme consumer types. Root owns any
+application/reconciliation of those existing-file hunks after the producer source
+is available. No art, CSS, layout, text or character change is proposed.
+
+Validated adapter source checkpoint:
+`3eea76f47f9f7825c98e5d72616fcb8b72849720`.
+Its exact 20 new paths, unchanged source-archive proof and base contract hashes
+are recorded in `docs/mcr/evidence/fe34-runtime-preferences/handoff.json`.
+
 ## Validation and limits
 
 Owned tests cover adapter behavior, actual retained ThemeController success and
