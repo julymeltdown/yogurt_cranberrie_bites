@@ -636,3 +636,21 @@ Root's `3710a029` fixes this production boundary and adds actual ungated TCP tes
 The additional canonical HTTP regression clones the full production router **before** adding the test gate, serves it on a separate actual socket, and sends one actual logged-in public request without a fixture header or body transformation. It requires the real closed 403 response, protected chunked terminal framing, both actual owner prepared sets zero, actual rollback-only invalidating writers unblocked, and the exact durable RootFinished plus DeliveryCompleted receipt. Existing three gated cases remain separately bounded coverage. No production files, shared dependency manifests, lockfiles or positive owner/identity doubles change in this correction.
 
 This additional regression is source-only: compilation and actual runtime are `NOT_RUN`. Integrate it serially after the scoped `dea44838` HTTP handoff and qualify coherently with Root's production framing fix. No passing result is inferred from formatting, source review or the earlier gated binary.
+
+### Corrected production HTTP framing: independently read-back native PASS
+
+Exact Root source `e6921cf285d9729cfa8c86351e1ce61b357398f2` includes the scoped `dea44838`/`c5277678` HTTP fixture and production shared-body correction `3710a029`. Root ran the frozen executable after releasing its build target. The exact native case `http::actual_public_router_retains_real_owners_and_checks_before_bytes` passed (exit 0; one test, 2.48s). Real signup, email verification, login and public self-Profile creation returned HTTP200. The unchanged public router on a second real TCP listener, without the held-frame wrapper, delivered the closed safe403 response, reached genuine terminal EOF, settled the actual Auth/Friend guards and recorded genuine RootFinished plus DeliveryCompleted. No Content-Length was exposed on the protected response and actual chunked terminal framing was observed.
+
+Separate held-frame EOF, real TCP reset of an unopened body, and delayed polling past the original authority ceiling also passed. Reset and expiry retained Auth2/Friend2/Concert0 prepared exclusions before owned teardown; neither was credited as successful delivery. Actual migration ledgers were Auth17/Friend17/Concert31. The six actual identity mains were ready and their recorded hashes matched the supplied stack manifest. They ran in the recorded parity configuration, not full internal-TLS main startup. Strict canonical owner fixture RPC and the actual production body stack remain the qualified component boundary.
+
+Receiving owner 207 read and re-hashed the frozen executable and all 1976 HTTP checkpoint source pins against the exact e692 Git tree, confirmed the helper bytes equal c527 and 3710 is in ancestry, checked Cargo exit0 (Rust1.88, locked/offline, j2, debug0/inc0; 17.53s), and checked target release with zero Rust processes/target handles before the native run. Native report exit0 and owned-stack cleanup PASS were inspected; the exact fixture root is absent. No duplicate PostgreSQL fixture was started for this read-back.
+
+| Evidence in immutable basename `mcr-root-native-e6921cf2-20261104` | SHA-256 |
+| --- | --- |
+| `owner-authority-http-tests` | `beef905e49164bf69b89f650d67c87a327c0a6cc141d538cd41d7264158619e6` |
+| `owner-http-native-1.json` | `d295407ac1e25148a628162b1972017d3f1f4bc499864d0a0b646e5d9946e143` |
+| `owner-http-checkpoint.json` | `78aa0a51b967efe229a2beb0b01ad9ff3f00fd8806e6f308be717bc6d6af2f0a` |
+| `owner-http-1-receipt.json` | `966771ee3097269ced105fa106d477e46e72b8ffdad8902546bf4e67cdfefcf4` |
+| `release.json` | `7fe4a4fc1bef7e43bfba88365163fa5e2b58bb614d44d869dbc0e66a14b41986` |
+
+This newer result qualifies the corrected ungated HTTP framing at exact e692. Historical gated 8bb evidence retains its stated framing limitation and is not retroactively upgraded. This deliberately refusing producer does not certify positive Product/Gift, a child-composer join, physical Root restart, generic production child-worker activation, sustained World behavior, browser acceptance or the latest master. Quarantined reset/expiry teardown is explicitly separate from normal settlement.

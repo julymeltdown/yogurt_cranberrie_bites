@@ -14,7 +14,7 @@ restarts. Its dependencies are BE17, BE22, BE23, and BE34. The invariants in Â§Â
 
 ## Ownership and provenance
 
-- Checkout: `/Users/lhs/Desktop/mcr-worktrees/qa-database-races`.
+- Checkout: `$MCR_WORKTREE_ROOT/qa-database-races`.
 - Branch: `codex/mcr-qa-QA03`.
 - Initial published master: `93ef0d895dcc4b247b727e2cccba0bb84576b262`.
 - Writes: `backend/services/concert-service/tests/qa03_races.rs`,
@@ -172,3 +172,8 @@ main-chat or scrum-lead acknowledgment/review gate is introduced. The handoff
 contains this exact branch tip, base, changed paths, qualification evidence, and
 the remaining integration limits. New production adapter changes require their
 own same-candidate qualification rather than inheriting these results.
+
+Delivery copies redact machine-local checkout and rustup prefixes as
+`$MCR_WORKTREE_ROOT` and `$RUSTUP_HOME`. The build-attempt receipt retains
+its original source blob and SHA256; native results and compiled source pins
+are unchanged by this evidence-only redaction.
