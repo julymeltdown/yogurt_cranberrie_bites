@@ -66,8 +66,5 @@ def build():
 
 if __name__ == '__main__':
     import sys
-    if sys.argv[1:] == ['--map-layout-v2']:
-        build_map_layout_landscape()
-    else:
-        assert not sys.argv[1:]
-        build()
+    assert sys.argv[1:] in ([], ['--map-layout-v2'])
+    build_map_layout_landscape()

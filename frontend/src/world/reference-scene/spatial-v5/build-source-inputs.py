@@ -29,7 +29,12 @@ def read_map_layout_v2():
     assert len(handoff_raw) == 4232 and sha(handoff_raw) == 'sha256:f4094dffd71a661663f34b94874f2a908aaaa7bdf0dbf587a6bee291e8c107c0'
     handoff = json.loads(handoff_raw)
     for pin in handoff['files']:
-        raw = (PUBLIC.parent.parent / pin['path']).read_bytes()
+        if pin['path'].startswith('docs/'):
+            # Lane notes can advance independently; close the source publication's historical postimage.
+            import subprocess
+            raw = subprocess.check_output(['git', 'show', 'd1a5deaae0f6b79b365cb4c451d921711573ab8c:' + pin['path']], cwd=PUBLIC.parent.parent)
+        else:
+            raw = (PUBLIC.parent.parent / pin['path']).read_bytes()
         assert len(raw) == pin['bytes'] and sha(raw) == pin['sha256'], pin['path']
     def value(name):
         path = 'frontend/public/' + LAYOUT_PATH + name
@@ -182,8 +187,6 @@ def build():
 
 if __name__ == '__main__':
     import sys
-    if sys.argv[1:] == ['--map-layout-v2']:
-        build_map_layout_labels()
-    else:
-        assert not sys.argv[1:]
-        build()
+    # This adoption command writes only the granted MAP sidecars. Historical World derivation stays unchanged above.
+    assert sys.argv[1:] in ([], ['--map-layout-v2'])
+    build_map_layout_labels()

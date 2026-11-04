@@ -55,8 +55,8 @@ it('reproduces the generated pair without writing any excluded World tuple input
   const frozen = [folder + 'source-inputs.json', folder + 'tile-pin.json', folder + 'backend-allocation.json', folder + 'camera.ts', ...['canonical-map.json', 'source-binding.json'].map(p => 'public/world/reference-scene-v2/runtime/spatial-v5/' + p)]
   const generated = ['map-labels-source.json', 'map-labels-pins.json', 'map-landscape-source.json', 'map-landscape-pin.json'].map(p => folder + p)
   const before = await Promise.all([...frozen, ...generated].map(async p => hash(await readFile(p))))
-  for (const name of ['build-source-inputs.py', 'build-map-landscape-inputs.py']) {
-    const result = spawnSync('python3', ['-B', folder + name, '--map-layout-v2'], { encoding: 'utf8' })
+  for (const name of ['build-source-inputs.py', 'build-map-landscape-inputs.py']) for (const args of [[], ['--map-layout-v2']]) {
+    const result = spawnSync('python3', ['-B', folder + name, ...args], { encoding: 'utf8' })
     expect(result.status, result.stderr).toBe(0)
   }
   expect(await Promise.all([...frozen, ...generated].map(async p => hash(await readFile(p))))).toEqual(before)
