@@ -398,3 +398,24 @@ registered identity for avatar and preference writes. Missing registration,
 registration rejection and post-effect fence rejection must preserve state and
 roll back the trigger evidence. This is developer-native component evidence,
 not an invented external owner-grant or live multiuser acceptance claim.
+
+### Effect-fence native qualification
+
+The hook and legacy-checkpoint correction are now component-qualified at exact
+source `6c700f040888cc40592444edf6772e784395f156`. Rust1.88 locked/offline jobs2
+no-debug/no-incremental compilation passed. Service avatar2 and application
+avatar2 pure tests passed. The existing avatar harness ran all4 native cases
+successfully on PostgreSQL16.14, including the selected case's actual effect-fence
+trigger checks: strict default missing fence, rejected registration, post-UPDATE
+rejection/rollback and exact actual transaction identity for avatar/preference
+success. Existing layered upgrade and legacy uncertain-commit behavior passed.
+Postmaster restart15841→16244 and private cluster cleanup passed.
+
+Command: `python3 backend/scripts/mcr/avatar_smoke.py --build-metadata /tmp/mcr-spatial-6c700f04/compiler-artifacts.jsonl --pinned-binaries /tmp/mcr-spatial-6c700f04/binary.json --pg-bin /opt/homebrew/opt/postgresql@16/bin` (exit0).
+Frozen avatar executable SHA256:
+`4916cbe90812662114917555452d56b863329b20d4df1c8bb2266a956c456e0a`.
+Report `/tmp/mcr-spatial-6c700f04/avatar-native.json`; source/binary receipt
+`/tmp/mcr-spatial-6c700f04/binary.json`. BACKEND was released after freezing;
+no target/native cluster remains held. Actual external 207 SDK, participant
+adapter, root-held distributed guard and unknown-settlement quarantine remain
+separate owner obligations. No live authority or multiuser acceptance is claimed.

@@ -153,3 +153,32 @@ Rust compilation/native reruns remain pending a fresh named resource grant.
 Current readiness accurately removes the missing-era blockers but retains
 UNREVIEWED_SOURCE_PROVENANCE, PRODUCT_BOOTSTRAP_NOT_CONFIGURED and
 ART_FIDELITY_NOT_ACCEPTED. No source review state was upgraded or invented.
+
+## Qualified all-three component checkpoint
+
+Exact tested source: `6c700f040888cc40592444edf6772e784395f156`.
+Rust 1.88 locked/offline, jobs2, debug0/incremental0 compiled the scoped service
+library/bootstrap/runtime/avatar targets and application avatar target (exit0).
+Exact compiler receipts and five copied/hash-checked executables are under
+`/tmp/mcr-spatial-6c700f04/`. BACKEND was explicitly released before native work.
+Pure results: library38, runtime10, bootstrap5, service-avatar2 and
+application-avatar2 passed (57 total). Native library cases outside this slice
+remain NOT_RUN; the two incumbent native bootstrap cases were not rerun here.
+
+`test_spatial_release.py --native --build-metadata /tmp/mcr-spatial-6c700f04/compiler-artifacts.jsonl --pinned-binaries /tmp/mcr-spatial-6c700f04/binary.json --pg-bin /opt/homebrew/opt/postgresql@16/bin`
+exited0: PostgreSQL16.14, canonical map2 bytes/geometry/places preserved through
+publication and restart, event catalog revision advances as specified, all four
+virtual physical-selection attempts denied, wrong map rejected. Native tests2,
+restart14911→15701, marker/socket-owned cluster cleanup PASS. Frozen bootstrap
+SHA256 `abd3eafa3dfafce5b6a1c33e0205fde85ac5b6a4646158bb4690b6819ac9c379`.
+All-three source Python6/builder-check/plan/diff checks passed.
+
+These are source/database/component results. They do not certify actual operator
+configuration, full Product admission, FE v5 adoption, art fidelity or a live
+multiuser journey. The four places are VIRTUAL_CONCEPT/CONCEPT_ONLY and require
+no physical venue-source request for virtual display. The historical recursive
+Product check also required their nested provenance to be REVIEWED, which is
+broader than BE08/AR01/FE19. The Product API root and this owner agreed a follow-up
+narrow typed virtual-place correction; physical places and fixture rejection
+retain their guards. Honest map/theme source engineering qualification remains
+separate from physical destination authorization and fidelity acceptance.
