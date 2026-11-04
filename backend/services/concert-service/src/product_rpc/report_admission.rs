@@ -1,6 +1,6 @@
 //! Exact C04 report admission. Parsing grants no canonical owner authority.
 use super::{canonical_uuid, proto::ProductRequest};
-use concert_domain::report::{CreateReport, Reason, TargetType};
+use concert_domain::report::{CreateReport, Reason, ReportState, TargetType};
 use serde::Deserialize;
 use tonic::Status;
 use uuid::Uuid;
@@ -10,29 +10,45 @@ pub const MAX_REPORT_BODY: usize = 64 * 1024;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ReportOperation {
     Create,
+    Own,
 }
 impl ReportOperation {
     pub fn id(self) -> &'static str {
-        "createConcertReport"
+        match self {
+            Self::Create => "createConcertReport",
+            Self::Own => "listOwnConcertReports",
+        }
     }
     pub fn mutation(self) -> bool {
-        true
+        matches!(self, Self::Create)
     }
     pub fn route(event: Uuid, method: &str, target: &str) -> Result<Self, Status> {
-        if !event.is_nil()
-            && method == "POST"
-            && target == format!("/api/concert/events/{event}/reports")
-        {
-            Ok(Self::Create)
-        } else {
-            Err(invalid())
+        if event.is_nil() || target.contains('#') {
+            return Err(invalid());
+        }
+        let path = target.split_once('?').map_or(target, |(path, _)| path);
+        match method {
+            "POST" if target == format!("/api/concert/events/{event}/reports") => Ok(Self::Create),
+            "GET" if path == format!("/api/concert/events/{event}/me/reports") => Ok(Self::Own),
+            _ => Err(invalid()),
         }
     }
     pub fn validate(self, input: &ProductRequest) -> Result<(), Status> {
         canonical_uuid(&input.user_id)?;
         let event = canonical_uuid(&input.event_id)?;
-        if Self::route(event, &input.http_method, &input.http_target)? != self
-            || input.content_type != "application/json"
+        if Self::route(event, &input.http_method, &input.http_target)? != self {
+            return Err(invalid());
+        }
+        if self == Self::Own {
+            if !input.content_type.is_empty()
+                || !input.http_body.is_empty()
+                || !input.idempotency_key.is_empty()
+            {
+                return Err(invalid());
+            }
+            return own_query(&input.http_target);
+        }
+        if input.content_type != "application/json"
             || input.http_body.is_empty()
             || input.http_body.len() > MAX_REPORT_BODY
         {
@@ -61,6 +77,38 @@ impl ReportOperation {
         }
         Ok(())
     }
+}
+
+// Match the retained Operations wire's canonical raw query. Keep the original
+// target bytes for the signed parent, owner binding and authenticated cursor.
+fn own_query(target: &str) -> Result<(), Status> {
+    let Some((_, raw)) = target.split_once('?') else {
+        return Ok(());
+    };
+    if raw.is_empty() {
+        return Err(invalid());
+    }
+    let mut seen = std::collections::BTreeSet::new();
+    for part in raw.split('&') {
+        let (key, value) = part.split_once('=').ok_or_else(invalid)?;
+        if value.is_empty() || !seen.insert(key) || value.contains(['%', '+', '#', '?']) {
+            return Err(invalid());
+        }
+        match key {
+            "limit" => {
+                let limit: u16 = value.parse().map_err(|_| invalid())?;
+                if !(1..=100).contains(&limit) || limit.to_string() != value {
+                    return Err(invalid());
+                }
+            }
+            "state" => {
+                ReportState::parse(value).map_err(|_| invalid())?;
+            }
+            "cursor" if value.len() <= 1024 => {}
+            _ => return Err(invalid()),
+        }
+    }
+    Ok(())
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]

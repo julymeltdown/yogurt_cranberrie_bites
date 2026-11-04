@@ -5,7 +5,7 @@ use crate::{
     product_rpc::{
         proto::ProductRequest,
         scoped::{ProductRepresentation, ScopedProductProducer},
-        Operation, ReportOperation, VerifiedProduct,
+        Operation, VerifiedProduct,
     },
 };
 use sha2::{Digest, Sha256};
@@ -31,19 +31,19 @@ impl ScopedProductProducer for ReportProduct {
         frame: ProductRequest,
     ) -> Result<ProductRepresentation, Status> {
         context.check()?;
-        if context.operation() != Operation::Report(ReportOperation::Create) {
+        let Operation::Report(operation) = context.operation() else {
             return Err(Status::unavailable(
                 "Report producer unavailable for operation",
             ));
-        }
-        ReportOperation::Create.validate(&frame)?;
+        };
+        operation.validate(&frame)?;
         let expected = GuardBinding::from_parent(
             context.parent_authority(),
             context.actor(),
             context.event(),
             context.session(),
             context.request(),
-            ReportOperation::Create.id(),
+            operation.id(),
             &frame.http_method,
             &frame.http_target,
             Sha256::digest(&frame.http_body).into(),

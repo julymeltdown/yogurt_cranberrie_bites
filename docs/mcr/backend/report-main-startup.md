@@ -1,8 +1,9 @@
 # REPORT-STARTUP-01 — explicit USER report startup leaf
 
-Status: developer build and seven pure/transport checks PASS; publication and
-Root main mounting pending. This is a new three-file task,
-not renewed ownership of the preceding qualified nine report-product paths.
+Status: the original startup leaf and Root mounting are published, with their
+retained qualification below. BE36-OWN-REPORTS-01 extends only the owned overlay
+to the original caller-owned Report status read; current validation NOT_RUN.
+Historical startup scope and evidence below remain preserved.
 
 Base: `beffe4975d5d702bbdf1d3d96458bd7846c7b70a`. Existing isolated worktree:
 `/Users/lhs/Desktop/mcr-worktrees/be-operations-runtime`; new branch
@@ -211,3 +212,47 @@ After the exact three-path validated handoff, Root exports `config::report_runti
 The owner's seven copied tests qualify its unchanged leaf. Root subsequently compiled the actual non-test Concert, Gateway, Post and Notification mains from `fb00cf5337df98e4ffdfca4893b6bdc35d19a2f0`: four locked/offline Rust 1.88 builds exited 0. All 3,726 frozen inputs matched before publication. Six actual-main pre-database refusal checks passed, including USER Report without shared composition and invalid Report mode. See `product-four-main-build.json` for exact artifact hashes, commands, exit codes and receipts.
 
 The first copied check stopped at a harness omission (`CONCERT_METRICS_ADDR is required`); its failed evidence and five NOT_RUN cases are retained. A fresh copied-only allocation supplied the required metrics address, reused the exact frozen binaries without a rebuild, and passed all six checks. Compiler/target release preceded all copied execution; final copied-only FULL RELEASE was 2026-11-04 14:02:59.408684 UTC, 3.335 seconds after actual ACCEPT. No PostgreSQL was provisioned. Public Gateway Report, positive production stack and full multiuser behavior remain NOT_RUN.
+
+
+## BE36-OWN-REPORTS-01 functional extension
+
+On published base `7d5d91bd1121b1a95b2302ca02e9224019a5deaa`, explicit
+`CONCERT_REPORT_MODE=user` retains the same managed configuration and shared
+canonical core/fence/delivery. The overlay now dispatches both closed typed
+Report operations: USER/no-media create and the frozen bodyless
+`listOwnConcertReports` GET `/api/concert/events/{eventId}/me/reports`. Other
+operations retain the base owner. No listener, child settler, role/media provider,
+positive authority default or second scope is added.
+
+The owned overlay transport check now includes the original signed Own query
+and verifies both Report calls use the existing Report owner while unrelated
+frames delegate unchanged. Actual private read authorization, caller isolation,
+cursor binding and held Auth revocation are covered by the two new native
+Report cases. Both passed in the current functional qualification on
+`34c3dce69e9c1a7744b147ac615a6dcf6d28a401`, descending from implementation
+`e8968df79c957679dce483542c201d98740963f8` and the published base above.
+
+The updated seven configuration/transport checks were rebuilt and rerun from
+the exact frozen copy, exit 0, 0.403 seconds, including both typed Report routes
+and unchanged delegation of unrelated operations. The same round passed seven
+signed admission and nine actual native cases. Recording transport refusals
+remain dispatch evidence; the native cases supply the actual owner/settlement
+evidence. No Rust changed after execution.
+
+Frozen runtime executable: 7,754,976 bytes, SHA-256
+`bff09e0a097e332940207247bd89b299e5395b53f9153ce4a67c3098c2e81605`.
+Pin: `/private/tmp/mcr-report-product-frozen-6rfc9b_j/pin.json`, SHA-256
+`6858a8aca6c7cb21ad02e37ebcd42222f98b2dd4581f293ea9f5b85ae1e059e3`.
+Runtime log SHA-256:
+`8c78358c32387cbed8836b26085f68e19b1f693ec5950b1f24902341ac586143`.
+The copied command was `report_runtime --nocapture --test-threads=1`, after
+unconditional zero-handle target release at `2026-11-04T16:54:11.509878Z`.
+All private PostgreSQL resources were removed, prepared transactions were zero,
+and FULL release completed at `16:54:25.872622Z`. No target reentry followed.
+
+See `report-product-production.md` for exact build/provenance, retained earlier
+cached-script failure, bounded resource accounting, current 23-case results and
+native restart/cleanup evidence. Direct committed handoff uses Root's canonical
+publisher receipt without a consumer proof or king/SL acknowledgment gate.
+Positive composed-service/public Gateway, IN03 and whole BE36/BE38 acceptance
+remain open; performance qualification is deferred.

@@ -256,6 +256,14 @@ impl Fixture {
         request.idempotency_key = key.to_string();
         request
     }
+    fn own_reports(&self, query: &str) -> proto::ProductRequest {
+        let mut request = support::input("GET", &format!("me/reports{query}"), "");
+        request.user_id = self.actor.to_string();
+        request.event_id = self.event.to_string();
+        request.session_family_id = self.family.to_string();
+        request.http_target = format!("/api/concert/events/{}/me/reports{query}", self.event);
+        request
+    }
     async fn call(
         &self,
         request: &proto::ProductRequest,
@@ -375,6 +383,168 @@ fn frame<T: Message>(message: &T) -> Vec<u8> {
     result.extend_from_slice(&(bytes.len() as u32).to_be_bytes());
     result.extend(bytes);
     result
+}
+
+#[tokio::test]
+#[ignore = "frozen owned PG16 three-database report-product controller only"]
+async fn own_reports_are_private_paginated_and_cursor_bound_to_caller_and_query(
+) -> anyhow::Result<()> {
+    let f = Fixture::with_targets(false, 2).await?;
+    let mut mine = Vec::new();
+    for target in &f.subjects {
+        let (code, output) = f
+            .call(&f.input_target(Uuid::new_v4(), *target), false)
+            .await?;
+        assert_eq!(code, Code::Ok);
+        let output = output.unwrap();
+        assert_eq!(output.status, 202);
+        let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
+        mine.push(receipt["resource_id"].as_str().unwrap().to_owned());
+        f.finish(output.delivery.unwrap()).await?;
+    }
+    mine.sort();
+    let (other, family, _) = environment::identities(&f.auth, 0).await?;
+    sqlx::query(
+        "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+    )
+    .bind(f.event)
+    .bind(other)
+    .execute(&f.concert)
+    .await?;
+    let mut request = f.input(Uuid::new_v4());
+    request.user_id = other.to_string();
+    request.session_family_id = family.to_string();
+    let (code, output) = f.call(&request, false).await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 202);
+    let other_receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
+    let other_report = other_receipt["resource_id"].as_str().unwrap().to_owned();
+    f.finish(output.delivery.unwrap()).await?;
+    let effects = f.effect_counts().await?;
+    assert_eq!(effects, (3, 3, 3, 3));
+
+    let (code, output) = f.call(&f.own_reports("?limit=1&state=OPEN"), false).await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 200);
+    let first: serde_json::Value = serde_json::from_slice(&output.body)?;
+    assert_eq!(first["items"].as_array().unwrap().len(), 1);
+    assert_eq!(first["items"][0]["report_id"], mine[0]);
+    for field in ["reporter_id", "reason", "text", "evidence_media_ids"] {
+        assert!(
+            first["items"][0].get(field).is_none(),
+            "Own status discloses no {field}"
+        );
+    }
+    assert!(!String::from_utf8_lossy(&output.body).contains("private reporter canary"));
+    assert!(!String::from_utf8_lossy(&output.body).contains(&other_report));
+    let cursor = first["next_cursor"].as_str().unwrap().to_owned();
+    f.finish(output.delivery.unwrap()).await?;
+    let query = format!("?limit=1&state=OPEN&cursor={cursor}");
+    let (code, output) = f.call(&f.own_reports(&query), false).await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 200);
+    let second: serde_json::Value = serde_json::from_slice(&output.body)?;
+    assert_eq!(second["items"].as_array().unwrap().len(), 1);
+    assert_eq!(second["items"][0]["report_id"], mine[1]);
+    f.finish(output.delivery.unwrap()).await?;
+
+    // A cursor is neither another caller's authority nor a different filter/limit.
+    let mut foreign_cursor = f.own_reports(&query);
+    foreign_cursor.user_id = other.to_string();
+    foreign_cursor.session_family_id = family.to_string();
+    for request in [
+        foreign_cursor,
+        f.own_reports(&format!("?limit=1&state=RESOLVED&cursor={cursor}")),
+        f.own_reports(&format!("?limit=2&state=OPEN&cursor={cursor}")),
+    ] {
+        let (code, output) = f.call(&request, false).await?;
+        assert_eq!(code, Code::Ok);
+        let output = output.unwrap();
+        assert_eq!(output.status, 400);
+        assert!(!String::from_utf8_lossy(&output.body).contains(&mine[0]));
+        f.finish(output.delivery.unwrap()).await?;
+    }
+    let mut request = f.own_reports("");
+    request.user_id = other.to_string();
+    request.session_family_id = family.to_string();
+    let (code, output) = f.call(&request, false).await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 200);
+    let own: serde_json::Value = serde_json::from_slice(&output.body)?;
+    assert_eq!(own["items"].as_array().unwrap().len(), 1);
+    assert_eq!(own["items"][0]["report_id"], other_report);
+    assert!(!String::from_utf8_lossy(&output.body).contains(&mine[0]));
+    assert!(!String::from_utf8_lossy(&output.body).contains(&mine[1]));
+    f.finish(output.delivery.unwrap()).await?;
+    assert_eq!(
+        f.effect_counts().await?,
+        effects,
+        "Own reads cannot create receipts/audits/outbox/report effects"
+    );
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "frozen owned PG16 three-database report-product controller only"]
+async fn own_report_read_retains_current_auth_until_actual_terminal_and_revocation_denies_next_read(
+) -> anyhow::Result<()> {
+    let f = Fixture::new(false).await?;
+    let (_, output) = f.call(&f.input(Uuid::new_v4()), false).await?;
+    let output = output.unwrap();
+    assert_eq!(output.status, 202);
+    f.finish(output.delivery.unwrap()).await?;
+    let (code, output) = f.call(&f.own_reports(""), false).await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 200);
+    let cap = output.delivery.unwrap();
+    let row:(String,bool,bool)=sqlx::query_as("select phase,serialized_at is not null,delivery_completed_at is not null from concert_product_owner_scopes where instance_id=$1 and scope_id=$2")
+        .bind(f.core.ledger().instance()).bind(Uuid::parse_str(&cap.scope_id)?).fetch_one(&f.concert).await?;
+    assert_eq!(row, ("ACTIVE".into(), true, false));
+    let mut connection = f.auth.acquire().await?;
+    let pid: i32 = sqlx::query_scalar("select pg_backend_pid()")
+        .fetch_one(&mut *connection)
+        .await?;
+    let actor = f.actor;
+    let writer = tokio::spawn(async move {
+        let mut tx = sqlx::Acquire::begin(&mut *connection).await?;
+        sqlx::query("set local lock_timeout='2s'")
+            .execute(&mut *tx)
+            .await?;
+        sqlx::query("update users set status='SUSPENDED' where id=$1")
+            .bind(actor)
+            .execute(&mut *tx)
+            .await?;
+        tx.commit().await
+    });
+    tokio::time::timeout(Duration::from_millis(750), async {
+        loop {
+            let blocked: bool = sqlx::query_scalar("select cardinality(pg_blocking_pids($1))>0")
+                .bind(pid)
+                .fetch_one(&f.auth)
+                .await?;
+            if blocked {
+                break;
+            }
+            tokio::time::sleep(Duration::from_millis(2)).await;
+        }
+        Ok::<_, anyhow::Error>(())
+    })
+    .await??;
+    assert!(
+        !writer.is_finished(),
+        "Sensitive own status keeps canonical Auth through delivery"
+    );
+    f.finish(cap).await?;
+    writer.await??;
+    assert_ne!(f.call(&f.own_reports(""), false).await?.0, Code::Ok);
+    f.assert_settled().await?;
+    assert_eq!(f.effect_counts().await?, (1, 1, 1, 1));
+    Ok(())
 }
 
 #[tokio::test]
