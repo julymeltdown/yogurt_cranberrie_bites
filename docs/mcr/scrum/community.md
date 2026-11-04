@@ -115,6 +115,13 @@ and usable published inputs. This is an actual acceptance receipt, replacing
 the earlier release-only state. Task status IN_PROGRESS; no QA07 deliverable
 commit/publication or whole-task satisfaction has yet been reported.
 
+World's subsequent exact startup receipt: fresh null to NEW unbudgeted ACTIVE
+goal `1793755842`, checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts`,
+branch `codex/mcr-qa-QA07-accessibility`, base `cf706882`; both allocated new
+prefixes absent at startup and current published inputs confirmed usable.
+World's management receipt is published at `59782c52`. No QA07 acceptance,
+original-task count increment or result is inferred from this startup.
+
 The developer reports pickup fixtures exercise reservation recovery, private
 instructions, code issuance and one-time collection through actual UI controls;
 native keyboard reach/activation, modal containment/return and trusted touch
