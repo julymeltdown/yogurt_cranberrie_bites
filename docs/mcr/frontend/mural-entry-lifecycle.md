@@ -75,7 +75,7 @@ A full app build and production activation were not run for the initial new-only
 
 ## Completed caller assembly follow-up
 
-The former root writer `01a1a153-1227-7e72-801f-a2a6b91981e1` explicitly stopped and released the exact hunks; FE king recorded this developer as their sole active writer. The final two-file allocation supersedes crossed three-file proposals: `production.ts` remains excluded. The module goal had actually completed and `get_goal` returned null before the crossed allocation arrived, so the follow-up used a new unbudgeted goal and branch `codex/mcr-fe-FE33-mural-caller-assembly` from `7c2f3af7`. No completed goal was reset. Final reconciliation preserves peer master `d4bf83e9228d5cdf9fc8642c1c197f1b75afe9ef`; all native source pins still match after that reconciliation.
+The former root writer `01a1a153-1227-7e72-801f-a2a6b91981e1` explicitly stopped and released the exact hunks; FE king recorded this developer as their sole active writer. The final two-file allocation supersedes crossed three-file proposals: `production.ts` remains excluded. The module goal had actually completed and `get_goal` returned null before the crossed allocation arrived, so the follow-up used a new unbudgeted goal and branch `codex/mcr-fe-FE33-mural-caller-assembly` from `7c2f3af7`. No completed goal was reset. Final reconciliation preserves peer master `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`; all native source pins still match after that reconciliation. Caller implementation commit: `ebf0473d`; the following documentation/evidence receipt records the final published ancestry.
 
 Exactly these existing hunks changed:
 
