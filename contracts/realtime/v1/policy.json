@@ -35,5 +35,22 @@
     "SERVER_UNAVAILABLE": 4500,
     "INVALID_UTF8": 1007
   },
-  "close_reason_max_utf8_bytes": 123
+  "close_reason_max_utf8_bytes": 123,
+  "privacy_invalidation": {
+    "revision": "SOCIAL_POLICY_V1",
+    "scope": "SOCIAL",
+    "revision_scope": "CANONICAL_ACTOR_AND_EVENT",
+    "initial_revision": 1,
+    "baseline": "EXPLICIT_SERVER_POLICY_BASELINE_AFTER_WORLD_SNAPSHOT",
+    "private_reads_before_baseline": "DENY",
+    "duplicate_or_older_revision": "IGNORE_WITHOUT_AUTHORITY_CHANGE",
+    "invalidation": "WITHDRAW_FULL_PRIVATE_PRIVACY_TUPLE_AND_PENDING_READS_BEFORE_ANY_REFRESH",
+    "revision_gap": "WITHDRAW_AND_REQUIRE_FRESH_BOUND_SERVER_BASELINE",
+    "stream_identity_event_change": "WITHDRAW_AND_REQUIRE_FRESH_BOUND_SERVER_BASELINE",
+    "invalidation_grants_authority": false,
+    "new_private_reads": "REQUIRE_FRESH_BOOTSTRAP_AVAILABILITY_AND_CURRENT_BASELINE",
+    "delivery": "EXISTING_WORLD_SOCKET_ONLY_NO_SECOND_SOCKET",
+    "failure": "WITHDRAW_PRIVATE_VIEWS_ON_MALFORMED_GAP_OVERFLOW_OR_UNAVAILABLE_POLICY",
+    "payload": "METADATA_ONLY_NO_HANDLES_CONTENT_RESOURCE_IDS_OR_COMPLETION_CAPABILITIES"
+  }
 }

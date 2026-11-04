@@ -1,0 +1,5 @@
+{
+  "direction": "server",
+  "payload": "{\"protocolVersion\": \"1.0.0\", \"type\": \"policy.baseline\", \"streamId\": \"00000000-0000-4000-8000-000000000020\", \"eventId\": \"00000000-0000-4000-8000-000000000010\", \"scope\": \"SOCIAL\", \"policyRevision\": 1, \"privateHandle\": \"forbidden\"}",
+  "close_code": 4400
+}

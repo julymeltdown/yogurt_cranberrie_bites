@@ -118,5 +118,13 @@
     "kind": "http-response",
     "operation_id": "listConcertRooms",
     "status": 404
+  },
+  {
+    "file": "social-policy-baseline.json",
+    "kind": "trace"
+  },
+  {
+    "file": "social-policy-private-field-rejection.json",
+    "kind": "wire-rejection"
   }
 ]
