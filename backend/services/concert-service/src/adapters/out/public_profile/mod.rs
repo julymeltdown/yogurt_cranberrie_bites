@@ -1,6 +1,8 @@
 //! Current arbitrary-subject PublicProfile assembled only inside a canonical guard.
 //! Constructors never accept context identifiers as admission or fabricate avatars.
-use super::relationship_authority::guarded::{GuardedSubject, HeldChildGuard};
+use super::relationship_authority::guarded::{
+    ChildRecoveryReference, GuardedSubject, HeldChildGuard,
+};
 use concert_application::{bootstrap::ValidatedProductRelease, feed::PublicAuthor};
 use concert_domain::{
     avatar::{config_value, AvatarCatalog},
@@ -62,6 +64,29 @@ impl PublicProfileReader {
             event,
             local: Mutex::new(BTreeMap::new()),
         })
+    }
+    /// Settlement only: configured owners and exact closed private references.
+    /// The root ledger must authenticate the saved reference before calling this.
+    pub async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), Status> {
+        let q = reference.query();
+        reference.intent_id()?;
+        if q.event != self.event
+            || [q.actor, q.event, q.subject, q.family, q.request]
+                .iter()
+                .any(uuid::Uuid::is_nil)
+            || q.binding_digest == [0; 32]
+            || q.expires_unix_micros <= 0
+        {
+            return Err(unavailable());
+        }
+        match reference {
+            ChildRecoveryReference::ProfilePublic { .. } => {
+                self.profile.recover_one(reference).await
+            }
+            ChildRecoveryReference::LocalPublic { .. } => {
+                local::recover_one(&self.pool, reference).await
+            }
+        }
     }
     /// Root must retain/run the actual owner scope through final C04 serialization
     /// and settle all children only after the entire response has been assembled.
@@ -282,7 +307,7 @@ impl PublicProfileReader {
             phase,
         };
         Ok(Arc::new(
-            local::prepare(self.pool.clone(), tx, deadline, policy, avatar).await?,
+            local::prepare(self.pool.clone(), tx, deadline, policy, avatar, subject).await?,
         ))
     }
 }

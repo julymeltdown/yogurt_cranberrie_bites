@@ -1,5 +1,7 @@
 //! Dedicated Profile RPC and retained visibility child; no World/self projection.
-use super::super::relationship_authority::guarded::{GuardedSubject, HeldChildGuard};
+use super::super::relationship_authority::guarded::{
+    ChildQuery, ChildRecoveryReference, GuardedSubject, HeldChildGuard,
+};
 use platform::{
     actor_delegation::{
         authority_deadline::AuthorityRpcDeadline, relationship_read::RelationshipReadSigner,
@@ -71,6 +73,16 @@ impl ProfileReader {
             original.stop().into_std(),
             BUDGET,
         )?;
+        let query = ChildQuery::from_subject(subject);
+        let child_id = query.profile_child_id(uuid::Uuid::new_v4())?;
+        let completion_secret = uuid::Uuid::new_v4().simple().to_string();
+        let reference = ChildRecoveryReference::ProfilePublic {
+            query,
+            child_id: child_id.clone(),
+            completion_secret: completion_secret.clone(),
+        };
+        // Persist the exact private completion material before any remote I/O.
+        subject.register_child_intent(&reference).await?;
         let m = proto::PublicProfileReadRequest {
             actor_id: b.actor().to_string(),
             event_id: b.event().to_string(),
@@ -79,7 +91,28 @@ impl ProfileReader {
             request_id: b.request_id().to_string(),
             purpose: 1,
             expires_unix_micros: deadline.expires_micros(),
+            child_id,
+            completion_secret,
         };
+        let child = Arc::new(ProfileChild {
+            client: self.client.clone(),
+            request: proto::PublicProfileGuardRequest {
+                actor_id: m.actor_id.clone(),
+                event_id: m.event_id.clone(),
+                subject_id: m.subject_id.clone(),
+                session_family_id: m.session_family_id.clone(),
+                request_id: m.request_id.clone(),
+                purpose: 1,
+                expires_unix_micros: deadline.expires_micros(),
+                child_id: m.child_id.clone(),
+                completion_secret: m.completion_secret.clone(),
+            },
+            deadline,
+            reference,
+        });
+        // Attach before dispatch so ordinary terminal error handling can cancel
+        // even an intent whose RPC never reached the owner.
+        subject.retain_child(child).await?;
         let mut request = request_for(m.clone(), &m.actor_id)?;
         request.set_timeout(deadline.remaining(BUDGET, deadline.expires_micros())?);
         let response = self.client.clone().read_current(request).await?;
@@ -98,26 +131,11 @@ impl ProfileReader {
             || body.subject_id != m.subject_id
             || body.session_family_id != m.session_family_id
             || body.request_id != m.request_id
+            || body.child_id != m.child_id
+            || body.completion_secret != m.completion_secret
         {
             return Err(unavailable());
         }
-        let child = Arc::new(ProfileChild {
-            client: self.client.clone(),
-            request: proto::PublicProfileGuardRequest {
-                actor_id: m.actor_id,
-                event_id: m.event_id,
-                subject_id: m.subject_id,
-                session_family_id: m.session_family_id,
-                request_id: m.request_id,
-                purpose: 1,
-                expires_unix_micros: deadline.expires_micros(),
-                child_id: body.child_id,
-                completion_secret: body.completion_secret,
-            },
-            deadline,
-        });
-        // Retain before any subsequent await/content check. Failure does not release.
-        subject.retain_child(child).await?;
         subject.check().await?;
         let now = chrono::Utc::now().timestamp_micros();
         if body.observed_at_unix_micros <= 0
@@ -139,10 +157,48 @@ impl ProfileReader {
         })
     }
 }
+impl ProfileReader {
+    pub async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), Status> {
+        let ChildRecoveryReference::ProfilePublic {
+            query,
+            child_id,
+            completion_secret,
+        } = reference
+        else {
+            return Err(unavailable());
+        };
+        reference.intent_id()?;
+        let id = uuid::Uuid::parse_str(completion_secret).map_err(|_| unavailable())?;
+        if id.is_nil() || id.simple().to_string() != *completion_secret {
+            return Err(unavailable());
+        }
+        let deadline =
+            AuthorityRpcDeadline::new(chrono::Utc::now().timestamp_micros() + 2_000_000, BUDGET)?;
+        ProfileChild {
+            client: self.client.clone(),
+            deadline,
+            reference: reference.clone(),
+            request: proto::PublicProfileGuardRequest {
+                actor_id: query.actor.to_string(),
+                event_id: query.event.to_string(),
+                subject_id: query.subject.to_string(),
+                session_family_id: query.family.to_string(),
+                request_id: query.request.to_string(),
+                purpose: 1,
+                expires_unix_micros: query.expires_unix_micros,
+                child_id: child_id.clone(),
+                completion_secret: completion_secret.clone(),
+            },
+        }
+        .complete_settled()
+        .await
+    }
+}
 struct ProfileChild {
     client: Client,
     request: proto::PublicProfileGuardRequest,
     deadline: AuthorityRpcDeadline,
+    reference: ChildRecoveryReference,
 }
 impl ProfileChild {
     async fn control(&self, complete: bool) -> Result<(), Status> {
@@ -182,6 +238,9 @@ impl ProfileChild {
 }
 #[async_trait::async_trait]
 impl HeldChildGuard for ProfileChild {
+    fn recovery_reference(&self) -> Result<ChildRecoveryReference, Status> {
+        Ok(self.reference.clone())
+    }
     async fn check(&self) -> Result<(), Status> {
         self.control(false).await
     }
