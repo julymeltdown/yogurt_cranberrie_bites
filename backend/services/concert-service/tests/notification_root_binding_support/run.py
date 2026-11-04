@@ -39,6 +39,15 @@ def run(args, report):
             and emitted["profile"]["test"] is True, "Exact emitted test required")
     require(artifact == Path(receipt["private_artifact"]).resolve() and sha(artifact) == receipt["artifact_sha256"], "Frozen artifact differs")
     require(receipt["source_sha256"], "Source manifest required")
+    required = {BACKEND / "Cargo.lock", BACKEND / "Cargo.toml", Path(__file__).resolve(),
+                BACKEND / "scripts/mcr/migration_smoke.py"}
+    for directory in ("services/concert-service", "crates/platform", "crates/concert-application", "crates/concert-domain"):
+        base = BACKEND / directory
+        required.add(base / "Cargo.toml")
+        required.update(base.rglob("*.rs"))
+    required.update((BACKEND / "proto").rglob("*.proto"))
+    required.update((BACKEND / "services/concert-service/migrations").glob("*.sql"))
+    require({str(p.relative_to(BACKEND.parent)) for p in required} <= receipt["source_sha256"].keys(), "Source manifest incomplete")
     for name, digest in receipt["source_sha256"].items():
         path = (BACKEND.parent / name).resolve(strict=True)
         require(not Path(name).is_absolute() and path.is_relative_to(BACKEND.parent), "Invalid source path")
@@ -93,6 +102,7 @@ def main():
     try:
         run(args, report)
     except Exception as error:
+        report["status"] = "FAIL"
         report["error"] = error.detail if isinstance(error, migration.SmokeError) else type(error).__name__ + ": " + str(error)
     finally:
         report["elapsed_seconds"] = time.monotonic() - start
