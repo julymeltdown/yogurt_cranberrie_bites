@@ -80,6 +80,22 @@ message ApplyUserDeletionRequest {
 
 message ApplyUserDeletionResponse {
   bool applied = 1;
+  // Absent on an old/unqualified peer. Auth must not acknowledge it.
+  NotificationDeletionReceipt committed_receipt = 2;
+}
+
+// Notification-owned suppression/retention COMMIT proof, not global erasure.
+// Seconds/nanoseconds retain the original command beyond SQL timestamp precision.
+message NotificationDeletionReceipt {
+  uint32 version = 1;
+  string saga_id = 2;
+  string user_id = 3;
+  string actor_id = 4;
+  optional int64 retention_seconds = 5;
+  optional uint32 retention_nanos = 6;
+  int64 fence_revision = 7;
+  string effect_xid = 8;
+  string recorded_at = 9; // RFC3339 write observation, not a commit timestamp
 }
 
 service NotificationService {

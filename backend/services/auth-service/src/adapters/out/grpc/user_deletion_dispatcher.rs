@@ -137,7 +137,7 @@ impl UserDeletionTargetClientPort for NotificationDeletionClient {
     async fn apply(&self, request: UserDeletionDispatchRequest) -> Result<()> {
         let (saga_id, user_id, actor_id, retention_until) = request.strings();
         let mut client = self.client.clone();
-        client
+        let response = client
             .apply_user_deletion(notification_proto::ApplyUserDeletionRequest {
                 saga_id,
                 user_id,
@@ -145,9 +145,45 @@ impl UserDeletionTargetClientPort for NotificationDeletionClient {
                 retention_until,
             })
             .with_edge_deadline(Edge::AuthNotification, self.edge_deadlines.clone())
-            .await?;
-        Ok(())
+            .await?
+            .into_inner();
+        if platform::call_deadline::remaining() == Some(std::time::Duration::ZERO) {
+            return Err(crate::application::errors::AuthError::DependencyUnavailable.into());
+        }
+        verify_notification_deletion_receipt(&request, &response)
     }
+}
+
+/// Verify data from the authenticated Notification owner against this exact
+/// dispatch. A successful RPC or legacy boolean alone never settles Auth's step.
+pub fn verify_notification_deletion_receipt(
+    request: &UserDeletionDispatchRequest,
+    response: &notification_proto::ApplyUserDeletionResponse,
+) -> Result<()> {
+    let invalid =
+        || anyhow::Error::new(crate::application::errors::AuthError::DependencyUnavailable);
+    let receipt = response.committed_receipt.as_ref().ok_or_else(invalid)?;
+    let xid = receipt.effect_xid.parse::<u64>().map_err(|_| invalid())?;
+    let recorded = DateTime::parse_from_rfc3339(&receipt.recorded_at).map_err(|_| invalid())?;
+    if !response.applied
+        || receipt.version != 1
+        || request.saga_id.is_nil()
+        || request.user_id.is_nil()
+        || request.actor_id.is_nil()
+        || receipt.saga_id != request.saga_id.to_string()
+        || receipt.user_id != request.user_id.to_string()
+        || receipt.actor_id != request.actor_id.to_string()
+        || request.retention_until.timestamp_subsec_nanos() >= 1_000_000_000
+        || receipt.retention_seconds != Some(request.retention_until.timestamp())
+        || receipt.retention_nanos != Some(request.retention_until.timestamp_subsec_nanos())
+        || receipt.fence_revision <= 0
+        || xid == 0
+        || receipt.effect_xid != xid.to_string()
+        || recorded.timestamp_subsec_nanos() >= 1_000_000_000
+    {
+        return Err(invalid());
+    }
+    Ok(())
 }
 
 #[derive(Clone)]
