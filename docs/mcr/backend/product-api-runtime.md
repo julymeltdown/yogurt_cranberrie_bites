@@ -49,6 +49,11 @@ The route set currently authored is:
 | Method | Event-relative path | Producer boundary |
 | --- | --- | --- |
 | GET | `/feed` | Event Feed read, not inherited `/api/feed` |
+| GET | `/posts/{postId}` | Guarded Post detail |
+| GET | `/posts/{postId}/comments` | Guarded comment page |
+| GET | `/parties` | Party list |
+| GET | `/parties/{partyId}` | Party detail |
+| POST | `/parties` | Receipt-backed party creation |
 | POST | `/media/uploads` | `initConcertUpload` |
 | PUT | `/media/{mediaId}/bytes` | `putConcertUploadBytes` |
 | POST | `/media/{mediaId}/finalize` | `finalizeConcertUpload` |
@@ -70,7 +75,7 @@ canonical UUID idempotency key. All responses use `no-store`; private image
 responses additionally use `nosniff`, inline disposition and same-origin resource
 policy. Transport failures expose fixed C04 errors without dependency diagnostics.
 
-Only the three exact media mutation method/path tuples bypass the inherited
+Only the three exact media mutation method/path tuples and party creation bypass the inherited
 Gateway journal. Concert owns their durable receipts; private image bytes must
 not be buffered into a second Gateway replay record. All other retained mutation
 and idempotency behavior remains in place. This narrow `server.rs`/HTTP root
@@ -178,3 +183,68 @@ These bounded results qualify the transport and fail-closed startup checkpoint.
 They do not qualify the currently missing production owner constructors, actual
 multi-service HTTP journey or acceptance of the whole assignment. Required work
 continues without holding an idle build lease.
+
+## Durable delivery checkpoint: `b59fea237d7514315f0c4121762a493640410dd8`
+
+This later checkpoint uses the published canonical SDK1
+`888cb6bd30846d891286b92a9a66e921e8d1ce78`. It adds the root-owned
+`0028_product_owner_scope_lifecycle.sql`, `product_rpc/scope_ledger.rs`,
+`scope_lifecycle.rs`, and `delivery.rs`; internal Product delivery IDL; and the
+Gateway's outer retained HTTP body layer. All product modes remain closed.
+The Post/party routes above are source composition, not available producers.
+
+The actual canonical scope must be registered durably before acquisition, and a
+private delivery capability must be bound before protected producer work.
+Concert gRPC EOF records serialization only. Gateway's actual terminal HTTP body
+production invokes the workload-only completion RPC with a separate bounded
+system deadline. Neither browser cancellation nor an expired actor deadline
+certifies completion. A finished-root marker does not attest owner transaction
+settlement. A separate durable completed receipt is written only after the actual
+canonical scope finishes its owner and child settlement; absent memory or a lost
+receipt stays unknown. This boundary proves server body production, not browser
+receipt or rendering.
+
+Transactions persist their exact native identity and opaque producer settlement
+reference before owner Track calls. Auth and Friend acknowledgements are recorded
+separately; both must match before producer effects. Sealing bars late
+registration, capacity never evicts unfinished scopes, and bindings/evidence
+cannot be rewritten or deleted. SQL and Rust fixtures use synthetic owner
+bindings: they do not mint or qualify real owner authority.
+
+The exclusively allocated BACKEND target was released after three successful
+locked/offline Rust 1.88 builds (Concert tests, Gateway tests, Concert binary),
+jobs 2, profile debug 0, incremental 0. Seven executables, Cargo JSON receipts and
+715 source-file pins were copied to a private evidence directory before release.
+The initial cached contracts-build helper referenced another worker's absolute
+proto path. Cleaning only affected package artifacts corrected the cache issue.
+A subsequent compile found and fixed an ambiguous media response Result and a
+SQLx async-trait transaction lifetime/Send issue. The same builds then exited 0.
+Release verification found zero target handles and 76,092,981,248 free bytes.
+
+| Actual copied-binary or isolated PG check | Result | Qualification boundary |
+| --- | --- | --- |
+| Concert strict Feed/comment query parser | Exit 0, 3 tests | Includes exact query decoding and closed bounds |
+| Concert product runtime | Exit 0, 4 tests | Closed routing, policy and startup settings |
+| Gateway product HTTP transport | Exit 0, 4 tests | Actual loopback transport with service doubles |
+| Gateway terminal delivery | Exit 0, 4 tests | EOF, cancellation, expired browser deadline, unknown completion and malformed capability; service doubles |
+| Gateway exact receipt scope | Exit 0, 1 test | Retained receipt boundary |
+| Native Rust scope ledger | Exit 0, 3 tests | Actual private PG transactions; real in-progress/aborted XID evidence remains distinct from root markers |
+| Ledger migration and SQL invariants | Exit 0, 17 cases | Includes actual PG restart and cleanup; rejection cases intentionally exit 1 |
+| Current copied Concert startup | Exit 1 as required, 2 cases | Both product modes fail with the expected guarded-composition error before DB/listener exposure |
+| Real canonical owners / joined producer / end-to-end HTTP | **NOT_RUN** | Required before enabling product modes |
+| SDK2 child intents / restart recovery | **NOT_RUN** | Later published SDK2 is not qualified by these SDK1 artifacts |
+
+Exact private evidence basenames are `native-boundaries.result.json`,
+`native-ledger.result.json`, `startup.result.json`, `source-pins.json`,
+`binaries.json`, per-executable `.receipt.json`, and `target-release.json`.
+The native ledger SHA-256 is
+`a7734e80d93870b47b7506b5d227b6c639cb499693b3f4be2510a5fa3838b8cf`;
+Gateway terminal delivery is
+`059630c2f93b53eb4767f32966b341e5a7d65cc605c8fe9d0702a7461744a058`;
+Concert binary is
+`f94e88931ec83237f0bc684586d33842b511f56657a736bd80ca35a4000c845b`.
+The ledger migration SHA-256 is
+`31d0501b54bd08bb9650e4beaa003b4739949bc78c97c070cca06711160cd628`.
+The frozen tree also contained the exact four-file optional cooldown contract
+patch `dc4a3f93`, subsequently published unchanged in `faeb6ed4`; it was recorded
+as an additional source pin, not silently attributed to the root commit.
