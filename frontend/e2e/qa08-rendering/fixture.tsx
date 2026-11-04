@@ -126,6 +126,7 @@ const api = {
       receivedInputCount: sockets.reduce((n, s) => n + s.inputs, 0), injectorQueued: sockets.reduce((n, s) => n + s.queue.length, 0), injectorPeak: Math.max(0, ...sockets.map(s => s.peakQueue)),
       delivery, consumerDelayMs, games: value ? 1 : 0, totalObservedGames: gameCount, sameGame: value ? value === firstGame?.deref() : null,
       gameLoopRunning: value?.loop.running, renderer: value?.renderer.type === P.WEBGL ? 'WEBGL' : value?.renderer.type === P.CANVAS ? 'CANVAS' : null,
+      avatarSprites: value?.scene.getScenes(true).flatMap(s => s.children.list).filter(o => o.type === 'Sprite' && String(Reflect.get(o, 'texture')?.key).startsWith('mcr-avatar-')).length ?? 0,
       canvases: document.querySelectorAll('.shell-world-host canvas').length, sourceCaches: caches.map(c => c.diagnostics()),
       urlsInDOM: document.querySelectorAll('[src^="blob:"]').length, map: presentation?.map.expected, requests, disposed }
   },

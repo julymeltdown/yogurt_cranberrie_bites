@@ -31,7 +31,7 @@ for (const p of ['frontend/package.json', 'frontend/pnpm-lock.yaml', 'frontend/v
 await writeFile(resolve(output, 'input-pins.json'), JSON.stringify(pins, null, 2) + '\n')
 const report = { status: 'IN_PROGRESS', candidate: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
   environment: { node: process.version, platform: platform(), release: release(), arch: arch(), cpu: cpus()[0]?.model, logicalCpus: cpus().length, totalMemoryBytes: totalmem(), headless: true, viewportHeight: 844, deviceScaleFactor: 1 },
-  method: { windowMs, widths, optimizedFixtureMode: 'qa08', productionBuildSeparate: true, gcDuringFrameWindows: false, repetitionsPerWidth: 1, threshold: 'No performance pass/fail cutoff. Original mobile goal 30FPS is a comparison only; these are desktop Chrome CSS viewports.' },
+  method: { windowMs, widths, optimizedFixtureMode: 'qa08', productionBuildSeparate: true, gcDuringFrameWindows: false, repetitionsPerWidth: 1, avatarSpritesRequired: 6, startupEndpoint: 'LIVE plus six actual selected-character sprites', threshold: 'No performance pass/fail cutoff. Original mobile goal 30FPS is a comparison only; these are desktop Chrome CSS viewports.' },
   browser: null, bundles: {}, scenarios: [], productionLanding: null, coldNetwork: null, c05Policy: JSON.parse(await readFile(resolve(root, 'contracts/realtime/v1/policy.json'))),
   limits: ['Synthetic Auth/HTTP/C05/source qualification, six fixture entities; not live/production admission', 'Desktop headless Chrome viewport results do not establish mid-range mobile-device 30FPS', 'JS heap/DOM counters exclude complete process, GPU and native memory', 'Finite delayed ACK consumer and three serial reconnects are not a server reconnect storm or capacity ceiling', 'Real 200 sockets/four rooms and operator-selected production caps NOT_RUN'] }
 let browser, appServer, fixtureServer
@@ -52,7 +52,7 @@ async function serve(dir) {
       if (!file.startsWith(base + '/')) { res.writeHead(403).end(); return }
       const cached = encodedFiles.get(file), body = cached?.body || await readFile(file), ext = extname(file)
       res.setHeader('Content-Type', types[ext] || 'application/octet-stream'); res.setHeader('Cache-Control', ext === '.html' ? 'no-store' : 'public,max-age=3600')
-      if (/\.(js|css|html|json|svg)$/.test(file) && req.headers['accept-encoding']?.includes('br')) { res.setHeader('Content-Encoding', 'br'); res.end(cached?.brotli || brotliCompressSync(body)) }
+      if (cached && /\.(js|css|html|json|svg)$/.test(file) && req.headers['accept-encoding']?.includes('br')) { res.setHeader('Content-Encoding', 'br'); res.end(cached?.brotli || brotliCompressSync(body)) }
       else res.end(body)
     } catch { res.writeHead(404).end('No fixture resource') }
   })
@@ -81,7 +81,7 @@ async function sample(page, cdp, name) {
   const raw = await page.evaluate(ms => window.__QA08__.sample(ms), windowMs)
   return { name, raw, summary: summarize(raw), before, after: await memory(page, cdp) }
 }
-async function singleton(page) { const s = await state(page); assert.equal(s.activeSockets, 1); assert.equal(s.peakSockets, 1); assert.equal(s.totalObservedGames, 1); assert.equal(s.sameGame, true); return s }
+async function singleton(page) { const s = await state(page); assert.equal(s.activeSockets, 1); assert.equal(s.peakSockets, 1); assert.equal(s.totalObservedGames, 1); assert.equal(s.sameGame, true); assert.equal(s.avatarSprites, 6); return s }
 try {
   if (!process.env.QA08_REUSE_BUILD) {
     const started = performance.now()
@@ -96,7 +96,7 @@ try {
   browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true, args: ['--enable-precise-memory-info'] }); report.browser = browser.version()
   {
     const context = await browser.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block' }), page = await context.newPage(), net = await network(context, page)
-    await page.goto(appServer.origin); await page.getByRole('heading').first().waitFor()
+    await page.goto(appServer.origin); await page.getByRole('heading', { name: 'One world. Every era.', exact: true }).waitFor(); await page.waitForLoadState('networkidle')
     report.productionLanding = { page: await page.title(), observedHeading: await page.getByRole('heading').first().innerText(), network: net.read(), memory: await memory(page, net.cdp), qualification: 'Actual production index build, unauthenticated/no backend; not authenticated world startup' }
     await context.close()
   }
@@ -107,6 +107,7 @@ try {
     try {
       await page.goto(fixtureServer.origin + '/e2e/qa08-rendering/fixture.html')
       await expect.poll(async () => (await state(page))?.phase, { timeout: 45000 }).toBe('live')
+      await expect.poll(async () => (await state(page))?.avatarSprites, { timeout: 15000 }).toBe(6)
       result.startupMs = performance.now() - start; await singleton(page)
       result.gcBefore = await memory(page, net.cdp, true)
       result.windows.push(await sample(page, net.cdp, 'idle-visible'))
@@ -152,6 +153,7 @@ try {
     await net.cdp.send('Network.emulateNetworkConditions', profile)
     const start = performance.now(); await page.goto(fixtureServer.origin + '/e2e/qa08-rendering/fixture.html')
     await expect.poll(async () => (await state(page))?.phase, { timeout: 120000 }).toBe('live')
+    await expect.poll(async () => (await state(page))?.avatarSprites, { timeout: 30000 }).toBe(6)
     report.coldNetwork = { profile, measuredStartupMs: performance.now() - start, window: await sample(page, net.cdp, 'cold-throttled-visible'), network: net.read(), qualification: 'Fresh browser context/CDP-limited actual static JS/art fetches; Auth/HTTP/C05 remain synthetic and are not throttled server traffic' }
     await page.evaluate(() => window.__QA08__.dispose()); await context.close()
   }
