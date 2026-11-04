@@ -38,6 +38,7 @@ def main():
         for probe in ('schema-mismatch', 'missing-operation', 'output-drift'):
             run(probe, [sys.executable, '-B', generator, '--probe', probe], 1, 'C07 generated drift:')
         run('inventory-regressions', [sys.executable, '-B', HERE / 'test_inventory.py'])
+        run('motion-regressions', [sys.executable, '-B', HERE / 'test_motion.py'])
         with tempfile.TemporaryDirectory(prefix='compile-', dir=args.artifacts) as directory:
             temporary = Path(directory)
             for source in (ROOT / 'contracts/generated/api-client').glob('*.ts'):
