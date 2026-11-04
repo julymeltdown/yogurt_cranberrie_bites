@@ -3,7 +3,7 @@
 The producer source is INTEGRATED in published master `e2375727`. Its composed
 source qualification passed 206 tests, full TypeScript checking and scoped lint.
 The composed Settings/Phaser native qualification is NOT_RUN. The new harness has
-passed only Node's syntax check; its full types and scoped lint are queued.
+passed full TypeScript checking, scoped lint and Node syntax checks.
 The persistent producer goal remains ACTIVE through the remaining validation,
 fixes, committed handoff, publication verification and cleanup. This report does
 not accept whole FE06/FE34, W04, IN01/IN05, device behavior, an audio source or art
@@ -144,6 +144,15 @@ post-settle caller abort, navigation, privacy withdrawal and full teardown. The
 fixture lacks alternate admitted theme artwork: pending ignored-abort candidate
 disposal is qualified by source tests, not falsely claimed as a native asset
 success.
+
+`source-03/report.json` records the separate new-harness qualification on
+`0aa1afc597ca393131881e8e10dd69e52883cf22` with all three helper SHA256 pins.
+Full project types, scoped helper lint and Node syntax checks exited zero;
+no 206-test repeat, browser, Vite or build ran. The named allocation completed
+2026-11-04 07:52:22.929–07:52:30.044 UTC in 7.159 seconds, with a measured
+1,384,492-byte whole-workflow peak including all retained producer evidence,
+new logs, private temporary/cache paths and the borrowed dependency symlink.
+Its owned child, link and temporary/cache tree were fully released.
 
 The one composed native job remains NOT_RUN until Root publishes the actual
 motion-rule loading and latest adopter cleanup fix. Exact overlapping evidence
