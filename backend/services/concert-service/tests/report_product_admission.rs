@@ -68,7 +68,7 @@ async fn original_frozen_report_reaches_owner_with_original_signed_frame() {
     assert_eq!(seen[0].request, request);
 }
 #[tokio::test]
-async fn report_route_is_exact_and_does_not_enable_privileged_or_read_operations() {
+async fn report_create_route_is_exact_and_does_not_enable_other_operations() {
     let original = input("POST", "reports", &body());
     for suffix in [
         "reports?",
@@ -95,6 +95,99 @@ async fn report_route_is_exact_and_does_not_enable_privileged_or_read_operations
     request.http_target = request
         .http_target
         .replace(&request.event_id, &Uuid::new_v4().to_string());
+    refused(request).await;
+}
+#[tokio::test]
+async fn frozen_own_report_read_preserves_original_bodyless_signed_query() {
+    let contract: serde_json::Value = serde_json::from_str(include_str!(
+        "../../../../contracts/domain/v1/operations.json"
+    ))
+    .unwrap();
+    let frozen = contract
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|value| value["operationId"] == "listOwnConcertReports")
+        .unwrap();
+    assert_eq!(ReportOperation::Own.id(), "listOwnConcertReports");
+    assert!(!ReportOperation::Own.mutation());
+    assert_eq!(frozen["write_policy"], "READ");
+    assert_eq!(frozen["idempotency_key"], false);
+    assert_eq!(frozen["cache_control"], "no-store");
+    for query in [
+        "",
+        "?",
+        "?limit=1&state=OPEN",
+        "?state=IN_REVIEW&limit=100",
+        "?cursor=ab12&limit=20",
+    ] {
+        let request = input("GET", &format!("me/reports{query}"), "");
+        let event = request.event_id.parse().unwrap();
+        assert_eq!(
+            operation(event, "GET", &request.http_target).unwrap(),
+            Operation::Report(ReportOperation::Own)
+        );
+        let owner = Recorder::new(Mode::Refuse);
+        assert_eq!(
+            call(server(owner.clone()), wire(&request)).await,
+            (Code::Unavailable, REFUSAL.into())
+        );
+        let seen = owner.admitted.lock().unwrap();
+        assert_eq!(seen.len(), 1);
+        assert_eq!(seen[0].operation, Operation::Report(ReportOperation::Own));
+        assert_eq!(seen[0].request, request);
+    }
+}
+#[tokio::test]
+async fn own_report_read_rejects_privileged_filters_ambiguous_queries_and_payloads() {
+    for query in [
+        "?limit=0",
+        "?limit=101",
+        "?limit=01",
+        "?limit=+1",
+        "?limit=65536",
+        "?limit=1&limit=2",
+        "?state=OPEN&state=OPEN",
+        "?state=DRAFT",
+        "?state=",
+        "?target_type=USER",
+        "?reporter_id=me",
+        "?user_id=me",
+        "?role=OPERATOR",
+        "?cursor=",
+        "?cursor=%61",
+        "?cursor=a+b",
+        "?cursor=a?b",
+        "?state=OPEN&",
+        "?%6cimit=1",
+    ] {
+        refused(input("GET", &format!("me/reports{query}"), "")).await;
+    }
+    refused(input(
+        "GET",
+        &format!("me/reports?cursor={}", "a".repeat(1025)),
+        "",
+    ))
+    .await;
+    for route in [
+        "me/reports/",
+        "me/reports#private",
+        "me/reports/../reports",
+        "%6de/reports",
+        "admin/reports",
+        "admin/settings",
+    ] {
+        refused(input("GET", route, "")).await;
+    }
+    let original = input("GET", "me/reports", "");
+    let mut request = original.clone();
+    request.http_body = b"{}".to_vec();
+    refused(request).await;
+    let mut request = original.clone();
+    request.content_type = "application/json".into();
+    refused(request).await;
+    let mut request = original;
+    request.idempotency_key = Uuid::new_v4().to_string();
     refused(request).await;
 }
 #[tokio::test]

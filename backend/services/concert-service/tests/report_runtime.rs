@@ -212,7 +212,7 @@ fn rotation_is_bounded_and_cursor_is_independent_of_all_retained_versions() {
 }
 
 #[tokio::test]
-async fn only_original_create_report_uses_report_owner_and_others_delegate_unchanged() {
+async fn original_create_and_own_reports_use_report_owner_and_others_delegate_unchanged() {
     use platform::{
         actor_delegation::ActorDelegationVerifier,
         grpc_auth::{CallerRegistry, Workload},
@@ -225,6 +225,7 @@ async fn only_original_create_report_uses_report_owner_and_others_delegate_uncha
     let mut inputs = vec![support::input("POST", "reports", &json!({
         "target_type":"USER","target_id":Uuid::new_v4(),"reason":"SPAM", "text":"original signed report", "evidence_media_ids":[]
     }).to_string())];
+    inputs.push(support::input("GET", "me/reports?state=OPEN&limit=1", ""));
     for suffix in ["feed", "me/age-status", "me/blocks"] {
         inputs.push(support::input("GET", suffix, ""));
     }
@@ -246,11 +247,12 @@ async fn only_original_create_report_uses_report_owner_and_others_delegate_uncha
             (tonic::Code::Unavailable, support::REFUSAL.into())
         );
     }
-    assert_eq!(reports.len(), 1);
+    assert_eq!(reports.len(), 2);
     assert_eq!(base.len(), 3);
     assert_eq!(reports.admitted.lock().unwrap()[0].request, inputs[0]);
+    assert_eq!(reports.admitted.lock().unwrap()[1].request, inputs[1]);
     let admitted = base.admitted.lock().unwrap();
-    for (actual, expected) in admitted.iter().zip(&inputs[1..]) {
+    for (actual, expected) in admitted.iter().zip(&inputs[2..]) {
         assert_eq!(&actual.request, expected);
     }
 }

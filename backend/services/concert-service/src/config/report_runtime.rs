@@ -3,10 +3,7 @@
 use crate::{
     config::{canonical_runtime::CanonicalOwnerComposition, product_runtime::ProductOwners},
     operations_live::{report_product::ReportProduct, OperationsOwners, OperationsRuntime},
-    product_rpc::{
-        proto, scoped::ScopedProductOwner, Operation, ProductOwner, ReportOperation,
-        VerifiedProduct,
-    },
+    product_rpc::{proto, scoped::ScopedProductOwner, Operation, ProductOwner, VerifiedProduct},
 };
 use concert_application::commands::{FingerprintKeys, SigningKey};
 use serde::Deserialize;
@@ -174,9 +171,7 @@ impl ProductOwner for ReportOverlay {
         request: proto::ProductRequest,
     ) -> Result<tonic::Response<proto::ProductResponse>, tonic::Status> {
         match context.operation() {
-            Operation::Report(ReportOperation::Create) => {
-                self.report.dispatch(context, request).await
-            }
+            Operation::Report(_) => self.report.dispatch(context, request).await,
             _ => self.base.dispatch(context, request).await,
         }
     }

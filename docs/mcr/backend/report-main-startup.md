@@ -1,8 +1,9 @@
 # REPORT-STARTUP-01 — explicit USER report startup leaf
 
-Status: developer build and seven pure/transport checks PASS; publication and
-Root main mounting pending. This is a new three-file task,
-not renewed ownership of the preceding qualified nine report-product paths.
+Status: the original startup leaf and Root mounting are published, with their
+retained qualification below. BE36-OWN-REPORTS-01 extends only the owned overlay
+to the original caller-owned Report status read; current validation NOT_RUN.
+Historical startup scope and evidence below remain preserved.
 
 Base: `beffe4975d5d702bbdf1d3d96458bd7846c7b70a`. Existing isolated worktree:
 `/Users/lhs/Desktop/mcr-worktrees/be-operations-runtime`; new branch
@@ -211,3 +212,23 @@ After the exact three-path validated handoff, Root exports `config::report_runti
 The owner's seven copied tests qualify its unchanged leaf. Root subsequently compiled the actual non-test Concert, Gateway, Post and Notification mains from `fb00cf5337df98e4ffdfca4893b6bdc35d19a2f0`: four locked/offline Rust 1.88 builds exited 0. All 3,726 frozen inputs matched before publication. Six actual-main pre-database refusal checks passed, including USER Report without shared composition and invalid Report mode. See `product-four-main-build.json` for exact artifact hashes, commands, exit codes and receipts.
 
 The first copied check stopped at a harness omission (`CONCERT_METRICS_ADDR is required`); its failed evidence and five NOT_RUN cases are retained. A fresh copied-only allocation supplied the required metrics address, reused the exact frozen binaries without a rebuild, and passed all six checks. Compiler/target release preceded all copied execution; final copied-only FULL RELEASE was 2026-11-04 14:02:59.408684 UTC, 3.335 seconds after actual ACCEPT. No PostgreSQL was provisioned. Public Gateway Report, positive production stack and full multiuser behavior remain NOT_RUN.
+
+
+## BE36-OWN-REPORTS-01 functional extension
+
+On published base `7d5d91bd1121b1a95b2302ca02e9224019a5deaa`, explicit
+`CONCERT_REPORT_MODE=user` retains the same managed configuration and shared
+canonical core/fence/delivery. The overlay now dispatches both closed typed
+Report operations: USER/no-media create and the frozen bodyless
+`listOwnConcertReports` GET `/api/concert/events/{eventId}/me/reports`. Other
+operations retain the base owner. No listener, child settler, role/media provider,
+positive authority default or second scope is added.
+
+The owned overlay transport check now includes the original signed Own query
+and verifies both Report calls use the existing Report owner while unrelated
+frames delegate unchanged. Actual private read authorization, caller isolation,
+cursor binding and held Auth revocation are covered by the two new native
+Report cases, pending execution. See `report-product-production.md` for scope,
+source provenance and eventual functional qualification. The historical seven
+configuration/transport results do not certify this new behavior until rerun on
+the changed source; no performance or public Gateway acceptance is implied.

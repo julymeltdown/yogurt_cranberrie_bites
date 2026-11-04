@@ -1,8 +1,9 @@
 # OPS-PRODUCT-01 — original USER report production leaf
 
 Status: OPS-PRODUCT-01 and REPORT-STARTUP-01 are published with retained developer
-validation. OPS-ORIGINAL-CONTINUATION-02 developer validation PASS; committed
-publication is pending. This does not accept whole BE36/BE38.
+validation. OPS-ORIGINAL-CONTINUATION-02 is delivered by the canonical publisher
+receipt for master `7d5d91bd1121b1a95b2302ca02e9224019a5deaa`. BE36-OWN-REPORTS-01
+is IN_PROGRESS, functional validation NOT_RUN. This does not accept whole BE36/BE38.
 Original OPS-PRODUCT-01 base: `cb944f7210f6c55fdf1d0e897c96ea7ef0ba8325`, freshly
 fetched from `julymeltdown/mcr` master. Isolated existing worktree:
 `/Users/lhs/Desktop/mcr-worktrees/be-operations-runtime`, new task branch
@@ -380,3 +381,54 @@ the developer must still verify fresh remote delivery. The broad historical goal
 remains truthfully BLOCKED, not reset or falsely completed. Moderator/evidence
 routes, operator authority, public Gateway delivery, IN03 and whole BE36/BE38
 remain outside this scoped qualification.
+
+## BE36-OWN-REPORTS-01 — safe caller-owned report status
+
+Functional follow-up on published base
+`7d5d91bd1121b1a95b2302ca02e9224019a5deaa`, same isolated worktree, branch
+`codex/mcr-be-BE36-own-reports-01`. The preceding continuation is delivered by
+Root's canonical publisher receipt, with source/delivery mappings
+`fa88de7a` → `205d2d3c`, `ba05b079` → `5c6133a0`, `5f2bd7cb` → `d06cc139` and
+both final postimages exact. The latest direct human packaging override cancels
+the obsolete per-consumer readback/ACK, proof-only commit and new-goal requirements.
+No duplicate proof was produced. The broader existing goal stays truthfully
+unfinished; performance qualification is deferred under the latest direction.
+
+The original frozen `listOwnConcertReports` endpoint is
+GET `/api/concert/events/{eventId}/me/reports`, SELF, READ, no idempotency key,
+`admin.OwnReportQuery` → `admin.ReportList`, 200, no-store. The actual retained
+OperationsRuntime and PgReports::own already provide current canonical member
+authorization, caller-scoped rows, safe status projection, authenticated cursor
+binding and native read settlement. This slice exposes that existing behavior;
+it requires no operator role, target/media provider or new authority lifecycle.
+
+All authored changes stay within the eight assigned files: typed Own admission,
+the existing leaf and startup overlay, their three test files and two Report
+documents. Root's generic Report route/query wrappers already call these owned
+methods. No central router, registry, proto, SQL, manifest, lockfile, helper,
+frontend or production main change is needed.
+
+Admission preserves the original bodyless signed frame and exact event path.
+Its closed raw query accepts only canonical `limit` 1–100, Report `state`, and
+bounded opaque `cursor`, with duplicate/unknown fields and ambiguous encoding
+rejected. Cursor authenticity, caller/event/filter/limit binding and current
+authority remain server-runtime decisions. The leaf checks the selected exact
+Report operation against the original held GuardBinding and delegates the same
+context/frame/scope. Startup uses its existing shared core/fence/delivery and
+routes both typed Report operations; unrelated operations still delegate.
+
+New signed admission cases cover original-frame fidelity and rejected payloads,
+private filters, privileged routes and malformed query shapes. The recording
+owner still refuses and supplies no authority evidence. The existing startup
+overlay case now includes Own dispatch. Two new real native cases create actual
+reports for two real callers, verify private paginated own status and cross-user/
+filter/limit cursor rejection without command/audit/outbox side effects, and
+prove an actual Auth revocation writer waits for the read's authenticated Root
+terminal before a subsequent read is denied. Seven earlier native regressions
+remain in that binary.
+
+Status: implementation authored; compilation, native execution and current
+startup/admission regression checks NOT_RUN. Relevant functional validation,
+documentation, committed direct Root handoff and developer-owned fixes remain
+required. Moderator detail/evidence, operator routes, public Gateway/IN03 and
+whole BE36/BE38 acceptance are not established by this slice.
