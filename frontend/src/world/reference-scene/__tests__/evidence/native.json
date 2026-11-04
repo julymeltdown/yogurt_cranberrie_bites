@@ -1,0 +1,1526 @@
+{
+  "result": "PASS",
+  "qualification": "Actual compact art/closed C06 loader/canonical geometry/production Phaser+selected characters/real C05 decoder, isolated roster/privacy. Candidate NOT_ADMITTED; no live Auth/server/socket, real multiuser, devices or artist visual acceptance.",
+  "testedParent": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b",
+  "pins": {
+    "src/world/reference-scene/source-inputs.json": "b25ee458e987912f91a4b3c55b87f53be5e0baada96a8372e5225fb8ada909aa",
+    "src/world/reference-scene/model.ts": "056c9506d632ec94ab9399951dd1cca45d5db5d15fb4d3070bf4130024d5aecf",
+    "src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "src/world/reference-scene/overview.ts": "afebcad7e084ac416bd00eb54500aeebf4c64657323541ea606ab1422a15e4c9",
+    "src/world/reference-scene/metadata.ts": "37613da89c96801f58af3312fc68a53a6890ec2228d5e9609272418b522387b7",
+    "src/world/reference-scene/index.ts": "bb0ec561ec0bf58f4b73303659ee13f3672117d0d8e1fe292c1c715a1f0a8573",
+    "src/world/reference-scene/__tests__/fixture.ts": "1bb3ee7097687970c8b0b6830dd7e20c0d3c71a3b09a464e32ed8d55d6df8cb1",
+    "src/world/reference-scene/__tests__/native.ts": "41efaf82deaa309a3279a0f7573fbdce1f6401d9c150752cb2492a9e0ef5450d",
+    "src/world/reference-scene/__tests__/native.mjs": "af5af9545bfd16a17e0d1167add04ae76b02d2877399d77a75e57795614ca7e8",
+    "src/world/reference-scene/__tests__/native.html": "b4deb094224a15d93e1e67edf9a35c57e0931b77fb1a1156701bbf6e19b585d6",
+    "src/world/scenes/MapScene.ts": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363",
+    "src/world/runtime.ts": "d6b901a9614a56f418d1f1fa09f430aa493a485bd82f3a5764771117595f5a16",
+    "src/world/map/resources.ts": "106a01f56832bea0fc37facdbe51a44a548bf7765233773f90b38143718e8e2d",
+    "src/world/map/manifest.ts": "d765ce6b7e47a76a2763fde32c6a9e4bde244beb872e761d2c6f73b757cd033c",
+    "src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "public/world/reference-scene-v2/geometry-proposal.json": "d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542",
+    "public/world/reference-scene-v2/runtime/canonical-map-v2.json": "5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f",
+    "public/world/reference-scene-v2/runtime/source-binding-v2.json": "1fc65dab0ee743ad7f0cd2eeeeb34bde629ea352f16a0a69333e6e8ff06da2e2",
+    "public/world/reference-scene-v2/runtime/build-tiled.py": "7757f3f6409802e32740cd6480653b163b16f4d40b54b0af35a038af56116d69",
+    "public/world/reference-scene-v2/runtime-v4/parade-scenery.json": "53d4b4cf6e580de724053cd1d6ff11b87ef77b56fa4d5399f294a63c0a4b4594",
+    "public/world/reference-scene-v2/runtime-v4/parade-layout.json": "99bb3318fbfed6f82b88f05d0c501c9dd7667b8426bbf6ec661765b5cfc72985",
+    "public/world/reference-scene-v2/runtime-v4/parade-map-metadata.json": "0c02f23d572b521ca19d06c168aa77a09377eaf4b2825435dcf9d4e21a25c184",
+    "public/world/reference-scene-v2/runtime-v4/parade-integer-projection.json": "0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde",
+    "public/world/reference-scene-v2/runtime-v4/parade-resource-inputs.json": "e75180cd99cca6ac3b32592188061aee32a8dd71994e40141d981f80821549ae",
+    "public/world/reference-scene-v2/runtime-v4/parade-ground.png": "5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+    "public/world/reference-scene-v2/runtime-v4/parade-atlas.png": "ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 2,
+          "peakDecodedBytes": 8175616
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 272,
+          "scrollY": 132.5,
+          "width": 360,
+          "height": 703
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 1971875,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 2,
+          "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+          "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "themeId": "PARADE",
+          "themeRevision": 1,
+          "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+          "imageUrl": "blob:http://127.0.0.1:5173/6dc12254-8283-4548-9085-522bc199f928"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "parity": {
+        "different": 0,
+        "max": 0,
+        "channels": 1012320
+      },
+      "interactions": [
+        {
+          "id": "stage_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "foot": {
+            "x": 488,
+            "y": 568
+          },
+          "walkable": true,
+          "nearby": [
+            "stage_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "park_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "walkable": true,
+          "nearby": [
+            "park_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "gifts_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "foot": {
+            "x": 216,
+            "y": 952
+          },
+          "walkable": true,
+          "nearby": [
+            "gifts_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "wall_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "foot": {
+            "x": 232,
+            "y": 1096
+          },
+          "walkable": true,
+          "nearby": [
+            "wall_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "index": 1,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          }
+        },
+        {
+          "index": 2,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          }
+        },
+        {
+          "index": 3,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          }
+        }
+      ],
+      "replaced": {
+        "before": "sha256:66e7a9a3079d6c23c02e6207ca1b168309b55117b461c509952c2da03db50c13",
+        "after": "sha256:66e7a9a3079d6c23c02e6207ca1b168309b55117b461c509952c2da03db50c13",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 52,
+            "scrollY": 593,
+            "width": 360,
+            "height": 703
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 5,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "rejected": {
+        "results": [
+          "hash",
+          "geometry",
+          "revision",
+          "theme",
+          "frame",
+          "depth",
+          "asset"
+        ],
+        "signature": "sha256:66e7a9a3079d6c23c02e6207ca1b168309b55117b461c509952c2da03db50c13",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 52,
+            "scrollY": 593,
+            "width": 360,
+            "height": 703
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 5,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "cancelled": {
+        "before": "sha256:66e7a9a3079d6c23c02e6207ca1b168309b55117b461c509952c2da03db50c13",
+        "after": "sha256:66e7a9a3079d6c23c02e6207ca1b168309b55117b461c509952c2da03db50c13",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 52,
+            "scrollY": 593,
+            "width": 360,
+            "height": 703
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 13,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "hidden": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 52,
+          "scrollY": 593,
+          "width": 360,
+          "height": 703
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 1971875,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": null,
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "revoked": {
+        "phase": "stopped",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "cleanup": {
+        "phase": "disposed",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 0,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "encodes": [
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2114297
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2114297
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "bytes": 2114297
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 2,
+          "peakDecodedBytes": 8175616
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 257,
+          "scrollY": 110.5,
+          "width": 390,
+          "height": 747
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 1971875,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 2,
+          "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+          "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "themeId": "PARADE",
+          "themeRevision": 1,
+          "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+          "imageUrl": "blob:http://127.0.0.1:5173/94b6ec8a-974b-4b5e-964a-669134f8cd65"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "parity": {
+        "different": 0,
+        "max": 0,
+        "channels": 1165320
+      },
+      "interactions": [
+        {
+          "id": "stage_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "foot": {
+            "x": 488,
+            "y": 568
+          },
+          "walkable": true,
+          "nearby": [
+            "stage_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "park_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "walkable": true,
+          "nearby": [
+            "park_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "gifts_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "foot": {
+            "x": 216,
+            "y": 952
+          },
+          "walkable": true,
+          "nearby": [
+            "gifts_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "wall_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "foot": {
+            "x": 232,
+            "y": 1096
+          },
+          "walkable": true,
+          "nearby": [
+            "wall_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "index": 1,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          }
+        },
+        {
+          "index": 2,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          }
+        },
+        {
+          "index": 3,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          }
+        }
+      ],
+      "replaced": {
+        "before": "sha256:c2af9b4a9d7fd93fe83c746b6c6925d3ba563404df201bf94a6b9daad0dcd2ad",
+        "after": "sha256:c2af9b4a9d7fd93fe83c746b6c6925d3ba563404df201bf94a6b9daad0dcd2ad",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 37,
+            "scrollY": 549,
+            "width": 390,
+            "height": 747
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 5,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "rejected": {
+        "results": [
+          "hash",
+          "geometry",
+          "revision",
+          "theme",
+          "frame",
+          "depth",
+          "asset"
+        ],
+        "signature": "sha256:c2af9b4a9d7fd93fe83c746b6c6925d3ba563404df201bf94a6b9daad0dcd2ad",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 37,
+            "scrollY": 549,
+            "width": 390,
+            "height": 747
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 5,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "cancelled": {
+        "before": "sha256:c2af9b4a9d7fd93fe83c746b6c6925d3ba563404df201bf94a6b9daad0dcd2ad",
+        "after": "sha256:c2af9b4a9d7fd93fe83c746b6c6925d3ba563404df201bf94a6b9daad0dcd2ad",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 37,
+            "scrollY": 549,
+            "width": 390,
+            "height": 747
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 13,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "hidden": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 37,
+          "scrollY": 549,
+          "width": 390,
+          "height": 747
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 1971875,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": null,
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "revoked": {
+        "phase": "stopped",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "cleanup": {
+        "phase": "disposed",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 0,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "encodes": [
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2114297
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2114297
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "bytes": 2114297
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "initial": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 2,
+          "peakDecodedBytes": 8175616
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 237,
+          "scrollY": 60,
+          "width": 430,
+          "height": 848
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 1971875,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 2,
+          "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+          "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "themeId": "PARADE",
+          "themeRevision": 1,
+          "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+          "imageUrl": "blob:http://127.0.0.1:5173/84864bba-b1eb-433f-aa43-d810ea58057b"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "parity": {
+        "different": 0,
+        "max": 0,
+        "channels": 1458560
+      },
+      "interactions": [
+        {
+          "id": "stage_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "foot": {
+            "x": 488,
+            "y": 568
+          },
+          "walkable": true,
+          "nearby": [
+            "stage_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "park_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "walkable": true,
+          "nearby": [
+            "park_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "gifts_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "foot": {
+            "x": 216,
+            "y": 952
+          },
+          "walkable": true,
+          "nearby": [
+            "gifts_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "wall_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "foot": {
+            "x": 232,
+            "y": 1096
+          },
+          "walkable": true,
+          "nearby": [
+            "wall_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "index": 1,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          }
+        },
+        {
+          "index": 2,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          }
+        },
+        {
+          "index": 3,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          }
+        }
+      ],
+      "replaced": {
+        "before": "sha256:6d8dba85c75d7f660b0c05bb69f5562d81c7e7d7746e5363fd32dd3237a821ab",
+        "after": "sha256:6d8dba85c75d7f660b0c05bb69f5562d81c7e7d7746e5363fd32dd3237a821ab",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 17,
+            "scrollY": 448,
+            "width": 430,
+            "height": 848
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 5,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "rejected": {
+        "results": [
+          "hash",
+          "geometry",
+          "revision",
+          "theme",
+          "frame",
+          "depth",
+          "asset"
+        ],
+        "signature": "sha256:6d8dba85c75d7f660b0c05bb69f5562d81c7e7d7746e5363fd32dd3237a821ab",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 17,
+            "scrollY": 448,
+            "width": 430,
+            "height": 848
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 5,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "cancelled": {
+        "before": "sha256:6d8dba85c75d7f660b0c05bb69f5562d81c7e7d7746e5363fd32dd3237a821ab",
+        "after": "sha256:6d8dba85c75d7f660b0c05bb69f5562d81c7e7d7746e5363fd32dd3237a821ab",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+          "mapId": "mcr_reference_scene_r3",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 17,
+            "scrollY": 448,
+            "width": 430,
+            "height": 848
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+          ],
+          "cache": {
+            "loads": 3,
+            "hits": 13,
+            "coalesced": 0,
+            "residentBytes": 1971875,
+            "entries": 3,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "hidden": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 17,
+          "scrollY": 448,
+          "width": 430,
+          "height": 848
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 1971875,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": null,
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "revoked": {
+        "phase": "stopped",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "cleanup": {
+        "phase": "disposed",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 0,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+        "mapId": "mcr_reference_scene_r3",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/canonical-map-v2.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 13,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "encodes": [
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2114297
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2114297
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 2042377
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "bytes": 2114297
+        }
+      ]
+    }
+  ],
+  "artifacts": {
+    "world-360.jpg": "0dacadd2f5dd53c3455e5b41e6a34e6a1c835270f91e6fb300d01316ebdc4117",
+    "world-390.jpg": "a923358074f108b252967abf8262112de0a0579f128111e08e2e6f9e64bb4732",
+    "landmark1-390.jpg": "e49980b7702ca44a111b559a3d7c81eeffca68f092c86f36d9f8b1e638fc1b6b",
+    "landmark2-390.jpg": "bb1d48c0281a2b12646772fa87e726a235b7e56fbc8bd82e3026b987ac8f1618",
+    "landmark3-390.jpg": "629b57e697ec1217c44f7b5c599e868d6d36eacaf04f0b377a8d66f5137432ab",
+    "world-430.jpg": "86137056804732591b7240ab369b47cc567face7d07e0a5716b7984d625d6cd8"
+  },
+  "errors": [],
+  "browser": "156.0.8078.80"
+}
