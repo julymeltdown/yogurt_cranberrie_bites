@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-04T17:28:20+09:00",
-  "published_snapshot": "0bd35b223d2590fb2b343171d6d8ac30d37ff857",
+  "updated_at": "2026-11-04T17:54:17+09:00",
+  "published_snapshot": "41b48eb7ba0079652f236b28ec28531fc20bd115",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
-    "RECORDED_ACCEPTED": 12,
+    "RECORDED_ACCEPTED": 13,
     "IMPLEMENTATION_EVIDENCED": 67,
     "UNRECONCILED": 2,
     "TASK_CRITERIA_SATISFIED": 26,
-    "OPEN_INTEGRATION_GATE": 5
+    "OPEN_INTEGRATION_GATE": 4
   },
-  "recorded_task_criteria_outcomes": 38,
+  "recorded_task_criteria_outcomes": 39,
   "implementation_percentage": null,
   "limitations": [
     "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 26 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY; no new king/SL technical acceptance is asserted.",
@@ -672,7 +672,7 @@
         "docs/mcr/backend/root-native-34fa7a6d.json"
       ],
       "note": "Original BE43 remains IN_PROGRESS. The Backend SL original-task row and published Root qualification establish bounded boundary/cancellation/recovery implementation. Neither the component checks nor the partial current live run close the full hardening task.",
-      "known_followup": "Current-source IN01 is incomplete after /me504 blocked customization; Root owns diagnosis. Remaining original boundary/startup criteria remain independently open. No mandatory900-second IN01 duration, proactive-renewal or reload-restoration requirement is added; natural-expiry observation NOT_RUN is informational where not an original criterion.",
+      "known_followup": "Original IN01 now has an ACCEPTED owner-completed current-cohort receipt after the read-lock repair and real customization replay. This does not independently close the remaining original BE boundary/startup criteria. No mandatory900-second IN01 duration, proactive-renewal or reload-restoration requirement is added; natural-expiry NOT_RUN remains informational where not originally required.",
       "published_integration_commits": [
         "e1367abd72b511c8c57b2e9e6c78a8098733ae46",
         "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc"
@@ -689,7 +689,7 @@
         "docs/mcr/backend/root-native-34fa7a6d.json"
       ],
       "note": "Original BE44 remains IN_PROGRESS. The Backend SL original-task row and published coherent startup/native qualification establish implementation evidence. A finite live cohort ran, but this is not full original reproducible-stack acceptance.",
-      "known_followup": "Current-source IN01 is incomplete after /me504 blocked customization; Root owns diagnosis. Remaining original boundary/startup criteria remain independently open. No mandatory900-second IN01 duration, proactive-renewal or reload-restoration requirement is added; natural-expiry observation NOT_RUN is informational where not an original criterion.",
+      "known_followup": "Original IN01 now has an ACCEPTED owner-completed current-cohort receipt after the read-lock repair and real customization replay. This does not independently close the remaining original BE boundary/startup criteria. No mandatory900-second IN01 duration, proactive-renewal or reload-restoration requirement is added; natural-expiry NOT_RUN remains informational where not originally required.",
       "published_integration_commits": [
         "e1367abd72b511c8c57b2e9e6c78a8098733ae46",
         "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc"
@@ -1387,26 +1387,35 @@
       "id": "IN01",
       "title": "Two-user world gate",
       "lane": "INTEGRATOR",
-      "coverage_bucket": "OPEN_INTEGRATION_GATE",
-      "recorded_state": "IN_PROGRESS",
+      "coverage_bucket": "RECORDED_ACCEPTED",
+      "recorded_state": "ACCEPTED",
       "evidence": [
+        "docs/mcr/frontend/in01-browser-journey.md",
+        "docs/mcr/evidence/in01-world-browser/attempt-11/report.json",
+        "docs/mcr/evidence/in01-world-browser/attempt-11/release.json"
+      ],
+      "note": "Original IN01 ACCEPTED criteria disposition by attempt11 against frozen published App1722/read-lock-repaired backend: real two-account world, movement/avatars, customization save and fresh server reread, peer appearance, theme/panels, reconnect, one game/socket, privacy and approved art. Developer owns validation. Frontend KING relayed the owner terminal COMPLETE disposition after all19 published files were independently verified and leases/freeze released. Historical failed attempts remain preserved.",
+      "known_followup": "No original IN01 remainder is reported for the qualified cohort. IN02-IN05, physical devices, full frontend fidelity, motion artwork and release requirements remain separate. Natural-expiry NOT_RUN is informational; no mandatory900-second duration, proactive renewal or reload-restoration criterion is added.",
+      "owner_chat": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+      "reported_source_pins": {
+        "frontend": "1722a81734947764996590b94a63aa001501df28",
+        "backend": "cde817b2ade8caabcf8c3a96508121053997873e"
+      },
+      "evidence_publication_status": "Published19-file handoff at1bb911c3; owner independently verified all postimages and1173 pins against remote. Main checked published owner disposition and Git metadata only, without rerunning or technically reviewing tests, code, queries or images.",
+      "published_integration_commits": [
+        "795bcdb6a45136922d07592c91775ae8f9588f9b",
+        "04e2b5f8e007af11150c133e19618f43a04796f0",
+        "175112b231136f8137194658dd56a9d46d1c3620",
+        "1bb911c3c8594a997e7a309d86b823d906198b95"
+      ],
+      "historical_evidence": [
         "docs/mcr/frontend/in01-browser-journey.md",
         "docs/mcr/evidence/in01-world-browser/attempt-10/report.json",
         "docs/mcr/backend/root-world-eb02-attempt10.json"
       ],
-      "note": "Current published-source real two-user attempt10 ran07:28:46–07:30:31UTC. Owners report login, room entry, movement, six panels, theme,91.4seconds of sustained activity and real reconnect passed. Two actorA /me GET504 responses blocked customization; expiry-driven refresh NOT_RUN. The gate is incomplete, not NOT_RUN as a whole.",
-      "known_followup": "Backend Root owns /me504 diagnosis and the actual customization remainder. The Auth implementation owner and World SL reconcile no original proactive-renewal, reload-restoration or mandatory900-second IN01 requirement. The main agent withdrew its conditional long-allocation proposal as a mandatory gate. Natural-expiry observation NOT_RUN does not itself block IN01; do not alter intended expiry behavior merely to create that test.",
-      "owner_chat": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
-      "reported_source_pins": {
-        "backend": "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc",
-        "frontend": "e237572719602da6a1a08b7fe0579b0e9c96da1f"
-      },
-      "evidence_publication_status": "Current partial run and cleanup receipts are published through175112b2; the main agent verified Git metadata only, without inspecting tests, queries or screenshots.",
-      "published_integration_commits": [
-        "795bcdb6a45136922d07592c91775ae8f9588f9b",
-        "04e2b5f8e007af11150c133e19618f43a04796f0",
-        "175112b231136f8137194658dd56a9d46d1c3620"
-      ]
+      "recorded_state_basis": "Backend staffing SL's 08:52Z hourly portfolio explicitly relays original IN01 ACCEPTED after the implementation owner completed the full criteria, publication and independent remote readback. Main records that reported disposition; no king/SL technical re-review or approval gate is introduced.",
+      "owner_goal_state": "COMPLETE",
+      "owner_goal_readback_source": "Frontend KING terminal owner202 COMPLETE relay and BackendSL08:52Z hourly original IN01 ACCEPTED receipt."
     },
     {
       "id": "IN02",
@@ -1571,6 +1580,13 @@
       "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
       "receipt_commit": "4af1c86863698e311d286039a0702d5b2517c1c3",
       "disposition": "Original client criteria SATISFIED at MOCK_READY per explicit published owner disposition; separate live/IA/fidelity limits preserved. No additional formal ACCEPTED or actual goal COMPLETE status inferred."
+    },
+    {
+      "recorded_at": "2026-11-04T17:54:17+09:00",
+      "task": "IN01",
+      "owner_chat": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+      "receipt_commit": "1bb911c3c8594a997e7a309d86b823d906198b95",
+      "disposition": "Original current-cohort IN01 ACCEPTED per BackendSL08:52Z hourly receipt following owner terminal goal COMPLETE and independent remote postimage verification. Main records the existing disposition without technical re-review. IN05, devices and whole-project release remain open."
     }
   ],
   "coverage_updates": [
@@ -1647,5 +1663,25 @@
       "Shared build/browser qualification queue and redundant coordination"
     ],
     "operating_decision": "Kings track major features, staffing, genuine cross-lane blockers and publication metadata only. Developers own technical judgment. One packet custodian and one resource allocator; consolidate completed art/capture coordination, no duplicate status or approval watchers. Independent source tasks proceed outside heavy-output slots. No scope cuts, validation cuts or new criteria."
+  },
+  "milestone_update": {
+    "at": "2026-11-04T17:54:17+09:00",
+    "task": "IN01",
+    "criteria_outcomes": 39,
+    "open_integration_gates": [
+      "IN02",
+      "IN03",
+      "IN04",
+      "IN05"
+    ],
+    "source": "Published owner document, Frontend KING terminal COMPLETE relay and BackendSL08:52Z explicit IN01 ACCEPTED receipt.",
+    "staffing_inventory_at": "2026-11-04T08:34:49Z",
+    "active_coordination_chats": 6,
+    "active_developer_or_qa_chats": 14,
+    "inventory_limit": "Chat activity is not source-writer count or original completion.",
+    "composition_policy": "One writer per shared path, with explicit stopped-writer transfers of disjoint provider/integration modules. No blanket sole-developer ownership of all production composition; existing publisher and original scope preserved.",
+    "recorded_accepted": 13,
+    "additional_criteria_outcomes": 26,
+    "composition_policy_execution": "BackendSL confirms NB03-L as an executed disjoint production-composition assignment, source ready; other transfers remain developer-selected under exact leases."
   }
 }

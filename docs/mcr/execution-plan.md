@@ -3,16 +3,16 @@
 ## Current checkpoint
 
 The [current progress reconciliation](progress.md#current-task-accounting) records
-38 task-criteria outcomes: 12 recorded acceptance dispositions plus 26 additional
-task-local criteria closures. Exact owner states are preserved, including FE07 and FE15
+39 task-criteria outcomes: 13 recorded acceptance dispositions plus 26 additional
+original-task criteria closures. Exact owner states are preserved, including FE07 and FE15
 INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY. The latest owner-declared original-task closures are FE14, FE19, QA01,
-QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18 and FE32. Another 67 original tasks
+QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18, FE32 and original IN01. Another 67 original tasks
 have partial or unreconciled implementation evidence, 2 statuses remain
-unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
+unreconciled, and 4 IN gates (IN02–IN05) remain open. IN01 has an owner-completed published original gate receipt at1bb911c3. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
-Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. IN01 is IN_PROGRESS after the current-source partial live run, with customization504 unresolved. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
+Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. BackendSL's08:52Z receipt explicitly records IN01 ACCEPTED after the full original current-cohort live run, publication and independent owner readback; the assigned goal is actually COMPLETE. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
@@ -31,21 +31,26 @@ or a necessary human decision. Routine receipts do not require replies.
 
 The requested17:24KST portfolio refresh confirms source work on BE15/QA09
 backup/restore, QA05/QA08 public load/failure drivers and FE40 archive entry.
-FE34 retains separate producer/consumer ownership. C07/IN03 transfer is not a
-confirmed start until its goal/checkout acceptance. Active chat count includes
+FE34 retains separate producer/consumer ownership. C07/IN03 now has a confirmed
+new active goal and accepted scope; BE41 mural-freeze producer is also assigned. Active chat count includes
 feasibility, evidence and qualification; it must not be reported as source-worker
 headcount. The earlier eight-assignment expansion is historical, not a current
 active count. Exact paths, isolated worktrees and honest goal states remain
 mandatory. Source development is not capped by shared build/browser slots.
 
-The recent inventory has8 active coordination chats and9 active developer/QA
-chats. Consolidate duplicate capture/status monitoring and park completed
+The17:22KST inventory had8 active coordination chats and9 active developer/QA
+chats; by17:34KST these were6 and14, without equating activity to source writers. Consolidate duplicate capture/status monitoring and park completed
 redundant coordinators after ownership handoff. Main and frontend KING follow
 major features, staffing, cross-lane blockers and publication metadata only;
 no individual test/fix/screenshot watcher or small-task approval gate belongs
 in either king. Root153 is packet/publication custodian; Backend SL is the
 output allocator. Functional leads assign developers to ready original-scope
 work autonomously, preserving112 tasks/61IA and developer-owned validation.
+
+Production composition is not a blanket single-developer reservation. Backend SL
+and the implementation owner may transfer disjoint provider/integration modules
+after the former writer stops on exact paths. Shared entrypoints retain one writer,
+the existing publisher and developer validation; no king patch approval is added.
 
 The latest human visual direction changes backgrounds only to a noticeably
 cuter style; characters remain untouched. The first before/after image metrics
