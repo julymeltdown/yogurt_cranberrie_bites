@@ -166,3 +166,18 @@ child settler refuses unsupported intents and leaves them unresolved. Recovery
 reuses the actual Profile client and persisted original binding, and never
 reissues a mutation or renews admission. These are source/review findings until
 fresh qualification and the actual public C03 flow pass.
+
+
+The callable public probe is
+`backend/services/api-gateway/tests/concert_participant_support/public_probe.py`.
+The isolated runtime launcher imports `run_pair(base_url, event_id, origin,
+principals)` with exactly two actual `{user_id, access_token}` records obtained
+from real login after Profile/bootstrap. Tokens stay in memory and are omitted
+from the report; the client refuses redirects, retries no mutation, and reads
+each response through EOF using a new HTTP client. It checks selected-pack avatar
+CAS, preference CAS, canonical display-name/bio CAS, fresh reload, stale-write
+conflict, unauthenticated refusal, refusal-state preservation and isolation after
+both principals write. It requires private-response headers on success and error.
+Syntax validation passes; actual public execution is NOT_RUN. The launcher must
+separately inspect native owner/root settlement and clean process/database
+shutdown. The probe explicitly cannot certify those from HTTP status alone.
