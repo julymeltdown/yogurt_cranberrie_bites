@@ -31,6 +31,75 @@ milestones, ready unstaffed work, blockers/decisions and links to owner records.
 Immediate escalation is limited to cross-lane conflicts unresolved directly,
 genuinely unattended critical work or human-required product/access decisions.
 
+## Resume and design authority update — 2026-11-05 08:15 KST
+
+Main explicitly resumed interrupted functional sessions before the design
+revision. Immediate compact snapshots now show204 IN02,1eed FE38,53d clock,
+230 Reports,21e FE41 and single allocator21d ACTIVE/inProgress. This supersedes
+the earlier all-failed access snapshot for those chats; it does not certify
+validation, runtime capacity, delivery or account recovery for all owners.
+No duplicate restart, model override, new chat or custody transfer was sent.
+53d reports a fresh lint/syntax offer for its preserved temporary-path fix;
+retained clock tests/types remain credited. Preserve all aligned unfinished
+goals and existing source ownership; this SL's goal API still reports historical
+usageLimited metadata and has not been reset or falsely completed.
+
+Latest actual human appearance decision: **PARADE INK / Photo2 only**. This
+supersedes AfterDark and the earlier unresolved four-appearance choice. No
+appearance selector/backend preference expansion, no coupling to REVENGE/
+PARADE/DANGER World eras. Main solely revises central plan/progress/provenance;
+new redesign implementation starts only after its committed published revision.
+Existing safe nonconflicting functional jobs and qualified patches continue.
+No central plan file or peer checkout is edited by this SL.
+
+Concrete post-publication presentation packets prepared with King385: one
+Root/shared frame/type/tab/footer/action owner; disjoint Feed/thread, Meet,
+Gift/list-reservation, WallB editor and Profile/avatar presentation owners;
+exact source paths follow actual incumbent STOP/custody and developer boundary
+selection. Art receives only distinct approved assets, never replacement
+characters or a second rendering implementation. Photo2 is primary; other
+sheets supply missing anatomy/states restyled Parade, old unpictured structure
+retained. Actual data/authority/clock/receipt/persistence invariants remain with
+functional owners. Unapproved Level12/Guestbook/SayHi/quantity semantics are not
+silently implemented. Original functional outcomes stay credited; new design
+acceptance is accounted separately under Main's revision, no blanket reopening.
+This is planning, not a new assignment, technical review or approval queue.
+
+### Active dependency continuation — 08:17 KST
+
+Current Root153 reports an actual missing IN02 navigation pair and narrow
+transfer to existing204: Party management/rendezvous and World check-in UI
+hunks: `frontend/src/features/party-discovery/ui/PartyDiscovery.tsx` ONLY
+current-authorized PartyDetail Manage/rally links, and
+`frontend/src/app/world-presentation/WorldTools.tsx` ONLY existing check-in
+ShellLink. New exact `__tests__/in02-navigation/**` under each component area
+is allowed for relevant behavior. Root literally STOPPED those hunks; no
+layout/CSS/Auth/World/controller/command rights. Affordances use actual current
+returned authorized scope; missing controller fields require a narrow transfer,
+never counts/name-derived approval. Root retains shared composition; no general
+caller lease or redesign scope is inferred. Source fixes are functional prerequisites and continue in
+the existing IN02 context, not a new harness or artwork job. Actual shared
+managed runtime remains unavailable.
+
+Party12cc reports the interrupted main build passed, test build failed and
+no copied executables produced; all owned processes are gone and a late
+supplemental release was sent without backdating. Target-baseline/retained-
+union footprint accounting is being corrected by its responsible owner.
+Gift267 is reconciling actual custody/current claims with21d before accepting
+the corrected finite offer. These are build/qualification/resource states,
+not technical approval or a newly qualified real public cohort. Root1fc likewise
+checks literal Party/Gift releases before its Concert retry; no slot inferred.
+Publisher412e is actually resumed: Map22-path publication3aefd3dd reported,
+raw-log allowance preserved/native NOT_RUN. Standing publication route remains
+412e, not a new Main/SL assignment.
+
+Latest human palette clarification carried by385: Parade Ink light panels,
+black headers, BLACK selected tabs/white text, crimson primary actions. Missing
+anatomy/states from other sheets are translated into Parade Ink. Hair/Eyes/
+Outfit catalog is original FE13 scope; Lv/XP is explicitly excluded and other
+semantic samples need explicit truthful disposition. No additional planning
+packet, central edit, proof document or redesign dispatch follows this note.
+
 ## Hourly reconciliation — 2026-11-05 07:20 KST
 
 All27 unique coordinated original IDs are reconciled in the current task tables
