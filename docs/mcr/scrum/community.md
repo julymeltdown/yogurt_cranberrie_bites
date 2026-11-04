@@ -667,7 +667,87 @@ material staffing/dependency change in the next hourly digest, without a
 per-handoff king packet. This small management delta is committed locally for
 the next normal documentation publication batch; it is not yet published.
 
-## Hourly reconciliation — 2026-11-05 03:05 KST
+## Hourly reconciliation — 2026-11-05 04:05 KST
+
+Owner evidence cutoff 04:05 KST; previous digest 03:12 KST. The canonical
+FE/IN and QA/IN tables below reconcile all 27 unique lane originals, preserving
+owner, task disposition, delivery, remaining criteria, dependency, next action
+and commit/publication state. Dated handoff notes retain chronology. Newer
+revised states and this summary supersede stale present-tense queue notes.
+No new whole-original completion is established this hour. Unrefreshed owner
+evidence remains unreconciled, not unstarted; bounded goals are not originals.
+
+The delivery repository's functional plan/register at 03:42 KST records 112
+original IDs, 61 IA entries and 111 active tasks. QA08 remains explicitly
+DEFERRED_BY_USER, neither passed nor completed. The published functional
+snapshot reports 41 DONE / 70 active remaining project-wide; this lane does
+not independently inflate those totals. No new performance or generic
+provider/device prerequisite is added to pure-client/software criteria.
+
+Material lane delivery and next milestones:
+
+- FE37 common Operations consumer and original-criterion report are published
+  (9a44bc29 / de1175f2); 230's blocked unfinished production goal and clean
+  branch were preserved and archived. Actual role/evidence/moderation remain
+  producer205 and Root; no ready independent 230 leaf was invented.
+- FE38's original frozen-client contribution remains published at84e32f6f.
+  FE39 adapter/terminal fixes are published at3255aae0. Actual default Admin
+  composition is now staffed by53d under a NEW aligned unbudgeted active goal,
+  exact Root-transferred paths and canonical admission inputs. Twenty-one
+  changed composition cases passed; fixture errors were repaired. Current
+  committed321a44df still needs THREE remaining type/lint/syntax checks,
+  followed by one affected default-main390 journey and direct publication.
+  Prior source offers declined before acceptance; latest offered continuation
+  has no confirmed execution. Social owns fresh usable allocation, not review.
+- IN04 e2a9 completed five source checks, including53 helper cases, after
+  retaining three failures and their fixes. Literal FULL18:59:22.598001Z;
+  browser/stack/native NOT_RUN. Final clean source packet cdc6f2a844c8ed75525a6a3ffc81599414f4544e was
+  delivered directly to Root153; publication receipt remains pending.
+  Root153 independently accepted actual runtime-adapter/source integration
+  with its new active unbudgeted goal and exclusive runtime-adapter prefix.
+  Same canonical runtime only. Original IN04 remains OPEN / real NOT_RUN.
+- Canonical runtime repair16e actually ran and released the exclusive target
+  19:02:41.364918Z. Both builds passed after owner fixcfc49f4ee, but one
+  executable exceeded its individual copy cap; copied tests/PG were NOT_RUN.
+  Literal FULL19:03:23.495355Z/resources0 followed target release. Ops205 next
+  fresh target turn, then Wall202 repair, continue directly; runtime owner
+  prepares a separate bounded copied-only retry, no target rebuild or old reentry. No age-provider or
+  reviewed physical-place gate applies to virtual Wall IN04. Actual canonical
+  Auth/event/current role/moderation/recovery producers remain necessary.
+- QA07 uncovered changed-software delta assigned to existing completed FE38
+  developer332b, reactivated existing chat. Owner confirmed get_goal none after FE38 completion, created a NEW ACTIVE
+  unbudgeted goal and confirmed exact isolated checkout/branch at a10e4f409.
+  NEW isolated qa07-input-delta-332b, exact new input-test/doc/evidence prefixes
+  only; no application writes. Keyboard/focus/labels/DOM alternatives/pointer
+  cancellation cover Wall B and changed Gifts/Thread/Meet. Reuse unchanged
+  coverage, route application fixes directly to feature owners, no duplicate
+  IN04 live or visual matrix. World retains whole original QA07 disposition.
+- FE41 current revised state is IN_PROGRESS, with actual existing developer83
+  source preparation and fresh offered source qualification under World/Root.
+  Published controlled recovery/pickup-no-replay baselines remain credited;
+  actual operational/version/admission and uncovered host cases stay explicit.
+- QA01 changed enrollment cohort is source-ready2a1850de after a retained
+  failed attempt, awaiting its normal fresh source round. QA10 existing6b5d
+  is active on release composition and queued; its incompatible historical
+  blocked Profile goal remains untouched. Neither closes whole QA01/QA10.
+- IN02 remains OPEN / real NOT_RUN: Party follow-up actual producer/settlement,
+  Gift protected media and canonical caller inputs remain their owners' next
+  work. Intro's copied round ended FULL18:58:58.040242Z with pure binding PASS
+  but native scope-capacity failure; its owner fixes the real callback adapter
+  in owned tests. This is separate from IN04, not a new global dependency.
+
+No genuinely unstaffed ready disjoint Community leaf remains identified after
+QA07 dispatch. Developers continue source work and normal finite allocations;
+publication routes directly to Root153 with no SL/king acknowledgment or
+proof-only successor. No implementation/query/test/runtime/image inspection
+or validation rerun was performed by this SL. Current owner evidence is in
+[IN04](../qa/in04-wall-b.md), [default Admin](../frontend/default-admin-composition.md),
+[Operations roles](../backend/operations-role-dependency.json), and the direct
+owner chats retained in the task rows. New QA07 report will be authored by332b.
+
+## Prior-hour and natural-handoff evidence — 03:05 to 04:04 KST
+
+### Prior hourly reconciliation — 2026-11-05 03:05 KST
 
 Owner updates included through03:11KST; original task statuses below remain
 distinct from their bounded goals and resource workflows.
@@ -1317,6 +1397,296 @@ actualrelease.21d routes returnedposition DIRECTLegacy232 afterMediatarget
 release, no Communityoffer/hold/duplicatepacket. KnownMedia1.75+Introcopy1+
 QA06B256 actual=3 beforeLegacyfreshadmission; no inferredfourthacceptance.
 
+### Actual failed backend turns and ready frontend source —03:43KST
+
+Intro attempt2 literalFULL18:41:13.081243Z/allPGroots-PIDs-nativegroups-
+guardian0/NEW0. PG16.14 started, pureexactbindingPASS; firstdraftSmokeError,
+DRAFT/PUBLISHED/CLOSED/restart notpassed. Diagnosticcapturedphase/lostdetail,
+owner fixesownscript/source-docpin with Rust/SQL/frozen9aEXE unchanged.
+PeakWHOLE8,243,472,896/PG98,632,800/process20/RSS500,334,592B retained.
+Owner explicitlyDECLINESremainingold1838nativewindow/requeuesfreshfaircopied
+allocation afterfix, no clockreset/targetreentry/current1GiBhold. Receipt
+/private/tmp/mcr-intro-deletion-20261105/copied-continuation-2/full-release.json.
+
+Legacy actualACCEPT18:42:37.214621Z/source0deeeae9 afterMediaTARGET18:39:07.836866/
+FULL18:42:16.4152; freshguards/reservation2GiB. Then literalTARGETrelease
+18:42:45.636936/compilerhandles0 and actualFULLreported(no exactFULLepoch
+supplied)/guardianreaped/controllerexit1/nochild-PG/NEW0. ProfilecompileFAILED
+E0407/E0599 traitplacement perowner; remaining3builds/nativeNOT_RUN/noEXE.
+PeakWHOLE4,828,655,616/targetpositive20,480/outsideabout4.23MiB/PIDs6/RSS556,679,168
+retained. Report205 DIRECTnext; Legacyfixownedtrait/resources0/freshfairretry,
+no targetreentry/docs/SLACKwait. Community doesnotinspectcode/errorcause.
+
+Admin53d clean79983284b777b214ac59c85c42da286596edc844 fixture-onlyfixREADY
+since18:37; productunchanged,21PASS retained. Fresh52readset7d345b1b/helper-
+guard1c6218, datedphysical2,207,142,034/accountedfloor2,215,443,683 andretained
+NEW22,617,318B, allfailures charged. THREEremaining types/lint/MJS only,
+no21replay/browser, same128MiB/8ALL3GiB/WHOLE2560/120work180total. SoleSocial
+asked directfairfiniteoffer or explicitreturnedidleSOURCEcustody afteractual
+backendFULL; no competingCommunityoffer/hold or liveproducerbarrier.
+Rootdiagnostic18:35:10→18:35:25 precededAdmin18:36:06→18:36:18, exactfact
+sentowner; no actualoverlap/newclock inferred from delayedpacket.
+
+IN04 owner sourcecheckpointb306f429 committed/NOTexecuted, addsselectedWallB
+journey/recovery/refusal for missingliveinputs underexactownedprefixes.
+Boundedsource Node/type/lint/discovery/helperqualification requestedSocial,
+no live/browser/stack or sourcePASS; originalgoalunfinishedBLOCKED, liveNOT_RUN.
+ActualcurrentQA06/otherFE dispositions staySocial, no stale2BE/3FEcount.
+
+### Community original criteria and current continuation owners —03:46KST
+
+SoleSocial requested onlychangedFE21/22/currentIN02 ownerfacts. No newclient/
+referenceacceptance inCommunity: FE22 revisedDONE/originalSATISFIED and
+published5da64426 binding preserved; FE21 revisedREOPENED reneweddensity/
+reference/currentauthorizedinputs, latestCSScriterionreceiptUNRECONCILEDhere.
+Root153 retains actualFEroot/caller/continuationownership, no impliedpickup/
+Partygrant to83FE41 or53dAdmin. No originalpureclientcriteria reopened by
+unqualifiedbackend/runtime state and no newlyidentifiedreadyunownedclientleaf.
+
+ActualParty19f83 latestreport: new2read routing/nativebindings/tests/docs
+prepared /tmp/mcr-party-native-settlement-01/production/party-reads-followup.patch,
+Rustsyntax/gitapplychecksPASS, UNAPPLIED to preserve5EXEbuildclean9fcd837d/
+2,276frozenpins. Allocation/compiler/runtime/newreadpublication pending;
+qualifiedphysicalinput stillWAITING_INPUT. Rootexactsolegrant isnot delivery.
+Gift267 actualsharedMedia pool/sanitizer/receiptkey scope assigned acrossGift/
+Feed independentofGiftmode, sourceactive; no new actualstock/pickup/cleanup/
+IN02journeyPASS. Root1fc actualruntime/samecandidatecomposition;Party/Gift
+actualservice+physicalinputs;Root153FEcaller directowners. IN02 realNOT_RUN,
+virtualcoords/artnotphysicalarrival. Root1fc migrationdirectory/provenance
+repairimplemented/launcherselectedrevisionSQLcopy, nativequalificationpending;
+retainedsixpeer inventoriesmatcholdsource/no newEnrollmentpolicy perowner,
+not currentmain/C03/readiness acceptance. Changeddisposition sentSocial once,
+no newKingpacket/sourceproof/readback or fullbackendwavebarrier.
+
+IN04 ownerWITHDREWREADY b306f429 whileauthoringRootoperatoradapter/actualPhaser
+witness underexistingQA grants. Resources0/nohold, sourcevalidationnotqueued
+asfrozenREADY untilownerresubmits; liveNOT_RUN/sameblockedgoal preserved.
+Admin79983284 THREEremainingcommandsREADY128MiB/120+60 behindearlierfair
+FE10/Artist/209/COREsequence, no Communityoffer/extrareservation. Socialowns
+allocation; fixtures do not await actual205/C03producer. CurrentReport205
+ACTUALACCEPT18:44:46.698676Z/clean06b298d0, oneNEW2GiB/WHOLE12, independent
+prechildguard, fixedcompile18:49:46.698676/freeze18:50:16.698676/
+work18:55:16.698676/FULL18:59:16.698676Z; no result yet, Ops1837separateunaccepted0.
+FE10SOURCE32actual18:44:06/work18:49:06/FULL18:50:06, ProfileB128offerthrough
+18:48/pending, Worldcopied768independentready offer (not assumedACCEPT),
+Report2GiB =>fourpotentialpositions perSocial18:45. OnephysicallyfreeFEsource
+class isnot automaticglobalposition, no competingCommunityoffer.
+
+Legacy exactFULL now suppliedepoch1793817787.433255=18:43:07.433255Z,
+compiler/handles/guardian/children/PGroots0/NEW0; spent1815lease/nohold for
+3594117e sourcefix/docs/retry. This confirms earlierreportedFULL, no duplicate
+receipt/handoff. ProfilecompileFAIL101/other3builds-nativeNOT_RUN/noEXE.
+
+### IN04 READY restoration and current finite queue —03:47KST
+
+Social reports IN04 frozenREADY restored7d1ca40a: ownoperatoradapter plus
+worldtexturewitness authored underexistingQA prefixes, no executedsource/
+native/livePASS or job/hold. PriorwithdrawnREADY superseded; goal remains
+unfinishedBLOCKED/liveNOT_RUN, laterfair sourcequeue. Admin79983284 three
+remainingchecksREADY128MiB/120+60 afterearlier209/CORE; no Communityoffer.
+FE10 literalFULL/resources0. New209SOURCE128MiB offerthrough18:50,240+60/
+29NEWcases; ProfilebrowserACTUAL128MiB, ReportACTUAL2GiB, Worldcopied768
+potential(ACCEPTnotassumed) yield4potentialpositions/ALL3GiB perSocial18:47.
+No arbitrarylaneslot or fifthjob despitephysicallyfreeSOURCEclass.
+
+Artistfresh1846ACTUALDECLINE beforejob/hold0/offerclosed; reportedguard subtracts
+OWNWHOLE2GiB plusOTHER2.875GiB leaving8,407,846,912B, short1,255,829,504B of9GiB.
+Community flagged possible retainedWHOLE-doublecharge versus declared64MiB
+positiveNEW toSocial/21d for nextfreshfairturn only. Issuersresolveintent/current
+policy; no SLcodeinspection or unilateralbudgetchange. Preservecurrent209offer/
+allacceptedcaps/clocks/history/WHOLE and NEWceilings; closedoffer not revived.
+Classpolicy free minus ALLfutureNEW versus WHOLEhighwater accounting remains
+resourceissuer responsibility, no userdecision/Kingreview introduced.
+
+Report205 literalTARGETrelease18:46:12.588816Z/compiler-targethandles0/noRustreentry,
+source06b298d0/frozencopies; directWall202next mayfreshadmit actualglobal/bytes,
+notwaitcopiedtests/PG/FULL/ACK. Reportjob remains1/ALLNEW2GiB, alreadyspenttarget
+growth retained; posttargetfutureoutside512MiB only (notextraadditivebudget).
+Native56/RSS4GiB thensequentialHTTP52/noPGoverlap. Tightenedwork18:51:12.588816/
+FULL18:55:12.588816Z(target+300/+540), earlierboundprevails. No test/native/
+HTTP/productacceptance yet. Currentactualotheradmissions fromstewards, no
+queuehold/fifthjob or publicationgate inferred.
+
+### Shared resource floor and readiness correction —03:49KST
+
+LiteralWorld1839 ACTUALACCEPT18:46:06.394769→FULL18:46:31.538245Z/NEW0/
+workflow0/targetNONE/ownedgroups-guardian-PG0. EightcopiedcommandsPASS,
+3NotificationPGfixturetestsNOT_RUN; realAuthlauncher initialfloorstop beforePG,
+not service/productqualification. Its768MiB isnotcurrenthold. Reportliteral
+FULL18:46:51.704259Z/controllerexit1/guardianreaped/noPGservices/NEW0;
+3exactcopies/mainbuild/native+runtime no-runPASS, copiedroute/nativeHTTPNOT_RUN
+because copied12GiBstartfloor12,807,368,704<12,884,901,888. PeakNEW1,048,416,256/
+WHOLE10,850,549,760/outside127,848,448/target920,563,712/priorcarry9,802,133,504
+retained, no oldlease reentry; freshcopiedonlyrequestseparate.
+
+ProfileactualFULL18:47:07.327421/resource0, preflight/native3of3PASS, ownvisual
+assessment/publicationpending, no originalclosureinferred. FE2091847DECLINE
+18:47:32.807874 beforeACCEPT/freebelowfloor, nochild/cache/link/TMP/hold,
+offerclosed. Artist1846DECLINEclosed0, FE10FULL18:44:54.134302/oldjobsall0.
+Social18:49 knownGLOBALACTUAL0/ALLoutstandingNEW0/NOunexpiredFEoffer; no
+formerRoot/World/Report/Intro/Media/Legacy/QA06/Admin/21e reservations.
+Community ownreadonlydf18:49:56Z available12,243,328KiB=12,537,167,872B,
+347,734,016B below12GiB12,884,901,888. Datedmeasurement, notfutureadmission;
+any newlyadmittedowner mustbe reconciled byresourceissuer. Routedauthorized
+owner-ownedcapacity recovery/freshusableadmission DIRECT21d. Preservefloors,
+allhistory/highwater/acceptedbounds, no peerdatadeletion/sharedtargetcoldclean
+or newtarget. This is storagequeue, not backendwave/SLapproval. No knownjob
+remains forCommunityto release. No user/Kingdecision needed atthisstage.
+
+ArtistfutureWHOLE-versusNEWaccountingresolveddirect21d perSocial, ownerasked
+newguardianpin;1846closedremainsclosed. ReadyFIFOArtist/209/CORE/Admin/IN04
+plusFE10native160 retained, no offersuntilfreshusablefloor. Admin53d JUST
+WITHDREW79983284 frozenREADY forcanonical1a1db340 strictAuthintake/ownHTTPfixture
+update; sourceauthoringcontinues underexistinggrant, resource0/no newgoal/
+21replay/liveproducergate, fairpriorityafterCOREwhenrefrozen. Historical21PASS/
+typefailure/fix retained, notnewAuthcandidatequalification. IN04 currentREADY
+operatoradapter/worldtexturewitness scope retained; owncacheguardupdate will
+supplyfreshHEADatfutureACCEPT, no SHA-onlyofferreissue/extraresources.
+
+### Future bounded11GiB policy and actual IN04 source readiness
+
+Resource21d currentpolicy version2026-11-04T18:49-strictly-bounded-11GiB,
+updated18:49:49.541157Z, explicitly future-only includingunacceptedstandingoffers.
+SOURCE(no compile/install/bulkcopy), browser/copiednative(no compile/newEXE),
+and existingexclusivewarmRust withALLNEW<=2GiB nowstart11GiB=11,811,160,064B.
+WarmRust2<NEW<=3GiB retains12GiB; cold/new/unboundedremainexcluded. AfterALL
+outstanding/proposedworstcaseNEW>=9GiB/live8/global4/SOURCE2/browser2,
+independentprechildguard, exactperjobscope/caps/deadlines/cleanup staybinding.
+Both controller+guardian updatedONLYbeforefutureACCEPT; acceptedepochs/guards
+unchanged, closedoffer not revived. Pre-ACCEPTpins developer-owned, no SHA-only
+reissue/newgoal. RetainedWHOLE/carry independentlynonshrinking; freshadmission
+reservesadditionalNEW, notretainedbytesalreadyinfree. Allgenuinelynewbytes
+andfailurehighwatersretained. Artistfutureguard999c9680/cleanc02daa6b now
+charges64MiBNEW ratherthan2GiBretainedWHOLE; old1846closed. Exceptionresolved.
+
+Prior12GiBstoragefloor denial remains historicaltruth; futureeligibleclasses
+mayfreshadmit under11GiB, notautomaticadmission or peercleanup. Policyread is
+resourcebookkeeping, noSLimplementation/guardinspection or technicalapproval.
+Currentpolicy explicitly states12GiB wasoperatordefault/nothumanfixedminimum.
+Sent changedfuture rule directlyAdmin53d/IN04runner forownpre-ACCEPTparameters;
+Socialallocation/earlierfairqueue/twooccupiedSOURCEpositions preserved.
+
+IN04 currentactualclean6f7a2a339a6c55d1c4f2ed478dc0a3327d32fca4 supersedes
+7d1candidate: ownadapterloading/fullPhaserRGBAobserver/WallBjourney-recovery
+helpers committed underexactnewQA prefixes. Owner freshlyverifies SAMEaligned
+originalgoalBLOCKED/unfinished, no reset/completion. Pythonparse/path/whitespace
+PASS reported; FIVEsourcechecksNOT_RUN, waitingresourceslot (Socialconfirms
+2SOURCEpositionsoccupied/earlierreadyqueue), nooffer/job/hold. Root153 receives
+pending-validationcommittedcustody, not finalqualification/publicationacceptance.
+No oldvisualmatrix/build/native/200job. Canonicalstack/accounts/event/actualOps
+role+moderation/qualifiedmodule stillabsent, liveIN04NOT_RUN; sourceprepnot
+blockedbybackendwave/review. Actualresourceoffer/ACCEPTpending, notdispatchproof.
+
+### Original IN04 whole-feature priority and named authority dependency
+
+Main directs coherent originalIN04 fullselected-B multi-client delivery via
+existinge2a9/Root1fc/Wall202/205. Source runnerqualification independent;
+normalFE/artqueues preserved, no acceptedpreemption/admissionbypass/second
+runtime. ExplicitlyNOage-provider/reviewedphysical-place gate forvirtualWall;
+these belongSocial/physical-positive flows. Retain actualAuth/serverprivacy/
+currentrole/revision/cooldown/recovery/moderation functionalrequirements.
+Priority carrieddirectly toexistingruntime/Wall/Ops/runner/resource owners,
+no Main/KingACK or freshproof forunchangedfixturecases. Actualotherdependency
+musthave concretecurrentowner/operation, no globalbackendwavebarrier.
+
+205 supplies specificstandalonePreparedOperationsAuthority sourcea41a9a143/
+packet317a7c358 docs/mcr/backend/operations-role-dependency.json, originalfive
+roleblobs/0061 andWallintake4d4887ad. SAMEcanonicalregistry/assignments/
+publication/pool; no substituteboolean/duplicateauthority. Existingnamed
+OPS1837 actualtwoEXEissuer4+roles3 NOTcompiled/runtime-qualified; privileged
+publicproducer notready. OwnAccessGET27f674a2/aa08268e on810ae1faf ALSO
+NOTqualified. ReportEvidence/7routePASS separate. Root1fc/actualmainwriter
+owns coherentactivation, Wall202 actualWallB/moderationproducer,205 actual
+roleauthority; e2a9 consumesfrozeninterfaces/sourcehandoff. Routedmetadata
+DIRECTthoseowners/21d, no SLimplementation/query/testinspection or review.
+Nextgenuinelyready criticalchain turn prioritizedwithoutpreemption.
+
+Latestquickreturns: RootSOURCE1850actualFULL18:52:25.065927/19unitsPASS/
+NEW0/sourcepackagingonly; Report1850copiedACCEPT18:53:29.225882→FULL18:53:32.874827/
+7routePASS/nativeprePGFAIL/HTTPNOT_RUN/NEW0; World1852ACCEPT18:53:08.874182→
+FULL18:53:35.146386/initial11floorPASS/startupFAIL/realAuthNOT_RUN/NEW0.
+These acceptedclocks preserved, priorityarrivedafteradmission/no retrochange.
+Wall1830ACTUALACCEPT18:53:40.733861/source d8513f842 thenTARGET18:53:57.774065/
+FULL18:53:57.774477, compilerhandles0/guardianreaped/noPG-services-copies/NEW0.
+Ninecompilererrors/cacheddomain-appWallmodule reported; stoppedondelayed
+inventory butReport+WorldFULLbothBEFOREWallstart, no demonstrated5-joboverlap.
+1830spent/noreentry; actualdiagnosticsfixownedWall202/source-only/freshqueue,
+Party directnext mayfreshadmit, no waitingdocs/fixes/managerACK. Historycarry
+>=14GiB/NEWpeak85,671,936 retained. No nativequalification fromthisfailedturn.
+
+### Admin current READY and declined finite offer —03:56KST
+
+AdminREADY321a44dffce8ec2f9f261ab84d850228d196557e supersedes799/599 before
+futureadmission, Rootcanonical1a1db340 strictregisteredAuthfixture/borrowed
+AdmissionBoundary intake retained. Exact58readsetd3aea251/guard41ac92, helper/
+Node/locks unchanged; original21PASS97befb78 remains historical/no replay.
+THREEremaining fullTS/scopedlint/MJS only, sameACTIVEgoalFE38/39compose+
+FE37explicitunavailable, no product/guardrights expansion. Futurecontroller+
+guard11/live8/reserve9/8ALL3GiB/WHOLE2560/NEW128/TMP80dur24other16/120+60.
+
+SocialsingleADMIN-REMAINING1855 validto18:58 was ACTUALLYDECLINED/CLOSED
+beforeACCEPT: resample18:55:14.696202 free11,984,982,016 minusOTHER2,281,701,376
+(Wallproposal2GiB+CORE128) minusown134,217,728 leaves9,569,062,912B<9GiB by
+94,613,504. NoACCEPT/prefix/link/guardian/child/job/hold created; not testfailure,
+no floorwaiver/closedofferreuse/clockreset/newgoal. READYfairpriorityretained.
+Social asked to distinguish any actualvalidnewWallproposal fromspent1830/
+futurequeue before freshoffer, preservingMainpriority/currentCOREaccepted work.
+Communityno competingoffer. Sourceguardreadsetkept forfuturefreshownerpreflight;
+liveproducerabsence isnotremainingtypecheck barrier.
+
+IN04 currentcleansource83425712245a110ba69f0a77c8cd925d688fa062 appliesfuture11
+inbothlivecontroller/independentPythonSOURCEguardian, WHOLE/NEWseparate.
+Pythonparse/staticfloorparity/path/whitespacePASS; Node/livechecksNOT_RUN.
+CurrentgoalBLOCKEDunfinished/queuepreserved, no offer/job/hold or finalpublisher
+acceptance. Guardupdate isnot neworiginalclosure or helpergoal.
+
+### IN04 production adapter staffed and runnable prerequisite order
+
+MainassignedRootFE153 actualproductionruntime-adapter/sourceintegration:
+priorboundedgoalcomplete, NEWunbudgetedgoalACTIVE, soleNEW
+frontend/e2e/runtime-adapters/in04-wall-b/** plusownassigneddocs/evidence.
+e2a9 retains ownrunner/sourcequalification; no overlappingapplication/backend/
+sharedcontractgrant. Actualinspect/externalrestartobserve/map-boundMuralconfig/
+DEVsamePhaserfullRGBA required; no fakecapability/authority/secondapp/stack.
+RootFE/RootBEactualinterfaces settle directly with202/205/e2a9. LiveIN04 stays
+NOT_RUN untilgenuinequalifiedwindow/threeactors/event/operatorroutes, source
+preparation independent, no reviewACK/resourcehold or originalclosure inferred.
+
+21d nextfresh actualpriority: READYruntime-package/startuprepair16e
+01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c →actualOperationsrole205→Wall202 repair.
+Party completesacceptedturnorreleasesunaccepted0 before16e, then directliteral
+targetrelease205. LaterParty/207/00c staysqueued; acceptedjobs/clocks preserved,
+normalindependentFE/artsource progress remainsSocial. Exactsource/contract
+custody stillmandatory, no newgrant fromresourcepriority. ActualIN04runnerowner
+coordinates runnable prerequisite order DIRECTRoot1fc/16e/205/202/RootFE;
+Community sent actualowner map/handoffs, no Mainstatuspacket/approvalstage.
+Storage recoveryactual00c/Rootowners exactreleasedduplicate/reproducibleoutputs
+only, solewarmtarget/source/assets/uniqueevidence/history preserved.
+
+Party1830 PREFLIGHTDECLINEbeforeACCEPT, literalrelease/FULL18:55:57.992592Z,
+noCargo/PG/services/copies/handles/workflow/NEW. Free11,915,571,200-own2GiB-
+CORE/Adminupper268,435,456=9,499,652,096<9GiB, refusedreserve. OldofferSPENT,
+frozen9f/followuppatchunapplied, source6case16MiBrequestfairqueue/nohold.
+ActualtargetB0observed18,651,791,360/noPartycompilegrowth. Receipt
+/tmp/mcr-party-native-settlement-01/production/round2/preflight-declined.json.
+DirectunacceptedSTOP0 handed16e; old207successor notice superseded byMain's
+criticalchainpriority withoutpreemptingacceptedwork. No docs/sourcefixwait.
+
+IntroNEW1853ACTUALACCEPT18:56:10.827701Z/source0e8500ca/existing9aEXE,
+copiedworkflow1/NEW1GiB/WHOLE12carry8 inclalloldtarget-PG-failurehistory.
+Bothguards11/live8/reserve9 beforechild; freshfree11,909,644,288-FEupper268,435,456-
+own1,073,741,824=10,567,467,008>9GiB/globalupper3 atowneradmission. Nativecutoff
+19:03:10.827701/work19:04:10.827701/FULL19:07:10.827701Z immutable,80ALL/RSS4/
+outside1GiB/PG768/proof128/EXE64; childfailure distinctfromwholeFULL. Preserve
+acceptedallocationwhilecoordinatingcriticalchain, no hiddenoldIntrohold/reset.
+
+IN04owner confirms scopeexclusion documentation-onlycommit (hashnotprovided),
+runner/importedconfigchecks containno age-provider/reviewedphysicalplace gate;
+no code/fixture/auth/privacy byteschanged. Root1fc inspect/observeRestart/
+muralBinding, Wall202membertools+adminC04pause/restore/freeze and205currentrole
+contactedDIRECT, no unchangedproofrequest. SamegoalBLOCKEDunfinished/source
+READYqueuedCOREnext/nooffer/hold, Root153publication afterownervalidation.
+
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE09 | Revised DONE; Original task-local SATISFIED retained;204 bounded goalCOMPLETE/Auth9leasesreturned, now Social FE10 owner, no current Auth9 lease | Source `f3bdc853` published `70a444bf`; all11 latest payloads independently verified,81 targeted fixtures/types/lint/plan PASS reported. No original gap/product edit; execution-plan progress-line drift informational | Current revised remaining: None in the current revised task scope; separately open integration/reference tasks retain their own criteria. Retained owner/dependency context: No remaining bounded FE09 delivery work. Expiry observation NOT_RUN informational, no duration/renewal gate. World reports original IN01 criteria/delivery PASS, actual COMPLETE/leases returned/freeze released; World owns its accounting.204 completed FE40/read-only assessment and subsequently accepted WallB; no current Auth lease |
@@ -1332,11 +1702,11 @@ QA06B256 actual=3 beforeLegacyfreshadmission; no inferredfourthacceptance.
 | FE32 | Revised REOPENED; Original pure-client SATISFIED/MOCK_READY retained from204; WallB delivered/current Root153 consumer,204 now FE10/no Wall lease | Original0db20367→4af1c868 retained. New wall-tools-b report published480a6dd210cad97294974b0e39a4cf69499dae2b, corrected2645b579 controlled409/PENDING/FAILED/different-key recovery and390 nativePASS, resources released | Current revised remaining: Selected B tools and default Wall lifecycle are published with developer-qualified controlled source/native evidence; preserve these increments and address actual producer integration or remaining task-local visual/input gaps. Complete actual authorized service behavior for cooldown, quota, conflict and unknown-outcome recovery with the backend owner; real two-client IN04 and full visual/device acceptance remain separately open. Retained owner/dependency context: Root owner subsequently qualified defaultApp/retry fix and published Wall3f81; actual live integration remains separate. Network-positive/backend/native persistent world/two-clientIN04/global reference remain open in owner report. No unsupported-tool/no-grant claim or whole-original closure from bounded increment |
 | FE33 | Revised REOPENED; Original frozen-client SATISFIED retained; former230 now actual NEW operations goal1793811935, not QA10/FE33 writer | Published module7c2f3af7/callereeae69be retained; C06 media geometry7eac13ce completed/published. No new FE33 whole acceptance | Current revised remaining: Published default Wall controlled lifecycle/recovery is credited; finish authoritative live C04/C05 binding and real convergence for bounded edits/undo, server recovery and moderation invalidation. Do not repeat unchanged controlled fixtures solely for a consumer acknowledgment; qualify actual multiuser requirements under IN04 when producers are ready. Retained owner/dependency context: Root153 current consumer/1fc Wall SDK207/World producer counterparts own genuine activation. No approved Wall producer/media input or fresh leaf manufactured; realIN04 separate |
 | FE37 | Revised IN_PROGRESS; 230 actual unfinished goal1793811935 BLOCKED/terminal idle/clean/resource0; preserved ARCHIVED03:20, producer205 and defaultAdmin composition53d active | Observerfix canonicalcf1ca629; commonf10455de exact16paths published9a44bc296ef46bbc9da781ae095a80a2cd016fe0; latest original-criterion reportb90ebe56 publishedde1175f2c1ae14627a7e57f031650125d5f659c9 on13baed63. Owner65source/27native and37common checks retained | Current revised remaining: Have the responsible implementation owner reconcile original role-route, evidence, reason, suspension/hide/restore and failed-action coverage from existing delivery; fix any actual gap. Bind current authorized role/evidence providers for production and carry server denial/downstream-failure cases without exposing reporter/private data. Retained owner/dependency context: Actual role/evidence/O04 decision/O05-O06 served moderation remain205-owned;53d independently owns central mount. No ready independent230 leaf within current rights. Reactivate preserved230 only on qualified producer/exact actionable delegation; no reset/pause/false completion/filler |
-| FE38 | Revised IN_PROGRESS; Original frozen-client criteria SATISFIED per explicit owner receipt; delivery PUBLISHED;092f actual bounded goalCOMPLETE/terminal/resource0, preservedARCHIVED | Source88fde3e1f6c11fd8002d88325f74e62d080954d3→84e32f6fbef56e52d3e07568fd8e87e347134263, all44postimages/modes verified by canonicalpublisher atcf1ca629.77tests/types/lint/native360/390/430+568short/ownerimagesPASS, no extra proof-only commit; NEWdefaultAdmin97befb78 actualFULL18:36:18.866649Z/resources0;21changedcasesPASS,fullTS fixture6typeerrors,lint/MJSNOT_RUN; ownerfix+freshremaining-onlyqualificationpending | Current revised remaining: Reconcile original control-room/event/place/notice/audit criteria and finish uncovered confirmation/version-conflict/source visibility behavior. Bind current operator authority, approved notices/legal inputs and place records; preserve honest unavailability when authority or provenance is missing. Retained owner/dependency context: No remaining bounded client delivery/publication/proof. Actual production authority/clock/evidence and NEW commonapp/operations-entry consumer stay205+230+Root;53d FE39 adapter separatelyactive. Furtherfeaturebinding needs exactRoottransfer, no implicit lease. No duplicate code/replay/filler/finishedworker restart; original-client outcome batchednext hourly, productionnotclaimed; current revised production remainder remains205 plus accepted defaultAdmin53d, despite completed frozen-client receipt |
-| FE39 | Revised IN_PROGRESS; 53d bounded adapter/fix goalCOMPLETE/PUBLISHED; immediately accepted NEW defaultAdmin composition ACTIVE unbudgeted goal, whole current original scope unfinished | Initiald762018b→a9c04eb2; followup7d4b8b8b→3255aae0507d63d3261e40a3826b2ec592cc4612 canonical13baed63, exact17 followup modes/blobs perpublisher. Prior11+targeted3/fulltypes/lint/MJS and12nativeimages retained; resources0 at handoff; NEWdefaultAdmin97befb78 actualFULL18:36:18.866649Z/resources0;21changedcasesPASS,fullTS fixture6typeerrors,lint/MJSNOT_RUN; ownerfix+freshremaining-onlyqualificationpending | Current revised remaining: Reconcile original wall-control and closure criteria from existing resume delivery; finish uncovered snapshot confirmation, revision reset or partial-step presentation. Resolve current actual admin authorization/closure entry with the owning backend/root developers and qualify recovery from partial failure; do not repeat the fixed retry-contract implementation. Retained owner/dependency context: New codex/mcr-fe-default-admin-composition in same exclusive checkout, NEWoperations-composition plus Root-transferred AdminBoundary/admin-only ports hunks. Author retained entry/settings join, developer qualifies only changed composition and normal Root publication.205/202/BE41b91d live producers separately open; no wholeFE39 closure |
+| FE38 | Revised IN_PROGRESS; Original frozen-client criteria SATISFIED per explicit owner receipt; delivery PUBLISHED;092f actual bounded goalCOMPLETE/terminal/resource0, preservedARCHIVED | Source88fde3e1f6c11fd8002d88325f74e62d080954d3→84e32f6fbef56e52d3e07568fd8e87e347134263, all44postimages/modes verified by canonicalpublisher atcf1ca629.77tests/types/lint/native360/390/430+568short/ownerimagesPASS, no extra proof-only commit; NEWdefaultAdmin97befb78 actualFULL18:36:18.866649Z/resources0;21changedcasesPASS,fullTS fixture6typeerrors,lint/MJSNOT_RUN; ownerfix+freshremaining-onlyqualificationpending; latest79983284frozenREADYWITHDRAWN forcanonical1a1db340 strictAuth/HTTPfixtureintake; sourceWIP/resources0/refrozenqualificationpending; NEWREADY321a44df/58readset/11guard; single1855offerDECLINEDbeforeACCEPT onafter-ALLgrowthreserve94.6MBshort, nojob/testfailure; THREEremainingchecksNOT_RUN  Current04:04:321a44df retained;1859 fresh remaining-only offer received but actual execution unconfirmed; prior1855 DECLINE closed, no hold inferred. | Current revised remaining: Reconcile original control-room/event/place/notice/audit criteria and finish uncovered confirmation/version-conflict/source visibility behavior. Bind current operator authority, approved notices/legal inputs and place records; preserve honest unavailability when authority or provenance is missing. Retained owner/dependency context: No remaining bounded client delivery/publication/proof. Actual production authority/clock/evidence and NEW commonapp/operations-entry consumer stay205+230+Root;53d FE39 adapter separatelyactive. Furtherfeaturebinding needs exactRoottransfer, no implicit lease. No duplicate code/replay/filler/finishedworker restart; original-client outcome batchednext hourly, productionnotclaimed; current revised production remainder remains205 plus accepted defaultAdmin53d, despite completed frozen-client receipt |
+| FE39 | Revised IN_PROGRESS; 53d bounded adapter/fix goalCOMPLETE/PUBLISHED; immediately accepted NEW defaultAdmin composition ACTIVE unbudgeted goal, whole current original scope unfinished | Initiald762018b→a9c04eb2; followup7d4b8b8b→3255aae0507d63d3261e40a3826b2ec592cc4612 canonical13baed63, exact17 followup modes/blobs perpublisher. Prior11+targeted3/fulltypes/lint/MJS and12nativeimages retained; resources0 at handoff; NEWdefaultAdmin97befb78 actualFULL18:36:18.866649Z/resources0;21changedcasesPASS,fullTS fixture6typeerrors,lint/MJSNOT_RUN; ownerfix+freshremaining-onlyqualificationpending; latest79983284frozenREADYWITHDRAWN forcanonical1a1db340 strictAuth/HTTPfixtureintake; sourceWIP/resources0/refrozenqualificationpending; NEWREADY321a44df/58readset/11guard; single1855offerDECLINEDbeforeACCEPT onafter-ALLgrowthreserve94.6MBshort, nojob/testfailure; THREEremainingchecksNOT_RUN  Current04:04:321a44df retained;1859 fresh remaining-only offer received but actual execution unconfirmed; prior1855 DECLINE closed, no hold inferred. | Current revised remaining: Reconcile original wall-control and closure criteria from existing resume delivery; finish uncovered snapshot confirmation, revision reset or partial-step presentation. Resolve current actual admin authorization/closure entry with the owning backend/root developers and qualify recovery from partial failure; do not repeat the fixed retry-contract implementation. Retained owner/dependency context: New codex/mcr-fe-default-admin-composition in same exclusive checkout, NEWoperations-composition plus Root-transferred AdminBoundary/admin-only ports hunks. Author retained entry/settings join, developer qualifies only changed composition and normal Root publication.205/202/BE41b91d live producers separately open; no wholeFE39 closure |
 | FE40 | Revised DONE; Original client SATISFIED/MOCK_READY, published and owner-verified;204 WallB/Foundation completed and now Social FE10, no FE40 lease | Finalbd20356a→4d501d92/a1818d7a andbaad4944 proof retained:28 payloads/29 native pins/four root views qualified; prior retirement custody preserved. No new FE40 outcome | Current revised remaining: None in the current revised task scope; separately open integration/reference tasks retain their own criteria. Retained owner/dependency context: No remaining bounded client delivery. BE41 erasure/closure/freshness/public media/current production/IN05 remain separate.204 new WallB scope does not reopen FE40 or inherit its returned paths |
-| FE41 | Revised OPEN; WorldSL responsible, Mainreused83-2c2a ACTIVER/Oreconciliation; Root153 retains exactsharedcaller ownership pending STOPtransfer/newgoal, Root1fc actualproducertrace | Published degraded-states reportd3440e9d1acbd1882a082f9c89d1be1e807bec34/default adoption5da64426/default-shell47b079e1/lifecycleeeae69be retained. Controlled18-image/default-entry baseline delivered, no replay. Current Root Worldpolicy/Profiledefaultjourney finalqualification remains separate; retainedownerreports/pins and currentpickup/caller counterparts delivered DIRECT83, no currentCommunitypickupwriter or sourcelease transferred | Current revised remaining: Reconcile the completed controlled default-root360/390/430 offline/reconnect/reload/teardown result against the entire original FE41 scope; do not repeat it merely to generate another proof. Complete current operational/version/admission producers and uncovered real foreground/reconnect/pickup-no-replay paths; retain low-power/reduced-motion functional behavior and host limits. Retained owner/dependency context: Originaloffline/reconnect/maintenance/version/404/stalelabels/resync/throttle/noendlessspinner/nosilentpickupqueue/usablenav remain ownerdisposition; maintenance/versionproducertrace ownedRoot1fc/exact205leaf next, notyetdeliveredruntimeauthority. No fakeproducer or genericlivegate; no wholecompletion inferred |
-| IN02 | Revised OPEN; RealjourneyNOT_RUN;7f05f596 harness preserved, Root1fc composition/Root153 frontend | No new qualified jointParty/GiftHTTPjourney result. Party19f83 registeredfourfactorypaths/productioncomposition/nativescope, newpublishedruntimeinputUNRECONCILED. Gift267 freshsnapshot ACTIVE typedcleanup/GiftMediarecovery source, not a qualified pickup/privateHTTPjourney; earlierstock29 historical | Current revised remaining: Complete the real two-client journey: party request/approval, authorized physical beacon/rally, giveaway reservation and one-time pickup. Integrate remaining Party settlement, protected media and owner/public callers; virtual movement must never imply physical arrival. Retained owner/dependency context: Root1fc/Party/Gift actualdescriptor/main/authphysicalplace/SDK3native/recovery remain concreteowners; trusted_pickup_context exists. Protectedreadhelper256preparedtransactions sourcefixed/actualrerunpending. Virtualcoordinates/art IDs neverphysicalarrival; no duplicateharness or addedpure-clientgate |
+| FE41 | Revised IN_PROGRESS; WorldSL responsible, Mainreused83-2c2a ACTIVER/Oreconciliation; Root153 retains exactsharedcaller ownership pending STOPtransfer/newgoal, Root1fc actualproducertrace  Current04:04:83 actual source preparation/fresh offered qualification; whole criteria unfinished. | Published degraded-states reportd3440e9d1acbd1882a082f9c89d1be1e807bec34/default adoption5da64426/default-shell47b079e1/lifecycleeeae69be retained. Controlled18-image/default-entry baseline delivered, no replay. Current Root Worldpolicy/Profiledefaultjourney finalqualification remains separate; retainedownerreports/pins and currentpickup/caller counterparts delivered DIRECT83, no currentCommunitypickupwriter or sourcelease transferred | Current revised remaining: Reconcile the completed controlled default-root360/390/430 offline/reconnect/reload/teardown result against the entire original FE41 scope; do not repeat it merely to generate another proof. Complete current operational/version/admission producers and uncovered real foreground/reconnect/pickup-no-replay paths; retain low-power/reduced-motion functional behavior and host limits. Retained owner/dependency context: Originaloffline/reconnect/maintenance/version/404/stalelabels/resync/throttle/noendlessspinner/nosilentpickupqueue/usablenav remain ownerdisposition; maintenance/versionproducertrace ownedRoot1fc/exact205leaf next, notyetdeliveredruntimeauthority. No fakeproducer or genericlivegate; no wholecompletion inferred |
+| IN02 | Revised OPEN; RealjourneyNOT_RUN;7f05f596 harness preserved, Root1fc composition/Root153 frontend | No new qualified jointParty/GiftHTTPjourney result. Party19f83 registeredfourfactorypaths/productioncomposition/nativescope, newpublishedruntimeinputUNRECONCILED. Gift267 freshsnapshot ACTIVE typedcleanup/GiftMediarecovery source, not a qualified pickup/privateHTTPjourney; earlierstock29 historical; newParty2readfollowuppatch/tests/docs UNAPPLIED/syntaxchecksPASS, old9fcd5EXEsourcefrozen, no newcompile/runtime/publication; GiftsharedMedia sourceactive/no newjourneyPASS | Current revised remaining: Complete the real two-client journey: party request/approval, authorized physical beacon/rally, giveaway reservation and one-time pickup. Integrate remaining Party settlement, protected media and owner/public callers; virtual movement must never imply physical arrival. Retained owner/dependency context: Root1fc/Party/Gift actualdescriptor/main/authphysicalplace/SDK3native/recovery remain concreteowners; trusted_pickup_context exists. Protectedreadhelper256preparedtransactions sourcefixed/actualrerunpending. Virtualcoordinates/art IDs neverphysicalarrival; no duplicateharness or addedpure-clientgate |
 
 ## FE09 owner classification residual — exact pre-write allocation
 
@@ -3603,14 +3973,14 @@ handoffs and never falsely complete, reset or relabel them.
 
 | Original task | Named implementation owner / status | Delivered contribution and remaining original criteria | Prerequisite owner / next action / publication |
 |---|---|---|---|
-| QA01 | Revised REOPENED; 6ec9 original exact pinned criteriaSATISFIED/CONTRACT_READY; goal1793754012 completed then null/STOP | Original6e2038fc/19d7441f→bd103c10 owner verified retained. Current C07 generated clients/complete contract coverage published679adb7d by responsible owner; new five Wall operations/eight nested fixtures supersede old unsupported vocabulary | Current revised remaining: Extend fixture and drift coverage for the newly selected Wall B interface and changed generated outputs. Reuse the published baseline; run only changed-contract and missing-operation checks required by the new scope. Retained owner/dependency context: No new wholeQA01 acceptance from old pins or C07 commit. Current namespace/Root compatibility stays implementation counterparts; realIN03 separate, no SL test rerun |
-| QA07 (World-owned; Community focus contribution) | Revised REOPENED; Historical closure `ced8ec12` retained; captured-scope Meet fix now owner-qualified/published/independently verified, COM01 SAME original goal actuallyCOMPLETE/leasesreturned/cleanSTOP/ARCHIVED; no whole-QA07 new acceptance inferred | Source09ef→91058462; final docs2aa→16282819 and restored receiptba08e4e0 verified on fresha5c6; exact17 owned evidence files/immutable packet seals/9145B peer-preserving currentCSS match.10 Meet PNGs/contrast/geometry/characters/44pxtarget qualified; rawglobalexit1 and no unfocused360/430 image claim preserved | Current revised remaining: Qualify keyboard, focus, labels and DOM alternatives for newly added Wall B tools and changed Gifts/Thread/Meet controls. Reuse unchanged passing baseline coverage; verify pointer cancellation and reduced-motion behavior only where affected. Retained owner/dependency context: Bounded MEET-FOCUS-VIS-01 has no remaining owner delivery. World owns whole original disposition/other keyboard-labels-DOM-reducedmotion-pointercancel coverage; newforegroundCSSowner holds any future selectors/directRoot, no COM01 rights, no SL review/new browser/goal |
+| QA01 | Revised REOPENED; 6ec9 original exact pinned criteriaSATISFIED/CONTRACT_READY; goal1793754012 completed then null/STOP | Original6e2038fc/19d7441f→bd103c10 owner verified retained. Current C07 generated clients/complete contract coverage published679adb7d by responsible owner; new five Wall operations/eight nested fixtures supersede old unsupported vocabulary  CurrentCORE5332a1850de repaired frozen cohort READY, prior failure retained/fresh source qualification pending. | Current revised remaining: Extend fixture and drift coverage for the newly selected Wall B interface and changed generated outputs. Reuse the published baseline; run only changed-contract and missing-operation checks required by the new scope. Retained owner/dependency context: No new wholeQA01 acceptance from old pins or C07 commit. Current namespace/Root compatibility stays implementation counterparts; realIN03 separate, no SL test rerun |
+| QA07 (World-owned; Community focus contribution) | Revised REOPENED; Historical closure `ced8ec12` retained; captured-scope Meet fix now owner-qualified/published/independently verified, COM01 SAME original goal actuallyCOMPLETE/leasesreturned/cleanSTOP/ARCHIVED; no whole-QA07 new acceptance inferred  Current332b reactivated from actually COMPLETE FE38; additive QA07 delta accepted in commentary, NEW ACTIVE unbudgeted goal and exact new isolated custody confirmed; source coverage reconciliation underway, resources0. | Source09ef→91058462; final docs2aa→16282819 and restored receiptba08e4e0 verified on fresha5c6; exact17 owned evidence files/immutable packet seals/9145B peer-preserving currentCSS match.10 Meet PNGs/contrast/geometry/characters/44pxtarget qualified; rawglobalexit1 and no unfocused360/430 image claim preserved | Current revised remaining: Qualify keyboard, focus, labels and DOM alternatives for newly added Wall B tools and changed Gifts/Thread/Meet controls. Reuse unchanged passing baseline coverage; verify pointer cancellation and reduced-motion behavior only where affected. Retained owner/dependency context: Bounded MEET-FOCUS-VIS-01 has no remaining owner delivery. World owns whole original disposition/other keyboard-labels-DOM-reducedmotion-pointercancel coverage; newforegroundCSSowner holds any future selectors/directRoot, no COM01 rights, no SL review/new browser/goal  Next332b new qa07-input-delta-332b/codex/mcr-qa-QA07-input-delta; sole additive e2e/qa07-input-delta,src/__tests__/qa07-input-delta,qa report/evidence. Feature-owner app fixes/direct Root publication; no provider/device blanket block. |
 | QA08 frontend contribution (World-owned) | Revised DEFERRED_BY_USER; DEFERRED_BY_USER; excluded from111 active functional tasks, retained among112 originals; neither passed nor completed | Historical frontend e9ca2ecd→1a1bfeb3 and actual RW11 200Auth/profilePASS/WorldinitialadmissionFAIL retained;876b3e8a/83d8a5af/reporta1104946 published. No new capacity acceptance/evidence erasure | Current revised remaining: After functional delivery, measure200 sockets/four rooms, mobile FPS/bundle/memory, slow-network stress and reconnect-storm ceilings. Retain partial historical results; publish measured ceilings before making any capacity claim. Retained owner/dependency context: Defer200-user/fourroom capacity, FPS/bundle/memory/slow-network stress/reconnect-storm qualification until after functional delivery.20f/World retain history. Required small-cohort authorization/privacy/inventory/persistence/recovery/accessibility/visual/device functionality remains active; no QA08 load job now |
 | QA05 | Revised IN_PROGRESS; OriginalPARTIAL/IN_PROGRESS;20f-8d37 responsible real-driver owner/Root1fc runtimecomposition | Selected realtwo-principal8da06969 completed with failures/replay-gap-pausedreads-room-switch-restart-epochs-reconnect, acceptanceNOT_CLAIMED. Earlier8502c143/a9517e04 retained; no new wholecriterionreceipt. Current20f seven-service actualAuth proof preparation is not yet new recovery acceptance | Current revised remaining: Complete outstanding functional packet delay/gap, slow-client, foreground, ticket replay, restart and room-switch cases. Use the real pair/appropriate small functional cohort; keep200-user stress and capacity measurements out of this queue. Retained owner/dependency context: Full originalticket/membership/recovery/network/browser scope remains concreteowner20f/Root; freshactualnative/target/globalqueue, no unsafeinterrupted-chat reuse, no unchangedreplay/sourceinspection/SLreview; functional small cohort only,200-user stress deferred |
-| QA06 (World-owned; Community input/repair contribution) | Revised IN_PROGRESS; Original unfinished/World accounting; current whole-task owner receipt UNRECONCILED; bounded Meet scopes complete,230 FE37/common consumer and53d FE39 active | Retained comparison e2375727/Meet c8a731e5/WallMe7991f720/COM01 16282819 owner proofs. New Community settled controls published5da64426, Feed six-width449f0a92/assessment4fa3be07 handoff, GiftDetail09ade32c fifteen nativePASS; no new global visual acceptance | Current revised remaining: Finish developer-owned comparison of all ten reference surfaces and all61IA states at360/390/430px in all three skins. Preserve exact supplied character designs and post-shaped-only retro treatment; resolve remaining map, avatar, Meet density and Thread presentation differences. Run actual iOS Safari and Android Chrome keyboard/safe-area/control checks when device access is available. Retained owner/dependency context: Full original reference/responsive/public-flow/device acceptance remains World-owned. Current Wall five operations delivered under204/Root, defaultApp initial-texture fix Root; old unsupported/no-feature-grant prose superseded. GiftDetail bounded delivery published0624d581; whole visual acceptance open. No Community CSS lease/duplicate capture |
+| QA06 (World-owned; Community input/repair contribution) | Revised IN_PROGRESS; Original unfinished/World accounting; current whole-task owner receipt UNRECONCILED; bounded Meet scopes complete,230 FE37/common consumer and53d FE39 active  Current230 archived blocked production;53d defaultAdmin active; no whole visual completion report. | Retained comparison e2375727/Meet c8a731e5/WallMe7991f720/COM01 16282819 owner proofs. New Community settled controls published5da64426, Feed six-width449f0a92/assessment4fa3be07 handoff, GiftDetail09ade32c fifteen nativePASS; no new global visual acceptance | Current revised remaining: Finish developer-owned comparison of all ten reference surfaces and all61IA states at360/390/430px in all three skins. Preserve exact supplied character designs and post-shaped-only retro treatment; resolve remaining map, avatar, Meet density and Thread presentation differences. Run actual iOS Safari and Android Chrome keyboard/safe-area/control checks when device access is available. Retained owner/dependency context: Full original reference/responsive/public-flow/device acceptance remains World-owned. Current Wall five operations delivered under204/Root, defaultApp initial-texture fix Root; old unsupported/no-feature-grant prose superseded. GiftDetail bounded delivery published0624d581; whole visual acceptance open. No Community CSS lease/duplicate capture |
 | QA09 | Revised IN_PROGRESS; Original acceptanceUNRECONCILED; FE202-375e same unfinished goalBLOCKED/archived/readonly/resources0; BE6ec9 same originalBLOCKED, fresh snapshot interrupted/no new continuation evidence | FE da9b8a98 qualified24 postimages/eight source hashes; proof0ceedf0b→41cac664. BE a47a46da→ffa60ba7 own proof under2d12b7fa retained; all six actual casesNOT_RUN | Current revised remaining: Complete six real recovery scenarios covering database restart/backup restore, outbox replay, pending pickup, deletion convergence and partial event closure. Use populated business state and same-candidate services; synthetic helpers and empty rows do not close recovery criteria. Retained owner/dependency context: Real admin authorization/current business producer/fault/effect interfaces Root/producers, BE44 restore/BE42 owning deletion. New FE37/38 reconciliation independently staffed, not QA09 restart or automatic qualification. Preserve blocked goals/leases/no review gate |
-| QA10 frontend provenance contribution | Revised IN_PROGRESS; OriginalPARTIAL;230 bounded checker delivered, now NEW operations goal1793811935; Root1fc release-check composition owner | Final checker52ac02cd,31 regressionsPASS; no-manifestexit2INCOMPLETE112 missing tasks, stale frontendexit1candidate.mismatch. Final owner report published54c08628074182ec64e1421d5df638e18b383e63. Historical3525/3503+22 cases not currentHEAD release evidence | Current revised remaining: Finish backend/service/device and full task-to-commit trace coverage for the original same-candidate release checker; reuse the published frontend contribution. Bind genuine evidence to the release candidate, label missing gates NOT_RUN, and represent QA08 as an explicit nonblocking user deferral. Retained owner/dependency context: Same-candidate actual services/devices/three journeys and full QA10/IN05 release remainOPEN/NOT_RUN. Bounded checker/source publication not whole task acceptance; Root release decision/physical evidence separate, no duplicate checker or SL rerun; active release111 plus nonblocking QA08 deferral |
-| IN04 frontend real mural journey | Revised OPEN; existing original owner01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be actuallyRESUMED/activechat; SAMEunfinishedpersistentgoalBLOCKED reused, no reset/completion; live gateNOT_RUN | Retained realharnessdd9735d/negativequalification and boundedWallQAce9e8e6c preserved, not acceptance. Oldce9e8e6c checkout/evidence preserved; actualRoot153 exclusivecustody/noloan/canonicalbase2ff0 confirmed; new WallB missingrunner support source-onlyprep accepted. No new qualified runtime/commit/test result or resourcehold | Current revised remainder: realmultiple-client WallB paint/opaqueerase/fill/eligibleundo, cooldown/quota/conflict/unknownrecovery, moderationpause/restore/freeze and authoritativeconvergence/privacy. ExactNEWfrontend/e2e/in04-wall-b/**,docs/mcr/qa/in04-wall-b.md,docs/mcr/evidence/in04-wall-b/**; Root153custody/base2ff0 confirmed; frozenC04B/realmain seams ready, actualBEWall/Root1fc report no canonicalstack/accounts/eventdescriptor or qualifiedmoderationHTTP/rolewindow. Source-onlyNodecapacity requestedSocial, notadmitted. No browser/native/stack untilfreshboundedallocation and actualservices/accounts/event/operator inputs; developer owns runner validation/fixes/docs/committedRootdelivery, no new QAapproval or unchangedfixture replay |
+| QA10 frontend provenance contribution | Revised IN_PROGRESS; OriginalPARTIAL;230 bounded checker delivered, now NEW operations goal1793811935; Root1fc release-check composition owner  Current6b5d active release composition/normal source queue, historical incompatible Profile goalBLOCKED preserved. | Final checker52ac02cd,31 regressionsPASS; no-manifestexit2INCOMPLETE112 missing tasks, stale frontendexit1candidate.mismatch. Final owner report published54c08628074182ec64e1421d5df638e18b383e63. Historical3525/3503+22 cases not currentHEAD release evidence | Current revised remaining: Finish backend/service/device and full task-to-commit trace coverage for the original same-candidate release checker; reuse the published frontend contribution. Bind genuine evidence to the release candidate, label missing gates NOT_RUN, and represent QA08 as an explicit nonblocking user deferral. Retained owner/dependency context: Same-candidate actual services/devices/three journeys and full QA10/IN05 release remainOPEN/NOT_RUN. Bounded checker/source publication not whole task acceptance; Root release decision/physical evidence separate, no duplicate checker or SL rerun; active release111 plus nonblocking QA08 deferral |
+| IN04 frontend real mural journey | Revised OPEN; existing original owner01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be actuallyRESUMED/activechat; SAMEunfinishedpersistentgoalBLOCKED reused, no reset/completion; live gateNOT_RUN; RootFE153 NEWactualruntime-adapter ACTIVEunbudgetedgoal/disjointnewprefix accepted | Latest source qualification: five final source jobs PASS including53 helper cases, three failed attempts/fixes retained; actual FULL18:59:22.598001Z, no browser/stack/native. Final clean source cdc6f2a844c8ed75525a6a3ffc81599414f4544e delivered directly Root153; publication pending receipt; original goal BLOCKED freshly confirmed, real IN04 NOT_RUN. | Current revised remainder: realmultiple-client WallB paint/opaqueerase/fill/eligibleundo, cooldown/quota/conflict/unknownrecovery, moderationpause/restore/freeze and authoritativeconvergence/privacy. ExactNEWfrontend/e2e/in04-wall-b/**,docs/mcr/qa/in04-wall-b.md,docs/mcr/evidence/in04-wall-b/**; Root153custody/base2ff0 confirmed; frozenC04B/realmain seams ready, actualBEWall/Root1fc report no canonicalstack/accounts/eventdescriptor or qualifiedmoderationHTTP/rolewindow. Source-onlyNodeREADY6f7a2a33 afterownadapter/PhaserRGBAauthoring; laterSocialfinitequeue/no currenthold/admission. No browser/native/stack untilfreshboundedallocation and actualservices/accounts/event/operator inputs; developer owns runner validation/fixes/docs/committedRootdelivery, no new QAapproval or unchangedfixture replay; Mainwholefeaturepriority runtimeRoot1fc/Wall202/actualroles205 OPS1837twoEXEs notqualified; age/physicalplace NOTIN04gate; actualreadybackendchain16e runtime→205 role→202 Wall, onecanonicalruntime/threeactors, directe2a9 coordination  CurrentRoot153 actual adapter goalACTIVE;16e two buildsPASS/fixcfc49f4ee but copy cap failure/PG-NOT_RUN, actual targetrelease19:02:41.364918→205 then202; no whole acceptance or duplicate stack. |
 | IN05 | Revised OPEN; Release decision NOT_RUN/current whole disposition UNRECONCILED; artifact owner Product Root1fc | All112 original IDs/61IA retained; active functional delivery111 plus QA08 DEFERRED_BY_USER, neither passed nor completed. No same-candidate whole-release receipt; bounded checker/worker commits do not close decision | Current revised remaining: Reconcile every one of112 original task IDs and all61 required IA entries against the revised scope. Publish the functional-delivery decision only when111 active tasks and their required functional/visual/device/recovery outcomes are satisfied; retainQA08 as DEFERRED_BY_USER. Record operators, deployment limits and genuine external-input gaps; do not present deferred capacity as qualified. Retained owner/dependency context: Root release owner reconciles111 active functional outcomes plus61IA and explicitly records deferredQA08, operator/deployment limits and genuine external inputs. Functional authorization/privacy/capacity-inventory invariants/recovery/a11y/visual/devices remain required. No added performance gate or manager approval |
 
 Developer identifiers (not implicit future reservations): `26e` =
