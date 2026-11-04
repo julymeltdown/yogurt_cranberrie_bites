@@ -1,0 +1,28 @@
+{
+  "id": "QA09-MANAGED-ADMISSION-SOURCE-20261104T2338Z",
+  "validUntil": "2026-11-05T00:05:00Z",
+  "source": "ef0b7990194318aef57d68349be9ef4d62dba09e",
+  "freshEpoch": 1793835494.924416,
+  "freshFree": 14768635904,
+  "otherNewReservations": 2147483648,
+  "ownIncrementalNew": 16777216,
+  "totalNewCap": 1582157824,
+  "retainedNew": 1565380608,
+  "wholeCap": 5368709120,
+  "priorWhole": 4011585424,
+  "workSeconds": 60,
+  "fullSeconds": 90,
+  "cleanupSeconds": 30,
+  "allProcesses": 4,
+  "rssBytes": 268435456,
+  "startFree": 11811160064,
+  "afterAllFree": 9663676416,
+  "liveFree": 8589934592,
+  "controllerPins": {
+    "source_round.py": "64b89f1952f049e2cfa0240b6a59bc8e167021dd1d0af1b1e276b8e8328267a5",
+    "resource_guard.py": "1fe71b90ed6e2bfa00b90dee1821f82d8425885834b782bad929250daec1245f",
+    "intake-inventory-max.json": "7c89a5deda0502bdc297a1445a8abe578adf9e189b4d6ebf4808f25a34b12a6c"
+  },
+  "scope": "10 new builtin source cases + 3 changed-file syntax scopes only; actual six cases NOT_RUN",
+  "successor": "01a1a209-80da-7e53-a295-b64cfe09c1d7"
+}

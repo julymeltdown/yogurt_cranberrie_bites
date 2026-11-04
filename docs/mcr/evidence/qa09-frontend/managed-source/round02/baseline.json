@@ -1,0 +1,62 @@
+{
+  "complete": true,
+  "bytes": 4017733520,
+  "allocatedBytes": 4008280064,
+  "logicalBytes": 3880959044,
+  "scopes": {
+    "checkout": {
+      "complete": true,
+      "bytes": 1565433856,
+      "allocatedBytes": 1565433856,
+      "logicalBytes": 1510030731
+    },
+    "sharedGit": {
+      "complete": true,
+      "bytes": 1182367744,
+      "allocatedBytes": 1182367744,
+      "logicalBytes": 1170555959
+    },
+    "nodeToolchain": {
+      "complete": true,
+      "bytes": 209088512,
+      "allocatedBytes": 209088512,
+      "logicalBytes": 197701406
+    },
+    "pythonRuntime": {
+      "complete": true,
+      "bytes": 1045037056,
+      "allocatedBytes": 1045037056,
+      "logicalBytes": 986869344
+    },
+    "systemBin": {
+      "complete": true,
+      "bytes": 15761296,
+      "allocatedBytes": 6307840,
+      "logicalBytes": 15761296
+    },
+    "accountingHelper": {
+      "complete": true,
+      "bytes": 45056,
+      "allocatedBytes": 45056,
+      "logicalBytes": 40308
+    }
+  },
+  "allocatedAttempts": [
+    {
+      "attempt": 1,
+      "complete": true,
+      "knownBytes": 4008280064,
+      "scopes": {
+        "checkout": 1565433856,
+        "sharedGit": 1182367744,
+        "nodeToolchain": 209088512,
+        "pythonRuntime": 1045037056,
+        "systemBin": 6307840,
+        "accountingHelper": 45056
+      },
+      "races": [],
+      "entries": 65383,
+      "finishedMonotonic": 179740.140046041
+    }
+  ]
+}

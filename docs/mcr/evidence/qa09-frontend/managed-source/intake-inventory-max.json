@@ -1,0 +1,175 @@
+{
+  "complete": true,
+  "bytes": 4011585424,
+  "allocatedBytes": 4002131968,
+  "logicalBytes": 3875976872,
+  "scopes": {
+    "checkout": {
+      "complete": true,
+      "bytes": 1565380608,
+      "allocatedBytes": 1565380608,
+      "logicalBytes": 1510005331
+    },
+    "sharedGit": {
+      "complete": true,
+      "bytes": 1176272896,
+      "allocatedBytes": 1176272896,
+      "logicalBytes": 1165599187
+    },
+    "nodeToolchain": {
+      "complete": true,
+      "bytes": 209088512,
+      "allocatedBytes": 209088512,
+      "logicalBytes": 197701406
+    },
+    "pythonRuntime": {
+      "complete": true,
+      "bytes": 1045037056,
+      "allocatedBytes": 1045037056,
+      "logicalBytes": 986869344
+    },
+    "systemBin": {
+      "complete": true,
+      "bytes": 15761296,
+      "allocatedBytes": 6307840,
+      "logicalBytes": 15761296
+    },
+    "accountingHelper": {
+      "complete": true,
+      "bytes": 45056,
+      "allocatedBytes": 45056,
+      "logicalBytes": 40308
+    }
+  },
+  "allocatedAttempts": [
+    {
+      "attempt": 1,
+      "complete": true,
+      "knownBytes": 4002131968,
+      "scopes": {
+        "checkout": 1565380608,
+        "sharedGit": 1176272896,
+        "nodeToolchain": 209088512,
+        "pythonRuntime": 1045037056,
+        "systemBin": 6307840,
+        "accountingHelper": 45056
+      },
+      "races": [],
+      "entries": 64869,
+      "finishedMonotonic": 178795.51379
+    }
+  ],
+  "kind": "QA09-complete-readonly-inode-union",
+  "sampledEpoch": 1793835228.458896,
+  "elapsedSeconds": 1.5763909160159528,
+  "roots": {
+    "checkout": {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world",
+      "device": 16777229,
+      "inode": 538951959,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "sharedGit": {
+      "path": "/Users/lhs/Desktop/mcr/.git",
+      "device": 16777229,
+      "inode": 536659365,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "nodeToolchain": {
+      "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "device": 16777229,
+      "inode": 536681505,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "pythonRuntime": {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.14",
+      "device": 16777229,
+      "inode": 50195912,
+      "owner": 0,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "systemBin": {
+      "path": "/bin",
+      "device": 16777229,
+      "inode": 1152921500312610364,
+      "owner": 0,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "accountingHelper": {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting",
+      "device": 16777229,
+      "inode": 548337551,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    }
+  },
+  "helper": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting/accounting.py",
+    "sha256": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c"
+  },
+  "pins": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.mjs",
+      "sha256": "4d0f4badbfd281906b6aa093bc493630ab1f605570b31952b11deb38c7310ffa",
+      "bytes": 5087
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.test.mjs",
+      "sha256": "7a8cc2423766001d8fdb5d69fb3d46301044d477310863ee356f10bfb64b9a6b",
+      "bytes": 7630
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/journey.mjs",
+      "sha256": "2d1787227b7d087f2e8048ac017c0c7ceb38cc2f2dd50743226a1a0ecfdc82de",
+      "bytes": 3610
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/actions.mjs",
+      "sha256": "bb2e2900fa046965e6511d4c1fbdfb2c315b0fe49507fd0ddaaa16933188a077",
+      "bytes": 3357
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/cases.mjs",
+      "sha256": "8f0e2d1ecad59c74bcb3143232ce7b86c5aa439dba9c5f7ab48405c3da029d78",
+      "bytes": 1709
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/docs/mcr/evidence/qa09-frontend/managed-source/resource_guard.py",
+      "sha256": "1fe71b90ed6e2bfa00b90dee1821f82d8425885834b782bad929250daec1245f",
+      "bytes": 7629
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/docs/mcr/evidence/qa09-frontend/managed-source/source_round.py",
+      "sha256": "64b89f1952f049e2cfa0240b6a59bc8e167021dd1d0af1b1e276b8e8328267a5",
+      "bytes": 11053
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting/accounting.py",
+      "sha256": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "bytes": 14496
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "bytes": 122564432
+    }
+  ],
+  "workloadAdmitted": false,
+  "ownedWorkflow": 0,
+  "note": "Read-only source-intake inventory; not an execution offer or live-case evidence."
+}

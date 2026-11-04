@@ -1,0 +1,26 @@
+{
+  "offer": "QA09-MANAGED-ADMISSION-SOURCE-20261104T2338Z",
+  "source": "ef0b7990194318aef57d68349be9ef4d62dba09e",
+  "failure": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/lhs/Desktop/mcr/.git/refs/heads/codex/mcr-fe-QA09'",
+  "commands": [],
+  "actualFullEpoch": 1793835497.083765,
+  "workflow": 0,
+  "ownedChildren": [],
+  "remainingNewReservation": 0,
+  "processClosureVerified": true,
+  "withinFullDeadline": true,
+  "primary": {
+    "failure": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/lhs/Desktop/mcr/.git/refs/heads/codex/mcr-fe-QA09'",
+    "samples": 0,
+    "peak": {
+      "new": 0,
+      "whole": 0,
+      "processes": 0,
+      "rss": 0
+    },
+    "minimumFree": null
+  },
+  "guardianExit": null,
+  "allSixActualCases": "NOT_RUN",
+  "wholeQa09Accepted": false
+}

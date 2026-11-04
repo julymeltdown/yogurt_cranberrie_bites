@@ -1,0 +1,35 @@
+{
+  "id": "QA09-PACKED-REF-SOURCE-20261104T2349Z",
+  "validUntil": "2026-11-05T00:15:00Z",
+  "source": "10f53ec0fe3143b050ec2439aaaacbf34e6695ef",
+  "freshEpoch": 1793836171.922255,
+  "freshFree": 15499837440,
+  "otherNewReservations": 3489660928,
+  "ownRemainingNewUpper": 16736256,
+  "totalNewCap": 1582157824,
+  "retainedNew": 1565429760,
+  "wholeCap": 5368709120,
+  "priorWhole": 4017450896,
+  "workSeconds": 60,
+  "fullSeconds": 90,
+  "cleanupSeconds": 30,
+  "allProcesses": 4,
+  "rssBytes": 268435456,
+  "startFree": 11811160064,
+  "afterAllFree": 9663676416,
+  "liveFree": 8589934592,
+  "controllerPins": {
+    "source_round.py": "7e2385b508ddaaa7a67423276c30d1dd4883eca0a82fe26f8cc5ee88e5cb788b",
+    "resource_guard.py": "e0d93cecd0c06a7c795ccb7045298d7770732c941327123dfec0d4c114547e67",
+    "retry-intake-inventory.json": "08bf42513512bf71c2f70736e18cd925dc2983f5177bd8e2c0cb4bbfa28c3798"
+  },
+  "pythonSha256": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+  "sourceRef": {
+    "headPath": "/Users/lhs/Desktop/mcr/.git/worktrees/qa-in01-world/HEAD",
+    "branchRefName": "refs/heads/codex/mcr-fe-QA09",
+    "backend": "files",
+    "value": "10f53ec0fe3143b050ec2439aaaacbf34e6695ef"
+  },
+  "scope": "10 new builtin source cases + 3 changed-file syntax scopes only; actual six cases NOT_RUN",
+  "successor": "01a1a205-3f89-78c3-aa67-719c4bb40b8d"
+}

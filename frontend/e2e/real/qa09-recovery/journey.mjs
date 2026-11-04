@@ -1,5 +1,22 @@
 import { caseDefinition } from './cases.mjs'
 import { actions, observeDom } from './actions.mjs'
+import { createManagedAdmissionGuard } from './managed-admission.mjs'
+
+/** Root's existing managed session supplies this config/port/page and accepted
+ * finite deadline. Keep the original injected driver for owner composition;
+ * this entry binds its guards to current managed observations before any action.
+ */
+export async function observeManagedRecoveryCase({ config, runtime, deadlineEpochMs, ...options }) {
+  // The current IN04 observer reauthorizes all three actors on every inspect.
+  // Deletion/closure can intentionally withdraw those actors or event access;
+  // they require an actual lifecycle-aware owner observer, not this live-profile guard.
+  if (!['QA09-DB-RESTART', 'QA09-BACKUP-RESTORE', 'QA09-OUTBOX-REPLAY', 'QA09-PENDING-PICKUP'].includes(options.caseId)) {
+    throw new Error('QA09_LIFECYCLE_OBSERVER_REQUIRED')
+  }
+  const guard = createManagedAdmissionGuard({ config, runtime, page: options.page,
+    signal: options.signal, deadlineEpochMs })
+  return observeRecoveryCase({ ...options, guard })
+}
 
 /** Source-first reusable driver. The actual runtime owner supplies a qualified page,
  * immutable run binding and backend boundary rendezvous. No native launcher is

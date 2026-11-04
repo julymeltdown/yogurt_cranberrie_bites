@@ -1,0 +1,18 @@
+✔ common managed proof binds without mural-only fields and cannot accept QA09 (1.614625ms)
+✔ old contract, nonisolated config and ambiguous principals refuse before inspect (0.366834ms)
+✔ foreign candidate/event, role confusion, duplicate or unready services fail closed (0.976625ms)
+✔ page navigation, changed config and resource abort prevent subsequent inspect (0.261167ms)
+✔ expired, invalid and unbounded proof windows fail (0.195709ms)
+✔ a new proof cannot renew the first admitted observation deadline (0.2935ms)
+✔ abort or custody change while inspect is pending cannot commit its proof (0.228917ms)
+✔ owner failure stays sanitized and is not retried (0.125625ms)
+✔ managed journey refuses a substituted profile before DOM, boundary or action (0.288833ms)
+✔ deletion and closure need lifecycle-aware observation, never the unchanged live-profile gate (0.132625ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11.491125

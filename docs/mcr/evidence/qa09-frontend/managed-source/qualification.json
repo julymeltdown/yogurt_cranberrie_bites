@@ -1,0 +1,267 @@
+{
+  "task": "QA09-FE",
+  "qualification": "PASS_SOURCE_ONLY",
+  "testedSource": "10f53ec0fe3143b050ec2439aaaacbf34e6695ef",
+  "handoffBase": "0ceedf0bab49c70ae9024965f1aecb479d036dd6",
+  "offer": "QA09-PACKED-REF-SOURCE-20261104T2349Z",
+  "sourcePins": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.mjs",
+      "sha256": "4d0f4badbfd281906b6aa093bc493630ab1f605570b31952b11deb38c7310ffa",
+      "bytes": 5087
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.test.mjs",
+      "sha256": "7a8cc2423766001d8fdb5d69fb3d46301044d477310863ee356f10bfb64b9a6b",
+      "bytes": 7630
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/journey.mjs",
+      "sha256": "2d1787227b7d087f2e8048ac017c0c7ceb38cc2f2dd50743226a1a0ecfdc82de",
+      "bytes": 3610
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/actions.mjs",
+      "sha256": "bb2e2900fa046965e6511d4c1fbdfb2c315b0fe49507fd0ddaaa16933188a077",
+      "bytes": 3357
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/cases.mjs",
+      "sha256": "8f0e2d1ecad59c74bcb3143232ce7b86c5aa439dba9c5f7ab48405c3da029d78",
+      "bytes": 1709
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/docs/mcr/evidence/qa09-frontend/managed-source/resource_guard.py",
+      "sha256": "e0d93cecd0c06a7c795ccb7045298d7770732c941327123dfec0d4c114547e67",
+      "bytes": 8926
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/docs/mcr/evidence/qa09-frontend/managed-source/source_round.py",
+      "sha256": "7e2385b508ddaaa7a67423276c30d1dd4883eca0a82fe26f8cc5ee88e5cb788b",
+      "bytes": 11208
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting/accounting.py",
+      "sha256": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "bytes": 14496
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "bytes": 122564432
+    }
+  ],
+  "controllerPins": {
+    "source_round.py": "7e2385b508ddaaa7a67423276c30d1dd4883eca0a82fe26f8cc5ee88e5cb788b",
+    "resource_guard.py": "e0d93cecd0c06a7c795ccb7045298d7770732c941327123dfec0d4c114547e67",
+    "retry-intake-inventory.json": "08bf42513512bf71c2f70736e18cd925dc2983f5177bd8e2c0cb4bbfa28c3798"
+  },
+  "contracts": {
+    "revision": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+    "domainOpenApiSha256": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634",
+    "worldSchemaSha256": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85"
+  },
+  "commands": [
+    {
+      "name": "new-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.test.mjs"
+      ],
+      "startedEpoch": 1793836176.6304371,
+      "exitCode": 0,
+      "finishedEpoch": 1793836176.684296
+    },
+    {
+      "name": "syntax-managed-admission.mjs",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.mjs"
+      ],
+      "startedEpoch": 1793836178.3454149,
+      "exitCode": 0,
+      "finishedEpoch": 1793836178.377989
+    },
+    {
+      "name": "syntax-managed-admission.test.mjs",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.test.mjs"
+      ],
+      "startedEpoch": 1793836180.0316212,
+      "exitCode": 0,
+      "finishedEpoch": 1793836180.064256
+    },
+    {
+      "name": "syntax-journey.mjs",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/journey.mjs"
+      ],
+      "startedEpoch": 1793836181.729616,
+      "exitCode": 0,
+      "finishedEpoch": 1793836181.7713358
+    }
+  ],
+  "tests": {
+    "tests": 10,
+    "pass": 10,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "acceptedUtc": "2026-11-04T23:49:31.930112+00:00",
+  "actualFullUtc": "2026-11-04T23:49:44.946213+00:00",
+  "fullWithin90Seconds": true,
+  "caps": {
+    "free_floor": 8589934592,
+    "new": 1582157824,
+    "whole": 5368709120,
+    "processes": 4,
+    "rss": 268435456
+  },
+  "primary": {
+    "failure": null,
+    "samples": 5,
+    "peak": {
+      "new": 1565519872,
+      "whole": 4017823632,
+      "processes": 3,
+      "rss": 193970176
+    },
+    "minimumFree": 15497965568
+  },
+  "independent": {
+    "failure": null,
+    "samples": 6,
+    "peak": {
+      "new": 1565523968,
+      "whole": 4017827728,
+      "processes": 4,
+      "rss": 204488704
+    },
+    "minimumFree": 15498526720
+  },
+  "conservativeObservedMaxima": {
+    "new": 1565523968,
+    "whole": 4017827728,
+    "processes": 4,
+    "rss": 204488704
+  },
+  "minimumAvailableBytes": 15497965568,
+  "resourceClosure": {
+    "ownedChildren": [],
+    "workflow": 0,
+    "remainingNewReservation": 0,
+    "processClosureVerified": true,
+    "directFullReportedTo": [
+      "01a1a21d-39ec-7912-84cb-910058e7a110",
+      "01a1a205-3f89-78c3-aa67-719c4bb40b8d"
+    ]
+  },
+  "failedFirstRound": "docs/mcr/evidence/qa09-frontend/managed-source/round01/FULL.json",
+  "ordinaryDocumentationBooking": {
+    "totalPositiveGrowthBytes": 524288,
+    "expiresUtc": "2026-11-05T01:00:00Z",
+    "separateFromClosedSourceOffer": true,
+    "priorNewHighWaterBytes": 1565523968,
+    "priorWholeHighWaterBytes": 4017827728
+  },
+  "allSixActualCases": {
+    "QA09-DB-RESTART": "NOT_RUN",
+    "QA09-BACKUP-RESTORE": "NOT_RUN",
+    "QA09-OUTBOX-REPLAY": "NOT_RUN",
+    "QA09-PENDING-PICKUP": "NOT_RUN",
+    "QA09-DELETION": "NOT_RUN",
+    "QA09-PARTIAL-CLOSURE": "NOT_RUN"
+  },
+  "wholeQa09Accepted": false,
+  "originalGoalRemains": "BLOCKED",
+  "limitations": [
+    "No managed serving cohort, private control/descriptor or actual resource-admitted browser window.",
+    "No restart, physical restore, outbox, pickup, deletion or partial-closure business boundary exercised.",
+    "Root owns lifecycle Auth adapter and managed transport/mount; e11e956c6 is backend source progress only.",
+    "No prior 25-case or helper-test replay, dependency install, application build, browser or native runtime in this offer.",
+    "Observed process/RSS peaks are sampled measurements; the independent guard observed four ALL processes.",
+    "Shared filesystem census is sequential, not an atomic snapshot; nonshrinking carry and both guard receipts retained."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/offer-2349.json",
+      "bytes": 1382,
+      "sha256": "3801935dd55a88565bfe39a1713ad32f493a5218d2896984da0209d8f0b447a2"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/FULL.json",
+      "bytes": 2247,
+      "sha256": "22fea8fe361e67d904ac30dfea3ab9c13b893d9aa71438a09bd56f5647b343d8"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/baseline.json",
+      "bytes": 1424,
+      "sha256": "af456ad21c095ff07f03dbfe382019c41b870b7528a27381fcca8242a67c763d"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/config.json",
+      "bytes": 4715,
+      "sha256": "358d8e5c9ed250f6272834092e614220885b2529c5bcb6cf4ba21d18ba2322fe"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/guardian-full.json",
+      "bytes": 174,
+      "sha256": "551c1790d0982a51b5aba699dee5513493d1f1a1c3402138da3cacf184d8e5c1"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/guardian-ready.json",
+      "bytes": 174,
+      "sha256": "615b7660e38cbfc05ef52e11f8efc83c6c9365d950de402d4ae646be0ab94215"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/new-tests.log",
+      "bytes": 1008,
+      "sha256": "912b9f7b9c16bbbb68696a82ef518dbb5e620c8f658dc77d922d90aa64d561ea"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/process-measurement.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/stop",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/syntax-journey.mjs.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/syntax-managed-admission.mjs.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/syntax-managed-admission.test.mjs.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "lifecycleIntegrationCorrection": {
+    "source": "Root1fc direct handoff after source qualification",
+    "unqualifiedCandidate": "e11e956c6",
+    "actualGap": [
+      "Existing Auth GetUserDeletion/GetBySaga are Gateway-only; saga payload lacks actor_id, so the old by-saga/by-user port cannot be directly mounted by the genuine Concert client.",
+      "Unconditional deletion-saga lookup blocks partial closure without a deletion saga."
+    ],
+    "ownerNext": "Root/00c/232 operation-specific reader and SQL corrections; closed ObserveSaga permission on existing Auth owner-observation transport bound to original command/source/native proof and stored actor.",
+    "status": "Corrected typed source pin pending; no actual managed transport/mount/cohort.",
+    "frontendEffect": "Existing explicit lifecycle refusals and ten-source/three-syntax qualification retained; all six actual cases NOT_RUN."
+  }
+}

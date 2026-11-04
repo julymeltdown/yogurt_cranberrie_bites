@@ -1,0 +1,73 @@
+{
+  "offer": "QA09-PACKED-REF-SOURCE-20261104T2349Z",
+  "source": "10f53ec0fe3143b050ec2439aaaacbf34e6695ef",
+  "failure": null,
+  "commands": [
+    {
+      "name": "new-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.test.mjs"
+      ],
+      "startedEpoch": 1793836176.6304371,
+      "exitCode": 0,
+      "finishedEpoch": 1793836176.684296
+    },
+    {
+      "name": "syntax-managed-admission.mjs",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.mjs"
+      ],
+      "startedEpoch": 1793836178.3454149,
+      "exitCode": 0,
+      "finishedEpoch": 1793836178.377989
+    },
+    {
+      "name": "syntax-managed-admission.test.mjs",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/managed-admission.test.mjs"
+      ],
+      "startedEpoch": 1793836180.0316212,
+      "exitCode": 0,
+      "finishedEpoch": 1793836180.064256
+    },
+    {
+      "name": "syntax-journey.mjs",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/qa-in01-world/frontend/e2e/real/qa09-recovery/journey.mjs"
+      ],
+      "startedEpoch": 1793836181.729616,
+      "exitCode": 0,
+      "finishedEpoch": 1793836181.7713358
+    }
+  ],
+  "actualFullEpoch": 1793836184.946213,
+  "workflow": 0,
+  "ownedChildren": [],
+  "remainingNewReservation": 0,
+  "processClosureVerified": true,
+  "withinFullDeadline": true,
+  "primary": {
+    "failure": null,
+    "samples": 5,
+    "peak": {
+      "new": 1565519872,
+      "whole": 4017823632,
+      "processes": 3,
+      "rss": 193970176
+    },
+    "minimumFree": 15497965568
+  },
+  "guardianExit": 0,
+  "allSixActualCases": "NOT_RUN",
+  "wholeQa09Accepted": false
+}

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "QA09-current-source-readset",
+  "workerBase": "0ceedf0bab49c70ae9024965f1aecb479d036dd6",
+  "canonicalSource": "37add6d996eacb7674c1c220150870d7090d5e09",
+  "contractRevision": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+  "sourcePins": [
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "frontend/src/app/router.tsx",
+      "bytes": 7878,
+      "sha256": "31a2ea3a7bdf57e1f135782f6177c128d1c1319194cfcd5e09e7506a3a651598"
+    },
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "frontend/src/app/AdminBoundary.tsx",
+      "bytes": 2101,
+      "sha256": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6"
+    },
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "frontend/src/app/community-entry/routes.tsx",
+      "bytes": 7193,
+      "sha256": "3b7cd3b75cb584a727877034a7e57065d5a7a9bdbe2ec104199fcfc7563e2549"
+    },
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "bytes": 4734,
+      "sha256": "88d218218a1f20cc7164d0fc9bda3e4e8a4d9cca6496299dad95936929895afa"
+    },
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "frontend/e2e/real/mural-helpers.ts",
+      "bytes": 27397,
+      "sha256": "b7845326b3306318e7d01a0cdc1213b792cde0c00fe0d96514aacae11566b647"
+    },
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "backend/scripts/mcr/in04_wall_runtime/runtime.mjs",
+      "bytes": 5828,
+      "sha256": "40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350"
+    },
+    {
+      "revision": "37add6d996eacb7674c1c220150870d7090d5e09",
+      "path": "backend/scripts/mcr/in04_wall_runtime/observer.py",
+      "bytes": 12508,
+      "sha256": "3870641dbe6d302c509af9297ba418c9dffb34d451d1fac09d3ff882ef52c09e"
+    }
+  ],
+  "contractPins": [
+    {
+      "revision": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+      "path": "contracts/generated/mcr-domain.openapi.json",
+      "bytes": 2351237,
+      "sha256": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634"
+    },
+    {
+      "revision": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+      "path": "contracts/realtime/v1/world.schema.json",
+      "bytes": 26280,
+      "sha256": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85"
+    }
+  ],
+  "disposition": {
+    "source": "IN_PROGRESS",
+    "newFocusedValidation": "NOT_RUN",
+    "wholeQa09Accepted": false,
+    "allSixLiveCases": "NOT_RUN"
+  },
+  "qualifiedSourceOnly": {
+    "managedProfile": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+    "runtimeAdapterSha256": "40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350"
+  },
+  "runtimeInputs": "ABSENT per actual Root1fc handoff: serving Concert/cohort/event/private descriptor/control/admission window",
+  "lifecycleObserverGap": "Current IN04 inspect reauthorizes all three actors and mural state; deletion/closure require actual lifecycle-aware owner observation. No invented interface or whole-case credit.",
+  "ownership": {
+    "sourceOwner": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+    "grantor": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+    "prefixes": [
+      "frontend/e2e/real/qa09-recovery/",
+      "docs/mcr/frontend/qa09-recovery.md",
+      "docs/mcr/evidence/qa09-frontend/"
+    ]
+  }
+}
