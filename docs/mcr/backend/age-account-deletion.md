@@ -1,7 +1,8 @@
 # BE42 Age account-deletion owner
 
-Status: source implementation in progress; build, PostgreSQL and restart validation
-are **NOT_RUN** until a fresh finite resource allocation. This document does not
+Status: source implementation in progress. The allocated Rust build failed on
+reused upstream artifacts; PostgreSQL and restart validation are **NOT_RUN**.
+This document does not
 reopen accepted BE26 provider verification or certify whole PrivateData deletion.
 
 ## Source and ownership
@@ -94,8 +95,49 @@ independent guardian before children. The target must be unconditionally release
 before `run.py` starts copied tests. The runner owns a new socket-only PostgreSQL
 cluster, verifies both migration ledgers, restarts it, checks prepared transactions
 and removes only its marker/inode-validated cluster. Resource receipts and final
-command results will be recorded after that allocated run; current native status
-is NOT_RUN.
+command results are recorded below; current native status is NOT_RUN.
+
+### First actual qualification attempt
+
+The tested source was `f309c37c684b0006ae3bfcb552615b736bfa116e` with the
+unchanged coordinator correction above. The standing 1805 offer was amended
+before actual acceptance to the bounded warm-target policy: 12 GiB start,
+9 GiB free after all outstanding reservations and own worst-case growth,
+8 GiB continuous floor. Earlier failed 16 GiB preflight checks were not
+admissions. Both actual admission checks used the amended policy.
+
+Actual acceptance was 2026-11-04 18:22:32.266892 UTC. The independent guardian
+preceded children. Rust 1.88, locked/offline, jobs 2, debug/incremental disabled
+and contracts-build opt-level 2 compiled the exact `age_deletion_native` target.
+Four explicitly permitted service build-script timestamps were refreshed with
+byte/hash/metadata receipts. A pinned private controller adapted the source
+freeze/run helpers to the exact allocation; its bytes and arguments are retained
+with the attempt. It created no source archive or cold target.
+
+Cargo exited 1 with nine Wall import/method errors. The exact source exports
+`concert_domain::mural::tools_b` and `concert_application::mural::tools_b`, and
+both module files exist. Cargo nevertheless reported both upstream artifacts as
+fresh while their public metadata lacked those exports. This is evidence of
+stale shared-target artifacts, not a successful Age compilation. No executable
+was frozen and no native or PostgreSQL test ran. The proposed byte-identical
+timestamp refresh of the two upstream module inputs was not performed: it was
+outside the four-file metadata grant during this attempt. The allocator later
+authorized that narrow repair for a fresh future lease only.
+
+The target was unconditionally released at 18:28:45.266400 UTC with zero
+handles/compiler children. FULL release was 18:29:28.315901 UTC, with NEW and
+workflow reservations zero and no native process/PG root. The original acceptance,
+450-second compile cutoff and failures were preserved; no target re-entry or
+cache/history deletion occurred. The original failed logs, source/tool pins,
+timestamp receipts and baseline remain in local evidence
+`mcr-age-deletion-native-569rqzsa/FULL.json` and its `failed-build-1` directory.
+
+Measured positive target growth was 202,440,704 bytes; final new outside evidence
+was 2,129,920 bytes, including the private controller. Peak charged whole storage
+was 6,647,021,568 bytes, minimum free space 16,058,511,360 bytes, maximum observed
+processes 7 and RSS 1,749,893,120 bytes. Retained historical target charge advances
+from 896,724,992 to 1,099,165,696 bytes for the next lease. These figures are the
+failed qualification's resource outcome, not functional acceptance.
 
 ## Separate BE41 trace
 
