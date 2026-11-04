@@ -82,11 +82,11 @@ if MODE=='guard':
    assert output<=A['new_output_cap_bytes'],'new output cap including PG'
    assert growth+output<=A['new_total_cap_bytes'],'new total includes output AND positive target growth'
    oldgrowth=A['retained_target_growth_bytes']
-   whole=carry+oldgrowth+growth+output;peak=max(peak,whole);assert whole<=A['whole_cap_bytes'],'whole carry/WT/common Git/old and new growth cap'
+   whole=max(carry+oldgrowth,A.get('historical_whole_peak_floor_bytes',0))+growth+output;peak=max(peak,whole);assert whole<=A['whole_cap_bytes'],'whole carry/WT/common Git/old and new growth cap'
    rows=process_rows();roots={parent}
    if pg and (Path(pg)/'data/postmaster.pid').exists():roots.add(int((Path(pg)/'data/postmaster.pid').read_text().splitlines()[0]))
    count=len(family(rows,roots));maxprocess=max(maxprocess,count)
-   assert count<=(40 if mode in ('build','release') else 48),'process ceiling'
+   assert count<=(A.get('max_build_processes',12) if mode in ('build','release') else A.get('max_native_processes',48)),'process ceiling'
    assert any(pid==parent for pid,pp,co,ar in rows),'controller disappeared'
    summary={'at':stamp(),'peak_whole_bytes':peak,'peak_positive_target_growth_bytes':growth,'minimum_free_bytes':low,'maximum_processes':maxprocess,'last_carry_bytes':carry,'last_new_output_bytes':output,'retained_target_growth_bytes':oldgrowth}
    write('guard-'+mode+'.json',summary)
