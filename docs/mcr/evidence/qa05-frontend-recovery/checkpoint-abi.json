@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "status": "SOURCE_PROPOSAL_NOT_A_RUNTIME_CAPABILITY",
+  "consumer": "frontend/e2e/qa05-functional-recovery/checkpoints.mjs",
+  "owner": "Root153 shared actual Vite proxy and Root1fc managed producer. No new HTTP endpoint or second stack.",
+  "signature": "await checkpoint(request, { signal }) -> correlated response",
+  "bindingFields": [
+    "candidate",
+    "environmentId",
+    "eventId",
+    "windowId",
+    "expiresAt"
+  ],
+  "requestFields": [
+    "version",
+    "binding",
+    "sequence",
+    "caseId",
+    "step",
+    "actor",
+    "request",
+    "observation"
+  ],
+  "actor": "actor-a; same two actual App principals remain the entire functional pair",
+  "steps": [
+    {
+      "name": "frontend-ready",
+      "precondition": "Both actual App C05 baselines and actual same-module Phaser renderer converge. Owner confirms same actor/window binding before arming.",
+      "faultResponse": "ARMED: bounded interception installed or managed operation accepted. This is NOT executed-fault evidence.",
+      "observationResponse": "OBSERVED for foreground/room-switch only"
+    },
+    {
+      "name": "producer-ready",
+      "appliesTo": "world-restart only; required between frontend-ready and after-observation",
+      "precondition": "Owner read-only checkpoint reached genuine COMPLETE after actual child stop, natural >=5.1s lease wait and replacement readiness. Browser has not retried.",
+      "faultResponse": "APPLIED plus genuine completed replacement evidence. Only then driver invokes one ordinary UI Reconnect per App."
+    },
+    {
+      "name": "after-observation",
+      "precondition": "Driver observed the case-specific boundary and eventual real pair/render convergence. Owner awaits actual fault completion, never infers it from caller labels.",
+      "faultResponse": "APPLIED plus actual owner execution/queue/generation/membership evidence",
+      "observationResponse": "OBSERVED plus actual owning membership state"
+    }
+  ],
+  "cases": {
+    "packet-gap": {
+      "action": "drop-next-delta",
+      "maximumFrames": 1,
+      "maximumMs": 1000
+    },
+    "packet-delay": {
+      "action": "delay-downstream",
+      "maximumFrames": 8,
+      "maximumBytes": 262144,
+      "maximumMs": 250
+    },
+    "slow-client": {
+      "action": "pause-downstream",
+      "maximumFrames": 64,
+      "maximumBytes": 262144,
+      "maximumMs": 1000
+    },
+    "foreground": {
+      "action": "observe-only"
+    },
+    "ticket-replay": {
+      "action": "probe-consumed-ticket",
+      "maximumConnections": 1,
+      "maximumMs": 3000
+    },
+    "world-restart": {
+      "action": "restart-owned-world",
+      "maximumReplacements": 1,
+      "maximumMs": 60000
+    },
+    "room-switch": {
+      "action": "observe-only"
+    }
+  },
+  "responses": "version/binding/sequence/caseId/step/action/status/proof; UNAVAILABLE is not PASS. No config-only proof. One sequential current-window consumer, no duplicate case/actions. Unknown outcome retires the consumer: no blind replay. Root owner must also deduplicate window+case+step after a lost reply.",
+  "requiredActualEffects": {
+    "packet-gap": "Exactly one genuine server delta withheld, subsequent actual delivered gap/resync/replacement; unmodified frames only.",
+    "packet-delay": "Positive delayed-frame count, actual bounded queue bytes/frames/hold duration, unchanged ordered real server frames.",
+    "slow-client": "Actual pause/resume and maximum queue frames/bytes/hold duration within request; eventual convergence. Relay bounds are not invented Rust queue measurements.",
+    "foreground": "Trusted actual native Chrome visibility, old socket withdrawal, one fresh ticket/stream, neutral seq1, current owning memberships.",
+    "ticket-replay": "One already-consumed actual App ticket, private RAM only, rejected4401, no extra accepted membership/Auth cohort. No second canonical upstream per App.",
+    "world-restart": "Actual same owned World direct-child replacement, natural owner lease expiry, different observed World generation/room epochs/streams; actual current memberships with no duplicates. NOT the IN04 Postgres-restart observer.",
+    "room-switch": "Actual UI switch, correlated server baseline, same two authorized memberships and no duplicate room ownership."
+  },
+  "missingNow": "World20f backend control source and Root153 transparent real Vite proxy are being implemented in their own scopes. Existing IN04 inspect/observeRestart/muralBinding remain unchanged and observation-only. No actual current window/capability claimed. Combined runtime cases NOT_RUN.",
+  "privacy": "No credentials, tickets, raw frames, full C03 or participant body/digest, headers, private handles, or SQL in requests/reports. Keep actor mapping in RAM/private0600 owner inputs.",
+  "runtimeAdmission": "Fresh21d finite allocation, literalACCEPT, actual shared window/descriptor/candidate and independent resource guard required before any browser/native child.",
+  "backendMapping": {
+    "owner": "World20f; Root retains real Stack/Child/guard/launcher and composes private handles",
+    "inspect": "ownerControl.inspect(config) retains genuine beforeGeneration in owner RAM",
+    "request": "ownerControl.requestWorldRestart(config,{requestId:sha256(windowId+\":world-restart\").slice(0,32),beforeGeneration}) once only",
+    "poll": "ownerControl.checkpoint(config,requestId), readonly QUEUED/STOPPING/LEASE_WAIT/REPLACEMENT_STARTING/COMPLETE/FAILED; no inspect during fault",
+    "limits": "World-only60000ms bound; >=65000ms remaining at acceptance. Never the separate IN04 PG_CONCERT_RESTART."
+  }
+}

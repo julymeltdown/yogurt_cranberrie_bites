@@ -1,0 +1,24 @@
+{
+  "status": "SOURCE_FROZEN_NOT_RUN",
+  "files": {
+    "frontend/e2e/qa05-functional-recovery/checkpoints.mjs": "cea269b4a56150087b0370335834cc7a2d595c3320305e40328f4b9b8bafefc2",
+    "frontend/e2e/qa05-functional-recovery/observations.mjs": "865c81e460be475d36463e73cb4b0d11abba54430cc30feb0c95bd897d438257",
+    "frontend/e2e/qa05-functional-recovery/session.mjs": "320f3c0f137dcf5bbae24e0b8874cd3b23d05ff6aa9cc574eb4d63beaaf66757",
+    "frontend/e2e/qa05-functional-recovery/driver.mjs": "f56c8cfbcfb3917f7fec847351f83a2743a04a2e33d01ad59442d6ff9c7dd110",
+    "frontend/e2e/qa05-functional-recovery/browser-observer.mjs": "c9a8529a1bb433f91c105bf8ec3197f5bb1f47e72a2085f9f46d9d6a353ce3f1",
+    "frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs": "77bd4f3af17780613c41a99c70e2aee114a106eb72e4d978179df1ce97ed8d4e",
+    "docs/mcr/evidence/qa05-frontend-recovery/guardian.py": "ccb9d755d7864af50f220decb05f9f9aa1cfd7dc8b11b177d364e2d997e2693f",
+    "docs/mcr/evidence/qa05-frontend-recovery/qualify-source.py": "d631f831880ddd1a8ee6b3d085cc9fd3d4a09a7d50b719ba40f1fd7285a51df4"
+  },
+  "readonly": {
+    "contracts/fixtures/realtime/movement-heartbeat.json": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+    "frontend/src/world/network/transport/contract.ts": "033e9b88a63091f9a99eb516420d4bf76b59787b04498b82738c85d9eef00d1b",
+    "frontend/src/world/scenes/MapScene.ts": "91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+    "frontend/e2e/runtime-adapters/in04-wall-b/adapter.mjs": "812709028e70a232cc8f00a9088b4b12d350955030fe3c83ea63ed9849dccade",
+    "frontend/e2e/real/world/in01/session.mjs": "33a295d8abfda003f18a7ba0f87c0db3277d76c03bdbc3a2b200dae8af0e39db",
+    "frontend/e2e/realtime/world/qa05/browser.mjs": "b43f448a5cb7158e8affe4c354d6cc053d10f209619baa03f7295db826725e32",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "provenance": "New UI rendering not copied. Read-only observer technique from retained IN01; actual native visibility technique from retained QA05; bounded supervisor accounting from retained FE17. No copied server/transport/Auth/renderer implementation. Synthetic fixture projections only; actual C05 validates served frames."
+}
