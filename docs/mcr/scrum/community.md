@@ -893,6 +893,19 @@ required, not inferred admission. Current FE facts and actualAge transition
 sent DIRECT Age/World/21d/Social as applicable; no King packet or review ACK.
 These resource transitions do not pass deferredQA08 or another original gate.
 
+Social's18:23Z actual inventory adds one finite FE17 native B1offer1823:
+NEW128MiB/expires18:26Z/ACCEPTpending. Artist231raster1822 NEW64MiB/expires
+18:25Z has no reported ACCEPT, prior reserve preflight declining/nojob,
+explicit disposition pending. FE upper192MiB=201,326,592B/two potential
+workflows; neither is asserted running. FE17 sourceFULL18:18:36.862856 and
+FE10runtimeFULL declared, externalChrome failure carry retained. Profile
+changed-driver fix and21e sharing/safety SOURCE128MiB READY are queued with
+NOoffers/holds. Age actual2GiB plus dated FEupper192MiB totals2,348,810,240B;
+Root512probe remains unadmitted/no actualaccepted report. Additional actual/
+unexpired BEoffers must be identified before any new admission; future target
+queue is not simultaneousNEW. Relayed18:24:34Z directlyAge/World/21d. This
+is dated inventory, not acceptance, inferred expiration release or new policy.
+
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE09 | Revised DONE; Original task-local SATISFIED retained;204 bounded goalCOMPLETE/Auth9leasesreturned, now Social FE10 owner, no current Auth9 lease | Source `f3bdc853` published `70a444bf`; all11 latest payloads independently verified,81 targeted fixtures/types/lint/plan PASS reported. No original gap/product edit; execution-plan progress-line drift informational | Current revised remaining: None in the current revised task scope; separately open integration/reference tasks retain their own criteria. Retained owner/dependency context: No remaining bounded FE09 delivery work. Expiry observation NOT_RUN informational, no duration/renewal gate. World reports original IN01 criteria/delivery PASS, actual COMPLETE/leases returned/freeze released; World owns its accounting.204 completed FE40/read-only assessment and subsequently accepted WallB; no current Auth lease |
