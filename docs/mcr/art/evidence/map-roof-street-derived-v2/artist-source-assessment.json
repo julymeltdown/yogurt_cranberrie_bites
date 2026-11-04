@@ -1,0 +1,113 @@
+{
+  "format": "MCR_ARTIST_SOURCE_ASSESSMENT_V1",
+  "version": "map-roof-street-derived-v2",
+  "boundary": "SOURCE_RASTERS_ONLY",
+  "sourceCommit": "5322d9eb184acedbb34db0bb2ea4b4a49657c862",
+  "offer": "ART-ROOF-STREET-V2-REPAIR-SOURCE-20261104T2020Z",
+  "inspectedBy": "2026-11-04T20:23:25Z",
+  "fullRasters": [
+    {
+      "file": "danger-scene.png",
+      "bytes": 716634,
+      "sha256": "b4dbf3f41e392e2f37ce78f907336055938c4b6611925c79ad13f41b15d2e931"
+    },
+    {
+      "file": "parade-scene.png",
+      "bytes": 727171,
+      "sha256": "d820853d14efe04f84cd8b8f08da5bc8c67850f3b19c43170b237207583a93c2"
+    },
+    {
+      "file": "revenge-scene.png",
+      "bytes": 709817,
+      "sha256": "5669a7861851a1b95bd1f2ad48e222f2e73dcd471622405f48000a33419f1606"
+    }
+  ],
+  "scaledPreviews": [
+    {
+      "file": "revenge-360.png",
+      "width": 360,
+      "height": 608,
+      "bytes": 191499,
+      "sha256": "d21e82fb71a6a7e84ff79c6e390970d2cca6fdbc6d2bfc2674c6418c93b88d57"
+    },
+    {
+      "file": "revenge-390.png",
+      "width": 390,
+      "height": 658,
+      "bytes": 218631,
+      "sha256": "0263a5bf9058b470dcf624ea5019b1ad6fedb098550044531e19e0213a9aeec0"
+    },
+    {
+      "file": "revenge-430.png",
+      "width": 430,
+      "height": 726,
+      "bytes": 260827,
+      "sha256": "7e67fcd1e0e4a7a52eb584a474fa48fa7451b0d8470f2aa23a5276ea5bb18854"
+    },
+    {
+      "file": "parade-360.png",
+      "width": 360,
+      "height": 608,
+      "bytes": 194881,
+      "sha256": "a3b447f703fd85346c9ef3a33b2f47cf45464d3120867e4138eb8a1b57425e4c"
+    },
+    {
+      "file": "parade-390.png",
+      "width": 390,
+      "height": 658,
+      "bytes": 222693,
+      "sha256": "38f0ac8bc485cbc4fdbdc79eb2d5c05583483bb248d533beaaa2613521110b23"
+    },
+    {
+      "file": "parade-430.png",
+      "width": 430,
+      "height": 726,
+      "bytes": 265778,
+      "sha256": "16198940c55184b0ee55e9d5434bfd46f2fb56320f538f599539bd815a405658"
+    },
+    {
+      "file": "danger-360.png",
+      "width": 360,
+      "height": 608,
+      "bytes": 192887,
+      "sha256": "a39ad81f9f57b19e0f015ffe15abd0a8db43ec0a25f908bcba3116c2f9ec8925"
+    },
+    {
+      "file": "danger-390.png",
+      "width": 390,
+      "height": 658,
+      "bytes": 220176,
+      "sha256": "a8a16de4efe160d93bc8548272800ffdb4496e6c3f897c7001183e8463bb9316"
+    },
+    {
+      "file": "danger-430.png",
+      "width": 430,
+      "height": 726,
+      "bytes": 262810,
+      "sha256": "5664c15e1e9f3c5e3dbec1f2e0e58ebc0cda2080ac2f9df480ddfba4bbc88a77"
+    }
+  ],
+  "scaledPreviewCustody": "Temporary only; all removed at literal FULL; hashes retain observation identity, not existing durable paths",
+  "observed": {
+    "roofVolumes": "Unequal gables and stepped planes distinguish the large roof masses at all three inspected widths. Original structural roof underlay remains complete.",
+    "streetRelief": "Larger quiet paving faces and joints remain visible at 360,390,430px without stronger ground contrast.",
+    "paletteAndFacades": "Warm rose, lavender and sage eras retain clear original facade windows, lamps, flower boxes and foliage.",
+    "limits": [
+      "Central long facade and its overall connected row remain continuous.",
+      "Open lawns and broad protected intersection reserves remain conspicuous.",
+      "Source raster observation provides no actual App, SVG engine parity, authoritative World, device or physical acceptance."
+    ]
+  },
+  "result": "ACCEPT_BOUNDED_SOURCE_IMPROVEMENT_ONLY",
+  "metadataCorrection": {
+    "result": "PASS",
+    "offer": "ART-ROOF-STREET-METADATA-SOURCE-20261104T2030Z",
+    "sourceCommit": "84c07511fefd6f198b00d8182f74166911d8f08d",
+    "allSevenArtFilesByteExact": true,
+    "changedProvenanceFields": [
+      "recipe",
+      "helperReuse.called"
+    ],
+    "assessmentPolicy": "Retains actual2020 observation; no new image or image inspection performed in2030"
+  }
+}
