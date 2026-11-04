@@ -48,7 +48,7 @@ pub async fn pool() -> anyhow::Result<PgPool> {
     );
     let options = PgConnectOptions::from_str(&std::env::var("QA03_DATABASE_URL")?)?;
     anyhow::ensure!(
-        options.get_database() == Some("mcr_qa03")
+        options.get_database() == Some("mcr_qa_races")
             && options.get_username() == "mcr_owner"
             && options.get_socket() == Some(&root.join("socket"))
             && options.get_port() == 5432
