@@ -1,7 +1,9 @@
 # OPS-PRODUCT-01 — original USER report production leaf
 
-Status: developer validation PASS; publication pending. Original capability
-IN_PROGRESS until remote delivery is verified. Base: `cb944f7210f6c55fdf1d0e897c96ea7ef0ba8325`, freshly
+Status: OPS-PRODUCT-01 and REPORT-STARTUP-01 are published with retained developer
+validation. OPS-ORIGINAL-CONTINUATION-02 is IN_PROGRESS; its new native cases are
+NOT_RUN pending a bounded resource allocation. This does not accept whole BE36/BE38.
+Original OPS-PRODUCT-01 base: `cb944f7210f6c55fdf1d0e897c96ea7ef0ba8325`, freshly
 fetched from `julymeltdown/mcr` master. Isolated existing worktree:
 `/Users/lhs/Desktop/mcr-worktrees/be-operations-runtime`, new task branch
 `codex/mcr-be-OPS-PRODUCT-01`. The prior Operations branch and all frozen evidence
@@ -236,3 +238,39 @@ publication remain the named Root publishing developer's scope. Broad
 BE36/BE38/BE39, media, moderator access, public multiuser IN03 and product
 acceptance remain open. Direct committed handoff needs no king/SL review or
 acknowledgment; the implementation owner must verify actual remote delivery.
+
+## OPS-ORIGINAL-CONTINUATION-02 — original BE36 real mutation boundaries
+
+Base: `bcbcf3edf4eba23a3011358018142574077d1426`, fetched from delivery master.
+Same isolated worktree, branch `codex/mcr-be-ops-original-continuation-02`.
+Only the assigned native test and this document change. All production code,
+helper modules, migrations, contracts, routers and startup composition remain
+read-only. The aligned persistent goal still reports BLOCKED; this bounded work
+does not reset or complete that broad historical goal.
+
+Original BE36 requires duplicate/spam handling, idempotent server mutations and
+reporter privacy. Three additional ignored native cases exercise those behaviors
+through the actual signed Product RPC, original canonical Auth/Friend authority,
+real OperationsRuntime/repository and authenticated Root delivery terminal:
+
+- Two concurrent distinct keys for the same reporter/target must produce one
+  successful report, one safe failed duplicate receipt, one outbox item and one
+  audit entry. Replaying the failed key must return the same safe receipt without
+  more effects. Concurrent deliveries settle separately before checking that all
+  three owner databases have zero prepared work.
+- Ten distinct admitted real Auth targets receive ten real signed reports. The
+  eleventh must return 429 without another report, receipt, outbox item, audit or
+  budget charge. Existing same-key replay remains available at quota. A changed,
+  freshly signed body under that key must return 409 without additional effects.
+- An event-specific test-only constraint in the identity-checked disposable
+  Concert database rejects the outbox insert after report/audit mutation. The
+  actual error must be safe 503, with report/audit/receipt/budget fully rolled
+  back. Removing that constraint and retrying the same key must succeed once.
+  No fault is added to production code or migration history.
+
+Status: source authored; native compilation/execution NOT_RUN. The existing four
+native regressions stay in the same binary. A fresh finite resource allocation,
+exact executable/source freeze, developer-owned execution and cleanup, committed
+handoff to the named Root publisher and fresh remote proof remain required.
+These checks do not establish moderator/evidence routes, operator authority,
+public Gateway delivery, multiuser IN03 or whole BE36/BE38 acceptance.

@@ -133,6 +133,7 @@ struct Fixture {
     actor: Uuid,
     family: Uuid,
     subject: Uuid,
+    subjects: Vec<Uuid>,
     event: Uuid,
     core: CanonicalRuntimeCore,
     owner: Arc<ScopedProductOwner>,
@@ -148,14 +149,17 @@ impl Drop for Fixture {
 }
 impl Fixture {
     async fn new(rebind: bool) -> anyhow::Result<Self> {
+        Self::with_targets(rebind, 1).await
+    }
+    async fn with_targets(rebind: bool, count: usize) -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
         let friend = environment::pool("friend").await?;
         let concert = concert_pool().await?;
-        let (actor, family, subjects) = environment::identities(&auth, 1).await?;
+        let (actor, family, subjects) = environment::identities(&auth, count).await?;
         let subject = subjects[0];
         let event = Uuid::new_v4();
         sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Report product native','OPEN')").bind(event).bind(format!("report-{}",event.simple())).execute(&concert).await?;
-        for user in [actor, subject] {
+        for user in std::iter::once(&actor).chain(subjects.iter()) {
             sqlx::query("insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')").bind(event).bind(user).execute(&concert).await?;
         }
         let instance = Uuid::new_v4();
@@ -229,6 +233,7 @@ impl Fixture {
             actor,
             family,
             subject,
+            subjects,
             event,
             core,
             owner,
@@ -239,7 +244,10 @@ impl Fixture {
         })
     }
     fn input(&self, key: Uuid) -> proto::ProductRequest {
-        let body = json!({"target_type":"USER","target_id":self.subject,"reason":"SPAM","text":"private reporter canary","evidence_media_ids":[]});
+        self.input_target(key, self.subject)
+    }
+    fn input_target(&self, key: Uuid, target: Uuid) -> proto::ProductRequest {
+        let body = json!({"target_type":"USER","target_id":target,"reason":"SPAM","text":"private reporter canary","evidence_media_ids":[]});
         let mut request = support::input("POST", "reports", &body.to_string());
         request.user_id = self.actor.to_string();
         request.event_id = self.event.to_string();
@@ -285,6 +293,10 @@ impl Fixture {
         Ok((Code::Ok, Some(proto::ProductResponse::decode(&bytes[5..])?)))
     }
     async fn finish(&self, cap: proto::ResponseDelivery) -> anyhow::Result<()> {
+        self.finish_delivery(cap).await?;
+        self.assert_settled().await
+    }
+    async fn finish_delivery(&self, cap: proto::ResponseDelivery) -> anyhow::Result<()> {
         use proto::product_delivery_service_server::ProductDeliveryServiceServer;
         let server = guard_without_delegation(
             &DELIVERY_POLICY,
@@ -316,6 +328,9 @@ impl Fixture {
             proto::CompleteResponseResult::decode(&bytes[5..])?.completed,
             "Root delivery incomplete"
         );
+        Ok(())
+    }
+    async fn assert_settled(&self) -> anyhow::Result<()> {
         for pool in [&self.auth, &self.friend, &self.concert] {
             let count: i64 = sqlx::query_scalar(
                 "select count(*) from pg_prepared_xacts where database=current_database()",
@@ -325,6 +340,10 @@ impl Fixture {
             assert_eq!(count, 0, "Actual owner prepared work must settle");
         }
         Ok(())
+    }
+    async fn effect_counts(&self) -> anyhow::Result<(i64, i64, i64, i64)> {
+        Ok(sqlx::query_as("select (select count(*) from concert_reports where event_id=$1),(select count(*) from concert_command_receipts where event_id=$1),(select count(*) from concert_outbox where event_id=$1),(select count(*) from concert_operations_audit where event_id=$1)")
+            .bind(self.event).fetch_one(&self.concert).await?)
     }
     async fn no_effects(&self) -> anyhow::Result<()> {
         for table in [
@@ -356,6 +375,183 @@ fn frame<T: Message>(message: &T) -> Vec<u8> {
     result.extend_from_slice(&(bytes.len() as u32).to_be_bytes());
     result.extend(bytes);
     result
+}
+
+#[tokio::test]
+#[ignore = "frozen owned PG16 three-database report-product controller only"]
+async fn concurrent_duplicate_reports_persist_one_effect_and_replay_the_safe_failed_receipt(
+) -> anyhow::Result<()> {
+    let f = Fixture::new(false).await?;
+    let requests = [f.input(Uuid::new_v4()), f.input(Uuid::new_v4())];
+    let (left, right) = tokio::join!(f.call(&requests[0], false), f.call(&requests[1], false));
+    let mut receipts = Vec::new();
+    // Both responses remain retained until their own actual Root terminals.
+    // Completing one cannot assert that the other scope has already settled.
+    for result in [left, right] {
+        let (code, output) = result?;
+        assert_eq!(code, Code::Ok);
+        let output = output.unwrap();
+        assert_eq!(output.status, 202);
+        assert!(!String::from_utf8_lossy(&output.body).contains("private reporter canary"));
+        assert!(!String::from_utf8_lossy(&output.body).contains(&f.subject.to_string()));
+        receipts.push(serde_json::from_slice::<serde_json::Value>(&output.body)?);
+        f.finish_delivery(output.delivery.unwrap()).await?;
+    }
+    f.assert_settled().await?;
+    assert_eq!(
+        receipts
+            .iter()
+            .filter(|r| r["state"] == "SUCCEEDED")
+            .count(),
+        1
+    );
+    let failed = receipts
+        .iter()
+        .position(|r| r["state"] == "FAILED")
+        .unwrap();
+    assert_eq!(receipts[failed]["failure_reason"], "RESOURCE_UNAVAILABLE");
+    assert!(receipts[failed]["resource_id"].is_null());
+    assert_eq!(f.effect_counts().await?, (1, 2, 1, 1));
+
+    let key = Uuid::parse_str(receipts[failed]["idempotency_key"].as_str().unwrap())?;
+    let (code, replay) = f.call(&f.input(key), false).await?;
+    assert_eq!(code, Code::Ok);
+    let replay = replay.unwrap();
+    assert_eq!(replay.status, 202);
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&replay.body)?,
+        receipts[failed]
+    );
+    f.finish(replay.delivery.unwrap()).await?;
+    assert_eq!(f.effect_counts().await?, (1, 2, 1, 1));
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "frozen owned PG16 three-database report-product controller only"]
+async fn actual_hourly_quota_preserves_replay_and_conflict_without_new_effects(
+) -> anyhow::Result<()> {
+    let f = Fixture::with_targets(false, 11).await?;
+    let first_key = Uuid::new_v4();
+    let mut first_receipt = None;
+    let budget: i64 = sqlx::query_scalar("select receipts_used from concert_command_budget")
+        .fetch_one(&f.concert)
+        .await?;
+    // These are ten actual signed, authorized Product commands, not seeded reports.
+    for (index, target) in f.subjects.iter().take(10).enumerate() {
+        let key = if index == 0 {
+            first_key
+        } else {
+            Uuid::new_v4()
+        };
+        let (code, output) = f.call(&f.input_target(key, *target), false).await?;
+        assert_eq!(code, Code::Ok);
+        let output = output.unwrap();
+        assert_eq!(output.status, 202);
+        let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
+        assert_eq!(receipt["state"], "SUCCEEDED");
+        if index == 0 {
+            first_receipt = Some(receipt);
+        }
+        f.finish(output.delivery.unwrap()).await?;
+    }
+    assert_eq!(f.effect_counts().await?, (10, 10, 10, 10));
+    let (code, output) = f
+        .call(&f.input_target(Uuid::new_v4(), f.subjects[10]), false)
+        .await?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 429);
+    let error: serde_json::Value = serde_json::from_slice(&output.body)?;
+    assert_eq!(error["details"]["reason"], "CAPACITY_EXCEEDED");
+    assert!(!String::from_utf8_lossy(&output.body).contains("private reporter canary"));
+    f.finish(output.delivery.unwrap()).await?;
+
+    let (code, replay) = f.call(&f.input(first_key), false).await?;
+    assert_eq!(code, Code::Ok);
+    let replay = replay.unwrap();
+    assert_eq!(replay.status, 202);
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&replay.body)?,
+        first_receipt.unwrap()
+    );
+    f.finish(replay.delivery.unwrap()).await?;
+
+    // The changed body is signed as the original request, not tampered post-admission.
+    let mut changed = f.input(first_key);
+    let mut body: serde_json::Value = serde_json::from_slice(&changed.http_body)?;
+    body["text"] = "different private reporter canary".into();
+    changed.http_body = serde_json::to_vec(&body)?;
+    let (code, conflict) = f.call(&changed, false).await?;
+    assert_eq!(code, Code::Ok);
+    let conflict = conflict.unwrap();
+    assert_eq!(conflict.status, 409);
+    let error: serde_json::Value = serde_json::from_slice(&conflict.body)?;
+    assert_eq!(error["details"]["reason"], "IDEMPOTENCY_CONFLICT");
+    assert!(!String::from_utf8_lossy(&conflict.body).contains("private reporter canary"));
+    f.finish(conflict.delivery.unwrap()).await?;
+    assert_eq!(f.effect_counts().await?, (10, 10, 10, 10));
+    let after: i64 = sqlx::query_scalar("select receipts_used from concert_command_budget")
+        .fetch_one(&f.concert)
+        .await?;
+    assert_eq!(
+        after,
+        budget + 10,
+        "Quota/conflict/replay cannot consume extra receipt budget"
+    );
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "frozen owned PG16 three-database report-product controller only"]
+async fn outbox_failure_rolls_back_report_audit_receipt_and_budget_then_same_key_retries(
+) -> anyhow::Result<()> {
+    let f = Fixture::new(false).await?;
+    let key = Uuid::new_v4();
+    let budget: i64 = sqlx::query_scalar("select receipts_used from concert_command_budget")
+        .fetch_one(&f.concert)
+        .await?;
+    // A test-local constraint in the identity-checked disposable DB fails only
+    // this event's outbox insert, after the real report and audit mutations.
+    let constraint = format!("mcr_report_fault_{}", f.event.simple());
+    sqlx::query(&format!("alter table concert_outbox add constraint {constraint} check (event_id <> '{}'::uuid) not valid", f.event))
+        .execute(&f.concert).await?;
+    let response = f.call(&f.input(key), false).await;
+    sqlx::query(&format!(
+        "alter table concert_outbox drop constraint {constraint}"
+    ))
+    .execute(&f.concert)
+    .await?;
+    let (code, output) = response?;
+    assert_eq!(code, Code::Ok);
+    let output = output.unwrap();
+    assert_eq!(output.status, 503);
+    let error: serde_json::Value = serde_json::from_slice(&output.body)?;
+    assert_eq!(error["details"]["reason"], "DEPENDENCY_UNAVAILABLE");
+    let safe = String::from_utf8_lossy(&output.body);
+    assert!(!safe.contains(&constraint));
+    assert!(!safe.contains("private reporter canary"));
+    assert!(!safe.contains(&f.subject.to_string()));
+    f.finish(output.delivery.unwrap()).await?;
+    assert_eq!(f.effect_counts().await?, (0, 0, 0, 0));
+    let after: i64 = sqlx::query_scalar("select receipts_used from concert_command_budget")
+        .fetch_one(&f.concert)
+        .await?;
+    assert_eq!(after, budget);
+
+    let (code, retry) = f.call(&f.input(key), false).await?;
+    assert_eq!(code, Code::Ok);
+    let retry = retry.unwrap();
+    assert_eq!(retry.status, 202);
+    let receipt: serde_json::Value = serde_json::from_slice(&retry.body)?;
+    assert_eq!(receipt["state"], "SUCCEEDED");
+    f.finish(retry.delivery.unwrap()).await?;
+    assert_eq!(f.effect_counts().await?, (1, 1, 1, 1));
+    let after: i64 = sqlx::query_scalar("select receipts_used from concert_command_budget")
+        .fetch_one(&f.concert)
+        .await?;
+    assert_eq!(after, budget + 1);
+    Ok(())
 }
 
 #[tokio::test]
