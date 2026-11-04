@@ -17,7 +17,12 @@ jobs:
         with:
           node-version: '24.22.2'
       - run: python -m pip install -r scripts/mcr/requirements-contracts.txt
-      - run: corepack enable && corepack pnpm --dir frontend install --frozen-lockfile
+      - name: Install frozen frontend dependencies with its pinned package manager
+        working-directory: frontend
+        run: |
+          corepack enable
+          corepack pnpm --version
+          corepack pnpm install --frozen-lockfile
       - name: Existing full QA01 coverage and negative probes
         run: |
           python -B scripts/mcr/contracts/qa01-coverage/run.py
