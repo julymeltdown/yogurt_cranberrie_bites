@@ -277,6 +277,32 @@ async fn canonical_authoring_discovery_detail_idempotency_and_close() -> anyhow:
     )
     .await?;
     assert_eq!(a, 409);
+    // Explicit expired private receipt fixture; the real retained repository
+    // checks current canonical authority and returns the precise frozen reason.
+    let expired_key = Uuid::new_v4();
+    let expired_body = draft(3, "Expired request", false);
+    let command = protocol::parse_intro_command(
+        concert_domain::AuthUserId::from_uuid(f.actor),
+        concert_domain::EventId::from_uuid(f.event),
+        expired_key,
+        "setConcertIntro",
+        &serde_json::to_vec(&expired_body)?,
+    )?;
+    let keys = FingerprintKeys::new(
+        SigningKey::new("intro-native-fixture-v1", &[92; 32])?,
+        vec![],
+    )?;
+    let fingerprint = keys.sign(&command.request()?)?.as_storage();
+    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) values($1,$2,$3,'setConcertIntro',$4,$5,$6,'RETIRED',clock_timestamp()-interval '2 days',clock_timestamp()-interval '1 day')").bind(Uuid::new_v4()).bind(f.actor).bind(f.event).bind(expired_key).bind(fingerprint).bind(id).execute(&f.concert).await?;
+    let (status, v) = call(
+        &f,
+        &r,
+        "setConcertIntro",
+        raw(&f, "PUT", "me/intro", expired_body, Some(expired_key)),
+    )
+    .await?;
+    assert_eq!(status, 409, "{v}");
+    assert_eq!(v["details"]["reason"], "IDEMPOTENCY_EXPIRED");
     let (a, v) = call(
         &f,
         &r,
@@ -625,6 +651,14 @@ async fn canonical_native_witness_requires_exact_registered_transaction() -> any
     s.mark_serialized().await?;
     s.finish_response().await?;
     f.assert_clean().await?;
+    let mut unfenced = f.concert.begin().await?;
+    sqlx::query("select set_config('mcr.intro_authority_until',(clock_timestamp()+interval '1 minute')::text,true)").execute(&mut *unfenced).await?;
+    sqlx::query("insert into concert_intros(event_id,intro_id,owner_id,revision,state,text,created_at,updated_at) values($1,$2,$3,1,'DRAFT','Unfenced fixture',clock_timestamp(),clock_timestamp())")
+        .bind(f.event).bind(Uuid::new_v4()).bind(f.subject).execute(&mut *unfenced).await?;
+    assert!(
+        unfenced.commit().await.is_err(),
+        "a fabricated deadline is not a registered native witness"
+    );
     // Native commit alone is insufficient; a genuine committed foreign effect
     // without the registered same-transaction Intro witness remains UNKNOWN.
     let (s, _, _) = acquire(
