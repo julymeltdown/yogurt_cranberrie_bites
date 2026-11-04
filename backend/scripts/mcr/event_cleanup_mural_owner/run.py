@@ -74,14 +74,17 @@ def main():
     def run(name, cmd, timeout=60):
         sample()
         remaining = max(1, 180 - (time.monotonic() - start))
-        proc = subprocess.run([str(v) for v in cmd], env=env, capture_output=True, text=True, timeout=min(timeout, remaining))
-        (logs / f"{name}.stdout").write_text(proc.stdout)
-        (logs / f"{name}.stderr").write_text(proc.stderr)
+        with (logs / f"{name}.stdout").open("w") as out, (logs / f"{name}.stderr").open("w") as err:
+            try:
+                proc = subprocess.run([str(v) for v in cmd], env=env, stdout=out, stderr=err, text=True, timeout=min(timeout, remaining))
+            except BaseException as error:
+                record["checks"].append({"name": name, "exit_code": None, "interruption": repr(error)})
+                raise
         record["checks"].append({"name": name, "exit_code": proc.returncode})
         if proc.returncode:
             raise RuntimeError(f"{name} exited {proc.returncode}; inspect retained logs")
         sample()
-        return proc.stdout
+        return (logs / f"{name}.stdout").read_text()
 
     def native(name, filter_name, ignored=True):
         out = run(name, [exe, filter_name, *(["--ignored"] if ignored else []), "--nocapture", "--test-threads=1"], timeout=120)
@@ -121,7 +124,7 @@ def main():
         assert sql("prepared", "select count(*) from pg_prepared_xacts;").strip() == "0"
         record["status"] = "PASS"
     except BaseException as error:
-        record["status"], record["failure"] = "FAIL", str(error)
+        record["status"], record["failure"] = "FAIL", repr(error)
         raise
     finally:
         try:

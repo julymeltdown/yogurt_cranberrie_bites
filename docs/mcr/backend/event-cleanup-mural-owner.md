@@ -1,6 +1,7 @@
 # BE41 actual Mural freeze owner
 
-Status: source implemented; first native qualification NOT_RUN. This additive
+Status: source implemented; first native qualification failed in a concurrency
+test fixture, with owned resources cleaned. Corrected qualification pending. This additive
 producer does not activate BE41, establish production operator/system authority,
 or accept the complete event-closure/public archive flow.
 
@@ -101,3 +102,21 @@ python3 backend/scripts/mcr/event_cleanup_mural_owner/run.py --frozen "$proof/fr
 Record actual source commit, commands/exits, executable/report hashes, resource
 release and cleanup evidence here after execution. Full production authority,
 Root composition, remaining owners and whole BE41 acceptance stay NOT_RUN.
+
+First attempt, named offer `BE41-MURAL-OWNER-BACKEND-202611040839Z`: clean source
+`af00e848a803a4b1013d0faf3a535f6a60eb44d3` built successfully, exit 0. The copied
+source-pin and all 37 genuine SQLx migrations/reapply checks passed. Native effects
+were interrupted, runner exit 130, after tracing a fixture deadlock: the actual
+pixel adapter authorizes repeatedly, while the concurrency fixture paused every
+check. The fixture now pauses only on its first check. The runner also persists
+stdout/stderr during execution so interruptions retain partial test diagnostics.
+No production source correction or unallocated retry occurred.
+
+First-attempt evidence is retained at
+`/private/tmp/mcr-be41-mural-owner-proof-byvab_gz`; `frozen/native.json` records
+FAIL and cleanup=true. The actual private PG root was removed, no owned test or
+postmaster remained, and the shared target had already been released with zero
+handles. Build/freeze took 97.193 seconds and native teardown completed after
+74.824 seconds. Peak sampled whole outputs were 87,865,218 bytes, minimum native
+free disk 31,747,448,832 bytes. A fresh named offer is required for the corrected
+source build and new owned native workflow; the failed attempt is not overwritten.

@@ -351,7 +351,10 @@ async fn mural_owner_native_receipt_scope_tamper_and_missing_authority_fail_clos
     assert_eq!(batches(&pool, job).await, 1);
 }
 
-struct PixelAuthority(Option<(Arc<tokio::sync::Notify>, Arc<tokio::sync::Notify>)>);
+struct PixelAuthority(
+    Option<(Arc<tokio::sync::Notify>, Arc<tokio::sync::Notify>)>,
+    std::sync::atomic::AtomicBool,
+);
 #[async_trait]
 impl concert_service::adapters::out::repository::mural::MuralAuthority for PixelAuthority {
     async fn authorize_in(
@@ -360,8 +363,10 @@ impl concert_service::adapters::out::repository::mural::MuralAuthority for Pixel
         _: concert_application::mural::MuralActor,
     ) -> Result<(), concert_application::mural::MuralError> {
         if let Some((entered, release)) = &self.0 {
-            entered.notify_one();
-            release.notified().await;
+            if !self.1.swap(true, std::sync::atomic::Ordering::SeqCst) {
+                entered.notify_one();
+                release.notified().await;
+            }
         }
         Ok(())
     }
@@ -378,7 +383,7 @@ async fn mural_owner_native_concurrent_production_pixel_writer_serializes_with_c
     let release = Arc::new(tokio::sync::Notify::new());
     let repo = PgMuralRepository::new(
         pool.clone(),
-        PixelAuthority(Some((entered.clone(), release.clone()))),
+        PixelAuthority(Some((entered.clone(), release.clone())), false.into()),
     );
     let pixel = tokio::spawn(async move {
         repo.place(
@@ -413,7 +418,7 @@ async fn mural_owner_native_concurrent_production_pixel_writer_serializes_with_c
         .unwrap();
     let revision:i64=sqlx::query_scalar("select revision from concert_mural_state where event_id=$1 and get_byte(pixels,0)=15 and reset_revision=3 and state='FROZEN'").bind(actor.event).fetch_one(&pool).await.unwrap();
     assert_eq!(revision, 3);
-    let repo = PgMuralRepository::new(pool.clone(), PixelAuthority(None));
+    let repo = PgMuralRepository::new(pool.clone(), PixelAuthority(None, false.into()));
     assert!(repo
         .place(
             MuralActor {
