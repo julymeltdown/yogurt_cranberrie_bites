@@ -1,0 +1,411 @@
+{
+  "task": "ART-PARADE-PRINT-02",
+  "method": "Direct visual region selection; exclusive right/bottom bounds. Dark-ink proxy is all RGB channels below95, including photographic grain and control overlap. No tracing, resampling or copying reference pixels into art.",
+  "normalization": "372px illustrative inner width at390px viewport, not measured app layout",
+  "limits": [
+    "Manually inspected regions with approximately3px edge uncertainty; not semantic figure segmentation.",
+    "Meet includes the overlapping Create Party control and is taller than the other two bands. Its dark fraction is not independent ornament density.",
+    "A shared96-unit source is justified by Gifts/Profile figure and ground extents, not a claim to reproduce every route's occupied height.",
+    "Reference measurements are source preparation; actual placed boxes and CTA/scroll clearance require retained native evidence."
+  ],
+  "references": [
+    {
+      "id": "canonical",
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "size": [
+        1536,
+        1024
+      ],
+      "regions": [
+        {
+          "route": "meet",
+          "region": [
+            316,
+            894,
+            592,
+            1011
+          ],
+          "size": [
+            276,
+            117
+          ],
+          "heightAt372pxWidth": 157.69565217391303,
+          "darkInkProxyFraction": 0.33958875263223093,
+          "rowDarkFraction": [
+            {
+              "y": 0,
+              "fraction": 0.0
+            },
+            {
+              "y": 8,
+              "fraction": 0.0
+            },
+            {
+              "y": 16,
+              "fraction": 0.15942028985507245
+            },
+            {
+              "y": 24,
+              "fraction": 0.2536231884057971
+            },
+            {
+              "y": 32,
+              "fraction": 0.391304347826087
+            },
+            {
+              "y": 40,
+              "fraction": 0.45652173913043476
+            },
+            {
+              "y": 48,
+              "fraction": 0.37681159420289856
+            },
+            {
+              "y": 56,
+              "fraction": 0.31521739130434784
+            },
+            {
+              "y": 64,
+              "fraction": 0.38768115942028986
+            },
+            {
+              "y": 72,
+              "fraction": 0.19927536231884058
+            },
+            {
+              "y": 80,
+              "fraction": 0.27898550724637683
+            },
+            {
+              "y": 88,
+              "fraction": 0.3442028985507246
+            },
+            {
+              "y": 96,
+              "fraction": 0.39492753623188404
+            },
+            {
+              "y": 104,
+              "fraction": 0.4746376811594203
+            },
+            {
+              "y": 112,
+              "fraction": 0.9963768115942029
+            }
+          ]
+        },
+        {
+          "route": "gifts",
+          "region": [
+            620,
+            927,
+            906,
+            1011
+          ],
+          "size": [
+            286,
+            84
+          ],
+          "heightAt372pxWidth": 109.25874125874125,
+          "darkInkProxyFraction": 0.520937395937396,
+          "rowDarkFraction": [
+            {
+              "y": 0,
+              "fraction": 0.0
+            },
+            {
+              "y": 8,
+              "fraction": 0.08391608391608392
+            },
+            {
+              "y": 16,
+              "fraction": 0.1993006993006993
+            },
+            {
+              "y": 24,
+              "fraction": 0.3181818181818182
+            },
+            {
+              "y": 32,
+              "fraction": 0.3111888111888112
+            },
+            {
+              "y": 40,
+              "fraction": 0.2972027972027972
+            },
+            {
+              "y": 48,
+              "fraction": 0.6993006993006993
+            },
+            {
+              "y": 56,
+              "fraction": 0.8811188811188811
+            },
+            {
+              "y": 64,
+              "fraction": 0.8881118881118881
+            },
+            {
+              "y": 72,
+              "fraction": 0.9265734265734266
+            },
+            {
+              "y": 80,
+              "fraction": 0.9265734265734266
+            }
+          ]
+        },
+        {
+          "route": "profile",
+          "region": [
+            1233,
+            925,
+            1523,
+            1011
+          ],
+          "size": [
+            290,
+            86
+          ],
+          "heightAt372pxWidth": 110.31724137931035,
+          "darkInkProxyFraction": 0.44611066559743384,
+          "rowDarkFraction": [
+            {
+              "y": 0,
+              "fraction": 0.05517241379310345
+            },
+            {
+              "y": 8,
+              "fraction": 0.04482758620689655
+            },
+            {
+              "y": 16,
+              "fraction": 0.10344827586206896
+            },
+            {
+              "y": 24,
+              "fraction": 0.2655172413793103
+            },
+            {
+              "y": 32,
+              "fraction": 0.33448275862068966
+            },
+            {
+              "y": 40,
+              "fraction": 0.39655172413793105
+            },
+            {
+              "y": 48,
+              "fraction": 0.4103448275862069
+            },
+            {
+              "y": 56,
+              "fraction": 0.496551724137931
+            },
+            {
+              "y": 64,
+              "fraction": 0.8689655172413793
+            },
+            {
+              "y": 72,
+              "fraction": 0.9344827586206896
+            },
+            {
+              "y": 80,
+              "fraction": 0.9482758620689655
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "supplied-jpeg",
+      "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+      "bytes": 482737,
+      "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+      "size": [
+        1280,
+        853
+      ],
+      "regions": [
+        {
+          "route": "meet",
+          "region": [
+            262,
+            742,
+            505,
+            839
+          ],
+          "size": [
+            243,
+            97
+          ],
+          "heightAt372pxWidth": 148.49382716049382,
+          "darkInkProxyFraction": 0.31780577828687795,
+          "rowDarkFraction": [
+            {
+              "y": 0,
+              "fraction": 0.037037037037037035
+            },
+            {
+              "y": 8,
+              "fraction": 0.01646090534979424
+            },
+            {
+              "y": 16,
+              "fraction": 0.1728395061728395
+            },
+            {
+              "y": 24,
+              "fraction": 0.27983539094650206
+            },
+            {
+              "y": 32,
+              "fraction": 0.411522633744856
+            },
+            {
+              "y": 40,
+              "fraction": 0.39094650205761317
+            },
+            {
+              "y": 48,
+              "fraction": 0.32098765432098764
+            },
+            {
+              "y": 56,
+              "fraction": 0.36213991769547327
+            },
+            {
+              "y": 64,
+              "fraction": 0.2345679012345679
+            },
+            {
+              "y": 72,
+              "fraction": 0.3045267489711934
+            },
+            {
+              "y": 80,
+              "fraction": 0.40329218106995884
+            },
+            {
+              "y": 88,
+              "fraction": 0.4156378600823045
+            },
+            {
+              "y": 96,
+              "fraction": 0.9753086419753086
+            }
+          ]
+        },
+        {
+          "route": "gifts",
+          "region": [
+            520,
+            772,
+            756,
+            839
+          ],
+          "size": [
+            236,
+            67
+          ],
+          "heightAt372pxWidth": 105.61016949152543,
+          "darkInkProxyFraction": 0.5068302555021503,
+          "rowDarkFraction": [
+            {
+              "y": 0,
+              "fraction": 0.0
+            },
+            {
+              "y": 8,
+              "fraction": 0.11016949152542373
+            },
+            {
+              "y": 16,
+              "fraction": 0.2669491525423729
+            },
+            {
+              "y": 24,
+              "fraction": 0.2923728813559322
+            },
+            {
+              "y": 32,
+              "fraction": 0.2796610169491525
+            },
+            {
+              "y": 40,
+              "fraction": 0.7033898305084746
+            },
+            {
+              "y": 48,
+              "fraction": 0.9449152542372882
+            },
+            {
+              "y": 56,
+              "fraction": 0.9491525423728814
+            },
+            {
+              "y": 64,
+              "fraction": 0.9322033898305084
+            }
+          ]
+        },
+        {
+          "route": "profile",
+          "region": [
+            1030,
+            774,
+            1269,
+            839
+          ],
+          "size": [
+            239,
+            65
+          ],
+          "heightAt372pxWidth": 101.17154811715481,
+          "darkInkProxyFraction": 0.45033794657225623,
+          "rowDarkFraction": [
+            {
+              "y": 0,
+              "fraction": 0.03347280334728033
+            },
+            {
+              "y": 8,
+              "fraction": 0.0794979079497908
+            },
+            {
+              "y": 16,
+              "fraction": 0.24686192468619247
+            },
+            {
+              "y": 24,
+              "fraction": 0.34309623430962344
+            },
+            {
+              "y": 32,
+              "fraction": 0.3598326359832636
+            },
+            {
+              "y": 40,
+              "fraction": 0.45188284518828453
+            },
+            {
+              "y": 48,
+              "fraction": 0.8661087866108786
+            },
+            {
+              "y": 56,
+              "fraction": 0.9121338912133892
+            },
+            {
+              "y": 64,
+              "fraction": 0.9497907949790795
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="parade-print-v2" width="360" height="96" viewBox="0 0 360 96" color="#191817" fill="none">
+  <title>Decorative marching print</title>
+  <desc>Original uneven ink silhouettes of nine fictional marchers, instruments, a small pennant and rough earth. Static decoration, not participants, player characters or a location.</desc>
+  <g id="parade-print-ink" fill="currentColor" fill-rule="evenodd">
+    <!-- Cropped rear marcher: bent back, low hat, long split coat. -->
+    <path d="M-8 49-3 44 3 41 7 35 5 31 7 26 13 24 18 27 19 32 15 35 14 39 19 42 22 51 30 56 28 59 18 55 12 48 10 57 17 68 13 71 6 64 2 58-3 62-10 62Z M9 28l6 1 3 3-9 1Z M3 58l7 5-6 11-9 9-6 1-2-3 8-5 4-8Z M12 65l5-1 3 11 9 5 7 1-1 4-12-1-9-8Z"/>
+    <!-- Reed player: high shoulders, narrow waist, crossed instrument. -->
+    <path d="M37 30l-2-3 1-6 4-4 7-1 5 4 1 5-3 3-3 1 1 5 6 4 4 11 9 1 2 4-12 1-7-9-2 9 4 9-6 3-9-5-5-1 5-14-3-6-8 4-3-3 10-8 5 1Z M39 21l3-2 6 2-1 2-5-1Z M39 61l8 4-5 10-9 7-6 1-3-3 8-4 6-8Z M47 65l6-1 4 11 9 5 6 1-1 4-12-2-9-7Z M43 36l2-2 23 25-1 4-4-2-1-4Z M60 52l2-3 4 4-2 3Z"/>
+    <!-- Bass drummer: broad shako, suspended drum, different short stride. -->
+    <path d="M78 22l-3-2 2-12 13-2 3 11-2 5-6 1 1 5 10 7 4 12-5 4-5-13-5-2-2 14-11 3-5-3 3-13-6 7-7 2-2-3 8-5 8-10 8-2Z M78 10l10-1 1 3-11 1Z M71 47l12 1 4 13-6 5-7-6-5 8-7-2Z M70 62l7 3-6 10-11 6-5 1-1-4 10-5Z M81 64l7-3 2 12 8 6 8 1-1 4-13-1-9-8Z"/>
+    <path d="M99 38c8 0 13 7 13 15s-5 15-13 15-14-6-14-15 6-15 14-15Z M99 42c-5 0-9 5-9 11s4 11 9 11 9-5 9-11-4-11-9-11Z M99 46c3 0 5 3 5 7s-2 7-5 7-5-3-5-7 2-7 5-7Z M93 29l3-1 9 17-2 2Z M111 34l3 1-8 13-2-2Z"/>
+    <!-- Standard bearer: tallest head and upright pole, lifted front boot. -->
+    <path d="M123 20l-3-3 1-6 4-3 6 1 4 5-2 5-4 3 1 4 8 4 2 14 9 1 1 4-13 1-5-13-2 15 4 12-8 5-7-5-7 1 4-13 2-15-7 7-8 1-1-3 8-5 6-11 7-2Z M122 13l3-2 7 2-2 2-7-1Z M118 63l8 5-8 9-6 7-9 2-2-4 10-5Z M129 64l6-2 7 13 10 2 6-1 2 4-11 4-13-5Z M146 9l2-1 5 73-3 1Z"/>
+    <path d="M148 11c9-8 16 0 25-6l-3 9 7 6c-12 7-18-4-27 3Z M154 13l3-1 2 3-3 1Z"/>
+    <!-- Stooping coat: rounded shoulders and a low sweeping hem. -->
+    <path d="M168 34l-4-2-1-6 3-5 6-1 5 4 1 5-3 4 3 4 10 7 5 12-5 6-8-9-1 8 4 7-8 4-10-6-10 1 7-11 1-12-6 8-9 2-2-4 8-4 7-11 6-1Z M165 25l3-2 6 2 1 3-6-1Z M162 65l9 5-7 6-14 4-7-1 1-4 12-2Z M175 68l8-3 4 9 10 6 6 1-2 4-13-2-9-7Z M173 48l2-5 2 9-2 2Z"/>
+    <!-- Trombone player: long horizontal instrument and deep raised knee. -->
+    <path d="M205 28l-3-3 1-7 6-4 6 1 4 5-1 6-6 3 2 4 8 4 4 7 5-4 4 3-9 8-8-6-2 13 6 9-10 4-9-6-8 2 6-13 2-14-5 7-8 2-1-4 7-5 6-10 5-1Z M207 19l4-2 5 3-1 3-8-1Z M202 65l10 5-9 10-13 4-6-1 1-4 12-3Z M216 67l7-2 3 8 11 2 4 4-3 4-14-4-5-6Z"/>
+    <path d="m215 31 26 2 8-3 1 12-9-5-26-2Z M229 37l18 3-1 4-18-3Z M244 33l4-1-1 7-3-1Z"/>
+    <!-- Long-haired marcher: windblown collar and pointed coat tails. -->
+    <path d="m253 21-1-5 3-6 6-2 6 3 2 5-2 5-4 3 2 5 8 5 2 11 10 4-1 4-13-5-5-10-1 16 8 15-10-1-5 3-4-7-9 1 7-15 2-13-7 5-8 1-1-4 7-3 8-10 6-2Z M256 14l5-3 5 3-1 3-5-1Z M253 63l8 6-6 9-13 7-7-1-1-4 12-4Z M263 67l8-2 5 10 9 3 7-1 1 4-11 4-12-6Z M264 11l5 3 3 7-3-1 4 5-6-3-3-5Z"/>
+    <!-- Side drummer: puffed cuff, hanging drum, heel-first step. -->
+    <path d="M296 29l-4-3v-6l4-4 7-1 5 5-1 6-5 3 1 5 8 4 4 10 5 1 1 4-10-1-5-10-3 14 3 9-8 5-9-5-5-1 6-11 1-13-8 5-4-3 10-11 7-1Z M296 20l3-2 5 2-1 3-6-1Z M289 65l9 5-9 8-13 5-5-2 2-4 11-3Z M301 67l8-3 4 11 10 4 5 1-1 4-13-1-9-7Z"/>
+    <path d="m308 46 15 3-2 17-15-3Z M310 50l10 2-1 10-10-2Z M303 37l2-1 11 17-2 1Z M326 39l2 1-9 13-2-2Z"/>
+    <!-- Cropped front marcher: forward brim, flared sleeve, reaching boot. -->
+    <path d="m338 21-4-2 1-6 4-4 7-1 4 4v5l-4 5-2 1 2 4 8 4 2 12 7 3 4-1 2 4-9 2-8-6-3-9-1 17 5 11-9 5-8-6-8 2 7-12 1-14-7 6-8 2-2-4 8-4 7-10 6-1Z M338 13l6-2 4 3-1 3-9-1Z M334 63l10 6-10 10-10 5-8 1-1-4 12-6Z M348 65l7-2 5 11 10 3 6 4-1 4-13-5-9-5Z M335 16l18-1 1 3-20 1Z"/>
+    <!-- An irregular earth edge, with transparent nicks rather than paper paint. -->
+    <path d="m0 80 7-3 7 2 8-4 9 3 8-2 10 3 6-4 9 2 9-3 8 2 9-4 9 3 7-2 10 3 8-4 8 1 9-3 9 2 6-2 9 4 10-3 8 2 9-4 10 1 9 3 8-3 9 2 9-4 9 2 7-3 11 3 8-2 8 4 9-2 8 3 9-2 8 2 8-3 9 2 8-2 8 2V96H0Z M7 88l12-2-5 2-7 2Z M29 82l4-1-1 4-3 1Z M45 91l14-2-6 3-8 1Z M74 84l7-2-2 3-5 1Z M91 90l4-1-1 3-4 1Z M116 83l10-2-6 3-4 1Z M135 93l12-1-6 2-7 1Z M160 84l6-1-3 3-4 1Z M181 91l14-2-4 3-10 1Z M211 82l4-1v4l-3 1Z M232 92l10-2-4 3-6 1Z M257 83l8-1-4 3-5 1Z M276 89l14-2-6 3-8 1Z M307 83l4 1-2 3-3-1Z M328 92l14-2-4 3-10 1Z M352 85l6-1-2 3-4 1Z"/>
+    <!-- Sparse ink burrs connect the feet without becoming an accent rail. -->
+    <path d="m2 69 2-2 1 7-2-1Z M21 74l2-4 1 6Z M55 70l2-2v6l-2-1Z M105 73l2-3 1 5Z M153 72l2-2 2 4-3 1Z M193 72l1-4 2 6Z M239 71l2-2v6l-2-1Z M280 73l2-5 1 7Z M324 74l2-3 1 5Z M357 71l2-3 1 7Z"/>
+  </g>
+</svg>
