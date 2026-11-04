@@ -25,7 +25,12 @@ async fn main() -> anyhow::Result<()> {
     let telemetry = platform::telemetry::init("post-service")?;
     platform::shutdown::install_signal_handlers()?;
     let config = AppConfig::load()?;
+    let concert_startup = post_service::config::concert_runtime::ReadStartup::load(&config)?;
     let pool = connect_pool(&config).await?;
+    let (concert_read, concert_settlement) = concert_startup
+        .map(|startup| startup.compose(pool.clone()))
+        .transpose()?
+        .map_or((None, None), |(read, settlement)| (Some(read), Some(settlement)));
     let readiness = readiness(pool.clone()).with_dependencies(vec![
         Probe::grpc(
             platform::edge::Edge::PostProfile,
@@ -134,6 +139,8 @@ async fn main() -> anyhow::Result<()> {
                     ),
                     config.caller_registry.clone(),
                 )?)
+                .add_optional_service(concert_read)
+                .add_optional_service(concert_settlement)
                 .serve_with_shutdown(config.grpc_addr, platform::shutdown::global().cancelled())
                 .await?;
             Ok::<(), anyhow::Error>(())

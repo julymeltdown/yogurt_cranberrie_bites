@@ -1,3 +1,4 @@
+pub mod concert_runtime;
 use crate::adapters::out::cache::feed_cache::RedisFeedCache;
 use crate::adapters::out::cache::post_cache::RedisPostCache;
 use crate::adapters::out::grpc::friend_client::GrpcFriendClient;
