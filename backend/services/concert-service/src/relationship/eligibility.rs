@@ -113,7 +113,7 @@ impl<A: FencedRelationshipAuthority, V: SharingVerifierStatus> SocialEligibility
         let remaining = (self.request.expires_at - Utc::now())
             .num_milliseconds()
             .clamp(1, 5000);
-        sqlx::query("select set_config('lock_timeout',least(coalesce(nullif(current_setting('lock_timeout')::interval,interval '0'),interval '5 seconds'),$1::bigint*interval '1 millisecond')::text,true),set_config('statement_timeout',least(coalesce(nullif(current_setting('statement_timeout')::interval,interval '0'),interval '5 seconds'),$1::bigint*interval '1 millisecond')::text,true)")
+        sqlx::query("select set_config('lock_timeout',(extract(epoch from least(coalesce(nullif(current_setting('lock_timeout')::interval,interval '0'),interval '5 seconds'),$1::bigint*interval '1 millisecond'))*1000)::bigint::text||'ms',true),set_config('statement_timeout',(extract(epoch from least(coalesce(nullif(current_setting('statement_timeout')::interval,interval '0'),interval '5 seconds'),$1::bigint*interval '1 millisecond'))*1000)::bigint::text||'ms',true)")
             .bind(remaining).execute(&mut *c).await.map_err(db)?;
         let subject = if self.request.actor == sharing.requester {
             sharing.recipient
