@@ -317,3 +317,22 @@ The module repair requires that updated Participant IDL in the same generation
 pass. Owner209 will publish the coherent IDL/generation/wire patch after its
 checks; the wire repair is not published alone against the older IDL. This chat's
 pending Prepare/CAS tests still need their allocated build and native run.
+
+## Coherent Participant publication consumed
+
+Published `cb057d43fb4535c4a9b5867f228caef64e5b556b` is fetched and verified
+as an ancestor of remote master, then merged into this checkout. Its updated
+Participant IDL and Profile wire module match exactly after merge; the pending
+Prepare/CAS test source remains preserved. The imported Product delivery module
+now has its required generation input for the next Profile build.
+
+The published participant component receipts qualify source `726c6da7`: seven
+focused tests, eight integration tests, four Python checks, one actual native
+Journal test, eight SQL/restart/cleanup checks, and a separate dedicated signed
+mTLS decision host/client. The native report explicitly retains synthetic
+Profile/eligibility metadata for its Journal test and an unknown-operation query
+for its endpoint test. It cannot substitute for actual Profile Prepare or
+terminal cross-store delivery. Relevant source-bound receipts are in
+`docs/mcr/backend/participant-live-evidence/`; the full real owner/Profile Journal
+join remains assigned to owner209. No Cargo target or private PG was used by
+this chat to consume the publication.
