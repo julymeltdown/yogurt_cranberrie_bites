@@ -1,9 +1,11 @@
 # BE42 PrivateData aggregate coordinator
 
-Status: **SOURCE IN PROGRESS; CURRENT NATIVE NOT_RUN**. The qualified core leaf remains a separate
-published component. This coordinator makes its success one category of a
-closed Concert target and withholds whole PrivateData acknowledgement until
-every required category has an exact durable owner receipt.
+Status: **SOURCE IN PROGRESS; CURRENT NATIVE NOT_RUN**. The current committed
+owner pin is `a9a6bf2d2`, which carries the `d6b2ea271` guard correction. The
+qualified core leaf remains a separate published component. This coordinator
+makes its success one category of a closed Concert target and withholds whole
+PrivateData acknowledgement until every required category has an exact durable
+owner receipt.
 
 ## Closed category registry
 
@@ -144,25 +146,40 @@ core fence remains. The regression also checks the retained timestamp to the
 nanosecond and exercises one direct missing-to-complete SQL transition followed
 by rejected revision and binding rewrites.
 
-A fresh named allocation ran the ignored test on source `04a51b2b` against an
-owned PostgreSQL 16 cluster, then physically restarted the server and ran the
-restart phase through a newly constructed empty-owner coordinator. Both phases
-exited `0`. The first process erased the actual core rows, committed Core
-`COMPLETE` with six `INCOMPLETE` category rows, retained the common and core
-fences, and withheld the whole receipt. The restart process read those exact
-six incomplete categories, cursor and fence values from durable state without
-invoking the core owner again. It then admitted one exact guarded
-`INCOMPLETE` to `COMPLETE` transition and required the other four categories
-to remain incomplete. The
-rewrite, deletion, source rebinding, terminal transition and premature
-whole-ACK checks all passed. The frozen test executable was
-`5448a70c0d41a7af6713ec02a1891ffee9f911ceeadac3c0cca0b19f58eb416b`.
+A fresh named allocation ran the ignored test on historical source `04a51b2b`
+against an owned PostgreSQL 16 cluster, then physically restarted the server
+and ran the restart phase through a newly constructed empty-owner coordinator.
+Both phases exited `0`. That historical process erased the actual core rows,
+committed Core `COMPLETE` with six `INCOMPLETE` category rows, retained the
+common and core fences, and withheld the whole receipt. The restart process
+read those exact six incomplete categories, cursor and fence values from
+durable state without invoking the core owner again. This result belongs only
+to frozen executable
+`5448a70c0d41a7af6713ec02a1891ffee9f911ceeadac3c0cca0b19f58eb416b`
+and does not qualify the current source.
+
+The current source `a9a6bf2d2` has passed the 11 pure source tests from its
+preceding frozen executable. Its native test has not passed. A first actual
+PostgreSQL attempt on `e34d1c8ae` exposed that the category guard accepted a
+terminal timestamp on an `INCOMPLETE` row. The guard now rejects both terminal
+time rewrites and non-null terminal time on incomplete rows. Its evidence is
+preserved at
+`native-failure-incomplete-terminal-field-20261104T193920Z`. A second attempt
+reached the assertion but used `completed_at + 1 microsecond` on a `NULL`
+value, which was a no-op. That failure is preserved at
+`native-failure-null-increment-20261104T194206Z`. The fixture now writes a
+concrete `clock_timestamp()` to the incomplete row and expects rejection. That
+fixture change is committed at `a9a6bf2d2` but needs a fresh compiled native
+executable and a fresh two-phase PostgreSQL restart. No older executable or
+pass is reused for this pin.
 
 The owned evidence is under
-`/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-rebased-202611041802Z`.
-Earlier failed receipts are retained there as separate failure directories;
-they are not counted as qualification. The test ran with an owned cluster and
-the controlled test authority. This result does not claim the canonical Auth
+`/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-rebased-202611041802Z`
+and the current guard/fixture evidence is under
+`/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-ready-20261105`.
+Earlier failed receipts are retained as separate failure directories; none is
+counted as qualification. The historical test used an owned cluster and the
+controlled test authority. These results do not claim the canonical Auth
 transport, the real production non-core owner effects, or a complete
 PrivateData deletion.
 
@@ -183,9 +200,12 @@ does not simulate successful non-core owners. Whole PrivateData remains
 Intro, age, media, beacon/rally, Party/Gift and Mural production owners remain
 unintegrated here. The earlier native result on `04a51b2b` remains bound only
 to that executable and fixture sequence. The current restart-order, cursor and
-other-user negatives are **NOT_RUN** pending a fresh named allocation; the
-source-level changes do not inherit the earlier result. Publication and the
-complete multiuser target remain separate Root and provider-owner handoffs.
+other-user negatives are **NOT_RUN** on `a9a6bf2d2` pending a fresh named
+allocation; the source-level changes do not inherit the earlier result. The
+latest attempt also confirms that the SQL guard correction must be exercised
+with a new executable rather than inferred from a migration-only source edit.
+Publication and the complete multiuser target remain separate Root and
+provider-owner handoffs.
 
 The production composition is owned separately by the backend integrator. It
 constructs the canonical core-only registry and may add each real provider
