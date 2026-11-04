@@ -1,12 +1,13 @@
 # ART-SCREEN-COM01 — Community background adoption
 
-Status: **IN_PROGRESS** for the resumed owner validation. The fixed immutable
-`native-02` packet has been inspected at 390/360/430px. Feed, Meet and Gifts
-pass the captured background scope. Wall needs a fuller playful lower field;
-its asset owner delivered the tall composition in `18e6e4db`. Own-route computed
-contrast/focus/forced-colors evidence and the correction's rendered/publication
-receipts remain open. The existing full goal still reports **BLOCKED** through
-the goal tool; it has not been reset, falsely completed or given a budget.
+Status: **INTEGRATED**, with owner background disposition documented and final
+owner-evidence publication/readback pending. The tall Wall correction passes
+actual 390/360/430px visual inspection. Feed, Meet and Gifts retain their captured
+background passes. Representative text/focus/forced-color evidence is qualified
+below; a real inherited Meet summary focus clip remains open in functional scope.
+There is no global accessibility, live-flow, device or mural-editor acceptance.
+The unchanged full goal still reports **BLOCKED** until the committed handoff is
+published and independently read back; no reset or false completion occurred.
 
 ## Authority and baseline
 
@@ -389,3 +390,119 @@ bounded Wall 390px then 360/430px evidence, the already specified short own-rout
 accessibility follow-up and publication. Owner inspection/fixes and exact
 published source/doc ancestry remain required. No browser, build, matrix,
 packet copy/materialization or sparse operation was performed for this handoff.
+
+## Final targeted Wall/Community packet `wall-com-03`
+
+The current owner worktree was restored only from its archived attachment at
+`58cd06e5d582271ae735b00bc4ed47485fb422bb`, verified clean, then switched to the
+unclaimed original `codex/mcr-art-screen-com01` branch. No packet file, sparse
+pattern, application asset or stylesheet was written. Community SL
+`01a1a1fe-c5f1-7e60-87c2-43785b07f941` now owns coordination of this handoff;
+Root153 retains sole publication/capture custody.
+
+| Pin / outcome | Exact value |
+| --- | --- |
+| Published immutable packet | `1722a81734947764996590b94a63aa001501df28` |
+| Canonical directory | `docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/` in Root's publisher checkout |
+| Frozen production/fixtures | `cc20832a897f18cd83482dcd21b6c2fc1d226942` |
+| Raw report SHA-256 | `8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f` |
+| Capture manifest SHA-256 | `4b1b8bf2d7a29678d072f6073c37e0a43ce646beb3a0cb99766275b2c952e61e` |
+| Qualification SHA-256 | `f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301` |
+| Actual job | `ROOT-WALL-COM-A11Y-202611040820Z`; 2026-11-04 17:17:02.026–17:17:31.969 KST |
+| Raw browser command | **exit 1**, **OPEN_FAILURES**, preserved unchanged |
+| Resource release | 17:17:32.004653 KST; guard reports 30.390451 seconds, owned link/temp absent and browser/server cleanup complete |
+
+Both modes use exactly the same frozen production and controlled fixtures.
+The baseline replaces **only** Wall SVG with the old 180px `8972b0b6` bytes.
+Candidate Wall is exact tall source `18e6e4db` / SHA-256 `22e2de67…`. This is
+actual default router/Auth/Phaser under controlled synthetic HTTP/C05/local
+admission. Wall remains guarded; no editor was mounted to obtain the evidence.
+
+The owner directly viewed all 25 original PNGs: Wall 390px before/after first,
+then 360/430px, all four representative normal/forced focused views, ordinary
+Community views and normal/forced text-mask views. The lower Wall field now
+contains broad blush/sage/lilac clouds, a bow and music details, visibly warmer,
+softer and more playful than both the prior sparse paper and supplied collage.
+The quiet cream center and original guard remain readable. At 430px the natural
+image continues below the existing viewport, while its broad lower clouds/bow
+remain visible. No layout, crop, control, character or CSS geometry adjustment
+is needed. Owner background disposition is **PASS for the bounded captured
+scope**, with the inherited functional issue below explicitly retained.
+
+The separate read-only
+[retained-evidence audit](evidence/art-screen-com01/verify-wall-com-03.py)
+exits 0. It independently verifies all 32 manifest artifacts against disk,
+manifest and immutable Git; all 25 PNGs; 29 relevant production/fixture/CSS/
+asset pins; paired Wall foreground/geometry/guard equality at each width;
+actual Community character-record continuity from native-02; recorded target
+bounds; normal text contrast raster arithmetic; forced alpha-composition and
+actual unmasked glyph/backplate spots. Root's reported total of 725 pins is
+retained as Root evidence rather than represented as this owner's full-source
+audit. Physical nested CSS pins are clean-checkout evidence, not an individual
+Vite load receipt. See [audit results](evidence/art-screen-com01/wall-com-03-validation.json)
+and [owner disposition](evidence/art-screen-com01/owner-wall-com-03.json).
+
+### Representative accessibility results and limits
+
+| Route | Normal text minimum | Normal focus minimum | Forced ring minimum | Target size |
+| --- | --- | --- | --- | --- |
+| Wall guard / real header back control | 9.546:1 | 15.114:1 | 11.310:1 | 44×44 |
+| Feed copy / options summary | 15.623:1 | 6.020:1 | 9.377:1 | 44×44 |
+| Meet unavailable-member text and Refresh / filter summary | 5.499:1 | **1:1 clipped bottom/left** | **1:1 clipped bottom/left** | 301.546875×44 |
+| Gifts footnote / filter summary | 7.464:1 | 6.586:1 | 10.678:1 | 360×44 |
+
+Normal text ratios use the recorded actual opaque foreground and composed
+backing PNG, with every pixel inside each selected text-range fragment box
+recalculated independently. Ancestor opacity is 1, filter is none and blend is
+normal for those targets. This is selected visible text evidence, not every
+string/state or a global text audit. Normal/forced target geometry and recorded
+application state restore exactly after the temporary measurement styles.
+
+The raw forced-text check is invalid: forced colors overrides the temporary
+transparent text-fill mask, leaving actual black glyphs in the purported
+backing PNG. Comparing black foreground with those glyph pixels yields a false
+1:1 backing result. The unmasked focused original PNGs independently contain
+the qualification's recorded black glyph-core and white text-backplate spots
+(21:1), with computed system-black text. Those per-fragment spots and readable
+views are bounded evidence; the complete forced backing mask remains unqualified.
+Art stays colored in this browser and is not claimed to disappear.
+
+The raw forced-outline assertion ignores alpha in system outline
+`rgba(5,0,73,0.8)`. Independent composition over each recorded backing, checked
+against actual retained focused PNG pixels with one-channel tolerance, confirms
+all four perimeter samples for Wall, Feed and Gifts. Their sampled minima are
+shown above. That correction does not fix Meet's genuinely absent ring pixels.
+No original failed command or report is relabeled as passed. Reduced-motion
+and forced-colors media were active for the forced views; normal contexts also
+request reduced motion. No all-motion, all-focus or physical-device claim is made.
+
+### Inherited Meet finding routed outside the background lease
+
+`COM01-INHERITED-MEET-SUMMARY-CLIP` remains **OPEN**. Actual normal and forced
+images show top/right outline only on `.party-filters > summary`; the left and
+bottom are clipped by `.meet-discovery` with unchanged `overflow:auto`. The
+ancestor rectangle is `(15,115,360,394.5625)` and summary target is
+`(15,465.5625,301.546875,44)`. The missing sampled pixels equal their backing,
+with 1:1 contrast. This is a real focus limitation, separate from invalid forced
+text masking and the alpha-comparison error.
+
+Independent Git comparison confirms `party-discovery.css`, `shell.css` and
+`shell-chrome.css` are byte-identical between `8972b0b6` and `cc20832a`, matching
+the qualification's hashes. The exact seven-rule background CSS also remains
+unchanged (`d26dd8fb…`). The finding is inherited, not a new background or tall
+Wall regression. It was sent directly to Community's functional owner and Root
+for separate functional ownership. No layout, focus geometry, title/header,
+new selector or shared-file lease was acquired here. `TITLE-FOCUS-01` belongs
+to ID01/UI ownership. This bounded background disposition does not close either
+functional issue or create a new approval gate around it.
+
+### Delivery boundary
+
+All assigned background source fixes are implemented and validated in their
+relevant retained packets. The source art and existing CSS require no further
+owned fix from this packet. Native-02's old Wall pins and NEEDS_CORRECTION remain
+historical and unchanged; new evidence separately qualifies the tall correction.
+Real media, live services, device behavior, mural-editor pixels, every IA entry
+and whole-project acceptance remain outside this bounded owner disposition.
+The full original goal remains unfinished until this exact committed handoff
+is published by Root and its owned bytes/ancestry are independently read back.
