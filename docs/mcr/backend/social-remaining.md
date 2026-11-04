@@ -156,3 +156,11 @@ service logic. The real Auth/Friend scope join, independently verified age
 provider, runtime intro/claim composition, public routes, seven-principal QA04
 matrix, WebSocket revocation and cached-product UI are NOT_RUN for this increment.
 No original task or persistent goal is completed by this adapter qualification.
+
+
+Publication reconciliation incorporated peer root/operator source through
+`95afbfc9`. The nine assigned adapter paths remain byte-identical to the qualified
+candidate except this evidence document. The frozen native report continues to
+name compiled source `600a65c9`; it does not claim recompilation or qualification
+of newer root/profile callback changes. Assigned Rust formatting and whitespace
+checks passed again after the merge. Those runtime joins remain open above.
