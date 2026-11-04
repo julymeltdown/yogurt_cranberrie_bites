@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-11-04T06:48:05.299396+00:00",
+  "retainedArtifactCommit": "16bf30c617995f87c89f94a13d9cc5f4c65d51b5",
+  "sourceCandidate": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "job": "PANEL-COZY-202611040632Z",
+  "reportPath": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/report.json",
+  "reportSha256": "59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1",
+  "ownedImages": [
+    {
+      "id": "feed",
+      "route": "/feed",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-feed-390.png",
+      "bytes": 63839,
+      "sha256": "e4d99d561d4c3b2ee5c52a60682920190885fea104efe286faf22e3d7f183851",
+      "pinMatch": true
+    },
+    {
+      "id": "meet",
+      "route": "/meet",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-meet-390.png",
+      "bytes": 100776,
+      "sha256": "2d2fa482226c4b39f4c8ea958376957372c84c25c303d2819e37ab4a36a1e9cc",
+      "pinMatch": true
+    },
+    {
+      "id": "gifts",
+      "route": "/gifts",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-gifts-390.png",
+      "bytes": 98202,
+      "sha256": "a9c8c7dff188c9262d132caec9302f40e2c3426ba4dd271447ed1df7cdd51f02",
+      "pinMatch": true
+    },
+    {
+      "id": "wall",
+      "route": "/wall",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-wall-390.png",
+      "bytes": 61924,
+      "sha256": "6ee53f544d8b1619e23c2fda7dba413afb19b9ce6b7c4509fdf1419904bb4bea",
+      "pinMatch": true
+    },
+    {
+      "id": "feed",
+      "route": "/feed",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-feed-390.png",
+      "bytes": 59392,
+      "sha256": "40420f102f2cefc4fae6e9dad0fe3a6314425176f1e0238a1cd0a6ac5c4d7022",
+      "pinMatch": true
+    },
+    {
+      "id": "meet",
+      "route": "/meet",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-meet-390.png",
+      "bytes": 64736,
+      "sha256": "8cb3333b58838bc6cc73e08dd85f43198480d4eb603436d6bb081a0f004c97d7",
+      "pinMatch": true
+    },
+    {
+      "id": "gifts",
+      "route": "/gifts",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-gifts-390.png",
+      "bytes": 81454,
+      "sha256": "d9a42c33136e67d4ae6ca60bf3caa95811e55bbbad3309ffee36493b54c24679",
+      "pinMatch": true
+    },
+    {
+      "id": "wall",
+      "route": "/wall",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-wall-390.png",
+      "bytes": 23249,
+      "sha256": "bd085e3bbab0b848a77f3c7e3ac76207aa7b37c64e336cd4289edc2f42397b40",
+      "pinMatch": true
+    }
+  ],
+  "result": "PASS: all eight owned original capture PNGs match report pins in immutable Git artifact",
+  "limits": [
+    "Original pre-fix 390px capture only; no new capture or reconstruction performed.",
+    "HTML image comparisons do not cover all canvas/CSS-rendered character pixels.",
+    "Corrected 390px, 360/430px, computed accessibility and publication evidence remain pending."
+  ]
+}

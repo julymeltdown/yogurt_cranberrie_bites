@@ -1,0 +1,71 @@
+{
+  "method": "New photo crop x5,y3 to x254,y440; resized LANCZOS to actual 378x670 poster. Cream threshold R>165 G>150 B>120, fixed bounded regions. JPEG/interpolation and frame wear affect results. Bounds alone are not exact-pixel equivalence.",
+  "regions": {
+    "copy": [
+      70,
+      490,
+      310,
+      583
+    ],
+    "cta": [
+      20,
+      590,
+      355,
+      645
+    ]
+  },
+  "bounds": {
+    "reference": {
+      "copy": [
+        85,
+        497,
+        295,
+        575
+      ],
+      "cta": [
+        42,
+        591,
+        338,
+        638
+      ]
+    },
+    "baseline": {
+      "copy": [
+        86,
+        498,
+        299,
+        579
+      ],
+      "cta": [
+        42,
+        594,
+        343,
+        643
+      ]
+    },
+    "candidate": {
+      "copy": [
+        85,
+        497,
+        295,
+        575
+      ],
+      "cta": [
+        42,
+        591,
+        338,
+        639
+      ]
+    }
+  },
+  "edge_error_pixels": {
+    "baseline": {
+      "copy": 10,
+      "cta": 13
+    },
+    "candidate": {
+      "copy": 0,
+      "cta": 1
+    }
+  }
+}

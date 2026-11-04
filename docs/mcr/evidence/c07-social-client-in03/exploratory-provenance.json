@@ -1,0 +1,58 @@
+{
+  "allocation": "C07-IN03-209-SOURCE-202611040854Z",
+  "sourceStart": "1eb8d6ebb2e66917fbc7551e9428d339635a40be",
+  "base": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "runtime": "Node v26.7.0",
+  "classification": "EXPLORATORY; package-pinned Node24.22.2 qualification still required",
+  "logNormalization": "Only known absolute worktree, allocation and dependency prefixes replaced; raw logs retained in allocation root; trailing terminal blank lines trimmed",
+  "logs": [
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/admission-absent.log",
+      "rawSha256": "6019aca793e547fb09f0dca22cfc01ad3becd66267dcd4d8095563e44bc5f0a9",
+      "portableSha256": "6019aca793e547fb09f0dca22cfc01ad3becd66267dcd4d8095563e44bc5f0a9"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/drift-negative.log",
+      "rawSha256": "9d1f8b9b8ba2bf20318de0df054c4d79e6be82c08e72ad273e6fd736fa0b6af4",
+      "portableSha256": "b157d02e4b416f74c3672f70d40fe8e29e4b655ed104243b366024428ac06bc4"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/tsc-1.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/tsc-2.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/vitest-1.log",
+      "rawSha256": "7aad0ed02e9bd21674675217d1d27991b3b29f6ca60ac057bc09e793bd3efa24",
+      "portableSha256": "081c4c0212a96801da5dc7401e9e4a581c7d87317acc4c50b1a82dad431e1fcc"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/vitest-2.log",
+      "rawSha256": "2c83ba548311ba0220d6fed9255b31c51f89a29fbf86ba918ea90d56afeba7aa",
+      "portableSha256": "d1f823bb999e2e4db08805968dd8ad063403c74ba0fdd154a2d193fd284dd17e"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/vitest-3.log",
+      "rawSha256": "9baa8c1b97eb7fb1e1b87fb9ab75a5b14ba196ee8cafb13db3372f5559a461ce",
+      "portableSha256": "0fb47b0d55229bfc41947da2f198c1597c2c8a119b70d2c49ac3809aeb8f75f5"
+    }
+  ],
+  "environment": {
+    "TMPDIR": "${ALLOCATION_ROOT}/tmp",
+    "MCR_C07_CACHE": "${ALLOCATION_ROOT}/cache",
+    "MCR_C07_DRIFT_PROBE": "method for drift-negative only",
+    "NO_COLOR": "1",
+    "nodeResolution": "system PATH /usr/local/bin/node, actual v26.7.0; exploratory only"
+  },
+  "release": {
+    "actualUTC": "2026-11-04T08:58:08Z",
+    "processesHeld": 0,
+    "dependencyLinkRemoved": true,
+    "privateCacheAndTmpRemoved": true
+  }
+}

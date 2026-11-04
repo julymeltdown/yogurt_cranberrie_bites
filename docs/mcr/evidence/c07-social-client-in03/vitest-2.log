@@ -1,0 +1,66 @@
+
+ RUN  v4.1.9 ${WORKTREE}/frontend
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts (17 tests | 1 failed) 620ms
+   × restricted discovery cannot retain a previous public intro or infer age 57ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shared/api/__tests__/c07-social-client/journey.test.ts > restricted discovery cannot retain a previous public intro or infer age
+AssertionError: expected { items: [ { …(7) } ], …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "items": [
+    {
+      "author": {
+        "avatar": {
+          "config": {
+            "contract_version": "1.0.0",
+            "item_ids": {
+              "accessory": "accessory_fixture",
+              "body": "body_fixture",
+              "eyes": "eyes_fixture",
+              "hair": "hair_fixture",
+              "outfit": "outfit_fixture",
+            },
+            "kind": "avatar_config",
+            "manifest_id": "avatar_fixture",
+            "manifest_version": 1,
+            "skin_tone_id": "tone_fixture",
+          },
+          "revision": 1,
+        },
+        "bio": null,
+        "display_name": "Fixture fan",
+        "user_id": "00000000-0000-4000-8000-000000000002",
+      },
+      "created_at": "2026-11-03T01:00:00Z",
+      "event_id": "00000000-0000-4000-8000-000000000001",
+      "intro_id": "00000000-0000-4000-8000-000000000028",
+      "revision": 1,
+      "state": "PUBLISHED",
+      "text": "Looking forward to the show",
+    },
+  ],
+  "next_cursor": null,
+}
+
+ ❯ src/shared/api/__tests__/c07-social-client/journey.test.ts:94:72
+     92|   expect(a.owner.people.read().page.data?.items).toHaveLength(1)
+     93|   world.override(r => r.url.endsWith('/intros') ? Response.json({ code…
+     94|   await a.owner.people.load(); expect(a.owner.people.read().page.data)…
+       |                                                                        ^
+     95| })
+     96| it('confirmed synthetic HTTP block uses the retained safety policy cle…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 38 passed (39)
+   Start at  17:55:24
+   Duration  1.84s (transform 426ms, setup 0ms, import 896ms, tests 680ms, environment 0ms)

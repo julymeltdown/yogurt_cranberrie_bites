@@ -1,0 +1,405 @@
+{
+  "result": "PASS",
+  "qualification": "ACTUAL_DEFAULT_ROOT_SYNTHETIC_PUBLIC_HTTP_NO_QUALIFIED_MEDIA",
+  "slot": "ARCHIVE-ROOT-204-202611040909Z",
+  "sourceHead": "7909a45a6f0344299550d9c54ecd9d4fd1243fd2",
+  "node": "v24.22.2",
+  "browser": "156.0.8078.80",
+  "sourceHashes": {
+    "frontend/src/app/archive-entry/index.tsx": "1f3e319d74d58e3fee86d76e947050345a5a6ff86a8085cbcdd8f73a274937a8",
+    "frontend/src/app/PublicBoundary.tsx": "c7bd2c8e180f0691d03ebd584e6c41b4dfafafd5462e650428cf523d732152d4",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/app/ports.ts": "b2491a31d92e1fa7419fa3d17a682aa01a913ca230984c6ee98937462a8778ed",
+    "frontend/src/main.tsx": "0755c5c6c3217ca898ebe685f39207f1a350bd7f27d5c19e8252541f67bb5870",
+    "frontend/src/app/access.tsx": "50120eef3fc1f665cf8b04944e4d4db53d5a7503f708423a6879e455483803be",
+    "frontend/src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "frontend/src/app/__tests__/archive-entry/preview.tsx": "4594c23effe2659f6166930c1da66371f9382db67bae61c779dbbac53e18b818",
+    "frontend/src/app/__tests__/archive-entry/native.mjs": "a55cd7034055da468a24bbdd181c334af7e8acce2b452b1dbddb396a2ac383ad",
+    "frontend/src/app/__tests__/archive-entry/preview.html": "f90988d2ef3701cc8f6668d8bb7ed9454f08eac6a3ea615f131b306e47621b18",
+    "frontend/src/app/__tests__/archive-entry/route.test.tsx": "8aed995e35fa2dc9de597edc28373a8700ebe35597ccabb526be19866418d4a0",
+    "frontend/src/features/archive/__tests__/fixtures/data.ts": "8641d43911753c7cf68cd2e305db3394f1e2229ea307cd8cb7315dd570860ca6",
+    "frontend/src/shared/styles/base.css": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105",
+    "frontend/src/app/shell.css": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "ff8b01aa247d6c8ca3afc3e5ed92fa7d1fecabab2dadc79e586e4ce14f3daf10",
+    "frontend/src/features/event-feed/contract.ts": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/shared/api/domain-operations.generated.ts": "2a956a59b0802498fb2a28c98babd86ea4d804afa80722dd75d6158b423714a2",
+    "contracts/generated/mcr-domain.openapi.json": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/tsconfig.json": "4f24f37e8ef13f1e888a0cd69c971b132eace79cc1ef633efd86a8b669b1644d",
+    "frontend/src/features/archive/ArchivePage.tsx": "7b306f3b9b038171d3b5f6eeefa8ee985b2c7eb249c5a9285195b4524c2d6ef9",
+    "frontend/src/features/archive/archive.css": "1484e6d6eb65deb19a530691d17cf882b8e69ce9d0642713b5899260bca17acc",
+    "frontend/src/features/archive/context.ts": "17890bf4a56d086a416d8624798ff2272e4298c993fa2026c18665e64e0d7005",
+    "frontend/src/features/archive/contract.ts": "a9b1c5af279fe20cd99656ba0097be4c9879349e88fbd3d69ea32885a5bcd2d4",
+    "frontend/src/features/archive/controller.ts": "3ceacf8c227b1ed2b7ab11d8168c98e3590f4e14a779567649e7332d6528bd0b",
+    "frontend/src/features/archive/http.ts": "4d1dbab726c6379f26dda3bfc92561e4a9e3d22ff89cea4775897e7494e46262",
+    "frontend/src/features/archive/index.ts": "1644cdbe5135acfeeb7b6c50129a6f0922e421d064bdfaa4bc7aa5ee96fed7df"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 844,
+      "result": "PASS",
+      "errors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": false
+        }
+      ],
+      "fixtureSocketProtocols": [
+        "vite-hmr"
+      ],
+      "applicationSockets": 0,
+      "screenshot": "360x844.png",
+      "screenshotSha256": "ef9e0ed5ba888dde30c452224aa42d51787ae7cef52763d24277809683932f1e",
+      "checks": [
+        "actual default PublicBoundary",
+        "public-only GET",
+        "frozen pixels",
+        "44px targets",
+        "pagination/focus",
+        "media unavailable",
+        "generation reload",
+        "withdrawal/privacy/offline",
+        "empty",
+        "zero world/application socket; Vite fixture socket classified separately"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "result": "PASS",
+      "errors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": false
+        }
+      ],
+      "fixtureSocketProtocols": [
+        "vite-hmr"
+      ],
+      "applicationSockets": 0,
+      "screenshot": "390x844.png",
+      "screenshotSha256": "747d6d2d6082db537b6f2eecc096b1f9e6061504ead91ad39dfc76dcbaceb72e",
+      "checks": [
+        "actual default PublicBoundary",
+        "public-only GET",
+        "frozen pixels",
+        "44px targets",
+        "pagination/focus",
+        "media unavailable",
+        "generation reload",
+        "withdrawal/privacy/offline",
+        "empty",
+        "zero world/application socket; Vite fixture socket classified separately"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "result": "PASS",
+      "errors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": false
+        }
+      ],
+      "fixtureSocketProtocols": [
+        "vite-hmr"
+      ],
+      "applicationSockets": 0,
+      "screenshot": "430x844.png",
+      "screenshotSha256": "3957f1f2ac5f7336a365631cd223bafaf96c7a7ad19b0844916c552bb4760e77",
+      "checks": [
+        "actual default PublicBoundary",
+        "public-only GET",
+        "frozen pixels",
+        "44px targets",
+        "pagination/focus",
+        "media unavailable",
+        "generation reload",
+        "withdrawal/privacy/offline",
+        "empty",
+        "zero world/application socket; Vite fixture socket classified separately"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "result": "PASS",
+      "errors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/archive",
+          "credentials": "omit",
+          "cache": "no-store",
+          "authorization": false,
+          "cookie": false,
+          "aborted": false
+        }
+      ],
+      "fixtureSocketProtocols": [
+        "vite-hmr"
+      ],
+      "applicationSockets": 0,
+      "screenshot": "390x420.png",
+      "screenshotSha256": "747d6d2d6082db537b6f2eecc096b1f9e6061504ead91ad39dfc76dcbaceb72e",
+      "checks": [
+        "actual default PublicBoundary",
+        "public-only GET",
+        "frozen pixels",
+        "44px targets",
+        "pagination/focus",
+        "media unavailable",
+        "generation reload",
+        "withdrawal/privacy/offline",
+        "empty",
+        "zero world/application socket; Vite fixture socket classified separately"
+      ]
+    }
+  ],
+  "physicalDevices": "NOT_RUN",
+  "BE41": "NOT_RUN",
+  "resourceSamples": 10,
+  "sampledPeakWholeBytes": 29507967,
+  "sampledPeakTemporaryBytes": 29283547,
+  "minimumFreeGiB": 27.86028289794922,
+  "outputBytes": 215582,
+  "finalFreeGiB": 27.968830108642578
+}

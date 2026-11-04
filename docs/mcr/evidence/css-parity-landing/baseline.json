@@ -1,0 +1,109 @@
+{
+  "phase": "baseline",
+  "baseline": "29a42ca1f5d86262ee18141d2bab75996af7e6fd",
+  "source": "29a42ca1f5d86262ee18141d2bab75996af7e6fd",
+  "cssSHA256": "861ed0aa68e14b04c7ffc7d6113143264da82563ef082b221ed6d6b780202656",
+  "targetSHA256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "result": "PASS",
+  "cases": [
+    {
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "header": {
+          "x": 6,
+          "y": 16,
+          "width": 378,
+          "height": 34
+        },
+        "brand": {
+          "x": 19,
+          "y": 11.5,
+          "width": 66,
+          "height": 44
+        },
+        "signIn": {
+          "x": 327,
+          "y": 11.5,
+          "width": 44,
+          "height": 44
+        },
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 378,
+          "height": 635.28125
+        },
+        "copy": {
+          "x": 82.375,
+          "y": 511.890625,
+          "width": 236.734375,
+          "height": 86.921875
+        },
+        "cta": {
+          "x": 47.828125,
+          "y": 609.875,
+          "width": 302,
+          "height": 49.90625
+        },
+        "characters": [
+          {
+            "x": 4.640625,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "0% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 85.171875,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "20% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 246.234375,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "40% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          },
+          {
+            "x": 165.703125,
+            "y": 363.9375,
+            "width": 139.125,
+            "height": 139.125,
+            "backgroundPosition": "60% 0px",
+            "backgroundSize": "600% 100%",
+            "imageRendering": "pixelated",
+            "transform": "matrix(1.2, 0, 0, 1.2, 0, 0)"
+          }
+        ],
+        "background": {
+          "image": "url(\"http://127.0.0.1:5291/backgrounds/cute-entry-v1/landing-garden-night.svg\")",
+          "color": "rgb(98, 66, 80)",
+          "size": "100% 100%"
+        },
+        "sceneOpacity": "0",
+        "overflow": false
+      },
+      "screenshots": [
+        "baseline-landing-390.png",
+        "baseline-poster-390.png"
+      ],
+      "interactions": "NOT_RUN"
+    }
+  ],
+  "errors": [],
+  "limits": "Synthetic canonical readiness/session fixture, actual Landing/PublicFrame/routes. No live provider, backend, mobile-device, release or exact-art acceptance.",
+  "browser": "156.0.8078.80"
+}

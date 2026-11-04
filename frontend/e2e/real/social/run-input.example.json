@@ -1,0 +1,14 @@
+{
+  "mode": "UNCONFIGURED",
+  "origin": "",
+  "eventId": "",
+  "availabilityModule": "",
+  "availabilityRevision": "",
+  "qualifiedRefresh": false,
+  "principals": {
+    "requester": { "userId": "", "email": "", "password": "" },
+    "recipient": { "userId": "", "email": "", "password": "" },
+    "restricted": { "userId": "", "email": "", "password": "" }
+  },
+  "resources": { "introId": "", "postId": "", "approvedRequestId": "" }
+}

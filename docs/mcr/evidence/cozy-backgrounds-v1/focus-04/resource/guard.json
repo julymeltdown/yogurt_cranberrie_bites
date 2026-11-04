@@ -1,0 +1,85 @@
+{
+  "job": "ROOT-FOCUS-VIS-202611040902Z",
+  "candidate": "cadf860dd928d58df7f1e8f26a0b4e8dddd03911",
+  "driver_sha256": "f3d7db08efcce14a3f507113b6c6f3f556b0eb35385b2525515e78244b2bcc2d",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/__tests__/focus-visibility-v1/native.mjs"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T09:02:56.647158+00:00",
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/places/__tests__/reference-map/view.test.tsx",
+        "src/world/reference-scene/__tests__/metadata.test.ts",
+        "src/features/places/__tests__/map-service.test.tsx",
+        "--config",
+        "/private/tmp/mcr-cozy-panel-focus04/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--cache=false",
+        "--no-file-parallelism",
+        "--maxWorkers=1"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T09:02:56.910579+00:00",
+      "log": "2.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T09:02:59.238405+00:00",
+      "log": "3.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/app/__tests__/focus-visibility-v1",
+        "src/features/places/__tests__/reference-map/view.test.tsx"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-04T09:03:05.745481+00:00",
+      "log": "4.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/__tests__/focus-visibility-v1/native.mjs"
+      ],
+      "exit_code": 1,
+      "started_at": "2026-11-04T09:03:06.006388+00:00",
+      "log": "5.log"
+    }
+  ],
+  "failure": "command-5-exit-1",
+  "elapsed_seconds": 63.91593066700443,
+  "peaks": {
+    "whole": 43757568,
+    "temp": 31346688,
+    "durable": 5148672
+  },
+  "carried_art_bytes": 7413760,
+  "minimum_free_bytes": 30163701760,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "started_at": "2026-11-04T09:02:56.596747+00:00",
+  "finished_at": "2026-11-04T09:04:00.512510+00:00"
+}

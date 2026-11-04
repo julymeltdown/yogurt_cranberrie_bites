@@ -1,0 +1,385 @@
+{
+  "base": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "status": {
+    "C07": "UNRECONCILED",
+    "IN03": "NOT_RUN"
+  },
+  "inputs": [
+    {
+      "path": "contracts/core/v1/core.schema.json",
+      "sha256": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba"
+    },
+    {
+      "path": "contracts/domain/v1/common.schema.json",
+      "sha256": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584"
+    },
+    {
+      "path": "contracts/domain/v1/feed.schema.json",
+      "sha256": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed"
+    },
+    {
+      "path": "contracts/domain/v1/operations.json",
+      "sha256": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112"
+    },
+    {
+      "path": "contracts/domain/v1/social.schema.json",
+      "sha256": "b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2"
+    },
+    {
+      "path": "contracts/fixtures/core/auth-capabilities-disabled.json",
+      "sha256": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb"
+    },
+    {
+      "path": "contracts/fixtures/core/auth-error-rate-limited.json",
+      "sha256": "17da9f69ea63a7589a914dcb8972437c80cc9e82aab469ea6de93ccde569016f"
+    },
+    {
+      "path": "contracts/fixtures/core/auth-error-unauthenticated.json",
+      "sha256": "f3f70fab31feba06a8c4a70c62186b2dc02ec72221d32f5e5e393535a32b1777"
+    },
+    {
+      "path": "contracts/fixtures/core/auth-success.json",
+      "sha256": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6"
+    },
+    {
+      "path": "contracts/fixtures/core/avatar-state.json",
+      "sha256": "5cadc0418962438f869748a252fe9f3c75eb07c544bb11cad12b0fe335b2d841"
+    },
+    {
+      "path": "contracts/fixtures/core/bootstrap-open.json",
+      "sha256": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6"
+    },
+    {
+      "path": "contracts/fixtures/core/bootstrap-read-only.json",
+      "sha256": "46d8c76e7d11aed80daa0788b2c563f084e242a595f12b325f2dc1b27c8edfdf"
+    },
+    {
+      "path": "contracts/fixtures/core/core-transport-413.json",
+      "sha256": "f1576bed08418c6ff2cc9d8d02d75828d756a10dec627c85071d8c78e2a5832b"
+    },
+    {
+      "path": "contracts/fixtures/core/core-transport-415.json",
+      "sha256": "1034ad5ffb961570a6883dcd1b0860221a66ebae5df88f8774ad205c7f659c8b"
+    },
+    {
+      "path": "contracts/fixtures/core/core-transport-422.json",
+      "sha256": "3cda72f36b083020a48f8f3683b63811f0594cba868d2f286f4d27084aa86b25"
+    },
+    {
+      "path": "contracts/fixtures/core/core-transport-500.json",
+      "sha256": "3392e739207d68ffc18cf5959bb04e7dc1b366d54baf9f22bd796f993552ef6e"
+    },
+    {
+      "path": "contracts/fixtures/core/core-transport-502.json",
+      "sha256": "ef4271eebc231ea8bd346e5b5524fad293f76b79f19a6b8f6c21283e1913501a"
+    },
+    {
+      "path": "contracts/fixtures/core/core-transport-504.json",
+      "sha256": "be301eb6f310208e5226029641673a2a78d9d0e73a005d3366b26a9774fdfa53"
+    },
+    {
+      "path": "contracts/fixtures/core/error-browser-intent-required.json",
+      "sha256": "8b060e9eb5df5b6aa747d4e67410bba7232c4200d6be2da4c2c351288b6af8e0"
+    },
+    {
+      "path": "contracts/fixtures/core/error-consent-required.json",
+      "sha256": "2b69aa1a1a1a3961d016d557425ac1bb835e8cd7ac075c0d8df55ef11edb08e1"
+    },
+    {
+      "path": "contracts/fixtures/core/error-event-read-only.json",
+      "sha256": "b66d3181fef4e869d3061ac1b3b895e30530a6d70ed0358e06ac5f40fadd8ee8"
+    },
+    {
+      "path": "contracts/fixtures/core/error-giveaway-sold-out.json",
+      "sha256": "39716a0989c440c68786eb01fce2d3e314f492a30814d82ad62640fd397a83ee"
+    },
+    {
+      "path": "contracts/fixtures/core/error-map-version-mismatch.json",
+      "sha256": "efe2b69d1553d67ff67579fa0c29bb341d3631651b0364df6648fc7abbd89026"
+    },
+    {
+      "path": "contracts/fixtures/core/error-mural-cooldown.json",
+      "sha256": "27b1dd5e1b1bd4ee7c322149a3f3598058fbe132463ebaf1e60760de1f02b023"
+    },
+    {
+      "path": "contracts/fixtures/core/error-origin-not-allowed.json",
+      "sha256": "76b4af5b91c4507cae4280b978eeb9db90eafd9863c9840d5579170c2b1db9e5"
+    },
+    {
+      "path": "contracts/fixtures/core/error-party-full.json",
+      "sha256": "4232c8ae25e255b367db277aebe24247bf859d69740565f357dd6d80fa61c468"
+    },
+    {
+      "path": "contracts/fixtures/core/error-reservation-expired.json",
+      "sha256": "0f9fc05bb350d54fc1a3c920cef9e19a82059e5573f0a8c3f5710af662ab5d20"
+    },
+    {
+      "path": "contracts/fixtures/core/error-resource-unavailable.json",
+      "sha256": "f6f804faa67b1328a73f8da168ef0e6adab8ea7ac5d3a21bf530050f5d31817d"
+    },
+    {
+      "path": "contracts/fixtures/core/error-version-conflict.json",
+      "sha256": "ac1b2cc68b41d199002d31c57a3fec47551e1497dc8f748db5782710e1fdf99c"
+    },
+    {
+      "path": "contracts/fixtures/core/index.json",
+      "sha256": "c9cb88267aed7f93d4a81c947703d0abc39ba22297bfb011079af8c0301035f2"
+    },
+    {
+      "path": "contracts/fixtures/core/password-reset-neutral.json",
+      "sha256": "1c8cd3a46922a723857cb2c1c04ee6ab86309ef5936b40e1f458e00d479cee8a"
+    },
+    {
+      "path": "contracts/fixtures/core/place-list.json",
+      "sha256": "550cc344a3256bc96e5dd0152696cb721774ea4d67a27c2349b11d687bf45c3c"
+    },
+    {
+      "path": "contracts/fixtures/core/place.json",
+      "sha256": "b7f4999b1d9486e7228976b5f817a7b39da33387af4ba5590c11a54f3b945cd6"
+    },
+    {
+      "path": "contracts/fixtures/core/private-participant.json",
+      "sha256": "c1c7373656cde682a4fd706d7b1d6f8e0c97192e093fbaee0862e9c6802e11db"
+    },
+    {
+      "path": "contracts/fixtures/core/public-profile.json",
+      "sha256": "fd32142a3122ea7252b50487cbffd53a49e0e65d70199c0d812812555c30ed62"
+    },
+    {
+      "path": "contracts/fixtures/core/set-avatar-request.json",
+      "sha256": "6e81fe22a67315cd9bd641b1ba02bdb967fb35d173cbb6b2845e36a5e7931b2e"
+    },
+    {
+      "path": "contracts/fixtures/core/signup-pending.json",
+      "sha256": "e3be39408098f0ba2b0cc5a173ec6731f2adf99682a9697117454aee50a7f4b3"
+    },
+    {
+      "path": "contracts/fixtures/core/signup-unicode.json",
+      "sha256": "e7039d441d3875df26942ebf683e8e45fc56470c431e29d1c7672e75f2b85d3f"
+    },
+    {
+      "path": "contracts/fixtures/core/update-participant-request.json",
+      "sha256": "e56664ad5f369628c271203453f85dd8b20c0b3b01b3d6be711da9791e36cd48"
+    },
+    {
+      "path": "contracts/fixtures/domain/approved-social-request.json",
+      "sha256": "f4c55a2fb56c7086a03984cb345df491d753c27ceca31b6c1c2545d6cd4c295a"
+    },
+    {
+      "path": "contracts/fixtures/domain/beacon-world-coordinate.json",
+      "sha256": "a5502f8fdc3ebd8ce51d5579869504c2b6cd99faab7c6ba063b3ee680bd89828"
+    },
+    {
+      "path": "contracts/fixtures/domain/claimed-without-receipt.json",
+      "sha256": "fd55b33a41e86ab6cf7bd4fc3bc2aa10463e323fddf63c327e9ee8f2cd9d7032"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-complete.json",
+      "sha256": "70b40db6f9a67e25f744fab457d825419c5e7d518af9eef92be515ec9631bb80"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-false-success.json",
+      "sha256": "8a70d5ef633d3f2ea704d802fdf350e1339140b4096c1349693088556bf8edf9"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-resume-command.json",
+      "sha256": "25c4e8a69b546569d7b2c7caac530f87bbc350d2ba5704edab91f76628b1870f"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-resume-invalid-job.json",
+      "sha256": "25cb2effaf9a56d389ce42d2d7a8ae3c99aa6b05ea43bfa0ff3d8d79313bb3c4"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-resume-missing-job.json",
+      "sha256": "3f5d8a5829c2b3873f254c47ac625d6e73dc62199f83ff53559774b2bb7c0de0"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-resume-unknown-field.json",
+      "sha256": "a57dbaaabdf2128103644f7cc9bdfbc111d658a1fa5141820a37adae9ef29e1b"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-start-command.json",
+      "sha256": "8b777fb6030cc2b6aecc53cedc59965df2e573690ce860734fe0a31e4ae1ef4f"
+    },
+    {
+      "path": "contracts/fixtures/domain/closure-start-with-job.json",
+      "sha256": "6be2fe5696bf3b73a0513bde0ac39c3a97e05152e4aa121a6892759a9af7f5f6"
+    },
+    {
+      "path": "contracts/fixtures/domain/command-pending.json",
+      "sha256": "48aea3d27255829aecfed8035386d7541cb6a9e921f582470ea1b340688a16d1"
+    },
+    {
+      "path": "contracts/fixtures/domain/duplicate-platform-consent.json",
+      "sha256": "d6ba1f7f69603c18a48fe1ab6250014c0b5c29d95ef33368db2005cdf9c0fc38"
+    },
+    {
+      "path": "contracts/fixtures/domain/empty-age-bounds.json",
+      "sha256": "5221eed07794fbb6dff9855d4a7f6bd855d1c77d0abb82d66581468c38b7e661"
+    },
+    {
+      "path": "contracts/fixtures/domain/empty-mural-region.json",
+      "sha256": "8d647f97afa5186864f00036022b51b1dcb8248fb2af6a8fb6b37afb3b63821e"
+    },
+    {
+      "path": "contracts/fixtures/domain/feed-private-handle.json",
+      "sha256": "c1aa2508e07c365fc02ae17fb75e074808c0a37bbca795d82097d4dbdeaabcca"
+    },
+    {
+      "path": "contracts/fixtures/domain/giveaway-management.json",
+      "sha256": "b2b74d4fa5070458e0e0f52798c6ba55fc39184f4b31c2825a19317b2993f7e3"
+    },
+    {
+      "path": "contracts/fixtures/domain/half-open-age-bounds.json",
+      "sha256": "5df494f13df1129fd5926ad1a13ae90a52ffa858a6f8f3e7498fca30ab5093c7"
+    },
+    {
+      "path": "contracts/fixtures/domain/index.json",
+      "sha256": "0098bbe0d8a98a262e515eb5d3f9e07f9f85e3fe6839edc98e808295c9066729"
+    },
+    {
+      "path": "contracts/fixtures/domain/intro-age-leak.json",
+      "sha256": "81617a026c4aa82d298005f2c78e06b13c81d7cadb602a30e01514479a3cf97c"
+    },
+    {
+      "path": "contracts/fixtures/domain/mural-delta.json",
+      "sha256": "af33340632238564e8c58ac077310fb6993343f6cdb0d220b629e67e14e362a6"
+    },
+    {
+      "path": "contracts/fixtures/domain/mural-gap.json",
+      "sha256": "005d2254cff3cd074c85f7f38a02d871932835d4fdf3b281d580d3a10e44417a"
+    },
+    {
+      "path": "contracts/fixtures/domain/mural-out-of-bounds.json",
+      "sha256": "5b6927d5473d4a0d413d59ff2deaeb45c3f9d7d78e30683872257aa2e6a00fb5"
+    },
+    {
+      "path": "contracts/fixtures/domain/mural-own-result-author-leak.json",
+      "sha256": "bc2166d26401ca70fcac3b6e02b16ed9664cdd412c156db0b5a187d719b8e0d0"
+    },
+    {
+      "path": "contracts/fixtures/domain/mural-own-result.json",
+      "sha256": "e52b81167212b16b63367dc41fce3350ed8ed6be8ea3f357448bfd6035a263d8"
+    },
+    {
+      "path": "contracts/fixtures/domain/mural-pixel.json",
+      "sha256": "2f8d7bdec61f597c01d61af18ae2ddf65470bb5dd0a6e9a259e0dd62ea6fc872"
+    },
+    {
+      "path": "contracts/fixtures/domain/notification-negative-unread-total.json",
+      "sha256": "1efb78a5a7f7090bde367385593cc5e37754132d622064a005795cbf15f87293"
+    },
+    {
+      "path": "contracts/fixtures/domain/notification-raw-payload.json",
+      "sha256": "1a695b87f0c5faa6480c83e5ef770d1032cc69677ac54f719178803a9ceed9ca"
+    },
+    {
+      "path": "contracts/fixtures/domain/notification-safe.json",
+      "sha256": "ea68e27b9ef2f8f30873dded02743d7806e5f96b2dc2441d132ea0303230277b"
+    },
+    {
+      "path": "contracts/fixtures/domain/notification-unread-payload-leak.json",
+      "sha256": "7655112b07f5cf3fccfb5ac12b11619a8ec3780c871b04f5b09d062128fa3747"
+    },
+    {
+      "path": "contracts/fixtures/domain/notification-unread-total.json",
+      "sha256": "2986c5275e0eadcf826e7026b064ed5045da861cdbc5bde3c0b911e80281df75"
+    },
+    {
+      "path": "contracts/fixtures/domain/one-sided-age-bounds.json",
+      "sha256": "4c01e2e0d09183b07877b38b57c1440c0a06cffec2a6c613fec375f623acef6f"
+    },
+    {
+      "path": "contracts/fixtures/domain/party-full.json",
+      "sha256": "55887e502d2e12ef3aeb74f70a1579128cd97f497121a084e46d21d1f8066d74"
+    },
+    {
+      "path": "contracts/fixtures/domain/party-over-capacity.json",
+      "sha256": "e9099c88496db217c0353b06e935ddc628ee73ac4fbba10d786ae5cf08a3a2ef"
+    },
+    {
+      "path": "contracts/fixtures/domain/party-private-leak.json",
+      "sha256": "8a91e60d4057c7a25e1d258f65b226814aaa5d44949b86bada518099c583a36d"
+    },
+    {
+      "path": "contracts/fixtures/domain/private-age-claim.json",
+      "sha256": "b6a436aed4a057446186e7dd146d1ad7754f1299ccc42030122f955ac5f302b3"
+    },
+    {
+      "path": "contracts/fixtures/domain/private-beacon.json",
+      "sha256": "17007307dbe79e16c47a66a5fe8de28406187685f2a3d5767a371b444639cdf8"
+    },
+    {
+      "path": "contracts/fixtures/domain/public-intro.json",
+      "sha256": "b30c0c6b6bc462b6f5a6e5365d532d4b2071528aab25b90141c29f752cfe1b53"
+    },
+    {
+      "path": "contracts/fixtures/domain/public-post.json",
+      "sha256": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e"
+    },
+    {
+      "path": "contracts/fixtures/domain/receipt-false-success.json",
+      "sha256": "1816ae60343e8cb6a8eac82855889b198d88d9c842fd8b17fb92520ad908e060"
+    },
+    {
+      "path": "contracts/fixtures/domain/receipt-fingerprint-leak.json",
+      "sha256": "299cb10b6ca5227552295dd4b5dc642ecce9184884bb66461093e34abb1e3bfd"
+    },
+    {
+      "path": "contracts/fixtures/domain/reservation-held.json",
+      "sha256": "503a97ea15c378276c593db9bb050780ba9957f3864c4ec3b2d50452057294a1"
+    },
+    {
+      "path": "contracts/fixtures/domain/reversed-age-bounds.json",
+      "sha256": "dd203cedaa907af6b3756ce75ecdfdad7314bc6792b1a0fccba412f3026b497e"
+    },
+    {
+      "path": "contracts/fixtures/domain/social-approval.json",
+      "sha256": "263d1eebaf3cdf81e625b1622fed8712c3ff6745c3b4343fec0c226d75b6edfb"
+    },
+    {
+      "path": "contracts/fixtures/domain/social-grant.json",
+      "sha256": "941a86cfb83ec276623404f44701226011a40030fe54b8fdaea001ff0440996b"
+    },
+    {
+      "path": "contracts/fixtures/domain/social-unconsented-approval.json",
+      "sha256": "c40cb9bfe3837290323ec8164043b33609e8c25c7bc3972f55114206b91a1dec"
+    },
+    {
+      "path": "contracts/fixtures/domain/sold-out-error.json",
+      "sha256": "311301eb75f239160f42f4efd9ed56a4c0babda9e630f13ed85ed544f1f9006f"
+    },
+    {
+      "path": "contracts/fixtures/domain/stock-mismatch.json",
+      "sha256": "fa72e16a382973422172058a1c74361e87a7490911ac6c39e9d6583f1721b324"
+    },
+    {
+      "path": "contracts/generated/mcr-core.openapi.json",
+      "sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978"
+    },
+    {
+      "path": "contracts/generated/mcr-domain.openapi.json",
+      "sha256": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887"
+    },
+    {
+      "path": "contracts/realtime/v1/operations.json",
+      "sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0"
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b"
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    {
+      "path": "frontend/src/shared/api/domain-operations.generated.ts",
+      "sha256": "2a956a59b0802498fb2a28c98babd86ea4d804afa80722dd75d6158b423714a2"
+    }
+  ]
+}

@@ -92,14 +92,16 @@
 .public-entry--poster .landing-crowd > span { flex: 0 0 36%; max-inline-size: none; margin-inline: -5.5%; transform: scale(1.2); transform-origin: 50% 100%; }
 .public-entry--poster .landing-crowd > span:nth-child(3) { order: 2; }
 .public-entry--poster .landing-crowd > span:nth-child(4) { order: 1; }
-.landing-poster-copy { position: absolute; top: 73.402%; left: 19.231%; width: 64.685%; height: 13.815%; }
+/* CSS-PARITY-LANDING: fit the lower printed foreground to the new photo panel.
+ * Keep the selected gallery and all decorative/background layers untouched. */
+.landing-poster-copy { position: absolute; top: 73.25%; left: 18.9%; width: 63.85%; height: 13.25%; }
 .landing-copy-print, .landing-entry-print { display: block; width: 100%; height: 100%; pointer-events: none; }
 .public-entry--poster .landing-entry-print { position: absolute; inset: 0; }
 .public-entry--poster .public-poster-motto { font-family: Arial, sans-serif; font-size: clamp(18px, 5.1vw, 23px); line-height: 1.08; letter-spacing: .005em; text-transform: uppercase; font-weight: 500; margin: 0; }
 .public-poster-invitation { font-size: clamp(9px, 2.4vw, 10px); line-height: 1.5; text-transform: uppercase; letter-spacing: .19em; margin-top: 7px; }
 .public-poster-invitation span { padding-inline: 7px; }
 .public-poster-show { font-size: clamp(11px, 2.9vw, 13px); line-height: 1.2; text-transform: uppercase; letter-spacing: .09em; margin-top: 1px; }
-.public-entry--poster .public-entry-action { position: absolute; bottom: 3.1%; inset-inline: 9.79% 7.7%; margin: 0; }
+.public-entry--poster .public-entry-action { position: absolute; bottom: 3.75%; inset-inline: 9.79% 9%; margin: 0; }
 .public-entry--poster .public-primary { display: flex; justify-content: center; gap: 14px; position: relative; width: 100%; aspect-ratio: 236 / 39; min-height: 44px; padding: 6px 8px; border: 1px solid #e0d1ba; border-radius: 0; background: #a42a33; color: #fff6e7; box-shadow: none; font: 800 clamp(16px, 4.6vw, 21px)/1.2 "Arial Narrow", Arial, sans-serif; text-transform: uppercase; text-decoration: none; }
 .public-entry--poster .public-primary:hover { background-color: #b23138; }
 .public-entry--poster .public-primary span { font-size: 24px; font-weight: 400; line-height: .8; }

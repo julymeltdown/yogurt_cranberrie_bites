@@ -1,0 +1,11 @@
+{
+  "offer": "CSS-PARITY-LANDING-202611040922Z",
+  "acceptedUTC": "2026-11-04T09:22:51Z",
+  "releasedUTC": "2026-11-04T09:27:27.582865+00:00",
+  "nativeProcesses": "Both own Playwright browsers and Vite servers closed in finally; supervised commands exited0",
+  "port5291": "FREE bind verified",
+  "privateTemp": "REMOVED /tmp/mcr-css-parity-landing only",
+  "nodeModulesLink": "REMOVED own created symlink only; retained dependencies untouched",
+  "durableBytes": 4094953,
+  "freeBytes": 15008321536
+}

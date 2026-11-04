@@ -1,13 +1,16 @@
 # ART-SCREEN-COM01 — Community background adoption
 
-Status: **INTEGRATED**, with owner background disposition documented and final
-owner-evidence publication/readback pending. The tall Wall correction passes
-actual 390/360/430px visual inspection. Feed, Meet and Gifts retain their captured
-background passes. Representative text/focus/forced-color evidence is qualified
-below; a real inherited Meet summary focus clip remains open in functional scope.
-There is no global accessibility, live-flow, device or mural-editor acceptance.
-The unchanged full goal still reports **BLOCKED** until the committed handoff is
-published and independently read back; no reset or false completion occurred.
+Status: **OWNER_VALIDATED / PUBLICATION_READBACK_PENDING**. The bounded
+background disposition remains delivered in `35ce1d0a`. The explicitly granted
+`MEET-FOCUS-VIS-01` follow-up now closes the inherited Meet summary clipping in
+retained packet `4591f927`: actual normal-focus views at 390/360/430px and forced
+colors at 390px show all four ring sides, with unchanged recorded geometry and
+characters. Final owned documentation is ready for Root-only publication and
+independent fresh remote byte/ancestry readback. The original goal's last actual
+tool status is **BLOCKED**; it is retained without reset or false completion.
+The global native run remains exit 1 for separate Map/Me forced-focus samples.
+No whole QA06/QA07/FE21, live-flow, device or global accessibility acceptance is
+implied. Earlier evidence/status sections below remain historical.
 
 ## Authority and baseline
 
@@ -506,3 +509,133 @@ Real media, live services, device behavior, mural-editor pixels, every IA entry
 and whole-project acceptance remain outside this bounded owner disposition.
 The full original goal remains unfinished until this exact committed handoff
 is published by Root and its owned bytes/ancestry are independently read back.
+
+## Explicit `MEET-FOCUS-VIS-01` functional follow-up
+
+Community SL received and recorded Root's exact functional lease before writes.
+This is a separately authorized QA07 focus-visibility follow-up on the FE21 Meet
+surface, retaining the QA06-owned background disposition; it is not an additional
+original task or implicit layout authority. Existing `party-discovery.css` may
+receive only:
+
+```css
+.party-browse .party-filters > summary:focus-visible { outline-offset: -3px; }
+```
+
+The new selector is explicitly granted only for this functional fix. Existing
+COM documentation/evidence paths remain writable. No `.meet-discovery` overflow,
+outline color/style/width, target rectangle, typography, text, padding, scroll,
+layout, avatar, art/background, header/title, shared CSS or other feature may
+change. The optional new test subtree is unused: no CSS-mirror unit test, build,
+lint, browser, native matrix or output job is introduced.
+
+Before writes, actual `get_goal` returned thread identifier
+`01a1a533-50a9-73a1-8d4f-a16bf0b69aee`, `createdAt=1793772982`, status
+**BLOCKED**, and the original complete COM01 objective. The tool exposes no
+separate goal ID. No objective/reset/status/budget mutation was performed.
+Actual checkout was clean on the sole claimed `codex/mcr-art-screen-com01`
+worktree at `35ce1d0a8861ed4ba522d7dfdd25020b41c86a01`; common integration base
+was `7c25078f118da53dd9a524d0a58e707cca190f0f`. The exact acceptance, readback and
+scope were sent to Community and Root before implementation.
+
+Read sources included the original specification's mobile/44px/360-390-430/
+reduced-motion requirements (§5.1), FE21/QA06/QA07 criteria, current project
+assessment/execution/working agreements, actual owner report `wall-com-03`, and
+existing feature CSS. The retained actual summary target is
+`(15,465.5625,301.546875,44)`, with a solid 3px `#a3212b` outline at +2px offset.
+A -3px offset puts the ring's outer edge on the same border box and all 3px of
+paint inward. The inner rectangle is 295.546875×38. This confirms the source
+geometry needed to take the exact grant, without claiming rendered proof.
+
+The patch is one appended rule; all 9,041 original local CSS bytes remain
+unchanged. Local source SHA-256 changes from
+`264b4c5304ada1419b46f73d3cdb0168505234a0d308289560967a495d801350`
+to `366664ac1c5a4a538173209656e59064c55612b3db880d968e40c481226a7c91`.
+The local branch predates already delivered peer Meet typography: frozen
+production CSS is 9,066 bytes, SHA-256
+`0f4b94ffb12cf8890d6e7c4e258e69b68833287dca0e8ad275a69d0700ebdea8`.
+Root must preserve that current production preimage and integrate only the
+append-only rule; this handoff does not replace the entire production file.
+[Source-bound evidence](evidence/art-screen-com01/meet-focus-vis-01-source.json)
+records exact preimages, scope, arithmetic and unfinished validation.
+
+Source boundary and diff checks exit 0. Runtime remains **NOT_RUN** for this new
+rule. Root/21d alone coordinate the finite affected capture: Meet focused and
+unfocused at 360/390/430 plus 390px forced colors. The owner must inspect actual
+retained images and measurements for all four ring sides/contrast, unchanged
+rectangles/fonts/text/scroll/layout, characters/backgrounds and control states,
+resolve concrete failures inside this lease, then complete final committed
+disposition and independent remote byte/ancestry readback. No source-only
+calculation closes the inherited finding or original full goal.
+
+## Final Meet owner disposition — immutable `focus-04`
+
+The original one-property fix `09ef7bd866b71200aca2031f8bd252a6d156aeb1`
+was integrated by Root as `9105846234fb7d5749d28271cc8c601920c87c27`,
+retaining peer production typography. Actual candidate is
+`cadf860dd928d58df7f1e8f26a0b4e8dddd03911`; the immutable capture seal is
+`4591f927023d8fb5f5afa3e8d2f11a501543cae4`. The prior section's NOT_RUN
+status describes the source handoff before this capture, not current validation.
+
+Owner directly inspected all ten original Meet PNGs in place, starting with
+390px, then matched 360/430px focus views, 390px forced views and both candidate
+390px backing probes. No new browser session, capture, CSS mirror test, source
+checker, asset copy, packet restoration or packet write was performed. Read-only
+byte comparison confirms the report, two manifests and ten Meet PNGs match the
+sealed Git bytes; PNG byte lengths/hashes also match the artifact manifest.
+Root reports 43 original PNGs, 53 artifacts and 688 source/asset pins for the
+whole packet; owner independently read back the narrower Meet evidence above.
+
+| Actual view | Baseline | Candidate | Sampled minimum |
+| --- | --- | --- | --- |
+| Normal focus, 390px | Left/bottom clipped | Four sides visible | 6.846729:1 |
+| Normal focus, 360px | Left/bottom clipped | Four sides visible | 6.846729:1 |
+| Normal focus, 430px | Left/bottom clipped | Four sides visible | 6.846729:1 |
+| Forced colors, 390px | Left/bottom clipped | Four sides visible | 10.677608:1 |
+
+The baseline missing sides sampled 1:1. Candidate retains the solid 3px outline
+and normal `#a3212b` color, with only offset changed from +2px to -3px. The
+forced system outline is `rgba(5,0,73,0.8)`; the retained measurements account
+for alpha over its actual backing, with one-channel comparison tolerance. All
+four samples match expected paint and exceed 3:1. Direct inspection confirms a
+complete inset ring without obscuring the filter label or disclosure.
+
+At each width, baseline and candidate geometry records are exactly equal, as
+are candidate geometry before and after focus. These include controls, labels,
+font/color, disabled flags, text, body rectangle and overflow=false. Summary
+height remains 44px; its `(x,y)` remains `(15,465.5625)` and widths are
+301.546875/271.546875/341.546875px at 390/360/430px. The three 64×64 character
+canvases retain equal positions and RGBA hashes; cards, controls, background
+and portraits show no visible regression. This does not imply live member
+portrait availability. Ordinary state is supported by recorded geometry at all
+three widths and the 390px stroke-suppressed backing probes; there are no
+separate unfocused 360/430px screenshots in this disposition.
+
+**`COM01-INHERITED-MEET-SUMMARY-CLIP` / `MEET-FOCUS-VIS-01` is CLOSED within
+this captured scope.** No further owned CSS or asset fix is indicated. This
+supersedes the historical OPEN finding above without modifying its old packet.
+The original background/tall-Wall acceptance in `owner-wall-com-03.json` remains
+unchanged, as do all earlier raw failures and source-only evidence.
+
+The report SHA-256 is
+`795dadfdaecfafccea1a50242cbb2f14fe290d5b9e7d117224731b1dbf8aeb21`;
+the capture-packet SHA-256 is
+`c489b856143bc728bb02ed48ef59e2f16fc64d33ed030662bce8daa8ceed768d`.
+Root's retained checks show syntax, TypeScript and lint exit 0, and 15 tests in
+three files passed. The native command remains **exit 1 / OPEN_FAILURES**:
+Map and Me candidate forced-focus sampling errors remain recorded. They are
+outside this lease; this owner neither resolves nor relabels them. Actual
+router/Auth/Phaser used synthetic QA06 HTTP/C05/local assets. No whole-project,
+global WCAG, live service, device or mural-editor acceptance follows.
+
+[Final owner evidence](evidence/art-screen-com01/meet-focus-vis-01-disposition.json)
+contains exact PNG pins, raw sampled metrics, source provenance, Root check
+attribution, cleanup and limits. Root's tested production Meet CSS is 9,145
+bytes, SHA-256
+`487c1b051bfc246b2f3e76e6f31174f96d3da7960be30b7489e8189acf0f3051`.
+The older local 9,120-byte feature file must not replace that peer-preserving
+postimage. Root alone publishes this final owned documentation; owner then
+independently fetches remote master, compares final owned payload bytes and
+tested production CSS/background assets, checks packet/integration ancestry,
+and returns both leases. The original full goal remains unfinished until that
+fresh publication/readback is complete. No SL/King approval gate is introduced.

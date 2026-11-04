@@ -49,6 +49,8 @@ export interface WorldLifecyclePort {
 export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader; readonly presentation?: import('../world/composition').WorldPresentationPort }
 export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
+  /** Explicit public event selection. It does not grant identity or world access. */
+  readonly eventId?: string | null
   /** One fixed-scope selected-character owner, borrowed by shell views and World. */
   readonly characters?: RootCharacterRegistry
   readonly social?: import('./world-panels/social').SocialProductionPorts
@@ -65,17 +67,18 @@ export interface ShellPorts {
   /** Requires a current server authorization decision. C03 participant data grants no admin role. */
   readonly admin: { authorize(scope: ActiveScope, signal: AbortSignal): Promise<boolean> }
 }
-export function createProductionPorts(auth?: SessionController, worldOptions: Omit<ProductionWorldOptions, 'auth' | 'characters'> = {}, social?: ShellPorts['social']): ShellPorts {
+export function createProductionPorts(auth?: SessionController, worldOptions: Omit<ProductionWorldOptions, 'auth' | 'characters'> = {}, social?: ShellPorts['social'], publicEventId: string | null = null): ShellPorts {
   if (auth) {
     const characters = createRootCharacterRegistry(auth, worldOptions.origin)
     let production: ReturnType<typeof createProductionWorld>
     try { production = createProductionWorld({ ...worldOptions, auth, characters }) }
     catch (error) { characters.dispose(); throw error }
-    return { ...(social ? { social } : {}), characters, auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access,
+    return { eventId: publicEventId, ...(social ? { social } : {}), characters, auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access,
       dispose() { try { production.dispose() } finally { characters.dispose() } },
       bootstrap: { load: auth.loadBootstrap }, admin: { authorize: () => Promise.resolve(false) } }
   }
   return {
+    eventId: publicEventId,
     session: createMemorySession(),
     readiness: { read: () => 'unavailable', subscribe: () => () => undefined },
     bootstrap: { load: () => Promise.reject(new Error('Bootstrap adapter unavailable')) },

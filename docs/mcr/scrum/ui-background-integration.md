@@ -189,16 +189,168 @@ Dedicated owned paths: docs/mcr/frontend/title-focus-01.md,
 docs/mcr/evidence/title-focus-01/**, and meaningful new source fixtures under
 frontend/src/app/__tests__/title-focus-01/**. No mirror unit required. Same
 unfinished goal continues; no source/goal reset or technical lead review.
-The worker now reports actual expanded-lease acceptance and implementation start
-in its sole checkout, with the same goal ACTIVE. Historical static proof is
-committedf0d587c1. It reports only the authorized state selector and background
-image/size/repeat added, with symmetric localized backing and dark glyph/control
-area; its parser/retained-pixel checker awaits a fresh21d offer before execution.
-No source-check/native contrast pass is claimed. Validated source SHA/handoff and
-actual compliant result remain normal milestones. If expanded paint cannot meet contrast, retain honest
-NO_PATCH/inherited limit rather than force a forbidden edit.
-Root will run one finite affected Map heading-focused/unfocused and Me link-focus
-cohort at360/390/430 plus representative forced colors, not a full matrix.
+The worker has delivered historical proof f0d587c1 and implementation c7f5f654
+from its clean exclusive checkout, with the same goal ACTIVE at delivery. It reports frozen
+CSS SHA prefix5c9e194: eight added lines containing only the leased state selector
+and background image/size/repeat, with all other source bytes unchanged.
+Its fresh21d OFFER/ACCEPT source-check job exited0 in0.376 seconds and fully
+released. The owner reports source-model PASS over nine retained Map ring/glyph
+cases, four exposed outer paper edges, dark control interiors/unfocused states
+and the actual Me cream core. This is developer-owned source/pixel modeling,
+not an SL review or proof of actual browser rendering. Root received the scoped
+committed handoff and targeted capture request. Root has since mapped the proof
+f0d587c1 to df0769e5 and implementation c7f5f654 to
+2ea7fd4e07aebb8b4d58938e8cba9d378c5fb855. The implementation owner independently
+read back exact integrated CSS prefix5c9e194e and proof ancestry, exit0. This
+establishes INTEGRATED source only; remote delivery and actual rendering remain
+unproven. If actual paint cannot meet contrast, retain an honest limit rather
+than force a forbidden edit.
+Root authored combined focus driver f8de2622, currently NOT_RUN, for finite
+Map/Me/Meet focused/unfocused states at360/390/430 plus390forced colors. Its
+single180-second output request follows the existing archive work; no separate
+title/Meet browser job or full matrix is requested.
+
+The owner also committed immutable-packet reader e1db0e3e, source-authored
+NOT_RUN; check-native.py SHA256 is
+92260ba23bc4d19f4a233f92403ffd4214f1c469d0e765f847d32877d8b351bc.
+After three consecutive audits of the same external capture-allocation
+dependency, the owner actually set its unchanged goal BLOCKED. It reported a
+clean checkout, integrated source and no actual packet/publication; no completion
+was inferred. UI lead then actually archived the same chat, preserving its
+committed refs, exact lease and unfinished objective. No ownership transfer or
+new writer is created. Root's actual immutable packet, concrete finding or
+relevant publication receipt triggers resumption through the sole UI dispatcher,
+not duplicate resource polling. Remaining owner work is actual packet analysis,
+necessary fixes, final documentation, publication and exact readback.
+
+Root subsequently delivered actual focus04 seal
+4591f927023d8fb5f5afa3e8d2f11a501543cae4 from candidate
+cadf860dd928d58df7f1e8f26a0b4e8dddd03911. Canonical packet is
+docs/mcr/evidence/cozy-backgrounds-v1/focus-04/ in Root's delivery checkout:
+43 original PNGs, report.json, capture-packet.json, artifacts.json and resource/.
+Report SHA256795dadfdaecfafccea1a50242cbb2f14fe290d5b9e7d117224731b1dbf8aeb21;
+packet SHA256c489b856143bc728bb02ed48ef59e2f16fc64d33ed030662bce8daa8ceed768d.
+Root reports53artifacts/688source pins, source15tests/3files plus TS/lint/syntax
+PASS, and complete resource release at09:04:00.512510UTC after63.916seconds.
+Raw native EXIT1 remains preserved. Root reports all six normal Map/Me rings
+at least5.7567 and glyphs at least4.5, dark/unfocused/Me profile focus PASS;
+two forced390 assertions fail at the same baseline/candidate black-glyph overlap
+point, while other sampled points pass. These are publisher observations,
+not UI technical acceptance or a claim that the raw run passed.
+
+The SAME title owner was actually unarchived and resumed with the immutable
+packet, hash/pin verification, direct image/adjacent-backing qualification and
+honest raw-failure disposition assigned to it. No CSS change or recapture is
+assumed necessary. Preserve its unchanged unfinished goal and BLOCKED metadata
+until the owner can legitimately update it; no replacement goal or false ACTIVE
+claim. Community received the actual packet for its own Meet/COM01 follow-through;
+Root reports normal Meet focus passed all three widths. UI does not duplicate
+that implementation-owner analysis.
+
+Title owner actual qualification milestone:81b11df9, accepted21d readback
+exit0/1.369seconds. Owner independently verified all53artifact,688declared
+source-asset and43PNG pins. It reports six normal title cases at360/390/430
+PASS for ring5.7567/text15.1140, unfocused restoration, Me profile and frozen
+geometry/characters. For the two forced390 raw failures it reports the1.066
+glyph-overlap point is exactly baseline and full headers are pixel-identical;
+all four outer edges have Canvas contrast at least11.3098. Qualifying area
+1384/1391 exceeds988reference or1004conservative, excluding the low points.
+The developer's narrow visible-focus qualification preserves raw native exit1
+and both failures; it is not full AAA/live/design acceptance. No CSS repair or
+recapture is requested. Owner handed53d5e6f3/e1db0e3e/81b11df9 directly to Root;
+publisher commit and its own exact remote proof remain. Existing goal BLOCKED
+metadata remains honest until actual completion, without a goal reset or review
+gate. These are implementation-owner findings, not SL technical validation.
+
+Final title-owner delivery: actual goal COMPLETE. Owner reports fresh independent
+ls-remote/fetch both matched master
+a5c6cad52e630d61aa4ce581e7230c13cc5feb25; comparison of its final0058c8b8
+against remote across all eight owned postimages exited0, whole focus04 seal4591
+against remote exited0, and prior verified delivery4d501d92 ancestry exited0.
+Source/proof/raw seal/qualification provenance remains retained. Its checkout is
+clean; no new tests, rendering or source work was required for this readback.
+Raw native EXIT1/two forced-point failures remain preserved with executed owner
+qualification. This closes TITLE-FOCUS-01 only, not global compliance or design.
+Effective STOP/RETURN covers title-focus-01.md, evidence/title-focus-01/** and
+unused app/__tests__/title-focus-01/** (no files created there); shell-chrome.css
+was already returned. No writer, process, output or other lease remains. The
+finished same chat is eligible for archive with no next assignment inferred.
+
+## UI-BG-CUSTOMIZE-02: bounded current-candidate improvement
+
+The king requested a developer-owned current visual-gap assessment and one
+material background improvement. Root granted an exact disjoint lease. Reused
+Entry owner01a1a534-4fcf-7291-abe3-a9af7b895a45 was actually unarchived and
+renamed mcr(fe) UI-BG-CUSTOMIZE-02 playful lower background. Actual get_goal null
+was followed by a NEW ACTIVE unbudgeted objective covering source, checks,
+finite Root evidence, fixes, documentation, commit, publication and readback.
+Owner accepted the lease and provisioned clean exclusive
+/Users/lhs/Desktop/mcr-worktrees/fe-customize-background-02 on
+codex/mcr-ui-bg-customize-02 at fetched base
+55132a2f06948fced1025dd70c583b3848d32724, an8b12810d descendant. Old Entry and
+Root checkouts were not modified.
+
+Exact writable source scope:
+
+- ONE NEW frontend/public/backgrounds/cute-entry-v1/customize-playful-lower.svg.
+- ONLY background-image URL, background-position and background-size in the
+  existing :root .shell-panel[data-mcr-panel='customize'] > .shell-panel-body
+  selector of frontend/src/shared/styles/cozy-identity-backgrounds-v1.css.
+- NEW docs/mcr/art-customize-background-02.md and
+  docs/mcr/evidence/art-customize-background-02/**.
+
+Preserve all other stylesheet bytes, existing color/repeat, grouped inner
+editor/footer paint, existing pack files/manifest/author.py/static-validation,
+all characters/canvas, header, text/control/layout/typography, imports and central
+files. No Title/Meet scope, fake content, labels or decorative left rails.
+
+The implementation owner inspected native02 Customize360/390/430, original
+collage and current integrated source; it reports matching hashes and unchanged
+identity CSS/customize-paper.svg since8972. focus04 is NOT Customize evidence.
+Its finding: prior lower-surround coverage is fixed and the pastel direction
+already exists; truthful optional sparse content is not a missing-feature claim.
+The lower approximately270px remains two pale ellipses and a thin garden strip.
+The chosen improvement is one broader original garden/cloud composition with
+larger rounded motifs and quiet control surroundings. This is the developer's
+visual assessment; UI did not inspect images or implementation.
+
+Fresh21d output OFFER requested before authoring/check output. Root alone owns
+integration and one finite default-App three-width before/after cohort. Root's
+driver080ba855 at frontend/src/app/__tests__/customize-background-02/native.mjs
+is source-authored NOT_RUN: six contexts/six PNGs, direct four-editor canvas
+RGBA/sprite and screen-crop character/control pixel proof, text/font/geometry,
+and material lower-field change. Root reports exact pinned nested CSS expansion
+identical across modes, so the baseline retains old paint. No run requested
+before the artist's committed source and checks. Archive/Meet/title publication
+continues independently; this creates no full-wave barrier.
+
+Owner source milestone:719abad6c8ca2339fbc6f559106a1cdbff276e5b committed on
+codex/mcr-ui-bg-customize-02, clean exclusive checkout, same base55132a2f.
+Six leased paths: new SVG, scoped identity CSS, own document and new evidence
+verify-source.py/source-validation.json/source-round.json. Owner reports ONLY
+the outer Customize URL and position changed; size100%100%, color/repeat and
+all unleased CSS plus nine old asset files remain byte-identical. New SVG is
+390x780/3683bytes, SHA256
+c7d71e6c41d764fb0f086bc25f8c987e3bfc41e36d6b927fd30842468b36a693;
+CSS SHA25677b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d.
+Accepted21d round UI-BG-CUSTOMIZE-02-SOURCE-202611040919Z fully released at
+09:20:47.958637UTC: approximately57seconds,162759carry bytes, zero temporary
+output/live processes. Owner reports stdlib source proof and diff check PASS.
+Its flat-palette contrast calculation is explicitly NOT actual contrast
+certification. No browser/build/render/dependency work occurred in that checkout.
+Root received the concrete committed handoff for its sole finite capture.
+Actual rendering, material visual improvement, preservation, owner disposition,
+fixes and final documentation/publication/readback remain required. The owner's
+full goal remains ACTIVE; no lead approval or acknowledgment is required.
+
+Human correction forwarded by the king: nine visible per-screen CSS-only
+workers (Landing, Sign in, Map, Customize, Feed, Meet, Giveaway, Wall, My Profile)
+deliver committed work directly to Root153, with NO reporting, review or ACK
+through this UI lead. Their assignments exclude background art and World and
+supersede old SL reporting clauses. UI does not supervise or gate those workers.
+The existing Customize background and Title focus assignments remain distinct.
+Old Main/KING/SL review, approval and ACK completion clauses are obsolete;
+developer-owned validation, fixes, documentation, publication and readback remain.
 
 ## Additional original UI staffing requested by king
 
@@ -232,8 +384,12 @@ Fresh fetch at this consolidation: mastercde817b2ade8caabcf8c3a96508121053997873
 Ancestry checks for1722a817,5186f110 and4600542b all exited0.
 Earlier source0e156ae6/proof2579ac15 ancestry checks also exited0.
 Own document snapshot0a840784 was published in70a444bf; its blob and the delivered
-blob matched8a06f476c9c9cb43224a3e1a99f5c4b59311a205. Current consolidation
-needs Root's natural documentation batch and exact published readback.
+blob matched8a06f476c9c9cb43224a3e1a99f5c4b59311a205. Consolidated d7ba7c57 was
+subsequently delivered via b0e039269427ec2b757665cb220afad7ad01e519 on master
+1bb911c3c8594a997e7a309d86b823d906198b95. Fresh checkpoint/mapped-commit ancestry
+checks exited0; source, mapped and master document blobs all matched
+7bbd4945f7f2b02b4c8ce89a7f818bdb0ea616ac. The new title source milestone note
+is for Root's next natural documentation batch; no separate publishing gate.
 Full prior chronology/provenance is preserved in that published snapshot and
 the earlier lead branch commits; docs/source remains untouched.
 
@@ -246,12 +402,14 @@ recapture/copy, extra approval stage or speculative new chat.
 
 Remaining required outcomes:
 
-- TITLE-FOCUS-01 authorized state-dependent source fix or explicit honest limit,
-  actual affected focus/glyph validation, committed handoff and published readback.
+- TITLE-FOCUS-01 is closed by its implementation owner after actual qualification,
+  published exact readback and actual goal COMPLETE; no further title work remains.
 - MEET-FOCUS-VIS-01 committed fix, finite affected evidence and
   developer disposition/publication under Community; preserve raw prior failure.
 - COM01 final targeted packet documentation/goal/readbacks through Community;
   Wall/Me's bounded art duty is already closed.
+- UI-BG-CUSTOMIZE-02 bounded source improvement, owner checks, actual three-width
+  preservation/material-change evidence, fixes, documentation and published readback.
 - This consolidated coordination record delivered and exact publication verified.
 
 Keep the full goal unfinished while any required outcome is unproven. Controlled

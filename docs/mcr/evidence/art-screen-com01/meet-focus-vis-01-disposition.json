@@ -1,0 +1,1176 @@
+{
+  "task": "MEET-FOCUS-VIS-01",
+  "finding": "COM01-INHERITED-MEET-SUMMARY-CLIP",
+  "disposition": "CLOSED_IN_CAPTURED_SCOPE",
+  "owner": "ART-SCREEN-COM01 developer 01a1a533-50a9-73a1-8d4f-a16bf0b69aee",
+  "scope": "Meet summary focus visibility only; original bounded background disposition remains accepted in owner-wall-com-03.json. No whole QA06/QA07/FE21 or global accessibility closure.",
+  "lease": "Exact Root/Community grant: one appended outline-offset:-3px rule plus owned documentation/evidence. No additional CSS edits required after retained capture inspection.",
+  "source": {
+    "authorCommit": "09ef7bd866b71200aca2031f8bd252a6d156aeb1",
+    "rootIntegration": "9105846234fb7d5749d28271cc8c601920c87c27",
+    "candidate": "cadf860dd928d58df7f1e8f26a0b4e8dddd03911",
+    "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+    "change": ".party-browse .party-filters > summary:focus-visible { outline-offset: -3px; }",
+    "testedBytes": 9145,
+    "testedSha256": "487c1b051bfc246b2f3e76e6f31174f96d3da7960be30b7489e8189acf0f3051",
+    "peerTypography": "Preserved by Root; tested production file intentionally differs from local 9120-byte branch file. Publication must retain tested production bytes."
+  },
+  "packet": {
+    "seal": "4591f927023d8fb5f5afa3e8d2f11a501543cae4",
+    "directory": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04",
+    "reportSha256": "795dadfdaecfafccea1a50242cbb2f14fe290d5b9e7d117224731b1dbf8aeb21",
+    "capturePacketSha256": "c489b856143bc728bb02ed48ef59e2f16fc64d33ed030662bce8daa8ceed768d",
+    "artifactManifestSha256": "32f9f87873a399b0bf918a217a55c4a13eb56d3b6b240ce589c4ad882282f098",
+    "reportAndManifestsEqualSealedGitBytes": true,
+    "rootReportedInventory": {
+      "originalPngs": 43,
+      "artifacts": 53,
+      "sourceAndAssetPins": 688
+    },
+    "ownerReadback": "Report, capture packet, artifact manifest, all ten Meet PNGs and tested CSS compared read-only with immutable Git bytes. Meet PNG hashes and byte lengths match artifact manifest. No packet mutation, recapture or executed source checker."
+  },
+  "visualInspection": {
+    "method": "Directly viewed original retained PNGs in place, 390px first then 360/430px; matched baseline/candidate normal focus and 390px forced focus plus candidate backing probes.",
+    "files": {
+      "baseline-meet-focused-360.png": {
+        "sha256": "d94b07f0d4156cd3283b73826e19934a2ec131c77cdeaac6efda1caa08bdde26",
+        "bytes": 69979
+      },
+      "baseline-meet-focused-390.png": {
+        "sha256": "e4cac6d380f96ec881ae893208ea88b436610330e45b6a7c497df1f3914c381a",
+        "bytes": 72153
+      },
+      "baseline-meet-focused-430.png": {
+        "sha256": "a1b6a1ebdfdf218755e27b4e396de72c2ac3611c325604496212240dc9d93bd8",
+        "bytes": 74049
+      },
+      "baseline-meet-forced-390.png": {
+        "sha256": "597059f318037bb92540290d6074ce71fc4a5cfadd8c23f265ea7625a103af14",
+        "bytes": 55038
+      },
+      "candidate-meet-focused-360.png": {
+        "sha256": "04a709c5a6fd639c873164d3fc2397941eeca4f465ef0df83177c97b1722a6e7",
+        "bytes": 69988
+      },
+      "candidate-meet-focused-390-backing-probe.png": {
+        "sha256": "c06882928268f6cdce4eb837b1dfbbac030c2b17ff33352732cc90a3615513a2",
+        "bytes": 72113
+      },
+      "candidate-meet-focused-390.png": {
+        "sha256": "114b45721554d789b61648f24786d50b4326abb886873a76c7a88db37c8725db",
+        "bytes": 72147
+      },
+      "candidate-meet-focused-430.png": {
+        "sha256": "fefc2cecc60f96f47ce857dc230cb8f2dc16e66b747f170d2b23758c92dc3856",
+        "bytes": 74041
+      },
+      "candidate-meet-forced-390-backing-probe.png": {
+        "sha256": "b9046620f9cfb1647d750984e9d066f094f6a70b146b53d4dc8770d20fa7c18c",
+        "bytes": 54989
+      },
+      "candidate-meet-forced-390.png": {
+        "sha256": "fc3b2055e76911bf0511ee660f8931e3f1901faaeb28dcd6bd3703c3aa76c982",
+        "bytes": 55064
+      }
+    },
+    "baseline": "Top/right outline visible; left/bottom clipped in normal and forced views.",
+    "candidate": "Complete inset ring on all four sides; filter text and disclosure readable. Existing cards, controls, portraits and background unchanged.",
+    "unfocusedLimit": "Ordinary state is supported by recorded before/after geometry at all three widths and 390px stroke-suppressed backing probes; no separate ordinary-state PNGs at 360/430 are claimed."
+  },
+  "measurements": [
+    {
+      "width": 390,
+      "baselineAndCandidateGeometryEqual": true,
+      "candidateBeforeAndAfterGeometryEqual": true,
+      "charactersEqual": true,
+      "overflow": false,
+      "errors": [],
+      "target": {
+        "x": 15,
+        "y": 465.5625,
+        "width": 301.546875,
+        "height": 44
+      },
+      "normalFocus": {
+        "tag": "SUMMARY",
+        "label": "Filter parties",
+        "rect": {
+          "x": 15,
+          "y": 465.5625,
+          "width": 301.546875,
+          "height": 44
+        },
+        "font": "700 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+        "color": "rgb(33, 27, 24)",
+        "outlineColor": "rgb(163, 33, 43)",
+        "outlineWidth": 3,
+        "outlineOffset": -3,
+        "outlineStyle": "solid",
+        "focusVisible": true,
+        "backgroundImage": "none",
+        "screenshot": {
+          "path": "candidate-meet-focused-390.png",
+          "bytes": 72147,
+          "sha256": "114b45721554d789b61648f24786d50b4326abb886873a76c7a88db37c8725db",
+          "time": "2026-11-04T09:03:44.357Z"
+        },
+        "method": "Stroke temporarily suppressed with outline-style:none while focus and state-dependent backing remain active; inline style restored exactly. RGBA system outline alpha is composited before comparison.",
+        "backingProbeSha256": "c06882928268f6cdce4eb837b1dfbbac030c2b17ff33352732cc90a3615513a2",
+        "samples": [
+          {
+            "x": 165,
+            "y": 467,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 165,
+            "y": 508,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 16,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 315,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          }
+        ],
+        "minimum": 6.846729222725709,
+        "allOutlineSamplesVisible": true
+      },
+      "baselineFocusSamples": [
+        {
+          "x": 165,
+          "y": 462,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            163,
+            33,
+            43,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": true,
+          "contrast": 6.846729222725709
+        },
+        {
+          "x": 165,
+          "y": 513,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": false,
+          "contrast": 1
+        },
+        {
+          "x": 11,
+          "y": 487,
+          "backing": [
+            219,
+            210,
+            197,
+            255
+          ],
+          "paint": [
+            219,
+            210,
+            197,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": false,
+          "contrast": 1
+        },
+        {
+          "x": 320,
+          "y": 487,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            163,
+            33,
+            43,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": true,
+          "contrast": 6.846729222725709
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "baselineAndCandidateGeometryEqual": true,
+      "candidateBeforeAndAfterGeometryEqual": true,
+      "charactersEqual": true,
+      "overflow": false,
+      "errors": [],
+      "target": {
+        "x": 15,
+        "y": 465.5625,
+        "width": 271.546875,
+        "height": 44
+      },
+      "normalFocus": {
+        "tag": "SUMMARY",
+        "label": "Filter parties",
+        "rect": {
+          "x": 15,
+          "y": 465.5625,
+          "width": 271.546875,
+          "height": 44
+        },
+        "font": "700 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+        "color": "rgb(33, 27, 24)",
+        "outlineColor": "rgb(163, 33, 43)",
+        "outlineWidth": 3,
+        "outlineOffset": -3,
+        "outlineStyle": "solid",
+        "focusVisible": true,
+        "backgroundImage": "none",
+        "screenshot": {
+          "path": "candidate-meet-focused-360.png",
+          "bytes": 69988,
+          "sha256": "04a709c5a6fd639c873164d3fc2397941eeca4f465ef0df83177c97b1722a6e7",
+          "time": "2026-11-04T09:03:52.283Z"
+        },
+        "method": "Stroke temporarily suppressed with outline-style:none while focus and state-dependent backing remain active; inline style restored exactly. RGBA system outline alpha is composited before comparison.",
+        "backingProbeSha256": "2ed801a6f55b5eef59e880b845fa67280b78584f28d9900be6f21f476d967778",
+        "samples": [
+          {
+            "x": 150,
+            "y": 467,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 150,
+            "y": 508,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 16,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 285,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          }
+        ],
+        "minimum": 6.846729222725709,
+        "allOutlineSamplesVisible": true
+      },
+      "baselineFocusSamples": [
+        {
+          "x": 150,
+          "y": 462,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            163,
+            33,
+            43,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": true,
+          "contrast": 6.846729222725709
+        },
+        {
+          "x": 150,
+          "y": 513,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": false,
+          "contrast": 1
+        },
+        {
+          "x": 11,
+          "y": 487,
+          "backing": [
+            219,
+            210,
+            197,
+            255
+          ],
+          "paint": [
+            219,
+            210,
+            197,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": false,
+          "contrast": 1
+        },
+        {
+          "x": 290,
+          "y": 487,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            163,
+            33,
+            43,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": true,
+          "contrast": 6.846729222725709
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "baselineAndCandidateGeometryEqual": true,
+      "candidateBeforeAndAfterGeometryEqual": true,
+      "charactersEqual": true,
+      "overflow": false,
+      "errors": [],
+      "target": {
+        "x": 15,
+        "y": 465.5625,
+        "width": 341.546875,
+        "height": 44
+      },
+      "normalFocus": {
+        "tag": "SUMMARY",
+        "label": "Filter parties",
+        "rect": {
+          "x": 15,
+          "y": 465.5625,
+          "width": 341.546875,
+          "height": 44
+        },
+        "font": "700 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+        "color": "rgb(33, 27, 24)",
+        "outlineColor": "rgb(163, 33, 43)",
+        "outlineWidth": 3,
+        "outlineOffset": -3,
+        "outlineStyle": "solid",
+        "focusVisible": true,
+        "backgroundImage": "none",
+        "screenshot": {
+          "path": "candidate-meet-focused-430.png",
+          "bytes": 74041,
+          "sha256": "fefc2cecc60f96f47ce857dc230cb8f2dc16e66b747f170d2b23758c92dc3856",
+          "time": "2026-11-04T09:04:00.074Z"
+        },
+        "method": "Stroke temporarily suppressed with outline-style:none while focus and state-dependent backing remain active; inline style restored exactly. RGBA system outline alpha is composited before comparison.",
+        "backingProbeSha256": "8030311301835be016bf4285e38d278e3bd8248b69ebeceaa9d1130aac51e918",
+        "samples": [
+          {
+            "x": 185,
+            "y": 467,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 185,
+            "y": 508,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 16,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 355,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expected": [
+              163,
+              33,
+              43
+            ],
+            "expectedMatches": true,
+            "contrast": 6.846729222725709
+          }
+        ],
+        "minimum": 6.846729222725709,
+        "allOutlineSamplesVisible": true
+      },
+      "baselineFocusSamples": [
+        {
+          "x": 185,
+          "y": 462,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            163,
+            33,
+            43,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": true,
+          "contrast": 6.846729222725709
+        },
+        {
+          "x": 185,
+          "y": 513,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": false,
+          "contrast": 1
+        },
+        {
+          "x": 11,
+          "y": 487,
+          "backing": [
+            219,
+            210,
+            197,
+            255
+          ],
+          "paint": [
+            219,
+            210,
+            197,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": false,
+          "contrast": 1
+        },
+        {
+          "x": 360,
+          "y": 487,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            163,
+            33,
+            43,
+            255
+          ],
+          "expected": [
+            163,
+            33,
+            43
+          ],
+          "expectedMatches": true,
+          "contrast": 6.846729222725709
+        }
+      ]
+    }
+  ],
+  "forced390": {
+    "focus": {
+      "tag": "SUMMARY",
+      "label": "Filter parties",
+      "rect": {
+        "x": 15,
+        "y": 465.5625,
+        "width": 301.546875,
+        "height": 44
+      },
+      "font": "",
+      "color": "rgb(0, 0, 159)",
+      "outlineColor": "rgba(5, 0, 73, 0.8)",
+      "outlineWidth": 3,
+      "outlineOffset": -3,
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "backgroundImage": "none",
+      "screenshot": {
+        "path": "candidate-meet-forced-390.png",
+        "bytes": 55064,
+        "sha256": "fc3b2055e76911bf0511ee660f8931e3f1901faaeb28dcd6bd3703c3aa76c982",
+        "time": "2026-11-04T09:03:44.470Z"
+      },
+      "method": "Stroke temporarily suppressed with outline-style:none while focus and state-dependent backing remain active; inline style restored exactly. RGBA system outline alpha is composited before comparison.",
+      "backingProbeSha256": "b9046620f9cfb1647d750984e9d066f094f6a70b146b53d4dc8770d20fa7c18c",
+      "samples": [
+        {
+          "x": 165,
+          "y": 467,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            55,
+            49,
+            104,
+            255
+          ],
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "expectedMatches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 165,
+          "y": 508,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            55,
+            49,
+            104,
+            255
+          ],
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "expectedMatches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 16,
+          "y": 487,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            55,
+            49,
+            104,
+            255
+          ],
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "expectedMatches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 315,
+          "y": 487,
+          "backing": [
+            255,
+            243,
+            232,
+            255
+          ],
+          "paint": [
+            55,
+            49,
+            104,
+            255
+          ],
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "expectedMatches": true,
+          "contrast": 10.677607806093935
+        }
+      ],
+      "minimum": 10.677607806093935,
+      "allOutlineSamplesVisible": true
+    },
+    "media": {
+      "forced": true,
+      "reduced": true,
+      "headingColor": "rgb(0, 0, 0)"
+    },
+    "baselineSamples": [
+      {
+        "x": 165,
+        "y": 462,
+        "backing": [
+          255,
+          243,
+          232,
+          255
+        ],
+        "paint": [
+          55,
+          49,
+          104,
+          255
+        ],
+        "expected": [
+          55,
+          49,
+          105
+        ],
+        "expectedMatches": true,
+        "contrast": 10.677607806093935
+      },
+      {
+        "x": 165,
+        "y": 513,
+        "backing": [
+          255,
+          243,
+          232,
+          255
+        ],
+        "paint": [
+          255,
+          243,
+          232,
+          255
+        ],
+        "expected": [
+          55,
+          49,
+          105
+        ],
+        "expectedMatches": false,
+        "contrast": 1
+      },
+      {
+        "x": 11,
+        "y": 487,
+        "backing": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "paint": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "expected": [
+          55,
+          51,
+          109
+        ],
+        "expectedMatches": false,
+        "contrast": 1
+      },
+      {
+        "x": 320,
+        "y": 487,
+        "backing": [
+          255,
+          243,
+          232,
+          255
+        ],
+        "paint": [
+          55,
+          49,
+          104,
+          255
+        ],
+        "expected": [
+          55,
+          49,
+          105
+        ],
+        "expectedMatches": true,
+        "contrast": 10.677607806093935
+      }
+    ],
+    "interpretation": "System rgba outline composited over actual backing; one-channel tolerance. All four samples visible, minimum10.677607806093935:1. Empty forced font shorthand is recorded as supplied, not interpreted as a typography regression."
+  },
+  "preserved": {
+    "solidOutlineWidthPx": 3,
+    "normalOutlineColor": "rgb(163, 33, 43)",
+    "targetHeightPx": 44,
+    "ordinaryFont": "700 12px / 15px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+    "characters": {
+      "canvases": [
+        {
+          "rect": {
+            "x": 24,
+            "y": 126,
+            "width": 64,
+            "height": 64
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "rect": {
+            "x": 24,
+            "y": 242.1875,
+            "width": 64,
+            "height": 64
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "rect": {
+            "x": 24,
+            "y": 358.375,
+            "width": 64,
+            "height": 64
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        }
+      ],
+      "cssSpans": [],
+      "visibleCanvasCount": 3,
+      "visibleCssSpanCount": 0
+    },
+    "backgroundStylesheetSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+    "characterScope": "Three rendered fixture canvases unchanged; no claim of live member portrait availability."
+  },
+  "rootExecutedChecks": {
+    "attribution": "Read retained Root guard/logs; no new checks run by owner.",
+    "syntaxExit": 0,
+    "vitest": "3 files /15 tests passed",
+    "typescriptExit": 0,
+    "lintExit": 0,
+    "nativeExit": 1,
+    "rawStatus": "OPEN_FAILURES",
+    "rawErrors": [
+      {
+        "id": "map",
+        "mode": "candidate",
+        "width": 390,
+        "error": "Candidate forced focus contrast/clipping unresolved"
+      },
+      {
+        "id": "me",
+        "mode": "candidate",
+        "width": 390,
+        "error": "Candidate forced focus contrast/clipping unresolved"
+      }
+    ],
+    "rawResultPreserved": true,
+    "outsideLease": "Map and Me forced-focus glyph-overlap samples remain outside this Meet disposition. No owner qualification of those failures.",
+    "resource": {
+      "job": "ROOT-FOCUS-VIS-202611040902Z",
+      "candidate": "cadf860dd928d58df7f1e8f26a0b4e8dddd03911",
+      "driver_sha256": "f3d7db08efcce14a3f507113b6c6f3f556b0eb35385b2525515e78244b2bcc2d",
+      "commands": [
+        {
+          "command": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "--check",
+            "src/app/__tests__/focus-visibility-v1/native.mjs"
+          ],
+          "exit_code": 0,
+          "started_at": "2026-11-04T09:02:56.647158+00:00",
+          "log": "1.log"
+        },
+        {
+          "command": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "src/features/places/__tests__/reference-map/view.test.tsx",
+            "src/world/reference-scene/__tests__/metadata.test.ts",
+            "src/features/places/__tests__/map-service.test.tsx",
+            "--config",
+            "/private/tmp/mcr-cozy-panel-focus04/vitest.config.mjs",
+            "--configLoader",
+            "runner",
+            "--cache=false",
+            "--no-file-parallelism",
+            "--maxWorkers=1"
+          ],
+          "exit_code": 0,
+          "started_at": "2026-11-04T09:02:56.910579+00:00",
+          "log": "2.log"
+        },
+        {
+          "command": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit_code": 0,
+          "started_at": "2026-11-04T09:02:59.238405+00:00",
+          "log": "3.log"
+        },
+        {
+          "command": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "node_modules/oxlint/bin/oxlint",
+            "src/app/__tests__/focus-visibility-v1",
+            "src/features/places/__tests__/reference-map/view.test.tsx"
+          ],
+          "exit_code": 0,
+          "started_at": "2026-11-04T09:03:05.745481+00:00",
+          "log": "4.log"
+        },
+        {
+          "command": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "src/app/__tests__/focus-visibility-v1/native.mjs"
+          ],
+          "exit_code": 1,
+          "started_at": "2026-11-04T09:03:06.006388+00:00",
+          "log": "5.log"
+        }
+      ],
+      "failure": "command-5-exit-1",
+      "elapsed_seconds": 63.91593066700443,
+      "peaks": {
+        "whole": 43757568,
+        "temp": 31346688,
+        "durable": 5148672
+      },
+      "carried_art_bytes": 7413760,
+      "minimum_free_bytes": 30163701760,
+      "temp_absent": true,
+      "owned_link_absent": true,
+      "started_at": "2026-11-04T09:02:56.596747+00:00",
+      "finished_at": "2026-11-04T09:04:00.512510+00:00"
+    },
+    "cleanup": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "tempRemoved": true
+    }
+  },
+  "qualification": "Actual default router/Auth/Phaser; QA06 DEV synthetic HTTP/C05/local admission only. Guarded Wall remains guarded; no live service or physical device acceptance.",
+  "limits": [
+    "Synthetic QA06 controlled HTTP/C05/local assets; no live identity, messaging, account, token or location acceptance.",
+    "Sampled contrast and retained browser captures qualify this exact fixture/candidate only; no global WCAG, physical device or all-state claim.",
+    "Original native-02 Wall failure and wall-com-03 Meet failure remain immutable historical evidence; later packets separately qualify fixes."
+  ],
+  "delivery": {
+    "state": "COMMITTED_HANDOFF_PENDING_ROOT_PUBLICATION_AND_INDEPENDENT_REMOTE_READBACK",
+    "originalGoal": "Original objective retained; actual get_goal status was blocked at this inspection. No reset or false active/completion claim.",
+    "remaining": "Root sole publication, then independent fresh remote bytes and ancestry readback for final docs, tested production CSS, background source/assets and immutable packets. Return leases and complete original goal only after required publication is verified."
+  }
+}
