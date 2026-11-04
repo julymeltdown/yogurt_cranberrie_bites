@@ -1,8 +1,9 @@
 # BE42-LEGACY-OWNER-PROVIDERS-01
 
-Status: `IN_PROGRESS`. Source and meaningful qualification fixtures are authored.
-Cargo, PostgreSQL, Redis, real RPCs, durable Auth worker and physical restart
-qualification are `NOT_RUN` until a fresh bounded resource offer is accepted.
+Status: `IN_PROGRESS`, developer qualification complete for the three legacy
+providers; committed publication through Root remains pending. Source `3594117e`
+passed all four builds and all eight original test invocations using PostgreSQL
+16.14, private Redis, real mTLS RPCs, the durable Auth worker and physical restart.
 This is the Profile/Friend/Post provider slice, not whole BE42 or release acceptance.
 QA08/load/performance remains `DEFERRED_BY_USER`; functional privacy, persistence,
 recovery and developer-owned fixes remain required.
@@ -213,3 +214,99 @@ JSON, watchdog result and target/full release receipts. No executable was frozen
 The other three builds and all native RPC/SQL/restart scenarios remain `NOT_RUN`.
 This source correction requires a fresh allocated build turn; the released turn
 will not be reentered or its clocks reset.
+
+### Qualified source and actual runtime result
+
+The qualified implementation is `3594117e4f5e51616717418e3ebc3a3062356d86`, on
+the ancestry `cf1ca629` → `675134b1` → `8c17b923` → `0deeeae9` → `3594117e`.
+The later documentation commit changes no backend source or SQL. The original
+`1845` retry briefly accepted at epoch `1793822814.6071439`; a new capacity
+sequencing instruction arrived during the first build. The developer stopped
+immediately, released the target at `1793822823.7196312`, and recorded full
+release at `1793822851.966291`. No executable or source-failure diagnosis resulted.
+That spent turn, its 1,200,128 bytes of positive target growth, original clocks
+and all failed evidence remain preserved; the successful turn did not reuse it.
+
+Fresh offer `LEGACY-DELETION-RETRY-MEDIA-20261104T2015Z` accepted at epoch
+`1793823184.513875`, after Age's actual copied-native full release. Fresh free
+space was 19,391,115,264 bytes; after the entire proposed 2 GiB and all conservatively
+reserved concurrent growth, 16,236,998,656 bytes remained. WHOLE was capped at
+7 GiB with nonshrinking carry 4,854,657,024 bytes. Both private controls enforced
+the offered 11 GiB start, 8 GiB live floor, target growth at most 1.25 GiB, outside
+growth including source/Git at most 768 MiB, private PG at most 512 MiB, and four
+copied executables at most 192 MiB together/128 MiB each. ALLNEW remained one
+inclusive 2 GiB limit. Native execution retained the earlier binding 360-second
+limit, target-release-to-FULL 660 seconds, and 300 seconds for cleanup.
+
+The controls were repinned before acceptance, as allowed by the resource policy;
+these exact private controls, rather than the historical tracked default floor,
+supervised this qualification:
+
+| Input | SHA-256 |
+|---|---|
+| private `controller.py` | `d3866dfe628d968020b0b23381fc47b66a29ff4468e110b76abe34e3b7b4ef5b` |
+| private `guardian.py` | `1d6c79c0b4bccea7b5166bed181530da8a8a183af71781251a66411771bafd1f` |
+
+Build commands used the existing retained warm target, Rust 1.88.0, jobs 2,
+dev/test debug 0, incremental 0, and cleared compiler flags/wrappers. For each
+row, the exact command was
+`cargo +1.88.0 test --locked --offline -p PACKAGE --test TARGET --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2`:
+
+| PACKAGE | TARGET | Exit | Frozen executable bytes |
+|---|---|---:|---:|
+| `profile-service` | `committed_deletion_rpc` | 0 | 29,952,144 |
+| `friend-service` | `committed_deletion_rpc` | 0 | 28,272,720 |
+| `post-service` | `committed_deletion_rpc` | 0 | 38,616,496 |
+| `auth-service` | `legacy_deletion_receipts` | 0 | 20,002,816 |
+
+The four immutable copies total 116,844,176 bytes. Their emitted-artifact paths,
+SHA-256 hashes, complete backend source manifest and runtime tool hashes are in
+`artifact-receipt.json`. Build execution took 63.77 seconds. The target was
+unconditionally released at epoch `1793823248.571987`, with compiler/handles zero,
+and handed directly to Media before native execution. No later target access,
+separate main executable copy or hidden compilation occurred.
+
+The native controller ran each requested case with `--exact`,
+`--test-threads=1`, and `--nocapture`; the five database cases additionally used
+`--ignored`. Every invocation reported exactly one passing test, zero failed and
+zero ignored, with exit 0:
+
+| Executable/cohort | Exact case |
+|---|---|
+| Auth | `profile_binding_rejects_boolean_partial_owner_and_every_rebound` |
+| Auth | `friend_binding_rejects_boolean_partial_owner_and_every_rebound` |
+| Auth | `post_binding_rejects_boolean_partial_owner_and_every_rebound` |
+| Profile | `populated_actual_rpc_atomic_replay_rebound_fence_and_original_clock` |
+| Friend | `populated_actual_rpc_atomic_replay_rebound_fence_and_original_clock` |
+| Post | `populated_actual_rpc_atomic_replay_rebound_fence_and_original_clock` |
+| Auth | `actual_eight_step_worker_commits_only_three_real_owners_and_recovers_rollback` |
+| Auth, after restart | `actual_restart_preserves_all_three_receipts_and_five_incomplete_steps` |
+
+The actual PostgreSQL server reported `160014` (16.14). Each owner exercised its
+real service state, configured pool, mTLS server, deletion transaction and SQLx
+migration runtime. Profile/Friend/Post RPC fixtures ran separately; the Auth
+worker reached all three actual RPCs. Physical PostgreSQL restart changed the
+postmaster PID from 66509 to 67787, and all three RPC processes restarted before
+the final Auth case. Matching SQLx ledgers contained Profile 10, Friend 19, Post
+33 and Auth 18 migrations. Prepared transactions were zero. Native execution
+took 42.26 seconds; all private PostgreSQL and Redis processes and the owned
+database root were removed. Peak WHOLE was 5,321,195,520 bytes; target growth
+was 244,920,320 bytes. The native controller observed at most 23 processes,
+328,761,344 bytes RSS, and no compiler.
+
+Successful evidence is retained under
+`/private/tmp/mcr-be42-legacy-2015-3594117e/`: `accepted-offer.json`,
+`artifact-receipt.json`, `build-result-1793823184.json`,
+`qualify-result-1793823301.json`, both watchdog results, original per-command
+stdout/stderr, `target-release.json`, and `full-release.json`. Full release at
+epoch `1793823399.336336` records compiler/target handles/controller/guardians/
+native children/PG/Redis/workflows/reservations all zero. Earlier failed roots
+`mcr-be42-legacy-675134b1` and `mcr-be42-legacy-3594117e` remain intact.
+
+This qualifies the three actual legacy providers and their canonical Auth worker
+receipt boundary. The five other saga targets deliberately remain incomplete;
+their lack of acknowledgment is asserted before and after restart. No whole-BE42,
+public Gateway journey, commercial-provider, live-data migration, load, or release
+acceptance follows from these results. The protected Notification implementation
+and frozen source archive remain unchanged. Root receives the committed scoped
+handoff directly; publication does not wait for a king/SL review or acknowledgment.
