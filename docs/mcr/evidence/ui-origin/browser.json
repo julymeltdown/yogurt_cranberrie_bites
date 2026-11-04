@@ -1,0 +1,2357 @@
+{
+  "candidate": "0a8c422645458c9397af9289e15089ee3f9cb0ad",
+  "capturedAt": "2026-11-04T01:07:46.412Z",
+  "qualification": "Native Chrome; actual production components. Deterministic fixture data/readiness only; route probe uses instrumented host. Feature previews separately exercise present components. No live/backend/device/QA06/fidelity acceptance.",
+  "routes": [
+    {
+      "pattern": "/",
+      "route": "/",
+      "id": "route-00",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2F&anonymous=1",
+      "file": "snapshots/route-00.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/login",
+      "route": "/login",
+      "id": "route-01",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Flogin&anonymous=1",
+      "file": "snapshots/route-01.jpg",
+      "text": "SIGN IN\n\nSIGN IN\n\nEvent entry is not open yet. Please check back later.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/signup",
+      "route": "/signup",
+      "id": "route-02",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fsignup&anonymous=1",
+      "file": "snapshots/route-02.jpg",
+      "text": "MCR Concert World\n\nBEFORE THE SHOW\n\nCreate account\n\nOne account for your concert world.\n\nAccount creation is not open yet. We are preparing the signup requirements and notices.\n\nEmail account actions are not available right now.\n\nEmail\nPassword\n\n8–128 UTF-8 bytes. Spaces count; your password is not changed or trimmed.\n\nCreate account\nI have a verification codeSign inReset passwordTermsPrivacy\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create account"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/verify-email",
+      "route": "/verify-email",
+      "id": "route-03",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fverify-email&anonymous=1",
+      "file": "snapshots/route-03.jpg",
+      "text": "MCR Concert World\n\nBEFORE THE SHOW\n\nVerify email\n\nUse the email and six-digit code from your verification instructions.\n\nEmail account actions are not available right now.\n\nEmail\nVerification code\n\nCodes can expire. Request new instructions if your code no longer works.\n\nVerify email\nRequest another code\nSign inReset password\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Verify email"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/reset-password",
+      "route": "/reset-password",
+      "id": "route-04",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Freset-password&anonymous=1",
+      "file": "snapshots/route-04.jpg",
+      "text": "MCR Concert World\n\nYOUR WAY BACK\n\nReset password\n\nStart with the email you use to sign in.\n\nEmail\nRequest reset\n\nPassword recovery is not available right now.\n\nI have a reset token\nBack to sign inBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Reset password"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/auth/callback",
+      "route": "/auth/callback",
+      "id": "route-05",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fauth%2Fcallback&anonymous=1",
+      "file": "snapshots/route-05.jpg",
+      "text": "MCR Concert World\n\nBACK TO THE CROWD\n\nProvider sign-in is unavailable\n\nProvider sign-in is not available yet. You can use an available sign-in option instead.\n\nBack to sign in\nBack to your destinationBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Provider sign-in is unavailable"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/legal/:document",
+      "route": "/legal/privacy",
+      "id": "route-06",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Flegal%2Fprivacy&anonymous=1",
+      "file": "snapshots/route-06.jpg",
+      "text": "Skip to content\nMCR\nConcert World\nSign in\n\nPUBLIC INFORMATION\n\nPrivacy\n\nThis document is not available yet.\n\nBack to home\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDifferent eras. Same crowd.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Privacy"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/account/deleted",
+      "route": "/account/deleted",
+      "id": "route-07",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Faccount%2Fdeleted&anonymous=1",
+      "file": "snapshots/route-07.jpg",
+      "text": "Account deletion status\n\nNo deletion completion is confirmed in this session. Retained recovery is unavailable after expiry, sign-out or a session change.\n\nSign in\n\nCompletion requires all eight cleanup steps. A pending request or disabled account is not completed cleanup.\n\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Account deletion status"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/archive",
+      "route": "/archive",
+      "id": "route-08",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Farchive&anonymous=1",
+      "file": "snapshots/route-08.jpg",
+      "text": "MCR Concert World\nAfter the show\n\nThis page is still being prepared. No account action has been completed.\n\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "After the show"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world",
+      "route": "/world",
+      "id": "route-09",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld&anonymous=0",
+      "file": "snapshots/route-09.jpg",
+      "text": "Skip to content\nMCR Concert World\nShell review · test event\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nInstrumented test host · no live world\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/map",
+      "route": "/world/map",
+      "id": "route-10",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fmap&anonymous=0",
+      "file": "snapshots/route-10.jpg",
+      "text": "Skip to content\nMAP\n−\n▾\n\nPlaces are unavailable until your current event map is verified. Return to the world to check access.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Map"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/places/:placeId",
+      "route": "/world/places/00000000-0000-4000-8000-000000000002",
+      "id": "route-11",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fplaces%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-11.jpg",
+      "text": "Skip to content\nPLACE\n−\n▾\n\nPlaces are unavailable until your current event map is verified. Return to the world to check access.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Place"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/rooms",
+      "route": "/world/rooms",
+      "id": "route-12",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Frooms&anonymous=0",
+      "file": "snapshots/route-12.jpg",
+      "text": "Skip to content\nROOMS\n−\n▾\n\nRoom access is unavailable until your current world access is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Rooms"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/nearby",
+      "route": "/world/nearby",
+      "id": "route-13",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fnearby&anonymous=0",
+      "file": "snapshots/route-13.jpg",
+      "text": "Skip to content\nNEARBY IN WORLD\n−\n▾\n\nNearby people are unavailable until your current world access is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Nearby in world"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/theme",
+      "route": "/world/theme",
+      "id": "route-14",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Ftheme&anonymous=0",
+      "file": "snapshots/route-14.jpg",
+      "text": "Skip to content\nCHOOSE AN ERA\n−\n▾\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nEra preferences are saved on this device for this account and event. Server preference synchronization is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Choose an era"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/check-in",
+      "route": "/world/check-in",
+      "id": "route-15",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fcheck-in&anonymous=0",
+      "file": "snapshots/route-15.jpg",
+      "text": "Skip to content\nREAL-WORLD CHECK-IN\n−\n▾\n\nReal-world meeting guidance is unavailable until current place, audience, and expiry information is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Real-world check-in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/world/help",
+      "route": "/world/help",
+      "id": "route-16",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fworld%2Fhelp&anonymous=0",
+      "file": "snapshots/route-16.jpg",
+      "text": "Skip to content\nHOW TO PLAY\n−\n▾\n\nSTILL TAKING SHAPE\n\nHow to play is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "How to play",
+          "How to play is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed",
+      "route": "/feed",
+      "id": "route-17",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed&anonymous=0",
+      "file": "snapshots/route-17.jpg",
+      "text": "Skip to content\nFEED\n−\n▾\n\nThis section is unavailable for the current account or event.\n\nNew post\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Feed"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed/new",
+      "route": "/feed/new",
+      "id": "route-18",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed%2Fnew&anonymous=0",
+      "file": "snapshots/route-18.jpg",
+      "text": "Skip to content\nNEW POST\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "New post"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed/:postId",
+      "route": "/feed/00000000-0000-4000-8000-000000000002",
+      "id": "route-19",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-19.jpg",
+      "text": "Skip to content\nTHREAD\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Thread"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/feed/:postId/edit",
+      "route": "/feed/00000000-0000-4000-8000-000000000002/edit",
+      "id": "route-20",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Ffeed%2F00000000-0000-4000-8000-000000000002%2Fedit&anonymous=0",
+      "file": "snapshots/route-20.jpg",
+      "text": "Skip to content\nEDIT POST\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Edit post"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/notices/:noticeId",
+      "route": "/notices/00000000-0000-4000-8000-000000000002",
+      "id": "route-21",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fnotices%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-21.jpg",
+      "text": "Skip to content\nNOTICE\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Notice"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet",
+      "route": "/meet",
+      "id": "route-22",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet&anonymous=0",
+      "file": "snapshots/route-22.jpg",
+      "text": "Skip to content\nMEET\n−\n▾\n\nParty access is unavailable.\n\nCreate party\n→\nPeople\n→\nYour intro\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Meet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/new",
+      "route": "/meet/parties/new",
+      "id": "route-23",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2Fnew&anonymous=0",
+      "file": "snapshots/route-23.jpg",
+      "text": "Skip to content\nCREATE PARTY\n−\n▾\n\nSTILL TAKING SHAPE\n\nCreate party is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create party",
+          "Create party is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/:partyId",
+      "route": "/meet/parties/00000000-0000-4000-8000-000000000002",
+      "id": "route-24",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-24.jpg",
+      "text": "Skip to content\nPARTY\n−\n▾\n\nParty access is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Party"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/:partyId/manage",
+      "route": "/meet/parties/00000000-0000-4000-8000-000000000002/manage",
+      "id": "route-25",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2F00000000-0000-4000-8000-000000000002%2Fmanage&anonymous=0",
+      "file": "snapshots/route-25.jpg",
+      "text": "Skip to content\nMANAGE PARTY\n−\n▾\n\nSTILL TAKING SHAPE\n\nManage party is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Manage party",
+          "Manage party is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/parties/:partyId/rally",
+      "route": "/meet/parties/00000000-0000-4000-8000-000000000002/rally",
+      "id": "route-26",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fparties%2F00000000-0000-4000-8000-000000000002%2Frally&anonymous=0",
+      "file": "snapshots/route-26.jpg",
+      "text": "Skip to content\nRENDEZVOUS\n−\n▾\n\nSTILL TAKING SHAPE\n\nRendezvous is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Rendezvous",
+          "Rendezvous is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/beacons/:beaconId",
+      "route": "/meet/beacons/00000000-0000-4000-8000-000000000002",
+      "id": "route-27",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fbeacons%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-27.jpg",
+      "text": "Skip to content\nFIND EACH OTHER\n−\n▾\n\nReal-world meeting guidance is unavailable until current place, audience, and expiry information is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Find each other"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/people",
+      "route": "/meet/people",
+      "id": "route-28",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fpeople&anonymous=0",
+      "file": "snapshots/route-28.jpg",
+      "text": "Skip to content\nPEOPLE\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "People"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/meet/intro/edit",
+      "route": "/meet/intro/edit",
+      "id": "route-29",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fmeet%2Fintro%2Fedit&anonymous=0",
+      "file": "snapshots/route-29.jpg",
+      "text": "Skip to content\nYOUR INTRO\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Your intro"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/people/:userId",
+      "route": "/people/00000000-0000-4000-8000-000000000002",
+      "id": "route-30",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fpeople%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-30.jpg",
+      "text": "Skip to content\nPROFILE\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Profile"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts",
+      "route": "/gifts",
+      "id": "route-31",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts&anonymous=0",
+      "file": "snapshots/route-31.jpg",
+      "text": "Skip to content\nGIFTS\n−\n▾\n\nGift access is unavailable.\n\nMy gifts\n→\nCreate giveaway\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Gifts"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/new",
+      "route": "/gifts/new",
+      "id": "route-32",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2Fnew&anonymous=0",
+      "file": "snapshots/route-32.jpg",
+      "text": "Skip to content\nCREATE GIVEAWAY\n−\n▾\n\nSTILL TAKING SHAPE\n\nCreate giveaway is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create giveaway",
+          "Create giveaway is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/mine",
+      "route": "/gifts/mine",
+      "id": "route-33",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2Fmine&anonymous=0",
+      "file": "snapshots/route-33.jpg",
+      "text": "Skip to content\nMY GIFTS\n−\n▾\n\nGift access is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My gifts"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/:giveawayId",
+      "route": "/gifts/00000000-0000-4000-8000-000000000002",
+      "id": "route-34",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-34.jpg",
+      "text": "Skip to content\nGIVEAWAY\n−\n▾\n\nGift access is unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Giveaway"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/:giveawayId/manage",
+      "route": "/gifts/00000000-0000-4000-8000-000000000002/manage",
+      "id": "route-35",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2F00000000-0000-4000-8000-000000000002%2Fmanage&anonymous=0",
+      "file": "snapshots/route-35.jpg",
+      "text": "Skip to content\nMANAGE GIVEAWAY\n−\n▾\n\nSTILL TAKING SHAPE\n\nManage giveaway is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Manage giveaway",
+          "Manage giveaway is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/:giveawayId/reservation",
+      "route": "/gifts/00000000-0000-4000-8000-000000000002/reservation",
+      "id": "route-36",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2F00000000-0000-4000-8000-000000000002%2Freservation&anonymous=0",
+      "file": "snapshots/route-36.jpg",
+      "text": "Skip to content\nRESERVE\n−\n▾\n\nSTILL TAKING SHAPE\n\nReserve is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Reserve",
+          "Reserve is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/gifts/pickups/:reservationId",
+      "route": "/gifts/pickups/00000000-0000-4000-8000-000000000002",
+      "id": "route-37",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fgifts%2Fpickups%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-37.jpg",
+      "text": "Skip to content\nMY PICKUP\n−\n▾\n\nSTILL TAKING SHAPE\n\nMy pickup is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My pickup",
+          "My pickup is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/wall",
+      "route": "/wall",
+      "id": "route-38",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fwall&anonymous=0",
+      "file": "snapshots/route-38.jpg",
+      "text": "Skip to content\nWALL\n−\n▾\nGRAFFITI WALL\n\nWall unavailable. Reconnect to a qualified world scene before opening the current wall.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "GRAFFITI WALL"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me",
+      "route": "/me",
+      "id": "route-39",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme&anonymous=0",
+      "file": "snapshots/route-39.jpg",
+      "text": "Skip to content\nME\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.\n\nDress up\n→\nEdit profile\n→\nSocial links\n→\nRequests\n→\nAge & privacy\n→\nSettings\n→\nBlocked users\n→\nAccount\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Me"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/avatar",
+      "route": "/me/avatar",
+      "id": "route-40",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Favatar&anonymous=0",
+      "file": "snapshots/route-40.jpg",
+      "text": "Skip to content\nDRESS UP\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Dress up"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/profile",
+      "route": "/me/profile",
+      "id": "route-41",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fprofile&anonymous=0",
+      "file": "snapshots/route-41.jpg",
+      "text": "Skip to content\nEDIT PROFILE\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Edit profile"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/social",
+      "route": "/me/social",
+      "id": "route-42",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fsocial&anonymous=0",
+      "file": "snapshots/route-42.jpg",
+      "text": "Skip to content\nSOCIAL LINKS\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Social links"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/requests",
+      "route": "/me/requests",
+      "id": "route-43",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Frequests&anonymous=0",
+      "file": "snapshots/route-43.jpg",
+      "text": "Skip to content\nREQUESTS\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Requests"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/age",
+      "route": "/me/age",
+      "id": "route-44",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fage&anonymous=0",
+      "file": "snapshots/route-44.jpg",
+      "text": "Skip to content\nAGE & PRIVACY\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Age & privacy"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/settings",
+      "route": "/me/settings",
+      "id": "route-45",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fsettings&anonymous=0",
+      "file": "snapshots/route-45.jpg",
+      "text": "Skip to content\nSETTINGS\n−\n▾\n\nAccount access is unavailable until your current event and session are verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Settings"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/blocks",
+      "route": "/me/blocks",
+      "id": "route-46",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Fblocks&anonymous=0",
+      "file": "snapshots/route-46.jpg",
+      "text": "Skip to content\nBLOCKED USERS\n−\n▾\n\nSTILL TAKING SHAPE\n\nBlocked users is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Blocked users",
+          "Blocked users is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/me/account",
+      "route": "/me/account",
+      "id": "route-47",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fme%2Faccount&anonymous=0",
+      "file": "snapshots/route-47.jpg",
+      "text": "Skip to content\nACCOUNT\n−\n▾\n\nAccount controls require your current canonical session.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Account"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/notifications",
+      "route": "/notifications",
+      "id": "route-48",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fnotifications&anonymous=0",
+      "file": "snapshots/route-48.jpg",
+      "text": "Skip to content\nINBOX\n−\n▾\n\nThis section is unavailable for the current account or event.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Inbox"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/report",
+      "route": "/report",
+      "id": "route-49",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Freport&anonymous=0",
+      "file": "snapshots/route-49.jpg",
+      "text": "Skip to content\nREPORT\n−\n▾\n\nSTILL TAKING SHAPE\n\nReport is not available yet\n\nThis part of the event is still being prepared. You can browse the other sections.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Report",
+          "Report is not available yet"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin",
+      "route": "/admin",
+      "id": "route-50",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin&anonymous=0",
+      "file": "snapshots/route-50.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/event",
+      "route": "/admin/event",
+      "id": "route-51",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fevent&anonymous=0",
+      "file": "snapshots/route-51.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/places",
+      "route": "/admin/places",
+      "id": "route-52",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fplaces&anonymous=0",
+      "file": "snapshots/route-52.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/reports",
+      "route": "/admin/reports",
+      "id": "route-53",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Freports&anonymous=0",
+      "file": "snapshots/route-53.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/users/:userId",
+      "route": "/admin/users/00000000-0000-4000-8000-000000000002",
+      "id": "route-54",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fusers%2F00000000-0000-4000-8000-000000000002&anonymous=0",
+      "file": "snapshots/route-54.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/content",
+      "route": "/admin/content",
+      "id": "route-55",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fcontent&anonymous=0",
+      "file": "snapshots/route-55.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/mural",
+      "route": "/admin/mural",
+      "id": "route-56",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Fmural&anonymous=0",
+      "file": "snapshots/route-56.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/audit",
+      "route": "/admin/audit",
+      "id": "route-57",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Faudit&anonymous=0",
+      "file": "snapshots/route-57.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "pattern": "/admin/archive",
+      "route": "/admin/archive",
+      "id": "route-58",
+      "url": "/@fs/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/ui-origin/route-probe.html?route=%2Fadmin%2Farchive&anonymous=0",
+      "file": "snapshots/route-58.jpg",
+      "text": "MCR Concert World\nAccess denied\nEvent administration\n\nA current authorization check is required before opening these tools.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Access denied",
+          "Event administration"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    }
+  ],
+  "features": [
+    {
+      "source": "frontend/e2e/reference-integrated/whole/preview.html",
+      "id": "feature-00",
+      "url": "/e2e/reference-integrated/whole/preview.html",
+      "file": "snapshots/feature-00.jpg",
+      "text": "Skip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 2
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/e2e/reference-integrated/preview.html",
+      "id": "feature-01",
+      "url": "/e2e/reference-integrated/preview.html",
+      "file": "snapshots/feature-01.jpg",
+      "text": "Skip to content\nFixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nConnected. Avatar artwork is unavailable.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/entities/avatar/whole-character/__tests__/native/preview.html",
+      "id": "feature-02",
+      "url": "/src/entities/avatar/whole-character/__tests__/native/preview.html",
+      "file": "snapshots/feature-02.jpg",
+      "text": "Selected whole characters\n\nActual reviewed six-source atlas · front idle only. Canonical identity fixtures; no live save, auth or world journey.\n\nREVENGE\nPARADE\nDANGER\nUnmount views\n01\n02\n03\n04\n05\n06\nSame identity · main preview\nRequest detail atlas\n\nCurrent preset: photo01_front_01\n\nRevoke scope",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Selected whole characters",
+          "Same identity · main preview"
+        ],
+        "canvases": 7
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/social-composition/__tests__/preview.html",
+      "id": "feature-03",
+      "url": "/src/app/social-composition/__tests__/preview.html",
+      "file": "snapshots/feature-03.jpg",
+      "text": "TEST ONLY — canonical controllers, instrumented world lease, synthetic HTTP\n\nWorld\nFeed\nCompose\nPeople\nIntro\nAge\nInbox\nRequests\nInbox router link\nUnavailable\n\nInstrumented test host · no live world\n\nALL\nMEETUP\nGIVEAWAY\nNOTICE\n\nThis content was deleted, hidden, withdrawn, or is no longer available.\n\nRetry read\nNEW POST",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/mural-entry/__tests__/preview.html",
+      "id": "feature-04",
+      "url": "/src/app/mural-entry/__tests__/preview.html",
+      "file": "snapshots/feature-04.jpg",
+      "text": "SYNTHETIC FE33 app route · actual incumbent Phaser/sink + canonical Auth/HTTP. In-process C04 server/authority and geometric raster; no live socket, product art or two-user proof.\n\nSkip to content\nWALL\n−\n▾\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "Wall",
+          "128 × 128 PIXEL WALL"
+        ],
+        "canvases": 2
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/shared/ui/__tests__/fixtures/preview.html",
+      "id": "feature-05",
+      "url": "/src/shared/ui/__tests__/fixtures/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n",
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/errors/__tests__/preview.html",
+      "id": "feature-06",
+      "url": "/src/app/errors/__tests__/preview.html",
+      "file": "snapshots/feature-06.jpg",
+      "text": "SYNTHETIC FIXTURE — existing shell, Phaser, FE17. No live service, venue or approved art.\nSkip to content\nHOW TO PLAY\n−\n▾\n\nConnection help. You can keep using the navigation below.\n\nWORLD IS PAUSED\n\nThe world will recover when its viewport is visible again.\n\nBack to world\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "How to play",
+          "World is paused"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/places-entry/__tests__/preview.html",
+      "id": "feature-07",
+      "url": "/src/app/places-entry/__tests__/preview.html",
+      "file": "snapshots/feature-07.jpg",
+      "text": "SYNTHETIC FIXTURE — canonical Auth, existing map/Phaser/camera. No live service, venue or approved art.\nSkip to content\nMAP\n−\n▾\nMAP\n1\n2\n3\n×\n5\nSchema-derived virtual schematic · map revision 1. Numbers match the place list; × means closed. Not venue artwork or a physical route.\nRECENTER AVATAR\nZOOM OUT\nZOOM IN\n\nVirtual movement never confirms real arrival.\n\nVirtual and physical place legend\nFind a place\n\n5 places shown\n\n01\n\nSynthetic virtual stage\n\nVirtual concept — no physical destination\n\nView Synthetic virtual stage\nSHOW ON MAP\n\n02\n\nSynthetic reviewed landmark\n\nVerified physical reference — check current venue guidance\n\nView Synthetic reviewed landmark\nSHOW ON MAP\n\n03\n\nSynthetic unverified gate\n\nPhysical place — verification pending\n\nView Synthetic unverified gate\nSHOW ON MAP\n\n04\n\nSynthetic closed landmark\n\nClosed — do not use as a meeting destination\n\nView Synthetic closed landmark\nSHOW ON MAP\n\n05\n\nSynthetic unavailable source\n\nPhysical reference — source unavailable\n\nView Synthetic unavailable source\nSHOW ON MAP\nREFRESH PLACE INFORMATION\nControls and meeting safety",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Map",
+          "MAP",
+          "Synthetic virtual stage",
+          "Synthetic reviewed landmark",
+          "Synthetic unverified gate",
+          "Synthetic closed landmark",
+          "Synthetic unavailable source"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/giveaway-authoring/__tests__/preview.html",
+      "id": "feature-08",
+      "url": "/src/features/giveaway-authoring/__tests__/preview.html",
+      "file": "snapshots/feature-08.jpg",
+      "text": "GIFTS / OWNER TOOLS\n\nMake something worth sharing\n\nCreate a draft, then publish when the pickup plan is ready. Times use Korea Standard Time (KST).\n\nItem and pickup window\nItem title\nDescription\nTotal quantity\nPickup start (KST)\nPickup end (KST)\nPublic pickup place\nChoose a qualified place\nQualified fixture place\nPublication state\nDraft\nOpen reservations\nPaused\nCompleted\nCancelled\nPhoto\n\nImage upload is unavailable. You can save a text-only draft.\n\nUse no photo\nI confirm cancellation will revoke outstanding pickup access.\nSave giveaway changes\nSave session draft\nRestore draft\n\nInventory and reservations\n\n1 available · 1 reserved · 1 claimed\n\nAuthorized reservation page\nReservation\tState\tExpiry (KST)\nReservation 1\tHELD\t07 Nov 2026, 18:15 KST\nPrivate pickup instructions\n\nA qualified pickup plan is unavailable. Configure reviewed instructions before publication.\n\nConfirm and save qualified physical pickup plan",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Make something worth sharing",
+          "Photo",
+          "Inventory and reservations",
+          "Private pickup instructions"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/meeting-entry/__tests__/preview.html",
+      "id": "feature-09",
+      "url": "/src/app/meeting-entry/__tests__/preview.html",
+      "file": "snapshots/feature-09.jpg",
+      "text": "SYNTHETIC ADAPTER FIXTURE ONLY\nFictional venue, time, policy and people. No real meeting guidance.\n\nOpen beacon fixture\nOpen check-in fixture\nCurrent meeting\n\nReal-world meeting guidance. Avatar position is virtual and does not confirm arrival.\n\nSynthetic reviewed landmark\n\nSYNTHETIC: wait at a fictional marker. Not venue guidance.\n\nIdentification\nSYNTHETIC red scarf\nAudience\nApproved party members only\nLast confirmed by the owner\n2026-11-07T08:00:00Z\nExpires\n2026-11-07T08:15:00Z\nRevision\nBeacon 1 · Place 3 · Map 1\nReviewed place source (new tab)\n\nSource review: 2026-11-01T00:00:00Z. Check current venue guidance; this description does not change venue entry rules.\n\nNo authorized photo is available for this revision.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Current meeting",
+          "Synthetic reviewed landmark"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/meeting-entry/__tests__/root-preview.html",
+      "id": "feature-10",
+      "url": "/src/app/meeting-entry/__tests__/root-preview.html",
+      "file": "snapshots/feature-10.jpg",
+      "text": "SYNTHETIC ROOT FIXTURE · Fake event and world; no real meeting guidance.\n\nSkip to content\nREAL-WORLD CHECK-IN\n−\n▾\n\nReal-world meeting guidance is unavailable until current place, audience, and expiry information is verified.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Real-world check-in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/__tests__/fixtures/preview.html",
+      "id": "feature-11",
+      "url": "/src/app/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-11.jpg",
+      "text": "FE07 test controls\nMCR Concert World\nChecking your session\nYour destination is saved\n\nYou can leave this page while we check access.\n\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Checking your session",
+          "Your destination is saved"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/shared/ui/concert-window/__tests__/preview.html",
+      "id": "feature-12",
+      "url": "/src/shared/ui/concert-window/__tests__/preview.html",
+      "file": "snapshots/feature-12.jpg",
+      "text": "UIV01 / COMPONENT PREVIEW\n\nSynthetic examples. No event or account connection.\n\nExample state\nLoaded\nEmpty\nUnavailable\nPending action\nOPEN CONCERT WINDOW\nMEET\nPARTIES\nPEOPLE\nMY PLAN\nArea A queue group\nExample party · 4 of 8 places\nMeeting details require current permission.\nDETAILS\nAfter-show hangout\nExample party · applications paused\nRead-only example\nPhoto walk · Parade era\nExample party · 3 of 6 places\nVirtual presence does not confirm arrival.\nLAYOUT NOTES\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME\nSame frame. Different content.\n\nNo art substitutes, invented providers or decorative account stats.\n\nWorld\n\nShell adoption preserves one existing game and connection.\n\nFeed\n\nCompact author and content rows use authorized projections.\n\nMeet\n\nApplication and approval remain owning-feature actions.\n\nGifts\n\nStock and pickup credentials remain server-authorized.\n\nWall\n\nPreview and confirmed pixel placement stay distinct.\n\nMe\n\nOnly approved character derivatives may fill the visual slot.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Meet",
+          "Area A queue group",
+          "After-show hangout",
+          "Photo walk · Parade era",
+          "Same frame. Different content.",
+          "World",
+          "Feed",
+          "Meet",
+          "Gifts",
+          "Wall",
+          "Me"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/__tests__/reference-root/preview.html",
+      "id": "feature-13",
+      "url": "/src/app/__tests__/reference-root/preview.html",
+      "file": "snapshots/feature-13.jpg",
+      "text": "Skip to content\nFixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nConnected. Avatar artwork is unavailable.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/account-entry/__tests__/asset-leases/preview.html",
+      "id": "feature-14",
+      "url": "/src/app/account-entry/__tests__/asset-leases/preview.html",
+      "file": "snapshots/feature-14.jpg",
+      "text": "Synthetic atlas lease harness. World renderer and selected artwork are outside this gate.\n\nAvatar preview unavailable. Your saved outfit is unchanged.\n\nworld\n\nAccount owner remains mounted at the World route boundary.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "world"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/account-entry/__tests__/preview.html",
+      "id": "feature-15",
+      "url": "/src/app/account-entry/__tests__/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Synthetic login unavailable"
+      ]
+    },
+    {
+      "source": "frontend/src/app/world-entry/__tests__/reference-scene-root/preview.html",
+      "id": "feature-16",
+      "url": "/src/app/world-entry/__tests__/reference-scene-root/preview.html",
+      "file": "snapshots/feature-16.jpg",
+      "text": "Skip to content\nScene fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nParade selected.\n\nInteract: Virtual stage\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 2
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/party-authoring/__tests__/fixtures/preview.html",
+      "id": "feature-17",
+      "url": "/src/features/party-authoring/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-17.jpg",
+      "text": "MEET / YOUR PARTY\n\nBring your people together\n\nSet a plan, leave room for others, and check the current venue guidance.\n\nTimes use Korea Standard Time (KST). A meeting place does not confirm physical arrival.\n\nParty details\nParty title\nTicket section\nCapacity\nIntroduction\nStart time (KST)\nEnd time (KST)\nPublic meeting place\nChoose a qualified place\nQualified test place · fixture only\nRequirements\nCreate party\nSave session draft\nRestore draft",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Bring your people together"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/account-deletion-entry/__tests__/preview.html",
+      "id": "feature-18",
+      "url": "/src/app/account-deletion-entry/__tests__/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Synthetic login unavailable"
+      ]
+    },
+    {
+      "source": "frontend/src/features/mural/editor/__tests__/reference-target/preview.html",
+      "id": "feature-19",
+      "url": "/src/features/mural/editor/__tests__/reference-target/preview.html",
+      "file": "snapshots/feature-19.jpg",
+      "text": "WALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "128 × 128 PIXEL WALL"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/community-entry/__tests__/preview.html",
+      "id": "feature-20",
+      "url": "/src/app/community-entry/__tests__/preview.html",
+      "file": "snapshots/feature-20.jpg",
+      "text": "SYNTHETIC ADAPTER FIXTURE\nFictional people, places, time and policy. No real venue or pickup guidance.\n\nparty\ngiveaway\nmanageParty\nrally\nmanage\nreserve\npickup\n\nMEET / YOUR PARTY\n\nBring your people together\n\nSet a plan, leave room for others, and check the current venue guidance.\n\nTimes use Korea Standard Time (KST). A meeting place does not confirm physical arrival.\n\nParty details\nParty title\nTicket section\nCapacity\nIntroduction\nStart time (KST)\nEnd time (KST)\nPublic meeting place\nChoose a qualified place\nSYNTHETIC qualified gift place\nSYNTHETIC party place\nRequirements\nCreate party\nSave session draft\nRestore draft",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Bring your people together"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/party-discovery/__tests__/reference/preview.html",
+      "id": "feature-21",
+      "url": "/src/features/party-discovery/__tests__/reference/preview.html",
+      "file": "snapshots/feature-21.jpg",
+      "text": "MEET\n×\nPARTIES\nPEOPLE\nMY PLAN\nFind your company\n?\nArea A Queue Group\n\nArea A · 17:30\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:30 PM GMT+9.\n12/20\nmembers\nJOIN\n?\nAfter Show Hangout\n\nAny section · 21:30\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 9:30 PM GMT+9.\n8/12\nmembers\nJOIN\n?\nPhoto Walk (Parade ver.)\n\nPlace unavailable · 16:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 4:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY\nFROZEN FIXTURE · NO LIVE SERVICE · PORTRAITS UNAVAILABLE",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "MEET",
+          "Find your company",
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/account/__tests__/deletion-preview.html",
+      "id": "feature-22",
+      "url": "/src/features/account/__tests__/deletion-preview.html",
+      "file": "snapshots/feature-22.jpg",
+      "text": "Synthetic eight-target deletion qualification. Live Auth and cleanup owners are not connected.\n\nBack\nAccount controls\n\nSigning out clears private views and drafts on this device immediately.\n\nSign out\nDelete account\n\nDeletion may remain pending or need recovery. A request acknowledgment does not mean deletion is complete.\n\nRequest account deletion\n\nCheck deletion progress",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Account controls",
+          "Delete account"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/party-discovery/__tests__/fixtures/preview.html",
+      "id": "feature-23",
+      "url": "/src/features/party-discovery/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-23.jpg",
+      "text": "FE21 LOCAL FIXTURE · synthetic parties and terrain; no live service, character art or physical arrival claim.\nSkip to content\nMEET\n−\n▾\nPARTIES\nPEOPLE\nMY PLAN\nFind your company\n?\nBefore the encore\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n2/5\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY\nParty creation is currently unavailable.\nCreate party\n→\nPeople\n→\nYour intro\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Meet",
+          "Find your company",
+          "Before the encore"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/admin/reports/__tests__/fixtures/preview.html",
+      "id": "feature-24",
+      "url": "/src/features/admin/reports/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-24.jpg",
+      "text": "Event moderation\n\nReport queue\n\nPrivate review. Use only the information needed for this action.\n\nRefresh records\nReport queue records\nRecord\tState\tReview\nPOST report\nRef 00000300 · v1\n\tOPEN\tReview\n00000000-0000-4000-8000-000000000300",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Report queue"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/world/__tests__/controls-layout/preview.html",
+      "id": "feature-25",
+      "url": "/src/world/__tests__/controls-layout/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n",
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/__tests__/default-shell/preview.html",
+      "id": "feature-26",
+      "url": "/src/app/__tests__/default-shell/preview.html",
+      "file": "snapshots/feature-26.jpg",
+      "text": "Skip to content\nMCR Concert World\nShell review · test event\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nInstrumented test host · no live world\n\nWorld\nMap\nRooms\nNearby\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "World"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/mural/editor/__tests__/visual-adoption/preview.html",
+      "id": "feature-27",
+      "url": "/src/features/mural/editor/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-27.jpg",
+      "text": "UIV05 · editor / loaded · deterministic mural fixture, no live collaboration.\n\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nCoordinates & help",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "128 × 128 PIXEL WALL"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/social-sharing/__tests__/fixtures/preview.html",
+      "id": "feature-28",
+      "url": "/src/features/social-sharing/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-28.jpg",
+      "text": "Handle settings\nIntroduction offer\nRequests list\nSwitch fixture actor\n\nPrivate by default\n\nSOCIAL LINKS\n\nAccount names are optional and never part of your public profile.\n\nSharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent.\n\nReload handle settings\n\nSharing information is no longer available.\n\nRetry read",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "SOCIAL LINKS"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/mural/editor/__tests__/preview.html",
+      "id": "feature-29",
+      "url": "/src/features/mural/editor/__tests__/preview.html",
+      "file": "snapshots/feature-29.jpg",
+      "text": "FE32 deterministic fixture · MOCK_READY only · no live collaboration\n\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nCoordinates & help",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "128 × 128 PIXEL WALL"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/gift-pickup/__tests__/preview.html",
+      "id": "feature-30",
+      "url": "/src/features/gift-pickup/__tests__/preview.html",
+      "file": "snapshots/feature-30.jpg",
+      "text": "GIFTS / YOUR PICKUP\n\nFan badges\n\nA reservation holds an item. Only a server-confirmed collection completes pickup.\n\nRead current reservation\nReserve an item\n\n1 available · OPEN\n\nPickup window: 07 Nov 2026, 17:00 KST to 07 Nov 2026, 18:00 KST.\n\nConfirm reservation",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Fan badges",
+          "Reserve an item"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/avatar/__tests__/fixtures/preview.html",
+      "id": "feature-31",
+      "url": "/src/features/avatar/__tests__/fixtures/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Canonical fixture login failed"
+      ]
+    },
+    {
+      "source": "frontend/src/features/inbox/__tests__/preview.html",
+      "id": "feature-32",
+      "url": "/src/features/inbox/__tests__/preview.html",
+      "file": "snapshots/feature-32.jpg",
+      "text": "YOUR EVENT UPDATES\n\nINBOX\n\nPrivate updates for your current account and event.\n\nUnread only\nRefresh inbox\nMark all as read\n\nTotal unread unavailable\n\nRefresh unread total\n\n0 unread shown\n\nThe list shows loaded updates. Mark all as read applies to updates already received by the server.\n\nThe inbox service is currently unavailable.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "INBOX"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/meet-beacon/__tests__/fixtures/preview.html",
+      "id": "feature-33",
+      "url": "/src/features/meet-beacon/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-33.jpg",
+      "text": "SYNTHETIC TEST FIXTURE ONLY\nFictional venue, audience, time, and authority. No real meeting or arrival acceptance.\n\nCurrent meeting\n\nReal-world meeting guidance. Avatar position is virtual and does not confirm arrival.\n\nSynthetic reviewed landmark\n\nSYNTHETIC: wait at a fictional marker. Not venue guidance.\n\nIdentification\nSYNTHETIC red scarf\nAudience\nApproved party members only\nLast confirmed by the owner\n2026-11-07T08:00:00Z\nExpires\n2026-11-07T08:15:00Z\nRevision\nBeacon 1 · Place 3 · Map 1\nReviewed place source (new tab)\n\nSource review: 2026-11-01T00:00:00Z. Check current venue guidance; this description does not change venue entry rules.\n\nNo authorized photo is available for this revision.\n\nUse current description in update form\nRevoke meeting…\nReport your real-world status\n\nWalking an avatar does not confirm physical arrival. These are your explicit self-reports.\n\nBeacon revision 1 · Meeting revision 8\n\nI am reporting my own real-world status for this meeting revision.\nOn my way\nI am here\nWe have met\nI need help\nI have left\nSimulate virtual movement (fixture only)\n\nVirtual fixture moves: 0\n\nReal-world check-in\n\nChoose a reviewed physical place and who may see your description. Virtual movement never shares a location.\n\nPrivate meeting description\nReviewed place\nChoose a place\nSynthetic reviewed landmark\nWho can see this?\nChoose an authorized audience\nSYNTHETIC approved party members\nHow to find me\nIdentification\n\nUse an identifying detail you choose to share.\n\nPhoto attachment is unavailable in this connection.\n\nVisible for (seconds)\n\nUp to 900 seconds, ending earlier if the event closes. Initial default: 15 minutes.\n\nI explicitly confirm this real-world description and its audience.\nShare check-in",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Current meeting",
+          "Synthetic reviewed landmark",
+          "Report your real-world status",
+          "Real-world check-in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/mural/sync/__tests__/visual-adoption/preview.html",
+      "id": "feature-34",
+      "url": "/src/features/mural/sync/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-34.jpg",
+      "text": "UIV05 · sync / loaded · deterministic mural fixture, no live collaboration.\n\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "128 × 128 PIXEL WALL"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/admin/event/__tests__/fixtures/preview.html",
+      "id": "feature-35",
+      "url": "/src/features/admin/event/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-35.jpg",
+      "text": "SYNTHETIC FE38 FIXTURE ONLY\n\nFictional event, operator, clock and venue. No real publication.\n\nsummary\nevent\nplaces\naudit\nEVENT SETTINGS\nRefresh event information\nOperational summary\nHealth\nDEGRADED\nOpen reports\n1\nPending jobs\n2\nOverview revision\n2\nSYNTHETIC operations event\nEvent\n00000000-0000-4000-8000-000000000002\nPhase\nDRAFT\nSettings revision\n2\n\nInputs remain a draft after refresh. Compare them with the current revision before reviewing another change.\n\nRead-only transition, freeze, archive, expiry and cleanup use the separate event closure job. No closure action runs here.\n\nCapability switches and limits\n\nSwitching off a feature must also be enforced by its owning server. Hidden controls alone do not disable a feature.\n\nparties\ngiveaways\nintros\nsocial\nmural\nBeacon lifetime (seconds)\nPickup grace (seconds)\nSocial grant lifetime (seconds)\nWall cooldown (milliseconds)\nReason for settings or phase change\nReview settings change\nReview phase change to OPEN\nNotices\n\nPublish only reviewed public information. Do not include private meeting details or report evidence.\n\nNew notice\nNotice title\nNotice text\nReviewed HTTPS source\nSource confirmed at (UTC)\nNotice publication state\nDRAFT\nPUBLISHED\nWITHDRAWN\nReview notice change\nSYNTHETIC public notice\n\nSYNTHETIC reviewed public text.\n\nNotice\n00000000-0000-4000-8000-000000000004\nState\nPUBLISHED\nRevision\n3\nSource\nhttps://notice.example.invalid/source\nConfirmed at\n2026-11-04T03:59:00.000Z\nEdit notice\nReview notice withdrawal",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Event settings",
+          "Operational summary",
+          "SYNTHETIC operations event",
+          "Notices",
+          "SYNTHETIC public notice"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/archive/__tests__/fixtures/preview.html",
+      "id": "feature-36",
+      "url": "/src/features/archive/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-36.jpg",
+      "text": "Event archive\n\nAfter the show\n\nPermitted posts and the final wall. This archive is read-only.\n\nNo live activity, private meeting details or social-sharing records are included.\n\nReload archive\nThe final wall\nFinal wall · revision 42. Frozen 2026-11-07T15:00:00Z\nPosts after the show\n\nPage 1 · latest first\n\nArchived post 00000000-0000-4000-8000-000000000012\n2026-11-07T14:00:00Z\n\nWe sang every word.\nA memory after the show.\n\nView archived image 1\nfor post 00000000-0000-4000-8000-000000000012\nNext page\n\nArchive revision 7 · read-only.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "After the show",
+          "The final wall",
+          "Posts after the show",
+          "Archived post 00000000-0000-4000-8000-000000000012"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/media-entry/__tests__/preview.html",
+      "id": "feature-37",
+      "url": "/src/app/media-entry/__tests__/preview.html",
+      "file": "snapshots/feature-37.jpg",
+      "text": "Scoped media lease qualification\n\nSynthetic authorized parent rows and photos. No production sign-in or readiness claim.\n\nShow post Show gift Leave rowRevoke policyEnd identity",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Scoped media lease qualification"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/me/__tests__/reference-target/preview.html",
+      "id": "feature-38",
+      "url": "/src/features/me/__tests__/reference-target/preview.html",
+      "file": "snapshots/feature-38.jpg",
+      "text": "SYNTHETIC PROFILE · public contract fixtures · no qualified portrait binding\nMY PROFILE\n\nAvatar preview unavailable. Your saved outfit is unchanged.\n\nSynthetic listener\n\nREVENGE\n\nmcr / live music / the black parade\nSee you at the show.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent posts from the loaded event feed page. This is a partial view of activity.\n\nPosted to the feed\nSee you at the show. Sharing a few photos after the encore.\n\n4 Nov, 10:00 UTC · 12 reactions · 3 replies\n\nPosted to the feed\nAnyone else making friendship bracelets for the queue?\n\n4 Nov, 09:00 UTC · 8 reactions · 2 replies\n\nProfile options\nBack to world\n\n64px reserved for root-owned footer · no duplicate feature artwork",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My profile",
+          "Synthetic listener"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/world-rooms/__tests__/fixtures/preview.html",
+      "id": "feature-39",
+      "url": "/src/features/world-rooms/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-39.jpg",
+      "text": "FE18 LOCAL FIXTURE · synthetic metadata and local test WebSocket; no production art, live service or physical-location claim.\nSkip to content\nROOMS\n−\n▾\nNearby in world\nBack to world\nChoose your room\nRefresh rooms\n\nRooms are shared virtual spaces. Switching does not confirm physical arrival.\n\nThe world is paused while this page is hidden.\n\nMAIN STAGE\n\nCapacity 50 · Available\n\nSwitch to MAIN STAGE\n\nRoom switching needs a current live world connection.\n\nSECOND ROOM\n\nCapacity 50 · Available\n\nSwitch to SECOND ROOM\n\nRoom switching needs a current live world connection.\n\nMake a plan\n\nParty plans are separate from virtual rooms.\n\nFind a party",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Rooms",
+          "Choose your room",
+          "MAIN STAGE",
+          "SECOND ROOM",
+          "Make a plan"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/avatar/__tests__/reference-target/preview.html",
+      "id": "feature-40",
+      "url": "/src/features/avatar/__tests__/reference-target/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+      ]
+    },
+    {
+      "source": "frontend/src/features/auth/__tests__/fixtures/recovery-preview.html",
+      "id": "feature-41",
+      "url": "/src/features/auth/__tests__/fixtures/recovery-preview.html",
+      "file": "snapshots/feature-41.jpg",
+      "text": "SYNTHETIC_FE11_RECOVERY — UI qualification only. No real account, mail delivery or OAuth provider.\n\nMCR Concert World\n\nYOUR WAY BACK\n\nReset password\n\nStart with the email you use to sign in.\n\nEmail\nRequest reset\nI have a reset token\nBack to sign inBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Reset password"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/auth/__tests__/fixtures/enrollment-preview.html",
+      "id": "feature-42",
+      "url": "/src/features/auth/__tests__/fixtures/enrollment-preview.html",
+      "file": "snapshots/feature-42.jpg",
+      "text": "SYNTHETIC_FE10 — UI qualification only. No real eligibility policy, recorded consent, account or mail delivery.\n\nMCR Concert World\n\nBEFORE THE SHOW\n\nCreate account\n\nOne account for your concert world.\n\nSynthetic preview. These eligibility and consent choices are test inputs. They are not recorded as consent.\n\nEmail account actions are not available right now.\n\nEmail\nPassword\n\n8–128 UTF-8 bytes. Spaces count; your password is not changed or trimmed.\n\nI meet the eligibility requirements in this test scenario.\nI agree to the terms and privacy requirements in this test scenario.\nCreate account\nI have a verification codeSign inReset passwordTermsPrivacy\nBack to home",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Create account"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/auth/__tests__/fixtures/preview.html",
+      "id": "feature-43",
+      "url": "/src/features/auth/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-43.jpg",
+      "text": "SIGN IN\n\nSIGN IN\n\nSign-in options are unavailable.\n\nCheck options again\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT\n\nBack to your destination",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/mural/sync/__tests__/preview.html",
+      "id": "feature-44",
+      "url": "/src/features/mural/sync/__tests__/preview.html",
+      "file": "snapshots/feature-44.jpg",
+      "text": "FE33 deterministic two-consumer fixture · MOCK_READY · no live collaboration\n\nA revision 10 · B revision 10\n\nClient A\nClient B\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Wall",
+          "128 × 128 PIXEL WALL"
+        ],
+        "canvases": 2
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/media-entry/__tests__/root-binding/preview.html",
+      "id": "feature-45",
+      "url": "/src/app/media-entry/__tests__/root-binding/preview.html",
+      "file": "snapshots/feature-45.jpg",
+      "text": "Skip to content\nFEED\n−\n▾\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nF\nFixture fan\nJust now\n\nSee you at the show\n\nImage unavailable. Post text remains available.\n\nRetry\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 0\n\nImage unavailable. Post text remains available.\n\nRetry\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 1\n\nImage unavailable. Post text remains available.\n\nRetry\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 2\n\nImage unavailable. Post text remains available.\n\nRetry\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 3\n\nImage preview\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 4\n\nImage preview\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 5\n\nImage preview\n0\n0\nF\nFixture fan\nJust now\n\nAuthorized below-fold row 6\n\nImage preview\n0\n0\nNEW POST\nNew post\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Feed"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/party-management/__tests__/preview.html",
+      "id": "feature-46",
+      "url": "/src/features/party-management/__tests__/preview.html",
+      "file": "snapshots/feature-46.jpg",
+      "text": "MEET / PARTY TOOLS\n\nBefore the encore\n\nRead current party\n\nOPEN · 2 of 5 members · revision 3\n\nCurrent meeting\n\nMeeting revision 1. Previous meeting cards are superseded.\n\n08 Nov 2026, 17:00 KST to 08 Nov 2026, 18:00 KST\n\nUse current authorized meeting details. Virtual movement never confirms physical arrival.\n\nApplications\nJules · fixture\n\nSee you at the show.\n\nPENDING\n\nApprove Jules · fixture\nReject Jules · fixture\nMembers\n\nParty owner · ACTIVE\n\n00000000-0000-4000-8000-000000000002 · ACTIVE\n\nRemove member 00000000-0000-4000-8000-000000000002\nCancel party\nRendezvous\n\nMeeting revision 1. Previous reports do not prove arrival at a changed meeting.\n\nQualified physical fixture meeting. No production venue authority.\n\nRead current rally\nI am explicitly reporting my physical meeting status.\nON MY WAY\nHERE\nMET\nNEED HELP\nLEFT",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Before the encore",
+          "Current meeting",
+          "Applications",
+          "Jules · fixture",
+          "Members",
+          "Rendezvous"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/meet-beacon/__tests__/photo-client/preview.html",
+      "id": "feature-47",
+      "url": "/src/features/meet-beacon/__tests__/photo-client/preview.html",
+      "file": "snapshots/feature-47.jpg",
+      "text": "SYNTHETIC CLIENT FIXTURE. Fictional place, audience, identity and server storage. No venue/photo-rights or live producer approval.\n\nFind each other\n\nReal-world meeting guidance. Avatar position is virtual and does not confirm arrival.\n\nReal-world check-in\n\nChoose a reviewed physical place and who may see your description. Virtual movement never shares a location.\n\nPrivate meeting description\nReviewed place\nChoose a place\nSynthetic reviewed landmark\nWho can see this?\nChoose an authorized audience\nSYNTHETIC approved party members\nHow to find me\nIdentification\n\nUse an identifying detail you choose to share.\n\nIdentification photo (optional)\n\nChoose a photo you own or have permission to share with this audience. A photo does not confirm physical arrival.\n\nVisible for (seconds)\n\nUp to 900 seconds, ending earlier if the event closes. Initial default: 15 minutes.\n\nI explicitly confirm this real-world description and its audience.\nShare check-in",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Find each other",
+          "Real-world check-in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/me/__tests__/visual-adoption/preview.html",
+      "id": "feature-48",
+      "url": "/src/features/me/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-48.jpg",
+      "text": "UIV04 · hub / loaded · deterministic fixtures. No live server or approved avatar source.\nMY PROFILE\n\nAvatar preview unavailable. Your saved outfit is unchanged.\n\nSynthetic listener\n\nREVENGE\n\nHere for the music.\nSee you in the world.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nProfile options\nBack to world",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My profile",
+          "Synthetic listener"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/me/__tests__/preview.html",
+      "id": "feature-49",
+      "url": "/src/features/me/__tests__/preview.html",
+      "file": "snapshots/feature-49.jpg",
+      "text": "SYNTHETIC FE34 · native HTTP fixtures. No production art or real server.\n\nMY PROFILE\nCould not load your profile. Retry to read the latest saved version.\nACTIVITY\nPARTIES\nGIFTS\nProfile options\nBack to world",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "My profile"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/feed-thread/__tests__/fixtures/media-preview.html",
+      "id": "feature-50",
+      "url": "/src/features/feed-thread/__tests__/fixtures/media-preview.html",
+      "file": "snapshots/feature-50.jpg",
+      "text": "TEST ONLY — actual FE04 controllers / fixture serverRevoke privacy\nNEW POST\nPost text\n\n0 / 4000 characters\n\nImages\nSelect an image \n\nImage: cancelled\n\nPublish post",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "NEW POST"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/feed-thread/__tests__/fixtures/preview.html",
+      "id": "feature-51",
+      "url": "/src/features/feed-thread/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-51.jpg",
+      "text": "TEST ONLY — native HTTP fixturesFeedRevoke privacyRead-only event\nALL\nMEETUP\nGIVEAWAY\nNOTICE\n\nThis content was deleted, hidden, withdrawn, or is no longer available.\n\nRetry read\nNEW POST",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/auth/__tests__/reference-target/preview.html",
+      "id": "feature-52",
+      "url": "/src/features/auth/__tests__/reference-target/preview.html",
+      "file": "snapshots/feature-52.jpg",
+      "text": "SYNTHETIC AUTH · production SignIn · no real account\nSIGN IN\n\nSIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/auth/__tests__/visual-adoption/preview.html",
+      "id": "feature-53",
+      "url": "/src/features/auth/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-53.jpg",
+      "text": "Synthetic Auth fixture · contract responses, no live sign-in\nSIGN IN\n\nSIGN IN\n\nSign-in options are unavailable.\n\nCheck options again\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT\n\nBack to your destination",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/avatar/__tests__/visual-adoption/preview.html",
+      "id": "feature-54",
+      "url": "/src/features/avatar/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-54.jpg",
+      "text": "UIV04 · loaded · test-only metadata/blank canvas. No character art or live save proof.\n\nCUSTOMIZE\n\nSaved outfit · revision 1\n\nHair\nOutfit\nAccessory\nTones\nPresets\nBody\nEyes\nHAIR\n· FULL OUTFITS\n1–2 / 2\nhair fixture\nhair second\nChoose by ID\n\nChanges are a draft until you save.\n\nRANDOM\nRESET\nSAVE",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "CUSTOMIZE",
+          "hair · full outfits"
+        ],
+        "canvases": 3
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/app/media-entry/__tests__/profile-composition/preview.html",
+      "id": "feature-55",
+      "url": "/src/app/media-entry/__tests__/profile-composition/preview.html",
+      "file": "snapshots/feature-55.jpg",
+      "text": "Skip to content\nPROFILE\n−\n▾\nPROFILE\nAuthorized portrait subject\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Profile",
+          "Profile",
+          "Authorized portrait subject"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/gift-discovery/__tests__/reference-native/preview.html",
+      "id": "feature-56",
+      "url": "/src/features/gift-discovery/__tests__/reference-native/preview.html",
+      "file": "snapshots/feature-56.jpg",
+      "text": "GIVEAWAY\nBROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nFixture fan badges\n\nby Fixture fan · 1 left\nof 3\n\nFixture public place\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nFixture ribbon keepsake\n\nby Fixture fan · 1 left\nof 3\n\nFixture public place\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nFixture printed zine\n\nby Fixture fan · 1 left\nof 3\n\nFixture public place\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →\nProduction Gifts component · synthetic contract data · no photos supplied · shared root footer integration pending",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "GIVEAWAY",
+          "Fixture fan badges",
+          "Fixture ribbon keepsake",
+          "Fixture printed zine"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/gift-discovery/__tests__/fixtures/preview.html",
+      "id": "feature-57",
+      "url": "/src/features/gift-discovery/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-57.jpg",
+      "text": "Synthetic FE24 read-flow fixture. No real service, stock, venue guidance or world connection.\nSkip to content\nGIFTS\n−\n▾\nBROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nHandmade fan badges\n\nby Fixture fan · 1 left\nof 3\n\nFixture exchange reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nRibbon keepsakes\n\nby Fixture fan · 1 left\nof 3\n\nFixture exchange reference\n\n17:00–18:00 KST\n\nPaused\n\nRESERVE\nFilter giveaways\nPrevious giveaways\nPage 1\nNext giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →\nMy gifts\n→\nCreate giveaway\n→",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Gifts",
+          "Handmade fan badges",
+          "Ribbon keepsakes"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/intro/__tests__/evidence/unicode-length/preview.html",
+      "id": "feature-58",
+      "url": "/src/features/intro/__tests__/evidence/unicode-length/preview.html",
+      "file": "snapshots/feature-58.jpg",
+      "text": "Back to people\nYOUR INTRO\n\nIntroduce yourself. Your audience conditions stay private and are enforced by the server.\n\nSaved state: DRAFT\n\nIntroduction\n\n23 / 1,000 Unicode code points.\n\nPrivate audience conditions\n\nLeave both bounds empty for no age condition. Otherwise use a minimum inclusive age and a maximum exclusive age. These are service sharing conditions, not concert admission rules.\n\nMinimum age · inclusive\nMaximum age · exclusive\n\nUnknown, expired or unavailable verification cannot satisfy a restricted audience.\n\nExpiry · UTC (optional)\nSave introduction\nCancel changes\nPublish introduction\nClose introduction\nLoad latest introduction\n\nClosing removes future discovery and sharing access. It cannot erase information someone already saw.\n\nAge & privacy",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "YOUR INTRO"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/theme/__tests__/preview.html",
+      "id": "feature-59",
+      "url": "/src/features/theme/__tests__/preview.html",
+      "file": "snapshots/feature-59.jpg",
+      "text": "Theme system test\n\nSYNTHETIC FE06 · three test swatches per skin. No character artwork, production world, venue or real multiplayer.\n\nCHOOSE AN ERA\n\nOne world, three skins. Your room, position and outfit stay with you.\n\nWorld skin\nREVENGE\nPARADE\nDANGER\n\nREVENGE selected.\n\nerror\n\nDispose fixture",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Theme system test",
+          "CHOOSE AN ERA"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/avatar/__tests__/option-previews/preview.html",
+      "id": "feature-60",
+      "url": "/src/features/avatar/__tests__/option-previews/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+      ]
+    },
+    {
+      "source": "frontend/src/features/event-feed/__tests__/reference/preview.html",
+      "id": "feature-61",
+      "url": "/src/features/event-feed/__tests__/reference/preview.html",
+      "file": "snapshots/feature-61.jpg",
+      "text": "FEED\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nE\nEncore fan · fixture\n2h ago\n\nSEE YOU FOR THE ENCORE!\nAnyone swapping favourite songs?\n\n42\n7\nP\nPaper parade · fixture\n4h ago\n\nTrading memories from tonight.\nWhich moment are you keeping?\n\n27\n5\nNEW POST\nSYNTHETIC FE-REF-FEED · loaded. Fixture identities/counts; venue illustration bytes reused as test media. Portrait mapping is caller-owned.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "FEED"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/admin/mural/__tests__/preview.html",
+      "id": "feature-62",
+      "url": "/src/features/admin/mural/__tests__/preview.html",
+      "file": "snapshots/feature-62.jpg",
+      "text": "FE39 deterministic C04 fixture · MOCK_READY · no live moderation\n\nWall control\nEvent closure\n\nEvent operations\n\nWALL CONTROL\n\nServer wall state loaded.\n\nWall EDITABLE · revision 10\n\nCurrent snapshot 00000000-0000-4000-8000-000000000003\n\nLocked regions\n\nNo locked regions.\n\nWall action\nPause wall\nResume wall\nLock region\nUnlock region\nRestore snapshot\nFreeze wall permanently\nReason\nReview wall action\nRefresh wall controls",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "WALL CONTROL",
+          "Locked regions"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/avatar/__tests__/compact-layout/preview.html",
+      "id": "feature-63",
+      "url": "/src/features/avatar/__tests__/compact-layout/preview.html",
+      "file": "snapshots/feature-63.jpg",
+      "text": "TEST ONLY · Synthetic geometric outfits. Host navigation below is a layout fixture.\nWorld\nMe",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [],
+        "canvases": 0
+      },
+      "errors": [
+        "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+      ]
+    },
+    {
+      "source": "frontend/src/app/shell-chrome/__tests__/preview.html",
+      "id": "feature-64",
+      "url": "/src/app/shell-chrome/__tests__/preview.html",
+      "file": "snapshots/feature-64.jpg",
+      "text": "MODULE FIXTURE · synthetic terrain / mock connection. No approved avatar art or live server.\nMCR Concert World\nSynthetic event\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nAvatar artwork unavailable\n\nMap\nRooms\nHelp\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/places/__tests__/fixtures/preview.html",
+      "id": "feature-65",
+      "url": "/src/features/places/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-65.jpg",
+      "text": "FE19 LOCAL FIXTURE · synthetic landmarks and terrain; no venue, live service, character artwork or physical arrival claim.\nSkip to content\nMAP\n−\n▾\nMAP\n1\n2\n3\n×\n5\nSchema-derived virtual schematic · map revision 1. Numbers match the place list; × means closed. Not venue artwork or a physical route.\nRECENTER AVATAR\nZOOM OUT\nZOOM IN\n\nVirtual movement never confirms real arrival.\n\nVirtual and physical place legend\nFind a place\n\n5 places shown\n\n01\n\nSynthetic virtual stage\n\nVirtual concept — no physical destination\n\nView Synthetic virtual stage\nSHOW ON MAP\n\n02\n\nSynthetic reviewed landmark\n\nVerified physical reference — check current venue guidance\n\nView Synthetic reviewed landmark\nSHOW ON MAP\n\n03\n\nSynthetic unverified gate\n\nPhysical place — verification pending\n\nView Synthetic unverified gate\nSHOW ON MAP\n\n04\n\nSynthetic closed landmark\n\nClosed — do not use as a meeting destination\n\nView Synthetic closed landmark\nSHOW ON MAP\n\n05\n\nSynthetic unavailable source\n\nPhysical reference — source unavailable\n\nView Synthetic unavailable source\nSHOW ON MAP\nREFRESH PLACE INFORMATION\nControls and meeting safety",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Map",
+          "MAP",
+          "Synthetic virtual stage",
+          "Synthetic reviewed landmark",
+          "Synthetic unverified gate",
+          "Synthetic closed landmark",
+          "Synthetic unavailable source"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/event-feed/__tests__/character-port/preview.html",
+      "id": "feature-66",
+      "url": "/src/features/event-feed/__tests__/character-port/preview.html",
+      "file": "snapshots/feature-66.jpg",
+      "text": "FEED\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nFixture author 1\n1h ago\n\nExplicit fixture author 1 / photo01_front_01\n\nOpen party ↗\n42\n7\nFixture author 2\n1h ago\n\nExplicit fixture author 2 / photo01_front_02\n\nOpen party ↗\n42\n7\nFixture author 3\n1h ago\n\nExplicit fixture author 3 / photo01_front_03\n\nOpen party ↗\n42\n7\nFixture author 4\n1h ago\n\nExplicit fixture author 4 / photo01_front_04\n\nOpen party ↗\n42\n7\nFixture author 5\n1h ago\n\nExplicit fixture author 5 / photo01_front_05\n\nOpen party ↗\n42\n7\nFixture author 6\n1h ago\n\nExplicit fixture author 6 / photo01_front_06\n\nOpen party ↗\n42\n7\nNEW POST\n\nFixture-only loaded canonical authors, simulated HTTP, real reviewed art. Production Feed readiness is unchanged.\n\nUnmount feedOmit portrait callbackReload changed authorMake read-onlyRevoke privacy",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "FEED"
+        ],
+        "canvases": 6
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/event-feed/__tests__/visual-adoption/preview.html",
+      "id": "feature-67",
+      "url": "/src/features/event-feed/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-67.jpg",
+      "text": "SYNTHETIC UIV03 FIXTURE · loaded\nFictional people and places. No live service or product art.\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nA\nAlex · fixture\n22h ago\n\nFixture: who else is waiting for the encore?\n\n3\n1\nS\nSam · fixture\n23h ago\n\nFixture: sharing our favourite moment from tonight.\n\n4\n2\nJ\nJules · fixture\n1d ago\n\nFixture: looking forward to the next song.\n\n5\n3\nNEW POST",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/places/__tests__/visual-adoption/preview.html",
+      "id": "feature-68",
+      "url": "/src/features/places/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-68.jpg",
+      "text": "UIV05 MAP SYNTHETIC FIXTURE · synthetic landmarks and terrain; no venue, live service, character artwork or physical arrival claim.\nSkip to content\nMAP\n−\n▾\nMAP\n1\n2\n3\n×\n5\nSchema-derived virtual schematic · map revision 1. Numbers match the place list; × means closed. Not venue artwork or a physical route.\nRECENTER AVATAR\nZOOM OUT\nZOOM IN\n\nVirtual movement never confirms real arrival.\n\nVirtual and physical place legend\nFind a place\n\n5 places shown\n\n01\n\nSynthetic virtual stage\n\nVirtual concept — no physical destination\n\nView Synthetic virtual stage\nSHOW ON MAP\n\n02\n\nSynthetic reviewed landmark\n\nVerified physical reference — check current venue guidance\n\nView Synthetic reviewed landmark\nSHOW ON MAP\n\n03\n\nSynthetic unverified gate\n\nPhysical place — verification pending\n\nView Synthetic unverified gate\nSHOW ON MAP\n\n04\n\nSynthetic closed landmark\n\nClosed — do not use as a meeting destination\n\nView Synthetic closed landmark\nSHOW ON MAP\n\n05\n\nSynthetic unavailable source\n\nPhysical reference — source unavailable\n\nView Synthetic unavailable source\nSHOW ON MAP\nREFRESH PLACE INFORMATION\nControls and meeting safety",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "Map",
+          "MAP",
+          "Synthetic virtual stage",
+          "Synthetic reviewed landmark",
+          "Synthetic unverified gate",
+          "Synthetic closed landmark",
+          "Synthetic unavailable source"
+        ],
+        "canvases": 1
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/admin/closure/__tests__/resume/preview.html",
+      "id": "feature-69",
+      "url": "/src/features/admin/closure/__tests__/resume/preview.html",
+      "file": "snapshots/feature-69.jpg",
+      "text": "FE39 / deterministic authenticated HTTP fixture / no live cleanup acceptance\n\nEvent operations\n\nCLOSE THE EVENT\n\nMake the event read-only, freeze the final wall, expire private access and prepare the permitted archive. Completed cleanup steps remain complete.\n\nClosure partially failed. Completed steps remain complete; inspect failed steps before recovery.\n\nClosure progress\n\nJob 00000000-0000-4000-8000-000000000123\n\nPARTIAL_FAILURE · revision 8\n\nMake event read-only — SUCCEEDED\nFreeze final wall — SUCCEEDED\nCapture final snapshot — SUCCEEDED\nExpire sharing grants — SUCCEEDED\nExpire meeting beacons — SUCCEEDED\nExport permitted archive — FAILED\nComplete retention cleanup — PENDING\n\nSome steps failed. An authorized initiating operator can explicitly retry this boundary while the event is read-only.\n\nResume reason\nRetry failed closure steps\nRefresh closure progressRecheck operator access",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "CLOSE THE EVENT",
+          "Closure progress"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/avatar/whole-character/__tests__/preview.html",
+      "id": "feature-70",
+      "url": "/src/features/avatar/whole-character/__tests__/preview.html",
+      "file": "snapshots/feature-70.jpg",
+      "text": "TEST HTTP · Genuine reviewed selected-source characters\n\nCUSTOMIZE\n\nCharacter preview unavailable\n\nThe saved character could not be verified. Reload to try again.\n\nReload saved character\nRANDOM\nRESET\nSAVE",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "CUSTOMIZE"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/safety/__tests__/preview.html",
+      "id": "feature-71",
+      "url": "/src/features/safety/__tests__/preview.html",
+      "file": "snapshots/feature-71.jpg",
+      "text": "Synthetic FE36 qualification only\n\nOpen reportBlocked usersAccount\nBlock user",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/people/__tests__/fixtures/preview.html",
+      "id": "feature-72",
+      "url": "/src/features/people/__tests__/fixtures/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 × locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Canonical fixture login failed"
+      ]
+    },
+    {
+      "source": "frontend/src/features/public/__tests__/fixtures/preview.html",
+      "id": "feature-73",
+      "url": "/src/features/public/__tests__/fixtures/preview.html",
+      "file": "snapshots/feature-73.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/public/__tests__/visual-adoption/preview.html",
+      "id": "feature-74",
+      "url": "/src/features/public/__tests__/visual-adoption/preview.html",
+      "file": "snapshots/feature-74.jpg",
+      "text": "Synthetic public fixture · no live event or approved policy\nSkip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/public/__tests__/reference-target/preview.html",
+      "id": "feature-75",
+      "url": "/src/features/public/__tests__/reference-target/preview.html",
+      "file": "snapshots/feature-75.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "frontend/src/features/people/__tests__/evidence/unicode-length/preview.html",
+      "id": "feature-76",
+      "url": "/src/features/people/__tests__/evidence/unicode-length/preview.html",
+      "file": "snapshots/feature-76.jpg",
+      "text": "MEET THE COMMUNITY\n\nPEOPLE\n\nDiscover introductions shared with you. No social account is required.\n\nYour introduction\nFind introductions\nSearch\n\n0 / 100 Unicode code points after trimming.\n\nAvatar unavailable\n😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\n\n😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "headings": [
+          "PEOPLE",
+          "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "public mobile boundary",
+      "id": "public-360",
+      "url": "/src/features/public/__tests__/reference-target/preview.html",
+      "file": "snapshots/public-360.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 360,
+        "scroll": 360,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "auth mobile boundary",
+      "id": "auth-360",
+      "url": "/src/features/auth/__tests__/reference-target/preview.html",
+      "file": "snapshots/auth-360.jpg",
+      "text": "SYNTHETIC AUTH · production SignIn · no real account\nSIGN IN\n\nSIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 360,
+        "scroll": 360,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "public mobile boundary",
+      "id": "public-430",
+      "url": "/src/features/public/__tests__/reference-target/preview.html",
+      "file": "snapshots/public-430.jpg",
+      "text": "Skip to content\n↪\nOne world. Every era.\n\nTHE MCR\nFAN SOCIAL WORLD.\n\nMEET · TRADE · HANG OUT\n\nAT THE SHOW.\n\nENTER THE WORLD\n\nSign in to check entry to the world.\n\nAbout this space\n\nAn independent fan project. Not affiliated with My Chemical Romance or concert organizers.\n\nTerms\nPrivacy\nSafety\nContact\n\nDIFFERENT ERAS. SAME CROWD.",
+      "layout": {
+        "width": 430,
+        "scroll": 430,
+        "headings": [
+          "One world. Every era.",
+          "A place for the crowd."
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    },
+    {
+      "source": "auth mobile boundary",
+      "id": "auth-430",
+      "url": "/src/features/auth/__tests__/reference-target/preview.html",
+      "file": "snapshots/auth-430.jpg",
+      "text": "SYNTHETIC AUTH · production SignIn · no real account\nSIGN IN\n\nSIGN IN\n\nEMAIL\nPASSWORD\nSIGN IN\nFORGOT PASSWORD?\n\nOR CONTINUE WITH\n\nProvider sign-in is not available yet.\n\nNO ACCOUNT?\nCREATE AN ACCOUNT",
+      "layout": {
+        "width": 430,
+        "scroll": 430,
+        "headings": [
+          "Sign in"
+        ],
+        "canvases": 0
+      },
+      "errors": []
+    }
+  ],
+  "errors": [
+    "Synthetic login unavailable",
+    "Synthetic login unavailable",
+    "Canonical fixture login failed",
+    "Unexpected token '<', \"<!doctype \"... is not valid JSON",
+    "Unexpected token '<', \"<!doctype \"... is not valid JSON",
+    "Unexpected token '<', \"<!doctype \"... is not valid JSON",
+    "Canonical fixture login failed"
+  ]
+}

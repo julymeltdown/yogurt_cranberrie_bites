@@ -324,3 +324,64 @@ the default source directory now describes map3, and quality-v6 describes map4.
 Consumers may pin these actual source artifacts for separate fixtures without
 claiming Product admission, backend runtime qualification or fidelity acceptance.
 The backend owner retains the queued Rust implementation and qualification goal.
+
+## Qualified map3/map4 follow-up
+
+Exact tested source is `e3eb56d6cd094bdc4b06643f13fc0ea2a10e2998`.
+Rust1.88 locked/offline/j2, dev/test debug0 and incremental0 compiled the service
+library, bootstrap runtime config and bootstrap test targets (exit0, 24.50s).
+Named MEDIA preflight found 65.3 GiB free and no target handles. Cargo also
+reported the normal service executable, which stopped the first overly strict
+snapshot selector. The initial release report was corrected immediately. A
+named snapshot-only regrant with no intervening holder copied/hash-verified the
+three requested test executables, excluding the normal binary; no rebuild or
+source change was needed. The target was explicitly released with no handles
+before any private PostgreSQL work. Exact JSON, source pins, frozen executables
+and logs are external at `/tmp/mcr-spatial-e3eb56d6/`.
+
+Pure tests: library **49**, runtime **13**, bootstrap **5**: **67 PASS** (exit0).
+This includes the narrow truthful virtual-place policy and positive all-three
+map4 source binding, actual valid-old-layout substitution rejection, and
+resealed geometry/footprint/destination/frame/object-set rejection.
+Thirteen inherited library native tests and two incumbent non-spatial bootstrap
+native tests were not run by this slice. Avatar tests were not repeated because
+its previously qualified hook bytes were unchanged.
+
+Both `test_spatial_release.py --native --candidate baseline` and
+`--candidate quality-v6`, using the exact frozen bootstrap executable and Cargo
+metadata, passed **two tests each** against PostgreSQL16.14. Both runs reported
+actual candidate identity/source/art/content/geometry observations, rather than
+merely labeling the requested input. Map3 restart was 92082→92303, map4 restart
+92460→92557, with marker/socket-owned cleanup PASS for both. Map4 qualification
+published map3 first into the same isolated event/database, adopted map4,
+verified immutable map3 bytes/geometry persisted, refused stale map3 selections,
+and checked exact current map4 bytes after restart. All four virtual concepts
+remain physically ineligible. No global or peer database was touched.
+
+The portable `quality-v6/component-qualification.json` pins the exact compiled
+Rust file hashes, compiler JSON/executables, native migration hashes, observed
+map identities and results. The published source checkpoint's map, binding,
+engineering review and readiness bytes remain unchanged.
+
+### Per-era source qualification for derived descriptors
+
+`quality-v6/scene-source-qualification.json` is an additive source-level review
+for each exact REVENGE/PARADE/DANGER scenery JSON and its ground/atlas resources.
+It pins the same source binding and engineering review, carries the truthful
+source-level C06 provenance fields, and states consumer obligations explicitly.
+The engineering source reviewer actually checked those bytes, C06/grid/integer
+projection/footprints, PNG integrity/decoding, distinct eras and budgets.
+Original artist files/provenance and all four virtual place records are preserved.
+This packet supplies **no ThemeManifest or Bootstrap** and does not qualify
+arbitrary theme/avatar fields. A new descriptor producer must separately validate
+its complete C06 body, map/avatar bindings and content hash. FEroot owns its new
+TEST_ONLY fixtures; Product API root owns actual operator/theme composition.
+No frontend/shared guard was modified or waived by this backend patch.
+
+The additive packet has an independent Python regression. Eleven Python tests,
+both exact builder checks, formatting, planning and diff checks pass (exit0).
+The unchanged Rust/source candidates retain their exact 67+4 qualification;
+the later Python-only packet does not imply a new native run. Quality-v7 remains
+a future source handoff and is not silently adopted. The component handoff is
+INTEGRATED; actual operator configuration/admission, fidelity/user acceptance and
+real multiuser qualification remain open. Readiness remains **NOT_ADMITTED**.

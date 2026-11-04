@@ -219,9 +219,8 @@ impl PgScopeLedger {
         key: &ScopeKey,
         identity: &ProducerTransaction,
     ) -> Result<(), Status> {
-        if identity.effect_binding_digest != key.binding_digest {
-            return Err(invalid());
-        }
+        // The effect digest can bind a narrower avatar/profile/media effect.
+        // The scope's separate FK binds it to the original owner authority.
         let digest = identity.digest()?;
         let value = serde_json::to_value(identity).map_err(|_| invalid())?;
         let mut tx = self.transaction().await?;
@@ -248,7 +247,7 @@ impl PgScopeLedger {
         owner: Workload,
         registration: Uuid,
     ) -> Result<(), Status> {
-        if registration.is_nil() || identity.effect_binding_digest != key.binding_digest {
+        if registration.is_nil() {
             return Err(invalid());
         }
         let column = match owner {
@@ -261,14 +260,24 @@ impl PgScopeLedger {
         if self.lock(&mut tx, key).await? != ScopePhase::Active {
             return Err(Status::failed_precondition("Product scope is sealed"));
         }
-        let query = format!("SELECT {column} FROM concert_product_owner_transactions WHERE instance_id=$1 AND scope_id=$2 AND identity_digest=$3");
-        let old: Option<Option<Uuid>> = sqlx::query_scalar(&query)
+        let query = format!("SELECT {column},identity FROM concert_product_owner_transactions WHERE instance_id=$1 AND scope_id=$2 AND identity_digest=$3");
+        let old: Option<(Option<Uuid>, serde_json::Value)> = sqlx::query_as(&query)
             .bind(key.instance)
             .bind(key.scope)
             .bind(digest.as_slice())
             .fetch_optional(&mut *tx)
             .await
             .map_err(unavailable)?;
+        let old = old
+            .map(|(registration, value)| {
+                let actual: ProducerTransaction =
+                    serde_json::from_value(value).map_err(|_| invalid())?;
+                if actual != *identity {
+                    return Err(Status::permission_denied("Product transaction mismatch"));
+                }
+                Ok(registration)
+            })
+            .transpose()?;
         match old {
             Some(Some(old)) if old == registration => (),
             Some(None) => {
@@ -297,8 +306,7 @@ impl PgScopeLedger {
         auth: Uuid,
         friend: Uuid,
     ) -> Result<(), Status> {
-        if auth.is_nil() || friend.is_nil() || identity.effect_binding_digest != key.binding_digest
-        {
+        if auth.is_nil() || friend.is_nil() {
             return Err(invalid());
         }
         let digest = identity.digest()?;
@@ -306,10 +314,14 @@ impl PgScopeLedger {
         if self.lock(&mut tx, key).await? != ScopePhase::Active {
             return Err(Status::failed_precondition("Product scope is sealed"));
         }
-        let old: Option<(Option<Uuid>, Option<Uuid>, bool)> = sqlx::query_as("SELECT auth_registration_id,friend_registration_id,confirmed_at IS NOT NULL FROM concert_product_owner_transactions WHERE instance_id=$1 AND scope_id=$2 AND identity_digest=$3")
+        let old: Option<(Option<Uuid>, Option<Uuid>, bool,serde_json::Value)> = sqlx::query_as("SELECT auth_registration_id,friend_registration_id,confirmed_at IS NOT NULL,identity FROM concert_product_owner_transactions WHERE instance_id=$1 AND scope_id=$2 AND identity_digest=$3")
             .bind(key.instance).bind(key.scope).bind(digest.as_slice()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
-        let (old_auth, old_friend, confirmed) =
+        let (old_auth, old_friend, confirmed, value) =
             old.ok_or_else(|| Status::failed_precondition("Unknown product transaction"))?;
+        let actual: ProducerTransaction = serde_json::from_value(value).map_err(|_| invalid())?;
+        if actual != *identity {
+            return Err(Status::permission_denied("Product transaction mismatch"));
+        }
         if old_auth != Some(auth) || old_friend != Some(friend) {
             return Err(Status::permission_denied("Product tracking mismatch"));
         }
@@ -407,21 +419,21 @@ impl PgScopeLedger {
             }
         };
         let digest = identity.digest()?;
-        let query = format!("SELECT s.binding,t.identity FROM concert_product_owner_transactions t JOIN concert_product_owner_scopes s USING(instance_id,scope_id,binding_digest) WHERE t.instance_id=$1 AND t.{column}=$2 AND t.identity_digest=$3");
-        let row: Option<(serde_json::Value, serde_json::Value)> = sqlx::query_as(&query)
+        let query = format!("SELECT s.binding,t.identity,s.binding_digest FROM concert_product_owner_transactions t JOIN concert_product_owner_scopes s USING(instance_id,scope_id,binding_digest) WHERE t.instance_id=$1 AND t.{column}=$2 AND t.identity_digest=$3");
+        let row: Option<(serde_json::Value, serde_json::Value, Vec<u8>)> = sqlx::query_as(&query)
             .bind(self.instance)
             .bind(registration)
             .bind(digest.as_slice())
             .fetch_optional(&self.pool)
             .await
             .map_err(unavailable)?;
-        let (binding, transaction) = row.ok_or_else(|| {
+        let (binding, transaction, scope_digest) = row.ok_or_else(|| {
             Status::failed_precondition("Unknown product settlement registration")
         })?;
         let actual: ProducerTransaction =
             serde_json::from_value(transaction).map_err(|_| invalid())?;
         let binding: OwnerBinding = serde_json::from_value(binding).map_err(|_| invalid())?;
-        if &actual != identity || binding.digest()? != identity.effect_binding_digest {
+        if &actual != identity || binding.digest()?.as_slice() != scope_digest {
             return Err(Status::permission_denied("Product settlement mismatch"));
         }
         Ok(binding)
@@ -447,25 +459,31 @@ impl PgScopeLedger {
             }
         };
         let digest = identity.digest()?;
-        let query=format!("SELECT s.binding,t.identity,t.{column},s.phase FROM concert_product_owner_transactions t JOIN concert_product_owner_scopes s USING(instance_id,scope_id,binding_digest) WHERE t.instance_id=$1 AND t.identity_digest=$2");
-        let rows: Vec<(serde_json::Value, serde_json::Value, Option<Uuid>, String)> =
-            sqlx::query_as(&query)
-                .bind(self.instance)
-                .bind(digest.as_slice())
-                .fetch_all(&self.pool)
-                .await
-                .map_err(unavailable)?;
+        let query=format!("SELECT s.binding,t.identity,t.{column},s.phase,s.binding_digest FROM concert_product_owner_transactions t JOIN concert_product_owner_scopes s USING(instance_id,scope_id,binding_digest) WHERE t.instance_id=$1 AND t.identity_digest=$2");
+        let rows: Vec<(
+            serde_json::Value,
+            serde_json::Value,
+            Option<Uuid>,
+            String,
+            Vec<u8>,
+        )> = sqlx::query_as(&query)
+            .bind(self.instance)
+            .bind(digest.as_slice())
+            .fetch_all(&self.pool)
+            .await
+            .map_err(unavailable)?;
         // A native identity must resolve unambiguously to one original scope.
         if rows.len() != 1 {
             return Err(Status::failed_precondition(
                 "Unknown product settlement transaction",
             ));
         }
-        let (binding, value, ack, state) = rows.into_iter().next().ok_or_else(invalid)?;
+        let (binding, value, ack, state, scope_digest) =
+            rows.into_iter().next().ok_or_else(invalid)?;
         let actual: ProducerTransaction = serde_json::from_value(value).map_err(|_| invalid())?;
         let binding: OwnerBinding = serde_json::from_value(binding).map_err(|_| invalid())?;
         if actual != *identity
-            || binding.digest()? != identity.effect_binding_digest
+            || binding.digest()?.as_slice() != scope_digest
             || ack.is_some_and(|id| id != registration)
         {
             return Err(Status::permission_denied("Product settlement mismatch"));
