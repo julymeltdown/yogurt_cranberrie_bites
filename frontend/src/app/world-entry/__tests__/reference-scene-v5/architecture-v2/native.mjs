@@ -19,6 +19,7 @@ await mkdir(browserTemp,{mode:0o700});process.env.TMPDIR=browserTemp // Include 
 const labelSource = JSON.parse(await readFile(resolve(frontend, 'src/world/reference-scene/spatial-v5/map-labels-source.json'), 'utf8'))
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 const report = { status: 'IN_PROGRESS', qualification: 'ARCHITECTURE_V2_ACTUAL_ROOT_RENDERER_MAP_AND_NEW_EDITABLE_SOURCE_FIXTURES',
+  startedAt: new Date().toISOString(),
   resourceAllocation: process.env.MCR_CAPTURE_ALLOCATION, resourceLimit: { minimumFreeGiB: 8, maximumNewGiB: 0.2 },
   candidate: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), sourcePins: {}, checks: [],
   limits: ['Synthetic map7005 is not an allocated backend release', 'No invented REVIEWED provenance; optional skins remain guarded',
@@ -138,7 +139,7 @@ async function rendererCases() {
     const s=await call('state');assert.equal(s.mounts,1);assert.equal(s.canvases,1);assert.equal(s.scene.textures,2);assert.equal(s.scene.objects,35);assert.equal(s.avatars.sprites,6)
     assert(s.requests.filter(p=>p.endsWith('.png')).every(p=>p.includes('/quality-v10/ground.png')||p.includes('/architecture-v2/')))
     await page.screenshot({path:resolve(output,`renderer-${era.toLowerCase()}-${width}.png`)})
-    report.renderer.push({width,height,era,worldPixels,mapPixels,occlusion,architectureOcclusion,state:s})
+    report.renderer.push({width,height,era,capturedAt:new Date().toISOString(),worldPixels,mapPixels,occlusion,architectureOcclusion,state:s})
    }
    const cleanup=await call('dispose');assert.equal(cleanup.scene.textures,0);assert.equal(cleanup.decodedImages,0);assert.equal(cleanup.cache.residentBytes,0);assert.equal(cleanup.canvases,0);assert.equal(cleanup.owner.leases,0)
    assert.deepEqual(errors,[]);report.renderer.at(-1).cleanup=cleanup
@@ -169,7 +170,7 @@ try {
    let short=null
    if(width===390){await page.setViewportSize({width,height:754});await expect.poll(async()=>(await mapBounds(page)).viewport.height).not.toBe(original.viewport.height);await settled(page);assertFit(await mapBounds(page));short=await inspectLayout(page);assertLayout(short);await page.screenshot({path:resolve(output,`map-${era.toLowerCase()}-${width}-h754.png`)})}
    const after=await state(page),w=await world(page);assert.equal(after.factoryCalls,1);assert.equal(after.socketPeak,1);assert.equal(w.totalGames,1);assert.deepEqual(await page.evaluate(()=>window.__SCENE_V5_ROOT__.cameraProjection().self),before);assert.deepEqual(fixture.errors,[])
-   report.checks.push({width,era,pixels,layout,short,navigation,singleton:w,cleanup:await close(fixture)})
+   report.checks.push({width,height:844,era,capturedAt:new Date().toISOString(),pixels,layout,short,navigation,singleton:w,cleanup:await close(fixture)})
   }catch(error){await page.screenshot({path:resolve(output,'failure.png')}).catch(()=>{});await close(fixture).catch(()=>{});throw error}
  }
  for(const status of ['closed','unavailable']){
@@ -178,7 +179,7 @@ try {
   const marker=page.locator('[data-map-compact-marker*="park"]');await expect(marker).toBeVisible();if(status==='unavailable'){await marker.click();await expect(page.getByText('This place is unavailable',{exact:true})).toBeVisible();await page.getByRole('link',{name:'All places',exact:true}).click()}
   await marker.focus();await expect(marker).toBeFocused();assert((await marker.getAttribute('aria-label')).includes(status));assert.equal(await page.locator('.places-map-plaque').count(),4)
   const bounds=await marker.evaluate(n=>{const a=n.getBoundingClientRect(),b=n.querySelector('small').getBoundingClientRect();return{width:a.width,height:a.height,badgeInside:b.left>=a.left&&b.right<=a.right&&b.top>=a.top&&b.bottom<=a.bottom}});assert.deepEqual(bounds,{width:44,height:44,badgeInside:true})
-  await page.screenshot({path:resolve(output,`marker-${status}-390.png`)});assert.deepEqual(fixture.errors,[]);report.checks.push({status,bounds,cleanup:await close(fixture)})
+  await page.screenshot({path:resolve(output,`marker-${status}-390.png`)});assert.deepEqual(fixture.errors,[]);report.checks.push({status,capturedAt:new Date().toISOString(),bounds,cleanup:await close(fixture)})
  }
  report.editable=[]
  for(const era of ['REVENGE','PARADE','DANGER']){
@@ -188,7 +189,7 @@ try {
   await page.setContent(`<html><body style="margin:0">${svg}</body></html>`);await page.evaluate(()=>document.fonts.ready);await settled(page)
   const geometry=await page.evaluate(()=>({objects:document.querySelectorAll('[data-object]').length,labels:[...document.querySelectorAll('[data-label]')].map(n=>({label:n.dataset.label,anchor:n.dataset.anchor,rect:['x','y','width','height'].map(k=>Number(n.querySelector('[data-paper]').getAttribute(k)))})),font:[...document.fonts].some(f=>f.family.includes('MCR Map Labels')&&f.status==='loaded')}))
   assert.equal(geometry.objects,49);assert.equal(geometry.font,true);assert.deepEqual(geometry.labels.map(l=>l.rect),labelSource.labels.map(l=>[l.rect.x,l.rect.y,l.rect.width,l.rect.height]))
-  await page.screenshot({path:resolve(output,`editable-${era.toLowerCase()}.png`)});await page.close();report.editable.push({metadata,geometry})
+  await page.screenshot({path:resolve(output,`editable-${era.toLowerCase()}.png`)});await page.close();report.editable.push({capturedAt:new Date().toISOString(),metadata,geometry})
  }
  report.targetRegistration=measurements.labels.map(l=>({label:l.label,error:l.proposed_center_error_source_px}));assert(report.targetRegistration.every(l=>l.error.every(e=>Math.abs(e)<=.5)))
  report.status='PASS'
@@ -198,6 +199,7 @@ finally{
  await browser?.close();await server.close();await rm(resolve(output,'vite-cache'),{recursive:true,force:true});await rm(browserTemp,{recursive:true,force:true});if(priorTemp===undefined)delete process.env.TMPDIR;else process.env.TMPDIR=priorTemp
  report.cleanup={browserClosed:!browser?.isConnected(),serverClosed:!server.httpServer?.listening,ownedCacheAndBrowserTempRemoved:true}
  report.resources={samples:resourceSamples,minimumFreeBytes:Math.min(...resourceSamples.map(s=>s.freeBytes)),maximumNewBytes:Math.max(...resourceSamples.map(s=>s.outputBytes))}
+ report.finishedAt=new Date().toISOString()
  await writeFile(resolve(output,'native.json'),JSON.stringify(report,null,2)+'\n')
 }
 console.log(JSON.stringify({status:report.status,rendererCases:report.renderer?.length,mapCases:9,markerCases:2,editable:report.editable?.length}))
