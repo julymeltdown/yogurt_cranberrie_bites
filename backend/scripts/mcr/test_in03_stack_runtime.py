@@ -169,6 +169,21 @@ class RuntimeBoundaries(unittest.TestCase):
         with self.assertRaisesRegex(stack.InputRefusal, "^managed-mtls-endpoint-required$"):
             stack.validate_modes(envs, concert)
 
+    def test_functional_pools_leave_background_capacity_without_provider_overrides(self):
+        envs, concert = self.managed()
+        # The actual Gateway parser rejects a one-connection journal. Keep
+        # independent journal/background pools while preserving mandatory modes.
+        journal = int(envs["api-gateway"]["GATEWAY_JOURNAL_DB_POOL_MAX_CONNECTIONS"])
+        self.assertGreaterEqual(journal, 2)
+        self.assertLessEqual(journal, 64)
+        limits = [int(value) for env in envs.values() for name, value in env.items()
+                  if name.endswith("_DB_POOL_MAX_CONNECTIONS")]
+        self.assertEqual(len(limits), 8)  # Six owners plus the two Gateway pools.
+        self.assertTrue(all(value > 0 for value in limits))
+        self.assertLessEqual(sum(limits), 18)
+        self.assertFalse(any("CLAIM" in key or "AGE_PROVIDER" in key for key in concert))
+        stack.validate_modes(envs, concert)
+
     def test_accepted_provider_cannot_be_fabricated(self):
         envs, concert = self.managed()
         concert["CONCERT_SOCIAL_ACCEPTED_CLAIM_ISSUER"] = "fake"

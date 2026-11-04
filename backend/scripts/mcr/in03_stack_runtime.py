@@ -275,6 +275,21 @@ def managed_features(envs, concert, urls, signing_pairs):
         NOTIFICATION_CONCERT_AUTH_GRPC_ENDPOINT=urls["auth"],
         NOTIFICATION_CONCERT_FRIEND_GRPC_ENDPOINT=urls["friend"],
         NOTIFICATION_CONCERT_ROOT_GRPC_ENDPOINT=urls["concert"])
+    # One isolated functional stack shares a PostgreSQL process budget. Bound
+    # each real pool rather than starving all owners with a low server-wide
+    # connection limit. Gateway's journal needs two connections; its background
+    # worker uses its separate pool. This is not a load/production recommendation.
+    for service, limits in {
+        "auth-service": {"AUTH_DB_POOL_MAX_CONNECTIONS": "3"},
+        "friend-service": {"FRIEND_DB_POOL_MAX_CONNECTIONS": "3"},
+        "profile-service": {"PROFILE_DB_POOL_MAX_CONNECTIONS": "2"},
+        "notification-service": {"NOTIFICATION_DB_POOL_MAX_CONNECTIONS": "2"},
+        "post-service": {"POST_DB_POOL_MAX_CONNECTIONS": "3"},
+        "api-gateway": {"GATEWAY_DB_POOL_MAX_CONNECTIONS": "2",
+                        "GATEWAY_JOURNAL_DB_POOL_MAX_CONNECTIONS": "2",
+                        "GATEWAY_BACKGROUND_DB_POOL_MAX_CONNECTIONS": "1"},
+    }.items():
+        envs[service].update(limits)
     validate_modes(envs, concert)
 
 
