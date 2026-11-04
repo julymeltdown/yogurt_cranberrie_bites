@@ -1,0 +1,25 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "source": "83d0f54561ff33d4e083b9ad766e7891e8764fc9",
+  "started": 1793820126.672885,
+  "commands": [
+    {
+      "name": "preflight",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/qualify_baseline.py",
+        "--pins",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-enrollment-baseline/round03/candidate-pins.json",
+        "--output",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-enrollment-baseline/round03/preflight.json"
+      ],
+      "exit": 1
+    }
+  ],
+  "status": "FAIL",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "error": "RuntimeError('preflight failed; original output retained')",
+  "finished": 1793820139.687774
+}

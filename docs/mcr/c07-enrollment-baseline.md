@@ -82,3 +82,20 @@ Present own trigger properties require every declared own companion; inherited
 object properties cannot satisfy dependencies. The Python oracle and canonical
 schemas remain unchanged. The updated source inventory has no unsupported
 keyword; it is source preparation, not a passing qualification result.
+
+The third attempt, `CORE-GENERATOR-KEYWORDS-SOURCE-20261104T1922Z`, accepted
+at 19:21:58.127488 UTC and fully released at 19:22:19.949224 UTC. Generation
+and its exact-output verification succeeded: all 1,591 previous response-case
+identities survived, and seven added operations produced 1,696 response cases.
+The unchanged temporary QA01 preflight passed source schemas and fixture
+checks, then rejected the stale DOMAIN transport metadata hash. Its generator
+reads the whole CORE schema through an unchanged DOMAIN query reference.
+The active pins and immutable archive state remained unchanged. `round03/`
+retains the full failed preflight, generated-output hashes, delta audit and FULL.
+
+Root153 stopped/returned exactly
+`frontend/src/shared/api/domain-operations.generated.ts` for regeneration with
+the unchanged transport generator. The owner driver requires identical runtime
+exports and permits only the CORE source-hash comment to change. The added
+leaf is included in the frozen readset and final qualified handoff. Canonical
+source, policy, generator semantics and application clients remain unchanged.

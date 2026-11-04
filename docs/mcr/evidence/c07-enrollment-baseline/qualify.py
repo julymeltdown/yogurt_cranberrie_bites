@@ -56,6 +56,18 @@ try:
     active = qa.PIN.read_bytes()
     old = json.loads(active)
     record('active-before.json', {'canonical': old['canonical_candidate'], 'sha256': sha(active)})
+    transport = ROOT / 'frontend/src/shared/api/domain-operations.generated.ts'
+    before_transport = transport.read_text()
+    run('domain-transport-generation', [sys.executable, '-B', ROOT / 'scripts/mcr/generate-domain-transport.py'])
+    after_transport = transport.read_text()
+    marker = 'export const DOMAIN_OPERATIONS = '
+    assert before_transport.split(marker, 1)[1] == after_transport.split(marker, 1)[1], 'DOMAIN runtime exports must remain byte-identical'
+    transport_deltas = [(a, b) for a, b in zip(before_transport.splitlines(), after_transport.splitlines()) if a != b]
+    assert len(before_transport.splitlines()) == len(after_transport.splitlines())
+    assert all(a.startswith('// contracts/core/v1/core.schema.json: ') and b.startswith('// contracts/core/v1/core.schema.json: ')
+               for a, b in transport_deltas), 'Only the granted CORE input-hash comment may change'
+    record('domain-transport-generation.json', {'beforeSha256': sha(before_transport.encode()),
+        'afterSha256': sha(after_transport.encode()), 'runtimeExportsByteIdentical': True, 'commentDeltas': transport_deltas})
     # The projection is computed in memory, then applied only to the two granted
     # machine leaves. No ordinary generator's broad write mode is invoked.
     domain = module('enrollment_domain', 'backend/scripts/docs/generate-mcr-domain.py')

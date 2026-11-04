@@ -738,6 +738,102 @@ export const document = {
               "reason"
             ],
             "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "POLICY_UNAVAILABLE"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "POLICY_STALE"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "ATTEMPT_EXPIRED"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "ATTEMPT_INVALID"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "ACKNOWLEDGEMENTS_REQUIRED"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "IDEMPOTENCY_CONFLICT"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "VERIFICATION_FAILED"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "ACCOUNT_INACTIVE"
+              }
+            },
+            "required": [
+              "reason"
+            ],
+            "type": "object"
           }
         ]
       },
@@ -7263,6 +7359,399 @@ export const document = {
         ],
         "type": "object"
       },
+      "EnrollmentAccepted": {
+        "additionalProperties": false,
+        "properties": {
+          "attemptId": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "expiresAt": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "resendAvailableAt": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "status": {
+            "const": "ACCEPTED"
+          }
+        },
+        "required": [
+          "status",
+          "attemptId",
+          "expiresAt",
+          "resendAvailableAt",
+          "serverTime"
+        ],
+        "type": "object"
+      },
+      "EnrollmentAdmission": {
+        "additionalProperties": false,
+        "properties": {
+          "acceptedRevision": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "not": {
+                  "const": "00000000-0000-0000-0000-000000000000"
+                },
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "decision": {
+            "enum": [
+              "ADMITTED",
+              "CONSENT_REQUIRED",
+              "POLICY_UNAVAILABLE",
+              "ACCOUNT_INACTIVE"
+            ]
+          },
+          "policyRevision": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "not": {
+                  "const": "00000000-0000-0000-0000-000000000000"
+                },
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          }
+        },
+        "required": [
+          "decision",
+          "policyRevision",
+          "acceptedRevision",
+          "serverTime"
+        ],
+        "type": "object"
+      },
+      "EnrollmentAttempt": {
+        "additionalProperties": false,
+        "properties": {
+          "attemptId": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "expiresAt": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "policyRevision": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          }
+        },
+        "required": [
+          "attemptId",
+          "policyRevision",
+          "expiresAt",
+          "serverTime"
+        ],
+        "type": "object"
+      },
+      "EnrollmentBeginRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "policyRevision": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "policyRevision"
+        ],
+        "type": "object"
+      },
+      "EnrollmentConsentRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "acknowledgementIds": {
+            "items": {
+              "maxLength": 80,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.-]+$",
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "idempotencyKey": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "policyRevision": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "policyRevision",
+          "acknowledgementIds",
+          "idempotencyKey"
+        ],
+        "type": "object"
+      },
+      "EnrollmentPolicy": {
+        "additionalProperties": false,
+        "properties": {
+          "contractVersion": {
+            "const": "1.0"
+          },
+          "documents": {
+            "items": {
+              "$ref": "#/components/schemas/EnrollmentPolicyDocument"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "type": "array"
+          },
+          "expiresAt": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "publishedAt": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "revision": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          }
+        },
+        "required": [
+          "contractVersion",
+          "revision",
+          "documents",
+          "publishedAt",
+          "expiresAt",
+          "serverTime"
+        ],
+        "type": "object"
+      },
+      "EnrollmentPolicyDocument": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 80,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.-]+$",
+            "type": "string"
+          },
+          "requiredAcknowledgementId": {
+            "maxLength": 80,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.-]+$",
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "maxLength": 2048,
+            "pattern": "^https://",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "sha256",
+          "requiredAcknowledgementId"
+        ],
+        "type": "object"
+      },
+      "EnrollmentResendRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "attemptId": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "idempotencyKey": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "attemptId",
+          "idempotencyKey"
+        ],
+        "type": "object"
+      },
+      "EnrollmentSignupRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "acknowledgementIds": {
+            "items": {
+              "maxLength": 80,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.-]+$",
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "attemptId": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "maxLength": 254,
+            "type": "string"
+          },
+          "idempotencyKey": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "password": {
+            "type": "string",
+            "x-mcr-utf8-bytes": {
+              "maximum": 128,
+              "minimum": 8
+            }
+          },
+          "policyRevision": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "attemptId",
+          "policyRevision",
+          "acknowledgementIds",
+          "idempotencyKey",
+          "email",
+          "password"
+        ],
+        "type": "object"
+      },
+      "EnrollmentVerified": {
+        "additionalProperties": false,
+        "properties": {
+          "attemptId": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "serverTime": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "status": {
+            "const": "VERIFIED"
+          }
+        },
+        "required": [
+          "status",
+          "attemptId",
+          "serverTime"
+        ],
+        "type": "object"
+      },
+      "EnrollmentVerifyRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "attemptId": {
+            "format": "uuid",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            },
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "code": {
+            "pattern": "^[0-9]{6}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "attemptId",
+          "code"
+        ],
+        "type": "object"
+      },
       "ErrorResponse": {
         "properties": {
           "code": {
@@ -8472,6 +8961,9 @@ export const document = {
             "minimum": 1,
             "type": "integer"
           },
+          "motionProfileVersion": {
+            "const": "1.0.0"
+          },
           "protocolVersion": {
             "const": "1.0.0"
           },
@@ -8568,6 +9060,9 @@ export const document = {
             "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
             "type": "string"
           },
+          "selfMotion": {
+            "$ref": "#/components/schemas/Realtime_world_SelfMotion"
+          },
           "serverTick": {
             "maximum": 9007199254740991,
             "minimum": 0,
@@ -8661,6 +9156,91 @@ export const document = {
           "axisX",
           "axisY",
           "buttons"
+        ],
+        "type": "object"
+      },
+      "Realtime_world_MotionHeldInput": {
+        "additionalProperties": false,
+        "properties": {
+          "axisX": {
+            "maximum": 1,
+            "minimum": -1,
+            "type": "number"
+          },
+          "axisY": {
+            "maximum": 1,
+            "minimum": -1,
+            "type": "number"
+          },
+          "remainingHoldMs": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "seq": {
+            "maximum": 9007199254740991,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "seq",
+          "axisX",
+          "axisY",
+          "remainingHoldMs"
+        ],
+        "type": "object"
+      },
+      "Realtime_world_MotionProfile": {
+        "additionalProperties": false,
+        "properties": {
+          "axes": {
+            "const": "UNIT_DISK_ANALOG"
+          },
+          "catchUp": {
+            "const": "DISCARD_OLDEST_DUE_STEPS"
+          },
+          "collision": {
+            "const": "POINT_SUPERCOVER_STOP"
+          },
+          "geometryHash": {
+            "pattern": "^sha256:[a-f0-9]{64}$",
+            "type": "string"
+          },
+          "holdBoundary": {
+            "const": "AGE_LE_HOLD_MS"
+          },
+          "holdMs": {
+            "maximum": 1000,
+            "minimum": 50,
+            "type": "integer"
+          },
+          "maxCatchUpSteps": {
+            "const": 4
+          },
+          "speedPxPerSecond": {
+            "exclusiveMinimum": 0,
+            "maximum": 1000,
+            "type": "number"
+          },
+          "stepMs": {
+            "const": 50
+          },
+          "version": {
+            "const": "1.0.0"
+          }
+        },
+        "required": [
+          "version",
+          "geometryHash",
+          "stepMs",
+          "speedPxPerSecond",
+          "holdMs",
+          "maxCatchUpSteps",
+          "axes",
+          "collision",
+          "catchUp",
+          "holdBoundary"
         ],
         "type": "object"
       },
@@ -8863,6 +9443,53 @@ export const document = {
         ],
         "type": "object"
       },
+      "Realtime_world_SelfMotion": {
+        "additionalProperties": false,
+        "properties": {
+          "consumedInputSeq": {
+            "maximum": 9007199254740991,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "droppedTicks": {
+            "maximum": 9007199254740991,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "heldInput": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Realtime_world_MotionHeldInput"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "inputAppliedTicks": {
+            "maximum": 9007199254740991,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "position": {
+            "$ref": "#/components/schemas/Realtime_world_WorldPosition"
+          },
+          "serverTick": {
+            "maximum": 9007199254740991,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "serverTick",
+          "position",
+          "consumedInputSeq",
+          "inputAppliedTicks",
+          "droppedTicks",
+          "heldInput"
+        ],
+        "type": "object"
+      },
       "Realtime_world_ServerMessage": {
         "oneOf": [
           {
@@ -8915,6 +9542,14 @@ export const document = {
       },
       "Realtime_world_Snapshot": {
         "additionalProperties": false,
+        "dependentRequired": {
+          "motionProfile": [
+            "selfMotion"
+          ],
+          "selfMotion": [
+            "motionProfile"
+          ]
+        },
         "properties": {
           "accessExpiresAt": {
             "format": "date-time",
@@ -8957,6 +9592,9 @@ export const document = {
             "minimum": 1,
             "type": "integer"
           },
+          "motionProfile": {
+            "$ref": "#/components/schemas/Realtime_world_MotionProfile"
+          },
           "players": {
             "items": {
               "$ref": "#/components/schemas/Realtime_world_WorldPlayer"
@@ -8989,6 +9627,9 @@ export const document = {
             "format": "uuid",
             "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
             "type": "string"
+          },
+          "selfMotion": {
+            "$ref": "#/components/schemas/Realtime_world_SelfMotion"
           },
           "selfUserId": {
             "format": "uuid",
@@ -14182,6 +14823,475 @@ export const document = {
     }
   },
   "operations": {
+    "acceptEnrollmentPolicy": {
+      "method": "POST",
+      "operationId": "acceptEnrollmentPolicy",
+      "parameters": [
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        }
+      ],
+      "path": "/api/auth/enrollment/consent",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EnrollmentConsentRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentAdmission"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {}
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/CoreErrorResponse"
+                      },
+                      {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "reason": {
+                                "enum": [
+                                  "ACCOUNT_INACTIVE",
+                                  "PERMISSION_DENIED",
+                                  "CONSENT_REQUIRED"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "$ref": "#/components/schemas/OriginErrorResponse"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [
+        {
+          "BearerAuth": []
+        }
+      ],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-origin-rejection": {
+        "downstream_dispatch": false,
+        "schema": {
+          "$ref": "#/components/schemas/OriginErrorResponse"
+        },
+        "status": 403
+      },
+      "x-mcr-retry": "EXPLICIT_SAME_BODY_IDEMPOTENCY_KEY_ONLY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
+    },
     "applyConcertParty": {
       "method": "POST",
       "operationId": "applyConcertParty",
@@ -14966,6 +16076,478 @@ export const document = {
         "operationId": "authorizeOAuth",
         "path": "/auth/oauth/{provider}/authorize"
       }
+    },
+    "beginEnrollmentAttempt": {
+      "method": "POST",
+      "operationId": "beginEnrollmentAttempt",
+      "parameters": [
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        }
+      ],
+      "path": "/api/auth/enrollment/attempts",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EnrollmentBeginRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "201": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentAttempt"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {
+            "Set-Cookie": {
+              "description": "Opaque browser binding; HttpOnly Secure SameSite=Strict; no Domain; never JavaScript-readable.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/CoreErrorResponse"
+                      },
+                      {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "reason": {
+                                "enum": [
+                                  "ACCOUNT_INACTIVE",
+                                  "PERMISSION_DENIED",
+                                  "CONSENT_REQUIRED"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "$ref": "#/components/schemas/OriginErrorResponse"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-origin-rejection": {
+        "downstream_dispatch": false,
+        "schema": {
+          "$ref": "#/components/schemas/OriginErrorResponse"
+        },
+        "status": 403
+      },
+      "x-mcr-retry": "EXPLICIT_SAME_BODY_IDEMPOTENCY_KEY_ONLY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
     },
     "blockConcertUser": {
       "method": "PUT",
@@ -43198,6 +44780,870 @@ export const document = {
       "x-mcr-runtime-status": "NOT_IMPLEMENTED",
       "x-mcr-write-policy": "READ"
     },
+    "getEnrollmentAdmission": {
+      "method": "GET",
+      "operationId": "getEnrollmentAdmission",
+      "parameters": [],
+      "path": "/api/auth/enrollment/admission",
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentAdmission"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {}
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ACCOUNT_INACTIVE",
+                              "PERMISSION_DENIED",
+                              "CONSENT_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [
+        {
+          "BearerAuth": []
+        }
+      ],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
+    },
+    "getEnrollmentPolicy": {
+      "method": "GET",
+      "operationId": "getEnrollmentPolicy",
+      "parameters": [],
+      "path": "/api/auth/enrollment/policy",
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentPolicy"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {}
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ACCOUNT_INACTIVE",
+                              "PERMISSION_DENIED",
+                              "CONSENT_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
+    },
     "getOwnConcertIntro": {
       "method": "GET",
       "operationId": "getOwnConcertIntro",
@@ -61446,6 +63892,471 @@ export const document = {
         "path": "/auth/password/reset/request"
       }
     },
+    "resendEnrollmentVerification": {
+      "method": "POST",
+      "operationId": "resendEnrollmentVerification",
+      "parameters": [
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        }
+      ],
+      "path": "/api/auth/enrollment/resend",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EnrollmentResendRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "202": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentAccepted"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {}
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/CoreErrorResponse"
+                      },
+                      {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "reason": {
+                                "enum": [
+                                  "ACCOUNT_INACTIVE",
+                                  "PERMISSION_DENIED",
+                                  "CONSENT_REQUIRED"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "$ref": "#/components/schemas/OriginErrorResponse"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-origin-rejection": {
+        "downstream_dispatch": false,
+        "schema": {
+          "$ref": "#/components/schemas/OriginErrorResponse"
+        },
+        "status": 403
+      },
+      "x-mcr-retry": "EXPLICIT_SAME_BODY_IDEMPOTENCY_KEY_ONLY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
+    },
     "resendVerificationEmail": {
       "description": "Public Gateway endpoint. Uses authenticated internal gRPC; no browser service token, Bearer token or cookie is required. JSON body is limited to 4096 bytes. Pending, unknown, active, deleted and account-quota-limited emails have the same 202 body. Auth permits one verification intent per minute and at most 20 per rolling day, including signup. Edge quota can return 429 independently. ACCEPTED is not proof of delivery. No automatic retry or Idempotency-Key replay is supported. Timeout can occur after the downstream request was accepted.",
       "method": "POST",
@@ -68195,6 +71106,8 @@ export const document = {
       "x-mcr-write-policy": "OPERATIONS"
     },
     "signupWithEmail": {
+      "deprecated": true,
+      "description": "Retired MCR browser signup: always returns generic 422 ACKNOWLEDGEMENTS_REQUIRED before account lookup. Use submitEnrollmentSignup with the current policy, explicit acknowledgements and browser-bound attempt. Private canonical Auth signup is unchanged.",
       "method": "POST",
       "operationId": "signupWithEmail",
       "parameters": [
@@ -68383,20 +71296,27 @@ export const document = {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ErrorResponse"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "const": "ACKNOWLEDGEMENTS_REQUIRED"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           },
-          "description": "JSON body does not match the request schema",
-          "headers": {
-            "X-Correlation-Id": {
-              "description": "Correlation identifier generated or accepted by the Gateway.",
-              "schema": {
-                "maxLength": 128,
-                "type": "string"
-              }
-            }
-          }
+          "description": "Canonical enrollment required; no account lookup or signup performed",
+          "headers": {}
         },
         "429": {
           "content": {
@@ -68487,7 +71407,7 @@ export const document = {
       "tags": [
         "Authentication"
       ],
-      "x-mcr-browser-exposure": "TARGET",
+      "x-mcr-browser-exposure": "RETIRED_USE_CANONICAL_ENROLLMENT",
       "x-mcr-cache": "NO_STORE",
       "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
       "x-mcr-origin-rejection": {
@@ -69006,6 +71926,471 @@ export const document = {
       "x-mcr-rule": "age_start",
       "x-mcr-runtime-status": "NOT_IMPLEMENTED",
       "x-mcr-write-policy": "NORMAL"
+    },
+    "submitEnrollmentSignup": {
+      "method": "POST",
+      "operationId": "submitEnrollmentSignup",
+      "parameters": [
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        }
+      ],
+      "path": "/api/auth/enrollment/signup",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EnrollmentSignupRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "202": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentAccepted"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {}
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/CoreErrorResponse"
+                      },
+                      {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "reason": {
+                                "enum": [
+                                  "ACCOUNT_INACTIVE",
+                                  "PERMISSION_DENIED",
+                                  "CONSENT_REQUIRED"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "$ref": "#/components/schemas/OriginErrorResponse"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-origin-rejection": {
+        "downstream_dispatch": false,
+        "schema": {
+          "$ref": "#/components/schemas/OriginErrorResponse"
+        },
+        "status": 403
+      },
+      "x-mcr-retry": "EXPLICIT_SAME_BODY_IDEMPOTENCY_KEY_ONLY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
     },
     "transferConcertParty": {
       "method": "POST",
@@ -73812,6 +77197,471 @@ export const document = {
         "operationId": "verifyEmail",
         "path": "/auth/email/verify"
       }
+    },
+    "verifyEnrollmentEmail": {
+      "method": "POST",
+      "operationId": "verifyEnrollmentEmail",
+      "parameters": [
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        }
+      ],
+      "path": "/api/auth/enrollment/verify",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EnrollmentVerifyRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentVerified"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {}
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Invalid input",
+          "headers": {}
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Authentication required",
+          "headers": {}
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/CoreErrorResponse"
+                      },
+                      {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "reason": {
+                                "enum": [
+                                  "ACCOUNT_INACTIVE",
+                                  "PERMISSION_DENIED",
+                                  "CONSENT_REQUIRED"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "$ref": "#/components/schemas/OriginErrorResponse"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_INVALID"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_STALE",
+                              "IDEMPOTENCY_CONFLICT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "410": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "ATTEMPT_EXPIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Payload too large",
+          "headers": {}
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "JSON media type required",
+          "headers": {}
+        },
+        "422": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT",
+                              "ACKNOWLEDGEMENTS_REQUIRED",
+                              "VERIFICATION_FAILED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Rate limited",
+          "headers": {}
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Internal failure",
+          "headers": {}
+        },
+        "502": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Bad dependency response",
+          "headers": {}
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "POLICY_UNAVAILABLE",
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Enrollment command or policy denial",
+          "headers": {}
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CoreErrorResponse"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Dependency deadline exceeded",
+          "headers": {}
+        }
+      },
+      "security": [],
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-cookie-binding": {
+        "credentials": "include",
+        "httpOnly": true,
+        "name": "__Secure-mcr-enrollment",
+        "path": "/api/auth/enrollment",
+        "sameSite": "Strict",
+        "secure": true
+      },
+      "x-mcr-enrollment-contract-version": "1.0",
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-origin-rejection": {
+        "downstream_dispatch": false,
+        "schema": {
+          "$ref": "#/components/schemas/OriginErrorResponse"
+        },
+        "status": 403
+      },
+      "x-mcr-retry": "EXPLICIT_SAME_BODY_IDEMPOTENCY_KEY_ONLY",
+      "x-mcr-runtime-status": "IMPLEMENTATION_IN_PROGRESS"
     }
   }
 }

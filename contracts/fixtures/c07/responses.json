@@ -8,6 +8,456 @@
         },
         "message": "The request could not be completed."
       },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "acceptedRevision": null,
+        "decision": "ADMITTED",
+        "policyRevision": null,
+        "serverTime": "2026-11-03T00:00:00Z"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "acceptEnrollmentPolicy",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 410
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
       "headers": {
         "Cache-Control": "no-store"
       },
@@ -663,6 +1113,338 @@
         }
       },
       "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "attemptId": "00000000-0000-4000-8000-000000000001",
+        "expiresAt": "2026-11-03T00:00:00Z",
+        "policyRevision": "00000000-0000-4000-8000-000000000001",
+        "serverTime": "2026-11-03T00:00:00Z"
+      },
+      "headers": {
+        "Set-Cookie": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 201
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "beginEnrollmentAttempt",
+      "request": {
+        "body": {
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 410
     },
     {
       "body": {
@@ -55214,6 +55996,440 @@
         },
         "message": "The request could not be completed."
       },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "CONSENT_REQUIRED"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 504
+    },
+    {
+      "body": {
+        "acceptedRevision": null,
+        "decision": "ADMITTED",
+        "policyRevision": null,
+        "serverTime": "2026-11-03T00:00:00Z"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentAdmission",
+      "request": {},
+      "status": 410
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "CONSENT_REQUIRED"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 504
+    },
+    {
+      "body": {
+        "contractVersion": "1.0",
+        "documents": [
+          {
+            "id": "valid-base",
+            "requiredAcknowledgementId": "valid-base",
+            "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "title": "Synthetic metadata probes only; not approved product artwork.",
+            "url": "https://untrusted.invalid/sheet.png"
+          }
+        ],
+        "expiresAt": "2026-11-03T00:00:00Z",
+        "publishedAt": "2026-11-03T00:00:00Z",
+        "revision": "00000000-0000-4000-8000-000000000001",
+        "serverTime": "2026-11-03T00:00:00Z"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "getEnrollmentPolicy",
+      "request": {},
+      "status": 410
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
       "headers": {
         "Cache-Control": "no-store"
       },
@@ -68120,6 +69336,352 @@
     },
     {
       "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "attemptId": "00000000-0000-4000-8000-000000000001",
+        "expiresAt": "2026-11-03T00:00:00Z",
+        "resendAvailableAt": "2026-11-03T00:00:00Z",
+        "serverTime": "2026-11-03T00:00:00Z",
+        "status": "ACCEPTED"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "resendEnrollmentVerification",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 410
+    },
+    {
+      "body": {
         "status": "ACCEPTED"
       },
       "headers": {
@@ -74293,14 +75855,13 @@
     },
     {
       "body": {
-        "code": "GATEWAY_429",
-        "details": null,
-        "message": "The request could not be completed.",
-        "traceId": null
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ACKNOWLEDGEMENTS_REQUIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
       },
-      "headers": {
-        "X-Correlation-Id": "Synthetic metadata probes only; not approved product artwork."
-      },
+      "headers": {},
       "mediaType": "application/json",
       "operation": "signupWithEmail",
       "request": {
@@ -74907,6 +76468,502 @@
         }
       },
       "status": 202
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "attemptId": "00000000-0000-4000-8000-000000000001",
+        "expiresAt": "2026-11-03T00:00:00Z",
+        "resendAvailableAt": "2026-11-03T00:00:00Z",
+        "serverTime": "2026-11-03T00:00:00Z",
+        "status": "ACCEPTED"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "submitEnrollmentSignup",
+      "request": {
+        "body": {
+          "acknowledgementIds": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "email": "fixture@example.invalid",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001",
+          "password": "Synthetic metadata probes only; not approved product artwork.",
+          "policyRevision": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 410
     },
     {
       "body": {
@@ -79255,6 +81312,350 @@
         "mediaType": "application/json"
       },
       "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_INVALID"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "POLICY_STALE"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 422
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 502
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "attemptId": "00000000-0000-4000-8000-000000000001",
+        "serverTime": "2026-11-03T00:00:00Z",
+        "status": "VERIFIED"
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "Synthetic metadata probes only; not approved product artwork.",
+        "details": {
+          "reason": "ATTEMPT_EXPIRED"
+        },
+        "message": "Synthetic metadata probes only; not approved product artwork."
+      },
+      "headers": {},
+      "mediaType": "application/json",
+      "operation": "verifyEnrollmentEmail",
+      "request": {
+        "body": {
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "code": "000000"
+        },
+        "headers": {
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json"
+      },
+      "status": 410
     }
   ],
   "clock": "2030-01-01T00:00:00.000Z",

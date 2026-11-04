@@ -131,6 +131,7 @@ finally:
     if peak['wholeBytes'] > 2*GIB or peak['newBytes'] > 128*MIB or peak['durableBytes'] > 24*MIB:
         status = 'FAIL'; error = 'terminal disk allocation cap'
     mutable = {'contracts/generated/mcr-domain.openapi.json', 'backend/docs/api/mcr-domain.openapi.json',
+               'frontend/src/shared/api/domain-operations.generated.ts',
                'scripts/mcr/contracts/qa01-coverage/pins.json',
                *('contracts/fixtures/c07/' + name + '.json' for name in ('responses', 'compatibility', 'index'))}
     readonly = {path: value for path, value in READSET.items() if path not in mutable and not path.startswith(
