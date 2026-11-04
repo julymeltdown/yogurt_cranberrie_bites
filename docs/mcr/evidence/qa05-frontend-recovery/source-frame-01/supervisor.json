@@ -1,0 +1,294 @@
+{
+  "slot": "QA05-FRAME-UTILITY-SOURCE-20261104T2035Z",
+  "sourceCommit": "7ae5bec02ebeb727926f5a37fe29b4cf179ed0e8",
+  "sourcePins": {
+    "frontend/e2e/qa05-functional-recovery/frame-faults.mjs": "ad76fd4be3702d90676ed5b156c8831e2b5f5f016595f5c8130ec8020e975a05",
+    "frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs": "2e8584631d561bed7e8a8ef37ebbe80a26074c521ae2cda1ae2d77b1b05f5a9e"
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "bytes": 824715426,
+        "entries": 8770
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 408263334,
+        "entries": 11564
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "bytes": 197443390,
+        "entries": 4800
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "bytes": 2123555,
+        "entries": 10
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-final-harness-check.json",
+        "bytes": 1779,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-combined-c0de4c8-types.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-remote-publication-verified.json",
+        "bytes": 4145,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-final-scope-check.json",
+        "bytes": 548,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-first",
+        "bytes": 1954,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-delivery",
+        "bytes": 1954,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-second.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-final.log",
+        "bytes": 29,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-boundaries-staged.log",
+        "bytes": 123,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-origin.log",
+        "bytes": 393,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-handoff",
+        "bytes": 24781,
+        "entries": 19
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-lint.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-first.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-plan.log",
+        "bytes": 1435,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-build-final.log",
+        "bytes": 979,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-lint-delivery.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-runner-lint-final.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-boundaries.log",
+        "bytes": 123,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-final",
+        "bytes": 1954,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-boundaries-delivery.log",
+        "bytes": 123,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-build-first.log",
+        "bytes": 173,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-delivery.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-final.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-room-publication-red.log",
+        "bytes": 1422,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-build-delivery.log",
+        "bytes": 979,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-delivery.log",
+        "bytes": 29,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-first.log",
+        "bytes": 29,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-install.log",
+        "bytes": 1103,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-source-offer-2015.json",
+        "bytes": 576,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-frame-source-offer-2035.json",
+        "bytes": 607,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-integrated-native.log",
+        "bytes": 41,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair-runtime32-202611041135Z-nk4ixk3v",
+        "bytes": 58964,
+        "entries": 4
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-owner-control-source-correction-20261105",
+        "bytes": 42032,
+        "entries": 14
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair80-runtime50-vzar43ky",
+        "bytes": 227211,
+        "entries": 8
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-integration-evidence",
+        "bytes": 3612430,
+        "entries": 7
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair-copied-202611041106Z-3xf19k8y",
+        "bytes": 67346,
+        "entries": 7
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair80-runtime51-hn2eqqbh",
+        "bytes": 267314,
+        "entries": 9
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-owner-control-source-20261105",
+        "bytes": 35276,
+        "entries": 12
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-source-remote-publication-verified.json",
+        "bytes": 421,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-checkout-before.json",
+        "bytes": 597,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-source-handoff-final.json",
+        "bytes": 2372,
+        "entries": 1
+      }
+    ],
+    "historyBytes": 1672746958,
+    "historyObjects": 42942,
+    "bytes": 3109652869,
+    "entries": 68199
+  },
+  "offer": {
+    "issuer": "01a1a21d-39ec-7912-84cb-910058e7a110",
+    "acceptance": "ACCEPT",
+    "mode": "SOURCE",
+    "suite": "frame-faults",
+    "slot": "QA05-FRAME-UTILITY-SOURCE-20261104T2035Z",
+    "sourceCommit": "7ae5bec02ebeb727926f5a37fe29b4cf179ed0e8",
+    "workByUTC": "2026-11-04T20:34:45+00:00",
+    "cleanupByUTC": "2026-11-04T20:35:45+00:00",
+    "startFloorBytes": 11811160064,
+    "otherReservedBytes": 3221225472,
+    "caps": {
+      "wholeBytes": 4294967296,
+      "entries": 98304,
+      "newBytes": 67108864,
+      "temporaryBytes": 33554432,
+      "durableBytes": 8388608,
+      "rssBytes": 1610612736,
+      "processes": 6
+    }
+  },
+  "commands": [
+    {
+      "label": "frame-faults",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/e2e/qa05-functional-recovery/frame-faults.mjs",
+        "frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs"
+      ],
+      "exit": 1
+    }
+  ],
+  "status": "FAIL",
+  "rssPeak": 169050112,
+  "processPeak": 3,
+  "newPeak": 2260,
+  "minimumFree": 17394098176,
+  "qualification": "Synthetic changed-source checks only; combined actual runtime NOT_RUN.",
+  "failure": "AssertionError: lint failed; retain raw log and fix before another run",
+  "temporaryAbsent": true,
+  "ownedProcessGroupsAbsent": true,
+  "finishedUTC": "2026-11-04T20:32:57.992828+00:00"
+}

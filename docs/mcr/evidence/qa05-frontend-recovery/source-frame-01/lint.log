@@ -1,0 +1,1 @@
+frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs:21:34: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.

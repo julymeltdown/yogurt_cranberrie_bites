@@ -1,0 +1,15 @@
+{
+  "status": "SOURCE_FROZEN_NOT_RUN",
+  "suite": "frame-faults",
+  "base": "3bacfe03472a41a641ddaaa9a15c314f9171953c",
+  "files": {
+    "frontend/e2e/qa05-functional-recovery/frame-faults.mjs": "ad76fd4be3702d90676ed5b156c8831e2b5f5f016595f5c8130ec8020e975a05",
+    "frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs": "f983fa798869a029da2fff90929ec8ce18b587b4ce7dfbaed05ab08fa8fb1760",
+    "docs/mcr/evidence/qa05-frontend-recovery/guardian.py": "ccb9d755d7864af50f220decb05f9f9aa1cfd7dc8b11b177d364e2d997e2693f",
+    "docs/mcr/evidence/qa05-frontend-recovery/qualify-source.py": "85a775c0cbed92d691de7bbcd51a8b55fc64f65e37d20ca2ac3842e082b1b00a"
+  },
+  "readonly": {
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": "b40b786b8ed972c30696270929ca35c85b4d680d866b0ba1c6f5344f59dd9816"
+  },
+  "provenance": "Root-qualified published server f897 read for interface only; current physical server older retained base is readonly and not runtime authority. New pure utility creates no real network service/frames. Initial source21 qualification retained and not replayed."
+}

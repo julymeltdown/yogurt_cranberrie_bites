@@ -1,0 +1,49 @@
+{
+  "status": "SOURCE_VALIDATED_INCREMENTAL_HANDOFF_ACTUAL_RELAY_NOT_RUN",
+  "previousDelivered": "3bacfe03472a41a641ddaaa9a15c314f9171953c",
+  "sourceCommits": [
+    "6020dd0f04364b3919039f1f8b8030f7b2074d0f",
+    "7ae5bec02ebeb727926f5a37fe29b4cf179ed0e8"
+  ],
+  "sourcePins": {
+    "frontend/e2e/qa05-functional-recovery/frame-faults.mjs": "ad76fd4be3702d90676ed5b156c8831e2b5f5f016595f5c8130ec8020e975a05",
+    "frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs": "f983fa798869a029da2fff90929ec8ce18b587b4ce7dfbaed05ab08fa8fb1760"
+  },
+  "tests": 19,
+  "failures": 0,
+  "checks": [
+    {
+      "label": "frame-faults",
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "exit": 0
+    },
+    {
+      "label": "syntax-0",
+      "exit": 0
+    },
+    {
+      "label": "syntax-1",
+      "exit": 0
+    },
+    {
+      "label": "whitespace",
+      "exit": 0
+    }
+  ],
+  "initialFailureRetained": true,
+  "sourceBytesUnchangedAfterChecks": true,
+  "slot": "QA05-FRAME-UTILITY-SOURCE-20261104T2035Z",
+  "fullUTC": "2026-11-04T20:33:34.402267+00:00",
+  "resourcesHeld": 0,
+  "guardians": [
+    "source-frame-02/guardian.json",
+    "source-frame-02/supervisor.json"
+  ],
+  "guardianSha256": "adeb6178aba9f872c788737f929757fbfee5880d85bb292152cfedf6eaae93e9",
+  "ownership": "Only incremental own QA05 prefix helper/tests/docs/qualification. Root retains actual Vite server/upgrade/proxy/cohort/checkpoint composition.",
+  "publication": "Direct Root153 normal publication requested next; not yet verified. First25 source cohort already independently remote verified.",
+  "remaining": "Actual shared relay/managed owner context/current descriptor, fresh combined native allocation, required functional cases/fixes/evidence/publication, truthful original acceptance and exact final STOP return. Goal active."
+}

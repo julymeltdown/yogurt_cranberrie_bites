@@ -1,0 +1,27 @@
+✔ an idle or completed controller preserves exact bytes and binary flags; only one classified real delta is dropped (1.321209ms)
+✔ delay copies retained opaque traffic, preserves FIFO and does not expose payloads (0.320625ms)
+✔ real pause and resume callbacks are measured even when TCP pause admits no additional frames (0.102125ms)
+✔ pause buffers only already arriving bounded frames and flushes FIFO before resuming upstream (0.114792ms)
+✔ delay-downstream frame overflow retires before allocating or delivering the excess frame (0.148625ms)
+✔ delay-downstream byte overflow cannot pass a frame-count-only budget (0.1145ms)
+✔ pause-downstream frame overflow retires before allocating or delivering the excess frame (0.069875ms)
+✔ pause-downstream byte overflow cannot pass a frame-count-only budget (0.064666ms)
+✔ missing delta never becomes an applied gap; delay with no frames never claims an effect (0.12575ms)
+✔ event-loop overrun closes without late delivery or resumption (0.117208ms)
+✔ an expired frame callback cannot enqueue past the timer deadline (0.073333ms)
+✔ a blocking sink that exhausts the hold budget cannot flush the next frame or resume (0.369125ms)
+✔ uncertain send output retires once without exposing private callback errors (0.101583ms)
+✔ uncertain pauseUpstream output retires once without exposing private callback errors (0.040916ms)
+✔ uncertain resumeUpstream output retires once without exposing private callback errors (0.048083ms)
+✔ async callbacks are not mistaken for completed effects, and rejected promises are consumed (2.672958ms)
+✔ duplicate or overlapping arming cannot execute a second fault; dispose discards queued bytes and timers (0.344459ms)
+✔ oversized or unclassified frames and clock regression fail closed (0.156291ms)
+✔ the exact self-contained utility imports through a verified data URL (2.648917ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.923584

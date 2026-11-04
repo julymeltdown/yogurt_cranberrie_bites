@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "status": "SOURCE_QUALIFIED_ACTUAL_RELAY_NOT_RUN",
+  "module": "frontend/e2e/qa05-functional-recovery/frame-faults.mjs",
+  "factory": "createFrameFaultController({send,pauseUpstream,resumeUpstream,close,now?,setTimer?,clearTimer?})",
+  "methods": {
+    "arm": "arm({caseId,requestId,action,maximumFrames,maximumBytes?,maximumMs}) -> readProof(); finite packet-gap/drop-next-delta, packet-delay/delay-downstream, slow-client/pause-downstream only; at most3 unique arms, one active",
+    "accept": "acceptServerFrame(originalBytes:Uint8Array,{isBinary:boolean,isDelta:boolean}) -> readProof(); opaque complete genuine server frame <=65546 bytes; Root owns boundaries and canonical C05 classification, never JSON guessing",
+    "proof": "readProof() -> {state:IDLE|ARMED|COMPLETE|RETIRED,failure,paused,caseId?,requestId?,action?,armedAtMs?,deadlineMs?,releaseDueAtMs?,completedAtMs?,acceptedFrames?,acceptedBytes?,deliveredFrames?,deliveredBytes?,droppedFrames?,droppedBytes?,heldFrames?,heldBytes?,queuedFrames?,queuedBytes?,peakQueuedFrames?,peakQueuedBytes?,sendAttempts?,pauseAttempts?,pauseCompleted?,resumeAttempts?,resumeCompleted?,pausedAtMs?,resumedAtMs?,closeFailed?,qualification}",
+    "dispose": "dispose() closes/retire once, clears queued bytes/timer, never resumes after abort/unknown outcome"
+  },
+  "callbacks": {
+    "send": "SYNCHRONOUS send(exactBytesCopy,{isBinary}) -> void|true; false/throw/thenable uncertain, retire+close; no second send after uncertainty. Measured delivered means synchronous sink handoff, NOT endpoint receipt. Root additionally owns actual socket writable-buffer limits and asynchronous failure cleanup.",
+    "pauseResume": "Synchronous actual pauseUpstream()/resumeUpstream(); void|true success, false/throw/thenable uncertainty. pause can yield zero extra buffered frames. Utility counts callback completion; genuine I/O effect still needs qualified Root attachment.",
+    "close": "close() must close the same real owned pair; no extra connection. Exceptions recorded only as fixed closeFailed boolean.",
+    "timers": "now is monotonic milliseconds. Default performance.now/setTimeout/clearTimeout. Delay/pause schedules release up to10ms BEFORE hard deadline to allow timer dispatch; observed late callbacks/frames retire, never silently extend. Effects and actual completion timestamps must remain <=hard bound."
+  },
+  "bounds": {
+    "packet-gap": "drop exactly one Root-classified genuine delta within <=1000ms; other frames byte-preserved; no-delta expiry closes as failed/no effect",
+    "packet-delay": "<=8 frames /262144 actual provided bytes /250ms; copies prevent later caller mutation; FIFO exact byte values/binary flags",
+    "slow-client": "actual pause/resume <=1000ms; buffer only arriving in-flight <=64 frames/262144 bytes; FIFO flush before resume. This is not a claimed Rust queue measurement."
+  },
+  "privacy": "No frame contents, ticket/Auth/control payload, principal bodies, headers, callback exception messages or handles in proof. Root supplies only application frame/classification inputs; it handles control frames separately.",
+  "ownership": "Root153 STOP-to83 only new frame-faults.mjs + frame-faults.test.mjs under already assigned prefix. Root retains actual Vite server/WS upgrade/proxy/cohort/checkpoint composition. No server/new upstream/endpoint in utility. First25path3bac handoff preserved as separate cohort.",
+  "requiredRuntime": "Fresh actual Root relay/window/finite allocation + literalACCEPT + bothguards. No actual capability/current descriptor/browser outcome implied by source cases.",
+  "sourceQualification": {
+    "testedBase": "7ae5bec02ebeb727926f5a37fe29b4cf179ed0e8",
+    "workingFix": "Removed only one test harness unnecessary spread; exact post-fix source hashes in source-frame-02/supervisor.json. Utility source bytes unchanged.",
+    "tests": 19,
+    "failures": 0,
+    "lintExit": 0,
+    "syntaxChecks": 2,
+    "whitespaceExit": 0,
+    "allocation": "QA05-FRAME-UTILITY-SOURCE-20261104T2035Z",
+    "actualFullUTC": "2026-11-04T20:33:34.402267+00:00",
+    "initialFailure": "source-frame-01: tests19PASS then lintwarningFAIL. Retained; source-frame-02 finalPASS under same clock, amended OTHER4GiB before children.",
+    "actualRelay": "NOT_RUN; Root alone binds real complete-frame bytes/canonical decoder/sink and the actual owned upstream. Source callbacks are not runtime authority."
+  }
+}
