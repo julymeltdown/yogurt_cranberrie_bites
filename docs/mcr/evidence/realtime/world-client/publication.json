@@ -1,0 +1,500 @@
+{
+  "scopeStatus": "MOCK_READY - bounded frontend client recovery; whole FE17/QA05 and real IN remain incomplete",
+  "publishedCheckpoint": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "repository": "julymeltdown/mcr",
+  "branch": "master",
+  "publisherThread": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "workerCommits": {
+    "47db7bf556f9bb85b33186ad832301575e69740a": "3c2c1b17040d3ceb0efe37a5e31a3d94beb0200a",
+    "fa33781d766392f4aba4c74baf6dc0ce20d83aff": "d398f556f81df927f238c5dae2b3291afecbbeb1"
+  },
+  "independentlyVerified": {
+    "remoteMasterViaLsRemote": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+    "all24OriginalPayloadsByteIdentical": true,
+    "mappedBinaryPatchesExact": true,
+    "mappedCommitsAndAssignmentBaseAreAncestors": true,
+    "integratedInputPinsMatchPublishedGitBytes": 991,
+    "mismatches": []
+  },
+  "integratedNative": {
+    "status": "PASS",
+    "candidate": "3c2c1b17040d3ceb0efe37a5e31a3d94beb0200a",
+    "browser": "156.0.8078.80",
+    "inputPins": 991,
+    "observations": 42,
+    "cleanupReceipts": 3,
+    "fullReportSha256": "6d40bf3a4db40f09decf71da7f02126bba62997434daebf0aa9ca0ddbd4bccc8",
+    "rawLogSha256": "e1bfed923afb47d1f2c55b41d5782ec2bd51c932ac5df48d82b7b1a9deb49d72",
+    "evidenceHolder": "Designated integrator local temporary evidence; this compact receipt records inspected full report, capture checksums and publication/source verification. Original971-pin owner report/captures remain unchanged.",
+    "changedOrNewPinsSinceOriginal": {
+      "frontend/src/app/__tests__/fe07-shell-journey/preview.tsx": "3df8c98e6d81d34b183e9466c335664c89c8cb311270cdae9a30d1c91541594a",
+      "frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx": "fc117dc9f32ebe79bf1c974d4fdea1f77742918450fe12aa9b2a894b837a0422",
+      "frontend/src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts": "780e3164ecd3352fb1cb840f155a4e61739abf89decc0f81d4dc3cdaf0982345",
+      "frontend/src/app/social-composition/__tests__/fe07-boundary-exits/fixture-provenance.json": "7c51d7b00eb63a176e0df5e797a459906c72e8a600655cb176a678a6c128fe71",
+      "frontend/src/app/social-composition/__tests__/fe07-boundary-exits/integration-handoff.json": "6152b54cf858e5a0c78129ca8e2e4374a52aa1865aa63734e528b5a00804575f",
+      "frontend/src/app/social-composition/__tests__/fe07-boundary-exits/preview.tsx": "e9bc92735b6936474c1a16712ba4a4dcefbeac74efe47cba7db0fb0f972b941c",
+      "frontend/src/app/social-composition/owner.ts": "297e0402027a6e964976b12239301cbdb6dc7ddafa3b320e54ba6f6f1e504948",
+      "frontend/src/app/world-entry/__tests__/reference-scene-v4/contracts.test.ts": "6edf3225b2a44b44ba5759d41a153882a3942778e5deb28e2243eb81f22a1e14",
+      "frontend/src/app/world-entry/__tests__/reference-scene-v4/data.ts": "82f16386b998690c9bc47ab4160b9c73a759321c5c5156f7486990fca151dbb7",
+      "frontend/src/app/world-entry/__tests__/reference-scene-v4/preview.tsx": "62c3edba69cb50d9813fc725fe57e2547a652aa7708b9256a191508330474ba6",
+      "frontend/src/app/world-entry/reference-scene-overview.ts": "a9dd73717b03683e793dcbb663b293243e4fca2504cd0be9770ef8ffdf43189f",
+      "frontend/src/features/places/ui/IllustratedMap.tsx": "0660d58188e22cd1679921b509432c630d876377c6422e02fbd5266b9720cf8d",
+      "frontend/src/features/places/ui/reference-scene/spatial-v4-label-obstacles.ts": "de2364866e04e547eb0444b1a6dd434f48cca14840bc771a67174cc23aa0f066",
+      "frontend/src/world/reference-scene/__tests__/spatial-v4/fixture.ts": "d081656eda4ff84c1cc1854aa2df6dda10acf3f3866b78612a5bef3f8f3b5ca7",
+      "frontend/src/world/reference-scene/__tests__/spatial-v4/map-labels.test.ts": "71a1a652ab17be26cca7e2d41e63612edbb102b01c561968ed2f3a9a391072e7",
+      "frontend/src/world/reference-scene/__tests__/spatial-v4/model.test.ts": "5a8dbf097574cb7b50dbe9f3f8c8156ffccbf449520e38ce0f0df03b72e79499",
+      "frontend/src/world/reference-scene/__tests__/spatial-v4/native.ts": "58455aaf347ef473ef57961f68d8b9f2ccdb25858109fb566aa8ecd1e9e1bec9",
+      "frontend/src/world/reference-scene/__tests__/spatial-v4/theme-gate.test.ts": "0d54e9e64138500d6e2f738126fcb4b5519637bec41bb49faf4f7e18195cb067",
+      "frontend/src/world/reference-scene/index.ts": "f29dd258e270a2c2ddd522b23670a4a89ff36ec0698e2467e734afaf4484152d",
+      "frontend/src/world/reference-scene/metadata.ts": "15a3eec90920815bbedca79f1938e9ddfaa40d3094d0ca775f8151893094147d",
+      "frontend/src/world/reference-scene/model.ts": "2a09629cadf1247a9360ebb35f4d403bc90a08ac58b8b7328c3f3acaf62151db",
+      "frontend/src/world/reference-scene/overview.ts": "f1b87f89f56b38a2fd91e6cdb095f4ff15dd5fcbcfaf980b3f133a47570d66b0",
+      "frontend/src/world/reference-scene/spatial-v4/map-labels-pins.json": "7716d7a7a8efb4aef30e70de902ccaa580848775ef3676953abb4f3aa9f0b4e0",
+      "frontend/src/world/reference-scene/spatial-v4/map-labels-source.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+      "frontend/src/world/reference-scene/spatial-v4/map-labels.ts": "b3357634e374698b343c61206dd94d51585de84e8adadfca36382263cf09c77f",
+      "frontend/src/world/reference-scene/spatial-v4/model.ts": "849525ccc5fdc690a5e9b2125502a3a07abcea758c717b93279285eb12ccbd9d",
+      "frontend/src/world/reference-scene/spatial-v4/source-inputs.json": "0b686546056ba75591b1d5c32258bd73fd22ca0767686c12aff197d58f8f0beb",
+      "frontend/src/world/reference-scene/spatial-v4/tile-pin.json": "96766e0cdbe185e375fdced89e757013b1765e5790560faaab02fa6caec7129a"
+    },
+    "cases": [
+      {
+        "width": 360,
+        "status": "PASS",
+        "observations": [
+          {
+            "name": "real-root-native-websocket-ready",
+            "phase": "live",
+            "sprites": 6,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "gap-clears-renderer-and-nearby",
+            "phase": "resync",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "integratorCapture": {
+              "name": "gap-360.png",
+              "sha256": "8405c4c127fd5e28be696562fa3de5fe7b1f5d24e1fc0fa48da990f5300eed9e"
+            }
+          },
+          {
+            "name": "complete-authoritative-replacement",
+            "phase": "live",
+            "sprites": 2,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "epoch-reset-removes-old-roster",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-remote-interpolation-without-extrapolation",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "packet-delay-keeps-authoritative-coordinates",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "bounded-unacknowledged-input-with-native-key",
+            "phase": "resync",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "pendingPeak": 63
+          },
+          {
+            "name": "restart-close-retry-fresh-baseline",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "room-rejection-retains-membership",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "room-switch-atomic-baseline",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-tab-background-withdrawal",
+            "phase": "suspended",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-foreground-fresh-ticket-no-held-replay",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "client-rejects-reissued-used-ticket",
+            "phase": "closed",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "fresh-retry-after-replay-denial",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "integratorCapture": {
+              "name": "recovered-360.png",
+              "sha256": "940cbe562924b447039154bfbd29ec362656965434f11ba5d4197ee469ce1adb"
+            }
+          }
+        ],
+        "visibility": [
+          {
+            "hidden": true,
+            "trusted": true
+          },
+          {
+            "hidden": false,
+            "trusted": true
+          }
+        ],
+        "cleanup": {
+          "games": 0,
+          "activeSockets": 0,
+          "disposedCaches": true
+        }
+      },
+      {
+        "width": 390,
+        "status": "PASS",
+        "observations": [
+          {
+            "name": "real-root-native-websocket-ready",
+            "phase": "live",
+            "sprites": 6,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "gap-clears-renderer-and-nearby",
+            "phase": "resync",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "integratorCapture": {
+              "name": "gap-390.png",
+              "sha256": "fa2f3c4e81b0d9ef3f597fdbfc265b33aab5184d12cebb02afbdaf9c7add0110"
+            }
+          },
+          {
+            "name": "complete-authoritative-replacement",
+            "phase": "live",
+            "sprites": 2,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "epoch-reset-removes-old-roster",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-remote-interpolation-without-extrapolation",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "packet-delay-keeps-authoritative-coordinates",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "bounded-unacknowledged-input-with-native-key",
+            "phase": "resync",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "pendingPeak": 63
+          },
+          {
+            "name": "restart-close-retry-fresh-baseline",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "room-rejection-retains-membership",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "room-switch-atomic-baseline",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-tab-background-withdrawal",
+            "phase": "suspended",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-foreground-fresh-ticket-no-held-replay",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "client-rejects-reissued-used-ticket",
+            "phase": "closed",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "fresh-retry-after-replay-denial",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "integratorCapture": {
+              "name": "recovered-390.png",
+              "sha256": "5178b81c939edad919d017d24199b6a0fedd4d84cf85a27e2e8969ce95f7e688"
+            }
+          }
+        ],
+        "visibility": [
+          {
+            "hidden": true,
+            "trusted": true
+          },
+          {
+            "hidden": false,
+            "trusted": true
+          }
+        ],
+        "cleanup": {
+          "games": 0,
+          "activeSockets": 0,
+          "disposedCaches": true
+        }
+      },
+      {
+        "width": 430,
+        "status": "PASS",
+        "observations": [
+          {
+            "name": "real-root-native-websocket-ready",
+            "phase": "live",
+            "sprites": 6,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "gap-clears-renderer-and-nearby",
+            "phase": "resync",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "integratorCapture": {
+              "name": "gap-430.png",
+              "sha256": "789cfd31707bb64e90f694049828302048b90aad24acd1f032319273663e59f0"
+            }
+          },
+          {
+            "name": "complete-authoritative-replacement",
+            "phase": "live",
+            "sprites": 2,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "epoch-reset-removes-old-roster",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-remote-interpolation-without-extrapolation",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "packet-delay-keeps-authoritative-coordinates",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "bounded-unacknowledged-input-with-native-key",
+            "phase": "resync",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "pendingPeak": 63
+          },
+          {
+            "name": "restart-close-retry-fresh-baseline",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "room-rejection-retains-membership",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "room-switch-atomic-baseline",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-tab-background-withdrawal",
+            "phase": "suspended",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "native-foreground-fresh-ticket-no-held-replay",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "client-rejects-reissued-used-ticket",
+            "phase": "closed",
+            "sprites": 0,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1
+          },
+          {
+            "name": "fresh-retry-after-replay-denial",
+            "phase": "live",
+            "sprites": 3,
+            "games": 1,
+            "peakGames": 1,
+            "peakSockets": 1,
+            "integratorCapture": {
+              "name": "recovered-430.png",
+              "sha256": "e00510fa2097d115ce877a6aa703050976c9f8790577faf047b1898efe4eb67f"
+            }
+          }
+        ],
+        "visibility": [
+          {
+            "hidden": true,
+            "trusted": true
+          },
+          {
+            "hidden": false,
+            "trusted": true
+          }
+        ],
+        "cleanup": {
+          "games": 0,
+          "activeSockets": 0,
+          "disposedCaches": true
+        }
+      }
+    ]
+  },
+  "integratorReportedCombinedValidation": {
+    "fixtureTypeScript": 0,
+    "fullFrontendTypeScript": 0,
+    "scopedLint": 0,
+    "affectedMeetingNetworkRoomsTests": 274,
+    "temporaryResourcesClosed": true
+  },
+  "limits": [
+    "Actual backend process restart, server ticket replay enforcement, room membership races, two-principal IN01 and IN05 remain NOT_RUN.",
+    "Authoritative client prediction remains unavailable pending Root1fc versioned motion-profile/apply-timing contract and World20f producer/vectors.",
+    "Integration rerun was performed by designated publisher; this worker inspected its report and independently verified source/ancestry/payloads, without relabeling historical evidence."
+  ]
+}
