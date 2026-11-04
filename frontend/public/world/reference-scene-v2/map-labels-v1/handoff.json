@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "status": "CONTRACT_READY_SOURCE_LABEL_COMPOSITION_ONLY",
+  "source_geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "files": [
+    {
+      "path": "ADOPTION.md",
+      "bytes": 6345,
+      "sha256": "sha256:46bfd3579094551bf0dad553ae7d5ebcc84b9f623aeb0db7b4571b4d6ea9b311"
+    },
+    {
+      "path": "OFL.txt",
+      "bytes": 4393,
+      "sha256": "sha256:0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6"
+    },
+    {
+      "path": "browser-verification.json",
+      "bytes": 73407,
+      "sha256": "sha256:53db4fba0ef57fc657e459b62487f9b5b1c426d59306b5aa3616ac44c1390439"
+    },
+    {
+      "path": "build.py",
+      "bytes": 11952,
+      "sha256": "sha256:15292ace4a8add0d47e18098ff5576d4d3eff8157f92e5e4b73ee0a1500f86ba"
+    },
+    {
+      "path": "check.mjs",
+      "bytes": 3518,
+      "sha256": "sha256:18da8efb70f6e922350338a91ddfd0c15f1955d3b2f038790502bd5523a00300"
+    },
+    {
+      "path": "danger-font-import.json",
+      "bytes": 1315,
+      "sha256": "sha256:aff8720eba305af872a72df53a73017fec287594112123674955aaa79c50a0c7"
+    },
+    {
+      "path": "danger-map-360.png",
+      "bytes": 763283,
+      "sha256": "sha256:de997664f8130350e4e6e84ce4b7bbb4a440668c7f219b8549eb5122cc195543"
+    },
+    {
+      "path": "danger-map-390.png",
+      "bytes": 874322,
+      "sha256": "sha256:e59695492bb19a5e5a98fef3008b65db2a29aa48a1a1c2696d2848a729dc7f6f"
+    },
+    {
+      "path": "danger-map-430.png",
+      "bytes": 1062297,
+      "sha256": "sha256:8f548d6b790b8d343ff0afaf8b7c28ed2535f51d0f464d43a6a7c9a867262e79"
+    },
+    {
+      "path": "danger-map-labels-editable.json",
+      "bytes": 153722,
+      "sha256": "sha256:7369b37906ff6c1c9a2c677b62dc5f7230357d36a2607cdf2fc863eac4c80b5a"
+    },
+    {
+      "path": "danger-map-labels-native.png",
+      "bytes": 1780088,
+      "sha256": "sha256:833cb04cfcc2a9b59f5402d8fa67b2396ec48f8a6dbc3e165b330e97c0634ce5"
+    },
+    {
+      "path": "danger-map-labels.tsrct",
+      "bytes": 2078863,
+      "sha256": "sha256:751f19a946f4103a08d9641dd651f96d6bc7dac258eb3e251e7e1e26aadd0fff"
+    },
+    {
+      "path": "environment.json",
+      "bytes": 1416,
+      "sha256": "sha256:c930ab19c0d9b0bcab8615726eb7ba970feebfb39b3a97d8bcf46f49630a561b"
+    },
+    {
+      "path": "labels.svg",
+      "bytes": 8724,
+      "sha256": "sha256:4280a26d316f20bec934655a72cc9ce9e47705dbd37e5958a4c3f9d96e59038b"
+    },
+    {
+      "path": "map-labels-bold.ttf",
+      "bytes": 145012,
+      "sha256": "sha256:f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
+    },
+    {
+      "path": "native-evidence.json",
+      "bytes": 3389,
+      "sha256": "sha256:43a1787cbd45ec7d8ac6b2bd37fb1edce01eb28656830e3e0beeaa6c7d207783"
+    },
+    {
+      "path": "parade-font-import.json",
+      "bytes": 1315,
+      "sha256": "sha256:aa84ee6abbb52fe4b93e1881a8f208998942ae2119856bb2b7dc4ca0dba2df80"
+    },
+    {
+      "path": "parade-map-360.png",
+      "bytes": 763740,
+      "sha256": "sha256:a196afa4c6815b17663db0d43f2b71789e73f32ecde888d0f4a46472bcb0c444"
+    },
+    {
+      "path": "parade-map-390.png",
+      "bytes": 874728,
+      "sha256": "sha256:0f21c9cc56627c39d13b8cf2a1e039dbea4819846e8e59c53f4274720bee20da"
+    },
+    {
+      "path": "parade-map-430.png",
+      "bytes": 1062385,
+      "sha256": "sha256:262734186be73fce6f1ecd5c0e7e03b15094413a373c49138bfef8d1b7495a9b"
+    },
+    {
+      "path": "parade-map-labels-editable.json",
+      "bytes": 153683,
+      "sha256": "sha256:7e42585ecdbcc1f1d991664930d4df4d7966cc7fd503594cc98de7410911c78e"
+    },
+    {
+      "path": "parade-map-labels-native.png",
+      "bytes": 1785458,
+      "sha256": "sha256:2a25293e166e1ece3226ca95c1f2ac9c4584f0337ce3c62758cbc0d51f6fbf02"
+    },
+    {
+      "path": "parade-map-labels.tsrct",
+      "bytes": 2093532,
+      "sha256": "sha256:96c32b60f795b40229a273aa79cd22f7b1d6e656509178d7a5fcb47ce61a88e5"
+    },
+    {
+      "path": "presentation.json",
+      "bytes": 13268,
+      "sha256": "sha256:f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc"
+    },
+    {
+      "path": "revenge-font-import.json",
+      "bytes": 1316,
+      "sha256": "sha256:560bb07e51530c5b04a31bd37683f186f1e908efa0b139105f3da25584dd1727"
+    },
+    {
+      "path": "revenge-map-360.png",
+      "bytes": 763236,
+      "sha256": "sha256:84e178b3623b94e665dd6bbf66a3b395d3d6b842e823acb9404356213905bee9"
+    },
+    {
+      "path": "revenge-map-390.png",
+      "bytes": 873775,
+      "sha256": "sha256:63be1396821ab6970145c8c90a0903974a072acd6d6cef7dca6339095eb1d458"
+    },
+    {
+      "path": "revenge-map-430.png",
+      "bytes": 1061268,
+      "sha256": "sha256:e64abe1b5f7a14613986e62a8a50cb30a0abe73075c5ae6d01d99185ecb4ec8d"
+    },
+    {
+      "path": "revenge-map-labels-editable.json",
+      "bytes": 153713,
+      "sha256": "sha256:25ae2bfca367d6709c1096d925ed2179ec0dca37730643001fa547aff9d838fb"
+    },
+    {
+      "path": "revenge-map-labels-native.png",
+      "bytes": 1776804,
+      "sha256": "sha256:b3c859ee2e98e891f4b35fd93b3ecc84cab84b82ea1fef3b26c11f52832833db"
+    },
+    {
+      "path": "revenge-map-labels.tsrct",
+      "bytes": 2082215,
+      "sha256": "sha256:21b4375448d657e7769e7955572606ffddb86f116bf73847651957a6b4720ba0"
+    },
+    {
+      "path": "review.html",
+      "bytes": 1749,
+      "sha256": "sha256:90d933c6ca9907281a1ee9a21b48b34eb7bf573d64825cb7ef6f711f9b9606c7"
+    },
+    {
+      "path": "review.mjs",
+      "bytes": 5377,
+      "sha256": "sha256:ecaad7436dcb4e06d3a59b950ca55a1ef6ef77e475a81cb15336d365f86fc3ca"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 1371,
+      "sha256": "sha256:5a2d666a31fd6815239aace952c53cde8d0c12a5686bc50a4ea4dcbe7b86db5d"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 5015,
+      "sha256": "sha256:39178d62c04a43616820cfd34061fb5001f12d07e3f2f391b08ccb40bcbc3822"
+    }
+  ],
+  "adoption": "Explicit consumer patch required; old v8 input bytes and existing release pins unchanged. See ADOPTION.md.",
+  "missing_acceptance": [
+    "Application/Phaser label composition",
+    "New map/theme qualification and release admission",
+    "Full visual-target fidelity"
+  ]
+}

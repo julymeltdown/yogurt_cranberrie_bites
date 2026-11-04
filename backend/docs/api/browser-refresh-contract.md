@@ -6,8 +6,11 @@ does not change the wire contract. Fresh execution pins and limits are recorded 
 
 ## Request and response
 
-Send `POST /api/auth/refresh` with `credentials: 'include'` and
-`X-MCR-Intent: browser`. No JSON body or bearer token is required. The browser
+Send `POST /api/auth/refresh` with browser cookies enabled and
+`X-MCR-Intent: browser`. For a URL fixed to the application's own origin,
+`credentials: 'same-origin'` sends the required cookie; `credentials: 'include'`
+also works. A permitted cross-origin deployment requires `include` and the CORS
+and cookie conditions below. No JSON body or bearer token is required. The browser
 supplies the `refresh_token` cookie and `Origin`; JavaScript must not read or copy
 the cookie. Gateway requires exactly one explicitly allowlisted `Origin` and
 exactly one intent header with that value, before downstream effects. CORS must

@@ -1,0 +1,34 @@
+{
+  "python": "3.14.3",
+  "pillow": "12.2.0",
+  "fonttools": "4.62.1",
+  "tesseract_cli": "0.4.0 d7ccb4bc20fc69f2356c53b80336e52cff31dcc5",
+  "browser": "Chrome156.0.8078.80",
+  "execution_base": "0697674a9ba59de96ee1cd3ad386099e22a707c8",
+  "new_dependencies": [],
+  "reference_target_sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "checks": [
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/map-labels-v1/build.py --native",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/map-labels-v1/verify.py",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_PLAYWRIGHT_PACKAGE=<existing installed package> node frontend/public/world/reference-scene-v2/map-labels-v1/check.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check <base> -- owned paths excluding byte-preserved OFL.txt",
+      "exit_code": 0
+    }
+  ],
+  "limits": "Native viewer open queued; actual CLI native exports inspected. Static source composition only; no fourth scored panel, application/source admission or physical/multiuser acceptance.",
+  "license_whitespace": "Upstream OFL has a trailing space on line21. Exact source/license byte equality is verified; the code/doc whitespace check excludes only that verbatim copy."
+}
