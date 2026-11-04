@@ -164,6 +164,7 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
         .endpoint(&url, Workload::Friend)?
         .connect()
         .await?;
+    let legacy_channel = channel.clone();
     let mut profile = Client::with_interceptor(
         channel,
         ServiceIdentityClientInterceptor::new(Workload::Profile, "profile-fixture")?,
@@ -176,6 +177,19 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
         .await
         .is_ok());
     assert!(profile.complete(native::completion(&b, &g)).await.is_err());
+    let mut legacy=friend_service::adapters::r#in::grpc::server::proto::friend_service_client::FriendServiceClient::with_interceptor(legacy_channel,ServiceIdentityClientInterceptor::new(Workload::Profile,"profile-fixture")?);
+    assert_eq!(
+        legacy
+            .list_followers(
+                friend_service::adapters::r#in::grpc::server::proto::ListFollowersRequest::default(
+                )
+            )
+            .await
+            .unwrap_err()
+            .code(),
+        tonic::Code::Unauthenticated,
+        "New authority caller must not enter retained Friend registry"
+    );
     let mut forged = g.view.clone().unwrap();
     forged.view_secret[0] ^= 1;
     assert!(post
