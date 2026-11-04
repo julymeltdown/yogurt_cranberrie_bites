@@ -1,0 +1,75 @@
+{
+  "source_revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+  "runner_sha256": "d41f90b6a0c588359c3543210030ddd3d9b086ac1c1a9cf2f05c1b6ae17c9fcf",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/world/preferences/__tests__",
+        "src/features/theme/__tests__/runtime-preferences",
+        "src/world/__tests__/runtime.test.ts",
+        "src/features/settings/runtime-adoption/__tests__",
+        "src/app/account-entry/__tests__/root.test.tsx",
+        "src/world/composition/__tests__/presentation-release.test.ts",
+        "src/app/__tests__/reference-frame-footer/background-contrast.test.ts",
+        "--config",
+        "/private/tmp/mcr-composed-preferences-source03/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--cache=false",
+        "--no-file-parallelism",
+        "--maxWorkers=1"
+      ],
+      "started_at": "2026-11-04T07:16:56.885221+00:00",
+      "exit_code": 0,
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "started_at": "2026-11-04T07:17:06.297392+00:00",
+      "exit_code": 0,
+      "log": "2.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/world/preferences",
+        "src/features/settings/runtime-adoption",
+        "src/world/runtime.ts",
+        "src/world/scenes/MapScene.ts",
+        "src/features/theme/model/controller.ts",
+        "src/world/composition/index.ts",
+        "src/app/world-panels/index.tsx",
+        "src/app/account-entry/panels.tsx",
+        "src/features/settings/SettingsPage.tsx",
+        "src/features/theme/ui/ThemeSelector.tsx",
+        "src/app/__tests__/cozy-backgrounds-v1",
+        "src/app/__tests__/reference-frame-footer/background-contrast.test.ts"
+      ],
+      "started_at": "2026-11-04T07:17:12.796023+00:00",
+      "exit_code": 0,
+      "log": "3.log"
+    }
+  ],
+  "failure": null,
+  "elapsed_seconds": 16.159844916008296,
+  "peak_whole_bytes": 21012480,
+  "peak_temp_bytes": 21008384,
+  "peak_durable_bytes": 4096,
+  "minimum_free_bytes": 40993529856,
+  "owned_temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T07:17:13.005604+00:00"
+}

@@ -1,0 +1,718 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "kind": "RETAINED_PACKET_OWNER_AUDIT",
+  "artifactCommit": "5186f11017185a040e4ccde1c59589e140563ef0",
+  "production": "8972b0b634035055eb023dbc2f786e4463b172e5",
+  "runner": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+  "driverSha256": "58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde",
+  "job": "PANEL-CORRECTED-202611040733Z",
+  "rawReportSha256": "7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b",
+  "capturePacketSha256": "ba34f05a25a30b42475fa13c1349576bdc0480a69eb4aeec1d444b7d91dc16fe",
+  "qualification": "Actual default router/Auth/Phaser; QA06 DEV synthetic HTTP/C05/local admission only. Guarded Wall remains guarded; no live service or physical device acceptance.",
+  "baselinePolicy": "Same candidate and fixture, restoring ONLY four background integration files to exact base bytes. Meet typography identical in both captures.",
+  "startedAt": "2026-11-04T07:38:12.062Z",
+  "finishedAt": "2026-11-04T07:40:02.112Z",
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "tempRemoved": true
+  },
+  "cssPath": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+  "cssSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+  "assets": {
+    "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg": {
+      "revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991
+    },
+    "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg": {
+      "revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "bytes": 989
+    },
+    "frontend/public/backgrounds/cute-community-v1/gifts-backdrop.svg": {
+      "revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "bytes": 1011
+    },
+    "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg": {
+      "revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+      "sha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+      "bytes": 2639
+    }
+  },
+  "images": [
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-390.png",
+      "bytes": 63839,
+      "sha256": "e4d99d561d4c3b2ee5c52a60682920190885fea104efe286faf22e3d7f183851",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-390.png",
+      "bytes": 100776,
+      "sha256": "2d2fa482226c4b39f4c8ea958376957372c84c25c303d2819e37ab4a36a1e9cc",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-390.png",
+      "bytes": 98202,
+      "sha256": "a9c8c7dff188c9262d132caec9302f40e2c3426ba4dd271447ed1df7cdd51f02",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-390.png",
+      "bytes": 61924,
+      "sha256": "6ee53f544d8b1619e23c2fda7dba413afb19b9ce6b7c4509fdf1419904bb4bea",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-390.png",
+      "bytes": 29604,
+      "sha256": "2c4eee679c691499411c12791645188c8ebf597be655769f118fd7af191cefb5",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-390.png",
+      "bytes": 72061,
+      "sha256": "85f2d76ba60ab3a84af36b70aecf2b57d0057d29979d40987ac37801160a5be7",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-390.png",
+      "bytes": 65005,
+      "sha256": "9214f16c9b2b1b665e35dd84a9ddac9a4f695063c8b85e792b7b00b206abf83f",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-390.png",
+      "bytes": 30461,
+      "sha256": "ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f",
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-360.png",
+      "bytes": 59769,
+      "sha256": "1da1d96bc4548abf168979e5173e97454632fe4cdd46a98e56fe784d01412f50",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-360.png",
+      "bytes": 95977,
+      "sha256": "1c3a6ebab1efb7a189e2efbdec4dc37acd05c13265687c7daac6429cdb3f1f5d",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-360.png",
+      "bytes": 93070,
+      "sha256": "82058f0f287de34de6daea8ed534ea0e447a7e3d4b34eac8cc5283bdbbd77774",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-360.png",
+      "bytes": 57799,
+      "sha256": "411911482b29ba80255f7c8f344c845499a8aca6f48abec811e63c049b3b0ff6",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-430.png",
+      "bytes": 67083,
+      "sha256": "dc32ed36232d2adad0960c472ae3e9dd9ed7842f6edf2d97d107f679ee8635ba",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-430.png",
+      "bytes": 106005,
+      "sha256": "563735f9f747f94ee915b49f275f089f5cc872fa8add3a70c8f1f09267288b45",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-430.png",
+      "bytes": 103738,
+      "sha256": "25f5e111cddd206ec53b3aa22ce47d1fb6b302e7b4afe665b1a038045988bc5d",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-430.png",
+      "bytes": 66021,
+      "sha256": "05eada7abfd4e543bdd353fdad9d6908cd311c7cbc3755e2af52d4ce39da6b56",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-360.png",
+      "bytes": 28764,
+      "sha256": "78aaa9e8c6c28a5c44b7e6cd0a0fc94d7b55c887b0a5b6e37068ce2bca901fec",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-360.png",
+      "bytes": 69874,
+      "sha256": "5f307926d9038797e26d44c4e36c03a810b4b278ed14073803f57f2b5244d61d",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-360.png",
+      "bytes": 62356,
+      "sha256": "c2d74293250334b904a0bfdf3483deaf3b35e1fa6ed8e909fb5edf8863a30886",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-360.png",
+      "bytes": 29640,
+      "sha256": "c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef",
+      "dimensions": [
+        360,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-430.png",
+      "bytes": 29982,
+      "sha256": "2b334e3063b1b9261f504e338058b1c5f28c6a90762c1ca5ffb1c05d619a888f",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-430.png",
+      "bytes": 73949,
+      "sha256": "d17be3e62d357b53691b51efccb9cc51a9cb231f3a977b382e0122ce2ac15b37",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-430.png",
+      "bytes": 67596,
+      "sha256": "a1a34340585d0836e25ac130223b625119972cfff00c2ef6a49d1626a2656d6f",
+      "dimensions": [
+        430,
+        844
+      ]
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-430.png",
+      "bytes": 31645,
+      "sha256": "871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864",
+      "dimensions": [
+        430,
+        844
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "route": "/feed",
+      "width": 390,
+      "controls": 16,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 1,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 1,
+        "spanCount": 0,
+        "canvases": [
+          {
+            "rect": {
+              "x": 27,
+              "y": 132,
+              "width": 46,
+              "height": 46
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          }
+        ],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/feed",
+      "width": 360,
+      "controls": 16,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 1,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 1,
+        "spanCount": 0,
+        "canvases": [
+          {
+            "rect": {
+              "x": 27,
+              "y": 132,
+              "width": 46,
+              "height": 46
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          }
+        ],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/feed",
+      "width": 430,
+      "controls": 16,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 1,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 1,
+        "spanCount": 0,
+        "canvases": [
+          {
+            "rect": {
+              "x": 27,
+              "y": 132,
+              "width": 46,
+              "height": 46
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          }
+        ],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/meet",
+      "width": 390,
+      "controls": 21,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 3,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 3,
+        "spanCount": 0,
+        "canvases": [
+          {
+            "rect": {
+              "x": 24,
+              "y": 126,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 24,
+              "y": 242.1875,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 24,
+              "y": 358.375,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          }
+        ],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/meet",
+      "width": 360,
+      "controls": 21,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 3,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 3,
+        "spanCount": 0,
+        "canvases": [
+          {
+            "rect": {
+              "x": 24,
+              "y": 126,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 24,
+              "y": 242.1875,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 24,
+              "y": 358.375,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          }
+        ],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/meet",
+      "width": 430,
+      "controls": 21,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 3,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 3,
+        "spanCount": 0,
+        "canvases": [
+          {
+            "rect": {
+              "x": 24,
+              "y": 126,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 24,
+              "y": 242.1875,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          },
+          {
+            "rect": {
+              "x": 24,
+              "y": 358.375,
+              "width": 64,
+              "height": 64
+            },
+            "dimensions": [
+              64,
+              64
+            ],
+            "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+          }
+        ],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/gifts",
+      "width": 390,
+      "controls": 19,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 0,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 0,
+        "spanCount": 0,
+        "canvases": [],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/gifts",
+      "width": 360,
+      "controls": 19,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 0,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 0,
+        "spanCount": 0,
+        "canvases": [],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/gifts",
+      "width": 430,
+      "controls": 19,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 0,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 0,
+        "spanCount": 0,
+        "canvases": [],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/wall",
+      "width": 390,
+      "controls": 7,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 0,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 0,
+        "spanCount": 0,
+        "canvases": [],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/wall",
+      "width": 360,
+      "controls": 7,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 0,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 0,
+        "spanCount": 0,
+        "canvases": [],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "route": "/wall",
+      "width": 430,
+      "controls": 7,
+      "minimumControlWidth": 44,
+      "minimumControlHeight": 44,
+      "canvasCount": 0,
+      "spanCount": 0,
+      "htmlImageCount": 0,
+      "characters": {
+        "canvasCount": 0,
+        "spanCount": 0,
+        "canvases": [],
+        "spans": []
+      },
+      "controlsTextImagesCharactersIdentical": true,
+      "overflow": false,
+      "errors": [],
+      "firstTabFocus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    }
+  ],
+  "result": "PASS: bytes, pins, paired geometry/content/characters, recorded targets and overflow",
+  "limits": [
+    "This read-only audit does not generate browser, image or server evidence.",
+    "Visual disposition is recorded separately by the owner after viewing all 24 original PNGs.",
+    "Controls list excludes details/summary elements; it does not establish every target in every state.",
+    "Own routes record first Tab outlineStyle only, not focus color/contrast/clipping/geometry.",
+    "paints.color stores backgroundColor; body foreground computed contrast was not captured.",
+    "Forced-colors evidence belongs to Me only, not these four routes.",
+    "All core contexts use reducedMotion=reduce; normal-motion equivalence was not run.",
+    "Zero HTML images on these fixtures does not qualify real post/gift media.",
+    "Wall has zero character canvases and remains unavailable; mural editor pixels are not exercised.",
+    "The nested community CSS is not a separate key in report.sources; exact production bytes, recorded URL paint and visual evidence are checked instead.",
+    "Only controlled synthetic HTTP/C05/local admission, not live services or physical devices."
+  ],
+  "commandExitCode": 0
+}

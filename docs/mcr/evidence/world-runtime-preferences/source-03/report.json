@@ -1,0 +1,72 @@
+{
+  "slot": "WORLD-PREFERENCES-HARNESS-SOURCE-202611040750Z",
+  "source": "0aa1afc597ca393131881e8e10dd69e52883cf22",
+  "startedAtUTC": "2026-11-04T07:52:22.929338+00:00",
+  "commands": [
+    {
+      "name": "types",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "startedAtUTC": "2026-11-04T07:52:22.929806+00:00",
+      "log": "docs/mcr/evidence/world-runtime-preferences/source-03/types.log",
+      "exitCode": 0
+    },
+    {
+      "name": "lint",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/world/preferences/__tests__/native"
+      ],
+      "startedAtUTC": "2026-11-04T07:52:29.818314+00:00",
+      "log": "docs/mcr/evidence/world-runtime-preferences/source-03/lint.log",
+      "exitCode": 0
+    },
+    {
+      "name": "syntax",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/world/preferences/__tests__/native/native.mjs"
+      ],
+      "startedAtUTC": "2026-11-04T07:52:29.931126+00:00",
+      "log": "docs/mcr/evidence/world-runtime-preferences/source-03/syntax.log",
+      "exitCode": 0
+    }
+  ],
+  "helpers": {
+    "frontend/src/world/preferences/__tests__/native/native.mjs": "2a45fc646c89fa70a2b29651abd4ecb14722c912ca5b8661c1c772059099ba30",
+    "frontend/src/world/preferences/__tests__/native/preview.html": "8746c2f5808c4a763319ca43326debc730b15bcf5ffe36398a722c51f91bd78a",
+    "frontend/src/world/preferences/__tests__/native/preview.tsx": "ba2ed7105acc92488fa555ed254af4cecf0bfad17f201dbfabba9f1ec70feef0"
+  },
+  "peakBytes": 1384492,
+  "minimumFreeBytes": 37477543936,
+  "limits": {
+    "expectedMiB": 8,
+    "earlyStopMiB": 56,
+    "hardMiB": 64,
+    "totalSeconds": 120,
+    "launchFreeGiB": 16,
+    "stopFreeGiB": 8,
+    "includesRetainedProducerEvidenceAndBorrowedLink": true
+  },
+  "status": "PASS",
+  "cleanup": {
+    "ownedChildFinished": true,
+    "ownLinkAbsent": true,
+    "ownTemporaryRemoved": true
+  },
+  "elapsedSeconds": 7.159,
+  "completedAtUTC": "2026-11-04T07:52:30.044397+00:00"
+}

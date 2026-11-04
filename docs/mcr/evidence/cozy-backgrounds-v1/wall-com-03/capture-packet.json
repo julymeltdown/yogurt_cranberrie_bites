@@ -1,0 +1,169 @@
+{
+  "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+  "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+  "sourceAssetCssPinsVerified": 725,
+  "reportSha256": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f",
+  "qualification": "Wall matched foreground/background correction and all four normal-text samples pass; actual Meet summary focus clipping remains inherited/open; raw forced checker invalidities independently qualified, not waived. Owner visual/publication dispositions pending.",
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-360.png",
+      "bytes": 29640,
+      "sha256": "c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-390.png",
+      "bytes": 30461,
+      "sha256": "ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-430.png",
+      "bytes": 31645,
+      "sha256": "871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-390.png",
+      "bytes": 29604,
+      "sha256": "2c4eee679c691499411c12791645188c8ebf597be655769f118fd7af191cefb5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-focus-forced-390.png",
+      "bytes": 20559,
+      "sha256": "30f8ea89ada4e57134d83affbe1eeafb02981eedcb978137178f4986752efc2d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-focus-normal-390.png",
+      "bytes": 30018,
+      "sha256": "0c464785f8c64db7b6b3cf9af82c06d48416c103000d3c1476fdb72b680ad945"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-text-backing-forced-390.png",
+      "bytes": 20559,
+      "sha256": "30f8ea89ada4e57134d83affbe1eeafb02981eedcb978137178f4986752efc2d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-text-backing-normal-390.png",
+      "bytes": 27573,
+      "sha256": "6f66328349323d6a8cd3a7d9014b648718291ab858a28d8ab4921fa67a442df9"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-390.png",
+      "bytes": 65005,
+      "sha256": "9214f16c9b2b1b665e35dd84a9ddac9a4f695063c8b85e792b7b00b206abf83f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-focus-forced-390.png",
+      "bytes": 51419,
+      "sha256": "1d092d6846e692b52b3e22fce93b8088b135daefd2222cb311cab4617e67a820"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-focus-normal-390.png",
+      "bytes": 65278,
+      "sha256": "8ac54cb6f16e116bc38520b117b7923be62ec72fe3597a69c3a73d33da2f55b3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-text-backing-forced-390.png",
+      "bytes": 51419,
+      "sha256": "1d092d6846e692b52b3e22fce93b8088b135daefd2222cb311cab4617e67a820"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-text-backing-normal-390.png",
+      "bytes": 60583,
+      "sha256": "96277691bdc003b64d723d01ba72ece8ad7df3eec509df50f5d80c5c9a8e0fff"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-390.png",
+      "bytes": 72061,
+      "sha256": "85f2d76ba60ab3a84af36b70aecf2b57d0057d29979d40987ac37801160a5be7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-focus-forced-390.png",
+      "bytes": 55034,
+      "sha256": "e294dc222efa3068f43d11bb2e92299d19582b405322d77e6ba7960caf0fc09c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-focus-normal-390.png",
+      "bytes": 72153,
+      "sha256": "e4cac6d380f96ec881ae893208ea88b436610330e45b6a7c497df1f3914c381a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-text-backing-forced-390.png",
+      "bytes": 55038,
+      "sha256": "597059f318037bb92540290d6074ce71fc4a5cfadd8c23f265ea7625a103af14"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-text-backing-normal-390.png",
+      "bytes": 66821,
+      "sha256": "920e2a0a29ff1ecb4358ea9111fd77c9b6dae7a37e5126e4b53654b700efb50a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-360.png",
+      "bytes": 42703,
+      "sha256": "d5281ac77ad5b53a32fc3025cfc819865e1d78259ec90cb996fc2946de43e203"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-390.png",
+      "bytes": 42172,
+      "sha256": "ec075ce0ceb6a029a5b469fe2db8ba48b7668a7c83bd8a5845fd7019a8417a9f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-430.png",
+      "bytes": 40881,
+      "sha256": "9bb0bf3f6ac6790306f12a39be4db4fcfec262788fd8f267c94880624522c357"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-focus-forced-390.png",
+      "bytes": 26344,
+      "sha256": "9bac7f25c85b284ef1eab1c2b4506c93e9d413597e6f58726e6f8808496d5997"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-focus-normal-390.png",
+      "bytes": 42343,
+      "sha256": "4d829241f3f8af62f8250442cb74f70f236120b8af9955a8a2ec22d1d222dd29"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-text-backing-forced-390.png",
+      "bytes": 26344,
+      "sha256": "9bac7f25c85b284ef1eab1c2b4506c93e9d413597e6f58726e6f8808496d5997"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-text-backing-normal-390.png",
+      "bytes": 34020,
+      "sha256": "dddb1c80201f85718499cae5ed12a15aef114561a8bf1e815dc939f1673e734a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/driver.mjs.snapshot",
+      "bytes": 18427,
+      "sha256": "84b23c4d4de54d7126447cc6a282b042db216d72a3311eb4b30febc965e7db6f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/guard.json",
+      "bytes": 716,
+      "sha256": "328ee614e19197cf4ec9d6d12ffb6fdcfb73bacb0522a6acf0dad5d43bbe9f44"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/guard.py.snapshot",
+      "bytes": 3207,
+      "sha256": "2f53d911bb92d455977166c02fcd2566063c20ddb326c987ad6ceac5a6c380f4"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/native.log.gz",
+      "bytes": 777,
+      "sha256": "f5b171cdda1f741c59a814ff5dd86cf33924373931bbd275e3d49e3e9f447998"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/qualification.json",
+      "bytes": 20157,
+      "sha256": "f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/report.json",
+      "bytes": 459261,
+      "sha256": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

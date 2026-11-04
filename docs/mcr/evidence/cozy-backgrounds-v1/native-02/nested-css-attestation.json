@@ -1,0 +1,19 @@
+{
+  "basis": "Tracked physical PostCSS-imported leaves in the guard-verified clean runner checkout e237 match frozen production8972 exactly. Root was sole writer and did not mutate source during capture. This is an inference from clean checkout and identical Git blobs, not an individual Vite load-hook read receipt. Raw report729 loaded-pin records remain unchanged.",
+  "leaves": [
+    {
+      "path": "frontend/src/shared/styles/cozy-identity-backgrounds-v1.css",
+      "bytes": 3876,
+      "sha256": "aafdee7a24270e890c7916a5400a7632b4023270e3a4d0bca965bc62f98564ff",
+      "runner_blob": "004bdb7f06d5de8d1dbf2d47d387415fc9cadd13",
+      "frozen_blob": "004bdb7f06d5de8d1dbf2d47d387415fc9cadd13"
+    },
+    {
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "bytes": 2260,
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "runner_blob": "e18ab747430a0f1c8f686473d143e764ac2e3aa2",
+      "frozen_blob": "e18ab747430a0f1c8f686473d143e764ac2e3aa2"
+    }
+  ]
+}

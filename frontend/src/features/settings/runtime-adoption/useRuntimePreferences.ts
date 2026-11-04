@@ -3,6 +3,7 @@ import type { SessionController } from '../../auth/model/session'
 import type { PrivacyScope } from '../../../shared/query/privacy'
 import { createRuntimePreferencesAdapter, type RuntimeEffects, type RuntimePreferencesAdapter, type RuntimeSound, type RuntimeTheme } from '.'
 import { projectRuntimeMotion } from './motionProjection'
+import './motion.css'
 
 /** Projection of the existing presentation release; composition provides the same owner.
  * No app/world implementation import and no alternate runtime construction. */

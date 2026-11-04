@@ -1,13 +1,12 @@
 # Wall and Me background artwork — 2026-11-04
 
-Status: **IN_PROGRESS**. Editable source and application adoption are present in
-candidate `c8a731e5`; the actual same-state 390px Wall/Me pairs were inspected.
-The original three-SVG pack is published on `origin/master` at `c8a731e5`.
-The later background-only Me focus-contrast fix below is source-ready and still
-requires integration, fresh rendered evidence and publication.
-360/430px and additional accessibility checks, the later Me outer-paper capture,
-and publication of final documentation remain required. This document does not
-accept FE32, FE34, IN04, or mobile release gates.
+Status: **IN_PROGRESS**. The corrected Me backgrounds pass this asset owner's
+scoped visual inspection in immutable `native-02` at 360/390/430px, including
+four focused header links and forced colors. Their tested source is published.
+Wall remains **NEEDS_CORRECTION**: the captured 180px artwork leaves a large
+sparse lower field. The tall Wall source revision below is ready for integration
+and fresh guarded-Wall evidence. Final documentation publication remains open.
+This document does not accept FE32, FE34, IN04, or mobile release gates.
 
 ## Assignment and ownership
 
@@ -57,13 +56,13 @@ editable source and the served output; there is no separate raster export.
 
 | Filename | Intrinsic size / viewBox | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| `wall-stationery.svg` | 390×180 / `0 0 390 180` | 2639 | `1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227` |
+| `wall-stationery.svg` (tall-paper revision) | 390×780 / `0 0 390 780` | 4500 | `22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7` |
 | `me-scrapbook.svg` | 390×240 / `0 0 390 240` | 2728 | `98c351c141e372d8d7e0d6879556105c551fbdf7478d66afe76d360a59a7aae1` |
 | `me-night-ribbon.svg` (focus-background revision) | 390×180 / `0 0 390 180` | 2298 | `29ad1cb9d04101399e2483fef9de6a3d710c6bf7f08cb1cb4501fb746152932d` |
 
 | Asset | Background role and proposed use, subject to Root's exact grant |
 | --- | --- |
-| Wall stationery | Broad cream `#fff0de`, peach scallops `#f3c9bd`, lilac `#e5d8e8` and sage clouds `#dce3cd`. COM01's guarded Wall panel-body surround only; never the canvas, tool stack, pixel grid or swatches. Prefer matching solid background color plus a single image sized to the surface width. The tile has an intentional scallop/wave edge; it is **not seamless**. Do not stretch it into unrelated UI or repeat it densely. The matching solid fill covers tall exposed paper without returning to the old dark field. |
+| Wall stationery | Broad cream `#fff0de`, peach scallops `#f3c9bd`, lilac `#e5d8e8`, sage `#dce3cd`, broad blush/sage middle shapes and large lower clouds/ribbon. Guarded Wall panel-body surround only; never the canvas, tool stack, pixel grid or swatches. Existing `center top`, `100% auto`, `no-repeat` and matching solid fallback stay valid. This is one tall composition, not a seamless repeated tile. Original top ornament geometry/paints remain unchanged; new forms occupy the formerly sparse lower area. |
 | Me scrapbook | Broad blush cream `#fff0e7`, rose scallop `#efc3c9`, lilac `#ead9ea`, sage `#dce5d0`. ID01 may propose `.me-hub--reference .me-bio` and `.me-activity-navigation` background paint; no Me body grant is implied. Keep existing opaque controls. At small bio heights the broad warm fill and upper scallop remain visible while lower clouds may be clipped. |
 | Me night ribbon | Warm berry upper paper `#573344`, mauve clouds, quilted hearts and a large soft bow; an opaque lower paper shelf `#fff0e7` with only light blush/lilac/sage paints protects the unchanged red focus outline. Same header background selector only. Requested failed-image fallback is former header `#1c1a18`, preserving baseline outline and light-text contrast. The existing opaque avatar container and every character pixel remain unchanged. It is not a portrait frame or character background asset. |
 
@@ -143,8 +142,10 @@ below: exact bytes match. No rerun, reconstructed image or substitute cohort is
 used. The canonical physical packet is under
 `/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/`.
 The asset author independently compared all three original candidate SVG blobs
-with `8ff3a58f`: exact bytes match. Wall and Me paper still match the current
-asset-interface hashes above. This first capture used original header SHA-256
+with `8ff3a58f`: exact bytes match. Me paper still matches the current
+asset-interface hash above. This first capture used original Wall SHA-256
+`1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227`
+and original header SHA-256
 `1519b1b125190be901e1119105eafd057532ff98d1f091cf450f0f31f72b62bc`,
 not the later focus-background revision.
 
@@ -263,3 +264,120 @@ The actual fixed rendering, every focused icon, responsive widths and relevant
 text states still require Root's coordinated follow-up. Static geometry/color
 proof is a source handoff, not visual acceptance. No browser, capture, PNG
 restoration or sparse-checkout operation was started by this author.
+
+## Corrected shared packet `native-02`
+
+The asset author restored only their unclaimed isolated source checkout on
+`codex/mcr-art-cute-wall-me-v1` at preserved `856c7170`; Root's publisher and
+packet files were read in place. No packet copy/materialization, sparse repair,
+browser or native matrix was started.
+
+The immutable packet commit is `5186f11017185a040e4ccde1c59589e140563ef0`.
+Canonical packet:
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-02/`.
+The author directly verified the owned PNGs and report against both immutable
+Git blobs and the capture manifest, then viewed all twelve Wall/Me core PNGs,
+all eight baseline/candidate Me focused-link PNGs and the forced-colors PNG.
+
+| Pin | Value |
+| --- | --- |
+| Production and fixtures | `8972b0b634035055eb023dbc2f786e4463b172e5` |
+| Runner | `e237572719602da6a1a08b7fe0579b0e9c96da1f` |
+| Driver SHA-256 | `58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde` |
+| [Raw report](../evidence/cozy-backgrounds-v1/native-02/report.json) SHA-256 | `7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b` |
+| [Capture manifest](../evidence/cozy-backgrounds-v1/native-02/capture-packet.json) SHA-256 | `ba34f05a25a30b42475fa13c1349576bdc0480a69eb4aeec1d444b7d91dc16fe` |
+| Job / actual run | `PANEL-CORRECTED-202611040733Z`; `2026-11-04T07:38:12.062Z`–`07:40:02.112Z`; exit 0 |
+| Browser / scope | Chrome `156.0.8078.80`; controlled QA06 synthetic HTTP/C05/local admission, actual default router/Auth/Phaser |
+
+The baseline restores only the same four paint integration files to `7c25078f`;
+all other frozen production/fixture source is identical in both phases. This
+packet tests header hash `29ad1cb9…`, Me paper `98c351c1…` and **old 180px Wall**
+`1929fda1…`. It does not test the new 780px Wall source `22e2de67…`.
+
+| Route / width | Baseline PNG SHA-256 | Candidate PNG SHA-256 |
+| --- | --- | --- |
+| Wall 360 | `411911482b29ba80255f7c8f344c845499a8aca6f48abec811e63c049b3b0ff6` | `c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef` |
+| Wall 390 | `6ee53f544d8b1619e23c2fda7dba413afb19b9ce6b7c4509fdf1419904bb4bea` | `ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f` |
+| Wall 430 | `05eada7abfd4e543bdd353fdad9d6908cd311c7cbc3755e2af52d4ce39da6b56` | `871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864` |
+| Me 360 | `9655d2c0c4cdb96833e75cea9eb2703a9ba960566ce001bb944f1584d04b9421` | `8d738d11653d7a3393a50309d5ceadf60866b73cb4129516ceae3e350d317e86` |
+| Me 390 | `82a4dc4db9e98e776cd67a1184f9e9abad0d6aacb94e8f27e08c93954c93cb54` | `24fc709693f07591cacd1b2f67f2afbb61e20d00d765ebf182c168359fc67b13` |
+| Me 430 | `abf3cd505d07da0861f5a0e41ce4b490cb79aa642ef49a19db53f09cf34a663e` | `66d2dd7768c1ff2c635972283e1282691c22754dabeee1225664650bdcf15ba0` |
+
+Me visual disposition: **PASS for this owned background scope and captured
+states**. The upper berry quilt/bow, warm light focus shelf, blush outer paper,
+large lower ribbon/clouds and retained character form a visibly warmer, softer,
+more playful background than the old grunge/dark UI and the supplied collage.
+This is a broad surface change, not a few tiny accents. At each width the
+nickname, era, bio, navigation and unavailable-activity text remain legible.
+The selected full character stays on its original opaque field. The source
+does not change its crop, renderer, framing or proportions.
+
+The report now measures the actual visible Me canvas, not an empty HTML-image
+array: one canvas, intrinsic 128×128, RGBA SHA-256
+`5ebf042e3a925cb16bdc690e168e8f4aa28e3faefbb75bc2006f50ccd4317a9d`
+in both phases at all three widths, with exact matching rectangles/dimensions
+per pair. At 360px its pre-existing CSS rectangle is 117.59375×128; that remains
+unchanged and is not a new framing adjustment. Wall explicitly has zero
+character canvases/spans in its guarded state; this is not editor-pixel proof.
+Both owned routes have identical body text, recorded control geometry/type/
+colors/states, no recorded control under 44×44, no horizontal overflow and no
+runtime errors. These statements cover the driver's recorded controls rather
+than an unbounded accessibility audit.
+
+The four actual candidate focus PNGs show clear unchanged red outlines, width
+3px, offset 3px. Four perimeter samples per icon give minima respectively:
+Edit profile 5.637:1, Dress up 6.234:1, Manage private social links 5.836:1,
+Sharing requests 5.536:1, versus 2.288:1 for every baseline icon. This confirms
+the background correction improves the sampled real outline backing without
+changing focus geometry. It is not a claim that the old baseline passed 3:1.
+The tested CSS also restores failed-image fallback `#1c1a18`. A failed-image
+runtime case is not independently captured here.
+
+The actual forced-colors/reduced-motion Me PNG keeps system foreground text,
+control borders and the focused fourth-link outline readable. SVG background
+art remains colored in this browser; it is not claimed to disappear. The
+recorded forced-colors and reduced-motion media are active. The ordinary
+contexts also request reduced motion, and the owned SVGs contain no animation.
+Focus and forced-color artifact hashes are retained in the pinned manifest.
+
+Wall visual disposition: **NEEDS_CORRECTION** despite preserved truthful guard,
+legible text and warm palette. At 360/390/430px the 180px image occupies only the
+upper part of the 780px body; roughly 590–620px below remains plain cream. That
+is too sparse for the latest dominant-playful background instruction. COM01
+independently reported the same gap; neither owner treats technical invariance
+as visual acceptance.
+
+Fresh publication check: `git fetch origin master`, exit 0, finds
+`39c68d1dcd85a618ec0c56287d8451c6ffe13dbd`. Both frozen production `8972b0b6`
+and packet `5186f110` are verified ancestors. Remote Me SVG bytes equal the
+current tested header/paper hashes. Remote Wall remains the old `1929fda1…`.
+The new tall Wall revision and this final inspection documentation still need
+Root's integration/publication.
+
+## Tall Wall correction from actual responsive evidence
+
+Only `wall-stationery.svg` changes. Its width stays 390; intrinsic height and
+viewBox height become 780. Base cream and paper dots extend down the composition.
+All original top pattern definitions and ornament geometry/paints are retained;
+new art begins below y=258. Broad blush and sage middle forms, large lower
+lilac/sage clouds, a larger ribbon and soft music details occupy the formerly
+sparse field. No new foreground, character, state, label, control or venue cue
+is introduced. The original top guard text region is unchanged.
+
+COM01's existing `center top`, `100% auto`, `no-repeat`, `#fff0de` background
+mapping needs no CSS change, only closed-source dimension/hash metadata. With
+the actual captured body widths 342/372/412 and y=57, the new lower-ribbon
+center maps to screenshot y=555.97/599.74/658.10, inside every 780px body. The
+composition returns to its matching cream base at the bottom; it is not tiled.
+
+Source checks exit 0: XML/dimension/reference/inert-content audit, original top
+geometry/paint comparison excluding insignificant XML tail whitespace, and
+complete palette luminance audit. Minimum unblended source contrast remains
+7.364:1 for dark `#211d19` against the darkest paper paint `#c9a58b`; all new
+large forms are lighter. `git diff --check` exits 0. This proves source bounds,
+not the final rendering.
+
+Remaining required evidence: Root's bounded fresh Wall 390px before/after and
+360/430px captures (including relevant focus/contrast and forced-color guard
+readability), owner inspection/fixes, and final source/doc publication ancestry.
+Me's unchanged tested assets do not need a duplicate matrix. Goal stays active.

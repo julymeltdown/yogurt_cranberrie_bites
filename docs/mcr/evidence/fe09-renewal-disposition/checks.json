@@ -1,0 +1,56 @@
+{
+  "sourceBase": "39c68d1dcd85a618ec0c56287d8451c6ffe13dbd",
+  "node": "24.22.2",
+  "qualification": "SYNTHETIC_HTTP_ISOLATED_COOKIE_POLICY_FIXTURES",
+  "checks": [
+    {
+      "name": "new combined fixture boundaries",
+      "command": "node node_modules/vitest/vitest.mjs run src/features/auth/__tests__/fe09-renewal-disposition/boundaries.test.ts --cache=false --maxWorkers=1",
+      "exitCode": 0,
+      "tests": 6,
+      "files": 1,
+      "log": "new.log.gz"
+    },
+    {
+      "name": "retained relevant regressions",
+      "command": "node node_modules/vitest/vitest.mjs run src/features/auth/__tests__/session.test.ts src/features/auth/__tests__/sensitive-read.test.ts src/features/auth/__tests__/cookie-policy.test.ts src/features/auth/__tests__/domain-request.test.ts --cache=false --maxWorkers=1",
+      "exitCode": 0,
+      "tests": 75,
+      "files": 4,
+      "log": "regressions.log.gz"
+    },
+    {
+      "name": "strict imported-source types",
+      "command": "node node_modules/typescript/bin/tsc --project src/features/auth/__tests__/fe09-renewal-disposition/tsconfig.json --pretty false",
+      "exitCode": 0,
+      "log": "types.log.gz"
+    },
+    {
+      "name": "new suite lint",
+      "command": "node node_modules/oxlint/bin/oxlint src/features/auth/__tests__/fe09-renewal-disposition",
+      "exitCode": 0,
+      "log": "lint.log.gz"
+    },
+    {
+      "name": "planning baseline only",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "log": "plan.log.gz"
+    }
+  ],
+  "productChanges": [],
+  "originalCriterionGap": "NONE_CONFIRMED",
+  "originalFE09Disposition": "SATISFIED task-local, preserved",
+  "genuineExpiryFollowUp": "NOT_RUN, informational only; Main07:55UTC withdrew proposed long-runtime requirement; no new FE09/IN01 gate or automatic-renewal requirement",
+  "nativeBrowser": "NOT_RUN",
+  "productionBuild": "NOT_RUN",
+  "realService": "NOT_RUN",
+  "physicalDevices": "NOT_RUN",
+  "limitations": [
+    "No natural wall-clock expiry observation",
+    "New fixtures do not alter clock or TTL",
+    "Retained session.test.ts includes a one-second synthetic expiry fixture; it is not genuine expiry evidence",
+    "Isolated cookie policy does not qualify native locks or real cookies; retained production-refresh evidence remains separately attributed",
+    "ActorA/me504/noPUT is a separate BackendRoot diagnosis"
+  ]
+}

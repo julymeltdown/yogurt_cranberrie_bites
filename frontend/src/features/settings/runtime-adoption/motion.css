@@ -1,0 +1,6 @@
+[data-mcr-reduced-motion="true"],
+[data-mcr-reduced-motion="true"] * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}

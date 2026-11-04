@@ -1,0 +1,531 @@
+{
+  "task": "QA06-HUMAN-FRAME-FOOTER-01 background-only follow-up",
+  "reviewed_at_utc": "2026-11-04T07:53:57.652015+00:00",
+  "decision": "ACCEPTED_OWNED_SHARED_BACKGROUND_SCOPE",
+  "delivery_status": "IN_PROGRESS_PENDING_FACTUAL_DOCUMENTATION_CORRECTION_PUBLICATION",
+  "scope": "Only assigned shared header and masked perimeter background paint; frozen shared footer and control/frame preservation reviewed. No leaf artwork or whole-QA06 approval.",
+  "canonical_packet": {
+    "commit": "5186f11017185a040e4ccde1c59589e140563ef0",
+    "directory": "docs/mcr/evidence/cozy-backgrounds-v1/native-02",
+    "production_revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+    "runner_revision": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+    "driver_sha256": "58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde",
+    "job": "PANEL-CORRECTED-202611040733Z",
+    "raw_report_sha256": "7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b",
+    "technical_result": "PASS_48_PAIRED_CORE_CASES_60_SCREENSHOTS",
+    "visual_result": "PENDING_OWNED_SOURCE_INSPECTION",
+    "loaded_source_pins_verified": 729,
+    "limits": "Controlled QA06 synthetic HTTP/C05/local admission. Wall guard remains a guard. No live IN01/Profile/avatar-save/device proof. Baseline restores only four paint integration files to7c; other application/fixture source remains8972 in both modes."
+  },
+  "capture_started_at": "2026-11-04T07:38:12.062Z",
+  "capture_finished_at": "2026-11-04T07:40:02.112Z",
+  "baseline_policy": "Same candidate and fixture, restoring ONLY four background integration files to exact base bytes. Meet typography identical in both captures.",
+  "fixture": "Actual root/Auth/BrowserRouter/production Phaser renderer with controlled synthetic HTTP/C05/local admission. Wall is an unavailable-world guard.",
+  "independent_checks": {
+    "all_60_saved_pngs_directly_viewed": true,
+    "all_65_packet_artifact_hashes_and_bytes_verified": true,
+    "loaded_git_source_asset_pins_independently_verified": 729,
+    "core_cases": 48,
+    "matched_pairs": [
+      {
+        "route": "/",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/login",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/me/avatar",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/feed",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/meet",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/gifts",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/wall",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/me",
+        "width": 390,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/login",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/me/avatar",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/feed",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/meet",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/gifts",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/wall",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/me",
+        "width": 360,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/login",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/me/avatar",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/feed",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/meet",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/gifts",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/wall",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      },
+      {
+        "route": "/me",
+        "width": 430,
+        "controls_images_text_character_records_equal": true
+      }
+    ],
+    "core_errors": 0,
+    "core_horizontal_overflow_cases": 0,
+    "saved_me_focus_and_unfocused_backing_pixels_independently_verified": 32,
+    "root_raw_report_unchanged": true,
+    "copies_of_root_native02_packet_created_by_owner": false
+  },
+  "owned_shared_source_postimages": {
+    "frontend/src/app/shell.css": {
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee",
+      "bytes": 12105,
+      "owner_matches_production_revision": true
+    },
+    "frontend/src/app/shell-chrome/shell-chrome.css": {
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d",
+      "bytes": 5451,
+      "owner_matches_production_revision": true
+    },
+    "frontend/src/shared/ui/concert-window/concert-window.css": {
+      "sha256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+      "bytes": 7210,
+      "owner_matches_production_revision": true
+    },
+    "frontend/src/app/shell-chrome/parade-footer.tsx": {
+      "sha256": "6f3b1f838987dbe470e1c92e589718d60de8d70ff7a1d369b0dc0607df3b9b41",
+      "bytes": 3030,
+      "owner_matches_production_revision": true
+    }
+  },
+  "visual_findings": [
+    "All360/390/430 views retain aligned shared header controls and an unclipped symmetric pastel masked perimeter; dark berry header reads clearly against the softer background palette.",
+    "Candidate backgrounds are noticeably softer and cuter through warm paper, pastel clouds, mint/rose/lavender areas and existing background motifs. No new character/footer foreground was authored by this owner.",
+    "Public landing logo, four-character strip and CTA remain stable; login states remain readable. Customize/Feed/Meet/Me retain character framing. Gifts retains explicit no-photo/fixture labels. Wall remains a guard.",
+    "Existing marching silhouette/footer remains unchanged where present. No decorative left accent bar was introduced in owned scope.",
+    "Saved430 Meet/Gifts/Wall views show no shared-frame clipping. Meet content extends vertically below the viewport; this is not horizontal overflow or proof of leaf focus traversal."
+  ],
+  "header_focus": {
+    "sample_coordinates": {
+      "ring": [
+        21,
+        22
+      ],
+      "header_background": [
+        100,
+        15
+      ],
+      "perimeter": [
+        6,
+        6
+      ]
+    },
+    "verified_widths": [
+      360,
+      390,
+      430
+    ],
+    "ring_rgb": [
+      162,
+      35,
+      43
+    ],
+    "baseline_background_rgb": [
+      25,
+      24,
+      23
+    ],
+    "candidate_background_rgb": [
+      37,
+      16,
+      23
+    ],
+    "candidate_perimeter_rgb": [
+      241,
+      204,
+      217
+    ],
+    "baseline_ratio": 2.3739162164624363,
+    "candidate_ratio": 2.4130529038019013,
+    "result": "BG-FOCUS-01 regression corrected; baseline visibility preserved. Original and corrected title ring remain below3:1; no full focus-contrast compliance claim."
+  },
+  "me_icon_focus": {
+    "viewport": [
+      390,
+      844
+    ],
+    "measurements": {
+      "baseline": [
+        {
+          "label": "Edit profile",
+          "rect": {
+            "x": 81,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 2.2880889329880354
+        },
+        {
+          "label": "Dress up",
+          "rect": {
+            "x": 141,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 2.2880889329880354
+        },
+        {
+          "label": "Manage private social links",
+          "rect": {
+            "x": 201,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 2.2880889329880354
+        },
+        {
+          "label": "Sharing requests",
+          "rect": {
+            "x": 261,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 2.2880889329880354
+        }
+      ],
+      "candidate": [
+        {
+          "label": "Edit profile",
+          "rect": {
+            "x": 81,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 5.637375410942099
+        },
+        {
+          "label": "Dress up",
+          "rect": {
+            "x": 141,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 6.234278895373031
+        },
+        {
+          "label": "Manage private social links",
+          "rect": {
+            "x": 201,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 5.835957066738428
+        },
+        {
+          "label": "Sharing requests",
+          "rect": {
+            "x": 261,
+            "y": 220.390625,
+            "width": 48,
+            "height": 44
+          },
+          "minimum_sampled_contrast": 5.535656460231894
+        }
+      ]
+    },
+    "ring_rgb": [
+      161,
+      33,
+      44
+    ],
+    "outline_width": 3,
+    "outline_offset": 3,
+    "outline_style": "solid",
+    "actual_saved_pixels_verified": true,
+    "limit": "Four Me icons only; these measurements do not qualify Community leaf focus."
+  },
+  "forced_colors": {
+    "status": "ACCEPTED_OWNED_SHARED_FRAME_IN_SAVED_ME_STATE",
+    "viewport": [
+      390,
+      844
+    ],
+    "screenshot": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-forced-colors-390.png",
+    "finding": "System black/white surfaces, blue focus indicator and readable controls retained; reduced-motion condition recorded by Root. No Community forced-colors screenshot exists in this packet."
+  },
+  "auth_states": {
+    "viewport": [
+      390,
+      844
+    ],
+    "states": [
+      "pending",
+      "error",
+      "options-unavailable"
+    ],
+    "finding": "All three saved states directly viewed; readable truthful state/error/disabled controls, no shared-frame clipping. No live provider/authentication claim."
+  },
+  "character_coverage_at_390": {
+    "landing": {
+      "canvas_count": 0,
+      "css_span_count": 4
+    },
+    "login": {
+      "canvas_count": 0,
+      "css_span_count": 0
+    },
+    "customize": {
+      "canvas_count": 4,
+      "css_span_count": 0
+    },
+    "feed": {
+      "canvas_count": 1,
+      "css_span_count": 0
+    },
+    "meet": {
+      "canvas_count": 3,
+      "css_span_count": 0
+    },
+    "gifts": {
+      "canvas_count": 0,
+      "css_span_count": 0
+    },
+    "wall": {
+      "canvas_count": 0,
+      "css_span_count": 0
+    },
+    "me": {
+      "canvas_count": 1,
+      "css_span_count": 0
+    }
+  },
+  "character_coverage_limit": "Landing four CSS spans compare source hash/bytes, rect, crop/size and rendering; Customize4/Feed1/Meet3/Me1 canvas records compare equal. Empty arrays do not certify character pixels. Direct visual/source pin review is separate from measured canvas/CSS coverage; no comprehensive SVG/footer raster equality claim.",
+  "community_follow_up": {
+    "status": "OPEN_OUTSIDE_THIS_OWNED_PAINT_DECISION",
+    "reviewed_saved_views": [
+      "candidate-meet-430.png",
+      "candidate-gifts-430.png",
+      "candidate-wall-430.png"
+    ],
+    "finding": "No concrete shared header/perimeter clipping. Saved screenshots show the programmatically focused #panel-title heading ring; Root separately probes a titlebar button outline after capture. Community leaf focus contrast/clipping and forced-colors remain unverified. Do not infer closure from Me measurements. Root and Main385 informed; no new browser/job requested."
+  },
+  "world_map_qualified_reuse": {
+    "source": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+    "review": "docs/mcr/evidence/reference-frame-footer/world-map-review-4e491a45/owner-review.json",
+    "saved_pngs_directly_viewed": 8,
+    "width_390": "paired before/after",
+    "widths_360_430": "candidate only",
+    "four_owned_shared_files_exact": true,
+    "limit": "Separate actual cohort, not simultaneous latest whole-app proof; later Map leaf fit-band changes are not qualified by that image set."
+  },
+  "source_validation": {
+    "revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+    "review": "docs/mcr/evidence/reference-frame-footer/source-review-8972b0b6/owner-review.json",
+    "unit_tests": 206,
+    "test_files": 11,
+    "owner_contrast_regressions": 3,
+    "unit_typescript_scoped_lint_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "limit": "Qualified composed source checks; no duplicate owner native/build/install/browser job."
+  },
+  "lease": {
+    "shared_css_writes": "STOPPED_RETURNED_TO_WORLD_AND_ROOT",
+    "retained_writer_paths": [
+      "docs/mcr/frontend/reference-frame-footer.md",
+      "docs/mcr/evidence/reference-frame-footer/**"
+    ],
+    "application_changes_needed_after_review": false
+  },
+  "resources": {
+    "owner_active_jobs": 0,
+    "owner_resource_holds": 0,
+    "owner_dependency_link": false,
+    "root_report_cleanup": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "tempRemoved": true
+    },
+    "packet_retention_owner": "Root only; no owner native02 materialization/copy/recapture"
+  },
+  "not_accepted": [
+    "Whole original QA06/AR02/AR03/AR04 or IN gates",
+    "Community leaf focus contrast/clipping/forced-colors",
+    "Other eras",
+    "Live authority/API/multiuser flows",
+    "Profile/avatar save",
+    "Wall editor",
+    "Physical device behavior",
+    "Full WCAG compliance"
+  ],
+  "publication": {
+    "verified_master": "70a444bf7cf6454f2ed4da7a635db2bb649738f2",
+    "fetch_and_ls_remote_agree": true,
+    "owner_postimages_exact": {
+      "new_source_receipt_final_review_doc_and_historical_files": 16,
+      "application_files": 4,
+      "regression_test_files": 2,
+      "earlier_review_json_files": 4,
+      "canonical_corrected_panel_artifacts": 65
+    },
+    "required_delivered_ancestry_verified": true,
+    "previous_world_map_raw_report_sha256_verified": true,
+    "pending": "Only this factual heading-state correction and targeted inherited-contrast finding need publication/readback; no further application edit or duplicate validation job."
+  },
+  "targeted_three_era_title_ring_follow_up": {
+    "decision": "OPEN_INHERITED_FUNCTIONAL_FOCUS_CONTRAST_ISSUE",
+    "canonical_commit": "4600542b",
+    "canonical_report": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/report.json",
+    "report_sha256": "8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134",
+    "candidate": "aea02a262f7d834be7ef2267368812520a5d9c0c",
+    "job": "ERA-WORLD-MAP-NATIVE-202611040754Z",
+    "started_at": "2026-11-04T07:55:16.489Z",
+    "finished_at": "2026-11-04T07:56:07.513Z",
+    "affected_state": "Map /map programmatic focus on h1#panel-title, not a titlebar button, Me icon or Community leaf control.",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "eras": [
+      "PARADE",
+      "REVENGE",
+      "DANGER"
+    ],
+    "independent_saved_evidence_checks": {
+      "map_png_hashes_and_bytes_verified": 18,
+      "actual_png_ring_and_backing_samples_verified": 18,
+      "directly_viewed_map_images": [
+        "candidate-map-parade-390.png",
+        "candidate-map-revenge-390.png",
+        "candidate-map-danger-390.png"
+      ],
+      "directly_viewed_world_images": [
+        "candidate-world-parade-390.png"
+      ]
+    },
+    "samples": {
+      "ring_coordinate": [
+        21,
+        22
+      ],
+      "backing_coordinate": [
+        230,
+        30
+      ],
+      "ring_rgb": [
+        162,
+        35,
+        43
+      ],
+      "baseline_backing_rgb": [
+        25,
+        24,
+        23
+      ],
+      "candidate_backing_rgb": [
+        37,
+        16,
+        23
+      ],
+      "baseline_contrast": 2.3739162164624363,
+      "candidate_contrast": 2.4130529038019013
+    },
+    "contrast_evidence": "Owner calculated contrast from actual pinned PNG pixels. Raw report itself does not include a title-contrast field. All9 candidate Map and9 baseline Map images have these exact respective RGB samples.",
+    "source_paths": {
+      "heading": "frontend/src/app/shell-chrome/index.tsx:82",
+      "backing": "frontend/src/app/shell-chrome/shell-chrome.css:30",
+      "intended_light_header_focus_override": "frontend/src/app/shell-chrome/shell-chrome.css:35",
+      "global_red_tabindex_focus_rule": "frontend/src/shared/styles/base.css:32"
+    },
+    "routing": "Concrete inherited issue routed directly Root153 and QA coordinator385; existing Root/frame composition ownership. Shared background CSS lease remains returned; no unallocated functional focus edit.",
+    "limits": "Baseline-preservation background acceptance remains qualified. Both original/current title contrasts are below3:1; no new regression or whole-WCAG acceptance. Viewed World image has no focused panel heading, so this is not a World title-ring measurement. Other native-03 invariants remain Root evidence, not independently accepted by this targeted review. No new browser/helper/copy or raw packet rewrite."
+  }
+}

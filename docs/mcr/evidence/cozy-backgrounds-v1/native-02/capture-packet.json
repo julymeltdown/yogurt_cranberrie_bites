@@ -1,0 +1,338 @@
+{
+  "production_revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+  "runner_revision": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+  "driver_sha256": "58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde",
+  "job": "PANEL-CORRECTED-202611040733Z",
+  "raw_report_sha256": "7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b",
+  "technical_result": "PASS_48_PAIRED_CORE_CASES_60_SCREENSHOTS",
+  "visual_result": "PENDING_OWNED_SOURCE_INSPECTION",
+  "loaded_source_pins_verified": 729,
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-customize-360.png",
+      "bytes": 60358,
+      "sha256": "16f50df1480aca0e52fac5fc2feea738c64280ced8dd1d71b2ede3ab0a78b05d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-customize-390.png",
+      "bytes": 62382,
+      "sha256": "1c7f1bcf709449da0a36c9a0a949f37cd5dc0f77be4dafbff774e8f1985098b2"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-customize-430.png",
+      "bytes": 64452,
+      "sha256": "19bf72f5d2894fe568f876b2ecb1e4214821fff4fb6c5a79c0c068762a56c939"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-360.png",
+      "bytes": 59769,
+      "sha256": "1da1d96bc4548abf168979e5173e97454632fe4cdd46a98e56fe784d01412f50"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-390.png",
+      "bytes": 63839,
+      "sha256": "e4d99d561d4c3b2ee5c52a60682920190885fea104efe286faf22e3d7f183851"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-feed-430.png",
+      "bytes": 67083,
+      "sha256": "dc32ed36232d2adad0960c472ae3e9dd9ed7842f6edf2d97d107f679ee8635ba"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-360.png",
+      "bytes": 93070,
+      "sha256": "82058f0f287de34de6daea8ed534ea0e447a7e3d4b34eac8cc5283bdbbd77774"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-390.png",
+      "bytes": 98202,
+      "sha256": "a9c8c7dff188c9262d132caec9302f40e2c3426ba4dd271447ed1df7cdd51f02"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-gifts-430.png",
+      "bytes": 103738,
+      "sha256": "25f5e111cddd206ec53b3aa22ce47d1fb6b302e7b4afe665b1a038045988bc5d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-landing-360.png",
+      "bytes": 221689,
+      "sha256": "a8ba5739c8a3eaeeb4fda35264e95438d552a9bd89dc8ee6b785b07b2063af54"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-landing-390.png",
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-landing-430.png",
+      "bytes": 280961,
+      "sha256": "5b5795ffc225bb590b83f7d2d51779d7f0ca3fbb4dae461534fa27a62a14c85d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-login-360.png",
+      "bytes": 323964,
+      "sha256": "c12fefa18b6ad458c8cd647843c2b66f4140fb8136ba28b7333e038b8ad69900"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-login-390.png",
+      "bytes": 363464,
+      "sha256": "bf98a92a890b1f1c9c34019c0675b143d260f2225ca1a51fa18344c50bb6979e"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-login-430.png",
+      "bytes": 422440,
+      "sha256": "59c9f0806ec9a182031390e5db59c214f9ee15b109ca71f1ebf0ff7117fc6af3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-360.png",
+      "bytes": 63978,
+      "sha256": "9655d2c0c4cdb96833e75cea9eb2703a9ba960566ce001bb944f1584d04b9421"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-390.png",
+      "bytes": 66609,
+      "sha256": "82a4dc4db9e98e776cd67a1184f9e9abad0d6aacb94e8f27e08c93954c93cb54"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-430.png",
+      "bytes": 69092,
+      "sha256": "abf3cd505d07da0861f5a0e41ce4b490cb79aa642ef49a19db53f09cf34a663e"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-0-390.png",
+      "bytes": 66998,
+      "sha256": "644a2438c75170de985286e77798192d4b44eca2eefe1bec4058d411aed3f0f7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-1-390.png",
+      "bytes": 66999,
+      "sha256": "819320733b8556e5afd3a1b1793c37a0221c36f1ba8319764e77dd32bda1c16d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-2-390.png",
+      "bytes": 66999,
+      "sha256": "c8381eb2577e516a644d07d8a97e3e44fee51db0de6947a82d7f9923bd835bf4"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-me-focus-3-390.png",
+      "bytes": 66997,
+      "sha256": "47cb23d669a743adb78d7103b68b7e0a748b085bf56b5d71e60f4ba83210955d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-360.png",
+      "bytes": 95977,
+      "sha256": "1c3a6ebab1efb7a189e2efbdec4dc37acd05c13265687c7daac6429cdb3f1f5d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-390.png",
+      "bytes": 100776,
+      "sha256": "2d2fa482226c4b39f4c8ea958376957372c84c25c303d2819e37ab4a36a1e9cc"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-meet-430.png",
+      "bytes": 106005,
+      "sha256": "563735f9f747f94ee915b49f275f089f5cc872fa8add3a70c8f1f09267288b45"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-360.png",
+      "bytes": 57799,
+      "sha256": "411911482b29ba80255f7c8f344c845499a8aca6f48abec811e63c049b3b0ff6"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-390.png",
+      "bytes": 61924,
+      "sha256": "6ee53f544d8b1619e23c2fda7dba413afb19b9ce6b7c4509fdf1419904bb4bea"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/baseline-wall-430.png",
+      "bytes": 66021,
+      "sha256": "05eada7abfd4e543bdd353fdad9d6908cd311c7cbc3755e2af52d4ce39da6b56"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-customize-360.png",
+      "bytes": 47066,
+      "sha256": "f04561fd0754873ce7f01ef44004009db484b931d7363f626231165516ea1f35"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-customize-390.png",
+      "bytes": 47688,
+      "sha256": "b4f5e1744fe635ac6c21cdcb23a7f7ad50d2fc698309110dde30bf49f65f6ec1"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-customize-430.png",
+      "bytes": 48380,
+      "sha256": "63acabafe664138d723476b95531d301b609830f42e425e585fdbe629a0187f7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-360.png",
+      "bytes": 28764,
+      "sha256": "78aaa9e8c6c28a5c44b7e6cd0a0fc94d7b55c887b0a5b6e37068ce2bca901fec"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-390.png",
+      "bytes": 29604,
+      "sha256": "2c4eee679c691499411c12791645188c8ebf597be655769f118fd7af191cefb5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-feed-430.png",
+      "bytes": 29982,
+      "sha256": "2b334e3063b1b9261f504e338058b1c5f28c6a90762c1ca5ffb1c05d619a888f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-360.png",
+      "bytes": 62356,
+      "sha256": "c2d74293250334b904a0bfdf3483deaf3b35e1fa6ed8e909fb5edf8863a30886"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-390.png",
+      "bytes": 65005,
+      "sha256": "9214f16c9b2b1b665e35dd84a9ddac9a4f695063c8b85e792b7b00b206abf83f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-gifts-430.png",
+      "bytes": 67596,
+      "sha256": "a1a34340585d0836e25ac130223b625119972cfff00c2ef6a49d1626a2656d6f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-landing-360.png",
+      "bytes": 198836,
+      "sha256": "7b33f1c26795a2449891bedcad83f4f1f99582db909059f239ba1441eeea5815"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-landing-390.png",
+      "bytes": 221267,
+      "sha256": "daae6b6d413ded95bec493383444cc3860fa121c456e07c8fd462d3ad825fbb2"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-landing-430.png",
+      "bytes": 251059,
+      "sha256": "a38e96629aae06d37dae5a63e6006463f60cbc32561ae905b9b424e89e8a9a64"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-360.png",
+      "bytes": 58983,
+      "sha256": "3354f588b0dc33b5bd3d76a1669ce8d7e90653c420a8079f33a2460bdc040bff"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-390.png",
+      "bytes": 60783,
+      "sha256": "c8d74794b59ea9674662b73dd857e51ad3737a8ed042918bfd491b20d5b0f7e5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-430.png",
+      "bytes": 63875,
+      "sha256": "340a71c59aaba324ba2a4e96ce6c6d72b98b8b57f17cdbce7f879655e4e6b7e3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-error-390.png",
+      "bytes": 67230,
+      "sha256": "b3c239cac808e74faa1ac863e3642499e5dde8b59aca12ddb5f9c0ad9787f76d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-options-unavailable-390.png",
+      "bytes": 60123,
+      "sha256": "0fdf033963cf5d5e6b011cad868f972c7c758c6e5187f9356267dc906cab3a4c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-login-pending-390.png",
+      "bytes": 56781,
+      "sha256": "576d54e1ff020aa2382f4a840aed30a0c873bd8c8103705c298d4d2a935dcbb6"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-360.png",
+      "bytes": 58735,
+      "sha256": "8d738d11653d7a3393a50309d5ceadf60866b73cb4129516ceae3e350d317e86"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-390.png",
+      "bytes": 62073,
+      "sha256": "24fc709693f07591cacd1b2f67f2afbb61e20d00d765ebf182c168359fc67b13"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-430.png",
+      "bytes": 65867,
+      "sha256": "66d2dd7768c1ff2c635972283e1282691c22754dabeee1225664650bdcf15ba0"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-0-390.png",
+      "bytes": 62530,
+      "sha256": "497fec861655a6747e978af43bd74c4749b288fe92da0dd3b57ca67d300b2a9a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-1-390.png",
+      "bytes": 62535,
+      "sha256": "beb4941440875b250644b057be9dd50af894e16d6185269db3904ee0b425879d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-2-390.png",
+      "bytes": 62521,
+      "sha256": "094b3344fe9f001af567716b4e7c4b02c39e5a0bd357eb81cafdf620f7620fbd"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-focus-3-390.png",
+      "bytes": 62502,
+      "sha256": "0d2ffd6dd06f2089f88b8326b2e84caf9a9f6ca57b615219b42c95bf3411795a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-me-forced-colors-390.png",
+      "bytes": 49444,
+      "sha256": "bf406fbea8cf0cc52adcb9accc0506bf4b4673182d90b5bb8c5114f4ba3c69b7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-360.png",
+      "bytes": 69874,
+      "sha256": "5f307926d9038797e26d44c4e36c03a810b4b278ed14073803f57f2b5244d61d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-390.png",
+      "bytes": 72061,
+      "sha256": "85f2d76ba60ab3a84af36b70aecf2b57d0057d29979d40987ac37801160a5be7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-meet-430.png",
+      "bytes": 73949,
+      "sha256": "d17be3e62d357b53691b51efccb9cc51a9cb231f3a977b382e0122ce2ac15b37"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-360.png",
+      "bytes": 29640,
+      "sha256": "c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-390.png",
+      "bytes": 30461,
+      "sha256": "ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/candidate-wall-430.png",
+      "bytes": 31645,
+      "sha256": "871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/driver.mjs.snapshot",
+      "bytes": 17619,
+      "sha256": "58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/guard.json",
+      "bytes": 648,
+      "sha256": "59ae22517056b8d329527c5b68ad77249c7af1f1f3ccb0ff4de3970565f5a74f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/guard.py.snapshot",
+      "bytes": 2861,
+      "sha256": "6267907f3db4a894547f3665cd9175b0d42f871c3dbfbd0d89b88d2a25d00e22"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/native.log.gz",
+      "bytes": 591,
+      "sha256": "09b70bc8a736279c32a33870bd5fa721bf28d42e704be65b13cc4d732e0a3d2a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/report.json",
+      "bytes": 726512,
+      "sha256": "7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b"
+    }
+  ],
+  "limits": "Controlled QA06 synthetic HTTP/C05/local admission. Wall guard remains a guard. No live IN01/Profile/avatar-save/device proof. Baseline restores only four paint integration files to7c; other application/fixture source remains8972 in both modes."
+}

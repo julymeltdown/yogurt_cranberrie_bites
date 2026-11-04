@@ -1,0 +1,41 @@
+from pathlib import Path
+import subprocess,os,time,signal,json,shutil,datetime,hashlib
+root=Path('/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish');front=root/'frontend'
+job=os.environ['MCR_COZY_WORLD_JOB'];pin=os.environ['MCR_ERA_PIN'];out=Path(os.environ['MCR_COZY_WORLD_OUTPUT']);tmp=Path(os.environ['MCR_COZY_WORLD_TEMP']);receipt=Path(os.environ['MCR_ERA_RECEIPT']);receipt.mkdir(exist_ok=False)
+node='/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node';script='src/app/world-entry/__tests__/reference-scene-v5/map-cozy-v1/native.mjs';link=front/'node_modules';ownlink=False;proc=None;start=time.monotonic();peaks=dict(whole=0,temp=0,durable=0);minimum=10**30;failure=None;code=None
+
+def size(p):
+ return sum(f.stat().st_blocks*512 for f in p.rglob('*') if f.is_file() and not f.is_symlink()) if p.exists() else 0
+
+def guard():
+ global minimum
+ t=size(tmp);d=size(out)+size(receipt);w=t+d+7413760;free=shutil.disk_usage(root).free;minimum=min(minimum,free)
+ for k,v in dict(whole=w,temp=t,durable=d).items():peaks[k]=max(peaks[k],v)
+ assert time.monotonic()-start<=240 and w<=214748364 and t<=100*1024**2 and d<=30*1024**2 and free>=8*1024**3,'resource guard'
+
+try:
+ assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()==pin
+ assert not subprocess.check_output(['git','status','--porcelain'],cwd=root)
+ assert not link.exists() and not link.is_symlink() and not out.exists() and not tmp.exists()
+ assert shutil.disk_usage(root).free>=16*1024**3
+ scriptsha=hashlib.sha256((front/script).read_bytes()).hexdigest()
+ link.symlink_to('/Users/lhs/Desktop/mcr/frontend/node_modules',target_is_directory=True);ownlink=True
+ env={**os.environ,'PATH':str(Path(node).parent)+':'+os.environ['PATH'],'TMPDIR':str(tmp),'CI':'true'}
+ cmd=[node,script]
+ with (receipt/'native.log').open('wb') as f:
+  proc=subprocess.Popen(cmd,cwd=front,env=env,stdout=f,stderr=subprocess.STDOUT,start_new_session=True)
+  while proc.poll() is None:guard();time.sleep(.25)
+  code=proc.returncode;guard()
+ if code:failure='native exit '+str(code)
+except BaseException as e:failure=str(e)
+finally:
+ if proc is not None:
+  try:os.killpg(proc.pid,signal.SIGTERM)
+  except ProcessLookupError:pass
+  try:proc.wait(timeout=3)
+  except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGKILL);proc.wait()
+ if ownlink and link.is_symlink():link.unlink()
+ shutil.rmtree(tmp,ignore_errors=True)
+ report=dict(carried_allocated_art_bytes=7413760,job=job,candidate=pin,driver_sha256=locals().get('scriptsha'),command=locals().get('cmd'),exit_code=code,failure=failure,elapsed_seconds=time.monotonic()-start,peaks=peaks,minimum_free_bytes=minimum,temp_absent=not tmp.exists(),owned_link_absent=not link.exists(),finished_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
+ (receipt/'guard.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report),flush=True)
+raise SystemExit(1 if failure else 0)

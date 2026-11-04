@@ -1,0 +1,131 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "kind": "SOURCE_ONLY_NOT_RENDERED",
+  "sourceCommit": "18e6e4db2f2e6384c796453d6e63caedc11875e8",
+  "assetPath": "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+  "bytes": 4500,
+  "sha256": "22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7",
+  "dimensions": [
+    390,
+    780
+  ],
+  "viewBox": "0 0 390 780",
+  "replacesOldSource": {
+    "production": "8972b0b634035055eb023dbc2f786e4463b172e5",
+    "sha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+    "dimensions": [
+      390,
+      180
+    ],
+    "packet": "5186f11017185a040e4ccde1c59589e140563ef0"
+  },
+  "topGeometryPaintsDefinitionsRetained": true,
+  "localReferences": [
+    "dots",
+    "heart",
+    "scallops",
+    "spark"
+  ],
+  "paintColors": [
+    "#c6b2d0",
+    "#c7d6c4",
+    "#c9a58b",
+    "#cbbad6",
+    "#ccd8c4",
+    "#d4c6dc",
+    "#d7c6dd",
+    "#dbbd99",
+    "#dca9a4",
+    "#dce3cd",
+    "#ddc7dd",
+    "#e4c9d9",
+    "#e4e9d8",
+    "#e5b1a8",
+    "#e5d8e8",
+    "#edc1bc",
+    "#f1d6c2",
+    "#f3c9bd",
+    "#f3e7ef",
+    "#f6d7d2",
+    "#f6ded4",
+    "#fbe5db",
+    "#fff0de",
+    "#fff8ec",
+    "#fffaf1"
+  ],
+  "cssPath": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+  "cssSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+  "cssUnchanged": true,
+  "mapping": {
+    "background-color": "#fff0de",
+    "background-image": "url('/backgrounds/cute-wall-me-v1/wall-stationery.svg')",
+    "background-position": "center top",
+    "background-repeat": "no-repeat",
+    "background-size": "100% auto"
+  },
+  "sourceContrast": {
+    "closedDefaultBody": {
+      "foregroundAssumption": "#201d1d",
+      "minimumIndividualPaint": "#c9a58b",
+      "minimumIndividualPaintRatio": 7.362,
+      "conservativeEnvelope": "#c6a58b",
+      "minimumEnvelopeRatio": 7.296
+    },
+    "artistBodyAssumption": {
+      "foregroundAssumption": "#211d19",
+      "minimumIndividualPaint": "#c9a58b",
+      "minimumIndividualPaintRatio": 7.364,
+      "conservativeEnvelope": "#c6a58b",
+      "minimumEnvelopeRatio": 7.299
+    },
+    "closedRootFocusAssumption": {
+      "foregroundAssumption": "#a2232b",
+      "minimumIndividualPaint": "#c9a58b",
+      "minimumIndividualPaintRatio": 3.286,
+      "conservativeEnvelope": "#c6a58b",
+      "minimumEnvelopeRatio": 3.257
+    }
+  },
+  "native02GeometryProjectionNotRuntime": [
+    {
+      "viewport": 360,
+      "bodyWidthFromNative02": 342,
+      "native02BodyTop": 57,
+      "native02BodyHeight": 780,
+      "projectedIntrinsicHeight": 684.0,
+      "lowerRibbonCenterY": 555.969,
+      "lowerRibbonCenterWithinNative02Body": true,
+      "newBroadFormsBeginY": 283.246
+    },
+    {
+      "viewport": 390,
+      "bodyWidthFromNative02": 372,
+      "native02BodyTop": 57,
+      "native02BodyHeight": 780,
+      "projectedIntrinsicHeight": 744.0,
+      "lowerRibbonCenterY": 599.738,
+      "lowerRibbonCenterWithinNative02Body": true,
+      "newBroadFormsBeginY": 303.092
+    },
+    {
+      "viewport": 430,
+      "bodyWidthFromNative02": 412,
+      "native02BodyTop": 57,
+      "native02BodyHeight": 780,
+      "projectedIntrinsicHeight": 824.0,
+      "lowerRibbonCenterY": 658.097,
+      "lowerRibbonCenterWithinNative02Body": true,
+      "newBroadFormsBeginY": 329.554
+    }
+  ],
+  "result": "PASS_SOURCE_COMPATIBILITY_ONLY",
+  "commandExitCode": 0,
+  "limits": [
+    "No browser, screenshot, image export or packet write was performed.",
+    "Native-02 report, image pins and original source audit remain frozen to the old 180px artwork.",
+    "Projection uses old measured geometry with unchanged CSS; fresh Root rendering must confirm actual fit, broad coverage and guard readability.",
+    "Foreground and focus vectors are source assumptions, not actual computed body/ring contrast.",
+    "Envelope bounds source paint mixtures; actual ancestor/filter/opacity/forced-color behavior remains unmeasured.",
+    "Fresh Wall390 then360/430, relevant accessibility, owner inspection and Root publication ancestry remain required."
+  ]
+}

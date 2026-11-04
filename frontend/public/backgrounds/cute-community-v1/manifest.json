@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "IN_PROGRESS",
+  "status": "INTEGRATED",
   "taskIds": [
     "FE27",
     "FE21",
@@ -112,8 +112,43 @@
       },
       "note": "Darkest unblended paint across opaque tile and broad backdrop primitives. Semi-transparent dots blend toward lighter base fields. Browser-computed text and focus contrast remain adopter validation. Ornaments must not overlap text."
     },
-    "broadSurfaceFit": "preserveAspectRatio=none; painted field fills existing CSS background viewport at row/container ratios. Actual follow-up captures required."
+    "broadSurfaceFit": "PASS in native-02 owner inspection at 360/390/430px: preserveAspectRatio=none fills short rows and existing panel bodies."
   },
-  "renderedInApp": "IN_PROGRESS: initial c8a731e5 390 capture inspected; broad SVG surface-fit fix pending shared recapture",
-  "publication": "NOT_RUN"
+  "renderedInApp": "OWNER_VISUAL_PASS: Feed/Meet/Gifts, all 18 paired native-02 PNGs inspected at 360/390/430px; synthetic desktop Chrome only.",
+  "publication": {
+    "status": "ASSETS_VERIFIED_ON_ORIGIN_MASTER",
+    "checkedRevision": "39c68d1dcd85a618ec0c56287d8451c6ffe13dbd",
+    "assetsMatchProductionRevision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+    "packetRevision": "5186f11017185a040e4ccde1c59589e140563ef0",
+    "receiptScope": "All seven SVG bytes and native-02 packet ancestry verified. This documentation update still requires Root integration/publication."
+  },
+  "renderedEvidence": {
+    "packetRevision": "5186f11017185a040e4ccde1c59589e140563ef0",
+    "report": "docs/mcr/evidence/cozy-backgrounds-v1/native-02/report.json",
+    "reportSha256": "7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b",
+    "productionRevision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+    "runnerRevision": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+    "driverSha256": "58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde",
+    "job": "PANEL-CORRECTED-202611040733Z",
+    "startedAt": "2026-11-04T07:38:12.062Z",
+    "finishedAt": "2026-11-04T07:40:02.112Z",
+    "browser": "156.0.8078.80",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "pairedScreens": [
+      "feed",
+      "meet",
+      "gifts"
+    ],
+    "ownerVisualResult": "PASS",
+    "limits": [
+      "QA06 DEV synthetic HTTP/C05/local admission; desktop Chrome, no live-service or physical-device acceptance.",
+      "Controls/text/character comparisons cover captured states only. Target size evidence covers controls-query entries only, not details/summary or unseen states.",
+      "First-tab focus records outlineStyle only. Browser-computed text/focus contrast and exhaustive focus/forced-colors states are unverified for these routes.",
+      "Asset-contribution integration does not certify whole FE task acceptance."
+    ]
+  }
 }

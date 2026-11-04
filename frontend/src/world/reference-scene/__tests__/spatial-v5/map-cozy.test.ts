@@ -29,30 +29,30 @@ it.each(spatialV5ThemeIds)('changes only the explicitly sourced %s environment d
   expect(next.objects).toHaveLength(34)
   expect(next.atlases[0]!.id).toBe(original.atlases[0]!.id)
   expect(next.ground.id).toBe(original.ground.id)
-  if (era === 'PARADE') {
-    expect(next.ground).toEqual(document.ground); expect(next.atlases).toEqual([document.atlas])
-    expect(next.ground.path).not.toBe(original.ground.path)
-    expect(next.atlases[0]!.path).not.toBe(original.atlases[0]!.path)
-    expect(document.frame_rects).toEqual(base.scenes.PARADE.frames)
-    expect(next.ground.bytes + next.atlases[0]!.bytes).toBeLessThanOrEqual(2097152)
-  } else expect(next).toBe(original)
+  const scene = document.scenes[era]
+  expect(next.ground).toEqual(scene.ground); expect(next.atlases).toEqual([scene.atlas])
+  expect(next.ground.path).not.toBe(original.ground.path)
+  expect(next.atlases[0]!.path).not.toBe(original.atlases[0]!.path)
+  expect(scene.frame_rects).toEqual(base.scenes[era].frames)
+  expect(next.ground.bytes + next.atlases[0]!.bytes).toBeLessThanOrEqual(2097152)
   expect(getSpatialV5Scenery(era)).toEqual(next)
 })
-it.each(['admission','geometry','base','era','ground-path','ground-hash','ground-dimensions','atlas-id','atlas-path','atlas-bytes','frame','handoff','source-revision'] as const)('rejects tampered cozy %s even after document rehashing', async fault => {
-  const d = structuredClone(document), p = structuredClone(pins)
+it.each(['admission','geometry','base','era','ground-path','ground-hash','ground-dimensions','atlas-id','atlas-path','atlas-bytes','frame','handoff','source-revision','cross-era-tuple'] as const)('rejects tampered cozy %s even after document rehashing', async fault => {
+  const d = structuredClone(document), p = structuredClone(pins), scene = d.scenes.REVENGE
   if (fault === 'admission') d.production_status = 'ADMITTED'
   if (fault === 'geometry') d.geometry_hash = 'sha256:FOREIGN'
   if (fault === 'base') d.base_source_revision = 'FOREIGN'
   if (fault === 'era') d.eras.push('DANGER')
-  if (fault === 'ground-path') d.ground.path = 'world/foreign/ground.png'
-  if (fault === 'ground-hash') d.ground.sha256 = 'sha256:FOREIGN'
-  if (fault === 'ground-dimensions') d.ground.width_px++
-  if (fault === 'atlas-id') d.atlas.id = 'foreign'
-  if (fault === 'atlas-path') d.atlas.path = architecture.scenes.DANGER.scenery.atlases[0]!.path
-  if (fault === 'atlas-bytes') d.atlas.bytes++
-  if (fault === 'frame') d.frame_rects.stage.x++
+  if (fault === 'ground-path') scene.ground.path = 'world/foreign/ground.png'
+  if (fault === 'ground-hash') scene.ground.sha256 = 'sha256:FOREIGN'
+  if (fault === 'ground-dimensions') scene.ground.width_px++
+  if (fault === 'atlas-id') scene.atlas.id = 'foreign'
+  if (fault === 'atlas-path') scene.atlas.path = architecture.scenes.DANGER.scenery.atlases[0]!.path
+  if (fault === 'atlas-bytes') scene.atlas.bytes++
+  if (fault === 'frame') scene.frame_rects.stage.x++
   if (fault === 'handoff') p.handoff.sha256 = 'sha256:FOREIGN'
   if (fault === 'source-revision') p.source_revision = 'FOREIGN'
+  if (fault === 'cross-era-tuple') Object.assign(scene, structuredClone(d.scenes.DANGER))
   p.document_sha256 = hash(new TextEncoder().encode(JSON.stringify(d)))
   expect(() => validateSpatialV5Cozy(d,p)).toThrow()
   await expect(verifySpatialV5Cozy(d,p)).rejects.toThrow()

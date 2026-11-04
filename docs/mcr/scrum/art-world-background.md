@@ -1,6 +1,7 @@
 # World and Map background delivery
 
-Status: **IN_PROGRESS** coordination, 2026-11-04 KST. This record does not
+Status: **INTEGRATED** bounded background cohort, 2026-11-04 KST. Final
+coordination-document publication is verified in the delivery handoff. This record does not
 accept AR02, AR04, W01, W02, W06, or an integration/release gate.
 
 ## Goal completion audit
@@ -10,12 +11,12 @@ must close for this coordination goal; a source-only milestone cannot close it.
 
 | Requirement | Authoritative owner evidence / current outcome |
 | --- | --- |
-| Disjoint ownership and persistent goals | Source/export grants and actual receiving readbacks recorded below; cancelled duplicate stopped clean and archived. Artist original goal remains honestly unfinished/BLOCKED metadata; Root goal ACTIVE. |
-| Background-only source and provenance | PARADE `70f22a68` published/verified; all three source tuples closed and pushed at `aa7d09a4` with thirteen payload pins and owner checks. Three-era source publication receipt still pending. |
-| Actual rendered character/function/accessibility preservation | Root native-02 PARADE reports six actual character sprite texture/frame/position/size/origin/camera matches, four semantic labels/hrefs/44px target rectangles, independent 51-object Map oracle, one game/socket and disposal PASS. Source-owner checks preserve geometry, baselines and original baked text. New-era/corrected-paint runtime and applicable accessibility qualification remain open; no live/device acceptance. |
-| Actual 390px World and Map before/after | Corrected native-02 packet captured; Root runtime invariants PASS. Artist231 actually compared both 390px pairs and reports clearly warmer/cuter, no new atlas defect; olive Map fit bands were corrected by Root in a separately allocated two-color paint patch; corrected-paint capture/publication verification remains open. Synthetic fixtures, not live/device acceptance. |
-| 360/430px and three-era follow-through | Root all eight PARADE captures PASS; Artist actually viewed/pinned all four retained 360/430px images, warm cue preserved/no new crop defect. Revenge/Danger source complete; actual consumer/adoption/capture still open. |
-| Committed publication and fixes | PARADE source published on master `716b7496` and independently verified by Artist231 (twelve files, ten payloads, ancestry). Consumer/native cohort publication, derivatives, fit-band correction verification and this management document's publication remain pending. |
+| Disjoint ownership and persistent goals | Exact source/export/consumer grants and actual readbacks recorded below; duplicate source stopped/archived. Artist original goal freshly remains BLOCKED/unfinished, never falsely completed; Root retains its broader active goal. Final Artist branch is clean/remote-exact at `9187962f`, zero held resources, STOP then archived. |
+| Background-only source and provenance | Closed three-era source `aa7d09a4` maps to `0e156ae6` on master `aea02a26`; all seven latest postimages and thirteen payload pins independently verified by Artist (39/39), with eight original PARADE inputs preserved. Source and cherry-published ancestry are explicitly distinguished. |
+| Actual rendered character/function/accessibility preservation | Root sealed native-03 reports 36/36 matched captures, exact whole-character pixels/frames/geometry, camera, labels/44px targets, every independent 51-object Map oracle and twelve navigation/back-focus actions PASS. Mint viewport is exact; focus visibility/geometry and text styles preserved. Inherited shared title ring 2.41 below 3 is routed to UI/QA, not claimed globally compliant or fixed by art. |
+| Actual 390px World and Map before/after | Artist directly viewed the complete actual matrix and unchanged collage, reporting visibly cuter dominant backgrounds than both matched baseline and collage. No new source crop/registration/legibility defect. Sage/mint fit bands now harmonize; remaining band size is intentional aspect fit, not an unresolved scenery defect. |
+| 360/430px and three-era follow-through | All 36 images / eighteen matched comparisons across World+Map, three eras and 360/390/430px directly viewed and hash/dimension/time-bound by Artist. Source-owner bounded visual PASS `9187962f`. REVENGE/DANGER palette-only Map recognition is unreliable; restrained shared-shape/LUT intent and preserved stage/plaque cues are documented. Specification does not impose palette-only identification. No broader AR04 acceptance inferred. |
+| Committed publication and fixes | Source/consumer/native packet published, native seal `4600542b` is an ancestor of master. Final ART comparison `9187962f` and management `c4d78f26` exact postimages published on `9e7952fc`; Artist independently verifies its final ART blob/native ancestry and SL verifies only its own management blob. Final coordination delta receives a committed Root handoff and exact publication proof in the final delivery receipt; this goal stays active until that proof, with no recursive document rewrite required to name its own commit. |
 
 ## Direction and boundaries
 
@@ -55,11 +56,12 @@ queries or tests, rerun checks, or create a review/approval stage.
 
 | ID | Deliverable | Actual state and next dependency |
 | --- | --- | --- |
-| ART-BG-MAP-01 | Character-free cozy PARADE source and immutable provenance | **CONTRACT_READY** source only: `70f22a683ab029751548331df5cf46f2ad16baf8` published on master `716b7496`, fresh owner twelve-file/ten-payload/ancestry verification PASS, source branch clean. Actual PARADE native comparison is owner-positive at 360/390/430px; corrected paint and new-era comparison remain open. PNG pair 2,051,967 bytes under 2 MiB. Artist's original goal metadata remains **BLOCKED**, not reset or completed. |
-| ART-BG-MAP-02 | Shared consumer adoption and first actual 390px World/Map comparison | **IN_PROGRESS**, PARADE consumer integrated and source-qualified by Root at `fb0d82be479a15c6eb6098074a4d6cde4fa85084`; 120 tests/full TypeScript/scoped lint reported PASS. Corrected native-02 actual PARADE comparison and preserved-runtime checks reported PASS, evidence retained as `a49e18ef`; all-era extension and corrected fit-band qualification remain open. Root goal `1793770394` remains ACTIVE; minimum descriptor wrapper scope only. |
-| ART-BG-WORLD-01 | Cuter World background, same geometry and character identity | **IN_PROGRESS** with Artist231/Root shared Map-and-World source tuple. The king's final corrected roster stops the separate World534 pack before writes. Three-era coverage remains required; no separate pack/import. |
-| ART-BG-ERA-01 | Revenge/Danger cozy derivatives and era-correct source closure | **CONTRACT_READY** source only, closed/pushed `aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`, thirteen payload pins, exact seven paths/three new files; branch remote readback exact/clean. Source publication and actual three-era consumer/captures remain open. |
-| ART-BG-MATRIX-01 | Owner comparison at 360/390/430px and relevant eras | **IN_PROGRESS**, actual first PARADE 390px before/after plus 360/430px captures completed in native-02. Root invariants PASS; Artist comparison positive across all three widths; Root implemented the fit-band correction under an exact two-color grant, follow-up pending. Other-era actual comparison and final publication/fixes remain open. |
+| ART-BG-MAP-01 | Character-free cozy PARADE source and immutable provenance | **INTEGRATED** bounded source/consumer cohort; preserved originals and mapped publication proof recorded. PNG pair 2,051,967 bytes under 2 MiB. Actual three-width/era comparisons are owner-qualified; original AR tasks remain unaccepted. |
+| ART-BG-MAP-02 | Shared consumer adoption and first actual 390px World/Map comparison | **INTEGRATED**; original PARADE and final era-keyed consumer source checks/native-03 owner checks PASS. Root owns runtime validation; no SL rerun or approval stage. |
+| ART-BG-WORLD-01 | Cuter World background, same geometry and character identity | **INTEGRATED**; same sole-source tuple serves both actual renderers for three eras, full matrix owner-positive with unchanged characters/functions. No separate World534 pack/import. |
+| ART-BG-ERA-01 | Revenge/Danger cozy derivatives and era-correct source closure | **INTEGRATED**; `aa7d09a4` to mapped `0e156ae6`, thirteen pins, exact seven-path source handoff, actual 121-test/TS/lint/native checks, independent Artist publication proof. Palette-only recognition limit retained. |
+| ART-BG-MATRIX-01 | Owner comparison at 360/390/430px and relevant eras | **INTEGRATED** bounded owner comparison; all 36 saved images viewed, exact packet/report pins bound, fit bands disposed, no new scenery defect. Final ART receipt `9187962f` published and independently owner-verified on `9e7952fc`. Synthetic/live/device/parent limits remain explicit. |
+
 
 The closed source uses era-keyed 1024×1024 PNG atlases and the shared 768×1296
 ground PNG. Each tuple retains its own original sixteen frame rectangles,
@@ -408,7 +410,300 @@ existing-file scope or silent PARADE layout substitution. Root owns combined
 checks, fixes, serial publication and actual new-era qualification without
 an SL review or a ten-panel barrier.
 
-### Idle source-owner lifecycle
+
+### Finite era qualification queue — owner readiness
+
+Root153 reports the era compiler/adapter prepared against closed Artist231
+`aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`, handoff SHA-256
+`a9f493017a0780d2a92d3376fbdf2c45cffe6570cd5948786a1c1283c7334978`.
+The finite next source job compiles only the two owned cozy JSON outputs, then
+runs the assigned reference-scene/Places checks, full TypeScript and lint under
+a named serial resource offer. This is readiness, not a reported pass or new
+authority over existing files. No browser or duplicate artist job is held.
+
+The owner's ready native plan is 36 PNGs in eighteen contexts: baseline and
+candidate World plus Map for all three eras at each of 360, 390 and 430px.
+Candidate 390px additionally checks the four feature destinations and history
+focus return. This closes the earlier missing matched 360/430 baseline scope
+when actually captured and qualified; all these new cases remain **NOT_RUN**.
+Root retains the original PARADE native-02 packet unchanged.
+
+The composed source retry has passed and its checkpoint is published. The
+coordinator subsequently confirmed an actual healthy IN01 descriptor, pinned
+existing consumer202 and exclusive offer
+`IN01-CURRENT-REAL-BROWSER-202611040723Z`. At that direct queue receipt the
+offer was pending actual acceptance; it was not an idle future reservation.
+No era source, panel or new harness job starts before that owner's actual full
+release. Root's frozen sixty-PNG corrected-panel capture follows the release,
+then the already registered separate era qualification. Root froze additional
+panel functional expansion; no full-panel acceptance barrier applies to eras.
+
+ART SL's proposed gap-filling era source check is therefore superseded by the
+actual ready exclusive IN01 allocation, not launched or reassigned. Source
+owners remain archived until concrete publication, capture or fix input. There
+is no duplicate browser/ART output or separate SL validation/approval stage.
+
+
+### Concrete publication checkpoint — master `e2375727`
+
+Root153 reports a non-force publication and fresh remote match at
+`e237572719602da6a1a08b7fe0579b0e9c96da1f`. The first actual PARADE native-02
+eight PNGs and strict owner report are now canonical published evidence
+`a49e18ef`/`2de410a3`; this is Root's implementation-owner receipt, not an SL
+runtime rerun. The separate mint fit-band patch `186d9b24` remains source
+qualified pending its new actual capture.
+
+Root reports adopting Artist231's exact seven-path `aa7d09a4` source as
+`26162a86` and preparing the era consumer as `3c9bea05` in its isolated lane.
+Neither is claimed published on master or native-qualified at this checkpoint.
+The finite panel cohort is frozen at `8972`, with 206 tests, full TypeScript
+and scoped lint reported PASS; its sixty-PNG browser job awaits a named slot.
+This panel checkpoint does not replace the separate era job.
+
+ART SL independently fetched master and checked only its owned management
+artifact: source `501cf227cf36ae85657e6e1d48d187b0c9f0758a` postimage equals
+published `8d684022` and fresh master `e2375727`, 35,405 bytes, SHA-256
+`e504fb73e062b4428c6982cfde8b5116f066d122a02c4d5a278d9384357619e7`.
+Publication ancestry and exact remote master matched, all commands exit 0.
+The later `48885ac0` queue addition and this receipt await Root's natural next
+document batch. Artist231 remains archived until actual source publication or
+new era-native input; Root retains custody of the immutable PNG packets.
+
+
+### Actual shared-slot release and next accepted capture
+
+Root reports IN01's actual full release at 07:30:31.799 UTC: no owned Chrome,
+Vite, port 5173, dependency link or temporary output remained. This release
+allows the independent background queue to proceed; the runtime owner's
+separate unfinished customization outcome does not gate fixture-based art
+qualification or become a claim of live acceptance.
+
+The panel remained ready while awaiting the next named allocation. ART SL
+reconciled the actual release directly with Coordinator21d and escalated the
+allocation handoff to the frontend king as scheduling only. The king then
+confirmed Root's actual **ACCEPT + START** of Coordinator21d's canonical
+`PANEL-CORRECTED-202611040733Z`, one sixty-PNG job at frozen `e237`/`8972`,
+driver `58f553`, bounded to 240 seconds and 0.2 GiB. The king's later duplicate
+exact-scope offer was withdrawn; there is one browser slot, not two. Root owns
+actual image/failure and full-release reporting. The separate era packet can
+be allocated after that actual release, without a panel review/acceptance gate.
+Artist231 stays archived until concrete publication or new era/fix evidence.
+
+
+### Actual era source qualification and full release
+
+Root153 reports **ACCEPT + FULL RELEASE** of
+`ROOT-ERA-SOURCE-202611040744Z` on clean runner
+`f3ac89f7dcda7ccb55283f709a51374cd4171a1f`. Its serial
+integration mapping is Artist source `aa7d09a4` to `0e156ae6`, prepared
+consumer `3c9bea05` to `32ce34dd`, and follow-up `914ef20a` to `f3ac89f7`.
+The compiler closes all thirteen actual Artist payloads against handoff
+SHA-256 `a9f493017a0780d2a92d3376fbdf2c45cffe6570cd5948786a1c1283c7334978`.
+Owner results: compiler exit 0, 121 tests in eight files PASS, full TypeScript
+exit 0, scoped lint exit 0. The two generated era JSON outputs are sealed in
+the next committed handoff, not treated as published from test output alone.
+
+The bounded job took 11.34 seconds, whole output 11,096,064 bytes including
+7,413,760 bytes of closed Artist source carried to the runner, minimum free
+space reported 37.48 GB. Root reports cleanup complete/full release. ART SL
+does not rerun or inspect these implementation checks. Validated source is
+ready for immediate serial publication; exact master receipt and fresh Artist
+postimage/thirteen-pin/ancestry verification remain required.
+
+Separate matched native qualification remains **NOT_RUN** pending its own
+named allocation: 36 PNGs in eighteen contexts across all three eras and
+three widths. No panel visual review, FE34 change or Auth fix gates this
+background job. Coordinator21d confirms the source full release was recorded
+at 07:50 UTC. While Root seals/publishes its immutable native candidate, the
+already-promised next short source-only slot belongs to producer26e (120
+seconds, 64 MiB, no browser). Root's separate native offer follows that actual
+release and its sealed packet; no duplicate frontend workflow is created.
+Artist231 remains archived until actual source publication or a new retained
+World/Map era packet, with no source export/recapture.
+
+
+### Published era source and concrete owner reactivation
+
+Root reports fresh remote master
+`aea02a262f7d834be7ef2267368812520a5d9c0c`, non-force publication. Artist
+`aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6` maps to `0e156ae6`, all seven
+latest source/doc postimages exact and all thirteen closed payload SHA/byte
+pins verified by Root. Original source `70f22a68`/`aa7d09a4` is retained unmodified on the source
+branch; master ancestry uses the cherry-published mappings, clarified below.
+Consumer mappings are `3c9bea05` to `32ce34dd` and `914ef20a` to `f3ac89f7`;
+two JSON outputs and actual 121-test/full-TypeScript/lint proof are committed
+as `2579ac15`. These are implementation-owner publication receipts, not an SL
+inspection of source or tests.
+
+ART SL unarchived the **same** Artist231 chat; the tool confirmed
+`archived: false`. Ready assignment `ART-BG-ERA-PUB-01` is independent fresh
+seven-postimage/thirteen-pin/mapped-ancestry verification against actual master,
+plus a bounded receipt/committed handoff in its existing art document. Source
+payloads, consumers and renderer paths stay frozen. Actual receiving goal and
+working-tree readback are requested, not inferred from dispatch. The original
+unfinished goal is not reset or falsely completed. No media/browser/native
+job or capture is assigned. Root continues native preparation independently.
+
+Coordinator21d reports producer26e's actual full release at 07:52:30.044 UTC
+and a fresh `ERA-WORLD-MAP-NATIVE-202611040754Z` **OFFER** to Root: 36 PNGs in
+eighteen contexts, 240 seconds, whole output 0.2 GiB, final sealed published
+candidate/driver pins at acceptance. At this receipt acceptance/results remain
+unreported. Controlled fixtures only; no backend/Auth/panel approval prerequisite,
+separate ART output, PNG copy or recapture. Actual new-era comparison remains
+open until captured and qualified by its owners.
+
+
+### Actual era captures and ready source-owner visual assignment
+
+Root and the frontend king report all 36 actual three-era World/Map captures
+PASS at 360, 390 and 430px: character textures/geometry, camera, labels and
+44px targets match each baseline; every era's four destinations and history
+focus return pass; every Map matches its independent 51-object composition.
+This is owner-reported runtime evidence. ART SL does not inspect captures,
+implementation or tests. Root's committed immutable packet/full-release/pin
+handoff and native publication receipt remain separately tracked.
+
+The king supplied actual retained 390px paths under Root custody:
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-390.png`
+and the adjacent `candidate-map-danger-390.png`, captured approximately
+16:55:50/52 KST. These paths were routed to the same active Artist231 and
+consumer Root153, not copied, restored or recaptured by this SL.
+
+Ready related assignment `ART-BG-MATRIX-01` joins Artist231's source-publication
+proof: compare actual 390px backgrounds against both matched before and the
+unchanged human collage; inspect the full retained World/Map matrix for all
+three eras/widths once its packet is sealed; report warm dominant-surface cue,
+corrected fit bands, crop/registration and legibility findings. The king's
+observation that REVENGE/DANGER Maps look similar is not a prejudged defect:
+the source owner must establish intended distinction from its source pack,
+design/specification and authorized recipes, then report visible differences
+and limits. Consumer ambiguity resolves directly with Root.
+
+Only the existing ART document remains writable for its bounded findings and
+committed handoff. Source payloads, originals, character assets and renderers,
+geometry and consumer files are frozen; any concrete source fix first gets an
+exact coordinated path/resource scope. No new actor, browser/media job or SL
+visual review is created. All-era visual qualification remains open until
+actual owner comparison and concrete fixes/dispositions are complete.
+
+
+### Independent Artist publication proof and continued visual work
+
+Artist231 reports bounded `ART-BG-ERA-PUB-01` complete, doc-only commit
+`bfd3bb0990a53d15a33d37da9bc1a059ea33459b`, parent `aa7d09a4`, pushed with
+independent remote readback exact and clean checkout. Only its assigned
+`docs/mcr/art/reference-scene-v2.md` changes (+49 lines). Fresh remote master
+`aea02a26` and mapped source `0e156ae686a9cae71704bc096b2e488b9a81ae82`
+match all seven source postimages. All thirteen payload byte/SHA pins match
+at source, mapping and master (39/39); handoff is 3,174 bytes with SHA-256
+`a9f493017a0780d2a92d3376fbdf2c45cffe6570cd5948786a1c1283c7334978`.
+All eight first-PARADE inputs match across original and published cohorts.
+Verifier, whitespace check, commit, push and remote readback exit 0. These
+are source-owner results, not an SL revalidation.
+
+Precise ancestry qualification: original `70f22a68` is an ancestor of source
+`aa7d09a4` (exit 0); published `97c65b8e` is an ancestor of mapped `0e156ae6`
+and master (exit 0). Original source `70f22a68`/`aa7d09a4` is **not** literally
+an ancestor of master (exit 1), because publication uses cherry-pick mappings.
+Historical shorthand about retained ancestry must not imply otherwise.
+Preserved source bytes and recorded mappings establish provenance.
+
+Actual goal readback remains **BLOCKED**/unfinished metadata, without reset or
+false completion. The new source-proof task is bounded complete; the original
+AR goal is not accepted. The same active context immediately continues ready
+`ART-BG-MATRIX-01`, inspecting the two retained 390px Maps and authorized palette
+intent, then the full immutable matrix when Root supplies it. No parking or
+replacement occurs between these related ready tasks, no resource is held,
+and no consumer tests, media output or capture is run by the artist.
+
+
+### Sealed full-era packet and actual capture release
+
+Root's canonical packet is sealed as
+`4600542ba8f5d16210075c93847fa60960809540` under
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/`.
+`capture-packet.json` SHA-256 is
+`e6b40ade602f886ad587d570432394aacb832c00c98e08dcb644af5a2fca6084`;
+`report.json` SHA-256 is
+`8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134`.
+Candidate `aea02a26` versus baseline `7c25078f` covers eighteen contexts and
+36 PNGs: matched before/after World and Map for all three eras/widths.
+Root reports verifying 640 loaded Git source/asset pins, six whole-character
+pixels/frame/geometry, camera, four labels/44px rectangles, every independent
+51-object Map oracle (zero channels differing), and twelve destination/back-focus
+actions. Mint viewport color is exact. Focus visibility/geometry is preserved
+and label/text styling frozen. Inherited shared title-ring contrast remains
+2.41, below 3; neither changed-background preservation nor this receipt claims
+global WCAG compliance. Controlled fixtures are NOT_ADMITTED and do not prove
+live service or physical devices. Raw pending-owner status remains preserved.
+
+Actual `ERA-WORLD-MAP-NATIVE-202611040754Z` full release completed at
+07:56:07.729306 UTC, exit 0, 51.529 seconds. Whole output 54,181,888 bytes includes
+7,413,760 carried Artist bytes; temporary 29,978,624, durable 16,891,904, minimum
+free 37,368,500,224 bytes. Owned temporary/dependency link absent, browser/Vite
+children exited. Root alone retains/materializes the packet; ART launches no
+rerun, copy or restore. Publication follows Root's normal serial flow.
+
+Artist231 receives these exact seal/report/pin references to bind its actual
+views before closing the full comparison. Its current 360/390px owner report
+finds cream façades, pastel roofs and rounded foliage visibly cuter than both
+baseline and collage; REVENGE/DANGER remain similar because the source recipes
+apply modest palette shifts to shared shapes/terrain. Sage fit bands are now
+observed. The remaining 430px/full-matrix/intent qualification and final doc
+handoff are still pending at this checkpoint, not inferred from Root's pass.
+
+
+### Final bounded owner outcome and published readbacks
+
+Artist's `ART-BG-MATRIX-01` doc-only handoff is
+`9187962f29f008956b58ce61a1c87ddc572ffb0d`, parent `bfd3bb09`, pushed with
+remote-exact readback and clean checkout. It directly viewed all 36 actual
+retained PNGs, eighteen matched World/Map comparisons and the unchanged human
+JPEG. Its verifier exits 0 for 41 artifact byte/SHA/immutable-seal blobs, all
+36 report hashes/bytes/dimensions/times, packet/report pins, and four candidate
+scenery asset pins against closed source and candidate Git. No source payload,
+consumer, runtime, test, capture or media change was needed.
+
+Source-owner visual findings: cream/peach façades, pink/lilac roofs and rounded
+pink/gold/lime/teal foliage are visibly cuter than both BEFORE and collage at
+every width; no new bleed, registration, crop or legibility defect. Sage/mint
+fit bands harmonize, largest at 360px, moderate at 390px, minimal at 430px;
+430px control positions already match baseline. REVENGE is slightly rosier,
+DANGER slightly cooler, per authorized shared fourteen crops/ground and LUT
+recipes. Preserved red/maroon stage/plaque versus cyan/yellow trim and green
+plaque provide stronger World cues. Map palette alone is **not reliable era
+identification**. This remains a stated limit, not a claim of strong recognition.
+
+The product specification §5.2 defines three skins over identical geometry;
+AR04 calls for decorations/palettes and readability/contrast. Neither adds a
+palette-only recognition threshold. This scope check does not amend product
+acceptance or convert recipes alone into visual evidence: Artist actually
+viewed the matrix and records intent, visible cues and limits. No concrete new
+scenery/consumer fix is identified. Inherited shared title-ring contrast is a
+separate UI/QA matter under the king's routing, without art/character scope or
+an extra art closure gate. Original AR02/AR04/W01/W02/W06, live/public-flow,
+device, QA/IN and human acceptance remain outside this bounded outcome.
+
+Root reports fresh master `9e7952fcd89360f7b4fe43c69f22060b9aa55c74` containing
+exact final ART `9187962f` and management `c4d78f26` postimages; native seal
+`4600542b` is an ancestor. Artist independently fresh-fetches/remote-matches
+master, verifies its final ART raw blob exact and native ancestry (exit 0),
+then clean STOP with zero resources. ART SL archives the same completed
+context, preserving its original BLOCKED/unfinished goal and source branch.
+No next ready assignment, unchanged polling, replacement artist or held job.
+
+SL independently verifies **only its owned document**: `c4d78f26` raw postimage
+matches published `9e7952fc`, 51,285 bytes, SHA-256
+`ebc9e4bacc9a37f1d245cca9198e349b00f8506af476b81a0f111141554f15c9`;
+fresh fetch, remote master match and ancestry exit 0. Earlier `abaf7ab7` is
+also byte-exact on `70a444bf`, 42,275 bytes, SHA-256
+`9f4df3f774578f327cb4a9d4f2a37e38ff31a729120a27bb78b15947bd349161`.
+The final coordination update is committed/pushed and handed to Root for
+normal publication; its exact final postimage/ancestry receipt is checked
+before completing this SL goal, without inspecting implementation or rerunning
+application/native tests.
+
+### Earlier idle source-owner lifecycle (before ready follow-through)
 
 After actual completed source commit `aa7d09a4`, clean remote readback, full
 packing release and PARADE 360/390/430 comparison, Artist231 has no ready

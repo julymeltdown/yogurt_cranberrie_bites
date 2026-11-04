@@ -1,0 +1,761 @@
+{
+  "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+  "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+  "reportSha256": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f",
+  "rawExit": 1,
+  "disposition": "WALL_BACKGROUND_AND_NORMAL_TEXT_PASS; INHERITED_MEET_FOCUS_CLIPPING_OPEN; FORCED_CHECKER_FINDINGS_QUALIFIED_SEPARATELY",
+  "sourceAssetAndPhysicalCssPinsVerified": 725,
+  "wall": [
+    {
+      "width": 390,
+      "foregroundPreserved": true,
+      "body": {
+        "x": 9,
+        "y": 57,
+        "width": 372,
+        "height": 780
+      },
+      "screenshot": {
+        "path": "candidate-wall-390.png",
+        "bytes": 42172,
+        "sha256": "ec075ce0ceb6a029a5b469fe2db8ba48b7668a7c83bd8a5845fd7019a8417a9f",
+        "time": "2026-11-04T08:17:17.064Z"
+      }
+    },
+    {
+      "width": 360,
+      "foregroundPreserved": true,
+      "body": {
+        "x": 9,
+        "y": 57,
+        "width": 342,
+        "height": 780
+      },
+      "screenshot": {
+        "path": "candidate-wall-360.png",
+        "bytes": 42703,
+        "sha256": "d5281ac77ad5b53a32fc3025cfc819865e1d78259ec90cb996fc2946de43e203",
+        "time": "2026-11-04T08:17:19.689Z"
+      }
+    },
+    {
+      "width": 430,
+      "foregroundPreserved": true,
+      "body": {
+        "x": 9,
+        "y": 57,
+        "width": 412,
+        "height": 780
+      },
+      "screenshot": {
+        "path": "candidate-wall-430.png",
+        "bytes": 40881,
+        "sha256": "9bb0bf3f6ac6790306f12a39be4db4fcfec262788fd8f267c94880624522c357",
+        "time": "2026-11-04T08:17:22.002Z"
+      }
+    }
+  ],
+  "accessibility": [
+    {
+      "route": "wall",
+      "normalTextMin": 9.545801856993844,
+      "normalFocus": {
+        "minimum": 15.114013729961503,
+        "allFourOutlinePixels": true,
+        "width": 2,
+        "target": {
+          "x": 332,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      },
+      "forcedMedia": {
+        "forcedColors": true,
+        "reducedMotion": true,
+        "bodyBackground": "rgba(255, 255, 255, 0)"
+      },
+      "forcedOutlineAlphaSamples": [
+        {
+          "x": 354,
+          "y": 12,
+          "expected": [
+            55,
+            51,
+            109
+          ],
+          "actual": [
+            55,
+            51,
+            109
+          ],
+          "matches": true,
+          "contrast": 11.309774587047812
+        },
+        {
+          "x": 354,
+          "y": 52,
+          "expected": [
+            55,
+            51,
+            109
+          ],
+          "actual": [
+            55,
+            51,
+            109
+          ],
+          "matches": true,
+          "contrast": 11.309774587047812
+        },
+        {
+          "x": 334,
+          "y": 32,
+          "expected": [
+            55,
+            51,
+            109
+          ],
+          "actual": [
+            55,
+            51,
+            109
+          ],
+          "matches": true,
+          "contrast": 11.309774587047812
+        },
+        {
+          "x": 374,
+          "y": 32,
+          "expected": [
+            55,
+            51,
+            109
+          ],
+          "actual": [
+            55,
+            51,
+            109
+          ],
+          "matches": true,
+          "contrast": 11.309774587047812
+        }
+      ],
+      "forcedTextActualUnmaskedRasterSpots": [
+        {
+          "selector": ".shell-panel-body [role=\"status\"]",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 15,
+                "y": 64,
+                "width": 357,
+                "height": 16
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 15,
+                "y": 64
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 20,
+                "y": 67
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            },
+            {
+              "rect": {
+                "x": 15,
+                "y": 83.59375,
+                "width": 81.046875,
+                "height": 16
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 15,
+                "y": 84
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 19,
+                "y": 87
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        }
+      ],
+      "geometryStateRestored": true
+    },
+    {
+      "route": "feed",
+      "normalTextMin": 15.622721919572312,
+      "normalFocus": {
+        "minimum": 6.02012280875499,
+        "allFourOutlinePixels": true,
+        "width": 3,
+        "target": {
+          "x": 19,
+          "y": 780,
+          "width": 44,
+          "height": 44
+        }
+      },
+      "forcedMedia": {
+        "forcedColors": true,
+        "reducedMotion": true,
+        "bodyBackground": "rgba(255, 255, 255, 0)"
+      },
+      "forcedOutlineAlphaSamples": [
+        {
+          "x": 41,
+          "y": 776,
+          "expected": [
+            53,
+            43,
+            103
+          ],
+          "actual": [
+            53,
+            43,
+            103
+          ],
+          "matches": true,
+          "contrast": 9.376977599757085
+        },
+        {
+          "x": 41,
+          "y": 827,
+          "expected": [
+            54,
+            44,
+            100
+          ],
+          "actual": [
+            54,
+            44,
+            100
+          ],
+          "matches": true,
+          "contrast": 9.623173534716571
+        },
+        {
+          "x": 15,
+          "y": 802,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            105
+          ],
+          "matches": true,
+          "contrast": 10.653429488281706
+        },
+        {
+          "x": 66,
+          "y": 802,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            105
+          ],
+          "matches": true,
+          "contrast": 10.653429488281706
+        }
+      ],
+      "forcedTextActualUnmaskedRasterSpots": [
+        {
+          "selector": ".feed-browse .feed-post-copy",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 84,
+                "y": 154.1875,
+                "width": 104.046875,
+                "height": 16
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 84,
+                "y": 155
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 87,
+                "y": 157
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        }
+      ],
+      "geometryStateRestored": true
+    },
+    {
+      "route": "meet",
+      "normalTextMin": 5.499084791599385,
+      "normalFocus": {
+        "minimum": 1,
+        "allFourOutlinePixels": false,
+        "width": 3,
+        "target": {
+          "x": 15,
+          "y": 465.5625,
+          "width": 301.546875,
+          "height": 44
+        }
+      },
+      "forcedMedia": {
+        "forcedColors": true,
+        "reducedMotion": true,
+        "bodyBackground": "rgba(255, 255, 255, 0)"
+      },
+      "forcedOutlineAlphaSamples": [
+        {
+          "x": 165,
+          "y": 462,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            104
+          ],
+          "matches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 165,
+          "y": 513,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            255,
+            243,
+            232
+          ],
+          "matches": false,
+          "contrast": 1.0
+        },
+        {
+          "x": 11,
+          "y": 487,
+          "expected": [
+            55,
+            51,
+            109
+          ],
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "matches": false,
+          "contrast": 1.0
+        },
+        {
+          "x": 320,
+          "y": 487,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            104
+          ],
+          "matches": true,
+          "contrast": 10.677607806093935
+        }
+      ],
+      "forcedTextActualUnmaskedRasterSpots": [
+        {
+          "selector": ".meet-party__members-unavailable",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 90.265625,
+                "y": 195.1875,
+                "width": 105.75,
+                "height": 11
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 92,
+                "y": 196
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 91,
+                "y": 197
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        },
+        {
+          "selector": ".meet-party__members-unavailable",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 90.265625,
+                "y": 311.375,
+                "width": 105.75,
+                "height": 11
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 92,
+                "y": 312
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 91,
+                "y": 313
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        },
+        {
+          "selector": ".meet-party__members-unavailable",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 90.265625,
+                "y": 427.5625,
+                "width": 105.75,
+                "height": 11
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 91,
+                "y": 428
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 91,
+                "y": 430
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        },
+        {
+          "selector": ".meet-tools button",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 332.546875,
+                "y": 480.0625,
+                "width": 34.453125,
+                "height": 14
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 333,
+                "y": 481
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 334,
+                "y": 482
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        }
+      ],
+      "geometryStateRestored": true
+    },
+    {
+      "route": "gifts",
+      "normalTextMin": 7.464103914133896,
+      "normalFocus": {
+        "minimum": 6.586126471068874,
+        "allFourOutlinePixels": true,
+        "width": 2,
+        "target": {
+          "x": 15,
+          "y": 510,
+          "width": 360,
+          "height": 44
+        }
+      },
+      "forcedMedia": {
+        "forcedColors": true,
+        "reducedMotion": true,
+        "bodyBackground": "rgba(255, 255, 255, 0)"
+      },
+      "forcedOutlineAlphaSamples": [
+        {
+          "x": 195,
+          "y": 507,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            104
+          ],
+          "matches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 195,
+          "y": 557,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            104
+          ],
+          "matches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 12,
+          "y": 532,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            104
+          ],
+          "matches": true,
+          "contrast": 10.677607806093935
+        },
+        {
+          "x": 378,
+          "y": 532,
+          "expected": [
+            55,
+            49,
+            105
+          ],
+          "actual": [
+            55,
+            49,
+            104
+          ],
+          "matches": true,
+          "contrast": 10.677607806093935
+        }
+      ],
+      "forcedTextActualUnmaskedRasterSpots": [
+        {
+          "selector": ".gift-reference-footnote p",
+          "computedColor": "rgb(0, 0, 0)",
+          "fragments": [
+            {
+              "rect": {
+                "x": 15,
+                "y": 568.703125,
+                "width": 301.5625,
+                "height": 12
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 15,
+                "y": 569
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 213,
+                "y": 571
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            },
+            {
+              "rect": {
+                "x": 15,
+                "y": 583,
+                "width": 49.15625,
+                "height": 12
+              },
+              "whiteBackplateSample": {
+                "rgba": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "x": 15,
+                "y": 583
+              },
+              "darkGlyphCoreSample": {
+                "rgba": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "x": 25,
+                "y": 588
+              },
+              "sampleContrast": 21.0,
+              "computedBlackOnWhiteContrast": 21,
+              "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+            }
+          ]
+        }
+      ],
+      "geometryStateRestored": true
+    }
+  ],
+  "limits": [
+    "Actual production router and Phaser under controlled synthetic HTTP/C05 fixtures; guarded Wall stays guarded. No live authority, physical device, global WCAG or whole-project acceptance.",
+    "Raw report/failed checks are immutable. This supplemental inspection corrects measurement interpretation; it does not relabel the failed command as exit0.",
+    "Forced text-fill masking is overridden by forced colors, so raw contrast1 includes actual glyph pixels as supposed backing. Forced text backing test is NOT QUALIFIED. Actual unmasked screenshots and computed system foreground are inspected separately.",
+    "Forced system outline is rgba(5,0,73,.8); comparing composited screenshot pixels directly with RGB(5,0,73) incorrectly fails expectedOutlinePixels. Supplement explicitly computes alpha composition with one-channel tolerance.",
+    "Meet summary actual bottom/left outline pixels are clipped by unchanged meet-discovery overflow:auto. This is a real inherited geometry/focus limitation, not an alpha or text-mask artifact; no source fix is claimed."
+  ],
+  "meetInheritedSourceComparison": [
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "sameBytes": true,
+      "sha256": "0f4b94ffb12cf8890d6e7c4e258e69b68833287dca0e8ad275a69d0700ebdea8"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "sameBytes": true,
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "sameBytes": true,
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d"
+    }
+  ]
+}

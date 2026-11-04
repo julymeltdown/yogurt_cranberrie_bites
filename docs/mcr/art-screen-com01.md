@@ -1,10 +1,12 @@
 # ART-SCREEN-COM01 — Community background adoption
 
-Status: **IN_PROGRESS**. Background source adoption and the first actual 390px
-comparison are implemented. Feed/Gifts' SVG aspect-ratio fix is source-verified
-and requires fresh rendered validation.
-Responsive checks, complete rendered contrast, publication and final visual
-acceptance remain open.
+Status: **IN_PROGRESS** for the resumed owner validation. The fixed immutable
+`native-02` packet has been inspected at 390/360/430px. Feed, Meet and Gifts
+pass the captured background scope. Wall needs a fuller playful lower field;
+its asset owner delivered the tall composition in `18e6e4db`. Own-route computed
+contrast/focus/forced-colors evidence and the correction's rendered/publication
+receipts remain open. The existing full goal still reports **BLOCKED** through
+the goal tool; it has not been reset, falsely completed or given a budget.
 
 ## Authority and baseline
 
@@ -43,9 +45,9 @@ no new target surface. No `!important` declarations are used.
 No foreground, type, layout, control, disabled-state, character, crop, avatar,
 media, mural canvas, pixel, palette, editor-tool or shared-token changes are
 authorized. No existing source file is writable here. Decorative left rails
-and new pseudo-elements are prohibited. The persistent goal remains active
-through implementation, validation, documented committed handoff, publication
-and required fixes.
+and new pseudo-elements are prohibited. Completion requires implementation, validation, documented committed handoff,
+publication and required fixes. The goal is blocked while the external evidence
+below is unavailable; no outstanding requirement is waived.
 
 ## Art direction and source provenance
 
@@ -75,14 +77,15 @@ without a further per-URL permission flow. Source commits and usage:
 | Feed post/footer | `/backgrounds/cute-community-v1/feed-backdrop.svg` | `124f3ed8217acfff33ffcc7904c6ff000e33b013` |
 | Meet container | `/backgrounds/cute-community-v1/meet-backdrop.svg` | `124f3ed8217acfff33ffcc7904c6ff000e33b013` |
 | Gifts rows | `/backgrounds/cute-community-v1/gifts-backdrop.svg` | `124f3ed8217acfff33ffcc7904c6ff000e33b013` |
-| Wall surrounding body | `/backgrounds/cute-wall-me-v1/wall-stationery.svg` | `8ff3a58f556bf2811ad1415cd31c5ba1953ccd58` |
+| Wall surrounding body, current source-only revision | `/backgrounds/cute-wall-me-v1/wall-stationery.svg` | `18e6e4db2f2e6384c796453d6e63caedc11875e8` |
 
-The three community SVGs are opaque 390×640 editable vector source; Wall is
-opaque 390×180. The community surfaces use Root's granted `center`, `100% 100%`,
+The three community SVGs are opaque 390×640 editable vector source. Current
+Wall source is opaque 390×780; the original captured Wall was 390×180. The community surfaces use Root's granted `center`, `100% 100%`,
 `no-repeat` mapping and matching solid fallbacks. Wall uses `center top` and
 `100% auto` with its matching solid fill. Exact bytes and hashes are
 in the [initial source evidence](evidence/art-screen-com01/source-preparation.json)
-and [current aspect-ratio fix evidence](evidence/art-screen-com01/asset-fit-fix.json).
+[community aspect-ratio fix evidence](evidence/art-screen-com01/asset-fit-fix.json),
+and [current tall Wall source evidence](evidence/art-screen-com01/wall-tall-source.json).
 No old artwork, fonts or dependencies are copied into this task. Asset files
 are integrated separately by Root and are absent from this patch.
 
@@ -229,3 +232,160 @@ layout, list/scroll geometry, type, controls or character pixels. The seven-rule
 source patch is validated separately; the old five-rule first packet cannot
 prove the new body coverage. One Root follow-up must inspect fixed 390px first,
 then 360/430px, computed contrast/focus/44px behavior and preservation evidence.
+
+## Retained original capture and external dependency
+
+The original report and all eight owned Feed/Meet/Gifts/Wall PNGs are retained
+in immutable Root Git artifact `16bf30c617995f87c89f94a13d9cc5f4c65d51b5`.
+Direct `git show` reads independently matched every PNG's byte length and
+SHA-256 against that report; the report hash remains
+`59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1`.
+See [retention evidence](evidence/art-screen-com01/retained-native-01.json).
+Temporary sparse-checkout materialization does not change these retained
+bytes. No separate copy, reconstruction or additional capture was made here.
+
+This receipt preserves the original pre-fix job and candidate; it does not
+qualify the corrected seven-rule CSS, SVG fit correction or later shell paint.
+The HTML-image comparison also leaves canvas/CSS-rendered character pixels
+unproved. Root's single allocated workflow must supply corrected 390px results,
+then 360/430px and computed contrast/focus/control evidence, with direct
+character/media preservation checks. The owner will inspect that packet,
+resolve concrete failures, commit the evidence and confirm Root publication.
+No independent browser/build/output workflow is authorized in this worktree.
+The same missing external evidence has persisted across multiple goal turns;
+this bounded development goal is blocked rather than complete. Root's ongoing
+integration work is not stopped by this status.
+
+## Corrected native-02 owner disposition
+
+The resumed worktree was restored from its archived attachment at exact
+`cd6af94c06f91bfc92840ddf6c24cf200a16be51`, verified clean, then switched back to
+its unclaimed `codex/mcr-art-screen-com01` branch. No Root packet, sparse pattern
+or image was restored, copied or reconstructed by this developer. The canonical
+Root packet was read in place. The stylesheet is unchanged.
+
+- Immutable packet: `5186f11017185a040e4ccde1c59589e140563ef0`, under
+  `docs/mcr/evidence/cozy-backgrounds-v1/native-02/` in Root's publication checkout.
+- Frozen production/fixtures/assets: `8972b0b634035055eb023dbc2f786e4463b172e5`;
+  runner `e237572719602da6a1a08b7fe0579b0e9c96da1f`;
+  driver SHA-256 `58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde`.
+- Raw report SHA-256:
+  `7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b`.
+- Actual job `PANEL-CORRECTED-202611040733Z`, 2026-11-04
+  16:38:12.062–16:40:02.112 KST, exit 0. All owned PNGs are width 360/390/430
+  by height 844. The same candidate/fixture baseline policy remains as above.
+
+All eight owned 390px before/after PNGs were directly inspected first, followed
+by all eight 360px and all eight 430px PNGs, plus the supplied original collage.
+The read-only [packet audit](evidence/art-screen-com01/verify-native-02.py)
+independently checks their on-disk bytes against both immutable Git objects and
+the report/manifest pins, paired controls/text/images/actual character records,
+reported target bounds, overflow, source CSS and four asset pins. It exits 0;
+[results](evidence/art-screen-com01/native-02-validation.json) preserve all 24
+image pins and 12 pair summaries without duplicating images.
+
+| Surface | Owner visual disposition at all three widths |
+| --- | --- |
+| Feed | PASS for captured background scope: full-width blush/ivory/lilac post/footer shapes and peach scallops across the lower body resolve both original defects |
+| Meet | PASS for captured background scope: broad sage/peach upper field, quiet ivory middle and lilac lower clouds visibly soften the entire container |
+| Gifts | PASS for captured background scope: full-width wrapping-paper rows and cloud-shaped lower body; truthful No photo placeholders and controls preserved |
+| Wall | NEEDS_CORRECTION: top stationery is warm and the guard is truthful, but about 600px of flat lower cream is too sparse for the current playful brief |
+
+The initial four-route pass receipt is superseded for Wall. Its asset owner
+independently reported the same sparse lower field and is authoring a taller
+390px-wide background with broad low-contrast lower cloud/bow shapes at the
+same URL. Existing `center top`, `100% auto`, `no-repeat` and `#fff0de` mapping
+remains suitable; no CSS ownership or source rights transfer occurred. New
+source hashes/dimensions and a Root-owned actual 390px then 360/430px comparison
+are required. `native-02` cannot qualify that future change.
+
+Across the 12 owned pairs, all 189 recorded candidate controls have at least
+44px width and height, with exact paired rect/font/color/state and text equality,
+no reported page errors or horizontal overflow. Direct visible canvas RGBA,
+dimensions and rectangles are identical: Feed has one canvas and Meet three
+at every width. Gifts and guarded Wall explicitly have zero. All routes have
+zero selected-static CSS spans and zero visible HTML images in these fixtures;
+those zeros are not real-media or mural-editor qualification. The genuine
+Wall guard and Meet unavailable-create state are unchanged.
+
+The [paint inference](evidence/art-screen-com01/native-02-paint-inference.json)
+recalculates the closed foreground/background bounds against exact current SVG
+paints, whose colors are unchanged by the fit correction. Read-only RGB samples
+from original candidate PNGs independently show ivory middle and peach/lilac
+lower fields for the three Community routes. Wall's sampled lower points are
+all `#fff0de`, corroborating the visual finding. Source-based foreground/focus
+bounds remain an inference, not measured browser-computed text or ring contrast.
+See [visual findings](evidence/art-screen-com01/owner-native-02.json).
+
+The actual report's `metrics.paints.color` field contains `backgroundColor`,
+not foreground text color. Own routes record only the first Tab's solid outline
+style; screenshots precede that focus check. Me-specific focus/forced-colors
+measurements cannot certify these four routes. The prior controls query omits
+`details/summary` elements. Root received a bounded follow-up request for only
+one representative real target per route at 390px, including the omitted
+summaries, actual text/outline/backing measurements and forced-colors readability.
+The same synthetic admission and truthful guarded Wall must remain. No worker
+browser/native/build/test matrix was started. All core contexts already used
+reduced motion; normal-motion equivalence and physical devices are not claimed.
+
+Fresh `git ls-remote` observed published master
+`39c68d1dcd85a618ec0c56287d8451c6ffe13dbd`. Both frozen production `8972b0b6`
+and packet `5186f110` are its ancestors (`git merge-base --is-ancestor`, each
+exit 0). Production CSS matches the local seven-rule source exactly, SHA-256
+`d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504`.
+This proves publication of the inspected CSS and packet; it does not publish
+the pending Wall correction, accessibility evidence or this new owner handoff.
+Completion remains unfinished while those requirements are open.
+
+## Closed tall Wall source consumption
+
+Wall/Me owner delivered exact commit
+`18e6e4db2f2e6384c796453d6e63caedc11875e8`, changing only their
+`frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg` and
+`docs/mcr/art/cute-wall-me-backgrounds.md`. The handoff was read directly from
+immutable Git. This developer restored only the archived exclusive checkout at
+`f414d69586596b52d8c9b0d814514571f35b6ec8` and reclaimed the unclaimed original
+branch, initially clean. The goal tool still reports **BLOCKED** with the same
+full unfinished objective; no reset, budget or completion was introduced.
+
+| Current source pin | Value |
+| --- | --- |
+| URL | `/backgrounds/cute-wall-me-v1/wall-stationery.svg` |
+| Dimensions / viewBox | 390×780 / `0 0 390 780` |
+| Bytes | 4,500 |
+| SHA-256 | `22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7` |
+| Existing CSS | `center top`, `100% auto`, `no-repeat`, solid `#fff0de` |
+
+The separate read-only
+[source-consumption checker](evidence/art-screen-com01/verify-wall-tall-source.py)
+exits 0 and records [closed results](evidence/art-screen-com01/wall-tall-source.json).
+It independently verifies exact bytes/dimensions/viewBox, inert SVG tags and
+resolved local references, all 25 handoff paints, retained original top geometry/
+paints/definitions and child order, and new lower art after the original children.
+Only the full cream/dot base paths extend from height 180 to 780; original top
+ornament geometry is unchanged. New broad forms start at SVG y=258. No source
+art is copied into this branch, and no CSS declaration changes.
+
+Source contrast is explicitly an inference. The minimum individual paint ratio
+for the existing closed default body assumption `#201d1d` remains 7.362:1;
+the artist's `#211d19` assumption gives 7.364:1. A stricter per-channel envelope
+`#c6a58b` bounds paint mixtures and still exceeds 4.5:1 for either dark assumption
+and 3:1 for the existing closed focus-color assumption. These calculations do
+not establish the runtime foreground, composed text/ring contrast, clipping,
+forced-color behavior or ancestor opacity.
+
+Using only the frozen native-02 body widths 342/372/412, the unchanged mapping
+projects the new ribbon center to screenshot y=555.97/599.74/658.10 at viewport
+360/390/430. Those positions lie inside the measured old body. This arithmetic
+supports compatibility; it is not a new capture or proof that all new artwork
+is visible and acceptable. Fresh Root rendering must establish that the lower
+field meets the current broad playful requirement at every width.
+
+The old `native-02` report, image/source pins, checker and Wall
+NEEDS_CORRECTION disposition remain unchanged and apply to old 180px artwork
+`1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227` only.
+No fresh visual pass is claimed for `22e2de67`. Root owns integration, the
+bounded Wall 390px then 360/430px evidence, the already specified short own-route
+accessibility follow-up and publication. Owner inspection/fixes and exact
+published source/doc ancestry remain required. No browser, build, matrix,
+packet copy/materialization or sparse operation was performed for this handoff.

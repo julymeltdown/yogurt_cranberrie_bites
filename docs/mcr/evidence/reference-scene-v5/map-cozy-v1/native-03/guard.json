@@ -1,0 +1,22 @@
+{
+  "carried_allocated_art_bytes": 7413760,
+  "job": "ERA-WORLD-MAP-NATIVE-202611040754Z",
+  "candidate": "aea02a262f7d834be7ef2267368812520a5d9c0c",
+  "driver_sha256": "ad5209540f8c057b44c9681231a077dac55c33aff8f33e87dfa464912ce18fd3",
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "src/app/world-entry/__tests__/reference-scene-v5/map-cozy-v1/native.mjs"
+  ],
+  "exit_code": 0,
+  "failure": null,
+  "elapsed_seconds": 51.52932833399973,
+  "peaks": {
+    "whole": 54181888,
+    "temp": 29978624,
+    "durable": 16891904
+  },
+  "minimum_free_bytes": 37368500224,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T07:56:07.729306+00:00"
+}

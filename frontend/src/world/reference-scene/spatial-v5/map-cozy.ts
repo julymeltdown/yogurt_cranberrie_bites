@@ -16,11 +16,13 @@ export function validateSpatialV5Cozy(value = document, resourcePins = pins) {
     && value.production_status === 'NOT_ADMITTED' && value.geometry_hash === base.geometry_hash
     && value.base_source_revision === base.source_revision
     && canonicalJson(value) === canonicalJson(document) && canonicalJson(resourcePins) === canonicalJson(pins)
-    && canonicalJson(value.eras) === canonicalJson(['PARADE'])
-    && canonicalJson(value.frame_rects) === canonicalJson(base.scenes.PARADE.frames)
-    && value.ground.id === architecture.scenes.PARADE.scenery.ground.id
-    && value.atlas.id === architecture.scenes.PARADE.scenery.atlases[0]!.id
-    && value.ground.bytes + value.atlas.bytes <= 2097152)
+    && canonicalJson(value.eras) === canonicalJson(['PARADE','REVENGE','DANGER']))
+  for (const era of ['PARADE','REVENGE','DANGER'] as const) {
+    const scene = value.scenes[era], original = architecture.scenes[era].scenery
+    requireMap(canonicalJson(scene.frame_rects) === canonicalJson(base.scenes[era].frames)
+      && scene.ground.id === original.ground.id && scene.atlas.id === original.atlases[0]!.id
+      && scene.ground.bytes + scene.atlas.bytes <= 2097152)
+  }
 }
 export async function verifySpatialV5Cozy(value = document, resourcePins = pins) {
   validateSpatialV5Cozy(value, resourcePins)
@@ -31,6 +33,6 @@ export function spatialV5CozyScenery(themeId: keyof typeof architecture.scenes, 
   validateSpatialV5Cozy(value, resourcePins)
   requireMap(Object.hasOwn(architecture.scenes, themeId)
     && canonicalJson(original) === canonicalJson(architecture.scenes[themeId].scenery))
-  if (themeId !== 'PARADE') return original
-  return freeze({ ...original, ground: value.ground, atlases: [value.atlas] })
+  const scene = value.scenes[themeId]
+  return freeze({ ...original, ground: scene.ground, atlases: [scene.atlas] })
 }

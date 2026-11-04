@@ -155,6 +155,21 @@ describe('same-shell FE34 runtime adoption', () => {
     await next
     expect(f.adapter.read()).toMatchObject({ phase: 'applied', reducedMotion: true })
   })
+  it('withdraws applied state when releasing the old lease aborts the incoming caller', async () => {
+    const incoming = new AbortController(), dispose = vi.fn(() => incoming.abort())
+    const acquire = vi.fn(() => ({ dispose })), phases: string[] = []
+    const f = setup({ effects: { motion: true, lowPower: true, acquire } })
+    f.adapter.subscribe(() => phases.push(f.adapter.read().phase))
+    await f.apply({ ...defaults, reduced_motion: true, sound_enabled: true })
+    expect(f.adapter.read()).toMatchObject({ phase: 'applied', reducedMotion: true, soundEnabled: true })
+
+    await expect(f.adapter.apply(defaults, f.scope, incoming.signal)).rejects.toMatchObject({ reason: 'cancelled' })
+
+    expect(dispose).toHaveBeenCalledOnce(); expect(f.disposeSound).toHaveBeenCalledOnce()
+    expect(acquire).toHaveBeenCalledOnce(); expect(f.sound.acquire).toHaveBeenCalledOnce()
+    expect(f.adapter.read()).toMatchObject({ phase: 'idle', reducedMotion: false, soundEnabled: false })
+    expect(phases.at(-1)).toBe('idle')
+  })
   it('cancels a real same-theme selection before publication without disposing the borrowed theme owner', async () => {
     const f = setup(), select = vi.spyOn(f.theme, 'select'), apply = f.apply()
     f.caller.abort(); await expect(apply).rejects.toMatchObject({ reason: 'cancelled' })
