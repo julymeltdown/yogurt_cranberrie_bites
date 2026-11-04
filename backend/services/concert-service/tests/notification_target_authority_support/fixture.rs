@@ -384,6 +384,90 @@ pub(super) async fn run() -> anyhow::Result<()> {
     .execute(&concert)
     .await?;
     sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)").bind(event).bind(actor).execute(&concert).await?;
+    // Actual mTLS callback refusals must leave no target native child behind.
+    // Use a separate original scope so these adversarial calls cannot consume
+    // the successful dispatch's original deadline.
+    let negative_scope = fence
+        .acquire(capture::binding(actor, family, event, true).await?)
+        .await?;
+    let (_negative_delivery, _negative_serialized) =
+        core.delivery().publish(negative_scope.clone()).await?;
+    {
+        use concert_application::notification::{Candidate, Context};
+        use concert_domain::notification::{Target, TargetType};
+        use notification_service::concert::authority::RootTargetSnapshotOwner;
+        use prost::Message;
+        let wire = proto::ParentScope {
+            binding: Some(negative_scope.wire_binding()),
+            auth_view: Some(negative_scope.auth_view()),
+            friend_view: Some(negative_scope.friend_view()),
+            root_view: Some(negative_scope.root_read_view()),
+        };
+        let parent = notification_service::concert::transport::proto::ParentScope::decode(
+            wire.encode_to_vec().as_slice(),
+        )?;
+        let b = negative_scope.binding();
+        let context = Context {
+            actor_id: actor,
+            event_id: event,
+            session_family_id: family,
+            request_id: b.request_id(),
+            authority_digest: b.digest(),
+            observed_at: chrono::Utc::now(),
+            expires_at: chrono::DateTime::from_timestamp_micros(b.deadline().expires_micros())
+                .unwrap(),
+        };
+        for kind in [Some(TargetType::Post), Some(TargetType::Report), None] {
+            let candidate = Candidate {
+                notification_id: Uuid::new_v4(),
+                source_actor_id: None,
+                target: kind.map(|target_type| Target {
+                    target_type,
+                    target_id: Uuid::new_v4(),
+                }),
+            };
+            let refused = platform::call_deadline::scope(
+                b.deadline().stop().into_std(),
+                targets.authorize(&parent, context, &[candidate], chrono::Utc::now()),
+            )
+            .await;
+            assert!(
+                refused.is_err(),
+                "unknown owner must never produce Visible/Stale"
+            );
+        }
+        let mut foreign = context;
+        foreign.actor_id = Uuid::new_v4();
+        assert!(platform::call_deadline::scope(
+            b.deadline().stop().into_std(),
+            targets.authorize(&parent, foreign, &[], chrono::Utc::now())
+        )
+        .await
+        .is_err());
+        let mut rebound = parent.clone();
+        rebound.root_view.as_mut().unwrap().view_secret[0] ^= 1;
+        assert!(platform::call_deadline::scope(
+            b.deadline().stop().into_std(),
+            targets.authorize(&rebound, context, &[], chrono::Utc::now())
+        )
+        .await
+        .is_err());
+        let wrong_token = RootTargetClient::connect(
+            &root_url,
+            "invalid-notification-credential",
+            &environment::tls(Workload::Notification)?,
+        )?;
+        assert!(platform::call_deadline::scope(
+            b.deadline().stop().into_std(),
+            wrong_token.authorize(&parent, context, &[], chrono::Utc::now())
+        )
+        .await
+        .is_err());
+        assert_eq!(target_held(&concert).await?, 0);
+    }
+    negative_scope.mark_serialized().await?;
+    negative_scope.finish_response().await?;
+    drop(negative_scope);
     let scope = fence
         .acquire(capture::binding(actor, family, event, true).await?)
         .await?;
