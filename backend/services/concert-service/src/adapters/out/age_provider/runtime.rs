@@ -113,6 +113,7 @@ impl AgeRuntime {
             self.clock.clone(),
             self.keys.clone(),
         )
+        .with_claim_trust(self.trust.clone())
     }
 }
 #[derive(Deserialize)]

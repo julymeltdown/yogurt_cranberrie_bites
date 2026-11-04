@@ -67,6 +67,7 @@ pub struct PgAgeClaims {
     config: Option<ProviderConfig>,
     clock: Arc<dyn Clock>,
     keys: Arc<FingerprintKeys>,
+    trust: trust::ClaimTrust,
 }
 impl PgAgeClaims {
     pub fn new(
@@ -77,6 +78,10 @@ impl PgAgeClaims {
         clock: Arc<dyn Clock>,
         keys: Arc<FingerprintKeys>,
     ) -> Self {
+        let trust = config
+            .as_ref()
+            .map(trust::ClaimTrust::configured)
+            .unwrap_or_default();
         Self {
             pool,
             authority,
@@ -84,7 +89,13 @@ impl PgAgeClaims {
             config,
             clock,
             keys,
+            trust,
         }
+    }
+    /// Accepted persisted sources are separate from operational verifier health.
+    pub fn with_claim_trust(mut self, trust: trust::ClaimTrust) -> Self {
+        self.trust = trust;
+        self
     }
     pub fn unavailable(pool: PgPool, clock: Arc<dyn Clock>, keys: Arc<FingerprintKeys>) -> Self {
         Self::new(
@@ -97,7 +108,10 @@ impl PgAgeClaims {
         )
     }
     fn available(&self) -> bool {
-        self.config.is_some() && self.verifier.available()
+        self.config
+            .as_ref()
+            .is_some_and(|c| self.trust.accepts(&c.verifier, &c.revision))
+            && self.verifier.available()
     }
     pub async fn start(
         &self,
@@ -370,6 +384,10 @@ impl PgAgeClaims {
             .map(owner_claim)
             .transpose()?
             .into_iter()
+            .filter(|claim| {
+                self.trust
+                    .accepts(&claim.verifier_id, &claim.source_revision)
+            })
             .collect::<Vec<_>>();
         deadline(self, &mut tx, c).await.map_err(command)?;
         tx.commit().await.map_err(db)?;
@@ -690,8 +708,8 @@ async fn bounded<T>(
         .map_err(|_| on_timeout)?
 }
 
+pub mod runtime;
 pub mod scoped;
 pub mod settlement;
-pub mod runtime;
 
 pub mod trust;
