@@ -109,6 +109,7 @@ struct Reference {
     key: Option<uuid::Uuid>,
     guard_digest: [u8; 32],
     body_digest: [u8; 32],
+    media_binding_digest: [u8; 32],
 }
 /// Call from the request-specific canonical guard adapter, then durably Track
 /// before returning authorize_in success. This only builds a reference.
@@ -121,7 +122,7 @@ pub fn settlement_reference(
         return Err(CommandError::InvalidInput);
     }
     serde_json::to_vec(&Reference {
-        version: 1,
+        version: 2,
         actor: binding.identity.actor,
         event: binding.identity.event,
         family: binding.identity.session_family,
@@ -130,13 +131,86 @@ pub fn settlement_reference(
         key: binding.key,
         guard_digest,
         body_digest: binding.body_sha256,
+        media_binding_digest: binding.digest(),
     })
     .map_err(|_| CommandError::InvalidState)
+}
+
+/// Closed producer-owned reference projection. This is shape validation, never
+/// authentication: root must first match the ENTIRE incoming transaction against
+/// its actual durable registration, including the exact reference bytes.
+pub struct ValidatedMediaSettlementReference {
+    media_binding_digest: [u8; 32],
+    idempotency_key: Option<uuid::Uuid>,
+}
+impl ValidatedMediaSettlementReference {
+    pub fn media_binding_digest(&self) -> [u8; 32] {
+        self.media_binding_digest
+    }
+    pub fn idempotency_key(&self) -> Option<uuid::Uuid> {
+        self.idempotency_key
+    }
+}
+/// Call only on the exact stored producer reference after durable-record matching.
+/// No legacy version, absent fingerprint or default value is accepted.
+pub fn validate_settlement_reference(
+    bytes: &[u8],
+) -> Result<ValidatedMediaSettlementReference, CommandError> {
+    let reference = parse_reference(bytes)?;
+    Ok(ValidatedMediaSettlementReference {
+        media_binding_digest: reference.media_binding_digest,
+        idempotency_key: reference.key,
+    })
+}
+fn parse_reference(bytes: &[u8]) -> Result<Reference, CommandError> {
+    if bytes.len() > 2048 {
+        return Err(CommandError::InvalidInput);
+    }
+    let reference: Reference =
+        serde_json::from_slice(bytes).map_err(|_| CommandError::InvalidInput)?;
+    if reference.version != 2
+        || [
+            reference.actor,
+            reference.event,
+            reference.family,
+            reference.request,
+        ]
+        .iter()
+        .any(uuid::Uuid::is_nil)
+        || [
+            reference.guard_digest,
+            reference.body_digest,
+            reference.media_binding_digest,
+        ]
+        .contains(&[0; 32])
+        || !matches!(
+            reference.operation.as_str(),
+            "initConcertUpload"
+                | "putConcertUploadBytes"
+                | "finalizeConcertUpload"
+                | "getConcertMedia"
+                | "readConcertMedia"
+                | "getConcertCommandStatus"
+        )
+    {
+        return Err(CommandError::InvalidInput);
+    }
+    let mutation = matches!(
+        reference.operation.as_str(),
+        "initConcertUpload" | "putConcertUploadBytes" | "finalizeConcertUpload"
+    );
+    if mutation != reference.key.is_some() || reference.key.is_some_and(|key| key.is_nil()) {
+        return Err(CommandError::InvalidInput);
+    }
+    Ok(reference)
 }
 /// Actual configured Auth/Friend system caller must be authenticated by root
 /// before constructing this DTO. No browser actor/expired parent grants access.
 /// Root recomputes guard_digest using canonical GuardBinding::digest and resolves
 /// registration_id only from the authenticated owner's durable sealed registration.
+/// The media digest and key come from the exact durable producer registration,
+/// after root compares the incoming transaction/reference with that stored record.
+/// Copying them from an unbound caller reference does not authenticate settlement.
 pub struct MediaResolveBinding {
     pub actor: uuid::Uuid,
     pub event: uuid::Uuid,
@@ -145,6 +219,8 @@ pub struct MediaResolveBinding {
     pub operation: String,
     pub guard_digest: [u8; 32],
     pub body_digest: [u8; 32],
+    pub media_binding_digest: [u8; 32],
+    pub idempotency_key: Option<uuid::Uuid>,
     pub registration_id: uuid::Uuid,
 }
 /// Root maps these exact fields to authority.lease.v1.TransactionIdentity.
@@ -187,6 +263,7 @@ pub async fn resolve_transaction(
         .any(uuid::Uuid::is_nil)
         || binding.guard_digest == [0; 32]
         || binding.body_digest == [0; 32]
+        || binding.media_binding_digest == [0; 32]
         || binding.guard_digest != transaction.effect_binding_digest
         || !decimal(&transaction.system_identifier)
         || !decimal(&transaction.full_xid)
@@ -197,46 +274,29 @@ pub async fn resolve_transaction(
     {
         return Err(CommandError::InvalidInput);
     }
-    let reference: Reference = serde_json::from_slice(&transaction.settlement_reference)
-        .map_err(|_| CommandError::InvalidInput)?;
-    if reference.version != 1
-        || (
-            reference.actor,
-            reference.event,
-            reference.family,
-            reference.request,
-            reference.operation.as_str(),
-            reference.guard_digest,
-            reference.body_digest,
-        ) != (
-            binding.actor,
-            binding.event,
-            binding.session_family,
-            binding.request_id,
-            binding.operation.as_str(),
-            binding.guard_digest,
-            binding.body_digest,
-        )
-    {
-        return Err(CommandError::Denied);
-    }
-    if !matches!(
+    let reference = parse_reference(&transaction.settlement_reference)?;
+    if (
+        reference.actor,
+        reference.event,
+        reference.family,
+        reference.request,
         reference.operation.as_str(),
-        "initConcertUpload"
-            | "putConcertUploadBytes"
-            | "finalizeConcertUpload"
-            | "getConcertMedia"
-            | "readConcertMedia"
-            | "getConcertCommandStatus"
+        reference.guard_digest,
+        reference.body_digest,
+        reference.media_binding_digest,
+        reference.key,
+    ) != (
+        binding.actor,
+        binding.event,
+        binding.session_family,
+        binding.request_id,
+        binding.operation.as_str(),
+        binding.guard_digest,
+        binding.body_digest,
+        binding.media_binding_digest,
+        binding.idempotency_key,
     ) {
-        return Err(CommandError::InvalidInput);
-    }
-    let mutation = matches!(
-        reference.operation.as_str(),
-        "initConcertUpload" | "putConcertUploadBytes" | "finalizeConcertUpload"
-    );
-    if mutation != reference.key.is_some() || reference.key.is_some_and(|k| k.is_nil()) {
-        return Err(CommandError::InvalidInput);
+        return Err(CommandError::Denied);
     }
     let identity = MediaTransactionIdentity {
         system_identifier: transaction.system_identifier.clone(),

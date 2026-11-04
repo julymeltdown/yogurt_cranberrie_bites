@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-04T09:49:04+09:00",
-  "published_snapshot": "0fa4c767167867496a1bd47ad70c2845113cadec",
+  "updated_at": "2026-11-04T10:23:44+09:00",
+  "published_snapshot": "289b227fe81cf800e5695e3808a7fd447cbb959e",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 73,
-    "UNRECONCILED": 10,
-    "TASK_CRITERIA_SATISFIED": 12,
+    "IMPLEMENTATION_EVIDENCED": 70,
+    "UNRECONCILED": 9,
+    "TASK_CRITERIA_SATISFIED": 16,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 24,
+  "recorded_task_criteria_outcomes": 28,
   "implementation_percentage": null,
   "limitations": [
     "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance; 10 additional task-local SATISFIED dispositions comprise the previous nine frontend records plus original BE25. No new king/SL technical acceptance is asserted.",
@@ -727,9 +727,10 @@
       "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
       "recorded_state": null,
       "evidence": [
-        "docs/mcr/frontend/reference-root.md"
+        "docs/mcr/frontend/reference-root.md",
+        "docs/mcr/frontend/reference-scene-root.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "Published 10784b26 satisfies the current persistent-shell criterion. Whole original six-tab/history/deep-link criteria still need an explicit owner reconciliation; this criterion-only receipt does not close FE07. No backend/device gate is invented."
     },
     {
       "id": "FE08",
@@ -807,12 +808,17 @@
       "id": "FE14",
       "title": "Phaser runtime and map loader",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/reference-scene-world.md"
+        "docs/mcr/frontend/reference-scene-world.md",
+        "docs/mcr/frontend/reference-scene-root.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The implementation owner explicitly reconciles original FE14 client/source-fixture criteria as SATISFIED. Published 10784b26 closes all-era root adoption and retains runtime lifecycle, exact manifest/version/hash, source layers, nearest-neighbor textures, visible invalid-source failure and cleanup evidence. This is an owner disposition, without king or SL technical review.",
+      "known_followup": "Actual Product bundle admission, remaining art fidelity, device/capacity and IN requirements stay separately open; they do not add a prerequisite to the original client criteria.",
+      "published_integration_commits": [
+        "10784b26c2a5e8a544551d0b9ed8951b25b68afe"
+      ]
     },
     {
       "id": "FE15",
@@ -862,12 +868,17 @@
       "id": "FE19",
       "title": "Map, place details, and help",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/reference-map.md"
+        "docs/mcr/frontend/reference-map.md",
+        "docs/mcr/frontend/reference-scene-root.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "World SL relays the implementation owner original FE19 task-local SATISFIED disposition: published all-era root/Map/virtual-destination integration closes the missing producer/caller gap, with existing Map/Places mismatch, recovery, source, closure and help implementation/evidence preserved. The current increment does not claim to rerun every historical Places state; no king or SL review is added.",
+      "known_followup": "Actual operator/place data, physical destination authority, Product admission and complete reference-art fidelity remain separate requirements with their producer/art owners. Virtual concepts do not establish physical arrival or meeting eligibility.",
+      "published_integration_commits": [
+        "10784b26c2a5e8a544551d0b9ed8951b25b68afe"
+      ]
     },
     {
       "id": "FE20",
@@ -879,7 +890,6 @@
         "docs/mcr/frontend/meeting-beacon.md"
       ],
       "note": "The implementation owner explicitly declares original FE20 frontend implementation SATISFIED in the frozen-contract/deterministic-fixture scope, with no feature-local behavior remaining. Published 6c908472 records retained meeting/privacy/physical-arrival safeguards and the completed photo selection, upload, attachment, save, fresh-controller authorized reread, replacement/removal and recovery flow. MOCK_READY is the environment label; no king or SL technical review was performed.",
-      "known_task_local_gap": "Photo attachment/upload/persistence; optional photo display does not close this requirement.",
       "known_followup": "Separate live integration: BE meeting-photo producer and server authorization, owner-media lifetime/erase/read behavior, Product API root/version admission, operator rights, IN02, devices and multiuser journeys remain with their implementation owners. Actual backend durability, server authority and default photo activation are not inferred.",
       "published_integration_commits": [
         "6c908472ec3b6025bcdca9a90eae4db26c90a0b4"
@@ -1069,7 +1079,7 @@
         "docs/mcr/frontend/mural-entry-lifecycle.md"
       ],
       "note": "The implementation owner explicitly declares original FE33 frontend criteria SATISFIED under the frozen-contract/fixture scope in published 7c2f3af7: convergence, rejected-preview rollback and restore invalidation. MOCK_READY describes the environment; it does not withhold the reported task-local criteria outcome. No king or SL technical review was performed.",
-      "known_followup": "Separate production integration: actual anchor/source/server eligibility, Gateway admission/mappings/fence and caller assembly remain assigned to their implementation owners. The caller assembly continues under a separate active goal; shared generated Feed hash metadata correction is separately owned. Neither is silently treated as full live/IN04 acceptance.",
+      "known_followup": "Separate production integration: actual anchor/source/server eligibility, Gateway admission/mappings/fence and real IN04 remain open with implementation owners. The subsequently assigned frontend caller assembly was delivered in eeae69be with its goal complete and clean STOP; it adds no new original task ID.",
       "published_integration_commits": [
         "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e"
       ]
@@ -1166,21 +1176,32 @@
       "id": "QA01",
       "title": "Contract and fixture coverage",
       "lane": "QA",
-      "coverage_bucket": "UNRECONCILED",
-      "recorded_state": null,
-      "evidence": [],
-      "note": "Current original-task disposition is not established by this management reconciliation. This does not mean NOT_STARTED or zero implementation."
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "CONTRACT_READY",
+      "evidence": [
+        "docs/mcr/evidence/contracts/qa01-coverage/README.md"
+      ],
+      "note": "The QA01 implementation owner explicitly declares all original QA01 criteria SATISFIED for pinned published canonical inputs. Implementation 6e2038fc and evidence 19d7441f are published through bd103c10. The same previously paused goal actually completed, followed by a null goal and clean STOP; no goal was reset or falsely completed. Offline contract coverage is not full C07 or live integration acceptance.",
+      "known_followup": "Whole C07 generation/CI obligations, actual producer responses, exhaustive business-state combinations, live services, devices and IN gates are not certified by schema witnesses. They remain separately tracked; no original QA01 criterion is waived.",
+      "published_integration_commits": [
+        "bd103c101b07e1df30c424cbc1e8a3ea62ca5315"
+      ]
     },
     {
       "id": "QA02",
       "title": "Zero legacy-UI audit",
       "lane": "QA",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/qa/ui-origin.md"
+        "docs/mcr/qa/ui-origin.md",
+        "docs/mcr/evidence/ui-origin/README.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The QA02 implementation owner explicitly declares original zero-legacy-UI audit criteria SATISFIED at the pinned candidate. Published 11ca3a3e contains the source/import/hash comparison and developer-reviewed native presentation across all 59 registered route patterns and 61 required IA entries. The stale C08 support assertion was corrected under an exact grant. The goal is complete and checkout clean; kings and SLs did not repeat the audit.",
+      "known_followup": "This original audit outcome does not certify near-identical reference fidelity, feature readiness, QA06, live services, devices or IN acceptance. Initial unqualified component previews remain identified in the owner report; actual integrated product and final visual requirements remain separately open.",
+      "published_integration_commits": [
+        "11ca3a3ea7f6a514f581f43fe979a8af11c1755d"
+      ]
     },
     {
       "id": "QA03",
@@ -1341,6 +1362,34 @@
       "owner_chat": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
       "receipt_commit": "6c908472ec3b6025bcdca9a90eae4db26c90a0b4",
       "disposition": "SATISFIED, original frontend contract/fixture criteria; actual bounded goal COMPLETE and checkout clean STOP"
+    },
+    {
+      "recorded_at": "2026-11-04T10:18:27+09:00",
+      "task": "FE14",
+      "owner_chat": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "receipt_commit": "10784b26c2a5e8a544551d0b9ed8951b25b68afe",
+      "disposition": "SATISFIED, original task-local criteria as explicitly reconciled by implementation owner; published and counted once"
+    },
+    {
+      "recorded_at": "2026-11-04T10:18:27+09:00",
+      "task": "FE19",
+      "owner_chat": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "receipt_commit": "10784b26c2a5e8a544551d0b9ed8951b25b68afe",
+      "disposition": "SATISFIED, original task-local criteria as explicitly reconciled by implementation owner; published and counted once"
+    },
+    {
+      "recorded_at": "2026-11-04T10:18:27+09:00",
+      "task": "QA01",
+      "owner_chat": "01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e",
+      "receipt_commit": "bd103c101b07e1df30c424cbc1e8a3ea62ca5315",
+      "disposition": "SATISFIED, original task-local criteria as explicitly reconciled by implementation owner; published and counted once"
+    },
+    {
+      "recorded_at": "2026-11-04T10:23:44+09:00",
+      "task": "QA02",
+      "owner_chat": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+      "receipt_commit": "11ca3a3ea7f6a514f581f43fe979a8af11c1755d",
+      "disposition": "SATISFIED, original zero-legacy-UI audit at pinned candidate; owner goal complete and clean STOP"
     }
   ]
 }

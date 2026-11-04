@@ -1,0 +1,43 @@
+{
+  "format": "MCR_OPERATOR_CONSTRUCTOR_QUALIFICATION",
+  "version": 1,
+  "compiled_source_revision": "c7fdd2581a9543e1748929739865ae79d436f870",
+  "state": "CONTRACT_READY",
+  "admission": "NOT_ADMITTED",
+  "rustc_version": "rustc 1.88.0 (6b00bc388 2025-06-23)",
+  "locked": true,
+  "offline": true,
+  "jobs": 2,
+  "debug": "0",
+  "incremental": "0",
+  "compile_exit_code": 0,
+  "copied_artifact_sha256": "681e188a5d3a8ad24947c76b144a3bc0f730f8a11b2c711e94166428cdcde7a2",
+  "tests": {
+    "exit_code": 0,
+    "summary": "test result: ok. 5 passed; 0 failed; 0 ignored"
+  },
+  "source_pin_count": 1853,
+  "unchanged_qualified_input_sha256": {
+    "backend/services/concert-service/tests/product_runtime.rs": "8c246642a32dd345b317935351e12e47fd4dae46ebdf55d9803f4e6c3568161a",
+    "backend/services/concert-service/src/product_rpc/root_read.rs": "d6304ba3154ed193c08922e5ae059a7b80d10f4501209ed0b046a22e0f1f52eb",
+    "backend/services/concert-service/src/adapters/out/public_profile/mod.rs": "e0131f7a804280ff69f6be60bcf98e6b74d57b8d11df6b70aeeedde6ba00a3ea",
+    "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs": "e78965f650f87072f77ebe7084baf6522e8554854efa0fa7fa0034af329a8737",
+    "backend/releases/reference-scene-v2/quality-v6/map-manifest.json": "81f6890b114a75a2885032c4f5c38a7fac685203fbde9a4481eef6b9c2bbb632",
+    "backend/releases/reference-scene-v2/quality-v6/source-binding.json": "0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "backend/releases/operator-bundle/quality-v6/bootstrap.json": "11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42",
+    "backend/releases/operator-bundle/quality-v6/theme-revenge.json": "c01a12f61687e00d6f34651cfd026d8146733412e2b813f0274b8bb8a9ca3f3e",
+    "backend/releases/operator-bundle/quality-v6/theme-parade.json": "87a6de90adcf1309e4f11a8e3fdd124e717aff1c477d3b9817b9af95f301eb87",
+    "backend/releases/operator-bundle/quality-v6/theme-danger.json": "ac908ec595c14bb21972cd800c1bb8540a81bd6da386574a89d229f5be04162b"
+  },
+  "gateway_http": "NOT_RUN",
+  "actual_root_callback_owner_join": "NOT_RUN",
+  "actual_public_profile_factory_join": "NOT_RUN",
+  "operator_admission": "NOT_RUN",
+  "visual_fidelity_acceptance": "NOT_RUN",
+  "limits": [
+    "Full production constructor succeeds on actual source-bound bytes with all capabilities disabled.",
+    "Callback and narrowed subject-error dependencies compile, but no joined callback invocation is credited.",
+    "Later builder metadata names its own validation boundary; these four descriptor/Bootstrap bytes and Rust sources remain exactly those executed."
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "current": [
+    {
+      "path": "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36"
+    },
+    {
+      "path": "docs/mcr/reuse-allowlist.json",
+      "sha256": "4695e5fb20b2ffa5283caa325d13cfdabea2c0855348526b050afdfc075b7227"
+    },
+    {
+      "path": "docs/mcr/frontend/reuse-inventory.json",
+      "sha256": "9d1202211cd136948a7afeb5588238ba9de13613980dab42616011f47762a079"
+    },
+    {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "sha256": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba"
+    },
+    {
+      "path": "frontend/src/app/routes.ts",
+      "sha256": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c"
+    },
+    {
+      "path": "frontend/src/shared/ui/controls.tsx",
+      "sha256": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d"
+    },
+    {
+      "path": "frontend/src/shared/ui/feedback.tsx",
+      "sha256": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f"
+    },
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "sha256": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "sha256": "f0b569f8576be2805e4a705f5cf393ba87c61baad8ca6cf46afa6e28f2ce3011"
+    },
+    {
+      "path": "frontend/src/entities/avatar/character-source-pack.json",
+      "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
+    },
+    {
+      "path": "contracts/fixtures/assets/selected-static/avatar-manifest.json",
+      "sha256": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+    },
+    {
+      "path": "frontend/src/app/world-entry/reference-scene-overview.ts",
+      "sha256": "8a90ed45f609f4eb0ff1801c331d6f8459b388aa9e7e0821d46f31a40329edce"
+    },
+    {
+      "path": "scripts/mcr/tests/ui-origin.test.mjs",
+      "sha256": "7ab2ff96b4b3bbe2ed698a2e58d2860a01383aece93dd146f9613e4e918e58e3"
+    }
+  ],
+  "legacy": [
+    {
+      "path": "frontend/src/features/auth/LoginPage.tsx",
+      "sha256": "a21aa60967f3a0d423bd57c0b0afb1f85ff7e44cc19a2909f62df3d50aa46c1b",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "frontend/src/pages/home/HomePage.tsx",
+      "sha256": "531976504a6b676becedb020a16a02745015d8f5a489a16deaff51c8fbcc9750",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "frontend/src/components/ui/button.tsx",
+      "sha256": "7c09c1da3f06c846522ef89ceae2e8e3a59eb3ef59646a7bf0286fa5b0a604e0",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "frontend/src/components/ui/button-styles.ts",
+      "sha256": "2bf796f857e5e9935ab578fd630112969a5d92e179befb651fce3ccf10690512",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "frontend/src/styles/globals.css",
+      "sha256": "b71d33d2e0e4e168ddd6b73f92bd3956042b8f83661c712a3d455b5815ad9585",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "sha256": "8018c5442e51409c11c82c57b557ff054a16bae4b1276b7eb72535b65a648942",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "docs/assets/product-screenshots/account-experience/account-experience-390-light-posts.png",
+      "sha256": "50ee3e32752ca17732227395737a66882daced9ebe97bc4d64a55d4c9a10c3a6",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "docs/assets/product-screenshots/screenshots/visual-390-dark-home.png",
+      "sha256": "ae601d8cd3babdf2110fc42d01a1990ed73b72297f24e8c39c35895d85e78194",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    },
+    {
+      "path": "docs/assets/product-screenshots/screenshots/visual-430-light-login.png",
+      "sha256": "2d86f9895e6c01b0c12e54ed899e3fbe8f62c5b29a7b3ef6c0d9c948956d5634",
+      "qualification": "Pinned historical source or snapshot; not a fresh legacy runtime execution."
+    }
+  ],
+  "candidate": "f0d0663a4d95361eea74040a8dee28598e9a7ff9"
+}
