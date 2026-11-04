@@ -785,7 +785,7 @@ async fn native_spatial_candidate_transactions() {
     if candidate.catalog.manifest.map_revision == 5 {
         use concert_domain::place::{canonical_json_bytes, parse_stored_release, CatalogRelease};
         use sha2::{Digest, Sha256};
-        let mut changed: Value =
+        let mut changed: serde_json::Value =
             serde_json::from_slice(&candidate.catalog.canonical_bytes).unwrap();
         changed["geometry"]["collision_id"] = "conflicting_revision_five".into();
         let geometry =
