@@ -1,0 +1,76 @@
+{
+  "task": "QA01",
+  "original_criteria_disposition": "SATISFIED",
+  "evidence_class": "CONTRACT_READY_OFFLINE_ONLY",
+  "assignment_base": "d273c3771499d8f564e3282d4e9009cdf627a67e",
+  "canonical_input_candidate": "d042638789bc84587be7bbbe09b32c324570c75f",
+  "validated_candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+  "implementation_commit": "6e2038fccbfc09f0dedc344823ef3a494a0da7d3",
+  "source_publication_commit": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+  "verified_remote_head": "f0d0663a4d95361eea74040a8dee28598e9a7ff9",
+  "source_remote_ancestry_exit": 0,
+  "implementation_paths": [
+    "scripts/mcr/contracts/qa01-coverage/README.md",
+    "scripts/mcr/contracts/qa01-coverage/pins.json",
+    "scripts/mcr/contracts/qa01-coverage/run.py",
+    "scripts/mcr/contracts/qa01-coverage/test_coverage.py",
+    "scripts/mcr/contracts/qa01-coverage/witness.py"
+  ],
+  "checks": [
+    {
+      "command": "<pinned-contract-python> -B scripts/mcr/contracts/qa01-coverage/run.py --output docs/mcr/evidence/contracts/qa01-coverage/report.json",
+      "exit": 0
+    },
+    {
+      "command": "QA01_WRITE_TEST_RECEIPT=1 <pinned-contract-python> -B scripts/mcr/contracts/qa01-coverage/test_coverage.py",
+      "exit": 0,
+      "tests": 7,
+      "negative_cli_mutations": 12,
+      "expected_negative_exit": 1
+    },
+    {
+      "command": "python3 -B scripts/mcr/check-plan.py",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0
+    },
+    {
+      "command": "exact owned-prefix/source-commit path assertion and SHA-256 comparison",
+      "exit": 0
+    }
+  ],
+  "canonical_generator_checks": [
+    {
+      "command": "python3 -B backend/scripts/docs/generate-mcr-core.py --check",
+      "exit": 0,
+      "output": "MCR core target contract checked"
+    },
+    {
+      "command": "python3 -B backend/scripts/docs/generate-mcr-domain.py --check",
+      "exit": 0,
+      "output": "MCR domain HTTP REVIEW_CANDIDATE checked"
+    },
+    {
+      "command": "python3 -B scripts/mcr/generate-domain-transport.py --check",
+      "exit": 0,
+      "output": "Domain transport metadata current: 108 operations"
+    }
+  ],
+  "canonical_inputs_unchanged": true,
+  "harness_source_hashes_match_receipt": true,
+  "write_scope": [
+    "scripts/mcr/contracts/qa01-coverage/**",
+    "docs/mcr/evidence/contracts/qa01-coverage/**"
+  ],
+  "initial_system_python_failure": "Missing required format plugins; retained pinned environment reused, not reclassified as contract failure",
+  "publication_retry": "First non-force attempt rejected after remote advanced; peer history merged, full harness and seven tests rerun exit0, non-force retry succeeded. No force push.",
+  "limits": [
+    "No canonical/schema/generator/generated/CI/application modifications",
+    "No acceptance of whole C07 or central ledger change",
+    "Witnesses validate schema instances, not observed service outputs or exhaustive business-state combinations",
+    "Binary response schemas only; HTML not executed",
+    "Live service/database/device/IN gate checks NOT_RUN"
+  ]
+}

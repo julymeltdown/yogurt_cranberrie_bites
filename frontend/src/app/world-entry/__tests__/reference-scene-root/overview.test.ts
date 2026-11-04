@@ -5,6 +5,8 @@ import type { SceneryOverview } from '../../../../world/illustrated/overview'
 import type { LoadedMap } from '../../../../world/map/resources'
 import { validateManifests } from '../../../../world/map/manifest'
 import { referenceFixture } from '../../../../world/reference-scene/__tests__/fixture'
+import { spatialFixture } from '../../../../world/reference-scene/__tests__/spatial-v3/fixture'
+import { spatialSceneIdentity, spatialThemeIds, getSpatialScenery } from '../../../../world/reference-scene'
 import { synthetic } from '../../../../world/__tests__/fixtures/synthetic'
 
 const fakes = vi.hoisted(() => {
@@ -47,6 +49,59 @@ it('preflights original coherent v4 metadata without art review relabeling or re
   expect(value.map.places.every(p => p.place_kind === 'VIRTUAL_CONCEPT' && p.verification_state === 'CONCEPT_ONLY' && p.provenance.review_state === 'UNREVIEWED')).toBe(true)
   expect(isReferenceSceneCandidate(value)).toBe(true); expect(() => preflightReferenceScene(value)).not.toThrow()
   const normal = await ordinary(); expect(isReferenceSceneCandidate(normal)).toBe(false); expect(() => preflightReferenceScene(normal)).not.toThrow()
+})
+it.each(spatialThemeIds)('selects the exact spatial-v3 reference producer for %s and retains source identity', async theme => {
+  const f = await spatialFixture(theme), value = await validateManifests(JSON.stringify(f.map), JSON.stringify(f.theme), f.pin)
+  expect(isReferenceSceneCandidate(value)).toBe(true); expect(() => preflightReferenceScene(value)).not.toThrow()
+  expect(value.map.geometry_hash).toBe(spatialSceneIdentity.geometryHash)
+  expect(value.map.places.every(p => p.provenance.review_state === 'UNREVIEWED')).toBe(true)
+  const owner = createRootSceneOverview(); cleanup.push(owner.dispose)
+  const map = loaded(value); owner.replace(map)
+  expect(owner.read()).toMatchObject({ mapRevision: 4, geometryHash: spatialSceneIdentity.geometryHash, themeId: theme, themeHash: f.theme.content_hash })
+  expect(fakes.owners[0]!.owner.replace).not.toHaveBeenCalled(); expect(map.dispose).not.toHaveBeenCalled()
+})
+it('reuses one projection owner through all six spatial era transitions and a retained map2 replacement', async () => {
+  const owner = createRootSceneOverview(); cleanup.push(owner.dispose)
+  const maps = await Promise.all(spatialThemeIds.map(async id => {
+    const f = await spatialFixture(id)
+    return loaded(await validateManifests(JSON.stringify(f.map), JSON.stringify(f.theme), f.pin))
+  }))
+  const source = new Map(maps.map(map => [map.theme.theme_id, map])), reads: (string | null)[] = []
+  owner.subscribe(() => reads.push(owner.read()?.themeId ?? null))
+  for (const id of ['PARADE', 'REVENGE', 'DANGER', 'PARADE', 'DANGER', 'REVENGE', 'PARADE']) {
+    owner.replace(source.get(id)!); expect(owner.read()?.themeId).toBe(id)
+  }
+  expect(fakes.owners).toHaveLength(2); expect(fakes.owners[0]!.owner.replace).not.toHaveBeenCalled()
+  expect(reads.filter(value => value === null)).toHaveLength(7)
+  owner.replace(loaded(await metadata())); expect(owner.read()?.mapRevision).toBe(2)
+  maps.forEach(map => expect(map.dispose).not.toHaveBeenCalled())
+})
+it.each(['geometry', 'tiled', 'ground', 'atlas'] as const)('fences a foreign-map spatial %s claim instead of choosing incumbent pixels', async claim => {
+  const value = structuredClone(await ordinary()), spatial = await spatialFixture()
+  if (claim === 'geometry') value.map.geometry_hash = spatial.map.geometry_hash
+  if (claim === 'tiled') value.map.tilemap = spatial.map.tilemap
+  if (claim === 'ground' || claim === 'atlas') {
+    const scenery = structuredClone(getSpatialScenery('PARADE'))
+    value.theme.scenery = { ...scenery, ground: { ...scenery.ground, path: claim === 'ground' ? scenery.ground.path : 'world/ordinary-ground.png' },
+      atlases: scenery.atlases.map(a => ({ ...a, path: claim === 'atlas' ? a.path : 'world/ordinary-atlas.png' })) }
+  }
+  expect(isReferenceSceneCandidate(value)).toBe(true); expect(() => preflightReferenceScene(value)).toThrow()
+  const owner = createRootSceneOverview(); cleanup.push(owner.dispose); owner.replace(loaded(value))
+  expect(owner.read()).toBeNull(); fakes.owners.forEach(f => expect(f.owner.replace).not.toHaveBeenCalled())
+})
+it.each(['revision', 'oldGeometry', 'oldTile', 'places', 'spawn', 'crossEra', 'placement', 'dimensions'] as const)('rejects spatial-v3 %s mismatch without an incumbent fallback', async kind => {
+  const f = await spatialFixture(), value = structuredClone(await validateManifests(JSON.stringify(f.map), JSON.stringify(f.theme), f.pin))
+  const old = await metadata()
+  if (kind === 'revision') value.map.map_revision = 2
+  if (kind === 'oldGeometry') { value.map.geometry_hash = old.map.geometry_hash; value.map.geometry = old.map.geometry }
+  if (kind === 'oldTile') value.map.tilemap = old.map.tilemap
+  if (kind === 'places') value.map.places[0]!.verification_state = 'REJECTED'
+  if (kind === 'spawn') value.spawn.cell_x++
+  if (kind === 'crossEra') value.theme.scenery = getSpatialScenery('DANGER')
+  if (kind === 'placement') value.theme.scenery = { ...value.theme.scenery!, objects: value.theme.scenery!.objects.map((o, i) => i ? o : { ...o, depth_y: o.depth_y + 1 }) }
+  if (kind === 'dimensions') value.widthPx--
+  expect(() => preflightReferenceScene(value)).toThrow()
+  const owner = createRootSceneOverview(); cleanup.push(owner.dispose); owner.replace(loaded(value)); expect(owner.read()).toBeNull()
 })
 it.each(['revision', 'geometry', 'theme', 'scenery', 'dimensions', 'spawn'] as const)('rejects reference %s incoherency before a producer is selected', async kind => {
   const value = structuredClone(await metadata())

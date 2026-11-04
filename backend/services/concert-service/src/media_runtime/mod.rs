@@ -1,5 +1,6 @@
 //! Request-bound uploader-only media runtime. No public/link authority is implied.
 //! Production composition must supply a qualified canonical Auth owner fence.
+pub mod canonical;
 pub mod context;
 pub mod settlement;
 mod wire;
