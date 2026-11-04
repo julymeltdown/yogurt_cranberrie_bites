@@ -126,3 +126,27 @@ No browser, native, build or export workflow has been started for this task.
 The reserved Wall CSS does not prove adoption until Root's semantic hook and
 import are present in the rendered candidate. Real multiuser flows, physical
 devices, and release gates remain separate obligations.
+
+## Committed handoff and source checks
+
+Source handoff `8824401dec061102c9af33ba302855e48563170a` contains only the
+new stylesheet, this document and source evidence. Root and both asset authors
+received the handoff. Remote master was rechecked after handoff and was still
+`7c25078f118da53dd9a524d0a58e707cca190f0f`; publication ancestry is not yet
+proved.
+
+| Check | Result |
+| --- | --- |
+| `python3 scripts/mcr/check-plan.py` | Exit 0; planning provenance/structure only |
+| Exact selector/property/URL boundary and source asset hashes/dimensions | Exit 0; five granted surface rules, four distinct pinned SVGs |
+| SVG XML and closed-resource audit | Exit 0; no script, raster, filter, animation, text rendering or external resources |
+| `git diff --cached --check` before source commit | Exit 0 |
+| Source-paint contrast bound | Exit 0; [evidence](evidence/art-screen-com01/source-contrast.json) |
+| Actual browser-computed contrast, focus and geometry | NOT_RUN; combined Root capture pending |
+
+The conservative source bound treats every SVG hex paint as fully opaque,
+including faint ornaments. Minimum body-text ratios are Feed 12.32:1,
+Meet 12.287:1, Gifts 12.089:1 with the default ink token, and Wall 7.362:1.
+Meet's existing hint ink has a 4.882:1 bound; the lowest focus-color bound is
+Wall 3.286:1. This calculation does not establish actual theme inheritance,
+rendered text contrast, control contrast, visual acceptance or device behavior.
