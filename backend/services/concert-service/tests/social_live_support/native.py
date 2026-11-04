@@ -132,6 +132,9 @@ def policy_recovery(args, report):
     report['owned_root'] = str(cluster.root)
     # The outside lease watchdog learns the cluster before any PG child exists.
     (args.report.parent / 'runtime-owned-root.json').write_text(json.dumps({'path': str(cluster.root)}))
+    custody = args.report.parent / 'runtime-custody.json'
+    custody.write_text(json.dumps({'path': str(cluster.root), 'identity': cluster.identity, 'token': cluster.token}))
+    custody.chmod(0o600)
     env = {}
     def zero(phase):
         n = int(cluster.sql('postgres', 'select count(*) from pg_prepared_xacts;'))
@@ -161,7 +164,11 @@ def policy_recovery(args, report):
             raise SmokeError('preflight', 'PG16 required')
         db = 'mcr_social_concert'
         execute([str(cluster.tools['createdb']), '--no-password', '--maintenance-db=postgres', db], env=cluster.client_env('postgres'), phase='createdb', cwd=cluster.root)
-        migrations = ROOT / 'backend/services/concert-service/migrations'
+        migrations = Path(meta['migration_directory'])
+        expected = adapter.migration_manifest(ROOT / 'backend', 'concert-service')
+        import hashlib
+        frozen = {int(p.name.split('_', 1)[0]): hashlib.sha384(p.read_bytes()).hexdigest() for p in migrations.glob('*.sql') if not p.name.endswith('.down.sql')}
+        if frozen != expected: raise SmokeError('source', 'frozen full migration readset differs')
         env = {**cluster.env, 'MCR_SOCIAL_ROOT': str(cluster.root), 'MCR_SOCIAL_TOKEN': cluster.token,
                'MCR_SOCIAL_IDENTITY': f'{cluster.identity[0]}:{cluster.identity[1]}',
                'MCR_SOCIAL_SYSTEM': cluster.sql('postgres', 'select system_identifier from pg_control_system();'),
