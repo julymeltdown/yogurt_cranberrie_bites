@@ -1,6 +1,6 @@
 # FE-SCENE-R3-ROOT
 
-Status: IN_PROGRESS; bounded client source/fixture delivery. This is not production admission, full art fidelity, physical-place verification or whole-parent acceptance. No king/SL/QA technical approval gate is required. The implementation developer owns inspection, validation, fixes and direct non-force publication.
+Status: MOCK_READY; bounded client source/fixture implementation and qualification complete. This is not production admission, full art fidelity, physical-place verification or whole-parent acceptance. No king/SL/QA technical approval gate is required. The implementation developer owns inspection, validation, fixes and direct non-force publication.
 
 ## Source and ownership
 
@@ -36,6 +36,31 @@ Final commands, exits, source pins, native receipts and captures are recorded at
 | --- | --- | --- |
 | FE07 | Persistent shell Map/place navigation borrows one game, camera and world lease; factory creates no second shell owner. | This source-fixture result does not reconcile unrelated shell routes or change Main's accepted counts. |
 | FE14 | Additive overview factory, strict source metadata, incumbent default, successful skin update and cleanup are implemented and tested; actual default Phaser is used in the new-scene fixture. | No new FPS/device/capacity or whole renderer fidelity claim. Later revision/era adoption requires World/root coordination. |
-| FE19 | The missing root producer-to-existing Map/Places port is implemented; virtual concept details remain nonphysical, exact pins are supplied, and malformed candidate fallback is denied. | Source/fixture adapter gap is closed when final checks below pass. Original FE19 remains implementation-evidenced/task-local rather than globally accepted. Production canonical engineering-reviewed bundle/revision adoption belongs to Spatial/Productroot plus World/root; upper-district versioned visual/geometry correction belongs to artist and needs explicit future adoption. |
+| FE19 | The missing root producer-to-existing Map/Places port is implemented; virtual concept details remain nonphysical, exact pins are supplied, and malformed candidate fallback is denied. | Source/fixture adapter gap is closed by the passing checks below. Original FE19 remains implementation-evidenced/task-local rather than globally accepted. Production canonical engineering-reviewed bundle/revision adoption belongs to Spatial/Productroot plus World/root; upper-district versioned visual/geometry correction belongs to artist and needs explicit future adoption. |
 
 These named dependencies describe production/version behavior, not a reason to withhold a completed bounded source-fixture goal. Existing original Place closed/removed/source/mismatch/help behavior remains in the Places owner's scope and tests; this adapter does not change it or claim fresh qualification of every historical case. Live service, multiuser, devices, IN02/IN05 and complete art acceptance remain separate. Historical 11 ACCEPTED + 9 task-local SATISFIED bookkeeping is not amended here.
+
+## Completion and retained receipts
+
+Source checkpoint `167d1426`; reconciled candidate `38a880e554d3f88bd59bf61a0711ebab2ceee0ee` preserves peer master `a3526254`. No assigned source changed during reconciliation. Retained evidence lives under `frontend/src/app/world-entry/__tests__/reference-scene-root/evidence/`: `native.json` binds all 15 relevant source files/resources by SHA-256; six `world-{360,390,430}.png` / `map-{360,390,430}.png` captures show the actual views; `legacy-default-loader.json` retains the independent ordinary-release default-loader receipt. `checks.json` records commands, environment and limits. All source pins were checked again against the reconciled checkout.
+
+Developer checks (all exit 0):
+
+- Vitest 4.1.9, affected root/runtime/composition/reference/overview/skin set: **318 tests in 14 files pass**, `--maxWorkers=2`, with the existing contracts-validation Python venv.
+- Full `tsc -b`, scoped Oxlint and production Vite build pass. Vite retains its existing large-Phaser-chunk advisory.
+- Source-fixture native runner, Chrome 156.0.8078.80: **360 / 390 / 430 pass**, plus actual default-production-resolver denial at 390. Actual Phaser yields 23 reference objects and six whole-character sprites. World → Map → virtual detail → World → warm Map keeps exactly one game/camera/factory/connection and makes only the original two source PNG and one Tiled request. Map pan/zoom does not move the World camera. All five created URLs are revoked on cleanup; no page errors. Suspension withdraws map controls/publication and leaves zero game, socket or world canvas.
+- Each viewport yields the same 768×1296 MAP raster: 2,114,297 encoded bytes, PNG SHA-256 `041af9e128649a8668fc562373cccf540e0b7c5b1f02c2df838519f9f4fe848a`, RGBA SHA-256 `9f25d4d50d96e8c27686471100ea55ec06ca3bbfcf1503434817250a7f4c56f4`. Captures were visually inspected for actual scene/Map/virtual labels; no fidelity acceptance is inferred.
+- Retained whole-character ordinary-release default-loader runner: 390 passes without composition override, preserving save-and-return behavior and incumbent overview.
+- Planning/provenance checker, UI-origin checker, assigned frontend boundary and whitespace checks pass. After merging peers, the sparse checkout initially omitted their two newly tracked Auth artwork PNGs; including those tracked assets fixes the route import failure without changing peer code. The final affected rerun above passes.
+
+Reproduce from `frontend/` using the existing Node 24.22.2 toolchain/dependency resolution and `MCR_FE14_PYTHON` pointing to the existing validation venv:
+
+```sh
+node node_modules/vitest/vitest.mjs run --maxWorkers=2 src/app/world-entry/__tests__ src/world/__tests__/runtime.test.ts src/world/composition/__tests__ src/world/reference-scene/__tests__ src/world/__tests__/illustrated/overview.test.ts src/world/theme/__tests__/replacement.test.ts
+node node_modules/typescript/bin/tsc -b
+node node_modules/vite/bin/vite.js build
+MCR_SCENE_ROOT_OUTPUT=/absolute/new/output node src/app/world-entry/__tests__/reference-scene-root/native.mjs
+QA_WIDTH=390 MCR_WHOLE_ROOT_OUTPUT=/absolute/new/legacy-output node e2e/reference-integrated/whole/native.mjs
+```
+
+Publication is direct and non-force after peer reconciliation. Evidence is pinned to the source/reconciled candidate; the following receipt/document commit adds no application behavior. The checkout is handed off clean with test servers, browsers and temporary dependency link stopped/removed. FE07/FE14/FE19 dispositions above remain task-local; there is no production or global acceptance promotion.
